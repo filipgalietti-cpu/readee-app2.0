@@ -970,24 +970,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen closely to this fact. Bears are big, furry animals. They like to eat berries and fish. In winter, bears sleep in a cozy den. So, where do bears sleep?",
-            "audioRegenAt": "2026-06-03T21:07:15.144Z"
+            "ttsScript": "Now you try, detective! Here are some facts. A fox has soft red fur. It hunts at night. When the sun comes up, the fox sleeps in a deep hole called a burrow. Where does the fox sleep?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Where do bears sleep?",
-          "hint": "Think about where the story said bears sleep.",
+          "prompt": "Where does the fox sleep?",
+          "hint": "Listen for where the fox sleeps.",
           "correctAudio": "audio/lessons/RI.K.1/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.K.1/interactive-wrong.mp3",
-          "correctScript": "Exactly! Bears sleep in dens! That's a key detail about where they live.",
-          "wrongScript": "Good try! Listen to the story again to find out where bears sleep. Try again!",
+          "correctScript": "Yes! A burrow! You found the key detail about where the fox sleeps.",
+          "wrongScript": "Almost! Think back to the facts about where the fox goes to sleep. Try again!",
           "choices": [
-            "Dens",
-            "Trees",
-            "Caves"
+            "A burrow",
+            "A nest",
+            "A cave"
           ],
-          "correct": "Dens"
+          "correct": "A burrow"
         }
       },
       {
@@ -4425,7 +4424,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.5/interactive-q.mp3",
             "ttsScript": "Your turn, detective! Lily picked up a book. She saw a big picture of a dog and the words 'My Best Friend' on the very first part. What part of the book did Lily see?",
-            "audioRegenAt": "2026-06-03T21:09:52.245Z"
+            "audioRegenAt": "2026-06-04T02:29:16.986Z"
           }
         ],
         "interactive": {
@@ -4435,7 +4434,7 @@
           "correctAudio": "audio/lessons/RI.K.5/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.K.5/interactive-wrong.mp3",
           "correctScript": "Exactly! The front cover is the very first part you see, and it has the title and a picture!",
-          "wrongScript": "Good try! Remember, the front cover is the first thing you see when you pick up a book. Try again!",
+          "wrongScript": "Good try! Think about the very first part you see when you pick up a book. Try again!",
           "choices": [
             "Front cover",
             "Back cover",
@@ -4855,24 +4854,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.6/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Imagine a person who spends all their time thinking up amazing facts about dinosaurs. They write down every single word about T-Rex and Triceratops so you can learn. Who is that person?",
-            "audioRegenAt": "2026-06-03T21:10:07.602Z"
+            "ttsScript": "Your turn, book detective! Imagine someone who loves dinosaurs. They never write any words, but they paint a giant green T-Rex and a spiky Triceratops so you can see them. Who is that person?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Who writes the words?",
-          "hint": "Think about who puts the facts into words.",
+          "prompt": "Who drew the pictures?",
+          "hint": "Think about who makes the pictures, not the words.",
           "correctAudio": "audio/lessons/RI.K.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.K.6/interactive-wrong.mp3",
-          "correctScript": "Exactly! The author writes the words and chooses all the facts for you!",
-          "wrongScript": "Not quite! Remember, one person writes the words and another draws the pictures. Try again!",
+          "correctScript": "Yes! The illustrator draws the pictures so you can see what the words say.",
+          "wrongScript": "So close! Remember, one person makes words and one makes pictures. Try again!",
           "choices": [
-            "author",
-            "illustrator",
-            "reader"
+            "Illustrator",
+            "Author",
+            "Reader"
           ],
-          "correct": "author"
+          "correct": "Illustrator"
         }
       },
       {
@@ -8814,32 +8812,31 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3a/interactive-q.mp3",
-            "ttsScript": "You've got this! Match each letter to the sound it makes.",
-            "audioRegenAt": "2026-06-03T21:12:53.012Z"
+            "ttsScript": "You've got this! Listen to each letter's sound, then match the letter to the sound it makes."
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match letter to sound",
-          "hint": "Remember, each letter makes a special sound.",
+          "prompt": "Match each letter to its sound",
+          "hint": "Say each letter slowly and listen for its first sound.",
           "correctAudio": "audio/lessons/RF.K.3a/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.K.3a/interactive-wrong.mp3",
-          "correctScript": "Exactly! S says /s/, M says /m/, and T says /t/. You matched them all!",
-          "wrongScript": "Not quite! Remember the sounds we just learned. Try again!",
+          "correctScript": "You matched them all! You heard the right sound for every letter!",
+          "wrongScript": "Good try! Say each letter out loud and listen for its sound. Try again!",
           "leftItems": [
-            "S",
-            "M",
-            "T"
+            "P",
+            "N",
+            "F"
           ],
           "rightItems": [
-            "/s/",
-            "/m/",
-            "/t/"
+            "/p/",
+            "/n/",
+            "/f/"
           ],
           "correctPairs": {
-            "S": "/s/",
-            "M": "/m/",
-            "T": "/t/"
+            "P": "/p/",
+            "N": "/n/",
+            "F": "/f/"
           }
         }
       },
@@ -9871,24 +9868,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/interactive-q.mp3",
-            "ttsScript": "Your turn! Can you find the word 'Do'?",
-            "audioRegenAt": "2026-06-03T21:13:08.115Z"
+            "ttsScript": "Your turn! One of these is a sight word you read right away, without sounding it out. Which one do you just know by looking?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which word is this?",
-          "hint": "Remember, sight words are words you know just by looking.",
+          "prompt": "Which word do you just know?",
+          "hint": "A sight word you read without sounding out.",
           "correctAudio": "audio/lessons/RF.K.3c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.K.3c/interactive-wrong.mp3",
-          "correctScript": "Exactly! 'Do' is a sight word you know just by looking!",
-          "wrongScript": "Not quite! Remember, sight words are words you learn to read right away. Try again!",
+          "correctScript": "Exactly! You read that one right away, no sounding out needed!",
+          "wrongScript": "Not quite! A sight word is one you just know by looking. Try again!",
           "choices": [
-            "The",
-            "Do",
-            "You"
+            "is",
+            "mop",
+            "cat"
           ],
-          "correct": "Do"
+          "correct": "is"
         }
       },
       {
@@ -14304,7 +14300,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.6/interactive-q.mp3",
             "ttsScript": "Your turn, detective! Listen to this story: Lily went to the zoo. She saw a tall giraffe. Who is telling this story?",
-            "audioRegenAt": "2026-06-03T21:16:24.717Z"
+            "audioRegenAt": "2026-06-04T02:30:17.154Z"
           }
         ],
         "interactive": {
@@ -14314,7 +14310,7 @@
           "correctAudio": "audio/lessons/RL.1.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.1.6/interactive-wrong.mp3",
           "correctScript": "Exactly! A narrator is telling the story because it uses 'she' to talk about Lily.",
-          "wrongScript": "Not quite! Remember, if the story uses 'he', 'she', or 'they', it's an outside voice, a narrator, telling the story. Try again!",
+          "wrongScript": "Not quite! Listen for whether an outside voice or a character is telling the story. Try again!",
           "choices": [
             "A narrator",
             "A character",
@@ -16899,24 +16895,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.6/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this little story. My friend has a pet hamster named Squeaky. Squeaky is tiny and has soft brown fur. He loves to run on his wheel. Now, what color is Squeaky's fur?",
-            "audioRegenAt": "2026-06-03T21:18:18.152Z"
+            "ttsScript": "Here's a book about a frog. You want to know the frog's exact color. Which clue shows you that best?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What color is Squeaky's fur?",
-          "hint": "Remember, words can tell us details like the exact color of an animal.",
+          "prompt": "Which shows the exact color?",
+          "hint": "One clue lets you SEE the color right away.",
           "correctAudio": "audio/lessons/RI.1.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.1.6/interactive-wrong.mp3",
-          "correctScript": "Exactly! Brown. The words told us Squeaky's fur is brown, just like a picture would show us!",
-          "wrongScript": "Good try! Listen again for the details about Squeaky's fur. Try again!",
+          "correctScript": "Yes! A picture lets you SEE the exact color right away!",
+          "wrongScript": "Almost! Think about which clue you can look at and SEE a color. Try again!",
           "choices": [
-            "brown",
-            "white",
-            "black"
+            "The picture",
+            "The title",
+            "The page number"
           ],
-          "correct": "brown"
+          "correct": "The picture"
         }
       },
       {
@@ -17834,21 +17829,20 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.9/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen to these facts. Book one says: A bear has thick fur. Book two says: A bear likes to eat berries. What do these books do?",
-            "audioRegenAt": "2026-06-03T21:19:02.257Z"
+            "ttsScript": "Listen closely. Book one says a frog has smooth skin. Book two says a frog eats bugs. What do these two books do?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "How do facts compare?",
-          "hint": "Think about if the facts are the same or if they teach you new things.",
+          "prompt": "How do these facts compare?",
+          "hint": "Same idea, or two new things to learn?",
           "correctAudio": "audio/lessons/RI.1.9/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.1.9/interactive-wrong.mp3",
-          "correctScript": "Exactly! The books add facts. One book tells about fur, and the other tells about food, so you learn more about bears!",
-          "wrongScript": "Not quite. Do these facts say the same thing, or do they teach you different things about the bear? Try again!",
+          "correctScript": "Yes! Different facts, so together you learn even more!",
+          "wrongScript": "So close! Do the books say the same thing, or teach two different things? Try again!",
           "choices": [
-            "Agree",
             "Add facts",
+            "Agree",
             "Disagree"
           ],
           "correct": "Add facts"
@@ -18786,24 +18780,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.2c/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen to the word 'dog'. What is the middle sound you hear in 'dog'?",
-            "audioRegenAt": "2026-06-03T21:20:13.514Z"
+            "ttsScript": "Your turn! Stretch this word slowly: pig. Which sound comes at the very end of pig?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What is the middle sound?",
-          "hint": "Listen carefully for the sound in the middle of the word.",
+          "prompt": "Last sound in pig?",
+          "hint": "Stretch the word slowly. What sound ends it?",
           "correctAudio": "audio/lessons/RF.1.2c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.1.2c/interactive-wrong.mp3",
-          "correctScript": "Exactly! The 'o' sound is the middle sound in 'dog'. Great job finding the sound in the middle!",
-          "wrongScript": "Not quite. Listen to 'dog' again. What sound do you hear in the very middle? Try again!",
+          "correctScript": "Yes! Pig ends with the g sound, so that's the last sound!",
+          "wrongScript": "Almost! Say pig nice and slow and listen for the very last sound. Try again!",
           "choices": [
-            "d",
-            "o",
-            "g"
+            "g sound",
+            "p sound",
+            "i sound"
           ],
-          "correct": "o"
+          "correct": "g sound"
         }
       },
       {
@@ -20163,24 +20156,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.1.4/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this sentence: 'The boy will run fast in the race.' In this sentence, what does the word 'run' mean?",
-            "audioRegenAt": "2026-06-03T21:20:31.591Z"
+            "ttsScript": "Your turn, detective! Listen to this sentence: The bat hung upside down in the dark cave. Which bat is in this sentence?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What does 'run' mean?",
-          "hint": "Read the whole sentence again to find the clue.",
+          "prompt": "Which bat is it?",
+          "hint": "Read the whole sentence for the clue.",
           "correctAudio": "audio/lessons/L.1.4/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.1.4/interactive-wrong.mp3",
-          "correctScript": "Exactly! 'Run' means to move fast in this sentence. The sentence tells us he's in a race, so he's moving quickly!",
-          "wrongScript": "Not quite! Remember to use the whole sentence to help you figure out what 'run' means here. Try again!",
+          "correctScript": "Exactly! The cave is the clue, so this bat is the flying animal!",
+          "wrongScript": "So close! Read the whole sentence again and find the clue word. Try again!",
           "choices": [
-            "move fast",
-            "start engine",
-            "water flows"
+            "Flying animal",
+            "Baseball bat",
+            "A funny hat"
           ],
-          "correct": "move fast"
+          "correct": "Flying animal"
         }
       },
       {
@@ -21363,32 +21355,31 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.1.5/interactive-q.mp3",
-            "ttsScript": "Now you try! Can you match each word to its opposite?",
-            "audioRegenAt": "2026-06-03T21:21:12.582Z"
+            "ttsScript": "Now you try! Some words mean almost the same thing. Match each word to its same-family partner."
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match the opposites.",
-          "hint": "Remember, opposites mean very different things.",
+          "prompt": "Match the close-meaning words.",
+          "hint": "Pick words that mean almost the same thing.",
           "correctAudio": "audio/lessons/L.1.5/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.1.5/interactive-wrong.mp3",
-          "correctScript": "Exactly! You matched the opposites. Great job!",
-          "wrongScript": "Not quite! Think about words that mean the very different thing. Try again!",
+          "correctScript": "Yes! You found the words that mean almost the same thing!",
+          "wrongScript": "Good try! Think about which words feel close in meaning. Try again!",
           "leftItems": [
-            "hot",
-            "big",
-            "fast"
+            "tiny",
+            "quick",
+            "happy"
           ],
           "rightItems": [
-            "cold",
             "small",
-            "slow"
+            "fast",
+            "glad"
           ],
           "correctPairs": {
-            "hot": "cold",
-            "big": "small",
-            "fast": "slow"
+            "tiny": "small",
+            "quick": "fast",
+            "happy": "glad"
           }
         }
       },
@@ -26028,24 +26019,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.2.1/interactive-q.mp3",
-            "ttsScript": "You've got this — try one! Listen closely. Three little birds lived in a cozy nest. They flew to the feeder every morning to eat seeds. Their mom watched them from a nearby branch. How many birds lived in the nest?",
-            "audioRegenAt": "2026-06-03T21:24:55.518Z"
+            "ttsScript": "Your turn! Listen: When the icy wind blows, the penguins huddle close together in a big group. Why do the penguins huddle together?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "How many birds lived there?",
-          "hint": "Listen for the number of birds in the story.",
+          "prompt": "Why do penguins huddle?",
+          "hint": "Why would they squeeze together when it is cold?",
           "correctAudio": "audio/lessons/RI.2.1/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.2.1/interactive-wrong.mp3",
-          "correctScript": "Exactly! Three birds lived in the nest. Good job finding the number in the facts!",
-          "wrongScript": "Not quite! Listen again for the number of birds. Try again!",
+          "correctScript": "Yes! To stay warm! You used a why question to really understand the facts.",
+          "wrongScript": "Almost! Think about why penguins would squeeze together when it is freezing cold. Try again!",
           "choices": [
-            "Two",
-            "Three",
-            "Four"
+            "To stay warm",
+            "To find food",
+            "To swim fast"
           ],
-          "correct": "Three"
+          "correct": "To stay warm"
         }
       },
       {
@@ -28827,24 +28817,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.2.10/interactive-q.mp3",
-            "ttsScript": "Now you try! Mia loves learning about animals. She went to the library and found a big book about lions. She read it all afternoon. What kind of book did Mia pick?",
-            "audioRegenAt": "2026-06-03T21:29:18.712Z"
+            "ttsScript": "Here's a thinking one! Ben already read three whole books about sharks. He knows every shark fact now. What should Ben try next to learn even more?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What book did Mia pick?",
-          "hint": "Think about what Mia loves to read.",
+          "prompt": "Best way to grow?",
+          "hint": "Remember the trick about a new topic.",
           "correctAudio": "audio/lessons/RI.2.10/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.2.10/interactive-wrong.mp3",
-          "correctScript": "Exactly! Mia picked an animal book because she loves learning about animals!",
-          "wrongScript": "Good try! Remember, it's fun to pick books about things you love. Try again!",
+          "correctScript": "Exactly! A new topic teaches him brand-new facts!",
+          "wrongScript": "Good try! Think back to our weekly trick for learning more. Try again!",
           "choices": [
-            "Animal book",
-            "Space book",
-            "Sports book"
+            "A new topic",
+            "Sharks again",
+            "Watch TV"
           ],
-          "correct": "Animal book"
+          "correct": "A new topic"
         }
       },
       {
@@ -30035,22 +30024,21 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3c/interactive-q.mp3",
-            "ttsScript": "Your turn! We've learned about different ways to make long vowel sounds in two-syllable words. Can you match each word part to the way its vowel sound is made long?",
-            "audioRegenAt": "2026-06-03T21:35:04.586Z"
+            "ttsScript": "Now you try, with brand-new words! Split each word and match it to the way its vowel sound is made long."
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match long vowel sounds",
-          "hint": "Remember how silent E and vowel teams make long sounds.",
+          "prompt": "Match how the sound is long",
+          "hint": "Look for silent E or a vowel team in each.",
           "correctAudio": "audio/lessons/RF.2.3c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.2.3c/interactive-wrong.mp3",
-          "correctScript": "Exactly! You matched each word part to its long vowel sound rule!",
-          "wrongScript": "Not quite! Look closely at how each word part makes its long vowel sound. Try again!",
+          "correctScript": "You split them all and matched each long-sound rule!",
+          "wrongScript": "So close! Split each word and look at how its vowel goes long. Try again!",
           "leftItems": [
-            "base",
-            "rain",
-            "bow"
+            "cake",
+            "pail",
+            "snow"
           ],
           "rightItems": [
             "silent E",
@@ -30058,9 +30046,9 @@
             "OW team"
           ],
           "correctPairs": {
-            "base": "silent E",
-            "rain": "AI team",
-            "bow": "OW team"
+            "cake": "silent E",
+            "pail": "AI team",
+            "snow": "OW team"
           }
         }
       },
@@ -31100,32 +31088,31 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.4/interactive-q.mp3",
-            "ttsScript": "Your turn! You've learned about reading with flow. Can you match each word to what it means?",
-            "audioRegenAt": "2026-06-03T21:39:17.175Z"
+            "ttsScript": "Now you try! Each reader is working on one part of fluent reading. Match each reader to the part they are using."
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match to meaning",
-          "hint": "Think about what each word means for reading.",
+          "prompt": "Match reader to skill",
+          "hint": "Listen to what each reader is doing.",
           "correctAudio": "audio/lessons/RF.2.4/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.2.4/interactive-wrong.mp3",
-          "correctScript": "Exactly! You matched Accuracy to read correctly, Rate to how fast, and Expression to match voice. Great job remembering what each part of fluent reading means!",
-          "wrongScript": "Not quite! Take another look at the words and their meanings. Remember what we learned about reading smoothly. Try again!",
+          "correctScript": "You matched them all! You knew exactly which part of fluent reading each reader was using.",
+          "wrongScript": "Good try! Think about what each reader is doing as they read. Try again!",
           "leftItems": [
+            "Sounds out word",
+            "Not too fast",
+            "Sounds excited"
+          ],
+          "rightItems": [
             "Accuracy",
             "Rate",
             "Expression"
           ],
-          "rightItems": [
-            "read correctly",
-            "how fast",
-            "match voice"
-          ],
           "correctPairs": {
-            "Accuracy": "read correctly",
-            "Rate": "how fast",
-            "Expression": "match voice"
+            "Sounds out word": "Accuracy",
+            "Not too fast": "Rate",
+            "Sounds excited": "Expression"
           }
         }
       },
@@ -31982,7 +31969,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.4c/interactive-q.mp3",
             "ttsScript": "Your turn, detective! Listen to this little story. The boy went to the store to buy some apples. He picked up a big red ball and put it in his cart. What should the boy do when he reads that a ball was put in the cart instead of an apple?",
-            "audioRegenAt": "2026-06-03T21:39:50.659Z"
+            "audioRegenAt": "2026-06-04T02:31:23.249Z"
           }
         ],
         "interactive": {
@@ -31992,7 +31979,7 @@
           "correctAudio": "audio/lessons/RF.2.4c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.2.4c/interactive-wrong.mp3",
           "correctScript": "Exactly! He should stop and think. Good readers stop and think when something doesn't make sense!",
-          "wrongScript": "Not quite! When something doesn't make sense, good readers stop and think about what word would fit. Try again!",
+          "wrongScript": "Not quite! When something does not make sense, what should a good reader do before reading on? Try again!",
           "choices": [
             "Keep reading",
             "Stop and think",
@@ -32226,24 +32213,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.4/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen carefully to this sentence: The boy was unhappy because his toy broke. What does the word 'unhappy' mean in that sentence?",
-            "audioRegenAt": "2026-06-03T21:55:44.435Z"
+            "ttsScript": "Your turn, detective! Listen closely: After the rain, the grass felt damp under our feet. Use the clues. What does damp mean?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What does unhappy mean?",
-          "hint": "Remember to use clues from the sentence or word parts to help you.",
+          "prompt": "What does damp mean?",
+          "hint": "Use the sentence clues about the rain.",
           "correctAudio": "audio/lessons/L.2.4/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.4/interactive-wrong.mp3",
-          "correctScript": "Exactly! Unhappy means sad. The word part 'un' means not, so unhappy means not happy!",
-          "wrongScript": "Not quite. Think about the clues in the sentence, 'his toy broke.' How would that make someone feel? Try again!",
+          "correctScript": "Exactly! The rain gave the clue, so damp means a little wet.",
+          "wrongScript": "So close! Think about the clue, after the rain. Try again!",
           "choices": [
-            "sad",
-            "glad",
-            "mad"
+            "A little wet",
+            "Very dry",
+            "Bright green"
           ],
-          "correct": "sad"
+          "correct": "A little wet"
         }
       },
       {
@@ -32763,24 +32749,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.4b/interactive-q.mp3",
-            "ttsScript": "Your turn! The word is 'redo'. What does 'redo' mean?",
-            "audioRegenAt": "2026-06-03T21:56:01.212Z"
+            "ttsScript": "Your turn! Peel off the prefix. What does the word reread mean?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What does redo mean?",
-          "hint": "Remember, RE means again.",
+          "prompt": "What does reread mean?",
+          "hint": "Peel off RE, then read the root.",
           "correctAudio": "audio/lessons/L.2.4b/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.4b/interactive-wrong.mp3",
-          "correctScript": "Yes! 'Do again' is correct because the prefix RE means again!",
-          "wrongScript": "Good try! Think about what the prefix RE means. Try again!",
+          "correctScript": "Yes! RE means again, so reread means read it again.",
+          "wrongScript": "Almost! Remember what the prefix RE tells you. Try again!",
           "choices": [
-            "do again",
-            "do not",
-            "do first"
+            "Read again",
+            "Read fast",
+            "Stop reading"
           ],
-          "correct": "do again"
+          "correct": "Read again"
         }
       },
       {
@@ -33015,22 +33000,22 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.4c/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen to these words: farm, farmer, farming. What is the main part, or root, of these words?",
-            "audioRegenAt": "2026-06-03T21:56:21.342Z"
+            "ttsScript": "Your turn! Listen: farm, farmer, farming. They all grow from one little word. Which word is the root they all share?",
+            "audioRegenAt": "2026-06-04T02:24:11.464Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What is the root word?",
-          "hint": "Remember, the root is the main part of the word.",
+          "prompt": "Which one is the root?",
+          "hint": "The root is the part all three words share.",
           "correctAudio": "audio/lessons/L.2.4c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.4c/interactive-wrong.mp3",
-          "correctScript": "Exactly! Farm is the root of farm, farmer, and farming. It's the main part of all those words!",
-          "wrongScript": "Not quite. Think about the main part that all the words share. Try again!",
+          "correctScript": "Exactly! Farm is the root, because farmer and farming both grow from it.",
+          "wrongScript": "Good try! Say the three words slowly and listen for the part they all share. Try again!",
           "choices": [
             "farm",
-            "farmer",
-            "ing"
+            "barn",
+            "grow"
           ],
           "correct": "farm"
         }
@@ -33843,22 +33828,21 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.5/interactive-q.mp3",
-            "ttsScript": "Your turn! Look at each set of words. Do they mean the same, the opposite, or are they in the same group?",
-            "audioRegenAt": "2026-06-03T21:56:57.271Z"
+            "ttsScript": "Now you try! Decide how each pair connects. Do they mean the same, mean the opposite, or belong in the same group?"
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match words to their connection.",
-          "hint": "Look at how words connect.",
+          "prompt": "Match each pair to its connection",
+          "hint": "Same meaning, opposite, or same kind of thing?",
           "correctAudio": "audio/lessons/L.2.5/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.5/interactive-wrong.mp3",
-          "correctScript": "Exactly! 'Happy' and 'glad' are synonyms because they mean almost the same thing. 'Up' and 'down' are antonyms because they are opposites. 'Dog' and 'cat' are in the same group because they are both animals!",
-          "wrongScript": "Not quite! Think about the relationship between those words. Do they mean the same, the opposite, or are they in the same group? Try again!",
+          "correctScript": "You matched them all! You spotted how each pair connects.",
+          "wrongScript": "So close! Ask yourself: same meaning, opposites, or same kind of thing? Try again!",
           "leftItems": [
-            "happy, glad",
-            "up, down",
-            "dog, cat"
+            "big, large",
+            "fast, slow",
+            "apple, banana"
           ],
           "rightItems": [
             "Synonyms",
@@ -33866,9 +33850,9 @@
             "Same Group"
           ],
           "correctPairs": {
-            "happy, glad": "Synonyms",
-            "up, down": "Antonyms",
-            "dog, cat": "Same Group"
+            "big, large": "Synonyms",
+            "fast, slow": "Antonyms",
+            "apple, banana": "Same Group"
           }
         }
       },
@@ -34685,24 +34669,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.6/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this story. Lily just won the school's art contest! She jumped up and down with a big smile. Which word best describes how Lily felt?",
-            "audioRegenAt": "2026-06-03T22:02:10.214Z"
+            "ttsScript": "Your turn, word detective! Maya finished a really hard puzzle all by herself and held it up high. Which word best paints how she felt?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "How did Lily feel?",
-          "hint": "Think about the kind of happiness Lily felt.",
+          "prompt": "How did Maya feel?",
+          "hint": "She did something hard all by herself.",
           "correctAudio": "audio/lessons/L.2.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.6/interactive-wrong.mp3",
-          "correctScript": "Exactly! Joyful means full of happiness, and Lily was definitely full of happiness when she won!",
-          "wrongScript": "Good try! Remember, different words paint different pictures. Think about what kind of happiness Lily showed. Try again!",
+          "correctScript": "Exactly! Proud is the perfect fit, because she did something hard all on her own.",
+          "wrongScript": "Almost! Each word paints a slightly different picture. Think about doing something hard by yourself. Try again!",
           "choices": [
-            "joyful",
             "proud",
+            "joyful",
             "thrilled"
           ],
-          "correct": "joyful"
+          "correct": "proud"
         }
       },
       {
@@ -34933,24 +34916,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.1/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen closely to this story. Leo was walking home from school. He heard a tiny meow from behind a bush. When he looked, he saw a small, fluffy kitten with big green eyes. What did Leo find?",
-            "audioRegenAt": "2026-06-03T22:02:23.873Z"
+            "ttsScript": "Your turn, detective! Here's a story. Mia opened the old trunk. Inside, dusty boxes were stacked high. On top sat a shiny gold crown. Mia found a crown. Which exact words from the story PROVE that?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What did Leo find?",
-          "hint": "Look for the words that tell you what Leo saw.",
+          "prompt": "Which words prove it?",
+          "hint": "Find the words that name what Mia saw.",
           "correctAudio": "audio/lessons/RL.3.1/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.3.1/interactive-wrong.mp3",
-          "correctScript": "Exactly! Leo found a kitten. The story says 'he saw a small, fluffy kitten'. You proved it with the text!",
-          "wrongScript": "Not quite! Reread the story in your mind and find the exact words that tell you what Leo found. Try again!",
+          "correctScript": "Yes! Those exact words name what she found, so they prove your answer.",
+          "wrongScript": "So close! Find the words that actually name what Mia saw, then point to them. Try again!",
           "choices": [
-            "a puppy",
-            "a kitten",
-            "a bird"
+            "A shiny gold crown",
+            "The old trunk",
+            "Dusty boxes stacked"
           ],
-          "correct": "a kitten"
+          "correct": "A shiny gold crown"
         }
       },
       {
@@ -36254,24 +36236,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.6/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen carefully to this story. The little red bird sang a beautiful song. Its notes floated through the air, making everyone feel happy. A grumpy cat watched from a tree, but even it couldn't help but tap its paw. What did the narrator think about the bird's song?",
-            "audioRegenAt": "2026-06-03T22:13:52.932Z"
+            "ttsScript": "Here's your challenge! Listen close. Ben planted a tiny seed. He watered it each morning. What a kind and patient boy he was! Which sentence shows the narrator's OWN opinion, not just a fact?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Narrator's song view?",
-          "hint": "Think about the words the narrator used to describe the song. What did they feel about it?",
+          "prompt": "Which shows the narrator's view?",
+          "hint": "One sentence shares a feeling or opinion, not just a fact.",
           "correctAudio": "audio/lessons/RL.3.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.3.6/interactive-wrong.mp3",
-          "correctScript": "Exactly! The narrator thought the song was beautiful. They used words like 'beautiful' and said it made everyone 'feel happy' to show their view!",
-          "wrongScript": "Good try! Remember, the narrator's feelings and opinions show through the words they choose. Listen again for how they described the song. Try again!",
+          "correctScript": "Exactly! That sentence shares a feeling, so it's the narrator's opinion, not a plain fact.",
+          "wrongScript": "Almost! Two sentences just tell facts. Listen for the one that shares a feeling. Try again!",
           "choices": [
-            "Beautiful",
-            "Annoying",
-            "Okay"
+            "What a kind boy",
+            "He watered it",
+            "Ben planted a seed"
           ],
-          "correct": "Beautiful"
+          "correct": "What a kind boy"
         }
       },
       {
@@ -36513,24 +36494,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.7/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Imagine a picture showing a bright, sunny park with children laughing and playing with a big, colorful ball. What mood does this picture make you feel?",
-            "audioRegenAt": "2026-06-03T22:14:01.826Z"
+            "ttsScript": "Now you try a tricky one! Picture this: a gray, foggy beach at night. One lonely figure walks along the cold, empty sand under a dark sky. What mood does this picture set?"
           }
         ],
         "interactive": {
           "kind": "tap",
           "prompt": "What is the mood?",
-          "hint": "Look at the colors and what's happening in the picture to guess the feeling.",
+          "hint": "Cold colors and a lonely scene set the feeling.",
           "correctAudio": "audio/lessons/RL.3.7/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.3.7/interactive-wrong.mp3",
-          "correctScript": "Exactly! Happy! Bright colors and laughing children often mean a happy mood.",
-          "wrongScript": "Not quite! Think about the bright colors and what the children are doing. How do those things make you feel? Try again!",
+          "correctScript": "Nice! Gray, dark, and empty colors set a lonely, sad feeling.",
+          "wrongScript": "Good try! Think about those cold gray colors and the empty beach. How would that feel? Try again!",
           "choices": [
-            "Happy",
-            "Scary",
-            "Tense"
+            "Lonely",
+            "Cheerful",
+            "Excited"
           ],
-          "correct": "Happy"
+          "correct": "Lonely"
         }
       },
       {
@@ -37027,24 +37007,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.10/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this story. Leo just finished reading a long adventure story about a knight and a dragon. He loved it! His teacher said it's good to read different kinds of stories to stretch your brain. What kind of story could Leo read next to mix it up?",
-            "audioRegenAt": "2026-06-03T22:14:30.038Z"
+            "ttsScript": "Your turn, detective! Leo just finished a long adventure book about a knight and a dragon. He wants to mix it up and stretch his brain. Which one is a different kind of reading for Leo?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What story could Leo read?",
-          "hint": "Think about mixing up your reading.",
+          "prompt": "What stretches Leo's brain?",
+          "hint": "A different KIND mixes it up.",
           "correctAudio": "audio/lessons/RL.3.10/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.3.10/interactive-wrong.mp3",
-          "correctScript": "Exactly! A poem is a great way to mix up his reading and stretch his brain with a different kind of story!",
-          "wrongScript": "Not quite. Remember, it's good to read different kinds of stories to stretch your brain. Try again!",
+          "correctScript": "Yes! A funny poem is a brand-new kind, so it stretches his brain in a fresh way!",
+          "wrongScript": "Almost! Mixing it up means a different KIND of reading, not more of the same. Try again!",
           "choices": [
-            "A poem",
-            "Adventure",
-            "Long story"
+            "A funny poem",
+            "Dragon battle book",
+            "Knight quest tale"
           ],
-          "correct": "A poem"
+          "correct": "A funny poem"
         }
       },
       {
@@ -37313,24 +37292,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.1/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen carefully to this tiny story. The little bird sang a happy song. Maya listened from her window. Her dog, Buster, wagged his tail. Now, who sang the song?",
-            "audioRegenAt": "2026-06-03T22:15:02.132Z"
+            "ttsScript": "Your turn, detective! Here's the text: The little bird sang a happy song. Maya listened from her window. We say the bird made the music. Which exact words from the text prove it?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Who sang the song?",
-          "hint": "Think about which character made the sound in the story.",
+          "prompt": "Which words prove it?",
+          "hint": "Find the exact words that prove it.",
           "correctAudio": "audio/lessons/RI.3.1/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.3.1/interactive-wrong.mp3",
-          "correctScript": "Exactly! The bird sang the song. The story tells us that fact directly!",
-          "wrongScript": "Good try! Reread the story in your mind and find the part that tells you who was singing. Try again!",
+          "correctScript": "Yes! Those exact words name the bird singing, so they prove your answer!",
+          "wrongScript": "So close! Point to the words that actually say who made the song. Try again!",
           "choices": [
-            "the bird",
-            "Maya",
-            "Buster"
+            "Bird sang song",
+            "Maya listened",
+            "Happy window"
           ],
-          "correct": "the bird"
+          "correct": "Bird sang song"
         }
       },
       {
@@ -37825,24 +37803,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.3/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this story. The little bird was very hungry. It flew to the bird feeder and ate all the seeds. As a result, its tummy was full. Why did the bird's tummy get full?",
-            "audioRegenAt": "2026-06-03T22:15:20.664Z"
+            "ttsScript": "Your turn, detective! Here's the order: The bird felt hungry. Then it flew to the feeder. Then it ate the seeds. Then its tummy was full. Which event happened FIRST?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Why did bird's tummy fill?",
-          "hint": "Think about what caused the bird's tummy to get full.",
+          "prompt": "What happened first?",
+          "hint": "First comes before next.",
           "correctAudio": "audio/lessons/RI.3.3/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.3.3/interactive-wrong.mp3",
-          "correctScript": "Exactly! The bird's tummy got full because it ate seeds. One event caused the other!",
-          "wrongScript": "Not quite! Think about what happened right before the tummy got full. Try again!",
+          "correctScript": "Yes! Feeling hungry came first, before the bird flew or ate. You tracked the order!",
+          "wrongScript": "Good try! Think back to the very start of the story. Try again!",
           "choices": [
+            "Felt hungry",
             "Ate seeds",
-            "Flew high",
-            "Was sleepy"
+            "Tummy full"
           ],
-          "correct": "Ate seeds"
+          "correct": "Felt hungry"
         }
       },
       {
@@ -38100,24 +38077,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.4/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this story. 'First, put on your socks. Next, put on your shoes. Last, tie your laces. Follow this sequence to get ready for school.' What does sequence mean?",
-            "audioRegenAt": "2026-06-03T22:15:31.246Z"
+            "ttsScript": "Your turn, detective! Use the clues and the word parts: The marine biologist studied the fish and whales in the ocean. The root bio means life. What does a biologist study?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What does sequence mean?",
-          "hint": "Look at the words around 'sequence' for clues.",
+          "prompt": "What does a biologist study?",
+          "hint": "The root bio means life.",
           "correctAudio": "audio/lessons/RI.3.4/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.3.4/interactive-wrong.mp3",
-          "correctScript": "Exactly! Sequence means order, like the order you do things.",
-          "wrongScript": "Good try! Remember, context clues give hints. What do the words 'first, next, last' tell you about sequence? Try again!",
+          "correctScript": "Yes! A biologist studies living things, because the root bio means life!",
+          "wrongScript": "Good try! The root bio means life. So what would a biologist study? Try again!",
           "choices": [
-            "Order",
-            "Fast",
-            "New"
+            "Living things",
+            "Old rocks",
+            "The weather"
           ],
-          "correct": "Order"
+          "correct": "Living things"
         }
       },
       {
@@ -39579,24 +39555,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.10/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen closely to this story. Maya loved to learn about big, ancient animals that lived long ago. She read a book all about dinosaurs. What topic was the book about?",
-            "audioRegenAt": "2026-06-03T22:16:54.482Z"
+            "ttsScript": "Your turn to be the thinker! Listen to this little fact book. Bats are amazing animals. They sleep upside down. They catch bugs in the dark. They can even fly! What is the book mostly about?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What topic was it?",
-          "hint": "Think about what the book taught.",
+          "prompt": "What is it mostly about?",
+          "hint": "One idea covers the whole book.",
           "correctAudio": "audio/lessons/RI.3.10/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.3.10/interactive-wrong.mp3",
-          "correctScript": "Exactly! Science is the topic when you learn about dinosaurs!",
-          "wrongScript": "Not quite. Remember, dinosaurs are a part of the natural world. Try again!",
+          "correctScript": "Exactly! That one idea holds all the others together, so it's the main idea!",
+          "wrongScript": "So close! One of these is a tiny detail, but the main idea covers the whole book. Try again!",
           "choices": [
-            "Science",
-            "History",
-            "Cooking"
+            "Bats sleep upside down",
+            "Bats are amazing",
+            "Bats eat bugs"
           ],
-          "correct": "Science"
+          "correct": "Bats are amazing"
         }
       },
       {
@@ -40681,24 +40656,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.3.3c/interactive-q.mp3",
-            "ttsScript": "You've got this! Which of these words has three or more syllables?",
-            "audioRegenAt": "2026-06-03T22:18:05.476Z"
+            "ttsScript": "Time to use your chunking trick! Here is a big word: elephant. Which way splits it so each chunk has just one vowel sound?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which word has 3+ syllables?",
-          "hint": "Multisyllable words have 3+ syllables.",
+          "prompt": "Which split is correct?",
+          "hint": "One vowel sound in each chunk.",
           "correctAudio": "audio/lessons/RF.3.3c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.3.3c/interactive-wrong.mp3",
-          "correctScript": "Exactly! Remember has three syllables, so it's a multisyllable word!",
-          "wrongScript": "Not quite! Clap out each word to hear how many syllables it has. Try again!",
+          "correctScript": "Nice! Each chunk has one vowel sound, so it splits clean for reading!",
+          "wrongScript": "Almost! Clap it out and listen for one vowel sound in each chunk. Try again!",
           "choices": [
-            "cat",
-            "apple",
-            "remember"
+            "el-ep-hant",
+            "ele-phant",
+            "el-e-phant"
           ],
-          "correct": "remember"
+          "correct": "el-e-phant"
         }
       },
       {
@@ -41792,24 +41766,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.3.4b/interactive-q.mp3",
-            "ttsScript": "You've got this! When you read a poem, what's a good time to pause?",
-            "audioRegenAt": "2026-06-03T22:19:18.697Z"
+            "ttsScript": "Let's read like real readers! Here's a poem: The cat ran fast. The dog slept. Then... BOOM! A loud crash! Which line should you read slowly, with big feeling?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "When pause at line breaks?",
-          "hint": "Think about how poems are structured.",
+          "prompt": "Which line slows down?",
+          "hint": "Which line has the most excitement?",
           "correctAudio": "audio/lessons/RF.3.4b/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.3.4b/interactive-wrong.mp3",
-          "correctScript": "Yes! For effect — you pause at line breaks in poetry for effect!",
-          "wrongScript": "Not quite. Think about why poems use line breaks. Try again!",
+          "correctScript": "Yes! You slow down on the exciting line so the surprise really lands!",
+          "wrongScript": "So close! Which line has the big surprise? Try again!",
           "choices": [
-            "For effect",
-            "To show feelings",
-            "To vary speed"
+            "Then... BOOM!",
+            "The dog slept",
+            "The cat ran"
           ],
-          "correct": "For effect"
+          "correct": "Then... BOOM!"
         }
       },
       {
@@ -43922,33 +43895,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.5a/interactive-q.mp3",
-            "ttsScript": "Your turn! We learned about words that show how sure someone is. Can you match each word to what it means?",
-            "audioRegenAt": "2026-06-03T22:21:57.596Z"
+            "ttsScript": "Your turn! Maya said, I'm dragging my feet today. She isn't really pulling her feet on the floor! What does dragging my feet really mean?"
           }
         ],
         "interactive": {
-          "kind": "match",
-          "prompt": "Match words to meanings",
-          "hint": "Think about how sure each word makes you feel.",
+          "kind": "tap",
+          "prompt": "Which means tired?",
+          "hint": "It's a picture in your mind, not the real words.",
           "correctAudio": "audio/lessons/L.3.5a/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.3.5a/interactive-wrong.mp3",
-          "correctScript": "Exactly! You matched knew to completely sure, believed to thought true, and suspected to small idea. Great job!",
-          "wrongScript": "Not quite. Remember, each word tells us a different level of certainty. Try again!",
-          "leftItems": [
-            "knew",
-            "believed",
-            "suspected"
+          "correctScript": "Exactly! You looked past the silly words to the real picture meaning!",
+          "wrongScript": "Almost! Remember, the words paint a picture. Try again!",
+          "choices": [
+            "Moving slowly",
+            "Walking fast",
+            "Hurting toes"
           ],
-          "rightItems": [
-            "completely sure",
-            "thought true",
-            "small idea"
-          ],
-          "correctPairs": {
-            "knew": "completely sure",
-            "believed": "thought true",
-            "suspected": "small idea"
-          }
+          "correct": "Moving slowly"
         }
       },
       {
@@ -44787,24 +44750,32 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.6/interactive-q.mp3",
-            "ttsScript": "Your turn! What's the best way to make new words really stick in your memory, so you can use them all the time?",
-            "audioRegenAt": "2026-06-03T22:22:24.346Z"
+            "ttsScript": "Your turn! Conversation words do different jobs when we talk. Can you match each word to what it helps you do?"
           }
         ],
         "interactive": {
-          "kind": "tap",
-          "prompt": "What helps words stick?",
-          "hint": "Think about what makes a new word really stay in your memory.",
+          "kind": "match",
+          "prompt": "Match word to its job",
+          "hint": "Think about when you'd say each word in a talk.",
           "correctAudio": "audio/lessons/L.3.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.3.6/interactive-wrong.mp3",
-          "correctScript": "Exactly! 'Use them often' is right because using new words again and again helps them stick with you for life!",
-          "wrongScript": "Good try! Remember, trying a word once helps, but what makes it really stick for life? Think about what we learned. Try again!",
-          "choices": [
-            "Use them often",
-            "Read them once",
-            "Hear them once"
+          "correctScript": "Nice! You know just what each conversation word does!",
+          "wrongScript": "Good try! Think about when you'd use each one. Try again!",
+          "leftItems": [
+            "I see",
+            "Well",
+            "So"
           ],
-          "correct": "Use them often"
+          "rightItems": [
+            "Show listening",
+            "Start an idea",
+            "Connect thoughts"
+          ],
+          "correctPairs": {
+            "I see": "Show listening",
+            "Well": "Start an idea",
+            "So": "Connect thoughts"
+          }
         }
       },
       {
@@ -45860,24 +45831,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.4/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this sentence: 'The singer's voice soared through the concert hall, filling every corner with beautiful music.' What does the word 'soared' mean in this story?",
-            "audioRegenAt": "2026-06-03T22:23:59.560Z"
+            "ttsScript": "Your turn, word detective! Listen: 'After the kind note, Sam felt his cold heart melting.' What does 'melting' mean here?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What does 'soared' mean?",
-          "hint": "Think about how the voice moved, not a bird.",
+          "prompt": "What does 'melting' mean?",
+          "hint": "He isn't really turning to liquid.",
           "correctAudio": "audio/lessons/RL.4.4/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.4.4/interactive-wrong.mp3",
-          "correctScript": "Exactly! 'Filled space' is right. The voice didn't literally fly, but it filled the space like something soaring.",
-          "wrongScript": "Not quite. 'Soared' here doesn't mean it literally flew. Think about how the voice spread out. Try again!",
+          "correctScript": "Yes! Softening up, because his feelings are changing, not his body.",
+          "wrongScript": "So close! Sam isn't really turning to liquid. Picture how his feelings change. Try again!",
           "choices": [
-            "flew high",
-            "filled space",
-            "sang loud"
+            "Softening up",
+            "Getting colder",
+            "Falling apart"
           ],
-          "correct": "filled space"
+          "correct": "Softening up"
         }
       },
       {
@@ -46400,7 +46370,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.6/interactive-q.mp3",
             "ttsScript": "Your turn, detective! Listen carefully to this short story. 'I walked to the park today. My dog, Buster, pulled on his leash. We saw a squirrel, and I laughed when Buster barked at it.' Now, what voice is this story told in?",
-            "audioRegenAt": "2026-06-03T22:24:11.394Z"
+            "audioRegenAt": "2026-06-04T02:32:23.232Z"
           }
         ],
         "interactive": {
@@ -46410,7 +46380,7 @@
           "correctAudio": "audio/lessons/RL.4.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.4.6/interactive-wrong.mp3",
           "correctScript": "Exactly! 'First person' is right because the story uses 'I' to tell it, making you feel close to the character.",
-          "wrongScript": "Not quite. Remember, first person uses 'I' and third person uses 'he,' 'she,' or 'they.' Listen again for who is speaking. Try again!",
+          "wrongScript": "Not quite! Listen for whether the storyteller is inside the story or watching from outside. Try again!",
           "choices": [
             "First person",
             "Third person",
@@ -48173,24 +48143,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.4/interactive-q.mp3",
-            "ttsScript": "You've got this — try one! Which of these words is often used when you are learning about math?",
-            "audioRegenAt": "2026-06-03T22:25:59.887Z"
+            "ttsScript": "You've got the tools now! The word 'biology' has the root 'bio', which means life. So what does biology study?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which word is for math?",
-          "hint": "Think about what you use in math class.",
+          "prompt": "What does 'biology' study?",
+          "hint": "The root 'bio' means life.",
           "correctAudio": "audio/lessons/RI.4.4/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.4.4/interactive-wrong.mp3",
-          "correctScript": "Exactly! An equation is a math word. Great job!",
-          "wrongScript": "Not quite! Remember, academic words help us talk about school subjects. Which word sounds like something you'd use in math? Try again!",
+          "correctScript": "Exactly! You used the root 'bio' to unlock that it studies living things.",
+          "wrongScript": "Almost! Remember the root 'bio' gives you the clue. Try again!",
           "choices": [
-            "equation",
-            "ecosystem",
-            "revolution"
+            "Living things",
+            "Rocks and soil",
+            "Old battles"
           ],
-          "correct": "equation"
+          "correct": "Living things"
         }
       },
       {
@@ -49087,24 +49056,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.7/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Imagine you're learning about how many different kinds of birds visited your bird feeder this week. You want to see how many of each kind came. What kind of information would a chart best show you about the birds?",
-            "audioRegenAt": "2026-06-03T22:27:05.092Z"
+            "ttsScript": "Your turn, researcher! You want to compare how many birds of each kind visited your feeder. Which form would show those amounts best?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What does a chart show?",
-          "hint": "Think about what charts are best for showing.",
+          "prompt": "Which form shows amounts best?",
+          "hint": "One form is built for comparing numbers.",
           "correctAudio": "audio/lessons/RI.4.7/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.4.7/interactive-wrong.mp3",
-          "correctScript": "Exactly! A chart shows numbers, like how many birds of each kind visited!",
-          "wrongScript": "Good try! Remember, charts are great for seeing amounts. Try again!",
+          "correctScript": "Yes! A chart lines up the amounts so you can compare them fast.",
+          "wrongScript": "Good try! Think which form is built for comparing numbers. Try again!",
           "choices": [
-            "numbers",
-            "colors",
-            "sounds"
+            "A chart",
+            "A photo",
+            "A song"
           ],
-          "correct": "numbers"
+          "correct": "A chart"
         }
       },
       {
@@ -49560,24 +49528,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.9/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Imagine you read one article about how whales communicate with sounds. Then you read another article about how whales use their tails to swim. When you put information from both articles together, what does it help you create? Why combine two texts?",
-            "audioRegenAt": "2026-06-03T22:27:22.802Z"
+            "ttsScript": "Your turn! One article says bees make sweet honey. Another article says bees help flowers grow. When you put both texts together, what do you understand better about bees?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Why combine texts?",
-          "hint": "Think about what happens when you put information from two texts together. What does it help you create?",
+          "prompt": "What do you understand better?",
+          "hint": "Put BOTH facts together — what big idea do they show?",
           "correctAudio": "audio/lessons/RI.4.9/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.4.9/interactive-wrong.mp3",
-          "correctScript": "Exactly! Combining texts helps you write a stronger summary because you have more facts and details from different sources!",
-          "wrongScript": "Good try! Remember, when you read two texts on the same topic, you get more information. What does more information help you make? Try again!",
+          "correctScript": "Yes! How bees help! Putting two texts together gives you the fuller picture.",
+          "wrongScript": "So close! Combine BOTH facts, the honey AND the flowers. What do they show about bees? Try again!",
           "choices": [
-            "Stronger summary",
-            "Shorter story",
-            "More pictures"
+            "How bees help",
+            "Where bees sleep",
+            "How big bees are"
           ],
-          "correct": "Stronger summary"
+          "correct": "How bees help"
         }
       },
       {
@@ -49863,24 +49830,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.10/interactive-q.mp3",
-            "ttsScript": "You've got this — try one! Listen carefully to this short text: 'Did you know that clouds are actually made of tiny drops of water or ice? These tiny drops are so light that they float high up in the sky. When lots of these drops come together, they can make rain or snow fall to the ground.' Now, what's the big fact from that text?",
-            "audioRegenAt": "2026-06-03T22:27:37.657Z"
+            "ttsScript": "Your turn! Listen: Dogs make wonderful pets. They are loyal friends. They can learn fun tricks. They even keep you safe. What is the MAIN idea?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What's the big fact?",
-          "hint": "Remember, a big fact is the main idea or most important information about the topic.",
+          "prompt": "What is the main idea?",
+          "hint": "Which is the BIG idea, not just one detail?",
           "correctAudio": "audio/lessons/RI.4.10/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.4.10/interactive-wrong.mp3",
-          "correctScript": "Exactly! 'Clouds are water' is the big fact because it tells us the most important thing about what clouds are made of!",
-          "wrongScript": "Not quite! Think about what the text is mostly about. What's the main idea? Try again!",
+          "correctScript": "Yes! Dogs make wonderful pets, that is the big idea all the other details support!",
+          "wrongScript": "So close! Tricks and staying safe are details. What is the ONE big idea they all support? Try again!",
           "choices": [
-            "Clouds are water",
-            "Drops are light",
-            "Rain falls down"
+            "Dogs are great pets",
+            "Dogs learn tricks",
+            "Dogs keep you safe"
           ],
-          "correct": "Clouds are water"
+          "correct": "Dogs are great pets"
         }
       },
       {
@@ -51877,24 +51843,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4c/interactive-q.mp3",
-            "ttsScript": "Your turn! We learned about different reference materials. Which one helps you find words that mean almost the same thing?",
-            "audioRegenAt": "2026-06-03T22:29:19.622Z"
+            "ttsScript": "Here's a real one. Maya reads the word 'arid' and has no idea what it means. Which reference tool should she grab?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which tool gives synonyms?",
-          "hint": "Think about which tool helps you find words with similar meanings.",
+          "prompt": "Which tool for word meaning?",
+          "hint": "One tool is all about what a word means.",
           "correctAudio": "audio/lessons/L.4.4c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.4.4c/interactive-wrong.mp3",
-          "correctScript": "Exactly! A thesaurus gives synonyms, words with similar meanings!",
-          "wrongScript": "Not quite! Remember, one of these tools is all about finding words that are alike. Try again!",
+          "correctScript": "Yes! A dictionary gives the meaning, so Maya can learn what 'arid' means.",
+          "wrongScript": "Almost! Picture Maya needing to learn what a word means, not a similar word. Try again!",
           "choices": [
             "Dictionary",
             "Thesaurus",
             "Glossary"
           ],
-          "correct": "Thesaurus"
+          "correct": "Dictionary"
         }
       },
       {
@@ -52741,33 +52706,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5b/interactive-q.mp3",
-            "ttsScript": "Your turn! You've learned that idioms are sayings with a hidden meaning. Now, match each idiom on the left to what it truly means on the right.",
-            "audioRegenAt": "2026-06-03T22:30:24.478Z"
+            "ttsScript": "You try! Coach says 'Break a leg!' before the big show. He doesn't mean hurt yourself, so what does he really mean?"
           }
         ],
         "interactive": {
-          "kind": "match",
-          "prompt": "Match each idiom to its meaning.",
-          "hint": "Remember, idioms have a hidden meaning. Think about what each saying really means.",
+          "kind": "tap",
+          "prompt": "What does it really mean?",
+          "hint": "An idiom's real meaning is hidden, not what it says.",
           "correctAudio": "audio/lessons/L.4.5b/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.4.5b/interactive-wrong.mp3",
-          "correctScript": "Exactly! You matched each idiom to its hidden meaning. Great job!",
-          "wrongScript": "Not quite! Remember, the meaning of an idiom isn't what it literally says. Try again!",
-          "leftItems": [
-            "Break a leg",
-            "Bite your tongue",
-            "Hold your horses"
-          ],
-          "rightItems": [
+          "correctScript": "Exactly! 'Break a leg' is a hidden way to wish someone good luck.",
+          "wrongScript": "So close! Remember, the real meaning is hidden behind the words. Try again!",
+          "choices": [
             "Good luck",
-            "Stay quiet",
-            "Wait a moment"
+            "Get hurt",
+            "Run fast"
           ],
-          "correctPairs": {
-            "Break a leg": "Good luck",
-            "Bite your tongue": "Stay quiet",
-            "Hold your horses": "Wait a moment"
-          }
+          "correct": "Good luck"
         }
       },
       {
@@ -55138,33 +55093,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3f/interactive-q.mp3",
-            "ttsScript": "Your turn! Can you match each word ending to what it tells us?",
-            "audioRegenAt": "2026-06-03T22:32:07.886Z"
+            "ttsScript": "Your turn! A puppy did this yesterday. Which word shows it already happened? Walks, walked, or walking?"
           }
         ],
         "interactive": {
-          "kind": "match",
-          "prompt": "Match ending to its meaning.",
-          "hint": "Think about what each ending means.",
+          "kind": "tap",
+          "prompt": "Which one already happened?",
+          "hint": "The -ed ending means it already happened.",
           "correctAudio": "audio/lessons/RF.1.3f/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.1.3f/interactive-wrong.mp3",
-          "correctScript": "Exactly! The -s ending means more than one, -ed means it already happened, and -ing means happening now!",
-          "wrongScript": "Not quite! Remember what each ending tells us about time or quantity. Try again!",
-          "leftItems": [
-            "-s",
-            "-ed",
-            "-ing"
+          "correctScript": "Yes! Walked ends in -ed, so it already happened!",
+          "wrongScript": "Almost! Which ending tells you it already happened? Try again!",
+          "choices": [
+            "Walks",
+            "Walked",
+            "Walking"
           ],
-          "rightItems": [
-            "more than one",
-            "already happened",
-            "happening now"
-          ],
-          "correctPairs": {
-            "-s": "more than one",
-            "-ed": "already happened",
-            "-ing": "happening now"
-          }
+          "correct": "Walked"
         }
       },
       {
@@ -55459,24 +55404,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3g/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen to these words. Which one is a tricky sight word that doesn't follow the rules?",
-            "audioRegenAt": "2026-06-03T22:32:17.117Z"
+            "ttsScript": "Now you try! One of these words breaks the rules and can't be sounded out. Is it the, map, or sit?"
           }
         ],
         "interactive": {
           "kind": "tap",
           "prompt": "Which word is tricky?",
-          "hint": "Remember, tricky words don't follow the usual spelling rules.",
+          "hint": "A tricky word can't be sounded out by the rules.",
           "correctAudio": "audio/lessons/RF.1.3g/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.1.3g/interactive-wrong.mp3",
-          "correctScript": "Exactly! Said is a tricky word because it doesn't sound like it's spelled. You just have to memorize it!",
-          "wrongScript": "Good try! Remember, tricky words are ones you can't easily sound out. Try again!",
+          "correctScript": "Nice! The breaks the rules, so you memorize it by sight!",
+          "wrongScript": "So close! Which word can't you sound out letter by letter? Try again!",
           "choices": [
-            "said",
-            "cat",
-            "run"
+            "The",
+            "Map",
+            "Sit"
           ],
-          "correct": "said"
+          "correct": "The"
         }
       },
       {
@@ -57333,24 +57277,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.3/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this story. Leo lost his favorite toy. He felt very... What word is stronger than 'sad' to describe how Leo felt?",
-            "audioRegenAt": "2026-06-03T22:33:34.122Z"
+            "ttsScript": "Your turn, word artist! Mia won the big race. She felt happy. Which word paints her happiness even stronger than 'happy'?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What word is stronger?",
-          "hint": "Think about words that paint a clearer picture.",
+          "prompt": "Pick the stronger word",
+          "hint": "A strong word shows a BIG feeling, not a small one.",
           "correctAudio": "audio/lessons/L.2.3/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.3/interactive-wrong.mp3",
-          "correctScript": "Exactly! Heartbroken is a stronger word than sad, it paints a clearer picture of how Leo felt!",
-          "wrongScript": "Good try! Remember, stronger words paint a clearer picture of feelings. Think about which word shows how sad Leo felt even more. Try again!",
+          "correctScript": "Yes! Thrilled paints a stronger, brighter picture than just happy!",
+          "wrongScript": "So close! A stronger word shows a BIGGER feeling. Which one feels the most excited? Try again!",
           "choices": [
-            "heartbroken",
-            "unhappy",
-            "glad"
+            "Thrilled",
+            "Okay",
+            "Fine"
           ],
-          "correct": "heartbroken"
+          "correct": "Thrilled"
         }
       },
       {
@@ -57629,24 +57572,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.1/interactive-q.mp3",
-            "ttsScript": "Your turn! What is the past tense form of the verb 'go'?",
-            "audioRegenAt": "2026-06-03T22:33:47.497Z"
+            "ttsScript": "Now you try a tricky one! Some verbs change completely in the past. What is the past tense of the verb 'run'?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What is past tense of go?",
-          "hint": "Think about the special way 'go' changes for the past tense.",
+          "prompt": "Past tense of run?",
+          "hint": "Run is a tricky verb, it does not just add -ed.",
           "correctAudio": "audio/lessons/L.3.1/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.3.1/interactive-wrong.mp3",
-          "correctScript": "Exactly! 'Went' is the past tense of 'go'. You got that tricky one!",
-          "wrongScript": "Almost! Remember, some verbs change completely in the past tense. Think about how 'go' changes. Try again!",
+          "correctScript": "Exactly! Run changes to 'ran', it is one of those tricky verbs that does not add -ed!",
+          "wrongScript": "Almost! Run is a tricky verb that changes its whole shape, it does not just add -ed. Try again!",
           "choices": [
-            "went",
-            "walked",
-            "ate"
+            "Ran",
+            "Runned",
+            "Runed"
           ],
-          "correct": "went"
+          "correct": "Ran"
         }
       },
       {
@@ -60294,18 +60236,17 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.10/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Lily wanted to learn about tigers. She opened a big fact book. She looked at the pictures and read the headings to find the page about tigers. What did Lily use to find facts about tigers?",
-            "audioRegenAt": "2026-06-03T22:36:26.656Z"
+            "ttsScript": "Your turn, fact finder! Ben wanted the page about frogs. He did not look at any pictures. He read the bold titles at the top of each page until he found the frog page. What helped Ben find the right page?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What helps find facts?",
-          "hint": "Think about the parts of a fact book that help you.",
+          "prompt": "What helped find topics?",
+          "hint": "She read the bold titles at the top of each page.",
           "correctAudio": "audio/lessons/RI.1.10/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.1.10/interactive-wrong.mp3",
-          "correctScript": "Exactly! Headings help you find facts fast, just like a roadmap!",
-          "wrongScript": "Not quite! Remember, fact books have special parts that help you find information. Try again!",
+          "correctScript": "Yes! Headings are the titles that name each page, so they led Ben right to frogs!",
+          "wrongScript": "Good try! Think back, Ben read the bold titles at the top of each page. Which part was that? Try again!",
           "choices": [
             "Headings",
             "Pictures",

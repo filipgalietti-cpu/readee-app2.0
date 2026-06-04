@@ -49,9 +49,12 @@ function gradeFork(l: any): Finding[] {
   } else {
     // TAP
     const choices = (it.choices ?? []).map(norm);
-    for (const c of it.choices ?? []) if (words(c).length > 3) add("warn", "terse.choice", `choice too long: "${c}"`);
+    // Hyphen-preserving for dup detection — syllable splits like
+    // "el-ep-hant" vs "el-e-phant" are DISTINCT answers, not duplicates.
+    const choicesH = (it.choices ?? []).map((c: string) => (c || "").toLowerCase().replace(/[^a-z0-9-]/g, "").trim());
+    for (const c of it.choices ?? []) if (words(c).length > 5) add("warn", "terse.choice", `choice too long: "${c}"`);
     if ((it.choices ?? []).length < 3) add("fail", "form.choices", `only ${(it.choices ?? []).length} choices`);
-    if (new Set(choices).size !== choices.length) add("fail", "form.dupchoice", "duplicate choices");
+    if (new Set(choicesH).size !== choicesH.length) add("fail", "form.dupchoice", "duplicate choices");
     if (!choices.includes(norm(it.correct))) add("fail", "form.correct", `correct "${it.correct}" not in choices`);
     // NO GIVEAWAY — answer must not be visible on screen
     const onScreen = norm([it.prompt, it.anchor].filter(Boolean).join(" "));
@@ -66,7 +69,12 @@ function gradeFork(l: any): Finding[] {
   if (!ws) add("fail", "coach.encourage", "missing encouragement script");
   else {
     if (!/try again|again/i.test(ws)) add("warn", "coach.retry", "encouragement doesn't invite a retry");
-    if (it.correct && norm(ws).split(" ").includes(norm(it.correct))) add("fail", "coach.spoiler", "encouragement gives away the answer");
+    // Real spoiler = the answer PHRASE appears as a whole word in the
+    // encouragement. Ignore ≤2-char answers ("is", "it") — they're
+    // stopwords that recur incidentally, not giveaways.
+    const ca = norm(it.correct);
+    if (ca && ca.length > 2 && new RegExp(`\\b${ca.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`).test(norm(ws)))
+      add("fail", "coach.spoiler", "encouragement gives away the answer");
   }
 
   // question audio present
