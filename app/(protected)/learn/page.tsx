@@ -535,7 +535,7 @@ function LearnSession({
 
   /* ── Phase: Slideshow ── */
   if (phase === "slideshow") {
-    return <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} />;
+    return <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} outfitId={child?.equipped_items?.outfit ?? null} />;
   }
 
   /* ── Phase: Complete ── */

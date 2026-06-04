@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, X as XIcon } from "lucide-react";
 import { audioManager } from "@/lib/audio/audio-manager";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import { InteractiveExample } from "./InteractiveExample";
+import { InteractiveMatch } from "./InteractiveMatch";
+import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { Volume2, ChevronRight, Rocket, SkipForward, RotateCcw } from "lucide-react";
 import { Fredoka } from "next/font/google";
@@ -89,11 +92,38 @@ interface Step {
 
 interface TeachingSlide {
   slide: number;
-  type: "intro" | "teach" | "example" | "tip" | "practice-intro";
+  type: "intro" | "teach" | "example" | "tip" | "interactive" | "practice-intro";
   steps: Step[];
   heading: string;
   imagePrompt: string;
   imageFile: string;
+  /** The "fork in the road" — a scaffolded interactive beat that sits
+   *  between the tip and the practice MCQs. The kid taps the answer
+   *  (coach mode: right→affirmation, wrong→encouragement + hint + retry,
+   *  never scored). The question audio is the slide's single `step`; the
+   *  two feedback clips play on tap from the fields below. `anchor` is an
+   *  optional reinforcing pill (e.g. "tele = far"). */
+  interactive?: {
+    /** Interaction style — skill-matched. "tap" = pick one (comprehension);
+     *  "match" = pair items (roots/prefixes/vowel-teams). fill-blank/order/
+     *  sort reuse the existing practice renderers for other skills. */
+    kind?: "tap" | "match" | "fill-blank" | "order" | "sort";
+    anchor?: string;
+    prompt: string;
+    hint: string;
+    // tap
+    choices?: string[];
+    correct?: string;
+    // match (tap_to_pair)
+    leftItems?: string[];
+    rightItems?: string[];
+    correctPairs?: Record<string, string>;
+    // shared coaching audio
+    correctAudio?: string;
+    wrongAudio?: string;
+    correctScript?: string;
+    wrongScript?: string;
+  };
 }
 
 export interface SampleLesson {
@@ -126,6 +156,10 @@ interface LessonSlideshowProps {
    *      the mobile layout from a laptop.
    */
   chrome?: "centered" | "desktop-shell" | "mobile-shell";
+  /** The kid's equipped bunny outfit (from the shop) — worn by the coach
+   *  bunny on the interactive fork. Defaults to Classic when absent (e.g.
+   *  the owner audit page, which has no child context). */
+  outfitId?: string | null;
 }
 
 /* ─── Constants ──────────────────────────────────────── */
@@ -198,6 +232,16 @@ const SLIDE_THEMES: Record<string, {
     storyBg: "",
     contentBg: "",
   },
+  // The fork — emerald accent (the "you try it" moment, kin to the
+  // example's emerald but its own beat).
+  interactive: {
+    bg: "bg-gray-50 dark:bg-[#0f172a]",
+    text: "text-emerald-600 dark:text-emerald-400",
+    cardText: "text-emerald-700 dark:text-emerald-300",
+    qaBg: "",
+    storyBg: "",
+    contentBg: "",
+  },
 };
 
 // Shared reveal animation
@@ -208,7 +252,7 @@ const revealVariants = {
 
 /* ─── Component ──────────────────────────────────────── */
 
-export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered" }: LessonSlideshowProps) {
+export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered", outfitId = null }: LessonSlideshowProps) {
   const isMuted = useAudioStore((s) => s.isMuted);
 
   // Shell-mode viewport detection — 75% of usage is phone. When the
@@ -275,6 +319,14 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
   const [highlightedWord, setHighlightedWord] = useState<string | null>(null);
   const [activePhoneme, setActivePhoneme] = useState<{ stepIdx: number; letterIdx: number } | null>(null);
   const [swapTriggered, setSwapTriggered] = useState<Set<number>>(new Set());
+  // Interactive example ("we do") — gates Next until the kid solves it.
+  const [exampleSolved, setExampleSolved] = useState(false);
+  // Bunny coach emotion on the interactive fork: neutral while the kid
+  // decides, celebrate on a right answer, encourage on a wrong one.
+  const [forkReaction, setForkReaction] = useState<"idle" | "correct" | "incorrect">("idle");
+  // Bumped on every miss so the bunny re-shakes even on a repeat wrong
+  // (otherwise a 2nd miss looks like nothing happened — Filip 2026-06-03).
+  const [forkNudge, setForkNudge] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
@@ -562,6 +614,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     setSwapTriggered(new Set());
     setPartsVisible(new Set());
     setShowNext(false);
+    setExampleSolved(false);
+    setForkReaction("idle");
+    setForkNudge(0);
     setIsPlaying(false);
     scheduledFeedbackRef.current = new Set();
     timerRef.current = setTimeout(() => {
@@ -598,6 +653,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     setSwapTriggered(new Set());
     setPartsVisible(new Set());
     setShowNext(false);
+    setExampleSolved(false);
+    setForkReaction("idle");
+    setForkNudge(0);
     setIsPlaying(false);
     scheduledFeedbackRef.current = new Set();
     timerRef.current = setTimeout(() => {
@@ -1643,6 +1701,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     // answers by the end. Mobile uses ExampleWorksheetGridMobile
     // (compact rows, violet palette, no black text); desktop uses
     // the wide ExampleWorksheetGrid.
+    // Interactive lives on its OWN slide (NOT the example — Filip 2026-06-02:
+    // "don't rearrange that slide, interactive questions elsewhere").
+    const hasInteractive = !!slide?.interactive;
     const useExampleWorksheet = isExample && qaPairSteps.length >= 2;
     // One focal point per slide — image suppressed when a chart owns
     // the visual. Example slides keep the image (worksheet goes on
@@ -1672,9 +1733,51 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
       : isPracticeIntro
         ? "Start practice →"
         : "Next →";
-    const sharedNextDisabled = !showNext && !devMode;
+    // Interactive example gates Next until the kid solves it (devMode skips).
+    const sharedNextDisabled = hasInteractive
+      ? !exampleSolved && !devMode
+      : !showNext && !devMode;
     const sharedOnNext = (showNext || devMode) ? handleNext : () => {};
-    const sharedLeftSlot = isSynthetic ? <CelebrationLeftPanel /> : undefined;
+
+    // Shared coach handlers for the fork (tap + match both use them). The
+    // bunny mirrors the kid's answer; affirmation plays then unlocks Next;
+    // first miss gets the spoken encouragement, repeats just a soft buzz.
+    const handleForkCorrect = () => {
+      setForkReaction("correct");
+      const f = slide?.interactive?.correctAudio;
+      if (f && audioManager && !isMuted) {
+        audioManager.stop();
+        audioManager.play(`${SUPABASE_STORAGE}/${f}`).then(() => setExampleSolved(true)).catch(() => setExampleSolved(true));
+      } else {
+        setExampleSolved(true);
+      }
+    };
+    const handleForkWrong = (isFirst: boolean) => {
+      setForkReaction("incorrect");
+      setForkNudge((n) => n + 1); // re-trigger the shake animation every miss
+      // Drift back to neutral so the bunny isn't stuck frowning mid-retry.
+      window.setTimeout(() => setForkReaction((r) => (r === "incorrect" ? "idle" : r)), 3500);
+      if (!audioManager || isMuted) return;
+      audioManager.stop();
+      const f = slide?.interactive?.wrongAudio;
+      if (isFirst && f) audioManager.play(`${SUPABASE_STORAGE}/${f}`).catch(() => {});
+      else audioManager.playIncorrectBuzz?.();
+    };
+
+    // The fork shows the bunny coach in the left panel instead of an image
+    // (a scene image would risk spoiling the answer).
+    const bunnyCoach = (
+      <div className="flex h-full w-full items-center justify-center p-6">
+        {forkReaction === "idle"
+          ? <Bunny outfitId={outfitId} className="w-44 h-44 lg:w-56 lg:h-56" />
+          : <BunnyReaction key={`${forkReaction}-${forkNudge}`} outfitId={outfitId} state={forkReaction} className="w-44 h-44 lg:w-56 lg:h-56" />}
+      </div>
+    );
+    const sharedLeftSlot = isSynthetic
+      ? <CelebrationLeftPanel />
+      : slide?.type === "interactive"
+        ? bunnyCoach
+        : undefined;
     const nonSyntheticContent = (
       <div className="flex flex-1 flex-col items-center justify-center text-center w-full gap-5 lg:gap-8">
         {slide?.heading && (
@@ -2031,6 +2134,32 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 pairs={qaPairSteps}
                 partsVisible={partsVisible}
                 playingStep={playingStep}
+              />
+            )
+          )}
+          {hasInteractive && slide?.interactive && (
+            slide.interactive.kind === "match" ? (
+              <InteractiveMatch
+                key={`interactive-${currentSlide}`}
+                anchor={slide.interactive.anchor}
+                prompt={slide.interactive.prompt}
+                leftItems={slide.interactive.leftItems ?? []}
+                rightItems={slide.interactive.rightItems ?? []}
+                correctPairs={slide.interactive.correctPairs ?? {}}
+                hint={slide.interactive.hint}
+                onCorrect={handleForkCorrect}
+                onWrong={handleForkWrong}
+              />
+            ) : (
+              <InteractiveExample
+                key={`interactive-${currentSlide}`}
+                anchor={slide.interactive.anchor}
+                prompt={slide.interactive.prompt}
+                choices={slide.interactive.choices ?? []}
+                correct={slide.interactive.correct ?? ""}
+                hint={slide.interactive.hint}
+                onCorrect={handleForkCorrect}
+                onWrong={handleForkWrong}
               />
             )
           )}
