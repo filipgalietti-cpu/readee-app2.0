@@ -69,9 +69,16 @@ export function InteractiveMatch({
         </span>
       )}
 
+      {/* Render the instruction in our themed style — TapToPair's own h2 is
+          black (text-zinc-900) which breaks the no-black-text rule + crowds
+          the phone, so we pass it an empty prompt below. */}
+      <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]">
+        {prompt}
+      </p>
+
       <div className="w-full max-w-md">
         <TapToPair
-          prompt={prompt}
+          prompt=""
           leftItems={leftItems}
           rightItems={displayRight}
           correctPairs={correctPairs}

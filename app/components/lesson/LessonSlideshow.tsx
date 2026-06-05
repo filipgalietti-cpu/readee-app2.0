@@ -1766,11 +1766,16 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
 
     // The fork shows the bunny coach in the left panel instead of an image
     // (a scene image would risk spoiling the answer).
+    // .bn-stage is width/height:100%, so the bunny needs a parent with an
+    // EXPLICIT size — the mobile image zone gives leftSlot no height, which
+    // collapsed the bunny to 0. The inner fixed-size box fixes both shells.
     const bunnyCoach = (
-      <div className="flex h-full w-full items-center justify-center p-6">
-        {forkReaction === "idle"
-          ? <Bunny outfitId={outfitId} className="w-44 h-44 lg:w-56 lg:h-56" />
-          : <BunnyReaction key={`${forkReaction}-${forkNudge}`} outfitId={outfitId} state={forkReaction} className="w-44 h-44 lg:w-56 lg:h-56" />}
+      <div className="flex w-full items-center justify-center py-2 lg:h-full lg:py-0">
+        <div className="h-32 w-32 sm:h-40 sm:w-40 lg:h-56 lg:w-56">
+          {forkReaction === "idle"
+            ? <Bunny outfitId={outfitId} />
+            : <BunnyReaction key={`${forkReaction}-${forkNudge}`} outfitId={outfitId} state={forkReaction} />}
+        </div>
       </div>
     );
     const sharedLeftSlot = isSynthetic
