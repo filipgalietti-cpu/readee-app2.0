@@ -1642,22 +1642,22 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.3/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this little story. Mia went to the beach with her family. They built a big sandcastle near the ocean. Where does the story happen?",
-            "audioRegenAt": "2026-06-03T21:07:19.870Z"
+            "ttsScript": "Your turn, detective! Listen to this little story. Mia went to the beach with her family. They built a big sandcastle in the sand. Where does the story happen?",
+            "audioRegenAt": "2026-06-05T02:47:31.286Z"
           }
         ],
         "interactive": {
           "kind": "tap",
           "prompt": "Where does it happen?",
-          "hint": "Remember, the setting tells us where the story takes place.",
+          "hint": "The setting tells us where they were.",
           "correctAudio": "audio/lessons/RL.K.3/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.K.3/interactive-wrong.mp3",
-          "correctScript": "Exactly! The beach is the setting, which tells us where the story takes place.",
-          "wrongScript": "Not quite. Think about the place where Mia and her family were. Try again!",
+          "correctScript": "Exactly! The beach is the setting. It tells us where the story takes place!",
+          "wrongScript": "Not quite. Think about the place where Mia and her family played. Try again!",
           "choices": [
             "Beach",
-            "Ocean",
-            "Home"
+            "Park",
+            "Forest"
           ],
           "correct": "Beach"
         }
@@ -2089,12 +2089,8 @@
             "interaction": "Heading fades in. Storybooks + Poems appear when TTS says them.",
             "displayParts": [
               {
-                "text": "Did you know there are different kinds of books?",
+                "text": "Kinds of books",
                 "delay": 0
-              },
-              {
-                "text": " Some tell stories and some have poems!",
-                "delay": 3960
               }
             ]
           },
@@ -2257,7 +2253,7 @@
               "word": "storybook",
               "delay": 6010
             },
-            "displayText": "Once upon a time, a frog found a crown.",
+            "displayText": "Storybook",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -2270,7 +2266,7 @@
               "word": "poem",
               "delay": 3970
             },
-            "displayText": "Roses are red, violets are blue.",
+            "displayText": "Poem",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -3715,7 +3711,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "The sun is hot. Plants need the sun to grow.",
+            "displayText": "Sun → plants grow",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -3772,7 +3768,7 @@
               "word": "butterflies",
               "delay": 3010
             },
-            "displayText": "Then caterpillars turn into butterflies!",
+            "displayText": "Then: butterflies",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -3818,7 +3814,7 @@
             "audioRegenAt": "2026-05-14T14:55:58.002Z",
             "displayParts": [
               {
-                "text": "There are a few special words that tell us how ideas connect.Each one tells you something different!",
+                "text": "Special connecting words",
                 "delay": 0
               }
             ],
@@ -3834,7 +3830,7 @@
             "audioRegenAt": "2026-05-14T14:56:02.548Z",
             "displayParts": [
               {
-                "text": "because.Tells you WHY!",
+                "text": "because → WHY",
                 "delay": 0
               }
             ],
@@ -3864,7 +3860,7 @@
             "audioRegenAt": "2026-05-14T14:56:06.939Z",
             "displayParts": [
               {
-                "text": "so.Tells you WHAT HAPPENED!",
+                "text": "so → WHAT HAPPENED",
                 "delay": 0
               }
             ],
@@ -3890,7 +3886,7 @@
             "audioRegenAt": "2026-05-14T14:56:14.523Z",
             "displayParts": [
               {
-                "text": "then.Tells you WHAT COMES NEXT!",
+                "text": "then → WHAT NEXT",
                 "delay": 0
               }
             ],
@@ -3916,7 +3912,7 @@
             "audioRegenAt": "2026-05-14T14:56:18.353Z",
             "displayParts": [
               {
-                "text": "You're a connection master!",
+                "text": "Connection master!",
                 "delay": 0
               }
             ],
@@ -4370,7 +4366,7 @@
             "audioRegenAt": "2026-05-14T14:52:19.713Z",
             "displayParts": [
               {
-                "text": "The front cover is the very first thing you see. It has the title and usually a picture!",
+                "text": "Front cover: first thing",
                 "delay": 0
               }
             ],
@@ -4387,7 +4383,7 @@
             "audioRegenAt": "2026-05-14T14:52:26.556Z",
             "displayParts": [
               {
-                "text": "The title tells you what the book is about. It's like the book's name!",
+                "text": "Title: book's name",
                 "delay": 0
               }
             ],
@@ -4421,7 +4417,7 @@
             "audioRegenAt": "2026-05-14T14:52:33.544Z",
             "displayParts": [
               {
-                "text": "The back cover is on the other side. It might tell you a little bit about the book.",
+                "text": "Back cover: other side",
                 "delay": 0
               }
             ],
@@ -4450,7 +4446,7 @@
             "audioRegenAt": "2026-05-14T14:52:40.757Z",
             "displayParts": [
               {
-                "text": "The title page is inside the book. It shows the title, author, and illustrator!",
+                "text": "Title page: inside",
                 "delay": 0
               }
             ],
@@ -4746,7 +4742,7 @@
             "audioRegenAt": "2026-05-14T14:48:55.523Z",
             "displayParts": [
               {
-                "text": "Have you ever wondered who makes the fact books you read? Let's find out!",
+                "text": "Who makes books?",
                 "delay": 0
               }
             ],
@@ -4762,7 +4758,7 @@
             "audioRegenAt": "2026-05-14T14:49:01.934Z",
             "displayParts": [
               {
-                "text": "Every fact book has two important people — the author and the illustrator!",
+                "text": "Author and illustrator",
                 "delay": 0
               }
             ],
@@ -4784,7 +4780,7 @@
             "audioRegenAt": "2026-05-14T14:49:07.572Z",
             "displayParts": [
               {
-                "text": "The author writes the WORDS. They chose all the facts for you!",
+                "text": "Author: words",
                 "delay": 0
               }
             ],
@@ -4814,7 +4810,7 @@
             "audioRegenAt": "2026-05-14T14:49:13.437Z",
             "displayParts": [
               {
-                "text": "The illustrator draws the PICTURES. They show you what the words say!",
+                "text": "Illustrator: pictures",
                 "delay": 0
               }
             ],
@@ -4840,7 +4836,7 @@
             "audioRegenAt": "2026-05-14T14:49:18.505Z",
             "displayParts": [
               {
-                "text": "Together, they teach you everything in the book!",
+                "text": "Together: the book",
                 "delay": 0
               }
             ],
@@ -5037,7 +5033,7 @@
             "audioRegenAt": "2026-05-14T14:50:36.930Z",
             "displayParts": [
               {
-                "text": "When you read a fact book,ask yourself three questions!",
+                "text": "Ask three questions",
                 "delay": 0
               }
             ],
@@ -5053,7 +5049,7 @@
             "audioRegenAt": "2026-05-14T14:50:42.606Z",
             "displayParts": [
               {
-                "text": "First ask: Who wrote it?That tells you the AUTHOR!",
+                "text": "Who wrote it? → AUTHOR",
                 "delay": 0
               }
             ],
@@ -5084,7 +5080,7 @@
             "audioRegenAt": "2026-05-14T14:50:48.848Z",
             "displayParts": [
               {
-                "text": "Next ask: Who drew the pictures?That tells you the ILLUSTRATOR!",
+                "text": "Who drew it? → ILLUSTRATOR",
                 "delay": 0
               }
             ],
@@ -5111,7 +5107,7 @@
             "audioRegenAt": "2026-05-14T14:50:54.669Z",
             "displayParts": [
               {
-                "text": "Last ask: What are they teaching me?That's the MESSAGE!",
+                "text": "What teaching? → MESSAGE",
                 "delay": 0
               }
             ],
@@ -5138,7 +5134,7 @@
             "audioRegenAt": "2026-05-14T14:50:59.820Z",
             "displayParts": [
               {
-                "text": "Those three questionshelp you understandany fact book!",
+                "text": "Three questions help",
                 "delay": 0
               }
             ],
@@ -5421,7 +5417,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "This picture shows how a frog grows. First an egg, then a tadpole, then a froglet, then a frog!",
+            "displayText": "egg → tadpole → froglet → frog",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -5453,16 +5449,8 @@
             "audioRegenAt": "2026-05-14T14:47:45.295Z",
             "displayParts": [
               {
-                "text": "When you read a fact book, ask yourself ",
+                "text": "Ask two questions",
                 "delay": 0
-              },
-              {
-                "text": "two questions",
-                "delay": 3420
-              },
-              {
-                "text": " about every picture!",
-                "delay": 4900
               }
             ],
             "highlightWord": {
@@ -5477,7 +5465,7 @@
             "audioRegenAt": "2026-05-14T14:47:51.881Z",
             "displayParts": [
               {
-                "text": "First ask: What do I see? That shows you what things LOOK like!",
+                "text": "What do I see? → LOOK",
                 "delay": 0
               }
             ],
@@ -5508,7 +5496,7 @@
             "audioRegenAt": "2026-05-14T14:47:58.048Z",
             "displayParts": [
               {
-                "text": "Then ask: What is it teaching me? That shows you what the words MEAN!",
+                "text": "What teaching? → MEAN",
                 "delay": 0
               }
             ],
@@ -5535,7 +5523,7 @@
             "audioRegenAt": "2026-05-14T14:48:03.507Z",
             "displayParts": [
               {
-                "text": "Those two questions help you learn from every picture!",
+                "text": "Two questions help",
                 "delay": 0
               }
             ],
@@ -7286,18 +7274,18 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.1c/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen carefully to this sentence: The cat ran fast. How many words did you hear in 'The cat ran fast'?",
-            "audioRegenAt": "2026-06-03T21:11:51.685Z"
+            "ttsScript": "Your turn! Look at the sentence. Count the spaces to find each word. How many words do you see?",
+            "audioRegenAt": "2026-06-05T02:48:28.157Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "How many words?",
-          "hint": "Remember to listen for the spaces between words.",
+          "prompt": "The cat ran fast.",
+          "hint": "Count the spaces, then the words.",
           "correctAudio": "audio/lessons/RF.K.1c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.K.1c/interactive-wrong.mp3",
-          "correctScript": "Exactly! Four. Spaces help us see that there are four words in that sentence!",
-          "wrongScript": "Good try! Listen again to the sentence and think about where each word starts and stops. Try again!",
+          "correctScript": "Exactly! Four words! The three spaces showed you where each word is!",
+          "wrongScript": "Good try! Find each space, then count the words in between. Try again!",
           "choices": [
             "Three",
             "Four",
@@ -11308,16 +11296,8 @@
             "audioRegenAt": "2026-05-12T02:03:45.437Z",
             "displayParts": [
               {
-                "text": "Did you know that words have different jobs?",
+                "text": "Words have jobs",
                 "delay": 0
-              },
-              {
-                "text": "Some words name things",
-                "delay": 4020
-              },
-              {
-                "text": "— like 'cat' or 'ball.'",
-                "delay": 5920
               }
             ],
             "highlightWord": {
@@ -11335,7 +11315,7 @@
             "displayDelay": 1500,
             "displayParts": [
               {
-                "text": "These are called nouns!A noun names a person, place, or thing.",
+                "text": "Nouns name things",
                 "delay": 0
               }
             ],
@@ -11368,7 +11348,7 @@
             "displayDelay": 1500,
             "displayParts": [
               {
-                "text": "Other words show action — like 'run,''jump,'or 'eat.' These are verbs!",
+                "text": "Verbs show action",
                 "delay": 0
               }
             ],
@@ -11395,7 +11375,7 @@
             "audioRegenAt": "2026-05-12T02:04:06.866Z",
             "displayParts": [
               {
-                "text": "Nouns and verbs work together to make sentences!Like: The cat runs.",
+                "text": "The cat runs",
                 "delay": 0
               }
             ],
@@ -12294,7 +12274,7 @@
             "audioRegenAt": "2026-05-12T01:58:31.487Z",
             "displayParts": [
               {
-                "text": "Opposites are words that mean the complete reverse. Big and small. Hot and cold. Up and down!",
+                "text": "Opposites: big/small",
                 "delay": 0
               }
             ],
@@ -12317,7 +12297,7 @@
             "audioRegenAt": "2026-05-12T01:58:35.928Z",
             "displayParts": [
               {
-                "text": "They're like two sides of a coin!",
+                "text": "Two sides of a coin",
                 "delay": 0
               }
             ],
@@ -12338,12 +12318,8 @@
             "audioRegenAt": "2026-05-12T01:58:43.547Z",
             "displayParts": [
               {
-                "text": "Words can also belong to groups.",
+                "text": "Groups: all animals",
                 "delay": 0
-              },
-              {
-                "text": " 'Dog,' 'cat,' and 'fish' are all animals!",
-                "delay": 2500
               }
             ],
             "highlightPills": [
@@ -12367,12 +12343,8 @@
             "displayDelay": 1500,
             "displayParts": [
               {
-                "text": "And some words mean almost the same thing!",
+                "text": "Big = large",
                 "delay": 0
-              },
-              {
-                "text": " 'Big' and 'large' are alike!",
-                "delay": 2500
               }
             ],
             "highlightPills": [
@@ -12708,7 +12680,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "That building is enormous!",
+            "displayText": "enormous!",
             "displayStyle": "passage"
           },
           {
@@ -12778,7 +12750,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "I was delighted to see my friend!",
+            "displayText": "delighted!",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -14347,24 +14319,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.4/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen carefully to this story. Lily's puppy ran away! She looked everywhere, and big tears rolled down her cheeks. How did Lily feel?",
-            "audioRegenAt": "2026-06-03T21:16:02.760Z"
+            "ttsScript": "Your turn! Read this sentence. Big tears rolled down her cheeks. Which word shows us she feels sad?",
+            "audioRegenAt": "2026-06-05T02:49:30.789Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "How did Lily feel?",
-          "hint": "Think about what happened to Lily's puppy.",
+          "prompt": "Which word shows feeling?",
+          "hint": "Which word makes you feel it?",
           "correctAudio": "audio/lessons/RL.1.4/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.1.4/interactive-wrong.mp3",
-          "correctScript": "Exactly! Lily felt sad because her puppy ran away. Feeling words help us understand what characters are experiencing!",
-          "wrongScript": "Not quite! Listen to the story again and think about what happened to Lily. Try again!",
+          "correctScript": "Yes! Tears! That one word makes us feel her sadness inside!",
+          "wrongScript": "So close! Find the word that lets you feel her feeling. Try again!",
           "choices": [
-            "happy",
-            "sad",
-            "scared"
+            "Tears",
+            "Rolled",
+            "Cheeks"
           ],
-          "correct": "sad"
+          "correct": "Tears"
         }
       },
       {
@@ -15586,22 +15558,22 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.9/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to these two tiny stories. Story one: Lily the bird made a cozy nest in a tall tree. Story two: Sam the squirrel also made a cozy nest in a tall tree. What is the same about these two stories?",
-            "audioRegenAt": "2026-06-03T21:16:59.027Z"
+            "ttsScript": "Your turn, detective! Listen to two tiny stories. Story one: Lily the bird made a cozy nest. Story two: Sam the squirrel made a cozy nest too. What is the same about these two stories?",
+            "audioRegenAt": "2026-06-05T02:50:34.662Z"
           }
         ],
         "interactive": {
           "kind": "tap",
           "prompt": "What is the same?",
-          "hint": "Think about what both stories tell you about the characters' actions.",
+          "hint": "What do both Lily and Sam DO in their story?",
           "correctAudio": "audio/lessons/RL.1.9/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.1.9/interactive-wrong.mp3",
-          "correctScript": "Exactly! Both stories are about animals that build nests. Great job comparing!",
-          "wrongScript": "Good try! Remember, comparing means finding what is alike in both stories. Listen again and think about what both Lily and Sam *do*. Try again!",
+          "correctScript": "Exactly! In both stories the animal builds a nest. You found what is alike. Great comparing!",
+          "wrongScript": "Good try! Comparing means finding what is alike in BOTH stories. Listen again to what Lily and Sam each do. Try again!",
           "choices": [
             "Build nests",
-            "Live in trees",
-            "Are small"
+            "Both are afraid",
+            "Both fly"
           ],
           "correct": "Build nests"
         }
@@ -16109,7 +16081,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Apples can be red, green, or yellow. They grow on trees. Apples are a healthy snack.",
+            "displayText": "All about apples",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -16175,7 +16147,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Firefighters wear special gear. They drive fire trucks. They put out fires and help people.",
+            "displayText": "All about firefighters",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -16379,7 +16351,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Happens because of it",
+            "displayText": "One causes another",
             "displayDelay": 0
           },
           {
@@ -16412,7 +16384,7 @@
             "audioFile": "audio/lessons/RI.1.3/S2a.mp3",
             "ttsScript": "Listen. It rained all day. The next morning, puddles were everywhere.",
             "audioRegenAt": null,
-            "displayText": "It rained all day. The next morning, puddles were everywhere.",
+            "displayText": "Rain, then puddles",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -16466,7 +16438,7 @@
               "word": "Seeds",
               "delay": 0
             },
-            "displayText": "Seeds need water and sunlight to grow.",
+            "displayText": "Seeds need water + sun",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -16479,7 +16451,7 @@
               "word": "waters",
               "delay": 760
             },
-            "displayText": "A farmer waters the seeds every day.",
+            "displayText": "Farmer waters daily",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -16492,7 +16464,7 @@
               "word": "plants",
               "delay": 1780
             },
-            "displayText": "Soon, small plants appear!",
+            "displayText": "Plants appear!",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -17542,21 +17514,22 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.6/interactive-q.mp3",
-            "ttsScript": "Here's a book about a frog. You want to know the frog's exact color. Which clue shows you that best?"
+            "ttsScript": "Here is a book about a frog. You want to know the frog's exact color. Which clue shows you that best?",
+            "audioRegenAt": "2026-06-05T02:51:30.727Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which shows the exact color?",
-          "hint": "One clue lets you SEE the color right away.",
+          "prompt": "Which shows the color?",
+          "hint": "Which clue lets you SEE the color, not read it?",
           "correctAudio": "audio/lessons/RI.1.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.1.6/interactive-wrong.mp3",
-          "correctScript": "Yes! A picture lets you SEE the exact color right away!",
-          "wrongScript": "Almost! Think about which clue you can look at and SEE a color. Try again!",
+          "correctScript": "Yes! The picture lets you SEE the exact color right away. Words tell, but pictures show!",
+          "wrongScript": "Almost! Words tell us facts, but only one clue lets you SEE a color with your eyes. Try again!",
           "choices": [
             "The picture",
-            "The title",
-            "The page number"
+            "The words",
+            "The heading"
           ],
           "correct": "The picture"
         }
@@ -19699,17 +19672,18 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.2c/interactive-q.mp3",
-            "ttsScript": "Your turn! Stretch this word slowly: pig. Which sound comes at the very end of pig?"
+            "ttsScript": "Your turn! Stretch this word slowly: pig. Which sound comes at the very end of pig?",
+            "audioRegenAt": "2026-06-05T02:52:30.775Z"
           }
         ],
         "interactive": {
           "kind": "tap",
           "prompt": "Last sound in pig?",
-          "hint": "Stretch the word slowly. What sound ends it?",
+          "hint": "Stretch pig slowly: p... i... g. What sound ends it?",
           "correctAudio": "audio/lessons/RF.1.2c/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.1.2c/interactive-wrong.mp3",
-          "correctScript": "Yes! Pig ends with the g sound, so that's the last sound!",
-          "wrongScript": "Almost! Say pig nice and slow and listen for the very last sound. Try again!",
+          "correctScript": "Yes! When you stretch pig, the very last sound is /g/, so that's the last sound!",
+          "wrongScript": "Almost! Say pig nice and slow: p... i... g. Listen for the very last sound. Try again!",
           "choices": [
             "g sound",
             "p sound",
@@ -22373,31 +22347,32 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.1.5/interactive-q.mp3",
-            "ttsScript": "Now you try! Some words mean almost the same thing. Match each word to its same-family partner."
+            "ttsScript": "Now you try! Opposites mean very different things. Match each word to its opposite.",
+            "audioRegenAt": "2026-06-05T02:53:30.847Z"
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match the close-meaning words.",
-          "hint": "Pick words that mean almost the same thing.",
+          "prompt": "Match each opposite",
+          "hint": "Each word goes with the word that means the very opposite.",
           "correctAudio": "audio/lessons/L.1.5/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.1.5/interactive-wrong.mp3",
-          "correctScript": "Yes! You found the words that mean almost the same thing!",
-          "wrongScript": "Good try! Think about which words feel close in meaning. Try again!",
+          "correctScript": "You matched them all! Big goes with small, fast goes with slow, and day goes with night. They mean very different things!",
+          "wrongScript": "Good try! Look for the word that means the very opposite. Try again!",
           "leftItems": [
-            "tiny",
-            "quick",
-            "happy"
+            "big",
+            "fast",
+            "day"
           ],
           "rightItems": [
             "small",
-            "fast",
-            "glad"
+            "slow",
+            "night"
           ],
           "correctPairs": {
-            "tiny": "small",
-            "quick": "fast",
-            "happy": "glad"
+            "big": "small",
+            "fast": "slow",
+            "day": "night"
           }
         }
       },
@@ -24736,7 +24711,7 @@
                 "delay": 1500
               }
             ],
-            "displayText": "Sam broke his favorite toy. He was heartbroken.",
+            "displayText": "Sam: heartbroken",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -24773,7 +24748,7 @@
                 "delay": 1500
               }
             ],
-            "displayText": "Then his friend fixed it. He was overjoyed!",
+            "displayText": "Fixed → overjoyed",
             "displayStyle": "passage",
             "displayDelay": 0
           }
@@ -24819,7 +24794,7 @@
                 "delay": 300
               }
             ],
-            "displayText": "Maya had a huge pile of homework. She did not give up.",
+            "displayText": "Maya didn't give up",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -24903,24 +24878,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.2.3/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this story. Leo couldn't find his favorite book anywhere. He looked under his bed, in his toy box, and on his shelf. Then, he finally found it hiding under his pillow! How did Leo feel when he found his book?",
-            "audioRegenAt": "2026-06-03T21:23:13.599Z"
+            "ttsScript": "Your turn, detective! Listen. Maya baked a cake for her mom. When she dropped it on the floor, she crossed her arms and stomped away. How did Maya react?",
+            "audioRegenAt": "2026-06-05T02:54:33.180Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "How did Leo feel?",
-          "hint": "Think about what happened to Leo in the story.",
+          "prompt": "How did Maya react?",
+          "hint": "What did Maya do when she dropped the cake?",
           "correctAudio": "audio/lessons/RL.2.3/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.2.3/interactive-wrong.mp3",
-          "correctScript": "Exactly! Happy shows how Leo reacted when he found his book!",
-          "wrongScript": "Not quite! Remember to think about what happened in the story. How would you feel if you found something you lost? Try again!",
+          "correctScript": "Exactly! Stomping away shows Maya reacted with frustration!",
+          "wrongScript": "Not quite! Listen again to what Maya did after she dropped the cake. Try again!",
           "choices": [
-            "Happy",
-            "Sad",
-            "Angry"
+            "Frustrated",
+            "Excited",
+            "Proud"
           ],
-          "correct": "Happy"
+          "correct": "Frustrated"
         }
       },
       {
@@ -26378,16 +26353,8 @@
             "audioRegenAt": "2026-05-11T23:56:06.997Z",
             "displayParts": [
               {
-                "text": "What is the same?",
+                "text": "Same: characters, problem",
                 "delay": 0
-              },
-              {
-                "text": "The main characters.",
-                "delay": 2860
-              },
-              {
-                "text": "The big problem.",
-                "delay": 4820
               }
             ],
             "highlightWord": {
@@ -26412,7 +26379,7 @@
             "audioRegenAt": "2026-05-11T23:56:13.277Z",
             "displayParts": [
               {
-                "text": "What is different?The setting.The small parts.The ending sometimes.",
+                "text": "Different: setting, details, ending",
                 "delay": 0
               }
             ],
@@ -26434,12 +26401,8 @@
             "audioRegenAt": "2026-05-11T23:56:17.793Z",
             "displayParts": [
               {
-                "text": "Both ways can be fun",
+                "text": "Both can be fun",
                 "delay": 0
-              },
-              {
-                "text": "in their own way!",
-                "delay": 1820
               }
             ],
             "highlightWord": {
@@ -27068,7 +27031,7 @@
               "word": "pups",
               "delay": 1940
             },
-            "displayText": "Seal pups are born on ice. Their moms teach them to swim.",
+            "displayText": "Pups born on ice",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -27089,12 +27052,8 @@
             ],
             "displayParts": [
               {
-                "text": "Who?",
+                "text": "Who? → Seal pups!",
                 "delay": 0
-              },
-              {
-                "text": "Seal pups! Where?",
-                "delay": 2300
               }
             ]
           },
@@ -27115,12 +27074,8 @@
             ],
             "displayParts": [
               {
-                "text": "Who teaches?",
+                "text": "Who teaches? → Moms",
                 "delay": 0
-              },
-              {
-                "text": "Their moms. Why?",
-                "delay": 1860
               }
             ]
           }
@@ -27733,7 +27688,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "First, a butterfly lays an egg.",
+            "displayText": "First: egg",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -27754,16 +27709,8 @@
             ],
             "displayParts": [
               {
-                "text": "Next",
+                "text": "Next: caterpillar hatches",
                 "delay": 0
-              },
-              {
-                "text": "A ca",
-                "delay": 1260
-              },
-              {
-                "text": "Terpillar hatches",
-                "delay": 1800
               }
             ]
           },
@@ -27782,7 +27729,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Then it forms a cocoon.",
+            "displayText": "Then: cocoon",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -27801,7 +27748,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Finally, a butterfly comes out!",
+            "displayText": "Finally: butterfly",
             "displayStyle": "passage",
             "displayDelay": 0
           }
@@ -27843,16 +27790,8 @@
             ],
             "displayParts": [
               {
-                "text": "Like first",
+                "text": "First / Next / Then",
                 "delay": 0
-              },
-              {
-                "text": "Next",
-                "delay": 3100
-              },
-              {
-                "text": "Then",
-                "delay": 4120
               }
             ]
           },
@@ -28076,7 +28015,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.2.4/example-b.mp3",
             "ttsScript": "The famished puppy ate every last bite of food.",
-            "displayText": "The famished puppy ate every last bite.",
+            "displayText": "Famished puppy ate everything",
             "audioRegenAt": "2026-06-04T02:54:51.431Z"
           },
           {
@@ -28085,12 +28024,8 @@
             "ttsScript": "What clue do the other words give? The puppy ate every last bite.",
             "displayParts": [
               {
-                "text": "What's the clue?",
+                "text": "Clue: ate every bite",
                 "delay": 0
-              },
-              {
-                "text": "Ate every last bite.",
-                "delay": 2200
               }
             ],
             "highlightWord": {
@@ -28164,7 +28099,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "The thirsty camel gulped a lot of water.",
+            "displayText": "Thirsty camel gulped water",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -29170,32 +29105,32 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.2.7/interactive-q.mp3",
-            "ttsScript": "Your turn! We learned about different kinds of pictures. Can you match each picture type to what it helps explain?",
-            "audioRegenAt": "2026-06-03T21:26:21.217Z"
+            "ttsScript": "Now you try! A book needs the best picture for each fact. Match each fact to the picture type that shows it best.",
+            "audioRegenAt": "2026-06-05T03:15:12.997Z"
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match each picture type",
-          "hint": "Think about what each type of picture helps you understand.",
+          "prompt": "Match the fact to its picture",
+          "hint": "Which picture shows that kind of fact best?",
           "correctAudio": "audio/lessons/RI.2.7/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.2.7/interactive-wrong.mp3",
-          "correctScript": "Exactly! Diagrams show parts, maps show where, and photos show real things. Great job!",
-          "wrongScript": "Not quite. Remember what each type of picture helps us understand. Try again!",
+          "correctScript": "You matched them all! A photo shows what a frog looks like, a map shows where the frogs live, and a diagram shows a frog's body parts!",
+          "wrongScript": "Good try! Think about which picture fits each fact best. Try again!",
           "leftItems": [
-            "Diagram",
-            "Map",
-            "Photo"
+            "Frog's real look",
+            "Where frogs live",
+            "Frog's body parts"
           ],
           "rightItems": [
-            "shows parts",
-            "shows where",
-            "shows real"
+            "Photo",
+            "Map",
+            "Diagram"
           ],
           "correctPairs": {
-            "Diagram": "shows parts",
-            "Map": "shows where",
-            "Photo": "shows real"
+            "Frog's real look": "Photo",
+            "Where frogs live": "Map",
+            "Frog's body parts": "Diagram"
           }
         }
       },
@@ -29717,12 +29652,8 @@
             "audioRegenAt": "2026-05-11T23:39:22.019Z",
             "displayParts": [
               {
-                "text": "Here is a ",
+                "text": "Helpful trick",
                 "delay": 0
-              },
-              {
-                "text": "helpful trick.",
-                "delay": 1060
               }
             ],
             "highlightWord": {
@@ -29737,7 +29668,7 @@
             "audioRegenAt": "2026-05-11T23:39:28.972Z",
             "displayParts": [
               {
-                "text": "Make a two-column chart. Same on one, different on the other.",
+                "text": "Two-column chart",
                 "delay": 0
               }
             ],
@@ -29768,16 +29699,8 @@
             "audioRegenAt": "2026-05-11T23:39:33.757Z",
             "displayParts": [
               {
-                "text": "Now you are ready to ",
+                "text": "Ready to compare",
                 "delay": 0
-              },
-              {
-                "text": "compare ",
-                "delay": 1640
-              },
-              {
-                "text": "two fact books!",
-                "delay": 2100
               }
             ],
             "highlightWord": {
@@ -31885,32 +31808,32 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3d/interactive-q.mp3",
-            "ttsScript": "Now you try! Match each word add-on to what it means.",
-            "audioRegenAt": "2026-06-03T21:35:12.806Z"
+            "ttsScript": "You've got add-on power! Peel each word apart and match it to what it means.",
+            "audioRegenAt": "2026-06-05T03:16:09.953Z"
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match add-on to meaning.",
-          "hint": "Remember what each add-on means.",
+          "prompt": "Match the word to its meaning",
+          "hint": "Peel off the add-on, then read it.",
           "correctAudio": "audio/lessons/RF.2.3d/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.2.3d/interactive-wrong.mp3",
-          "correctScript": "Yes! UN means not, RE means again, and ER means one who does!",
-          "wrongScript": "Not quite! Look closely at what each add-on means. Try again!",
+          "correctScript": "You peeled them all! Redo means do again, jumper means one who jumps, and slowly means in a slow way!",
+          "wrongScript": "Almost! Peel off each add-on and think what it means. Try again!",
           "leftItems": [
-            "UN",
-            "RE",
-            "ER"
+            "redo",
+            "jumper",
+            "slowly"
           ],
           "rightItems": [
-            "not",
-            "again",
-            "one who does"
+            "do again",
+            "one who jumps",
+            "in a slow way"
           ],
           "correctPairs": {
-            "UN": "not",
-            "RE": "again",
-            "ER": "one who does"
+            "redo": "do again",
+            "jumper": "one who jumps",
+            "slowly": "in a slow way"
           }
         }
       },
@@ -32540,32 +32463,32 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3f/interactive-q.mp3",
-            "ttsScript": "You've got this! Match each sight word to its special spelling trick.",
-            "audioRegenAt": "2026-06-03T21:35:28.289Z"
+            "ttsScript": "Now you try! Each sight word hides a silent letter. Match each word to its trick.",
+            "audioRegenAt": "2026-06-05T02:55:31.761Z"
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match words to their tricks.",
-          "hint": "Think about the special sound or letter in each word.",
+          "prompt": "Match each word to its trick",
+          "hint": "Find the letter that stays quiet.",
           "correctAudio": "audio/lessons/RF.2.3f/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.2.3f/interactive-wrong.mp3",
-          "correctScript": "Exactly! You matched them all correctly. Great job remembering those tricky parts!",
-          "wrongScript": "Not quite! Remember, each sight word has a special part. Try again!",
+          "correctScript": "You matched them all! Walk hides a silent L, comb hides a silent B, and hour hides a silent H!",
+          "wrongScript": "Good try — say each word slowly and listen for the letter you do not hear. Try again!",
           "leftItems": [
-            "People",
-            "Again",
-            "Could"
+            "walk",
+            "comb",
+            "hour"
           ],
           "rightItems": [
-            "silent O",
-            "AI sound",
-            "silent L"
+            "silent L",
+            "silent B",
+            "silent H"
           ],
           "correctPairs": {
-            "People": "silent O",
-            "Again": "AI sound",
-            "Could": "silent L"
+            "walk": "silent L",
+            "comb": "silent B",
+            "hour": "silent H"
           }
         }
       },
@@ -34114,16 +34037,8 @@
             },
             "displayParts": [
               {
-                "text": "Hello",
+                "text": "Word detectives",
                 "delay": 0
-              },
-              {
-                "text": "S",
-                "delay": 820
-              },
-              {
-                "text": "Uper readers",
-                "delay": 1800
               }
             ]
           },
@@ -34190,7 +34105,7 @@
               "word": "grumpy",
               "delay": 260
             },
-            "displayText": "The grumpy kid frowned and crossed his arms.",
+            "displayText": "Grumpy kid frowned",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -34245,7 +34160,7 @@
               "word": "stretched",
               "delay": 500
             },
-            "displayText": "She stretched her arm up to reach the high shelf.",
+            "displayText": "Stretched to reach",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -35072,7 +34987,7 @@
             "audioRegenAt": "2026-05-11T23:16:15.377Z",
             "displayParts": [
               {
-                "text": "sun + flower = Sunflower. A flower that loves the sun.",
+                "text": "sun + flower = sunflower",
                 "delay": 0
               }
             ],
@@ -35094,7 +35009,7 @@
             "audioRegenAt": "2026-05-11T23:16:19.746Z",
             "displayParts": [
               {
-                "text": "tooth + brush = Toothbrush. A brush for your teeth.",
+                "text": "tooth + brush = toothbrush",
                 "delay": 0
               }
             ],
@@ -35183,32 +35098,32 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.4d/interactive-q.mp3",
-            "ttsScript": "You've got this! Compound words are two words stuck together. Match each compound word to its two parts.",
-            "audioRegenAt": "2026-06-03T21:56:35.145Z"
+            "ttsScript": "You've got compound power — match each word to the two smaller words inside it.",
+            "audioRegenAt": "2026-06-05T02:56:32.310Z"
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match compound words.",
-          "hint": "Remember, compound words are two smaller words joined together.",
+          "prompt": "Match each compound word",
+          "hint": "Split each word into two smaller words.",
           "correctAudio": "audio/lessons/L.2.4d/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.4d/interactive-wrong.mp3",
-          "correctScript": "Exactly! You matched the compound words to their two parts!",
-          "wrongScript": "Not quite! Remember, a compound word is made of two smaller words. Try again!",
+          "correctScript": "You matched them all! You split each word into two parts to find its meaning!",
+          "wrongScript": "Almost — look for two smaller words hiding inside each one. Try again!",
           "leftItems": [
-            "Rainbow",
-            "Sunflower",
-            "Toothbrush"
+            "Cupcake",
+            "Raindrop",
+            "Baseball"
           ],
           "rightItems": [
-            "Rain + bow",
-            "Sun + flower",
-            "Tooth + brush"
+            "Cup + cake",
+            "Rain + drop",
+            "Base + ball"
           ],
           "correctPairs": {
-            "Rainbow": "Rain + bow",
-            "Sunflower": "Sun + flower",
-            "Toothbrush": "Tooth + brush"
+            "Cupcake": "Cup + cake",
+            "Raindrop": "Rain + drop",
+            "Baseball": "Base + ball"
           }
         }
       },
@@ -36518,24 +36433,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.5b/interactive-q.mp3",
-            "ttsScript": "Your turn! We learned that words can have different strengths, like different shades of a color. Listen to these words: Happy, Joyful, Thrilled. Which word means the strongest happy?",
-            "audioRegenAt": "2026-06-03T22:01:55.897Z"
+            "ttsScript": "Your turn! Some words show a stronger feeling than others. Here are three weather words: Frigid, Cool, Chilly. Which one means the coldest?",
+            "audioRegenAt": "2026-06-05T02:57:35.994Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which means strongest happy?",
-          "hint": "Think about which word shows the biggest feeling.",
+          "prompt": "Which means coldest?",
+          "hint": "Which word shows the biggest cold?",
           "correctAudio": "audio/lessons/L.2.5b/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.5b/interactive-wrong.mp3",
-          "correctScript": "Exactly! Thrilled means you are bursting with happiness, so it's the strongest shade of happy!",
-          "wrongScript": "Not quite. Remember, some words show a much bigger feeling than others. Try again!",
+          "correctScript": "Yes! Frigid! It shows the strongest, biggest cold of the three!",
+          "wrongScript": "Good try! One of these words means a much bigger cold. Try again!",
           "choices": [
-            "Happy",
-            "Joyful",
-            "Thrilled"
+            "Frigid",
+            "Cool",
+            "Chilly"
           ],
-          "correct": "Thrilled"
+          "correct": "Frigid"
         }
       },
       {
@@ -38184,24 +38099,33 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.5/interactive-q.mp3",
-            "ttsScript": "Your turn, poet! Sarah wrote a poem. She put some lines together to make a group. What is that group of lines called?",
-            "audioRegenAt": "2026-06-03T22:13:26.997Z"
+            "ttsScript": "Now you try! Match each part to the kind of writing it belongs to.",
+            "audioRegenAt": "2026-06-05T02:58:32.740Z"
           }
         ],
         "interactive": {
-          "kind": "tap",
-          "prompt": "What is that group called?",
-          "hint": "Remember, a stanza is a group of lines in a poem.",
+          "kind": "match",
+          "prompt": "Match the part to its form",
+          "hint": "Poems have stanzas, plays have scenes, stories have chapters.",
           "correctAudio": "audio/lessons/RL.3.5/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.3.5/interactive-wrong.mp3",
-          "correctScript": "Exactly! A stanza is a group of lines in a poem.",
-          "wrongScript": "Not quite. Think about the special name for a group of lines in a poem. Try again!",
-          "choices": [
-            "stanza",
-            "chapter",
-            "scene"
+          "correctScript": "You matched them all! Stanzas go in poems, scenes go in plays, and chapters go in stories!",
+          "wrongScript": "Almost! Think about where each part belongs. Try again!",
+          "leftItems": [
+            "Stanza",
+            "Scene",
+            "Chapter"
           ],
-          "correct": "stanza"
+          "rightItems": [
+            "Poem",
+            "Play",
+            "Story"
+          ],
+          "correctPairs": {
+            "Stanza": "Poem",
+            "Scene": "Play",
+            "Chapter": "Story"
+          }
         }
       },
       {
@@ -38377,7 +38301,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.3.6/example-b.mp3",
             "ttsScript": "Rain fell all day. What a wonderful, cozy day, the narrator said.",
-            "displayText": "Rain fell all day. What a wonderful, cozy day, the narrator said.",
+            "displayText": "Rain fell. Cozy day!",
             "audioRegenAt": "2026-06-04T03:49:38.256Z"
           },
           {
@@ -39086,24 +39010,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.9/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen to this little story. A tiny squirrel named Squeaky saw a baby bird fall from its nest. Squeaky was very scared of heights, but he knew the baby bird needed help. He took a deep breath, climbed the tall tree, and gently pushed the baby bird back into its nest. What is the theme of this story?",
-            "audioRegenAt": "2026-06-03T22:14:20.009Z"
+            "ttsScript": "Your turn! Listen closely. Mia tried to ride her bike, but she fell. She tried again and wobbled. She kept trying all afternoon until she finally rode down the street. What big idea does this story share?",
+            "audioRegenAt": "2026-06-05T02:59:42.181Z"
           }
         ],
         "interactive": {
           "kind": "tap",
           "prompt": "What is the theme?",
-          "hint": "Think about the big idea the story teaches.",
+          "hint": "What big idea runs through the whole story?",
           "correctAudio": "audio/lessons/RL.3.9/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.3.9/interactive-wrong.mp3",
-          "correctScript": "Exactly! Bravery is the theme, because Squeaky showed courage even when he was scared.",
-          "wrongScript": "Not quite. Remember, the theme is the big idea or lesson the story teaches. Try again!",
+          "correctScript": "Yes! Perseverance! Mia kept trying again and again until she succeeded.",
+          "wrongScript": "Good thinking! Look at what Mia does over and over in the story. Try again!",
           "choices": [
-            "Bravery",
-            "Friendship",
-            "Perseverance"
+            "Perseverance",
+            "Honesty",
+            "Kindness"
           ],
-          "correct": "Bravery"
+          "correct": "Perseverance"
         }
       },
       {
@@ -41164,24 +41088,23 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.6/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this story. 'The park is the best place to play. Kids should always go there after school. It has the most important swings and a super fun slide.' What does the author think about the park?",
-            "audioRegenAt": "2026-06-03T22:16:01.778Z"
+            "ttsScript": "Your turn, detective! Listen closely. 'Everyone should visit the lake. You should pack a lunch and stay all day. You will never want to leave!' How does the author feel about the lake?"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Author thinks park is...",
-          "hint": "Look for words like 'best' or 'should' to find the author's opinion.",
+          "prompt": "How does the author feel?",
+          "hint": "Opinion words like 'should' show the author's feeling.",
           "correctAudio": "audio/lessons/RI.3.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.3.6/interactive-wrong.mp3",
-          "correctScript": "Exactly! The author thinks the park is the best place, because they used words like 'best' and 'most important' to show their view!",
-          "wrongScript": "Good try! Remember, authors often use opinion words like 'best' or 'should' to tell you what they think. Listen again for those words. Try again!",
+          "correctScript": "Nice thinking! The author loves the lake. Words like 'should' and 'never want to leave' show a strong, happy opinion!",
+          "wrongScript": "Good try! Listen for the author's opinion words to know how they feel. Try again!",
           "choices": [
-            "the best",
-            "too small",
-            "just okay"
+            "Loves it",
+            "Dislikes it",
+            "Has no view"
           ],
-          "correct": "the best"
+          "correct": "Loves it"
         }
       },
       {
@@ -41478,24 +41401,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.7/interactive-q.mp3",
-            "ttsScript": "Your turn! We learned that different pictures help us in different ways. What do charts help us do?",
-            "audioRegenAt": "2026-06-03T22:16:09.134Z"
+            "ttsScript": "Your turn! A map of the zoo shows where each animal lives. What kind of illustration is that?",
+            "audioRegenAt": "2026-06-05T03:00:35.885Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What do charts help do?",
-          "hint": "Think about what charts compare or show.",
+          "prompt": "What picture is this?",
+          "hint": "It shows where things are found.",
           "correctAudio": "audio/lessons/RI.3.7/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RI.3.7/interactive-wrong.mp3",
-          "correctScript": "Exactly! Charts help us compare numbers and amounts.",
-          "wrongScript": "Not quite! Remember, charts are good for showing how things measure up. Try again!",
+          "correctScript": "Yes! A map shows where places are.",
+          "wrongScript": "Good try! This one shows where things are, not their parts. Try again!",
           "choices": [
-            "Compare numbers",
-            "Label parts",
-            "Show places"
+            "A map",
+            "A diagram",
+            "A chart"
           ],
-          "correct": "Compare numbers"
+          "correct": "A map"
         }
       },
       {
@@ -42166,7 +42089,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.3.10/example-b.mp3",
             "ttsScript": "Bees live in hives. They make sweet honey.",
-            "displayText": "Bees live in hives. They make sweet honey.",
+            "displayText": "Bees live in hives",
             "audioRegenAt": "2026-06-04T03:50:39.604Z"
           },
           {
@@ -42240,7 +42163,7 @@
               "word": "idea",
               "delay": 1000
             },
-            "displayText": "Main idea: what text is about",
+            "displayText": "Main idea",
             "displayDelay": 0
           },
           {
@@ -43271,7 +43194,7 @@
             "ttsScript": "Clap each syllable. Re-mem-ber. Three claps. Three syllables!",
             "displayParts": [
               {
-                "text": "Clap each syllable.Re-mem-ber = 3 clapsThree claps. Three syllables!",
+                "text": "Re-mem-ber = 3 claps",
                 "delay": 0
               }
             ],
@@ -43328,7 +43251,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Split consonants or before single",
+            "displayText": "Split between consonants",
             "displayDelay": 0
           }
         ],
@@ -44984,7 +44907,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Clues are secret messages",
+            "displayText": "Clues = secret messages",
             "displayDelay": 0
           }
         ],
@@ -45087,7 +45010,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.4/example-b.mp3",
             "ttsScript": "The room was gloomy. No light came in, and Sam felt sad.",
-            "displayText": "The room was gloomy. No light came in, and Sam felt sad.",
+            "displayText": "Room gloomy, Sam sad",
             "audioRegenAt": "2026-06-04T03:24:58.248Z"
           },
           {
@@ -45248,16 +45171,8 @@
             },
             "displayParts": [
               {
-                "text": "Hello",
+                "text": "Word detectives",
                 "delay": 0
-              },
-              {
-                "text": "W",
-                "delay": 1060
-              },
-              {
-                "text": "Ord detectives",
-                "delay": 1800
               }
             ]
           },
@@ -45292,7 +45207,7 @@
               "word": "understand",
               "delay": 2140
             },
-            "displayText": "Clues help understand words",
+            "displayText": "Clues help us",
             "displayDelay": 0
           }
         ],
@@ -45337,7 +45252,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "He felt elated. He was super happy.",
+            "displayText": "elated = super happy",
             "displayStyle": "passage",
             "displayDelay": 0
           }
@@ -45359,7 +45274,7 @@
               "word": "examples",
               "delay": 780
             },
-            "displayText": "Mammals, like cats and dogs, have fur.",
+            "displayText": "Mammals have fur",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -45423,7 +45338,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Look for words like such as",
+            "displayText": "Look for: such as",
             "displayDelay": 0
           },
           {
@@ -46794,7 +46709,7 @@
                 "delay": 1000
               }
             ],
-            "displayText": "Literal: exactly what it says",
+            "displayText": "Literal: exact words",
             "displayDelay": 0
           },
           {
@@ -46900,7 +46815,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.3.5a/example-b.mp3",
             "ttsScript": "It was raining cats and dogs all afternoon.",
-            "displayText": "It was raining cats and dogs all afternoon.",
+            "displayText": "Raining cats and dogs",
             "audioRegenAt": "2026-06-04T03:27:04.036Z"
           },
           {
@@ -47041,23 +46956,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.5a/interactive-q.mp3",
-            "ttsScript": "Your turn! Maya said, I'm dragging my feet today. She isn't really pulling her feet on the floor! What does dragging my feet really mean?"
+            "ttsScript": "Your turn! Sam said the test was a piece of cake. He didn't really eat cake! What does a piece of cake mean?",
+            "audioRegenAt": "2026-06-05T03:04:44.178Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which means tired?",
-          "hint": "It's a picture in your mind, not the real words.",
+          "prompt": "What does it really mean?",
+          "hint": "The words sound silly, so picture the real meaning.",
           "correctAudio": "audio/lessons/L.3.5a/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.3.5a/interactive-wrong.mp3",
-          "correctScript": "Exactly! You looked past the silly words to the real picture meaning!",
-          "wrongScript": "Almost! Remember, the words paint a picture. Try again!",
+          "correctScript": "Exactly! You saw past the silly words to the real meaning!",
+          "wrongScript": "Almost! Picture how a piece of cake feels to do. Try again!",
           "choices": [
-            "Moving slowly",
-            "Walking fast",
-            "Hurting toes"
+            "Very easy",
+            "Tastes sweet",
+            "Took forever"
           ],
-          "correct": "Moving slowly"
+          "correct": "Very easy"
         }
       },
       {
@@ -47180,7 +47096,7 @@
             "audioRegenAt": null,
             "displayParts": [
               {
-                "text": "Cozy means warm and snug.",
+                "text": "Cozy: warm and snug",
                 "delay": 0
               }
             ],
@@ -47293,7 +47209,7 @@
               "word": "certain",
               "delay": 5500
             },
-            "displayText": "I knew my friend was coming because I saw her car, but I only believed she would bring cookies because I wasn't certain.",
+            "displayText": "Knew vs. believed",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -47964,7 +47880,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.6/interactive-q.mp3",
-            "ttsScript": "Your turn! Conversation words do different jobs when we talk. Can you match each word to what it helps you do?"
+            "ttsScript": "Your turn! Match each talking word to the job it does in a conversation.",
+            "audioRegenAt": "2026-06-05T03:05:42.544Z"
           }
         ],
         "interactive": {
@@ -47973,12 +47890,12 @@
           "hint": "Think about when you'd say each word in a talk.",
           "correctAudio": "audio/lessons/L.3.6/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.3.6/interactive-wrong.mp3",
-          "correctScript": "Nice! You know just what each conversation word does!",
+          "correctScript": "Nice! You matched each word to the job it does when we talk!",
           "wrongScript": "Good try! Think about when you'd use each one. Try again!",
           "leftItems": [
-            "I see",
-            "Well",
-            "So"
+            "Got it",
+            "Now",
+            "Plus"
           ],
           "rightItems": [
             "Show listening",
@@ -47986,9 +47903,9 @@
             "Connect thoughts"
           ],
           "correctPairs": {
-            "I see": "Show listening",
-            "Well": "Start an idea",
-            "So": "Connect thoughts"
+            "Got it": "Show listening",
+            "Now": "Start an idea",
+            "Plus": "Connect thoughts"
           }
         }
       },
@@ -49288,16 +49205,8 @@
             ],
             "displayParts": [
               {
-                "text": "Drama",
+                "text": "Drama / Prose",
                 "delay": 0
-              },
-              {
-                "text": "A",
-                "delay": 940
-              },
-              {
-                "text": "Nd prose",
-                "delay": 1800
               }
             ]
           }
@@ -49473,21 +49382,21 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.5/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Imagine a story that has different characters speaking lines, and it's meant for people to perform on a stage. Which story form is meant to be acted out?",
-            "audioRegenAt": "2026-06-03T22:23:51.937Z"
+            "ttsScript": "Read this part. Scene One. Max walks in and says, Hello! Then Mia answers. Which story form is this?",
+            "audioRegenAt": "2026-06-05T03:06:44.831Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which form is acted out?",
-          "hint": "Think about how each story form is presented.",
+          "prompt": "Which form is this?",
+          "hint": "Look for scenes and spoken lines.",
           "correctAudio": "audio/lessons/RL.4.5/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.4.5/interactive-wrong.mp3",
-          "correctScript": "Exactly! Drama is meant to be acted out, often with scenes and dialogue.",
-          "wrongScript": "Good try! Think about which story form is written specifically for people to perform. Try again!",
+          "correctScript": "Yes! Scenes and spoken lines mean it is drama, made to act out.",
+          "wrongScript": "Good try! Look for the scene and the spoken lines. Try again!",
           "choices": [
-            "Poems",
             "Drama",
+            "Poems",
             "Prose"
           ],
           "correct": "Drama"
@@ -51004,7 +50913,7 @@
                 "delay": 1200
               }
             ],
-            "displayText": "Main idea is the umbrella.",
+            "displayText": "Main idea = umbrella",
             "displayDelay": 0
           },
           {
@@ -51022,7 +50931,7 @@
                 "delay": 1000
               }
             ],
-            "displayText": "Details are the rain underneath.",
+            "displayText": "Details = rain",
             "displayDelay": 0
           }
         ],
@@ -51083,7 +50992,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.4.2/example-b.mp3",
             "ttsScript": "Bees collect nectar. They make honey. They help flowers grow. Bees are busy helpers.",
-            "displayText": "Bees collect nectar. They make honey. They help flowers grow. Bees are busy helpers.",
+            "displayText": "Bees are busy helpers",
             "audioRegenAt": "2026-06-04T03:52:40.052Z"
           },
           {
@@ -51293,7 +51202,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Texts explain how things work",
+            "displayText": "How things work",
             "displayDelay": 0
           },
           {
@@ -51311,7 +51220,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Procedural texts: sequence steps",
+            "displayText": "Sequence of steps",
             "displayDelay": 0
           },
           {
@@ -51412,7 +51321,7 @@
             "audioRegenAt": "2026-05-11T03:08:58.454Z",
             "displayParts": [
               {
-                "text": "First a seed is planted.",
+                "text": "Seed is planted",
                 "delay": 0
               }
             ],
@@ -51430,7 +51339,7 @@
             "audioRegenAt": "2026-05-11T03:09:02.290Z",
             "displayParts": [
               {
-                "text": "Then it sprouts.",
+                "text": "It sprouts",
                 "delay": 0
               }
             ],
@@ -51448,7 +51357,7 @@
             "audioRegenAt": "2026-05-11T03:09:06.475Z",
             "displayParts": [
               {
-                "text": "Finally it becomes a plant.",
+                "text": "Becomes a plant",
                 "delay": 0
               }
             ],
@@ -52648,12 +52557,8 @@
             "audioRegenAt": "2026-05-11T02:59:28.907Z",
             "displayParts": [
               {
-                "text": "A chart shows ",
+                "text": "Chart: numbers",
                 "delay": 0
-              },
-              {
-                "text": "numbers.",
-                "delay": 1380
               }
             ],
             "highlightWord": {
@@ -52674,12 +52579,8 @@
             "audioRegenAt": "2026-05-11T02:59:33.742Z",
             "displayParts": [
               {
-                "text": "A photo shows something ",
+                "text": "Photo: real",
                 "delay": 0
-              },
-              {
-                "text": "real.",
-                "delay": 2680
               }
             ],
             "highlightWord": {
@@ -52700,12 +52601,8 @@
             "audioRegenAt": "2026-05-11T02:59:37.630Z",
             "displayParts": [
               {
-                "text": "Words ",
+                "text": "Words: explain",
                 "delay": 0
-              },
-              {
-                "text": "explain.",
-                "delay": 800
               }
             ],
             "highlightWord": {
@@ -52763,16 +52660,8 @@
             ],
             "displayParts": [
               {
-                "text": "Details: text",
+                "text": "Text / Images / Charts",
                 "delay": 0
-              },
-              {
-                "text": "Images",
-                "delay": 4020
-              },
-              {
-                "text": "Charts",
-                "delay": 5120
               }
             ]
           },
@@ -52837,16 +52726,8 @@
             ],
             "displayParts": [
               {
-                "text": "When researching",
+                "text": "Use multiple sources",
                 "delay": 0
-              },
-              {
-                "text": "Use",
-                "delay": 1740
-              },
-              {
-                "text": "Multiple sources",
-                "delay": 2080
               }
             ]
           },
@@ -52972,7 +52853,7 @@
             "audioRegenAt": "2026-05-11T02:35:09.999Z",
             "displayParts": [
               {
-                "text": "A reason is the why",
+                "text": "Reason = why",
                 "delay": 0
               }
             ],
@@ -52994,12 +52875,8 @@
             "audioRegenAt": "2026-05-11T02:35:13.779Z",
             "displayParts": [
               {
-                "text": "...behind the",
+                "text": "Behind the point",
                 "delay": 0
-              },
-              {
-                "text": " point.",
-                "delay": 1840
               }
             ],
             "highlightWord": {
@@ -53090,7 +52967,7 @@
               "word": "reasons",
               "delay": 620
             },
-            "displayText": "Highlight reasons, evidence",
+            "displayText": "Highlight both colors",
             "displayDelay": 0
           },
           {
@@ -53554,7 +53431,7 @@
             "audioFile": "audio/lessons/RI.4.10/S3e.mp3",
             "ttsScript": "Read this text: 'Butterflies start as tiny eggs, hatch into caterpillars, then form a chrysalis before becoming beautiful butterflies.'",
             "audioRegenAt": null,
-            "displayText": "Butterflies start as tiny eggs, hatch into caterpillars, then form a chrysalis before becoming beautiful butterflies.",
+            "displayText": "egg → caterpillar → butterfly",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -54056,16 +53933,8 @@
             },
             "displayParts": [
               {
-                "text": "Long words",
+                "text": "Look in long words",
                 "delay": 0
-              },
-              {
-                "text": "Look",
-                "delay": 1420
-              },
-              {
-                "text": "For",
-                "delay": 1620
               }
             ]
           },
@@ -54314,32 +54183,32 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.4.3a/interactive-q.mp3",
-            "ttsScript": "Your turn! You've learned about some tricky letter combinations. Can you match each one to its sound or characteristic?",
-            "audioRegenAt": "2026-06-03T22:27:57.885Z"
+            "ttsScript": "Now you try new words! Match each word to the sound its combo makes.",
+            "audioRegenAt": "2026-06-05T03:08:12.072Z"
           }
         ],
         "interactive": {
           "kind": "match",
-          "prompt": "Match letter combo to sound.",
-          "hint": "Think about the different sounds these letter combinations can make.",
+          "prompt": "Match word to its sound.",
+          "hint": "Find the combo hiding in each word.",
           "correctAudio": "audio/lessons/RF.4.3a/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RF.4.3a/interactive-wrong.mp3",
-          "correctScript": "Exactly! You matched PH to F, GH to silent, and CH to K sound. Nice work!",
-          "wrongScript": "Not quite! Remember how those letter combinations can sound. Try again!",
+          "correctScript": "You spotted them all! PH in dolphin says F, CH in school says K, GH in night is silent.",
+          "wrongScript": "Almost! Find the letter combo in each word first. Try again!",
           "leftItems": [
-            "PH",
-            "GH",
-            "CH"
+            "dolphin",
+            "school",
+            "night"
           ],
           "rightItems": [
             "F sound",
-            "silent",
-            "K sound"
+            "K sound",
+            "silent"
           ],
           "correctPairs": {
-            "PH": "F sound",
-            "GH": "silent",
-            "CH": "K sound"
+            "dolphin": "F sound",
+            "school": "K sound",
+            "night": "silent"
           }
         }
       },
@@ -54388,7 +54257,7 @@
             "interaction": "",
             "displayParts": [
               {
-                "text": "Smooth reading helps you understand more deeply. Smooth = deeper",
+                "text": "Smooth = deeper",
                 "delay": 0
               }
             ],
@@ -54701,16 +54570,8 @@
             ],
             "displayParts": [
               {
-                "text": "Hello",
+                "text": "Word detectives",
                 "delay": 0
-              },
-              {
-                "text": "W",
-                "delay": 520
-              },
-              {
-                "text": "Ord detectives",
-                "delay": 1800
               }
             ]
           },
@@ -60955,12 +60816,8 @@
             "audioRegenAt": "2026-05-08T04:02:52.310Z",
             "displayParts": [
               {
-                "text": "Second graders learn more ",
+                "text": "More sentence skills",
                 "delay": 0
-              },
-              {
-                "text": "sentence skills.",
-                "delay": 2000
               }
             ],
             "highlightWord": {
@@ -60982,16 +60839,8 @@
             "audioRegenAt": "2026-05-08T04:02:57.752Z",
             "displayParts": [
               {
-                "text": "Collective nouns",
+                "text": "Nouns, verbs, pronouns",
                 "delay": 0
-              },
-              {
-                "text": ", irregular verbs",
-                "delay": 1660
-              },
-              {
-                "text": ", and tricky pronouns.",
-                "delay": 2840
               }
             ],
             "highlightWord": {
@@ -61147,7 +60996,7 @@
                 "delay": 0
               }
             ],
-            "displayText": "Yesterday I ate. I ran. I flew.",
+            "displayText": "ate, ran, flew",
             "displayStyle": "passage",
             "displayDelay": 0
           },
@@ -61580,24 +61429,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.2/interactive-q.mp3",
-            "ttsScript": "You've got this! Listen carefully. Sometimes we combine two words into one shorter word using an apostrophe. For example, 'is not' can become one word. Which word means 'is not'?",
-            "audioRegenAt": "2026-06-03T22:33:17.638Z"
+            "ttsScript": "You've got this! When we join two words, an apostrophe stands in for the missing letter. Take the words 'I am'. Which word joins them into one?",
+            "audioRegenAt": "2026-06-05T03:09:14.912Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Which word means 'is not'?",
-          "hint": "Remember what an apostrophe does in a contraction.",
+          "prompt": "Make one word: I am",
+          "hint": "An apostrophe takes the place of a missing letter.",
           "correctAudio": "audio/lessons/L.2.2/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.2.2/interactive-wrong.mp3",
-          "correctScript": "Exactly! Isn't means 'is not', and the apostrophe takes the place of the 'o'.",
-          "wrongScript": "Not quite! Think about how the apostrophe helps shorten two words into one. Try again!",
+          "correctScript": "Exactly! I'm joins I and am, and the apostrophe stands in for the missing a!",
+          "wrongScript": "Almost! The apostrophe fills in for the missing letter when you join the two words. Try again!",
           "choices": [
-            "isn't",
-            "can't",
-            "don't"
+            "I'm",
+            "I'll",
+            "I've"
           ],
-          "correct": "isn't"
+          "correct": "I'm"
         }
       },
       {
@@ -61982,7 +61831,7 @@
             "audioRegenAt": "2026-05-11T02:17:09.515Z",
             "displayParts": [
               {
-                "text": "Third graders learn more grammar moves.",
+                "text": "More grammar moves",
                 "delay": 0
               }
             ],
@@ -62004,12 +61853,8 @@
             "audioRegenAt": "2026-05-11T02:17:15.945Z",
             "displayParts": [
               {
-                "text": "Verb tenses, subject agreement,",
+                "text": "Tenses, agreement, comparing",
                 "delay": 0
-              },
-              {
-                "text": " and comparing things.",
-                "delay": 3320
               }
             ],
             "highlightWord": {
@@ -62282,23 +62127,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.1/interactive-q.mp3",
-            "ttsScript": "Now you try a tricky one! Some verbs change completely in the past. What is the past tense of the verb 'run'?"
+            "ttsScript": "Now you try a new tricky one! Some verbs change their whole shape in the past. What is the past tense of the verb 'swim'?",
+            "audioRegenAt": "2026-06-05T03:13:10.549Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "Past tense of run?",
-          "hint": "Run is a tricky verb, it does not just add -ed.",
+          "prompt": "Past tense of swim?",
+          "hint": "Swim is a tricky verb, it does not just add -ed.",
           "correctAudio": "audio/lessons/L.3.1/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/L.3.1/interactive-wrong.mp3",
-          "correctScript": "Exactly! Run changes to 'ran', it is one of those tricky verbs that does not add -ed!",
-          "wrongScript": "Almost! Run is a tricky verb that changes its whole shape, it does not just add -ed. Try again!",
+          "correctScript": "Exactly! Swim changes to 'swam', it is one of those tricky verbs that does not add -ed!",
+          "wrongScript": "Almost! Swim is a tricky verb that changes its shape, it does not just add -ed. Try again!",
           "choices": [
-            "Ran",
-            "Runned",
-            "Runed"
+            "Swam",
+            "Swimmed",
+            "Swum"
           ],
-          "correct": "Ran"
+          "correct": "Swam"
         }
       },
       {
@@ -64175,24 +64021,24 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.10/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this story. Lily the cat played with a red ball. She batted it under the couch. What did Lily play with?",
-            "audioRegenAt": "2026-06-03T22:35:21.704Z"
+            "ttsScript": "Your turn! We learned good ways to enjoy a story. Which one helps you enjoy and understand a story?",
+            "audioRegenAt": "2026-06-05T03:14:09.129Z"
           }
         ],
         "interactive": {
           "kind": "tap",
-          "prompt": "What did Lily play with?",
-          "hint": "Remember to listen carefully to the story.",
+          "prompt": "How do you enjoy a story?",
+          "hint": "Think about what helps you understand the story.",
           "correctAudio": "audio/lessons/RL.K.10/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.K.10/interactive-wrong.mp3",
-          "correctScript": "Exactly! Lily played with a red ball. Good listening helps you know what happened in the story!",
-          "wrongScript": "Not quite! Listen again to what Lily played with. Try again!",
+          "correctScript": "Yes! Looking at the pictures helps you enjoy and understand the story!",
+          "wrongScript": "Not quite! Think about what we do to enjoy a story together. Try again!",
           "choices": [
-            "red ball",
-            "blue toy",
-            "green string"
+            "Look at pictures",
+            "Close your eyes",
+            "Skip the pages"
           ],
-          "correct": "red ball"
+          "correct": "Look at pictures"
         }
       },
       {
