@@ -1525,8 +1525,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.K.3/example.png",
+        "imagePrompt": "A friendly, orange cartoon fox is peacefully napping on the ground, curled up under the shade of a tall, green, leafy tree. A small, blue cartoon bird with an open beak is perched on a branch directly above the sleeping fox, looking happy. Solid light-green background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -1587,7 +1587,8 @@
             "ttsScript": "And what happened? The fox took a nap! You found the character, setting, and event. Amazing job!",
             "audioRegenAt": "2026-06-04T02:48:46.939Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:34:14.271Z"
       },
       {
         "type": "tip",
@@ -2172,8 +2173,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.K.5/example.png",
+        "imagePrompt": "A friendly, smiling cartoon crescent moon, radiating soft, warm, gentle light rays. The moon has a kind, happy expression. Solid dark blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -2234,7 +2235,8 @@
             "ttsScript": "Short lines that rhyme tell us it's a poem. You figured it out!",
             "audioRegenAt": "2026-06-04T02:48:52.280Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:34:13.750Z"
       },
       {
         "type": "example",
@@ -4476,8 +4478,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.K.5/example.png",
+        "imagePrompt": "A cheerful K-4 child with a bright smile is holding a colorful picture book. The child's left hand is pointing to the front cover of the book, which features a vibrant, friendly cartoon illustration of several happy bugs, including a ladybug, a caterpillar, and a bee. The child's right hand is gently holding the book slightly open to reveal the first inner page, the title page, which has a large, simple drawing of a single friendly bug, like a smiling beetle. The child is looking towards the viewer, engaged and happy. Solid light blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -4538,7 +4540,8 @@
             "ttsScript": "The front cover greets you, and the title page tells who made it. You're a book expert!",
             "audioRegenAt": "2026-06-04T03:44:49.921Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:34:15.357Z"
       },
       {
         "type": "example",
@@ -4854,8 +4857,8 @@
         "type": "example",
         "slide": 2,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.K.6/example.png",
+        "imagePrompt": "A friendly K-4 child, a girl with short brown hair and a red shirt, stands between two smiling adults. On the left, an adult woman with glasses and a blue shirt holds a pen and a small open notebook, gesturing towards a closed picture book held by the child. On the right, an adult man with a green shirt holds a paintbrush and a colorful palette, also gesturing towards the book. The child holds the closed picture book with both hands, looking at it with a curious smile. The book's cover features a large, friendly cartoon beetle. All characters are looking towards the book with happy, engaged expressions. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -4916,7 +4919,8 @@
             "ttsScript": "The author writes the words and the illustrator draws the pictures. You found them both!",
             "audioRegenAt": "2026-06-04T03:44:54.222Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:34:37.926Z"
       },
       {
         "type": "example",
@@ -8153,8 +8157,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.K.2c/example.png",
+        "imagePrompt": "A cute, friendly, smiling pink cartoon pig stands on a patch of green grass. A diverse K-4 child, smiling and looking thoughtfully at the pig, stands beside it. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -8215,7 +8219,8 @@
             "ttsScript": "So pig starts with Puh and ends with Guh. You found the beginning and ending sounds. Amazing job!",
             "audioRegenAt": "2026-06-04T02:49:54.835Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:34:36.402Z"
       },
       {
         "type": "example",
@@ -8542,8 +8547,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.K.2d/example.png",
+        "imagePrompt": "A friendly, smiling K-4 age child with short brown hair and a red shirt is looking happily at a cute, orange cartoon fish swimming in a clear, round fishbowl. The child is holding up three fingers on their right hand, clearly visible and spread apart. The fish has big, friendly eyes and a small smile. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -8604,7 +8609,8 @@
             "ttsScript": "So fish has three sounds. You counted every single one. You're a sound detective!",
             "audioRegenAt": "2026-06-04T03:45:31.661Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:35:08.664Z"
       },
       {
         "type": "example",
@@ -9188,8 +9194,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.K.3a/example.png",
+        "imagePrompt": "A cute, friendly, smiling cartoon pig stands happily, looking at a colorful balloon that is in the process of popping, with small, non-textual lines radiating from it to indicate the \"pop\" action. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -9250,7 +9256,8 @@
             "ttsScript": "So the letter P says Puh. You unlocked another letter sound. Way to go!",
             "audioRegenAt": "2026-06-04T02:50:41.930Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:35:17.847Z"
       },
       {
         "type": "example",
@@ -10174,8 +10181,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.K.3c/example.png",
+        "imagePrompt": "A friendly, smiling red apple and a friendly, smiling green apple sitting side-by-side on a clean white surface. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -10236,7 +10243,8 @@
             "ttsScript": "So and is a sight word you read right away. One more reading superpower. Nice work!",
             "audioRegenAt": "2026-06-04T02:50:48.270Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:34:53.286Z"
       },
       {
         "type": "example",
@@ -17767,8 +17775,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.1.7/example.png",
+        "imagePrompt": "A friendly cartoon girl with a yellow raincoat holds a bright red umbrella. Large, soft gray cartoon clouds float in the sky, and cartoon raindrops fall gently from them. Solid light blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -17829,7 +17837,8 @@
             "ttsScript": "The picture told us it is rainy, even with no words. Great reading!",
             "audioRegenAt": "2026-06-04T02:51:17.002Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:35:09.002Z"
       },
       {
         "type": "tip",
@@ -18464,8 +18473,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.1.9/example.png",
+        "imagePrompt": "A friendly, diverse elementary school-aged child with a curious expression sits at a clean, simple wooden table, looking at two open picture books side-by-side. The book on the left shows a happy green cartoon frog mid-jump, with another frog on a lily pad nearby, ready to jump. The book on the right shows a happy green cartoon frog swimming gracefully in clear blue water, with a lily pad floating beside it. Both books have simple, colorful illustrations on their pages, depicting only the actions of the frogs. The child's hands are resting gently on the table, not touching the books directly. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -18526,7 +18535,8 @@
             "ttsScript": "Two books gave us more facts about frogs. You compared like a pro!",
             "audioRegenAt": "2026-06-04T03:45:37.143Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:35:29.278Z"
       },
       {
         "type": "tip",
@@ -19029,8 +19039,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.1.2b/example.png",
+        "imagePrompt": "A friendly, smiling young girl with pigtails, about 6-7 years old, stands proudly. She holds up three fingers on her right hand, while her left hand rests on the handle of a clean, friendly, anthropomorphic cartoon mop that has a smiling face on its mop head. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -19091,7 +19101,8 @@
             "ttsScript": "You blended the sounds into mop. Blending power!",
             "audioRegenAt": "2026-06-04T02:51:51.073Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:39:12.197Z"
       },
       {
         "type": "example",
@@ -19454,8 +19465,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One Together!",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.1.2c/example.png",
+        "imagePrompt": "A cozy, simple cartoon bed with a soft blanket and pillow. A happy, diverse young child is standing next to the bed, smiling and looking at it. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -19516,7 +19527,8 @@
             "ttsScript": "First /b/, middle /e/, last /d/. You found every sound in bed!",
             "audioRegenAt": "2026-06-04T02:52:12.839Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:35:39.380Z"
       },
       {
         "type": "example",
@@ -22214,8 +22226,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let Us Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.1.5/example.png",
+        "imagePrompt": "A friendly cartoon illustration of two diverse children playing on a bright green seesaw. One child, with a happy expression, is high in the air on one end of the seesaw, reaching their arms slightly upwards. The other child, also with a happy expression, is low to the ground on the opposite end of the seesaw, with their feet near the ground. The seesaw is balanced in this 'up' and 'down' position. The children are depicted with natural proportions and correct number of fingers. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -22276,7 +22288,8 @@
             "ttsScript": "So up and down are opposites. You connected the words!",
             "audioRegenAt": "2026-06-04T03:45:50.755Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:35:47.431Z"
       },
       {
         "type": "tip",
@@ -23118,8 +23131,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let Us Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.1.5c/example.png",
+        "imagePrompt": "A cheerful K-4 child wearing a yellow rain slicker and red boots, happily splashing in a wide, shallow puddle on a sidewalk, with gentle raindrops falling. Next to this scene, a blue breakfast bowl contains cereal flakes visibly swollen, soft, and partially submerged in white milk, with a spoon resting inside. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -23180,7 +23193,8 @@
             "ttsScript": "So a wet puddle is soggy. You matched the word to real life!",
             "audioRegenAt": "2026-06-04T02:53:01.736Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:35:57.911Z"
       },
       {
         "type": "example",
@@ -25076,8 +25090,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.2.4/example.png",
+        "imagePrompt": "A child's two lower legs and feet, wearing bright red rain boots, are depicted from a slightly elevated perspective. One boot is firmly pressed down into a vibrant pile of autumn leaves, which are a mix of red, orange, yellow, and brown, appearing dry and slightly broken where the boot makes contact. The other boot is positioned next to it, also partially in the leaves. The ground beneath the leaves is not visible, as the focus is on the boots and leaves. Solid light green background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -25138,7 +25152,8 @@
             "ttsScript": "So crunched is a sensory word we can hear. You found the music!",
             "audioRegenAt": "2026-06-04T02:53:43.541Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:36:02.249Z"
       },
       {
         "type": "example",
@@ -28002,8 +28017,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.2.4/example.png",
+        "imagePrompt": "A cute, happy, brown puppy with a slightly rounded belly sits contentedly on a floor next to a completely empty, clean dog food bowl. A tiny, single crumb is visible near the bowl, emphasizing that everything was eaten. The puppy looks satisfied after its meal. Solid light green background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -28060,7 +28075,8 @@
             "ttsScript": "The clue told us famished means very hungry. Great detective work!",
             "audioRegenAt": "2026-06-04T02:58:12.318Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:36:10.805Z"
       },
       {
         "type": "example",
@@ -29916,8 +29932,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.2.10/example.png",
+        "imagePrompt": "A large, friendly, smiling cartoon sun, depicted as a bright yellow star with radiating points, dominates the center of the image. From the sun, numerous bright yellow light rays extend outwards. Interspersed with the light rays, subtle wavy orange lines emanate from the sun, representing heat. The sun has a happy, gentle expression. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -29978,7 +29994,8 @@
             "ttsScript": "You found two facts about the sun. Fact books make you smarter!",
             "audioRegenAt": "2026-06-04T03:46:39.633Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:39:35.809Z"
       },
       {
         "type": "tip",
@@ -30263,8 +30280,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.2.3/example.png",
+        "imagePrompt": "A friendly, happy cartoon whale is swimming gracefully in the ocean, spouting a gentle stream of water from its blowhole. The whale has a big, welcoming smile. Solid aqua blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -30325,7 +30342,8 @@
             "ttsScript": "WH teams up to make one sound. Whale! Phonics power!",
             "audioRegenAt": "2026-06-04T03:17:40.456Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:52:37.968Z"
       },
       {
         "type": "tip",
@@ -30594,8 +30612,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.2.3a/example.png",
+        "imagePrompt": "A cheerful cartoon child, a boy with a red shirt and blue shorts, stands smiling on a small strip of green grass at the bottom of the frame. He is holding the string of a large, colorful diamond-shaped kite that is flying high above him. The kite is red, yellow, and blue, with a long tail adorned with bows. The child is looking up at the kite with a happy expression. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -30656,7 +30674,8 @@
             "ttsScript": "Kite has a long I, helped by silent E. You told long from short!",
             "audioRegenAt": "2026-06-04T03:17:46.011Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:39:29.882Z"
       },
       {
         "type": "tip",
@@ -31256,8 +31275,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.2.3c/example.png",
+        "imagePrompt": "A friendly, smiling cartoon sun with short, cheerful rays is positioned on the left. To its right, separated by a small, clear gap, is a friendly, smiling cartoon five-pointed star emitting long, prominent, sparkling rays. The sun and the star are distinct but appear as if they could join together. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -31318,7 +31337,8 @@
             "ttsScript": "Split, read, and blend. Sunshine! You read a two-syllable long vowel word!",
             "audioRegenAt": "2026-06-04T03:17:58.473Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:39:46.367Z"
       },
       {
         "type": "example",
@@ -31675,8 +31695,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.2.3d/example.png",
+        "imagePrompt": "A friendly, smiling cartoon child with brown hair and a red shirt stands next to a small, wooden treasure chest. The treasure chest is open, its lid lifted, revealing colorful cartoon gems and gold coins sparkling inside. A small, shiny cartoon key is lying on the ground next to the open lock on the chest. The child looks happy and accomplished. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -31737,7 +31757,8 @@
             "ttsScript": "So unlock means not locked. You peeled off the prefix!",
             "audioRegenAt": "2026-06-04T03:18:03.627Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:39:49.472Z"
       },
       {
         "type": "tip",
@@ -32045,8 +32066,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.2.3e/example.png",
+        "imagePrompt": "A friendly cartoon child's hand is prominently displayed, with the thumb pointing upwards and slightly forward. Peeking shyly from directly behind the child's thumb is a small, translucent, friendly cartoon ghost. The ghost has a gentle smile and one finger held up to its mouth in a 'shhh' gesture, indicating silence. The ghost is semi-transparent, suggesting it is present but not heard. The scene is set against a solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -32107,7 +32128,8 @@
             "ttsScript": "So thumb sounds like thum. The B is just for show. You caught the surprise!",
             "audioRegenAt": "2026-06-04T03:47:11.091Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:39:53.677Z"
       },
       {
         "type": "tip",
@@ -32356,8 +32378,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.2.3f/example.png",
+        "imagePrompt": "A friendly, diverse K-4 aged child with a thoughtful expression holds a smooth, light brown wooden block in their hands, looking at it curiously. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -32418,7 +32440,8 @@
             "ttsScript": "So would has a silent L and sounds like wood. See it often and you'll know it fast!",
             "audioRegenAt": "2026-06-04T03:47:37.573Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:06.276Z"
       },
       {
         "type": "tip",
@@ -32676,8 +32699,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.2.4/example.png",
+        "imagePrompt": "A friendly cartoon child, a girl with short brown hair, stands in a green grassy park. She has a worried and curious expression on her face, with slightly furrowed eyebrows and her mouth slightly open. Her hands are cupped around her mouth as if calling out, and she is looking intently towards the right side of the frame. Hidden partially behind a small, leafy green bush to her right, a small, cute, light brown puppy with floppy ears peeks out, looking a little sad and confused. The puppy's eyes are wide and its ears are slightly drooped. The background is a solid sky-blue. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -32738,7 +32761,8 @@
             "ttsScript": "Hear how it sounds like real talking? That's reading with flow. You did it!",
             "audioRegenAt": "2026-06-04T03:47:32.981Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:10.369Z"
       },
       {
         "type": "tip",
@@ -33869,8 +33893,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.2.4/example.png",
+        "imagePrompt": "A friendly cartoon mom with a gentle smile sits comfortably, holding an open picture book in her hands. She looks at the page with a slight 'aha!' expression, as if she just found her spot to continue reading. Her index finger points to a simple, colorful, text-free illustration on the page, like a happy sun over a green hill, indicating she is about to start reading from there again. Solid light yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -33931,7 +33955,8 @@
             "ttsScript": "The part re plus the clue lost her place both point to again. You cracked the case!",
             "audioRegenAt": "2026-06-04T03:49:13.076Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:13.437Z"
       },
       {
         "type": "tip",
@@ -34453,8 +34478,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.2.4b/example.png",
+        "imagePrompt": "A friendly, smiling cartoon child stands in a simple kitchen, happily turning a dial on a clean, empty cartoon oven. The oven door is closed and the oven is clearly empty. A thought bubble floats above the child's head, showing a delicious, perfectly baked cookie. On the counter next to the oven, an empty mixing bowl and a wooden spoon wait. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -34515,7 +34540,8 @@
             "ttsScript": "So preheat means heat before. Prefix power!",
             "audioRegenAt": "2026-06-04T03:49:09.497Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:23.521Z"
       },
       {
         "type": "tip",
@@ -35305,8 +35331,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.2.4e/example.png",
+        "imagePrompt": "A friendly K-4 child, with a curious and focused expression, sits comfortably while holding a large, open book. The child's finger points to a specific section on the right-hand page of the book, which visually stands out as a reference section. On the page where the child is pointing, there is a small, clear illustration of a vibrant natural habitat, featuring green trees, a winding blue river, and a friendly cartoon deer and a bird. The child's eyes are looking intently at this illustration. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -35367,7 +35393,8 @@
             "ttsScript": "The glossary tells us a habitat is an animal's home. You found the meaning!",
             "audioRegenAt": "2026-06-04T03:49:17.787Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:31.038Z"
       },
       {
         "type": "tip",
@@ -35664,8 +35691,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.2.5/example.png",
+        "imagePrompt": "A small, happy cartoon child stands in the middle of a grassy field. To the child's left is a very large, friendly, smiling grey elephant. To the child's right is a very large, friendly, smiling blue whale. Both the elephant and the whale are depicted as massive in size, clearly conveying 'big' and 'huge', and appear similar in their overall imposing scale relative to the child. The child looks from one giant animal to the other with a curious and happy expression. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -35726,7 +35753,8 @@
             "ttsScript": "Big and huge are synonyms because they mean almost the same. You made the connection!",
             "audioRegenAt": "2026-06-04T03:49:26.571Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:51.526Z"
       },
       {
         "type": "tip",
@@ -36026,8 +36054,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.2.5a/example.png",
+        "imagePrompt": "A happy, confident young child with a wide smile is actively sliding down a tall, colorful playground slide. The child's arms are slightly out, and their body posture shows excitement and no fear as they descend. The slide is tall and curves gently, made of bright plastic. The scene is set against a solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -36088,7 +36116,8 @@
             "ttsScript": "Sam was brave. You matched the word to a real moment. Great work!",
             "audioRegenAt": "2026-06-04T03:49:31.115Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:40.966Z"
       },
       {
         "type": "tip",
@@ -37178,8 +37207,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.3.2/example.png",
+        "imagePrompt": "A friendly, determined cartoon turtle with a slight smile is just crossing a plain white finish line ribbon, its front legs extended. Behind the finish line, a cartoon hare is sitting, looking sleepy and a bit surprised, rubbing one eye with a paw. The scene takes place on a simple green grassy field. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -37240,7 +37269,8 @@
             "ttsScript": "So the fable's message is: slow and steady wins. You found the lesson!",
             "audioRegenAt": "2026-06-04T03:54:50.763Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:47.739Z"
       },
       {
         "type": "tip",
@@ -38288,8 +38318,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.3.6/example.png",
+        "imagePrompt": "A happy child, about 7 years old, with a warm, soft blanket draped over their lap, sits comfortably in a cozy armchair next to a window. The child is smiling gently, looking out at the rain falling steadily outside. A steaming mug rests on a small side table beside the child. Through the window, gentle raindrops are visible against a simple outdoor scene featuring a green tree and soft gray sky. The indoor setting feels warm and inviting. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -38350,7 +38380,8 @@
             "ttsScript": "So we told the two views apart. Great detective work!",
             "audioRegenAt": "2026-06-04T03:21:54.861Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:40:58.756Z"
       },
       {
         "type": "tip",
@@ -38594,8 +38625,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.3.7/example.png",
+        "imagePrompt": "A happy cartoon girl, with a wide smile, dancing and twirling joyfully. She stands on a vibrant green meadow ground, which is filled with numerous bright, colorful flowers of different types. A friendly, smiling sun shines brightly in the solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -38656,7 +38687,8 @@
             "ttsScript": "Bright colors made a happy mood. You read the picture's feeling!",
             "audioRegenAt": "2026-06-04T03:22:12.672Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:41:10.982Z"
       },
       {
         "type": "example",
@@ -39208,8 +39240,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.3.10/example.png",
+        "imagePrompt": "A friendly cartoon girl named Mia sits cross-legged on a solid sky-blue background. To her left, a thick, closed book with a plain, dark cover rests on the floor. Mia glances at this book with a thoughtful, slightly tired expression. In her hands, she holds open a smaller, thinner book with a bright, colorful cover, looking at it with a wide, happy, and engaged smile. Her posture is relaxed and comfortable. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -39270,7 +39302,8 @@
             "ttsScript": "A poem mixes up her reading and stretches her brain. You picked a great year of reading!",
             "audioRegenAt": "2026-06-04T03:50:33.597Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:41:58.495Z"
       },
       {
         "type": "tip",
@@ -40078,8 +40111,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.3.3/example.png",
+        "imagePrompt": "A sad, droopy green plant with wilted leaves sits in a terracotta pot. The soil in the pot is visibly dry and cracked. A bright blue watering can lies empty and tipped over on its side next to the pot, with no water coming out. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -40140,7 +40173,8 @@
             "ttsScript": "No water caused the plant to wilt. You connected cause and effect!",
             "audioRegenAt": "2026-06-04T03:23:00.329Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:41:15.118Z"
       },
       {
         "type": "tip",
@@ -40398,8 +40432,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.3.4/example.png",
+        "imagePrompt": "A friendly 2D cartoon illustration depicting a vibrant natural environment. A happy brown rabbit peeks out from a cozy burrow in a grassy hill. Above, a cheerful blue bird sits in a nest nestled within the branches of a large green tree. Nearby, a smiling green frog rests on a lily pad in a clear blue pond, with a small orange fish swimming beneath the surface. The scene clearly shows different animals in their natural homes. Solid light green background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -40460,7 +40494,8 @@
             "ttsScript": "Habitat means an animal's home. You cracked an academic word!",
             "audioRegenAt": "2026-06-04T03:23:06.012Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:41:31.053Z"
       },
       {
         "type": "tip",
@@ -40713,8 +40748,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.3.5/example.png",
+        "imagePrompt": "A friendly, diverse K-4 child with a curious expression sits at a clean wooden desk. The child is holding an open, colorful book. The book is open to its very last pages, and the child's index finger is pointing to the bottom corner of one of these back pages. On the desk next to the open book, the book's front cover is visible, featuring a simple, friendly cartoon illustration of a green dinosaur. Floating slightly above the child's head, as if a thought or visual representation, is a cute, friendly cartoon volcano gently puffing a small cloud of smoke from its peak. solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -40775,7 +40810,8 @@
             "ttsScript": "So the index at the back finds the word fast. You used a text feature!",
             "audioRegenAt": "2026-06-04T03:50:38.928Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:42:08.680Z"
       },
       {
         "type": "tip",
@@ -41286,8 +41322,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.3.7/example.png",
+        "imagePrompt": "A friendly, brightly colored cartoon flower with wide, open petals, a strong green stem, and clearly visible brown roots extending into the soil. Three thin, clean black lines originate from the side of the image and point directly to one of the petals, the stem, and the roots respectively, visually highlighting these distinct parts. Solid light green background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -41348,7 +41384,8 @@
             "ttsScript": "So a diagram labels the parts. The picture taught you something new!",
             "audioRegenAt": "2026-06-04T03:23:56.228Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:41:47.501Z"
       },
       {
         "type": "tip",
@@ -42076,8 +42113,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.3.10/example.png",
+        "imagePrompt": "A large, friendly, brown cartoon beehive hangs from a tree branch on the left side of the frame. Several cute, smiling cartoon bees with black and yellow stripes and small wings are flying around the beehive. One bee is just about to enter the hive's opening. Below the hive, a small, golden puddle of honey is visible on the ground. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -42138,7 +42175,8 @@
             "ttsScript": "Main idea bees, detail honey. You understood the facts!",
             "audioRegenAt": "2026-06-04T03:50:44.333Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:42:02.798Z"
       },
       {
         "type": "tip",
@@ -43819,8 +43857,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.3.4/example.png",
+        "imagePrompt": "Three diverse children, two girls and one boy, are joyfully celebrating a victory. One girl, with a wide, excited smile, jumps high in the air with her arms raised in triumph. The boy next to her holds a small, shiny golden trophy above his head with a proud, happy expression. The other girl claps her hands together enthusiastically, her face beaming with excitement. All three children have open mouths as if cheering loudly, their bodies conveying immense happiness and energy. They are wearing simple, colorful t-shirts and shorts. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -43881,7 +43919,8 @@
             "ttsScript": "An excited voice for an excited sentence. That is expressive reading!",
             "audioRegenAt": "2026-06-04T03:54:53.887Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:42:17.125Z"
       },
       {
         "type": "tip",
@@ -44442,8 +44481,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.3.4b/example.png",
+        "imagePrompt": "A friendly, brown cartoon rabbit is shown in a dynamic pose, mid-leap, darting quickly across a patch of green grass. Its long ears are slightly flattened back, and its eyes are wide, conveying a sense of energetic, fast movement. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -44504,7 +44543,8 @@
             "ttsScript": "We read prose smoothly, like talking. You made it come alive!",
             "audioRegenAt": "2026-06-04T03:24:53.220Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:42:21.269Z"
       },
       {
         "type": "tip",
@@ -44997,8 +45037,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.4/example.png",
+        "imagePrompt": "A young, friendly-looking cartoon child with short brown hair, wearing a simple blue shirt and red shorts, sits cross-legged on a small yellow rug in the center of a room. The child has a slightly sad expression, with downturned mouth and eyebrows. Behind the child, a large window is completely covered by heavy, dark blue curtains, blocking all outside light. The room's walls are a solid light gray. The overall illumination of the scene is low, creating a dim and somber atmosphere. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -45059,7 +45099,8 @@
             "ttsScript": "Gloomy means dark and sad. You cracked the code, detective!",
             "audioRegenAt": "2026-06-04T03:24:59.298Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:43:00.187Z"
       },
       {
         "type": "tip",
@@ -45858,8 +45899,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.4c/example.png",
+        "imagePrompt": "A diverse group of happy children playing outdoors. One child is joyfully kicking a red soccer ball. Another child is swinging high on a playground swing, smiling widely. A third child is building a colorful block tower on the ground with concentration. A fourth child is running with a kite flying behind them. All children are active and engaged in their play. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -45920,7 +45961,8 @@
             "ttsScript": "The root play builds a whole word family. You found the heart of the word!",
             "audioRegenAt": "2026-06-04T03:51:41.914Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:42:39.659Z"
       },
       {
         "type": "example",
@@ -46502,8 +46544,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.5/example.png",
+        "imagePrompt": "A friendly cartoon knight, wearing shining armor with a plumed helmet, is tiptoeing very softly and carefully across a simple stone floor. His movements are light and gentle, conveying extreme quietness. A tiny, cute cartoon mouse sits calmly on the floor nearby, looking up at the knight with wide, curious eyes, also emphasizing stillness. The knight has a kind and focused expression. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -46564,7 +46606,8 @@
             "ttsScript": "It is a simile that means very quiet. You found the hidden meaning!",
             "audioRegenAt": "2026-06-04T03:27:03.414Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:42:37.933Z"
       },
       {
         "type": "tip",
@@ -46802,8 +46845,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.5a/example.png",
+        "imagePrompt": "A bright blue sky with fluffy white cartoon rain clouds. From the fluffy white cartoon rain clouds, a whimsical shower of various friendly, happy cartoon cats and dogs is falling towards the ground. The cats are diverse in color and breed, like a striped tabby, a fluffy white cat, and a sleek black cat. The dogs are also diverse, like a golden retriever puppy, a small terrier, and a floppy-eared beagle. They are depicted mid-air with slightly surprised but cheerful expressions, as if they are the raindrops themselves. Below them, a green grassy ground with a small puddle of water. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -46864,7 +46907,8 @@
             "ttsScript": "The words sound silly literally, so the meaning is nonliteral. You pictured it!",
             "audioRegenAt": "2026-06-04T03:27:08.592Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:42:57.291Z"
       },
       {
         "type": "example",
@@ -47748,8 +47792,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.6/example.png",
+        "imagePrompt": "A happy cartoon girl with pigtails looks through a large, friendly-looking telescope. Her eyes are wide with wonder and interest, showing she is eager to learn. In the distance, a colorful ringed planet and a few twinkling stars are visible, suggesting what she is observing. Solid dark blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -47810,7 +47854,8 @@
             "ttsScript": "You used a new word in real talk. Use it again tomorrow and it's yours for life!",
             "audioRegenAt": "2026-06-04T03:28:44.786Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:42:57.580Z"
       },
       {
         "type": "tip",
@@ -48634,8 +48679,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.4.3/example.png",
+        "imagePrompt": "A friendly young girl with a kind expression holds a large, colorful open umbrella, sharing it with an adult stranger who looks a bit wet and is smiling gratefully. Raindrops are falling all around them, but they are mostly dry under the umbrella. They are standing on a grey sidewalk next to a simple green bush. Solid light blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -48696,7 +48741,8 @@
             "ttsScript": "The action showed kindness, even without the word kind. You read deep!",
             "audioRegenAt": "2026-06-04T03:28:50.098Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:43:16.970Z"
       },
       {
         "type": "example",
@@ -48973,8 +49019,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.4.4/example.png",
+        "imagePrompt": "A friendly cartoon illustration of a young girl with dark hair, sitting at a desk that is completely buried under an enormous, towering mountain of school books, notebooks, and loose papers. The pile of homework is much taller than her and surrounds her, making her look slightly overwhelmed but not distressed, with a small, tired expression. She is surrounded by the papers, which are stacked high around her like gentle, soft waves. Solid light yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -49035,7 +49081,8 @@
             "ttsScript": "Drowning paints a feeling, not real water. You unlocked the figurative meaning!",
             "audioRegenAt": "2026-06-04T03:28:56.107Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:43:17.783Z"
       },
       {
         "type": "tip",
@@ -50054,8 +50101,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.4.9/example.png",
+        "imagePrompt": "A 2D cartoon illustration depicting two distinct scenes side-by-side on a solid sky-blue background. On the left, a brave young Greek boy, wearing a simple white tunic and sandals, stands confidently in front of a stylized Greek village with white stucco houses and blue roofs. He has a determined expression and is gently guiding a small, lost sheep back towards the village. On the right, a brave young African girl, wearing colorful traditional African clothing, stands confidently in front of a stylized African village with mud-brick huts and thatched roofs. She has a determined expression and is helping a smaller child carry a small, empty water pot. Both characters show courage and helpfulness. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -50116,7 +50163,8 @@
             "ttsScript": "Different cultures, same theme of courage. You compared them like a reader!",
             "audioRegenAt": "2026-06-04T03:55:28.707Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:53:14.697Z"
       },
       {
         "type": "tip",
@@ -50419,8 +50467,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.4.10/example.png",
+        "imagePrompt": "A friendly, diverse cartoon boy, around 8 years old, sits comfortably at a small wooden desk. He holds an open, text-free picture book in one hand, looking at it with a thoughtful expression. With his other hand, he holds a pencil poised over an open notebook. Inside the notebook, a simple, small, hand-drawn sketch of a brave knight in shining armor is visible. A solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -50481,7 +50529,8 @@
             "ttsScript": "A chapter a day plus notes on characters. Now you can conquer big stories!",
             "audioRegenAt": "2026-06-04T03:29:48.258Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:43:28.330Z"
       },
       {
         "type": "tip",
@@ -50651,8 +50700,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.4.1/example.png",
+        "imagePrompt": "A friendly 2D cartoon illustration showing a cross-section of a dark cave. Inside the cave, several cute, friendly bats hang upside down from the cave ceiling, eyes closed, peacefully sleeping. Through the cave's opening, a night sky with a crescent moon and twinkling stars is visible. One cute bat flies out of the cave entrance, actively chasing a small, cartoon insect in the night air. Solid dark blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -50713,7 +50762,8 @@
             "ttsScript": "You backed your answer with text evidence. That's how detectives read nonfiction!",
             "audioRegenAt": "2026-06-04T03:29:54.041Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:43:36.515Z"
       },
       {
         "type": "example",
@@ -50979,8 +51029,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.4.2/example.png",
+        "imagePrompt": "A friendly, cartoon beehive is centrally placed in a field of colorful, blooming cartoon flowers. Multiple happy, busy cartoon bees are actively flying around the scene. Some bees are gently landing on flowers, appearing to collect pollen or nectar, while others are flying with full pollen baskets. Several bees are flying in and out of the beehive's entrance, conveying a sense of constant activity and purpose. The overall image depicts bees as industrious and helpful. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -51041,7 +51091,8 @@
             "ttsScript": "The main idea is the umbrella; honey is rain underneath. You found the heart of the text!",
             "audioRegenAt": "2026-06-04T03:52:46.115Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:43:36.154Z"
       },
       {
         "type": "example",
@@ -51621,8 +51672,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.4.4/example.png",
+        "imagePrompt": "A friendly cartoon scientist, wearing a white lab coat and safety goggles, stands next to a small potted plant on a clean lab bench. The scientist has a thoughtful expression, with one hand gently resting on their chin and the other hand pointing towards the plant. Above the scientist's head, a cartoon thought bubble clearly shows the same potted plant, but now significantly taller and with more leaves, representing a future state. On the lab bench, next to the plant, are a simple, text-free beaker and a magnifying glass. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -51683,7 +51734,8 @@
             "ttsScript": "So prediction means a guess about what will happen. You used the context to unlock it!",
             "audioRegenAt": "2026-06-04T03:30:45.337Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:48:52.817Z"
       },
       {
         "type": "tip",
@@ -51979,8 +52031,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.4.5/example.png",
+        "imagePrompt": "A happy, friendly cartoon child, wearing a chef's hat and apron, stands at a kitchen counter. The child is stirring a mixing bowl with a spoon, which contains a light-colored batter. Next to the bowl, an open carton of eggs is visible, with one egg being gently cracked into the bowl. A white bag, visually identifiable as flour (no text), is also on the counter. In the background, a simple, friendly-looking oven has a clear glass door, through which a golden-brown cake is visible, baking inside. The child has a cheerful expression, engaged in the baking process. Solid light yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -52041,7 +52093,8 @@
             "ttsScript": "So the clue words tell us it is sequence. You spotted the structure!",
             "audioRegenAt": "2026-06-04T03:30:52.366Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:12.333Z"
       },
       {
         "type": "tip",
@@ -52269,8 +52322,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.4.6/example.png",
+        "imagePrompt": "A group of diverse, friendly cartoon miners, wearing hats and overalls, are actively searching for gold in a riverbed. One miner is panning for gold in a shallow river, another is digging with a shovel, and a third is holding a pickaxe. In the background, a covered wagon is visible, suggesting westward travel through a mountainous landscape. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -52331,7 +52384,8 @@
             "ttsScript": "It gives facts and dates, not feelings, so it is secondhand. You figured it out!",
             "audioRegenAt": "2026-06-04T03:30:57.902Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:48:54.815Z"
       },
       {
         "type": "example",
@@ -53666,8 +53720,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.4.3/example.png",
+        "imagePrompt": "A happy child, a girl with pigtails, stands looking up with wide, amazed eyes and slightly open hands. Floating gently in front of her, slightly above her head, is a small, friendly, colorful winged creature with a gentle smile, like a miniature dragon or a pegasus foal, looking magical and wonderful. Solid light yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -53728,7 +53782,8 @@
             "ttsScript": "You chunked it, read it, and blended it into fantastic. You decoded the whole word!",
             "audioRegenAt": "2026-06-04T03:31:06.372Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:12.216Z"
       },
       {
         "type": "example",
@@ -54067,8 +54122,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.4.3a/example.png",
+        "imagePrompt": "A friendly, simple 2D cartoon landline telephone with a curly cord and a receiver slightly lifted from its cradle, as if ready to be used. The telephone is a cheerful, bright color like red or blue. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -54129,7 +54184,8 @@
             "ttsScript": "So PH says F. Phone! You spotted the combo!",
             "audioRegenAt": "2026-06-04T03:31:45.806Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:11.552Z"
       },
       {
         "type": "tip",
@@ -54375,8 +54431,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.4.4/example.png",
+        "imagePrompt": "A friendly cartoon child with wide, excited eyes and an open-mouthed smile looks up at a cartoon rocket. The rocket is in mid-launch, with cartoon flames and smoke billowing from its base, ascending rapidly into the solid sky-blue background. The child's arms are slightly raised in excitement. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -54437,7 +54493,8 @@
             "ttsScript": "So we speed up and sound excited. That's smooth reading!",
             "audioRegenAt": "2026-06-04T03:31:47.218Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:33.979Z"
       },
       {
         "type": "tip",
@@ -55010,8 +55067,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.4.4a/example.png",
+        "imagePrompt": "A friendly, curious cartoon child with a small backpack stands at the mouth of a simple, rounded cave. The child holds a small, glowing lantern that casts a small circle of light just inside the cave's opening, highlighting the deep, shadowy interior which clearly conveys \"dark and dim\" without being scary. The child looks thoughtfully into the cave. Solid forest green background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -55072,7 +55129,8 @@
             "ttsScript": "Murky means dark and dim. The sentence gave you the clue!",
             "audioRegenAt": "2026-06-04T03:31:53.014Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:31.838Z"
       },
       {
         "type": "example",
@@ -55749,8 +55807,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.4.4c/example.png",
+        "imagePrompt": "A friendly cartoon K-4 student, a girl with two pigtails and a bright smile, stands next to a large, open, text-free reference book. She points with one finger at the book's open pages. Floating above the book's pages are three distinct, smiling yellow cartoon faces, arranged in a subtle progression from left to right. The first face on the left has a gentle, closed-mouth smile. The middle face has a wider, more expressive smile with slightly raised eyebrows, conveying joy. The third face on the right has a very wide, beaming, open-mouth smile, eyes wide in delight, and arms raised in an excited, celebratory gesture. The student looks at these faces with an expression of understanding and discovery. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -55811,7 +55869,8 @@
             "ttsScript": "So a thesaurus swaps happy for joyful. Right tool, right job!",
             "audioRegenAt": "2026-06-04T03:33:22.371Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:35.077Z"
       },
       {
         "type": "tip",
@@ -56668,8 +56727,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.4.5b/example.png",
+        "imagePrompt": "A friendly cartoon child with a wide, confident smile sits at a small desk, holding a pencil. On the desk in front of them is a clean, blank sheet of paper, suggesting a task that was easily completed. Next to the paper, on a small plate, is a delicious-looking slice of cake. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -56730,7 +56789,8 @@
             "ttsScript": "Piece of cake means very easy. You cracked the hidden meaning!",
             "audioRegenAt": "2026-06-04T03:34:38.952Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:51.323Z"
       },
       {
         "type": "tip",
@@ -57222,8 +57282,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.4.6/example.png",
+        "imagePrompt": "A friendly, curious child with a magnifying glass intently examines a small, potted green plant on a wooden desk. Next to the plant, a neat stack of blank white papers and a pencil are ready for a school report. The child has a focused, happy expression. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -57284,7 +57344,8 @@
             "ttsScript": "You matched a big word to the right setting. That's how smart writers sound clear!",
             "audioRegenAt": "2026-06-04T03:35:19.930Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:52.152Z"
       },
       {
         "type": "tip",
@@ -59202,8 +59263,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.1.3f/example.png",
+        "imagePrompt": "A happy cartoon child, with a bright smile, sits on the floor next to a tall, colorful tower of building blocks that has just been completed. A few extra blocks are neatly stacked nearby, indicating they were part of the play. The child looks proudly at the finished tower. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -59264,7 +59325,8 @@
             "ttsScript": "So played means it already happened. You read the ending!",
             "audioRegenAt": "2026-06-04T03:36:06.806Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:49:52.616Z"
       },
       {
         "type": "tip",
@@ -59570,8 +59632,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.1.3g/example.png",
+        "imagePrompt": "A friendly cartoon child, with a curious and gentle smile, is holding a single chocolate chip cookie in one hand. Next to the child, on a simple, clean surface, is a plate piled with several other identical chocolate chip cookies. The child is looking at the cookie they are holding. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -59632,7 +59694,8 @@
             "ttsScript": "So of breaks the rules. We know it by sight. Great job!",
             "audioRegenAt": "2026-06-04T03:35:53.979Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:50:14.810Z"
       },
       {
         "type": "tip",
@@ -60304,8 +60367,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.1.1/example.png",
+        "imagePrompt": "A happy K-4 aged child, with a friendly smile, is holding a vibrant, multi-colored playground ball in their hands, looking at it with a sense of wonder and engagement. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -60366,7 +60429,8 @@
             "ttsScript": "So ball is a noun. It names a thing. You spotted the job!",
             "audioRegenAt": "2026-06-04T03:36:03.872Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:50:11.456Z"
       },
       {
         "type": "tip",
@@ -61305,8 +61369,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.2.2/example.png",
+        "imagePrompt": "A friendly, cute, smiling orange and white cartoon cat is happily wearing a simple blue and white striped cartoon hat on its head. The cat has its eyes open and is looking forward. Solid light yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -61367,7 +61431,8 @@
             "ttsScript": "So we write cat's hat. The apostrophe and S show owning. Great work!",
             "audioRegenAt": "2026-06-04T03:36:27.209Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:50:07.017Z"
       },
       {
         "type": "tip",
@@ -61634,8 +61699,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.2.3/example.png",
+        "imagePrompt": "A diverse group of cheerful children participating in a foot race on a sunny day. In the foreground, one child, Sam, with short brown hair and a bright yellow t-shirt, is joyfully breaking through a finish line ribbon. Sam has a wide, beaming smile and both arms are raised high in a triumphant gesture. A gold medal hangs around Sam's neck. Behind Sam, two other children, one with pigtails and a green shirt, and another with a blue hat and a red shirt, are clapping and smiling, looking impressed. The race track is a simple brown path with a green grassy field on either side. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -61696,7 +61761,8 @@
             "ttsScript": "So Sam was thrilled paints a stronger picture. You picked the perfect word!",
             "audioRegenAt": "2026-06-04T03:41:20.018Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:50:27.432Z"
       },
       {
         "type": "tip",
@@ -61999,8 +62065,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.1/example.png",
+        "imagePrompt": "A cheerful cartoon child with short brown hair and a blue shirt is actively running from left to right across a green grassy field, arms pumping and legs in motion, with subtle motion lines behind them. On the right side of the frame, the same cheerful child is standing still, hands on hips, smiling proudly, having just crossed a simple, plain red finish line ribbon that is now broken around their waist. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -62061,7 +62127,8 @@
             "ttsScript": "So run becomes ran, not runned. You caught that tricky verb!",
             "audioRegenAt": "2026-06-04T03:41:26.585Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:50:34.015Z"
       },
       {
         "type": "tip",
@@ -62610,8 +62677,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.3/example.png",
+        "imagePrompt": "A friendly, happy cartoon duck with a wide-open beak, looking like it is quacking loudly, stands by the edge of a calm blue pond with a few green reeds. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -62672,7 +62739,8 @@
             "ttsScript": "So the duck quacked beats the duck said. Strong words paint pictures. Great work!",
             "audioRegenAt": "2026-06-04T03:53:02.684Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:50:33.599Z"
       },
       {
         "type": "tip",
@@ -63283,8 +63351,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.4.2/example.png",
+        "imagePrompt": "A cheerful cartoon girl is depicted in two sequential moments on a solid light-green background. On the left, she is running very fast, with a happy, determined expression, arms pumping and legs in mid-stride, simple motion lines indicating speed. On the right, slightly behind and lower, the same girl is shown in the act of falling, hands out, one knee bent, with a surprised but not upset expression on her face. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -63345,7 +63413,8 @@
             "ttsScript": "So we write: She ran fast, comma, but she fell. Comma before the conjunction. You nailed it!",
             "audioRegenAt": "2026-06-04T03:53:25.617Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-06T03:50:46.480Z"
       },
       {
         "type": "tip",
