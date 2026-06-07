@@ -12,7 +12,12 @@ import { promises as fs } from "node:fs";
 
 const AUTH = path.resolve(process.cwd(), ".demo-auth.json");
 const OUT = path.resolve(process.cwd(), "lesson-shots");
-const stds = process.argv.slice(2);
+// Accept stds as args, OR a single .txt chunk file (space/newline-separated)
+// — avoids shell word-split issues when launching many parallel workers.
+const rawArgs = process.argv.slice(2);
+const stds = rawArgs.length === 1 && rawArgs[0].endsWith(".txt")
+  ? require("node:fs").readFileSync(rawArgs[0], "utf-8").trim().split(/\s+/).filter(Boolean)
+  : rawArgs;
 
 (async () => {
   await fs.mkdir(OUT, { recursive: true });

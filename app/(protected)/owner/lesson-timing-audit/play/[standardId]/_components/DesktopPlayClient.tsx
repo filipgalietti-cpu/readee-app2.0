@@ -14,8 +14,10 @@ import type { SampleLesson } from "@/app/components/lesson/LessonSlideshow";
  */
 export default function DesktopPlayClient({
   lesson,
+  auditMode = false,
 }: {
   lesson: SampleLesson;
+  auditMode?: boolean;
 }) {
   const [nonce, setNonce] = useState(0);
 
@@ -41,6 +43,7 @@ export default function DesktopPlayClient({
             onComplete={() => {}}
             devMode={true}
             chrome="desktop-shell"
+            auditMode={auditMode}
           />
         </div>
       </div>

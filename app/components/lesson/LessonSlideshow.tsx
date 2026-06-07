@@ -160,6 +160,10 @@ interface LessonSlideshowProps {
    *  bunny on the interactive fork. Defaults to Classic when absent (e.g.
    *  the owner audit page, which has no child context). */
   outfitId?: string | null;
+  /** Audit/screenshot mode — reveal ALL of each slide's content
+   *  immediately (skip the karaoke timing) so a static screenshot shows
+   *  the finished slide, not a half-drawn frame. Demo-render only. */
+  auditMode?: boolean;
 }
 
 /* ─── Constants ──────────────────────────────────────── */
@@ -252,7 +256,7 @@ const revealVariants = {
 
 /* ─── Component ──────────────────────────────────────── */
 
-export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered", outfitId = null }: LessonSlideshowProps) {
+export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered", outfitId = null, auditMode = false }: LessonSlideshowProps) {
   const isMuted = useAudioStore((s) => s.isMuted);
 
   // Shell-mode viewport detection — 75% of usage is phone. When the
@@ -691,6 +695,15 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     setHighlightedPill(-1);
     setShowNext(true);
   }, [steps, clearTimer]);
+
+  // Audit mode — reveal the whole slide shortly after it mounts so a
+  // screenshot captures the FINISHED slide (all pills/answers/tables
+  // shown), not a half-drawn karaoke frame.
+  useEffect(() => {
+    if (!auditMode) return;
+    const t = setTimeout(() => handleSkip(), 700);
+    return () => clearTimeout(t);
+  }, [currentSlide, auditMode, handleSkip]);
 
   // Per-step image override: when the currently-playing step has its own imageFile,
   // swap to it so the visual advances with the audio.
@@ -1764,25 +1777,22 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
       else audioManager.playIncorrectBuzz?.();
     };
 
-    // The fork shows the bunny coach in the left panel instead of an image
-    // (a scene image would risk spoiling the answer).
-    // .bn-stage is width/height:100%, so the bunny needs a parent with an
-    // EXPLICIT size — the mobile image zone gives leftSlot no height, which
-    // collapsed the bunny to 0. The inner fixed-size box fixes both shells.
+    // The fork bunny coach renders INSIDE the content as one centered
+    // column (bunny on top, then question + choices) — NOT in a side
+    // panel. The split-panel layout left the bunny floating mid-left with
+    // a big empty band (Filip flagged the dead space). .bn-stage is
+    // width/height:100% so the bunny needs an explicit-size parent.
     const bunnyCoach = (
-      <div className="flex w-full items-center justify-center py-2 lg:h-full lg:py-0">
-        <div className="h-32 w-32 sm:h-40 sm:w-40 lg:h-56 lg:w-56">
+      <div className="flex w-full items-center justify-center">
+        <div className="h-24 w-24 sm:h-28 sm:w-28 lg:h-36 lg:w-36">
           {forkReaction === "idle"
             ? <Bunny outfitId={outfitId} />
             : <BunnyReaction key={`${forkReaction}-${forkNudge}`} outfitId={outfitId} state={forkReaction} />}
         </div>
       </div>
     );
-    const sharedLeftSlot = isSynthetic
-      ? <CelebrationLeftPanel />
-      : slide?.type === "interactive"
-        ? bunnyCoach
-        : undefined;
+    // Fork has no side panel now → single centered column on both shells.
+    const sharedLeftSlot = isSynthetic ? <CelebrationLeftPanel /> : undefined;
     const nonSyntheticContent = (
       <div className="flex flex-1 flex-col items-center justify-center text-center w-full gap-5 lg:gap-8">
         {slide?.heading && (
@@ -2142,6 +2152,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               />
             )
           )}
+          {hasInteractive && bunnyCoach}
           {hasInteractive && slide?.interactive && (
             slide.interactive.kind === "match" ? (
               <InteractiveMatch

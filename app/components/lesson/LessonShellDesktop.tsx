@@ -17,6 +17,7 @@
 import type { ReactNode } from "react";
 import { X, Volume2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Bunny } from "@/app/_components/Bunny/Bunny";
 
 export interface LessonShellDesktopProps {
   slideNum: number;
@@ -397,7 +398,7 @@ export function CelebrationContent({
           {eyebrow}
         </div>
       )}
-      <div className="text-[52px] font-extrabold leading-[1.2] tracking-tight">
+      <div className="text-[52px] font-extrabold leading-[1.2] tracking-tight text-violet-700 dark:text-violet-300">
         {title}
       </div>
       {body && (
@@ -415,7 +416,9 @@ export function CelebrationContent({
  * sparkle marks. Pass via `imageUrl` only when there's no real
  * illustration; or use the no-image variant.
  */
-export function CelebrationLeftPanel({ icon = "🚀" }: { icon?: string }) {
+export function CelebrationLeftPanel() {
+  // On-brand Readee bunny on a violet gradient — replaces the native 🚀
+  // emoji (glossy 3D, off our flat-cartoon style + breaks no-native-emoji).
   return (
     <div className="relative flex h-full w-full items-center justify-center">
       <div className="relative flex h-[70%] w-[86%] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-violet-100 to-violet-300 shadow-[0_8px_24px_-8px_rgba(108,76,224,0.3)]">
@@ -435,7 +438,9 @@ export function CelebrationLeftPanel({ icon = "🚀" }: { icon?: string }) {
             ✦
           </span>
         ))}
-        <div className="-rotate-12 text-[140px]">{icon}</div>
+        <div className="h-[58%] w-[58%]">
+          <Bunny outfitId={null} />
+        </div>
       </div>
     </div>
   );
