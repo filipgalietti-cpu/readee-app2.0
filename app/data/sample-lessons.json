@@ -970,7 +970,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.1/interactive-q.mp3",
-            "ttsScript": "Now you try, detective! Here are some facts. A fox has soft red fur. It hunts at night. When the sun comes up, the fox sleeps in a deep hole called a burrow. Where does the fox sleep?"
+            "ttsScript": "Now you try, detective! Here are some facts. A fox has soft red fur. It hunts at night. When the sun comes up, the fox sleeps in a deep hole called a burrow. Where does the fox sleep?",
+            "audioRegenAt": "2026-06-08T02:01:15.023Z"
           }
         ],
         "interactive": {
@@ -1585,7 +1586,7 @@
             "sub": "e",
             "audioFile": "audio/lessons/RL.K.3/example-e.mp3",
             "ttsScript": "And what happened? The fox took a nap! You found the character, setting, and event. Amazing job!",
-            "audioRegenAt": "2026-06-04T02:48:46.939Z"
+            "audioRegenAt": "2026-06-08T02:01:11.214Z"
           }
         ],
         "imageRegenAt": "2026-06-06T03:34:14.271Z"
@@ -4512,7 +4513,7 @@
               "word": "cover",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:44:46.707Z"
+            "audioRegenAt": "2026-06-08T02:01:17.590Z"
           },
           {
             "sub": "d",
@@ -5162,7 +5163,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.6/interactive-q.mp3",
-            "ttsScript": "Your turn, book detective! Imagine someone who loves dinosaurs. They never write any words, but they paint a giant green T-Rex and a spiky Triceratops so you can see them. Who is that person?"
+            "ttsScript": "Your turn, book detective! Imagine someone who loves dinosaurs. They never write any words, but they paint a giant green T-Rex and a spiky Triceratops so you can see them. Who is that person?",
+            "audioRegenAt": "2026-06-08T02:01:24.435Z"
           }
         ],
         "interactive": {
@@ -9228,7 +9230,7 @@
               "word": "Pee",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T02:50:06.418Z"
+            "audioRegenAt": "2026-06-08T02:02:40.422Z"
           },
           {
             "sub": "d",
@@ -9355,7 +9357,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3a/interactive-q.mp3",
-            "ttsScript": "You've got this! Listen to each letter's sound, then match the letter to the sound it makes."
+            "ttsScript": "You've got this! Listen to each letter's sound, then match the letter to the sound it makes.",
+            "audioRegenAt": "2026-06-08T02:01:27.605Z"
           }
         ],
         "interactive": {
@@ -10480,7 +10483,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/interactive-q.mp3",
-            "ttsScript": "Your turn! One of these is a sight word you read right away, without sounding it out. Which one do you just know by looking?"
+            "ttsScript": "Your turn! One of these is a sight word you read right away, without sounding it out. Which one do you just know by looking?",
+            "audioRegenAt": "2026-06-08T02:01:44.906Z"
           }
         ],
         "interactive": {
@@ -13878,14 +13882,14 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.3/S4a.mp3",
             "ttsScript": "Let's try one together.",
-            "audioRegenAt": "2026-05-30T05:36:26.967Z"
+            "audioRegenAt": "2026-06-08T02:01:53.433Z"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.3/S4b.mp3",
             "ttsScript": "Tom played with his dog, Max. They ran in the sunny park.",
             "displayText": "Tom played with his dog, Max. They ran in the sunny park.",
-            "audioRegenAt": "2026-05-30T05:36:33.309Z"
+            "audioRegenAt": "2026-06-08T02:01:52.185Z"
           },
           {
             "sub": "c",
@@ -13905,7 +13909,7 @@
               "word": "Tom",
               "delay": 1440
             },
-            "audioRegenAt": "2026-05-30T05:36:39.609Z"
+            "audioRegenAt": "2026-06-08T02:02:00.355Z"
           },
           {
             "sub": "d",
@@ -17809,7 +17813,7 @@
               "word": "Rain",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T02:51:24.571Z"
+            "audioRegenAt": "2026-06-08T02:02:00.674Z"
           },
           {
             "sub": "d",
@@ -18595,7 +18599,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.9/interactive-q.mp3",
-            "ttsScript": "Listen closely. Book one says a frog has smooth skin. Book two says a frog eats bugs. What do these two books do?"
+            "ttsScript": "Listen closely. Book one says a frog has smooth skin. Book two says a frog eats bugs. What do these two books do?",
+            "audioRegenAt": "2026-06-08T02:02:10.430Z"
           }
         ],
         "interactive": {
@@ -20343,7 +20348,7 @@
             "audioFile": "audio/lessons/RF.1.4b/S3d.mp3",
             "ttsScript": "Nice and smooth, like talking to a friend.",
             "interaction": "",
-            "audioRegenAt": "2026-06-03T02:54:53.920Z",
+            "audioRegenAt": "2026-06-08T02:02:55.946Z",
             "highlightWord": {
               "word": "smooth",
               "delay": 300
@@ -21092,7 +21097,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.1.4/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this sentence: The bat hung upside down in the dark cave. Which bat is in this sentence?"
+            "ttsScript": "Your turn, detective! Listen to this sentence: The bat hung upside down in the dark cave. Which bat is in this sentence?",
+            "audioRegenAt": "2026-06-08T02:02:24.866Z"
           }
         ],
         "interactive": {
@@ -23748,7 +23754,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/L.1.6/S2b.mp3",
             "ttsScript": "The kids were hungry. They ate a ___.",
-            "audioRegenAt": "2026-06-03T02:55:10.113Z",
+            "audioRegenAt": "2026-06-08T02:02:35.880Z",
             "highlightWord": {
               "word": "hungry",
               "delay": 1000
@@ -27163,7 +27169,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.2.1/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen: When the icy wind blows, the penguins huddle close together in a big group. Why do the penguins huddle together?"
+            "ttsScript": "Your turn! Listen: When the icy wind blows, the penguins huddle close together in a big group. Why do the penguins huddle together?",
+            "audioRegenAt": "2026-06-08T02:02:46.738Z"
           }
         ],
         "interactive": {
@@ -30067,7 +30074,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.2.10/interactive-q.mp3",
-            "ttsScript": "Here's a thinking one! Ben already read three whole books about sharks. He knows every shark fact now. What should Ben try next to learn even more?"
+            "ttsScript": "Here's a thinking one! Ben already read three whole books about sharks. He knows every shark fact now. What should Ben try next to learn even more?",
+            "audioRegenAt": "2026-06-08T02:02:52.731Z"
           }
         ],
         "interactive": {
@@ -31329,7 +31337,7 @@
               "word": "Silent",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:17:55.689Z"
+            "audioRegenAt": "2026-06-08T02:02:55.949Z"
           },
           {
             "sub": "e",
@@ -31384,7 +31392,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RF.2.3c/S3c.mp3",
             "ttsScript": "Bow has OW. Another long sound!",
-            "audioRegenAt": "2026-05-12T01:02:17.999Z",
+            "audioRegenAt": "2026-06-08T02:02:59.629Z",
             "highlightWord": {
               "word": "Bow",
               "delay": 0
@@ -31481,7 +31489,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.3c/interactive-q.mp3",
-            "ttsScript": "Now you try, with brand-new words! Split each word and match it to the way its vowel sound is made long."
+            "ttsScript": "Now you try, with brand-new words! Split each word and match it to the way its vowel sound is made long.",
+            "audioRegenAt": "2026-06-08T02:03:04.160Z"
           }
         ],
         "interactive": {
@@ -32412,7 +32421,7 @@
               "word": "L",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:47:00.539Z"
+            "audioRegenAt": "2026-06-08T02:03:13.154Z"
           },
           {
             "sub": "d",
@@ -32821,7 +32830,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.2.4/interactive-q.mp3",
-            "ttsScript": "Now you try! Each reader is working on one part of fluent reading. Match each reader to the part they are using."
+            "ttsScript": "Now you try! Each reader is working on one part of fluent reading. Match each reader to the part they are using.",
+            "audioRegenAt": "2026-06-08T02:03:09.194Z"
           }
         ],
         "interactive": {
@@ -34612,7 +34622,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.4b/interactive-q.mp3",
-            "ttsScript": "Your turn! Peel off the prefix. What does the word reread mean?"
+            "ttsScript": "Your turn! Peel off the prefix. What does the word reread mean?",
+            "audioRegenAt": "2026-06-08T02:03:44.566Z"
           }
         ],
         "interactive": {
@@ -36108,7 +36119,7 @@
               "word": "Brave",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:49:28.812Z"
+            "audioRegenAt": "2026-06-08T02:03:28.987Z"
           },
           {
             "sub": "e",
@@ -36677,7 +36688,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.6/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-05-11T23:08:41.337Z",
+            "audioRegenAt": "2026-06-08T02:03:38.458Z",
             "highlightWord": {
               "word": "trick",
               "delay": 1540
@@ -36739,7 +36750,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.6/interactive-q.mp3",
-            "ttsScript": "Your turn, word detective! Maya finished a really hard puzzle all by herself and held it up high. Which word best paints how she felt?"
+            "ttsScript": "Your turn, word detective! Maya finished a really hard puzzle all by herself and held it up high. Which word best paints how she felt?",
+            "audioRegenAt": "2026-06-08T02:03:43.905Z"
           }
         ],
         "interactive": {
@@ -36986,7 +36998,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.1/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Here's a story. Mia opened the old trunk. Inside, dusty boxes were stacked high. On top sat a shiny gold crown. Mia found a crown. Which exact words from the story PROVE that?"
+            "ttsScript": "Your turn, detective! Here's a story. Mia opened the old trunk. Inside, dusty boxes were stacked high. On top sat a shiny gold crown. Mia found a crown. Which exact words from the story PROVE that?",
+            "audioRegenAt": "2026-06-08T02:03:53.450Z"
           }
         ],
         "interactive": {
@@ -37241,7 +37254,7 @@
               "word": "turtle",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:54:45.610Z"
+            "audioRegenAt": "2026-06-08T02:03:50.079Z"
           },
           {
             "sub": "d",
@@ -37261,7 +37274,7 @@
               "word": "going",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:54:47.100Z"
+            "audioRegenAt": "2026-06-08T02:03:52.301Z"
           },
           {
             "sub": "e",
@@ -38453,7 +38466,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.6/interactive-q.mp3",
-            "ttsScript": "Here's your challenge! Listen close. Ben planted a tiny seed. He watered it each morning. What a kind and patient boy he was! Which sentence shows the narrator's OWN opinion, not just a fact?"
+            "ttsScript": "Here's your challenge! Listen close. Ben planted a tiny seed. He watered it each morning. What a kind and patient boy he was! Which sentence shows the narrator's OWN opinion, not just a fact?",
+            "audioRegenAt": "2026-06-08T02:04:04.847Z"
           }
         ],
         "interactive": {
@@ -38780,7 +38794,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.7/interactive-q.mp3",
-            "ttsScript": "Now you try a tricky one! Picture this: a gray, foggy beach at night. One lonely figure walks along the cold, empty sand under a dark sky. What mood does this picture set?"
+            "ttsScript": "Now you try a tricky one! Picture this: a gray, foggy beach at night. One lonely figure walks along the cold, empty sand under a dark sky. What mood does this picture set?",
+            "audioRegenAt": "2026-06-08T02:04:06.193Z"
           }
         ],
         "interactive": {
@@ -40570,7 +40585,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.4/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Use the clues and the word parts: The marine biologist studied the fish and whales in the ocean. The root bio means life. What does a biologist study?"
+            "ttsScript": "Your turn, detective! Use the clues and the word parts: The marine biologist studied the fish and whales in the ocean. The root bio means life. What does a biologist study?",
+            "audioRegenAt": "2026-06-08T02:04:07.049Z"
           }
         ],
         "interactive": {
@@ -44375,7 +44391,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.3.4b/S2a.mp3",
             "ttsScript": "Read prose like you are telling a story.",
-            "audioRegenAt": "2026-06-03T02:59:32.713Z",
+            "audioRegenAt": "2026-06-08T02:04:33.006Z",
             "highlightWord": {
               "word": "prose",
               "delay": 300
@@ -44603,7 +44619,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.3.4b/interactive-q.mp3",
-            "ttsScript": "Let's read like real readers! Here's a poem: The cat ran fast. The dog slept. Then... BOOM! A loud crash! Which line should you read slowly, with big feeling?"
+            "ttsScript": "Let's read like real readers! Here's a poem: The cat ran fast. The dog slept. Then... BOOM! A loud crash! Which line should you read slowly, with big feeling?",
+            "audioRegenAt": "2026-06-08T02:04:19.818Z"
           }
         ],
         "interactive": {
@@ -48661,7 +48678,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.4.3/S2c.mp3",
             "ttsScript": "even without saying kind.",
-            "audioRegenAt": "2026-06-03T03:00:52.793Z",
+            "audioRegenAt": "2026-06-08T02:04:23.934Z",
             "highlightWord": {
               "word": "kind",
               "delay": 1200
@@ -51794,7 +51811,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.4/interactive-q.mp3",
-            "ttsScript": "You've got the tools now! The word 'biology' has the root 'bio', which means life. So what does biology study?"
+            "ttsScript": "You've got the tools now! The word 'biology' has the root 'bio', which means life. So what does biology study?",
+            "audioRegenAt": "2026-06-08T02:04:49.072Z"
           }
         ],
         "interactive": {
@@ -53587,7 +53605,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.10/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen: Dogs make wonderful pets. They are loyal friends. They can learn fun tricks. They even keep you safe. What is the MAIN idea?"
+            "ttsScript": "Your turn! Listen: Dogs make wonderful pets. They are loyal friends. They can learn fun tricks. They even keep you safe. What is the MAIN idea?",
+            "audioRegenAt": "2026-06-08T02:04:53.532Z"
           }
         ],
         "interactive": {
@@ -54341,7 +54360,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.4.4/S2a.mp3",
             "ttsScript": "Slow down for tricky parts.",
-            "audioRegenAt": "2026-06-03T03:08:07.472Z",
+            "audioRegenAt": "2026-06-08T02:04:51.677Z",
             "highlightWord": {
               "word": "tricky",
               "delay": 3780
@@ -55101,7 +55120,7 @@
               "word": "Or",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:31:51.928Z"
+            "audioRegenAt": "2026-06-08T02:04:55.818Z"
           },
           {
             "sub": "d",
@@ -55861,7 +55880,7 @@
               "word": "Synonyms",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:33:21.703Z"
+            "audioRegenAt": "2026-06-08T02:05:02.756Z"
           },
           {
             "sub": "e",
@@ -55929,7 +55948,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4c/interactive-q.mp3",
-            "ttsScript": "Here's a real one. Maya reads the word 'arid' and has no idea what it means. Which reference tool should she grab?"
+            "ttsScript": "Here's a real one. Maya reads the word 'arid' and has no idea what it means. Which reference tool should she grab?",
+            "audioRegenAt": "2026-06-08T02:05:00.527Z"
           }
         ],
         "interactive": {
@@ -56861,7 +56881,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.5b/interactive-q.mp3",
-            "ttsScript": "You try! Coach says 'Break a leg!' before the big show. He doesn't mean hurt yourself, so what does he really mean?"
+            "ttsScript": "You try! Coach says 'Break a leg!' before the big show. He doesn't mean hurt yourself, so what does he really mean?",
+            "audioRegenAt": "2026-06-08T02:05:05.723Z"
           }
         ],
         "interactive": {
@@ -57316,7 +57337,7 @@
               "word": "Academic",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:33:44.732Z"
+            "audioRegenAt": "2026-06-08T02:05:33.880Z"
           },
           {
             "sub": "d",
@@ -57586,7 +57607,8 @@
             "ttsScript": "Chip. Chop. Cheese. Hear the \"chh\"?",
             "interaction": "",
             "displayDelay": 0,
-            "displayText": "Chip"
+            "displayText": "Chip",
+            "audioRegenAt": "2026-06-08T02:05:09.695Z"
           },
           {
             "sub": "c",
@@ -60673,7 +60695,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.2/S3a.mp3",
             "ttsScript": "Every sentence ends with a mark.",
-            "audioRegenAt": "2026-06-03T03:09:16.162Z",
+            "audioRegenAt": "2026-06-08T02:05:32.331Z",
             "highlightWord": {
               "word": "mark",
               "delay": 1200
@@ -61423,7 +61445,7 @@
               "word": "cat",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:36:08.295Z"
+            "audioRegenAt": "2026-06-08T02:05:29.991Z"
           },
           {
             "sub": "e",
@@ -61834,7 +61856,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.3/interactive-q.mp3",
-            "ttsScript": "Your turn, word artist! Mia won the big race. She felt happy. Which word paints her happiness even stronger than 'happy'?"
+            "ttsScript": "Your turn, word artist! Mia won the big race. She felt happy. Which word paints her happiness even stronger than 'happy'?",
+            "audioRegenAt": "2026-06-08T02:05:41.041Z"
           }
         ],
         "interactive": {
@@ -64997,7 +65020,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.10/interactive-q.mp3",
-            "ttsScript": "Your turn, fact finder! Ben wanted the page about frogs. He did not look at any pictures. He read the bold titles at the top of each page until he found the frog page. What helped Ben find the right page?"
+            "ttsScript": "Your turn, fact finder! Ben wanted the page about frogs. He did not look at any pictures. He read the bold titles at the top of each page until he found the frog page. What helped Ben find the right page?",
+            "audioRegenAt": "2026-06-08T02:05:50.161Z"
           }
         ],
         "interactive": {
