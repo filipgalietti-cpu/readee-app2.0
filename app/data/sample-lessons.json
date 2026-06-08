@@ -1192,12 +1192,12 @@
               },
               {
                 "text": "The action!",
-                "delay": 2200
+                "delay": 4660
               }
             ],
             "highlightWord": {
               "word": "action",
-              "delay": 2200
+              "delay": 390
             },
             "audioRegenAt": "2026-06-04T02:48:46.435Z"
           }
@@ -1553,12 +1553,12 @@
               },
               {
                 "text": "The fox!",
-                "delay": 2200
+                "delay": 1500
               }
             ],
             "highlightWord": {
               "word": "fox",
-              "delay": 2200
+              "delay": 5270
             },
             "audioRegenAt": "2026-06-04T02:48:44.027Z"
           },
@@ -1573,12 +1573,12 @@
               },
               {
                 "text": "Under a tree!",
-                "delay": 2200
+                "delay": 2940
               }
             ],
             "highlightWord": {
               "word": "tree",
-              "delay": 2200
+              "delay": 2870
             },
             "audioRegenAt": "2026-06-04T02:48:42.982Z"
           },
@@ -2201,12 +2201,12 @@
               },
               {
                 "text": "Yes!",
-                "delay": 2200
+                "delay": 3300
               }
             ],
             "highlightWord": {
               "word": "Yes",
-              "delay": 2200
+              "delay": 2450
             },
             "audioRegenAt": "2026-06-04T02:48:49.376Z"
           },
@@ -2221,12 +2221,12 @@
               },
               {
                 "text": "A poem!",
-                "delay": 2200
+                "delay": 4140
               }
             ],
             "highlightWord": {
               "word": "poem",
-              "delay": 2200
+              "delay": 3450
             },
             "audioRegenAt": "2026-06-04T02:48:50.310Z"
           },
@@ -4526,12 +4526,12 @@
               },
               {
                 "text": "Title page!",
-                "delay": 2200
+                "delay": 4560
               }
             ],
             "highlightWord": {
               "word": "title",
-              "delay": 2200
+              "delay": 3710
             },
             "audioRegenAt": "2026-06-04T03:44:46.375Z"
           },
@@ -4885,12 +4885,12 @@
               },
               {
                 "text": "The author!",
-                "delay": 2200
+                "delay": 1840
               }
             ],
             "highlightWord": {
               "word": "author",
-              "delay": 2200
+              "delay": 2810
             },
             "audioRegenAt": "2026-06-04T03:44:50.797Z"
           },
@@ -4905,12 +4905,12 @@
               },
               {
                 "text": "The illustrator!",
-                "delay": 2200
+                "delay": 2920
               }
             ],
             "highlightWord": {
               "word": "illustrator",
-              "delay": 2200
+              "delay": 2470
             },
             "audioRegenAt": "2026-06-04T03:44:53.635Z"
           },
@@ -6087,7 +6087,7 @@
             ],
             "highlightWord": {
               "word": "same",
-              "delay": 2200
+              "delay": 3890
             },
             "audioRegenAt": "2026-06-04T02:49:46.783Z"
           }
@@ -8186,12 +8186,12 @@
               },
               {
                 "text": "Puh!",
-                "delay": 2200
+                "delay": 6920
               }
             ],
             "highlightWord": {
               "word": "Puh",
-              "delay": 2200
+              "delay": 6070
             },
             "audioRegenAt": "2026-06-04T02:49:51.540Z"
           },
@@ -8206,12 +8206,12 @@
               },
               {
                 "text": "Guh!",
-                "delay": 2200
+                "delay": 6540
               }
             ],
             "highlightWord": {
               "word": "Guh",
-              "delay": 2200
+              "delay": 5690
             },
             "audioRegenAt": "2026-06-04T02:49:52.238Z"
           },
@@ -8581,7 +8581,7 @@
             ],
             "highlightWord": {
               "word": "shhh",
-              "delay": 2200
+              "delay": 5390
             },
             "audioRegenAt": "2026-06-04T03:45:30.764Z"
           },
@@ -8596,12 +8596,12 @@
               },
               {
                 "text": "Three!",
-                "delay": 2200
+                "delay": 10100
               }
             ],
             "highlightWord": {
               "word": "Three",
-              "delay": 2200
+              "delay": 6310
             },
             "audioRegenAt": "2026-06-04T03:45:32.557Z"
           },
@@ -9223,12 +9223,12 @@
               },
               {
                 "text": "Pee!",
-                "delay": 2200
+                "delay": 4780
               }
             ],
             "highlightWord": {
               "word": "Pee",
-              "delay": 2200
+              "delay": 3930
             },
             "audioRegenAt": "2026-06-08T02:02:40.422Z"
           },
@@ -9243,12 +9243,12 @@
               },
               {
                 "text": "Puh!",
-                "delay": 2200
+                "delay": 4580
               }
             ],
             "highlightWord": {
               "word": "Puh",
-              "delay": 2200
+              "delay": 3730
             },
             "audioRegenAt": "2026-06-04T02:50:26.798Z"
           },
@@ -10211,12 +10211,12 @@
               },
               {
                 "text": "And!",
-                "delay": 2200
+                "delay": 5240
               }
             ],
             "highlightWord": {
               "word": "and",
-              "delay": 2200
+              "delay": 4390
             },
             "audioRegenAt": "2026-06-04T02:50:44.287Z"
           },
@@ -10231,12 +10231,12 @@
               },
               {
                 "text": "No, just know it!",
-                "delay": 2200
+                "delay": 3020
               }
             ],
             "highlightWord": {
               "word": "know",
-              "delay": 2200
+              "delay": 6230
             },
             "audioRegenAt": "2026-06-04T02:50:47.299Z"
           },
@@ -13922,12 +13922,12 @@
               },
               {
                 "text": "In the park.",
-                "delay": 3120
+                "delay": 2040
               }
             ],
             "highlightWord": {
               "word": "park",
-              "delay": 3120
+              "delay": 2760
             },
             "audioRegenAt": "2026-05-30T05:36:44.315Z"
           },
@@ -14181,7 +14181,7 @@
             "displayText": "She walked to the door.",
             "highlightWord": {
               "word": "walked",
-              "delay": 2200
+              "delay": 6780
             },
             "audioRegenAt": "2026-06-04T02:50:49.269Z"
           },
@@ -14192,7 +14192,7 @@
             "displayText": "stomped",
             "highlightWord": {
               "word": "stomped",
-              "delay": 2200
+              "delay": 4820
             },
             "audioRegenAt": "2026-06-04T02:50:57.148Z"
           }
@@ -17806,12 +17806,12 @@
               },
               {
                 "text": "Rain!",
-                "delay": 2200
+                "delay": 5580
               }
             ],
             "highlightWord": {
               "word": "Rain",
-              "delay": 2200
+              "delay": 4760
             },
             "audioRegenAt": "2026-06-08T02:02:00.674Z"
           },
@@ -17826,12 +17826,12 @@
               },
               {
                 "text": "A rainy day!",
-                "delay": 2200
+                "delay": 3920
               }
             ],
             "highlightWord": {
               "word": "rainy",
-              "delay": 2200
+              "delay": 3420
             },
             "audioRegenAt": "2026-06-04T02:50:54.913Z"
           },
@@ -18504,12 +18504,12 @@
               },
               {
                 "text": "Yes, frogs!",
-                "delay": 2200
+                "delay": 4260
               }
             ],
             "highlightWord": {
               "word": "frogs",
-              "delay": 2200
+              "delay": 5780
             },
             "audioRegenAt": "2026-06-04T03:45:31.820Z"
           },
@@ -18524,12 +18524,12 @@
               },
               {
                 "text": "They add facts.",
-                "delay": 2200
+                "delay": 9180
               }
             ],
             "highlightWord": {
               "word": "add",
-              "delay": 2200
+              "delay": 8560
             },
             "audioRegenAt": "2026-06-04T03:45:37.403Z"
           },
@@ -19071,12 +19071,12 @@
               },
               {
                 "text": "Three sounds!",
-                "delay": 2200
+                "delay": 4720
               }
             ],
             "highlightWord": {
               "word": "Three",
-              "delay": 2200
+              "delay": 3900
             },
             "audioRegenAt": "2026-06-04T02:51:47.864Z"
           },
@@ -19091,12 +19091,12 @@
               },
               {
                 "text": "Mop!",
-                "delay": 2200
+                "delay": 7080
               }
             ],
             "highlightWord": {
               "word": "Mop",
-              "delay": 2200
+              "delay": 6260
             },
             "audioRegenAt": "2026-06-04T02:51:52.599Z"
           },
@@ -19497,12 +19497,12 @@
               },
               {
                 "text": "/b/!",
-                "delay": 2200
+                "delay": 4180
               }
             ],
             "highlightWord": {
               "word": "first",
-              "delay": 2200
+              "delay": 1440
             },
             "audioRegenAt": "2026-06-04T02:51:58.370Z"
           },
@@ -19517,12 +19517,12 @@
               },
               {
                 "text": "/e/!",
-                "delay": 2200
+                "delay": 4060
               }
             ],
             "highlightWord": {
               "word": "middle",
-              "delay": 2200
+              "delay": 1980
             },
             "audioRegenAt": "2026-06-04T02:52:06.899Z"
           },
@@ -20945,7 +20945,7 @@
             "displayText": "Park your bike here.",
             "highlightWord": {
               "word": "park",
-              "delay": 2200
+              "delay": 5960
             },
             "audioRegenAt": "2026-06-04T02:52:11.114Z"
           },
@@ -20956,7 +20956,7 @@
             "displayText": "Does it make sense?",
             "highlightWord": {
               "word": "sense",
-              "delay": 2200
+              "delay": 3500
             },
             "audioRegenAt": "2026-06-04T02:52:46.847Z"
           }
@@ -22259,12 +22259,12 @@
               },
               {
                 "text": "Opposite!",
-                "delay": 2200
+                "delay": 4540
               }
             ],
             "highlightWord": {
               "word": "Opposite",
-              "delay": 2200
+              "delay": 2120
             },
             "audioRegenAt": "2026-06-04T03:45:38.948Z"
           },
@@ -22284,7 +22284,7 @@
             ],
             "highlightWord": {
               "word": "different",
-              "delay": 2200
+              "delay": 5320
             },
             "audioRegenAt": "2026-06-04T03:45:42.309Z"
           },
@@ -23164,12 +23164,12 @@
               },
               {
                 "text": "A rainy day puddle!",
-                "delay": 2200
+                "delay": 4160
               }
             ],
             "highlightWord": {
               "word": "puddle",
-              "delay": 2200
+              "delay": 4720
             },
             "audioRegenAt": "2026-06-04T02:52:58.162Z"
           },
@@ -25123,12 +25123,12 @@
               },
               {
                 "text": "Crunched!",
-                "delay": 2200
+                "delay": 6260
               }
             ],
             "highlightWord": {
               "word": "Crunched",
-              "delay": 2200
+              "delay": 5460
             },
             "audioRegenAt": "2026-06-04T02:53:22.315Z"
           },
@@ -25143,12 +25143,12 @@
               },
               {
                 "text": "We hear it!",
-                "delay": 2200
+                "delay": 4240
               }
             ],
             "highlightWord": {
               "word": "hear",
-              "delay": 2200
+              "delay": 3720
             },
             "audioRegenAt": "2026-06-04T02:53:23.695Z"
           },
@@ -27033,7 +27033,7 @@
             "displayText": "Answer hides in words",
             "highlightWord": {
               "word": "words",
-              "delay": 2200
+              "delay": 5220
             },
             "audioRegenAt": "2026-06-04T02:54:49.686Z"
           }
@@ -28052,7 +28052,7 @@
             ],
             "highlightWord": {
               "word": "ate",
-              "delay": 2200
+              "delay": 4220
             },
             "audioRegenAt": "2026-06-04T02:54:49.170Z"
           },
@@ -28067,12 +28067,12 @@
               },
               {
                 "text": "Very hungry!",
-                "delay": 2200
+                "delay": 5740
               }
             ],
             "highlightWord": {
               "word": "hungry",
-              "delay": 2200
+              "delay": 5920
             },
             "audioRegenAt": "2026-06-04T02:58:12.307Z"
           },
@@ -29966,12 +29966,12 @@
               },
               {
                 "text": "A huge star.",
-                "delay": 2200
+                "delay": 3420
               }
             ],
             "highlightWord": {
               "word": "star",
-              "delay": 2200
+              "delay": 3780
             },
             "audioRegenAt": "2026-06-04T03:46:34.903Z"
           },
@@ -29986,12 +29986,12 @@
               },
               {
                 "text": "Light and heat.",
-                "delay": 2200
+                "delay": 3040
               }
             ],
             "highlightWord": {
               "word": "heat",
-              "delay": 2200
+              "delay": 3060
             },
             "audioRegenAt": "2026-06-04T03:46:32.176Z"
           },
@@ -30315,12 +30315,12 @@
               },
               {
                 "text": "WH!",
-                "delay": 2200
+                "delay": 4240
               }
             ],
             "highlightWord": {
               "word": "WH",
-              "delay": 2200
+              "delay": 0
             },
             "audioRegenAt": "2026-06-04T03:08:09.713Z"
           },
@@ -30340,7 +30340,7 @@
             ],
             "highlightWord": {
               "word": "sound",
-              "delay": 2200
+              "delay": 400
             },
             "audioRegenAt": "2026-06-04T03:08:09.588Z"
           },
@@ -30647,12 +30647,12 @@
               },
               {
                 "text": "Long I!",
-                "delay": 2200
+                "delay": 5420
               }
             ],
             "highlightWord": {
               "word": "Long",
-              "delay": 2200
+              "delay": 1060
             },
             "audioRegenAt": "2026-06-04T03:17:40.143Z"
           },
@@ -30667,12 +30667,12 @@
               },
               {
                 "text": "It says its name.",
-                "delay": 2200
+                "delay": 1680
               }
             ],
             "highlightWord": {
               "word": "name",
-              "delay": 2200
+              "delay": 3380
             },
             "audioRegenAt": "2026-06-04T03:17:43.654Z"
           },
@@ -31310,12 +31310,12 @@
               },
               {
                 "text": "Sun and shine.",
-                "delay": 2200
+                "delay": 3640
               }
             ],
             "highlightWord": {
               "word": "shine",
-              "delay": 2200
+              "delay": 4940
             },
             "audioRegenAt": "2026-06-04T03:17:51.770Z"
           },
@@ -31330,12 +31330,12 @@
               },
               {
                 "text": "Silent E.",
-                "delay": 2200
+                "delay": 6640
               }
             ],
             "highlightWord": {
               "word": "Silent",
-              "delay": 2200
+              "delay": 5840
             },
             "audioRegenAt": "2026-06-08T02:02:55.949Z"
           },
@@ -31731,12 +31731,12 @@
               },
               {
                 "text": "UN!",
-                "delay": 2200
+                "delay": 4220
               }
             ],
             "highlightWord": {
               "word": "un",
-              "delay": 2200
+              "delay": 3420
             },
             "audioRegenAt": "2026-06-04T03:17:59.884Z"
           },
@@ -31751,12 +31751,12 @@
               },
               {
                 "text": "Not!",
-                "delay": 2200
+                "delay": 2640
               }
             ],
             "highlightWord": {
               "word": "Not",
-              "delay": 2200
+              "delay": 1840
             },
             "audioRegenAt": "2026-06-04T03:18:00.966Z"
           },
@@ -32102,12 +32102,12 @@
               },
               {
                 "text": "The B!",
-                "delay": 2200
+                "delay": 4400
               }
             ],
             "highlightWord": {
               "word": "B",
-              "delay": 2200
+              "delay": 3900
             },
             "audioRegenAt": "2026-06-04T03:46:37.877Z"
           },
@@ -32122,12 +32122,12 @@
               },
               {
                 "text": "No, it's silent!",
-                "delay": 2200
+                "delay": 3320
               }
             ],
             "highlightWord": {
               "word": "silent",
-              "delay": 2200
+              "delay": 4220
             },
             "audioRegenAt": "2026-06-04T03:46:38.795Z"
           },
@@ -32414,12 +32414,12 @@
               },
               {
                 "text": "The L!",
-                "delay": 2200
+                "delay": 5680
               }
             ],
             "highlightWord": {
               "word": "L",
-              "delay": 2200
+              "delay": 560
             },
             "audioRegenAt": "2026-06-08T02:03:13.154Z"
           },
@@ -32434,12 +32434,12 @@
               },
               {
                 "text": "Wood!",
-                "delay": 2200
+                "delay": 4560
               }
             ],
             "highlightWord": {
               "word": "Wood",
-              "delay": 2200
+              "delay": 3760
             },
             "audioRegenAt": "2026-06-04T03:47:03.051Z"
           },
@@ -32735,12 +32735,12 @@
               },
               {
                 "text": "With expression!",
-                "delay": 2200
+                "delay": 3000
               }
             ],
             "highlightWord": {
               "word": "expression",
-              "delay": 2200
+              "delay": 2500
             },
             "audioRegenAt": "2026-06-04T03:47:28.826Z"
           },
@@ -32755,12 +32755,12 @@
               },
               {
                 "text": "Just right!",
-                "delay": 2200
+                "delay": 5560
               }
             ],
             "highlightWord": {
               "word": "right",
-              "delay": 2200
+              "delay": 5220
             },
             "audioRegenAt": "2026-06-04T03:47:32.867Z"
           },
@@ -33930,12 +33930,12 @@
               },
               {
                 "text": "Re means again!",
-                "delay": 2200
+                "delay": 4100
               }
             ],
             "highlightWord": {
               "word": "re",
-              "delay": 2200
+              "delay": 3300
             },
             "audioRegenAt": "2026-06-04T03:47:37.797Z"
           },
@@ -33950,12 +33950,12 @@
               },
               {
                 "text": "Read again!",
-                "delay": 2200
+                "delay": 3340
               }
             ],
             "highlightWord": {
               "word": "again",
-              "delay": 2200
+              "delay": 3880
             },
             "audioRegenAt": "2026-06-04T03:47:39.526Z"
           },
@@ -34515,12 +34515,12 @@
               },
               {
                 "text": "PRE!",
-                "delay": 2200
+                "delay": 3000
               }
             ],
             "highlightWord": {
               "word": "pre",
-              "delay": 2200
+              "delay": 760
             },
             "audioRegenAt": "2026-06-04T03:48:20.588Z"
           },
@@ -34535,12 +34535,12 @@
               },
               {
                 "text": "Before!",
-                "delay": 2200
+                "delay": 1880
               }
             ],
             "highlightWord": {
               "word": "Before",
-              "delay": 2200
+              "delay": 1080
             },
             "audioRegenAt": "2026-06-04T03:48:20.411Z"
           },
@@ -35369,12 +35369,12 @@
               },
               {
                 "text": "The glossary!",
-                "delay": 2200
+                "delay": 3680
               }
             ],
             "highlightWord": {
               "word": "glossary",
-              "delay": 2200
+              "delay": 3080
             },
             "audioRegenAt": "2026-06-04T03:49:12.800Z"
           },
@@ -35389,12 +35389,12 @@
               },
               {
                 "text": "H!",
-                "delay": 2200
+                "delay": 7580
               }
             ],
             "highlightWord": {
               "word": "H",
-              "delay": 2200
+              "delay": 0
             },
             "audioRegenAt": "2026-06-04T03:49:18.298Z"
           },
@@ -35729,12 +35729,12 @@
               },
               {
                 "text": "Same!",
-                "delay": 2200
+                "delay": 7860
               }
             ],
             "highlightWord": {
               "word": "Same",
-              "delay": 2200
+              "delay": 1000
             },
             "audioRegenAt": "2026-06-04T03:49:24.272Z"
           },
@@ -35749,12 +35749,12 @@
               },
               {
                 "text": "Synonyms!",
-                "delay": 2200
+                "delay": 3900
               }
             ],
             "highlightWord": {
               "word": "Synonyms",
-              "delay": 2200
+              "delay": 3100
             },
             "audioRegenAt": "2026-06-04T03:49:22.963Z"
           },
@@ -36092,12 +36092,12 @@
               },
               {
                 "text": "No!",
-                "delay": 2200
+                "delay": 2940
               }
             ],
             "highlightWord": {
               "word": "No",
-              "delay": 2200
+              "delay": 2140
             },
             "audioRegenAt": "2026-06-04T03:49:27.961Z"
           },
@@ -36112,12 +36112,12 @@
               },
               {
                 "text": "Brave!",
-                "delay": 2200
+                "delay": 4900
               }
             ],
             "highlightWord": {
               "word": "Brave",
-              "delay": 2200
+              "delay": 4100
             },
             "audioRegenAt": "2026-06-08T02:03:28.987Z"
           },
@@ -37247,12 +37247,12 @@
               },
               {
                 "text": "The slow turtle.",
-                "delay": 2200
+                "delay": 1600
               }
             ],
             "highlightWord": {
               "word": "turtle",
-              "delay": 2200
+              "delay": 3240
             },
             "audioRegenAt": "2026-06-08T02:03:50.079Z"
           },
@@ -37267,12 +37267,12 @@
               },
               {
                 "text": "Keep going!",
-                "delay": 2200
+                "delay": 3060
               }
             ],
             "highlightWord": {
               "word": "going",
-              "delay": 2200
+              "delay": 3020
             },
             "audioRegenAt": "2026-06-08T02:03:52.301Z"
           },
@@ -38358,12 +38358,12 @@
               },
               {
                 "text": "Rain is cozy.",
-                "delay": 2200
+                "delay": 3740
               }
             ],
             "highlightWord": {
               "word": "cozy",
-              "delay": 2200
+              "delay": 5260
             },
             "audioRegenAt": "2026-06-04T03:21:52.886Z"
           },
@@ -38378,12 +38378,12 @@
               },
               {
                 "text": "The narrator's.",
-                "delay": 2200
+                "delay": 2760
               }
             ],
             "highlightWord": {
               "word": "narrator",
-              "delay": 2200
+              "delay": 2120
             },
             "audioRegenAt": "2026-06-04T03:49:45.765Z"
           },
@@ -38666,12 +38666,12 @@
               },
               {
                 "text": "Bright colors.",
-                "delay": 2200
+                "delay": 5140
               }
             ],
             "highlightWord": {
               "word": "bright",
-              "delay": 2200
+              "delay": 880
             },
             "audioRegenAt": "2026-06-04T03:22:00.390Z"
           },
@@ -38686,12 +38686,12 @@
               },
               {
                 "text": "Happy and cheerful.",
-                "delay": 2200
+                "delay": 5660
               }
             ],
             "highlightWord": {
               "word": "happy",
-              "delay": 2200
+              "delay": 4900
             },
             "audioRegenAt": "2026-06-04T03:22:09.991Z"
           },
@@ -39282,12 +39282,12 @@
               },
               {
                 "text": "Read a poem.",
-                "delay": 2200
+                "delay": 4140
               }
             ],
             "highlightWord": {
               "word": "poem",
-              "delay": 2200
+              "delay": 3860
             },
             "audioRegenAt": "2026-06-04T03:50:24.759Z"
           },
@@ -39307,7 +39307,7 @@
             ],
             "highlightWord": {
               "word": "stretches",
-              "delay": 2200
+              "delay": 2880
             },
             "audioRegenAt": "2026-06-04T03:50:31.273Z"
           },
@@ -40153,12 +40153,12 @@
               },
               {
                 "text": "Because.",
-                "delay": 2200
+                "delay": 4220
               }
             ],
             "highlightWord": {
               "word": "because",
-              "delay": 2200
+              "delay": 3460
             },
             "audioRegenAt": "2026-06-04T03:22:59.377Z"
           },
@@ -40178,7 +40178,7 @@
             ],
             "highlightWord": {
               "word": "water",
-              "delay": 2200
+              "delay": 2580
             },
             "audioRegenAt": "2026-06-04T03:22:58.943Z"
           },
@@ -40474,12 +40474,12 @@
               },
               {
                 "text": "Science.",
-                "delay": 2200
+                "delay": 3800
               }
             ],
             "highlightWord": {
               "word": "Science",
-              "delay": 2200
+              "delay": 3040
             },
             "audioRegenAt": "2026-06-04T03:23:02.549Z"
           },
@@ -40494,12 +40494,12 @@
               },
               {
                 "text": "An animal's home.",
-                "delay": 2200
+                "delay": 2900
               }
             ],
             "highlightWord": {
               "word": "home",
-              "delay": 2200
+              "delay": 3120
             },
             "audioRegenAt": "2026-06-04T03:23:06.734Z"
           },
@@ -40791,7 +40791,7 @@
               },
               {
                 "text": "The index!",
-                "delay": 2200
+                "delay": 5500
               }
             ],
             "highlightWord": {
@@ -40811,12 +40811,12 @@
               },
               {
                 "text": "The back!",
-                "delay": 2200
+                "delay": 3140
               }
             ],
             "highlightWord": {
               "word": "back",
-              "delay": 2200
+              "delay": 2600
             },
             "audioRegenAt": "2026-06-04T03:23:40.507Z"
           },
@@ -41365,12 +41365,12 @@
               },
               {
                 "text": "A diagram!",
-                "delay": 2200
+                "delay": 5260
               }
             ],
             "highlightWord": {
               "word": "diagram",
-              "delay": 2200
+              "delay": 4660
             },
             "audioRegenAt": "2026-06-04T03:23:51.596Z"
           },
@@ -41385,12 +41385,12 @@
               },
               {
                 "text": "The parts!",
-                "delay": 2200
+                "delay": 3100
               }
             ],
             "highlightWord": {
               "word": "parts",
-              "delay": 2200
+              "delay": 2580
             },
             "audioRegenAt": "2026-06-04T03:23:52.706Z"
           },
@@ -42161,7 +42161,7 @@
             ],
             "highlightWord": {
               "word": "bees",
-              "delay": 2200
+              "delay": 4540
             },
             "audioRegenAt": "2026-06-04T03:24:00.670Z"
           },
@@ -42176,12 +42176,12 @@
               },
               {
                 "text": "They make honey!",
-                "delay": 2200
+                "delay": 6820
               }
             ],
             "highlightWord": {
               "word": "honey",
-              "delay": 2200
+              "delay": 7380
             },
             "audioRegenAt": "2026-06-04T03:24:02.561Z"
           },
@@ -43900,12 +43900,12 @@
               },
               {
                 "text": "Excited!",
-                "delay": 2200
+                "delay": 3760
               }
             ],
             "highlightWord": {
               "word": "Excited",
-              "delay": 2200
+              "delay": 3000
             },
             "audioRegenAt": "2026-06-04T03:54:50.275Z"
           },
@@ -43920,12 +43920,12 @@
               },
               {
                 "text": "A cheery voice!",
-                "delay": 2200
+                "delay": 4860
               }
             ],
             "highlightWord": {
               "word": "cheery",
-              "delay": 2200
+              "delay": 5260
             },
             "audioRegenAt": "2026-06-04T03:54:53.515Z"
           },
@@ -44524,12 +44524,12 @@
               },
               {
                 "text": "Prose!",
-                "delay": 2200
+                "delay": 7240
               }
             ],
             "highlightWord": {
               "word": "Prose",
-              "delay": 2200
+              "delay": 660
             },
             "audioRegenAt": "2026-06-04T03:24:52.732Z"
           },
@@ -44544,12 +44544,12 @@
               },
               {
                 "text": "Like a story!",
-                "delay": 2200
+                "delay": 3300
               }
             ],
             "highlightWord": {
               "word": "story",
-              "delay": 2200
+              "delay": 3060
             },
             "audioRegenAt": "2026-06-04T03:24:52.772Z"
           },
@@ -45081,12 +45081,12 @@
               },
               {
                 "text": "Gloomy!",
-                "delay": 2200
+                "delay": 3420
               }
             ],
             "highlightWord": {
               "word": "Gloomy",
-              "delay": 2200
+              "delay": 2660
             },
             "audioRegenAt": "2026-06-04T03:24:57.772Z"
           },
@@ -45101,12 +45101,12 @@
               },
               {
                 "text": "Dark and sad.",
-                "delay": 2200
+                "delay": 4220
               }
             ],
             "highlightWord": {
               "word": "Dark",
-              "delay": 2200
+              "delay": 3460
             },
             "audioRegenAt": "2026-06-04T03:24:59.721Z"
           },
@@ -45943,12 +45943,12 @@
               },
               {
                 "text": "Play!",
-                "delay": 2200
+                "delay": 4720
               }
             ],
             "highlightWord": {
               "word": "play",
-              "delay": 2200
+              "delay": 3960
             },
             "audioRegenAt": "2026-06-04T03:51:36.778Z"
           },
@@ -45963,12 +45963,12 @@
               },
               {
                 "text": "Player, playful!",
-                "delay": 2200
+                "delay": 3680
               }
             ],
             "highlightWord": {
               "word": "Player",
-              "delay": 2200
+              "delay": 2920
             },
             "audioRegenAt": "2026-06-04T03:51:39.588Z"
           },
@@ -46588,7 +46588,7 @@
               },
               {
                 "text": "A simile!",
-                "delay": 2200
+                "delay": 8860
               }
             ],
             "highlightWord": {
@@ -46608,12 +46608,12 @@
               },
               {
                 "text": "Very quiet.",
-                "delay": 2200
+                "delay": 4120
               }
             ],
             "highlightWord": {
               "word": "quiet",
-              "delay": 2200
+              "delay": 4080
             },
             "audioRegenAt": "2026-06-04T03:27:05.381Z"
           },
@@ -46894,7 +46894,7 @@
             ],
             "highlightWord": {
               "word": "Nonliteral",
-              "delay": 2200
+              "delay": 4120
             },
             "audioRegenAt": "2026-06-04T03:27:07.793Z"
           },
@@ -46909,12 +46909,12 @@
               },
               {
                 "text": "Raining very hard!",
-                "delay": 2200
+                "delay": 3980
               }
             ],
             "highlightWord": {
               "word": "hard",
-              "delay": 2200
+              "delay": 4260
             },
             "audioRegenAt": "2026-06-04T03:27:07.435Z"
           },
@@ -47836,12 +47836,12 @@
               },
               {
                 "text": "In a sentence!",
-                "delay": 2200
+                "delay": 3460
               }
             ],
             "highlightWord": {
               "word": "sentence",
-              "delay": 2200
+              "delay": 3620
             },
             "audioRegenAt": "2026-06-04T03:28:39.559Z"
           },
@@ -47856,12 +47856,12 @@
               },
               {
                 "text": "I am curious!",
-                "delay": 2200
+                "delay": 2060
               }
             ],
             "highlightWord": {
               "word": "curious",
-              "delay": 2200
+              "delay": 2880
             },
             "audioRegenAt": "2026-06-04T03:28:40.582Z"
           },
@@ -48723,12 +48723,12 @@
               },
               {
                 "text": "Shared umbrella.",
-                "delay": 2200
+                "delay": 4000
               }
             ],
             "highlightWord": {
               "word": "shared",
-              "delay": 2200
+              "delay": 3260
             },
             "audioRegenAt": "2026-06-04T03:28:47.600Z"
           },
@@ -48743,12 +48743,12 @@
               },
               {
                 "text": "Kind.",
-                "delay": 2200
+                "delay": 3720
               }
             ],
             "highlightWord": {
               "word": "Kind",
-              "delay": 2200
+              "delay": 2980
             },
             "audioRegenAt": "2026-06-04T03:28:47.954Z"
           },
@@ -49063,12 +49063,12 @@
               },
               {
                 "text": "No, not literal.",
-                "delay": 2200
+                "delay": 3440
               }
             ],
             "highlightWord": {
               "word": "literal",
-              "delay": 2200
+              "delay": 4560
             },
             "audioRegenAt": "2026-06-04T03:51:49.253Z"
           },
@@ -49083,12 +49083,12 @@
               },
               {
                 "text": "Too much homework!",
-                "delay": 2200
+                "delay": 4260
               }
             ],
             "highlightWord": {
               "word": "homework",
-              "delay": 2200
+              "delay": 4320
             },
             "audioRegenAt": "2026-06-04T03:51:46.395Z"
           },
@@ -50145,12 +50145,12 @@
               },
               {
                 "text": "No, two cultures.",
-                "delay": 2200
+                "delay": 3220
               }
             ],
             "highlightWord": {
               "word": "cultures",
-              "delay": 2200
+              "delay": 1360
             },
             "audioRegenAt": "2026-06-04T03:55:06.876Z"
           },
@@ -50165,12 +50165,12 @@
               },
               {
                 "text": "Courage!",
-                "delay": 2200
+                "delay": 5280
               }
             ],
             "highlightWord": {
               "word": "Courage",
-              "delay": 2200
+              "delay": 4540
             },
             "audioRegenAt": "2026-06-04T03:54:59.199Z"
           },
@@ -50511,12 +50511,12 @@
               },
               {
                 "text": "One chapter.",
-                "delay": 2200
+                "delay": 4180
               }
             ],
             "highlightWord": {
               "word": "chapter",
-              "delay": 2200
+              "delay": 3860
             },
             "audioRegenAt": "2026-06-04T03:29:48.453Z"
           },
@@ -50531,7 +50531,7 @@
               },
               {
                 "text": "The knight.",
-                "delay": 2200
+                "delay": 4080
               }
             ],
             "highlightWord": {
@@ -50744,12 +50744,12 @@
               },
               {
                 "text": "At night.",
-                "delay": 2200
+                "delay": 2880
               }
             ],
             "highlightWord": {
               "word": "night",
-              "delay": 2200
+              "delay": 2320
             },
             "audioRegenAt": "2026-06-04T03:29:52.539Z"
           },
@@ -50764,12 +50764,12 @@
               },
               {
                 "text": "The text says it.",
-                "delay": 2200
+                "delay": 3360
               }
             ],
             "highlightWord": {
               "word": "text",
-              "delay": 2200
+              "delay": 3500
             },
             "audioRegenAt": "2026-06-04T03:29:54.572Z"
           },
@@ -51073,12 +51073,12 @@
               },
               {
                 "text": "Bees are helpers.",
-                "delay": 2200
+                "delay": 4980
               }
             ],
             "highlightWord": {
               "word": "helpers",
-              "delay": 2200
+              "delay": 5300
             },
             "audioRegenAt": "2026-06-04T03:52:41.921Z"
           },
@@ -51093,12 +51093,12 @@
               },
               {
                 "text": "No, it's a detail.",
-                "delay": 2200
+                "delay": 4620
               }
             ],
             "highlightWord": {
               "word": "detail",
-              "delay": 2200
+              "delay": 5980
             },
             "audioRegenAt": "2026-06-04T03:52:44.617Z"
           },
@@ -51716,12 +51716,12 @@
               },
               {
                 "text": "Prediction!",
-                "delay": 2200
+                "delay": 4280
               }
             ],
             "highlightWord": {
               "word": "prediction",
-              "delay": 2200
+              "delay": 3540
             },
             "audioRegenAt": "2026-06-04T03:30:42.979Z"
           },
@@ -51736,12 +51736,12 @@
               },
               {
                 "text": "A guess about what happens.",
-                "delay": 2200
+                "delay": 3220
               }
             ],
             "highlightWord": {
               "word": "guess",
-              "delay": 2200
+              "delay": 2700
             },
             "audioRegenAt": "2026-06-04T03:30:50.107Z"
           },
@@ -52076,12 +52076,12 @@
               },
               {
                 "text": "First, next, finally!",
-                "delay": 2200
+                "delay": 3500
               }
             ],
             "highlightWord": {
               "word": "finally",
-              "delay": 2200
+              "delay": 5260
             },
             "audioRegenAt": "2026-06-04T03:30:50.886Z"
           },
@@ -52096,12 +52096,12 @@
               },
               {
                 "text": "Sequence!",
-                "delay": 2200
+                "delay": 3880
               }
             ],
             "highlightWord": {
               "word": "Sequence",
-              "delay": 2200
+              "delay": 3140
             },
             "audioRegenAt": "2026-06-04T03:30:52.718Z"
           },
@@ -52367,12 +52367,12 @@
               },
               {
                 "text": "No!",
-                "delay": 2200
+                "delay": 2820
               }
             ],
             "highlightWord": {
               "word": "No",
-              "delay": 2200
+              "delay": 2080
             },
             "audioRegenAt": "2026-06-04T03:30:54.763Z"
           },
@@ -52387,12 +52387,12 @@
               },
               {
                 "text": "Secondhand!",
-                "delay": 2200
+                "delay": 4060
               }
             ],
             "highlightWord": {
               "word": "Secondhand",
-              "delay": 2200
+              "delay": 3320
             },
             "audioRegenAt": "2026-06-04T03:30:55.934Z"
           },
@@ -53766,12 +53766,12 @@
               },
               {
                 "text": "Fan-tas-tic!",
-                "delay": 2200
+                "delay": 3300
               }
             ],
             "highlightWord": {
               "word": "chunk",
-              "delay": 2200
+              "delay": 1100
             },
             "audioRegenAt": "2026-06-04T03:31:03.641Z"
           },
@@ -53786,12 +53786,12 @@
               },
               {
                 "text": "Fantastic!",
-                "delay": 2200
+                "delay": 3920
               }
             ],
             "highlightWord": {
               "word": "Fantastic",
-              "delay": 2200
+              "delay": 3180
             },
             "audioRegenAt": "2026-06-04T03:31:11.172Z"
           },
@@ -54168,12 +54168,12 @@
               },
               {
                 "text": "PH!",
-                "delay": 2200
+                "delay": 3880
               }
             ],
             "highlightWord": {
               "word": "ph",
-              "delay": 2200
+              "delay": 3140
             },
             "audioRegenAt": "2026-06-04T03:31:18.971Z"
           },
@@ -54477,12 +54477,12 @@
               },
               {
                 "text": "Fast!",
-                "delay": 2200
+                "delay": 8340
               }
             ],
             "highlightWord": {
               "word": "Fast",
-              "delay": 2200
+              "delay": 1680
             },
             "audioRegenAt": "2026-06-04T03:31:43.388Z"
           },
@@ -54497,12 +54497,12 @@
               },
               {
                 "text": "Excited!",
-                "delay": 2200
+                "delay": 3020
               }
             ],
             "highlightWord": {
               "word": "Excited",
-              "delay": 2200
+              "delay": 2280
             },
             "audioRegenAt": "2026-06-04T03:31:48.073Z"
           },
@@ -55113,12 +55113,12 @@
               },
               {
                 "text": "Or!",
-                "delay": 2200
+                "delay": 4700
               }
             ],
             "highlightWord": {
               "word": "Or",
-              "delay": 2200
+              "delay": 3960
             },
             "audioRegenAt": "2026-06-08T02:04:55.818Z"
           },
@@ -55133,12 +55133,12 @@
               },
               {
                 "text": "Dark and dim.",
-                "delay": 2200
+                "delay": 3880
               }
             ],
             "highlightWord": {
               "word": "dark",
-              "delay": 2200
+              "delay": 3140
             },
             "audioRegenAt": "2026-06-04T03:31:52.283Z"
           },
@@ -55853,12 +55853,12 @@
               },
               {
                 "text": "Thesaurus!",
-                "delay": 2200
+                "delay": 3420
               }
             ],
             "highlightWord": {
               "word": "Thesaurus",
-              "delay": 2200
+              "delay": 2680
             },
             "audioRegenAt": "2026-06-04T03:31:56.801Z"
           },
@@ -55873,7 +55873,7 @@
               },
               {
                 "text": "Synonyms!",
-                "delay": 2200
+                "delay": 2940
               }
             ],
             "highlightWord": {
@@ -56774,12 +56774,12 @@
               },
               {
                 "text": "No!",
-                "delay": 2200
+                "delay": 3760
               }
             ],
             "highlightWord": {
               "word": "No",
-              "delay": 2200
+              "delay": 3020
             },
             "audioRegenAt": "2026-06-04T03:33:38.187Z"
           },
@@ -56794,12 +56794,12 @@
               },
               {
                 "text": "Very easy!",
-                "delay": 2200
+                "delay": 3440
               }
             ],
             "highlightWord": {
               "word": "easy",
-              "delay": 2200
+              "delay": 3340
             },
             "audioRegenAt": "2026-06-04T03:34:47.257Z"
           },
@@ -57335,7 +57335,7 @@
             ],
             "highlightWord": {
               "word": "Academic",
-              "delay": 2200
+              "delay": 1760
             },
             "audioRegenAt": "2026-06-08T02:05:33.880Z"
           },
@@ -57350,12 +57350,12 @@
               },
               {
                 "text": "In a report!",
-                "delay": 2200
+                "delay": 3060
               }
             ],
             "highlightWord": {
               "word": "report",
-              "delay": 2200
+              "delay": 3480
             },
             "audioRegenAt": "2026-06-04T03:35:18.965Z"
           },
@@ -59312,12 +59312,12 @@
               },
               {
                 "text": "-ed!",
-                "delay": 2200
+                "delay": 3120
               }
             ],
             "highlightWord": {
               "word": "ed",
-              "delay": 2200
+              "delay": 2300
             },
             "audioRegenAt": "2026-06-04T03:35:18.986Z"
           },
@@ -59332,12 +59332,12 @@
               },
               {
                 "text": "Already happened!",
-                "delay": 2200
+                "delay": 3000
               }
             ],
             "highlightWord": {
               "word": "happened",
-              "delay": 2200
+              "delay": 660
             },
             "audioRegenAt": "2026-06-04T03:35:24.377Z"
           },
@@ -59681,12 +59681,12 @@
               },
               {
                 "text": "O-F!",
-                "delay": 2200
+                "delay": 3220
               }
             ],
             "highlightWord": {
               "word": "O-F",
-              "delay": 2200
+              "delay": 2400
             },
             "audioRegenAt": "2026-06-04T03:35:56.758Z"
           },
@@ -59701,12 +59701,12 @@
               },
               {
                 "text": "No, memorize it!",
-                "delay": 2200
+                "delay": 3260
               }
             ],
             "highlightWord": {
               "word": "memorize",
-              "delay": 2200
+              "delay": 3960
             },
             "audioRegenAt": "2026-06-04T03:35:56.256Z"
           },
@@ -60421,7 +60421,7 @@
             ],
             "highlightWord": {
               "word": "point",
-              "delay": 2200
+              "delay": 660
             },
             "audioRegenAt": "2026-06-04T03:36:02.839Z"
           },
@@ -60436,12 +60436,12 @@
               },
               {
                 "text": "A noun!",
-                "delay": 2200
+                "delay": 6540
               }
             ],
             "highlightWord": {
               "word": "noun",
-              "delay": 2200
+              "delay": 6000
             },
             "audioRegenAt": "2026-06-04T03:36:03.165Z"
           },
@@ -61418,12 +61418,12 @@
               },
               {
                 "text": "Apostrophe s!",
-                "delay": 2200
+                "delay": 3900
               }
             ],
             "highlightWord": {
               "word": "apostrophe",
-              "delay": 2200
+              "delay": 3100
             },
             "audioRegenAt": "2026-06-04T03:36:07.579Z"
           },
@@ -61438,12 +61438,12 @@
               },
               {
                 "text": "After cat!",
-                "delay": 2200
+                "delay": 2940
               }
             ],
             "highlightWord": {
               "word": "cat",
-              "delay": 2200
+              "delay": 3060
             },
             "audioRegenAt": "2026-06-08T02:05:29.991Z"
           },
@@ -61748,12 +61748,12 @@
               },
               {
                 "text": "Yes!",
-                "delay": 2200
+                "delay": 6180
               }
             ],
             "highlightWord": {
               "word": "stronger",
-              "delay": 2200
+              "delay": 500
             },
             "audioRegenAt": "2026-06-04T03:36:27.191Z"
           },
@@ -62120,7 +62120,7 @@
             ],
             "highlightWord": {
               "word": "tricky",
-              "delay": 2200
+              "delay": 6900
             },
             "audioRegenAt": "2026-06-04T03:41:29.125Z"
           },
@@ -62135,12 +62135,12 @@
               },
               {
                 "text": "Ran!",
-                "delay": 2200
+                "delay": 5320
               }
             ],
             "highlightWord": {
               "word": "ran",
-              "delay": 2200
+              "delay": 4560
             },
             "audioRegenAt": "2026-06-04T03:41:24.138Z"
           },
@@ -62727,12 +62727,12 @@
               },
               {
                 "text": "Said.",
-                "delay": 2200
+                "delay": 3960
               }
             ],
             "highlightWord": {
               "word": "Said",
-              "delay": 2200
+              "delay": 3200
             },
             "audioRegenAt": "2026-06-04T03:52:48.830Z"
           },
@@ -62747,12 +62747,12 @@
               },
               {
                 "text": "Quacked!",
-                "delay": 2200
+                "delay": 4740
               }
             ],
             "highlightWord": {
               "word": "Quacked",
-              "delay": 2200
+              "delay": 3980
             },
             "audioRegenAt": "2026-06-04T03:53:19.497Z"
           },
@@ -63406,7 +63406,7 @@
             ],
             "highlightWord": {
               "word": "but",
-              "delay": 2200
+              "delay": 6480
             },
             "audioRegenAt": "2026-06-04T03:53:18.473Z"
           },
@@ -63421,12 +63421,12 @@
               },
               {
                 "text": "Before it.",
-                "delay": 2200
+                "delay": 3540
               }
             ],
             "highlightWord": {
               "word": "Before",
-              "delay": 2200
+              "delay": 2800
             },
             "audioRegenAt": "2026-06-04T03:53:23.959Z"
           },
