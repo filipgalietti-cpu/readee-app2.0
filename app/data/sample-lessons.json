@@ -20157,7 +20157,7 @@
             "audioFile": "audio/lessons/RF.1.4b/S3d.mp3",
             "ttsScript": "Nice and smooth, like talking to a friend.",
             "interaction": "",
-            "audioRegenAt": "2026-06-10T03:36:01.954Z",
+            "audioRegenAt": "2026-06-10T03:48:27.037Z",
             "highlightWord": {
               "word": "smooth",
               "delay": 300
@@ -40397,7 +40397,7 @@
               "word": "index",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-10T03:37:02.192Z"
+            "audioRegenAt": "2026-06-10T03:48:39.496Z"
           },
           {
             "sub": "d",
@@ -48028,7 +48028,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.4.3/S2c.mp3",
             "ttsScript": "even without saying kind.",
-            "audioRegenAt": "2026-06-10T03:37:59.852Z",
+            "audioRegenAt": "2026-06-10T03:48:35.810Z",
             "highlightWord": {
               "word": "kind",
               "delay": 1200
@@ -53695,7 +53695,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.4.4/S2a.mp3",
             "ttsScript": "Slow down for tricky parts.",
-            "audioRegenAt": "2026-06-10T03:38:14.934Z",
+            "audioRegenAt": "2026-06-10T03:48:43.032Z",
             "highlightWord": {
               "word": "tricky",
               "delay": 3780
@@ -60927,7 +60927,7 @@
               "word": "thrilled",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-10T03:38:44.605Z"
+            "audioRegenAt": "2026-06-10T03:48:42.554Z"
           },
           {
             "sub": "e",
