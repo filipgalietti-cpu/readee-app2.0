@@ -4513,7 +4513,7 @@
               "word": "cover",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-08T02:01:17.590Z"
+            "audioRegenAt": "2026-06-10T03:35:42.313Z"
           },
           {
             "sub": "d",
@@ -13948,7 +13948,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.3/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
-            "audioRegenAt": "2026-06-03T02:52:57.034Z",
+            "audioRegenAt": "2026-06-10T03:35:40.613Z",
             "highlightWord": {
               "word": "trick",
               "delay": 1440
@@ -13958,7 +13958,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.3/S4b.mp3",
             "ttsScript": "When you read, picture the character, the setting, and the events in your mind.",
-            "audioRegenAt": "2026-06-03T02:52:56.762Z",
+            "audioRegenAt": "2026-06-10T03:35:43.267Z",
             "highlightWord": {
               "word": "picture",
               "delay": 1460
@@ -13976,7 +13976,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.1.3/S4c.mp3",
             "ttsScript": "Now you are ready to practice finding story parts!",
-            "audioRegenAt": "2026-06-03T02:52:59.908Z",
+            "audioRegenAt": "2026-06-10T03:35:46.544Z",
             "highlightWord": {
               "word": "practice",
               "delay": 1680
@@ -20157,7 +20157,7 @@
             "audioFile": "audio/lessons/RF.1.4b/S3d.mp3",
             "ttsScript": "Nice and smooth, like talking to a friend.",
             "interaction": "",
-            "audioRegenAt": "2026-06-08T02:02:55.946Z",
+            "audioRegenAt": "2026-06-10T03:36:01.954Z",
             "highlightWord": {
               "word": "smooth",
               "delay": 300
@@ -24895,7 +24895,7 @@
               "word": "Sizzled",
               "delay": 2000
             },
-            "audioRegenAt": "2026-06-08T03:22:18.063Z"
+            "audioRegenAt": "2026-06-10T03:35:50.470Z"
           },
           {
             "sub": "which sense",
@@ -26268,7 +26268,7 @@
               "word": "rereading",
               "delay": 260
             },
-            "audioRegenAt": "2026-06-08T03:29:43.227Z"
+            "audioRegenAt": "2026-06-10T03:35:54.169Z"
           },
           {
             "sub": "key term",
@@ -26299,7 +26299,7 @@
               "word": "stop",
               "delay": 2000
             },
-            "audioRegenAt": "2026-06-08T03:29:43.027Z"
+            "audioRegenAt": "2026-06-10T03:35:58.621Z"
           },
           {
             "sub": "concept",
@@ -27267,7 +27267,7 @@
               "word": "because",
               "delay": 1580
             },
-            "audioRegenAt": "2026-06-08T03:41:16.921Z"
+            "audioRegenAt": "2026-06-10T03:36:00.664Z"
           }
         ]
       },
@@ -31877,7 +31877,7 @@
               "word": "because",
               "delay": 1400
             },
-            "audioRegenAt": "2026-06-08T03:44:59.520Z"
+            "audioRegenAt": "2026-06-10T03:36:06.315Z"
           },
           {
             "sub": "concept",
@@ -31908,7 +31908,7 @@
               "word": "people",
               "delay": 2000
             },
-            "audioRegenAt": "2026-06-08T03:45:04.270Z"
+            "audioRegenAt": "2026-06-10T03:36:41.181Z"
           },
           {
             "sub": "concept",
@@ -39259,7 +39259,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.1/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Here's the text: The little bird sang a happy song. Maya listened from her window. We say the bird made the music. Which exact words from the text prove it?"
+            "ttsScript": "Your turn, detective! Here's the text: The little bird sang a happy song. Maya listened from her window. We say the bird made the music. Which exact words from the text prove it?",
+            "audioRegenAt": "2026-06-10T03:36:49.767Z"
           }
         ],
         "interactive": {
@@ -39839,7 +39840,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.3/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Here's the order: The bird felt hungry. Then it flew to the feeder. Then it ate the seeds. Then its tummy was full. Which event happened FIRST?"
+            "ttsScript": "Your turn, detective! Here's the order: The bird felt hungry. Then it flew to the feeder. Then it ate the seeds. Then its tummy was full. Which event happened FIRST?",
+            "audioRegenAt": "2026-06-10T03:36:52.674Z"
           }
         ],
         "interactive": {
@@ -40395,7 +40397,7 @@
               "word": "index",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:50:35.569Z"
+            "audioRegenAt": "2026-06-10T03:37:02.192Z"
           },
           {
             "sub": "d",
@@ -40737,7 +40739,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.6/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen closely. 'Everyone should visit the lake. You should pack a lunch and stay all day. You will never want to leave!' How does the author feel about the lake?"
+            "ttsScript": "Your turn, detective! Listen closely. 'Everyone should visit the lake. You should pack a lunch and stay all day. You will never want to leave!' How does the author feel about the lake?",
+            "audioRegenAt": "2026-06-10T03:37:02.851Z"
           }
         ],
         "interactive": {
@@ -42968,7 +42971,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.3.3c/interactive-q.mp3",
-            "ttsScript": "Time to use your chunking trick! Here is a big word: elephant. Which way splits it so each chunk has just one vowel sound?"
+            "ttsScript": "Time to use your chunking trick! Here is a big word: elephant. Which way splits it so each chunk has just one vowel sound?",
+            "audioRegenAt": "2026-06-10T03:37:03.946Z"
           }
         ],
         "interactive": {
@@ -43067,7 +43071,7 @@
               "word": "knee",
               "delay": 340
             },
-            "audioRegenAt": "2026-06-08T03:46:51.642Z"
+            "audioRegenAt": "2026-06-10T03:37:11.383Z"
           },
           {
             "sub": "concept",
@@ -43098,7 +43102,7 @@
               "word": "silent",
               "delay": 1100
             },
-            "audioRegenAt": "2026-06-08T03:46:54.924Z"
+            "audioRegenAt": "2026-06-10T03:37:11.976Z"
           },
           {
             "sub": "concept",
@@ -43950,7 +43954,7 @@
               "word": "scared",
               "delay": 2000
             },
-            "audioRegenAt": "2026-06-08T03:47:53.518Z"
+            "audioRegenAt": "2026-06-10T03:37:19.897Z"
           },
           {
             "sub": "concept",
@@ -43981,7 +43985,7 @@
               "word": "energy",
               "delay": 2000
             },
-            "audioRegenAt": "2026-06-08T03:47:49.520Z"
+            "audioRegenAt": "2026-06-10T03:37:20.306Z"
           },
           {
             "sub": "concept",
@@ -48024,7 +48028,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.4.3/S2c.mp3",
             "ttsScript": "even without saying kind.",
-            "audioRegenAt": "2026-06-08T02:04:23.934Z",
+            "audioRegenAt": "2026-06-10T03:37:59.852Z",
             "highlightWord": {
               "word": "kind",
               "delay": 1200
@@ -48508,7 +48512,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.4/interactive-q.mp3",
-            "ttsScript": "Your turn, word detective! Listen: 'After the kind note, Sam felt his cold heart melting.' What does 'melting' mean here?"
+            "ttsScript": "Your turn, word detective! Listen: 'After the kind note, Sam felt his cold heart melting.' What does 'melting' mean here?",
+            "audioRegenAt": "2026-06-10T03:37:30.995Z"
           }
         ],
         "interactive": {
@@ -52649,7 +52654,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.4.9/interactive-q.mp3",
-            "ttsScript": "Your turn! One article says bees make sweet honey. Another article says bees help flowers grow. When you put both texts together, what do you understand better about bees?"
+            "ttsScript": "Your turn! One article says bees make sweet honey. Another article says bees help flowers grow. When you put both texts together, what do you understand better about bees?",
+            "audioRegenAt": "2026-06-10T03:37:56.548Z"
           }
         ],
         "interactive": {
@@ -52728,7 +52734,7 @@
               "word": "main",
               "delay": 6140
             },
-            "audioRegenAt": "2026-06-10T02:27:18.112Z"
+            "audioRegenAt": "2026-06-10T03:37:38.716Z"
           },
           {
             "sub": "key term",
@@ -52759,7 +52765,7 @@
               "word": "big",
               "delay": 2000
             },
-            "audioRegenAt": "2026-06-08T03:50:45.454Z"
+            "audioRegenAt": "2026-06-10T03:37:46.236Z"
           },
           {
             "sub": "concept",
@@ -52790,7 +52796,7 @@
               "word": "whole",
               "delay": 2000
             },
-            "audioRegenAt": "2026-06-08T03:50:50.843Z"
+            "audioRegenAt": "2026-06-10T03:37:53.274Z"
           },
           {
             "sub": "strategy",
@@ -52889,7 +52895,7 @@
               "word": "glue",
               "delay": 3480
             },
-            "audioRegenAt": "2026-06-10T02:27:23.336Z"
+            "audioRegenAt": "2026-06-10T03:38:01.822Z"
           },
           {
             "sub": "trick",
@@ -53689,7 +53695,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.4.4/S2a.mp3",
             "ttsScript": "Slow down for tricky parts.",
-            "audioRegenAt": "2026-06-08T02:04:51.677Z",
+            "audioRegenAt": "2026-06-10T03:38:14.934Z",
             "highlightWord": {
               "word": "tricky",
               "delay": 3780
@@ -56666,7 +56672,7 @@
               "word": "Academic",
               "delay": 1760
             },
-            "audioRegenAt": "2026-06-08T02:05:33.880Z"
+            "audioRegenAt": "2026-06-10T03:38:11.115Z"
           },
           {
             "sub": "d",
@@ -58580,7 +58586,7 @@
               "word": "happened",
               "delay": 660
             },
-            "audioRegenAt": "2026-06-04T03:35:24.377Z"
+            "audioRegenAt": "2026-06-10T03:38:10.124Z"
           },
           {
             "sub": "e",
@@ -58649,7 +58655,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3f/interactive-q.mp3",
-            "ttsScript": "Your turn! A puppy did this yesterday. Which word shows it already happened? Walks, walked, or walking?"
+            "ttsScript": "Your turn! A puppy did this yesterday. Which word shows it already happened? Walks, walked, or walking?",
+            "audioRegenAt": "2026-06-10T03:38:22.205Z"
           }
         ],
         "interactive": {
@@ -59857,7 +59864,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.1.2/S3a.mp3",
             "ttsScript": "Every sentence ends with a mark.",
-            "audioRegenAt": "2026-06-08T02:05:32.331Z",
+            "audioRegenAt": "2026-06-10T03:38:17.462Z",
             "highlightWord": {
               "word": "mark",
               "delay": 1200
@@ -60920,7 +60927,7 @@
               "word": "thrilled",
               "delay": 2200
             },
-            "audioRegenAt": "2026-06-04T03:41:20.020Z"
+            "audioRegenAt": "2026-06-10T03:38:44.605Z"
           },
           {
             "sub": "e",
