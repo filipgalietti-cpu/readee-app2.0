@@ -24963,8 +24963,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.2.4/interactive-q.mp3",
-            "ttsScript": "Your turn! Match each sensory word to the sense it pulls in. Crunchy, glowing, and buzzing.",
-            "audioRegenAt": "2026-06-08T12:58:58.955Z"
+            "ttsScript": "Your turn! Match each sensory word to the sense it pulls in. Sweet, glowing, and buzzing.",
+            "audioRegenAt": "2026-06-10T02:47:20.869Z"
           }
         ],
         "interactive": {
@@ -24973,10 +24973,10 @@
           "hint": "Could you chew it, see it, or hear it?",
           "correctAudio": "audio/lessons/RL.2.4/interactive-correct.mp3",
           "wrongAudio": "audio/lessons/RL.2.4/interactive-wrong.mp3",
-          "correctScript": "You matched them all! Crunchy is taste, glowing is sight, and buzzing is sound. You know your senses!",
+          "correctScript": "You matched them all! Sweet is taste, glowing is sight, and buzzing is sound!",
           "wrongScript": "Good try! Think about each word. Could you chew it, see it, or hear it? Try again!",
           "leftItems": [
-            "Crunchy",
+            "Sweet",
             "Glowing",
             "Buzzing"
           ],
@@ -24986,7 +24986,7 @@
             "Sound"
           ],
           "correctPairs": {
-            "Crunchy": "Taste",
+            "Sweet": "Taste",
             "Glowing": "Sight",
             "Buzzing": "Sound"
           }

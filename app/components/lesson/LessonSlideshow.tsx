@@ -701,7 +701,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
   // shown), not a half-drawn karaoke frame.
   useEffect(() => {
     if (!auditMode) return;
-    const t = setTimeout(() => handleSkip(), 700);
+    // Fire AFTER the mount effect's own 700ms scheduleStep so the two
+    // don't race (the race crashed fork/tip/table slides on mobile).
+    const t = setTimeout(() => handleSkip(), 1600);
     return () => clearTimeout(t);
   }, [currentSlide, auditMode, handleSkip]);
 
@@ -1951,8 +1953,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             // these because the focal idea IS the trio (e.g. RL.K.1
             // slide 2: kid should see Who? + What? + Where? together
             // after all three reveal). Long beats still replace.
-            const isShortAnchor = (s: Step) =>
-              !!s.displayText &&
+            const isShortAnchor = (s?: Step) =>
+              !!s?.displayText &&
               !s.displayParts &&
               !s.displayTableRow &&
               s.displayText.trim().split(/\s+/).length <= 2;
