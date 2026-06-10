@@ -18,6 +18,7 @@ import type { ReactNode } from "react";
 import { X, Volume2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
+import { LoadingImage } from "@/app/components/ui/LoadingImage";
 
 export interface LessonShellDesktopProps {
   slideNum: number;
@@ -83,14 +84,12 @@ export function LessonShellDesktop({
         {hasLeft && (
           <div className="flex w-[45%] items-center justify-center px-8 py-12 pl-16">
             {leftSlot ?? (
-              <motion.img
+              <LoadingImage
                 key={imageUrl}
-                src={imageUrl}
+                src={imageUrl ?? ""}
                 alt={imageAlt ?? ""}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="max-h-[70%] w-auto rounded-3xl object-contain shadow-[0_8px_24px_-8px_rgba(50,30,90,0.18)]"
+                containerClassName="aspect-square h-[70%] rounded-3xl shadow-[0_8px_24px_-8px_rgba(50,30,90,0.18)]"
+                className="h-full w-full rounded-3xl object-contain"
               />
             )}
           </div>
