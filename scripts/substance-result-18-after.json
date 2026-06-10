@@ -1,0 +1,164 @@
+{
+  "summary": "Holistic \"is this genuinely a good lesson?\" review of all 201 lessons (text-based, pedagogical judgment, not a rule checklist)",
+  "agentCount": 4,
+  "logs": [],
+  "result": {
+    "reviewed": 18,
+    "scoreDistribution": {
+      "1": 0,
+      "2": 0,
+      "3": 1,
+      "4": 7,
+      "5": 10
+    },
+    "wouldUseCount": 18,
+    "weakCount": 0,
+    "weak": [],
+    "all": [
+      {
+        "std": "RI.1.2",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Crystal-clear hook→teach→model→guided sequence with the repeated-word trick anchoring main topic concretely",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.2b",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Phonologically pure — pulls the kid off the page and into their ears, with consistent CVC blending modeled and practiced",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Makes abstract sensory-word concept tangible by tying each word to a specific sense the kid can verify",
+        "weakness": "The match activity assigns 'Crunchy' to Taste when crunchy is primarily a sound/texture word — ambiguous and potentially confusing on a skill all about precise sense-matching",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.10",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Teaches a genuine metacognitive strategy (reread when confused) and the example authentically models confusion-then-resolution rather than faking it",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.3",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Real science cause-effect chains plus the 'because'/'ask why' tools give kids a transferable strategy, and the example is scientifically accurate",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.3f",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean, well-sequenced sight-word lesson with the correct Science-of-Reading framing (these are high-frequency irregular words, learn by sight, snap a mental picture)",
+        "weakness": "Uses 'because' as the marquee tricky word repeatedly, but 'because' is largely decodable for a 2nd grader (be-cause); a truly irregular word like 'people' or 'could' would model the 'can't sound it out' point more honestly. The match interactive is sentence-completion (meaning) rather than instant word recognition, so it tests cloze comprehension more than sight-reading speed.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.9",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Genuinely teaches the standard: theme defined, the tortoise-vs-runner intuition pump, two parallel mini-stories (Ant/Kira) that share perseverance with clearly different plots, and a transferable 'this story teaches me to ___' strategy. The Your Turn gives two fresh stories and makes the kid extract the shared theme (kindness) themselves.",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.3d",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, hands-on phonics: clear examples (knee, comb, write), and a genuinely useful self-check strategy ('say it slow and feel which letter your mouth skips'). The match interactive makes the kid apply silent-letter identification to three new words.",
+        "weakness": "Slight pronunciation-respelling sloppiness — 'comb = kome' could confuse, and the lesson teaches silent letters by example without grouping the common patterns (kn-, wr-, -mb) that would give a 3rd grader a generalizable rule rather than word-by-word memorization.",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.4b",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Targets prosody/fluency well for the grade: links voice to feelings, gives concrete punctuation cues (! = energy, ? = voice up), and the modeled example walks the clue-to-delivery reasoning. The Your Turn makes the kid choose the right delivery for a new line.",
+        "weakness": "It's a multiple-choice 'how should you read it' tap, so the kid never actually reads aloud with expression — the standard is a performance/fluency skill that a tap question can only approximate. Also barely touches the prose-vs-poetry distinction named in the standard.",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.5b",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Strong vocabulary-in-context teaching: defines cozy/brisk with vivid kid-relatable images and the example forces the kid to match a word to a described real moment, which is exactly the L.3.5 skill (connect words to real-life use).",
+        "weakness": "Only two words are taught and they recur in every step (cozy/brisk, then cozy again in the Your Turn), so it's thin on content and the Your Turn cue 'curled up by the fire with warm cocoa' practically gives away 'Cozy' — low challenge. A third distinct word would broaden it.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.10",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The volcano example genuinely models the cognitive move — listing details first, then asking what one idea they all point to — which is exactly the main-idea-vs-detail skill, and the 'Your Turn' coral reef item makes the kid do that same move with strong distractors (true details that aren't the main idea).",
+        "weakness": "RI.4.10 is fundamentally about reading LONG, complex nonfiction and range/independence; the texts here are 3-4 short sentences, so it really teaches main idea (closer to RI.4.2) rather than the stamina/complexity dimension the standard names.",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.3e",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Crisp, decodable, and perfectly scaffolded: split-read-blend is named upfront, the 'twin letters' heuristic is concrete and correct for these VCCV doublet words, and the rabbit/happen modeling plus the match 'Your Turn' (muffin, ladder, butter) all reinforce the exact same decoding move a first grader can actually execute.",
+        "weakness": "Slightly narrow — it only covers the doubled-consonant (twin-letter) case of two-syllable splitting, so a kid finishes able to split bb/dd/ff words but not the broader VCCV pattern; fine as a focused lesson, just not the whole standard.",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.1",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Irregular past-tense verbs are taught exactly the way they should be for a 2nd grader: the 'add -ed' rule is established first so the irregular is felt as a rule-breaker, the run/ran and fly/flew modeling explicitly rejects the over-generalization error (runned, flyed) kids actually make, and the 'say it with yesterday' ear-test is a genuinely useful real strategy.",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.2",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Handles a genuinely tricky punctuation skill cleanly: it separates the two jobs (quotes hug the spoken words, comma sets off the speaker), models both pieces on 'Tom said, \"Stop!\"', and the read-aloud-and-pause trick correctly ties the comma to an audible cue a 3rd grader can hear.",
+        "weakness": "The 'Your Turn' only checks comma placement (where the comma goes), leaving the quotation-mark half of the skill un-practiced interactively — a single item can't exercise both moves it just taught.",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.1",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Pronoun-antecedent agreement is taught with the right academic vocabulary (antecedent) AND a usable procedure — point back to the noun, ask one-or-many, then pick — and the 'kittens chased ___ tails / their' item with 'her' and 'its' as singular distractors forces the kid to actually run the number-agreement check.",
+        "weakness": "It covers number agreement thoroughly but doesn't touch gender or the common vague-pronoun/shifts piece of L.4.1; solid and complete for what it scopes, just one slice of the standard.",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.5a",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Crisp, transferable 'sounds silly literally = nonliteral' strategy plus a fresh idiom in Your Turn that forces real application",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.6",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Clear, age-appropriate when/where framing with a clean worked example",
+        "weakness": "Narrows the standard to only time/place words and the activity mostly recycles example words, so transfer and production are light",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.3g",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Accurately models irregular words by contrasting expected vs real sound (said->sed, was->wuz, of->uv)",
+        "weakness": "Your Turn is a sight-word-vs-decodable sorting task rather than actually practicing recognition of the taught irregular words",
+        "wouldUse": true
+      }
+    ]
+  }
+}

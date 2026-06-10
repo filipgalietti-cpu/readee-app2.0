@@ -1,0 +1,1777 @@
+{
+  "summary": "Holistic \"is this genuinely a good lesson?\" review of all 201 lessons (text-based, pedagogical judgment, not a rule checklist)",
+  "agentCount": 41,
+  "logs": [],
+  "result": {
+    "reviewed": 201,
+    "scoreDistribution": {
+      "1": 0,
+      "2": 11,
+      "3": 44,
+      "4": 111,
+      "5": 35
+    },
+    "wouldUseCount": 183,
+    "weakCount": 18,
+    "weak": [
+      {
+        "std": "RI.1.2",
+        "score": 3,
+        "verdict": "good",
+        "strength": "two clean parallel worked examples plus a real, usable 'most-repeated word' strategy",
+        "weakness": "content bug on the example screen — key details labeled 'Firefighting!' instead of gear/trucks/helping, which mislabels the very thing being taught",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.1.2b",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Good blending pedagogy intent — models 'mop' with stretched-then-snapped phonemes and a strong tip (say slow, then faster until they snap together).",
+        "weakness": "Phonemic blending is auditory, but the teach and second example label sounds only as 'First sound / Middle sound / Last sound' on the page with no actual phonemes voiced, so the kid never hears the /m/ /o/ /p/ to blend — the whole skill hinges on audio the script doesn't specify.",
+        "wouldUse": false
+      },
+      {
+        "std": "RL.2.4",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Strong, vivid modeled example ('dry leaves crunched') that explicitly walks the kid through finding a sensory word and naming the sense it triggers — good gradual-release teaching of how word choice creates meaning/feeling",
+        "weakness": "The lesson tries to cover too much at once (rhyme, beat/meter, AND sensory words) and then the 'Your Turn' only assesses sensory matching — and weakly, since 'What did Lily feel?' with answer 'Warm sand' conflates physical touch with the rhythm/sound focus the intro set up; the rhyme and beat teaching gets dropped and never practiced",
+        "wouldUse": false
+      },
+      {
+        "std": "RL.2.10",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "Encouraging, age-right framing of 'stretch books' and building reading stamina across genres",
+        "weakness": "RL.2.10 is a range-of-reading/text-complexity standard with no discrete teachable skill, and this lesson knows it — so it drifts into generic reading-motivation pep talk, and the tip (ask 'who/what' questions) and Your Turn (pick 'stretch books') don't model any comprehension skill a kid would USE",
+        "wouldUse": false
+      },
+      {
+        "std": "RI.2.3",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Butterfly life-cycle example is concrete and cleanly sequenced with first/next/then/finally",
+        "weakness": "Standard mismatch — RI.2.3 is connecting historical/scientific/technical events, ideas, or steps; this collapses the whole skill into sequence/order words only, and the PB&J Your-Turn tests a fictional procedure rather than a nonfiction connection",
+        "wouldUse": false,
+        "score_note": "",
+        "std_note": ""
+      },
+      {
+        "std": "RF.2.3f",
+        "score": 2,
+        "verdict": "mediocre",
+        "strength": "individually sound sight-word facts and a clear modeled example for 'would'",
+        "weakness": "incoherent — teaches sight words (because/people/again) but the example and interactive pivot to unrelated silent-letter words (walk/comb/hour) never taught, so practice doesn't match instruction",
+        "wouldUse": false
+      },
+      {
+        "std": "RL.3.9",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "clean, age-appropriate definition of shared theme",
+        "weakness": "never actually teaches COMPARING two stories - no two-text example, and the Your Turn asks for a single story's theme, which is RL.3.2 not RL.3.9",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.3.3d",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "silent-letter examples (knee, write) are concrete and correct",
+        "weakness": "scattered grab-bag of three unrelated patterns (silent letters, OUGH, silent-L-in-could) with no unifying skill; OUGH is just listed not decoded, and the Your Turn only tests the easiest sub-topic",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.3.4b",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "clear prose-vs-poetry distinction with an example that models reading prose with expression",
+        "weakness": "the interactive calls a string of plain sentences a 'poem' and the standard is fluency/expression, not genre-labeling — the Your Turn tests feeling-vs-flat reading on mislabeled content",
+        "wouldUse": false
+      },
+      {
+        "std": "L.3.5a",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "The literal/nonliteral teaching plus the 'raining cats and dogs' and 'couch potato' examples are solid and on-standard for distinguishing literal from nonliteral meaning",
+        "weakness": "The lesson splices in an unrelated topic — a whole teach slide on shades of certainty (knew/believed/suspected) that has nothing to do with literal vs. nonliteral meaning — making it incoherent and confusing for a kid trying to learn one skill",
+        "wouldUse": false
+      },
+      {
+        "std": "L.3.5b",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "The cozy/brisk word-to-real-life connection idea and the closing 'Your Turn' story (Maya snuggled under a blanket → cozy) are a genuinely good, concrete way to teach connecting words to experiences",
+        "weakness": "It's two lessons jammed together — it teaches 'cozy/brisk' (connecting words to real moments) but then the tip abruptly switches to knew-vs-believed certainty, and there's no example slide modeling the skill, so the through-line is broken",
+        "wouldUse": false
+      },
+      {
+        "std": "L.3.6",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "the 'curious' example models trying a brand-new word in a real sentence well",
+        "weakness": "the lesson is incoherent: the example teaches using a new vocab word, but the tip and interactive abruptly switch to discourse markers (Oh/Well/So) that were never modeled, so the practiced skill doesn't match the taught skill",
+        "wouldUse": false
+      },
+      {
+        "std": "RI.4.10",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "the butterfly main-idea example is concrete and models the skill well",
+        "weakness": "badly under-shoots grade-4 rigor (the standard is comprehending LONG complex text, but the Your Turn uses a K-level 'Dogs are great pets' passage) and the structure is redundant/muddled with two overlapping teach+tip blocks that both re-define 'big fact = main idea'",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.1.3e",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Strong, fully-sequenced split-blend-read routine with a clear modeled example (pencil) following the canon hook-teach-example-tip-practice shape.",
+        "weakness": "Conceptual mismatch: the rule taught is 'split between two SAME consonants' and the practice (muffin/ladder/butter) fits that, but the modeled example 'pencil' splits between two DIFFERENT consonants (n-c) — so the example contradicts the very rule it just stated, which will confuse a 1st grader.",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.1.3g",
+        "score": 2,
+        "verdict": "mediocre",
+        "strength": "Right instinct to frame irregular sight words as 'memorize by sight,' and the 'of' example plus the the/map/sit pick correctly isolates the un-decodable word.",
+        "weakness": "Contains real phonics errors that a reading specialist would reject: 'were has a silent E that helps it end in R' and 'have ends in a silent E' are nonsense explanations — these words are irregular precisely because they DON'T follow rules, yet the lesson invents fake rules for them, undercutting the whole point and teaching misinformation.",
+        "wouldUse": false
+      },
+      {
+        "std": "L.2.1",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "Real 2nd-grade content (collective nouns, irregular verbs) with a friendly 'say it out loud' ear strategy",
+        "weakness": "Intro promises pronouns but never teaches them, no modeled example, and 'Memorize!' gives no real strategy for irregular verbs",
+        "wouldUse": false
+      },
+      {
+        "std": "L.3.2",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "the comma-with-quotation rule content is correct and the Your Turn answer is right",
+        "weakness": "no modeled [example] step at all, and the two rule cases (speaker-first vs words-first) are presented in a muddled, easy-to-conflate way",
+        "wouldUse": false
+      },
+      {
+        "std": "L.4.1",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "pronoun-antecedent agreement is taught correctly and concretely with singular/plural examples (girl→her, boys→their)",
+        "weakness": "no modeled 'I do' example, and the tip slide is misused as a second intro instead of giving a strategy",
+        "wouldUse": false
+      }
+    ],
+    "all": [
+      {
+        "std": "RL.K.1",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Clean, repeatable Who/What/Where frame that's modeled and then transferred to a fresh story in the Your Turn",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.2a",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Strong phonological focus — multiple rhyme pairs AND a non-rhyme contrast (cake/dog) so kids learn the boundary, not just matches",
+        "weakness": "Rhyming is an ear skill, so the printed word pairs are a slight crutch, but the audio carries the real teaching",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.1",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Correctly distinguishes informational from story books and uses concrete, kid-loved animal facts to anchor What/Where/Does-it questions",
+        "weakness": "The otter 'tip' slide is delightful but off-task — it's fun facts, not a strategy tip, so it teaches nothing about FINDING key details",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.K.2",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "The extra 'Don't Forget the Middle' teach slide targets the real K retell failure point (kids skip the middle) with a concrete puppy example",
+        "weakness": "Your Turn only asks 'what happened first,' so it checks sequencing recall but never makes the kid retell the full beginning-middle-end",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.K.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Cleanly separates the three story elements with concrete category examples (people/animals; school/beach/forest; race/party)",
+        "weakness": "Thin on-screen anchoring in teach/example/tip (several slides have audio but no SCREEN text), and Your Turn tests only setting, not character or event",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.K.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The 'word detective' frame plus the contextual-clue model (famished + 'ate FIVE carrots') genuinely teaches how to USE clues, and the 'scurry' Your Turn forces real inference rather than recall.",
+        "weakness": "The standard is technically about asking and answering questions about unknown words in a text, but the lesson treats it purely as context-clue vocabulary inference; still, this is a defensible and more useful interpretation for K. Minor: pictures-as-clues is taught but never modeled in the example.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.K.5",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean genre contrast with two concrete examples (storybook frog/crown vs. poem rhymes) and a strong Your Turn that makes the kid classify a NEW rhyming text as a poem.",
+        "weakness": "Two example blocks make it a touch long for K and slightly redundant; the 'short lines = poem' heuristic is a bit shallow (rhythm/feeling mentioned but under-modeled), but it's age-appropriate and correct.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.K.6",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Crisp, correct teaching of author vs. illustrator with a concrete cover-reading strategy ('Written by' / 'Illustrated by'), and the Maya Your Turn cleanly makes the kid apply the role definition.",
+        "weakness": "The standard's emphasis on defining the ROLE of each in telling the story is reduced mostly to 'who writes/who draws' labeling; it's accurate and grade-right but stays at the naming level rather than function.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.K.7",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Strong alignment to the standard — pictures convey setting and feelings, modeled in the example (rainy day, big smile = happy), and the bear Your Turn makes the kid pull setting from picture detail.",
+        "weakness": "The example describes a picture in words rather than showing one, so the 'read the picture' skill is told more than demonstrated; depends on the rendered image to fully land. Pedagogically sound otherwise.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.K.9",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The bear/bee 'both love honey, one eats one makes' example is a perfect K-level model of same-AND-different, and the Timmy/Rosie Your Turn requires real comparison (distractors are true-of-one-only), making the kid actually do the skill.",
+        "weakness": "Slightly leans on 'same' over 'different' in the interactive (only same is tested), and the abstract notion of comparing across two stories is simplified to two characters — acceptable for K but a half-step below the full standard.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.2",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean, well-sequenced build: every model and Your Turn uses the exact same 'all the facts are about X' reasoning, so the kid sees the skill repeated identically across teach, example, and practice — perfect for a kindergartner.",
+        "weakness": "It teaches 'main topic' but never touches the second half of RI.K.2 (identify a key detail / retell). It's a solid half-standard lesson, not the whole standard.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.3",
+        "score": 3,
+        "verdict": "good",
+        "strength": "The 'because/so/then' signal-word tip is genuinely useful and the sunny-day/melted-snow Your Turn cleanly tests a cause connection.",
+        "weakness": "RI.K.3 is connecting two individuals/events/ideas in a text; this lesson quietly drifts into cause-and-effect only. The teach example (sun is hot, plants need sun) and the caterpillar example mix loose 'relatedness' with causation, so the through-line of what 'connection' means is a little muddy for a 5-year-old.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Textbook context-clue modeling — 'frigid' is inferred from 'thick fur to stay warm' and 'Arctic ice and snow,' and the Your Turn ('nocturnal') makes the kid run the same clue-hunting move independently.",
+        "weakness": "Vocabulary load is steep for kindergarten (frigid, nocturnal, Arctic) and the lesson leans on pictures as a clue source without an actual picture present in the script, so half the named strategy isn't demonstrated.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.5",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Concrete, correct, and age-appropriate — front cover/back cover/title page are clearly defined and the two examples reinforce them with real-feeling book titles.",
+        "weakness": "Only 1 practice MCQ (vs. 5 in the siblings), so the kid gets almost no independent reps after instruction; the lesson also slightly overstuffs the teach slide with four parts at once before any practice.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.6",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Crisp author-vs-illustrator contrast ('writes the WORDS' / 'draws the PICTURES') reinforced through three varied examples, and the Your Turn is a smart no-words-just-paints scenario that forces real discrimination rather than recall.",
+        "weakness": "It jumps in with a [teach] slide and no [intro] hook, and it stretches the standard by adding an 'author's message' thread that RI.K.6 doesn't really ask for — a little extra cognitive load for K.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.7",
+        "score": 4,
+        "verdict": "good",
+        "strength": "frog life-cycle example concretely shows how a picture teaches sequence words can't",
+        "weakness": "the picture is only described in audio, never shown, and the tap options are abstractly worded for a 5-year-old",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.8",
+        "score": 3,
+        "verdict": "good",
+        "strength": "clear, concrete modeling of claim-plus-reasons with the 'dogs make great pets' frame",
+        "weakness": "the 'Your Turn' Leo item is really find-a-detail, not identify-a-reason-that-supports-a-point, so it drifts from the actual standard",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.9",
+        "score": 4,
+        "verdict": "good",
+        "strength": "two scaffolded teach slides plus a bears example that cleanly model same vs. different across books",
+        "weakness": "interactive only checks the 'same/topic' half of compare; never asks the kid to name a difference",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.1a",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "teaches directionality AND return-sweep with a concrete finger-tracking trick and a clean modeled two-line example",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.1b",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "concrete building-blocks framing with short/long contrast and a personalized name hook, and the tap directly uses the counting skill",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.1c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, kid-friendly teaching of print concept with the 'finger space' trick and a clean count-the-words model that maps spaces to word boundaries",
+        "weakness": "The interactive 'Your Turn' tests counting words from text on a screen, which secretly relies on a kid who can't yet read tracking print word-by-word; for true emergent readers this is borderline, and the standard (concept of spoken-vs-print words) is only lightly hit",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.1d",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean, correct teaching of upper/lowercase as 'same letter, big and small' with a match interactive that makes the kid actually do the pairing",
+        "weakness": "The example slides describe a picture ('look at the picture') the kid may not see, and A/B/C are the three easiest, most visually obvious pairs — it never stretches to letters kids actually confuse (b/d, p/q, or shape-shifters like a/A, g/G), so mastery is shallow",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.2b",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Textbook-perfect syllable lesson: clear definition (one beat), well-sequenced 1-2-3 syllable progression with vivid concrete words, AND two real strategies (clap + hand-under-chin) that are exactly the Science of Reading moves",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.2c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Strong gradual-release structure (modeled 'pig' → guided 'sun' → independent 'cat') with the correct stretch-the-rubber-band strategy for isolating sounds",
+        "weakness": "It repeatedly conflates sound with letter ('starts with the letter B,' 'ends with the letter G') — at this phonemic-awareness standard the focus should stay on the SOUND, not the letter name; saying pig 'ends with the letter G' when the sound is /g/ muddies the very distinction the lesson teaches",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.2d",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Excellent gradual release and the right strategy combo (stretch the word + one finger per sound) modeled cleanly on 'fish' then guided on map/it before the independent 'sun'",
+        "weakness": "Phoneme counts lean on continuant-friendly words but the script can mislead — 'cat' is given as the finger-practice word yet a kid stretching a stop sound like /k/ and /t/ won't 'hold' them like fish; also no caution that letters ≠ sounds, which trips kids on words where they differ",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.2e",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Phoneme substitution is taught concretely with clear, well-chosen CVC minimal pairs (cat/bat, hop/mop) and models both initial and final swaps",
+        "weakness": "The 'example' slide gives away the answers (Mop! Dig!) so it models more than it invites the kid to think; only one interactive 'Your Turn' before practice",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.3a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Strong canon sequence — clean modeled example (P says Puh) walking through letter name then sound, then a match-the-sound interactive that makes the kid actually use the skill",
+        "weakness": "Only 1 practice MCQ for a foundational letter-sound standard is thin; the snake/clock/yummy mnemonics in teach are uneven and a bit vague",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.3b",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Rich, well-paced vowel content covering all five vowels with concrete keyword anchors (apple, egg, igloo, octopus, umbrella)",
+        "weakness": "Tries to teach too much for one K lesson — short vs long vowels AND Magic E AND 'every word needs a vowel' — yet the interactive only checks identifying a vowel in 'fish', so the harder concepts go unpracticed and may overwhelm",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.3c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Excellent age-appropriate framing of sight words ('know them like your own name,' don't sound out) with a solid modeled example ('and') and a clean interactive distinguishing a sight word from decodable words",
+        "weakness": "The 'is/mop/cat' interactive is conceptually fuzzy — mop and cat are also words a kid might 'just know,' so it tests the sight-word definition imperfectly",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.3d",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Targets a real early-reader confusion (was/saw, on/no reversals) with a concrete, genuinely useful strategy — point and read left to right, first letter first",
+        "weakness": "The interactive embeds 'was' in a spoken sentence and asks which word 'says was,' which leans on listening more than the visual look-alike discrimination the lesson taught; only 3 practice MCQs",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.K.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "concrete purpose-setting with a clean model-then-transfer arc (tiger example, space Your Turn)",
+        "weakness": "the 'To learn' correct answer for a space book is somewhat arbitrary since you could read it for fun too",
+        "wouldUse": true
+      },
+      {
+        "std": "K.L.1",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "the 'can I touch/see it' vs 'can I do it' heuristic is genuinely useful and the example models both noun and verb",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "K.L.2",
+        "score": 4,
+        "verdict": "good",
+        "strength": "clear 'fix the sentence' example that models capitalizing and adding a period",
+        "weakness": "the interactive only tests the easiest case (statement to period) and never exercises capitals or the question/exclamation marks it taught",
+        "wouldUse": true
+      },
+      {
+        "std": "K.L.4",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "the 'gigantic' Your Turn is a true transfer task applying the same context-clue strategy to a new word",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "K.L.5",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the match-the-opposites interactive demands real active recall across three pairs",
+        "weakness": "lesson teaches three relationships (opposites, categories, synonyms) but the interactive only tests opposites, leaving categories/synonyms unpracticed",
+        "wouldUse": true
+      },
+      {
+        "std": "K.L.6",
+        "score": 3,
+        "verdict": "good",
+        "strength": "concrete, kid-friendly vocab examples (enormous, delighted) and a memorable 'use it 3 times' trick",
+        "weakness": "the Your Turn tests synonym/comprehension (which word means big) rather than the taught skill of USING a new word in a sentence",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.1",
+        "score": 4,
+        "verdict": "excellent",
+        "strength": "the detective hook plus a Your Turn that genuinely makes the kid hunt the answer in the text",
+        "weakness": "teach promises 'five big questions' but the example models a looser Who/What/How-many set",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.2",
+        "score": 3,
+        "verdict": "good",
+        "strength": "clean Beginning/Middle/End framework modeled fully on Tom's race story",
+        "weakness": "the Your Turn only asks to identify the problem (the middle), not to retell/sequence B-M-E, which is the real skill",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.3",
+        "score": 4,
+        "verdict": "excellent",
+        "strength": "cleanly separates character/setting/events with real inference ('kind from what she does') and a Your Turn that targets setting precisely",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.4",
+        "score": 3,
+        "verdict": "good",
+        "strength": "the 'walked vs stomped' swap is a genuinely excellent demonstration of how one word carries feeling",
+        "weakness": "the Your Turn answer 'Tears' is a noun/thing, not the kind of vivid feeling-word the lesson just modeled, so the item undercuts the teaching",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.5",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clear fiction-vs-nonfiction markers plus a genuinely useful 'could this really happen?' decision rule",
+        "weakness": "Jumps from tip straight to practice with no separate modeled example beat before the kid tries",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.6",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "The 'I clue' vs 'he/she/they clue' is the perfect age-appropriate scaffold with concrete sentence examples for each",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.7",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Two well-modeled inference beats (expression-to-feeling, setting-to-season) and a vivid Your Turn requiring real inference",
+        "weakness": "Relies on described rather than shown illustrations, so the kid infers from words about a picture instead of the picture itself",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.9",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Defines compare/contrast then nails it with two clean parallel same/different story pairs",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.1",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Fullest arc of the set (intro-teach-example-tip-interactive) with a real read-for-detail Your Turn",
+        "weakness": "The tip re-lists who/what/where, lightly repeating the teach slide rather than adding new value",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.2",
+        "score": 3,
+        "verdict": "good",
+        "strength": "two clean parallel worked examples plus a real, usable 'most-repeated word' strategy",
+        "weakness": "content bug on the example screen — key details labeled 'Firefighting!' instead of gear/trucks/helping, which mislabels the very thing being taught",
+        "wouldUse": false
+      },
+      {
+        "std": "RI.1.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the 'Your Turn' forces the kid to distinguish effect from cause, which is exactly the skill",
+        "weakness": "narrows the standard to cause-and-effect only, ignoring other ways ideas connect",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "example and Your Turn both embed a definition the kid must locate, cleanly modeling 'the book tells you'",
+        "weakness": "only models the easiest case (explicit definition); tip pivots to dictionary/ask-someone rather than inferring from surrounding words",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.5",
+        "score": 3,
+        "verdict": "good",
+        "strength": "concrete, correct tour of table of contents, headings, and labels",
+        "weakness": "teaches three text features but only tests one (TOC); no worked example, so it names parts more than it models using them to find info",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.6",
+        "score": 4,
+        "verdict": "good",
+        "strength": "ladybug example sharply contrasts what words tell vs. what pictures show, and the Your Turn tests that distinction with a good distractor",
+        "weakness": "teach slides run wordy with full-sentence audio, a bit heavy for 1st grade",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.7",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Strong gradual-release arc: two clear modeled examples (season, food), a co-constructed 'rainy day' walk-through with question chaining, then a transfer question to a new context (beach).",
+        "weakness": "The skill is reading REAL pictures, but every example asks kids to 'imagine' or 'picture in your mind' a described scene — so they're decoding the words, not actually interpreting an illustration, which is the standard's core.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.8",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean point-then-reasons structure with two solid models (drink water, dogs make great pets) and a tip that gives kids concrete signal words (because, for example, first/second) to locate reasons.",
+        "weakness": "The 'Your Turn' only asks the kid to pick ONE reason from a list, which is recognition, not identifying that reasons support a point — a distractor like an unrelated detail would force the actual skill harder.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.9",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Genuinely teaches the compare-two-texts skill with a smart progression: same-topic agreement (dogs/walks=exercise), shared topic from different angles (sun), then 'they add facts' synthesis with the frog model.",
+        "weakness": "The interactive answer 'Add facts' vs the distractor 'Agree' is a subtle 1st-grade distinction the lesson only lightly draws; a kid could reasonably argue smooth-skin and eats-bugs both 'agree' since neither contradicts.",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.1a",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Crisp, correct, and concrete: two rules taught explicitly (capital start, end mark), end-marks shown across all three sentence types, then a true 'fix it up' model that transforms a broken sentence and a transfer item where distractors each violate exactly one rule.",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.2b",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Good blending pedagogy intent — models 'mop' with stretched-then-snapped phonemes and a strong tip (say slow, then faster until they snap together).",
+        "weakness": "Phonemic blending is auditory, but the teach and second example label sounds only as 'First sound / Middle sound / Last sound' on the page with no actual phonemes voiced, so the kid never hears the /m/ /o/ /p/ to blend — the whole skill hinges on audio the script doesn't specify.",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.1.2c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the 'bed' example models stretching b...e...d cleanly and the interactive isolates the last sound, directly using the skill",
+        "weakness": "the 'Meet MAP' teach slide names positions abstractly but never actually stretches a word, so the first real demonstration is delayed to the example",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.2d",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the 'fish has three sounds even though four letters' point is a real misconception-buster, and the finger-tap tip is the canonical segmenting strategy",
+        "weakness": "the 'Your Turn' reuses 'cat' (already fully modeled in teach), so the kid may answer from memory instead of segmenting a fresh word",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.4b",
+        "score": 4,
+        "verdict": "good",
+        "strength": "clear, concrete end-mark-to-intonation modeling with a distinct example sentence for period, question, and exclamation marks",
+        "weakness": "rate ('not too fast/slow') is taught but never assessed — the match interactive only checks intonation, not pacing",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.4c",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "the 'Stop, Think, Try Again' strategy plus the mat/map model and the make-sense interactive form a tight, well-sequenced self-correction lesson kids will actually internalize",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the 'park' think-aloud genuinely models try-a-meaning-and-check, which is exactly the metacognitive move the standard wants",
+        "weakness": "only 2 practice MCQs versus 5 in the sibling lessons, so independent practice is thin for a vocabulary skill that needs repetition",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.4a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean hook-teach-model-guided arc with a strong, age-perfect interactive (famished + 'ate all the seeds' is a genuine context clue the kid must reason from)",
+        "weakness": "The teach example ('fluffy'=soft/puffy) leans on prior knowledge of what fluffy means rather than a true in-sentence clue; 'the blanket and the cat' are weak clues for the meaning, so the modeling of HOW to use context is slightly muddy",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.4b",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Concrete, correct teaching of -er and un- with crisp paired examples (teacher/runner, unhappy/unlock) and a Your Turn (unfold) that forces real application of the un-=not rule",
+        "weakness": "The tip slide abruptly switches to a third affix (-ed) that was never taught in the teach slides and isn't practiced, so it crams in an unmodeled concept; the lesson teaches un-/-er but the tip muddies the focus",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.4c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Excellent, tightly-scoped lesson on roots: jump/play examples are perfectly concrete, the 'cover up the ending' tip is a genuinely usable strategy, and the match interactive makes the kid isolate roots themselves",
+        "weakness": "The teach slide references 'these words' / 'all three' before any words appear on screen (jumping/jumped/jumps implied but not shown in the teach beat), a small sequencing gap",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.5",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Cleanly teaches BOTH relationships (opposites and synonyms) with vivid kid-level examples, models one opposite pair fully with a 'why', and the match interactive is well-built",
+        "weakness": "The lesson teaches synonyms ('same family words') but the modeled example, tip, and interactive all focus only on opposites — synonyms get taught then dropped, so the kid never practices half the skill",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.5a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Categorization is taught with a clear, repeatable routine ('what do these all have in common?') and the Red/Blue/Green=Colors interactive uses a fresh category not pre-taught, making the kid truly transfer the skill",
+        "weakness": "Very thin on screen text in the teach/example slides (several beats have no SCREEN anchor), and only one category type is modeled before the tip, so the teaching is a bit sparse",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.5b",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Teaches the real group+attribute definition structure with a clean parallel example (dog then apple)",
+        "weakness": "Your Turn only asks for the group, not the 'special detail' too, so it under-uses the full two-part skill",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.5c",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Squarely on-standard with multiple concrete real-life vocab connections and an application-based Your Turn",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.5d",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "The paint-shades analogy is the canonical way to teach intensity, with clean teach pairs and a true discrimination Your Turn",
+        "weakness": "No separate modeled-example beat; relies on the teach examples to bridge into Your Turn",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.6",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Cloze 'does the word fit' strategy plus a solid apply-it Your Turn (tiny puppy then petite)",
+        "weakness": "The example beat is filler ('use new words') rather than a modeled application, leaving the teaching a bit abstract",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.1",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "The 'Big Six detective' framing is engaging and the example plus fresh-passage Your Turn both model finding answers right in the text",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.2",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Uses a story kids already know (tortoise/hare) to anchor 'moral,' then gives a clean retelling framework (characters → events → lesson) and a fresh 'Your Turn' story that genuinely requires inferring the moral rather than recalling it",
+        "weakness": "The standard is 'recount stories AND determine the central message/moral'; the lesson leans hard on moral-finding and treats retelling as a single quick aside, so the recount half of the skill is underdeveloped — the interactive only tests the moral, not retelling",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, relatable mini-scenarios (broken toy, homework pile, dropped cake) that clearly model reading reactions from what a character does, and the 'Your Turn' makes the kid infer feeling from behavior (crossed arms, stomped away) rather than being told",
+        "weakness": "The example slide drifts toward character traits ('stays brave,' 'who they are') which is closer to RL.2.6/character analysis than to describing how a character responds to a specific event; tightening the example to a clear stimulus→response would sharpen the skill",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.4",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Strong, vivid modeled example ('dry leaves crunched') that explicitly walks the kid through finding a sensory word and naming the sense it triggers — good gradual-release teaching of how word choice creates meaning/feeling",
+        "weakness": "The lesson tries to cover too much at once (rhyme, beat/meter, AND sensory words) and then the 'Your Turn' only assesses sensory matching — and weakly, since 'What did Lily feel?' with answer 'Warm sand' conflates physical touch with the rhythm/sound focus the intro set up; the rhyme and beat teaching gets dropped and never practiced",
+        "wouldUse": false
+      },
+      {
+        "std": "RL.2.5",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Clear, age-right framing of story structure as a 'shape' (beginning/middle/end) with a solid 'Your Turn' story where the kid must locate the problem in the middle — that maps well to the standard's focus on how a story's structure introduces, builds, and concludes",
+        "weakness": "The teaching is thin and abstract — it tells kids what each part does but never models it on an actual story before the interactive, so there's no worked example bridging the explanation to the 'Your Turn'; a child weak on this would jump from definitions straight to application",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.6",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The two-views-of-a-park contrast (Tom loves it / Lea is lonely) is a clean, concrete model of 'same situation, different point of view,' and the 'Your Turn' (Sam wants to pet the dog, Mia is scared) genuinely requires the kid to read one character's POV from their words and actions",
+        "weakness": "It teaches POV as 'how a character feels,' which is a reasonable 2nd-grade entry point but stops short of the standard's deeper aim — acknowledging differences in points of view, including using different voices when reading aloud — so it builds the foundation without quite reaching the full skill",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.7",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, correct illustration-use teaching (setting cue 'snow=winter', feelings cue 'frown=upset') with a Your Turn that genuinely makes the kid infer feeling from picture details (slumped shoulders, tear)",
+        "weakness": "The two teach beats and example both stay at the 'pictures show setting/feelings' level; it never models the standard's true aim — picture + words working TOGETHER to deepen understanding — as cleanly as it could",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.9",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Spot-on for the standard: Cinderella-variants hook makes 'same story, different versions' instantly graspable, and the compare example explicitly separates what stays same (characters, problem) from what changes (setting, ending)",
+        "weakness": "The Your Turn is thin — two near-identical sentences differing only by 'park' vs 'backyard' tests setting-spotting but doesn't really exercise comparing two genuine versions of the same tale",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.2.10",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "Encouraging, age-right framing of 'stretch books' and building reading stamina across genres",
+        "weakness": "RL.2.10 is a range-of-reading/text-complexity standard with no discrete teachable skill, and this lesson knows it — so it drifts into generic reading-motivation pep talk, and the tip (ask 'who/what' questions) and Your Turn (pick 'stretch books') don't model any comprehension skill a kid would USE",
+        "wouldUse": false
+      },
+      {
+        "std": "RI.2.1",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Textbook execution of asking/answering who-what-where-when-why-how: the seal-pup example actually models pulling answers from the text for multiple question words, and the penguin Your Turn makes the kid answer a 'why' inference from evidence",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.2",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Clear, correct main-topic teaching — paragraphs as smaller ideas all pointing back to one big idea (honey bees) is exactly the right mental model for RI.2.2",
+        "weakness": "The Your Turn distractors are weak: 'Dogs' vs 'Playing fetch'/'Training tricks' lets a kid pick the answer just by spotting the most-repeated noun rather than by synthesizing the big idea, so it under-tests the skill it just taught",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.3",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Butterfly life-cycle example is concrete and cleanly sequenced with first/next/then/finally",
+        "weakness": "Standard mismatch — RI.2.3 is connecting historical/scientific/technical events, ideas, or steps; this collapses the whole skill into sequence/order words only, and the PB&J Your-Turn tests a fictional procedure rather than a nonfiction connection",
+        "wouldUse": false,
+        "score_note": "",
+        "std_note": ""
+      },
+      {
+        "std": "RI.2.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Genuinely teaches two real vocabulary strategies (explicit definition vs. context clues) with strong concrete examples (famished, gulped), and the Your-Turn forces the kid to infer 'gigantic' from context — true to the standard",
+        "weakness": "The 'gigantic' item is almost given away by 'so big it looked like a mountain,' so it's a low-challenge application; mild but real",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.5",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clear, age-appropriate coverage of the actual text features (headings, bold, captions, index) with a Your-Turn that makes the kid pick the right tool (index) for a real find-the-page task",
+        "weakness": "No modeled example slide between teaching and the interactive — kid jumps from definitions straight to a question without seeing a feature used in context first",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.6",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Cleanly teaches the three author purposes (teach/entertain/convince) and the Muffin-the-cat Your-Turn is a well-built, genuinely entertaining passage the kid must classify",
+        "weakness": "'Convince' is the hardest purpose for 2nd graders and gets only one abstract line with no concrete example, so the lesson under-teaches a third of its own framework",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.7",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Best of the set — teaches how images (diagram/map/photo) each carry different information, and the match-it Your-Turn brilliantly makes the kid pair fact-to-image-type (real look→photo, where→map, parts→diagram), which is exactly the RI.2.7 skill of explaining how images contribute",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.8",
+        "score": 3,
+        "verdict": "good",
+        "strength": "two clear concrete point+reasons models plus a genuinely useful because/since signal-word tip",
+        "weakness": "the Your Turn asks for the main point, not the reasons that support it, so the guided practice tests main-idea rather than RI.2.8's actual skill",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.9",
+        "score": 3,
+        "verdict": "good",
+        "strength": "clean same-points-vs-different-details frame with a concrete two-column chart strategy",
+        "weakness": "the Your Turn compares two kids talking about pets rather than two texts on a topic, and only asks for the similarity, never the contrast, so it doesn't model comparing two books",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.2.10",
+        "score": 3,
+        "verdict": "good",
+        "strength": "smartly reframes a hard stamina/range standard into a motivating habit lesson and still models finding facts in a real passage",
+        "weakness": "by nature it can't truly 'teach' year-long reading proficiency, so it leans motivational over skill-building",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "clear single-sound vs letter-team teaching with a strong match interactive that makes the kid actually apply the skill",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.3a",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "tightly scoped short-vs-long vowel teaching with silent-E signal, a clean modeled kite example, and a Your Turn that directly tests the taught skill",
+        "weakness": "single interactive item is a light check for mastery",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.3b",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "clean hook-teach-model-apply arc anchored by the canonical 'first vowel talks' rule, with an example that genuinely models decoding",
+        "weakness": "the 'first vowel talks' rule is overgeneralized (fails for OO/OW etc.), though accurate for the teams taught here",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.3c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "two solid worked examples that model the split-read-blend strategy and explain WHY each vowel is long",
+        "weakness": "'bow has OW, a long sound' is imprecise — OW is ambiguous (bow/cow) and the lesson glosses it as simply long",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.3d",
+        "score": 4,
+        "verdict": "good",
+        "strength": "clear morpheme teaching with the exactly-right 'peel it apart, find the root' strategy and a clean modeled example",
+        "weakness": "leans on affix MEANING more than decoding/reading the affixes, and offers only 3 practice MCQs vs 5 elsewhere",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.3e",
+        "score": 3,
+        "verdict": "good",
+        "strength": "concrete, engaging 'catch the surprise' framing with correct examples and a well-modeled silent-B word",
+        "weakness": "it's a grab-bag (silent letters + PH lumped together) and the tip is a study habit, not a transferable decoding skill",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.3f",
+        "score": 2,
+        "verdict": "mediocre",
+        "strength": "individually sound sight-word facts and a clear modeled example for 'would'",
+        "weakness": "incoherent — teaches sight words (because/people/again) but the example and interactive pivot to unrelated silent-letter words (walk/comb/hour) never taught, so practice doesn't match instruction",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.2.4",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Your Turn match makes the kid apply all three fluency components (accuracy/rate/expression) distinctly",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.4a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, memorable purpose-setting ('know your why', match book to goal) with a clean apply task",
+        "weakness": "Teach is a bit thin (two beats); could model a second purpose type",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.4b",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Punctuation-to-voice teaching is concrete and the match mirrors it cleanly",
+        "weakness": "The match activity restates the teach almost verbatim, so it's low-challenge",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.2.4c",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Vivid worked example (map vs. rug) truly models the metacognitive self-correct routine, and Your Turn makes the kid catch a meaning breakdown",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Example integrates both strategies (context clues + word part 're') in one coherent detective case",
+        "weakness": "Only 1 practice MCQ (vs 5 elsewhere) and the Your Turn tests context clues only, not the taught word-parts strategy",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.4a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean 'word detective' frame with two solid modeled context-clue examples (grumpy, stretched) that actually show how nearby words reveal meaning",
+        "weakness": "The 'speedy = fast' Your Turn is almost too easy — kids likely know 'speedy' already, so it tests prior vocabulary more than the context-clue skill being taught",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.4b",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Textbook prefix lesson: two clear prefixes (un/re) each taught with meaning + multiple real examples, then a fully modeled 'preheat' example using question-answer beats, then a Your Turn that makes the kid apply the peel-off strategy to 'reread'",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.4c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The 'Cover and Discover' tip is a genuinely useful, concrete strategy and it's modeled live on 'unhappy', and the Your Turn (find the root in farm/farmer/farming) makes the kid actually isolate the root",
+        "weakness": "Slight conceptual blur — it teaches roots alongside suffixes/prefixes but never cleanly distinguishes 'root' from 'base word', and the play example mixes inflected endings with the root idea without naming what's being added",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.4d",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, vivid examples (rainbow, sunflower, toothbrush) that model using BOTH parts to infer meaning, plus a match-type interactive that's well-suited to compound words",
+        "weakness": "The match Your Turn only asks kids to split words into parts, not to USE the parts to guess meaning — which is the actual comprehension payoff the intro promised",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.4e",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Strong fully-modeled walkthrough (bold word 'habitat' → flip to glossary → ABC order → find under H → meaning is 'animal's home') that teaches the whole glossary procedure step by step, with a Your Turn that checks the key concept (ABC order)",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.5",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "match interactive makes the kid actively apply all three word-relationship types (synonym/antonym/group)",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.5a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "concrete real-life scenarios and an example/Your-Turn that both make the kid infer a word from a moment",
+        "weakness": "bundles two skills (word meaning + inferring a word from a scenario) under one lesson",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.5b",
+        "score": 4,
+        "verdict": "good",
+        "strength": "cleanest fit to the actual shades-of-meaning standard with a clear intensity gradient and a perfect coldest-word application",
+        "weakness": "no modeled [example] slide, so it jumps from teach straight to the kid's turn with no I-do step",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.6",
+        "score": 3,
+        "verdict": "good",
+        "strength": "teaches word choice/register and connects to using new vocabulary daily",
+        "weakness": "the proud/joyful/thrilled discrimination is too subtle for grade 2 and the 'correct' answer is debatable",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.1",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the Ask-Answer-Prove frame plus a Your Turn that makes the kid cite the exact proving words nails the cite-evidence standard",
+        "weakness": "the example only tells the proof in one line with no visible passage to point back to, so 'prove with the text' is told not shown until the interactive",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.2",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clear genre teaching plus a clean modeled example of finding a fable's lesson (tortoise & hare)",
+        "weakness": "The 'Your Turn' tests story-genre classification, not lesson-finding, so it doesn't make the kid use the central-message skill that was modeled — and 'Folktale' is a leaky distractor since a fable IS a folktale",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.3",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "The interactive (Leo helps Maya -> Kind) makes the kid infer a trait from actions exactly as modeled by the Nia example — perfectly aligned teach-model-practice",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, grade-perfect teaching of literal vs nonliteral with vivid idioms (cats and dogs, heart raced, butterflies)",
+        "weakness": "The 'butterflies' item is slightly fuzzy — 'Excited' is a defensible distractor for that idiom, so the keyed answer leans on context priming rather than the idiom itself",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.5",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Correct, tidy definitions of chapter/scene/stanza/line with a clean matching task",
+        "weakness": "It is pure term-labeling — the kid never sees a real stanza, scene, or chapter in context and never touches 'how each part builds on the one before,' which is the heart of RL.3.5",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.6",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "The 'Your Turn' asks the kid to pick the narrator's OPINION vs a fact ('What a kind boy' vs 'He watered it') — that fact/opinion discrimination is precisely the RL.3.6 skill, well modeled first by the cozy-rain example",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.7",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "fully modeled example plus a genuinely trickier Your Turn (foggy beach -> lonely) that makes the kid apply the bright/dark mood heuristic",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.3.9",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "clean, age-appropriate definition of shared theme",
+        "weakness": "never actually teaches COMPARING two stories - no two-text example, and the Your Turn asks for a single story's theme, which is RL.3.2 not RL.3.9",
+        "wouldUse": false
+      },
+      {
+        "std": "RL.3.10",
+        "score": 4,
+        "verdict": "good",
+        "strength": "makes an abstract range/stamina standard concrete via the stretch-book idea and a genre-discrimination Your Turn (poem vs two adventure books)",
+        "weakness": "standard is inherently a habit/range goal, so the discrete skill being practiced is thin by nature",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.1",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Your Turn requires selecting the EXACT proving words from the passage, which is the actual text-evidence skill",
+        "weakness": "the six-questions teach slide drifts from the citation focus the example and interactive build toward",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.2",
+        "score": 4,
+        "verdict": "good",
+        "strength": "strong multi-sentence robins passage with well-built detail-vs-main-idea distractor traps",
+        "weakness": "the example slide is a definition rather than a worked example, so modeling is thinner than ideal",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.3",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Cause/effect modeled example is clean, concrete, and signal-word focused",
+        "weakness": "Standard is about connecting events/ideas (cause-effect, sequence, comparison) but the example only teaches cause-effect, then the Your Turn tests sequence ordering — a mismatch that leaves the modeled skill (cause-effect) untested and the tested skill (sequence) only briefly taught",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Photograph and habitat examples concretely model both strategies (word parts + context), and the Your Turn cleverly forces the kid to combine context clue + root 'bio'",
+        "weakness": "The example only uses 'which subject' + 'meaning' recall rather than walking the kid through HOW to crack the word with the two taught strategies; the strategy application is stronger in the Your Turn than in the model",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.5",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Tightly mapped: each feature (index/TOC) is taught, the example models index-for-single-word, and Your Turn correctly tests TOC-for-chapters — a clean teach-to-assessment thread",
+        "weakness": "Hyperlinks/search are introduced but never modeled or practiced, so that third feature is underdeveloped relative to index and TOC",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.6",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Genuinely targets the CCSS distinction between the reader's own POV and the author's, which most lessons on this standard miss",
+        "weakness": "The 'example' is an abstract three-step procedure (author's view / your view / compare) with no actual text to apply it to — it tells the strategy instead of modeling it on a real passage, weakening the bridge to the otherwise solid Your Turn",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.7",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, image-anchored teaching of diagram vs chart vs map, with a well-modeled flower-diagram example and a clean map Your Turn",
+        "weakness": "Teaches what each illustration type IS but stops short of the standard's real demand — using the illustration to understand the TEXT (the 'when/where/how key events occur' synthesis); it stays at identification level",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.8",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Concrete, correct teaching of signal words with a clean 'However = twist' example that genuinely models the skill, and a Your Turn that makes the kid find the twist.",
+        "weakness": "RI.3.8 is really about logical connection of sentences/ideas (cause-effect, sequence, comparison) — the lesson narrows almost entirely to one signal word ('however') and one connection type (contrast), so it under-teaches cause ('because') and sequence despite naming them.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.9",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The two-bear stories in Your Turn are a genuinely good modeled comparison task — the kid must identify a detail unique to one text, which is exactly the RI.3.9 skill.",
+        "weakness": "No worked example slide showing the T-chart filled in with same/different from a real pair before the kid tries it — it jumps from abstract 'main points / differences' teaching straight to Your Turn, so the modeling is thin.",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.3.10",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Includes a real worked example (bees/honey) and a tip-toolkit, and the Your Turn asks for main idea.",
+        "weakness": "RI.3.10 is a range/stamina standard ('read and comprehend informational texts at the high end of the grade band') — it isn't a discrete skill, and the lesson papers over that by re-teaching main-idea/detail (RI.3.2) instead; also the correct answer 'Bats are amazing' is a vague title-feel answer that competes awkwardly with the more concrete distractors.",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clear, correct decoding-by-morphology teaching with a strong 'Unbelievable = UN + BELIEVE + ABLE → not able to be believed' example that models chunking AND meaning.",
+        "weakness": "The match Your Turn defines BELIEVE as 'trust' — that's a meaning gloss, not a word-part/decoding focus, and it slightly muddies the phonics-decoding intent by treating a root word like a vocab item; also as an umbrella standard it leans heavily on prefix/suffix and lightly on roots/syllables.",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.3a",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Tightly scoped to the exact substandard — teaches the highest-utility prefixes (un/re/pre/dis) and suffixes (er/ing/ful/less) with crisp definitions, then the drag-to-match Your Turn makes the kid actually apply prefix meanings.",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.3b",
+        "score": 3,
+        "verdict": "good",
+        "strength": "clean -able/-ible teaching plus an apply-the-meaning Your Turn (washable = able to wash)",
+        "weakness": "the 'from Latin' framing is decorative and never pays off; intro hook is hollow and the suffix set is a bit arbitrary",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.3c",
+        "score": 4,
+        "verdict": "excellent",
+        "strength": "teaches a real, transferable decoding strategy (one vowel sound per chunk, split between consonants) and the Your Turn tests it correctly on elephant -> el-e-phant",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.3d",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "silent-letter examples (knee, write) are concrete and correct",
+        "weakness": "scattered grab-bag of three unrelated patterns (silent letters, OUGH, silent-L-in-could) with no unifying skill; OUGH is just listed not decoded, and the Your Turn only tests the easiest sub-topic",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.3.4",
+        "score": 4,
+        "verdict": "excellent",
+        "strength": "well-sequenced fluency lesson with a genuine modeled example (excited sentence -> cheery voice) and a match activity that reinforces smooth/accurate/expressive",
+        "weakness": "expression 'teach' beat is a bit thin, but the modeled example covers it",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.4a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "concrete purpose-setting with a modeled goal (five facts about dolphins) and a Your Turn that makes the kid match purpose to book type",
+        "weakness": "the 'teach' section is only one beat; leans heavily on the example to carry the skill",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.3.4b",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "clear prose-vs-poetry distinction with an example that models reading prose with expression",
+        "weakness": "the interactive calls a string of plain sentences a 'poem' and the standard is fluency/expression, not genre-labeling — the Your Turn tests feeling-vs-flat reading on mislabeled content",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.3.4c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "clean, correct Stop/Think/Try self-monitoring strategy that's well-sequenced and age-appropriate",
+        "weakness": "the Your Turn is recall ('what do you do first?') rather than making the kid actually self-correct a real misread sentence",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the example genuinely models context-clue detective work (gloomy: no light + felt sad = dark and sad) and the Your Turn makes the kid use it",
+        "weakness": "the 'Use Word Parts' teach slide is introduced but never modeled in the example, which only demonstrates sentence clues",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.4a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "teaches and models two distinct clue types (synonym and example clues) concretely, with an applied Your Turn",
+        "weakness": "the 'mammals, like cats and dogs' example is a weak context-clue demo (definition-by-category) compared to the strong synonym example",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.4b",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "concrete, well-sequenced prefix instruction with a modeled example (dislike to DIS to not) and a match interactive that makes the kid actively pair prefixes to meanings",
+        "weakness": "six prefixes packed into two teach slides is heavy cognitive load for one lesson",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.4c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clear, correct core concept (root = heart of word) with strong, well-chosen word families (help, play, hand, friend) that genuinely model how a root builds many words",
+        "weakness": "The 'Your Turn' is a low-rigor recognition task — picking 'friendship' from two unrelated distractors only tests spotting the word 'friend,' not the actual skill of identifying a root to determine meaning",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.4d",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Logically sequenced walkthrough of how a dictionary works (ABC order, entry parts, guide words) — accurate and age-appropriate reference-skill teaching",
+        "weakness": "No modeled example slide ('Let's Try One') — it tells about dictionaries but never models an actual lookup, and the 'Your Turn' (how are words organized?) is a trivial recall question, so the kid never practices the real skill of finding/reading an entry",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.5",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Covers all three figurative types (simile, metaphor, idiom) with crisp, correct kid examples, and the match-type 'Your Turn' actually makes the kid distinguish among them",
+        "weakness": "The worked example only addresses simile; metaphor and idiom get a definition but never a modeled 'figure out the hidden meaning' walkthrough, and the match task tests labeling the type rather than decoding actual meaning",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.5a",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "The literal/nonliteral teaching plus the 'raining cats and dogs' and 'couch potato' examples are solid and on-standard for distinguishing literal from nonliteral meaning",
+        "weakness": "The lesson splices in an unrelated topic — a whole teach slide on shades of certainty (knew/believed/suspected) that has nothing to do with literal vs. nonliteral meaning — making it incoherent and confusing for a kid trying to learn one skill",
+        "wouldUse": false
+      },
+      {
+        "std": "L.3.5b",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "The cozy/brisk word-to-real-life connection idea and the closing 'Your Turn' story (Maya snuggled under a blanket → cozy) are a genuinely good, concrete way to teach connecting words to experiences",
+        "weakness": "It's two lessons jammed together — it teaches 'cozy/brisk' (connecting words to real moments) but then the tip abruptly switches to knew-vs-believed certainty, and there's no example slide modeling the skill, so the through-line is broken",
+        "wouldUse": false
+      },
+      {
+        "std": "L.3.5c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "two concrete, well-scaffolded gradation sets (hungry→starving→famished) that clearly teach shades of meaning",
+        "weakness": "the Your Turn reuses the exact word set from the teach slide, so it tests recall more than fresh application",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.6",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "the 'curious' example models trying a brand-new word in a real sentence well",
+        "weakness": "the lesson is incoherent: the example teaches using a new vocab word, but the tip and interactive abruptly switch to discourse markers (Oh/Well/So) that were never modeled, so the practiced skill doesn't match the taught skill",
+        "wouldUse": false
+      },
+      {
+        "std": "RL.4.1",
+        "score": 3,
+        "verdict": "good",
+        "strength": "excellent, clean inference item in the Your Turn (sweater/scarf/mittens → Cold) that makes the kid genuinely infer from details",
+        "weakness": "the 'example' step only tells about inferring and never works through a passage, so the skill is quizzed without first being modeled",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.4.2",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the Pip-the-bird interactive is a well-built theme-extraction item the kid actually solves (→ Never give up)",
+        "weakness": "no worked example shows HOW to pull a theme from a story before the Your Turn; the 'Common Themes' slide just lists themes",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.4.3",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "fully modeled show-vs-tell example (Rosa/umbrella → action → trait = kind) followed by a clean parallel apply item (Leo → Helpful); textbook hook→teach→model→apply sequencing",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.4.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The 'drowning in homework' worked example is concrete, walks the kid through the literal-vs-figurative reasoning out loud, and the 'melting heart' Your Turn genuinely makes them transfer the skill to a fresh case.",
+        "weakness": "It tries to cover allusion AND figurative meaning in one short lesson; the allusion teach (Hercules) is dropped entirely and never modeled or practiced, so that half feels orphaned.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.4.5",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Clean, correct definitions of the three forms with the right vocabulary (stanza/scene/paragraph), and the drama snippet in Your Turn is a clear, recognizable example.",
+        "weakness": "No modeled example slide at all — it jumps from bare definitions straight to the kid's turn, so nothing demonstrates HOW to identify a form before they're asked to; poetry and prose are never shown, only drama.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.4.6",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "The point-of-view contrast (first = feel close, third = watch from outside) is accurate and the pronoun-spotting tip gives a usable, concrete strategy.",
+        "weakness": "Skips the modeled example, so the kid sees definitions and then is immediately tested; it also conflates 'voice' with point of view loosely and never distinguishes third-limited vs third-omniscient, which RL.4.6 actually targets.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.4.7",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "The book-vs-movie framing (movie shows directly, book lets you imagine) is age-perfect and the Your Turn makes the kid apply 'what would a movie show directly' to a fresh passage.",
+        "weakness": "Thin on the actual standard — RL.4.7 is about how a visual/oral presentation reflects specific text descriptions, but the lesson stays at a generic 'movies cut and add scenes' level and never models connecting a specific text moment to its visual realization.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.4.9",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The 'Greek boy and African girl both save their village' example cleanly models the core move of separating culture from shared theme, and the trickster-rabbit Your Turn is a vivid, well-built story that makes the kid classify on their own.",
+        "weakness": "The teach slides introduce two patterns (tricksters and hero journeys) but the example only models theme-comparison via the hero case, while the Your Turn switches to identifying a trickster tale — a slight mismatch between what's modeled and what's tested.",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.4.10",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Coherent, consistent thread from teach to example to Your Turn (pace + notes habit carries all the way through)",
+        "weakness": "It teaches reading-stamina study skills, not comprehension of complex text — it sidesteps what the standard is actually about",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.1",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Clean model of citing explicit evidence plus a genuinely useful 'according to the text' sentence frame",
+        "weakness": "The inference half of the standard is asserted in a 3-word pill with no modeled example, and the Your Turn only tests literal recall",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.2",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Sticky umbrella/rain metaphor plus a Your Turn whose distractors force the real main-idea-vs-detail discrimination",
+        "weakness": "The 'across multiple paragraphs' idea is named but never modeled",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Signal words are taught, modeled (plant), and then genuinely used in the PB&J Your Turn with sequence-trap distractors",
+        "weakness": "Reduces the standard mostly to sequence words; doesn't touch the 'why it happened / how it works' explanation part",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The 'biology = bio (life)' Your Turn makes the kid actually apply root-word knowledge rather than recall",
+        "weakness": "Only 2 practice MCQs (vs 5 elsewhere) under-practices the skill, and the modeled example uses context more than the roots it just taught",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.5",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "worked example clearly models the clue-word strategy end-to-end (passage to clues to structure)",
+        "weakness": "the lesson teaches compare/contrast and problem/solution but the modeled example demonstrates sequence — a structure barely introduced — so the teaching and the model are misaligned",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.6",
+        "score": 4,
+        "verdict": "good",
+        "strength": "tight, well-sequenced firsthand/secondhand build with a concrete diary-vs-article anchor and a genuinely sensory, feelings-rich 'Your Turn' passage that makes the kid apply the 'were they there?' test",
+        "weakness": "example passage is identified as secondhand mainly via 'facts not feelings,' a cue taught only after the example rather than before it",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.7",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "Your Turn question is well-designed — picking a chart to show bird counts genuinely tests matching information to the right form",
+        "weakness": "the teaching stays abstract ('combine all information,' 'full picture') with no actual modeled example integrating two real sources, so the core RI.4.7 skill of synthesizing across forms is never demonstrated",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.8",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "the Your Turn cleanly separates a claim from its concrete evidence (kids laughing vs. 'run around'), which is exactly the discrimination this standard demands",
+        "weakness": "no modeled example at all — it jumps from a thin teach on reasons/evidence straight to the kid's turn, so the link between a point, its reason, and its evidence is never shown in action",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.9",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "the bees Your Turn is a strong, concrete demonstration of integrating two texts into a fuller understanding",
+        "weakness": "no worked example before the kid's turn — the integrate-two-texts skill is described abstractly in the teach/tip but never modeled, so the first time it's shown is the question itself",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.4.10",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "the butterfly main-idea example is concrete and models the skill well",
+        "weakness": "badly under-shoots grade-4 rigor (the standard is comprehending LONG complex text, but the Your Turn uses a K-level 'Dogs are great pets' passage) and the structure is redundant/muddled with two overlapping teach+tip blocks that both re-define 'big fact = main idea'",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.4.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "clean hook-teach-model-practice arc; the chunk/read/blend model on 'fantastic' genuinely walks the decoding process and the Your Turn makes the kid name the first step",
+        "weakness": "the bare second 'example' block (Chunk / Chunk+read / Chunk+read+blend) is thin filler, and the prefix/suffix tip introduces a tool the modeled example never actually used",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.4.3a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the match-style Your Turn (dolphin->F, school->K, night->silent) forces real transfer of the combos to brand-new words, not just recall",
+        "weakness": "only PH is modeled in the example, so the silent-GH match item ('night') is the one combo a kid never sees applied before being tested on it",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.4.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "concrete, correct fluency teaching — pace + expression + phrasing modeled vividly on 'Suddenly, the rocket blasted off!' (fast + excited)",
+        "weakness": "fluency is a read-aloud skill but a tap-MCQ can only test knowing-about-fluency; the kid never actually reads anything aloud, so the skill isn't truly practiced",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.4",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the Your Turn ('fearless' in a sentence) makes the kid combine context clues AND word parts, which is exactly the integrated skill L.4.4 demands",
+        "weakness": "the intro promises three strategies (context, word parts, reference materials) but the example only models affixes — context clues and reference materials are named yet never demonstrated",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.4a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "clean detective hook with a worked example that names the signal word ('or') and the meaning it unlocks — exactly the SOR context-clue routine",
+        "weakness": "the antonym strand is half-built: a one-line 'Antonyms Help Too' slide introduces opposite-clues with no worked example, yet the 'Your Turn' answer IS antonym — the kid is tested on the strand that was never modeled",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.4b",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "textbook morphology lesson — concrete high-frequency roots, a clean biography breakdown (root → meaning → whole word), and a tip that shows ONE root unlocking a word family (aqua → aquarium/aquatic/aqueduct), which is the real generative payoff of root study",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.4c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "models reference-tool selection as a decision ('need a meaning? dictionary; need a different word? thesaurus') and the worked example reasons from a real need to the right tool",
+        "weakness": "glossary is named in the intro and offered as a wrong-answer choice but never actually taught, so a kid can't reason about why it's wrong — only eliminate it by default",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.5",
+        "score": 4,
+        "verdict": "good",
+        "strength": "covers all three figurative tools concretely with vivid, grade-perfect examples (ran like a cheetah / time is money / piece of cake) and the 'sounds weird literally = figurative' heuristic is a genuinely useful reader strategy",
+        "weakness": "no modeled 'Let's Try One' example slide — it jumps from labeled examples straight to a matching task, so the kid never sees the skill of identifying a type reasoned aloud before being asked to do it",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.5a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "tight, well-sequenced contrast of simile vs metaphor with parallel structure and a sharp 'bridge word' tip that gives kids a concrete decision rule (like/as vs is/are connecting unlike things)",
+        "weakness": "skips a worked example entirely — goes teach → tip → 'Your Turn', so kids identify a simile in the interactive without ever watching one identified and explained first",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.5b",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean hook-teach-model-guided arc with a true modeled example (piece of cake) that walks the literal-vs-hidden reasoning, then a 'Your Turn' that reuses 'break a leg' and forces the kid to pick the figurative meaning",
+        "weakness": "Teaches idioms as items to memorize rather than giving a transferable strategy for figuring out an UNKNOWN idiom from context — kid leaves able to recall the 4 shown, but not equipped to decode a new one",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.5c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The light-blue/blue/dark-blue color analogy makes the abstract idea of synonym intensity concrete, and two parallel teach sets (glance/look/stare, whisper/talk/yell) build a real gradient kids can feel",
+        "weakness": "The 'Your Turn' (which is loudest: whisper/talk/yell) only asks the kid to recall the just-shown scale, not apply intensity-matching to a fresh sentence/context, so it's lighter than ideal for the skill",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.6",
+        "score": 3,
+        "verdict": "good",
+        "strength": "The example models a genuinely useful register-matching move — classify 'investigate' as academic, then place it in a report not a chat — which is the real skill of using grade-appropriate vocabulary",
+        "weakness": "The intro/teach is thin and abstract ('use makes them yours', 'casual for chats') with only one concrete word total; a 4th grader gets little actual vocabulary or repeated modeling, so understanding stays shallow",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.3a",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Textbook phonics instruction: explicitly teaches the digraph concept (two letters, one new sound), models sh/ch/th each with multiple real word examples and an articulation cue ('feel your tongue'), and the match-the-sound interactive directly drills the grapheme-phoneme link",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.3b",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Correctly teaches the core decoding routine — segment first/middle/last sound, then blend — and the 'Stretch, Then Snap' tip plus the /r/-/u/-/n/ blending interactive make the kid actually perform blending, which is exactly the RF.1.3 skill",
+        "weakness": "The CAT/DOG segments only say 'First sound / Middle sound / Last sound' without naming the actual phonemes on screen or in clear text, so the modeling leans heavily on audio and is abstract for an emergent reader who can't yet read the labels",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.3c",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean, vivid teaching of the magic-e vowel-name concept with two parallel before/after examples (cap/cape, kit/kite) that make the silent-but-powerful idea concrete.",
+        "weakness": "The interactive match (cap/kit/can to cape/kite/cane) only asks the kid to pair words by appearance; it doesn't force them to DECODE or hear the long-vowel change, and 'can/cane' wasn't taught. A decode-it-aloud task would make them USE the skill harder.",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.3d",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Excellent multisensory, age-perfect teaching — clap the beats plus the hand-under-chin trick — which is exactly how syllable-counting is taught in strong K-1 classrooms, and it correctly ties syllables to vowels.",
+        "weakness": "The 'Your Turn' jumps to 'butterfly' (three syllables) when the lesson only modeled one- and two-beat words; a kid has to extend to a longer, harder, un-modeled word with no guided three-clap example first.",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.3e",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Strong, fully-sequenced split-blend-read routine with a clear modeled example (pencil) following the canon hook-teach-example-tip-practice shape.",
+        "weakness": "Conceptual mismatch: the rule taught is 'split between two SAME consonants' and the practice (muffin/ladder/butter) fits that, but the modeled example 'pencil' splits between two DIFFERENT consonants (n-c) — so the example contradicts the very rule it just stated, which will confuse a 1st grader.",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.1.3f",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Genuinely well-built: teaches -s, -ed, -ing with meaning (how many / when), a clean modeled example (played), and a 'Your Turn' (walks/walked/walking) that makes the kid actually apply the past-tense -ed meaning rather than just pattern-match.",
+        "weakness": "Slightly overloaded — three endings introduced at once, with -ed and -ing crammed into a single teach slide; splitting -ing to its own beat would land better for emergent readers.",
+        "wouldUse": true
+      },
+      {
+        "std": "RF.1.3g",
+        "score": 2,
+        "verdict": "mediocre",
+        "strength": "Right instinct to frame irregular sight words as 'memorize by sight,' and the 'of' example plus the the/map/sit pick correctly isolates the un-decodable word.",
+        "weakness": "Contains real phonics errors that a reading specialist would reject: 'were has a silent E that helps it end in R' and 'have ends in a silent E' are nonsense explanations — these words are irregular precisely because they DON'T follow rules, yet the lesson invents fake rules for them, undercutting the whole point and teaching misinformation.",
+        "wouldUse": false
+      },
+      {
+        "std": "RF.1.4a",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Clean purpose-setting arc with a concrete example (fact book for butterflies) and an apply-it Your Turn",
+        "weakness": "Content drifts from the RF.1.4a fluency/accuracy standard into reading-purpose; teaches purpose well but isn't quite the labeled skill",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.1",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "Textbook gradual release — noun/verb taught with the 'point to it' heuristic, modeled (ball=noun), then Your Turn flips to a verb (sing)",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "L.1.2",
+        "score": 4,
+        "verdict": "good",
+        "strength": "Two crisp rules with strong concrete examples (capital T, Maya not maya) and a memorable 'check both ends' trick",
+        "weakness": "No modeled 'I do' example slide — jumps from teach to Your Turn, skipping the modeled-practice step",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.1",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "Real 2nd-grade content (collective nouns, irregular verbs) with a friendly 'say it out loud' ear strategy",
+        "weakness": "Intro promises pronouns but never teaches them, no modeled example, and 'Memorize!' gives no real strategy for irregular verbs",
+        "wouldUse": false
+      },
+      {
+        "std": "L.2.2",
+        "score": 3,
+        "verdict": "good",
+        "strength": "Strong apostrophe instruction — possessive and contraction both taught with a clean modeled example (cat's hat)",
+        "weakness": "Commas (half the title) appear only in the tip slide with no teach or practice; lesson is lopsided toward apostrophes",
+        "wouldUse": true
+      },
+      {
+        "std": "L.2.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "clean full arc with a modeled example (happy→thrilled) that the Your Turn directly reinforces",
+        "weakness": "interactive only tests the 'stronger word' half and nearly duplicates the example (happy→thrilled twice), ignoring the formal/casual half it taught",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.1",
+        "score": 4,
+        "verdict": "good",
+        "strength": "irregular past-tense is taught concretely and the Your Turn applies the pattern to a brand-new verb (swim→swam) with smart distractors",
+        "weakness": "intro over-promises tenses/agreement/comparing but the lesson only delivers irregular past tense",
+        "wouldUse": true
+      },
+      {
+        "std": "L.3.2",
+        "score": 2,
+        "verdict": "weak",
+        "strength": "the comma-with-quotation rule content is correct and the Your Turn answer is right",
+        "weakness": "no modeled [example] step at all, and the two rule cases (speaker-first vs words-first) are presented in a muddled, easy-to-conflate way",
+        "wouldUse": false
+      },
+      {
+        "std": "L.3.3",
+        "score": 4,
+        "verdict": "good",
+        "strength": "vivid, memorable modeled example (said→quacked) that maps exactly onto the skill the Your Turn tests",
+        "weakness": "Your Turn distractors are soft — 'walked'/'moved' aren't clearly weaker than the correct 'ran', so the answer isn't airtight",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.1",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "pronoun-antecedent agreement is taught correctly and concretely with singular/plural examples (girl→her, boys→their)",
+        "weakness": "no modeled 'I do' example, and the tip slide is misused as a second intro instead of giving a strategy",
+        "wouldUse": false
+      },
+      {
+        "std": "L.4.2",
+        "score": 3,
+        "verdict": "mediocre",
+        "strength": "comma-before-conjunction is taught, modeled, and practiced with consistent correct examples",
+        "weakness": "intro overpromises (periods, question marks, dialogue, titles) but only compound-sentence commas is actually taught and practiced; the quotation-mark half of the standard is mentioned once and never modeled or assessed",
+        "wouldUse": true
+      },
+      {
+        "std": "L.4.3",
+        "score": 5,
+        "verdict": "excellent",
+        "strength": "perfectly aligned arc — precise-verb examples (walked→tiptoed, said→whispered) and a Your Turn (went/ran/sprinted) that makes the kid apply the exact skill",
+        "weakness": "none",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.K.10",
+        "score": 3,
+        "verdict": "good",
+        "strength": "warm, age-appropriate framing of enjoying many kinds of stories and talking about them",
+        "weakness": "the Your Turn distractors (close your eyes, skip the pages) are too obviously wrong, so it tests almost no real understanding",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.K.10",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the Your Turn is a real mini-scenario (Max's space book) that makes the kid apply the fact-book vs story-book distinction",
+        "weakness": "the standard is about engaging with a range of informational texts, and the lesson leans heavily on one idea (fact = true) rather than text features broadly",
+        "wouldUse": true
+      },
+      {
+        "std": "RL.1.10",
+        "score": 4,
+        "verdict": "good",
+        "strength": "the Your Turn is a genuine listening-comprehension scenario (Leo's week) requiring attention and recall, plus a real growth-mindset teach about trying tricky books",
+        "weakness": "distractors lean a bit on surface recall (Tricky, Moon are words from the passage) rather than story-type understanding",
+        "wouldUse": true
+      },
+      {
+        "std": "RI.1.10",
+        "score": 4,
+        "verdict": "good",
+        "strength": "The 'Use the Parts' text-features teaching (headings/pictures/labels as a 'roadmap') plus an interactive scenario where Ben uses bold titles not pictures — it makes the kid reason about which feature did the work",
+        "weakness": "Standard is broad/habit-oriented, so the lesson teaches strategies and motivation ABOUT fact books but the kid never actually reads or processes a real informational passage inside the lesson; the one interactive item also only reinforces 'headings' of the three features taught",
+        "wouldUse": true
+      }
+    ]
+  }
+}
