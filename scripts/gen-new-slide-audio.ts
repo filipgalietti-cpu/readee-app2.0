@@ -57,6 +57,7 @@ async function main() {
 
   const sb = createClient(SUPA, SERVICE);
   let idx = 0, ok = 0, bad = 0, done = 0;
+  const failed = new Set<string>(); // audioFiles that did not generate+upload
   async function worker() {
     while (idx < work.length) {
       const w = work[idx++];
@@ -64,19 +65,23 @@ async function main() {
         const mp3 = await synth(String(w.step.ttsScript));
         if (mp3) {
           const up: any = await sb.storage.from("audio").upload(String(w.step.audioFile).replace(/^audio\//, ""), mp3, { contentType: "audio/mpeg", upsert: true, cacheControl: "no-cache" }).catch((e: any) => ({ error: { message: String(e) } }));
-          if (!up.error) { w.step.audioRegenAt = new Date().toISOString(); ok++; } else bad++;
-        } else bad++;
-      } catch { bad++; }
+          if (!up.error) { w.step.audioRegenAt = new Date().toISOString(); ok++; } else { bad++; failed.add(String(w.step.audioFile)); }
+        } else { bad++; failed.add(String(w.step.audioFile)); }
+      } catch { bad++; failed.add(String(w.step.audioFile)); }
       done++;
       if (done % 20 === 0) console.error(`  …${done}/${work.length}`);
     }
   }
   await Promise.all(Array.from({ length: CONC }, () => worker()));
 
-  // clear _new flags on fully-generated slides
-  for (const l of lessons) for (const s of l.slides ?? []) if (s._new) delete s._new;
+  // clear _new ONLY on slides where every step's clip succeeded; leave failed slides flagged so a re-run picks them up
+  const stuck: string[] = [];
+  for (const l of lessons) for (const s of l.slides ?? []) if (s._new) {
+    const anyFailed = (s.steps ?? []).some((st: any) => st.audioFile && failed.has(String(st.audioFile)));
+    if (anyFailed) stuck.push(l.standardId); else delete s._new;
+  }
   await fs.writeFile(SAMPLE, JSON.stringify(lessons, null, 2));
-  console.log(`\n— ${ok}/${work.length} new clips generated (${bad} failed). cleared _new flags. wrote sample-lessons.json —`);
+  console.log(`\n— ${ok}/${work.length} new clips generated (${bad} failed). ${stuck.length ? `kept _new on: ${[...new Set(stuck)].join(", ")} (re-run to retry)` : "all clear"}. wrote sample-lessons.json —`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
