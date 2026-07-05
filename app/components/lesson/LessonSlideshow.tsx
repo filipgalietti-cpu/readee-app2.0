@@ -2039,11 +2039,33 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               s.displayParts.every(
                 (p) => (p.text ?? "").trim().split(/\s+/).length <= 4,
               );
+            const rawDisplayStep =
+              playingStep >= 0
+                ? playingStep
+                : Math.max(0, stepsRevealed - 1);
+            // Mobile INV-5 guard: if the current step is audio-only
+            // (filler), fall back to the most recent VISUAL step so a
+            // slide that ends on an audio-only beat (many tip/teach
+            // slides: [audio, pill, audio]) never renders blank on the
+            // phone. Desktop accumulates, so it is unaffected.
+            // (canonical-conformance fix 2026-07-05)
+            let mobileDisplayStep = rawDisplayStep;
+            if (
+              isPhoneShell &&
+              steps[rawDisplayStep] &&
+              isFillerStep(steps[rawDisplayStep])
+            ) {
+              for (let j = rawDisplayStep - 1; j >= 0; j--) {
+                if (!isFillerStep(steps[j])) {
+                  mobileDisplayStep = j;
+                  break;
+                }
+              }
+            }
             const stepNodes = steps.map((step, i) => {
-              const currentDisplayStep =
-                playingStep >= 0
-                  ? playingStep
-                  : Math.max(0, stepsRevealed - 1);
+              const currentDisplayStep = isPhoneShell
+                ? mobileDisplayStep
+                : rawDisplayStep;
               // Replace-not-accumulate on mobile (rule §12) — UNLESS:
               //   (a) Example slides → always accumulate so the
               //       passage card stays visible while the Q→A
