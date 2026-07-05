@@ -1,0 +1,6426 @@
+{
+  "RL.K.1": [],
+  "RF.K.2a": [],
+  "RI.K.1": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[intro] heading 6w: \"Let's Find Key Details in Facts!\""
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'facts' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'key details' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 11w (>6): 'Penguins live in cold places.\\nThey eat f'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Penguins live in cold places.\\nThey eat f'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'key detail' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'key detail' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'key details' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'facts' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'details' not on screen"
+    }
+  ],
+  "RL.K.2": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 6w: 'How Do We Retell a Story?'"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[example] heading 0w: ''"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Secret Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RL.K.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Characters, Settings, and Events' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RL.K.4": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 7w: 'How Do We Figure Out New Words?'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Learn About New Words!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'words' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'tricky' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'guess' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 9w (>6): 'The bunny was famished, so he ate five c'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The bunny was famished, so he ate five c'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'famished' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'tricky word' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'Re-read' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'detective' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'detective' not on screen"
+    }
+  ],
+  "RL.K.5": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[intro] heading 6w: \"Let's Learn About Types of Books!\""
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Learn About Types of Books!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Storybooks and Poems' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'The moon is bright, a cozy light.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The moon is bright, a cozy light.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'look' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'rhythm' not on screen"
+    }
+  ],
+  "RL.K.6": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[intro] heading 6w: \"Let's Learn About Who Makes Books!\""
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Learn About Who Makes Books!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Authors and Illustrators' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RL.K.7": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Pictures Tell the Story!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'How Do Pictures Help?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RL.K.9": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 6w: 'What Does It Mean to Compare?'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Compare Characters!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'What Does It Mean to Compare?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RI.K.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Find the Main Topic!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[practice-intro] 'Time to Practice!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'topic' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'topic' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'topic' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'topic' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'topic' not on screen"
+    }
+  ],
+  "RI.K.3": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'belong' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'link' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'link' not on screen"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'An owl has big round eyes.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'connections' not on screen"
+    }
+  ],
+  "RI.K.4": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[intro] heading 7w: \"Let's Learn New Words in Fact Books!\""
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 6w: 'How to Figure Out New Words'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Learn New Words in Fact Books!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'How to Figure Out New Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RI.K.5": [
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayPart 6w: 'Front cover: first thing you see'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'Your turn' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RI.K.6": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "does not start with intro: ['teach', 'example', 'example']"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'important people' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'wrote' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord \"author's\" not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'pictures' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord \"illustrator's\" not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'drew' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'understand' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'awesome' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'practice' not on screen"
+    }
+  ],
+  "RI.K.7": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Pictures Help Us Learn!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[practice-intro] 'Time to Practice!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'pictures' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'ENORMOUS' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'helpers' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'grows' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'egg \u2192 tadpole \u2192 froglet \u2192 frog'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[tip] displayPart 6w: 'What do I see? \u2192 LOOK'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'expert' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'pictures' not on screen"
+    }
+  ],
+  "RI.K.8": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Points and Reasons!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[practice-intro] 'Time to Practice!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'reasons' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'reasons' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'detective' not on screen"
+    }
+  ],
+  "RI.K.9": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 6w: 'How Do We Compare Fact Books?'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Compare Fact Books!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.K.1a": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[intro] heading 7w: \"Let's Learn to Read Left to Right!\""
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Learn to Read Left to Right!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[practice-intro] 'Time to Practice!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'right' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'right' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'read' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'follow' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'left' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'read' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'direction' not on screen"
+    }
+  ],
+  "RF.K.1b": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Words Are Made of Letters!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'cat' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'words' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'sun' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'three' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'two' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'name' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'words' not on screen"
+    }
+  ],
+  "RF.K.1c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'thecatsat' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'spaces' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'spaces' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'superstar' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'spaces' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'spaces' not on screen"
+    }
+  ],
+  "RF.K.1d": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Learn Our Letters!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'alphabet' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'recognize' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'letter' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'spot' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'match' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'pro' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'letter' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'letters' not on screen"
+    }
+  ],
+  "RF.K.2b": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Clap Syllables!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.K.2c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Beginning and Ending Sounds!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Listening for Sounds' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.K.2d": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Find Sounds in Words!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Breaking Words Into Sounds' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.K.2e": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Changing Sounds, Changing Words!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'How Does It Work?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.K.3a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Letters and Their Sounds!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Each Letter Has a Sound' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Try Every Letter!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.K.3b": [],
+  "RF.K.3c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.K.3d": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Look-Alike Words!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[practice-intro] 'Time to Practice!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'different' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'was' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'look-alike' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'tricks' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'words' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'letters' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'careful' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'look-alike' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'look-alike' not on screen"
+    }
+  ],
+  "RF.K.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Read with Purpose!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[practice-intro] 'Time to Practice!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'purpose' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'reasons' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'read' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'answer' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'mission' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'superpower' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'purpose' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'looking' not on screen"
+    }
+  ],
+  "K.L.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Learn Grammar Basics!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'understand' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'rules' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'sentences' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'detective' not on screen"
+    }
+  ],
+  "K.L.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Capitals and Punctuation!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[tip] displayPart 9w: 'Number one: Does it start with a capital'"
+    },
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[tip] displayPart 7w: ' Number two: Does it end with punctuatio'"
+    }
+  ],
+  "K.L.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Figure Out Word Meanings!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'word' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'code' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'clues' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 8w (>6): 'The rabbit was swift, it ran very fast!'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The rabbit was swift, it ran very fast!'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'reader' not on screen"
+    }
+  ],
+  "K.L.5": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Learn About Word Relationships!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'related' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'connected' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'opposite' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'opposites' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'word' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'Connecting' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'relationships' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'practice' not on screen"
+    }
+  ],
+  "K.L.6": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Let's Use New Words!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'using' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'sentences' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'using' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'sentences' not on screen"
+    }
+  ],
+  "RL.1.1": [],
+  "RL.1.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Put It In Order' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'parts' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'story' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'retelling' not on screen"
+    }
+  ],
+  "RL.1.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Three Parts of a Story' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Picture It' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'story' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 9w (>6): 'The kind old woman fed the birds every m'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'The kind old woman fed the birds every m'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'caring' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 11w (>6): 'The old woman lived by the sea, in a tin'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'The old woman lived by the sea, in a tin'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'practice' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RL.1.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Feeling Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Read It and Feel It' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'touch' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'feeling' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'feels' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'happy' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'sad' not on screen"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The puppy bounced across the yard.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'practice' not on screen"
+    }
+  ],
+  "RL.1.5": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Which One?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'kinds' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Anything' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'labels' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'practice' not on screen"
+    }
+  ],
+  "RL.1.6": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Listen for the Clue' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 8w (>6): 'I went to the store with my mom.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'I went to the store with my mom.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'storyteller' not on screen"
+    }
+  ],
+  "RL.1.7": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 6w: 'A Happy Face Tells a Lot'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Pictures Tell Stories Too' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Pictures Show the Setting' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Look and Read Together' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'look' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 9w (>6): 'A girl with a big smile, holding a troph'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'A girl with a big smile, holding a troph'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'feel' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'season' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Winter' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'together' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'clues' not on screen"
+    }
+  ],
+  "RL.1.9": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Comparing Trick' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'alike' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 7w (>6): 'Amy is brave and climbs a mountain.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'Amy is brave and climbs a mountain.'"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 7w (>6): 'Bob is brave and swims a lake.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'Bob is brave and swims a lake.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Different' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'comparing' not on screen"
+    }
+  ],
+  "RI.1.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Question Words Help Us Ask!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'questions' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Listen' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ask' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ask' not on screen"
+    },
+    {
+      "inv": "INV-18",
+      "rule": 16,
+      "fixer": "asset",
+      "detail": "2 clips not Whisper-timed"
+    }
+  ],
+  "RI.1.2": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'together' not on screen"
+    }
+  ],
+  "RI.1.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Ideas Connect' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Ask Why' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'because' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'connect' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'connection' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'connect' not on screen"
+    }
+  ],
+  "RI.1.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'New Word? No Problem' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Ask Questions' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'figure' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'words' not on screen"
+    }
+  ],
+  "RI.1.5": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Fact Book Parts' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Match the Helper' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'three' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'find' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'frogs' not on screen"
+    },
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayPart 6w: 'What page do frogs start on?'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'need' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'helper' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'helpers' not on screen"
+    }
+  ],
+  "RI.1.6": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'What Tells What?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'words' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'different' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'difference' not on screen"
+    },
+    {
+      "inv": "INV-18",
+      "rule": 16,
+      "fixer": "asset",
+      "detail": "7 clips not Whisper-timed"
+    }
+  ],
+  "RI.1.7": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Pictures Teach Us' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'What Season?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Slow Down and Look' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'plate' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'grains' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ideas' not on screen"
+    }
+  ],
+  "RI.1.8": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Count the Reasons' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'well' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'why' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'reasons' not on screen"
+    }
+  ],
+  "RI.1.9": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Two Books, One Topic' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Two Books on the Sun' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Same Topic, More Info' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'compare' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'more' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'compare' not on screen"
+    }
+  ],
+  "RF.1.1a": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 6w: 'Rule 2: End With a Mark'"
+    }
+  ],
+  "RF.1.2b": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'sounds' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'sounds' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'slowly' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'snap' not on screen"
+    }
+  ],
+  "RF.1.2c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Sounds Have a Place' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.1.2d": [],
+  "RF.1.4b": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 6w: 'Not Too Fast, Not Too Slow'"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[tip] heading 6w: 'Sound It Out Like a Star'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Read With Expression' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Sound It Out Like a Star' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'star' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'period' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'question' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'exclamation' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    }
+  ],
+  "RF.1.4c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Always Ask' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'steps' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'mat' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'clues' not on screen"
+    }
+  ],
+  "L.1.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'One Word, Two Meanings' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Be a Word Detective' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'meaning' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'clue' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 8w (>6): 'The boy swung the bat at the ball.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'The boy swung the bat at the ball.'"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 9w (>6): 'The bat flew out of the cave at night.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The bat flew out of the cave at night.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'animal' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'detective' not on screen"
+    }
+  ],
+  "L.1.4a": [
+    {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "content",
+      "detail": "no MCQ practice"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Clues Inside a Sentence' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Read All the Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'means' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'try' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 9w (>6): 'The fluffy cat curled up in the cozy bla'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'The fluffy cat curled up in the cozy bla'"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'The kid bounced high on the trampoline.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The kid bounced high on the trampoline.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'tricky' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'clues' not on screen"
+    }
+  ],
+  "L.1.4b": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Little Word Parts' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'meet' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    }
+  ],
+  "L.1.4c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Find the Root' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'same' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'parts' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'root' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'root' not on screen"
+    }
+  ],
+  "L.1.5": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Opposites'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Words Have Friends' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Match and Mix' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'explore' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'connect' not on screen"
+    }
+  ],
+  "L.1.5a": [
+    {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "content",
+      "detail": "no MCQ practice"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Animals'"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[example] heading 1w: 'Fruits'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Word Groups' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Find What Is the Same' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'sort' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Cat' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'common' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'sort' not on screen"
+    }
+  ],
+  "L.1.5b": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'What Is a Dog?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Two-Part Definition' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'dog' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'animal' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'special' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'definition' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'definition' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'pro' not on screen"
+    }
+  ],
+  "L.1.5c": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Cozy'"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[example] heading 1w: 'Chilly'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Words Live in Real Life' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Picture It' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'connections' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'connect' not on screen"
+    }
+  ],
+  "L.1.5d": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Pick the Right Shade' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'soft' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'strong' not on screen"
+    }
+  ],
+  "L.1.6": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Pick the Right Word' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Think, Then Pick' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'practice' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'words' not on screen"
+    }
+  ],
+  "RL.2.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Dig Into Stories' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Find It in the Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'ask' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'hardest' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'questions' not on screen"
+    }
+  ],
+  "RL.2.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Find the Lesson' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'Fables' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'tortoise' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 9w (>6): 'The rabbit was fast, but he stopped to n'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'The rabbit was fast, but he stopped to n'"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 7w (>6): 'The slow tortoise kept going and won!'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'The slow tortoise kept going and won!'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'characters' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'lessons' not on screen"
+    }
+  ],
+  "RL.2.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Watch the Reactions' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'feel' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'reacts' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'react' not on screen"
+    }
+  ],
+  "RL.2.4": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'feel' not on screen"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The bacon sizzled in the pan.'"
+    }
+  ],
+  "RL.2.5": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Stories Have Shape' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Map the Shape' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'shape' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'part' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'map' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'shape' not on screen"
+    }
+  ],
+  "RL.2.6": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Walk in Their Shoes' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    }
+  ],
+  "RL.2.7": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Pictures Add to Stories' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Pause and Look' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'together' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'feels' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'pictures' not on screen"
+    }
+  ],
+  "RL.2.9": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Stories Get Retold' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Same + Different' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'same' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'versions' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'compare' not on screen"
+    }
+  ],
+  "RL.2.10": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'confusing' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RI.2.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Write Questions' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'questions' not on screen"
+    }
+  ],
+  "RI.2.2": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'honey bees' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'practice' not on screen"
+    }
+  ],
+  "RI.2.3": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'connection' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RI.2.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'New Words, No Fear' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Definitions Right There' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Never Skip' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'find' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'definitions' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'meanings' not on screen"
+    }
+  ],
+  "RI.2.5": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Text Features' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Scan First' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'meet' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'fast' not on screen"
+    }
+  ],
+  "RI.2.6": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Ask the Big Why' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'purpose' not on screen"
+    }
+  ],
+  "RI.2.7": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Pictures Do Heavy Lifting' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Match Picture to Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'see' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'understand' not on screen"
+    }
+  ],
+  "RI.2.8": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Point + Proof' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Look for Because' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'strong' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'Recess is the best part of school.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'backs up' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'reasons' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'reason' not on screen"
+    }
+  ],
+  "RI.2.9": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'frogs' not on screen"
+    }
+  ],
+  "RI.2.10": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Put a Finger On It' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'spot' not on screen"
+    }
+  ],
+  "RF.2.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Phonics Power' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Trust Your Phonics' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'power' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'power' not on screen"
+    }
+  ],
+  "RF.2.3a": [],
+  "RF.2.3b": [],
+  "RF.2.3c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Split, Read, Blend' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    }
+  ],
+  "RF.2.3d": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Peel It Apart' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'pieces' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'prefixes' not on screen"
+    }
+  ],
+  "RF.2.3e": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'silent' not on screen"
+    }
+  ],
+  "RF.2.3f": [
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RF.2.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Read Like You Talk' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'flow' not on screen"
+    }
+  ],
+  "RF.2.4a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Think Before You Open' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'learn' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 8w (>6): 'I want to learn three facts about sharks'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'I want to learn three facts about sharks'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'purpose' not on screen"
+    }
+  ],
+  "RF.2.4b": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[intro] heading 6w: 'Read Out Loud Like a Pro'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'grow' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'accuracy' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'easier' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'practicing' not on screen"
+    }
+  ],
+  "RF.2.4c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Ask If It Makes Sense' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'map' not on screen"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'the cat sat on the rug.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Stop' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'self-correct' not on screen"
+    }
+  ],
+  "L.2.4": [
+    {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "content",
+      "detail": "no MCQ practice"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Figure It Out' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Detective Mindset' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'tricky' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'detectives' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 11w (>6): 'Mom had to reread the page because she l'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Mom had to reread the page because she l'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'detective' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "L.2.4a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Read the Whole Sentence' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'clues' not on screen"
+    }
+  ],
+  "L.2.4b": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Peel Off the Prefix' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'power' not on screen"
+    }
+  ],
+  "L.2.4c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Cover and Discover' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'root words' not on screen"
+    },
+    {
+      "inv": "INV-18",
+      "rule": 16,
+      "fixer": "asset",
+      "detail": "1 clips not Whisper-timed"
+    }
+  ],
+  "L.2.4d": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Rainbow'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Split It Apart' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'meaning' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'compound' not on screen"
+    }
+  ],
+  "L.2.4e": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Use It Often' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'alphabet' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'bold' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'glossary' not on screen"
+    }
+  ],
+  "L.2.5": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Make Connections' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'animals' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'connections' not on screen"
+    }
+  ],
+  "L.2.5a": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Delicious'"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Exhausted'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Picture It' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Exhausted' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'Sam went first down the tall slide.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Sam went first down the tall slide.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'connect' not on screen"
+    }
+  ],
+  "L.2.5b": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Pick the Right Shade' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'shade' not on screen"
+    }
+  ],
+  "L.2.6": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Hunt for Clues' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'feels' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'perfect' not on screen"
+    }
+  ],
+  "RL.3.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Point to the Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'answer' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'quotes' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Question' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'questions' not on screen"
+    }
+  ],
+  "RL.3.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'What Did They Learn?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'lessons' not on screen"
+    }
+  ],
+  "RL.3.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Watch Their Choices' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 9w (>6): 'Nia climbed a tall ladder to save a kitt'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Nia climbed a tall ladder to save a kitt'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'describe' not on screen"
+    }
+  ],
+  "RL.3.4": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[tip] heading 6w: 'Ask: Does It Make Real Sense?'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Ask: Does It Make Real Sense?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'mean' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'nonliteral' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'literally' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'unlock' not on screen"
+    }
+  ],
+  "RL.3.5": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'forward' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 14w (>6): 'The seed slept deep below the ground, wa'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The seed slept deep below the ground, wa'"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 12w (>6): 'Then up popped a leaf in the morning lig'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Then up popped a leaf in the morning lig'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    }
+  ],
+  "RL.3.6": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Separate the Two' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'feelings' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'views' not on screen"
+    }
+  ],
+  "RL.3.7": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Pictures Set the Mood' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Feel the Colors' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'pictures' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 11w (>6): 'A sunny meadow with bright flowers and a'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'A sunny meadow with bright flowers and a'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'mood' not on screen"
+    }
+  ],
+  "RL.3.9": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'same' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 8w (>6): 'Ant kept climbing until it reached the t'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Ant kept climbing until it reached the t'"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'Kira practiced until she made the shot.'"
+    }
+  ],
+  "RL.3.10": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Daily Reading' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'year' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'fifteen' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'year' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RI.3.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Use Quotes' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'all' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'questions' not on screen"
+    }
+  ],
+  "RI.3.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Summarize It' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'helpers' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ideas' not on screen"
+    }
+  ],
+  "RI.3.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Map It Out' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'The plant wilted because nobody watered '"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The plant wilted because nobody watered '"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'connect' not on screen"
+    }
+  ],
+  "RI.3.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Keep a Word List' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'subject' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'academic' not on screen"
+    }
+  ],
+  "RI.3.5": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Preview Before Reading' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'contents' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'Flip' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'features' not on screen"
+    }
+  ],
+  "RI.3.6": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Highlight Opinions' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'view' not on screen"
+    }
+  ],
+  "RI.3.7": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Read Every Caption' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Charts' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'illustrations' not on screen"
+    }
+  ],
+  "RI.3.8": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[example] heading 1w: 'However'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Circle the Signals' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'follows' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'relates' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'connections' not on screen"
+    }
+  ],
+  "RI.3.9": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Differences'"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[tip] heading 1w: 'T-Chart'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'T-Chart' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'topic' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'shares' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'compare' not on screen"
+    }
+  ],
+  "RI.3.10": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'finish' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'A hard page, a big new word'"
+    }
+  ],
+  "RF.3.3": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[example] heading 1w: 'Unbelievable'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Chunk It' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'chunk' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Unbelievable' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'understand' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'analyze' not on screen"
+    }
+  ],
+  "RF.3.3a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Flashcards Help' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'common' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    }
+  ],
+  "RF.3.3b": [
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 7w (>6): 'TION = an action becomes a thing'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    }
+  ],
+  "RF.3.3c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Chunk + Read' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    }
+  ],
+  "RF.3.3d": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'never' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'silent' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'slowly' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RF.3.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Read Aloud Daily' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'Fluent' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'flow' not on screen"
+    }
+  ],
+  "RF.3.4a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Pause Before You Open' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'purpose' not on screen"
+    }
+  ],
+  "RF.3.4b": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'scared' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'character' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[tip] displayText 7w (>6): 'Read it how they would say it'"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RF.3.4c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Does It Make Sense?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'self-correct' not on screen"
+    }
+  ],
+  "L.3.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Combine Both' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'cracked' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'detect' not on screen"
+    }
+  ],
+  "L.3.4a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Hunt for the Hint' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'understand' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'examples' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'signals' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'clues' not on screen"
+    }
+  ],
+  "L.3.4b": [],
+  "L.3.4c": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Cover the Ends' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'root' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'root' not on screen"
+    }
+  ],
+  "L.3.4d": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Read Top to Bottom' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'gobble \u00b7 gob-uhl \u00b7 to eat fast'"
+    }
+  ],
+  "L.3.5": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Idioms'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Listen and Picture' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'Figurative' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 9w (>6): 'The brave knight was as quiet as a mouse'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The brave knight was as quiet as a mouse'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'meanings' not on screen"
+    }
+  ],
+  "L.3.5a": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'literal' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'nonliteral' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'nonliteral' not on screen"
+    }
+  ],
+  "L.3.5b": [],
+  "L.3.5c": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Levels of Strength' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Pick the Right Strength' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'similar' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'Levels' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'strength' not on screen"
+    }
+  ],
+  "L.3.6": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'signals' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'when' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'where' not on screen"
+    }
+  ],
+  "RL.4.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Always Cite' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'story' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 12w (>6): 'Sam hid the gifts behind the couch and t'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'inferred' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    }
+  ],
+  "RL.4.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'In Your Own Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'themes' not on screen"
+    }
+  ],
+  "RL.4.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Cite Specific Lines' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'growth' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'deeply' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RL.4.4": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Allusions'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Look It Up' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'Maria was drowning in homework all weeke'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Maria was drowning in homework all weeke'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'unlock' not on screen"
+    }
+  ],
+  "RL.4.5": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Poems'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Spot the Clues' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Poems' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'clue' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'form' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'practice' not on screen"
+    }
+  ],
+  "RL.4.6": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'minds' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'feels' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'Count' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[practice-intro] highlightWord 'practice' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RL.4.7": [
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'Lighthouse glowed red, waves crashed on '"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    }
+  ],
+  "RL.4.9": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Notice the Shared Heart' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 11w (>6): 'A Greek boy and an African girl each sav'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'A Greek boy and an African girl each sav'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'themes' not on screen"
+    }
+  ],
+  "RL.4.10": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Picture It' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 17w (>16): 'Maya stared at the dark cave. Her hands '"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'shook' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'find' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[tip] pill is a spoken sentence: 'Make a movie in your mind'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'spot' not on screen"
+    }
+  ],
+  "RI.4.1": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    }
+  ],
+  "RI.4.2": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Summarize'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Two-Sentence Test' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'heart' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'master' not on screen"
+    }
+  ],
+  "RI.4.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Number Each Step' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'explain' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'procedural' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'procedures' not on screen"
+    }
+  ],
+  "RI.4.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'School Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Build a Word Wall' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'discover' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'ecosystem' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 9w (>6): 'The scientist made a prediction before t'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The scientist made a prediction before t'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'academic words' not on screen"
+    }
+  ],
+  "RI.4.5": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Look for Clue Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'compares' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'structures' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RI.4.6": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Ask: Were They There?' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 10w (>6): 'In 1849, thousands of miners traveled we'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'In 1849, thousands of miners traveled we'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Firsthand' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'firsthand' not on screen"
+    }
+  ],
+  "RI.4.7": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Ask: What and Why' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'Information' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'both' not on screen"
+    }
+  ],
+  "RI.4.8": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    }
+  ],
+  "RI.4.9": [],
+  "RI.4.10": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'facts' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RF.4.3": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'parts' not on screen"
+    },
+    {
+      "inv": "INV-18",
+      "rule": 16,
+      "fixer": "asset",
+      "detail": "4 clips not Whisper-timed"
+    }
+  ],
+  "RF.4.3a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Spot the Combos' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'combos' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'combos' not on screen"
+    }
+  ],
+  "RF.4.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Read Aloud Often' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'smoothness' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'smooth' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "L.4.4": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Track Your Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'stuck' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Hopeful' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'detect' not on screen"
+    }
+  ],
+  "L.4.4a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Hunt the Hint' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'detectives' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'everywhere' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Like' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 8w (>6): 'The cave was murky, or dark and dim.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'The cave was murky, or dark and dim.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'clues' not on screen"
+    }
+  ],
+  "L.4.4b": [],
+  "L.4.4c": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Dictionary'"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Thesaurus'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Pick the Right One' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'dictionary' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 7w (>6): 'You want a stronger word than happy.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'You want a stronger word than happy.'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'materials' not on screen"
+    }
+  ],
+  "L.4.5": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[example] heading 1w: 'Examples'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Hunt the Picture' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'amazing' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'painting' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Simile' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Metaphor' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'Idiom' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'figurative' not on screen"
+    }
+  ],
+  "L.4.5a": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Spot the Bridge Word' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    }
+  ],
+  "L.4.5b": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Learn Them as Phrases' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'idioms' not on screen"
+    }
+  ],
+  "L.4.5c": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Levels of Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Match the Intensity' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'strength' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'strength' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'levels' not on screen"
+    }
+  ],
+  "L.4.6": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Word a Day' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'own' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RF.1.3a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Listen for Team Sounds' ends audio-only (mobile blank risk)"
+    }
+  ],
+  "RF.1.3b": [],
+  "RF.1.3c": [],
+  "RF.1.3d": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Clap Out the Beats' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Your Hand Knows' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'syllables' not on screen"
+    }
+  ],
+  "RF.1.3e": [],
+  "RF.1.3f": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Little Endings Change Meaning' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Spot the Ending' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'three' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'apples' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'endings' not on screen"
+    }
+  ],
+  "RF.1.3g": [
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 1w: 'Said'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'See Them Every Day' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[practice-intro] 'Time to Practice!' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'faster' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "RF.1.4a": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Pause Before You Start' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'reasons' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'learn' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'story' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'purpose' not on screen"
+    }
+  ],
+  "L.1.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Spot the Jobs' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'nouns' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'jobs' not on screen"
+    }
+  ],
+  "L.1.2": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-4",
+      "rule": 2,
+      "fixer": "content",
+      "detail": "[teach] heading 6w: 'Rule 2: End With a Mark'"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[teach] 'Rule 2: End With a Mark' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'understand' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Maya' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'period' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'mark' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'sentence' not on screen"
+    },
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[tip] displayPart 6w: 'Check the start and the end'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'capitals' not on screen"
+    }
+  ],
+  "L.2.1": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'walked' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'switches' not on screen"
+    }
+  ],
+  "L.2.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Tiny Marks, Big Jobs' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Hear the Pause' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'learn' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'apostrophe' not on screen"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 8w (>6): 'Sam fed the dog the cat the fish'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Sam fed the dog the cat the fish'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    }
+  ],
+  "L.2.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Know Your Reader' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'sound' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'formal' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'who' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'choose' not on screen"
+    }
+  ],
+  "L.3.1": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Say It Out Loud' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'walked' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'tricky' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'verb tenses' not on screen"
+    },
+    {
+      "inv": "INV-18",
+      "rule": 16,
+      "fixer": "asset",
+      "detail": "2 clips not Whisper-timed"
+    }
+  ],
+  "L.3.2": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'quotation' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'fixed' not on screen"
+    }
+  ],
+  "L.3.3": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Word Choice Matters' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Try Different Words' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'shine' not on screen"
+    },
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayPart 6w: 'Writing to a teacher or principal?'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'best' not on screen"
+    }
+  ],
+  "L.4.1": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'singular' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'plural' not on screen"
+    }
+  ],
+  "L.4.2": [
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Catch It Quick' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[teach] displayText 9w (>6): 'I packed my bag, and I caught the bus.'"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[teach] pill is a spoken sentence: 'I packed my bag, and I caught the bus.'"
+    },
+    {
+      "inv": "INV-7",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayText 8w (>6): 'Sam grinned and whispered, \u201cI found the '"
+    },
+    {
+      "inv": "INV-9",
+      "rule": 3,
+      "fixer": "content",
+      "detail": "[example] pill is a spoken sentence: 'Sam grinned and whispered, \u201cI found the '"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
+    }
+  ],
+  "L.4.3": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'Match Audience' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'exactly' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'exciting' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'style' not on screen"
+    },
+    {
+      "inv": "INV-18",
+      "rule": 16,
+      "fixer": "asset",
+      "detail": "3 clips not Whisper-timed"
+    }
+  ],
+  "RL.K.10": [
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'share' not on screen"
+    }
+  ],
+  "RI.K.10": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Facts Are Fun' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A New Topic Each Week' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'enjoy' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Slow' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'ready' not on screen"
+    }
+  ],
+  "RL.1.10": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Read Every Day' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'A Reading Routine' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'year' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Poems' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Growing' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'smart' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'time' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'enjoy' not on screen"
+    }
+  ],
+  "RI.1.10": [
+    {
+      "inv": "INV-1",
+      "rule": 1,
+      "fixer": "content",
+      "detail": "missing example ('Let's Try One')"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[intro] 'Facts Are Fun' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-5",
+      "rule": 25,
+      "fixer": "renderer",
+      "detail": "[tip] 'New Topic Every Week' ends audio-only (mobile blank risk)"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[intro] highlightWord 'fact' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'insects' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[teach] highlightWord 'Headings' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[tip] highlightWord 'explore' not on screen"
+    }
+  ]
+}
