@@ -582,28 +582,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2a-Q1",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.K.2a-Q2",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2a-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2a-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2a-Q5",
-        "slide": 11
+        "slide": 7
       }
     ]
   },
@@ -1041,28 +1021,23 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.1-Q1",
+        "mcqId": "RI.K.1-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.1-Q2",
+        "mcqId": "RI.K.1-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.1-Q3",
+        "mcqId": "RI.K.1-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.1-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.K.1-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -1392,11 +1367,6 @@
         "type": "mcq",
         "mcqId": "RL.K.2-Q4",
         "slide": 11
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.K.2-Q5",
-        "slide": 12
       }
     ]
   },
@@ -2383,28 +2353,23 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.5-Q1",
+        "mcqId": "RL.K.5-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.5-Q2",
+        "mcqId": "RL.K.5-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.5-Q3",
+        "mcqId": "RL.K.5-Q4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.5-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.K.5-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -2972,11 +2937,6 @@
         "type": "mcq",
         "mcqId": "RL.K.7-Q4",
         "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.K.7-Q5",
-        "slide": 11
       }
     ]
   },
@@ -3241,23 +3201,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.9-Q2",
+        "mcqId": "RL.K.9-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.9-Q3",
+        "mcqId": "RL.K.9-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.9-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.K.9-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -3716,7 +3671,7 @@
         "slide": 3,
         "heading": "Let's Try One!",
         "imageFile": "images/lessons/RI.K.3/S3.png",
-        "imagePrompt": "",
+        "imagePrompt": "A friendly brown owl with big round eyes perched on a branch at night, a crescent moon and a couple of stars in the dark blue sky behind it, bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors",
         "steps": [
           {
             "sub": "a",
@@ -3771,7 +3726,8 @@
             },
             "audioRegenAt": "2026-06-10T19:58:07.779Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:44:44.498Z"
       },
       {
         "type": "tip",
@@ -3919,18 +3875,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.3-Q3",
+        "mcqId": "RI.K.3-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.3-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.K.3-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -4166,28 +4117,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.4-Q1",
+        "mcqId": "RI.K.4-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.4-Q2",
+        "mcqId": "RI.K.4-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.4-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.K.4-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.K.4-Q5",
-        "slide": 11
+        "slide": 9
       }
     ]
   },
@@ -4257,7 +4198,7 @@
         "slide": 2,
         "heading": "The Covers",
         "imageFile": "images/lessons/RI.K.5/S2.png",
-        "imagePrompt": "",
+        "imagePrompt": "A bright 2D cartoon hardcover book turned to show its plain BACK cover facing the viewer (blank back panel, spine on the side, a few page edges peeking out), making clear this is the other side of the book opposite the illustrated front. Bold clean outlines, vibrant saturated colors, no text.",
         "steps": [
           {
             "sub": "a",
@@ -4291,7 +4232,8 @@
             },
             "audioRegenAt": "2026-06-10T19:59:03.793Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:44:44.315Z"
       },
       {
         "type": "teach",
@@ -4631,7 +4573,7 @@
             ],
             "displayTableRow": {
               "label": "Illustrator",
-              "value": "Drawe the PICTURES"
+              "value": "Draws the PICTURES"
             }
           },
           {
@@ -5547,7 +5489,7 @@
         "slide": 3,
         "heading": "Let's Try One",
         "imageFile": "images/lessons/RI.K.8/S3.png",
-        "imagePrompt": "",
+        "imagePrompt": "A happy cartoon cat grooming/licking its paw while sitting calmly, bright 2D cartoon illustration with bold clean outlines and vibrant saturated colors, no text.",
         "steps": [
           {
             "sub": "a",
@@ -5602,7 +5544,8 @@
             },
             "audioRegenAt": "2026-06-10T20:00:03.667Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:44:44.003Z"
       },
       {
         "type": "tip",
@@ -5686,20 +5629,26 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.8/rb-5a.mp3",
             "ttsScript": "Wonderful! You can find the reasons that support a point!",
-            "highlightWord": {
-              "word": "support",
-              "delay": 3550
-            },
-            "audioRegenAt": "2026-06-10T20:00:07.363Z"
+            "audioRegenAt": "2026-06-10T20:00:07.363Z",
+            "displayParts": [
+              {
+                "text": "Your turn!",
+                "delay": 0
+              },
+              {
+                "text": "Find the reasons",
+                "delay": 2020
+              },
+              {
+                "text": "In a book",
+                "delay": 3600
+              }
+            ]
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.8/rb-5b.mp3",
             "ttsScript": "Now let's practice finding reasons on your own. You've got this!",
-            "highlightWord": {
-              "word": "reasons",
-              "delay": 2210
-            },
             "audioRegenAt": "2026-06-10T20:00:09.901Z"
           }
         ]
@@ -5989,13 +5938,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.9-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.K.9-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -6360,8 +6304,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1a-Q9",
+        "mcqId": "RF.K.1a-Q7",
         "slide": 12
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RF.K.1a-Q8",
+        "slide": 13
       }
     ]
   },
@@ -6758,28 +6707,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1b-Q1",
+        "mcqId": "RF.K.1b-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1b-Q2",
+        "mcqId": "RF.K.1b-Q4",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1b-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.1b-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.K.1b-Q5",
-        "slide": 11
+        "slide": 9
       }
     ]
   },
@@ -7097,31 +7036,6 @@
         "imageFile": "images/lessons/RF.K.1c/S5.png",
         "imagePrompt": "A cartoon child arranging colorful blocks on a table with perfect spacing between each group. Gold stars pop up above each space. The child looks proud. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints.",
         "imageRegenAt": "2026-06-03T00:23:10.894Z"
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.1c-Q1",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.1c-Q2",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.1c-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.1c-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.1c-Q5",
-        "slide": 11
       }
     ]
   },
@@ -7527,18 +7441,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1d-Q3",
+        "mcqId": "RF.K.1d-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1d-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.K.1d-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -8148,31 +8057,6 @@
         "heading": "Time to Practice!",
         "imageFile": "images/lessons/RF.K.2c/S5.png",
         "imagePrompt": "A cheerful cartoon child cupping a hand behind one ear, listening carefully with a happy smile. Simple clean background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2c-Q1",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2c-Q2",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2c-Q3",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2c-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2c-Q5",
-        "slide": 12
       }
     ]
   },
@@ -8540,23 +8424,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2d-Q2",
+        "mcqId": "RF.K.2d-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2d-Q3",
+        "mcqId": "RF.K.2d-Q4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2d-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.K.2d-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -8812,28 +8691,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2e-Q1",
+        "mcqId": "RF.K.2e-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2e-Q2",
+        "mcqId": "RF.K.2e-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2e-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.K.2e-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.2e-Q5",
-        "slide": 11
+        "slide": 9
       }
     ]
   },
@@ -9163,11 +9032,6 @@
         "heading": "Time to Practice!",
         "imageFile": "images/lessons/RF.K.3a/S5.png",
         "imagePrompt": "A cartoon child standing proudly on a stage made of giant colorful stacked blocks, with a spotlight shining on them. Confetti rains down and a star trophy sits nearby. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.3a-Q1",
-        "slide": 8
       }
     ]
   },
@@ -9861,31 +9725,6 @@
           ],
           "correct": "is"
         }
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.3c-Q1",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.3c-Q2",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.3c-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.3c-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.K.3c-Q5",
-        "slide": 11
       }
     ]
   },
@@ -10224,18 +10063,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.3d-Q1",
+        "mcqId": "RF.K.3d-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.3d-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.K.3d-Q5",
-        "slide": 9
+        "slide": 8
       }
     ]
   },
@@ -10576,13 +10410,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.4-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.K.4-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -10995,11 +10824,6 @@
         "type": "mcq",
         "mcqId": "K.L.1-Q4",
         "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "K.L.1-Q5",
-        "slide": 11
       }
     ]
   },
@@ -11208,23 +11032,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "K.L.2-Q1",
+        "mcqId": "K.L.2-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "K.L.2-Q2",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "K.L.2-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "K.L.2-Q4",
-        "slide": 10
+        "slide": 8
       }
     ]
   },
@@ -11956,11 +11770,6 @@
         "type": "mcq",
         "mcqId": "K.L.5-Q4",
         "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "K.L.5-Q5",
-        "slide": 11
       }
     ]
   },
@@ -12057,7 +11866,7 @@
         "slide": 3,
         "heading": "Let's Use a New Word!",
         "imageFile": "images/lessons/K.L.6/S3.png",
-        "imagePrompt": "",
+        "imagePrompt": "A happy young child snuggled cozily in bed under a thick warm blanket, hugging a soft pillow, in a softly lit bedroom \u2014 conveying warm, snug, and cozy.",
         "steps": [
           {
             "sub": "a",
@@ -12096,7 +11905,8 @@
             "ttsScript": "You just used 'cozy' in your very own sentence! You're a vocabulary superstar!",
             "audioRegenAt": "2026-06-10T21:11:46.729Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:45:03.873Z"
       },
       {
         "type": "tip",
@@ -13882,18 +13692,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.5-Q4",
+        "mcqId": "RL.1.5-Q3",
         "slide": 6
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.5-Q6",
+        "mcqId": "RL.1.5-Q4",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.1.5-Q3",
-        "slide": 8
       }
     ]
   },
@@ -14189,13 +13994,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.6-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.1.6-Q5",
-        "slide": 10
+        "slide": 9
       }
     ]
   },
@@ -16096,28 +15896,33 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.4-Q6",
+        "mcqId": "RI.1.4-Q4",
         "slide": 6
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.4-Q7",
+        "mcqId": "RI.1.4-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.4-Q3",
+        "mcqId": "RI.1.4-Q7",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.4-Q4",
+        "mcqId": "RI.1.4-Q8",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.4-Q5",
+        "mcqId": "RI.1.4-Q10",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.1.4-Q11",
+        "slide": 11
       }
     ]
   },
@@ -18372,31 +18177,6 @@
             "audioRegenAt": "2026-06-08T03:21:32.396Z"
           }
         ]
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.2b-Q1",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.2b-Q2",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.2b-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.2b-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.2b-Q5",
-        "slide": 11
       }
     ]
   },
@@ -18810,13 +18590,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.2c-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.1.2c-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -19190,28 +18965,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.2d-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.2d-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.2d-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.1.2d-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.2d-Q5",
-        "slide": 10
+        "slide": 6
       }
     ]
   },
@@ -19565,11 +19320,6 @@
         "type": "mcq",
         "mcqId": "RF.1.4b-Q4",
         "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.4b-Q5",
-        "slide": 10
       }
     ]
   },
@@ -19887,28 +19637,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.4c-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.4c-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.4c-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.1.4c-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.4c-Q5",
-        "slide": 10
+        "slide": 6
       }
     ]
   },
@@ -20205,11 +19935,6 @@
         "type": "mcq",
         "mcqId": "L.1.4-Q3",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.4-Q6",
-        "slide": 8
       }
     ]
   },
@@ -20509,11 +20234,6 @@
           ],
           "correct": "very hungry"
         }
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.4a-Q6",
-        "slide": 6
       }
     ]
   },
@@ -20720,7 +20440,7 @@
         "slide": 5,
         "heading": "A Word Part Trick!",
         "imageFile": "images/lessons/L.1.4b/S4.png",
-        "imagePrompt": "",
+        "imagePrompt": "Two bright cartoon word-building blocks snapping together: a small block labeled-area on the left (prefix slot) and a small block on the right (suffix slot) clicking onto a central root-word block, shown as colorful interlocking puzzle-piece tiles with little arrows/sparkles, bright 2D cartoon style with bold clean outlines and vibrant saturated colors, no text baked in.",
         "steps": [
           {
             "sub": "a",
@@ -20763,7 +20483,8 @@
             },
             "audioRegenAt": "2026-06-10T20:07:17.654Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:45:07.026Z"
       },
       {
         "type": "interactive",
@@ -20799,11 +20520,6 @@
         "type": "mcq",
         "mcqId": "L.1.4b-Q4",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.4b-Q6",
-        "slide": 8
       }
     ]
   },
@@ -21494,11 +21210,6 @@
         "type": "mcq",
         "mcqId": "L.1.5-Q4",
         "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.5-Q5",
-        "slide": 11
       }
     ]
   },
@@ -21759,26 +21470,6 @@
           ],
           "correct": "Colors"
         }
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.5a-Q5",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.5a-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.5a-Q6",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.5a-Q4",
-        "slide": 9
       }
     ]
   },
@@ -22739,23 +22430,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.5d-Q2",
+        "mcqId": "L.1.5d-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.5d-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.1.5d-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.5d-Q5",
-        "slide": 10
+        "slide": 8
       }
     ]
   },
@@ -23025,28 +22706,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.6-Q1",
+        "mcqId": "L.1.6-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.6-Q2",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.6-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.6-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.1.6-Q5",
-        "slide": 11
+        "slide": 8
       }
     ]
   },
@@ -24659,18 +24325,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.2.5-Q3",
+        "mcqId": "RL.2.5-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.2.5-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.2.5-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -25541,23 +25202,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.2.9-Q2",
+        "mcqId": "RL.2.9-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RL.2.9-Q3",
+        "mcqId": "RL.2.9-Q4",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.2.9-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.2.9-Q5",
-        "slide": 10
+        "slide": 9
       }
     ]
   },
@@ -26760,23 +26416,48 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.3-Q2",
+        "mcqId": "RI.2.3-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.3-Q3",
+        "mcqId": "RI.2.3-Q4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.3-Q4",
+        "mcqId": "RI.2.3-Q5",
         "slide": 11
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.3-Q5",
+        "mcqId": "RI.2.3-Q6",
         "slide": 12
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q7",
+        "slide": 13
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q9",
+        "slide": 14
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q11",
+        "slide": 15
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q13",
+        "slide": 16
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.2.3-Q15",
+        "slide": 17
       }
     ]
   },
@@ -27491,11 +27172,6 @@
         "type": "mcq",
         "mcqId": "RI.2.5-Q4",
         "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.2.5-Q5",
-        "slide": 10
       }
     ]
   },
@@ -28065,11 +27741,6 @@
         "type": "mcq",
         "mcqId": "RI.2.7-Q4",
         "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.2.7-Q5",
-        "slide": 10
       }
     ]
   },
@@ -28239,7 +27910,7 @@
         "slide": 4,
         "heading": "Look for Because",
         "imageFile": "images/lessons/RI.2.8/S4.png",
-        "imagePrompt": "",
+        "imagePrompt": "A friendly cartoon magnifying glass with a face hovering over an open book page, beams of light highlighting a glowing blank underlined gap on the page where a key word would sit; no letters or words anywhere. Bright 2D cartoon, bold clean outlines, vibrant saturated colors.",
         "steps": [
           {
             "sub": "a",
@@ -28285,7 +27956,8 @@
             },
             "audioRegenAt": "2026-06-10T20:21:19.279Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:45:06.106Z"
       },
       {
         "type": "interactive",
@@ -29003,23 +28675,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.10-Q2",
+        "mcqId": "RI.2.10-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.10-Q3",
+        "mcqId": "RI.2.10-Q4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.10-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.2.10-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -29664,16 +29331,6 @@
         "type": "mcq",
         "mcqId": "RF.2.3a-Q3",
         "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.2.3a-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.2.3a-Q5",
-        "slide": 11
       }
     ]
   },
@@ -30427,23 +30084,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3c-Q2",
+        "mcqId": "RF.2.3c-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3c-Q3",
+        "mcqId": "RF.2.3c-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3c-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.2.3c-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -30771,18 +30423,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3d-Q4",
+        "mcqId": "RF.2.3d-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3d-Q2",
+        "mcqId": "RF.2.3d-Q4",
         "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.2.3d-Q6",
-        "slide": 9
       }
     ]
   },
@@ -30881,7 +30528,7 @@
         "slide": 3,
         "heading": "Where They Hide",
         "imageFile": "images/lessons/RF.2.3e/S3.png",
-        "imagePrompt": "",
+        "imagePrompt": "A bright 2D cartoon illustration of a cheerful kid climbing up a rocky hill or ladder, mid-climb with one hand reaching up, bold clean outlines, vibrant saturated colors, no text.",
         "steps": [
           {
             "sub": "a",
@@ -30925,7 +30572,8 @@
             },
             "audioRegenAt": "2026-06-10T20:24:44.408Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:46:03.237Z"
       },
       {
         "type": "example",
@@ -31362,28 +31010,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3f-Q1",
+        "mcqId": "RF.2.3f-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3f-Q2",
+        "mcqId": "RF.2.3f-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.3f-Q3",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.2.3f-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.2.3f-Q5",
-        "slide": 12
+        "slide": 10
       }
     ]
   },
@@ -31714,11 +31352,6 @@
         "type": "mcq",
         "mcqId": "RF.2.4-Q4",
         "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.2.4-Q5",
-        "slide": 11
       }
     ]
   },
@@ -32276,18 +31909,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.4b-Q3",
+        "mcqId": "RF.2.4b-Q4",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.4b-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.2.4b-Q5",
-        "slide": 10
+        "slide": 9
       }
     ]
   },
@@ -32574,23 +32202,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.2.4c-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.2.4c-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.2.4c-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.2.4c-Q5",
-        "slide": 10
+        "slide": 7
       }
     ]
   },
@@ -32879,11 +32492,6 @@
           ],
           "correct": "A little wet"
         }
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.2.4-Q6",
-        "slide": 7
       }
     ]
   },
@@ -33142,11 +32750,6 @@
         "type": "mcq",
         "mcqId": "L.2.4a-Q4",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.2.4a-Q6",
-        "slide": 8
       }
     ]
   },
@@ -33482,11 +33085,6 @@
         "type": "mcq",
         "mcqId": "L.2.4b-Q3",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.2.4b-Q6",
-        "slide": 8
       }
     ]
   },
@@ -33737,13 +33335,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.4c-Q6",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.2.4c-Q3",
-        "slide": 8
+        "slide": 7
       }
     ]
   },
@@ -34328,28 +33921,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.4e-Q1",
+        "mcqId": "L.2.4e-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.4e-Q2",
+        "mcqId": "L.2.4e-Q4",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.4e-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.2.4e-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.2.4e-Q5",
-        "slide": 11
+        "slide": 9
       }
     ]
   },
@@ -34716,18 +34299,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.5-Q3",
+        "mcqId": "L.2.5-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.5-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.2.5-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -35331,28 +34909,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.5b-Q1",
+        "mcqId": "L.2.5b-Q2",
         "slide": 6
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.5b-Q2",
+        "mcqId": "L.2.5b-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.5b-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.2.5b-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.2.5b-Q5",
-        "slide": 10
+        "slide": 8
       }
     ]
   },
@@ -35440,7 +35008,7 @@
         "slide": 3,
         "heading": "Let's Try One",
         "imageFile": "images/lessons/L.2.6/S3.png",
-        "imagePrompt": "",
+        "imagePrompt": "A young child sitting and yawning wide with eyes closed, one hand near the mouth, looking sleepy and tired, with a cozy droopy posture, bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors",
         "steps": [
           {
             "sub": "a",
@@ -35487,7 +35055,8 @@
             },
             "audioRegenAt": "2026-06-10T20:26:17.277Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:46:06.409Z"
       },
       {
         "type": "tip",
@@ -35571,18 +35140,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.6-Q3",
+        "mcqId": "L.2.6-Q4",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.6-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.2.6-Q5",
-        "slide": 10
+        "slide": 9
       }
     ]
   },
@@ -36682,18 +36246,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.4-Q4",
+        "mcqId": "RL.3.4-Q3",
         "slide": 6
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.4-Q6",
+        "mcqId": "RL.3.4-Q4",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.3.4-Q3",
-        "slide": 8
       }
     ]
   },
@@ -36951,23 +36510,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.5-Q2",
+        "mcqId": "RL.3.5-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.5-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.3.5-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.3.5-Q5",
-        "slide": 11
+        "slide": 9
       }
     ]
   },
@@ -37271,18 +36820,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.6-Q3",
+        "mcqId": "RL.3.6-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.6-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.3.6-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -37892,28 +37436,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.9-Q1",
+        "mcqId": "RL.3.9-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.9-Q2",
+        "mcqId": "RL.3.9-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.3.9-Q3",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.3.9-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.3.9-Q5",
-        "slide": 12
+        "slide": 10
       }
     ]
   },
@@ -38748,23 +38282,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.2-Q2",
+        "mcqId": "RI.3.2-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.2-Q3",
+        "mcqId": "RI.3.2-Q4",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.2-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.3.2-Q5",
-        "slide": 10
+        "slide": 9
       }
     ]
   },
@@ -39075,18 +38604,28 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.3-Q6",
+        "mcqId": "RI.3.3-Q5",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.3-Q7",
+        "mcqId": "RI.3.3-Q8",
         "slide": 11
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.3-Q5",
+        "mcqId": "RI.3.3-Q11",
         "slide": 12
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.3.3-Q13",
+        "slide": 13
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.3.3-Q14",
+        "slide": 14
       }
     ]
   },
@@ -39728,23 +39267,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.5-Q2",
+        "mcqId": "RI.3.5-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.5-Q3",
+        "mcqId": "RI.3.5-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.5-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.3.5-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -39790,7 +39324,7 @@
         "slide": 2,
         "heading": "Look for Opinion Words",
         "imageFile": "images/lessons/RI.3.6/S2.png",
-        "imagePrompt": "",
+        "imagePrompt": "A bright 2D cartoon speech bubble shape glowing/highlighted with a few generic sparkles and a small star inside, set against a soft warm gradient, conveying an opinion or emphasized word without any letters or text. Bold clean outlines, vibrant saturated colors, no baked-in text.",
         "steps": [
           {
             "sub": "a",
@@ -39814,7 +39348,8 @@
             },
             "audioRegenAt": "2026-06-10T20:33:30.817Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:46:02.048Z"
       },
       {
         "type": "example",
@@ -40755,13 +40290,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.9-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.3.9-Q5",
-        "slide": 10
+        "slide": 9
       }
     ]
   },
@@ -40888,7 +40418,7 @@
         "slide": 4,
         "heading": "Let's Try One",
         "imageFile": "images/lessons/RI.3.10/example.png",
-        "imagePrompt": "",
+        "imagePrompt": "A bright 2D cartoon child sitting with an open book on their lap, pausing on one page with a slightly puzzled but determined look, one finger pointing at a single tricky word on the page, going back over the line to reread it slowly.",
         "steps": [
           {
             "sub": "a",
@@ -40949,7 +40479,8 @@
             "ttsScript": "Maya kept going and finished her shark book. That's stamina!",
             "audioRegenAt": "2026-06-10T20:36:32.066Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:46:28.320Z"
       },
       {
         "type": "tip",
@@ -41035,18 +40566,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.10-Q3",
+        "mcqId": "RI.3.10-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.10-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.3.10-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -41949,23 +41475,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.3.3b-Q2",
+        "mcqId": "RF.3.3b-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.3.3b-Q3",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.3.3b-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.3.3b-Q5",
-        "slide": 12
+        "slide": 10
       }
     ]
   },
@@ -42455,28 +41971,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.3.3d-Q1",
+        "mcqId": "RF.3.3d-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.3.3d-Q2",
+        "mcqId": "RF.3.3d-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.3.3d-Q3",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.3.3d-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.3.3d-Q5",
-        "slide": 12
+        "slide": 10
       }
     ]
   },
@@ -43568,18 +43074,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.3.4c-Q3",
+        "mcqId": "RF.3.4c-Q4",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.3.4c-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.3.4c-Q5",
-        "slide": 10
+        "slide": 9
       }
     ]
   },
@@ -43880,11 +43381,6 @@
         "type": "mcq",
         "mcqId": "L.3.4-Q1",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.4-Q6",
-        "slide": 8
       }
     ]
   },
@@ -44128,11 +43624,6 @@
         "type": "mcq",
         "mcqId": "L.3.4a-Q5",
         "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.4a-Q6",
-        "slide": 7
       }
     ]
   },
@@ -44491,11 +43982,6 @@
         "type": "mcq",
         "mcqId": "L.3.4b-Q3",
         "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.4b-Q6",
-        "slide": 9
       }
     ]
   },
@@ -44787,11 +44273,6 @@
         "type": "mcq",
         "mcqId": "L.3.4c-Q3",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.4c-Q6",
-        "slide": 8
       }
     ]
   },
@@ -45019,26 +44500,6 @@
         "type": "mcq",
         "mcqId": "L.3.4d-Q1",
         "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.4d-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.4d-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.4d-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.4d-Q5",
-        "slide": 10
       }
     ]
   },
@@ -46193,28 +45654,18 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.3.5c-Q1",
+        "mcqId": "L.3.5c-Q2",
         "slide": 6
       },
       {
         "type": "mcq",
-        "mcqId": "L.3.5c-Q2",
+        "mcqId": "L.3.5c-Q4",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.3.5c-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.5c-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.3.5c-Q5",
-        "slide": 10
+        "slide": 8
       }
     ]
   },
@@ -46456,18 +45907,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.3.6-Q3",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.3.6-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.6-Q5",
-        "slide": 12
+        "slide": 10
       }
     ]
   },
@@ -47337,28 +46778,23 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.4.3-Q1",
+        "mcqId": "RL.4.3-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RL.4.3-Q2",
+        "mcqId": "RL.4.3-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.4.3-Q3",
+        "mcqId": "RL.4.3-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.4.3-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.4.3-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -47986,23 +47422,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.4.5-Q2",
+        "mcqId": "RL.4.5-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.4.5-Q3",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.4.5-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.4.5-Q5",
-        "slide": 12
+        "slide": 10
       }
     ]
   },
@@ -48873,11 +48299,6 @@
         "type": "mcq",
         "mcqId": "RL.4.9-Q4",
         "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.4.9-Q5",
-        "slide": 11
       }
     ]
   },
@@ -49340,7 +48761,7 @@
         "slide": 4,
         "heading": "The Hidden Clue",
         "imageFile": "images/lessons/RI.4.1/S3.png",
-        "imagePrompt": "",
+        "imagePrompt": "A child kneeling on cracked, sun-baked desert sand under a blazing yellow sun, wiping sweat from their forehead and tipping back an empty water bottle, with rolling sand dunes and shimmering heat lines in the background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated warm colors, no text.",
         "steps": [
           {
             "sub": "a",
@@ -49401,7 +48822,8 @@
             "ttsScript": "You inferred it! The clues led you to a hidden answer. Nice detective work!",
             "audioRegenAt": "2026-06-10T20:48:23.623Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:46:27.194Z"
       },
       {
         "type": "tip",
@@ -50082,23 +49504,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.3-Q2",
+        "mcqId": "RI.4.3-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.3-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.4.3-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.4.3-Q5",
-        "slide": 10
+        "slide": 8
       }
     ]
   },
@@ -50388,13 +49800,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.4-Q6",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.4.4-Q2",
-        "slide": 8
+        "slide": 7
       }
     ]
   },
@@ -50544,7 +49951,7 @@
         "slide": 4,
         "heading": "Let's Try One",
         "imageFile": "images/lessons/RI.4.5/example.png",
-        "imagePrompt": "",
+        "imagePrompt": "A friendly cat and a friendly dog sitting side by side, the cat curled up purring and the dog mid-bark, shown together to compare and contrast two pets. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, no text.",
         "steps": [
           {
             "sub": "a",
@@ -50605,7 +50012,8 @@
             "ttsScript": "Alike and different words show it's compare and contrast. You spotted the structure!",
             "audioRegenAt": "2026-06-10T20:49:37.049Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:46:25.760Z"
       },
       {
         "type": "tip",
@@ -50679,28 +50087,33 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.5-Q6",
+        "mcqId": "RI.4.5-Q5",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.5-Q7",
+        "mcqId": "RI.4.5-Q3",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.5-Q3",
+        "mcqId": "RI.4.5-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.5-Q4",
+        "mcqId": "RI.4.5-Q7",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.5-Q5",
+        "mcqId": "RI.4.5-Q10",
         "slide": 11
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.4.5-Q11",
+        "slide": 12
       }
     ]
   },
@@ -51523,7 +50936,7 @@
         "slide": 5,
         "heading": "Two Colors",
         "imageFile": "images/lessons/RI.4.8/S4.png",
-        "imagePrompt": "",
+        "imagePrompt": "Two highlighter markers (one yellow, one pink) coloring over two short stacked blank text lines on a paper card, the yellow line and pink line connected by a small linking arrow, bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, blue background, no letters or words.",
         "steps": [
           {
             "sub": "a",
@@ -51546,7 +50959,8 @@
             },
             "audioRegenAt": "2026-06-10T20:52:57.988Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-06-11T02:46:43.262Z"
       },
       {
         "type": "interactive",
@@ -51617,11 +51031,6 @@
         "type": "mcq",
         "mcqId": "RI.4.8-Q4",
         "slide": 11
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.4.8-Q5",
-        "slide": 12
       }
     ]
   },
@@ -51912,28 +51321,23 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.9-Q1",
+        "mcqId": "RI.4.9-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.9-Q2",
+        "mcqId": "RI.4.9-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.9-Q3",
+        "mcqId": "RI.4.9-Q4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.9-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.4.9-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -52198,28 +51602,23 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.10-Q1",
+        "mcqId": "RI.4.10-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.10-Q2",
+        "mcqId": "RI.4.10-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.10-Q3",
+        "mcqId": "RI.4.10-Q4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RI.4.10-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.4.10-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -53829,11 +53228,6 @@
         "type": "mcq",
         "mcqId": "L.4.4a-Q4",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.4a-Q6",
-        "slide": 8
       }
     ]
   },
@@ -54219,11 +53613,6 @@
         "type": "mcq",
         "mcqId": "L.4.4b-Q4",
         "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.4b-Q6",
-        "slide": 9
       }
     ]
   },
@@ -55162,11 +54551,6 @@
         "type": "mcq",
         "mcqId": "L.4.5a-Q5",
         "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.5a-Q6",
-        "slide": 7
       }
     ]
   },
@@ -55476,11 +54860,6 @@
         "type": "mcq",
         "mcqId": "L.4.5b-Q4",
         "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.5b-Q6",
-        "slide": 8
       }
     ]
   },
@@ -55740,18 +55119,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.4.5c-Q4",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.5c-Q6",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.4.5c-Q3",
-        "slide": 8
+        "slide": 6
       }
     ]
   },
@@ -56051,18 +55420,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.4.6-Q3",
+        "mcqId": "L.4.6-Q4",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "L.4.6-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.4.6-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -56697,28 +56061,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.3b-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.1.3b-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.3b-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.3b-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.3b-Q5",
-        "slide": 10
+        "slide": 6
       }
     ]
   },
@@ -57931,23 +57275,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.3f-Q2",
+        "mcqId": "RF.1.3f-Q4",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.3f-Q3",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.3f-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.1.3f-Q5",
-        "slide": 11
+        "slide": 9
       }
     ]
   },
@@ -58227,28 +57561,23 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.3g-Q1",
+        "mcqId": "RF.1.3g-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.3g-Q2",
+        "mcqId": "RF.1.3g-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.3g-Q3",
+        "mcqId": "RF.1.3g-Q4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.3g-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.1.3g-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -58561,23 +57890,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.4a-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.4a-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RF.1.4a-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RF.1.4a-Q5",
-        "slide": 10
+        "slide": 7
       }
     ]
   },
@@ -58959,16 +58273,6 @@
         "type": "mcq",
         "mcqId": "L.1.1-Q3",
         "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.1-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.1-Q5",
-        "slide": 11
       }
     ]
   },
@@ -59619,13 +58923,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.1-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.2.1-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -60236,11 +59535,6 @@
         "type": "mcq",
         "mcqId": "L.2.3-Q4",
         "slide": 10
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.2.3-Q5",
-        "slide": 11
       }
     ]
   },
@@ -61264,13 +60558,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.3.3-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.3.3-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -61550,28 +60839,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.4.1-Q1",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.1-Q2",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.1-Q3",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.4.1-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.1-Q5",
-        "slide": 12
+        "slide": 8
       }
     ]
   },
@@ -61871,13 +61140,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.4.2-Q4",
-        "slide": 10
-      },
-      {
-        "type": "mcq",
         "mcqId": "L.4.2-Q5",
-        "slide": 11
+        "slide": 10
       }
     ]
   },
@@ -62472,18 +61736,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.10-Q3",
+        "mcqId": "RL.K.10-Q4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RL.K.10-Q4",
-        "slide": 11
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.K.10-Q5",
-        "slide": 12
+        "slide": 11
       }
     ]
   },
@@ -62781,11 +62040,6 @@
         "type": "mcq",
         "mcqId": "RI.K.10-Q4",
         "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.K.10-Q5",
-        "slide": 10
       }
     ]
   },
@@ -63070,28 +62324,8 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.10-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.1.10-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.1.10-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
         "mcqId": "RL.1.10-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.1.10-Q5",
-        "slide": 10
+        "slide": 6
       }
     ]
   },
@@ -63369,28 +62603,13 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.10-Q1",
+        "mcqId": "RI.1.10-Q2",
         "slide": 6
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.10-Q2",
-        "slide": 7
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.1.10-Q3",
-        "slide": 8
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.1.10-Q4",
-        "slide": 9
-      },
-      {
-        "type": "mcq",
         "mcqId": "RI.1.10-Q5",
-        "slide": 10
+        "slide": 7
       }
     ]
   }
