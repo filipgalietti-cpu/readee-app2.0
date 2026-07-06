@@ -13614,8 +13614,98 @@
         "imagePrompt": "A cheerful cartoon nonfiction fact book open on a table, with friendly diagrams of planets, animals, and a tiny dinosaur illustration, a small magnifying glass on the page. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RL.1.5/example.png",
+        "imagePrompt": "A friendly, smiling cartoon pig, wearing a pilot's hat and goggles, is happily flying a bright red cartoon jet plane through a solid sky-blue background. The pig is visible in the cockpit, holding the plane's controls, with a joyful expression. The jet plane has simple, rounded features and is soaring upwards, leaving a small white contrail behind it. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try",
+            "audioFile": "audio/lessons/RL.1.5/ex0.mp3",
+            "ttsScript": "Let's try one together! Here is a book.",
+            "audioRegenAt": "2026-07-06T04:02:52.356Z"
+          },
+          {
+            "sub": "The book",
+            "audioFile": "audio/lessons/RL.1.5/ex1.mp3",
+            "ttsScript": "This book says: a pig flew a jet plane.",
+            "displayText": "A pig flew a jet plane.",
+            "highlightWord": {
+              "word": "pig",
+              "delay": 1780
+            },
+            "audioRegenAt": "2026-07-06T04:02:52.013Z"
+          },
+          {
+            "sub": "Could it happen?",
+            "audioFile": "audio/lessons/RL.1.5/ex2.mp3",
+            "ttsScript": "Could this really happen? No way!",
+            "displayText": "No way!",
+            "displayParts": [
+              {
+                "text": "Could this happen?",
+                "delay": 0
+              },
+              {
+                "text": "No way!",
+                "delay": 3120
+              }
+            ],
+            "highlightWord": {
+              "word": "No",
+              "delay": 2300
+            },
+            "audioRegenAt": "2026-07-06T04:02:52.011Z"
+          },
+          {
+            "sub": "Real or made-up?",
+            "audioFile": "audio/lessons/RL.1.5/ex3.mp3",
+            "ttsScript": "Is it real or made up? Made up!",
+            "displayText": "Made up!",
+            "displayParts": [
+              {
+                "text": "Real or made-up?",
+                "delay": 0
+              },
+              {
+                "text": "Made up!",
+                "delay": 3560
+              }
+            ],
+            "highlightWord": {
+              "word": "Made",
+              "delay": 1620
+            },
+            "audioRegenAt": "2026-07-06T04:02:52.119Z"
+          },
+          {
+            "sub": "Which book?",
+            "audioFile": "audio/lessons/RL.1.5/ex4.mp3",
+            "ttsScript": "So which kind of book is it? A story book! You told them apart!",
+            "displayText": "A story book!",
+            "displayParts": [
+              {
+                "text": "Which kind of book?",
+                "delay": 0
+              },
+              {
+                "text": "A story book!",
+                "delay": 3920
+              }
+            ],
+            "highlightWord": {
+              "word": "story",
+              "delay": 3320
+            },
+            "audioRegenAt": "2026-07-06T04:02:56.149Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:50:22.327Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -13662,7 +13752,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -13693,12 +13783,12 @@
       {
         "type": "mcq",
         "mcqId": "RL.1.5-Q3",
-        "slide": 6
+        "slide": 7
       },
       {
         "type": "mcq",
         "mcqId": "RL.1.5-Q4",
-        "slide": 7
+        "slide": 8
       }
     ]
   },
@@ -13901,8 +13991,79 @@
         "imageRegenAt": "2026-06-03T00:26:28.123Z"
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One!",
+        "imageFile": "images/lessons/RL.1.6/example.png",
+        "imagePrompt": "A happy young girl with brown pigtails sits at a small wooden table, holding a yellow crayon in her hand. She is looking down at a white piece of paper on the table, where she has just finished drawing a large, smiling, bright yellow sun. The girl has a pleased expression on her face. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/RL.1.6/ex0.mp3",
+            "ttsScript": "Okay, let's try one together! Here's a little story.",
+            "audioRegenAt": "2026-07-06T04:02:56.090Z"
+          },
+          {
+            "sub": "A story",
+            "audioFile": "audio/lessons/RL.1.6/ex1.mp3",
+            "ttsScript": "Here is the story. Mia liked to draw. She made a big yellow sun.",
+            "displayText": "Mia liked to draw. She made a big yellow sun.",
+            "audioRegenAt": "2026-07-06T04:02:59.364Z"
+          },
+          {
+            "sub": "Clue word",
+            "audioFile": "audio/lessons/RL.1.6/ex2.mp3",
+            "ttsScript": "What word gives us the clue? She!",
+            "displayText": "What's the clue word? She!",
+            "displayParts": [
+              {
+                "text": "What's the clue word?",
+                "delay": 0
+              },
+              {
+                "text": "She!",
+                "delay": 5120
+              }
+            ],
+            "highlightWord": {
+              "word": "She",
+              "delay": 4300
+            },
+            "audioRegenAt": "2026-07-06T04:02:56.474Z"
+          },
+          {
+            "sub": "Who tells it",
+            "audioFile": "audio/lessons/RL.1.6/ex3.mp3",
+            "ttsScript": "So who tells this story? A narrator does!",
+            "displayText": "Who tells it? A narrator!",
+            "displayParts": [
+              {
+                "text": "Who tells it?",
+                "delay": 0
+              },
+              {
+                "text": "A narrator!",
+                "delay": 3440
+              }
+            ],
+            "highlightWord": {
+              "word": "narrator",
+              "delay": 3380
+            },
+            "audioRegenAt": "2026-07-06T04:02:59.488Z"
+          },
+          {
+            "sub": "You did it",
+            "audioFile": "audio/lessons/RL.1.6/ex4.mp3",
+            "ttsScript": "A voice outside the story tells us about Mia. You did it!",
+            "audioRegenAt": "2026-07-06T04:03:00.752Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:50:32.251Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -13949,7 +14110,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -13980,22 +14141,22 @@
       {
         "type": "mcq",
         "mcqId": "RL.1.6-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.1.6-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.6-Q3",
+        "mcqId": "RL.1.6-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.6-Q5",
+        "mcqId": "RL.1.6-Q3",
         "slide": 9
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RL.1.6-Q5",
+        "slide": 10
       }
     ]
   },
@@ -14196,8 +14357,118 @@
         "imagePrompt": "A cozy cartoon winter scene with kids in bright puffy coats and hats building a snowman on soft white snow, pine trees nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RL.1.7/example.png",
+        "imagePrompt": "A young cartoon boy, with natural proportions, stands with his head drooped down, looking unhappy. He holds an open umbrella over his head as raindrops fall all around him. Solid light gray background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try",
+            "audioFile": "audio/lessons/RL.1.7/ex0.mp3",
+            "ttsScript": "Let's try one together! Here is a picture to read.",
+            "highlightWord": {
+              "word": "picture",
+              "delay": 3340
+            },
+            "audioRegenAt": "2026-07-06T04:03:30.722Z"
+          },
+          {
+            "sub": "The picture",
+            "audioFile": "audio/lessons/RL.1.7/ex1.mp3",
+            "ttsScript": "A boy stands in the rain, holding an umbrella. His head hangs down.",
+            "displayText": "A boy stands in the rain, holding an umbrella.",
+            "displayParts": [
+              {
+                "text": "A boy stands in the rain, holding an umbrella.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "rain",
+              "delay": 2060
+            },
+            "audioRegenAt": "2026-07-06T04:03:04.100Z"
+          },
+          {
+            "sub": "Where?",
+            "audioFile": "audio/lessons/RL.1.7/ex2.mp3",
+            "ttsScript": "Where is the boy? In the rain!",
+            "displayText": "In the rain!",
+            "displayParts": [
+              {
+                "text": "Where is he?",
+                "delay": 0
+              },
+              {
+                "text": "In the rain!",
+                "delay": 4060
+              }
+            ],
+            "highlightWord": {
+              "word": "rain",
+              "delay": 3960
+            },
+            "audioRegenAt": "2026-07-06T04:03:03.012Z"
+          },
+          {
+            "sub": "Feeling",
+            "audioFile": "audio/lessons/RL.1.7/ex3.mp3",
+            "ttsScript": "How does he feel? Sad!",
+            "displayText": "Sad!",
+            "displayParts": [
+              {
+                "text": "How does he feel?",
+                "delay": 0
+              },
+              {
+                "text": "Sad!",
+                "delay": 3380
+              }
+            ],
+            "highlightWord": {
+              "word": "Sad",
+              "delay": 2560
+            },
+            "audioRegenAt": "2026-07-06T04:03:13.178Z"
+          },
+          {
+            "sub": "The clue",
+            "audioFile": "audio/lessons/RL.1.7/ex4.mp3",
+            "ttsScript": "What told us? His droopy head!",
+            "displayText": "His droopy head!",
+            "displayParts": [
+              {
+                "text": "What told us?",
+                "delay": 0
+              },
+              {
+                "text": "His droopy head!",
+                "delay": 2080
+              }
+            ],
+            "highlightWord": {
+              "word": "head",
+              "delay": 3040
+            },
+            "audioRegenAt": "2026-07-06T04:03:16.030Z"
+          },
+          {
+            "sub": "You did it",
+            "audioFile": "audio/lessons/RL.1.7/ex5.mp3",
+            "ttsScript": "The picture showed us his feeling. You used the clues!",
+            "highlightWord": {
+              "word": "clues",
+              "delay": 4480
+            },
+            "audioRegenAt": "2026-07-06T04:03:16.966Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:50:21.685Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -14257,7 +14528,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -14288,27 +14559,27 @@
       {
         "type": "mcq",
         "mcqId": "RL.1.7-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.1.7-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.7-Q3",
+        "mcqId": "RL.1.7-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.7-Q4",
+        "mcqId": "RL.1.7-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.7-Q5",
+        "mcqId": "RL.1.7-Q4",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RL.1.7-Q5",
+        "slide": 11
       }
     ]
   },
@@ -14536,8 +14807,79 @@
         "imagePrompt": "A cheerful cartoon girl with curly black hair climbing a small mountain, smiling bravely, next to a cheerful cartoon boy with red hair swimming across a blue lake, smiling. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RL.1.9/example.png",
+        "imagePrompt": "A cheerful yellow cartoon duck with orange feet and beak is joyfully splashing in a shallow puddle, with water droplets flying up around it. Gentle rain falls from the sky. Nearby, a green cartoon frog with big eyes is peeking out from under a large, protective green leaf, looking a little shy or seeking shelter from the rain. The rain is visible falling across the entire scene. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/RL.1.9/ex0.mp3",
+            "ttsScript": "Let's try one together! Here are two little stories.",
+            "audioRegenAt": "2026-07-06T04:03:16.509Z"
+          },
+          {
+            "sub": "Two stories",
+            "audioFile": "audio/lessons/RL.1.9/ex1.mp3",
+            "ttsScript": "A duck plays in the rain. A frog hides from the rain.",
+            "displayText": "A duck plays in the rain. A frog hides from the rain.",
+            "audioRegenAt": "2026-07-06T04:03:23.488Z"
+          },
+          {
+            "sub": "Same?",
+            "audioFile": "audio/lessons/RL.1.9/ex2.mp3",
+            "ttsScript": "What is the same? Both are about the rain!",
+            "displayText": "Both about rain!",
+            "displayParts": [
+              {
+                "text": "What is the same?",
+                "delay": 0
+              },
+              {
+                "text": "Both about rain!",
+                "delay": 2940
+              }
+            ],
+            "highlightWord": {
+              "word": "rain",
+              "delay": 3780
+            },
+            "audioRegenAt": "2026-07-06T04:03:29.466Z"
+          },
+          {
+            "sub": "Different?",
+            "audioFile": "audio/lessons/RL.1.9/ex3.mp3",
+            "ttsScript": "What is different? One plays, and one hides!",
+            "displayText": "One plays, one hides!",
+            "displayParts": [
+              {
+                "text": "What is different?",
+                "delay": 0
+              },
+              {
+                "text": "One plays, one hides!",
+                "delay": 3120
+              }
+            ],
+            "highlightWord": {
+              "word": "plays",
+              "delay": 2560
+            },
+            "audioRegenAt": "2026-07-06T04:03:24.058Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/RL.1.9/ex4.mp3",
+            "ttsScript": "So both stories share the rain, but the animals act in different ways. You did it!",
+            "audioRegenAt": "2026-07-06T04:03:28.647Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:50:38.178Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -14584,7 +14926,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -14615,27 +14957,27 @@
       {
         "type": "mcq",
         "mcqId": "RL.1.9-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.1.9-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.9-Q3",
+        "mcqId": "RL.1.9-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.9-Q4",
+        "mcqId": "RL.1.9-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.1.9-Q5",
+        "mcqId": "RL.1.9-Q4",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RL.1.9-Q5",
+        "slide": 11
       }
     ]
   },
@@ -16059,8 +16401,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.1.5/example.png",
+        "imagePrompt": "A diverse K-4 child, with a friendly and engaged expression, is sitting and looking at an open, large, colorful non-fiction book. The left page of the book displays a vertical list of simple, distinct cartoon animal icons, including a prominent happy cartoon frog icon. The child's left index finger points directly at the happy cartoon frog icon in the list. The right page of the book features a large, detailed, friendly cartoon illustration of a frog. A clear line extends from one of the frog's hind legs to an adjacent blank rectangular box. The child's right index finger points directly at this blank rectangular box. Solid light yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -16124,7 +16466,8 @@
             },
             "audioRegenAt": "2026-06-10T20:05:27.622Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T04:51:20.004Z"
       },
       {
         "type": "tip",
@@ -16513,8 +16856,89 @@
         "imagePrompt": "A cheerful cartoon giraffe with bright yellow fur and brown spots, smiling with a long neck reaching for a leaf. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RI.1.6/example.png",
+        "imagePrompt": "A friendly 2D cartoon illustration of an open book. The left page of the book shows a vibrant green frog happily leaping a long distance from one lily pad to another over a small pond. The right page of the book shows a close-up of a vibrant green frog sitting on a lily pad, its smooth green skin clearly visible and emphasized. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/RI.1.6/ex0.mp3",
+            "ttsScript": "Let's try one together! Here is a page from a fact book about frogs.",
+            "audioRegenAt": "2026-07-06T04:16:19.298Z"
+          },
+          {
+            "sub": "The page",
+            "audioFile": "audio/lessons/RI.1.6/ex1.mp3",
+            "ttsScript": "The words say a frog can jump far. And the picture shows its green skin.",
+            "displayText": "A frog can jump far.",
+            "displayParts": [
+              {
+                "text": "A frog can jump far.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "far",
+              "delay": 3080
+            },
+            "audioRegenAt": "2026-07-06T04:16:19.384Z"
+          },
+          {
+            "sub": "Question 1",
+            "audioFile": "audio/lessons/RI.1.6/ex2.mp3",
+            "ttsScript": "What tells us the fact? The words!",
+            "displayText": "The words!",
+            "displayParts": [
+              {
+                "text": "What tells the fact?",
+                "delay": 0
+              },
+              {
+                "text": "The words!",
+                "delay": 3440
+              }
+            ],
+            "highlightWord": {
+              "word": "words",
+              "delay": 3040
+            },
+            "audioRegenAt": "2026-07-06T04:16:18.578Z"
+          },
+          {
+            "sub": "Question 2",
+            "audioFile": "audio/lessons/RI.1.6/ex3.mp3",
+            "ttsScript": "What shows the green color? The picture!",
+            "displayText": "The picture!",
+            "displayParts": [
+              {
+                "text": "What shows the color?",
+                "delay": 0
+              },
+              {
+                "text": "The picture!",
+                "delay": 4580
+              }
+            ],
+            "highlightWord": {
+              "word": "picture",
+              "delay": 4280
+            },
+            "audioRegenAt": "2026-07-06T04:16:18.619Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/RI.1.6/ex4.mp3",
+            "ttsScript": "So words tell facts, and pictures show how things look. You did it!",
+            "audioRegenAt": "2026-07-06T04:16:23.079Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:50:50.461Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -16580,7 +17004,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -16611,27 +17035,27 @@
       {
         "type": "mcq",
         "mcqId": "RI.1.6-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.1.6-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.6-Q3",
+        "mcqId": "RI.1.6-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.6-Q4",
+        "mcqId": "RI.1.6-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.1.6-Q5",
+        "mcqId": "RI.1.6-Q4",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.1.6-Q5",
+        "slide": 11
       }
     ]
   },
@@ -20372,8 +20796,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.1.4b/example.png",
+        "imagePrompt": "A friendly cartoon child with a paint-splattered apron stands happily in front of an easel, actively painting a colorful picture of a smiling sun on a canvas. The child holds a paintbrush in one hand and a paint palette in the other. A few tubes of paint are visible on a small table next to the easel. Solid light blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -20433,7 +20857,8 @@
             },
             "audioRegenAt": "2026-06-10T20:06:43.108Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T04:50:55.897Z"
       },
       {
         "type": "tip",
@@ -22335,8 +22760,101 @@
         "imagePrompt": "A cheerful cartoon child smiling softly on the left and the same child jumping in the air with arms wide and a huge grin on the right. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/L.1.5d/example.png",
+        "imagePrompt": "Two friendly, diverse children stand side-by-side on a solid sky-blue background. The child on the left wears a light blue jacket and a beanie, hugging themselves slightly with a small, gentle shiver. A few small, individual snowflakes drift around them. The child on the right is heavily bundled in a thick red winter coat, a warm hat, scarf, and mittens, visibly shivering intensely with chattering teeth and a larger puff of breath. Many large snowflakes fall around this child, with a small snowdrift forming at their feet and a small icicle hanging nearby. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/L.1.5d/ex0.mp3",
+            "ttsScript": "Let's try one together! Here are two words.",
+            "audioRegenAt": "2026-07-06T04:04:20.772Z"
+          },
+          {
+            "sub": "Two words",
+            "audioFile": "audio/lessons/L.1.5d/ex1.mp3",
+            "ttsScript": "Here they are: cold and freezing.",
+            "displayText": "cold ... freezing",
+            "displayParts": [
+              {
+                "text": "cold",
+                "delay": 0
+              },
+              {
+                "text": "freezing",
+                "delay": 3560
+              }
+            ],
+            "audioRegenAt": "2026-07-06T04:04:13.168Z"
+          },
+          {
+            "sub": "Which is mild?",
+            "audioFile": "audio/lessons/L.1.5d/ex2.mp3",
+            "ttsScript": "Which one is a little cold? Cold!",
+            "displayParts": [
+              {
+                "text": "Which is mild?",
+                "delay": 0
+              },
+              {
+                "text": "Cold!",
+                "delay": 2620
+              }
+            ],
+            "highlightWord": {
+              "word": "Cold",
+              "delay": 1800
+            },
+            "audioRegenAt": "2026-07-06T04:04:17.705Z"
+          },
+          {
+            "sub": "Which is stronger?",
+            "audioFile": "audio/lessons/L.1.5d/ex3.mp3",
+            "ttsScript": "And which one is stronger? Freezing!",
+            "displayParts": [
+              {
+                "text": "Which is stronger?",
+                "delay": 0
+              },
+              {
+                "text": "Freezing!",
+                "delay": 4420
+              }
+            ],
+            "highlightWord": {
+              "word": "Freezing",
+              "delay": 3600
+            },
+            "audioRegenAt": "2026-07-06T04:04:16.577Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/L.1.5d/ex4.mp3",
+            "ttsScript": "Freezing paints a stronger picture. You picked the right shade!",
+            "displayParts": [
+              {
+                "text": "Strong shade:",
+                "delay": 0
+              },
+              {
+                "text": "Freezing!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "Freezing",
+              "delay": 0
+            },
+            "audioRegenAt": "2026-07-06T04:04:18.825Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:51:13.653Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -22395,7 +22913,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -22426,17 +22944,17 @@
       {
         "type": "mcq",
         "mcqId": "L.1.5d-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.5d-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.5d-Q4",
+        "mcqId": "L.1.5d-Q3",
         "slide": 8
+      },
+      {
+        "type": "mcq",
+        "mcqId": "L.1.5d-Q4",
+        "slide": 9
       }
     ]
   },
@@ -24144,8 +24662,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.2.5/example.png",
+        "imagePrompt": "A cheerful cartoon child named Sam, with a friendly smile and wearing blue overalls, is gently holding the collar of a playful white cartoon goat with small horns and a happy expression. The goat looks back at Sam with a slight tilt of its head. They are standing in a vibrant green field on a sunny farm. In the background, a simple red barn with a white trim and a wooden fence are visible under a solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -24228,7 +24746,8 @@
             },
             "audioRegenAt": "2026-06-10T20:17:53.023Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T04:51:15.378Z"
       },
       {
         "type": "tip",
@@ -24823,8 +25342,91 @@
         "imagePrompt": "A cheerful cartoon child sitting on a school bus with a big proud smile on their first day. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RL.2.7/example.png",
+        "imagePrompt": "A happy cartoon child, a boy with short brown hair, is running joyfully on a sandy beach towards gentle ocean waves. A bright yellow sun shines in the sky. The boy is smiling widely, arms outstretched as if about to play. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Ready?",
+            "audioFile": "audio/lessons/RL.2.7/ex0.mp3",
+            "ttsScript": "Let's try one together! Here's a picture.",
+            "audioRegenAt": "2026-07-06T04:04:19.822Z"
+          },
+          {
+            "sub": "The words",
+            "audioFile": "audio/lessons/RL.2.7/ex1.mp3",
+            "ttsScript": "The words say: Sam went out to play.",
+            "displayText": "Sam went out to play.",
+            "audioRegenAt": "2026-07-06T04:04:21.453Z"
+          },
+          {
+            "sub": "Look!",
+            "audioFile": "audio/lessons/RL.2.7/ex2.mp3",
+            "ttsScript": "What's in the picture? Sun and sand!",
+            "displayParts": [
+              {
+                "text": "What's in the picture?",
+                "delay": 0
+              },
+              {
+                "text": "Sun and sand!",
+                "delay": 3120
+              }
+            ],
+            "highlightWord": {
+              "word": "sand",
+              "delay": 3400
+            },
+            "audioRegenAt": "2026-07-06T04:04:22.099Z"
+          },
+          {
+            "sub": "Where?",
+            "audioFile": "audio/lessons/RL.2.7/ex3.mp3",
+            "ttsScript": "So where is Sam? The beach!",
+            "displayParts": [
+              {
+                "text": "Where is Sam?",
+                "delay": 0
+              },
+              {
+                "text": "The beach!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "beach",
+              "delay": 2000
+            },
+            "audioRegenAt": "2026-07-06T04:04:24.734Z"
+          },
+          {
+            "sub": "Feel?",
+            "audioFile": "audio/lessons/RL.2.7/ex4.mp3",
+            "ttsScript": "And how does Sam feel? Happy! You used the picture to learn more!",
+            "displayParts": [
+              {
+                "text": "How does Sam feel?",
+                "delay": 0
+              },
+              {
+                "text": "Happy!",
+                "delay": 3740
+              }
+            ],
+            "highlightWord": {
+              "word": "Happy",
+              "delay": 2940
+            },
+            "audioRegenAt": "2026-07-06T04:04:25.693Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:51:34.159Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -24871,7 +25473,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -24902,27 +25504,27 @@
       {
         "type": "mcq",
         "mcqId": "RL.2.7-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RL.2.7-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RL.2.7-Q3",
+        "mcqId": "RL.2.7-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RL.2.7-Q4",
+        "mcqId": "RL.2.7-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RL.2.7-Q5",
+        "mcqId": "RL.2.7-Q4",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RL.2.7-Q5",
+        "slide": 11
       }
     ]
   },
@@ -27071,8 +27673,96 @@
         "imageRegenAt": "2026-06-03T00:38:12.684Z"
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RI.2.5/example.png",
+        "imagePrompt": "A friendly cartoon ant, smiling, diligently carrying a large bread crumb on its back. This ant illustration is centered on the top half of the right page of an open, colorful picture book. Directly below the ant illustration, on the bottom half of the same page, is a clean, empty, light-colored rectangular space, clearly defined by a thin outline, representing where a caption would be. The left page of the open book is blank. The open book rests on a solid green table. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Here's a page",
+            "audioFile": "audio/lessons/RI.2.5/ex0.mp3",
+            "ttsScript": "Let's try one together! Here's a page from a bug book.",
+            "audioRegenAt": "2026-07-06T04:04:28.604Z"
+          },
+          {
+            "sub": "The picture",
+            "audioFile": "audio/lessons/RI.2.5/ex1.mp3",
+            "ttsScript": "Under a picture, it says: This ant carries food.",
+            "displayText": "This ant carries food.",
+            "displayParts": [
+              {
+                "text": "This ant carries food.",
+                "delay": 0
+              }
+            ],
+            "audioRegenAt": "2026-07-06T04:04:35.562Z"
+          },
+          {
+            "sub": "What part?",
+            "audioFile": "audio/lessons/RI.2.5/ex2.mp3",
+            "ttsScript": "What is this part called? A caption!",
+            "displayText": "A caption!",
+            "displayParts": [
+              {
+                "text": "What is this part?",
+                "delay": 0
+              },
+              {
+                "text": "A caption!",
+                "delay": 3680
+              }
+            ],
+            "highlightWord": {
+              "word": "caption",
+              "delay": 3000
+            },
+            "audioRegenAt": "2026-07-06T04:04:31.846Z"
+          },
+          {
+            "sub": "What's its job?",
+            "audioFile": "audio/lessons/RI.2.5/ex3.mp3",
+            "ttsScript": "What does the caption tell about? The picture!",
+            "displayText": "The picture!",
+            "displayParts": [
+              {
+                "text": "What does it tell?",
+                "delay": 0
+              },
+              {
+                "text": "The picture!",
+                "delay": 3740
+              }
+            ],
+            "highlightWord": {
+              "word": "picture",
+              "delay": 3540
+            },
+            "audioRegenAt": "2026-07-06T04:04:33.203Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/RI.2.5/ex4.mp3",
+            "ttsScript": "So a caption explains a picture. You found it fast!",
+            "displayText": "Found it fast!",
+            "displayParts": [
+              {
+                "text": "Found it fast!",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "fast",
+              "delay": 5140
+            },
+            "audioRegenAt": "2026-07-06T04:04:32.736Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:51:39.933Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -27125,7 +27815,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -27156,22 +27846,22 @@
       {
         "type": "mcq",
         "mcqId": "RI.2.5-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.2.5-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.5-Q3",
+        "mcqId": "RI.2.5-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.5-Q4",
+        "mcqId": "RI.2.5-Q3",
         "slide": 9
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.2.5-Q4",
+        "slide": 10
       }
     ]
   },
@@ -27343,8 +28033,77 @@
         "imagePrompt": "A cheerful cartoon theater mask next to a tiny persuasive megaphone. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RI.2.6/example.png",
+        "imagePrompt": "A happy, smiling young child with a friendly face, wearing colorful clothes, is kneeling on the ground next to a small garden patch. The child holds a small green watering can, gently pouring water onto a tiny green sprout emerging from the brown soil. A small red hand shovel is stuck in the soil nearby, and a few small brown seeds are visible on the soil surface next to the sprout. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try",
+            "audioFile": "audio/lessons/RI.2.6/ex0.mp3",
+            "ttsScript": "Okay, let's try one together! Here's a short text.",
+            "audioRegenAt": "2026-07-06T04:16:22.195Z"
+          },
+          {
+            "sub": "The text",
+            "audioFile": "audio/lessons/RI.2.6/ex1.mp3",
+            "ttsScript": "First dig a hole. Add a seed. Give it water.",
+            "displayText": "First dig a hole. Add a seed. Give it water.",
+            "audioRegenAt": "2026-07-06T04:16:23.843Z"
+          },
+          {
+            "sub": "What?",
+            "audioFile": "audio/lessons/RI.2.6/ex2.mp3",
+            "ttsScript": "What does this text give us? Steps to plant!",
+            "displayParts": [
+              {
+                "text": "What does it give?",
+                "delay": 0
+              },
+              {
+                "text": "Steps to plant!",
+                "delay": 5960
+              }
+            ],
+            "highlightWord": {
+              "word": "Steps",
+              "delay": 5160
+            },
+            "audioRegenAt": "2026-07-06T04:16:23.542Z"
+          },
+          {
+            "sub": "Why?",
+            "audioFile": "audio/lessons/RI.2.6/ex3.mp3",
+            "ttsScript": "So why did the author write it? To teach us!",
+            "displayParts": [
+              {
+                "text": "Why write this?",
+                "delay": 0
+              },
+              {
+                "text": "To teach us!",
+                "delay": 4140
+              }
+            ],
+            "highlightWord": {
+              "word": "teach",
+              "delay": 3660
+            },
+            "audioRegenAt": "2026-07-06T04:16:25.734Z"
+          },
+          {
+            "sub": "You found it",
+            "audioFile": "audio/lessons/RI.2.6/ex4.mp3",
+            "ttsScript": "The author's purpose is to teach. You found it!",
+            "audioRegenAt": "2026-07-06T04:16:27.897Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:51:40.639Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -27391,7 +28150,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -27422,27 +28181,27 @@
       {
         "type": "mcq",
         "mcqId": "RI.2.6-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.2.6-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.6-Q3",
+        "mcqId": "RI.2.6-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.6-Q4",
+        "mcqId": "RI.2.6-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.6-Q5",
+        "mcqId": "RI.2.6-Q4",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.2.6-Q5",
+        "slide": 11
       }
     ]
   },
@@ -27642,8 +28401,110 @@
         "imagePrompt": "A cheerful cartoon world map with cute country shapes and a photo of an animal to the side. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RI.2.7/example.png",
+        "imagePrompt": "A friendly K-4 child, perhaps a girl with brown pigtails, sits comfortably, holding an open, colorful picture book. On the left page of the book, a cute cartoon bee flies happily near a bright yellow flower. On the right page, there is a large, detailed, close-up illustration of a bee's transparent, veined wings, depicted in mid-flight motion, clearly showing their structure. The child looks intently at the illustration of the wings, with one finger gently resting near the page. Solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try",
+            "audioFile": "audio/lessons/RI.2.7/ex0.mp3",
+            "ttsScript": "Okay, let's try one together! Here's a page from a fact book about bees.",
+            "audioRegenAt": "2026-07-06T04:05:22.327Z"
+          },
+          {
+            "sub": "The page",
+            "audioFile": "audio/lessons/RI.2.7/ex1.mp3",
+            "ttsScript": "This book is all about bees. Look, the picture shows a bee's wings up close.",
+            "displayText": "A book about bees. The picture shows a bee's wings.",
+            "displayParts": [
+              {
+                "text": "A book about bees. The picture shows a bee's wings.",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "picture",
+              "delay": 4900
+            },
+            "audioRegenAt": "2026-07-06T04:05:22.464Z"
+          },
+          {
+            "sub": "What?",
+            "audioFile": "audio/lessons/RI.2.7/ex2.mp3",
+            "ttsScript": "What does the picture show us? A bee's wings!",
+            "displayText": "What does picture show?",
+            "displayParts": [
+              {
+                "text": "What does picture show?",
+                "delay": 0
+              },
+              {
+                "text": "A bee's wings!",
+                "delay": 4080
+              }
+            ],
+            "highlightWord": {
+              "word": "wings",
+              "delay": 4040
+            },
+            "audioRegenAt": "2026-07-06T04:05:21.976Z"
+          },
+          {
+            "sub": "How?",
+            "audioFile": "audio/lessons/RI.2.7/ex3.mp3",
+            "ttsScript": "How does that picture help? Now we can see how bees fly!",
+            "displayText": "How does it help?",
+            "displayParts": [
+              {
+                "text": "How does it help?",
+                "delay": 0
+              },
+              {
+                "text": "See how bees fly!",
+                "delay": 4080
+              }
+            ],
+            "highlightWord": {
+              "word": "fly",
+              "delay": 4200
+            },
+            "audioRegenAt": "2026-07-06T04:05:22.360Z"
+          },
+          {
+            "sub": "So?",
+            "audioFile": "audio/lessons/RI.2.7/ex4.mp3",
+            "ttsScript": "So pictures help us do what? Understand the facts!",
+            "displayText": "So pictures help us?",
+            "displayParts": [
+              {
+                "text": "So pictures help us?",
+                "delay": 0
+              },
+              {
+                "text": "Understand the facts!",
+                "delay": 4800
+              }
+            ],
+            "highlightWord": {
+              "word": "Understand",
+              "delay": 4000
+            },
+            "audioRegenAt": "2026-07-06T04:05:30.504Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/RI.2.7/ex5.mp3",
+            "ttsScript": "Yes! The picture showed what the words could not. You used the picture to understand the facts!",
+            "audioRegenAt": "2026-07-06T04:05:27.674Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:51:55.681Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -27685,7 +28546,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Match It Up!",
         "imageFile": "",
         "imagePrompt": "",
@@ -27725,22 +28586,22 @@
       {
         "type": "mcq",
         "mcqId": "RI.2.7-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.2.7-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.7-Q3",
+        "mcqId": "RI.2.7-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.2.7-Q4",
+        "mcqId": "RI.2.7-Q3",
         "slide": 9
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.2.7-Q4",
+        "slide": 10
       }
     ]
   },
@@ -28150,8 +29011,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.2.9/example.png",
+        "imagePrompt": "A cheerful K-4 child with a friendly expression is sitting on a solid light-yellow floor, looking at two open picture books. The books are positioned side-by-side in front of the child. The book on the left has a bright green cover. Floating above this open book is a happy cartoon frog, mid-air, with its long tongue extended to catch a small, buzzing fly. The book on the right has a bright blue cover. Floating above this open book is another happy cartoon frog, submerged in clear blue water, with a cluster of small, dark frog eggs floating nearby. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -28226,7 +29087,8 @@
             },
             "audioRegenAt": "2026-06-10T20:22:31.058Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T04:52:15.564Z"
       },
       {
         "type": "tip",
@@ -33497,8 +34359,83 @@
         "imagePrompt": "A cheerful cartoon sunflower next to a smiling toothbrush. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/L.2.4d/example.png",
+        "imagePrompt": "On a solid sky-blue background, a friendly, smiling yellow cartoon star is positioned to the left. To its right, a friendly, smiling blue cartoon fish swims happily. Further to the right, a friendly, smiling orange cartoon starfish is depicted, clearly resembling a star-shaped fish. All elements are cheerful and clearly separated to show individual components and the combined form. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/L.2.4d/ex0.mp3",
+            "ttsScript": "Let's try one together. Here's a compound word.",
+            "audioRegenAt": "2026-07-06T04:05:26.171Z"
+          },
+          {
+            "sub": "The word",
+            "audioFile": "audio/lessons/L.2.4d/ex1.mp3",
+            "ttsScript": "Here is the word: starfish.",
+            "displayText": "starfish",
+            "highlightWord": {
+              "word": "starfish",
+              "delay": 1560
+            },
+            "audioRegenAt": "2026-07-06T04:05:25.191Z"
+          },
+          {
+            "sub": "Two words",
+            "audioFile": "audio/lessons/L.2.4d/ex2.mp3",
+            "ttsScript": "What two words make it up? Star and fish!",
+            "displayText": "What two words? Star and fish!",
+            "displayParts": [
+              {
+                "text": "What two words?",
+                "delay": 0
+              },
+              {
+                "text": "Star and fish!",
+                "delay": 3740
+              }
+            ],
+            "highlightWord": {
+              "word": "fish",
+              "delay": 4480
+            },
+            "audioRegenAt": "2026-07-06T04:05:28.800Z"
+          },
+          {
+            "sub": "Meaning",
+            "audioFile": "audio/lessons/L.2.4d/ex3.mp3",
+            "ttsScript": "What does it mean? A fish shaped like a star!",
+            "displayText": "What does it mean? A fish like a star!",
+            "displayParts": [
+              {
+                "text": "What does it mean?",
+                "delay": 0
+              },
+              {
+                "text": "A fish like a star!",
+                "delay": 2640
+              }
+            ],
+            "highlightWord": {
+              "word": "star",
+              "delay": 3720
+            },
+            "audioRegenAt": "2026-07-06T04:05:30.058Z"
+          },
+          {
+            "sub": "You did it",
+            "audioFile": "audio/lessons/L.2.4d/ex4.mp3",
+            "ttsScript": "So starfish means a fish shaped like a star. You split it apart!",
+            "audioRegenAt": "2026-07-06T04:05:32.473Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:51:54.995Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -33557,7 +34494,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Compound Word Match",
         "imageFile": "",
         "imagePrompt": "",
@@ -33597,27 +34534,27 @@
       {
         "type": "mcq",
         "mcqId": "L.2.4d-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.2.4d-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.4d-Q3",
+        "mcqId": "L.2.4d-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.4d-Q4",
+        "mcqId": "L.2.4d-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.4d-Q5",
+        "mcqId": "L.2.4d-Q4",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "L.2.4d-Q5",
+        "slide": 11
       }
     ]
   },
@@ -34820,8 +35757,104 @@
         "imagePrompt": "Three cheerful cartoon kids, one smiling a little, one big smiling, one jumping for joy. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/L.2.5b/example.png",
+        "imagePrompt": "Depict three diverse children, each showing a different level of wetness, arranged from left to right on a solid sky-blue background. On the left, a small child stands next to a tiny, almost dry puddle, with a single, small water droplet on one finger, looking at it curiously. Their clothes are dry. In the middle, a slightly older child happily stomps in a medium-sized puddle, with water splashing up and visible wet spots on their shirt and shorts. On the right, a third child is completely drenched, with water visibly dripping from their hair, face, and clothes, forming small puddles around their feet, laughing joyfully. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/L.2.5b/ex0.mp3",
+            "ttsScript": "Let's try one together. Here are three words.",
+            "audioRegenAt": "2026-07-06T04:05:35.604Z"
+          },
+          {
+            "sub": "The words",
+            "audioFile": "audio/lessons/L.2.5b/ex1.mp3",
+            "ttsScript": "Damp, wet, and soaked. They all mean wet, but each one is stronger!",
+            "displayText": "damp, wet, soaked",
+            "displayParts": [
+              {
+                "text": "damp, wet, soaked",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "damp",
+              "delay": 0
+            },
+            "audioRegenAt": "2026-07-06T04:05:38.253Z"
+          },
+          {
+            "sub": "Weakest?",
+            "audioFile": "audio/lessons/L.2.5b/ex2.mp3",
+            "ttsScript": "Which is weakest? Damp! Just a little bit wet.",
+            "displayText": "Damp!",
+            "displayParts": [
+              {
+                "text": "Which is weakest?",
+                "delay": 0
+              },
+              {
+                "text": "Damp!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "Damp",
+              "delay": 2000
+            },
+            "audioRegenAt": "2026-07-06T04:05:34.133Z"
+          },
+          {
+            "sub": "Medium?",
+            "audioFile": "audio/lessons/L.2.5b/ex3.mp3",
+            "ttsScript": "Which is medium? Wet! More than damp.",
+            "displayText": "Wet!",
+            "displayParts": [
+              {
+                "text": "Which is medium?",
+                "delay": 0
+              },
+              {
+                "text": "Wet!",
+                "delay": 3740
+              }
+            ],
+            "highlightWord": {
+              "word": "Wet",
+              "delay": 2940
+            },
+            "audioRegenAt": "2026-07-06T04:05:36.656Z"
+          },
+          {
+            "sub": "Strongest?",
+            "audioFile": "audio/lessons/L.2.5b/ex4.mp3",
+            "ttsScript": "Which is strongest? Soaked! Dripping wet. You found all three shades!",
+            "displayText": "Soaked!",
+            "displayParts": [
+              {
+                "text": "Which is strongest?",
+                "delay": 0
+              },
+              {
+                "text": "Soaked!",
+                "delay": 5200
+              }
+            ],
+            "highlightWord": {
+              "word": "Soaked",
+              "delay": 4400
+            },
+            "audioRegenAt": "2026-07-06T04:05:58.701Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:52:24.660Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -34880,7 +35913,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -34911,17 +35944,17 @@
       {
         "type": "mcq",
         "mcqId": "L.2.5b-Q2",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.2.5b-Q3",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.2.5b-Q5",
+        "mcqId": "L.2.5b-Q3",
         "slide": 8
+      },
+      {
+        "type": "mcq",
+        "mcqId": "L.2.5b-Q5",
+        "slide": 9
       }
     ]
   },
@@ -36338,8 +37371,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.3.5/example.png",
+        "imagePrompt": "A friendly 2D cartoon illustration depicting a cross-section of light brown earth. Deep within the soil, a small, round, peaceful brown seed is nestled. Directly above the seed, a vibrant green sprout with two small leaves emerges from the top of the earth, stretching upwards towards an implied light source from above. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -36410,7 +37443,8 @@
             },
             "audioRegenAt": "2026-06-10T20:27:15.983Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T04:52:12.936Z"
       },
       {
         "type": "tip",
@@ -37282,8 +38316,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.3.9/example.png",
+        "imagePrompt": "A friendly cartoon ant with a tiny crumb on its back diligently climbs a green grassy hill. Nearby, a smiling, determined cartoon child (girl) in athletic clothes holds a basketball and looks up at a basketball hoop. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "intro the two stories",
@@ -37354,7 +38388,8 @@
             },
             "audioRegenAt": "2026-06-08T03:46:15.593Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T04:52:32.226Z"
       },
       {
         "type": "tip",
@@ -40193,8 +41228,91 @@
         "imagePrompt": "A cheerful cartoon kid comparing two open books with a clipboard. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RI.3.9/example.png",
+        "imagePrompt": "A friendly, smiling cartoon bee is in the center, looking at the viewer. To the left of the central bee, a small, cute, cartoon beehive is shown, with a visible golden honey comb and a drop of honey dripping from it. To the right of the central bee, a bright, colorful cartoon flower is shown, with visible yellow pollen on its anthers. Another friendly cartoon bee is flying towards this flower, with small yellow pollen sacs visible on its hind legs. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's compare",
+            "audioFile": "audio/lessons/RI.3.9/ex0.mp3",
+            "ttsScript": "Let's try one together. Here are two short texts about bees.",
+            "audioRegenAt": "2026-07-06T04:05:40.459Z"
+          },
+          {
+            "sub": "Two texts",
+            "audioFile": "audio/lessons/RI.3.9/ex1.mp3",
+            "ttsScript": "Text one: Bees make honey. Text two: Bees carry pollen.",
+            "displayText": "Text 1: Bees make honey. Text 2: Bees carry pollen.",
+            "displayParts": [
+              {
+                "text": "Text 1: Bees make honey.",
+                "delay": 0
+              },
+              {
+                "text": "Text 2: Bees carry pollen.",
+                "delay": 5000
+              }
+            ],
+            "highlightWord": {
+              "word": "Bees",
+              "delay": 2220
+            },
+            "audioRegenAt": "2026-07-06T04:06:13.441Z"
+          },
+          {
+            "sub": "Same?",
+            "audioFile": "audio/lessons/RI.3.9/ex2.mp3",
+            "ttsScript": "What is the same? Both texts are about bees!",
+            "displayParts": [
+              {
+                "text": "What is the same?",
+                "delay": 0
+              },
+              {
+                "text": "Both about bees!",
+                "delay": 3160
+              }
+            ],
+            "highlightWord": {
+              "word": "bees",
+              "delay": 4560
+            },
+            "audioRegenAt": "2026-07-06T04:06:14.772Z"
+          },
+          {
+            "sub": "Different?",
+            "audioFile": "audio/lessons/RI.3.9/ex3.mp3",
+            "ttsScript": "What is different? Only text one talks about honey!",
+            "displayParts": [
+              {
+                "text": "What is different?",
+                "delay": 0
+              },
+              {
+                "text": "One adds honey!",
+                "delay": 4120
+              }
+            ],
+            "highlightWord": {
+              "word": "honey",
+              "delay": 5180
+            },
+            "audioRegenAt": "2026-07-06T04:06:15.284Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/RI.3.9/ex4.mp3",
+            "ttsScript": "So both share bees, but each text adds its own fact. You compared two texts!",
+            "audioRegenAt": "2026-07-06T04:06:14.181Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T04:52:31.249Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -40246,7 +41364,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -40277,22 +41395,22 @@
       {
         "type": "mcq",
         "mcqId": "RI.3.9-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.3.9-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.9-Q3",
+        "mcqId": "RI.3.9-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.3.9-Q5",
+        "mcqId": "RI.3.9-Q3",
         "slide": 9
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.3.9-Q5",
+        "slide": 10
       }
     ]
   },
@@ -41284,8 +42402,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.3.3b/example.png",
+        "imagePrompt": "A friendly K-4 aged child with a curious and engaged expression stands next to a tall, colorful tower of toy blocks. The child is gently poking one of the blocks near the bottom of the tower with one finger, causing that specific block to slightly wobble and shift out of place, but not fully fall, illustrating that the tower is able to be broken into its individual parts. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -41358,7 +42476,8 @@
             },
             "audioRegenAt": "2026-06-10T20:37:38.285Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T04:52:42.770Z"
       },
       {
         "type": "tip",
@@ -41821,8 +42940,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RF.3.3d/example.png",
+        "imagePrompt": "A happy, diverse K-4 child is sitting at a wooden desk, focused on writing on a piece of white paper with a yellow pencil. A small, friendly, light grey cartoon mouse character is peeking shyly from behind the paper, with one tiny paw held up to its mouth in a \"shhh\" gesture. The child is smiling gently, concentrating on their writing. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "setup",
@@ -41889,7 +43008,8 @@
             },
             "audioRegenAt": "2026-06-10T02:30:46.985Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:08:48.975Z"
       },
       {
         "type": "tip",
@@ -44371,8 +45491,8 @@
         "type": "example",
         "slide": 3,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.4d/example.png",
+        "imagePrompt": "A happy cartoon girl with rosy cheeks is sitting at a kitchen table, enthusiastically and quickly eating a plate of colorful pasta with a fork. Her mouth is slightly full, and her eyes are wide with enjoyment. The plate is half-empty, showing the speed of her eating. Solid light yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -44437,7 +45557,8 @@
             "ttsScript": "You read the whole entry. Nice work!",
             "audioRegenAt": "2026-06-10T20:38:58.173Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:08:33.975Z"
       },
       {
         "type": "tip",
@@ -45565,8 +46686,79 @@
         "imagePrompt": "A cheerful cartoon kid yawning vs flopping on a bed. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/L.3.5c/example.png",
+        "imagePrompt": "A row of three diverse, cheerful cartoon children standing side-by-side, each depicting increasing levels of coldness. The first child on the left, representing 'chilly,' wears a light jacket, has slightly rosy cheeks, and a small, wispy puff of breath. The middle child, representing 'cold,' wears a thicker winter coat, hat, and scarf, is hugging themselves, shivering a bit more, and has a medium-sized cloud of breath. The third child on the right, representing 'freezing,' is heavily bundled in a very thick winter suit, thick hat, mittens, and a scarf covering most of their face, visibly trembling intensely, with a large, dense cloud of breath billowing. The ground beneath them transitions from light green grass with a few fallen leaves on the left, to light snow in the middle, to deep snow with a small icicle on a bare branch on the right. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/L.3.5c/ex0.mp3",
+            "ttsScript": "Let's try one together. Here are three words.",
+            "audioRegenAt": "2026-07-06T04:06:16.871Z"
+          },
+          {
+            "sub": "The words",
+            "audioFile": "audio/lessons/L.3.5c/ex1.mp3",
+            "ttsScript": "Chilly. Cold. Freezing.",
+            "displayText": "Chilly. Cold. Freezing.",
+            "audioRegenAt": "2026-07-06T04:06:17.379Z"
+          },
+          {
+            "sub": "What do they mean?",
+            "audioFile": "audio/lessons/L.3.5c/ex2.mp3",
+            "ttsScript": "What do they all mean? Cold!",
+            "displayText": "What do they mean? Cold!",
+            "displayParts": [
+              {
+                "text": "What do they mean?",
+                "delay": 0
+              },
+              {
+                "text": "Cold!",
+                "delay": 3260
+              }
+            ],
+            "highlightWord": {
+              "word": "Cold",
+              "delay": 2500
+            },
+            "audioRegenAt": "2026-07-06T04:06:18.238Z"
+          },
+          {
+            "sub": "Which is strongest?",
+            "audioFile": "audio/lessons/L.3.5c/ex3.mp3",
+            "ttsScript": "Which one is the strongest? Freezing!",
+            "displayText": "Which is strongest? Freezing!",
+            "displayParts": [
+              {
+                "text": "Which is strongest?",
+                "delay": 0
+              },
+              {
+                "text": "Freezing!",
+                "delay": 4080
+              }
+            ],
+            "highlightWord": {
+              "word": "Freezing",
+              "delay": 3320
+            },
+            "audioRegenAt": "2026-07-06T04:06:21.622Z"
+          },
+          {
+            "sub": "You did it",
+            "audioFile": "audio/lessons/L.3.5c/ex4.mp3",
+            "ttsScript": "So freezing means extremely cold. You matched the strength!",
+            "audioRegenAt": "2026-07-06T04:06:20.821Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T05:08:44.966Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -45625,7 +46817,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -45656,17 +46848,17 @@
       {
         "type": "mcq",
         "mcqId": "L.3.5c-Q2",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.3.5c-Q4",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.3.5c-Q5",
+        "mcqId": "L.3.5c-Q4",
         "slide": 8
+      },
+      {
+        "type": "mcq",
+        "mcqId": "L.3.5c-Q5",
+        "slide": 9
       }
     ]
   },
@@ -47237,8 +48429,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.4.5/example.png",
+        "imagePrompt": "A friendly K-4 diverse child with pigtails stands on a sandy beach at night, looking up with a thoughtful and appreciative expression. High in the dark sky, a large, bright, round silver moon glows, casting a gentle light over the calm, dark blue sea below. Solid dark blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -47298,7 +48490,8 @@
             },
             "audioRegenAt": "2026-06-10T20:44:14.829Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:08:52.521Z"
       },
       {
         "type": "tip",
@@ -47545,8 +48738,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.4.6/example.png",
+        "imagePrompt": "A cartoon girl with a baseball bat stands at home plate, gripping the bat, with a slightly nervous but determined expression. Across a green field, a cartoon boy in an outfield position looks up with a hopeful expression, hands ready to catch. A baseball is in the air, flying towards the boy. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -47626,7 +48819,8 @@
             },
             "audioRegenAt": "2026-06-10T20:45:28.423Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:09:01.430Z"
       },
       {
         "type": "tip",
@@ -51138,8 +52332,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.4.9/example.png",
+        "imagePrompt": "A friendly, wide-eyed cartoon owl with prominently large, round eyes is perched on a sturdy tree branch. The owl is looking intently downwards. Below the branch, a tiny, cute, cartoon mouse scurries through some green grass. A crescent moon and a few stars are visible in the solid dark blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -51215,7 +52409,8 @@
             },
             "audioRegenAt": "2026-06-10T20:53:27.224Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:26:11.826Z"
       },
       {
         "type": "tip",
@@ -51456,8 +52651,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RI.4.10/example.png",
+        "imagePrompt": "A friendly cartoon volcano gently erupting, with a stream of bright orange lava flowing down one side towards a green forest, partially covering some trees. On another side, a small, simple cartoon town with a few houses is lightly dusted with grey ash. Jagged, dark grey rock formations are visible near the volcano's base, suggesting new mountains. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "setup",
@@ -51518,7 +52713,8 @@
             "ttsScript": "See? The details all proved one big main idea. You found it!",
             "audioRegenAt": "2026-06-08T03:50:59.763Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:26:12.333Z"
       },
       {
         "type": "tip",
@@ -54460,8 +55656,91 @@
         "imageRegenAt": "2026-06-03T01:02:57.391Z"
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/L.4.5a/example.png",
+        "imagePrompt": "A cheerful cartoon boy with a big smile is running incredibly fast, mid-stride, wearing a red running shirt and blue shorts. Speed lines trail behind him, indicating rapid motion. Directly alongside and slightly behind the boy, a friendly, stylized yellow lightning bolt also streaks forward with speed lines, mirroring his incredible pace. Both the boy and the lightning bolt convey energetic, swift movement. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try",
+            "audioFile": "audio/lessons/L.4.5a/ex0.mp3",
+            "ttsScript": "Let's try one together. Here's a sentence.",
+            "audioRegenAt": "2026-07-06T04:16:28.225Z"
+          },
+          {
+            "sub": "The sentence",
+            "audioFile": "audio/lessons/L.4.5a/ex1.mp3",
+            "ttsScript": "Here is the sentence: The runner was as quick as lightning.",
+            "displayText": "The runner was as quick as lightning.",
+            "audioRegenAt": "2026-07-06T04:16:26.534Z"
+          },
+          {
+            "sub": "Bridge word",
+            "audioFile": "audio/lessons/L.4.5a/ex2.mp3",
+            "ttsScript": "What is the bridge word? As!",
+            "displayParts": [
+              {
+                "text": "Bridge word?",
+                "delay": 0
+              },
+              {
+                "text": "As!",
+                "delay": 2760
+              }
+            ],
+            "highlightWord": {
+              "word": "As",
+              "delay": 2020
+            },
+            "audioRegenAt": "2026-07-06T04:16:28.809Z"
+          },
+          {
+            "sub": "Compares",
+            "audioFile": "audio/lessons/L.4.5a/ex3.mp3",
+            "ttsScript": "What two things does it compare? The runner and lightning!",
+            "displayParts": [
+              {
+                "text": "What two things?",
+                "delay": 0
+              },
+              {
+                "text": "Runner and lightning!",
+                "delay": 4480
+              }
+            ],
+            "highlightWord": {
+              "word": "lightning",
+              "delay": 4940
+            },
+            "audioRegenAt": "2026-07-06T04:32:10.307Z"
+          },
+          {
+            "sub": "Which one?",
+            "audioFile": "audio/lessons/L.4.5a/ex4.mp3",
+            "ttsScript": "So is it a simile or a metaphor? A simile! You nailed it!",
+            "displayParts": [
+              {
+                "text": "Simile or metaphor?",
+                "delay": 0
+              },
+              {
+                "text": "A simile!",
+                "delay": 3880
+              }
+            ],
+            "highlightWord": {
+              "word": "simile",
+              "delay": 920
+            },
+            "audioRegenAt": "2026-07-06T04:32:16.162Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T05:26:16.009Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -54520,7 +55799,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -54551,7 +55830,7 @@
       {
         "type": "mcq",
         "mcqId": "L.4.5a-Q5",
-        "slide": 6
+        "slide": 7
       }
     ]
   },
@@ -55042,8 +56321,81 @@
         "imagePrompt": "Three cheerful cartoon kids with rising voice loudness. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/L.4.5c/example.png",
+        "imagePrompt": "A friendly cartoon child stands in a gentle winter scene, visually representing increasing levels of cold from left to right. On the far left, a single, delicate snowflake gently lands on a bare tree branch, with the child wearing a light jacket and looking curious. In the middle, a medium-sized snowman with a simple scarf stands, with a few more snowflakes falling around it, and the child wears a warm hat and scarf, smiling. On the far right, a large, robust snowman is covered in thick snow, with several long icicles hanging from its twig arms, and the child is heavily bundled in a thick winter coat, hat, scarf, and mittens, shivering slightly but still smiling. The entire scene is set against a solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/L.4.5c/ex0.mp3",
+            "ttsScript": "Let's try one together. Here are three words that all mean cold.",
+            "audioRegenAt": "2026-07-06T04:32:16.003Z"
+          },
+          {
+            "sub": "The words",
+            "audioFile": "audio/lessons/L.4.5c/ex1.mp3",
+            "ttsScript": "Here are the words: cool, cold, and freezing.",
+            "displayText": "cool, cold, freezing",
+            "highlightWord": {
+              "word": "freezing",
+              "delay": 4820
+            },
+            "audioRegenAt": "2026-07-06T04:32:15.603Z"
+          },
+          {
+            "sub": "Weakest?",
+            "audioFile": "audio/lessons/L.4.5c/ex2.mp3",
+            "ttsScript": "Which one is weakest? Cool!",
+            "displayParts": [
+              {
+                "text": "Which is weakest?",
+                "delay": 0
+              },
+              {
+                "text": "Cool!",
+                "delay": 4260
+              }
+            ],
+            "highlightWord": {
+              "word": "Cool",
+              "delay": 3520
+            },
+            "audioRegenAt": "2026-07-06T04:32:13.947Z"
+          },
+          {
+            "sub": "Strongest?",
+            "audioFile": "audio/lessons/L.4.5c/ex3.mp3",
+            "ttsScript": "Which one is strongest? Freezing!",
+            "displayParts": [
+              {
+                "text": "Which is strongest?",
+                "delay": 0
+              },
+              {
+                "text": "Freezing!",
+                "delay": 4060
+              }
+            ],
+            "highlightWord": {
+              "word": "Freezing",
+              "delay": 3320
+            },
+            "audioRegenAt": "2026-07-06T04:32:17.986Z"
+          },
+          {
+            "sub": "You did it",
+            "audioFile": "audio/lessons/L.4.5c/ex4.mp3",
+            "ttsScript": "So freezing is the most intense. You ranked the word strength!",
+            "audioRegenAt": "2026-07-06T04:32:19.634Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T05:26:34.728Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -55090,7 +56442,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -55121,7 +56473,7 @@
       {
         "type": "mcq",
         "mcqId": "L.4.5c-Q3",
-        "slide": 6
+        "slide": 7
       }
     ]
   },
@@ -58489,8 +59841,81 @@
         "imageRegenAt": "2026-06-03T01:04:58.002Z"
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/L.1.2/example.png",
+        "imagePrompt": "A cheerful cartoon boy with short brown hair and a blue shirt is running very fast across a bright green grassy field. His arms are pumping and his legs are in a full stride, conveying speed and energy. He has a wide, happy smile. The background is a solid sky-blue. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try!",
+            "audioFile": "audio/lessons/L.1.2/ex0.mp3",
+            "ttsScript": "Let's try one together! Here's a sentence.",
+            "audioRegenAt": "2026-07-06T04:06:40.560Z"
+          },
+          {
+            "sub": "The sentence",
+            "audioFile": "audio/lessons/L.1.2/ex1.mp3",
+            "ttsScript": "Here is the sentence: Sam runs fast.",
+            "displayText": "Sam runs fast.",
+            "highlightWord": {
+              "word": "Sam",
+              "delay": 2980
+            },
+            "audioRegenAt": "2026-07-06T04:06:44.855Z"
+          },
+          {
+            "sub": "How it starts",
+            "audioFile": "audio/lessons/L.1.2/ex2.mp3",
+            "ttsScript": "How does it start? A capital S!",
+            "displayParts": [
+              {
+                "text": "How does it start?",
+                "delay": 0
+              },
+              {
+                "text": "A capital S!",
+                "delay": 2520
+              }
+            ],
+            "highlightWord": {
+              "word": "S",
+              "delay": 760
+            },
+            "audioRegenAt": "2026-07-06T04:07:40.755Z"
+          },
+          {
+            "sub": "How it ends",
+            "audioFile": "audio/lessons/L.1.2/ex3.mp3",
+            "ttsScript": "How does it end? A period!",
+            "displayParts": [
+              {
+                "text": "How does it end?",
+                "delay": 0
+              },
+              {
+                "text": "A period!",
+                "delay": 3660
+              }
+            ],
+            "highlightWord": {
+              "word": "period",
+              "delay": 3060
+            },
+            "audioRegenAt": "2026-07-06T04:07:40.731Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/L.1.2/ex4.mp3",
+            "ttsScript": "So Sam runs fast follows both rules. You did it!",
+            "audioRegenAt": "2026-07-06T04:07:42.496Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T05:26:30.702Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -58553,7 +59978,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -58584,27 +60009,27 @@
       {
         "type": "mcq",
         "mcqId": "L.1.2-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.1.2-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.2-Q3",
+        "mcqId": "L.1.2-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.2-Q4",
+        "mcqId": "L.1.2-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.2-Q5",
+        "mcqId": "L.1.2-Q4",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "L.1.2-Q5",
+        "slide": 11
       }
     ]
   },
@@ -58740,8 +60165,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.2.1/example.png",
+        "imagePrompt": "A flock of friendly, cheerful cartoon birds, with colorful feathers in shades of blue, red, and yellow, flying together in a neat V-formation across a clear, bright sky. Their wings are outstretched and in motion, showing them actively soaring and moving from left to right across the frame. They all appear happy and determined. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "setup",
@@ -58807,7 +60232,8 @@
             },
             "audioRegenAt": "2026-06-10T02:28:35.122Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:26:35.293Z"
       },
       {
         "type": "tip",
@@ -60015,8 +61441,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.3.2/example.png",
+        "imagePrompt": "A friendly cartoon boy with short brown hair and a blue t-shirt, named Tom, stands in the center of the frame. He has one hand raised, palm facing forward, in a clear 'stop' gesture. His mouth is open in a surprised or urgent expression, as if speaking loudly. He is looking towards a small, cute red ladybug with black spots, which is crawling quickly towards the very edge of a large green leaf, about to fall off. Solid light green background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "set up",
@@ -60091,7 +61517,8 @@
             },
             "audioRegenAt": "2026-06-08T11:09:34.143Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:26:49.370Z"
       },
       {
         "type": "tip",
@@ -60679,8 +62106,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/L.4.1/example.png",
+        "imagePrompt": "A friendly, smiling female teacher with short brown hair and glasses, wearing a colorful blouse and skirt, stands next to a plain wooden desk. She is looking through her open purse with one hand while her other hand pats her hip pocket, displaying a slightly puzzled but pleasant expression. A small bunch of silver keys is partially visible, peeking out from under a colorful stack of papers on the desk, just out of her line of sight. Solid light-yellow background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "setup",
@@ -60756,7 +62183,8 @@
             },
             "audioRegenAt": "2026-06-08T11:45:53.727Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:26:52.207Z"
       },
       {
         "type": "tip",
@@ -61336,8 +62764,98 @@
         "imageRegenAt": "2026-06-03T01:07:57.387Z"
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/L.4.3/example.png",
+        "imagePrompt": "A friendly, large brown dog with floppy ears is enthusiastically eating kibble from a silver dog bowl on a solid light yellow background. The dog's head is down in the bowl, and its tail is slightly wagging, conveying a sense of quick eating. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Ready?",
+            "audioFile": "audio/lessons/L.4.3/ex0.mp3",
+            "ttsScript": "Let's try one together. Here's a sentence.",
+            "audioRegenAt": "2026-07-06T04:07:40.297Z"
+          },
+          {
+            "sub": "The sentence",
+            "audioFile": "audio/lessons/L.4.3/ex1.mp3",
+            "ttsScript": "Here is our sentence: The big dog ate fast.",
+            "displayText": "The big dog ate fast.",
+            "highlightWord": {
+              "word": "big",
+              "delay": 3100
+            },
+            "audioRegenAt": "2026-07-06T04:07:44.522Z"
+          },
+          {
+            "sub": "Vague word?",
+            "audioFile": "audio/lessons/L.4.3/ex2.mp3",
+            "ttsScript": "Which word here is vague? Big!",
+            "displayText": "Which word is vague? Big!",
+            "displayParts": [
+              {
+                "text": "Which word is vague?",
+                "delay": 0
+              },
+              {
+                "text": "Big!",
+                "delay": 4160
+              }
+            ],
+            "highlightWord": {
+              "word": "Big",
+              "delay": 3420
+            },
+            "audioRegenAt": "2026-07-06T04:07:44.122Z"
+          },
+          {
+            "sub": "Make it precise",
+            "audioFile": "audio/lessons/L.4.3/ex3.mp3",
+            "ttsScript": "A precise word for big? Enormous!",
+            "displayText": "A precise word? Enormous!",
+            "displayParts": [
+              {
+                "text": "A precise word?",
+                "delay": 0
+              },
+              {
+                "text": "Enormous!",
+                "delay": 3880
+              }
+            ],
+            "highlightWord": {
+              "word": "Enormous",
+              "delay": 3140
+            },
+            "audioRegenAt": "2026-07-06T04:07:44.119Z"
+          },
+          {
+            "sub": "One more",
+            "audioFile": "audio/lessons/L.4.3/ex4.mp3",
+            "ttsScript": "And instead of ate, we could say gobbled! Now your sentence paints a clearer picture. Great job!",
+            "displayText": "Ate, or gobbled? Gobbled!",
+            "displayParts": [
+              {
+                "text": "Ate, or gobbled?",
+                "delay": 0
+              },
+              {
+                "text": "Gobbled!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "Gobbled",
+              "delay": 2780
+            },
+            "audioRegenAt": "2026-07-06T04:07:47.833Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T05:26:51.852Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -61396,7 +62914,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Choose Precise Words",
         "imageFile": "",
         "imagePrompt": "",
@@ -61427,27 +62945,27 @@
       {
         "type": "mcq",
         "mcqId": "L.4.3-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "L.4.3-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "L.4.3-Q3",
+        "mcqId": "L.4.3-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "L.4.3-Q4",
+        "mcqId": "L.4.3-Q3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "L.4.3-Q5",
+        "mcqId": "L.4.3-Q4",
         "slide": 10
+      },
+      {
+        "type": "mcq",
+        "mcqId": "L.4.3-Q5",
+        "slide": 11
       }
     ]
   },
@@ -61582,8 +63100,8 @@
         "type": "example",
         "slide": 4,
         "heading": "Let's Try One",
-        "imageFile": "",
-        "imagePrompt": "",
+        "imageFile": "images/lessons/RL.K.10/example.png",
+        "imagePrompt": "A friendly female teacher stands in a classroom, smiling warmly at a diverse group of K-4 children. She is pointing with one hand towards a large, simple drawing on an easel next to her. The drawing on the easel depicts a friendly, brown cartoon bear happily walking into the entrance of a dark, rocky cave. In the foreground, one enthusiastic child, with a bright expression, has their arm raised high in the air, eager to answer. Other children are seated around, looking attentive towards the teacher and the drawing. The classroom has a solid light-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
         "steps": [
           {
             "sub": "a",
@@ -61642,7 +63160,8 @@
             },
             "audioRegenAt": "2026-06-10T20:58:05.910Z"
           }
-        ]
+        ],
+        "imageRegenAt": "2026-07-06T05:27:27.685Z"
       },
       {
         "type": "tip",
@@ -61940,8 +63459,95 @@
         "imageRegenAt": "2026-06-03T01:16:45.637Z"
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RI.K.10/example.png",
+        "imagePrompt": "A cheerful scene featuring several friendly, smiling green cartoon frogs. Some frogs are happily swimming in a calm blue pond, while others are perched on green lily pads floating on the water. One frog is shown mid-air, leaping very high above the pond, with another frog on the bank looking up at it. The frogs have natural proportions and a classic cartoon style. Solid sky-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/RI.K.10/ex0.mp3",
+            "ttsScript": "Okay, let's try one together! Here is a page from a fact book.",
+            "audioRegenAt": "2026-07-06T04:07:47.638Z"
+          },
+          {
+            "sub": "Fact book",
+            "audioFile": "audio/lessons/RI.K.10/ex1.mp3",
+            "ttsScript": "It says: Frogs are green. They hop very high. Frogs like the water.",
+            "displayText": "Frogs are green. They hop very high. Frogs like the water.",
+            "highlightWord": {
+              "word": "Frogs",
+              "delay": 1170
+            },
+            "audioRegenAt": "2026-07-06T04:07:49.342Z"
+          },
+          {
+            "sub": "What about?",
+            "audioFile": "audio/lessons/RI.K.10/ex2.mp3",
+            "ttsScript": "What is this fact book about? Frogs!",
+            "displayParts": [
+              {
+                "text": "What is it about?",
+                "delay": 0
+              },
+              {
+                "text": "Frogs!",
+                "delay": 4060
+              }
+            ],
+            "highlightWord": {
+              "word": "Frogs",
+              "delay": 3210
+            },
+            "audioRegenAt": "2026-07-06T04:07:47.942Z"
+          },
+          {
+            "sub": "What color?",
+            "audioFile": "audio/lessons/RI.K.10/ex3.mp3",
+            "ttsScript": "What color are frogs? Green!",
+            "displayParts": [
+              {
+                "text": "What color?",
+                "delay": 0
+              },
+              {
+                "text": "Green!",
+                "delay": 3900
+              }
+            ],
+            "highlightWord": {
+              "word": "Green",
+              "delay": 3050
+            },
+            "audioRegenAt": "2026-07-06T04:07:50.819Z"
+          },
+          {
+            "sub": "What do they like?",
+            "audioFile": "audio/lessons/RI.K.10/ex4.mp3",
+            "ttsScript": "What do frogs like? The water! Those are all real facts. You read a fact book!",
+            "displayParts": [
+              {
+                "text": "What do they like?",
+                "delay": 0
+              },
+              {
+                "text": "The water!",
+                "delay": 2000
+              }
+            ],
+            "highlightWord": {
+              "word": "water",
+              "delay": 3570
+            },
+            "audioRegenAt": "2026-07-06T04:07:57.554Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T05:27:09.965Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -61995,7 +63601,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -62026,22 +63632,22 @@
       {
         "type": "mcq",
         "mcqId": "RI.K.10-Q1",
-        "slide": 6
-      },
-      {
-        "type": "mcq",
-        "mcqId": "RI.K.10-Q2",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.10-Q3",
+        "mcqId": "RI.K.10-Q2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RI.K.10-Q4",
+        "mcqId": "RI.K.10-Q3",
         "slide": 9
+      },
+      {
+        "type": "mcq",
+        "mcqId": "RI.K.10-Q4",
+        "slide": 10
       }
     ]
   },
@@ -62238,8 +63844,77 @@
         "imagePrompt": "A cheerful cartoon child with a puzzled look, raising a hand with a tiny lightbulb above them, a grown-up smiling nearby. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One",
+        "imageFile": "images/lessons/RL.1.10/example.png",
+        "imagePrompt": "A young child, perhaps a girl with a gentle smile, is tucked into a cozy bed, looking out a window. Outside the window, a large, friendly, smiling full moon shines brightly in the night sky, appearing to gently look down at the child. A few small, simple stars dot the sky around the moon. Solid dark-blue background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Let's try one",
+            "audioFile": "audio/lessons/RL.1.10/ex0.mp3",
+            "ttsScript": "Let's try one together! Here is a little piece to read.",
+            "audioRegenAt": "2026-07-06T04:08:01.306Z"
+          },
+          {
+            "sub": "Read it",
+            "audioFile": "audio/lessons/RL.1.10/ex1.mp3",
+            "ttsScript": "Here it is. The moon is bright. It says goodnight to me each night.",
+            "displayText": "The moon is bright. It says goodnight to me each night.",
+            "audioRegenAt": "2026-07-06T04:08:03.632Z"
+          },
+          {
+            "sub": "What kind?",
+            "audioFile": "audio/lessons/RL.1.10/ex2.mp3",
+            "ttsScript": "What kind is this? A poem!",
+            "displayParts": [
+              {
+                "text": "What kind is this?",
+                "delay": 0
+              },
+              {
+                "text": "A poem!",
+                "delay": 2880
+              }
+            ],
+            "highlightWord": {
+              "word": "poem",
+              "delay": 2180
+            },
+            "audioRegenAt": "2026-07-06T04:07:56.403Z"
+          },
+          {
+            "sub": "How do you know?",
+            "audioFile": "audio/lessons/RL.1.10/ex3.mp3",
+            "ttsScript": "How do you know? It rhymes! Bright and night sound the same.",
+            "displayParts": [
+              {
+                "text": "How do you know?",
+                "delay": 0
+              },
+              {
+                "text": "It rhymes!",
+                "delay": 2460
+              }
+            ],
+            "highlightWord": {
+              "word": "rhymes",
+              "delay": 1800
+            },
+            "audioRegenAt": "2026-07-06T04:08:00.967Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/RL.1.10/ex4.mp3",
+            "ttsScript": "So a poem can rhyme. You read a poem all by yourself!",
+            "audioRegenAt": "2026-07-06T04:08:01.307Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T05:27:08.931Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -62296,7 +63971,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -62327,7 +64002,7 @@
       {
         "type": "mcq",
         "mcqId": "RL.1.10-Q4",
-        "slide": 6
+        "slide": 7
       }
     ]
   },
@@ -62514,8 +64189,90 @@
         "imageRegenAt": "2026-06-03T01:16:59.249Z"
       },
       {
-        "type": "tip",
+        "type": "example",
         "slide": 4,
+        "heading": "Let's Try One!",
+        "imageFile": "images/lessons/RI.1.10/example.png",
+        "imagePrompt": "A friendly cartoon bat is hanging upside down from a tree branch, eyes closed, sleeping soundly. Above this sleeping bat, a bright yellow cartoon sun is visible in the sky. To the right, another friendly cartoon bat is flying with its wings spread, eyes open, looking intently at a small, simple cartoon moth in front of it. Above this flying bat, a white crescent moon and a few tiny white stars are visible in the sky. Solid medium purple background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. Absolutely no text, no letters, no words, no numbers, no labels anywhere. Natural proportions, no AI artifacts, no eye glints.",
+        "steps": [
+          {
+            "sub": "Here's a page",
+            "audioFile": "audio/lessons/RI.1.10/ex0.mp3",
+            "ttsScript": "Okay, let's try one together! Here's a page from a fact book about bats.",
+            "audioRegenAt": "2026-07-06T04:09:56.901Z"
+          },
+          {
+            "sub": "Read the facts",
+            "audioFile": "audio/lessons/RI.1.10/ex1.mp3",
+            "ttsScript": "Bats sleep all day. They fly at night to catch moths.",
+            "displayText": "Bats sleep all day. They fly at night to catch moths.",
+            "audioRegenAt": "2026-07-06T04:08:15.183Z"
+          },
+          {
+            "sub": "When sleep?",
+            "audioFile": "audio/lessons/RI.1.10/ex2.mp3",
+            "ttsScript": "When do bats sleep? All day!",
+            "displayText": "When do bats sleep? All day!",
+            "displayParts": [
+              {
+                "text": "When do bats sleep?",
+                "delay": 0
+              },
+              {
+                "text": "All day!",
+                "delay": 3720
+              }
+            ],
+            "highlightWord": {
+              "word": "day",
+              "delay": 3440
+            },
+            "audioRegenAt": "2026-07-06T04:08:14.501Z"
+          },
+          {
+            "sub": "When fly?",
+            "audioFile": "audio/lessons/RI.1.10/ex3.mp3",
+            "ttsScript": "When do they fly? At night!",
+            "displayText": "When do they fly? At night!",
+            "displayParts": [
+              {
+                "text": "When do they fly?",
+                "delay": 0
+              },
+              {
+                "text": "At night!",
+                "delay": 2980
+              }
+            ],
+            "highlightWord": {
+              "word": "night",
+              "delay": 2440
+            },
+            "audioRegenAt": "2026-07-06T04:08:06.405Z"
+          },
+          {
+            "sub": "You did it!",
+            "audioFile": "audio/lessons/RI.1.10/ex4.mp3",
+            "ttsScript": "You found real facts about bats! That's how we read a fact book. Great reading!",
+            "displayText": "You found real facts!",
+            "displayParts": [
+              {
+                "text": "You found real facts!",
+                "delay": 0
+              }
+            ],
+            "highlightWord": {
+              "word": "facts",
+              "delay": 1360
+            },
+            "audioRegenAt": "2026-07-06T04:08:11.986Z"
+          }
+        ],
+        "imageRegenAt": "2026-07-06T05:27:31.694Z"
+      },
+      {
+        "type": "tip",
+        "slide": 5,
         "steps": [
           {
             "sub": "a",
@@ -62575,7 +64332,7 @@
       },
       {
         "type": "interactive",
-        "slide": 5,
+        "slide": 6,
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
@@ -62606,12 +64363,12 @@
       {
         "type": "mcq",
         "mcqId": "RI.1.10-Q2",
-        "slide": 6
+        "slide": 7
       },
       {
         "type": "mcq",
         "mcqId": "RI.1.10-Q5",
-        "slide": 7
+        "slide": 8
       }
     ]
   }

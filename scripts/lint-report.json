@@ -1277,12 +1277,6 @@
   ],
   "RL.1.5": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -1321,12 +1315,6 @@
   ],
   "RL.1.6": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -1346,12 +1334,6 @@
     }
   ],
   "RL.1.7": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -1404,6 +1386,24 @@
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
+      "detail": "[example] highlightWord 'picture' not on screen"
+    },
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayPart 9w: 'A boy stands in the rain, holding an umb'"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
+      "detail": "[example] highlightWord 'clues' not on screen"
+    },
+    {
+      "inv": "INV-6",
+      "rule": 25,
+      "fixer": "auto",
       "detail": "[tip] highlightWord 'trick' not on screen"
     },
     {
@@ -1420,12 +1420,6 @@
     }
   ],
   "RL.1.9": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -1636,12 +1630,6 @@
     }
   ],
   "RI.1.6": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -2247,12 +2235,6 @@
   ],
   "L.1.5d": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -2491,12 +2473,6 @@
   ],
   "RL.2.7": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -2691,12 +2667,6 @@
   ],
   "RI.2.5": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -2729,12 +2699,6 @@
   ],
   "RI.2.6": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -2755,12 +2719,6 @@
   ],
   "RI.2.7": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -2777,6 +2735,12 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'see' not on screen"
+    },
+    {
+      "inv": "INV-8",
+      "rule": 4,
+      "fixer": "content",
+      "detail": "[example] displayPart 10w: 'A book about bees. The picture shows a b'"
     },
     {
       "inv": "INV-6",
@@ -3187,12 +3151,6 @@
   ],
   "L.2.4d": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -3302,12 +3260,6 @@
     }
   ],
   "L.2.5b": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -3797,12 +3749,6 @@
   ],
   "RI.3.9": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -4204,12 +4150,6 @@
   ],
   "L.3.5b": [],
   "L.3.5c": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -4945,12 +4885,6 @@
   ],
   "L.4.5a": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -4990,12 +4924,6 @@
     }
   ],
   "L.4.5c": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -5225,12 +5153,6 @@
     }
   ],
   "L.1.2": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -5484,12 +5406,6 @@
   ],
   "L.4.3": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -5536,12 +5452,6 @@
   ],
   "RI.K.10": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -5579,12 +5489,6 @@
     }
   ],
   "RL.1.10": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -5641,12 +5545,6 @@
     }
   ],
   "RI.1.10": [
-    {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "missing example ('Let's Try One')"
-    },
     {
       "inv": "INV-5",
       "rule": 25,

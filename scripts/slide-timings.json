@@ -211613,5 +211613,5565 @@
         "end": 3.9
       }
     ]
+  },
+  "audio/lessons/RL.1.5/ex2.mp3": {
+    "duration": 4712,
+    "words": [
+      {
+        "word": "Could",
+        "start": 0,
+        "end": 0.36
+      },
+      {
+        "word": "this",
+        "start": 0.36,
+        "end": 0.7
+      },
+      {
+        "word": "really",
+        "start": 0.7,
+        "end": 1.18
+      },
+      {
+        "word": "happen?",
+        "start": 1.18,
+        "end": 1.82
+      },
+      {
+        "word": "No",
+        "start": 2.42,
+        "end": 2.94
+      },
+      {
+        "word": "way!",
+        "start": 2.94,
+        "end": 3.68
+      }
+    ]
+  },
+  "audio/lessons/RL.1.6/ex0.mp3": {
+    "duration": 4352,
+    "words": [
+      {
+        "word": "Okay,",
+        "start": 0,
+        "end": 0.5
+      },
+      {
+        "word": "let's",
+        "start": 0.8,
+        "end": 1.16
+      },
+      {
+        "word": "try",
+        "start": 1.16,
+        "end": 1.34
+      },
+      {
+        "word": "one",
+        "start": 1.34,
+        "end": 1.58
+      },
+      {
+        "word": "together.",
+        "start": 1.58,
+        "end": 2
+      },
+      {
+        "word": "Here's",
+        "start": 2.54,
+        "end": 3
+      },
+      {
+        "word": "a",
+        "start": 3,
+        "end": 3.08
+      },
+      {
+        "word": "little",
+        "start": 3.08,
+        "end": 3.26
+      },
+      {
+        "word": "story.",
+        "start": 3.26,
+        "end": 3.72
+      }
+    ]
+  },
+  "audio/lessons/RL.1.6/ex1.mp3": {
+    "duration": 10552,
+    "words": [
+      {
+        "word": "Here",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "is",
+        "start": 0.54,
+        "end": 1.28
+      },
+      {
+        "word": "the",
+        "start": 1.28,
+        "end": 1.52
+      },
+      {
+        "word": "story.",
+        "start": 1.52,
+        "end": 2.16
+      },
+      {
+        "word": "Mia",
+        "start": 3.06,
+        "end": 3.8
+      },
+      {
+        "word": "liked",
+        "start": 3.8,
+        "end": 5
+      },
+      {
+        "word": "to",
+        "start": 5,
+        "end": 5.3
+      },
+      {
+        "word": "draw.",
+        "start": 5.3,
+        "end": 5.72
+      },
+      {
+        "word": "She",
+        "start": 6.64,
+        "end": 7.18
+      },
+      {
+        "word": "made",
+        "start": 7.18,
+        "end": 7.54
+      },
+      {
+        "word": "a",
+        "start": 7.54,
+        "end": 8.02
+      },
+      {
+        "word": "big",
+        "start": 8.02,
+        "end": 8.6
+      },
+      {
+        "word": "yellow",
+        "start": 8.6,
+        "end": 9.24
+      },
+      {
+        "word": "sun.",
+        "start": 9.24,
+        "end": 10
+      }
+    ]
+  },
+  "audio/lessons/RL.1.5/ex0.mp3": {
+    "duration": 4952,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.66
+      },
+      {
+        "word": "try",
+        "start": 0.66,
+        "end": 0.9
+      },
+      {
+        "word": "one",
+        "start": 0.9,
+        "end": 1.2
+      },
+      {
+        "word": "together.",
+        "start": 1.2,
+        "end": 1.84
+      },
+      {
+        "word": "Here",
+        "start": 2.28,
+        "end": 3.16
+      },
+      {
+        "word": "is",
+        "start": 3.16,
+        "end": 3.7
+      },
+      {
+        "word": "a",
+        "start": 3.7,
+        "end": 3.92
+      },
+      {
+        "word": "book.",
+        "start": 3.92,
+        "end": 4.26
+      }
+    ]
+  },
+  "audio/lessons/RL.1.5/ex1.mp3": {
+    "duration": 5192,
+    "words": [
+      {
+        "word": "This",
+        "start": 0,
+        "end": 0.42
+      },
+      {
+        "word": "book",
+        "start": 0.42,
+        "end": 0.76
+      },
+      {
+        "word": "says,",
+        "start": 0.76,
+        "end": 1.28
+      },
+      {
+        "word": "a",
+        "start": 1.78,
+        "end": 1.9
+      },
+      {
+        "word": "pig",
+        "start": 1.9,
+        "end": 2.56
+      },
+      {
+        "word": "flew",
+        "start": 2.56,
+        "end": 3.16
+      },
+      {
+        "word": "a",
+        "start": 3.16,
+        "end": 3.64
+      },
+      {
+        "word": "jet",
+        "start": 3.64,
+        "end": 4.06
+      },
+      {
+        "word": "plane.",
+        "start": 4.06,
+        "end": 4.56
+      }
+    ]
+  },
+  "audio/lessons/RL.1.5/ex4.mp3": {
+    "duration": 6792,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "which",
+        "start": 0.54,
+        "end": 1.14
+      },
+      {
+        "word": "kind",
+        "start": 1.14,
+        "end": 1.46
+      },
+      {
+        "word": "of",
+        "start": 1.46,
+        "end": 1.68
+      },
+      {
+        "word": "book",
+        "start": 1.68,
+        "end": 1.9
+      },
+      {
+        "word": "is",
+        "start": 1.9,
+        "end": 2.14
+      },
+      {
+        "word": "it?",
+        "start": 2.14,
+        "end": 2.48
+      },
+      {
+        "word": "A",
+        "start": 3.22,
+        "end": 3.44
+      },
+      {
+        "word": "story",
+        "start": 3.44,
+        "end": 4.02
+      },
+      {
+        "word": "book,",
+        "start": 4.02,
+        "end": 4.56
+      },
+      {
+        "word": "you",
+        "start": 4.78,
+        "end": 5.06
+      },
+      {
+        "word": "told",
+        "start": 5.06,
+        "end": 5.42
+      },
+      {
+        "word": "them",
+        "start": 5.42,
+        "end": 5.68
+      },
+      {
+        "word": "apart.",
+        "start": 5.68,
+        "end": 6.1
+      }
+    ]
+  },
+  "audio/lessons/RL.1.5/ex3.mp3": {
+    "duration": 4632,
+    "words": [
+      {
+        "word": "Is",
+        "start": 0,
+        "end": 0.4
+      },
+      {
+        "word": "it",
+        "start": 0.4,
+        "end": 0.64
+      },
+      {
+        "word": "real",
+        "start": 0.64,
+        "end": 1.14
+      },
+      {
+        "word": "or",
+        "start": 1.14,
+        "end": 1.74
+      },
+      {
+        "word": "made",
+        "start": 1.74,
+        "end": 2
+      },
+      {
+        "word": "up?",
+        "start": 2,
+        "end": 2.32
+      },
+      {
+        "word": "Made",
+        "start": 2.86,
+        "end": 3.64
+      },
+      {
+        "word": "up!",
+        "start": 3.64,
+        "end": 4
+      }
+    ]
+  },
+  "audio/lessons/RL.1.6/ex2.mp3": {
+    "duration": 6272,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.46
+      },
+      {
+        "word": "word",
+        "start": 0.46,
+        "end": 1.08
+      },
+      {
+        "word": "gives",
+        "start": 1.08,
+        "end": 1.4
+      },
+      {
+        "word": "us",
+        "start": 1.4,
+        "end": 1.7
+      },
+      {
+        "word": "the",
+        "start": 1.7,
+        "end": 1.92
+      },
+      {
+        "word": "clue?",
+        "start": 1.92,
+        "end": 2.28
+      },
+      {
+        "word": "She.",
+        "start": 4.42,
+        "end": 5.14
+      }
+    ]
+  },
+  "audio/lessons/RL.1.7/ex0.mp3": {
+    "duration": 4952,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.62
+      },
+      {
+        "word": "try",
+        "start": 0.62,
+        "end": 0.9
+      },
+      {
+        "word": "one",
+        "start": 0.9,
+        "end": 1.26
+      },
+      {
+        "word": "together.",
+        "start": 1.26,
+        "end": 1.9
+      },
+      {
+        "word": "Here",
+        "start": 2.58,
+        "end": 3.08
+      },
+      {
+        "word": "is",
+        "start": 3.08,
+        "end": 3.34
+      },
+      {
+        "word": "a",
+        "start": 3.34,
+        "end": 3.46
+      },
+      {
+        "word": "picture",
+        "start": 3.46,
+        "end": 3.78
+      },
+      {
+        "word": "to",
+        "start": 3.78,
+        "end": 4.02
+      },
+      {
+        "word": "read.",
+        "start": 4.02,
+        "end": 4.34
+      }
+    ]
+  },
+  "audio/lessons/RL.1.6/ex3.mp3": {
+    "duration": 5032,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.6
+      },
+      {
+        "word": "who",
+        "start": 0.6,
+        "end": 1.3
+      },
+      {
+        "word": "tells",
+        "start": 1.3,
+        "end": 1.64
+      },
+      {
+        "word": "the",
+        "start": 1.64,
+        "end": 1.9
+      },
+      {
+        "word": "story?",
+        "start": 1.9,
+        "end": 2.44
+      },
+      {
+        "word": "A",
+        "start": 2.74,
+        "end": 3.5
+      },
+      {
+        "word": "narrator",
+        "start": 3.5,
+        "end": 3.94
+      },
+      {
+        "word": "does.",
+        "start": 3.94,
+        "end": 4.34
+      }
+    ]
+  },
+  "audio/lessons/RL.1.7/ex1.mp3": {
+    "duration": 7672,
+    "words": [
+      {
+        "word": "A",
+        "start": 0,
+        "end": 0.34
+      },
+      {
+        "word": "boy",
+        "start": 0.34,
+        "end": 0.8
+      },
+      {
+        "word": "stands",
+        "start": 0.8,
+        "end": 1.56
+      },
+      {
+        "word": "in",
+        "start": 1.56,
+        "end": 2
+      },
+      {
+        "word": "the",
+        "start": 2,
+        "end": 2.18
+      },
+      {
+        "word": "rain,",
+        "start": 2.18,
+        "end": 2.62
+      },
+      {
+        "word": "holding",
+        "start": 3.22,
+        "end": 3.6
+      },
+      {
+        "word": "an",
+        "start": 3.6,
+        "end": 4.02
+      },
+      {
+        "word": "umbrella.",
+        "start": 4.02,
+        "end": 4.46
+      },
+      {
+        "word": "His",
+        "start": 5.28,
+        "end": 5.44
+      },
+      {
+        "word": "head",
+        "start": 5.44,
+        "end": 6
+      },
+      {
+        "word": "hangs",
+        "start": 6,
+        "end": 6.6
+      },
+      {
+        "word": "down.",
+        "start": 6.6,
+        "end": 7
+      }
+    ]
+  },
+  "audio/lessons/RL.1.6/ex4.mp3": {
+    "duration": 6632,
+    "words": [
+      {
+        "word": "A",
+        "start": 0,
+        "end": 0.34
+      },
+      {
+        "word": "voice",
+        "start": 0.34,
+        "end": 0.76
+      },
+      {
+        "word": "outside",
+        "start": 0.76,
+        "end": 1.44
+      },
+      {
+        "word": "the",
+        "start": 1.44,
+        "end": 1.72
+      },
+      {
+        "word": "story",
+        "start": 1.72,
+        "end": 2.26
+      },
+      {
+        "word": "tells",
+        "start": 2.26,
+        "end": 2.92
+      },
+      {
+        "word": "us",
+        "start": 2.92,
+        "end": 3.26
+      },
+      {
+        "word": "about",
+        "start": 3.26,
+        "end": 3.62
+      },
+      {
+        "word": "Mia.",
+        "start": 3.62,
+        "end": 3.92
+      },
+      {
+        "word": "You",
+        "start": 4.54,
+        "end": 5.2
+      },
+      {
+        "word": "did",
+        "start": 5.2,
+        "end": 5.54
+      },
+      {
+        "word": "it!",
+        "start": 5.54,
+        "end": 5.94
+      }
+    ]
+  },
+  "audio/lessons/RL.1.7/ex4.mp3": {
+    "duration": 4352,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "told",
+        "start": 0.52,
+        "end": 0.84
+      },
+      {
+        "word": "us",
+        "start": 0.84,
+        "end": 1.38
+      },
+      {
+        "word": "his",
+        "start": 1.38,
+        "end": 2.2
+      },
+      {
+        "word": "droopy",
+        "start": 2.2,
+        "end": 3.16
+      },
+      {
+        "word": "head?",
+        "start": 3.16,
+        "end": 3.84
+      }
+    ]
+  },
+  "audio/lessons/RL.1.7/ex2.mp3": {
+    "duration": 5352,
+    "words": [
+      {
+        "word": "Where",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "is",
+        "start": 0.52,
+        "end": 0.78
+      },
+      {
+        "word": "the",
+        "start": 0.78,
+        "end": 0.94
+      },
+      {
+        "word": "boy?",
+        "start": 0.94,
+        "end": 1.34
+      },
+      {
+        "word": "In",
+        "start": 3.3600000000000003,
+        "end": 3.84
+      },
+      {
+        "word": "the",
+        "start": 3.84,
+        "end": 4.08
+      },
+      {
+        "word": "rain.",
+        "start": 4.08,
+        "end": 4.56
+      }
+    ]
+  },
+  "audio/lessons/RL.1.7/ex3.mp3": {
+    "duration": 4152,
+    "words": [
+      {
+        "word": "How",
+        "start": 0,
+        "end": 0.66
+      },
+      {
+        "word": "does",
+        "start": 0.66,
+        "end": 1.06
+      },
+      {
+        "word": "he",
+        "start": 1.06,
+        "end": 1.34
+      },
+      {
+        "word": "feel?",
+        "start": 1.34,
+        "end": 1.98
+      },
+      {
+        "word": "Sad.",
+        "start": 2.68,
+        "end": 3.34
+      }
+    ]
+  },
+  "audio/lessons/RL.1.7/ex5.mp3": {
+    "duration": 5712,
+    "words": [
+      {
+        "word": "The",
+        "start": 0,
+        "end": 0.4
+      },
+      {
+        "word": "picture",
+        "start": 0.4,
+        "end": 0.96
+      },
+      {
+        "word": "showed",
+        "start": 0.96,
+        "end": 1.66
+      },
+      {
+        "word": "us",
+        "start": 1.66,
+        "end": 2.14
+      },
+      {
+        "word": "his",
+        "start": 2.14,
+        "end": 2.48
+      },
+      {
+        "word": "feeling.",
+        "start": 2.48,
+        "end": 3.24
+      },
+      {
+        "word": "You",
+        "start": 3.78,
+        "end": 4.06
+      },
+      {
+        "word": "used",
+        "start": 4.06,
+        "end": 4.42
+      },
+      {
+        "word": "the",
+        "start": 4.42,
+        "end": 4.6
+      },
+      {
+        "word": "clues.",
+        "start": 4.6,
+        "end": 4.98
+      }
+    ]
+  },
+  "audio/lessons/RL.1.9/ex0.mp3": {
+    "duration": 4792,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "try",
+        "start": 0.56,
+        "end": 0.76
+      },
+      {
+        "word": "one",
+        "start": 0.76,
+        "end": 1.02
+      },
+      {
+        "word": "together.",
+        "start": 1.02,
+        "end": 1.56
+      },
+      {
+        "word": "Here",
+        "start": 2.08,
+        "end": 2.56
+      },
+      {
+        "word": "are",
+        "start": 2.56,
+        "end": 2.82
+      },
+      {
+        "word": "two",
+        "start": 2.82,
+        "end": 3.18
+      },
+      {
+        "word": "little",
+        "start": 3.18,
+        "end": 3.56
+      },
+      {
+        "word": "stories.",
+        "start": 3.56,
+        "end": 4.08
+      }
+    ]
+  },
+  "audio/lessons/RL.1.9/ex2.mp3": {
+    "duration": 5072,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.58
+      },
+      {
+        "word": "is",
+        "start": 0.58,
+        "end": 0.82
+      },
+      {
+        "word": "the",
+        "start": 0.82,
+        "end": 1.02
+      },
+      {
+        "word": "same?",
+        "start": 1.02,
+        "end": 1.52
+      },
+      {
+        "word": "Both",
+        "start": 2.24,
+        "end": 2.72
+      },
+      {
+        "word": "are",
+        "start": 2.72,
+        "end": 3.1
+      },
+      {
+        "word": "about",
+        "start": 3.1,
+        "end": 3.54
+      },
+      {
+        "word": "the",
+        "start": 3.54,
+        "end": 3.9
+      },
+      {
+        "word": "rain.",
+        "start": 3.9,
+        "end": 4.32
+      }
+    ]
+  },
+  "audio/lessons/RL.1.9/ex1.mp3": {
+    "duration": 6712,
+    "words": [
+      {
+        "word": "A",
+        "start": 0,
+        "end": 0.38
+      },
+      {
+        "word": "duck",
+        "start": 0.38,
+        "end": 0.78
+      },
+      {
+        "word": "plays",
+        "start": 0.78,
+        "end": 1.54
+      },
+      {
+        "word": "in",
+        "start": 1.54,
+        "end": 2.02
+      },
+      {
+        "word": "the",
+        "start": 2.02,
+        "end": 2.2
+      },
+      {
+        "word": "rain.",
+        "start": 2.2,
+        "end": 2.56
+      },
+      {
+        "word": "A",
+        "start": 3.38,
+        "end": 3.88
+      },
+      {
+        "word": "frog",
+        "start": 3.88,
+        "end": 4.3
+      },
+      {
+        "word": "hides",
+        "start": 4.3,
+        "end": 5.12
+      },
+      {
+        "word": "from",
+        "start": 5.12,
+        "end": 5.56
+      },
+      {
+        "word": "the",
+        "start": 5.56,
+        "end": 5.76
+      },
+      {
+        "word": "rain.",
+        "start": 5.76,
+        "end": 6.08
+      }
+    ]
+  },
+  "audio/lessons/RL.1.9/ex4.mp3": {
+    "duration": 9072,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.44
+      },
+      {
+        "word": "both",
+        "start": 0.44,
+        "end": 0.98
+      },
+      {
+        "word": "stories",
+        "start": 0.98,
+        "end": 1.72
+      },
+      {
+        "word": "share",
+        "start": 1.72,
+        "end": 2.26
+      },
+      {
+        "word": "the",
+        "start": 2.26,
+        "end": 2.54
+      },
+      {
+        "word": "rain,",
+        "start": 2.54,
+        "end": 3.12
+      },
+      {
+        "word": "but",
+        "start": 3.56,
+        "end": 3.82
+      },
+      {
+        "word": "the",
+        "start": 3.82,
+        "end": 4.04
+      },
+      {
+        "word": "animals",
+        "start": 4.04,
+        "end": 4.78
+      },
+      {
+        "word": "act",
+        "start": 4.78,
+        "end": 5.38
+      },
+      {
+        "word": "in",
+        "start": 5.38,
+        "end": 5.74
+      },
+      {
+        "word": "different",
+        "start": 5.74,
+        "end": 6.16
+      },
+      {
+        "word": "ways.",
+        "start": 6.16,
+        "end": 6.64
+      },
+      {
+        "word": "You",
+        "start": 7.44,
+        "end": 7.82
+      },
+      {
+        "word": "did",
+        "start": 7.82,
+        "end": 8.14
+      },
+      {
+        "word": "it!",
+        "start": 8.14,
+        "end": 8.52
+      }
+    ]
+  },
+  "audio/lessons/RL.1.9/ex3.mp3": {
+    "duration": 5992,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "is",
+        "start": 0.54,
+        "end": 0.84
+      },
+      {
+        "word": "different?",
+        "start": 0.84,
+        "end": 1.42
+      },
+      {
+        "word": "One",
+        "start": 2.42,
+        "end": 2.68
+      },
+      {
+        "word": "plays",
+        "start": 2.68,
+        "end": 3.28
+      },
+      {
+        "word": "and",
+        "start": 3.28,
+        "end": 4.16
+      },
+      {
+        "word": "one",
+        "start": 4.16,
+        "end": 4.62
+      },
+      {
+        "word": "hides.",
+        "start": 4.62,
+        "end": 5.16
+      }
+    ]
+  },
+  "audio/lessons/RI.1.6/ex2.mp3": {
+    "duration": 4672,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.46
+      },
+      {
+        "word": "tells",
+        "start": 0.46,
+        "end": 0.94
+      },
+      {
+        "word": "us",
+        "start": 0.94,
+        "end": 1.18
+      },
+      {
+        "word": "the",
+        "start": 1.18,
+        "end": 1.4
+      },
+      {
+        "word": "fact?",
+        "start": 1.4,
+        "end": 1.92
+      },
+      {
+        "word": "The",
+        "start": 2.74,
+        "end": 3.16
+      },
+      {
+        "word": "words!",
+        "start": 3.16,
+        "end": 3.88
+      }
+    ]
+  },
+  "audio/lessons/RI.1.6/ex1.mp3": {
+    "duration": 7872,
+    "words": [
+      {
+        "word": "The",
+        "start": 0,
+        "end": 0.42
+      },
+      {
+        "word": "words",
+        "start": 0.42,
+        "end": 0.88
+      },
+      {
+        "word": "say,",
+        "start": 0.88,
+        "end": 1.38
+      },
+      {
+        "word": "a",
+        "start": 1.72,
+        "end": 1.8
+      },
+      {
+        "word": "frog",
+        "start": 1.8,
+        "end": 2.28
+      },
+      {
+        "word": "can",
+        "start": 2.28,
+        "end": 2.8
+      },
+      {
+        "word": "jump",
+        "start": 2.8,
+        "end": 3.2
+      },
+      {
+        "word": "far.",
+        "start": 3.2,
+        "end": 3.72
+      },
+      {
+        "word": "And",
+        "start": 4.48,
+        "end": 4.74
+      },
+      {
+        "word": "the",
+        "start": 4.74,
+        "end": 4.88
+      },
+      {
+        "word": "picture",
+        "start": 4.88,
+        "end": 5.36
+      },
+      {
+        "word": "shows",
+        "start": 5.36,
+        "end": 5.84
+      },
+      {
+        "word": "its",
+        "start": 5.84,
+        "end": 6.12
+      },
+      {
+        "word": "green",
+        "start": 6.12,
+        "end": 6.54
+      },
+      {
+        "word": "skin.",
+        "start": 6.54,
+        "end": 7.1
+      }
+    ]
+  },
+  "audio/lessons/RI.1.6/ex0.mp3": {
+    "duration": 6952,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.66
+      },
+      {
+        "word": "try",
+        "start": 0.66,
+        "end": 0.92
+      },
+      {
+        "word": "one",
+        "start": 0.92,
+        "end": 1.22
+      },
+      {
+        "word": "together.",
+        "start": 1.22,
+        "end": 1.84
+      },
+      {
+        "word": "Here",
+        "start": 2.42,
+        "end": 2.96
+      },
+      {
+        "word": "is",
+        "start": 2.96,
+        "end": 3.26
+      },
+      {
+        "word": "a",
+        "start": 3.26,
+        "end": 3.4
+      },
+      {
+        "word": "page",
+        "start": 3.4,
+        "end": 3.98
+      },
+      {
+        "word": "from",
+        "start": 3.98,
+        "end": 4.24
+      },
+      {
+        "word": "a",
+        "start": 4.24,
+        "end": 4.4
+      },
+      {
+        "word": "fact",
+        "start": 4.4,
+        "end": 4.78
+      },
+      {
+        "word": "book",
+        "start": 4.78,
+        "end": 5.26
+      },
+      {
+        "word": "about",
+        "start": 5.26,
+        "end": 5.74
+      },
+      {
+        "word": "frogs.",
+        "start": 5.74,
+        "end": 6.26
+      }
+    ]
+  },
+  "audio/lessons/RI.1.6/ex3.mp3": {
+    "duration": 5712,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "shows",
+        "start": 0.54,
+        "end": 1.06
+      },
+      {
+        "word": "the",
+        "start": 1.06,
+        "end": 1.42
+      },
+      {
+        "word": "green",
+        "start": 1.42,
+        "end": 1.84
+      },
+      {
+        "word": "color?",
+        "start": 1.84,
+        "end": 2.46
+      },
+      {
+        "word": "The",
+        "start": 3.8800000000000003,
+        "end": 4.4
+      },
+      {
+        "word": "picture.",
+        "start": 4.4,
+        "end": 4.9
+      }
+    ]
+  },
+  "audio/lessons/L.1.5d/ex0.mp3": {
+    "duration": 4232,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.48
+      },
+      {
+        "word": "try",
+        "start": 0.48,
+        "end": 0.66
+      },
+      {
+        "word": "one",
+        "start": 0.66,
+        "end": 0.9
+      },
+      {
+        "word": "together.",
+        "start": 0.9,
+        "end": 1.38
+      },
+      {
+        "word": "Here",
+        "start": 2.08,
+        "end": 2.66
+      },
+      {
+        "word": "are",
+        "start": 2.66,
+        "end": 2.9
+      },
+      {
+        "word": "two",
+        "start": 2.9,
+        "end": 3.2
+      },
+      {
+        "word": "words.",
+        "start": 3.2,
+        "end": 3.7
+      }
+    ]
+  },
+  "audio/lessons/RI.1.6/ex4.mp3": {
+    "duration": 7912,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.64
+      },
+      {
+        "word": "words",
+        "start": 0.64,
+        "end": 1.62
+      },
+      {
+        "word": "tell",
+        "start": 1.62,
+        "end": 1.92
+      },
+      {
+        "word": "facts",
+        "start": 1.92,
+        "end": 2.44
+      },
+      {
+        "word": "and",
+        "start": 2.44,
+        "end": 3.18
+      },
+      {
+        "word": "pictures",
+        "start": 3.18,
+        "end": 3.7
+      },
+      {
+        "word": "show",
+        "start": 3.7,
+        "end": 4.52
+      },
+      {
+        "word": "how",
+        "start": 4.52,
+        "end": 4.86
+      },
+      {
+        "word": "things",
+        "start": 4.86,
+        "end": 5.3
+      },
+      {
+        "word": "look.",
+        "start": 5.3,
+        "end": 5.68
+      },
+      {
+        "word": "You",
+        "start": 6.32,
+        "end": 6.74
+      },
+      {
+        "word": "did",
+        "start": 6.74,
+        "end": 7.02
+      },
+      {
+        "word": "it.",
+        "start": 7.02,
+        "end": 7.38
+      }
+    ]
+  },
+  "audio/lessons/L.1.5d/ex3.mp3": {
+    "duration": 5312,
+    "words": [
+      {
+        "word": "And",
+        "start": 0,
+        "end": 0.78
+      },
+      {
+        "word": "which",
+        "start": 0.78,
+        "end": 1.2
+      },
+      {
+        "word": "one",
+        "start": 1.2,
+        "end": 1.68
+      },
+      {
+        "word": "is",
+        "start": 1.68,
+        "end": 2.04
+      },
+      {
+        "word": "stronger?",
+        "start": 2.04,
+        "end": 2.96
+      },
+      {
+        "word": "Freezing!",
+        "start": 3.72,
+        "end": 4.52
+      }
+    ]
+  },
+  "audio/lessons/L.1.5d/ex2.mp3": {
+    "duration": 5152,
+    "words": [
+      {
+        "word": "Which",
+        "start": 0,
+        "end": 0.62
+      },
+      {
+        "word": "one",
+        "start": 0.62,
+        "end": 0.92
+      },
+      {
+        "word": "is",
+        "start": 0.92,
+        "end": 1.26
+      },
+      {
+        "word": "a",
+        "start": 1.26,
+        "end": 1.52
+      },
+      {
+        "word": "little",
+        "start": 1.52,
+        "end": 1.92
+      },
+      {
+        "word": "cold?",
+        "start": 1.92,
+        "end": 2.54
+      },
+      {
+        "word": "Cold!",
+        "start": 3.6,
+        "end": 4.28
+      }
+    ]
+  },
+  "audio/lessons/RL.2.7/ex1.mp3": {
+    "duration": 4552,
+    "words": [
+      {
+        "word": "The",
+        "start": 0,
+        "end": 0.42
+      },
+      {
+        "word": "words",
+        "start": 0.42,
+        "end": 0.8
+      },
+      {
+        "word": "say,",
+        "start": 0.8,
+        "end": 1.42
+      },
+      {
+        "word": "Sam",
+        "start": 2.06,
+        "end": 2.46
+      },
+      {
+        "word": "went",
+        "start": 2.46,
+        "end": 2.84
+      },
+      {
+        "word": "out",
+        "start": 2.84,
+        "end": 3.28
+      },
+      {
+        "word": "to",
+        "start": 3.28,
+        "end": 3.56
+      },
+      {
+        "word": "play.",
+        "start": 3.56,
+        "end": 3.9
+      }
+    ]
+  },
+  "audio/lessons/RL.2.7/ex0.mp3": {
+    "duration": 4672,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.68
+      },
+      {
+        "word": "try",
+        "start": 0.68,
+        "end": 0.98
+      },
+      {
+        "word": "one",
+        "start": 0.98,
+        "end": 1.42
+      },
+      {
+        "word": "together.",
+        "start": 1.42,
+        "end": 2.16
+      },
+      {
+        "word": "Here's",
+        "start": 2.9,
+        "end": 3.46
+      },
+      {
+        "word": "a",
+        "start": 3.46,
+        "end": 3.54
+      },
+      {
+        "word": "picture.",
+        "start": 3.54,
+        "end": 3.9
+      }
+    ]
+  },
+  "audio/lessons/L.1.5d/ex1.mp3": {
+    "duration": 5152,
+    "words": [
+      {
+        "word": "Here",
+        "start": 0,
+        "end": 0.72
+      },
+      {
+        "word": "they",
+        "start": 0.72,
+        "end": 1.08
+      },
+      {
+        "word": "are",
+        "start": 1.08,
+        "end": 1.42
+      },
+      {
+        "word": "cold",
+        "start": 1.42,
+        "end": 2.32
+      },
+      {
+        "word": "and",
+        "start": 2.32,
+        "end": 3.56
+      },
+      {
+        "word": "freezing",
+        "start": 3.56,
+        "end": 4.4
+      }
+    ]
+  },
+  "audio/lessons/RL.2.7/ex2.mp3": {
+    "duration": 4832,
+    "words": [
+      {
+        "word": "What's",
+        "start": 0,
+        "end": 0.74
+      },
+      {
+        "word": "in",
+        "start": 0.74,
+        "end": 0.86
+      },
+      {
+        "word": "the",
+        "start": 0.86,
+        "end": 1.02
+      },
+      {
+        "word": "picture?",
+        "start": 1.02,
+        "end": 1.46
+      },
+      {
+        "word": "Sun",
+        "start": 2.42,
+        "end": 2.96
+      },
+      {
+        "word": "and",
+        "start": 2.96,
+        "end": 3.5
+      },
+      {
+        "word": "sand.",
+        "start": 3.5,
+        "end": 4
+      }
+    ]
+  },
+  "audio/lessons/RL.2.7/ex3.mp3": {
+    "duration": 7992,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.58
+      },
+      {
+        "word": "where",
+        "start": 0.58,
+        "end": 1.66
+      },
+      {
+        "word": "is",
+        "start": 1.66,
+        "end": 2
+      },
+      {
+        "word": "Sam?",
+        "start": 2,
+        "end": 2.48
+      }
+    ]
+  },
+  "audio/lessons/L.1.5d/ex4.mp3": {
+    "duration": 5912,
+    "words": [
+      {
+        "word": "Freezing",
+        "start": 0,
+        "end": 0.92
+      },
+      {
+        "word": "paints",
+        "start": 0.92,
+        "end": 1.42
+      },
+      {
+        "word": "a",
+        "start": 1.42,
+        "end": 1.72
+      },
+      {
+        "word": "stronger",
+        "start": 1.72,
+        "end": 2.42
+      },
+      {
+        "word": "picture.",
+        "start": 2.42,
+        "end": 2.98
+      },
+      {
+        "word": "You",
+        "start": 3.4,
+        "end": 3.82
+      },
+      {
+        "word": "picked",
+        "start": 3.82,
+        "end": 4.3
+      },
+      {
+        "word": "the",
+        "start": 4.3,
+        "end": 4.58
+      },
+      {
+        "word": "right",
+        "start": 4.58,
+        "end": 4.84
+      },
+      {
+        "word": "shade.",
+        "start": 4.84,
+        "end": 5.28
+      }
+    ]
+  },
+  "audio/lessons/RI.2.5/ex3.mp3": {
+    "duration": 4992,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.44
+      },
+      {
+        "word": "does",
+        "start": 0.44,
+        "end": 0.72
+      },
+      {
+        "word": "the",
+        "start": 0.72,
+        "end": 0.88
+      },
+      {
+        "word": "caption",
+        "start": 0.88,
+        "end": 1.36
+      },
+      {
+        "word": "tell",
+        "start": 1.36,
+        "end": 1.98
+      },
+      {
+        "word": "about?",
+        "start": 1.98,
+        "end": 2.42
+      },
+      {
+        "word": "The",
+        "start": 3.04,
+        "end": 3.64
+      },
+      {
+        "word": "picture.",
+        "start": 3.64,
+        "end": 4.1
+      }
+    ]
+  },
+  "audio/lessons/RI.2.5/ex2.mp3": {
+    "duration": 4552,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "is",
+        "start": 0.52,
+        "end": 0.72
+      },
+      {
+        "word": "this",
+        "start": 0.72,
+        "end": 1.18
+      },
+      {
+        "word": "part",
+        "start": 1.18,
+        "end": 1.56
+      },
+      {
+        "word": "called?",
+        "start": 1.56,
+        "end": 2.16
+      },
+      {
+        "word": "A",
+        "start": 2.98,
+        "end": 3.1
+      },
+      {
+        "word": "caption!",
+        "start": 3.1,
+        "end": 3.68
+      }
+    ]
+  },
+  "audio/lessons/RI.2.5/ex4.mp3": {
+    "duration": 6512,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.6
+      },
+      {
+        "word": "a",
+        "start": 0.6,
+        "end": 1.08
+      },
+      {
+        "word": "caption",
+        "start": 1.08,
+        "end": 1.8
+      },
+      {
+        "word": "explains",
+        "start": 1.8,
+        "end": 2.78
+      },
+      {
+        "word": "a",
+        "start": 2.78,
+        "end": 3.18
+      },
+      {
+        "word": "picture.",
+        "start": 3.18,
+        "end": 3.66
+      },
+      {
+        "word": "You",
+        "start": 4.2,
+        "end": 4.68
+      },
+      {
+        "word": "found",
+        "start": 4.68,
+        "end": 5.08
+      },
+      {
+        "word": "it",
+        "start": 5.08,
+        "end": 5.24
+      },
+      {
+        "word": "fast.",
+        "start": 5.24,
+        "end": 5.7
+      }
+    ]
+  },
+  "audio/lessons/RI.2.5/ex1.mp3": {
+    "duration": 5952,
+    "words": [
+      {
+        "word": "Under",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "a",
+        "start": 0.52,
+        "end": 0.76
+      },
+      {
+        "word": "picture",
+        "start": 0.76,
+        "end": 1.24
+      },
+      {
+        "word": "it",
+        "start": 1.24,
+        "end": 1.64
+      },
+      {
+        "word": "says,",
+        "start": 1.64,
+        "end": 2.02
+      },
+      {
+        "word": "this",
+        "start": 2.68,
+        "end": 3.26
+      },
+      {
+        "word": "ant",
+        "start": 3.26,
+        "end": 3.72
+      },
+      {
+        "word": "carries",
+        "start": 3.72,
+        "end": 4.48
+      },
+      {
+        "word": "food.",
+        "start": 4.48,
+        "end": 5.26
+      }
+    ]
+  },
+  "audio/lessons/RI.2.5/ex0.mp3": {
+    "duration": 6072,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.64
+      },
+      {
+        "word": "try",
+        "start": 0.64,
+        "end": 0.94
+      },
+      {
+        "word": "one",
+        "start": 0.94,
+        "end": 1.36
+      },
+      {
+        "word": "together.",
+        "start": 1.36,
+        "end": 2.08
+      },
+      {
+        "word": "Here's",
+        "start": 2.64,
+        "end": 3.36
+      },
+      {
+        "word": "a",
+        "start": 3.36,
+        "end": 3.44
+      },
+      {
+        "word": "page",
+        "start": 3.44,
+        "end": 3.96
+      },
+      {
+        "word": "from",
+        "start": 3.96,
+        "end": 4.32
+      },
+      {
+        "word": "a",
+        "start": 4.32,
+        "end": 4.52
+      },
+      {
+        "word": "bug",
+        "start": 4.52,
+        "end": 4.94
+      },
+      {
+        "word": "book.",
+        "start": 4.94,
+        "end": 5.36
+      }
+    ]
+  },
+  "audio/lessons/RL.2.7/ex4.mp3": {
+    "duration": 6912,
+    "words": [
+      {
+        "word": "And",
+        "start": 0,
+        "end": 0.62
+      },
+      {
+        "word": "how",
+        "start": 0.62,
+        "end": 0.98
+      },
+      {
+        "word": "does",
+        "start": 0.98,
+        "end": 1.28
+      },
+      {
+        "word": "Sam",
+        "start": 1.28,
+        "end": 1.62
+      },
+      {
+        "word": "feel?",
+        "start": 1.62,
+        "end": 2.06
+      },
+      {
+        "word": "Happy!",
+        "start": 3.04,
+        "end": 3.42
+      },
+      {
+        "word": "You",
+        "start": 4.16,
+        "end": 4.52
+      },
+      {
+        "word": "use",
+        "start": 4.52,
+        "end": 4.9
+      },
+      {
+        "word": "the",
+        "start": 4.9,
+        "end": 5.06
+      },
+      {
+        "word": "picture",
+        "start": 5.06,
+        "end": 5.42
+      },
+      {
+        "word": "to",
+        "start": 5.42,
+        "end": 5.68
+      },
+      {
+        "word": "learn",
+        "start": 5.68,
+        "end": 5.88
+      },
+      {
+        "word": "more.",
+        "start": 5.88,
+        "end": 6.26
+      }
+    ]
+  },
+  "audio/lessons/RI.2.6/ex0.mp3": {
+    "duration": 5192,
+    "words": [
+      {
+        "word": "Okay,",
+        "start": 0,
+        "end": 0.5
+      },
+      {
+        "word": "let's",
+        "start": 0.74,
+        "end": 1.48
+      },
+      {
+        "word": "try",
+        "start": 1.48,
+        "end": 1.72
+      },
+      {
+        "word": "one",
+        "start": 1.72,
+        "end": 2.02
+      },
+      {
+        "word": "together.",
+        "start": 2.02,
+        "end": 2.54
+      },
+      {
+        "word": "Here's",
+        "start": 3.08,
+        "end": 3.7
+      },
+      {
+        "word": "a",
+        "start": 3.7,
+        "end": 3.8
+      },
+      {
+        "word": "short",
+        "start": 3.8,
+        "end": 4.14
+      },
+      {
+        "word": "text.",
+        "start": 4.14,
+        "end": 4.7
+      }
+    ]
+  },
+  "audio/lessons/RI.2.6/ex1.mp3": {
+    "duration": 6512,
+    "words": [
+      {
+        "word": "First",
+        "start": 0,
+        "end": 0.74
+      },
+      {
+        "word": "dig",
+        "start": 0.74,
+        "end": 1.3
+      },
+      {
+        "word": "a",
+        "start": 1.3,
+        "end": 1.74
+      },
+      {
+        "word": "hole.",
+        "start": 1.74,
+        "end": 2.26
+      },
+      {
+        "word": "Add",
+        "start": 2.42,
+        "end": 3.26
+      },
+      {
+        "word": "a",
+        "start": 3.26,
+        "end": 3.58
+      },
+      {
+        "word": "seed.",
+        "start": 3.58,
+        "end": 3.94
+      },
+      {
+        "word": "Give",
+        "start": 4.34,
+        "end": 5.08
+      },
+      {
+        "word": "it",
+        "start": 5.08,
+        "end": 5.34
+      },
+      {
+        "word": "water.",
+        "start": 5.34,
+        "end": 5.86
+      }
+    ]
+  },
+  "audio/lessons/RI.2.6/ex3.mp3": {
+    "duration": 5072,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.58
+      },
+      {
+        "word": "why",
+        "start": 0.58,
+        "end": 1.34
+      },
+      {
+        "word": "did",
+        "start": 1.34,
+        "end": 1.58
+      },
+      {
+        "word": "the",
+        "start": 1.58,
+        "end": 1.78
+      },
+      {
+        "word": "author",
+        "start": 1.78,
+        "end": 2.14
+      },
+      {
+        "word": "write",
+        "start": 2.14,
+        "end": 2.56
+      },
+      {
+        "word": "it?",
+        "start": 2.56,
+        "end": 2.96
+      },
+      {
+        "word": "To",
+        "start": 3.44,
+        "end": 3.76
+      },
+      {
+        "word": "teach",
+        "start": 3.76,
+        "end": 4.2
+      },
+      {
+        "word": "us.",
+        "start": 4.2,
+        "end": 4.52
+      }
+    ]
+  },
+  "audio/lessons/RI.2.6/ex4.mp3": {
+    "duration": 7992,
+    "words": [
+      {
+        "word": "The",
+        "start": 0,
+        "end": 0.34
+      },
+      {
+        "word": "author's",
+        "start": 0.34,
+        "end": 1.08
+      },
+      {
+        "word": "purpose",
+        "start": 1.08,
+        "end": 1.5
+      },
+      {
+        "word": "is",
+        "start": 1.5,
+        "end": 2.12
+      },
+      {
+        "word": "to",
+        "start": 2.12,
+        "end": 2.38
+      },
+      {
+        "word": "teach.",
+        "start": 2.38,
+        "end": 2.92
+      }
+    ]
+  },
+  "audio/lessons/RI.2.7/ex1.mp3": {
+    "duration": 9352,
+    "words": [
+      {
+        "word": "This",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "book",
+        "start": 0.54,
+        "end": 0.82
+      },
+      {
+        "word": "is",
+        "start": 0.82,
+        "end": 1.22
+      },
+      {
+        "word": "all",
+        "start": 1.22,
+        "end": 1.66
+      },
+      {
+        "word": "about",
+        "start": 1.66,
+        "end": 2.22
+      },
+      {
+        "word": "bees.",
+        "start": 2.22,
+        "end": 2.76
+      },
+      {
+        "word": "Look,",
+        "start": 3.66,
+        "end": 4.24
+      },
+      {
+        "word": "the",
+        "start": 4.72,
+        "end": 5
+      },
+      {
+        "word": "picture",
+        "start": 5,
+        "end": 5.44
+      },
+      {
+        "word": "shows",
+        "start": 5.44,
+        "end": 6.04
+      },
+      {
+        "word": "a",
+        "start": 6.04,
+        "end": 6.48
+      },
+      {
+        "word": "bee's",
+        "start": 6.48,
+        "end": 7.04
+      },
+      {
+        "word": "wings",
+        "start": 7.04,
+        "end": 7.52
+      },
+      {
+        "word": "up",
+        "start": 7.52,
+        "end": 8.06
+      },
+      {
+        "word": "close.",
+        "start": 8.06,
+        "end": 8.6
+      }
+    ]
+  },
+  "audio/lessons/RI.2.6/ex2.mp3": {
+    "duration": 7032,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0
+      },
+      {
+        "word": "what",
+        "start": 0,
+        "end": 0.46
+      },
+      {
+        "word": "does",
+        "start": 0.46,
+        "end": 0.78
+      },
+      {
+        "word": "this",
+        "start": 0.78,
+        "end": 1.16
+      },
+      {
+        "word": "text",
+        "start": 1.16,
+        "end": 1.64
+      },
+      {
+        "word": "give",
+        "start": 1.64,
+        "end": 2.12
+      },
+      {
+        "word": "us?",
+        "start": 2.12,
+        "end": 2.62
+      },
+      {
+        "word": "Steps",
+        "start": 5.26,
+        "end": 5.74
+      },
+      {
+        "word": "to",
+        "start": 5.74,
+        "end": 5.86
+      },
+      {
+        "word": "plant.",
+        "start": 5.86,
+        "end": 6.34
+      }
+    ]
+  },
+  "audio/lessons/RI.2.7/ex3.mp3": {
+    "duration": 5712,
+    "words": [
+      {
+        "word": "How",
+        "start": 0,
+        "end": 0.5
+      },
+      {
+        "word": "does",
+        "start": 0.5,
+        "end": 0.72
+      },
+      {
+        "word": "that",
+        "start": 0.72,
+        "end": 0.98
+      },
+      {
+        "word": "picture",
+        "start": 0.98,
+        "end": 1.36
+      },
+      {
+        "word": "help?",
+        "start": 1.36,
+        "end": 1.76
+      },
+      {
+        "word": "Now",
+        "start": 2.58,
+        "end": 2.92
+      },
+      {
+        "word": "we",
+        "start": 2.92,
+        "end": 3.2
+      },
+      {
+        "word": "can",
+        "start": 3.2,
+        "end": 3.38
+      },
+      {
+        "word": "see",
+        "start": 3.38,
+        "end": 3.68
+      },
+      {
+        "word": "how",
+        "start": 3.68,
+        "end": 3.94
+      },
+      {
+        "word": "bees",
+        "start": 3.94,
+        "end": 4.3
+      },
+      {
+        "word": "fly.",
+        "start": 4.3,
+        "end": 4.92
+      }
+    ]
+  },
+  "audio/lessons/RI.2.7/ex2.mp3": {
+    "duration": 5392,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.58
+      },
+      {
+        "word": "does",
+        "start": 0.58,
+        "end": 0.92
+      },
+      {
+        "word": "the",
+        "start": 0.92,
+        "end": 1.18
+      },
+      {
+        "word": "picture",
+        "start": 1.18,
+        "end": 1.64
+      },
+      {
+        "word": "show",
+        "start": 1.64,
+        "end": 2.1
+      },
+      {
+        "word": "us?",
+        "start": 2.1,
+        "end": 2.54
+      },
+      {
+        "word": "A",
+        "start": 3.38,
+        "end": 3.48
+      },
+      {
+        "word": "bee's",
+        "start": 3.48,
+        "end": 4.14
+      },
+      {
+        "word": "wings!",
+        "start": 4.14,
+        "end": 4.54
+      }
+    ]
+  },
+  "audio/lessons/RI.2.7/ex0.mp3": {
+    "duration": 7232,
+    "words": [
+      {
+        "word": "Okay,",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "let's",
+        "start": 0.92,
+        "end": 1.54
+      },
+      {
+        "word": "try",
+        "start": 1.54,
+        "end": 1.86
+      },
+      {
+        "word": "one",
+        "start": 1.86,
+        "end": 2.34
+      },
+      {
+        "word": "together.",
+        "start": 2.34,
+        "end": 2.9
+      },
+      {
+        "word": "Here's",
+        "start": 3.38,
+        "end": 3.92
+      },
+      {
+        "word": "a",
+        "start": 3.92,
+        "end": 4
+      },
+      {
+        "word": "page",
+        "start": 4,
+        "end": 4.4
+      },
+      {
+        "word": "from",
+        "start": 4.4,
+        "end": 4.68
+      },
+      {
+        "word": "a",
+        "start": 4.68,
+        "end": 4.82
+      },
+      {
+        "word": "fact",
+        "start": 4.82,
+        "end": 5.18
+      },
+      {
+        "word": "book",
+        "start": 5.18,
+        "end": 5.52
+      },
+      {
+        "word": "about",
+        "start": 5.52,
+        "end": 6.02
+      },
+      {
+        "word": "bees.",
+        "start": 6.02,
+        "end": 6.48
+      }
+    ]
+  },
+  "audio/lessons/RI.2.7/ex4.mp3": {
+    "duration": 6632,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "pictures",
+        "start": 0.52,
+        "end": 1.2
+      },
+      {
+        "word": "help",
+        "start": 1.2,
+        "end": 1.98
+      },
+      {
+        "word": "us",
+        "start": 1.98,
+        "end": 2.3
+      },
+      {
+        "word": "do",
+        "start": 2.3,
+        "end": 2.58
+      },
+      {
+        "word": "what?",
+        "start": 2.58,
+        "end": 3.02
+      },
+      {
+        "word": "Understand",
+        "start": 4.1,
+        "end": 4.84
+      },
+      {
+        "word": "the",
+        "start": 4.84,
+        "end": 5.3
+      },
+      {
+        "word": "facts.",
+        "start": 5.3,
+        "end": 5.96
+      }
+    ]
+  },
+  "audio/lessons/L.2.4d/ex1.mp3": {
+    "duration": 3952,
+    "words": [
+      {
+        "word": "Here",
+        "start": 0,
+        "end": 0.58
+      },
+      {
+        "word": "is",
+        "start": 0.58,
+        "end": 1.02
+      },
+      {
+        "word": "the",
+        "start": 1.02,
+        "end": 1.22
+      },
+      {
+        "word": "word",
+        "start": 1.22,
+        "end": 1.66
+      },
+      {
+        "word": "starfish.",
+        "start": 1.66,
+        "end": 3.18
+      }
+    ]
+  },
+  "audio/lessons/RI.2.7/ex5.mp3": {
+    "duration": 8712,
+    "words": [
+      {
+        "word": "Yes,",
+        "start": 0,
+        "end": 0.64
+      },
+      {
+        "word": "the",
+        "start": 1.18,
+        "end": 1.52
+      },
+      {
+        "word": "picture",
+        "start": 1.52,
+        "end": 1.94
+      },
+      {
+        "word": "showed",
+        "start": 1.94,
+        "end": 2.42
+      },
+      {
+        "word": "what",
+        "start": 2.42,
+        "end": 2.82
+      },
+      {
+        "word": "the",
+        "start": 2.82,
+        "end": 2.98
+      },
+      {
+        "word": "words",
+        "start": 2.98,
+        "end": 3.46
+      },
+      {
+        "word": "could",
+        "start": 3.46,
+        "end": 3.9
+      },
+      {
+        "word": "not.",
+        "start": 3.9,
+        "end": 4.3
+      },
+      {
+        "word": "You",
+        "start": 5,
+        "end": 5.36
+      },
+      {
+        "word": "used",
+        "start": 5.36,
+        "end": 5.74
+      },
+      {
+        "word": "the",
+        "start": 5.74,
+        "end": 5.9
+      },
+      {
+        "word": "picture",
+        "start": 5.9,
+        "end": 6.28
+      },
+      {
+        "word": "to",
+        "start": 6.28,
+        "end": 6.6
+      },
+      {
+        "word": "understand",
+        "start": 6.6,
+        "end": 7.28
+      },
+      {
+        "word": "the",
+        "start": 7.28,
+        "end": 7.6
+      },
+      {
+        "word": "facts.",
+        "start": 7.6,
+        "end": 8.1
+      }
+    ]
+  },
+  "audio/lessons/L.2.4d/ex2.mp3": {
+    "duration": 5792,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.46
+      },
+      {
+        "word": "two",
+        "start": 0.46,
+        "end": 0.88
+      },
+      {
+        "word": "words",
+        "start": 0.88,
+        "end": 1.46
+      },
+      {
+        "word": "make",
+        "start": 1.46,
+        "end": 1.86
+      },
+      {
+        "word": "it",
+        "start": 1.86,
+        "end": 2.08
+      },
+      {
+        "word": "up?",
+        "start": 2.08,
+        "end": 2.4
+      },
+      {
+        "word": "Star",
+        "start": 3.04,
+        "end": 3.58
+      },
+      {
+        "word": "and",
+        "start": 3.58,
+        "end": 4.58
+      },
+      {
+        "word": "fish.",
+        "start": 4.58,
+        "end": 4.98
+      }
+    ]
+  },
+  "audio/lessons/L.2.4d/ex0.mp3": {
+    "duration": 4952,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.62
+      },
+      {
+        "word": "try",
+        "start": 0.62,
+        "end": 0.86
+      },
+      {
+        "word": "one",
+        "start": 0.86,
+        "end": 1.26
+      },
+      {
+        "word": "together.",
+        "start": 1.26,
+        "end": 1.9
+      },
+      {
+        "word": "Here's",
+        "start": 2.6,
+        "end": 3.12
+      },
+      {
+        "word": "a",
+        "start": 3.12,
+        "end": 3.24
+      },
+      {
+        "word": "compound",
+        "start": 3.24,
+        "end": 3.6
+      },
+      {
+        "word": "word.",
+        "start": 3.6,
+        "end": 4.04
+      }
+    ]
+  },
+  "audio/lessons/L.2.4d/ex4.mp3": {
+    "duration": 8032,
+    "words": [
+      {
+        "word": "So,",
+        "start": 0,
+        "end": 0.58
+      },
+      {
+        "word": "starfish",
+        "start": 1.04,
+        "end": 1.72
+      },
+      {
+        "word": "means",
+        "start": 1.72,
+        "end": 2.32
+      },
+      {
+        "word": "a",
+        "start": 2.32,
+        "end": 2.96
+      },
+      {
+        "word": "fish",
+        "start": 2.96,
+        "end": 3.6
+      },
+      {
+        "word": "shaped",
+        "start": 3.6,
+        "end": 4.36
+      },
+      {
+        "word": "like",
+        "start": 4.36,
+        "end": 4.66
+      },
+      {
+        "word": "a",
+        "start": 4.66,
+        "end": 4.86
+      },
+      {
+        "word": "star.",
+        "start": 4.86,
+        "end": 5.36
+      },
+      {
+        "word": "You",
+        "start": 5.74,
+        "end": 6.42
+      },
+      {
+        "word": "split",
+        "start": 6.42,
+        "end": 6.84
+      },
+      {
+        "word": "it",
+        "start": 6.84,
+        "end": 7.02
+      },
+      {
+        "word": "apart.",
+        "start": 7.02,
+        "end": 7.4
+      }
+    ]
+  },
+  "audio/lessons/L.2.5b/ex1.mp3": {
+    "duration": 9032,
+    "words": [
+      {
+        "word": "damp,",
+        "start": 0,
+        "end": 0.7
+      },
+      {
+        "word": "wet,",
+        "start": 1.4,
+        "end": 1.84
+      },
+      {
+        "word": "and",
+        "start": 2.38,
+        "end": 2.86
+      },
+      {
+        "word": "soaked.",
+        "start": 2.86,
+        "end": 3.46
+      },
+      {
+        "word": "They",
+        "start": 4.06,
+        "end": 4.58
+      },
+      {
+        "word": "all",
+        "start": 4.58,
+        "end": 4.94
+      },
+      {
+        "word": "mean",
+        "start": 4.94,
+        "end": 5.32
+      },
+      {
+        "word": "wet,",
+        "start": 5.32,
+        "end": 5.82
+      },
+      {
+        "word": "but",
+        "start": 6.3,
+        "end": 6.62
+      },
+      {
+        "word": "each",
+        "start": 6.62,
+        "end": 6.98
+      },
+      {
+        "word": "one",
+        "start": 6.98,
+        "end": 7.36
+      },
+      {
+        "word": "is",
+        "start": 7.36,
+        "end": 7.72
+      },
+      {
+        "word": "stronger.",
+        "start": 7.72,
+        "end": 8.38
+      }
+    ]
+  },
+  "audio/lessons/L.2.4d/ex3.mp3": {
+    "duration": 5072,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.46
+      },
+      {
+        "word": "does",
+        "start": 0.46,
+        "end": 0.76
+      },
+      {
+        "word": "it",
+        "start": 0.76,
+        "end": 0.94
+      },
+      {
+        "word": "mean?",
+        "start": 0.94,
+        "end": 1.3
+      },
+      {
+        "word": "A",
+        "start": 1.94,
+        "end": 2.06
+      },
+      {
+        "word": "fish",
+        "start": 2.06,
+        "end": 2.72
+      },
+      {
+        "word": "shaped",
+        "start": 2.72,
+        "end": 3.34
+      },
+      {
+        "word": "like",
+        "start": 3.34,
+        "end": 3.66
+      },
+      {
+        "word": "a",
+        "start": 3.66,
+        "end": 3.82
+      },
+      {
+        "word": "star?",
+        "start": 3.82,
+        "end": 4.36
+      }
+    ]
+  },
+  "audio/lessons/L.2.5b/ex0.mp3": {
+    "duration": 4832,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.66
+      },
+      {
+        "word": "try",
+        "start": 0.66,
+        "end": 0.86
+      },
+      {
+        "word": "one",
+        "start": 0.86,
+        "end": 1.16
+      },
+      {
+        "word": "together.",
+        "start": 1.16,
+        "end": 1.72
+      },
+      {
+        "word": "Here",
+        "start": 2.2,
+        "end": 2.96
+      },
+      {
+        "word": "are",
+        "start": 2.96,
+        "end": 3.2
+      },
+      {
+        "word": "three",
+        "start": 3.2,
+        "end": 3.62
+      },
+      {
+        "word": "words.",
+        "start": 3.62,
+        "end": 4.2
+      }
+    ]
+  },
+  "audio/lessons/L.2.5b/ex2.mp3": {
+    "duration": 5832,
+    "words": [
+      {
+        "word": "which",
+        "start": 0,
+        "end": 0.66
+      },
+      {
+        "word": "is",
+        "start": 0.66,
+        "end": 0.94
+      },
+      {
+        "word": "weakest.",
+        "start": 0.94,
+        "end": 1.46
+      },
+      {
+        "word": "Damnp.",
+        "start": 2.22,
+        "end": 3
+      },
+      {
+        "word": "Just",
+        "start": 3.3,
+        "end": 3.74
+      },
+      {
+        "word": "a",
+        "start": 3.74,
+        "end": 4.22
+      },
+      {
+        "word": "little",
+        "start": 4.22,
+        "end": 4.56
+      },
+      {
+        "word": "bit",
+        "start": 4.56,
+        "end": 4.86
+      },
+      {
+        "word": "wet.",
+        "start": 4.86,
+        "end": 5.24
+      }
+    ]
+  },
+  "audio/lessons/L.2.5b/ex4.mp3": {
+    "duration": 10672,
+    "words": [
+      {
+        "word": "Which",
+        "start": 0,
+        "end": 0.64
+      },
+      {
+        "word": "is",
+        "start": 0.64,
+        "end": 0.98
+      },
+      {
+        "word": "strongest?",
+        "start": 0.98,
+        "end": 1.68
+      },
+      {
+        "word": "Soaked.",
+        "start": 4.5,
+        "end": 5.4
+      },
+      {
+        "word": "Dripping",
+        "start": 6.16,
+        "end": 6.54
+      },
+      {
+        "word": "wet.",
+        "start": 6.54,
+        "end": 7.08
+      },
+      {
+        "word": "You",
+        "start": 7.74,
+        "end": 8.16
+      },
+      {
+        "word": "found",
+        "start": 8.16,
+        "end": 8.58
+      },
+      {
+        "word": "all",
+        "start": 8.58,
+        "end": 8.96
+      },
+      {
+        "word": "three",
+        "start": 8.96,
+        "end": 9.4
+      },
+      {
+        "word": "shades.",
+        "start": 9.4,
+        "end": 9.84
+      }
+    ]
+  },
+  "audio/lessons/RI.3.9/ex4.mp3": {
+    "duration": 10152,
+    "words": [
+      {
+        "word": "So,",
+        "start": 0,
+        "end": 0.6
+      },
+      {
+        "word": "both",
+        "start": 1.06,
+        "end": 1.58
+      },
+      {
+        "word": "share",
+        "start": 1.58,
+        "end": 2
+      },
+      {
+        "word": "B's,",
+        "start": 2,
+        "end": 2.8
+      },
+      {
+        "word": "but",
+        "start": 3.04,
+        "end": 3.32
+      },
+      {
+        "word": "each",
+        "start": 3.32,
+        "end": 3.82
+      },
+      {
+        "word": "text",
+        "start": 3.82,
+        "end": 4.28
+      },
+      {
+        "word": "adds",
+        "start": 4.28,
+        "end": 5.1
+      },
+      {
+        "word": "its",
+        "start": 5.1,
+        "end": 5.52
+      },
+      {
+        "word": "own",
+        "start": 5.52,
+        "end": 5.92
+      },
+      {
+        "word": "fact.",
+        "start": 5.92,
+        "end": 6.7
+      },
+      {
+        "word": "You",
+        "start": 7,
+        "end": 7.64
+      },
+      {
+        "word": "compared",
+        "start": 7.64,
+        "end": 8.3
+      },
+      {
+        "word": "two",
+        "start": 8.3,
+        "end": 8.98
+      },
+      {
+        "word": "texts.",
+        "start": 8.98,
+        "end": 9.54
+      }
+    ]
+  },
+  "audio/lessons/L.2.5b/ex3.mp3": {
+    "duration": 6792,
+    "words": [
+      {
+        "word": "Which",
+        "start": 0,
+        "end": 0.64
+      },
+      {
+        "word": "is",
+        "start": 0.64,
+        "end": 0.98
+      },
+      {
+        "word": "medium?",
+        "start": 0.98,
+        "end": 1.6
+      },
+      {
+        "word": "Wet.",
+        "start": 3.04,
+        "end": 3.94
+      },
+      {
+        "word": "More",
+        "start": 4.8,
+        "end": 5.38
+      },
+      {
+        "word": "than",
+        "start": 5.38,
+        "end": 5.7
+      },
+      {
+        "word": "damp.",
+        "start": 5.7,
+        "end": 6.08
+      }
+    ]
+  },
+  "audio/lessons/RI.3.9/ex3.mp3": {
+    "duration": 6592,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "is",
+        "start": 0.56,
+        "end": 0.98
+      },
+      {
+        "word": "different?",
+        "start": 0.98,
+        "end": 1.68
+      },
+      {
+        "word": "Only",
+        "start": 2.56,
+        "end": 3.02
+      },
+      {
+        "word": "text",
+        "start": 3.02,
+        "end": 3.42
+      },
+      {
+        "word": "one",
+        "start": 3.42,
+        "end": 3.9
+      },
+      {
+        "word": "talks",
+        "start": 3.9,
+        "end": 4.64
+      },
+      {
+        "word": "about",
+        "start": 4.64,
+        "end": 5.24
+      },
+      {
+        "word": "honey.",
+        "start": 5.24,
+        "end": 5.86
+      }
+    ]
+  },
+  "audio/lessons/RI.3.9/ex0.mp3": {
+    "duration": 6592,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.64
+      },
+      {
+        "word": "try",
+        "start": 0.64,
+        "end": 0.92
+      },
+      {
+        "word": "one",
+        "start": 0.92,
+        "end": 1.26
+      },
+      {
+        "word": "together.",
+        "start": 1.26,
+        "end": 1.86
+      },
+      {
+        "word": "Here",
+        "start": 2.5199999999999996,
+        "end": 3.04
+      },
+      {
+        "word": "are",
+        "start": 3.04,
+        "end": 3.28
+      },
+      {
+        "word": "two",
+        "start": 3.28,
+        "end": 3.8
+      },
+      {
+        "word": "short",
+        "start": 3.8,
+        "end": 4.32
+      },
+      {
+        "word": "texts",
+        "start": 4.32,
+        "end": 4.92
+      },
+      {
+        "word": "about",
+        "start": 4.92,
+        "end": 5.56
+      },
+      {
+        "word": "bees.",
+        "start": 5.56,
+        "end": 5.92
+      }
+    ]
+  },
+  "audio/lessons/RI.3.9/ex2.mp3": {
+    "duration": 6032,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "is",
+        "start": 0.54,
+        "end": 0.94
+      },
+      {
+        "word": "the",
+        "start": 0.94,
+        "end": 1.32
+      },
+      {
+        "word": "same?",
+        "start": 1.32,
+        "end": 1.78
+      },
+      {
+        "word": "Both",
+        "start": 2.46,
+        "end": 2.88
+      },
+      {
+        "word": "texts",
+        "start": 2.88,
+        "end": 3.6
+      },
+      {
+        "word": "are",
+        "start": 3.6,
+        "end": 4.1
+      },
+      {
+        "word": "about",
+        "start": 4.1,
+        "end": 4.62
+      },
+      {
+        "word": "bees.",
+        "start": 4.62,
+        "end": 5.14
+      }
+    ]
+  },
+  "audio/lessons/RI.3.9/ex1.mp3": {
+    "duration": 10472,
+    "words": [
+      {
+        "word": "Text",
+        "start": 0,
+        "end": 0.68
+      },
+      {
+        "word": "1.",
+        "start": 0.68,
+        "end": 1.34
+      },
+      {
+        "word": "Bees",
+        "start": 2.28,
+        "end": 2.84
+      },
+      {
+        "word": "Make",
+        "start": 2.84,
+        "end": 3.28
+      },
+      {
+        "word": "Honey",
+        "start": 3.28,
+        "end": 4.02
+      },
+      {
+        "word": "Text",
+        "start": 5,
+        "end": 6.02
+      },
+      {
+        "word": "2.",
+        "start": 6.02,
+        "end": 6.68
+      },
+      {
+        "word": "Bees",
+        "start": 7.78,
+        "end": 8.36
+      },
+      {
+        "word": "Carry",
+        "start": 8.36,
+        "end": 9.04
+      },
+      {
+        "word": "Pauline",
+        "start": 9.04,
+        "end": 10.04
+      }
+    ]
+  },
+  "audio/lessons/L.3.5c/ex1.mp3": {
+    "duration": 4312,
+    "words": [
+      {
+        "word": "chilly",
+        "start": 0,
+        "end": 0.8
+      },
+      {
+        "word": "cold",
+        "start": 0.8,
+        "end": 2.06
+      },
+      {
+        "word": "freezing.",
+        "start": 2.06,
+        "end": 3.46
+      }
+    ]
+  },
+  "audio/lessons/L.3.5c/ex0.mp3": {
+    "duration": 5472,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.7
+      },
+      {
+        "word": "try",
+        "start": 0.7,
+        "end": 0.96
+      },
+      {
+        "word": "one",
+        "start": 0.96,
+        "end": 1.34
+      },
+      {
+        "word": "together.",
+        "start": 1.34,
+        "end": 2.06
+      },
+      {
+        "word": "Here",
+        "start": 2.38,
+        "end": 3.28
+      },
+      {
+        "word": "are",
+        "start": 3.28,
+        "end": 3.58
+      },
+      {
+        "word": "three",
+        "start": 3.58,
+        "end": 4.1
+      },
+      {
+        "word": "words.",
+        "start": 4.1,
+        "end": 4.72
+      }
+    ]
+  },
+  "audio/lessons/L.3.5c/ex3.mp3": {
+    "duration": 4872,
+    "words": [
+      {
+        "word": "Which",
+        "start": 0,
+        "end": 0.64
+      },
+      {
+        "word": "one",
+        "start": 0.64,
+        "end": 0.98
+      },
+      {
+        "word": "is",
+        "start": 0.98,
+        "end": 1.34
+      },
+      {
+        "word": "the",
+        "start": 1.34,
+        "end": 1.56
+      },
+      {
+        "word": "strongest?",
+        "start": 1.56,
+        "end": 2.32
+      },
+      {
+        "word": "Freezing.",
+        "start": 3.38,
+        "end": 4.08
+      }
+    ]
+  },
+  "audio/lessons/L.3.5c/ex2.mp3": {
+    "duration": 4192,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.44
+      },
+      {
+        "word": "do",
+        "start": 0.44,
+        "end": 0.62
+      },
+      {
+        "word": "they",
+        "start": 0.62,
+        "end": 0.86
+      },
+      {
+        "word": "all",
+        "start": 0.86,
+        "end": 1.22
+      },
+      {
+        "word": "mean?",
+        "start": 1.22,
+        "end": 1.74
+      },
+      {
+        "word": "Cold.",
+        "start": 2.56,
+        "end": 3.24
+      }
+    ]
+  },
+  "audio/lessons/L.3.5c/ex4.mp3": {
+    "duration": 6352,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.5
+      },
+      {
+        "word": "freezing",
+        "start": 0.5,
+        "end": 1.12
+      },
+      {
+        "word": "means",
+        "start": 1.12,
+        "end": 1.76
+      },
+      {
+        "word": "extremely",
+        "start": 1.76,
+        "end": 3.08
+      },
+      {
+        "word": "cold.",
+        "start": 3.08,
+        "end": 3.9
+      },
+      {
+        "word": "You",
+        "start": 4.3,
+        "end": 4.72
+      },
+      {
+        "word": "matched",
+        "start": 4.72,
+        "end": 5.12
+      },
+      {
+        "word": "the",
+        "start": 5.12,
+        "end": 5.32
+      },
+      {
+        "word": "strength.",
+        "start": 5.32,
+        "end": 5.66
+      }
+    ]
+  },
+  "audio/lessons/L.4.5a/ex1.mp3": {
+    "duration": 3992,
+    "words": [
+      {
+        "word": "The",
+        "start": 0,
+        "end": 0.38
+      },
+      {
+        "word": "runner",
+        "start": 0.38,
+        "end": 0.78
+      },
+      {
+        "word": "was",
+        "start": 0.78,
+        "end": 1.48
+      },
+      {
+        "word": "as",
+        "start": 1.48,
+        "end": 1.74
+      },
+      {
+        "word": "quick",
+        "start": 1.74,
+        "end": 2.12
+      },
+      {
+        "word": "as",
+        "start": 2.12,
+        "end": 2.72
+      },
+      {
+        "word": "lightning.",
+        "start": 2.72,
+        "end": 3.34
+      }
+    ]
+  },
+  "audio/lessons/L.4.5a/ex2.mp3": {
+    "duration": 4072,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.6
+      },
+      {
+        "word": "is",
+        "start": 0.6,
+        "end": 0.9
+      },
+      {
+        "word": "the",
+        "start": 0.9,
+        "end": 1.08
+      },
+      {
+        "word": "bridge",
+        "start": 1.08,
+        "end": 1.52
+      },
+      {
+        "word": "word",
+        "start": 1.52,
+        "end": 2.06
+      },
+      {
+        "word": "as?",
+        "start": 2.06,
+        "end": 3.16
+      }
+    ]
+  },
+  "audio/lessons/L.4.5a/ex0.mp3": {
+    "duration": 4392,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.68
+      },
+      {
+        "word": "try",
+        "start": 0.68,
+        "end": 0.98
+      },
+      {
+        "word": "one",
+        "start": 0.98,
+        "end": 1.36
+      },
+      {
+        "word": "together.",
+        "start": 1.36,
+        "end": 2
+      },
+      {
+        "word": "Here's",
+        "start": 2.56,
+        "end": 3.24
+      },
+      {
+        "word": "a",
+        "start": 3.24,
+        "end": 3.32
+      },
+      {
+        "word": "sentence.",
+        "start": 3.32,
+        "end": 3.68
+      }
+    ]
+  },
+  "audio/lessons/L.4.5a/ex3.mp3": {
+    "duration": 5952,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "two",
+        "start": 0.54,
+        "end": 0.9
+      },
+      {
+        "word": "things",
+        "start": 0.9,
+        "end": 1.46
+      },
+      {
+        "word": "does",
+        "start": 1.46,
+        "end": 1.78
+      },
+      {
+        "word": "it",
+        "start": 1.78,
+        "end": 2
+      },
+      {
+        "word": "compare?",
+        "start": 2,
+        "end": 2.46
+      },
+      {
+        "word": "The",
+        "start": 3.38,
+        "end": 3.78
+      },
+      {
+        "word": "runner",
+        "start": 3.78,
+        "end": 4.18
+      },
+      {
+        "word": "and",
+        "start": 4.18,
+        "end": 4.98
+      },
+      {
+        "word": "lightning.",
+        "start": 4.98,
+        "end": 5.46
+      }
+    ]
+  },
+  "audio/lessons/L.4.5c/ex0.mp3": {
+    "duration": 7192,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.6
+      },
+      {
+        "word": "try",
+        "start": 0.6,
+        "end": 0.84
+      },
+      {
+        "word": "one",
+        "start": 0.84,
+        "end": 1.18
+      },
+      {
+        "word": "together.",
+        "start": 1.18,
+        "end": 1.74
+      },
+      {
+        "word": "Here",
+        "start": 2.3,
+        "end": 3.06
+      },
+      {
+        "word": "are",
+        "start": 3.06,
+        "end": 3.3
+      },
+      {
+        "word": "three",
+        "start": 3.3,
+        "end": 3.72
+      },
+      {
+        "word": "words",
+        "start": 3.72,
+        "end": 4.28
+      },
+      {
+        "word": "that",
+        "start": 4.28,
+        "end": 4.72
+      },
+      {
+        "word": "all",
+        "start": 4.72,
+        "end": 5.1
+      },
+      {
+        "word": "mean",
+        "start": 5.1,
+        "end": 5.58
+      },
+      {
+        "word": "cold.",
+        "start": 5.58,
+        "end": 6.22
+      }
+    ]
+  },
+  "audio/lessons/L.4.5c/ex1.mp3": {
+    "duration": 6392,
+    "words": [
+      {
+        "word": "Here",
+        "start": 0,
+        "end": 0.46
+      },
+      {
+        "word": "are",
+        "start": 0.46,
+        "end": 0.72
+      },
+      {
+        "word": "the",
+        "start": 0.72,
+        "end": 0.9
+      },
+      {
+        "word": "words",
+        "start": 0.9,
+        "end": 1.4
+      },
+      {
+        "word": "cool,",
+        "start": 1.4,
+        "end": 2.2
+      },
+      {
+        "word": "cold,",
+        "start": 2.56,
+        "end": 3.64
+      },
+      {
+        "word": "and",
+        "start": 4.08,
+        "end": 4.86
+      },
+      {
+        "word": "freezing.",
+        "start": 4.86,
+        "end": 5.62
+      }
+    ]
+  },
+  "audio/lessons/L.4.5c/ex2.mp3": {
+    "duration": 4992,
+    "words": [
+      {
+        "word": "Which",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "one",
+        "start": 0.54,
+        "end": 0.82
+      },
+      {
+        "word": "is",
+        "start": 0.82,
+        "end": 1.22
+      },
+      {
+        "word": "weakest?",
+        "start": 1.22,
+        "end": 1.84
+      },
+      {
+        "word": "Cool.",
+        "start": 3.5600000000000005,
+        "end": 4.12
+      }
+    ]
+  },
+  "audio/lessons/L.4.5a/ex4.mp3": {
+    "duration": 6112,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.42
+      },
+      {
+        "word": "is",
+        "start": 0.42,
+        "end": 0.7
+      },
+      {
+        "word": "it",
+        "start": 0.7,
+        "end": 0.9
+      },
+      {
+        "word": "a",
+        "start": 0.9,
+        "end": 0.96
+      },
+      {
+        "word": "simile",
+        "start": 0.96,
+        "end": 1.4
+      },
+      {
+        "word": "or",
+        "start": 1.4,
+        "end": 1.8
+      },
+      {
+        "word": "a",
+        "start": 1.8,
+        "end": 1.96
+      },
+      {
+        "word": "metaphor?",
+        "start": 1.96,
+        "end": 2.34
+      },
+      {
+        "word": "A",
+        "start": 3.18,
+        "end": 3.62
+      },
+      {
+        "word": "simile,",
+        "start": 3.62,
+        "end": 4.16
+      },
+      {
+        "word": "you",
+        "start": 4.48,
+        "end": 5.08
+      },
+      {
+        "word": "nailed",
+        "start": 5.08,
+        "end": 5.4
+      },
+      {
+        "word": "it.",
+        "start": 5.4,
+        "end": 5.68
+      }
+    ]
+  },
+  "audio/lessons/L.1.2/ex0.mp3": {
+    "duration": 4672,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.6
+      },
+      {
+        "word": "try",
+        "start": 0.6,
+        "end": 0.8
+      },
+      {
+        "word": "one",
+        "start": 0.8,
+        "end": 1.18
+      },
+      {
+        "word": "together.",
+        "start": 1.18,
+        "end": 1.84
+      },
+      {
+        "word": "Here's",
+        "start": 2.4,
+        "end": 3.44
+      },
+      {
+        "word": "a",
+        "start": 3.44,
+        "end": 3.52
+      },
+      {
+        "word": "sentence.",
+        "start": 3.52,
+        "end": 3.9
+      }
+    ]
+  },
+  "audio/lessons/L.4.5c/ex3.mp3": {
+    "duration": 5152,
+    "words": [
+      {
+        "word": "Which",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "one",
+        "start": 0.56,
+        "end": 0.92
+      },
+      {
+        "word": "is",
+        "start": 0.92,
+        "end": 1.36
+      },
+      {
+        "word": "strongest?",
+        "start": 1.36,
+        "end": 2.08
+      },
+      {
+        "word": "Freezing!",
+        "start": 3.36,
+        "end": 4.38
+      }
+    ]
+  },
+  "audio/lessons/L.1.2/ex2.mp3": {
+    "duration": 3792,
+    "words": [
+      {
+        "word": "How",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "does",
+        "start": 0.52,
+        "end": 0.74
+      },
+      {
+        "word": "it",
+        "start": 0.74,
+        "end": 0.88
+      },
+      {
+        "word": "start?",
+        "start": 0.88,
+        "end": 1.34
+      },
+      {
+        "word": "A",
+        "start": 1.82,
+        "end": 2.44
+      },
+      {
+        "word": "capital",
+        "start": 2.44,
+        "end": 2.78
+      },
+      {
+        "word": "S?",
+        "start": 2.78,
+        "end": 3.26
+      }
+    ]
+  },
+  "audio/lessons/L.4.5c/ex4.mp3": {
+    "duration": 6392,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "freezing",
+        "start": 0.54,
+        "end": 1.34
+      },
+      {
+        "word": "is",
+        "start": 1.34,
+        "end": 1.82
+      },
+      {
+        "word": "the",
+        "start": 1.82,
+        "end": 2.12
+      },
+      {
+        "word": "most",
+        "start": 2.12,
+        "end": 2.62
+      },
+      {
+        "word": "intense.",
+        "start": 2.62,
+        "end": 3.26
+      },
+      {
+        "word": "You",
+        "start": 3.76,
+        "end": 4.06
+      },
+      {
+        "word": "ranked",
+        "start": 4.06,
+        "end": 4.52
+      },
+      {
+        "word": "the",
+        "start": 4.52,
+        "end": 4.72
+      },
+      {
+        "word": "word",
+        "start": 4.72,
+        "end": 5.02
+      },
+      {
+        "word": "strength.",
+        "start": 5.02,
+        "end": 5.58
+      }
+    ]
+  },
+  "audio/lessons/L.1.2/ex4.mp3": {
+    "duration": 7592,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.54
+      },
+      {
+        "word": "Sam",
+        "start": 0.54,
+        "end": 1.62
+      },
+      {
+        "word": "runs",
+        "start": 1.62,
+        "end": 2.42
+      },
+      {
+        "word": "fast,",
+        "start": 2.42,
+        "end": 3.26
+      },
+      {
+        "word": "follows",
+        "start": 3.68,
+        "end": 4.32
+      },
+      {
+        "word": "both",
+        "start": 4.32,
+        "end": 4.98
+      },
+      {
+        "word": "rules.",
+        "start": 4.98,
+        "end": 5.58
+      },
+      {
+        "word": "You",
+        "start": 5.98,
+        "end": 6.48
+      },
+      {
+        "word": "did",
+        "start": 6.48,
+        "end": 6.76
+      },
+      {
+        "word": "it!",
+        "start": 6.76,
+        "end": 7
+      }
+    ]
+  },
+  "audio/lessons/L.1.2/ex3.mp3": {
+    "duration": 4712,
+    "words": [
+      {
+        "word": "How",
+        "start": 0,
+        "end": 0.58
+      },
+      {
+        "word": "does",
+        "start": 0.58,
+        "end": 0.84
+      },
+      {
+        "word": "it",
+        "start": 0.84,
+        "end": 1.02
+      },
+      {
+        "word": "end?",
+        "start": 1.02,
+        "end": 1.48
+      },
+      {
+        "word": "A",
+        "start": 2.96,
+        "end": 3.18
+      },
+      {
+        "word": "period.",
+        "start": 3.18,
+        "end": 3.84
+      }
+    ]
+  },
+  "audio/lessons/L.1.2/ex1.mp3": {
+    "duration": 6352,
+    "words": [
+      {
+        "word": "Here",
+        "start": 0,
+        "end": 0.58
+      },
+      {
+        "word": "is",
+        "start": 0.58,
+        "end": 1.04
+      },
+      {
+        "word": "the",
+        "start": 1.04,
+        "end": 1.24
+      },
+      {
+        "word": "sentence.",
+        "start": 1.24,
+        "end": 1.9
+      },
+      {
+        "word": "Sam",
+        "start": 3.1,
+        "end": 3.34
+      },
+      {
+        "word": "runs",
+        "start": 3.34,
+        "end": 4.58
+      },
+      {
+        "word": "fast.",
+        "start": 4.58,
+        "end": 5.5
+      }
+    ]
+  },
+  "audio/lessons/L.4.3/ex4.mp3": {
+    "duration": 9272,
+    "words": [
+      {
+        "word": "and",
+        "start": 0,
+        "end": 0.34
+      },
+      {
+        "word": "instead",
+        "start": 0.34,
+        "end": 0.74
+      },
+      {
+        "word": "of",
+        "start": 0.74,
+        "end": 1
+      },
+      {
+        "word": "eight,",
+        "start": 1,
+        "end": 1.44
+      },
+      {
+        "word": "we",
+        "start": 1.88,
+        "end": 2.18
+      },
+      {
+        "word": "could",
+        "start": 2.18,
+        "end": 2.38
+      },
+      {
+        "word": "say",
+        "start": 2.38,
+        "end": 2.82
+      },
+      {
+        "word": "gobbled.",
+        "start": 2.82,
+        "end": 3.78
+      },
+      {
+        "word": "Now",
+        "start": 4.58,
+        "end": 5.06
+      },
+      {
+        "word": "your",
+        "start": 5.06,
+        "end": 5.28
+      },
+      {
+        "word": "sentence",
+        "start": 5.28,
+        "end": 5.76
+      },
+      {
+        "word": "paints",
+        "start": 5.76,
+        "end": 6.18
+      },
+      {
+        "word": "a",
+        "start": 6.18,
+        "end": 6.5
+      },
+      {
+        "word": "clearer",
+        "start": 6.5,
+        "end": 6.94
+      },
+      {
+        "word": "picture.",
+        "start": 6.94,
+        "end": 7.48
+      },
+      {
+        "word": "Great",
+        "start": 8.12,
+        "end": 8.36
+      },
+      {
+        "word": "job!",
+        "start": 8.36,
+        "end": 8.66
+      }
+    ]
+  },
+  "audio/lessons/L.4.3/ex2.mp3": {
+    "duration": 4832,
+    "words": [
+      {
+        "word": "Which",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "word",
+        "start": 0.56,
+        "end": 0.88
+      },
+      {
+        "word": "here",
+        "start": 0.88,
+        "end": 1.3
+      },
+      {
+        "word": "is",
+        "start": 1.3,
+        "end": 1.84
+      },
+      {
+        "word": "vague?",
+        "start": 1.84,
+        "end": 2.48
+      },
+      {
+        "word": "Big!",
+        "start": 3.4599999999999995,
+        "end": 4.02
+      }
+    ]
+  },
+  "audio/lessons/L.4.3/ex3.mp3": {
+    "duration": 4552,
+    "words": [
+      {
+        "word": "a",
+        "start": 0,
+        "end": 0.32
+      },
+      {
+        "word": "precise",
+        "start": 0.32,
+        "end": 0.9
+      },
+      {
+        "word": "word",
+        "start": 0.9,
+        "end": 1.48
+      },
+      {
+        "word": "for",
+        "start": 1.48,
+        "end": 1.78
+      },
+      {
+        "word": "big,",
+        "start": 1.78,
+        "end": 2.36
+      },
+      {
+        "word": "enormous.",
+        "start": 3.18,
+        "end": 3.64
+      }
+    ]
+  },
+  "audio/lessons/RI.K.10/ex0.mp3": {
+    "duration": 5832,
+    "words": [
+      {
+        "word": "Okay,",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "let's",
+        "start": 0.9,
+        "end": 1.34
+      },
+      {
+        "word": "try",
+        "start": 1.34,
+        "end": 1.6
+      },
+      {
+        "word": "one",
+        "start": 1.6,
+        "end": 1.92
+      },
+      {
+        "word": "together.",
+        "start": 1.92,
+        "end": 2.48
+      },
+      {
+        "word": "Here",
+        "start": 3.06,
+        "end": 3.42
+      },
+      {
+        "word": "is",
+        "start": 3.42,
+        "end": 3.64
+      },
+      {
+        "word": "the",
+        "start": 3.64,
+        "end": 3.76
+      },
+      {
+        "word": "page",
+        "start": 3.76,
+        "end": 4.2
+      },
+      {
+        "word": "from",
+        "start": 4.2,
+        "end": 4.4
+      },
+      {
+        "word": "a",
+        "start": 4.4,
+        "end": 4.56
+      },
+      {
+        "word": "fact",
+        "start": 4.56,
+        "end": 4.88
+      },
+      {
+        "word": "book.",
+        "start": 4.88,
+        "end": 5.2
+      }
+    ]
+  },
+  "audio/lessons/RI.K.10/ex1.mp3": {
+    "duration": 9712,
+    "words": [
+      {
+        "word": "It",
+        "start": 0,
+        "end": 0.36
+      },
+      {
+        "word": "says,",
+        "start": 0.36,
+        "end": 0.98
+      },
+      {
+        "word": "frogs",
+        "start": 1.32,
+        "end": 2.36
+      },
+      {
+        "word": "are",
+        "start": 2.36,
+        "end": 2.66
+      },
+      {
+        "word": "green.",
+        "start": 2.66,
+        "end": 3.2
+      },
+      {
+        "word": "They",
+        "start": 3.7,
+        "end": 4.58
+      },
+      {
+        "word": "hop",
+        "start": 4.58,
+        "end": 4.98
+      },
+      {
+        "word": "very",
+        "start": 4.98,
+        "end": 5.7
+      },
+      {
+        "word": "high.",
+        "start": 5.7,
+        "end": 6.28
+      },
+      {
+        "word": "Frogs",
+        "start": 7.16,
+        "end": 8.02
+      },
+      {
+        "word": "like",
+        "start": 8.02,
+        "end": 8.36
+      },
+      {
+        "word": "the",
+        "start": 8.36,
+        "end": 8.82
+      },
+      {
+        "word": "water.",
+        "start": 8.82,
+        "end": 9.14
+      }
+    ]
+  },
+  "audio/lessons/RI.K.10/ex2.mp3": {
+    "duration": 4632,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.46
+      },
+      {
+        "word": "is",
+        "start": 0.46,
+        "end": 0.68
+      },
+      {
+        "word": "this",
+        "start": 0.68,
+        "end": 1.06
+      },
+      {
+        "word": "fact",
+        "start": 1.06,
+        "end": 1.38
+      },
+      {
+        "word": "book",
+        "start": 1.38,
+        "end": 1.78
+      },
+      {
+        "word": "about?",
+        "start": 1.78,
+        "end": 2.2
+      },
+      {
+        "word": "Frogs!",
+        "start": 3.36,
+        "end": 4.16
+      }
+    ]
+  },
+  "audio/lessons/L.4.3/ex1.mp3": {
+    "duration": 6632,
+    "words": [
+      {
+        "word": "Here",
+        "start": 0,
+        "end": 0.68
+      },
+      {
+        "word": "is",
+        "start": 0.68,
+        "end": 1.14
+      },
+      {
+        "word": "our",
+        "start": 1.14,
+        "end": 1.3
+      },
+      {
+        "word": "sentence.",
+        "start": 1.3,
+        "end": 1.94
+      },
+      {
+        "word": "The",
+        "start": 2.46,
+        "end": 3.14
+      },
+      {
+        "word": "big",
+        "start": 3.14,
+        "end": 3.6
+      },
+      {
+        "word": "dog",
+        "start": 3.6,
+        "end": 4.18
+      },
+      {
+        "word": "ate",
+        "start": 4.18,
+        "end": 5.1
+      },
+      {
+        "word": "fast.",
+        "start": 5.1,
+        "end": 5.82
+      }
+    ]
+  },
+  "audio/lessons/L.4.3/ex0.mp3": {
+    "duration": 3592,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.62
+      },
+      {
+        "word": "try",
+        "start": 0.62,
+        "end": 0.82
+      },
+      {
+        "word": "one",
+        "start": 0.82,
+        "end": 1.14
+      },
+      {
+        "word": "together.",
+        "start": 1.14,
+        "end": 1.6
+      },
+      {
+        "word": "Here's",
+        "start": 2.22,
+        "end": 2.5
+      },
+      {
+        "word": "a",
+        "start": 2.5,
+        "end": 2.56
+      },
+      {
+        "word": "sentence.",
+        "start": 2.56,
+        "end": 2.88
+      }
+    ]
+  },
+  "audio/lessons/RI.K.10/ex4.mp3": {
+    "duration": 11752,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "two",
+        "start": 0.52,
+        "end": 0.96
+      },
+      {
+        "word": "frogs",
+        "start": 0.96,
+        "end": 1.76
+      },
+      {
+        "word": "like?",
+        "start": 1.76,
+        "end": 2.46
+      },
+      {
+        "word": "The",
+        "start": 3.34,
+        "end": 3.72
+      },
+      {
+        "word": "water!",
+        "start": 3.72,
+        "end": 4.5
+      },
+      {
+        "word": "Those",
+        "start": 5.42,
+        "end": 6.26
+      },
+      {
+        "word": "are",
+        "start": 6.26,
+        "end": 6.6
+      },
+      {
+        "word": "all",
+        "start": 6.6,
+        "end": 6.98
+      },
+      {
+        "word": "real",
+        "start": 6.98,
+        "end": 7.6
+      },
+      {
+        "word": "facts!",
+        "start": 7.6,
+        "end": 8.2
+      },
+      {
+        "word": "You",
+        "start": 8.92,
+        "end": 9.32
+      },
+      {
+        "word": "read",
+        "start": 9.32,
+        "end": 9.76
+      },
+      {
+        "word": "a",
+        "start": 9.76,
+        "end": 10.08
+      },
+      {
+        "word": "fact",
+        "start": 10.08,
+        "end": 10.52
+      },
+      {
+        "word": "book!",
+        "start": 10.52,
+        "end": 10.96
+      }
+    ]
+  },
+  "audio/lessons/RL.1.10/ex0.mp3": {
+    "duration": 5712,
+    "words": [
+      {
+        "word": "Let's",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "try",
+        "start": 0.56,
+        "end": 0.82
+      },
+      {
+        "word": "one",
+        "start": 0.82,
+        "end": 1.18
+      },
+      {
+        "word": "together.",
+        "start": 1.18,
+        "end": 1.84
+      },
+      {
+        "word": "Here",
+        "start": 2.66,
+        "end": 3.16
+      },
+      {
+        "word": "is",
+        "start": 3.16,
+        "end": 3.6
+      },
+      {
+        "word": "a",
+        "start": 3.6,
+        "end": 3.76
+      },
+      {
+        "word": "little",
+        "start": 3.76,
+        "end": 4.04
+      },
+      {
+        "word": "piece",
+        "start": 4.04,
+        "end": 4.44
+      },
+      {
+        "word": "to",
+        "start": 4.44,
+        "end": 4.72
+      },
+      {
+        "word": "read.",
+        "start": 4.72,
+        "end": 5.08
+      }
+    ]
+  },
+  "audio/lessons/RI.K.10/ex3.mp3": {
+    "duration": 4792,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "word": "color",
+        "start": 0.56,
+        "end": 1.28
+      },
+      {
+        "word": "are",
+        "start": 1.28,
+        "end": 1.82
+      },
+      {
+        "word": "frogs?",
+        "start": 1.82,
+        "end": 2.38
+      },
+      {
+        "word": "Green!",
+        "start": 3.2,
+        "end": 3.94
+      }
+    ]
+  },
+  "audio/lessons/RL.1.10/ex2.mp3": {
+    "duration": 3632,
+    "words": [
+      {
+        "word": "What",
+        "start": 0,
+        "end": 0.42
+      },
+      {
+        "word": "kind",
+        "start": 0.42,
+        "end": 0.72
+      },
+      {
+        "word": "is",
+        "start": 0.72,
+        "end": 1.04
+      },
+      {
+        "word": "this?",
+        "start": 1.04,
+        "end": 1.34
+      },
+      {
+        "word": "A",
+        "start": 2.18,
+        "end": 2.3
+      },
+      {
+        "word": "poem?",
+        "start": 2.3,
+        "end": 2.88
+      }
+    ]
+  },
+  "audio/lessons/RL.1.10/ex3.mp3": {
+    "duration": 6232,
+    "words": [
+      {
+        "word": "How",
+        "start": 0,
+        "end": 0.44
+      },
+      {
+        "word": "do",
+        "start": 0.44,
+        "end": 0.58
+      },
+      {
+        "word": "you",
+        "start": 0.58,
+        "end": 0.72
+      },
+      {
+        "word": "know?",
+        "start": 0.72,
+        "end": 0.98
+      },
+      {
+        "word": "It",
+        "start": 1.76,
+        "end": 1.92
+      },
+      {
+        "word": "rhymes!",
+        "start": 1.92,
+        "end": 2.54
+      },
+      {
+        "word": "Bright",
+        "start": 3.16,
+        "end": 3.74
+      },
+      {
+        "word": "and",
+        "start": 3.74,
+        "end": 4.14
+      },
+      {
+        "word": "night",
+        "start": 4.14,
+        "end": 4.56
+      },
+      {
+        "word": "sound",
+        "start": 4.56,
+        "end": 5.2
+      },
+      {
+        "word": "the",
+        "start": 5.2,
+        "end": 5.42
+      },
+      {
+        "word": "same.",
+        "start": 5.42,
+        "end": 5.72
+      }
+    ]
+  },
+  "audio/lessons/RL.1.10/ex1.mp3": {
+    "duration": 6792,
+    "words": [
+      {
+        "word": "Here",
+        "start": 0,
+        "end": 0.46
+      },
+      {
+        "word": "it",
+        "start": 0.46,
+        "end": 0.7
+      },
+      {
+        "word": "is.",
+        "start": 0.7,
+        "end": 1.08
+      },
+      {
+        "word": "The",
+        "start": 1.62,
+        "end": 1.84
+      },
+      {
+        "word": "moon",
+        "start": 1.84,
+        "end": 2.26
+      },
+      {
+        "word": "is",
+        "start": 2.26,
+        "end": 2.66
+      },
+      {
+        "word": "bright.",
+        "start": 2.66,
+        "end": 3.14
+      },
+      {
+        "word": "It",
+        "start": 3.78,
+        "end": 4.02
+      },
+      {
+        "word": "says,",
+        "start": 4.02,
+        "end": 4.3
+      },
+      {
+        "word": "Good",
+        "start": 4.54,
+        "end": 4.62
+      },
+      {
+        "word": "night",
+        "start": 4.62,
+        "end": 4.9
+      },
+      {
+        "word": "to",
+        "start": 4.9,
+        "end": 5.24
+      },
+      {
+        "word": "me",
+        "start": 5.24,
+        "end": 5.42
+      },
+      {
+        "word": "each",
+        "start": 5.42,
+        "end": 5.9
+      },
+      {
+        "word": "night.",
+        "start": 5.9,
+        "end": 6.2
+      }
+    ]
+  },
+  "audio/lessons/RL.1.10/ex4.mp3": {
+    "duration": 5632,
+    "words": [
+      {
+        "word": "So",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "a",
+        "start": 0.52,
+        "end": 0.72
+      },
+      {
+        "word": "poem",
+        "start": 0.72,
+        "end": 1.24
+      },
+      {
+        "word": "can",
+        "start": 1.24,
+        "end": 1.82
+      },
+      {
+        "word": "rhyme",
+        "start": 1.82,
+        "end": 2.3
+      },
+      {
+        "word": "you",
+        "start": 2.3,
+        "end": 3.22
+      },
+      {
+        "word": "read",
+        "start": 3.22,
+        "end": 3.44
+      },
+      {
+        "word": "a",
+        "start": 3.44,
+        "end": 3.56
+      },
+      {
+        "word": "poem",
+        "start": 3.56,
+        "end": 3.84
+      },
+      {
+        "word": "all",
+        "start": 3.84,
+        "end": 4.18
+      },
+      {
+        "word": "by",
+        "start": 4.18,
+        "end": 4.38
+      },
+      {
+        "word": "yourself",
+        "start": 4.38,
+        "end": 4.78
+      }
+    ]
+  },
+  "audio/lessons/RI.1.10/ex3.mp3": {
+    "duration": 3712,
+    "words": [
+      {
+        "word": "When",
+        "start": 0,
+        "end": 0.48
+      },
+      {
+        "word": "do",
+        "start": 0.48,
+        "end": 0.7
+      },
+      {
+        "word": "they",
+        "start": 0.7,
+        "end": 0.86
+      },
+      {
+        "word": "fly?",
+        "start": 0.86,
+        "end": 1.28
+      },
+      {
+        "word": "At",
+        "start": 2.28,
+        "end": 2.56
+      },
+      {
+        "word": "night.",
+        "start": 2.56,
+        "end": 2.98
+      }
+    ]
+  },
+  "audio/lessons/RI.1.10/ex2.mp3": {
+    "duration": 4952,
+    "words": [
+      {
+        "word": "When",
+        "start": 0,
+        "end": 0.62
+      },
+      {
+        "word": "do",
+        "start": 0.62,
+        "end": 1.18
+      },
+      {
+        "word": "bats",
+        "start": 1.18,
+        "end": 1.62
+      },
+      {
+        "word": "sleep?",
+        "start": 1.62,
+        "end": 2.24
+      },
+      {
+        "word": "All",
+        "start": 3.02,
+        "end": 3.56
+      },
+      {
+        "word": "day!",
+        "start": 3.56,
+        "end": 4.06
+      }
+    ]
+  },
+  "audio/lessons/RI.1.10/ex4.mp3": {
+    "duration": 8312,
+    "words": [
+      {
+        "word": "You",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "found",
+        "start": 0.52,
+        "end": 1.02
+      },
+      {
+        "word": "real",
+        "start": 1.02,
+        "end": 1.48
+      },
+      {
+        "word": "facts",
+        "start": 1.48,
+        "end": 1.98
+      },
+      {
+        "word": "about",
+        "start": 1.98,
+        "end": 2.6
+      },
+      {
+        "word": "bats!",
+        "start": 2.6,
+        "end": 3.02
+      },
+      {
+        "word": "That's",
+        "start": 3.84,
+        "end": 4.36
+      },
+      {
+        "word": "how",
+        "start": 4.36,
+        "end": 4.5
+      },
+      {
+        "word": "we",
+        "start": 4.5,
+        "end": 4.72
+      },
+      {
+        "word": "read",
+        "start": 4.72,
+        "end": 5.06
+      },
+      {
+        "word": "a",
+        "start": 5.06,
+        "end": 5.32
+      },
+      {
+        "word": "fact",
+        "start": 5.32,
+        "end": 5.74
+      },
+      {
+        "word": "book.",
+        "start": 5.74,
+        "end": 6.18
+      },
+      {
+        "word": "Great",
+        "start": 6.72,
+        "end": 7.16
+      },
+      {
+        "word": "reading.",
+        "start": 7.16,
+        "end": 7.7
+      }
+    ]
+  },
+  "audio/lessons/RI.1.10/ex1.mp3": {
+    "duration": 7072,
+    "words": [
+      {
+        "word": "Bats",
+        "start": 0,
+        "end": 0.76
+      },
+      {
+        "word": "sleep",
+        "start": 0.76,
+        "end": 1.22
+      },
+      {
+        "word": "all",
+        "start": 1.22,
+        "end": 1.76
+      },
+      {
+        "word": "day.",
+        "start": 1.76,
+        "end": 2.24
+      },
+      {
+        "word": "They",
+        "start": 2.74,
+        "end": 3.3
+      },
+      {
+        "word": "fly",
+        "start": 3.3,
+        "end": 3.74
+      },
+      {
+        "word": "at",
+        "start": 3.74,
+        "end": 4.12
+      },
+      {
+        "word": "night",
+        "start": 4.12,
+        "end": 4.62
+      },
+      {
+        "word": "to",
+        "start": 4.62,
+        "end": 5.2
+      },
+      {
+        "word": "catch",
+        "start": 5.2,
+        "end": 5.68
+      },
+      {
+        "word": "moths.",
+        "start": 5.68,
+        "end": 6.44
+      }
+    ]
+  },
+  "audio/lessons/RI.1.10/ex0.mp3": {
+    "duration": 6432,
+    "words": [
+      {
+        "word": "Okay,",
+        "start": 0,
+        "end": 0.52
+      },
+      {
+        "word": "let's",
+        "start": 0.96,
+        "end": 1.28
+      },
+      {
+        "word": "try",
+        "start": 1.28,
+        "end": 1.5
+      },
+      {
+        "word": "one",
+        "start": 1.5,
+        "end": 1.8
+      },
+      {
+        "word": "together.",
+        "start": 1.8,
+        "end": 2.26
+      },
+      {
+        "word": "Here's",
+        "start": 2.76,
+        "end": 3.26
+      },
+      {
+        "word": "a",
+        "start": 3.26,
+        "end": 3.34
+      },
+      {
+        "word": "page",
+        "start": 3.34,
+        "end": 3.8
+      },
+      {
+        "word": "from",
+        "start": 3.8,
+        "end": 4.08
+      },
+      {
+        "word": "a",
+        "start": 4.08,
+        "end": 4.22
+      },
+      {
+        "word": "fact",
+        "start": 4.22,
+        "end": 4.54
+      },
+      {
+        "word": "book",
+        "start": 4.54,
+        "end": 4.96
+      },
+      {
+        "word": "about",
+        "start": 4.96,
+        "end": 5.38
+      },
+      {
+        "word": "bats.",
+        "start": 5.38,
+        "end": 5.72
+      }
+    ]
   }
 }
