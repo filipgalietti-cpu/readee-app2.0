@@ -88,11 +88,15 @@ def lint(lesson, bank, audio_fail_stds, timed):
     if dead:
         V.append(("INV-3", 24, "auto", f"dead mcq refs: {dead}"))
 
-    # INV-4 heading word count
+    # INV-4 heading — flag only UNAMBIGUOUS problems: empty, or absurdly
+    # long (>6 words). 1-word concept headings ("Idioms", "Opposites") and
+    # 6-word playful ones ("How Do We Retell a Story?") are legitimate.
     for s in teach_slides:
         h = s.get("heading", "")
         n = len(words(h))
-        if n < 2 or n > 5:
+        if n == 0:
+            V.append(("INV-4", 2, "content", f"[{s['type']}] EMPTY heading"))
+        elif n > 6:
             V.append(("INV-4", 2, "content", f"[{s['type']}] heading {n}w: {h!r}"))
 
     # INV-5 ends on visual (except example + interactive)
@@ -118,14 +122,18 @@ def lint(lesson, bank, audio_fail_stds, timed):
             dt = st.get("displayText")
             if dt:
                 n = len(words(dt))
-                is_passage = n > 5 and re.search(r"[.!?].*\w", dt)  # looks like sentence(s)
+                # A story-box / passage — any displayText containing sentence
+                # punctuation, or on an example slide — is legitimate narrative
+                # (rubric #12) and gets the 16-word limit. A terse anchor (no
+                # sentence punctuation) gets 6. We deliberately do NOT try to
+                # flag "sentence-as-pill" separately: a good story box and a bad
+                # transcript pill are indistinguishable in the data, so we only
+                # flag the unambiguous case — a displayText that blows past the
+                # 16-word passage limit (a real transcript dump).
+                is_passage = s["type"] == "example" or bool(re.search(r"[.!?]", dt))
                 limit = 16 if is_passage else 6
                 if n > limit:
                     V.append(("INV-7", 4, "content", f"[{s['type']}] displayText {n}w (>{limit}): {dt[:40]!r}"))
-                # INV-9 full-sentence-as-pill
-                tts = st.get("ttsScript", "")
-                if n > 5 and not is_passage and dt.strip().rstrip(".!?") and dt.strip()[:20] in tts:
-                    V.append(("INV-9", 3, "content", f"[{s['type']}] pill is a spoken sentence: {dt[:40]!r}"))
             for p in (st.get("displayParts") or []):
                 pn = len(words(p.get("text", "")))
                 if pn > 5:

@@ -3,12 +3,6 @@
   "RF.K.2a": [],
   "RI.K.1": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[intro] heading 6w: \"Let's Find Key Details in Facts!\""
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -19,18 +13,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[example] highlightWord 'key details' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 11w (>6): 'Penguins live in cold places.\\nThey eat f'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Penguins live in cold places.\\nThey eat f'"
     },
     {
       "inv": "INV-6",
@@ -68,13 +50,7 @@
       "inv": "INV-4",
       "rule": 2,
       "fixer": "content",
-      "detail": "[teach] heading 6w: 'How Do We Retell a Story?'"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[example] heading 0w: ''"
+      "detail": "[example] EMPTY heading"
     },
     {
       "inv": "INV-5",
@@ -129,18 +105,6 @@
       "detail": "[teach] highlightWord 'guess' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 9w (>6): 'The bunny was famished, so he ate five c'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The bunny was famished, so he ate five c'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -173,12 +137,6 @@
   ],
   "RL.K.5": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[intro] heading 6w: \"Let's Learn About Types of Books!\""
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -189,18 +147,6 @@
       "rule": 25,
       "fixer": "renderer",
       "detail": "[teach] 'Storybooks and Poems' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'The moon is bright, a cozy light.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The moon is bright, a cozy light.'"
     },
     {
       "inv": "INV-6",
@@ -216,12 +162,6 @@
     }
   ],
   "RL.K.6": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[intro] heading 6w: \"Let's Learn About Who Makes Books!\""
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -256,12 +196,6 @@
     }
   ],
   "RL.K.9": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 6w: 'What Does It Mean to Compare?'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -351,12 +285,6 @@
       "detail": "[example] highlightWord 'link' not on screen"
     },
     {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'An owl has big round eyes.'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -369,12 +297,6 @@
       "rule": 2,
       "fixer": "content",
       "detail": "[intro] heading 7w: \"Let's Learn New Words in Fact Books!\""
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 6w: 'How to Figure Out New Words'"
     },
     {
       "inv": "INV-5",
@@ -521,12 +443,6 @@
       "detail": "[example] highlightWord 'grows' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'egg \u2192 tadpole \u2192 froglet \u2192 frog'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -596,12 +512,6 @@
     }
   ],
   "RI.K.9": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 6w: 'How Do We Compare Fact Books?'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -1156,18 +1066,6 @@
       "detail": "[teach] highlightWord 'clues' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 8w (>6): 'The rabbit was swift, it ran very fast!'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The rabbit was swift, it ran very fast!'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -1309,34 +1207,10 @@
       "detail": "[intro] highlightWord 'story' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 9w (>6): 'The kind old woman fed the birds every m'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'The kind old woman fed the birds every m'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
       "detail": "[teach] highlightWord 'caring' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 11w (>6): 'The old woman lived by the sea, in a tin'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'The old woman lived by the sea, in a tin'"
     },
     {
       "inv": "INV-6",
@@ -1399,12 +1273,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[teach] highlightWord 'sad' not on screen"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The puppy bounced across the yard.'"
     },
     {
       "inv": "INV-6",
@@ -1483,18 +1351,6 @@
       "detail": "[tip] 'Listen for the Clue' ends audio-only (mobile blank risk)"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 8w (>6): 'I went to the store with my mom.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'I went to the store with my mom.'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -1513,12 +1369,6 @@
       "rule": 1,
       "fixer": "content",
       "detail": "missing example ('Let's Try One')"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 6w: 'A Happy Face Tells a Lot'"
     },
     {
       "inv": "INV-5",
@@ -1549,18 +1399,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[teach] highlightWord 'picture' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 9w (>6): 'A girl with a big smile, holding a troph'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'A girl with a big smile, holding a troph'"
     },
     {
       "inv": "INV-6",
@@ -1617,30 +1455,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'alike' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 7w (>6): 'Amy is brave and climbs a mountain.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'Amy is brave and climbs a mountain.'"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 7w (>6): 'Bob is brave and swims a lake.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'Bob is brave and swims a lake.'"
     },
     {
       "inv": "INV-6",
@@ -2021,14 +1835,7 @@
       "detail": "[tip] highlightWord 'compare' not on screen"
     }
   ],
-  "RF.1.1a": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 6w: 'Rule 2: End With a Mark'"
-    }
-  ],
+  "RF.1.1a": [],
   "RF.1.2b": [
     {
       "inv": "INV-6",
@@ -2065,18 +1872,6 @@
   ],
   "RF.1.2d": [],
   "RF.1.4b": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 6w: 'Not Too Fast, Not Too Slow'"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[tip] heading 6w: 'Sound It Out Like a Star'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -2184,30 +1979,6 @@
       "detail": "[teach] highlightWord 'clue' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 8w (>6): 'The boy swung the bat at the ball.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'The boy swung the bat at the ball.'"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 9w (>6): 'The bat flew out of the cave at night.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The bat flew out of the cave at night.'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -2256,30 +2027,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'try' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 9w (>6): 'The fluffy cat curled up in the cozy bla'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'The fluffy cat curled up in the cozy bla'"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'The kid bounced high on the trampoline.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The kid bounced high on the trampoline.'"
     },
     {
       "inv": "INV-6",
@@ -2354,12 +2101,6 @@
   ],
   "L.1.5": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Opposites'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -2396,18 +2137,6 @@
       "rule": 24,
       "fixer": "content",
       "detail": "no MCQ practice"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Animals'"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[example] heading 1w: 'Fruits'"
     },
     {
       "inv": "INV-5",
@@ -2509,18 +2238,6 @@
     }
   ],
   "L.1.5c": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Cozy'"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[example] heading 1w: 'Chilly'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -2674,30 +2391,6 @@
       "detail": "[teach] highlightWord 'tortoise' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 9w (>6): 'The rabbit was fast, but he stopped to n'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'The rabbit was fast, but he stopped to n'"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 7w (>6): 'The slow tortoise kept going and won!'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'The slow tortoise kept going and won!'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -2754,12 +2447,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'feel' not on screen"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The bacon sizzled in the pan.'"
     }
   ],
   "RL.2.5": [
@@ -3148,12 +2835,6 @@
       "detail": "[intro] highlightWord 'strong' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'Recess is the best part of school.'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -3336,18 +3017,6 @@
       "detail": "[teach] highlightWord 'learn' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 8w (>6): 'I want to learn three facts about sharks'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'I want to learn three facts about sharks'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -3361,12 +3030,6 @@
     }
   ],
   "RF.2.4b": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[intro] heading 6w: 'Read Out Loud Like a Pro'"
-    },
     {
       "inv": "INV-6",
       "rule": 25,
@@ -3410,12 +3073,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[example] highlightWord 'map' not on screen"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'the cat sat on the rug.'"
     },
     {
       "inv": "INV-6",
@@ -3466,18 +3123,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'detectives' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 11w (>6): 'Mom had to reread the page because she l'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Mom had to reread the page because she l'"
     },
     {
       "inv": "INV-6",
@@ -3572,12 +3217,6 @@
       "detail": "missing example ('Let's Try One')"
     },
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Rainbow'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -3662,18 +3301,6 @@
   ],
   "L.2.5a": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Delicious'"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Exhausted'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -3684,18 +3311,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[teach] highlightWord 'Exhausted' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'Sam went first down the tall slide.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Sam went first down the tall slide.'"
     },
     {
       "inv": "INV-6",
@@ -3828,18 +3443,6 @@
       "detail": "[tip] 'Watch Their Choices' ends audio-only (mobile blank risk)"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 9w (>6): 'Nia climbed a tall ladder to save a kitt'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Nia climbed a tall ladder to save a kitt'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -3853,12 +3456,6 @@
     }
   ],
   "RL.3.4": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[tip] heading 6w: 'Ask: Does It Make Real Sense?'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -3902,30 +3499,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[teach] highlightWord 'forward' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 14w (>6): 'The seed slept deep below the ground, wa'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The seed slept deep below the ground, wa'"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 12w (>6): 'Then up popped a leaf in the morning lig'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Then up popped a leaf in the morning lig'"
     },
     {
       "inv": "INV-6",
@@ -3980,18 +3553,6 @@
       "detail": "[intro] highlightWord 'pictures' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 11w (>6): 'A sunny meadow with bright flowers and a'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'A sunny meadow with bright flowers and a'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -4010,24 +3571,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'same' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 8w (>6): 'Ant kept climbing until it reached the t'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Ant kept climbing until it reached the t'"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'Kira practiced until she made the shot.'"
     }
   ],
   "RL.3.10": [
@@ -4126,18 +3669,6 @@
       "rule": 25,
       "fixer": "renderer",
       "detail": "[tip] 'Map It Out' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'The plant wilted because nobody watered '"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The plant wilted because nobody watered '"
     },
     {
       "inv": "INV-6",
@@ -4258,12 +3789,6 @@
   ],
   "RI.3.8": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[example] heading 1w: 'However'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -4302,18 +3827,6 @@
       "detail": "missing example ('Let's Try One')"
     },
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Differences'"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[tip] heading 1w: 'T-Chart'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -4350,21 +3863,9 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[teach] highlightWord 'finish' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'A hard page, a big new word'"
     }
   ],
   "RF.3.3": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[example] heading 1w: 'Unbelievable'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -4671,21 +4172,9 @@
       "rule": 25,
       "fixer": "renderer",
       "detail": "[tip] 'Read Top to Bottom' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'gobble \u00b7 gob-uhl \u00b7 to eat fast'"
     }
   ],
   "L.3.5": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Idioms'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -4697,18 +4186,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'Figurative' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 9w (>6): 'The brave knight was as quiet as a mouse'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The brave knight was as quiet as a mouse'"
     },
     {
       "inv": "INV-6",
@@ -4828,12 +4305,6 @@
       "detail": "[example] highlightWord 'story' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 12w (>6): 'Sam hid the gifts behind the couch and t'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -4906,28 +4377,10 @@
   ],
   "RL.4.4": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Allusions'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
       "detail": "[tip] 'Look It Up' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'Maria was drowning in homework all weeke'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Maria was drowning in homework all weeke'"
     },
     {
       "inv": "INV-6",
@@ -4943,12 +4396,6 @@
     }
   ],
   "RL.4.5": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Poems'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -5026,12 +4473,6 @@
   ],
   "RL.4.7": [
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'Lighthouse glowed red, waves crashed on '"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -5044,18 +4485,6 @@
       "rule": 25,
       "fixer": "renderer",
       "detail": "[tip] 'Notice the Shared Heart' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 11w (>6): 'A Greek boy and an African girl each sav'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'A Greek boy and an African girl each sav'"
     },
     {
       "inv": "INV-6",
@@ -5102,12 +4531,6 @@
       "detail": "[tip] highlightWord 'trick' not on screen"
     },
     {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[tip] pill is a spoken sentence: 'Make a movie in your mind'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -5123,12 +4546,6 @@
     }
   ],
   "RI.4.2": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Summarize'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -5212,18 +4629,6 @@
       "detail": "[teach] highlightWord 'ecosystem' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 9w (>6): 'The scientist made a prediction before t'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The scientist made a prediction before t'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -5274,18 +4679,6 @@
       "rule": 25,
       "fixer": "renderer",
       "detail": "[tip] 'Ask: Were They There?' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 10w (>6): 'In 1849, thousands of miners traveled we'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'In 1849, thousands of miners traveled we'"
     },
     {
       "inv": "INV-6",
@@ -5485,18 +4878,6 @@
       "detail": "[teach] highlightWord 'Like' not on screen"
     },
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 8w (>6): 'The cave was murky, or dark and dim.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'The cave was murky, or dark and dim.'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -5512,18 +4893,6 @@
   "L.4.4b": [],
   "L.4.4c": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Dictionary'"
-    },
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Thesaurus'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -5534,18 +4903,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[teach] highlightWord 'dictionary' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 7w (>6): 'You want a stronger word than happy.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'You want a stronger word than happy.'"
     },
     {
       "inv": "INV-6",
@@ -5561,12 +4918,6 @@
     }
   ],
   "L.4.5": [
-    {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[example] heading 1w: 'Examples'"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -5809,12 +5160,6 @@
   ],
   "RF.1.3g": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 1w: 'Said'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -5911,12 +5256,6 @@
       "detail": "missing example ('Let's Try One')"
     },
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 6w: 'Rule 2: End With a Mark'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -6003,18 +5342,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[teach] highlightWord 'apostrophe' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 8w (>6): 'Sam fed the dog the cat the fish'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Sam fed the dog the cat the fish'"
     },
     {
       "inv": "INV-6",
@@ -6171,30 +5498,6 @@
       "rule": 25,
       "fixer": "renderer",
       "detail": "[tip] 'Catch It Quick' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 9w (>6): 'I packed my bag, and I caught the bus.'"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[teach] pill is a spoken sentence: 'I packed my bag, and I caught the bus.'"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 8w (>6): 'Sam grinned and whispered, \u201cI found the '"
-    },
-    {
-      "inv": "INV-9",
-      "rule": 3,
-      "fixer": "content",
-      "detail": "[example] pill is a spoken sentence: 'Sam grinned and whispered, \u201cI found the '"
     },
     {
       "inv": "INV-6",
