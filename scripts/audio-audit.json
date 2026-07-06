@@ -1,16 +1,28 @@
 {
   "fails": [
     {
-      "std": "RL.1.3",
+      "std": "RI.K.5",
       "slide": 4,
-      "sub": "b",
-      "reason": "The audio reads 'When you read, picture the character, the setting, and the events in your mind.' which is completely different from the expected text 'Tom played with his dog, Max. They ran in the sunny park.'"
+      "sub": "c",
+      "reason": "There is an excessively long pause of approximately 5.5 seconds between 'the name?' and 'The front cover!', which exceeds the 4-second threshold for mid-clip silence."
+    },
+    {
+      "std": "RI.K.5",
+      "slide": 4,
+      "sub": "d",
+      "reason": "The audio omits the second sentence, 'The title page inside!', after a long pause following the first sentence."
     },
     {
       "std": "RL.1.3",
       "slide": 4,
       "sub": "a",
-      "reason": "The audio reads \"Here is a helpful trick\" instead of the expected text \"Let's try one together.\" This is completely wrong content."
+      "reason": "The audio reads \"Here is a helpful trick\" which is completely different from the expected text \"Let's try one together.\""
+    },
+    {
+      "std": "RL.1.3",
+      "slide": 4,
+      "sub": "b",
+      "reason": "The audio reads completely different content than the expected text. The audio says, 'When you read, picture the character, the setting, and the events in your mind.' instead of 'Tom played with his dog, Max. They ran in the sunny park.'"
     },
     {
       "std": "RL.1.3",
@@ -19,19 +31,163 @@
       "reason": "The audio reads \"Now you are ready to practice finding story parts.\" which is completely different from the expected text \"Who is this story about? Tom!\""
     },
     {
-      "std": "RF.1.4b",
+      "std": "RL.2.10",
+      "slide": 1,
+      "sub": "key term",
+      "reason": "The audio reads 'Good readers do not just keep going. They use a trick called rereading.' which is completely different from the expected text 'To reread means to read a tricky part again, slowly, to understand it.'"
+    },
+    {
+      "std": "RL.2.10",
+      "slide": 2,
+      "sub": "concept",
+      "reason": "The audio reads \"When a part feels confusing, stop. Do not rush past it.\" which is completely different from the expected text \"Read that part again, and ask yourself: what is happening here?\""
+    },
+    {
+      "std": "RI.2.3",
       "slide": 3,
-      "sub": "d",
-      "reason": "The audio reads \"Now let's think about the next part. Do you want to read the dialogue? Or maybe we could take it in turns?\" which is completely different from the expected text \"Nice and smooth, like talking to a friend.\""
+      "sub": "model phrasing",
+      "reason": "The audio is missing the phrase \"Like this.\" at the beginning of the sentence."
+    },
+    {
+      "std": "RF.2.3f",
+      "slide": 2,
+      "sub": "concept",
+      "reason": "The audio reads 'Look at the word because. If you sound it out, it does not work.' which is completely different from the expected text 'So we do not sound it out. We just remember it.'"
+    },
+    {
+      "std": "RF.2.3f",
+      "slide": 3,
+      "sub": "concept",
+      "reason": "The audio reads 'Here are more tricky words. People, again, and could.' which is completely different from the expected text 'We see these words so often that we just know them in a snap.'"
+    },
+    {
+      "std": "L.2.4",
+      "slide": 6,
+      "sub": "a",
+      "reason": "The audio reads completely different content than the expected text. It asks about the word 'unhappy' in a different sentence, instead of 'damp' in the provided sentence about rain and grass."
+    },
+    {
+      "std": "RL.3.10",
+      "slide": 5,
+      "sub": "b",
+      "reason": "The word \"Pick\" is mispronounced as \"Kick\", which significantly changes the meaning and would confuse a K-4 child."
+    },
+    {
+      "std": "RF.3.3d",
+      "slide": 3,
+      "sub": "concept",
+      "reason": "The audio content ('In the word comb, the B is silent. We say comb, not comb.') is completely different from the expected text ('To find a silent letter, say the word slowly and listen for a letter you do not hear.')."
+    },
+    {
+      "std": "RF.3.3d",
+      "slide": 2,
+      "sub": "concept",
+      "reason": "The audio content 'Look at the word knee. We do not say the K. We just say knee.' does not match the expected text 'The K is written, but it stays silent. Your mouth skips right over it.'"
+    },
+    {
+      "std": "RF.3.4b",
+      "slide": 2,
+      "sub": "concept",
+      "reason": "The audio reads content completely unrelated to the expected text. It says, \"The words tell you how to sound. A scared part should sound scared.\" instead of \"An exciting part should sound excited and louder!\""
+    },
+    {
+      "std": "RF.3.4b",
+      "slide": 3,
+      "sub": "concept",
+      "reason": "The audio reads 'Punctuation marks give you clues. An exclamation point means say it with energy.' which is completely different content from the expected text 'A question mark means let your voice go up at the end.'"
+    },
+    {
+      "std": "RL.4.3",
+      "slide": 2,
+      "sub": "c",
+      "reason": "The audio reads \"That word is kind\" which is completely different from the expected text \"even without saying kind.\""
+    },
+    {
+      "std": "RL.4.6",
+      "slide": 4,
+      "sub": "c",
+      "reason": "The audio contains a silence of approximately 6 seconds between 'So is it first or third person?' and 'Third!', which exceeds the 4-second threshold for mid-clip silence."
+    },
+    {
+      "std": "RI.4.5",
+      "slide": 3,
+      "sub": "b",
+      "reason": "The word \"trouble\" is truncated mid-word, ending abruptly after \"troub\"."
+    },
+    {
+      "std": "RI.4.10",
+      "slide": 1,
+      "sub": "key term",
+      "reason": "The audio reads \"A long article can feel like a lot. But every section has one main idea holding it together.\" which is completely different from the expected text \"All the other sentences are supporting details. They explain or prove that main idea.\""
+    },
+    {
+      "std": "RI.4.10",
+      "slide": 2,
+      "sub": "concept",
+      "reason": "The audio reads 'The main idea is the one big point the whole paragraph is about.' which is completely different from the expected text 'Supporting details are the small facts, like numbers or examples, that back it up.'"
+    },
+    {
+      "std": "RI.4.10",
+      "slide": 3,
+      "sub": "strategy",
+      "reason": "The audio reads \"In a long text, read the whole section before you decide the main idea.\" which is completely different from the expected text \"Then ask: what one idea do all these details point to?\""
+    },
+    {
+      "std": "RF.4.4",
+      "slide": 2,
+      "sub": "a",
+      "reason": "The audio reads \"There's always something to explore on the farm, like a walk through the cornfield.\" which is completely unrelated to the expected text \"Slow down for tricky parts.\""
+    },
+    {
+      "std": "L.4.6",
+      "slide": 4,
+      "sub": "b",
+      "reason": "The audio is missing the introductory phrase \"The sentence is:\" from the expected text."
+    },
+    {
+      "std": "L.4.6",
+      "slide": 4,
+      "sub": "c",
+      "reason": "The audio is missing the word \"Examine!\" which is a core part of the expected text and the answer to the question posed."
     },
     {
       "std": "RF.1.3g",
       "slide": 6,
       "sub": "a",
       "reason": "The audio reads completely different content than the expected text. It says 'Your turn. Listen to these words. Which one is a tricky sight word that doesn't follow the rules?' instead of 'Now you try! One of these is a sight word we just remember, not sound out. Is it said, cat, or run?'. The core question and the specific word options are missing."
+    },
+    {
+      "std": "L.4.2",
+      "slide": 4,
+      "sub": "d",
+      "reason": "The audio only reads 'Where does the period belong?' and then stops after a long pause, completely omitting 'Inside! It tucks right inside the closing quote.' from the expected text."
     }
   ],
   "warns": [
+    {
+      "std": "RF.K.2a",
+      "slide": 1,
+      "sub": "a",
+      "reason": "The voice has a slightly unnatural, overly enunciated delivery, particularly on 'really fun' and 'rhyming words'. It's not a robotic glitch, but it sounds a bit stiff."
+    },
+    {
+      "std": "RF.K.1c",
+      "slide": 2,
+      "sub": "a",
+      "reason": "The audio pronounces \"thecatsat\" as three distinct, slow words (\"the... cat... sat\") with pauses in between. The expected text presents \"thecatsat\" as a single unit, followed by \"Can you read that? It's so hard!\", implying it should be read as a challenging, possibly run-on word. The audio's delivery undermines the pedagogical intent of presenting it as a difficult word."
+    },
+    {
+      "std": "RF.K.2b",
+      "slide": 2,
+      "sub": "c",
+      "reason": "The word 'apple' is pronounced as 'ap-ol' instead of 'ap-pull' when demonstrating the two beats."
+    },
+    {
+      "std": "K.L.2",
+      "slide": 6,
+      "sub": "a",
+      "reason": "Brief audio artifact at the end, specifically on the word 'cool' which sounds like 'cool-ool'."
+    },
     {
       "std": "RL.1.9",
       "slide": 4,
@@ -45,18 +201,66 @@
       "reason": "The audio uses a questioning intonation for all three phrases ('A period?', 'A question mark?', 'Or an exclamation mark?'), rather than the declarative, interrogative, and exclamatory intonations implied by the punctuation in the expected text. While the words are correct, the consistent questioning tone is slightly off for the content."
     },
     {
+      "std": "RF.1.2b",
+      "slide": 2,
+      "sub": "beat 2 - blend them",
+      "reason": "The word \"Man!\" is repeated in the audio, which is not present in the expected text."
+    },
+    {
       "std": "RF.1.2c",
       "slide": 2,
       "sub": "d",
       "reason": "The audio includes an unexpected 'z' sound effect inserted after 'is' which is not present in the expected text."
     },
     {
+      "std": "L.2.4b",
+      "slide": 2,
+      "sub": "b",
+      "reason": "The audio spells out \"U N\" instead of saying \"un\" as a single sound/prefix, which is a slight deviation from the most natural reading of the expected text."
+    },
+    {
+      "std": "RL.3.3",
+      "slide": 1,
+      "sub": "a",
+      "reason": "The audio pronounces \"Characters actions\" instead of \"Characters' actions\", omitting the possessive 's' sound. While the meaning is still clear, it's a minor pronunciation inaccuracy."
+    },
+    {
+      "std": "RF.3.3b",
+      "slide": 3,
+      "sub": "a",
+      "reason": "The audio pronounces the word \"able\" instead of spelling out the letters \"A-B-L-E\" as written in the expected text."
+    },
+    {
+      "std": "L.3.5",
+      "slide": 5,
+      "sub": "b",
+      "reason": "The pace is slightly fast, especially the word 'literally' is rushed, which might make it a bit harder for a K-4 student to process."
+    },
+    {
+      "std": "L.4.4c",
+      "slide": 1,
+      "sub": "a",
+      "reason": "The pronunciation of 'thesauri' as 'the-SAW-rye' is technically correct but sounds slightly unnatural and less common for a K-4 audience, potentially causing mild confusion."
+    },
+    {
+      "std": "L.4.5",
+      "slide": 4,
+      "sub": "b",
+      "reason": "The pace of the audio is slightly fast, though still understandable."
+    },
+    {
       "std": "RF.1.3f",
       "slide": 4,
       "sub": "d",
       "reason": "The audio pronounces \"The -ed\" as \"The E D\" (spelling out the letters) instead of pronouncing it as the suffix \"-ed\"."
+    },
+    {
+      "std": "RF.1.4a",
+      "slide": 2,
+      "sub": "a",
+      "reason": "The word \"two\" is slightly over-enunciated and drawn out, but a child would still understand it."
     }
   ],
-  "passed": 660,
-  "judged": 687
+  "passed": 2771,
+  "judged": 3049
 }
