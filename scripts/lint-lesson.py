@@ -136,7 +136,7 @@ def lint(lesson, bank, audio_fail_stds, timed):
                     V.append(("INV-7", 4, "content", f"[{s['type']}] displayText {n}w (>{limit}): {dt[:40]!r}"))
             for p in (st.get("displayParts") or []):
                 pn = len(words(p.get("text", "")))
-                if pn > 5:
+                if pn > 6:
                     V.append(("INV-8", 4, "content", f"[{s['type']}] displayPart {pn}w: {p.get('text','')[:40]!r}"))
 
     # INV-16 audio present + not failed

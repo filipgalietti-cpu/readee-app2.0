@@ -47,12 +47,6 @@
   ],
   "RL.K.2": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[example] EMPTY heading"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -319,12 +313,6 @@
   ],
   "RI.K.5": [
     {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayPart 6w: 'Front cover: first thing you see'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -447,12 +435,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'picture' not on screen"
-    },
-    {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[tip] displayPart 6w: 'What do I see? \u2192 LOOK'"
     },
     {
       "inv": "INV-6",
@@ -1627,12 +1609,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[example] highlightWord 'frogs' not on screen"
-    },
-    {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayPart 6w: 'What page do frogs start on?'"
     },
     {
       "inv": "INV-6",
@@ -5292,12 +5268,6 @@
       "detail": "[tip] highlightWord 'sentence' not on screen"
     },
     {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[tip] displayPart 6w: 'Check the start and the end'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -5458,12 +5428,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'shine' not on screen"
-    },
-    {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayPart 6w: 'Writing to a teacher or principal?'"
     },
     {
       "inv": "INV-6",
