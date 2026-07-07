@@ -7,6 +7,7 @@ import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import QuestionChart from "@/app/_components/QuestionChart";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { logLearningEvent, newSessionId } from "@/lib/adaptive/events";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
 import { audioManager } from "@/lib/audio/audio-manager";
@@ -595,6 +596,10 @@ function PracticeSession({
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [showHint, setShowHint] = useState(false);
   const [previewedChoice, setPreviewedChoice] = useState<string | null>(null);
+  // Adaptive SENSE layer: one session id per practice sitting + a per-question
+  // shown-at timestamp so we can capture response latency. See lib/adaptive.
+  const sessionIdRef = useRef<string>(newSessionId());
+  const shownAtRef = useRef<number>(Date.now());
   const mysteryBoxMultiplier = usePracticeStore((s) => s.mysteryBoxMultiplier);
   const clearMysteryBoxMultiplier = usePracticeStore((s) => s.clearMysteryBoxMultiplier);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -674,6 +679,11 @@ function PracticeSession({
     return () => { stop(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, audioReady, audioGradesEnabled]);
+
+  /* ── Adaptive SENSE: stamp when each question is shown (for latency) ── */
+  useEffect(() => {
+    shownAtRef.current = Date.now();
+  }, [currentIdx]);
 
   /* ── Play feedback audio ── */
   useEffect(() => {
@@ -761,11 +771,30 @@ function PracticeSession({
     if (url) playUrl(url);
   }, [q.audio_url, stop, playUrl]);
 
+  /* ── Adaptive SENSE: record one graded practice interaction ── */
+  const recordEvent = useCallback((correct: boolean, chosen: string) => {
+    if (!child?.id || !standard?.standard_id) return;
+    logLearningEvent({
+      childId: child.id,
+      standardId: standard.standard_id,
+      surface: "practice",
+      correct,
+      itemId: q?.id ?? null,
+      itemType: (q as { type?: string })?.type ?? null,
+      hintUsed: showHint,
+      latencyMs: Date.now() - shownAtRef.current,
+      chosen,
+      difficulty: (q as { difficulty?: number })?.difficulty ?? null,
+      sessionId: sessionIdRef.current,
+    });
+  }, [child, standard, q, showHint]);
+
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
     if (selected !== null) return;
     stop();
     const correct = choice === q.correct;
+    recordEvent(correct, choice);
 
     if (correct) {
       const newConsecutive = consecutiveCorrect + 1;
@@ -780,7 +809,7 @@ function PracticeSession({
       selectAnswer(choice, false, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playIncorrectBuzz();
     }
-  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child.streak_days, mysteryBoxMultiplier]);
+  }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child.streak_days, mysteryBoxMultiplier, recordEvent]);
 
   /* ── Handle sentence build answer ── */
   const handleSentenceBuildAnswer = useCallback((isCorrect: boolean, placedSentence: string) => {
