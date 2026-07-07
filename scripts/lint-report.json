@@ -315,16 +315,10 @@
   ],
   "RI.K.6": [
     {
-      "inv": "INV-1",
-      "rule": 1,
-      "fixer": "content",
-      "detail": "does not start with intro: ['teach', 'example', 'example']"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
-      "detail": "[teach] highlightWord 'important people' not on screen"
+      "detail": "[intro] highlightWord 'important people' not on screen"
     },
     {
       "inv": "INV-6",
@@ -1445,12 +1439,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'ask' not on screen"
-    },
-    {
-      "inv": "INV-18",
-      "rule": 16,
-      "fixer": "asset",
-      "detail": "2 clips not Whisper-timed"
     }
   ],
   "RI.1.2": [
@@ -1617,12 +1605,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'difference' not on screen"
-    },
-    {
-      "inv": "INV-18",
-      "rule": 16,
-      "fixer": "asset",
-      "detail": "7 clips not Whisper-timed"
     }
   ],
   "RI.1.7": [
@@ -1927,12 +1909,6 @@
   ],
   "L.1.4a": [
     {
-      "inv": "INV-3",
-      "rule": 24,
-      "fixer": "content",
-      "detail": "no MCQ practice"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -2060,12 +2036,6 @@
     }
   ],
   "L.1.5a": [
-    {
-      "inv": "INV-3",
-      "rule": 24,
-      "fixer": "content",
-      "detail": "no MCQ practice"
-    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -2993,12 +2963,6 @@
   ],
   "L.2.4": [
     {
-      "inv": "INV-3",
-      "rule": 24,
-      "fixer": "content",
-      "detail": "no MCQ practice"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -3099,12 +3063,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'root words' not on screen"
-    },
-    {
-      "inv": "INV-18",
-      "rule": 16,
-      "fixer": "asset",
-      "detail": "1 clips not Whisper-timed"
     }
   ],
   "L.2.4d": [
@@ -4610,12 +4568,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'parts' not on screen"
-    },
-    {
-      "inv": "INV-18",
-      "rule": 16,
-      "fixer": "asset",
-      "detail": "4 clips not Whisper-timed"
     }
   ],
   "RF.4.3a": [
@@ -5250,12 +5202,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'verb tenses' not on screen"
-    },
-    {
-      "inv": "INV-18",
-      "rule": 16,
-      "fixer": "asset",
-      "detail": "2 clips not Whisper-timed"
     }
   ],
   "L.3.2": [
@@ -5374,12 +5320,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'style' not on screen"
-    },
-    {
-      "inv": "INV-18",
-      "rule": 16,
-      "fixer": "asset",
-      "detail": "3 clips not Whisper-timed"
     }
   ],
   "RL.K.10": [
