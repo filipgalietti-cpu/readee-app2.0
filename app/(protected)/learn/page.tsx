@@ -11,6 +11,7 @@ import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
 import { getAudioUrl } from "@/lib/audio";
 import { usePracticeStore } from "@/lib/stores/practice-store";
+import { logLearningEvent, newSessionId } from "@/lib/adaptive/events";
 import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { PracticeResultSchema } from "@/lib/schemas";
@@ -352,6 +353,9 @@ function LearnSession({
   const [showHint, setShowHint] = useState(false);
   const [audioUnlocked, setAudioUnlocked] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Adaptive SENSE: one session id per lesson sitting, threaded through the
+  // fork/MCQ signals the slideshow emits.
+  const adaptiveSessionRef = useRef<string>(newSessionId());
 
   const totalQ = mcqQuestions.length;
   const q = mcqQuestions[currentIdx];
@@ -466,6 +470,23 @@ function LearnSession({
     stop();
     const correct = choice === q.correct;
 
+    // Adaptive SENSE: record the in-lesson practice answer.
+    if (child?.id) {
+      logLearningEvent({
+        childId: child.id,
+        standardId: lesson.standardId,
+        surface: "lesson_mcq",
+        correct,
+        itemId: q.id,
+        itemType: (q as { type?: string }).type ?? null,
+        hintUsed: showHint,
+        chosen: choice,
+        difficulty: (q as { difficulty?: number }).difficulty ?? null,
+        sessionId: adaptiveSessionRef.current,
+        lessonId: lesson.standardId,
+      });
+    }
+
     setSelected(choice);
     setIsCorrect(correct);
     setShowFeedback(true);
@@ -535,7 +556,16 @@ function LearnSession({
 
   /* ── Phase: Slideshow ── */
   if (phase === "slideshow") {
-    return <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} outfitId={child?.equipped_items?.outfit ?? null} />;
+    return <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} outfitId={child?.equipped_items?.outfit ?? null}
+      onSignal={(ev) => {
+        if (!child?.id) return;
+        logLearningEvent({
+          ...ev,
+          childId: child.id,
+          lessonId: lesson.standardId,
+          sessionId: adaptiveSessionRef.current,
+        });
+      }} />;
   }
 
   /* ── Phase: Complete ── */

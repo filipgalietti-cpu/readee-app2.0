@@ -164,6 +164,19 @@ interface LessonSlideshowProps {
    *  immediately (skip the karaoke timing) so a static screenshot shows
    *  the finished slide, not a half-drawn frame. Demo-render only. */
   auditMode?: boolean;
+  /** Adaptive engine SENSE hook (Phase 0). The slideshow emits a graded
+   *  interaction (e.g. the fork resolved after N tries); the runtime
+   *  attaches childId/session and persists it via logLearningEvent. The
+   *  component stays decoupled from telemetry — it only senses. */
+  onSignal?: (ev: {
+    surface: "fork" | "lesson_mcq";
+    standardId: string;
+    correct: boolean;
+    attempts?: number;
+    hintUsed?: boolean;
+    itemId?: string | null;
+    itemType?: string | null;
+  }) => void;
 }
 
 /* ─── Constants ──────────────────────────────────────── */
@@ -256,7 +269,7 @@ const revealVariants = {
 
 /* ─── Component ──────────────────────────────────────── */
 
-export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered", outfitId = null, auditMode = false }: LessonSlideshowProps) {
+export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered", outfitId = null, auditMode = false, onSignal }: LessonSlideshowProps) {
   const isMuted = useAudioStore((s) => s.isMuted);
 
   // Shell-mode viewport detection — 75% of usage is phone. When the
@@ -331,6 +344,10 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
   // Bumped on every miss so the bunny re-shakes even on a repeat wrong
   // (otherwise a 2nd miss looks like nothing happened — Filip 2026-06-03).
   const [forkNudge, setForkNudge] = useState(0);
+  // Adaptive SENSE: count fork misses on the current slide so we can emit
+  // the resolution signal (attempts = misses + 1). High attempts = struggle
+  // → the controller's cue to hit the brakes (re-teach) before practice.
+  const forkMissesRef = useRef(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
@@ -621,6 +638,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     setExampleSolved(false);
     setForkReaction("idle");
     setForkNudge(0);
+    forkMissesRef.current = 0; // adaptive SENSE: reset attempts per slide
     setIsPlaying(false);
     scheduledFeedbackRef.current = new Set();
     timerRef.current = setTimeout(() => {
@@ -660,6 +678,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     setExampleSolved(false);
     setForkReaction("idle");
     setForkNudge(0);
+    forkMissesRef.current = 0; // adaptive SENSE: reset attempts per slide
     setIsPlaying(false);
     scheduledFeedbackRef.current = new Set();
     timerRef.current = setTimeout(() => {
@@ -1759,6 +1778,20 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     // first miss gets the spoken encouragement, repeats just a soft buzz.
     const handleForkCorrect = () => {
       setForkReaction("correct");
+      // Adaptive SENSE: the fork resolved. Emit one signal with the attempt
+      // count so the controller can tell "got it first try" (flow) from
+      // "needed 4 tries + the hint" (struggle). The hint surfaces from the
+      // first miss, so misses>0 is a fair hintUsed proxy.
+      const misses = forkMissesRef.current;
+      onSignal?.({
+        surface: "fork",
+        standardId: lesson.standardId,
+        correct: true,
+        attempts: misses + 1,
+        hintUsed: misses > 0,
+        itemId: slide?.interactive ? `${lesson.standardId}-fork` : null,
+        itemType: slide?.interactive?.kind ?? null,
+      });
       const f = slide?.interactive?.correctAudio;
       if (f && audioManager && !isMuted) {
         audioManager.stop();
@@ -1769,6 +1802,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     };
     const handleForkWrong = (isFirst: boolean) => {
       setForkReaction("incorrect");
+      forkMissesRef.current += 1; // adaptive SENSE: track attempts on this fork
       setForkNudge((n) => n + 1); // re-trigger the shake animation every miss
       // Drift back to neutral so the bunny isn't stuck frowning mid-retry.
       window.setTimeout(() => setForkReaction((r) => (r === "incorrect" ? "idle" : r)), 3500);
