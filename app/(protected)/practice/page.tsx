@@ -8,6 +8,8 @@ import QuestionChart from "@/app/_components/QuestionChart";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { logLearningEvent, newSessionId } from "@/lib/adaptive/events";
+import { useAdaptiveController } from "@/lib/adaptive/use-adaptive-controller";
+import { AdaptiveDebugBadge } from "@/app/_components/AdaptiveDebugBadge";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
 import { audioManager } from "@/lib/audio/audio-manager";
@@ -555,6 +557,7 @@ function PracticeLoader() {
       standard={standard}
       gradeStandards={gradeStandards}
       focusQuestionId={focusQuestionId}
+      debugAdaptive={params.get("adaptive") === "1"}
     />
   );
 }
@@ -568,11 +571,13 @@ function PracticeSession({
   standard,
   gradeStandards,
   focusQuestionId,
+  debugAdaptive,
 }: {
   child: Child;
   standard: Standard;
   gradeStandards: Standard[];
   focusQuestionId?: string | null;
+  debugAdaptive?: boolean;
 }) {
   const router = useRouter();
   const { unlockAudio, stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz } = useAudio();
@@ -600,6 +605,13 @@ function PracticeSession({
   // shown-at timestamp so we can capture response latency. See lib/adaptive.
   const sessionIdRef = useRef<string>(newSessionId());
   const shownAtRef = useRef<number>(Date.now());
+  // Adaptive DECIDE layer (Phase 1): read-only brakes/gas classifier. It only
+  // observes and decides — nothing acts on it yet, so it changes nothing a
+  // child sees. Surfaced in a dev badge when ?adaptive=1.
+  const adaptive = useAdaptiveController({
+    childId: child?.id ?? null,
+    standardId: standard?.standard_id ?? null,
+  });
   const mysteryBoxMultiplier = usePracticeStore((s) => s.mysteryBoxMultiplier);
   const clearMysteryBoxMultiplier = usePracticeStore((s) => s.clearMysteryBoxMultiplier);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -774,6 +786,7 @@ function PracticeSession({
   /* ── Adaptive SENSE: record one graded practice interaction ── */
   const recordEvent = useCallback((correct: boolean, chosen: string) => {
     if (!child?.id || !standard?.standard_id) return;
+    const latencyMs = Date.now() - shownAtRef.current;
     logLearningEvent({
       childId: child.id,
       standardId: standard.standard_id,
@@ -782,12 +795,14 @@ function PracticeSession({
       itemId: q?.id ?? null,
       itemType: (q as { type?: string })?.type ?? null,
       hintUsed: showHint,
-      latencyMs: Date.now() - shownAtRef.current,
+      latencyMs,
       chosen,
       difficulty: (q as { difficulty?: number })?.difficulty ?? null,
       sessionId: sessionIdRef.current,
     });
-  }, [child, standard, q, showHint]);
+    // Feed the brakes/gas brain (read-only — observes, never acts).
+    adaptive.observe({ correct, attempts: 1, hintUsed: showHint, latencyMs, surface: "practice" });
+  }, [child, standard, q, showHint, adaptive]);
 
   /* ── Handle answer selection ── */
   const handleAnswer = useCallback((choice: string) => {
@@ -1090,6 +1105,7 @@ function PracticeSession({
 
   return (
     <div ref={scrollRef} className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex flex-col overflow-y-auto">
+      {debugAdaptive && <AdaptiveDebugBadge reading={adaptive.reading} />}
       {/* ── Top bar: progress + close ── */}
       <div className="flex items-center gap-3 px-4 pt-4 pb-2 flex-shrink-0">
         <button
