@@ -305,12 +305,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[practice-intro] highlightWord 'Your turn' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RI.K.6": [
@@ -2447,6 +2441,12 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'pictures' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RL.2.9": [
@@ -2547,12 +2547,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[intro] highlightWord 'connection' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RI.2.4": [
@@ -2649,6 +2643,12 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'purpose' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RI.2.7": [
@@ -2997,12 +2997,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'detective' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "L.2.4a": [
@@ -3063,6 +3057,12 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'root words' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "L.2.4d": [
@@ -3447,12 +3447,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'year' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RI.3.1": [
@@ -4251,6 +4245,12 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[practice-intro] highlightWord 'practice' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RL.4.6": [
@@ -4283,12 +4283,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[practice-intro] highlightWord 'practice' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RL.4.7": [
@@ -4357,6 +4351,12 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'trick' not on screen"
+    },
+    {
+      "inv": "INV-16",
+      "rule": 18,
+      "fixer": "asset",
+      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RI.4.2": [
@@ -4479,12 +4479,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'structures' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RI.4.6": [
@@ -4871,12 +4865,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'own' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RF.1.3a": [
@@ -4972,12 +4960,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'faster' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "RF.1.4a": [
@@ -5282,12 +5264,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'ready' not on screen"
-    },
-    {
-      "inv": "INV-16",
-      "rule": 18,
-      "fixer": "asset",
-      "detail": "has clip(s) flagged by audio judge"
     }
   ],
   "L.4.3": [
