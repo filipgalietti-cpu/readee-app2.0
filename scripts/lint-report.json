@@ -69,12 +69,6 @@
   ],
   "RL.K.4": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[teach] heading 7w: 'How Do We Figure Out New Words?'"
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -287,16 +281,10 @@
   ],
   "RI.K.4": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[intro] heading 7w: \"Let's Learn New Words in Fact Books!\""
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
-      "detail": "[intro] 'Let's Learn New Words in Fact Books!' ends audio-only (mobile blank risk)"
+      "detail": "[intro] 'New Words in Books' ends audio-only (mobile blank risk)"
     },
     {
       "inv": "INV-5",
@@ -503,16 +491,10 @@
   ],
   "RF.K.1a": [
     {
-      "inv": "INV-4",
-      "rule": 2,
-      "fixer": "content",
-      "detail": "[intro] heading 7w: \"Let's Learn to Read Left to Right!\""
-    },
-    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
-      "detail": "[intro] 'Let's Learn to Read Left to Right!' ends audio-only (mobile blank risk)"
+      "detail": "[intro] 'Read Left to Right!' ends audio-only (mobile blank risk)"
     },
     {
       "inv": "INV-5",
@@ -1002,18 +984,6 @@
       "rule": 25,
       "fixer": "renderer",
       "detail": "[tip] 'A Helpful Trick!' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[tip] displayPart 9w: 'Number one: Does it start with a capital'"
-    },
-    {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[tip] displayPart 7w: ' Number two: Does it end with punctuatio'"
     }
   ],
   "K.L.4": [
@@ -1387,12 +1357,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[example] highlightWord 'picture' not on screen"
-    },
-    {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayPart 9w: 'A boy stands in the rain, holding an umb'"
     },
     {
       "inv": "INV-6",
@@ -2737,12 +2701,6 @@
       "detail": "[intro] highlightWord 'see' not on screen"
     },
     {
-      "inv": "INV-8",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayPart 10w: 'A book about bees. The picture shows a b'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -3853,12 +3811,6 @@
   ],
   "RF.3.3b": [
     {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[teach] displayText 7w (>6): 'TION = an action becomes a thing'"
-    },
-    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -3963,12 +3915,6 @@
       "rule": 25,
       "fixer": "auto",
       "detail": "[tip] highlightWord 'character' not on screen"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[tip] displayText 7w (>6): 'Read it how they would say it'"
     },
     {
       "inv": "INV-16",
@@ -4421,12 +4367,6 @@
       "rule": 25,
       "fixer": "renderer",
       "detail": "[tip] 'Picture It' ends audio-only (mobile blank risk)"
-    },
-    {
-      "inv": "INV-7",
-      "rule": 4,
-      "fixer": "content",
-      "detail": "[example] displayText 17w (>16): 'Maya stared at the dark cave. Her hands '"
     },
     {
       "inv": "INV-6",
