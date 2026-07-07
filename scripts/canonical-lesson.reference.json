@@ -1,0 +1,385 @@
+{
+  "standardId": "L.4.4b",
+  "grade": "4th Grade",
+  "domain": "Language",
+  "title": "Greek and Latin Roots",
+  "slides": [
+    {
+      "type": "intro",
+      "slide": 1,
+      "steps": [
+        {
+          "sub": "a",
+          "audioFile": "audio/lessons/L.4.4b/S1a.mp3",
+          "ttsScript": "Many big English words come from Greek and Latin roots.",
+          "audioRegenAt": "2026-05-08T03:49:27.386Z",
+          "displayText": "Greek + Latin roots",
+          "displayDelay": 0
+        },
+        {
+          "sub": "b",
+          "audioFile": "audio/lessons/L.4.4b/S1b.mp3",
+          "ttsScript": "Knowing roots unlocks tons of vocabulary!",
+          "audioRegenAt": "2026-05-08T03:49:32.895Z",
+          "displayText": "unlock big words.",
+          "displayDelay": 0
+        },
+        {
+          "sub": "c",
+          "audioFile": "audio/lessons/L.4.4b/S1c.mp3",
+          "ttsScript": "Like Bio, Photo, Geo, and Aqua \u2014 let us meet them!",
+          "audioRegenAt": "2026-05-25T02:09:29.932Z",
+          "displayParts": [
+            {
+              "text": "Bio",
+              "delay": 0
+            },
+            {
+              "text": "Photo",
+              "delay": 1560
+            },
+            {
+              "text": "Geo",
+              "delay": 3380
+            },
+            {
+              "text": "Aqua",
+              "delay": 5000
+            }
+          ]
+        }
+      ],
+      "heading": "Roots From Long Ago",
+      "imageFile": "images/lessons/L.4.4b/S1.png",
+      "imagePrompt": "A cheerful cartoon scroll with Greek and Latin letters. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+    },
+    {
+      "type": "teach",
+      "slide": 2,
+      "steps": [
+        {
+          "sub": "a",
+          "audioFile": "audio/lessons/L.4.4b/S2a.mp3",
+          "ttsScript": "Bio means life.",
+          "audioRegenAt": "2026-05-11T23:49:03.980Z",
+          "displayTableRow": {
+            "label": "Bio",
+            "value": "life",
+            "example": "biology",
+            "exampleDelay": 0,
+            "tableHeaders": [
+              "Root",
+              "Means",
+              "Like"
+            ]
+          },
+          "displayDelay": 0
+        },
+        {
+          "sub": "b",
+          "audioFile": "audio/lessons/L.4.4b/S2b.mp3",
+          "ttsScript": "Photo means light.",
+          "audioRegenAt": "2026-05-11T23:49:07.463Z",
+          "displayTableRow": {
+            "label": "Photo",
+            "value": "light",
+            "example": "photograph",
+            "exampleDelay": 0
+          },
+          "displayDelay": 0
+        },
+        {
+          "sub": "c",
+          "audioFile": "audio/lessons/L.4.4b/S2c.mp3",
+          "ttsScript": "Tele means far.",
+          "audioRegenAt": "2026-05-23T20:35:57.530Z",
+          "displayTableRow": {
+            "label": "Tele",
+            "value": "far",
+            "example": "telescope",
+            "exampleDelay": 0
+          },
+          "displayDelay": 0
+        },
+        {
+          "sub": "d",
+          "audioFile": "audio/lessons/L.4.4b/S2d.mp3",
+          "ttsScript": "Phone means sound.",
+          "audioRegenAt": "2026-05-23T20:36:01.386Z",
+          "displayTableRow": {
+            "label": "Phone",
+            "value": "sound",
+            "example": "telephone",
+            "exampleDelay": 0
+          },
+          "displayDelay": 0
+        }
+      ],
+      "heading": "Common Roots",
+      "imageFile": "images/lessons/L.4.4b/S2.png",
+      "imagePrompt": "A cheerful cartoon root system with labels glowing. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints.",
+      "imageRegenAt": "2026-06-03T00:59:25.194Z"
+    },
+    {
+      "type": "teach",
+      "slide": 3,
+      "steps": [
+        {
+          "sub": "a",
+          "audioFile": "audio/lessons/L.4.4b/S3a.mp3",
+          "ttsScript": "Aqua means water. Aquarium = water place.",
+          "audioRegenAt": "2026-05-08T03:50:01.006Z",
+          "displayTableRow": {
+            "label": "Aqua",
+            "value": "water",
+            "example": "aquarium",
+            "exampleDelay": 0,
+            "tableHeaders": [
+              "Root",
+              "Means",
+              "Like"
+            ]
+          },
+          "displayDelay": 0
+        },
+        {
+          "sub": "b",
+          "audioFile": "audio/lessons/L.4.4b/S3b.mp3",
+          "ttsScript": "Geo means earth. Geography = writing about earth.",
+          "audioRegenAt": "2026-05-08T03:50:07.529Z",
+          "displayTableRow": {
+            "label": "Geo",
+            "value": "earth",
+            "example": "geography",
+            "exampleDelay": 0
+          },
+          "displayDelay": 0
+        },
+        {
+          "sub": "c",
+          "audioFile": "audio/lessons/L.4.4b/S3c.mp3",
+          "ttsScript": "Chrono means time. Chronicle is a record of time.",
+          "audioRegenAt": "2026-05-24T22:24:01.417Z",
+          "displayTableRow": {
+            "label": "Chrono",
+            "value": "time",
+            "example": "chronicle"
+          },
+          "displayDelay": 0
+        }
+      ],
+      "heading": "Aqua, Geo, Chrono",
+      "imageFile": "images/lessons/L.4.4b/S3.png",
+      "imagePrompt": "A cheerful cartoon water droplet and earth globe characters. Clean pastel background. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. No twinkles or. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints."
+    },
+    {
+      "type": "example",
+      "slide": 4,
+      "steps": [
+        {
+          "sub": "a",
+          "audioFile": "audio/lessons/L.4.4b/S4a.mp3",
+          "ttsScript": "Let's try one together. Here's a word.",
+          "audioRegenAt": "2026-05-23T20:49:16.571Z"
+        },
+        {
+          "sub": "b",
+          "audioFile": "audio/lessons/L.4.4b/S4b.mp3",
+          "ttsScript": "Here is the word: biography.",
+          "displayText": "biography",
+          "displayDelay": 0,
+          "audioRegenAt": "2026-05-25T02:09:33.576Z",
+          "displayHighlight": "bio"
+        },
+        {
+          "sub": "c",
+          "audioFile": "audio/lessons/L.4.4b/S4c.mp3",
+          "ttsScript": "What is the root? BIO!",
+          "displayParts": [
+            {
+              "text": "What's the root?",
+              "delay": 0
+            },
+            {
+              "text": "BIO!",
+              "delay": 3780
+            }
+          ],
+          "highlightWord": {
+            "word": "bio",
+            "delay": 3040
+          },
+          "audioRegenAt": "2026-05-25T02:09:38.261Z"
+        },
+        {
+          "sub": "d",
+          "audioFile": "audio/lessons/L.4.4b/S4d.mp3",
+          "ttsScript": "What does it mean? Life!",
+          "displayParts": [
+            {
+              "text": "What does it mean?",
+              "delay": 0
+            },
+            {
+              "text": "Life!",
+              "delay": 3060
+            }
+          ],
+          "highlightWord": {
+            "word": "Life",
+            "delay": 2320
+          },
+          "audioRegenAt": "2026-05-25T02:09:41.972Z"
+        },
+        {
+          "sub": "e",
+          "audioFile": "audio/lessons/L.4.4b/S4e.mp3",
+          "ttsScript": "So biography means writing about a life. You unlocked the word!",
+          "audioRegenAt": "2026-05-25T02:09:48.424Z"
+        }
+      ],
+      "heading": "Let's Try One",
+      "imageFile": "images/lessons/L.4.4b/S4.png",
+      "imagePrompt": "A cheerful cartoon kid sitting cross-legged reading an open book, smiling. A small portrait of a person is shown on the book's cover page. Solid sky-blue background. NO horizontal stripes, NO rainbow, NO pastel gradient bands. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. Natural-looking eyes, no AI-generated glints.",
+      "imageRegenAt": "2026-05-25T02:09:56.022Z"
+    },
+    {
+      "type": "tip",
+      "slide": 5,
+      "steps": [
+        {
+          "sub": "a",
+          "audioFile": "audio/lessons/L.4.4b/S5a.mp3",
+          "ttsScript": "Here is a helpful trick.",
+          "audioRegenAt": "2026-05-24T05:43:54.509Z",
+          "displayText": "A helpful trick",
+          "displayDelay": 0
+        },
+        {
+          "sub": "b",
+          "audioFile": "audio/lessons/L.4.4b/S5b.mp3",
+          "ttsScript": "One root unlocks many words. Aqua: aquarium, aquatic, aqueduct!",
+          "audioRegenAt": "2026-05-24T05:44:02.738Z",
+          "displayParts": [
+            {
+              "text": "AQUA \u2192",
+              "delay": 0
+            },
+            {
+              "text": "  aquarium",
+              "delay": 5300
+            },
+            {
+              "text": "  \u00b7  aquatic",
+              "delay": 7080
+            },
+            {
+              "text": "  \u00b7  aqueduct",
+              "delay": 8660
+            }
+          ],
+          "highlightWord": {
+            "word": "Aqua",
+            "delay": 4040
+          }
+        },
+        {
+          "sub": "c",
+          "audioFile": "audio/lessons/L.4.4b/S5c.mp3",
+          "ttsScript": "Roots unlocked!",
+          "audioRegenAt": "2026-05-24T05:44:06.760Z",
+          "displayText": "Roots unlocked!",
+          "displayDelay": 0
+        }
+      ],
+      "heading": "Learn Roots, Win Big",
+      "imageFile": "images/lessons/L.4.4b/S5.png",
+      "imagePrompt": "A cheerful cartoon tree with a large root system visible underground, glowing softly. Each root branches into smaller roots \u2014 a clear visual metaphor for one root unlocking many words. Solid warm-amber background above the soil line. NO horizontal stripes, NO rainbow, NO pastel gradient bands. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. Natural-looking eyes, no AI-generated glints.",
+      "imageRegenAt": "2026-05-24T05:44:41.334Z"
+    },
+    {
+      "type": "interactive",
+      "slide": 6,
+      "heading": "Your Turn!",
+      "imageFile": "",
+      "imagePrompt": "",
+      "steps": [
+        {
+          "sub": "a",
+          "audioFile": "audio/lessons/L.4.4b/interactive-q.mp3",
+          "ttsScript": "You can unlock big words now \u2014 match each root to its meaning.",
+          "audioRegenAt": "2026-06-03T22:29:10.517Z"
+        }
+      ],
+      "interactive": {
+        "prompt": "Match each root to its meaning",
+        "hint": "Bio means life, tele means far, aqua means water.",
+        "correctAudio": "audio/lessons/L.4.4b/interactive-correct.mp3",
+        "wrongAudio": "audio/lessons/L.4.4b/interactive-wrong.mp3",
+        "correctScript": "You matched them all! Bio is life, tele is far, and aqua is water. You unlocked them!",
+        "wrongScript": "Almost \u2014 think about what each root means. Try again!",
+        "kind": "match",
+        "leftItems": [
+          "bio",
+          "tele",
+          "aqua"
+        ],
+        "rightItems": [
+          "life",
+          "far",
+          "water"
+        ],
+        "correctPairs": {
+          "bio": "life",
+          "tele": "far",
+          "aqua": "water"
+        }
+      }
+    },
+    {
+      "type": "practice-intro",
+      "slide": 7,
+      "steps": [
+        {
+          "sub": "a",
+          "audioFile": "audio/lessons/L.4.4b/S6a.mp3",
+          "ttsScript": "Time to try it.",
+          "displayText": "",
+          "interaction": "Stars and confetti celebration animation.",
+          "audioRegenAt": "2026-05-23T22:38:53.245Z"
+        },
+        {
+          "sub": "b",
+          "audioFile": "audio/lessons/L.4.4b/S6b.mp3",
+          "ttsScript": "Now it's your turn! You'll spot roots in real words all by yourself. I know you can do it. Let's go!",
+          "interaction": "A 'Let's Go!' button pulses, inviting the kid to tap and start the MCQs.",
+          "displayDelay": 4000,
+          "audioRegenAt": "2026-05-23T20:49:50.874Z",
+          "displayParts": [
+            {
+              "text": "Your turn!",
+              "delay": 0
+            },
+            {
+              "text": "Spot roots",
+              "delay": 2040
+            },
+            {
+              "text": "In real words",
+              "delay": 2700
+            }
+          ]
+        }
+      ],
+      "heading": "Time to Practice!",
+      "imageFile": "images/lessons/L.4.4b/S6.png",
+      "imagePrompt": "An excited cartoon child jumping with arms raised in celebration, surrounded by gold stars and colorful confetti. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors. No text, no words, no letters. Natural-looking eyes, no AI-generated glints.",
+      "imageRegenAt": "2026-06-03T01:02:38.558Z"
+    },
+    {
+      "type": "mcq",
+      "mcqId": "L.4.4b-Q4",
+      "slide": 8
+    }
+  ]
+}

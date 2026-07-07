@@ -27,6 +27,7 @@
 import type { ReactNode } from "react";
 import { X, Volume2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { LoadingImage } from "@/app/components/ui/LoadingImage";
 
 export interface LessonShellMobileProps {
   slideNum: number;
@@ -96,15 +97,13 @@ export function LessonShellMobile({
       {hasImage && (
         <div className="flex flex-shrink-0 justify-center px-4 pt-3">
           {leftSlot ?? (
-            <motion.img
+            <LoadingImage
               key={imageUrl}
-              src={imageUrl}
+              src={imageUrl ?? ""}
               alt={imageAlt ?? ""}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
               style={{ height: `${imageHeightVh}vh` }}
-              className="aspect-square w-auto rounded-2xl object-cover shadow-[0_4px_16px_-6px_rgba(50,30,90,0.18)]"
+              containerClassName="aspect-square rounded-2xl shadow-[0_4px_16px_-6px_rgba(50,30,90,0.18)]"
+              className="h-full w-full rounded-2xl object-cover"
             />
           )}
         </div>

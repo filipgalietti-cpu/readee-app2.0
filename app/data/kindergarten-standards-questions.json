@@ -1,6 +1,6 @@
 {
   "grade": "kindergarten",
-  "standard_framework": "Common Core State Standards — English Language Arts",
+  "standard_framework": "Common Core State Standards \u2014 English Language Arts",
   "total_standards": 38,
   "total_questions": 144,
   "standards": [
@@ -21,7 +21,7 @@
             "A bone"
           ],
           "correct": "A red ball",
-          "hint": "Look at the second sentence — what did Max play fetch with?",
+          "hint": "Look at the second sentence \u2014 what did Max play fetch with?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-Q1-hint.mp3",
@@ -98,7 +98,7 @@
       "standard_id": "RL.K.2",
       "standard_description": "With prompting and support, retell familiar stories, including key details",
       "domain": "Reading Literature",
-      "parent_tip": "After finishing a story, ask your child to tell it back to you in their own words — who, what, then what?",
+      "parent_tip": "After finishing a story, ask your child to tell it back to you in their own words \u2014 who, what, then what?",
       "questions": [
         {
           "id": "RL.K.2-Q1",
@@ -278,7 +278,7 @@
             "/audio/kindergarten/RL.K.3-q5-choice4.mp3"
           ],
           "correct": "Biscuit",
-          "hint": "Read carefully — who was digging?",
+          "hint": "Read carefully \u2014 who was digging?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.3/RL.K.3-Q5-hint.mp3",
@@ -310,7 +310,7 @@
             "/audio/kindergarten/RL.K.4-q1-choice4.mp3"
           ],
           "correct": "Very big",
-          "hint": "The next sentence gives you a clue — 'bigger than a car.'",
+          "hint": "The next sentence gives you a clue \u2014 'bigger than a car.'",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q1-hint.mp3",
@@ -334,7 +334,7 @@
             "/audio/kindergarten/RL.K.4-q2-choice4.mp3"
           ],
           "correct": "Very happy",
-          "hint": "Think about what Kai did — he smiled and jumped!",
+          "hint": "Think about what Kai did \u2014 he smiled and jumped!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q2-hint.mp3",
@@ -396,7 +396,7 @@
             "/audio/kindergarten/RL.K.4-q5-choice4.mp3"
           ],
           "correct": "Scared",
-          "hint": "The animals ran away — how would YOU feel if a lion roared at you?",
+          "hint": "The animals ran away \u2014 how would YOU feel if a lion roared at you?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.4/RL.K.4-Q5-hint.mp3",
@@ -408,7 +408,7 @@
       "standard_id": "RL.K.5",
       "standard_description": "Recognize common types of texts (e.g., storybooks, poems)",
       "domain": "Reading Literature",
-      "parent_tip": "Point out different types of books — 'this one rhymes, so it's a poem!' vs 'this one tells a story with characters.'",
+      "parent_tip": "Point out different types of books \u2014 'this one rhymes, so it's a poem!' vs 'this one tells a story with characters.'",
       "questions": [
         {
           "id": "RL.K.5-Q2",
@@ -451,7 +451,7 @@
             "/audio/kindergarten/RL.K.5-q3-choice4.mp3"
           ],
           "correct": "Characters and things that happen",
-          "hint": "Think about your favorite storybook — what makes it a story?",
+          "hint": "Think about your favorite storybook \u2014 what makes it a story?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q3-hint.mp3",
@@ -489,7 +489,7 @@
             "/audio/kindergarten/RL.K.5-q5-choice4.mp3"
           ],
           "correct": "Storybook",
-          "hint": "It has characters (pigs, wolf) and things that happen — that's a story!",
+          "hint": "It has characters (pigs, wolf) and things that happen \u2014 that's a story!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.5/RL.K.5-Q5-hint.mp3",
@@ -698,7 +698,7 @@
             "/audio/kindergarten/RL.K.7-q4-choice4.mp3"
           ],
           "correct": "WHERE the cat was hiding",
-          "hint": "The words say 'somewhere' — the picture shows us exactly where!",
+          "hint": "The words say 'somewhere' \u2014 the picture shows us exactly where!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.7/RL.K.7-Q4-hint.mp3",
@@ -938,7 +938,7 @@
             "/audio/kindergarten/RI.K.2-q1-choice4.mp3"
           ],
           "correct": "Apples",
-          "hint": "The main topic is what the WHOLE passage is about — every sentence talks about...",
+          "hint": "The main topic is what the WHOLE passage is about \u2014 every sentence talks about...",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.2/RI.K.2-Q1-hint.mp3",
@@ -1097,7 +1097,7 @@
             "To get ready for their long winter sleep"
           ],
           "correct": "To get ready for their long winter sleep",
-          "hint": "Think about what comes NEXT — they sleep all winter. They need energy!",
+          "hint": "Think about what comes NEXT \u2014 they sleep all winter. They need energy!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.3/RI.K.3-Q4-hint.mp3",
@@ -1181,7 +1181,7 @@
             "/audio/kindergarten/RI.K.4-q4-choice4.mp3"
           ],
           "correct": "Travel to a different place",
-          "hint": "The next sentence says they 'travel very far' — that's what migrate means!",
+          "hint": "The next sentence says they 'travel very far' \u2014 that's what migrate means!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.4/RI.K.4-Q4-hint.mp3",
@@ -1193,7 +1193,7 @@
       "standard_id": "RI.K.5",
       "standard_description": "Identify the front cover, back cover, and title page of a book",
       "domain": "Reading Informational Text",
-      "parent_tip": "Practice with real books — 'show me the front cover, back cover, and title page!'",
+      "parent_tip": "Practice with real books \u2014 'show me the front cover, back cover, and title page!'",
       "questions": [
         {
           "id": "RI.K.5-Q2",
@@ -1223,7 +1223,7 @@
             "The front cover"
           ],
           "correct": "The title page",
-          "hint": "The author's name and the book's name appear on a special page inside the book — what is that page called?",
+          "hint": "The author's name and the book's name appear on a special page inside the book \u2014 what is that page called?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q3-hint.mp3",
@@ -1257,7 +1257,7 @@
             "The middle"
           ],
           "correct": "The front cover",
-          "hint": "She was looking at the OUTSIDE of the book — the very front part.",
+          "hint": "She was looking at the OUTSIDE of the book \u2014 the very front part.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q7.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q7-hint.mp3"
@@ -1287,7 +1287,7 @@
             "The first chapter"
           ],
           "correct": "The back cover",
-          "hint": "She turned the book over — what part of the book is on the back?",
+          "hint": "She turned the book over \u2014 what part of the book is on the back?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q11.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.5/RI.K.5-Q11-hint.mp3"
@@ -1341,7 +1341,7 @@
             "/audio/kindergarten/RI.K.6-q2-choice4.mp3"
           ],
           "correct": "Draws pictures and diagrams to help explain",
-          "hint": "Pictures and diagrams in a book are made by an artist — what's that artist's job called?",
+          "hint": "Pictures and diagrams in a book are made by an artist \u2014 what's that artist's job called?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q2-hint.mp3",
@@ -1388,7 +1388,7 @@
             "/audio/kindergarten/RI.K.6-q4-choice4.mp3"
           ],
           "correct": "Illustrator or photographer",
-          "hint": "Photos serve the same purpose as drawings — they show you what things look like!",
+          "hint": "Photos serve the same purpose as drawings \u2014 they show you what things look like!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.6/RI.K.6-Q4-hint.mp3",
@@ -1400,7 +1400,7 @@
           "prompt": "Why do informational books need BOTH an author AND an illustrator?",
           "choices": [
             "The author writes facts, and the illustrator draws pictures to help explain.",
-            "They don't — only stories need both.",
+            "They don't \u2014 only stories need both.",
             "The illustrator writes and the author draws.",
             "Only one person is needed."
           ],
@@ -1491,7 +1491,7 @@
             "/audio/kindergarten/RI.K.7-q3-choice4.mp3"
           ],
           "correct": "It shows all the steps in order",
-          "hint": "The picture gives MORE details — it shows each step!",
+          "hint": "The picture gives MORE details \u2014 it shows each step!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.7/RI.K.7-Q3-hint.mp3",
@@ -1571,7 +1571,7 @@
             "/audio/kindergarten/RI.K.8-q1-choice4.mp3"
           ],
           "correct": "Because they have vitamins that keep you healthy.",
-          "hint": "Look for the REASON the author gives — it comes after the point.",
+          "hint": "Look for the REASON the author gives \u2014 it comes after the point.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q1-hint.mp3",
@@ -1657,7 +1657,7 @@
             "/audio/kindergarten/RI.K.8-q5-choice4.mp3"
           ],
           "correct": "Water makes you taller.",
-          "hint": "Read the passage again — which answer is NOT mentioned?",
+          "hint": "Read the passage again \u2014 which answer is NOT mentioned?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.8/RI.K.8-Q5-hint.mp3",
@@ -1727,7 +1727,7 @@
             "/audio/kindergarten/RI.K.9-q3-choice4.mp3"
           ],
           "correct": "The sun is important and gives things to Earth.",
-          "hint": "Both books talk about what the sun gives — light, energy, growth!",
+          "hint": "Both books talk about what the sun gives \u2014 light, energy, growth!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q3-hint.mp3",
@@ -1751,7 +1751,7 @@
             "/audio/kindergarten/RI.K.9-q5-choice4.mp3"
           ],
           "correct": "They are both about butterflies.",
-          "hint": "Both books talk about the same animal — even though they share different facts about it.",
+          "hint": "Both books talk about the same animal \u2014 even though they share different facts about it.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RI.K.9/RI.K.9-Q5-hint.mp3",
@@ -1819,7 +1819,7 @@
             "/audio/kindergarten/RF.K.1a-q3-choice4.mp3"
           ],
           "correct": "Turn to the next page",
-          "hint": "We read page by page — one after another!",
+          "hint": "We read page by page \u2014 one after another!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q3-hint.mp3",
@@ -1856,7 +1856,7 @@
             "/audio/kindergarten/RF.K.1a-q5-choice4.mp3"
           ],
           "correct": "Top left corner",
-          "hint": "Reading starts at the very beginning. Where is the beginning of a page — top or bottom? Left or right?",
+          "hint": "Reading starts at the very beginning. Where is the beginning of a page \u2014 top or bottom? Left or right?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1a/RF.K.1a-Q5-hint.mp3",
@@ -1873,7 +1873,7 @@
             "fast"
           ],
           "correct": "The",
-          "hint": "Reading always starts at the very beginning — on the LEFT side of the line!",
+          "hint": "Reading always starts at the very beginning \u2014 on the LEFT side of the line!",
           "difficulty": 1
         },
         {
@@ -1896,7 +1896,7 @@
       "standard_id": "RF.K.1b",
       "standard_description": "Recognize that spoken words are represented in written language by specific sequences of letters",
       "domain": "Foundational Skills",
-      "parent_tip": "Point to words and say 'these letters make this word' — connect spoken words to print.",
+      "parent_tip": "Point to words and say 'these letters make this word' \u2014 connect spoken words to print.",
       "questions": [
         {
           "id": "RF.K.1b-Q2",
@@ -1938,7 +1938,7 @@
             "/audio/kindergarten/RF.K.1b-q4-choice4.mp3"
           ],
           "correct": "You get a different word or a nonsense word",
-          "hint": "C-A-T is 'cat' but C-A-P is 'cap' — different letters make different words!",
+          "hint": "C-A-T is 'cat' but C-A-P is 'cap' \u2014 different letters make different words!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1b/RF.K.1b-Q4-hint.mp3",
@@ -1973,8 +1973,74 @@
       "standard_id": "RF.K.1c",
       "standard_description": "Understand that words are separated by spaces in print",
       "domain": "Foundational Skills",
-      "parent_tip": "Point out spaces between words on a page — 'see how each word has a little gap?'",
-      "questions": []
+      "parent_tip": "Point out spaces between words on a page \u2014 'see how each word has a little gap?'",
+      "questions": [
+        {
+          "id": "RF.K.1c-Q1",
+          "type": "multiple_choice",
+          "prompt": "In print, we put a space between words. How many words are in this line?\n\nbig dog",
+          "choices": [
+            "1",
+            "2",
+            "3"
+          ],
+          "correct": "2",
+          "hint": "Look for the gap. Each word is on its own with a little space next to it.",
+          "difficulty": 1
+        },
+        {
+          "id": "RF.K.1c-Q2",
+          "type": "multiple_choice",
+          "prompt": "What do we put between words so we can tell them apart in print?",
+          "choices": [
+            "a space",
+            "a number",
+            "a color"
+          ],
+          "correct": "a space",
+          "hint": "Think about the little empty gap you see between words on a page.",
+          "difficulty": 1
+        },
+        {
+          "id": "RF.K.1c-Q3",
+          "type": "multiple_choice",
+          "prompt": "Count the words. How many words are in this sentence?\n\nThe sun is hot",
+          "choices": [
+            "3",
+            "4",
+            "5"
+          ],
+          "correct": "4",
+          "hint": "Point to each word one at a time. A space starts a new word.",
+          "difficulty": 2
+        },
+        {
+          "id": "RF.K.1c-Q4",
+          "type": "multiple_choice",
+          "prompt": "Which one has spaces between the words the right way?",
+          "choices": [
+            "I can hop",
+            "Icanhop",
+            "Ican hop"
+          ],
+          "correct": "I can hop",
+          "hint": "Every word should stand alone with a gap on each side.",
+          "difficulty": 2
+        },
+        {
+          "id": "RF.K.1c-Q5",
+          "type": "multiple_choice",
+          "prompt": "Count the words. How many words are in this sentence?\n\nWe ran to the big park",
+          "choices": [
+            "5",
+            "6",
+            "7"
+          ],
+          "correct": "6",
+          "hint": "Count each space, then add one. Every gap begins a new word.",
+          "difficulty": 3
+        }
+      ]
     },
     {
       "standard_id": "RF.K.1d",
@@ -1993,7 +2059,7 @@
             "D"
           ],
           "correct": "A",
-          "hint": "Uppercase letters are BIG letters — the capital version of 'a' is...",
+          "hint": "Uppercase letters are BIG letters \u2014 the capital version of 'a' is...",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.1d/RF.K.1d-Q1-hint.mp3"
@@ -2049,7 +2115,7 @@
       "standard_id": "RF.K.2a",
       "standard_description": "Recognize and produce rhyming words",
       "domain": "Foundational Skills",
-      "parent_tip": "Play rhyming games — 'what rhymes with cat? Hat, bat, mat!' Do this during car rides or walks.",
+      "parent_tip": "Play rhyming games \u2014 'what rhymes with cat? Hat, bat, mat!' Do this during car rides or walks.",
       "questions": [
         {
           "id": "RF.K.2a-Q2",
@@ -2071,7 +2137,7 @@
       "standard_id": "RF.K.2b",
       "standard_description": "Count, pronounce, blend, and segment syllables in spoken words",
       "domain": "Foundational Skills",
-      "parent_tip": "Clap out syllables in everyday words — 'wa-ter' is 2 claps, 'el-e-phant' is 3!",
+      "parent_tip": "Clap out syllables in everyday words \u2014 'wa-ter' is 2 claps, 'el-e-phant' is 3!",
       "questions": [
         {
           "id": "RF.K.2b-Q1",
@@ -2195,13 +2261,84 @@
       "standard_description": "Blend and segment onsets and rimes of single-syllable spoken words",
       "domain": "Foundational Skills",
       "parent_tip": "Break words into parts: 'cat' = /c/ + /at/. Try with other words like bat, sit, fun.",
-      "questions": []
+      "questions": [
+        {
+          "id": "RF.K.2c-Q1",
+          "type": "multiple_choice",
+          "prompt": "Blend these sounds together to make a word: /c/ ... 'at'. What word do you hear?",
+          "choices": [
+            "cat",
+            "hat",
+            "can",
+            "cap"
+          ],
+          "correct": "cat",
+          "hint": "Say the first sound, then glide right into 'at' with no stop in between.",
+          "difficulty": 1
+        },
+        {
+          "id": "RF.K.2c-Q2",
+          "type": "multiple_choice",
+          "prompt": "Put the onset and rime together: /s/ ... 'un'. What word do they make?",
+          "choices": [
+            "sun",
+            "fun",
+            "run",
+            "sit"
+          ],
+          "correct": "sun",
+          "hint": "Start with the /s/ sound, then add 'un' to finish the word.",
+          "difficulty": 1
+        },
+        {
+          "id": "RF.K.2c-Q3",
+          "type": "multiple_choice",
+          "prompt": "The word 'map' starts with one sound (the onset). What is the very first sound in 'map'?",
+          "choices": [
+            "/m/",
+            "/a/",
+            "/p/",
+            "'ap'"
+          ],
+          "correct": "/m/",
+          "hint": "Say 'map' slowly and listen for the sound your lips make at the very beginning.",
+          "difficulty": 2
+        },
+        {
+          "id": "RF.K.2c-Q4",
+          "type": "multiple_choice",
+          "prompt": "Break the word 'pig' into its first sound and the rest. What is the rime (the part after the first sound)?",
+          "choices": [
+            "'ig'",
+            "'pi'",
+            "/p/",
+            "'pg'"
+          ],
+          "correct": "'ig'",
+          "hint": "Take off the first sound /p/ and say what is left over.",
+          "difficulty": 2
+        },
+        {
+          "id": "RF.K.2c-Q5",
+          "type": "multiple_choice",
+          "prompt": "Blend this two-sound onset with the rime: /st/ ... 'op'. What word do they make?",
+          "choices": [
+            "stop",
+            "step",
+            "top",
+            "shop"
+          ],
+          "correct": "stop",
+          "hint": "Say /st/ first, then slide right into 'op' without pausing.",
+          "difficulty": 3
+        }
+      ]
     },
     {
       "standard_id": "RF.K.2d",
       "standard_description": "Isolate and pronounce the initial, medial vowel, and final sounds (phonemes) in three-phoneme (CVC) words",
       "domain": "Foundational Skills",
-      "parent_tip": "Play 'first sound, last sound' — ask what sound a word starts or ends with during daily activities.",
+      "parent_tip": "Play 'first sound, last sound' \u2014 ask what sound a word starts or ends with during daily activities.",
       "questions": [
         {
           "id": "RF.K.2d-Q1",
@@ -2280,7 +2417,7 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/d.mp3"
           ],
           "correct": "/e/",
-          "hint": "The middle sound is always the vowel — the one in between!",
+          "hint": "The middle sound is always the vowel \u2014 the one in between!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.2d/RF.K.2d-Q5-hint.mp3",
@@ -2342,14 +2479,85 @@
       "standard_id": "RF.K.3a",
       "standard_description": "Demonstrate basic knowledge of one-to-one letter-sound correspondences by producing the primary sound for each consonant",
       "domain": "Foundational Skills",
-      "parent_tip": "Practice letter sounds with flashcards or apps — 'B says /b/ like in ball!'",
-      "questions": []
+      "parent_tip": "Practice letter sounds with flashcards or apps \u2014 'B says /b/ like in ball!'",
+      "questions": [
+        {
+          "id": "RF.K.3a-Q1",
+          "type": "multiple_choice",
+          "prompt": "Which word starts with the /m/ sound, like in \"man\"?",
+          "choices": [
+            "mop",
+            "sun",
+            "top",
+            "dog"
+          ],
+          "correct": "mop",
+          "hint": "Say each word slowly. Listen for the very first sound your lips make when they press together.",
+          "difficulty": 1
+        },
+        {
+          "id": "RF.K.3a-Q2",
+          "type": "multiple_choice",
+          "prompt": "The letter B makes the /b/ sound. Which word starts with the /b/ sound?",
+          "choices": [
+            "bat",
+            "cat",
+            "hat",
+            "rat"
+          ],
+          "correct": "bat",
+          "hint": "Try each word out loud. Only one begins by pressing your lips together to make /b/.",
+          "difficulty": 1
+        },
+        {
+          "id": "RF.K.3a-Q3",
+          "type": "multiple_choice",
+          "prompt": "Which word begins with the SAME first sound as the word \"sun\"?",
+          "choices": [
+            "sock",
+            "moon",
+            "rug",
+            "pig"
+          ],
+          "correct": "sock",
+          "hint": "Say \"sun\" and stretch out its very first sound. Now find the word that starts the same way.",
+          "difficulty": 2
+        },
+        {
+          "id": "RF.K.3a-Q4",
+          "type": "multiple_choice",
+          "prompt": "What is the very first sound you hear in the word \"dog\"?",
+          "choices": [
+            "/d/",
+            "/g/",
+            "/o/",
+            "/t/"
+          ],
+          "correct": "/d/",
+          "hint": "Say \"dog\" slowly and stop right at the beginning. What sound does your tongue make first?",
+          "difficulty": 2
+        },
+        {
+          "id": "RF.K.3a-Q5",
+          "type": "multiple_choice",
+          "prompt": "The word \"cat\" starts with the /k/ sound. Which letter makes that /k/ sound at the start of \"cat\"?",
+          "choices": [
+            "c",
+            "k",
+            "t",
+            "s"
+          ],
+          "correct": "c",
+          "hint": "Look at how the word \"cat\" is spelled. Which letter is at the very front?",
+          "difficulty": 3
+        }
+      ]
     },
     {
       "standard_id": "RF.K.3b",
       "standard_description": "Associate the long and short sounds with the common spellings (graphemes) for the five major vowels",
       "domain": "Foundational Skills",
-      "parent_tip": "Compare short and long vowels: 'cap has a short a, cape has a long a — hear the difference?'",
+      "parent_tip": "Compare short and long vowels: 'cap has a short a, cape has a long a \u2014 hear the difference?'",
       "questions": [
         {
           "id": "RF.K.3b-Q1",
@@ -2454,14 +2662,80 @@
       "standard_id": "RF.K.3c",
       "standard_description": "Read common high-frequency words by sight (e.g., the, of, to, you, she, my, is, are, do, does)",
       "domain": "Foundational Skills",
-      "parent_tip": "Practice sight words with flashcards during short daily sessions — even 5 minutes helps!",
-      "questions": []
+      "parent_tip": "Practice sight words with flashcards during short daily sessions \u2014 even 5 minutes helps!",
+      "questions": [
+        {
+          "id": "RF.K.3c-Q1",
+          "type": "multiple_choice",
+          "prompt": "Read this sentence: 'I see ___ sun.' Which word fits in the blank?",
+          "choices": [
+            "the",
+            "is",
+            "are"
+          ],
+          "correct": "the",
+          "hint": "Try each word out loud. Which little word do we say right before a naming word like 'sun'?",
+          "difficulty": 1
+        },
+        {
+          "id": "RF.K.3c-Q2",
+          "type": "multiple_choice",
+          "prompt": "Finish the sentence: 'I want ___ run.' Which word fits in the blank?",
+          "choices": [
+            "to",
+            "my",
+            "of"
+          ],
+          "correct": "to",
+          "hint": "Say it out loud. Which word goes right before an action word like 'run'?",
+          "difficulty": 1
+        },
+        {
+          "id": "RF.K.3c-Q3",
+          "type": "multiple_choice",
+          "prompt": "Read this question: '___ you want a snack?' Which word starts the question?",
+          "choices": [
+            "Do",
+            "Does",
+            "Is"
+          ],
+          "correct": "Do",
+          "hint": "When we ask a question with the word 'you', we do not use the word that ends in 's'.",
+          "difficulty": 2
+        },
+        {
+          "id": "RF.K.3c-Q4",
+          "type": "multiple_choice",
+          "prompt": "Read this sentence about two kids: 'We ___ happy.' Which word fits in the blank?",
+          "choices": [
+            "are",
+            "is",
+            "of"
+          ],
+          "correct": "are",
+          "hint": "'We' means more than one person. Pick the word we use for more than one.",
+          "difficulty": 2
+        },
+        {
+          "id": "RF.K.3c-Q5",
+          "type": "multiple_choice",
+          "prompt": "Finish the sentence: 'She ___ the dishes.' We are talking about one girl. Which word fits?",
+          "choices": [
+            "does",
+            "do",
+            "are"
+          ],
+          "correct": "does",
+          "hint": "With the word 'she', we use the matching word that ends with the letter 's'.",
+          "difficulty": 3
+        }
+      ]
     },
     {
       "standard_id": "RF.K.3d",
       "standard_description": "Distinguish between similarly spelled words by identifying the sounds of the letters that differ",
       "domain": "Foundational Skills",
-      "parent_tip": "Put similar words side by side — 'cat vs cut — what letter changed? What sound changed?'",
+      "parent_tip": "Put similar words side by side \u2014 'cat vs cut \u2014 what letter changed? What sound changed?'",
       "questions": [
         {
           "id": "RF.K.3d-Q3",
@@ -2494,7 +2768,7 @@
             "/audio/kindergarten/RF.K.3d-q5-choice4.mp3"
           ],
           "correct": "Log",
-          "hint": "D-O-G → L-O-G!",
+          "hint": "D-O-G \u2192 L-O-G!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.3d/RF.K.3d-Q5-hint.mp3",
@@ -2506,7 +2780,7 @@
       "standard_id": "RF.K.4",
       "standard_description": "Read emergent-reader texts with purpose and understanding",
       "domain": "Foundational Skills",
-      "parent_tip": "Read simple books together and talk about what happened — 'what was the story about?'",
+      "parent_tip": "Read simple books together and talk about what happened \u2014 'what was the story about?'",
       "questions": [
         {
           "id": "RF.K.4-Q1",
@@ -2526,7 +2800,7 @@
             "/audio/kindergarten/RF.K.4-q1-choice4.mp3"
           ],
           "correct": "On the mat",
-          "hint": "Read the last sentence — where is the cat sitting?",
+          "hint": "Read the last sentence \u2014 where is the cat sitting?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RF.K.4/RF.K.4-Q1-hint.mp3",
@@ -2610,7 +2884,7 @@
       "standard_id": "K.L.1",
       "standard_description": "Demonstrate command of the conventions of standard English grammar and usage when writing or speaking (nouns, verbs, plurals, question words, prepositions, complete sentences)",
       "domain": "Language",
-      "parent_tip": "Practice complete sentences at dinner — 'tell me about your day using a full sentence!'",
+      "parent_tip": "Practice complete sentences at dinner \u2014 'tell me about your day using a full sentence!'",
       "questions": [
         {
           "id": "K.L.1-Q1",
@@ -2689,7 +2963,7 @@
             "/audio/kindergarten/K.L.1-q4-choice4.mp3"
           ],
           "correct": "Where",
-          "hint": "\"_____ is the park?\" — you're asking about a place!",
+          "hint": "\"_____ is the park?\" \u2014 you're asking about a place!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.1/K.L.1-Q4-hint.mp3",
@@ -2762,7 +3036,7 @@
       "standard_id": "K.L.4",
       "standard_description": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases based on kindergarten reading and content",
       "domain": "Language",
-      "parent_tip": "When they encounter new words, look for clues: 'un-happy — un means not, so unhappy means not happy!'",
+      "parent_tip": "When they encounter new words, look for clues: 'un-happy \u2014 un means not, so unhappy means not happy!'",
       "questions": [
         {
           "id": "K.L.4-Q1",
@@ -2792,7 +3066,7 @@
             "More"
           ],
           "correct": "Not",
-          "hint": "Think about words like 'unsafe' or 'unkind' — what does 'un-' add?",
+          "hint": "Think about words like 'unsafe' or 'unkind' \u2014 what does 'un-' add?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.4/K.L.4-Q2-hint.mp3",
@@ -2855,7 +3129,7 @@
       "standard_id": "K.L.5",
       "standard_description": "With guidance and support from adults, explore word relationships and nuances in word meanings",
       "domain": "Language",
-      "parent_tip": "Play sorting games with objects and talk about opposites — 'big vs small, hot vs cold.'",
+      "parent_tip": "Play sorting games with objects and talk about opposites \u2014 'big vs small, hot vs cold.'",
       "questions": [
         {
           "id": "K.L.5-Q1",
@@ -2899,7 +3173,7 @@
             "Stumble"
           ],
           "correct": "Strut",
-          "hint": "Think of a peacock walking proudly — that's strutting!",
+          "hint": "Think of a peacock walking proudly \u2014 that's strutting!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q3-hint.mp3",
@@ -2916,7 +3190,7 @@
             "Foods"
           ],
           "correct": "Animals",
-          "hint": "They are all living creatures — what group do they belong to?",
+          "hint": "They are all living creatures \u2014 what group do they belong to?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.5/K.L.5-Q4-hint.mp3",
@@ -2928,7 +3202,7 @@
       "standard_id": "K.L.6",
       "standard_description": "Use words and phrases acquired through conversations, reading and being read to, and responding to texts",
       "domain": "Language",
-      "parent_tip": "Encourage using new words from books in conversation — 'remember the word enormous? Use it today!'",
+      "parent_tip": "Encourage using new words from books in conversation \u2014 'remember the word enormous? Use it today!'",
       "questions": [
         {
           "id": "K.L.6-Q1",
@@ -2975,7 +3249,7 @@
             "Sleep for a long time"
           ],
           "correct": "Sleep for a long time",
-          "hint": "Bears go to sleep for the whole winter — that's hibernating!",
+          "hint": "Bears go to sleep for the whole winter \u2014 that's hibernating!",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/K.L.6/K.L.6-Q3-hint.mp3",
@@ -3085,7 +3359,7 @@
       "standard_id": "RI.K.10",
       "standard_description": "Actively engage in group reading activities with informational texts with purpose and understanding",
       "domain": "Informational",
-      "parent_tip": "Pick fact books about what your child loves — animals, weather, trucks, food.",
+      "parent_tip": "Pick fact books about what your child loves \u2014 animals, weather, trucks, food.",
       "questions": [
         {
           "id": "RI.K.10-Q1",

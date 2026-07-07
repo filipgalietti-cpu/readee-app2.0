@@ -7,6 +7,9 @@ interface LoadingImageProps {
   alt?: string;
   className?: string;
   containerClassName?: string;
+  /** Inline style for the container — lets callers size the skeleton box
+   *  (e.g. a dynamic `vh` height) so the shimmer is visible while loading. */
+  style?: React.CSSProperties;
   onError?: (e: React.SyntheticEvent<HTMLImageElement>) => void;
   /** Rendered in place of the image when load fails. If omitted, the
    *  default fallback is a soft gradient with the Readee bunny mascot
@@ -35,6 +38,7 @@ export function LoadingImage({
   alt = "",
   className = "",
   containerClassName = "",
+  style,
   onError,
   fallback,
 }: LoadingImageProps) {
@@ -58,7 +62,7 @@ export function LoadingImage({
   if (!src) {
     if (fallback === null) return null;
     return (
-      <div className={`relative ${containerClassName}`}>
+      <div className={`relative ${containerClassName}`} style={style}>
         {fallback ?? <DefaultBunnyFallback className={className} />}
       </div>
     );
@@ -67,14 +71,14 @@ export function LoadingImage({
   if (errored) {
     if (fallback === null) return null;
     return (
-      <div className={`relative ${containerClassName}`}>
+      <div className={`relative ${containerClassName}`} style={style}>
         {fallback ?? <DefaultBunnyFallback className={className} />}
       </div>
     );
   }
 
   return (
-    <div className={`relative ${containerClassName}`}>
+    <div className={`relative ${containerClassName}`} style={style}>
       {!loaded && (
         <div className="absolute inset-0 skeleton-shimmer rounded-2xl pointer-events-none" />
       )}

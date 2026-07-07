@@ -11,11 +11,14 @@ export const dynamic = "force-dynamic";
  */
 export default async function DemoRenderPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ standardId: string }>;
+  searchParams: Promise<{ audit?: string }>;
 }) {
   const { standardId } = await params;
+  const sp = await searchParams;
   const lesson = (sampleLessons as any[]).find((l) => l.standardId === standardId);
   if (!lesson) notFound();
-  return <DesktopPlayClient lesson={lesson} />;
+  return <DesktopPlayClient lesson={lesson} auditMode={sp.audit !== "0"} />;
 }

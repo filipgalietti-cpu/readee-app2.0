@@ -5,6 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, X as XIcon } from "lucide-react";
 import { audioManager } from "@/lib/audio/audio-manager";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import { InteractiveExample } from "./InteractiveExample";
+import { InteractiveMatch } from "./InteractiveMatch";
+import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { Volume2, ChevronRight, Rocket, SkipForward, RotateCcw } from "lucide-react";
 import { Fredoka } from "next/font/google";
@@ -89,11 +92,38 @@ interface Step {
 
 interface TeachingSlide {
   slide: number;
-  type: "intro" | "teach" | "example" | "tip" | "practice-intro";
+  type: "intro" | "teach" | "example" | "tip" | "interactive" | "practice-intro";
   steps: Step[];
   heading: string;
   imagePrompt: string;
   imageFile: string;
+  /** The "fork in the road" — a scaffolded interactive beat that sits
+   *  between the tip and the practice MCQs. The kid taps the answer
+   *  (coach mode: right→affirmation, wrong→encouragement + hint + retry,
+   *  never scored). The question audio is the slide's single `step`; the
+   *  two feedback clips play on tap from the fields below. `anchor` is an
+   *  optional reinforcing pill (e.g. "tele = far"). */
+  interactive?: {
+    /** Interaction style — skill-matched. "tap" = pick one (comprehension);
+     *  "match" = pair items (roots/prefixes/vowel-teams). fill-blank/order/
+     *  sort reuse the existing practice renderers for other skills. */
+    kind?: "tap" | "match" | "fill-blank" | "order" | "sort";
+    anchor?: string;
+    prompt: string;
+    hint: string;
+    // tap
+    choices?: string[];
+    correct?: string;
+    // match (tap_to_pair)
+    leftItems?: string[];
+    rightItems?: string[];
+    correctPairs?: Record<string, string>;
+    // shared coaching audio
+    correctAudio?: string;
+    wrongAudio?: string;
+    correctScript?: string;
+    wrongScript?: string;
+  };
 }
 
 export interface SampleLesson {
@@ -126,6 +156,14 @@ interface LessonSlideshowProps {
    *      the mobile layout from a laptop.
    */
   chrome?: "centered" | "desktop-shell" | "mobile-shell";
+  /** The kid's equipped bunny outfit (from the shop) — worn by the coach
+   *  bunny on the interactive fork. Defaults to Classic when absent (e.g.
+   *  the owner audit page, which has no child context). */
+  outfitId?: string | null;
+  /** Audit/screenshot mode — reveal ALL of each slide's content
+   *  immediately (skip the karaoke timing) so a static screenshot shows
+   *  the finished slide, not a half-drawn frame. Demo-render only. */
+  auditMode?: boolean;
 }
 
 /* ─── Constants ──────────────────────────────────────── */
@@ -198,6 +236,16 @@ const SLIDE_THEMES: Record<string, {
     storyBg: "",
     contentBg: "",
   },
+  // The fork — emerald accent (the "you try it" moment, kin to the
+  // example's emerald but its own beat).
+  interactive: {
+    bg: "bg-gray-50 dark:bg-[#0f172a]",
+    text: "text-emerald-600 dark:text-emerald-400",
+    cardText: "text-emerald-700 dark:text-emerald-300",
+    qaBg: "",
+    storyBg: "",
+    contentBg: "",
+  },
 };
 
 // Shared reveal animation
@@ -208,7 +256,7 @@ const revealVariants = {
 
 /* ─── Component ──────────────────────────────────────── */
 
-export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered" }: LessonSlideshowProps) {
+export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, chrome = "centered", outfitId = null, auditMode = false }: LessonSlideshowProps) {
   const isMuted = useAudioStore((s) => s.isMuted);
 
   // Shell-mode viewport detection — 75% of usage is phone. When the
@@ -275,6 +323,14 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
   const [highlightedWord, setHighlightedWord] = useState<string | null>(null);
   const [activePhoneme, setActivePhoneme] = useState<{ stepIdx: number; letterIdx: number } | null>(null);
   const [swapTriggered, setSwapTriggered] = useState<Set<number>>(new Set());
+  // Interactive example ("we do") — gates Next until the kid solves it.
+  const [exampleSolved, setExampleSolved] = useState(false);
+  // Bunny coach emotion on the interactive fork: neutral while the kid
+  // decides, celebrate on a right answer, encourage on a wrong one.
+  const [forkReaction, setForkReaction] = useState<"idle" | "correct" | "incorrect">("idle");
+  // Bumped on every miss so the bunny re-shakes even on a repeat wrong
+  // (otherwise a 2nd miss looks like nothing happened — Filip 2026-06-03).
+  const [forkNudge, setForkNudge] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const textTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
   const runIdRef = useRef(0);
@@ -562,6 +618,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     setSwapTriggered(new Set());
     setPartsVisible(new Set());
     setShowNext(false);
+    setExampleSolved(false);
+    setForkReaction("idle");
+    setForkNudge(0);
     setIsPlaying(false);
     scheduledFeedbackRef.current = new Set();
     timerRef.current = setTimeout(() => {
@@ -598,6 +657,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     setSwapTriggered(new Set());
     setPartsVisible(new Set());
     setShowNext(false);
+    setExampleSolved(false);
+    setForkReaction("idle");
+    setForkNudge(0);
     setIsPlaying(false);
     scheduledFeedbackRef.current = new Set();
     timerRef.current = setTimeout(() => {
@@ -633,6 +695,17 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     setHighlightedPill(-1);
     setShowNext(true);
   }, [steps, clearTimer]);
+
+  // Audit mode — reveal the whole slide shortly after it mounts so a
+  // screenshot captures the FINISHED slide (all pills/answers/tables
+  // shown), not a half-drawn karaoke frame.
+  useEffect(() => {
+    if (!auditMode) return;
+    // Fire AFTER the mount effect's own 700ms scheduleStep so the two
+    // don't race (the race crashed fork/tip/table slides on mobile).
+    const t = setTimeout(() => handleSkip(), 1600);
+    return () => clearTimeout(t);
+  }, [currentSlide, auditMode, handleSkip]);
 
   // Per-step image override: when the currently-playing step has its own imageFile,
   // swap to it so the visual advances with the audio.
@@ -1643,6 +1716,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     // answers by the end. Mobile uses ExampleWorksheetGridMobile
     // (compact rows, violet palette, no black text); desktop uses
     // the wide ExampleWorksheetGrid.
+    // Interactive lives on its OWN slide (NOT the example — Filip 2026-06-02:
+    // "don't rearrange that slide, interactive questions elsewhere").
+    const hasInteractive = !!slide?.interactive;
     const useExampleWorksheet = isExample && qaPairSteps.length >= 2;
     // One focal point per slide — image suppressed when a chart owns
     // the visual. Example slides keep the image (worksheet goes on
@@ -1672,8 +1748,52 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
       : isPracticeIntro
         ? "Start practice →"
         : "Next →";
-    const sharedNextDisabled = !showNext && !devMode;
+    // Interactive example gates Next until the kid solves it (devMode skips).
+    const sharedNextDisabled = hasInteractive
+      ? !exampleSolved && !devMode
+      : !showNext && !devMode;
     const sharedOnNext = (showNext || devMode) ? handleNext : () => {};
+
+    // Shared coach handlers for the fork (tap + match both use them). The
+    // bunny mirrors the kid's answer; affirmation plays then unlocks Next;
+    // first miss gets the spoken encouragement, repeats just a soft buzz.
+    const handleForkCorrect = () => {
+      setForkReaction("correct");
+      const f = slide?.interactive?.correctAudio;
+      if (f && audioManager && !isMuted) {
+        audioManager.stop();
+        audioManager.play(`${SUPABASE_STORAGE}/${f}`).then(() => setExampleSolved(true)).catch(() => setExampleSolved(true));
+      } else {
+        setExampleSolved(true);
+      }
+    };
+    const handleForkWrong = (isFirst: boolean) => {
+      setForkReaction("incorrect");
+      setForkNudge((n) => n + 1); // re-trigger the shake animation every miss
+      // Drift back to neutral so the bunny isn't stuck frowning mid-retry.
+      window.setTimeout(() => setForkReaction((r) => (r === "incorrect" ? "idle" : r)), 3500);
+      if (!audioManager || isMuted) return;
+      audioManager.stop();
+      const f = slide?.interactive?.wrongAudio;
+      if (isFirst && f) audioManager.play(`${SUPABASE_STORAGE}/${f}`).catch(() => {});
+      else audioManager.playIncorrectBuzz?.();
+    };
+
+    // The fork bunny coach renders INSIDE the content as one centered
+    // column (bunny on top, then question + choices) — NOT in a side
+    // panel. The split-panel layout left the bunny floating mid-left with
+    // a big empty band (Filip flagged the dead space). .bn-stage is
+    // width/height:100% so the bunny needs an explicit-size parent.
+    const bunnyCoach = (
+      <div className="flex w-full items-center justify-center">
+        <div className="h-24 w-24 sm:h-28 sm:w-28 lg:h-36 lg:w-36">
+          {forkReaction === "idle"
+            ? <Bunny outfitId={outfitId} />
+            : <BunnyReaction key={`${forkReaction}-${forkNudge}`} outfitId={outfitId} state={forkReaction} />}
+        </div>
+      </div>
+    );
+    // Fork has no side panel now → single centered column on both shells.
     const sharedLeftSlot = isSynthetic ? <CelebrationLeftPanel /> : undefined;
     const nonSyntheticContent = (
       <div className="flex flex-1 flex-col items-center justify-center text-center w-full gap-5 lg:gap-8">
@@ -1738,6 +1858,71 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               const cols3 = `${labelCol} 1fr 1fr`;
               const cols2 = `${labelCol} 1fr`;
               const gridCols = hasExamples ? cols3 : cols2;
+              // Mobile: a horizontal grid crushes the value column when
+              // the label is long (one word per line, clipped off-screen)
+              // and the value renders as black body text. STACK each row
+              // instead — label pill on top, value (themed violet, never
+              // black) below — so nothing clips on the phone. (audit fix
+              // 2026-06-11)
+              if (isPhoneShell) {
+                return (
+                  <div
+                    key={`${currentSlide}-shell-table`}
+                    className="w-full max-w-md mx-auto space-y-2.5"
+                  >
+                    {tableSteps.map((ts) => {
+                      const row = ts.step.displayTableRow!;
+                      const colorIdx = tableSteps.indexOf(ts);
+                      const checkKey = `${ts.idx}-check`;
+                      const rowHighlighted = partsVisible.has(checkKey);
+                      const staggerDelay = colorIdx * 0.12;
+                      return (
+                        <motion.div
+                          key={`${currentSlide}-shell-rowM-${ts.idx}`}
+                          initial={{ opacity: 0, y: 14 }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                            scale: rowHighlighted ? [1, 1.03, 1] : 1,
+                          }}
+                          transition={{
+                            default: {
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 20,
+                              delay: staggerDelay,
+                            },
+                            scale: {
+                              duration: 0.4,
+                              ease: "easeInOut",
+                              delay: staggerDelay,
+                            },
+                          }}
+                          className={`rounded-2xl border-2 px-3 py-3 transition-colors duration-500 ${
+                            rowHighlighted
+                              ? "border-emerald-300 bg-emerald-50 dark:bg-emerald-950/20"
+                              : "border-violet-100 bg-white dark:bg-slate-900"
+                          }`}
+                        >
+                          <span
+                            className={`block rounded-xl py-2 text-lg font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
+                          >
+                            {row.label}
+                          </span>
+                          <span className="mt-2 block text-base font-semibold text-violet-800 dark:text-violet-200 text-center break-words">
+                            {row.value}
+                          </span>
+                          {hasExamples && row.example && (
+                            <span className="mt-1 block text-sm italic text-violet-500 dark:text-violet-400 text-center break-words">
+                              {row.example}
+                            </span>
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                );
+              }
               return (
                 <div
                   key={`${currentSlide}-shell-table`}
@@ -1833,16 +2018,54 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             // these because the focal idea IS the trio (e.g. RL.K.1
             // slide 2: kid should see Who? + What? + Where? together
             // after all three reveal). Long beats still replace.
-            const isShortAnchor = (s: Step) =>
-              !!s.displayText &&
+            const isShortAnchor = (s?: Step) =>
+              !!s?.displayText &&
               !s.displayParts &&
               !s.displayTableRow &&
               s.displayText.trim().split(/\s+/).length <= 2;
+            // A terse pill-row step (practice-intro "Your turn!" + a
+            // couple pills, tip trick pills) — displayParts only, each
+            // part short, ≤4 parts. On mobile these are anchors that
+            // should PERSIST once revealed (same as short displayText
+            // anchors) instead of being replaced when the audio advances
+            // to a later, often audio-only, step — otherwise the pills
+            // vanish and the slide looks empty. (audit fix 2026-06-11)
+            const isAnchorParts = (s?: Step) =>
+              !!s?.displayParts &&
+              s.displayParts.length > 0 &&
+              s.displayParts.length <= 4 &&
+              !s.displayText &&
+              !s.displayTableRow &&
+              s.displayParts.every(
+                (p) => (p.text ?? "").trim().split(/\s+/).length <= 4,
+              );
+            const rawDisplayStep =
+              playingStep >= 0
+                ? playingStep
+                : Math.max(0, stepsRevealed - 1);
+            // Mobile INV-5 guard: if the current step is audio-only
+            // (filler), fall back to the most recent VISUAL step so a
+            // slide that ends on an audio-only beat (many tip/teach
+            // slides: [audio, pill, audio]) never renders blank on the
+            // phone. Desktop accumulates, so it is unaffected.
+            // (canonical-conformance fix 2026-07-05)
+            let mobileDisplayStep = rawDisplayStep;
+            if (
+              isPhoneShell &&
+              steps[rawDisplayStep] &&
+              isFillerStep(steps[rawDisplayStep])
+            ) {
+              for (let j = rawDisplayStep - 1; j >= 0; j--) {
+                if (!isFillerStep(steps[j])) {
+                  mobileDisplayStep = j;
+                  break;
+                }
+              }
+            }
             const stepNodes = steps.map((step, i) => {
-              const currentDisplayStep =
-                playingStep >= 0
-                  ? playingStep
-                  : Math.max(0, stepsRevealed - 1);
+              const currentDisplayStep = isPhoneShell
+                ? mobileDisplayStep
+                : rawDisplayStep;
               // Replace-not-accumulate on mobile (rule §12) — UNLESS:
               //   (a) Example slides → always accumulate so the
               //       passage card stays visible while the Q→A
@@ -1879,18 +2102,15 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               ) {
                 shouldRenderForCurrentStep = true;
               } else if (
-                i < currentDisplayStep &&
-                isShortAnchor(step) &&
-                isShortAnchor(steps[currentDisplayStep])
+                i <= currentDisplayStep &&
+                (isShortAnchor(step) || isAnchorParts(step))
               ) {
-                let allAnchor = true;
-                for (let j = i + 1; j < currentDisplayStep; j++) {
-                  if (!isShortAnchor(steps[j])) {
-                    allAnchor = false;
-                    break;
-                  }
-                }
-                shouldRenderForCurrentStep = allAnchor;
+                // Mobile: short anchors / terse pill-rows PERSIST once
+                // revealed instead of being replaced, so practice-intro
+                // and tip pills don't vanish (leaving an empty slide)
+                // when the audio advances to a later step. Long teach
+                // beats are not short anchors, so they still replace.
+                shouldRenderForCurrentStep = true;
               } else {
                 shouldRenderForCurrentStep = false;
               }
@@ -1898,102 +2118,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               if (step.displayTableRow) {
                 if (tableRendered) return null;
                 tableRendered = true;
-                const tableSteps = steps
-                  .map((s, idx) =>
-                    s.displayTableRow ? { step: s, idx } : null,
-                  )
-                  .filter(Boolean) as { step: Step; idx: number }[];
-                const hasExamples = tableSteps.some(
-                  (ts) => ts.step.displayTableRow?.example,
-                );
-                const headers = tableSteps.find(
-                  (ts) => ts.step.displayTableRow?.tableHeaders,
-                )?.step.displayTableRow?.tableHeaders;
-                const widestLabel = tableSteps.reduce(
-                  (max, ts) =>
-                    Math.max(
-                      max,
-                      (ts.step.displayTableRow?.label ?? "").length,
-                    ),
-                  0,
-                );
-                const labelCol = `${Math.max(5.5, widestLabel * 0.7 + 1.5).toFixed(2)}rem`;
-                const cols3 = `${labelCol} 1fr 1fr`;
-                const cols2 = `${labelCol} 1fr`;
-                const gridCols = hasExamples ? cols3 : cols2;
-                return (
-                  <div
-                    key={`${currentSlide}-shell-table`}
-                    className="w-full max-w-3xl mx-auto space-y-3 lg:space-y-6"
-                  >
-                    {headers && (
-                      <div
-                        className="grid items-center gap-x-3 lg:gap-x-4 pb-2 lg:pb-3 border-b-2 border-violet-200 dark:border-violet-700"
-                        style={{ gridTemplateColumns: gridCols }}
-                      >
-                        {headers.map((h, hi) => (
-                          <span
-                            key={hi}
-                            className="text-xs sm:text-sm lg:text-2xl font-extrabold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center"
-                          >
-                            {h}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    {tableSteps.map((ts) => {
-                      const row = ts.step.displayTableRow!;
-                      const colorIdx = tableSteps.indexOf(ts);
-                      const checkKey = `${ts.idx}-check`;
-                      const rowHighlighted = partsVisible.has(checkKey);
-                      const staggerDelay = colorIdx * 0.12;
-                      return (
-                        <motion.div
-                          key={`${currentSlide}-shell-row-${ts.idx}`}
-                          initial={{ opacity: 0, y: 14 }}
-                          animate={{
-                            opacity: 1,
-                            y: 0,
-                            scale: rowHighlighted ? [1, 1.03, 1] : 1,
-                          }}
-                          transition={{
-                            default: {
-                              type: "spring",
-                              stiffness: 400,
-                              damping: 20,
-                              delay: staggerDelay,
-                            },
-                            scale: {
-                              duration: 0.4,
-                              ease: "easeInOut",
-                              delay: staggerDelay,
-                            },
-                          }}
-                          className={`grid items-center gap-x-3 lg:gap-x-4 rounded-xl px-2 py-2 lg:py-4 transition-colors duration-500 ${
-                            rowHighlighted
-                              ? "bg-emerald-50 dark:bg-emerald-950/20 ring-2 ring-emerald-300 dark:ring-emerald-700"
-                              : ""
-                          }`}
-                          style={{ gridTemplateColumns: gridCols }}
-                        >
-                          <span
-                            className={`rounded-xl py-2 lg:py-4 text-lg sm:text-xl lg:text-3xl font-bold shadow-sm text-center ${PILL_COLORS[colorIdx % PILL_COLORS.length]}`}
-                          >
-                            {row.label}
-                          </span>
-                          <span className="text-base sm:text-lg lg:text-3xl font-semibold text-zinc-700 dark:text-zinc-200 text-center">
-                            {row.value}
-                          </span>
-                          {hasExamples && (
-                            <span className="text-sm sm:text-base lg:text-2xl text-zinc-500 dark:text-zinc-400 italic text-center">
-                              {row.example ?? ""}
-                            </span>
-                          )}
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                );
+                return renderShellTable();
               }
               if (step.displayDiagramSwap) {
                 return renderDiagramSwap(step, i);
@@ -2031,6 +2156,33 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 pairs={qaPairSteps}
                 partsVisible={partsVisible}
                 playingStep={playingStep}
+              />
+            )
+          )}
+          {hasInteractive && bunnyCoach}
+          {hasInteractive && slide?.interactive && (
+            slide.interactive.kind === "match" ? (
+              <InteractiveMatch
+                key={`interactive-${currentSlide}`}
+                anchor={slide.interactive.anchor}
+                prompt={slide.interactive.prompt}
+                leftItems={slide.interactive.leftItems ?? []}
+                rightItems={slide.interactive.rightItems ?? []}
+                correctPairs={slide.interactive.correctPairs ?? {}}
+                hint={slide.interactive.hint}
+                onCorrect={handleForkCorrect}
+                onWrong={handleForkWrong}
+              />
+            ) : (
+              <InteractiveExample
+                key={`interactive-${currentSlide}`}
+                anchor={slide.interactive.anchor}
+                prompt={slide.interactive.prompt}
+                choices={slide.interactive.choices ?? []}
+                correct={slide.interactive.correct ?? ""}
+                hint={slide.interactive.hint}
+                onCorrect={handleForkCorrect}
+                onWrong={handleForkWrong}
               />
             )
           )}
@@ -2560,11 +2712,11 @@ function ExampleWorksheetGridMobile({
                   : "border-violet-100 bg-white dark:bg-slate-900"
             }`}
           >
-            <div className="flex min-w-0 items-baseline gap-2.5">
-              <span className="flex-shrink-0 text-sm font-extrabold uppercase tracking-wider text-violet-500 dark:text-violet-400">
+            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span className="text-xs font-extrabold uppercase tracking-wider text-violet-500 dark:text-violet-400 break-words">
                 {qVisible ? q : "?"}
               </span>
-              <span className="min-w-0 truncate text-base font-extrabold text-violet-800 dark:text-violet-200">
+              <span className="min-w-0 whitespace-normal break-words text-base font-extrabold text-violet-800 dark:text-violet-200">
                 {!qVisible ? (
                   <span className="text-violet-200 dark:text-violet-800">…</span>
                 ) : aVisible ? (
