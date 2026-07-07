@@ -4315,7 +4315,7 @@
               "word": "front cover",
               "delay": 9590
             },
-            "audioRegenAt": "2026-07-06T00:42:31.400Z"
+            "audioRegenAt": "2026-07-07T02:16:18.585Z"
           },
           {
             "sub": "d",
@@ -4335,7 +4335,7 @@
               "word": "title page",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:42:30.641Z"
+            "audioRegenAt": "2026-07-07T02:16:18.073Z"
           },
           {
             "sub": "e",
@@ -13018,14 +13018,14 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.1.3/S4a.mp3",
             "ttsScript": "Let's try one together.",
-            "audioRegenAt": "2026-07-06T00:42:28.748Z"
+            "audioRegenAt": "2026-07-07T02:16:16.932Z"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.1.3/S4b.mp3",
             "ttsScript": "Tom played with his dog, Max. They ran in the sunny park.",
             "displayText": "Tom played with his dog, Max. They ran in the sunny park.",
-            "audioRegenAt": "2026-07-06T00:42:37.449Z"
+            "audioRegenAt": "2026-07-07T02:16:25.696Z"
           },
           {
             "sub": "c",
@@ -13045,7 +13045,7 @@
               "word": "Tom",
               "delay": 1440
             },
-            "audioRegenAt": "2026-07-06T00:42:39.451Z"
+            "audioRegenAt": "2026-07-07T02:16:24.833Z"
           },
           {
             "sub": "d",
@@ -26021,7 +26021,7 @@
               "word": "rereading",
               "delay": 260
             },
-            "audioRegenAt": "2026-07-06T00:42:39.834Z"
+            "audioRegenAt": "2026-07-07T02:16:27.570Z"
           },
           {
             "sub": "key term",
@@ -26052,7 +26052,7 @@
               "word": "stop",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:42:45.262Z"
+            "audioRegenAt": "2026-07-07T02:16:31.163Z"
           },
           {
             "sub": "concept",
@@ -27012,7 +27012,7 @@
               "word": "because",
               "delay": 1580
             },
-            "audioRegenAt": "2026-07-06T00:42:47.020Z"
+            "audioRegenAt": "2026-07-07T02:16:33.365Z"
           }
         ]
       },
@@ -31829,7 +31829,7 @@
               "word": "because",
               "delay": 1400
             },
-            "audioRegenAt": "2026-07-06T00:42:48.448Z"
+            "audioRegenAt": "2026-07-07T02:16:36.338Z"
           },
           {
             "sub": "concept",
@@ -31860,7 +31860,7 @@
               "word": "people",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:42:53.457Z"
+            "audioRegenAt": "2026-07-07T02:16:38.879Z"
           },
           {
             "sub": "concept",
@@ -33500,7 +33500,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/L.2.4/interactive-q.mp3",
             "ttsScript": "Your turn, detective! Listen closely: After the rain, the grass felt damp under our feet. Use the clues. What does damp mean?",
-            "audioRegenAt": "2026-07-06T00:42:57.841Z"
+            "audioRegenAt": "2026-07-07T02:17:29.639Z"
           }
         ],
         "interactive": {
@@ -38909,7 +38909,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.3.10/S4b.mp3",
             "ttsScript": "Pick a daily reading time. Even fifteen minutes adds up over a year!",
-            "audioRegenAt": "2026-07-06T00:42:55.765Z",
+            "audioRegenAt": "2026-07-07T02:16:55.071Z",
             "highlightWord": {
               "word": "fifteen",
               "delay": 2000
@@ -43078,7 +43078,7 @@
               "word": "knee",
               "delay": 340
             },
-            "audioRegenAt": "2026-07-06T00:43:04.373Z"
+            "audioRegenAt": "2026-07-07T02:17:21.655Z"
           },
           {
             "sub": "concept",
@@ -43109,7 +43109,7 @@
               "word": "silent",
               "delay": 1100
             },
-            "audioRegenAt": "2026-07-06T00:43:12.503Z"
+            "audioRegenAt": "2026-07-07T02:16:56.207Z"
           },
           {
             "sub": "concept",
@@ -43952,7 +43952,7 @@
               "word": "scared",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:43:07.266Z"
+            "audioRegenAt": "2026-07-07T02:17:34.507Z"
           },
           {
             "sub": "concept",
@@ -43983,7 +43983,7 @@
               "word": "energy",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:43:15.513Z"
+            "audioRegenAt": "2026-07-07T02:17:29.272Z"
           },
           {
             "sub": "concept",
@@ -47966,7 +47966,7 @@
             "sub": "c",
             "audioFile": "audio/lessons/RL.4.3/S2c.mp3",
             "ttsScript": "even without saying kind.",
-            "audioRegenAt": "2026-07-06T00:43:34.590Z",
+            "audioRegenAt": "2026-07-07T02:17:40.743Z",
             "highlightWord": {
               "word": "kind",
               "delay": 1200
@@ -48965,7 +48965,7 @@
               "word": "Third",
               "delay": 8440
             },
-            "audioRegenAt": "2026-07-06T00:43:24.087Z"
+            "audioRegenAt": "2026-07-07T02:17:40.355Z"
           },
           {
             "sub": "d",
@@ -51314,7 +51314,7 @@
               "word": "trouble",
               "delay": 980
             },
-            "audioRegenAt": "2026-07-06T00:43:58.511Z"
+            "audioRegenAt": "2026-07-07T02:17:40.172Z"
           },
           {
             "sub": "c",
@@ -52758,7 +52758,7 @@
               "word": "main",
               "delay": 6140
             },
-            "audioRegenAt": "2026-07-06T00:44:21.845Z"
+            "audioRegenAt": "2026-07-07T02:17:48.464Z"
           },
           {
             "sub": "key term",
@@ -52789,7 +52789,7 @@
               "word": "big",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:44:01.028Z"
+            "audioRegenAt": "2026-07-07T02:17:48.017Z"
           },
           {
             "sub": "concept",
@@ -52820,7 +52820,7 @@
               "word": "whole",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:44:08.483Z"
+            "audioRegenAt": "2026-07-07T02:17:48.016Z"
           },
           {
             "sub": "strategy",
@@ -53715,7 +53715,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.4.4/S2a.mp3",
             "ttsScript": "Slow down for tricky parts.",
-            "audioRegenAt": "2026-07-06T00:44:14.449Z",
+            "audioRegenAt": "2026-07-07T02:18:27.693Z",
             "highlightWord": {
               "word": "tricky",
               "delay": 3780
@@ -56829,7 +56829,7 @@
             "audioFile": "audio/lessons/L.4.6/rb-3b.mp3",
             "ttsScript": "The sentence is: Maria looked at the bug.",
             "displayText": "Maria looked at the bug.",
-            "audioRegenAt": "2026-07-06T00:44:14.872Z"
+            "audioRegenAt": "2026-07-07T02:18:24.810Z"
           },
           {
             "sub": "c",
@@ -56849,7 +56849,7 @@
               "word": "Examine",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:44:21.478Z"
+            "audioRegenAt": "2026-07-07T02:18:29.345Z"
           },
           {
             "sub": "d",
@@ -59067,7 +59067,7 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3g/interactive-q.mp3",
             "ttsScript": "Now you try! One of these is a sight word we just remember, not sound out. Is it said, cat, or run?",
-            "audioRegenAt": "2026-07-06T00:44:28.368Z"
+            "audioRegenAt": "2026-07-07T02:18:36.005Z"
           }
         ],
         "interactive": {
@@ -62652,7 +62652,7 @@
               "word": "Inside",
               "delay": 2000
             },
-            "audioRegenAt": "2026-07-06T00:45:00.456Z"
+            "audioRegenAt": "2026-07-07T02:18:35.498Z"
           },
           {
             "sub": "e",
