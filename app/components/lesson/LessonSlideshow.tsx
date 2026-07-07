@@ -1786,7 +1786,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     // width/height:100% so the bunny needs an explicit-size parent.
     const bunnyCoach = (
       <div className="flex w-full items-center justify-center">
-        <div className="h-24 w-24 sm:h-28 sm:w-28 lg:h-36 lg:w-36">
+        <div className="h-24 w-24 sm:h-28 sm:w-28 lg:h-52 lg:w-52">
           {forkReaction === "idle"
             ? <Bunny outfitId={outfitId} />
             : <BunnyReaction key={`${forkReaction}-${forkNudge}`} outfitId={outfitId} state={forkReaction} />}
