@@ -1,0 +1,392 @@
+[
+  {
+    "std": "RL.K.1",
+    "questions": [
+      {
+        "prompt": "Ben went outside to play. He put on his boots, his hat, and his warm mittens. Then he made a big snowball.\n\nWhat is the weather like in the story?",
+        "choices": [
+          "It is cold and snowy",
+          "It is hot and sunny",
+          "It is warm and rainy",
+          "It is windy at the beach"
+        ],
+        "correct": "It is cold and snowy",
+        "hint": "The story never says the word 'weather.' Look at what Ben puts on and what he makes, and picture the day.",
+        "whyHard": "Weather is never stated; child must infer it by combining three clues (boots, mittens, snowball)."
+      },
+      {
+        "prompt": "Mia had two cookies. She gave one cookie to her little brother. She ate the other cookie herself.\n\nHow many cookies does Mia have now?",
+        "choices": [
+          "None",
+          "One",
+          "Two",
+          "Three"
+        ],
+        "correct": "None",
+        "hint": "Start with how many Mia had, then follow what happened to each cookie one at a time.",
+        "whyHard": "Requires tracking both cookies across two events (gave away, ate) to conclude zero are left \u2014 multi-step, answer not stated."
+      },
+      {
+        "prompt": "Sam looked at his empty bowl. He rubbed his tummy. He asked Mom, 'Can I please have some food?'\n\nHow does Sam feel?",
+        "choices": [
+          "Hungry",
+          "Sleepy",
+          "Scared",
+          "Angry"
+        ],
+        "correct": "Hungry",
+        "hint": "The story never says how Sam feels. Put together the empty bowl, his tummy, and what he asks for.",
+        "whyHard": "Feeling is never named; child infers 'hungry' by connecting three clues rather than recalling a stated word."
+      },
+      {
+        "prompt": "It was Rosa's birthday. Her friends hid behind the couch. When Rosa walked in, they all jumped up and yelled, 'Surprise!'\n\nWhy did Rosa's friends hide behind the couch?",
+        "choices": [
+          "To surprise Rosa",
+          "To take a nap",
+          "To play hide and seek all day",
+          "Because they were scared of Rosa"
+        ],
+        "correct": "To surprise Rosa",
+        "hint": "Read to the end before you choose. What happened right after Rosa walked in tells you why they were hiding.",
+        "whyHard": "Cause is only clear after the final action; 'hide and seek' is a plausible trap for a literal reader who stops early."
+      },
+      {
+        "prompt": "The cat sat by the fish bowl all morning. Its tail went swish, swish. Its eyes never left the fish.\n\nWhat does the cat probably WANT?",
+        "choices": [
+          "To catch the fish",
+          "To go to sleep",
+          "To eat its cat food",
+          "To go outside and run"
+        ],
+        "correct": "To catch the fish",
+        "hint": "The story doesn't say what the cat wants. Think about where the cat is looking and what a cat likes to chase.",
+        "whyHard": "Desire is never stated; child must infer intent from watching behavior (staring, swishing tail) \u2014 true inference, not recall."
+      }
+    ]
+  },
+  {
+    "questions": [
+      {
+        "prompt": "Sam ran to the window and put on his boots. He grabbed his umbrella and smiled. Then he ran outside to jump.\n\nWhat was the weather like when Sam went outside?",
+        "choices": [
+          "It was raining.",
+          "It was hot and sunny.",
+          "It was snowing.",
+          "It was windy."
+        ],
+        "correct": "It was raining.",
+        "hint": "The story never says the weather. Look at the things Sam grabbed and ask what kind of day you need those for.",
+        "whyHard": "Answer is never stated; child must infer weather from a chain of clues (boots + umbrella + jumping) and reject snow, which also uses boots."
+      },
+      {
+        "prompt": "Mia had two cookies on her plate. She gave one to her little brother. When she looked back, her plate was empty and the dog was licking his lips.\n\nWho ate Mia's last cookie?",
+        "choices": [
+          "The dog",
+          "Mia",
+          "Her little brother",
+          "Her mom"
+        ],
+        "correct": "The dog",
+        "hint": "Count what happened to each cookie. One cookie is explained. Then find the clue about the one that is missing.",
+        "whyHard": "Requires tracking two cookies separately: one accounted for by the brother, the second inferred from the dog licking its lips, not stated directly."
+      },
+      {
+        "prompt": "At the park, Ben's balloon was not in his hand anymore. He looked up at the sky. His face was sad and he began to cry.\n\nWhy is Ben crying?",
+        "choices": [
+          "His balloon floated away.",
+          "He fell down and got hurt.",
+          "He is tired and wants a nap.",
+          "He does not like the park."
+        ],
+        "correct": "His balloon floated away.",
+        "hint": "Put the clues together: where his balloon is now, and where he is looking. What happened to it?",
+        "whyHard": "Cause of crying is unstated; child must connect 'not in his hand,' 'looked up at the sky,' and the missing balloon to infer it floated up, rejecting a plausible fell-down answer."
+      },
+      {
+        "prompt": "Lily planted a seed on Monday and gave it water. Every morning she checked the pot. On Monday there was dirt. On Friday there was a tiny green leaf.\n\nWhat happened to the seed during the week?",
+        "choices": [
+          "It started to grow.",
+          "It stayed the same.",
+          "It dried up and died.",
+          "A bird took it away."
+        ],
+        "correct": "It started to grow.",
+        "hint": "Compare what the pot looked like on Monday to what it looked like on Friday. What changed?",
+        "whyHard": "Requires comparing two details across days (dirt on Monday vs. leaf on Friday) and inferring change over time rather than reading a single stated fact."
+      },
+      {
+        "prompt": "Max wanted to reach the cookie jar on the tall shelf. First he stood on his toes, but he was too short. Then he pushed a chair to the shelf and climbed up. He smiled with a cookie in his hand.\n\nHow did Max finally get the cookie?",
+        "choices": [
+          "He climbed up on a chair.",
+          "He stood on his toes.",
+          "He asked his mom for it.",
+          "He jumped very high."
+        ],
+        "correct": "He climbed up on a chair.",
+        "hint": "He tried two things. One did not work. Read carefully to find which one worked at the end.",
+        "whyHard": "Two methods are described; the child must notice the first one failed ('too short') and pick the second, resisting the tempting first-mentioned action."
+      }
+    ],
+    "std": "RL.1.1"
+  },
+  {
+    "questions": [
+      {
+        "prompt": "Sam brought his umbrella to school, but the other kids all wore sunglasses and shorts. At recess, everyone ran outside to play on the dry grass. Sam sat alone by the door, holding his umbrella and looking up.\n\nWhy did Sam probably feel out of place?",
+        "choices": [
+          "He got ready for a different kind of weather than the others",
+          "He forgot his sunglasses at home",
+          "He did not want to play any games",
+          "He was the only one who liked recess"
+        ],
+        "correct": "He got ready for a different kind of weather than the others",
+        "hint": "Compare what Sam brought with what the other kids brought and wore. What kind of day did each one expect?",
+        "whyHard": "Answer is unstated; child must contrast Sam's umbrella (rain) against sunglasses/shorts/dry grass (sun) to infer the mismatch, not just retrieve a detail."
+      },
+      {
+        "prompt": "Grandpa set two plates on the table and poured two glasses of milk. He looked at the clock, then at the front door, and smiled. He warmed the cookies one more time so they would still be hot.\n\nWhat is Grandpa most likely getting ready for?",
+        "choices": [
+          "Someone is coming to visit soon",
+          "He is cleaning the whole kitchen",
+          "He is going to bake new cookies",
+          "He is about to leave the house"
+        ],
+        "correct": "Someone is coming to visit soon",
+        "hint": "Add the clues together: two plates, two glasses, watching the door and clock. Who is the second plate for?",
+        "whyHard": "Requires combining several clues (two of everything, watching door + clock, keeping food warm) to infer an expected guest; distractors each match one surface detail."
+      },
+      {
+        "prompt": "Nina wanted to surprise her mom with breakfast in bed. She carried the tray very slowly and held her breath as she passed her little brother's room. She only let out her breath once she reached her mom's door.\n\nWhy did Nina hold her breath near her brother's room?",
+        "choices": [
+          "She did not want to wake her brother up",
+          "She was tired from carrying the heavy tray",
+          "She was afraid of the dark hallway",
+          "She did not like the smell of the food"
+        ],
+        "correct": "She did not want to wake her brother up",
+        "hint": "Think about why someone would be extra quiet ONLY while passing a sleeping person's room during a surprise.",
+        "whyHard": "The reason is never stated; child must connect 'surprise,' 'slowly,' 'held her breath,' and 'passing his room' to infer she was staying quiet, resisting the plausible 'heavy tray' clue."
+      },
+      {
+        "prompt": "When Tomas opened his lunchbox, he found a note from Dad and a sandwich cut into the shape of a star. He grinned. Last week Tomas had told Dad that plain square sandwiches were boring.\n\nWhat does this tell us about Tomas's dad?",
+        "choices": [
+          "He listened to what Tomas said and tried to make him happy",
+          "He always makes star-shaped food for everyone",
+          "He forgot to pack a real lunch that day",
+          "He wanted Tomas to share his lunch with friends"
+        ],
+        "correct": "He listened to what Tomas said and tried to make him happy",
+        "hint": "Connect what Tomas said last week to what Dad did today. Why the star shape now?",
+        "whyHard": "Needs reasoning across time (last week's complaint -> today's star sandwich) to infer Dad's caring intent, a character conclusion rather than a stated fact."
+      },
+      {
+        "prompt": "The class was going to the zoo, but Ms. Lopez kept looking out the window at the gray sky. She told everyone to bring their raincoats and asked the driver to wait ten more minutes. Finally she said, 'Let's go, but stay close.'\n\nWhy did Ms. Lopez ask the driver to wait ten more minutes?",
+        "choices": [
+          "She was hoping the weather might get better",
+          "She needed time to count all the students",
+          "She wanted the students to eat first",
+          "She was waiting for another class to join"
+        ],
+        "correct": "She was hoping the weather might get better",
+        "hint": "Notice what Ms. Lopez keeps watching, and why that might make her pause before a zoo trip.",
+        "whyHard": "The waiting is explained only by combining 'gray sky' + 'raincoats' + 'wait' to infer she hoped the weather would clear; each distractor is a normal teacher action but unsupported by the clues."
+      }
+    ],
+    "std": "RL.2.1"
+  },
+  {
+    "std": "RL.3.1",
+    "questions": [
+      {
+        "prompt": "Deshawn saw the last cookie on the plate and reached for it. Then he noticed his little sister Mira coloring quietly in the corner, still wearing her soccer uniform. He remembered she had scored the winning goal that afternoon but nobody had celebrated because Grandma was sick. Deshawn put the cookie on a napkin, walked over, and set it beside Mira's crayons without saying a word. She looked up and smiled.\n\nWhy did Deshawn give Mira the cookie?",
+        "choices": [
+          "He wanted to do something kind for Mira because her big moment had been overlooked",
+          "He was not really hungry and did not want the cookie for himself",
+          "He was afraid Mira would tell their parents that he took the last cookie",
+          "He wanted Mira to stop coloring and play soccer with him outside"
+        ],
+        "correct": "He wanted to do something kind for Mira because her big moment had been overlooked",
+        "hint": "Look at the two things Deshawn remembered right before he gave up the cookie. Put them together to figure out how he was feeling about Mira.",
+        "whyHard": "Requires combining two separate clues (winning goal + no celebration) to infer an unstated motive; distractors each grab one surface detail but miss the connection."
+      },
+      {
+        "prompt": "Every recess, Priya sat alone on the bench and read her book. The other kids thought she was shy. But Priya always sat where she could see the whole playground, and she kept a small notebook tucked inside her book. When Coach asked who had seen who knocked over the equipment shed, only Priya raised her hand.\n\nWhat does the text suggest about Priya?",
+        "choices": [
+          "She notices and pays attention to what happens around her",
+          "She is too shy to make any friends at recess",
+          "She would rather read than play with the other kids",
+          "She is not telling the truth about what she saw"
+        ],
+        "correct": "She notices and pays attention to what happens around her",
+        "hint": "The other kids have one idea about Priya, but the details about where she sits and what she keeps hidden point to something different. Trust the details over the opinion.",
+        "whyHard": "The text plants a stated-but-wrong interpretation ('kids thought she was shy'); the child must override it using scattered evidence (seat placement, notebook, raised hand) to infer the real trait."
+      },
+      {
+        "prompt": "The morning of the trip, Leo checked the sky three times before breakfast. He packed his raincoat even though the forecast said sunny. He added an extra pair of dry socks, a flashlight, and a whistle to his bag. His mom laughed and said, 'It's just a walk in the park.' Leo zipped the bag anyway.\n\nWhich word BEST describes Leo, based on the text?",
+        "choices": [
+          "Careful",
+          "Fearful",
+          "Forgetful",
+          "Cheerful"
+        ],
+        "correct": "Careful",
+        "hint": "Do not pick the word just because it sounds a little like how Leo acts. Look at ALL the things he packed and ask what kind of person prepares like that.",
+        "whyHard": "'Fearful' is a tempting near-miss (checking the sky could read as scared), but the pattern of sensible preparations supports 'careful'; requires weighing the whole pattern, not one action."
+      },
+      {
+        "prompt": "Nadia and her older brother Theo were building a sandcastle. Theo kept saying, 'Let me do the towers, you're too little.' Every time Nadia patted a tower into shape, Theo smoothed it over and did it his own way. When their dad came to look, he said, 'Wonderful towers, Theo!' Theo grinned. Nadia stood up, brushed the sand off her knees, and went to sit by the water alone.\n\nHow does Nadia most likely feel at the end?",
+        "choices": [
+          "Left out, because her work was taken over and only Theo was praised",
+          "Excited, because she finished building the sandcastle by herself",
+          "Angry at her dad for not letting them keep building the castle",
+          "Tired, because building the sandcastle took a very long time"
+        ],
+        "correct": "Left out, because her work was taken over and only Theo was praised",
+        "hint": "Nadia does not say how she feels. Look at what happened to her towers and who got the praise, then think about why she walked away by herself.",
+        "whyHard": "Emotion is unstated and must be inferred from a chain of events (work overridden + brother praised + solitary exit); distractors offer plausible feelings unsupported by the specific cause."
+      },
+      {
+        "prompt": "For weeks, the old lighthouse keeper had left a bowl of milk on the porch each night, and each morning it was empty. He told the villagers a friendly ghost drank it. One night he stayed up and watched from the window. In the moonlight, a thin gray cat crept onto the porch and lapped up every drop. The next evening, the keeper set out the milk as usual and smiled to himself, but he never told the villagers what he had seen.\n\nWhy does the keeper keep putting out the milk AND stay quiet about the cat?",
+        "choices": [
+          "He enjoys taking care of the cat and likes keeping the fun story alive for the villagers",
+          "He still believes a ghost might be drinking some of the milk too",
+          "He is worried the villagers will make him get rid of the stray cat",
+          "He forgot to tell the villagers and plans to explain it to them soon"
+        ],
+        "correct": "He enjoys taking care of the cat and likes keeping the fun story alive for the villagers",
+        "hint": "He now KNOWS the truth, yet he does two things anyway: keeps feeding it and keeps the secret. Ask what both of those choices, plus his smile, tell you about what he wants.",
+        "whyHard": "Requires integrating the keeper's knowledge (he saw the cat), his continued actions, and his smile to infer a two-part motive; each distractor is internally plausible but contradicted by a specific detail (he saw the cat; he smiled; no fear shown)."
+      }
+    ]
+  },
+  {
+    "std": "L.4.4c",
+    "questions": [
+      {
+        "prompt": "A dictionary gives this entry:\n\ntemper\nn. 1. a calm state of mind; composure.\nn. 2. a tendency to become angry easily.\nv. 3. to make something less harsh or severe; to soften.\nv. 4. to harden metal by heating and then cooling it.\n\nRead this sentence: \"A wise teacher learns to temper firm rules with warmth and humor.\"\n\nWhich numbered meaning matches the way temper is used in the sentence?",
+        "choices": [
+          "To make something less harsh or severe; to soften",
+          "A tendency to become angry easily",
+          "A calm state of mind; composure",
+          "To harden metal by heating and then cooling it"
+        ],
+        "correct": "To make something less harsh or severe; to soften",
+        "hint": "First decide whether temper is used as a naming word (noun) or an action word (verb) here, then only compare the definitions of that type.",
+        "whyHard": "The everyday association 'temper = anger' baits meaning 2, but the child must use part of speech (verb) plus the softening context to land on sense 3."
+      },
+      {
+        "prompt": "The two words printed at the very top of a dictionary page are called guide words. They tell you the first and the last word found on that page, in alphabetical order. On one page, the guide words are marble and margin. Which word would you find on that page?",
+        "choices": [
+          "march",
+          "maple",
+          "marine",
+          "marvel"
+        ],
+        "correct": "march",
+        "hint": "The words all start with the same first letters. Skip past the letters they share and compare the next different letter to the two guide words.",
+        "whyHard": "Requires alphabetizing to the fourth letter (mar-b < mar-c < mar-g) and rejecting words that fall just before or just after the guide-word range."
+      },
+      {
+        "prompt": "You are reading your science textbook and reach the word sediment in a chapter about rivers. You want to know exactly what the word means the way this chapter uses it, and you want to find it quickly without putting the book down. Which reference should you use?",
+        "choices": [
+          "The glossary at the back of the textbook",
+          "A dictionary from the library",
+          "A thesaurus",
+          "An encyclopedia"
+        ],
+        "correct": "The glossary at the back of the textbook",
+        "hint": "Two clues matter: you want the meaning as used in THIS book, and you don't want to leave the book. Ask which reference fits both.",
+        "whyHard": "A general dictionary is a strong near-miss (it also gives meanings); the child must weigh 'meaning in this book' and 'without leaving the book' to prefer the glossary."
+      },
+      {
+        "prompt": "A thesaurus lists these words as synonyms for the word said: whispered, muttered, announced, boasted.\n\nIn a story, a boy does not want the nearby guard to overhear him, so he leans close to his friend's ear and ___ the secret plan.\n\nWhich word best fits the precise meaning the story needs?",
+        "choices": [
+          "whispered",
+          "muttered",
+          "announced",
+          "boasted"
+        ],
+        "correct": "whispered",
+        "hint": "More than one choice means to speak quietly. Reread who the boy is trying to keep from hearing him, and pick the word that fits that exact reason.",
+        "whyHard": "Both 'whispered' and 'muttered' denote quiet speech, so the child must use the precise clue (hiding from the guard, leaning to a friend's ear) to separate near-synonyms."
+      },
+      {
+        "prompt": "A dictionary gives this entry:\n\nminute\n1. (MIN-it) n. a unit of time equal to sixty seconds.\n2. (my-NOOT) adj. extremely small; tiny.\n\nRead this sentence: \"Using a magnifying glass, the scientist studied the minute grains of pollen.\"\n\nHow should minute be pronounced in this sentence, and why?",
+        "choices": [
+          "my-NOOT, because here it means extremely small",
+          "MIN-it, because here it means sixty seconds",
+          "MIN-it, because it is the first pronunciation listed",
+          "my-NOOT, because it is the longer, fancier word"
+        ],
+        "correct": "my-NOOT, because here it means extremely small",
+        "hint": "First work out what the word means in the sentence, then find that meaning in the entry and read the pronunciation printed right next to it.",
+        "whyHard": "Same spelling has two pronunciations tied to two meanings; the child must infer the meaning from context (tiny pollen) and then map it to the matching respelling."
+      }
+    ]
+  },
+  {
+    "std": "L.1.4a",
+    "questions": [
+      {
+        "prompt": "Read the story: \"The baby birds were ravenous. They chirped as loud as they could and opened their beaks wide the second their mother landed with a fat worm.\" What does the word ravenous mean?",
+        "choices": [
+          "very hungry",
+          "very loud",
+          "very sleepy",
+          "very scared"
+        ],
+        "correct": "very hungry",
+        "hint": "Ask what the baby birds WANT when they open their beaks wide for the worm, not just what sound they make.",
+        "whyHard": "The loud surface clue baits 'very loud'; the real answer requires inferring hunger from the beaks-open-for-a-worm detail."
+      },
+      {
+        "prompt": "Read the sentence: \"Grandpa carefully peeled the rough brown bark off the tree branch before he began to carve.\" In this sentence, what does the word bark mean?",
+        "choices": [
+          "the outer skin of a tree",
+          "the sound a dog makes",
+          "to yell at someone",
+          "a small boat"
+        ],
+        "correct": "the outer skin of a tree",
+        "hint": "This word has more than one real meaning. Use the words right around it (tree, branch, peeled) to decide which meaning fits.",
+        "whyHard": "Every choice is a true meaning of 'bark'; only the tree context selects the correct one, so the child must discriminate among real meanings."
+      },
+      {
+        "prompt": "Read the sentence: \"The pond was so still that Emma could see her own face in the water, just like looking in a mirror.\" What does the word still mean here?",
+        "choices": [
+          "not moving",
+          "very cold",
+          "very deep",
+          "not yet finished"
+        ],
+        "correct": "not moving",
+        "hint": "Think about what water has to be doing (or not doing) for it to act like a mirror.",
+        "whyHard": "'Still' has several meanings and cold/deep are plausible pond traits, but only the mirror-reflection clue points to calm, not-moving water."
+      },
+      {
+        "prompt": "Read the story: \"The path up the hill was very narrow. Ben and his dad could not walk next to each other, so Ben walked in front and his dad walked behind.\" What does the word narrow mean?",
+        "choices": [
+          "not wide",
+          "very long",
+          "very steep",
+          "very dark"
+        ],
+        "correct": "not wide",
+        "hint": "Ask yourself WHY they couldn't walk next to each other. That clue tells you what narrow means.",
+        "whyHard": "Long and steep both fit a hill path, but only 'not wide' explains why they can't walk side by side; the answer lives in the second sentence, not the word itself."
+      },
+      {
+        "prompt": "Read the sentence: \"Unlike his loud sister who shouted all day, timid little Owen barely said a word and hid behind his mom when guests came over.\" What does the word timid mean?",
+        "choices": [
+          "shy and quiet",
+          "loud and bold",
+          "mean and rude",
+          "big and strong"
+        ],
+        "correct": "shy and quiet",
+        "hint": "The word 'unlike' is a big clue: it means Owen is the OPPOSITE of his loud sister.",
+        "whyHard": "The clue is a contrast the child must reverse; 'loud and bold' traps any reader who latches onto the sister's description instead of noticing 'unlike.'"
+      }
+    ]
+  }
+]

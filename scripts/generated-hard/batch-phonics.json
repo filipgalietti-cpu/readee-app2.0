@@ -1596,67 +1596,132 @@
     ]
   },
   {
+    "std": "RF.3.3",
+    "questions": [
+      {
+        "prompt": "In which word is **un-** a real prefix (a word part added to the front) that you can peel off to leave a smaller word?\n\nuncle  \u2022  until  \u2022  untie  \u2022  under",
+        "choices": [
+          "uncle",
+          "until",
+          "untie",
+          "under"
+        ],
+        "correct": "untie",
+        "hint": "Try covering the first two letters. If a whole real word is left, un- is a true prefix; if only leftovers remain, it is just part of the word.",
+        "whyHard": "All four words begin with the letters u-n, but only 'untie' splits into the prefix un- plus the base word 'tie'."
+      },
+      {
+        "prompt": "What is the base (root) word inside **happiness**?",
+        "choices": [
+          "happy",
+          "happi",
+          "hap",
+          "happye"
+        ],
+        "correct": "happy",
+        "hint": "Peel off the suffix -ness, then remember that a base word ending in y often changes the y to i before the suffix is added.",
+        "whyHard": "The y in 'happy' was changed to i before -ness, so the correct root is spelled differently ('happy') than it looks inside the word ('happi')."
+      },
+      {
+        "prompt": "Which word ends with the same **/shun/** sound as **nation**?\n\nmountain  \u2022  question  \u2022  vacation  \u2022  kitchen",
+        "choices": [
+          "mountain",
+          "question",
+          "vacation",
+          "kitchen"
+        ],
+        "correct": "vacation",
+        "hint": "Say each ending out loud and listen for /shun/, not /tin/ or /chun/. The -tion spelling only says /shun/ in some words.",
+        "whyHard": "The endings -tain, -stion, -tion, and -tchen look and sound close, and 'question' is even spelled with -tion but says /chun/, so only 'vacation' truly ends in /shun/."
+      },
+      {
+        "prompt": "Which spelling is correct when you add **-ing** to the word **hop**?",
+        "choices": [
+          "hoping",
+          "hopping",
+          "hoped",
+          "hopeing"
+        ],
+        "correct": "hopping",
+        "hint": "A one-syllable word with one short vowel and one final consonant (like hop) doubles that consonant before -ing. Watch out for the word 'hope'.",
+        "whyHard": "The short-vowel word 'hop' must double the p to keep the short /o/ sound, while the trap 'hoping' actually comes from the long-vowel word 'hope'."
+      },
+      {
+        "prompt": "How many syllables are in the word **explain**?",
+        "choices": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correct": "2",
+        "hint": "Clap it out. Remember that a vowel team like 'ai' makes just one vowel sound, so it counts as only one syllable.",
+        "whyHard": "The two vowels a-i sit side by side and tempt kids to count an extra syllable, but 'ai' is a single vowel team, so ex-plain is only two beats."
+      }
+    ]
+  },
+  {
     "std": "RF.3.3a",
     "questions": [
       {
-        "prompt": "The prefix **re-** can mean \"again\" or \"back.\" In which word does **re-** mean \"again\"?",
+        "prompt": "In which word does **un-** work as a real prefix meaning 'not'?  **unkind** \u00b7 **uncle** \u00b7 **under** \u00b7 **uncover**",
         "choices": [
-          "return",
-          "recall",
-          "replay",
-          "remove"
-        ],
-        "correct": "replay",
-        "hint": "Say each word with its base: does it mean doing something one MORE time, or going/turning BACK?",
-        "whyHard": "Same prefix has two meanings, and three distractors all use the 'back' sense, so a rote 're- = again' rule fails."
-      },
-      {
-        "prompt": "The suffix **-er** can mean \"one who does something\" or \"more.\" In which word does **-er** mean \"one who does something\"?",
-        "choices": [
-          "farmer",
-          "smaller",
-          "louder",
-          "kinder"
-        ],
-        "correct": "farmer",
-        "hint": "Try 'a person who ___s' with each base word. If it turns into a 'more ___' comparison instead, it's the other meaning.",
-        "whyHard": "The child must sort one affix's two jobs, and every distractor is a common comparative -er."
-      },
-      {
-        "prompt": "A prefix is a word part added to the front of a base word to change its meaning. In which word is **un-** NOT a prefix?",
-        "choices": [
-          "unlock",
-          "unripe",
+          "unkind",
+          "uncle",
           "under",
-          "unwrap"
+          "uncover"
         ],
-        "correct": "under",
-        "hint": "Cover the first two letters. If a real base word is left over, un- is a prefix; if it isn't, un- is just part of the word.",
-        "whyHard": "'under' begins with the same letters as a real prefix, so it's a trap unless you check for a leftover base word."
+        "correct": "unkind",
+        "hint": "A real prefix peels off and leaves a whole base word that still makes sense. Take off un- and ask if what's left flips to the opposite.",
+        "whyHard": "Three choices contain the letters u-n, but only one is truly the prefix un- meaning 'not' (uncover means 'reverse,' uncle/under have no prefix)."
       },
       {
-        "prompt": "The suffix **-less** means \"without.\" What does the word **harmless** mean?",
+        "prompt": "The suffix **-er** can mean 'a person who does something.' In which word does **-er** mean that?  **painter** \u00b7 **colder** \u00b7 **faster** \u00b7 **longer**",
         "choices": [
-          "without harm",
-          "full of harm",
-          "causing more harm",
-          "able to do harm"
+          "painter",
+          "colder",
+          "faster",
+          "longer"
         ],
-        "correct": "without harm",
-        "hint": "Swap the suffix for the phrase it stands for: base word + 'without' or 'without' + base word.",
-        "whyHard": "Every distractor twists the meaning toward harm existing, testing whether the child truly reads -less as an absence."
+        "correct": "painter",
+        "hint": "-er has two jobs: comparing (bigger) or naming a doer (baker). Ask which word names a person.",
+        "whyHard": "All four words end in -er, but three are comparisons and only one names 'one who does' the action."
       },
       {
-        "prompt": "The prefix **mis-** means \"wrongly\" or \"badly.\" If you **misjudge** someone, you judge them \u2014",
+        "prompt": "The suffix **-less** means 'without.' Which word means 'without fear'?  **fearful** \u00b7 **fearless** \u00b7 **feared** \u00b7 **fearing**",
         "choices": [
-          "wrongly",
-          "again",
-          "before",
-          "too much"
+          "fearful",
+          "fearless",
+          "feared",
+          "fearing"
         ],
-        "correct": "wrongly",
-        "hint": "Replace mis- with the meaning it carries, then reread the whole word to see which fits.",
-        "whyHard": "mis- is a common prefix whose meaning is easy to confuse with re-, pre-, or over-, which the distractors each stand in for."
+        "correct": "fearless",
+        "hint": "Match the meaning 'without' to the right ending: -less means without, -ful means full of.",
+        "whyHard": "Every choice is built from the same base 'fear,' so the child must attach 'without' to the exact suffix, not just spot the word."
+      },
+      {
+        "prompt": "The prefix **pre-** means 'before.' What does the word **preheat** mean?  **to heat again** \u00b7 **to heat before** \u00b7 **to not heat** \u00b7 **to heat fully**",
+        "choices": [
+          "to heat again",
+          "to heat before",
+          "to not heat",
+          "to heat fully"
+        ],
+        "correct": "to heat before",
+        "hint": "Swap the prefix for its meaning, then read the base word right after it.",
+        "whyHard": "Each distractor matches a different affix meaning (re-, un-, -ful), so only knowing pre- specifically gives the answer."
+      },
+      {
+        "prompt": "The prefix **mis-** means 'wrongly' or 'badly.' What does the word **misspell** mean?  **to spell again** \u00b7 **to spell wrongly** \u00b7 **to spell before** \u00b7 **to spell fully**",
+        "choices": [
+          "to spell again",
+          "to spell wrongly",
+          "to spell before",
+          "to spell fully"
+        ],
+        "correct": "to spell wrongly",
+        "hint": "Replace mis- with its meaning and keep the base word 'spell' after it.",
+        "whyHard": "The distractors each fit a different common prefix (re-, pre-, -ful), so only the exact meaning of the less-common mis- works."
       }
     ]
   },
@@ -1664,64 +1729,64 @@
     "std": "RF.3.3b",
     "questions": [
       {
-        "prompt": "The suffix -sion usually says /shun/, but sometimes it says /zhun/ (like the middle sound in \"treasure\"). Which word ends with the /zhun/ sound?",
+        "prompt": "All four words end with the /shun/ sound. In which word is that ending spelled with the letters -sion?",
         "choices": [
+          "nation",
+          "station",
           "mission",
-          "passion",
+          "motion"
+        ],
+        "correct": "mission",
+        "hint": "Say each word slowly and picture the ending. Three of them spell /shun/ with a t, but one uses an s.",
+        "whyHard": "Every choice ends in the same /shun/ sound, so the child must know the spelling, not just the sound."
+      },
+      {
+        "prompt": "The Latin suffix -ous means 'full of' and sounds like /us/. Which word below actually ends with the suffix -ous?",
+        "choices": [
+          "walrus",
+          "famous",
+          "circus",
+          "cactus"
+        ],
+        "correct": "famous",
+        "hint": "Cover the last part of each word. Is what is left a real base word, or is /us/ just part of the whole word?",
+        "whyHard": "The distractors end in the same /us/ sound but are not the suffix, forcing true suffix recognition."
+      },
+      {
+        "prompt": "The letters -tion usually say /shun/, as in 'nation.' In which word do the letters -tion say /chun/ instead?",
+        "choices": [
+          "action",
+          "section",
+          "question",
+          "motion"
+        ],
+        "correct": "question",
+        "hint": "Read each word out loud and listen for the one where your tongue makes a /ch/ catch right before the ending.",
+        "whyHard": "'Question' is an exception where -tion says /chun/ after the s, breaking the normal rule."
+      },
+      {
+        "prompt": "Read these four words. Which one ends with the Latin suffix -ible?",
+        "choices": [
+          "comfortable",
+          "valuable",
+          "terrible",
+          "reliable"
+        ],
+        "correct": "terrible",
+        "hint": "You cannot hear the difference between -able and -ible, so picture each word spelled out and check the vowel before -ble.",
+        "whyHard": "-able and -ible sound identical, so the sound gives no clue and the child must recall the spelling."
+      },
+      {
+        "prompt": "The suffix -sion can say /shun/ or /zhun/ (the soft sound in 'treasure'). In which word does -sion make the /zhun/ sound?",
+        "choices": [
+          "mansion",
+          "tension",
           "division",
           "session"
         ],
         "correct": "division",
-        "hint": "Say each word slowly. Listen for the soft, buzzing /zh/ sound instead of a sharp /sh/. It happens when a vowel comes right before -sion.",
-        "whyHard": "All four share the -sion suffix, but only the one with a vowel before it flips /shun/ to /zhun/."
-      },
-      {
-        "prompt": "The Latin suffix -ture says /cher/, as in \"picture.\" Which word does NOT end with that /cher/ suffix sound?",
-        "choices": [
-          "capture",
-          "culture",
-          "feature",
-          "secure"
-        ],
-        "correct": "secure",
-        "hint": "Read the last chunk of each word aloud. Three end in the /cher/ suffix; one just ends in the letters -ure but says something different.",
-        "whyHard": "'secure' ends in -ure but not the -ture suffix, so it says /yoor/ instead of /cher/ \u2014 a look-alike trap."
-      },
-      {
-        "prompt": "The /shun/ ending can be spelled -tion, -sion, or -cian. Which word spells that /shun/ sound with -cian?",
-        "choices": [
-          "nation",
-          "station",
-          "lotion",
-          "musician"
-        ],
-        "correct": "musician",
-        "hint": "All four end in the same /shun/ sound. Look at the letters, not just the sound \u2014 which one uses c-i-a-n?",
-        "whyHard": "Same ending sound, three possible spellings; the child must match the sound to the correct suffix spelling."
-      },
-      {
-        "prompt": "The Latin suffix -able says /uh-bul/ and means \"able to be.\" Which word ends with that -able suffix?",
-        "choices": [
-          "table",
-          "cable",
-          "stable",
-          "comfortable"
-        ],
-        "correct": "comfortable",
-        "hint": "Read each ending. In three words the -able is part of the root and says /ay-bul/; in one it is a suffix and says /uh-bul/.",
-        "whyHard": "The letters -able look identical in all four, but only one is the true suffix said /uh-bul/ rather than /ay-bul/."
-      },
-      {
-        "prompt": "The Latin suffix -ous means \"full of,\" as in \"joyous.\" Which word below actually uses the -ous suffix?",
-        "choices": [
-          "campus",
-          "walrus",
-          "focus",
-          "famous"
-        ],
-        "correct": "famous",
-        "hint": "All four end in the /us/ sound, but only one adds a suffix meaning \"full of\" onto a base word you already know.",
-        "whyHard": "Several everyday words end in the /us/ sound; only 'famous' carries the meaning-bearing -ous suffix (fame + ous)."
+        "hint": "Look at the letter right before -sion. A vowel there softens the ending to /zhun/.",
+        "whyHard": "/zhun/ only occurs when -sion follows a vowel; all three distractors follow a consonant and say /shun/."
       }
     ]
   },
@@ -1729,64 +1794,64 @@
     "std": "RF.3.3d",
     "questions": [
       {
-        "prompt": "Read these words out loud: thumb, brave, ribbon, robe. Which one has a silent letter \u2014 a letter you see but do NOT hear when you say the word?",
+        "prompt": "All four of these words begin with the letters 'sw'. Which one has a SILENT letter you do not say out loud?\n\nsword    swing    sweet    swan",
         "choices": [
-          "thumb",
-          "brave",
-          "ribbon",
-          "robe"
+          "sword",
+          "swing",
+          "sweet",
+          "swan"
         ],
-        "correct": "thumb",
-        "hint": "Say each word slowly and listen for the /b/ sound. In one of them the 'b' hides and you never say it.",
-        "whyHard": "'thumb' ends in 'mb' where the b is silent, sitting among ordinary words where every b is pronounced."
+        "correct": "sword",
+        "hint": "Say each word slowly. In one of them the 'w' disappears and you jump straight to the next sound.",
+        "whyHard": "Every choice looks like it should sound the 'w', but only 'sword' hides a silent letter."
       },
       {
-        "prompt": "Which word has a silent 'l' \u2014 a letter that is there in the spelling but that you do not say?",
+        "prompt": "In the word 'listen', one of the letters is silent \u2014 you do not hear it when you say the word. Which letter is silent?\n\nl-i-s-t-e-n",
         "choices": [
-          "half",
-          "lamp",
-          "milk",
-          "plant"
+          "t",
+          "l",
+          "s",
+          "n"
         ],
-        "correct": "half",
-        "hint": "Whisper each word and notice which 'l' seems to disappear when you say it.",
-        "whyHard": "'half' is pronounced /haf/ with the l dropped, unlike lamp, milk, and plant where you hear the l."
+        "correct": "t",
+        "hint": "Say the word out loud and listen for a /t/ sound. If you can't hear it, that letter is the silent one.",
+        "whyHard": "The silent 't' sits in the middle of the word, so it's easy to assume you say it."
       },
       {
-        "prompt": "Read the sentence: 'The brave ___ put on his armor and rode to the castle.' Which word fits the meaning AND is spelled correctly?",
+        "prompt": "Read this sentence: 'I bought one ___ of new shoes.'\n\nWhich word is spelled correctly to fill the blank?",
         "choices": [
-          "knight",
-          "night",
-          "kite",
-          "light"
+          "pair",
+          "pear",
+          "pare",
+          "bear"
         ],
-        "correct": "knight",
-        "hint": "Think about who wears armor and rides a horse. Then remember that word starts with a silent letter you don't say.",
-        "whyHard": "The child must pick the right meaning and the irregular silent-k spelling instead of the identical-sounding homophone 'night'."
+        "correct": "pair",
+        "hint": "All the choices sound almost the same. Think about which spelling means 'two things that go together.'",
+        "whyHard": "Three choices are homophones that sound identical, so the child must match spelling to meaning, not sound."
       },
       {
-        "prompt": "Which is the correct spelling of the word that means 'a reply you give to a question'?",
+        "prompt": "The letters 'gh' can be tricky \u2014 sometimes they make a sound and sometimes they are silent. In which word do the letters 'gh' make NO sound at all?\n\neight    ghost    laugh    tough",
         "choices": [
-          "anser",
-          "answer",
-          "ansewr",
-          "anwser"
+          "eight",
+          "ghost",
+          "laugh",
+          "tough"
         ],
-        "correct": "answer",
-        "hint": "Say the word \u2014 you won't hear it, but this word hides a silent 'w' right in the middle.",
-        "whyHard": "'answer' contains a silent w that is easy to leave out, and the wrong choices sound almost the same when spoken."
+        "correct": "eight",
+        "hint": "Say each word. In some, 'gh' sounds like /g/ or /f/. Find the one where 'gh' is completely silent.",
+        "whyHard": "'gh' behaves three different ways across the choices, so the child must test each one, not guess."
       },
       {
-        "prompt": "The word 'said' sounds like /sed/. Which word RHYMES with 'said'?",
+        "prompt": "Read this sentence: 'I ___ like to come and play.'\n\nWhich word is spelled correctly and has a silent 'l'?",
         "choices": [
-          "bread",
-          "seed",
-          "paid",
-          "played"
+          "would",
+          "wood",
+          "wud",
+          "wold"
         ],
-        "correct": "bread",
-        "hint": "'said' does not rhyme with 'paid' even though they look alike. Listen for the short-e ending sound instead of matching letters.",
-        "whyHard": "Both 'said' and 'bread' spell the short-e sound in irregular ways, so the child must rhyme by ear, not by how the letters look."
+        "correct": "would",
+        "hint": "The right word means 'want to' and hides a silent 'l' in the middle. Watch out for a look-alike that means part of a tree.",
+        "whyHard": "'wood' is a real word that sounds the same, tempting the child away from the irregular 'would'."
       }
     ]
   },
@@ -1794,63 +1859,62 @@
     "std": "RF.3.4",
     "questions": [
       {
-        "prompt": "How many syllables are in the word \"scratched\"?",
+        "prompt": "Which word has a SOFT g sound (the /j/ sound, like in 'giraffe')?",
         "choices": [
-          "One",
-          "Two",
-          "Three"
+          "gorilla",
+          "gigantic",
+          "gallop",
+          "goggles"
         ],
-        "correct": "One",
-        "hint": "Clap it out slowly. Remember that the -ed ending after a /ch/ sound just makes a quick /t/ sound.",
-        "whyHard": "The consonant pile-up (scr- and -tched) plus the -ed ending tempt kids to overcount, but it is a single beat."
+        "correct": "gigantic",
+        "hint": "The letter g is usually soft when it comes right before an e, i, or y. Look at what letter follows each g.",
+        "whyHard": "All four start with g, but only one has g followed by an i to make the soft /j/ sound, and the child must ignore the hard g in the rest of the word."
       },
       {
-        "prompt": "In which word does the letter g make the soft /j/ sound, as in \"giraffe\"?",
+        "prompt": "Which word BEGINS with a silent letter, like the k in 'knee'?",
         "choices": [
-          "magic",
-          "gather",
-          "forgot",
-          "begin"
+          "rust",
+          "wrist",
+          "twist",
+          "frost"
         ],
-        "correct": "magic",
-        "hint": "Say each word out loud and listen to the g. A soft g usually comes before an e, i, or y.",
-        "whyHard": "Every choice contains a g, so the child must sound out each one to find the single soft g among hard-g distractors."
+        "correct": "wrist",
+        "hint": "Some words start with two consonants where the first one is not spoken. Say each word slowly and listen for a letter you write but don't hear.",
+        "whyHard": "All four are short decodable words with similar sounds, but only one hides a silent w at the start (wr), which is easy to miss."
       },
       {
-        "prompt": "Which word has the same vowel sound as \"found\"?",
+        "prompt": "How many syllables are in the word 'calculator'?",
         "choices": [
-          "proud",
-          "though",
-          "wound",
-          "group"
+          "3",
+          "4",
+          "5"
         ],
-        "correct": "proud",
-        "hint": "The letters 'ou' can make different sounds. Say each word and match the middle sound to the /ow/ in 'found.'",
-        "whyHard": "All four words contain the letters o-u, but only one shares the /ow/ sound; the others say /oh/ or /oo/."
+        "correct": "4",
+        "hint": "Clap or tap once for each vowel sound you hear: cal-cu-la-tor.",
+        "whyHard": "It is a long four-part word, and children often miscount by lumping two syllables together or splitting one, so it takes careful listening to each vowel sound."
       },
       {
-        "prompt": "Which word has the same vowel sound as \"learn\"?",
+        "prompt": "In which word does the letter 'a' make the schwa sound (the lazy /uh/ sound, like in 'about')?",
         "choices": [
-          "bird",
-          "farm",
-          "hair",
-          "heart"
+          "snap",
+          "flag",
+          "banana"
         ],
-        "correct": "bird",
-        "hint": "Ignore how the words are spelled and just listen. Which one has the same 'er' sound you hear in 'learn'?",
-        "whyHard": "The matching /er/ sound is spelled 'ear' in learn but 'ir' in bird, so spelling gives no clue and the ear must decide."
+        "correct": "banana",
+        "hint": "The schwa is a quiet /uh/ sound in an unstressed part of a word. Say each word and notice where the 'a' sounds like a clear short /a/ versus a mumbled /uh/.",
+        "whyHard": "Three words have a clear short /a/, so the child must hear that only banana softens its a into the tricky schwa /uh/ sound."
       },
       {
-        "prompt": "Which word begins with a silent letter?",
+        "prompt": "Which word has the SAME vowel sound as 'moon'?",
         "choices": [
-          "gnome",
-          "grape",
-          "glove",
-          "grin"
+          "book",
+          "cook",
+          "soup",
+          "wood"
         ],
-        "correct": "gnome",
-        "hint": "Try to sound out the very first letter of each word. In one of them, the first letter is not spoken at all.",
-        "whyHard": "The silent-g in the 'gn-' start is a rare exception, and all three distractors begin with a normally sounded g."
+        "correct": "soup",
+        "hint": "Say 'moon' and stretch the middle sound. Some 'oo' words make that long sound and some make a shorter /oo/ sound. Listen for the exact match, even if it is spelled differently.",
+        "whyHard": "Three of the choices use oo but make the SHORT /oo/ sound, while the correct answer spells the long /oo/ of 'moon' a different way (ou), forcing sound-not-spelling matching."
       }
     ]
   },
@@ -1858,64 +1922,64 @@
     "std": "RF.3.4a",
     "questions": [
       {
-        "prompt": "Read this word: thirst. Which word below has the SAME vowel sound as 'thirst'?\n\n\u2022 nurse\n\u2022 north\n\u2022 heart\n\u2022 quiet",
+        "prompt": "Which word has the SOFT g sound \u2014 the /j/ sound you hear in \"gem\"?",
         "choices": [
-          "nurse",
-          "north",
+          "giant",
+          "garden",
+          "goggle",
+          "gutter"
+        ],
+        "correct": "giant",
+        "hint": "A soft g usually comes before e, i, or y. Say each word and listen for /j/ like in \"gem\" versus the hard /g/ in \"go.\"",
+        "whyHard": "All four words begin with the letter g, so the child must judge the SOUND the g makes, not just the letter."
+      },
+      {
+        "prompt": "The word \"napkin\" breaks into two syllables between the two middle consonants: nap-kin. Which word below breaks apart the SAME way, between two consonants?",
+        "choices": [
+          "basket",
+          "silent",
+          "pilot",
+          "robot"
+        ],
+        "correct": "basket",
+        "hint": "Find the two consonants sitting between the vowels and split right between them. If there is only one consonant, the word usually splits after the first vowel instead.",
+        "whyHard": "The three wrong words each have a single middle consonant and split after the vowel (ro-bot), so only one truly matches the two-consonant nap-kin pattern."
+      },
+      {
+        "prompt": "Which word has the SAME vowel sound as \"field\" (long e)?",
+        "choices": [
+          "piece",
+          "friend",
+          "weigh",
+          "eight"
+        ],
+        "correct": "piece",
+        "hint": "The letters 'ie' don't always make the same sound. Say each word aloud and match its middle sound to the long e in \"field.\"",
+        "whyHard": "\"friend\" is spelled with the very same 'ie' as \"field\" but says short e, a classic spelling trap."
+      },
+      {
+        "prompt": "Which word has a SILENT letter \u2014 a letter you spell but do not say?",
+        "choices": [
+          "thumb",
+          "drum",
+          "stamp",
+          "clump"
+        ],
+        "correct": "thumb",
+        "hint": "Say each word slowly, sound by sound. If a written letter never gets a sound, that word has a silent letter.",
+        "whyHard": "\"drum\" rhymes with \"thumb\" but has no silent b, so the child must check each letter's sound instead of trusting the rhyme."
+      },
+      {
+        "prompt": "In the word \"learn,\" the letters 'ear' make the /er/ sound, like in \"her.\" Which word below has that SAME /er/ sound?",
+        "choices": [
+          "search",
           "heart",
-          "quiet"
+          "clear",
+          "beard"
         ],
-        "correct": "nurse",
-        "hint": "Say each word slowly and listen to the middle vowel. Remember that different spellings can make the very same r-controlled sound.",
-        "whyHard": "The child must hear that 'ir' in thirst and 'ur' in nurse make the identical /er/ sound while 'or' and 'ar' are close but wrong."
-      },
-      {
-        "prompt": "When you break a word into syllables, an OPEN syllable ends in a vowel and makes a long sound. In which word does the FIRST syllable have a long vowel sound?\n\n\u2022 robot\n\u2022 rabbit\n\u2022 napkin\n\u2022 pumpkin",
-        "choices": [
-          "robot",
-          "rabbit",
-          "napkin",
-          "pumpkin"
-        ],
-        "correct": "robot",
-        "hint": "Split each word after its first chunk. If the first chunk ends in a vowel, that vowel usually says its long name.",
-        "whyHard": "Three words split into closed syllables (short vowels) and only 'ro-bot' opens on a long vowel, forcing true syllable-type discrimination."
-      },
-      {
-        "prompt": "The word 'napkin' splits into two syllables like this: nap / kin. Using that SAME pattern, how should the word 'basket' be split into syllables?\n\n\u2022 ba / sket\n\u2022 bas / ket\n\u2022 bask / et\n\u2022 baske / t",
-        "choices": [
-          "ba / sket",
-          "bas / ket",
-          "bask / et",
-          "baske / t"
-        ],
-        "correct": "bas / ket",
-        "hint": "When two consonants sit between two vowels, split right between the consonants \u2014 one on each side.",
-        "whyHard": "The child must transfer the VCCV split-between-the-consonants rule to a new word instead of recalling a memorized break."
-      },
-      {
-        "prompt": "Some vowels get lazy and make a soft /uh/ sound called the schwa. Which word has the schwa /uh/ sound in its FIRST syllable?\n\n\u2022 about\n\u2022 apple\n\u2022 ankle\n\u2022 army",
-        "choices": [
-          "about",
-          "apple",
-          "ankle",
-          "army"
-        ],
-        "correct": "about",
-        "hint": "Read each word the natural way you would say it. Listen for the quiet, mumbly vowel that does NOT say short 'a'.",
-        "whyHard": "All four begin with 'a', but only 'a-bout' reduces to the schwa; the others are short-a or r-controlled, a subtle listening call."
-      },
-      {
-        "prompt": "Read this word: chief. It has the long /ee/ sound. Which word below has the SAME long /ee/ sound as 'chief'?\n\n\u2022 field\n\u2022 bread\n\u2022 steak\n\u2022 friend",
-        "choices": [
-          "field",
-          "bread",
-          "steak",
-          "friend"
-        ],
-        "correct": "field",
-        "hint": "Vowel teams can trick you \u2014 sound each word out and listen for the long /ee/, not just the letters you see.",
-        "whyHard": "Every choice is a vowel-team word, but only 'field' says /ee/; 'friend' even shares the 'ie' spelling yet says short e."
+        "correct": "search",
+        "hint": "The letters 'ear' can make three different sounds. Say each word and listen for the /er/ in \"her.\"",
+        "whyHard": "All four words are spelled with 'ear,' but it says /er/, /ar/, and /eer/ in different words, so spelling alone cannot pick the answer."
       }
     ]
   },
@@ -1923,64 +1987,64 @@
     "std": "RF.K.1a",
     "questions": [
       {
-        "prompt": "You are reading a page and pointing at each word with your finger. You read the TOP line all the way to the last word on the right side. There are more lines below. Where does your finger move next?",
+        "prompt": "Read this sentence. It is written on two lines:\n\"Sam has a pet.\n We like him.\"\nYou just finished reading \"pet\" at the end of the first line. Which word do you read NEXT?",
         "choices": [
-          "Down to the FIRST word on the LEFT of the next line",
-          "Straight down to the very last line on the page",
-          "Back to the first word of the same top line",
-          "To the right edge and off the page"
+          "We",
+          "him",
+          "like",
+          "pet"
         ],
-        "correct": "Down to the FIRST word on the LEFT of the next line",
-        "hint": "After the end of a line your eyes 'sweep' back \u2014 think about where EVERY new line begins.",
-        "whyHard": "The correct move combines two steps (down AND back to the left), and 'straight down' feels almost right."
+        "correct": "We",
+        "hint": "At the end of a line, your eyes sweep DOWN and all the way back to the far LEFT to start the next line.",
+        "whyHard": "The next word is not the one to the right nearby, it is all the way back on the left of the line below (the return sweep)."
       },
       {
-        "prompt": "You have read every word on the page. Your finger is now on the last word in the BOTTOM-RIGHT corner. What do you do next to keep reading the story?",
+        "prompt": "This sentence is written on two lines:\n\"A fox can run\n very fast today.\"\nWhich word do you read LAST?",
         "choices": [
-          "Turn the page and start at the TOP-LEFT word",
-          "Turn the page and start at the bottom word",
-          "Turn the page and start at the TOP-RIGHT word",
-          "Read the bottom line again from the right"
+          "today",
+          "run",
+          "very",
+          "fast"
         ],
-        "correct": "Turn the page and start at the TOP-LEFT word",
-        "hint": "A new page starts in the same spot a new line does \u2014 think top, then left.",
-        "whyHard": "Three choices all correctly turn the page; only the exact starting corner tells them apart."
-      },
-      {
-        "prompt": "This line is in your book:  the cat ran.  Which word do you read FIRST, and which way do your eyes move?",
-        "choices": [
-          "Read 'the' first, moving to the right",
-          "Read 'ran' first, moving to the left",
-          "Read 'cat' first, the word in the middle",
-          "Read 'the' first, moving down"
-        ],
-        "correct": "Read 'the' first, moving to the right",
-        "hint": "Words go left to right \u2014 find the word that is farthest to the LEFT.",
-        "whyHard": "'ran, moving left' is the mirror trap, and two choices even start with the right word but wrong direction."
-      },
-      {
-        "prompt": "You just finished the last word on the FIRST line of a page. The page still has three more lines below it. Should you turn to the next page now?",
-        "choices": [
-          "No \u2014 go down to the next line and finish this page first",
-          "Yes \u2014 turn the page right away",
-          "No \u2014 read the first line one more time",
-          "Yes \u2014 but start at the bottom of the new page"
-        ],
-        "correct": "No \u2014 go down to the next line and finish this page first",
-        "hint": "You only turn the page AFTER you have read all the lines on it.",
-        "whyHard": "It is easy to confuse finishing one LINE with finishing the whole PAGE, and 'read it again' also tempts."
+        "correct": "today",
+        "hint": "Reading a page ends at the very bottom, on the far right side of the last line.",
+        "whyHard": "The last word is at the bottom-right, not the last word of the top line, so the child must track to the true end."
       },
       {
         "prompt": "You open your book to a brand-new page that is full of words. Which word do you read FIRST?",
         "choices": [
-          "The word in the TOP-LEFT corner",
-          "The word in the TOP-RIGHT corner",
-          "The word in the BOTTOM-LEFT corner",
-          "The biggest word in the middle"
+          "The word at the top on the left",
+          "The word at the top on the right",
+          "The word at the bottom on the left",
+          "The biggest word on the page"
         ],
-        "correct": "The word in the TOP-LEFT corner",
-        "hint": "Reading always starts at the top AND at the left.",
-        "whyHard": "Top-right and bottom-left each share ONE correct trait, so only the exact corner is fully right."
+        "correct": "The word at the top on the left",
+        "hint": "Words start at the top of the page, and each line starts on the left side.",
+        "whyHard": "Two rules combine at once (top before bottom AND left before right), and size is a tempting wrong clue."
+      },
+      {
+        "prompt": "A page has three short lines of words. You just finished reading the TOP line. Which line do you read next, and where do you start it?",
+        "choices": [
+          "The middle line, starting on the LEFT",
+          "The middle line, starting on the RIGHT",
+          "The bottom line, starting on the LEFT",
+          "The top line again, starting on the LEFT"
+        ],
+        "correct": "The middle line, starting on the LEFT",
+        "hint": "Go straight down to the very next line, then jump back to its far left before you read.",
+        "whyHard": "It pairs line order (next line, not skipping to the bottom) with the return-sweep to the left in one choice."
+      },
+      {
+        "prompt": "Here is a word: w - a - s. To read it the correct way (was), which letter do you say FIRST?",
+        "choices": [
+          "w",
+          "s",
+          "a",
+          "the last one"
+        ],
+        "correct": "w",
+        "hint": "Always read the letters left to right, starting at the very first letter on the left.",
+        "whyHard": "Reading left to right inside the word stops it from being flipped into 'saw', a classic K reversal trap."
       }
     ]
   },
@@ -1988,64 +2052,64 @@
     "std": "RF.K.1b",
     "questions": [
       {
-        "prompt": "The word 'pat' is spelled with the letters p-a-t. Which word below uses those SAME three letters, just in a different order?",
+        "prompt": "The letters d, o, and g can spell the word 'dog.' Which row shows the letters in the RIGHT order to spell 'dog'?",
         "choices": [
-          "tap",
-          "pot",
-          "pit",
-          "pad"
+          "d-o-g",
+          "g-o-d",
+          "o-d-g",
+          "d-g-o"
         ],
-        "correct": "tap",
-        "hint": "Check each word letter by letter. You need a word made of only p, a, and t \u2014 no new letters allowed.",
-        "whyHard": "All distractors share two letters with 'pat', so the child must check every letter, not just the first."
+        "correct": "d-o-g",
+        "hint": "Say the word slowly and match each sound to its letter, left to right. All rows have the same letters, so the ORDER is what matters.",
+        "whyHard": "Every choice uses the exact same three letters, so the child must track the letter sequence, not just spot the right letters."
       },
       {
-        "prompt": "These four choices all use the letters s, t, o, p. Which one puts them in the right order to spell the word 'stop'?",
+        "prompt": "The words 'pan' and 'nap' are built from the very same three letters: p, a, n. Why are they two DIFFERENT words?",
         "choices": [
-          "s-t-o-p",
-          "t-o-p-s",
-          "p-o-t-s",
-          "o-p-t-s"
+          "The letters are in a different order",
+          "One word has different letters than the other",
+          "One word is longer than the other",
+          "They are really the same word"
         ],
-        "correct": "s-t-o-p",
-        "hint": "Say 'stop' slowly and listen for the first sound, then the next. Match the sounds to the letters in order.",
-        "whyHard": "Every choice has the exact same letters, so only careful left-to-right sequencing finds the answer."
+        "correct": "The letters are in a different order",
+        "hint": "Look closely at both words. Do they use different letters, or the same letters arranged differently?",
+        "whyHard": "Both words share identical letters, so the child must realize sequence alone changes the word \u2014 a subtle idea, not a letter count."
       },
       {
-        "prompt": "Read the word 'was' backwards, from the last letter to the first: s, a, w. What word do those letters spell?",
+        "prompt": "Which pair of words is made from the SAME three letters, just put in a different order?",
         "choices": [
-          "saw",
-          "was",
-          "sew",
-          "wax"
+          "tap and pat",
+          "cat and cot",
+          "dig and dog",
+          "sun and sit"
         ],
-        "correct": "saw",
-        "hint": "Blend the letters in their new order: /s/ /a/ /w/. Don't let 'was' trick you back.",
-        "whyHard": "Reversing the letter sequence makes a whole new word, forcing the child to decode order, not recall a memorized word."
+        "correct": "tap and pat",
+        "hint": "Check if BOTH words use the exact same letters. In some pairs one letter is swapped for a new one instead of reordered.",
+        "whyHard": "The distractors change one letter (which feels similar), while only the correct pair truly reuses the same letters in a new order."
       },
       {
-        "prompt": "Which of these is the RIGHT way to write the word 'dog'?",
+        "prompt": "The word 'bat' is spelled b-a-t. Which ONE letter would you change to make it spell 'bit'?",
         "choices": [
-          "dog",
-          "god",
-          "dgo",
-          "ogd"
+          "The middle letter (a to i)",
+          "The first letter (b to i)",
+          "The last letter (t to i)",
+          "None \u2014 'bat' already spells 'bit'"
         ],
-        "correct": "dog",
-        "hint": "Say 'dog' and listen: which sound comes first, in the middle, and last? Match that exact order.",
-        "whyHard": "One distractor ('god') is itself a real word made of the same letters, so meaning can't be the guide \u2014 only letter order."
+        "correct": "The middle letter (a to i)",
+        "hint": "Line the two words up letter by letter: b-a-t and b-i-t. Which spot is different?",
+        "whyHard": "The child must compare two words letter-by-letter and pinpoint the single position that differs, not just hear that they sound alike."
       },
       {
-        "prompt": "The word 'pin' is spelled p-i-n. To change it into the word 'pan', which letter should go in the MIDDLE?",
+        "prompt": "You hear the word 'pin.' Which row of letters spells the word 'pin'?",
         "choices": [
-          "a",
-          "e",
-          "o",
-          "u"
+          "p-i-n",
+          "b-i-n",
+          "p-e-n",
+          "p-i-m"
         ],
-        "correct": "a",
-        "hint": "Keep the first letter (p) and last letter (n). Say 'pan' and listen for the vowel sound in the middle.",
-        "whyHard": "The child must hold the outer letters fixed and swap only the middle sound, testing precise position-by-position mapping."
+        "correct": "p-i-n",
+        "hint": "Stretch the word: /p/ /i/ /n/. Check the first sound, middle sound, AND last sound against each row.",
+        "whyHard": "Each wrong choice differs by only one letter (bin, pen, pim), forcing careful sound-by-sound matching to the written letters."
       }
     ]
   },
@@ -2053,62 +2117,61 @@
     "std": "RF.K.1c",
     "questions": [
       {
-        "prompt": "In print, there is one space between each pair of words. A line has 4 spaces between its words. How many words are on the line?",
+        "prompt": "In print, each word has a space around it. Count the words in this line:\n\nthe big cat sat on a mat",
         "choices": [
-          "3",
-          "4",
           "5",
-          "6"
+          "6",
+          "7"
         ],
-        "correct": "5",
-        "hint": "Picture the words with a space in each gap. The gaps sit BETWEEN the words, so there is always one more word than there are spaces.",
-        "whyHard": "Requires reasoning that words = spaces + 1 instead of just counting visible words."
+        "correct": "7",
+        "hint": "Touch each word one at a time. Every space starts a new word. Don't stop early!",
+        "whyHard": "A long 7-word line where careful one-by-one counting is easy to lose track of."
       },
       {
-        "prompt": "Count the spaces to help you. How many words are in this line?\n\nI can't go",
+        "prompt": "Spaces go BETWEEN the words. How many spaces are between the words in this line?\n\nred hot sun",
         "choices": [
+          "1",
           "2",
-          "3",
-          "4"
+          "3"
         ],
-        "correct": "3",
-        "hint": "Look for the spaces. Only a real space splits one word from the next \u2014 the little mark inside can't does not add a space.",
-        "whyHard": "The apostrophe in can't tempts a child to split one word into two, but spaces (not apostrophes) mark word boundaries."
+        "correct": "2",
+        "hint": "Count the words first, then the gaps. There is always one less gap than there are words.",
+        "whyHard": "Counting spaces, not words, so the child can't just count the words and give that number."
       },
       {
-        "prompt": "How many words are in this line?\n\nI am a kid",
+        "prompt": "Which line puts a space between every word so we can tell the words apart?",
         "choices": [
-          "2",
-          "3",
-          "4",
-          "5"
+          "iseethesun",
+          "isee the sun",
+          "i see the sun",
+          "i seeth esun"
         ],
-        "correct": "4",
-        "hint": "Every chunk with a space around it is its own word, even a word that is just one letter long.",
-        "whyHard": "The single-letter words 'I' and 'a' are easy to skip when counting, yet each is a full word set off by spaces."
+        "correct": "i see the sun",
+        "whyHard": "Distractors have real words but wrong space placement, testing true word boundaries.",
+        "hint": "Read each choice slowly. A space should come exactly where one whole word ends and the next begins."
       },
       {
-        "prompt": "Which line below has exactly 3 words? Count the spaces to check.",
+        "prompt": "A space is missing in this line. Where should the space go to make TWO real words?\n\nsundog",
         "choices": [
-          "the big red dog",
-          "my old cat",
-          "up"
+          "su ndog",
+          "sun dog",
+          "sund og"
         ],
-        "correct": "my old cat",
-        "hint": "A line with 3 words has 2 spaces inside it. Find the line with just two gaps between words.",
-        "whyHard": "The child must count words across several lines and reject the 4-word and 1-word decoys instead of picking the longest."
+        "correct": "sun dog",
+        "hint": "Say the line out loud and listen for two little words you know. Break it where one word ends.",
+        "whyHard": "The child must find the hidden word boundary inside run-together letters, not just count."
       },
       {
-        "prompt": "Marks like the comma ( , ) and the mark ( ! ) are NOT words. How many words are in this line?\n\nStop, big dog!",
+        "prompt": "Only one of these lines has exactly 4 words. Which one is it?",
         "choices": [
-          "2",
-          "3",
-          "4",
-          "5"
+          "a big red dog",
+          "the sun is up now",
+          "I nap",
+          "we go"
         ],
-        "correct": "3",
-        "hint": "Say each real word out loud: Stop / big / dog. The comma and the ! ride along with a word but are not words themselves.",
-        "whyHard": "Punctuation attached to words invites over-counting; only Stop, big, and dog are true words."
+        "correct": "a big red dog",
+        "hint": "Count the words in each line by tapping every space. Look for the line that lands on 4.",
+        "whyHard": "Requires comparing word counts across several lines instead of counting just one."
       }
     ]
   },
@@ -2116,7 +2179,7 @@
     "std": "RF.K.1d",
     "questions": [
       {
-        "prompt": "Which one is the lowercase version of the letter \"D\"?",
+        "prompt": "Look carefully! Which one of these is the lowercase letter \"d\"?",
         "choices": [
           "b",
           "d",
@@ -2124,56 +2187,56 @@
           "q"
         ],
         "correct": "d",
-        "hint": "A capital D has its round belly on the RIGHT side. Picture shrinking it \u2014 which way should the bump face?",
-        "whyHard": "All four choices are the classic mirror-image letters (b, d, p, q), so the child must track direction, not just shape."
+        "hint": "The letter d has its round belly on the LEFT side and the tall stick on the right \u2014 trace the circle first, then find where the line stands.",
+        "whyHard": "All four choices are the same circle-plus-stick shape just flipped or turned, so the child must track orientation, not just the parts."
       },
       {
-        "prompt": "Which one is the UPPERCASE (capital) version of the letter \"q\"?",
+        "prompt": "This capital letter is \"G\". Which lowercase letter goes with it?",
         "choices": [
-          "Q",
-          "O",
-          "G",
-          "C"
+          "g",
+          "q",
+          "j",
+          "y"
         ],
-        "correct": "Q",
-        "hint": "Capital Q is like a big circle with a little tail. Which letter is a full circle PLUS an extra line?",
-        "whyHard": "The distractors are all rounded shapes, so a child who only remembers 'q is round' can get fooled between Q, O, G, and C."
+        "correct": "g",
+        "hint": "Say the letter names out loud. Which little letter is named \"gee\"? All of these dip below the line, so listen for the NAME, not just the tail.",
+        "whyHard": "Every distractor also has a tail that hangs below the line, so the usual \"look for the tail\" trick fails and the child must actually name the letter."
       },
       {
-        "prompt": "Which one is the lowercase version of the letter \"R\"?",
+        "prompt": "Which one shows a CAPITAL letter matched with its correct lowercase partner?",
         "choices": [
-          "r",
-          "n",
-          "m",
-          "h"
+          "B and d",
+          "R and r",
+          "N and m",
+          "Q and p"
         ],
-        "correct": "r",
-        "hint": "Say the letter name out loud: 'R.' The small r is a short line with one tiny hook at the top \u2014 look for the smallest shape.",
-        "whyHard": "Lowercase r changes shape a lot from capital R, and n, m, and h are all short humped letters that look similar at a glance."
+        "correct": "R and r",
+        "hint": "Check each pair by saying both letters' names. Only ONE pair says the SAME name twice (like \"Are, are\").",
+        "whyHard": "Three pairs mix up look-alike letters (B/d, N/m, Q/p), so the child must reject tempting almost-matches and find the true same-name pair."
       },
       {
-        "prompt": "Which one is the UPPERCASE (capital) version of the letter \"e\"?",
+        "prompt": "This lowercase letter is \"r\". Which CAPITAL letter matches it?",
         "choices": [
-          "E",
-          "F",
-          "L",
+          "R",
+          "P",
+          "K",
           "B"
         ],
-        "correct": "E",
-        "hint": "Capital E has THREE lines going across, like a comb with three teeth. Count the cross-lines in each choice.",
-        "whyHard": "E and F differ by only one line, and B and L share the same tall straight spine, so the child must count strokes carefully."
+        "correct": "R",
+        "hint": "The lowercase r and capital R don't look much alike, so say the letter name \"arr\" and pick the big letter with the same name.",
+        "whyHard": "Lowercase r and capital R have very different shapes, and the distractors are curvy capitals a child might guess by shape instead of name."
       },
       {
-        "prompt": "Which pair shows a capital letter and the small letter that are the SAME letter?",
+        "prompt": "This lowercase letter is \"w\". Which CAPITAL letter matches it?",
         "choices": [
-          "K  k",
-          "M  n",
-          "P  q",
-          "E  f"
+          "W",
+          "M",
+          "V",
+          "N"
         ],
-        "correct": "K  k",
-        "hint": "For each pair, name the big letter, then name the little letter. Do they say the SAME letter name?",
-        "whyHard": "Each wrong pair puts together two letters that look alike (M/n, P/q, E/f) but are actually different letters, so looks-alike isn't enough."
+        "correct": "W",
+        "hint": "Watch out \u2014 one choice is just \"w\" turned upside down! Say the name \"double-u\" and pick the matching big letter.",
+        "whyHard": "Capital M is a flipped W, a classic visual trap, so the child must match by name rather than by the similar zig-zag shape."
       }
     ]
   },
@@ -2181,63 +2244,648 @@
     "std": "RF.K.2a",
     "questions": [
       {
-        "prompt": "Three of these words rhyme. Which word does NOT rhyme: cat, hat, cap, bat?",
+        "prompt": "Three of these words rhyme. Which word does NOT rhyme with the others?\ncat, hat, hot, bat",
         "choices": [
           "cat",
           "hat",
-          "cap",
+          "hot",
           "bat"
         ],
-        "correct": "cap",
-        "hint": "Say each word slowly and listen only to the ending sound, not the first sound.",
-        "whyHard": "'cap' shares the c-a- start and looks almost the same, so kids must ignore the beginning and hear that it ends in -ap, not -at."
+        "correct": "hot",
+        "hint": "Say each word slowly and listen to the ending sound. Three of them end the same way \u2014 find the one that ends differently.",
+        "whyHard": "The odd word 'hot' shares its first sound and looks almost like the rhyming words, so kids must judge the ending, not the look."
       },
       {
-        "prompt": "Which word rhymes with 'hair'?",
+        "prompt": "Which word rhymes with 'chair'?\nbear, chin, cheer, chip",
         "choices": [
           "bear",
-          "ham",
-          "hat",
-          "hand"
+          "chin",
+          "cheer",
+          "chip"
         ],
         "correct": "bear",
-        "hint": "Rhyming is about the ending SOUND, even when the letters look different.",
-        "whyHard": "'bear' rhymes though it is spelled differently, while ham, hat, and hand all start with /h/ like 'hair' and tempt you with the wrong clue."
+        "hint": "Listen for the ending sound in 'chair.' Some words that start like 'chair' do NOT rhyme with it \u2014 pick the one whose ending sound matches.",
+        "whyHard": "The rhyme 'bear' is spelled differently, while three trap words all start with 'ch' like 'chair' but don't rhyme."
       },
       {
-        "prompt": "Which word rhymes with 'sit'?",
+        "prompt": "Which word rhymes with 'sun'?\nsit, sad, bun, sock",
         "choices": [
-          "hit",
-          "sun",
-          "six",
-          "sip"
+          "sit",
+          "sad",
+          "bun",
+          "sock"
         ],
-        "correct": "hit",
-        "hint": "Do not pick a word just because it starts like 'sit'; listen to the end.",
-        "whyHard": "Three choices start with /s/ like 'sit', but only 'hit' ends in -it; the matching first sound is a trap."
+        "correct": "bun",
+        "hint": "Rhymes match the ENDING sound, not the beginning. Say each word and listen to how it ends.",
+        "whyHard": "Three distractors all begin with /s/ like 'sun,' tempting kids to match the start instead of the ending rime."
       },
       {
-        "prompt": "Three of these words rhyme. Which word does NOT rhyme: ring, king, wing, wind?",
+        "prompt": "Which word rhymes with 'cake'?\ncane, lake, cape, cat",
         "choices": [
-          "wind",
-          "ring",
-          "king",
-          "wing"
+          "cane",
+          "lake",
+          "cape",
+          "cat"
         ],
-        "correct": "wind",
-        "hint": "Listen for the -ing ending; one word ends with a different sound.",
-        "whyHard": "'wind' shares the -in- middle and looks close, so kids must hear that it ends in -ind, not -ing."
+        "correct": "lake",
+        "hint": "Say 'cake' and stretch its ending. Look for the word that ends with that same '-ake' sound.",
+        "whyHard": "'cane' and 'cape' share the same magic-e look but a different ending sound, and 'cat' shares the /k/ start \u2014 only 'lake' truly rhymes."
       },
       {
-        "prompt": "Which pair of words RHYMES?",
+        "prompt": "Which word rhymes with 'ten'?\ntan, tin, hen, top",
         "choices": [
-          "Ball, Tall",
-          "Come, Home",
-          "Snow, Now"
+          "tan",
+          "tin",
+          "hen",
+          "top"
         ],
-        "correct": "Ball, Tall",
-        "hint": "Words that look alike do not always rhyme; say them out loud and listen.",
-        "whyHard": "'Come/Home' and 'Snow/Now' look like they should rhyme because of matching letters, but only Ball/Tall actually sound the same at the end."
+        "correct": "hen",
+        "hint": "Focus on the middle and ending sounds. A tiny change in the vowel can break a rhyme, so listen closely.",
+        "whyHard": "'tan' and 'tin' differ from 'ten' by only one vowel sound, forcing fine vowel discrimination to reject the near-rhymes."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.2b",
+    "questions": [
+      {
+        "prompt": "How many SYLLABLES (claps) are in the word \"kite\"?",
+        "choices": [
+          "2",
+          "1",
+          "3",
+          "4"
+        ],
+        "correct": "1",
+        "hint": "Say the word slowly and feel your chin drop. The 'e' at the end is silent \u2014 it does not make its own clap.",
+        "whyHard": "The silent-e ending tempts kids to add a second clap, but 'kite' is one beat."
+      },
+      {
+        "prompt": "How many SYLLABLES (claps) are in the word \"turtle\"?",
+        "choices": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correct": "2",
+        "hint": "Clap it out: tur...tle. The '-le' chunk hides a beat even though you can't hear a clear vowel.",
+        "whyHard": "The '-le' ending has no obvious vowel sound, so the second syllable is easy to miss."
+      },
+      {
+        "prompt": "Which word has ONLY ONE syllable (one clap)?",
+        "choices": [
+          "table",
+          "snake",
+          "apple",
+          "wagon"
+        ],
+        "correct": "snake",
+        "hint": "Clap each word out loud. Three of them break into two beats \u2014 find the one that stays a single clap.",
+        "whyHard": "'snake' has a silent-e so it looks long, yet it is the one-clap word hiding among three two-syllable words."
+      },
+      {
+        "prompt": "How many SYLLABLES (claps) are in the word \"jumped\"?",
+        "choices": [
+          "2",
+          "1",
+          "3"
+        ],
+        "correct": "1",
+        "hint": "Say it the way you talk, not letter by letter. The '-ed' just adds a /t/ sound here \u2014 no new clap.",
+        "whyHard": "The '-ed' ending fools kids into a second clap, but 'jumped' is spoken as one beat."
+      },
+      {
+        "prompt": "Which word has TWO syllables (two claps)?",
+        "choices": [
+          "grape",
+          "pencil",
+          "frog",
+          "hand"
+        ],
+        "correct": "pencil",
+        "hint": "Clap each word. Watch out \u2014 a silent 'e' can make a short word LOOK longer than it sounds.",
+        "whyHard": "'grape' has an extra vowel letter that mimics a second syllable, so kids may pick it over the true two-clap 'pencil'."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.2c",
+    "questions": [
+      {
+        "prompt": "Blend the onset and rime together: /f/ ... 'ish'. What word do you hear?",
+        "choices": [
+          "fish",
+          "fist",
+          "wish",
+          "fin"
+        ],
+        "correct": "fish",
+        "hint": "Say the first sound, then hold the ending part 'ish', and slide them together slowly.",
+        "whyHard": "The rime 'ish' ends in the digraph /sh/, so the child must blend a rime with a two-letter sound, and 'wish' shares the same rime as a near-distractor."
+      },
+      {
+        "prompt": "Blend these parts into one word: /st/ ... 'op'. What word do they make?",
+        "choices": [
+          "stop",
+          "top",
+          "step",
+          "spot"
+        ],
+        "correct": "stop",
+        "hint": "The first part has TWO sounds blended, /s/ then /t/. Say them, then add 'op'.",
+        "whyHard": "The onset is a consonant blend (/st/), so the child must blend two onset sounds before joining the rime; 'top' uses only part of the onset as a trap."
+      },
+      {
+        "prompt": "Say the word 'clap' in two parts: the beginning sounds and the rest. Which shows the correct onset and rime?",
+        "choices": [
+          "/cl/ ... 'ap'",
+          "/c/ ... 'lap'",
+          "/cla/ ... 'p'",
+          "/cl/ ... 'op'"
+        ],
+        "correct": "/cl/ ... 'ap'",
+        "hint": "The onset is ALL the sounds before the first vowel. Find the vowel in 'clap', then split right before it.",
+        "whyHard": "This asks the child to SEGMENT (not blend) a word with a blend onset, and split exactly at the vowel \u2014 'lap' wrongly keeps an onset sound in the rime."
+      },
+      {
+        "prompt": "Blend the onset and rime: /ch/ ... 'in'. What word do you hear?",
+        "choices": [
+          "chin",
+          "chip",
+          "shin",
+          "thin"
+        ],
+        "correct": "chin",
+        "hint": "The first sound is one sound made by two letters: /ch/. Say it, then blend on 'in'.",
+        "whyHard": "The onset is the digraph /ch/, and 'shin' and 'thin' are near-rhymes with different single-digraph onsets, forcing fine beginning-sound discrimination."
+      },
+      {
+        "prompt": "Put the onset and rime together: /g/ ... 'ift'. What word do they make?",
+        "choices": [
+          "gift",
+          "girl",
+          "grit",
+          "lift"
+        ],
+        "correct": "gift",
+        "hint": "Hold the ending part 'ift' \u2014 it has three sounds. Add /g/ to the front and blend it all.",
+        "whyHard": "The rime 'ift' is a three-sound rime ending in a blend (/f/ /t/), and 'lift' shares that whole rime with a different onset as a close trap."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.2d",
+    "questions": [
+      {
+        "prompt": "Say the word \"web\" slowly: /w/ /e/ /b/. Which word has the SAME middle sound as \"web\"?",
+        "choices": [
+          "ten",
+          "tan",
+          "tin",
+          "top"
+        ],
+        "correct": "ten",
+        "hint": "Stretch each word and listen only to the vowel sound in the middle, not the beginning or end.",
+        "whyHard": "All four choices start with /t/ and are CVC, so the child must ignore the matching beginning and discriminate the medial vowel /e/ alone."
+      },
+      {
+        "prompt": "Which word ends with the /k/ sound at the very end?",
+        "choices": [
+          "duck",
+          "dug",
+          "dust",
+          "drum"
+        ],
+        "correct": "duck",
+        "hint": "Listen to the LAST sound only. The 'ck' spelling makes one /k/ sound.",
+        "whyHard": "'duck' hides the /k/ under a two-letter 'ck' spelling, and 'dug'/'dust' are close lookalike CVC decoys that end in different sounds."
+      },
+      {
+        "prompt": "Say \"cot\" and \"cut.\" They share the first sound /k/ and the last sound /t/. Which word has the SAME middle sound as \"cut\"?",
+        "choices": [
+          "mud",
+          "mad",
+          "mop",
+          "met"
+        ],
+        "correct": "mud",
+        "hint": "Focus on the vowel in the very middle of the word, and match it to the /u/ you hear inside \"cut.\"",
+        "whyHard": "Requires isolating the short /u/ against three near-minimal-pair vowels (/a/, /o/, /e/) in matching CVC frames."
+      },
+      {
+        "prompt": "Which word has the /f/ sound at the BEGINNING?",
+        "choices": [
+          "phone",
+          "van",
+          "fun",
+          "bun"
+        ],
+        "correct": "phone",
+        "hint": "Say the first sound out loud. Ask: does it start with the /f/ sound, even if it isn't spelled with an f?",
+        "whyHard": "'phone' spells /f/ with 'ph' while decoy 'van' begins with the confusable /v/, so the child must match sound, not letter."
+      },
+      {
+        "prompt": "Which word has the /o/ sound (like in \"hot\") in the MIDDLE?",
+        "choices": [
+          "job",
+          "jab",
+          "jet",
+          "jug"
+        ],
+        "correct": "job",
+        "hint": "All four start with /j/. Ignore the first sound and listen to just the vowel in the middle.",
+        "whyHard": "Four /j/-initial CVC words force pure medial-vowel discrimination among /o/, /a/, /e/, /u/ with no beginning-sound clue."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.2e",
+    "questions": [
+      {
+        "prompt": "Say the word 'pin'. Now change the MIDDLE sound, /i/, to the /a/ sound. What new word do you hear?",
+        "choices": [
+          "pan",
+          "pen",
+          "pig",
+          "tin"
+        ],
+        "correct": "pan",
+        "hint": "Keep the first sound /p/ and the last sound /n/ the same. Only the middle vowel changes.",
+        "whyHard": "Swaps the medial vowel (not the easy first sound), and 'pen' is a near-miss with a different vowel."
+      },
+      {
+        "prompt": "Say the word 'bat'. Now change the LAST sound, /t/, to the /g/ sound. What new word do you hear?",
+        "choices": [
+          "bag",
+          "bad",
+          "bit",
+          "mat"
+        ],
+        "correct": "bag",
+        "hint": "Keep 'ba-' at the start and only change the ending sound.",
+        "whyHard": "Requires isolating and swapping the final consonant while 'bad' offers a close wrong ending."
+      },
+      {
+        "prompt": "Say the word 'lip'. Now ADD the /s/ sound to the very front. What new word do you hear?",
+        "choices": [
+          "slip",
+          "clip",
+          "flip",
+          "lisp"
+        ],
+        "correct": "slip",
+        "hint": "Put the new /s/ sound before the rest of the word, then blend it all together.",
+        "whyHard": "Adding a sound to build an s-blend is harder than a simple swap, and clip/flip are other real blends."
+      },
+      {
+        "prompt": "Say the word 'cot'. Now change the FIRST sound, /k/, to the /h/ sound. What new word do you hear?",
+        "choices": [
+          "hot",
+          "hat",
+          "cop",
+          "dot"
+        ],
+        "correct": "hot",
+        "hint": "Keep the '-ot' ending and only change the beginning sound.",
+        "whyHard": "'hat' shares the /h/ start but changes the rime, tempting a listener who ignores the ending."
+      },
+      {
+        "prompt": "Look at these pairs. In which pair is the new word made by changing ONLY the middle sound?",
+        "choices": [
+          "hop, hip",
+          "hop, top",
+          "hop, hot",
+          "hop, stop"
+        ],
+        "correct": "hop, hip",
+        "hint": "Check that the first sound and the last sound stay the same, and only the vowel in the middle changes.",
+        "whyHard": "All four pairs share 'hop'; only one differs by exactly the medial vowel, forcing careful sound-by-sound comparison."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.3a",
+    "questions": [
+      {
+        "prompt": "The word \"gate\" starts with the /g/ sound (like \"go\"). Which word below starts with the SAME /g/ sound as \"gate\"?",
+        "choices": [
+          "gum",
+          "germ",
+          "gym",
+          "giraffe"
+        ],
+        "correct": "gum",
+        "hint": "Say each word slowly. Listen for the hard /g/ sound at the very start, like in \"go\" \u2014 not a soft /j/ sound.",
+        "whyHard": "The letter G makes a hard /g/ AND a soft /j/ sound; three distractors start with G but say /j/."
+      },
+      {
+        "prompt": "The word \"kite\" starts with the /k/ sound. One of these words ALSO starts with the /k/ sound but is spelled with a C. Which one?",
+        "choices": [
+          "cup",
+          "city",
+          "sit",
+          "dip"
+        ],
+        "correct": "cup",
+        "hint": "Two letters can make /k/. Say each word \u2014 \"city\" starts with C but says /s/. Which one truly begins with /k/?",
+        "whyHard": "Requires knowing C can say /k/ or /s/, so the child must use the sound, not just the letter."
+      },
+      {
+        "prompt": "Say these words out loud: \"fish,\" \"fun,\" \"vase,\" \"fan.\" Which word does NOT start with the /f/ sound?",
+        "choices": [
+          "vase",
+          "fish",
+          "fun",
+          "fan"
+        ],
+        "correct": "vase",
+        "hint": "Put your top teeth on your bottom lip. /f/ is a quiet, breathy sound; /v/ buzzes. Which word buzzes instead?",
+        "whyHard": "/f/ and /v/ are made the same way in the mouth (only voicing differs), so they are easy to confuse by ear."
+      },
+      {
+        "prompt": "The word \"win\" starts with the /w/ sound. Which word below starts with the SAME /w/ sound as \"win\"?",
+        "choices": [
+          "wheel",
+          "van",
+          "yell",
+          "run"
+        ],
+        "correct": "wheel",
+        "hint": "Say each word slowly. Listen for the /w/ sound made by your lips, and don't confuse /w/ with /v/ or /y/.",
+        "whyHard": "\"wheel\" is spelled wh but says /w/, while distractors /v/, /y/, /r/ are sounds young readers often confuse with /w/."
+      },
+      {
+        "prompt": "Say these words: \"jam,\" \"gem,\" \"dog,\" \"gum.\" Which word does NOT start with the /g/ sound (like in \"go\")?",
+        "choices": [
+          "gem",
+          "gum",
+          "dog",
+          "jam"
+        ],
+        "correct": "gum",
+        "hint": "Careful \u2014 the question asks which does NOT start with /g/. Some of these start with /j/ or /d/, and G can trick you by saying /j/.",
+        "whyHard": "G can say /j/, and words start with /j/ and /d/, so the child must sort overlapping consonant sounds by ear, not by letter."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.3b",
+    "questions": [
+      {
+        "prompt": "All of these words have a magic 'e' at the end. Three of them make the vowel say its LONG name. Which word does NOT have a long vowel sound? \"cane\", \"cone\", \"have\", \"cube\"",
+        "choices": [
+          "cane",
+          "have",
+          "cone",
+          "cube"
+        ],
+        "correct": "have",
+        "hint": "Try saying each word out loud. Does the vowel say its own name (long) or a quick sound (short)? Listen for the odd one out.",
+        "whyHard": "'have' is a magic-e exception with a short vowel, breaking the pattern the other three follow."
+      },
+      {
+        "prompt": "The word \"go\" has a long 'o' sound. Which of these words also has the LONG 'o' sound? \"got\", \"no\", \"box\", \"fox\"",
+        "choices": [
+          "got",
+          "no",
+          "box",
+          "fox"
+        ],
+        "correct": "no",
+        "hint": "Say each word slowly. Does the 'o' say its name like in 'go', or make the short sound like in 'hot'?",
+        "whyHard": "Only 'no' keeps the long 'o'; the other three are short-o CVC words that look similar."
+      },
+      {
+        "prompt": "Two words below use a DIFFERENT spelling but make the very same long 'e' sound as in \"me\". Which word makes the LONG 'e' sound? \"bed\", \"see\", \"pet\", \"ten\"",
+        "choices": [
+          "bed",
+          "see",
+          "pet",
+          "ten"
+        ],
+        "correct": "see",
+        "hint": "The letters 'ee' can spell the long 'e' sound. Say each word and listen for the one that says the letter name 'e'.",
+        "whyHard": "Requires recognizing the 'ee' spelling of long e while rejecting three short-e distractors."
+      },
+      {
+        "prompt": "The word \"cut\" has a short 'u' sound. Which of these words has a LONG 'u' sound (like in \"cute\")? \"cub\", \"mule\", \"bug\", \"sun\"",
+        "choices": [
+          "cub",
+          "mule",
+          "bug",
+          "sun"
+        ],
+        "correct": "mule",
+        "hint": "Add the magic-e test: does the vowel say its name? Sound out each word carefully.",
+        "whyHard": "'mule' is a less-common magic-e word among three short-u CVC lookalikes."
+      },
+      {
+        "prompt": "Three of these words have a SHORT vowel sound. Which word has a LONG vowel sound? \"rope\", \"top\", \"mop\", \"hop\"",
+        "choices": [
+          "top",
+          "rope",
+          "mop",
+          "hop"
+        ],
+        "correct": "rope",
+        "hint": "Look for the silent 'e' at the end, then check if the vowel says its name.",
+        "whyHard": "'rope' (long o via magic-e) hides among three rhyming short-o words that share the -op rime."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.3c",
+    "questions": [
+      {
+        "prompt": "Read the sentence: 'The dog ___ big.' Which word fits in the blank?",
+        "choices": [
+          "is",
+          "are",
+          "do",
+          "of"
+        ],
+        "correct": "is",
+        "hint": "One dog is just one. Which little word do we use when we talk about only one thing?",
+        "whyHard": "Forces a subject-verb choice between the look-alike sight words 'is' and 'are' instead of an obvious single fit."
+      },
+      {
+        "prompt": "Read the sentence: 'The cats ___ big.' Which word fits in the blank?",
+        "choices": [
+          "are",
+          "is",
+          "my",
+          "to"
+        ],
+        "correct": "are",
+        "hint": "'Cats' means more than one. Which word do we use when we talk about many things?",
+        "whyHard": "Mirror of the 'is' question so the child can't just pick 'is' by habit \u2014 they must notice the plural cue."
+      },
+      {
+        "prompt": "Read the sentence: 'What ___ you see?' Which word fits in the blank?",
+        "choices": [
+          "do",
+          "does",
+          "she",
+          "is"
+        ],
+        "correct": "do",
+        "hint": "Say it out loud with 'you'. Do we say 'do you' or 'does you'?",
+        "whyHard": "Separates the near-twin sight words 'do' and 'does', which look almost the same and are easy to confuse."
+      },
+      {
+        "prompt": "Read the sentence: 'What ___ she want?' Which word fits in the blank?",
+        "choices": [
+          "does",
+          "do",
+          "you",
+          "are"
+        ],
+        "correct": "does",
+        "hint": "Say it with 'she'. Do we say 'she do' or 'she does'?",
+        "whyHard": "Pairs with the 'do' question and adds the 'she' cue, so 'do'/'does' must be told apart by careful reading, not guessing."
+      },
+      {
+        "prompt": "Which word is 'she'? Point to the one that says 'she'.",
+        "choices": [
+          "she",
+          "the",
+          "he",
+          "see"
+        ],
+        "correct": "she",
+        "hint": "Look carefully at the first letters and the whole word. 'She' starts with s-h.",
+        "whyHard": "All four choices are look-alike/sound-alike sight words (she/the/he/see) so the child must scan every letter, not just the shape."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.3d",
+    "questions": [
+      {
+        "prompt": "Listen to the words PET and PIT. Which sound is different in these two words?",
+        "choices": [
+          "The first sound, /p/",
+          "The middle sound, /e/ to /i/",
+          "The last sound, /t/",
+          "No sounds are different"
+        ],
+        "correct": "The middle sound, /e/ to /i/",
+        "hint": "Say both words slowly. Two of the three sounds are the same. Listen hard to the middle sound in each word.",
+        "whyHard": "The changed sound is the vowel, and /e/ and /i/ are two short vowels that sound very close together."
+      },
+      {
+        "prompt": "The word is BUS. If you change the last sound to make BUG, which sound did you change?",
+        "choices": [
+          "The /b/ sound",
+          "The /u/ sound",
+          "The /s/ sound to the /g/ sound",
+          "Nothing changed"
+        ],
+        "correct": "The /s/ sound to the /g/ sound",
+        "hint": "The beginning /b/ and the middle /u/ stay the same in both words. Listen to the very end of each word.",
+        "whyHard": "The difference is at the END of the word, which is harder to hear than a beginning-sound change."
+      },
+      {
+        "prompt": "Listen to CAP and CAB. Which sound changes between these two words?",
+        "choices": [
+          "The /c/ sound",
+          "The /a/ sound",
+          "The last sound, /p/ to /b/",
+          "The words are the same"
+        ],
+        "correct": "The last sound, /p/ to /b/",
+        "hint": "The first two sounds match. Put your hand on your throat and say /p/ then /b/ \u2014 one makes your throat buzz.",
+        "whyHard": "/p/ and /b/ are made with the lips in the same place and sound almost the same; only the voice-buzz differs."
+      },
+      {
+        "prompt": "The word is TEN. If you change the FIRST sound to make HEN, which sound did you change?",
+        "choices": [
+          "The middle /e/ sound",
+          "The last /n/ sound",
+          "The first sound, /t/ to /h/",
+          "You changed two sounds"
+        ],
+        "correct": "The first sound, /t/ to /h/",
+        "hint": "Say TEN, then say HEN. The -en part stays exactly the same. Only listen to the very first sound.",
+        "whyHard": "The rime '-en' is identical, so the child must isolate just the single beginning sound that swapped."
+      },
+      {
+        "prompt": "Listen to POT and PAT. Which sound is different in these two words?",
+        "choices": [
+          "The /p/ sound",
+          "The middle sound, /o/ to /a/",
+          "The /t/ sound",
+          "They sound exactly alike"
+        ],
+        "correct": "The middle sound, /o/ to /a/",
+        "hint": "The first sound /p/ and the last sound /t/ are the same in both. Stretch out the middle sound of each word.",
+        "whyHard": "Both changed sounds are short vowels (/o/ and /a/) in the hard-to-hear middle position."
+      }
+    ]
+  },
+  {
+    "std": "RF.K.4",
+    "questions": [
+      {
+        "prompt": "Read it: Sam has a red hat. Pam has a red bag. The hat is on the bed.\n\nWho has a red BAG?",
+        "choices": [
+          "Sam",
+          "Pam",
+          "Both of them",
+          "No one"
+        ],
+        "correct": "Pam",
+        "hint": "Two kids each have a red thing. Read slowly and match the person to the RIGHT object \u2014 one has the hat, one has the bag.",
+        "whyHard": "Similar names and repeated color 'red' tempt a mix-up; the child must track which person goes with which object."
+      },
+      {
+        "prompt": "Read it: The pig is not big. The pig is not sad. The pig is in the mud.\n\nWhere is the PIG?",
+        "choices": [
+          "In the mud",
+          "In a bed",
+          "Big and sad",
+          "Not in the mud"
+        ],
+        "correct": "In the mud",
+        "hint": "The word 'not' changes the meaning. Find the sentence that tells WHERE the pig is, not what it is or isn't.",
+        "whyHard": "Repeated 'not' and rhyming words (pig/big) plus a negated distractor force careful decoding instead of guessing."
+      },
+      {
+        "prompt": "Read it: I can hop. I can run. I can not fly. Bugs can fly.\n\nWhat can I NOT do?",
+        "choices": [
+          "Hop",
+          "Run",
+          "Fly",
+          "Sit"
+        ],
+        "correct": "Fly",
+        "hint": "Watch for the words 'can not'. Find the one thing that comes AFTER 'not', and remember bugs are the ones who fly.",
+        "whyHard": "'Fly' appears twice \u2014 once for the bug \u2014 so the child must attach 'not' to the right sentence, not just spot the word."
+      },
+      {
+        "prompt": "Read it: The sun is up. It is hot. We sit in the shade. The shade is cool.\n\nWhy do we SIT in the shade?",
+        "choices": [
+          "It is cool",
+          "It is hot",
+          "The sun is down",
+          "To run"
+        ],
+        "correct": "It is cool",
+        "hint": "The text says the sun is hot but the shade is a different word. Find the word that tells how the SHADE feels.",
+        "whyHard": "'Hot' is stated first and is a tempting grab; the answer requires linking 'shade' to 'cool' two sentences apart."
+      },
+      {
+        "prompt": "Read it: Deb fed the hen. The hen sat on an egg. Then the egg let out a chick.\n\nWhat came out of the EGG?",
+        "choices": [
+          "A hen",
+          "A chick",
+          "Deb",
+          "A nest"
+        ],
+        "correct": "A chick",
+        "hint": "The hen sat on the egg, but something ELSE came out of it. Read the last sentence and decode the word after 'a'.",
+        "whyHard": "The hen is the actor in two sentences, luring the child to pick 'hen'; the answer is the newly decoded word 'chick' in the final line."
       }
     ]
   }
