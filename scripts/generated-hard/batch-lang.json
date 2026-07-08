@@ -1,0 +1,2538 @@
+[
+  {
+    "std": "L.1.4",
+    "questions": [
+      {
+        "prompt": "Read the sentence: 'When the ball flew at me fast, I had to duck so it would not hit my head.' What does the word 'duck' mean in this sentence?",
+        "choices": [
+          "A bird that swims in a pond.",
+          "To bend down quickly.",
+          "A soft yellow color.",
+          "To swim under the water."
+        ],
+        "correct": "To bend down quickly.",
+        "hint": "The same word can mean different things. Look at what the boy DID when the ball came at him, not what a duck is.",
+        "whyHard": "'Duck' is a familiar animal, so the child must ignore the obvious noun meaning and use the action context."
+      },
+      {
+        "prompt": "The soup on the stove was too hot to eat. Which word means EVEN more hot than 'hot'?",
+        "choices": [
+          "Warm",
+          "Boiling",
+          "Cool",
+          "Wet"
+        ],
+        "correct": "Boiling",
+        "hint": "All temperature words are not equal. Think about which one shows the MOST heat, not just some heat.",
+        "whyHard": "Requires ranking shades of meaning (warm < hot < boiling), and 'warm' is a tempting near-miss heat word."
+      },
+      {
+        "prompt": "Read the sentence: 'The knot was so tight that Sam could not untie it.' What does the word 'untie' mean?",
+        "choices": [
+          "To tie it again.",
+          "To make the knot come loose.",
+          "To pull on it very hard.",
+          "To cut it with scissors."
+        ],
+        "correct": "To make the knot come loose.",
+        "hint": "The little word part 'un-' at the front usually flips a word to mean the opposite. What is the opposite of tying?",
+        "whyHard": "Child must apply the prefix 'un-' correctly and reject 'tie it again,' which misreads the affix as a repeat."
+      },
+      {
+        "prompt": "Read the sentence: 'A big wave splashed over my feet at the beach.' What does the word 'wave' mean in this sentence?",
+        "choices": [
+          "To move your hand to say hello.",
+          "Water that rolls onto the shore.",
+          "A curl in someone's hair.",
+          "To feel sick and dizzy."
+        ],
+        "correct": "Water that rolls onto the shore.",
+        "hint": "'Wave' has more than one meaning. Use the clue words 'splashed,' 'feet,' and 'beach' to pick the right one.",
+        "whyHard": "The hand-waving meaning is the most common one for a child, so context must override the first meaning that comes to mind."
+      },
+      {
+        "prompt": "After running all day, the boy was not just tired\u2014he was worn out and could barely walk. Which word best shows he was MORE than tired?",
+        "choices": [
+          "Sleepy",
+          "Rested",
+          "Exhausted",
+          "Awake"
+        ],
+        "correct": "Exhausted",
+        "hint": "Find the word that shows the STRONGEST amount of tired. Two of the choices actually mean the opposite of tired.",
+        "whyHard": "Distinguishes the strongest shade (exhausted) from a weaker tired-word (sleepy) while rejecting antonyms."
+      }
+    ]
+  },
+  {
+    "std": "L.1.4b",
+    "questions": [
+      {
+        "prompt": "Mom said, \"I will reheat the soup for you.\" The prefix re- means \"again.\" What is Mom going to do to the soup?",
+        "choices": [
+          "Heat it again",
+          "Cool it down",
+          "Heat it for the very first time",
+          "Pour it out"
+        ],
+        "correct": "Heat it again",
+        "hint": "Break the word into its two parts: the prefix re- and the word heat. What does re- add to heat?",
+        "whyHard": "A child who ignores the prefix will pick \"heat it for the first time,\" which describes plain \"heat,\" not \"reheat.\""
+      },
+      {
+        "prompt": "Read the sentence: \"The baker made warm bread.\" The word baker ends in -er. What does the -er ending tell you a baker is?",
+        "choices": [
+          "A person who bakes",
+          "A place where you bake",
+          "More baking than before",
+          "Something that was already baked"
+        ],
+        "correct": "A person who bakes",
+        "hint": "Think about how -er works in words like teacher and painter. Does it point to a person, a place, or a time?",
+        "whyHard": "\"A place where you bake\" (a bakery) is closely related and tempting, but -er marks the person, not the place."
+      },
+      {
+        "prompt": "Ben tied his shoe, but it came undone, so he had to tie it a second time. Which word means to tie it AGAIN?",
+        "choices": [
+          "retie",
+          "untie",
+          "pretie",
+          "tier"
+        ],
+        "correct": "retie",
+        "hint": "You need the prefix that means \"again.\" Match the prefix to the idea of doing the same thing one more time.",
+        "whyHard": "\"Untie\" (to un-do the tie) fits the story's setup and is very tempting, and \"pretie\" looks like a real word but the wrong prefix."
+      },
+      {
+        "prompt": "Read the sentence: \"Maya knocked over her cup because she was not watching what she did.\" The suffix -less means \"without.\" Which word best describes Maya?",
+        "choices": [
+          "careless, meaning without care",
+          "careful, meaning full of care",
+          "caring, meaning kind to others",
+          "carrying, meaning holding something"
+        ],
+        "correct": "careless, meaning without care",
+        "hint": "Look at the ending. -less means \"without,\" but -ful means \"full of.\" Which one matches \"not watching what she did\"?",
+        "whyHard": "\"Careful\" shares the same root and is a near-opposite, so a child must use the -less vs -ful ending, not the root word, to decide."
+      },
+      {
+        "prompt": "The prefix pre- means \"before.\" Some children go to preschool. When do they go to preschool?",
+        "choices": [
+          "Before they start regular school",
+          "After regular school is over for the day",
+          "Instead of ever going to school",
+          "During lunch at regular school"
+        ],
+        "correct": "Before they start regular school",
+        "hint": "Focus only on what pre- means, then add it to the word school.",
+        "whyHard": "\"After school\" is the opposite and \"instead of school\" both sound reasonable, so the child must trust the meaning of pre- to choose."
+      }
+    ]
+  },
+  {
+    "std": "L.1.4c",
+    "questions": [
+      {
+        "prompt": "What is the root word in **stopped**?",
+        "choices": [
+          "Stopp",
+          "Stop",
+          "Ped",
+          "Stopped"
+        ],
+        "correct": "Stop",
+        "hint": "Take off the ending that was added. Sometimes a letter gets doubled before you add -ed, so an extra letter comes off too.",
+        "whyHard": "The doubled consonant makes 'Stopp' a tempting trap; the child must undo the spelling change, not just chop the -ed."
+      },
+      {
+        "prompt": "The words **jumped**, **hopped**, and **walked** all end in **-ed**. What does the **-ed** ending tell you?",
+        "choices": [
+          "It is happening right now",
+          "It already happened",
+          "There is more than one",
+          "It will happen tomorrow"
+        ],
+        "correct": "It already happened",
+        "hint": "Think about WHEN the action happens. Say a sentence: 'I ___ed.' Did it happen now, or is it over?",
+        "whyHard": "Tests the MEANING of an inflectional ending, not just spotting it; 'happening right now' tempts kids who confuse -ed with -ing."
+      },
+      {
+        "prompt": "Which word is built from the root word **help**?",
+        "choices": [
+          "Hoping",
+          "Hopping",
+          "Helping",
+          "Holding"
+        ],
+        "correct": "Helping",
+        "hint": "Hide the ending and look at the letters that are left. Which one spells 'help' underneath?",
+        "whyHard": "All four choices are short lookalike words with -ing; only one truly contains the root 'help', so careless readers pick a near-match."
+      },
+      {
+        "prompt": "Read this: 'One bird sings. Two birds ___.' Which word fills the blank correctly?",
+        "choices": [
+          "Sings",
+          "Sing",
+          "Singing",
+          "Sang"
+        ],
+        "correct": "Sing",
+        "hint": "We add -s when ONE does the action. Count how many birds there are before you choose.",
+        "whyHard": "The -s form 'sings' feels right by echo, but with a plural subject the root form 'sing' is correct \u2014 a shades-of-grammar decision."
+      },
+      {
+        "prompt": "The word **replay** means to play again. Which word also has the root word **play**?",
+        "choices": [
+          "Please",
+          "Player",
+          "Place",
+          "Plant"
+        ],
+        "correct": "Player",
+        "hint": "Look for the small word 'play' hiding inside the bigger word. The others only START like it.",
+        "whyHard": "Every distractor begins with 'pl' and looks similar, but only 'Player' actually contains the whole root 'play'."
+      }
+    ]
+  },
+  {
+    "std": "L.1.5",
+    "questions": [
+      {
+        "prompt": "Sam was so happy that he jumped up and down and yelled for joy! Which word BEST shows how Sam felt?",
+        "choices": [
+          "Glad",
+          "Pleased",
+          "Thrilled",
+          "Fine"
+        ],
+        "correct": "Thrilled",
+        "hint": "All four words are happy words. Pick the STRONGEST one that matches jumping and yelling.",
+        "whyHard": "Every choice is a positive feeling; the child must rank shades of the same emotion by intensity."
+      },
+      {
+        "prompt": "Read the sentence: \"Dad will park the car by the store.\" What does the word **park** mean here?",
+        "choices": [
+          "A place with grass and swings",
+          "To stop and leave the car",
+          "A kind of small animal",
+          "To eat a snack"
+        ],
+        "correct": "To stop and leave the car",
+        "hint": "The same word can mean different things. Ask what park does in THIS sentence about a car.",
+        "whyHard": "The tempting distractor is park's most common meaning (a playground); context forces the verb meaning instead."
+      },
+      {
+        "prompt": "Which word tells us the dog moved the FASTEST?",
+        "choices": [
+          "Walked",
+          "Strolled",
+          "Jogged",
+          "Raced"
+        ],
+        "correct": "Raced",
+        "hint": "All four words mean to move. Put them in order from slowest to fastest and pick the fastest.",
+        "whyHard": "Every choice is a movement verb; the child must order them by speed to find the most extreme."
+      },
+      {
+        "prompt": "Which word means to talk in a very QUIET voice?",
+        "choices": [
+          "Yell",
+          "Whisper",
+          "Shout",
+          "Scream"
+        ],
+        "correct": "Whisper",
+        "hint": "All four are ways to use your voice. Three of them are loud. Find the one that is soft.",
+        "whyHard": "Three distractors are near-synonyms for loud talking, so the child must sort by loud vs. quiet."
+      },
+      {
+        "prompt": "Read the sentence: \"A tear rolled down her cheek.\" What does the word **tear** mean here?",
+        "choices": [
+          "A drop that comes from crying",
+          "To rip a piece of paper",
+          "A loud, happy shout",
+          "A warm winter coat"
+        ],
+        "correct": "A drop that comes from crying",
+        "hint": "This word is spelled the same but can mean two things. Use the words 'rolled down her cheek' to decide.",
+        "whyHard": "The homograph 'tear' (crying) vs. 'tear' (rip) looks identical; only the cheek context settles it."
+      }
+    ]
+  },
+  {
+    "std": "L.1.5a",
+    "questions": [
+      {
+        "prompt": "Apple, banana, and grape are foods. Carrot, corn, and pea are foods too. But they split into two smaller groups: fruits and vegetables. Which word belongs in the SAME group as apple, banana, and grape?",
+        "choices": [
+          "orange",
+          "carrot",
+          "corn",
+          "pea"
+        ],
+        "correct": "orange",
+        "hint": "All four words are foods, so 'food' won't help you choose. Ask a smaller question: which one is a fruit?",
+        "whyHard": "The obvious category (food) fits every choice, so the child must use the finer fruit-vs-vegetable concept to sort."
+      },
+      {
+        "prompt": "Robin, sparrow, and bluejay belong together in one group. Which name fits this group the BEST?",
+        "choices": [
+          "birds",
+          "animals",
+          "pets",
+          "feathers"
+        ],
+        "correct": "birds",
+        "hint": "Every choice might sound true, but pick the smallest, most exact group that fits all three words and leaves out things that don't belong.",
+        "whyHard": "'Animals' is also true but too broad; the best category is the most precise one all three words share."
+      },
+      {
+        "prompt": "Car, boat, and airplane go together because they are all things you RIDE to travel. Which word belongs in this same group?",
+        "choices": [
+          "train",
+          "road",
+          "garage",
+          "ticket"
+        ],
+        "correct": "train",
+        "hint": "Many words are about travel. Only keep the one that is a thing you climb inside and ride, like a car or a boat.",
+        "whyHard": "Road, garage, and ticket all connect to travel, tempting the child, but the group's real concept is vehicles you ride in."
+      },
+      {
+        "prompt": "Snake, worm, and eel go together because they are animals with NO legs. Which word belongs in this group?",
+        "choices": [
+          "slug",
+          "lizard",
+          "spider",
+          "ant"
+        ],
+        "correct": "slug",
+        "hint": "Picture each animal. Count its legs. Only keep the one with zero legs, even if another one looks like a snake.",
+        "whyHard": "Lizard looks snake-like and all four are animals, but the sorting rule is 'no legs,' which only the slug obeys."
+      },
+      {
+        "prompt": "Ben put the word 'bat' in a group with glove, ball, and helmet. In THIS group, what does 'bat' mean?",
+        "choices": [
+          "a stick you swing to hit a ball",
+          "an animal that flies at night",
+          "to blink your eyes fast",
+          "a soft warm blanket"
+        ],
+        "correct": "a stick you swing to hit a ball",
+        "hint": "The word 'bat' has more than one meaning. Look at the OTHER words in the group and pick the meaning that matches them.",
+        "whyHard": "'Bat' is a multiple-meaning word; the child must use the sports group as context to choose the right meaning over the flying-animal trap."
+      }
+    ]
+  },
+  {
+    "std": "L.1.5b",
+    "questions": [
+      {
+        "prompt": "A pond and a lake are both places filled with water. Which sentence tells the KEY thing that makes a pond different from a lake?",
+        "choices": [
+          "A pond is a small pool of water.",
+          "A pond has salty ocean water.",
+          "A pond is always covered in ice.",
+          "A pond is much bigger than a lake."
+        ],
+        "correct": "A pond is a small pool of water.",
+        "hint": "Both hold water, so ask: what one attribute is TRUE for a pond but NOT for a lake? Think about size.",
+        "whyHard": "Two very close category members must be split by a single key attribute, and one distractor states the opposite (lake) trait."
+      },
+      {
+        "prompt": "A chair and a stool are both things you sit on. Which sentence tells the KEY attribute that makes something a CHAIR and not a stool?",
+        "choices": [
+          "A chair has a back to lean on.",
+          "A chair is made out of wood.",
+          "A chair has legs to stand on.",
+          "A chair is found in a kitchen."
+        ],
+        "correct": "A chair has a back to lean on.",
+        "hint": "A stool also has legs and can be wood or in a kitchen. Find the one trait ONLY a chair has.",
+        "whyHard": "Three distractors are true of BOTH chairs and stools, so the child must isolate the single defining attribute."
+      },
+      {
+        "prompt": "A bee, an ant, and a beetle all belong to one group. What is the best name for that group, and why?",
+        "choices": [
+          "Insects, because they have six legs.",
+          "Birds, because they have wings.",
+          "Fish, because they live in water.",
+          "Snakes, because they have no legs."
+        ],
+        "correct": "Insects, because they have six legs.",
+        "hint": "Name the whole group (category) AND check the attribute that is true for all three little creatures.",
+        "whyHard": "'Wings' tempts a bird answer since bees fly, but the category must be justified by the shared six-legs attribute."
+      },
+      {
+        "prompt": "The word 'bat' can name more than one thing. Which sentence uses 'bat' to name an ANIMAL?",
+        "choices": [
+          "The bat flew out of the dark cave.",
+          "She swung the bat and hit the ball.",
+          "He picked a heavy bat for the game.",
+          "The team needs a brand-new bat."
+        ],
+        "correct": "The bat flew out of the dark cave.",
+        "hint": "Same word, two meanings. Which sentence describes a living thing that belongs in the animal group?",
+        "whyHard": "A multiple-meaning word forces the child to use context to pick the sentence where 'bat' fits the animal category."
+      },
+      {
+        "prompt": "A robin and a penguin are both birds, but they are not the same. Which sentence gives the KEY attribute that makes a robin different from a penguin?",
+        "choices": [
+          "A robin can fly up into the trees.",
+          "A robin has feathers on its body.",
+          "A robin has two wings and a beak.",
+          "A robin lays eggs in a nest."
+        ],
+        "correct": "A robin can fly up into the trees.",
+        "hint": "Both are birds, so they share many traits. Find the one thing a robin does that a penguin cannot.",
+        "whyHard": "All four are true of robins, but three are ALSO true of penguins; only flying separates the two same-category birds."
+      }
+    ]
+  },
+  {
+    "std": "L.1.5c",
+    "questions": [
+      {
+        "prompt": "All of these words mean tired. Which one means the MOST tired \u2014 so tired you can barely move?",
+        "choices": [
+          "Sleepy",
+          "Tired",
+          "Drowsy",
+          "Exhausted"
+        ],
+        "correct": "Exhausted",
+        "hint": "The words go from a little tired to very, very tired. Picture the most worn-out feeling of all.",
+        "whyHard": "Every choice is a synonym for tired, so the child must rank shades of the same feeling by strength."
+      },
+      {
+        "prompt": "Grandma WHISPERED next to the baby's crib. She whispered because \u2014",
+        "choices": [
+          "The baby was sleeping and she did not want to wake it",
+          "She wanted the whole house to hear her",
+          "She was very far away outside",
+          "She was singing a loud, happy song"
+        ],
+        "correct": "The baby was sleeping and she did not want to wake it",
+        "hint": "Think about a time YOU had to whisper. What was happening around you that made a quiet voice the right choice?",
+        "whyHard": "It asks the child to connect the word 'whisper' to the real-life reason someone uses it, not just define it."
+      },
+      {
+        "prompt": "Read the sentence: 'In spring, the flowers grow.' Which meaning of SPRING fits this sentence?",
+        "choices": [
+          "The season that comes after winter",
+          "A bouncy metal coil in a bed",
+          "To jump up quickly",
+          "Water that comes up from the ground"
+        ],
+        "correct": "The season that comes after winter",
+        "hint": "The word 'spring' has four real meanings. Use the OTHER words in the sentence \u2014 flowers growing \u2014 to decide which one it is here.",
+        "whyHard": "All four choices are true meanings of 'spring'; only the sentence's context makes one correct."
+      },
+      {
+        "prompt": "The hungry lion ate its whole dinner in a big, fast, hungry way. Which word shows that BEST?",
+        "choices": [
+          "Nibbled",
+          "Tasted",
+          "Chewed",
+          "Gobbled"
+        ],
+        "correct": "Gobbled",
+        "hint": "All four are ways to eat, but only one sounds fast and hungry. Which would you do to a tiny snack, and which to a huge meal you couldn't wait for?",
+        "whyHard": "Each choice is an eating word; the child must match the most precise, vivid word to a fast, hungry action."
+      },
+      {
+        "prompt": "GIGANTIC means very, very big. Which sentence uses the word GIGANTIC the RIGHT way?",
+        "choices": [
+          "The gigantic elephant filled the whole room.",
+          "The gigantic ant was too small to see.",
+          "She swallowed one gigantic crumb.",
+          "The gigantic mouse fit inside my pocket."
+        ],
+        "correct": "The gigantic elephant filled the whole room.",
+        "hint": "Say each sentence in your head. Three of them put 'very big' next to something tiny \u2014 that does not make sense. Find the one that matches.",
+        "whyHard": "The wrong choices pair 'gigantic' with tiny things, so the child must reject sentences that misuse the word's real meaning."
+      }
+    ]
+  },
+  {
+    "std": "L.1.5d",
+    "questions": [
+      {
+        "prompt": "Read this: \"The soup was hot, the stove was hotter, and the campfire was the hottest of all.\" Which word means the SAME as very, very hot?",
+        "choices": [
+          "Warm",
+          "Hot",
+          "Scorching",
+          "Cool"
+        ],
+        "correct": "Scorching",
+        "hint": "Line the words up from a little heat to the most heat, then pick the very top of the ladder.",
+        "whyHard": "'Hot' is a tempting near-miss; the child must rank three heat words and pick the strongest, not just a hot one."
+      },
+      {
+        "prompt": "Ben did not cry just a little. Tears poured down his face and he could not stop for a long time. Which word BEST tells how Ben cried?",
+        "choices": [
+          "Sniffled",
+          "Whimpered",
+          "Sobbed",
+          "Grinned"
+        ],
+        "correct": "Sobbed",
+        "hint": "Match the word to how HARD he cried in the sentence, and toss out any word that isn't even crying.",
+        "whyHard": "Three choices are all 'crying,' so the child must feel the intensity difference, and one is an emotion trap."
+      },
+      {
+        "prompt": "The baby was fast asleep, and Mom did not want to wake her. How did Mom most likely talk to Dad?",
+        "choices": [
+          "Shouted",
+          "Whispered",
+          "Yelled",
+          "Screamed"
+        ],
+        "correct": "Whispered",
+        "hint": "Use the clue that the baby is sleeping to decide how LOUD Mom would be.",
+        "whyHard": "Three distractors are all 'loud' synonyms; only the sentence's context tells which quiet word fits."
+      },
+      {
+        "prompt": "Sara was not just happy about her new puppy \u2014 it was the happiest she had ever felt in her whole life! Which word means the MOST happy?",
+        "choices": [
+          "Glad",
+          "Pleased",
+          "Thrilled",
+          "Okay"
+        ],
+        "correct": "Thrilled",
+        "hint": "Sort the happy words by how big the feeling is, then grab the very biggest one.",
+        "whyHard": "'Glad' and 'pleased' are real happy words, so the child must judge degree, not just meaning."
+      },
+      {
+        "prompt": "The dog was so hungry that it ate its whole bowl of food in huge, fast bites. Which word BEST tells how the dog ate?",
+        "choices": [
+          "Nibbled",
+          "Tasted",
+          "Gobbled",
+          "Licked"
+        ],
+        "correct": "Gobbled",
+        "hint": "Match the word to how FAST and how BIG the bites were in the sentence.",
+        "whyHard": "'Nibbled' and 'tasted' are also eating words, so the manner and speed must be weighed, not just the action."
+      }
+    ]
+  },
+  {
+    "std": "L.1.6",
+    "questions": [
+      {
+        "prompt": "The soup was too **hot** to eat. Which word means EVEN hotter than hot?",
+        "choices": [
+          "Warm",
+          "Boiling",
+          "Cool",
+          "Mild"
+        ],
+        "correct": "Boiling",
+        "hint": "Put the words in order from coolest to hottest, then find the one that goes past 'hot.'",
+        "whyHard": "Shades of meaning: three distractors are cooler than hot, so the child must rank intensity, not just pick a temperature word."
+      },
+      {
+        "prompt": "Read the sentence: The dog began to **bark** loudly at the mailman. What does **bark** mean here?",
+        "choices": [
+          "The rough outside part of a tree",
+          "A loud sound a dog makes",
+          "To dig a deep hole",
+          "A small sailing boat"
+        ],
+        "correct": "A loud sound a dog makes",
+        "hint": "The same word can mean different things. Use the rest of the sentence to decide which meaning fits.",
+        "whyHard": "Multiple-meaning word: 'the outside of a tree' is a real meaning of bark, tempting a child who ignores the dog context."
+      },
+      {
+        "prompt": "In which sentence does the word **light** mean 'not heavy'?",
+        "choices": [
+          "Please turn on the light in your room.",
+          "The tiny box was so light that the baby could carry it.",
+          "Her dress was a soft light pink.",
+          "He saw a bright light in the sky."
+        ],
+        "correct": "The tiny box was so light that the baby could carry it.",
+        "hint": "'Light' has several meanings. Look for the sentence about weight, not about color or brightness.",
+        "whyHard": "Same word, four uses: the child must match ONE precise meaning ('not heavy') and reject the equally-valid brightness and color meanings."
+      },
+      {
+        "prompt": "Lucy screamed and ran when she saw the huge growling bear. Which word best shows how Lucy felt?",
+        "choices": [
+          "Nervous",
+          "Terrified",
+          "Annoyed",
+          "Surprised"
+        ],
+        "correct": "Terrified",
+        "hint": "All four are real feelings. Pick the strongest one that matches screaming and running away.",
+        "whyHard": "Precise word choice among close feeling words: 'nervous' and 'surprised' are plausible but too weak for screaming and fleeing."
+      },
+      {
+        "prompt": "Marcus did not want to wake the sleeping baby, so he ___ the words very softly.",
+        "choices": [
+          "shouted",
+          "whispered",
+          "yelled",
+          "announced"
+        ],
+        "correct": "whispered",
+        "hint": "Use the clues 'did not want to wake' and 'very softly' to pick the word that means to speak quietly.",
+        "whyHard": "Context-driven precise verb: 'shouted' and 'yelled' are close speaking words, but only the quiet one fits the not-waking-the-baby clue."
+      }
+    ]
+  },
+  {
+    "std": "L.1.1",
+    "questions": [
+      {
+        "prompt": "Which sentence is written correctly? Read each one carefully.",
+        "choices": [
+          "The two dogs runs to the park.",
+          "The two dog run to the park.",
+          "The two dogs run to the park.",
+          "The two dogs running to the park."
+        ],
+        "correct": "The two dogs run to the park.",
+        "hint": "When the naming word means more than one, the action word usually drops the -s. Check that the naming word is plural too.",
+        "whyHard": "Every choice looks natural at a glance; the child must match a plural subject to the correct verb form AND spot the wrong noun/verb endings."
+      },
+      {
+        "prompt": "Finish the sentence with the correct word: \"There are three little ___ hiding in the barn.\"",
+        "choices": [
+          "mouses",
+          "mices",
+          "mouse",
+          "mice"
+        ],
+        "correct": "mice",
+        "hint": "Most words add -s to mean more than one, but a few change in a special way. Say the word for many out loud.",
+        "whyHard": "The regular add-'-s' rule tempts the child toward 'mouses'; only an irregular plural is right, and 'mouse' fits the -s trap but is singular."
+      },
+      {
+        "prompt": "Choose the word that correctly finishes the sentence: \"Yesterday I ___ my whole lunch at school.\"",
+        "choices": [
+          "eat",
+          "eats",
+          "eated",
+          "ate"
+        ],
+        "correct": "ate",
+        "hint": "The clue word 'Yesterday' means it already happened. Some action words don't just add -ed for the past.",
+        "whyHard": "'eated' correctly applies the regular past-tense rule, so it feels right; the child must know this verb changes form for the past instead."
+      },
+      {
+        "prompt": "Which word correctly finishes the sentence? \"My friend and ___ went to the playground.\"",
+        "choices": [
+          "me",
+          "my",
+          "mine",
+          "I"
+        ],
+        "correct": "I",
+        "hint": "Try the sentence with just that word alone: \"___ went to the playground.\" Which one sounds right by itself?",
+        "whyHard": "'My friend and me' sounds natural to young ears, but the pronoun is part of the subject, so it needs 'I' \u2014 the compound hides the rule."
+      },
+      {
+        "prompt": "Which connecting word makes the sentence make sense? \"I put on my warm coat ___ it was very cold outside.\"",
+        "choices": [
+          "but",
+          "or",
+          "because",
+          "if"
+        ],
+        "correct": "because",
+        "hint": "Ask yourself WHY the coat went on. Pick the word that gives the reason.",
+        "whyHard": "All four are real connecting words a first grader knows; only one shows the cause-and-reason link the sentence needs, so the child must reason about meaning, not grammar alone."
+      }
+    ]
+  },
+  {
+    "std": "L.1.2",
+    "questions": [
+      {
+        "prompt": "Which sentence uses commas correctly to list the three things? \"We bought milk, eggs, and bread.\"",
+        "choices": [
+          "We bought milk eggs, and bread.",
+          "We bought milk, eggs, and bread.",
+          "We bought, milk, eggs, and bread.",
+          "We bought milk, eggs and bread,"
+        ],
+        "correct": "We bought milk, eggs, and bread.",
+        "hint": "A comma goes between each thing in the list, but not right after the action word or at the very end.",
+        "whyHard": "Every choice has commas, so the child must place them between list items only, not after the verb or the last word."
+      },
+      {
+        "prompt": "Which line writes this date correctly? (the fourth day of July, 2026)",
+        "choices": [
+          "july 4, 2026",
+          "July 4 2026",
+          "July 4, 2026",
+          "July, 4, 2026"
+        ],
+        "correct": "July 4, 2026",
+        "hint": "The month name is special and needs a capital, and one comma goes between the day and the year.",
+        "whyHard": "The child must get BOTH the capital month and a single comma before the year right; each wrong choice fixes only one."
+      },
+      {
+        "prompt": "Maria wants to ask what time it is. Which sentence writes her question correctly?",
+        "choices": [
+          "What time is it.",
+          "what time is it?",
+          "What time is it!",
+          "What time is it?"
+        ],
+        "correct": "What time is it?",
+        "hint": "A question starts with a capital letter and ends with a mark that shows you are asking.",
+        "whyHard": "Each distractor is correct on the capital OR the end mark but not both; only one sentence gets both right."
+      },
+      {
+        "prompt": "Which sentence is written correctly? (It is about a friend named Sam.)",
+        "choices": [
+          "my friend sam has a red bike.",
+          "My friend sam has a red bike.",
+          "my friend Sam has a red bike.",
+          "My friend Sam has a red bike."
+        ],
+        "correct": "My friend Sam has a red bike.",
+        "hint": "Two words here need a capital letter: the very first word of the sentence and the person's name.",
+        "whyHard": "The child must capitalize both the first word and the name; each wrong choice capitalizes only one or neither."
+      },
+      {
+        "prompt": "Which word is spelled correctly? \"I stayed inside ___ it was raining.\"",
+        "choices": [
+          "becuz",
+          "becaus",
+          "becuase",
+          "because"
+        ],
+        "correct": "because",
+        "hint": "Sound it out slowly, then remember this common word has an 'au' in the middle and ends in 'se'.",
+        "whyHard": "All four spellings sound almost the same when read aloud, so phonetic guessing fails on this irregular word."
+      }
+    ]
+  },
+  {
+    "std": "L.2.4",
+    "questions": [
+      {
+        "prompt": "Read the sentence: 'The elephant used its trunk to spray water over its dusty back.' What does the word trunk mean in THIS sentence?",
+        "choices": [
+          "the long nose of an elephant",
+          "the thick stem of a tree",
+          "a big box for storing things",
+          "the back part of a car"
+        ],
+        "correct": "the long nose of an elephant",
+        "hint": "The word trunk has many meanings. Look at the other words in the sentence to see which meaning fits what an elephant would use to spray water.",
+        "whyHard": "All four choices are real meanings of trunk; only the sentence's context rules out the tempting tree and box meanings."
+      },
+      {
+        "prompt": "Ben was not just a little scared during the storm. He hid under the covers and shook. Which word best shows that Ben was the MOST scared?",
+        "choices": [
+          "terrified",
+          "nervous",
+          "worried",
+          "unsure"
+        ],
+        "correct": "terrified",
+        "hint": "These words all mean scared, but some mean only a tiny bit scared. Which one shows the strongest, biggest fear?",
+        "whyHard": "Every choice means 'scared'; the child must rank shades of meaning to find the strongest one."
+      },
+      {
+        "prompt": "The suffix -less means 'without.' Read: 'The little green snake was harmless, so it would never bite or hurt anyone.' What does harmless most likely mean?",
+        "choices": [
+          "without harm",
+          "causing lots of harm",
+          "a small amount of harm",
+          "harmed again"
+        ],
+        "correct": "without harm",
+        "hint": "Take off the suffix -less and remember it means 'without.' Then use the clue that the snake 'would never bite or hurt.'",
+        "whyHard": "A student who forgets -less means 'without' will be pulled toward the 'causing harm' choice, which sounds like the root word."
+      },
+      {
+        "prompt": "The prefix pre- means 'before.' Read: 'Our teacher showed us a preview of the movie before we watched the whole thing.' What does preview mean?",
+        "choices": [
+          "a look at something before it happens",
+          "a look at something after it ends",
+          "watching something all over again",
+          "a very long, wide view"
+        ],
+        "correct": "a look at something before it happens",
+        "hint": "Break the word into its prefix pre- ('before') and the part -view ('a look'). Put the two meanings together.",
+        "whyHard": "The 'after' and 'again' choices are plausible, so the child must apply the prefix rather than guess from the word view alone."
+      },
+      {
+        "prompt": "Read the sentence: 'Please save me a seat next to you at lunch today.' What does the word save mean in THIS sentence?",
+        "choices": [
+          "to keep something for someone",
+          "to rescue someone from danger",
+          "to put money away in a bank",
+          "to keep from getting hurt"
+        ],
+        "correct": "to keep something for someone",
+        "hint": "Save can mean many things. Ask what makes sense for a seat at lunch, not for money or danger.",
+        "whyHard": "Each choice is a genuine meaning of save; only the lunch-seat context makes 'keep for someone' the fit."
+      }
+    ]
+  },
+  {
+    "std": "L.2.4a",
+    "questions": [
+      {
+        "prompt": "\"After the long hike, we sat down to rest on the grassy bank and watched the river flow by.\"\n\nIn this sentence, the word **bank** means \u2014",
+        "choices": [
+          "A place where people keep their money",
+          "The ground along the edge of a river",
+          "A loud, sudden sound",
+          "A kind of fish"
+        ],
+        "correct": "The ground along the edge of a river",
+        "hint": "The word bank can mean more than one thing. Read the whole sentence and find the clue that tells you which meaning fits HERE.",
+        "whyHard": "Multiple-meaning word whose common meaning (money) is a trap; only the river context selects the right sense."
+      },
+      {
+        "prompt": "\"The tiny mouse crept across the kitchen floor, careful not to wake the sleeping cat.\"\n\nThe word **crept** tells you the mouse moved \u2014",
+        "choices": [
+          "Quickly and loudly",
+          "Slowly and quietly",
+          "High into the air",
+          "Backwards in a circle"
+        ],
+        "correct": "Slowly and quietly",
+        "hint": "Ask WHY the mouse moved that way. What does 'careful not to wake the cat' tell you about how it was moving?",
+        "whyHard": "Two choices describe real ways to move; the child must use the 'not to wake the cat' clue to pick the exact shade of meaning."
+      },
+      {
+        "prompt": "\"The soup tasted so bland that Grandpa added salt and pepper to give it more flavor.\"\n\nThe word **bland** means \u2014",
+        "choices": [
+          "Too spicy to eat",
+          "Having very little flavor",
+          "Boiling hot",
+          "Bright in color"
+        ],
+        "correct": "Having very little flavor",
+        "hint": "Why would someone ADD salt and pepper to something? What must the food have been missing?",
+        "whyHard": "'Bland' is a less-common word with no definition given; the child must reason backward from 'added salt to give it flavor.'"
+      },
+      {
+        "prompt": "\"The elephant reached up with its long trunk and sprayed water all over its back.\"\n\nIn this sentence, the word **trunk** means \u2014",
+        "choices": [
+          "A big box for storing things",
+          "The bottom part of a tree",
+          "An elephant's long nose",
+          "The back part of a car"
+        ],
+        "correct": "An elephant's long nose",
+        "hint": "The word trunk has several meanings. Which one can 'reach up and spray water'? Let the sentence decide.",
+        "whyHard": "Every choice is a true meaning of 'trunk'; only the action in the sentence (reaching and spraying) fits one."
+      },
+      {
+        "prompt": "\"Instead of just walking, the excited puppy dashed across the yard to greet its owner.\"\n\nThe word **dashed** means the puppy \u2014",
+        "choices": [
+          "Walked in a slow, calm way",
+          "Ran very fast",
+          "Stood still and waited",
+          "Crawled on its belly"
+        ],
+        "correct": "Ran very fast",
+        "hint": "The sentence says 'instead of just walking.' That contrast is your clue to how fast the puppy went.",
+        "whyHard": "The 'instead of just walking' contrast, not a definition, is what proves 'dashed' means faster than a walk."
+      }
+    ]
+  },
+  {
+    "std": "L.2.4b",
+    "questions": [
+      {
+        "prompt": "Maria drew her picture, erased the whole thing, and then drew it a second time from the start. Which word tells exactly what Maria did? She ____ her picture.",
+        "choices": [
+          "redrew",
+          "predrew",
+          "undrew",
+          "misdrew"
+        ],
+        "correct": "redrew",
+        "hint": "Break each word into its prefix + 'drew.' Ask what each prefix means: again, before, undo, or wrongly? Match the one that means 'did it again.'",
+        "whyHard": "All four choices are real-looking prefix words, so the child must know that re- means 'again,' not just spot a familiar word."
+      },
+      {
+        "prompt": "The workers put the box on the wrong shelf because it was **mislabeled**. In this sentence, mislabeled means the box was labeled \u2014",
+        "choices": [
+          "wrongly",
+          "again",
+          "before it was packed",
+          "very neatly"
+        ],
+        "correct": "wrongly",
+        "hint": "Cover the word and think about the prefix mis-. Then use the clue 'wrong shelf' to check which meaning of mis- fits.",
+        "whyHard": "'Again' (re-) and 'before' (pre-) are tempting real prefixes, and the base word 'label' is less common than 'view.'"
+      },
+      {
+        "prompt": "The rope was knotted tightly, so the sailor had to **unfasten** it fast before the boat drifted. Unfasten means to \u2014",
+        "choices": [
+          "undo what was fastened",
+          "fasten it again",
+          "fasten it more tightly",
+          "leave it fastened"
+        ],
+        "correct": "undo what was fastened",
+        "hint": "The prefix un- can reverse an action. Ask: is the sailor tying it up, or taking the tie apart? Let the story tell you.",
+        "whyHard": "'Fasten again' and 'fasten more tightly' are close traps; the child must know un- reverses, not repeats or intensifies."
+      },
+      {
+        "prompt": "Dad left the soup on the stove far too long, and it turned into mush. Which word best describes what Dad did to the soup? He ____ it.",
+        "choices": [
+          "overcooked",
+          "undercooked",
+          "recooked",
+          "precooked"
+        ],
+        "correct": "overcooked",
+        "hint": "Each choice is a real prefix + 'cooked.' Decide whether 'too long' means too much, too little, again, or beforehand \u2014 then pick the matching prefix.",
+        "whyHard": "Every distractor is a valid prefix word, so the child must judge the shade of meaning (over- = too much) instead of eliminating fakes."
+      },
+      {
+        "prompt": "The bridge was **underbuilt** for such heavy trucks, so it began to crack the first day. Underbuilt means the bridge was built \u2014",
+        "choices": [
+          "not strong enough",
+          "too strong",
+          "a second time",
+          "before the road opened"
+        ],
+        "correct": "not strong enough",
+        "hint": "Think what under- means when added to a word (like undercooked or underfed). Then use 'began to crack' to confirm which meaning fits.",
+        "whyHard": "'Underbuilt' is an unfamiliar word, and 'too strong' is the exact opposite trap, forcing the child to reason from the prefix, not guess."
+      }
+    ]
+  },
+  {
+    "std": "L.2.4c",
+    "questions": [
+      {
+        "prompt": "You know the word **agree**. Read this sentence: \"The two friends had a **disagreement** about which game to play.\" What does *disagreement* mean?",
+        "choices": [
+          "A time when they did NOT agree about something",
+          "A moment when they finally agreed on the game",
+          "A fun game that they both wanted to play",
+          "A promise to always agree from now on"
+        ],
+        "correct": "A time when they did NOT agree about something",
+        "hint": "Start with the root you know (agree), then notice the little part 'dis-' stuck on the front. What does 'dis-' usually do to a word's meaning?",
+        "whyHard": "Requires combining a known root with the prefix dis-, and the tempting wrong answer flips the meaning to 'agreed.'"
+      },
+      {
+        "prompt": "You know the word **wash**. Read this sentence: \"Mom said the new plates are **washable**.\" What does *washable* mean?",
+        "choices": [
+          "The plates can be washed and used again",
+          "The plates are already washed and clean",
+          "The plates cannot get wet or they will break",
+          "The plates are only used on special days"
+        ],
+        "correct": "The plates can be washed and used again",
+        "hint": "You know 'wash.' The ending '-able' tells you something is possible to do. Put the two together.",
+        "whyHard": "'-able' means 'able to be,' but a strong distractor treats it as 'already washed' (past tense)."
+      },
+      {
+        "prompt": "You know that **hope** means to wish for something good. Read: \"Even after losing, the coach stayed **hopeful** the team would win next time.\" What does *hopeful* mean?",
+        "choices": [
+          "Full of hope that something good will happen",
+          "Sure that the team already won the game",
+          "So sad that there is no hope left",
+          "Angry at the team for losing"
+        ],
+        "correct": "Full of hope that something good will happen",
+        "hint": "The root 'hope' is inside the word. The ending '-ful' means 'full of.' What is the coach full of?",
+        "whyHard": "Two distractors match the losing-game mood but ignore that '-ful' means 'full of hope,' not the opposite."
+      },
+      {
+        "prompt": "You know the word **use**. A grocery bag that is **reusable** is one that you can\u2014",
+        "choices": [
+          "Use again and again, not just one time",
+          "Use only one time and then throw away",
+          "Never use because it is broken",
+          "Use only to carry heavy things"
+        ],
+        "correct": "Use again and again, not just one time",
+        "hint": "There are TWO clues stuck to 'use': 're-' at the front and '-able' at the end. Figure out what each one adds.",
+        "whyHard": "The child must decode two affixes at once (re- + -able) and reject the tempting opposite 'use only one time.'"
+      },
+      {
+        "prompt": "You know the word **fear**, which means to be scared. A knight who runs straight at the dragon and is NOT scared at all is best called\u2014",
+        "choices": [
+          "Fearless",
+          "Fearful",
+          "Feared",
+          "Fearing"
+        ],
+        "correct": "Fearless",
+        "hint": "All four choices come from the root 'fear.' Think about which ending means 'without' \u2014 like in 'helpless.'",
+        "whyHard": "All four options share the root 'fear'; only the '-less' ending means 'without fear,' and 'fearful' is a close opposite trap."
+      }
+    ]
+  },
+  {
+    "std": "L.2.4e",
+    "questions": [
+      {
+        "prompt": "A dictionary page has the guide word 'ladder' at the top-left corner and 'lamp' at the top-right corner. Guide words tell you the FIRST and LAST word on that page. Which word below would you find on THIS page?",
+        "choices": [
+          "lake",
+          "land",
+          "lazy",
+          "leaf"
+        ],
+        "correct": "lake",
+        "hint": "The first two letters 'la' are the same for all of them, so compare the THIRD letter to 'ladder' (d) and 'lamp' (m). Which third letter lands in between?",
+        "whyHard": "Every choice starts with 'la', forcing third-letter alphabetizing between two guide words instead of just first-letter order."
+      },
+      {
+        "prompt": "You want to look up the word 'hopping' in the dictionary, but dictionaries only list the base word. Which word should you search for to find 'hopping'?",
+        "choices": [
+          "hopping",
+          "hopped",
+          "hop",
+          "hops"
+        ],
+        "correct": "hop",
+        "hint": "Take off the ending to find the base word. Remember that when a short word adds -ing, it sometimes doubles its last letter first.",
+        "whyHard": "The child must both drop the -ing AND undo the doubled 'p' to recover the true entry word, with the whole word and the past tense as traps."
+      },
+      {
+        "prompt": "A dictionary shows: present \u2014 1. (noun) a gift.  2. (verb) to give or show something.  3. (adjective) here; not away.  4. (noun) the time happening right now. Read this sentence: 'Every student was present, so nobody was missing today.' Which meaning of 'present' fits THIS sentence?",
+        "choices": [
+          "a gift",
+          "to give or show something",
+          "here; not away",
+          "the time happening right now"
+        ],
+        "correct": "here; not away",
+        "hint": "Ignore what 'present' means most often (a gift). Use the clue 'nobody was missing' to decide which numbered meaning matches.",
+        "whyHard": "The most familiar meaning (gift) is a strong lure; only the sentence clue 'nobody was missing' points to a less-obvious numbered definition."
+      },
+      {
+        "prompt": "A glossary shows: spring \u2014 1. the season after winter.  2. to jump up quickly.  3. a coiled piece of metal.  4. a place where water flows out of the ground. Read this sentence: 'The rabbit will spring over the log to escape the fox.' Which meaning of 'spring' fits THIS sentence?",
+        "choices": [
+          "the season after winter",
+          "to jump up quickly",
+          "a coiled piece of metal",
+          "a place where water flows out of the ground"
+        ],
+        "correct": "to jump up quickly",
+        "hint": "Ask which meaning is an ACTION the rabbit does. The word 'over' and 'escape' tell you it is moving, not naming a season or a thing.",
+        "whyHard": "Four real meanings of one word are all plausible dictionary entries; the child must match the sentence's action clue rather than pick the common season meaning."
+      },
+      {
+        "prompt": "A glossary lists four meanings of 'fair'. Read this sentence: 'It isn't fair that Ben got two cookies and I got none!' Which glossary meaning of 'fair' best matches how it is used here?",
+        "choices": [
+          "a fun outdoor event with rides and games",
+          "treating everyone in an equal way",
+          "having light-colored hair or skin",
+          "sunny and pleasant weather"
+        ],
+        "correct": "treating everyone in an equal way",
+        "hint": "Think about WHY the speaker is upset. Which meaning is about people being treated the same, not about weather or a place?",
+        "whyHard": "'Fair' has four everyday meanings a 2nd grader knows; the complaint about unequal cookies is the only clue separating the equal-treatment sense from equally common ones."
+      }
+    ]
+  },
+  {
+    "std": "L.2.5",
+    "questions": [
+      {
+        "prompt": "The puppy was so tired it could barely move. Which word BEST shows how the puppy felt?",
+        "choices": [
+          "Sleepy",
+          "Exhausted",
+          "Bored",
+          "Cozy"
+        ],
+        "correct": "Exhausted",
+        "hint": "Two choices are about being tired, but one is much STRONGER. Match the strength of the word to 'so tired it could barely move.'",
+        "whyHard": "Shades of meaning: 'sleepy' and 'exhausted' both mean tired, but only the strongest word matches 'barely move.'"
+      },
+      {
+        "prompt": "Read this sentence: 'Mom will PARK the car by the store.' Which sentence below uses PARK to mean the SAME thing?",
+        "choices": [
+          "Please park your bike near the wall.",
+          "We played all day at the park.",
+          "The park has a big slide.",
+          "Birds live in the park."
+        ],
+        "correct": "Please park your bike near the wall.",
+        "hint": "The word PARK can mean a green play space OR to leave something in a spot. Find the sentence where PARK means what it does in 'park the car.'",
+        "whyHard": "Multiple-meaning word: the child must match PARK as a verb (to leave/set down), not the more familiar noun (a play space)."
+      },
+      {
+        "prompt": "Which sentence uses the MOST exact word to describe how the wind moved the leaves?",
+        "choices": [
+          "The wind moved the leaves.",
+          "The wind did something to the leaves.",
+          "The wind swirled the leaves in circles.",
+          "The wind went by the leaves."
+        ],
+        "correct": "The wind swirled the leaves in circles.",
+        "hint": "Three choices use plain, general words. Pick the one whose word paints the clearest picture of HOW the leaves moved.",
+        "whyHard": "Precise word choice: all are grammatically fine, but only the vivid verb 'swirled' shows the exact action."
+      },
+      {
+        "prompt": "A 'careful' person is full of care. Using that clue, a person who is HELPFUL is a person who:",
+        "choices": [
+          "needs a lot of help",
+          "is full of help for others",
+          "cannot help at all",
+          "forgot to help"
+        ],
+        "correct": "is full of help for others",
+        "hint": "The ending -ful means 'full of.' Careful = full of care. Use that same rule on help + ful.",
+        "whyHard": "Affix reasoning: the child must apply the -ful pattern from 'careful' to unlock 'helpful,' resisting the tempting 'needs help.'"
+      },
+      {
+        "prompt": "Which word shows the child was the MOST happy?",
+        "choices": [
+          "Glad",
+          "Fine",
+          "Okay",
+          "Thrilled"
+        ],
+        "correct": "Thrilled",
+        "hint": "All four are calm-to-excited feelings. Line them up from a little happy to super happy and pick the top.",
+        "whyHard": "Shades of meaning: several choices are mildly positive, so the child must rank feeling-words by strength to find the most joyful."
+      }
+    ]
+  },
+  {
+    "std": "L.2.5a",
+    "questions": [
+      {
+        "prompt": "The desert sand was so hot that it burned Mia's bare feet the second she stepped on it. Which word best describes the sand?",
+        "choices": [
+          "Warm",
+          "Cool",
+          "Scorching",
+          "Mild"
+        ],
+        "correct": "Scorching",
+        "hint": "The clue is that it BURNED her feet instantly. Pick the word that shows the strongest amount of heat, not just a little heat.",
+        "whyHard": "'Warm' is true but too weak; the child must pick the strongest shade of hot from the burning clue."
+      },
+      {
+        "prompt": "Which situation would most likely make a person feel FURIOUS?",
+        "choices": [
+          "Finding one dollar on the ground",
+          "Someone breaking your favorite toy on purpose",
+          "Waiting a few minutes for lunch",
+          "Dropping your pencil under the desk"
+        ],
+        "correct": "Someone breaking your favorite toy on purpose",
+        "hint": "Furious means VERY angry, not just a little bothered. Ask which one would make someone the angriest.",
+        "whyHard": "Two choices cause mild annoyance; the child must match 'furious' to the situation with the strongest anger."
+      },
+      {
+        "prompt": "Dad said, \"Please turn down the music, it is too loud.\" What does turn down mean in this sentence?",
+        "choices": [
+          "Make it quieter",
+          "Say no to it",
+          "Fold it over",
+          "Flip it upside down"
+        ],
+        "correct": "Make it quieter",
+        "hint": "'Turn down' can mean different things. Use the words 'too loud' to decide which meaning fits HERE.",
+        "whyHard": "All four are real meanings of 'turn down'; only the context clue 'too loud' selects the right one."
+      },
+      {
+        "prompt": "After running a long race in the hot sun, Leo could barely walk and just wanted to lie down. Which word best describes how Leo felt?",
+        "choices": [
+          "Sleepy",
+          "Exhausted",
+          "Bored",
+          "Relaxed"
+        ],
+        "correct": "Exhausted",
+        "hint": "He is tired from hard work, not from wanting to sleep and not from having nothing to do. Pick the word for being very worn out.",
+        "whyHard": "'Sleepy' is a tempting near-synonym, but only 'exhausted' captures deep tiredness from effort."
+      },
+      {
+        "prompt": "The word delicate means something that breaks easily or must be handled gently. Which sentence uses delicate the correct way?",
+        "choices": [
+          "The delicate glass ornament shattered when it fell.",
+          "The delicate boulder would not move no matter what.",
+          "He used the delicate hammer to smash the rocks.",
+          "The delicate truck crashed through the strong wall."
+        ],
+        "correct": "The delicate glass ornament shattered when it fell.",
+        "hint": "Look for the sentence where the object really is easy to break. Cross out any sentence that shows something strong or heavy.",
+        "whyHard": "Every choice uses 'delicate,' but only one matches a truly fragile object; the others pair it with strong things."
+      }
+    ]
+  },
+  {
+    "std": "L.2.5b",
+    "questions": [
+      {
+        "prompt": "The baby was sleeping in her crib. Dad walked in and _____ to his friend so he wouldn't wake her. Which word fits BEST?",
+        "choices": [
+          "whispered",
+          "shouted",
+          "yelled",
+          "called"
+        ],
+        "correct": "whispered",
+        "hint": "All four words mean 'to speak,' but they differ in how LOUD they are. Which one is the quietest? Match it to the sleeping baby.",
+        "whyHard": "All choices are ways of speaking; the child must rank them by loudness and pick the softest to fit the context."
+      },
+      {
+        "prompt": "Ben had never seen a real dinosaur bone before. He _____ at the giant skeleton for a long, long time without looking away. Which word fits BEST?",
+        "choices": [
+          "glanced",
+          "peeked",
+          "stared",
+          "blinked"
+        ],
+        "correct": "stared",
+        "hint": "Some of these words mean a QUICK look and some mean a LONG look. The clue 'for a long, long time without looking away' tells you which kind you need.",
+        "whyHard": "'Glanced' and 'peeked' are tempting look-words, but only 'stared' matches the long, unbroken looking in the sentence."
+      },
+      {
+        "prompt": "The school bus was already pulling away, so Lily _____ down the sidewalk to catch it in time. Which word fits BEST?",
+        "choices": [
+          "strolled",
+          "wandered",
+          "tiptoed",
+          "dashed"
+        ],
+        "correct": "dashed",
+        "hint": "These are all ways to move on your feet, but they differ in SPEED and purpose. The bus is leaving NOW \u2014 how fast would Lily need to go?",
+        "whyHard": "Every choice is a way of walking/moving; only the fastest one matches the urgency of a bus about to leave."
+      },
+      {
+        "prompt": "The puppy hadn't eaten all day and was very hungry. When Mom filled its bowl, it _____ the food in just a few seconds. Which word fits BEST?",
+        "choices": [
+          "nibbled",
+          "tasted",
+          "licked",
+          "gobbled"
+        ],
+        "correct": "gobbled",
+        "hint": "All four words are about eating, but some mean eating a TINY bit slowly and one means eating a LOT very fast. The clues 'very hungry' and 'in just a few seconds' point the way.",
+        "whyHard": "'Nibbled' and 'tasted' are plausible eating verbs, but only 'gobbled' captures fast, hungry eating that the context demands."
+      },
+      {
+        "prompt": "It was so cold outside that the whole pond had turned to solid ice. Which word BEST describes the air that day?",
+        "choices": [
+          "cool",
+          "chilly",
+          "freezing",
+          "warm"
+        ],
+        "correct": "freezing",
+        "hint": "Three of these words mean some amount of cold, but they aren't equally cold. If the pond froze SOLID, you need the STRONGEST cold word.",
+        "whyHard": "'Cool' and 'chilly' are real cold words, so the child must rank cold by strength and pick the most extreme to match ice."
+      }
+    ]
+  },
+  {
+    "std": "L.2.6",
+    "questions": [
+      {
+        "prompt": "The tiny mouse was so scared it would not leave its hole for hours. Which word best describes how the mouse felt?",
+        "choices": [
+          "Nervous",
+          "Terrified",
+          "Worried",
+          "Unsure"
+        ],
+        "correct": "Terrified",
+        "hint": "All four mean a kind of afraid. Pick the STRONGEST one that matches 'so scared.'",
+        "whyHard": "All four are fear words; only the strongest fits 'so scared it would not leave for hours.'"
+      },
+      {
+        "prompt": "Maria whispered the secret so no one else could hear it. Which sentence uses an adverb that means the OPPOSITE of how Maria spoke?",
+        "choices": [
+          "She spoke softly.",
+          "She spoke quietly.",
+          "She spoke loudly.",
+          "She spoke gently."
+        ],
+        "correct": "She spoke loudly.",
+        "hint": "Three of these mean almost the same as whispering. Find the one that is the reverse.",
+        "whyHard": "Three adverbs are near-synonyms for whispering; the child must find the true opposite, not just a different word."
+      },
+      {
+        "prompt": "Dad said, 'Please turn off the light before bed.' In this sentence, what does the word 'light' mean?",
+        "choices": [
+          "Not heavy",
+          "A soft color",
+          "A lamp you switch on and off",
+          "Easy to do"
+        ],
+        "correct": "A lamp you switch on and off",
+        "hint": "The word 'light' has more than one meaning. Use the clue 'turn off' to decide which one fits.",
+        "whyHard": "'Light' has several everyday meanings; the child must use 'turn off' to pick the right one."
+      },
+      {
+        "prompt": "The runner was very thirsty after the long race. She felt as if she had not had a drink in days. Which word best describes the runner?",
+        "choices": [
+          "Damp",
+          "Parched",
+          "Wet",
+          "Cool"
+        ],
+        "correct": "Parched",
+        "hint": "Which word means VERY dry or thirsty? Watch out for words that mean the opposite.",
+        "whyHard": "'Parched' is the precise, vivid word for very thirsty/dry; damp, wet, and cool are the tempting opposite of thirsty."
+      },
+      {
+        "prompt": "A person who is careful never makes messes. So what does it most likely mean if a person is CARELESS?",
+        "choices": [
+          "Very full of care",
+          "Making messes and not paying attention",
+          "Caring a lot about others",
+          "Feeling scared"
+        ],
+        "correct": "Making messes and not paying attention",
+        "hint": "The ending -less means 'without.' Add that to the meaning of 'care' to figure it out.",
+        "whyHard": "The child must apply the meaning of the suffix -less (without) to reason out the word from 'careful.'"
+      }
+    ]
+  },
+  {
+    "std": "L.2.1",
+    "questions": [
+      {
+        "prompt": "Read the sentence: \"The girls fixed the flat tire all by ____.\" Which word correctly fills the blank?",
+        "choices": [
+          "themselves",
+          "theirselves",
+          "themself",
+          "herselves"
+        ],
+        "correct": "themselves",
+        "hint": "The doers are more than one girl, so you need the plural reflexive pronoun. Only one of these is real, standard English.",
+        "whyHard": "Three distractors mimic real speech patterns (theirselves, themself, herselves) but only 'themselves' is standard for a plural subject."
+      },
+      {
+        "prompt": "Read the sentence: \"Grandma knitted warm socks for both of my ____.\" Which word correctly fills the blank?",
+        "choices": [
+          "feet",
+          "foots",
+          "feets",
+          "foot"
+        ],
+        "correct": "feet",
+        "hint": "This noun does not add -s to become plural; it changes its whole shape. Watch out for a plural that has BEEN made plural twice.",
+        "whyHard": "Requires an irregular plural and rejects the tempting double-plural 'feets' and the regular-rule 'foots.'"
+      },
+      {
+        "prompt": "Read the sentence: \"The doorbell has ____ three times since we sat down.\" Which word correctly fills the blank?",
+        "choices": [
+          "rang",
+          "rung",
+          "ringed",
+          "ring"
+        ],
+        "correct": "rung",
+        "hint": "The helper word 'has' changes which form of the verb you need. The plain past-tense form is not the one that follows 'has.'",
+        "whyHard": "Learners default to the simple past 'rang'; the sentence needs the past participle 'rung' because of the helper 'has.'"
+      },
+      {
+        "prompt": "Read the sentence: \"The old turtle crossed the road very ____.\" Which word correctly fills the blank?",
+        "choices": [
+          "slowly",
+          "slow",
+          "slowness",
+          "slower"
+        ],
+        "correct": "slowly",
+        "hint": "The blank describes HOW the turtle crossed, so you need the word that describes an action, not a thing.",
+        "whyHard": "'Slow' is common in casual speech, but the word modifies the verb 'crossed,' so the adverb 'slowly' is required."
+      },
+      {
+        "prompt": "Read the sentence: \"Of all three backpacks, mine is the ____.\" Which word correctly fills the blank?",
+        "choices": [
+          "heaviest",
+          "heavier",
+          "more heavy",
+          "heavyest"
+        ],
+        "correct": "heaviest",
+        "hint": "You are comparing three things, not two. Pick the form used when something beats out a whole group.",
+        "whyHard": "Comparing three items needs the superlative 'heaviest'; the comparative 'heavier' fits only two, and the other choices are nonstandard forms."
+      }
+    ]
+  },
+  {
+    "std": "L.2.2",
+    "questions": [
+      {
+        "prompt": "Which sentence is written with correct capitalization? \"we visit grandma every winter for thanksgiving.\"",
+        "choices": [
+          "We visit Grandma every Winter for thanksgiving.",
+          "We visit grandma every winter for Thanksgiving.",
+          "We visit Grandma every winter for Thanksgiving.",
+          "We visit Grandma every Winter for Thanksgiving."
+        ],
+        "correct": "We visit Grandma every winter for Thanksgiving.",
+        "hint": "Holidays get a capital letter, but the four seasons do not. \"Grandma\" is capitalized when it is used as her name.",
+        "whyHard": "Kids must apply three capitalization rules at once and resist capitalizing the season winter while remembering to capitalize the holiday.",
+        "hint2": ""
+      },
+      {
+        "prompt": "Rosa is finishing a letter to her aunt. Which closing is punctuated correctly?",
+        "choices": [
+          "Love Rosa",
+          "Love Rosa,",
+          "Love, Rosa.",
+          "Love, Rosa"
+        ],
+        "correct": "Love, Rosa",
+        "hint": "In a letter closing, the comma goes right after the closing word, and a name does not need a period after it.",
+        "whyHard": "Every choice looks close; the child must place ONE comma correctly and reject the tempting extra period and misplaced comma."
+      },
+      {
+        "prompt": "Choose the word that correctly completes the sentence: \"The puppy wagged ___ tail when we came home.\"",
+        "choices": [
+          "it's",
+          "its",
+          "its'",
+          "it,s"
+        ],
+        "correct": "its",
+        "hint": "\"It's\" with an apostrophe is short for \"it is.\" To show something belongs to it, use \"its\" with no apostrophe.",
+        "whyHard": "The apostrophe form looks right because apostrophes usually show ownership, but possessive \"its\" is the exception."
+      },
+      {
+        "prompt": "Which is the correct spelling of the word that means more than one baby? \"We saw three ___ at the park.\"",
+        "choices": [
+          "babys",
+          "babyes",
+          "babbies",
+          "babies"
+        ],
+        "correct": "babies",
+        "hint": "When a word ends in a consonant plus \"y,\" change the \"y\" to \"i\" before adding \"es.\"",
+        "whyHard": "Requires applying the y-to-i spelling rule instead of just adding -s, and rejecting the plausible \"babys\" and double-b trap."
+      },
+      {
+        "prompt": "Pick the word that shows the nests belong to more than one bird: \"The three ___ nests were high in the tree.\"",
+        "choices": [
+          "birds",
+          "bird's",
+          "birds's",
+          "birds'"
+        ],
+        "correct": "birds'",
+        "hint": "When a plural word already ends in \"s,\" show ownership by adding just an apostrophe after the s.",
+        "whyHard": "Singular possessive (bird's) is the familiar pattern; the child must recognize this is a plural owning something and use the apostrophe-after-s form."
+      }
+    ]
+  },
+  {
+    "std": "L.2.3",
+    "questions": [
+      {
+        "prompt": "You are writing a note to thank your school principal for the brand-new library. Which sentence sounds the most polite and formal?",
+        "choices": [
+          "Thanks for the awesome new books!",
+          "We really appreciate the wonderful new library.",
+          "The new library is super cool, thanks!",
+          "You got us a great library, thanks a lot!"
+        ],
+        "correct": "We really appreciate the wonderful new library.",
+        "hint": "A principal is someone you should speak to respectfully. Look for the sentence with no slang words like 'awesome,' 'super cool,' or 'a lot.'",
+        "whyHard": "Every choice says thank you, so the child must judge register word-by-word, not just spot rudeness."
+      },
+      {
+        "prompt": "Your brother is only 4 years old and asks what the word 'enormous' means. Which is the BEST way to explain it so he understands?",
+        "choices": [
+          "It signifies immense proportions.",
+          "It means really, really big.",
+          "It shows a great magnitude.",
+          "It is equivalent to gigantic."
+        ],
+        "correct": "It means really, really big.",
+        "hint": "Match your words to your listener. A 4-year-old only knows simple words, so pick the explanation he could actually understand.",
+        "whyHard": "Requires choosing language for the audience, and every distractor is a technically-correct definition using words too hard for a preschooler."
+      },
+      {
+        "prompt": "You are writing a science report for class, which should sound formal. Which sentence fits a report best?",
+        "choices": [
+          "Bats aren't birds, they're mammals.",
+          "Bats are not birds; they are mammals.",
+          "Bats ain't birds, they're mammals.",
+          "So bats are, like, mammals and not birds!"
+        ],
+        "correct": "Bats are not birds; they are mammals.",
+        "hint": "Formal writing avoids shortened words (contractions) and chatty words like 'so' and 'like.' Find the sentence that spells everything out fully.",
+        "whyHard": "Two choices are grammatically fine; the child must notice that contractions and casual fillers lower the formality a report needs."
+      },
+      {
+        "prompt": "The excited puppy raced to the door the second it heard us coming home. Which word shows its movement most precisely?",
+        "choices": [
+          "went",
+          "walked",
+          "dashed",
+          "moved"
+        ],
+        "correct": "dashed",
+        "hint": "The puppy is excited and fast. Pick the word that shows the MOST speed and energy, not just any kind of moving.",
+        "whyHard": "All four are movement words; the child must rank shades of meaning to find the most vivid, precise verb."
+      },
+      {
+        "prompt": "The winter wind was so strong and cold it hurt your face. Which word describes that wind most precisely?",
+        "choices": [
+          "nice",
+          "breezy",
+          "biting",
+          "windy"
+        ],
+        "correct": "biting",
+        "hint": "Think about which word matches a wind that is sharp and painful, not just any wind. Some choices sound pleasant or too plain.",
+        "whyHard": "'Breezy' and 'windy' are true but weak; only 'biting' captures the sharp, painful cold, testing precise shades of meaning."
+      }
+    ]
+  },
+  {
+    "std": "L.3.4",
+    "questions": [
+      {
+        "prompt": "You know the prefix **re-** means \"again\" and the word *examine* means \"to look at closely.\" Read this sentence:\n\n\"Before turning in the test, the teacher told us to **reexamine** every answer.\"\n\nWhat does **reexamine** mean here?",
+        "choices": [
+          "Look closely at the answers again",
+          "Erase all of the answers",
+          "Grade the answers quickly",
+          "Copy someone else's answers"
+        ],
+        "correct": "Look closely at the answers again",
+        "hint": "Break the word into its two parts: the prefix re- and the base word examine. Put the meanings together.",
+        "whyHard": "Requires combining a prefix meaning with a less-common base word instead of recalling a memorized definition."
+      },
+      {
+        "prompt": "Maria came inside from the snowstorm with her teeth chattering, unable to stop shivering.\n\nWhich word **best** describes how Maria felt?",
+        "choices": [
+          "Cool",
+          "Chilly",
+          "Freezing",
+          "Warm"
+        ],
+        "correct": "Freezing",
+        "hint": "All three cold words are correct in a general way, but the chattering teeth and shivering signal the strongest degree of cold. Rank the words from mildest to most extreme.",
+        "whyHard": "The child must sort near-synonyms by intensity and match the strongest to the clues, not just pick any cold word."
+      },
+      {
+        "prompt": "The Latin root **port** means \"to carry.\" Read this sentence:\n\n\"The **porter** at the train station helped the travelers with their heavy suitcases.\"\n\nBased on the root, what does a **porter** most likely do?",
+        "choices": [
+          "Carries people's bags and luggage",
+          "Sells tickets at a window",
+          "Drives the train down the track",
+          "Sweeps the station floors"
+        ],
+        "correct": "Carries people's bags and luggage",
+        "hint": "Focus on the root port, which means \"to carry.\" Which job is mostly about carrying things?",
+        "whyHard": "The unfamiliar word must be decoded through its root while resisting distractors that all fit a train station."
+      },
+      {
+        "prompt": "Read this sentence:\n\n\"Dad slammed the **trunk** shut after loading the cooler and the beach chairs into the back of the car.\"\n\nWhat does **trunk** mean in this sentence?",
+        "choices": [
+          "The storage space at the back of a car",
+          "An elephant's long, bendy nose",
+          "The thick main stem of a tree",
+          "A large box for storing clothes"
+        ],
+        "correct": "The storage space at the back of a car",
+        "hint": "Every choice is a real meaning of \"trunk.\" Use the clues \"loading the cooler\" and \"back of the car\" to pick the meaning that fits this sentence.",
+        "whyHard": "Each option is a legitimate meaning of the same word; only the sentence's context clues select the right one."
+      },
+      {
+        "prompt": "Read this sentence:\n\n\"The exhausted hikers ______ up the steep, muddy trail, dragging their heavy boots with every step.\"\n\nWhich word fills the blank most **precisely** to show how hard the climb was?",
+        "choices": [
+          "trudged",
+          "went",
+          "walked",
+          "moved"
+        ],
+        "correct": "trudged",
+        "hint": "All four words could technically fit, but only one paints a vivid picture of slow, tired, heavy steps. Match the word to \"exhausted\" and \"dragging.\"",
+        "whyHard": "The child must choose the most vivid, precise verb over three bland words that are technically acceptable."
+      }
+    ]
+  },
+  {
+    "std": "L.3.4b",
+    "questions": [
+      {
+        "prompt": "After the storm knocked it down, the town had to reconstruct the old pier board by board. In this sentence, reconstruct means to \u2014",
+        "choices": [
+          "build it again",
+          "take it apart",
+          "paint it a new color",
+          "look at it closely"
+        ],
+        "correct": "build it again",
+        "hint": "Break the word into its prefix and root: re- + construct. What does 'construct' mean, and what does re- add to it?",
+        "whyHard": "The root 'construct' is less common than 'build,' so the child must map the affix onto an unfamiliar base rather than a word they already know."
+      },
+      {
+        "prompt": "Grandpa's directions were so ______ that we drove in circles and got lost twice. Which word fits the blank BEST?",
+        "choices": [
+          "unhelpful",
+          "helpless",
+          "helpful",
+          "helping"
+        ],
+        "correct": "unhelpful",
+        "hint": "Two choices are built from 'help' but mean different things: one describes directions that don't help, the other describes a person who can't take care of themselves. Which one matches directions?",
+        "whyHard": "'Helpless' is a tempting same-root distractor, but its affix shifts the meaning to a person unable to help themselves, not directions that fail to help."
+      },
+      {
+        "prompt": "\"You misjudged how far the puddle was, so you landed right in it,\" Mom said. Misjudged means that you judged the distance \u2014",
+        "choices": [
+          "wrongly",
+          "again",
+          "before",
+          "very carefully"
+        ],
+        "correct": "wrongly",
+        "hint": "The prefix mis- shows up in 'mistake' and 'misspell.' What does mis- do to the word it joins?",
+        "whyHard": "The prefix mis- means 'wrongly/badly,' but distractors mimic the meanings of re- (again) and pre- (before), so the child must isolate the correct affix meaning."
+      },
+      {
+        "prompt": "Grandma held up the old locket and whispered, \"This necklace is priceless.\" In this sentence, priceless means the necklace is \u2014",
+        "choices": [
+          "worth so much you can't put a price on it",
+          "worth nothing at all",
+          "cheap and easy to buy",
+          "missing its price tag"
+        ],
+        "correct": "worth so much you can't put a price on it",
+        "hint": "The suffix -less usually means 'without.' But think about WHY something would have no price \u2014 is it because it's worthless, or because it's too valuable to price?",
+        "whyHard": "It flips the usual '-less = without/nothing' rule; the trap answer ('worth nothing') is exactly what the affix seems to say, but context reveals the opposite."
+      },
+      {
+        "prompt": "Both words are built from 'view.' Which word means to look at a movie BEFORE it is shown to everyone else?",
+        "choices": [
+          "preview",
+          "review",
+          "viewer",
+          "viewing"
+        ],
+        "correct": "preview",
+        "hint": "One prefix means 'before' and another means 'again.' Which prefix matches 'before it is shown to everyone'?",
+        "whyHard": "It forces the child to distinguish pre- (before) from re- (again) on the same root, so the near-identical distractor 'review' is very tempting."
+      }
+    ]
+  },
+  {
+    "std": "L.3.4c",
+    "questions": [
+      {
+        "prompt": "You know the root **port** means \"to carry.\" Read this sentence: \"The campers brought a portable stove they could carry from site to site.\" Using the root, what does **portable** most likely mean?",
+        "choices": [
+          "Able to be carried",
+          "Used for cooking food",
+          "Too heavy to lift",
+          "Made out of metal"
+        ],
+        "correct": "Able to be carried",
+        "hint": "The sentence talks about cooking, but the ROOT tells you the real meaning. Find the part of the word that means \"to carry.\"",
+        "whyHard": "The sentence's topic (a stove/cooking) baits you away from the root-based meaning."
+      },
+      {
+        "prompt": "The root **aud** means \"to hear.\" Read: \"Hundreds of people packed the auditorium for the concert.\" Using the root, an **auditorium** is a place built mainly for people to \u2014",
+        "choices": [
+          "hear a performance",
+          "look at paintings",
+          "borrow and store books",
+          "grow flowers and plants"
+        ],
+        "correct": "hear a performance",
+        "hint": "Ignore what a big room COULD be used for. Find the root \"aud\" and let its meaning point you to the answer.",
+        "whyHard": "All choices are things a large public room could host; only the root \"hear\" isolates the right one."
+      },
+      {
+        "prompt": "The root **dict** means \"to speak or say.\" Which word is built from this root and names a person who tells others what to do by giving spoken commands?",
+        "choices": [
+          "dictator",
+          "director",
+          "predictor",
+          "diner"
+        ],
+        "correct": "dictator",
+        "hint": "First check which words actually CONTAIN the root \"dict.\" A word can sound bossy but not have the root at all.",
+        "whyHard": "\"Director\" looks and sounds like a commanding word but has no \"dict\" root; \"predictor\" has the root but means one who foretells."
+      },
+      {
+        "prompt": "You know **struct** means \"to build.\" Read: \"The instructions showed us how to put the bookshelf together.\" The word **instructions** shares this root, so instructions most likely means information that helps you \u2014",
+        "choices": [
+          "build or put something together",
+          "take something apart",
+          "find your way to a place",
+          "clean up a messy room"
+        ],
+        "correct": "build or put something together",
+        "hint": "Locate the root \"struct\" inside the word and match its \"build\" meaning to the choices.",
+        "whyHard": "\"Directions\" (find your way) is a near-synonym trap, but the root \"struct\" means build, not travel."
+      },
+      {
+        "prompt": "The root **spect** means \"to look or watch.\" Read: \"Grandpa put on his spectacles so he could read the tiny print.\" Using the root and the sentence, **spectacles** are \u2014",
+        "choices": [
+          "glasses you look through",
+          "tools you listen with",
+          "shoes you walk in",
+          "gloves that keep hands warm"
+        ],
+        "correct": "glasses you look through",
+        "hint": "The root \"spect\" is about the eyes, not the ears. Match it to the reading clue in the sentence.",
+        "whyHard": "\"Spectacles\" is an uncommon word for glasses, and the ear-based distractor tempts a mix-up with hearing."
+      }
+    ]
+  },
+  {
+    "std": "L.3.4d",
+    "questions": [
+      {
+        "prompt": "A dictionary entry for **current** lists these meanings:\n1. happening right now\n2. a steady flow of water or air\n3. a flow of electric charge\n4. the newest or most up-to-date thing\n\nSentence: \"The lifeguard warned us that a strong current was pulling swimmers away from the shore.\" Which meaning fits this sentence?",
+        "choices": [
+          "A steady flow of water or air",
+          "Happening right now",
+          "A flow of electric charge",
+          "The newest or most up-to-date thing"
+        ],
+        "correct": "A steady flow of water or air",
+        "hint": "Ignore the meaning of the word you hear most often. Reread the whole sentence and ask what is actually pulling the swimmers.",
+        "whyHard": "The most familiar meaning ('happening now') is a decoy; only the water clue in the sentence points to definition 2."
+      },
+      {
+        "prompt": "A dictionary entry for **wind** shows two pronunciations:\n- **wind** (rhymes with 'pinned'): moving air outdoors\n- **wind** (rhymes with 'find'): to turn or tighten something by twisting it\n\nSentence: \"Grandpa has to wind his old watch every morning so it keeps the right time.\" Which meaning fits?",
+        "choices": [
+          "To turn or tighten something by twisting it",
+          "Moving air outdoors",
+          "To follow a curving path, the way a river bends",
+          "To lose your breath after running"
+        ],
+        "correct": "To turn or tighten something by twisting it",
+        "hint": "Picture exactly what Grandpa does to the watch with his fingers, then match that action to a definition.",
+        "whyHard": "Two of the choices are real 'wind' verb meanings; only turning/tightening fits winding a watch."
+      },
+      {
+        "prompt": "A dictionary page has the guide words **trap** and **tray** printed at the top. Which one of these words would you find on that page?",
+        "choices": [
+          "travel",
+          "train",
+          "treat",
+          "trip"
+        ],
+        "correct": "travel",
+        "hint": "Guide words show the first and last words on the page. Compare each choice letter by letter until you find one that lands between them.",
+        "whyHard": "All choices start with 'tr', so the answer depends on comparing the third and fourth letters against both guide words."
+      },
+      {
+        "prompt": "A science glossary gives these entries:\n- **transparent**: clear; light passes straight through so you can see objects on the other side\n- **translucent**: lets some light through, but you cannot see clear shapes\n- **opaque**: lets no light through at all\n\nSentence: \"The frosted glass in the front door is ___: sunlight glows softly through it, but you cannot tell who is standing outside.\" Which word belongs in the blank?",
+        "choices": [
+          "translucent",
+          "transparent",
+          "opaque",
+          "reflective"
+        ],
+        "correct": "translucent",
+        "hint": "Read the glossary carefully and match it to the two clues: light DOES get through, but you CANNOT see shapes.",
+        "whyHard": "Transparent and translucent both let light pass; only the 'cannot see shapes' clue separates them."
+      },
+      {
+        "prompt": "A dictionary entry for **point** lists these meanings:\n1. the sharp end of something\n2. the main idea a person is trying to make\n3. a unit used to keep score in a game\n4. a particular moment or spot in time\n\nSentence: \"With three seconds left on the clock, Maya sank the basket that gave her team the winning point.\" Which meaning fits?",
+        "choices": [
+          "A unit used to keep score in a game",
+          "A particular moment or spot in time",
+          "The main idea a person is trying to make",
+          "The sharp end of something"
+        ],
+        "correct": "A unit used to keep score in a game",
+        "hint": "The sentence mentions a clock and a last-second moment, but focus on what 'winning point' means in a basketball game.",
+        "whyHard": "The 'three seconds left' clue tempts you toward the 'moment in time' meaning, but a scored basket makes it a scoring unit."
+      }
+    ]
+  },
+  {
+    "std": "L.3.5a",
+    "questions": [
+      {
+        "prompt": "When Dad heard the bad news, his heart sank.\n\nWhat does \"his heart sank\" MOST precisely mean here?",
+        "choices": [
+          "He suddenly felt very sad and discouraged",
+          "He felt just a little worried",
+          "He had a problem with his heart",
+          "He became very angry and shouted"
+        ],
+        "correct": "He suddenly felt very sad and discouraged",
+        "hint": "The phrase isn't about his real heart. Match how STRONG the feeling is to 'bad news' \u2014 not too mild, not the wrong feeling.",
+        "whyHard": "All four are plausible feelings; the reader must pick the right feeling AND its precise strength, past a literal-heart trap."
+      },
+      {
+        "prompt": "In which sentence is \"hit the roof\" used NONLITERALLY (not meaning exactly what the words say)?",
+        "choices": [
+          "When she saw the huge mess, Mom hit the roof.",
+          "The baseball flew up and hit the roof of the shed.",
+          "The workers hit the roof with their hammers to fix it.",
+          "Rain hit the roof loudly all night long."
+        ],
+        "correct": "When she saw the huge mess, Mom hit the roof.",
+        "hint": "Three sentences describe something really touching a roof. One uses the phrase to describe a feeling instead.",
+        "whyHard": "The same phrase 'hit the roof' is literal in three tempting sentences and figurative (very angry) in only one."
+      },
+      {
+        "prompt": "Grandpa called the new no-phones-at-dinner rule \"a blessing in disguise.\" At first everyone complained, but soon the family talked and laughed more at dinner.\n\nWhat does \"a blessing in disguise\" mean?",
+        "choices": [
+          "Something that seems bad at first but turns out to be good",
+          "A gift that is wrapped up so you can't see it",
+          "A rule that nobody in the family likes",
+          "A special costume worn to a party"
+        ],
+        "correct": "Something that seems bad at first but turns out to be good",
+        "hint": "Use the story clue: it started with complaints but ended with something good. Don't get stuck on the everyday meanings of 'blessing' or 'disguise.'",
+        "whyHard": "'Wrapped gift' and 'rule nobody likes' both echo real words in the phrase and the story, but only the context clue reveals the true figurative meaning."
+      },
+      {
+        "prompt": "Which phrase means the SAME as \"let the cat out of the bag\"?",
+        "choices": [
+          "Accidentally told a secret",
+          "Kept a secret safely hidden",
+          "Made a very big mistake",
+          "Set a pet free outside"
+        ],
+        "correct": "Accidentally told a secret",
+        "hint": "Think about what really happens when a secret 'gets out.' Two choices sound close because telling a secret can feel like a mistake or like setting something loose.",
+        "whyHard": "'Made a big mistake' and 'set a pet free' are near-misses that capture part of the idea but not its exact figurative meaning."
+      },
+      {
+        "prompt": "The coach told the team, \"Keep your eyes peeled for a good pass.\"\n\nWhat does \"keep your eyes peeled\" mean?",
+        "choices": [
+          "Watch very carefully",
+          "Close your eyes and rest them",
+          "Peel something like an orange",
+          "Squint to see something far away"
+        ],
+        "correct": "Watch very carefully",
+        "hint": "A coach wants players paying attention during a game. The word 'peeled' is used in a figurative way, not the way you peel fruit.",
+        "whyHard": "The literal meaning of 'peeled' pulls toward the fruit answer, and 'squint' is a tempting seeing-related near-miss."
+      }
+    ]
+  },
+  {
+    "std": "L.3.5c",
+    "questions": [
+      {
+        "prompt": "Read the sentences. Which one shows that Dad is LEAST sure it will rain?",
+        "choices": [
+          "It will definitely rain.",
+          "It is sure to rain.",
+          "It might rain later.",
+          "It will probably rain."
+        ],
+        "correct": "It might rain later.",
+        "hint": "Line the words up from most sure to least sure: 'definitely/sure' are top, then 'probably,' then the weakest one.",
+        "whyHard": "All four are 'yes, it will rain' sentences, so the child must rank certainty words instead of spotting a clearly wrong choice."
+      },
+      {
+        "prompt": "Which word shows MORE certainty than **maybe** but LESS certainty than **definitely**?",
+        "choices": [
+          "Probably",
+          "Possibly",
+          "Certainly",
+          "Never"
+        ],
+        "correct": "Probably",
+        "hint": "Two of these mean almost the same as 'maybe' or 'definitely' \u2014 you need the one that sits in the middle of the ladder.",
+        "whyHard": "'Possibly' hugs 'maybe' and 'certainly' hugs 'definitely,' so both are tempting near-matches to the two boundary words."
+      },
+      {
+        "prompt": "Which word shows the STRONGEST feeling of fear?",
+        "choices": [
+          "Uneasy",
+          "Nervous",
+          "Terrified",
+          "Startled"
+        ],
+        "correct": "Terrified",
+        "hint": "Picture the feelings from a tiny worry up to complete panic, and pick the one at the very top.",
+        "whyHard": "Every choice is a real fear word, and 'startled' feels intense but is only sudden and brief, not the strongest."
+      },
+      {
+        "prompt": "Which word describes the DEEPEST sadness?",
+        "choices": [
+          "Gloomy",
+          "Disappointed",
+          "Miserable",
+          "Down"
+        ],
+        "correct": "Miserable",
+        "hint": "Rank them from a little bit sad to totally sad, then choose the heaviest one.",
+        "whyHard": "All four mean sad, and 'gloomy' sounds dramatic, but 'miserable' is the true bottom of the ladder."
+      },
+      {
+        "prompt": "Maria said, \"I'm POSITIVE the library is open today.\" In this sentence, **positive** means \u2014",
+        "choices": [
+          "Certain",
+          "Cheerful",
+          "Helpful",
+          "More than zero"
+        ],
+        "correct": "Certain",
+        "hint": "'Positive' has several meanings \u2014 use the rest of Maria's sentence to decide which one fits here.",
+        "whyHard": "'Positive' really can mean cheerful or a number greater than zero, so the child must use context to pick the 'sure' meaning."
+      }
+    ]
+  },
+  {
+    "std": "L.3.1",
+    "questions": [
+      {
+        "prompt": "Ben ran faster than Sara. Tom ran faster than Ben. Which sentence is correct?",
+        "choices": [
+          "Tom ran the fastest.",
+          "Ben ran the fastest.",
+          "Tom ran the faster.",
+          "Tom ran more fast."
+        ],
+        "correct": "Tom ran the fastest.",
+        "hint": "Line up who beat whom to find the single fastest runner, then pick the form used when comparing three or more.",
+        "whyHard": "Requires reasoning out the ranking AND choosing the superlative (-est) over the two-person comparative 'the faster' and the double form 'more fast.'"
+      },
+      {
+        "prompt": "Choose the sentence that uses the correct past-tense verbs: 'Yesterday our class ___ to the museum and ___ many old paintings.'",
+        "choices": [
+          "went, saw",
+          "goed, seen",
+          "went, seen",
+          "gone, saw"
+        ],
+        "correct": "went, saw",
+        "hint": "Both blanks need the plain past-tense form that stands alone without a helper word like 'has' or 'had.'",
+        "whyHard": "'seen' and 'gone' are past participles that need a helper verb, making 'went, seen' a very tempting near-miss."
+      },
+      {
+        "prompt": "Which word best completes the sentence to show WHY it happened? '___ she practiced every day, Mia became a wonderful violin player.'",
+        "choices": [
+          "Because",
+          "But",
+          "So",
+          "Or"
+        ],
+        "correct": "Because",
+        "hint": "You need a joining word that can start the sentence and signals a reason or cause.",
+        "whyHard": "All four are common conjunctions, but only a subordinating one showing cause fits at the sentence start; 'So' feels right since practice leads to a result."
+      },
+      {
+        "prompt": "Choose the correct word: 'Of everyone in the room, Jonah spoke ___, so no one could hear him at all.'",
+        "choices": [
+          "most quietly",
+          "more quietly",
+          "quietly",
+          "quieter"
+        ],
+        "correct": "most quietly",
+        "hint": "You are comparing Jonah to a whole group, and the word describes HOW he spoke, so it needs the -ly adverb form.",
+        "whyHard": "Combines superlative (whole group, not two) with adverb formation; 'quieter' and 'more quietly' are strong traps."
+      },
+      {
+        "prompt": "Which sentence keeps the verb tenses correct? 'Last summer we ___ to the lake, and next summer we ___ there again.'",
+        "choices": [
+          "went, will go",
+          "went, go",
+          "go, go",
+          "will go, went"
+        ],
+        "correct": "went, will go",
+        "hint": "Match each verb to its time clue: 'last summer' already happened, 'next summer' has not happened yet.",
+        "whyHard": "Both blanks use the same verb but demand different tenses; 'went, go' is tempting because the first word is right."
+      }
+    ]
+  },
+  {
+    "std": "L.3.2",
+    "questions": [
+      {
+        "prompt": "Which sentence is punctuated correctly?",
+        "choices": [
+          "\"I found it!\" yelled Sam.",
+          "\"I found it!,\" yelled Sam.",
+          "\"I found it,\" yelled Sam!",
+          "\"I found it! yelled Sam.\""
+        ],
+        "correct": "\"I found it!\" yelled Sam.",
+        "hint": "When a quote ends with a strong mark like ! , that mark stays inside the quotation marks and no extra comma is added before the speaker tag.",
+        "whyHard": "An exclamation point replaces the dialogue comma, so the tempting extra comma is wrong."
+      },
+      {
+        "prompt": "Choose the correct word: \"The three ___ tails wagged happily.\"",
+        "choices": [
+          "dogs'",
+          "dog's",
+          "dogs",
+          "dogs's"
+        ],
+        "correct": "dogs'",
+        "hint": "There is more than one dog, and the tails belong to them. For a plural word that already ends in -s, add just an apostrophe after the s.",
+        "whyHard": "Plural possessive (dogs') is easily confused with singular possessive (dog's) and plain plural (dogs)."
+      },
+      {
+        "prompt": "Choose the word that correctly fills the blank: \"The kitten curled up and licked ___ soft paws.\"",
+        "choices": [
+          "its",
+          "it's",
+          "its'",
+          "it is'"
+        ],
+        "correct": "its",
+        "hint": "Try reading it as \"it is\" \u2014 if that doesn't make sense, you need the possessive form, which has no apostrophe.",
+        "whyHard": "The possessive 'its' has no apostrophe, but the contraction 'it's' looks more like a possessive and tempts students."
+      },
+      {
+        "prompt": "Which spelling correctly adds -ed to the word 'hop' in this sentence: \"The frog ___ across the pond.\"",
+        "choices": [
+          "hopped",
+          "hoped",
+          "hopd",
+          "hopt"
+        ],
+        "correct": "hopped",
+        "hint": "For a short-vowel word ending in one consonant, double the final consonant before adding -ed.",
+        "whyHard": "Not doubling gives 'hoped,' a real but different word, making the wrong choice look correct."
+      },
+      {
+        "prompt": "Which sentence uses capital letters correctly?",
+        "choices": [
+          "We visited Lake Michigan in July.",
+          "We visited lake Michigan in july.",
+          "We Visited Lake Michigan in July.",
+          "we visited Lake michigan in July."
+        ],
+        "correct": "We visited Lake Michigan in July.",
+        "hint": "Capitalize the specific name of a place and the name of a month, but not ordinary verbs like 'visited.'",
+        "whyHard": "Each distractor breaks a different rule, so you must check the place name, the month, and the common words all at once."
+      }
+    ]
+  },
+  {
+    "std": "L.3.3",
+    "questions": [
+      {
+        "prompt": "A storm tore the roof clean off the barn. Which word best replaces \"strong\" in \"The wind was strong\" to show HOW powerful it really was?",
+        "choices": [
+          "fierce",
+          "steady",
+          "brisk",
+          "chilly"
+        ],
+        "correct": "fierce",
+        "hint": "Match the word to the clue in the sentence \u2014 the wind ripped a roof off. Which word carries that much force?",
+        "whyHard": "Every choice describes wind, but only one matches the extreme force shown by the roof being torn off."
+      },
+      {
+        "prompt": "You are writing a thank-you note to your school principal. Which sentence fits the situation best?",
+        "choices": [
+          "Thank you for organizing our wonderful field trip.",
+          "Thanks a ton for the awesome trip!",
+          "Yo, that trip totally rocked.",
+          "The trip was lit, no cap."
+        ],
+        "correct": "Thank you for organizing our wonderful field trip.",
+        "hint": "Think about your audience. Would you talk to a principal the same way you text a friend?",
+        "whyHard": "All four say thanks, but only one uses the polite, written tone that fits a formal note to a principal."
+      },
+      {
+        "prompt": "Marco had not eaten all day and was starving. Which word best completes the sentence for effect: \"He ___ his sandwich in seconds.\"?",
+        "choices": [
+          "devoured",
+          "tasted",
+          "nibbled",
+          "ate"
+        ],
+        "correct": "devoured",
+        "hint": "The most precise word should MATCH how hungry Marco was, not fight against it.",
+        "whyHard": "\"Ate\" is correct but dull, and \"tasted/nibbled\" contradict his hunger \u2014 only the most vivid, precise word fits."
+      },
+      {
+        "prompt": "Four words all describe being happy. Which one shows the SMALLEST, mildest amount of happiness?",
+        "choices": [
+          "content",
+          "joyful",
+          "thrilled",
+          "ecstatic"
+        ],
+        "correct": "content",
+        "hint": "Picture the words on a ladder from a little happy to bursting with happiness. Which sits on the bottom rung?",
+        "whyHard": "All four mean happy, so the child must rank shades of the same feeling instead of spotting a wrong word."
+      },
+      {
+        "prompt": "An author wants readers to feel uneasy about an old house. Which word should she choose to describe it?",
+        "choices": [
+          "gloomy",
+          "cozy",
+          "peaceful",
+          "spacious"
+        ],
+        "correct": "gloomy",
+        "hint": "Any of these could describe an old house \u2014 pick the one whose feeling matches the mood she wants.",
+        "whyHard": "Each word truthfully fits an old house, but only one carries the uneasy feeling the author is after."
+      }
+    ]
+  },
+  {
+    "std": "L.4.5a",
+    "questions": [
+      {
+        "prompt": "When the teacher stepped out, one student wrote, \"Our classroom turned into a zoo.\" What does this metaphor mean?",
+        "choices": [
+          "The students grew wild, loud, and out of control.",
+          "The students were crowded together in a small space.",
+          "The students were excited to study animals that day.",
+          "The students grew bored and restless without a lesson."
+        ],
+        "correct": "The students grew wild, loud, and out of control.",
+        "hint": "Think about what a zoo is really like when the animals are loose \u2014 noisy and unruly. Match that feeling, not just the idea of animals.",
+        "whyHard": "Two distractors (crowded, animals) latch onto the literal 'zoo' image, but the metaphor is about chaos and noise."
+      },
+      {
+        "prompt": "After the long hike, Dad groaned, \"My legs are noodles.\" What does he mean?",
+        "choices": [
+          "His legs felt weak and wobbly.",
+          "His legs were long and thin.",
+          "His legs were covered in mud.",
+          "His legs were sore and bruised."
+        ],
+        "correct": "His legs felt weak and wobbly.",
+        "hint": "Picture a cooked noodle, not a dry one. What does a soft noodle do when you try to stand it up?",
+        "whyHard": "'Long and thin' fits a raw noodle and tempts a literal read, but the point of comparison is limpness and wobble."
+      },
+      {
+        "prompt": "The old man smiled proudly and said, \"My granddaughter is the anchor of our family.\" What does he mean?",
+        "choices": [
+          "She keeps the family steady and holds it together.",
+          "She weighs the family down and slows them.",
+          "She is the heaviest person in the family.",
+          "She spends a lot of her time near boats."
+        ],
+        "correct": "She keeps the family steady and holds it together.",
+        "hint": "An anchor can hold a ship down OR hold it steady. The word 'proudly' tells you which meaning the old man intends.",
+        "whyHard": "'Anchor' can be negative (weighs down) or positive (steadies); the context word 'proudly' is the only clue that forces the positive reading."
+      },
+      {
+        "prompt": "Which sentence contains a METAPHOR (not a simile or plain description)?",
+        "choices": [
+          "The fresh snow was a thick blanket over the yard.",
+          "The fresh snow was like a thick blanket over the yard.",
+          "The fresh snow fell as softly as feathers.",
+          "The fresh snow was cold, deep, and white."
+        ],
+        "correct": "The fresh snow was a thick blanket over the yard.",
+        "hint": "A simile uses 'like' or 'as' to compare. A metaphor says one thing IS another. Find the one with no 'like' or 'as' that still makes a comparison.",
+        "whyHard": "All four sound poetic; the reader must separate a direct metaphor from two 'like/as' similes and one purely literal sentence."
+      },
+      {
+        "prompt": "Nora kept trying the hard math problem long after everyone else quit. Which metaphor best shows that she refused to give up?",
+        "choices": [
+          "Nora was a bulldog, holding on and not letting go.",
+          "Nora was a butterfly, drifting from problem to problem.",
+          "Nora was a statue, sitting perfectly still.",
+          "Nora was a shadow, quietly following the others."
+        ],
+        "correct": "Nora was a bulldog, holding on and not letting go.",
+        "hint": "Each animal or object suggests a different trait. Ask which one means stubborn determination, not just stillness or wandering.",
+        "whyHard": "Every choice is a real metaphor, so the reader must judge each one's connotation and match the exact idea of persistence."
+      }
+    ]
+  },
+  {
+    "std": "L.4.1",
+    "questions": [
+      {
+        "prompt": "Choose the word that correctly completes this sentence: \"That old barn is the place ___ my dad learned to milk cows.\"",
+        "choices": [
+          "which",
+          "that",
+          "where",
+          "when"
+        ],
+        "correct": "where",
+        "hint": "The blank points back to a PLACE, so you need the relative adverb that means 'in that place' \u2014 not one that would need an extra word like 'in' in front of it.",
+        "whyHard": "'which' and 'that' feel natural but are ungrammatical here without a preposition; only the relative adverb 'where' works, and 'when' is a tempting near-miss."
+      },
+      {
+        "prompt": "Which sentence correctly uses the progressive verb tense to show an action happening right now?",
+        "choices": [
+          "The team winning the game.",
+          "The team is winning the game.",
+          "The team be winning the game.",
+          "The team is win the game."
+        ],
+        "correct": "The team is winning the game.",
+        "hint": "The progressive needs a form of the verb 'to be' PLUS the main verb ending in -ing. Check that both parts are present and in the right form.",
+        "whyHard": "Each wrong choice breaks the progressive in a different subtle way (missing helper, wrong helper form, wrong -ing form), so all four look almost right."
+      },
+      {
+        "prompt": "Which sentence puts the adjectives in the correct order?",
+        "choices": [
+          "She bought a wooden small round table.",
+          "She bought a round wooden small table.",
+          "She bought a small round wooden table.",
+          "She bought a wooden round small table."
+        ],
+        "correct": "She bought a small round wooden table.",
+        "hint": "English has a set order for adjectives: size comes before shape, and shape comes before what something is made of.",
+        "whyHard": "All four use the exact same three words and sound plausible when read aloud; only the size-shape-material order is standard English."
+      },
+      {
+        "prompt": "Which sentence uses 'there,' 'their,' and 'they're' all correctly?",
+        "choices": [
+          "They're going to leave their bikes over there.",
+          "There going to leave they're bikes over their.",
+          "Their going to leave there bikes over they're.",
+          "They're going to leave there bikes over their."
+        ],
+        "correct": "They're going to leave their bikes over there.",
+        "hint": "Sort out each word: one means 'they are,' one shows ownership, and one names a place. Match each spelling to its job in the sentence.",
+        "whyHard": "The three homophones sound identical, so a reader can't rely on their ear \u2014 every choice is a plausible-looking mix and only one lands all three."
+      },
+      {
+        "prompt": "Grandpa is ninety years old, but he ___ still run a whole mile every morning. Which word best shows that he is ABLE to do it?",
+        "choices": [
+          "can",
+          "may",
+          "must",
+          "should"
+        ],
+        "correct": "can",
+        "hint": "Each helping word carries a different meaning \u2014 permission, ability, obligation, or advice. Pick the one that means 'is able to.'",
+        "whyHard": "All four are grammatical modal verbs that fit the slot, so the child must choose by precise meaning (ability) rather than by grammar."
+      }
+    ]
+  },
+  {
+    "std": "K.L.1",
+    "questions": [
+      {
+        "prompt": "Finish the sentence with the correct word: 'There is one mouse by the wall, but I see three ___ by the cheese.'",
+        "choices": [
+          "mouses",
+          "mouse",
+          "mices",
+          "mice"
+        ],
+        "correct": "mice",
+        "hint": "Some words change in a special way when they mean more than one \u2014 they don't just add -s. Say each choice out loud and pick the one that sounds right for grown-up English.",
+        "whyHard": "It's an irregular plural, so the normal 'add -s' rule (mouses) is a trap that sounds reasonable."
+      },
+      {
+        "prompt": "Which question word best fills the blank? '___ do you get to school?' The answer is: 'I ride the bus.'",
+        "choices": [
+          "Where",
+          "Who",
+          "When",
+          "How"
+        ],
+        "correct": "How",
+        "hint": "Match the question word to the answer. 'I ride the bus' tells the WAY you travel, not a place, a person, or a time.",
+        "whyHard": "All four question words fit the shape of the sentence; only the answer clue rules out the tempting 'Where.'"
+      },
+      {
+        "prompt": "Which word best fills the blank? 'The squirrel climbed ___ the tree to reach the nuts at the very top.'",
+        "choices": [
+          "down",
+          "up",
+          "under",
+          "beside"
+        ],
+        "correct": "up",
+        "hint": "A preposition tells where or which direction. Use the clue 'at the very top' to figure out which way the squirrel must go.",
+        "whyHard": "'down' is the tempting opposite and all four are real position words; only the 'top' clue forces one answer."
+      },
+      {
+        "prompt": "Read this sentence: 'We watched a funny play at school.' In which sentence below does the word 'play' mean the SAME thing?",
+        "choices": [
+          "Let's play a game of tag.",
+          "The children play outside at recess.",
+          "Our class put on a play for the parents.",
+          "Do you want to play with me?"
+        ],
+        "correct": "Our class put on a play for the parents.",
+        "hint": "In the top sentence, 'play' is a THING you watch, not something you do. Find the choice where 'play' is also a thing, not an action.",
+        "whyHard": "The same word 'play' appears in every choice; only one uses it as a noun (a show) instead of an action verb."
+      },
+      {
+        "prompt": "Which sentence is written correctly?",
+        "choices": [
+          "She run to the store.",
+          "She runned to the store.",
+          "She running to the store.",
+          "She ran to the store."
+        ],
+        "correct": "She ran to the store.",
+        "hint": "The sentence is about something that already happened. Some verbs don't add -ed for the past \u2014 they change into a new word instead.",
+        "whyHard": "'runned' follows the regular -ed past-tense rule, which feels correct but is wrong for this irregular verb."
+      }
+    ]
+  },
+  {
+    "std": "K.L.2",
+    "questions": [
+      {
+        "prompt": "Read this sentence: \"My dog Max ran to me.\" One word is a NAME, so it must start with a capital letter. Which word is the name?",
+        "choices": [
+          "dog",
+          "Max",
+          "ran",
+          "me"
+        ],
+        "correct": "Max",
+        "hint": "A name tells you what ONE special person or pet is called, not just what kind of animal it is.",
+        "whyHard": "Child must separate a proper noun (a pet's name) from common nouns like 'dog' and 'me' that sit right beside it."
+      },
+      {
+        "prompt": "Which sentence is written the correct way?",
+        "choices": [
+          "i see a cat.",
+          "I see a Cat.",
+          "I see a cat.",
+          "i See a cat."
+        ],
+        "correct": "I see a cat.",
+        "hint": "Check the word 'I' AND check that only the first word gets a capital, not the middle words.",
+        "whyHard": "Every wrong choice breaks exactly one rule, so the child must check capital-I and no extra middle capitals at the same time."
+      },
+      {
+        "prompt": "Ben jumps up and shouts, \"We won the big game___\" Which mark best shows that Ben is very excited?",
+        "choices": [
+          "a period (.)",
+          "a comma (,)",
+          "a question mark (?)",
+          "an exclamation mark (!)"
+        ],
+        "correct": "an exclamation mark (!)",
+        "hint": "Think about how Ben's voice sounds when he is shouting and excited, not calm.",
+        "whyHard": "A period would also 'end' the line, so the child must pick the mark that matches the excited MEANING, not just any ending."
+      },
+      {
+        "prompt": "Say the word 'stop' slowly: /s/ /t/ /o/ /p/. Which spelling matches those sounds correctly?",
+        "choices": [
+          "sop",
+          "stap",
+          "stop",
+          "sdop"
+        ],
+        "correct": "stop",
+        "hint": "Stretch each sound; the sound right after /s/ is a /t/, even though it can sound a little like a /d/.",
+        "whyHard": "After /s/ the /t/ can be mistaken for /d/, and the middle /o/ can be mistaken for /a/, making three spellings sound plausible."
+      },
+      {
+        "prompt": "Read this: \"the sun is hot.\" Something is not correct. What needs to be fixed?",
+        "choices": [
+          "The first word needs a capital T",
+          "It needs a question mark at the end",
+          "The word 'hot' is spelled wrong",
+          "Nothing is wrong"
+        ],
+        "correct": "The first word needs a capital T",
+        "hint": "Every sentence must START in a special way. Look very closely at the first letter.",
+        "whyHard": "The sentence looks finished and correctly spelled at a glance, so the child must catch the missing first-word capital instead of choosing 'Nothing is wrong.'"
+      }
+    ]
+  },
+  {
+    "std": "K.L.4",
+    "questions": [
+      {
+        "prompt": "Read this sentence:\n\n\"The **bat** flew out of the dark cave when the sun went down.\"\n\nWhat does **bat** mean here?",
+        "choices": [
+          "A flying animal with wings",
+          "A stick you use to hit a ball",
+          "To hit something hard",
+          "To close your eyes fast"
+        ],
+        "correct": "A flying animal with wings",
+        "hint": "The word 'bat' can mean more than one thing. Use the other words in THIS sentence \u2014 'flew,' 'cave,' 'wings' \u2014 to pick the meaning that fits.",
+        "whyHard": "'Bat' is a multiple-meaning word and the baseball-bat meaning is the tempting trap; only the sentence clues point to the animal."
+      },
+      {
+        "prompt": "Read this sentence:\n\n\"**Duck!** The ball is flying right at your head!\"\n\nWhat does **duck** mean here?",
+        "choices": [
+          "To bend down low very fast",
+          "A bird with feathers",
+          "To swim in a pond",
+          "To say 'quack, quack'"
+        ],
+        "correct": "To bend down low very fast",
+        "hint": "'Duck' can be an animal OR an action. Ask yourself: what would you DO if a ball flew at your head?",
+        "whyHard": "The familiar animal meaning is the obvious lure, but context demands the action meaning."
+      },
+      {
+        "prompt": "The rain poured all day. The puppy was not just wet \u2014 he was **soaked**.\n\nWhat does **soaked** most likely mean?",
+        "choices": [
+          "A little bit wet",
+          "Very, very wet",
+          "Almost dry",
+          "Nice and warm"
+        ],
+        "correct": "Very, very wet",
+        "hint": "The sentence says 'not just wet.' That tells you 'soaked' is even MORE than plain wet \u2014 think about how much.",
+        "whyHard": "Requires shades-of-meaning: wet vs. soaked, with 'a little wet' a close plausible distractor."
+      },
+      {
+        "prompt": "You know that **UN-** means 'the opposite.'\n\nMom used a key to **unlock** the door.\n\nWhat does **unlock** mean?",
+        "choices": [
+          "To open a lock",
+          "To shut and lock it",
+          "To lock it again",
+          "To break the key"
+        ],
+        "correct": "To open a lock",
+        "hint": "'Lock' means to close tight. 'Un-' flips it to the opposite. So what happens to a locked door?",
+        "whyHard": "Applies the taught prefix un- to reason out a less-common word, with 'lock again' a tempting near-miss."
+      },
+      {
+        "prompt": "Which word means the MOST cold \u2014 colder than all the others?",
+        "choices": [
+          "Cool",
+          "Chilly",
+          "Cold",
+          "Freezing"
+        ],
+        "correct": "Freezing",
+        "hint": "Line the words up from a little cold to the MOST cold. Which one is the very strongest?",
+        "whyHard": "Tests a shades-of-meaning ladder among four close temperature words, each a real cold word."
+      }
+    ]
+  },
+  {
+    "std": "K.L.5",
+    "questions": [
+      {
+        "prompt": "These four words all mean cold: cool, chilly, cold, and freezing. Which word means the MOST cold of all?",
+        "choices": [
+          "Cool",
+          "Chilly",
+          "Cold",
+          "Freezing"
+        ],
+        "correct": "Freezing",
+        "hint": "Line the words up from a little cold to SO cold your teeth chatter. Which one is the very end?",
+        "whyHard": "All four choices are true cold words, so the child must rank shades of meaning instead of spotting an opposite."
+      },
+      {
+        "prompt": "Read this sentence: \"The boy swung the bat and hit the ball.\" What does the word \"bat\" mean here?",
+        "choices": [
+          "A furry animal that flies at night",
+          "A wooden stick you hit a ball with",
+          "To blink your eyes very fast",
+          "A dark, spooky cave"
+        ],
+        "correct": "A wooden stick you hit a ball with",
+        "hint": "Use the other words in the sentence. He SWUNG it to hit a BALL. Which meaning fits that action?",
+        "whyHard": "\"Bat\" has two real meanings the child knows; only the sentence's context tells which one is right."
+      },
+      {
+        "prompt": "A puppy is a baby dog. Which word names a baby cat?",
+        "choices": [
+          "Kitten",
+          "Chick",
+          "Calf",
+          "Cub"
+        ],
+        "correct": "Kitten",
+        "hint": "Say each one to yourself: whose baby is it? Match the baby to the CAT, not to a bird, cow, or bear.",
+        "whyHard": "Every choice is a baby-animal word, so the child must hold the dog-to-puppy pattern and match the right parent."
+      },
+      {
+        "prompt": "All of these words mean to eat: nibble, taste, chew, and gobble. Which word means to eat A LOT very fast, like you are super hungry?",
+        "choices": [
+          "Nibble",
+          "Taste",
+          "Chew",
+          "Gobble"
+        ],
+        "correct": "Gobble",
+        "hint": "Some of these mean eating just a tiny bit. Which one sounds like eating fast and big?",
+        "whyHard": "All choices are eating words; the child must feel the size and speed inside each verb, not just its category."
+      },
+      {
+        "prompt": "Red, blue, and green are all colors. Which word below is also a color?",
+        "choices": [
+          "Purple",
+          "Happy",
+          "Round",
+          "Loud"
+        ],
+        "correct": "Purple",
+        "hint": "The other three words describe things too, but they tell about a feeling, a shape, or a sound. Which one names a color?",
+        "whyHard": "The wrong choices are all describing words like colors are, so the child must know the exact color category, not just 'a word that describes.'"
+      }
+    ]
+  },
+  {
+    "std": "K.L.6",
+    "questions": [
+      {
+        "prompt": "After playing in the rain all day, Sam was not just a little wet \u2014 he was as wet as a person could ever be. Which word tells that Sam was the MOST wet?",
+        "choices": [
+          "Damp",
+          "Wet",
+          "Soaked",
+          "Dry"
+        ],
+        "correct": "Soaked",
+        "hint": "Some words mean a small amount and some mean a big amount. Which one means MORE than just wet?",
+        "whyHard": "Distractors sit on the same wetness ladder (damp < wet < soaked), so the child must rank shades of meaning, not just pick a wet word."
+      },
+      {
+        "prompt": "A dog can bark, and a tree can have bark. Read this sentence: \"The rough bark on the tree kept its trunk safe.\" What does the word \"bark\" mean HERE?",
+        "choices": [
+          "The sound a dog makes",
+          "The outside cover of a tree",
+          "To yell in a loud voice",
+          "A small pet dog"
+        ],
+        "correct": "The outside cover of a tree",
+        "hint": "Look at the other words in the sentence, like \"tree\" and \"trunk.\" Which meaning fits with those?",
+        "whyHard": "\"Bark\" has two common meanings and the dog meaning is the more familiar one; the child must use context (tree, trunk) to pick the other meaning."
+      },
+      {
+        "prompt": "The soup just came off the hot stove and was bubbling and steaming. Which word tells that something is the MOST hot?",
+        "choices": [
+          "Cool",
+          "Warm",
+          "Hot",
+          "Boiling"
+        ],
+        "correct": "Boiling",
+        "hint": "These words go from cold to very, very hot. Which one is the strongest?",
+        "whyHard": "\"Hot\" is the obvious grab, but the ladder cool < warm < hot < boiling forces the child to choose the strongest degree, not the plain word."
+      },
+      {
+        "prompt": "The word \"trunk\" can mean more than one thing. Read this sentence: \"The elephant lifted the peanut with its long trunk.\" What does \"trunk\" mean in THIS sentence?",
+        "choices": [
+          "The back of a car",
+          "The main part of a tree",
+          "An elephant's long nose",
+          "A big box for clothes"
+        ],
+        "correct": "An elephant's long nose",
+        "hint": "Think about who is doing the action. What part of an elephant could lift a peanut?",
+        "whyHard": "All four are real meanings of \"trunk,\" so the child can't rely on a single definition \u2014 only the sentence's clue (elephant, lifted) points to one answer."
+      },
+      {
+        "prompt": "Maya got the exact puppy she had always wished for. She was not just a little happy \u2014 she was as happy as she could ever be. Which word tells that Maya felt the MOST happy?",
+        "choices": [
+          "Okay",
+          "Glad",
+          "Happy",
+          "Thrilled"
+        ],
+        "correct": "Thrilled",
+        "hint": "Some feeling words are small and some are big. Which one shows the biggest, strongest happy feeling?",
+        "whyHard": "Every choice is a positive feeling on one ladder (okay < glad < happy < thrilled), so the child must judge intensity rather than match the word \"happy.\""
+      }
+    ]
+  }
+]
