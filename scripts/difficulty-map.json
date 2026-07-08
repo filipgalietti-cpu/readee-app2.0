@@ -1,0 +1,7463 @@
+[
+  {
+    "id": "RL.1.1-Q1",
+    "standard": "RL.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.6,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.1.1-Q2",
+    "standard": "RL.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 19,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.1.1-Q3",
+    "standard": "RL.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.1,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.1-Q4",
+    "standard": "RL.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.6,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.1-Q5",
+    "standard": "RL.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.6,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.1.2-Q1",
+    "standard": "RL.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.5,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.2-Q2",
+    "standard": "RL.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.3,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.2-Q3",
+    "standard": "RL.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.2-Q4",
+    "standard": "RL.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.0,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.1.2-Q5",
+    "standard": "RL.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.6,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.3-Q1",
+    "standard": "RL.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.0,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.1.3-Q2",
+    "standard": "RL.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.1,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.3-Q3",
+    "standard": "RL.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.3-Q4",
+    "standard": "RL.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.7,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.3-Q5",
+    "standard": "RL.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.4-Q1",
+    "standard": "RL.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.1.4-Q2",
+    "standard": "RL.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.4,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.4-Q3",
+    "standard": "RL.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.7,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.4-Q4",
+    "standard": "RL.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.4-Q5",
+    "standard": "RL.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.6,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.5-Q3",
+    "standard": "RL.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 10.5,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.1.5-Q4",
+    "standard": "RL.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 11.3,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.1.6-Q1",
+    "standard": "RL.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 19,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.1.6-Q2",
+    "standard": "RL.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.6-Q3",
+    "standard": "RL.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.6,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.6-Q5",
+    "standard": "RL.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.7-Q1",
+    "standard": "RL.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 9.3,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.1.7-Q2",
+    "standard": "RL.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.0,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.7-Q3",
+    "standard": "RL.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.7,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.7-Q4",
+    "standard": "RL.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.0,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.7-Q5",
+    "standard": "RL.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.4,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.9-Q1",
+    "standard": "RL.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.0,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.9-Q2",
+    "standard": "RL.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.6,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.9-Q3",
+    "standard": "RL.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.9-Q4",
+    "standard": "RL.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.6,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.9-Q5",
+    "standard": "RL.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.1-Q1",
+    "standard": "RI.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 12.0,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.1.1-Q2",
+    "standard": "RI.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.1.1-Q3",
+    "standard": "RI.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.1.1-Q4",
+    "standard": "RI.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.1-Q5",
+    "standard": "RI.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.0,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.2-Q1",
+    "standard": "RI.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 19,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.1.2-Q2",
+    "standard": "RI.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.5,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.2-Q3",
+    "standard": "RI.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.1.2-Q4",
+    "standard": "RI.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.2-Q5",
+    "standard": "RI.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.3-Q1",
+    "standard": "RI.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.4,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.3-Q2",
+    "standard": "RI.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.3,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.3-Q3",
+    "standard": "RI.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.4,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.3-Q4",
+    "standard": "RI.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.3-Q5",
+    "standard": "RI.1.3",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.0,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.4-Q4",
+    "standard": "RI.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.4-Q3",
+    "standard": "RI.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.4,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.1.4-Q7",
+    "standard": "RI.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.4-Q8",
+    "standard": "RI.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.4-Q10",
+    "standard": "RI.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.4-Q11",
+    "standard": "RI.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.1,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.5-Q1",
+    "standard": "RI.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.0,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.5-Q2",
+    "standard": "RI.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 10.2,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.1.5-Q3",
+    "standard": "RI.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.5,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.5-Q4",
+    "standard": "RI.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 11.9,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.1.5-Q5",
+    "standard": "RI.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.6-Q1",
+    "standard": "RI.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.2,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.6-Q2",
+    "standard": "RI.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.7,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.6-Q3",
+    "standard": "RI.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.8,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.6-Q4",
+    "standard": "RI.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.6-Q5",
+    "standard": "RI.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.7-Q1",
+    "standard": "RI.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 9.0,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.7-Q2",
+    "standard": "RI.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 15.9,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.1.7-Q3",
+    "standard": "RI.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.1,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.7-Q4",
+    "standard": "RI.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 16.2,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.1.7-Q5",
+    "standard": "RI.1.7",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.6,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.8-Q1",
+    "standard": "RI.1.8",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.5,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.8-Q2",
+    "standard": "RI.1.8",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.8-Q3",
+    "standard": "RI.1.8",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.6,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.8-Q4",
+    "standard": "RI.1.8",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.1,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.8-Q5",
+    "standard": "RI.1.8",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 9.0,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.1.9-Q1",
+    "standard": "RI.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.5,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.1.9-Q2",
+    "standard": "RI.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -1.1,
+    "difficulty": 7,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.1.9-Q3",
+    "standard": "RI.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.9,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.1.9-Q4",
+    "standard": "RI.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.1.9-Q5",
+    "standard": "RI.1.9",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -0.4,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.1a-Q1",
+    "standard": "RF.1.1a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 10.7,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.1.1a-Q2",
+    "standard": "RF.1.1a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 10.6,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.1.1a-Q3",
+    "standard": "RF.1.1a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.1,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.1a-Q4",
+    "standard": "RF.1.1a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 9.8,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.1.1a-Q5",
+    "standard": "RF.1.1a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.9,
+    "difficulty": 19,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2b-Q1",
+    "standard": "RF.1.2b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -1.6,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2b-Q2",
+    "standard": "RF.1.2b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -1.9,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2b-Q3",
+    "standard": "RF.1.2b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.2b-Q4",
+    "standard": "RF.1.2b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -1.9,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2b-Q5",
+    "standard": "RF.1.2b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -1.9,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2c-Q1",
+    "standard": "RF.1.2c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2c-Q2",
+    "standard": "RF.1.2c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2c-Q3",
+    "standard": "RF.1.2c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2c-Q5",
+    "standard": "RF.1.2c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.2d-Q4",
+    "standard": "RF.1.2d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.6,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.4b-Q1",
+    "standard": "RF.1.4b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 10.2,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.1.4b-Q2",
+    "standard": "RF.1.4b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.6,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.4b-Q3",
+    "standard": "RF.1.4b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.4b-Q4",
+    "standard": "RF.1.4b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.4c-Q4",
+    "standard": "RF.1.4c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 10.2,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.1.4-Q3",
+    "standard": "L.1.4",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.7,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.4a-Q1",
+    "standard": "L.1.4a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.4a-Q2",
+    "standard": "L.1.4a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.0,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.4a-Q3",
+    "standard": "L.1.4a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.4a-Q4",
+    "standard": "L.1.4a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.4a-Q5",
+    "standard": "L.1.4a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.3,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.4b-Q4",
+    "standard": "L.1.4b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.6,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.4c-Q1",
+    "standard": "L.1.4c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.6,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.4c-Q2",
+    "standard": "L.1.4c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.4c-Q3",
+    "standard": "L.1.4c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.5,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.1.4c-Q4",
+    "standard": "L.1.4c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.1,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.4c-Q5",
+    "standard": "L.1.4c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.2,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5-Q1",
+    "standard": "L.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5-Q2",
+    "standard": "L.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5-Q3",
+    "standard": "L.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5-Q4",
+    "standard": "L.1.5",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -0.7,
+    "difficulty": 8,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.5a-Q1",
+    "standard": "L.1.5a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.5a-Q2",
+    "standard": "L.1.5a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.1,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.5a-Q3",
+    "standard": "L.1.5a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5a-Q4",
+    "standard": "L.1.5a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.5a-Q5",
+    "standard": "L.1.5a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.6,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5b-Q1",
+    "standard": "L.1.5b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5b-Q2",
+    "standard": "L.1.5b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.1.5b-Q3",
+    "standard": "L.1.5b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5b-Q4",
+    "standard": "L.1.5b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.1,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5b-Q5",
+    "standard": "L.1.5b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5c-Q1",
+    "standard": "L.1.5c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5c-Q2",
+    "standard": "L.1.5c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.0,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5c-Q3",
+    "standard": "L.1.5c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5c-Q4",
+    "standard": "L.1.5c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.8,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5c-Q5",
+    "standard": "L.1.5c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5d-Q1",
+    "standard": "L.1.5d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.5d-Q3",
+    "standard": "L.1.5d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.5d-Q4",
+    "standard": "L.1.5d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.6-Q2",
+    "standard": "L.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.6,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.1.6-Q5",
+    "standard": "L.1.6",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3a-Q1",
+    "standard": "RF.1.3a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -1.5,
+    "difficulty": 7,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3a-Q2",
+    "standard": "RF.1.3a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3a-Q3",
+    "standard": "RF.1.3a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3a-Q4",
+    "standard": "RF.1.3a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -0.1,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3a-Q5",
+    "standard": "RF.1.3a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3b-Q2",
+    "standard": "RF.1.3b",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.4,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3c-Q1",
+    "standard": "RF.1.3c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -0.5,
+    "difficulty": 7,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3c-Q2",
+    "standard": "RF.1.3c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3c-Q3",
+    "standard": "RF.1.3c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3c-Q4",
+    "standard": "RF.1.3c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.2,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3c-Q5",
+    "standard": "RF.1.3c",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.3,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.1.3d-Q1",
+    "standard": "RF.1.3d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3d-Q2",
+    "standard": "RF.1.3d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3d-Q3",
+    "standard": "RF.1.3d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.1,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3d-Q4",
+    "standard": "RF.1.3d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3d-Q5",
+    "standard": "RF.1.3d",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3e-Q1",
+    "standard": "RF.1.3e",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.6,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3e-Q2",
+    "standard": "RF.1.3e",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3e-Q3",
+    "standard": "RF.1.3e",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3e-Q4",
+    "standard": "RF.1.3e",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.7,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.1.3e-Q5",
+    "standard": "RF.1.3e",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 9.5,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.1.3f-Q1",
+    "standard": "RF.1.3f",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 8.5,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.1.3f-Q4",
+    "standard": "RF.1.3f",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3f-Q5",
+    "standard": "RF.1.3f",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.7,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3g-Q2",
+    "standard": "RF.1.3g",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -0.2,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3g-Q3",
+    "standard": "RF.1.3g",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -0.7,
+    "difficulty": 8,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.3g-Q4",
+    "standard": "RF.1.3g",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.9,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.3g-Q5",
+    "standard": "RF.1.3g",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.1.4a-Q1",
+    "standard": "RF.1.4a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.1.4a-Q5",
+    "standard": "RF.1.4a",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.7,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.1.10-Q4",
+    "standard": "RL.1.10",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 11.9,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.1.10-Q2",
+    "standard": "RI.1.10",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.4,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.1.10-Q5",
+    "standard": "RI.1.10",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 7.5,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.1-Q1",
+    "standard": "L.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 4.0,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.1-Q2",
+    "standard": "L.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.6,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.1-Q3",
+    "standard": "L.1.1",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.2-Q1",
+    "standard": "L.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 1.2,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.2-Q2",
+    "standard": "L.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": -0.7,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.2-Q3",
+    "standard": "L.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.1.2-Q4",
+    "standard": "L.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 0.0,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.1.2-Q5",
+    "standard": "L.1.2",
+    "grade": 1,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.1-Q1",
+    "standard": "RL.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.1-Q2",
+    "standard": "RL.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.5,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.1-Q3",
+    "standard": "RL.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.1-Q4",
+    "standard": "RL.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.6,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.1-Q5",
+    "standard": "RL.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.0,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.2-Q1",
+    "standard": "RL.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.3,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.2-Q2",
+    "standard": "RL.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.2-Q3",
+    "standard": "RL.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.2-Q4",
+    "standard": "RL.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.0,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.2-Q5",
+    "standard": "RL.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.1,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.3-Q1",
+    "standard": "RL.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.3-Q2",
+    "standard": "RL.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.3-Q3",
+    "standard": "RL.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.7,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.3-Q4",
+    "standard": "RL.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.3-Q5",
+    "standard": "RL.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.1,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.4-Q1",
+    "standard": "RL.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.2,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.4-Q2",
+    "standard": "RL.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.5,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.4-Q3",
+    "standard": "RL.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.2,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.4-Q4",
+    "standard": "RL.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 12.9,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.4-Q5",
+    "standard": "RL.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.5-Q1",
+    "standard": "RL.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.5-Q2",
+    "standard": "RL.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 12.4,
+    "difficulty": 58,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.5-Q4",
+    "standard": "RL.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.5-Q5",
+    "standard": "RL.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.6-Q1",
+    "standard": "RL.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 8.7,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.6-Q2",
+    "standard": "RL.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.1,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.6-Q3",
+    "standard": "RL.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 8.6,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.6-Q4",
+    "standard": "RL.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.5,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.6-Q5",
+    "standard": "RL.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.8,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.7-Q1",
+    "standard": "RL.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 17.4,
+    "difficulty": 71,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.2.7-Q2",
+    "standard": "RL.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.7-Q3",
+    "standard": "RL.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 12.2,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.7-Q4",
+    "standard": "RL.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.6,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.7-Q5",
+    "standard": "RL.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.3,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.9-Q1",
+    "standard": "RL.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.9-Q3",
+    "standard": "RL.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.6,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.9-Q4",
+    "standard": "RL.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.5,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.9-Q5",
+    "standard": "RL.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.10-Q1",
+    "standard": "RL.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.10-Q2",
+    "standard": "RL.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.2.10-Q3",
+    "standard": "RL.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.10-Q4",
+    "standard": "RL.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.2.10-Q5",
+    "standard": "RL.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.1-Q1",
+    "standard": "RI.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.1-Q2",
+    "standard": "RI.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.1,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.1-Q3",
+    "standard": "RI.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 44,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.1-Q4",
+    "standard": "RI.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.1-Q5",
+    "standard": "RI.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.2-Q1",
+    "standard": "RI.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.2-Q2",
+    "standard": "RI.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.2-Q3",
+    "standard": "RI.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.4,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.2-Q4",
+    "standard": "RI.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.7,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.2-Q5",
+    "standard": "RI.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.2,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.3-Q1",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 9.1,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.3-Q3",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.0,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.3-Q4",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.3-Q5",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.5,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.3-Q6",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.3-Q7",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.5,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.3-Q9",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.3-Q11",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.3-Q13",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.3-Q15",
+    "standard": "RI.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.4-Q1",
+    "standard": "RI.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.6,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.4-Q2",
+    "standard": "RI.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.4-Q3",
+    "standard": "RI.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.7,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.4-Q4",
+    "standard": "RI.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.9,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.4-Q5",
+    "standard": "RI.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.5-Q1",
+    "standard": "RI.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.1,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.5-Q2",
+    "standard": "RI.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 12.4,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.5-Q3",
+    "standard": "RI.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.5-Q4",
+    "standard": "RI.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 8.0,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.6-Q1",
+    "standard": "RI.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.2,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.6-Q2",
+    "standard": "RI.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 9.1,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.6-Q3",
+    "standard": "RI.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.6-Q4",
+    "standard": "RI.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 9.8,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.6-Q5",
+    "standard": "RI.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.1,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.7-Q1",
+    "standard": "RI.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.7-Q2",
+    "standard": "RI.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.7-Q3",
+    "standard": "RI.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 14.5,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.2.7-Q4",
+    "standard": "RI.2.7",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 19.7,
+    "difficulty": 78,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.2.8-Q1",
+    "standard": "RI.2.8",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.1,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.8-Q2",
+    "standard": "RI.2.8",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.8-Q3",
+    "standard": "RI.2.8",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.8-Q4",
+    "standard": "RI.2.8",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.5,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.8-Q5",
+    "standard": "RI.2.8",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.9-Q1",
+    "standard": "RI.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.4,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.9-Q2",
+    "standard": "RI.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.9-Q3",
+    "standard": "RI.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.9-Q4",
+    "standard": "RI.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": -0.1,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.9-Q5",
+    "standard": "RI.2.9",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.10-Q1",
+    "standard": "RI.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.10-Q3",
+    "standard": "RI.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 9.7,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.2.10-Q4",
+    "standard": "RI.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.1,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.2.10-Q5",
+    "standard": "RI.2.10",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.3,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3-Q1",
+    "standard": "RF.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.6,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3-Q2",
+    "standard": "RF.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3-Q3",
+    "standard": "RF.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 9.8,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.3-Q4",
+    "standard": "RF.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3-Q5",
+    "standard": "RF.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 9.8,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.3a-Q1",
+    "standard": "RF.2.3a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.2.3a-Q2",
+    "standard": "RF.2.3a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.2.3a-Q3",
+    "standard": "RF.2.3a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3b-Q1",
+    "standard": "RF.2.3b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3b-Q2",
+    "standard": "RF.2.3b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.6,
+    "difficulty": 20,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3b-Q3",
+    "standard": "RF.2.3b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3b-Q4",
+    "standard": "RF.2.3b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3b-Q5",
+    "standard": "RF.2.3b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3c-Q1",
+    "standard": "RF.2.3c",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3c-Q3",
+    "standard": "RF.2.3c",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3c-Q4",
+    "standard": "RF.2.3c",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": -0.5,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3c-Q5",
+    "standard": "RF.2.3c",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3d-Q2",
+    "standard": "RF.2.3d",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3d-Q4",
+    "standard": "RF.2.3d",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.3e-Q1",
+    "standard": "RF.2.3e",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 11.6,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.3e-Q2",
+    "standard": "RF.2.3e",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 11.3,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.3e-Q3",
+    "standard": "RF.2.3e",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3e-Q4",
+    "standard": "RF.2.3e",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.8,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3e-Q5",
+    "standard": "RF.2.3e",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 8.8,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.3f-Q2",
+    "standard": "RF.2.3f",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.3,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3f-Q4",
+    "standard": "RF.2.3f",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.3f-Q5",
+    "standard": "RF.2.3f",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.4-Q1",
+    "standard": "RF.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.4-Q2",
+    "standard": "RF.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 12.3,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.4-Q3",
+    "standard": "RF.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 12.7,
+    "difficulty": 58,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.4-Q4",
+    "standard": "RF.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.3,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4a-Q1",
+    "standard": "RF.2.4a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4a-Q2",
+    "standard": "RF.2.4a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4a-Q3",
+    "standard": "RF.2.4a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.5,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4a-Q4",
+    "standard": "RF.2.4a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.2,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4a-Q5",
+    "standard": "RF.2.4a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.3,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4b-Q1",
+    "standard": "RF.2.4b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.4b-Q2",
+    "standard": "RF.2.4b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.4,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.2.4b-Q4",
+    "standard": "RF.2.4b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4b-Q5",
+    "standard": "RF.2.4b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.2,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4c-Q1",
+    "standard": "RF.2.4c",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.5,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.2.4c-Q3",
+    "standard": "RF.2.4c",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 10.4,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.4-Q1",
+    "standard": "L.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4-Q2",
+    "standard": "L.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4-Q3",
+    "standard": "L.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.3,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4-Q4",
+    "standard": "L.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.4,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.4-Q5",
+    "standard": "L.2.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4a-Q1",
+    "standard": "L.2.4a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 10.5,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.4a-Q4",
+    "standard": "L.2.4a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.4b-Q3",
+    "standard": "L.2.4b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.4,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4c-Q1",
+    "standard": "L.2.4c",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4c-Q3",
+    "standard": "L.2.4c",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4d-Q1",
+    "standard": "L.2.4d",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 9.3,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.4d-Q2",
+    "standard": "L.2.4d",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4d-Q3",
+    "standard": "L.2.4d",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.4d-Q4",
+    "standard": "L.2.4d",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 14.5,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.2.4d-Q5",
+    "standard": "L.2.4d",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4e-Q2",
+    "standard": "L.2.4e",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 12.9,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.4e-Q4",
+    "standard": "L.2.4e",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.4e-Q5",
+    "standard": "L.2.4e",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.5-Q1",
+    "standard": "L.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.5-Q2",
+    "standard": "L.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.5-Q4",
+    "standard": "L.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 11.1,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.5-Q5",
+    "standard": "L.2.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.5a-Q1",
+    "standard": "L.2.5a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.5a-Q2",
+    "standard": "L.2.5a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.5a-Q3",
+    "standard": "L.2.5a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 12.3,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.5a-Q4",
+    "standard": "L.2.5a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 9.3,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.5a-Q5",
+    "standard": "L.2.5a",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.5b-Q2",
+    "standard": "L.2.5b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.5b-Q3",
+    "standard": "L.2.5b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.5b-Q5",
+    "standard": "L.2.5b",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.6-Q1",
+    "standard": "L.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.6-Q2",
+    "standard": "L.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.2,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.6-Q4",
+    "standard": "L.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.0,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.6-Q5",
+    "standard": "L.2.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.1-Q1",
+    "standard": "L.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.1-Q2",
+    "standard": "L.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 19,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.2.1-Q3",
+    "standard": "L.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.1,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.1-Q5",
+    "standard": "L.2.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.3,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.2-Q1",
+    "standard": "L.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.6,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.2-Q2",
+    "standard": "L.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 0.9,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.2-Q3",
+    "standard": "L.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.0,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.2.2-Q4",
+    "standard": "L.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 0.9,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.2.2-Q5",
+    "standard": "L.2.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.6,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.3-Q1",
+    "standard": "L.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": -1.0,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "L.2.3-Q2",
+    "standard": "L.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.3-Q3",
+    "standard": "L.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.4,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.2.3-Q4",
+    "standard": "L.2.3",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.3.1-Q1",
+    "standard": "RL.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.1-Q2",
+    "standard": "RL.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.1,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.1-Q3",
+    "standard": "RL.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.1-Q4",
+    "standard": "RL.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.1-Q5",
+    "standard": "RL.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.5,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.2-Q1",
+    "standard": "RL.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.3.2-Q2",
+    "standard": "RL.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.4,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.3.2-Q3",
+    "standard": "RL.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.0,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.2-Q4",
+    "standard": "RL.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.4,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.2-Q5",
+    "standard": "RL.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.9,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.3-Q1",
+    "standard": "RL.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.8,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.3-Q2",
+    "standard": "RL.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.3-Q3",
+    "standard": "RL.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.8,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.3-Q4",
+    "standard": "RL.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.5,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.3-Q5",
+    "standard": "RL.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.4-Q3",
+    "standard": "RL.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.7,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.3.4-Q4",
+    "standard": "RL.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 13.6,
+    "difficulty": 65,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.3.5-Q1",
+    "standard": "RL.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.4,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.3.5-Q3",
+    "standard": "RL.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.2,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.5-Q4",
+    "standard": "RL.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.3.6-Q1",
+    "standard": "RL.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.6-Q2",
+    "standard": "RL.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.1,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.6-Q4",
+    "standard": "RL.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 1.8,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.3.6-Q5",
+    "standard": "RL.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 12.2,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.3.7-Q1",
+    "standard": "RL.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.8,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.3.7-Q2",
+    "standard": "RL.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.7-Q3",
+    "standard": "RL.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.6,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.7-Q4",
+    "standard": "RL.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.7-Q5",
+    "standard": "RL.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.8,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.9-Q2",
+    "standard": "RL.3.9",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.9-Q3",
+    "standard": "RL.3.9",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.3,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.9-Q4",
+    "standard": "RL.3.9",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.10-Q1",
+    "standard": "RL.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.4,
+    "difficulty": 44,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.10-Q2",
+    "standard": "RL.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.5,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.10-Q3",
+    "standard": "RL.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.3.10-Q4",
+    "standard": "RL.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.4,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.3.10-Q5",
+    "standard": "RL.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.8,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.1-Q1",
+    "standard": "RI.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.4,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.1-Q2",
+    "standard": "RI.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.4,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.1-Q3",
+    "standard": "RI.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.7,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.1-Q4",
+    "standard": "RI.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.1-Q5",
+    "standard": "RI.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.5,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.2-Q1",
+    "standard": "RI.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.5,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.2-Q3",
+    "standard": "RI.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.9,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.2-Q4",
+    "standard": "RI.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.2-Q5",
+    "standard": "RI.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.3,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.3-Q1",
+    "standard": "RI.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.2,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.3-Q2",
+    "standard": "RI.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.0,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.3-Q5",
+    "standard": "RI.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.5,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.3-Q8",
+    "standard": "RI.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.3-Q11",
+    "standard": "RI.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.8,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.3-Q13",
+    "standard": "RI.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.2,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.3-Q14",
+    "standard": "RI.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.4-Q1",
+    "standard": "RI.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.4-Q2",
+    "standard": "RI.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.7,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.4-Q3",
+    "standard": "RI.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.4-Q4",
+    "standard": "RI.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.4-Q5",
+    "standard": "RI.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 53,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.5-Q1",
+    "standard": "RI.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.2,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.5-Q3",
+    "standard": "RI.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.3,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.5-Q4",
+    "standard": "RI.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.0,
+    "difficulty": 44,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.5-Q5",
+    "standard": "RI.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.2,
+    "difficulty": 61,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.6-Q1",
+    "standard": "RI.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.6-Q2",
+    "standard": "RI.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.1,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.6-Q3",
+    "standard": "RI.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.4,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.3.6-Q4",
+    "standard": "RI.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.8,
+    "difficulty": 58,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.6-Q5",
+    "standard": "RI.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.7-Q1",
+    "standard": "RI.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 13.9,
+    "difficulty": 72,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.7-Q2",
+    "standard": "RI.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 14.5,
+    "difficulty": 69,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.7-Q3",
+    "standard": "RI.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 19.8,
+    "difficulty": 83,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RI.3.7-Q4",
+    "standard": "RI.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.8,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.7-Q5",
+    "standard": "RI.3.7",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 17.1,
+    "difficulty": 79,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.8-Q1",
+    "standard": "RI.3.8",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 12.3,
+    "difficulty": 64,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.8-Q2",
+    "standard": "RI.3.8",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.8-Q3",
+    "standard": "RI.3.8",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.8-Q4",
+    "standard": "RI.3.8",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 22.3,
+    "difficulty": 90,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RI.3.8-Q5",
+    "standard": "RI.3.8",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 44,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.9-Q1",
+    "standard": "RI.3.9",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.3.9-Q2",
+    "standard": "RI.3.9",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.8,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.9-Q3",
+    "standard": "RI.3.9",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.9-Q5",
+    "standard": "RI.3.9",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.7,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.10-Q1",
+    "standard": "RI.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.10-Q2",
+    "standard": "RI.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.7,
+    "difficulty": 53,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.3.10-Q4",
+    "standard": "RI.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.3,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.3.10-Q5",
+    "standard": "RI.3.10",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.6,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3-Q1",
+    "standard": "RF.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3-Q2",
+    "standard": "RF.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3-Q3",
+    "standard": "RF.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3-Q4",
+    "standard": "RF.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.3-Q5",
+    "standard": "RF.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.0,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3a-Q1",
+    "standard": "RF.3.3a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3a-Q2",
+    "standard": "RF.3.3a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3a-Q3",
+    "standard": "RF.3.3a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.0,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3a-Q4",
+    "standard": "RF.3.3a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.6,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.3a-Q5",
+    "standard": "RF.3.3a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3b-Q1",
+    "standard": "RF.3.3b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.3b-Q4",
+    "standard": "RF.3.3b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3b-Q5",
+    "standard": "RF.3.3b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3c-Q1",
+    "standard": "RF.3.3c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.4,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.3.3c-Q2",
+    "standard": "RF.3.3c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3c-Q3",
+    "standard": "RF.3.3c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.4,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3c-Q4",
+    "standard": "RF.3.3c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.4,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3c-Q5",
+    "standard": "RF.3.3c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.3d-Q3",
+    "standard": "RF.3.3d",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 32,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.3d-Q4",
+    "standard": "RF.3.3d",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.3d-Q5",
+    "standard": "RF.3.3d",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4-Q1",
+    "standard": "RF.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.4-Q2",
+    "standard": "RF.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4-Q3",
+    "standard": "RF.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.4-Q4",
+    "standard": "RF.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.2,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.4-Q5",
+    "standard": "RF.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.0,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.4a-Q1",
+    "standard": "RF.3.4a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.2,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4a-Q2",
+    "standard": "RF.3.4a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.8,
+    "difficulty": 58,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4a-Q3",
+    "standard": "RF.3.4a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.6,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4a-Q4",
+    "standard": "RF.3.4a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.9,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4a-Q5",
+    "standard": "RF.3.4a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.4b-Q1",
+    "standard": "RF.3.4b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.1,
+    "difficulty": 58,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4b-Q2",
+    "standard": "RF.3.4b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.2,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.4b-Q3",
+    "standard": "RF.3.4b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4b-Q4",
+    "standard": "RF.3.4b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4b-Q5",
+    "standard": "RF.3.4b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 15.0,
+    "difficulty": 72,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.3.4c-Q1",
+    "standard": "RF.3.4c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.4,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.3.4c-Q2",
+    "standard": "RF.3.4c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.3.4c-Q4",
+    "standard": "RF.3.4c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 12.7,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.3.4c-Q5",
+    "standard": "RF.3.4c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.2,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.4-Q1",
+    "standard": "L.3.4",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.0,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.4a-Q5",
+    "standard": "L.3.4a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.8,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.3.4b-Q3",
+    "standard": "L.3.4b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.7,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.4c-Q3",
+    "standard": "L.3.4c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.4d-Q1",
+    "standard": "L.3.4d",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 5.4,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5-Q1",
+    "standard": "L.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.7,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5-Q2",
+    "standard": "L.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 1.0,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.5-Q3",
+    "standard": "L.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.3,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5-Q4",
+    "standard": "L.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5-Q5",
+    "standard": "L.3.5",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 13.4,
+    "difficulty": 73,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.3.5a-Q1",
+    "standard": "L.3.5a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.2,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5a-Q2",
+    "standard": "L.3.5a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.4,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.5a-Q3",
+    "standard": "L.3.5a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5a-Q4",
+    "standard": "L.3.5a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.6,
+    "difficulty": 58,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5a-Q5",
+    "standard": "L.3.5a",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.5,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5b-Q1",
+    "standard": "L.3.5b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 12.6,
+    "difficulty": 64,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.3.5b-Q2",
+    "standard": "L.3.5b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 12.9,
+    "difficulty": 66,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.3.5b-Q3",
+    "standard": "L.3.5b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 8.5,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5b-Q4",
+    "standard": "L.3.5b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.1,
+    "difficulty": 53,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5b-Q5",
+    "standard": "L.3.5b",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.2,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.3.5c-Q2",
+    "standard": "L.3.5c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.7,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5c-Q4",
+    "standard": "L.3.5c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.5c-Q5",
+    "standard": "L.3.5c",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.6,
+    "difficulty": 40,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.6-Q1",
+    "standard": "L.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.6-Q2",
+    "standard": "L.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 11.8,
+    "difficulty": 61,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.3.6-Q3",
+    "standard": "L.3.6",
+    "grade": 3,
+    "type": "missing_word",
+    "fk": 7.6,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.6-Q4",
+    "standard": "L.3.6",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.6,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.1-Q1",
+    "standard": "L.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 3.1,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.1-Q2",
+    "standard": "L.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 0.7,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.1-Q3",
+    "standard": "L.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 6.8,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.1-Q4",
+    "standard": "L.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 9.7,
+    "difficulty": 57,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.1-Q5",
+    "standard": "L.3.1",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 0.2,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.2-Q1",
+    "standard": "L.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.2-Q2",
+    "standard": "L.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 10.5,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.2-Q3",
+    "standard": "L.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 7.0,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.2-Q4",
+    "standard": "L.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.2-Q5",
+    "standard": "L.3.2",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.2,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.3-Q1",
+    "standard": "L.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.3.3-Q2",
+    "standard": "L.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 2.3,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.3-Q3",
+    "standard": "L.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "L.3.3-Q5",
+    "standard": "L.3.3",
+    "grade": 3,
+    "type": "multiple_choice",
+    "fk": -0.3,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.4.1-Q1",
+    "standard": "RL.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.8,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.1-Q2",
+    "standard": "RL.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.6,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.1-Q3",
+    "standard": "RL.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.3,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.1-Q4",
+    "standard": "RL.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.1-Q5",
+    "standard": "RL.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.2-Q1",
+    "standard": "RL.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.1,
+    "difficulty": 61,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.2-Q2",
+    "standard": "RL.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.2-Q3",
+    "standard": "RL.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 2.2,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.4.2-Q4",
+    "standard": "RL.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.2-Q5",
+    "standard": "RL.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.3-Q2",
+    "standard": "RL.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 12.6,
+    "difficulty": 71,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.3-Q3",
+    "standard": "RL.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.3-Q4",
+    "standard": "RL.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.2,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.3-Q5",
+    "standard": "RL.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.4,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.4-Q1",
+    "standard": "RL.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 17.5,
+    "difficulty": 82,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RL.4.4-Q2",
+    "standard": "RL.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 16.7,
+    "difficulty": 83,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RL.4.4-Q3",
+    "standard": "RL.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.4-Q4",
+    "standard": "RL.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 16.2,
+    "difficulty": 84,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RL.4.4-Q5",
+    "standard": "RL.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 16.5,
+    "difficulty": 75,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.5-Q1",
+    "standard": "RL.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.8,
+    "difficulty": 67,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.5-Q3",
+    "standard": "RL.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 17.3,
+    "difficulty": 84,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RL.4.5-Q4",
+    "standard": "RL.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.1,
+    "difficulty": 65,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.6-Q1",
+    "standard": "RL.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.3,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.6-Q2",
+    "standard": "RL.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.6-Q3",
+    "standard": "RL.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 20.1,
+    "difficulty": 91,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RL.4.6-Q4",
+    "standard": "RL.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 4.4,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.6-Q5",
+    "standard": "RL.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.6,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.7-Q1",
+    "standard": "RL.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 17.3,
+    "difficulty": 85,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RL.4.7-Q2",
+    "standard": "RL.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.8,
+    "difficulty": 68,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.7-Q3",
+    "standard": "RL.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 14.6,
+    "difficulty": 78,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.7-Q4",
+    "standard": "RL.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.8,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.7-Q5",
+    "standard": "RL.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.4,
+    "difficulty": 58,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.9-Q1",
+    "standard": "RL.4.9",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.2,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.9-Q2",
+    "standard": "RL.4.9",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 50,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.9-Q3",
+    "standard": "RL.4.9",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.6,
+    "difficulty": 53,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.9-Q4",
+    "standard": "RL.4.9",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.10-Q1",
+    "standard": "RL.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.10-Q2",
+    "standard": "RL.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.10-Q3",
+    "standard": "RL.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.4.10-Q4",
+    "standard": "RL.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.1,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RL.4.10-Q5",
+    "standard": "RL.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.3,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.1-Q1",
+    "standard": "RI.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 12.5,
+    "difficulty": 73,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.1-Q2",
+    "standard": "RI.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 14.2,
+    "difficulty": 78,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.1-Q3",
+    "standard": "RI.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.1,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.1-Q4",
+    "standard": "RI.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.5,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.1-Q5",
+    "standard": "RI.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.6,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.2-Q1",
+    "standard": "RI.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.0,
+    "difficulty": 64,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.2-Q2",
+    "standard": "RI.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.3,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.2-Q3",
+    "standard": "RI.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.3,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.2-Q4",
+    "standard": "RI.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.9,
+    "difficulty": 68,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.2-Q5",
+    "standard": "RI.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 13.1,
+    "difficulty": 71,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.3-Q1",
+    "standard": "RI.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 13.9,
+    "difficulty": 79,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.3-Q2",
+    "standard": "RI.4.3",
+    "grade": 4,
+    "type": "sentence_build",
+    "fk": 3.8,
+    "difficulty": 39,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.4.3-Q3",
+    "standard": "RI.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.6,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.3-Q4",
+    "standard": "RI.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.0,
+    "difficulty": 68,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.4-Q2",
+    "standard": "RI.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.3,
+    "difficulty": 70,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.5-Q5",
+    "standard": "RI.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.7,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.5-Q3",
+    "standard": "RI.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.8,
+    "difficulty": 61,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.5-Q4",
+    "standard": "RI.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.0,
+    "difficulty": 64,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.5-Q7",
+    "standard": "RI.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.9,
+    "difficulty": 64,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.5-Q10",
+    "standard": "RI.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.6,
+    "difficulty": 68,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.5-Q11",
+    "standard": "RI.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.2,
+    "difficulty": 67,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.5-Q12",
+    "standard": "RI.4.5",
+    "grade": 4,
+    "type": "sentence_build",
+    "fk": 2.9,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.4.6-Q1",
+    "standard": "RI.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.3,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.6-Q2",
+    "standard": "RI.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 14.8,
+    "difficulty": 77,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.6-Q3",
+    "standard": "RI.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 21.4,
+    "difficulty": 95,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RI.4.6-Q4",
+    "standard": "RI.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.6,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.6-Q5",
+    "standard": "RI.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 20.7,
+    "difficulty": 93,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RI.4.7-Q1",
+    "standard": "RI.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.5,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.7-Q2",
+    "standard": "RI.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 15.7,
+    "difficulty": 78,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.7-Q3",
+    "standard": "RI.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 13.1,
+    "difficulty": 71,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.7-Q4",
+    "standard": "RI.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 21.2,
+    "difficulty": 94,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RI.4.7-Q5",
+    "standard": "RI.4.7",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.9,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.8-Q1",
+    "standard": "RI.4.8",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.5,
+    "difficulty": 71,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.8-Q2",
+    "standard": "RI.4.8",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.8,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.8-Q3",
+    "standard": "RI.4.8",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.9,
+    "difficulty": 69,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.8-Q4",
+    "standard": "RI.4.8",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.4,
+    "difficulty": 49,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.9-Q2",
+    "standard": "RI.4.9",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.1,
+    "difficulty": 61,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.9-Q3",
+    "standard": "RI.4.9",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.1,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.9-Q4",
+    "standard": "RI.4.9",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 15.1,
+    "difficulty": 79,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.9-Q5",
+    "standard": "RI.4.9",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 19.3,
+    "difficulty": 92,
+    "bucket": "challenge"
+  },
+  {
+    "id": "RI.4.10-Q2",
+    "standard": "RI.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.2,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.10-Q3",
+    "standard": "RI.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.1,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RI.4.10-Q4",
+    "standard": "RI.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.8,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.4.10-Q5",
+    "standard": "RI.4.10",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 12.9,
+    "difficulty": 74,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.3-Q1",
+    "standard": "RF.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.3,
+    "difficulty": 64,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.3-Q2",
+    "standard": "RF.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.8,
+    "difficulty": 61,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.3-Q3",
+    "standard": "RF.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.7,
+    "difficulty": 66,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.3-Q4",
+    "standard": "RF.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.4.3-Q5",
+    "standard": "RF.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.0,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.3a-Q1",
+    "standard": "RF.4.3a",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.0,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.3a-Q2",
+    "standard": "RF.4.3a",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.7,
+    "difficulty": 71,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.3a-Q3",
+    "standard": "RF.4.3a",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.6,
+    "difficulty": 53,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.4.3a-Q4",
+    "standard": "RF.4.3a",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 13.6,
+    "difficulty": 76,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.3a-Q5",
+    "standard": "RF.4.3a",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.2,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.4.4-Q1",
+    "standard": "RF.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 13.2,
+    "difficulty": 71,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.4-Q2",
+    "standard": "RF.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.6,
+    "difficulty": 54,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.4.4-Q3",
+    "standard": "RF.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 16.1,
+    "difficulty": 79,
+    "bucket": "stretch"
+  },
+  {
+    "id": "RF.4.4-Q4",
+    "standard": "RF.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.5,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.4.4-Q5",
+    "standard": "RF.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.4-Q1",
+    "standard": "L.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 14.2,
+    "difficulty": 74,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.4-Q2",
+    "standard": "L.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.8,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.4-Q3",
+    "standard": "L.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.1,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.4-Q4",
+    "standard": "L.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 21.6,
+    "difficulty": 100,
+    "bucket": "challenge"
+  },
+  {
+    "id": "L.4.4-Q5",
+    "standard": "L.4.4",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 19.8,
+    "difficulty": 91,
+    "bucket": "challenge"
+  },
+  {
+    "id": "L.4.4a-Q4",
+    "standard": "L.4.4a",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 17.0,
+    "difficulty": 83,
+    "bucket": "challenge"
+  },
+  {
+    "id": "L.4.4b-Q4",
+    "standard": "L.4.4b",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.2,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.4c-Q1",
+    "standard": "L.4.4c",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 5.6,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.4c-Q2",
+    "standard": "L.4.4c",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.0,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.4c-Q3",
+    "standard": "L.4.4c",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 3.1,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.4c-Q4",
+    "standard": "L.4.4c",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 53,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.4c-Q5",
+    "standard": "L.4.4c",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 2.6,
+    "difficulty": 42,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.5-Q1",
+    "standard": "L.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.0,
+    "difficulty": 70,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.5-Q2",
+    "standard": "L.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 12.3,
+    "difficulty": 71,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.5-Q3",
+    "standard": "L.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.0,
+    "difficulty": 60,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.5-Q4",
+    "standard": "L.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 14.9,
+    "difficulty": 83,
+    "bucket": "challenge"
+  },
+  {
+    "id": "L.4.5-Q5",
+    "standard": "L.4.5",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 9.1,
+    "difficulty": 59,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.5a-Q5",
+    "standard": "L.4.5a",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 4.0,
+    "difficulty": 44,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.5b-Q4",
+    "standard": "L.4.5b",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 13.6,
+    "difficulty": 70,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.5c-Q3",
+    "standard": "L.4.5c",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 16.9,
+    "difficulty": 81,
+    "bucket": "challenge"
+  },
+  {
+    "id": "L.4.5c-Q4",
+    "standard": "L.4.5c",
+    "grade": 4,
+    "type": "missing_word",
+    "fk": 9.1,
+    "difficulty": 58,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.6-Q1",
+    "standard": "L.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 6.0,
+    "difficulty": 52,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.6-Q2",
+    "standard": "L.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 15.8,
+    "difficulty": 78,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.6-Q3",
+    "standard": "L.4.6",
+    "grade": 4,
+    "type": "missing_word",
+    "fk": 6.9,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.6-Q4",
+    "standard": "L.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.7,
+    "difficulty": 67,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.6-Q5",
+    "standard": "L.4.6",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.7,
+    "difficulty": 65,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.1-Q4",
+    "standard": "L.4.1",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 4.5,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.2-Q1",
+    "standard": "L.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 8.0,
+    "difficulty": 55,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.2-Q2",
+    "standard": "L.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 10.5,
+    "difficulty": 63,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.2-Q3",
+    "standard": "L.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 3.8,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.2-Q5",
+    "standard": "L.4.2",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 4.0,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.3-Q1",
+    "standard": "L.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 3.6,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.3-Q2",
+    "standard": "L.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 51,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "L.4.3-Q3",
+    "standard": "L.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.2,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.3-Q4",
+    "standard": "L.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 11.2,
+    "difficulty": 62,
+    "bucket": "stretch"
+  },
+  {
+    "id": "L.4.3-Q5",
+    "standard": "L.4.3",
+    "grade": 4,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.K.1-Q1",
+    "standard": "RL.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.0,
+    "difficulty": 6,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.1-Q2",
+    "standard": "RL.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.1-Q3",
+    "standard": "RL.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.1-Q4",
+    "standard": "RL.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.0,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.1-Q5",
+    "standard": "RL.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.4,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.2-Q1",
+    "standard": "RL.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.0,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.2-Q2",
+    "standard": "RL.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -1.7,
+    "difficulty": 0,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.2-Q3",
+    "standard": "RL.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.2-Q4",
+    "standard": "RL.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 0.9,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.3-Q1",
+    "standard": "RL.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.3-Q2",
+    "standard": "RL.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.3-Q3",
+    "standard": "RL.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.4,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.3-Q4",
+    "standard": "RL.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.6,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.3-Q5",
+    "standard": "RL.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.2,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.4-Q1",
+    "standard": "RL.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.0,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.4-Q2",
+    "standard": "RL.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.4,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.4-Q3",
+    "standard": "RL.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.4,
+    "difficulty": 12,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.4-Q4",
+    "standard": "RL.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.6,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.4-Q5",
+    "standard": "RL.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.7,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.5-Q2",
+    "standard": "RL.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 13.2,
+    "difficulty": 47,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.K.5-Q3",
+    "standard": "RL.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.7,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.5-Q4",
+    "standard": "RL.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.4,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.5-Q5",
+    "standard": "RL.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.4,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.6-Q1",
+    "standard": "RL.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.6-Q2",
+    "standard": "RL.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 31,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.6-Q3",
+    "standard": "RL.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.5,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.6-Q4",
+    "standard": "RL.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.6-Q5",
+    "standard": "RL.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.7-Q1",
+    "standard": "RL.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.7-Q2",
+    "standard": "RL.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 19,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.7-Q3",
+    "standard": "RL.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.6,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.7-Q4",
+    "standard": "RL.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.9-Q1",
+    "standard": "RL.K.9",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.9-Q3",
+    "standard": "RL.K.9",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.9-Q4",
+    "standard": "RL.K.9",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.0,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RL.K.9-Q5",
+    "standard": "RL.K.9",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.3,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.1-Q2",
+    "standard": "RI.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.1-Q3",
+    "standard": "RI.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.0,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.1-Q4",
+    "standard": "RI.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.1-Q5",
+    "standard": "RI.K.1",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.2-Q1",
+    "standard": "RI.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.1,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.2-Q2",
+    "standard": "RI.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.4,
+    "difficulty": 5,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.2-Q3",
+    "standard": "RI.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.2-Q4",
+    "standard": "RI.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.2-Q5",
+    "standard": "RI.K.2",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.7,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.3-Q1",
+    "standard": "RI.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.8,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.3-Q2",
+    "standard": "RI.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.3-Q4",
+    "standard": "RI.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.1,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.3-Q5",
+    "standard": "RI.K.3",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.6,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.4-Q2",
+    "standard": "RI.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.3,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.4-Q3",
+    "standard": "RI.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 8.3,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.4-Q4",
+    "standard": "RI.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.5-Q2",
+    "standard": "RI.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.7,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.5-Q3",
+    "standard": "RI.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.5,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.5-Q5",
+    "standard": "RI.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.0,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.5-Q7",
+    "standard": "RI.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.5-Q10",
+    "standard": "RI.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.5-Q11",
+    "standard": "RI.K.5",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 7.3,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.6-Q1",
+    "standard": "RI.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.5,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.6-Q2",
+    "standard": "RI.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.6-Q3",
+    "standard": "RI.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.2,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.6-Q4",
+    "standard": "RI.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 7.1,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.6-Q5",
+    "standard": "RI.K.6",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.9,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.7-Q1",
+    "standard": "RI.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.7-Q2",
+    "standard": "RI.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 7.7,
+    "difficulty": 33,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.7-Q3",
+    "standard": "RI.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 8.1,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.7-Q4",
+    "standard": "RI.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 10.8,
+    "difficulty": 45,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.K.7-Q5",
+    "standard": "RI.K.7",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.3,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.8-Q1",
+    "standard": "RI.K.8",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.0,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.8-Q2",
+    "standard": "RI.K.8",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.8-Q3",
+    "standard": "RI.K.8",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 19,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.8-Q4",
+    "standard": "RI.K.8",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 0.9,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.8-Q5",
+    "standard": "RI.K.8",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.0,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.9-Q1",
+    "standard": "RI.K.9",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.4,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.9-Q2",
+    "standard": "RI.K.9",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.9-Q3",
+    "standard": "RI.K.9",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 14,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.9-Q5",
+    "standard": "RI.K.9",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.6,
+    "difficulty": 35,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1a-Q1",
+    "standard": "RF.K.1a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 18,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.1a-Q2",
+    "standard": "RF.K.1a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 11.6,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.K.1a-Q3",
+    "standard": "RF.K.1a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 8.5,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1a-Q4",
+    "standard": "RF.K.1a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.5,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1a-Q5",
+    "standard": "RF.K.1a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 8.1,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1a-Q7",
+    "standard": "RF.K.1a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.5,
+    "difficulty": 3,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.1a-Q8",
+    "standard": "RF.K.1a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 13.7,
+    "difficulty": 46,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.K.1b-Q2",
+    "standard": "RF.K.1b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.6,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.1b-Q4",
+    "standard": "RF.K.1b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 11.6,
+    "difficulty": 43,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RF.K.1b-Q5",
+    "standard": "RF.K.1b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.5,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1c-Q1",
+    "standard": "RF.K.1c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 0.9,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.1c-Q2",
+    "standard": "RF.K.1c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.4,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1c-Q3",
+    "standard": "RF.K.1c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 0.6,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.1c-Q4",
+    "standard": "RF.K.1c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.1,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1c-Q5",
+    "standard": "RF.K.1c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 0.8,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.1d-Q1",
+    "standard": "RF.K.1d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1d-Q2",
+    "standard": "RF.K.1d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.9,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.1d-Q4",
+    "standard": "RF.K.1d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.9,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.1d-Q5",
+    "standard": "RF.K.1d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.2a-Q2",
+    "standard": "RF.K.2a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.1,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2b-Q1",
+    "standard": "RF.K.2b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.7,
+    "difficulty": 21,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.2b-Q2",
+    "standard": "RF.K.2b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.3,
+    "difficulty": 28,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.2b-Q3",
+    "standard": "RF.K.2b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 6.7,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.2b-Q4",
+    "standard": "RF.K.2b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.3,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2b-Q5",
+    "standard": "RF.K.2b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.7,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RF.K.2c-Q1",
+    "standard": "RF.K.2c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -1.1,
+    "difficulty": 6,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2c-Q2",
+    "standard": "RF.K.2c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.4,
+    "difficulty": 8,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2c-Q3",
+    "standard": "RF.K.2c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.4,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2c-Q4",
+    "standard": "RF.K.2c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2c-Q5",
+    "standard": "RF.K.2c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -1.7,
+    "difficulty": 0,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2d-Q1",
+    "standard": "RF.K.2d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2d-Q3",
+    "standard": "RF.K.2d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 10,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2d-Q4",
+    "standard": "RF.K.2d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.3,
+    "difficulty": 8,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2d-Q5",
+    "standard": "RF.K.2d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -1.1,
+    "difficulty": 3,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2e-Q2",
+    "standard": "RF.K.2e",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.6,
+    "difficulty": 5,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2e-Q3",
+    "standard": "RF.K.2e",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.3,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.2e-Q4",
+    "standard": "RF.K.2e",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.2,
+    "difficulty": 12,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3a-Q1",
+    "standard": "RF.K.3a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3a-Q2",
+    "standard": "RF.K.3a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.0,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3a-Q3",
+    "standard": "RF.K.3a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.2,
+    "difficulty": 15,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3a-Q4",
+    "standard": "RF.K.3a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.2,
+    "difficulty": 13,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3a-Q5",
+    "standard": "RF.K.3a",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3b-Q1",
+    "standard": "RF.K.3b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.9,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3b-Q2",
+    "standard": "RF.K.3b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3b-Q3",
+    "standard": "RF.K.3b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.9,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3b-Q4",
+    "standard": "RF.K.3b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3b-Q5",
+    "standard": "RF.K.3b",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.7,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3c-Q1",
+    "standard": "RF.K.3c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.7,
+    "difficulty": 6,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3c-Q2",
+    "standard": "RF.K.3c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 0.1,
+    "difficulty": 8,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3c-Q3",
+    "standard": "RF.K.3c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.5,
+    "difficulty": 6,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3c-Q4",
+    "standard": "RF.K.3c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.0,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3c-Q5",
+    "standard": "RF.K.3c",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 1.2,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3d-Q3",
+    "standard": "RF.K.3d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.2,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.3d-Q5",
+    "standard": "RF.K.3d",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 3.6,
+    "difficulty": 16,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.4-Q1",
+    "standard": "RF.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -0.5,
+    "difficulty": 3,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.4-Q2",
+    "standard": "RF.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": -1.0,
+    "difficulty": 3,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.4-Q3",
+    "standard": "RF.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 0.1,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RF.K.4-Q5",
+    "standard": "RF.K.4",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 0.5,
+    "difficulty": 9,
+    "bucket": "warmup"
+  },
+  {
+    "id": "K.L.1-Q1",
+    "standard": "K.L.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.6,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.1-Q2",
+    "standard": "K.L.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 36,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.1-Q3",
+    "standard": "K.L.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.0,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.1-Q4",
+    "standard": "K.L.1",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.2-Q2",
+    "standard": "K.L.2",
+    "grade": 2,
+    "type": "missing_word",
+    "fk": 0.8,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.2-Q3",
+    "standard": "K.L.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.4,
+    "difficulty": 34,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.2-Q4",
+    "standard": "K.L.2",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 3.0,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.4-Q1",
+    "standard": "K.L.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.4-Q2",
+    "standard": "K.L.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.8,
+    "difficulty": 38,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.4-Q3",
+    "standard": "K.L.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": -1.7,
+    "difficulty": 11,
+    "bucket": "warmup"
+  },
+  {
+    "id": "K.L.4-Q4",
+    "standard": "K.L.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.1,
+    "difficulty": 22,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.4-Q5",
+    "standard": "K.L.4",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 1.6,
+    "difficulty": 25,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.5-Q1",
+    "standard": "K.L.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.2,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.5-Q2",
+    "standard": "K.L.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.5-Q3",
+    "standard": "K.L.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.5,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.5-Q4",
+    "standard": "K.L.5",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 7.6,
+    "difficulty": 41,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "K.L.6-Q1",
+    "standard": "K.L.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 2.0,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.6-Q2",
+    "standard": "K.L.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.2,
+    "difficulty": 30,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.6-Q3",
+    "standard": "K.L.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 5.5,
+    "difficulty": 37,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.6-Q4",
+    "standard": "K.L.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 4.3,
+    "difficulty": 29,
+    "bucket": "easy"
+  },
+  {
+    "id": "K.L.6-Q5",
+    "standard": "K.L.6",
+    "grade": 2,
+    "type": "multiple_choice",
+    "fk": 10.8,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RL.K.10-Q1",
+    "standard": "RL.K.10",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.4,
+    "difficulty": 23,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.10-Q2",
+    "standard": "RL.K.10",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 7.0,
+    "difficulty": 27,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.10-Q4",
+    "standard": "RL.K.10",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.4,
+    "difficulty": 24,
+    "bucket": "easy"
+  },
+  {
+    "id": "RL.K.10-Q5",
+    "standard": "RL.K.10",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 16.5,
+    "difficulty": 56,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.K.10-Q1",
+    "standard": "RI.K.10",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 14.2,
+    "difficulty": 48,
+    "bucket": "onlevel"
+  },
+  {
+    "id": "RI.K.10-Q2",
+    "standard": "RI.K.10",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 2.8,
+    "difficulty": 17,
+    "bucket": "warmup"
+  },
+  {
+    "id": "RI.K.10-Q3",
+    "standard": "RI.K.10",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 5.3,
+    "difficulty": 26,
+    "bucket": "easy"
+  },
+  {
+    "id": "RI.K.10-Q4",
+    "standard": "RI.K.10",
+    "grade": 0,
+    "type": "multiple_choice",
+    "fk": 4.1,
+    "difficulty": 25,
+    "bucket": "easy"
+  }
+]
