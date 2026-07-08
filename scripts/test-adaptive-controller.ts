@@ -11,6 +11,7 @@ import {
   type MasterySeed,
 } from "../lib/adaptive/controller";
 import { selectIntervention, type Intervention } from "../lib/adaptive/interventions";
+import { selectNextItem, targetDifficulty, type AdaptiveItem } from "../lib/adaptive/select-item";
 
 const ok = (correct: boolean, extra: Partial<AdaptiveEventLite> = {}): AdaptiveEventLite => ({
   correct,
@@ -170,3 +171,37 @@ if (ifails.length) {
   process.exit(1);
 }
 console.log("all intervention checks pass ✓\n");
+
+// ── Item selection: does it ease down / ramp up on the right signal? ─────
+console.log("ITEM SELECTION (DECIDE → question bank)\n" + "─".repeat(60));
+let spass = 0;
+const sfails: string[] = [];
+const scheck = (name: string, cond: boolean) => {
+  if (cond) spass++;
+  else sfails.push(name);
+  console.log(`${cond ? "✓" : "✗"} ${name}`);
+};
+// a spread of items across the difficulty range
+const pool: AdaptiveItem[] = Array.from({ length: 11 }, (_, i) => ({ id: `q${i}`, difficulty: i * 10 }));
+const CUR = 50; // child currently working around mid-difficulty
+
+const rStruggle = classifyState([ok(true), ok(true), ok(false), ok(false)]);
+const rBreeze = classifyState([ok(true), ok(true), ok(true), ok(true)]);
+const rFrustrated = classifyState([ok(false), ok(false), ok(false)]);
+const rFlow = classifyState([ok(true), ok(true), ok(false), ok(true), ok(true), ok(true)]);
+
+scheck("frustrated → aims well BELOW current (much easier)", targetDifficulty(rFrustrated, CUR) <= CUR - 20);
+scheck("struggling → aims below current (easier)", targetDifficulty(rStruggle, CUR) < CUR);
+scheck("flow → holds at current", targetDifficulty(rFlow, CUR) === CUR);
+scheck("breezing → aims well ABOVE current (much harder)", targetDifficulty(rBreeze, CUR) >= CUR + 20);
+
+const easedItem = selectNextItem(rStruggle, pool, { current: CUR }).item;
+const hardItem = selectNextItem(rBreeze, pool, { current: CUR }).item;
+scheck("struggling picks an EASIER item than current", (easedItem?.difficulty ?? 99) < CUR);
+scheck("breezing picks a HARDER item than current", (hardItem?.difficulty ?? 0) > CUR);
+scheck("respects seen (won't repeat)", selectNextItem(rFlow, pool, { current: CUR, seen: new Set(["q5"]) }).item?.id !== "q5");
+
+console.log("─".repeat(60));
+console.log(`${spass}/7 selection checks pass`);
+if (sfails.length) { console.log("\nFAILURES:"); for (const f of sfails) console.log("  ✗ " + f); process.exit(1); }
+console.log("all selection checks pass ✓\n");
