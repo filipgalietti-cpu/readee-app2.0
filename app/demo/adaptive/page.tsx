@@ -22,17 +22,17 @@ import {
   narrateSession,
   type Intervention,
 } from "@/lib/adaptive/interventions";
-import { DEMO_LADDER, type DemoQuestion } from "./demo-questions";
+import { DEMO_LADDER, DEMO_LEVELS, DEMO_SKILL, type DemoLevel, type DemoQuestion } from "./demo-questions";
 
-type Level = "easy" | "on" | "hard";
-const LEVELS: Level[] = ["easy", "on", "hard"];
-const LEVEL_LABEL: Record<Level, string> = { easy: "Easier", on: "On level", hard: "Challenge" };
+const LEVELS: DemoLevel[] = DEMO_LEVELS.map((l) => l.key);
+const LEVEL_LABEL: Record<DemoLevel, string> = Object.fromEntries(
+  DEMO_LEVELS.map((l) => [l.key, l.label]),
+) as Record<DemoLevel, string>;
+const START_IDX = LEVELS.indexOf("onlevel"); // start in the middle of the spectrum
 
-const POOL: Record<Level, DemoQuestion[]> = {
-  easy: DEMO_LADDER.filter((q) => q.level === "easy"),
-  on: DEMO_LADDER.filter((q) => q.level === "on"),
-  hard: DEMO_LADDER.filter((q) => q.level === "hard"),
-};
+const POOL: Record<DemoLevel, DemoQuestion[]> = Object.fromEntries(
+  LEVELS.map((lvl) => [lvl, DEMO_LADDER.filter((q) => q.level === lvl)]),
+) as Record<DemoLevel, DemoQuestion[]>;
 
 const STATE_STYLE: Record<AdaptiveReading["state"], { color: string; ring: string; label: string; sub: string }> = {
   breezing: { color: "text-emerald-600", ring: "ring-emerald-400", label: "Breezing", sub: "Pumping the gas" },
@@ -46,7 +46,7 @@ const KIND_BG: Record<Intervention["kind"], string> = {
   brakes: "bg-amber-50 border-amber-200",
 };
 
-function pick(level: Level, exclude?: string): DemoQuestion {
+function pick(level: DemoLevel, exclude?: string): DemoQuestion {
   const pool = POOL[level];
   const options = pool.filter((q) => q.prompt !== exclude);
   const arr = options.length ? options : pool;
@@ -54,8 +54,8 @@ function pick(level: Level, exclude?: string): DemoQuestion {
 }
 
 export default function AdaptiveDemoPage() {
-  const [levelIdx, setLevelIdx] = useState(1); // start on-level
-  const [q, setQ] = useState<DemoQuestion>(() => pick("on"));
+  const [levelIdx, setLevelIdx] = useState(START_IDX); // start mid-spectrum
+  const [q, setQ] = useState<DemoQuestion>(() => pick(LEVELS[START_IDX]));
   const [selected, setSelected] = useState<string | null>(null);
   const [events, setEvents] = useState<AdaptiveEventLite[]>([]);
   const [history, setHistory] = useState<Intervention[]>([]);
@@ -65,7 +65,7 @@ export default function AdaptiveDemoPage() {
 
   const eventsRef = useRef<AdaptiveEventLite[]>([]);
   const historyRef = useRef<Intervention[]>([]);
-  const levelRef = useRef(1);
+  const levelRef = useRef(START_IDX);
   const idRef = useRef(0);
   const autoRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const qRef = useRef<DemoQuestion>(q); // always the CURRENT question (no stale closures)
@@ -95,8 +95,8 @@ export default function AdaptiveDemoPage() {
     if (r.directive !== "hold" && r.confidence >= 0.4) {
       const iv = selectIntervention(r, historyRef.current);
       if (iv.type !== "none") {
-        historyRef.current = [...historyRef.current, iv];
-        setHistory(historyRef.current);
+        historyRef.current = [...historyRef.current, iv]; // ladder at THIS level
+        setHistory((h) => [...h, iv]); // full session history (for the parent narration)
         idRef.current += 1;
         setFeed((f) => [{ id: idRef.current, iv }, ...f].slice(0, 5));
         if (iv.type === "level_up" || iv.type === "stretch") move = "up";
@@ -107,8 +107,16 @@ export default function AdaptiveDemoPage() {
     // Show feedback, then advance (and move levels if the engine said so).
     setTimeout(() => {
       let idx = levelRef.current;
-      if (move === "up") idx = Math.min(2, idx + 1);
+      if (move === "up") idx = Math.min(LEVELS.length - 1, idx + 1);
       if (move === "down") idx = Math.max(0, idx - 1);
+      if (move && idx !== levelRef.current) {
+        // A new level is a fresh context — reset the ladder so the engine can
+        // re-teach / ease again if the child keeps struggling here (or push
+        // again if they keep breezing). This is what walks them to their level.
+        historyRef.current = [];
+        eventsRef.current = eventsRef.current.slice(-1); // fresh read at the new level
+        setEvents(eventsRef.current);
+      }
       levelRef.current = idx;
       setLevelIdx(idx);
       setMoved(move);
@@ -123,10 +131,10 @@ export default function AdaptiveDemoPage() {
   const reset = useCallback(() => {
     stopAuto();
     busyRef.current = false;
-    eventsRef.current = []; historyRef.current = []; levelRef.current = 1;
-    const first = pick("on");
+    eventsRef.current = []; historyRef.current = []; levelRef.current = START_IDX;
+    const first = pick(LEVELS[START_IDX]);
     qRef.current = first;
-    setEvents([]); setHistory([]); setFeed([]); setLevelIdx(1); setQNum(1);
+    setEvents([]); setHistory([]); setFeed([]); setLevelIdx(START_IDX); setQNum(1);
     setSelected(null); setMoved(null); setQ(first);
   }, [stopAuto]);
 
@@ -148,7 +156,7 @@ export default function AdaptiveDemoPage() {
 
   const st = STATE_STYLE[reading.state];
   const needlePct = ((reading.throttle + 2) / 4) * 100;
-  const insight = narrateSession("word meaning", history);
+  const insight = narrateSession(DEMO_SKILL, history);
   const answered = selected !== null;
 
   return (
@@ -157,7 +165,9 @@ export default function AdaptiveDemoPage() {
         <header className="mb-6 text-center">
           <div className="text-xs font-bold uppercase tracking-widest text-violet-500">Readee Adapts</div>
           <h1 className="mt-1 text-3xl font-extrabold text-violet-700">The engine that reads your reader</h1>
-          <p className="mt-2 text-sm text-zinc-600">Real questions. The engine watches how it's going and eases up or pushes ahead — never too easy, never too hard.</p>
+          <p className="mt-2 text-sm text-zinc-600">
+            One lesson — <span className="font-semibold text-violet-700">{DEMO_SKILL}</span> — with questions from warm-up to challenge. Bomb it and the engine hands you easier ones; ace it and it ramps you up. Never too easy, never too hard.
+          </p>
         </header>
 
         <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
