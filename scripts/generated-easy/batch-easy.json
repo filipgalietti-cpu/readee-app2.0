@@ -1,0 +1,3466 @@
+[
+  {
+    "std": "L.2.4a",
+    "questions": [
+      {
+        "prompt": "\"The soup was so hot that Maria had to wait for it to cool down before eating.\"\n\nThe word **hot** means \u2014",
+        "choices": [
+          "Cold",
+          "Very warm",
+          "Round",
+          "Purple"
+        ],
+        "correct": "Very warm",
+        "hint": "She had to wait for the soup to COOL DOWN. Cooling down means going from what temperature?"
+      },
+      {
+        "prompt": "\"The puppy was tiny \u2014 small enough to fit in one hand.\"\n\nThe word **tiny** means \u2014",
+        "choices": [
+          "Very small",
+          "Loud",
+          "Green",
+          "Fast"
+        ],
+        "correct": "Very small",
+        "hint": "The sentence says the puppy could fit in one hand. That tells you it is very ___."
+      },
+      {
+        "prompt": "\"Ben felt happy and smiled big when he opened his birthday present.\"\n\nThe word **happy** means \u2014",
+        "choices": [
+          "Angry",
+          "Sleepy",
+          "Glad",
+          "Wet"
+        ],
+        "correct": "Glad",
+        "hint": "The sentence says Ben SMILED BIG. What kind of feeling makes you smile?"
+      },
+      {
+        "prompt": "\"The road was so wet after the rain that the cars splashed through puddles.\"\n\nThe word **wet** means \u2014",
+        "choices": [
+          "Dry",
+          "Covered in water",
+          "Tall",
+          "Yellow"
+        ],
+        "correct": "Covered in water",
+        "hint": "It rained and there were PUDDLES. Puddles are made of what?"
+      },
+      {
+        "prompt": "\"The box was heavy, and Sam grunted as he lifted it off the floor.\"\n\nThe word **heavy** means \u2014",
+        "choices": [
+          "Light",
+          "Hard to lift",
+          "Shiny",
+          "Quiet"
+        ],
+        "correct": "Hard to lift",
+        "hint": "Sam GRUNTED when he lifted the box. That shows the box was ___ to lift."
+      }
+    ]
+  },
+  {
+    "std": "L.3.4",
+    "questions": [
+      {
+        "prompt": "Maria felt **exhausted** after running all day, so she fell asleep the moment she lay down.\n\nWhat does **exhausted** mean?",
+        "choices": [
+          "Very tired",
+          "Very hungry",
+          "Very happy",
+          "Very cold"
+        ],
+        "correct": "Very tired",
+        "hint": "She fell asleep right away. What do you feel when you need to sleep after a long, busy day?"
+      },
+      {
+        "prompt": "The soup was **piping hot**, so Dad blew on his spoon to cool it before he ate.\n\nWhat does **piping hot** mean?",
+        "choices": [
+          "Very hot",
+          "A little wet",
+          "Full of pipes",
+          "Bright blue"
+        ],
+        "correct": "Very hot",
+        "hint": "Dad had to blow on his spoon to cool the soup down. Was the soup hot or cold?"
+      },
+      {
+        "prompt": "The path was **narrow**, so only one person could walk on it at a time.\n\nWhat does **narrow** mean?",
+        "choices": [
+          "Not wide",
+          "Very long",
+          "Very loud",
+          "Made of grass"
+        ],
+        "correct": "Not wide",
+        "hint": "Only one person could fit on the path at a time. Was the path wide or thin?"
+      },
+      {
+        "prompt": "Read this sentence: \"Please **turn** the page to read the next part of the story.\"\n\nWhat does **turn** mean here?",
+        "choices": [
+          "To flip over",
+          "To spin in a circle",
+          "A player's go in a game",
+          "To become sour"
+        ],
+        "correct": "To flip over",
+        "hint": "You do this to a page in a book to see the next one. You flip it!"
+      },
+      {
+        "prompt": "The old bridge was **sturdy**, so the heavy truck crossed it safely without any problem.\n\nWhat does **sturdy** mean?",
+        "choices": [
+          "Strong",
+          "Broken",
+          "Slippery",
+          "Colorful"
+        ],
+        "correct": "Strong",
+        "hint": "A heavy truck crossed the bridge safely. Was the bridge strong or weak?"
+      }
+    ]
+  },
+  {
+    "std": "L.3.4a",
+    "questions": [
+      {
+        "prompt": "The soup was so hot it was scalding, and it burned my tongue.\n\nUsing context clues, **scalding** means \u2014",
+        "choices": [
+          "Very cold",
+          "Burning hot",
+          "Sweet tasting",
+          "Bright green"
+        ],
+        "correct": "Burning hot",
+        "hint": "The sentence says the soup burned my tongue. What kind of hot burns you?"
+      },
+      {
+        "prompt": "The tired hikers rested because they were exhausted after the long walk.\n\nUsing context clues, **exhausted** means \u2014",
+        "choices": [
+          "Very tired",
+          "Very happy",
+          "A little hungry",
+          "Wet from rain"
+        ],
+        "correct": "Very tired",
+        "hint": "The sentence says the hikers were tired and rested. What word means the same as tired?"
+      },
+      {
+        "prompt": "The gigantic elephant was so big it could not fit through the door.\n\nUsing context clues, **gigantic** means \u2014",
+        "choices": [
+          "Very small",
+          "Very big",
+          "Very fast",
+          "Very loud"
+        ],
+        "correct": "Very big",
+        "hint": "The sentence says the elephant was so big it could not fit. What does that tell you about gigantic?"
+      },
+      {
+        "prompt": "Maria was thrilled and jumped for joy when she won the race.\n\nUsing context clues, **thrilled** means \u2014",
+        "choices": [
+          "Very sad",
+          "Very excited",
+          "Very sleepy",
+          "Very cold"
+        ],
+        "correct": "Very excited",
+        "hint": "The sentence says Maria jumped for joy. How do you feel when you jump for joy?"
+      },
+      {
+        "prompt": "The old bridge was fragile, so it broke easily when the truck drove over it.\n\nUsing context clues, **fragile** means \u2014",
+        "choices": [
+          "Very strong",
+          "Easily broken",
+          "Very shiny",
+          "Very long"
+        ],
+        "correct": "Easily broken",
+        "hint": "The sentence says the bridge broke easily. What does fragile tell you about the bridge?"
+      }
+    ]
+  },
+  {
+    "std": "L.3.4b",
+    "questions": [
+      {
+        "prompt": "The prefix **re-** means \"again.\" So the word **replay** means to \u2014",
+        "choices": [
+          "Play again",
+          "Stop playing",
+          "Eat lunch",
+          "Run fast"
+        ],
+        "correct": "Play again",
+        "hint": "\"Re-\" means \"again,\" so add that to \"play.\""
+      },
+      {
+        "prompt": "The prefix **un-** means \"not.\" So the word **unhappy** means \u2014",
+        "choices": [
+          "Not happy",
+          "Very fast",
+          "A big dog",
+          "Happy again"
+        ],
+        "correct": "Not happy",
+        "hint": "\"Un-\" means \"not,\" so put that in front of \"happy.\""
+      },
+      {
+        "prompt": "The suffix **-ful** means \"full of.\" So the word **helpful** means \u2014",
+        "choices": [
+          "Full of help",
+          "A kind of hat",
+          "Very cold",
+          "Without help"
+        ],
+        "correct": "Full of help",
+        "hint": "\"-ful\" means \"full of,\" so it is full of help."
+      },
+      {
+        "prompt": "The prefix **un-** means \"not.\" So the word **unlock** means to \u2014",
+        "choices": [
+          "Not lock (open it)",
+          "Bake a cake",
+          "Sing a song",
+          "Jump high"
+        ],
+        "correct": "Not lock (open it)",
+        "hint": "\"Un-\" means \"not,\" so \"unlock\" is the opposite of lock."
+      },
+      {
+        "prompt": "The suffix **-less** means \"without.\" So the word **fearless** means \u2014",
+        "choices": [
+          "Without fear",
+          "A green plant",
+          "Full of water",
+          "Very tired"
+        ],
+        "correct": "Without fear",
+        "hint": "\"-less\" means \"without,\" so it means without fear."
+      }
+    ]
+  },
+  {
+    "std": "L.3.4c",
+    "questions": [
+      {
+        "prompt": "You know that **bake** means \"to cook in an oven.\" Which word uses the root **bake**?",
+        "choices": [
+          "Baker",
+          "Table",
+          "River",
+          "Happy"
+        ],
+        "correct": "Baker",
+        "hint": "Look for the word that has \"bake\" hiding inside it."
+      },
+      {
+        "prompt": "You know that **play** means \"to have fun with a game.\" Which word uses the root **play**?",
+        "choices": [
+          "Playful",
+          "Winter",
+          "Bottle",
+          "Cloud"
+        ],
+        "correct": "Playful",
+        "hint": "Find the word that begins with \"play.\""
+      },
+      {
+        "prompt": "You know that **help** means \"to give aid.\" Which word uses the root **help**?",
+        "choices": [
+          "Helper",
+          "Purple",
+          "Ocean",
+          "Truck"
+        ],
+        "correct": "Helper",
+        "hint": "Which word do you see the word \"help\" inside of?"
+      },
+      {
+        "prompt": "You know that **farm** means \"land where crops grow.\" Which word uses the root **farm**?",
+        "choices": [
+          "Farmer",
+          "Pencil",
+          "Yellow",
+          "Jump"
+        ],
+        "correct": "Farmer",
+        "hint": "Look for \"farm\" at the start of the word."
+      },
+      {
+        "prompt": "You know that **paint** means \"to put color on something.\" Which word uses the root **paint**?",
+        "choices": [
+          "Painting",
+          "Silver",
+          "Dinner",
+          "Mountain"
+        ],
+        "correct": "Painting",
+        "hint": "Find the word that has \"paint\" inside it."
+      }
+    ]
+  },
+  {
+    "std": "L.3.4d",
+    "questions": [
+      {
+        "prompt": "A dictionary shows: **puppy** (noun): a young dog. What does the word \"puppy\" mean?",
+        "choices": [
+          "A young dog",
+          "A big truck",
+          "A red apple",
+          "A tall tree"
+        ],
+        "correct": "A young dog",
+        "hint": "Read the dictionary meaning right after the word. It tells you exactly what \"puppy\" means."
+      },
+      {
+        "prompt": "A dictionary shows: **damp** (adjective): a little bit wet. If a towel is damp, what is it?",
+        "choices": [
+          "A little bit wet",
+          "Very hot",
+          "Made of glass",
+          "Painted blue"
+        ],
+        "correct": "A little bit wet",
+        "hint": "The dictionary already gives the meaning. \"Damp\" means a little bit wet."
+      },
+      {
+        "prompt": "A dictionary shows: **gigantic** (adjective): very, very big. Which word means the same as \"gigantic\"?",
+        "choices": [
+          "Huge",
+          "Quiet",
+          "Sticky",
+          "Cold"
+        ],
+        "correct": "Huge",
+        "hint": "The dictionary says \"gigantic\" means very, very big. Which choice also means very big?"
+      },
+      {
+        "prompt": "A glossary in a science book shows: **stem** (noun): the part of a plant that holds up the leaves and flowers. What does the stem do?",
+        "choices": [
+          "Holds up the leaves and flowers",
+          "Barks like a dog",
+          "Rings like a bell",
+          "Melts in the sun"
+        ],
+        "correct": "Holds up the leaves and flowers",
+        "hint": "The glossary meaning is written right there. It tells you what the stem does."
+      },
+      {
+        "prompt": "A dictionary shows: **whisper** (verb): to talk in a very soft, quiet voice. If you whisper, how are you talking?",
+        "choices": [
+          "In a soft, quiet voice",
+          "In a very loud shout",
+          "With your eyes closed",
+          "While running fast"
+        ],
+        "correct": "In a soft, quiet voice",
+        "hint": "Look at the dictionary meaning. To \"whisper\" is to talk soft and quiet."
+      }
+    ]
+  },
+  {
+    "std": "L.3.5b",
+    "questions": [
+      {
+        "prompt": "When would you call someone **kind**?",
+        "choices": [
+          "When they help a friend who is hurt",
+          "When they are eating breakfast",
+          "When they are wearing a blue shirt",
+          "When they are taking a nap"
+        ],
+        "correct": "When they help a friend who is hurt",
+        "hint": "Think about what a kind person does for others. Which one is a nice, caring thing to do?"
+      },
+      {
+        "prompt": "Which of these is something **brave**?",
+        "choices": [
+          "Sleeping in your bed",
+          "Sitting in a chair",
+          "Pouring a glass of milk",
+          "Speaking up in front of the whole class"
+        ],
+        "correct": "Speaking up in front of the whole class",
+        "hint": "Brave means doing something even when it feels scary. Which choice takes courage?"
+      },
+      {
+        "prompt": "When would you say a person is **hungry**?",
+        "choices": [
+          "When their stomach is growling and they want food",
+          "When they tie their shoes",
+          "When they wave hello",
+          "When they turn on a lamp"
+        ],
+        "correct": "When their stomach is growling and they want food",
+        "hint": "Hungry is how you feel when your body needs food. Which choice is about wanting to eat?"
+      },
+      {
+        "prompt": "Which one shows a **messy** room?",
+        "choices": [
+          "A room where everything is put away neatly",
+          "A room with an empty desk",
+          "An open, empty closet",
+          "Toys and clothes all over the floor"
+        ],
+        "correct": "Toys and clothes all over the floor",
+        "hint": "Messy means not clean or not put away. Which room looks like a big jumble?"
+      },
+      {
+        "prompt": "When would you feel **tired**?",
+        "choices": [
+          "After counting to three",
+          "After tasting a cookie",
+          "After staying up all night long",
+          "After hearing a song"
+        ],
+        "correct": "After staying up all night long",
+        "hint": "Tired is how you feel when you need to rest or sleep. Which choice would wear you out?"
+      }
+    ]
+  },
+  {
+    "std": "L.3.5c",
+    "questions": [
+      {
+        "prompt": "Which word means a BIGGER feeling of happy than just \"glad\"?",
+        "choices": [
+          "Overjoyed",
+          "Tired",
+          "Hungry",
+          "Cold"
+        ],
+        "correct": "Overjoyed",
+        "hint": "Look for the word that is still about being happy, only stronger. Three of the choices are not about happy at all."
+      },
+      {
+        "prompt": "Which word shows the STRONGEST fear?",
+        "choices": [
+          "Terrified",
+          "Sleepy",
+          "Curious",
+          "Bored"
+        ],
+        "correct": "Terrified",
+        "hint": "Only one choice is a fear word. Pick the one that means very, very scared."
+      },
+      {
+        "prompt": "Sam was SURE he locked the door. Which word means Sam felt SURE?",
+        "choices": [
+          "Certain",
+          "Silly",
+          "Slow",
+          "Loud"
+        ],
+        "correct": "Certain",
+        "hint": "\"Sure\" and \"certain\" mean the same thing. The other words do not tell how sure you feel."
+      },
+      {
+        "prompt": "Which word shows the STRONGEST anger?",
+        "choices": [
+          "Furious",
+          "Friendly",
+          "Funny",
+          "Fast"
+        ],
+        "correct": "Furious",
+        "hint": "Look for the anger word. Furious means way past just a little mad."
+      },
+      {
+        "prompt": "Maya was NOT sure it would rain. Which word means Maya felt NOT sure?",
+        "choices": [
+          "Unsure",
+          "Happy",
+          "Brave",
+          "Quiet"
+        ],
+        "correct": "Unsure",
+        "hint": "\"Not sure\" is another way to say \"unsure.\" The other words do not tell how sure she felt."
+      }
+    ]
+  },
+  {
+    "std": "L.3.6",
+    "questions": [
+      {
+        "prompt": "Read the sentence: \"The tired dog wanted to rest.\" What does the word **tired** mean?",
+        "choices": [
+          "Needing sleep or rest",
+          "Very hungry",
+          "A kind of ball",
+          "Bright and sunny"
+        ],
+        "correct": "Needing sleep or rest",
+        "hint": "The sentence says the dog wanted to rest. What kind of dog wants to rest?"
+      },
+      {
+        "prompt": "In science class, an animal's **home** is the place where it lives. Which word means the same as **home**?",
+        "choices": [
+          "Where it lives",
+          "What it eats",
+          "How fast it runs",
+          "The color of its fur"
+        ],
+        "correct": "Where it lives",
+        "hint": "A home is a place. What does the sentence tell you a home is?"
+      },
+      {
+        "prompt": "Which sentence uses a more exact, describing word?",
+        "choices": [
+          "The juicy, red apple looked sweet.",
+          "It was a thing.",
+          "I saw stuff.",
+          "The food was there."
+        ],
+        "correct": "The juicy, red apple looked sweet.",
+        "hint": "Which sentence gives you clear details you can picture, like color and taste?"
+      },
+      {
+        "prompt": "Read: \"The huge elephant was the biggest animal at the zoo.\" What does **huge** mean?",
+        "choices": [
+          "Very big",
+          "Very small",
+          "Very fast",
+          "Very quiet"
+        ],
+        "correct": "Very big",
+        "hint": "The sentence says the elephant was the biggest animal. So huge means very...?"
+      },
+      {
+        "prompt": "In a story, someone who feels **happy** feels \u2014 ",
+        "choices": [
+          "Glad and cheerful",
+          "Sad and upset",
+          "Cold and wet",
+          "Sleepy and slow"
+        ],
+        "correct": "Glad and cheerful",
+        "hint": "Think about how you feel when something good happens. That is what happy means."
+      }
+    ]
+  },
+  {
+    "std": "L.4.1",
+    "questions": [
+      {
+        "prompt": "Which word correctly completes the sentence? \"The two dogs ___ playing in the yard.\"",
+        "choices": [
+          "are",
+          "is",
+          "am",
+          "be"
+        ],
+        "correct": "are",
+        "hint": "The word 'dogs' means more than one, so it needs the plural verb."
+      },
+      {
+        "prompt": "Which word is the CONJUNCTION (joining word) in this sentence? \"I like apples and oranges.\"",
+        "choices": [
+          "and",
+          "apples",
+          "oranges",
+          "like"
+        ],
+        "correct": "and",
+        "hint": "Look for the little word that joins the two fruits together."
+      },
+      {
+        "prompt": "Which sentence uses the correct verb? \"Yesterday, we ___ to the park.\"",
+        "choices": [
+          "walked",
+          "walking",
+          "walks",
+          "walk"
+        ],
+        "correct": "walked",
+        "hint": "'Yesterday' means it already happened, so use the past-tense verb."
+      },
+      {
+        "prompt": "Which word correctly completes the sentence? \"She ___ her homework every night.\"",
+        "choices": [
+          "does",
+          "do",
+          "doing",
+          "done"
+        ],
+        "correct": "does",
+        "hint": "The word 'She' is one person, so pick the verb that matches it."
+      },
+      {
+        "prompt": "Which sentence correctly combines these two ideas with a conjunction: \"I was tired. I went to bed.\"",
+        "choices": [
+          "I was tired so I went to bed.",
+          "Tired I bed went.",
+          "I was tired I went to bed.",
+          "Went bed I tired was."
+        ],
+        "correct": "I was tired so I went to bed.",
+        "hint": "Look for the sentence that joins the two ideas with a joining word like 'so'."
+      }
+    ]
+  },
+  {
+    "std": "L.4.2",
+    "questions": [
+      {
+        "prompt": "Which sentence has the correct end punctuation? Pick the one that asks a question.",
+        "choices": [
+          "Where is my backpack?",
+          "Where is my backpack.",
+          "Where is my backpack,",
+          "where is my backpack"
+        ],
+        "correct": "Where is my backpack?",
+        "hint": "A question needs a question mark at the end."
+      },
+      {
+        "prompt": "Every sentence should begin with what kind of letter? \"___he dog ran fast.\"",
+        "choices": [
+          "A capital letter",
+          "A lowercase letter",
+          "A number",
+          "A comma"
+        ],
+        "correct": "A capital letter",
+        "hint": "The very first letter of a sentence is always capitalized."
+      },
+      {
+        "prompt": "A person's name, like the one below, should always start with a capital letter. Which is written correctly?",
+        "choices": [
+          "Maria",
+          "maria",
+          "MARIA all caps",
+          "mAria"
+        ],
+        "correct": "Maria",
+        "hint": "Names of people begin with one capital letter, then lowercase."
+      },
+      {
+        "prompt": "Where does the comma belong? \"I bought apples ___ bananas, and grapes.\"",
+        "choices": [
+          "after \"apples\"",
+          "after \"and\"",
+          "after \"grapes\"",
+          "no comma is needed"
+        ],
+        "correct": "after \"apples\"",
+        "hint": "When you list three or more things, put a comma between each item."
+      }
+    ]
+  },
+  {
+    "std": "L.4.3",
+    "questions": [
+      {
+        "prompt": "Which sentence uses the most exact, colorful word for how the boy moved?",
+        "choices": [
+          "The boy went down the street.",
+          "The boy raced down the street.",
+          "The boy was on the street.",
+          "The boy did the street."
+        ],
+        "correct": "The boy raced down the street.",
+        "hint": "Which word tells you EXACTLY how the boy moved? \"Raced\" paints a clear picture."
+      },
+      {
+        "prompt": "A good writer picks words that paint a clear picture. Which word paints the clearest picture of a happy dog?",
+        "choices": [
+          "nice",
+          "good",
+          "fine",
+          "joyful"
+        ],
+        "correct": "joyful",
+        "hint": "Three of these words are plain. Which one really shows a feeling?"
+      },
+      {
+        "prompt": "Read this sentence: \"The tiny kitten napped in the warm sunlight.\" Which words help you picture the scene?",
+        "choices": [
+          "The, in, the",
+          "tiny, warm",
+          "napped and",
+          "a the it"
+        ],
+        "correct": "tiny, warm",
+        "hint": "Look for the describing words that help you SEE and FEEL the picture."
+      },
+      {
+        "prompt": "Which sentence is written in a clearer, more exact way?",
+        "choices": [
+          "The stuff was in the place.",
+          "The books were on the shelf.",
+          "It was there somehow.",
+          "Some things went someplace."
+        ],
+        "correct": "The books were on the shelf.",
+        "hint": "Which sentence tells you exactly WHAT and WHERE? The others are vague."
+      },
+      {
+        "prompt": "When a writer wants to describe a very loud noise, which word is the best, most exact choice?",
+        "choices": [
+          "said",
+          "walked",
+          "crashed",
+          "small"
+        ],
+        "correct": "crashed",
+        "hint": "Which word actually sounds loud? Say them out loud and listen."
+      }
+    ]
+  },
+  {
+    "std": "L.4.4",
+    "questions": [
+      {
+        "prompt": "Read the sentence:\n\n\"The bright sun was so **brilliant** that we had to shade our eyes.\"\n\nIn this sentence, **brilliant** means \u2014",
+        "choices": [
+          "Very bright",
+          "Very quiet",
+          "Very cold",
+          "Very slow"
+        ],
+        "correct": "Very bright",
+        "hint": "The sentence says they had to shade their eyes from the sun. What is the sun like?"
+      },
+      {
+        "prompt": "Read the sentence:\n\n\"After running the race, Maria felt **exhausted** and needed to rest.\"\n\nWhat does **exhausted** mean?",
+        "choices": [
+          "Very tired",
+          "Very hungry",
+          "Very happy",
+          "Very tall"
+        ],
+        "correct": "Very tired",
+        "hint": "She just finished running a race and needed to rest. How would her body feel?"
+      },
+      {
+        "prompt": "Read the sentence:\n\n\"The tiny puppy was **timid** and hid behind its mother when strangers came near.\"\n\nIn this sentence, **timid** means \u2014",
+        "choices": [
+          "Shy or afraid",
+          "Loud and brave",
+          "Big and strong",
+          "Fast and hungry"
+        ],
+        "correct": "Shy or afraid",
+        "hint": "The puppy hid behind its mother when strangers came near. How was it feeling?"
+      },
+      {
+        "prompt": "Read the sentence:\n\n\"We had to **postpone** the picnic because it started to rain, so we planned it for next week.\"\n\nWhat does **postpone** mean?",
+        "choices": [
+          "To move to a later time",
+          "To eat quickly",
+          "To clean up",
+          "To run away"
+        ],
+        "correct": "To move to a later time",
+        "hint": "They moved the picnic to next week because of the rain. What did they do with it?"
+      },
+      {
+        "prompt": "Read the sentence:\n\n\"The soup was so **delicious** that everyone asked for a second bowl.\"\n\nIn this sentence, **delicious** means \u2014",
+        "choices": [
+          "Tasting very good",
+          "Very cold",
+          "Very small",
+          "Very loud"
+        ],
+        "correct": "Tasting very good",
+        "hint": "Everyone wanted a second bowl of the soup. How did it taste?"
+      }
+    ]
+  },
+  {
+    "std": "L.4.4a",
+    "questions": [
+      {
+        "prompt": "The sky turned dark and gloomy, and everyone felt sad on the rainy day.\n\n**Gloomy** means \u2014",
+        "choices": [
+          "Bright and sunny",
+          "Dark and sad",
+          "Loud and noisy",
+          "Warm and dry"
+        ],
+        "correct": "Dark and sad",
+        "hint": "The sky was dark and everyone felt sad. Which choice matches those clue words?"
+      },
+      {
+        "prompt": "The tired hikers finally reached the top of the mountain, so they stopped to rest.\n\n**Reached** means \u2014",
+        "choices": [
+          "Got to",
+          "Ran away from",
+          "Forgot about",
+          "Fell asleep on"
+        ],
+        "correct": "Got to",
+        "hint": "They arrived at the top and then rested. Which choice means the same as arriving somewhere?"
+      },
+      {
+        "prompt": "The soup was so hot that it burned my tongue when I took a sip.\n\n**Hot** means \u2014",
+        "choices": [
+          "Very cold",
+          "Very warm",
+          "Very sweet",
+          "Very hard"
+        ],
+        "correct": "Very warm",
+        "hint": "It burned her tongue. That tells you the soup was very warm, not cold."
+      },
+      {
+        "prompt": "My little brother was afraid of the dark, so he slept with a night-light on.\n\n**Afraid** means \u2014",
+        "choices": [
+          "Excited and happy",
+          "Scared",
+          "Sleepy and calm",
+          "Hungry"
+        ],
+        "correct": "Scared",
+        "hint": "He needed a night-light in the dark. That shows he felt scared."
+      },
+      {
+        "prompt": "The puppy was so playful that it ran and jumped all around the yard.\n\n**Playful** means \u2014",
+        "choices": [
+          "Sleepy and still",
+          "Full of play and fun",
+          "Sick and weak",
+          "Mean and angry"
+        ],
+        "correct": "Full of play and fun",
+        "hint": "The puppy ran and jumped around. Which choice describes wanting to play?"
+      }
+    ]
+  },
+  {
+    "std": "L.4.4b",
+    "questions": [
+      {
+        "prompt": "The prefix **re-** means \"again.\" If you **rewrite** your story, what are you doing?",
+        "choices": [
+          "Writing it again",
+          "Throwing it away",
+          "Reading it out loud",
+          "Coloring a picture"
+        ],
+        "correct": "Writing it again",
+        "hint": "The prefix re- means \"again.\" Add that to \"write.\""
+      },
+      {
+        "prompt": "The prefix **un-** means \"not.\" If a shoe is **untied**, that means it is:",
+        "choices": [
+          "Not tied",
+          "Very clean",
+          "Brand new",
+          "Too small"
+        ],
+        "correct": "Not tied",
+        "hint": "Un- means \"not.\" So untied means not tied."
+      },
+      {
+        "prompt": "The root **tri-** means \"three.\" How many sides does a **triangle** have?",
+        "choices": [
+          "Three",
+          "One",
+          "Six",
+          "Ten"
+        ],
+        "correct": "Three",
+        "hint": "Tri- means \"three,\" and the word ends in -angle (sides/angles)."
+      },
+      {
+        "prompt": "The prefix **pre-** means \"before.\" When you **preview** a movie, you see part of it:",
+        "choices": [
+          "Before the whole movie",
+          "After it ends",
+          "During dinner",
+          "Twice in a row"
+        ],
+        "correct": "Before the whole movie",
+        "hint": "Pre- means \"before,\" so a preview comes before."
+      },
+      {
+        "prompt": "The root **bi-** means \"two.\" How many wheels does a **bicycle** have?",
+        "choices": [
+          "Two",
+          "Four",
+          "Eight",
+          "One"
+        ],
+        "correct": "Two",
+        "hint": "Bi- means \"two,\" so count the wheels on a bicycle."
+      }
+    ]
+  },
+  {
+    "std": "L.4.4c",
+    "questions": [
+      {
+        "prompt": "Emma does not know what the word \"gigantic\" means. Which book should she use to find its meaning?",
+        "choices": [
+          "A dictionary",
+          "A comic book",
+          "A phone book",
+          "A cookbook"
+        ],
+        "correct": "A dictionary",
+        "hint": "Which book is made to tell you what words mean?"
+      },
+      {
+        "prompt": "A dictionary shows the word \"cat\" like this: cat (kat). What does the part in parentheses, (kat), tell you?",
+        "choices": [
+          "How to say the word",
+          "The color of a cat",
+          "How to spell \"dog\"",
+          "The price of a cat"
+        ],
+        "correct": "How to say the word",
+        "hint": "The letters in parentheses help you sound the word out loud."
+      },
+      {
+        "prompt": "Ben wrote \"happy\" three times and wants a different word that means almost the same thing. Which reference book helps you find another word with a similar meaning?",
+        "choices": [
+          "A thesaurus",
+          "An atlas",
+          "A calendar",
+          "A menu"
+        ],
+        "correct": "A thesaurus",
+        "hint": "One of these books is full of words that mean the same thing."
+      },
+      {
+        "prompt": "At the back of Maria's science book is a list of important words with their meanings. What is this helpful list called?",
+        "choices": [
+          "A glossary",
+          "A map",
+          "A song",
+          "A ruler"
+        ],
+        "correct": "A glossary",
+        "hint": "It is like a mini-dictionary made just for that book."
+      },
+      {
+        "prompt": "You look up \"amazing\" in a dictionary and it says: \"very surprising; wonderful.\" What did the dictionary just tell you?",
+        "choices": [
+          "What the word means",
+          "How tall you are",
+          "What day it is",
+          "Where the store is"
+        ],
+        "correct": "What the word means",
+        "hint": "A dictionary explains what a word means."
+      }
+    ]
+  },
+  {
+    "std": "L.4.5",
+    "questions": [
+      {
+        "prompt": "Maria said, \"My backpack is as heavy as an elephant!\"\n\nMaria is using \u2014",
+        "choices": [
+          "A simile, because she uses the word \"as\" to compare two things",
+          "A list of animals at the zoo",
+          "A math problem about weight",
+          "A question for her teacher"
+        ],
+        "correct": "A simile, because she uses the word \"as\" to compare two things",
+        "hint": "Look for the little word \"as.\" It compares her backpack to something else."
+      },
+      {
+        "prompt": "\"The wind whispered through the trees.\"\n\nThe wind cannot really talk. Giving the wind a human action, like whispering, is called \u2014",
+        "choices": [
+          "Personification",
+          "A weather report",
+          "A spelling word",
+          "A rhyme"
+        ],
+        "correct": "Personification",
+        "hint": "When something that is not a person acts like a person, that's personification."
+      },
+      {
+        "prompt": "Grandpa said, \"It's raining cats and dogs outside!\"\n\nGrandpa does NOT mean real cats and dogs are falling. This kind of saying is called \u2014",
+        "choices": [
+          "An idiom",
+          "A true fact",
+          "A spelling test",
+          "A grocery list"
+        ],
+        "correct": "An idiom",
+        "hint": "An idiom is a saying that means something different from the exact words. It's raining very hard."
+      },
+      {
+        "prompt": "\"The star shone as bright as a diamond.\"\n\nThis sentence uses the word \"as\" to compare the star to a diamond. This is called \u2014",
+        "choices": [
+          "A simile",
+          "A subtraction problem",
+          "A song title",
+          "A shopping list"
+        ],
+        "correct": "A simile",
+        "hint": "A comparison using \"like\" or \"as\" is a simile."
+      },
+      {
+        "prompt": "Which sentence uses figurative language (words that don't mean exactly what they say)?",
+        "choices": [
+          "Her smile was as warm as sunshine.",
+          "The dog ran to the door.",
+          "I ate an apple for lunch.",
+          "The bus stopped at the corner."
+        ],
+        "correct": "Her smile was as warm as sunshine.",
+        "hint": "Look for the sentence that compares one thing to another. A smile can't really be warm like the sun."
+      }
+    ]
+  },
+  {
+    "std": "L.4.5a",
+    "questions": [
+      {
+        "prompt": "Maria was so tired after the race that she said, \"I slept like a log.\" What does \"slept like a log\" mean?",
+        "choices": [
+          "She slept very deeply and well.",
+          "She slept on top of a log.",
+          "She could not fall asleep.",
+          "She was made of wood."
+        ],
+        "correct": "She slept very deeply and well.",
+        "hint": "A log lies totally still and heavy. What kind of sleep is that like?"
+      },
+      {
+        "prompt": "The teacher said the classroom was \"as quiet as a mouse\" during the test. What does this mean?",
+        "choices": [
+          "The room was very quiet.",
+          "There was a mouse in the room.",
+          "The students were very loud.",
+          "The room smelled bad."
+        ],
+        "correct": "The room was very quiet.",
+        "hint": "Mice are tiny and make almost no sound. So the room was very...?"
+      },
+      {
+        "prompt": "Dad said, \"My new car is a rocket!\" He means the car is:",
+        "choices": [
+          "very fast.",
+          "flying in space.",
+          "made of metal from a rocket.",
+          "broken and slow."
+        ],
+        "correct": "very fast.",
+        "hint": "Rockets are famous for how fast they go. He's saying his car is like that."
+      },
+      {
+        "prompt": "Jake was very hungry, so he said, \"I could eat a horse.\" What does he really mean?",
+        "choices": [
+          "He is extremely hungry.",
+          "He wants to buy a horse.",
+          "He is going to a farm.",
+          "He is not hungry at all."
+        ],
+        "correct": "He is extremely hungry.",
+        "hint": "A horse is huge. Wanting to eat something that big means he is very...?"
+      },
+      {
+        "prompt": "Grandma said the freshly baked bread was \"warm as sunshine.\" This simile tells you the bread was:",
+        "choices": [
+          "nice and warm.",
+          "yellow like the sun.",
+          "up in the sky.",
+          "cold and hard."
+        ],
+        "correct": "nice and warm.",
+        "hint": "Sunshine feels warm. She is comparing the bread's warmth to it."
+      }
+    ]
+  },
+  {
+    "std": "L.4.5b",
+    "questions": [
+      {
+        "prompt": "Maria's mom said, \"It's raining cats and dogs, so grab your umbrella!\" What does the idiom \"raining cats and dogs\" mean?",
+        "choices": [
+          "It is raining very hard",
+          "Cats and dogs are falling from the sky",
+          "Pets are playing in the yard",
+          "It is a sunny day"
+        ],
+        "correct": "It is raining very hard",
+        "hint": "Mom told Maria to grab an umbrella. What kind of weather needs an umbrella?"
+      },
+      {
+        "prompt": "Grandpa smiled and said, \"A penny saved is a penny earned.\" This saying teaches that it is smart to \u2014",
+        "choices": [
+          "save your money",
+          "spend all your money",
+          "lose your pennies",
+          "give money away"
+        ],
+        "correct": "save your money",
+        "hint": "The saying is about keeping your money instead of using it. What is that called?"
+      },
+      {
+        "prompt": "The coach told the team, \"Practice makes perfect.\" What does this saying mean?",
+        "choices": [
+          "Practicing a lot helps you get better",
+          "Perfect people never practice",
+          "Games are boring",
+          "You should quit if it's hard"
+        ],
+        "correct": "Practicing a lot helps you get better",
+        "hint": "Think about what happens to your skills when you practice something over and over."
+      },
+      {
+        "prompt": "When Sam finished his homework before dinner, Dad said, \"Better late than never.\" What does this saying mean?",
+        "choices": [
+          "Doing something late is still better than not doing it at all",
+          "You should always be late",
+          "Dinner is more important than homework",
+          "Never do your homework"
+        ],
+        "correct": "Doing something late is still better than not doing it at all",
+        "hint": "Dad said it AFTER Sam finished. He is happy Sam did it, even if it took a while."
+      },
+      {
+        "prompt": "Leo was nervous, and his sister said, \"Don't worry, it's a piece of cake!\" What does the idiom \"a piece of cake\" mean?",
+        "choices": [
+          "It is very easy",
+          "It is a real dessert",
+          "It is very hard",
+          "It is time to eat"
+        ],
+        "correct": "It is very easy",
+        "hint": "Leo was nervous, and his sister was trying to calm him down. She wants him to know it will not be tough."
+      }
+    ]
+  },
+  {
+    "std": "L.4.5c",
+    "questions": [
+      {
+        "prompt": "An antonym is a word that means the OPPOSITE. Which word is the antonym of \"hot\"?",
+        "choices": [
+          "cold",
+          "warm",
+          "spicy",
+          "oven"
+        ],
+        "correct": "cold",
+        "hint": "An antonym means the opposite. What is the opposite of hot?"
+      },
+      {
+        "prompt": "A synonym is a word that means almost the SAME thing. Which word is a synonym of \"big\"?",
+        "choices": [
+          "large",
+          "tiny",
+          "short",
+          "empty"
+        ],
+        "correct": "large",
+        "hint": "A synonym means almost the same. Which word also means big?"
+      },
+      {
+        "prompt": "Which word is the antonym (opposite) of \"happy\"?",
+        "choices": [
+          "sad",
+          "glad",
+          "cheerful",
+          "funny"
+        ],
+        "correct": "sad",
+        "hint": "You want the OPPOSITE of happy, not another word for happy."
+      },
+      {
+        "prompt": "The words \"begin\" and \"start\" are synonyms because they \u2014",
+        "choices": [
+          "mean almost the same thing",
+          "are opposites",
+          "are both animals",
+          "rhyme with each other"
+        ],
+        "correct": "mean almost the same thing",
+        "hint": "Think about what \"begin\" and \"start\" both mean. Do they match or clash?"
+      },
+      {
+        "prompt": "Read the sentence: \"The old road was rough, not smooth.\" In this sentence, \"rough\" is the OPPOSITE of \u2014",
+        "choices": [
+          "smooth",
+          "old",
+          "road",
+          "new"
+        ],
+        "correct": "smooth",
+        "hint": "The sentence uses the word \"not\" to point right at the opposite word."
+      }
+    ]
+  },
+  {
+    "std": "L.4.6",
+    "questions": [
+      {
+        "prompt": "In science class, a **habitat** is the place where an animal lives. What is the beaver's habitat?",
+        "choices": [
+          "The river and the woods around it",
+          "A red bicycle",
+          "A slice of pizza",
+          "A pair of shoes"
+        ],
+        "correct": "The river and the woods around it",
+        "hint": "A habitat is a home. Which choice is a place an animal could live?"
+      },
+      {
+        "prompt": "The word **enormous** means very, very big. Which animal is enormous?",
+        "choices": [
+          "A giant blue whale",
+          "A tiny ant",
+          "A small ladybug",
+          "A little mouse"
+        ],
+        "correct": "A giant blue whale",
+        "hint": "Enormous means huge. Pick the biggest animal on the list."
+      },
+      {
+        "prompt": "In geography, a **coast** is the land right next to the ocean. Which place is a coast?",
+        "choices": [
+          "A sandy beach where the waves reach the land",
+          "A desert with no water for miles",
+          "A tall mountain far from any sea",
+          "A busy kitchen"
+        ],
+        "correct": "A sandy beach where the waves reach the land",
+        "hint": "A coast touches the ocean. Which place has waves meeting land?"
+      },
+      {
+        "prompt": "Which sentence uses the most precise (exact) word? The sky at sunset looked ___.",
+        "choices": [
+          "The sky at sunset glowed bright orange.",
+          "The sky was nice.",
+          "The sky was there.",
+          "The sky did stuff."
+        ],
+        "correct": "The sky at sunset glowed bright orange.",
+        "hint": "Precise means exact. Which sentence tells you exactly what the sky looked like?"
+      },
+      {
+        "prompt": "In math class, the word **total** means the whole amount when you add things together. Sam has 3 apples and 2 apples. What is the total?",
+        "choices": [
+          "5 apples",
+          "A blue car",
+          "The color green",
+          "A song"
+        ],
+        "correct": "5 apples",
+        "hint": "Total means the amount all added up. Add 3 and 2."
+      }
+    ]
+  },
+  {
+    "std": "RF.1.4c",
+    "questions": [
+      {
+        "prompt": "Read the sentence: \"The dog likes to ___.\" Which word makes sense in the blank?",
+        "choices": [
+          "bark",
+          "chair",
+          "seven",
+          "purple"
+        ],
+        "correct": "bark",
+        "hint": "Think about what a dog can do. Which word fits with a dog?"
+      },
+      {
+        "prompt": "Read this: \"I put my hat on my ___.\" Which word makes the sentence make sense?",
+        "choices": [
+          "head",
+          "cup",
+          "tree",
+          "boat"
+        ],
+        "correct": "head",
+        "hint": "Where do you wear a hat? Pick the word that fits."
+      },
+      {
+        "prompt": "A boy reads: \"The cat can jump on the bde.\" The word \"bde\" is not right. What word should it be so the sentence makes sense?",
+        "choices": [
+          "bed",
+          "dog",
+          "run",
+          "blue"
+        ],
+        "correct": "bed",
+        "hint": "A cat jumps on something you sleep on. Fix the funny word."
+      },
+      {
+        "prompt": "Read the sentence: \"We eat lunch at ___.\" Which word makes sense?",
+        "choices": [
+          "noon",
+          "jump",
+          "green",
+          "sock"
+        ],
+        "correct": "noon",
+        "hint": "When do we eat lunch? Pick the word about time."
+      },
+      {
+        "prompt": "A girl reads: \"The sun is very hat today.\" That does not sound right. What word should it be?",
+        "choices": [
+          "hot",
+          "hat",
+          "cat",
+          "hop"
+        ],
+        "correct": "hot",
+        "hint": "How does the sun feel? Fix the word so the sentence makes sense."
+      }
+    ]
+  },
+  {
+    "std": "RF.3.3c",
+    "questions": [
+      {
+        "prompt": "How many syllables are in the word **rabbit**? Clap it out: rab-bit.",
+        "choices": [
+          "2",
+          "4",
+          "5",
+          "1"
+        ],
+        "correct": "2",
+        "hint": "Clap once for each part you say: rab (clap) bit (clap)."
+      },
+      {
+        "prompt": "Break the word **napkin** into its two syllables.",
+        "choices": [
+          "nap-kin",
+          "na-pkin",
+          "napk-in",
+          "n-apkin"
+        ],
+        "correct": "nap-kin",
+        "hint": "Split between the two middle letters: nap + kin."
+      },
+      {
+        "prompt": "How many syllables are in the word **sunset**? Say it slowly: sun-set.",
+        "choices": [
+          "2",
+          "3",
+          "4",
+          "1"
+        ],
+        "correct": "2",
+        "hint": "You hear two beats: sun-set. Count them."
+      },
+      {
+        "prompt": "Break the word **basket** into its two syllables.",
+        "choices": [
+          "bas-ket",
+          "ba-sket",
+          "bask-et",
+          "b-asket"
+        ],
+        "correct": "bas-ket",
+        "hint": "Split it in the middle: bas + ket."
+      },
+      {
+        "prompt": "Which word has exactly **two** syllables?",
+        "choices": [
+          "muffin",
+          "cat",
+          "up",
+          "dog"
+        ],
+        "correct": "muffin",
+        "hint": "Say each word and clap the parts. Muf-fin has two claps; the others have just one."
+      }
+    ]
+  },
+  {
+    "std": "RF.4.3",
+    "questions": [
+      {
+        "prompt": "The prefix **re-** means **again**. What does the word **replay** mean?",
+        "choices": [
+          "To play again",
+          "To stop playing",
+          "A kind of toy",
+          "To play loudly"
+        ],
+        "correct": "To play again",
+        "hint": "Add the meaning of re- (again) to the word play."
+      },
+      {
+        "prompt": "The suffix **-ful** means **full of**. What does the word **helpful** mean?",
+        "choices": [
+          "Full of help",
+          "Without any help",
+          "A helper's hat",
+          "To ask for help"
+        ],
+        "correct": "Full of help",
+        "hint": "Put the word help together with -ful, which means full of."
+      },
+      {
+        "prompt": "The prefix **un-** means **not**. What does the word **unhappy** mean?",
+        "choices": [
+          "Not happy",
+          "Very happy",
+          "A happy song",
+          "Happy again"
+        ],
+        "correct": "Not happy",
+        "hint": "Un- flips the meaning of happy to its opposite."
+      },
+      {
+        "prompt": "How many syllables (word beats) are in the word **rabbit**? Clap it out: rab-bit.",
+        "choices": [
+          "2",
+          "1",
+          "5",
+          "8"
+        ],
+        "correct": "2",
+        "hint": "Clap once for rab and once for bit."
+      },
+      {
+        "prompt": "The word **sunlight** is made of two smaller words. Which two words make it up?",
+        "choices": [
+          "sun + light",
+          "sea + night",
+          "run + right",
+          "son + like"
+        ],
+        "correct": "sun + light",
+        "hint": "Break the big word into the two little words you can see and read inside it."
+      }
+    ]
+  },
+  {
+    "std": "RF.4.3a",
+    "questions": [
+      {
+        "prompt": "Break the word \"sunset\" into its two parts to read it.",
+        "choices": [
+          "sun + set",
+          "su + nset",
+          "s + unset",
+          "sunse + t"
+        ],
+        "correct": "sun + set",
+        "hint": "Say the word slowly. What two small words do you hear? Sun... set."
+      },
+      {
+        "prompt": "You come to the word \"basket\" and it looks long. What is the BEST way to read it?",
+        "choices": [
+          "Break it into parts: bas + ket",
+          "Guess from the first letter",
+          "Skip the word",
+          "Change it to an easier word"
+        ],
+        "correct": "Break it into parts: bas + ket",
+        "hint": "A good reader breaks a big word into smaller chunks instead of guessing or skipping."
+      },
+      {
+        "prompt": "How many syllables (word chunks) do you hear in \"rabbit\"?",
+        "choices": [
+          "2 (rab + bit)",
+          "1 (rabbit)",
+          "4 (r + a + bb + it)",
+          "3 (ra + bb + it)"
+        ],
+        "correct": "2 (rab + bit)",
+        "hint": "Clap it out as you say it: RAB - BIT. How many claps?"
+      },
+      {
+        "prompt": "The word \"unhappy\" is built from parts. Which shows how to break it up?",
+        "choices": [
+          "un + happy",
+          "u + nhappy",
+          "unh + appy",
+          "unhap + py"
+        ],
+        "correct": "un + happy",
+        "hint": "\"un\" is a beginning part that means \"not.\" What word is left after it?"
+      },
+      {
+        "prompt": "Break the word \"jumping\" into its two parts.",
+        "choices": [
+          "jump + ing",
+          "ju + mping",
+          "jum + ping",
+          "jumpi + ng"
+        ],
+        "correct": "jump + ing",
+        "hint": "Find the base word first (the action), then the ending you add on."
+      }
+    ]
+  },
+  {
+    "std": "RF.4.4",
+    "questions": [
+      {
+        "prompt": "Read this sentence out loud: \"The dog ran to the park.\" A period ( . ) at the end tells a reader to \u2014",
+        "choices": [
+          "Stop and take a short pause",
+          "Read the next word faster",
+          "Shout the last word",
+          "Skip the whole sentence"
+        ],
+        "correct": "Stop and take a short pause",
+        "hint": "A period is the little dot at the end. It's like a tiny stop sign for your voice."
+      },
+      {
+        "prompt": "Maya read a page but did not understand it, so she read the same page again. Reading something again to understand it better is called \u2014",
+        "choices": [
+          "Rereading",
+          "Napping",
+          "Guessing",
+          "Erasing"
+        ],
+        "correct": "Rereading",
+        "hint": "Look at the word: \"re-\" means to do something again. She read it again."
+      },
+      {
+        "prompt": "A question mark ( ? ) is at the end of a sentence. When you read it out loud, your voice should \u2014",
+        "choices": [
+          "Go up, like you are asking something",
+          "Stay silent the whole time",
+          "Get very quiet and sad",
+          "Turn into a whisper you can't hear"
+        ],
+        "correct": "Go up, like you are asking something",
+        "hint": "Think about how your voice sounds when YOU ask a question, like \"Are you okay?\""
+      },
+      {
+        "prompt": "A \"fluent\" reader is a reader who can read text \u2014",
+        "choices": [
+          "Smoothly and with few mistakes",
+          "Only while jumping",
+          "Backwards, word by word",
+          "With their eyes closed"
+        ],
+        "correct": "Smoothly and with few mistakes",
+        "hint": "Fluent reading sounds smooth, like talking \u2014 not slow and bumpy."
+      },
+      {
+        "prompt": "Sam comes to a word he does not know while reading a story. The best thing for Sam to do is \u2014",
+        "choices": [
+          "Sound the word out to figure it out",
+          "Close the book and stop reading",
+          "Just make up any word he wants",
+          "Rip the page out"
+        ],
+        "correct": "Sound the word out to figure it out",
+        "hint": "Good readers try to sound out tricky words instead of quitting."
+      }
+    ]
+  },
+  {
+    "std": "RI.2.7",
+    "questions": [
+      {
+        "prompt": "A book says: \"A fox has a bushy tail.\" Next to the words is a photo of a fox. What does the photo help you do?",
+        "choices": [
+          "See what a fox looks like",
+          "Learn how to swim",
+          "Count to ten",
+          "Hear a song"
+        ],
+        "correct": "See what a fox looks like",
+        "hint": "The picture shows you the animal the words are talking about."
+      },
+      {
+        "prompt": "A page about bugs has a photo of a ladybug with an arrow pointing to its red wings. What does the arrow do?",
+        "choices": [
+          "Points to the ladybug's wings",
+          "Makes the page blue",
+          "Tells a joke",
+          "Points to the sky"
+        ],
+        "correct": "Points to the ladybug's wings",
+        "hint": "An arrow points to the exact part it wants you to notice."
+      },
+      {
+        "prompt": "A book says: \"This is how you tie a shoe.\" Below the words are step-by-step pictures of hands tying a shoe. How do the pictures help?",
+        "choices": [
+          "They show each step of tying a shoe",
+          "They show a car driving",
+          "They play music",
+          "They are only for fun"
+        ],
+        "correct": "They show each step of tying a shoe",
+        "hint": "Pictures can show you how to do each step, one at a time."
+      },
+      {
+        "prompt": "A page about the sun has a big yellow picture of the sun. The words say the sun is bright and yellow. What does the picture add?",
+        "choices": [
+          "It shows the sun's color and shape",
+          "It tells you about rain",
+          "It hides the words",
+          "It shows a cold night"
+        ],
+        "correct": "It shows the sun's color and shape",
+        "hint": "Look at what the picture lets you SEE that the words describe."
+      },
+      {
+        "prompt": "A book about a bike has a photo of a bike with a label that says \"wheel\" pointing to a wheel. What does the label help you learn?",
+        "choices": [
+          "Which part is the wheel",
+          "How to bake a cake",
+          "The name of a dog",
+          "What time it is"
+        ],
+        "correct": "Which part is the wheel",
+        "hint": "A label names the part it points to so you know what it is."
+      }
+    ]
+  },
+  {
+    "std": "RI.3.1",
+    "questions": [
+      {
+        "prompt": "Read the sentence: \"Owls hunt at night. Their large eyes help them see in the dark.\" According to the text, when do owls hunt?",
+        "choices": [
+          "At night",
+          "In the morning",
+          "At lunchtime",
+          "On weekends"
+        ],
+        "correct": "At night",
+        "hint": "Look at the very first sentence. It tells you exactly when owls hunt."
+      },
+      {
+        "prompt": "Read the sentence: \"A camel can go many days without water. It stores fat in its hump.\" According to the text, where does a camel store fat?",
+        "choices": [
+          "In its hump",
+          "In its tail",
+          "In its ears",
+          "In its feet"
+        ],
+        "correct": "In its hump",
+        "hint": "The second sentence names the body part. Point to the word right before \"hump.\""
+      },
+      {
+        "prompt": "Read the sentence: \"Bees make honey. They collect sweet nectar from flowers to do it.\" According to the text, what do bees make?",
+        "choices": [
+          "Honey",
+          "Bread",
+          "Shoes",
+          "Rain"
+        ],
+        "correct": "Honey",
+        "hint": "The first sentence says exactly what bees make. Reread it."
+      },
+      {
+        "prompt": "Read the sentence: \"The Sahara is a very hot desert. It gets almost no rain all year.\" According to the text, how much rain does the Sahara get?",
+        "choices": [
+          "Almost no rain",
+          "Rain every day",
+          "Snow every night",
+          "A lot of rain"
+        ],
+        "correct": "Almost no rain",
+        "hint": "The last sentence tells you about the rain. Find the words that describe how much."
+      },
+      {
+        "prompt": "Read the sentence: \"Penguins live where it is cold. They use their wings to swim instead of fly.\" According to the text, what do penguins use their wings for?",
+        "choices": [
+          "To swim",
+          "To dig tunnels",
+          "To build nests in trees",
+          "To carry food in the sky"
+        ],
+        "correct": "To swim",
+        "hint": "The second sentence tells what penguins do with their wings. Look for the word after \"to.\""
+      }
+    ]
+  },
+  {
+    "std": "RI.3.10",
+    "questions": [
+      {
+        "prompt": "Read the passage: \"Bats are the only mammals that can truly fly. Most bats sleep during the day and hunt for food at night.\" When do most bats hunt for food?",
+        "choices": [
+          "At night",
+          "In the morning",
+          "At lunchtime",
+          "All day long"
+        ],
+        "correct": "At night",
+        "hint": "Find the sentence that tells when bats hunt. The passage says it right there."
+      },
+      {
+        "prompt": "Read the passage: \"A honeybee lives in a hive with thousands of other bees. The queen bee is the only bee that lays eggs.\" Which bee lays the eggs?",
+        "choices": [
+          "The queen bee",
+          "Every worker bee",
+          "The baby bees",
+          "No bee lays eggs"
+        ],
+        "correct": "The queen bee",
+        "hint": "Look for the sentence that names which bee lays eggs. The passage points to just one."
+      },
+      {
+        "prompt": "Read the passage: \"The Sahara is the largest hot desert on Earth. It is so dry that very little rain falls there each year.\" What does the passage say about rain in the Sahara?",
+        "choices": [
+          "Very little rain falls there",
+          "It rains every day",
+          "It never gets hot",
+          "It is covered in snow"
+        ],
+        "correct": "Very little rain falls there",
+        "hint": "The last sentence tells you about rain in the Sahara. Read it again."
+      },
+      {
+        "prompt": "Read the passage: \"Sea turtles lay their eggs on sandy beaches. The mother turtle digs a hole, lays her eggs, and covers them with sand.\" Where do sea turtles lay their eggs?",
+        "choices": [
+          "On sandy beaches",
+          "At the top of tall trees",
+          "Inside caves",
+          "On floating ice"
+        ],
+        "correct": "On sandy beaches",
+        "hint": "Find the sentence that tells where the turtle lays her eggs. It is stated near the start."
+      },
+      {
+        "prompt": "Read the passage: \"Maple syrup comes from maple trees. In early spring, people collect a sweet liquid called sap from the trees to make it.\" What is maple syrup made from?",
+        "choices": [
+          "Sap from maple trees",
+          "Melted snow",
+          "Ocean water",
+          "Ground-up rocks"
+        ],
+        "correct": "Sap from maple trees",
+        "hint": "The passage tells you what people collect to make the syrup. Look for the word \"sap.\""
+      }
+    ]
+  },
+  {
+    "std": "RI.3.2",
+    "questions": [
+      {
+        "prompt": "Read this paragraph: \"Owls are great hunters at night. They have big eyes that see in the dark. They have sharp ears that hear tiny sounds. They have quiet wings that make no noise when they fly.\" What is the main idea?",
+        "choices": [
+          "Owls are great night hunters",
+          "The moon is bright at night",
+          "Some birds like to swim",
+          "Owls build nests in barns"
+        ],
+        "correct": "Owls are great night hunters",
+        "hint": "Look at the very first sentence. It tells you what the whole paragraph is about."
+      },
+      {
+        "prompt": "Read this paragraph: \"Plants need many things to grow. They need water from the rain. They need sunlight from the sky. They need good soil for their roots.\" What is the main idea?",
+        "choices": [
+          "Plants need many things to grow",
+          "Rain falls in the spring",
+          "Bees like bright flowers",
+          "Trees can be very tall"
+        ],
+        "correct": "Plants need many things to grow",
+        "hint": "The first sentence tells you the big idea. The other sentences list the details."
+      },
+      {
+        "prompt": "Read this paragraph: \"Dogs help people in many ways. Some dogs guide people who cannot see. Some dogs find people who are lost. Some dogs keep homes safe.\" What is the main idea?",
+        "choices": [
+          "Dogs help people in many ways",
+          "Cats like to nap all day",
+          "Dogs enjoy chewing bones",
+          "Fish live in a tank"
+        ],
+        "correct": "Dogs help people in many ways",
+        "hint": "Which choice sums up ALL the details about what dogs do? Check the first sentence."
+      },
+      {
+        "prompt": "Read this paragraph: \"The library is a busy place. Kids read books at the tables. A teacher reads a story out loud. People use the computers to learn.\" What is the main idea?",
+        "choices": [
+          "The library is a busy place",
+          "Books can be heavy to carry",
+          "Rain fell on the roof",
+          "The store sells fresh apples"
+        ],
+        "correct": "The library is a busy place",
+        "hint": "All the details show people doing things. What one sentence covers them all?"
+      },
+      {
+        "prompt": "Read this paragraph: \"Winter can be very cold. People wear thick coats to stay warm. Snow covers the ground. Ponds freeze into hard ice.\" What is the main idea?",
+        "choices": [
+          "Winter can be very cold",
+          "Summer days are long",
+          "Flowers bloom in spring",
+          "The beach has warm sand"
+        ],
+        "correct": "Winter can be very cold",
+        "hint": "The details are all about cold weather. The first sentence names the main idea."
+      }
+    ]
+  },
+  {
+    "std": "RI.3.3",
+    "questions": [
+      {
+        "prompt": "The ground got very cold. Because of the cold, the water in the pond turned to ice.\n\nWhat caused the water to turn to ice?",
+        "choices": [
+          "The ground got very cold",
+          "A duck landed on the pond",
+          "The sun came out",
+          "Someone stirred the water"
+        ],
+        "correct": "The ground got very cold",
+        "hint": "Look for the word \"Because.\" It points right to the cause."
+      },
+      {
+        "prompt": "First, the seed was planted in the soil. Next, it was watered every day. Then, a small green plant grew.\n\nWhat happened FIRST?",
+        "choices": [
+          "The seed was planted in the soil",
+          "A small green plant grew",
+          "The plant was picked",
+          "The seed was watered"
+        ],
+        "correct": "The seed was planted in the soil",
+        "hint": "Find the step that starts with the word \"First.\""
+      },
+      {
+        "prompt": "Maria forgot her umbrella. Because of that, she got wet in the rain.\n\nWhy did Maria get wet?",
+        "choices": [
+          "She forgot her umbrella",
+          "She jumped in a puddle on purpose",
+          "She was swimming",
+          "She spilled her juice"
+        ],
+        "correct": "She forgot her umbrella",
+        "hint": "The words \"Because of that\" tell you the reason."
+      },
+      {
+        "prompt": "The volcano erupted. After the eruption, hot lava flowed down the mountain.\n\nWhat happened AFTER the volcano erupted?",
+        "choices": [
+          "Hot lava flowed down the mountain",
+          "The volcano was built",
+          "Snow fell on the town",
+          "People planted trees"
+        ],
+        "correct": "Hot lava flowed down the mountain",
+        "hint": "Look for the word \"After\" to find what came next."
+      },
+      {
+        "prompt": "To make toast, you first put bread in the toaster. Then you push the lever down.\n\nWhat do you do FIRST to make toast?",
+        "choices": [
+          "Put bread in the toaster",
+          "Eat the toast",
+          "Wash the plate",
+          "Turn off the light"
+        ],
+        "correct": "Put bread in the toaster",
+        "hint": "The word \"first\" shows you the very first step."
+      }
+    ]
+  },
+  {
+    "std": "RI.3.4",
+    "questions": [
+      {
+        "prompt": "The bakery was famous for its enormous cakes. Each one was so big that ten kids could share a single slice!\n\nIn this text, what does the word **enormous** mean?",
+        "choices": [
+          "Very small",
+          "Very large",
+          "Very cold",
+          "Very sweet"
+        ],
+        "correct": "Very large",
+        "hint": "The sentence says the cakes were so BIG that ten kids could share one slice. Which choice means big?"
+      },
+      {
+        "prompt": "Sea turtles begin their life on a sandy beach. When the baby turtles hatch from their eggs, they crawl toward the water.\n\nIn this text, what does the word **hatch** mean?",
+        "choices": [
+          "To come out of an egg",
+          "To swim very fast",
+          "To dig a deep hole",
+          "To eat some food"
+        ],
+        "correct": "To come out of an egg",
+        "hint": "The sentence says the baby turtles hatch FROM THEIR EGGS. What are the babies doing with the eggs?"
+      },
+      {
+        "prompt": "The desert is a very dry place. Almost no rain falls there, so the ground stays dusty all year long.\n\nIn this text, what does the word **dry** mean?",
+        "choices": [
+          "Having very little water",
+          "Full of tall trees",
+          "Cold and snowy",
+          "Loud and busy"
+        ],
+        "correct": "Having very little water",
+        "hint": "The text says almost no rain falls in the desert. What does that tell you about water?"
+      },
+      {
+        "prompt": "Bees are very helpful insects. They gather sweet nectar from flowers and use it to make honey.\n\nIn this text, what does the word **gather** mean?",
+        "choices": [
+          "To collect",
+          "To break",
+          "To sleep",
+          "To sing"
+        ],
+        "correct": "To collect",
+        "hint": "The bees GATHER nectar from flowers to make honey. What are they doing with the nectar? They are picking it up and collecting it."
+      },
+      {
+        "prompt": "A firefighter's job is dangerous. They rush into burning buildings, so they must be very brave.\n\nIn this text, what does the word **brave** mean?",
+        "choices": [
+          "Not afraid",
+          "Very tired",
+          "Very hungry",
+          "Very quiet"
+        ],
+        "correct": "Not afraid",
+        "hint": "The text says firefighters rush INTO burning buildings. Someone who does that scary job is not afraid."
+      }
+    ]
+  },
+  {
+    "std": "RI.3.5",
+    "questions": [
+      {
+        "prompt": "A nonfiction book about sharks has a list at the very front that shows chapter names like \"What Sharks Eat\" and the page each one starts on. What is this list called?",
+        "choices": [
+          "The table of contents",
+          "The back cover",
+          "The author's name",
+          "A photograph"
+        ],
+        "correct": "The table of contents",
+        "hint": "It's the list at the front that names the chapters and tells you what page each one begins on."
+      },
+      {
+        "prompt": "You are reading about spiders. You see a bold word you don't know: \"venom.\" Which part of the book would tell you what \"venom\" means?",
+        "choices": [
+          "The glossary",
+          "The front cover",
+          "The page numbers",
+          "The chapter titles"
+        ],
+        "correct": "The glossary",
+        "hint": "The glossary is the part of the book that gives the meanings of important words."
+      },
+      {
+        "prompt": "You are typing a search on the computer because you want to learn what pandas eat. Which words should you type to get the best help?",
+        "choices": [
+          "What do pandas eat",
+          "Fun stuff",
+          "Black and white",
+          "Cool things"
+        ],
+        "correct": "What do pandas eat",
+        "hint": "Pick the words that clearly say exactly what you want to find out."
+      },
+      {
+        "prompt": "In a book about the ocean, the words at the top of a section say \"How Whales Breathe.\" What is this called, and what does it tell you?",
+        "choices": [
+          "A heading, which tells you what that section is about",
+          "A page number, which tells you the date",
+          "A cover, which tells you the price",
+          "A glossary, which tells you the author"
+        ],
+        "correct": "A heading, which tells you what that section is about",
+        "hint": "The bold words at the top of a section are a heading, and they tell you what you'll read about there."
+      },
+      {
+        "prompt": "You want to find just the pages that talk about \"rain\" in a big weather book. There is a list at the back that names topics in ABC order with the pages for each one. What is that list called?",
+        "choices": [
+          "The index",
+          "The title",
+          "A caption",
+          "The first chapter"
+        ],
+        "correct": "The index",
+        "hint": "The list at the back in ABC order that points you to exact pages for a topic is the index."
+      }
+    ]
+  },
+  {
+    "std": "RI.3.7",
+    "questions": [
+      {
+        "prompt": "A book about frogs has a picture of a green frog sitting on a lily pad. Below the picture are the words: \"A frog rests on a leaf in the pond.\" What does the picture show you?",
+        "choices": [
+          "A frog sitting on a leaf in the water",
+          "A dog running in a field",
+          "A bird flying in the sky",
+          "A car on a road"
+        ],
+        "correct": "A frog sitting on a leaf in the water",
+        "hint": "Look at what is in the picture and match it to the words below it."
+      },
+      {
+        "prompt": "A page about weather shows a big yellow sun with the label \"Sunny Day.\" The text says, \"On a sunny day, the sky is bright.\" What kind of day does the picture show?",
+        "choices": [
+          "A sunny day",
+          "A rainy day",
+          "A snowy day",
+          "A windy day"
+        ],
+        "correct": "A sunny day",
+        "hint": "The label under the picture tells you the answer in one word."
+      },
+      {
+        "prompt": "A science book has a diagram of a tree. One arrow points to the bottom part and is labeled \"roots.\" What part of the tree do the roots make?",
+        "choices": [
+          "The bottom part, under the ground",
+          "The top leaves",
+          "The clouds above the tree",
+          "The birds in the tree"
+        ],
+        "correct": "The bottom part, under the ground",
+        "hint": "Follow the arrow to see which part of the tree the label \"roots\" points to."
+      },
+      {
+        "prompt": "A book about the sun has a photo of a garden with the caption: \"Plants need sunlight to grow.\" What does the photo and caption help you learn?",
+        "choices": [
+          "Plants need sunlight to grow",
+          "Fish live in the ocean",
+          "Cars need gas to go",
+          "People sleep at night"
+        ],
+        "correct": "Plants need sunlight to grow",
+        "hint": "The caption is the sentence right under the photo. Read it to find the answer."
+      },
+      {
+        "prompt": "A map in a book shows a school with a red star on it. The words say, \"The red star shows where the school is.\" What does the red star on the map show?",
+        "choices": [
+          "Where the school is",
+          "Where the ocean is",
+          "How old the school is",
+          "What the teacher's name is"
+        ],
+        "correct": "Where the school is",
+        "hint": "The words tell you exactly what the red star means on the map."
+      }
+    ]
+  },
+  {
+    "std": "RI.3.8",
+    "questions": [
+      {
+        "prompt": "Sentence 1: Rain fell hard all night. Sentence 2: Because of this, the river flooded the road.\n\nHow does Sentence 2 connect to Sentence 1?",
+        "choices": [
+          "It tells what the rain caused to happen.",
+          "It changes the subject to something new.",
+          "It tells a funny joke about rivers.",
+          "It asks the reader a question."
+        ],
+        "correct": "It tells what the rain caused to happen.",
+        "hint": "The words \"Because of this\" tell you Sentence 2 is the result of the rain."
+      },
+      {
+        "prompt": "Sentence 1: Bees are helpful insects. Sentence 2: For example, they move pollen so flowers can grow.\n\nHow does Sentence 2 connect to Sentence 1?",
+        "choices": [
+          "It gives an example that shows bees are helpful.",
+          "It says bees are not helpful at all.",
+          "It starts talking about a new animal.",
+          "It lists the colors of a flower."
+        ],
+        "correct": "It gives an example that shows bees are helpful.",
+        "hint": "The words \"For example\" tell you Sentence 2 is proving Sentence 1's idea."
+      },
+      {
+        "prompt": "Sentence 1: The library was too noisy for reading. Sentence 2: So the workers added a quiet room.\n\nHow does Sentence 2 connect to Sentence 1?",
+        "choices": [
+          "It gives a solution to the problem in Sentence 1.",
+          "It repeats the exact same words as Sentence 1.",
+          "It changes the topic to a school bus.",
+          "It tells the time the library opens."
+        ],
+        "correct": "It gives a solution to the problem in Sentence 1.",
+        "hint": "Sentence 1 names a problem (too noisy). The word \"So\" tells you Sentence 2 fixes it."
+      },
+      {
+        "prompt": "Sentence 1: First, the seed was planted in the dirt. Sentence 2: Next, a tiny green plant popped up.\n\nHow does Sentence 2 connect to Sentence 1?",
+        "choices": [
+          "It tells the next step in what happened.",
+          "It disagrees with Sentence 1.",
+          "It talks about the weather on Mars.",
+          "It gives an opinion about the seed."
+        ],
+        "correct": "It tells the next step in what happened.",
+        "hint": "The words \"First\" and \"Next\" show these sentences are steps in order."
+      },
+      {
+        "prompt": "Sentence 1: The desert is a very dry place. Sentence 2: In fact, some deserts get almost no rain for years.\n\nHow does Sentence 2 connect to Sentence 1?",
+        "choices": [
+          "It adds more detail that supports Sentence 1.",
+          "It says the desert is actually very wet.",
+          "It starts a story about the ocean.",
+          "It asks what time it is."
+        ],
+        "correct": "It adds more detail that supports Sentence 1.",
+        "hint": "The words \"In fact\" tell you Sentence 2 backs up the idea that the desert is dry."
+      }
+    ]
+  },
+  {
+    "std": "RI.4.1",
+    "questions": [
+      {
+        "prompt": "Read the sentence: \"Honeybees live together in a home called a hive.\" What is a honeybee's home called?",
+        "choices": [
+          "A hive",
+          "A nest",
+          "A cave",
+          "A pond"
+        ],
+        "correct": "A hive",
+        "hint": "Look for the exact word right after \"a home called.\""
+      },
+      {
+        "prompt": "Read the sentence: \"The Sahara is the largest hot desert in the world, and it is very dry.\" According to the text, what is the Sahara like?",
+        "choices": [
+          "Very dry",
+          "Very wet",
+          "Full of snow",
+          "Covered in trees"
+        ],
+        "correct": "Very dry",
+        "hint": "The sentence tells you exactly what the Sahara is like. Find that word."
+      },
+      {
+        "prompt": "Read the sentence: \"Owls hunt at night, so they sleep during the day.\" When do owls sleep?",
+        "choices": [
+          "During the day",
+          "At midnight",
+          "In the morning while hunting",
+          "All week long"
+        ],
+        "correct": "During the day",
+        "hint": "The sentence says when owls sleep. Look for the words \"sleep during.\""
+      },
+      {
+        "prompt": "Read the sentence: \"The Nile is a long river in Africa that gives people water to drink.\" What does the Nile give people?",
+        "choices": [
+          "Water to drink",
+          "Gold to sell",
+          "Cars to drive",
+          "Books to read"
+        ],
+        "correct": "Water to drink",
+        "hint": "The text names exactly one thing the Nile gives. Find the words after \"gives people.\""
+      },
+      {
+        "prompt": "Read the sentence: \"Because it was raining hard, the class ate lunch inside the school.\" Where did the class eat lunch?",
+        "choices": [
+          "Inside the school",
+          "On the playground",
+          "At the beach",
+          "In a boat"
+        ],
+        "correct": "Inside the school",
+        "hint": "The rain is the clue for why. But the answer is the exact place the sentence names for lunch."
+      }
+    ]
+  },
+  {
+    "std": "RI.4.10",
+    "questions": [
+      {
+        "prompt": "Read this: \"The Sahara is the largest hot desert in the world. It covers much of northern Africa.\" Where is the Sahara located?",
+        "choices": [
+          "Northern Africa",
+          "Under the ocean",
+          "In South America",
+          "On the moon"
+        ],
+        "correct": "Northern Africa",
+        "hint": "Look at the second sentence \u2014 it names exactly where the Sahara is."
+      },
+      {
+        "prompt": "Read this: \"Honeybees make honey from the nectar of flowers. They store the honey inside their hive.\" What do honeybees use to make honey?",
+        "choices": [
+          "The nectar of flowers",
+          "Ocean water",
+          "Sand from the desert",
+          "Melted snow"
+        ],
+        "correct": "The nectar of flowers",
+        "hint": "The first sentence tells you exactly what honey is made from."
+      },
+      {
+        "prompt": "Read this: \"The Great Wall of China is thousands of miles long. It was built long ago to protect the country from invaders.\" Why was the Great Wall built?",
+        "choices": [
+          "To protect the country from invaders",
+          "To hold up a bridge",
+          "To store food for winter",
+          "To give tourists a place to eat"
+        ],
+        "correct": "To protect the country from invaders",
+        "hint": "The second sentence says exactly why it was built \u2014 look for the word \"to protect.\""
+      },
+      {
+        "prompt": "Read this: \"Volcanoes form when hot melted rock rises up from deep inside the Earth. This melted rock is called magma.\" What is the melted rock inside the Earth called?",
+        "choices": [
+          "Magma",
+          "Rain",
+          "Ice",
+          "Wind"
+        ],
+        "correct": "Magma",
+        "hint": "The last sentence gives the melted rock its name."
+      },
+      {
+        "prompt": "Read this: \"Sea turtles lay their eggs on sandy beaches at night. After the baby turtles hatch, they crawl toward the ocean.\" When do sea turtles lay their eggs?",
+        "choices": [
+          "At night",
+          "In the morning",
+          "During a storm",
+          "Never"
+        ],
+        "correct": "At night",
+        "hint": "The first sentence tells you what time of day the turtles lay their eggs."
+      }
+    ]
+  },
+  {
+    "std": "RI.4.2",
+    "questions": [
+      {
+        "prompt": "Read the paragraph, then pick the main idea.\n\n\"Bees are very important to farms. They fly from flower to flower and help plants grow fruit. Without bees, many crops would not grow.\"\n\nWhat is the main idea of this paragraph?",
+        "choices": [
+          "Bees are important because they help crops grow",
+          "Bees can fly",
+          "Farms have lots of dirt",
+          "Fruit tastes sweet"
+        ],
+        "correct": "Bees are important because they help crops grow",
+        "hint": "Look at the very first sentence. It often tells you what the whole paragraph is about."
+      },
+      {
+        "prompt": "Read the paragraph, then pick the main idea.\n\n\"The heart is a busy muscle. It beats all day and all night. Its job is to pump blood to every part of your body.\"\n\nWhat is this paragraph mostly about?",
+        "choices": [
+          "The heart pumps blood through your body",
+          "Muscles get tired",
+          "Blood is the color red",
+          "People sleep at night"
+        ],
+        "correct": "The heart pumps blood through your body",
+        "hint": "Ask yourself: what one thing does every sentence talk about?"
+      },
+      {
+        "prompt": "Read the paragraph, then pick the main idea.\n\n\"Recycling helps our planet. When we recycle paper and cans, we make less trash. Less trash keeps our air and water cleaner.\"\n\nWhat is the main idea?",
+        "choices": [
+          "Recycling helps keep the planet clean",
+          "Cans are made of metal",
+          "Trash smells bad",
+          "Water is wet"
+        ],
+        "correct": "Recycling helps keep the planet clean",
+        "hint": "The first sentence names the big idea. The other sentences give details that support it."
+      },
+      {
+        "prompt": "Read the paragraph, then pick the main idea.\n\n\"Deserts are very dry places. They get almost no rain all year. Animals there, like camels, have special ways to save water.\"\n\nWhat is this paragraph mostly about?",
+        "choices": [
+          "Deserts are dry places that get very little rain",
+          "Camels have humps",
+          "Rain falls from clouds",
+          "Animals like to run"
+        ],
+        "correct": "Deserts are dry places that get very little rain",
+        "hint": "Which choice matches what the whole paragraph keeps talking about?"
+      },
+      {
+        "prompt": "Read the paragraph, then pick the main idea.\n\n\"Exercise keeps your body strong. Running, jumping, and playing help your muscles grow. Kids who move a lot stay healthy.\"\n\nWhat is the main idea of this paragraph?",
+        "choices": [
+          "Exercise helps keep your body strong and healthy",
+          "Jumping is fun",
+          "Kids like to play games",
+          "Muscles are in your arms"
+        ],
+        "correct": "Exercise helps keep your body strong and healthy",
+        "hint": "Look for the choice that sums up all three sentences, not just one small detail."
+      }
+    ]
+  },
+  {
+    "std": "RI.4.4",
+    "questions": [
+      {
+        "prompt": "Read this sentence: \"A veterinarian is a doctor who takes care of animals.\" In this sentence, what does the word veterinarian mean?",
+        "choices": [
+          "A doctor for animals",
+          "A kind of animal",
+          "A tool for cutting",
+          "A school subject"
+        ],
+        "correct": "A doctor for animals",
+        "hint": "The sentence tells you exactly what a veterinarian is right after the word \"is.\""
+      },
+      {
+        "prompt": "Read this sentence: \"Scientists study fossils, which are the hardened remains of animals or plants that lived long ago.\" What does the word fossils mean?",
+        "choices": [
+          "The hardened remains of long-ago living things",
+          "A type of new plant",
+          "A machine used by scientists",
+          "A rule about animals"
+        ],
+        "correct": "The hardened remains of long-ago living things",
+        "hint": "The words right after the comma explain what fossils are."
+      },
+      {
+        "prompt": "Read this sentence: \"The desert is arid, meaning it is very dry and gets almost no rain.\" What does the word arid mean?",
+        "choices": [
+          "Very dry",
+          "Very wet",
+          "Very cold",
+          "Very loud"
+        ],
+        "correct": "Very dry",
+        "hint": "The sentence says \"meaning it is very dry\" right after the word arid."
+      },
+      {
+        "prompt": "Read this sentence: \"Bats are nocturnal, so they are awake and active at night.\" What does the word nocturnal mean?",
+        "choices": [
+          "Active at night",
+          "Very large",
+          "Able to swim",
+          "Good at singing"
+        ],
+        "correct": "Active at night",
+        "hint": "The part after \"so\" tells you what nocturnal animals do."
+      },
+      {
+        "prompt": "Read this sentence: \"The recipe said to combine the flour and sugar, so I mixed them together in a bowl.\" What does the word combine mean?",
+        "choices": [
+          "Mix together",
+          "Throw away",
+          "Count out loud",
+          "Cut in half"
+        ],
+        "correct": "Mix together",
+        "hint": "Look at what the person did after reading the word combine."
+      }
+    ]
+  },
+  {
+    "std": "RI.4.6",
+    "questions": [
+      {
+        "prompt": "Maria wrote: \"I stood on the beach and watched the huge waves crash right in front of me. My feet were freezing in the cold water!\" Is Maria's writing a firsthand account or a secondhand account?",
+        "choices": [
+          "A firsthand account, because she was there and saw it herself",
+          "A secondhand account, because someone told her about it",
+          "A made-up story about pirates",
+          "A list of spelling words"
+        ],
+        "correct": "A firsthand account, because she was there and saw it herself",
+        "hint": "Maria uses the word \"I\" and tells what SHE saw and felt. That means she was there in person."
+      },
+      {
+        "prompt": "A newspaper reporter wrote: \"According to people who were at the game, the crowd cheered loudly when the team scored.\" The reporter was NOT at the game. Is this a firsthand or a secondhand account?",
+        "choices": [
+          "A secondhand account, because the reporter learned it from other people",
+          "A firsthand account, because the reporter played in the game",
+          "A poem about winter",
+          "A recipe for soup"
+        ],
+        "correct": "A secondhand account, because the reporter learned it from other people",
+        "hint": "The reporter says \"according to people who were there.\" He was not there himself, so he is sharing what OTHERS saw."
+      },
+      {
+        "prompt": "Which sentence sounds like a FIRSTHAND account, where the writer saw the event with their own eyes?",
+        "choices": [
+          "\"I felt the ground shake under my feet during the earthquake.\"",
+          "\"Scientists say that earthquakes happen deep underground.\"",
+          "\"A book explained that earthquakes can be dangerous.\"",
+          "\"People say earthquakes are scary.\""
+        ],
+        "correct": "\"I felt the ground shake under my feet during the earthquake.\"",
+        "hint": "A firsthand account uses \"I\" and tells about something the writer felt or saw in person."
+      },
+      {
+        "prompt": "Two people wrote about the same school field trip. Ben wrote: \"I rode the bus to the zoo and fed a giraffe.\" A magazine wrote: \"The students visited the zoo, based on reports from their teacher.\" Whose writing is the FIRSTHAND account?",
+        "choices": [
+          "Ben's, because he was on the trip and did it himself",
+          "The magazine's, because it is longer",
+          "Neither one is about the trip",
+          "Both were written by the giraffe"
+        ],
+        "correct": "Ben's, because he was on the trip and did it himself",
+        "hint": "Ben says \"I rode the bus\" and \"I fed a giraffe.\" He was there in person, so his account is firsthand."
+      },
+      {
+        "prompt": "A firsthand account and a secondhand account tell about the same storm. Which one would most likely include the writer's OWN feelings from being there?",
+        "choices": [
+          "The firsthand account, because the writer lived through the storm",
+          "The secondhand account, because it was written much later",
+          "Neither, because storms have no feelings",
+          "The one with the most pictures"
+        ],
+        "correct": "The firsthand account, because the writer lived through the storm",
+        "hint": "\"Firsthand\" means the writer was there in person, so they can share how THEY felt during the event."
+      }
+    ]
+  },
+  {
+    "std": "RI.4.7",
+    "questions": [
+      {
+        "prompt": "A bar graph shows how many books each class read. The graph shows Class A read 10 books and Class B read 25 books. Which class read more books?",
+        "choices": [
+          "Class B",
+          "Class A",
+          "They read the same amount",
+          "The graph does not say"
+        ],
+        "correct": "Class B",
+        "hint": "Look at the two numbers on the graph. Which number is bigger, 10 or 25?"
+      },
+      {
+        "prompt": "A diagram of a plant has labels pointing to the roots, stem, and leaves. What does this diagram help a reader do?",
+        "choices": [
+          "Name the parts of a plant",
+          "Learn how to cook dinner",
+          "Count the days in a week",
+          "Find out the weather"
+        ],
+        "correct": "Name the parts of a plant",
+        "hint": "The labels point to different parts of the plant. What are they teaching you?"
+      },
+      {
+        "prompt": "A map in a book has a small key that shows a blue line means a river. On the map, you see a blue line running through the town. What is the blue line?",
+        "choices": [
+          "A river",
+          "A road",
+          "A mountain",
+          "A building"
+        ],
+        "correct": "A river",
+        "hint": "The key tells you what the blue line stands for. What did it say blue means?"
+      },
+      {
+        "prompt": "A timeline shows: first the seed is planted, then it grows a stem, then it grows flowers. According to the timeline, what happens FIRST?",
+        "choices": [
+          "The seed is planted",
+          "It grows flowers",
+          "It grows a stem",
+          "It is picked"
+        ],
+        "correct": "The seed is planted",
+        "hint": "A timeline shows the order of events. Look at what comes at the very start."
+      },
+      {
+        "prompt": "A pie chart shows how a class spends recess. Half of the chart is labeled 'playing' and a small slice is labeled 'reading.' Which activity did MORE students choose?",
+        "choices": [
+          "Playing",
+          "Reading",
+          "Both were equal",
+          "Neither one"
+        ],
+        "correct": "Playing",
+        "hint": "A bigger slice of the chart means more students. Which part is bigger?"
+      }
+    ]
+  },
+  {
+    "std": "RI.4.8",
+    "questions": [
+      {
+        "prompt": "An author writes: \"Dogs make great pets. One reason is that dogs are very loyal to their owners.\" What reason does the author give to support the point that dogs make great pets?",
+        "choices": [
+          "Dogs are very loyal to their owners.",
+          "Dogs like to eat treats.",
+          "Cats are also pets.",
+          "The author has a dog named Max."
+        ],
+        "correct": "Dogs are very loyal to their owners.",
+        "hint": "Look for the sentence that starts with \"One reason is...\" \u2014 that is the reason the author gives."
+      },
+      {
+        "prompt": "An author writes: \"Reading before bed is a good habit. Studies show that kids who read at night sleep better.\" Which sentence is the EVIDENCE the author uses to support the point?",
+        "choices": [
+          "Studies show that kids who read at night sleep better.",
+          "Reading before bed is a good habit.",
+          "Some kids do not like to read.",
+          "Books can be found at the library."
+        ],
+        "correct": "Studies show that kids who read at night sleep better.",
+        "hint": "Evidence is the proof. Find the sentence that gives a fact or study to back up the author's point."
+      },
+      {
+        "prompt": "An author writes: \"Our town needs a new park. Right now, there is no safe place for children to play outside.\" Why does the author mention that there is no safe place to play?",
+        "choices": [
+          "To support the point that the town needs a new park.",
+          "To tell a story about a fun day at the park.",
+          "To explain how to build a swing set.",
+          "To describe what the town looks like in winter."
+        ],
+        "correct": "To support the point that the town needs a new park.",
+        "hint": "Ask yourself: what point is the author trying to prove? The reason should help prove that point."
+      },
+      {
+        "prompt": "An author writes: \"Everyone should drink water every day. Doctors say water keeps your body healthy.\" What point is the author trying to support with this evidence?",
+        "choices": [
+          "Everyone should drink water every day.",
+          "Doctors wear white coats.",
+          "Water can be cold or warm.",
+          "Some people drink juice instead."
+        ],
+        "correct": "Everyone should drink water every day.",
+        "hint": "The evidence about doctors is used to prove one main idea. Which sentence is the author's main point?"
+      },
+      {
+        "prompt": "An author writes: \"Bikes are a good way to get around. Bikes do not use gas, so they are cheaper than cars.\" What reason does the author give to show bikes are a good way to get around?",
+        "choices": [
+          "Bikes do not use gas, so they are cheaper than cars.",
+          "Bikes come in many colors.",
+          "The author likes to ride bikes.",
+          "Cars can go very fast."
+        ],
+        "correct": "Bikes do not use gas, so they are cheaper than cars.",
+        "hint": "Find the sentence that explains WHY bikes are good. It gives a reason that supports the author's point."
+      }
+    ]
+  },
+  {
+    "std": "RI.4.9",
+    "questions": [
+      {
+        "prompt": "Two texts tell about dogs.\n\nText 1 says: \"Dogs have a strong sense of smell.\"\nText 2 says: \"Dogs have very good hearing.\"\n\nUsing BOTH texts, what are two things dogs are good at?",
+        "choices": [
+          "Smelling and hearing",
+          "Only smelling",
+          "Flying and swimming",
+          "Reading and counting"
+        ],
+        "correct": "Smelling and hearing",
+        "hint": "Take one fact from Text 1 and one fact from Text 2, then put them together."
+      },
+      {
+        "prompt": "Two short texts are about the sun.\n\nText A says: \"The sun gives us light.\"\nText B says: \"The sun gives us heat.\"\n\nUsing information from BOTH texts, what does the sun give us?",
+        "choices": [
+          "Light and heat",
+          "Rain and snow",
+          "Only light",
+          "Only heat"
+        ],
+        "correct": "Light and heat",
+        "hint": "Text A tells one thing the sun gives. Text B tells another. Combine them."
+      },
+      {
+        "prompt": "Read two texts about bees.\n\nText 1: \"Bees make honey.\"\nText 2: \"Bees help flowers grow.\"\n\nUsing BOTH texts together, what do bees do?",
+        "choices": [
+          "They make honey and help flowers grow",
+          "They build nests in the ocean",
+          "Only make honey",
+          "They chase cats"
+        ],
+        "correct": "They make honey and help flowers grow",
+        "hint": "One text gives one job of bees, the other text gives a second job. Say both."
+      },
+      {
+        "prompt": "Two texts are about rain.\n\nText A says: \"Rain gives water to plants.\"\nText B says: \"Rain fills up rivers and lakes.\"\n\nUsing information from BOTH texts, name two things rain does.",
+        "choices": [
+          "It waters plants and fills rivers and lakes",
+          "It only waters plants",
+          "It paints the sky orange",
+          "It makes the sun brighter"
+        ],
+        "correct": "It waters plants and fills rivers and lakes",
+        "hint": "Grab the fact from Text A and the fact from Text B, then put the two together."
+      },
+      {
+        "prompt": "Read two short texts about the moon.\n\nText 1: \"The moon moves around the Earth.\"\nText 2: \"The moon shines at night.\"\n\nUsing BOTH texts, which sentence is true?",
+        "choices": [
+          "The moon moves around the Earth and shines at night",
+          "The moon moves around the sun and shines in the daytime",
+          "The moon is made of cheese",
+          "The moon stays perfectly still all day"
+        ],
+        "correct": "The moon moves around the Earth and shines at night",
+        "hint": "Use one fact from each text. The right answer keeps both facts exactly as written."
+      }
+    ]
+  },
+  {
+    "std": "RL.1.10",
+    "questions": [
+      {
+        "prompt": "Read the poem: \"The cat is soft. / The cat is gray. / The cat likes to sleep all day.\" What color is the cat?",
+        "choices": [
+          "gray",
+          "green",
+          "purple",
+          "red"
+        ],
+        "correct": "gray",
+        "hint": "Look at the line that tells the cat's color: \"The cat is ___.\""
+      },
+      {
+        "prompt": "Read the poem: \"Rain, rain, come and play. / We will splash in you today!\" What do the children want to do in the rain?",
+        "choices": [
+          "splash",
+          "sleep",
+          "read a book",
+          "eat lunch"
+        ],
+        "correct": "splash",
+        "hint": "The last line says \"We will ___ in you today.\""
+      },
+      {
+        "prompt": "Read the story: \"Sam has a red kite. He runs fast. The kite goes up high in the sky.\" Where does the kite go?",
+        "choices": [
+          "up high in the sky",
+          "under the bed",
+          "into the water",
+          "inside a box"
+        ],
+        "correct": "up high in the sky",
+        "hint": "The last sentence tells you where the kite goes."
+      },
+      {
+        "prompt": "Read the poem: \"Little bee, little bee, / Buzzing round the flower tree.\" What is the little bee doing?",
+        "choices": [
+          "buzzing",
+          "sleeping",
+          "swimming",
+          "singing"
+        ],
+        "correct": "buzzing",
+        "hint": "The poem says the bee is \"___ round the flower tree.\""
+      },
+      {
+        "prompt": "Read the story: \"Mia is happy. Today is her birthday. She will eat a big cake.\" How does Mia feel?",
+        "choices": [
+          "happy",
+          "sad",
+          "sleepy",
+          "scared"
+        ],
+        "correct": "happy",
+        "hint": "The first sentence tells you how Mia feels: \"Mia is ___.\""
+      }
+    ]
+  },
+  {
+    "std": "RL.1.5",
+    "questions": [
+      {
+        "prompt": "A book is about a dragon who can talk and fly to the moon. Is this book a story or does it give real facts?",
+        "choices": [
+          "It is a made-up story",
+          "It gives real facts",
+          "It is a math book",
+          "It is a menu"
+        ],
+        "correct": "It is a made-up story",
+        "hint": "Real dragons that talk and fly to the moon are not real. That means it is a story someone made up."
+      },
+      {
+        "prompt": "A book teaches you real facts about how cows give us milk. What kind of book is this?",
+        "choices": [
+          "An information book",
+          "A made-up story",
+          "A song book",
+          "A coloring book"
+        ],
+        "correct": "An information book",
+        "hint": "When a book teaches you real, true facts, it is an information book."
+      },
+      {
+        "prompt": "Which book tells a STORY?",
+        "choices": [
+          "A book about a bear who goes to school with his friends",
+          "A book that shows facts about real bears",
+          "A list of animal names",
+          "A book of real bug photos"
+        ],
+        "correct": "A book about a bear who goes to school with his friends",
+        "hint": "A bear who goes to school with friends is not real. A story has made-up characters like that."
+      },
+      {
+        "prompt": "Which book gives real INFORMATION?",
+        "choices": [
+          "A book that tells you true facts about the sun",
+          "A book about a fish who talks",
+          "A story about a flying cat",
+          "A tale about a magic hat"
+        ],
+        "correct": "A book that tells you true facts about the sun",
+        "hint": "True facts about something real, like the sun, means the book gives information."
+      },
+      {
+        "prompt": "A book is full of true facts and real photos about trucks. Does it tell a story or give information?",
+        "choices": [
+          "It gives information",
+          "It tells a made-up story",
+          "It is a puzzle",
+          "It is a joke book"
+        ],
+        "correct": "It gives information",
+        "hint": "True facts and real photos are the clue. A book like that gives you information."
+      }
+    ]
+  },
+  {
+    "std": "RL.2.5",
+    "questions": [
+      {
+        "prompt": "Read the story. \"Ben got a new puppy named Spot. Spot chewed up a shoe and ran in the yard. At the end of the day, Ben and Spot fell asleep together.\" What happens at the BEGINNING of the story?",
+        "choices": [
+          "Ben got a new puppy named Spot",
+          "Ben and Spot fell asleep",
+          "Spot ran in the yard",
+          "Spot chewed a shoe"
+        ],
+        "correct": "Ben got a new puppy named Spot",
+        "hint": "The beginning is the very FIRST thing that happens. Look at the first sentence."
+      },
+      {
+        "prompt": "Read the story. \"Mia lost her red hat. She looked all over the house. Finally, she found it under her bed.\" What happens at the END of the story?",
+        "choices": [
+          "She found it under her bed",
+          "Mia lost her red hat",
+          "She looked all over the house",
+          "Mia bought a new house"
+        ],
+        "correct": "She found it under her bed",
+        "hint": "The ending is the LAST thing that happens. Look at the last sentence."
+      },
+      {
+        "prompt": "In most stories, what does the BEGINNING do?",
+        "choices": [
+          "It introduces the characters and starts the story",
+          "It ends the story",
+          "It is the back cover of the book",
+          "It has no words at all"
+        ],
+        "correct": "It introduces the characters and starts the story",
+        "hint": "Think about what a story does FIRST, before anything else happens."
+      },
+      {
+        "prompt": "Read the story. \"Sam planted a seed. He gave it water every day. After many days, a big flower grew.\" Which sentence is the BEGINNING?",
+        "choices": [
+          "Sam planted a seed",
+          "A big flower grew",
+          "He gave it water every day",
+          "Sam went to the moon"
+        ],
+        "correct": "Sam planted a seed",
+        "hint": "The beginning starts the story. Which sentence comes first?"
+      },
+      {
+        "prompt": "A story starts by telling you about a boy and his kite. Then the kite flies away, and at the end the boy gets it back. Which part is the ENDING?",
+        "choices": [
+          "The boy gets his kite back",
+          "The story tells about a boy and his kite",
+          "The kite flies away",
+          "The boy eats breakfast"
+        ],
+        "correct": "The boy gets his kite back",
+        "hint": "The ending wraps up the story. What happens LAST?"
+      }
+    ]
+  },
+  {
+    "std": "RL.3.1",
+    "questions": [
+      {
+        "prompt": "Maya packed her red backpack for the hike. She put in water, a map, and a snack. Which color was Maya's backpack?",
+        "choices": [
+          "Red",
+          "Purple",
+          "A pair of shoes",
+          "Yesterday"
+        ],
+        "correct": "Red",
+        "hint": "Look for the word right before \"backpack\" in the story."
+      },
+      {
+        "prompt": "Ben's dog Rex loves to run in the park. Every Saturday, Ben takes Rex there to play fetch. Where does Ben take Rex on Saturdays?",
+        "choices": [
+          "To the park",
+          "To the moon",
+          "A sandwich",
+          "Loudly"
+        ],
+        "correct": "To the park",
+        "hint": "Find the place named in the story where Ben and Rex go."
+      },
+      {
+        "prompt": "The class grew a bean plant on the windowsill. It grew tall because it got plenty of sunlight and water. Why did the bean plant grow tall?",
+        "choices": [
+          "Because it got sunlight and water",
+          "Because it was Tuesday",
+          "A blue crayon",
+          "It ran away"
+        ],
+        "correct": "Because it got sunlight and water",
+        "hint": "The story tells you two things the plant got. That is your reason."
+      },
+      {
+        "prompt": "Lily felt happy when she saw the birthday cake with her name on it. How did Lily feel?",
+        "choices": [
+          "Happy",
+          "Sleepy about math",
+          "A bicycle",
+          "Under the table"
+        ],
+        "correct": "Happy",
+        "hint": "The story uses a feeling word to describe Lily. Look for it."
+      },
+      {
+        "prompt": "During the storm, the family stayed inside and read books by candlelight. What did the family do during the storm?",
+        "choices": [
+          "Stayed inside and read books",
+          "Went swimming in the ocean",
+          "A green hat",
+          "Counted to ten"
+        ],
+        "correct": "Stayed inside and read books",
+        "hint": "The story says exactly what the family did. Find that part."
+      }
+    ]
+  },
+  {
+    "std": "RL.3.3",
+    "questions": [
+      {
+        "prompt": "Maya saw a lost puppy shivering in the rain. She picked it up, wrapped it in her warm jacket, and carried it home. What kind of character is Maya?",
+        "choices": [
+          "Caring",
+          "Mean",
+          "Sleepy",
+          "Angry"
+        ],
+        "correct": "Caring",
+        "hint": "Look at what Maya does for the puppy. Wrapping it up and taking it home shows she wants to help."
+      },
+      {
+        "prompt": "Sam forgot to bring his homework to school. Because of this, what happened next?",
+        "choices": [
+          "He could not turn in his homework",
+          "He won a big trophy",
+          "He grew ten feet tall",
+          "He turned into a bird"
+        ],
+        "correct": "He could not turn in his homework",
+        "hint": "If you forget your homework at home, it is not with you at school. Pick the choice that makes sense."
+      },
+      {
+        "prompt": "Every morning, Leo made his bed, packed his lunch, and got to the bus on time all by himself. What word best describes Leo?",
+        "choices": [
+          "Responsible",
+          "Selfish",
+          "Scared",
+          "Silly"
+        ],
+        "correct": "Responsible",
+        "hint": "Leo does his jobs on his own and is never late. That shows he can be trusted to do things."
+      },
+      {
+        "prompt": "Priya practiced the piano a little bit every single day, even when it was hard. Because she kept practicing, what most likely happened?",
+        "choices": [
+          "She got better at the piano",
+          "She forgot how to play",
+          "The piano flew away",
+          "She never touched a piano"
+        ],
+        "correct": "She got better at the piano",
+        "hint": "When you practice something every day, you usually improve. Pick the choice that shows practice paying off."
+      },
+      {
+        "prompt": "When the new student looked confused, Ben smiled, waved, and said, \"Come sit with me!\" What kind of character is Ben?",
+        "choices": [
+          "Friendly",
+          "Rude",
+          "Bored",
+          "Grumpy"
+        ],
+        "correct": "Friendly",
+        "hint": "Ben smiles, waves, and invites the new student over. Think about how those actions make someone feel welcome."
+      }
+    ]
+  },
+  {
+    "std": "RL.3.7",
+    "questions": [
+      {
+        "prompt": "The words say: \"Maya put on her coat.\" The picture next to the words shows snow falling and a big snowman in the yard. What does the picture help you know?",
+        "choices": [
+          "It is cold and snowy outside",
+          "It is a hot summer day",
+          "Maya is at the beach",
+          "Maya is going to sleep"
+        ],
+        "correct": "It is cold and snowy outside",
+        "hint": "Look at what is falling from the sky and the snowman in the picture. What kind of weather is that?"
+      },
+      {
+        "prompt": "The words say: \"Ben looked in the box.\" The picture shows a fluffy puppy sitting inside the box. What does the picture help you know?",
+        "choices": [
+          "There is a puppy in the box",
+          "The box is empty",
+          "There is a book in the box",
+          "Ben is eating lunch"
+        ],
+        "correct": "There is a puppy in the box",
+        "hint": "The words don't say what is in the box, but the picture does. What animal is sitting inside?"
+      },
+      {
+        "prompt": "The words say: \"The kids played outside.\" The picture shows the kids on a beach building a sandcastle by the water. Where are the kids playing?",
+        "choices": [
+          "At the beach",
+          "In a cave",
+          "On a mountain covered in snow",
+          "Inside a library"
+        ],
+        "correct": "At the beach",
+        "hint": "Look at the sand, the water, and the sandcastle in the picture. What place has all of those?"
+      },
+      {
+        "prompt": "The words say: \"Grandpa smiled.\" The picture shows Grandpa holding a birthday cake with candles and a party hat on his head. What does the picture help you know?",
+        "choices": [
+          "It is Grandpa's birthday",
+          "Grandpa is going to work",
+          "It is raining outside",
+          "Grandpa is fixing a car"
+        ],
+        "correct": "It is Grandpa's birthday",
+        "hint": "Cake, candles, and a party hat all point to one special day. What day is that?"
+      },
+      {
+        "prompt": "The words say: \"Lily read her book.\" The picture shows Lily sitting in bed at night with a lamp on and the moon out the window. When is Lily reading?",
+        "choices": [
+          "At night",
+          "Early in the morning",
+          "At lunchtime",
+          "During recess"
+        ],
+        "correct": "At night",
+        "hint": "Look at the moon out the window and the lamp turned on. What time of day is it?"
+      }
+    ]
+  },
+  {
+    "std": "RL.3.9",
+    "questions": [
+      {
+        "prompt": "An author wrote two stories about a boy named Max. In Story 1, Max plays soccer at the park. In Story 2, Max plays soccer at the beach. What is the SAME in both stories?",
+        "choices": [
+          "The main character, Max",
+          "The color of the ball",
+          "The time of year",
+          "The name of the park"
+        ],
+        "correct": "The main character, Max",
+        "hint": "Look for the person who is in BOTH stories. His name is right there in each one."
+      },
+      {
+        "prompt": "An author wrote two stories about a dog named Pip. In Story 1, Pip lives on a farm. In Story 2, Pip lives in a city. What is DIFFERENT between the two stories?",
+        "choices": [
+          "The place where Pip lives",
+          "The dog's name, Pip",
+          "The author who wrote them",
+          "The kind of animal"
+        ],
+        "correct": "The place where Pip lives",
+        "hint": "One story says farm and the other says city. Which one changed?"
+      },
+      {
+        "prompt": "The same author wrote two stories about a girl named Lily. Both stories teach the lesson 'be kind to others.' What do the two stories share?",
+        "choices": [
+          "The same lesson",
+          "Different characters",
+          "Different authors",
+          "No lesson at all"
+        ],
+        "correct": "The same lesson",
+        "hint": "The sentence tells you both stories teach the very same lesson. Just repeat it."
+      },
+      {
+        "prompt": "An author wrote two stories about a cat named Sam. In Story 1, Sam looks for a lost toy. In Story 2, Sam looks for a lost hat. Both stories are about Sam looking for something lost. What is ALIKE in both plots?",
+        "choices": [
+          "Sam is looking for something lost",
+          "Sam is sleeping",
+          "Sam is eating dinner",
+          "Sam is at school"
+        ],
+        "correct": "Sam is looking for something lost",
+        "hint": "Both stories say Sam is looking for a lost thing. That is what they have in common."
+      },
+      {
+        "prompt": "The same author wrote two stories about a boy named Theo. Story 1 happens in winter with snow. Story 2 happens in summer at the pool. What is DIFFERENT about when and where the stories happen?",
+        "choices": [
+          "The setting is different",
+          "Theo's name is different",
+          "The author is different",
+          "Nothing is different"
+        ],
+        "correct": "The setting is different",
+        "hint": "When and where a story happens is called the setting. Snow in winter and a summer pool are not the same."
+      }
+    ]
+  },
+  {
+    "std": "RL.4.1",
+    "questions": [
+      {
+        "prompt": "Maria was the fastest runner on her team. When the coach needed someone to run the final leg of the relay, he always picked Maria. Why did the coach pick Maria for the final leg?",
+        "choices": [
+          "Because she was the fastest runner on the team",
+          "Because she forgot her shoes",
+          "Because she was the tallest student",
+          "Because she did not like running"
+        ],
+        "correct": "Because she was the fastest runner on the team",
+        "hint": "Look at the first sentence. It tells you exactly what made Maria special."
+      },
+      {
+        "prompt": "The rain fell all day, so the baseball game was canceled. The players went home disappointed. Why was the game canceled?",
+        "choices": [
+          "Because it rained all day",
+          "Because the players won a prize",
+          "Because the field was too sunny",
+          "Because everyone was hungry"
+        ],
+        "correct": "Because it rained all day",
+        "hint": "The word 'so' connects the cause to what happened next. Find the reason right before it."
+      },
+      {
+        "prompt": "Ben studied his spelling words every night for a week. On Friday, he got every word right on the test. What detail shows that Ben worked hard?",
+        "choices": [
+          "He studied his spelling words every night for a week",
+          "He watched TV all week",
+          "He lost his spelling list",
+          "He skipped the test"
+        ],
+        "correct": "He studied his spelling words every night for a week",
+        "hint": "Find the sentence that tells what Ben did each night before the test."
+      },
+      {
+        "prompt": "When the puppy heard the front door open, it wagged its tail and ran to greet its owner. How does the puppy feel about its owner?",
+        "choices": [
+          "Happy and excited to see them",
+          "Angry and scared of them",
+          "Bored and sleepy",
+          "Hungry for the door"
+        ],
+        "correct": "Happy and excited to see them",
+        "hint": "Think about what a wagging tail and running to greet someone usually shows."
+      },
+      {
+        "prompt": "Grandpa handed Lily an old baseball glove. 'This was mine when I was your age,' he said with a smile. What can you tell about the glove?",
+        "choices": [
+          "It has belonged to Grandpa since he was young",
+          "Lily bought it at the store today",
+          "It was made this year",
+          "It belongs to a stranger"
+        ],
+        "correct": "It has belonged to Grandpa since he was young",
+        "hint": "Grandpa's own words tell you who the glove used to belong to."
+      }
+    ]
+  },
+  {
+    "std": "RL.4.10",
+    "questions": [
+      {
+        "prompt": "Maya had never seen the ocean before. When the waves finally came into view, she gasped and pressed her face to the car window. \"It's even bigger than I imagined!\" she said. How does Maya feel when she sees the ocean?",
+        "choices": [
+          "Bored and sleepy",
+          "Amazed and excited",
+          "Angry at her parents",
+          "Hungry for lunch"
+        ],
+        "correct": "Amazed and excited",
+        "hint": "Look at what Maya does and says. Gasping and saying it's bigger than she imagined tells you her feeling."
+      },
+      {
+        "prompt": "The old lighthouse stood at the edge of the cliff. Its light had guided ships safely to shore for over one hundred years. Where does this story take place?",
+        "choices": [
+          "At a lighthouse by the sea",
+          "In a busy city subway",
+          "Inside a spaceship",
+          "At a birthday party"
+        ],
+        "correct": "At a lighthouse by the sea",
+        "hint": "The passage names the place directly. A lighthouse on a cliff guides ships to shore."
+      },
+      {
+        "prompt": "Ben studied for the spelling test all week. When he got his paper back, every single word was correct. He jumped up with a huge smile. Why is Ben happy?",
+        "choices": [
+          "He lost the test",
+          "He got every word right",
+          "He forgot to study",
+          "He missed the bus"
+        ],
+        "correct": "He got every word right",
+        "hint": "The sentence right before his smile tells you why. Every word was correct."
+      },
+      {
+        "prompt": "The storm grew worse. Rain slammed against the windows, and thunder shook the little house. The children pulled their blankets tighter and stayed close together. What is happening in the story?",
+        "choices": [
+          "A sunny day at the beach",
+          "A scary storm at night",
+          "A quiet trip to the library",
+          "A game of soccer"
+        ],
+        "correct": "A scary storm at night",
+        "hint": "Notice the rain, thunder, and the children pulling their blankets tighter. What kind of weather is it?"
+      },
+      {
+        "prompt": "Grandpa handed Lily an old, worn baseball glove. \"This was mine when I was your age,\" he said softly. \"I want you to have it now.\" Why does Grandpa give Lily the glove?",
+        "choices": [
+          "Because it is broken",
+          "Because he wants to share something special with her",
+          "Because he does not like it",
+          "Because Lily bought it"
+        ],
+        "correct": "Because he wants to share something special with her",
+        "hint": "Grandpa says it was his and speaks softly. Giving something from his own childhood shows it means a lot to him."
+      }
+    ]
+  },
+  {
+    "std": "RL.4.3",
+    "questions": [
+      {
+        "prompt": "Maria was the kindest kid in class. She shared her lunch, helped others clean up, and always said something nice. What kind of person is Maria?",
+        "choices": [
+          "Kind and helpful",
+          "Mean and rude",
+          "Lazy and sleepy",
+          "Angry and loud"
+        ],
+        "correct": "Kind and helpful",
+        "hint": "Look at what Maria does: she shares, helps, and says nice things. What word matches those actions?"
+      },
+      {
+        "prompt": "The old house was dark and dusty. Cobwebs hung in every corner, and the floors creaked with each step. What is the setting like?",
+        "choices": [
+          "Spooky and old",
+          "Bright and cheerful",
+          "New and clean",
+          "Warm and sunny"
+        ],
+        "correct": "Spooky and old",
+        "hint": "Think about the dust, cobwebs, and creaky floors. Do those details feel new and cheerful, or old and creepy?"
+      },
+      {
+        "prompt": "Ben pumped his fist in the air and shouted, \"We won!\" He jumped up and down with a huge smile. How does Ben feel?",
+        "choices": [
+          "Excited and happy",
+          "Sad and tired",
+          "Bored and sleepy",
+          "Scared and worried"
+        ],
+        "correct": "Excited and happy",
+        "hint": "Ben is jumping, shouting, and smiling big. What feeling do those actions show?"
+      },
+      {
+        "prompt": "The beach was warm and sunny. Waves splashed softly, and kids built sandcastles while seagulls flew above. What is the setting like?",
+        "choices": [
+          "Sunny and fun",
+          "Cold and snowy",
+          "Dark and scary",
+          "Quiet library"
+        ],
+        "correct": "Sunny and fun",
+        "hint": "Picture the warm sun, splashing waves, and sandcastles. Does that place sound sunny and fun, or cold and scary?"
+      },
+      {
+        "prompt": "Every morning, Grandpa woke up early to feed the chickens, fix the fence, and water the garden. He never stopped working. What kind of person is Grandpa?",
+        "choices": [
+          "Hardworking",
+          "Very lazy",
+          "Always sleeping",
+          "Afraid of chickens"
+        ],
+        "correct": "Hardworking",
+        "hint": "Grandpa feeds, fixes, and waters and never stops. What word describes someone who works this much?"
+      }
+    ]
+  },
+  {
+    "std": "RL.4.4",
+    "questions": [
+      {
+        "prompt": "The knight was as brave as a lion, so he was not scared at all when the dragon roared.\n\nIn this sentence, \"as brave as a lion\" means the knight was \u2014",
+        "choices": [
+          "very brave",
+          "very hungry",
+          "very sleepy",
+          "very short"
+        ],
+        "correct": "very brave",
+        "hint": "The sentence says he was \"not scared at all.\" A lion is known for being brave."
+      },
+      {
+        "prompt": "The old wizard had a booming voice. It was so loud and deep that it filled the whole cave.\n\nIn this sentence, a \"booming\" voice means a voice that is \u2014",
+        "choices": [
+          "loud and deep",
+          "soft and quiet",
+          "sweet and kind",
+          "shaky and weak"
+        ],
+        "correct": "loud and deep",
+        "hint": "Read the next sentence: it says the voice was \"so loud and deep.\""
+      },
+      {
+        "prompt": "Maya felt gloomy all day. She frowned and did not want to play or smile.\n\nIn this sentence, \"gloomy\" means Maya felt \u2014",
+        "choices": [
+          "sad",
+          "excited",
+          "hungry",
+          "curious"
+        ],
+        "correct": "sad",
+        "hint": "She frowned and did not want to smile. How does someone feel when they act that way?"
+      },
+      {
+        "prompt": "Ben's little sister followed him everywhere, so he called her his shadow because she was always right behind him.\n\nCalling his sister his \"shadow\" means she \u2014",
+        "choices": [
+          "always stayed close behind him",
+          "was made of darkness",
+          "could disappear",
+          "was very tall"
+        ],
+        "correct": "always stayed close behind him",
+        "hint": "The sentence tells you why: she was \"always right behind him.\""
+      },
+      {
+        "prompt": "The hero was so strong he could lift a giant boulder. People said he had the strength of Hercules, a mighty hero from Greek myths.\n\nSaying the hero had \"the strength of Hercules\" means he was very \u2014",
+        "choices": [
+          "strong",
+          "funny",
+          "shy",
+          "hungry"
+        ],
+        "correct": "strong",
+        "hint": "The sentence tells you Hercules was a \"mighty hero\" and the hero could lift a giant boulder."
+      }
+    ]
+  },
+  {
+    "std": "RL.4.5",
+    "questions": [
+      {
+        "prompt": "A poem is written in lines that are grouped together. What do we call a group of lines in a poem?",
+        "choices": [
+          "A stanza",
+          "A touchdown",
+          "A recipe",
+          "A password"
+        ],
+        "correct": "A stanza",
+        "hint": "It's the poetry word for a bunch of lines that go together, like a paragraph but for poems."
+      },
+      {
+        "prompt": "A play (drama) is written so actors can perform it on a stage. Which of these is a type of writing MEANT to be acted out?",
+        "choices": [
+          "A drama (play)",
+          "A poem",
+          "A grocery list",
+          "A weather report"
+        ],
+        "correct": "A drama (play)",
+        "hint": "Think about which one has actors, a stage, and lines to say out loud."
+      },
+      {
+        "prompt": "Prose is regular writing, like a story or a novel. Prose is organized into what?",
+        "choices": [
+          "Paragraphs",
+          "Stanzas",
+          "Songs",
+          "Photos"
+        ],
+        "correct": "Paragraphs",
+        "hint": "It's the same thing you break a story into when you start a new idea."
+      },
+      {
+        "prompt": "In a play, the words a character says out loud are called their lines. In a play, which piece of writing tells a character what to SAY?",
+        "choices": [
+          "Their lines (dialogue)",
+          "The page numbers",
+          "The book's cover",
+          "The library shelf"
+        ],
+        "correct": "Their lines (dialogue)",
+        "hint": "It's the part the actor reads out loud when it's their turn to talk."
+      },
+      {
+        "prompt": "One big difference between a poem and prose is how they look on the page. A poem is usually written in what?",
+        "choices": [
+          "Short lines",
+          "Long chapters",
+          "A shopping list",
+          "A phone number"
+        ],
+        "correct": "Short lines",
+        "hint": "Picture a poem: the words are stacked in little rows, not stretched all the way across the page."
+      }
+    ]
+  },
+  {
+    "std": "RL.4.6",
+    "questions": [
+      {
+        "prompt": "Read this sentence: \"I ran as fast as I could to catch the bus.\" Is this sentence told in first-person or third-person point of view?",
+        "choices": [
+          "First-person",
+          "Third-person",
+          "It has no point of view"
+        ],
+        "correct": "First-person",
+        "hint": "Look for the word \"I.\" When the narrator uses \"I\" and \"me,\" the story is told in first-person."
+      },
+      {
+        "prompt": "Read this sentence: \"Maria opened the box and smiled at what she saw.\" Is this sentence told in first-person or third-person point of view?",
+        "choices": [
+          "Third-person",
+          "First-person",
+          "Second-person"
+        ],
+        "correct": "Third-person",
+        "hint": "The narrator uses the character's name and the word \"she\" instead of \"I.\" That is third-person."
+      },
+      {
+        "prompt": "Which word tells you a story is being told in first-person point of view?",
+        "choices": [
+          "I",
+          "She",
+          "They"
+        ],
+        "correct": "I",
+        "hint": "First-person means the narrator is telling their own story, so they use \"I\" and \"me.\""
+      },
+      {
+        "prompt": "A story begins: \"He walked into the room and looked around.\" Which point of view is this story told from?",
+        "choices": [
+          "Third-person",
+          "First-person",
+          "The reader's point of view"
+        ],
+        "correct": "Third-person",
+        "hint": "The word \"He\" tells you the narrator is talking about someone else, not themselves. That is third-person."
+      },
+      {
+        "prompt": "Which sentence is told in first-person point of view?",
+        "choices": [
+          "\"I love the smell of fresh cookies.\"",
+          "\"Tom loves the smell of fresh cookies.\"",
+          "\"They love the smell of fresh cookies.\""
+        ],
+        "correct": "\"I love the smell of fresh cookies.\"",
+        "hint": "First-person uses the word \"I.\" Find the sentence where the narrator is talking about themselves."
+      }
+    ]
+  },
+  {
+    "std": "RL.4.7",
+    "questions": [
+      {
+        "prompt": "Maya read a book about a scary forest. Then she watched the movie of the same story. In the movie, she could HEAR the wolves howling and the wind blowing. What did the movie add that the book did not have?",
+        "choices": [
+          "Sound you can hear",
+          "A brand new story",
+          "The words on the page",
+          "Nothing at all"
+        ],
+        "correct": "Sound you can hear",
+        "hint": "Think about what your ears can do while watching a movie, but not while reading a book."
+      },
+      {
+        "prompt": "Ben read a play in his book. Then his class ACTED it out on a stage. In the acted-out version, real people said the lines out loud. What could Ben now SEE that he could not see in the book?",
+        "choices": [
+          "Real actors moving and speaking",
+          "The exact same paper pages",
+          "A different, longer story",
+          "No people at all"
+        ],
+        "correct": "Real actors moving and speaking",
+        "hint": "When a story is performed on a stage, who is up there saying the words?"
+      },
+      {
+        "prompt": "A book describes a birthday party as 'colorful and happy.' In the movie of the story, the party scene uses bright colors and cheerful music. The movie and the book both show the party as \u2014",
+        "choices": [
+          "Happy",
+          "Sad and scary",
+          "Boring and empty",
+          "About a war"
+        ],
+        "correct": "Happy",
+        "hint": "The book says the party is happy. Do the bright colors and cheerful music match that?"
+      },
+      {
+        "prompt": "Liam listened to an AUDIO version of a story instead of reading it. An actor read the words out loud in a soft, gentle voice. The audio version lets Liam \u2014",
+        "choices": [
+          "Hear how the words sound",
+          "Taste the food in the story",
+          "Draw the pictures himself",
+          "Change the ending"
+        ],
+        "correct": "Hear how the words sound",
+        "hint": "An audio version is made for one of your senses. Which one?"
+      },
+      {
+        "prompt": "In the book, a character named Sam is described as tall with red hair. In the MOVIE, the actor playing Sam is tall with red hair. The movie version of Sam \u2014",
+        "choices": [
+          "Matches the book",
+          "Looks nothing like the book",
+          "Is not in the movie",
+          "Is a talking dog"
+        ],
+        "correct": "Matches the book",
+        "hint": "Compare the book's words to the actor. Are they the same or different?"
+      }
+    ]
+  },
+  {
+    "std": "RL.4.9",
+    "questions": [
+      {
+        "prompt": "A Chinese myth explains why the moon changes shape each month. A Hawaiian myth also explains why the moon changes shape each month. What SAME topic do both myths explain?",
+        "choices": [
+          "Why the moon changes shape",
+          "How volcanoes erupt",
+          "Why fish swim",
+          "How to grow rice"
+        ],
+        "correct": "Why the moon changes shape",
+        "hint": "Look at what BOTH myths are about. The first sentence and the second sentence say the same thing."
+      },
+      {
+        "prompt": "An African folktale teaches that being kind to others brings good things back to you. A Japanese folktale also teaches that being kind to others brings good things back to you. What lesson (theme) do both stories share?",
+        "choices": [
+          "Kindness comes back to you",
+          "Never leave your house",
+          "Winter is very cold",
+          "Cats make good pets"
+        ],
+        "correct": "Kindness comes back to you",
+        "hint": "Both folktales teach the SAME lesson. Read what each one 'teaches' and find the match."
+      },
+      {
+        "prompt": "In a Greek myth, a clever hero uses a trick to escape a giant. In a West African tale, a clever spider uses a trick to escape a lion. How are these two stories ALIKE?",
+        "choices": [
+          "Both have a clever character who escapes danger with a trick",
+          "Both are about baking bread",
+          "Both take place under the ocean",
+          "Both are about the same real king"
+        ],
+        "correct": "Both have a clever character who escapes danger with a trick",
+        "hint": "Compare the two heroes. What do the hero and the spider both DO to get away?"
+      },
+      {
+        "prompt": "One myth says thunder happens because a giant is bowling in the sky. Another myth says thunder happens because a dragon is roaring. What is the SAME about these two myths?",
+        "choices": [
+          "They both try to explain what causes thunder",
+          "They both explain why grass is green",
+          "They both are set in a school",
+          "They both explain how to swim"
+        ],
+        "correct": "They both try to explain what causes thunder",
+        "hint": "The word 'thunder' shows up in both. Ask: what are both myths trying to explain?"
+      },
+      {
+        "prompt": "A Norse myth has a brave hero who fights a monster to protect his village. A Mexican myth has a brave hero who fights a monster to protect her village. What do BOTH heroes have in common?",
+        "choices": [
+          "Each is brave and fights a monster to protect the village",
+          "One flies and the other swims",
+          "One is a teacher and one is a chef",
+          "Neither one is brave at all"
+        ],
+        "correct": "Each is brave and fights a monster to protect the village",
+        "hint": "Both sentences describe the hero the same way. Look for the words that repeat: brave, monster, protect the village."
+      }
+    ]
+  }
+]
