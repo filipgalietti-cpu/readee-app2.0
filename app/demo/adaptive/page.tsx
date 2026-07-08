@@ -126,14 +126,14 @@ export default function AdaptiveDemoPage() {
 
         {/* Persona controls */}
         <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
-          <button onClick={() => runPersona(0.25)} className="rounded-full bg-amber-500 px-4 py-2 text-sm font-bold text-white shadow hover:bg-amber-600">
-            🐢 Auto: struggling reader
+          <button onClick={() => runPersona(0.25)} className="rounded-full bg-amber-500 px-5 py-2 text-sm font-bold text-white shadow hover:bg-amber-600">
+            Auto-play: struggling reader
           </button>
-          <button onClick={() => runPersona(0.95)} className="rounded-full bg-emerald-500 px-4 py-2 text-sm font-bold text-white shadow hover:bg-emerald-600">
-            🚀 Auto: advanced reader
+          <button onClick={() => runPersona(0.95)} className="rounded-full bg-emerald-500 px-5 py-2 text-sm font-bold text-white shadow hover:bg-emerald-600">
+            Auto-play: advanced reader
           </button>
-          <button onClick={reset} className="rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-bold text-zinc-600 shadow-sm hover:bg-zinc-50">
-            ↺ Reset
+          <button onClick={reset} className="rounded-full border border-zinc-300 bg-white px-5 py-2 text-sm font-bold text-zinc-600 shadow-sm hover:bg-zinc-50">
+            Reset
           </button>
         </div>
 
@@ -150,10 +150,10 @@ export default function AdaptiveDemoPage() {
             </div>
             <div className="mt-5 grid grid-cols-2 gap-3">
               <button onClick={() => { stopAuto(); answer(true); }} className="rounded-2xl bg-emerald-500 py-4 text-lg font-extrabold text-white shadow hover:bg-emerald-600">
-                ✓ Nailed it
+                Answered correctly
               </button>
               <button onClick={() => { stopAuto(); answer(false); }} className="rounded-2xl bg-rose-500 py-4 text-lg font-extrabold text-white shadow hover:bg-rose-600">
-                ✗ Struggled
+                Struggled
               </button>
             </div>
           </div>

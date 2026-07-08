@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { logLearningEvent, newSessionId } from "@/lib/adaptive/events";
 import { useAdaptiveController } from "@/lib/adaptive/use-adaptive-controller";
+import { selectIntervention, type Intervention } from "@/lib/adaptive/interventions";
 import { AdaptiveDebugBadge } from "@/app/_components/AdaptiveDebugBadge";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
@@ -612,6 +613,22 @@ function PracticeSession({
     childId: child?.id ?? null,
     standardId: standard?.standard_id ?? null,
   });
+  // Adaptive ACT layer (test integration, gated behind ?adaptive=1). When the
+  // engine's reading changes, fire the next intervention and surface it as a
+  // coach moment. Only active when debugAdaptive is on, so it never affects a
+  // real child until we ship it deliberately.
+  const ivHistoryRef = useRef<Intervention[]>([]);
+  const [coach, setCoach] = useState<Intervention | null>(null);
+  useEffect(() => {
+    if (!debugAdaptive) return;
+    const r = adaptive.reading;
+    if (r.directive === "hold" || r.confidence < 0.4) return;
+    const iv = selectIntervention(r, ivHistoryRef.current);
+    if (iv.type === "none") return;
+    ivHistoryRef.current = [...ivHistoryRef.current, iv];
+    setCoach(iv);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [adaptive.reading, debugAdaptive]);
   const mysteryBoxMultiplier = usePracticeStore((s) => s.mysteryBoxMultiplier);
   const clearMysteryBoxMultiplier = usePracticeStore((s) => s.clearMysteryBoxMultiplier);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -1106,6 +1123,29 @@ function PracticeSession({
   return (
     <div ref={scrollRef} className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex flex-col overflow-y-auto">
       {debugAdaptive && <AdaptiveDebugBadge reading={adaptive.reading} />}
+      {debugAdaptive && coach && coach.type !== "none" && (
+        <motion.div
+          key={coach.type + ivHistoryRef.current.length}
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          className={`fixed top-3 left-1/2 z-[60] w-[90%] max-w-md -translate-x-1/2 rounded-2xl border p-4 shadow-lg ${
+            coach.kind === "gas"
+              ? "border-emerald-200 bg-emerald-50"
+              : coach.kind === "brakes"
+                ? "border-amber-200 bg-amber-50"
+                : "border-violet-200 bg-violet-50"
+          }`}
+        >
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-500">
+            <span>Readee adapts</span>
+            <span className="rounded-full bg-white/70 px-2 py-0.5">{coach.kind}</span>
+            <button onClick={() => setCoach(null)} className="ml-auto text-zinc-400">✕</button>
+          </div>
+          <div className="mt-1 font-extrabold text-zinc-800">{coach.title}</div>
+          <div className="text-sm text-zinc-600">“{coach.message}”</div>
+          <div className="mt-0.5 text-xs text-zinc-400">{coach.rationale}</div>
+        </motion.div>
+      )}
       {/* ── Top bar: progress + close ── */}
       <div className="flex items-center gap-3 px-4 pt-4 pb-2 flex-shrink-0">
         <button
