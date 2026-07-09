@@ -9,6 +9,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
+import sampleLessons from "@/app/data/sample-lessons.json";
 import LevelProgressBar, { GRADES } from "@/app/_components/LevelProgressBar";
 import { useChildStore } from "@/lib/stores/child-store";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
@@ -30,6 +31,38 @@ import { trackFunnelClient } from "@/lib/analytics/funnel";
 import LevelBadge from "@/app/_components/LevelBadge";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { computeLevel } from "@/lib/levels/levels";
+
+// Set of standards that have a real canonical lesson on the /learn
+// slideshow route. Used to route navigation to /learn when possible
+// and only fall back to the legacy /lesson route when there's no
+// canonical lesson for that standard.
+const LEARN_STANDARDS = new Set(
+  (sampleLessons as Array<{ standardId: string }>).map((l) => l.standardId),
+);
+
+// 15 legacy lessons in lib/data/lessons.json have an empty standards
+// array (5 K decodables + all 10 4th-grade lessons); map them by
+// stable lesson ID to their canonical CCSS standard.
+const LESSON_ID_TO_STANDARD: Record<string, string> = {
+  "k-L9": "RF.K.3a", "k-L10": "RF.K.3a", "k-L11": "RF.K.3a",
+  "k-L12": "RF.K.3a", "k-L13": "RF.K.3a",
+  "4-L1": "L.4.4b", "4-L2": "L.4.5a", "4-L3": "L.4.5b", "4-L4": "RI.4.5",
+  "4-L5": "RL.4.2", "4-L6": "RL.4.6", "4-L7": "RI.4.8", "4-L8": "L.4.4a",
+  "4-L9": "RL.4.3", "4-L10": "RI.4.2",
+};
+
+/**
+ * Resolve a legacy lessons.json lesson to a canonical /learn standard.
+ * lessons.json uses "RF.K.1.d"; sample-lessons.json uses "RF.K.1d".
+ * Returns the standard only when a real canonical lesson exists for it
+ * (so callers never link to a /learn page that can't render); otherwise
+ * null → caller keeps the legacy /lesson route.
+ */
+function lessonToLearnStandard(lesson: { id: string; standards?: string[] }): string | null {
+  const raw = (lesson.standards ?? [])[0];
+  const std = raw ? raw.replace(/\.([a-z])$/, "$1") : LESSON_ID_TO_STANDARD[lesson.id] ?? null;
+  return std && LEARN_STANDARDS.has(std) ? std : null;
+}
 
 /**
  * Below-the-fold dashboard subcomponents — dynamic-imported for the
@@ -1135,36 +1168,10 @@ function ChildDashboard({
           )}
 
           {hasAssessment && nextLesson && (() => {
-            // Map the lessons.json standard ("RF.K.1.d") to the
-            // sample-lessons.json shape ("RF.K.1d") so the slideshow
-            // /learn route resolves the right lesson. Falls back to the
-            // legacy /lesson route when no standard is set.
-            //
-            // 15 legacy lessons in lib/data/lessons.json have an empty
-            // standards array (5 K decodables + all 10 4th-grade
-            // lessons). Map them by stable lesson ID to their canonical
-            // CCSS standard so the kid still routes to the slideshow.
-            const LESSON_ID_TO_STANDARD: Record<string, string> = {
-              "k-L9": "RF.K.3a",
-              "k-L10": "RF.K.3a",
-              "k-L11": "RF.K.3a",
-              "k-L12": "RF.K.3a",
-              "k-L13": "RF.K.3a",
-              "4-L1": "L.4.4b",
-              "4-L2": "L.4.5a",
-              "4-L3": "L.4.5b",
-              "4-L4": "RI.4.5",
-              "4-L5": "RL.4.2",
-              "4-L6": "RL.4.6",
-              "4-L7": "RI.4.8",
-              "4-L8": "L.4.4a",
-              "4-L9": "RL.4.3",
-              "4-L10": "RI.4.2",
-            };
-            const rawStandard = (nextLesson.standards ?? [])[0];
-            const standardId = rawStandard
-              ? rawStandard.replace(/\.([a-z])$/, "$1")
-              : LESSON_ID_TO_STANDARD[nextLesson.id] ?? null;
+            // Route to the canonical /learn slideshow when a real lesson
+            // exists for this standard; otherwise fall back to the legacy
+            // /lesson route. (Shared helper — see lessonToLearnStandard.)
+            const standardId = lessonToLearnStandard(nextLesson);
             const href = standardId
               ? `/learn?standard=${standardId}&child=${child.id}`
               : `/lesson?child=${child.id}&lesson=${nextLesson.id}`;
@@ -1969,6 +1976,7 @@ function LessonPath({
             const isFree = isLessonFree(lesson.id);
             const isLocked = !isFree && userPlan !== "premium";
             const isLast = i === lessons.length - 1;
+            const learnStd = lessonToLearnStandard(lesson);
 
             return (
               <div key={lesson.id} className={`relative flex items-start gap-2.5 ${isLast ? "" : "pb-2"}`}>
@@ -1995,7 +2003,13 @@ function LessonPath({
 
                 {/* Content */}
                 <Link
-                  href={isLocked ? `/upgrade?child=${child.id}` : `/lesson?child=${child.id}&lesson=${lesson.id}`}
+                  href={
+                    isLocked
+                      ? `/upgrade?child=${child.id}`
+                      : learnStd
+                        ? `/learn?standard=${learnStd}&child=${child.id}`
+                        : `/lesson?child=${child.id}&lesson=${lesson.id}`
+                  }
                   className={`flex-1 min-w-0 rounded-lg px-2 py-1.5 -mx-1 transition-colors ${
                     isNext
                       ? "bg-violet-50 hover:bg-violet-100"
