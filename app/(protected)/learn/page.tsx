@@ -556,7 +556,7 @@ function LearnSession({
 
   /* ── Phase: Slideshow ── */
   if (phase === "slideshow") {
-    return <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} outfitId={child?.equipped_items?.outfit ?? null}
+    return <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} chrome="desktop-shell" outfitId={child?.equipped_items?.outfit ?? null}
       onSignal={(ev) => {
         if (!child?.id) return;
         logLearningEvent({
