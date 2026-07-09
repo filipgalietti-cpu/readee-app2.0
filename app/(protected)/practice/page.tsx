@@ -10,6 +10,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { logLearningEvent, newSessionId } from "@/lib/adaptive/events";
 import { useAdaptiveController } from "@/lib/adaptive/use-adaptive-controller";
 import { selectIntervention, type Intervention } from "@/lib/adaptive/interventions";
+import { selectNextItem } from "@/lib/adaptive/select-item";
 import { AdaptiveDebugBadge } from "@/app/_components/AdaptiveDebugBadge";
 import { Child } from "@/lib/db/types";
 import { useAudio } from "@/lib/audio/use-audio";
@@ -634,7 +635,7 @@ function PracticeSession({
   const scrollRef = useRef<HTMLDivElement>(null);
   const prevCarrotsRef = useRef(sessionCarrots);
 
-  const questions = useMemo(() => {
+  const staticQuestions = useMemo(() => {
     // Smart-search deep-link: pin the requested question to the front
     // of the session so the kid sees it first. The rest of the slots
     // are filled from a shuffled pool of the remaining questions, so
@@ -649,6 +650,47 @@ function PracticeSession({
     if (standard.questions.length <= QUESTIONS_PER_SESSION) return standard.questions;
     return shuffleArray(standard.questions).slice(0, QUESTIONS_PER_SESSION);
   }, [standard, focusQuestionId]);
+
+  // ── Adaptive session (flag-gated `?adaptive=1`) ─────────────────────────
+  // A real kid (no flag) is completely unaffected — they get staticQuestions.
+  // Under the flag we build a DYNAMIC queue: seed with an on-level question,
+  // then grow it one item at a time in handleContinue by asking the engine
+  // for the next difficulty based on how the kid is doing right now.
+  const ADAPTIVE_SESSION_LEN = 8;
+  // Lightweight selection view over the bank: id + numeric adaptiveDifficulty.
+  // Keeps the real question objects pristine (their `difficulty` is a messy
+  // string); selection reads only {id, difficulty:number}.
+  const adaptiveSelectPool = useMemo(
+    () =>
+      standard.questions.map((qq) => {
+        const ad = (qq as { adaptiveDifficulty?: number }).adaptiveDifficulty;
+        return { id: qq.id, difficulty: typeof ad === "number" ? ad : 50 };
+      }),
+    [standard],
+  );
+  const workingDiffRef = useRef(50);
+  const seenRef = useRef<Set<string>>(new Set());
+  const [adaptiveQueue, setAdaptiveQueue] = useState<typeof standard.questions>([]);
+
+  // Seed the adaptive queue with an on-level question (difficulty ~50).
+  useEffect(() => {
+    if (!debugAdaptive) {
+      setAdaptiveQueue([]);
+      return;
+    }
+    const onLevel = [...adaptiveSelectPool].sort(
+      (a, b) => Math.abs(a.difficulty - 50) - Math.abs(b.difficulty - 50),
+    )[0];
+    const first = onLevel && standard.questions.find((qq) => qq.id === onLevel.id);
+    if (first) {
+      workingDiffRef.current = onLevel.difficulty;
+      seenRef.current = new Set([first.id]);
+      setAdaptiveQueue([first]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [standard.standard_id, debugAdaptive]);
+
+  const questions = debugAdaptive && adaptiveQueue.length ? adaptiveQueue : staticQuestions;
 
   // Reset store on mount/standard change
   useEffect(() => {
@@ -668,7 +710,7 @@ function PracticeSession({
   }, [sessionCarrots]);
 
   const q = questions[currentIdx];
-  const totalQ = questions.length;
+  const totalQ = debugAdaptive ? ADAPTIVE_SESSION_LEN : questions.length;
 
   const hasChoiceAudio = useMemo(() => {
     return q.choices_audio_urls?.some(url => url && url.startsWith("https://")) ?? false;
@@ -886,9 +928,23 @@ function PracticeSession({
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
     setShowHint(false);
+    // Adaptive mode: grow the queue by asking the engine for the next item at
+    // the difficulty the kid's live performance warrants, then advance into it.
+    if (debugAdaptive && currentIdx + 1 < totalQ && adaptiveQueue.length <= currentIdx + 1) {
+      const { item, workingDifficulty } = selectNextItem(adaptive.reading, adaptiveSelectPool, {
+        current: workingDiffRef.current,
+        seen: seenRef.current,
+      });
+      const full = item && standard.questions.find((qq) => qq.id === item.id);
+      if (full) {
+        workingDiffRef.current = workingDifficulty;
+        seenRef.current = new Set([...seenRef.current, full.id]);
+        setAdaptiveQueue((qz) => [...qz, full]);
+      }
+    }
     nextQuestion(totalQ);
     scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-  }, [nextQuestion, totalQ]);
+  }, [nextQuestion, totalQ, debugAdaptive, currentIdx, adaptiveQueue.length, adaptive.reading, adaptiveSelectPool, standard.questions]);
 
   /* ── Exit ── */
   const handleExit = useCallback(() => {
