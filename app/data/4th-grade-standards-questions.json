@@ -2,7 +2,7 @@
   "grade": "4th",
   "standard_framework": "Common Core State Standards",
   "total_standards": 34,
-  "total_questions": 136,
+  "total_questions": 305,
   "standards": [
     {
       "standard_id": "RL.4.1",
@@ -13,7 +13,7 @@
         {
           "id": "RL.4.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Elena clutched her telescope and crept onto the rooftop. The city lights dimmed the stars, but she knew exactly where to look. At 9:47 PM, a streak of light raced across the sky \u2014 the comet her grandfather had told her about.\n\nWhat can you infer about Elena's grandfather?",
+          "prompt": "Elena clutched her telescope and crept onto the rooftop. The city lights dimmed the stars, but she knew exactly where to look. At 9:47 PM, a streak of light raced across the sky — the comet her grandfather had told her about.\n\nWhat can you infer about Elena's grandfather?",
           "choices": [
             "He shared his knowledge of astronomy with Elena",
             "He doesn't like stars",
@@ -39,7 +39,7 @@
             "He can't read it"
           ],
           "correct": "It's extremely important and meaningful to him",
-          "hint": "He keeps it close to his chest and has memorized every word \u2014 those are signs of deep attachment.",
+          "hint": "He keeps it close to his chest and has memorized every word — those are signs of deep attachment.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q2-hint.mp3",
@@ -75,7 +75,7 @@
             "He's upset or frustrated about something"
           ],
           "correct": "He's upset or frustrated about something",
-          "hint": "Silent, tight grip, clenched jaw, deep sigh \u2014 those are all signs of frustration.",
+          "hint": "Silent, tight grip, clenched jaw, deep sigh — those are all signs of frustration.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q4-hint.mp3",
@@ -85,7 +85,7 @@
         {
           "id": "RL.4.1-Q5",
           "type": "multiple_choice",
-          "prompt": "The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart \u2014 where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, \"Books always find a new home.\"\n\nWhat does Mrs. Tanaka's response reveal about her character?",
+          "prompt": "The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart — where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, \"Books always find a new home.\"\n\nWhat does Mrs. Tanaka's response reveal about her character?",
           "choices": [
             "She's optimistic and resilient even in difficult times",
             "She wants a new building",
@@ -93,7 +93,7 @@
             "She doesn't care about the bookshop"
           ],
           "correct": "She's optimistic and resilient even in difficult times",
-          "hint": "Instead of being devastated, she focuses on the positive \u2014 books will survive. That's resilience.",
+          "hint": "Instead of being devastated, she focuses on the positive — books will survive. That's resilience.",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-Q5-hint.mp3",
@@ -186,12 +186,12 @@
       "standard_id": "RL.4.2",
       "standard_description": "Determine a theme of a story, drama, or poem from details in the text; summarize the text.",
       "domain": "Reading Literature",
-      "parent_tip": "Ask 'What big life lesson does this story teach?' \u2014 that's the theme.",
+      "parent_tip": "Ask 'What big life lesson does this story teach?' — that's the theme.",
       "questions": [
         {
           "id": "RL.4.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him \u2014 who had shared ideas and caught each other's mistakes \u2014 won first place.\n\nWhat is the theme?",
+          "prompt": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him — who had shared ideas and caught each other's mistakes — won first place.\n\nWhat is the theme?",
           "choices": [
             "Working alone is always best",
             "Collaboration leads to better results than working alone",
@@ -212,10 +212,10 @@
           "choices": [
             "Clothes matter more than people",
             "Grandparents shouldn't visit schools",
-            "Don't be ashamed of your family \u2014 appreciate them",
+            "Don't be ashamed of your family — appreciate them",
             "School plays are boring"
           ],
-          "correct": "Don't be ashamed of your family \u2014 appreciate them",
+          "correct": "Don't be ashamed of your family — appreciate them",
           "hint": "Amara regretted pushing her grandmother away and realized family matters more than appearances.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q2.mp3",
@@ -247,7 +247,7 @@
             "Wind is powerful"
           ],
           "correct": "Determination can help you thrive even in difficult conditions",
-          "hint": "The seed grew where 'nothing grew' \u2014 it succeeded against the odds through persistence.",
+          "hint": "The seed grew where 'nothing grew' — it succeeded against the odds through persistence.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q4-hint.mp3",
@@ -278,7 +278,7 @@
         {
           "id": "RL.4.3-Q2",
           "type": "multiple_choice",
-          "prompt": "The marketplace buzzed with voices in a dozen languages. Spices piled in colorful mountains \u2014 saffron yellow, paprika red, turmeric orange. Somewhere a radio played scratchy music, and the smell of roasting lamb drifted through the narrow aisles.\n\nThe author uses these details to create a setting that feels \u2014",
+          "prompt": "The marketplace buzzed with voices in a dozen languages. Spices piled in colorful mountains — saffron yellow, paprika red, turmeric orange. Somewhere a radio played scratchy music, and the smell of roasting lamb drifted through the narrow aisles.\n\nThe author uses these details to create a setting that feels —",
           "choices": [
             "Modern and high-tech",
             "Quiet and lonely",
@@ -286,7 +286,7 @@
             "Vibrant, busy, and full of sensory experiences"
           ],
           "correct": "Vibrant, busy, and full of sensory experiences",
-          "hint": "Voices, colors, music, smells \u2014 the author hits sight, sound, and smell to bring it alive.",
+          "hint": "Voices, colors, music, smells — the author hits sight, sound, and smell to bring it alive.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q2-hint.mp3",
@@ -304,7 +304,7 @@
             "A homework assignment"
           ],
           "correct": "Very good news",
-          "hint": "Trembling hands (nervous), then widened eyes and a whoop (excitement) \u2014 that's great news!",
+          "hint": "Trembling hands (nervous), then widened eyes and a whoop (excitement) — that's great news!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q3-hint.mp3",
@@ -329,7 +329,7 @@
         {
           "id": "RL.4.3-Q5",
           "type": "multiple_choice",
-          "prompt": "The abandoned lighthouse stood at the edge of the cliff, its paint peeling like sunburned skin. Waves crashed against the rocks below, sending spray twenty feet into the air. Inside, the spiral staircase groaned under the weight of years.\n\nThe setting creates a mood that is \u2014",
+          "prompt": "The abandoned lighthouse stood at the edge of the cliff, its paint peeling like sunburned skin. Waves crashed against the rocks below, sending spray twenty feet into the air. Inside, the spiral staircase groaned under the weight of years.\n\nThe setting creates a mood that is —",
           "choices": [
             "Busy and crowded",
             "Cheerful and bright",
@@ -337,7 +337,7 @@
             "Warm and cozy"
           ],
           "correct": "Eerie and isolated",
-          "hint": "Abandoned, peeling paint, crashing waves, groaning staircase \u2014 all create a lonely, spooky mood.",
+          "hint": "Abandoned, peeling paint, crashing waves, groaning staircase — all create a lonely, spooky mood.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q5-hint.mp3",
@@ -430,12 +430,12 @@
       "standard_id": "RL.4.4",
       "standard_description": "Determine the meaning of words and phrases as used in a text, including those that allude to significant characters found in mythology.",
       "domain": "Reading Literature",
-      "parent_tip": "Discuss how authors use words creatively \u2014 'What does the author really mean by that phrase?'",
+      "parent_tip": "Discuss how authors use words creatively — 'What does the author really mean by that phrase?'",
       "questions": [
         {
           "id": "RL.4.4-Q1",
           "type": "multiple_choice",
-          "prompt": "She had the Midas touch \u2014 every business she started turned into gold.\n\nThis allusion to King Midas means \u2014",
+          "prompt": "She had the Midas touch — every business she started turned into gold.\n\nThis allusion to King Midas means —",
           "choices": [
             "She was a queen",
             "She was greedy",
@@ -453,7 +453,7 @@
         {
           "id": "RL.4.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Cleaning out the garage was a Herculean task.\n\nThis allusion to Hercules means the task was \u2014",
+          "prompt": "Cleaning out the garage was a Herculean task.\n\nThis allusion to Hercules means the task was —",
           "choices": [
             "Extremely difficult and required great effort",
             "Impossible to start",
@@ -479,7 +479,7 @@
             "The curtains were open"
           ],
           "correct": "It entered gently and softly",
-          "hint": "Tiptoeing is quiet and careful \u2014 the light came in softly, not harshly.",
+          "hint": "Tiptoeing is quiet and careful — the light came in softly, not harshly.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q3-hint.mp3",
@@ -489,7 +489,7 @@
         {
           "id": "RL.4.4-Q4",
           "type": "multiple_choice",
-          "prompt": "His Achilles\" heel was his temper \u2014 it always got him into trouble.\n\nAn **Achilles** heel\" refers to \u2014",
+          "prompt": "His Achilles\" heel was his temper — it always got him into trouble.\n\nAn **Achilles** heel\" refers to —",
           "choices": [
             "A type of shoe",
             "A battle strategy",
@@ -507,7 +507,7 @@
         {
           "id": "RL.4.4-Q5",
           "type": "multiple_choice",
-          "prompt": "The silence in the library was so thick you could cut it with a knife.\n\nThis phrase means \u2014",
+          "prompt": "The silence in the library was so thick you could cut it with a knife.\n\nThis phrase means —",
           "choices": [
             "People were cooking in the library",
             "Someone had a knife in the library",
@@ -515,7 +515,7 @@
             "The silence was intense and heavy"
           ],
           "correct": "The silence was intense and heavy",
-          "hint": "This is figurative \u2014 the silence felt so strong and present it was almost physical.",
+          "hint": "This is figurative — the silence felt so strong and present it was almost physical.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-Q5-hint.mp3",
@@ -525,7 +525,7 @@
         {
           "id": "RL.4.4-E1",
           "type": "multiple_choice",
-          "prompt": "The knight was as brave as a lion, so he was not scared at all when the dragon roared.\n\nIn this sentence, \"as brave as a lion\" means the knight was \u2014",
+          "prompt": "The knight was as brave as a lion, so he was not scared at all when the dragon roared.\n\nIn this sentence, \"as brave as a lion\" means the knight was —",
           "choices": [
             "very brave",
             "very short",
@@ -541,7 +541,7 @@
         {
           "id": "RL.4.4-E2",
           "type": "multiple_choice",
-          "prompt": "The old wizard had a booming voice. It was so loud and deep that it filled the whole cave.\n\nIn this sentence, a \"booming\" voice means a voice that is \u2014",
+          "prompt": "The old wizard had a booming voice. It was so loud and deep that it filled the whole cave.\n\nIn this sentence, a \"booming\" voice means a voice that is —",
           "choices": [
             "shaky and weak",
             "loud and deep",
@@ -557,7 +557,7 @@
         {
           "id": "RL.4.4-E3",
           "type": "multiple_choice",
-          "prompt": "Maya felt gloomy all day. She frowned and did not want to play or smile.\n\nIn this sentence, \"gloomy\" means Maya felt \u2014",
+          "prompt": "Maya felt gloomy all day. She frowned and did not want to play or smile.\n\nIn this sentence, \"gloomy\" means Maya felt —",
           "choices": [
             "hungry",
             "curious",
@@ -573,7 +573,7 @@
         {
           "id": "RL.4.4-E4",
           "type": "multiple_choice",
-          "prompt": "Ben's little sister followed him everywhere, so he called her his shadow because she was always right behind him.\n\nCalling his sister his \"shadow\" means she \u2014",
+          "prompt": "Ben's little sister followed him everywhere, so he called her his shadow because she was always right behind him.\n\nCalling his sister his \"shadow\" means she —",
           "choices": [
             "was very tall",
             "was made of darkness",
@@ -589,7 +589,7 @@
         {
           "id": "RL.4.4-E5",
           "type": "multiple_choice",
-          "prompt": "The hero was so strong he could lift a giant boulder. People said he had the strength of Hercules, a mighty hero from Greek myths.\n\nSaying the hero had \"the strength of Hercules\" means he was very \u2014",
+          "prompt": "The hero was so strong he could lift a giant boulder. People said he had the strength of Hercules, a mighty hero from Greek myths.\n\nSaying the hero had \"the strength of Hercules\" means he was very —",
           "choices": [
             "strong",
             "shy",
@@ -621,7 +621,7 @@
             "A title"
           ],
           "correct": "Stage directions",
-          "hint": "Stage directions (in italics or brackets) tell actors how to move and speak \u2014 only plays have these.",
+          "hint": "Stage directions (in italics or brackets) tell actors how to move and speak — only plays have these.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q1-hint.mp3",
@@ -657,7 +657,7 @@
             "Sentences"
           ],
           "correct": "Meter and rhyme scheme",
-          "hint": "Poems often have rhythm (meter) and patterns of rhyming \u2014 prose usually doesn't.",
+          "hint": "Poems often have rhythm (meter) and patterns of rhyming — prose usually doesn't.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-Q4-hint.mp3",
@@ -918,7 +918,7 @@
         {
           "id": "RL.4.7-Q1",
           "type": "multiple_choice",
-          "prompt": "A student reads a chapter about a thunderstorm, then watches a movie version with dramatic music and dark lighting. The movie version adds \u2014",
+          "prompt": "A student reads a chapter about a thunderstorm, then watches a movie version with dramatic music and dark lighting. The movie version adds —",
           "choices": [
             "Mood and atmosphere through sound and visuals",
             "New characters",
@@ -980,7 +980,7 @@
             "It shows specific visual and audio details that bring 'kind eyes' to life"
           ],
           "correct": "It shows specific visual and audio details that bring 'kind eyes' to life",
-          "hint": "The movie translates 'kind eyes' into a warm smile and soft voice \u2014 making it real.",
+          "hint": "The movie translates 'kind eyes' into a warm smile and soft voice — making it real.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q4-hint.mp3",
@@ -1037,7 +1037,7 @@
         {
           "id": "RL.4.7-E3",
           "type": "multiple_choice",
-          "prompt": "A book describes a birthday party as 'colorful and happy.' In the movie of the story, the party scene uses bright colors and cheerful music. The movie and the book both show the party as \u2014",
+          "prompt": "A book describes a birthday party as 'colorful and happy.' In the movie of the story, the party scene uses bright colors and cheerful music. The movie and the book both show the party as —",
           "choices": [
             "Boring and empty",
             "About a war",
@@ -1053,7 +1053,7 @@
         {
           "id": "RL.4.7-E4",
           "type": "multiple_choice",
-          "prompt": "Liam listened to an AUDIO version of a story instead of reading it. An actor read the words out loud in a soft, gentle voice. The audio version lets Liam \u2014",
+          "prompt": "Liam listened to an AUDIO version of a story instead of reading it. An actor read the words out loud in a soft, gentle voice. The audio version lets Liam —",
           "choices": [
             "Change the ending",
             "Taste the food in the story",
@@ -1069,7 +1069,7 @@
         {
           "id": "RL.4.7-E5",
           "type": "multiple_choice",
-          "prompt": "In the book, a character named Sam is described as tall with red hair. In the MOVIE, the actor playing Sam is tall with red hair. The movie version of Sam \u2014",
+          "prompt": "In the book, a character named Sam is described as tall with red hair. In the MOVIE, the actor playing Sam is tall with red hair. The movie version of Sam —",
           "choices": [
             "Matches the book",
             "Is not in the movie",
@@ -1093,7 +1093,7 @@
         {
           "id": "RL.4.9-Q1",
           "type": "multiple_choice",
-          "prompt": "A Greek myth says the sun is pulled across the sky by the god Helios in a chariot. A Native American story says the sun is carried by a spirit eagle. Both stories try to explain \u2014",
+          "prompt": "A Greek myth says the sun is pulled across the sky by the god Helios in a chariot. A Native American story says the sun is carried by a spirit eagle. Both stories try to explain —",
           "choices": [
             "Why birds can fly",
             "How the sun moves across the sky",
@@ -1101,7 +1101,7 @@
             "How fire was created"
           ],
           "correct": "How the sun moves across the sky",
-          "hint": "Both cultures created stories to explain the same natural phenomenon \u2014 the sun's movement.",
+          "hint": "Both cultures created stories to explain the same natural phenomenon — the sun's movement.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q1-hint.mp3",
@@ -1270,7 +1270,7 @@
             "Making peace is simple but maintaining it is the real challenge"
           ],
           "correct": "Making peace is simple but maintaining it is the real challenge",
-          "hint": "They signed peace easily but broke it immediately \u2014 keeping peace is the hard part.",
+          "hint": "They signed peace easily but broke it immediately — keeping peace is the hard part.",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q2-hint.mp3",
@@ -1288,7 +1288,7 @@
             "Autumn is the best season"
           ],
           "correct": "How change in life can be gradual then suddenly obvious",
-          "hint": "The leaves are a metaphor \u2014 change builds quietly until suddenly you notice everything is different.",
+          "hint": "The leaves are a metaphor — change builds quietly until suddenly you notice everything is different.",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q3-hint.mp3",
@@ -1298,7 +1298,7 @@
         {
           "id": "RL.4.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Zuri had two rules: never break a promise, and always carry a pencil. **You never know,** she said, \"when you'll need to write something down before you forget it \u2014 or before someone tries to make you forget.\"\n\nWhat does the second rule suggest about Zuri?",
+          "prompt": "Zuri had two rules: never break a promise, and always carry a pencil. **You never know,** she said, \"when you'll need to write something down before you forget it — or before someone tries to make you forget.\"\n\nWhat does the second rule suggest about Zuri?",
           "choices": [
             "She forgets everything",
             "She values truth and recording important things",
@@ -1306,7 +1306,7 @@
             "She likes drawing"
           ],
           "correct": "She values truth and recording important things",
-          "hint": "She writes things down so they can't be changed or forgotten \u2014 she values accuracy and truth.",
+          "hint": "She writes things down so they can't be changed or forgotten — she values accuracy and truth.",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q4-hint.mp3",
@@ -1324,7 +1324,7 @@
             "Captains are always right"
           ],
           "correct": "Faith and determination can lead you through doubt",
-          "hint": "Everyone doubted, but the captain held firm \u2014 and she was right.",
+          "hint": "Everyone doubted, but the captain held firm — and she was right.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-Q5-hint.mp3",
@@ -1430,7 +1430,7 @@
             "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes"
           ],
           "correct": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes",
-          "hint": "The extreme speed means it circles Earth many times a day \u2014 each orbit brings a new sunrise.",
+          "hint": "The extreme speed means it circles Earth many times a day — each orbit brings a new sunrise.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q1-hint.mp3",
@@ -1440,7 +1440,7 @@
         {
           "id": "RI.4.1-Q2",
           "type": "multiple_choice",
-          "prompt": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites \u2014 a discovery that changed our understanding of what makes humans unique.\n\nWhat inference can you make about why this discovery was so important?",
+          "prompt": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites — a discovery that changed our understanding of what makes humans unique.\n\nWhat inference can you make about why this discovery was so important?",
           "choices": [
             "Scientists previously believed only humans used tools",
             "Tanzania is a new country",
@@ -1448,7 +1448,7 @@
             "Chimpanzees are smarter than humans"
           ],
           "correct": "Scientists previously believed only humans used tools",
-          "hint": "The text says it 'changed our understanding of what makes humans unique' \u2014 tool use was thought to be a human-only ability.",
+          "hint": "The text says it 'changed our understanding of what makes humans unique' — tool use was thought to be a human-only ability.",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q2-hint.mp3",
@@ -1484,7 +1484,7 @@
             "Gold was easy to find"
           ],
           "correct": "Selling supplies to miners was more profitable than mining itself",
-          "hint": "Most miners didn't get rich, but the people selling them tools did \u2014 what does that tell you?",
+          "hint": "Most miners didn't get rich, but the people selling them tools did — what does that tell you?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q4-hint.mp3",
@@ -1615,7 +1615,7 @@
         {
           "id": "RI.4.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Ancient Rome's road system was an engineering marvel. Roman roads were built in layers \u2014 gravel, sand, and paving stones \u2014 designed to last centuries. Over 250,000 miles of roads connected the empire. Many of these roads are still visible today.\n\nWhich detail BEST supports the main idea that Roman roads were remarkable?",
+          "prompt": "Ancient Rome's road system was an engineering marvel. Roman roads were built in layers — gravel, sand, and paving stones — designed to last centuries. Over 250,000 miles of roads connected the empire. Many of these roads are still visible today.\n\nWhich detail BEST supports the main idea that Roman roads were remarkable?",
           "choices": [
             "Roads were made of gravel",
             "Many roads are still visible centuries later",
@@ -1666,7 +1666,7 @@
         {
           "id": "RI.4.2-Q5",
           "type": "multiple_choice",
-          "prompt": "Paragraph 1: Renewable energy sources like solar and wind are growing rapidly. Paragraph 2: Solar panel costs have dropped 89% since 2010. Paragraph 3: Wind energy now powers millions of homes.\n\nThe main idea of the ENTIRE passage is \u2014",
+          "prompt": "Paragraph 1: Renewable energy sources like solar and wind are growing rapidly. Paragraph 2: Solar panel costs have dropped 89% since 2010. Paragraph 3: Wind energy now powers millions of homes.\n\nThe main idea of the ENTIRE passage is —",
           "choices": [
             "Renewable energy is growing and becoming more accessible",
             "Energy is expensive",
@@ -1767,7 +1767,7 @@
       "standard_id": "RI.4.3",
       "standard_description": "Explain events, procedures, ideas, or concepts in a historical, scientific, or technical text.",
       "domain": "Reading Informational Text",
-      "parent_tip": "Ask your child to explain what happened and WHY \u2014 'What caused that? What was the result?'",
+      "parent_tip": "Ask your child to explain what happened and WHY — 'What caused that? What was the result?'",
       "questions": [
         {
           "id": "RI.4.3-Q1",
@@ -1780,7 +1780,7 @@
             "Britain declared war"
           ],
           "correct": "Anger over taxation without representation",
-          "hint": "The first sentence states the cause \u2014 being taxed without having a voice in government.",
+          "hint": "The first sentence states the cause — being taxed without having a voice in government.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q1-hint.mp3",
@@ -1814,7 +1814,7 @@
             "People stopped reading"
           ],
           "correct": "Literacy rates soared because books became accessible",
-          "hint": "Affordable books \u2192 more people could get books \u2192 more people learned to read.",
+          "hint": "Affordable books → more people could get books → more people learned to read.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.3/RI.4.3-Q3-hint.mp3",
@@ -1856,7 +1856,7 @@
             "Enforcing laws"
           ],
           "correct": "Making laws",
-          "hint": "The text defines it directly \u2014 the legislative branch MAKES laws.",
+          "hint": "The text defines it directly — the legislative branch MAKES laws.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-Q2-hint.mp3",
@@ -1993,7 +1993,7 @@
             "Cause and effect"
           ],
           "correct": "Compare and contrast",
-          "hint": "Look for the signal words 'both,' 'however,' and 'similarly' \u2014 they show likenesses and differences!",
+          "hint": "Look for the signal words 'both,' 'however,' and 'similarly' — they show likenesses and differences!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q4-hint.mp3",
@@ -2010,7 +2010,7 @@
             "Problem and solution"
           ],
           "correct": "Cause and effect",
-          "hint": "Look for 'caused,' 'because,' and 'as a result' \u2014 those are cause and effect signal words!",
+          "hint": "Look for 'caused,' 'because,' and 'as a result' — those are cause and effect signal words!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q7.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q7-hint.mp3"
@@ -2034,7 +2034,7 @@
         {
           "id": "RI.4.5-Q11",
           "type": "multiple_choice",
-          "prompt": "In 1960, Jacques Piccard and Don Walsh descended to the deepest point in the ocean \u2014 the Mariana Trench. Decades later, in 2012, filmmaker James Cameron made the journey alone. Then in 2019, explorer Victor Vescovo reached the bottom five times in a single expedition.\n\nWhat text structure does this passage use?",
+          "prompt": "In 1960, Jacques Piccard and Don Walsh descended to the deepest point in the ocean — the Mariana Trench. Decades later, in 2012, filmmaker James Cameron made the journey alone. Then in 2019, explorer Victor Vescovo reached the bottom five times in a single expedition.\n\nWhat text structure does this passage use?",
           "choices": [
             "Compare and contrast",
             "Problem and solution",
@@ -2042,7 +2042,7 @@
             "Chronological"
           ],
           "correct": "Chronological",
-          "hint": "Notice the years: 1960, 2012, 2019 \u2014 the events are told in time order!",
+          "hint": "Notice the years: 1960, 2012, 2019 — the events are told in time order!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q11.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q11-hint.mp3"
@@ -2052,7 +2052,7 @@
           "type": "sentence_build",
           "prompt": "Put in order from first to last: how a coral reef forms.",
           "correct": "Tiny coral larvae attach to rock Coral colony grows over thousands of years Layers of coral build up A full reef ecosystem develops",
-          "hint": "It starts small \u2014 tiny larvae first, then growth, then layers, then a full reef!",
+          "hint": "It starts small — tiny larvae first, then growth, then layers, then a full reef!",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q12.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q12-hint.mp3",
@@ -2143,12 +2143,12 @@
           "type": "multiple_choice",
           "prompt": "Why is it valuable to read BOTH firsthand and secondhand accounts?",
           "choices": [
-            "Firsthand gives personal perspective; secondhand gives broader context \u2014 together you get a fuller picture",
+            "Firsthand gives personal perspective; secondhand gives broader context — together you get a fuller picture",
             "Firsthand is always more accurate",
             "Secondhand is always more accurate",
             "You only need one type"
           ],
-          "correct": "Firsthand gives personal perspective; secondhand gives broader context \u2014 together you get a fuller picture",
+          "correct": "Firsthand gives personal perspective; secondhand gives broader context — together you get a fuller picture",
           "hint": "Each type offers something the other can't. Together, they give you the complete story.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q5.mp3",
@@ -2242,7 +2242,7 @@
       "standard_id": "RI.4.7",
       "standard_description": "Interpret information presented visually, orally, or quantitatively and explain how it contributes to understanding.",
       "domain": "Reading Informational Text",
-      "parent_tip": "Practice reading charts, graphs, and timelines \u2014 ask your child what story the data tells.",
+      "parent_tip": "Practice reading charts, graphs, and timelines — ask your child what story the data tells.",
       "questions": [
         {
           "id": "RI.4.7-Q1",
@@ -2255,7 +2255,7 @@
             "Recycling stayed the same"
           ],
           "correct": "Recycling increased each month",
-          "hint": "200 \u2192 350 \u2192 500. The numbers are going UP each month.",
+          "hint": "200 → 350 → 500. The numbers are going UP each month.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q1-hint.mp3",
@@ -2284,7 +2284,7 @@
         {
           "id": "RI.4.7-Q2",
           "type": "multiple_choice",
-          "prompt": "A timeline in a history text shows events from 1760 to 1790. This visual helps readers \u2014",
+          "prompt": "A timeline in a history text shows events from 1760 to 1790. This visual helps readers —",
           "choices": [
             "Learn about geography",
             "Understand the exact words people said",
@@ -2441,7 +2441,7 @@
         {
           "id": "RI.4.8-Q1",
           "type": "multiple_choice",
-          "prompt": "Schools should offer more art classes. Studies show that students in art programs score higher on standardized tests. Art also teaches creativity, problem-solving, and collaboration.\n\nThe author supports their point with \u2014",
+          "prompt": "Schools should offer more art classes. Studies show that students in art programs score higher on standardized tests. Art also teaches creativity, problem-solving, and collaboration.\n\nThe author supports their point with —",
           "choices": [
             "No evidence",
             "Personal opinions only",
@@ -2492,7 +2492,7 @@
         {
           "id": "RI.4.8-Q4",
           "type": "multiple_choice",
-          "prompt": "When evaluating an author's argument, you should ask \u2014",
+          "prompt": "When evaluating an author's argument, you should ask —",
           "choices": [
             "Does it have pictures?",
             "Does the evidence actually support the point being made?",
@@ -2518,7 +2518,7 @@
             "Cats are also pets."
           ],
           "correct": "Dogs are very loyal to their owners.",
-          "hint": "Look for the sentence that starts with \"One reason is...\" \u2014 that is the reason the author gives.",
+          "hint": "Look for the sentence that starts with \"One reason is...\" — that is the reason the author gives.",
           "difficulty": "easy",
           "adaptiveDifficulty": 6,
           "adaptiveGenerated": true
@@ -2631,7 +2631,7 @@
         {
           "id": "RI.4.9-Q4",
           "type": "multiple_choice",
-          "prompt": "Text A says wolves were removed from Yellowstone in the 1920s. Text B says after wolves were reintroduced in 1995, the elk population became healthier and rivers changed course. Combining these texts helps you understand \u2014",
+          "prompt": "Text A says wolves were removed from Yellowstone in the 1920s. Text B says after wolves were reintroduced in 1995, the elk population became healthier and rivers changed course. Combining these texts helps you understand —",
           "choices": [
             "Wolves are dangerous",
             "1995 was an important year",
@@ -2755,7 +2755,7 @@
         {
           "id": "RI.4.10-Q2",
           "type": "multiple_choice",
-          "prompt": "The Dead Sea, located between Israel and Jordan, is nearly ten times saltier than the ocean. This extreme salinity means no fish or plants can survive in it \u2014 hence the name. However, the mineral-rich mud and water have been used for health treatments for thousands of years.\n\nWhat is ironic about the Dead Sea?",
+          "prompt": "The Dead Sea, located between Israel and Jordan, is nearly ten times saltier than the ocean. This extreme salinity means no fish or plants can survive in it — hence the name. However, the mineral-rich mud and water have been used for health treatments for thousands of years.\n\nWhat is ironic about the Dead Sea?",
           "choices": [
             "It's between two countries",
             "Despite being called 'dead,' it has been valuable for human health for millennia",
@@ -2763,7 +2763,7 @@
             "It's not really a sea"
           ],
           "correct": "Despite being called 'dead,' it has been valuable for human health for millennia",
-          "hint": "Called 'dead' because nothing lives in it \u2014 yet it HELPS living humans. That's ironic!",
+          "hint": "Called 'dead' because nothing lives in it — yet it HELPS living humans. That's ironic!",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q2-hint.mp3",
@@ -2781,7 +2781,7 @@
             "She didn't like science"
           ],
           "correct": "She wanted to inspire the next generation, especially girls, to follow in her footsteps",
-          "hint": "She founded an organization specifically to encourage girls in STEM \u2014 that shows her priorities.",
+          "hint": "She founded an organization specifically to encourage girls in STEM — that shows her priorities.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q3-hint.mp3",
@@ -2791,7 +2791,7 @@
         {
           "id": "RI.4.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong \u2014 pound for pound, bamboo has a greater tensile strength than steel.\n\nWhy might bamboo be considered a **super-plant**?",
+          "prompt": "Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong — pound for pound, bamboo has a greater tensile strength than steel.\n\nWhy might bamboo be considered a **super-plant**?",
           "choices": [
             "It's green",
             "It grows in Asia",
@@ -2817,7 +2817,7 @@
             "It was in Egypt"
           ],
           "correct": "Irreplaceable knowledge accumulated over centuries was permanently lost",
-          "hint": "400,000 scrolls of ancient knowledge \u2014 gone forever. That's a massive loss to human history.",
+          "hint": "400,000 scrolls of ancient knowledge — gone forever. That's a massive loss to human history.",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-Q5-hint.mp3",
@@ -2835,7 +2835,7 @@
             "In South America"
           ],
           "correct": "Northern Africa",
-          "hint": "Look at the second sentence \u2014 it names exactly where the Sahara is.",
+          "hint": "Look at the second sentence — it names exactly where the Sahara is.",
           "difficulty": "easy",
           "adaptiveDifficulty": 20,
           "adaptiveGenerated": true
@@ -2867,7 +2867,7 @@
             "To hold up a bridge"
           ],
           "correct": "To protect the country from invaders",
-          "hint": "The second sentence says exactly why it was built \u2014 look for the word \"to protect.\"",
+          "hint": "The second sentence says exactly why it was built — look for the word \"to protect.\"",
           "difficulty": "easy",
           "adaptiveDifficulty": 17,
           "adaptiveGenerated": true
@@ -2969,7 +2969,7 @@
         {
           "id": "RF.4.3-Q4",
           "type": "multiple_choice",
-          "prompt": "In the word **unbreakable,** the prefix, root, and suffix are \u2014",
+          "prompt": "In the word **unbreakable,** the prefix, root, and suffix are —",
           "choices": [
             "Un + break + able",
             "Un + brea + kable",
@@ -3108,7 +3108,7 @@
         {
           "id": "RF.4.3a-Q2",
           "type": "multiple_choice",
-          "prompt": "The word **international** can be decoded as \u2014",
+          "prompt": "The word **international** can be decoded as —",
           "choices": [
             "Inter + nat + ional",
             "In + tern + at + ional",
@@ -3260,12 +3260,12 @@
       "standard_id": "RF.4.4",
       "standard_description": "Read with sufficient accuracy and fluency to support comprehension.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Have your child read aloud regularly \u2014 fluent reading should sound like natural conversation.",
+      "parent_tip": "Have your child read aloud regularly — fluent reading should sound like natural conversation.",
       "questions": [
         {
           "id": "RF.4.4-Q1",
           "type": "multiple_choice",
-          "prompt": "A fluent reader adjusts their reading speed based on \u2014",
+          "prompt": "A fluent reader adjusts their reading speed based on —",
           "choices": [
             "What time it is",
             "How many people are listening",
@@ -3298,7 +3298,7 @@
         {
           "id": "RF.4.4-Q3",
           "type": "multiple_choice",
-          "prompt": "When reading a passage with technical vocabulary, a good reader should \u2014",
+          "prompt": "When reading a passage with technical vocabulary, a good reader should —",
           "choices": [
             "Speed up to get through it faster",
             "Slow down and use context clues to understand unfamiliar terms",
@@ -3346,7 +3346,7 @@
         {
           "id": "RF.4.4-E1",
           "type": "multiple_choice",
-          "prompt": "Read this sentence out loud: \"The dog ran to the park.\" A period ( . ) at the end tells a reader to \u2014",
+          "prompt": "Read this sentence out loud: \"The dog ran to the park.\" A period ( . ) at the end tells a reader to —",
           "choices": [
             "Stop and take a short pause",
             "Skip the whole sentence",
@@ -3362,7 +3362,7 @@
         {
           "id": "RF.4.4-E2",
           "type": "multiple_choice",
-          "prompt": "Maya read a page but did not understand it, so she read the same page again. Reading something again to understand it better is called \u2014",
+          "prompt": "Maya read a page but did not understand it, so she read the same page again. Reading something again to understand it better is called —",
           "choices": [
             "Erasing",
             "Rereading",
@@ -3378,7 +3378,7 @@
         {
           "id": "RF.4.4-E3",
           "type": "multiple_choice",
-          "prompt": "A question mark ( ? ) is at the end of a sentence. When you read it out loud, your voice should \u2014",
+          "prompt": "A question mark ( ? ) is at the end of a sentence. When you read it out loud, your voice should —",
           "choices": [
             "Get very quiet and sad",
             "Turn into a whisper you can't hear",
@@ -3394,7 +3394,7 @@
         {
           "id": "RF.4.4-E4",
           "type": "multiple_choice",
-          "prompt": "A \"fluent\" reader is a reader who can read text \u2014",
+          "prompt": "A \"fluent\" reader is a reader who can read text —",
           "choices": [
             "With their eyes closed",
             "Only while jumping",
@@ -3402,7 +3402,7 @@
             "Smoothly and with few mistakes"
           ],
           "correct": "Smoothly and with few mistakes",
-          "hint": "Fluent reading sounds smooth, like talking \u2014 not slow and bumpy.",
+          "hint": "Fluent reading sounds smooth, like talking — not slow and bumpy.",
           "difficulty": "easy",
           "adaptiveDifficulty": 24,
           "adaptiveGenerated": true
@@ -3410,7 +3410,7 @@
         {
           "id": "RF.4.4-E5",
           "type": "multiple_choice",
-          "prompt": "Sam comes to a word he does not know while reading a story. The best thing for Sam to do is \u2014",
+          "prompt": "Sam comes to a word he does not know while reading a story. The best thing for Sam to do is —",
           "choices": [
             "Sound the word out to figure it out",
             "Just make up any word he wants",
@@ -3429,12 +3429,12 @@
       "standard_id": "L.4.4",
       "standard_description": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases based on grade 4 reading and content.",
       "domain": "Language",
-      "parent_tip": "Teach your child multiple strategies: context clues, word parts, and dictionary skills \u2014 use them together.",
+      "parent_tip": "Teach your child multiple strategies: context clues, word parts, and dictionary skills — use them together.",
       "questions": [
         {
           "id": "L.4.4-Q1",
           "type": "multiple_choice",
-          "prompt": "The company decided to table the discussion until next week's meeting.\n\nIn this sentence, **table** means \u2014",
+          "prompt": "The company decided to table the discussion until next week's meeting.\n\nIn this sentence, **table** means —",
           "choices": [
             "To postpone or delay",
             "To organize neatly",
@@ -3442,7 +3442,7 @@
             "To serve food"
           ],
           "correct": "To postpone or delay",
-          "hint": "'Table the discussion until next week' \u2014 they're putting it aside for later.",
+          "hint": "'Table the discussion until next week' — they're putting it aside for later.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q1-hint.mp3",
@@ -3460,7 +3460,7 @@
             "A dangerous path"
           ],
           "correct": "A safe place or shelter",
-          "hint": "They were exhausted and needed somewhere safe to rest \u2014 a shelter.",
+          "hint": "They were exhausted and needed somewhere safe to rest — a shelter.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-Q2-hint.mp3",
@@ -3488,7 +3488,7 @@
         {
           "id": "L.4.4-Q4",
           "type": "multiple_choice",
-          "prompt": "The philanthropist donated millions to build schools in underserved communities.\n\nUsing the Greek roots **phil** (love) and **anthrop** (human), a philanthropist is someone who \u2014",
+          "prompt": "The philanthropist donated millions to build schools in underserved communities.\n\nUsing the Greek roots **phil** (love) and **anthrop** (human), a philanthropist is someone who —",
           "choices": [
             "Collects stamps",
             "Studies philosophy",
@@ -3506,7 +3506,7 @@
         {
           "id": "L.4.4-Q5",
           "type": "multiple_choice",
-          "prompt": "When you encounter a word with multiple meanings, the BEST way to determine which meaning is correct is \u2014",
+          "prompt": "When you encounter a word with multiple meanings, the BEST way to determine which meaning is correct is —",
           "choices": [
             "Use the surrounding context to figure out which meaning fits",
             "Pick the easiest definition",
@@ -3524,7 +3524,7 @@
         {
           "id": "L.4.4-E1",
           "type": "multiple_choice",
-          "prompt": "Read the sentence:\n\n\"The bright sun was so **brilliant** that we had to shade our eyes.\"\n\nIn this sentence, **brilliant** means \u2014",
+          "prompt": "Read the sentence:\n\n\"The bright sun was so **brilliant** that we had to shade our eyes.\"\n\nIn this sentence, **brilliant** means —",
           "choices": [
             "Very bright",
             "Very slow",
@@ -3556,7 +3556,7 @@
         {
           "id": "L.4.4-E3",
           "type": "multiple_choice",
-          "prompt": "Read the sentence:\n\n\"The tiny puppy was **timid** and hid behind its mother when strangers came near.\"\n\nIn this sentence, **timid** means \u2014",
+          "prompt": "Read the sentence:\n\n\"The tiny puppy was **timid** and hid behind its mother when strangers came near.\"\n\nIn this sentence, **timid** means —",
           "choices": [
             "Big and strong",
             "Fast and hungry",
@@ -3588,7 +3588,7 @@
         {
           "id": "L.4.4-E5",
           "type": "multiple_choice",
-          "prompt": "Read the sentence:\n\n\"The soup was so **delicious** that everyone asked for a second bowl.\"\n\nIn this sentence, **delicious** means \u2014",
+          "prompt": "Read the sentence:\n\n\"The soup was so **delicious** that everyone asked for a second bowl.\"\n\nIn this sentence, **delicious** means —",
           "choices": [
             "Tasting very good",
             "Very small",
@@ -3612,7 +3612,7 @@
         {
           "id": "L.4.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn **alliance** is \u2014",
+          "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn **alliance** is —",
           "choices": [
             "A type of weapon",
             "A partnership or agreement to work together",
@@ -3620,7 +3620,7 @@
             "A border between nations"
           ],
           "correct": "A partnership or agreement to work together",
-          "hint": "They agreed to protect EACH OTHER \u2014 that's a cooperative partnership.",
+          "hint": "They agreed to protect EACH OTHER — that's a cooperative partnership.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-Q4-hint.mp3",
@@ -3630,7 +3630,7 @@
         {
           "id": "L.4.4a-E1",
           "type": "multiple_choice",
-          "prompt": "The sky turned dark and gloomy, and everyone felt sad on the rainy day.\n\n**Gloomy** means \u2014",
+          "prompt": "The sky turned dark and gloomy, and everyone felt sad on the rainy day.\n\n**Gloomy** means —",
           "choices": [
             "Dark and sad",
             "Warm and dry",
@@ -3646,7 +3646,7 @@
         {
           "id": "L.4.4a-E2",
           "type": "multiple_choice",
-          "prompt": "The tired hikers finally reached the top of the mountain, so they stopped to rest.\n\n**Reached** means \u2014",
+          "prompt": "The tired hikers finally reached the top of the mountain, so they stopped to rest.\n\n**Reached** means —",
           "choices": [
             "Fell asleep on",
             "Got to",
@@ -3662,7 +3662,7 @@
         {
           "id": "L.4.4a-E3",
           "type": "multiple_choice",
-          "prompt": "The soup was so hot that it burned my tongue when I took a sip.\n\n**Hot** means \u2014",
+          "prompt": "The soup was so hot that it burned my tongue when I took a sip.\n\n**Hot** means —",
           "choices": [
             "Very sweet",
             "Very hard",
@@ -3678,7 +3678,7 @@
         {
           "id": "L.4.4a-E4",
           "type": "multiple_choice",
-          "prompt": "My little brother was afraid of the dark, so he slept with a night-light on.\n\n**Afraid** means \u2014",
+          "prompt": "My little brother was afraid of the dark, so he slept with a night-light on.\n\n**Afraid** means —",
           "choices": [
             "Hungry",
             "Excited and happy",
@@ -3694,7 +3694,7 @@
         {
           "id": "L.4.4a-E5",
           "type": "multiple_choice",
-          "prompt": "The puppy was so playful that it ran and jumped all around the yard.\n\n**Playful** means \u2014",
+          "prompt": "The puppy was so playful that it ran and jumped all around the yard.\n\n**Playful** means —",
           "choices": [
             "Full of play and fun",
             "Sick and weak",
@@ -3821,7 +3821,7 @@
         {
           "id": "L.4.4c-Q1",
           "type": "multiple_choice",
-          "prompt": "A dictionary entry shows: \"ar\u00b7chi\u00b7pel\u00b7a\u00b7go (ar-kuh-PEL-uh-go) n. a group of islands.\" What does the entry in parentheses tell you?",
+          "prompt": "A dictionary entry shows: \"ar·chi·pel·a·go (ar-kuh-PEL-uh-go) n. a group of islands.\" What does the entry in parentheses tell you?",
           "choices": [
             "A synonym",
             "When to use the word",
@@ -3847,7 +3847,7 @@
             "An atlas"
           ],
           "correct": "A thesaurus",
-          "hint": "A thesaurus gives you synonyms \u2014 words with similar meanings but different intensities.",
+          "hint": "A thesaurus gives you synonyms — words with similar meanings but different intensities.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q2-hint.mp3",
@@ -3880,7 +3880,7 @@
             "All three"
           ],
           "correct": "Definition 3",
-          "hint": "She stretched her neck to see \u2014 that matches definition 3!",
+          "hint": "She stretched her neck to see — that matches definition 3!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q4-hint.mp3",
@@ -4068,12 +4068,12 @@
       "standard_id": "L.4.5",
       "standard_description": "Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
       "domain": "Language",
-      "parent_tip": "Explore figurative language in books, songs, and everyday conversation \u2014 similes, metaphors, idioms, and more.",
+      "parent_tip": "Explore figurative language in books, songs, and everyday conversation — similes, metaphors, idioms, and more.",
       "questions": [
         {
           "id": "L.4.5-Q1",
           "type": "multiple_choice",
-          "prompt": "The news hit her like a ton of bricks.\n\nThis is an example of \u2014",
+          "prompt": "The news hit her like a ton of bricks.\n\nThis is an example of —",
           "choices": [
             "A simile",
             "A metaphor",
@@ -4091,7 +4091,7 @@
         {
           "id": "L.4.5-Q2",
           "type": "multiple_choice",
-          "prompt": "The world is a stage, and we are merely players.\n\nThis is an example of \u2014",
+          "prompt": "The world is a stage, and we are merely players.\n\nThis is an example of —",
           "choices": [
             "Onomatopoeia",
             "A metaphor",
@@ -4099,7 +4099,7 @@
             "A simile"
           ],
           "correct": "A metaphor",
-          "hint": "It says the world IS a stage \u2014 direct comparison without 'like' or 'as.' That's a metaphor.",
+          "hint": "It says the world IS a stage — direct comparison without 'like' or 'as.' That's a metaphor.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q2-hint.mp3",
@@ -4127,7 +4127,7 @@
         {
           "id": "L.4.5-Q4",
           "type": "multiple_choice",
-          "prompt": "The old car coughed and sputtered before finally dying on the side of the road.\n\nThis is an example of \u2014",
+          "prompt": "The old car coughed and sputtered before finally dying on the side of the road.\n\nThis is an example of —",
           "choices": [
             "Simile",
             "Alliteration",
@@ -4135,7 +4135,7 @@
             "Personification"
           ],
           "correct": "Personification",
-          "hint": "Cars can't cough, sputter, or die \u2014 those are human/living qualities given to a non-living thing.",
+          "hint": "Cars can't cough, sputter, or die — those are human/living qualities given to a non-living thing.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-Q4-hint.mp3",
@@ -4163,7 +4163,7 @@
         {
           "id": "L.4.5-E1",
           "type": "multiple_choice",
-          "prompt": "Maria said, \"My backpack is as heavy as an elephant!\"\n\nMaria is using \u2014",
+          "prompt": "Maria said, \"My backpack is as heavy as an elephant!\"\n\nMaria is using —",
           "choices": [
             "A simile, because she uses the word \"as\" to compare two things",
             "A question for her teacher",
@@ -4179,7 +4179,7 @@
         {
           "id": "L.4.5-E2",
           "type": "multiple_choice",
-          "prompt": "\"The wind whispered through the trees.\"\n\nThe wind cannot really talk. Giving the wind a human action, like whispering, is called \u2014",
+          "prompt": "\"The wind whispered through the trees.\"\n\nThe wind cannot really talk. Giving the wind a human action, like whispering, is called —",
           "choices": [
             "A rhyme",
             "Personification",
@@ -4195,7 +4195,7 @@
         {
           "id": "L.4.5-E3",
           "type": "multiple_choice",
-          "prompt": "Grandpa said, \"It's raining cats and dogs outside!\"\n\nGrandpa does NOT mean real cats and dogs are falling. This kind of saying is called \u2014",
+          "prompt": "Grandpa said, \"It's raining cats and dogs outside!\"\n\nGrandpa does NOT mean real cats and dogs are falling. This kind of saying is called —",
           "choices": [
             "A spelling test",
             "A grocery list",
@@ -4211,7 +4211,7 @@
         {
           "id": "L.4.5-E4",
           "type": "multiple_choice",
-          "prompt": "\"The star shone as bright as a diamond.\"\n\nThis sentence uses the word \"as\" to compare the star to a diamond. This is called \u2014",
+          "prompt": "\"The star shone as bright as a diamond.\"\n\nThis sentence uses the word \"as\" to compare the star to a diamond. This is called —",
           "choices": [
             "A shopping list",
             "A subtraction problem",
@@ -4274,7 +4274,7 @@
             "The students were excited to study animals that day."
           ],
           "correct": "The students grew wild, loud, and out of control.",
-          "hint": "Think about what a zoo is really like when the animals are loose \u2014 noisy and unruly. Match that feeling, not just the idea of animals.",
+          "hint": "Think about what a zoo is really like when the animals are loose — noisy and unruly. Match that feeling, not just the idea of animals.",
           "difficulty": "hard",
           "adaptiveDifficulty": 90,
           "adaptiveGenerated": true
@@ -4429,7 +4429,7 @@
       "standard_id": "L.4.5b",
       "standard_description": "Recognize and explain the meaning of common idioms, adages, and proverbs.",
       "domain": "Language",
-      "parent_tip": "Collect idioms as a family: 'Actions speak louder than words' \u2014 discuss what they really mean.",
+      "parent_tip": "Collect idioms as a family: 'Actions speak louder than words' — discuss what they really mean.",
       "questions": [
         {
           "id": "L.4.5b-Q4",
@@ -4442,7 +4442,7 @@
             "Sleeping late is healthy"
           ],
           "correct": "Those who act first or prepare early have an advantage",
-          "hint": "Being early and taking action gives you an advantage \u2014 in life, not just bird-feeding!",
+          "hint": "Being early and taking action gives you an advantage — in life, not just bird-feeding!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-Q4-hint.mp3",
@@ -4468,7 +4468,7 @@
         {
           "id": "L.4.5b-E2",
           "type": "multiple_choice",
-          "prompt": "Grandpa smiled and said, \"A penny saved is a penny earned.\" This saying teaches that it is smart to \u2014",
+          "prompt": "Grandpa smiled and said, \"A penny saved is a penny earned.\" This saying teaches that it is smart to —",
           "choices": [
             "give money away",
             "save your money",
@@ -4540,14 +4540,14 @@
         {
           "id": "L.4.5c-Q3",
           "type": "multiple_choice",
-          "prompt": "The words **happy,** \"joyful,\" and **ecstatic** are synonyms, but they differ in \u2014",
+          "prompt": "The words **happy,** \"joyful,\" and **ecstatic** are synonyms, but they differ in —",
           "choices": [
             "They mean completely different things",
-            "Nothing \u2014 they're identical",
+            "Nothing — they're identical",
             "Their spelling",
-            "Their intensity \u2014 from mild to extreme happiness"
+            "Their intensity — from mild to extreme happiness"
           ],
-          "correct": "Their intensity \u2014 from mild to extreme happiness",
+          "correct": "Their intensity — from mild to extreme happiness",
           "hint": "Happy is mild. Joyful is stronger. Ecstatic is extreme. Same family, different levels.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-Q3.mp3",
@@ -4558,7 +4558,7 @@
         {
           "id": "L.4.5c-Q4",
           "type": "missing_word",
-          "prompt": "Pick the best word to replace 'said' \u2014 the character is angry!",
+          "prompt": "Pick the best word to replace 'said' — the character is angry!",
           "correct": "Shouted",
           "hint": "An angry person saying 'That's not fair!' would most likely raise their voice!",
           "difficulty": 1,
@@ -4632,7 +4632,7 @@
         {
           "id": "L.4.5c-E4",
           "type": "multiple_choice",
-          "prompt": "The words \"begin\" and \"start\" are synonyms because they \u2014",
+          "prompt": "The words \"begin\" and \"start\" are synonyms because they —",
           "choices": [
             "rhyme with each other",
             "are opposites",
@@ -4648,7 +4648,7 @@
         {
           "id": "L.4.5c-E5",
           "type": "multiple_choice",
-          "prompt": "Read the sentence: \"The old road was rough, not smooth.\" In this sentence, \"rough\" is the OPPOSITE of \u2014",
+          "prompt": "Read the sentence: \"The old road was rough, not smooth.\" In this sentence, \"rough\" is the OPPOSITE of —",
           "choices": [
             "smooth",
             "road",
@@ -4690,7 +4690,7 @@
         {
           "id": "L.4.6-Q2",
           "type": "multiple_choice",
-          "prompt": "In social studies, the word **democracy** means \u2014",
+          "prompt": "In social studies, the word **democracy** means —",
           "choices": [
             "A military government",
             "A system where citizens have the power to make decisions through voting",
@@ -4741,7 +4741,7 @@
         {
           "id": "L.4.6-Q4",
           "type": "multiple_choice",
-          "prompt": "The academic phrase **in contrast** signals that the author is about to \u2014",
+          "prompt": "The academic phrase **in contrast** signals that the author is about to —",
           "choices": [
             "Give an example",
             "Summarize",
@@ -4767,7 +4767,7 @@
             "Nervous"
           ],
           "correct": "Nervous",
-          "hint": "Stammering, avoiding eye contact, shaky voice \u2014 classic signs of nervousness!",
+          "hint": "Stammering, avoiding eye contact, shaky voice — classic signs of nervousness!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-Q5-hint.mp3",
@@ -4888,7 +4888,7 @@
             "that"
           ],
           "correct": "where",
-          "hint": "The blank points back to a PLACE, so you need the relative adverb that means 'in that place' \u2014 not one that would need an extra word like 'in' in front of it.",
+          "hint": "The blank points back to a PLACE, so you need the relative adverb that means 'in that place' — not one that would need an extra word like 'in' in front of it.",
           "difficulty": "hard",
           "adaptiveDifficulty": 95,
           "adaptiveGenerated": true
@@ -4952,7 +4952,7 @@
             "should"
           ],
           "correct": "can",
-          "hint": "Each helping word carries a different meaning \u2014 permission, ability, obligation, or advice. Pick the one that means 'is able to.'",
+          "hint": "Each helping word carries a different meaning — permission, ability, obligation, or advice. Pick the one that means 'is able to.'",
           "difficulty": "hard",
           "adaptiveDifficulty": 84,
           "adaptiveGenerated": true
