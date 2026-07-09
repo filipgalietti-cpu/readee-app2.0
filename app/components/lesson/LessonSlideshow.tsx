@@ -765,7 +765,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
   // of <span>s so it drops into existing render call sites.
   const highlightCaps = (
     text: string,
-    cls = "text-rose-600 dark:text-rose-400 font-extrabold",
+    cls = "text-rose-600 dark:text-rose-400 font-bold",
   ) => {
     // First, slice on **…** so emphasis spans are atomic tokens.
     // Pattern keeps the delimiters in the split groups so we know
@@ -864,7 +864,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 initial={{ opacity: 0, y: 12, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                className="text-2xl lg:text-4xl font-extrabold text-zinc-800 dark:text-zinc-100"
+                className="text-2xl lg:text-4xl font-bold text-zinc-800 dark:text-zinc-100"
               >
                 {parts[1].text}
               </motion.span>
@@ -1067,14 +1067,14 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 // Intro / teach pairs ("Great readers are" /
                 // "detectives.") were rendering at text-xl which felt
                 // small with Lexend's wider spacing. Bumped to
-                // text-2xl mobile / text-4xl laptop + font-extrabold
+                // text-2xl mobile / text-4xl laptop + font-bold
                 // so the anchor lands like a slide title. Example
                 // story text stays softer (semibold, smaller) — it's
                 // the passage, not the focal teaching word.
                 className={`leading-relaxed ${
                   isExample
                     ? "text-xl lg:text-2xl font-semibold text-zinc-700 dark:text-zinc-200"
-                    : `text-2xl lg:text-4xl font-extrabold ${theme.cardText}`
+                    : `text-2xl lg:text-4xl font-bold ${theme.cardText}`
                 }`}
               >
                 {highlightCaps(part.text)}
@@ -1145,7 +1145,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-4 text-center"
               >
-                <p className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200">
                   {part.text}
                 </p>
               </motion.div>
@@ -1184,7 +1184,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                   initial={{ opacity: 0, scale: 0.6 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                  className="rounded-full bg-violet-100 dark:bg-violet-900/40 px-4 py-2 text-[22px] font-extrabold text-violet-800 dark:text-violet-200 shadow-sm"
+                  className="rounded-full bg-violet-100 dark:bg-violet-900/40 px-4 py-2 text-[22px] font-bold text-violet-800 dark:text-violet-200 shadow-sm"
                 >
                   {part.text}
                 </motion.span>
@@ -1208,7 +1208,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-4 py-3.5 text-center"
               >
-                <p className="text-[24px] font-extrabold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]">
+                <p className="text-[24px] font-bold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]">
                   {part.text}
                 </p>
               </motion.div>
@@ -1236,10 +1236,10 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 ? { scale: { duration: 1.4, repeat: Infinity, ease: "easeInOut" } }
                 : { type: "spring", stiffness: 400, damping: 15 }
               }
-              // Single-pill / 3+ pill fallback. font-extrabold + a
+              // Single-pill / 3+ pill fallback. font-bold + a
               // notch larger so anchors like "Peel the Prefix" steps
               // read with weight, not as polite captions.
-              className={`rounded-full px-4 sm:px-8 lg:px-12 py-1.5 sm:py-3 lg:py-5 text-sm sm:text-3xl lg:text-5xl font-extrabold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}
+              className={`rounded-full px-4 sm:px-8 lg:px-12 py-1.5 sm:py-3 lg:py-5 text-sm sm:text-2xl lg:text-4xl font-bold text-center shadow-sm ${PILL_COLORS[p % PILL_COLORS.length]}`}
             >
               {highlightCaps(part.text)}
             </motion.span>
@@ -1369,7 +1369,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                   ? { scale: { duration: 0.5, ease: "easeOut" } }
                   : { type: "spring", stiffness: 500, damping: 18, delay: li * 0.05 }
                 }
-                className={`min-w-14 sm:min-w-16 h-14 sm:h-16 px-3 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-extrabold shadow-sm transition-colors ${tileColor}`}
+                className={`min-w-14 sm:min-w-16 h-14 sm:h-16 px-3 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl font-bold shadow-sm transition-colors ${tileColor}`}
               >
                 {l.text}
               </motion.span>
@@ -1417,7 +1417,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             transition={{ type: "spring", stiffness: 500, damping: 18, delay: idx * 0.02 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => playLetterThenPhoneme(letter)}
-            className="aspect-square rounded-xl flex items-center justify-center text-xl sm:text-2xl font-extrabold shadow-sm bg-violet-50 text-violet-700 hover:bg-violet-100 active:bg-violet-200 transition-colors dark:bg-violet-900/40 dark:text-violet-200 dark:hover:bg-violet-900/60"
+            className="aspect-square rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold shadow-sm bg-violet-50 text-violet-700 hover:bg-violet-100 active:bg-violet-200 transition-colors dark:bg-violet-900/40 dark:text-violet-200 dark:hover:bg-violet-900/60"
             aria-label={`Letter ${letter}`}
           >
             {letter}
@@ -1459,7 +1459,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                   animate={{ opacity: 1, rotateX: 0 }}
                   exit={{ opacity: 0, rotateX: 90 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-4xl font-extrabold"
+                  className="absolute inset-0 flex items-center justify-center text-3xl sm:text-4xl font-bold"
                   style={{ transformStyle: "preserve-3d", backfaceVisibility: "hidden" }}
                 >
                   {currentLetter}
@@ -1560,7 +1560,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed">
             {step.displayText.split(/(\s+)/).map((seg, si) =>
               /^[A-Z]{2,}[!?.,]?$/.test(seg) ? (
-                <span key={si} className="text-violet-700 dark:text-violet-300 font-extrabold">{seg}</span>
+                <span key={si} className="text-violet-700 dark:text-violet-300 font-bold">{seg}</span>
               ) : (
                 <span key={si}>{seg}</span>
               )
@@ -1571,7 +1571,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     }
 
     // Mobile single-text = hero in the violet passage card. Text
-    // color is text-violet-800 (NOT zinc-800 — at font-extrabold it
+    // color is text-violet-800 (NOT zinc-800 — at font-bold it
     // reads as black even inside the card; Filip flagged this 5+
     // times). Everything stays in the violet family.
     //
@@ -1623,7 +1623,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
           className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-5 text-center"
         >
-          <p className={`${sizeClass} font-extrabold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]`}>
+          <p className={`${sizeClass} font-bold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]`}>
             {content}
           </p>
         </motion.div>
@@ -1662,7 +1662,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
         })()
       : step.displayText.split(/(\s+)/).map((seg, si) =>
           /^[A-Z]{2,}[!?.,]?$/.test(seg) ? (
-            <span key={si} className="text-blue-700 dark:text-blue-300 font-extrabold">{seg}</span>
+            <span key={si} className="text-blue-700 dark:text-blue-300 font-bold">{seg}</span>
           ) : (
             <span key={si}>{seg}</span>
           ),
@@ -1674,7 +1674,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-        className={`rounded-full px-4 sm:px-8 lg:px-12 py-1.5 sm:py-3 lg:py-5 text-sm sm:text-3xl lg:text-5xl font-extrabold text-center shadow-sm ${pillColor} ${
+        className={`rounded-full px-4 sm:px-8 lg:px-12 py-1.5 sm:py-3 lg:py-5 text-sm sm:text-3xl lg:text-5xl font-bold text-center shadow-sm ${pillColor} ${
           showCheck ? "ring-2 ring-green-400 ring-offset-2" : ""
         }`}
       >
@@ -1846,7 +1846,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             className={
               isPhoneShell
                 ? "text-[11px] font-semibold uppercase tracking-widest text-center text-zinc-400 leading-tight"
-                : `font-extrabold text-2xl sm:text-3xl lg:text-5xl leading-[1.1] tracking-tight text-center ${theme.text}`
+                : `font-bold text-2xl sm:text-3xl lg:text-5xl leading-[1.1] tracking-tight text-center ${theme.text}`
             }
           >
             {slide.heading}
@@ -1970,7 +1970,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                       {headers.map((h, hi) => (
                         <span
                           key={hi}
-                          className="text-xs sm:text-sm lg:text-2xl font-extrabold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center"
+                          className="text-xs sm:text-sm lg:text-2xl font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center"
                         >
                           {h}
                         </span>
@@ -2467,7 +2467,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                             style={{ gridTemplateColumns: gridCols }}
                           >
                             {headers.map((h, hi) => (
-                              <span key={hi} className="text-base lg:text-xl font-extrabold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center">
+                              <span key={hi} className="text-base lg:text-xl font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center">
                                 {h}
                               </span>
                             ))}
@@ -2544,7 +2544,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                               <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200 text-center">
                                 {row.value.split(/(\s+)/).map((seg, si) =>
                                   /^[A-Z]{2,}$/.test(seg) ? (
-                                    <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">{seg}</span>
+                                    <span key={si} className="text-violet-600 dark:text-violet-400 font-bold">{seg}</span>
                                   ) : (
                                     <span key={si}>{seg}</span>
                                   )
@@ -2625,7 +2625,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               <button
                 onClick={(showNext || devMode) ? handleNext : undefined}
                 disabled={!showNext && !devMode}
-                className={`relative w-full py-3.5 rounded-2xl font-extrabold text-xl text-white flex items-center justify-center gap-2 transition-all duration-300 ${
+                className={`relative w-full py-3.5 rounded-2xl font-bold text-xl text-white flex items-center justify-center gap-2 transition-all duration-300 ${
                   (showNext || devMode)
                     ? "active:scale-95"
                     : "opacity-50 pointer-events-none"
@@ -2747,10 +2747,10 @@ function ExampleWorksheetGridMobile({
             }`}
           >
             <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-              <span className="text-xs font-extrabold uppercase tracking-wider text-violet-500 dark:text-violet-400 break-words">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-500 dark:text-violet-400 break-words">
                 {qVisible ? q : "?"}
               </span>
-              <span className="min-w-0 whitespace-normal break-words text-base font-extrabold text-violet-800 dark:text-violet-200">
+              <span className="min-w-0 whitespace-normal break-words text-base font-bold text-violet-800 dark:text-violet-200">
                 {!qVisible ? (
                   <span className="text-violet-200 dark:text-violet-800">…</span>
                 ) : aVisible ? (
@@ -2831,7 +2831,7 @@ function ExampleWorksheetGrid({
             >
               {q}
             </span>
-            <span className="text-xl lg:text-3xl font-extrabold text-zinc-800 dark:text-zinc-100 leading-tight">
+            <span className="text-xl lg:text-3xl font-bold text-zinc-800 dark:text-zinc-100 leading-tight">
               {aVisible ? (
                 <motion.span
                   initial={{ opacity: 0, y: 6 }}

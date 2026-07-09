@@ -233,7 +233,7 @@ export function AnchorContent({
           {eyebrow}
         </div>
       )}
-      <div className="text-[48px] font-extrabold leading-[1.2] tracking-tight">
+      <div className="text-[48px] font-bold leading-[1.2] tracking-tight">
         {titleRendered}
       </div>
       {body && (
@@ -280,7 +280,7 @@ export function ChartContent({
   return (
     <div>
       {title && (
-        <div className="mb-7 text-[28px] font-extrabold tracking-tight">
+        <div className="mb-7 text-[28px] font-bold tracking-tight">
           {title}
         </div>
       )}
@@ -397,7 +397,7 @@ export function CelebrationContent({
           {eyebrow}
         </div>
       )}
-      <div className="text-[52px] font-extrabold leading-[1.2] tracking-tight text-violet-700 dark:text-violet-300">
+      <div className="text-[52px] font-bold leading-[1.2] tracking-tight text-violet-700 dark:text-violet-300">
         {title}
       </div>
       {body && (

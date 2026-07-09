@@ -36,7 +36,7 @@
             "On the grass"
           ],
           "correct": "On a lily pad",
-          "hint": "Look at the first sentence — where did the frog sit?",
+          "hint": "Look at the first sentence \u2014 where did the frog sit?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q2-hint.mp3",
@@ -54,7 +54,7 @@
             "Her sister"
           ],
           "correct": "Her friend Jake",
-          "hint": "Read the first sentence — who walked with Emma?",
+          "hint": "Read the first sentence \u2014 who walked with Emma?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q3-hint.mp3",
@@ -72,7 +72,7 @@
             "Blueberries"
           ],
           "correct": "Blueberries",
-          "hint": "Read the second sentence — what went on top?",
+          "hint": "Read the second sentence \u2014 what went on top?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.1/RL.1.1-Q4-hint.mp3",
@@ -82,7 +82,7 @@
         {
           "id": "RL.1.1-Q5",
           "type": "multiple_choice",
-          "prompt": "Why was the kitten scared?",
+          "prompt": "Listen to the story: A kitten climbed up a tall tree. It went very high and got stuck. It could not get back down, so it cried and cried. Why was the kitten scared?",
           "choices": [
             "It saw a big, scary dog.",
             "It was sleepy and wanted to nap.",
@@ -239,7 +239,7 @@
         {
           "id": "RL.1.2-Q4",
           "type": "multiple_choice",
-          "prompt": "What lesson can we learn from Leo's story?",
+          "prompt": "Listen to the story: Leo could not ride his bike. He fell down again and again, but he did not give up. He kept trying, and soon he could ride all by himself. What lesson can we learn from Leo's story?",
           "choices": [
             "Bikes are only for big kids.",
             "If you keep trying, you can learn new things.",
@@ -360,14 +360,14 @@
         {
           "id": "RL.1.3-Q1",
           "type": "multiple_choice",
-          "prompt": "Which words best describe where the old woman lives?",
+          "prompt": "Listen to the story: An old woman lived in a small house. Her little house sat right next to the ocean. Every morning she watched the waves and the boats. Which words best describe where the old woman lives?",
           "choices": [
-            "A. A big house in a forest.",
-            "B. A big house near a mountain.",
-            "C. A small house near the ocean.",
-            "D. A small house in a big city."
+            "A big house in a forest.",
+            "A big house near a mountain.",
+            "A small house near the ocean.",
+            "A small house in a big city."
           ],
-          "correct": "C. A small house near the ocean.",
+          "correct": "A small house near the ocean.",
           "hint": "Look at the first sentence to find out about the old woman's home.",
           "difficulty": 1,
           "adaptiveDifficulty": 15
@@ -383,7 +383,7 @@
             "Kind"
           ],
           "correct": "Kind",
-          "hint": "Think about what Ben does — helping and sharing.",
+          "hint": "Think about what Ben does \u2014 helping and sharing.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.3/RL.1.3-Q2-hint.mp3",
@@ -411,7 +411,7 @@
         {
           "id": "RL.1.3-Q4",
           "type": "multiple_choice",
-          "prompt": "Which major event began the story about Rosa?",
+          "prompt": "Listen to the story: First, Rosa found a lost puppy in the grass. Then she gave it some water. At last, she found the puppy's owner. Which major event began the story about Rosa?",
           "choices": [
             "Rosa gave the puppy water.",
             "Rosa found the puppy's owner.",
@@ -527,7 +527,7 @@
       "standard_id": "RL.1.4",
       "standard_description": "Identify words and phrases in stories or poems that suggest feelings or appeal to the senses",
       "domain": "Reading Literature",
-      "parent_tip": "Point out feeling words and sensory words when reading together: 'The author says sparkling — can you picture that?'",
+      "parent_tip": "Point out feeling words and sensory words when reading together: 'The author says sparkling \u2014 can you picture that?'",
       "questions": [
         {
           "id": "RL.1.4-Q1",
@@ -555,7 +555,7 @@
             "Happy"
           ],
           "correct": "Sad or scared",
-          "hint": "Whimpering is a soft, sad sound — like a small cry. What feeling matches that?",
+          "hint": "Whimpering is a soft, sad sound \u2014 like a small cry. What feeling matches that?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q2-hint.mp3",
@@ -707,7 +707,7 @@
         {
           "id": "RL.1.5-Q3",
           "type": "multiple_choice",
-          "prompt": "Which is TRUE about storybooks?",
+          "prompt": "Listen to the story: Mia read a storybook. It had bright pictures and was very long. It was about a talking dragon that flew to the moon, all made up and not real. Which is TRUE about storybooks?",
           "choices": [
             "They have made-up characters and events",
             "They don't have pictures",
@@ -725,7 +725,7 @@
         {
           "id": "RL.1.5-Q4",
           "type": "multiple_choice",
-          "prompt": "Which is TRUE about informational books?",
+          "prompt": "Listen to the story: Sam read an informational book about real sharks. It taught true facts, like how sharks swim and eat. Nothing in it was make-believe, and it was not silly or funny. Which is TRUE about informational books?",
           "choices": [
             "They have made-up characters",
             "They teach real facts",
@@ -799,7 +799,7 @@
             "A book that explains how spiders really spin webs"
           ],
           "correct": "A book that explains how spiders really spin webs",
-          "hint": "Every choice is about spiders. Match Maya's goal — learning true facts — to the right kind of book.",
+          "hint": "Every choice is about spiders. Match Maya's goal \u2014 learning true facts \u2014 to the right kind of book.",
           "difficulty": "hard",
           "adaptiveDifficulty": 96,
           "adaptiveGenerated": true
@@ -807,7 +807,7 @@
         {
           "id": "RL.1.5-H5",
           "type": "multiple_choice",
-          "prompt": "Which sentence sounds like it is from a make-believe story?",
+          "prompt": "Listen to the story: Real seeds cannot talk or yawn like people. In real life, a seed just needs water and sun to grow. Only in a make-believe story can a seed do things like a person. Which sentence sounds like it is from a make-believe story?",
           "choices": [
             "The little seed yawned and asked the sun to wake it up",
             "Seeds grow into plants",
@@ -855,7 +855,7 @@
         {
           "id": "RL.1.5-E3",
           "type": "multiple_choice",
-          "prompt": "Which book tells a STORY?",
+          "prompt": "Listen to the story: A story book has make-believe characters who do things, like a bear who goes to school with his friends. A fact book does not tell a tale; it just shows real things, like a list of animal names or real bug photos. Which book tells a STORY?",
           "choices": [
             "A list of animal names",
             "A book of real bug photos",
@@ -871,7 +871,7 @@
         {
           "id": "RL.1.5-E4",
           "type": "multiple_choice",
-          "prompt": "Which book gives real INFORMATION?",
+          "prompt": "Listen to the story: An information book gives you true facts about real things, like the sun. Make-believe books tell tales that are not real, like a magic hat, a flying cat, or a talking fish. Which book gives real INFORMATION?",
           "choices": [
             "A book that tells you true facts about the sun",
             "A tale about a magic hat",
@@ -919,7 +919,7 @@
             "A teacher"
           ],
           "correct": "The child (I)",
-          "hint": "Look at the word 'I' — who is the 'I' in the story?",
+          "hint": "Look at the word 'I' \u2014 who is the 'I' in the story?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q1-hint.mp3",
@@ -937,7 +937,7 @@
             "A narrator outside the story"
           ],
           "correct": "A narrator outside the story",
-          "hint": "The story says 'He' not 'I' — someone else is telling us about Sam.",
+          "hint": "The story says 'He' not 'I' \u2014 someone else is telling us about Sam.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.6/RL.1.6-Q2-hint.mp3",
@@ -1103,12 +1103,12 @@
           "type": "multiple_choice",
           "prompt": "The story says, \"The dog was big.\" Look at the picture that goes with the story. What does the picture help you understand about how big the dog is?",
           "choices": [
-            "A. The dog is small enough to fit in a basket.",
-            "B. The dog is about the same height as the boy.",
-            "C. The dog is sleeping on the floor.",
-            "D. The dog is much smaller than the boy."
+            "The dog is small enough to fit in a basket.",
+            "The dog is about the same height as the boy.",
+            "The dog is sleeping on the floor.",
+            "The dog is much smaller than the boy."
           ],
-          "correct": "B. The dog is about the same height as the boy.",
+          "correct": "The dog is about the same height as the boy.",
           "hint": "Look closely at the dog and the boy in the picture. How do their sizes compare?",
           "difficulty": 2,
           "adaptiveDifficulty": 20
@@ -1139,7 +1139,7 @@
             "Sad"
           ],
           "correct": "Sad",
-          "hint": "Tears and a broken toy — what feeling does that show?",
+          "hint": "Tears and a broken toy \u2014 what feeling does that show?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.7/RL.1.7-Q5-hint.mp3",
@@ -1237,7 +1237,7 @@
         {
           "id": "RL.1.9-Q1",
           "type": "multiple_choice",
-          "prompt": "What is different about how the bear and the bee experience honey in their stories?",
+          "prompt": "Listen to the story: In one story, a hungry bear looks all around the woods to find honey to eat. In another story, a busy bee flies from flower to flower and works hard to make honey. What is different about how the bear and the bee experience honey in their stories?",
           "choices": [
             "The bear enjoys eating honey, and the bee enjoys flying near it.",
             "Both the bear and the bee collect honey for their families.",
@@ -1326,7 +1326,7 @@
             "Mia got a new toy, and Sam found his old one under the bed."
           ],
           "correct": "Mia cared a lot about her ball, but Sam did not mind losing his kite.",
-          "hint": "The stories never say 'cared' or 'did not mind.' Look at what each child DID — how long they searched and how they acted — to figure out their feelings.",
+          "hint": "The stories never say 'cared' or 'did not mind.' Look at what each child DID \u2014 how long they searched and how they acted \u2014 to figure out their feelings.",
           "difficulty": "hard",
           "adaptiveDifficulty": 83,
           "adaptiveGenerated": true
@@ -1374,7 +1374,7 @@
             "Lily was glad it rained, but Max wanted to get away from it."
           ],
           "correct": "Lily was glad it rained, but Max wanted to get away from it.",
-          "hint": "The same thing happened to both kids — it rained. Watch what each one chose to do to know how they felt about it.",
+          "hint": "The same thing happened to both kids \u2014 it rained. Watch what each one chose to do to know how they felt about it.",
           "difficulty": "hard",
           "adaptiveDifficulty": 88,
           "adaptiveGenerated": true
@@ -1589,7 +1589,7 @@
             "Trees"
           ],
           "correct": "Apples",
-          "hint": "Every sentence is about the same thing — what is it?",
+          "hint": "Every sentence is about the same thing \u2014 what is it?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q1-hint.mp3",
@@ -1617,7 +1617,7 @@
         {
           "id": "RI.1.2-Q3",
           "type": "multiple_choice",
-          "prompt": "Which detail about cats is shared in the text?",
+          "prompt": "Listen to the story: A short book tells us just one fact about cats. It says that cats like to sleep a lot, sometimes all day. The book says nothing about their tails, chasing mice, or climbing trees. Which detail about cats is shared in the text?",
           "choices": [
             "Cats have long tails.",
             "Cats like to sleep a lot.",
@@ -1724,7 +1724,7 @@
             "All About Ants"
           ],
           "correct": "All About Ants",
-          "hint": "A good title is not too small and not too big — it should cover the whole text.",
+          "hint": "A good title is not too small and not too big \u2014 it should cover the whole text.",
           "difficulty": "hard",
           "adaptiveDifficulty": 82,
           "adaptiveGenerated": true
@@ -1810,7 +1810,7 @@
         {
           "id": "RI.1.3-Q4",
           "type": "multiple_choice",
-          "prompt": "How does the text show the connection between George Washington leading the army and being president?",
+          "prompt": "Listen to the story: The book tells about George Washington. First, he led the army in a big war and helped win it. After the war was over, people chose him to be the first president. How does the text show the connection between George Washington leading the army and being president?",
           "choices": [
             "He led the army after he was president.",
             "He led the army before he was president.",
@@ -1960,12 +1960,12 @@
           "type": "multiple_choice",
           "prompt": "A squirrel lives in a tree. A fish lives in the water. A bird lives in a nest. What does the word 'habitat' mean when it says, 'Each animal has its own special habitat'?",
           "choices": [
-            "A) A kind of food",
-            "B) A game an animal plays",
-            "C) The place where an animal lives",
-            "D) A sound an animal makes"
+            "A kind of food",
+            "A game an animal plays",
+            "The place where an animal lives",
+            "A sound an animal makes"
           ],
-          "correct": "C) The place where an animal lives",
+          "correct": "The place where an animal lives",
           "hint": "Look at where the squirrel, fish, and bird make their homes to understand what 'habitat' means.",
           "difficulty": "easy",
           "adaptiveDifficulty": 33
@@ -1988,7 +1988,7 @@
         {
           "id": "RI.1.4-Q10",
           "type": "multiple_choice",
-          "prompt": "The story says: \"The whale was ENORMOUS — its tail alone was as long as a school bus!\" What does ENORMOUS mean?",
+          "prompt": "The story says: \"The whale was ENORMOUS \u2014 its tail alone was as long as a school bus!\" What does ENORMOUS mean?",
           "choices": [
             "very tiny",
             "very loud",
@@ -1996,7 +1996,7 @@
             "very big"
           ],
           "correct": "very big",
-          "hint": "Look at the clue right after the word — a tail as long as a school bus. What does that tell you about the whale's size?",
+          "hint": "Look at the clue right after the word \u2014 a tail as long as a school bus. What does that tell you about the whale's size?",
           "difficulty": 2,
           "adaptiveDifficulty": 34
         },
@@ -2106,7 +2106,7 @@
         {
           "id": "RI.1.5-Q1",
           "type": "multiple_choice",
-          "prompt": "Where would you look to find what page a chapter starts on?",
+          "prompt": "Listen to the story: Ben wanted to know what page Chapter 3 started on. The table of contents at the front of his book lists each chapter and the page it starts on. The glossary and index at the back only list words and topics, and the cover just shows the title. Where would you look to find what page a chapter starts on?",
           "choices": [
             "The cover",
             "The table of contents",
@@ -2124,7 +2124,7 @@
         {
           "id": "RI.1.5-Q2",
           "type": "multiple_choice",
-          "prompt": "What does a heading at the top of a page tell you?",
+          "prompt": "Listen to the story: Each part of Mia's book had a heading in big letters at the top. The heading told what that section was about, like 'Baby Animals.' It did not say who wrote the book, how many pages were left, or when it was made. What does a heading at the top of a page tell you?",
           "choices": [
             "Who wrote the book",
             "How many pages are left",
@@ -2302,7 +2302,7 @@
         {
           "id": "RI.1.6-Q2",
           "type": "multiple_choice",
-          "prompt": "What can pictures in a book show that words cannot?",
+          "prompt": "Listen to the story: In Sam's book, the words told about a bird. A picture cannot make sounds or smells, and feelings are told by words. But the picture showed the exact colors and shapes of the bird, its bright red feathers and round body. What can pictures in a book show that words cannot?",
           "choices": [
             "Sounds",
             "Smells",
@@ -2310,7 +2310,7 @@
             "Exact colors and shapes"
           ],
           "correct": "Exact colors and shapes",
-          "hint": "Pictures let you SEE things — what can you see that's hard to describe?",
+          "hint": "Pictures let you SEE things \u2014 what can you see that's hard to describe?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q2-hint.mp3",
@@ -2328,7 +2328,7 @@
             "Birds have feathers"
           ],
           "correct": "The bird is blue",
-          "hint": "The words didn't mention the color — where did you learn that?",
+          "hint": "The words didn't mention the color \u2014 where did you learn that?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.6/RI.1.6-Q3-hint.mp3",
@@ -2515,7 +2515,7 @@
             "What color water is"
           ],
           "correct": "The order of the water cycle",
-          "hint": "Arrows show direction and order — what happens first, next, last.",
+          "hint": "Arrows show direction and order \u2014 what happens first, next, last.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.7/RI.1.7-Q4-hint.mp3",
@@ -2554,7 +2554,7 @@
             "Water comes from the sink"
           ],
           "correct": "Water helps your body work well",
-          "hint": "The author gives a reason WHY — look for it after the first sentence.",
+          "hint": "The author gives a reason WHY \u2014 look for it after the first sentence.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.8/RI.1.8-Q1-hint.mp3",
@@ -2582,14 +2582,14 @@
         {
           "id": "RI.1.8-Q3",
           "type": "multiple_choice",
-          "prompt": "What reason does the author give to show why kids should eat vegetables?",
+          "prompt": "Listen to the story: In her book, the author says kids should eat their vegetables. She gives one reason: vegetables have vitamins that help you grow strong. She does not say they taste sweet, and she never talks about sharing food or growing taller. What reason does the author give to show why kids should eat vegetables?",
           "choices": [
-            "A. Vegetables taste sweet.",
-            "B. Vegetables have vitamins that help you grow strong.",
-            "C. Kids like to share food.",
-            "D. Growing taller is fun."
+            "Vegetables taste sweet.",
+            "Vegetables have vitamins that help you grow strong.",
+            "Kids like to share food.",
+            "Growing taller is fun."
           ],
-          "correct": "B. Vegetables have vitamins that help you grow strong.",
+          "correct": "Vegetables have vitamins that help you grow strong.",
           "hint": "Look at the second sentence of the passage to find out why the author says to eat vegetables.",
           "difficulty": 2,
           "adaptiveDifficulty": 25
@@ -2729,7 +2729,7 @@
             "About cats"
           ],
           "correct": "Saying the same thing in different words",
-          "hint": "Walks and exercise — are those similar?",
+          "hint": "Walks and exercise \u2014 are those similar?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.9/RI.1.9-Q1-hint.mp3",
@@ -2898,7 +2898,7 @@
             "Period"
           ],
           "correct": "Capital letter",
-          "hint": "Look at the first letter of this very sentence — what kind of letter is it?",
+          "hint": "Look at the first letter of this very sentence \u2014 what kind of letter is it?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.1a/RF.1.1a-Q1-hint.mp3",
@@ -2964,12 +2964,12 @@
           "type": "multiple_choice",
           "prompt": "Which sentence needs a capital letter at the beginning?",
           "choices": [
-            "A) My dog barks.",
-            "B) do you like to play?",
-            "C) We went to the park.",
-            "D) Look at the big tree!"
+            "My dog barks.",
+            "do you like to play?",
+            "We went to the park.",
+            "Look at the big tree!"
           ],
-          "correct": "B) do you like to play?",
+          "correct": "do you like to play?",
           "hint": "Check the first letter of each sentence. A sentence always starts with a capital letter.",
           "difficulty": 2,
           "adaptiveDifficulty": 19
@@ -3033,7 +3033,7 @@
             "3"
           ],
           "correct": "3",
-          "hint": "Count the end marks — each period, question mark, or exclamation point closes one sentence.",
+          "hint": "Count the end marks \u2014 each period, question mark, or exclamation point closes one sentence.",
           "difficulty": "hard",
           "adaptiveDifficulty": 78,
           "adaptiveGenerated": true
@@ -3049,7 +3049,7 @@
             "dog"
           ],
           "correct": "my",
-          "hint": "A capital letter goes on the very FIRST word of the sentence — not on the most important word.",
+          "hint": "A capital letter goes on the very FIRST word of the sentence \u2014 not on the most important word.",
           "difficulty": "hard",
           "adaptiveDifficulty": 87,
           "adaptiveGenerated": true
@@ -3167,7 +3167,7 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/s.mp3"
           ],
           "correct": "/m/",
-          "hint": "Say 'map' slowly — what sound comes first?",
+          "hint": "Say 'map' slowly \u2014 what sound comes first?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q1-hint.mp3",
@@ -3191,7 +3191,7 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/g.mp3"
           ],
           "correct": "/i/",
-          "hint": "Say b-i-g slowly — what sound is in the middle?",
+          "hint": "Say b-i-g slowly \u2014 what sound is in the middle?",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q2-hint.mp3",
@@ -3215,7 +3215,7 @@
             "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/phonemes/t.mp3"
           ],
           "correct": "/p/",
-          "hint": "Say 'cup' — what sound do you hear at the very end?",
+          "hint": "Say 'cup' \u2014 what sound do you hear at the very end?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2c/RF.1.2c-Q3-hint.mp3",
@@ -3251,7 +3251,7 @@
             "/l/"
           ],
           "correct": "/f/",
-          "hint": "Say the word very slowly. A beginning blend like 'fl' is really TWO sounds squished together — pull off just the very first one.",
+          "hint": "Say the word very slowly. A beginning blend like 'fl' is really TWO sounds squished together \u2014 pull off just the very first one.",
           "difficulty": "hard",
           "adaptiveDifficulty": 75,
           "adaptiveGenerated": true
@@ -3267,7 +3267,7 @@
             "/h/"
           ],
           "correct": "/sh/",
-          "hint": "Watch out — two letters can team up to make ONE brand-new sound. Say the start of the word and listen for a single hiss, not /s/ then /h/.",
+          "hint": "Watch out \u2014 two letters can team up to make ONE brand-new sound. Say the start of the word and listen for a single hiss, not /s/ then /h/.",
           "difficulty": "hard",
           "adaptiveDifficulty": 75,
           "adaptiveGenerated": true
@@ -3299,7 +3299,7 @@
             "/d/"
           ],
           "correct": "/d/",
-          "hint": "Stretch the word to the very end. An ending blend like 'nd' has two sounds — you want only the last little one you hear.",
+          "hint": "Stretch the word to the very end. An ending blend like 'nd' has two sounds \u2014 you want only the last little one you hear.",
           "difficulty": "hard",
           "adaptiveDifficulty": 75,
           "adaptiveGenerated": true
@@ -3315,7 +3315,7 @@
             "/i/"
           ],
           "correct": "/sh/",
-          "hint": "Two letters at the end can make ONE sound. Say the word and hold the very last sound — is it a hiss-shush, or two separate sounds?",
+          "hint": "Two letters at the end can make ONE sound. Say the word and hold the very last sound \u2014 is it a hiss-shush, or two separate sounds?",
           "difficulty": "hard",
           "adaptiveDifficulty": 75,
           "adaptiveGenerated": true
@@ -3339,7 +3339,7 @@
             "3"
           ],
           "correct": "4",
-          "hint": "/s/ /t/ /o/ /p/ — each letter makes its own sound here.",
+          "hint": "/s/ /t/ /o/ /p/ \u2014 each letter makes its own sound here.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.2d/RF.1.2d-Q4-hint.mp3",
@@ -3405,7 +3405,7 @@
             "4"
           ],
           "correct": "4",
-          "hint": "Break it up: the 'th' is one sound, but listen carefully to the ending 'nk' — it hides two sounds.",
+          "hint": "Break it up: the 'th' is one sound, but listen carefully to the ending 'nk' \u2014 it hides two sounds.",
           "difficulty": "hard",
           "adaptiveDifficulty": 81,
           "adaptiveGenerated": true
@@ -3432,7 +3432,7 @@
       "standard_id": "RF.1.4b",
       "standard_description": "Read grade-level text orally with accuracy, appropriate rate, and expression",
       "domain": "Foundational Skills",
-      "parent_tip": "Take turns reading aloud. Model reading with expression — change your voice for different characters!",
+      "parent_tip": "Take turns reading aloud. Model reading with expression \u2014 change your voice for different characters!",
       "questions": [
         {
           "id": "RF.1.4b-Q1",
@@ -3463,7 +3463,7 @@
             "Go up at the end"
           ],
           "correct": "Go up at the end",
-          "hint": "Try asking 'Really?' — hear how your voice goes up?",
+          "hint": "Try asking 'Really?' \u2014 hear how your voice goes up?",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q2-hint.mp3",
@@ -3496,7 +3496,7 @@
             "In a calm, quiet voice"
           ],
           "correct": "In a loud, scared voice",
-          "hint": "The mouse is crying for help — that sounds scared!",
+          "hint": "The mouse is crying for help \u2014 that sounds scared!",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RF.1.4b/RF.1.4b-Q4-hint.mp3",
@@ -3530,7 +3530,7 @@
             "Look at the big rainbow!"
           ],
           "correct": "I lost my little dog.",
-          "hint": "Don't just look at the marks — think about how each sentence would make you feel.",
+          "hint": "Don't just look at the marks \u2014 think about how each sentence would make you feel.",
           "difficulty": "hard",
           "adaptiveDifficulty": 77,
           "adaptiveGenerated": true
@@ -3859,7 +3859,7 @@
         {
           "id": "L.1.4-H5",
           "type": "multiple_choice",
-          "prompt": "After running all day, the boy was not just tired—he was worn out and could barely walk. Which word best shows he was MORE than tired?",
+          "prompt": "After running all day, the boy was not just tired\u2014he was worn out and could barely walk. Which word best shows he was MORE than tired?",
           "choices": [
             "Exhausted",
             "Rested",
@@ -3878,7 +3878,7 @@
       "standard_id": "L.1.4a",
       "standard_description": "Use sentence-level context as a clue to the meaning of a word or phrase",
       "domain": "Language",
-      "parent_tip": "Teach your child to be a word detective — the clues to a word's meaning are in the sentence around it!",
+      "parent_tip": "Teach your child to be a word detective \u2014 the clues to a word's meaning are in the sentence around it!",
       "questions": [
         {
           "id": "L.1.4a-Q1",
@@ -4144,7 +4144,7 @@
       "standard_id": "L.1.4c",
       "standard_description": "Identify frequently occurring root words and their inflectional forms",
       "domain": "Language",
-      "parent_tip": "Show how one word becomes many: play → plays, played, playing. The root word 'play' stays the same!",
+      "parent_tip": "Show how one word becomes many: play \u2192 plays, played, playing. The root word 'play' stays the same!",
       "questions": [
         {
           "id": "L.1.4c-Q1",
@@ -4867,7 +4867,7 @@
         {
           "id": "L.1.5c-H1",
           "type": "multiple_choice",
-          "prompt": "All of these words mean tired. Which one means the MOST tired — so tired you can barely move?",
+          "prompt": "All of these words mean tired. Which one means the MOST tired \u2014 so tired you can barely move?",
           "choices": [
             "Exhausted",
             "Drowsy",
@@ -4883,7 +4883,7 @@
         {
           "id": "L.1.5c-H2",
           "type": "multiple_choice",
-          "prompt": "Grandma WHISPERED next to the baby's crib. She whispered because —",
+          "prompt": "Grandma WHISPERED next to the baby's crib. She whispered because \u2014",
           "choices": [
             "She was singing a loud, happy song",
             "The baby was sleeping and she did not want to wake it",
@@ -4907,7 +4907,7 @@
             "A bouncy metal coil in a bed"
           ],
           "correct": "The season that comes after winter",
-          "hint": "The word 'spring' has four real meanings. Use the OTHER words in the sentence — flowers growing — to decide which one it is here.",
+          "hint": "The word 'spring' has four real meanings. Use the OTHER words in the sentence \u2014 flowers growing \u2014 to decide which one it is here.",
           "difficulty": "hard",
           "adaptiveDifficulty": 93,
           "adaptiveGenerated": true
@@ -4939,7 +4939,7 @@
             "The gigantic mouse fit inside my pocket."
           ],
           "correct": "The gigantic elephant filled the whole room.",
-          "hint": "Say each sentence in your head. Three of them put 'very big' next to something tiny — that does not make sense. Find the one that matches.",
+          "hint": "Say each sentence in your head. Three of them put 'very big' next to something tiny \u2014 that does not make sense. Find the one that matches.",
           "difficulty": "hard",
           "adaptiveDifficulty": 91,
           "adaptiveGenerated": true
@@ -5057,7 +5057,7 @@
         {
           "id": "L.1.5d-H4",
           "type": "multiple_choice",
-          "prompt": "Sara was not just happy about her new puppy — it was the happiest she had ever felt in her whole life! Which word means the MOST happy?",
+          "prompt": "Sara was not just happy about her new puppy \u2014 it was the happiest she had ever felt in her whole life! Which word means the MOST happy?",
           "choices": [
             "Okay",
             "Glad",
@@ -5123,7 +5123,7 @@
             "He ate a beautiful."
           ],
           "correct": "She saw a beautiful sunset.",
-          "hint": "Beautiful describes something — it needs a noun after it.",
+          "hint": "Beautiful describes something \u2014 it needs a noun after it.",
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.6/L.1.6-Q5-hint.mp3",
@@ -5223,12 +5223,12 @@
           "type": "multiple_choice",
           "prompt": "Which word begins with the same sound you hear at the start of 'shoe'?",
           "choices": [
-            "A. chair",
-            "B. shell",
-            "C. whale",
-            "D. thumb"
+            "chair",
+            "shell",
+            "whale",
+            "thumb"
           ],
-          "correct": "B. shell",
+          "correct": "shell",
           "hint": "Think about the first sound you make when you say 'shoe,' and then listen for that same sound at the beginning of each choice word.",
           "difficulty": 1,
           "adaptiveDifficulty": 7
@@ -5308,7 +5308,7 @@
         {
           "id": "RF.1.3a-H1",
           "type": "multiple_choice",
-          "prompt": "One of these words has the /f/ sound even though there is NO letter 'f' in it. Which word is it?  graph  •  grab  •  grip  •  glad",
+          "prompt": "One of these words has the /f/ sound even though there is NO letter 'f' in it. Which word is it?  graph  \u2022  grab  \u2022  grip  \u2022  glad",
           "choices": [
             "graph",
             "glad",
@@ -5324,7 +5324,7 @@
         {
           "id": "RF.1.3a-H2",
           "type": "multiple_choice",
-          "prompt": "Which word ends with the SAME /ch/ sound you hear at the start of 'chip'?  catch  •  cash  •  cast  •  cap",
+          "prompt": "Which word ends with the SAME /ch/ sound you hear at the start of 'chip'?  catch  \u2022  cash  \u2022  cast  \u2022  cap",
           "choices": [
             "cap",
             "catch",
@@ -5340,7 +5340,7 @@
         {
           "id": "RF.1.3a-H3",
           "type": "multiple_choice",
-          "prompt": "The word 'this' starts with a soft, buzzing /th/ (your voice turns on). Which word starts with that SAME buzzing /th/ — not the quiet /th/ in 'thin'?  them  •  thin  •  thick  •  thumb",
+          "prompt": "The word 'this' starts with a soft, buzzing /th/ (your voice turns on). Which word starts with that SAME buzzing /th/ \u2014 not the quiet /th/ in 'thin'?  them  \u2022  thin  \u2022  thick  \u2022  thumb",
           "choices": [
             "thick",
             "thumb",
@@ -5356,7 +5356,7 @@
         {
           "id": "RF.1.3a-H4",
           "type": "multiple_choice",
-          "prompt": "Three of these words begin with a DIGRAPH (two letters that make ONE sound). Which word does NOT?  shed  •  chin  •  whip  •  spin",
+          "prompt": "Three of these words begin with a DIGRAPH (two letters that make ONE sound). Which word does NOT?  shed  \u2022  chin  \u2022  whip  \u2022  spin",
           "choices": [
             "whip",
             "shed",
@@ -5372,7 +5372,7 @@
         {
           "id": "RF.1.3a-H5",
           "type": "multiple_choice",
-          "prompt": "Which word has the /sh/ sound (like in 'ship')?  brush  •  catch  •  teach  •  much",
+          "prompt": "Which word has the /sh/ sound (like in 'ship')?  brush  \u2022  catch  \u2022  teach  \u2022  much",
           "choices": [
             "brush",
             "teach",
@@ -5435,7 +5435,7 @@
             "flip"
           ],
           "correct": "frog",
-          "hint": "Stretch out the first two sounds of each word. Three start with /fl/ — find the one that starts a different way.",
+          "hint": "Stretch out the first two sounds of each word. Three start with /fl/ \u2014 find the one that starts a different way.",
           "difficulty": "hard",
           "adaptiveDifficulty": 77,
           "adaptiveGenerated": true
@@ -5709,12 +5709,12 @@
           "type": "multiple_choice",
           "prompt": "How many syllables are in the word **butterfly**?",
           "choices": [
-            "A. 2",
-            "B. 4",
-            "C. 3",
-            "D. 1"
+            "2",
+            "4",
+            "3",
+            "1"
           ],
-          "correct": "C. 3",
+          "correct": "3",
           "hint": "Remember that each syllable has one vowel sound. Say the word slowly and listen for the vowel sounds.",
           "difficulty": 2,
           "adaptiveDifficulty": 22
@@ -5960,7 +5960,7 @@
             "puppy"
           ],
           "correct": "basket",
-          "hint": "Look at the two consonants in the middle of each word — are they the same letter twice, or two different letters?",
+          "hint": "Look at the two consonants in the middle of each word \u2014 are they the same letter twice, or two different letters?",
           "difficulty": "hard",
           "adaptiveDifficulty": 96,
           "adaptiveGenerated": true
@@ -5992,7 +5992,7 @@
             "scratch"
           ],
           "correct": "kitten",
-          "hint": "Clap each word and count the vowel sounds you actually hear — one clap per syllable.",
+          "hint": "Clap each word and count the vowel sounds you actually hear \u2014 one clap per syllable.",
           "difficulty": "hard",
           "adaptiveDifficulty": 90,
           "adaptiveGenerated": true
@@ -6147,12 +6147,12 @@
           "type": "multiple_choice",
           "prompt": "Which sentence contains the irregularly spelled word 'were'?",
           "choices": [
-            "A. My cat wants a treat.",
-            "B. They read a big book.",
-            "C. We were going to the park.",
-            "D. He likes to play games."
+            "My cat wants a treat.",
+            "They read a big book.",
+            "We were going to the park.",
+            "He likes to play games."
           ],
-          "correct": "C. We were going to the park.",
+          "correct": "We were going to the park.",
           "hint": "Look carefully at all the words in each sentence to find 'were'.",
           "difficulty": 2,
           "adaptiveDifficulty": 22
@@ -6175,7 +6175,7 @@
         {
           "id": "RF.1.3g-H1",
           "type": "multiple_choice",
-          "prompt": "All of these words start with the /s/ sound. Three of them sound out exactly the way they are spelled. One is a TRICKY word that does NOT sound out that way. Which one is the tricky word?  sand  ·  silk  ·  said  ·  sock",
+          "prompt": "All of these words start with the /s/ sound. Three of them sound out exactly the way they are spelled. One is a TRICKY word that does NOT sound out that way. Which one is the tricky word?  sand  \u00b7  silk  \u00b7  said  \u00b7  sock",
           "choices": [
             "said",
             "sock",
@@ -6191,7 +6191,7 @@
         {
           "id": "RF.1.3g-H2",
           "type": "multiple_choice",
-          "prompt": "The tricky word that means a person you like and play with is said as 'frend.' Which spelling below is the correct way to write this tricky word?  frend  ·  friend  ·  freind  ·  frinnd",
+          "prompt": "The tricky word that means a person you like and play with is said as 'frend.' Which spelling below is the correct way to write this tricky word?  frend  \u00b7  friend  \u00b7  freind  \u00b7  frinnd",
           "choices": [
             "frinnd",
             "friend",
@@ -6199,7 +6199,7 @@
             "freind"
           ],
           "correct": "friend",
-          "hint": "This tricky word has an 'i' hiding before the 'e' that you don't hear when you say it. Sounding it out won't help — you have to remember the order.",
+          "hint": "This tricky word has an 'i' hiding before the 'e' that you don't hear when you say it. Sounding it out won't help \u2014 you have to remember the order.",
           "difficulty": "hard",
           "adaptiveDifficulty": 88,
           "adaptiveGenerated": true
@@ -6207,7 +6207,7 @@
         {
           "id": "RF.1.3g-H3",
           "type": "multiple_choice",
-          "prompt": "Three of these words rhyme with 'nose.' One is a TRICKY word that sounds different even though it looks the same. Which one is the tricky word?  goes  ·  toes  ·  does  ·  hose",
+          "prompt": "Three of these words rhyme with 'nose.' One is a TRICKY word that sounds different even though it looks the same. Which one is the tricky word?  goes  \u00b7  toes  \u00b7  does  \u00b7  hose",
           "choices": [
             "toes",
             "hose",
@@ -6223,7 +6223,7 @@
         {
           "id": "RF.1.3g-H4",
           "type": "multiple_choice",
-          "prompt": "The tricky word in 'Once upon a time' sounds like 'wunce.' Which spelling below is the correct way to write this tricky word?  wonce  ·  wunce  ·  once  ·  onse",
+          "prompt": "The tricky word in 'Once upon a time' sounds like 'wunce.' Which spelling below is the correct way to write this tricky word?  wonce  \u00b7  wunce  \u00b7  once  \u00b7  onse",
           "choices": [
             "onse",
             "wonce",
@@ -6239,7 +6239,7 @@
         {
           "id": "RF.1.3g-H5",
           "type": "multiple_choice",
-          "prompt": "In three of these words, the 'e' at the end makes the 'i' say its name, the long-i sound like in 'time.' One is a TRICKY word where the 'i' stays short. Which one is the tricky word?  hive  ·  give  ·  dive  ·  five",
+          "prompt": "In three of these words, the 'e' at the end makes the 'i' say its name, the long-i sound like in 'time.' One is a TRICKY word where the 'i' stays short. Which one is the tricky word?  hive  \u00b7  give  \u00b7  dive  \u00b7  five",
           "choices": [
             "give",
             "dive",
@@ -6559,19 +6559,19 @@
       "standard_id": "RI.1.10",
       "standard_description": "With prompting and support, read informational texts of appropriate complexity for grade 1",
       "domain": "Informational",
-      "parent_tip": "Mix in fact books about the child's interests — animals, weather, sports.",
+      "parent_tip": "Mix in fact books about the child's interests \u2014 animals, weather, sports.",
       "questions": [
         {
           "id": "RI.1.10-Q2",
           "type": "multiple_choice",
           "prompt": "Read the short text. Then answer the question: Based on the text, what is something true about bugs?",
           "choices": [
-            "A. Bugs only live in houses.",
-            "B. Ants have six legs.",
-            "C. All bugs have eight legs.",
-            "D. Spiders are a type of bug."
+            "Bugs only live in houses.",
+            "Ants have six legs.",
+            "All bugs have eight legs.",
+            "Spiders are a type of bug."
           ],
-          "correct": "B. Ants have six legs.",
+          "correct": "Ants have six legs.",
           "hint": "Look at the sentences that tell you how many legs different bugs have.",
           "difficulty": 1,
           "adaptiveDifficulty": 17
@@ -6708,7 +6708,7 @@
             "tree"
           ],
           "correct": "runs",
-          "hint": "A VERB is an action — something you DO.",
+          "hint": "A VERB is an action \u2014 something you DO.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/L.1.1/L.1.1-Q2-hint.mp3",
@@ -6841,12 +6841,12 @@
           "type": "multiple_choice",
           "prompt": "Which sentence ends with the correct mark?",
           "choices": [
-            "A. Is it time to go!",
-            "B. The cat is sleeping",
-            "C. We saw a bird?",
-            "D. The dog barked."
+            "Is it time to go!",
+            "The cat is sleeping",
+            "We saw a bird?",
+            "The dog barked."
           ],
-          "correct": "D. The dog barked.",
+          "correct": "The dog barked.",
           "hint": "Think about what kind of sentence each one is and what punctuation mark it needs at the very end.",
           "difficulty": 1,
           "adaptiveDifficulty": 13
@@ -6874,12 +6874,12 @@
           "type": "multiple_choice",
           "prompt": "Which sentence correctly uses the ending mark for a question?",
           "choices": [
-            "A. What is your name.",
-            "B. What is your name!",
-            "C. What is your name,",
-            "D. What is your name?"
+            "What is your name.",
+            "What is your name!",
+            "What is your name,",
+            "What is your name?"
           ],
-          "correct": "D. What is your name?",
+          "correct": "What is your name?",
           "hint": "Think about what mark you put at the end when you are asking something.",
           "difficulty": 1,
           "adaptiveDifficulty": 16

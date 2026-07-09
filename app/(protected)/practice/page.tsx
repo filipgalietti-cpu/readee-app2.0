@@ -1381,6 +1381,7 @@ function PracticeSession({
               <motion.div variants={fadeUp} className="flex justify-center mb-3">
                 <LoadingImage
                   src={q.image_url || questionImageUrl(q.id, gradeKey)}
+                  fallback={null}
                   className="max-h-[20vh] sm:max-h-[28vh] md:max-h-[30vh] lg:max-h-[55vh] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
                 />
               </motion.div>

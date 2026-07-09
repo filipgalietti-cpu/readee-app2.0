@@ -21,7 +21,7 @@
             "A sunken ship"
           ],
           "correct": "A golden chest",
-          "hint": "Look at the last sentence — what was resting on the sandy bottom?",
+          "hint": "Look at the last sentence \u2014 what was resting on the sandy bottom?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.1/RL.3.1-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.1/RL.3.1-Q1-hint.mp3",
@@ -39,7 +39,7 @@
             "Nervous and shaky"
           ],
           "correct": "Nervous and shaky",
-          "hint": "The text says his hands were shaking — what feeling does that show?",
+          "hint": "The text says his hands were shaking \u2014 what feeling does that show?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.1/RL.3.1-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.1/RL.3.1-Q2-hint.mp3",
@@ -312,9 +312,9 @@
             "Magic always works out well",
             "Kings are always happy",
             "Gold is the most valuable thing",
-            "Be careful what you wish for — greed has consequences"
+            "Be careful what you wish for \u2014 greed has consequences"
           ],
-          "correct": "Be careful what you wish for — greed has consequences",
+          "correct": "Be careful what you wish for \u2014 greed has consequences",
           "hint": "Midas got exactly what he wanted, but it ruined everything he loved.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.2/RL.3.2-Q3.mp3",
@@ -348,9 +348,9 @@
             "Riddles are hard",
             "Elders are tricky",
             "Girls aren't as smart as boys",
-            "Bragging doesn't make you smart — listening and thinking do"
+            "Bragging doesn't make you smart \u2014 listening and thinking do"
           ],
-          "correct": "Bragging doesn't make you smart — listening and thinking do",
+          "correct": "Bragging doesn't make you smart \u2014 listening and thinking do",
           "hint": "Compare the girl who bragged with the boy who listened. Who succeeded?",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.2/RL.3.2-Q5.mp3",
@@ -385,7 +385,7 @@
             "Eagles are unkind to birds that ask for help"
           ],
           "correct": "What you can do matters more than how you look",
-          "hint": "Notice which bird actually reached the sky. Be careful — the peacock's own words tell you what HE believes, not what the story is teaching.",
+          "hint": "Notice which bird actually reached the sky. Be careful \u2014 the peacock's own words tell you what HE believes, not what the story is teaching.",
           "difficulty": "hard",
           "adaptiveDifficulty": 96,
           "adaptiveGenerated": true
@@ -401,7 +401,7 @@
             "Some questions simply cannot be answered"
           ],
           "correct": "A good answer sometimes needs information first",
-          "hint": "Focus on the woman's very last sentence — it explains WHY she waited before answering. The lesson lives in her reason.",
+          "hint": "Focus on the woman's very last sentence \u2014 it explains WHY she waited before answering. The lesson lives in her reason.",
           "difficulty": "hard",
           "adaptiveDifficulty": 92,
           "adaptiveGenerated": true
@@ -433,7 +433,7 @@
             "Water will always soak away into dry sand"
           ],
           "correct": "Being steady and patient reaches a goal better than rushing",
-          "hint": "The stream and river wanted the same thing but ended up differently. Ask WHAT the stream did wrong — was it its size, or the way it moved?",
+          "hint": "The stream and river wanted the same thing but ended up differently. Ask WHAT the stream did wrong \u2014 was it its size, or the way it moved?",
           "difficulty": "hard",
           "adaptiveDifficulty": 93,
           "adaptiveGenerated": true
@@ -704,7 +704,7 @@
         {
           "id": "RL.3.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Which sentence uses LITERAL language?",
+          "prompt": "Listen to the story: In class, Maya's teacher explained that literal language means exactly what the words say, while figurative language paints a picture with words that are not meant to be taken word for word. The teacher wrote four sentences on the board and asked the students to find the one that was completely literal and could really happen just as it was written. Maya read each one carefully before raising her hand. Which sentence uses LITERAL language?",
           "choices": [
             "Time flies when you're having fun.",
             "She has a heart of gold.",
@@ -712,7 +712,7 @@
             "The dog ate his dinner."
           ],
           "correct": "The dog ate his dinner.",
-          "hint": "Literal language means exactly what it says — no hidden meaning.",
+          "hint": "Literal language means exactly what it says \u2014 no hidden meaning.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q3-hint.mp3",
@@ -721,7 +721,7 @@
         {
           "id": "RL.3.4-Q4",
           "type": "multiple_choice",
-          "prompt": "The classroom was a zoo today!\n\nThis means —",
+          "prompt": "The classroom was a zoo today!\n\nThis means \u2014",
           "choices": [
             "They went on a field trip to the zoo",
             "The teacher likes animals",
@@ -729,7 +729,7 @@
             "The classroom was very loud and chaotic"
           ],
           "correct": "The classroom was very loud and chaotic",
-          "hint": "The classroom isn't ACTUALLY a zoo — the author is comparing it to one. Why?",
+          "hint": "The classroom isn't ACTUALLY a zoo \u2014 the author is comparing it to one. Why?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.4/RL.3.4-Q4-hint.mp3",
@@ -761,7 +761,7 @@
         {
           "id": "RL.3.5-Q3",
           "type": "multiple_choice",
-          "prompt": "A long novel is usually divided into —",
+          "prompt": "A long novel is usually divided into \u2014",
           "choices": [
             "Chapters",
             "Verses",
@@ -769,7 +769,7 @@
             "Stanzas"
           ],
           "correct": "Chapters",
-          "hint": "Think about how a novel is organized — each section has a number and sometimes a title.",
+          "hint": "Think about how a novel is organized \u2014 each section has a number and sometimes a title.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.5/RL.3.5-Q3-hint.mp3",
@@ -896,7 +896,7 @@
         {
           "id": "RL.3.6-Q2",
           "type": "multiple_choice",
-          "prompt": "A character in a story thinks it's okay to cheat on a test. You think cheating is wrong. This shows that —",
+          "prompt": "A character in a story thinks it's okay to cheat on a test. You think cheating is wrong. This shows that \u2014",
           "choices": [
             "You and the character have different points of view",
             "You didn't understand the story",
@@ -927,7 +927,7 @@
         {
           "id": "RL.3.6-Q5",
           "type": "multiple_choice",
-          "prompt": "The wolf in the story said he was just trying to borrow sugar. But the pigs said he tried to blow their houses down.\n\nA reader might think —",
+          "prompt": "The wolf in the story said he was just trying to borrow sugar. But the pigs said he tried to blow their houses down.\n\nA reader might think \u2014",
           "choices": [
             "The wolf is definitely telling the truth",
             "The pigs are definitely lying",
@@ -952,7 +952,7 @@
         {
           "id": "RL.3.7-Q1",
           "type": "multiple_choice",
-          "prompt": "A story says \"The girl walked into the room.\" The illustration shows the room decorated with balloons, streamers, and a big cake. The illustration helps show that —",
+          "prompt": "A story says \"The girl walked into the room.\" The illustration shows the room decorated with balloons, streamers, and a big cake. The illustration helps show that \u2014",
           "choices": [
             "The girl is at school",
             "The room is empty",
@@ -972,12 +972,12 @@
           "type": "multiple_choice",
           "prompt": "Read this story part: 'Leo crept down the long, spooky hallway. Every little creak and groan made him jump. He wondered what was hiding in the shadows.' Imagine an illustration for this story shows Leo holding a tiny, flickering flashlight, his eyes wide with worry, and tall, dark shadows stretching from corners. How does this illustration help you understand the story words?",
           "choices": [
-            "A. It shows that Leo is brave and not afraid at all.",
-            "B. It helps you see how bright and happy the hallway is.",
-            "C. It makes the hallway seem even more mysterious and a little scary.",
-            "D. It tells you exactly what Leo will find at the end of the hallway."
+            "It shows that Leo is brave and not afraid at all.",
+            "It helps you see how bright and happy the hallway is.",
+            "It makes the hallway seem even more mysterious and a little scary.",
+            "It tells you exactly what Leo will find at the end of the hallway."
           ],
-          "correct": "C. It makes the hallway seem even more mysterious and a little scary.",
+          "correct": "It makes the hallway seem even more mysterious and a little scary.",
           "hint": "Think about what feelings the words 'spooky' and 'shadows' create, and how the picture adds to those feelings.",
           "difficulty": "easy",
           "adaptiveDifficulty": 43
@@ -993,7 +993,7 @@
             "The character is laughing"
           ],
           "correct": "The character is lying about their feelings",
-          "hint": "The words say 'fine' but the picture shows tears — those don't match!",
+          "hint": "The words say 'fine' but the picture shows tears \u2014 those don't match!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.7/RL.3.7-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.7/RL.3.7-Q3-hint.mp3",
@@ -1159,12 +1159,12 @@
           "type": "multiple_choice",
           "prompt": "An author writes two stories about a character named Rosie. In the first story, Rosie learns that being kind is important. In the second story, Rosie learns that it's okay to ask for help. What literary element is different between these two stories?",
           "choices": [
-            "A) The main character",
-            "B) The lesson or message",
-            "C) The time of day",
-            "D) The type of animal Rosie meets"
+            "The main character",
+            "The lesson or message",
+            "The time of day",
+            "The type of animal Rosie meets"
           ],
-          "correct": "B) The lesson or message",
+          "correct": "The lesson or message",
           "hint": "Think about what the author wants the reader to learn from each of Rosie's stories.",
           "difficulty": "easy",
           "adaptiveDifficulty": 48
@@ -1335,7 +1335,7 @@
       "standard_id": "RL.3.10",
       "standard_description": "By end of the year, read and comprehend literature at the high end of the grades 2-3 text complexity band.",
       "domain": "Reading Literature",
-      "parent_tip": "Encourage your child to tackle slightly challenging books — that's how reading muscles grow!",
+      "parent_tip": "Encourage your child to tackle slightly challenging books \u2014 that's how reading muscles grow!",
       "questions": [
         {
           "id": "RL.3.10-Q1",
@@ -1512,7 +1512,7 @@
         {
           "id": "RI.3.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Which statement tells two important things about the Amazon Rainforest, according to the text?",
+          "prompt": "Listen to the story: The Amazon Rainforest is the largest rainforest on our planet, stretching across many countries in South America. Scientists have found that it produces about 20 percent of the world's oxygen, which is why some people call it the lungs of the Earth. It is also an amazing home to more than 10 million different types of plants and animals, many of which live nowhere else. Because so many living things depend on it, protecting the Amazon is very important. Which statement tells two important things about the Amazon Rainforest, according to the text?",
           "choices": [
             "It makes about 10 percent of the world's oxygen and has more than 20 million types of plants and animals.",
             "It makes about 50 percent of the world's oxygen and has more than 10 million types of plants and animals.",
@@ -1586,7 +1586,7 @@
             "The station orbits Earth so quickly"
           ],
           "correct": "The station orbits Earth so quickly",
-          "hint": "It goes around Earth every 90 minutes — so it sees the sun rise and set with each orbit!",
+          "hint": "It goes around Earth every 90 minutes \u2014 so it sees the sun rise and set with each orbit!",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q5-hint.mp3",
@@ -1702,7 +1702,7 @@
         {
           "id": "RI.3.2-Q3",
           "type": "multiple_choice",
-          "prompt": "Coral reefs are in danger. Pollution poisons the water. Rising temperatures cause coral to turn white and die. Overfishing removes animals that keep reefs healthy.\n\nThe key details all support the main idea that —",
+          "prompt": "Coral reefs are in danger. Pollution poisons the water. Rising temperatures cause coral to turn white and die. Overfishing removes animals that keep reefs healthy.\n\nThe key details all support the main idea that \u2014",
           "choices": [
             "Coral reefs are beautiful",
             "Fish live in reefs",
@@ -1710,7 +1710,7 @@
             "Coral reefs face many threats"
           ],
           "correct": "Coral reefs face many threats",
-          "hint": "Pollution, rising temperatures, overfishing — these are all threats!",
+          "hint": "Pollution, rising temperatures, overfishing \u2014 these are all threats!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.2/RI.3.2-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.2/RI.3.2-Q3-hint.mp3",
@@ -1929,7 +1929,7 @@
             "High temperatures"
           ],
           "correct": "Farmers lost crops due to flooding",
-          "hint": "Follow the chain: flood → lost crops → higher food prices.",
+          "hint": "Follow the chain: flood \u2192 lost crops \u2192 higher food prices.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q1-hint.mp3",
@@ -1939,7 +1939,7 @@
         {
           "id": "RI.3.3-Q2",
           "type": "multiple_choice",
-          "prompt": "What happened because Rosa Parks refused to give up her bus seat?",
+          "prompt": "Listen to the story: In 1955, in the city of Montgomery, a woman named Rosa Parks was riding home on a crowded bus. When the driver told her to give up her seat, she quietly refused, and she was arrested for it. The news of her brave choice spread quickly through the community. In response, thousands of people decided to stop riding the city buses altogether, and this boycott of the buses lasted for many months. What happened because Rosa Parks refused to give up her bus seat?",
           "choices": [
             "The Supreme Court ruled bus segregation was unconstitutional.",
             "People started a boycott of the city buses.",
@@ -1980,7 +1980,7 @@
             "The water gets warmer"
           ],
           "correct": "The shore is protected from erosion",
-          "hint": "Look for the signal phrase 'due to this' — what comes after it is the effect!",
+          "hint": "Look for the signal phrase 'due to this' \u2014 what comes after it is the effect!",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q8.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q8-hint.mp3",
@@ -1997,7 +1997,7 @@
             "Catch the whale again"
           ],
           "correct": "Monitor the whale's location using satellites",
-          "hint": "Look for the word 'Next' — it tells you what comes right after the first step!",
+          "hint": "Look for the word 'Next' \u2014 it tells you what comes right after the first step!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q11.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q11-hint.mp3",
@@ -2031,7 +2031,7 @@
             "Sand returns to the beach"
           ],
           "correct": "A hurricane's winds push waves onto shore",
-          "hint": "Read the passage from the beginning — what event starts the whole process?",
+          "hint": "Read the passage from the beginning \u2014 what event starts the whole process?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q14.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.3/RI.3.3-Q14-hint.mp3",
@@ -2130,12 +2130,12 @@
           "type": "multiple_choice",
           "prompt": "Imagine a plant soaking up sunshine! It's also drinking water and taking in a special gas from the air. All of these things help the plant do its job of making food for itself. This important job is called photosynthesis.",
           "choices": [
-            "A. How plants drink water.",
-            "B. How plants make their own food.",
-            "C. The way plants get sunlight.",
-            "D. A type of gas plants breathe."
+            "How plants drink water.",
+            "How plants make their own food.",
+            "The way plants get sunlight.",
+            "A type of gas plants breathe."
           ],
-          "correct": "B. How plants make their own food.",
+          "correct": "How plants make their own food.",
           "hint": "Look for the sentence that connects 'this important job' to what the plant is doing.",
           "difficulty": "easy",
           "adaptiveDifficulty": 40
@@ -2151,7 +2151,7 @@
             "Highest or most important"
           ],
           "correct": "Highest or most important",
-          "hint": "The Constitution is the law that all other laws must follow — it's the top one!",
+          "hint": "The Constitution is the law that all other laws must follow \u2014 it's the top one!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.4/RI.3.4-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.4/RI.3.4-Q2-hint.mp3",
@@ -2415,12 +2415,12 @@
           "type": "multiple_choice",
           "prompt": "Imagine you are reading a non-fiction book about space and you want to quickly find the exact page that talks about \"Mars.\" Which part of the book would you use to efficiently locate this specific information?",
           "choices": [
-            "A. The table of contents",
-            "B. The glossary",
-            "C. The index",
-            "D. The dedication page"
+            "The table of contents",
+            "The glossary",
+            "The index",
+            "The dedication page"
           ],
-          "correct": "C. The index",
+          "correct": "The index",
           "hint": "Look for the part of the text that explains which feature lists specific topics and their page numbers, usually found at the back of the book.",
           "difficulty": "medium",
           "adaptiveDifficulty": 44
@@ -2428,7 +2428,7 @@
         {
           "id": "RI.3.5-Q5",
           "type": "multiple_choice",
-          "prompt": "Hyperlinks in a digital text allow you to —",
+          "prompt": "Hyperlinks in a digital text allow you to \u2014",
           "choices": [
             "Delete words",
             "Jump to related information quickly",
@@ -2549,7 +2549,7 @@
         {
           "id": "RI.3.6-Q2",
           "type": "multiple_choice",
-          "prompt": "A student reads an article that says school should start later. The student likes waking up early. This shows —",
+          "prompt": "A student reads an article that says school should start later. The student likes waking up early. This shows \u2014",
           "choices": [
             "The student and author have different points of view",
             "The student is wrong",
@@ -2582,7 +2582,7 @@
         {
           "id": "RI.3.6-Q4",
           "type": "multiple_choice",
-          "prompt": "Zoos keep animals in small spaces where they can't roam freely. Animals deserve to live in their natural habitats.\n\nThe author most likely believes —",
+          "prompt": "Zoos keep animals in small spaces where they can't roam freely. Animals deserve to live in their natural habitats.\n\nThe author most likely believes \u2014",
           "choices": [
             "All animals should be pets",
             "Zoos aren't the best place for animals",
@@ -2698,12 +2698,12 @@
       "standard_id": "RI.3.7",
       "standard_description": "Use information from illustrations and the words in a text to demonstrate understanding.",
       "domain": "Reading Informational Text",
-      "parent_tip": "Point out maps, diagrams, and charts in nonfiction — ask what new information they provide.",
+      "parent_tip": "Point out maps, diagrams, and charts in nonfiction \u2014 ask what new information they provide.",
       "questions": [
         {
           "id": "RI.3.7-Q1",
           "type": "multiple_choice",
-          "prompt": "A science text describes the water cycle. Beside it is a diagram with arrows showing evaporation, condensation, and precipitation. The diagram helps by —",
+          "prompt": "A science text describes the water cycle. Beside it is a diagram with arrows showing evaporation, condensation, and precipitation. The diagram helps by \u2014",
           "choices": [
             "Showing the process visually so it's easier to understand",
             "Adding new vocabulary",
@@ -2721,7 +2721,7 @@
         {
           "id": "RI.3.7-Q2",
           "type": "multiple_choice",
-          "prompt": "A map in a history book shows the route Lewis and Clark traveled. The map helps readers understand —",
+          "prompt": "A map in a history book shows the route Lewis and Clark traveled. The map helps readers understand \u2014",
           "choices": [
             "How far and where they traveled",
             "What they ate",
@@ -2739,7 +2739,7 @@
         {
           "id": "RI.3.7-Q3",
           "type": "multiple_choice",
-          "prompt": "A photograph in a textbook shows a volcano erupting with lava flowing down its side. The photograph adds to the text by —",
+          "prompt": "A photograph in a textbook shows a volcano erupting with lava flowing down its side. The photograph adds to the text by \u2014",
           "choices": [
             "Listing vocabulary words",
             "Explaining the science of volcanoes",
@@ -2775,7 +2775,7 @@
         {
           "id": "RI.3.7-Q5",
           "type": "multiple_choice",
-          "prompt": "Which illustration would BEST help a reader understand an article about the layers of the Earth?",
+          "prompt": "Listen to the story: Ben was reading a science article that described the layers of the Earth. The article explained that our planet has a hard outer crust, a thick middle layer called the mantle, and a very hot center called the core, all fitting inside one another like the layers of an onion. Ben wanted to add one picture that would help readers clearly see how these layers are arranged from the outside to the deep inside. Which illustration would BEST help a reader understand an article about the layers of the Earth?",
           "choices": [
             "A map of the continents",
             "A picture of a mountain",
@@ -2881,7 +2881,7 @@
         {
           "id": "RI.3.8-Q1",
           "type": "multiple_choice",
-          "prompt": "Sentence 1: Plastic bags harm ocean animals. Sentence 2: Sea turtles mistake plastic bags for jellyfish and eat them.\n\nSentence 2 connects to Sentence 1 by —",
+          "prompt": "Sentence 1: Plastic bags harm ocean animals. Sentence 2: Sea turtles mistake plastic bags for jellyfish and eat them.\n\nSentence 2 connects to Sentence 1 by \u2014",
           "choices": [
             "Giving an example of how plastic harms animals",
             "Introducing a new idea",
@@ -2899,7 +2899,7 @@
         {
           "id": "RI.3.8-Q2",
           "type": "multiple_choice",
-          "prompt": "How do the first two paragraphs of the passage connect to each other?",
+          "prompt": "Listen to the story: A rainbow is a curved band of colors that stretches across the sky, showing red, orange, yellow, green, blue, and purple in a bright arc. Rainbows appear when sunlight shines through tiny raindrops floating in the air. As the light passes into each drop, the drop bends it and splits it into all of its separate colors, and that is why we see the glowing arc after it rains. How do the first two paragraphs of the passage connect to each other?",
           "choices": [
             "They compare two different kinds of natural events.",
             "The first tells what something is, and the second tells why it happens.",
@@ -2914,7 +2914,7 @@
         {
           "id": "RI.3.8-Q3",
           "type": "multiple_choice",
-          "prompt": "Dogs are loyal pets. However, they require a lot of time and attention.\n\nThe word **however** shows —",
+          "prompt": "Dogs are loyal pets. However, they require a lot of time and attention.\n\nThe word **however** shows \u2014",
           "choices": [
             "A cause and effect",
             "A time sequence",
@@ -2932,7 +2932,7 @@
         {
           "id": "RI.3.8-Q4",
           "type": "multiple_choice",
-          "prompt": "A paragraph about saving water is followed by a paragraph listing specific ways to save water at home. The second paragraph —",
+          "prompt": "A paragraph about saving water is followed by a paragraph listing specific ways to save water at home. The second paragraph \u2014",
           "choices": [
             "Disagrees with the first",
             "Tells a personal story",
@@ -2940,7 +2940,7 @@
             "Changes the topic completely"
           ],
           "correct": "Provides specific examples to support the first paragraph",
-          "hint": "General idea → specific examples. That's a common way paragraphs connect!",
+          "hint": "General idea \u2192 specific examples. That's a common way paragraphs connect!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.8/RI.3.8-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.8/RI.3.8-Q4-hint.mp3",
@@ -3076,7 +3076,7 @@
             "One is about food"
           ],
           "correct": "They focus on different BENEFITS of exercise",
-          "hint": "Both agree exercise is important — but they highlight different reasons!",
+          "hint": "Both agree exercise is important \u2014 but they highlight different reasons!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.9/RI.3.9-Q2-hint.mp3",
@@ -3086,7 +3086,7 @@
         {
           "id": "RI.3.9-Q3",
           "type": "multiple_choice",
-          "prompt": "When comparing two texts, which question is MOST useful?",
+          "prompt": "Listen to the story: Priya was comparing two different articles about sharks for a class project. Her teacher reminded her that the smartest way to compare two texts is to notice which facts appear in both articles and which facts show up in only one of them. Priya sat down and thought carefully about the one question that would help her compare the texts the most. When comparing two texts, which question is MOST useful?",
           "choices": [
             "Which text was written first?",
             "What information is in both, and what is only in one?",
@@ -3104,7 +3104,7 @@
         {
           "id": "RI.3.9-Q5",
           "type": "multiple_choice",
-          "prompt": "Which statement best compares the main points of Text A and Text B?",
+          "prompt": "Listen to the story: Text A argues that children spend far too much time in front of screens, and it says that screen time should be limited so kids stay healthy and active. Text B agrees that screens can be overused, but it also points out that educational apps and learning shows can teach children useful new skills, so it says that educational screen time can actually be helpful. Both texts talk about screens, but they reach their points in different ways. Which statement best compares the main points of Text A and Text B?",
           "choices": [
             "Both texts agree that children should not use screens at all.",
             "Text A and Text B both suggest that more screen time is better for learning.",
@@ -3175,7 +3175,7 @@
             "Text A is describing what ash does long after, while Text B describes what it does right away"
           ],
           "correct": "Text A is describing what ash does long after, while Text B describes what it does right away",
-          "hint": "The ash is the same. Look for a difference in WHEN each author is talking about — one uses the word 'after.'",
+          "hint": "The ash is the same. Look for a difference in WHEN each author is talking about \u2014 one uses the word 'after.'",
           "difficulty": "hard",
           "adaptiveDifficulty": 96,
           "adaptiveGenerated": true
@@ -3202,7 +3202,7 @@
       "standard_id": "RI.3.10",
       "standard_description": "By end of the year, read and comprehend informational texts at the high end of the grades 2-3 text complexity band.",
       "domain": "Reading Informational Text",
-      "parent_tip": "Encourage reading nonfiction about topics your child loves — science, animals, history, sports.",
+      "parent_tip": "Encourage reading nonfiction about topics your child loves \u2014 science, animals, history, sports.",
       "questions": [
         {
           "id": "RI.3.10-Q1",
@@ -3230,7 +3230,7 @@
             "They only eat plants"
           ],
           "correct": "They are harmless despite looking scary",
-          "hint": "The word 'despite' signals something unexpected — scary-looking but harmless!",
+          "hint": "The word 'despite' signals something unexpected \u2014 scary-looking but harmless!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.10/RI.3.10-Q2-hint.mp3",
@@ -3240,7 +3240,7 @@
         {
           "id": "RI.3.10-Q4",
           "type": "multiple_choice",
-          "prompt": "Monarch butterflies migrate up to 3,000 miles from Canada to Mexico each fall. No single butterfly makes the entire round trip — it takes multiple generations. The butterflies that fly south in fall are the great-great-grandchildren of the ones that flew north in spring.\n\nWhy is the monarch migration remarkable?",
+          "prompt": "Monarch butterflies migrate up to 3,000 miles from Canada to Mexico each fall. No single butterfly makes the entire round trip \u2014 it takes multiple generations. The butterflies that fly south in fall are the great-great-grandchildren of the ones that flew north in spring.\n\nWhy is the monarch migration remarkable?",
           "choices": [
             "They fly very slowly",
             "They only travel short distances",
@@ -3258,7 +3258,7 @@
         {
           "id": "RI.3.10-Q5",
           "type": "multiple_choice",
-          "prompt": "The Sahara Desert isn't just sand — only about 25% is sandy. The rest includes rocky plateaus, gravel plains, and even mountains. Temperatures can swing from over 130°F during the day to below freezing at night.\n\nWhat common misconception about the Sahara does this text correct?",
+          "prompt": "The Sahara Desert isn't just sand \u2014 only about 25% is sandy. The rest includes rocky plateaus, gravel plains, and even mountains. Temperatures can swing from over 130\u00b0F during the day to below freezing at night.\n\nWhat common misconception about the Sahara does this text correct?",
           "choices": [
             "That it's all sand",
             "That it's hot",
@@ -3359,7 +3359,7 @@
       "standard_id": "RF.3.3",
       "standard_description": "Know and apply grade-level phonics and word analysis skills in decoding words.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Encourage your child to break unfamiliar words into familiar parts — prefixes, roots, and suffixes.",
+      "parent_tip": "Encourage your child to break unfamiliar words into familiar parts \u2014 prefixes, roots, and suffixes.",
       "questions": [
         {
           "id": "RF.3.3-Q1",
@@ -3426,7 +3426,7 @@
             "K and g"
           ],
           "correct": "K and g",
-          "hint": "Say 'knight' out loud. You hear 'nite' — which letters are you NOT hearing?",
+          "hint": "Say 'knight' out loud. You hear 'nite' \u2014 which letters are you NOT hearing?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3/RF.3.3-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.3/RF.3.3-Q4-hint.mp3",
@@ -3454,7 +3454,7 @@
         {
           "id": "RF.3.3-H1",
           "type": "multiple_choice",
-          "prompt": "In which word is **un-** a real prefix (a word part added to the front) that you can peel off to leave a smaller word?\n\nuncle  •  until  •  untie  •  under",
+          "prompt": "In which word is **un-** a real prefix (a word part added to the front) that you can peel off to leave a smaller word?\n\nuncle  \u2022  until  \u2022  untie  \u2022  under",
           "choices": [
             "untie",
             "under",
@@ -3486,7 +3486,7 @@
         {
           "id": "RF.3.3-H3",
           "type": "multiple_choice",
-          "prompt": "Which word ends with the same **/shun/** sound as **nation**?\n\nmountain  •  question  •  vacation  •  kitchen",
+          "prompt": "Which word ends with the same **/shun/** sound as **nation**?\n\nmountain  \u2022  question  \u2022  vacation  \u2022  kitchen",
           "choices": [
             "question",
             "kitchen",
@@ -3542,7 +3542,7 @@
         {
           "id": "RF.3.3a-Q1",
           "type": "multiple_choice",
-          "prompt": "The prefix **dis-** in **disagree** means —",
+          "prompt": "The prefix **dis-** in **disagree** means \u2014",
           "choices": [
             "Before",
             "Not or opposite",
@@ -3611,7 +3611,7 @@
         {
           "id": "RF.3.3a-Q5",
           "type": "multiple_choice",
-          "prompt": "The prefix **mis-** in **misunderstand** means —",
+          "prompt": "The prefix **mis-** in **misunderstand** means \u2014",
           "choices": [
             "Very",
             "Not",
@@ -3629,7 +3629,7 @@
         {
           "id": "RF.3.3a-H1",
           "type": "multiple_choice",
-          "prompt": "In which word does **un-** work as a real prefix meaning 'not'?  **unkind** · **uncle** · **under** · **uncover**",
+          "prompt": "In which word does **un-** work as a real prefix meaning 'not'?  **unkind** \u00b7 **uncle** \u00b7 **under** \u00b7 **uncover**",
           "choices": [
             "unkind",
             "uncover",
@@ -3645,7 +3645,7 @@
         {
           "id": "RF.3.3a-H2",
           "type": "multiple_choice",
-          "prompt": "The suffix **-er** can mean 'a person who does something.' In which word does **-er** mean that?  **painter** · **colder** · **faster** · **longer**",
+          "prompt": "The suffix **-er** can mean 'a person who does something.' In which word does **-er** mean that?  **painter** \u00b7 **colder** \u00b7 **faster** \u00b7 **longer**",
           "choices": [
             "longer",
             "painter",
@@ -3661,7 +3661,7 @@
         {
           "id": "RF.3.3a-H3",
           "type": "multiple_choice",
-          "prompt": "The suffix **-less** means 'without.' Which word means 'without fear'?  **fearful** · **fearless** · **feared** · **fearing**",
+          "prompt": "The suffix **-less** means 'without.' Which word means 'without fear'?  **fearful** \u00b7 **fearless** \u00b7 **feared** \u00b7 **fearing**",
           "choices": [
             "feared",
             "fearing",
@@ -3677,7 +3677,7 @@
         {
           "id": "RF.3.3a-H4",
           "type": "multiple_choice",
-          "prompt": "The prefix **pre-** means 'before.' What does the word **preheat** mean?  **to heat again** · **to heat before** · **to not heat** · **to heat fully**",
+          "prompt": "The prefix **pre-** means 'before.' What does the word **preheat** mean?  **to heat again** \u00b7 **to heat before** \u00b7 **to not heat** \u00b7 **to heat fully**",
           "choices": [
             "to heat fully",
             "to heat again",
@@ -3693,7 +3693,7 @@
         {
           "id": "RF.3.3a-H5",
           "type": "multiple_choice",
-          "prompt": "The prefix **mis-** means 'wrongly' or 'badly.' What does the word **misspell** mean?  **to spell again** · **to spell wrongly** · **to spell before** · **to spell fully**",
+          "prompt": "The prefix **mis-** means 'wrongly' or 'badly.' What does the word **misspell** mean?  **to spell again** \u00b7 **to spell wrongly** \u00b7 **to spell before** \u00b7 **to spell fully**",
           "choices": [
             "to spell wrongly",
             "to spell before",
@@ -3712,7 +3712,7 @@
       "standard_id": "RF.3.3b",
       "standard_description": "Decode words with common Latin suffixes.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Practice Latin suffixes: -tion, -sion, -ible, -able — they appear in many English words!",
+      "parent_tip": "Practice Latin suffixes: -tion, -sion, -ible, -able \u2014 they appear in many English words!",
       "questions": [
         {
           "id": "RF.3.3b-Q1",
@@ -3725,7 +3725,7 @@
             "Tye-on"
           ],
           "correct": "Shun",
-          "hint": "Say 'nation' — the '-tion' sounds like 'shun.'",
+          "hint": "Say 'nation' \u2014 the '-tion' sounds like 'shun.'",
           "difficulty": "easy",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.3b/RF.3.3b-Q1.png",
           "adaptiveDifficulty": 29
@@ -4024,7 +4024,7 @@
       "standard_id": "RF.3.3d",
       "standard_description": "Read grade-appropriate irregularly spelled words.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Practice tricky words like 'enough,' 'through,' 'thought' — they don't follow regular phonics rules.",
+      "parent_tip": "Practice tricky words like 'enough,' 'through,' 'thought' \u2014 they don't follow regular phonics rules.",
       "questions": [
         {
           "id": "RF.3.3d-Q3",
@@ -4096,7 +4096,7 @@
         {
           "id": "RF.3.3d-H2",
           "type": "multiple_choice",
-          "prompt": "In the word 'listen', one of the letters is silent — you do not hear it when you say the word. Which letter is silent?\n\nl-i-s-t-e-n",
+          "prompt": "In the word 'listen', one of the letters is silent \u2014 you do not hear it when you say the word. Which letter is silent?\n\nl-i-s-t-e-n",
           "choices": [
             "n",
             "t",
@@ -4128,7 +4128,7 @@
         {
           "id": "RF.3.3d-H4",
           "type": "multiple_choice",
-          "prompt": "The letters 'gh' can be tricky — sometimes they make a sound and sometimes they are silent. In which word do the letters 'gh' make NO sound at all?\n\neight    ghost    laugh    tough",
+          "prompt": "The letters 'gh' can be tricky \u2014 sometimes they make a sound and sometimes they are silent. In which word do the letters 'gh' make NO sound at all?\n\neight    ghost    laugh    tough",
           "choices": [
             "tough",
             "ghost",
@@ -4163,7 +4163,7 @@
       "standard_id": "RF.3.4",
       "standard_description": "Read with sufficient accuracy and fluency to support comprehension.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Have your child read aloud regularly — encourage smooth, expressive reading at a natural pace.",
+      "parent_tip": "Have your child read aloud regularly \u2014 encourage smooth, expressive reading at a natural pace.",
       "questions": [
         {
           "id": "RF.3.4-Q1",
@@ -4200,12 +4200,12 @@
           "type": "multiple_choice",
           "prompt": "Read the sentence below. Which word makes the sentence confusing and needs to be changed?\"My sister wanted too go to the park with us.\"",
           "choices": [
-            "A. sister",
-            "B. wanted",
-            "C. too",
-            "D. park"
+            "sister",
+            "wanted",
+            "too",
+            "park"
           ],
-          "correct": "C. too",
+          "correct": "too",
           "hint": "Think about the different ways we use the words 'too' and 'to' and which one fits best in this sentence.",
           "difficulty": "easy",
           "adaptiveDifficulty": 33
@@ -4221,7 +4221,7 @@
             "In a loud, urgent voice"
           ],
           "correct": "In a loud, urgent voice",
-          "hint": "The lifeguard SCREAMED — so read it with urgency!",
+          "hint": "The lifeguard SCREAMED \u2014 so read it with urgency!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4/RF.3.4-Q4-hint.mp3",
@@ -4350,7 +4350,7 @@
         {
           "id": "RF.3.4a-Q2",
           "type": "multiple_choice",
-          "prompt": "Setting a purpose for reading means —",
+          "prompt": "Setting a purpose for reading means \u2014",
           "choices": [
             "Reading out loud",
             "Picking the longest book",
@@ -4391,7 +4391,7 @@
             "They swim in circles"
           ],
           "correct": "They swim upright instead of horizontally",
-          "hint": "The text says 'unlike most fish' — what do seahorses do differently?",
+          "hint": "The text says 'unlike most fish' \u2014 what do seahorses do differently?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4a/RF.3.4a-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4a/RF.3.4a-Q4-hint.mp3",
@@ -4416,7 +4416,7 @@
         {
           "id": "RF.3.4a-H1",
           "type": "multiple_choice",
-          "prompt": "Which word has the SOFT g sound — the /j/ sound you hear in \"gem\"?",
+          "prompt": "Which word has the SOFT g sound \u2014 the /j/ sound you hear in \"gem\"?",
           "choices": [
             "giant",
             "gutter",
@@ -4464,7 +4464,7 @@
         {
           "id": "RF.3.4a-H4",
           "type": "multiple_choice",
-          "prompt": "Which word has a SILENT letter — a letter you spell but do not say?",
+          "prompt": "Which word has a SILENT letter \u2014 a letter you spell but do not say?",
           "choices": [
             "clump",
             "drum",
@@ -4499,12 +4499,12 @@
       "standard_id": "RF.3.4b",
       "standard_description": "Read grade-level prose and poetry orally with accuracy, appropriate rate, and expression.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Practice reading aloud together — take turns with different characters and use expressive voices!",
+      "parent_tip": "Practice reading aloud together \u2014 take turns with different characters and use expressive voices!",
       "questions": [
         {
           "id": "RF.3.4b-Q1",
           "type": "multiple_choice",
-          "prompt": "When reading a poem aloud, you should —",
+          "prompt": "When reading a poem aloud, you should \u2014",
           "choices": [
             "Pay attention to rhythm and pause at line breaks",
             "Skip the rhyming words",
@@ -4512,7 +4512,7 @@
             "Read in a monotone voice"
           ],
           "correct": "Pay attention to rhythm and pause at line breaks",
-          "hint": "Poems have a special rhythm — reading them well means following that beat!",
+          "hint": "Poems have a special rhythm \u2014 reading them well means following that beat!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q1-hint.mp3",
@@ -4529,7 +4529,7 @@
             "In a loud, happy voice"
           ],
           "correct": "In a soft, pleading voice",
-          "hint": "She 'begged quietly' — match your voice to that!",
+          "hint": "She 'begged quietly' \u2014 match your voice to that!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q2-hint.mp3",
@@ -4560,7 +4560,7 @@
             "Stop reading entirely"
           ],
           "correct": "Speed up slightly and add energy to your voice",
-          "hint": "Match the energy of the scene — exciting moments need exciting reading!",
+          "hint": "Match the energy of the scene \u2014 exciting moments need exciting reading!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4b/RF.3.4b-Q4-hint.mp3",
@@ -4613,19 +4613,19 @@
           "type": "multiple_choice",
           "prompt": "Lily loved to watch the birds. One day, she saw a robin building its nest. It used tiny twigs and soft grass. The robin worked hard to *construct* a cozy home for its eggs. If you weren't sure what 'construct' meant, what would be the best way to understand it?",
           "choices": [
-            "A. Ask a grown-up what the word means.",
-            "B. Skip the word and keep reading the story.",
-            "C. Reread the sentence and think about what the robin is doing with the twigs and grass to make a home.",
-            "D. Try to sound out the word many times until it makes sense."
+            "Ask a grown-up what the word means.",
+            "Skip the word and keep reading the story.",
+            "Reread the sentence and think about what the robin is doing with the twigs and grass to make a home.",
+            "Try to sound out the word many times until it makes sense."
           ],
-          "correct": "C. Reread the sentence and think about what the robin is doing with the twigs and grass to make a home.",
+          "correct": "Reread the sentence and think about what the robin is doing with the twigs and grass to make a home.",
           "hint": "Think about what the robin is doing with the twigs and grass to create its home. The surrounding words will give you clues.",
           "difficulty": "easy"
         },
         {
           "id": "RF.3.4c-Q4",
           "type": "multiple_choice",
-          "prompt": "If you read a paragraph and it doesn't make sense, the BEST thing to do is —",
+          "prompt": "If you read a paragraph and it doesn't make sense, the BEST thing to do is \u2014",
           "choices": [
             "Reread the paragraph more carefully",
             "Close the book",
@@ -4672,7 +4672,7 @@
             "Judges"
           ],
           "correct": "People watching",
-          "hint": "Spectators were cheering — they were watching the race, not running it!",
+          "hint": "Spectators were cheering \u2014 they were watching the race, not running it!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4/L.3.4-Q1-hint.mp3",
@@ -4845,12 +4845,12 @@
       "standard_id": "L.3.4a",
       "standard_description": "Use sentence-level context as a clue to the meaning of a word or phrase.",
       "domain": "Language",
-      "parent_tip": "When your child hits an unknown word, say 'Read the whole sentence — what clues help you figure it out?'",
+      "parent_tip": "When your child hits an unknown word, say 'Read the whole sentence \u2014 what clues help you figure it out?'",
       "questions": [
         {
           "id": "L.3.4a-Q5",
           "type": "multiple_choice",
-          "prompt": "The nocturnal owl hunted mice while other birds slept.\n\nUsing context clues, **nocturnal** means —",
+          "prompt": "The nocturnal owl hunted mice while other birds slept.\n\nUsing context clues, **nocturnal** means \u2014",
           "choices": [
             "Very fast",
             "Active at night",
@@ -4868,7 +4868,7 @@
         {
           "id": "L.3.4a-E1",
           "type": "multiple_choice",
-          "prompt": "The soup was so hot it was scalding, and it burned my tongue.\n\nUsing context clues, **scalding** means —",
+          "prompt": "The soup was so hot it was scalding, and it burned my tongue.\n\nUsing context clues, **scalding** means \u2014",
           "choices": [
             "Burning hot",
             "Bright green",
@@ -4884,7 +4884,7 @@
         {
           "id": "L.3.4a-E2",
           "type": "multiple_choice",
-          "prompt": "The tired hikers rested because they were exhausted after the long walk.\n\nUsing context clues, **exhausted** means —",
+          "prompt": "The tired hikers rested because they were exhausted after the long walk.\n\nUsing context clues, **exhausted** means \u2014",
           "choices": [
             "Wet from rain",
             "Very tired",
@@ -4900,7 +4900,7 @@
         {
           "id": "L.3.4a-E3",
           "type": "multiple_choice",
-          "prompt": "The gigantic elephant was so big it could not fit through the door.\n\nUsing context clues, **gigantic** means —",
+          "prompt": "The gigantic elephant was so big it could not fit through the door.\n\nUsing context clues, **gigantic** means \u2014",
           "choices": [
             "Very fast",
             "Very loud",
@@ -4916,7 +4916,7 @@
         {
           "id": "L.3.4a-E4",
           "type": "multiple_choice",
-          "prompt": "Maria was thrilled and jumped for joy when she won the race.\n\nUsing context clues, **thrilled** means —",
+          "prompt": "Maria was thrilled and jumped for joy when she won the race.\n\nUsing context clues, **thrilled** means \u2014",
           "choices": [
             "Very cold",
             "Very sad",
@@ -4932,7 +4932,7 @@
         {
           "id": "L.3.4a-E5",
           "type": "multiple_choice",
-          "prompt": "The old bridge was fragile, so it broke easily when the truck drove over it.\n\nUsing context clues, **fragile** means —",
+          "prompt": "The old bridge was fragile, so it broke easily when the truck drove over it.\n\nUsing context clues, **fragile** means \u2014",
           "choices": [
             "Easily broken",
             "Very shiny",
@@ -4956,7 +4956,7 @@
         {
           "id": "L.3.4b-Q3",
           "type": "multiple_choice",
-          "prompt": "The word **impossible** means —",
+          "prompt": "The word **impossible** means \u2014",
           "choices": [
             "Very possible",
             "Possible again",
@@ -4974,7 +4974,7 @@
         {
           "id": "L.3.4b-H1",
           "type": "multiple_choice",
-          "prompt": "After the storm knocked it down, the town had to reconstruct the old pier board by board. In this sentence, reconstruct means to —",
+          "prompt": "After the storm knocked it down, the town had to reconstruct the old pier board by board. In this sentence, reconstruct means to \u2014",
           "choices": [
             "build it again",
             "look at it closely",
@@ -5006,7 +5006,7 @@
         {
           "id": "L.3.4b-H3",
           "type": "multiple_choice",
-          "prompt": "\"You misjudged how far the puddle was, so you landed right in it,\" Mom said. Misjudged means that you judged the distance —",
+          "prompt": "\"You misjudged how far the puddle was, so you landed right in it,\" Mom said. Misjudged means that you judged the distance \u2014",
           "choices": [
             "before",
             "very carefully",
@@ -5022,7 +5022,7 @@
         {
           "id": "L.3.4b-H4",
           "type": "multiple_choice",
-          "prompt": "Grandma held up the old locket and whispered, \"This necklace is priceless.\" In this sentence, priceless means the necklace is —",
+          "prompt": "Grandma held up the old locket and whispered, \"This necklace is priceless.\" In this sentence, priceless means the necklace is \u2014",
           "choices": [
             "missing its price tag",
             "worth nothing at all",
@@ -5030,7 +5030,7 @@
             "worth so much you can't put a price on it"
           ],
           "correct": "worth so much you can't put a price on it",
-          "hint": "The suffix -less usually means 'without.' But think about WHY something would have no price — is it because it's worthless, or because it's too valuable to price?",
+          "hint": "The suffix -less usually means 'without.' But think about WHY something would have no price \u2014 is it because it's worthless, or because it's too valuable to price?",
           "difficulty": "hard",
           "adaptiveDifficulty": 98,
           "adaptiveGenerated": true
@@ -5054,7 +5054,7 @@
         {
           "id": "L.3.4b-E1",
           "type": "multiple_choice",
-          "prompt": "The prefix **re-** means \"again.\" So the word **replay** means to —",
+          "prompt": "The prefix **re-** means \"again.\" So the word **replay** means to \u2014",
           "choices": [
             "Eat lunch",
             "Play again",
@@ -5070,7 +5070,7 @@
         {
           "id": "L.3.4b-E2",
           "type": "multiple_choice",
-          "prompt": "The prefix **un-** means \"not.\" So the word **unhappy** means —",
+          "prompt": "The prefix **un-** means \"not.\" So the word **unhappy** means \u2014",
           "choices": [
             "Very fast",
             "Happy again",
@@ -5086,7 +5086,7 @@
         {
           "id": "L.3.4b-E3",
           "type": "multiple_choice",
-          "prompt": "The suffix **-ful** means \"full of.\" So the word **helpful** means —",
+          "prompt": "The suffix **-ful** means \"full of.\" So the word **helpful** means \u2014",
           "choices": [
             "Very cold",
             "Without help",
@@ -5102,7 +5102,7 @@
         {
           "id": "L.3.4b-E4",
           "type": "multiple_choice",
-          "prompt": "The prefix **un-** means \"not.\" So the word **unlock** means to —",
+          "prompt": "The prefix **un-** means \"not.\" So the word **unlock** means to \u2014",
           "choices": [
             "Not lock (open it)",
             "Jump high",
@@ -5118,7 +5118,7 @@
         {
           "id": "L.3.4b-E5",
           "type": "multiple_choice",
-          "prompt": "The suffix **-less** means \"without.\" So the word **fearless** means —",
+          "prompt": "The suffix **-less** means \"without.\" So the word **fearless** means \u2014",
           "choices": [
             "Full of water",
             "Without fear",
@@ -5176,7 +5176,7 @@
         {
           "id": "L.3.4c-H2",
           "type": "multiple_choice",
-          "prompt": "The root **aud** means \"to hear.\" Read: \"Hundreds of people packed the auditorium for the concert.\" Using the root, an **auditorium** is a place built mainly for people to —",
+          "prompt": "The root **aud** means \"to hear.\" Read: \"Hundreds of people packed the auditorium for the concert.\" Using the root, an **auditorium** is a place built mainly for people to \u2014",
           "choices": [
             "grow flowers and plants",
             "hear a performance",
@@ -5208,7 +5208,7 @@
         {
           "id": "L.3.4c-H4",
           "type": "multiple_choice",
-          "prompt": "You know **struct** means \"to build.\" Read: \"The instructions showed us how to put the bookshelf together.\" The word **instructions** shares this root, so instructions most likely means information that helps you —",
+          "prompt": "You know **struct** means \"to build.\" Read: \"The instructions showed us how to put the bookshelf together.\" The word **instructions** shares this root, so instructions most likely means information that helps you \u2014",
           "choices": [
             "clean up a messy room",
             "take something apart",
@@ -5224,7 +5224,7 @@
         {
           "id": "L.3.4c-H5",
           "type": "multiple_choice",
-          "prompt": "The root **spect** means \"to look or watch.\" Read: \"Grandpa put on his spectacles so he could read the tiny print.\" Using the root and the sentence, **spectacles** are —",
+          "prompt": "The root **spect** means \"to look or watch.\" Read: \"Grandpa put on his spectacles so he could read the tiny print.\" Using the root and the sentence, **spectacles** are \u2014",
           "choices": [
             "glasses you look through",
             "shoes you walk in",
@@ -5323,7 +5323,7 @@
       "standard_id": "L.3.4d",
       "standard_description": "Use glossaries or beginning dictionaries to determine or clarify the precise meaning of key words.",
       "domain": "Language",
-      "parent_tip": "Practice dictionary skills — guide words, alphabetical order, multiple definitions.",
+      "parent_tip": "Practice dictionary skills \u2014 guide words, alphabetical order, multiple definitions.",
       "questions": [
         {
           "id": "L.3.4d-Q1",
@@ -5336,7 +5336,7 @@
             "Neither fits"
           ],
           "correct": "Use definition 1",
-          "hint": "It's describing a tree, so it's the outer covering — definition 1!",
+          "hint": "It's describing a tree, so it's the outer covering \u2014 definition 1!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.4d/L.3.4d-Q1-hint.mp3",
@@ -5514,7 +5514,7 @@
         {
           "id": "L.3.5-Q1",
           "type": "multiple_choice",
-          "prompt": "She had a heart of gold.\n\nThis means —",
+          "prompt": "She had a heart of gold.\n\nThis means \u2014",
           "choices": [
             "She was very kind and generous",
             "Her heart was made of gold metal",
@@ -5522,7 +5522,7 @@
             "She wore gold jewelry"
           ],
           "correct": "She was very kind and generous",
-          "hint": "This is figurative language — a 'heart of gold' means a person who is very kind.",
+          "hint": "This is figurative language \u2014 a 'heart of gold' means a person who is very kind.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5/L.3.5-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5/L.3.5-Q1-hint.mp3",
@@ -5556,7 +5556,7 @@
             "Good luck"
           ],
           "correct": "Good luck",
-          "hint": "This is an idiom — it means the opposite of what it sounds like! Performers say it for luck.",
+          "hint": "This is an idiom \u2014 it means the opposite of what it sounds like! Performers say it for luck.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5/L.3.5-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5/L.3.5-Q3-hint.mp3",
@@ -5582,7 +5582,7 @@
         {
           "id": "L.3.5-Q5",
           "type": "multiple_choice",
-          "prompt": "The thunder grumbled like an angry old man.\n\nThis is an example of —",
+          "prompt": "The thunder grumbled like an angry old man.\n\nThis is an example of \u2014",
           "choices": [
             "Literal language",
             "A definition",
@@ -5609,12 +5609,12 @@
           "type": "multiple_choice",
           "prompt": "Time flies when you're having fun.\n\nIs this literal or nonliteral?",
           "choices": [
-            "Literal — time actually has wings",
-            "Nonliteral — it means time seems to pass quickly",
+            "Literal \u2014 time actually has wings",
+            "Nonliteral \u2014 it means time seems to pass quickly",
             "Neither",
-            "Literal — clocks move faster"
+            "Literal \u2014 clocks move faster"
           ],
-          "correct": "Nonliteral — it means time seems to pass quickly",
+          "correct": "Nonliteral \u2014 it means time seems to pass quickly",
           "hint": "Time doesn't actually fly! It's a figurative way of saying time SEEMS to go fast.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5a/L.3.5a-Q1.mp3",
@@ -5661,7 +5661,7 @@
         {
           "id": "L.3.5a-Q4",
           "type": "multiple_choice",
-          "prompt": "She was drowning in homework.\n\nThis means —",
+          "prompt": "She was drowning in homework.\n\nThis means \u2014",
           "choices": [
             "She fell into a pool of papers",
             "She had way too much homework",
@@ -5679,7 +5679,7 @@
         {
           "id": "L.3.5a-Q5",
           "type": "multiple_choice",
-          "prompt": "His words cut like a knife.\n\nThis sentence means his words were —",
+          "prompt": "His words cut like a knife.\n\nThis sentence means his words were \u2014",
           "choices": [
             "Long and boring",
             "Quiet and soft",
@@ -5687,7 +5687,7 @@
             "Made of metal"
           ],
           "correct": "Sharp and hurtful",
-          "hint": "Words can't actually cut, but they CAN hurt feelings — like a knife hurts physically.",
+          "hint": "Words can't actually cut, but they CAN hurt feelings \u2014 like a knife hurts physically.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5a/L.3.5a-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5a/L.3.5a-Q5-hint.mp3",
@@ -5705,7 +5705,7 @@
             "He had a problem with his heart"
           ],
           "correct": "He suddenly felt very sad and discouraged",
-          "hint": "The phrase isn't about his real heart. Match how STRONG the feeling is to 'bad news' — not too mild, not the wrong feeling.",
+          "hint": "The phrase isn't about his real heart. Match how STRONG the feeling is to 'bad news' \u2014 not too mild, not the wrong feeling.",
           "difficulty": "hard",
           "adaptiveDifficulty": 97,
           "adaptiveGenerated": true
@@ -5839,7 +5839,7 @@
         {
           "id": "L.3.5b-Q4",
           "type": "multiple_choice",
-          "prompt": "A person who always tells the truth can be described as —",
+          "prompt": "A person who always tells the truth can be described as \u2014",
           "choices": [
             "Stubborn",
             "Honest",
@@ -5847,7 +5847,7 @@
             "Careless"
           ],
           "correct": "Honest",
-          "hint": "Someone truthful is honest — a word connected to trust.",
+          "hint": "Someone truthful is honest \u2014 a word connected to trust.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5b/L.3.5b-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5b/L.3.5b-Q4-hint.mp3",
@@ -5958,7 +5958,7 @@
       "standard_id": "L.3.5c",
       "standard_description": "Distinguish shades of meaning among related words that describe states of mind or degrees of certainty.",
       "domain": "Language",
-      "parent_tip": "Play 'word ladders' — arrange words by intensity: annoyed → angry → furious.",
+      "parent_tip": "Play 'word ladders' \u2014 arrange words by intensity: annoyed \u2192 angry \u2192 furious.",
       "questions": [
         {
           "id": "L.3.5c-Q2",
@@ -5989,7 +5989,7 @@
             "Okay"
           ],
           "correct": "Delighted",
-          "hint": "Happy → delighted → ecstatic. Delighted is in the middle!",
+          "hint": "Happy \u2192 delighted \u2192 ecstatic. Delighted is in the middle!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.5c/L.3.5c-Q4-hint.mp3",
@@ -6041,7 +6041,7 @@
             "Certainly"
           ],
           "correct": "Probably",
-          "hint": "Two of these mean almost the same as 'maybe' or 'definitely' — you need the one that sits in the middle of the ladder.",
+          "hint": "Two of these mean almost the same as 'maybe' or 'definitely' \u2014 you need the one that sits in the middle of the ladder.",
           "difficulty": "hard",
           "adaptiveDifficulty": 98,
           "adaptiveGenerated": true
@@ -6081,7 +6081,7 @@
         {
           "id": "L.3.5c-H5",
           "type": "multiple_choice",
-          "prompt": "Maria said, \"I'm POSITIVE the library is open today.\" In this sentence, **positive** means —",
+          "prompt": "Maria said, \"I'm POSITIVE the library is open today.\" In this sentence, **positive** means \u2014",
           "choices": [
             "Certain",
             "Helpful",
@@ -6089,7 +6089,7 @@
             "More than zero"
           ],
           "correct": "Certain",
-          "hint": "'Positive' has several meanings — use the rest of Maria's sentence to decide which one fits here.",
+          "hint": "'Positive' has several meanings \u2014 use the rest of Maria's sentence to decide which one fits here.",
           "difficulty": "hard",
           "adaptiveDifficulty": 97,
           "adaptiveGenerated": true
@@ -6203,7 +6203,7 @@
         {
           "id": "L.3.6-Q2",
           "type": "multiple_choice",
-          "prompt": "In science, **habitat** means —",
+          "prompt": "In science, **habitat** means \u2014",
           "choices": [
             "A science experiment",
             "The natural home of an animal or plant",
@@ -6248,7 +6248,7 @@
         {
           "id": "L.3.6-Q4",
           "type": "multiple_choice",
-          "prompt": "The academic word **compare** means to —",
+          "prompt": "The academic word **compare** means to \u2014",
           "choices": [
             "Draw a picture",
             "Find how things are alike and different",
@@ -6256,7 +6256,7 @@
             "Write a story"
           ],
           "correct": "Find how things are alike and different",
-          "hint": "'Compare' is a word you use in all subjects — it means looking at similarities and differences.",
+          "hint": "'Compare' is a word you use in all subjects \u2014 it means looking at similarities and differences.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.6/L.3.6-Q4-hint.mp3",
@@ -6330,7 +6330,7 @@
         {
           "id": "L.3.6-E5",
           "type": "multiple_choice",
-          "prompt": "In a story, someone who feels **happy** feels — ",
+          "prompt": "In a story, someone who feels **happy** feels \u2014 ",
           "choices": [
             "Glad and cheerful",
             "Cold and wet",
@@ -6377,7 +6377,7 @@
             "The dog runned fast."
           ],
           "correct": "The dogs run fast.",
-          "hint": "Dogs is plural — use run, not runs.",
+          "hint": "Dogs is plural \u2014 use run, not runs.",
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/L.3.1/L.3.1-Q2-hint.mp3",
@@ -6659,7 +6659,7 @@
             "it's"
           ],
           "correct": "its",
-          "hint": "Try reading it as \"it is\" — if that doesn't make sense, you need the possessive form, which has no apostrophe.",
+          "hint": "Try reading it as \"it is\" \u2014 if that doesn't make sense, you need the possessive form, which has no apostrophe.",
           "difficulty": "hard",
           "adaptiveDifficulty": 93,
           "adaptiveGenerated": true
@@ -6787,7 +6787,7 @@
             "brisk"
           ],
           "correct": "fierce",
-          "hint": "Match the word to the clue in the sentence — the wind ripped a roof off. Which word carries that much force?",
+          "hint": "Match the word to the clue in the sentence \u2014 the wind ripped a roof off. Which word carries that much force?",
           "difficulty": "hard",
           "adaptiveDifficulty": 87,
           "adaptiveGenerated": true
@@ -6851,7 +6851,7 @@
             "spacious"
           ],
           "correct": "gloomy",
-          "hint": "Any of these could describe an old house — pick the one whose feeling matches the mood she wants.",
+          "hint": "Any of these could describe an old house \u2014 pick the one whose feeling matches the mood she wants.",
           "difficulty": "hard",
           "adaptiveDifficulty": 91,
           "adaptiveGenerated": true

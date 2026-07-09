@@ -1,0 +1,730 @@
+{
+  "K": [
+    {
+      "id": "RL.K.1-Q3",
+      "standard": "RL.K.1",
+      "prompt": "Why did Emma's mom make a chocolate cake?",
+      "choices": [
+        "Emma was hungry.",
+        "It was Emma's birthday.",
+        "It was a sunny day.",
+        "She liked to bake."
+      ],
+      "correct": "It was Emma's birthday."
+    },
+    {
+      "id": "RL.K.2-Q1",
+      "standard": "RL.K.2",
+      "prompt": "What did Bear do right after he felt hungry?",
+      "choices": [
+        "He ate the honey.",
+        "He looked in a tree.",
+        "He felt happy.",
+        "He found some berries."
+      ],
+      "correct": "He looked in a tree."
+    },
+    {
+      "id": "RL.K.2-Q2",
+      "standard": "RL.K.2",
+      "prompt": "Why did Frog get on the lily pad?",
+      "choices": [
+        "A. To find a new home.",
+        "B. To get to the other side.",
+        "C. To eat a snack.",
+        "D. To take a nap."
+      ],
+      "correct": "B. To get to the other side."
+    },
+    {
+      "id": "RL.K.2-Q3",
+      "standard": "RL.K.2",
+      "prompt": "What was Mia's problem in the story?",
+      "choices": [
+        "She shared her sandwich with Leo.",
+        "She forgot her lunch at home.",
+        "She didn't like her friend Leo.",
+        "She wanted to eat alone."
+      ],
+      "correct": "She forgot her lunch at home."
+    },
+    {
+      "id": "RL.K.2-Q4",
+      "standard": "RL.K.2",
+      "prompt": "How did Turtle win the race?",
+      "choices": [
+        "Rabbit did not want to win.",
+        "Turtle ran very fast.",
+        "Rabbit stopped to rest.",
+        "Turtle kept walking when Rabbit took a nap."
+      ],
+      "correct": "Turtle kept walking when Rabbit took a nap."
+    },
+    {
+      "id": "RL.K.6-Q4",
+      "standard": "RL.K.6",
+      "prompt": "What does an AUTHOR do?",
+      "choices": [
+        "Draws the pictures",
+        "Reads the book out loud",
+        "Sells the book",
+        "Writes the words"
+      ],
+      "correct": "Writes the words"
+    },
+    {
+      "id": "RI.K.3-Q2",
+      "standard": "RI.K.3",
+      "prompt": "What does the passage help us understand about how water and ice are connected?",
+      "choices": [
+        "Ice only gets colder and never melts.",
+        "Water and ice are always separate and never change into one another.",
+        "Water can become ice, and ice can become water again.",
+        "Only cold things can be water, and only warm things can be ice."
+      ],
+      "correct": "Water can become ice, and ice can become water again."
+    },
+    {
+      "id": "RI.K.6-Q5",
+      "standard": "RI.K.6",
+      "prompt": "Why do informational books need BOTH an author AND an illustrator?",
+      "choices": [
+        "The author writes facts, and the illustrator draws pictures to help explain.",
+        "They don't \u2014 only stories need both.",
+        "The illustrator writes and the author draws.",
+        "Only one person is needed."
+      ],
+      "correct": "The author writes facts, and the illustrator draws pictures to help explain."
+    },
+    {
+      "id": "RI.K.9-Q1",
+      "standard": "RI.K.9",
+      "prompt": "What is one way the books tell us different things about cats?",
+      "choices": [
+        "Both books say cats are soft.",
+        "Book 1 says cats are fluffy, but Book 2 says they are playful.",
+        "Book 1 says cats like to sleep, but Book 2 says they like to chase toys.",
+        "Both books say cats like to sleep a lot."
+      ],
+      "correct": "Book 1 says cats like to sleep, but Book 2 says they like to chase toys."
+    },
+    {
+      "id": "RL.K.10-Q1",
+      "standard": "RL.K.10",
+      "prompt": "What is one way to show you are actively listening during group story time?",
+      "choices": [
+        "Talking to your friend next to you.",
+        "Looking at the pictures in the book as the teacher reads.",
+        "Standing up and walking around.",
+        "Thinking about what you will do after school."
+      ],
+      "correct": "Looking at the pictures in the book as the teacher reads."
+    },
+    {
+      "id": "RL.K.10-Q2",
+      "standard": "RL.K.10",
+      "prompt": "What should you do when a story gets tricky?",
+      "choices": [
+        "ask for help",
+        "give up",
+        "stop reading forever",
+        "throw the book"
+      ],
+      "correct": "ask for help"
+    },
+    {
+      "id": "RL.K.10-Q4",
+      "standard": "RL.K.10",
+      "prompt": "What is one way you can show you understand a story during group reading time?",
+      "choices": [
+        "Talk about a different book you read yesterday.",
+        "Ask a question about what happened in the story.",
+        "Look at the wall instead of the book.",
+        "Keep quiet and not say anything at all."
+      ],
+      "correct": "Ask a question about what happened in the story."
+    },
+    {
+      "id": "RL.K.10-Q5",
+      "standard": "RL.K.10",
+      "prompt": "How can you show you are actively engaged when your teacher is reading a story to the whole class?",
+      "choices": [
+        "Close your eyes and rest",
+        "Talk to your friend about your lunch",
+        "Answer questions about the story",
+        "Look at the clock on the wall"
+      ],
+      "correct": "Answer questions about the story"
+    },
+    {
+      "id": "RI.K.10-Q4",
+      "standard": "RI.K.10",
+      "prompt": "When your group reads a fact book, what is a good way to learn new things together?",
+      "choices": [
+        "Only look at the words, not the pictures.",
+        "Keep all your good ideas quiet inside your head.",
+        "Talk about the interesting pictures with your friends.",
+        "Quickly turn all the pages without stopping."
+      ],
+      "correct": "Talk about the interesting pictures with your friends."
+    }
+  ],
+  "1": [
+    {
+      "id": "RL.1.1-Q5",
+      "standard": "RL.1.1",
+      "prompt": "Why was the kitten scared?",
+      "choices": [
+        "It saw a big, scary dog.",
+        "It was sleepy and wanted to nap.",
+        "It could not get down from the tall tree.",
+        "It wanted to climb even higher."
+      ],
+      "correct": "It could not get down from the tall tree."
+    },
+    {
+      "id": "RL.1.2-Q4",
+      "standard": "RL.1.2",
+      "prompt": "What lesson can we learn from Leo's story?",
+      "choices": [
+        "Bikes are only for big kids.",
+        "If you keep trying, you can learn new things.",
+        "It is fun to fall down.",
+        "You should always listen to your mom."
+      ],
+      "correct": "If you keep trying, you can learn new things."
+    },
+    {
+      "id": "RL.1.3-Q1",
+      "standard": "RL.1.3",
+      "prompt": "Which words best describe where the old woman lives?",
+      "choices": [
+        "A. A big house in a forest.",
+        "B. A big house near a mountain.",
+        "C. A small house near the ocean.",
+        "D. A small house in a big city."
+      ],
+      "correct": "C. A small house near the ocean."
+    },
+    {
+      "id": "RL.1.3-Q4",
+      "standard": "RL.1.3",
+      "prompt": "Which major event began the story about Rosa?",
+      "choices": [
+        "Rosa gave the puppy water.",
+        "Rosa found the puppy's owner.",
+        "Rosa found a lost puppy.",
+        "Rosa played with her friends."
+      ],
+      "correct": "Rosa found a lost puppy."
+    },
+    {
+      "id": "RL.1.5-Q3",
+      "standard": "RL.1.5",
+      "prompt": "Which is TRUE about storybooks?",
+      "choices": [
+        "They have made-up characters and events",
+        "They don't have pictures",
+        "They are always short",
+        "They have only facts"
+      ],
+      "correct": "They have made-up characters and events"
+    },
+    {
+      "id": "RL.1.5-Q4",
+      "standard": "RL.1.5",
+      "prompt": "Which is TRUE about informational books?",
+      "choices": [
+        "They have made-up characters",
+        "They teach real facts",
+        "They have talking animals",
+        "They are always funny"
+      ],
+      "correct": "They teach real facts"
+    },
+    {
+      "id": "RL.1.5-H5",
+      "standard": "RL.1.5",
+      "prompt": "Which sentence sounds like it is from a make-believe story?",
+      "choices": [
+        "The little seed yawned and asked the sun to wake it up",
+        "Seeds grow into plants",
+        "A seed needs water and sun to grow",
+        "Some seeds are very small"
+      ],
+      "correct": "The little seed yawned and asked the sun to wake it up"
+    },
+    {
+      "id": "RL.1.5-E3",
+      "standard": "RL.1.5",
+      "prompt": "Which book tells a STORY?",
+      "choices": [
+        "A list of animal names",
+        "A book of real bug photos",
+        "A book that shows facts about real bears",
+        "A book about a bear who goes to school with his friends"
+      ],
+      "correct": "A book about a bear who goes to school with his friends"
+    },
+    {
+      "id": "RL.1.5-E4",
+      "standard": "RL.1.5",
+      "prompt": "Which book gives real INFORMATION?",
+      "choices": [
+        "A book that tells you true facts about the sun",
+        "A tale about a magic hat",
+        "A story about a flying cat",
+        "A book about a fish who talks"
+      ],
+      "correct": "A book that tells you true facts about the sun"
+    },
+    {
+      "id": "RL.1.9-Q1",
+      "standard": "RL.1.9",
+      "prompt": "What is different about how the bear and the bee experience honey in their stories?",
+      "choices": [
+        "The bear enjoys eating honey, and the bee enjoys flying near it.",
+        "Both the bear and the bee collect honey for their families.",
+        "The bear wants to find honey, while the bee works to make honey.",
+        "The bear shares honey, and the bee hides honey."
+      ],
+      "correct": "The bear wants to find honey, while the bee works to make honey."
+    },
+    {
+      "id": "RI.1.2-Q3",
+      "standard": "RI.1.2",
+      "prompt": "Which detail about cats is shared in the text?",
+      "choices": [
+        "Cats have long tails.",
+        "Cats like to sleep a lot.",
+        "Cats like to chase mice.",
+        "Cats enjoy climbing trees."
+      ],
+      "correct": "Cats like to sleep a lot."
+    },
+    {
+      "id": "RI.1.3-Q4",
+      "standard": "RI.1.3",
+      "prompt": "How does the text show the connection between George Washington leading the army and being president?",
+      "choices": [
+        "He led the army after he was president.",
+        "He led the army before he was president.",
+        "He led the army at the same time he was president.",
+        "The text does not tell us how they are connected."
+      ],
+      "correct": "He led the army before he was president."
+    },
+    {
+      "id": "RI.1.5-Q1",
+      "standard": "RI.1.5",
+      "prompt": "Where would you look to find what page a chapter starts on?",
+      "choices": [
+        "The cover",
+        "The table of contents",
+        "The glossary",
+        "The index"
+      ],
+      "correct": "The table of contents"
+    },
+    {
+      "id": "RI.1.5-Q2",
+      "standard": "RI.1.5",
+      "prompt": "What does a heading at the top of a page tell you?",
+      "choices": [
+        "Who wrote the book",
+        "How many pages are left",
+        "What that section is about",
+        "When the book was made"
+      ],
+      "correct": "What that section is about"
+    },
+    {
+      "id": "RI.1.6-Q2",
+      "standard": "RI.1.6",
+      "prompt": "What can pictures in a book show that words cannot?",
+      "choices": [
+        "Sounds",
+        "Smells",
+        "Feelings",
+        "Exact colors and shapes"
+      ],
+      "correct": "Exact colors and shapes"
+    },
+    {
+      "id": "RI.1.8-Q3",
+      "standard": "RI.1.8",
+      "prompt": "What reason does the author give to show why kids should eat vegetables?",
+      "choices": [
+        "A. Vegetables taste sweet.",
+        "B. Vegetables have vitamins that help you grow strong.",
+        "C. Kids like to share food.",
+        "D. Growing taller is fun."
+      ],
+      "correct": "B. Vegetables have vitamins that help you grow strong."
+    }
+  ],
+  "2": [
+    {
+      "id": "RL.2.1-Q2",
+      "standard": "RL.2.1",
+      "prompt": "What object did Leo use to play fetch with Biscuit?",
+      "choices": [
+        "A stick",
+        "A bone",
+        "A tennis ball",
+        "A frisbee"
+      ],
+      "correct": "A tennis ball"
+    },
+    {
+      "id": "RL.2.1-Q4",
+      "standard": "RL.2.1",
+      "prompt": "What did Grandpa and Tomas do right after they finished building the birdhouse?",
+      "choices": [
+        "They painted it with bright blue paint.",
+        "They looked for more wood.",
+        "They hung it on a tree in the backyard.",
+        "They put it on the kitchen table."
+      ],
+      "correct": "They hung it on a tree in the backyard."
+    },
+    {
+      "id": "RL.2.1-Q5",
+      "standard": "RL.2.1",
+      "prompt": "Why was Ava disappointed?",
+      "choices": [
+        "Her dad wanted to play a different game.",
+        "Her favorite board game was broken.",
+        "The soccer game could not happen.",
+        "It was too sunny to play outside."
+      ],
+      "correct": "The soccer game could not happen."
+    },
+    {
+      "id": "RI.2.1-Q3",
+      "standard": "RI.2.1",
+      "prompt": "Which of these items did George Washington Carver create using peanuts?",
+      "choices": [
+        "Shoes",
+        "Soap",
+        "Cookies",
+        "Books"
+      ],
+      "correct": "Soap"
+    },
+    {
+      "id": "RI.2.3-Q11",
+      "standard": "RI.2.3",
+      "prompt": "When making sea salt, why is it important that the sun heats the ocean water?",
+      "choices": [
+        "To make the water easier for workers to collect.",
+        "So the salt can become bright and shiny.",
+        "It causes the water to evaporate, leaving the salt behind.",
+        "To keep the shallow pools full of water."
+      ],
+      "correct": "It causes the water to evaporate, leaving the salt behind."
+    },
+    {
+      "id": "RI.2.5-Q2",
+      "standard": "RI.2.5",
+      "prompt": "What is the purpose of a heading in a nonfiction text?",
+      "choices": [
+        "To tell you what that section is about",
+        "To end the chapter",
+        "To list the author's name",
+        "To decorate the page"
+      ],
+      "correct": "To tell you what that section is about"
+    },
+    {
+      "id": "RI.2.7-Q3",
+      "standard": "RI.2.7",
+      "prompt": "Why would an author include a map in a book about animals around the world?",
+      "choices": [
+        "To make the book longer",
+        "To show what animals eat",
+        "To teach you to draw",
+        "To show where different animals live"
+      ],
+      "correct": "To show where different animals live"
+    },
+    {
+      "id": "RI.2.8-Q2",
+      "standard": "RI.2.8",
+      "prompt": "Which of these is a reason the author gives for why you should drink more water?",
+      "choices": [
+        "Water helps you grow very tall.",
+        "Water helps plants grow big.",
+        "Water helps your brain work better.",
+        "Water makes you feel sleepy."
+      ],
+      "correct": "Water helps your brain work better."
+    }
+  ],
+  "3": [
+    {
+      "id": "RL.3.4-Q3",
+      "standard": "RL.3.4",
+      "prompt": "Which sentence uses LITERAL language?",
+      "choices": [
+        "Time flies when you're having fun.",
+        "She has a heart of gold.",
+        "He was drowning in homework.",
+        "The dog ate his dinner."
+      ],
+      "correct": "The dog ate his dinner."
+    },
+    {
+      "id": "RI.3.1-Q1",
+      "standard": "RI.3.1",
+      "prompt": "Which statement tells two important things about the Amazon Rainforest, according to the text?",
+      "choices": [
+        "It makes about 10 percent of the world's oxygen and has more than 20 million types of plants and animals.",
+        "It makes about 50 percent of the world's oxygen and has more than 10 million types of plants and animals.",
+        "It makes about 20 percent of the world's oxygen and has more than 10 million types of plants and animals.",
+        "It makes about 20 percent of the world's oxygen and has more than 5 million types of plants and animals."
+      ],
+      "correct": "It makes about 20 percent of the world's oxygen and has more than 10 million types of plants and animals."
+    },
+    {
+      "id": "RI.3.3-Q2",
+      "standard": "RI.3.3",
+      "prompt": "What happened because Rosa Parks refused to give up her bus seat?",
+      "choices": [
+        "The Supreme Court ruled bus segregation was unconstitutional.",
+        "People started a boycott of the city buses.",
+        "Many people started riding buses more often.",
+        "Rosa Parks was given a new bus seat."
+      ],
+      "correct": "People started a boycott of the city buses."
+    },
+    {
+      "id": "RI.3.7-Q5",
+      "standard": "RI.3.7",
+      "prompt": "Which illustration would BEST help a reader understand an article about the layers of the Earth?",
+      "choices": [
+        "A map of the continents",
+        "A picture of a mountain",
+        "A cross-section diagram showing the crust, mantle, and core",
+        "A photo of a sunset"
+      ],
+      "correct": "A cross-section diagram showing the crust, mantle, and core"
+    },
+    {
+      "id": "RI.3.8-Q2",
+      "standard": "RI.3.8",
+      "prompt": "How do the first two paragraphs of the passage connect to each other?",
+      "choices": [
+        "They compare two different kinds of natural events.",
+        "The first tells what something is, and the second tells why it happens.",
+        "They give a problem and then offer a solution.",
+        "The first gives an opinion, and the second gives facts to support it."
+      ],
+      "correct": "The first tells what something is, and the second tells why it happens."
+    },
+    {
+      "id": "RI.3.9-Q3",
+      "standard": "RI.3.9",
+      "prompt": "When comparing two texts, which question is MOST useful?",
+      "choices": [
+        "Which text was written first?",
+        "What information is in both, and what is only in one?",
+        "Which text has bigger pictures?",
+        "Which text is longer?"
+      ],
+      "correct": "What information is in both, and what is only in one?"
+    },
+    {
+      "id": "RI.3.9-Q5",
+      "standard": "RI.3.9",
+      "prompt": "Which statement best compares the main points of Text A and Text B?",
+      "choices": [
+        "Both texts agree that children should not use screens at all.",
+        "Text A and Text B both suggest that more screen time is better for learning.",
+        "Text A says screen time should be limited, but Text B says educational screen time can be helpful.",
+        "Text A focuses on playtime, while Text B focuses on outdoor activities."
+      ],
+      "correct": "Text A says screen time should be limited, but Text B says educational screen time can be helpful."
+    }
+  ],
+  "4": [
+    {
+      "id": "RL.4.5-Q1",
+      "standard": "RL.4.5",
+      "prompt": "Which structural element is found in a drama (play) but NOT in prose (a regular story)?",
+      "choices": [
+        "Stage directions",
+        "Chapters",
+        "Paragraphs",
+        "A title"
+      ],
+      "correct": "Stage directions"
+    },
+    {
+      "id": "RL.4.5-Q3",
+      "standard": "RL.4.5",
+      "prompt": "How is dialogue presented differently in a play versus a novel?",
+      "choices": [
+        "Novels don't have dialogue",
+        "In plays, the character's name appears before their lines; novels use quotation marks",
+        "There's no difference",
+        "Plays don't have dialogue"
+      ],
+      "correct": "In plays, the character's name appears before their lines; novels use quotation marks"
+    },
+    {
+      "id": "RL.4.5-Q4",
+      "standard": "RL.4.5",
+      "prompt": "What structural element do poems often have that prose does not?",
+      "choices": [
+        "A beginning and end",
+        "Characters",
+        "Meter and rhyme scheme",
+        "Sentences"
+      ],
+      "correct": "Meter and rhyme scheme"
+    },
+    {
+      "id": "RL.4.6-Q3",
+      "standard": "RL.4.6",
+      "prompt": "How does first-person narration affect a story compared to third-person?",
+      "choices": [
+        "There's no difference",
+        "First person limits you to one character's perspective and feelings",
+        "Third person is always more honest",
+        "First person gives you access to every character's thoughts"
+      ],
+      "correct": "First person limits you to one character's perspective and feelings"
+    },
+    {
+      "id": "RL.4.6-E3",
+      "standard": "RL.4.6",
+      "prompt": "Which word tells you a story is being told in first-person point of view?",
+      "choices": [
+        "She",
+        "They",
+        "I"
+      ],
+      "correct": "I"
+    },
+    {
+      "id": "RL.4.6-E5",
+      "standard": "RL.4.6",
+      "prompt": "Which sentence is told in first-person point of view?",
+      "choices": [
+        "\"They love the smell of fresh cookies.\"",
+        "\"I love the smell of fresh cookies.\"",
+        "\"Tom loves the smell of fresh cookies.\""
+      ],
+      "correct": "\"I love the smell of fresh cookies.\""
+    },
+    {
+      "id": "RL.4.7-Q2",
+      "standard": "RL.4.7",
+      "prompt": "When a book is turned into a play, what might be LOST?",
+      "choices": [
+        "All the characters",
+        "The character's inner thoughts described by the narrator",
+        "The plot",
+        "Dialogue"
+      ],
+      "correct": "The character's inner thoughts described by the narrator"
+    },
+    {
+      "id": "RL.4.7-Q3",
+      "standard": "RL.4.7",
+      "prompt": "What might a visual presentation (movie or play) ADD to a story that the text cannot?",
+      "choices": [
+        "More chapters",
+        "More words",
+        "Facial expressions, tone of voice, and body language of actors",
+        "Longer descriptions"
+      ],
+      "correct": "Facial expressions, tone of voice, and body language of actors"
+    },
+    {
+      "id": "RI.4.6-Q2",
+      "standard": "RI.4.6",
+      "prompt": "Which is a firsthand account?",
+      "choices": [
+        "A textbook chapter about the Civil War",
+        "A soldier's diary from the Civil War battlefield",
+        "A Wikipedia article about a battle",
+        "A movie about the war"
+      ],
+      "correct": "A soldier's diary from the Civil War battlefield"
+    },
+    {
+      "id": "RI.4.6-Q3",
+      "standard": "RI.4.6",
+      "prompt": "How might a firsthand account DIFFER from a secondhand account of the same event?",
+      "choices": [
+        "Secondhand accounts have more feelings",
+        "They're always exactly the same",
+        "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective",
+        "Firsthand accounts are always shorter"
+      ],
+      "correct": "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective"
+    },
+    {
+      "id": "RI.4.6-Q5",
+      "standard": "RI.4.6",
+      "prompt": "Why is it valuable to read BOTH firsthand and secondhand accounts?",
+      "choices": [
+        "Firsthand gives personal perspective; secondhand gives broader context \u2014 together you get a fuller picture",
+        "Firsthand is always more accurate",
+        "Secondhand is always more accurate",
+        "You only need one type"
+      ],
+      "correct": "Firsthand gives personal perspective; secondhand gives broader context \u2014 together you get a fuller picture"
+    },
+    {
+      "id": "RI.4.6-E3",
+      "standard": "RI.4.6",
+      "prompt": "Which sentence sounds like a FIRSTHAND account, where the writer saw the event with their own eyes?",
+      "choices": [
+        "\"A book explained that earthquakes can be dangerous.\"",
+        "\"People say earthquakes are scary.\"",
+        "\"I felt the ground shake under my feet during the earthquake.\"",
+        "\"Scientists say that earthquakes happen deep underground.\""
+      ],
+      "correct": "\"I felt the ground shake under my feet during the earthquake.\""
+    },
+    {
+      "id": "RI.4.7-Q4",
+      "standard": "RI.4.7",
+      "prompt": "How does a diagram of the human digestive system help a reader MORE than a written description alone?",
+      "choices": [
+        "It shows the physical layout and connections between organs that are hard to describe in words",
+        "It adds color to the page",
+        "It replaces the need to read",
+        "It makes the text longer"
+      ],
+      "correct": "It shows the physical layout and connections between organs that are hard to describe in words"
+    },
+    {
+      "id": "RI.4.8-Q4",
+      "standard": "RI.4.8",
+      "prompt": "When evaluating an author's argument, you should ask \u2014",
+      "choices": [
+        "Does it have pictures?",
+        "Does the evidence actually support the point being made?",
+        "Is the text long enough?",
+        "Is the author famous?"
+      ],
+      "correct": "Does the evidence actually support the point being made?"
+    },
+    {
+      "id": "RI.4.9-Q5",
+      "standard": "RI.4.9",
+      "prompt": "Why is using multiple sources better than using just one?",
+      "choices": [
+        "One source always has errors",
+        "You should always use exactly one source",
+        "More sources means a longer report",
+        "Multiple sources provide different perspectives, details, and a more complete understanding"
+      ],
+      "correct": "Multiple sources provide different perspectives, details, and a more complete understanding"
+    }
+  ]
+}

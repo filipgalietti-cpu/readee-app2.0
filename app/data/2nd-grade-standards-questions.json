@@ -21,7 +21,7 @@
             "The park"
           ],
           "correct": "The garden",
-          "hint": "Look at the third sentence — where did she walk to?",
+          "hint": "Look at the third sentence \u2014 where did she walk to?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q1-hint.mp3",
@@ -31,7 +31,7 @@
         {
           "id": "RL.2.1-Q2",
           "type": "multiple_choice",
-          "prompt": "What object did Leo use to play fetch with Biscuit?",
+          "prompt": "Listen to the story: Leo wanted to play fetch with his dog, Biscuit. He looked all over the yard for a stick but could not find one, so he grabbed the fuzzy yellow tennis ball from his backpack instead. He threw it far, and Biscuit raced after it and brought it right back. What object did Leo use to play fetch with Biscuit?",
           "choices": [
             "A stick",
             "A bone",
@@ -54,7 +54,7 @@
             "She forgot her lunch"
           ],
           "correct": "She didn't know anyone",
-          "hint": "Look at the second sentence — what made Emma feel nervous?",
+          "hint": "Look at the second sentence \u2014 what made Emma feel nervous?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.1/RL.2.1-Q3-hint.mp3",
@@ -64,7 +64,7 @@
         {
           "id": "RL.2.1-Q4",
           "type": "multiple_choice",
-          "prompt": "What did Grandpa and Tomas do right after they finished building the birdhouse?",
+          "prompt": "Listen to the story: Grandpa and Tomas worked all morning to build a little wooden birdhouse. Before they began, they had already painted the boards a bright blue color. As soon as the very last nail was hammered in, they carried the birdhouse outside and hung it on a tree in the backyard. What did Grandpa and Tomas do right after they finished building the birdhouse?",
           "choices": [
             "They painted it with bright blue paint.",
             "They looked for more wood.",
@@ -79,7 +79,7 @@
         {
           "id": "RL.2.1-Q5",
           "type": "multiple_choice",
-          "prompt": "Why was Ava disappointed?",
+          "prompt": "Listen to the story: Ava could not wait to play in her big soccer game on Saturday. But when she woke up that morning, dark clouds filled the sky and heavy rain poured down. Her coach called to say the field was too wet, so the game could not happen. Ava felt very disappointed. Why was Ava disappointed?",
           "choices": [
             "Her dad wanted to play a different game.",
             "Her favorite board game was broken.",
@@ -190,7 +190,7 @@
             "Winter is cold"
           ],
           "correct": "It's good to plan ahead",
-          "hint": "Think about what the ant did differently — why was the ant okay in winter?",
+          "hint": "Think about what the ant did differently \u2014 why was the ant okay in winter?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.2/RL.2.2-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.2/RL.2.2-Q1-hint.mp3",
@@ -533,7 +533,7 @@
       "standard_id": "RL.2.4",
       "standard_description": "Describe how words and phrases supply rhythm and meaning in a story, poem, or song.",
       "domain": "Reading Literature",
-      "parent_tip": "Point out fun-sounding words when reading poems or songs together — ask why the author chose those words.",
+      "parent_tip": "Point out fun-sounding words when reading poems or songs together \u2014 ask why the author chose those words.",
       "questions": [
         {
           "id": "RL.2.4-Q1",
@@ -546,7 +546,7 @@
             "The sound of rain falling"
           ],
           "correct": "The sound of rain falling",
-          "hint": "Say 'drip, drip, drop' out loud — what does it sound like?",
+          "hint": "Say 'drip, drip, drop' out loud \u2014 what does it sound like?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.4/RL.2.4-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.4/RL.2.4-Q1-hint.mp3",
@@ -556,7 +556,7 @@
         {
           "id": "RL.2.4-Q2",
           "type": "multiple_choice",
-          "prompt": "Swoosh went the broom across the floor. Swish, swish, swoosh — it swept some more!\n\nThe words **swoosh** and **swish** help the reader —",
+          "prompt": "Swoosh went the broom across the floor. Swish, swish, swoosh \u2014 it swept some more!\n\nThe words **swoosh** and **swish** help the reader \u2014",
           "choices": [
             "Hear the sound of sweeping",
             "Learn how to clean",
@@ -592,7 +592,7 @@
         {
           "id": "RL.2.4-Q4",
           "type": "multiple_choice",
-          "prompt": "The leaves danced in the wind, twirling and spinning to the ground.\n\nThe word **danced** makes the leaves seem —",
+          "prompt": "The leaves danced in the wind, twirling and spinning to the ground.\n\nThe word **danced** makes the leaves seem \u2014",
           "choices": [
             "Wet and cold",
             "Heavy and slow",
@@ -644,7 +644,7 @@
         {
           "id": "RL.2.4-H2",
           "type": "multiple_choice",
-          "prompt": "BOOM went the drum. BOOM-BOOM! The whole room shook.\nThen . . . tap. tap. tap — soft as a little mouse's foot.\n\nHow do the sounds of the words CHANGE from the start of the poem to the end?",
+          "prompt": "BOOM went the drum. BOOM-BOOM! The whole room shook.\nThen . . . tap. tap. tap \u2014 soft as a little mouse's foot.\n\nHow do the sounds of the words CHANGE from the start of the poem to the end?",
           "choices": [
             "From quiet to suddenly loud",
             "From loud and big to soft and small",
@@ -660,7 +660,7 @@
         {
           "id": "RL.2.4-H3",
           "type": "multiple_choice",
-          "prompt": "\"Are we there? Are we there? Are we there yet?\" asked Sam again and again.\nMom just smiled. \"Not yet, not yet, not yet.\"\n\nThe writer repeats **Are we there?** three times to help you feel that Sam is —",
+          "prompt": "\"Are we there? Are we there? Are we there yet?\" asked Sam again and again.\nMom just smiled. \"Not yet, not yet, not yet.\"\n\nThe writer repeats **Are we there?** three times to help you feel that Sam is \u2014",
           "choices": [
             "starting to feel carsick",
             "scared of the long, dark road",
@@ -1380,7 +1380,7 @@
             "Excited and happy"
           ],
           "correct": "Brave but a little scared",
-          "hint": "She made a promise and kept going — that's brave. But the howling wind and shadows suggest she's also a little scared.",
+          "hint": "She made a promise and kept going \u2014 that's brave. But the howling wind and shadows suggest she's also a little scared.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.10/RL.2.10-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.10/RL.2.10-Q1-hint.mp3",
@@ -1390,7 +1390,7 @@
         {
           "id": "RL.2.10-Q2",
           "type": "multiple_choice",
-          "prompt": "Jackson's painting looked nothing like the sunset he was trying to copy. He almost crumpled it up, but then his art teacher said, \"Art doesn't have to be perfect — it just has to be yours.\"\n\nWhat did Jackson learn?",
+          "prompt": "Jackson's painting looked nothing like the sunset he was trying to copy. He almost crumpled it up, but then his art teacher said, \"Art doesn't have to be perfect \u2014 it just has to be yours.\"\n\nWhat did Jackson learn?",
           "choices": [
             "Art should be a perfect copy",
             "His own style matters",
@@ -1434,7 +1434,7 @@
             "Small things can grow into something big"
           ],
           "correct": "Small things can grow into something big",
-          "hint": "Think about the journey — from a tiny acorn to the tallest oak tree.",
+          "hint": "Think about the journey \u2014 from a tiny acorn to the tallest oak tree.",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.10/RL.2.10-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RL.2.10/RL.2.10-Q4-hint.mp3",
@@ -1526,7 +1526,7 @@
         {
           "id": "RL.2.10-H5",
           "type": "multiple_choice",
-          "prompt": "The two goats stood on a narrow log over the river. Neither would step back to let the other cross. They pushed and pushed until SPLASH — both goats fell into the cold water. What lesson does this story most likely teach?",
+          "prompt": "The two goats stood on a narrow log over the river. Neither would step back to let the other cross. They pushed and pushed until SPLASH \u2014 both goats fell into the cold water. What lesson does this story most likely teach?",
           "choices": [
             "If nobody is willing to give way, everyone can lose",
             "Rivers are dangerous in winter",
@@ -1558,7 +1558,7 @@
             "Builds the hive"
           ],
           "correct": "Lays all the eggs",
-          "hint": "Read the last sentence — what is the queen bee's special job?",
+          "hint": "Read the last sentence \u2014 what is the queen bee's special job?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.1/RI.2.1-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.1/RI.2.1-Q1-hint.mp3",
@@ -1586,7 +1586,7 @@
         {
           "id": "RI.2.1-Q3",
           "type": "multiple_choice",
-          "prompt": "Which of these items did George Washington Carver create using peanuts?",
+          "prompt": "Listen to the story: George Washington Carver was a scientist who loved studying peanuts. He worked hard to find hundreds of new ways to use them. From peanuts, he made useful things for people, such as soap and paint that families could use in their homes. Which of these items did George Washington Carver create using peanuts?",
           "choices": [
             "Shoes",
             "Soap",
@@ -1609,7 +1609,7 @@
             "In a nest in a tree"
           ],
           "correct": "On the beach where they were born",
-          "hint": "Read the second sentence — which beach do they go back to?",
+          "hint": "Read the second sentence \u2014 which beach do they go back to?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.1/RI.2.1-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.1/RI.2.1-Q4-hint.mp3",
@@ -1740,7 +1740,7 @@
         {
           "id": "RI.2.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Paragraph 1: Apples come in many colors — red, green, and yellow. Paragraph 2: Apples are good for you because they have vitamins and fiber.\n\nWhat is Paragraph 2 mostly about?",
+          "prompt": "Paragraph 1: Apples come in many colors \u2014 red, green, and yellow. Paragraph 2: Apples are good for you because they have vitamins and fiber.\n\nWhat is Paragraph 2 mostly about?",
           "choices": [
             "The colors of apples",
             "How to grow apples",
@@ -1886,7 +1886,7 @@
       "standard_id": "RI.2.3",
       "standard_description": "Describe the connection between a series of historical events, scientific ideas, or steps in technical procedures.",
       "domain": "Reading Informational Text",
-      "parent_tip": "Help your child see how events or ideas connect — ask 'What happened because of that?'",
+      "parent_tip": "Help your child see how events or ideas connect \u2014 ask 'What happened because of that?'",
       "questions": [
         {
           "id": "RI.2.3-Q1",
@@ -1899,7 +1899,7 @@
             "It becomes a butterfly"
           ],
           "correct": "It becomes a butterfly",
-          "hint": "Follow the steps: eat → chrysalis → what comes last?",
+          "hint": "Follow the steps: eat \u2192 chrysalis \u2192 what comes last?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q1-hint.mp3",
@@ -1950,7 +1950,7 @@
             "Bees carry pollen to other flowers, which helps plants grow"
           ],
           "correct": "Bees carry pollen to other flowers, which helps plants grow",
-          "hint": "Follow the chain: pollen on legs → carried to flowers → what happens?",
+          "hint": "Follow the chain: pollen on legs \u2192 carried to flowers \u2192 what happens?",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q5-hint.mp3",
@@ -2009,7 +2009,7 @@
         {
           "id": "RI.2.3-Q11",
           "type": "multiple_choice",
-          "prompt": "When making sea salt, why is it important that the sun heats the ocean water?",
+          "prompt": "Listen to the story: To make sea salt, workers first fill shallow pools with salty ocean water. Then they wait for hot, sunny days. The warm sun heats the water until it slowly disappears into the air, and only the salt is left behind in the bottom of the pool. When making sea salt, why is it important that the sun heats the ocean water?",
           "choices": [
             "To make the water easier for workers to collect.",
             "So the salt can become bright and shiny.",
@@ -2043,12 +2043,12 @@
           "type": "multiple_choice",
           "prompt": "Based on the passage, how does the shallow ocean near the shore help plants grow on the ocean floor?",
           "choices": [
-            "A) The shallow water helps small fish find the plants easily.",
-            "B) It lets sunlight reach the bottom of the ocean, where plants need it to grow.",
-            "C) The shallow water makes the plants grow big and strong.",
-            "D) It makes the water very cold for the plants."
+            "The shallow water helps small fish find the plants easily.",
+            "It lets sunlight reach the bottom of the ocean, where plants need it to grow.",
+            "The shallow water makes the plants grow big and strong.",
+            "It makes the water very cold for the plants."
           ],
-          "correct": "B) It lets sunlight reach the bottom of the ocean, where plants need it to grow.",
+          "correct": "It lets sunlight reach the bottom of the ocean, where plants need it to grow.",
           "hint": "Look at what happens because the ocean near the shore is shallow, and then what that allows to happen for the plants.",
           "difficulty": "medium",
           "adaptiveDifficulty": 33
@@ -2152,7 +2152,7 @@
             "Active during the day"
           ],
           "correct": "Active at night",
-          "hint": "The sentence right after 'nocturnal' tells you — active at what time?",
+          "hint": "The sentence right after 'nocturnal' tells you \u2014 active at what time?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.4/RI.2.4-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.4/RI.2.4-Q1-hint.mp3",
@@ -2213,7 +2213,7 @@
         {
           "id": "RI.2.4-Q5",
           "type": "multiple_choice",
-          "prompt": "Plants need nutrients from the soil to grow. Nutrients are like food for plants — they give plants energy and help them stay healthy.\n\nWhat are **nutrients**?",
+          "prompt": "Plants need nutrients from the soil to grow. Nutrients are like food for plants \u2014 they give plants energy and help them stay healthy.\n\nWhat are **nutrients**?",
           "choices": [
             "A type of soil",
             "Sunlight",
@@ -2221,7 +2221,7 @@
             "Water"
           ],
           "correct": "Food-like substances that help plants grow",
-          "hint": "The second sentence explains it — nutrients are like food for plants!",
+          "hint": "The second sentence explains it \u2014 nutrients are like food for plants!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.4/RI.2.4-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.4/RI.2.4-Q5-hint.mp3",
@@ -2337,7 +2337,7 @@
         {
           "id": "RI.2.5-Q2",
           "type": "multiple_choice",
-          "prompt": "What is the purpose of a heading in a nonfiction text?",
+          "prompt": "Listen to the story: Maya opened a nonfiction book about the ocean. At the top of each part, she saw big, bold words like \"Ocean Animals\" and \"Ocean Plants.\" Before she even started reading, those words told her exactly what each part of the book would be about. What is the purpose of a heading in a nonfiction text?",
           "choices": [
             "To tell you what that section is about",
             "To end the chapter",
@@ -2497,7 +2497,7 @@
         {
           "id": "RI.2.6-Q2",
           "type": "multiple_choice",
-          "prompt": "The blue whale is the largest animal ever to live on Earth. It can be over 100 feet long and weigh as much as 200 tons.\n\nThe author wrote this to —",
+          "prompt": "The blue whale is the largest animal ever to live on Earth. It can be over 100 feet long and weigh as much as 200 tons.\n\nThe author wrote this to \u2014",
           "choices": [
             "Tell a story about a whale",
             "Inform you about blue whales",
@@ -2515,7 +2515,7 @@
         {
           "id": "RI.2.6-Q3",
           "type": "multiple_choice",
-          "prompt": "Everyone should recycle! When we recycle, we save trees and keep trash out of the ocean. Please recycle your cans, bottles, and paper.\n\nThe author's main purpose is to —",
+          "prompt": "Everyone should recycle! When we recycle, we save trees and keep trash out of the ocean. Please recycle your cans, bottles, and paper.\n\nThe author's main purpose is to \u2014",
           "choices": [
             "Describe what recycling looks like",
             "Teach you how paper is made",
@@ -2533,7 +2533,7 @@
         {
           "id": "RI.2.6-Q4",
           "type": "multiple_choice",
-          "prompt": "A book that teaches you about different types of clouds was written to —",
+          "prompt": "A book that teaches you about different types of clouds was written to \u2014",
           "choices": [
             "Persuade",
             "Scare",
@@ -2585,7 +2585,7 @@
         {
           "id": "RI.2.6-H2",
           "type": "multiple_choice",
-          "prompt": "Why do leaves change color in the fall? In summer, leaves are full of green stuff that helps the tree make food. When the days get short and cold, that green stuff fades away. Then we can finally see the red and orange colors that were hiding all along.\n\nThe author wrote this text mostly to —",
+          "prompt": "Why do leaves change color in the fall? In summer, leaves are full of green stuff that helps the tree make food. When the days get short and cold, that green stuff fades away. Then we can finally see the red and orange colors that were hiding all along.\n\nThe author wrote this text mostly to \u2014",
           "choices": [
             "Tell a story about a walk on a fall day",
             "Answer why leaves change color in the fall",
@@ -2617,7 +2617,7 @@
         {
           "id": "RI.2.6-H4",
           "type": "multiple_choice",
-          "prompt": "The rainforest is loud and green. Tall trees block the sun, so the ground below stays dark and wet. Bright birds call from the high branches, and frogs sing near the little streams. Everywhere you look, something is moving.\n\nThe author mainly wants to —",
+          "prompt": "The rainforest is loud and green. Tall trees block the sun, so the ground below stays dark and wet. Bright birds call from the high branches, and frogs sing near the little streams. Everywhere you look, something is moving.\n\nThe author mainly wants to \u2014",
           "choices": [
             "Convince readers to visit the rainforest",
             "Explain why the trees grow so tall",
@@ -2633,7 +2633,7 @@
         {
           "id": "RI.2.6-H5",
           "type": "multiple_choice",
-          "prompt": "Some people think bats are birds because they fly. But bats are not birds at all — they are mammals, just like dogs and people. Bats have soft fur instead of feathers, and mother bats feed their babies milk.\n\nWhy did the author write this?",
+          "prompt": "Some people think bats are birds because they fly. But bats are not birds at all \u2014 they are mammals, just like dogs and people. Bats have soft fur instead of feathers, and mother bats feed their babies milk.\n\nWhy did the author write this?",
           "choices": [
             "To correct the idea that bats are birds",
             "To describe what baby bats look like",
@@ -2675,7 +2675,7 @@
         {
           "id": "RI.2.7-Q2",
           "type": "multiple_choice",
-          "prompt": "A text about weather says: \"A thermometer measures temperature.\" Below it is a picture of a thermometer showing 32°F. What does the picture add?",
+          "prompt": "A text about weather says: \"A thermometer measures temperature.\" Below it is a picture of a thermometer showing 32\u00b0F. What does the picture add?",
           "choices": [
             "It replaces the need to read",
             "Nothing new",
@@ -2693,7 +2693,7 @@
         {
           "id": "RI.2.7-Q3",
           "type": "multiple_choice",
-          "prompt": "Why would an author include a map in a book about animals around the world?",
+          "prompt": "Listen to the story: In her book about animals around the world, the author added a large, colorful map. On the map, she placed small pictures of animals on top of the different countries where they are found. By looking at it, readers could see which animals lived in each part of the world. Why would an author include a map in a book about animals around the world?",
           "choices": [
             "To make the book longer",
             "To show what animals eat",
@@ -2711,7 +2711,7 @@
         {
           "id": "RI.2.7-Q4",
           "type": "multiple_choice",
-          "prompt": "A book about healthy eating includes a picture of a food plate divided into sections: fruits, vegetables, grains, protein, and dairy. This image helps the reader —",
+          "prompt": "A book about healthy eating includes a picture of a food plate divided into sections: fruits, vegetables, grains, protein, and dairy. This image helps the reader \u2014",
           "choices": [
             "See how much of each food group to eat",
             "Learn to draw plates",
@@ -2719,7 +2719,7 @@
             "Cook a meal"
           ],
           "correct": "See how much of each food group to eat",
-          "hint": "The plate shows sections of different sizes — what does that tell you?",
+          "hint": "The plate shows sections of different sizes \u2014 what does that tell you?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.7/RI.2.7-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.7/RI.2.7-Q4-hint.mp3",
@@ -2832,7 +2832,7 @@
         {
           "id": "RI.2.8-Q2",
           "type": "multiple_choice",
-          "prompt": "Which of these is a reason the author gives for why you should drink more water?",
+          "prompt": "Listen to the story: The author of the article wanted kids to drink more water every day. She explained that water helps your body in many important ways. Most of all, she said, drinking water helps your brain work better so you can think clearly and learn new things. Which of these is a reason the author gives for why you should drink more water?",
           "choices": [
             "Water helps you grow very tall.",
             "Water helps plants grow big.",
@@ -2888,7 +2888,7 @@
             "Gardens teach science"
           ],
           "correct": "Kids eat vegetables they grew themselves",
-          "hint": "Look for the sentence with 'because' — that gives the detailed reason.",
+          "hint": "Look for the sentence with 'because' \u2014 that gives the detailed reason.",
           "difficulty": "hard",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.8/RI.2.8-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.8/RI.2.8-Q5-hint.mp3",
@@ -3027,7 +3027,7 @@
             "Bats fly at night"
           ],
           "correct": "Bats help farmers",
-          "hint": "Read Text B — what information is new and not in Text A?",
+          "hint": "Read Text B \u2014 what information is new and not in Text A?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q3.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q3-hint.mp3",
@@ -3060,7 +3060,7 @@
             "A healthy heart"
           ],
           "correct": "A healthy heart",
-          "hint": "Read Text A carefully — which benefit does it mention that Text B doesn't?",
+          "hint": "Read Text A carefully \u2014 which benefit does it mention that Text B doesn't?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.9/RI.2.9-Q5-hint.mp3",
@@ -3199,7 +3199,7 @@
             "Their large paws"
           ],
           "correct": "Their large paws",
-          "hint": "Read the last sentence — what works like snowshoes?",
+          "hint": "Read the last sentence \u2014 what works like snowshoes?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q4-hint.mp3",
@@ -3307,7 +3307,7 @@
       "standard_id": "RF.2.3",
       "standard_description": "Know and apply grade-level phonics and word analysis skills in decoding words.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Practice sounding out new words together — break them into smaller parts.",
+      "parent_tip": "Practice sounding out new words together \u2014 break them into smaller parts.",
       "questions": [
         {
           "id": "RF.2.3-Q1",
@@ -3338,7 +3338,7 @@
             "Lay"
           ],
           "correct": "Play",
-          "hint": "Remove the ending '-ing' — what word is left?",
+          "hint": "Remove the ending '-ing' \u2014 what word is left?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3/RF.2.3-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3/RF.2.3-Q2-hint.mp3",
@@ -3520,7 +3520,7 @@
         {
           "id": "RF.2.3a-Q3",
           "type": "multiple_choice",
-          "prompt": "The word **bed** has a —",
+          "prompt": "The word **bed** has a \u2014",
           "choices": [
             "Short 'e' sound",
             "Long 'a' sound",
@@ -3546,7 +3546,7 @@
             "Deck"
           ],
           "correct": "Sweep",
-          "hint": "Say each word slowly. Does the vowel say its own name (like the /ee/ in 'see'), or is it a quick short sound? Watch out — the letters 'ea' don't always make a long sound.",
+          "hint": "Say each word slowly. Does the vowel say its own name (like the /ee/ in 'see'), or is it a quick short sound? Watch out \u2014 the letters 'ea' don't always make a long sound.",
           "difficulty": "hard",
           "adaptiveDifficulty": 76,
           "adaptiveGenerated": true
@@ -3634,7 +3634,7 @@
             "Long 'o'"
           ],
           "correct": "Long 'o'",
-          "hint": "Say 'boat' — the 'oa' makes the 'oh' sound!",
+          "hint": "Say 'boat' \u2014 the 'oa' makes the 'oh' sound!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3b/RF.2.3b-Q1.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3b/RF.2.3b-Q1-hint.mp3",
@@ -3700,7 +3700,7 @@
             "Ou"
           ],
           "correct": "Ou",
-          "hint": "Look at the middle of 'loud' — which two vowels are together?",
+          "hint": "Look at the middle of 'loud' \u2014 which two vowels are together?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3b/RF.2.3b-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3b/RF.2.3b-Q5-hint.mp3",
@@ -3836,12 +3836,12 @@
           "type": "multiple_choice",
           "prompt": "Which choice shows how to correctly say the word **robot**?",
           "choices": [
-            "A. rob-OT",
-            "B. ROH-bot",
-            "C. ruh-BOT",
-            "D. RAW-bot"
+            "rob-OT",
+            "ROH-bot",
+            "ruh-BOT",
+            "RAW-bot"
           ],
-          "correct": "B. ROH-bot",
+          "correct": "ROH-bot",
           "hint": "Remember how to sound out two-syllable words that have a long vowel sound.",
           "difficulty": "easy",
           "adaptiveDifficulty": 21
@@ -3857,7 +3857,7 @@
             "Op-en"
           ],
           "correct": "O-pen",
-          "hint": "The 'o' is long and open — it gets its own syllable!",
+          "hint": "The 'o' is long and open \u2014 it gets its own syllable!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3c/RF.2.3c-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.3c/RF.2.3c-Q5-hint.mp3",
@@ -3955,7 +3955,7 @@
         {
           "id": "RF.2.3d-Q2",
           "type": "multiple_choice",
-          "prompt": "The suffix **-ful** in **hopeful** means —",
+          "prompt": "The suffix **-ful** in **hopeful** means \u2014",
           "choices": [
             "Before",
             "Full of",
@@ -4071,7 +4071,7 @@
       "standard_id": "RF.2.3e",
       "standard_description": "Identify words with inconsistent but common spelling-sound correspondences.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Some words don't follow the rules — help your child learn tricky words like 'said' and 'have' by sight.",
+      "parent_tip": "Some words don't follow the rules \u2014 help your child learn tricky words like 'said' and 'have' by sight.",
       "questions": [
         {
           "id": "RF.2.3e-Q1",
@@ -4091,7 +4091,7 @@
         {
           "id": "RF.2.3e-Q2",
           "type": "multiple_choice",
-          "prompt": "The word **have** is tricky because —",
+          "prompt": "The word **have** is tricky because \u2014",
           "choices": [
             "It ends with 'e' but the 'a' is short",
             "The 'a' doesn't make the expected sound",
@@ -4127,7 +4127,7 @@
         {
           "id": "RF.2.3e-Q4",
           "type": "multiple_choice",
-          "prompt": "In the word **love,** the **o** makes the sound of —",
+          "prompt": "In the word **love,** the **o** makes the sound of \u2014",
           "choices": [
             "Long 'o' (like 'bone')",
             "Long 'u' (like 'cute')",
@@ -4168,7 +4168,7 @@
             "leaf"
           ],
           "correct": "bread",
-          "hint": "Say each word out loud and listen to the middle sound. Three match 'eat' — one sounds like 'bed'.",
+          "hint": "Say each word out loud and listen to the middle sound. Three match 'eat' \u2014 one sounds like 'bed'.",
           "difficulty": "hard",
           "adaptiveDifficulty": 84,
           "adaptiveGenerated": true
@@ -4176,7 +4176,7 @@
         {
           "id": "RF.2.3e-H2",
           "type": "multiple_choice",
-          "prompt": "The word **said** does not sound the way its letters look — it sounds like /sed/. Which word below **rhymes with said**?",
+          "prompt": "The word **said** does not sound the way its letters look \u2014 it sounds like /sed/. Which word below **rhymes with said**?",
           "choices": [
             "raid",
             "bed",
@@ -4192,7 +4192,7 @@
         {
           "id": "RF.2.3e-H3",
           "type": "multiple_choice",
-          "prompt": "In the word **knot**, the first letter is silent — you only hear /not/. Which other word begins with a SILENT letter?",
+          "prompt": "In the word **knot**, the first letter is silent \u2014 you only hear /not/. Which other word begins with a SILENT letter?",
           "choices": [
             "nut",
             "net",
@@ -4200,7 +4200,7 @@
             "nest"
           ],
           "correct": "knee",
-          "hint": "Say each word. Three start with the /n/ sound you can hear right away — one hides a silent letter before the 'n'.",
+          "hint": "Say each word. Three start with the /n/ sound you can hear right away \u2014 one hides a silent letter before the 'n'.",
           "difficulty": "hard",
           "adaptiveDifficulty": 83,
           "adaptiveGenerated": true
@@ -4208,7 +4208,7 @@
         {
           "id": "RF.2.3e-H4",
           "type": "multiple_choice",
-          "prompt": "Words that end in silent **e** usually make the vowel say its long name, like *bone* and *home*. Which word BREAKS that rule — it ends in **e** but the vowel is not long?",
+          "prompt": "Words that end in silent **e** usually make the vowel say its long name, like *bone* and *home*. Which word BREAKS that rule \u2014 it ends in **e** but the vowel is not long?",
           "choices": [
             "rope",
             "cone",
@@ -4216,7 +4216,7 @@
             "come"
           ],
           "correct": "come",
-          "hint": "Say each word. Three make the 'o' say its name (long o). One sounds like 'kum' — that's the tricky one.",
+          "hint": "Say each word. Three make the 'o' say its name (long o). One sounds like 'kum' \u2014 that's the tricky one.",
           "difficulty": "hard",
           "adaptiveDifficulty": 86,
           "adaptiveGenerated": true
@@ -4232,7 +4232,7 @@
             "gold"
           ],
           "correct": "could",
-          "hint": "Say 'would' out loud, then find the word that ends with the same sound — watch out for words that just look similar.",
+          "hint": "Say 'would' out loud, then find the word that ends with the same sound \u2014 watch out for words that just look similar.",
           "difficulty": "hard",
           "adaptiveDifficulty": 79,
           "adaptiveGenerated": true
@@ -4243,7 +4243,7 @@
       "standard_id": "RF.2.3f",
       "standard_description": "Recognize and read grade-appropriate irregularly spelled words.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Practice sight words like 'people,' 'again,' and 'friend' — these need to be memorized, not sounded out.",
+      "parent_tip": "Practice sight words like 'people,' 'again,' and 'friend' \u2014 these need to be memorized, not sounded out.",
       "questions": [
         {
           "id": "RF.2.3f-Q2",
@@ -4385,7 +4385,7 @@
       "standard_id": "RF.2.4",
       "standard_description": "Read with sufficient accuracy and fluency to support comprehension.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Listen to your child read aloud — encourage them to read smoothly and with expression.",
+      "parent_tip": "Listen to your child read aloud \u2014 encourage them to read smoothly and with expression.",
       "questions": [
         {
           "id": "RF.2.4-Q1",
@@ -4405,7 +4405,7 @@
         {
           "id": "RF.2.4-Q2",
           "type": "multiple_choice",
-          "prompt": "When you see an exclamation mark (!) at the end of a sentence, you should read it with —",
+          "prompt": "When you see an exclamation mark (!) at the end of a sentence, you should read it with \u2014",
           "choices": [
             "A quiet voice",
             "A question in your voice",
@@ -4449,7 +4449,7 @@
             "In a whisper"
           ],
           "correct": "In a loud, firm voice",
-          "hint": "The crossing guard 'yelled' — so you should read it like a yell!",
+          "hint": "The crossing guard 'yelled' \u2014 so you should read it like a yell!",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4/RF.2.4-Q4.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4/RF.2.4-Q4-hint.mp3",
@@ -4562,7 +4562,7 @@
         {
           "id": "RF.2.4a-Q2",
           "type": "multiple_choice",
-          "prompt": "Before you start reading, it helps to ask yourself —",
+          "prompt": "Before you start reading, it helps to ask yourself \u2014",
           "choices": [
             "Who wrote this book?",
             "How many pages is this?",
@@ -4624,7 +4624,7 @@
             "They make the soil warmer"
           ],
           "correct": "They let air and water reach the roots",
-          "hint": "Read the second sentence — what do the tunnels let through?",
+          "hint": "Read the second sentence \u2014 what do the tunnels let through?",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4a/RF.2.4a-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4a/RF.2.4a-Q5-hint.mp3",
@@ -4642,7 +4642,7 @@
             "meat"
           ],
           "correct": "plate",
-          "hint": "Say each word out loud and listen to the ending sound. Don't trust the spelling — 'ea' can trick you.",
+          "hint": "Say each word out loud and listen to the ending sound. Don't trust the spelling \u2014 'ea' can trick you.",
           "difficulty": "hard",
           "adaptiveDifficulty": 77,
           "adaptiveGenerated": true
@@ -4716,7 +4716,7 @@
       "standard_id": "RF.2.4b",
       "standard_description": "Read grade-level text orally with accuracy, appropriate rate, and expression.",
       "domain": "Reading Foundational Skills",
-      "parent_tip": "Model reading aloud with expression — change your voice for different characters and show excitement!",
+      "parent_tip": "Model reading aloud with expression \u2014 change your voice for different characters and show excitement!",
       "questions": [
         {
           "id": "RF.2.4b-Q1",
@@ -4739,7 +4739,7 @@
         {
           "id": "RF.2.4b-Q2",
           "type": "multiple_choice",
-          "prompt": "When you read a question aloud, your voice should —",
+          "prompt": "When you read a question aloud, your voice should \u2014",
           "choices": [
             "Go up at the end",
             "Stay the same",
@@ -4747,7 +4747,7 @@
             "Go down at the end"
           ],
           "correct": "Go up at the end",
-          "hint": "Try saying 'Are you coming?' — notice how your voice rises at the end?",
+          "hint": "Try saying 'Are you coming?' \u2014 notice how your voice rises at the end?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4b/RF.2.4b-Q2.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4b/RF.2.4b-Q2-hint.mp3",
@@ -4780,7 +4780,7 @@
             "With a shaky, nervous voice"
           ],
           "correct": "With a shaky, nervous voice",
-          "hint": "The dashes in 'W-what' show stuttering — the character is scared!",
+          "hint": "The dashes in 'W-what' show stuttering \u2014 the character is scared!",
           "difficulty": "medium",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4b/RF.2.4b-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4b/RF.2.4b-Q5-hint.mp3",
@@ -4862,7 +4862,7 @@
             "In a giggly, silly voice"
           ],
           "correct": "Slowly and quietly, to build suspense",
-          "hint": "Let the mood words — silent, slowly, quietly — guide how fast and how loud you read.",
+          "hint": "Let the mood words \u2014 silent, slowly, quietly \u2014 guide how fast and how loud you read.",
           "difficulty": "hard",
           "adaptiveDifficulty": 89,
           "adaptiveGenerated": true
@@ -4950,10 +4950,10 @@
           "choices": [
             "Skip the word and read on",
             "Change it to 'track'",
-            "Reread it as 'trunk'—groceries go in a car's trunk, and the word ends in -nk",
+            "Reread it as 'trunk'\u2014groceries go in a car's trunk, and the word ends in -nk",
             "Keep 'truck' because it looks almost the same"
           ],
-          "correct": "Reread it as 'trunk'—groceries go in a car's trunk, and the word ends in -nk",
+          "correct": "Reread it as 'trunk'\u2014groceries go in a car's trunk, and the word ends in -nk",
           "hint": "'Truck' and 'trunk' look alike. Check the LAST sounds of the word and whether it makes sense in the car.",
           "difficulty": "hard",
           "adaptiveDifficulty": 92,
@@ -4967,9 +4967,9 @@
             "Say 'quit' instead",
             "Keep 'quite' because the letters look the same",
             "Skip the word",
-            "Reread it—'quiet' has two beats (qui-et), means no noise, and fits a library"
+            "Reread it\u2014'quiet' has two beats (qui-et), means no noise, and fits a library"
           ],
-          "correct": "Reread it—'quiet' has two beats (qui-et), means no noise, and fits a library",
+          "correct": "Reread it\u2014'quiet' has two beats (qui-et), means no noise, and fits a library",
           "hint": "'Quiet' and 'quite' use the same letters in a different order. Clap the syllables and think about what a library is like.",
           "difficulty": "hard",
           "adaptiveDifficulty": 89,
@@ -4980,12 +4980,12 @@
           "type": "multiple_choice",
           "prompt": "Read this sentence: \"The brave knight rode his horse to the castle.\" A reader said the word **knight** as \"night.\" Which fix is best?",
           "choices": [
-            "Keep 'knight'—it starts with a silent k and means a man in armor, which fits riding a horse",
+            "Keep 'knight'\u2014it starts with a silent k and means a man in armor, which fits riding a horse",
             "Change it to 'kite'",
             "Change it to 'night,' the dark time of day",
             "Change it to 'nut'"
           ],
-          "correct": "Keep 'knight'—it starts with a silent k and means a man in armor, which fits riding a horse",
+          "correct": "Keep 'knight'\u2014it starts with a silent k and means a man in armor, which fits riding a horse",
           "hint": "'Knight' and 'night' sound exactly the same. Use the spelling (silent k) AND the meaning of the sentence to decide.",
           "difficulty": "hard",
           "adaptiveDifficulty": 88,
@@ -5165,7 +5165,7 @@
         {
           "id": "L.2.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "\"The enormous elephant was the biggest animal at the zoo.\"\n\nThe word **enormous** means —",
+          "prompt": "\"The enormous elephant was the biggest animal at the zoo.\"\n\nThe word **enormous** means \u2014",
           "choices": [
             "Gray",
             "Slow",
@@ -5183,7 +5183,7 @@
         {
           "id": "L.2.4a-Q4",
           "type": "multiple_choice",
-          "prompt": "\"The frigid wind made everyone shiver and bundle up in their coats.\"\n\nThe word **frigid** means —",
+          "prompt": "\"The frigid wind made everyone shiver and bundle up in their coats.\"\n\nThe word **frigid** means \u2014",
           "choices": [
             "Gentle",
             "Warm",
@@ -5201,7 +5201,7 @@
         {
           "id": "L.2.4a-H1",
           "type": "multiple_choice",
-          "prompt": "\"After the long hike, we sat down to rest on the grassy bank and watched the river flow by.\"\n\nIn this sentence, the word **bank** means —",
+          "prompt": "\"After the long hike, we sat down to rest on the grassy bank and watched the river flow by.\"\n\nIn this sentence, the word **bank** means \u2014",
           "choices": [
             "The ground along the edge of a river",
             "A kind of fish",
@@ -5217,7 +5217,7 @@
         {
           "id": "L.2.4a-H2",
           "type": "multiple_choice",
-          "prompt": "\"The tiny mouse crept across the kitchen floor, careful not to wake the sleeping cat.\"\n\nThe word **crept** tells you the mouse moved —",
+          "prompt": "\"The tiny mouse crept across the kitchen floor, careful not to wake the sleeping cat.\"\n\nThe word **crept** tells you the mouse moved \u2014",
           "choices": [
             "Backwards in a circle",
             "Slowly and quietly",
@@ -5233,7 +5233,7 @@
         {
           "id": "L.2.4a-H3",
           "type": "multiple_choice",
-          "prompt": "\"The soup tasted so bland that Grandpa added salt and pepper to give it more flavor.\"\n\nThe word **bland** means —",
+          "prompt": "\"The soup tasted so bland that Grandpa added salt and pepper to give it more flavor.\"\n\nThe word **bland** means \u2014",
           "choices": [
             "Boiling hot",
             "Bright in color",
@@ -5249,7 +5249,7 @@
         {
           "id": "L.2.4a-H4",
           "type": "multiple_choice",
-          "prompt": "\"The elephant reached up with its long trunk and sprayed water all over its back.\"\n\nIn this sentence, the word **trunk** means —",
+          "prompt": "\"The elephant reached up with its long trunk and sprayed water all over its back.\"\n\nIn this sentence, the word **trunk** means \u2014",
           "choices": [
             "The back part of a car",
             "A big box for storing things",
@@ -5265,7 +5265,7 @@
         {
           "id": "L.2.4a-H5",
           "type": "multiple_choice",
-          "prompt": "\"Instead of just walking, the excited puppy dashed across the yard to greet its owner.\"\n\nThe word **dashed** means the puppy —",
+          "prompt": "\"Instead of just walking, the excited puppy dashed across the yard to greet its owner.\"\n\nThe word **dashed** means the puppy \u2014",
           "choices": [
             "Ran very fast",
             "Stood still and waited",
@@ -5281,7 +5281,7 @@
         {
           "id": "L.2.4a-E1",
           "type": "multiple_choice",
-          "prompt": "\"The soup was so hot that Maria had to wait for it to cool down before eating.\"\n\nThe word **hot** means —",
+          "prompt": "\"The soup was so hot that Maria had to wait for it to cool down before eating.\"\n\nThe word **hot** means \u2014",
           "choices": [
             "Round",
             "Very warm",
@@ -5297,7 +5297,7 @@
         {
           "id": "L.2.4a-E2",
           "type": "multiple_choice",
-          "prompt": "\"The puppy was tiny — small enough to fit in one hand.\"\n\nThe word **tiny** means —",
+          "prompt": "\"The puppy was tiny \u2014 small enough to fit in one hand.\"\n\nThe word **tiny** means \u2014",
           "choices": [
             "Loud",
             "Fast",
@@ -5313,7 +5313,7 @@
         {
           "id": "L.2.4a-E3",
           "type": "multiple_choice",
-          "prompt": "\"Ben felt happy and smiled big when he opened his birthday present.\"\n\nThe word **happy** means —",
+          "prompt": "\"Ben felt happy and smiled big when he opened his birthday present.\"\n\nThe word **happy** means \u2014",
           "choices": [
             "Sleepy",
             "Wet",
@@ -5329,7 +5329,7 @@
         {
           "id": "L.2.4a-E4",
           "type": "multiple_choice",
-          "prompt": "\"The road was so wet after the rain that the cars splashed through puddles.\"\n\nThe word **wet** means —",
+          "prompt": "\"The road was so wet after the rain that the cars splashed through puddles.\"\n\nThe word **wet** means \u2014",
           "choices": [
             "Covered in water",
             "Yellow",
@@ -5345,7 +5345,7 @@
         {
           "id": "L.2.4a-E5",
           "type": "multiple_choice",
-          "prompt": "\"The box was heavy, and Sam grunted as he lifted it off the floor.\"\n\nThe word **heavy** means —",
+          "prompt": "\"The box was heavy, and Sam grunted as he lifted it off the floor.\"\n\nThe word **heavy** means \u2014",
           "choices": [
             "Shiny",
             "Hard to lift",
@@ -5369,7 +5369,7 @@
         {
           "id": "L.2.4b-Q3",
           "type": "multiple_choice",
-          "prompt": "The word **preview** means —",
+          "prompt": "The word **preview** means \u2014",
           "choices": [
             "To view before",
             "To not view",
@@ -5403,7 +5403,7 @@
         {
           "id": "L.2.4b-H2",
           "type": "multiple_choice",
-          "prompt": "The workers put the box on the wrong shelf because it was **mislabeled**. In this sentence, mislabeled means the box was labeled —",
+          "prompt": "The workers put the box on the wrong shelf because it was **mislabeled**. In this sentence, mislabeled means the box was labeled \u2014",
           "choices": [
             "very neatly",
             "wrongly",
@@ -5419,7 +5419,7 @@
         {
           "id": "L.2.4b-H3",
           "type": "multiple_choice",
-          "prompt": "The rope was knotted tightly, so the sailor had to **unfasten** it fast before the boat drifted. Unfasten means to —",
+          "prompt": "The rope was knotted tightly, so the sailor had to **unfasten** it fast before the boat drifted. Unfasten means to \u2014",
           "choices": [
             "fasten it more tightly",
             "leave it fastened",
@@ -5443,7 +5443,7 @@
             "overcooked"
           ],
           "correct": "overcooked",
-          "hint": "Each choice is a real prefix + 'cooked.' Decide whether 'too long' means too much, too little, again, or beforehand — then pick the matching prefix.",
+          "hint": "Each choice is a real prefix + 'cooked.' Decide whether 'too long' means too much, too little, again, or beforehand \u2014 then pick the matching prefix.",
           "difficulty": "hard",
           "adaptiveDifficulty": 93,
           "adaptiveGenerated": true
@@ -5451,7 +5451,7 @@
         {
           "id": "L.2.4b-H5",
           "type": "multiple_choice",
-          "prompt": "The bridge was **underbuilt** for such heavy trucks, so it began to crack the first day. Underbuilt means the bridge was built —",
+          "prompt": "The bridge was **underbuilt** for such heavy trucks, so it began to crack the first day. Underbuilt means the bridge was built \u2014",
           "choices": [
             "not strong enough",
             "a second time",
@@ -5556,7 +5556,7 @@
         {
           "id": "L.2.4c-H4",
           "type": "multiple_choice",
-          "prompt": "You know the word **use**. A grocery bag that is **reusable** is one that you can—",
+          "prompt": "You know the word **use**. A grocery bag that is **reusable** is one that you can\u2014",
           "choices": [
             "Use only to carry heavy things",
             "Use only one time and then throw away",
@@ -5572,7 +5572,7 @@
         {
           "id": "L.2.4c-H5",
           "type": "multiple_choice",
-          "prompt": "You know the word **fear**, which means to be scared. A knight who runs straight at the dragon and is NOT scared at all is best called—",
+          "prompt": "You know the word **fear**, which means to be scared. A knight who runs straight at the dragon and is NOT scared at all is best called\u2014",
           "choices": [
             "Fearless",
             "Feared",
@@ -5580,7 +5580,7 @@
             "Fearing"
           ],
           "correct": "Fearless",
-          "hint": "All four choices come from the root 'fear.' Think about which ending means 'without' — like in 'helpless.'",
+          "hint": "All four choices come from the root 'fear.' Think about which ending means 'without' \u2014 like in 'helpless.'",
           "difficulty": "hard",
           "adaptiveDifficulty": 97,
           "adaptiveGenerated": true
@@ -5678,7 +5678,7 @@
       "standard_id": "L.2.4e",
       "standard_description": "Use glossaries and beginning dictionaries to determine or clarify the meaning of words.",
       "domain": "Language",
-      "parent_tip": "Show your child how to look up words in a dictionary or glossary — practice finding words alphabetically.",
+      "parent_tip": "Show your child how to look up words in a dictionary or glossary \u2014 practice finding words alphabetically.",
       "questions": [
         {
           "id": "L.2.4e-Q2",
@@ -5760,7 +5760,7 @@
         {
           "id": "L.2.4e-H3",
           "type": "multiple_choice",
-          "prompt": "A dictionary shows: present — 1. (noun) a gift.  2. (verb) to give or show something.  3. (adjective) here; not away.  4. (noun) the time happening right now. Read this sentence: 'Every student was present, so nobody was missing today.' Which meaning of 'present' fits THIS sentence?",
+          "prompt": "A dictionary shows: present \u2014 1. (noun) a gift.  2. (verb) to give or show something.  3. (adjective) here; not away.  4. (noun) the time happening right now. Read this sentence: 'Every student was present, so nobody was missing today.' Which meaning of 'present' fits THIS sentence?",
           "choices": [
             "to give or show something",
             "the time happening right now",
@@ -5776,7 +5776,7 @@
         {
           "id": "L.2.4e-H4",
           "type": "multiple_choice",
-          "prompt": "A glossary shows: spring — 1. the season after winter.  2. to jump up quickly.  3. a coiled piece of metal.  4. a place where water flows out of the ground. Read this sentence: 'The rabbit will spring over the log to escape the fox.' Which meaning of 'spring' fits THIS sentence?",
+          "prompt": "A glossary shows: spring \u2014 1. the season after winter.  2. to jump up quickly.  3. a coiled piece of metal.  4. a place where water flows out of the ground. Read this sentence: 'The rabbit will spring over the log to escape the fox.' Which meaning of 'spring' fits THIS sentence?",
           "choices": [
             "a place where water flows out of the ground",
             "the season after winter",
@@ -5811,7 +5811,7 @@
       "standard_id": "L.2.5",
       "standard_description": "Demonstrate understanding of word relationships and nuances in word meanings.",
       "domain": "Language",
-      "parent_tip": "Play word games — find synonyms, antonyms, and connect words to real-life experiences.",
+      "parent_tip": "Play word games \u2014 find synonyms, antonyms, and connect words to real-life experiences.",
       "questions": [
         {
           "id": "L.2.5-Q1",
@@ -5878,7 +5878,7 @@
             "Sad"
           ],
           "correct": "Happy",
-          "hint": "'I'm so glad you're here!' — does that sound happy or sad?",
+          "hint": "'I'm so glad you're here!' \u2014 does that sound happy or sad?",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5/L.2.5-Q5.mp3",
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/L.2.5/L.2.5-Q5-hint.mp3",
@@ -5971,7 +5971,7 @@
       "standard_id": "L.2.5a",
       "standard_description": "Identify real-life connections between words and their use.",
       "domain": "Language",
-      "parent_tip": "Connect vocabulary to daily life: 'That soup is steaming — what does steaming mean?'",
+      "parent_tip": "Connect vocabulary to daily life: 'That soup is steaming \u2014 what does steaming mean?'",
       "questions": [
         {
           "id": "L.2.5a-Q1",
@@ -6248,7 +6248,7 @@
             "strolled"
           ],
           "correct": "dashed",
-          "hint": "These are all ways to move on your feet, but they differ in SPEED and purpose. The bus is leaving NOW — how fast would Lily need to go?",
+          "hint": "These are all ways to move on your feet, but they differ in SPEED and purpose. The bus is leaving NOW \u2014 how fast would Lily need to go?",
           "difficulty": "hard",
           "adaptiveDifficulty": 92,
           "adaptiveGenerated": true
@@ -6291,7 +6291,7 @@
       "standard_id": "L.2.6",
       "standard_description": "Use words and phrases acquired through conversations, reading, and being read to, including adjectives and adverbs.",
       "domain": "Language",
-      "parent_tip": "Encourage your child to use descriptive words — 'Don't just say nice, say wonderful, kind, or thoughtful!'",
+      "parent_tip": "Encourage your child to use descriptive words \u2014 'Don't just say nice, say wonderful, kind, or thoughtful!'",
       "questions": [
         {
           "id": "L.2.6-Q1",
@@ -6630,12 +6630,12 @@
           "type": "multiple_choice",
           "prompt": "Which sentence uses the contraction \"can't\" correctly?",
           "choices": [
-            "A. I cant go to the park today.",
-            "B. I ca'nt go to the park today.",
-            "C. I can't go to the park today.",
-            "D. I can't' go to the park today."
+            "I cant go to the park today.",
+            "I ca'nt go to the park today.",
+            "I can't go to the park today.",
+            "I can't' go to the park today."
           ],
-          "correct": "C. I can't go to the park today.",
+          "correct": "I can't go to the park today.",
           "hint": "Remember, the apostrophe in a contraction like \"can't\" shows where letters are missing when you combine two words.",
           "difficulty": 1,
           "adaptiveDifficulty": 27

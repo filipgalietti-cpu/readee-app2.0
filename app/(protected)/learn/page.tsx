@@ -713,6 +713,7 @@ function LearnSession({
           <motion.div variants={fadeUp} className="flex justify-center mb-3 mt-2">
             <LoadingImage
               src={q.image_url || questionImageUrl(q.id, gradeKey)}
+              fallback={null}
               className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
             />
           </motion.div>
