@@ -15,7 +15,7 @@ export async function run(ctx: FlowCtx): Promise<void> {
   const { page } = ctx;
 
   await page.goto(
-    `${ctx.baseUrl}/dashboard?child=${encodeURIComponent(ctx.childId)}`,
+    `${ctx.baseUrl}/dashboard?child=${encodeURIComponent(ctx.childId ?? "")}`,
     { waitUntil: "domcontentloaded" },
   );
   await beat(page, 2000, "dashboard loaded — greeting + avatar");

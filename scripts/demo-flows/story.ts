@@ -12,7 +12,7 @@ export async function run(ctx: FlowCtx): Promise<void> {
   const { page } = ctx;
 
   await page.goto(
-    `${ctx.baseUrl}/stories?child=${encodeURIComponent(ctx.childId)}`,
+    `${ctx.baseUrl}/stories?child=${encodeURIComponent(ctx.childId ?? "")}`,
     { waitUntil: "domcontentloaded" },
   );
   await beat(page, 2000, "story library renders");

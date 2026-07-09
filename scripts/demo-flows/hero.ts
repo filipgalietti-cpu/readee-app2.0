@@ -19,7 +19,7 @@ export async function run(ctx: FlowCtx): Promise<void> {
   // `?child=<id>` is required — without it /learn shows the
   // "We lost track of which reader" fallback.
   await page.goto(
-    `${ctx.baseUrl}/learn?standard=RF.K.3d&child=${encodeURIComponent(ctx.childId)}`,
+    `${ctx.baseUrl}/learn?standard=RF.K.3d&child=${encodeURIComponent(ctx.childId ?? "")}`,
     { waitUntil: "domcontentloaded" },
   );
   await beat(page, 1500, "slide 1 fades in");

@@ -16,7 +16,7 @@ export async function run(ctx: FlowCtx): Promise<void> {
   // `?child=<id>` is required on /learn — without it the route bails
   // to the "We lost track of which reader" fallback.
   await page.goto(
-    `${ctx.baseUrl}/learn?standard=${encodeURIComponent(DEMO_LESSON_STANDARD)}&child=${encodeURIComponent(ctx.childId)}`,
+    `${ctx.baseUrl}/learn?standard=${encodeURIComponent(DEMO_LESSON_STANDARD)}&child=${encodeURIComponent(ctx.childId ?? "")}`,
     { waitUntil: "domcontentloaded" },
   );
   await beat(page, 2500, "slide 1 reveals");

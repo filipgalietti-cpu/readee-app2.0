@@ -1,5 +1,5 @@
 import { BADGES, TIER, type BadgeTier } from "@/app/_components/Badge/badges";
-import { BadgeBase } from "@/app/_components/Badge/Badge";
+import { Badge } from "@/app/_components/Badge/Badge";
 
 export const dynamic = "force-static";
 
@@ -57,7 +57,7 @@ export default function BadgesShowcase() {
                     style={{ background: style.card, borderColor: style.cardBorder }}
                   >
                     <div className="relative aspect-[1/1.1] w-full">
-                      <BadgeBase badge={badge} />
+                      <Badge badgeId={badge.id} />
                     </div>
                     <div className="mt-2 text-center">
                       <div className="text-[13px] font-bold tracking-tight text-zinc-900">

@@ -109,7 +109,7 @@ async function main() {
         const img = await genWithBackoff(prompt);
         if (!img.ok) continue;
         best ??= { b64: img.imageBase64, mime: img.mimeType };
-        const v: any = await timed(judgeImageQuality({ imageUrl: img.imageUrl, expectedScene: prompt }), 45000, { ok: false });
+        const v: any = await timed(judgeImageQuality({ imageUrl: img.imageUrl, expectedScene: prompt }), 45000, { ok: false, error: "timeout" });
         if (v.ok && v.severity === "pass") { best = { b64: img.imageBase64, mime: img.mimeType }; passed = true; }
       }
       done++;

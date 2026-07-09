@@ -17,7 +17,7 @@ export async function run(ctx: FlowCtx): Promise<void> {
   // the question set deterministic per run. `?child=<id>` is required —
   // without it /practice redirects to /practice-hub (parent surface).
   await page.goto(
-    `${ctx.baseUrl}/practice?standard=RL.K.1&child=${encodeURIComponent(ctx.childId)}`,
+    `${ctx.baseUrl}/practice?standard=RL.K.1&child=${encodeURIComponent(ctx.childId ?? "")}`,
     { waitUntil: "domcontentloaded" },
   );
   // /practice gates on a "Tap to Start" screen before the first
