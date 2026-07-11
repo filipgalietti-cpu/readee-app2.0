@@ -7,6 +7,7 @@ import { Lexend, Baloo_2, Nunito } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import NavAuth from "./_components/NavAuth";
+import FooterShell from "./_components/FooterShell";
 
 // Lexend — scientifically designed for reading proficiency. Used by
 // Khan Academy Kids, Reading Rockets, and most K-4 ed-tech. The
@@ -92,7 +93,8 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </main>
 
-        {/* Footer */}
+        {/* Footer — offset past the fixed sidebar on protected routes */}
+        <FooterShell>
         <footer className="bg-[#1e1b4b] mt-auto">
           <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-14 pb-8">
             {/* ── Top: columns ── */}
@@ -175,6 +177,7 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        </FooterShell>
 </ClientProviders>
         <ConditionalAnalytics />
       </body>

@@ -35,6 +35,7 @@ export default function SidebarShell({
   // then track the store as the source of truth afterwards.
   const storeOpen = useSidebarStore((s) => s.open);
   const hydrateFromServer = useSidebarStore((s) => s.hydrateFromServer);
+  const setDesktopSidebarVisible = useSidebarStore((s) => s.setDesktopSidebarVisible);
   const hydrated = useRef(false);
   const [open, setLocalOpen] = useState(initialOpen);
 
@@ -46,6 +47,15 @@ export default function SidebarShell({
     }
     setLocalOpen(storeOpen);
   }, [storeOpen, initialOpen, hydrateFromServer]);
+
+  // Tell the root-layout footer whether the fixed desktop sidebar is on
+  // screen for this route, so it can offset past it. Reset on unmount
+  // (i.e. navigating to a public page that has no sidebar).
+  const sidebarShown = !HIDDEN_PAGES.has(pathname);
+  useEffect(() => {
+    setDesktopSidebarVisible(sidebarShown);
+    return () => setDesktopSidebarVisible(false);
+  }, [sidebarShown, setDesktopSidebarVisible]);
 
   if (HIDDEN_PAGES.has(pathname)) {
     return (
