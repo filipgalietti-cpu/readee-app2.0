@@ -48,6 +48,9 @@ interface Question {
   audio_url?: string;
   hint_audio_url?: string;
   image_url?: string;
+  correct_feedback?: string;
+  incorrect_feedback?: string;
+  reveal_feedback?: string;
   words?: string[];
   sentence_hint?: string;
   sentence_audio_url?: string;
@@ -349,6 +352,11 @@ function LearnSession({
   const [feedbackMsg, setFeedbackMsg] = useState("");
   const [feedbackEmoji, setFeedbackEmoji] = useState("");
   const [showFeedback, setShowFeedback] = useState(false);
+  // Two-try MCQ: wrong choices tapped so far this question (greyed out).
+  // First miss shows the nudge and lets the kid try again; second miss
+  // reveals the answer. Scoring counts ONLY a first-try-correct.
+  const [wrongTries, setWrongTries] = useState<string[]>([]);
+  const [nudgeMsg, setNudgeMsg] = useState("");
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [showHint, setShowHint] = useState(false);
   const [audioUnlocked, setAudioUnlocked] = useState(false);
@@ -466,17 +474,19 @@ function LearnSession({
   }, [q?.audio_url, stop, playUrl]);
 
   const handleAnswer = useCallback((choice: string) => {
-    if (selected !== null || !q) return;
+    if (selected !== null || !q || wrongTries.includes(choice)) return;
     stop();
     const correct = choice === q.correct;
+    const attemptNo = wrongTries.length + 1; // 1 or 2
 
-    // Adaptive SENSE: record the in-lesson practice answer.
+    // Adaptive SENSE: record the in-lesson practice answer (with attempt #).
     if (child?.id) {
       logLearningEvent({
         childId: child.id,
         standardId: lesson.standardId,
         surface: "lesson_mcq",
         correct,
+        attempts: attemptNo,
         itemId: q.id,
         itemType: (q as { type?: string }).type ?? null,
         hintUsed: showHint,
@@ -487,28 +497,46 @@ function LearnSession({
       });
     }
 
-    setSelected(choice);
-    setIsCorrect(correct);
-    setShowFeedback(true);
-    setAnswers((prev) => [...prev, { questionId: q.id, correct, selected: choice }]);
-
     if (correct) {
-      const newConsecutive = consecutiveCorrect + 1;
-      setConsecutiveCorrect(newConsecutive);
-      const daily = getDailyMultiplier(child.streak_days);
-      const session = getSessionStreakTier(newConsecutive);
-      const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier);
-      setSessionCarrots((prev) => prev + carrots);
-      setFeedbackMsg(pickRandom(CORRECT_MESSAGES));
+      const firstTry = wrongTries.length === 0;
+      setSelected(choice);
+      setIsCorrect(true);
+      setShowFeedback(true);
+      setNudgeMsg("");
+      // Scoring counts a first-try-correct only; a 2nd-try save is for
+      // learning, not credit.
+      setAnswers((prev) => [...prev, { questionId: q.id, correct: firstTry, selected: choice }]);
+      if (firstTry) {
+        const newConsecutive = consecutiveCorrect + 1;
+        setConsecutiveCorrect(newConsecutive);
+        const daily = getDailyMultiplier(child.streak_days);
+        const session = getSessionStreakTier(newConsecutive);
+        const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier);
+        setSessionCarrots((prev) => prev + carrots);
+      }
+      setFeedbackMsg(q.correct_feedback ?? pickRandom(CORRECT_MESSAGES));
       setFeedbackEmoji(pickRandom(CORRECT_EMOJIS));
       playCorrectChime();
     } else {
+      const nextWrong = [...wrongTries, choice];
+      setWrongTries(nextWrong);
       setConsecutiveCorrect(0);
-      setFeedbackMsg(pickRandom(INCORRECT_MESSAGES));
-      setFeedbackEmoji("");
       playIncorrectBuzz();
+      if (nextWrong.length >= 2) {
+        // Second miss — reveal the answer, lock, and record it wrong.
+        setSelected(choice);
+        setIsCorrect(false);
+        setShowFeedback(true);
+        setNudgeMsg("");
+        setAnswers((prev) => [...prev, { questionId: q.id, correct: false, selected: choice }]);
+        setFeedbackMsg(q.reveal_feedback ?? pickRandom(INCORRECT_MESSAGES));
+        setFeedbackEmoji("");
+      } else {
+        // First miss — nudge only, stay unlocked so the kid tries again.
+        setNudgeMsg(q.incorrect_feedback ?? pickRandom(INCORRECT_MESSAGES));
+      }
     }
-  }, [selected, q, stop, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child.streak_days]);
+  }, [selected, q, wrongTries, stop, showHint, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child]);
 
   const handleInteractiveAnswer = useCallback((isCorrectResult: boolean, answer: string) => {
     if (selected !== null || !q) return;
@@ -545,6 +573,8 @@ function LearnSession({
     setIsCorrect(null);
     setFeedbackMsg("");
     setFeedbackEmoji("");
+    setWrongTries([]);
+    setNudgeMsg("");
 
     if (currentIdx + 1 < totalQ) {
       setCurrentIdx((i) => i + 1);
@@ -772,6 +802,7 @@ function LearnSession({
             const isSelected = selected === choice;
             const isCorrectChoice = choice === q.correct;
             const answered = selected !== null;
+            const isWrongTried = wrongTries.includes(choice);
             const choiceCount = q.choices?.length ?? 0;
             const isLastOdd = choiceCount === 3 && i === 2;
 
@@ -779,7 +810,11 @@ function LearnSession({
             let textColor = "";
             let extra = "";
 
-            if (!answered && previewedChoice === choice) {
+            if (isWrongTried && !answered) {
+              // Already tried and wrong this question — greyed, not tappable.
+              bg = "bg-zinc-200 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600";
+              textColor = "text-zinc-400 dark:text-zinc-500 line-through";
+            } else if (!answered && previewedChoice === choice) {
               extra = "ring-2 ring-offset-2 ring-violet-500 animate-pulse";
             } else if (!answered && isSelected) {
               extra = "ring-2 ring-offset-2 ring-violet-500";
@@ -811,7 +846,7 @@ function LearnSession({
                 }
                 whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
                 onClick={() => {
-                  if (answered) return;
+                  if (answered || isWrongTried) return;
                   const isPhoneme = /^\/[a-zA-Z]{1,3}\/$/.test(choice);
                   if (isPhoneme) {
                     if (previewedChoice === choice) {
@@ -824,7 +859,7 @@ function LearnSession({
                     handleAnswer(choice);
                   }
                 }}
-                disabled={answered}
+                disabled={answered || isWrongTried}
                 className={`
                   flex items-center justify-center px-3 py-3 rounded-2xl border-2 relative
                   transition-[background-color,border-color,opacity,box-shadow] duration-200 outline-none
@@ -888,6 +923,23 @@ function LearnSession({
         )}
       </motion.div>
 
+      {/* First-miss nudge — non-blocking so the kid can try again */}
+      {nudgeMsg && selected === null && (
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="mt-4 rounded-2xl border-2 border-amber-300 bg-amber-50 dark:border-amber-500/40 dark:bg-amber-950/30 px-4 py-3"
+        >
+          <p className="text-amber-900 dark:text-amber-200 font-semibold text-[15px] leading-snug">
+            {nudgeMsg}
+          </p>
+          <p className="text-amber-700/80 dark:text-amber-300/70 text-xs font-bold mt-1">
+            Try again — you&rsquo;ve got this.
+          </p>
+        </motion.div>
+      )}
+
       {/* ── Feedback bar (Duolingo-style) ── */}
       <AnimatePresence>
         {showFeedback && (
@@ -914,8 +966,8 @@ function LearnSession({
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
-                  <p className="text-white font-extrabold text-lg">{feedbackMsg}</p>
-                  {isCorrect && (() => {
+                  <p className="text-white font-bold text-lg">{feedbackMsg}</p>
+                  {isCorrect && wrongTries.length === 0 && (() => {
                     const daily = getDailyMultiplier(child.streak_days);
                     const session = getSessionStreakTier(consecutiveCorrect);
                     const earned = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier);
