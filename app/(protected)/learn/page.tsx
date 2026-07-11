@@ -79,6 +79,9 @@ interface AnswerRecord {
 
 const QUESTIONS_PER_SESSION = 6;
 const CARROTS_PER_CORRECT = 5;
+// Using the hint (answer help) earns fewer carrots. Reading the question
+// aloud ("read to me") is access, NOT help, and is never penalized.
+const HINT_CARROT_FACTOR = 0.5;
 
 const CHOICE_COLORS = [
   "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
@@ -511,7 +514,8 @@ function LearnSession({
         setConsecutiveCorrect(newConsecutive);
         const daily = getDailyMultiplier(child.streak_days);
         const session = getSessionStreakTier(newConsecutive);
-        const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier);
+        const hintFactor = showHint ? HINT_CARROT_FACTOR : 1;
+        const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * hintFactor);
         setSessionCarrots((prev) => prev + carrots);
       }
       setFeedbackMsg(q.correct_feedback ?? pickRandom(CORRECT_MESSAGES));
@@ -970,7 +974,8 @@ function LearnSession({
                   {isCorrect && wrongTries.length === 0 && (() => {
                     const daily = getDailyMultiplier(child.streak_days);
                     const session = getSessionStreakTier(consecutiveCorrect);
-                    const earned = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier);
+                    const hintFactor = showHint ? HINT_CARROT_FACTOR : 1;
+                    const earned = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * hintFactor);
                     const hasBonus = daily.multiplier > 1 || session.multiplier > 1;
                     return (
                       <p className="text-white/80 text-sm mt-0.5">
