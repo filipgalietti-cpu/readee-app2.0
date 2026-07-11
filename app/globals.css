@@ -3,15 +3,26 @@
 /* Enable class-based dark mode for Tailwind v4 */
 @custom-variant dark (&:is(.dark *));
 
-/* Lexend as the primary kid-reading font. Scientifically designed
-   for reading proficiency — wider letter spacing reduces visual
-   stress for emerging readers (used by Khan Academy Kids, Reading
-   Rockets). `--font-lexend` is set by `next/font/google` in
+/* App-wide "kid" type pairing (from the Claude Design system):
+   Nunito is the rounded body/UI font, Baloo 2 the chunky display
+   font for headings. Both are set by next/font/google in
    app/layout.tsx and exposed via the html `className`. Overriding
-   Tailwind's default `font-sans` stack so every existing class
-   picks up Lexend without touching markup catalog-wide. */
+   Tailwind's `--font-sans` so every existing `font-sans` class picks
+   up Nunito without touching markup catalog-wide; `--font-display`
+   feeds the heading base rule below. Lexend is still loaded (kept for
+   reading proficiency) — scope it back onto lesson passage text with
+   `font-[family-name:var(--font-lexend)]` if we want that later. */
 @theme {
-  --font-sans: var(--font-lexend), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-baloo), var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Headings default to the Baloo display font app-wide. Element-selector
+   specificity (0,0,1) loses to any Tailwind font-* utility class, so a
+   heading that explicitly sets its own font (e.g. font-sans or
+   font-[family-name:var(--font-baloo)]) still wins. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
 
 /* Base styles */

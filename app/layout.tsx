@@ -21,9 +21,9 @@ const lexend = Lexend({
 });
 
 // Baloo 2 (chunky display) + Nunito (rounded body) — the Readee "kid"
-// pairing from the Claude Design system. Loaded as variables and applied
-// scoped to redesigned surfaces (e.g. /practice-hub); Lexend stays the
-// app-wide default for reading-heavy screens.
+// pairing from the Claude Design system. Now the APP-WIDE default:
+// Nunito drives font-sans and Baloo drives headings (see globals.css).
+// Lexend stays loaded so lesson passage text can opt back into it.
 const baloo = Baloo_2({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
