@@ -51,6 +51,9 @@ interface Question {
   correct_feedback?: string;
   incorrect_feedback?: string;
   reveal_feedback?: string;
+  correct_feedback_audio_url?: string;
+  incorrect_feedback_audio_url?: string;
+  reveal_feedback_audio_url?: string;
   words?: string[];
   sentence_hint?: string;
   sentence_audio_url?: string;
@@ -371,6 +374,11 @@ function LearnSession({
   const totalQ = mcqQuestions.length;
   const q = mcqQuestions[currentIdx];
 
+  // Auto-narrate the question only for emergent readers (K-1). Older
+  // grades read it themselves and get a free "Read to me" button instead.
+  const lessonGrade = lesson.standardId.split(".")[1]; // K,1,2,3,4
+  const autoNarrate = lessonGrade === "K" || lessonGrade === "1";
+
   // Slideshow complete → transition to practice
   const handleSlideshowComplete = useCallback(async () => {
     await unlockAudio();
@@ -380,7 +388,7 @@ function LearnSession({
 
   // Play question audio when entering practice or advancing
   useEffect(() => {
-    if (phase !== "practice" || showFeedback || !audioUnlocked || !q) return;
+    if (phase !== "practice" || showFeedback || !audioUnlocked || !q || !autoNarrate) return;
     const url = q.audio_url;
     if (url && q.type === "category_sort") {
       const hintUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/ui/category-sort-hint.mp3`;
@@ -392,35 +400,37 @@ function LearnSession({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIdx, phase, showFeedback, audioUnlocked]);
 
-  // Play feedback audio
+  // Play feedback audio — the question's OWN spoken line when we have it
+  // (praise on correct, warm reveal on the 2nd miss); otherwise fall back
+  // to the generic clips.
   useEffect(() => {
-    if (!showFeedback) return;
+    if (!showFeedback || !q) return;
     if (isCorrect) {
-      // Delay so the correct chime finishes before the spoken "That's right!" starts
-      const correctUrl = getAudioUrl("feedback", pickRandom(CORRECT_AUDIO));
-      const t = setTimeout(() => playUrl(correctUrl), 700);
+      const url = q.correct_feedback_audio_url ?? getAudioUrl("feedback", pickRandom(CORRECT_AUDIO));
+      const t = setTimeout(() => playUrl(url), 700);
       return () => clearTimeout(t);
-    } else {
-      const prefixUrl = getAudioUrl("feedback", pickRandom(INCORRECT_AUDIO));
-      // After "Try again!" prefix, chain the correct-answer readback for any
-      // question type that has one available.
-      let answerUrl: string | null = null;
-      if (q.type === "multiple_choice" && q.audio_url) {
-        answerUrl = q.audio_url.replace(/\.mp3$/, "-incorrect.mp3");
-      } else if (q.type === "missing_word" && q.id) {
-        const folder = GRADE_FOLDER[gradeKey] || gradeKey || "kindergarten";
-        const standard = q.id.replace(/-Q\d+$/, "");
-        answerUrl = `${SUPABASE_STORAGE}/audio/${folder}/${standard}/${q.id}-incorrect.mp3`;
-      }
-      const encourageUrl = getAudioUrl("feedback", pickRandom(ENCOURAGE_AUDIO));
-      if (answerUrl) {
-        playSequence([{ url: prefixUrl }, { delayMs: 200 }, { url: answerUrl }, { delayMs: 300 }, { url: encourageUrl }]);
-      } else {
-        playSequence([{ url: prefixUrl }, { delayMs: 300 }, { url: encourageUrl }]);
-      }
     }
+    // Second-miss reveal.
+    if (q.reveal_feedback_audio_url) {
+      const url = q.reveal_feedback_audio_url;
+      const t = setTimeout(() => playUrl(url), 500);
+      return () => clearTimeout(t);
+    }
+    const prefixUrl = getAudioUrl("feedback", pickRandom(INCORRECT_AUDIO));
+    const encourageUrl = getAudioUrl("feedback", pickRandom(ENCOURAGE_AUDIO));
+    playSequence([{ url: prefixUrl }, { delayMs: 300 }, { url: encourageUrl }]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showFeedback]);
+
+  // First-miss nudge line (spoken), when available — plays while the kid
+  // is still deciding, so it must not block the choices.
+  useEffect(() => {
+    if (!nudgeMsg || selected !== null || !q?.incorrect_feedback_audio_url) return;
+    const url = q.incorrect_feedback_audio_url;
+    const t = setTimeout(() => playUrl(url), 400);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nudgeMsg]);
 
   const playWordAudio = useCallback((word: string) => {
     const clean = word.replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase().replace(/\s+/g, "_");
@@ -766,17 +776,34 @@ function LearnSession({
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-snug text-center whitespace-pre-line">
               {highlightQuestion(question)}
             </h2>
-            <button
-              onClick={handleReplay}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-50 dark:bg-violet-500/20 hover:bg-violet-100 dark:hover:bg-violet-500/30 transition-colors flex-shrink-0"
-              aria-label="Replay audio"
-            >
-              <svg className="w-5 h-5 text-violet-600 dark:text-violet-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
-              </svg>
-            </button>
+            {autoNarrate && (
+              <button
+                onClick={handleReplay}
+                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-50 dark:bg-violet-500/20 hover:bg-violet-100 dark:hover:bg-violet-500/30 transition-colors flex-shrink-0"
+                aria-label="Replay audio"
+              >
+                <svg className="w-5 h-5 text-violet-600 dark:text-violet-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+                </svg>
+              </button>
+            )}
           </div>
         </motion.div>
+
+        {/* Older grades read it themselves; free "Read to me" scaffold (no carrot cost) */}
+        {!autoNarrate && q.audio_url && (
+          <motion.div variants={fadeUp} className="flex justify-center mb-4">
+            <button
+              onClick={handleReplay}
+              className="inline-flex items-center gap-2 rounded-full bg-violet-50 dark:bg-violet-500/20 hover:bg-violet-100 dark:hover:bg-violet-500/30 text-violet-700 dark:text-violet-200 font-semibold text-sm px-4 py-2 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
+              </svg>
+              Read it to me
+            </button>
+          </motion.div>
+        )}
 
         {/* Progress dots */}
         <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-4">
