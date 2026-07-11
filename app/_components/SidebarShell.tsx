@@ -60,12 +60,16 @@ export default function SidebarShell({
   return (
     <>
       <AppSidebar />
-      <div
-        className={`transition-[margin] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-          open ? "lg:ml-[272px]" : "lg:ml-[72px]"
-        }`}
-      >
-        {children}
+      {/* Desktop: break out of the root <main>'s centered max-w-6xl so the
+          fixed sidebar doesn't eat into the content column. The content
+          then spans the full viewport minus the sidebar, instead of being
+          squished into the leftover of a centered 1152px box. Mobile keeps
+          the normal centered container (no sidebar rail there). The sidebar
+          is always open (272px) — the collapse toggle was removed. */}
+      <div className="lg:ml-[calc(50%-50vw)] lg:mr-[calc(50%-50vw)]">
+        <div className="lg:ml-[272px]">
+          {children}
+        </div>
       </div>
     </>
   );

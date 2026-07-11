@@ -10,7 +10,7 @@ import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import Image from "next/image";
 import {
   Shuffle, BookOpen, Type, Newspaper, MessageCircle,
-  ChevronDown, ChevronRight, Zap,
+  ChevronDown, ChevronRight, Zap, Flame, Star, Check,
 } from "lucide-react";
 import TopCommunityPicks from "./_components/TopCommunityPicks";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -226,11 +226,45 @@ const KID_NAMES: Record<string, { name: string; desc: string }> = {
   "L.4.6": { name: "Academic Vocab", desc: "Use precise language" },
 };
 
-const DOMAIN_META: Record<string, { Icon: typeof BookOpen; color: string; bg: string }> = {
-  "Reading Literature": { Icon: BookOpen, color: "text-violet-600", bg: "bg-violet-50" },
-  "Reading Informational Text": { Icon: Newspaper, color: "text-violet-600", bg: "bg-violet-50" },
-  "Foundational Skills": { Icon: Type, color: "text-amber-600", bg: "bg-amber-50" },
-  "Language": { Icon: MessageCircle, color: "text-emerald-600", bg: "bg-emerald-50" },
+const DOMAIN_META: Record<string, {
+  Icon: typeof BookOpen; color: string; bg: string;
+  accent: string; accentText: string; tint: string; friendly: string;
+}> = {
+  "Reading Literature": { Icon: BookOpen, color: "text-violet-600", bg: "bg-violet-50", accent: "#8b5cf6", accentText: "#6d28d9", tint: "#f5f3ff", friendly: "Stories, characters, and adventures" },
+  "Reading Informational Text": { Icon: Newspaper, color: "text-sky-600", bg: "bg-sky-50", accent: "#38bdf8", accentText: "#0369a1", tint: "#f0f9ff", friendly: "Facts and real things" },
+  "Foundational Skills": { Icon: Type, color: "text-amber-600", bg: "bg-amber-50", accent: "#f59e0b", accentText: "#b45309", tint: "#fffbeb", friendly: "Sounds, letters, and reading out loud" },
+  "Language": { Icon: MessageCircle, color: "text-emerald-600", bg: "bg-emerald-50", accent: "#10b981", accentText: "#047857", tint: "#ecfdf5", friendly: "Words and grammar" },
+};
+const DOMAIN_FALLBACK = { Icon: BookOpen, color: "text-zinc-600", bg: "bg-zinc-50", accent: "#8b5cf6", accentText: "#6d28d9", tint: "#f5f3ff", friendly: "" };
+
+// The data labels the same domain differently across grades (K/1 use
+// "Foundational Skills"; 2-4 use "Reading Foundational Skills") and has a
+// couple of stray 1-topic buckets. Normalize to the 4 canonical domains
+// so every grade shows a consistent, color-coordinated board.
+const DOMAIN_ALIAS: Record<string, string> = {
+  "Reading Foundational Skills": "Foundational Skills",
+  "Literature": "Reading Literature",
+  "Informational": "Reading Informational Text",
+};
+const canonDomain = (d: string) => DOMAIN_ALIAS[d] ?? d;
+
+// Rotating smart-search prompts (cycles every few seconds like the design).
+const SEARCH_HINTS = [
+  "What do you want to practice?",
+  "Try “rhyming words”",
+  "Describe what your kid needs…",
+  "Try “a story about kindness”",
+  "Try “context clues practice”",
+  "Search a skill, a story, or a lesson…",
+];
+
+// Per-grade identity colors for the grade switcher bubbles.
+const GRADE_META: Record<string, { letter: string; main: string; soft: string; text: string }> = {
+  kindergarten: { letter: "K", main: "#8b5cf6", soft: "#ede9fe", text: "#6d28d9" },
+  "1st": { letter: "1", main: "#f43f5e", soft: "#ffe4e6", text: "#be123c" },
+  "2nd": { letter: "2", main: "#0d9488", soft: "#ccfbf1", text: "#0f766e" },
+  "3rd": { letter: "3", main: "#22c55e", soft: "#dcfce7", text: "#15803d" },
+  "4th": { letter: "4", main: "#f97316", soft: "#ffedd5", text: "#c2410c" },
 };
 
 /* ── Types ─────────────────────────────────────────── */
@@ -260,8 +294,11 @@ function PracticeHubContent() {
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
-  const [openDomains, setOpenDomains] = useState<Set<string>>(new Set());
-  const [openGrades, setOpenGrades] = useState<Set<string>>(new Set());
+  const [selectedGrade, setSelectedGrade] = useState<string | null>(null);
+  const [openDomain, setOpenDomain] = useState<string | null>(null);
+  const [mastery, setMastery] = useState<Record<string, number>>({});
+  const [questionsDone, setQuestionsDone] = useState(0);
+  const [hintIdx, setHintIdx] = useState(0);
   const plan = usePlanStore((s) => s.plan);
   const fetchPlan = usePlanStore((s) => s.fetch);
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
@@ -271,12 +308,47 @@ function PracticeHubContent() {
   // Hooks. Previously placed below `if (loading) return …`, which
   // caused React error #310 (more hooks rendered after data loaded
   // than before) — that crash is what broke /practice-hub in prod.
+  // Default to the kid's own grade once loaded. All domains start
+  // collapsed (kid taps one to open); switching grades also folds all.
   useEffect(() => {
-    if (child && openGrades.size === 0) {
-      const gk = levelNameToGradeKey(child.reading_level);
-      setOpenGrades(new Set([gk]));
+    if (child && !selectedGrade) {
+      setSelectedGrade(levelNameToGradeKey(child.reading_level));
     }
-  }, [child, openGrades.size]);
+  }, [child, selectedGrade]);
+
+  // Real mastery: derive per-standard stars from the kid's practice
+  // results (>=80% = 3 stars/mastered, >=50% = 2, any attempts = 1).
+  useEffect(() => {
+    if (!child) return;
+    let alive = true;
+    (async () => {
+      const supabase = supabaseBrowser();
+      const { data } = await supabase
+        .from("practice_results")
+        .select("standard_id, questions_correct, questions_attempted")
+        .eq("child_id", child.id);
+      if (!alive) return;
+      const m: Record<string, number> = {};
+      let done = 0;
+      for (const r of (data as any[]) ?? []) {
+        const att = r.questions_attempted ?? 0;
+        const cor = r.questions_correct ?? 0;
+        done += att;
+        if (att <= 0) continue;
+        const pct = cor / att;
+        m[r.standard_id] = pct >= 0.8 ? 3 : pct >= 0.5 ? 2 : 1;
+      }
+      setMastery(m);
+      setQuestionsDone(done);
+    })();
+    return () => { alive = false; };
+  }, [child]);
+
+  // Rotate the smart-search placeholder every 3.5s.
+  useEffect(() => {
+    const t = setInterval(() => setHintIdx((i) => i + 1), 3500);
+    return () => clearInterval(t);
+  }, []);
 
   // Resolve a child even when the URL doesn't carry one.
   //
@@ -399,8 +471,9 @@ function PracticeHubContent() {
     const domainMap = new Map<string, Standard[]>();
     const domainOrder: string[] = [];
     for (const s of stds) {
-      if (!domainMap.has(s.domain)) { domainMap.set(s.domain, []); domainOrder.push(s.domain); }
-      domainMap.get(s.domain)!.push(s);
+      const dom = canonDomain(s.domain);
+      if (!domainMap.has(dom)) { domainMap.set(dom, []); domainOrder.push(dom); }
+      domainMap.get(dom)!.push(s);
     }
     return {
       gradeKey: gk,
@@ -419,230 +492,220 @@ function PracticeHubContent() {
     if (s) router.push(`/practice?child=${childId}&standard=${s.standard_id}`);
   };
 
-  const toggleGrade = (g: string) => {
-    setOpenGrades((prev) => {
-      const next = new Set(prev);
-      if (next.has(g)) next.delete(g); else next.add(g);
-      return next;
-    });
-  };
-
-  const toggleDomain = (d: string) => {
-    setOpenDomains((prev) => {
-      const next = new Set(prev);
-      if (next.has(d)) next.delete(d); else next.add(d);
-      return next;
-    });
-  };
+  const gk = selectedGrade || levelNameToGradeKey(child.reading_level);
+  const grade = allGrades.find((g) => g.gradeKey === gk) || allGrades[0];
+  const masteredTotal = allStandards.filter((s) => mastery[s.standard_id] === 3).length;
+  const heroSubcopy = masteredTotal > 0
+    ? `You've mastered ${masteredTotal} skill${masteredTotal === 1 ? "" : "s"} — keep collecting stars!`
+    : "Pick a world and start collecting stars!";
 
   return (
-    <div className="mx-auto max-w-6xl space-y-6 px-4 py-6 sm:px-6">
-      {/* Kid-forward hero — bunny mascot + greeting, matches the
-          dashboard's vibe so /practice-hub feels like the same world
-          rather than a tools page. Full width as a banner on every
-          viewport. */}
-      <motion.div
+    <div className="@container mx-auto max-w-6xl px-4 py-6 sm:px-6 pb-32 space-y-5 font-[family-name:var(--font-nunito)]">
+      {/* ── Hero + grade switcher ── */}
+      <motion.section
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-3xl bg-gradient-to-br from-violet-50 via-violet-50 to-fuchsia-50 dark:from-indigo-950/30 dark:via-violet-950/30 dark:to-fuchsia-950/30 p-5 sm:p-6 flex items-center gap-4 sm:gap-5"
+        style={{ background: "linear-gradient(160deg, #e8e0ff 0%, #ffffff 45%, #e0ecff 100%)" }}
+        className="rounded-[24px] p-5 sm:p-7 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.15)] flex flex-col gap-5 @4xl:flex-row @4xl:items-center @4xl:gap-8"
       >
-        <div className="relative flex h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 items-center justify-center rounded-2xl bg-white/70 dark:bg-slate-800/70 shadow-sm">
+        <div className="flex items-center gap-4 flex-1 min-w-0">
           <Image
             src="/images/ui/bunny-stars.png"
             alt=""
-            width={96}
-            height={96}
-            className="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow"
-            priority={false}
+            width={92}
+            height={92}
+            className="h-[76px] w-[76px] sm:h-[92px] sm:w-[92px] object-contain drop-shadow flex-shrink-0"
           />
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
-            Practice Time
+          <div className="min-w-0">
+            <h1 className="text-[26px] sm:text-[32px] font-semibold text-[#1e1b4b] dark:text-white leading-[1.15] font-[family-name:var(--font-baloo)]">
+              Welcome back, {child.first_name}!
+            </h1>
+            <p className="mt-1 text-sm text-[#475569] dark:text-slate-300">{heroSubcopy}</p>
+            <div className="flex flex-wrap gap-2 mt-2.5">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 dark:bg-slate-800/70 px-3 py-1 text-xs font-semibold text-orange-700 dark:text-orange-300">
+                <Flame className="w-3.5 h-3.5 text-orange-500" strokeWidth={2} />
+                {child.streak_days ?? 0}-day streak
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 dark:bg-slate-800/70 px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300">
+                <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" strokeWidth={1} />
+                {masteredTotal} skills mastered
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 dark:bg-slate-800/70 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                <Check className="w-3.5 h-3.5 text-emerald-500" strokeWidth={2.5} />
+                {questionsDone} questions done
+              </span>
+            </div>
           </div>
-          <h1 className="mt-0.5 text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-slate-100 leading-tight">
-            Pick a skill, {child.first_name}!
-          </h1>
-          <p className="mt-1 text-xs sm:text-sm text-zinc-500 dark:text-slate-400">
-            {allStandards.length} topics &middot; {totalQs} questions
+        </div>
+
+        {/* Grade switcher — wraps below the greeting when the content
+            column is narrow (e.g. sidebar open) so the stat pills keep room. */}
+        <div className="flex-shrink-0 text-center">
+          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300 mb-2">
+            Pick a grade
+          </p>
+          <div className="flex items-center justify-center gap-2">
+            {GRADE_ORDER.map((gkey) => {
+              const gmeta = GRADE_META[gkey];
+              const sel = gkey === gk;
+              return (
+                <button
+                  key={gkey}
+                  onClick={() => { setSelectedGrade(gkey); setOpenDomain(null); }}
+                  aria-label={GRADE_LABELS[gkey]}
+                  className="rounded-full font-semibold flex items-center justify-center transition-transform hover:scale-[1.08] active:scale-95 font-[family-name:var(--font-baloo)]"
+                  style={{
+                    width: sel ? 56 : 42,
+                    height: sel ? 56 : 42,
+                    fontSize: sel ? 22 : 16,
+                    background: sel ? gmeta.main : gmeta.soft,
+                    color: sel ? "#ffffff" : gmeta.text,
+                    boxShadow: sel ? `0 0 0 3px #ffffff, 0 8px 20px -4px ${gmeta.main}99` : "none",
+                  }}
+                >
+                  {gmeta.letter}
+                </button>
+              );
+            })}
+          </div>
+          <p className="mt-2 text-xs font-semibold" style={{ color: GRADE_META[gk].text }}>
+            {grade.label} · {grade.standards.length} topics
           </p>
         </div>
-      </motion.div>
+      </motion.section>
 
-      {/* Two-column layout on lg+: grade list on the left, the
-          discovery/shortcuts column (search + random + community) on
-          the right. On mobile everything stacks single-column —
-          discovery first, grades below — matching the prior order. */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {/* Right sidebar (rendered first on mobile via order, second
-            on lg via order). On lg it's sticky so it stays visible as
-            the kid scrolls grades. */}
-        <aside className="space-y-4 lg:order-2 lg:col-span-1 lg:sticky lg:top-6 lg:self-start">
-          {/* Smart search — Readee+ semantic search across canon lessons,
-              practice questions, and decodable stories. Hits route the
-              kid straight into /learn, /practice, or /stories with the
-              resolved child param attached, so clicks never dead-end. */}
-          <ProductSearchBar isPremium={plan === "premium"} childId={child.id} />
+      {/* ── Smart search ── */}
+      <ProductSearchBar
+        isPremium={plan === "premium"}
+        childId={child.id}
+        placeholder={SEARCH_HINTS[hintIdx % SEARCH_HINTS.length]}
+      />
 
-          {/* Random */}
-          <motion.button
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05 }}
-            onClick={handleRandom}
-            className="w-full flex items-center gap-4 px-5 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white hover:from-violet-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg active:scale-[0.98]"
-          >
-            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
-              <Shuffle className="w-5 h-5 text-white" />
-            </div>
-            <div className="flex-1 text-left">
-              <p className="text-sm font-bold text-white">Random Practice</p>
-              <p className="text-xs text-white/70">Surprise me with any topic</p>
-            </div>
-            <ChevronRight className="w-5 h-5 text-white/60 flex-shrink-0" />
-          </motion.button>
-
-          {/* Community top picks — auto-curated by reads. Quietly hides
-              when there are no approved community submissions yet. */}
-          <TopCommunityPicks />
-        </aside>
-
-        {/* Main column — grade picker accordions. */}
-        <div className="space-y-4 lg:order-1 lg:col-span-2">
-      {/* Grade → Domain → Topics */}
-      {allGrades.map((grade, gIdx) => {
-        const gradeOpen = openGrades.has(grade.gradeKey);
-
-        return (
-          <motion.div
-            key={grade.gradeKey}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 + gIdx * 0.04 }}
-            className={`rounded-3xl overflow-hidden transition-shadow duration-200 ${
-              gradeOpen
-                ? "shadow-lg"
-                : "shadow-sm hover:shadow-md bg-white dark:bg-slate-800"
-            }`}
-          >
-            {/* Grade header */}
-            <button
-              onClick={() => toggleGrade(grade.gradeKey)}
-              className={`w-full text-left px-5 py-4 flex items-center gap-4 transition-colors ${
-                gradeOpen
-                  ? "bg-gradient-to-r from-violet-600 to-violet-500"
-                  : "hover:bg-violet-50/40 dark:hover:bg-indigo-950/20"
-              }`}
+      {/* ── Domain board ── */}
+      <section className="grid grid-cols-1 @3xl:grid-cols-2 gap-4">
+        {grade.domains.map((domain) => {
+          const meta = DOMAIN_META[domain.domain] || DOMAIN_FALLBACK;
+          const DIcon = meta.Icon;
+          const open = openDomain === domain.domain;
+          const stds = domain.standards;
+          const mastered = stds.filter((s) => mastery[s.standard_id] === 3).length;
+          const pct = stds.length ? Math.round((mastered / stds.length) * 100) : 0;
+          let nextMarked = false;
+          return (
+            <motion.div
+              key={domain.domain}
+              layout
+              className={`rounded-3xl bg-white dark:bg-slate-800 border shadow-sm overflow-hidden ${open ? "@3xl:col-span-2" : ""}`}
+              style={{ borderColor: open ? `${meta.accent}55` : "#e4e4e7" }}
             >
-              <div className={`w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 ring-2 transition ${
-                gradeOpen ? "ring-white/40" : "ring-violet-100 dark:ring-slate-700"
-              }`}>
-                <Image
-                  src={GRADE_BADGES[grade.gradeKey] || ""}
-                  alt={grade.label}
-                  width={48}
-                  height={48}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className={`text-base font-extrabold leading-tight ${gradeOpen ? "text-white" : "text-zinc-900 dark:text-slate-100"}`}>
-                  {grade.label}
-                </p>
-                <p className={`text-[11px] mt-0.5 ${gradeOpen ? "text-white/75" : "text-zinc-500 dark:text-slate-400"}`}>
-                  {grade.standards.length} topics &middot; {grade.totalQs} questions
-                </p>
-              </div>
-              <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
-                gradeOpen ? "text-white/70 rotate-180" : "text-violet-400 dark:text-violet-400/60"
-              }`} />
-            </button>
-
-            <AnimatePresence initial={false}>
-              {gradeOpen && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                  className="overflow-hidden"
+              <button
+                onClick={() => setOpenDomain(open ? null : domain.domain)}
+                className="w-full text-left px-5 py-4 flex items-center gap-4 transition-colors"
+                style={{ background: open ? meta.tint : undefined }}
+              >
+                <div
+                  className="rounded-2xl flex items-center justify-center flex-shrink-0"
+                  style={{ width: 52, height: 52, background: meta.tint }}
                 >
-                  <div className="px-3 py-2 space-y-1">
-                    {grade.domains.map((domain) => {
-                      const domainKey = `${grade.gradeKey}-${domain.domain}`;
-                      const domOpen = openDomains.has(domainKey);
-                      const meta = DOMAIN_META[domain.domain] || { Icon: BookOpen, color: "text-zinc-600", bg: "bg-zinc-50" };
-                      const DIcon = meta.Icon;
-                      const domainQs = domain.standards.reduce((sum, s) => sum + (s.questions?.length || 0), 0);
-
-                      return (
-                        <div key={domainKey} className="rounded-xl overflow-hidden">
-                          <button
-                            onClick={() => toggleDomain(domainKey)}
-                            className={`w-full px-4 py-3 flex items-center gap-3 rounded-xl transition-colors ${
-                              domOpen ? "bg-violet-50" : "hover:bg-zinc-50"
-                            }`}
-                          >
-                            <DIcon className={`w-4 h-4 flex-shrink-0 ${meta.color}`} strokeWidth={1.5} />
-                            <p className="flex-1 text-left text-[13px] font-semibold text-zinc-800">{domain.domain}</p>
-                            <span className="text-[11px] text-zinc-400 font-medium mr-1">{domain.standards.length} topics</span>
-                            <ChevronDown className={`w-4 h-4 text-zinc-400 flex-shrink-0 transition-transform duration-200 ${domOpen ? "rotate-180" : ""}`} />
-                          </button>
-
-                          <AnimatePresence initial={false}>
-                            {domOpen && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="overflow-hidden"
-                              >
-                                <div className="px-4 pb-3 space-y-1">
-                                  {domain.standards.map((std, sIdx) => {
-                                    const kidMeta = KID_NAMES[std.standard_id];
-                                    const name = kidMeta?.name || std.standard_id;
-                                    const desc = kidMeta?.desc || "";
-                                    const qCount = std.questions?.length || 0;
-
-                                    return (
-                                      <motion.div
-                                        key={std.standard_id}
-                                        initial={{ opacity: 0, x: -8 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: sIdx * 0.03 }}
-                                      >
-                                        <Link
-                                          href={`/practice?child=${childId}&standard=${std.standard_id}`}
-                                          className="flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-zinc-50 transition-colors group"
-                                        >
-                                          <div className="flex-1 min-w-0">
-                                            <p className="text-sm font-semibold text-zinc-800 group-hover:text-violet-700 transition-colors">
-                                              {name} <span className="font-normal text-zinc-400">— {desc}</span>
-                                            </p>
-                                            <p className="text-[10px] text-zinc-400 mt-0.5">{std.standard_id} &middot; {qCount} questions</p>
-                                          </div>
-                                          <ChevronRight className="w-4 h-4 text-zinc-300 group-hover:text-violet-400 flex-shrink-0 transition-colors" />
-                                        </Link>
-                                      </motion.div>
-                                    );
-                                  })}
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      );
-                    })}
+                  <DIcon className="w-6 h-6" strokeWidth={2} style={{ color: meta.accent }} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[18px] font-semibold text-[#18181b] dark:text-white leading-tight font-[family-name:var(--font-baloo)]">{domain.domain}</p>
+                  <p className="text-xs text-zinc-500 dark:text-slate-400 mb-1.5">{meta.friendly}</p>
+                  <div className="flex items-center gap-2.5">
+                    <div className="flex-1 max-w-[220px] h-2 rounded-full bg-zinc-100 dark:bg-slate-700 overflow-hidden">
+                      <div className="h-full rounded-full transition-all" style={{ width: `${pct}%`, background: meta.accent }} />
+                    </div>
+                    <span className="text-xs font-semibold whitespace-nowrap" style={{ color: meta.accentText }}>
+                      {mastered} of {stds.length} mastered
+                    </span>
                   </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        );
-      })}
-        </div>
-      </div>
+                </div>
+                <ChevronDown className={`w-5 h-5 text-zinc-400 flex-shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
+              </button>
+
+              <AnimatePresence initial={false}>
+                {open && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.22 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-4 pb-4 grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-2.5">
+                      {stds.map((std) => {
+                        const stars = mastery[std.standard_id] || 0;
+                        const km = KID_NAMES[std.standard_id];
+                        const name = km?.name || std.standard_description || std.standard_id;
+                        const desc = km?.desc || (km ? "" : std.standard_description) || "";
+                        const isNew = stars === 0;
+                        const isNext = !nextMarked && stars > 0 && stars < 3;
+                        if (isNext) nextMarked = true;
+                        return (
+                          <Link
+                            key={std.standard_id}
+                            href={`/practice?child=${childId}&standard=${std.standard_id}`}
+                            className="flex flex-col gap-1.5 p-3.5 rounded-2xl hover:-translate-y-0.5 hover:shadow-md transition-all"
+                            style={{
+                              border: isNext ? "2px solid #f59e0b" : isNew ? "1.5px dashed #d4d4d8" : "1px solid #e4e4e7",
+                              background: stars === 3 ? meta.tint : "#ffffff",
+                            }}
+                          >
+                            <div className="flex items-start justify-between gap-2">
+                              <p className="text-sm font-semibold text-zinc-900 leading-snug">{name}</p>
+                              {isNext && (
+                                <span className="inline-flex items-center gap-1 flex-shrink-0 rounded-full bg-amber-100 text-amber-700 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
+                                  <Zap className="w-2.5 h-2.5 fill-amber-500" strokeWidth={1} />
+                                  Next
+                                </span>
+                              )}
+                              {isNew && (
+                                <span className="flex-shrink-0 rounded-full bg-zinc-100 text-zinc-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
+                                  New
+                                </span>
+                              )}
+                            </div>
+                            {desc && <p className="text-[11.5px] text-zinc-500 leading-snug">{desc}</p>}
+                            <div className="flex items-center gap-0.5 mt-auto pt-0.5">
+                              {[0, 1, 2].map((k) => (
+                                <Star
+                                  key={k}
+                                  className="w-3.5 h-3.5"
+                                  strokeWidth={1.5}
+                                  style={{ fill: k < stars ? "#f59e0b" : "none", color: k < stars ? "#f59e0b" : "#d4d4d8" }}
+                                />
+                              ))}
+                              <span className="ml-1.5 text-[10.5px] text-zinc-400">
+                                {stars === 3 ? "Mastered!" : stars > 0 ? `${stars} of 3 stars` : "Not started"}
+                              </span>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
+      </section>
+
+      {/* ── Community ── */}
+      <TopCommunityPicks />
+
+      {/* ── Surprise me FAB ── */}
+      <motion.button
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        onClick={handleRandom}
+        style={{ background: "linear-gradient(90deg, #4338ca, #7c3aed)", boxShadow: "0 10px 40px -8px rgba(67,56,202,0.55)" }}
+        className="fixed right-6 bottom-6 z-40 inline-flex items-center gap-2.5 rounded-full px-6 py-4 text-white font-semibold text-[17px] hover:-translate-y-0.5 active:scale-95 transition-transform font-[family-name:var(--font-baloo)]"
+      >
+        <Shuffle className="w-5 h-5" strokeWidth={2} />
+        Surprise me!
+      </motion.button>
     </div>
   );
 }

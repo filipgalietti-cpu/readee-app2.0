@@ -67,10 +67,13 @@ const TYPE_META: Record<string, { label: string; icon: any; color: string }> = {
 export default function ProductSearchBar({
   isPremium,
   childId,
+  placeholder,
 }: {
   isPremium: boolean;
   /** Required so result links carry ?child=… into the runner. */
   childId: string | null;
+  /** Optional rotating/custom placeholder (premium only). */
+  placeholder?: string;
 }) {
   const [query, setQuery] = useState("");
   const [hits, setHits] = useState<SearchHit[] | null>(null);
@@ -127,7 +130,7 @@ export default function ProductSearchBar({
           onChange={(e) => setQuery(e.target.value)}
           placeholder={
             isPremium
-              ? "Describe what your kid needs — \"a 2nd grade story about kindness,\" \"context clues practice,\" …"
+              ? (placeholder ?? "Describe what your kid needs — \"a 2nd grade story about kindness,\" \"context clues practice,\" …")
               : "Smart search is a Readee+ feature"
           }
           disabled={!isPremium}

@@ -3,7 +3,7 @@ import PageTransition from "./_components/PageTransition";
 import JsonLd from "./_components/JsonLd";
 import ConditionalAnalytics from "./_components/ConditionalAnalytics";
 import type { Metadata, Viewport } from "next";
-import { Lexend } from "next/font/google";
+import { Lexend, Baloo_2, Nunito } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import NavAuth from "./_components/NavAuth";
@@ -17,6 +17,23 @@ const lexend = Lexend({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-lexend",
+  display: "swap",
+});
+
+// Baloo 2 (chunky display) + Nunito (rounded body) — the Readee "kid"
+// pairing from the Claude Design system. Loaded as variables and applied
+// scoped to redesigned surfaces (e.g. /practice-hub); Lexend stays the
+// app-wide default for reading-heavy screens.
+const baloo = Baloo_2({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-baloo",
+  display: "swap",
+});
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--font-nunito",
   display: "swap",
 });
 
@@ -62,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={lexend.variable}>
+    <html lang="en" className={`${lexend.variable} ${baloo.variable} ${nunito.variable}`}>
       <head>
         <JsonLd />
       </head>
