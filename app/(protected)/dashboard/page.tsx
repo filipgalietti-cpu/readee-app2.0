@@ -31,6 +31,8 @@ import { trackFunnelClient } from "@/lib/analytics/funnel";
 import LevelBadge from "@/app/_components/LevelBadge";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { computeLevel } from "@/lib/levels/levels";
+import KidHome from "./_components/KidHome";
+import { OUTFITS } from "@/app/_components/Bunny/outfits";
 
 // Set of standards that have a real canonical lesson on the /learn
 // slideshow route. Used to route navigation to /learn when possible
@@ -995,6 +997,130 @@ function ChildDashboard({
     setAvatarPickerOpen(false);
   };
 
+  // Equip a Bunny outfit straight from the home screen's mascot picker
+  // (mirrors handleEquipAvatar; writes equipped_items.outfit).
+  const handleEquipOutfit = async (outfitId: string) => {
+    const newEquipped: EquippedItems = {
+      ...currentChild.equipped_items,
+      outfit: outfitId,
+    };
+    const supabase = supabaseBrowser();
+    const { error } = await supabase
+      .from("children")
+      .update({ equipped_items: newEquipped })
+      .eq("id", currentChild.id);
+    if (!error) {
+      const updated = { ...currentChild, equipped_items: newEquipped };
+      setCurrentChild(updated);
+      setStoreChildData(updated);
+      setStoreChildren(children.map((c) => (c.id === updated.id ? updated : c)));
+    }
+  };
+
+  // ── Compose the redesigned kid-home props from the data above ──
+  const firstDay = hasAssessment === false;
+  const kidName = currentChild.first_name;
+  const equippedOutfitId = currentChild.equipped_items?.outfit ?? "bunny_classic";
+  const ownedOutfitIds = new Set<string>([
+    "bunny_classic",
+    ...purchases.filter((p) => p.item_id.startsWith("bunny_")).map((p) => p.item_id),
+  ]);
+  // Show a compact picker: the equipped outfit plus a curated handful.
+  const pickerIds = Array.from(new Set([equippedOutfitId, ...OUTFITS.map((o) => o.id)])).slice(0, 5);
+  const outfitChoices = pickerIds.map((id) => {
+    const o = OUTFITS.find((x) => x.id === id)!;
+    return { id, name: o.name, tint: o.tint, border: o.border, owned: ownedOutfitIds.has(id) };
+  });
+
+  // Primary CTA + today's plan, grounded in real state.
+  const nextStandardId = nextLesson ? lessonToLearnStandard(nextLesson) : null;
+  const nextLessonHref = nextLesson
+    ? (nextStandardId
+        ? `/learn?standard=${nextStandardId}&child=${child.id}`
+        : `/lesson?child=${child.id}&lesson=${nextLesson.id}`)
+    : `/practice-hub?child=${child.id}`;
+
+  const cta = firstDay
+    ? { href: `/assessment?child=${child.id}`, text: "Take your reading quiz", sub: "A fun 10-question quiz · about 5 min" }
+    : nextLesson
+      ? { href: nextLessonHref, text: completedCount === 0 ? "Start your adventure" : "Keep going", sub: `Next: ${nextLesson.title}` }
+      : { href: `/practice-hub?child=${child.id}`, text: "Practice time!", sub: "You finished every lesson — amazing!" };
+
+  const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string }> = firstDay
+    ? [
+        { num: "1", label: "Take the reading quiz", sub: "Finds your just-right level", status: "cur", href: `/assessment?child=${child.id}` },
+        { num: "2", label: "Your first lesson", sub: "Readee reads along with you", status: "todo" },
+        { num: "3", label: "Meet your Reading Buddy", sub: "Say hi — it talks back!", status: "todo", href: `/buddy?child=${child.id}` },
+      ]
+    : [
+        { num: "1", label: "Warm-up practice", sub: dailyGoalMet ? "Done — nice work!" : "5 quick questions", status: dailyGoalMet ? "done" : "cur", href: `/practice-hub?child=${child.id}` },
+        { num: "2", label: nextLesson ? nextLesson.title : "All lessons done!", sub: nextLesson ? "About 5 minutes" : "You finished them all", status: nextLesson ? (dailyGoalMet ? "cur" : "todo") : "done", href: nextLesson ? nextLessonHref : undefined },
+        { num: "3", label: "Read a story", sub: "You pick which one", status: "todo", href: `/stories?child=${child.id}` },
+      ];
+  const goalTotal = planSteps.length;
+  const goalDone = planSteps.filter((s) => s.status === "done").length;
+
+  // Path teaser nodes from real completion within the current grade.
+  const pathRatio = lessons.length > 0 ? completedCount / lessons.length : 0;
+  const doneNodes = Math.min(4, Math.max(0, Math.round(pathRatio * 5)));
+  const pathNodes: Array<"done" | "cur" | "lock"> = firstDay
+    ? ["cur", "lock", "lock", "lock", "lock"]
+    : Array.from({ length: 5 }, (_, i) => (i < doneNodes ? "done" : i === doneNodes ? "cur" : "lock"));
+
+  const kidHomeProps = {
+    childId: child.id,
+    firstDay,
+    bubbleTitle: firstDay ? `Welcome, ${kidName}!` : `${greeting.text}, ${kidName}!`,
+    bubbleSub: firstDay
+      ? "Readee is ready to read with you."
+      : child.streak_days > 0
+        ? `You're on a ${child.streak_days}-day streak!`
+        : motivation,
+    equippedOutfitId,
+    outfitChoices,
+    onPickOutfit: handleEquipOutfit,
+    cta,
+    streak: child.streak_days,
+    goalDone,
+    goalTotal,
+    goalLabel: firstDay
+      ? `${goalTotal} things to do today`
+      : goalDone >= goalTotal
+        ? "All done — great job!"
+        : `${goalTotal - goalDone} more to go!`,
+    carrots,
+    level: {
+      name: levelInfo.current.name,
+      num: levelInfo.current.number,
+      xpPct: Math.round(levelInfo.progress01 * 100),
+      xpLabel: levelInfo.next
+        ? `${Math.max(0, levelInfo.next.threshold - levelInfo.lifetimeCarrots)} carrots to ${levelInfo.next.name}`
+        : "Top of the ladder",
+    },
+    planBadge: `${goalDone} of ${goalTotal} done`,
+    planSteps,
+    path: {
+      nodes: pathNodes,
+      unitTitle: firstDay ? "Your reading path" : nextLesson ? nextLesson.title : "Reading path",
+      unitPct: Math.round(pathRatio * 100),
+      unitSub: firstDay ? "Your adventure starts here" : `${completedCount} of ${lessons.length} lessons done`,
+      href: `/journey?child=${child.id}`,
+    },
+    weekSub: firstDay ? "Your chart starts today" : "Keep the bars growing!",
+    weekBars: weeklyCarrots.map((w) => ({ day: w.day[0], pct: w.pct, isToday: w.isToday, hasValue: w.carrots > 0 })),
+    shop: {
+      href: `/shop?child=${child.id}`,
+      sub: firstDay ? "Earn carrots to spend here" : "Spend carrots on bunny outfits!",
+      chip: firstDay ? "Carrots buy outfits" : `${carrots} to spend`,
+    },
+    league: {
+      href: `/leaderboard?child=${child.id}`,
+      title: "Leaderboard",
+      sub: firstDay ? "Finish a lesson to join" : "See how you rank!",
+      locked: firstDay,
+    },
+  };
+
   return (
     <>
     {bgImage && <DashboardBackdrop src={bgImage} />}
@@ -1008,7 +1134,7 @@ function ChildDashboard({
         content like every other parent surface. */}
     <div className="min-h-screen">
       <motion.div
-        className="max-w-3xl mx-auto px-4 pt-10 pb-12 space-y-5"
+        className="max-w-[1080px] mx-auto px-4 pt-8 pb-12 space-y-5"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
@@ -1039,214 +1165,9 @@ function ChildDashboard({
           </motion.div>
         )}
 
-        {/* ── Avatar + Greeting ── */}
-        <motion.div variants={slideUp} className="text-center">
-          <div className="relative mx-auto mb-4 w-28">
-            <button
-              onClick={() => setAvatarPickerOpen(true)}
-              className="w-28 h-28 rounded-full bg-gradient-to-br from-violet-100 to-violet-100 dark:from-violet-900/40 dark:to-violet-900/40 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden ring-4 ring-white dark:ring-slate-800"
-              aria-label="Change avatar"
-            >
-              {/* LCP candidate: above-the-fold hero avatar. fetchpriority
-                  hints the browser to start downloading this earlier in
-                  the network queue, shaving a meaningful chunk off LCP. */}
-              <img
-                src={avatarSrc}
-                alt={currentChild.first_name}
-                className="w-full h-full rounded-full object-cover"
-                draggable={false}
-                width={112}
-                height={112}
-                fetchPriority="high"
-                decoding="async"
-              />
-            </button>
-            <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-violet-600 flex items-center justify-center shadow-md pointer-events-none ring-2 ring-white dark:ring-slate-800">
-              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-              </svg>
-            </div>
-          </div>
-          <h1 className="text-3xl font-extrabold text-zinc-900 dark:text-slate-100 tracking-tight">
-            {greeting.text}, {currentChild.first_name}!
-          </h1>
-          <p className="text-zinc-500 dark:text-slate-400 mt-1 text-sm flex items-center justify-center gap-1.5">
-            <span className="animate-wave inline-block">{greeting.icon}</span>
-            {motivation}
-          </p>
-        </motion.div>
-
-        {/* ── Reader level row — sits above the stats strip so the
-            kid sees their level name, progress to the next, and a
-            tap-through to the full /levels ladder. */}
-        <motion.div variants={slideUp} className="flex items-center justify-center">
-          <Link
-            href={`/levels?child=${child.id}`}
-            className={`group flex items-center gap-3 rounded-full border border-zinc-200 bg-white px-3 py-1.5 shadow-sm transition hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900`}
-          >
-            <LevelBadge lifetimeCarrots={lifetimeCarrots} size="md" />
-            {levelInfo.next ? (
-              <span className="text-[11px] font-semibold text-zinc-500 dark:text-slate-400">
-                {Math.max(0, levelInfo.next.threshold - levelInfo.lifetimeCarrots)} to {levelInfo.next.name}
-              </span>
-            ) : (
-              <span className="text-[11px] font-semibold text-zinc-500 dark:text-slate-400">
-                Top of the ladder
-              </span>
-            )}
-          </Link>
-        </motion.div>
-
-        {/* ── Stats Strip — horizontal bar ── */}
-        <motion.div variants={slideUp} className="flex items-center justify-center gap-6">
-          <Link href={`/carrot-rewards?child=${child.id}`} className="flex items-center gap-1.5 group">
-            <Carrot className="w-5 h-5 text-amber-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
-            <span ref={carrotCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{carrotCount.value}</span>
-          </Link>
-          <div className="w-px h-6 bg-zinc-200 dark:bg-slate-700" />
-          <Link href={`/leaderboard?child=${child.id}`} className="flex items-center gap-1.5 group">
-            <Flame className={`w-5 h-5 text-orange-500 ${child.streak_days > 0 ? "animate-fireGlow" : ""}`} strokeWidth={1.5} />
-            <span ref={streakCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{streakCount.value}</span>
-            <span className="text-xs text-zinc-400 font-medium">day streak</span>
-          </Link>
-          <div className="w-px h-6 bg-zinc-200 dark:bg-slate-700" />
-          <Link href={`/stories?child=${child.id}`} className="flex items-center gap-1.5 group">
-            <BookOpen className="w-5 h-5 text-violet-500 group-hover:animate-subtleBounce" strokeWidth={1.5} />
-            <span ref={storiesCount.ref} className="text-lg font-extrabold text-zinc-900 dark:text-slate-100">{storiesCount.value}</span>
-          </Link>
-        </motion.div>
-
-        {/* ── Daily Goal + Next Action — PROMOTED ──
-            The primary action (placement quiz or next lesson) was
-            previously buried at position 8 behind three info cards.
-            Now position 4, immediately after identity (avatar + level +
-            stats). Time-to-primary-action drops from ~3 screens of
-            scroll to one. */}
-        <motion.div variants={slideUp} className="space-y-4">
-          {/* Daily Goal */}
-          <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 flex items-center gap-4">
-            <div className="relative w-16 h-16 flex-shrink-0">
-              <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-                <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="10" className="dark:stroke-slate-700" />
-                <circle
-                  cx="50" cy="50" r="40" fill="none"
-                  stroke={dailyGoalMet ? "#10b981" : "#6366f1"}
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                  strokeDasharray="251"
-                  strokeDashoffset={dailyGoalMet ? 0 : 251}
-                  className="transition-all duration-1000"
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                {dailyGoalMet ? <Sparkles className="w-6 h-6 text-emerald-500" strokeWidth={1.5} /> : <Target className="w-6 h-6 text-violet-500" strokeWidth={1.5} />}
-              </div>
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="font-bold text-zinc-900 dark:text-slate-100">
-                {dailyGoalMet ? "You did it!" : "Today's Goal"}
-              </div>
-              <div className="text-sm text-zinc-500 dark:text-slate-400">
-                {dailyGoalMet
-                  ? "Amazing work! Come back tomorrow for more."
-                  : "Do 1 lesson today!"}
-              </div>
-            </div>
-          </div>
-
-          {/* Primary CTA: Assessment or Next Lesson */}
-          {hasAssessment === false && (
-            <Link href={`/assessment?child=${child.id}`} className="block">
-              <div className="rounded-3xl bg-gradient-to-r from-violet-600 to-violet-500 p-6 text-center text-white hover:from-violet-700 hover:to-violet-600 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
-                <Target className="w-14 h-14 text-white mx-auto mb-3" strokeWidth={1.5} />
-                <div className="text-xl font-extrabold">Take Your Reading Quiz!</div>
-                <div className="text-violet-200 text-sm mt-1">
-                  A fun 10-question quiz to find your reading level
-                </div>
-              </div>
-            </Link>
-          )}
-
-          {hasAssessment && nextLesson && (() => {
-            // Route to the canonical /learn slideshow when a real lesson
-            // exists for this standard; otherwise fall back to the legacy
-            // /lesson route. (Shared helper — see lessonToLearnStandard.)
-            const standardId = lessonToLearnStandard(nextLesson);
-            const href = standardId
-              ? `/learn?standard=${standardId}&child=${child.id}`
-              : `/lesson?child=${child.id}&lesson=${nextLesson.id}`;
-            return (
-            <Link href={href} className="block">
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="rounded-3xl bg-gradient-to-r from-violet-600 to-violet-500 p-5 text-white shadow-lg cursor-pointer"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
-                    {completedCount === 0 ? <Rocket className="w-9 h-9 text-white" strokeWidth={1.5} /> : <BookOpen className="w-9 h-9 text-white" strokeWidth={1.5} />}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-violet-200 text-xs font-semibold uppercase tracking-wider">
-                      {completedCount === 0 ? "Start Your Adventure!" : `Lesson ${nextLessonIdx + 1} of ${lessons.length}`}
-                    </div>
-                    <div className="text-white font-extrabold text-xl leading-tight truncate mt-0.5">
-                      {nextLesson.title}
-                    </div>
-                  </div>
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 3l14 9-14 9V3z" />
-                    </svg>
-                  </div>
-                </div>
-              </motion.div>
-            </Link>
-            );
-          })()}
-
-          {hasAssessment && !nextLesson && lessons.length > 0 && (
-            <div className="rounded-3xl bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-center text-white shadow-lg">
-              <Trophy className="w-14 h-14 text-white mx-auto mb-3" strokeWidth={1.5} />
-              <div className="text-xl font-extrabold">All Lessons Complete!</div>
-              <div className="text-emerald-100 text-sm mt-1">
-                {child.first_name} has finished all {lessons.length} lessons. Amazing!
-              </div>
-            </div>
-          )}
-        </motion.div>
-
-        {/* ── Reading Buddy hero — full width, the killer K-2 feature ── */}
+        {/* ── Kid home (redesigned "Adventure" home) ── */}
         <motion.div variants={slideUp}>
-          <Link href={`/buddy?child=${child.id}`} className="block">
-            <motion.div
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 p-5 text-white shadow-lg cursor-pointer"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
-                  <Mic className="w-9 h-9 text-white" strokeWidth={1.5} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-violet-100 text-xs font-semibold uppercase tracking-wider">
-                    Talk to Readee
-                  </div>
-                  <div className="text-white font-extrabold text-xl leading-tight mt-0.5">
-                    Reading Buddy
-                  </div>
-                  <div className="text-violet-100 text-xs mt-0.5">
-                    Ask any word, get help reading, hear a story.
-                  </div>
-                </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 3l14 9-14 9V3z" />
-                  </svg>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
+          <KidHome {...kidHomeProps} />
         </motion.div>
 
         {/* "Fresh for you" — newly created AI content for this kid.
@@ -1259,83 +1180,9 @@ function ChildDashboard({
           />
         )}
 
-        {/* ── Hero Tiles — 3 columns ── */}
-        <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
-          <Link
-            href={hasAssessment ? `/practice-hub?child=${child.id}` : `/assessment?child=${child.id}`}
-            className="block"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-violet-500 to-violet-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
-            >
-              <Target className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
-              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Practice</span>
-            </motion.div>
-          </Link>
 
-          <Link href={`/stories?child=${child.id}`} className="block">
-            <motion.div
-              whileHover={{ scale: 1.05, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
-            >
-              <BookOpen className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
-              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Stories</span>
-            </motion.div>
-          </Link>
-
-          <Link href={`/journey?child=${child.id}`} className="block">
-            <motion.div
-              whileHover={{ scale: 1.05, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-pink-400 to-rose-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
-            >
-              <Map className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
-              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">My Journey</span>
-            </motion.div>
-          </Link>
-        </motion.div>
-
-        {/* ── Hero Tiles row 2 — the content army surfaces ──
-            "Today's Readee" tile removed — the DailyQuestionCard
-            below covers that ritual already. Replaced with "Levels"
-            so kids see their ladder right next to the action menu. */}
-        <motion.div variants={slideUp} className="grid grid-cols-3 gap-3">
-          <Link href={`/levels?child=${child.id}`} className="block">
-            <motion.div
-              whileHover={{ scale: 1.05, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-amber-400 to-orange-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
-            >
-              <Trophy className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
-              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Levels</span>
-            </motion.div>
-          </Link>
-
-          <Link href="/discover" className="block">
-            <motion.div
-              whileHover={{ scale: 1.05, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-sky-400 to-blue-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
-            >
-              <Compass className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
-              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Discover</span>
-            </motion.div>
-          </Link>
-
-          <Link href="/practice-hub/community" className="block">
-            <motion.div
-              whileHover={{ scale: 1.05, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-fuchsia-400 to-purple-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer"
-            >
-              <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" strokeWidth={1.5} />
-              <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">Community</span>
-            </motion.div>
-          </Link>
-        </motion.div>
+        {/* ── Deeper cards (kept from the previous dashboard) ── */}
+        <motion.div variants={slideUp} className="mx-auto w-full max-w-3xl space-y-5">
 
         {/* ── Today's Readee — daily question ritual ──
             Demoted from position 5 to here so the action stack on
@@ -1391,6 +1238,7 @@ function ChildDashboard({
           childGrade={readingLevel}
           completedLessons={completedCount}
         />
+        </motion.div>
 
       {/* ── Avatar Picker Modal ── */}
       {avatarPickerOpen && (
