@@ -11,6 +11,10 @@ the Readee **bunny** mascot, one shadow depth, rounded-2xl/3xl cards, Framer
 Motion, **no black text on colored surfaces**, **no dashed-grey empty boxes**,
 **no native emojis** (Lucide/custom art only), carrots as the currency.
 
+**Paste-ready Claude Design briefs for every page below live in
+`docs/briefs/<slug>.md`.** Open the brief, paste it into Claude Design, then
+send me the share link to wire the result in.
+
 ## ✅ Done
 - [x] **Dashboard / Kid Home** — "Adventure home"
 - [x] **Practice Hub** (`/practice-hub`) — "Adventure Board"
