@@ -10,11 +10,12 @@ name: Sync content from DB → JSON
 # Total latency from AI write to live: ~5-15 min.
 
 on:
-  schedule:
-    # Every hour at :12 past the hour. Stays out of the QC bot
-    # cron's 06:00 UTC window so the QC writes settle before sync
-    # picks them up.
-    - cron: '12 * * * *'
+  # MANUAL-ONLY. The hourly auto-sync was disabled 2026-07 — it was
+  # auto-committing to main and deploying to prod without a human in
+  # the loop, and it silently stripped JSON-only fields (feedback
+  # audio URLs) that weren't yet in the content DB. Run it deliberately
+  # from the Actions tab ("Run workflow") when you want to pull the
+  # latest DB content into the JSON the renderer imports.
   workflow_dispatch: # Manual trigger button on the Actions tab
 
 permissions:
