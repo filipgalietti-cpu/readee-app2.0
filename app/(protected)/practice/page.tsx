@@ -246,6 +246,13 @@ const INCORRECT_MESSAGES = [
   "Try again!", "You'll get it!", "Oops, not that one!", "Nice effort!", "Don't give up!",
 ];
 
+// Shown when the kid gets it right on the SECOND try — kind, but it doesn't
+// count as a first-try win (0 carrots, not scored correct).
+const SECOND_TRY_MESSAGES = [
+  "You found it!", "Got it on the next try!", "Yes — that's the one!",
+  "Nice — you kept going!", "There it is!", "You figured it out!",
+];
+
 // Feedback audio files (static .mp3 in /audio/feedback/)
 const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "correct-5", "correct-6", "correct-7", "correct-8", "correct-9", "correct-10", "correct-11", "correct-12"];
 const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3", "incorrect-4", "incorrect-5", "incorrect-6", "incorrect-7", "incorrect-8", "incorrect-9", "incorrect-10"];
@@ -603,6 +610,14 @@ function PracticeSession({
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [showHint, setShowHint] = useState(false);
   const [previewedChoice, setPreviewedChoice] = useState<string | null>(null);
+  // 2-try MCQ (component-level so the store + scoring semantics stay intact):
+  // 1st wrong greys the choice + shows a no-spoiler nudge and stays in
+  // "playing"; the question only resolves through the store on a first-try
+  // win, a second pick, or a reveal. Only a FIRST-TRY correct answer scores
+  // (carrots + answers.correct=true) — matches the /learn lesson forks.
+  const [mcqTries, setMcqTries] = useState(0);
+  const [greyed, setGreyed] = useState<string[]>([]);
+  const [nudge, setNudge] = useState<string | null>(null);
   // Adaptive SENSE layer: one session id per practice sitting + a per-question
   // shown-at timestamp so we can capture response latency. See lib/adaptive.
   const sessionIdRef = useRef<string>(newSessionId());
@@ -884,6 +899,62 @@ function PracticeSession({
       playIncorrectBuzz();
     }
   }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child.streak_days, mysteryBoxMultiplier, recordEvent]);
+
+  // Reset the 2-try state whenever we move to a new question.
+  useEffect(() => {
+    setMcqTries(0);
+    setGreyed([]);
+    setNudge(null);
+  }, [currentIdx]);
+
+  /* ── 2-try MCQ pick ──
+     1st wrong → grey the choice + no-spoiler nudge, stay in "playing".
+     2nd pick (or a correct pick) resolves through the store. Only a
+     first-try correct answer earns carrots / records correct=true. */
+  const handleMcqPick = useCallback((choice: string) => {
+    if (selected !== null || greyed.includes(choice)) return;
+    const correct = choice === q.correct;
+
+    if (correct) {
+      stop();
+      recordEvent(true, choice);
+      if (mcqTries === 0) {
+        const newConsecutive = consecutiveCorrect + 1;
+        setConsecutiveCorrect(newConsecutive);
+        const daily = getDailyMultiplier(child.streak_days);
+        const session = getSessionStreakTier(newConsecutive);
+        const hintFactor = showHint ? 0.5 : 1;
+        const carrots = Math.max(1, Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier * hintFactor));
+        selectAnswer(choice, true, q.id, carrots, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+      } else {
+        // Right on the 2nd try — no first-try credit, but a kind resolve.
+        setConsecutiveCorrect(0);
+        selectAnswer(choice, false, q.id, 0, SECOND_TRY_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+      }
+      playCorrectChime();
+      return;
+    }
+
+    // Wrong pick.
+    if (mcqTries === 0) {
+      setMcqTries(1);
+      setGreyed([choice]);
+      setConsecutiveCorrect(0);
+      recordEvent(false, choice);
+      const nudgeMsg = (q as { incorrect_feedback?: string }).incorrect_feedback
+        || "Not quite — take another look and try again!";
+      setNudge(nudgeMsg.replace(/\*\*/g, ""));
+      const nudgeUrl = (q as { incorrect_feedback_audio_url?: string }).incorrect_feedback_audio_url;
+      if (nudgeUrl) { stop(); playUrl(nudgeUrl); } else { playIncorrectBuzz(); }
+    } else {
+      // 2nd wrong → reveal via the store (feedback bar shows the answer).
+      stop();
+      recordEvent(false, choice);
+      setGreyed((g) => [...g, choice]);
+      selectAnswer(choice, false, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+      playIncorrectBuzz();
+    }
+  }, [selected, greyed, q, mcqTries, consecutiveCorrect, showHint, child.streak_days, mysteryBoxMultiplier, selectAnswer, stop, recordEvent, playCorrectChime, playIncorrectBuzz, playUrl]);
 
   /* ── Handle sentence build answer ── */
   const handleSentenceBuildAnswer = useCallback((isCorrect: boolean, placedSentence: string) => {
@@ -1451,23 +1522,24 @@ function PracticeSession({
             const choiceCount = q.choices?.length ?? 0;
             const isLastOdd = choiceCount === 3 && i === 2;
 
+            const isGreyed = greyed.includes(choice);
             let bg = CHOICE_COLORS[i % CHOICE_COLORS.length];
             let textColor = "";
             let extra = "";
 
-            if (!answered && previewedChoice === choice) {
+            if (!answered && isGreyed) {
+              // 1st-try wrong: greyed out; the kid picks again from the rest.
+              bg = "bg-zinc-100 border-zinc-300 dark:bg-slate-800 dark:border-slate-600";
+              textColor = "text-zinc-400 dark:text-slate-500";
+              extra = "opacity-60 border-dashed";
+            } else if (!answered && previewedChoice === choice) {
               extra = "ring-2 ring-offset-2 ring-violet-500 animate-pulse";
-            } else if (!answered && isSelected) {
-              extra = "ring-2 ring-offset-2 ring-violet-500";
             } else if (answered) {
-              if (isSelected && isCorrect) {
+              if (isCorrectChoice) {
                 bg = "bg-emerald-500 border-emerald-600 dark:bg-emerald-500 dark:border-emerald-600";
                 textColor = "text-white dark:text-white";
-              } else if (isSelected && !isCorrect) {
+              } else if (isSelected) {
                 bg = "bg-red-400 border-red-500 dark:bg-red-400 dark:border-red-500";
-                textColor = "text-white dark:text-white";
-              } else if (isCorrectChoice && !isCorrect) {
-                bg = "bg-emerald-500 border-emerald-600 dark:bg-emerald-500 dark:border-emerald-600";
                 textColor = "text-white dark:text-white";
               } else {
                 extra = "opacity-40";
@@ -1487,10 +1559,10 @@ function PracticeSession({
                 }
                 whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
                 onClick={() => {
-                  if (answered) return;
+                  if (answered || isGreyed) return;
                   if (hasChoiceAudio) {
                     if (previewedChoice === choice) {
-                      handleAnswer(choice);
+                      handleMcqPick(choice);
                     } else {
                       setPreviewedChoice(choice);
                       const audioUrl = q.choices_audio_urls?.[i];
@@ -1501,16 +1573,16 @@ function PracticeSession({
                     }
                   } else if (choicesArePhonemes) {
                     if (previewedChoice === choice) {
-                      handleAnswer(choice);
+                      handleMcqPick(choice);
                     } else {
                       setPreviewedChoice(choice);
                       playPhonemeAudio(choice);
                     }
                   } else {
-                    handleAnswer(choice);
+                    handleMcqPick(choice);
                   }
                 }}
-                disabled={answered}
+                disabled={answered || isGreyed}
                 className={`
                   flex items-center justify-center px-3 py-3 rounded-2xl border-2 relative
                   transition-[background-color,border-color,opacity,box-shadow] duration-200 outline-none
@@ -1521,21 +1593,21 @@ function PracticeSession({
                 `}
               >
                 <div className="flex items-center justify-center gap-2">
-                  {answered && isSelected && isCorrect && (
+                  {answered && isCorrectChoice && (
                     <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
                       <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
                   )}
-                  {answered && isSelected && !isCorrect && (
+                  {((answered && isSelected && !isCorrectChoice) || (!answered && isGreyed)) && (
                     <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
                       <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     </div>
                   )}
-                  {answered && !isSelected && isCorrectChoice && !isCorrect && (
+                  {false && (
                     <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
                       <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -1550,6 +1622,18 @@ function PracticeSession({
             );
           })}
         </div>
+
+        {/* ── 2-try nudge — no-spoiler "try again" after the 1st wrong pick ── */}
+        {selected === null && nudge && (
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-4 mx-auto max-w-md rounded-2xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 px-4 py-3 text-center"
+          >
+            <p className="text-sm font-bold text-amber-800 dark:text-amber-200">{nudge}</p>
+            <p className="mt-0.5 text-xs font-semibold text-amber-600 dark:text-amber-300">Try again — you&apos;ve got this!</p>
+          </motion.div>
+        )}
 
         {/* ── Hint button ── */}
         {q.hint && (
