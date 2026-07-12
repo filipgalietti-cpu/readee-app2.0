@@ -15,10 +15,10 @@ Motion, **no black text on colored surfaces**, **no dashed-grey empty boxes**,
 - [x] **Dashboard / Kid Home** — "Adventure home"
 - [x] **Practice Hub** (`/practice-hub`) — "Adventure Board"
 - [x] **Lesson** (`/learn`) — canon lesson design
+- [x] **Journey** (`/journey`) — Duolingo-style reading map
 
 ## 🎯 Kid core loop — next up (highest traffic)
-- [ ] **Journey** (`/journey`) — the "duolingo map" (brief written — see `docs/briefs/journey.md`)
-- [ ] **Practice runner** (`/practice`) — the question-answering screen (2-try MCQ + feedback shipped; no visual redesign yet)
+- [ ] **Practice runner** (`/practice`) — the question-answering screen (2-try MCQ + feedback shipped; brief written — see `docs/briefs/practice-runner.md`)
 - [ ] **Stories** (`/stories`) + story reader
 - [ ] **Reading Buddy** (`/buddy`)
 - [ ] **Levels** (`/levels`) — the level ladder
