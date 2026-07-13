@@ -281,9 +281,26 @@ function shuffleArray<T>(arr: T[]): T[] {
 }
 
 function splitPrompt(prompt: string): { passage: string | null; question: string } {
+  // Authored passages use an explicit blank-line break.
   const parts = prompt.split("\n\n");
   if (parts.length >= 2) {
     return { passage: parts.slice(0, -1).join("\n\n"), question: parts[parts.length - 1] };
+  }
+  // Heuristic for wordy prompts that embed a whole story + a final question
+  // in one run of text (e.g. "Listen to the story: … What did …?"). Strip a
+  // leading lead-in, then peel the trailing question sentence off so the
+  // story becomes the reading passage instead of a giant heading.
+  const stripped = prompt.replace(
+    /^\s*(listen to (the )?(story|passage|text)|read (the )?(story|passage|text)|here('|’)?s (a |the )?(story|passage))\s*[:\-–—]?\s*/i,
+    "",
+  );
+  if (stripped.length > 110) {
+    const sentences = stripped.match(/[^.!?]+[.!?]+(?=\s|$)/g);
+    if (sentences && sentences.length >= 2) {
+      const question = sentences[sentences.length - 1].trim();
+      const passage = sentences.slice(0, -1).join(" ").trim();
+      if (passage.length > 0 && question.length > 0) return { passage, question };
+    }
   }
   return { passage: null, question: prompt };
 }
@@ -1081,7 +1098,7 @@ function PracticeSession({
     ];
 
     return (
-      <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex flex-col items-center justify-center px-6 relative overflow-hidden">
+      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center px-6 overflow-hidden" style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}>
         {/* ── Background floating particles ── */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
           {sparkles.map((s, i) => (
@@ -1256,7 +1273,7 @@ function PracticeSession({
   }
 
   return (
-    <div ref={scrollRef} className="relative min-h-[100dvh] flex flex-col overflow-y-auto overflow-x-hidden" style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}>
+    <div ref={scrollRef} className="fixed inset-0 z-50 flex flex-col overflow-y-auto overflow-x-hidden" style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}>
       {/* soft ambient orbs */}
       <div className="pointer-events-none absolute -top-36 -left-32 w-[480px] h-[480px] rounded-full" style={{ background: "radial-gradient(circle,#c7d2fe,transparent 70%)", opacity: 0.55, filter: "blur(60px)" }} />
       <div className="pointer-events-none absolute -bottom-40 -right-36 w-[520px] h-[520px] rounded-full" style={{ background: "radial-gradient(circle,#bae6fd,transparent 70%)", opacity: 0.5, filter: "blur(60px)" }} />
@@ -1865,7 +1882,7 @@ function CompletionScreen({
   }, [saved, saving, child.id, standard.standard_id, totalQ, correctCount, carrotsEarned, setSaving]);
 
   return (
-    <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] relative overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden flex flex-col" style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}>
       <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
 
       {/* Confetti */}
