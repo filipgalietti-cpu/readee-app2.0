@@ -286,15 +286,15 @@ function splitPrompt(prompt: string): { passage: string | null; question: string
   if (parts.length >= 2) {
     return { passage: parts.slice(0, -1).join("\n\n"), question: parts[parts.length - 1] };
   }
-  // Heuristic for wordy prompts that embed a whole story + a final question
-  // in one run of text (e.g. "Listen to the story: … What did …?"). Strip a
-  // leading lead-in, then peel the trailing question sentence off so the
-  // story becomes the reading passage instead of a giant heading.
-  const stripped = prompt.replace(
-    /^\s*(listen to (the )?(story|passage|text)|read (the )?(story|passage|text)|here('|’)?s (a |the )?(story|passage))\s*[:\-–—]?\s*/i,
-    "",
-  );
-  if (stripped.length > 110) {
+  // Peel a passage off a one-run prompt ONLY when it opens with an explicit
+  // read-aloud lead-in ("Listen to the story: … <question>?"). Without that
+  // cue we can't reliably tell story from question — quoted titles and inner
+  // punctuation (e.g. "The True Story of the 3 Little Pigs!") break naive
+  // sentence-splitting into a garbled fragment — so we leave the prompt whole.
+  const leadIn = /^\s*(listen to (the )?(story|passage|text)|read (the )?(story|passage|text)|here('|’)?s (a |the )?(story|passage))\s*[:\-–—]?\s*/i;
+  const m = prompt.match(leadIn);
+  if (m) {
+    const stripped = prompt.slice(m[0].length);
     const sentences = stripped.match(/[^.!?]+[.!?]+(?=\s|$)/g);
     if (sentences && sentences.length >= 2) {
       const question = sentences[sentences.length - 1].trim();
