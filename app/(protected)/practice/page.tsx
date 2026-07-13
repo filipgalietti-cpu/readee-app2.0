@@ -643,6 +643,9 @@ function PracticeSession({
   const [mcqTries, setMcqTries] = useState(0);
   const [greyed, setGreyed] = useState<string[]>([]);
   const [nudge, setNudge] = useState<string | null>(null);
+  // Flying-carrot burst on a first-try win (design "launchCarrots").
+  const [flyers, setFlyers] = useState<Array<{ key: string; style: React.CSSProperties }>>([]);
+  const carrotRef = useRef<HTMLDivElement>(null);
   // Adaptive SENSE layer: one session id per practice sitting + a per-question
   // shown-at timestamp so we can capture response latency. See lib/adaptive.
   const sessionIdRef = useRef<string>(newSessionId());
@@ -800,12 +803,24 @@ function PracticeSession({
   useEffect(() => {
     if (phase !== "feedback") return;
     if (isCorrect) {
+      // Prefer the per-question praise voice (Autonoe); fall back to a generic clip.
+      const praiseUrl = (q as { correct_feedback_audio_url?: string }).correct_feedback_audio_url;
+      if (praiseUrl) {
+        const t = setTimeout(() => playUrl(praiseUrl), 650);
+        return () => clearTimeout(t);
+      }
       // Delay so the correct chime finishes before the spoken "That's right!" starts
       const file = CORRECT_AUDIO[Math.floor(Math.random() * CORRECT_AUDIO.length)];
       const correctUrl = getAudioUrl("feedback", file);
       const t = setTimeout(() => playUrl(correctUrl), 700);
       return () => clearTimeout(t);
     } else {
+      // Prefer the per-question reveal voice (explains + gives the answer).
+      const revealUrl = (q as { reveal_feedback_audio_url?: string }).reveal_feedback_audio_url;
+      if (revealUrl) {
+        const t = setTimeout(() => playUrl(revealUrl), 250);
+        return () => clearTimeout(t);
+      }
       const prefixFile = INCORRECT_AUDIO[Math.floor(Math.random() * INCORRECT_AUDIO.length)];
       const prefixUrl = getAudioUrl("feedback", prefixFile);
       // After "Try again!" prefix, chain the correct-answer readback for any
@@ -930,13 +945,35 @@ function PracticeSession({
     setMcqTries(0);
     setGreyed([]);
     setNudge(null);
+    setFlyers([]);
   }, [currentIdx]);
+
+  /* ── Flying-carrot burst from the picked choice toward the HUD counter ── */
+  const launchCarrots = useCallback((fromRect: DOMRect) => {
+    const target = carrotRef.current?.getBoundingClientRect();
+    const tx = target ? target.left + target.width / 2 : window.innerWidth - 70;
+    const ty = target ? target.top + target.height / 2 : 40;
+    const next = Array.from({ length: 6 }, (_, i) => {
+      const x = fromRect.left + fromRect.width * (0.25 + 0.5 * Math.random());
+      const y = fromRect.top + fromRect.height * (0.2 + 0.6 * Math.random());
+      return {
+        key: `${Date.now()}-${i}`,
+        style: {
+          position: "fixed", left: x, top: y, zIndex: 60, pointerEvents: "none",
+          ["--tx"]: `${tx - x}px`, ["--ty"]: `${ty - y}px`,
+          animation: `flyCarrot .85s cubic-bezier(.5,.05,.55,1) ${i * 75}ms both`,
+        } as React.CSSProperties,
+      };
+    });
+    setFlyers(next);
+    setTimeout(() => setFlyers([]), 1650);
+  }, []);
 
   /* ── 2-try MCQ pick ──
      1st wrong → grey the choice + no-spoiler nudge, stay in "playing".
      2nd pick (or a correct pick) resolves through the store. Only a
      first-try correct answer earns carrots / records correct=true. */
-  const handleMcqPick = useCallback((choice: string) => {
+  const handleMcqPick = useCallback((choice: string, fromRect?: DOMRect) => {
     if (selected !== null || greyed.includes(choice)) return;
     const correct = choice === q.correct;
 
@@ -951,6 +988,7 @@ function PracticeSession({
         const hintFactor = showHint ? 0.5 : 1;
         const carrots = Math.max(1, Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier * hintFactor));
         selectAnswer(choice, true, q.id, carrots, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+        if (fromRect) launchCarrots(fromRect); // carrot burst on a first-try win
       } else {
         // Right on the 2nd try — no first-try credit, but a kind resolve.
         setConsecutiveCorrect(0);
@@ -979,7 +1017,7 @@ function PracticeSession({
       selectAnswer(choice, false, q.id, CARROTS_PER_CORRECT, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playIncorrectBuzz();
     }
-  }, [selected, greyed, q, mcqTries, consecutiveCorrect, showHint, child.streak_days, mysteryBoxMultiplier, selectAnswer, stop, recordEvent, playCorrectChime, playIncorrectBuzz, playUrl]);
+  }, [selected, greyed, q, mcqTries, consecutiveCorrect, showHint, child.streak_days, mysteryBoxMultiplier, selectAnswer, stop, recordEvent, playCorrectChime, playIncorrectBuzz, playUrl, launchCarrots]);
 
   /* ── Handle sentence build answer ── */
   const handleSentenceBuildAnswer = useCallback((isCorrect: boolean, placedSentence: string) => {
@@ -1277,6 +1315,13 @@ function PracticeSession({
       {/* soft ambient orbs */}
       <div className="pointer-events-none absolute -top-36 -left-32 w-[480px] h-[480px] rounded-full" style={{ background: "radial-gradient(circle,#c7d2fe,transparent 70%)", opacity: 0.55, filter: "blur(60px)" }} />
       <div className="pointer-events-none absolute -bottom-40 -right-36 w-[520px] h-[520px] rounded-full" style={{ background: "radial-gradient(circle,#bae6fd,transparent 70%)", opacity: 0.5, filter: "blur(60px)" }} />
+      <style>{`@keyframes flyCarrot{0%{transform:translate(0,0) scale(1) rotate(0deg);opacity:1}70%{opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(.45) rotate(-40deg);opacity:.85}}`}</style>
+      {/* flying carrots (first-try win) */}
+      {flyers.map((fl) => (
+        <div key={fl.key} style={fl.style}>
+          <Carrot className="w-6 h-6 text-orange-500" strokeWidth={2} fill="#fdba74" />
+        </div>
+      ))}
       {debugAdaptive && <AdaptiveDebugBadge reading={adaptive.reading} />}
       {debugAdaptive && coach && coach.type !== "none" && (
         <motion.div
@@ -1337,9 +1382,10 @@ function PracticeSession({
         )}
 
         <motion.div
+          ref={carrotRef}
           className="flex items-center gap-1.5 bg-white/90 border border-zinc-200 px-3.5 py-2 rounded-full flex-shrink-0 shadow-sm"
-          animate={carrotFlash ? { scale: [1, 1.25, 1] } : {}}
-          transition={{ duration: 0.6 }}
+          animate={carrotFlash ? { scale: [1, 1.35, 1] } : {}}
+          transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
         >
           <Carrot className="w-[18px] h-[18px] text-orange-500" strokeWidth={1.8} />
           <span className="text-base font-extrabold text-orange-600 tabular-nums">{sessionCarrots}</span>
@@ -1477,15 +1523,16 @@ function PracticeSession({
                     key={choice}
                     variants={fadeUp}
                     animate={shake ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } } : pop ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } } : {}}
-                    onClick={() => {
+                    onClick={(e) => {
                       if (answered || isGreyed) return;
+                      const rect = e.currentTarget.getBoundingClientRect();
                       if (hasChoiceAudio) {
-                        if (previewedChoice === choice) { handleMcqPick(choice); }
+                        if (previewedChoice === choice) { handleMcqPick(choice, rect); }
                         else { setPreviewedChoice(choice); const audioUrl = q.choices_audio_urls?.[i]; if (audioUrl) { stop(); playUrl(audioUrl, 0); } }
                       } else if (choicesArePhonemes) {
-                        if (previewedChoice === choice) { handleMcqPick(choice); }
+                        if (previewedChoice === choice) { handleMcqPick(choice, rect); }
                         else { setPreviewedChoice(choice); playPhonemeAudio(choice); }
-                      } else { handleMcqPick(choice); }
+                      } else { handleMcqPick(choice, rect); }
                     }}
                     disabled={answered || isGreyed}
                     style={{ border: `2.5px ${dashed ? "dashed" : "solid"} ${border}`, background: bg, boxShadow: shadow, opacity }}
@@ -1563,9 +1610,11 @@ function PracticeSession({
         let bubbleText = "";
         let tone = { bg: "#ffffff", border: "#e4e4e7", fg: "#3f3f46" };
         if (fb) {
+          const fbf = q as { correct_feedback?: string; reveal_feedback?: string };
           bubbleText = isCorrect
-            ? feedbackMsg
-            : `${feedbackMsg} The answer is ${String(q.correct).replace(/\*\*/g, "")}.`;
+            ? (fbf.correct_feedback ?? feedbackMsg)
+            : (fbf.reveal_feedback ?? `${feedbackMsg} The answer is ${String(q.correct).replace(/\*\*/g, "")}.`);
+          bubbleText = String(bubbleText).replace(/\*\*/g, "");
           tone = isCorrect
             ? { bg: "#d1fae5", border: "#34d399", fg: "#065f46" }
             : { bg: "#e0e7ff", border: "#a5b4fc", fg: "#3730a3" };
