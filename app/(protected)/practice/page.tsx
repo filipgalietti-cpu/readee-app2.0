@@ -32,13 +32,13 @@ import { SoundMachine } from "@/app/components/practice/SoundMachine";
 import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
-import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import type { LucideIcon } from "lucide-react";
-import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
 import type { Outfit } from "@/app/_components/Bunny/outfits";
 import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
@@ -103,6 +103,14 @@ const CHOICE_COLORS = [
   "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
   "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/60 dark:text-amber-200 dark:border-amber-700",
   "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
+];
+
+// Claude Design "Practice Runner" choice-card palette (letter chip + card).
+const DESIGN_CHOICE_COLORS = [
+  { bg: "#dbeafe", fg: "#1e3a8a", border: "#93c5fd", chipBg: "#bfdbfe", chipFg: "#1e40af" },
+  { bg: "#f3e8ff", fg: "#581c87", border: "#d8b4fe", chipBg: "#e9d5ff", chipFg: "#6b21a8" },
+  { bg: "#fef3c7", fg: "#78350f", border: "#fcd34d", chipBg: "#fde68a", chipFg: "#92400e" },
+  { bg: "#d1fae5", fg: "#064e3b", border: "#6ee7b7", chipBg: "#a7f3d0", chipFg: "#065f46" },
 ];
 
 /* ─── Highlight key words in question text ───────── */
@@ -1248,7 +1256,10 @@ function PracticeSession({
   }
 
   return (
-    <div ref={scrollRef} className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex flex-col overflow-y-auto">
+    <div ref={scrollRef} className="relative min-h-[100dvh] flex flex-col overflow-y-auto overflow-x-hidden" style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}>
+      {/* soft ambient orbs */}
+      <div className="pointer-events-none absolute -top-36 -left-32 w-[480px] h-[480px] rounded-full" style={{ background: "radial-gradient(circle,#c7d2fe,transparent 70%)", opacity: 0.55, filter: "blur(60px)" }} />
+      <div className="pointer-events-none absolute -bottom-40 -right-36 w-[520px] h-[520px] rounded-full" style={{ background: "radial-gradient(circle,#bae6fd,transparent 70%)", opacity: 0.5, filter: "blur(60px)" }} />
       {debugAdaptive && <AdaptiveDebugBadge reading={adaptive.reading} />}
       {debugAdaptive && coach && coach.type !== "none" && (
         <motion.div
@@ -1273,50 +1284,48 @@ function PracticeSession({
           <div className="mt-0.5 text-xs text-zinc-400">{coach.rationale}</div>
         </motion.div>
       )}
-      {/* ── Top bar: progress + close ── */}
-      <div className="flex items-center gap-3 px-4 pt-4 pb-2 flex-shrink-0">
+      {/* ── HUD: exit · progress · count · streak · carrots ── */}
+      <div className="relative z-[1] flex items-center gap-2.5 sm:gap-3.5 w-full max-w-[1120px] mx-auto px-4 sm:px-6 pt-4 pb-1.5 flex-shrink-0">
         <button
           onClick={handleExit}
-          className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
-          aria-label="Exit"
+          className="w-11 h-11 rounded-full bg-white/85 border border-zinc-200 flex items-center justify-center flex-shrink-0 hover:bg-white hover:scale-105 active:scale-95 transition"
+          aria-label="Exit practice"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          <svg className="w-[18px] h-[18px]" fill="none" stroke="#71717a" strokeWidth={2.5} strokeLinecap="round" viewBox="0 0 24 24">
+            <path d="M18 6 6 18M6 6l12 12" />
           </svg>
         </button>
 
-        <div className="flex-1 h-4 bg-zinc-200 dark:bg-slate-800 rounded-full overflow-hidden">
+        <div className="flex-1 min-w-[90px] h-3.5 rounded-full bg-white/70 overflow-hidden shadow-inner">
           <div
-            className="h-full rounded-full transition-all duration-500 ease-out relative overflow-hidden"
-            style={{
-              width: `${progressPct}%`,
-              background: "linear-gradient(90deg, #4ade80, #22c55e)",
-              boxShadow: "0 0 8px rgba(74, 222, 128, 0.4)",
-            }}
-          >
-            {/* Shimmer overlay */}
-            <motion.div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%)",
-                width: "50%",
-              }}
-              animate={{ x: ["-100%", "300%"] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
-            />
-          </div>
+            className="h-full rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${progressPct}%`, background: "linear-gradient(90deg, #6366f1, #8b5cf6)" }}
+          />
         </div>
 
+        <span className="font-[family-name:var(--font-baloo)] font-bold text-[15px] text-indigo-950 whitespace-nowrap">
+          {Math.min(currentIdx + 1, totalQ)} of {totalQ}
+        </span>
+
+        {consecutiveCorrect >= 2 && (
+          <motion.div
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 500, damping: 20 }}
+            className="hidden sm:flex items-center gap-1.5 bg-amber-100 border-[1.5px] border-amber-300 rounded-full px-3 py-1.5 flex-shrink-0"
+          >
+            <Flame className="w-4 h-4" fill="#f59e0b" stroke="#d97706" strokeWidth={1.5} />
+            <span className="font-[family-name:var(--font-baloo)] font-bold text-sm text-amber-800">{consecutiveCorrect} in a row</span>
+          </motion.div>
+        )}
+
         <motion.div
-          className="flex items-center gap-1 bg-zinc-200 dark:bg-slate-800 px-3 py-1.5 rounded-full flex-shrink-0"
-          animate={carrotFlash ? {
-            scale: [1, 1.25, 1],
-            boxShadow: ["0 0 0 0px rgba(251,191,36,0)", "0 0 8px 4px rgba(251,191,36,0.5)", "0 0 0 0px rgba(251,191,36,0)"],
-          } : {}}
+          className="flex items-center gap-1.5 bg-white/90 border border-zinc-200 px-3.5 py-2 rounded-full flex-shrink-0 shadow-sm"
+          animate={carrotFlash ? { scale: [1, 1.25, 1] } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Carrot className="w-4 h-4 text-orange-500" strokeWidth={1.5} />
-          <span className="text-sm font-bold text-orange-600 dark:text-orange-400 tabular-nums">{sessionCarrots}</span>
+          <Carrot className="w-[18px] h-[18px] text-orange-500" strokeWidth={1.8} />
+          <span className="text-base font-extrabold text-orange-600 tabular-nums">{sessionCarrots}</span>
         </motion.div>
 
         <MuteToggle />
@@ -1328,19 +1337,12 @@ function PracticeSession({
           max-w-5xl so the 2-col layout below has room to breathe
           without stretching text across the whole viewport. */}
       <motion.div
-        className="flex-1 max-w-lg lg:max-w-5xl mx-auto w-full px-4 pt-2 sm:pt-4 pb-32 flex flex-col"
+        className="relative z-[1] flex-1 w-full max-w-[1140px] mx-auto px-4 sm:px-6 pt-2 sm:pt-4 pb-[clamp(150px,19vh,220px)] flex flex-col items-center justify-center"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
         key={currentIdx}
       >
-        {/* Streak fire indicator */}
-        {consecutiveCorrect >= 3 && (
-          <div className="flex justify-center mb-3">
-            <StreakFire consecutiveCorrect={consecutiveCorrect} />
-          </div>
-        )}
-
         {/* Sentence build — renders its own prompt/passage */}
         {q.type === "sentence_build" && q.words ? (
           <SentenceBuild
@@ -1429,292 +1431,188 @@ function PracticeSession({
             onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
           />
         ) : (
-        <>
-        {/* Desktop (lg+) splits the screen: image on the left (40%),
-            prompt + choices on the right (60%). On mobile/tablet the
-            grid collapses to a single flowing column so nothing changes
-            below md.
-
-            The image cap switched from width-based breakpoints
-            (max-h-180/220/300/380) to viewport-HEIGHT units. The old
-            scale meant tall-but-wide screens (1024×768 tablets) got
-            300px-tall images that pushed every MCQ choice below the
-            fold. vh-based caps keep the image proportionate to what
-            the kid can actually see. */}
-        <div className="lg:grid lg:grid-cols-5 lg:gap-8 lg:items-start lg:flex-1">
-          <div className="lg:col-span-2 lg:sticky lg:top-4 lg:self-start">
-            {/* ── Visual — chart takes priority over image when present ── */}
-            {q.chart_data ? (
-              <motion.div variants={fadeUp} className="mb-3 flex justify-center">
-                <QuestionChart chart={q.chart_data} />
-              </motion.div>
-            ) : (q.image_url || questionImageUrl(q.id, gradeKey)) ? (
-              <motion.div variants={fadeUp} className="flex justify-center mb-3">
-                <LoadingImage
-                  src={q.image_url || questionImageUrl(q.id, gradeKey)}
-                  fallback={null}
-                  className="max-h-[20vh] sm:max-h-[28vh] md:max-h-[30vh] lg:max-h-[55vh] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
-                />
-              </motion.div>
-            ) : null}
-          </div>
-          <div className="lg:col-span-3 flex flex-col">
-
-        {/* ── Passage — context before the question.
-            Mobile uses tighter padding + smaller text so the question
-            and choices fit above the fold on a 667px viewport. */}
-        {passage && (
-          <motion.div variants={fadeUp} className="mb-3 sm:mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 px-4 py-2.5 sm:px-5 sm:py-4">
-            <p className="text-base sm:text-xl md:text-2xl leading-snug sm:leading-relaxed font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line text-center">{passage}</p>
-          </motion.div>
-        )}
-
-        {/* ── Question + replay button ── */}
-        <motion.div variants={fadeUp} className="mb-3">
-          <div className="flex items-center gap-2 max-w-[600px] mx-auto justify-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-snug text-center whitespace-pre-line">
-              {highlightQuestion(question)}
-            </h2>
-            {audioGradesEnabled && (
-              <button
-                onClick={handleReplay}
-                className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-50 dark:bg-violet-500/20 hover:bg-violet-100 dark:hover:bg-violet-500/30 transition-colors flex-shrink-0"
-                aria-label="Replay audio"
-              >
-                <svg className="w-5 h-5 text-violet-600 dark:text-violet-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
-                </svg>
-              </button>
-            )}
-          </div>
-        </motion.div>
-
-        {/* ── Progress dots ── */}
-        <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-4">
-          {Array.from({ length: totalQ }).map((_, i) => {
-            const answer = answers[i];
-            const isCurrent = i === currentIdx;
-            let dotClass = "bg-zinc-300 dark:bg-slate-600"; // upcoming
-            if (answer) {
-              dotClass = answer.correct
-                ? "bg-emerald-500"
-                : "bg-red-400";
-            } else if (isCurrent) {
-              dotClass = "bg-violet-500";
-            }
-            return (
-              <div
-                key={i}
-                className={`rounded-full transition-all duration-300 ${dotClass} ${
-                  isCurrent ? "w-3.5 h-3.5" : "w-2.5 h-2.5"
-                }`}
-              />
-            );
-          })}
-        </motion.div>
-
-        {/* ── Answer choices — colorful 2×2 grid ── */}
-        <div className="grid grid-cols-2 gap-2.5">
-          {(q.choices ?? []).map((choice, i) => {
-            const isSelected = selected === choice;
-            const isCorrectChoice = choice === q.correct;
-            const answered = selected !== null;
-            const choiceCount = q.choices?.length ?? 0;
-            const isLastOdd = choiceCount === 3 && i === 2;
-
-            const isGreyed = greyed.includes(choice);
-            let bg = CHOICE_COLORS[i % CHOICE_COLORS.length];
-            let textColor = "";
-            let extra = "";
-
-            if (!answered && isGreyed) {
-              // 1st-try wrong: greyed out; the kid picks again from the rest.
-              bg = "bg-zinc-100 border-zinc-300 dark:bg-slate-800 dark:border-slate-600";
-              textColor = "text-zinc-400 dark:text-slate-500";
-              extra = "opacity-60 border-dashed";
-            } else if (!answered && previewedChoice === choice) {
-              extra = "ring-2 ring-offset-2 ring-violet-500 animate-pulse";
-            } else if (answered) {
-              if (isCorrectChoice) {
-                bg = "bg-emerald-500 border-emerald-600 dark:bg-emerald-500 dark:border-emerald-600";
-                textColor = "text-white dark:text-white";
-              } else if (isSelected) {
-                bg = "bg-red-400 border-red-500 dark:bg-red-400 dark:border-red-500";
-                textColor = "text-white dark:text-white";
-              } else {
-                extra = "opacity-40";
-              }
-            }
-
-            return (
-              <motion.button
-                key={choice}
-                variants={fadeUp}
-                animate={
-                  answered && isSelected && !isCorrect
-                    ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
-                    : answered && isSelected && isCorrect
-                    ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } }
-                    : {}
-                }
-                whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
-                onClick={() => {
-                  if (answered || isGreyed) return;
-                  if (hasChoiceAudio) {
-                    if (previewedChoice === choice) {
-                      handleMcqPick(choice);
-                    } else {
-                      setPreviewedChoice(choice);
-                      const audioUrl = q.choices_audio_urls?.[i];
-                      if (audioUrl) {
-                        stop();
-                        playUrl(audioUrl, 0);
-                      }
-                    }
-                  } else if (choicesArePhonemes) {
-                    if (previewedChoice === choice) {
-                      handleMcqPick(choice);
-                    } else {
-                      setPreviewedChoice(choice);
-                      playPhonemeAudio(choice);
-                    }
-                  } else {
-                    handleMcqPick(choice);
-                  }
-                }}
-                disabled={answered || isGreyed}
-                className={`
-                  flex items-center justify-center px-3 py-3 rounded-2xl border-2 relative
-                  transition-[background-color,border-color,opacity,box-shadow] duration-200 outline-none
-                  min-h-[64px] md:min-h-[80px]
-                  ${bg} ${textColor} ${extra}
-                  ${answered ? "cursor-default" : "cursor-pointer hover:scale-[1.04] hover:shadow-lg active:scale-[0.95]"}
-                  ${isLastOdd ? "col-span-2 max-w-[50%] mx-auto" : ""}
-                `}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  {answered && isCorrectChoice && (
-                    <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                  )}
-                  {((answered && isSelected && !isCorrectChoice) || (!answered && isGreyed)) && (
-                    <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </div>
-                  )}
-                  {false && (
-                    <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                  )}
-                  <span className={`text-base md:text-xl font-bold leading-snug text-center ${textColor}`}>
-                    {String(choice).replace(/\*\*/g, "")}
-                  </span>
-                </div>
-              </motion.button>
-            );
-          })}
-        </div>
-
-        {/* ── 2-try nudge — no-spoiler "try again" after the 1st wrong pick ── */}
-        {selected === null && nudge && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-4 mx-auto max-w-md rounded-2xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 px-4 py-3 text-center"
-          >
-            <p className="text-sm font-bold text-amber-800 dark:text-amber-200">{nudge}</p>
-            <p className="mt-0.5 text-xs font-semibold text-amber-600 dark:text-amber-300">Try again — you&apos;ve got this!</p>
-          </motion.div>
-        )}
-
-        {/* ── Hint button ── */}
-        {q.hint && (
-          <motion.div variants={fadeUp} className="mt-5 flex flex-col items-center gap-2">
-            <button
-              onClick={() => setShowHint((v) => !v)}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 hover:bg-amber-100 dark:hover:bg-amber-500/20 transition-colors"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-              Hint
+        (() => {
+          const imgSrc = q.image_url || questionImageUrl(q.id, gradeKey);
+          const Speaker = ({ size }: { size: number }) => (
+            <button onClick={handleReplay} aria-label="Read to me" className="rounded-full bg-indigo-700 flex items-center justify-center flex-none transition hover:scale-105 active:scale-90" style={{ width: size, height: size, boxShadow: "0 3px 0 0 #312e81" }}>
+              <Volume2 className="text-white" style={{ width: Math.round(size * 0.46), height: Math.round(size * 0.46) }} strokeWidth={2} />
             </button>
-            {showHint && (
-              <div className="rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 px-4 py-3 text-sm text-amber-800 dark:text-amber-200 max-w-sm text-center">
-                {String(q.hint ?? "").replace(/\*\*/g, "")}
+          );
+          const choicesGrid = (
+            <div className="grid gap-3.5 w-full mx-auto" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(260px,100%),1fr))", maxWidth: passage ? undefined : 780 }}>
+              {(q.choices ?? []).map((choice, i) => {
+                const isSelected = selected === choice;
+                const isCorrectChoice = choice === q.correct;
+                const answered = selected !== null;
+                const isGreyed = greyed.includes(choice);
+                const col = DESIGN_CHOICE_COLORS[i % DESIGN_CHOICE_COLORS.length];
+                let bg = col.bg, fg = col.fg, border = col.border, chipBg = col.chipBg, chipFg = col.chipFg;
+                let opacity = 1, dashed = false, showCheck = false, showX = false, shadow = `0 2px 0 0 ${col.border}`, shake = false, pop = false;
+                if (!answered && isGreyed) { bg = "#f4f4f5"; fg = "#a1a1aa"; border = "#d4d4d8"; chipBg = "#e4e4e7"; chipFg = "#a1a1aa"; opacity = 0.55; dashed = true; showX = true; shadow = "none"; }
+                else if (!answered && previewedChoice === choice) { shadow = "0 0 0 3px rgba(124,58,237,.4)"; }
+                else if (answered) {
+                  if (isCorrectChoice) { bg = "#a7f3d0"; fg = "#064e3b"; border = "#10b981"; chipBg = "#6ee7b7"; chipFg = "#065f46"; showCheck = true; shadow = "0 0 0 4px rgba(16,185,129,.25)"; pop = true; }
+                  else if (isSelected) { bg = "#fecaca"; fg = "#7f1d1d"; border = "#ef4444"; chipBg = "#fca5a5"; chipFg = "#7f1d1d"; showX = true; shadow = "0 0 0 3px rgba(248,113,113,.35)"; shake = true; }
+                  else { opacity = 0.45; shadow = "none"; if (isGreyed) { dashed = true; showX = true; } }
+                }
+                return (
+                  <motion.button
+                    key={choice}
+                    variants={fadeUp}
+                    animate={shake ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } } : pop ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } } : {}}
+                    onClick={() => {
+                      if (answered || isGreyed) return;
+                      if (hasChoiceAudio) {
+                        if (previewedChoice === choice) { handleMcqPick(choice); }
+                        else { setPreviewedChoice(choice); const audioUrl = q.choices_audio_urls?.[i]; if (audioUrl) { stop(); playUrl(audioUrl, 0); } }
+                      } else if (choicesArePhonemes) {
+                        if (previewedChoice === choice) { handleMcqPick(choice); }
+                        else { setPreviewedChoice(choice); playPhonemeAudio(choice); }
+                      } else { handleMcqPick(choice); }
+                    }}
+                    disabled={answered || isGreyed}
+                    style={{ border: `2.5px ${dashed ? "dashed" : "solid"} ${border}`, background: bg, boxShadow: shadow, opacity }}
+                    className={`flex items-center gap-3.5 px-4 py-3.5 rounded-2xl min-h-[72px] text-left outline-none transition ${answered || isGreyed ? "cursor-default" : "cursor-pointer hover:-translate-y-0.5 active:scale-[0.97]"}`}
+                  >
+                    <span className="w-9 h-9 rounded-xl flex items-center justify-center font-[family-name:var(--font-baloo)] font-bold text-[17px] flex-none" style={{ background: chipBg, color: chipFg }}>{"ABCD"[i]}</span>
+                    <span className="flex-1 font-bold text-[17px] leading-snug" style={{ color: fg }}>{String(choice).replace(/\*\*/g, "")}</span>
+                    {showCheck && <CheckIcon className="w-6 h-6 flex-none" stroke="#059669" strokeWidth={3} />}
+                    {showX && <XIcon className="w-5 h-5 flex-none" stroke="#a1a1aa" strokeWidth={3} />}
+                  </motion.button>
+                );
+              })}
+            </div>
+          );
+          const nudgeEl = (selected === null && nudge) ? (
+            <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-1 mx-auto max-w-md rounded-2xl bg-amber-50 border border-amber-200 px-4 py-3 text-center">
+              <p className="text-sm font-bold text-amber-800">{nudge}</p>
+              <p className="mt-0.5 text-xs font-semibold text-amber-600">Try again — you&apos;ve got this!</p>
+            </motion.div>
+          ) : null;
+
+          if (passage) {
+            return (
+              <div className="flex flex-wrap gap-6 items-stretch justify-center w-full">
+                <div className="flex-[1.05_1_340px] max-w-[560px] bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-[0_10px_40px_-12px_rgba(49,46,129,.18)] flex flex-col">
+                  {imgSrc && <LoadingImage src={imgSrc} fallback={null} className="w-full h-[clamp(120px,24vh,210px)] object-cover" />}
+                  <div className="px-5 pt-4 pb-5 flex flex-col gap-2.5">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] font-extrabold tracking-[0.14em] text-indigo-700">THE STORY</span>
+                      <button onClick={handleReplay} className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 rounded-full px-3 py-1 hover:bg-indigo-100 active:scale-95 transition">
+                        <Volume2 className="w-3.5 h-3.5 text-indigo-700" strokeWidth={2.2} />
+                        <span className="text-[12.5px] font-extrabold text-indigo-700">Read to me</span>
+                      </button>
+                    </div>
+                    <p className="text-[19px] font-semibold leading-[1.7] text-zinc-700 whitespace-pre-line">{passage}</p>
+                  </div>
+                </div>
+                <div className="flex-[1_1_320px] max-w-[520px] flex flex-col gap-3.5 justify-center">
+                  <div className="flex items-center gap-3">
+                    <Speaker size={46} />
+                    <h2 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(21px,2vw,26px)] leading-tight text-indigo-950">{highlightQuestion(question)}</h2>
+                  </div>
+                  {choicesGrid}
+                  {nudgeEl}
+                </div>
               </div>
-            )}
-          </motion.div>
-        )}
-          </div>{/* /lg:col-span-3 */}
-        </div>{/* /lg:grid */}
-        </>
+            );
+          }
+          return (
+            <div className="flex flex-col items-center gap-4 sm:gap-5 w-full">
+              {q.chart_data ? (
+                <QuestionChart chart={q.chart_data} />
+              ) : imgSrc ? (
+                <LoadingImage src={imgSrc} fallback={null} className="max-h-[32vh] w-auto max-w-[min(440px,86vw)] object-contain rounded-[20px] border-[3px] border-white shadow-[0_10px_40px_-12px_rgba(49,46,129,.25)]" />
+              ) : null}
+              <div className="flex items-center gap-3.5 max-w-[760px]">
+                <Speaker size={52} />
+                <h1 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(23px,2.6vw,31px)] leading-tight text-indigo-950 text-center">{highlightQuestion(question)}</h1>
+              </div>
+              {choicesGrid}
+              {nudgeEl}
+            </div>
+          );
+        })()
         )}
       </motion.div>
 
-      {/* ── Bottom feedback bar (Duolingo-style) ── */}
+      {/* ── Bunny + speech bubble (fixed, bottom-left) ── */}
+      {(() => {
+        const fb = phase === "feedback";
+        const hintOpen = showHint && !!q.hint && !fb;
+        const bunnyState: "idle" | "correct" | "incorrect" | "levelup" = fb
+          ? (isCorrect ? (consecutiveCorrect >= 3 ? "levelup" : "correct") : "incorrect")
+          : "idle";
+        let bubbleText = "";
+        let tone = { bg: "#ffffff", border: "#e4e4e7", fg: "#3f3f46" };
+        if (fb) {
+          bubbleText = isCorrect
+            ? feedbackMsg
+            : `${feedbackMsg} The answer is ${String(q.correct).replace(/\*\*/g, "")}.`;
+          tone = isCorrect
+            ? { bg: "#d1fae5", border: "#34d399", fg: "#065f46" }
+            : { bg: "#e0e7ff", border: "#a5b4fc", fg: "#3730a3" };
+        } else if (hintOpen) {
+          bubbleText = String(q.hint ?? "").replace(/\*\*/g, "");
+          tone = { bg: "#fffbeb", border: "#fcd34d", fg: "#92400e" };
+        }
+        return (
+          <div className="fixed left-3 sm:left-5 bottom-2 z-[6] flex items-end gap-2.5 pointer-events-none">
+            <div className="w-[clamp(96px,11vw,150px)] h-[clamp(104px,12vw,162px)] flex-none relative">
+              {bunnyState === "idle"
+                ? <Bunny outfitId={child.equipped_items?.outfit ?? null} />
+                : <BunnyReaction outfitId={child.equipped_items?.outfit ?? null} state={bunnyState} />}
+            </div>
+            {bubbleText && (
+              <motion.div
+                key={bubbleText}
+                initial={{ opacity: 0, scale: 0.8, y: 6 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                className="relative max-w-[min(320px,44vw)] px-4 py-3 mb-8 border-2 shadow-[0_10px_30px_-10px_rgba(49,46,129,.25)]"
+                style={{ background: tone.bg, borderColor: tone.border, borderRadius: "18px 18px 18px 4px" }}
+              >
+                <p className="text-[15.5px] font-bold leading-snug" style={{ color: tone.fg }}>{bubbleText}</p>
+              </motion.div>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* ── Read-aloud + hint dock (fixed, bottom-right) ── */}
+      <div className="fixed right-3 sm:right-5 bottom-3 z-[6] flex items-center gap-2.5">
+        <button
+          onClick={handleReplay}
+          className="flex items-center gap-2 bg-white/95 border-[1.5px] border-indigo-200 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,.2)] hover:-translate-y-0.5 active:scale-95 transition"
+        >
+          <Volume2 className="w-[19px] h-[19px] text-indigo-700" strokeWidth={2.2} />
+          <span className="text-[15px] font-extrabold text-indigo-950">Read to me</span>
+        </button>
+        {q.hint && (
+          <button
+            onClick={() => setShowHint(true)}
+            disabled={showHint || phase === "feedback"}
+            className="flex items-center gap-2 bg-white/95 border-[1.5px] border-amber-300 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,.2)] disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:active:scale-95 transition"
+          >
+            <Lightbulb className="w-[19px] h-[19px] text-amber-600" strokeWidth={2.2} />
+            <span className="text-[15px] font-extrabold text-amber-800">{showHint ? "Hint used" : "Hint"}</span>
+          </button>
+        )}
+      </div>
+
+      {/* ── Next button (on feedback) ── */}
       <AnimatePresence>
         {phase === "feedback" && (
-          <motion.div
-            variants={feedbackSlideUp}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className={`fixed bottom-0 left-0 right-0 z-40 ${
-              isCorrect
-                ? "bg-emerald-600"
-                : "bg-red-500"
-            }`}
+          <motion.button
+            initial={{ opacity: 0, y: 14, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleContinue}
+            className="fixed left-1/2 -translate-x-1/2 bottom-[80px] sm:bottom-[86px] z-[7] flex items-center gap-2.5 px-8 sm:px-10 py-3.5 rounded-full text-white font-[family-name:var(--font-baloo)] font-bold text-xl active:scale-95 transition"
+            style={{ background: "linear-gradient(135deg,#6366f1,#8b5cf6)", boxShadow: "0 4px 0 0 #4f46e5,0 10px 30px -8px rgba(79,70,229,.5)" }}
           >
-            <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="relative w-28 h-32 sm:w-32 sm:h-36 flex-shrink-0 -my-2">
-                  <BunnyReaction
-                    outfitId={child.equipped_items?.outfit ?? null}
-                    state={isCorrect ? "correct" : "incorrect"}
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-extrabold text-lg">{feedbackMsg}</p>
-                  {isCorrect && (() => {
-                    const daily = getDailyMultiplier(child.streak_days);
-                    const session = getSessionStreakTier(consecutiveCorrect);
-                    const earned = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier);
-                    const hasBonus = daily.multiplier > 1 || session.multiplier > 1 || mysteryBoxMultiplier > 1;
-                    return (
-                      <p className="text-white/80 text-sm mt-0.5">
-                        +{earned} <Carrot className="w-3.5 h-3.5 inline-block align-text-bottom" strokeWidth={1.5} />{hasBonus ? " (Bonus!)" : ""}
-                      </p>
-                    );
-                  })()}
-                  {!isCorrect && (
-                    <p className="text-white/90 text-sm font-bold mt-1">
-                      Correct answer: {q.correct}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <button
-                onClick={handleContinue}
-                className={`w-full py-4 rounded-2xl font-extrabold text-base transition-all active:scale-[0.97] ${
-                  isCorrect
-                    ? "bg-white text-emerald-700 hover:bg-emerald-50"
-                    : "bg-white text-red-600 hover:bg-red-50"
-                }`}
-              >
-                CONTINUE
-              </button>
-            </div>
-          </motion.div>
+            <span>{currentIdx + 1 >= totalQ ? "Finish" : "Next"}</span>
+            <ArrowRight className="w-[22px] h-[22px]" strokeWidth={2.5} />
+          </motion.button>
         )}
       </AnimatePresence>
     </div>
