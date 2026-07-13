@@ -1400,7 +1400,7 @@ function PracticeSession({
           max-w-5xl so the 2-col layout below has room to breathe
           without stretching text across the whole viewport. */}
       <motion.div
-        className="relative z-[1] flex-1 w-full max-w-[1140px] mx-auto px-4 sm:px-6 pt-2 sm:pt-4 pb-[clamp(150px,19vh,220px)] flex flex-col items-center justify-center"
+        className="relative z-[1] flex-1 w-full max-w-[1140px] mx-auto px-4 sm:px-6 pt-3 sm:pt-6 pb-[clamp(116px,15vh,172px)] flex flex-col items-center justify-center"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
@@ -1558,8 +1558,8 @@ function PracticeSession({
             return (
               <div className="flex flex-wrap gap-6 items-stretch justify-center w-full">
                 <div className="flex-[1.05_1_340px] max-w-[560px] bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-[0_10px_40px_-12px_rgba(49,46,129,.18)] flex flex-col">
-                  {imgSrc && <LoadingImage src={imgSrc} fallback={null} className="w-full h-[clamp(120px,24vh,210px)] object-cover" />}
-                  <div className="px-5 pt-4 pb-5 flex flex-col gap-2.5">
+                  {imgSrc && <LoadingImage src={imgSrc} fallback={null} className="w-full h-[clamp(180px,34vh,340px)] object-cover" />}
+                  <div className="px-5 pt-4 pb-5 flex flex-col gap-2.5 flex-1 justify-center">
                     <div className="flex items-center gap-2">
                       <span className="text-[11px] font-extrabold tracking-[0.14em] text-indigo-700">THE STORY</span>
                       <button onClick={handleReplay} className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 rounded-full px-3 py-1 hover:bg-indigo-100 active:scale-95 transition">
@@ -1586,9 +1586,9 @@ function PracticeSession({
               {q.chart_data ? (
                 <QuestionChart chart={q.chart_data} />
               ) : imgSrc ? (
-                <LoadingImage src={imgSrc} fallback={null} className="max-h-[32vh] w-auto max-w-[min(440px,86vw)] object-contain rounded-[20px] border-[3px] border-white shadow-[0_10px_40px_-12px_rgba(49,46,129,.25)]" />
+                <LoadingImage src={imgSrc} fallback={null} className="max-h-[46vh] w-auto max-w-[min(560px,92vw)] object-contain rounded-[20px] border-[3px] border-white shadow-[0_10px_40px_-12px_rgba(49,46,129,.25)]" />
               ) : null}
-              <div className="flex items-center gap-3.5 max-w-[760px]">
+              <div className="flex items-center gap-3.5 max-w-[820px]">
                 <Speaker size={52} />
                 <h1 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(23px,2.6vw,31px)] leading-tight text-indigo-950 text-center">{highlightQuestion(question)}</h1>
               </div>
