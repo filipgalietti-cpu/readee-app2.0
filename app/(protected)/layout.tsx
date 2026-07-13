@@ -1,4 +1,5 @@
 import TosGate from "@/app/_components/TosGate";
+import StopAudioOnNav from "@/app/_components/StopAudioOnNav";
 import SidebarShell from "@/app/_components/SidebarShell";
 import FeedbackButton from "@/app/_components/FeedbackButton";
 import { createClient } from "@/lib/supabase/server";
@@ -36,6 +37,7 @@ export default async function ProtectedLayout({
 
   return (
     <TosGate>
+      <StopAudioOnNav />
       <SidebarShell initialOpen={initialSidebarOpen}>{children}</SidebarShell>
       <FeedbackButton />
     </TosGate>

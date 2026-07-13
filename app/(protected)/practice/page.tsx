@@ -1061,6 +1061,7 @@ function PracticeSession({
 
   /* ── Continue to next question ── */
   const handleContinue = useCallback(() => {
+    stop(); // kill any feedback voice before moving on
     setShowHint(false);
     // Adaptive mode: grow the queue by asking the engine for the next item at
     // the difficulty the kid's live performance warrants, then advance into it.
@@ -1078,7 +1079,13 @@ function PracticeSession({
     }
     nextQuestion(totalQ);
     scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
-  }, [nextQuestion, totalQ, debugAdaptive, currentIdx, adaptiveQueue.length, adaptive.reading, adaptiveSelectPool, standard.questions]);
+  }, [nextQuestion, totalQ, debugAdaptive, currentIdx, adaptiveQueue.length, adaptive.reading, adaptiveSelectPool, standard.questions, stop]);
+
+  // Belt-and-suspenders: always kill audio when the runner unmounts
+  // (grades 2-4 skip the read-aloud effect that otherwise stops it).
+  useEffect(() => {
+    return () => { stop(); };
+  }, [stop]);
 
   /* ── Exit ── */
   const handleExit = useCallback(() => {
