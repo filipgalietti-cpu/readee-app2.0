@@ -1648,7 +1648,7 @@ function PracticeSession({
         }
         return (
           <div className="fixed left-3 sm:left-5 bottom-2 z-[6] flex items-end gap-2.5 pointer-events-none">
-            <div className="w-[clamp(96px,11vw,150px)] h-[clamp(104px,12vw,162px)] flex-none relative">
+            <div className="w-[clamp(132px,15vw,210px)] h-[clamp(143px,16vw,227px)] flex-none relative">
               {bunnyState === "idle"
                 ? <Bunny outfitId={child.equipped_items?.outfit ?? null} />
                 : <BunnyReaction outfitId={child.equipped_items?.outfit ?? null} state={bunnyState} />}
@@ -1658,7 +1658,7 @@ function PracticeSession({
                 key={bubbleText}
                 initial={{ opacity: 0, scale: 0.8, y: 6 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                className="relative max-w-[min(320px,44vw)] px-4 py-3 mb-8 border-2 shadow-[0_10px_30px_-10px_rgba(49,46,129,.25)]"
+                className="relative max-w-[min(320px,44vw)] px-4 py-3 mb-12 border-2 shadow-[0_10px_30px_-10px_rgba(49,46,129,.25)]"
                 style={{ background: tone.bg, borderColor: tone.border, borderRadius: "18px 18px 18px 4px" }}
               >
                 <p className="text-[15.5px] font-bold leading-snug" style={{ color: tone.fg }}>{bubbleText}</p>
