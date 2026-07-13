@@ -1588,14 +1588,31 @@ function PracticeSession({
               </div>
             );
           }
+          // Image-only questions use a big side-by-side split (image left,
+          // prompt + choices right) so the picture fills the space instead of
+          // floating small in a centered column. Charts / no-image fall back
+          // to a centered column.
+          if (imgSrc && !q.chart_data) {
+            return (
+              <div className="flex flex-wrap gap-6 lg:gap-9 items-center justify-center w-full">
+                <div className="flex-[1_1_360px] max-w-[600px] flex justify-center">
+                  <LoadingImage src={imgSrc} fallback={null} className="w-full max-h-[64vh] object-contain rounded-[24px] border-[3px] border-white shadow-[0_10px_40px_-12px_rgba(49,46,129,.25)]" />
+                </div>
+                <div className="flex-[1_1_320px] max-w-[520px] flex flex-col gap-3.5 justify-center">
+                  <div className="flex items-center gap-3">
+                    <Speaker size={48} />
+                    <h2 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(21px,2.2vw,28px)] leading-tight text-indigo-950">{highlightQuestion(question)}</h2>
+                  </div>
+                  {choicesGrid}
+                  {nudgeEl}
+                </div>
+              </div>
+            );
+          }
           return (
-            <div className="flex flex-col items-center gap-4 sm:gap-5 w-full">
-              {q.chart_data ? (
-                <QuestionChart chart={q.chart_data} />
-              ) : imgSrc ? (
-                <LoadingImage src={imgSrc} fallback={null} className="max-h-[46vh] w-auto max-w-[min(560px,92vw)] object-contain rounded-[20px] border-[3px] border-white shadow-[0_10px_40px_-12px_rgba(49,46,129,.25)]" />
-              ) : null}
-              <div className="flex items-center gap-3.5 max-w-[820px]">
+            <div className="flex flex-col items-center gap-4 sm:gap-5 w-full max-w-[780px]">
+              {q.chart_data && <QuestionChart chart={q.chart_data} />}
+              <div className="flex items-center gap-3.5 max-w-[720px]">
                 <Speaker size={52} />
                 <h1 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(23px,2.6vw,31px)] leading-tight text-indigo-950 text-center">{highlightQuestion(question)}</h1>
               </div>
