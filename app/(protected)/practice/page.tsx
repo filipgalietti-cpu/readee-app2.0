@@ -32,6 +32,7 @@ import { SoundMachine } from "@/app/components/practice/SoundMachine";
 import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
+import SealOfApproval from "./_components/SealOfApproval";
 import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
@@ -1987,34 +1988,43 @@ function CompletionScreen({
         initial="hidden"
         animate="visible"
       >
-        {/* Bunny reaction — drives the emotional moment, stars follow as the score badge. */}
-        <motion.div variants={scaleIn} className="relative w-40 h-44 sm:w-48 sm:h-52 mb-4">
-          <BunnyReaction
-            outfitId={child.equipped_items?.outfit ?? null}
-            state={stars === 3 ? "levelup" : stars >= 1 ? "correct" : "incorrect"}
-          />
-        </motion.div>
-
-        {/* Stars */}
-        <motion.div variants={scaleIn} className="flex items-end gap-2 mb-6">
-          {[1, 2, 3].map((s) => (
-            <motion.div
-              key={s}
-              variants={popIn}
-              className={`${s === 2 ? "mb-2" : ""}`}
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className={`${s === 2 ? "w-16 h-16" : "w-12 h-12"}`}
-                fill={s <= stars ? "#facc15" : darkMode ? "#334155" : "#d4d4d8"}
-                stroke={s <= stars ? "#eab308" : darkMode ? "#475569" : "#a1a1aa"}
-                strokeWidth="0.5"
-              >
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-              </svg>
+        {correctCount === totalQ ? (
+          /* Perfect score → the Seal of Approval reward stamp */
+          <motion.div variants={scaleIn} className="w-full h-[300px] sm:h-[360px] mb-2">
+            <SealOfApproval ribbonText="PERFECT!" background="transparent" />
+          </motion.div>
+        ) : (
+          <>
+            {/* Bunny reaction — drives the emotional moment, stars follow as the score badge. */}
+            <motion.div variants={scaleIn} className="relative w-40 h-44 sm:w-48 sm:h-52 mb-4">
+              <BunnyReaction
+                outfitId={child.equipped_items?.outfit ?? null}
+                state={stars === 3 ? "levelup" : stars >= 1 ? "correct" : "incorrect"}
+              />
             </motion.div>
-          ))}
-        </motion.div>
+
+            {/* Stars */}
+            <motion.div variants={scaleIn} className="flex items-end gap-2 mb-6">
+              {[1, 2, 3].map((s) => (
+                <motion.div
+                  key={s}
+                  variants={popIn}
+                  className={`${s === 2 ? "mb-2" : ""}`}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className={`${s === 2 ? "w-16 h-16" : "w-12 h-12"}`}
+                    fill={s <= stars ? "#facc15" : darkMode ? "#334155" : "#d4d4d8"}
+                    stroke={s <= stars ? "#eab308" : darkMode ? "#475569" : "#a1a1aa"}
+                    strokeWidth="0.5"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                </motion.div>
+              ))}
+            </motion.div>
+          </>
+        )}
 
         {/* Title */}
         <motion.h1 variants={fadeUp} className="text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight text-center mb-1">
