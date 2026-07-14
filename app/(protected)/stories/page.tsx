@@ -368,6 +368,7 @@ function StoriesContent() {
                 <LevelProgressCard
                   priorLifetimeCarrots={priorLifetimeCarrots}
                   sessionCarrots={finishedScore.carrots}
+                  childId={childId}
                   href={`/levels?child=${childId}`}
                 />
               </div>

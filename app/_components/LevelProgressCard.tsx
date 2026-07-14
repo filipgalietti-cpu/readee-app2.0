@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { computeLevel, didLevelUp } from "@/lib/levels/levels";
+import { computeLevel, didLevelUp, levelUpBonus } from "@/lib/levels/levels";
 import { Carrot, ChevronRight } from "lucide-react";
+import { supabaseBrowser } from "@/lib/supabase/client";
 
 /**
  * Big celebratory progress card for completion screens.
@@ -21,12 +23,16 @@ import { Carrot, ChevronRight } from "lucide-react";
 export default function LevelProgressCard({
   priorLifetimeCarrots,
   sessionCarrots,
+  /** Child id — required to grant the level-up bonus carrots to the
+   *  spendable balance. Omit on read-only surfaces. */
+  childId = null,
   /** Whether the kid is on the max level + already past max threshold.
    *  Shown as "You've maxed every level — keep reading!" */
   href = null,
 }: {
   priorLifetimeCarrots: number;
   sessionCarrots: number;
+  childId?: string | null;
   href?: string | null;
 }) {
   const prior = Math.max(0, Math.floor(priorLifetimeCarrots || 0));
@@ -35,6 +41,23 @@ export default function LevelProgressCard({
   const leveledUp = didLevelUp(prior, after);
   const post = computeLevel(after);
   const Icon = post.current.icon;
+  const bonus = leveledUp ? levelUpBonus(post.current.number) : 0;
+
+  // Grant the level-up bonus to the child's SPENDABLE carrots exactly once.
+  // Bonus goes to the balance only (never lifetime carrots) so it can't
+  // cascade into another level-up. Guarded by a ref so re-renders don't
+  // double-award.
+  const grantedRef = useRef(false);
+  useEffect(() => {
+    if (!leveledUp || !childId || bonus <= 0 || grantedRef.current) return;
+    grantedRef.current = true;
+    (async () => {
+      const supabase = supabaseBrowser();
+      const { data } = await supabase.from("children").select("carrots").eq("id", childId).single();
+      const current = Number(data?.carrots) || 0;
+      await supabase.from("children").update({ carrots: current + bonus }).eq("id", childId);
+    })();
+  }, [leveledUp, childId, bonus]);
 
   // ─── Level-up celebration ────────────────────────────────────
   if (leveledUp) {
@@ -92,6 +115,17 @@ export default function LevelProgressCard({
                 ? ` — ${next.threshold - after} more carrots to ${next.name}.`
                 : " — you've reached the top of the ladder. Keep reading!"}
             </p>
+            {bonus > 0 && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6, y: 6 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 0.5, type: "spring", damping: 14 }}
+                className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/25 px-3.5 py-1.5 text-sm font-extrabold text-white ring-1 ring-white/40"
+              >
+                <Carrot className="h-4 w-4" strokeWidth={2.2} />
+                +{bonus} bonus carrots!
+              </motion.div>
+            )}
             {href && (
               <Link
                 href={href}

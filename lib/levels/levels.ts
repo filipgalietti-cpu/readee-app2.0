@@ -309,3 +309,13 @@ export function computeLevel(lifetimeCarrotsRaw: number): LevelInfo {
 export function didLevelUp(priorLifetime: number, afterLifetime: number): boolean {
   return computeLevel(priorLifetime).current.number < computeLevel(afterLifetime).current.number;
 }
+
+/**
+ * Spendable-carrot BONUS granted for reaching a new reader level. Starts at
+ * 50 (Filip's floor) and scales gently with the level, capped so late levels
+ * don't balloon. Goes to the child's *spendable* balance only (never lifetime
+ * carrots) so it can't cascade into another level-up.
+ */
+export function levelUpBonus(levelNumber: number): number {
+  return Math.min(250, Math.max(50, 25 * levelNumber));
+}

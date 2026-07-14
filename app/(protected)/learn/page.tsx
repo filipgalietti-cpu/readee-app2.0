@@ -1419,6 +1419,7 @@ function CompletionScreen({
             <LevelProgressCard
               priorLifetimeCarrots={priorLifetime}
               sessionCarrots={carrotsEarned}
+              childId={child.id}
               href={`/levels?child=${child.id}`}
             />
           </motion.div>
