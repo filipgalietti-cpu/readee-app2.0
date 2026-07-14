@@ -6,6 +6,7 @@ import Link from "next/link";
 import { computeLevel, didLevelUp, levelUpBonus } from "@/lib/levels/levels";
 import { Carrot, ChevronRight } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import LevelUpBurst from "@/app/_components/LevelUpBurst";
 
 /**
  * Big celebratory progress card for completion screens.
@@ -26,6 +27,8 @@ export default function LevelProgressCard({
   /** Child id — required to grant the level-up bonus carrots to the
    *  spendable balance. Omit on read-only surfaces. */
   childId = null,
+  /** Equipped bunny outfit id, for the level-up burst mascot. */
+  outfitId = null,
   /** Whether the kid is on the max level + already past max threshold.
    *  Shown as "You've maxed every level — keep reading!" */
   href = null,
@@ -33,6 +36,7 @@ export default function LevelProgressCard({
   priorLifetimeCarrots: number;
   sessionCarrots: number;
   childId?: string | null;
+  outfitId?: string | null;
   href?: string | null;
 }) {
   const prior = Math.max(0, Math.floor(priorLifetimeCarrots || 0));
@@ -61,83 +65,28 @@ export default function LevelProgressCard({
 
   // ─── Level-up celebration ────────────────────────────────────
   if (leveledUp) {
-    const next = post.next;
+    const oldName = computeLevel(prior).current.name;
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.92 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ type: "spring", damping: 18, stiffness: 200, delay: 0.1 }}
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${post.current.accent.gradFrom} ${post.current.accent.gradTo} p-5 text-white shadow-xl`}
-      >
-        {/* Sparkle backdrop */}
-        <div className="pointer-events-none absolute inset-0 opacity-30">
-          {[...Array(12)].map((_, i) => (
-            <motion.span
-              key={i}
-              className="absolute h-1.5 w-1.5 rounded-full bg-white"
-              style={{
-                top: `${(i * 73) % 100}%`,
-                left: `${(i * 41) % 100}%`,
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0.5, 1.4, 0.5],
-              }}
-              transition={{
-                duration: 1.6,
-                repeat: Infinity,
-                delay: (i * 0.13) % 1.6,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
+      <div className="relative w-full overflow-hidden rounded-3xl shadow-xl">
+        <div className="w-full aspect-video">
+          <LevelUpBurst
+            oldName={oldName}
+            newName={post.current.name}
+            newLevel={post.current.number}
+            bunnyOutfit={outfitId}
+            carrotBonus={bonus}
+          />
         </div>
-
-        <div className="relative flex items-start gap-4">
-          <motion.span
-            initial={{ rotate: -12, scale: 0.7 }}
-            animate={{ rotate: 0, scale: 1 }}
-            transition={{ delay: 0.25, type: "spring", damping: 14 }}
-            className="inline-flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-white/25 shadow-inner"
+        {href && (
+          <Link
+            href={href}
+            className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-zinc-900 shadow transition hover:bg-white"
           >
-            <Icon className="h-9 w-9" strokeWidth={2.2} />
-          </motion.span>
-          <div className="min-w-0 flex-1">
-            <div className="text-[11px] font-bold uppercase tracking-widest text-white/80">
-              Level up!
-            </div>
-            <h2 className="mt-0.5 text-2xl font-extrabold leading-tight">
-              You&apos;re a {post.current.name}!
-            </h2>
-            <p className="mt-1 text-sm text-white/85">
-              Level {post.current.number}
-              {next
-                ? ` — ${next.threshold - after} more carrots to ${next.name}.`
-                : " — you've reached the top of the ladder. Keep reading!"}
-            </p>
-            {bonus > 0 && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.6, y: 6 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 0.5, type: "spring", damping: 14 }}
-                className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/25 px-3.5 py-1.5 text-sm font-extrabold text-white ring-1 ring-white/40"
-              >
-                <Carrot className="h-4 w-4" strokeWidth={2.2} />
-                +{bonus} bonus carrots!
-              </motion.div>
-            )}
-            {href && (
-              <Link
-                href={href}
-                className="mt-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-zinc-900 transition hover:bg-white"
-              >
-                See all levels
-                <ChevronRight className="h-3 w-3" />
-              </Link>
-            )}
-          </div>
-        </div>
-      </motion.div>
+            All levels
+            <ChevronRight className="h-3 w-3" />
+          </Link>
+        )}
+      </div>
     );
   }
 

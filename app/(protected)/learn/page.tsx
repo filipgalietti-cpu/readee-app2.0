@@ -1420,6 +1420,7 @@ function CompletionScreen({
               priorLifetimeCarrots={priorLifetime}
               sessionCarrots={carrotsEarned}
               childId={child.id}
+              outfitId={child.equipped_items?.outfit ?? null}
               href={`/levels?child=${child.id}`}
             />
           </motion.div>

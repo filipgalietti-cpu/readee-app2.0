@@ -369,6 +369,7 @@ function StoriesContent() {
                   priorLifetimeCarrots={priorLifetimeCarrots}
                   sessionCarrots={finishedScore.carrots}
                   childId={childId}
+                  outfitId={child.equipped_items?.outfit ?? null}
                   href={`/levels?child=${childId}`}
                 />
               </div>
