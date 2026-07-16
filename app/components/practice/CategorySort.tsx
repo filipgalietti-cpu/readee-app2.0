@@ -3,6 +3,8 @@
 import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Howl } from "howler";
+import { useTwoTry } from "./useTwoTry";
+import { TryAgainNudge } from "./TryAgainNudge";
 
 interface CategorySortProps {
   prompt: string;
@@ -10,12 +12,14 @@ interface CategorySortProps {
   categoryItems: Record<string, string[]>;
   items: string[];
   answered: boolean;
-  onAnswer: (isCorrect: boolean, answer: string) => void;
+  onAnswer: (isCorrect: boolean, answer: string, firstTry?: boolean) => void;
   onCorrectPlace?: () => void;
   onIncorrectPlace?: () => void;
   onPlayItem?: (word: string) => void;
   /** In assessment mode, all placements are accepted (no rejection on wrong bucket) */
   assessmentMode?: boolean;
+  /** Enable the runner's 2-try mechanic (first wrong → nudge + retry). */
+  twoTries?: boolean;
 }
 
 const BUCKET_STYLES = [
@@ -89,7 +93,9 @@ export function CategorySort({
   onIncorrectPlace,
   onPlayItem,
   assessmentMode = false,
+  twoTries = false,
 }: CategorySortProps) {
+  const { nudge, attempt, clearNudge } = useTwoTry(twoTries);
   const bucketRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const bankItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [buckets, setBuckets] = useState<Record<string, string[]>>(() =>
@@ -245,7 +251,17 @@ export function CategorySort({
       return;
     }
 
+    const { resolve, firstTry } = attempt(isCorrect);
+    // First wrong attempt (2-try): shake + nudge, keep items placed so the kid
+    // can re-sort and check again.
+    if (!resolve) {
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
+      return;
+    }
+
     setResult(isCorrect ? "correct" : "incorrect");
+    clearNudge();
 
     if (!isCorrect) {
       setShaking(true);
@@ -253,9 +269,9 @@ export function CategorySort({
     }
 
     setTimeout(() => {
-      onAnswer(isCorrect, answer);
+      onAnswer(isCorrect, answer, firstTry);
     }, 400);
-  }, [allPlaced, answered, result, categories, buckets, categoryItems, onAnswer, assessmentMode]);
+  }, [allPlaced, answered, result, categories, buckets, categoryItems, onAnswer, assessmentMode, attempt, clearNudge]);
 
   const gridCols =
     categories.length === 2
@@ -265,7 +281,7 @@ export function CategorySort({
   return (
     <div className="flex flex-col gap-6">
       {/* Prompt */}
-      <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug text-center">
+      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center">
         {prompt}
       </h2>
 
@@ -376,6 +392,11 @@ export function CategorySort({
           ))}
         </AnimatePresence>
       </div>
+
+      {/* First-wrong nudge (2-try) */}
+      {twoTries && nudge && result === null && !answered && (
+        <TryAgainNudge message={nudge} />
+      )}
 
       {/* Check button */}
       {!answered && result === null && (

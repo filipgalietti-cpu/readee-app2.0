@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { computeLevel, didLevelUp, levelUpBonus } from "@/lib/levels/levels";
+import { computeLevel, didLevelUp, levelUpBonus, READER_LEVELS } from "@/lib/levels/levels";
 import { Carrot, ChevronRight } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import LevelUpBurst from "@/app/_components/LevelUpBurst";
@@ -45,36 +45,58 @@ export default function LevelProgressCard({
   const leveledUp = didLevelUp(prior, after);
   const post = computeLevel(after);
   const Icon = post.current.icon;
-  const bonus = leveledUp ? levelUpBonus(post.current.number) : 0;
 
-  // Grant the level-up bonus to the child's SPENDABLE carrots exactly once.
-  // Bonus goes to the balance only (never lifetime carrots) so it can't
-  // cascade into another level-up. Guarded by a ref so re-renders don't
-  // double-award.
+  // Every level the kid crossed this session (usually just one, but a big
+  // session can jump two+). Each gets its own celebration + its own bonus.
+  const fromLevelNum = computeLevel(prior).current.number;
+  const levelsCrossed = leveledUp
+    ? Array.from(
+        { length: post.current.number - fromLevelNum },
+        (_, i) => fromLevelNum + 1 + i,
+      )
+    : [];
+  const totalBonus = levelsCrossed.reduce((sum, n) => sum + levelUpBonus(n), 0);
+
+  // Which crossed level's burst is on screen right now. onDone advances it.
+  const [stepIdx, setStepIdx] = useState(0);
+
+  // Grant the SUM of the level-up bonuses to the child's SPENDABLE carrots
+  // exactly once. Bonus goes to the balance only (never lifetime carrots) so
+  // it can't cascade into another level-up. Guarded by a ref so re-renders
+  // don't double-award.
   const grantedRef = useRef(false);
   useEffect(() => {
-    if (!leveledUp || !childId || bonus <= 0 || grantedRef.current) return;
+    if (!leveledUp || !childId || totalBonus <= 0 || grantedRef.current) return;
     grantedRef.current = true;
     (async () => {
       const supabase = supabaseBrowser();
       const { data } = await supabase.from("children").select("carrots").eq("id", childId).single();
       const current = Number(data?.carrots) || 0;
-      await supabase.from("children").update({ carrots: current + bonus }).eq("id", childId);
+      await supabase.from("children").update({ carrots: current + totalBonus }).eq("id", childId);
     })();
-  }, [leveledUp, childId, bonus]);
+  }, [leveledUp, childId, totalBonus]);
 
   // ─── Level-up celebration ────────────────────────────────────
   if (leveledUp) {
-    const oldName = computeLevel(prior).current.name;
+    // Show one burst per level crossed, in order. `key` remounts the burst
+    // per step so its timeline (and onDone) restarts cleanly.
+    const idx = Math.min(stepIdx, levelsCrossed.length - 1);
+    const stepLevelNum = levelsCrossed[idx];
+    const stepLevel = READER_LEVELS[stepLevelNum - 1];       // level reached this step
+    const stepOld = READER_LEVELS[stepLevelNum - 2];          // the one just below it
+    const hasNextStep = idx < levelsCrossed.length - 1;
     return (
       <div className="relative w-full overflow-hidden rounded-3xl shadow-xl">
         <div className="w-full aspect-video">
           <LevelUpBurst
-            oldName={oldName}
-            newName={post.current.name}
-            newLevel={post.current.number}
+            key={stepLevelNum}
+            oldName={stepOld?.name ?? "Reader"}
+            newName={stepLevel.name}
+            newLevel={stepLevelNum}
             bunnyOutfit={outfitId}
-            carrotBonus={bonus}
+            carrotBonus={levelUpBonus(stepLevelNum)}
+            compact={hasNextStep}
+            onDone={hasNextStep ? () => setStepIdx(idx + 1) : undefined}
           />
         </div>
         {href && (

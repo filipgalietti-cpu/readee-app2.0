@@ -11,6 +11,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { LevelUpSFX } from "@/app/_components/level-up-sfx";
+import { useAudio } from "@/lib/audio/use-audio";
 
 const W = 1280, H = 720, CX = 640, BADGE_Y = 330;
 const GOLD = "#f59e0b", GOLD_DEEP = "#d97706", VIOLET = "#8b5cf6";
@@ -221,29 +223,84 @@ function BonusCarrots({ t, bonus }: { t: number; bonus: number }) {
   );
 }
 
-function useTime(duration: number, token: number) {
-  const [t, setT] = useState(0);
+function useTime(duration: number, token: number, startAt = 0) {
+  const [t, setT] = useState(startAt);
   useEffect(() => {
     let raf = 0;
     const start = performance.now();
     const loop = (now: number) => {
-      const el = (now - start) / 1000;
+      const el = startAt + (now - start) / 1000;
       setT(Math.min(el, duration));
       if (el < duration) raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [duration, token]);
+  }, [duration, token, startAt]);
   return t;
 }
 
+const DURATION = 6.5;
+
 export default function LevelUpBurst({
-  oldName, newName, newLevel, bunnyOutfit = null, carrotBonus,
+  oldName, newName, newLevel, bunnyOutfit = null, carrotBonus, onDone, compact = false, soundOn = true,
 }: {
   oldName: string; newName: string; newLevel: number; bunnyOutfit?: string | null; carrotBonus: number;
+  /** Fired once when this burst's timeline finishes — lets a parent chain
+   *  multiple bursts (a kid who jumps 2+ levels in one session). */
+  onDone?: () => void;
+  /** Snappy mode for intermediate bursts in a multi-level chain: skips the
+   *  slow intro build and ends sooner so only the final level gets the full
+   *  show. */
+  compact?: boolean;
+  /** Play the Web-Audio celebration SFX (whoosh/fanfare/count-up/ding). */
+  soundOn?: boolean;
 }) {
+  // Compact bursts jump straight to the reveal (skip the ~2.4s build) and
+  // dwell only briefly before handing off to the next level.
+  const startAt = compact ? 2.4 : 0;
+  const dwellMs = compact ? 2600 : DURATION * 1000;
   const [token, setToken] = useState(0);
-  const t = useTime(6.5, token);
+  const t = useTime(DURATION, token, startAt);
+
+  // ── SFX: fire each celebration sound as the timeline crosses its cue ──
+  const { muted } = useAudio();
+  const soundEnabled = soundOn && !muted;
+  const sfxPrev = useRef(startAt);
+  const sfxTick = useRef(-1);
+  useEffect(() => {
+    if (!soundEnabled) { sfxPrev.current = t; return; }
+    const p = sfxPrev.current;
+    sfxPrev.current = t;
+    if (t < p) { sfxTick.current = -1; return; } // replay reset
+    const crossed = (cue: number) => p < cue && t >= cue;
+    if (crossed(0.45)) LevelUpSFX.whoosh();
+    if (crossed(1.08)) LevelUpSFX.impact();
+    if (crossed(1.28)) LevelUpSFX.fanfare();
+    if (crossed(2.15)) LevelUpSFX.pop();
+    if (crossed(3.13)) { LevelUpSFX.thump(); [0, 1, 2, 3].forEach((i) => window.setTimeout(() => LevelUpSFX.carrotPop(i), i * 60)); }
+    // steady ~55ms cadence for the carrot count-up (slot-machine payout feel)
+    if (t >= 2.95 && t <= 3.65) {
+      const step = Math.floor((t - 2.95) / 0.055);
+      if (step !== sfxTick.current) {
+        sfxTick.current = step;
+        LevelUpSFX.tick((t - 2.95) / 0.7);
+      }
+    }
+    if (crossed(3.66)) LevelUpSFX.ding();
+    if (crossed(4.7)) LevelUpSFX.settle();
+  }, [t, soundEnabled]);
+
+  // Fire onDone once per mount (not on tap-replay) so a multi-level chain
+  // advances exactly one step.
+  const doneFired = useRef(false);
+  useEffect(() => {
+    if (!onDone) return;
+    const id = window.setTimeout(() => {
+      if (!doneFired.current) { doneFired.current = true; onDone(); }
+    }, dwellMs);
+    return () => clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const wrapRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(0.4);
   useEffect(() => {

@@ -3,6 +3,8 @@
 import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import { useTwoTry } from "./useTwoTry";
+import { TryAgainNudge } from "./TryAgainNudge";
 
 interface SoundMachineProps {
   prompt: string;
@@ -11,9 +13,11 @@ interface SoundMachineProps {
   distractors?: string[];
   imageUrl?: string;
   answered: boolean;
-  onAnswer: (isCorrect: boolean, userAnswer: string) => void;
+  onAnswer: (isCorrect: boolean, userAnswer: string, firstTry?: boolean) => void;
   onPlayPhoneme?: (phoneme: string) => void;
   onPlayWord?: (word: string) => void;
+  /** Enable the runner's 2-try mechanic (first wrong → nudge + retry). */
+  twoTries?: boolean;
 }
 
 const CHIP_COLORS = [
@@ -36,7 +40,9 @@ export function SoundMachine({
   onAnswer,
   onPlayPhoneme,
   onPlayWord,
+  twoTries = false,
 }: SoundMachineProps) {
+  const { nudge, attempt, clearNudge } = useTwoTry(twoTries);
   const slotCount = phonemes.length;
 
   // All available sounds, deterministically shuffled + spread so the correct
@@ -148,13 +154,23 @@ export function SoundMachine({
     const isCorrect = userPhonemes.every((s, i) => s === phonemes[i]);
     const userAnswer = userPhonemes.join(" ");
 
+    const { resolve, firstTry } = attempt(isCorrect);
+    // First wrong attempt (2-try): shake + nudge, keep the sounds placed so the
+    // kid can rearrange and check again.
+    if (!resolve) {
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
+      return;
+    }
+
     setResult(isCorrect ? "correct" : "incorrect");
+    clearNudge();
 
     if (!isCorrect) {
       setShaking(true);
       setTimeout(() => setShaking(false), 500);
       setTimeout(() => {
-        onAnswer(false, userAnswer);
+        onAnswer(false, userAnswer, firstTry);
       }, 400);
       return;
     }
@@ -165,19 +181,13 @@ export function SoundMachine({
       // Word audio is ~1.3-1.5s — wait long enough to avoid stop() cutting it off
       await new Promise((r) => setTimeout(r, 2000));
     }
-    onAnswer(true, userAnswer);
-  }, [allSlotsFilled, answered, result, placed, allSounds, phonemes, onAnswer, onPlayWord, targetWord]);
-
-  // Log imageUrl on mount so we can tell from the console whether the prop
-  // actually arrived when something looks missing.
-  if (typeof window !== "undefined") {
-    console.log("[SoundMachine] targetWord=", targetWord, "imageUrl=", imageUrl);
-  }
+    onAnswer(true, userAnswer, firstTry);
+  }, [allSlotsFilled, answered, result, placed, allSounds, phonemes, onAnswer, onPlayWord, targetWord, attempt, clearNudge]);
 
   return (
     <div className="flex flex-col gap-6">
       {/* Prompt */}
-      <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug text-center">
+      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center">
         {prompt}
       </h2>
 
@@ -330,6 +340,11 @@ export function SoundMachine({
           ))}
         </AnimatePresence>
       </div>
+
+      {/* First-wrong nudge (2-try) */}
+      {twoTries && nudge && result === null && !answered && (
+        <TryAgainNudge message={nudge} />
+      )}
 
       {/* Check button */}
       {!answered && result === null && (

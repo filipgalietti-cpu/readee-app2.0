@@ -101,7 +101,7 @@ export function MissingWord({
     <div className="flex flex-col gap-6">
       {/* Prompt */}
       <div className="flex items-start gap-2">
-        <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug text-center flex-1">
+        <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center flex-1">
           {prompt}
         </h2>
         {sentenceAudioUrl && (

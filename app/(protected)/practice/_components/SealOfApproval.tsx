@@ -14,9 +14,12 @@ import { useEffect, useRef, useCallback } from "react";
 export default function SealOfApproval({
   ribbonText = "PERFECT!",
   background = "transparent",
+  sound = true,
 }: {
   ribbonText?: string;
   background?: "sky" | "transparent";
+  /** Play the Web-Audio jingle (thunk + bell arpeggio + ribbon pop). */
+  sound?: boolean;
 }) {
   const world = useRef<HTMLDivElement>(null);
   const drop = useRef<HTMLDivElement>(null);
@@ -29,14 +32,116 @@ export default function SealOfApproval({
   const ribbon = useRef<HTMLDivElement>(null);
   const sparkle = useRef<HTMLDivElement>(null);
   const confetti = useRef<HTMLDivElement>(null);
-  const hint = useRef<HTMLDivElement>(null);
   const playing = useRef(false);
   const timers = useRef<number[]>([]);
+  const audioCtx = useRef<AudioContext | null>(null);
 
   const after = useCallback((ms: number, fn: () => void) => {
     timers.current.push(window.setTimeout(fn, ms));
   }, []);
   const reduced = () => !!window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ── jingle (Web Audio, no assets) — ported from the Claude Design seal ──
+  const ctx = useCallback((): AudioContext | null => {
+    if (!audioCtx.current) {
+      const AC = window.AudioContext
+        || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+      if (!AC) return null;
+      audioCtx.current = new AC();
+    }
+    if (audioCtx.current.state === "suspended") void audioCtx.current.resume();
+    return audioCtx.current;
+  }, []);
+
+  /** Deep body thump + filtered-noise stamp slap — fires on the stamp impact. */
+  const playThunk = useCallback(() => {
+    if (!sound) return;
+    const ac = ctx();
+    if (!ac) return;
+    const t = ac.currentTime;
+    const osc = ac.createOscillator();
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(150, t);
+    osc.frequency.exponentialRampToValueAtTime(38, t + 0.22);
+    const g = ac.createGain();
+    g.gain.setValueAtTime(0.9, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+    osc.connect(g).connect(ac.destination);
+    osc.start(t); osc.stop(t + 0.32);
+    const len = Math.floor(ac.sampleRate * 0.12);
+    const buf = ac.createBuffer(1, len, ac.sampleRate);
+    const dch = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) dch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.2);
+    const src = ac.createBufferSource();
+    src.buffer = buf;
+    const f = ac.createBiquadFilter();
+    f.type = "lowpass";
+    f.frequency.setValueAtTime(1400, t);
+    f.frequency.exponentialRampToValueAtTime(240, t + 0.1);
+    const ng = ac.createGain();
+    ng.gain.setValueAtTime(0.55, t);
+    ng.gain.exponentialRampToValueAtTime(0.001, t + 0.13);
+    src.connect(f).connect(ng).connect(ac.destination);
+    src.start(t);
+  }, [sound, ctx]);
+
+  /** Warm bell/marimba arpeggio C5→E5→G5→C6 + octave shimmer — 120ms after impact. */
+  const playSparkleChime = useCallback(() => {
+    if (!sound) return;
+    const ac = ctx();
+    if (!ac) return;
+    const t0 = ac.currentTime + 0.05;
+    const bell = (freq: number, t: number, vol: number) => {
+      const o = ac.createOscillator();
+      o.type = "sine";
+      o.frequency.value = freq;
+      const g = ac.createGain();
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(vol, t + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.9);
+      o.connect(g).connect(ac.destination);
+      o.start(t); o.stop(t + 0.95);
+      const o2 = ac.createOscillator();
+      o2.type = "sine";
+      o2.frequency.value = freq * 2.4;
+      const g2 = ac.createGain();
+      g2.gain.setValueAtTime(0, t);
+      g2.gain.linearRampToValueAtTime(vol * 0.25, t + 0.005);
+      g2.gain.exponentialRampToValueAtTime(0.001, t + 0.25);
+      o2.connect(g2).connect(ac.destination);
+      o2.start(t); o2.stop(t + 0.3);
+    };
+    bell(523.25, t0, 0.2);
+    bell(659.25, t0 + 0.11, 0.2);
+    bell(783.99, t0 + 0.22, 0.2);
+    bell(1046.5, t0 + 0.33, 0.26);
+    const oS = ac.createOscillator();
+    oS.type = "sine";
+    oS.frequency.value = 2093;
+    const gS = ac.createGain();
+    gS.gain.setValueAtTime(0, t0 + 0.33);
+    gS.gain.linearRampToValueAtTime(0.05, t0 + 0.35);
+    gS.gain.exponentialRampToValueAtTime(0.001, t0 + 1.0);
+    oS.connect(gS).connect(ac.destination);
+    oS.start(t0 + 0.33); oS.stop(t0 + 1.05);
+  }, [sound, ctx]);
+
+  /** Square-wave chirp — fires when the ribbon pops. */
+  const playRibbonPop = useCallback(() => {
+    if (!sound) return;
+    const ac = ctx();
+    if (!ac) return;
+    const t = ac.currentTime;
+    const osc = ac.createOscillator();
+    osc.type = "square";
+    osc.frequency.setValueAtTime(420, t);
+    osc.frequency.exponentialRampToValueAtTime(880, t + 0.09);
+    const g = ac.createGain();
+    g.gain.setValueAtTime(0.12, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.14);
+    osc.connect(g).connect(ac.destination);
+    osc.start(t); osc.stop(t + 0.16);
+  }, [sound, ctx]);
 
   const sparkles = useCallback(() => {
     const layer = sparkle.current;
@@ -108,9 +213,11 @@ export default function SealOfApproval({
     };
     ringAnim(ring.current, 0, 1.7);
     ringAnim(ring2.current, 90, 2.1);
+    playThunk();
+    after(120, playSparkleChime);
     sparkles();
     confettiFn();
-  }, [sparkles, confettiFn]);
+  }, [sparkles, confettiFn, playThunk, playSparkleChime, after]);
 
   const glintFn = useCallback(() => {
     const g = glint.current;
@@ -125,6 +232,7 @@ export default function SealOfApproval({
   const ribbonPop = useCallback(() => {
     const r = ribbon.current;
     if (!r) return;
+    playRibbonPop();
     r.animate([
       { transform: "translateX(-50%) scale(0) rotate(-6deg)" },
       { transform: "translateX(-50%) scale(1.18) rotate(2deg)", offset: 0.6 },
@@ -132,12 +240,11 @@ export default function SealOfApproval({
       { transform: "translateX(-50%) scale(1) rotate(0deg)" },
     ], { duration: 520, easing: "cubic-bezier(0.34, 1.56, 0.64, 1)", fill: "forwards" });
     r.style.transform = "translateX(-50%) scale(1)";
-  }, []);
+  }, [playRibbonPop]);
 
   const idle = useCallback(() => {
     if (breathe.current) breathe.current.style.animation = "sealBreathe 2.6s ease-in-out infinite";
     if (glow.current) glow.current.style.animation = "sealGlow 2.6s ease-in-out infinite";
-    if (hint.current) hint.current.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, fill: "forwards" });
     playing.current = false;
   }, []);
 
@@ -150,7 +257,6 @@ export default function SealOfApproval({
     if (breathe.current) breathe.current.style.animation = "none";
     if (glow.current) { glow.current.style.animation = "none"; glow.current.style.opacity = "0"; }
     if (ribbon.current) ribbon.current.style.transform = "translateX(-50%) scale(0)";
-    if (hint.current) hint.current.style.opacity = "0";
     d.style.opacity = "1";
 
     if (reduced()) {
@@ -158,7 +264,6 @@ export default function SealOfApproval({
       if (shadow.current) shadow.current.style.opacity = "1";
       if (ribbon.current) ribbon.current.style.transform = "translateX(-50%) scale(1)";
       if (glow.current) glow.current.style.opacity = "0.5";
-      if (hint.current) hint.current.style.opacity = "1";
       playing.current = false;
       return;
     }
@@ -199,9 +304,8 @@ export default function SealOfApproval({
 
   return (
     <div
-      onClick={play}
       className="relative w-full h-full overflow-hidden select-none"
-      style={{ background: bgCss, cursor: "pointer", fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", minHeight: 320 }}
+      style={{ background: bgCss, fontFamily: "var(--font-baloo), 'Baloo 2', sans-serif", minHeight: 320 }}
     >
       <style>{`
         @keyframes sealBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
@@ -263,10 +367,6 @@ export default function SealOfApproval({
 
           <div ref={sparkle} style={{ position: "absolute", inset: "-30%", pointerEvents: "none", zIndex: 5 }} />
         </div>
-      </div>
-
-      <div ref={hint} style={{ position: "absolute", bottom: 14, left: 0, right: 0, display: "flex", justifyContent: "center", opacity: 0, pointerEvents: "none" }}>
-        <span style={{ fontFamily: "var(--font-nunito), 'Nunito', sans-serif", fontWeight: 700, fontSize: 14, color: "#4338ca", background: "rgba(255,255,255,0.65)", padding: "6px 16px", borderRadius: 999, backdropFilter: "blur(4px)" }}>Tap the seal to stamp it again!</span>
       </div>
     </div>
   );

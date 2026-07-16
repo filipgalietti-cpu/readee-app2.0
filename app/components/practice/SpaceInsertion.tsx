@@ -3,6 +3,8 @@
 import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Howl } from "howler";
+import { useTwoTry } from "./useTwoTry";
+import { TryAgainNudge } from "./TryAgainNudge";
 
 const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
   ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio`
@@ -15,7 +17,9 @@ interface SpaceInsertionProps {
   hint?: string;
   questionId?: string;
   answered: boolean;
-  onAnswer: (isCorrect: boolean, result: string) => void;
+  onAnswer: (isCorrect: boolean, result: string, firstTry?: boolean) => void;
+  /** Enable the runner's 2-try mechanic (first wrong → nudge + retry). */
+  twoTries?: boolean;
 }
 
 /**
@@ -33,7 +37,9 @@ export function SpaceInsertion({
   questionId,
   answered,
   onAnswer,
+  twoTries = false,
 }: SpaceInsertionProps) {
+  const { nudge, attempt, clearNudge } = useTwoTry(twoTries);
   // Track which gaps have spaces inserted (gaps are between chars, so length = chars.length - 1)
   const chars = useMemo(() => jumbled.split(""), [jumbled]);
   const [spaces, setSpaces] = useState<Set<number>>(new Set());
@@ -74,13 +80,24 @@ export function SpaceInsertion({
   const handleCheck = useCallback(() => {
     if (!hasSpaces || answered || result !== null) return;
     const isCorrect = currentAttempt === correctSentence;
+
+    const { resolve, firstTry } = attempt(isCorrect);
+    // First wrong attempt (2-try): shake + nudge, keep the spaces so the kid
+    // can fix them and check again.
+    if (!resolve) {
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
+      return;
+    }
+
     setResult(isCorrect ? "correct" : "incorrect");
+    clearNudge();
 
     if (!isCorrect) {
       setShaking(true);
       setTimeout(() => setShaking(false), 500);
       setTimeout(() => {
-        onAnswer(false, currentAttempt);
+        onAnswer(false, currentAttempt, firstTry);
       }, 400);
       return;
     }
@@ -90,16 +107,16 @@ export function SpaceInsertion({
       const standard = questionId.replace(/-Q\d+$/, "");
       const readbackUrl = `${SUPABASE_AUDIO_BASE}/kindergarten/${standard}/${questionId}-sentence.mp3`;
       new Howl({ src: [readbackUrl] }).play();
-      setTimeout(() => onAnswer(true, currentAttempt), 2500);
+      setTimeout(() => onAnswer(true, currentAttempt, firstTry), 2500);
     } else {
-      onAnswer(true, currentAttempt);
+      onAnswer(true, currentAttempt, firstTry);
     }
-  }, [hasSpaces, answered, result, currentAttempt, correctSentence, questionId, onAnswer]);
+  }, [hasSpaces, answered, result, currentAttempt, correctSentence, questionId, onAnswer, attempt, clearNudge]);
 
   return (
     <div className="flex flex-col gap-6">
       {/* Prompt */}
-      <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug text-center">
+      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center">
         {prompt}
       </h2>
 
@@ -187,6 +204,11 @@ export function SpaceInsertion({
             </span>
           </p>
         </div>
+      )}
+
+      {/* First-wrong nudge (2-try) */}
+      {twoTries && nudge && result === null && !answered && (
+        <TryAgainNudge message={nudge} />
       )}
 
       {/* Check button */}

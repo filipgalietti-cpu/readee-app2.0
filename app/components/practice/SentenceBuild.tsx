@@ -3,6 +3,8 @@
 import { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Howl } from "howler";
+import { useTwoTry } from "./useTwoTry";
+import { TryAgainNudge } from "./TryAgainNudge";
 
 interface SentenceBuildProps {
   prompt: string;
@@ -13,11 +15,13 @@ interface SentenceBuildProps {
   sentenceAudioUrl?: string;
   questionId?: string;
   answered: boolean;
-  onAnswer: (isCorrect: boolean, placedSentence: string) => void;
+  onAnswer: (isCorrect: boolean, placedSentence: string, firstTry?: boolean) => void;
   onPlayItem?: (word: string) => void;
   ordered?: boolean;
   /** In assessment mode, no visual feedback (green/red/shake) */
   assessmentMode?: boolean;
+  /** Enable the runner's 2-try mechanic (first wrong → nudge + retry). */
+  twoTries?: boolean;
 }
 
 const PUNCTUATION = new Set([".", "!", "?"]);
@@ -50,7 +54,9 @@ export function SentenceBuild({
   onPlayItem,
   ordered,
   assessmentMode = false,
+  twoTries = false,
 }: SentenceBuildProps) {
+  const { nudge, attempt, clearNudge } = useTwoTry(twoTries);
   // Filter out any stray punctuation from words (backward compat)
   const filteredWords = useMemo(
     () => words.filter((w) => !PUNCTUATION.has(w)),
@@ -112,13 +118,24 @@ export function SentenceBuild({
       return;
     }
 
+    const { resolve, firstTry } = attempt(isCorrect);
+
+    // First wrong attempt (2-try): shake + nudge, keep the words in place so
+    // the kid can fix their sentence and check again. Don't resolve yet.
+    if (!resolve) {
+      setShaking(true);
+      setTimeout(() => setShaking(false), 500);
+      return;
+    }
+
     setResult(isCorrect ? "correct" : "incorrect");
+    clearNudge();
 
     if (!isCorrect) {
       setShaking(true);
       setTimeout(() => setShaking(false), 500);
       setTimeout(() => {
-        onAnswer(false, sentence);
+        onAnswer(false, sentence, firstTry);
       }, 400);
       return;
     }
@@ -131,11 +148,11 @@ export function SentenceBuild({
     }
     if (readbackUrl) {
       new Howl({ src: [readbackUrl] }).play();
-      setTimeout(() => onAnswer(true, sentence), 2500);
+      setTimeout(() => onAnswer(true, sentence, firstTry), 2500);
     } else {
-      onAnswer(true, sentence);
+      onAnswer(true, sentence, firstTry);
     }
-  }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, questionId, onAnswer, ordered]);
+  }, [allPlaced, answered, result, placed, filteredWords, trailingPunctuation, correctSentence, sentenceAudioUrl, questionId, onAnswer, ordered, assessmentMode, attempt, clearNudge]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -149,7 +166,7 @@ export function SentenceBuild({
       )}
 
       {/* Prompt */}
-      <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug text-center">
+      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center">
         {prompt}
       </h2>
 
@@ -279,6 +296,11 @@ export function SentenceBuild({
           ))}
         </AnimatePresence>
       </div>
+
+      {/* First-wrong nudge (2-try) */}
+      {twoTries && nudge && result === null && !answered && (
+        <TryAgainNudge message={nudge} />
+      )}
 
       {/* Check button */}
       {!answered && result === null && (

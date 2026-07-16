@@ -33,7 +33,7 @@ import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { StreakFire } from "@/app/_components/StreakFire";
 import SealOfApproval from "./_components/SealOfApproval";
-import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon, Sparkles } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
@@ -41,6 +41,7 @@ import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import type { LucideIcon } from "lucide-react";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
+import QuizHypeIntro from "./_components/QuizHypeIntro";
 import type { Outfit } from "@/app/_components/Bunny/outfits";
 import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
 
@@ -615,7 +616,7 @@ function PracticeSession({
   debugAdaptive?: boolean;
 }) {
   const router = useRouter();
-  const { unlockAudio, stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { unlockAudio, stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz, muted } = useAudio();
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
 
   // Zustand store
@@ -766,11 +767,16 @@ function PracticeSession({
     return !!q.choices && q.choices.length > 0 && q.choices.every(c => /^\/[a-zA-Z]{1,3}\/$/.test(c));
   }, [q.choices]);
 
-  /** Handle "Tap to Start" — unlock audio, then begin */
-  const handleStart = useCallback(async () => {
-    await unlockAudio();
-    setAudioReady(true);
+  /** Fired on the hype screen's "Let's go!" press — unlock audio inside the
+   *  click gesture so the countdown's blips + the quiz audio can play. */
+  const handleUnlock = useCallback(() => {
+    void unlockAudio();
   }, [unlockAudio]);
+
+  /** Fired when the GO! flash finishes — reveal the real runner. */
+  const handleReveal = useCallback(() => {
+    setAudioReady(true);
+  }, []);
 
   // Per-question audio is on for emerging readers (K + 1st), off for
   // 2nd–4th — that age can read the prompt for themselves and the
@@ -1021,17 +1027,22 @@ function PracticeSession({
   }, [selected, greyed, q, mcqTries, consecutiveCorrect, showHint, child.streak_days, mysteryBoxMultiplier, selectAnswer, stop, recordEvent, playCorrectChime, playIncorrectBuzz, playUrl, launchCarrots]);
 
   /* ── Handle sentence build answer ── */
-  const handleSentenceBuildAnswer = useCallback((isCorrect: boolean, placedSentence: string) => {
+  const handleSentenceBuildAnswer = useCallback((isCorrect: boolean, placedSentence: string, firstTry: boolean = true) => {
     if (selected !== null) return;
     stop();
 
-    if (isCorrect) {
+    if (isCorrect && firstTry) {
       const newConsecutive = consecutiveCorrect + 1;
       setConsecutiveCorrect(newConsecutive);
       const daily = getDailyMultiplier(child.streak_days);
       const session = getSessionStreakTier(newConsecutive);
       const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier);
       selectAnswer(placedSentence, true, q.id, carrots, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+      playCorrectChime();
+    } else if (isCorrect) {
+      // Right on the 2nd try — kind resolve, no first-try credit (mirrors MCQ).
+      setConsecutiveCorrect(0);
+      selectAnswer(placedSentence, false, q.id, 0, SECOND_TRY_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playCorrectChime();
     } else {
       setConsecutiveCorrect(0);
@@ -1041,17 +1052,22 @@ function PracticeSession({
   }, [selected, q, selectAnswer, stop, playCorrectChime, playIncorrectBuzz, consecutiveCorrect, child.streak_days, mysteryBoxMultiplier]);
 
   /* ── Handle category sort answer ── */
-  const handleCategorySortAnswer = useCallback((isCorrect: boolean, answer: string) => {
+  const handleCategorySortAnswer = useCallback((isCorrect: boolean, answer: string, firstTry: boolean = true) => {
     if (selected !== null) return;
     stop();
 
-    if (isCorrect) {
+    if (isCorrect && firstTry) {
       const newConsecutive = consecutiveCorrect + 1;
       setConsecutiveCorrect(newConsecutive);
       const daily = getDailyMultiplier(child.streak_days);
       const session = getSessionStreakTier(newConsecutive);
       const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * mysteryBoxMultiplier);
       selectAnswer(answer, true, q.id, carrots, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+      playCorrectChime();
+    } else if (isCorrect) {
+      // Right on the 2nd try — kind resolve, no first-try credit (mirrors MCQ).
+      setConsecutiveCorrect(0);
+      selectAnswer(answer, false, q.id, 0, SECOND_TRY_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       playCorrectChime();
     } else {
       setConsecutiveCorrect(0);
@@ -1123,198 +1139,21 @@ function PracticeSession({
   const { passage, question } = splitPrompt(q.prompt);
   const progressPct = ((currentIdx + (phase === "feedback" ? 1 : 0)) / totalQ) * 100;
 
-  /* ── "Tap to Start" intro screen ── */
+  /* ── Pre-quiz hype intro (hype → 3·2·1 → GO!) ── */
   if (!audioReady) {
-    const lessonTitle = KID_TITLES[standard.standard_id] ?? standard.standard_id;
-    const lessonPrompt = KID_PROMPTS[standard.standard_id] ?? standard.standard_description;
-    const LessonIcon = DOMAIN_ICON[standard.domain] ?? BookOpen;
-    const maxCarrots = totalQ * CARROTS_PER_CORRECT;
-
-    /* sparkle positions for animated dots */
-    const sparkles = [
-      { top: "8%", left: "10%", size: 6, delay: 0 },
-      { top: "15%", left: "75%", size: 5, delay: 0.3 },
-      { top: "25%", left: "85%", size: 4, delay: 0.6 },
-      { top: "60%", left: "5%", size: 5, delay: 0.9 },
-      { top: "70%", left: "90%", size: 4, delay: 0.2 },
-      { top: "85%", left: "15%", size: 6, delay: 0.5 },
-      { top: "90%", left: "80%", size: 5, delay: 0.8 },
-      { top: "40%", left: "3%", size: 4, delay: 1.1 },
-      { top: "50%", left: "95%", size: 5, delay: 0.4 },
-    ];
-
+    const quizTitle = KID_TITLES[standard.standard_id] ?? standard.standard_id;
     return (
-      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center px-6 overflow-hidden" style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}>
-        {/* ── Background floating particles ── */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          {sparkles.map((s, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full bg-violet-400/15 dark:bg-violet-400/10"
-              style={{ top: s.top, left: s.left, width: s.size, height: s.size }}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{
-                opacity: [0, 0.6, 0.3, 0.6],
-                scale: [0, 1, 0.8, 1],
-                y: [0, -8, 0, -8],
-              }}
-              transition={{
-                duration: 3,
-                delay: s.delay,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="w-full max-w-sm relative z-10">
-          {/* ── Elevated card ── */}
-          <motion.div
-            className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl overflow-hidden"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
-          >
-            {/* ── Gradient header strip ── */}
-            <div
-              className="relative px-6 pt-8 pb-10 text-center overflow-hidden"
-              style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }}
-            >
-              {/* Animated sparkles in header */}
-              <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-                {[
-                  { top: "12%", left: "10%", size: 6, delay: 0.5 },
-                  { top: "20%", left: "80%", size: 5, delay: 0.8 },
-                  { top: "65%", left: "15%", size: 4, delay: 1.1 },
-                  { top: "50%", left: "88%", size: 5, delay: 0.6 },
-                  { top: "30%", left: "50%", size: 3, delay: 1.0 },
-                  { top: "75%", left: "70%", size: 4, delay: 0.7 },
-                  { top: "10%", left: "40%", size: 3, delay: 0.9 },
-                  { top: "80%", left: "30%", size: 5, delay: 1.2 },
-                ].map((dot, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute rounded-full bg-white/20"
-                    style={{ top: dot.top, left: dot.left, width: dot.size, height: dot.size }}
-                    animate={{
-                      opacity: [0.1, 0.4, 0.1],
-                      scale: [0.8, 1.2, 0.8],
-                      y: [0, -4, 0],
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      delay: dot.delay,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                ))}
-              </div>
-
-              <motion.div
-                className="relative w-20 h-20 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur flex items-center justify-center"
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.5 }}
-              >
-                <LessonIcon className="w-10 h-10 text-white" strokeWidth={1.5} />
-              </motion.div>
-              <motion.h2
-                className="relative text-xl font-extrabold text-white"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
-              >
-                Let&apos;s go, {child.first_name}!
-              </motion.h2>
-            </div>
-
-            {/* ── Content area ── */}
-            <motion.div
-              className="px-6 pt-6 pb-6"
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              transition={{ delayChildren: 0.6 }}
-            >
-              <motion.h3
-                className="text-lg font-bold text-zinc-800 dark:text-white mb-2"
-                variants={fadeUp}
-              >
-                {lessonTitle}
-              </motion.h3>
-              <motion.p
-                className="text-zinc-500 dark:text-slate-400 text-sm leading-relaxed mb-5"
-                variants={fadeUp}
-              >
-                {lessonPrompt}
-              </motion.p>
-
-              {/* Info pills */}
-              <motion.div className="flex flex-wrap gap-2 mb-6" variants={fadeUp}>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-50 dark:bg-violet-500/10 text-xs font-medium text-violet-600 dark:text-violet-400">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01" />
-                  </svg>
-                  {totalQ} questions
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-                  </svg>
-                  Audio enabled
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 dark:bg-orange-500/10 text-xs font-medium text-orange-600 dark:text-orange-400">
-                  <Carrot className="w-3.5 h-3.5" strokeWidth={2} />
-                  Earn up to {maxCarrots} XP
-                </span>
-              </motion.div>
-
-              {/* Start button with pulse glow */}
-              <motion.button
-                onClick={handleStart}
-                className="relative w-full py-4 rounded-2xl font-extrabold text-lg text-white transition-all hover:scale-[1.02] active:scale-[0.97]"
-                style={{
-                  background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-                  boxShadow: "0 4px 0 0 #4f46e5",
-                }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.8 }}
-              >
-                <motion.span
-                  className="absolute inset-0 rounded-2xl"
-                  animate={{
-                    boxShadow: [
-                      "0 0 0 0 rgba(99,102,241,0)",
-                      "0 0 0 8px rgba(99,102,241,0.15)",
-                      "0 0 0 0 rgba(99,102,241,0)",
-                    ],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-                />
-                Tap to Start
-              </motion.button>
-            </motion.div>
-          </motion.div>
-
-          {/* ── Back link (below card) ── */}
-          <motion.div
-            className="text-center mt-5"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            <button
-              onClick={handleExit}
-              className="text-sm text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
-            >
-              &larr; Back
-            </button>
-          </motion.div>
-        </div>
-      </div>
+      <QuizHypeIntro
+        kidName={child.first_name}
+        quizName={quizTitle}
+        questionCount={totalQ}
+        streakDays={child.streak_days}
+        carrots={child.carrots}
+        soundOn={!muted}
+        onLetsGo={handleUnlock}
+        onComplete={handleReveal}
+        onBack={handleExit}
+      />
     );
   }
 
@@ -1323,7 +1162,13 @@ function PracticeSession({
       {/* soft ambient orbs */}
       <div className="pointer-events-none absolute -top-36 -left-32 w-[480px] h-[480px] rounded-full" style={{ background: "radial-gradient(circle,#c7d2fe,transparent 70%)", opacity: 0.55, filter: "blur(60px)" }} />
       <div className="pointer-events-none absolute -bottom-40 -right-36 w-[520px] h-[520px] rounded-full" style={{ background: "radial-gradient(circle,#bae6fd,transparent 70%)", opacity: 0.5, filter: "blur(60px)" }} />
-      <style>{`@keyframes flyCarrot{0%{transform:translate(0,0) scale(1) rotate(0deg);opacity:1}70%{opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(.45) rotate(-40deg);opacity:.85}}`}</style>
+      <style>{`
+        @keyframes flyCarrot{0%{transform:translate(0,0) scale(1) rotate(0deg);opacity:1}70%{opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(.45) rotate(-40deg);opacity:.85}}
+        @keyframes rdFlicker{0%,100%{transform:scale(1) rotate(-2deg)}25%{transform:scale(1.12) rotate(2deg)}50%{transform:scale(0.95) rotate(-1deg)}75%{transform:scale(1.08) rotate(1.5deg)}}
+        @keyframes rdGlowPulse{0%,100%{box-shadow:0 0 6px 1px rgba(249,115,22,0.35),0 0 0 0 rgba(251,191,36,0)}50%{box-shadow:0 0 14px 4px rgba(249,115,22,0.55),0 0 24px 8px rgba(251,191,36,0.25)}}
+        @keyframes rdEmber{0%{transform:translateY(2px) scale(1);opacity:0}20%{opacity:0.9}100%{transform:translateY(-14px) scale(0.3);opacity:0}}
+        @keyframes rdIgnite{0%{transform:scale(1)}40%{transform:scale(1.25)}70%{transform:scale(0.95)}100%{transform:scale(1)}}
+      `}</style>
       {/* flying carrots (first-try win) */}
       {flyers.map((fl) => (
         <div key={fl.key} style={fl.style}>
@@ -1377,17 +1222,48 @@ function PracticeSession({
           {Math.min(currentIdx + 1, totalQ)} of {totalQ}
         </span>
 
-        {consecutiveCorrect >= 2 && (
-          <motion.div
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 500, damping: 20 }}
-            className="hidden sm:flex items-center gap-1.5 bg-amber-100 border-[1.5px] border-amber-300 rounded-full px-3 py-1.5 flex-shrink-0"
-          >
-            <Flame className="w-4 h-4" fill="#f59e0b" stroke="#d97706" strokeWidth={1.5} />
-            <span className="font-[family-name:var(--font-baloo)] font-bold text-sm text-amber-800">{consecutiveCorrect} in a row</span>
-          </motion.div>
-        )}
+        {consecutiveCorrect >= 2 && (() => {
+          const streakMult = getSessionStreakTier(consecutiveCorrect).multiplier;
+          const lit = streakMult > 1; // 2x at 3-in-a-row, 3x at 5-in-a-row
+          return lit ? (
+            <motion.div
+              initial={{ scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 500, damping: 20 }}
+              title={`${streakMult}x carrot streak — keep it going!`}
+              className="relative hidden sm:flex items-center gap-1.5 rounded-full flex-shrink-0"
+              style={{
+                padding: "6px 12px 6px 10px",
+                background: "linear-gradient(135deg, #f97316, #f59e0b)",
+                border: "1px solid #fb923c",
+                animation: "rdGlowPulse 1.6s ease-in-out infinite, rdIgnite 0.45s cubic-bezier(0.34,1.56,0.64,1)",
+              }}
+            >
+              {/* rising embers */}
+              <span aria-hidden style={{ position: "absolute", top: -2, left: 14, width: 4, height: 4, borderRadius: 9999, background: "#fbbf24", animation: "rdEmber 1.4s ease-out infinite" }} />
+              <span aria-hidden style={{ position: "absolute", top: -2, left: 24, width: 3, height: 3, borderRadius: 9999, background: "#fde68a", animation: "rdEmber 1.8s ease-out 0.5s infinite" }} />
+              <span aria-hidden style={{ position: "absolute", top: -2, left: 8, width: 3, height: 3, borderRadius: 9999, background: "#fdba74", animation: "rdEmber 1.6s ease-out 0.9s infinite" }} />
+              {/* flickering flame */}
+              <span style={{ display: "inline-flex", animation: "rdFlicker 0.7s ease-in-out infinite", transformOrigin: "50% 90%" }}>
+                <Flame className="w-[18px] h-[18px]" fill="#fef3c7" stroke="#ffffff" strokeWidth={2} />
+              </span>
+              <span className="text-sm font-extrabold text-white whitespace-nowrap">{consecutiveCorrect} in a row</span>
+              <span className="text-[11px] font-extrabold rounded-full px-1.5 py-px" style={{ color: "#9a3412", background: "#fef3c7" }}>{streakMult}x</span>
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 500, damping: 20 }}
+              title="Answer questions in a row to light the streak!"
+              className="hidden sm:flex items-center gap-1.5 rounded-full flex-shrink-0"
+              style={{ padding: "6px 12px 6px 10px", background: "#e4e4e7", border: "1px solid transparent" }}
+            >
+              <Flame className="w-[18px] h-[18px]" fill="none" stroke="#a1a1aa" strokeWidth={2} />
+              <span className="text-sm font-bold text-zinc-500 tabular-nums">{consecutiveCorrect} in a row</span>
+            </motion.div>
+          );
+        })()}
 
         <motion.div
           ref={carrotRef}
@@ -1425,6 +1301,7 @@ function PracticeSession({
             sentenceAudioUrl={q.sentence_audio_url}
             questionId={q.id}
             answered={selected !== null}
+            twoTries
             onAnswer={handleSentenceBuildAnswer}
             onPlayItem={playWordAudio}
             ordered={(q as any).ordered}
@@ -1449,6 +1326,7 @@ function PracticeSession({
             categoryItems={q.category_items}
             items={q.items}
             answered={selected !== null}
+            twoTries
             onAnswer={handleCategorySortAnswer}
             onCorrectPlace={playCorrectChime}
             onIncorrectPlace={playIncorrectBuzz}
@@ -1487,7 +1365,8 @@ function PracticeSession({
               return `${SUPABASE_STORAGE}/images/${folder}/${standardId}/${q.id}.png`;
             })()}
             answered={selected !== null}
-            onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
+            twoTries
+            onAnswer={(isCorrect, answer, firstTry) => handleSentenceBuildAnswer(isCorrect, answer, firstTry)}
             onPlayPhoneme={playPhonemeAudio}
             onPlayWord={playWordAudio}
           />
@@ -1499,7 +1378,8 @@ function PracticeSession({
             hint={q.hint}
             questionId={q.id}
             answered={selected !== null}
-            onAnswer={(isCorrect, answer) => handleSentenceBuildAnswer(isCorrect, answer)}
+            twoTries
+            onAnswer={(isCorrect, answer, firstTry) => handleSentenceBuildAnswer(isCorrect, answer, firstTry)}
           />
         ) : (
         (() => {
@@ -1740,7 +1620,7 @@ function CompletionScreen({
   const [saved, setSaved] = useState(false);
   const [unlocks, setUnlocks] = useState<UnlockableItem[]>([]);
   const darkMode = useThemeStore((s) => s.darkMode);
-  const { playUrl: playCompletionUrl } = useAudio();
+  const { playUrl: playCompletionUrl, muted } = useAudio();
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
   const nextStandard = getNextStandard(standard.standard_id, gradeStandards);
@@ -1758,6 +1638,16 @@ function CompletionScreen({
     }
   }, [loadingLifetime, lifetimeCarrots, priorLifetime]);
 
+  // Perfect score → the Seal of Approval owns the FULL screen alone first,
+  // then we reveal the lesson summary. Auto-advances once the stamp settles.
+  const isPerfect = correctCount === totalQ;
+  const [sealPhase, setSealPhase] = useState(isPerfect);
+  useEffect(() => {
+    if (!sealPhase) return;
+    const id = setTimeout(() => setSealPhase(false), 4200);
+    return () => clearTimeout(id);
+  }, [sealPhase]);
+
   // Confetti pieces
   const confettiPieces = useMemo(() => {
     if (correctCount < totalQ - 1) return [];
@@ -1774,23 +1664,37 @@ function CompletionScreen({
 
   let title: string;
   let subtitle: string;
+  let buddyLine: string;
+  let glowColor: string;
 
   if (stars === 3) {
     title = "Perfect Score!";
     subtitle = `You mastered ${standard.standard_id}!`;
+    buddyLine = "Your bunny is doing a happy dance!";
+    glowColor = "rgba(196,181,253,.55)";
   } else if (stars === 2) {
     title = "Great Work!";
     subtitle = "Almost perfect — keep it up!";
+    buddyLine = "Your bunny is so proud of you!";
+    glowColor = "rgba(165,180,252,.5)";
   } else if (stars === 1) {
     title = "Good Effort!";
     subtitle = "Practice makes perfect!";
+    buddyLine = "Your bunny says: nice hopping!";
+    glowColor = "rgba(165,180,252,.45)";
   } else {
     title = "Keep Trying!";
     subtitle = "Let's give it another go!";
+    buddyLine = "Your bunny believes in you!";
+    glowColor = "rgba(186,230,253,.5)";
   }
 
-  /* ── Play completion audio ── */
+  /* ── Play completion audio ──
+     Held until the full-screen Seal (+ its jingle) finishes so the praise voice
+     doesn't overlap the stamp. Non-perfect scores skip the seal, so `sealPhase`
+     is already false and this fires right away on the summary. */
   useEffect(() => {
+    if (sealPhase) return;
     const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
     let file: string;
     if (correctCount === totalQ) {
@@ -1804,7 +1708,7 @@ function CompletionScreen({
     }
     playCompletionUrl(getAudioUrl("feedback", file));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [sealPhase]);
 
   /* ── Save results ── */
   useEffect(() => {
@@ -1955,191 +1859,179 @@ function CompletionScreen({
     save();
   }, [saved, saving, child.id, standard.standard_id, totalQ, correctCount, carrotsEarned, setSaving]);
 
+  // Perfect-score moment: the stamp, alone, full-screen — then the summary.
+  if (sealPhase) {
+    return (
+      <div
+        className="fixed inset-0 z-[70] flex items-center justify-center px-6"
+        style={{ background: "linear-gradient(180deg, #eef2ff 0%, #fdf6ff 40%, #e7f4ff 100%)" }}
+      >
+        <div className="w-full max-w-xl" style={{ height: "min(80vh, 620px)" }}>
+          <SealOfApproval ribbonText="PERFECT!" background="transparent" sound={!muted} />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto overflow-x-hidden flex flex-col" style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}>
+    <div className="fixed inset-0 z-50 overflow-hidden flex items-center justify-center" style={{ background: "linear-gradient(180deg,#ffffff 0%,#eef2ff 130%)" }}>
       <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
 
-      {/* Confetti */}
+      {/* Confetti (fires at 2-3 stars) */}
       {confettiPieces.map((c) => (
         <motion.div
           key={c.id}
           className="absolute rounded-full pointer-events-none"
-          style={{
-            left: `${c.left}%`,
-            top: -20,
-            width: c.size,
-            height: c.size,
-            backgroundColor: c.color,
-          }}
+          style={{ left: `${c.left}%`, top: -20, width: c.size, height: c.size, backgroundColor: c.color }}
           initial={{ y: -20, x: 0, rotate: 0, opacity: 1 }}
-          animate={{
-            y: "100vh",
-            x: c.xDrift,
-            rotate: 720,
-            opacity: [1, 1, 0],
-          }}
+          animate={{ y: "100vh", x: c.xDrift, rotate: 720, opacity: [1, 1, 0] }}
           transition={{ duration: 2.5, delay: c.delay, ease: "easeIn" }}
         />
       ))}
 
       <motion.div
-        className="flex-1 flex flex-col items-center justify-center px-6 py-10 relative z-10 max-w-lg mx-auto w-full"
+        className="relative z-10 flex flex-wrap items-center justify-center gap-8 sm:gap-10 w-full max-w-[1040px] px-6 py-6"
+        style={{ maxHeight: "100dvh" }}
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
       >
-        {correctCount === totalQ ? (
-          /* Perfect score → the Seal of Approval reward stamp */
-          <motion.div variants={scaleIn} className="w-full h-[300px] sm:h-[360px] mb-2">
-            <SealOfApproval ribbonText="PERFECT!" background="transparent" />
-          </motion.div>
-        ) : (
-          <>
-            {/* Bunny reaction — drives the emotional moment, stars follow as the score badge. */}
-            <motion.div variants={scaleIn} className="relative w-40 h-44 sm:w-48 sm:h-52 mb-4">
+        {/* ── Character column: the kid's own bunny reacting to the score ── */}
+        <motion.div variants={scaleIn} className="flex flex-col items-center min-w-0 basis-[300px] flex-1 max-w-[440px]">
+          <div className="relative flex items-center justify-center">
+            <div
+              className="absolute rounded-full pointer-events-none"
+              style={{ width: "clamp(220px,38vh,330px)", height: "clamp(220px,38vh,330px)", background: `radial-gradient(circle, ${glowColor} 0%, rgba(238,242,255,0) 70%)` }}
+            />
+            <div className="relative" style={{ height: "clamp(180px,36vh,320px)", aspectRatio: "240 / 260" }}>
               <BunnyReaction
                 outfitId={child.equipped_items?.outfit ?? null}
                 state={stars === 3 ? "levelup" : stars >= 1 ? "correct" : "incorrect"}
               />
-            </motion.div>
+            </div>
+          </div>
+          <motion.div variants={fadeUp} className="mt-1 rounded-full bg-white border border-zinc-200 px-4 py-1.5 text-[13px] font-extrabold text-zinc-600 shadow-sm text-center">
+            {buddyLine}
+          </motion.div>
+        </motion.div>
 
-            {/* Stars */}
-            <motion.div variants={scaleIn} className="flex items-end gap-2 mb-6">
+        {/* ── Stats column ── */}
+        <div className="flex flex-col gap-3 min-w-0 basis-[340px] flex-1 max-w-[480px]">
+          {/* Stars + title */}
+          <motion.div variants={fadeUp} className="text-center">
+            <div className="flex items-end justify-center gap-1 mb-1.5">
               {[1, 2, 3].map((s) => (
-                <motion.div
+                <motion.svg
                   key={s}
                   variants={popIn}
-                  className={`${s === 2 ? "mb-2" : ""}`}
+                  viewBox="0 0 24 24"
+                  width={s === 2 ? 40 : 32}
+                  height={s === 2 ? 40 : 32}
+                  fill={s <= stars ? "#facc15" : "#d4d4d8"}
+                  stroke={s <= stars ? "#eab308" : "#a1a1aa"}
+                  strokeWidth="0.5"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className={`${s === 2 ? "w-16 h-16" : "w-12 h-12"}`}
-                    fill={s <= stars ? "#facc15" : darkMode ? "#334155" : "#d4d4d8"}
-                    stroke={s <= stars ? "#eab308" : darkMode ? "#475569" : "#a1a1aa"}
-                    strokeWidth="0.5"
-                  >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                  </svg>
-                </motion.div>
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </motion.svg>
               ))}
-            </motion.div>
-          </>
-        )}
-
-        {/* Title */}
-        <motion.h1 variants={fadeUp} className="text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight text-center mb-1">
-          {title}
-        </motion.h1>
-        <motion.p variants={fadeUp} className="text-zinc-500 dark:text-slate-400 text-center mb-8">{subtitle}</motion.p>
-
-        {/* Score + Carrots */}
-        <motion.div variants={fadeUp} className="flex gap-6 mb-8">
-          <div className="text-center">
-            <div className="text-4xl font-extrabold text-zinc-900 dark:text-white">{correctCount}/{totalQ}</div>
-            <div className="text-xs text-zinc-500 dark:text-slate-500 mt-1 font-medium">Correct</div>
-          </div>
-          <div className="w-px bg-zinc-300 dark:bg-slate-700" />
-          <div className="text-center">
-            <div className="text-4xl font-extrabold text-orange-600 dark:text-orange-400">+{carrotsEarned}</div>
-            <div className="text-xs text-slate-500 mt-1 font-medium">Carrots Earned</div>
-          </div>
-        </motion.div>
-
-        {/* Question results */}
-        <motion.div variants={fadeUp} className="w-full space-y-2 mb-8">
-          {questions.map((qItem, i) => {
-            const answer = answers[i];
-            if (!answer) return null;
-            const { question: qText } = splitPrompt(qItem.prompt);
-            return (
-              <div
-                key={qItem.id}
-                className={`flex items-center gap-3 rounded-xl px-4 py-3 ${
-                  answer.correct ? "bg-emerald-500/10 border border-emerald-500/20" : "bg-red-500/10 border border-red-500/20"
-                }`}
-              >
-                <span className={`w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 ${
-                  answer.correct ? "bg-emerald-500" : "bg-red-500"
-                }`}>
-                  {answer.correct ? (
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  ) : (
-                    <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  )}
-                </span>
-                <span className="text-sm text-zinc-600 dark:text-slate-300 flex-1 min-w-0 truncate">{qText}</span>
-              </div>
-            );
-          })}
-        </motion.div>
-
-        {/* Reader-level progress (or level-up celebration). */}
-        {priorLifetime !== null && (
-          <motion.div variants={fadeUp} className="w-full mb-4">
-            <LevelProgressCard
-              priorLifetimeCarrots={priorLifetime}
-              sessionCarrots={carrotsEarned}
-              childId={child.id}
-              outfitId={child.equipped_items?.outfit ?? null}
-              href={`/levels?child=${child.id}`}
-            />
+            </div>
+            <h1 className="m-0 font-[family-name:var(--font-baloo)] font-extrabold text-[clamp(26px,3.5vw,34px)] leading-tight tracking-tight text-zinc-900">{title}</h1>
+            <p className="mt-1 text-[15px] font-semibold text-zinc-500">{subtitle}</p>
           </motion.div>
-        )}
 
-        {/* Action buttons */}
-        <motion.div variants={fadeUp} className="w-full space-y-3">
-          {/* Sharpen Up nudge — fires only when the kid bombed this
-              session (≥40% missed) AND they're premium. Drops them
-              straight into a multi-standard review deck composed from
-              their weak spots — bypasses /review since they just
-              practiced and need action, not a menu. */}
-          {(() => {
-            const sessionMissRate = totalQ > 0 ? 1 - correctCount / totalQ : 0;
-            const showNudge = sessionMissRate >= 0.4 && usePlanStore.getState().plan === "premium";
-            if (!showNudge) return null;
-            return (
-              <Link
-                href={`/practice?child=${child.id}&mode=sharpen`}
-                className="block w-full text-center py-4 rounded-2xl font-extrabold text-base text-white transition-all active:scale-[0.97]"
-                style={{ background: "linear-gradient(90deg, #8b5cf6, #6d28d9)", boxShadow: "0 4px 0 0 #5b21b6" }}
-              >
-                ✨ Sharpen up on what tripped you
-              </Link>
-            );
-          })()}
+          {/* Score + carrots + per-question dots */}
+          <motion.div variants={fadeUp} className="flex items-center gap-4 sm:gap-5 rounded-2xl bg-white border border-zinc-200 px-4 py-3 shadow-sm">
+            <div className="flex-1">
+              <div className="font-[family-name:var(--font-baloo)] font-extrabold text-[28px] leading-none text-zinc-900">{correctCount}/{totalQ}</div>
+              <div className="mt-0.5 text-[11px] font-bold text-zinc-500">Correct</div>
+            </div>
+            <div className="w-px self-stretch bg-zinc-200" />
+            <div className="flex-1">
+              <div className="flex items-center gap-1.5">
+                <span className="font-[family-name:var(--font-baloo)] font-extrabold text-[28px] leading-none text-orange-600">+{carrotsEarned}</span>
+                <Carrot className="w-5 h-5 text-orange-500" strokeWidth={2} />
+              </div>
+              <div className="mt-0.5 text-[11px] font-bold text-zinc-500">Carrots earned</div>
+            </div>
+            <div className="w-px self-stretch bg-zinc-200" />
+            <div className="flex-[1.4] min-w-0">
+              <div className="flex flex-wrap gap-1.5">
+                {questions.map((qItem, i) => {
+                  const ok = answers[i]?.correct;
+                  return (
+                    <span key={qItem.id} className="inline-flex h-5 w-5 items-center justify-center rounded-full" style={{ background: ok ? "#10b981" : "#f43f5e" }}>
+                      <svg viewBox="0 0 24 24" className="h-[11px] w-[11px]" fill="none" stroke="#fff" strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round">
+                        <path d={ok ? "M5 13l4 4L19 7" : "M6 18L18 6M6 6l12 12"} />
+                      </svg>
+                    </span>
+                  );
+                })}
+              </div>
+              <div className="mt-1 text-[11px] font-bold text-zinc-500">Questions</div>
+            </div>
+          </motion.div>
 
-          {nextStandard && (
-            <Link
-              href={`/practice?child=${child.id}&standard=${nextStandard.standard_id}`}
-              className="block w-full text-center py-4 rounded-2xl font-extrabold text-base text-emerald-900 transition-all active:scale-[0.97]"
-              style={{ background: "linear-gradient(90deg, #4ade80, #22c55e)", boxShadow: "0 4px 0 0 #16a34a" }}
-            >
-              Next Standard →
-            </Link>
+          {/* Reader-level progress (or level-up celebration + bonus). */}
+          {priorLifetime !== null && (
+            <motion.div variants={fadeUp}>
+              <LevelProgressCard
+                priorLifetimeCarrots={priorLifetime}
+                sessionCarrots={carrotsEarned}
+                childId={child.id}
+                outfitId={child.equipped_items?.outfit ?? null}
+                href={`/levels?child=${child.id}`}
+              />
+            </motion.div>
           )}
 
-          <button
-            onClick={onRestart}
-            className="w-full py-4 rounded-2xl border-2 border-zinc-300 text-zinc-900 dark:border-slate-600 dark:text-white font-bold text-base hover:bg-zinc-100 dark:hover:bg-slate-800 transition-all active:scale-[0.97]"
-          >
-            Practice Again
-          </button>
+          {/* Actions */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-2">
+            {(() => {
+              const sessionMissRate = totalQ > 0 ? 1 - correctCount / totalQ : 0;
+              const showNudge = sessionMissRate >= 0.4 && usePlanStore.getState().plan === "premium";
+              if (!showNudge) return null;
+              return (
+                <Link
+                  href={`/practice?child=${child.id}&mode=sharpen`}
+                  className="flex w-full items-center justify-center gap-2 py-3 rounded-2xl font-extrabold text-[15px] text-white transition-all active:scale-[0.97]"
+                  style={{ background: "linear-gradient(90deg, #8b5cf6, #6d28d9)", boxShadow: "0 4px 0 0 #5b21b6" }}
+                >
+                  <Sparkles className="w-[17px] h-[17px]" strokeWidth={2} />
+                  Sharpen up on what tripped you
+                </Link>
+              );
+            })()}
 
-          <Link
-            href={`/dashboard`}
-            className="block w-full text-center py-3 rounded-2xl text-zinc-500 dark:text-slate-400 font-semibold text-sm hover:text-zinc-900 dark:hover:text-white transition-colors"
-          >
-            Back to Dashboard
-          </Link>
-        </motion.div>
+            {nextStandard && (
+              <Link
+                href={`/practice?child=${child.id}&standard=${nextStandard.standard_id}`}
+                className="block w-full text-center py-3 rounded-2xl font-extrabold text-[15px] text-emerald-900 transition-all active:scale-[0.97]"
+                style={{ background: "linear-gradient(90deg, #4ade80, #22c55e)", boxShadow: "0 4px 0 0 #16a34a" }}
+              >
+                Next Standard →
+              </Link>
+            )}
 
-        {saving && (
-          <p className="text-center text-xs text-slate-500 mt-4 animate-pulse">Saving results...</p>
-        )}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={onRestart}
+                className="flex-1 py-2.5 rounded-2xl border-2 border-zinc-300 text-zinc-900 font-bold text-sm transition-all hover:bg-zinc-100 active:scale-[0.97]"
+              >
+                Practice Again
+              </button>
+              <Link
+                href="/dashboard"
+                className="flex-1 text-center py-2.5 rounded-2xl text-zinc-500 font-bold text-[13px] transition-colors hover:text-zinc-900"
+              >
+                Back to Dashboard
+              </Link>
+            </div>
+          </motion.div>
+
+          {saving && (
+            <p className="text-center text-xs text-zinc-500 animate-pulse">Saving results...</p>
+          )}
+        </div>
       </motion.div>
     </div>
   );
