@@ -20,7 +20,7 @@ import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { findStandardById } from "@/lib/data/all-standards";
-import { fadeUp, fadeIn, staggerContainer, feedbackSlideUp, popIn, scaleIn } from "@/lib/motion/variants";
+import { fadeUp, fadeIn, staggerContainer, popIn, scaleIn } from "@/lib/motion/variants";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
@@ -29,9 +29,9 @@ import { TapToPair } from "@/app/components/practice/TapToPair";
 import { SoundMachine } from "@/app/components/practice/SoundMachine";
 import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { LessonSlideshow } from "@/app/components/lesson/LessonSlideshow";
+import { McqStage, BunnyBubble, QuestionDock, NextCta } from "@/app/components/practice/McqStage";
 import type { SampleLesson } from "@/app/components/lesson/LessonSlideshow";
 import sampleLessons from "@/app/data/sample-lessons.json";
-import { Star, Carrot } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 
@@ -105,10 +105,6 @@ const CORRECT_AUDIO = ["correct-1", "correct-2", "correct-3", "correct-4", "corr
 const INCORRECT_AUDIO = ["incorrect-1", "incorrect-2", "incorrect-3", "incorrect-4", "incorrect-5", "incorrect-6", "incorrect-7", "incorrect-8", "incorrect-9", "incorrect-10"];
 const ENCOURAGE_AUDIO = ["encourage-1", "encourage-2", "encourage-3", "encourage-4", "encourage-5", "encourage-6"];
 
-const FEEDBACK_ICON_MAP: Record<string, typeof Star> = {
-  star: Star, sparkles: Star, sparkle: Star, star2: Star, zap: Star, target: Star,
-};
-
 const SUPABASE_STORAGE = "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public";
 
 const GRADE_FOLDER: Record<string, string> = {
@@ -119,10 +115,6 @@ const GRADE_FOLDER: Record<string, string> = {
   "3rd": "3rd-grade",
   "4th": "4th-grade",
 };
-
-const QUESTION_WORDS = new Set([
-  "What","Who","Where","When","Why","How","Which",
-]);
 
 /* ─── Helpers ──────────────────────────────────────────── */
 
@@ -145,38 +137,6 @@ function questionImageUrl(questionId: string, gradeKey?: string): string {
   const folder = gradeKey ? GRADE_FOLDER[gradeKey] || gradeKey : "";
   if (!folder) return "";
   return `${SUPABASE_STORAGE}/images/${folder}/${standardId}/${questionId}.png`;
-}
-
-function highlightQuestion(text: string): React.ReactNode[] {
-  // Tokenize on **emphasis** + "quoted" so we can style each and never
-  // leak markers into the rendered DOM.
-  const tokenizer = /(\*\*[^*]+\*\*|"[^"]+"|"[^"]+")/g;
-  return text.split(tokenizer).map((segment, si) => {
-    if (/^\*\*[^*]+\*\*$/.test(segment)) {
-      const inner = segment.slice(2, -2);
-      return (
-        <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">
-          {inner}
-        </span>
-      );
-    }
-    if (/^[""][^""]+[""]$/.test(segment)) {
-      return <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">{segment}</span>;
-    }
-    const cleanSegment = segment.replace(/\*\*/g, "");
-    const hasEmphasis = /\b[A-Z]{3,}\b/.test(cleanSegment);
-    return cleanSegment.split(/(\s+|(?=[.,!?;:])|(?<=[.,!?;:]))/).map((part, pi) => {
-      const clean = part.replace(/[^a-zA-Z']/g, "");
-      if (hasEmphasis) {
-        if (/^[A-Z]{3,}$/.test(clean)) {
-          return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
-        }
-      } else if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
-        return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
-      }
-      return part;
-    });
-  });
 }
 
 function getStars(correct: number, total: number): number {
@@ -271,10 +231,12 @@ function LearnLoader() {
   // through before.
   useEffect(() => {
     if (!childId) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setError("We lost track of which reader to open this for. Tap below to pick again.");
       return;
     }
     if (!lesson) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setError("This lesson isn't ready right now. Try a different one from your dashboard.");
       return;
     }
@@ -353,7 +315,7 @@ function LearnSession({
   const [previewedChoice, setPreviewedChoice] = useState<string | null>(null);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [feedbackMsg, setFeedbackMsg] = useState("");
-  const [feedbackEmoji, setFeedbackEmoji] = useState("");
+  const [, setFeedbackEmoji] = useState("");
   const [showFeedback, setShowFeedback] = useState(false);
   // Two-try MCQ: wrong choices tapped so far this question (greyed out).
   // First miss shows the nudge and lets the kid try again; second miss
@@ -741,270 +703,49 @@ function LearnSession({
             onAnswer={(isCorrect, answer) => handleInteractiveAnswer(isCorrect, answer)}
           />
         ) : (
-        <>
-        {/* Image — use q.image_url first, fallback to constructed URL */}
-        {(q.image_url || questionImageUrl(q.id, gradeKey)) && (
-          <motion.div variants={fadeUp} className="flex justify-center mb-3 mt-2">
-            <LoadingImage
-              src={q.image_url || questionImageUrl(q.id, gradeKey)}
-              fallback={null}
-              className="max-h-[180px] sm:max-h-[220px] md:max-h-[300px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
-            />
-          </motion.div>
+          <McqStage
+            choices={q.choices ?? []}
+            correct={q.correct}
+            question={question}
+            passage={passage}
+            imgSrc={q.image_url || questionImageUrl(q.id, gradeKey)}
+            selected={selected}
+            greyed={wrongTries}
+            previewedChoice={previewedChoice}
+            nudge={nudgeMsg}
+            onChoiceClick={(choice) => {
+              const isPhoneme = /^\/[a-zA-Z]{1,3}\/$/.test(choice);
+              if (isPhoneme) {
+                if (previewedChoice === choice) handleAnswer(choice);
+                else { setPreviewedChoice(choice); playPhonemeAudio(choice); }
+              } else { handleAnswer(choice); }
+            }}
+            onReplay={handleReplay}
+          />
         )}
 
-        {/* Passage */}
-        {passage && (
-          <motion.div variants={fadeUp} className="mb-5 rounded-2xl bg-amber-50 border border-amber-200 dark:bg-amber-950/30 dark:border-amber-800/50 px-5 py-4">
-            <p className="text-xl md:text-2xl leading-relaxed font-semibold text-gray-800 dark:text-slate-200 tracking-wide whitespace-pre-line text-center">{passage}</p>
-          </motion.div>
-        )}
-
-        {/* Question + replay */}
-        <motion.div variants={fadeUp} className="mb-3">
-          <div className="flex items-center gap-2 max-w-[600px] mx-auto justify-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white leading-snug text-center whitespace-pre-line">
-              {highlightQuestion(question)}
-            </h2>
-            <button
-              onClick={handleReplay}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-50 dark:bg-violet-500/20 hover:bg-violet-100 dark:hover:bg-violet-500/30 transition-colors flex-shrink-0"
-              aria-label="Replay audio"
-            >
-              <svg className="w-5 h-5 text-violet-600 dark:text-violet-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
-              </svg>
-            </button>
-          </div>
-        </motion.div>
-
-        {/* Progress dots */}
-        <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-4">
-          {Array.from({ length: totalQ }).map((_, i) => {
-            const answer = answers[i];
-            const isCurrent = i === currentIdx;
-            let dotClass = "bg-zinc-300 dark:bg-slate-600";
-            if (answer) {
-              dotClass = answer.correct ? "bg-emerald-500" : "bg-red-400";
-            } else if (isCurrent) {
-              dotClass = "bg-violet-500";
-            }
-            return (
-              <div
-                key={i}
-                className={`rounded-full transition-all duration-300 ${dotClass} ${
-                  isCurrent ? "w-3.5 h-3.5" : "w-2.5 h-2.5"
-                }`}
-              />
-            );
-          })}
-        </motion.div>
-
-        {/* Answer choices — 2×2 grid */}
-        <div className="grid grid-cols-2 gap-2.5">
-          {(q.choices ?? []).map((choice, i) => {
-            const isSelected = selected === choice;
-            const isCorrectChoice = choice === q.correct;
-            const answered = selected !== null;
-            const isWrongTried = wrongTries.includes(choice);
-            const choiceCount = q.choices?.length ?? 0;
-            const isLastOdd = choiceCount === 3 && i === 2;
-
-            let bg = CHOICE_COLORS[i % CHOICE_COLORS.length];
-            let textColor = "";
-            let extra = "";
-
-            if (isWrongTried && !answered) {
-              // Already tried and wrong this question — greyed, not tappable.
-              bg = "bg-zinc-200 border-zinc-300 dark:bg-zinc-700 dark:border-zinc-600";
-              textColor = "text-zinc-400 dark:text-zinc-500 line-through";
-            } else if (!answered && previewedChoice === choice) {
-              extra = "ring-2 ring-offset-2 ring-violet-500 animate-pulse";
-            } else if (!answered && isSelected) {
-              extra = "ring-2 ring-offset-2 ring-violet-500";
-            } else if (answered) {
-              if (isSelected && isCorrect) {
-                bg = "bg-emerald-500 border-emerald-600 dark:bg-emerald-500 dark:border-emerald-600";
-                textColor = "text-white dark:text-white";
-              } else if (isSelected && !isCorrect) {
-                bg = "bg-red-400 border-red-500 dark:bg-red-400 dark:border-red-500";
-                textColor = "text-white dark:text-white";
-              } else if (isCorrectChoice && !isCorrect) {
-                bg = "bg-emerald-500 border-emerald-600 dark:bg-emerald-500 dark:border-emerald-600";
-                textColor = "text-white dark:text-white";
-              } else {
-                extra = "opacity-40";
-              }
-            }
-
-            return (
-              <motion.button
-                key={choice}
-                variants={fadeUp}
-                animate={
-                  answered && isSelected && !isCorrect
-                    ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
-                    : answered && isSelected && isCorrect
-                    ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } }
-                    : {}
-                }
-                whileTap={!answered ? { scale: 0.95, transition: { duration: 0.1 } } : undefined}
-                onClick={() => {
-                  if (answered || isWrongTried) return;
-                  const isPhoneme = /^\/[a-zA-Z]{1,3}\/$/.test(choice);
-                  if (isPhoneme) {
-                    if (previewedChoice === choice) {
-                      handleAnswer(choice);
-                    } else {
-                      setPreviewedChoice(choice);
-                      playPhonemeAudio(choice);
-                    }
-                  } else {
-                    handleAnswer(choice);
-                  }
-                }}
-                disabled={answered || isWrongTried}
-                className={`
-                  flex items-center justify-center px-3 py-3 rounded-2xl border-2 relative
-                  transition-[background-color,border-color,opacity,box-shadow] duration-200 outline-none
-                  min-h-[64px] md:min-h-[80px]
-                  ${bg} ${textColor} ${extra}
-                  ${answered ? "cursor-default" : "cursor-pointer hover:scale-[1.04] hover:shadow-lg active:scale-[0.95]"}
-                  ${isLastOdd ? "col-span-2 max-w-[50%] mx-auto" : ""}
-                `}
-              >
-                <div className="flex items-center justify-center gap-2">
-                  {answered && isSelected && isCorrect && (
-                    <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                  )}
-                  {answered && isSelected && !isCorrect && (
-                    <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </div>
-                  )}
-                  {answered && !isSelected && isCorrectChoice && !isCorrect && (
-                    <div className="w-6 h-6 rounded-full bg-white/30 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                  )}
-                  <span className={`text-base md:text-xl font-bold leading-snug text-center ${textColor}`}>
-                    {String(choice).replace(/\*\*/g, "")}
-                  </span>
-                </div>
-              </motion.button>
-            );
-          })}
-        </div>
-        </>
-        )}
-
-        {/* Hint button */}
-        {q.hint && (
-          <motion.div variants={fadeUp} className="mt-5 flex flex-col items-center gap-2">
-            <button
-              onClick={() => setShowHint((v) => !v)}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 hover:bg-amber-100 dark:hover:bg-amber-500/20 transition-colors"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-              Hint
-            </button>
-            {showHint && (
-              <div className="rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 px-4 py-3 text-sm text-amber-800 dark:text-amber-200 max-w-sm text-center">
-                {q.hint}
-              </div>
-            )}
-          </motion.div>
-        )}
       </motion.div>
 
-      {/* First-miss nudge — non-blocking so the kid can try again */}
-      {nudgeMsg && selected === null && (
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mt-4 rounded-2xl border-2 border-amber-300 bg-amber-50 dark:border-amber-500/40 dark:bg-amber-950/30 px-4 py-3"
-        >
-          <p className="text-amber-900 dark:text-amber-200 font-semibold text-[15px] leading-snug">
-            {nudgeMsg}
-          </p>
-          <p className="text-amber-700/80 dark:text-amber-300/70 text-xs font-bold mt-1">
-            Try again — you&rsquo;ve got this.
-          </p>
-        </motion.div>
+      {/* Character bunny + speech bubble, read-aloud/hint dock, Next CTA */}
+      <BunnyBubble
+        outfitId={child.equipped_items?.outfit ?? null}
+        state={showFeedback ? (isCorrect ? (consecutiveCorrect >= 3 ? "levelup" : "correct") : "incorrect") : "idle"}
+        bubble={
+          showFeedback
+            ? { text: (feedbackMsg || "").replace(/\*\*/g, ""), kind: isCorrect ? "correct" : "incorrect" }
+            : (showHint && q.hint ? { text: q.hint.replace(/\*\*/g, ""), kind: "hint" } : null)
+        }
+      />
+      <QuestionDock
+        onReplay={handleReplay}
+        hint={q.hint}
+        showHint={showHint}
+        hintDisabled={showHint || showFeedback}
+        onHint={() => setShowHint(true)}
+      />
+      {showFeedback && (
+        <NextCta label={currentIdx + 1 >= totalQ ? "Finish" : "Next"} onClick={handleContinue} />
       )}
-
-      {/* ── Feedback bar (Duolingo-style) ── */}
-      <AnimatePresence>
-        {showFeedback && (
-          <motion.div
-            variants={feedbackSlideUp}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className={`fixed bottom-0 left-0 right-0 z-40 ${
-              isCorrect ? "bg-emerald-600" : "bg-red-500"
-            }`}
-          >
-            <div className="max-w-lg mx-auto px-5 py-5 safe-area-bottom">
-              <div className="flex items-start gap-3 mb-4">
-                {isCorrect ? (
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <Star className="w-5 h-5 text-white" strokeWidth={1.5} />
-                  </div>
-                ) : (
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </div>
-                )}
-                <div className="flex-1 min-w-0">
-                  <p className="text-white font-bold text-lg">{feedbackMsg}</p>
-                  {isCorrect && wrongTries.length === 0 && (() => {
-                    const daily = getDailyMultiplier(child.streak_days);
-                    const session = getSessionStreakTier(consecutiveCorrect);
-                    const hintFactor = showHint ? HINT_CARROT_FACTOR : 1;
-                    const earned = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * hintFactor);
-                    const hasBonus = daily.multiplier > 1 || session.multiplier > 1;
-                    return (
-                      <p className="text-white/80 text-sm mt-0.5">
-                        +{earned} <Carrot className="w-3.5 h-3.5 inline-block align-text-bottom" strokeWidth={1.5} />{hasBonus ? " (Bonus!)" : ""}
-                      </p>
-                    );
-                  })()}
-                  {!isCorrect && (
-                    <p className="text-white/90 text-sm font-bold mt-1">
-                      Correct answer: {q.correct}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <button
-                onClick={handleContinue}
-                className={`w-full py-4 rounded-2xl font-extrabold text-base transition-all active:scale-[0.97] ${
-                  isCorrect
-                    ? "bg-white text-emerald-700 hover:bg-emerald-50"
-                    : "bg-white text-red-600 hover:bg-red-50"
-                }`}
-              >
-                CONTINUE
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
@@ -1276,7 +1017,7 @@ function CompletionScreen({
         .select("classroom_id")
         .eq("child_id", child.id);
 
-      const classroomIds = (memberships ?? []).map((m: any) => m.classroom_id);
+      const classroomIds = (memberships ?? []).map((m: { classroom_id: string }) => m.classroom_id);
       if (classroomIds.length > 0) {
         const { data: matching } = await supabase
           .from("assignments")
