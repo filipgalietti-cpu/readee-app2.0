@@ -3,7 +3,6 @@
 import { Suspense, useEffect, useState, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import AuthLayout from "@/app/components/auth/AuthLayout";
 import FormField from "@/app/components/auth/FormField";
 import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
@@ -134,7 +133,7 @@ function SignupInner() {
   };
 
   return (
-    <AuthLayout mode="signup">
+    <>
       <h1 className="font-[family-name:var(--font-baloo)] font-extrabold text-3xl text-indigo-950 text-center">
         Create your account
       </h1>
@@ -208,6 +207,6 @@ function SignupInner() {
           {isLoading ? "Creating account…" : "Start for free"}
         </button>
       </form>
-    </AuthLayout>
+    </>
   );
 }

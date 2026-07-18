@@ -4,7 +4,6 @@ import { useState, FormEvent, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { createClient } from "@/lib/supabase/client";
-import AuthLayout from "@/app/components/auth/AuthLayout";
 import FormField from "@/app/components/auth/FormField";
 import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
@@ -86,7 +85,7 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <AuthLayout mode="signin" showTabs={false}>
+    <>
       <h1 className="font-[family-name:var(--font-baloo)] font-extrabold text-3xl text-indigo-950 text-center mb-1">
         Reset your password
       </h1>
@@ -155,7 +154,7 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </AuthLayout>
+    </>
   );
 }
 
@@ -345,7 +344,7 @@ function LoginForm() {
   }
 
   return (
-    <AuthLayout mode="signin">
+    <>
       <h1 className="font-[family-name:var(--font-baloo)] font-extrabold text-3xl text-indigo-950 text-center">
         Welcome back!
       </h1>
@@ -413,7 +412,7 @@ function LoginForm() {
           {isLoading ? "Signing in…" : "Sign in"}
         </button>
       </form>
-    </AuthLayout>
+    </>
   );
 }
 
