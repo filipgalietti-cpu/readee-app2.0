@@ -273,6 +273,7 @@ function JourneyContent() {
         streak={child.streak_days || 0}
         carrots={child.carrots || 0}
         equippedOutfitId={child.equipped_items?.outfit ?? "bunny_classic"}
+        justCompletedId={searchParams.get("completed")}
         onStart={(l) => router.push(`/learn?child=${childId}&standard=${l.id}`)}
         onPremium={() => setShowPaywall(true)}
       />
