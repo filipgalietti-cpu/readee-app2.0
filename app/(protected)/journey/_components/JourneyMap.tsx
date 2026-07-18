@@ -149,6 +149,22 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       });
       opened["chest" + this.unitNoOf(u)] = allDone;
     }));
+    // Return trigger: rewind to the pre-unlock frame so playUnlock() can
+    // animate it. The just-finished lesson starts as the green "current"
+    // node (where the bunny stands), and the next lesson is re-locked so the
+    // walk can flip it open. Chests re-close for any unit no longer fully
+    // done. Without this the DB already shows both as their final state and
+    // the cinematic would have nothing to reveal.
+    const jc = this.props.justCompletedId;
+    if (jc && statuses[jc] !== undefined) {
+      statuses[jc] = "current";
+      const idx = this.lessonsL.findIndex((l) => l.id === jc);
+      const nextLesson = this.lessonsL[idx + 1];
+      if (nextLesson) statuses[nextLesson.id] = "locked";
+      this.props.grades.forEach((g) => g.units.forEach((u) => {
+        opened["chest" + this.unitNoOf(u)] = u.lessons.every((l) => statuses[l.id] === "completed");
+      }));
+    }
     return {
       statuses, stars, opened, gatesOpen: {}, carrots: this.props.carrots ?? 0,
       doneDash: "99999 99999", doneOff: 99999, doneTrans: "none",

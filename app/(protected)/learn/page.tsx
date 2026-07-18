@@ -1076,16 +1076,19 @@ function NextStepCta({ child, lesson }: { child: Child; lesson: SampleLesson }) 
     "block w-full text-center py-4 rounded-2xl font-extrabold text-base text-white transition-all active:scale-[0.97]";
 
   if (nextLesson && !nextLocked) {
+    // Return to the journey (not straight into the next lesson) so the kid
+    // sees the bunny hop to the node they just cleared, watch it turn gold,
+    // and unlock the next stop. The journey is the progression spine.
     return (
       <Link
-        href={`/learn?child=${child.id}&standard=${nextLesson.standardId}`}
+        href={`/journey?child=${child.id}&completed=${lesson.standardId}`}
         className={primaryStyle}
         style={{
           background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
           boxShadow: "0 4px 0 0 #4f46e5",
         }}
       >
-        Next lesson →
+        Back to your journey →
       </Link>
     );
   }

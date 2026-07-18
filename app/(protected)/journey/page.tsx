@@ -175,13 +175,16 @@ function JourneyContent() {
   const hasCompleted = (standardId: string) =>
     practiceProgress.some((p) => p.standard_id === standardId && p.questions_correct >= 3) ||
     lessonProgress.some((p) => p.lesson_id === standardId && p.section === "practice" && p.score >= 60);
-  const hasStarted = (standardId: string) =>
-    lessonProgress.some((p) => p.lesson_id === standardId && p.section === "learn");
 
   // Build per-grade index map for free tier gating
   const gradeCounters = new Map<string, number>();
 
-  // Assign statuses
+  // Assign statuses. The journey is a linear spine: everything completed
+  // stays gold, the FIRST not-yet-completed lesson is the single "current"
+  // node (green, playable — whether or not its learn section was started),
+  // and everything after it is locked/premium. Marking every *started*
+  // lesson as its own unlocked node was the "everything ahead is unlocked"
+  // bug — a kid who peeked into several lessons lit them all up green.
   let foundCurrent = false;
   const lessonsWithStatus: LessonWithStatus[] = allLessons.map((lesson, idx) => {
     // Track per-grade index
@@ -191,9 +194,6 @@ function JourneyContent() {
     let status: LessonStatus;
     if (hasCompleted(lesson.standardId)) {
       status = "completed";
-    } else if (hasStarted(lesson.standardId)) {
-      if (!foundCurrent) foundCurrent = true;
-      status = "started";
     } else if (!foundCurrent) {
       foundCurrent = true;
       status = "current";
@@ -258,6 +258,12 @@ function JourneyContent() {
     })),
   }));
 
+  // Return trigger: /learn sends the kid back here as ?completed=<standardId>
+  // after they pass. Only fire the unlock cinematic if the DB actually
+  // records that lesson as completed (guards against a lie if they bailed).
+  const completedParam = searchParams.get("completed");
+  const justCompletedId = completedParam && hasCompleted(completedParam) ? completedParam : null;
+
   return (
     <>
       <PaywallModal
@@ -273,7 +279,7 @@ function JourneyContent() {
         streak={child.streak_days || 0}
         carrots={child.carrots || 0}
         equippedOutfitId={child.equipped_items?.outfit ?? "bunny_classic"}
-        justCompletedId={searchParams.get("completed")}
+        justCompletedId={justCompletedId}
         onStart={(l) => router.push(`/learn?child=${childId}&standard=${l.id}`)}
         onPremium={() => setShowPaywall(true)}
       />
