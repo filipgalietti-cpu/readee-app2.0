@@ -90,6 +90,12 @@ export async function generateSpeechVertex(opts: {
   });
   if (!res.ok) {
     const txt = await res.text();
+    // Auth failures are usually a stale cached token — invalidate it so the
+    // caller's retry re-mints a fresh one instead of failing the same way.
+    if (res.status === 401 || res.status === 403) {
+      _vertexToken = null;
+      _vertexTokenAt = 0;
+    }
     return { ok: false, error: `Vertex ${res.status}: ${txt.slice(0, 400)}` };
   }
   const json: any = await res.json();

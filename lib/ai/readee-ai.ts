@@ -1383,6 +1383,11 @@ export async function generateSpeech(input: {
    *  when GOOGLE_CREDENTIALS_JSON is set, falls back to "gemini" API
    *  otherwise. */
   provider?: "vertex" | "gemini";
+  /** When true, a Vertex failure returns an error instead of silently
+   *  falling back to the (whispery Flash) Gemini path. Batch re-record jobs
+   *  set this so a transient blip can't bake in an off-voice clip — the
+   *  caller sees the failure and can retry Vertex or skip. */
+  noFallback?: boolean;
 }): Promise<
   { ok: true; audioUrl: string; storagePath: string } | { ok: false; error: string }
 > {
@@ -1446,9 +1451,14 @@ export async function generateSpeech(input: {
         style: input.style ?? null,
       });
       if (!v.ok) {
-        // If Vertex auth/setup fails, fall back to the Gemini API
-        // path so the worker doesn't hard-stop in environments
-        // without service-account creds.
+        // Batch re-records opt out of the Gemini fallback: a silent switch
+        // to the whispery Flash model is exactly what contaminated the
+        // feedback audio. Return the error so the caller retries Vertex.
+        if (input.noFallback) {
+          return { ok: false, error: `Vertex failed (no fallback): ${v.error}` };
+        }
+        // Otherwise fall back to the Gemini API path so callers without
+        // service-account creds don't hard-stop.
         console.warn(`[generateSpeech] vertex failed, falling back to gemini: ${v.error}`);
       } else {
         pcmBase64 = v.pcmBase64;

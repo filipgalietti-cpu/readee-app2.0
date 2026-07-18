@@ -46,7 +46,12 @@ async function voice(text: string): Promise<string | null> {
       teacherId: TEACHER,
       text,
       voice: "Autonoe",
-      provider: "gemini",
+      // No provider override → defaults to VERTEX (gemini-2.5-pro-preview-tts,
+      // the same engine the lessons used) when GOOGLE_APPLICATION_CREDENTIALS
+      // is set. The old `provider:"gemini"` forced the whispery Flash model.
+      // noFallback: on a Vertex blip, FAIL (don't silently return whispery
+      // Gemini) so the retry below actually retries Vertex.
+      noFallback: true,
     });
     if (r.ok) return r.audioUrl as string;
     console.error(`   ! ${r.error} (attempt ${attempt + 1}/5)`);
@@ -92,13 +97,22 @@ async function main() {
           if (url) { q.audio_url = url; q.audio_regen = true; made++; process.stdout.write("p"); }
           else failed++;
         }
+        // --overwrite-feedback re-voices the 3 feedback lines in the correct
+        // Vertex voice (the earlier batch was whispery Flash). Resumable via
+        // q.fb_regen so a killed+relaunched run skips finished questions.
+        const forceFb = args.includes("--overwrite-feedback") && !q.fb_regen;
+        let fbFailed = false;
         for (const [textKey, urlKey] of LINES) {
           if (!q[textKey]) continue;
-          if (q[urlKey]) { skipped++; continue; }
+          if (q[urlKey] && !forceFb) { skipped++; continue; }
           const url = await voice(q[textKey]);
           if (url) { q[urlKey] = url; made++; process.stdout.write("."); }
-          else failed++;
+          else { failed++; fbFailed = true; }
         }
+        // Only mark the question done when EVERY line actually succeeded — a
+        // failed clip must NOT be marked done, or a re-run would skip it and
+        // leave a gap (this is what let whispery clips get baked in before).
+        if (forceFb && !fbFailed) q.fb_regen = true;
       }
       // Save after EACH standard so an interruption loses at most one.
       await fs.writeFile(p, JSON.stringify(d, null, 2) + "\n", "utf-8");
