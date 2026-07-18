@@ -47,6 +47,7 @@
     "@sentry/nextjs": "^10.42.0",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.95.3",
+    "@types/three": "^0.185.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",
@@ -62,6 +63,7 @@
     "react-dom": "19.2.3",
     "resend": "^6.9.2",
     "stripe": "^22.0.1",
+    "three": "^0.184.0",
     "zod": "^4.3.6",
     "zustand": "^5.0.11"
   },
