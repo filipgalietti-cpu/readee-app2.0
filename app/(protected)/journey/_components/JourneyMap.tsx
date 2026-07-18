@@ -102,7 +102,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
 
   buildLayout(colW: number) {
     const CX = Math.round(colW / 2);
-    const AMP = Math.max(96, Math.min(190, Math.round(colW / 2) - 96));
+    const AMP = Math.max(96, Math.min(420, Math.round(colW / 2) - 140));
     const pts: Pt[] = []; const nodeAtPt: AnyNode[] = [];
     const banners: BannerN[] = [], lessons: LessonN[] = [], chests: ChestN[] = [], gates: GateN[] = [];
     let y = 96, ph = 0, unitNo = 0, totalUnits = 0;
