@@ -304,7 +304,7 @@ function LearnSession({
   devMode?: boolean;
 }) {
   const router = useRouter();
-  const { unlockAudio, stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz } = useAudio();
+  const { stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz } = useAudio();
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
 
   const [phase, setPhase] = useState<Phase>("slideshow");
@@ -324,7 +324,7 @@ function LearnSession({
   const [nudgeMsg, setNudgeMsg] = useState("");
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [showHint, setShowHint] = useState(false);
-  const [audioUnlocked, setAudioUnlocked] = useState(false);
+  const [audioUnlocked] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   // Adaptive SENSE: one session id per lesson sitting, threaded through the
   // fork/MCQ signals the slideshow emits.
@@ -333,12 +333,15 @@ function LearnSession({
   const totalQ = mcqQuestions.length;
   const q = mcqQuestions[currentIdx];
 
-  // Slideshow complete → transition to practice
-  const handleSlideshowComplete = useCallback(async () => {
-    await unlockAudio();
-    setAudioUnlocked(true);
-    setPhase("practice");
-  }, [unlockAudio]);
+  // Slideshow complete → hand off to the real /practice runner as the
+  // post-lesson quiz, so the kid gets the exact same experience as /practice:
+  // the "Get ready!" hype intro → character questions → perfect-score seal →
+  // summary. from=lesson makes that session return to the journey (with the
+  // unlock cinematic) on finish. Audio is unlocked there by the hype's
+  // "Let's go!" gesture, so we don't need to unlock here.
+  const handleSlideshowComplete = useCallback(() => {
+    router.push(`/practice?child=${child.id}&standard=${lesson.standardId}&from=lesson`);
+  }, [router, child.id, lesson.standardId]);
 
   // Play question audio when entering practice or advancing
   useEffect(() => {

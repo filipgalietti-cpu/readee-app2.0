@@ -404,6 +404,10 @@ function PracticeLoader() {
   // front of the session so the kid sees the one the parent searched
   // for first instead of waiting for the shuffle to surface it.
   const focusQuestionId = params.get("focus");
+  // ?from=lesson — this practice session is the post-lesson quiz launched
+  // straight after a /learn lesson. On finish we send the kid back to the
+  // journey (with the unlock cinematic) instead of the standards hub.
+  const fromLesson = params.get("from") === "lesson";
   const [child, setChild] = useState<Child | null>(null);
   const [loading, setLoading] = useState(true);
   const [blocked, setBlocked] = useState(false);
@@ -443,8 +447,10 @@ function PracticeLoader() {
       const { data } = await supabase.from("children").select("*").eq("id", childId).single();
       if (data) setChild(data as Child);
 
-      // Check practice limit for free users
-      if (plan !== null && plan !== "premium" && standardId) {
+      // Check practice limit for free users. A post-lesson quiz (from=lesson)
+      // is part of the lesson flow, not standalone practice — never gate it,
+      // or a free kid replaying a lesson would get bounced to /upgrade mid-quiz.
+      if (plan !== null && plan !== "premium" && standardId && !fromLesson) {
         const { data: results } = await supabase
           .from("practice_results")
           .select("questions_attempted")
@@ -487,7 +493,7 @@ function PracticeLoader() {
       setLoading(false);
     }
     load();
-  }, [childId, plan, standardId, sharpenMode, router]);
+  }, [childId, plan, standardId, sharpenMode, router, fromLesson]);
 
   useEffect(() => {
     if (blocked) router.replace("/upgrade?reason=practice");
@@ -594,6 +600,7 @@ function PracticeLoader() {
       gradeStandards={gradeStandards}
       focusQuestionId={focusQuestionId}
       debugAdaptive={params.get("adaptive") === "1"}
+      fromLesson={fromLesson}
     />
   );
 }
@@ -608,12 +615,14 @@ function PracticeSession({
   gradeStandards,
   focusQuestionId,
   debugAdaptive,
+  fromLesson = false,
 }: {
   child: Child;
   standard: Standard;
   gradeStandards: Standard[];
   focusQuestionId?: string | null;
   debugAdaptive?: boolean;
+  fromLesson?: boolean;
 }) {
   const router = useRouter();
   const { unlockAudio, stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz, muted } = useAudio();
@@ -1132,6 +1141,7 @@ function PracticeSession({
         saving={saving}
         setSaving={setSaving}
         onRestart={resetStore}
+        fromLesson={fromLesson}
       />
     );
   }
@@ -1605,6 +1615,7 @@ function CompletionScreen({
   saving,
   setSaving,
   onRestart,
+  fromLesson = false,
 }: {
   child: Child;
   standard: Standard;
@@ -1616,6 +1627,7 @@ function CompletionScreen({
   saving: boolean;
   setSaving: (v: boolean) => void;
   onRestart: () => void;
+  fromLesson?: boolean;
 }) {
   const [saved, setSaved] = useState(false);
   const [unlocks, setUnlocks] = useState<UnlockableItem[]>([]);
@@ -1986,6 +1998,15 @@ function CompletionScreen({
 
           {/* Actions */}
           <motion.div variants={fadeUp} className="flex flex-col gap-2">
+            {fromLesson && (
+              <Link
+                href={`/journey?child=${child.id}&completed=${standard.standard_id}`}
+                className="block w-full text-center py-3.5 rounded-2xl font-extrabold text-[15px] text-white transition-all active:scale-[0.97]"
+                style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 4px 0 0 #4f46e5" }}
+              >
+                Back to your journey →
+              </Link>
+            )}
             {(() => {
               const sessionMissRate = totalQ > 0 ? 1 - correctCount / totalQ : 0;
               const showNudge = sessionMissRate >= 0.4 && usePlanStore.getState().plan === "premium";
@@ -2002,7 +2023,7 @@ function CompletionScreen({
               );
             })()}
 
-            {nextStandard && (
+            {!fromLesson && nextStandard && (
               <Link
                 href={`/practice?child=${child.id}&standard=${nextStandard.standard_id}`}
                 className="block w-full text-center py-3 rounded-2xl font-extrabold text-[15px] text-emerald-900 transition-all active:scale-[0.97]"
