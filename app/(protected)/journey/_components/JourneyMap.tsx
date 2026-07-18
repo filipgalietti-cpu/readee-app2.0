@@ -536,7 +536,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
                 <div key={l.id} style={{ position: "absolute", left: l.x, top: l.y, transform: "translate(-50%,-50%)", zIndex: z }}>
                   <div style={{ position: "relative", width: size, height: size }}>
                     {cur && <>
-                      <div style={{ position: "absolute", left: "50%", top: "50%", width: size, height: size, borderRadius: 999, border: "4px solid #10b981", animation: "rj-halo 1.9s ease-out infinite" }} />
+                      <div style={{ position: "absolute", left: "50%", top: "50%", width: size, height: size, borderRadius: 999, border: "4px solid #10b981", animation: "rj-halo 1.9s ease-out infinite", pointerEvents: "none" }} />
                       <div onClick={onClick} style={{ position: "absolute", left: "50%", bottom: "calc(100% + 14px)", animation: startAnim, background: "#fff", color: "#059669", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: ".06em", padding: "6px 16px", borderRadius: 999, boxShadow: "0 6px 16px -4px rgba(30,27,75,.35),inset 0 0 0 2px #d1fae5", whiteSpace: "nowrap", transform: "translate(-50%,0)", cursor: "pointer" }}>START</div>
                     </>}
                     {s.justUnlocked === l.id && <div style={{ position: "absolute", left: "50%", top: "50%", width: size, height: size, borderRadius: 999, border: "5px solid #34d399", animation: "rj-shock .75s ease-out both", pointerEvents: "none" }} />}
