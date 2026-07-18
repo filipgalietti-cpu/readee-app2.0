@@ -1,12 +1,9 @@
-export default function Divider() {
+export default function Divider({ label = "or use email" }: { label?: string }) {
   return (
-    <div className="relative my-6">
-      <div className="absolute inset-0 flex items-center">
-        <div className="w-full border-t border-purple-300"></div>
-      </div>
-      <div className="relative flex justify-center text-sm">
-        <span className="px-2 bg-white text-purple-600">Or continue with</span>
-      </div>
+    <div className="flex items-center gap-3 my-5">
+      <div className="flex-1 border-t border-zinc-200" />
+      <span className="text-[13px] font-semibold text-zinc-400">{label}</span>
+      <div className="flex-1 border-t border-zinc-200" />
     </div>
   );
 }

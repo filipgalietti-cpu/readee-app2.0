@@ -1,14 +1,16 @@
 "use client";
 
 import { useState, FormEvent, Suspense } from "react";
-import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { createClient } from "@/lib/supabase/client";
-import AuthCard from "@/app/components/auth/AuthCard";
+import AuthLayout from "@/app/components/auth/AuthLayout";
 import FormField from "@/app/components/auth/FormField";
 import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
+
+const CTA_BTN =
+  "w-full bg-indigo-700 text-white py-3.5 rounded-full font-extrabold text-base shadow-[0_8px_20px_-8px_rgba(67,56,202,0.5)] hover:bg-indigo-800 transition disabled:opacity-50 disabled:cursor-not-allowed";
 
 /* ── Search-param banners (isolated to avoid suspending the whole form) */
 function ParamBanners() {
@@ -84,7 +86,10 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
   };
 
   return (
-    <AuthCard title="Reset Password">
+    <AuthLayout mode="signin" showTabs={false}>
+      <h1 className="font-[family-name:var(--font-baloo)] font-extrabold text-3xl text-indigo-950 text-center mb-1">
+        Reset your password
+      </h1>
       <AnimatePresence mode="wait">
         {sent ? (
           <motion.div
@@ -135,12 +140,8 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
                 error={undefined}
                 required
               />
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-violet-600 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
-              >
-                {loading ? "Sending..." : "Send Reset Link"}
+              <button type="submit" disabled={loading} className={CTA_BTN}>
+                {loading ? "Sending..." : "Send reset link"}
               </button>
             </form>
             <p className="mt-6 text-center text-sm text-indigo-900">
@@ -154,7 +155,7 @@ function ForgotPasswordView({ onBack }: { onBack: () => void }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </AuthCard>
+    </AuthLayout>
   );
 }
 
@@ -344,18 +345,24 @@ function LoginForm() {
   }
 
   return (
-    <AuthCard title="Welcome Back">
+    <AuthLayout mode="signin">
+      <h1 className="font-[family-name:var(--font-baloo)] font-extrabold text-3xl text-indigo-950 text-center">
+        Welcome back!
+      </h1>
+      <p className="text-[15px] text-zinc-600 mt-1.5 mb-6 text-center">
+        Sign in to see your child&apos;s progress.
+      </p>
       <GoogleButton />
       <Divider />
       <Suspense fallback={null}>
         <ParamBanners />
       </Suspense>
       {errors.general && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm">
           {errors.general}
         </div>
       )}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <FormField
           id="email"
           label="Email"
@@ -363,7 +370,7 @@ function LoginForm() {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="your@email.com"
+          placeholder="you@example.com"
           error={errors.email}
           required
         />
@@ -379,47 +386,34 @@ function LoginForm() {
             error={errors.password}
             required
           />
-          <div className="mt-1 flex items-center justify-between">
+          <div className="mt-2 flex items-center justify-between">
             <button
               type="button"
               onClick={handleMagicLink}
               disabled={magicSending}
-              className="text-sm text-indigo-600 hover:underline font-medium disabled:opacity-50"
+              className="text-[13px] font-bold text-indigo-700 hover:underline disabled:opacity-50"
             >
-              {magicSending ? "Sending link…" : "Email me a link"}
+              {magicSending ? "Sending link…" : "Email me a sign-in link"}
             </button>
             <button
               type="button"
               onClick={() => setView("forgot")}
-              className="text-sm text-indigo-600 hover:underline font-medium"
+              className="text-[13px] font-bold text-indigo-700 hover:underline"
             >
-              Forgot password?
+              Forgot it?
             </button>
           </div>
         </div>
         {magicSent && (
-          <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-800">
             Check <span className="font-semibold">{magicSent}</span> for a sign-in link.
           </div>
         )}
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white py-3 rounded-lg font-medium hover:from-indigo-700 hover:to-violet-600 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-md"
-        >
-          {isLoading ? "Signing In..." : "Sign In"}
+        <button type="submit" disabled={isLoading} className={CTA_BTN}>
+          {isLoading ? "Signing in…" : "Sign in"}
         </button>
       </form>
-      <p className="mt-6 text-center text-sm text-indigo-900">
-        Don&apos;t have an account?{" "}
-        <Link
-          href="/signup"
-          className="text-indigo-600 font-medium hover:underline"
-        >
-          Sign up for free
-        </Link>
-      </p>
-    </AuthCard>
+    </AuthLayout>
   );
 }
 
