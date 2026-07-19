@@ -7,6 +7,7 @@ import { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
+import { levelNameToGradeKey, gradeOrder as ASSESSMENT_GRADE_ORDER } from "@/lib/assessment/questions";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import JourneyMap, { type JGrade } from "./_components/JourneyMap";
 import { BookOpen, Type, Newspaper, MessageCircle } from "lucide-react";
@@ -204,12 +205,26 @@ function JourneyContent() {
   // Build per-grade index map for free tier gating
   const gradeCounters = new Map<string, number>();
 
-  // Assign statuses. The journey is a linear spine: everything completed
-  // stays gold, the FIRST not-yet-completed lesson is the single "current"
-  // node (green, playable — whether or not its learn section was started),
-  // and everything after it is locked/premium. Marking every *started*
-  // lesson as its own unlocked node was the "everything ahead is unlocked"
-  // bug — a kid who peeked into several lessons lit them all up green.
+  // Placement floor: the journey begins at the grade the child TESTED into.
+  // reading_level ("Growing Reader" → "2nd", etc.) → a grade key; every lesson
+  // in a LOWER grade is treated as already mastered (tested out) so the first
+  // "current" node lands on the tested grade's first lesson. No test yet →
+  // levelNameToGradeKey(null) = "kindergarten" → starts at K (unchanged).
+  const CATALOG_GRADE_KEY: Record<string, string> = {
+    "Kindergarten": "kindergarten", "1st Grade": "1st", "2nd Grade": "2nd", "3rd Grade": "3rd", "4th Grade": "4th",
+  };
+  const testedIdx = ASSESSMENT_GRADE_ORDER.indexOf(levelNameToGradeKey(child.reading_level ?? null));
+  const belowTested = (catalogGrade: string) => {
+    const k = CATALOG_GRADE_KEY[catalogGrade] as (typeof ASSESSMENT_GRADE_ORDER)[number] | undefined;
+    return k ? ASSESSMENT_GRADE_ORDER.indexOf(k) < testedIdx : false;
+  };
+
+  // Assign statuses. The journey is a linear spine: everything completed (or
+  // below the tested placement floor) stays gold, the FIRST not-yet-completed
+  // lesson is the single "current" node (green, playable), and everything after
+  // it is locked/premium. Marking every *started* lesson as its own unlocked
+  // node was the "everything ahead is unlocked" bug — a kid who peeked into
+  // several lessons lit them all up green.
   let foundCurrent = false;
   const lessonsWithStatus: LessonWithStatus[] = allLessons.map((lesson, idx) => {
     // Track per-grade index
@@ -217,7 +232,7 @@ function JourneyContent() {
     gradeCounters.set(lesson.grade, gradeIdx + 1);
 
     let status: LessonStatus;
-    if (hasCompleted(lesson.standardId)) {
+    if (hasCompleted(lesson.standardId) || belowTested(lesson.grade)) {
       status = "completed";
     } else if (!foundCurrent) {
       foundCurrent = true;
