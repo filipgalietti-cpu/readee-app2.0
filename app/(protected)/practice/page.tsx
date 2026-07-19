@@ -1770,10 +1770,14 @@ function CompletionScreen({
           }),
         );
         if (rows.length > 0) {
-          await supabase.from("practice_results").insert(rows);
+          const { error } = await supabase.from("practice_results").insert(rows);
+          if (error) console.error("[practice] failed to save practice_results:", error);
         }
       } else {
-        await supabase.from("practice_results").insert(payload);
+        // Check the error — a silent insert failure here (a rolled-back trigger,
+        // RLS, etc.) once broke every practice save app-wide for days unnoticed.
+        const { error } = await supabase.from("practice_results").insert(payload);
+        if (error) console.error("[practice] failed to save practice_results:", error);
       }
 
       // Per-question fidelity — every answered question becomes a row in
