@@ -70,6 +70,7 @@ interface JState {
   chestChar: boolean; chestRewardText: string; chestHint: boolean; chestHintText: string;
   justCompleted: string | null; justUnlocked: string | null; justChest: string | null;
   chestFlash: string | null; justGate: string | null; nudged: string | null;
+  hoveredNode: string | null;
 }
 interface Particle { key: string; x: number; y: number; w: number; h: number; r: number; c: string; dx: number; dy: number; rot: number; dur: number; go: boolean }
 interface Flyer { key: string; x: number; y: number; dx: number; dy: number; dur: number; delay: number; go: boolean }
@@ -173,6 +174,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       chestOverlay: false, chestOverlayIn: false, chestReward: false, chestTitle: "",
       chestChar: false, chestRewardText: "", chestHint: false, chestHintText: "",
       justCompleted: null, justUnlocked: null, justChest: null, chestFlash: null, justGate: null, nudged: null,
+      hoveredNode: null,
     };
   }
   // unit index helper (chests keyed by absolute unit number, matching buildLayout)
@@ -548,9 +550,30 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
                 : prem ? () => this.props.onPremium()
                 : () => this.nudge(l.id);
               const startAnim = s.justUnlocked === l.id ? "rj-startdrop .5s cubic-bezier(0.34,1.56,0.64,1) both,rj-bob 1.6s ease-in-out .55s infinite" : "rj-bob 1.6s ease-in-out infinite";
+              // Hover tooltip ("what's up next") — Claude Design a205aaa2 update.
+              const tipRing = done ? "#fde68a" : cur ? "#d1fae5" : "#f4f4f5";
+              const tipAccent = done ? "#b45309" : cur ? "#059669" : "#a1a1aa";
+              const tipStatus = done ? `Completed · ${nStars} stars` : cur ? "Ready to start!" : "Locked — finish the path to get here";
+              const tipPos: React.CSSProperties = cur ? { top: "calc(100% + 14px)" } : { bottom: "calc(100% + 14px)" };
+              const tipArrowPos: React.CSSProperties = cur ? { top: -5 } : { bottom: -5 };
+              const tipArrowClip = cur ? "polygon(0 0, 100% 0, 0 100%)" : "polygon(100% 0, 100% 100%, 0 100%)";
               return (
                 <div key={l.id} style={{ position: "absolute", left: l.x, top: l.y, transform: "translate(-50%,-50%)", zIndex: z }}>
-                  <div style={{ position: "relative", width: size, height: size }}>
+                  <div
+                    style={{ position: "relative", width: size, height: size }}
+                    onMouseEnter={() => this.setState({ hoveredNode: l.id })}
+                    onMouseLeave={() => this.setState({ hoveredNode: null })}
+                  >
+                    {s.hoveredNode === l.id && (
+                      <div style={{ position: "absolute", left: "50%", ...tipPos, transform: "translateX(-50%)", zIndex: 40, width: 200, pointerEvents: "none" }}>
+                        <div style={{ background: "#fff", borderRadius: 16, padding: "11px 14px", boxShadow: `0 10px 28px -8px rgba(30,27,75,.35),inset 0 0 0 2px ${tipRing}`, textAlign: "left" }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: 1.2, textTransform: "uppercase", color: tipAccent }}>{`Lesson ${l.num} of ${l.cnt} · ${l.unit}`}</div>
+                          <div style={{ fontSize: 15, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.2, marginTop: 1 }}>{l.title}</div>
+                          <div style={{ fontSize: 11.5, fontWeight: 700, color: "#71717a", marginTop: 3 }}>{tipStatus}</div>
+                        </div>
+                        <div style={{ position: "absolute", left: "50%", ...tipArrowPos, width: 12, height: 12, background: "#fff", transform: "translateX(-50%) rotate(45deg)", boxShadow: `inset 0 0 0 2px ${tipRing}`, clipPath: tipArrowClip }} />
+                      </div>
+                    )}
                     {cur && <>
                       <div style={{ position: "absolute", left: "50%", top: "50%", width: size, height: size, borderRadius: 999, border: "4px solid #10b981", animation: "rj-halo 1.9s ease-out infinite", pointerEvents: "none" }} />
                       <div onClick={onClick} style={{ position: "absolute", left: "50%", bottom: "calc(100% + 14px)", animation: startAnim, background: "#fff", color: "#059669", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, letterSpacing: ".06em", padding: "6px 16px", borderRadius: 999, boxShadow: "0 6px 16px -4px rgba(30,27,75,.35),inset 0 0 0 2px #d1fae5", whiteSpace: "nowrap", transform: "translate(-50%,0)", cursor: "pointer" }}>START</div>
