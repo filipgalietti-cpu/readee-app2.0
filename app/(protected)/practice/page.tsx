@@ -39,6 +39,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import LevelProgressCard from "@/app/_components/LevelProgressCard";
+import { didLevelUp } from "@/lib/levels/levels";
 import type { LucideIcon } from "lucide-react";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
@@ -1661,6 +1662,20 @@ function CompletionScreen({
     return () => clearTimeout(id);
   }, [sealPhase]);
 
+  // Did this session cross a reader level? If so, hold the summary praise voice
+  // until the level-up burst (+ its jingle) finishes, so they don't talk over
+  // each other. leveledUp is only known once priorLifetime has loaded.
+  const leveledUp =
+    priorLifetime !== null && didLevelUp(priorLifetime, priorLifetime + carrotsEarned);
+  const [levelUpDone, setLevelUpDone] = useState(false);
+  // Safety net: if the burst's onDone ever misfires, release the praise anyway
+  // (the full burst is ~6.5s) so it's never lost.
+  useEffect(() => {
+    if (!leveledUp || levelUpDone || sealPhase) return;
+    const id = setTimeout(() => setLevelUpDone(true), 8000);
+    return () => clearTimeout(id);
+  }, [leveledUp, levelUpDone, sealPhase]);
+
   // Confetti pieces
   const confettiPieces = useMemo(() => {
     if (correctCount < totalQ - 1) return [];
@@ -1708,6 +1723,10 @@ function CompletionScreen({
      is already false and this fires right away on the summary. */
   useEffect(() => {
     if (sealPhase) return;
+    // Wait for the pre-session anchor before deciding, then hold the praise
+    // until the level-up burst is done so the two audio tracks don't collide.
+    if (priorLifetime === null) return;
+    if (leveledUp && !levelUpDone) return;
     const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
     let file: string;
     if (correctCount === totalQ) {
@@ -1721,7 +1740,7 @@ function CompletionScreen({
     }
     playCompletionUrl(getAudioUrl("feedback", file));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sealPhase]);
+  }, [sealPhase, priorLifetime, leveledUp, levelUpDone]);
 
   /* ── Save results ── */
   useEffect(() => {
@@ -1997,6 +2016,7 @@ function CompletionScreen({
                 childId={child.id}
                 outfitId={child.equipped_items?.outfit ?? null}
                 href={`/levels?child=${child.id}`}
+                onLevelUpComplete={() => setLevelUpDone(true)}
               />
             </motion.div>
           )}

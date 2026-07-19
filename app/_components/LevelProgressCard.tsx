@@ -6,6 +6,7 @@ import Link from "next/link";
 import { computeLevel, didLevelUp, levelUpBonus, READER_LEVELS } from "@/lib/levels/levels";
 import { Carrot, ChevronRight } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { savedOk } from "@/lib/db/checked-write";
 import LevelUpBurst from "@/app/_components/LevelUpBurst";
 
 /**
@@ -32,12 +33,17 @@ export default function LevelProgressCard({
   /** Whether the kid is on the max level + already past max threshold.
    *  Shown as "You've maxed every level — keep reading!" */
   href = null,
+  /** Fires once the level-up burst (all steps) has finished animating. Lets the
+   *  caller sequence follow-on audio (e.g. the summary praise voice) so it
+   *  doesn't talk over the level-up jingle. Not called when no level-up. */
+  onLevelUpComplete,
 }: {
   priorLifetimeCarrots: number;
   sessionCarrots: number;
   childId?: string | null;
   outfitId?: string | null;
   href?: string | null;
+  onLevelUpComplete?: () => void;
 }) {
   const prior = Math.max(0, Math.floor(priorLifetimeCarrots || 0));
   const session = Math.max(0, Math.floor(sessionCarrots || 0));
@@ -72,7 +78,7 @@ export default function LevelProgressCard({
       const supabase = supabaseBrowser();
       const { data } = await supabase.from("children").select("carrots").eq("id", childId).single();
       const current = Number(data?.carrots) || 0;
-      await supabase.from("children").update({ carrots: current + totalBonus }).eq("id", childId);
+      await savedOk("levelup:bonus", supabase.from("children").update({ carrots: current + totalBonus }).eq("id", childId));
     })();
   }, [leveledUp, childId, totalBonus]);
 
@@ -96,7 +102,7 @@ export default function LevelProgressCard({
             bunnyOutfit={outfitId}
             carrotBonus={levelUpBonus(stepLevelNum)}
             compact={hasNextStep}
-            onDone={hasNextStep ? () => setStepIdx(idx + 1) : undefined}
+            onDone={hasNextStep ? () => setStepIdx(idx + 1) : onLevelUpComplete}
           />
         </div>
         {href && (
