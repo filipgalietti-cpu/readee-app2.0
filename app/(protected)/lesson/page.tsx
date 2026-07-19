@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { savedOk } from "@/lib/db/checked-write";
 import { Child } from "@/lib/db/types";
 import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
@@ -611,12 +612,12 @@ function LessonContent() {
     async (section: string, score: number) => {
       if (!child || !lessonId) return;
       const supabase = supabaseBrowser();
-      await supabase.from("lessons_progress").insert({
+      await savedOk("lesson:progress", supabase.from("lessons_progress").insert({
         child_id: child.id,
         lesson_id: lessonId,
         section,
         score,
-      });
+      }));
     },
     [child, lessonId]
   );
@@ -632,10 +633,10 @@ function LessonContent() {
         .single();
 
       const currentCarrots = (data as { carrots: number } | null)?.carrots ?? 0;
-      await supabase
+      await savedOk("lesson:carrots", supabase
         .from("children")
         .update({ carrots: currentCarrots + amount })
-        .eq("id", child.id);
+        .eq("id", child.id));
 
       setTotalCarrots((prev) => prev + amount);
     },
@@ -805,14 +806,14 @@ function LessonContent() {
       }
     }
 
-    await supabase
+    await savedOk("lesson:streak", supabase
       .from("children")
       .update({
         stories_read: newStoriesRead,
         streak_days: newStreak,
         last_lesson_at: now.toISOString(),
       })
-      .eq("id", child.id);
+      .eq("id", child.id));
 
     setStreakDays(newStreak);
 
@@ -853,10 +854,10 @@ function LessonContent() {
       if (currentIdx >= 0 && currentIdx < gradeOrder.length - 1) {
         const nextGrade = gradeOrder[currentIdx + 1];
         const nextLevelName = grades[nextGrade].reading_level_name;
-        await supabase
+        await savedOk("lesson:level-up", supabase
           .from("children")
           .update({ reading_level: nextLevelName })
-          .eq("id", child.id);
+          .eq("id", child.id));
         setShowLevelUp(true);
         setNewLevelName(nextLevelName);
       }

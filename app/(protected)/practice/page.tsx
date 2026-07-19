@@ -20,6 +20,7 @@ import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { PracticeResultSchema } from "@/lib/schemas";
+import { savedOk } from "@/lib/db/checked-write";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { buildSharpenDeck, parseStandardFromQuestionId, type SharpenDeck } from "@/lib/adaptive/build-deck";
 import { getStandardsForGrade, findStandardById } from "@/lib/data/all-standards";
@@ -1820,10 +1821,10 @@ function CompletionScreen({
           .eq("id", child.id)
           .single();
         if (current) {
-          await supabase
+          await savedOk("practice:carrots", supabase
             .from("children")
             .update({ carrots: (current.carrots || 0) + carrotsEarned })
-            .eq("id", child.id);
+            .eq("id", child.id));
         }
       }
 

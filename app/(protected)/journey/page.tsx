@@ -8,6 +8,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
 import { levelNameToGradeKey, gradeOrder as ASSESSMENT_GRADE_ORDER } from "@/lib/assessment/questions";
+import { savedOk } from "@/lib/db/checked-write";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import JourneyMap, { type JGrade } from "./_components/JourneyMap";
 import { BookOpen, Type, Newspaper, MessageCircle } from "lucide-react";
@@ -180,10 +181,13 @@ function JourneyContent() {
     const updated = { ...c, opened_chests: nextOpened, carrots: nextCarrots };
     childRef.current = updated; // sync so rapid successive payouts accumulate
     setChild(updated);
-    await supabaseBrowser()
-      .from("children")
-      .update({ opened_chests: nextOpened, carrots: nextCarrots })
-      .eq("id", c.id);
+    await savedOk(
+      "journey:reward",
+      supabaseBrowser()
+        .from("children")
+        .update({ opened_chests: nextOpened, carrots: nextCarrots })
+        .eq("id", c.id),
+    );
   }, []);
 
   if (loading || !child) {

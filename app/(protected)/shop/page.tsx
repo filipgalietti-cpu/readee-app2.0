@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { savedOk } from "@/lib/db/checked-write";
 import { Child, ShopPurchase, EquippedItems } from "@/lib/db/types";
 import {
   SHOP_CATEGORIES,
@@ -221,7 +222,7 @@ function ShopContent({
 
     const supabase = supabaseBrowser();
     const newCarrots = child.carrots - MYSTERY_BOX_PRICE;
-    await supabase.from("children").update({ carrots: newCarrots }).eq("id", child.id);
+    await savedOk("shop:mystery-spend", supabase.from("children").update({ carrots: newCarrots }).eq("id", child.id));
     setChild({ ...child, carrots: newCarrots });
 
     const reward = rollMysteryBox(ownedIds);
@@ -229,10 +230,10 @@ function ShopContent({
     // Apply reward
     if (reward.type === "carrots" || reward.type === "jackpot") {
       const bonus = reward.amount;
-      await supabase.from("children").update({ carrots: newCarrots + bonus }).eq("id", child.id);
+      await savedOk("shop:mystery-bonus", supabase.from("children").update({ carrots: newCarrots + bonus }).eq("id", child.id));
       setChild({ ...child, carrots: newCarrots + bonus });
     } else if (reward.type === "item") {
-      await supabase.from("shop_purchases").insert({ child_id: child.id, item_id: reward.item.id });
+      await savedOk("shop:mystery-item", supabase.from("shop_purchases").insert({ child_id: child.id, item_id: reward.item.id }));
       setPurchases([...purchases, { id: crypto.randomUUID(), child_id: child.id, item_id: reward.item.id, purchased_at: new Date().toISOString() }]);
     } else if (reward.type === "multiplier") {
       setMysteryBoxMultiplier(reward.multiplier);

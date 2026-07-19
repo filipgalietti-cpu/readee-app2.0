@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { savedOk } from "@/lib/db/checked-write";
 import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { useAudio } from "@/lib/audio/use-audio";
@@ -275,12 +276,12 @@ function StoriesContent() {
                 .eq("id", childId)
                 .single();
               if (current) {
-                await supabase
+                await savedOk("stories:carrots", supabase
                   .from("children")
                   .update({
                     carrots: (current.carrots || 0) + carrotsForStory,
                   })
-                  .eq("id", childId);
+                  .eq("id", childId));
               }
             }
           } catch (e) {
