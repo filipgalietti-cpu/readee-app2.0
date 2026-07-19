@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
@@ -160,6 +160,31 @@ function JourneyContent() {
     };
   }, [childIdParam, router]);
 
+  // Keep a live ref to the child so JourneyMap's reward callbacks (fired from
+  // outside React render, sometimes back-to-back — chest then trophy) always
+  // read + accumulate the latest carrots/opened_chests instead of clobbering
+  // each other on a stale snapshot.
+  const childRef = useRef<Child | null>(child);
+  useEffect(() => { childRef.current = child; }, [child]);
+
+  // Credit a journey reward to the wallet exactly once, persisting the opened
+  // chest/trophy id so re-opening never re-pays. Idempotent via opened_chests.
+  const creditReward = useCallback(async (rewardId: string, amount: number) => {
+    const c = childRef.current;
+    if (!c) return;
+    const already = c.opened_chests ?? [];
+    if (already.includes(rewardId)) return;
+    const nextOpened = [...already, rewardId];
+    const nextCarrots = (c.carrots ?? 0) + amount;
+    const updated = { ...c, opened_chests: nextOpened, carrots: nextCarrots };
+    childRef.current = updated; // sync so rapid successive payouts accumulate
+    setChild(updated);
+    await supabaseBrowser()
+      .from("children")
+      .update({ opened_chests: nextOpened, carrots: nextCarrots })
+      .eq("id", c.id);
+  }, []);
+
   if (loading || !child) {
     return <SkeletonPage cards={5} />;
   }
@@ -280,6 +305,9 @@ function JourneyContent() {
         carrots={child.carrots || 0}
         equippedOutfitId={child.equipped_items?.outfit ?? "bunny_classic"}
         justCompletedId={justCompletedId}
+        openedChests={child.opened_chests ?? []}
+        onChestReward={(chestId, carrots) => creditReward(chestId, carrots)}
+        onTrophyReward={(carrots) => creditReward("__trophy__", carrots)}
         onStart={(l) => router.push(`/learn?child=${childId}&standard=${l.id}`)}
         onPremium={() => setShowPaywall(true)}
       />

@@ -54,6 +54,9 @@ export interface Child {
   streak_days: number;
   last_lesson_at: string | null;
   equipped_items: EquippedItems;
+  /** Journey reward chests/trophy already opened (chest node ids + "__trophy__"),
+   *  so each reward pays carrots exactly once. */
+  opened_chests?: string[];
   created_at: string;
 }
 

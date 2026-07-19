@@ -35,6 +35,9 @@ export interface JourneyMapProps {
   onChestReward?: (chestId: string, carrots: number) => void;
   /** Grant the end-of-journey trophy reward. */
   onTrophyReward?: (carrots: number) => void;
+  /** Chest node ids (+ "__trophy__") already claimed — so a chest renders open
+   *  and never re-pays. */
+  openedChests?: string[];
 }
 
 const ACC: Record<string, { grad: string; dark: string }> = {
@@ -140,31 +143,31 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
 
   initialState(): JState {
     const statuses: JState["statuses"] = {}, stars: Record<string, number> = {}, opened: Record<string, boolean> = {};
+    // A chest renders open ONLY if it's been claimed (persisted opened_chests).
+    // A finished-unit chest that's never been claimed stays closed so the unlock
+    // cinematic can open it and pay the carrots (once).
+    const openedList = this.props.openedChests ?? [];
     this.props.grades.forEach((g) => g.units.forEach((u) => {
-      const allDone = u.lessons.every((l) => l.status === "completed");
       u.lessons.forEach((l, k) => {
         // Map real statuses → the three the map animates with.
         statuses[l.id] = l.status === "completed" ? "completed"
           : (l.status === "current" || l.status === "started") ? "current" : "locked";
         if (l.status === "completed") stars[l.id] = k % 3 === 1 ? 2 : 3;
       });
-      opened["chest" + this.unitNoOf(u)] = allDone;
+      const chestId = "chest" + this.unitNoOf(u);
+      opened[chestId] = openedList.includes(chestId);
     }));
     // Return trigger: rewind to the pre-unlock frame so playUnlock() can
     // animate it. The just-finished lesson starts as the green "current"
     // node (where the bunny stands), and the next lesson is re-locked so the
-    // walk can flip it open. Chests re-close for any unit no longer fully
-    // done. Without this the DB already shows both as their final state and
-    // the cinematic would have nothing to reveal.
+    // walk can flip it open. (Chests already read from openedList above, so an
+    // unclaimed chest is closed and ready for the walk to open + pay it.)
     const jc = this.props.justCompletedId;
     if (jc && statuses[jc] !== undefined) {
       statuses[jc] = "current";
       const idx = this.lessonsL.findIndex((l) => l.id === jc);
       const nextLesson = this.lessonsL[idx + 1];
       if (nextLesson) statuses[nextLesson.id] = "locked";
-      this.props.grades.forEach((g) => g.units.forEach((u) => {
-        opened["chest" + this.unitNoOf(u)] = u.lessons.every((l) => statuses[l.id] === "completed");
-      }));
     }
     return {
       statuses, stars, opened, gatesOpen: {}, carrots: this.props.carrots ?? 0,
