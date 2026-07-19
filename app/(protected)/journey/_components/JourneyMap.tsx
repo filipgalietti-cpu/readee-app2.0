@@ -245,6 +245,12 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   curLesson(): LessonN | undefined { return this.lessonsL.find((l) => this.state.statuses[l.id] === "current"); }
   idlePosFor(x: number, y: number) { return { x: x < this.CX ? x + 44 : x - 140, y: y - 66 }; }
   canvasTop() { const c = this.canvasRef.current; return c ? c.getBoundingClientRect().top + window.scrollY : 0; }
+  // Smooth-scroll the current lesson node into view (the "jump to my lesson" button).
+  scrollToCurrent() {
+    const cur = this.curLesson();
+    if (!cur) return;
+    window.scrollTo({ top: Math.max(0, this.canvasTop() + cur.y - window.innerHeight * 0.45), behavior: "smooth" });
+  }
   placeBunny(x: number, y: number, sx: number, sy: number, rot: number) {
     const b = this.bunnyRef.current; if (!b) return;
     b.style.left = x + "px"; b.style.top = y + "px";
@@ -486,9 +492,10 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(180deg,#cfe8fd 0%,#dbeafe 22%,#fdf3d0 46%,#d9f2dd 66%,#fde9c4 86%,#f8d3e2 100%)" }} />
 
         <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 0 120px" }}>
-          {/* Header */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "26px 24px 6px", textAlign: "center" }}>
-            <div style={{ fontSize: 25, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.1 }}>{this.props.kidName}&apos;s Reading Journey</div>
+          {/* Header — sticky frosted bar so the name + streak + carrots stay
+              visible as the kid scrolls the map. */}
+          <div style={{ position: "sticky", top: 0, zIndex: 40, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, padding: "12px 24px 12px", textAlign: "center", background: "rgba(255,255,255,.62)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,.5)" }}>
+            <div style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.1 }}>{this.props.kidName}&apos;s Reading Journey</div>
             <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(255,255,255,.85)", borderRadius: 999, padding: "5px 12px", boxShadow: "0 2px 8px -2px rgba(30,27,75,.18)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="#f97316" stroke="#f97316" strokeWidth="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg>
@@ -679,6 +686,19 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               </div>
             </div>
           </div>
+        )}
+
+        {/* Jump-to-my-lesson button — scrolls to the current node. Hidden during
+            the unlock cinematic so it doesn't fight the camera. */}
+        {!s.busy && !s.chestOverlay && (
+          <button
+            onClick={() => this.scrollToCurrent()}
+            title="Jump to my lesson"
+            style={{ position: "fixed", right: 20, bottom: 24, zIndex: 45, display: "flex", alignItems: "center", gap: 8, background: "#4f46e5", color: "#fff", border: "none", borderRadius: 999, padding: "12px 18px", cursor: "pointer", boxShadow: "0 8px 24px -6px rgba(79,70,229,.6)", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15 }}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg>
+            My lesson
+          </button>
         )}
       </div>
     );
