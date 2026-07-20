@@ -9,6 +9,7 @@ import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
 import { levelNameToGradeKey, gradeOrder as ASSESSMENT_GRADE_ORDER } from "@/lib/assessment/questions";
 import { savedOk } from "@/lib/db/checked-write";
+import { audioManager } from "@/lib/audio/audio-manager";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import JourneyMap, { type JGrade } from "./_components/JourneyMap";
 import { BookOpen, Type, Newspaper, MessageCircle } from "lucide-react";
@@ -327,7 +328,13 @@ function JourneyContent() {
         openedChests={child.opened_chests ?? []}
         onChestReward={(chestId, carrots) => creditReward(chestId, carrots)}
         onTrophyReward={(carrots) => creditReward("__trophy__", carrots)}
-        onStart={(l) => router.push(`/learn?child=${childId}&standard=${l.id}`)}
+        onStart={(l) => {
+          // Unlock audio inside the launch gesture (Howler.ctx starts suspended;
+          // it carries into /learn since it's the same tab) so the lesson's
+          // karaoke audio isn't silently blocked by the autoplay policy.
+          audioManager?.resumeContextSync();
+          router.push(`/learn?child=${childId}&standard=${l.id}`);
+        }}
         onPremium={() => setShowPaywall(true)}
       />
     </>

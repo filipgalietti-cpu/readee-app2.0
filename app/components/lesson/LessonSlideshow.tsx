@@ -652,6 +652,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
   const handleNext = useCallback(() => {
     runIdRef.current++;
     clearTimer();
+    // Ensure audio is unlocked from this tap gesture (Howler.ctx can start
+    // suspended when the lesson is entered without a prior gesture on the tab).
+    if (audioManager) audioManager.resumeContextSync();
     if (audioManager) audioManager.stop();
     if (isLastSlide) { onComplete(); } else { setCurrentSlide((s) => s + 1); }
   }, [isLastSlide, onComplete, clearTimer]);
