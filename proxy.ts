@@ -32,10 +32,11 @@ const PLAY_MODE_BLOCKED_PREFIXES = [
   "/settings",
 ];
 
-/** Routes that require premium — redirect free users to /upgrade */
-const PREMIUM_ONLY_ROUTES: Record<string, string> = {
-  "/analytics": "analytics",
-};
+/** Routes that require premium — redirect free users to /upgrade.
+ *  /analytics is intentionally NOT here: free users now land on the page and
+ *  see the in-page free preview + upgrade overlay (a soft conversion surface),
+ *  instead of a hard redirect. It still requires auth (AUTH_REQUIRED_PREFIXES). */
+const PREMIUM_ONLY_ROUTES: Record<string, string> = {};
 
 /** Routes that require authentication — redirect to /login */
 const AUTH_REQUIRED_PREFIXES = [

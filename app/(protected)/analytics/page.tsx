@@ -1,19 +1,20 @@
 "use client";
 
-import { Suspense, useEffect, useState, useMemo, useRef } from "react";
+import { Suspense, useEffect, useState, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
-import { getAllStandards as fetchAllStandards } from "@/lib/data/all-standards";
+import { getAllStandards as fetchAllStandards, getStandardsForGrade } from "@/lib/data/all-standards";
+import { gradeToKey } from "@/lib/assessment/questions";
 import { useChildStore } from "@/lib/stores/child-store";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
-import { BookOpen, Newspaper, Type, MessageCircle, BarChart3, Rocket, TrendingUp, Zap, Sprout, Star, FileText, Target, Carrot } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, BarChart3, Sparkles, Lock, Check, ChevronLeft, ChevronRight, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 
@@ -37,17 +38,38 @@ interface PracticeResult {
   completed_at: string;
 }
 
+interface StandardStat {
+  standard_id: string;
+  name: string;
+  domain: string;
+  attempted: number;
+  correct: number;
+  accuracy: number;
+}
+
 type DateRange = "week" | "month" | "all";
+type Tab = "overview" | "report" | "map";
+type Status = "mastered" | "practicing" | "help" | "none";
 
 /* ─── Constants ──────────────────────────────────────── */
 
-
-const DOMAIN_META: Record<string, { icon: LucideIcon; color: string; darkColor: string; bg: string; darkBg: string; border: string; barColor: string; total: number }> = {
-  "Reading Literature":         { icon: BookOpen,       color: "text-violet-700",  darkColor: "dark:text-violet-400",  bg: "bg-violet-50",  darkBg: "dark:bg-violet-950/30", border: "border-violet-200",  barColor: "#8b5cf6", total: 8 },
-  "Reading Informational Text": { icon: Newspaper,      color: "text-blue-700",   darkColor: "dark:text-blue-400",   bg: "bg-blue-50",    darkBg: "dark:bg-blue-950/30",   border: "border-blue-200",    barColor: "#3b82f6", total: 9 },
-  "Foundational Skills":        { icon: Type,            color: "text-emerald-700", darkColor: "dark:text-emerald-400", bg: "bg-emerald-50", darkBg: "dark:bg-emerald-950/30", border: "border-emerald-200", barColor: "#10b981", total: 14 },
-  "Language":                   { icon: MessageCircle,   color: "text-amber-700",  darkColor: "dark:text-amber-400",  bg: "bg-amber-50",   darkBg: "dark:bg-amber-950/30",  border: "border-amber-200",   barColor: "#f59e0b", total: 5 },
+const DOMAIN_META: Record<string, { icon: LucideIcon; accent: string; iconBg: string; iconStroke: string; subtitle: string; label: string }> = {
+  "Foundational Skills":        { icon: Type,          accent: "#059669", iconBg: "#d1fae5", iconStroke: "#059669", subtitle: "Letters, sounds, phonics",    label: "Foundational Skills" },
+  "Reading Literature":         { icon: BookOpen,      accent: "#7c3aed", iconBg: "#ede9fe", iconStroke: "#8b5cf6", subtitle: "Stories, characters, retelling", label: "Reading Literature" },
+  "Language":                   { icon: MessageCircle, accent: "#b45309", iconBg: "#fef3c7", iconStroke: "#f59e0b", subtitle: "Grammar, vocabulary",         label: "Language" },
+  "Reading Informational Text": { icon: Newspaper,     accent: "#2563eb", iconBg: "#dbeafe", iconStroke: "#2563eb", subtitle: "Nonfiction, main idea",       label: "Informational Text" },
 };
+
+const DOMAIN_ORDER = ["Foundational Skills", "Reading Literature", "Language", "Reading Informational Text"];
+
+const STATUS_META: Record<Status, { fill: string; dot: string; label: string }> = {
+  mastered:   { fill: "#10b981", dot: "#059669", label: "Mastered" },
+  practicing: { fill: "#818cf8", dot: "#6366f1", label: "Practicing" },
+  help:       { fill: "#f59e0b", dot: "#b45309", label: "Needs help" },
+  none:       { fill: "#f4f4f5", dot: "#a1a1aa", label: "Not started" },
+};
+
+const CARD = "1px solid #e4e4e7";
 
 /* ─── Helpers ────────────────────────────────────────── */
 
@@ -60,7 +82,7 @@ function shortName(desc: string): string {
     .replace(/^Recognize and name /i, "")
     .replace(/^Know and apply /i, "");
   const capped = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
-  return capped.length > 60 ? capped.slice(0, 57) + "..." : capped;
+  return capped.length > 48 ? capped.slice(0, 45) + "..." : capped;
 }
 
 function displayGrade(grade: string | null | undefined): string {
@@ -69,79 +91,101 @@ function displayGrade(grade: string | null | undefined): string {
   return grade;
 }
 
-
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-}
-
 function getDateCutoff(range: DateRange): Date | null {
   if (range === "all") return null;
   const now = new Date();
   if (range === "week") {
     now.setDate(now.getDate() - 7);
-  } else {
-    // Current calendar month: 1st of this month at midnight
-    return new Date(now.getFullYear(), now.getMonth(), 1);
+    return now;
   }
-  return now;
+  return new Date(now.getFullYear(), now.getMonth(), 1);
 }
 
-/* ─── useCountUp ─────────────────────────────────────── */
+/** Monday 00:00 of the week containing `d`. */
+function getMonday(d: Date): Date {
+  const date = new Date(d);
+  date.setHours(0, 0, 0, 0);
+  const day = date.getDay(); // 0 = Sun
+  date.setDate(date.getDate() + (day === 0 ? -6 : 1 - day));
+  return date;
+}
 
-function useCountUp(target: number, duration = 800) {
-  const [value, setValue] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const prevTarget = useRef(0);
-  const visible = useRef(false);
+function statsOf(results: PracticeResult[]) {
+  const attempted = results.reduce((s, r) => s + r.questions_attempted, 0);
+  const correct = results.reduce((s, r) => s + r.questions_correct, 0);
+  const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
+  const days = new Set(results.map((r) => new Date(r.completed_at).toDateString())).size;
+  const skills = new Set(results.map((r) => r.standard_id)).size;
+  return { attempted, correct, accuracy, days, skills };
+}
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) { setValue(target); return; }
+function computeStandardStats(
+  results: PracticeResult[],
+  nameMap: Record<string, string>,
+  domainMap: Record<string, string>,
+): StandardStat[] {
+  const map: Record<string, { attempted: number; correct: number }> = {};
+  for (const r of results) {
+    if (!map[r.standard_id]) map[r.standard_id] = { attempted: 0, correct: 0 };
+    map[r.standard_id].attempted += r.questions_attempted;
+    map[r.standard_id].correct += r.questions_correct;
+  }
+  return Object.entries(map).map(([id, s]) => ({
+    standard_id: id,
+    name: nameMap[id] || id,
+    domain: domainMap[id] || "Unknown",
+    attempted: s.attempted,
+    correct: s.correct,
+    accuracy: s.attempted > 0 ? Math.round((s.correct / s.attempted) * 100) : 0,
+  }));
+}
 
-    // If already visible, animate from current value to new target
-    if (visible.current) {
-      const from = prevTarget.current;
-      prevTarget.current = target;
-      if (from === target) return;
-      const start = performance.now();
-      let raf: number;
-      function tick(now: number) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setValue(Math.round(from + (target - from) * eased));
-        if (progress < 1) raf = requestAnimationFrame(tick);
-      }
-      raf = requestAnimationFrame(tick);
-      return () => cancelAnimationFrame(raf);
+function skillStatus(attempted: number, accuracy: number): Status {
+  if (attempted === 0) return "none";
+  if (accuracy >= 80) return "mastered";
+  if (accuracy < 60) return "help";
+  return "practicing";
+}
+
+interface SeriesPoint { label: string; accuracy: number; attempted: number }
+
+/** Bucket results into an accuracy series: by day for "week", by week otherwise. */
+function buildAccuracySeries(results: PracticeResult[], range: DateRange): SeriesPoint[] {
+  const buckets = new Map<string, { order: number; label: string; attempted: number; correct: number }>();
+  for (const r of results) {
+    const d = new Date(r.completed_at);
+    let key: string, order: number, label: string;
+    if (range === "week") {
+      key = d.toDateString();
+      order = d.getTime();
+      label = d.toLocaleDateString("en-US", { weekday: "short" });
+    } else {
+      const m = getMonday(d);
+      key = m.toDateString();
+      order = m.getTime();
+      label = m.toLocaleDateString("en-US", { month: "short", day: "numeric" });
     }
+    const b = buckets.get(key) || { order, label, attempted: 0, correct: 0 };
+    b.attempted += r.questions_attempted;
+    b.correct += r.questions_correct;
+    buckets.set(key, b);
+  }
+  return [...buckets.values()]
+    .sort((a, b) => a.order - b.order)
+    .map((b) => ({ label: b.label, accuracy: b.attempted > 0 ? Math.round((b.correct / b.attempted) * 100) : 0, attempted: b.attempted }));
+}
 
-    // First time: wait for intersection then animate from 0
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !visible.current) {
-          visible.current = true;
-          prevTarget.current = target;
-          const start = performance.now();
-          function tick(now: number) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            setValue(Math.round(eased * target));
-            if (progress < 1) requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [target, duration]);
-
-  return { value, ref };
+/** Weekly question totals, most recent up to 7 weeks. */
+function buildWeeklyVolume(results: PracticeResult[]) {
+  const map = new Map<string, { order: number; label: string; count: number }>();
+  for (const r of results) {
+    const m = getMonday(new Date(r.completed_at));
+    const key = m.toDateString();
+    const b = map.get(key) || { order: m.getTime(), label: m.toLocaleDateString("en-US", { month: "short", day: "numeric" }), count: 0 };
+    b.count += r.questions_attempted;
+    map.set(key, b);
+  }
+  return [...map.values()].sort((a, b) => a.order - b.order).slice(-7);
 }
 
 /* ═══════════════════════════════════════════════════════ */
@@ -171,18 +215,14 @@ function AnalyticsLoader() {
     async function load() {
       const supabase = supabaseBrowser();
       let resolvedId = childIdParam;
-      console.log("[Analytics] URL child param:", childIdParam);
 
-      // If no child param, try child store first, then fetch from DB
       if (!resolvedId) {
         const store = useChildStore.getState();
         const storeChild = store.childData || store.children[0] || null;
-        console.log("[Analytics] Store childData:", store.childData?.id ?? "null", "| Store children:", store.children.length);
         if (storeChild) {
           resolvedId = storeChild.id;
         } else {
           const { data: { user } } = await supabase.auth.getUser();
-          console.log("[Analytics] Supabase user:", user?.id ?? "null");
           if (user) {
             const { data: children } = await supabase
               .from("children")
@@ -190,7 +230,6 @@ function AnalyticsLoader() {
               .eq("parent_id", user.id)
               .order("created_at", { ascending: true })
               .limit(1);
-            console.log("[Analytics] Fetched children from DB:", children?.length ?? 0);
             if (children && children.length > 0) {
               resolvedId = children[0].id;
             }
@@ -198,10 +237,8 @@ function AnalyticsLoader() {
         }
       }
 
-      console.log("[Analytics] Resolved child ID:", resolvedId ?? "null");
       if (!resolvedId) { setLoading(false); return; }
 
-      // Silently update URL so bookmarks/sharing work, without triggering navigation
       if (!childIdParam && resolvedId) {
         window.history.replaceState(null, "", `/analytics?child=${resolvedId}`);
       }
@@ -215,9 +252,6 @@ function AnalyticsLoader() {
 
   if (loading) return <Spinner />;
 
-  // Couldn't resolve a child (parent has none, or stale child param from
-  // a search hit / cross-surface link) — bounce to /dashboard rather than
-  // dead-ending. /dashboard handles the empty-parent case with a real CTA.
   if (!child) {
     router.replace("/dashboard");
     return <Spinner />;
@@ -232,31 +266,33 @@ function AnalyticsLoader() {
 
 function AnalyticsDashboard({ child }: { child: Child }) {
   const allStandards = useMemo(() => fetchAllStandards() as Standard[], []);
-  const [dateRange, setDateRange] = useState<DateRange>("all");
+  const gradeKey = useMemo(() => gradeToKey(child.grade), [child.grade]);
+  const gradeStandards = useMemo(() => getStandardsForGrade(gradeKey) as Standard[], [gradeKey]);
+  const gradeStandardCount = gradeStandards.length;
+
+  const [tab, setTab] = useState<Tab>("overview");
+  const [dateRange, setDateRange] = useState<DateRange>("week");
   const [practiceResults, setPracticeResults] = useState<PracticeResult[]>([]);
   const [loadingData, setLoadingData] = useState(true);
+
   const rawPlan = usePlanStore((s) => s.plan);
   const userPlan = rawPlan ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
+  const isFree = rawPlan !== null && userPlan !== "premium";
+
   const storeChildren = useChildStore((s) => s.children);
   const childIndex = storeChildren.findIndex((c) => c.id === child.id);
   const avatarSrc = getChildAvatarImage(child, childIndex === -1 ? 0 : childIndex);
 
-  // Build standard friendly name map
   const standardNameMap = useMemo(() => {
     const map: Record<string, string> = {};
-    for (const s of allStandards) {
-      map[s.standard_id] = shortName(s.standard_description);
-    }
+    for (const s of allStandards) map[s.standard_id] = shortName(s.standard_description);
     return map;
   }, [allStandards]);
 
-  // Build standard to domain map
   const standardDomainMap = useMemo(() => {
     const map: Record<string, string> = {};
-    for (const s of allStandards) {
-      map[s.standard_id] = s.domain;
-    }
+    for (const s of allStandards) map[s.standard_id] = s.domain;
     return map;
   }, [allStandards]);
 
@@ -264,9 +300,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   useEffect(() => {
     async function fetchResults() {
       const supabase = supabaseBrowser();
-
       fetchPlan();
-
       const { data } = await supabase
         .from("practice_results")
         .select("*")
@@ -276,704 +310,734 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       setLoadingData(false);
     }
     fetchResults();
-  }, [child.id]);
+  }, [child.id, fetchPlan]);
 
-  // Filter by date range
+  /* ── Overview range stats ── */
   const filteredResults = useMemo(() => {
     const cutoff = getDateCutoff(dateRange);
     if (!cutoff) return practiceResults;
     return practiceResults.filter((r) => new Date(r.completed_at) >= cutoff);
   }, [practiceResults, dateRange]);
 
-  // Aggregate stats
-  const totals = useMemo(() => {
-    const attempted = filteredResults.reduce((s, r) => s + r.questions_attempted, 0);
-    const correct = filteredResults.reduce((s, r) => s + r.questions_correct, 0);
-    const accuracy = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
-    const sessions = filteredResults.length;
-    return { attempted, correct, accuracy, sessions };
-  }, [filteredResults]);
+  const prevRangeResults = useMemo(() => {
+    if (dateRange === "all") return null;
+    const now = new Date();
+    let start: Date, end: Date;
+    if (dateRange === "week") {
+      end = new Date(now); end.setDate(end.getDate() - 7);
+      start = new Date(now); start.setDate(start.getDate() - 14);
+    } else {
+      start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+      end = new Date(now.getFullYear(), now.getMonth(), 1);
+    }
+    return practiceResults.filter((r) => {
+      const t = new Date(r.completed_at);
+      return t >= start && t < end;
+    });
+  }, [practiceResults, dateRange]);
 
-  // Per-standard accuracy
-  const standardStats = useMemo(() => {
+  const totals = useMemo(() => statsOf(filteredResults), [filteredResults]);
+  const prevTotals = useMemo(() => (prevRangeResults ? statsOf(prevRangeResults) : null), [prevRangeResults]);
+
+  const rangeStandardStats = useMemo(
+    () => computeStandardStats(filteredResults, standardNameMap, standardDomainMap),
+    [filteredResults, standardNameMap, standardDomainMap],
+  );
+
+  const skillsPracticedInRange = useMemo(
+    () => new Set(filteredResults.map((r) => r.standard_id)).size,
+    [filteredResults],
+  );
+
+  // Snapshot: top-2 "doing well" and bottom-2 "needs help" by accuracy (with attempts)
+  const { doingWell, needsHelp } = useMemo(() => {
+    const withData = rangeStandardStats.filter((s) => s.attempted > 0);
+    const byAcc = [...withData].sort((a, b) => b.accuracy - a.accuracy);
+    return { doingWell: byAcc.slice(0, 2), needsHelp: [...byAcc].reverse().slice(0, 2) };
+  }, [rangeStandardStats]);
+
+  const worstRangeSkill = needsHelp[0];
+
+  // Accuracy-over-time series
+  const accuracySeries = useMemo(() => buildAccuracySeries(filteredResults, dateRange), [filteredResults, dateRange]);
+
+  /* ── Last-7-days summary (banner + premium insight) ── */
+  const last7 = useMemo(() => {
+    const start = new Date(); start.setDate(start.getDate() - 7);
+    const rs = practiceResults.filter((r) => new Date(r.completed_at) >= start);
+    return { ...statsOf(rs), stats: computeStandardStats(rs, standardNameMap, standardDomainMap) };
+  }, [practiceResults, standardNameMap, standardDomainMap]);
+
+  const insightBest = useMemo(() => {
+    const withData = last7.stats.filter((s) => s.attempted > 0);
+    return [...withData].sort((a, b) => b.accuracy - a.accuracy)[0];
+  }, [last7]);
+  const insightWorst = useMemo(() => {
+    const withData = last7.stats.filter((s) => s.attempted > 0);
+    return [...withData].sort((a, b) => a.accuracy - b.accuracy)[0];
+  }, [last7]);
+
+  /* ── All-time per-standard stats (skill map) ── */
+  const allTimeStdStats = useMemo(() => {
     const map: Record<string, { attempted: number; correct: number }> = {};
-    for (const r of filteredResults) {
+    for (const r of practiceResults) {
       if (!map[r.standard_id]) map[r.standard_id] = { attempted: 0, correct: 0 };
       map[r.standard_id].attempted += r.questions_attempted;
       map[r.standard_id].correct += r.questions_correct;
     }
-    return Object.entries(map).map(([id, s]) => ({
-      standard_id: id,
-      name: standardNameMap[id] || id,
-      domain: standardDomainMap[id] || "Unknown",
-      attempted: s.attempted,
-      correct: s.correct,
-      accuracy: s.attempted > 0 ? Math.round((s.correct / s.attempted) * 100) : 0,
-    }));
-  }, [filteredResults, standardNameMap, standardDomainMap]);
+    return map;
+  }, [practiceResults]);
 
-  // Domain-level strengths & weaknesses
-  const domainStats = useMemo(() => {
-    const map: Record<string, { attempted: number; correct: number; skills: typeof standardStats }> = {};
-    for (const s of standardStats) {
-      if (s.attempted < 1 || s.domain === "Unknown") continue;
-      if (!map[s.domain]) map[s.domain] = { attempted: 0, correct: 0, skills: [] };
-      map[s.domain].attempted += s.attempted;
-      map[s.domain].correct += s.correct;
-      map[s.domain].skills.push(s);
+  const totalGradeSkillsPracticed = useMemo(() => {
+    return gradeStandards.filter((s) => (allTimeStdStats[s.standard_id]?.attempted ?? 0) > 0).length;
+  }, [gradeStandards, allTimeStdStats]);
+
+  const weeklyVolume = useMemo(() => buildWeeklyVolume(practiceResults), [practiceResults]);
+
+  /* ── Report card week window ── */
+  const [weekOffset, setWeekOffset] = useState(0);
+  const reportWeek = useMemo(() => {
+    const start = getMonday(new Date());
+    start.setDate(start.getDate() - weekOffset * 7);
+    const end = new Date(start); end.setDate(start.getDate() + 7);
+    const prevStart = new Date(start); prevStart.setDate(start.getDate() - 7);
+    return { start, end, prevStart, nowMs: new Date().getTime() };
+  }, [weekOffset]);
+
+  const weekResults = useMemo(
+    () => practiceResults.filter((r) => {
+      const t = new Date(r.completed_at);
+      return t >= reportWeek.start && t < reportWeek.end;
+    }),
+    [practiceResults, reportWeek],
+  );
+  const prevWeekResults = useMemo(
+    () => practiceResults.filter((r) => {
+      const t = new Date(r.completed_at);
+      return t >= reportWeek.prevStart && t < reportWeek.start;
+    }),
+    [practiceResults, reportWeek],
+  );
+  const weekTotals = useMemo(() => statsOf(weekResults), [weekResults]);
+  const prevWeekTotals = useMemo(() => statsOf(prevWeekResults), [prevWeekResults]);
+
+  const weekStdStats = useMemo(
+    () => computeStandardStats(weekResults, standardNameMap, standardDomainMap),
+    [weekResults, standardNameMap, standardDomainMap],
+  );
+
+  // Per-domain totals for the report's subject rows (week window)
+  const weekDomainStats = useMemo(() => {
+    const map: Record<string, { attempted: number; correct: number }> = {};
+    for (const r of weekResults) {
+      const dom = standardDomainMap[r.standard_id] || "Unknown";
+      if (!map[dom]) map[dom] = { attempted: 0, correct: 0 };
+      map[dom].attempted += r.questions_attempted;
+      map[dom].correct += r.questions_correct;
     }
-    return Object.entries(map).map(([domain, d]) => {
-      const sorted = [...d.skills].sort((a, b) => b.accuracy - a.accuracy);
-      return {
-        domain,
-        accuracy: d.attempted > 0 ? Math.round((d.correct / d.attempted) * 100) : 0,
-        attempted: d.attempted,
-        bestSkill: sorted[0],
-        worstSkill: sorted[sorted.length - 1],
-      };
-    });
-  }, [standardStats]);
+    return map;
+  }, [weekResults, standardDomainMap]);
 
-  const domainsByStrength = useMemo(() => [...domainStats].sort((a, b) => b.accuracy - a.accuracy), [domainStats]);
-  const domainsByWeakness = useMemo(() => [...domainStats].sort((a, b) => a.accuracy - b.accuracy), [domainStats]);
+  const weekBest = useMemo(() => [...weekStdStats].filter((s) => s.attempted > 0).sort((a, b) => b.accuracy - a.accuracy)[0], [weekStdStats]);
+  const weekWorst = useMemo(() => [...weekStdStats].filter((s) => s.attempted > 0).sort((a, b) => a.accuracy - b.accuracy)[0], [weekStdStats]);
 
-  // Chart data — group by day
-  const chartData = useMemo(() => {
-    const dayMap: Record<string, { attempted: number; correct: number }> = {};
-    for (const r of filteredResults) {
-      const day = new Date(r.completed_at).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-      if (!dayMap[day]) dayMap[day] = { attempted: 0, correct: 0 };
-      dayMap[day].attempted += r.questions_attempted;
-      dayMap[day].correct += r.questions_correct;
-    }
-    // Sort chronologically
-    const sorted = [...filteredResults].sort((a, b) => new Date(a.completed_at).getTime() - new Date(b.completed_at).getTime());
-    const seen = new Set<string>();
-    const result: { label: string; accuracy: number; attempted: number }[] = [];
-    for (const r of sorted) {
-      const day = new Date(r.completed_at).toLocaleDateString("en-US", { month: "short", day: "numeric" });
-      if (seen.has(day)) continue;
-      seen.add(day);
-      const d = dayMap[day];
-      result.push({
-        label: day,
-        accuracy: d.attempted > 0 ? Math.round((d.correct / d.attempted) * 100) : 0,
-        attempted: d.attempted,
-      });
-    }
-    return result;
-  }, [filteredResults]);
+  const [emailWeekly, setEmailWeekly] = useState(false); // TODO(analytics): not persisted to any backend preference
 
-  // Curriculum progress — standards practiced per domain (filtered by date range)
-  const domainProgress = useMemo(() => {
-    const practicedStandards = new Set(filteredResults.map((r) => r.standard_id));
-    return Object.entries(DOMAIN_META).map(([domain, meta]) => {
-      const domainStandards = allStandards.filter((s) => s.domain === domain);
-      const practiced = domainStandards.filter((s) => practicedStandards.has(s.standard_id)).length;
-      return { domain, practiced, ...meta };
-    });
-  }, [allStandards, filteredResults]);
-
-  const totalStandardsPracticed = useMemo(() => {
-    const all = new Set(filteredResults.map((r) => r.standard_id));
-    return all.size;
-  }, [filteredResults]);
-
-  const overallProgressPct = Math.round((totalStandardsPracticed / allStandards.length) * 100);
-
-  // Recent activity (last 5)
-  const recentActivity = filteredResults.slice(0, 5);
+  const [hoveredCell, setHoveredCell] = useState<string | null>(null);
 
   if (loadingData) return <Spinner />;
 
   const hasData = practiceResults.length > 0;
 
-  /* ── No data empty state ── */
+  /* ── No-data empty state ── */
   if (!hasData) {
     return (
-      <motion.div
-        className="max-w-lg mx-auto pb-20 px-4 pt-8 text-center"
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.div className="max-w-lg mx-auto pb-20 px-4 pt-8 text-center" variants={staggerContainer} initial="hidden" animate="visible">
         <motion.div variants={slideUp}>
           <div className="w-20 h-20 rounded-2xl overflow-hidden mx-auto mb-4"><img src={avatarSrc} alt={child.first_name} className="w-full h-full object-cover" draggable={false} /></div>
-          <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 mb-2">
-            {child.first_name}&apos;s Analytics
+          <h1 className="text-2xl font-bold text-zinc-900 mb-2" style={{ fontFamily: "var(--font-display)" }}>
+            {child.first_name}&apos;s progress
           </h1>
-          <p className="text-zinc-500 dark:text-slate-400 mb-8">
-            {displayGrade(child.grade)} {child.reading_level ? `· ${child.reading_level}` : ""}
+          <p className="text-zinc-500 mb-8">
+            {displayGrade(child.grade)}{child.reading_level ? ` · ${child.reading_level}` : ""}
           </p>
         </motion.div>
-
-        <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-8 shadow-sm">
+        <motion.div variants={slideUp} className="rounded-[20px] p-8 shadow-sm" style={{ border: CARD, background: "#fff" }}>
           <Rocket className="w-12 h-12 text-violet-500 mx-auto mb-4" strokeWidth={1.5} />
-          <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 mb-2">
-            Ready to get started?
-          </h2>
-          <p className="text-sm text-zinc-500 dark:text-slate-400 mb-6">
-            Complete your first practice session to see progress, strengths, and areas to grow!
-          </p>
-          <Link
-            href={`/practice?child=${child.id}`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg hover:scale-105"
-          >
+          <h2 className="text-lg font-bold text-zinc-900 mb-2">Ready to get started?</h2>
+          <p className="text-sm text-zinc-500 mb-6">Complete your first practice session to see progress, strengths, and areas to grow!</p>
+          <Link href={`/practice?child=${child.id}`} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg hover:scale-105">
             Start Practice →
           </Link>
         </motion.div>
-
         <motion.div variants={fadeUp} className="mt-6">
-          <Link href="/dashboard" className="text-sm text-violet-600 hover:text-violet-700 dark:text-violet-400 font-medium">
-            &larr; Back to Dashboard
-          </Link>
+          <Link href="/dashboard" className="text-sm text-violet-600 hover:text-violet-700 font-medium">&larr; Back to Dashboard</Link>
         </motion.div>
       </motion.div>
     );
   }
 
+  const tabBtn = (key: Tab, label: string) => {
+    const on = tab === key;
+    return (
+      <button
+        key={key}
+        onClick={() => setTab(key)}
+        style={{
+          border: "none", borderBottom: `2px solid ${on ? "#7c3aed" : "transparent"}`,
+          background: "transparent", cursor: "pointer", fontFamily: "inherit", fontSize: 14,
+          padding: "10px 2px", marginBottom: -1, whiteSpace: "nowrap",
+          fontWeight: on ? 700 : 600, color: on ? "#6d28d9" : "#71717a",
+        }}
+      >
+        {label}
+      </button>
+    );
+  };
+
+  const rangeBtn = (key: DateRange, label: string) => {
+    const on = dateRange === key;
+    return (
+      <button
+        key={key}
+        onClick={() => setDateRange(key)}
+        style={{
+          border: "none", cursor: "pointer", fontFamily: "inherit", padding: "7px 16px",
+          borderRadius: 8, fontSize: 13, whiteSpace: "nowrap",
+          fontWeight: on ? 600 : 500,
+          background: on ? "#fff" : "transparent",
+          color: on ? "#6d28d9" : "#71717a",
+          boxShadow: on ? "0 1px 2px rgba(0,0,0,.06)" : "none",
+        }}
+      >
+        {label}
+      </button>
+    );
+  };
+
+  const rangeWord = dateRange === "week" ? "this week" : dateRange === "month" ? "this month" : "all time";
+  const qDelta = prevTotals ? totals.attempted - prevTotals.attempted : null;
+  const accDelta = prevTotals ? totals.accuracy - prevTotals.accuracy : null;
+
   return (
-    <motion.div className="max-w-3xl mx-auto pb-20 px-4" variants={staggerContainer} initial="hidden" animate="visible">
-      {/* ═══ Section 1 — Header ═══ */}
-      <motion.div variants={slideUp} className="pt-6 mb-6">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-14 h-14 rounded-2xl bg-violet-100 dark:bg-violet-900/50 flex items-center justify-center flex-shrink-0 overflow-hidden">
-            <img src={avatarSrc} alt={child.first_name} className="w-full h-full object-cover" draggable={false} />
-          </div>
-          <div className="flex-1 min-w-0">
-            <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
-              {child.first_name}&apos;s Progress
-            </h1>
-            <p className="text-sm text-zinc-500 dark:text-slate-400">
-              {displayGrade(child.grade)} {child.reading_level ? `· ${child.reading_level}` : ""}
-            </p>
-          </div>
-          <Link href="/dashboard" className="text-sm text-violet-600 hover:text-violet-700 dark:text-violet-400 font-medium flex-shrink-0">
-            &larr; Dashboard
-          </Link>
+    <div className="pb-20 px-4 sm:px-6" style={{ maxWidth: 860, margin: "0 auto" }}>
+      {/* ═══ Header ═══ */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 24, marginBottom: 20 }}>
+        <div style={{ width: 56, height: 56, borderRadius: 16, background: "#ede9fe", overflow: "hidden", flexShrink: 0 }}>
+          <img src={avatarSrc} alt={child.first_name} style={{ width: "100%", height: "100%", objectFit: "cover" }} draggable={false} />
         </div>
-
-        {/* Date range tabs */}
-        <div className="flex gap-1.5 bg-zinc-100 dark:bg-slate-800 rounded-xl p-1">
-          {([
-            { key: "week" as DateRange, label: "This Week" },
-            { key: "month" as DateRange, label: "This Month" },
-            { key: "all" as DateRange, label: "All Time" },
-          ]).map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => setDateRange(key)}
-              className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all ${
-                dateRange === key
-                  ? "bg-white dark:bg-slate-700 text-violet-700 dark:text-violet-300 shadow-sm"
-                  : "text-zinc-500 dark:text-slate-400 hover:text-zinc-700 dark:hover:text-slate-300"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <h1 style={{ margin: 0, fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 600, letterSpacing: "-0.025em", color: "#18181b", lineHeight: 1.2 }}>
+            {child.first_name}&apos;s progress
+          </h1>
+          <p style={{ margin: "2px 0 0", fontSize: 14, color: "#71717a" }}>
+            {displayGrade(child.grade)}{child.reading_level ? ` · ${child.reading_level}` : ""}
+          </p>
         </div>
-      </motion.div>
-
-      {/* ═══ Section 2 — Key Stats ═══ */}
-      <motion.div variants={slideUp} className="grid grid-cols-3 gap-3 mb-6">
-        <StatCard label="Questions Answered" value={totals.attempted} icon={<FileText className="w-5 h-5 text-violet-500" strokeWidth={1.5} />} />
-        <AccuracyCard accuracy={totals.accuracy} />
-        <StatCard label="Practice Sessions" value={totals.sessions} icon={<Target className="w-5 h-5 text-violet-500" strokeWidth={1.5} />} />
-      </motion.div>
-
-      {/* ═══ Premium Analytics Gate ═══ */}
-      {rawPlan !== null && userPlan !== "premium" ? (
-        <div className="relative">
-          {/* Blurred preview */}
-          <div className="select-none pointer-events-none blur-[6px] opacity-70 space-y-6">
-            {/* Fake chart */}
-            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-              <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">
-                How {child.first_name} is doing
-              </h2>
-              <div className="h-[180px] flex items-end gap-2 px-4">
-                {[40, 55, 48, 65, 72, 60, 80, 75, 85, 78].map((h, i) => (
-                  <div key={i} className="flex-1 bg-gradient-to-t from-violet-500 to-violet-400 rounded-t-md" style={{ height: `${h}%` }} />
-                ))}
-              </div>
-            </div>
-
-            {/* Fake strengths/weaknesses */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800/40 bg-gradient-to-b from-emerald-50/80 to-white dark:from-emerald-950/20 dark:to-slate-800 p-5 shadow-sm">
-                <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">Strengths</h3>
-                <div className="space-y-3">
-                  {["Letter recognition", "Rhyming words", "Story comprehension"].map((s) => (
-                    <div key={s} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-emerald-100 flex-shrink-0" />
-                      <div className="flex-1 h-4 bg-zinc-100 dark:bg-slate-700 rounded" />
-                      <span className="text-sm font-bold text-emerald-600">92%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50/80 to-white dark:from-amber-950/20 dark:to-slate-800 p-5 shadow-sm">
-                <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">Keep Practicing</h3>
-                <div className="space-y-3">
-                  {["Vowel sounds", "Sentence structure", "Word families"].map((s) => (
-                    <div key={s} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-amber-100 flex-shrink-0" />
-                      <div className="flex-1 h-4 bg-zinc-100 dark:bg-slate-700 rounded" />
-                      <span className="text-sm font-bold text-amber-600">Practice</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Fake curriculum progress */}
-            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-              <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Curriculum Progress</h2>
-              <div className="space-y-3">
-                {[60, 45, 75, 30].map((w, i) => (
-                  <div key={i} className="h-2.5 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-violet-400 rounded-full" style={{ width: `${w}%` }} />
-                  </div>
-                ))}
-              </div>
-            </div>
+        {child.streak_days > 0 && (
+          <div style={{ flexShrink: 0, whiteSpace: "nowrap", background: "#d1fae5", color: "#059669", fontSize: 13, fontWeight: 700, padding: "5px 12px", borderRadius: 999 }}>
+            {child.streak_days}-day streak
           </div>
+        )}
+        <Link href="/dashboard" className="text-sm text-violet-600 hover:text-violet-700 font-medium" style={{ flexShrink: 0 }}>
+          &larr; Dashboard
+        </Link>
+      </div>
 
-          {/* Upgrade overlay */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center px-6 py-8 max-w-sm">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-100 to-violet-100 dark:from-violet-900/40 dark:to-violet-900/40 mx-auto mb-4 flex items-center justify-center shadow-sm">
-                <BarChart3 className="w-8 h-8 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
-              </div>
-              <h2 className="text-xl font-extrabold text-zinc-900 dark:text-slate-100 mb-2">
-                Unlock Deep Analytics
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-slate-400 mb-5 leading-relaxed">
-                See {child.first_name}&apos;s progress charts, strengths & weaknesses, curriculum coverage, and full activity history with Readee+.
-              </p>
-              <Link
-                href="/upgrade"
-                className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-600 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                <Star className="relative w-4 h-4" strokeWidth={1.5} />
-                <span className="relative">Upgrade to Readee+</span>
-              </Link>
-            </div>
+      {/* ═══ Free preview banner / Premium insight ═══ */}
+      {isFree ? (
+        <div style={{ border: CARD, background: "#fff", borderRadius: 20, padding: "16px 20px", marginBottom: 20, display: "flex", gap: 12, alignItems: "center" }}>
+          <div style={{ width: 34, height: 34, borderRadius: 10, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+            <BarChart3 className="w-[17px] h-[17px]" style={{ color: "#4338ca" }} strokeWidth={1.5} />
           </div>
+          <p style={{ margin: 0, flex: 1, fontSize: 14, lineHeight: 1.5, color: "#3f3f46" }}>
+            {child.first_name} answered <strong style={{ color: "#18181b" }}>{last7.attempted} question{last7.attempted === 1 ? "" : "s"}</strong> this week at <strong style={{ color: "#18181b" }}>{last7.accuracy}% accuracy</strong>.
+          </p>
+          <div style={{ flexShrink: 0, whiteSpace: "nowrap", background: "#f4f4f5", color: "#52525b", fontSize: 12, fontWeight: 700, padding: "4px 10px", borderRadius: 999 }}>Free plan</div>
         </div>
       ) : (
-        <>
-          {/* ═══ Section 3 — Progress Chart ═══ */}
-          <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6 shadow-sm">
-            <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">
-              How {child.first_name} is doing
-            </h2>
-            {chartData.length >= 2 ? (
-              <AccuracyChart data={chartData} />
-            ) : (
-              <div className="text-center py-8">
-                <TrendingUp className="w-8 h-8 text-violet-500 mx-auto mb-2" strokeWidth={1.5} />
-                <p className="text-sm text-zinc-500 dark:text-slate-400">
-                  Complete a few more sessions to see your progress trend!
-                </p>
-              </div>
-            )}
-          </motion.div>
+        <div style={{ border: "1px solid #c7d2fe", background: "linear-gradient(135deg,#eef2ff,#fff)", borderRadius: 20, padding: "20px 24px", marginBottom: 20, display: "flex", gap: 16, alignItems: "flex-start" }}>
+          <Sparkles className="w-[22px] h-[22px]" style={{ color: "#4338ca", flexShrink: 0, marginTop: 3 }} strokeWidth={1.5} />
+          <div>
+            <p style={{ margin: 0, fontSize: 17, lineHeight: 1.5, color: "#3f3f46" }}>
+              {/* TODO(analytics): no grade-level placement signal available; using reading_level as the closest real value */}
+              {child.first_name} is a <strong style={{ color: "#18181b" }}>{child.reading_level || displayGrade(child.grade) + " reader"}</strong> and practiced <strong style={{ color: "#18181b" }}>{last7.days} of the last 7 days</strong>.
+              {insightBest ? <> Strong in <strong style={{ color: "#18181b" }}>{insightBest.name}</strong>.</> : null}
+              {insightWorst && (!insightBest || insightWorst.standard_id !== insightBest.standard_id) ? <> This week, work on <strong style={{ color: "#18181b" }}>{insightWorst.name}</strong>.</> : null}
+            </p>
+            <p style={{ margin: "6px 0 0", fontSize: 12, color: "#a1a1aa" }}>Updated today · based on {last7.attempted} question{last7.attempted === 1 ? "" : "s"} this week</p>
+          </div>
+        </div>
+      )}
 
-          {/* ═══ Section 4 — Strengths & Weaknesses ═══ */}
-          {domainStats.length > 0 && (
-            <motion.div variants={slideUp} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              {/* Strengths */}
-              <div className="rounded-2xl border border-emerald-200 dark:border-emerald-800/40 bg-gradient-to-b from-emerald-50/80 to-white dark:from-emerald-950/20 dark:to-slate-800 p-5 shadow-sm">
-                <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">
-                  Strengths <Zap className="w-4 h-4 inline-block text-emerald-500" strokeWidth={1.5} />
-                </h3>
-                <div className="space-y-3">
-                  {domainsByStrength.map((d) => {
-                    const meta = DOMAIN_META[d.domain];
-                    return (
-                      <div key={d.domain} className="flex items-start gap-3">
-                        <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center flex-shrink-0">
-                          {meta ? <meta.icon className="w-3.5 h-3.5" strokeWidth={1.5} /> : <BookOpen className="w-3.5 h-3.5" strokeWidth={1.5} />}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-zinc-800 dark:text-slate-200">{d.domain}</div>
-                          <div className="text-xs text-zinc-400 dark:text-slate-500 truncate">
-                            Best: {d.bestSkill.name}
-                          </div>
-                        </div>
-                        <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex-shrink-0 pt-0.5">{d.accuracy}%</span>
-                      </div>
-                    );
-                  })}
+      {/* ═══ Tabbed content (blurred when free) ═══ */}
+      <div style={{ position: "relative" }}>
+        <div style={isFree ? { filter: "blur(6px)", opacity: 0.55, pointerEvents: "none", userSelect: "none", maxHeight: 720, overflow: "hidden" } : undefined}>
+          {/* Tabs */}
+          <div style={{ display: "flex", gap: 24, marginBottom: 24, borderBottom: "1px solid #f4f4f5" }}>
+            {tabBtn("overview", "Overview")}
+            {tabBtn("report", "Report card")}
+            {tabBtn("map", "Skill map")}
+          </div>
+
+          {/* ─── Tab 1 — Overview ─── */}
+          {tab === "overview" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <div style={{ display: "flex", gap: 6, background: "#f4f4f5", borderRadius: 12, padding: 4, width: "fit-content" }}>
+                {rangeBtn("week", "This week")}
+                {rangeBtn("month", "This month")}
+                {rangeBtn("all", "All time")}
+              </div>
+
+              {/* Stat tiles */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 16 }}>
+                <StatTile label="Questions answered" value={String(totals.attempted)}
+                  note={qDelta === null ? `since starting` : qDelta === 0 ? "same as last period" : `${qDelta > 0 ? "▲" : "▼"} ${Math.abs(qDelta)} vs last period`}
+                  noteColor={qDelta === null ? "#71717a" : qDelta >= 0 ? "#059669" : "#dc2626"} />
+                <StatTile label="Accuracy" value={`${totals.accuracy}%`}
+                  note={accDelta === null ? `over ${rangeWord}` : accDelta === 0 ? "no change" : `${accDelta > 0 ? "▲" : "▼"} ${Math.abs(accDelta)}% vs last period`}
+                  noteColor={accDelta === null ? "#71717a" : accDelta >= 0 ? "#059669" : "#dc2626"} />
+                {/* TODO(analytics): no best-streak field on Child; only current streak_days is available */}
+                <StatTile label="Day streak" value={String(child.streak_days)} note="days in a row" noteColor="#71717a" />
+                <StatTile label="Skills practiced" value={String(skillsPracticedInRange)} suffix={`/${gradeStandardCount}`}
+                  note={`${displayGrade(child.grade)} standards`} noteColor="#71717a" />
+              </div>
+
+              {/* Chart + skills snapshot */}
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.25fr) minmax(0,1fr)", gap: 16, alignItems: "start" }} className="max-md:!grid-cols-1">
+                <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 2 }}>Accuracy over time</div>
+                  <div style={{ fontSize: 12, color: "#a1a1aa", marginBottom: 12 }}>
+                    {dateRange === "week" ? "Daily accuracy · this week" : dateRange === "month" ? "Weekly accuracy · this month" : "Weekly accuracy · all time"}
+                  </div>
+                  {accuracySeries.length >= 2 ? (
+                    <AccuracyOverTime series={accuracySeries} />
+                  ) : (
+                    <div style={{ textAlign: "center", padding: "28px 0", fontSize: 13, color: "#a1a1aa" }}>
+                      Complete a few more sessions to see the trend.
+                    </div>
+                  )}
+                </div>
+
+                <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff", display: "flex", flexDirection: "column", gap: 12 }}>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>Skills snapshot</div>
+                  {doingWell.length > 0 && <div style={{ fontSize: 11, fontWeight: 700, color: "#059669", textTransform: "uppercase", letterSpacing: ".08em" }}>Doing well</div>}
+                  {doingWell.map((s) => <SnapshotBar key={s.standard_id} label={s.name} value={s.accuracy} color="#10b981" textColor="#059669" />)}
+                  {needsHelp.length > 0 && <div style={{ fontSize: 11, fontWeight: 700, color: "#b45309", textTransform: "uppercase", letterSpacing: ".08em", marginTop: 6 }}>Needs help</div>}
+                  {needsHelp.map((s) => <SnapshotBar key={s.standard_id} label={s.name} value={s.accuracy} color="#f59e0b" textColor="#b45309" />)}
+                  {doingWell.length === 0 && needsHelp.length === 0 && (
+                    <div style={{ fontSize: 13, color: "#a1a1aa" }}>No skills practiced in this range yet.</div>
+                  )}
                 </div>
               </div>
 
-              {/* Weaknesses */}
-              <div className="rounded-2xl border border-amber-200 dark:border-amber-800/40 bg-gradient-to-b from-amber-50/80 to-white dark:from-amber-950/20 dark:to-slate-800 p-5 shadow-sm">
-                <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-3">
-                  Keep Practicing <Sprout className="w-4 h-4 inline-block text-amber-500" strokeWidth={1.5} />
-                </h3>
-                <div className="space-y-3">
-                  {domainsByWeakness.map((d) => {
-                    const meta = DOMAIN_META[d.domain];
-                    return (
-                      <div key={d.domain} className="flex items-start gap-3">
-                        <div className="w-7 h-7 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center flex-shrink-0">
-                          {meta ? <meta.icon className="w-3.5 h-3.5" strokeWidth={1.5} /> : <BookOpen className="w-3.5 h-3.5" strokeWidth={1.5} />}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-zinc-800 dark:text-slate-200">{d.domain}</div>
-                          <div className="text-xs text-zinc-400 dark:text-slate-500 truncate">
-                            Focus: {d.worstSkill.name}
-                          </div>
-                        </div>
-                        <Link
-                          href={`/practice?child=${child.id}&standard=${d.worstSkill.standard_id}`}
-                          className="text-xs font-bold text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 flex-shrink-0 pt-0.5"
-                        >
-                          Practice →
-                        </Link>
+              {/* What to do next */}
+              <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
+                <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 12 }}>What to do next</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {worstRangeSkill && (
+                    <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 16px", borderRadius: 16, background: "#fffbeb", border: "1px solid #fde68a" }}>
+                      <div style={{ flex: 1, fontSize: 14, color: "#3f3f46" }}>
+                        {child.first_name} missed <strong style={{ color: "#18181b" }}>{worstRangeSkill.attempted - worstRangeSkill.correct} of {worstRangeSkill.attempted} {worstRangeSkill.name} question{worstRangeSkill.attempted === 1 ? "" : "s"}</strong> {rangeWord} — a short practice would help.
                       </div>
-                    );
-                  })}
+                      <Link href={`/practice?child=${child.id}&standard=${worstRangeSkill.standard_id}`} style={{ flexShrink: 0, whiteSpace: "nowrap", background: "#4338ca", color: "#fff", fontSize: 13, fontWeight: 700, padding: "9px 14px", borderRadius: 10 }}>
+                        Practice {worstRangeSkill.name.length > 18 ? "this skill" : worstRangeSkill.name.toLowerCase()}
+                      </Link>
+                    </div>
+                  )}
+                  <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 16px", borderRadius: 16, background: "#fafafa", border: "1px solid #f4f4f5" }}>
+                    <div style={{ flex: 1, fontSize: 14, color: "#3f3f46" }}>
+                      <strong style={{ color: "#18181b" }}>Offline tip:</strong> at dinner, stretch words out together — &quot;c-a-a-a-t&quot;. It builds the same sound skills.
+                    </div>
+                    <Link href="/practice-hub" style={{ flexShrink: 0, whiteSpace: "nowrap", color: "#4338ca", fontSize: 13, fontWeight: 700, padding: "9px 14px", borderRadius: 10 }}>
+                      More tips
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           )}
 
-          {/* ═══ Section 5 — Curriculum Progress ═══ */}
-          <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 mb-6 shadow-sm">
-            <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-1">Curriculum Progress</h2>
-            <p className="text-xs text-zinc-500 dark:text-slate-400 mb-4">
-              {overallProgressPct}% of Kindergarten standards practiced
-            </p>
+          {/* ─── Tab 2 — Report card ─── */}
+          {tab === "report" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                <button onClick={() => setWeekOffset((w) => w + 1)} style={{ border: CARD, background: "#fff", cursor: "pointer", width: 32, height: 32, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <ChevronLeft className="w-4 h-4" style={{ color: "#52525b" }} strokeWidth={2} />
+                </button>
+                <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>
+                  Week of {reportWeek.start.toLocaleDateString("en-US", { month: "short", day: "numeric" })} – {new Date(reportWeek.end.getTime() - 86400000).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                </div>
+                <button onClick={() => setWeekOffset((w) => Math.max(0, w - 1))} disabled={weekOffset === 0} style={{ border: CARD, background: "#fff", cursor: weekOffset === 0 ? "default" : "pointer", width: 32, height: 32, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", opacity: weekOffset === 0 ? 0.4 : 1 }}>
+                  <ChevronRight className="w-4 h-4" style={{ color: "#52525b" }} strokeWidth={2} />
+                </button>
+                <label style={{ marginLeft: "auto", fontSize: 13, color: "#71717a", display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
+                  {/* TODO(analytics): checkbox is local-only, not wired to any email-preference backend */}
+                  <input type="checkbox" checked={emailWeekly} onChange={(e) => setEmailWeekly(e.target.checked)} style={{ accentColor: "#4338ca" }} />
+                  Email me this every Sunday
+                </label>
+              </div>
 
-            {/* Overall bar */}
-            <div className="h-3 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden mb-5">
-              <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-violet-500 to-violet-500"
-                initial={{ width: 0 }}
-                animate={{ width: `${overallProgressPct}%` }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-              />
-            </div>
-
-            {/* Domain rows */}
-            <div className="space-y-3">
-              {domainProgress.map((dp) => {
-                const pct = dp.total > 0 ? Math.round((dp.practiced / dp.total) * 100) : 0;
-                return (
-                  <div key={dp.domain}>
-                    <div className="flex items-center justify-between mb-1">
-                      <div className="flex items-center gap-2">
-                        <dp.icon className="w-4 h-4" strokeWidth={1.5} />
-                        <span className={`text-sm font-medium ${dp.color} ${dp.darkColor}`}>{dp.domain}</span>
+              {/* Days practiced */}
+              <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
+                <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 14 }}>Days practiced · {weekTotals.days} of 7</div>
+                <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
+                  {Array.from({ length: 7 }, (_, i) => {
+                    const d = new Date(reportWeek.start); d.setDate(reportWeek.start.getDate() + i);
+                    const practiced = weekResults.some((r) => new Date(r.completed_at).toDateString() === d.toDateString());
+                    const future = d.getTime() > reportWeek.nowMs;
+                    return (
+                      <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+                        <div style={{
+                          width: 40, height: 40, borderRadius: "50%", boxSizing: "border-box",
+                          display: "flex", alignItems: "center", justifyContent: "center",
+                          background: practiced ? "#4338ca" : future ? "transparent" : "#f4f4f5",
+                          border: future ? "1.5px dashed #d4d4d8" : "none",
+                        }}>
+                          {practiced && <Check className="w-[18px] h-[18px]" style={{ color: "#fff" }} strokeWidth={2.5} />}
+                        </div>
+                        <span style={{ fontSize: 12, color: practiced ? "#71717a" : "#a1a1aa" }}>{d.toLocaleDateString("en-US", { weekday: "short" })}</span>
                       </div>
-                      <span className="text-xs text-zinc-500 dark:text-slate-400 font-medium">{dp.practiced}/{dp.total}</span>
-                    </div>
-                    <div className="h-2 bg-zinc-100 dark:bg-slate-700 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{ backgroundColor: dp.barColor }}
-                        initial={{ width: 0 }}
-                        animate={{ width: `${pct}%` }}
-                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
 
-          {/* ═══ Section 6 — Recent Activity ═══ */}
-          <motion.div variants={slideUp} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-5 shadow-sm">
-            <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100 mb-4">Recent Activity</h2>
-            {recentActivity.length > 0 ? (
-              <div className="space-y-2">
-                {recentActivity.map((r) => (
-                  <div key={r.id} className="flex items-center gap-3 py-2.5 px-3 rounded-xl hover:bg-zinc-50 dark:hover:bg-slate-700/50 transition-colors">
-                    <div className="text-xs text-zinc-400 dark:text-slate-500 w-16 flex-shrink-0 font-medium">
-                      {formatDate(r.completed_at)}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-medium text-zinc-800 dark:text-slate-200 truncate">
-                        {standardNameMap[r.standard_id] || r.standard_id}
+              {/* Subject report */}
+              <div style={{ border: CARD, borderRadius: 20, padding: 8, background: "#fff" }}>
+                <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", padding: "14px 16px 6px" }}>Subject report</div>
+                {DOMAIN_ORDER.map((dom) => {
+                  const meta = DOMAIN_META[dom];
+                  const s = weekDomainStats[dom];
+                  const attempted = s?.attempted ?? 0;
+                  const acc = attempted > 0 ? Math.round((s!.correct / attempted) * 100) : 0;
+                  const status = skillStatus(attempted, acc);
+                  return (
+                    <div key={dom} style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px", borderTop: "1px solid #f4f4f5" }}>
+                      <div style={{ width: 34, height: 34, borderRadius: 10, background: attempted > 0 ? meta.iconBg : "#f4f4f5", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <meta.icon className="w-[17px] h-[17px]" style={{ color: attempted > 0 ? meta.iconStroke : "#a1a1aa" }} strokeWidth={1.5} />
                       </div>
-                      <div className="text-xs text-zinc-400 dark:text-slate-500">{r.standard_id}</div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 14, fontWeight: 700, color: attempted > 0 ? "#18181b" : "#71717a" }}>{meta.label}</div>
+                        <div style={{ fontSize: 12, color: attempted > 0 ? "#71717a" : "#a1a1aa" }}>
+                          {attempted > 0 ? `${meta.subtitle} · ${attempted} question${attempted === 1 ? "" : "s"}` : "Not tried yet this week"}
+                        </div>
+                      </div>
+                      {attempted > 0 ? (
+                        <Badge label={STATUS_META[status].label} color={STATUS_META[status].dot} bg={status === "mastered" ? "#d1fae5" : status === "help" ? "#fef3c7" : "#eef2ff"} />
+                      ) : (
+                        <Link href={`/practice?child=${child.id}`} style={{ flexShrink: 0, whiteSpace: "nowrap", fontSize: 13, fontWeight: 700, color: "#4338ca" }}>Try a lesson</Link>
+                      )}
                     </div>
-                    <div className="text-sm font-bold text-zinc-700 dark:text-slate-300 flex-shrink-0">
-                      {r.questions_correct}/{r.questions_attempted}
-                    </div>
-                    <div className="text-xs font-medium text-amber-600 dark:text-amber-400 flex-shrink-0">
-                      +{r.carrots_earned} <Carrot className="w-3 h-3 inline-block align-text-bottom" strokeWidth={1.5} />
-                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Note + vs last week */}
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.25fr) minmax(0,1fr)", gap: 16, alignItems: "stretch" }} className="max-md:!grid-cols-1">
+                <div style={{ border: "1px solid #fde68a", borderRadius: 20, padding: 20, background: "linear-gradient(180deg,#fffbeb,#fff)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                    <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>This week&apos;s note</div>
+                    <span style={{ fontSize: 11, color: "#a1a1aa", whiteSpace: "nowrap" }}>from Readee</span>
                   </div>
-                ))}
-                {filteredResults.length > 5 && (
-                  <div className="text-center pt-2">
-                    <span className="text-xs text-zinc-400 dark:text-slate-500">
-                      Showing 5 of {filteredResults.length} sessions
+                  <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "#3f3f46" }}>
+                    {weekBest || weekWorst ? (
+                      <>
+                        {weekBest ? <>{child.first_name} did well on <strong style={{ color: "#18181b" }}>{weekBest.name}</strong> ({weekBest.correct} of {weekBest.attempted} right). </> : null}
+                        {weekWorst && (!weekBest || weekWorst.standard_id !== weekBest.standard_id) ? <>A good next step is <strong style={{ color: "#18181b" }}>{weekWorst.name}</strong> — a short lesson would help.</> : null}
+                      </>
+                    ) : (
+                      <>No practice recorded this week. A quick session gets {child.first_name} back on track.</>
+                    )}
+                  </p>
+                  <Link href={weekWorst ? `/practice?child=${child.id}&standard=${weekWorst.standard_id}` : `/practice?child=${child.id}`} style={{ display: "inline-block", marginTop: 14, whiteSpace: "nowrap", background: "#4338ca", color: "#fff", fontSize: 13, fontWeight: 700, padding: "9px 14px", borderRadius: 10 }}>
+                    Go to practice
+                  </Link>
+                </div>
+                <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 12 }}>vs. last week</div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    <DeltaRow label="Questions" value={weekTotals.attempted} delta={weekTotals.attempted - prevWeekTotals.attempted} />
+                    <DeltaRow label="Accuracy" value={weekTotals.accuracy} suffix="%" delta={weekTotals.accuracy - prevWeekTotals.accuracy} />
+                    <DeltaRow label="Days practiced" value={weekTotals.days} delta={weekTotals.days - prevWeekTotals.days} />
+                    <DeltaRow label="Skills tried" value={weekTotals.skills} delta={weekTotals.skills - prevWeekTotals.skills} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ─── Tab 3 — Skill map ─── */}
+          {tab === "map" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
+                <div style={{ fontSize: 13, color: "#71717a" }}>
+                  {gradeStandardCount} {displayGrade(child.grade)} standards · <strong style={{ color: "#18181b" }}>{totalGradeSkillsPracticed} practiced</strong>
+                </div>
+                <div style={{ marginLeft: "auto", display: "flex", gap: 14, fontSize: 12, color: "#52525b", alignItems: "center", flexWrap: "wrap" }}>
+                  {(["mastered", "practicing", "help", "none"] as Status[]).map((st) => (
+                    <span key={st} style={{ display: "flex", alignItems: "center", gap: 5, whiteSpace: "nowrap" }}>
+                      <span style={{ width: 12, height: 12, borderRadius: 4, boxSizing: "border-box", background: STATUS_META[st].fill, border: st === "none" ? "1px dashed #d4d4d8" : "none" }} />
+                      {st === "none" ? "Not yet" : STATUS_META[st].label}
                     </span>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff", display: "flex", flexDirection: "column", gap: 18 }}>
+                {DOMAIN_ORDER.map((dom) => {
+                  const meta = DOMAIN_META[dom];
+                  const domStds = gradeStandards.filter((s) => s.domain === dom);
+                  const practiced = domStds.filter((s) => (allTimeStdStats[s.standard_id]?.attempted ?? 0) > 0).length;
+                  if (domStds.length === 0) return null;
+                  return (
+                    <div key={dom}>
+                      <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 8 }}>
+                        <div style={{ fontSize: 14, fontWeight: 700, whiteSpace: "nowrap", color: meta.accent }}>{meta.label}</div>
+                        <div style={{ fontSize: 12, color: "#a1a1aa", whiteSpace: "nowrap" }}>
+                          {practiced > 0 ? `${practiced} of ${domStds.length} practiced` : "not started"}
+                        </div>
+                      </div>
+                      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                        {domStds.map((s) => {
+                          const stat = allTimeStdStats[s.standard_id];
+                          const attempted = stat?.attempted ?? 0;
+                          const acc = attempted > 0 ? Math.round((stat!.correct / attempted) * 100) : 0;
+                          const status = skillStatus(attempted, acc);
+                          const key = s.standard_id;
+                          const hovered = hoveredCell === key;
+                          return (
+                            <div key={key} style={{ position: "relative" }}>
+                              <Link
+                                href={status === "mastered" ? `/practice-hub` : `/practice?child=${child.id}&standard=${s.standard_id}`}
+                                onMouseEnter={() => setHoveredCell(key)}
+                                onMouseLeave={() => setHoveredCell((c) => (c === key ? null : c))}
+                                style={{
+                                  display: "block", width: 36, height: 36, borderRadius: 9, boxSizing: "border-box",
+                                  background: status === "none" ? "#f4f4f5" : STATUS_META[status].fill,
+                                  border: status === "none" ? "1.5px dashed #d4d4d8" : "none",
+                                  boxShadow: status === "help" ? "0 0 0 2px #fde68a" : "none",
+                                  transition: "transform .12s ease",
+                                  transform: hovered ? "scale(1.12)" : "none",
+                                }}
+                              />
+                              {hovered && (
+                                <div style={{ position: "absolute", bottom: 44, left: "50%", transform: "translateX(-50%)", zIndex: 30, background: "#fff", border: CARD, borderRadius: 12, boxShadow: "0 10px 28px rgba(24,24,27,.14)", padding: "12px 14px", width: 196, pointerEvents: "none" }}>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 5 }}>
+                                    <span style={{ width: 10, height: 10, borderRadius: 3, flexShrink: 0, background: STATUS_META[status].dot }} />
+                                    <span style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em", whiteSpace: "nowrap", color: STATUS_META[status].dot }}>{STATUS_META[status].label}</span>
+                                    <span style={{ fontSize: 10, color: "#a1a1aa", marginLeft: "auto", whiteSpace: "nowrap" }}>{s.standard_id}</span>
+                                  </div>
+                                  <div style={{ fontSize: 13, fontWeight: 700, color: "#18181b", lineHeight: 1.3 }}>{standardNameMap[s.standard_id] || s.standard_id}</div>
+                                  <div style={{ fontSize: 12, color: "#71717a", marginTop: 3 }}>
+                                    {attempted > 0 ? `${acc}% correct · ${attempted} question${attempted === 1 ? "" : "s"}` : "Not practiced yet"}
+                                  </div>
+                                  {status !== "mastered" && <div style={{ fontSize: 12, fontWeight: 700, color: "#4338ca", marginTop: 6 }}>Practice this skill →</div>}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+                <div style={{ fontSize: 12, color: "#a1a1aa" }}>Hover a square to see the skill · click to practice it</div>
+              </div>
+
+              {/* Needs help now + practice volume */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, alignItems: "stretch" }} className="max-md:!grid-cols-1">
+                <div style={{ border: "1px solid #fde68a", borderRadius: 20, padding: 20, background: "linear-gradient(180deg,#fffbeb,#fff)", boxSizing: "border-box" }}>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 12 }}>Needs help now</div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    {(() => {
+                      const weak = gradeStandards
+                        .map((s) => {
+                          const stat = allTimeStdStats[s.standard_id];
+                          const attempted = stat?.attempted ?? 0;
+                          const acc = attempted > 0 ? Math.round((stat!.correct / attempted) * 100) : 0;
+                          return { id: s.standard_id, name: standardNameMap[s.standard_id] || s.standard_id, attempted, acc };
+                        })
+                        .filter((s) => s.attempted > 0 && s.acc < 60)
+                        .sort((a, b) => a.acc - b.acc)
+                        .slice(0, 3);
+                      if (weak.length === 0) return <div style={{ fontSize: 13, color: "#71717a" }}>Nothing needs urgent attention — nice work!</div>;
+                      return weak.map((s) => (
+                        <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ fontSize: 14, fontWeight: 700, color: "#18181b" }}>{s.name}</div>
+                            <div style={{ fontSize: 12, color: "#71717a" }}>{s.id} · {s.acc}% correct</div>
+                          </div>
+                          <Link href={`/practice?child=${child.id}&standard=${s.id}`} style={{ flexShrink: 0, whiteSpace: "nowrap", background: "#4338ca", color: "#fff", fontSize: 13, fontWeight: 700, padding: "9px 14px", borderRadius: 10 }}>Practice</Link>
+                        </div>
+                      ));
+                    })()}
                   </div>
-                )}
+                </div>
+                <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 2 }}>Practice volume</div>
+                  <div style={{ fontSize: 12, color: "#a1a1aa", marginBottom: 10 }}>Questions per week</div>
+                  {weeklyVolume.length > 0 ? (
+                    <PracticeVolume weeks={weeklyVolume} />
+                  ) : (
+                    <div style={{ fontSize: 13, color: "#a1a1aa", padding: "20px 0", textAlign: "center" }}>No sessions yet.</div>
+                  )}
+                </div>
               </div>
-            ) : (
-              <div className="text-center py-6">
-                <p className="text-sm text-zinc-500 dark:text-slate-400">
-                  No activity in this time period. Try a different range!
-                </p>
+            </div>
+          )}
+        </div>
+
+        {/* Upgrade overlay (free plan) */}
+        {isFree && (
+          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-start", justifyContent: "center", zIndex: 20, paddingTop: 60 }}>
+            <div style={{ textAlign: "center", maxWidth: 400, padding: "32px 28px", background: "rgba(255,255,255,.92)", border: CARD, borderRadius: 24, boxShadow: "0 20px 50px rgba(30,27,75,.14)", backdropFilter: "blur(4px)" }}>
+              <div style={{ width: 60, height: 60, borderRadius: 18, background: "linear-gradient(135deg,#eef2ff,#ede9fe)", margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Lock className="w-7 h-7" style={{ color: "#4338ca" }} strokeWidth={1.5} />
               </div>
-            )}
-          </motion.div>
-        </>
-      )}
-    </motion.div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════ */
-/*  Stat Card                                              */
-/* ═══════════════════════════════════════════════════════ */
-
-function StatCard({ label, value, icon }: { label: string; value: number; icon: React.ReactNode }) {
-  const { value: animated, ref } = useCountUp(value);
-
-  return (
-    <div ref={ref} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-center shadow-sm">
-      <div className="flex justify-center mb-1">{icon}</div>
-      <div className="text-2xl font-bold text-zinc-900 dark:text-slate-100">{animated}</div>
-      <div className="text-[11px] text-zinc-500 dark:text-slate-400 mt-0.5 font-medium">{label}</div>
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════ */
-/*  Accuracy Card with animated ring                       */
-/* ═══════════════════════════════════════════════════════ */
-
-function AccuracyCard({ accuracy }: { accuracy: number }) {
-  const ringColor = accuracy >= 70 ? "#10b981" : accuracy >= 50 ? "#f59e0b" : "#ef4444";
-  const circumference = 2 * Math.PI * 28; // r=28
-  const { value: animatedAccuracy, ref } = useCountUp(accuracy);
-
-  return (
-    <div ref={ref} className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 text-center shadow-sm">
-      <div className="relative w-16 h-16 mx-auto mb-1">
-        <svg viewBox="0 0 64 64" className="w-16 h-16 -rotate-90">
-          <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" strokeWidth="4" className="text-zinc-100 dark:text-slate-700" />
-          <motion.circle
-            cx="32" cy="32" r="28" fill="none" stroke={ringColor} strokeWidth="4"
-            strokeLinecap="round"
-            strokeDasharray={circumference}
-            animate={{ strokeDashoffset: circumference - (circumference * accuracy / 100) }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          />
-        </svg>
-        <span className="absolute inset-0 flex items-center justify-center text-lg font-bold text-zinc-900 dark:text-slate-100">
-          {animatedAccuracy}%
-        </span>
+              <h2 style={{ margin: "0 0 8px", fontFamily: "var(--font-display)", fontSize: 24, fontWeight: 600, color: "#18181b" }}>See where {child.first_name} needs help</h2>
+              <p style={{ margin: "0 0 20px", fontSize: 14, lineHeight: 1.6, color: "#52525b" }}>Progress charts, weekly report cards, the full skill map, and next-step suggestions with Readee+</p>
+              <Link href="/upgrade?reason=analytics" className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-sm hover:from-violet-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:scale-105">
+                Try Readee+ free for 7 days
+              </Link>
+              <p style={{ margin: "12px 0 0", fontSize: 12, color: "#a1a1aa" }}>$9.99/mo or $6.99/mo billed annually · cancel in one click</p>
+            </div>
+          </div>
+        )}
       </div>
-      <div className="text-[11px] text-zinc-500 dark:text-slate-400 font-medium">Accuracy</div>
     </div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════ */
-/*  Accuracy Chart (morphing SVG)                          */
+/*  Small presentational pieces                            */
 /* ═══════════════════════════════════════════════════════ */
 
-const MORPH_N = 14;
-const MORPH_MS = 600;
-
-/** Resample variable-length data to a fixed number of evenly-spaced points */
-function resampleChart(
-  data: { label: string; accuracy: number; attempted: number }[],
-  n: number,
-) {
-  if (data.length === 0) return Array.from({ length: n }, () => ({ label: "", accuracy: 0, attempted: 0 }));
-  if (data.length === 1) return Array.from({ length: n }, () => ({ ...data[0] }));
-  return Array.from({ length: n }, (_, i) => {
-    const t = i / (n - 1);
-    const idx = t * (data.length - 1);
-    const lo = Math.floor(idx);
-    const hi = Math.min(lo + 1, data.length - 1);
-    const frac = idx - lo;
-    return {
-      accuracy: data[lo].accuracy + (data[hi].accuracy - data[lo].accuracy) * frac,
-      label: data[Math.round(idx)].label,
-      attempted: data[Math.round(idx)].attempted,
-    };
-  });
+function StatTile({ label, value, suffix, note, noteColor }: { label: string; value: string; suffix?: string; note: string; noteColor: string }) {
+  return (
+    <div style={{ border: CARD, borderRadius: 20, padding: "18px 20px", background: "#fff" }}>
+      <div style={{ fontSize: 13, fontWeight: 600, color: "#71717a" }}>{label}</div>
+      <div style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 600, color: "#18181b", marginTop: 4 }}>
+        {value}{suffix ? <span style={{ fontSize: 18, color: "#a1a1aa" }}>{suffix}</span> : null}
+      </div>
+      <div style={{ fontSize: 12, fontWeight: 600, marginTop: 2, color: noteColor }}>{note}</div>
+    </div>
+  );
 }
 
-function buildPaths(
-  accuracies: number[],
-  padL: number, padT: number, chartW: number, chartH: number,
-) {
-  const pts = accuracies.map((a, i) => ({
-    x: padL + (i / (accuracies.length - 1)) * chartW,
-    y: padT + chartH - (a / 100) * chartH,
-  }));
-  const line = pts.reduce((p, pt, i) => {
-    if (i === 0) return `M ${pt.x} ${pt.y}`;
-    const prev = pts[i - 1];
-    const cx1 = prev.x + (pt.x - prev.x) * 0.4;
-    const cx2 = pt.x - (pt.x - prev.x) * 0.4;
-    return `${p} C ${cx1} ${prev.y}, ${cx2} ${pt.y}, ${pt.x} ${pt.y}`;
-  }, "");
-  const area = `${line} L ${pts[pts.length - 1].x} ${padT + chartH} L ${pts[0].x} ${padT + chartH} Z`;
-  return { pts, line, area };
+function SnapshotBar({ label, value, color, textColor }: { label: string; value: number; color: string; textColor: string }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, fontWeight: 600, color: "#3f3f46", gap: 8 }}>
+        <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{label}</span>
+        <span style={{ color: textColor, flexShrink: 0 }}>{value}%</span>
+      </div>
+      <div style={{ height: 8, borderRadius: 999, background: "#f4f4f5", overflow: "hidden" }}>
+        <div style={{ height: "100%", width: `${Math.max(0, Math.min(100, value))}%`, background: color, borderRadius: 999 }} />
+      </div>
+    </div>
+  );
 }
 
-function AccuracyChart({ data }: { data: { label: string; accuracy: number; attempted: number }[] }) {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const W = 600, H = 220;
-  const PAD_L = 46, PAD_R = 16, PAD_T = 28, PAD_B = 32;
-  const chartW = W - PAD_L - PAD_R;
-  const chartH = H - PAD_T - PAD_B;
-  const yTicks = [0, 25, 50, 75, 100];
+function Badge({ label, color, bg }: { label: string; color: string; bg: string }) {
+  return (
+    <span style={{ flexShrink: 0, whiteSpace: "nowrap", background: bg, color, fontSize: 12, fontWeight: 700, padding: "4px 10px", borderRadius: 999 }}>{label}</span>
+  );
+}
 
-  const resampled = useMemo(() => resampleChart(data, MORPH_N), [data]);
-  const targets = useMemo(() => resampled.map((d) => d.accuracy), [resampled]);
+function DeltaRow({ label, value, suffix, delta }: { label: string; value: number; suffix?: string; delta: number }) {
+  const color = delta > 0 ? "#059669" : delta < 0 ? "#dc2626" : "#71717a";
+  const arrow = delta > 0 ? "▲" : delta < 0 ? "▼" : "–";
+  return (
+    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13 }}>
+      <span style={{ color: "#52525b", fontWeight: 600 }}>{label}</span>
+      <span style={{ fontWeight: 700, color }}>{value}{suffix ?? ""} {arrow} {delta === 0 ? "0" : `${delta > 0 ? "+" : "−"}${Math.abs(delta)}`}</span>
+    </div>
+  );
+}
 
-  // Animated accuracies that morph between states
-  const [animated, setAnimated] = useState(targets);
-  const prevRef = useRef(targets);
+/* ═══ Accuracy over time (SVG line + area) ═══ */
 
-  useEffect(() => {
-    const from = prevRef.current;
-    const to = targets;
-    prevRef.current = to;
-    if (from.every((v, i) => v === to[i])) { setAnimated(to); return; }
-    const start = performance.now();
-    let raf: number;
-    function tick(now: number) {
-      const t = Math.min((now - start) / MORPH_MS, 1);
-      const e = 1 - Math.pow(1 - t, 3);
-      setAnimated(from.map((f, i) => f + (to[i] - f) * e));
-      if (t < 1) raf = requestAnimationFrame(tick);
-    }
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [targets]);
+function AccuracyOverTime({ series }: { series: SeriesPoint[] }) {
+  const W = 580, H = 200, padL = 40, padR = 22, padT = 30, padB = 40;
+  const innerW = W - padL - padR;
+  const innerH = H - padT - padB; // 130
+  const n = series.length;
+  const x = (i: number) => (n === 1 ? padL + innerW / 2 : padL + (i / (n - 1)) * innerW);
+  const y = (a: number) => padT + innerH - (Math.max(0, Math.min(100, a)) / 100) * innerH;
+  const pts = series.map((s, i) => ({ x: x(i), y: y(s.accuracy) }));
 
-  const { pts, line, area } = buildPaths(animated, PAD_L, PAD_T, chartW, chartH);
+  let line = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+  for (let i = 1; i < pts.length; i++) {
+    const p = pts[i - 1], c = pts[i], dx = (c.x - p.x) * 0.4;
+    line += ` C ${(p.x + dx).toFixed(1)} ${p.y.toFixed(1)}, ${(c.x - dx).toFixed(1)} ${c.y.toFixed(1)}, ${c.x.toFixed(1)} ${c.y.toFixed(1)}`;
+  }
+  const bottom = padT + innerH;
+  const area = `${line} L ${pts[pts.length - 1].x.toFixed(1)} ${bottom} L ${pts[0].x.toFixed(1)} ${bottom} Z`;
+
+  const grid = [0, 25, 50, 75, 100];
+  const labelStep = Math.max(1, Math.ceil(n / 6));
 
   return (
-    <div className="w-full overflow-x-auto">
-      <svg
-        viewBox={`0 0 ${W} ${H}`}
-        className="w-full min-w-[400px]"
-        preserveAspectRatio="xMidYMid meet"
-        onMouseLeave={() => setHovered(null)}
-      >
+    <div style={{ width: "100%", overflowX: "auto" }}>
+      <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", minWidth: 380, display: "block" }} preserveAspectRatio="xMidYMid meet">
         <defs>
-          <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#6366f1" stopOpacity="0.2" />
+          <linearGradient id="accGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#6366f1" stopOpacity="0.18" />
             <stop offset="100%" stopColor="#6366f1" stopOpacity="0.02" />
           </linearGradient>
-          <filter id="tooltipShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="1" stdDeviation="2" floodOpacity="0.1" />
-          </filter>
         </defs>
-
-        {/* Grid lines */}
-        {yTicks.map((tick) => {
-          const y = PAD_T + chartH - (tick / 100) * chartH;
+        {grid.map((g) => {
+          const gy = y(g);
           return (
-            <g key={tick}>
-              <line x1={PAD_L} y1={y} x2={W - PAD_R} y2={y} stroke="#f4f4f5" strokeWidth="1" className="dark:stroke-slate-700" />
-              <text x={PAD_L - 6} y={y + 3} textAnchor="end" className="fill-zinc-400 dark:fill-slate-500" fontSize="10">
-                {tick}%
-              </text>
+            <g key={g}>
+              <line x1={padL} y1={gy} x2={W - padR} y2={gy} stroke="#f4f4f5" />
+              <text x={padL - 6} y={gy + 3} textAnchor="end" fontSize="10" fill="#a1a1aa">{g}%</text>
             </g>
           );
         })}
-
-        {/* Area fill */}
-        <path d={area} fill="url(#chartGrad)" />
-
-        {/* Line */}
-        <path
-          d={line}
-          fill="none"
-          stroke="#6366f1"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-
-        {/* Hover vertical guide */}
-        {hovered !== null && (
-          <line
-            x1={pts[hovered].x} y1={PAD_T}
-            x2={pts[hovered].x} y2={PAD_T + chartH}
-            stroke="#6366f1" strokeWidth="1" strokeDasharray="4 3" opacity="0.4"
-          />
-        )}
-
-        {/* Dots + hit areas */}
-        {pts.map((pt, i) => {
-          const isHovered = hovered === i;
-          const isEndpoint = i === 0 || i === pts.length - 1;
-          const showLabel = isHovered || isEndpoint;
-          const acc = Math.round(animated[i]);
-          const meta = resampled[i];
-
-          return (
-            <g key={i}>
-              <circle
-                cx={pt.x} cy={pt.y} r="18" fill="transparent"
-                onMouseEnter={() => setHovered(i)}
-                style={{ cursor: "pointer" }}
-              />
-              <circle
-                cx={pt.x} cy={pt.y}
-                r={isHovered ? 6 : 4}
-                fill={isHovered ? "#6366f1" : "white"}
-                stroke="#6366f1" strokeWidth="2"
-                style={{ transition: "r 0.15s ease, fill 0.15s ease" }}
-              />
-              {/* X-axis label */}
-              <text
-                x={pt.x} y={PAD_T + chartH + 18} textAnchor="middle"
-                className={isHovered ? "fill-violet-600" : "fill-zinc-400 dark:fill-slate-500"}
-                fontSize="10" fontWeight={isHovered ? "bold" : "normal"}
-              >
-                {meta.label}
-              </text>
-              {/* Tooltip */}
-              {showLabel && (
-                <g>
-                  {isHovered && (
-                    <>
-                      <rect
-                        x={pt.x - 52} y={pt.y - 48} width="104" height="38" rx="8"
-                        fill="white" stroke="#e5e7eb" strokeWidth="1" filter="url(#tooltipShadow)"
-                      />
-                      <text x={pt.x} y={pt.y - 30} textAnchor="middle" className="fill-violet-700" fontSize="13" fontWeight="bold">
-                        {acc}%
-                      </text>
-                      <text x={pt.x} y={pt.y - 17} textAnchor="middle" className="fill-zinc-400" fontSize="9">
-                        {meta.attempted} questions
-                      </text>
-                    </>
-                  )}
-                  {!isHovered && isEndpoint && (
-                    <text x={pt.x} y={pt.y - 10} textAnchor="middle" className="fill-violet-600" fontSize="10" fontWeight="bold">
-                      {acc}%
-                    </text>
-                  )}
-                </g>
-              )}
-            </g>
-          );
+        <path d={area} fill="url(#accGrad)" />
+        <path d={line} fill="none" stroke="#6366f1" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx={pts[0].x} cy={pts[0].y} r="4" fill="#fff" stroke="#6366f1" strokeWidth="2" />
+        <circle cx={pts[pts.length - 1].x} cy={pts[pts.length - 1].y} r="4.5" fill="#6366f1" stroke="#fff" strokeWidth="2" />
+        <text x={pts[0].x} y={pts[0].y - 12} textAnchor="middle" fontSize="11" fontWeight="700" fill="#6d28d9">{series[0].accuracy}%</text>
+        <text x={pts[pts.length - 1].x} y={pts[pts.length - 1].y - 12} textAnchor="middle" fontSize="11" fontWeight="700" fill="#6d28d9">{series[series.length - 1].accuracy}%</text>
+        {series.map((s, i) => {
+          if (i % labelStep !== 0 && i !== n - 1) return null;
+          return <text key={i} x={pts[i].x} y={bottom + 20} textAnchor="middle" fontSize="10" fill="#a1a1aa">{s.label}</text>;
         })}
       </svg>
     </div>
+  );
+}
+
+/* ═══ Practice volume (SVG bars) ═══ */
+
+function PracticeVolume({ weeks }: { weeks: { label: string; count: number }[] }) {
+  const W = 340, H = 100, baseline = 90, top = 22;
+  const max = Math.max(...weeks.map((w) => w.count), 1);
+  const n = weeks.length;
+  const gap = 14;
+  const barW = Math.min(32, (W - 20 - gap * (n - 1)) / n);
+  const step = barW + gap;
+  const startX = 10;
+  const colorFor = (i: number) => (i >= n - 2 ? "#4338ca" : i >= n - 4 ? "#818cf8" : "#c7d2fe");
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} style={{ width: "100%", display: "block" }}>
+      {weeks.map((w, i) => {
+        const h = Math.max(3, ((baseline - top) * w.count) / max);
+        const bx = startX + i * step;
+        const by = baseline - h;
+        return <rect key={i} x={bx} y={by} width={barW} height={h} rx="4" fill={colorFor(i)} />;
+      })}
+      {weeks.map((w, i) => {
+        if (i !== 0 && i !== n - 1 && !(n > 4 && i === Math.floor(n / 2))) return null;
+        return <text key={`t${i}`} x={startX + i * step + barW / 2} y={98} textAnchor="middle" fontSize="9" fill="#a1a1aa">{w.label}</text>;
+      })}
+      {weeks.length > 0 && (
+        <text x={startX + (n - 1) * step + barW / 2} y={baseline - Math.max(3, ((baseline - top) * weeks[n - 1].count) / max) - 6} textAnchor="middle" fontSize="10" fontWeight="700" fill="#4338ca">{weeks[n - 1].count}</text>
+      )}
+    </svg>
   );
 }
