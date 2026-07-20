@@ -610,7 +610,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               const tipArrowPos: React.CSSProperties = cur ? { top: -5 } : { bottom: -5 };
               const tipArrowClip = cur ? "polygon(0 0, 100% 0, 0 100%)" : "polygon(100% 0, 100% 100%, 0 100%)";
               return (
-                <div key={l.id} style={{ position: "absolute", left: l.x, top: l.y, transform: "translate(-50%,-50%)", zIndex: z }}>
+                <div key={l.id} style={{ position: "absolute", left: l.x, top: l.y, transform: "translate(-50%,-50%)", zIndex: s.hoveredNode === l.id ? 50 : z }}>
                   <div
                     style={{ position: "relative", width: size, height: size }}
                     onMouseEnter={() => this.setState({ hoveredNode: l.id })}
