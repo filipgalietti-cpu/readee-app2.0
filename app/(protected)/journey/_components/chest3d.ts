@@ -135,9 +135,19 @@ export function createChestScene(container: HTMLElement): ChestScene {
 
   const fx = new THREE.Group(); scene.add(fx);
   const glowLight = new THREE.PointLight(0xffd76a, 0, 2.4, 1.6); glowLight.position.set(0, H + 0.25 - 0.28, 0); fx.add(glowLight);
-  const raysMat = new THREE.MeshBasicMaterial({ color: 0xffe9a3, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
-  const rays = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.16, 1.5, 24, 1, true), raysMat);
-  rays.position.set(0, H + 0.78 - 0.28, 0); fx.add(rays);
+  // "Infinite light": a vertical gradient texture fades the beam to nothing at
+  // the top (no hard cutoff), so it reads as light shooting up endlessly.
+  const gradCanvas = document.createElement("canvas"); gradCanvas.width = 2; gradCanvas.height = 128;
+  const gctx = gradCanvas.getContext("2d")!;
+  const grad = gctx.createLinearGradient(0, 128, 0, 0);
+  grad.addColorStop(0, "rgba(255,255,255,1)");
+  grad.addColorStop(0.35, "rgba(255,255,255,0.55)");
+  grad.addColorStop(1, "rgba(255,255,255,0)");
+  gctx.fillStyle = grad; gctx.fillRect(0, 0, 2, 128);
+  const gradTex = new THREE.CanvasTexture(gradCanvas);
+  const raysMat = new THREE.MeshBasicMaterial({ color: 0xffe9a3, transparent: true, opacity: 0, map: gradTex, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+  const rays = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 0.16, 3.2, 24, 1, true), raysMat);
+  rays.position.set(0, H + 1.6 - 0.28, 0); fx.add(rays);
 
   const N = 150;
   const sPos = new Float32Array(N * 3), sVel = new Float32Array(N * 3), sCol = new Float32Array(N * 3);
@@ -193,8 +203,8 @@ export function createChestScene(container: HTMLElement): ChestScene {
     const hTarget = open ? 1.1 : 0;
     haspV += ((hTarget - haspA) * 160 - haspV * 10) * dt; haspA += haspV * dt; hasp.rotation.x = haspA;
     glow += ((open ? 1 : 0) - glow) * Math.min(dt * 4.5, 1);
-    glowLight.intensity = glow * 2.6; raysMat.opacity = glow * 0.32;
-    rays.scale.y = 0.6 + glow * 0.55; rays.rotation.y = now * 0.4;
+    glowLight.intensity = glow * 2.6; raysMat.opacity = glow * 0.38;
+    rays.scale.y = 0.6 + glow * 0.4; rays.rotation.y = now * 0.4;
     const tShow = Math.max(0.001, Math.min(1, (lidA - 0.25) / 0.9));
     treasure.visible = lidA > 0.1;
     treasure.scale.setScalar(tShow < 1 ? tShow * (1.15 - 0.15 * tShow) : 1);
