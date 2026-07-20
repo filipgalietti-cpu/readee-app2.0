@@ -74,6 +74,7 @@ interface JState {
   justCompleted: string | null; justUnlocked: string | null; justChest: string | null;
   chestFlash: string | null; justGate: string | null; nudged: string | null;
   hoveredNode: string | null;
+  jumpVisible: boolean; jumpBelow: boolean;
 }
 interface Particle { key: string; x: number; y: number; w: number; h: number; r: number; c: string; dx: number; dy: number; rot: number; dur: number; go: boolean }
 interface Flyer { key: string; x: number; y: number; dx: number; dy: number; dur: number; delay: number; go: boolean }
@@ -96,6 +97,18 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   _ac: AudioContext | null = null;
   _chestTap: (() => void) | null = null;
   _onResize = () => { if (!this.state.busy) this.syncLayout(); };
+  // Show the "Back to your lesson" button only when the current node is
+  // scrolled off-screen; jumpBelow tracks whether it's below (arrow points down)
+  // or above (arrow points up).
+  _onScroll = () => {
+    if (this.state.busy) { if (this.state.jumpVisible) this.setState({ jumpVisible: false }); return; }
+    const cur = this.curLesson();
+    if (!cur) { if (this.state.jumpVisible) this.setState({ jumpVisible: false }); return; }
+    const yAbs = this.canvasTop() + cur.y, vTop = window.scrollY, vBot = vTop + window.innerHeight;
+    const out = yAbs < vTop + 60 || yAbs > vBot - 120;
+    const below = yAbs > vBot - 120;
+    if (out !== this.state.jumpVisible || below !== this.state.jumpBelow) this.setState({ jumpVisible: out, jumpBelow: below });
+  };
   _timers: number[] = [];
 
   constructor(props: JourneyMapProps) {
@@ -177,7 +190,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       chestOverlay: false, chestOverlayIn: false, chestReward: false, chestTitle: "",
       chestChar: false, chestRewardText: "", chestHint: false, chestHintText: "",
       justCompleted: null, justUnlocked: null, justChest: null, chestFlash: null, justGate: null, nudged: null,
-      hoveredNode: null,
+      hoveredNode: null, jumpVisible: false, jumpBelow: false,
     };
   }
   // unit index helper (chests keyed by absolute unit number, matching buildLayout)
@@ -203,6 +216,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
 
   componentDidMount() {
     window.addEventListener("resize", this._onResize);
+    window.addEventListener("scroll", this._onScroll, { passive: true });
     this.after(60, () => {
       this.syncLayout();
       const cur = this.curLesson();
@@ -214,7 +228,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       if (this.props.justCompletedId) this.after(700, () => this.playUnlock(this.props.justCompletedId!));
     });
   }
-  componentWillUnmount() { window.removeEventListener("resize", this._onResize); this.camOn = false; this._timers.forEach(clearTimeout); }
+  componentWillUnmount() { window.removeEventListener("resize", this._onResize); window.removeEventListener("scroll", this._onScroll); this.camOn = false; this._timers.forEach(clearTimeout); }
   after(ms: number, fn: () => void) { this._timers.push(window.setTimeout(fn, ms)); }
   sleep(ms: number) { return new Promise<void>((r) => this.after(ms, r)); }
 
@@ -492,11 +506,11 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(180deg,#cfe8fd 0%,#dbeafe 22%,#fdf3d0 46%,#d9f2dd 66%,#fde9c4 86%,#f8d3e2 100%)" }} />
 
         <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 0 120px" }}>
-          {/* Header — sticky frosted bar so the name + streak + carrots stay
-              visible as the kid scrolls the map. */}
-          <div style={{ position: "sticky", top: 0, zIndex: 40, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, padding: "12px 24px 12px", textAlign: "center", background: "rgba(255,255,255,.62)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,.5)" }}>
-            <div style={{ fontSize: 22, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.1 }}>{this.props.kidName}&apos;s Reading Journey</div>
-            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          {/* Header — centered title in flow; streak/carrots/sound pinned to the
+              top-right corner so they stay visible as the kid scrolls. */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "26px 24px 6px", textAlign: "center" }}>
+            <div style={{ fontSize: 25, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.1, textShadow: "0 1px 0 rgba(255,255,255,.6)" }}>{this.props.kidName}&apos;s Reading Journey</div>
+            <div style={{ position: "fixed", top: 14, right: 16, zIndex: 70, display: "flex", gap: 8, alignItems: "center" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(255,255,255,.85)", borderRadius: 999, padding: "5px 12px", boxShadow: "0 2px 8px -2px rgba(30,27,75,.18)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="#f97316" stroke="#f97316" strokeWidth="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg>
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#3f3f46" }}>{this.props.streak} days</span>
@@ -688,16 +702,15 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
           </div>
         )}
 
-        {/* Jump-to-my-lesson button — scrolls to the current node. Hidden during
-            the unlock cinematic so it doesn't fight the camera. */}
-        {!s.busy && !s.chestOverlay && (
+        {/* "Back to your lesson" — appears only when the current node is scrolled
+            off-screen; the chevron points toward it (down if below, up if above). */}
+        {s.jumpVisible && !s.busy && !s.chestOverlay && (
           <button
             onClick={() => this.scrollToCurrent()}
-            title="Jump to my lesson"
-            style={{ position: "fixed", right: 20, bottom: 24, zIndex: 45, display: "flex", alignItems: "center", gap: 8, background: "#4f46e5", color: "#fff", border: "none", borderRadius: 999, padding: "12px 18px", cursor: "pointer", boxShadow: "0 8px 24px -6px rgba(79,70,229,.6)", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15 }}
+            style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", zIndex: 55, cursor: "pointer", border: "none", background: "#fff", color: "#059669", borderRadius: 999, padding: "11px 20px", boxShadow: "0 6px 20px -6px rgba(30,27,75,.4),inset 0 0 0 2px #d1fae5", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, display: "flex", alignItems: "center", gap: 8, animation: "rj-startdrop .4s cubic-bezier(0.34,1.56,0.64,1) both" }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg>
-            My lesson
+            <svg style={{ transform: `rotate(${s.jumpBelow ? 0 : 180}deg)`, transition: "transform .2s ease" }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></svg>
+            Back to your lesson
           </button>
         )}
       </div>
