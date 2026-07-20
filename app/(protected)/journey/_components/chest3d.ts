@@ -139,9 +139,13 @@ export function createChestScene(container: HTMLElement): ChestScene {
   // the top (no hard cutoff), so it reads as light shooting up endlessly.
   const gradCanvas = document.createElement("canvas"); gradCanvas.width = 2; gradCanvas.height = 128;
   const gctx = gradCanvas.getContext("2d")!;
+  // Fade to fully transparent LOW on the beam (by ~24% up) so it dissolves
+  // inside the camera's tight frame — otherwise the tall cone is still ~60%
+  // opaque where the view cuts it off, which reads as a hard edge.
   const grad = gctx.createLinearGradient(0, 128, 0, 0);
   grad.addColorStop(0, "rgba(255,255,255,1)");
-  grad.addColorStop(0.35, "rgba(255,255,255,0.55)");
+  grad.addColorStop(0.1, "rgba(255,255,255,0.5)");
+  grad.addColorStop(0.24, "rgba(255,255,255,0)");
   grad.addColorStop(1, "rgba(255,255,255,0)");
   gctx.fillStyle = grad; gctx.fillRect(0, 0, 2, 128);
   const gradTex = new THREE.CanvasTexture(gradCanvas);
