@@ -537,10 +537,22 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
             </div>
 
         <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 0 120px" }}>
-          {/* Header — centered title in flow; streak/carrots/sound pinned to the
-              top-right corner so they stay visible as the kid scrolls. */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "26px 24px 6px", textAlign: "center" }}>
-            <div style={{ fontSize: 25, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.1, textShadow: "0 1px 0 rgba(255,255,255,.6)" }}>{this.props.kidName}&apos;s Reading Journey</div>
+          {/* Header — grand centered title (laurels + crown + gradient text +
+              tagline). streak/carrots/sound are pinned top-right (above). */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "40px 24px 14px", textAlign: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <svg width="46" height="22" viewBox="0 0 46 22" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round"><path d="M2 20 C 14 20, 22 14, 26 4" /><path d="M44 20 C 32 20, 24 14, 20 4" opacity=".5" /></svg>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#f59e0b" stroke="#b45309" strokeWidth="1" strokeLinejoin="round"><path d="M2 18 L5 8 L9 13 L12 4 L15 13 L19 8 L22 18 Z" /><path d="M2 18 h20 v2 h-20 z" fill="#b45309" stroke="none" /></svg>
+                <svg width="46" height="22" viewBox="0 0 46 22" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" style={{ transform: "scaleX(-1)" }}><path d="M2 20 C 14 20, 22 14, 26 4" /><path d="M44 20 C 32 20, 24 14, 20 4" opacity=".5" /></svg>
+              </div>
+              <div style={{ fontSize: 44, fontWeight: 800, fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.05, background: "linear-gradient(180deg,#4338ca,#8b5cf6)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent", filter: "drop-shadow(0 2px 0 rgba(255,255,255,.8)) drop-shadow(0 8px 18px rgba(67,56,202,.25))" }}>{this.props.kidName}&apos;s Reading Journey</div>
+              <div style={{ fontSize: 13.5, fontWeight: 800, letterSpacing: 2.5, textTransform: "uppercase", color: "#7c3aed", display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ display: "inline-block", width: 36, height: 2, background: "linear-gradient(90deg,transparent,#8b5cf6)" }} />
+                Every step is a story
+                <span style={{ display: "inline-block", width: 36, height: 2, background: "linear-gradient(90deg,#8b5cf6,transparent)" }} />
+              </div>
+            </div>
           </div>
 
           {/* Canvas */}
