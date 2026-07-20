@@ -504,12 +504,8 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       <div style={{ position: "relative", minHeight: "100vh", overflowX: "clip", fontFamily: "var(--font-nunito), sans-serif" }}>
         <style>{KEYFRAMES}</style>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(180deg,#cfe8fd 0%,#dbeafe 22%,#fdf3d0 46%,#d9f2dd 66%,#fde9c4 86%,#f8d3e2 100%)" }} />
-
-        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 0 120px" }}>
-          {/* Header — centered title in flow; streak/carrots/sound pinned to the
-              top-right corner so they stay visible as the kid scrolls. */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "26px 24px 6px", textAlign: "center" }}>
-            <div style={{ fontSize: 25, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.1, textShadow: "0 1px 0 rgba(255,255,255,.6)" }}>{this.props.kidName}&apos;s Reading Journey</div>
+        {/* Stats banner — pinned top-right, OUTSIDE the z-index:1 map
+            wrapper so it paints above the app chrome. */}
             <div style={{ position: "fixed", top: 14, right: 16, zIndex: 70, display: "flex", gap: 8, alignItems: "center" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(255,255,255,.85)", borderRadius: 999, padding: "5px 12px", boxShadow: "0 2px 8px -2px rgba(30,27,75,.18)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="#f97316" stroke="#f97316" strokeWidth="1.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg>
@@ -525,6 +521,12 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
                   : <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="m23 9-6 6" /><path d="m17 9 6 6" /></svg>}
               </button>
             </div>
+
+        <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 1320, margin: "0 auto", padding: "0 0 120px" }}>
+          {/* Header — centered title in flow; streak/carrots/sound pinned to the
+              top-right corner so they stay visible as the kid scrolls. */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "26px 24px 6px", textAlign: "center" }}>
+            <div style={{ fontSize: 25, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.1, textShadow: "0 1px 0 rgba(255,255,255,.6)" }}>{this.props.kidName}&apos;s Reading Journey</div>
           </div>
 
           {/* Canvas */}
