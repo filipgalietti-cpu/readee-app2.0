@@ -347,7 +347,18 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
     this.setState((s) => ({ flyers: [...s.flyers, ...arr] }));
     this.sCoins(n);
     this.after(30, () => this.setState((s) => ({ flyers: s.flyers.map((f) => arr.some((a2) => a2.key === f.key) ? { ...f, go: true } : f) })));
-    this.after(750 + n * 75, () => { this.setState((s) => ({ flyers: s.flyers.filter((f) => !arr.some((a2) => a2.key === f.key)), carrots: s.carrots + amount, counterPulse: s.counterPulse + 1 })); this.sTick(); });
+    this.after(750 + n * 75, () => {
+      this.setState((s) => ({ flyers: s.flyers.filter((f) => !arr.some((a2) => a2.key === f.key)) }));
+      // Count the carrots UP one chunk at a time (with a tick per step) instead
+      // of snapping to the new total — Claude Design a205aaa2.
+      const per = Math.ceil(amount / n), steps = Math.ceil(amount / per);
+      for (let i = 0; i < steps; i++) {
+        this.after(i * 110, () => {
+          this.setState((s) => ({ carrots: Math.min(s.carrots + per, s.carrots + amount - i * per), counterPulse: s.counterPulse + 1 }));
+          this.sTick();
+        });
+      }
+    });
   }
 
   fillTo(ptIdx: number, dur: number) { if (!this.cumLen) return; this.setState({ doneTrans: "stroke-dashoffset " + dur + "ms ease-in-out", doneOff: this.total - this.cumLen[ptIdx] }); }
