@@ -597,8 +597,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                 <StatTile label="Accuracy" value={`${totals.accuracy}%`}
                   note={accDelta === null ? `over ${rangeWord}` : accDelta === 0 ? "no change" : `${accDelta > 0 ? "▲" : "▼"} ${Math.abs(accDelta)}% vs last period`}
                   noteColor={accDelta === null ? "#71717a" : accDelta >= 0 ? "#059669" : "#dc2626"} />
-                {/* TODO(analytics): no best-streak field on Child; only current streak_days is available */}
-                <StatTile label="Day streak" value={String(child.streak_days)} note="days in a row" noteColor="#71717a" />
+                <StatTile label="Day streak" value={String(child.streak_days)} note={`Best: ${Math.max(child.best_streak ?? 0, child.streak_days)} days`} noteColor="#71717a" />
                 <StatTile label="Skills practiced" value={String(skillsPracticedInRange)} suffix={`/${gradeStandardCount}`}
                   note={`${displayGrade(child.grade)} standards`} noteColor="#71717a" />
               </div>

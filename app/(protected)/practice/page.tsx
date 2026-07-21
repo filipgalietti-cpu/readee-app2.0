@@ -40,6 +40,7 @@ import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import { didLevelUp } from "@/lib/levels/levels";
+import { bumpStreak } from "@/lib/streak/bump-streak";
 import type { LucideIcon } from "lucide-react";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
@@ -1846,6 +1847,11 @@ function CompletionScreen({
             .eq("id", child.id));
         }
       }
+
+      // Post-lesson quiz = a completed lesson today → advance the day-streak
+      // (+ best-streak). The old /lesson route did this itself; the journey's
+      // /learn→/practice flow didn't, so streaks never moved for journey kids.
+      if (fromLesson) await bumpStreak(child.id);
 
       // Check milestone + badge unlocks AFTER the result row is saved so
       // the lifetime-correct + perfect-session counts include this session.

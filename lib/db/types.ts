@@ -52,6 +52,8 @@ export interface Child {
   carrots: number;
   stories_read: number;
   streak_days: number;
+  /** Longest day-streak the child has ever reached. */
+  best_streak?: number;
   last_lesson_at: string | null;
   equipped_items: EquippedItems;
   /** Journey reward chests/trophy already opened (chest node ids + "__trophy__"),

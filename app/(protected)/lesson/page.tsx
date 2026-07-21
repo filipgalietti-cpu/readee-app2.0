@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { savedOk } from "@/lib/db/checked-write";
+import { bumpStreak } from "@/lib/streak/bump-streak";
 import { Child } from "@/lib/db/types";
 import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
@@ -792,30 +793,14 @@ function LessonContent() {
     const current = freshChild as { stories_read: number; streak_days: number; last_lesson_at: string | null; carrots: number } | null;
     const newStoriesRead = (current?.stories_read ?? 0) + 1;
 
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    let newStreak = 1;
-    if (current?.last_lesson_at) {
-      const lastDate = new Date(current.last_lesson_at);
-      const lastDay = new Date(lastDate.getFullYear(), lastDate.getMonth(), lastDate.getDate());
-      const diffDays = Math.floor((today.getTime() - lastDay.getTime()) / (1000 * 60 * 60 * 24));
-      if (diffDays === 0) {
-        newStreak = current.streak_days;
-      } else if (diffDays === 1) {
-        newStreak = current.streak_days + 1;
-      }
-    }
-
-    await savedOk("lesson:streak", supabase
-      .from("children")
-      .update({
-        stories_read: newStoriesRead,
-        streak_days: newStreak,
-        last_lesson_at: now.toISOString(),
-      })
-      .eq("id", child.id));
-
+    // Streak + best-streak + last_lesson_at via the shared helper (same one the
+    // journey's /practice completion uses). Stories count updated alongside.
+    const { streak: newStreak } = await bumpStreak(child.id);
     setStreakDays(newStreak);
+    await savedOk("lesson:stories", supabase
+      .from("children")
+      .update({ stories_read: newStoriesRead })
+      .eq("id", child.id));
 
     const totalCarrotsAfter = (current?.carrots ?? 0) + 10;
     for (const milestone of CARROT_MILESTONES) {
