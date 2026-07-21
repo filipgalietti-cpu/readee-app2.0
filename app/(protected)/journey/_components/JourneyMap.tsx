@@ -71,6 +71,7 @@ interface JState {
   busy: boolean; soundOn: boolean; finished: boolean;
   chestOverlay: boolean; chestOverlayIn: boolean; chestReward: boolean; chestTitle: string;
   chestChar: boolean; chestRewardText: string; chestHint: boolean; chestHintText: string;
+  gradeOverlay: boolean; gradeOverlayIn: boolean; gradeOverlayTitle: string; gradeOverlayBadge: string; gradeCta: boolean;
   justCompleted: string | null; justUnlocked: string | null; justChest: string | null;
   chestFlash: string | null; justGate: string | null; nudged: string | null;
   hoveredNode: string | null;
@@ -78,6 +79,7 @@ interface JState {
 }
 interface Particle { key: string; x: number; y: number; w: number; h: number; r: number; c: string; dx: number; dy: number; rot: number; dur: number; go: boolean }
 interface Flyer { key: string; x: number; y: number; dx: number; dy: number; dur: number; delay: number; go: boolean }
+interface ConfettiPiece { left: number; w: number; h: number; r: number; c: string; dur: number; delay: number }
 
 const CARROT_PATH_1 = "M2.27 21.7s9.87-3.5 12.73-6.36a4.5 4.5 0 0 0-6.36-6.37C5.77 11.84 2.27 21.7 2.27 21.7z";
 
@@ -96,6 +98,8 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
   chest3dRef = React.createRef<HTMLDivElement>();
   _ac: AudioContext | null = null;
   _chestTap: (() => void) | null = null;
+  _gradeTap: (() => void) | null = null;
+  confetti: ConfettiPiece[] | null = null;
   _onResize = () => { if (!this.state.busy) this.syncLayout(); };
   // Show the "Back to your lesson" button only when the current node is
   // scrolled off-screen; jumpBelow tracks whether it's below (arrow points down)
@@ -189,6 +193,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
       busy: false, soundOn: true, finished: false,
       chestOverlay: false, chestOverlayIn: false, chestReward: false, chestTitle: "",
       chestChar: false, chestRewardText: "", chestHint: false, chestHintText: "",
+      gradeOverlay: false, gradeOverlayIn: false, gradeOverlayTitle: "", gradeOverlayBadge: "", gradeCta: false,
       justCompleted: null, justUnlocked: null, justChest: null, chestFlash: null, justGate: null, nudged: null,
       hoveredNode: null, jumpVisible: false, jumpBelow: false,
     };
@@ -479,6 +484,27 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
     this.sFanfare();
     await this.sleep(1100);
     this.setState({ justGate: null });
+    // Congrats moment — a full-screen "you unlocked a new grade" celebration
+    // that pauses the walk until the child taps to continue.
+    if (!this.confetti) {
+      const cols = ["#fbbf24", "#8b5cf6", "#6366f1", "#10b981", "#38bdf8", "#f43f5e", "#fff"];
+      this.confetti = Array.from({ length: 44 }, (_, i) => ({
+        left: Math.random() * 100, w: 7 + Math.random() * 8, h: 9 + Math.random() * 8,
+        r: Math.random() < 0.5 ? 999 : 2, c: cols[i % cols.length],
+        dur: 2.6 + Math.random() * 2.4, delay: -Math.random() * 5,
+      }));
+    }
+    this.setState({ gradeOverlay: true, gradeOverlayTitle: node.title, gradeOverlayBadge: node.badge });
+    await this.sleep(60);
+    this.setState({ gradeOverlayIn: true, gradeCta: false });
+    this.sFinale();
+    this.after(3000, () => { this.setState({ gradeCta: true }); this.sTick(); });
+    await new Promise<void>((res) => { this._gradeTap = res; });
+    this._gradeTap = null;
+    this.sPop();
+    this.setState({ gradeOverlayIn: false });
+    await this.sleep(380);
+    this.setState({ gradeOverlay: false });
   }
   async finale() {
     this.camTo(this.trophy.y);
@@ -708,6 +734,30 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
           </div>
         </div>
 
+        {/* New-grade unlock overlay — confetti, spinning grade badge,
+            "You unlocked <Grade>!", the level-up bunny, and a tap-to-continue
+            CTA that fades in after a beat. Taps land on the backdrop (inner
+            content is pointer-transparent) and only count once the CTA shows. */}
+        {s.gradeOverlay && (
+          <div
+            onClick={() => { if (this._gradeTap && s.gradeCta) this._gradeTap(); }}
+            style={{ position: "fixed", inset: 0, zIndex: 110, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(30,27,75,.55)", backdropFilter: "blur(7px)", opacity: s.gradeOverlayIn ? 1 : 0, transition: "opacity .4s ease", cursor: "pointer", overflow: "hidden" }}
+          >
+            {(this.confetti || []).map((cf, i) => (
+              <div key={i} style={{ position: "absolute", left: `${cf.left}%`, top: -24, width: cf.w, height: cf.h, borderRadius: cf.r, background: cf.c, animation: `rj-conffall ${cf.dur}s linear ${cf.delay}s infinite` }} />
+            ))}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, transform: `scale(${s.gradeOverlayIn ? 1 : 0.6})`, transition: "transform .5s cubic-bezier(0.34,1.56,0.64,1)", pointerEvents: "none" }}>
+              <div style={{ width: 120, height: 120, borderRadius: 999, backgroundImage: `url('${s.gradeOverlayBadge}')`, backgroundSize: "cover", backgroundPosition: "center", boxShadow: "0 0 0 6px #fff,0 0 60px 10px rgba(251,191,36,.55)", animation: "rj-badgespin .9s cubic-bezier(0.34,1.56,0.64,1) .2s both" }} />
+              <div style={{ fontSize: 14, fontWeight: 800, letterSpacing: 3, textTransform: "uppercase", color: "#fde68a" }}>Congratulations, {this.props.kidName}!</div>
+              <div style={{ fontSize: 46, fontWeight: 800, color: "#fff", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.05, textAlign: "center", textShadow: "0 4px 30px rgba(251,191,36,.4)" }}>You unlocked {s.gradeOverlayTitle}!</div>
+              <div style={{ width: 150, height: 160 }}>
+                <BunnyReaction outfitId={this.props.equippedOutfitId} state="levelup" />
+              </div>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#c7d2fe", background: "rgba(255,255,255,.12)", borderRadius: 999, padding: "8px 20px", boxShadow: "inset 0 0 0 1.5px rgba(199,210,254,.35)", opacity: s.gradeCta ? 1 : 0, transition: "opacity .8s ease" }}>Click to Continue</div>
+            </div>
+          </div>
+        )}
+
         {/* Chest overlay */}
         {s.chestOverlay && (
           <div style={{ position: "fixed", inset: 0, zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(30,27,75,.45)", backdropFilter: "blur(6px)", opacity: s.chestOverlayIn ? 1 : 0, transition: "opacity .4s ease" }}>
@@ -732,7 +782,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
 
         {/* "Back to your lesson" — appears only when the current node is scrolled
             off-screen; the chevron points toward it (down if below, up if above). */}
-        {s.jumpVisible && !s.busy && !s.chestOverlay && (
+        {s.jumpVisible && !s.busy && !s.chestOverlay && !s.gradeOverlay && (
           <button
             onClick={() => this.scrollToCurrent()}
             style={{ position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)", zIndex: 55, cursor: "pointer", border: "none", background: "#fff", color: "#059669", borderRadius: 999, padding: "11px 20px", boxShadow: "0 6px 20px -6px rgba(30,27,75,.4),inset 0 0 0 2px #d1fae5", fontFamily: "var(--font-baloo), sans-serif", fontWeight: 700, fontSize: 15, display: "flex", alignItems: "center", gap: 8, animation: "rj-startdrop .4s cubic-bezier(0.34,1.56,0.64,1) both" }}
@@ -772,5 +822,6 @@ const KEYFRAMES = `
 @keyframes rj-gateopen{0%{transform:scale(1)}35%{transform:scale(1.06)}60%{transform:scale(.98)}100%{transform:scale(1)}}
 @keyframes rj-bunnyrise{0%{transform:translateX(-50%) translateY(55%) scale(.3);opacity:0}55%{opacity:1}100%{transform:translateX(-50%) translateY(0) scale(1);opacity:1}}
 @keyframes rj-badgespin{0%{transform:scale(.4) rotate(-160deg)}70%{transform:scale(1.15) rotate(12deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes rj-conffall{0%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(110vh) rotate(680deg)}}
 @media (prefers-reduced-motion: reduce){*{animation:none !important}}
 `;
