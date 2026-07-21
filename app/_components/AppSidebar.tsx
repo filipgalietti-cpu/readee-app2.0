@@ -11,7 +11,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
-  Home, BarChart3, BookText, BookOpen, ListChecks, Map, Compass,
+  Home, BarChart3, BookText, BookOpen, ListChecks, Map, Newspaper,
   Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Star, Menu,
 } from "lucide-react";
 
@@ -199,7 +199,7 @@ function getNavSections(
       collapsible: collapseByDefault,
       kidSize: true,
       items: [
-        { href: "/discover", icon: Compass, label: "Discover" },
+        { href: "/today/archive", icon: Newspaper, label: "Daily Readee" },
         { href: `/levels${q}`, icon: Star, label: "Levels" },
         { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "text-orange-500" },
         { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },

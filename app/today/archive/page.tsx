@@ -50,13 +50,9 @@ export default async function DailyArchivePage() {
     .limit(120);
   const list = (rows ?? []) as Row[];
 
-  // Stats for the hero strip — total, unique themes, span of dates.
-  const themes = new Set(list.map((r) => r.theme).filter(Boolean));
-  const oldestDate = list[list.length - 1]?.date ?? null;
-
   return (
     <article className="min-h-screen bg-white">
-      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
         <Link
           href="/today"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-zinc-900"
@@ -65,31 +61,15 @@ export default async function DailyArchivePage() {
           Today&apos;s Readee
         </Link>
 
-        <h1 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-          The Daily Readee
-        </h1>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-500">
-          Every passage we&apos;ve published, on a calendar. Tap a day to
-          read it — each one takes about 5 minutes with a kid.
-        </p>
-
-        {list.length > 0 && (
-          <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-2 text-sm">
-            <Stat label="Passages" value={list.length.toLocaleString()} />
-            <Stat label="Themes" value={themes.size.toLocaleString()} />
-            <Stat
-              label="Since"
-              value={
-                oldestDate
-                  ? new Date(oldestDate + "T00:00:00").toLocaleDateString(
-                      "en-US",
-                      { month: "short", day: "numeric", year: "numeric" },
-                    )
-                  : "—"
-              }
-            />
-          </div>
-        )}
+        {/* Newspaper masthead — the archive reads like a paper of record. */}
+        <div className="mt-4 border-y-[3px] border-double border-zinc-900 py-2.5 text-center">
+          <h1
+            className="m-0 text-4xl font-black tracking-tight text-zinc-900 sm:text-[42px]"
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+          >
+            The Daily Readee
+          </h1>
+        </div>
 
         {list.length === 0 ? (
           <div className="mt-12 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
@@ -118,16 +98,5 @@ export default async function DailyArchivePage() {
         </div>
       </div>
     </article>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-        {label}
-      </div>
-      <div className="text-base font-extrabold text-zinc-900">{value}</div>
-    </div>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BarChart3, Sparkles, Mic, BookText, ClipboardCheck, Users } from "lucide-react";
+import { BarChart3, Sparkles, Mic, BookText, ClipboardCheck, Users, Compass } from "lucide-react";
 
 export const metadata = { title: "More · Readee" };
 
@@ -13,6 +13,7 @@ type Tile = {
 };
 
 const TILES: Tile[] = [
+  { href: "/discover", icon: Compass, label: "Discover", desc: "Explore reading passages by topic.", tint: "from-cyan-500 to-blue-500" },
   { href: "/dashboard/ask-readee", icon: Sparkles, label: "Ask Readee", desc: "Ask the AI reading helper anything.", tint: "from-violet-500 to-pink-500", ai: true },
   { href: "/stories-for-me", icon: Sparkles, label: "Personalized Stories", desc: "Stories made just for your child.", tint: "from-fuchsia-500 to-violet-500", ai: true },
   { href: "/fluency", icon: Mic, label: "Fluency Check", desc: "Practice reading out loud.", tint: "from-sky-500 to-indigo-500" },
