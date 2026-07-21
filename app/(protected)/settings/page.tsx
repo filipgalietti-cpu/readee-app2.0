@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
@@ -12,7 +10,10 @@ import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
 import { BACKGROUND_IMAGES, SHOP_ITEMS } from "@/lib/data/shop-items";
-import { Carrot } from "lucide-react";
+import {
+  Carrot, Check, Download, Pencil, Mail, Flame, ShieldCheck,
+  Sparkles, Plus,
+} from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -26,6 +27,15 @@ function displayGrade(grade: string): string {
   return grade;
 }
 
+function initialsOf(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+const CARD = "1px solid #e4e4e7";
+
 export default function Settings() {
   const router = useRouter();
   const supabase = supabaseBrowser();
@@ -35,19 +45,35 @@ export default function Settings() {
   const [children, setChildren] = useState<Child[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Password change
+  // Profile
+  const [displayName, setDisplayName] = useState("");
+  const [editingName, setEditingName] = useState(false);
+  const [nameDraft, setNameDraft] = useState("");
+  const [memberSince, setMemberSince] = useState("");
+  const [provider, setProvider] = useState<"google" | "email">("email");
+
+  // "Saved" toast pill
+  const [savedMsg, setSavedMsg] = useState("");
+  const flashTimer = useRef<number | undefined>(undefined);
+  function flash(msg = "Saved") {
+    setSavedMsg(msg);
+    window.clearTimeout(flashTimer.current);
+    flashTimer.current = window.setTimeout(() => setSavedMsg(""), 2400);
+  }
+
+  // Password change (email accounts)
   const [showPasswordForm, setShowPasswordForm] = useState(false);
   const [passwords, setPasswords] = useState({ current: "", new_: "", confirm: "" });
   const [passwordMsg, setPasswordMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [savingPassword, setSavingPassword] = useState(false);
 
-  // Add child
+  // Add reader
   const [showAddChild, setShowAddChild] = useState(false);
   const [newChild, setNewChild] = useState({ name: "", grade: "Kindergarten" });
   const [addingChild, setAddingChild] = useState(false);
 
-  // Editing child
-  const [editingChildId, setEditingChildId] = useState<string | null>(null);
+  // Reader "Manage" expansion + editing
+  const [expandedReaderId, setExpandedReaderId] = useState<string | null>(null);
   const [editValues, setEditValues] = useState({ first_name: "", grade: "" });
 
   // Modals
@@ -65,6 +91,7 @@ export default function Settings() {
   const userPlan = usePlanStore((s) => s.plan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const setStorePlan = usePlanStore((s) => s.setPlan);
+  const [billingBusy, setBillingBusy] = useState(false);
 
   // Promo code
   const [showPromo, setShowPromo] = useState(false);
@@ -75,12 +102,16 @@ export default function Settings() {
   // Dev reset
   const [resettingPremium, setResettingPremium] = useState(false);
 
-  // Background picker
+  // Background picker data
   const [purchases, setPurchases] = useState<Record<string, ShopPurchase[]>>({});
 
-  // Preferences
+  // Preferences (local)
   const [soundEffects, setSoundEffects] = useState(true);
   const [autoAdvance, setAutoAdvance] = useState(true);
+
+  // Notifications (real: profiles.email_weekly_digest)
+  const [weeklyDigest, setWeeklyDigest] = useState(true);
+
   useEffect(() => {
     const stored = localStorage.getItem("readee_prefs");
     if (stored) {
@@ -106,8 +137,22 @@ export default function Settings() {
       if (!user) { setLoading(false); return; }
       setEmail(user.email || "");
       setUserId(user.id);
+      const prov = (user.app_metadata?.provider ?? user.identities?.[0]?.provider ?? "email") as string;
+      setProvider(prov === "google" ? "google" : "email");
 
       fetchPlan();
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("display_name, created_at, email_weekly_digest")
+        .eq("id", user.id)
+        .maybeSingle();
+      const p = profile as { display_name?: string | null; created_at?: string | null; email_weekly_digest?: boolean | null } | null;
+      setDisplayName(p?.display_name || (user.email ? user.email.split("@")[0] : "You"));
+      setWeeklyDigest(p?.email_weekly_digest ?? true);
+      if (p?.created_at) {
+        setMemberSince(new Date(p.created_at).toLocaleDateString("en-US", { month: "long", year: "numeric" }));
+      }
 
       await loadChildren(user.id);
       setLoading(false);
@@ -126,34 +171,24 @@ export default function Settings() {
       const fresh = data as Child[];
       setChildren(fresh);
 
-      // Push the fresh list into the global child store so any sibling
-      // surface that subscribes (AppSidebar, parent overlay in
-      // /dashboard, ProductSearchBar) re-renders with the new roster.
-      // Without this, add/edit/delete/level-change on /settings looked
-      // correct on this page but stale everywhere else until a hard
-      // refresh. Also reconcile the currently-selected childData: if
-      // it was deleted upstream we clear it; if it was edited we swap
-      // in the fresh row so name + reading_level stay current.
+      // Keep the global child store in sync so sibling surfaces (sidebar,
+      // dashboard overlay) reflect add/edit/delete/level-change immediately.
       const store = useChildStore.getState();
       store.setChildren(fresh);
       const selected = store.childData;
       if (selected) {
         const updated = fresh.find((c) => c.id === selected.id);
         if (!updated) {
-          // Selected kid was just removed — pick the first remaining
-          // child as the new active, or clear if there are none left.
           store.setChildData(fresh[0] ?? null);
           store.setCurrentChild(fresh[0]?.id ?? null);
         } else if (updated !== selected) {
           store.setChildData(updated);
         }
       } else if (fresh.length === 1) {
-        // Common case: parent just added their first kid — auto-select.
         store.setChildData(fresh[0]);
         store.setCurrentChild(fresh[0].id);
       }
 
-      // Fetch purchases for background picker
       const childIds = fresh.map((c) => c.id);
       if (childIds.length > 0) {
         const { data: allPurchases } = await supabase
@@ -169,6 +204,28 @@ export default function Settings() {
         }
       }
     }
+  }
+
+  // === Profile name ===
+  async function saveName() {
+    const v = nameDraft.trim();
+    if (!v) return;
+    const { error } = await supabase.from("profiles").update({ display_name: v }).eq("id", userId);
+    if (error) { flash("Couldn't save name"); return; }
+    setDisplayName(v);
+    setEditingName(false);
+    // Refresh plan store so the sidebar greeting picks up the new name.
+    usePlanStore.getState().refresh?.();
+    flash("Name updated");
+  }
+
+  // === Notifications ===
+  async function toggleWeeklyDigest() {
+    const next = !weeklyDigest;
+    setWeeklyDigest(next);
+    const { error } = await supabase.from("profiles").update({ email_weekly_digest: next }).eq("id", userId);
+    if (error) { setWeeklyDigest(!next); flash("Couldn't save"); return; }
+    flash(next ? "Weekly report on" : "Weekly report off");
   }
 
   // === Password ===
@@ -208,11 +265,13 @@ export default function Settings() {
     setNewChild({ name: "", grade: "Kindergarten" });
     setShowAddChild(false);
     setAddingChild(false);
+    flash("Reader added");
   }
 
-  // === Edit Child ===
-  function startEditing(child: Child) {
-    setEditingChildId(child.id);
+  // === Manage / Edit Child ===
+  function toggleManage(child: Child) {
+    if (expandedReaderId === child.id) { setExpandedReaderId(null); return; }
+    setExpandedReaderId(child.id);
     setEditValues({ first_name: child.first_name, grade: child.grade || "Kindergarten" });
   }
 
@@ -222,11 +281,10 @@ export default function Settings() {
       grade: editValues.grade,
     });
     await supabase.from("children").update(updateData).eq("id", childId);
-    setEditingChildId(null);
     await loadChildren(userId);
+    flash("Reader updated");
   }
 
-  // === Change Reading Level ===
   function requestLevelChange(childId: string, childName: string, newLevel: string) {
     const child = children.find((c) => c.id === childId);
     if (child?.reading_level === newLevel) return;
@@ -238,9 +296,9 @@ export default function Settings() {
     await supabase.from("children").update({ reading_level: levelChangeChild.newLevel }).eq("id", levelChangeChild.id);
     setLevelChangeChild(null);
     await loadChildren(userId);
+    flash("Reading level updated");
   }
 
-  // === Reset Progress ===
   async function handleResetProgress(childId: string) {
     await supabase.from("assessments").delete().eq("child_id", childId);
     await supabase.from("lessons_progress").delete().eq("child_id", childId);
@@ -252,37 +310,53 @@ export default function Settings() {
     }).eq("id", childId);
     setResetChildId(null);
     await loadChildren(userId);
+    flash("Progress reset");
   }
 
-  // === Remove Child ===
   async function handleRemoveChild(childId: string) {
     await supabase.from("children").delete().eq("id", childId);
     setRemoveChildId(null);
+    setExpandedReaderId(null);
     await loadChildren(userId);
+    flash("Reader removed");
   }
 
-  // === Logout ===
+  async function handleEquipBackground(child: Child, bgId: string | null) {
+    const newEquipped: EquippedItems = { ...(child.equipped_items || {}), background: bgId };
+    const { error } = await supabase.from("children").update({ equipped_items: newEquipped }).eq("id", child.id);
+    if (!error) {
+      setChildren((prev) => prev.map((c) => c.id === child.id ? { ...c, equipped_items: newEquipped } : c));
+      flash("Background updated");
+    }
+  }
+
+  // === Auth / devices ===
   async function handleLogout() {
     await supabase.auth.signOut();
     router.push("/");
   }
 
-  // Revokes refresh tokens for ALL devices + browsers. Useful when a
-  // shared family device gets left signed in, or when a phone gets
-  // lost. Different from handleLogout which only clears this tab.
   async function handleSignOutEverywhere() {
-    if (!confirm(
-      "Sign out of every device + browser where you're signed in? You'll need to log back in here too.",
-    )) {
-      return;
-    }
+    if (!confirm("Sign out of every device + browser where you're signed in? You'll need to log back in here too.")) return;
     try {
       await fetch("/api/auth/sign-out-everywhere", { method: "POST" });
-    } catch {
-      // best-effort — fall through to local sign-out
-    }
+    } catch { /* best-effort */ }
     await supabase.auth.signOut();
     router.push("/login?message=" + encodeURIComponent("Signed out of all devices."));
+  }
+
+  // === Billing ===
+  async function openBillingPortal() {
+    setBillingBusy(true);
+    try {
+      const res = await fetch("/api/billing/portal", { method: "POST" });
+      const data = await res.json();
+      if (data.url) { window.location.href = data.url; return; }
+      flash(data.error === "No billing account found" ? "No billing account yet" : "Couldn't open billing");
+    } catch {
+      flash("Couldn't open billing");
+    }
+    setBillingBusy(false);
   }
 
   async function handleExportData() {
@@ -290,13 +364,8 @@ export default function Settings() {
     setExportError(null);
     try {
       const res = await exportUserDataAction();
-      if (!res.ok) {
-        setExportError(res.error);
-        return;
-      }
-      const blob = new Blob([JSON.stringify(res.payload, null, 2)], {
-        type: "application/json",
-      });
+      if (!res.ok) { setExportError(res.error); return; }
+      const blob = new Blob([JSON.stringify(res.payload, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       const stamp = new Date().toISOString().slice(0, 10);
@@ -306,36 +375,24 @@ export default function Settings() {
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
-    } catch (e: any) {
-      setExportError(e?.message ?? "Couldn't build your export.");
+      flash("Export downloaded");
+    } catch (e) {
+      setExportError((e as Error)?.message ?? "Couldn't build your export.");
     } finally {
       setExportBusy(false);
     }
   }
 
   async function handleDeleteAccount() {
-    if (!deleteConfirmEmail.trim()) {
-      setDeleteError("Type your account email to confirm.");
-      return;
-    }
+    if (!deleteConfirmEmail.trim()) { setDeleteError("Type your account email to confirm."); return; }
     setDeleteBusy(true);
     setDeleteError(null);
     try {
       const res = await deleteAccountAction({ confirmEmail: deleteConfirmEmail });
-      if (!res.ok) {
-        setDeleteError(res.error);
-        setDeleteBusy(false);
-        return;
-      }
-      // Auth user is gone server-side; redirect home and tell the user.
-      router.push(
-        "/?message=" +
-          encodeURIComponent(
-            "Your account and all data have been deleted. We're sorry to see you go.",
-          ),
-      );
-    } catch (e: any) {
-      setDeleteError(e?.message ?? "Couldn't delete your account.");
+      if (!res.ok) { setDeleteError(res.error); setDeleteBusy(false); return; }
+      router.push("/?message=" + encodeURIComponent("Your account and all data have been deleted. We're sorry to see you go."));
+    } catch (e) {
+      setDeleteError((e as Error)?.message ?? "Couldn't delete your account.");
       setDeleteBusy(false);
     }
   }
@@ -353,10 +410,6 @@ export default function Settings() {
       const data = await res.json();
       setPromoResult({ success: data.success, message: data.message });
       if (data.success) {
-        // Optimistic flip so the rest of the page reflects premium
-        // immediately, then refresh() from Supabase as the canonical
-        // source — guards against the server-side endpoint succeeding
-        // without actually granting (RLS oddity, race, etc).
         setStorePlan("premium");
         await usePlanStore.getState().refresh();
       }
@@ -371,719 +424,504 @@ export default function Settings() {
     try {
       await fetch("/api/admin/reset-premium", { method: "POST" });
       setStorePlan("free");
-      // Same canonical re-read as the redeem path so we don't trust
-      // our optimistic flip past the server response.
       await usePlanStore.getState().refresh();
       setPromoCode("");
       setPromoResult(null);
       setShowPromo(false);
-    } catch {
-      // ignore
-    }
+    } catch { /* ignore */ }
     setResettingPremium(false);
   }
 
-  async function handleEquipBackground(child: Child, bgId: string | null) {
-    const newEquipped: EquippedItems = {
-      ...(child.equipped_items || {}),
-      background: bgId,
-    };
-    const { error } = await supabase
-      .from("children")
-      .update({ equipped_items: newEquipped })
-      .eq("id", child.id);
-    if (!error) {
-      setChildren((prev) => prev.map((c) => c.id === child.id ? { ...c, equipped_items: newEquipped } : c));
-    }
+  function scrollToId(id: string) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({ top: y, behavior: "smooth" });
   }
 
-  if (loading) {
-    return <SkeletonPage cards={3} />;
-  }
+  if (loading) return <SkeletonPage cards={3} />;
 
   const childForReset = children.find((c) => c.id === resetChildId);
   const childForRemove = children.find((c) => c.id === removeChildId);
+  const isPremium = userPlan === "premium";
+
+  const tabs: Array<[string, string]> = [
+    ["sec-profile", "Profile"],
+    ["sec-readers", "My readers"],
+    ["sec-billing", "Plan & billing"],
+    ["sec-notif", "Notifications"],
+    ["sec-privacy", "Privacy & data"],
+  ];
 
   return (
-    <div className="max-w-2xl mx-auto py-8 space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">Settings</h1>
-        <p className="text-zinc-500 dark:text-slate-400 mt-1">Manage your account, readers, and preferences.</p>
+    <div style={{ maxWidth: 860, margin: "0 auto", padding: "28px 20px 64px", color: "#3f3f46", fontFamily: "var(--font-body)" }}>
+      {/* Header + saved pill */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
+        <h1 style={{ flex: 1, margin: 0, fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 600, letterSpacing: "-0.025em", color: "#18181b", lineHeight: 1.2 }}>Settings</h1>
+        {savedMsg && (
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#d1fae5", color: "#059669", fontSize: 12.5, fontWeight: 700, padding: "6px 14px", borderRadius: 999, whiteSpace: "nowrap" }}>
+            <Check className="w-[13px] h-[13px]" strokeWidth={3} /> {savedMsg}
+          </span>
+        )}
       </div>
 
-      {/* ====== ACCOUNT ====== */}
-      <Section title="Account">
-        <div>
-          <Label>Email</Label>
-          <p className="text-sm text-zinc-900 dark:text-slate-200">{email}</p>
-        </div>
+      {/* Sticky tab nav (scroll-jumps to sections) */}
+      <div style={{ display: "flex", gap: 24, borderBottom: CARD, marginBottom: 24, position: "sticky", top: 0, background: "rgba(255,255,255,.95)", backdropFilter: "blur(6px)", zIndex: 30, overflowX: "auto" }}>
+        {tabs.map(([id, label]) => (
+          <button key={id} onClick={() => scrollToId(id)}
+            style={{ border: "none", background: "transparent", cursor: "pointer", fontFamily: "inherit", fontSize: 14, fontWeight: 600, color: "#71717a", padding: "12px 2px", whiteSpace: "nowrap" }}>
+            {label}
+          </button>
+        ))}
+      </div>
 
-        <div className="pt-2">
-          {!showPasswordForm ? (
-            <button
-              onClick={() => setShowPasswordForm(true)}
-              className="text-sm font-medium text-violet-600 hover:text-violet-700 transition-colors"
-            >
-              Change Password
-            </button>
-          ) : (
-            <div className="space-y-3 rounded-xl border border-zinc-200 dark:border-slate-600 bg-zinc-50/50 dark:bg-slate-700/30 p-4">
-              <InputField
-                label="Current Password"
-                type="password"
-                value={passwords.current}
-                onChange={(v) => setPasswords((p) => ({ ...p, current: v }))}
-                placeholder="••••••••"
-              />
-              <InputField
-                label="New Password"
-                type="password"
-                value={passwords.new_}
-                onChange={(v) => setPasswords((p) => ({ ...p, new_: v }))}
-                placeholder="••••••••"
-              />
-              <InputField
-                label="Confirm New Password"
-                type="password"
-                value={passwords.confirm}
-                onChange={(v) => setPasswords((p) => ({ ...p, confirm: v }))}
-                placeholder="••••••••"
-              />
-              {passwordMsg && (
-                <p className={`text-sm ${passwordMsg.type === "error" ? "text-red-600" : "text-green-600"}`}>
-                  {passwordMsg.text}
-                </p>
-              )}
-              <div className="flex gap-3">
-                <button
-                  onClick={handlePasswordChange}
-                  disabled={savingPassword}
-                  className="px-4 py-2 rounded-lg bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 transition-colors disabled:opacity-50"
-                >
-                  {savingPassword ? "Saving..." : "Save Password"}
-                </button>
-                <button
-                  onClick={() => { setShowPasswordForm(false); setPasswordMsg(null); }}
-                  className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors"
-                >
-                  Cancel
-                </button>
+      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+
+        {/* ═══ Profile ═══ */}
+        <div id="sec-profile" style={{ scrollMarginTop: 72, display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 16, alignItems: "stretch" }}>
+          <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
+            <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 16 }}>Profile</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
+              <div style={{ width: 56, height: 56, borderRadius: 16, background: "linear-gradient(135deg,#4338ca,#8b5cf6)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 600, flexShrink: 0 }}>
+                {initialsOf(displayName)}
               </div>
-            </div>
-          )}
-        </div>
-      </Section>
-
-      {/* ====== MY CHILDREN ====== */}
-      <Section title="My Child" badge={children.length > 0 ? `${children.length} profile${children.length > 1 ? "s" : ""}` : undefined}>
-        {children.length === 0 ? (
-          <div className="rounded-2xl border border-zinc-200 bg-white text-center p-6 dark:border-slate-700 dark:bg-slate-800">
-            <Image
-              src="/images/ui/bunny-welcome.png"
-              alt=""
-              width={88}
-              height={88}
-              className="mx-auto h-20 w-20 object-contain"
-            />
-            <h3 className="mt-2 font-bold text-zinc-900 dark:text-slate-100">
-              Add your first reader
-            </h3>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-              Each reader gets their own placement test, personalized path, and reading journey.
-            </p>
-            <button
-              onClick={() => setShowAddChild(true)}
-              className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-violet-700"
-            >
-              Add a reader
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {children.map((child) => (
-              <div
-                key={child.id}
-                className="rounded-xl border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700/50 p-5 space-y-3"
-              >
-                {editingChildId === child.id ? (
-                  /* Editing mode */
-                  <div className="space-y-3">
-                    <div className="grid grid-cols-2 gap-3">
-                      <InputField
-                        label="Name"
-                        value={editValues.first_name}
-                        onChange={(v) => setEditValues((p) => ({ ...p, first_name: v }))}
-                      />
-                      <div>
-                        <Label>Grade</Label>
-                        <select
-                          value={editValues.grade}
-                          onChange={(e) => setEditValues((p) => ({ ...p, grade: e.target.value }))}
-                          className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
-                        >
-                          {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
-                        </select>
-                      </div>
-                    </div>
-                    <div className="flex gap-2">
-                      <button onClick={() => saveEdit(child.id)} className="px-3 py-1.5 rounded-lg bg-violet-600 text-white text-xs font-medium hover:bg-violet-700 transition-colors">Save</button>
-                      <button onClick={() => setEditingChildId(null)} className="px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-slate-600 text-xs font-medium text-zinc-600 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors">Cancel</button>
-                    </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                {editingName ? (
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <input value={nameDraft} onChange={(e) => setNameDraft(e.target.value)} autoFocus
+                      style={{ flex: 1, minWidth: 0, fontFamily: "inherit", fontSize: 15, fontWeight: 600, padding: "8px 12px", border: CARD, borderRadius: 12, outline: "none", color: "#18181b" }} />
+                    <button onClick={saveName} style={{ border: "none", background: "#18181b", color: "#fff", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "8px 16px", borderRadius: 12, cursor: "pointer" }}>Save</button>
+                    <button onClick={() => setEditingName(false)} style={{ border: "none", background: "transparent", color: "#71717a", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "8px 10px", borderRadius: 12, cursor: "pointer" }}>Cancel</button>
                   </div>
                 ) : (
-                  /* Display mode */
-                  <>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-semibold text-zinc-900 dark:text-slate-100">{child.first_name}</div>
-                        <div className="flex items-center gap-2 mt-0.5">
-                          {child.grade && (
-                            <span className="text-[10px] font-semibold text-violet-700 bg-violet-50 px-2 py-0.5 rounded-full">
-                              {displayGrade(child.grade)}
-                            </span>
-                          )}
-                          {child.reading_level === "Independent Reader" && (
-                            <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
-                              Advanced
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs font-medium text-orange-600 bg-orange-50 px-2.5 py-1 rounded-full">
-                          {child.carrots} <Carrot className="w-3.5 h-3.5 inline-block align-text-bottom" strokeWidth={1.5} />
-                        </span>
-                        <button
-                          onClick={() => startEditing(child)}
-                          className="text-xs font-medium text-violet-600 hover:text-violet-700 transition-colors"
-                        >
-                          Edit
-                        </button>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 600, color: "#18181b", lineHeight: 1.2 }}>{displayName}</div>
+                    <button onClick={() => { setNameDraft(displayName); setEditingName(true); }} title="Edit name"
+                      style={{ border: "none", background: "transparent", color: "#71717a", cursor: "pointer", padding: 4, borderRadius: 8, display: "flex" }}>
+                      <Pencil className="w-[15px] h-[15px]" strokeWidth={2} />
+                    </button>
+                  </div>
+                )}
+                <div style={{ fontSize: 13, color: "#71717a", marginTop: 2 }}>{email}</div>
+              </div>
+            </div>
+            <Row label="Sound effects" sub="Sounds during lessons and quizzes">
+              <Switch on={soundEffects} onClick={() => setSoundEffects((v) => !v)} />
+            </Row>
+            <Row label="Auto-advance" sub="Move to the next question automatically">
+              <Switch on={autoAdvance} onClick={() => setAutoAdvance((v) => !v)} />
+            </Row>
+            {memberSince && (
+              <Row label="Member since" sub="Thanks for reading with us" last>
+                <div style={{ fontSize: 14, fontWeight: 600, color: "#3f3f46" }}>{memberSince}</div>
+              </Row>
+            )}
+          </div>
+
+          {/* Sign-in & security */}
+          <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
+            <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 14 }}>Sign-in &amp; security</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, paddingBottom: 13 }}>
+              <div style={{ width: 34, height: 34, borderRadius: 10, background: "#fff", border: CARD, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                {provider === "google" ? (
+                  <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                ) : (
+                  <Mail className="w-[17px] h-[17px]" style={{ color: "#4338ca" }} strokeWidth={1.5} />
+                )}
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: 13.5, fontWeight: 600, color: "#18181b" }}>{provider === "google" ? "Google" : "Email & password"}</div>
+                <div style={{ fontSize: 11.5, color: "#a1a1aa" }}>{provider === "google" ? "Connected" : email}</div>
+              </div>
+              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#10b981", flexShrink: 0 }} />
+            </div>
+
+            {provider === "email" && (
+              <div style={{ padding: "13px 0", borderTop: "1px solid #f4f4f5" }}>
+                {!showPasswordForm ? (
+                  <button onClick={() => setShowPasswordForm(true)} style={{ border: "none", background: "transparent", color: "#4338ca", fontFamily: "inherit", fontSize: 13, fontWeight: 700, cursor: "pointer", padding: 0 }}>Change password</button>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    <PwInput placeholder="New password" value={passwords.new_} onChange={(v) => setPasswords((p) => ({ ...p, new_: v }))} />
+                    <PwInput placeholder="Confirm new password" value={passwords.confirm} onChange={(v) => setPasswords((p) => ({ ...p, confirm: v }))} />
+                    {passwordMsg && <p style={{ margin: 0, fontSize: 12.5, fontWeight: 600, color: passwordMsg.type === "error" ? "#dc2626" : "#059669" }}>{passwordMsg.text}</p>}
+                    <div style={{ display: "flex", gap: 8 }}>
+                      <button onClick={handlePasswordChange} disabled={savingPassword} style={{ border: "none", background: "#18181b", color: "#fff", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "8px 16px", borderRadius: 12, cursor: "pointer", opacity: savingPassword ? 0.6 : 1 }}>{savingPassword ? "Saving…" : "Save"}</button>
+                      <button onClick={() => { setShowPasswordForm(false); setPasswordMsg(null); }} style={{ border: "none", background: "transparent", color: "#71717a", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "8px 10px", borderRadius: 12, cursor: "pointer" }}>Cancel</button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0 0", borderTop: "1px solid #f4f4f5" }}>
+              <div>
+                <div style={{ fontSize: 13.5, fontWeight: 600, color: "#18181b" }}>Signed-in devices</div>
+                <div style={{ fontSize: 11.5, color: "#a1a1aa" }}>Sign out everywhere you&apos;re logged in</div>
+              </div>
+              <button onClick={handleSignOutEverywhere} style={{ border: "none", background: "transparent", color: "#4338ca", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, cursor: "pointer", padding: "4px 8px", borderRadius: 8, whiteSpace: "nowrap" }}>Sign out others</button>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ My readers ═══ */}
+        <div id="sec-readers" style={{ scrollMarginTop: 72 }}>
+          <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 12 }}>
+            <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>My readers</div>
+            <div style={{ fontSize: 12, color: "#a1a1aa" }}>{isPremium ? "All readers included with Readee+" : `${children.length} reader${children.length === 1 ? "" : "s"}`}</div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: 16, alignItems: "stretch" }}>
+            {children.map((child) => {
+              const expanded = expandedReaderId === child.id;
+              const childPurchases = purchases[child.id] || [];
+              const ownedBgIds = childPurchases.filter((p) => p.item_id.startsWith("bg_")).map((p) => p.item_id);
+              const equippedBg = (child.equipped_items as EquippedItems | null)?.background ?? null;
+              return (
+                <div key={child.id} style={{ border: CARD, borderRadius: 20, padding: 18, background: "#fff", gridColumn: expanded ? "1 / -1" : undefined }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                    <div style={{ width: 48, height: 48, borderRadius: 14, background: "linear-gradient(135deg,#7c3aed,#8b5cf6)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 600, flexShrink: 0 }}>
+                      {child.first_name.charAt(0).toUpperCase()}
+                    </div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 600, color: "#18181b", lineHeight: 1.2 }}>{child.first_name}</div>
+                      <div style={{ fontSize: 12, color: "#71717a" }}>
+                        {child.grade ? displayGrade(child.grade) : "No grade"}{child.reading_level ? ` · ${child.reading_level}` : ""}
                       </div>
                     </div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 14, flexWrap: "wrap" }}>
+                    {child.streak_days > 0 && (
+                      <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#fff7ed", color: "#c2410c", fontSize: 11.5, fontWeight: 700, padding: "3px 9px", borderRadius: 999 }}>
+                        <Flame className="w-3 h-3" strokeWidth={2} /> {child.streak_days}-day streak
+                      </span>
+                    )}
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#fff7ed", color: "#c2410c", fontSize: 11.5, fontWeight: 700, padding: "3px 9px", borderRadius: 999 }}>
+                      <Carrot className="w-3 h-3" strokeWidth={2} /> {child.carrots}
+                    </span>
+                    {!child.reading_level && (
+                      <span style={{ background: "#eef2ff", color: "#4338ca", fontSize: 11.5, fontWeight: 700, padding: "3px 9px", borderRadius: 999 }}>Needs placement</span>
+                    )}
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", borderTop: "1px solid #f4f4f5", paddingTop: 12 }}>
+                    <button onClick={() => toggleManage(child)} style={{ border: "none", background: "transparent", color: "#4338ca", fontFamily: "inherit", fontSize: 13, fontWeight: 700, padding: "6px 8px", borderRadius: 8, cursor: "pointer" }}>
+                      {expanded ? "Close" : "Manage →"}
+                    </button>
+                  </div>
 
-                    {/* Reading Level */}
-                    <div className="space-y-1.5">
-                      <Label>Reading Level</Label>
-                      <select
-                        value={child.reading_level || ""}
-                        onChange={(e) => requestLevelChange(child.id, child.first_name, e.target.value)}
-                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
-                      >
-                        <option value="" disabled>Not assessed yet</option>
-                        {READING_LEVELS.map((level) => (
-                          <option key={level} value={level}>{level}</option>
-                        ))}
-                      </select>
-                      <p className="text-[11px] text-zinc-400">
-                        Set by assessment. Override manually if needed.
-                      </p>
-                    </div>
-
-                    {/* Dashboard Background */}
-                    {(() => {
-                      const childPurchases = purchases[child.id] || [];
-                      const ownedBgIds = childPurchases.filter((p) => p.item_id.startsWith("bg_")).map((p) => p.item_id);
-                      const equippedBg = (child.equipped_items as EquippedItems | null)?.background ?? null;
-                      if (ownedBgIds.length === 0) return null;
-                      return (
-                        <div className="space-y-1.5">
-                          <Label>Dashboard Background</Label>
-                          <div className="flex flex-wrap gap-2">
-                            {/* None option */}
-                            <button
-                              onClick={() => handleEquipBackground(child, null)}
-                              className={`w-10 h-10 rounded-xl border-2 transition-all flex items-center justify-center text-xs font-medium ${
-                                !equippedBg
-                                  ? "border-violet-500 ring-2 ring-violet-200"
-                                  : "border-zinc-200 dark:border-slate-600 hover:border-zinc-300"
-                              } bg-white dark:bg-slate-700 text-zinc-400 dark:text-slate-400`}
-                              title="Default (no background)"
-                            >
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                              </svg>
-                            </button>
-                            {/* Owned backgrounds */}
+                  {expanded && (
+                    <div style={{ borderTop: "1px solid #f4f4f5", marginTop: 8, paddingTop: 16, display: "flex", flexDirection: "column", gap: 16 }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                        <Field label="Name">
+                          <input value={editValues.first_name} onChange={(e) => setEditValues((p) => ({ ...p, first_name: e.target.value }))}
+                            style={inputStyle} />
+                        </Field>
+                        <Field label="Grade">
+                          <select value={editValues.grade} onChange={(e) => setEditValues((p) => ({ ...p, grade: e.target.value }))} style={inputStyle}>
+                            {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
+                          </select>
+                        </Field>
+                      </div>
+                      <Field label="Reading level" hint="Set by the placement test — override only if needed.">
+                        <select value={child.reading_level || ""} onChange={(e) => requestLevelChange(child.id, child.first_name, e.target.value)} style={inputStyle}>
+                          <option value="" disabled>Not assessed yet</option>
+                          {READING_LEVELS.map((level) => <option key={level} value={level}>{level}</option>)}
+                        </select>
+                      </Field>
+                      {ownedBgIds.length > 0 && (
+                        <Field label="Dashboard background">
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                            <button onClick={() => handleEquipBackground(child, null)} title="Default"
+                              style={{ width: 40, height: 40, borderRadius: 12, border: !equippedBg ? "2px solid #7c3aed" : CARD, background: "#fff", color: "#a1a1aa", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>—</button>
                             {ownedBgIds.map((bgId) => {
                               const imgSrc = BACKGROUND_IMAGES[bgId];
                               const item = SHOP_ITEMS.find((i) => i.id === bgId);
                               if (!imgSrc) return null;
                               const isActive = equippedBg === bgId;
                               return (
-                                <button
-                                  key={bgId}
-                                  onClick={() => handleEquipBackground(child, isActive ? null : bgId)}
-                                  className={`w-10 h-10 rounded-xl border-2 transition-all overflow-hidden ${
-                                    isActive
-                                      ? "border-violet-500 ring-2 ring-violet-200 scale-110"
-                                      : "border-zinc-200 dark:border-slate-600 hover:border-zinc-300 hover:scale-105"
-                                  }`}
-                                  style={{ backgroundImage: `url(${imgSrc})`, backgroundSize: "cover", backgroundPosition: "center" }}
-                                  title={item?.name || bgId}
-                                />
+                                <button key={bgId} onClick={() => handleEquipBackground(child, isActive ? null : bgId)} title={item?.name || bgId}
+                                  style={{ width: 40, height: 40, borderRadius: 12, border: isActive ? "2px solid #7c3aed" : CARD, backgroundImage: `url(${imgSrc})`, backgroundSize: "cover", backgroundPosition: "center", cursor: "pointer" }} />
                               );
                             })}
                           </div>
-                        </div>
-                      );
-                    })()}
-
-                    {/* Danger actions */}
-                    <div className="flex gap-3 pt-1">
-                      <button
-                        onClick={() => setResetChildId(child.id)}
-                        className="text-xs font-medium text-amber-600 hover:text-amber-700 transition-colors"
-                      >
-                        Reset Progress
-                      </button>
-                      <button
-                        onClick={() => setRemoveChildId(child.id)}
-                        className="text-xs font-medium text-red-500 hover:text-red-600 transition-colors"
-                      >
-                        Remove Child
-                      </button>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Add Child (only if no child yet) */}
-        {children.length === 0 && (
-            <div className="pt-2">
-              {!showAddChild ? (
-                <button
-                  onClick={() => setShowAddChild(true)}
-                  className="flex items-center gap-2 text-sm font-medium text-violet-600 hover:text-violet-700 transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                  </svg>
-                  Add Another Child
-                </button>
-              ) : (
-                <div className="rounded-xl border border-violet-200 bg-violet-50/30 p-4 space-y-3">
-                  <div className="grid grid-cols-2 gap-3">
-                    <InputField
-                      label="Name"
-                      value={newChild.name}
-                      onChange={(v) => setNewChild((p) => ({ ...p, name: v }))}
-                      placeholder="Child's first name"
-                    />
-                    <div>
-                      <Label>Grade</Label>
-                      <select
-                        value={newChild.grade}
-                        onChange={(e) => setNewChild((p) => ({ ...p, grade: e.target.value }))}
-                        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-400"
-                      >
-                        {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={handleAddChild}
-                      disabled={addingChild || !newChild.name.trim()}
-                      className="px-4 py-2 rounded-lg bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 transition-colors disabled:opacity-50"
-                    >
-                      {addingChild ? "Adding..." : "Add Child"}
-                    </button>
-                    <button
-                      onClick={() => setShowAddChild(false)}
-                      className="px-4 py-2 rounded-lg border border-zinc-200 text-sm font-medium text-zinc-600 hover:bg-zinc-50 transition-colors"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-      </Section>
-
-      {/* ====== PREFERENCES ====== */}
-      <Section title="Preferences">
-        <Toggle label="Sound Effects" description="Play sounds during lessons and assessments" value={soundEffects} onChange={setSoundEffects} />
-        <Toggle label="Auto-Advance" description="Automatically move to the next question after answering" value={autoAdvance} onChange={setAutoAdvance} />
-      </Section>
-
-      {/* ====== SUBSCRIPTION ====== */}
-      <Section title="Subscription">
-        {userPlan === "premium" ? (
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Readee+ Premium</p>
-                <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">Full access to all lessons, stories, practice, and analytics.</p>
-              </div>
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-violet-100 to-violet-100 text-violet-700">Active</span>
-            </div>
-            {process.env.NODE_ENV === "development" && (
-              <button
-                onClick={handleResetPremium}
-                disabled={resettingPremium}
-                className="text-xs text-zinc-400 hover:text-red-500 transition-colors disabled:opacity-50"
-              >
-                {resettingPremium ? "Resetting..." : "Reset to Free (Dev)"}
-              </button>
-            )}
-          </div>
-        ) : (
-          <>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">Free Plan</p>
-                <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">Diagnostic assessment, 2 lessons per level, 1 reader profile</p>
-              </div>
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-100 text-zinc-600">Current</span>
-            </div>
-            <Link
-              href="/upgrade"
-              className="block rounded-xl border border-violet-200 bg-violet-50/50 p-4 hover:border-violet-300 hover:bg-violet-50 transition-colors"
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-semibold text-violet-900">Readee+ Household — $9.99/mo</p>
-                  <p className="text-xs text-violet-600 mt-0.5">57 lessons, unlimited practice, all stories, and parent analytics.</p>
-                </div>
-                <span className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 text-white text-xs font-bold whitespace-nowrap">
-                  Upgrade
-                </span>
-              </div>
-            </Link>
-            {/* Promo code */}
-            <div className="pt-1">
-              {!showPromo ? (
-                <button
-                  onClick={() => setShowPromo(true)}
-                  className="text-xs text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 font-medium transition-colors"
-                >
-                  Have a promo code?
-                </button>
-              ) : (
-                <div className="space-y-2">
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={promoCode}
-                      onChange={(e) => { setPromoCode(e.target.value); setPromoResult(null); }}
-                      placeholder="Enter promo code"
-                      disabled={promoResult?.success}
-                      className="flex-1 px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm text-zinc-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-violet-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500 disabled:opacity-50"
-                      onKeyDown={(e) => { if (e.key === "Enter") handleRedeemPromo(); }}
-                    />
-                    <button
-                      onClick={handleRedeemPromo}
-                      disabled={promoLoading || !promoCode.trim() || promoResult?.success}
-                      className="px-4 py-2 rounded-lg bg-violet-600 text-white text-sm font-medium hover:bg-violet-700 transition-colors disabled:opacity-50 whitespace-nowrap"
-                    >
-                      {promoLoading ? "..." : "Redeem"}
-                    </button>
-                  </div>
-                  {promoResult && (
-                    <div className={`flex items-center gap-2 text-sm font-medium ${promoResult.success ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
-                      {promoResult.success && (
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        </Field>
                       )}
-                      {promoResult.message}
+                      <div style={{ display: "flex", alignItems: "center", gap: 16, paddingTop: 2 }}>
+                        <button onClick={() => saveEdit(child.id)} style={{ border: "none", background: "#18181b", color: "#fff", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "8px 18px", borderRadius: 12, cursor: "pointer" }}>Save changes</button>
+                        <div style={{ flex: 1 }} />
+                        <button onClick={() => setResetChildId(child.id)} style={{ border: "none", background: "transparent", color: "#b45309", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, cursor: "pointer" }}>Reset progress</button>
+                        <button onClick={() => setRemoveChildId(child.id)} style={{ border: "none", background: "transparent", color: "#dc2626", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, cursor: "pointer" }}>Remove</button>
+                      </div>
                     </div>
                   )}
                 </div>
+              );
+            })}
+
+            {/* Add a reader */}
+            {!showAddChild ? (
+              <button onClick={() => setShowAddChild(true)}
+                style={{ border: "1.5px dashed #d4d4d8", borderRadius: 20, background: "#fafafa", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "inherit", minHeight: 150 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 12, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Plus className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} />
+                </div>
+                <span style={{ fontSize: 14, fontWeight: 600, color: "#3f3f46" }}>Add a reader</span>
+                <span style={{ fontSize: 11.5, color: "#a1a1aa" }}>Included with your plan</span>
+              </button>
+            ) : (
+              <div style={{ border: "1px solid #c7d2fe", borderRadius: 20, background: "#eef2ff", padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+                <Field label="Name">
+                  <input value={newChild.name} onChange={(e) => setNewChild((p) => ({ ...p, name: e.target.value }))} placeholder="Child's first name" style={inputStyle} autoFocus />
+                </Field>
+                <Field label="Grade">
+                  <select value={newChild.grade} onChange={(e) => setNewChild((p) => ({ ...p, grade: e.target.value }))} style={inputStyle}>
+                    {GRADES.map((g) => <option key={g} value={g}>{g}</option>)}
+                  </select>
+                </Field>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button onClick={handleAddChild} disabled={addingChild || !newChild.name.trim()} style={{ border: "none", background: "#4338ca", color: "#fff", fontFamily: "inherit", fontSize: 13, fontWeight: 700, padding: "9px 18px", borderRadius: 999, cursor: "pointer", opacity: addingChild || !newChild.name.trim() ? 0.6 : 1 }}>{addingChild ? "Adding…" : "Add reader"}</button>
+                  <button onClick={() => setShowAddChild(false)} style={{ border: "none", background: "transparent", color: "#52525b", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "9px 12px", borderRadius: 999, cursor: "pointer" }}>Cancel</button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* ═══ Plan & billing ═══ */}
+        <div id="sec-billing" style={{ scrollMarginTop: 72 }}>
+          {isPremium ? (
+            <div style={{ border: "1px solid #c7d2fe", background: "linear-gradient(135deg,#eef2ff,#fff)", borderRadius: 20, padding: 24 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 24, fontWeight: 600, color: "#312e81", lineHeight: 1.2 }}>Readee+</div>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "#d1fae5", color: "#059669", fontSize: 12, fontWeight: 700, padding: "4px 10px", borderRadius: 999 }}>
+                  <Check className="w-3 h-3" strokeWidth={3} /> Active
+                </span>
+              </div>
+              <p style={{ margin: "0 0 18px", fontSize: 13, color: "#71717a" }}>Full access to every lesson, story, unlimited practice, and parent analytics — for all your readers.</p>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                <button onClick={openBillingPortal} disabled={billingBusy}
+                  style={{ border: "none", background: "#4338ca", color: "#fff", fontFamily: "inherit", fontSize: 13.5, fontWeight: 700, padding: "10px 20px", borderRadius: 999, cursor: "pointer", opacity: billingBusy ? 0.6 : 1 }}>
+                  {billingBusy ? "Opening…" : "Manage billing"}
+                </button>
+                <span style={{ fontSize: 12.5, color: "#71717a" }}>Payment method, invoices, and cancellation live in the secure Stripe portal.</span>
+              </div>
+              {process.env.NODE_ENV === "development" && (
+                <button onClick={handleResetPremium} disabled={resettingPremium} style={{ marginTop: 14, border: "none", background: "transparent", color: "#a1a1aa", fontFamily: "inherit", fontSize: 12, cursor: "pointer" }}>
+                  {resettingPremium ? "Resetting…" : "Reset to Free (dev)"}
+                </button>
               )}
             </div>
-          </>
-        )}
-      </Section>
-
-      {/* ====== SUPPORT ====== */}
-      <Section title="Support">
-        <div className="space-y-2">
-          <SupportLink href="mailto:hello@readee.app" label="Contact Us" desc="Questions, feedback, or need help" />
-          <SupportLink href="mailto:hello@readee.app?subject=Bug%20Report" label="Report a Bug" desc="Found something broken? Let us know" />
-          <SupportLink href="https://readee.app#faq" label="FAQ" desc="Frequently asked questions" external />
-        </div>
-      </Section>
-
-      {/* ====== DATA & PRIVACY ====== */}
-      <Section title="Data & Privacy">
-        <div className="space-y-3">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <div>
-              <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">
-                Download your data
-              </p>
-              <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">
-                Get a JSON file with everything we store about you and your child.
-              </p>
+          ) : (
+            <div style={{ border: CARD, borderRadius: 20, padding: 24, background: "#fff" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, color: "#18181b" }}>Free plan</div>
+                <span style={{ background: "#f4f4f5", color: "#52525b", fontSize: 12, fontWeight: 700, padding: "4px 10px", borderRadius: 999 }}>Current</span>
+              </div>
+              <p style={{ margin: "0 0 18px", fontSize: 13, color: "#71717a" }}>Diagnostic placement, the first lesson of each grade, and a taste of practice.</p>
+              <a href="/upgrade" style={{ display: "block", border: "1px solid #c7d2fe", background: "linear-gradient(135deg,#eef2ff,#fff)", borderRadius: 16, padding: 18, textDecoration: "none" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+                  <div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 600, color: "#312e81" }}>
+                      <Sparkles className="w-[18px] h-[18px]" style={{ color: "#4338ca" }} strokeWidth={1.5} /> Readee+ — $9.99/mo
+                    </div>
+                    <div style={{ fontSize: 12.5, color: "#6366f1", marginTop: 2 }}>Every lesson, unlimited practice, all stories, and parent analytics.</div>
+                  </div>
+                  <span style={{ background: "#4338ca", color: "#fff", fontSize: 13, fontWeight: 700, padding: "9px 18px", borderRadius: 999, whiteSpace: "nowrap" }}>Upgrade</span>
+                </div>
+              </a>
+              <div style={{ marginTop: 14 }}>
+                {!showPromo ? (
+                  <button onClick={() => setShowPromo(true)} style={{ border: "none", background: "transparent", color: "#4338ca", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, cursor: "pointer", padding: 0 }}>Have a promo code?</button>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    <div style={{ display: "flex", gap: 8 }}>
+                      <input value={promoCode} onChange={(e) => { setPromoCode(e.target.value); setPromoResult(null); }} placeholder="Enter promo code" disabled={promoResult?.success}
+                        onKeyDown={(e) => { if (e.key === "Enter") handleRedeemPromo(); }} style={{ ...inputStyle, flex: 1 }} />
+                      <button onClick={handleRedeemPromo} disabled={promoLoading || !promoCode.trim() || promoResult?.success}
+                        style={{ border: "none", background: "#4338ca", color: "#fff", fontFamily: "inherit", fontSize: 13, fontWeight: 700, padding: "9px 16px", borderRadius: 12, cursor: "pointer", whiteSpace: "nowrap", opacity: promoLoading || !promoCode.trim() ? 0.6 : 1 }}>{promoLoading ? "…" : "Redeem"}</button>
+                    </div>
+                    {promoResult && <p style={{ margin: 0, fontSize: 13, fontWeight: 600, color: promoResult.success ? "#059669" : "#dc2626" }}>{promoResult.message}</p>}
+                  </div>
+                )}
+              </div>
             </div>
-            <button
-              onClick={handleExportData}
-              disabled={exportBusy}
-              className="px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-60 whitespace-nowrap"
-            >
-              {exportBusy ? "Preparing…" : "Download my data"}
-            </button>
-          </div>
-          {exportError && (
-            <p className="text-xs font-medium text-red-600 dark:text-red-400">{exportError}</p>
           )}
         </div>
-      </Section>
 
-      {/* ====== ACCOUNT ACTIONS ====== */}
-      <section className="rounded-2xl border border-red-100 dark:border-red-900/30 bg-white dark:bg-slate-800 p-6 space-y-4">
-        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">Account Actions</h2>
-        <div className="flex flex-col sm:flex-row gap-3">
-          <button
-            onClick={handleLogout}
-            className="px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-700 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
-          >
-            Log Out
-          </button>
-          <button
-            onClick={handleSignOutEverywhere}
-            className="px-4 py-2.5 rounded-xl border border-amber-200 dark:border-amber-900/30 text-sm font-medium text-amber-700 dark:text-amber-300 hover:bg-amber-50 dark:hover:bg-amber-950/30 transition-colors"
-            title="Revoke sessions on every device + browser. Use if you left Readee signed in somewhere you can't reach."
-          >
-            Sign out everywhere
-          </button>
-          <button
-            onClick={() => setShowDeleteAccount(true)}
-            className="px-4 py-2.5 rounded-xl border border-red-200 dark:border-red-900/30 text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
-          >
-            Delete Account
-          </button>
-        </div>
-      </section>
-
-      {/* ====== MODALS ====== */}
-
-      {/* Reset Progress Modal */}
-      {resetChildId && childForReset && (
-        <Modal
-          title={`Reset ${childForReset.first_name}'s Progress?`}
-          description={`This will reset ${childForReset.first_name}'s assessment, lessons, and carrots back to zero. They'll take the reading quiz again.`}
-          confirmLabel="Reset Progress"
-          confirmColor="amber"
-          onConfirm={() => handleResetProgress(resetChildId)}
-          onCancel={() => setResetChildId(null)}
-        />
-      )}
-
-      {/* Remove Child Modal */}
-      {removeChildId && childForRemove && (
-        <Modal
-          title={`Remove ${childForRemove.first_name}?`}
-          description={`This will permanently delete ${childForRemove.first_name}'s profile, assessment results, and all lesson progress. This cannot be undone.`}
-          confirmLabel="Remove Child"
-          confirmColor="red"
-          onConfirm={() => handleRemoveChild(removeChildId)}
-          onCancel={() => setRemoveChildId(null)}
-        />
-      )}
-
-      {/* Level Change Confirmation Modal */}
-      {levelChangeChild && (
-        <Modal
-          title={`Change ${levelChangeChild.name}'s Reading Level?`}
-          description={`Changing ${levelChangeChild.name}'s reading level will reset their active progress. Completed lessons and carrots for the current level will be saved in their history, but they'll start fresh at the new level. Are you sure?`}
-          confirmLabel="Yes, Change Level"
-          confirmColor="amber"
-          onConfirm={confirmLevelChange}
-          onCancel={() => setLevelChangeChild(null)}
-        />
-      )}
-
-      {/* Delete Account Modal — typed-email confirmation gate */}
-      {showDeleteAccount && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 dark:bg-black/60 p-4"
-          onClick={() => {
-            if (!deleteBusy) {
-              setShowDeleteAccount(false);
-              setDeleteConfirmEmail("");
-              setDeleteError(null);
-            }
-          }}
-        >
-          <div
-            className="w-full max-w-md rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-xl space-y-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100">Delete your account?</h3>
-            <p className="text-sm text-zinc-600 dark:text-slate-300 leading-relaxed">
-              This will permanently delete your account, your child's profile, all lesson progress,
-              and cancel any active subscription. This cannot be undone.
-            </p>
-            <div className="space-y-1.5">
-              <Label>
-                Type <span className="font-semibold text-zinc-700 dark:text-slate-200">{email}</span> to confirm
-              </Label>
-              <input
-                type="email"
-                value={deleteConfirmEmail}
-                onChange={(e) => {
-                  setDeleteConfirmEmail(e.target.value);
-                  setDeleteError(null);
-                }}
-                disabled={deleteBusy}
-                placeholder="your@email.com"
-                autoComplete="off"
-                className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-red-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500 disabled:opacity-60"
-              />
-              {deleteError && (
-                <p className="text-xs font-medium text-red-600 dark:text-red-400">{deleteError}</p>
-              )}
+        {/* ═══ Notifications ═══ */}
+        <div id="sec-notif" style={{ scrollMarginTop: 72, border: CARD, borderRadius: 20, padding: 8, background: "#fff" }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "14px 16px 6px" }}>
+            <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>Email notifications</div>
+            <span style={{ fontSize: 12, color: "#a1a1aa" }}>We only email when it&apos;s useful</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px", borderTop: "1px solid #f4f4f5" }}>
+            <div style={{ width: 34, height: 34, borderRadius: 10, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Mail className="w-[17px] h-[17px]" style={{ color: "#4338ca" }} strokeWidth={1.5} />
             </div>
-            <div className="flex gap-3 justify-end pt-2">
-              <button
-                onClick={() => {
-                  setShowDeleteAccount(false);
-                  setDeleteConfirmEmail("");
-                  setDeleteError(null);
-                }}
-                disabled={deleteBusy}
-                className="px-4 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-600 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-60"
-              >
-                Cancel
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#18181b" }}>Weekly progress report</div>
+              <div style={{ fontSize: 12, color: "#71717a" }}>A Sunday recap of what {children[0]?.first_name ?? "your reader"} practiced, mastered, and needs reps on.</div>
+            </div>
+            <Switch on={weeklyDigest} onClick={toggleWeeklyDigest} />
+          </div>
+        </div>
+
+        {/* ═══ Privacy & data ═══ */}
+        <div id="sec-privacy" style={{ scrollMarginTop: 72, border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+            <ShieldCheck className="w-[18px] h-[18px]" style={{ color: "#10b981" }} strokeWidth={1.5} />
+            <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>Privacy &amp; data</div>
+          </div>
+          <p style={{ margin: "0 0 14px", fontSize: 13.5, color: "#52525b", lineHeight: 1.55, maxWidth: 560 }}>
+            Readee is built from the ground up to protect kids&apos; data. We never sell it or use it for ads.{" "}
+            <a href="/privacy-policy" style={{ color: "#4338ca", fontWeight: 700 }}>Read our privacy promise</a>
+          </p>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0", borderTop: "1px solid #f4f4f5" }}>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#18181b" }}>Export learning data</div>
+              <div style={{ fontSize: 12, color: "#71717a" }}>A JSON file of everything we store about you and your readers.</div>
+            </div>
+            <button onClick={handleExportData} disabled={exportBusy}
+              style={{ border: CARD, background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "7px 14px", borderRadius: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6, flexShrink: 0, opacity: exportBusy ? 0.6 : 1 }}>
+              <Download className="w-[13px] h-[13px]" strokeWidth={2.4} /> {exportBusy ? "Preparing…" : "Request export"}
+            </button>
+          </div>
+          {exportError && <p style={{ margin: "6px 0 0", fontSize: 12, fontWeight: 600, color: "#dc2626" }}>{exportError}</p>}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0 0", borderTop: "1px solid #f4f4f5" }}>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#dc2626" }}>Delete account</div>
+              <div style={{ fontSize: 12, color: "#71717a" }}>Removes your account, every reader profile, and all progress — permanently.</div>
+            </div>
+            <button onClick={() => setShowDeleteAccount(true)}
+              style={{ border: "1px solid #fecaca", background: "#fff", color: "#dc2626", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "7px 14px", borderRadius: 12, cursor: "pointer", flexShrink: 0 }}>Delete</button>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "4px 4px 0", flexWrap: "wrap" }}>
+          <span style={{ fontSize: 12.5, color: "#a1a1aa" }}>Questions? We answer every email. <a href="mailto:hello@readee.app" style={{ color: "#4338ca", fontWeight: 700 }}>hello@readee.app</a></span>
+          <button onClick={handleLogout} style={{ border: "none", background: "transparent", color: "#71717a", fontFamily: "inherit", fontSize: 12.5, fontWeight: 600, cursor: "pointer" }}>Log out</button>
+        </div>
+      </div>
+
+      {/* ═══ Modals ═══ */}
+      {resetChildId && childForReset && (
+        <ConfirmModal
+          title={`Reset ${childForReset.first_name}'s progress?`}
+          description={`This resets ${childForReset.first_name}'s assessment, lessons, and carrots back to zero. They'll take the reading quiz again.`}
+          confirmLabel="Reset progress" tone="amber"
+          onConfirm={() => handleResetProgress(resetChildId)} onCancel={() => setResetChildId(null)}
+        />
+      )}
+      {removeChildId && childForRemove && (
+        <ConfirmModal
+          title={`Remove ${childForRemove.first_name}?`}
+          description={`This permanently deletes ${childForRemove.first_name}'s profile, assessment results, and all lesson progress. This cannot be undone.`}
+          confirmLabel="Remove reader" tone="red"
+          onConfirm={() => handleRemoveChild(removeChildId)} onCancel={() => setRemoveChildId(null)}
+        />
+      )}
+      {levelChangeChild && (
+        <ConfirmModal
+          title={`Change ${levelChangeChild.name}'s reading level?`}
+          description={`Changing the reading level resets active progress. Completed lessons and carrots stay in history, but they'll start fresh at the new level.`}
+          confirmLabel="Yes, change level" tone="amber"
+          onConfirm={confirmLevelChange} onCancel={() => setLevelChangeChild(null)}
+        />
+      )}
+
+      {showDeleteAccount && (
+        <div style={modalScrim} onClick={() => { if (!deleteBusy) { setShowDeleteAccount(false); setDeleteConfirmEmail(""); setDeleteError(null); } }}>
+          <div style={{ ...modalCard, width: 420 }} onClick={(e) => e.stopPropagation()}>
+            <h3 style={{ margin: "0 0 6px", fontFamily: "var(--font-display)", fontSize: 22, fontWeight: 600, color: "#18181b" }}>Delete your account?</h3>
+            <p style={{ margin: "0 0 14px", fontSize: 13.5, color: "#71717a", lineHeight: 1.5 }}>
+              This permanently deletes your account, every reader profile, all progress, and cancels any active subscription. It cannot be undone. Type <strong style={{ color: "#18181b" }}>{email}</strong> to confirm.
+            </p>
+            <input type="email" value={deleteConfirmEmail} onChange={(e) => { setDeleteConfirmEmail(e.target.value); setDeleteError(null); }} disabled={deleteBusy} placeholder="your@email.com" autoComplete="off"
+              style={{ ...inputStyle, width: "100%", marginBottom: 14 }} />
+            {deleteError && <p style={{ margin: "-8px 0 12px", fontSize: 12, fontWeight: 600, color: "#dc2626" }}>{deleteError}</p>}
+            <div style={{ display: "flex", gap: 10 }}>
+              <button onClick={handleDeleteAccount}
+                disabled={deleteBusy || deleteConfirmEmail.trim().toLowerCase() !== (email || "").trim().toLowerCase()}
+                style={{ flex: 1, border: "none", background: (deleteBusy || deleteConfirmEmail.trim().toLowerCase() !== (email || "").trim().toLowerCase()) ? "#fca5a5" : "#dc2626", color: "#fff", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: 10, borderRadius: 12, cursor: "pointer" }}>
+                {deleteBusy ? "Deleting…" : "Delete my account"}
               </button>
-              <button
-                onClick={handleDeleteAccount}
-                disabled={
-                  deleteBusy ||
-                  deleteConfirmEmail.trim().toLowerCase() !== (email || "").trim().toLowerCase()
-                }
-                className="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm font-medium transition-colors disabled:opacity-50"
-              >
-                {deleteBusy ? "Deleting…" : "Delete account"}
-              </button>
+              <button onClick={() => { setShowDeleteAccount(false); setDeleteConfirmEmail(""); setDeleteError(null); }} disabled={deleteBusy}
+                style={{ flex: 1, border: CARD, background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: 10, borderRadius: 12, cursor: "pointer" }}>Keep my account</button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Celebration Overlay (promo success) */}
       <CelebrationOverlay show={!!promoResult?.success} />
     </div>
   );
 }
 
-/* ====== REUSABLE COMPONENTS ====== */
+/* ═══ Reusable bits ═══ */
 
-function Section({ title, badge, children }: { title: string; badge?: string; children: React.ReactNode }) {
+const inputStyle: React.CSSProperties = {
+  boxSizing: "border-box", fontFamily: "inherit", fontSize: 14, fontWeight: 500,
+  padding: "9px 12px", border: CARD, borderRadius: 12, outline: "none", color: "#18181b", background: "#fff",
+};
+const modalScrim: React.CSSProperties = {
+  position: "fixed", inset: 0, zIndex: 100, display: "flex", alignItems: "center", justifyContent: "center",
+  background: "rgba(24,24,27,.45)", backdropFilter: "blur(3px)", padding: 24,
+};
+const modalCard: React.CSSProperties = {
+  position: "relative", maxWidth: "calc(100vw - 48px)", background: "#fff", borderRadius: 24,
+  boxShadow: "0 24px 60px -12px rgba(30,27,75,.35)", padding: "26px 28px", boxSizing: "border-box",
+};
+
+function Row({ label, sub, last, children }: { label: string; sub: string; last?: boolean; children: React.ReactNode }) {
   return (
-    <section className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-base font-bold text-zinc-900 dark:text-slate-100">{title}</h2>
-        {badge && <span className="text-xs text-zinc-400 dark:text-slate-500">{badge}</span>}
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: last ? "13px 0 0" : "13px 0", borderTop: "1px solid #f4f4f5" }}>
+      <div>
+        <div style={{ fontSize: 14, fontWeight: 600, color: "#18181b" }}>{label}</div>
+        <div style={{ fontSize: 12, color: "#a1a1aa" }}>{sub}</div>
       </div>
       {children}
-    </section>
-  );
-}
-
-function Label({ children }: { children: React.ReactNode }) {
-  return <label className="block text-xs font-medium text-zinc-500 dark:text-slate-400 mb-1">{children}</label>;
-}
-
-function InputField({
-  label, type = "text", value, onChange, placeholder,
-}: {
-  label: string; type?: string; value: string; onChange: (v: string) => void; placeholder?: string;
-}) {
-  return (
-    <div>
-      <Label>{label}</Label>
-      <input
-        type={type}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-200 bg-white dark:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-violet-400 placeholder:text-zinc-400 dark:placeholder:text-slate-500"
-      />
     </div>
   );
 }
 
-function Toggle({
-  label, description, value, onChange,
-}: {
-  label: string; description: string; value: boolean; onChange: (v: boolean) => void;
-}) {
+function Switch({ on, onClick }: { on: boolean; onClick: () => void }) {
   return (
-    <div className="flex items-center justify-between">
-      <div>
-        <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">{label}</p>
-        <p className="text-xs text-zinc-500 dark:text-slate-400 mt-0.5">{description}</p>
-      </div>
-      <button
-        onClick={() => onChange(!value)}
-        className={`relative w-11 h-6 rounded-full transition-colors ${value ? "bg-violet-600" : "bg-zinc-200 dark:bg-slate-600"}`}
-      >
-        <span
-          className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${value ? "translate-x-5" : "translate-x-0"}`}
-        />
-      </button>
+    <button onClick={onClick} aria-pressed={on}
+      style={{ width: 44, height: 24, borderRadius: 999, background: on ? "#4338ca" : "#e4e4e7", position: "relative", border: "none", cursor: "pointer", transition: "background .2s", flexShrink: 0, padding: 0, display: "block" }}>
+      <span style={{ position: "absolute", top: 2, left: on ? 22 : 2, width: 20, height: 20, borderRadius: "50%", background: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,.25)", transition: "left .2s" }} />
+    </button>
+  );
+}
+
+function Field({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+      <label style={{ fontSize: 12, fontWeight: 600, color: "#71717a" }}>{label}</label>
+      {children}
+      {hint && <span style={{ fontSize: 11, color: "#a1a1aa" }}>{hint}</span>}
     </div>
   );
 }
 
-function SupportLink({ href, label, desc, external }: { href: string; label: string; desc: string; external?: boolean }) {
+function PwInput({ placeholder, value, onChange }: { placeholder: string; value: string; onChange: (v: string) => void }) {
   return (
-    <a
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      className="flex items-center justify-between rounded-xl border border-zinc-100 dark:border-slate-600 bg-zinc-50/50 dark:bg-slate-700/30 p-4 hover:border-violet-200 dark:hover:border-violet-800 hover:bg-violet-50/30 dark:hover:bg-indigo-950/30 transition-colors"
-    >
-      <div>
-        <p className="text-sm font-medium text-zinc-900 dark:text-slate-100">{label}</p>
-        <p className="text-xs text-zinc-500 dark:text-slate-400">{desc}</p>
-      </div>
-      <svg className="w-4 h-4 text-zinc-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-      </svg>
-    </a>
+    <input type="password" placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)}
+      style={{ ...inputStyle, width: "100%" }} />
   );
 }
 
-function Modal({
-  title, description, confirmLabel, confirmColor, onConfirm, onCancel,
-}: {
-  title: string; description: string; confirmLabel: string; confirmColor: "red" | "amber";
-  onConfirm: () => void; onCancel: () => void;
+function ConfirmModal({ title, description, confirmLabel, tone, onConfirm, onCancel }: {
+  title: string; description: string; confirmLabel: string; tone: "red" | "amber"; onConfirm: () => void; onCancel: () => void;
 }) {
-  const btnClass = confirmColor === "red"
-    ? "bg-red-600 hover:bg-red-700 text-white"
-    : "bg-amber-500 hover:bg-amber-600 text-white";
-
+  const bg = tone === "red" ? "#dc2626" : "#d97706";
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 dark:bg-black/60 p-4" onClick={onCancel}>
-      <div
-        className="w-full max-w-sm rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-xl space-y-4"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100">{title}</h3>
-        <p className="text-sm text-zinc-500 dark:text-slate-400 leading-relaxed">{description}</p>
-        <div className="flex gap-3 justify-end">
-          <button
-            onClick={onCancel}
-            className="px-4 py-2 rounded-lg border border-zinc-200 dark:border-slate-600 text-sm font-medium text-zinc-600 dark:text-slate-300 hover:bg-zinc-50 dark:hover:bg-slate-700 transition-colors"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={onConfirm}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${btnClass}`}
-          >
-            {confirmLabel}
-          </button>
+    <div style={modalScrim} onClick={onCancel}>
+      <div style={{ ...modalCard, width: 400 }} onClick={(e) => e.stopPropagation()}>
+        <h3 style={{ margin: "0 0 6px", fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 600, color: "#18181b" }}>{title}</h3>
+        <p style={{ margin: "0 0 18px", fontSize: 13.5, color: "#71717a", lineHeight: 1.5 }}>{description}</p>
+        <div style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}>
+          <button onClick={onCancel} style={{ border: CARD, background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 12, cursor: "pointer" }}>Cancel</button>
+          <button onClick={onConfirm} style={{ border: "none", background: bg, color: "#fff", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 12, cursor: "pointer" }}>{confirmLabel}</button>
         </div>
       </div>
     </div>
