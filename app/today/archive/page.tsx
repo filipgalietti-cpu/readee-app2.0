@@ -1,14 +1,13 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ArrowLeft, Calendar } from "lucide-react";
 import ArchiveCalendar from "./_components/ArchiveCalendar";
 
-// Static + ISR. The previous `dynamic = "force-dynamic"` was overriding
-// the 30-min revalidate and re-fetching from Supabase on every hit
-// (the bottleneck). Removing it lets Next cache the rendered HTML and
-// only rebuild every 1800s — first visit warms the cache, subsequent
-// visits are instant.
-export const revalidate = 1800;
+// Dynamic: we read the auth cookie to redirect logged-in parents to the
+// in-app /daily archive, which opts this route out of static caching.
+// This is the logged-out (public/SEO) archive only.
+export const dynamic = "force-dynamic";
 
 type Row = {
   date: string;
@@ -35,6 +34,14 @@ export const metadata = {
  */
 export default async function DailyArchivePage() {
   const supabase = await createClient();
+
+  // Logged-in parents get the in-app archive (sidebar + no scroll) at
+  // /daily; this public route stays for logged-out sharing + SEO.
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user) redirect("/daily");
+
   const today = new Date().toISOString().slice(0, 10);
   // 120-day window — calendar shows one month at a time and the prev/
   // next nav steps only through months that have entries, so 4 months
