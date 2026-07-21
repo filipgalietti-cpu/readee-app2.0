@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { Sparkles, ArrowLeft, Volume2, BookOpen } from "lucide-react";
+import { Sparkles, ArrowLeft, BookOpen } from "lucide-react";
 import TodayQuestionPlayer from "./_components/TodayQuestionPlayer";
+import ReadAloudButton from "./_components/ReadAloudButton";
 import AssignDailyButton from "./_components/AssignDailyButton";
 
 export const dynamic = "force-dynamic";
@@ -67,74 +68,87 @@ export default async function TodayDetailPage({
   if (!data) notFound();
   const d = data as Daily;
   const extras = Array.isArray(d.extra_questions) ? d.extra_questions : [];
+  const questions = [
+    { prompt: d.question_prompt, choices: d.choices, correct: d.correct, hint: d.hint },
+    ...extras.map((q: { prompt: string; choices: string[]; correct: string; hint?: string | null }) => ({
+      prompt: q.prompt,
+      choices: q.choices,
+      correct: q.correct,
+      hint: q.hint ?? null,
+    })),
+  ];
+  const wordCount = d.passage_body.split(/\s+/).filter(Boolean).length;
 
   return (
     <article className="min-h-screen bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-10 sm:px-6">
-        <Link
-          href="/today/archive"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-700"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          Back to archive
-        </Link>
-
-        <div className="mt-4 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
-          <Sparkles className="h-3 w-3" />
-          {d.theme} ·{" "}
-          {new Date(d.date + "T00:00:00").toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          })}
+      {/* Top bar */}
+      <div className="sticky top-0 z-20 border-b border-zinc-100 bg-white/90 backdrop-blur">
+        <div className="mx-auto flex max-w-[1120px] items-center gap-3 px-6 py-3">
+          <Link
+            href="/today/archive"
+            className="inline-flex items-center gap-1.5 text-[13px] font-bold text-zinc-500 transition hover:text-violet-700"
+          >
+            <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
+            Back
+          </Link>
+          <span className="font-display text-lg font-extrabold text-zinc-900">Today&apos;s Readee</span>
         </div>
+      </div>
 
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-          {d.passage_title}
-        </h1>
+      <div className="mx-auto max-w-[1120px] px-6 py-8 pb-16">
+        <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
+          {/* LEFT — the reading */}
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700">
+              <Sparkles className="h-3 w-3" />
+              {d.theme} ·{" "}
+              {new Date(d.date + "T00:00:00").toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </div>
 
-        {d.image_url && (
-          <img
-            src={d.image_url}
-            alt=""
-            className="mt-6 w-full rounded-3xl border border-zinc-200 object-cover shadow-sm"
-          />
-        )}
+            <h1 className="mt-2 font-display text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 sm:text-[38px]">
+              {d.passage_title}
+            </h1>
 
-        <div className="mt-6 flex items-center gap-2 text-xs text-zinc-500">
-          <BookOpen className="h-3.5 w-3.5" />
-          {d.passage_body.split(/\s+/).length} words ·{" "}
-          {Math.max(1, Math.round(d.passage_body.split(/\s+/).length / 150))} min read
+            {d.image_url && (
+              <div className="mt-5 flex max-h-[420px] overflow-hidden rounded-3xl border border-zinc-200 shadow-sm">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={d.image_url} alt="" className="w-full object-cover" />
+              </div>
+            )}
+
+            <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
+              <BookOpen className="h-3.5 w-3.5" />
+              {wordCount} words · {Math.max(1, Math.round(wordCount / 150))} min read
+              <ReadAloudButton audioUrl={d.audio_url} />
+            </div>
+
+            <div
+              className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900"
+              style={{
+                fontFamily:
+                  'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
+              }}
+            >
+              {d.passage_body}
+            </div>
+          </div>
+
+          {/* RIGHT — the quiz (sticky on desktop, aligned with the illustration) */}
+          <div className="lg:sticky lg:top-[76px] lg:mt-[88px]">
+            <TodayQuestionPlayer date={d.date} questions={questions} />
+          </div>
         </div>
-
-        <p
-          className="mt-4 whitespace-pre-line text-lg leading-relaxed text-zinc-900"
-          style={{
-            fontFamily:
-              'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
-          }}
-        >
-          {d.passage_body}
-        </p>
-
-        <TodayQuestionPlayer
-          date={d.date}
-          audioUrl={d.audio_url}
-          mainQuestion={{
-            prompt: d.question_prompt,
-            choices: d.choices,
-            correct: d.correct,
-            hint: d.hint,
-          }}
-          extras={extras}
-        />
 
         {/* Teacher CTA — only renders when authed as a teacher with a classroom. */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <AssignDailyButton date={d.date} />
         </div>
 
-        <div className="mt-12 rounded-3xl border border-violet-200 bg-white p-6 text-center shadow-sm">
+        <div className="mt-10 rounded-3xl border border-violet-200 bg-white p-6 text-center shadow-sm">
           <h2 className="text-lg font-bold text-zinc-900">
             Want a daily reading boost like this?
           </h2>
@@ -153,7 +167,7 @@ export default async function TodayDetailPage({
               href="/signup?as=teacher"
               className="rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-bold text-zinc-700 transition hover:border-violet-300"
             >
-              I'm a teacher
+              I&apos;m a teacher
             </Link>
             <Link
               href="/today/archive"
