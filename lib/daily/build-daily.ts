@@ -47,6 +47,37 @@ function systemTeacherId(): string {
   return id;
 }
 
+// ───── Image art-style variety ────────────────────────────────────
+// Before this, every AI image used one hardcoded cartoon style — the
+// uniform "children's-book coloring" look. We now pick the style from
+// the content: real-world subjects that are cooler as photos render
+// photoreal; made-up stories rotate through a small illustration
+// palette so they don't all look identical day to day. (Real named
+// historical figures route to actual photos upstream via
+// resolveHistoricalImage — that path is untouched here.)
+const PHOTOREAL_STYLE =
+  "Realistic nature/wildlife photograph, natural lighting, sharp focus, richly detailed, National Geographic documentary style, no text, no watermarks. ";
+const ILLUSTRATION_STYLES = [
+  "Soft watercolor storybook illustration, gentle washes, hand-painted texture, warm and cozy, no text, no watermarks. ",
+  "Bright bold 2D cartoon illustration, clean thick outlines, vibrant saturated colors, kid-friendly, no text, no watermarks. ",
+  "Cut-paper collage illustration, layered textured paper shapes, playful and tactile, Eric Carle style, no text, no watermarks. ",
+  "Soft colored-pencil and crayon illustration, hand-drawn childlike warmth, gentle shading, no text, no watermarks. ",
+];
+// Themes whose subject is a real animal / natural phenomenon — photoreal
+// beats cartoon here ("a real glowing firefly is cooler than a drawn one").
+const PHOTOREAL_THEMES = new Set(["Tuesday animals", "Thursday nature"]);
+
+/** Pick an art-style prefix for a daily AI image. Photoreal for
+ *  animals/nature; otherwise a date-seeded rotation through the
+ *  illustration palette so stories vary in look. Deterministic per
+ *  date so re-running the cron is stable. */
+function pickImageStyle(themeLabel: string, dateStr: string): string {
+  if (PHOTOREAL_THEMES.has(themeLabel)) return PHOTOREAL_STYLE;
+  let h = 0;
+  for (const ch of dateStr) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return ILLUSTRATION_STYLES[h % ILLUSTRATION_STYLES.length];
+}
+
 export type DailyBuildResult =
   | { ok: true; date: string; created: boolean; qcOverall: string }
   | { ok: false; error: string; date: string };
@@ -151,11 +182,36 @@ Religion + culture:
 
 When in doubt, pivot to: science, animals, weather, sports, space, helpers, food, gardening, art, music, friendship, kindness.`;
 
+  // Anti-repeat memory. The weekday theme prompts are generic ("an animal
+  // kids might not know — e.g., axolotl, narwhal, capybara") and the model,
+  // with no memory of what already ran, collapses onto the same few topics:
+  // 7 firefly passages, 7 butterfly ("taste with their feet") passages, and
+  // exact-duplicate titles a week apart ("A Big Berry Surprise" ran 6/12 AND
+  // 7/3). Feeding it the last three weeks of titles forces a genuinely new
+  // pick. Best-effort: a query hiccup just means no avoid-list this run.
+  let avoidBlock = "";
+  try {
+    const { data: recentRows } = await admin
+      .from("daily_questions")
+      .select("passage_title")
+      .lt("date", dateStr)
+      .order("date", { ascending: false })
+      .limit(21);
+    const recentTitles = ((recentRows ?? []) as { passage_title: string | null }[])
+      .map((r) => r.passage_title)
+      .filter((t): t is string => !!t);
+    if (recentTitles.length) {
+      avoidBlock = `\n\nAVOID REPEATS — these ran in the last three weeks. Pick a subject that is clearly DIFFERENT from every one of these (a different animal, a different phenomenon, a different story premise — not a rephrase or a close cousin):\n${recentTitles.map((t) => `- ${t}`).join("\n")}`;
+    }
+  } catch {
+    /* best-effort; ship without the avoid-list if the lookup fails */
+  }
+
   const datedTopic = `${SAFETY_PREAMBLE}
 
 Today is ${fullDate} (${monthName} — ${seasonName} in the Northern Hemisphere). Write a passage that feels appropriate for THIS time of year — do not pick a topic from a different season.
 
-${theme.topic}`;
+${theme.topic}${avoidBlock}`;
 
   // 1) Passage. Daily is the marquee public-facing passage, so we
   //    target the "medium" tier — substantial enough to be a real
@@ -257,12 +313,14 @@ ${theme.topic}`;
       // single generateImage call when we have no spec (concept
       // passages with empty characters[]) because there's nothing
       // to comparatively grade against.
+      const stylePrefix = pickImageStyle(theme.label, dateStr);
       if (sceneSpec) {
         const bestRes = await generateBestImage({
           teacherId,
           prompt: imageScene,
           spec: sceneSpec as any,
           n: 3,
+          stylePrefix,
         });
         if (bestRes.ok) {
           imageUrl = bestRes.imageUrl;
@@ -274,6 +332,7 @@ ${theme.topic}`;
         const imgRes = await generateImage({
           teacherId,
           prompt: imageScene,
+          stylePrefix,
         });
         if (imgRes.ok) imageUrl = imgRes.imageUrl;
       }

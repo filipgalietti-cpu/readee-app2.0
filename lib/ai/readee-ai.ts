@@ -572,6 +572,16 @@ Generate exactly ${count} multiple-choice question${count === 1 ? "" : "s"} foll
       const correct = (q.correct ?? "").trim();
       const hint = q.hint ? String(q.hint).trim() : null;
       if (!prompt || choices.length < 2 || !choices.includes(correct)) continue;
+      // De-bias the correct-answer position. The prompt asks the model to
+      // "randomize correct position," but it doesn't listen — 66% of daily
+      // answers landed in slot 2, so a kid could pass by always tapping the
+      // second choice. `correct` is stored as text (not an index), so a
+      // deterministic Fisher-Yates on `choices` keeps it valid while
+      // scattering the answer evenly across positions.
+      for (let i = choices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [choices[i], choices[j]] = [choices[j], choices[i]];
+      }
       questions.push({ prompt, choices, correct, hint: hint || null });
     }
 
@@ -1051,18 +1061,25 @@ export async function generateImageBrief(input: {
 
 // ═══ Image generation (Gemini 2.5 Flash Image) ══════════════════════
 
-const IMAGE_STYLE_PREFIX =
-  "Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, kid-friendly, no text, no watermarks. " +
+// The art-style words — the ONLY part a caller may override (via
+// `stylePrefix`) so a daily animal passage can render as a realistic photo
+// while a bedtime story stays a watercolor. Everything below in
+// IMAGE_COMPOSITION_GUARD always applies regardless of style.
+const DEFAULT_STYLE_WORDS =
+  "Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, kid-friendly, no text, no watermarks. ";
+// Composition guardrails — style-agnostic, ALWAYS applied.
+const IMAGE_COMPOSITION_GUARD =
   // Anti-panel guardrail. Gemini 2.5 Flash Image will sometimes return a
   // 2-panel comic strip or grid when the prompt has any narrative shape
   // (e.g. "boy learns about X, then plays Y"). Be explicit so the model
   // produces one single scene that fills the frame.
-  "Render as ONE single unified illustration, square aspect ratio. Do NOT produce a comic strip, panels, grid, split-screen, before/after, multi-frame layout, or sub-images. Only one scene. " +
+  "Render as ONE single unified image, square aspect ratio. Do NOT produce a comic strip, panels, grid, split-screen, before/after, multi-frame layout, or sub-images. Only one scene. " +
   // Anti-classroom-default guardrail. Gemini Flash Image associates
   // "educational" prompts with generic school-classroom scenes and will
   // return a teacher-with-kids classroom even when the prompt is about
   // hockey, the ocean, dinosaurs, etc. Force literal scene fidelity.
   "Match the EXACT setting, characters, and action described in the user prompt below. Do NOT default to a school classroom or teacher-with-students scene unless the prompt explicitly asks for one. ";
+const IMAGE_STYLE_PREFIX = DEFAULT_STYLE_WORDS + IMAGE_COMPOSITION_GUARD;
 
 export type ImageQuality = "standard" | "ultra";
 
@@ -1072,6 +1089,10 @@ export async function generateImage(input: {
   /** Optional reference image (base64 + mime). Locks the model onto a
    *  visual anchor — used for cross-page character consistency in books. */
   referenceImage?: { data: string; mimeType: string } | null;
+  /** Override the art-style words (e.g. a realistic-photo style for an
+   *  animal passage). Composition + safety guardrails still apply.
+   *  Defaults to the bright-2D-cartoon house style. */
+  stylePrefix?: string;
   /** "standard" = Gemini 2.5 Flash Image (~$0.04, default).
    *  "ultra"   = Imagen 4 Ultra (~$0.06, publish-quality).
    *  Gating happens at the caller site. Reference-image conditioning
@@ -1105,7 +1126,11 @@ export async function generateImage(input: {
   }
 
   try {
-    const fullPrompt = IMAGE_SAFETY_PREFIX + IMAGE_STYLE_PREFIX + input.prompt.trim();
+    const fullPrompt =
+      IMAGE_SAFETY_PREFIX +
+      (input.stylePrefix ?? DEFAULT_STYLE_WORDS) +
+      IMAGE_COMPOSITION_GUARD +
+      input.prompt.trim();
     const useUltra = input.quality === "ultra";
     // Imagen Ultra path — generateImages, no image conditioning.
     let response: any;

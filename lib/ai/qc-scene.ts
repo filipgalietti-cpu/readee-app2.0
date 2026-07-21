@@ -530,6 +530,8 @@ export async function generateBestImage(input: {
   prompt: string;
   spec: SceneSpec;
   n?: number;
+  /** Art-style override forwarded to each candidate generation. */
+  stylePrefix?: string;
 }): Promise<BestImageResult> {
   const n = input.n ?? N_CANDIDATES;
 
@@ -543,6 +545,7 @@ export async function generateBestImage(input: {
     const r = await generateImage({
       teacherId: input.teacherId,
       prompt: input.prompt,
+      stylePrefix: input.stylePrefix,
     });
     if (r.ok) {
       candidates.push({
