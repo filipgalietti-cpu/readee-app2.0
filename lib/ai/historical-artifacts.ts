@@ -50,8 +50,82 @@ type CachedArtifact = {
   fetchedAt: string;
 };
 
-let memoryCache = new Map<string, CachedArtifact>();
+const memoryCache = new Map<string, CachedArtifact>();
 const MEMORY_CACHE_TTL = 24 * 60 * 60_000; // 24h
+const WIKI_UA = "ReadeeBot/1.0 (https://readee.app; hello@readee.app)";
+
+/**
+ * License gate for re-hosting Wikimedia images in a commercial product.
+ *
+ * The Wikipedia REST summary happily returns a fair-use lead image, and
+ * "the figure died long ago" does NOT make a specific photograph public
+ * domain (the photographer's copyright outlives the subject). So before we
+ * cache + serve an image we verify its actual license on Wikimedia Commons.
+ *
+ * Two-layer check:
+ *   1. The file must exist ON COMMONS. Fair-use / non-free files are hosted
+ *      locally on the language wiki, never on Commons, so "missing on
+ *      Commons" is itself a reject.
+ *   2. Its LicenseShortName must be a free license (public domain / CC0 /
+ *      CC BY / CC BY-SA). Anything else is rejected.
+ *
+ * Conservative by design: any error, missing file, or unrecognized license
+ * returns null, and the caller falls back to an AI stand-in. We would rather
+ * draw a generic scene than re-host a rights-encumbered photo.
+ */
+function isFreeLicense(shortName: string | null): boolean {
+  if (!shortName) return false;
+  const l = shortName.toLowerCase();
+  if (l.includes("fair use") || l.includes("non-free") || l.includes("all rights")) {
+    return false;
+  }
+  return (
+    l.includes("public domain") ||
+    l.includes("cc0") ||
+    l.includes("cc by") || // "CC BY 4.0", "CC BY-SA 3.0"
+    l.includes("cc-by") ||
+    l.includes("pdm") || // Public Domain Mark
+    l === "pd"
+  );
+}
+
+async function verifyCommonsLicense(
+  imageUrl: string,
+): Promise<{ license: string; artist: string | null } | null> {
+  try {
+    const fname = decodeURIComponent(imageUrl.split("/").pop() ?? "");
+    if (!fname) return null;
+    const api = `https://commons.wikimedia.org/w/api.php?action=query&titles=${encodeURIComponent(
+      "File:" + fname,
+    )}&prop=imageinfo&iiprop=extmetadata&format=json`;
+    const res = await fetch(api, {
+      headers: { "User-Agent": WIKI_UA, Accept: "application/json" },
+    });
+    if (!res.ok) return null;
+    const data = (await res.json()) as {
+      query?: {
+        pages?: Record<
+          string,
+          {
+            missing?: string;
+            imageinfo?: { extmetadata?: Record<string, { value?: string }> }[];
+          }
+        >;
+      };
+    };
+    const pages = data.query?.pages ?? {};
+    const page = Object.values(pages)[0];
+    // Not on Commons (missing) → local/non-free file → reject.
+    if (!page || page.missing !== undefined) return null;
+    const md = page.imageinfo?.[0]?.extmetadata ?? {};
+    const license = md.LicenseShortName?.value ?? null;
+    if (!isFreeLicense(license)) return null;
+    const artist = (md.Artist?.value ?? "").replace(/<[^>]+>/g, "").trim() || null;
+    return { license: license as string, artist };
+  } catch {
+    return null;
+  }
+}
 
 function getClient(): GoogleGenAI {
   const apiKey = process.env.GEMINI_API_KEY;
@@ -153,14 +227,27 @@ async function fetchWikipediaArtifact(
       extract?: string;
     };
     // Prefer originalimage (full-resolution). Fall back to thumbnail.
-    const imageUrl = data.originalimage?.source ?? data.thumbnail?.source ?? null;
-    const attribution = data.content_urls?.desktop?.page
-      ? `Image via Wikipedia (${data.content_urls.desktop.page})`
-      : "Image via Wikipedia";
+    const candidateUrl = data.originalimage?.source ?? data.thumbnail?.source ?? null;
+
+    // License gate — only re-host images we've verified are free on
+    // Commons. An unverified image is dropped (imageUrl stays null) so
+    // resolveHistoricalImage falls back to an AI stand-in rather than
+    // serving a rights-encumbered photo from a commercial product.
+    let imageUrl: string | null = null;
+    let attribution: string | null = null;
+    if (candidateUrl) {
+      const lic = await verifyCommonsLicense(candidateUrl);
+      if (lic) {
+        imageUrl = candidateUrl;
+        attribution = lic.artist
+          ? `${lic.artist} · ${lic.license} · via Wikimedia Commons`
+          : `${lic.license} · via Wikimedia Commons`;
+      }
+    }
     const hit: CachedArtifact = {
       figureName: data.title ?? name,
       imageUrl,
-      attribution: imageUrl ? attribution : null,
+      attribution,
       extract: typeof data.extract === "string" ? data.extract : null,
       fetchedAt: new Date().toISOString(),
     };

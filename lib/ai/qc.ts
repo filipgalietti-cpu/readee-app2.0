@@ -55,13 +55,23 @@ function rollUp(checks: QcCheck[]): QcSeverity {
 // deterministic spec checks plus the primary / committee / media judges.
 const ADVISORY_CHECKS = new Set(["meta.adversarial"]);
 
-/** Roll-up used for the publish decision — same as rollUp but ignores
- *  advisory-only checks. A day is blocked only by a real content/media
- *  failure, never by the hostile advisory judge alone. */
+/** Roll-up used for the publish decision.
+ *
+ *  Two policies beyond the plain rollUp:
+ *   1. Advisory-only checks (meta.adversarial) never gate — see above.
+ *   2. The daily promise: we ALWAYS ship something, so a broken IMAGE
+ *      alone never blanks a day. The reading content (passage + questions
+ *      + audio) gates publishing; an image failure caps the row at "warn"
+ *      so it still publishes (and /today still shows it) while the heal
+ *      loop keeps regenerating a clean image in the background and the
+ *      dashboard flags it. Only a real content failure hides the day. */
 function rollUpForPublish(checks: QcCheck[]): QcSeverity {
   const gating = checks.filter((c) => !ADVISORY_CHECKS.has(c.name));
-  if (gating.some((c) => c.severity === "fail")) return "fail";
-  if (gating.some((c) => c.severity === "warn")) return "warn";
+  const isImage = (n: string) => n.startsWith("image.");
+  // Content (non-image) failures block publishing → hidden.
+  if (gating.some((c) => c.severity === "fail" && !isImage(c.name))) return "fail";
+  // Anything else non-pass (warns, or image-only fails) → publish-but-flagged.
+  if (gating.some((c) => c.severity !== "pass")) return "warn";
   return "pass";
 }
 
