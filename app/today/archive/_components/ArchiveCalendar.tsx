@@ -52,6 +52,12 @@ export default function ArchiveCalendar({
     : monthsWithEntries[0] ?? todayMonth;
   const [activeMonth, setActiveMonth] = useState<string>(initialMonth);
 
+  // Chronological (oldest → newest) for the month-jump pills.
+  const monthTabs = useMemo(
+    () => [...monthsWithEntries].reverse(),
+    [monthsWithEntries],
+  );
+
   const currentIdx = monthsWithEntries.indexOf(activeMonth);
   const hasPrev = currentIdx >= 0 && currentIdx < monthsWithEntries.length - 1;
   const hasNext = currentIdx > 0;
@@ -84,13 +90,32 @@ export default function ArchiveCalendar({
             {monthEntryCount} {monthEntryCount === 1 ? "passage" : "passages"} this month
           </p>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
+          {/* Month-jump pills (oldest → newest) — quick access to any
+              month that has entries, matching the archive design. */}
+          {monthTabs.map((mm) => {
+            const active = mm === activeMonth;
+            return (
+              <button
+                key={mm}
+                type="button"
+                onClick={() => setActiveMonth(mm)}
+                className={`rounded-full border px-3.5 py-1.5 text-xs font-bold transition ${
+                  active
+                    ? "border-violet-600 bg-violet-600 text-white"
+                    : "border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50"
+                }`}
+              >
+                {shortMonth(mm)}
+              </button>
+            );
+          })}
           <button
             type="button"
             onClick={goPrev}
             disabled={!hasPrev}
             aria-label="Previous month"
-            className="rounded-full border border-zinc-200 bg-white p-2 text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
+            className="ml-0.5 rounded-full border border-zinc-200 bg-white p-2 text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
           >
             <ChevronLeft className="h-4 w-4" strokeWidth={2.4} />
           </button>
@@ -256,4 +281,9 @@ function monthLabel(yyyymm: string): string {
     month: "long",
     year: "numeric",
   });
+}
+
+function shortMonth(yyyymm: string): string {
+  const [y, m] = yyyymm.split("-").map(Number);
+  return new Date(y, m - 1, 1).toLocaleDateString("en-US", { month: "short" });
 }
