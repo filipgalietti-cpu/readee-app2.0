@@ -46,6 +46,25 @@ function rollUp(checks: QcCheck[]): QcSeverity {
   return "pass";
 }
 
+// Advisory-only checks: kept in the report (and on the /owner QC dashboard)
+// as a "look here" signal, but they do NOT gate publishing. meta.adversarial
+// is a deliberately hostile judge that warned on ~100% of daily content over
+// two months and occasionally solo-failed a perfectly good day (June 9's
+// axolotl went dark on an adversarial fail while every other check only
+// warned). It's useful as a flag, useless as a gate — the real gate is the
+// deterministic spec checks plus the primary / committee / media judges.
+const ADVISORY_CHECKS = new Set(["meta.adversarial"]);
+
+/** Roll-up used for the publish decision — same as rollUp but ignores
+ *  advisory-only checks. A day is blocked only by a real content/media
+ *  failure, never by the hostile advisory judge alone. */
+function rollUpForPublish(checks: QcCheck[]): QcSeverity {
+  const gating = checks.filter((c) => !ADVISORY_CHECKS.has(c.name));
+  if (gating.some((c) => c.severity === "fail")) return "fail";
+  if (gating.some((c) => c.severity === "warn")) return "warn";
+  return "pass";
+}
+
 // ───── Grade-level expectations ─────────────────────────────────────
 
 const GRADE_TARGETS: Record<
@@ -1154,7 +1173,10 @@ export async function runFullQuizQc(input: {
   }
 
   return {
-    overall: rollUp(checks),
+    // Publish gate ignores advisory-only checks (meta.adversarial) so a
+    // day is never blanked by the hostile judge alone. The adversarial
+    // verdict is still in `checks` for the dashboard.
+    overall: rollUpForPublish(checks),
     checks,
     creditsUsed,
     ranAt: new Date().toISOString(),
