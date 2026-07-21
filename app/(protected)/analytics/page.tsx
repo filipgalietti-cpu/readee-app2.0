@@ -392,6 +392,23 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     return gradeStandards.filter((s) => (allTimeStdStats[s.standard_id]?.attempted ?? 0) > 0).length;
   }, [gradeStandards, allTimeStdStats]);
 
+  /* ── Grade-level standing — computed from real performance on the child's
+     grade standards (accuracy + breadth), not a placement guess. Null until
+     there's enough signal (≥3 grade standards with ≥4 questions each). ── */
+  const gradeStanding = useMemo(() => {
+    const stats = gradeStandards
+      .map((s) => allTimeStdStats[s.standard_id])
+      .filter((st): st is { attempted: number; correct: number } => !!st && st.attempted >= 4);
+    if (stats.length < 3) return null;
+    const attempted = stats.reduce((n, st) => n + st.attempted, 0);
+    const correct = stats.reduce((n, st) => n + st.correct, 0);
+    const acc = attempted > 0 ? correct / attempted : 0;
+    const breadth = stats.length / Math.max(1, gradeStandards.length);
+    if (acc >= 0.85 && breadth >= 0.25) return { phrase: "reading above grade level", short: "Above grade", color: "#059669", bg: "#ecfdf5" };
+    if (acc >= 0.65) return { phrase: "reading on grade level", short: "On grade", color: "#4338ca", bg: "#eef2ff" };
+    return { phrase: "building toward grade level", short: "Building toward grade", color: "#b45309", bg: "#fffbeb" };
+  }, [gradeStandards, allTimeStdStats]);
+
   const weeklyVolume = useMemo(() => buildWeeklyVolume(practiceResults), [practiceResults]);
 
   /* ── Report card week window ── */
@@ -534,6 +551,11 @@ function AnalyticsDashboard({ child }: { child: Child }) {
             {displayGrade(child.grade)}{child.reading_level ? ` · ${child.reading_level}` : ""}
           </p>
         </div>
+        {gradeStanding && (
+          <div style={{ flexShrink: 0, whiteSpace: "nowrap", background: gradeStanding.bg, color: gradeStanding.color, fontSize: 13, fontWeight: 700, padding: "5px 12px", borderRadius: 999 }}>
+            {gradeStanding.short}
+          </div>
+        )}
         {child.streak_days > 0 && (
           <div style={{ flexShrink: 0, whiteSpace: "nowrap", background: "#d1fae5", color: "#059669", fontSize: 13, fontWeight: 700, padding: "5px 12px", borderRadius: 999 }}>
             {child.streak_days}-day streak
@@ -560,8 +582,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
           <Sparkles className="w-[22px] h-[22px]" style={{ color: "#4338ca", flexShrink: 0, marginTop: 3 }} strokeWidth={1.5} />
           <div>
             <p style={{ margin: 0, fontSize: 17, lineHeight: 1.5, color: "#3f3f46" }}>
-              {/* TODO(analytics): no grade-level placement signal available; using reading_level as the closest real value */}
-              {child.first_name} is a <strong style={{ color: "#18181b" }}>{child.reading_level || displayGrade(child.grade) + " reader"}</strong> and practiced <strong style={{ color: "#18181b" }}>{last7.days} of the last 7 days</strong>.
+              {child.first_name} is <strong style={{ color: "#18181b" }}>{gradeStanding ? gradeStanding.phrase : "just getting started"}</strong> and practiced <strong style={{ color: "#18181b" }}>{last7.days} of the last 7 days</strong>.
               {insightBest ? <> Strong in <strong style={{ color: "#18181b" }}>{insightBest.name}</strong>.</> : null}
               {insightWorst && (!insightBest || insightWorst.standard_id !== insightBest.standard_id) ? <> This week, work on <strong style={{ color: "#18181b" }}>{insightWorst.name}</strong>.</> : null}
             </p>
