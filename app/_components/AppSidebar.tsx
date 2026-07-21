@@ -199,7 +199,7 @@ function getNavSections(
       collapsible: collapseByDefault,
       kidSize: true,
       items: [
-        { href: "/today/archive", icon: Newspaper, label: "Daily Readee" },
+        { href: "/daily", icon: Newspaper, label: "Daily Readee" },
         { href: `/levels${q}`, icon: Star, label: "Levels" },
         { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "text-orange-500" },
         { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
