@@ -32,7 +32,6 @@ import { LessonSlideshow } from "@/app/components/lesson/LessonSlideshow";
 import { McqStage, BunnyBubble, QuestionDock, NextCta } from "@/app/components/practice/McqStage";
 import type { SampleLesson } from "@/app/components/lesson/LessonSlideshow";
 import sampleLessons from "@/app/data/sample-lessons.json";
-import AudioDebugOverlay from "@/app/components/lesson/AudioDebugOverlay";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 
@@ -556,21 +555,16 @@ function LearnSession({
 
   /* ── Phase: Slideshow ── */
   if (phase === "slideshow") {
-    return (
-      <>
-        <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} chrome="desktop-shell" outfitId={child?.equipped_items?.outfit ?? null}
-          onSignal={(ev) => {
-            if (!child?.id) return;
-            logLearningEvent({
-              ...ev,
-              childId: child.id,
-              lessonId: lesson.standardId,
-              sessionId: adaptiveSessionRef.current,
-            });
-          }} />
-        <AudioDebugOverlay />
-      </>
-    );
+    return <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} chrome="desktop-shell" outfitId={child?.equipped_items?.outfit ?? null}
+      onSignal={(ev) => {
+        if (!child?.id) return;
+        logLearningEvent({
+          ...ev,
+          childId: child.id,
+          lessonId: lesson.standardId,
+          sessionId: adaptiveSessionRef.current,
+        });
+      }} />;
   }
 
   /* ── Phase: Complete ── */
