@@ -290,7 +290,7 @@ function LearnLoader() {
 /*  Learn Session — slideshow → MCQs → completion         */
 /* ═══════════════════════════════════════════════════════ */
 
-type Phase = "start" | "slideshow" | "practice" | "complete";
+type Phase = "slideshow" | "practice" | "complete";
 
 function LearnSession({
   child,
@@ -304,14 +304,10 @@ function LearnSession({
   devMode?: boolean;
 }) {
   const router = useRouter();
-  const { stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz, unlockAudio } = useAudio();
+  const { stop, playUrl, playSequence, playCorrectChime, playIncorrectBuzz } = useAudio();
   const gradeKey = levelNameToGradeKey(child?.reading_level ?? null);
 
-  // Start on a "tap to start" gate. Browsers block audio until the user
-  // physically taps the page (autoplay policy), so entering a lesson by
-  // direct link — or any path without a prior tap — left slide 1 silent.
-  // The start tap unlocks audio, then the slideshow plays with sound.
-  const [phase, setPhase] = useState<Phase>("start");
+  const [phase, setPhase] = useState<Phase>("slideshow");
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<AnswerRecord[]>([]);
   const [sessionCarrots, setSessionCarrots] = useState(0);
@@ -558,33 +554,6 @@ function LearnSession({
   }, [currentIdx, totalQ]);
 
   /* ── Phase: Slideshow ── */
-  if (phase === "start") {
-    return (
-      <div className="flex min-h-[72vh] flex-col items-center justify-center px-6 text-center">
-        {lesson.domain && (
-          <div className="text-xs font-bold uppercase tracking-widest text-violet-500">{lesson.domain}</div>
-        )}
-        <h1 className="mt-2 max-w-xl font-display text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-          {lesson.title}
-        </h1>
-        <p className="mt-3 max-w-md text-sm text-zinc-500">
-          Tap start and read along — Readee reads it out loud with you.
-        </p>
-        <button
-          type="button"
-          onClick={async () => {
-            try { await unlockAudio(); } catch { /* best-effort unlock */ }
-            setPhase("slideshow");
-          }}
-          className="mt-8 inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-4 text-lg font-extrabold text-white shadow-lg transition hover:bg-violet-700 active:scale-95"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3" /></svg>
-          Start lesson
-        </button>
-      </div>
-    );
-  }
-
   if (phase === "slideshow") {
     return <LessonSlideshow lesson={lesson} onComplete={handleSlideshowComplete} devMode={devMode} chrome="desktop-shell" outfitId={child?.equipped_items?.outfit ?? null}
       onSignal={(ev) => {
