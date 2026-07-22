@@ -5,12 +5,16 @@ import { createClient } from "@/lib/supabase/server";
 export const dynamic = "force-dynamic";
 
 /**
- * /today — public landing that redirects to the most-recent published
- * daily question. Shareable URL for marketing + SEO. The dated detail
+ * /today — redirects to the most-recent published daily. Daily Readee is a
+ * signed-in feature, so logged-out visitors go to sign up; the dated detail
  * page lives at /today/[slug].
  */
 export default async function TodayIndexPage() {
   const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect("/signup");
   // Same filter as DailyQuestionCard — skip QC failures so /today never
   // redirects to a broken day. Warns surface; fails fall back silently.
   const { data } = await supabase
