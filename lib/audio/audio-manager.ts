@@ -64,11 +64,7 @@ class AudioManager {
     return new Promise((resolve) => {
       let howl = this.cache.get(url);
       if (!howl) {
-        // html5:true → use an HTMLAudioElement (the same engine the daily
-        // page's Read-aloud uses and which works) instead of Web Audio.
-        // Lesson narration was silent because the Web Audio context, resumed
-        // in a delayed timer rather than directly in the tap, never unlocked.
-        howl = new Howl({ src: [url], preload: true, html5: true });
+        howl = new Howl({ src: [url], preload: true });
         this.cache.set(url, howl);
       }
 
@@ -156,9 +152,7 @@ class AudioManager {
   /** Preload audio from URL */
   preload(url: string): void {
     if (this.cache.has(url)) return;
-    // Must match play()'s html5:true, else play() reuses this cached Web-Audio
-    // Howl and the fix is defeated.
-    const howl = new Howl({ src: [url], preload: true, html5: true });
+    const howl = new Howl({ src: [url], preload: true });
     this.cache.set(url, howl);
   }
 
@@ -221,7 +215,7 @@ class AudioManager {
     if (isMuted) return Promise.resolve();
     url = url.replace(/ /g, "%20"); // see play(): encode spaced filenames
     return new Promise((resolve) => {
-      const howl = new Howl({ src: [url], volume: 1, html5: true });
+      const howl = new Howl({ src: [url], volume: 1, html5: false });
       howl.once("end", () => resolve());
       howl.once("loaderror", (_id, err) => {
         console.error("[playOneshot] loaderror", url, err);
