@@ -7,6 +7,14 @@ class AudioManager {
   private audioCtx: AudioContext | null = null;
   private sequenceAbort: AbortController | null = null;
 
+  /** TEMP: rolling debug log surfaced on-screen by AudioDebugOverlay. */
+  debugLog: string[] = [];
+  dbg(msg: string): void {
+    this.debugLog.unshift(msg);
+    if (this.debugLog.length > 8) this.debugLog.pop();
+    try { console.log("[audio]", msg); } catch {}
+  }
+
   private getAudioCtx(): AudioContext {
     if (!this.audioCtx) {
       this.audioCtx = new AudioContext();
@@ -44,11 +52,8 @@ class AudioManager {
   /** Play audio from a URL via Howler with fade-in */
   play(url: string, fadeMs = 300): Promise<void> {
     const { isMuted } = useAudioStore.getState();
-    // TEMP DEBUG (audio silence investigation) — remove once resolved.
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      console.log("[audio] play:", url.slice(-46), "| muted:", isMuted, "| ctx:", (Howler as any).ctx?.state ?? "none");
-    } catch {}
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    this.dbg(`play ${url.slice(-22)} muted=${isMuted} ctx=${(Howler as any).ctx?.state ?? "none"}`);
     if (isMuted) return Promise.resolve();
     // Encode raw spaces in the path — ~127 catalog audio files have spaces
     // in their names ("rb-0key terms.mp3") and Supabase Storage rejects the
@@ -82,13 +87,14 @@ class AudioManager {
         howl.volume(1);
       }
 
-      howl.once("load", () => { try { console.log("[audio] LOADED ok:", url.slice(-30)); } catch {} });
+      howl.once("load", () => this.dbg(`LOADED ${url.slice(-22)}`));
+      howl.once("play", () => this.dbg(`PLAYING ${url.slice(-22)}`));
       howl.once("end", () => {
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
       });
       howl.once("loaderror", (_id, err) => {
-        try { console.warn("[audio] LOADERROR:", url.slice(-30), err); } catch {}
+        this.dbg(`LOADERROR ${url.slice(-22)} ${JSON.stringify(err)}`);
         // Evict the failed Howl from the cache so a subsequent play attempt
         // (e.g. after the asset has since been uploaded to Supabase) tries
         // a fresh fetch instead of re-using the broken cached instance.
@@ -97,7 +103,7 @@ class AudioManager {
         resolve();
       });
       howl.once("playerror", (_id, err) => {
-        try { console.warn("[audio] PLAYERROR:", url.slice(-30), err); } catch {}
+        this.dbg(`PLAYERROR ${url.slice(-22)} ${JSON.stringify(err)}`);
         this.cache.delete(url);
         if (this.currentHowl === howl) this.currentHowl = null;
         resolve();
