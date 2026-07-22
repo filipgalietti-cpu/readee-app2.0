@@ -14,7 +14,8 @@
             "audioFile": "audio/lessons/RL.K.1/S1a.mp3",
             "ttsScript": "Hey there, friend! Are you ready to learn something super cool today?",
             "displayText": "",
-            "interaction": "Screen fades in with a friendly wave animation. Heading appears."
+            "interaction": "Screen fades in with a friendly wave animation. Heading appears.",
+            "audioRegenAt": "2026-07-22T17:52:31.681Z"
           },
           {
             "sub": "b",
