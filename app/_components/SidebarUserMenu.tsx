@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { User, CreditCard, Bell, LogOut, ChevronsUpDown, Sparkles } from "lucide-react";
+import { Settings, LogOut, ChevronsUpDown, Sparkles } from "lucide-react";
 
 export function SidebarUserMenu({
   avatarSrc,
@@ -184,13 +184,13 @@ export function SidebarUserMenu({
             <div className="h-px bg-zinc-100 dark:bg-slate-800" />
 
             <div className="py-1 px-1">
-              <Link href="/account" onClick={() => setOpen(false)}
+              <Link href="/settings" onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
-                <User className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70" strokeWidth={1.5} />
-                Account
+                <Settings className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70" strokeWidth={1.5} />
+                Settings
               </Link>
               {showCreditIndicator && credits && (
-                <Link href="/account#credits" onClick={() => setOpen(false)}
+                <Link href="/settings" onClick={() => setOpen(false)}
                   className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
                   <Sparkles className="w-4 h-4 text-violet-500" strokeWidth={1.5} />
                   <span className="flex-1">Readee.ai credits</span>
@@ -199,16 +199,6 @@ export function SidebarUserMenu({
                   </span>
                 </Link>
               )}
-              <Link href="/billing" onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
-                <CreditCard className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70" strokeWidth={1.5} />
-                Billing
-              </Link>
-              <Link href="/notifications" onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 dark:text-slate-300 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors">
-                <Bell className="w-4 h-4 text-indigo-400 dark:text-indigo-400/70" strokeWidth={1.5} />
-                Notifications
-              </Link>
             </div>
 
             <div className="h-px bg-zinc-100 dark:bg-slate-800" />
