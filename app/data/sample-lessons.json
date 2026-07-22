@@ -23,7 +23,8 @@
             "ttsScript": "We're going to learn about key details! Key details are like special clues hiding inside every story.",
             "displayText": "Key Details are Special Clues!",
             "interaction": "The words 'Key Details' pop up big and sparkly on screen.",
-            "displayDelay": 5000
+            "displayDelay": 5000,
+            "audioRegenAt": "2026-07-22T18:39:38.078Z"
           },
           {
             "sub": "c",
@@ -58,7 +59,8 @@
                 "pill": 2,
                 "delay": 4640
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-22T18:39:36.701Z"
           }
         ],
         "heading": "Let's Learn About Key Details!",
@@ -75,7 +77,8 @@
             "ttsScript": "So, what are key details? They're the really important parts of a story.",
             "displayText": "The important parts of a story",
             "interaction": "Heading animates in. Magnifying glass character appears.",
-            "displayDelay": 3500
+            "displayDelay": 3500,
+            "audioRegenAt": "2026-07-22T18:39:34.166Z"
           },
           {
             "sub": "b",
@@ -83,7 +86,8 @@
             "ttsScript": "Think of it like this. When you read a story, ask yourself: Who is the story about?",
             "displayText": "Who?",
             "interaction": "'Who?' pops up in a big colorful bubble.",
-            "displayDelay": 5500
+            "displayDelay": 5500,
+            "audioRegenAt": "2026-07-22T18:39:39.713Z"
           },
           {
             "sub": "c",
@@ -91,7 +95,8 @@
             "ttsScript": "What happened in the story?",
             "displayText": "What?",
             "interaction": "'What?' pops up in a second bubble next to the first.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-22T18:39:39.223Z"
           },
           {
             "sub": "d",
@@ -99,7 +104,8 @@
             "ttsScript": "And finally: Where did it happen? When you can answer those three questions, you found the key details! Pretty cool, right?",
             "displayText": "Where?",
             "interaction": "'Where?' pops up. All three bubbles glow together. Tap to continue.",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-22T18:39:45.034Z"
           }
         ],
         "heading": "What Are Key Details?",
@@ -114,7 +120,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.1/S3a.mp3",
             "ttsScript": "Okay, let's try one together! Here's a little story.",
-            "interaction": "Heading appears. A mini storybook opens on screen."
+            "interaction": "Heading appears. A mini storybook opens on screen.",
+            "audioRegenAt": "2026-07-22T18:39:42.953Z"
           },
           {
             "sub": "b",
@@ -122,7 +129,8 @@
             "ttsScript": "Max the dog ran to the park. He played with a red ball.",
             "displayText": "Max the dog ran to the park. He played with a red ball.",
             "interaction": "Story text appears line by line as audio reads it. Image of Max at the park is visible.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-22T18:39:47.611Z"
           },
           {
             "sub": "c",
@@ -143,7 +151,8 @@
             "highlightWord": {
               "word": "Max",
               "delay": 7230
-            }
+            },
+            "audioRegenAt": "2026-07-22T18:39:50.904Z"
           },
           {
             "sub": "d",
@@ -164,7 +173,8 @@
             "highlightWord": {
               "word": "park",
               "delay": 2450
-            }
+            },
+            "audioRegenAt": "2026-07-22T18:39:48.526Z"
           },
           {
             "sub": "e",
@@ -185,7 +195,8 @@
             "highlightWord": {
               "word": "ball",
               "delay": 4690
-            }
+            },
+            "audioRegenAt": "2026-07-22T18:39:55.477Z"
           }
         ],
         "heading": "Let's Try One Together!",
@@ -201,7 +212,8 @@
             "audioFile": "audio/lessons/RL.K.1/S4a.mp3",
             "ttsScript": "Here's a secret trick that works every single time.",
             "displayText": "",
-            "interaction": "Heading appears with a sparkle effect. Detective question marks visible."
+            "interaction": "Heading appears with a sparkle effect. Detective question marks visible.",
+            "audioRegenAt": "2026-07-22T18:41:03.944Z"
           },
           {
             "sub": "b",
@@ -209,7 +221,8 @@
             "ttsScript": "After you read a story, ask yourself three magic questions.",
             "displayText": "3 Magic Questions",
             "interaction": "A '3' appears on screen with a magic wand effect.",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-22T18:41:06.828Z"
           },
           {
             "sub": "c",
@@ -299,7 +312,8 @@
                 "text": "Find key details",
                 "delay": 5160
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-22T18:41:13.893Z"
           }
         ],
         "heading": "Time to Practice!",
