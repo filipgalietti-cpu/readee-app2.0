@@ -36,6 +36,11 @@ class AudioManager {
   play(url: string, fadeMs = 300): Promise<void> {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return Promise.resolve();
+    // Encode raw spaces in the path — ~127 catalog audio files have spaces
+    // in their names ("rb-0key terms.mp3") and Supabase Storage rejects the
+    // unencoded space, so Howler silently fails to load them. Encoding only
+    // spaces leaves the URL (incl. the ?v= cache-buster) otherwise untouched.
+    url = url.replace(/ /g, "%20");
 
     if (this.currentHowl) {
       try { this.currentHowl.stop(); } catch {}
@@ -191,6 +196,7 @@ class AudioManager {
   playOneshot(url: string): Promise<void> {
     const { isMuted } = useAudioStore.getState();
     if (isMuted) return Promise.resolve();
+    url = url.replace(/ /g, "%20"); // see play(): encode spaced filenames
     return new Promise((resolve) => {
       const howl = new Howl({ src: [url], volume: 1, html5: false });
       howl.once("end", () => resolve());
