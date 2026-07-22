@@ -23,6 +23,15 @@ class AudioManager {
     } catch {}
   }
 
+  /** True when the browser is still blocking audio (no user gesture yet on
+   *  this page). Howler's context starts suspended on a fresh page load — a
+   *  lesson opened by direct link has no prior tap to unlock it. */
+  isSuspended(): boolean {
+    const hc = Howler.ctx;
+    if (hc && hc.state === "running") return false;
+    return true;
+  }
+
   /** Synchronously kick AudioContext resume — call from inside a user gesture handler */
   resumeContextSync(): void {
     try {

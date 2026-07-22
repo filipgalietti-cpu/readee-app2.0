@@ -641,11 +641,31 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     forkMissesRef.current = 0; // adaptive SENSE: reset attempts per slide
     setIsPlaying(false);
     scheduledFeedbackRef.current = new Set();
-    timerRef.current = setTimeout(() => {
+    const startSlide = () => {
       if (runIdRef.current !== runId) return;
       scheduleStep(0, runId, steps);
-    }, 700);
-    return () => { clearTimer(); if (audioManager) audioManager.stop(); };
+    };
+    // If the browser is still blocking audio (a fresh page load with no prior
+    // tap — e.g. a lesson opened by direct link), auto-playing the opening
+    // step would be silent. Defer it to the first tap anywhere, which unlocks
+    // audio — no visible "start" screen. On the normal journey path the
+    // context is already unlocked, so this is skipped and audio plays at once.
+    let firstTap: (() => void) | null = null;
+    if (audioManager && audioManager.isSuspended()) {
+      firstTap = () => {
+        firstTap = null;
+        audioManager?.resumeContextSync();
+        startSlide();
+      };
+      window.addEventListener("pointerdown", firstTap, { once: true });
+    } else {
+      timerRef.current = setTimeout(startSlide, 700);
+    }
+    return () => {
+      clearTimer();
+      if (firstTap) window.removeEventListener("pointerdown", firstTap);
+      if (audioManager) audioManager.stop();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentSlide]);
 
