@@ -624,14 +624,16 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               else if (s.nudged === l.id) anim = "rj-nudge .45s ease-in-out both";
               const size = cur ? 74 : 64, z = cur ? 22 : 10;
               const nStars = s.stars[l.id] || 0;
-              const onClick = cur ? () => this.props.onStart({ id: l.id, title: l.title, status: "current" })
+              // Current node launches the lesson; a completed node re-launches
+              // it (replay is a core literacy affordance — read it again).
+              const onClick = (cur || done) ? () => this.props.onStart({ id: l.id, title: l.title, status: cur ? "current" : "completed" })
                 : prem ? () => this.props.onPremium()
                 : () => this.nudge(l.id);
               const startAnim = s.justUnlocked === l.id ? "rj-startdrop .5s cubic-bezier(0.34,1.56,0.64,1) both,rj-bob 1.6s ease-in-out .55s infinite" : "rj-bob 1.6s ease-in-out infinite";
               // Hover tooltip ("what's up next") — Claude Design a205aaa2 update.
               const tipRing = done ? "#fde68a" : cur ? "#d1fae5" : "#f4f4f5";
               const tipAccent = done ? "#b45309" : cur ? "#059669" : "#a1a1aa";
-              const tipStatus = done ? `Completed · ${nStars} stars` : cur ? "Ready to start!" : "Locked — finish the path to get here";
+              const tipStatus = done ? `Completed · ${nStars} stars · tap to replay` : cur ? "Ready to start!" : "Locked — finish the path to get here";
               const tipPos: React.CSSProperties = cur ? { top: "calc(100% + 14px)" } : { bottom: "calc(100% + 14px)" };
               const tipArrowPos: React.CSSProperties = cur ? { top: -5 } : { bottom: -5 };
               const tipArrowClip = cur ? "polygon(0 0, 100% 0, 0 100%)" : "polygon(100% 0, 100% 100%, 0 100%)";

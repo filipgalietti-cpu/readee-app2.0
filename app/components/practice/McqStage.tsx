@@ -133,7 +133,7 @@ export function McqStage(props: McqStageProps) {
     return (
       <div className="flex flex-wrap gap-6 items-stretch justify-center w-full">
         <div className="flex-[1.05_1_340px] max-w-[560px] bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-[0_10px_40px_-12px_rgba(49,46,129,.18)] flex flex-col">
-          {imgSrc && <LoadingImage src={imgSrc} fallback={null} className="w-full h-[clamp(180px,34vh,340px)] object-cover" />}
+          {imgSrc && <LoadingImage src={imgSrc} fallback={null} className="w-full h-[clamp(180px,34vh,340px)] object-contain p-2" />}
           <div className="px-5 pt-4 pb-5 flex flex-col gap-2.5 flex-1 justify-center">
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-extrabold tracking-[0.14em] text-indigo-700">THE STORY</span>
