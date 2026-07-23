@@ -362,7 +362,8 @@
             "audioFile": "audio/lessons/RF.K.2a/S1a.mp3",
             "ttsScript": "Today is going to be really fun! We're learning about rhyming words!",
             "displayText": "",
-            "interaction": "Heading bounces in playfully. Fun musical note animation."
+            "interaction": "Heading bounces in playfully. Fun musical note animation.",
+            "audioRegenAt": "2026-07-23T00:39:00.659Z"
           },
           {
             "sub": "b",
@@ -378,7 +379,8 @@
                 "text": "Hat",
                 "delay": 5960
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:39:03.833Z"
           },
           {
             "sub": "c",
@@ -386,7 +388,8 @@
             "ttsScript": "Rhyming is so much fun, and it helps us play with sounds. Let's learn more!",
             "displayText": "Same ending sound means Rhyme!",
             "interaction": "Colorful sound bubbles float up. Tap to continue.",
-            "displayDelay": 3750
+            "displayDelay": 3750,
+            "audioRegenAt": "2026-07-23T00:39:06.265Z"
           }
         ],
         "heading": "Let's Learn About Rhyming!",
@@ -403,7 +406,8 @@
             "ttsScript": "Words rhyme when they have the same ending sound. Let me show you!",
             "displayText": "Same ending sound",
             "interaction": "Heading appears. Teacher character points to a word board.",
-            "displayDelay": 3250
+            "displayDelay": 3250,
+            "audioRegenAt": "2026-07-23T00:39:07.664Z"
           },
           {
             "sub": "b",
@@ -419,7 +423,8 @@
                 "text": "Log",
                 "delay": 1240
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:39:14.018Z"
           },
           {
             "sub": "c",
@@ -435,7 +440,8 @@
                 "text": "Fun",
                 "delay": 1640
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:39:12.979Z"
           },
           {
             "sub": "d",
@@ -443,7 +449,8 @@
             "ttsScript": "The trick is to listen to the end of each word. If the endings match, they rhyme!",
             "displayText": "Endings match? They rhyme!",
             "interaction": "An ear icon pulses. Both word pairs connect with matching color lines. Tap to continue.",
-            "displayDelay": 4080
+            "displayDelay": 4080,
+            "audioRegenAt": "2026-07-23T00:39:17.716Z"
           }
         ],
         "heading": "What Are Rhyming Words?",
@@ -459,7 +466,8 @@
             "audioFile": "audio/lessons/RF.K.2a/S3a.mp3",
             "ttsScript": "Okay, let's practice together! I'll say two words, and we'll figure out if they rhyme.",
             "displayText": "",
-            "interaction": "Heading appears. Two blank word bubbles are on screen ready to fill in."
+            "interaction": "Heading appears. Two blank word bubbles are on screen ready to fill in.",
+            "audioRegenAt": "2026-07-23T00:39:19.497Z"
           },
           {
             "sub": "b",
@@ -476,7 +484,8 @@
                 "delay": 1600
               }
             ],
-            "feedbackDelay": 6000
+            "feedbackDelay": 6000,
+            "audioRegenAt": "2026-07-23T00:39:25.312Z"
           },
           {
             "sub": "c",
@@ -493,7 +502,8 @@
                 "delay": 4140
               }
             ],
-            "feedbackDelay": 6000
+            "feedbackDelay": 6000,
+            "audioRegenAt": "2026-07-23T00:39:28.440Z"
           },
           {
             "sub": "d",
@@ -501,7 +511,8 @@
             "ttsScript": "See? You just have to listen to the ends of the words. You're getting so good at this!",
             "displayText": "Listen to the endings!",
             "interaction": "Stars float up. Tap to continue.",
-            "displayDelay": 2000
+            "displayDelay": 2000,
+            "audioRegenAt": "2026-07-23T00:39:29.653Z"
           }
         ],
         "heading": "Let's Try Some Together!",
@@ -518,7 +529,8 @@
             "audioFile": "audio/lessons/RF.K.2a/S4a.mp3",
             "ttsScript": "Here's a super fun trick to remember.",
             "displayText": "",
-            "interaction": "Heading appears. Cartoon ear character leans in."
+            "interaction": "Heading appears. Cartoon ear character leans in.",
+            "audioRegenAt": "2026-07-23T00:39:31.180Z"
           },
           {
             "sub": "b",
@@ -526,7 +538,8 @@
             "ttsScript": "Say two words out loud and listen really carefully to the ends. If they sound the same at the end, they rhyme!",
             "displayText": "Listen to the endings!",
             "interaction": "Two words appear. The endings glow and pulse as 'listen to the ends' is emphasized.",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:39:36.297Z"
           },
           {
             "sub": "c",
@@ -581,7 +594,8 @@
             "audioFile": "audio/lessons/RF.K.2a/S5a.mp3",
             "ttsScript": "You are a rhyming superstar!",
             "displayText": "",
-            "interaction": "Stars burst around the screen. Kid character cheers."
+            "interaction": "Stars burst around the screen. Kid character cheers.",
+            "audioRegenAt": "2026-07-23T00:39:34.372Z"
           },
           {
             "sub": "b",
@@ -589,7 +603,8 @@
             "ttsScript": "Now let's practice finding rhyming words. Listen carefully to those ending sounds, and I know you'll get them right. Let's go!",
             "displayText": "Listen for those ending sounds!",
             "interaction": "'Let's Go!' button pulses. Transition to MCQs.",
-            "displayDelay": 5040
+            "displayDelay": 5040,
+            "audioRegenAt": "2026-07-23T00:39:56.980Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -1072,13 +1087,15 @@
             "audioFile": "audio/lessons/RL.K.2/S1a.mp3",
             "ttsScript": "Hey there! Have you ever told someone about a really cool thing that happened to you?",
             "displayText": "",
-            "interaction": "Heading fades in. Child character waves."
+            "interaction": "Heading fades in. Child character waves.",
+            "audioRegenAt": "2026-07-23T00:40:20.294Z"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.2/S1b.mp3",
             "ttsScript": "That is called retelling! When we retell a story, we say what happened in our own words.",
-            "interaction": "'Retelling' appears in big sparkly letters."
+            "interaction": "'Retelling' appears in big sparkly letters.",
+            "audioRegenAt": "2026-07-23T00:40:03.178Z"
           },
           {
             "sub": "c",
@@ -1098,7 +1115,8 @@
                 "text": "End",
                 "delay": 3300
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:40:08.423Z"
           }
         ],
         "heading": "Let's Learn About Retelling!",
@@ -1115,7 +1133,8 @@
             "ttsScript": "Retelling a story is easy! You just think about what happened in order.",
             "displayText": "Retell: what happened in order",
             "interaction": "Heading appears. Stepping stones illustration visible.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:40:13.512Z"
           },
           {
             "sub": "b",
@@ -1123,7 +1142,8 @@
             "ttsScript": "First, what happened at the beginning of the story?",
             "displayText": "Beginning?",
             "interaction": "Number 1 appears, then 'Beginning' fills in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:40:17.243Z"
           },
           {
             "sub": "c",
@@ -1131,7 +1151,8 @@
             "ttsScript": "Next, what happened in the middle?",
             "displayText": "Middle?",
             "interaction": "Number 2 appears, then 'Middle' fills in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:40:19.881Z"
           },
           {
             "sub": "d",
@@ -1151,7 +1172,8 @@
                 "text": "End",
                 "delay": 5260
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:40:26.715Z"
           }
         ],
         "heading": "How Do We Retell a Story?",
@@ -1202,7 +1224,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.2/S3a.mp3",
             "ttsScript": "Here's a little story. Listen carefully!",
-            "interaction": "Heading appears. Storybook opens on screen."
+            "interaction": "Heading appears. Storybook opens on screen.",
+            "audioRegenAt": "2026-07-23T00:40:23.531Z"
           },
           {
             "sub": "b",
@@ -1211,7 +1234,8 @@
             "displayText": "A bird built a nest. Then she laid three eggs. At last, the baby birds hatched!",
             "interaction": "Story text appears line by line.",
             "displayDelay": 0,
-            "displayStyle": "passage"
+            "displayStyle": "passage",
+            "audioRegenAt": "2026-07-23T01:39:39.755Z"
           },
           {
             "sub": "c",
@@ -1227,7 +1251,8 @@
                 "text": "Bird built nest!",
                 "delay": 6540
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:40:32.314Z"
           },
           {
             "sub": "d",
@@ -1243,7 +1268,8 @@
                 "text": "She laid eggs!",
                 "delay": 5200
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:40:36.144Z"
           },
           {
             "sub": "e",
@@ -1259,7 +1285,8 @@
                 "text": "Babies hatched!",
                 "delay": 2640
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:40:36.869Z"
           }
         ],
         "heading": "Let's Try One",
@@ -1275,7 +1302,8 @@
             "audioFile": "audio/lessons/RL.K.2/S4a.mp3",
             "ttsScript": "Here's a secret trick for retelling stories.",
             "displayText": "",
-            "interaction": "Heading with sparkle effect. Hand illustration visible."
+            "interaction": "Heading with sparkle effect. Hand illustration visible.",
+            "audioRegenAt": "2026-07-23T00:40:40.211Z"
           },
           {
             "sub": "b",
@@ -1295,14 +1323,16 @@
                 "text": "Last",
                 "delay": 5220
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:40:59.858Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.2/S4c.mp3",
             "ttsScript": "Try it every time you hear a story. First this happened, next this, and last that!",
             "displayText": "",
-            "interaction": "Pills glow in sequence. Tap to continue."
+            "interaction": "Pills glow in sequence. Tap to continue.",
+            "audioRegenAt": "2026-07-23T01:39:37.229Z"
           }
         ],
         "heading": "A Secret Trick!",
@@ -1349,7 +1379,8 @@
             "audioFile": "audio/lessons/RL.K.2/S5a.mp3",
             "ttsScript": "Awesome work! You really know how to retell a story now!",
             "displayText": "",
-            "interaction": "Stars and confetti celebration."
+            "interaction": "Stars and confetti celebration.",
+            "audioRegenAt": "2026-07-23T00:41:03.670Z"
           },
           {
             "sub": "b",
@@ -1357,7 +1388,8 @@
             "ttsScript": "Now let's practice retelling some short stories. Remember — beginning, middle, end. Let's go!",
             "displayText": "Let's retell some stories!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 3500
+            "displayDelay": 3500,
+            "audioRegenAt": "2026-07-23T00:41:06.805Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -1400,7 +1432,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.3/S1a.mp3",
             "ttsScript": "Every story has three special parts. Do you know what they are?",
-            "interaction": "Heading fades in. Castle scene visible."
+            "interaction": "Heading fades in. Castle scene visible.",
+            "audioRegenAt": "2026-07-23T00:41:07.791Z"
           },
           {
             "sub": "b",
@@ -1426,7 +1459,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:41:13.282Z"
           },
           {
             "sub": "c",
@@ -1444,7 +1478,8 @@
                 "pill": 2,
                 "delay": 2500
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:41:13.572Z"
           }
         ],
         "heading": "Let's Learn About Stories!",
@@ -1470,7 +1505,8 @@
                 "Definition",
                 "Example"
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:41:18.622Z"
           },
           {
             "sub": "b",
@@ -1482,7 +1518,8 @@
               "value": "Place and time",
               "example": "school, beach, forest",
               "exampleDelay": 4180
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:41:21.961Z"
           },
           {
             "sub": "c",
@@ -1494,14 +1531,16 @@
               "value": "What happens",
               "example": "race, party, adventure",
               "exampleDelay": 5060
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:41:24.381Z"
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.3/S2d.mp3",
             "ttsScript": "So remember: who, where, and what happened. Those are the three parts!",
             "displayText": "",
-            "interaction": "All three pills glow together."
+            "interaction": "All three pills glow together.",
+            "audioRegenAt": "2026-07-23T00:41:28.332Z"
           }
         ],
         "heading": "Characters, Settings, and Events",
@@ -1586,7 +1625,8 @@
             "audioFile": "audio/lessons/RL.K.3/S4a.mp3",
             "ttsScript": "When you read a story, ask yourself three questions.",
             "displayText": "",
-            "interaction": "Heading appears. Owl illustration."
+            "interaction": "Heading appears. Owl illustration.",
+            "audioRegenAt": "2026-07-23T00:41:27.893Z"
           },
           {
             "sub": "b",
@@ -1606,14 +1646,16 @@
                 "text": "What?",
                 "delay": 3780
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:41:48.138Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.3/S4c.mp3",
             "ttsScript": "Those three questions help you find the characters, setting, and event every single time!",
             "displayText": "",
-            "interaction": "Pills glow in sequence. Tap to continue."
+            "interaction": "Pills glow in sequence. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:42:13.997Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -1659,7 +1701,8 @@
             "audioFile": "audio/lessons/RL.K.3/S5a.mp3",
             "ttsScript": "You are doing so well! I'm so proud of you!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:42:07.263Z"
           },
           {
             "sub": "b",
@@ -1667,7 +1710,8 @@
             "ttsScript": "Now let's find characters, settings, and events in some stories. I know you can do it. Let's go!",
             "displayText": "Let's find the characters!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 4320
+            "displayDelay": 4320,
+            "audioRegenAt": "2026-07-23T00:42:13.946Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -2080,21 +2124,24 @@
                 "text": "Kinds of books",
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:42:19.855Z"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.5/S1b.mp3",
             "ttsScript": "Learning to tell them apart makes reading even more fun!",
             "displayText": "",
-            "interaction": "Labels stay visible. Tap to continue."
+            "interaction": "Labels stay visible. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:42:17.891Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.5/S1c.mp3",
             "ttsScript": "Let's find out how to tell if something is a story or a poem!",
             "displayText": "",
-            "interaction": "Book icons sort into two groups. Tap to continue."
+            "interaction": "Book icons sort into two groups. Tap to continue.",
+            "audioRegenAt": "2026-07-23T01:39:42.483Z"
           }
         ],
         "heading": "Let's Learn About Types of Books!",
@@ -2110,7 +2157,8 @@
             "audioFile": "audio/lessons/RL.K.5/S2a.mp3",
             "ttsScript": "A storybook tells a story with characters and events from beginning to end.",
             "displayText": "",
-            "interaction": "Heading appears. Table headers visible from the jump."
+            "interaction": "Heading appears. Table headers visible from the jump.",
+            "audioRegenAt": "2026-07-23T00:42:25.832Z"
           },
           {
             "sub": "b",
@@ -2127,7 +2175,8 @@
                 "What It Has",
                 "Sounds Like"
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:42:29.572Z"
           },
           {
             "sub": "c",
@@ -2139,7 +2188,8 @@
               "value": "Rhymes & Special Words",
               "example": "Short & Musical",
               "exampleDelay": 5940
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:42:31.545Z"
           },
           {
             "sub": "d",
@@ -2148,7 +2198,8 @@
             "displayText": "",
             "interaction": "Highlights Storybook at 1.5s, Poem at 3.5s via checkmark trigger.",
             "checkmarkTriggerDelay": 1500,
-            "checkmarkTriggerStagger": 2000
+            "checkmarkTriggerStagger": 2000,
+            "audioRegenAt": "2026-07-23T01:39:45.696Z"
           }
         ],
         "heading": "Storybooks and Poems",
@@ -2232,7 +2283,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.5/S3a.mp3",
-            "ttsScript": "Let me show you an example of each!"
+            "ttsScript": "Let me show you an example of each!",
+            "audioRegenAt": "2026-07-23T00:42:33.843Z"
           },
           {
             "sub": "b",
@@ -2244,7 +2296,8 @@
             "highlightWord": {
               "word": "storybook",
               "delay": 6010
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:42:39.787Z"
           },
           {
             "sub": "c",
@@ -2262,7 +2315,8 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.5/S3d.mp3",
-            "ttsScript": "See? You can totally tell the difference! You're so smart!"
+            "ttsScript": "See? You can totally tell the difference! You're so smart!",
+            "audioRegenAt": "2026-07-23T00:42:40.908Z"
           }
         ],
         "heading": "Let's See the Difference!",
@@ -2352,7 +2406,8 @@
             "audioFile": "audio/lessons/RL.K.5/S5a.mp3",
             "ttsScript": "Great job learning about storybooks and poems!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:42:59.193Z"
           },
           {
             "sub": "b",
@@ -2360,7 +2415,8 @@
             "ttsScript": "Now let's practice telling them apart. Pay attention to how the words look and sound. Let's go!",
             "displayText": "Let's sort the books!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 4500
+            "displayDelay": 4500,
+            "audioRegenAt": "2026-07-23T00:42:47.640Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -2403,7 +2459,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.6/S1a.mp3",
             "ttsScript": "Did you know that real people make the books we read? How cool is that!",
-            "interaction": "Heading fades in. Author and illustrator characters."
+            "interaction": "Heading fades in. Author and illustrator characters.",
+            "audioRegenAt": "2026-07-23T00:43:07.400Z"
           },
           {
             "sub": "b",
@@ -2411,13 +2468,15 @@
             "ttsScript": "One person writes the words. Another person draws the pictures. They work together!",
             "displayText": "Writes words, draws pictures",
             "interaction": "Author and Illustrator pills appear when TTS says each.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:43:05.721Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.6/S1c.mp3",
             "ttsScript": "Let's find out what we call these amazing people!",
-            "interaction": "Tap to continue."
+            "interaction": "Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:43:11.027Z"
           }
         ],
         "heading": "Let's Learn About Who Makes Books!",
@@ -2433,7 +2492,8 @@
             "audioFile": "audio/lessons/RL.K.6/S2a.mp3",
             "ttsScript": "The person who writes the story is called the author.",
             "displayText": "",
-            "interaction": "Table headers visible from jump. Author/illustrator illustration."
+            "interaction": "Table headers visible from jump. Author/illustrator illustration.",
+            "audioRegenAt": "2026-07-23T00:43:11.252Z"
           },
           {
             "sub": "b",
@@ -2450,7 +2510,8 @@
                 "What They Do",
                 "Think..."
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:43:16.516Z"
           },
           {
             "sub": "c",
@@ -2462,7 +2523,8 @@
               "value": "Draws the pictures",
               "example": "Art & colors",
               "exampleDelay": 2500
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:43:15.389Z"
           },
           {
             "sub": "d",
@@ -2471,7 +2533,8 @@
             "displayText": "",
             "interaction": "Highlights Author at 1.5s, Illustrator at 3.5s.",
             "checkmarkTriggerDelay": 1500,
-            "checkmarkTriggerStagger": 2000
+            "checkmarkTriggerStagger": 2000,
+            "audioRegenAt": "2026-07-23T00:43:22.405Z"
           }
         ],
         "heading": "Authors and Illustrators",
@@ -2487,7 +2550,8 @@
             "audioFile": "audio/lessons/RL.K.6/S3a.mp3",
             "ttsScript": "Look at a book. Can you find who made it?",
             "displayText": "",
-            "interaction": "Heading appears. Table ready."
+            "interaction": "Heading appears. Table ready.",
+            "audioRegenAt": "2026-07-23T00:43:20.353Z"
           },
           {
             "sub": "b",
@@ -2507,7 +2571,8 @@
                 "Look For",
                 "They Made..."
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:43:27.787Z"
           },
           {
             "sub": "c",
@@ -2522,14 +2587,16 @@
               "value": "\"Illustrated by\"",
               "example": "The pictures!",
               "exampleDelay": 3400
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:43:28.003Z"
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.6/S3d.mp3",
             "ttsScript": "Now you know how to find out who made any book. Detective skills!",
             "displayText": "",
-            "interaction": "Both rows glow. Stars float up."
+            "interaction": "Both rows glow. Stars float up.",
+            "audioRegenAt": "2026-07-23T00:43:33.140Z"
           }
         ],
         "heading": "Let's See an Example!",
@@ -2545,7 +2612,8 @@
             "audioFile": "audio/lessons/RL.K.6/S4a.mp3",
             "ttsScript": "Next time you pick up a book, look at the cover!",
             "displayText": "",
-            "interaction": "Heading with sparkle. Table headers from jump."
+            "interaction": "Heading with sparkle. Table headers from jump.",
+            "audioRegenAt": "2026-07-23T00:43:46.170Z"
           },
           {
             "sub": "b",
@@ -2565,7 +2633,8 @@
                 "How to Find Them",
                 "They Made..."
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:44:16.389Z"
           },
           {
             "sub": "c",
@@ -2580,7 +2649,8 @@
               "value": "Look for \"Illustrated by\"",
               "example": "The pictures!",
               "exampleDelay": 4820
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:44:07.493Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -2626,7 +2696,8 @@
             "audioFile": "audio/lessons/RL.K.6/S5a.mp3",
             "ttsScript": "You know all about authors and illustrators now!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:44:11.028Z"
           },
           {
             "sub": "b",
@@ -2634,7 +2705,8 @@
             "ttsScript": "Let's practice figuring out who wrote and who drew. You've totally got this!",
             "displayText": "Let's find the authors!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 3250
+            "displayDelay": 3250,
+            "audioRegenAt": "2026-07-23T00:44:15.725Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -2683,7 +2755,8 @@
             "audioFile": "audio/lessons/RL.K.7/S1a.mp3",
             "ttsScript": "Did you know that pictures in a book can tell you what's happening too?",
             "displayText": "",
-            "interaction": "Heading fades in. Child looking at book illustrations."
+            "interaction": "Heading fades in. Child looking at book illustrations.",
+            "audioRegenAt": "2026-07-23T00:44:19.637Z"
           },
           {
             "sub": "b",
@@ -2691,14 +2764,16 @@
             "ttsScript": "Even before you read the words, the pictures give you clues about the story!",
             "displayText": "Pictures are Clues!",
             "interaction": "'Pictures = Clues!' pops up in sparkly text.",
-            "displayDelay": 3800
+            "displayDelay": 3800,
+            "audioRegenAt": "2026-07-23T00:44:21.491Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.7/S1c.mp3",
             "ttsScript": "Let's learn how to read pictures like a pro!",
             "displayText": "",
-            "interaction": "Magnifying glass sweeps over illustration. Tap to continue."
+            "interaction": "Magnifying glass sweeps over illustration. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:44:23.931Z"
           }
         ],
         "heading": "Pictures Tell the Story!",
@@ -2714,7 +2789,8 @@
             "audioFile": "audio/lessons/RL.K.7/S2a.mp3",
             "ttsScript": "Pictures in a storybook show us what the characters look like and what they're doing.",
             "displayText": "",
-            "interaction": "Table headers visible from jump."
+            "interaction": "Table headers visible from jump.",
+            "audioRegenAt": "2026-07-23T00:44:26.388Z"
           },
           {
             "sub": "b",
@@ -2733,7 +2809,8 @@
                 "Ask Yourself",
                 "Example"
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:44:27.562Z"
           },
           {
             "sub": "c",
@@ -2747,7 +2824,8 @@
               "value": "How do the characters feel?",
               "example": "Happy, sad, scared, excited",
               "exampleDelay": 4700
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:44:32.361Z"
           },
           {
             "sub": "d",
@@ -2756,7 +2834,8 @@
             "displayText": "",
             "interaction": "Highlights Setting at 1s, Feelings at 3s.",
             "checkmarkTriggerDelay": 1000,
-            "checkmarkTriggerStagger": 2000
+            "checkmarkTriggerStagger": 2000,
+            "audioRegenAt": "2026-07-23T00:44:32.270Z"
           }
         ],
         "heading": "How Do Pictures Help?",
@@ -2772,7 +2851,8 @@
             "audioFile": "audio/lessons/RL.K.7/S3a.mp3",
             "ttsScript": "Let's try this together! We'll look for clues, say what we see, and tell how we know.",
             "displayText": "",
-            "interaction": "Heading appears. Table headers from jump. Image of child in rain."
+            "interaction": "Heading appears. Table headers from jump. Image of child in rain.",
+            "audioRegenAt": "2026-07-23T00:44:39.229Z"
           },
           {
             "sub": "b",
@@ -2792,7 +2872,8 @@
                 "What I See",
                 "How I Know"
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:44:38.389Z"
           },
           {
             "sub": "c",
@@ -2807,14 +2888,16 @@
               "value": "Happy!",
               "example": "Big smile, jumping",
               "exampleDelay": 2860
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:44:43.489Z"
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.7/S3d.mp3",
             "ttsScript": "See how much we learned just from one picture? You're amazing at this!",
             "displayText": "",
-            "interaction": "Both rows glow. Stars float up."
+            "interaction": "Both rows glow. Stars float up.",
+            "audioRegenAt": "2026-07-23T00:45:22.184Z"
           }
         ],
         "heading": "Let's Try One Together!",
@@ -2830,7 +2913,8 @@
             "audioFile": "audio/lessons/RL.K.7/S4a.mp3",
             "ttsScript": "Whenever you see a picture in a book, ask yourself two things.",
             "displayText": "",
-            "interaction": "Table headers from jump."
+            "interaction": "Table headers from jump.",
+            "audioRegenAt": "2026-07-23T00:45:03.329Z"
           },
           {
             "sub": "b",
@@ -2864,7 +2948,8 @@
               "value": "How do they feel?",
               "example": "Emotions & mood",
               "exampleDelay": 1500
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:45:06.110Z"
           },
           {
             "sub": "d",
@@ -2873,7 +2958,8 @@
             "displayText": "",
             "interaction": "Highlights both rows.",
             "checkmarkTriggerDelay": 1000,
-            "checkmarkTriggerStagger": 1500
+            "checkmarkTriggerStagger": 1500,
+            "audioRegenAt": "2026-07-23T00:45:09.652Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -2920,7 +3006,8 @@
             "audioFile": "audio/lessons/RL.K.7/S5a.mp3",
             "ttsScript": "You're a picture-reading superstar!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:45:12.268Z"
           },
           {
             "sub": "b",
@@ -2928,7 +3015,8 @@
             "ttsScript": "Let's practice looking at pictures and figuring out what's happening in the story. Let's go!",
             "displayText": "Let's look at the pictures!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 4500
+            "displayDelay": 4500,
+            "audioRegenAt": "2026-07-23T00:45:19.376Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -2971,7 +3059,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RL.K.9/S1a.mp3",
             "ttsScript": "Have you ever noticed that some characters in stories are kind of alike, and some are really different?",
-            "interaction": "Heading fades in. Two characters side by side."
+            "interaction": "Heading fades in. Two characters side by side.",
+            "audioRegenAt": "2026-07-23T00:45:25.297Z"
           },
           {
             "sub": "b",
@@ -2979,14 +3068,16 @@
             "ttsScript": "Today we're going to learn how to compare characters. That means looking at how they're the same and how they're different!",
             "displayText": "Same and Different",
             "interaction": "'Same' and 'Different' labels pop in on each side.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:45:28.704Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.K.9/S1c.mp3",
             "ttsScript": "This is so fun. Let's do it!",
             "interaction": "Characters high-five animation. Tap to continue.",
-            "displayDelay": 1000
+            "displayDelay": 1000,
+            "audioRegenAt": "2026-07-23T00:45:28.422Z"
           }
         ],
         "heading": "Let's Compare Characters!",
@@ -3002,7 +3093,8 @@
             "audioFile": "audio/lessons/RL.K.9/S2a.mp3",
             "ttsScript": "When we compare characters, we look at what's the same about them.",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:45:32.055Z"
           },
           {
             "sub": "b",
@@ -3018,7 +3110,8 @@
                 "Compare",
                 "Means..."
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:45:33.687Z"
           },
           {
             "sub": "c",
@@ -3030,14 +3123,16 @@
             "displayTableRow": {
               "label": "Different",
               "value": "What's not the same"
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:46:48.648Z"
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.K.9/S2d.mp3",
             "ttsScript": "Same and different — that's comparing! Easy, right?",
             "displayText": "",
-            "interaction": "Both pills side by side. Tap to continue."
+            "interaction": "Both pills side by side. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:45:52.946Z"
           }
         ],
         "heading": "What Does It Mean to Compare?",
@@ -3053,7 +3148,8 @@
             "audioFile": "audio/lessons/RL.K.9/S3a.mp3",
             "ttsScript": "Here are two characters. A bear who loves honey, and a bee who makes honey!",
             "displayText": "",
-            "interaction": "Heading appears. Bear and bee illustration."
+            "interaction": "Heading appears. Bear and bee illustration.",
+            "audioRegenAt": "2026-07-23T00:46:14.440Z"
           },
           {
             "sub": "b",
@@ -3070,7 +3166,8 @@
                 "Compare",
                 "What I Found"
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:46:17.268Z"
           },
           {
             "sub": "c",
@@ -3083,7 +3180,8 @@
             "displayTableRow": {
               "label": "Different",
               "value": "Bear eats, Bee makes"
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:46:23.601Z"
           },
           {
             "sub": "d",
@@ -3092,7 +3190,8 @@
             "displayText": "",
             "interaction": "Both rows glow. Stars float up.",
             "checkmarkTriggerDelay": 1000,
-            "checkmarkTriggerStagger": 1500
+            "checkmarkTriggerStagger": 1500,
+            "audioRegenAt": "2026-07-23T00:46:28.220Z"
           }
         ],
         "heading": "Let's Try It!",
@@ -3108,7 +3207,8 @@
             "audioFile": "audio/lessons/RL.K.9/S4a.mp3",
             "ttsScript": "When you read two stories or meet two characters, think about this.",
             "displayText": "",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T00:46:32.365Z"
           },
           {
             "sub": "b",
@@ -3152,7 +3252,8 @@
             "displayText": "",
             "interaction": "Highlights both rows. Trophy icon appears.",
             "checkmarkTriggerDelay": 1000,
-            "checkmarkTriggerStagger": 1500
+            "checkmarkTriggerStagger": 1500,
+            "audioRegenAt": "2026-07-23T00:46:36.582Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -3198,7 +3299,8 @@
             "audioFile": "audio/lessons/RL.K.9/S5a.mp3",
             "ttsScript": "You're doing incredible work today!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:46:39.205Z"
           },
           {
             "sub": "b",
@@ -3206,7 +3308,8 @@
             "ttsScript": "Let's practice comparing some characters. Find what's the same and what's different. Let's go!",
             "displayText": "Let's find the characters!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 4200
+            "displayDelay": 4200,
+            "audioRegenAt": "2026-07-23T00:46:46.568Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -3920,7 +4023,8 @@
             "ttsScript": "Fact books teach us about the world, and sometimes they use words we haven't heard before!",
             "displayText": "New words in fact books",
             "interaction": "Heading fades in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:46:54.945Z"
           },
           {
             "sub": "b",
@@ -3928,14 +4032,16 @@
             "ttsScript": "But don't worry — the book gives us clues to figure out what those new words mean!",
             "displayText": "Book gives us clues",
             "interaction": "'New Words' bubbles float up with question marks.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:46:53.762Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.4/S1c.mp3",
             "ttsScript": "Let's learn how to be word explorers!",
             "interaction": "Explorer hat appears on character. Tap to continue.",
-            "displayDelay": 1000
+            "displayDelay": 1000,
+            "audioRegenAt": "2026-07-23T00:47:11.736Z"
           }
         ],
         "heading": "New Words in Books",
@@ -3951,7 +4057,8 @@
             "audioFile": "audio/lessons/RI.K.4/S2a.mp3",
             "ttsScript": "When a fact book uses a word you don't know, look around it!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:46:59.378Z"
           },
           {
             "sub": "b",
@@ -3980,7 +4087,8 @@
             "displayTableRow": {
               "label": "Pictures",
               "value": "Shows you the word"
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:47:03.537Z"
           },
           {
             "sub": "d",
@@ -3989,7 +4097,8 @@
             "displayText": "",
             "interaction": "Both rows glow.",
             "checkmarkTriggerDelay": 1000,
-            "checkmarkTriggerStagger": 1200
+            "checkmarkTriggerStagger": 1200,
+            "audioRegenAt": "2026-07-23T00:47:07.398Z"
           }
         ],
         "heading": "How to Figure Out New Words",
@@ -4006,7 +4115,8 @@
             "audioFile": "audio/lessons/RI.K.4/S3a.mp3",
             "ttsScript": "Let's try one! Read along and listen for a new word.",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:47:11.313Z"
           },
           {
             "sub": "b",
@@ -4019,7 +4129,8 @@
             "highlightWord": {
               "word": "frigid",
               "delay": 1970
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:47:18.794Z"
           },
           {
             "sub": "c",
@@ -4035,7 +4146,8 @@
                 "text": "Ice & snow",
                 "delay": 8160
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:39:48.393Z"
           },
           {
             "sub": "d",
@@ -4044,7 +4156,8 @@
             "displayText": "Frigid means Very Cold!",
             "interaction": "Reveal pill pops in with checkmark.",
             "displayDelay": 1200,
-            "checkmarkDelay": 2000
+            "checkmarkDelay": 2000,
+            "audioRegenAt": "2026-07-23T02:35:03.662Z"
           }
         ],
         "heading": "Let's Figure One Out!",
@@ -4060,7 +4173,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.4/S4a.mp3",
             "ttsScript": "When you see a new word in a fact book, be a detective!",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T00:47:22.656Z"
           },
           {
             "sub": "b",
@@ -4068,13 +4182,15 @@
             "ttsScript": "Look at the words around it. Look at the pictures. Put the clues together!",
             "displayText": "Look for clues",
             "interaction": "Three-step pills: [1. Read around it] [2. Check pictures] [3. Guess the meaning!]",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:47:26.985Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.4/S4c.mp3",
             "ttsScript": "You're a word explorer now!",
-            "interaction": "Explorer badge appears. Tap to continue."
+            "interaction": "Explorer badge appears. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:47:40.362Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -4120,7 +4236,8 @@
             "audioFile": "audio/lessons/RI.K.4/S5a.mp3",
             "ttsScript": "Awesome job! You're so good at figuring out new words!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:48:09.073Z"
           },
           {
             "sub": "b",
@@ -4128,7 +4245,8 @@
             "ttsScript": "Let's practice finding word meanings in fact passages. Let's go!",
             "displayText": "Let's figure out new words!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:47:59.714Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -5715,20 +5833,23 @@
             "audioFile": "audio/lessons/RI.K.9/S1a.mp3",
             "ttsScript": "Did you know two different books can be about the same thing? Like two books about cats!",
             "displayText": "",
-            "interaction": "Heading fades in."
+            "interaction": "Heading fades in.",
+            "audioRegenAt": "2026-07-23T00:48:05.513Z"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.9/S1b.mp3",
             "ttsScript": "But they might tell you different facts! One might talk about what cats eat, and the other about where cats live.",
             "displayText": "",
-            "interaction": "Two book icons with different fact bubbles coming from each."
+            "interaction": "Two book icons with different fact bubbles coming from each.",
+            "audioRegenAt": "2026-07-23T00:48:11.747Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.K.9/S1c.mp3",
             "ttsScript": "Let's learn how to compare them!",
-            "interaction": "'Compare' text pops in. Tap to continue."
+            "interaction": "'Compare' text pops in. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:48:11.555Z"
           }
         ],
         "heading": "Let's Compare Fact Books!",
@@ -5744,7 +5865,8 @@
             "audioFile": "audio/lessons/RI.K.9/S2a.mp3",
             "ttsScript": "When we compare fact books, we look at what's the same and what's different.",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:48:16.806Z"
           },
           {
             "sub": "b",
@@ -5760,7 +5882,8 @@
                 "Compare",
                 "Means..."
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:48:17.052Z"
           },
           {
             "sub": "c",
@@ -5772,7 +5895,8 @@
             "displayTableRow": {
               "label": "Different",
               "value": "Different facts or details"
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:48:22.947Z"
           }
         ],
         "heading": "How Do We Compare Fact Books?",
@@ -5824,7 +5948,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.9/S3a.mp3",
             "ttsScript": "Here are two books about bears. Let's see how they're the same and different!",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:48:24.827Z"
           },
           {
             "sub": "b",
@@ -5833,7 +5958,8 @@
             "displayText": "Book one says bears eat fish. Book two says bears sleep in caves in winter.",
             "interaction": "Two fact cards appear side by side.",
             "displayDelay": 0,
-            "displayStyle": "passage"
+            "displayStyle": "passage",
+            "audioRegenAt": "2026-07-23T00:48:30.992Z"
           },
           {
             "sub": "c",
@@ -5849,7 +5975,8 @@
                 "text": "About bears! Different?",
                 "delay": 3840
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:48:30.386Z"
           }
         ],
         "heading": "Let's Compare Two Books!",
@@ -5864,7 +5991,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RI.K.9/S4a.mp3",
             "ttsScript": "When you read two books about the same thing, think about this.",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T00:48:34.433Z"
           },
           {
             "sub": "b",
@@ -5872,7 +6000,8 @@
             "ttsScript": "What did I learn from book one? What did I learn from book two? What's the same and what's different?",
             "displayText": "Same and different",
             "interaction": "Pills: [Book 1 facts] [Book 2 facts] [Same?] [Different?] pop in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:49:46.207Z"
           },
           {
             "sub": "c",
@@ -5880,7 +6009,8 @@
             "ttsScript": "Comparing helps you learn even more!",
             "displayText": "Learn even more!",
             "interaction": "Brain with plus sign grows. Tap to continue.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:49:15.513Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -5926,7 +6056,8 @@
             "audioFile": "audio/lessons/RI.K.9/S5a.mp3",
             "ttsScript": "You're a comparing champion!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:49:18.083Z"
           },
           {
             "sub": "b",
@@ -5934,7 +6065,8 @@
             "ttsScript": "Let's practice comparing some fact passages. Find what's the same and different!",
             "displayText": "Let's compare the facts!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 3000
+            "displayDelay": 3000,
+            "audioRegenAt": "2026-07-23T00:49:24.531Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -7512,7 +7644,8 @@
             "ttsScript": "Words have special beats called syllables! And we can clap them out!",
             "displayText": "Syllables = beats",
             "interaction": "Heading fades in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:49:29.113Z"
           },
           {
             "sub": "b",
@@ -7520,14 +7653,16 @@
             "ttsScript": "Like the word 'tiger' — ti-ger! That's two claps, two syllables!",
             "displayText": "Tiger: two syllables",
             "interaction": "'Ti' and 'ger' appear as two separate blocks with clap icons.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:49:37.949Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2b/S1c.mp3",
             "ttsScript": "Let's learn to clap out syllables in words!",
             "interaction": "Clapping hands animation. Tap to continue.",
-            "displayDelay": 1000
+            "displayDelay": 1000,
+            "audioRegenAt": "2026-07-23T00:49:41.467Z"
           }
         ],
         "heading": "Let's Clap Syllables!",
@@ -7543,7 +7678,8 @@
             "audioFile": "audio/lessons/RF.K.2b/S2a.mp3",
             "ttsScript": "A syllable is a part of a word that has one beat.",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:49:45.670Z"
           },
           {
             "sub": "b",
@@ -7551,7 +7687,8 @@
             "ttsScript": "Some words have one beat — like 'cat.' Just one clap! Cat!",
             "displayText": "Cat has 1 clap",
             "interaction": "Pill: [Cat = 1 clap] pops in with hand clap icon.",
-            "displayDelay": 930
+            "displayDelay": 930,
+            "audioRegenAt": "2026-07-23T00:49:51.951Z"
           },
           {
             "sub": "c",
@@ -7568,7 +7705,8 @@
             "ttsScript": "And some have three or more — like 'banana.' Ba-na-na! Three claps!",
             "displayText": "Ba-na-na has 3 claps",
             "interaction": "Pill: [Ba-na-na = 3 claps] pops in.",
-            "displayDelay": 930
+            "displayDelay": 930,
+            "audioRegenAt": "2026-07-23T01:39:54.126Z"
           }
         ],
         "heading": "What Are Syllables?",
@@ -7585,7 +7723,8 @@
             "audioFile": "audio/lessons/RF.K.2b/S3a.mp3",
             "ttsScript": "Let's try it! Clap along with me!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:50:33.282Z"
           },
           {
             "sub": "b",
@@ -7594,7 +7733,8 @@
             "ttsScript": "Dog. One clap! Dog has one syllable.",
             "displayText": "Dog has 1",
             "interaction": "One clap animation. Pill: [Dog = 1] pops in.",
-            "displayDelay": 1600
+            "displayDelay": 1600,
+            "audioRegenAt": "2026-07-23T00:50:35.555Z"
           },
           {
             "sub": "c",
@@ -7603,7 +7743,8 @@
             "ttsScript": "Mon-key. Two claps! Monkey has two syllables!",
             "displayText": "Mon-key has 2",
             "interaction": "Two clap animation. Pill: [Mon-key = 2] pops in.",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:50:38.568Z"
           },
           {
             "sub": "d",
@@ -7612,7 +7753,8 @@
             "ttsScript": "El-e-phant. Three claps! Elephant has three syllables! You're clapping champ!",
             "displayText": "El-e-phant has 3",
             "interaction": "Three clap animation. Pill: [El-e-phant = 3] pops in. Stars.",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:50:42.302Z"
           }
         ],
         "heading": "Let's Clap Together!",
@@ -7628,7 +7770,8 @@
             "audioFile": "audio/lessons/RF.K.2b/S4a.mp3",
             "ttsScript": "Put your hand under your chin and say a word!",
             "displayText": "",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T01:39:53.751Z"
           },
           {
             "sub": "b",
@@ -7636,7 +7779,8 @@
             "ttsScript": "Every time your chin drops down, that's one syllable! Your chin knows the beats!",
             "displayText": "Chin drops has 1 syllable",
             "interaction": "Pill: [Chin drops = 1 syllable] pops in.",
-            "displayDelay": 1085
+            "displayDelay": 1085,
+            "audioRegenAt": "2026-07-23T00:50:46.843Z"
           },
           {
             "sub": "c",
@@ -7690,7 +7834,8 @@
             "audioFile": "audio/lessons/RF.K.2b/S5a.mp3",
             "ttsScript": "You're a syllable-clapping superstar!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:50:45.262Z"
           },
           {
             "sub": "b",
@@ -7698,7 +7843,8 @@
             "ttsScript": "Let's practice counting syllables in some words. Get your clapping hands ready!",
             "displayText": "Let's clap the syllables!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 3000
+            "displayDelay": 3000,
+            "audioRegenAt": "2026-07-23T00:51:05.751Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -7747,7 +7893,8 @@
             "audioFile": "audio/lessons/RF.K.2c/S1a.mp3",
             "ttsScript": "Every word starts with a sound and ends with a sound!",
             "displayText": "",
-            "interaction": "Heading fades in."
+            "interaction": "Heading fades in.",
+            "audioRegenAt": "2026-07-23T00:50:50.905Z"
           },
           {
             "sub": "b",
@@ -7773,14 +7920,16 @@
                   "text": "G"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:50:58.361Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2c/S1c.mp3",
             "ttsScript": "Let's learn to hear the beginning and ending sounds of words!",
             "displayText": "",
-            "interaction": "Sound wave animations at both ends. Tap to continue."
+            "interaction": "Sound wave animations at both ends. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:51:03.388Z"
           }
         ],
         "heading": "Beginning and Ending Sounds!",
@@ -7796,7 +7945,8 @@
             "audioFile": "audio/lessons/RF.K.2c/S2a.mp3",
             "ttsScript": "The beginning sound is the very first sound you hear in a word.",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:51:09.362Z"
           },
           {
             "sub": "b",
@@ -7945,7 +8095,8 @@
             "audioFile": "audio/lessons/RF.K.2c/S3a.mp3",
             "ttsScript": "I'll say a word. You tell me the beginning and ending sounds!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:51:10.113Z"
           },
           {
             "sub": "b",
@@ -7994,14 +8145,16 @@
                   "text": "N"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:51:13.219Z"
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.K.2c/S3d.mp3",
             "ttsScript": "Sun! You got it!",
             "displayText": "",
-            "interaction": "Stars and confetti."
+            "interaction": "Stars and confetti.",
+            "audioRegenAt": "2026-07-23T00:51:12.310Z"
           }
         ],
         "heading": "Let's Practice Listening!",
@@ -8041,7 +8194,8 @@
                   "text": "N"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:51:20.510Z"
           },
           {
             "sub": "c",
@@ -8095,7 +8249,8 @@
             "audioFile": "audio/lessons/RF.K.2c/S5a.mp3",
             "ttsScript": "Your ears are amazing listeners!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:51:16.669Z"
           },
           {
             "sub": "b",
@@ -8103,7 +8258,8 @@
             "ttsScript": "Let's practice finding beginning and ending sounds. Listen carefully!",
             "displayText": "Let's listen for the sounds!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2250
+            "displayDelay": 2250,
+            "audioRegenAt": "2026-07-23T01:39:58.227Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -8152,7 +8308,8 @@
             "audioFile": "audio/lessons/RF.K.2d/S1a.mp3",
             "ttsScript": "Words are made of sounds! And we can break them apart to hear each sound!",
             "displayText": "",
-            "interaction": "Heading fades in."
+            "interaction": "Heading fades in.",
+            "audioRegenAt": "2026-07-23T00:51:25.144Z"
           },
           {
             "sub": "b",
@@ -8177,14 +8334,16 @@
                   "text": "T"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:51:27.487Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2d/S1c.mp3",
             "ttsScript": "Let's learn to hear all the sounds hiding inside words!",
             "displayText": "",
-            "interaction": "Sound bubbles float. Tap to continue."
+            "interaction": "Sound bubbles float. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:51:44.386Z"
           }
         ],
         "heading": "Let's Find Sounds in Words!",
@@ -8200,7 +8359,8 @@
             "audioFile": "audio/lessons/RF.K.2d/S2a.mp3",
             "ttsScript": "Every word is made of individual sounds. We call them phonemes!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:52:10.843Z"
           },
           {
             "sub": "b",
@@ -8255,7 +8415,8 @@
             "audioFile": "audio/lessons/RF.K.2d/S2d.mp3",
             "ttsScript": "The trick is to say the word super slowly and count each sound!",
             "displayText": "",
-            "interaction": "Counting icon. Tap to continue."
+            "interaction": "Counting icon. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:52:04.568Z"
           }
         ],
         "heading": "Breaking Words Into Sounds",
@@ -8340,7 +8501,8 @@
             "audioFile": "audio/lessons/RF.K.2d/S3a.mp3",
             "ttsScript": "I'll say a word slowly. Count the sounds with me!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:52:10.054Z"
           },
           {
             "sub": "b",
@@ -8365,7 +8527,8 @@
                   "text": "P"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:52:16.091Z"
           },
           {
             "sub": "c",
@@ -8403,7 +8566,8 @@
             "audioFile": "audio/lessons/RF.K.2d/S4a.mp3",
             "ttsScript": "Use your fingers! Hold up one finger for each sound you hear.",
             "displayText": "",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T00:52:15.988Z"
           },
           {
             "sub": "b",
@@ -8436,7 +8600,8 @@
             "audioFile": "audio/lessons/RF.K.2d/S4c.mp3",
             "ttsScript": "You're a sound detective now!",
             "displayText": "",
-            "interaction": "Detective badge. Tap to continue."
+            "interaction": "Detective badge. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:52:18.579Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -8483,7 +8648,8 @@
             "audioFile": "audio/lessons/RF.K.2d/S5a.mp3",
             "ttsScript": "Incredible work! You can hear all the sounds in words!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:52:21.372Z"
           },
           {
             "sub": "b",
@@ -8491,7 +8657,8 @@
             "ttsScript": "Let's practice counting sounds in some words. Get your fingers ready!",
             "displayText": "Let's listen for the sounds!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2750
+            "displayDelay": 2750,
+            "audioRegenAt": "2026-07-23T00:52:24.228Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -8536,7 +8703,8 @@
             "ttsScript": "Guess what? If you change just ONE sound in a word, you get a whole new word!",
             "displayText": "Change ONE sound, new word!",
             "interaction": "Heading fades in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:52:26.719Z"
           },
           {
             "sub": "b",
@@ -8555,14 +8723,16 @@
               ],
               "toLetter": "B",
               "swapDelay": 6500
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:52:32.574Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2e/S1c.mp3",
             "ttsScript": "Let's learn how changing sounds makes new words!",
             "interaction": "Magic wand sparkle. Tap to continue.",
-            "displayDelay": 1000
+            "displayDelay": 1000,
+            "audioRegenAt": "2026-07-23T00:52:30.447Z"
           }
         ],
         "heading": "Changing Sounds, Changing Words!",
@@ -8578,7 +8748,8 @@
             "audioFile": "audio/lessons/RF.K.2e/S2a.mp3",
             "ttsScript": "Words are made of sounds. If you swap one sound, the whole word changes!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:52:52.763Z"
           },
           {
             "sub": "b",
@@ -8621,7 +8792,8 @@
             "audioFile": "audio/lessons/RF.K.2e/S2d.mp3",
             "ttsScript": "One little change, one brand new word!",
             "displayText": "",
-            "interaction": "Both pills glow. Tap to continue."
+            "interaction": "Both pills glow. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:53:15.504Z"
           }
         ],
         "heading": "How Does It Work?",
@@ -8637,7 +8809,8 @@
             "audioFile": "audio/lessons/RF.K.2e/S3a.mp3",
             "ttsScript": "Let's play the sound-swapping game!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:53:10.747Z"
           },
           {
             "sub": "b",
@@ -8654,7 +8827,8 @@
               ],
               "toLetter": "M",
               "swapDelay": 7400
-            }
+            },
+            "audioRegenAt": "2026-07-23T01:40:01.346Z"
           },
           {
             "sub": "c",
@@ -8671,7 +8845,8 @@
               ],
               "toLetter": "D",
               "swapDelay": 7700
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:53:25.544Z"
           }
         ],
         "heading": "Let's Make New Words!",
@@ -8687,7 +8862,8 @@
             "audioFile": "audio/lessons/RF.K.2e/S4a.mp3",
             "ttsScript": "When you swap a sound, say the new word out loud!",
             "displayText": "",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T00:53:21.079Z"
           },
           {
             "sub": "b",
@@ -8704,14 +8880,16 @@
               ],
               "toLetter": "P",
               "swapDelay": 8500
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:53:26.642Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.2e/S4c.mp3",
             "ttsScript": "You're a word-changing wizard!",
             "displayText": "",
-            "interaction": "Wizard hat icon. Tap to continue."
+            "interaction": "Wizard hat icon. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:53:28.108Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -8757,7 +8935,8 @@
             "audioFile": "audio/lessons/RF.K.2e/S5a.mp3",
             "ttsScript": "Amazing! You can make new words by changing sounds!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:53:31.491Z"
           },
           {
             "sub": "b",
@@ -8765,7 +8944,8 @@
             "ttsScript": "Let's practice changing sounds to make new words. Let's go!",
             "displayText": "Let's listen for the sounds!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:53:32.122Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -8805,7 +8985,8 @@
             "ttsScript": "Every letter of the alphabet makes a special sound.",
             "displayText": "Letters make sounds",
             "interaction": "Heading fades in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:53:35.055Z"
           },
           {
             "sub": "b",
@@ -8821,7 +9002,8 @@
             "audioFile": "audio/lessons/RF.K.3a/S1c.mp3",
             "ttsScript": "Let's learn some letter sounds!",
             "interaction": "Letters bounce. Tap to continue.",
-            "displayDelay": 1000
+            "displayDelay": 1000,
+            "audioRegenAt": "2026-07-23T00:53:34.663Z"
           }
         ],
         "heading": "Letters and Their Sounds!",
@@ -8848,7 +9030,8 @@
                   "text": "S"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:53:39.074Z"
           },
           {
             "sub": "b",
@@ -8866,7 +9049,8 @@
                   "text": "M"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:53:54.122Z"
           },
           {
             "sub": "c",
@@ -8892,7 +9076,8 @@
             "audioFile": "audio/lessons/RF.K.3a/S2d.mp3",
             "ttsScript": "Every letter has its own sound. Learn the sounds and you unlock reading!",
             "displayText": "",
-            "interaction": "Key unlocking a book animation. Tap to continue."
+            "interaction": "Key unlocking a book animation. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:53:44.732Z"
           }
         ],
         "heading": "Each Letter Has a Sound",
@@ -8977,7 +9162,8 @@
             "audioFile": "audio/lessons/RF.K.3a/S3a.mp3",
             "ttsScript": "I'll show you a letter. You say its sound!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:54:03.561Z"
           },
           {
             "sub": "b",
@@ -8994,7 +9180,8 @@
                   "text": "B"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:54:13.603Z"
           },
           {
             "sub": "c",
@@ -9015,7 +9202,8 @@
                   "text": "F"
                 }
               ]
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:54:07.594Z"
           }
         ],
         "heading": "Let's Practice Some Sounds!",
@@ -9031,7 +9219,8 @@
             "audioFile": "audio/lessons/RF.K.3a/S4a.mp3",
             "ttsScript": "Here is the whole alphabet! Tap any letter to hear its name and sound.",
             "displayText": "",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T00:54:13.374Z"
           },
           {
             "sub": "b",
@@ -9040,14 +9229,16 @@
             "interaction": "26-button alphabet grid appears; tapping any letter plays its name then phoneme.",
             "displayAlphabetGrid": {
               "delay": 1000
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:54:18.010Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3a/S4c.mp3",
             "ttsScript": "Keep practicing and you'll know every letter sound!",
             "displayText": "",
-            "interaction": "Trophy icon. Tap to continue."
+            "interaction": "Trophy icon. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:54:17.462Z"
           }
         ],
         "heading": "Try Every Letter!",
@@ -9102,7 +9293,8 @@
             "audioFile": "audio/lessons/RF.K.3a/S5a.mp3",
             "ttsScript": "You're learning letter sounds like a champ!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:54:20.088Z"
           },
           {
             "sub": "b",
@@ -9110,7 +9302,8 @@
             "ttsScript": "Let's practice matching letters to their sounds. Let's go!",
             "displayText": "Let's listen for the sounds!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2250
+            "displayDelay": 2250,
+            "audioRegenAt": "2026-07-23T00:54:21.788Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -9457,13 +9650,15 @@
             "ttsScript": "There are some words you will see in almost every book.",
             "displayText": "Every book!",
             "interaction": "Heading fades in.",
-            "displayDelay": 2200
+            "displayDelay": 2200,
+            "audioRegenAt": "2026-07-23T01:40:02.003Z"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.K.3c/S1b.mp3",
             "ttsScript": "These special words are called sight words.",
-            "interaction": "Image stays."
+            "interaction": "Image stays.",
+            "audioRegenAt": "2026-07-23T00:54:25.370Z"
           },
           {
             "sub": "c",
@@ -9471,7 +9666,8 @@
             "ttsScript": "Soon you will know them just by looking. Tap to keep going.",
             "displayText": "Just by looking!",
             "interaction": "Tap to continue.",
-            "displayDelay": 2300
+            "displayDelay": 2300,
+            "audioRegenAt": "2026-07-23T00:54:27.567Z"
           }
         ],
         "heading": "Sight Words",
@@ -9489,7 +9685,8 @@
             "ttsScript": "Sight words are words you learn to read right away, just by looking at them.",
             "displayText": "Read right away",
             "interaction": "Heading appears.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:55:08.115Z"
           },
           {
             "sub": "b",
@@ -9497,7 +9694,8 @@
             "ttsScript": "You do not sound them out, you just know them! Like how you know your own name.",
             "displayText": "Don't sound out",
             "interaction": "Two pills stagger in: Just look. -> Just know.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:54:33.146Z"
           },
           {
             "sub": "c",
@@ -9505,7 +9703,8 @@
             "ttsScript": "The more sight words you know, the faster you can read! They are reading superpowers!",
             "displayText": "Faster reading",
             "interaction": "Two pills stagger in: More words -> Faster reading!",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:54:56.050Z"
           }
         ],
         "heading": "What Are Sight Words?",
@@ -9589,7 +9788,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.K.3c/S3a.mp3",
             "ttsScript": "Here are some important sight words. Let us read them together!",
-            "interaction": "Heading."
+            "interaction": "Heading.",
+            "audioRegenAt": "2026-07-23T01:40:43.409Z"
           },
           {
             "sub": "b",
@@ -9650,7 +9850,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:55:04.303Z"
           },
           {
             "sub": "d",
@@ -9680,7 +9881,8 @@
             },
             "phonemeLetterIndices": [
               2
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:55:07.896Z"
           },
           {
             "sub": "e",
@@ -9710,7 +9912,8 @@
             },
             "phonemeLetterIndices": [
               3
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:55:11.438Z"
           },
           {
             "sub": "f",
@@ -9740,7 +9943,8 @@
             },
             "phonemeLetterIndices": [
               4
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:55:13.227Z"
           },
           {
             "sub": "g",
@@ -9767,7 +9971,8 @@
                 }
               ],
               "revealCount": 5
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:55:17.870Z"
           }
         ],
         "heading": "Let's Learn Some!",
@@ -9783,7 +9988,8 @@
             "audioFile": "audio/lessons/RF.K.3c/S4a.mp3",
             "ttsScript": "Practice reading sight words every day, even just a few minutes!",
             "displayText": "",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T00:55:17.691Z"
           },
           {
             "sub": "b",
@@ -9791,14 +9997,16 @@
             "ttsScript": "You can put them on flashcards, stick them on the fridge, or find them in your books!",
             "displayText": "Practice every day!",
             "interaction": "Pill: [Practice every day!] pops in.",
-            "displayDelay": 1318
+            "displayDelay": 1318,
+            "audioRegenAt": "2026-07-23T00:55:22.804Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.K.3c/S4c.mp3",
             "ttsScript": "Soon you'll spot them everywhere, lightning fast!",
             "displayText": "",
-            "interaction": "Lightning bolt icon. Tap to continue."
+            "interaction": "Lightning bolt icon. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:55:21.937Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -10978,7 +11186,8 @@
             "ttsScript": "When we write, we use special rules to make our writing look right. Like starting with a big letter!",
             "displayText": "Start with big letter",
             "interaction": "Heading fades in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:55:29.019Z"
           },
           {
             "sub": "b",
@@ -10986,13 +11195,15 @@
             "ttsScript": "And putting a dot at the end of a sentence. That dot is called a period!",
             "displayText": "Dot at end: period",
             "interaction": "Pill: [Capital at start] pops in. Pill: [Period at end] pops in.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:55:28.438Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.2/S1c.mp3",
             "ttsScript": "Let's learn the rules of capitals and punctuation!",
-            "interaction": "Crown and sunglasses animation. Tap to continue."
+            "interaction": "Crown and sunglasses animation. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:56:10.766Z"
           }
         ],
         "heading": "Capitals and Punctuation!",
@@ -11009,7 +11220,8 @@
             "ttsScript": "Every sentence starts with a capital letter — that's the big, tall version of the letter!",
             "displayText": "Sentence starts capital letter",
             "interaction": "Heading appears.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:55:33.713Z"
           },
           {
             "sub": "b",
@@ -11017,7 +11229,8 @@
             "ttsScript": "We also use capitals for names. Like Max, Anna, or your name!",
             "displayText": "Capitals for names",
             "interaction": "Pill: [Capitals: Start of sentences + Names] pops in blue.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:56:17.184Z"
           },
           {
             "sub": "c",
@@ -11025,7 +11238,8 @@
             "ttsScript": "And at the end of a sentence, we put a period. It's like saying 'The end!' for that thought.",
             "displayText": "Period ends sentence",
             "interaction": "Pill: [Period (.) = End of sentence] pops in green.",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:56:15.688Z"
           },
           {
             "sub": "d",
@@ -11050,7 +11264,8 @@
             "audioFile": "audio/lessons/K.L.2/S3a.mp3",
             "ttsScript": "Look at this sentence. Something is missing!",
             "displayText": "",
-            "interaction": "Heading appears."
+            "interaction": "Heading appears.",
+            "audioRegenAt": "2026-07-23T00:56:19.578Z"
           },
           {
             "sub": "b",
@@ -11058,7 +11273,8 @@
             "ttsScript": "the cat is big. Hmm — 'the' needs a capital T at the beginning!",
             "displayText": "Capital T",
             "interaction": "'the' transforms to 'The' with sparkle. Pill: [Capital T ✓] pops in.",
-            "displayDelay": 3500
+            "displayDelay": 3500,
+            "audioRegenAt": "2026-07-23T00:56:28.236Z"
           },
           {
             "sub": "c",
@@ -11066,7 +11282,8 @@
             "ttsScript": "And we need a period at the end! The cat is big. Period! Now it's perfect!",
             "displayText": "Period",
             "interaction": "Period appears at end. Pill: [Period ✓] pops in. Stars.",
-            "displayDelay": 2200
+            "displayDelay": 2200,
+            "audioRegenAt": "2026-07-23T00:56:25.053Z"
           }
         ],
         "heading": "Let's Fix a Sentence!",
@@ -11082,7 +11299,8 @@
             "audioFile": "audio/lessons/K.L.2/S4a.mp3",
             "ttsScript": "Check every sentence you write for two things!",
             "displayText": "",
-            "interaction": "Heading with sparkle."
+            "interaction": "Heading with sparkle.",
+            "audioRegenAt": "2026-07-23T00:56:28.881Z"
           },
           {
             "sub": "b",
@@ -11098,14 +11316,16 @@
                 "text": "Ends with punctuation?",
                 "delay": 2000
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:56:33.636Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/K.L.2/S4c.mp3",
             "ttsScript": "If both answers are yes, your sentence is perfect!",
             "displayText": "",
-            "interaction": "Double checkmark. Tap to continue."
+            "interaction": "Double checkmark. Tap to continue.",
+            "audioRegenAt": "2026-07-23T00:56:33.214Z"
           }
         ],
         "heading": "A Helpful Trick!",
@@ -11151,7 +11371,8 @@
             "audioFile": "audio/lessons/K.L.2/S5a.mp3",
             "ttsScript": "You know about capitals and punctuation! So cool!",
             "displayText": "",
-            "interaction": "Stars celebration."
+            "interaction": "Stars celebration.",
+            "audioRegenAt": "2026-07-23T00:57:15.563Z"
           },
           {
             "sub": "b",
@@ -11159,7 +11380,8 @@
             "ttsScript": "Let's practice fixing sentences with capitals and punctuation. Let's go!",
             "displayText": "Let's check our writing!",
             "interaction": "'Let's Go!' button pulses.",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:57:18.024Z"
           }
         ],
         "heading": "Time to Practice!",
@@ -18278,7 +18500,8 @@
             "ttsScript": "Look! Let us talk about sentences.",
             "displayText": "Sentences!",
             "interaction": "Heading fades in.",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:57:19.612Z"
           },
           {
             "sub": "b",
@@ -18286,7 +18509,8 @@
             "ttsScript": "A sentence is a group of words that tells a whole idea.",
             "displayText": "A whole idea",
             "interaction": "Pill lands.",
-            "displayDelay": 2000
+            "displayDelay": 2000,
+            "audioRegenAt": "2026-07-23T00:57:23.203Z"
           },
           {
             "sub": "c",
@@ -18294,7 +18518,8 @@
             "ttsScript": "Every sentence has two special rules. Let us learn them!",
             "displayText": "Two rules",
             "interaction": "Pill lands.",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:57:25.228Z"
           }
         ],
         "heading": "What Makes a Sentence",
@@ -18311,7 +18536,8 @@
             "ttsScript": "Rule one. Every sentence starts with a capital letter.",
             "displayText": "Rule 1: Start with a capital",
             "interaction": "Heading pill.",
-            "displayDelay": 1800
+            "displayDelay": 1800,
+            "audioRegenAt": "2026-07-23T00:57:27.946Z"
           },
           {
             "sub": "b",
@@ -18319,7 +18545,8 @@
             "ttsScript": "Look at this sentence. The dog runs.",
             "displayText": "The dog runs.",
             "interaction": "Sentence pill lands.",
-            "displayDelay": 1800
+            "displayDelay": 1800,
+            "audioRegenAt": "2026-07-23T01:40:07.224Z"
           },
           {
             "sub": "c",
@@ -18349,7 +18576,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.1a/S3a.mp3",
             "ttsScript": "Rule two. Every sentence ends with a mark.",
-            "interaction": "Heading pill."
+            "interaction": "Heading pill.",
+            "audioRegenAt": "2026-07-23T00:57:33.184Z"
           },
           {
             "sub": "b",
@@ -18379,7 +18607,8 @@
             "ttsScript": "A period ends a telling sentence.",
             "displayText": "The dog runs.",
             "interaction": "Sentence with period.",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:57:32.588Z"
           },
           {
             "sub": "d",
@@ -18387,7 +18616,8 @@
             "ttsScript": "A question mark ends a question.",
             "displayText": "Is the dog fast?",
             "interaction": "Sentence with question mark.",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:57:35.310Z"
           },
           {
             "sub": "e",
@@ -18395,7 +18625,8 @@
             "ttsScript": "And an exclamation mark ends an excited sentence!",
             "displayText": "The dog is so fast!",
             "interaction": "Sentence with exclamation.",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:57:36.895Z"
           }
         ],
         "heading": "Rule 2: End With a Mark",
@@ -18412,7 +18643,8 @@
             "ttsScript": "Watch. Here is a sentence that is missing its rules.",
             "displayText": "the dog runs",
             "interaction": "Broken sentence shown.",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:57:39.239Z"
           },
           {
             "sub": "b",
@@ -18438,7 +18670,8 @@
             "ttsScript": "Now you are ready to practice! Find the sentences that follow the rules.",
             "displayText": "You got it!",
             "interaction": "Tap to continue.",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:57:41.404Z"
           }
         ],
         "heading": "Fix It Up",
@@ -18777,7 +19010,8 @@
             "ttsScript": "Listen! Every word has sounds in a special order.",
             "displayText": "Sounds in order",
             "interaction": "",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:57:44.167Z"
           },
           {
             "sub": "b",
@@ -18785,14 +19019,16 @@
             "ttsScript": "A first sound, a middle sound, and a last sound.",
             "displayText": "Sound positions",
             "interaction": "",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T00:57:45.053Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.2c/S1c.mp3",
             "ttsScript": "Let us find each one!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:58:02.427Z"
           }
         ],
         "heading": "Sounds Have a Place",
@@ -18822,7 +19058,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:57:47.456Z"
           },
           {
             "sub": "b",
@@ -18849,7 +19086,8 @@
             },
             "phonemeLetterIndices": [
               0
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:58:05.395Z"
           },
           {
             "sub": "c",
@@ -18876,7 +19114,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:58:04.835Z"
           },
           {
             "sub": "d",
@@ -19005,7 +19244,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:58:08.423Z"
           },
           {
             "sub": "b",
@@ -19032,7 +19272,8 @@
             },
             "phonemeLetterIndices": [
               0
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:58:07.142Z"
           },
           {
             "sub": "c",
@@ -19059,7 +19300,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:58:08.818Z"
           },
           {
             "sub": "d",
@@ -19086,7 +19328,8 @@
             },
             "phonemeLetterIndices": [
               2
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:40:08.918Z"
           }
         ],
         "heading": "Try This One",
@@ -19101,7 +19344,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.2c/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
-            "interaction": ""
+            "interaction": "",
+            "audioRegenAt": "2026-07-23T00:58:11.627Z"
           },
           {
             "sub": "b",
@@ -19118,7 +19362,8 @@
             "ttsScript": "Now you are ready to find first, middle, and last sounds!",
             "displayText": "You got it!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:40:14.192Z"
           }
         ],
         "heading": "A Listening Trick",
@@ -19193,7 +19438,8 @@
             "ttsScript": "Look! Words are built from smaller sounds.",
             "displayText": "Words are built from sounds",
             "interaction": "",
-            "displayDelay": 2000
+            "displayDelay": 2000,
+            "audioRegenAt": "2026-07-23T00:58:15.264Z"
           },
           {
             "sub": "b",
@@ -19201,7 +19447,8 @@
             "ttsScript": "When we take a word apart sound by sound, we call that breaking.",
             "displayText": "Breaking a word",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:58:19.044Z"
           },
           {
             "sub": "c",
@@ -19209,7 +19456,8 @@
             "ttsScript": "Let us break some words together!",
             "displayText": "Let us break some!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:58:18.160Z"
           }
         ],
         "heading": "Break It Apart",
@@ -19240,7 +19488,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:58:20.744Z"
           },
           {
             "sub": "b",
@@ -19261,7 +19510,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:58:37.071Z"
           },
           {
             "sub": "c",
@@ -19288,7 +19538,8 @@
             },
             "phonemeLetterIndices": [
               0
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:58:22.501Z"
           },
           {
             "sub": "d",
@@ -19315,7 +19566,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:58:24.212Z"
           },
           {
             "sub": "e",
@@ -19342,7 +19594,8 @@
             },
             "phonemeLetterIndices": [
               2
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:58:26.879Z"
           }
         ],
         "heading": "Break the Word CAT",
@@ -19374,7 +19627,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:58:29.269Z"
           },
           {
             "sub": "b",
@@ -19395,7 +19649,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T00:59:10.129Z"
           },
           {
             "sub": "c",
@@ -19422,7 +19677,8 @@
             },
             "phonemeLetterIndices": [
               0
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:59:17.122Z"
           },
           {
             "sub": "d",
@@ -19449,7 +19705,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:59:11.870Z"
           },
           {
             "sub": "e",
@@ -19476,7 +19733,8 @@
             },
             "phonemeLetterIndices": [
               2
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:59:17.962Z"
           }
         ],
         "heading": "Count the Sounds",
@@ -19491,7 +19749,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.2d/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
-            "interaction": ""
+            "interaction": "",
+            "audioRegenAt": "2026-07-23T00:59:19.560Z"
           },
           {
             "sub": "b",
@@ -19508,7 +19767,8 @@
             "ttsScript": "Now you are ready to break words into sounds!",
             "displayText": "You got it!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:59:21.430Z"
           }
         ],
         "heading": "A Breaking Trick",
@@ -30128,7 +30388,8 @@
             "ttsScript": "Every vowel has two voices: short and long.",
             "displayText": "Short + long",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:59:22.967Z"
           },
           {
             "sub": "b",
@@ -30136,7 +30397,8 @@
             "ttsScript": "Short sounds are quick. Long sounds say the letter's name.",
             "displayText": "Quick vs says name",
             "interaction": "",
-            "displayDelay": 2800
+            "displayDelay": 2800,
+            "audioRegenAt": "2026-07-23T01:40:34.684Z"
           },
           {
             "sub": "c",
@@ -30144,7 +30406,8 @@
             "ttsScript": "Let us listen.",
             "displayText": "Listen!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T00:59:24.738Z"
           }
         ],
         "heading": "Two Vowel Voices",
@@ -30180,7 +30443,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:59:27.237Z"
           },
           {
             "sub": "b",
@@ -30188,7 +30452,8 @@
             "ttsScript": "Short A says ah. Quick!",
             "displayText": "Short A: ah",
             "interaction": "",
-            "displayDelay": 2200
+            "displayDelay": 2200,
+            "audioRegenAt": "2026-07-23T00:59:30.938Z"
           }
         ],
         "heading": "Short in CAT",
@@ -30227,7 +30492,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T00:59:46.438Z"
           },
           {
             "sub": "b",
@@ -30235,7 +30501,8 @@
             "ttsScript": "Long A says AY. It says its name!",
             "displayText": "Long A: AY",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T00:59:50.256Z"
           },
           {
             "sub": "c",
@@ -30243,7 +30510,8 @@
             "ttsScript": "A silent E at the end often signals a long vowel.",
             "displayText": "Silent E = long vowel",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T01:00:08.668Z"
           }
         ],
         "heading": "Long in CAKE",
@@ -30329,7 +30597,8 @@
             "ttsScript": "Here is a helpful trick.",
             "displayText": "A vowel trick",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:00:08.714Z"
           },
           {
             "sub": "b",
@@ -30337,7 +30606,8 @@
             "ttsScript": "Ask: does the vowel say its name? Long. Or does it make a quick sound? Short.",
             "displayText": "Name or quick?",
             "interaction": "",
-            "displayDelay": 2800
+            "displayDelay": 2800,
+            "audioRegenAt": "2026-07-23T01:00:15.696Z"
           },
           {
             "sub": "c",
@@ -30345,7 +30615,8 @@
             "ttsScript": "Now you are ready to tell long from short vowels!",
             "displayText": "You got it!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:00:13.275Z"
           }
         ],
         "heading": "Listen Closely",
@@ -35422,7 +35693,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.2.5/interactive-q.mp3",
-            "ttsScript": "Now you try! Decide how each pair connects. Do they mean the same, mean the opposite, or belong in the same group?"
+            "ttsScript": "Now you try! Decide how each pair connects. Do they mean the same, mean the opposite, or belong in the same group?",
+            "audioRegenAt": "2026-07-23T01:00:19.904Z"
           }
         ],
         "heading": "Connect the Words!",
@@ -36537,7 +36809,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:00:23.419Z"
           }
         ],
         "heading": "Try One",
@@ -38985,7 +39258,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.10/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Leo just finished a long adventure book about a knight and a dragon. He wants to mix it up and stretch his brain. Which one is a different kind of reading for Leo?"
+            "ttsScript": "Your turn, detective! Leo just finished a long adventure book about a knight and a dragon. He wants to mix it up and stretch his brain. Which one is a different kind of reading for Leo?",
+            "audioRegenAt": "2026-07-23T01:00:34.596Z"
           }
         ],
         "heading": "Your Turn!",
@@ -39448,7 +39722,8 @@
                 "pill": 2,
                 "delay": 3500
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:00:28.962Z"
           }
         ],
         "heading": "Summary Sentences",
@@ -39984,7 +40259,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:00:35.227Z"
           }
         ],
         "heading": "Context Clues Again",
@@ -40262,7 +40538,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:00:38.270Z"
           }
         ],
         "heading": "Text Feature Power",
@@ -41403,7 +41680,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:00:39.618Z"
           }
         ],
         "heading": "Main Points",
@@ -43373,7 +43651,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:00:42.191Z"
           }
         ],
         "heading": "Smooth Reading",
@@ -43774,7 +44053,8 @@
                 "pill": 2,
                 "delay": 6000
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:00.027Z"
           }
         ],
         "heading": "Match Purpose to Book",
@@ -44231,7 +44511,8 @@
                 "pill": 1,
                 "delay": 3000
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:01.377Z"
           }
         ],
         "heading": "Catch Your Slips",
@@ -44573,7 +44854,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:05.145Z"
           }
         ],
         "heading": "Use Word Parts",
@@ -45982,7 +46264,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:06.459Z"
           }
         ],
         "heading": "Idioms",
@@ -48109,7 +48392,8 @@
                 "pill": 1,
                 "delay": 4000
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:09.719Z"
           }
         ],
         "heading": "Watch the Change",
@@ -49515,7 +49799,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:10.411Z"
           }
         ],
         "heading": "Trickster Tales",
@@ -49541,7 +49826,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:17.810Z"
           }
         ],
         "heading": "Hero Journeys",
@@ -50536,7 +50822,8 @@
                 "pill": 2,
                 "delay": 3500
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:15.047Z"
           }
         ],
         "heading": "Across Multiple Paragraphs",
@@ -51737,7 +52024,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:20.089Z"
           }
         ],
         "heading": "Different Details",
@@ -53080,7 +53368,8 @@
                 "pill": 2,
                 "delay": 2700
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:21.996Z"
           }
         ],
         "heading": "Decoding Power",
@@ -53745,7 +54034,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:23.777Z"
           }
         ],
         "heading": "Fluent Reading Pays Off",
@@ -54570,7 +54860,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:01:42.196Z"
           }
         ],
         "heading": "Antonyms Help Too",
@@ -55204,7 +55495,8 @@
                 "pill": 2,
                 "delay": 2800
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:02:38.180Z"
           }
         ],
         "heading": "Thesaurus",
@@ -56204,7 +56496,8 @@
                 "pill": 1,
                 "delay": 2000
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:02:00.394Z"
           }
         ],
         "heading": "Break a Leg",
@@ -56546,7 +56839,8 @@
                 "pill": 2,
                 "delay": 4600
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:02:06.010Z"
           }
         ],
         "heading": "Whisper, Talk, Yell",
@@ -57030,7 +57324,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3a/S1a.mp3",
             "ttsScript": "Sometimes two letters team up to make just one sound!",
-            "interaction": ""
+            "interaction": "",
+            "audioRegenAt": "2026-07-23T01:02:11.977Z"
           },
           {
             "sub": "b",
@@ -57038,7 +57333,8 @@
             "ttsScript": "The letters are not each saying their own sound anymore.",
             "displayText": "Not by themselves",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T01:02:15.536Z"
           },
           {
             "sub": "c",
@@ -57046,7 +57342,8 @@
             "ttsScript": "They make a brand new sound together!",
             "displayText": "A new sound!",
             "interaction": "",
-            "displayDelay": 2000
+            "displayDelay": 2000,
+            "audioRegenAt": "2026-07-23T01:02:18.286Z"
           }
         ],
         "heading": "Two Letters, One Sound",
@@ -57075,7 +57372,8 @@
                 }
               ],
               "revealCount": 2
-            }
+            },
+            "audioRegenAt": "2026-07-23T01:02:24.094Z"
           },
           {
             "sub": "b",
@@ -57105,7 +57403,8 @@
                 "text": "Shoe",
                 "delay": 3080
               }
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:02:29.057Z"
           }
         ],
         "heading": "Meet SH",
@@ -57134,7 +57433,8 @@
                 }
               ],
               "revealCount": 2
-            }
+            },
+            "audioRegenAt": "2026-07-23T01:02:34.121Z"
           },
           {
             "sub": "b",
@@ -57163,7 +57463,8 @@
                 }
               ],
               "revealCount": 2
-            }
+            },
+            "audioRegenAt": "2026-07-23T01:02:38.785Z"
           },
           {
             "sub": "d",
@@ -57189,7 +57490,8 @@
             "audioFile": "audio/lessons/RF.1.3a/S4a.mp3",
             "ttsScript": "Here is a helpful trick.",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:02:40.991Z"
           },
           {
             "sub": "b",
@@ -57197,14 +57499,16 @@
             "ttsScript": "When you see S-H, C-H, or T-H together, they make one sound, not two.",
             "displayText": "One sound, not two",
             "interaction": "",
-            "displayDelay": 0
+            "displayDelay": 0,
+            "audioRegenAt": "2026-07-23T01:02:45.173Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.3a/S4c.mp3",
             "ttsScript": "Now you are ready to spot two-letter sounds!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:03:00.308Z"
           }
         ],
         "heading": "Listen for Team Sounds",
@@ -57294,7 +57598,8 @@
             "ttsScript": "Short words are made of just a few sounds.",
             "displayText": "Few sounds",
             "interaction": "",
-            "displayDelay": 2000
+            "displayDelay": 2000,
+            "audioRegenAt": "2026-07-23T01:03:04.157Z"
           },
           {
             "sub": "b",
@@ -57302,7 +57607,8 @@
             "ttsScript": "When you sound them out, you read each one in order.",
             "displayText": "One at a time",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T01:03:04.325Z"
           },
           {
             "sub": "c",
@@ -57310,7 +57616,8 @@
             "ttsScript": "Then you blend them together. That is reading!",
             "displayText": "Blend = reading",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T01:03:07.803Z"
           }
         ],
         "heading": "Sound It Out",
@@ -57343,7 +57650,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T01:03:06.991Z"
           },
           {
             "sub": "b",
@@ -57370,7 +57678,8 @@
             },
             "phonemeLetterIndices": [
               0
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:03:24.291Z"
           },
           {
             "sub": "c",
@@ -57397,7 +57706,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:03:10.360Z"
           },
           {
             "sub": "d",
@@ -57424,7 +57734,8 @@
             },
             "phonemeLetterIndices": [
               2
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:03:13.198Z"
           },
           {
             "sub": "e",
@@ -57445,7 +57756,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T01:03:16.058Z"
           }
         ],
         "heading": "Read CAT",
@@ -57475,7 +57787,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T01:03:32.948Z"
           },
           {
             "sub": "b",
@@ -57502,7 +57815,8 @@
             },
             "phonemeLetterIndices": [
               0
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:03:26.191Z"
           },
           {
             "sub": "c",
@@ -57529,7 +57843,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:03:43.274Z"
           },
           {
             "sub": "d",
@@ -57556,7 +57871,8 @@
             },
             "phonemeLetterIndices": [
               2
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:03:34.480Z"
           },
           {
             "sub": "e",
@@ -57577,7 +57893,8 @@
                 }
               ],
               "revealCount": 3
-            }
+            },
+            "audioRegenAt": "2026-07-23T01:04:15.474Z"
           }
         ],
         "heading": "Your Turn: DOG",
@@ -57594,7 +57911,8 @@
             "ttsScript": "Here is a helpful trick.",
             "displayText": "A decoding trick",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:04:01.160Z"
           },
           {
             "sub": "b",
@@ -57611,7 +57929,8 @@
             "ttsScript": "Now you are ready to sound out short words!",
             "displayText": "You got it!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:04:05.143Z"
           }
         ],
         "heading": "Stretch, Then Snap",
@@ -57669,7 +57988,8 @@
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.3c/S1a.mp3",
             "ttsScript": "Here is a magical trick in reading. It is called Magic E.",
-            "interaction": ""
+            "interaction": "",
+            "audioRegenAt": "2026-07-23T01:04:10.174Z"
           },
           {
             "sub": "b",
@@ -57677,7 +57997,8 @@
             "ttsScript": "Add an E to the end of a word, and something magical happens.",
             "displayText": "Add an E",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T01:04:15.665Z"
           },
           {
             "sub": "c",
@@ -57685,7 +58006,8 @@
             "ttsScript": "The vowel starts to say its name.",
             "displayText": "Vowel says its name!",
             "interaction": "",
-            "displayDelay": 2500
+            "displayDelay": 2500,
+            "audioRegenAt": "2026-07-23T01:04:18.182Z"
           }
         ],
         "heading": "Magic E",
@@ -57721,7 +58043,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:04:19.137Z"
           },
           {
             "sub": "b",
@@ -57751,7 +58074,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:40:39.572Z"
           },
           {
             "sub": "c",
@@ -57796,7 +58120,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:04:22.915Z"
           },
           {
             "sub": "b",
@@ -57826,7 +58151,8 @@
             },
             "phonemeLetterIndices": [
               1
-            ]
+            ],
+            "audioRegenAt": "2026-07-23T01:04:25.575Z"
           },
           {
             "sub": "c",
@@ -57852,13 +58178,15 @@
             "ttsScript": "Here is a helpful trick.",
             "displayText": "A Magic E trick",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:04:25.257Z"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.3c/S4b.mp3",
             "ttsScript": "The Magic E is silent. But it is super powerful. It changes the vowel!",
-            "interaction": ""
+            "interaction": "",
+            "audioRegenAt": "2026-07-23T01:04:32.386Z"
           },
           {
             "sub": "c",
@@ -57866,7 +58194,8 @@
             "ttsScript": "Now you are ready to spot Magic E words!",
             "displayText": "You got it!",
             "interaction": "",
-            "displayDelay": 1500
+            "displayDelay": 1500,
+            "audioRegenAt": "2026-07-23T01:04:29.466Z"
           }
         ],
         "heading": "Silent but Powerful",

@@ -66,6 +66,11 @@ const TYPE_FILTER = args.find((a) => a.startsWith("--type="))?.split("=")[1] ?? 
 const LIMIT = Number(args.find((a) => a.startsWith("--limit="))?.split("=")[1] ?? "0") || null;
 const SKIP_HINT = args.includes("--skip-hint");
 const DRY = args.includes("--dry-run");
+// Re-record the OLD question audio too (the readee-content/*.wav batch made
+// with the obnoxious voice), not just missing ones — regenerates to the
+// canonical path on Autonoe + rewrites the URL.
+const REREC_OLD = args.includes("--rerecord-old");
+const isOldAudio = (url?: string) => !!url && /readee-content/.test(url);
 
 type Question = {
   id: string;
@@ -176,15 +181,21 @@ async function uploadPng(localPath: string, png: Buffer): Promise<string> {
 }
 
 async function genAudio(text: string): Promise<Buffer> {
-  const res = await generateSpeechVertex({
-    text,
-    voice: "Autonoe",
-    style:
-      "in a calm, warm reading-teacher voice. Conversational and unhurried. Don't sound excited or perky — sound like a kind adult who reads with kids every day",
-  });
-  if (!res.ok) throw new Error(`TTS: ${res.error}`);
-  const pcm = Buffer.from(res.pcmBase64, "base64");
-  return pcmToWav(pcm, TTS_SAMPLE_RATE);
+  for (let attempt = 0; ; attempt++) {
+    const res = await generateSpeechVertex({
+      text,
+      voice: "Autonoe",
+      style:
+        "in a calm, warm reading-teacher voice. Conversational and unhurried. Don't sound excited or perky — sound like a kind adult who reads with kids every day",
+    });
+    if (res.ok) return pcmToWav(Buffer.from(res.pcmBase64, "base64"), TTS_SAMPLE_RATE);
+    // Vertex TTS per-minute quota → back off and retry.
+    if (/429|RESOURCE_EXHAUSTED|Quota/i.test(res.error || "") && attempt < 8) {
+      await new Promise((r) => setTimeout(r, 15000 + attempt * 8000));
+      continue;
+    }
+    throw new Error(`TTS: ${res.error}`);
+  }
 }
 
 async function genImage(brief: string): Promise<Buffer> {
@@ -219,7 +230,7 @@ async function run() {
         // ── Audio ──
         if (
           doAudio &&
-          (!q.audio_url || !q.audio_url.startsWith("http"))
+          (!q.audio_url || !q.audio_url.startsWith("http") || (REREC_OLD && isOldAudio(q.audio_url)))
         ) {
           const text = buildExpectedTts(q, g.key);
           const audioPath = `${g.folder}/${s.standard_id}/${q.id}.wav`;

@@ -115,7 +115,13 @@ async function pump(worker: number) {
 }
 
 (async () => {
+  // Periodic save so a long, quota-throttled run persists progress (and a
+  // re-run resumes — already-done steps have audioRegenAt set and are skipped).
+  const saveTimer = setInterval(() => {
+    try { fs.writeFileSync(DATA, JSON.stringify(lessons, null, 2) + "\n"); } catch {}
+  }, 30000);
   await Promise.all(Array.from({ length: CONC }, (_, w) => pump(w)));
+  clearInterval(saveTimer);
   fs.rmSync(tmp, { recursive: true, force: true });
   if (done > 0) fs.writeFileSync(DATA, JSON.stringify(lessons, null, 2) + "\n");
   console.log(`\nDONE. re-recorded:${done}  errors:${err}`);
