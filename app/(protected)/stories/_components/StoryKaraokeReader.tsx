@@ -207,10 +207,10 @@ export default function StoryKaraokeReader({
 
   return (
     <div
-      className="min-h-[calc(100vh-4rem)] w-full px-4 pb-10 pt-6 md:px-7"
+      className="flex min-h-[calc(100vh-4rem)] w-full flex-col px-4 py-4 md:px-7"
       style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
     >
-     <div className="mx-auto" style={{ maxWidth: 1080 }}>
+     <div className="mx-auto flex w-full flex-1 flex-col" style={{ maxWidth: 1080 }}>
       {/* Top bar */}
       <div className="mb-3 flex items-center gap-3">
         <button onClick={back} className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-white shadow-sm" style={{ color: "#4338ca" }}>
@@ -234,16 +234,16 @@ export default function StoryKaraokeReader({
         <div className="h-full rounded-full" style={{ width: `${progressPct}%`, background: "linear-gradient(90deg,#6366f1,#8b5cf6)", transition: "width 0.4s" }} />
       </div>
 
-      {/* Book spread */}
-      <div className="flex flex-col overflow-hidden bg-white shadow-xl md:flex-row" style={{ borderRadius: 28, minHeight: 540 }}>
-        <div className="md:w-[44%]">
-          <Image src={imageUrl} alt="" width={720} height={720} className="h-60 w-full bg-[#ede9fe] object-cover md:h-full" style={{ objectPosition: "center 15%" }} />
+      {/* Book spread — fills the viewport as one page */}
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-white shadow-xl md:flex-row" style={{ borderRadius: 28 }}>
+        <div className="h-44 w-full md:h-auto md:w-[44%]">
+          <Image src={imageUrl} alt="" width={720} height={720} className="h-full w-full bg-[#ede9fe] object-cover" style={{ objectPosition: "center 15%" }} />
         </div>
         <div className="hidden md:block" style={{ flex: "0 0 3px", background: "linear-gradient(90deg, rgba(0,0,0,0.07), rgba(0,0,0,0))" }} />
-        <div className="flex flex-1 flex-col justify-between" style={{ background: "#fffdf8", padding: "44px 40px 32px" }}>
+        <div className="flex min-h-0 flex-1 flex-col" style={{ background: "#fffdf8", padding: "32px 40px 24px" }}>
           {isProse ? (
             /* ── 3–4: whole paragraph, grey-out only after read-along ── */
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex min-h-0 flex-1 items-center overflow-y-auto">
               <p className="text-[20px] font-bold leading-[1.85]" style={{ color: "#d4d4d8" }}>
                 {sentences.map((s, si) => {
                   const d = si - lineIdx;
@@ -270,10 +270,10 @@ export default function StoryKaraokeReader({
             </div>
           ) : (
             /* ── K–2: stacked lines, current sentence ringed + amber word karaoke ── */
-            <div className="relative flex-1 overflow-hidden" style={{ minHeight: 396, WebkitMaskImage: MASK, maskImage: MASK }}>
+            <div className="relative min-h-0 flex-1 overflow-hidden" style={{ WebkitMaskImage: MASK, maskImage: MASK }}>
               <div
-                className="absolute inset-x-0 top-0"
-                style={{ transform: `translateY(${LINE_H - lineIdx * LINE_H}px)`, transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1)" }}
+                className="absolute inset-x-0"
+                style={{ top: "50%", transform: `translateY(${-(lineIdx * LINE_H + LINE_H / 2)}px)`, transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1)" }}
               >
                 {sentences.map((s, i) => {
                   const cur = i === lineIdx;

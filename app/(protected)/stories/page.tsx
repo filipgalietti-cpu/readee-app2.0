@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import Link from "next/link";
 import { Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -18,7 +17,7 @@ import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
-import { BookOpen, Lock, ChevronDown, Play, Volume2 } from "lucide-react";
+import { Lock, ChevronDown, Play, Volume2, Carrot, Flame } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
 import storiesKaraoke from "@/app/data/stories-karaoke.json";
@@ -506,16 +505,34 @@ function StoriesContent() {
 
   // Library view
   return (
-    <div className="max-w-2xl mx-auto py-6 px-4 space-y-4">
+    <div
+      className="min-h-[calc(100vh-4rem)] w-full px-4 py-8 md:px-8"
+      style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
+    >
+     <div className="mx-auto space-y-4" style={{ maxWidth: 980 }}>
 
-      {/* Header */}
+      {/* Greeting banner */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-2"
+        className="flex flex-wrap items-center gap-3 rounded-3xl border border-white/60 bg-white/50 px-7 py-5"
       >
-        <BookOpen className="w-10 h-10 text-violet-500 mx-auto mb-2" strokeWidth={1.5} />
-        <h1 className="text-2xl font-extrabold text-zinc-900">Stories Library</h1>
+        <div className="min-w-[200px] flex-1">
+          <h1 className="text-3xl font-extrabold" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>
+            Pick a story, {child.first_name || "reader"}!
+          </h1>
+          <p className="mt-1 text-sm font-semibold" style={{ color: "#6d28d9" }}>
+            Five shelves of stories, made just for readers like you.
+          </p>
+        </div>
+        <span className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-extrabold" style={{ background: "#fef3c7", color: "#b45309" }}>
+          <Carrot className="h-4 w-4" style={{ color: "#f97316" }} /> {child.carrots ?? 0}
+        </span>
+        {typeof child.streak_days === "number" && child.streak_days > 0 && (
+          <span className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-extrabold" style={{ background: "#ffe4e6", color: "#be123c" }}>
+            <Flame className="h-4 w-4" style={{ color: "#f43f5e" }} /> {child.streak_days} days
+          </span>
+        )}
       </motion.div>
 
       {saveError && (
@@ -546,29 +563,30 @@ function StoriesContent() {
               onClick={() => !isLocked && setExpandedGrade(isExpanded ? null : group.grade)}
               className={`w-full text-left ${isLocked ? "opacity-50 cursor-not-allowed" : ""}`}
             >
-              <div className={`px-5 py-4 flex items-center gap-3 ${
-                isExpanded ? "bg-gradient-to-r from-violet-600 to-violet-500" : ""
-              }`}>
-                <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                  isExpanded ? "bg-white/20" : isLocked ? "bg-zinc-100" : "bg-violet-50"
-                }`}>
-                  {isLocked
-                    ? <Lock className="w-4 h-4 text-zinc-400" />
-                    : <BookOpen className={`w-4 h-4 ${isExpanded ? "text-white" : "text-violet-600"}`} strokeWidth={1.5} />
-                  }
-                </div>
+              <div className="flex items-center gap-3 px-5 py-4" style={isExpanded ? { background: "linear-gradient(90deg,#4338ca,#7c3aed)" } : undefined}>
+                {isLocked ? (
+                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-zinc-100">
+                    <Lock className="h-4 w-4 text-zinc-400" />
+                  </div>
+                ) : (
+                  <Image
+                    src={`/images/ui/grades/grade-${group.grade === "kindergarten" ? "k" : group.grade.replace(/\D/g, "")}.png`}
+                    alt=""
+                    width={46}
+                    height={46}
+                    className="h-[46px] w-[46px] flex-shrink-0 object-contain"
+                  />
+                )}
                 <div className="flex-1">
-                  <p className={`text-sm font-bold ${isExpanded ? "text-white" : "text-zinc-900"}`}>
+                  <p className="text-xl font-extrabold" style={{ color: isExpanded ? "#fff" : "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>
                     {group.label}
                   </p>
-                  <p className={`text-xs ${isExpanded ? "text-white/70" : "text-zinc-400"}`}>
+                  <p className="text-xs font-semibold" style={{ color: isExpanded ? "rgba(255,255,255,0.75)" : "#a1a1aa" }}>
                     {group.stories.length} stories
                   </p>
                 </div>
                 {!isLocked && (
-                  <ChevronDown className={`w-5 h-5 flex-shrink-0 transition-transform ${
-                    isExpanded ? "text-white/60 rotate-180" : "text-zinc-400"
-                  }`} />
+                  <ChevronDown className={`h-5 w-5 flex-shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} style={{ color: isExpanded ? "rgba(255,255,255,0.7)" : "#a1a1aa" }} />
                 )}
               </div>
             </button>
@@ -582,7 +600,7 @@ function StoriesContent() {
                   transition={{ duration: 0.25 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-4 py-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid gap-4 px-4 py-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(196px, 1fr))" }}>
                     {group.stories.map((s, sIdx) => {
                       const limits = getLimits(plan);
                       const isStoryLocked = sIdx >= limits.storiesPerGrade;
@@ -594,18 +612,19 @@ function StoriesContent() {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: sIdx * 0.05 }}
-                              className="rounded-xl overflow-hidden bg-zinc-50 text-left opacity-50 relative"
+                              className="relative overflow-hidden bg-white text-left shadow-sm"
+                              style={{ borderRadius: 20, border: "1px solid #e4e4e7" }}
                             >
-                              <div className="relative">
-                                <LoadingImage src={storyImageUrl(s)} className="w-full h-36 sm:h-40 object-cover rounded-t-xl grayscale" />
+                              <div className="relative" style={{ height: 150, background: "#ede9fe" }}>
+                                <LoadingImage src={storyImageUrl(s)} className="h-full w-full object-cover saturate-[0.55]" />
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="px-3 py-1.5 rounded-lg bg-violet-100 text-violet-700 text-xs font-bold flex items-center gap-1">
-                                    <Lock className="w-3 h-3" /> Readee+
+                                  <div className="flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-extrabold" style={{ background: "#fde68a", color: "#92400e" }}>
+                                    <Lock className="h-3 w-3" /> Readee+
                                   </div>
                                 </div>
                               </div>
                               <div className="p-3">
-                                <p className="text-sm font-bold text-zinc-400 leading-tight">{s.title}</p>
+                                <p className="text-[17px] font-bold leading-tight" style={{ color: "#a1a1aa", fontFamily: "var(--font-baloo, inherit)" }}>{s.title}</p>
                               </div>
                             </motion.div>
                           </div>
@@ -619,22 +638,19 @@ function StoriesContent() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: sIdx * 0.05 }}
                         onClick={() => openStory(s)}
-                        className="rounded-xl overflow-hidden bg-zinc-50 hover:bg-zinc-100 transition-colors text-left group"
+                        className="group overflow-hidden bg-white text-left shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg"
+                        style={{ borderRadius: 20, border: "1px solid #e4e4e7" }}
                       >
-                        <div className="relative">
-                          <LoadingImage
-                            src={storyImageUrl(s)}
-                            className="w-full h-36 sm:h-40 object-cover rounded-t-xl"
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                            <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow">
-                              <Play className="w-5 h-5 text-violet-600 ml-0.5" fill="currentColor" />
+                        <div className="relative" style={{ height: 150, background: "#ede9fe" }}>
+                          <LoadingImage src={storyImageUrl(s)} className="h-full w-full object-cover" />
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/10">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/85 opacity-0 shadow transition-opacity group-hover:opacity-100">
+                              <Play className="ml-0.5 h-5 w-5" style={{ color: "#6d28d9" }} fill="currentColor" />
                             </div>
                           </div>
                         </div>
                         <div className="p-3">
-                          <p className="text-sm font-bold text-zinc-900 leading-tight">{s.title}</p>
-                          <p className="text-xs text-zinc-400 mt-1 line-clamp-2">{s.text.slice(0, 60)}...</p>
+                          <p className="text-[17px] font-bold leading-tight" style={{ color: "#18181b", fontFamily: "var(--font-baloo, inherit)" }}>{s.title}</p>
                         </div>
                       </motion.button>
                       );
@@ -646,6 +662,7 @@ function StoriesContent() {
           </motion.div>
         );
       })}
+     </div>
     </div>
   );
 }
