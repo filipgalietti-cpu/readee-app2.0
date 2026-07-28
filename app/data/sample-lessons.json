@@ -5641,7 +5641,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.8/rb-2b.mp3",
             "ttsScript": "Cats are easy pets. They clean themselves. They sleep a lot. They are quiet!",
-            "displayText": "They clean themselves. They sleep a lot. They are quiet!",
+            "displayText": "Three easy-pet reasons",
             "audioRegenAt": "2026-06-10T19:59:59.817Z",
             "highlightWord": {
               "word": "quiet",
@@ -5955,11 +5955,18 @@
             "sub": "b",
             "audioFile": "audio/lessons/RI.K.9/S3b.mp3",
             "ttsScript": "Book one says bears eat fish. Book two says bears sleep in caves in winter.",
-            "displayText": "Book one says bears eat fish. Book two says bears sleep in caves in winter.",
             "interaction": "Two fact cards appear side by side.",
             "displayDelay": 0,
             "displayStyle": "passage",
-            "audioRegenAt": "2026-07-23T00:48:30.992Z"
+            "audioRegenAt": "2026-07-23T00:48:30.992Z",
+            "displayParts": [
+              {
+                "text": "Book 1: eats fish"
+              },
+              {
+                "text": "Book 2: sleeps in caves"
+              }
+            ]
           },
           {
             "sub": "c",
@@ -7191,27 +7198,27 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1c-Q1",
+        "mcqId": "RF.K.1c-H1",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1c-Q2",
+        "mcqId": "RF.K.1c-H2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1c-Q3",
+        "mcqId": "RF.K.1c-H3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1c-Q4",
+        "mcqId": "RF.K.1c-H4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.1c-Q5",
+        "mcqId": "RF.K.1c-H5",
         "slide": 11
       }
     ]
@@ -8268,27 +8275,27 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2c-Q1",
+        "mcqId": "RF.K.2c-H1",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2c-Q2",
+        "mcqId": "RF.K.2c-H2",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2c-Q3",
+        "mcqId": "RF.K.2c-H3",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2c-Q4",
+        "mcqId": "RF.K.2c-H4",
         "slide": 11
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.2c-Q5",
+        "mcqId": "RF.K.2c-H5",
         "slide": 12
       }
     ]
@@ -9312,7 +9319,7 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.3a-Q1",
+        "mcqId": "RF.K.3a-H1",
         "slide": 8
       },
       {
@@ -10046,27 +10053,27 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.3c-Q1",
+        "mcqId": "RF.K.3c-H1",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.3c-Q2",
+        "mcqId": "RF.K.3c-H2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.3c-Q3",
+        "mcqId": "RF.K.3c-H3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.3c-Q4",
+        "mcqId": "RF.K.3c-H4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RF.K.3c-Q5",
+        "mcqId": "RF.K.3c-H5",
         "slide": 11
       }
     ]
