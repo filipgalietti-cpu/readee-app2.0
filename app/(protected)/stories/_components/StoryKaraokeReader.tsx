@@ -13,7 +13,7 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { Volume2, Play, Pause, Check, ArrowLeft } from "lucide-react";
+import { Volume2, Play, Pause, Check, ArrowLeft, Carrot } from "lucide-react";
 import { useAudio } from "@/lib/audio/use-audio";
 
 export type KaraokeWord = { t: string; start: number; end: number };
@@ -32,6 +32,7 @@ type Props = {
   fallbackText: string;
   fallbackAudioUrl: string;
   karaoke?: StoryKaraoke;
+  carrots?: number;
   onBack: () => void;
   onFinishReading: () => void;
 };
@@ -58,6 +59,7 @@ export default function StoryKaraokeReader({
   fallbackText,
   fallbackAudioUrl,
   karaoke,
+  carrots,
   onBack,
   onFinishReading,
 }: Props) {
@@ -197,101 +199,159 @@ export default function StoryKaraokeReader({
     );
   }
 
-  const atEnd = lineIdx >= sentences.length - 1 && !playing;
+  const n = sentences.length;
+  const atEnd = lineIdx >= n - 1 && !playing;
+  const progressPct = isProse ? (usedAudio ? ((lineIdx + 1) / n) * 100 : 0) : ((lineIdx + 1) / n) * 100;
+  const LINE_H = 132;
+  const MASK = "linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%)";
 
   return (
     <div
-      className="min-h-[calc(100vh-4rem)] w-full px-4 py-8 md:px-8"
+      className="min-h-[calc(100vh-4rem)] w-full px-4 pb-10 pt-6 md:px-7"
       style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
     >
-     <div className="mx-auto max-w-5xl">
-      <div className="mb-4 flex items-center gap-3">
-        <button onClick={back} className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-indigo-700 shadow-sm">
+     <div className="mx-auto" style={{ maxWidth: 1080 }}>
+      {/* Top bar */}
+      <div className="mb-3 flex items-center gap-3">
+        <button onClick={back} className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-white shadow-sm" style={{ color: "#4338ca" }}>
           <ArrowLeft className="h-5 w-5" />
         </button>
-        <h1 className="flex-1 text-center text-xl font-extrabold text-indigo-950" style={{ fontFamily: "var(--font-baloo, inherit)" }}>{title}</h1>
-        <div className="w-11" />
+        <h1 className="flex-1 text-center text-2xl font-extrabold" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>{title}</h1>
+        {typeof carrots === "number" && (
+          <span className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-extrabold" style={{ background: "#fef3c7", color: "#b45309" }}>
+            <Carrot className="h-4 w-4" style={{ color: "#f97316" }} /> {carrots}
+          </span>
+        )}
+        {!isProse && (
+          <span className="hidden rounded-full px-3 py-1.5 text-sm font-bold sm:inline-block" style={{ background: "rgba(255,255,255,0.85)", color: "#4338ca" }}>
+            Line {Math.min(lineIdx + 1, n)} of {n}
+          </span>
+        )}
+      </div>
+
+      {/* Progress rail */}
+      <div className="mb-4 h-[9px] w-full overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.75)" }}>
+        <div className="h-full rounded-full" style={{ width: `${progressPct}%`, background: "linear-gradient(90deg,#6366f1,#8b5cf6)", transition: "width 0.4s" }} />
       </div>
 
       {/* Book spread */}
-      <div className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-xl md:flex-row" style={{ minHeight: 480 }}>
+      <div className="flex flex-col overflow-hidden bg-white shadow-xl md:flex-row" style={{ borderRadius: 28, minHeight: 540 }}>
         <div className="md:w-[44%]">
-          <Image src={imageUrl} alt="" width={640} height={640} className="h-56 w-full bg-[#ede9fe] object-cover md:h-full" style={{ objectPosition: "center 15%" }} />
+          <Image src={imageUrl} alt="" width={720} height={720} className="h-60 w-full bg-[#ede9fe] object-cover md:h-full" style={{ objectPosition: "center 15%" }} />
         </div>
-        <div className="flex flex-1 flex-col justify-between p-8" style={{ background: "#fffdf8" }}>
+        <div className="hidden md:block" style={{ flex: "0 0 3px", background: "linear-gradient(90deg, rgba(0,0,0,0.07), rgba(0,0,0,0))" }} />
+        <div className="flex flex-1 flex-col justify-between" style={{ background: "#fffdf8", padding: "44px 40px 32px" }}>
           {isProse ? (
             /* ── 3–4: whole paragraph, grey-out only after read-along ── */
-            <p className="text-[20px] font-bold leading-[1.85]">
-              {sentences.map((s, si) => {
-                const d = si - lineIdx;
-                const color = !usedAudio ? "#3f3f46" : si === lineIdx ? "#1e1b4b" : d < 0 ? "#a1a1aa" : "#c4c4cc";
-                return (
-                  <span key={si} style={{ color, transition: "color 0.4s" }}>
-                    {wordsOf(s).map((w, wi) => (
-                      <span
-                        key={wi}
-                        style={{
-                          background: usedAudio && playing && si === lineIdx && wi === litWord ? "#fde68a" : "transparent",
-                          borderRadius: 6,
-                          padding: "1px 3px",
-                          transition: "background 0.18s ease",
-                        }}
-                      >
-                        {w.t}{" "}
-                      </span>
-                    ))}
-                  </span>
-                );
-              })}
-            </p>
-          ) : (
-            /* ── K–2: one centered sentence, amber word karaoke ── */
-            <div className="flex flex-1 items-center justify-center text-center">
-              <p className="text-[28px] font-extrabold leading-snug text-indigo-950">
-                {(sentences[lineIdx] ? wordsOf(sentences[lineIdx]) : []).map((w, wi) => (
-                  <span
-                    key={wi}
-                    style={{
-                      background: playing && wi === litWord ? "#fde68a" : "transparent",
-                      borderRadius: 7,
-                      padding: "2px 4px",
-                      transition: "background 0.18s ease",
-                    }}
-                  >
-                    {w.t}{" "}
-                  </span>
-                ))}
+            <div className="flex-1 overflow-y-auto">
+              <p className="text-[20px] font-bold leading-[1.85]" style={{ color: "#d4d4d8" }}>
+                {sentences.map((s, si) => {
+                  const d = si - lineIdx;
+                  const color = !usedAudio ? "#3f3f46" : si === lineIdx ? "#1e1b4b" : d < 0 ? "#a1a1aa" : "#c4c4cc";
+                  return (
+                    <span key={si} style={{ color, transition: "color 0.4s" }}>
+                      {wordsOf(s).map((w, wi) => (
+                        <span
+                          key={wi}
+                          style={{
+                            background: usedAudio && playing && si === lineIdx && wi === litWord ? "#fde68a" : "transparent",
+                            borderRadius: 6,
+                            padding: "1px 3px",
+                            transition: "background 0.18s ease",
+                          }}
+                        >
+                          {w.t}{" "}
+                        </span>
+                      ))}
+                    </span>
+                  );
+                })}
               </p>
+            </div>
+          ) : (
+            /* ── K–2: stacked lines, current sentence ringed + amber word karaoke ── */
+            <div className="relative flex-1 overflow-hidden" style={{ minHeight: 396, WebkitMaskImage: MASK, maskImage: MASK }}>
+              <div
+                className="absolute inset-x-0 top-0"
+                style={{ transform: `translateY(${LINE_H - lineIdx * LINE_H}px)`, transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1)" }}
+              >
+                {sentences.map((s, i) => {
+                  const cur = i === lineIdx;
+                  const d = i - lineIdx;
+                  return (
+                    <div
+                      key={i}
+                      className="mx-auto flex items-center justify-center text-center"
+                      style={{
+                        height: LINE_H,
+                        maxWidth: "94%",
+                        borderRadius: 16,
+                        padding: "0 20px",
+                        background: cur ? "#eef2ff" : "transparent",
+                        boxShadow: cur ? "inset 0 0 0 2px #c7d2fe" : "none",
+                        color: cur ? "#1e1b4b" : d < 0 ? "#a1a1aa" : "#c4c4cc",
+                        fontSize: cur ? 26 : 20,
+                        fontWeight: 800,
+                        opacity: cur ? 1 : Math.abs(d) === 1 ? 0.78 : 0.32,
+                        transform: cur ? "scale(1)" : "scale(0.97)",
+                        transition: "all 0.35s ease",
+                      }}
+                    >
+                      {cur ? (
+                        <span>
+                          {wordsOf(s).map((w, wi) => (
+                            <span
+                              key={wi}
+                              style={{
+                                background: playing && wi === litWord ? "#fde68a" : "transparent",
+                                borderRadius: 7,
+                                padding: "2px 4px",
+                                transition: "background 0.18s ease",
+                              }}
+                            >
+                              {w.t}{" "}
+                            </span>
+                          ))}
+                        </span>
+                      ) : (
+                        s.text
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           )}
 
           {/* Controls */}
-          <div className="mt-8 flex items-center justify-between gap-3 border-t border-[#f0ece1] pt-5">
+          <div className="mt-6 flex items-center justify-between gap-3 border-t pt-5" style={{ borderColor: "#f0ece1" }}>
             <button
               onClick={isProse ? toggleProse : replayLine}
-              className="inline-flex h-12 items-center gap-2 rounded-full px-5 text-sm font-bold transition"
-              style={{ background: playing ? "#6d28d9" : "#ede9fe", color: playing ? "#fff" : "#6d28d9" }}
+              className="inline-flex items-center gap-2 rounded-full px-5 text-sm font-bold transition"
+              style={{ height: 52, background: playing ? "#6d28d9" : "#ede9fe", color: playing ? "#fff" : "#6d28d9" }}
             >
               <Volume2 className="h-4 w-4" />
               {isProse ? (playing ? "Stop reading" : "Read it to me") : "Listen again"}
             </button>
 
-            {isProse ? (
-              <button onClick={finish} className="inline-flex h-14 min-w-[200px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-700 to-violet-600 px-6 text-lg font-extrabold text-white shadow-md active:scale-[0.98]">
-                <Check className="h-5 w-5" /> I&apos;m done reading
-              </button>
-            ) : atEnd ? (
-              <button onClick={finish} className="inline-flex h-14 min-w-[200px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-700 to-violet-600 px-6 text-lg font-extrabold text-white shadow-md active:scale-[0.98]">
-                <Check className="h-5 w-5" /> Go to questions
-              </button>
-            ) : (
-              <button onClick={toggleLinePlay} className="inline-flex h-14 min-w-[200px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-indigo-700 to-violet-600 px-6 text-lg font-extrabold text-white shadow-md active:scale-[0.98]">
-                {playing ? <><Pause className="h-5 w-5" /> Pause</> : <><Play className="h-5 w-5" /> {lineIdx > 0 ? "Keep reading" : "Play story"}</>}
-              </button>
-            )}
+            <button
+              onClick={isProse || atEnd ? finish : toggleLinePlay}
+              className="inline-flex items-center justify-center gap-2 rounded-full px-6 font-extrabold text-white shadow-md active:scale-[0.98]"
+              style={{ height: 60, minWidth: 208, fontSize: 21, background: "linear-gradient(90deg,#4338ca,#7c3aed)", fontFamily: "var(--font-baloo, inherit)" }}
+            >
+              {isProse ? (
+                <><Check className="h-5 w-5" /> I&apos;m done reading</>
+              ) : atEnd ? (
+                <><Check className="h-5 w-5" /> Go to questions</>
+              ) : playing ? (
+                <><Pause className="h-5 w-5" /> Pause</>
+              ) : (
+                <><Play className="h-5 w-5" /> {lineIdx > 0 ? "Keep reading" : "Play story"}</>
+              )}
+            </button>
           </div>
           {!isProse && !atEnd && (
-            <button onClick={finish} className="mt-3 self-center text-sm font-semibold text-violet-600 underline">
+            <button onClick={finish} className="mt-3 self-center text-sm font-semibold underline" style={{ color: "#6d28d9" }}>
               Skip to questions
             </button>
           )}

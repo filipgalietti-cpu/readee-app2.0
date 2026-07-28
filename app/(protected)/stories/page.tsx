@@ -417,6 +417,7 @@ function StoriesContent() {
           fallbackText={story.text}
           fallbackAudioUrl={storyAudioUrl(story)}
           karaoke={(storiesKaraoke as Record<string, StoryKaraoke>)[story.id]}
+          carrots={child.carrots ?? undefined}
           onBack={closeStory}
           onFinishReading={() => setPhase("quiz")}
         />
