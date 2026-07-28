@@ -20,6 +20,8 @@ import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
 import { BookOpen, Lock, ChevronDown, Play, Volume2 } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
+import storiesKaraoke from "@/app/data/stories-karaoke.json";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -77,6 +79,8 @@ function StoriesContent() {
 
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
   const [activeStory, setActiveStory] = useState<string | null>(null);
+  // Reading experience comes first (karaoke reader), then the quiz.
+  const [phase, setPhase] = useState<"reading" | "quiz">("reading");
   const [currentQ, setCurrentQ] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -179,12 +183,12 @@ function StoriesContent() {
   const openStory = useCallback((story: Story) => {
     unlockAudio();
     setActiveStory(story.id);
+    setPhase("reading"); // the karaoke reader owns audio playback now
     setCurrentQ(0);
     setSelectedAnswer(null);
     setShowResult(false);
     setCorrectCount(0);
-    playUrl(storyAudioUrl(story));
-  }, [unlockAudio, playUrl]);
+  }, [unlockAudio]);
 
   const closeStory = useCallback(() => {
     stop();
@@ -403,10 +407,26 @@ function StoriesContent() {
       );
     }
 
+    // Reading phase — the karaoke reader (K–2 slow line karaoke; 3–4 reveal + read-along).
+    if (phase === "reading") {
+      return (
+        <StoryKaraokeReader
+          title={story.title}
+          grade={story.grade}
+          imageUrl={storyImageUrl(story)}
+          fallbackText={story.text}
+          fallbackAudioUrl={storyAudioUrl(story)}
+          karaoke={(storiesKaraoke as Record<string, StoryKaraoke>)[story.id]}
+          onBack={closeStory}
+          onFinishReading={() => setPhase("quiz")}
+        />
+      );
+    }
+
     return (
       <div className="max-w-lg mx-auto py-6 px-4">
-        <button onClick={closeStory} className="text-sm text-violet-600 font-medium mb-4">
-          &larr; Back to Stories
+        <button onClick={() => setPhase("reading")} className="text-sm text-violet-600 font-medium mb-4">
+          &larr; Back to story
         </button>
 
         {/* Story card */}
