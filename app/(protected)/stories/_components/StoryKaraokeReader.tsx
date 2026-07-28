@@ -201,9 +201,10 @@ export default function StoryKaraokeReader({
 
   return (
     <div
-      className="mx-auto max-w-3xl px-4 py-6"
+      className="min-h-[calc(100vh-4rem)] w-full px-4 py-8 md:px-8"
       style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
     >
+     <div className="mx-auto max-w-5xl">
       <div className="mb-4 flex items-center gap-3">
         <button onClick={back} className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-indigo-700 shadow-sm">
           <ArrowLeft className="h-5 w-5" />
@@ -296,6 +297,7 @@ export default function StoryKaraokeReader({
           )}
         </div>
       </div>
+     </div>
     </div>
   );
 }
