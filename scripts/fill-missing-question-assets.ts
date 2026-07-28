@@ -70,6 +70,10 @@ const DRY = args.includes("--dry-run");
 // with the obnoxious voice), not just missing ones — regenerates to the
 // canonical path on Autonoe + rewrites the URL.
 const REREC_OLD = args.includes("--rerecord-old");
+// --only-old: re-record ONLY the old readee-content batch (voice uniformity),
+// WITHOUT filling questions that have no prompt audio. Prevents scope-creep
+// generation of read-aloud audio for G2-4 questions that intentionally lack it.
+const ONLY_OLD = args.includes("--only-old");
 const isOldAudio = (url?: string) => !!url && /readee-content/.test(url);
 
 type Question = {
@@ -230,7 +234,9 @@ async function run() {
         // ── Audio ──
         if (
           doAudio &&
-          (!q.audio_url || !q.audio_url.startsWith("http") || (REREC_OLD && isOldAudio(q.audio_url)))
+          (ONLY_OLD
+            ? REREC_OLD && isOldAudio(q.audio_url)
+            : !q.audio_url || !q.audio_url.startsWith("http") || (REREC_OLD && isOldAudio(q.audio_url)))
         ) {
           const text = buildExpectedTts(q, g.key);
           const audioPath = `${g.folder}/${s.standard_id}/${q.id}.wav`;

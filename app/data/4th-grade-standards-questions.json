@@ -133,7 +133,8 @@
           "correct_feedback": "Yes! The story says the coach always picked Maria because she was the fastest runner on the team.",
           "incorrect_feedback": "Take another look. The story tells you one special thing about Maria's running. What made her stand out?",
           "reveal_feedback": "The answer is that she was the fastest runner on the team. That's exactly why the coach chose her for the final leg.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-E1.wav"
         },
         {
           "id": "RL.4.1-E2",
@@ -153,7 +154,8 @@
           "correct_feedback": "That's right! The story says the rain fell all day, and that's the reason the game was canceled.",
           "incorrect_feedback": "Hmm, look back at the weather in the story. What was happening all day long?",
           "reveal_feedback": "The answer is that it rained all day. The rain is what caused the game to be canceled.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-E2.wav"
         },
         {
           "id": "RL.4.1-E3",
@@ -173,7 +175,8 @@
           "correct_feedback": "Great! Studying his spelling words every night for a week is the detail that shows Ben really worked hard.",
           "incorrect_feedback": "Good try. Which detail shows Ben putting in real effort, not goofing off or skipping?",
           "reveal_feedback": "The answer is that he studied his spelling words every night for a week. That steady practice shows his hard work.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-E3.wav"
         },
         {
           "id": "RL.4.1-E4",
@@ -193,7 +196,8 @@
           "correct_feedback": "Yes! Wagging its tail and running to greet its owner shows the puppy is happy and excited to see them.",
           "incorrect_feedback": "Almost. Think about a wagging tail and running to say hello. Do those actions seem happy or upset?",
           "reveal_feedback": "The answer is that the puppy feels happy and excited to see them. The wagging tail gives it away.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-E4.wav"
         },
         {
           "id": "RL.4.1-E5",
@@ -213,7 +217,8 @@
           "correct_feedback": "Nice! Grandpa says the glove was his when he was Lily's age, so it has belonged to him since he was young.",
           "incorrect_feedback": "Not quite. Grandpa said the glove was his 'when I was your age.' What does that tell you about how old it is?",
           "reveal_feedback": "The answer is that it has belonged to Grandpa since he was young. He had it back when he was Lily's age.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.1/RL.4.1-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.1/RL.4.1-E5.wav"
         }
       ]
     },
@@ -279,7 +284,8 @@
           "correct_feedback": "Great! Lily fell many times but kept trying until she rode the bike. The lesson is never give up, even when things are hard.",
           "incorrect_feedback": "Hmm, think about what Lily did after all her falls and scraped knees. What big idea does her story teach?",
           "reveal_feedback": "The lesson is never give up, even when things are hard. Lily kept trying after every fall until she succeeded.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.2/RL.4.2-Q3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.2/RL.4.2-Q3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q3.wav"
         },
         {
           "id": "RL.4.2-Q4",
@@ -317,7 +323,8 @@
           "correct_feedback": "Perfect! That sentence covers the whole story: hungry Lily bravely scared away the blue jay to get her acorn breakfast.",
           "incorrect_feedback": "Good try. A summary covers the WHOLE story from start to finish, not just one small part. Which one does that?",
           "reveal_feedback": "The best summary is that Lily the squirrel was hungry, so she bravely scared away a blue jay to get her acorn breakfast. It covers the whole story.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.2/RL.4.2-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.2/RL.4.2-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.2/RL.4.2-Q5.wav"
         }
       ]
     },
@@ -386,7 +393,8 @@
           "correct_feedback": "Excellent! The best answer captures it all: Leo is shy but friendly, loves dinosaurs, reads quietly, then shares his interest with Maya.",
           "incorrect_feedback": "Hmm, describing Leo 'in depth' means using several clues about who he is, not just one. Which answer does the most?",
           "reveal_feedback": "The best answer is that Leo is a shy but friendly new student who loves reading, especially dinosaurs, and shares his interest with others. It uses the most clues.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-Q4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-Q4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-Q4.wav"
         },
         {
           "id": "RL.4.3-Q5",
@@ -427,7 +435,8 @@
           "correct_feedback": "Yes! Sharing her lunch, helping clean up, and saying nice things all show Maria is kind and helpful.",
           "incorrect_feedback": "Take another look. Maria shares, helps, and says nice things. What kind of person acts that way?",
           "reveal_feedback": "The answer is kind and helpful. Maria shares her lunch and helps others, which shows exactly that.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-E1.wav"
         },
         {
           "id": "RL.4.3-E2",
@@ -447,7 +456,8 @@
           "correct_feedback": "That's right! Darkness, dust, cobwebs, and creaky floors make the house feel spooky and old.",
           "incorrect_feedback": "Hmm, imagine a dark house full of cobwebs with creaky floors. Does that feel cheerful or something else?",
           "reveal_feedback": "The answer is spooky and old. The cobwebs, dust, and creaky floors all point to that setting.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-E2.wav"
         },
         {
           "id": "RL.4.3-E3",
@@ -467,7 +477,8 @@
           "correct_feedback": "Yes! Pumping his fist, shouting 'We won,' and jumping with a huge smile show Ben feels excited and happy.",
           "incorrect_feedback": "Almost. Ben shouts 'We won' and jumps with a big smile. Do those actions sound happy or upset?",
           "reveal_feedback": "The answer is excited and happy. Ben's cheering and big smile show his feelings clearly.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-E3.wav"
         },
         {
           "id": "RL.4.3-E4",
@@ -487,7 +498,8 @@
           "correct_feedback": "Great! Warm sun, splashing waves, and sandcastles make this beach setting sunny and fun.",
           "incorrect_feedback": "Good try. Think about warm sun, gentle waves, and kids building sandcastles. What is that setting like?",
           "reveal_feedback": "The answer is sunny and fun. The warm beach and playing kids create that cheerful setting.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-E4.wav"
         },
         {
           "id": "RL.4.3-E5",
@@ -507,7 +519,8 @@
           "correct_feedback": "Yes! Feeding chickens, fixing fences, and never stopping show that Grandpa is hardworking.",
           "incorrect_feedback": "Not quite. Grandpa wakes early and never stops working on his chores. What kind of person is that?",
           "reveal_feedback": "The answer is hardworking. Grandpa's early mornings and endless chores show it well.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.3/RL.4.3-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.3/RL.4.3-E5.wav"
         }
       ]
     },
@@ -640,7 +653,8 @@
           "correct_feedback": "Yes! Lions are known for courage, so 'as brave as a lion' means the knight was very brave.",
           "incorrect_feedback": "Hmm, what are lions famous for? That's the quality the knight has when facing the dragon.",
           "reveal_feedback": "The answer is very brave. Comparing the knight to a lion means he was full of courage.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-E1.wav"
         },
         {
           "id": "RL.4.4-E2",
@@ -660,7 +674,8 @@
           "correct_feedback": "Right! The story says the voice was loud and deep enough to fill the cave, so 'booming' means loud and deep.",
           "incorrect_feedback": "Take another look. A booming voice fills the whole cave. Does that sound tiny and soft, or something bigger?",
           "reveal_feedback": "The answer is loud and deep. A booming voice is big and powerful, like thunder filling the cave.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-E2.wav"
         },
         {
           "id": "RL.4.4-E3",
@@ -680,7 +695,8 @@
           "correct_feedback": "Yes! Maya frowned and didn't want to play or smile, so 'gloomy' means she felt sad.",
           "incorrect_feedback": "Almost. Maya frowned and didn't want to smile or play. What feeling matches those actions?",
           "reveal_feedback": "The answer is sad. 'Gloomy' describes Maya's down, frowning mood.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-E3.wav"
         },
         {
           "id": "RL.4.4-E4",
@@ -700,7 +716,8 @@
           "correct_feedback": "Great! A shadow is always right behind you, so calling his sister his 'shadow' means she always stayed close behind him.",
           "incorrect_feedback": "Good try. She isn't really made of darkness. Think about where a shadow goes. What is the sister doing?",
           "reveal_feedback": "The answer is that she always stayed close behind him. Like a real shadow, she followed him everywhere.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-E4.wav"
         },
         {
           "id": "RL.4.4-E5",
@@ -720,7 +737,8 @@
           "correct_feedback": "Yes! Hercules was a mighty hero, so having 'the strength of Hercules' means the hero was very strong.",
           "incorrect_feedback": "Hmm, Hercules was famous for one amazing ability, and the hero could lift a boulder. What quality is that?",
           "reveal_feedback": "The answer is strong. Comparing him to Hercules shows just how much power the hero had.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.4/RL.4.4-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.4/RL.4.4-E5.wav"
         }
       ]
     },
@@ -811,7 +829,8 @@
           "correct_feedback": "Yes! A group of lines in a poem is called a stanza, kind of like a paragraph in a story.",
           "incorrect_feedback": "Take another look. We're talking about poems here. Which word names a group of lines grouped together?",
           "reveal_feedback": "The answer is a stanza. That's the name for a group of lines in a poem.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-E1.wav"
         },
         {
           "id": "RL.4.5-E2",
@@ -831,7 +850,8 @@
           "correct_feedback": "Right! A drama, or play, is written so actors can perform it on a stage.",
           "incorrect_feedback": "Hmm, which of these is written for actors to perform, not just to read or use for information?",
           "reveal_feedback": "The answer is a drama, or play. It's the kind of writing meant to be acted out on a stage.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-E2.wav"
         },
         {
           "id": "RL.4.5-E3",
@@ -851,7 +871,8 @@
           "correct_feedback": "Yes! Prose, like stories and novels, is organized into paragraphs.",
           "incorrect_feedback": "Take another look. Prose is regular story writing. Poems use stanzas, but what does prose group its sentences into?",
           "reveal_feedback": "The answer is paragraphs. Prose organizes its sentences into paragraphs, while poems use stanzas.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-E3.wav"
         },
         {
           "id": "RL.4.5-E4",
@@ -871,7 +892,8 @@
           "correct_feedback": "Yes! The words a character says out loud are their lines, also called dialogue.",
           "incorrect_feedback": "Hmm, page numbers and covers don't tell a character what to say. Which part gives them their spoken words?",
           "reveal_feedback": "The answer is their lines, also called dialogue. Those are the words a character speaks out loud in a play.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-E4.wav"
         },
         {
           "id": "RL.4.5-E5",
@@ -891,7 +913,8 @@
           "correct_feedback": "Right! Poems are usually written in short lines, which makes them look different from prose on the page.",
           "incorrect_feedback": "Take another look. Think about how a poem is shaped on the page compared to a long story. What does it use?",
           "reveal_feedback": "The answer is short lines. Poems are usually written in short lines, unlike the long paragraphs of prose.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.5/RL.4.5-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.5/RL.4.5-E5.wav"
         }
       ]
     },
@@ -918,7 +941,8 @@
           "correct_feedback": "Yes! Without an inside narrator, the reader would have to guess more about the character's thoughts based on their actions.",
           "incorrect_feedback": "Take another look. If the narrator is NOT inside the character's head, would we still get to know their private feelings directly?",
           "reveal_feedback": "The answer is that the reader would have to guess more about the character's inner thoughts based on their actions. An outside narrator can't reveal private feelings directly.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-Q1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-Q1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q1.wav"
         },
         {
           "id": "RL.4.6-Q2",
@@ -937,7 +961,8 @@
           "correct_feedback": "Exactly! Passage A uses 'I,' so you feel like the character. Passage B uses 'he,' so you watch from the outside.",
           "incorrect_feedback": "Hmm, notice Passage A says 'I' and Passage B says 'he.' How does each word change how close you feel to Leo?",
           "reveal_feedback": "The answer is that Passage A makes you feel like you are the character, while Passage B lets you watch the character from the outside. The words 'I' and 'he' create that difference.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-Q2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-Q2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q2.wav"
         },
         {
           "id": "RL.4.6-Q3",
@@ -977,7 +1002,8 @@
           "correct_feedback": "Yes! The narrator isn't Lily, but it shares only Lily's worries and feelings. That's an outside narrator zooming in on one character.",
           "incorrect_feedback": "Hmm, look at whose thoughts we hear. Do we get inside everyone's head, or just one person's? And is that person telling the story?",
           "reveal_feedback": "The answer is an outside narrator who focuses on one character. We hear only Lily's feelings, but the story uses 'she,' not 'I.'",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-Q4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-Q4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-Q4.wav"
         },
         {
           "id": "RL.4.6-Q5",
@@ -1017,7 +1043,8 @@
           "correct_feedback": "Right! The word 'I' means the narrator is talking about themselves, so it's first-person point of view.",
           "incorrect_feedback": "Take another look at the special words. Do you see 'I' and 'my,' or names like 'he' and 'she'? That tells you the point of view.",
           "reveal_feedback": "The answer is first-person. The word 'I' shows the narrator is a character telling their own story.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-E1.wav"
         },
         {
           "id": "RL.4.6-E2",
@@ -1036,7 +1063,8 @@
           "correct_feedback": "Nice! It uses her name 'Maria' and the word 'she,' so an outside narrator is telling it. That's third-person.",
           "incorrect_feedback": "Good try. Check the words carefully. Does the narrator say 'I,' or do they name Maria and say 'she'? That points to the answer.",
           "reveal_feedback": "The answer is third-person. The story uses 'Maria' and 'she,' so the narrator is outside the story, not the character.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-E2.wav"
         },
         {
           "id": "RL.4.6-E3",
@@ -1055,7 +1083,8 @@
           "correct_feedback": "Yes! The word 'I' shows the narrator is a character in the story, talking about themselves. That's first-person.",
           "incorrect_feedback": "Close one. Which word means the narrator is talking about their own self, not about someone else? Say each choice aloud.",
           "reveal_feedback": "The answer is 'I.' That special word shows the narrator is a character telling the story about themselves.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-E3.wav"
         },
         {
           "id": "RL.4.6-E4",
@@ -1074,7 +1103,8 @@
           "correct_feedback": "Great! The word 'He' means an outside narrator is telling about the character, not the character speaking. That's third-person.",
           "incorrect_feedback": "Not yet. Look at the very first word. Does it say 'I,' or does it name someone with 'he'? That decides the point of view.",
           "reveal_feedback": "The answer is third-person. The story uses 'He,' so a narrator outside the story is telling it.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-E4.wav"
         },
         {
           "id": "RL.4.6-E5",
@@ -1093,7 +1123,8 @@
           "correct_feedback": "Yes! 'I love the smell of fresh cookies' uses 'I,' so the writer is telling about themselves. That's first-person.",
           "incorrect_feedback": "Take another look. Which sentence uses the word 'I' to show the writer is talking about their own self? The others use names or 'they.'",
           "reveal_feedback": "The answer is 'I love the smell of fresh cookies.' The word 'I' shows the narrator is a character in the story.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.6/RL.4.6-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.6/RL.4.6-E5.wav"
         }
       ]
     },
@@ -1204,7 +1235,8 @@
           "correct_feedback": "Exactly! The book's tall, glowing tower becomes a short brick building in the movie. The biggest change is how the tower looks.",
           "incorrect_feedback": "Take another look. The question is about the tower. Compare the tall glowing tower to the short brick one. What's the clearest difference?",
           "reveal_feedback": "The answer is: how the wizard's tower appears is very different in each version. The book's grand glowing tower became a plain short building.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-Q5.wav"
         },
         {
           "id": "RL.4.7-E1",
@@ -1224,7 +1256,8 @@
           "correct_feedback": "Yes! In the book you only read words, but the movie let Maya hear the wolves and wind. The movie adds sound you can hear.",
           "incorrect_feedback": "Hmm, think about the word HEAR. The book had words on a page. What new thing did the movie let Maya's ears do?",
           "reveal_feedback": "The answer is sound you can hear. The movie let Maya hear the wolves howling and the wind, which a book cannot do.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-E1.wav"
         },
         {
           "id": "RL.4.7-E2",
@@ -1244,7 +1277,8 @@
           "correct_feedback": "Right! On the book page you just read the play, but on stage Ben saw real people moving and speaking. That's what acting adds.",
           "incorrect_feedback": "Good try. Ben's class acted it out on a stage. What new thing could his eyes SEE that flat book pages could not show?",
           "reveal_feedback": "The answer is real actors moving and speaking. On stage, live people bring the play to life in a way the book pages could not.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-E2.wav"
         },
         {
           "id": "RL.4.7-E3",
@@ -1264,7 +1298,8 @@
           "correct_feedback": "Yes! The book called the party 'happy,' and the movie's bright colors and cheerful music feel happy too. They match!",
           "incorrect_feedback": "Not yet. The book's party is colorful, and the movie uses bright colors and cheerful music. What good feeling do BOTH show?",
           "reveal_feedback": "The answer is happy. The book says the party is happy, and the movie's bright colors and cheerful music show the same happy feeling.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-E3.wav"
         },
         {
           "id": "RL.4.7-E4",
@@ -1284,7 +1319,8 @@
           "correct_feedback": "Nice! Instead of reading, Liam listened. A gentle voice reading aloud lets him hear how the words sound.",
           "incorrect_feedback": "Take another look. It's an AUDIO version, so an actor reads out loud. What does listening let Liam do that reading silently would not?",
           "reveal_feedback": "The answer is hear how the words sound. An audio version reads the story aloud, so Liam listens instead of reading with his eyes.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-E4.wav"
         },
         {
           "id": "RL.4.7-E5",
@@ -1304,7 +1340,8 @@
           "correct_feedback": "Right! The book says Sam is tall with red hair, and the movie actor is tall with red hair too. The movie matches the book.",
           "incorrect_feedback": "Close one. Compare them. The book says tall with red hair, and the actor is tall with red hair. Do they look the same or different?",
           "reveal_feedback": "The answer is: it matches the book. Both the book Sam and the movie actor are tall with red hair, so they look the same.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.7/RL.4.7-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.7/RL.4.7-E5.wav"
         }
       ]
     },
@@ -1352,7 +1389,8 @@
           "correct_feedback": "Yes! In the first myth a god sends the flood as a punishment, but in the second it's just a river overflowing naturally. That's the key difference.",
           "incorrect_feedback": "Good try. Ask WHY each flood began. One is caused on purpose by a god, the other happens on its own. How are those reasons different?",
           "reveal_feedback": "The answer is: the first shows the flood as a punishment, the second as a natural event. One god acts on purpose; the other is just a river.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-Q2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-Q2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q2.wav"
         },
         {
           "id": "RL.4.9-Q3",
@@ -1371,7 +1409,8 @@
           "correct_feedback": "Right! A small fox and a small spider both beat bigger, stronger foes using their brains. The shared idea is that being smart helps the weaker one win.",
           "incorrect_feedback": "Almost. Both main characters are small but still win. How do they beat the bigger animals? Think about what those two heroes share.",
           "reveal_feedback": "The answer is: both teach that being smart can help a weaker character win. The little fox and little spider both outsmart stronger animals.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-Q3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-Q3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q3.wav"
         },
         {
           "id": "RL.4.9-Q4",
@@ -1390,7 +1429,8 @@
           "correct_feedback": "Exactly! To compare HOW each story shows courage, you look at the brave actions the characters take and what happens because of them.",
           "incorrect_feedback": "Take another look. Counting the word 'courage' or checking dates won't show HOW courage looks. What would you actually watch the characters do?",
           "reveal_feedback": "The answer is: look at what brave actions the characters take and the results. That shows HOW each story pictures courage, not just the word.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-Q4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-Q4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-Q4.wav"
         },
         {
           "id": "RL.4.9-E1",
@@ -1410,7 +1450,8 @@
           "correct_feedback": "Yes! Both the Chinese and Hawaiian myths explain why the moon changes shape each month. Same topic, different cultures.",
           "incorrect_feedback": "Not yet. Both stories are about the same thing in the sky. Reread what each myth explains, and find the topic they share.",
           "reveal_feedback": "The answer is why the moon changes shape. Both myths, from different cultures, explain that same thing about the moon.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-E1.wav"
         },
         {
           "id": "RL.4.9-E2",
@@ -1430,7 +1471,8 @@
           "correct_feedback": "Right! Both folktales teach that when you are kind to others, good things come back to you. That shared lesson is the theme.",
           "incorrect_feedback": "Good try. A theme is the lesson a story teaches. Both stories teach the same lesson about how being kind works. What is it?",
           "reveal_feedback": "The answer is kindness comes back to you. Both folktales teach that same lesson, so it's the theme they share.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-E2.wav"
         },
         {
           "id": "RL.4.9-E3",
@@ -1450,7 +1492,8 @@
           "correct_feedback": "Yes! A clever hero and a clever spider both use a trick to escape danger. That's how the two stories are alike.",
           "incorrect_feedback": "Close one. In both tales a smart character faces something dangerous. How do they get away? Find what both stories have in common.",
           "reveal_feedback": "The answer is: both have a clever character who escapes danger with a trick. The hero and the spider both trick their way out of trouble.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-E3.wav"
         },
         {
           "id": "RL.4.9-E4",
@@ -1470,7 +1513,8 @@
           "correct_feedback": "Right! A bowling giant and a roaring dragon are different, but both myths explain the same thing: what causes thunder.",
           "incorrect_feedback": "Take another look. Forget the giant and the dragon. What loud thing in the sky are both myths trying to explain?",
           "reveal_feedback": "The answer is: they both try to explain what causes thunder. Different characters, but the same big question about that sky sound.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-E4.wav"
         },
         {
           "id": "RL.4.9-E5",
@@ -1490,7 +1534,8 @@
           "correct_feedback": "Yes! Both heroes are brave and fight a monster to protect their village. That's exactly what they have in common.",
           "incorrect_feedback": "Not yet. One hero is Norse and one is Mexican, but they do the same brave thing. What do both heroes do for their village?",
           "reveal_feedback": "The answer is: each is brave and fights a monster to protect the village. Both heroes share that same courageous action.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.9/RL.4.9-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.9/RL.4.9-E5.wav"
         }
       ]
     },
@@ -1623,7 +1668,8 @@
           "correct_feedback": "Yes! Maya gasped and said the ocean was bigger than she imagined. Those clues show she feels amazed and excited.",
           "incorrect_feedback": "Take another look at what Maya does. She gasps and presses her face to the window. Do those actions sound bored, or full of wonder?",
           "reveal_feedback": "The answer is amazed and excited. Maya gasps and says the ocean is bigger than she imagined, which shows her wonder.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-E1.wav"
         },
         {
           "id": "RL.4.10-E2",
@@ -1643,7 +1689,8 @@
           "correct_feedback": "Right! The story talks about a lighthouse on a cliff guiding ships to shore. It takes place at a lighthouse by the sea.",
           "incorrect_feedback": "Good try. Look at the clue words: a lighthouse, a cliff, and ships. What kind of place do those details point to?",
           "reveal_feedback": "The answer is at a lighthouse by the sea. The story describes a lighthouse on a cliff guiding ships to shore.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-E2.wav"
         },
         {
           "id": "RL.4.10-E3",
@@ -1663,7 +1710,8 @@
           "correct_feedback": "Yes! Ben studied all week and every word was correct, so he jumped up smiling. He's happy because he got every word right.",
           "incorrect_feedback": "Not yet. Reread what happened. Ben studied hard, and his paper came back with every word a certain way. Why the big smile?",
           "reveal_feedback": "The answer is: he got every word right. Ben studied all week, and every spelling word was correct, so he cheered.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-E3.wav"
         },
         {
           "id": "RL.4.10-E4",
@@ -1683,7 +1731,8 @@
           "correct_feedback": "Right! Rain slams the windows, thunder shakes the house, and the children huddle together. It's a scary storm at night.",
           "incorrect_feedback": "Take another look at the clues: rain, thunder, and kids pulling blankets tight. Does that sound sunny, or like something else?",
           "reveal_feedback": "The answer is a scary storm at night. The rain, thunder, and frightened children all point to a nighttime storm.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-E4.wav"
         },
         {
           "id": "RL.4.10-E5",
@@ -1703,7 +1752,8 @@
           "correct_feedback": "Yes! Grandpa says the glove was his and softly gives it to Lily. He wants to share something special with her.",
           "incorrect_feedback": "Good try. Grandpa gives Lily his own old glove and speaks softly. Does that sound like he dislikes it, or that it means a lot?",
           "reveal_feedback": "The answer is: because he wants to share something special with her. The glove was his as a boy, and he passes it on with love.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RL.4.10/RL.4.10-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RL.4.10/RL.4.10-E5.wav"
         }
       ]
     },
@@ -1814,7 +1864,8 @@
           "correct_feedback": "Right! Maya woke early, hummed, and smiled the whole time she baked. Those happy clues let you infer she enjoys baking.",
           "incorrect_feedback": "Good try. An inference is a smart guess from clues. Notice she hums and smiles while baking. What does that suggest about her, beyond what's stated?",
           "reveal_feedback": "The answer is: Maya enjoys baking. Her humming and big smile are clues that let you infer she loves it, not just facts she listed.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-Q5.wav"
         },
         {
           "id": "RI.4.1-E1",
@@ -1834,7 +1885,8 @@
           "correct_feedback": "Yes! The sentence says honeybees live in a home called a hive. You found the answer right in the text.",
           "incorrect_feedback": "Take another look at the sentence. It names the honeybee's home with one special word. Read it again and find that word.",
           "reveal_feedback": "The answer is a hive. The sentence says honeybees live together in a home called a hive.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-E1.wav"
         },
         {
           "id": "RI.4.1-E2",
@@ -1854,7 +1906,8 @@
           "correct_feedback": "Right! The text says the Sahara is very dry. You pulled the answer straight from the sentence.",
           "incorrect_feedback": "Good try. Reread the sentence about the Sahara. It tells you exactly what the desert is like. What word does it use?",
           "reveal_feedback": "The answer is very dry. The sentence says the Sahara is the largest hot desert and it is very dry.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-E2.wav"
         },
         {
           "id": "RI.4.1-E3",
@@ -1874,7 +1927,8 @@
           "correct_feedback": "Yes! The sentence says owls hunt at night, so they sleep during the day. You matched it perfectly.",
           "incorrect_feedback": "Not yet. The sentence says owls hunt at night. If they're busy hunting then, when would they rest? Reread and find it.",
           "reveal_feedback": "The answer is during the day. The sentence says owls hunt at night, so they sleep during the day.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-E3.wav"
         },
         {
           "id": "RI.4.1-E4",
@@ -1894,7 +1948,8 @@
           "correct_feedback": "Right! The sentence says the Nile gives people water to drink. You found the detail in the text.",
           "incorrect_feedback": "Take another look at the sentence about the Nile. It names one thing the river gives people. What is it?",
           "reveal_feedback": "The answer is water to drink. The sentence says the Nile is a long river that gives people water to drink.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-E4.wav"
         },
         {
           "id": "RI.4.1-E5",
@@ -1914,7 +1969,8 @@
           "correct_feedback": "Yes! The sentence says the rain sent them 'inside the school' for lunch. You pulled the answer straight from the words.",
           "incorrect_feedback": "Hmm, look at the sentence again. Where does it actually say the class went when the rain started?",
           "reveal_feedback": "The answer is 'Inside the school.' The sentence tells us the rain sent the class indoors to eat their lunch.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.1/RI.4.1-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.1/RI.4.1-E5.wav"
         }
       ]
     },
@@ -1983,7 +2039,8 @@
           "correct_feedback": "Great! A good summary covers the big points, and this one names both how bees help plants grow AND that they make honey.",
           "incorrect_feedback": "Close one. A summary should cover the WHOLE passage, not just one part. Which choice includes the most important ideas?",
           "reveal_feedback": "The best summary is the one about bees helping plants grow seeds by spreading pollen and also making honey. It covers all the big ideas, not just one.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-Q3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-Q3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-Q3.wav"
         },
         {
           "id": "RI.4.2-Q4",
@@ -2045,7 +2102,8 @@
           "correct_feedback": "Yes! The whole paragraph is about how bees help crops grow. That's the big idea it's built around.",
           "incorrect_feedback": "Hmm, look again. What is EVERY sentence in the paragraph really talking about?",
           "reveal_feedback": "The main idea is 'Bees are important because they help crops grow.' That's what all the sentences are about together.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-E1.wav"
         },
         {
           "id": "RI.4.2-E2",
@@ -2065,7 +2123,8 @@
           "correct_feedback": "Right! The paragraph tells us the heart's main job is pumping blood all through your body. That's the big idea.",
           "incorrect_feedback": "Good try. Some choices are barely in the paragraph. What is it MOSTLY about?",
           "reveal_feedback": "The paragraph is mostly about how the heart pumps blood through your body. That's its whole job and its main idea.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-E2.wav"
         },
         {
           "id": "RI.4.2-E3",
@@ -2085,7 +2144,8 @@
           "correct_feedback": "Yes! Every sentence connects to how recycling keeps our planet cleaner. You found the main idea.",
           "incorrect_feedback": "Not yet. Some of those are tiny details. What is the WHOLE paragraph really about?",
           "reveal_feedback": "The main idea is 'Recycling helps keep the planet clean.' The other choices are just small facts, not the big point.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-E3.wav"
         },
         {
           "id": "RI.4.2-E4",
@@ -2105,7 +2165,8 @@
           "correct_feedback": "Right! The paragraph is all about how dry deserts are and how little rain they get. Great job finding the big idea.",
           "incorrect_feedback": "Take another look. What is the paragraph MOSTLY describing from start to finish?",
           "reveal_feedback": "The paragraph is mostly about how deserts are dry places that get very little rain. That's the main idea.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-E4.wav"
         },
         {
           "id": "RI.4.2-E5",
@@ -2125,7 +2186,8 @@
           "correct_feedback": "Yes! The whole paragraph shows how exercise keeps your body strong and healthy. That's the main idea.",
           "incorrect_feedback": "Close one. Some choices are just one little part. What is the paragraph about as a whole?",
           "reveal_feedback": "The main idea is 'Exercise helps keep your body strong and healthy.' The others are just small details from the paragraph.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.2/RI.4.2-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.2/RI.4.2-E5.wav"
         }
       ]
     },
@@ -2259,7 +2321,8 @@
           "correct_feedback": "Right! The sentence tells you a veterinarian is a doctor who cares for animals. You read the clue perfectly.",
           "incorrect_feedback": "Good try. The sentence gives the meaning right after the word. What does it say a veterinarian is?",
           "reveal_feedback": "A veterinarian is 'A doctor for animals.' The sentence says it right there: a doctor who takes care of animals.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-E1.wav"
         },
         {
           "id": "RI.4.4-E2",
@@ -2279,7 +2342,8 @@
           "correct_feedback": "Yes! The sentence explains fossils are the hardened remains of animals or plants from long ago. Nice reading.",
           "incorrect_feedback": "Not yet. The clue is right in the sentence after the word 'fossils.' What does it say they are?",
           "reveal_feedback": "Fossils are 'The hardened remains of long-ago living things.' The sentence explains it right after the word.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-E2.wav"
         },
         {
           "id": "RI.4.4-E3",
@@ -2299,7 +2363,8 @@
           "correct_feedback": "Right! The sentence says arid means very dry with almost no rain. You caught the built-in clue.",
           "incorrect_feedback": "Hmm, look at the words right after 'arid.' What does the sentence say it means?",
           "reveal_feedback": "Arid means 'Very dry.' The sentence tells you: the desert gets almost no rain.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-E3.wav"
         },
         {
           "id": "RI.4.4-E4",
@@ -2319,7 +2384,8 @@
           "correct_feedback": "Yes! The sentence says nocturnal animals are awake and active at night. Great use of the clue.",
           "incorrect_feedback": "Good try. The sentence explains the word right after it. When does it say bats are awake?",
           "reveal_feedback": "Nocturnal means 'Active at night.' The sentence says bats are awake and active when it's dark.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-E4.wav"
         },
         {
           "id": "RI.4.4-E5",
@@ -2339,7 +2405,8 @@
           "correct_feedback": "Right! The sentence shows combine means to mix things together in a bowl. You read the clue well.",
           "incorrect_feedback": "Take another look. What did the person DO with the flour and sugar in the bowl?",
           "reveal_feedback": "Combine means 'Mix together.' The sentence shows the flour and sugar being mixed in a bowl.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.4/RI.4.4-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.4/RI.4.4-E5.wav"
         }
       ]
     },
@@ -2365,7 +2432,8 @@
           "correct_feedback": "Yes! First, next, and finally are order words. Telling the steps of growth in order is a sequence structure.",
           "incorrect_feedback": "Hmm, notice the words 'first,' 'then,' and 'finally.' What kind of structure uses steps in order like that?",
           "reveal_feedback": "The structure is 'Sequence.' The article tells what happens first, next, and last, in time order.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.5/RI.4.5-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.5/RI.4.5-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.5/RI.4.5-Q5.wav"
         },
         {
           "id": "RI.4.5-Q3",
@@ -2510,7 +2578,8 @@
           "correct_feedback": "Yes! A firsthand account comes from someone who was there, so it shares personal experiences and things they saw themselves.",
           "incorrect_feedback": "Hmm, think about who was actually THERE. Which account would share what the writer personally saw and felt?",
           "reveal_feedback": "The answer is that the firsthand account shares personal experiences and direct observations, because that writer was really there.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-Q1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-Q1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q1.wav"
         },
         {
           "id": "RI.4.6-Q2",
@@ -2571,7 +2640,8 @@
           "correct_feedback": "Exactly! Account A uses 'I' and personal senses, so it's firsthand. Account B just reports facts, so it's secondhand.",
           "incorrect_feedback": "Hmm, which account uses 'I' and describes feeling the shaking? That clue tells you which is firsthand.",
           "reveal_feedback": "Account A is firsthand and Account B is secondhand. Account A shares what the writer felt; Account B just reports facts.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-Q4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-Q4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-Q4.wav"
         },
         {
           "id": "RI.4.6-Q5",
@@ -2612,7 +2682,8 @@
           "correct_feedback": "Right! Maria was on the beach feeling the cold water herself, so her writing is a firsthand account.",
           "incorrect_feedback": "Take another look. Maria says she was standing right there. Does that make it firsthand or secondhand?",
           "reveal_feedback": "It's a firsthand account, because Maria was there and saw and felt it herself, right on the beach.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-E1.wav"
         },
         {
           "id": "RI.4.6-E2",
@@ -2632,7 +2703,8 @@
           "correct_feedback": "Yes! The reporter wasn't at the game and learned it from other people, so it's a secondhand account.",
           "incorrect_feedback": "Hmm, the reporter was NOT at the game. If he heard about it from others, is that firsthand or secondhand?",
           "reveal_feedback": "It's a secondhand account, because the reporter wasn't there and learned about the game from other people.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-E2.wav"
         },
         {
           "id": "RI.4.6-E3",
@@ -2652,7 +2724,8 @@
           "correct_feedback": "Right! 'I felt the ground shake under my feet' uses 'I' and describes what the writer sensed. That's firsthand.",
           "incorrect_feedback": "Good try. A firsthand account uses 'I' and tells what the writer felt. Which sentence sounds like that?",
           "reveal_feedback": "The firsthand one is 'I felt the ground shake under my feet during the earthquake.' It uses 'I' and describes what the writer felt.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-E3.wav"
         },
         {
           "id": "RI.4.6-E4",
@@ -2672,7 +2745,8 @@
           "correct_feedback": "Yes! Ben rode the bus and fed a giraffe himself, so his writing is the firsthand account.",
           "incorrect_feedback": "Take another look. Who actually went on the trip and did it themselves? That writer's account is firsthand.",
           "reveal_feedback": "Ben's writing is the firsthand account, because he was on the trip and fed the giraffe himself.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-E4.wav"
         },
         {
           "id": "RI.4.6-E5",
@@ -2692,7 +2766,8 @@
           "correct_feedback": "Right! The firsthand writer lived through the storm, so their account would include their own feelings from being there.",
           "incorrect_feedback": "Hmm, think about who actually lived through the storm. Which writer would include their OWN feelings?",
           "reveal_feedback": "The firsthand account would include the writer's own feelings, because that person actually lived through the storm.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.6/RI.4.6-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.6/RI.4.6-E5.wav"
         }
       ]
     },
@@ -2823,7 +2898,8 @@
           "correct_feedback": "Yes! The tallest bar is chocolate, so chocolate is the most preferred flavor among these students. Great graph reading.",
           "incorrect_feedback": "Hmm, look at which bar is tallest. What does the tallest bar tell you about what students like most?",
           "reveal_feedback": "The graph shows chocolate is the most preferred flavor among these students, because its bar is the tallest.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-Q5.wav"
         },
         {
           "id": "RI.4.7-E1",
@@ -2843,7 +2919,8 @@
           "correct_feedback": "Right! Class B read 25 books and Class A read 10, so Class B read more. Nice comparing.",
           "incorrect_feedback": "Take another look at the numbers. 10 books or 25 books, which class has the bigger amount?",
           "reveal_feedback": "Class B read more, with 25 books compared to Class A's 10 books.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-E1.wav"
         },
         {
           "id": "RI.4.7-E2",
@@ -2863,7 +2940,8 @@
           "correct_feedback": "Yes! The labels point to the roots, stem, and leaves, so the diagram helps you name the parts of a plant.",
           "incorrect_feedback": "Hmm, the diagram has labels on parts of a plant. What would that help a reader do?",
           "reveal_feedback": "The diagram helps a reader name the parts of a plant, since it labels the roots, stem, and leaves.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-E2.wav"
         },
         {
           "id": "RI.4.7-E3",
@@ -2883,7 +2961,8 @@
           "correct_feedback": "Right! The key says a blue line means a river, so the blue line on the map is a river. You used the key perfectly.",
           "incorrect_feedback": "Take another look at the map key. What does it say a blue line stands for?",
           "reveal_feedback": "The blue line is a river. The map key tells you that a blue line stands for a river.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-E3.wav"
         },
         {
           "id": "RI.4.7-E4",
@@ -2903,7 +2982,8 @@
           "correct_feedback": "Yes! The timeline starts with the seed being planted, so that happens first. Great job reading the order.",
           "incorrect_feedback": "Hmm, look at the very start of the timeline. What is the first thing that happens?",
           "reveal_feedback": "The first thing is the seed being planted. The timeline starts there, before the stem and flowers grow.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-E4.wav"
         },
         {
           "id": "RI.4.7-E5",
@@ -2923,7 +3003,8 @@
           "correct_feedback": "Yes! Half the chart is a big piece, and reading is only a tiny slice. A bigger slice means more students chose it.",
           "incorrect_feedback": "Hmm, look at the SIZE of each slice. Which one takes up more of the circle? That's the one more kids picked.",
           "reveal_feedback": "The answer is Playing. It fills half the chart, and reading is just a small slice, so more students chose playing.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.7/RI.4.7-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.7/RI.4.7-E5.wav"
         }
       ]
     },
@@ -2971,7 +3052,8 @@
           "correct_feedback": "Exactly! The 20% number is a specific fact, and the author uses it as proof that recess helps kids learn better.",
           "incorrect_feedback": "Good try. Ask yourself: why did the author add that number? Is it just a detail, or is it there to PROVE the main idea?",
           "reveal_feedback": "The answer is that it provides a specific fact supporting the idea that recess helps students learn. The number is evidence for the main point.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-Q2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-Q2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-Q2.wav"
         },
         {
           "id": "RI.4.8-Q3",
@@ -3033,7 +3115,8 @@
           "correct_feedback": "Yes! The author's point is that dogs make great pets, and being loyal is the reason they give to back it up.",
           "incorrect_feedback": "Take another look. Find the sentence that tells WHY dogs make great pets. That reason is what supports the point.",
           "reveal_feedback": "The answer is: dogs are very loyal to their owners. That's the reason the author gives to show dogs make great pets.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-E1.wav"
         },
         {
           "id": "RI.4.8-E2",
@@ -3053,7 +3136,8 @@
           "correct_feedback": "Nice! Evidence is proof, and pointing to studies about better sleep is exactly the proof that backs up the point.",
           "incorrect_feedback": "Almost. Evidence is the proof, not the opinion. Which sentence gives facts from studies instead of just stating the idea?",
           "reveal_feedback": "The answer is: studies show that kids who read at night sleep better. That's the evidence that supports the author's point.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-E2.wav"
         },
         {
           "id": "RI.4.8-E3",
@@ -3073,7 +3157,8 @@
           "correct_feedback": "Exactly! Saying there's nowhere safe to play is the reason the author gives to show the town needs a new park.",
           "incorrect_feedback": "Good try. Ask why the author added that detail. Does it help the main point, or is it just describing something?",
           "reveal_feedback": "The answer is to support the point that the town needs a new park. The lack of a safe place is the reason for building one.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-E3.wav"
         },
         {
           "id": "RI.4.8-E4",
@@ -3093,7 +3178,8 @@
           "correct_feedback": "Yes! The doctors' words are the evidence, and they back up the author's main point about drinking water.",
           "incorrect_feedback": "Close one. The point is the big idea the evidence supports. What is the author trying to convince you to do?",
           "reveal_feedback": "The answer is: everyone should drink water every day. That's the point the doctor evidence is there to support.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-E4.wav"
         },
         {
           "id": "RI.4.8-E5",
@@ -3113,7 +3199,8 @@
           "correct_feedback": "Great! Saving money because bikes don't use gas is the reason the author gives to show bikes are a good way to get around.",
           "incorrect_feedback": "Not quite. Find the sentence that explains WHY bikes are good. A reason gives you a fact, not just a feeling.",
           "reveal_feedback": "The answer is: bikes don't use gas, so they are cheaper than cars. That's the reason the author gives.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.8/RI.4.8-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.8/RI.4.8-E5.wav"
         }
       ]
     },
@@ -3161,7 +3248,8 @@
           "correct_feedback": "Excellent! You combined both texts: they share what's alike (insects, larva to adult) and what's different (day vs. night, chrysalis vs. cocoon).",
           "incorrect_feedback": "Good try. A statement that combines both texts should include facts about butterflies AND moths, not just one of them.",
           "reveal_feedback": "The correct answer combines both: both are insects that change from larva to adult, but butterflies are active by day with a chrysalis, moths at night with a cocoon.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-Q3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-Q3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-Q3.wav"
         },
         {
           "id": "RI.4.9-Q4",
@@ -3223,7 +3311,8 @@
           "correct_feedback": "Nice! Text 1 says dogs smell well and Text 2 says they hear well. Using both, you get two things.",
           "incorrect_feedback": "Almost. Use BOTH texts. Text 1 tells one skill and Text 2 tells another. Put them together.",
           "reveal_feedback": "The answer is smelling and hearing. Text 1 gives the strong smell and Text 2 gives the good hearing.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-E1.wav"
         },
         {
           "id": "RI.4.9-E2",
@@ -3243,7 +3332,8 @@
           "correct_feedback": "Yes! Text A says the sun gives light and Text B says it gives heat. Together, it gives both.",
           "incorrect_feedback": "Good try. Each text tells you one thing the sun gives. Combine both texts, don't pick just one.",
           "reveal_feedback": "The answer is light and heat. Text A gives the light and Text B gives the heat, so together it's both.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-E2.wav"
         },
         {
           "id": "RI.4.9-E3",
@@ -3263,7 +3353,8 @@
           "correct_feedback": "Great! Text 1 says bees make honey and Text 2 says they help flowers grow. Both together tell what bees do.",
           "incorrect_feedback": "Close one. Use both texts together. One tells about honey, the other about flowers. Don't leave one out.",
           "reveal_feedback": "The answer is they make honey and help flowers grow. Text 1 gives the honey, Text 2 gives the flowers.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-E3.wav"
         },
         {
           "id": "RI.4.9-E4",
@@ -3283,7 +3374,8 @@
           "correct_feedback": "Nice work! Text A says rain waters plants and Text B says it fills rivers and lakes. Both together give two jobs.",
           "incorrect_feedback": "Not yet. The question wants TWO things, one from each text. Put both texts together.",
           "reveal_feedback": "The answer is it waters plants and fills rivers and lakes. Text A gives the plants, Text B gives the rivers and lakes.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-E4.wav"
         },
         {
           "id": "RI.4.9-E5",
@@ -3303,7 +3395,8 @@
           "correct_feedback": "Yes! Text 1 says the moon moves around the Earth and Text 2 says it shines at night. Both together are true.",
           "incorrect_feedback": "Take another look. Which choice uses BOTH texts correctly, with no made-up parts added in?",
           "reveal_feedback": "The answer is the moon moves around the Earth and shines at night. That combines both texts exactly, with nothing wrong added.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.9/RI.4.9-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.9/RI.4.9-E5.wav"
         }
       ]
     },
@@ -3415,7 +3508,8 @@
           "correct_feedback": "Yes! The passage says it covers much of northern Africa, so that's where the Sahara is.",
           "incorrect_feedback": "Take another look. The passage names the exact place the Sahara covers. Find that spot in the text.",
           "reveal_feedback": "The answer is northern Africa. The passage says the Sahara covers much of northern Africa.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-E1.wav"
         },
         {
           "id": "RI.4.10-E2",
@@ -3435,7 +3529,8 @@
           "correct_feedback": "Nice! The text says bees make honey from the nectar of flowers, so that's what they use.",
           "incorrect_feedback": "Almost. Reread the sentence about how bees make honey. What does it say they start with?",
           "reveal_feedback": "The answer is the nectar of flowers. The passage says honeybees make honey from flower nectar.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-E2.wav"
         },
         {
           "id": "RI.4.10-E3",
@@ -3455,7 +3550,8 @@
           "correct_feedback": "Yes! The passage says the wall was built long ago to protect the country from invaders.",
           "incorrect_feedback": "Good try. The text gives one clear reason the wall was built. Find the sentence that says why.",
           "reveal_feedback": "The answer is to protect the country from invaders. The passage states that was the reason it was built.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-E3.wav"
         },
         {
           "id": "RI.4.10-E4",
@@ -3475,7 +3571,8 @@
           "correct_feedback": "Yes! The passage says the melted rock inside the Earth is called magma. You found it.",
           "incorrect_feedback": "Take another look. The text gives a name to the hot melted rock. Which word does it use?",
           "reveal_feedback": "The answer is magma. The passage says the melted rock deep inside the Earth is called magma.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-E4.wav"
         },
         {
           "id": "RI.4.10-E5",
@@ -3495,7 +3592,8 @@
           "correct_feedback": "Nice! The text says sea turtles lay their eggs on sandy beaches at night. You read it carefully.",
           "incorrect_feedback": "Almost. Reread the sentence about laying eggs. What time of day does it name?",
           "reveal_feedback": "The answer is at night. The passage says sea turtles lay their eggs on sandy beaches at night.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RI.4.10/RI.4.10-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RI.4.10/RI.4.10-E5.wav"
         }
       ]
     },
@@ -3606,7 +3704,8 @@
           "correct_feedback": "Yes! A pseudonym is a made-up name a writer uses to hide who they really are, just like Maria wants.",
           "incorrect_feedback": "Good try. The root pseudo means false or fake. So what kind of name would a pseudonym be?",
           "reveal_feedback": "The answer is a name she invents to hide her identity. Pseudo means false, so a pseudonym is a fake name.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-Q5.wav"
         },
         {
           "id": "RF.4.3-E1",
@@ -3626,7 +3725,8 @@
           "correct_feedback": "Yes! Re means again and play means play, so replay means to play again. Nice decoding!",
           "incorrect_feedback": "Almost. Re means again. Add that to the word play. What do you get?",
           "reveal_feedback": "The answer is to play again. Re means again, so replay means to play something again.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-E1.wav"
         },
         {
           "id": "RF.4.3-E2",
@@ -3646,7 +3746,8 @@
           "correct_feedback": "Great! The suffix -ful means full of, so helpful means full of help. You used the suffix perfectly.",
           "incorrect_feedback": "Take another look. The suffix -ful means full of. Add that to the word help.",
           "reveal_feedback": "The answer is full of help. The suffix -ful means full of, so helpful means full of help.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-E2.wav"
         },
         {
           "id": "RF.4.3-E3",
@@ -3666,7 +3767,8 @@
           "correct_feedback": "Yes! Un means not and happy means happy, so unhappy means not happy. Nice work with the prefix.",
           "incorrect_feedback": "Almost. The prefix un means not. Put that in front of happy. What does it become?",
           "reveal_feedback": "The answer is not happy. The prefix un means not, so unhappy means not happy.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-E3.wav"
         },
         {
           "id": "RF.4.3-E4",
@@ -3686,7 +3788,8 @@
           "correct_feedback": "Yes! Clap it: rab-bit. That's two beats, so two syllables. Great clapping!",
           "incorrect_feedback": "Hmm, clap it out: rab-bit. How many claps did you hear? Count the beats.",
           "reveal_feedback": "The answer is 2. Rab-bit has two beats when you clap, so two syllables.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-E4.wav"
         },
         {
           "id": "RF.4.3-E5",
@@ -3706,7 +3809,8 @@
           "correct_feedback": "Yes! Sunlight is sun plus light, two small words joined together. You spotted them both.",
           "incorrect_feedback": "Almost. Look for two real words hiding inside sunlight. What smaller words do you see?",
           "reveal_feedback": "The answer is sun + light. Sunlight is made of the two small words sun and light.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3/RF.4.3-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3/RF.4.3-E5.wav"
         }
       ]
     },
@@ -3796,7 +3900,8 @@
           "correct_feedback": "Great! Say it slowly: ex-tra-or-di-nar-y. Each chunk has one vowel sound, and that's the correct split.",
           "incorrect_feedback": "Close one. Say the word slowly and listen for each beat. Each syllable usually has one vowel sound.",
           "reveal_feedback": "The answer is ex-tra-or-di-nar-y. Saying it slowly, that's how the six syllables break apart.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-Q4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-Q4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-Q4.wav"
         },
         {
           "id": "RF.4.3a-Q5",
@@ -3837,7 +3942,8 @@
           "correct_feedback": "Yes! Sunset breaks into sun and set, two small words that help you read it. Nice work.",
           "incorrect_feedback": "Almost. Look for two real words hiding inside sunset. Which split gives you words you know?",
           "reveal_feedback": "The answer is sun + set. Sunset is made of the two small words sun and set.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-E1.wav"
         },
         {
           "id": "RF.4.3a-E2",
@@ -3857,7 +3963,8 @@
           "correct_feedback": "Great strategy! Breaking basket into bas-ket makes a long word easy to read chunk by chunk.",
           "incorrect_feedback": "Take another look. When a word looks long, what's the best reading move? Think about making it smaller.",
           "reveal_feedback": "The answer is to break it into parts: bas + ket. Chunking a long word into pieces makes it easy to read.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-E2.wav"
         },
         {
           "id": "RF.4.3a-E3",
@@ -3877,7 +3984,8 @@
           "correct_feedback": "Yes! \"Rab-bit\" claps into two chunks, so \"rabbit\" has two syllables. Nice listening.",
           "incorrect_feedback": "Hmm, try clapping the word out loud. How many beats do you hear when you say \"rab-bit\"?",
           "reveal_feedback": "The answer is 2, \"rab + bit.\" When you clap it, you hear exactly two beats, so it's two syllables.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-E3.wav"
         },
         {
           "id": "RF.4.3a-E4",
@@ -3897,7 +4005,8 @@
           "correct_feedback": "Great! \"Un\" is a prefix meaning \"not,\" so it snaps right off the base word \"happy.\" Smart splitting.",
           "incorrect_feedback": "Almost! Look for a little prefix at the front that means \"not.\" Where does that piece end?",
           "reveal_feedback": "The answer is \"un + happy.\" The prefix \"un\" means \"not,\" and it joins the whole base word \"happy.\"",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-E4.wav"
         },
         {
           "id": "RF.4.3a-E5",
@@ -3917,7 +4026,8 @@
           "correct_feedback": "Exactly! The base word \"jump\" plus the ending \"ing\" makes \"jumping.\" You found the seam.",
           "incorrect_feedback": "Good try! Find the whole action word first, then see what ending is added to it.",
           "reveal_feedback": "The answer is \"jump + ing.\" \"Jump\" is the base word and \"ing\" is the ending added onto it.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.3a/RF.4.3a-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.3a/RF.4.3a-E5.wav"
         }
       ]
     },
@@ -3965,7 +4075,8 @@
           "correct_feedback": "Perfect! A comfortable speed, smooth words, and feeling in your voice make a story easy to follow.",
           "incorrect_feedback": "Close one! Think about how a great storyteller sounds. Would racing or robot-reading help people understand?",
           "reveal_feedback": "The answer is reading at a comfortable speed, connecting words smoothly, and using your voice to match the feelings.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-Q2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-Q2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q2.wav"
         },
         {
           "id": "RF.4.4-Q3",
@@ -4005,7 +4116,8 @@
           "correct_feedback": "Yes! A comfortable speed, expression, and pausing at commas and periods make the story clear and easy.",
           "incorrect_feedback": "Good try! Which reader sounds smooth and clear, not too fast, not choppy, not flat and quiet?",
           "reveal_feedback": "The answer is the student who reads at a comfortable speed with expression and pauses at commas and periods.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-Q4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-Q4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q4.wav"
         },
         {
           "id": "RF.4.4-Q5",
@@ -4024,7 +4136,8 @@
           "correct_feedback": "Great choice! Going back to reread the confusing part helps you fix your understanding all by yourself.",
           "incorrect_feedback": "Hmm, if a part stopped making sense, would guessing or plowing ahead really clear it up for you?",
           "reveal_feedback": "The answer is to reread the confusing part. Going back over it helps the meaning click into place.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-Q5.wav"
         },
         {
           "id": "RF.4.4-E1",
@@ -4044,7 +4157,8 @@
           "correct_feedback": "Yes! A period is a stop sign for your voice. You pause a beat before the next sentence. Nice.",
           "incorrect_feedback": "Take another look. A period marks the end of a sentence. What should your voice do there?",
           "reveal_feedback": "The answer is to stop and take a short pause. A period tells you the sentence has ended.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-E1.wav"
         },
         {
           "id": "RF.4.4-E2",
@@ -4064,7 +4178,8 @@
           "correct_feedback": "Exactly! Reading something again to understand it better is called rereading. Maya used a smart strategy.",
           "incorrect_feedback": "Almost! Maya read the same page a second time. Which word means to read again?",
           "reveal_feedback": "The answer is rereading. The prefix \"re\" means \"again,\" so rereading is reading something over again.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-E2.wav"
         },
         {
           "id": "RF.4.4-E3",
@@ -4084,7 +4199,8 @@
           "correct_feedback": "Yes! A question mark makes your voice rise at the end, like you're really asking something. Great ear.",
           "incorrect_feedback": "Good try! Say a question out loud, like \"Are you ready?\" What does your voice do at the very end?",
           "reveal_feedback": "The answer is your voice should go up, like you're asking something. That's what a question mark signals.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-E3.wav"
         },
         {
           "id": "RF.4.4-E4",
@@ -4104,7 +4220,8 @@
           "correct_feedback": "Right! A fluent reader reads smoothly and with few mistakes, almost like talking. Well done.",
           "incorrect_feedback": "Close one! \"Fluent\" is about reading easily and well. Which choice actually describes good reading?",
           "reveal_feedback": "The answer is smoothly and with few mistakes. A fluent reader reads easily, like natural talking.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-E4.wav"
         },
         {
           "id": "RF.4.4-E5",
@@ -4124,7 +4241,8 @@
           "correct_feedback": "Great! Sounding a word out helps you figure it out on your own so you can keep reading. Smart.",
           "incorrect_feedback": "Not yet. When you hit a tricky word, which choice actually helps you understand it instead of quitting?",
           "reveal_feedback": "The answer is to sound the word out. Breaking it into sounds helps Sam figure out the tricky word.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/RF.4.4/RF.4.4-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/RF.4.4/RF.4.4-E5.wav"
         }
       ]
     },
@@ -4257,7 +4375,8 @@
           "correct_feedback": "Yes! \"Brilliant\" means very bright here. The sun was so strong they shaded their eyes. Nice clue-reading.",
           "incorrect_feedback": "Almost! They had to shade their eyes from the sun. What does that tell you about how the sun looked?",
           "reveal_feedback": "The answer is very bright. Shading their eyes from the sun shows \"brilliant\" means very bright.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-E1.wav"
         },
         {
           "id": "L.4.4-E2",
@@ -4277,7 +4396,8 @@
           "correct_feedback": "Right! \"Exhausted\" means very tired. After a race, Maria needed to rest. The clue fits perfectly.",
           "incorrect_feedback": "Good try! Maria just ran a race and needed to rest. How would running a whole race make her feel?",
           "reveal_feedback": "The answer is very tired. Running the race left Maria needing rest, so \"exhausted\" means very tired.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-E2.wav"
         },
         {
           "id": "L.4.4-E3",
@@ -4297,7 +4417,8 @@
           "correct_feedback": "Yes! \"Timid\" means shy or afraid. The puppy hid from strangers, a big clue. Well done.",
           "incorrect_feedback": "Hmm, the puppy hid behind its mother when strangers came. How was the puppy feeling?",
           "reveal_feedback": "The answer is shy or afraid. Hiding from strangers shows the timid puppy was shy and scared.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-E3.wav"
         },
         {
           "id": "L.4.4-E4",
@@ -4317,7 +4438,8 @@
           "correct_feedback": "Right! \"Postpone\" means to move to a later time. They planned the picnic for next week instead. Good work.",
           "incorrect_feedback": "Almost! The rain pushed the picnic to next week. What does that tell you \"postpone\" means?",
           "reveal_feedback": "The answer is to move to a later time. They postponed the picnic by planning it for next week.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-E4.wav"
         },
         {
           "id": "L.4.4-E5",
@@ -4337,7 +4459,8 @@
           "correct_feedback": "Yes! \"Delicious\" means tasting very good. Everyone wanted seconds, so the soup tasted great. Nice.",
           "incorrect_feedback": "Good try! Everyone asked for a second bowl. What does that tell you about how the soup tasted?",
           "reveal_feedback": "The answer is tasting very good. People wanted a second bowl because the soup was delicious.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4/L.4.4-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4/L.4.4-E5.wav"
         }
       ]
     },
@@ -4386,7 +4509,8 @@
           "correct_feedback": "Right! \"Gloomy\" means dark and sad. The dark sky matched everyone's sad mood. Nice matching.",
           "incorrect_feedback": "Almost! The sky was dark and everyone felt sad. What kind of feeling does \"gloomy\" describe?",
           "reveal_feedback": "The answer is dark and sad. The dark sky and everyone's sad mood show \"gloomy\" means dark and sad.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-E1.wav"
         },
         {
           "id": "L.4.4a-E2",
@@ -4406,7 +4530,8 @@
           "correct_feedback": "Yes! \"Reached\" means got to. The hikers finally got to the top of the mountain. Good work.",
           "incorrect_feedback": "Good try! The hikers finally arrived at the mountain top. Which choice means they arrived there?",
           "reveal_feedback": "The answer is got to. The hikers reached, or got to, the top of the mountain.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-E2.wav"
         },
         {
           "id": "L.4.4a-E3",
@@ -4426,7 +4551,8 @@
           "correct_feedback": "Right! Here \"hot\" means very warm. The soup was so warm it burned a tongue. Nice.",
           "incorrect_feedback": "Hmm, the soup burned a tongue. What does that tell you about the temperature of the soup?",
           "reveal_feedback": "The answer is very warm. Soup that burns your tongue is very warm, so that's what \"hot\" means here.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-E3.wav"
         },
         {
           "id": "L.4.4a-E4",
@@ -4446,7 +4572,8 @@
           "correct_feedback": "Yes! \"Afraid\" means scared. The little brother needed a night-light because the dark frightened him. Great.",
           "incorrect_feedback": "Almost! The brother slept with a night-light because of the dark. How was he feeling about the dark?",
           "reveal_feedback": "The answer is scared. Needing a night-light because of the dark shows \"afraid\" means scared.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-E4.wav"
         },
         {
           "id": "L.4.4a-E5",
@@ -4466,7 +4593,8 @@
           "correct_feedback": "Right! \"Playful\" means full of play and fun. The puppy ran and jumped all around. Nice matching.",
           "incorrect_feedback": "Good try! The puppy ran and jumped happily around the yard. What does \"playful\" describe?",
           "reveal_feedback": "The answer is full of play and fun. A playful puppy that runs and jumps is full of play and fun.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4a/L.4.4a-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4a/L.4.4a-E5.wav"
         }
       ]
     },
@@ -4493,7 +4621,8 @@
           "correct_feedback": "Yes! \"Micro\" means small, so a microscope helps you see very small things. You used the prefix. Great.",
           "incorrect_feedback": "Take another look. The prefix \"micro\" means tiny or small. What would a \"micro\" scope help you see?",
           "reveal_feedback": "The answer is very small things. The prefix \"micro\" means small, so a microscope shows tiny things.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-Q4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-Q4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-Q4.wav"
         },
         {
           "id": "L.4.4b-E1",
@@ -4513,7 +4642,8 @@
           "correct_feedback": "Right! \"Re\" means again, so rewriting your story means writing it again. Nice use of the prefix.",
           "incorrect_feedback": "Almost! The prefix \"re\" means \"again.\" So if you \"re\" plus \"write,\" what are you doing?",
           "reveal_feedback": "The answer is writing it again. The prefix \"re\" means again, so rewrite means write again.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-E1.wav"
         },
         {
           "id": "L.4.4b-E2",
@@ -4533,7 +4663,8 @@
           "correct_feedback": "Yes! \"Un\" means not, so an untied shoe is not tied. You used the prefix perfectly.",
           "incorrect_feedback": "Good try! The prefix \"un\" means \"not.\" So \"un\" plus \"tied\" tells you the shoe is what?",
           "reveal_feedback": "The answer is not tied. The prefix \"un\" means not, so untied means not tied.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-E2.wav"
         },
         {
           "id": "L.4.4b-E3",
@@ -4553,7 +4684,8 @@
           "correct_feedback": "Right! \"Tri\" means three, so a triangle has three sides. Great job using the root.",
           "incorrect_feedback": "Hmm, the root 'tri' gives you a number. Picture a triangle and count its sides to find the answer.",
           "reveal_feedback": "The answer is three. The root \"tri\" means three, so a triangle has three sides.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-E3.wav"
         },
         {
           "id": "L.4.4b-E4",
@@ -4573,7 +4705,8 @@
           "correct_feedback": "Yes! \"Pre\" means before, so a preview shows part of the movie before the whole thing. Nice.",
           "incorrect_feedback": "Almost! The prefix \"pre\" means \"before.\" So when do you see a \"pre\" view of a movie?",
           "reveal_feedback": "The answer is before the whole movie. The prefix \"pre\" means before, so a preview comes first.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-E4.wav"
         },
         {
           "id": "L.4.4b-E5",
@@ -4593,7 +4726,8 @@
           "correct_feedback": "Right! \"Bi\" means two, so a bicycle has two wheels. You cracked it with the root.",
           "incorrect_feedback": "Good try! The root 'bi' gives you a number. Picture a bicycle. How many wheels does it have?",
           "reveal_feedback": "The answer is two. The root \"bi\" means two, so a bicycle has two wheels.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4b/L.4.4b-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4b/L.4.4b-E5.wav"
         }
       ]
     },
@@ -4662,7 +4796,8 @@
           "correct_feedback": "Yes! The bear is moving, so \"lumber\" here means to move slowly and heavily. You picked the meaning that fits.",
           "incorrect_feedback": "Good try! In the sentence, the bear is moving through the forest. Which meaning of \"lumber\" is an action?",
           "reveal_feedback": "The answer is to move slowly and heavily. The bear is moving, so that's the meaning that fits the sentence.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-Q3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-Q3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q3.wav"
         },
         {
           "id": "L.4.4c-Q4",
@@ -4702,7 +4837,8 @@
           "correct_feedback": "Yes! The river was not straight, so \"meander\" means to follow a winding, curvy path. Great context work.",
           "incorrect_feedback": "Close one! The sentence says the river did NOT go straight. Which entry matches a curvy, not-straight path?",
           "reveal_feedback": "The answer is the entry meaning to follow a winding or curvy path. The river didn't go straight, so it curved.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-Q5.wav"
         },
         {
           "id": "L.4.4c-H1",
@@ -4722,7 +4858,8 @@
           "correct_feedback": "Yes! The teacher softens firm rules, so \"temper\" means to make something less harsh. Excellent context reading.",
           "incorrect_feedback": "Hmm, the teacher softens firm rules with warmth. It's a verb here, not a mood. Which meaning matches softening?",
           "reveal_feedback": "The answer is to make something less harsh or soften. The teacher tempers firm rules by softening them with warmth.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-H1.wav"
         },
         {
           "id": "L.4.4c-H2",
@@ -4742,7 +4879,8 @@
           "correct_feedback": "Yes! \"March\" falls alphabetically between \"marble\" and \"margin,\" so it's on that page. Sharp alphabetizing.",
           "incorrect_feedback": "Take another look. Guide words are marble and margin. Which word fits alphabetically between those two?",
           "reveal_feedback": "The answer is \"march.\" It comes alphabetically between the guide words marble and margin, so it's on that page.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-H2.wav"
         },
         {
           "id": "L.4.4c-H3",
@@ -4762,7 +4900,8 @@
           "correct_feedback": "Right! The glossary in your textbook defines words the way that book uses them, and it's quick. Smart pick.",
           "incorrect_feedback": "Almost! You want the meaning for this exact chapter, fast, without leaving the book. Which reference is inside the textbook?",
           "reveal_feedback": "The answer is the glossary at the back of the textbook. It defines the word as this chapter uses it, and it's right there.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-H3.wav"
         },
         {
           "id": "L.4.4c-H4",
@@ -4782,7 +4921,8 @@
           "correct_feedback": "Yes! He's being secret and quiet near a guard, so \"whispered\" fits best. Great precise word choice.",
           "incorrect_feedback": "Close one! The boy doesn't want the guard to hear, so he's being quiet and secret. Which word matches that?",
           "reveal_feedback": "The answer is \"whispered.\" Since he doesn't want the guard to overhear, whispering the secret fits best.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-H4.wav"
         },
         {
           "id": "L.4.4c-H5",
@@ -4802,7 +4942,8 @@
           "correct_feedback": "Yes! The pollen is tiny, so \"minute\" means extremely small and is said \"my-NOOT.\" You matched sound to meaning.",
           "incorrect_feedback": "Take another look. The scientist used a magnifying glass on tiny pollen. Which meaning and pronunciation match \"small\"?",
           "reveal_feedback": "The answer is my-NOOT, because here it means extremely small. Tiny pollen tells you it's the \"small\" meaning.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-H5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-H5.wav"
         },
         {
           "id": "L.4.4c-E1",
@@ -4822,7 +4963,8 @@
           "correct_feedback": "Yes! A dictionary is built to give you the meanings of words, so it's exactly where Emma should look up 'gigantic.'",
           "incorrect_feedback": "Hmm, think about which of these books is made to explain what words mean, not to cook or make you laugh.",
           "reveal_feedback": "The answer is a dictionary. A dictionary lists words with their meanings, so it's the perfect place to learn what 'gigantic' means.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-E1.wav"
         },
         {
           "id": "L.4.4c-E2",
@@ -4842,7 +4984,8 @@
           "correct_feedback": "Nice! Those letters in parentheses spell out the sounds, so they show you how to say the word out loud.",
           "incorrect_feedback": "Take another look. Say the letters (kat) out loud. What are they helping you do with the word?",
           "reveal_feedback": "The answer is 'how to say the word.' The part in parentheses spells the sounds so you can pronounce it correctly.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-E2.wav"
         },
         {
           "id": "L.4.4c-E3",
@@ -4862,7 +5005,8 @@
           "correct_feedback": "Exactly! A thesaurus lists words with similar meanings, so Ben can swap 'happy' for something like 'cheerful.'",
           "incorrect_feedback": "Almost. A calendar, menu, and atlas each do a different job. Which book is made for finding words that mean the same?",
           "reveal_feedback": "The answer is a thesaurus. A thesaurus groups words with similar meanings, so Ben can find another word for 'happy.'",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-E3.wav"
         },
         {
           "id": "L.4.4c-E4",
@@ -4882,7 +5026,8 @@
           "correct_feedback": "That's it! A glossary is a mini-dictionary at the back of a book that explains its important words.",
           "incorrect_feedback": "Good try. A ruler, song, and map don't explain word meanings. What do we call that word list at the back of a book?",
           "reveal_feedback": "The answer is a glossary. A glossary is the list of key words and meanings found at the back of a book.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-E4.wav"
         },
         {
           "id": "L.4.4c-E5",
@@ -4902,7 +5047,8 @@
           "correct_feedback": "Right! 'Very surprising; wonderful' is a definition, so the dictionary told you what the word means.",
           "incorrect_feedback": "Close one. The dictionary gave you a short description of 'amazing.' What kind of information is that?",
           "reveal_feedback": "The answer is 'what the word means.' A dictionary gives definitions, so it told you the meaning of 'amazing.'",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.4c/L.4.4c-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.4c/L.4.4c-E5.wav"
         }
       ]
     },
@@ -5035,7 +5181,8 @@
           "correct_feedback": "Yes! Maria uses 'as' to compare her backpack to an elephant, and that comparison makes it a simile.",
           "incorrect_feedback": "Not quite. Look at the little word 'as' comparing two things. What kind of figurative language does that?",
           "reveal_feedback": "The answer is a simile, because she uses 'as' to compare two things. That's what makes a simile.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-E1.wav"
         },
         {
           "id": "L.4.5-E2",
@@ -5055,7 +5202,8 @@
           "correct_feedback": "Right! Wind can't really whisper, so giving it that human action is personification.",
           "incorrect_feedback": "Take another look. Whispering is something people do. What do we call giving a human action to the wind?",
           "reveal_feedback": "The answer is personification. Giving the wind a human action like whispering is personification.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-E2.wav"
         },
         {
           "id": "L.4.5-E3",
@@ -5075,7 +5223,8 @@
           "correct_feedback": "Exactly! 'Raining cats and dogs' is a common saying that doesn't mean its literal words, so it's an idiom.",
           "incorrect_feedback": "Almost. Grandpa isn't being literal, and it's not a list or a test. What do we call a saying like this?",
           "reveal_feedback": "The answer is an idiom. An idiom is a saying whose real meaning is different from its literal words.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-E3.wav"
         },
         {
           "id": "L.4.5-E4",
@@ -5095,7 +5244,8 @@
           "correct_feedback": "Yes! The word 'as' compares the star to a diamond, and comparing with 'as' makes it a simile.",
           "incorrect_feedback": "Good try. This sentence compares two things using 'as.' What kind of figurative language uses 'like' or 'as'?",
           "reveal_feedback": "The answer is a simile. Comparing the star to a diamond with the word 'as' makes it a simile.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-E4.wav"
         },
         {
           "id": "L.4.5-E5",
@@ -5115,7 +5265,8 @@
           "correct_feedback": "Nice! A smile isn't truly warm like sunshine, so that comparison is figurative language, not a plain fact.",
           "incorrect_feedback": "Hmm, three of these just say plainly what happened. Which one paints a picture instead of stating a real fact?",
           "reveal_feedback": "The answer is 'Her smile was as warm as sunshine.' It compares a smile to sunshine, so it's figurative language.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5/L.4.5-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5/L.4.5-E5.wav"
         }
       ]
     },
@@ -5142,7 +5293,8 @@
           "correct_feedback": "Right! Comparing her laughter to music means it sounded delightful and made him feel happy and pleased.",
           "incorrect_feedback": "Take another look. The simile isn't about real music or loudness. How would nice music make you FEEL?",
           "reveal_feedback": "The answer is that her laughter made him feel happy and pleased. Comparing it to music shows it delighted him.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-Q5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-Q5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-Q5.wav"
         },
         {
           "id": "L.4.5a-H1",
@@ -5162,7 +5314,8 @@
           "correct_feedback": "Yes! A zoo is full of noisy, wild animals, so this metaphor means the students got loud and out of control.",
           "incorrect_feedback": "Almost. Picture what a zoo is really like. It isn't bored or crowded, so how were the students acting?",
           "reveal_feedback": "The answer is that the students grew wild, loud, and out of control, just like a noisy zoo full of animals.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-H1.wav"
         },
         {
           "id": "L.4.5a-H2",
@@ -5182,7 +5335,8 @@
           "correct_feedback": "Exactly! Noodles are floppy and can't hold you up, so Dad means his tired legs felt weak and wobbly.",
           "incorrect_feedback": "Close one. Think about how a cooked noodle bends and flops. What would legs like that feel like after a hike?",
           "reveal_feedback": "The answer is that his legs felt weak and wobbly. Noodles are floppy and soft, just like his tired legs.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-H2.wav"
         },
         {
           "id": "L.4.5a-H3",
@@ -5202,7 +5356,8 @@
           "correct_feedback": "Right! An anchor holds a boat steady, so he means his granddaughter keeps the family steady and together.",
           "incorrect_feedback": "Not yet. Think about what an anchor does for a boat. He's proud of her, so this is a compliment.",
           "reveal_feedback": "The answer is that she keeps the family steady and holds it together, just like an anchor steadies a boat.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-H3.wav"
         },
         {
           "id": "L.4.5a-H4",
@@ -5222,7 +5377,8 @@
           "correct_feedback": "Nice! It says the snow IS a blanket with no 'like' or 'as,' and that direct comparison is a metaphor.",
           "incorrect_feedback": "Take another look. A metaphor says one thing IS another, with no 'like' or 'as.' Which sentence does that?",
           "reveal_feedback": "The answer is 'The fresh snow was a thick blanket over the yard.' It says snow IS a blanket, so it's a metaphor.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-H4.wav"
         },
         {
           "id": "L.4.5a-H5",
@@ -5242,7 +5398,8 @@
           "correct_feedback": "Yes! A bulldog grips tight and won't let go, which perfectly shows how Nora refused to give up.",
           "incorrect_feedback": "Almost. You want an animal known for gripping tight and being stubborn, not still, drifting, or quiet.",
           "reveal_feedback": "The answer is 'Nora was a bulldog, holding on and not letting go.' A bulldog's grip shows she wouldn't give up.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-H5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-H5.wav"
         },
         {
           "id": "L.4.5a-E1",
@@ -5262,7 +5419,8 @@
           "correct_feedback": "Right! A log lies totally still, so 'slept like a log' means she slept very deeply and well.",
           "incorrect_feedback": "Take another look. She was tired after a race. A log doesn't move at all, so how do you think she slept?",
           "reveal_feedback": "The answer is that she slept very deeply and well. A log lies perfectly still, just like a deep sleeper.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-E1.wav"
         },
         {
           "id": "L.4.5a-E2",
@@ -5282,7 +5440,8 @@
           "correct_feedback": "Yes! Mice are tiny and barely make a sound, so 'quiet as a mouse' means the room was very quiet.",
           "incorrect_feedback": "Not quite. This is a test, and mice are known for being silent. What is the simile telling you about the room?",
           "reveal_feedback": "The answer is that the room was very quiet. A mouse is silent, so 'quiet as a mouse' means very quiet.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-E2.wav"
         },
         {
           "id": "L.4.5a-E3",
@@ -5302,7 +5461,8 @@
           "correct_feedback": "Exactly! Rockets zoom incredibly fast, so calling his car a rocket means it is very fast.",
           "incorrect_feedback": "Close one. Dad is bragging about his new car, and rockets are famous for one thing. What is a rocket known for?",
           "reveal_feedback": "The answer is 'very fast.' Rockets zoom at amazing speeds, so calling his car a rocket means it's very fast.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-E3.wav"
         },
         {
           "id": "L.4.5a-E4",
@@ -5322,7 +5482,8 @@
           "correct_feedback": "Right! Nobody could really eat a whole horse, so it's a big exaggeration meaning he's extremely hungry.",
           "incorrect_feedback": "Take another look. Jake can't really eat a horse. He's exaggerating, so what is he trying to tell us?",
           "reveal_feedback": "The answer is that he is extremely hungry. Saying he could eat a horse is a big exaggeration of his hunger.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-E4.wav"
         },
         {
           "id": "L.4.5a-E5",
@@ -5342,7 +5503,8 @@
           "correct_feedback": "Yes! Sunshine feels cozy and warm, so 'warm as sunshine' tells you the bread was nice and warm.",
           "incorrect_feedback": "Almost. The simile compares the bread to sunshine, but not its color or the sky. How does sunshine FEEL?",
           "reveal_feedback": "The answer is 'nice and warm.' Sunshine feels cozy and warm, so the bread was warm too.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5a/L.4.5a-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5a/L.4.5a-E5.wav"
         }
       ]
     },
@@ -5391,7 +5553,8 @@
           "correct_feedback": "Yes! Her mom told her to grab an umbrella, so 'raining cats and dogs' means it's raining very hard.",
           "incorrect_feedback": "Not quite. She needs an umbrella, so it isn't sunny. This idiom describes the rain, not falling pets.",
           "reveal_feedback": "The answer is that it is raining very hard. 'Raining cats and dogs' is an idiom for heavy rain.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-E1.wav"
         },
         {
           "id": "L.4.5b-E2",
@@ -5411,7 +5574,8 @@
           "correct_feedback": "Right! Keeping a penny is like earning one, so this saying teaches that it's smart to save your money.",
           "incorrect_feedback": "Take another look. If a saved penny is just as good as an earned one, what is Grandpa saying you should do?",
           "reveal_feedback": "The answer is 'save your money.' The saying means money you keep is as valuable as money you earn.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-E2.wav"
         },
         {
           "id": "L.4.5b-E3",
@@ -5431,7 +5595,8 @@
           "correct_feedback": "Exactly! The more you practice something, the better you get, which is why coaches say this.",
           "incorrect_feedback": "Close one. The coach wants the team to improve. Think about what doing something over and over does for you.",
           "reveal_feedback": "The answer is that practicing a lot helps you get better. That's what 'practice makes perfect' teaches.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-E3.wav"
         },
         {
           "id": "L.4.5b-E4",
@@ -5451,7 +5616,8 @@
           "correct_feedback": "Yes! Sam finished, just later than expected, so 'better late than never' means late is still better than not at all.",
           "incorrect_feedback": "Almost. Dad is happy the homework got done. Is finishing late better or worse than never finishing?",
           "reveal_feedback": "The answer is that doing something late is still better than not doing it at all, which is the saying's meaning.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-E4.wav"
         },
         {
           "id": "L.4.5b-E5",
@@ -5471,7 +5637,8 @@
           "correct_feedback": "Right! His sister wanted to calm his nerves, so 'a piece of cake' means the task is very easy.",
           "incorrect_feedback": "Take another look. She's comforting nervous Leo, and there's no real cake. Would she say it's hard or easy?",
           "reveal_feedback": "The answer is that it is very easy. The idiom 'a piece of cake' means something is simple to do.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5b/L.4.5b-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5b/L.4.5b-E5.wav"
         }
       ]
     },
@@ -5546,7 +5713,8 @@
           "correct_feedback": "Right! Cold is the true opposite of hot, so it's the antonym you're looking for.",
           "incorrect_feedback": "Take another look. 'Warm' and 'spicy' are close to hot, and 'oven' is a thing. Which word means the opposite?",
           "reveal_feedback": "The answer is 'cold.' Cold is the exact opposite of hot, so it's the antonym.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-E1.wav"
         },
         {
           "id": "L.4.5c-E2",
@@ -5566,7 +5734,8 @@
           "correct_feedback": "Yes! 'Large' means almost the same as 'big,' so it's the synonym.",
           "incorrect_feedback": "Not quite. A synonym means nearly the same thing. 'Tiny' and 'short' are opposites, so which word matches 'big'?",
           "reveal_feedback": "The answer is 'large.' 'Large' means nearly the same as 'big,' so they are synonyms.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-E2.wav"
         },
         {
           "id": "L.4.5c-E3",
@@ -5586,7 +5755,8 @@
           "correct_feedback": "Right! 'Sad' is the opposite of 'happy,' so it's the antonym.",
           "incorrect_feedback": "Take another look. 'Cheerful' and 'glad' mean the same as happy. An antonym is an opposite, so which word fits?",
           "reveal_feedback": "The answer is 'sad.' Sad is the opposite feeling from happy, so it's the antonym.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-E3.wav"
         },
         {
           "id": "L.4.5c-E4",
@@ -5606,7 +5776,8 @@
           "correct_feedback": "Exactly! 'Begin' and 'start' mean almost the same thing, and that's what makes them synonyms.",
           "incorrect_feedback": "Almost. They aren't opposites, animals, or rhymes. Think about what 'synonym' actually means.",
           "reveal_feedback": "The answer is that they mean almost the same thing. Words with nearly the same meaning are synonyms.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-E4.wav"
         },
         {
           "id": "L.4.5c-E5",
@@ -5626,7 +5797,8 @@
           "correct_feedback": "Right! The sentence contrasts 'rough' with 'smooth,' so smooth is its opposite.",
           "incorrect_feedback": "Take another look at the sentence. The word 'not' points you to the opposite of 'rough.' Which word is it?",
           "reveal_feedback": "The answer is 'smooth.' The sentence says the road was rough, not smooth, so smooth is the opposite of rough.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.5c/L.4.5c-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.5c/L.4.5c-E5.wav"
         }
       ]
     },
@@ -5771,7 +5943,8 @@
           "correct_feedback": "Right! A beaver lives in and around water, so the river and the woods around it are its habitat.",
           "incorrect_feedback": "Take another look. A habitat is a place an animal lives. Shoes, bikes, and pizza aren't homes for a beaver.",
           "reveal_feedback": "The answer is the river and the woods around it. That's where a beaver lives, so it's the beaver's habitat.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-E1.wav"
         },
         {
           "id": "L.4.6-E2",
@@ -5791,7 +5964,8 @@
           "correct_feedback": "Yes! A blue whale is huge, and 'enormous' means very, very big, so it's the perfect match.",
           "incorrect_feedback": "Not quite. 'Enormous' means very, very big. A mouse, ant, and ladybug are all tiny, so which animal is huge?",
           "reveal_feedback": "The answer is a giant blue whale. Blue whales are enormous, meaning very, very big.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-E2.wav"
         },
         {
           "id": "L.4.6-E3",
@@ -5811,7 +5985,8 @@
           "correct_feedback": "Right! A coast is land next to the ocean, so the sandy beach where waves reach the land is a coast.",
           "incorrect_feedback": "Take another look. A coast touches the ocean. A mountain, kitchen, and dry desert aren't next to the sea.",
           "reveal_feedback": "The answer is the sandy beach where the waves reach the land. Land right next to the ocean is a coast.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-E3.wav"
         },
         {
           "id": "L.4.6-E4",
@@ -5831,7 +6006,8 @@
           "correct_feedback": "Yes! 'Glowed bright orange' gives us an exact picture we can see in our minds. Precise words paint a clear scene.",
           "incorrect_feedback": "Hmm, some of these barely tell us anything about the sky. Which one lets you actually picture the color and light?",
           "reveal_feedback": "The answer is 'The sky at sunset glowed bright orange.' It uses exact words that let you see the color and light.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-E4.wav"
         },
         {
           "id": "L.4.6-E5",
@@ -5851,7 +6027,8 @@
           "correct_feedback": "That's right! Total means adding it all together, and 3 apples plus 2 apples makes 5 apples.",
           "incorrect_feedback": "Almost. Total is about adding amounts together. Try putting Sam's two groups of apples together and count.",
           "reveal_feedback": "The answer is 5 apples. Total means the whole amount, so 3 apples and 2 apples add up to 5.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.6/L.4.6-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.6/L.4.6-E5.wav"
         }
       ]
     },
@@ -5878,7 +6055,8 @@
           "correct_feedback": "Nice work! Joining the two ideas with 'and' makes one smooth, correct sentence instead of two run-together ones.",
           "incorrect_feedback": "Good try. A comma alone can't glue two full sentences, and jumbled word order won't work. Look for a real joining word.",
           "reveal_feedback": "The answer is 'The cat stretched and it jumped onto the couch.' The word 'and' correctly joins the two complete ideas.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-Q4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-Q4.wav"
         },
         {
           "id": "L.4.1-H1",
@@ -5898,7 +6076,8 @@
           "correct_feedback": "Exactly! The barn is a place, and 'where' is the word we use to point to a place.",
           "incorrect_feedback": "Close one. Think about what the barn is. Is it a time, a thing, or a place? Pick the word that matches.",
           "reveal_feedback": "The answer is 'where.' The barn is a place, and 'where' is the word we use to talk about a place.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-H1.wav"
         },
         {
           "id": "L.4.1-H2",
@@ -5918,7 +6097,8 @@
           "correct_feedback": "Yes! 'Is winning' shows the action is happening right now. That's the progressive tense in action.",
           "incorrect_feedback": "Not yet. The progressive tense needs a helping word plus an -ing verb that fit together correctly. Read each one aloud.",
           "reveal_feedback": "The answer is 'The team is winning the game.' 'Is' plus 'winning' shows the action is happening right now.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-H2.wav"
         },
         {
           "id": "L.4.1-H3",
@@ -5938,7 +6118,8 @@
           "correct_feedback": "Perfect! In English, size comes first, then shape, then material. Small, then round, then wooden sounds just right.",
           "incorrect_feedback": "Take another look. English has an order for adjectives: size, then shape, then what it's made of. Read each aloud.",
           "reveal_feedback": "The answer is 'She bought a small round wooden table.' Adjectives go in order: size, then shape, then material.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-H3.wav"
         },
         {
           "id": "L.4.1-H4",
@@ -5958,7 +6139,8 @@
           "correct_feedback": "Great job! 'They're' means they are, 'their' shows it belongs to them, and 'there' names a place. All three fit.",
           "incorrect_feedback": "Almost. Remember: one means 'they are,' one shows owning, and one names a place. Check if each word matches its job.",
           "reveal_feedback": "The answer is 'They're going to leave their bikes over there.' They're means they are, their shows owning, and there is a place.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-H4.wav"
         },
         {
           "id": "L.4.1-H5",
@@ -5978,7 +6160,8 @@
           "correct_feedback": "Yes! 'Can' shows he is able to do something. Grandpa is able to run that mile even at ninety.",
           "incorrect_feedback": "Good try. Some of these show he has to, or might, or ought to. Which one shows he is ABLE to do it?",
           "reveal_feedback": "The answer is 'can.' 'Can' shows someone is able to do something, like Grandpa being able to run a mile.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-H5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-H5.wav"
         },
         {
           "id": "L.4.1-E1",
@@ -5998,7 +6181,8 @@
           "correct_feedback": "That's right! 'Two dogs' is more than one, so we use 'are' to match a plural subject.",
           "incorrect_feedback": "Hmm, count the dogs first. There's more than one, so which verb matches a plural subject? Say it aloud.",
           "reveal_feedback": "The answer is 'are.' There are two dogs, and a plural subject needs the verb 'are.'",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-E1.wav"
         },
         {
           "id": "L.4.1-E2",
@@ -6018,7 +6202,8 @@
           "correct_feedback": "Exactly! A conjunction is a joining word, and 'and' joins apples with oranges.",
           "incorrect_feedback": "Take another look. A conjunction is a word that joins two things together. Which word links the two fruits?",
           "reveal_feedback": "The answer is 'and.' It's the conjunction because it joins the two words apples and oranges together.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-E2.wav"
         },
         {
           "id": "L.4.1-E3",
@@ -6038,7 +6223,8 @@
           "correct_feedback": "Nice! 'Yesterday' tells us it already happened, so we use the past tense form of the verb.",
           "incorrect_feedback": "Close one. The word 'yesterday' is a clue about time. Did this happen already? Pick the verb that shows the past.",
           "reveal_feedback": "The answer is 'walked.' 'Yesterday' means it already happened, so we use the past tense 'walked.'",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-E3.wav"
         },
         {
           "id": "L.4.1-E4",
@@ -6058,7 +6244,8 @@
           "correct_feedback": "Yes! 'She' is one person, so the verb changes to 'does' to match a single subject.",
           "incorrect_feedback": "Almost. The subject is 'she,' just one person. Which form of the verb fits with a single subject? Read it aloud.",
           "reveal_feedback": "The answer is 'does.' With a single subject like 'she,' the verb becomes 'does.'",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-E4.wav"
         },
         {
           "id": "L.4.1-E5",
@@ -6078,7 +6265,8 @@
           "correct_feedback": "Great! 'So' joins the two ideas and shows that being tired is the reason for going to bed.",
           "incorrect_feedback": "Not yet. Two full ideas need a joining word to connect them, and the words should stay in order. Look for that link.",
           "reveal_feedback": "The answer is 'I was tired so I went to bed.' The word 'so' joins the ideas and shows the reason.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.1/L.4.1-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.1/L.4.1-E5.wav"
         }
       ]
     },
@@ -6105,7 +6293,8 @@
           "correct_feedback": "Yes! The comma goes after 'lazily' because it separates the first complete idea before 'and then.'",
           "incorrect_feedback": "Good try. A comma often goes before a joining word that connects two full ideas. Where does the first idea end?",
           "reveal_feedback": "The answer is after 'lazily.' The comma marks the end of the first idea before 'and then it jumped.'",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-Q1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-Q1.wav"
         },
         {
           "id": "L.4.2-Q2",
@@ -6188,7 +6377,8 @@
           "correct_feedback": "That's right! A question ends with a question mark, and it also starts with a capital letter.",
           "incorrect_feedback": "Take another look. A sentence that asks something needs a special ending mark and a capital start. Which one has both?",
           "reveal_feedback": "The answer is 'Where is my backpack?' It's a question, so it ends with a question mark and starts with a capital.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-E1.wav"
         },
         {
           "id": "L.4.2-E2",
@@ -6208,7 +6398,8 @@
           "correct_feedback": "Yes! Every sentence begins with a capital letter to show a new idea is starting.",
           "incorrect_feedback": "Good try. Think about how the very first word of any sentence should look. What kind of letter starts it off?",
           "reveal_feedback": "The answer is a capital letter. Every sentence begins with one to show a new idea is starting.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-E2.wav"
         },
         {
           "id": "L.4.2-E3",
@@ -6228,7 +6419,8 @@
           "correct_feedback": "Right! A person's name starts with one capital letter, so 'Maria' is written correctly.",
           "incorrect_feedback": "Hmm, a name isn't all capitals or all lowercase. Which one has just the first letter capitalized?",
           "reveal_feedback": "The answer is 'Maria.' A name gets a capital on the first letter only, not every letter.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-E3.wav"
         },
         {
           "id": "L.4.2-E4",
@@ -6248,7 +6440,8 @@
           "correct_feedback": "Nice! When we list three things, we put a comma after each one, so 'apples' gets a comma too.",
           "incorrect_feedback": "Almost. When you list things in a row, each item needs a comma between it and the next. Where's the first one missing?",
           "reveal_feedback": "The answer is after 'apples.' In a list, each item gets a comma, so it goes after the first item.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.2/L.4.2-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.2/L.4.2-E4.wav"
         }
       ]
     },
@@ -6381,7 +6574,8 @@
           "correct_feedback": "Yes! 'Raced' is an exact, colorful word that shows exactly how fast the boy moved.",
           "incorrect_feedback": "Almost. Words like 'went' or 'did' are pretty plain. Which one shows exactly how the boy moved down the street?",
           "reveal_feedback": "The answer is 'The boy raced down the street.' 'Raced' is the exact, colorful word for how he moved.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E1.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E1.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-E1.wav"
         },
         {
           "id": "L.4.3-E2",
@@ -6401,7 +6595,8 @@
           "correct_feedback": "Right! 'Joyful' paints a clear, bright picture of a truly happy dog.",
           "incorrect_feedback": "Good try. Words like 'fine' or 'nice' are kind of flat. Which word paints the clearest picture of a happy dog?",
           "reveal_feedback": "The answer is 'joyful.' It paints the clearest, brightest picture of a very happy dog.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E2.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E2.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-E2.wav"
         },
         {
           "id": "L.4.3-E3",
@@ -6421,7 +6616,8 @@
           "correct_feedback": "Yes! 'Tiny' and 'warm' are describing words that help you picture the little kitten and the sunlight.",
           "incorrect_feedback": "Close one. Some of these are just small words like 'the' or 'a.' Which words actually describe and help you see the scene?",
           "reveal_feedback": "The answer is 'tiny, warm.' Those describing words help you picture the little kitten in the sunlight.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E3.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E3.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-E3.wav"
         },
         {
           "id": "L.4.3-E4",
@@ -6441,7 +6637,8 @@
           "correct_feedback": "Nice! 'The books were on the shelf' tells us exactly what and where, with no vague words.",
           "incorrect_feedback": "Hmm, most of these are full of fuzzy words like 'things,' 'stuff,' and 'someplace.' Which one is clear and exact?",
           "reveal_feedback": "The answer is 'The books were on the shelf.' It's clear and exact, with no vague words like 'stuff' or 'things.'",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E4.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E4.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-E4.wav"
         },
         {
           "id": "L.4.3-E5",
@@ -6461,7 +6658,8 @@
           "correct_feedback": "Yes! 'Crashed' is the exact word for a very loud noise. You can almost hear it!",
           "incorrect_feedback": "Not yet. Words like 'walked' or 'said' aren't about noise at all. Which word sounds like a big, loud crash?",
           "reveal_feedback": "The answer is 'crashed.' It's the exact word for a very loud noise, one you can almost hear.",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E5.png"
+          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/4th-grade/L.4.3/L.4.3-E5.png",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/4th-grade/L.4.3/L.4.3-E5.wav"
         }
       ]
     }
