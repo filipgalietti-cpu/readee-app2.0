@@ -506,7 +506,7 @@ function StoriesContent() {
   // Library view
   return (
     <div
-      className="min-h-[calc(100vh-4rem)] w-full px-4 py-8 md:px-8"
+      className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto px-4 py-8 md:px-8 lg:left-[272px]"
       style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
     >
      <div className="mx-auto space-y-4" style={{ maxWidth: 980 }}>

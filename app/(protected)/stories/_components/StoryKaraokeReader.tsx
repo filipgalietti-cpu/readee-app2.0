@@ -207,10 +207,10 @@ export default function StoryKaraokeReader({
 
   return (
     <div
-      className="flex min-h-[calc(100vh-4rem)] w-full flex-col px-4 py-4 md:px-7"
+      className="fixed inset-x-0 bottom-0 top-[76px] z-10 flex flex-col overflow-hidden px-4 py-4 md:px-7 lg:left-[272px]"
       style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
     >
-     <div className="mx-auto flex w-full flex-1 flex-col" style={{ maxWidth: 1080 }}>
+     <div className="mx-auto flex w-full min-h-0 flex-1 flex-col" style={{ maxWidth: 1080 }}>
       {/* Top bar */}
       <div className="mb-3 flex items-center gap-3">
         <button onClick={back} className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-white shadow-sm" style={{ color: "#4338ca" }}>
