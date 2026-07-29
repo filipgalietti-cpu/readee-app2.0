@@ -367,6 +367,9 @@ function ShopContent({
       const isEquipped = equipped[slot as keyof EquippedItems] === item.id;
       const newEquipped: EquippedItems = { ...equipped, [slot]: isEquipped ? null : item.id };
 
+      // Keep the big preview bunny uniform with what's actually equipped.
+      if (item.category === "outfits") setPreviewOutfitId(newEquipped.outfit || "bunny_classic");
+
       // Equipping a new outfit plays the swap ceremony (old look spins out,
       // new look drops in dancing).
       if (item.category === "outfits" && !isEquipped) {
@@ -449,10 +452,10 @@ function ShopContent({
               {/* The 3D stage. During a pull the wrapper flips to fixed
                   full-screen so the SAME box the kid tapped flies up. */}
               <div
-                style={
+                className={
                   ceremony
-                    ? { position: "fixed", inset: 0, zIndex: 940 }
-                    : { position: "absolute", inset: 0, zIndex: 2 }
+                    ? "fixed inset-0 z-[940] lg:left-[272px]"
+                    : "absolute inset-0 z-[2]"
                 }
               >
                 <MysteryBox3D ref={boxRef} onTap={handleBoxClick} onPop={onBoxPop} />
@@ -589,7 +592,13 @@ function ShopContent({
               onBuy={() => handleBuy(item)}
               onEquip={() => handleEquip(item)}
               onCantAfford={() => setShowGetMore(item)}
-              onPreview={item.category === "outfits" ? () => setPreviewOutfitId(item.id) : undefined}
+              onPreview={
+                item.category === "outfits"
+                  ? ownedIds.has(item.id)
+                    ? () => { if (child.equipped_items?.outfit !== item.id) handleEquip(item); }
+                    : () => setPreviewOutfitId(item.id)
+                  : undefined
+              }
             />
           ))}
         </div>
@@ -598,9 +607,8 @@ function ShopContent({
       {/* ── Pack-opening ceremony overlays (fixed, viewport-relative) ── */}
       {/* Dark backdrop + rays + flash */}
       <div
+        className="fixed inset-0 lg:left-[272px]"
         style={{
-          position: "fixed",
-          inset: 0,
           zIndex: 900,
           pointerEvents: ceremony ? "auto" : "none",
           opacity: ceremony ? 1 : 0,
@@ -632,9 +640,8 @@ function ShopContent({
 
       {/* Ceremony UI: tension label + reveal card + actions */}
       <div
+        className="fixed inset-0 lg:left-[272px]"
         style={{
-          position: "fixed",
-          inset: 0,
           zIndex: 960,
           display: ceremony ? "flex" : "none",
           flexDirection: "column",
@@ -743,9 +750,8 @@ function ShopContent({
       {/* Outfit swap ceremony */}
       {swap && (
         <div
+          className="fixed inset-0 lg:left-[272px]"
           style={{
-            position: "fixed",
-            inset: 0,
             zIndex: 970,
             display: "flex",
             flexDirection: "column",
@@ -875,8 +881,8 @@ function ShopItemCard({
   onCantAfford: () => void;
   onPreview?: () => void;
 }) {
-  const border = previewing ? "#a78bfa" : equipped ? "#fdba74" : owned ? "#bbf7d0" : canAfford ? "#e4e4e7" : "#f4f4f5";
-  const bg = previewing ? "#f5f3ff" : equipped ? "#fff7ed" : owned ? "#f0fdf4" : canAfford ? "#fff" : "#fafafa";
+  const border = equipped ? "#fdba74" : previewing ? "#a78bfa" : owned ? "#bbf7d0" : canAfford ? "#e4e4e7" : "#f4f4f5";
+  const bg = equipped ? "#fff7ed" : previewing ? "#f5f3ff" : owned ? "#f0fdf4" : canAfford ? "#fff" : "#fafafa";
   const img = itemImage(item.id);
   const isBunny = item.id.startsWith("bunny_");
 
