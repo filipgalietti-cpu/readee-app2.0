@@ -1,33 +1,71 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import "./_components/ceremony.css";
+import { useEffect, useRef, useState, useCallback, useMemo, Suspense, createElement } from "react";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
-import { Suspense } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { savedOk } from "@/lib/db/checked-write";
 import { Child, ShopPurchase, EquippedItems } from "@/lib/db/types";
 import {
   SHOP_CATEGORIES,
-  SHOP_ITEMS,
   ShopCategory,
   ShopItem,
   getItemsByCategory,
   categoryToSlot,
+  BACKGROUND_IMAGES,
 } from "@/lib/data/shop-items";
 import { MYSTERY_BOX_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mystery-box";
-import { MysteryBoxOpener } from "@/app/_components/MysteryBoxOpener";
 import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { usePracticeStore } from "@/lib/stores/practice-store";
-import { Carrot, Sparkles } from "lucide-react";
+import { useAudioStore } from "@/lib/stores/audio-store";
+import { Carrot, Lock, RotateCcw, Volume2, VolumeX, PartyPopper, Zap } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { getOutfit, type Outfit } from "@/app/_components/Bunny/outfits";
 import { UnlockToast } from "@/app/_components/UnlockToast";
-import { checkSeasonalGrants, isSeasonalActive, monthName } from "@/lib/unlock";
+import { checkSeasonalGrants } from "@/lib/unlock";
+import { MysteryBox3D, type MysteryBox3DHandle } from "./_components/MysteryBox3D";
+import { shopSfx } from "@/lib/shop/shop-sfx";
+
+const BALOO = "'Baloo 2', cursive";
+
+/* Rarity table + classifier — ported verbatim from the Claude Design
+   DCLogic (RARITY / rarityOf). Drives the whole ceremony: charge colour,
+   ray colour, card treatment and the tier word. */
+type Rarity = { key: string; label: string; hex: string; glow: string; deep: string };
+const RARITY: Record<string, Rarity> = {
+  common: { key: "common", label: "Common", hex: "#f97316", glow: "#fb923c", deep: "#7c2d12" },
+  rare: { key: "rare", label: "Rare", hex: "#38bdf8", glow: "#7dd3fc", deep: "#0c4a6e" },
+  epic: { key: "epic", label: "Epic", hex: "#8b5cf6", glow: "#c4b5fd", deep: "#3b0764" },
+  legendary: { key: "legendary", label: "Legendary", hex: "#f59e0b", glow: "#fcd34d", deep: "#78350f" },
+  special: { key: "special", label: "Special", hex: "#10b981", glow: "#6ee7b7", deep: "#064e3b" },
+};
+function rarityOf(reward: MysteryReward | null): Rarity {
+  if (!reward) return RARITY.common;
+  if (reward.type === "jackpot") return RARITY.legendary;
+  if (reward.type === "multiplier") return RARITY.special;
+  if (reward.type === "item") {
+    const p = reward.item.price;
+    if (p >= 1200) return RARITY.legendary;
+    if (p >= 600) return RARITY.epic;
+    if (p >= 200) return RARITY.rare;
+    return RARITY.common;
+  }
+  return reward.amount >= 60 ? RARITY.rare : RARITY.common;
+}
+
+function itemImage(id: string): string | null {
+  return AVATAR_IMAGES[id] || BACKGROUND_IMAGES[id] || null;
+}
+
+/** Renders a lucide icon by its shop-icon name. Uses createElement so the
+ *  (stable) icon component isn't treated as one created during render. */
+function ShopIcon({ name, size, strokeWidth = 1.5, style }: { name: string; size: number; strokeWidth?: number; style?: React.CSSProperties }) {
+  return createElement(getShopIcon(name), { size, strokeWidth, style });
+}
 
 export default function ShopPage() {
   return (
@@ -63,15 +101,10 @@ function ShopLoader() {
     return <SkeletonPage cards={4} />;
   }
 
-  return (
-    <ShopContent
-      child={child}
-      setChild={setChild}
-      purchases={purchases}
-      setPurchases={setPurchases}
-    />
-  );
+  return <ShopContent child={child} setChild={setChild} purchases={purchases} setPurchases={setPurchases} />;
 }
+
+type Phase = "idle" | "charging" | "opening" | "reveal";
 
 function ShopContent({
   child,
@@ -84,37 +117,74 @@ function ShopContent({
   purchases: ShopPurchase[];
   setPurchases: (p: ShopPurchase[]) => void;
 }) {
-  // Default to Outfits so the grid below the bunny showcase is the
-  // outfit picker (tap to preview, then equip in the hero). Avatars,
-  // backgrounds, etc. are one tab away.
   const [activeCategory, setActiveCategory] = useState<ShopCategory>("outfits");
   const [buying, setBuying] = useState<string | null>(null);
   const [justBought, setJustBought] = useState<string | null>(null);
-  const [mysteryReward, setMysteryReward] = useState<MysteryReward | null>(null);
-  const [buyingMystery, setBuyingMystery] = useState(false);
   const [showGetMore, setShowGetMore] = useState<ShopItem | null>(null);
   const [buyError, setBuyError] = useState<string | null>(null);
   const [unlocks, setUnlocks] = useState<Outfit[]>([]);
-  const [previewOutfitId, setPreviewOutfitId] = useState<string>(
-    child.equipped_items?.outfit ?? "bunny_classic",
-  );
+  const [previewOutfitId, setPreviewOutfitId] = useState<string>(child.equipped_items?.outfit ?? "bunny_classic");
+
+  // Ceremony state (ported from DCLogic state machine).
+  const [phase, setPhaseState] = useState<Phase>("idle");
+  const [ceremony, setCeremony] = useState(false);
+  const [reward, setReward] = useState<MysteryReward | null>(null);
+  const [shake, setShake] = useState(0);
+  const [swap, setSwap] = useState<{ from: string; to: string; name: string } | null>(null);
+
   const setMysteryBoxMultiplier = usePracticeStore((s) => s.setMysteryBoxMultiplier);
+  const isMuted = useAudioStore((s) => s.isMuted);
+  const toggleMute = useAudioStore((s) => s.toggleMute);
 
-  const ownedIds = new Set(purchases.map((p) => p.item_id));
+  // Refs so the async ceremony + long-lived box callbacks never read stale
+  // React state.
+  const boxRef = useRef<MysteryBox3DHandle>(null);
+  const phaseRef = useRef<Phase>("idle");
+  const pendingRef = useRef<MysteryReward | null>(null);
+  const afterDeductRef = useRef(0);
+  const timersRef = useRef<number[]>([]);
+  const childRef = useRef(child);
+  const purchasesRef = useRef(purchases);
+  childRef.current = child;
+  purchasesRef.current = purchases;
+
+  const ownedIds = useMemo(() => new Set(purchases.map((p) => p.item_id)), [purchases]);
   const items = getItemsByCategory(activeCategory);
+  const PRICE = MYSTERY_BOX_PRICE;
 
-  // Run seasonal grants on every shop load — if it's October and the
-  // kid doesn't yet own Vampire, they get it now with a celebration.
-  // Idempotent + cheap, safe to call on every mount.
+  useEffect(() => {
+    shopSfx.setMuted(isMuted);
+  }, [isMuted]);
+
+  useEffect(() => {
+    document.body.style.overflow = ceremony || swap ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [ceremony, swap]);
+
+  const setPhase = (p: Phase) => {
+    phaseRef.current = p;
+    setPhaseState(p);
+  };
+  const clearTimers = () => {
+    timersRef.current.forEach((t) => clearTimeout(t));
+    timersRef.current = [];
+  };
+  const after = (ms: number, fn: () => void) => {
+    timersRef.current.push(window.setTimeout(fn, ms) as unknown as number);
+  };
+
+  // Run seasonal grants on every shop load (idempotent + cheap).
   useEffect(() => {
     let cancelled = false;
     async function run() {
       const supabase = supabaseBrowser();
-      const ids = new Set(purchases.map((p) => p.item_id));
+      const ids = new Set(purchasesRef.current.map((p) => p.item_id));
       const { newlyGranted } = await checkSeasonalGrants(supabase, child.id, ids);
       if (cancelled || newlyGranted.length === 0) return;
       setPurchases([
-        ...purchases,
+        ...purchasesRef.current,
         ...newlyGranted.map((o) => ({
           id: crypto.randomUUID(),
           child_id: child.id,
@@ -128,272 +198,389 @@ function ShopContent({
     return () => {
       cancelled = true;
     };
-    // intentionally only on mount per child
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [child.id]);
 
+  useEffect(() => {
+    return () => clearTimers();
+  }, []);
+
+  // Escape closes a finished reveal.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && phaseRef.current === "reveal") exitCeremony();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ── Mystery-box ceremony, wired to the REAL economy ────────────────
+  // startCeremony deducts the price (savedOk) then charges; commitReward
+  // applies whatever rollMysteryBox returned and shows the reveal.
+
+  const applyReward = useCallback(
+    async (r: MysteryReward) => {
+      const supabase = supabaseBrowser();
+      const base = afterDeductRef.current;
+      const c = childRef.current;
+      if (r.type === "carrots" || r.type === "jackpot") {
+        const total = base + r.amount;
+        await savedOk("shop:mystery-bonus", supabase.from("children").update({ carrots: total }).eq("id", c.id));
+        setChild({ ...childRef.current, carrots: total });
+      } else if (r.type === "item") {
+        await savedOk("shop:mystery-item", supabase.from("shop_purchases").insert({ child_id: c.id, item_id: r.item.id }));
+        setPurchases([
+          ...purchasesRef.current,
+          { id: crypto.randomUUID(), child_id: c.id, item_id: r.item.id, purchased_at: new Date().toISOString() },
+        ]);
+      } else if (r.type === "multiplier") {
+        setMysteryBoxMultiplier(r.multiplier);
+      }
+    },
+    [setChild, setPurchases, setMysteryBoxMultiplier],
+  );
+
+  const commitReward = useCallback(() => {
+    const r = pendingRef.current;
+    if (!r || phaseRef.current !== "opening") return;
+    pendingRef.current = null;
+    applyReward(r);
+    setPhase("reveal");
+    setReward(r);
+    shopSfx.reveal(rarityOf(r).key);
+  }, [applyReward]);
+
+  const startCeremony = useCallback(async () => {
+    const c = childRef.current;
+    if (c.carrots < PRICE) {
+      setShake(Date.now());
+      return;
+    }
+    const owned = new Set(purchasesRef.current.map((p) => p.item_id));
+    const r = rollMysteryBox(owned);
+    const rarity = rarityOf(r);
+    clearTimers();
+    pendingRef.current = r;
+    const newCarrots = c.carrots - PRICE;
+    afterDeductRef.current = newCarrots;
+    setReward(null);
+    setCeremony(true);
+    setPhase("charging");
+
+    // Deduct the price up front (real economy).
+    const supabase = supabaseBrowser();
+    await savedOk("shop:mystery-spend", supabase.from("children").update({ carrots: newCarrots }).eq("id", c.id));
+    setChild({ ...childRef.current, carrots: newCarrots });
+
+    boxRef.current?.charge(rarity.hex);
+    shopSfx.charge(1.75);
+
+    // Tension hold → lid goes. The reveal rides the box's pop event; this
+    // second timer is the safety net when rAF is throttled.
+    after(1750, () => {
+      if (phaseRef.current !== "charging") return;
+      setPhase("opening");
+      boxRef.current?.open();
+      after(1400, () => commitReward());
+    });
+  }, [PRICE, setChild, commitReward]);
+
+  const reopen = useCallback(() => {
+    if (childRef.current.carrots < PRICE) {
+      exitCeremony();
+      return;
+    }
+    boxRef.current?.close();
+    clearTimers();
+    setPhase("idle");
+    setReward(null);
+    after(360, () => startCeremony());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [PRICE, startCeremony]);
+
+  const exitCeremony = useCallback(() => {
+    shopSfx.stopCharge();
+    boxRef.current?.close();
+    clearTimers();
+    pendingRef.current = null;
+    setPhase("idle");
+    setCeremony(false);
+    setReward(null);
+  }, []);
+
+  const handleBoxClick = useCallback(() => {
+    const p = phaseRef.current;
+    if (p === "charging" || p === "opening") return;
+    if (p === "reveal") {
+      reopen();
+      return;
+    }
+    if (childRef.current.carrots < PRICE) {
+      setShake(Date.now());
+      return;
+    }
+    startCeremony();
+  }, [PRICE, reopen, startCeremony]);
+
+  const onBoxPop = useCallback(() => commitReward(), [commitReward]);
+
+  // ── Buy / equip (existing economy, unchanged logic) ────────────────
   const handleBuy = useCallback(
     async (item: ShopItem) => {
-      if (child.carrots < item.price || ownedIds.has(item.id)) return;
+      if (childRef.current.carrots < item.price || ownedIds.has(item.id)) return;
       setBuying(item.id);
       setBuyError(null);
-
       const supabase = supabaseBrowser();
-      const newCarrots = child.carrots - item.price;
+      const c = childRef.current;
+      const newCarrots = c.carrots - item.price;
 
-      // Sequence the writes instead of running them in parallel. Old
-      // order ran update + insert via Promise.all; if the insert
-      // failed after the update succeeded the kid lost their hard-
-      // earned carrots without getting the item. We now insert the
-      // purchase row first, then deduct carrots, so the failure modes
-      // are:
-      //   - insert fails -> nothing changed, retry safe
-      //   - insert succeeds, update fails -> item owned, kid keeps
-      //     carrots. Worst case we hand out a free item; never the
-      //     "paid but got nothing" outcome.
-      const { error: insertError } = await supabase
-        .from("shop_purchases")
-        .insert({ child_id: child.id, item_id: item.id });
-
+      const { error: insertError } = await supabase.from("shop_purchases").insert({ child_id: c.id, item_id: item.id });
       if (insertError) {
         console.error("[shop] failed to record purchase:", insertError);
         setBuyError("Couldn't complete that purchase — try again in a moment.");
         setBuying(null);
         return;
       }
-
-      const { error: updateError } = await supabase
-        .from("children")
-        .update({ carrots: newCarrots })
-        .eq("id", child.id);
-
+      const { error: updateError } = await supabase.from("children").update({ carrots: newCarrots }).eq("id", c.id);
       if (updateError) {
-        // Item is theirs, we just couldn't deduct carrots. Don't fail
-        // the UX — log so we can see how often this happens and let
-        // the kid enjoy the win.
         console.error("[shop] purchase recorded but carrot deduction failed:", updateError);
       } else {
-        setChild({ ...child, carrots: newCarrots });
+        setChild({ ...childRef.current, carrots: newCarrots });
       }
-
       setPurchases([
-        ...purchases,
-        {
-          id: crypto.randomUUID(),
-          child_id: child.id,
-          item_id: item.id,
-          purchased_at: new Date().toISOString(),
-        },
+        ...purchasesRef.current,
+        { id: crypto.randomUUID(), child_id: c.id, item_id: item.id, purchased_at: new Date().toISOString() },
       ]);
+      shopSfx.blip();
       setJustBought(item.id);
       setTimeout(() => setJustBought(null), 1500);
       setBuying(null);
     },
-    [child, ownedIds, purchases, setChild, setPurchases],
+    [ownedIds, setChild, setPurchases],
   );
 
   const handleEquip = useCallback(
     async (item: ShopItem) => {
       const slot = categoryToSlot(item.category);
-      const equipped = child.equipped_items || {};
+      const equipped = childRef.current.equipped_items || {};
       const isEquipped = equipped[slot as keyof EquippedItems] === item.id;
+      const newEquipped: EquippedItems = { ...equipped, [slot]: isEquipped ? null : item.id };
 
-      const newEquipped: EquippedItems = {
-        ...equipped,
-        [slot]: isEquipped ? null : item.id,
-      };
+      // Equipping a new outfit plays the swap ceremony (old look spins out,
+      // new look drops in dancing).
+      if (item.category === "outfits" && !isEquipped) {
+        shopSfx.swap();
+        setSwap({ from: equipped.outfit || "bunny_classic", to: item.id, name: item.name });
+      } else {
+        shopSfx.blip();
+      }
 
       const supabase = supabaseBrowser();
-      const { error } = await supabase
-        .from("children")
-        .update({ equipped_items: newEquipped })
-        .eq("id", child.id);
-
-      if (!error) {
-        setChild({ ...child, equipped_items: newEquipped });
-      }
+      const { error } = await supabase.from("children").update({ equipped_items: newEquipped }).eq("id", childRef.current.id);
+      if (!error) setChild({ ...childRef.current, equipped_items: newEquipped });
     },
-    [child, setChild],
+    [setChild],
   );
 
-  const handleBuyMysteryBox = useCallback(async () => {
-    if (child.carrots < MYSTERY_BOX_PRICE || buyingMystery) return;
-    setBuyingMystery(true);
+  // ── Derived reveal values (ported from renderVals) ─────────────────
+  const live = rarityOf(reward || pendingRef.current);
+  const revealing = ceremony && phase === "reveal";
+  const charging = ceremony && phase === "charging";
+  const canAfford = child.carrots >= PRICE;
 
-    const supabase = supabaseBrowser();
-    const newCarrots = child.carrots - MYSTERY_BOX_PRICE;
-    await savedOk("shop:mystery-spend", supabase.from("children").update({ carrots: newCarrots }).eq("id", child.id));
-    setChild({ ...child, carrots: newCarrots });
+  const primaryLabel =
+    phase === "charging"
+      ? "Shaking the box…"
+      : phase === "opening"
+        ? "Opening…"
+        : phase === "reveal"
+          ? `Open another · ${PRICE}`
+          : canAfford
+            ? `Open for ${PRICE} carrots`
+            : `Need ${PRICE - child.carrots} more`;
+  const primaryEnabled = canAfford && phase !== "opening" && phase !== "charging";
 
-    const reward = rollMysteryBox(ownedIds);
-
-    // Apply reward
-    if (reward.type === "carrots" || reward.type === "jackpot") {
-      const bonus = reward.amount;
-      await savedOk("shop:mystery-bonus", supabase.from("children").update({ carrots: newCarrots + bonus }).eq("id", child.id));
-      setChild({ ...child, carrots: newCarrots + bonus });
-    } else if (reward.type === "item") {
-      await savedOk("shop:mystery-item", supabase.from("shop_purchases").insert({ child_id: child.id, item_id: reward.item.id }));
-      setPurchases([...purchases, { id: crypto.randomUUID(), child_id: child.id, item_id: reward.item.id, purchased_at: new Date().toISOString() }]);
-    } else if (reward.type === "multiplier") {
-      setMysteryBoxMultiplier(reward.multiplier);
-    }
-
-    setMysteryReward(reward);
-    setBuyingMystery(false);
-  }, [child, buyingMystery, ownedIds, purchases, setChild, setPurchases, setMysteryBoxMultiplier]);
+  const rewardNote = !reward
+    ? ""
+    : reward.type === "multiplier"
+      ? "Your next lesson earns twice as many carrots!"
+      : reward.type === "item"
+        ? reward.item.description
+        : reward.type === "jackpot"
+          ? "The rarest thing in the whole chest."
+          : "Added to your carrots.";
+  const revealTitle = !reward ? "" : reward.type === "item" ? reward.item.name : reward.label.replace(/!$/, "");
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4 pb-16">
+    <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto bg-white lg:left-[272px]">
       <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
 
-      {/* Back link */}
-      <div className="flex items-center gap-3 mb-6">
-        <Link
-          href="/dashboard"
-          className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
-        >
-          &larr; Back
-        </Link>
-      </div>
-
-      {/* Balance header */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 p-6 text-center text-white shadow-lg mb-6"
-      >
-        <div className="flex justify-center mb-2"><Carrot className="w-10 h-10 text-white" strokeWidth={1.5} /></div>
-        <div className="text-3xl font-extrabold">{child.carrots}</div>
-        <div className="text-sm font-medium text-white/80 mt-1">
-          {child.first_name}&apos;s Carrots
-        </div>
-      </motion.div>
-
-      {/* Bunny showcase — hero preview of the kid's currently-selected
-          bunny doing the lesson-complete dance. Tapping any outfit card
-          below sets the preview without committing; the action buttons
-          (Equip / Buy / Locked badge) live in this block. */}
-      <BunnyShowcase
-        child={child}
-        previewOutfitId={previewOutfitId}
-        ownedIds={ownedIds}
-        onBuy={(item) => handleBuy(item)}
-        onEquip={(item) => handleEquip(item)}
-        onCantAfford={(item) => setShowGetMore(item)}
-        buying={buying}
-      />
-
-
-      {buyError && (
-        <div
-          role="alert"
-          className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-800"
-        >
-          {buyError}
-        </div>
-      )}
-
-      {/* Mystery Box */}
-      <motion.div
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="rounded-2xl border-2 border-amber-300 dark:border-amber-700 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 p-5 mb-6"
-      >
-        <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-        <motion.div
-          className="w-36 h-36 -my-6 relative cursor-pointer"
-          animate={{ y: [0, -4, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <img src="/images/shop/mystery-box-closed.png" alt="Mystery Box" className="w-full h-full object-contain" />
-          {/* Shine sweep */}
-          <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
-            <div className="absolute -inset-full animate-[shine_4s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]" />
-          </div>
-          {/* Golden sparkles */}
-          {[
-            { top: "2%", left: "5%", delay: 0, sizeClass: "w-4 h-4" },
-            { top: "8%", right: "0%", delay: 0.6, sizeClass: "w-3.5 h-3.5" },
-            { bottom: "25%", left: "0%", delay: 1.2, sizeClass: "w-3.5 h-3.5" },
-            { top: "-5%", right: "15%", delay: 0.3, sizeClass: "w-5 h-5" },
-            { bottom: "15%", right: "2%", delay: 0.9, sizeClass: "w-3 h-3" },
-            { top: "20%", left: "-5%", delay: 1.5, sizeClass: "w-3 h-3" },
-            { bottom: "5%", left: "20%", delay: 1.8, sizeClass: "w-4 h-4" },
-          ].map((s, i) => (
-            <motion.div
-              key={i}
-              className="absolute pointer-events-none text-amber-400"
-              style={{ top: s.top, left: s.left, right: s.right, bottom: s.bottom }}
-              animate={{ opacity: [0, 1, 0], scale: [0.3, 1.3, 0.3] }}
-              transition={{ duration: 1.8, delay: s.delay, repeat: Infinity, repeatDelay: 0.8 }}
-            >
-              <Sparkles className={s.sizeClass} fill="currentColor" strokeWidth={0} />
-            </motion.div>
-          ))}
-        </motion.div>
-
+      <div className="mx-auto w-full" style={{ maxWidth: 1180, padding: "32px 24px 72px", fontFamily: "'Nunito', ui-sans-serif, system-ui, sans-serif" }}>
+        {/* Title + carrot balance */}
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24, marginBottom: 20, flexWrap: "wrap" }}>
+          <h1 style={{ margin: 0, fontFamily: BALOO, fontSize: 38, fontWeight: 800, letterSpacing: "-.02em", color: "#18181b", lineHeight: 1 }}>Carrot shop</h1>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 18px", borderRadius: 18, border: "1px solid #e4e4e7", background: "#fff", boxShadow: "0 1px 2px rgba(0,0,0,.05)" }}>
+            <Carrot size={26} strokeWidth={1.7} style={{ color: "#f97316", display: "block" }} />
             <div>
-              <div className="font-bold text-zinc-900 dark:text-white">Mystery Box</div>
-              <div className="text-xs text-zinc-500 dark:text-slate-400">
-                Win carrots, items, or multipliers!
-              </div>
+              <div style={{ fontFamily: BALOO, fontSize: 24, fontWeight: 800, lineHeight: 1, color: "#18181b" }}>{child.carrots}</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#a1a1aa", marginTop: 2 }}>{child.first_name}&apos;s carrots</div>
             </div>
           </div>
-          <button
-            onClick={child.carrots >= MYSTERY_BOX_PRICE ? handleBuyMysteryBox : () => setShowGetMore({ id: "mystery_box", name: "Mystery Box", icon: "gift", category: "avatars", price: MYSTERY_BOX_PRICE, description: "Mystery Box" })}
-            disabled={buyingMystery}
-            className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all active:scale-[0.97] ${
-              child.carrots >= MYSTERY_BOX_PRICE
-                ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-sm hover:from-amber-600 hover:to-orange-600"
-                : "bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/50"
-            }`}
-          >
-            {buyingMystery ? (
-              <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
-            ) : (
-              <span className="inline-flex items-center gap-1">{MYSTERY_BOX_PRICE} <Carrot className="w-4 h-4" strokeWidth={1.5} /></span>
-            )}
-          </button>
         </div>
-      </motion.div>
 
-      {/* Category tabs */}
-      <div className="flex gap-2 overflow-x-auto pb-2 mb-6 scrollbar-hide">
-        {SHOP_CATEGORIES.map((cat) => (
-          <button
-            key={cat.key}
-            onClick={() => setActiveCategory(cat.key)}
-            className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-              activeCategory === cat.key
-                ? "bg-orange-500 text-white shadow-md"
-                : "bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300 hover:bg-zinc-200 dark:hover:bg-slate-700"
-            }`}
-          >
-            {(() => { const CI = getShopIcon(cat.icon); return <CI className="w-4 h-4 inline-block" strokeWidth={1.5} />; })()} {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Item grid */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeCategory}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.2 }}
-          className="grid grid-cols-2 sm:grid-cols-3 gap-3"
+        {/* Mystery box + bunny showcase */}
+        <section
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))",
+            gap: 0,
+            borderRadius: 28,
+            overflow: "hidden",
+            border: "2px solid #ddd6fe",
+            background: "#fff",
+            boxShadow: "0 18px 50px -30px rgba(76,29,149,.55)",
+            marginBottom: 28,
+          }}
         >
+          {/* Left — 3D box + CTA */}
+          <div style={{ display: "flex", flexDirection: "column", background: "linear-gradient(160deg,#f5f3ff 0%,#eef2ff 55%,#e0e7ff 100%)" }}>
+            <div style={{ position: "relative", flex: 1, minHeight: 390 }}>
+              {/* The 3D stage. During a pull the wrapper flips to fixed
+                  full-screen so the SAME box the kid tapped flies up. */}
+              <div
+                style={
+                  ceremony
+                    ? { position: "fixed", inset: 0, zIndex: 940 }
+                    : { position: "absolute", inset: 0, zIndex: 2 }
+                }
+              >
+                <MysteryBox3D ref={boxRef} onTap={handleBoxClick} onPop={onBoxPop} />
+              </div>
+
+              <button
+                onClick={toggleMute}
+                aria-label="Sound"
+                style={{
+                  position: "absolute",
+                  top: 14,
+                  right: 14,
+                  zIndex: 4,
+                  width: 38,
+                  height: 38,
+                  borderRadius: 999,
+                  border: "1px solid #e4e4e7",
+                  background: "rgba(255,255,255,.86)",
+                  color: isMuted ? "#a1a1aa" : "#7c3aed",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 14px -8px rgba(67,56,202,.7)",
+                }}
+              >
+                {isMuted ? <VolumeX size={18} strokeWidth={2} /> : <Volume2 size={18} strokeWidth={2} />}
+              </button>
+
+              <div style={{ position: "absolute", left: 0, right: 0, bottom: 14, display: "flex", justifyContent: "center", pointerEvents: "none", zIndex: 3, opacity: ceremony ? 0 : 1, transition: "opacity .3s ease" }}>
+                <div style={{ padding: "7px 14px", borderRadius: 999, background: "rgba(255,255,255,.86)", backdropFilter: "blur(6px)", fontSize: 12, fontWeight: 800, color: "#4338ca", boxShadow: "0 4px 14px -6px rgba(67,56,202,.6)" }}>
+                  Tap the box to open
+                </div>
+              </div>
+            </div>
+
+            <div style={{ padding: "18px 24px 20px", display: "flex", flexDirection: "column", gap: 12, background: "rgba(255,255,255,.66)", borderTop: "2px solid #e9e5ff" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
+                <h2 style={{ margin: 0, fontFamily: BALOO, fontSize: 30, fontWeight: 800, letterSpacing: "-.025em", color: "#18181b", lineHeight: 1.1, whiteSpace: "nowrap" }}>Mystery Box</h2>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, flex: "0 0 auto", padding: "9px 15px 9px 12px", borderRadius: 999, background: "linear-gradient(135deg,#fb923c,#f59e0b)", boxShadow: "0 8px 20px -10px rgba(249,115,22,1)" }}>
+                  <Carrot size={20} strokeWidth={2.2} style={{ color: "#fff", display: "block" }} />
+                  <span style={{ fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", lineHeight: 1 }}>{PRICE}</span>
+                </div>
+              </div>
+
+              <button
+                onClick={() =>
+                  canAfford
+                    ? handleBoxClick()
+                    : setShowGetMore({ id: "mystery_box", name: "the Mystery Box", icon: "gift", category: "avatars", price: PRICE, description: "Mystery Box" })
+                }
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 9,
+                  width: "100%",
+                  padding: "16px 20px",
+                  borderRadius: 18,
+                  border: 0,
+                  cursor: primaryEnabled || !canAfford ? "pointer" : "not-allowed",
+                  whiteSpace: "nowrap",
+                  textAlign: "center",
+                  fontFamily: BALOO,
+                  fontSize: 18,
+                  fontWeight: 800,
+                  letterSpacing: "-.01em",
+                  color: primaryEnabled ? "#fff" : "#a1a1aa",
+                  background: primaryEnabled ? "linear-gradient(135deg,#7c3aed 0%,#4338ca 100%)" : "#f4f4f5",
+                  boxShadow: primaryEnabled ? "0 12px 26px -14px rgba(76,29,149,.95)" : "none",
+                  animation: primaryEnabled ? "rdGlowPulse 2.6s ease-in-out infinite" : shake ? "rdShake .5s ease" : "none",
+                  transition: "transform .12s ease",
+                }}
+              >
+                {phase === "reveal" ? <RotateCcw size={19} strokeWidth={2.2} /> : canAfford ? <Carrot size={19} strokeWidth={2.2} /> : <Lock size={19} strokeWidth={2.2} />}
+                {primaryLabel}
+              </button>
+            </div>
+          </div>
+
+          {/* Right — "Your bunny" preview */}
+          <BunnyPreview previewOutfitId={previewOutfitId} />
+        </section>
+
+        {buyError && (
+          <div role="alert" style={{ marginBottom: 20, borderRadius: 16, border: "1px solid #fecdd3", background: "#fff1f2", padding: "12px 16px", fontSize: 14, fontWeight: 600, color: "#9f1239" }}>
+            {buyError}
+          </div>
+        )}
+
+        {/* Category tabs */}
+        <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
+          {SHOP_CATEGORIES.map((cat) => {
+            const active = activeCategory === cat.key;
+            return (
+              <button
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 7,
+                  padding: "9px 16px",
+                  borderRadius: 999,
+                  border: 0,
+                  cursor: "pointer",
+                  fontFamily: "'Nunito', sans-serif",
+                  fontSize: 13.5,
+                  fontWeight: 700,
+                  background: active ? "#f97316" : "#f4f4f5",
+                  color: active ? "#fff" : "#52525b",
+                  boxShadow: active ? "0 6px 16px -8px rgba(249,115,22,.9)" : "none",
+                }}
+              >
+                <ShopIcon name={cat.icon} size={16} strokeWidth={2} style={{ display: "block" }} />
+                {cat.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Item grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(158px,1fr))", gap: 12 }}>
           {items.map((item) => (
             <ShopItemCard
               key={item.id}
               item={item}
-              owned={ownedIds.has(item.id)}
+              owned={ownedIds.has(item.id) || item.price === 0}
               equipped={child.equipped_items?.[categoryToSlot(item.category) as keyof EquippedItems] === item.id}
               canAfford={child.carrots >= item.price}
               buying={buying === item.id}
@@ -402,20 +589,190 @@ function ShopContent({
               onBuy={() => handleBuy(item)}
               onEquip={() => handleEquip(item)}
               onCantAfford={() => setShowGetMore(item)}
-              onPreview={
-                item.id.startsWith("bunny_") ? () => setPreviewOutfitId(item.id) : undefined
-              }
+              onPreview={item.category === "outfits" ? () => setPreviewOutfitId(item.id) : undefined}
             />
           ))}
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      </div>
 
-      {/* Mystery Box Opener modal */}
-      {mysteryReward && (
-        <MysteryBoxOpener
-          reward={mysteryReward}
-          onClose={() => setMysteryReward(null)}
+      {/* ── Pack-opening ceremony overlays (fixed, viewport-relative) ── */}
+      {/* Dark backdrop + rays + flash */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 900,
+          pointerEvents: ceremony ? "auto" : "none",
+          opacity: ceremony ? 1 : 0,
+          transition: "opacity .45s ease",
+          background: `radial-gradient(circle at 50% 46%, ${live.deep} 0%, #1e1b4b 45%, #09071c 100%)`,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "46%",
+            width: 620,
+            height: 620,
+            marginLeft: -310,
+            marginTop: -310,
+            pointerEvents: "none",
+            opacity: revealing ? 0.5 : charging ? 0.14 : 0,
+            transition: "opacity .8s ease",
+            animation: ceremony ? "rdRayspin 26s linear infinite" : "none",
+            willChange: "transform",
+            background: `repeating-conic-gradient(from 0deg at 50% 50%, ${live.glow}55 0deg 5deg, transparent 5deg 16deg)`,
+            maskImage: "radial-gradient(circle, #000 0%, transparent 62%)",
+            WebkitMaskImage: "radial-gradient(circle, #000 0%, transparent 62%)",
+          }}
         />
+        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: live.glow, opacity: 0, animation: revealing ? "rdFlash .7s ease-out" : "none" }} />
+      </div>
+
+      {/* Ceremony UI: tension label + reveal card + actions */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 960,
+          display: ceremony ? "flex" : "none",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "flex-end",
+          padding: "0 24px 6vh",
+          pointerEvents: "none",
+          gap: 22,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "7vh",
+            left: 0,
+            right: 0,
+            textAlign: "center",
+            fontFamily: BALOO,
+            fontSize: charging ? 17 : 13,
+            fontWeight: 800,
+            letterSpacing: charging ? ".34em" : ".2em",
+            textTransform: "uppercase",
+            color: charging ? live.glow : "rgba(255,255,255,.5)",
+            animation: charging ? "rdTension 1s ease-in-out infinite" : "none",
+            transition: "all .4s ease",
+          }}
+        >
+          {charging ? "Something's coming…" : revealing ? "" : "Opening"}
+        </div>
+
+        {revealing && reward && (
+          <>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 10,
+                padding: "26px 34px 30px",
+                borderRadius: 28,
+                minWidth: 300,
+                pointerEvents: "auto",
+                background: "linear-gradient(165deg, rgba(255,255,255,.13), rgba(255,255,255,.04))",
+                border: `1px solid ${live.glow}66`,
+                boxShadow: `0 0 80px -10px ${live.hex}aa, inset 0 1px 0 rgba(255,255,255,.22)`,
+                backdropFilter: "blur(14px)",
+                animation: "rdCardIn .72s cubic-bezier(.34,1.56,.64,1) both",
+              }}
+            >
+              <div
+                style={{
+                  padding: "5px 16px",
+                  borderRadius: 999,
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: ".22em",
+                  textTransform: "uppercase",
+                  color: live.deep,
+                  background: `linear-gradient(90deg,${live.glow},${live.hex})`,
+                  boxShadow: `0 6px 22px -8px ${live.hex}`,
+                }}
+              >
+                {live.label}
+              </div>
+              <div style={{ position: "relative", width: 150, height: 150, display: "flex", alignItems: "center", justifyContent: "center", filter: `drop-shadow(0 12px 26px ${live.hex}88)` }}>
+                <RevealArt reward={reward} glow={live.glow} />
+              </div>
+              <div style={{ fontFamily: BALOO, fontSize: 34, fontWeight: 800, lineHeight: 1.05, letterSpacing: "-.02em", color: "#fff", textAlign: "center", textWrap: "pretty" }}>{revealTitle}</div>
+              <div style={{ margin: 0, fontSize: 15, lineHeight: 1.35, fontWeight: 600, color: "rgba(255,255,255,.72)", textAlign: "center", maxWidth: 280, textWrap: "pretty" }}>{rewardNote}</div>
+            </div>
+
+            <div style={{ display: "flex", gap: 12, pointerEvents: "auto", animation: "rdRise .5s ease .35s both" }}>
+              <button
+                onClick={reopen}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 9,
+                  padding: "15px 26px",
+                  borderRadius: 16,
+                  border: 0,
+                  cursor: child.carrots >= PRICE ? "pointer" : "not-allowed",
+                  fontFamily: BALOO,
+                  fontSize: 17,
+                  fontWeight: 800,
+                  whiteSpace: "nowrap",
+                  color: child.carrots >= PRICE ? live.deep : "rgba(255,255,255,.4)",
+                  background: child.carrots >= PRICE ? `linear-gradient(135deg,${live.glow},${live.hex})` : "rgba(255,255,255,.08)",
+                  boxShadow: child.carrots >= PRICE ? `0 14px 34px -14px ${live.hex}` : "none",
+                }}
+              >
+                <Carrot size={18} strokeWidth={2.2} />
+                {child.carrots >= PRICE ? `Open another · ${PRICE}` : "Not enough carrots"}
+              </button>
+              <button
+                onClick={exitCeremony}
+                style={{ padding: "15px 26px", borderRadius: 16, cursor: "pointer", whiteSpace: "nowrap", border: "1px solid rgba(255,255,255,.24)", background: "rgba(255,255,255,.08)", fontFamily: BALOO, fontSize: 17, fontWeight: 800, color: "#fff" }}
+              >
+                Back
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Outfit swap ceremony */}
+      {swap && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 970,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 18,
+            background: "radial-gradient(circle at 50% 44%, #4c1d95 0%, #1e1b4b 48%, #09071c 100%)",
+          }}
+        >
+          <div style={{ fontSize: 14, fontWeight: 700, color: "rgba(255,255,255,.6)", letterSpacing: ".12em", textTransform: "uppercase", animation: "rdRise .5s ease .3s both" }}>New look</div>
+          <div style={{ position: "relative", width: 260, height: 280, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ position: "absolute", width: 180, height: 180, borderRadius: "50%", border: "3px solid #c4b5fd", pointerEvents: "none", animation: "rdRing .9s ease-out .42s both" }} />
+            <div style={{ position: "absolute", inset: 0, transformOrigin: "50% 60%", animation: "rdSwapOut .6s cubic-bezier(.55,0,.65,.2) both" }}>
+              <Bunny outfitId={swap.from} />
+            </div>
+            <div style={{ position: "absolute", inset: 0, transformOrigin: "50% 100%", animation: "rdSwapIn .85s cubic-bezier(.34,1.56,.64,1) .5s both" }}>
+              <BunnyReaction outfitId={swap.to} state="levelup" />
+            </div>
+          </div>
+          <div style={{ fontFamily: BALOO, fontSize: 34, fontWeight: 800, color: "#fff", letterSpacing: "-.02em", textAlign: "center", animation: "rdRise .5s ease .95s both" }}>{swap.name}</div>
+          <button
+            onClick={() => setSwap(null)}
+            style={{ padding: "14px 30px", borderRadius: 16, border: 0, cursor: "pointer", fontFamily: BALOO, fontSize: 17, fontWeight: 800, color: "#3b0764", background: "linear-gradient(135deg,#ddd6fe,#a78bfa)", boxShadow: "0 14px 34px -14px #8b5cf6", animation: "rdRise .5s ease 1.05s both" }}
+          >
+            Looking good
+          </button>
+        </div>
       )}
 
       {/* Get More Carrots modal */}
@@ -431,144 +788,65 @@ function ShopContent({
   );
 }
 
-/**
- * BunnyShowcase — hero preview at the top of the shop. Renders the
- * currently-selected bunny doing the lesson-complete dance on loop,
- * plus a contextual action (Equip / Buy / locked badge) for whichever
- * outfit the kid is previewing.
- *
- * `previewOutfitId` drives the bunny + label; defaults to the equipped
- * outfit and updates when the kid taps a card in the grid below.
- */
-function BunnyShowcase({
-  child,
-  previewOutfitId,
-  ownedIds,
-  onBuy,
-  onEquip,
-  onCantAfford,
-  buying,
-}: {
-  child: Child;
-  previewOutfitId: string;
-  ownedIds: Set<string>;
-  onBuy: (item: ShopItem) => void;
-  onEquip: (item: ShopItem) => void;
-  onCantAfford: (item: ShopItem) => void;
-  buying: string | null;
-}) {
-  const outfit = getOutfit(previewOutfitId);
-  const item = SHOP_ITEMS.find((i) => i.id === previewOutfitId);
-  const owned = ownedIds.has(previewOutfitId);
-  const equipped = child.equipped_items?.outfit === previewOutfitId;
-  const canAfford = item ? child.carrots >= item.price : false;
-  const isBuying = buying === previewOutfitId;
-
-  // The action panel branches by unlock type, mirroring ShopItemCard so
-  // the showcase stays in lockstep with the grid.
-  const action = (() => {
-    if (owned && equipped) {
+/** The reward art inside the reveal card. Bunny outfits dance; avatars +
+ *  backgrounds show their real PNG; everything else shows its icon. */
+function RevealArt({ reward, glow }: { reward: MysteryReward; glow: string }) {
+  if (reward.type === "item") {
+    const it = reward.item;
+    if (it.id.startsWith("bunny_")) {
       return (
-        <div className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2 text-sm font-bold text-white shadow-sm">
-          <CheckmarkIcon /> Equipped
+        <div style={{ position: "relative", width: 148, height: 160 }}>
+          <BunnyReaction outfitId={it.id} state="levelup" />
         </div>
       );
     }
-    if (owned) {
+    const img = itemImage(it.id);
+    if (img) {
       return (
-        <button
-          onClick={() => item && onEquip(item)}
-          className="rounded-2xl bg-orange-500 px-6 py-3 text-sm font-extrabold text-white shadow-sm transition active:scale-[0.97] hover:bg-orange-600"
-        >
-          Equip {outfit.name}
-        </button>
-      );
-    }
-    if (outfit.unlock.type === "milestone") {
-      return (
-        <div className="rounded-xl border-2 border-dashed border-violet-400 bg-violet-50 px-5 py-3 text-center text-sm font-bold text-violet-700">
-          🎯 {outfit.unlock.label}
+        <div style={{ position: "relative", width: 118, height: 118, borderRadius: 24, overflow: "hidden" }}>
+          <Image src={img} alt={it.name} fill sizes="118px" style={{ objectFit: "cover" }} />
         </div>
       );
     }
-    if (outfit.unlock.type === "seasonal") {
-      const active = (new Date().getMonth() + 1) === outfit.unlock.month;
-      return (
-        <div
-          className={`rounded-xl border-2 border-dashed px-5 py-3 text-center text-sm font-bold ${
-            active
-              ? "border-emerald-400 bg-emerald-50 text-emerald-700"
-              : "border-zinc-300 bg-zinc-50 text-zinc-500"
-          }`}
-        >
-          {active ? `Free this ${monthName(outfit.unlock.month)}!` : `Back next ${monthName(outfit.unlock.month)}`}
-        </div>
-      );
-    }
-    // shop (or "free" which should always be owned, but guard anyway)
-    if (!item) return null;
-    return (
-      <button
-        onClick={() => (canAfford ? onBuy(item) : onCantAfford(item))}
-        disabled={isBuying}
-        className={`inline-flex items-center gap-2 rounded-2xl px-6 py-3 text-sm font-extrabold shadow-sm transition active:scale-[0.97] ${
-          canAfford
-            ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600"
-            : "bg-zinc-200 text-zinc-500 hover:bg-zinc-300"
-        }`}
-      >
-        {isBuying ? (
-          <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
-        ) : (
-          <>
-            Get for {item.price}
-            <Carrot className="w-4 h-4" strokeWidth={1.5} />
-          </>
-        )}
-      </button>
-    );
-  })();
-
-  // Subtitle nudges the kid toward the grid below. Every branch ends in
-  // "tap an outfit below" so the interaction model is obvious from the
-  // hero alone — you don't have to scroll to discover the grid is live.
-  const subtitle = (() => {
-    if (equipped) return "Your active look · tap an outfit below to try it on";
-    if (owned) return "Tap Equip to wear, or pick another outfit below";
-    if (outfit.rarity === "rare") return "Rare collectible · keep tapping outfits below";
-    return "Tap an outfit below to preview it here";
-  })();
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.05 }}
-      className="rounded-3xl border-2 mb-6 px-5 pb-5 pt-4 shadow-sm"
-      style={{ background: outfit.tint, borderColor: outfit.border }}
-    >
-      <div className="text-center text-[10px] font-bold uppercase tracking-[0.18em] text-violet-700">
-        Your Bunny
-      </div>
-      <div className="relative mx-auto mt-1 h-44 w-40 sm:h-52 sm:w-48">
-        <BunnyReaction outfitId={previewOutfitId} state="levelup" />
-      </div>
-      <div className="mt-1 text-center">
-        <div className="font-display text-2xl font-extrabold tracking-tight text-zinc-900">
-          {outfit.name}
-        </div>
-        <div className="mt-0.5 text-xs text-zinc-600">{subtitle}</div>
-      </div>
-      <div className="mt-4 flex justify-center">{action}</div>
-    </motion.div>
-  );
+    return <ShopIcon name={it.icon} size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
+  }
+  if (reward.type === "jackpot") return <PartyPopper size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
+  if (reward.type === "multiplier") return <Zap size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
+  return <Carrot size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
 }
 
-function CheckmarkIcon() {
+/** Right column of the hero: the currently-previewed bunny on a lit stage. */
+function BunnyPreview({ previewOutfitId }: { previewOutfitId: string }) {
+  const outfit = getOutfit(previewOutfitId);
   return (
-    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
+    <div
+      style={{
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 2,
+        padding: "28px 28px 30px",
+        background: "radial-gradient(120% 80% at 50% 0%,#fffdf5 0%,#f7f3ff 42%,#ece7fe 100%)",
+        borderLeft: "2px solid #ede9fe",
+        overflow: "hidden",
+      }}
+    >
+      <div style={{ position: "absolute", top: -40, left: "50%", width: 340, height: 420, marginLeft: -170, pointerEvents: "none", background: "conic-gradient(from 170deg at 50% 0%,rgba(255,255,255,0) 0deg,rgba(255,246,214,.9) 8deg,rgba(255,246,214,0) 22deg)", filter: "blur(8px)", animation: "rdSpotSweep 6s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", top: -40, left: "50%", width: 340, height: 420, marginLeft: -170, pointerEvents: "none", background: "conic-gradient(from 168deg at 50% 0%,rgba(255,255,255,0) 0deg,rgba(221,214,254,.85) 26deg,rgba(221,214,254,0) 48deg)", filter: "blur(14px)" }} />
+
+      <div style={{ position: "relative", zIndex: 2, fontFamily: BALOO, fontSize: 19, fontWeight: 800, letterSpacing: ".16em", textTransform: "uppercase", color: "#7c3aed" }}>Your bunny</div>
+
+      <div style={{ position: "relative", zIndex: 2, width: 280, height: 290, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+        <div style={{ position: "absolute", bottom: 6, left: "50%", width: 210, height: 56, marginLeft: -105, borderRadius: "50%", background: "radial-gradient(50% 50% at 50% 50%,rgba(124,58,237,.28) 0%,rgba(124,58,237,0) 70%)" }} />
+        <div style={{ position: "absolute", bottom: 26, left: "50%", width: 190, height: 22, marginLeft: -95, borderRadius: "50%", background: "linear-gradient(180deg,#c4b5fd,#8b5cf6)" }} />
+        <div style={{ position: "relative", width: 224, height: 244, marginBottom: 14 }}>
+          <Bunny outfitId={previewOutfitId} showRareSparkle={outfit.rarity === "rare"} />
+        </div>
+      </div>
+      <div style={{ position: "relative", zIndex: 2, fontFamily: BALOO, fontSize: 30, fontWeight: 800, letterSpacing: "-.02em", color: "#18181b", lineHeight: 1.1, textAlign: "center" }}>{outfit.name}</div>
+    </div>
   );
 }
 
@@ -595,119 +873,78 @@ function ShopItemCard({
   onBuy: () => void;
   onEquip: () => void;
   onCantAfford: () => void;
-  /** Bunny outfits only — tap card to show it in the top showcase. */
   onPreview?: () => void;
 }) {
+  const border = previewing ? "#a78bfa" : equipped ? "#fdba74" : owned ? "#bbf7d0" : canAfford ? "#e4e4e7" : "#f4f4f5";
+  const bg = previewing ? "#f5f3ff" : equipped ? "#fff7ed" : owned ? "#f0fdf4" : canAfford ? "#fff" : "#fafafa";
+  const img = itemImage(item.id);
+  const isBunny = item.id.startsWith("bunny_");
+
+  const btnStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "9px 10px",
+    borderRadius: 12,
+    border: 0,
+    cursor: "pointer",
+    fontFamily: "'Nunito', sans-serif",
+    fontSize: 12.5,
+    fontWeight: 800,
+    color: equipped ? "#fff" : owned ? "#52525b" : canAfford ? "#fff" : "#a1a1aa",
+    background: equipped ? "#f97316" : owned ? "#f4f4f5" : canAfford ? "linear-gradient(90deg,#f97316,#f59e0b)" : "#e4e4e7",
+  };
+
   return (
-    <motion.div
-      layout
+    <div
       onClick={onPreview}
-      whileHover={{ scale: 1.04, y: -4 }}
-      whileTap={{ scale: 0.97 }}
-      transition={{ type: "spring", stiffness: 400, damping: 20 }}
-      className={`rounded-2xl border-2 p-4 flex flex-col items-center text-center cursor-pointer transition-shadow ${
-        previewing
-          ? "border-violet-400 bg-violet-50 ring-2 ring-violet-300 dark:bg-violet-950/30 dark:border-violet-600 dark:ring-violet-700"
-          : owned
-          ? equipped
-            ? "border-orange-300 bg-orange-50 dark:bg-orange-950/20 dark:border-orange-700"
-            : "border-green-200 bg-green-50/50 dark:bg-green-950/20 dark:border-green-800"
-          : canAfford
-          ? "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-orange-300 dark:hover:border-orange-700 hover:shadow-lg"
-          : "border-zinc-100 dark:border-slate-800 bg-zinc-50 dark:bg-slate-900 opacity-70 hover:opacity-100"
-      }`}
+      style={{
+        borderRadius: 18,
+        border: `2px solid ${border}`,
+        background: bg,
+        padding: "14px 12px 12px",
+        display: "flex",
+        flexDirection: "column",
+        cursor: onPreview ? "pointer" : "default",
+        boxShadow: previewing ? "0 0 0 3px rgba(167,139,250,.35)" : "none",
+        opacity: !owned && !canAfford ? 0.72 : 1,
+        transition: "all .18s ease",
+      }}
     >
-      {/* Icon / Avatar image */}
-      <motion.div
-        className="mb-2"
-        animate={justBought ? { scale: [1, 1.4, 1], rotate: [0, 10, -10, 0] } : {}}
-        transition={{ duration: 0.5 }}
-      >
-        {item.id.startsWith("bunny_") ? (
-          <div className="relative w-20 h-20">
+      <div style={{ height: 80, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 6, transform: justBought ? "scale(1.12)" : "none", transition: "transform .3s ease" }}>
+        {isBunny ? (
+          <div style={{ position: "relative", width: 78, height: 84 }}>
             <Bunny outfitId={item.id} showRareSparkle={getOutfit(item.id).rarity === "rare"} />
           </div>
-        ) : AVATAR_IMAGES[item.id] ? (
-          <div className="w-14 h-14 rounded-xl overflow-hidden">
-            <img src={AVATAR_IMAGES[item.id]} alt={item.name} className="w-full h-full object-cover" draggable={false} />
+        ) : img ? (
+          <div style={{ position: "relative", width: 56, height: 56, borderRadius: 12, overflow: "hidden" }}>
+            <Image src={img} alt={item.name} fill sizes="56px" style={{ objectFit: "cover" }} draggable={false} />
           </div>
         ) : (
-          (() => { const ItemIcon = getShopIcon(item.icon); return <ItemIcon className="w-10 h-10 text-indigo-500" strokeWidth={1.5} />; })()
+          <ShopIcon name={item.icon} size={40} strokeWidth={1.5} style={{ color: "#6366f1" }} />
         )}
-      </motion.div>
-
-      {/* Name */}
-      <div className="font-semibold text-sm text-zinc-900 dark:text-white mb-0.5">
-        {item.name}
       </div>
-
-      {/* Description */}
-      <div className="text-[11px] text-zinc-400 dark:text-slate-500 mb-3 leading-snug">
-        {item.description}
-      </div>
-
-      {/* Action — branches by unlock method for bunny items, falls back
-          to the legacy buy/equip flow for everything else. */}
-      {(() => {
-        const bunny = item.id.startsWith("bunny_") ? getOutfit(item.id) : null;
-        const unlock = bunny?.unlock;
-
-        if (owned) {
-          return (
-            <button
-              onClick={onEquip}
-              className={`w-full py-2 rounded-xl text-xs font-bold transition-all active:scale-[0.97] ${
-                equipped
-                  ? "bg-orange-500 text-white shadow-sm"
-                  : "bg-zinc-100 dark:bg-slate-700 text-zinc-600 dark:text-slate-300 hover:bg-zinc-200 dark:hover:bg-slate-600"
-              }`}
-            >
-              {equipped ? "Equipped" : "Equip"}
-            </button>
-          );
-        }
-
-        if (unlock?.type === "milestone") {
-          return (
-            <div className="w-full rounded-xl border-2 border-dashed border-violet-300 bg-violet-50 px-2 py-2 text-center text-[11px] font-bold leading-tight text-violet-700 dark:border-violet-700 dark:bg-violet-950/30 dark:text-violet-300">
-              {unlock.label}
-            </div>
-          );
-        }
-
-        if (unlock?.type === "seasonal") {
-          const active = isSeasonalActive(bunny!);
-          return (
-            <div
-              className={`w-full rounded-xl border-2 border-dashed px-2 py-2 text-center text-[11px] font-bold leading-tight ${
-                active
-                  ? "border-emerald-300 bg-emerald-50 text-emerald-700 dark:border-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300"
-                  : "border-zinc-300 bg-zinc-50 text-zinc-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
-              }`}
-            >
-              {active ? `Free this ${monthName(unlock.month)}!` : `Back next ${monthName(unlock.month)}`}
-            </div>
-          );
-        }
-
-        return (
-          <button
-            onClick={canAfford ? onBuy : onCantAfford}
-            disabled={buying}
-            className={`w-full py-2 rounded-xl text-xs font-bold transition-all active:scale-[0.97] ${
-              canAfford
-                ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm hover:from-orange-600 hover:to-amber-600"
-              : "bg-zinc-200 dark:bg-slate-700 text-zinc-400 dark:text-slate-500 hover:bg-zinc-300 dark:hover:bg-slate-600"
-          }`}
-        >
-            {buying ? (
-              <span className="inline-block h-4 w-4 rounded-full border-2 border-white/40 border-t-white animate-spin" />
-            ) : (
-              <span className="inline-flex items-center gap-1">{item.price} <Carrot className="w-3.5 h-3.5" strokeWidth={1.5} /></span>
-            )}
-          </button>
-        );
-      })()}
-    </motion.div>
+      <div style={{ fontSize: 13, fontWeight: 700, color: "#18181b", textAlign: "center" }}>{item.name}</div>
+      <div style={{ fontSize: 11, lineHeight: 1.35, color: "#a1a1aa", textAlign: "center", margin: "2px 0 10px", minHeight: 30 }}>{item.description}</div>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          if (owned) onEquip();
+          else if (canAfford) onBuy();
+          else onCantAfford();
+        }}
+        disabled={buying}
+        style={btnStyle}
+      >
+        {buying ? (
+          <span className="animate-spin" style={{ display: "inline-block", height: 14, width: 14, borderRadius: 999, border: "2px solid rgba(255,255,255,.4)", borderTopColor: "#fff" }} />
+        ) : owned ? (
+          equipped ? "Equipped" : "Equip"
+        ) : (
+          <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
+            {item.price}
+            <Carrot size={14} strokeWidth={2} style={{ display: "block" }} />
+          </span>
+        )}
+      </button>
+    </div>
   );
 }

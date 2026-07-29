@@ -1,0 +1,32 @@
+/* Mystery-box ceremony keyframes — ported verbatim from the Claude Design
+   "Shop - Mystery Box" <style> block. Unique rd- prefix keeps them global-safe.
+   (The bunny dance itself is reused from the app's BunnyReaction/levelup,
+   so the rx-* / rd-dance choreography from the design is not re-ported here.) */
+
+@keyframes rdFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes rdPopIn { 0% { transform: scale(0.3); opacity: 0; } 60% { transform: scale(1.12); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes rdShake { 0%,100% { transform: translateX(0); } 15% { transform: translateX(-8px); } 30% { transform: translateX(8px); } 45% { transform: translateX(-6px); } 60% { transform: translateX(6px); } 75% { transform: translateX(-3px); } 90% { transform: translateX(3px); } }
+@keyframes rdGlowPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(124,58,237,.35); } 50% { box-shadow: 0 0 0 14px rgba(124,58,237,0); } }
+@keyframes rdBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes rdSpotSweep { 0%,100% { transform: translateX(-8px) rotate(-2deg); } 50% { transform: translateX(8px) rotate(2deg); } }
+@keyframes rdRayspin { from { transform: rotate(0deg) scale(4.2); } to { transform: rotate(360deg) scale(4.2); } }
+@keyframes rdCardIn { 0% { opacity: 0; transform: translateY(46px) scale(.72) rotateX(28deg); } 70% { transform: translateY(-8px) scale(1.05) rotateX(0deg); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes rdFlash { 0% { opacity: 0; } 12% { opacity: .95; } 100% { opacity: 0; } }
+@keyframes rdTension { 0%,100% { opacity: .35; } 50% { opacity: .8; } }
+@keyframes rdSwapOut {
+  0% { opacity: 1; transform: scale(1) rotate(0deg); }
+  35% { opacity: 1; transform: scale(1.08) rotate(-8deg); }
+  100% { opacity: 0; transform: scale(.35) rotate(320deg) translateY(30px); }
+}
+@keyframes rdSwapIn {
+  0% { opacity: 0; transform: scale(.3) translateY(-90px); }
+  55% { opacity: 1; transform: scale(1.14) translateY(0); }
+  72% { transform: scale(.94); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes rdRing {
+  0% { opacity: 0; transform: scale(.2); }
+  18% { opacity: .85; }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+@keyframes rdRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
