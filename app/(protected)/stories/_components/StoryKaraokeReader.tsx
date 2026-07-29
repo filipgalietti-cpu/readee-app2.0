@@ -1,15 +1,14 @@
 "use client";
 
 /**
- * Karaoke story reader — the redesigned Stories reading experience.
+ * Karaoke story reader — faithful port of the "Stories Hi-Fi" Claude Design
+ * (project 30fe192f), driven by OUR real Whisper word-timing (not browser speech).
  *
- *   K–2 (mode "line"):  one sentence centered at a time, amber word-highlight
- *                       synced to real audio timing, SLOW pacing. K–2 auto-play.
- *   3–4 (mode "prose"): whole paragraph shown fully readable; grey-out + word
- *                       highlight only start when the reader taps "Read it to me".
- *
- * Word timing comes from app/data/stories-karaoke.json (Whisper forced-
- * alignment — same tech as lesson karaoke), NOT browser speech.
+ *   K–2 (mode "line"):  stacked sentences, current one ringed + centered, amber
+ *                       word-highlight synced to audio, SLOW pacing, auto-play.
+ *   3–4 (mode "prose"): whole paragraph shown readable; grey-out + word highlight
+ *                       only after "Read it to me".
+ * Reading, then the quiz, share ONE book spread — the quiz swaps the right pane.
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
@@ -39,8 +38,12 @@ type Props = {
   onFinishReading: () => void;
 };
 
-// If a sentence got no aligned words (rare Whisper miss on whole-passage
-// audio), fall back to its plain words so the text still renders (no karaoke).
+const GRADIENT = "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)";
+const MASK = "linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%)";
+const LINE_H = 132;
+
+// If a sentence got no aligned words (rare Whisper miss on whole-passage audio),
+// fall back to its plain words so the text still renders (no karaoke).
 function wordsOf(s: KaraokeSentence): KaraokeWord[] {
   return s.words && s.words.length
     ? s.words
@@ -91,7 +94,6 @@ export default function StoryKaraokeReader({
   const isProse = karaoke?.mode === "prose";
   const sentences = useMemo(() => karaoke?.sentences ?? [], [karaoke]);
 
-  // Schedule the amber word-highlight for one sentence's words, offset by `base` ms.
   const scheduleWords = useCallback((words: KaraokeWord[], base = 0) => {
     words.forEach((w, wi) => {
       timers.current.push(setTimeout(() => setLitWord(wi), base + Math.max(0, w.start * 1000)));
@@ -114,11 +116,8 @@ export default function StoryKaraokeReader({
       timers.current.push(
         setTimeout(() => {
           setLitWord(-1);
-          if (i + 1 < sentences.length) {
-            playLine(i + 1);
-          } else {
-            setPlaying(false);
-          }
+          if (i + 1 < sentences.length) playLine(i + 1);
+          else setPlaying(false);
         }, endMs),
       );
     },
@@ -127,19 +126,11 @@ export default function StoryKaraokeReader({
 
   // Auto-play for K–2 on open.
   useEffect(() => {
-    if (karaoke && !isProse && karaoke.autoplay) {
-      playLine(0);
-    }
+    if (karaoke && !isProse && karaoke.autoplay) playLine(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [karaoke?.mode]);
 
-  const toggleLinePlay = () => {
-    if (playing) {
-      halt();
-    } else {
-      playLine(lineIdx >= sentences.length ? 0 : lineIdx);
-    }
-  };
+  const toggleLinePlay = () => (playing ? halt() : playLine(lineIdx >= sentences.length ? 0 : lineIdx));
   const replayLine = () => playLine(lineIdx);
 
   // ── Prose mode (3–4): read-along across the whole clip ──
@@ -149,18 +140,11 @@ export default function StoryKaraokeReader({
     setUsedAudio(true);
     setPlaying(true);
     if (karaoke.wholeAudio) playUrl(karaoke.wholeAudio);
-    // Highlight sentence-by-sentence; each word's start is an absolute offset
-    // into the whole recording.
     let maxEnd = 0;
     karaoke.sentences.forEach((s, si) => {
       const first = s.words[0];
       if (first) {
-        timers.current.push(
-          setTimeout(() => {
-            setLineIdx(si);
-            setLitWord(-1);
-          }, first.start * 1000),
-        );
+        timers.current.push(setTimeout(() => { setLineIdx(si); setLitWord(-1); }, first.start * 1000));
       }
       s.words.forEach((w, wi) => {
         timers.current.push(setTimeout(() => setLitWord(wi), w.start * 1000));
@@ -171,32 +155,33 @@ export default function StoryKaraokeReader({
   }, [karaoke, clearTimers, playUrl]);
 
   const toggleProse = () => (playing ? halt() : startProse());
-
   const back = () => { halt(); onBack(); };
   const finish = () => { halt(); onFinishReading(); };
 
   // ── Graceful fallback if this story has no karaoke data yet ──
   if (!karaoke || sentences.length === 0) {
     return (
-      <div className="mx-auto max-w-2xl px-4 py-6">
-        <button onClick={back} className="mb-4 flex items-center gap-1 text-sm font-semibold text-violet-600">
-          <ArrowLeft className="h-4 w-4" /> Back to Stories
-        </button>
-        <div className="overflow-hidden rounded-3xl bg-white shadow-md">
-          <Image src={imageUrl} alt="" width={640} height={360} className="aspect-video w-full bg-violet-50 object-contain" />
-          <div className="p-6">
-            <h1 className="mb-3 text-xl font-extrabold text-zinc-900">{title}</h1>
-            <div className="space-y-2">
-              {fallbackText.split(/(?<=[.!?"])\s+/).map((s, i) => (
-                <p key={i} className="text-base leading-relaxed text-zinc-700">{s}</p>
-              ))}
+      <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto lg:left-[272px]" style={{ background: GRADIENT, padding: "22px 28px 40px" }}>
+        <div className="mx-auto max-w-2xl">
+          <button onClick={back} className="mb-4 flex items-center gap-1 text-sm font-semibold text-violet-600">
+            <ArrowLeft className="h-4 w-4" /> Back to Stories
+          </button>
+          <div className="overflow-hidden rounded-3xl bg-white shadow-md">
+            <Image src={imageUrl} alt="" width={640} height={360} className="aspect-video w-full bg-violet-50 object-contain" />
+            <div className="p-6">
+              <h1 className="mb-3 text-xl font-extrabold text-zinc-900">{title}</h1>
+              <div className="space-y-2">
+                {fallbackText.split(/(?<=[.!?"])\s+/).map((s, i) => (
+                  <p key={i} className="text-base leading-relaxed text-zinc-700">{s}</p>
+                ))}
+              </div>
+              <button onClick={() => playUrl(fallbackAudioUrl)} className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-50 px-3 py-1.5 text-sm font-medium text-violet-600 hover:bg-violet-100">
+                <Volume2 className="h-4 w-4" /> Listen
+              </button>
+              <button onClick={finish} className="mt-4 block w-full rounded-2xl bg-gradient-to-r from-indigo-700 to-violet-600 py-4 text-base font-extrabold text-white shadow-sm active:scale-[0.98]">
+                I&apos;m done reading →
+              </button>
             </div>
-            <button onClick={() => playUrl(fallbackAudioUrl)} className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-50 px-3 py-1.5 text-sm font-medium text-violet-600 hover:bg-violet-100">
-              <Volume2 className="h-4 w-4" /> Listen
-            </button>
-            <button onClick={finish} className="mt-4 block w-full rounded-2xl bg-gradient-to-r from-indigo-700 to-violet-600 py-4 text-base font-extrabold text-white shadow-sm active:scale-[0.98]">
-              I&apos;m done reading →
-            </button>
           </div>
         </div>
       </div>
@@ -205,167 +190,148 @@ export default function StoryKaraokeReader({
 
   const n = sentences.length;
   const atEnd = lineIdx >= n - 1 && !playing;
-  const progressPct = isProse ? (usedAudio ? ((lineIdx + 1) / n) * 100 : 0) : ((lineIdx + 1) / n) * 100;
-  const LINE_H = 132;
-  const MASK = "linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%)";
+  const progressPct = showQuiz ? 100 : isProse ? (usedAudio ? ((lineIdx + 1) / n) * 100 : 0) : ((lineIdx + 1) / n) * 100;
 
   return (
-    <div
-      className="fixed inset-x-0 bottom-0 top-[76px] z-10 flex flex-col overflow-hidden px-4 py-4 md:px-7 lg:left-[272px]"
-      style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
-    >
-     <div className="mx-auto flex w-full min-h-0 flex-1 flex-col" style={{ maxWidth: 1080 }}>
-      {/* Top bar */}
-      <div className="mb-3 flex items-center gap-3">
-        <button onClick={back} className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-white shadow-sm" style={{ color: "#4338ca" }}>
-          <ArrowLeft className="h-5 w-5" />
-        </button>
-        <h1 className="flex-1 text-center text-2xl font-extrabold" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>{title}</h1>
-        {typeof carrots === "number" && (
-          <span className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-extrabold" style={{ background: "#fef3c7", color: "#b45309" }}>
-            <Carrot className="h-4 w-4" style={{ color: "#f97316" }} /> {carrots}
-          </span>
-        )}
-        {!isProse && !showQuiz && (
-          <span className="hidden rounded-full px-3 py-1.5 text-sm font-bold sm:inline-block" style={{ background: "rgba(255,255,255,0.85)", color: "#4338ca" }}>
-            Line {Math.min(lineIdx + 1, n)} of {n}
-          </span>
-        )}
-      </div>
-
-      {/* Progress rail */}
-      <div className="mb-4 h-[9px] w-full overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.75)" }}>
-        <div className="h-full rounded-full" style={{ width: `${progressPct}%`, background: "linear-gradient(90deg,#6366f1,#8b5cf6)", transition: "width 0.4s" }} />
-      </div>
-
-      {/* Book spread — fills the viewport as one page */}
-      <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-white shadow-xl md:flex-row" style={{ borderRadius: 28 }}>
-        <div className="h-48 w-full p-3 md:h-auto md:w-[44%]" style={{ background: "#ede9fe" }}>
-          <Image src={imageUrl} alt="" width={720} height={720} className="h-full w-full rounded-2xl object-contain" />
-        </div>
-        <div className="hidden md:block" style={{ flex: "0 0 3px", background: "linear-gradient(90deg, rgba(0,0,0,0.07), rgba(0,0,0,0))" }} />
-        <div className="flex min-h-0 flex-1 flex-col" style={{ background: "#fffdf8", padding: "32px 40px 24px" }}>
-          {showQuiz ? quizSlot : (
-          <>
-          {isProse ? (
-            /* ── 3–4: whole paragraph, grey-out only after read-along ── */
-            <div className="flex min-h-0 flex-1 items-center overflow-y-auto">
-              <p className="text-[20px] font-bold leading-[1.85]" style={{ color: "#d4d4d8" }}>
-                {sentences.map((s, si) => {
-                  const d = si - lineIdx;
-                  const color = !usedAudio ? "#3f3f46" : si === lineIdx ? "#1e1b4b" : d < 0 ? "#a1a1aa" : "#c4c4cc";
-                  return (
-                    <span key={si} style={{ color, transition: "color 0.4s" }}>
-                      {wordsOf(s).map((w, wi) => (
-                        <span
-                          key={wi}
-                          style={{
-                            background: usedAudio && playing && si === lineIdx && wi === litWord ? "#fde68a" : "transparent",
-                            borderRadius: 6,
-                            padding: "1px 3px",
-                            transition: "background 0.18s ease",
-                          }}
-                        >
-                          {w.t}{" "}
-                        </span>
-                      ))}
-                    </span>
-                  );
-                })}
-              </p>
-            </div>
-          ) : (
-            /* ── K–2: stacked lines, current sentence ringed + amber word karaoke ── */
-            <div className="relative min-h-0 flex-1 overflow-hidden" style={{ WebkitMaskImage: MASK, maskImage: MASK }}>
-              <div
-                className="absolute inset-x-0"
-                style={{ top: "50%", transform: `translateY(${-(lineIdx * LINE_H + LINE_H / 2)}px)`, transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1)" }}
-              >
-                {sentences.map((s, i) => {
-                  const cur = i === lineIdx;
-                  const d = i - lineIdx;
-                  return (
-                    <div
-                      key={i}
-                      className="mx-auto flex items-center justify-center text-center"
-                      style={{
-                        height: LINE_H,
-                        maxWidth: "94%",
-                        borderRadius: 16,
-                        padding: "0 20px",
-                        background: cur ? "#eef2ff" : "transparent",
-                        boxShadow: cur ? "inset 0 0 0 2px #c7d2fe" : "none",
-                        color: cur ? "#1e1b4b" : d < 0 ? "#a1a1aa" : "#c4c4cc",
-                        fontSize: cur ? 26 : 20,
-                        fontWeight: 800,
-                        opacity: cur ? 1 : Math.abs(d) === 1 ? 0.78 : 0.32,
-                        transform: cur ? "scale(1)" : "scale(0.97)",
-                        transition: "all 0.35s ease",
-                      }}
-                    >
-                      {cur ? (
-                        <span>
-                          {wordsOf(s).map((w, wi) => (
-                            <span
-                              key={wi}
-                              style={{
-                                background: playing && wi === litWord ? "#fde68a" : "transparent",
-                                borderRadius: 7,
-                                padding: "2px 4px",
-                                transition: "background 0.18s ease",
-                              }}
-                            >
-                              {w.t}{" "}
-                            </span>
-                          ))}
-                        </span>
-                      ) : (
-                        s.text
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+    <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto lg:left-[272px]" style={{ background: GRADIENT, padding: "22px 28px 40px" }}>
+      <div className="mx-auto" style={{ maxWidth: 1080 }}>
+        {/* Top bar */}
+        <div className="flex items-center gap-3.5">
+          <button
+            onClick={back}
+            aria-label="Back to library"
+            className="flex h-[46px] w-[46px] items-center justify-center rounded-full border border-zinc-200 bg-white transition hover:scale-105 active:scale-95"
+            style={{ color: "#4338ca", boxShadow: "0 1px 2px rgba(0,0,0,0.05)" }}
+          >
+            <ArrowLeft className="h-[22px] w-[22px]" strokeWidth={2.5} />
+          </button>
+          <h1 className="flex-1 text-center text-2xl font-extrabold tracking-tight" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>{title}</h1>
+          {typeof carrots === "number" && (
+            <span className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-[7px] text-[15px] font-extrabold" style={{ background: "#fef3c7", color: "#b45309" }}>
+              <Carrot className="h-[17px] w-[17px]" style={{ color: "#f97316" }} /> {carrots}
+            </span>
           )}
+          {!showQuiz && !isProse && (
+            <span className="hidden rounded-full px-3.5 py-[7px] text-sm font-extrabold sm:inline-flex" style={{ background: "rgba(255,255,255,0.85)", color: "#4338ca" }}>
+              Line {Math.min(lineIdx + 1, n)} of {n}
+            </span>
+          )}
+        </div>
 
-          {/* Controls */}
-          <div className="mt-6 flex items-center justify-between gap-3 border-t pt-5" style={{ borderColor: "#f0ece1" }}>
-            <button
-              onClick={isProse ? toggleProse : replayLine}
-              className="inline-flex items-center gap-2 rounded-full px-5 text-sm font-bold transition"
-              style={{ height: 52, background: playing ? "#6d28d9" : "#ede9fe", color: playing ? "#fff" : "#6d28d9" }}
-            >
-              <Volume2 className="h-4 w-4" />
-              {isProse ? (playing ? "Stop reading" : "Read it to me") : "Listen again"}
-            </button>
+        {/* Progress rail */}
+        <div className="mt-3.5 h-[9px] overflow-hidden rounded-full" style={{ background: "rgba(255,255,255,0.75)", boxShadow: "inset 0 1px 2px rgba(30,27,75,0.08)" }}>
+          <div className="h-full rounded-full" style={{ width: `${progressPct}%`, background: "linear-gradient(90deg,#6366f1,#8b5cf6)", transition: "width 0.4s cubic-bezier(0.22,1,0.36,1)" }} />
+        </div>
 
-            <button
-              onClick={isProse || atEnd ? finish : toggleLinePlay}
-              className="inline-flex items-center justify-center gap-2 rounded-full px-6 font-extrabold text-white shadow-md active:scale-[0.98]"
-              style={{ height: 60, minWidth: 208, fontSize: 21, background: "linear-gradient(90deg,#4338ca,#7c3aed)", fontFamily: "var(--font-baloo, inherit)" }}
-            >
-              {isProse ? (
-                <><Check className="h-5 w-5" /> I&apos;m done reading</>
-              ) : atEnd ? (
-                <><Check className="h-5 w-5" /> Go to questions</>
-              ) : playing ? (
-                <><Pause className="h-5 w-5" /> Pause</>
-              ) : (
-                <><Play className="h-5 w-5" /> {lineIdx > 0 ? "Keep reading" : "Play story"}</>
-              )}
-            </button>
+        {/* Book spread */}
+        <div className="mt-9 flex flex-col overflow-hidden md:flex-row" style={{ background: "#ffffff", borderRadius: 28, minHeight: 540, boxShadow: "0 10px 40px -12px rgba(49,46,129,0.28)" }}>
+          <div className="relative h-[240px] w-full md:h-auto md:flex-[0_0_44%]" style={{ background: "#ede9fe" }}>
+            <Image src={imageUrl} alt="Story illustration" fill sizes="(min-width:768px) 44vw, 100vw" className="object-cover" style={{ objectPosition: "center 15%" }} />
           </div>
-          {!isProse && !atEnd && (
-            <button onClick={finish} className="mt-3 self-center text-sm font-semibold underline" style={{ color: "#6d28d9" }}>
-              Skip to questions
-            </button>
-          )}
-          </>
-          )}
+          <div className="hidden md:block" style={{ flex: "0 0 3px", background: "linear-gradient(90deg, rgba(30,27,75,0.16), rgba(30,27,75,0.03))", boxShadow: "-4px 0 10px rgba(30,27,75,0.12)" }} />
+          <div className="flex min-h-0 flex-1 flex-col" style={{ background: "#fffdf8", padding: "44px 40px 32px" }}>
+            {showQuiz ? (
+              quizSlot
+            ) : (
+              <>
+                {isProse ? (
+                  /* 3–4: whole paragraph, grey-out only after read-along */
+                  <div className="flex flex-1 items-center" style={{ padding: "4px 2px" }}>
+                    <p className="text-[20px] font-bold" style={{ lineHeight: 1.85, color: "#d4d4d8" }}>
+                      {sentences.map((s, si) => {
+                        const d = si - lineIdx;
+                        const color = !usedAudio ? "#3f3f46" : si === lineIdx ? "#1e1b4b" : d < 0 ? "#a1a1aa" : "#c4c4cc";
+                        return (
+                          <span key={si} style={{ color, borderRadius: 10, transition: "color 0.35s ease" }}>
+                            {wordsOf(s).map((w, wi) => (
+                              <span key={wi} style={{ background: usedAudio && playing && si === lineIdx && wi === litWord ? "#fde68a" : "transparent", borderRadius: 6, padding: "1px 2px", transition: "background 0.18s ease" }}>
+                                {w.t}{" "}
+                              </span>
+                            ))}
+                          </span>
+                        );
+                      })}
+                    </p>
+                  </div>
+                ) : (
+                  /* K–2: stacked lines, current sentence ringed + amber word karaoke */
+                  <div className="relative min-h-0 flex-1 overflow-hidden" style={{ minHeight: 396, WebkitMaskImage: MASK, maskImage: MASK }}>
+                    <div className="absolute inset-x-0 flex flex-col" style={{ top: "50%", transform: `translateY(${-(lineIdx * LINE_H + LINE_H / 2)}px)`, transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1)" }}>
+                      {sentences.map((s, i) => {
+                        const cur = i === lineIdx;
+                        const d = i - lineIdx;
+                        return (
+                          <div
+                            key={i}
+                            style={{
+                              height: LINE_H,
+                              display: "flex",
+                              alignItems: "center",
+                              flexWrap: "wrap",
+                              alignContent: "center",
+                              justifyContent: "center",
+                              textAlign: "center",
+                              borderRadius: 16,
+                              padding: "10px 18px",
+                              lineHeight: 1.4,
+                              fontWeight: 800,
+                              background: cur ? "#eef2ff" : "transparent",
+                              boxShadow: cur ? "inset 0 0 0 2px #c7d2fe" : "none",
+                              color: cur ? "#1e1b4b" : d < 0 ? "#a1a1aa" : "#c4c4cc",
+                              fontSize: cur ? 26 : 20,
+                              opacity: cur ? 1 : Math.abs(d) === 1 ? 0.78 : 0.32,
+                              transform: cur ? "scale(1)" : "scale(0.97)",
+                              transition: "background 0.45s ease, box-shadow 0.45s ease, color 0.45s ease, font-size 0.45s ease, opacity 0.45s ease, transform 0.45s cubic-bezier(0.34,1.56,0.64,1)",
+                            }}
+                          >
+                            {cur
+                              ? wordsOf(s).map((w, wi) => (
+                                  <span key={wi} style={{ display: "inline-block", borderRadius: 7, padding: "1px 3px", margin: "0 4px 0 0", background: playing && wi === litWord ? "#fde68a" : "transparent", transition: "background 0.18s ease" }}>
+                                    {w.t}
+                                  </span>
+                                ))
+                              : s.text}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Controls */}
+                <div className="flex items-center justify-between gap-4" style={{ marginTop: 28, paddingTop: 22, borderTop: "1px solid #f0ece1" }}>
+                  <button
+                    onClick={isProse ? toggleProse : replayLine}
+                    className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full text-[15px] font-extrabold transition hover:-translate-y-0.5 active:scale-95"
+                    style={{ height: 52, padding: "0 20px", background: playing ? "#6d28d9" : "#ede9fe", color: playing ? "#fff" : "#6d28d9" }}
+                  >
+                    <Volume2 className="h-5 w-5" />
+                    {isProse ? (playing ? "Stop reading" : "Read it to me") : "Listen again"}
+                  </button>
+
+                  <div className="flex items-center gap-3.5">
+                    {!isProse && atEnd && (
+                      <button onClick={finish} className="whitespace-nowrap text-[15px] font-extrabold underline decoration-2 underline-offset-4" style={{ color: "#6d28d9" }}>
+                        Skip to questions
+                      </button>
+                    )}
+                    <button
+                      onClick={isProse ? finish : toggleLinePlay}
+                      className="inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full font-extrabold text-white transition hover:-translate-y-0.5 active:scale-95"
+                      style={{ height: 60, minWidth: 208, padding: "0 30px", fontSize: 21, fontFamily: "var(--font-baloo, inherit)", background: "linear-gradient(90deg,#4338ca,#7c3aed)", boxShadow: "0 8px 22px rgba(67,56,202,0.35)" }}
+                    >
+                      <span className="flex items-center justify-center rounded-full" style={{ width: 34, height: 34, background: "rgba(255,255,255,0.2)" }}>
+                        {isProse ? <Check className="h-[17px] w-[17px]" strokeWidth={3} /> : playing ? <Pause className="h-[17px] w-[17px]" fill="currentColor" /> : <Play className="ml-0.5 h-[17px] w-[17px]" fill="currentColor" />}
+                      </span>
+                      {isProse ? "I'm done reading" : playing ? "Pause" : lineIdx > 0 ? "Keep reading" : "Play story"}
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
-     </div>
     </div>
   );
 }
