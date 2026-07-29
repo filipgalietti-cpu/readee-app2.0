@@ -97,10 +97,6 @@ const TeacherAssignmentsCard = dynamic(
   () => import("@/app/_components/TeacherAssignmentsCard"),
   { ssr: false, loading: () => null },
 );
-const FreshForYou = dynamic(
-  () => import("./_components/FreshForYou"),
-  { ssr: false, loading: () => null },
-);
 const TestimonialPrompt = dynamic(
   () => import("@/app/_components/TestimonialPrompt"),
   { ssr: false, loading: () => null },
@@ -1134,7 +1130,7 @@ function ChildDashboard({
         content like every other parent surface. */}
     <div className="min-h-screen">
       <motion.div
-        className="max-w-[1080px] mx-auto px-4 pt-8 pb-12 space-y-5"
+        className="max-w-[1080px] mx-auto px-4 pt-3 pb-12 space-y-5"
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
@@ -1170,16 +1166,8 @@ function ChildDashboard({
           <KidHome {...kidHomeProps} />
         </motion.div>
 
-        {/* "Fresh for you" — newly created AI content for this kid.
-            Hidden when there's nothing new (no dashed-grey empty card). */}
-        {child.parent_id && (
-          <FreshForYou
-            childId={child.id}
-            parentId={child.parent_id}
-            gradeLevel={readingLevel}
-          />
-        )}
-
+        {/* "Fresh for you" removed — it duplicated the Today's Readee card
+            below and rendered as an out-of-place tile. */}
 
         {/* ── Deeper cards (kept from the previous dashboard) ── */}
         <motion.div variants={slideUp} className="mx-auto w-full max-w-3xl space-y-5">
