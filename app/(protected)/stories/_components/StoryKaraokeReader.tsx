@@ -12,7 +12,7 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
-import { Volume2, Play, Pause, ArrowLeft, ArrowRight, Carrot } from "lucide-react";
+import { Volume2, ArrowLeft, ArrowRight, Carrot } from "lucide-react";
 import { useAudio } from "@/lib/audio/use-audio";
 
 export type KaraokeWord = { t: string; start: number; end: number };
@@ -78,8 +78,9 @@ export default function StoryKaraokeReader({
   const [usedAudio, setUsedAudio] = useState(false); // prose: has read-along begun
   const [displayCarrots, setDisplayCarrots] = useState(carrots ?? 0);
   const [carrotPop, setCarrotPop] = useState(false);
-  const [fly, setFly] = useState(0); // bumps to re-trigger the flying-carrots burst
+  const [flyers, setFlyers] = useState<{ id: string; sx: number; sy: number; dx: number; dy: number; delay: number }[]>([]);
   const prevCarrots = useRef(carrots ?? 0);
+  const counterRef = useRef<HTMLSpanElement>(null);
 
   const clearTimers = useCallback(() => {
     timers.current.forEach(clearTimeout);
@@ -98,7 +99,21 @@ export default function StoryKaraokeReader({
   // Carrots tick up one-by-one (with a pop) when a correct answer bumps the total.
   useEffect(() => {
     if (typeof carrots !== "number") return;
-    if (carrots > prevCarrots.current) setFly((f) => f + 1); // burst flying carrots on a bump
+    if (carrots > prevCarrots.current) {
+      const rect = counterRef.current?.getBoundingClientRect();
+      if (rect && typeof window !== "undefined") {
+        const tx = rect.left + rect.width / 2;
+        const ty = rect.top + rect.height / 2;
+        const cx = window.innerWidth / 2;
+        const sy = window.innerHeight * 0.58;
+        const burst = Array.from({ length: 6 }).map((_, i) => {
+          const sx = cx + (i - 2.5) * 24;
+          return { id: `${carrots}-${i}`, sx, sy, dx: tx - sx, dy: ty - sy, delay: i * 45 };
+        });
+        setFlyers(burst);
+        window.setTimeout(() => setFlyers([]), 1100);
+      }
+    }
     prevCarrots.current = carrots;
     const id = setInterval(() => {
       let reached = false;
@@ -152,8 +167,6 @@ export default function StoryKaraokeReader({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [karaoke?.mode]);
 
-  const toggleLinePlay = () => (playing ? halt() : playLine(lineIdx >= sentences.length ? 0 : lineIdx));
-  const replayLine = () => playLine(lineIdx);
 
   // ── Prose mode (3–4): read-along across the whole clip ──
   const startProse = useCallback(() => {
@@ -211,12 +224,13 @@ export default function StoryKaraokeReader({
   }
 
   const n = sentences.length;
-  const atEnd = lineIdx >= n - 1 && !playing;
-  const goQuiz = isProse || atEnd; // reading finished → the primary becomes "Take the quiz"
   const progressPct = showQuiz ? 100 : isProse ? (usedAudio ? ((lineIdx + 1) / n) * 100 : 0) : ((lineIdx + 1) / n) * 100;
 
   return (
     <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto lg:left-[272px]" style={{ background: GRADIENT, padding: "22px 28px 40px" }}>
+      {flyers.map((f) => (
+        <Flyer key={f.id} sx={f.sx} sy={f.sy} dx={f.dx} dy={f.dy} delay={f.delay} />
+      ))}
       <div className="mx-auto" style={{ maxWidth: 1080 }}>
         {/* Top bar */}
         <div className="flex items-center gap-3.5">
@@ -230,7 +244,7 @@ export default function StoryKaraokeReader({
           </button>
           <h1 className="flex-1 text-center text-2xl font-extrabold tracking-tight" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>{title}</h1>
           {typeof carrots === "number" && (
-            <span className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-[7px] text-[15px] font-extrabold" style={{ background: "#fef3c7", color: "#b45309", animation: carrotPop ? "counterPop 0.28s ease" : undefined }}>
+            <span ref={counterRef} className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-[7px] text-[15px] font-extrabold" style={{ background: "#fef3c7", color: "#b45309", animation: carrotPop ? "counterPop 0.28s ease" : undefined }}>
               <Carrot className="h-[17px] w-[17px]" style={{ color: "#f97316" }} /> {displayCarrots}
             </span>
           )}
@@ -248,13 +262,6 @@ export default function StoryKaraokeReader({
 
         {/* Book spread */}
         <div className="relative mt-9 flex flex-col overflow-hidden md:flex-row" style={{ background: "#ffffff", borderRadius: 28, minHeight: 540, boxShadow: "0 10px 40px -12px rgba(49,46,129,0.28)" }}>
-          {fly > 0 && (
-            <div key={fly} className="pointer-events-none absolute left-1/2 top-1/2 z-20 h-0 w-0">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <Carrot key={i} className="absolute h-6 w-6" style={{ color: "#f97316", left: `${(i - 2.5) * 34}px`, top: 0, animation: `flyCarrots 0.9s ease-out ${i * 0.05}s both` }} />
-              ))}
-            </div>
-          )}
           <div className="h-[240px] w-full p-4 md:h-auto md:flex-[0_0_44%]" style={{ background: "#ede9fe" }}>
             <Image src={imageUrl} alt="Story illustration" width={600} height={600} className="mx-auto h-full w-full rounded-2xl object-contain" />
           </div>
@@ -333,23 +340,23 @@ export default function StoryKaraokeReader({
                 {/* Controls */}
                 <div className="flex items-center justify-between gap-4" style={{ marginTop: 28, paddingTop: 22, borderTop: "1px solid #f0ece1" }}>
                   <button
-                    onClick={isProse ? toggleProse : replayLine}
+                    onClick={isProse ? toggleProse : () => playLine(0)}
                     className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full text-[15px] font-extrabold transition hover:-translate-y-0.5 active:scale-95"
                     style={{ height: 52, padding: "0 20px", background: playing ? "#6d28d9" : "#ede9fe", color: playing ? "#fff" : "#6d28d9" }}
                   >
                     <Volume2 className="h-5 w-5" />
-                    {isProse ? (playing ? "Stop reading" : "Read it to me") : "Listen again"}
+                    {isProse ? (playing ? "Stop reading" : "Read it to me") : "Play again"}
                   </button>
 
                   <button
-                    onClick={goQuiz ? finish : toggleLinePlay}
+                    onClick={finish}
                     className="inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full font-extrabold text-white transition hover:-translate-y-0.5 active:scale-95"
                     style={{ height: 60, minWidth: 208, padding: "0 30px", fontSize: 21, fontFamily: "var(--font-baloo, inherit)", background: "linear-gradient(90deg,#4338ca,#7c3aed)", boxShadow: "0 8px 22px rgba(67,56,202,0.35)" }}
                   >
                     <span className="flex items-center justify-center rounded-full" style={{ width: 34, height: 34, background: "rgba(255,255,255,0.2)" }}>
-                      {goQuiz ? <ArrowRight className="h-[17px] w-[17px]" strokeWidth={3} /> : playing ? <Pause className="h-[17px] w-[17px]" fill="currentColor" /> : <Play className="ml-0.5 h-[17px] w-[17px]" fill="currentColor" />}
+                      <ArrowRight className="h-[17px] w-[17px]" strokeWidth={3} />
                     </span>
-                    {goQuiz ? "Take the quiz" : playing ? "Pause" : lineIdx > 0 ? "Keep reading" : "Play story"}
+                    Take the quiz
                   </button>
                 </div>
               </>
@@ -358,5 +365,27 @@ export default function StoryKaraokeReader({
         </div>
       </div>
     </div>
+  );
+}
+
+// A single carrot that floats from the answer area to the top-bar counter.
+function Flyer({ sx, sy, dx, dy, delay }: { sx: number; sy: number; dx: number; dy: number; delay: number }) {
+  const [go, setGo] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setGo(true), delay + 20);
+    return () => clearTimeout(t);
+  }, [delay]);
+  return (
+    <Carrot
+      className="pointer-events-none fixed z-[60] h-7 w-7"
+      style={{
+        left: sx,
+        top: sy,
+        color: "#f97316",
+        transform: go ? `translate(${dx}px, ${dy}px) scale(0.5)` : "translate(0,0) scale(1.15)",
+        opacity: go ? 0 : 1,
+        transition: "transform 0.85s cubic-bezier(0.22,1,0.36,1), opacity 0.85s ease",
+      }}
+    />
   );
 }
