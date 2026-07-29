@@ -143,10 +143,13 @@ export const shopSfx = {
     const sh = noise(t, d, 0.1, 400, 6000, 0.8);
     chargeVoices = [o, sh];
 
-    // Accelerating heartbeat
+    // Accelerating heartbeat. The gap shrinks geometrically, so its sum
+    // converges below (t + d) — without a floor on `gap` the loop never
+    // reaches the cutoff and spins forever (freeze). Stop once the beat is
+    // fast enough (gap tiny) or we've run out of time.
     let beat = t + 0.1;
     let gap = 0.42;
-    while (beat < t + d - 0.05) {
+    while (beat < t + d - 0.05 && gap > 0.06) {
       tone("sine", 58, beat, 0.16, 0.5, { attack: 0.005 });
       beat += gap;
       gap *= 0.72;
