@@ -76,6 +76,8 @@ export default function StoryKaraokeReader({
   const [playing, setPlaying] = useState(false);
   const [litWord, setLitWord] = useState(-1);
   const [usedAudio, setUsedAudio] = useState(false); // prose: has read-along begun
+  const [displayCarrots, setDisplayCarrots] = useState(carrots ?? 0);
+  const [carrotPop, setCarrotPop] = useState(false);
 
   const clearTimers = useCallback(() => {
     timers.current.forEach(clearTimeout);
@@ -90,6 +92,22 @@ export default function StoryKaraokeReader({
   }, [clearTimers, stop]);
 
   useEffect(() => () => halt(), [halt]); // cleanup on unmount
+
+  // Carrots tick up one-by-one (with a pop) when a correct answer bumps the total.
+  useEffect(() => {
+    if (typeof carrots !== "number") return;
+    const id = setInterval(() => {
+      let reached = false;
+      setDisplayCarrots((c) => {
+        if (c >= carrots) { reached = true; return c; }
+        return c + 1;
+      });
+      if (reached) { clearInterval(id); return; }
+      setCarrotPop(true);
+      window.setTimeout(() => setCarrotPop(false), 260);
+    }, 90);
+    return () => clearInterval(id);
+  }, [carrots]);
 
   const isProse = karaoke?.mode === "prose";
   const sentences = useMemo(() => karaoke?.sentences ?? [], [karaoke]);
@@ -207,8 +225,8 @@ export default function StoryKaraokeReader({
           </button>
           <h1 className="flex-1 text-center text-2xl font-extrabold tracking-tight" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>{title}</h1>
           {typeof carrots === "number" && (
-            <span className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-[7px] text-[15px] font-extrabold" style={{ background: "#fef3c7", color: "#b45309" }}>
-              <Carrot className="h-[17px] w-[17px]" style={{ color: "#f97316" }} /> {carrots}
+            <span className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-[7px] text-[15px] font-extrabold" style={{ background: "#fef3c7", color: "#b45309", animation: carrotPop ? "counterPop 0.28s ease" : undefined }}>
+              <Carrot className="h-[17px] w-[17px]" style={{ color: "#f97316" }} /> {displayCarrots}
             </span>
           )}
           {!showQuiz && !isProse && (

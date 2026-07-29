@@ -17,7 +17,7 @@ import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
-import { Lock, ChevronDown, Play, Carrot, Flame } from "lucide-react";
+import { Lock, ChevronDown, Play, Carrot, Flame, Star, Check } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
 import storiesKaraoke from "@/app/data/stories-karaoke.json";
@@ -84,6 +84,10 @@ function StoriesContent() {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [correctCount, setCorrectCount] = useState(0);
+  // Carrots earned in the current story — drives the top-bar tick-up animation.
+  const [sessionEarned, setSessionEarned] = useState(0);
+  // Stories this child has finished (for the card "Finished!" state + "X of 5 read").
+  const [doneStories, setDoneStories] = useState<Set<string>>(new Set());
   // Story-complete cap state: prevents the kid from instantly bouncing
   // back to the library after the last question. Holds the final score
   // and the carrots awarded so the celebration card + LevelProgressCard
@@ -173,11 +177,37 @@ function StoriesContent() {
     useLifetimeCarrots(childId);
 
   const allStories = (storiesBank as { stories: Story[] }).stories;
-  const gradeGroups = GRADE_ORDER.map((grade) => ({
-    grade,
-    label: GRADE_LABELS[grade],
-    stories: allStories.filter((s) => s.grade === grade),
-  }));
+  // Load which stories this child has finished (done state + "X of 5 read" pill).
+  useEffect(() => {
+    if (!childId) return;
+    let alive = true;
+    (async () => {
+      const { data } = await supabaseBrowser()
+        .from("practice_results")
+        .select("standard_id")
+        .eq("child_id", childId);
+      if (alive && data) {
+        setDoneStories(
+          new Set(
+            data
+              .map((r) => r.standard_id as string)
+              .filter((id) => typeof id === "string" && id.startsWith("story-")),
+          ),
+        );
+      }
+    })();
+    return () => { alive = false; };
+  }, [childId]);
+
+  const gradeGroups = GRADE_ORDER.map((grade) => {
+    const stories = allStories.filter((s) => s.grade === grade);
+    return {
+      grade,
+      label: GRADE_LABELS[grade],
+      stories,
+      doneCount: stories.filter((s) => doneStories.has(s.id)).length,
+    };
+  });
 
   const openStory = useCallback((story: Story) => {
     unlockAudio();
@@ -187,6 +217,7 @@ function StoriesContent() {
     setSelectedAnswer(null);
     setShowResult(false);
     setCorrectCount(0);
+    setSessionEarned(0);
   }, [unlockAudio]);
 
   const closeStory = useCallback(() => {
@@ -234,7 +265,10 @@ function StoriesContent() {
     const handleAnswer = (choice: string) => {
       if (selectedAnswer) return;
       setSelectedAnswer(choice);
-      if (choice === q.correct) setCorrectCount((c) => c + 1);
+      if (choice === q.correct) {
+        setCorrectCount((c) => c + 1);
+        setSessionEarned((e) => e + 5); // top-bar carrots tick up on a correct answer
+      }
       setShowResult(true);
     };
 
@@ -255,6 +289,8 @@ function StoriesContent() {
           total: story.questions.length,
           carrots: carrotsForStory,
         });
+        setDoneStories((d) => new Set(d).add(story.id)); // mark finished for the library
+
         // Save story completion to database
         if (childId) {
           try {
@@ -416,7 +452,7 @@ function StoriesContent() {
         fallbackText={story.text}
         fallbackAudioUrl={storyAudioUrl(story)}
         karaoke={(storiesKaraoke as Record<string, StoryKaraoke>)[story.id]}
-        carrots={child.carrots ?? undefined}
+        carrots={(child.carrots ?? 0) + sessionEarned}
         showQuiz={phase === "quiz"}
         onBack={closeStory}
         onFinishReading={() => setPhase("quiz")}
@@ -553,6 +589,11 @@ function StoriesContent() {
                   </p>
                 </div>
                 {!isLocked && (
+                  <span className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-extrabold" style={{ background: isExpanded ? "rgba(255,255,255,0.22)" : "#eef2ff", color: isExpanded ? "#fff" : "#4338ca" }}>
+                    <Star className="h-3 w-3" fill="currentColor" /> {group.doneCount} of {group.stories.length} read
+                  </span>
+                )}
+                {!isLocked && (
                   <ChevronDown className={`h-5 w-5 flex-shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} style={{ color: isExpanded ? "rgba(255,255,255,0.7)" : "#a1a1aa" }} />
                 )}
               </div>
@@ -571,6 +612,7 @@ function StoriesContent() {
                     {group.stories.map((s, sIdx) => {
                       const limits = getLimits(plan);
                       const isStoryLocked = sIdx >= limits.storiesPerGrade;
+                      const isDone = doneStories.has(s.id);
 
                       if (isStoryLocked) {
                         return (
@@ -584,14 +626,16 @@ function StoriesContent() {
                             >
                               <div className="relative" style={{ height: 150, background: "#ede9fe" }}>
                                 <LoadingImage src={storyImageUrl(s)} className="h-full w-full object-cover saturate-[0.55]" />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-extrabold" style={{ background: "#fde68a", color: "#92400e" }}>
+                                <div className="absolute inset-0 flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, rgba(255,251,235,0.35), rgba(245,158,11,0.22))" }}>
+                                  <span className="pointer-events-none absolute" style={{ inset: "-20% -40%", background: "linear-gradient(105deg, transparent 40%, rgba(255,236,170,0.65) 50%, transparent 60%)", animation: "goldSweep 3.2s ease-in-out infinite" }} />
+                                  <div className="relative flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-extrabold" style={{ background: "#fef3c7", color: "#b45309", boxShadow: "0 2px 8px rgba(180,83,9,0.25)" }}>
                                     <Lock className="h-3 w-3" /> Readee+
                                   </div>
                                 </div>
                               </div>
                               <div className="p-3">
                                 <p className="text-[17px] font-bold leading-tight" style={{ color: "#a1a1aa", fontFamily: "var(--font-baloo, inherit)" }}>{s.title}</p>
+                                <p className="mt-1.5 text-[12.5px] font-bold" style={{ color: "#a1a1aa" }}>Unlock with Readee+</p>
                               </div>
                             </motion.div>
                           </div>
@@ -606,10 +650,15 @@ function StoriesContent() {
                         transition={{ delay: sIdx * 0.05 }}
                         onClick={() => openStory(s)}
                         className="group overflow-hidden bg-white text-left shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg"
-                        style={{ borderRadius: 20, border: "1px solid #e4e4e7" }}
+                        style={{ borderRadius: 20, border: isDone ? "2px solid #fcd34d" : "1px solid #e4e4e7" }}
                       >
                         <div className="relative" style={{ height: 150, background: "#ede9fe" }}>
                           <LoadingImage src={storyImageUrl(s)} className="h-full w-full object-cover" />
+                          {isDone && (
+                            <span className="absolute right-2 top-2 flex h-[34px] w-[34px] items-center justify-center rounded-full" style={{ background: "#f59e0b", boxShadow: "0 2px 8px rgba(180,83,9,0.4), 0 0 0 3px #fff" }}>
+                              <Star className="h-[18px] w-[18px] text-white" fill="#fff" />
+                            </span>
+                          )}
                           <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/10">
                             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/85 opacity-0 shadow transition-opacity group-hover:opacity-100">
                               <Play className="ml-0.5 h-5 w-5" style={{ color: "#6d28d9" }} fill="currentColor" />
@@ -618,6 +667,15 @@ function StoriesContent() {
                         </div>
                         <div className="p-3">
                           <p className="text-[17px] font-bold leading-tight" style={{ color: "#18181b", fontFamily: "var(--font-baloo, inherit)" }}>{s.title}</p>
+                          {isDone ? (
+                            <span className="mt-1.5 inline-flex items-center gap-1 text-[12.5px] font-extrabold" style={{ color: "#b45309" }}>
+                              <Check className="h-3 w-3" strokeWidth={3} /> Finished!
+                            </span>
+                          ) : (
+                            <span className="mt-1.5 inline-flex items-center gap-1 text-[12.5px] font-bold" style={{ color: "#71717a" }}>
+                              <Play className="h-3 w-3" fill="currentColor" /> New story
+                            </span>
+                          )}
                         </div>
                       </motion.button>
                       );
