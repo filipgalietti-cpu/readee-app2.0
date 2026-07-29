@@ -9,7 +9,6 @@ import { savedOk } from "@/lib/db/checked-write";
 import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { useAudio } from "@/lib/audio/use-audio";
-import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import Image from "next/image";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import LevelProgressCard from "@/app/_components/LevelProgressCard";
@@ -608,8 +607,8 @@ function StoriesContent() {
                               className="relative overflow-hidden bg-white text-left shadow-sm"
                               style={{ borderRadius: 20, border: "1px solid #e4e4e7" }}
                             >
-                              <div className="relative" style={{ height: 150, background: "#ede9fe" }}>
-                                <LoadingImage src={storyImageUrl(s)} className="h-full w-full object-cover saturate-[0.55]" />
+                              <div className="relative overflow-hidden" style={{ height: 150, background: "#ede9fe" }}>
+                                <Image src={storyImageUrl(s)} alt="" fill sizes="240px" className="object-cover" style={{ filter: "saturate(0.55)" }} />
                                 <div className="absolute inset-0 flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, rgba(255,251,235,0.35), rgba(245,158,11,0.22))" }}>
                                   <span className="pointer-events-none absolute" style={{ inset: "-20% -40%", background: "linear-gradient(105deg, transparent 40%, rgba(255,236,170,0.65) 50%, transparent 60%)", animation: "goldSweep 3.2s ease-in-out infinite" }} />
                                   <div className="relative flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-extrabold" style={{ background: "#fef3c7", color: "#b45309", boxShadow: "0 2px 8px rgba(180,83,9,0.25)" }}>
@@ -636,8 +635,8 @@ function StoriesContent() {
                         className="group overflow-hidden bg-white text-left shadow-sm transition-all hover:-translate-y-1.5 hover:shadow-lg"
                         style={{ borderRadius: 20, border: isDone ? "2px solid #fcd34d" : "1px solid #e4e4e7" }}
                       >
-                        <div className="relative" style={{ height: 150, background: "#ede9fe" }}>
-                          <LoadingImage src={storyImageUrl(s)} className="h-full w-full object-cover" />
+                        <div className="relative overflow-hidden" style={{ height: 150, background: "#ede9fe" }}>
+                          <Image src={storyImageUrl(s)} alt="" fill sizes="240px" className="object-cover" />
                           {isDone && (
                             <span className="absolute right-2 top-2 flex h-[34px] w-[34px] items-center justify-center rounded-full" style={{ background: "#f59e0b", boxShadow: "0 2px 8px rgba(180,83,9,0.4), 0 0 0 3px #fff" }}>
                               <Star className="h-[18px] w-[18px] text-white" fill="#fff" />
