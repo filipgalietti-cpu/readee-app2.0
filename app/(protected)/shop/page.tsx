@@ -419,15 +419,55 @@ function ShopContent({
     <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto bg-white lg:left-[272px]">
       <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
 
-      <div className="mx-auto w-full" style={{ maxWidth: 1180, padding: "32px 24px 72px", fontFamily: "'Nunito', ui-sans-serif, system-ui, sans-serif" }}>
-        {/* Title + carrot balance */}
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 24, marginBottom: 20, flexWrap: "wrap" }}>
-          <h1 style={{ margin: 0, fontFamily: BALOO, fontSize: 38, fontWeight: 800, letterSpacing: "-.02em", color: "#18181b", lineHeight: 1 }}>Carrot shop</h1>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "12px 18px", borderRadius: 18, border: "1px solid #e4e4e7", background: "#fff", boxShadow: "0 1px 2px rgba(0,0,0,.05)" }}>
-            <Carrot size={26} strokeWidth={1.7} style={{ color: "#f97316", display: "block" }} />
-            <div>
-              <div style={{ fontFamily: BALOO, fontSize: 24, fontWeight: 800, lineHeight: 1, color: "#18181b" }}>{child.carrots}</div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#a1a1aa", marginTop: 2 }}>{child.first_name}&apos;s carrots</div>
+      <div className="mx-auto w-full" style={{ maxWidth: 1180, padding: "32px 32px 72px", fontFamily: "'Nunito', ui-sans-serif, system-ui, sans-serif" }}>
+        {/* Title banner + carrot balance */}
+        <div
+          style={{
+            position: "relative",
+            overflow: "hidden",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 32,
+            padding: "26px 30px",
+            marginBottom: 24,
+            borderRadius: 28,
+            border: "1px solid #fed7aa",
+            background: "linear-gradient(110deg,#fff7ed 0%,#ffedd5 46%,#fff 100%)",
+            boxShadow: "0 1px 0 #fff inset,0 16px 40px -30px rgba(194,65,12,.6)",
+          }}
+        >
+          <div style={{ position: "absolute", right: -40, top: -70, width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle,rgba(249,115,22,.18),rgba(249,115,22,0) 66%)", pointerEvents: "none" }} />
+          <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 6 }}>
+            <h1
+              style={{
+                margin: 0,
+                fontFamily: BALOO,
+                fontSize: 66,
+                fontWeight: 800,
+                letterSpacing: "-.035em",
+                lineHeight: 0.92,
+                background: "linear-gradient(178deg,#fb923c 4%,#ea580c 52%,#c2410c 100%)",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                color: "transparent",
+                WebkitTextFillColor: "transparent",
+                filter: "drop-shadow(0 3px 0 rgba(154,52,18,.2)) drop-shadow(0 10px 22px rgba(234,88,12,.26))",
+              }}
+            >
+              Carrot Shop
+            </h1>
+            <p style={{ margin: 0, fontSize: 15, fontWeight: 700, color: "#9a3412" }}>
+              Spend the carrots you earned reading. New looks for your bunny.
+            </p>
+          </div>
+          <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 16, padding: "14px 28px 14px 16px", borderRadius: 999, border: "1px solid #fed7aa", background: "#fff", boxShadow: "0 1px 0 #fff inset,0 10px 24px -16px rgba(194,65,12,.55)" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 46, height: 46, borderRadius: 999, background: "linear-gradient(160deg,#fb923c,#ea580c)", boxShadow: "0 4px 10px -4px rgba(234,88,12,.7)" }}>
+              <Carrot size={24} strokeWidth={2} style={{ color: "#fff", display: "block" }} />
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "#c2410c" }}>{child.first_name}&apos;s carrots</div>
+              <div style={{ fontFamily: BALOO, fontSize: 30, fontWeight: 800, lineHeight: 1, letterSpacing: "-.01em", color: "#7c2d12" }}>{child.carrots}</div>
             </div>
           </div>
         </div>
