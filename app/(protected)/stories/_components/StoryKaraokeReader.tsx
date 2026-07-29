@@ -11,7 +11,7 @@
  * Word timing comes from app/data/stories-karaoke.json (Whisper forced-
  * alignment — same tech as lesson karaoke), NOT browser speech.
  */
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
 import { Volume2, Play, Pause, Check, ArrowLeft, Carrot } from "lucide-react";
 import { useAudio } from "@/lib/audio/use-audio";
@@ -33,6 +33,8 @@ type Props = {
   fallbackAudioUrl: string;
   karaoke?: StoryKaraoke;
   carrots?: number;
+  showQuiz?: boolean;
+  quizSlot?: ReactNode;
   onBack: () => void;
   onFinishReading: () => void;
 };
@@ -60,6 +62,8 @@ export default function StoryKaraokeReader({
   fallbackAudioUrl,
   karaoke,
   carrots,
+  showQuiz,
+  quizSlot,
   onBack,
   onFinishReading,
 }: Props) {
@@ -222,7 +226,7 @@ export default function StoryKaraokeReader({
             <Carrot className="h-4 w-4" style={{ color: "#f97316" }} /> {carrots}
           </span>
         )}
-        {!isProse && (
+        {!isProse && !showQuiz && (
           <span className="hidden rounded-full px-3 py-1.5 text-sm font-bold sm:inline-block" style={{ background: "rgba(255,255,255,0.85)", color: "#4338ca" }}>
             Line {Math.min(lineIdx + 1, n)} of {n}
           </span>
@@ -236,11 +240,13 @@ export default function StoryKaraokeReader({
 
       {/* Book spread — fills the viewport as one page */}
       <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-white shadow-xl md:flex-row" style={{ borderRadius: 28 }}>
-        <div className="h-44 w-full md:h-auto md:w-[44%]">
-          <Image src={imageUrl} alt="" width={720} height={720} className="h-full w-full bg-[#ede9fe] object-cover" style={{ objectPosition: "center 15%" }} />
+        <div className="h-48 w-full p-3 md:h-auto md:w-[44%]" style={{ background: "#ede9fe" }}>
+          <Image src={imageUrl} alt="" width={720} height={720} className="h-full w-full rounded-2xl object-contain" />
         </div>
         <div className="hidden md:block" style={{ flex: "0 0 3px", background: "linear-gradient(90deg, rgba(0,0,0,0.07), rgba(0,0,0,0))" }} />
         <div className="flex min-h-0 flex-1 flex-col" style={{ background: "#fffdf8", padding: "32px 40px 24px" }}>
+          {showQuiz ? quizSlot : (
+          <>
           {isProse ? (
             /* ── 3–4: whole paragraph, grey-out only after read-along ── */
             <div className="flex min-h-0 flex-1 items-center overflow-y-auto">
@@ -354,6 +360,8 @@ export default function StoryKaraokeReader({
             <button onClick={finish} className="mt-3 self-center text-sm font-semibold underline" style={{ color: "#6d28d9" }}>
               Skip to questions
             </button>
+          )}
+          </>
           )}
         </div>
       </div>

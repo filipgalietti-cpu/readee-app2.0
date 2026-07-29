@@ -17,7 +17,7 @@ import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits } from "@/lib/plan/limits";
-import { Lock, ChevronDown, Play, Volume2, Carrot, Flame } from "lucide-react";
+import { Lock, ChevronDown, Play, Carrot, Flame } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
 import storiesKaraoke from "@/app/data/stories-karaoke.json";
@@ -67,7 +67,7 @@ export default function StoriesPage() {
 function StoriesContent() {
   const searchParams = useSearchParams();
   const childIdParam = searchParams.get("child");
-  const { playUrl, stop, unlockAudio } = useAudio();
+  const { stop, unlockAudio } = useAudio();
 
   const router = useRouter();
   const [child, setChild] = useState<Child | null>(null);
@@ -406,101 +406,68 @@ function StoriesContent() {
       );
     }
 
-    // Reading phase — the karaoke reader (K–2 slow line karaoke; 3–4 reveal + read-along).
-    if (phase === "reading") {
-      return (
-        <StoryKaraokeReader
-          title={story.title}
-          grade={story.grade}
-          imageUrl={storyImageUrl(story)}
-          fallbackText={story.text}
-          fallbackAudioUrl={storyAudioUrl(story)}
-          karaoke={(storiesKaraoke as Record<string, StoryKaraoke>)[story.id]}
-          carrots={child.carrots ?? undefined}
-          onBack={closeStory}
-          onFinishReading={() => setPhase("quiz")}
-        />
-      );
-    }
-
+    // One frame for the whole story: the karaoke reader, then the quiz REPLACES
+    // the text on the SAME book spread (no separate page).
     return (
-      <div className="max-w-lg mx-auto py-6 px-4">
-        <button onClick={() => setPhase("reading")} className="text-sm text-violet-600 font-medium mb-4">
-          &larr; Back to story
-        </button>
-
-        {/* Story card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl bg-white shadow-md overflow-hidden mb-6"
-        >
-          <LoadingImage
-            src={storyImageUrl(story)}
-            className="w-full aspect-square object-contain bg-violet-50"
-          />
-          <div className="p-5">
-            <h1 className="text-xl font-extrabold text-zinc-900 mb-3">{story.title}</h1>
-            <div className="space-y-2">
-              {story.text.split(/(?<=[.!?])\s+/).map((sentence, i) => (
-                <p key={i} className="text-base text-zinc-700 leading-relaxed">{sentence}</p>
-              ))}
+      <StoryKaraokeReader
+        title={story.title}
+        grade={story.grade}
+        imageUrl={storyImageUrl(story)}
+        fallbackText={story.text}
+        fallbackAudioUrl={storyAudioUrl(story)}
+        karaoke={(storiesKaraoke as Record<string, StoryKaraoke>)[story.id]}
+        carrots={child.carrots ?? undefined}
+        showQuiz={phase === "quiz"}
+        onBack={closeStory}
+        onFinishReading={() => setPhase("quiz")}
+        quizSlot={
+          <div className="flex min-h-0 flex-1 flex-col">
+            <p className="text-[13px] font-extrabold uppercase tracking-[0.08em]" style={{ color: "#8b5cf6" }}>
+              Question {currentQ + 1} of {story.questions.length}
+            </p>
+            <h2 className="mt-2 text-[24px] font-extrabold leading-snug" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>
+              {q.prompt}
+            </h2>
+            <div className="mt-5 flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto">
+              {q.choices.map((choice) => {
+                let bg = "#ffffff", color = "#18181b", border = "2px solid #e4e4e7";
+                if (showResult) {
+                  if (choice === q.correct) { bg = "#d1fae5"; color = "#065f46"; border = "2px solid #10b981"; }
+                  else if (choice === selectedAnswer) { bg = "#ffe4e6"; color = "#9f1239"; border = "2px solid #f43f5e"; }
+                  else { bg = "#fafafa"; color = "#a1a1aa"; border = "2px solid #f4f4f5"; }
+                }
+                return (
+                  <button
+                    key={choice}
+                    onClick={() => handleAnswer(choice)}
+                    disabled={!!selectedAnswer}
+                    className="w-full rounded-2xl px-5 py-4 text-left text-[18px] font-extrabold transition active:scale-[0.99]"
+                    style={{ background: bg, color, border }}
+                  >
+                    {choice}
+                  </button>
+                );
+              })}
             </div>
-            <button
-              onClick={() => playUrl(storyAudioUrl(story))}
-              className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-50 text-violet-600 text-sm font-medium hover:bg-violet-100 transition-colors"
-            >
-              <Volume2 className="w-4 h-4" /> Listen again
-            </button>
-          </div>
-        </motion.div>
-
-        {/* Question */}
-        <motion.div
-          key={currentQ}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="rounded-2xl bg-white shadow-md p-5"
-        >
-          <p className="text-xs text-zinc-400 font-medium mb-2">
-            Question {currentQ + 1} of {story.questions.length}
-          </p>
-          <p className="text-base font-bold text-zinc-900 mb-4">{q.prompt}</p>
-
-          <div className="space-y-2">
-            {q.choices.map((choice) => {
-              let style = "border-zinc-200 bg-white hover:bg-zinc-50";
-              if (showResult) {
-                if (choice === q.correct) style = "border-emerald-400 bg-emerald-50";
-                else if (choice === selectedAnswer) style = "border-red-300 bg-red-50";
-                else style = "border-zinc-100 opacity-50";
-              }
-              return (
+            {showResult && (
+              <div className="mt-4">
+                <p className="mb-3 text-sm font-bold" style={{ color: selectedAnswer === q.correct ? "#059669" : "#be123c" }}>
+                  {selectedAnswer === q.correct ? "That's right! +5 carrots" : `Good try! The answer is "${q.correct}".`}
+                </p>
                 <button
-                  key={choice}
-                  onClick={() => handleAnswer(choice)}
-                  disabled={!!selectedAnswer}
-                  className={`w-full text-left px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all ${style}`}
+                  onClick={handleNext}
+                  className="w-full rounded-full py-4 text-lg font-extrabold text-white shadow-md active:scale-[0.98]"
+                  style={{ background: "linear-gradient(90deg,#4338ca,#7c3aed)", fontFamily: "var(--font-baloo, inherit)" }}
                 >
-                  {choice}
+                  {isLastQ ? "Finish" : "Next question"}
                 </button>
-              );
-            })}
+              </div>
+            )}
           </div>
-
-          {showResult && (
-            <motion.button
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              onClick={handleNext}
-              className="w-full mt-4 py-3 rounded-xl bg-violet-600 text-white font-bold text-sm hover:bg-violet-700 transition-colors"
-            >
-              {isLastQ ? "Done" : "Next Question"}
-            </motion.button>
-          )}
-        </motion.div>
-      </div>
+        }
+      />
     );
+
   }
 
   // Library view
