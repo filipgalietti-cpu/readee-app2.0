@@ -368,76 +368,60 @@ function StoriesContent() {
       };
 
       return (
-        <div className="max-w-lg mx-auto py-10 px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="rounded-3xl bg-white shadow-md p-8"
-          >
-            <Image
-              src={
-                isPerfect
-                  ? "/images/ui/bunny-celebrate.png"
-                  : isGood
-                    ? "/images/ui/bunny-cheer.png"
-                    : "/images/ui/bunny-thinking.png"
-              }
-              alt=""
-              width={128}
-              height={128}
-              className="mx-auto h-32 w-32 object-contain"
-              priority
-            />
-            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-zinc-900">
-              {isPerfect
-                ? "Perfect reading!"
-                : isGood
-                  ? "Nice work!"
-                  : "Good try!"}
-            </h2>
-            <p className="mt-1 text-sm text-zinc-500">
-              {finishedScore.correct} of {finishedScore.total} correct
-              {finishedScore.carrots > 0
-                ? ` · +${finishedScore.carrots} 🥕`
-                : ""}
-              {childId ? " — saved to your progress." : "."}
-            </p>
-
-            {childId && (
-              <div className="mt-5 text-left">
-                <LevelProgressCard
-                  priorLifetimeCarrots={priorLifetimeCarrots}
-                  sessionCarrots={finishedScore.carrots}
-                  childId={childId}
-                  outfitId={child.equipped_items?.outfit ?? null}
-                  href={`/levels?child=${childId}`}
-                />
+        <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto lg:left-[272px]" style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}>
+          <div className="flex min-h-full items-center justify-center px-6 py-10">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="w-full"
+              style={{ maxWidth: 820, background: "#ffffff", borderRadius: 32, boxShadow: "0 10px 40px -12px rgba(49,46,129,0.28)", padding: "44px 48px" }}
+            >
+              <div className="flex flex-wrap items-center justify-center gap-11">
+                <div className="relative mx-auto flex-shrink-0">
+                  <Image src={storyImageUrl(story)} alt="" width={270} height={270} className="block object-cover" style={{ width: 270, height: 270, borderRadius: 24, boxShadow: "0 10px 30px rgba(30,27,75,0.25)" }} />
+                  <span className="absolute -right-5 -top-3.5 inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-base font-extrabold" style={{ background: "#fef3c7", border: "3px solid #f59e0b", color: "#b45309", fontFamily: "var(--font-baloo, inherit)", animation: "stampIn 0.55s cubic-bezier(0.34,1.56,0.64,1) 0.35s both" }}>
+                    <Star className="h-4 w-4" fill="currentColor" /> Finished!
+                  </span>
+                </div>
+                <div className="min-w-[280px] flex-1 text-center">
+                  <h1 className="text-4xl font-extrabold tracking-tight" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>
+                    {isPerfect ? "Perfect reading!" : isGood ? "Story finished!" : "Good try!"}
+                  </h1>
+                  <p className="mt-1.5 text-[17px] font-bold" style={{ color: "#52525b" }}>
+                    {finishedScore.correct} of {finishedScore.total} questions right
+                  </p>
+                  <div className="mt-5">
+                    <span className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-lg font-extrabold" style={{ background: "#fef3c7", color: "#b45309", animation: "counterPop 0.4s ease 0.4s both" }}>
+                      <Carrot className="h-5 w-5" style={{ color: "#f97316" }} /> +{finishedScore.carrots} carrots
+                    </span>
+                  </div>
+                  <div className="mx-auto mt-6 flex max-w-[380px] flex-col gap-2.5">
+                    {next ? (
+                      <button type="button" onClick={goNext} className="w-full rounded-2xl py-4 text-lg font-extrabold text-white shadow-md transition active:scale-[0.97]" style={{ background: "linear-gradient(90deg,#4338ca,#7c3aed)", fontFamily: "var(--font-baloo, inherit)" }}>
+                        Read another: {next.title}
+                      </button>
+                    ) : (
+                      <p className="text-xs" style={{ color: "#a1a1aa" }}>That was the last story in this grade — great job!</p>
+                    )}
+                    <button type="button" onClick={goLibrary} className="w-full rounded-2xl py-3 text-sm font-extrabold transition hover:bg-zinc-100" style={{ color: "#52525b" }}>
+                      Back to library
+                    </button>
+                  </div>
+                </div>
               </div>
-            )}
-
-            <div className="mt-6 space-y-2">
-              {next ? (
-                <button
-                  type="button"
-                  onClick={goNext}
-                  className="block w-full rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 py-4 text-base font-extrabold text-white shadow-sm transition active:scale-[0.97] hover:from-violet-700 hover:to-violet-600"
-                >
-                  Next story: {next.title} →
-                </button>
-              ) : (
-                <p className="text-xs text-zinc-400">
-                  That was the last story in this grade — great job!
-                </p>
+              {childId && (
+                <div className="mt-8">
+                  <LevelProgressCard
+                    priorLifetimeCarrots={priorLifetimeCarrots}
+                    sessionCarrots={finishedScore.carrots}
+                    childId={childId}
+                    outfitId={child.equipped_items?.outfit ?? null}
+                    href={`/levels?child=${childId}`}
+                  />
+                </div>
               )}
-              <button
-                type="button"
-                onClick={goLibrary}
-                className="block w-full rounded-2xl py-3 text-sm font-semibold text-zinc-500 transition hover:text-zinc-900"
-              >
-                Back to library
-              </button>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       );
     }
