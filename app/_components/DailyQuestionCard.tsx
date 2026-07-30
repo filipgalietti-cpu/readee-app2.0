@@ -8,8 +8,6 @@ import {
   Pause,
   ThumbsUp,
   ThumbsDown,
-  Check,
-  X as XIcon,
   ArrowRight,
 } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -42,8 +40,6 @@ export default function DailyQuestionCard({
 }) {
   const [data, setData] = useState<DailyQuestion | null>(null);
   const [loading, setLoading] = useState(true);
-  const [picked, setPicked] = useState<string | null>(null);
-  const [showHint, setShowHint] = useState(false);
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [voted, setVoted] = useState<"up" | "down" | null>(null);
@@ -123,9 +119,6 @@ export default function DailyQuestionCard({
     return null; // No daily question yet — silently hide.
   }
 
-  const isCorrect = picked != null && picked === data.correct;
-  const isWrong = picked != null && picked !== data.correct;
-
   return (
     <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-5 shadow-sm dark:border-violet-900/40 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30">
       <div className="flex items-start justify-between gap-3">
@@ -180,58 +173,6 @@ export default function DailyQuestionCard({
             </button>
           )}
         </div>
-      </div>
-
-      <div className="mt-4 rounded-2xl bg-white p-3 shadow-sm dark:bg-slate-900">
-        <div className="text-[13px] font-semibold text-zinc-900 dark:text-white">
-          {data.question_prompt}
-        </div>
-        <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
-          {data.choices.map((choice) => {
-            const isThis = picked === choice;
-            const isThisCorrect = isThis && isCorrect;
-            const isThisWrong = isThis && isWrong;
-            const showCorrect = picked != null && choice === data.correct;
-            return (
-              <button
-                key={choice}
-                type="button"
-                disabled={picked != null}
-                onClick={() => setPicked(choice)}
-                className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2 text-left text-[13px] transition ${
-                  isThisCorrect
-                    ? "border-emerald-400 bg-emerald-50 text-emerald-900"
-                    : isThisWrong
-                      ? "border-red-400 bg-red-50 text-red-900"
-                      : showCorrect
-                        ? "border-emerald-200 bg-emerald-50/40 text-emerald-800"
-                        : "border-zinc-200 bg-white text-zinc-800 hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-                }`}
-              >
-                <span>{choice}</span>
-                {isThisCorrect && <Check className="h-4 w-4 text-emerald-600" />}
-                {isThisWrong && <XIcon className="h-4 w-4 text-red-600" />}
-                {showCorrect && !isThis && (
-                  <Check className="h-4 w-4 text-emerald-500 opacity-60" />
-                )}
-              </button>
-            );
-          })}
-        </div>
-        {picked && data.hint && (
-          <button
-            type="button"
-            onClick={() => setShowHint((v) => !v)}
-            className="mt-2 text-[11px] font-semibold text-amber-700 hover:underline"
-          >
-            {showHint ? "Hide hint" : "Show hint"}
-          </button>
-        )}
-        {showHint && data.hint && (
-          <div className="mt-1 rounded-lg bg-amber-50 p-2 text-xs text-amber-800">
-            {data.hint}
-          </div>
-        )}
       </div>
 
       <div className="mt-3 flex items-center justify-between">

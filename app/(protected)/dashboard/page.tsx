@@ -948,6 +948,45 @@ function ChildDashboard({
     checkDailyPractice();
   }, [child.id]);
 
+  // Weakest recently-practiced skill — drives the adaptive "Today's plan"
+  // step 1. We look at practice_results from the last ~14 days, aggregate
+  // accuracy per standard, and surface the lowest-scoring one (<70%, with
+  // at least a few attempts) as a targeted review. No signal → warm-up.
+  const [weakStandard, setWeakStandard] = useState<{ standardId: string; title: string } | null>(null);
+  useEffect(() => {
+    async function findWeakSkill() {
+      const supabase = supabaseBrowser();
+      const since = new Date();
+      since.setDate(since.getDate() - 14);
+      const { data } = await supabase
+        .from("practice_results")
+        .select("standard_id, questions_correct, questions_attempted")
+        .eq("child_id", child.id)
+        .gte("completed_at", since.toISOString());
+      if (!data || data.length === 0) { setWeakStandard(null); return; }
+      const agg: Record<string, { correct: number; attempted: number }> = {};
+      for (const r of data) {
+        const s = (r as { standard_id?: string }).standard_id;
+        if (!s) continue;
+        agg[s] ??= { correct: 0, attempted: 0 };
+        agg[s].correct += Number((r as { questions_correct?: number }).questions_correct) || 0;
+        agg[s].attempted += Number((r as { questions_attempted?: number }).questions_attempted) || 0;
+      }
+      let worst: { standardId: string; acc: number } | null = null;
+      for (const [s, v] of Object.entries(agg)) {
+        if (v.attempted < 3) continue;
+        const acc = v.correct / v.attempted;
+        if (acc >= 0.7) continue;
+        if (!worst || acc < worst.acc) worst = { standardId: s, acc };
+      }
+      if (!worst) { setWeakStandard(null); return; }
+      const match = lessons.find((l) => lessonToLearnStandard(l) === worst!.standardId);
+      setWeakStandard({ standardId: worst.standardId, title: match?.title ?? worst.standardId });
+    }
+    findWeakSkill();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [child.id]);
+
   const carrots = Number(child.carrots) || 0;
   const carrotCount = useCountUp(carrots);
   const storiesCount = useCountUp(child.stories_read);
@@ -1055,7 +1094,9 @@ function ChildDashboard({
         { num: "3", label: "Meet your Reading Buddy", sub: "Say hi — it talks back!", status: "todo", href: `/buddy?child=${child.id}` },
       ]
     : [
-        { num: "1", label: "Warm-up practice", sub: dailyGoalMet ? "Done — nice work!" : "5 quick questions", status: dailyGoalMet ? "done" : "cur", href: `/practice-hub?child=${child.id}` },
+        weakStandard
+          ? { num: "1", label: `Review: ${weakStandard.title}`, sub: dailyGoalMet ? "Done — nice work!" : "You missed a few of these last time", status: dailyGoalMet ? "done" : "cur", href: `/practice?standard=${encodeURIComponent(weakStandard.standardId)}&child=${child.id}` }
+          : { num: "1", label: "Warm-up practice", sub: dailyGoalMet ? "Done — nice work!" : "5 quick questions", status: dailyGoalMet ? "done" : "cur", href: `/practice-hub?child=${child.id}` },
         { num: "2", label: nextLesson ? nextLesson.title : "All lessons done!", sub: nextLesson ? "About 5 minutes" : "You finished them all", status: nextLesson ? (dailyGoalMet ? "cur" : "todo") : "done", href: nextLesson ? nextLessonHref : undefined },
         { num: "3", label: "Read a story", sub: "You pick which one", status: "todo", href: `/stories?child=${child.id}` },
       ];
