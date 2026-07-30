@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.K.3-H1",
+  "correct_feedback": "Yes! His boots kept the water out, so his socks stayed dry. Great thinking!",
+  "incorrect_feedback": "Hmm, think about what Sam put on before he jumped. What kept the water away from his socks?",
+  "reveal_feedback": "That one was tricky! His socks stayed dry because his boots kept the water out. Now you know!"
+ },
+ {
+  "id": "RI.K.3-H2",
+  "correct_feedback": "Yes! The seed got water but no sun, so it could not grow. Great listening!",
+  "incorrect_feedback": "Almost! A seed needs two things to grow. Mia's seed had water. What was it missing?",
+  "reveal_feedback": "That one was tricky! The seed did not grow because it did not get any sun. Now you know!"
+ },
+ {
+  "id": "RI.K.3-H3",
+  "correct_feedback": "Yes! Ben shared his lunch, so Kim shared her cookie back. Great thinking!",
+  "incorrect_feedback": "Good try! Think about the nice thing Ben did first. Why might Kim want to be kind back?",
+  "reveal_feedback": "That one was tricky! Kim gave Ben a cookie because he had shared his lunch with her. Now you know!"
+ },
+ {
+  "id": "RI.K.3-H4",
+  "correct_feedback": "Yes! Owls hunt at night because that is when mice come out. Great listening!",
+  "incorrect_feedback": "Hmm, owls hunt to find food. What comes out at night that owls like to catch?",
+  "reveal_feedback": "That one was tricky! Owls hunt at night because that is when mice come out. Now you know!"
+ },
+ {
+  "id": "RI.K.3-H5",
+  "correct_feedback": "Yes! The sun came out and melted the ice, so now the ducks can swim. Great thinking!",
+  "incorrect_feedback": "Close one! The pond was frozen, but the sun came out all day. What did the warm sun do to the ice?",
+  "reveal_feedback": "That one was tricky! The ducks can swim now because the sun melted the ice. Now you know!"
+ },
+ {
+  "id": "RI.K.4-Q2",
+  "correct_feedback": "Yes! Erupts means it explodes or shoots out, just like hot lava. Great listening!",
+  "incorrect_feedback": "Almost! Think about hot lava flying out of the top. Is that quiet, or big and fast?",
+  "reveal_feedback": "That one was tricky! Erupts means explodes or shoots out. Now you know!"
+ },
+ {
+  "id": "RI.K.4-Q3",
+  "correct_feedback": "Yes! The peak is the highest part of the mountain, way up at the top. Great thinking!",
+  "incorrect_feedback": "Hmm, the climbers went all the way up. It was cold and windy at the top. What part is that?",
+  "reveal_feedback": "That one was tricky! The peak is the highest part of the mountain. Now you know!"
+ },
+ {
+  "id": "RI.K.4-Q4",
+  "correct_feedback": "Yes! Migrate means to travel to a different place, like whales going to warm water. Great listening!",
+  "incorrect_feedback": "Good try! The whales go very far to find warm water. What are they doing when they go so far?",
+  "reveal_feedback": "That one was tricky! Migrate means to travel to a different place. Now you know!"
+ },
+ {
+  "id": "RI.K.4-H1",
+  "correct_feedback": "Yes! Enormous means very big, bigger than a whole hand! Great listening!",
+  "incorrect_feedback": "Almost! The beetle was bigger than a whole hand. Is that a little big, or a LOT big?",
+  "reveal_feedback": "That one was tricky! Enormous means very big. Now you know!"
+ },
+ {
+  "id": "RI.K.4-H2",
+  "correct_feedback": "Yes! Weary means very tired, so the dog fell asleep right away. Great thinking!",
+  "incorrect_feedback": "Hmm, the dog flopped down and fell asleep after a long walk. How was he feeling?",
+  "reveal_feedback": "That one was tricky! Weary means very tired. Now you know!"
+ },
+ {
+  "id": "RI.K.4-H3",
+  "correct_feedback": "Yes! Bare means empty, with nothing on it, just brown dirt. Great listening!",
+  "incorrect_feedback": "Close one! The garden had no flowers and no leaves, just dirt. So what was on it?",
+  "reveal_feedback": "That one was tricky! Bare means empty, with nothing on it. Now you know!"
+ },
+ {
+  "id": "RI.K.4-H4",
+  "correct_feedback": "Yes! Fed means gave food to. The mother bird gave the worm to her baby. Great thinking!",
+  "incorrect_feedback": "Almost! The mother bird put a worm in the baby's mouth. What was she giving the baby?",
+  "reveal_feedback": "That one was tricky! Fed means gave food to. Now you know!"
+ },
+ {
+  "id": "RI.K.4-H5",
+  "correct_feedback": "Yes! Nervous means worried or scared, with a shaky, butterfly tummy. Great listening!",
+  "incorrect_feedback": "Good try! Rosa's hands were shaky and her tummy had butterflies. How did she feel?",
+  "reveal_feedback": "That one was tricky! Nervous means worried or scared. Now you know!"
+ },
+ {
+  "id": "RI.K.5-Q2",
+  "correct_feedback": "Yes! She turned the book over to the back cover to read what it is about. Great thinking!",
+  "incorrect_feedback": "Hmm, she flipped the book over, not to the front. Which part is on the other side?",
+  "reveal_feedback": "That one was tricky! She looked at the back cover to see what the book is about. Now you know!"
+ },
+ {
+  "id": "RI.K.5-Q3",
+  "correct_feedback": "Yes! The title page is the first page inside, with the name and who wrote it. Great listening!",
+  "incorrect_feedback": "Almost! This page is inside the book, the very first one. What do we call it?",
+  "reveal_feedback": "That one was tricky! It is called the title page. Now you know!"
+ },
+ {
+  "id": "RI.K.5-Q5",
+  "correct_feedback": "Yes! The author's name is on the title page, the first page inside. Great thinking!",
+  "incorrect_feedback": "Good try! She opened the book to the first page inside. What is that page called?",
+  "reveal_feedback": "That one was tricky! She found the author's name on the title page. Now you know!"
+ },
+ {
+  "id": "RI.K.5-Q7",
+  "correct_feedback": "Yes! The front cover is on the outside, with the picture and the name. Great listening!",
+  "incorrect_feedback": "Hmm, she looked at the outside, at the very front. Which part is that?",
+  "reveal_feedback": "That one was tricky! She was looking at the front cover. Now you know!"
+ },
+ {
+  "id": "RI.K.5-Q10",
+  "correct_feedback": "Yes! The first paper page inside is the title page. It shows the title and who wrote it. Great thinking!",
+  "incorrect_feedback": "Almost! This is the first paper page inside, right past the front. What is it called?",
+  "reveal_feedback": "That one was tricky! It is called the title page. Now you know!"
+ },
+ {
+  "id": "RI.K.5-Q11",
+  "correct_feedback": "Yes! The back cover tells you about the fun facts inside. Great listening!",
+  "incorrect_feedback": "Close one! She turned the book over to the very back. Which part is that?",
+  "reveal_feedback": "That one was tricky! The back cover helped her know what was inside. Now you know!"
+ },
+ {
+  "id": "RI.K.5-H1",
+  "correct_feedback": "Yes! Milo is reading the title page, the first page inside. Great thinking!",
+  "incorrect_feedback": "Hmm, the front cover is gone. Milo opened to the first page inside. What is that page?",
+  "reveal_feedback": "That one was tricky! Milo is reading the title page. Now you know!"
+ },
+ {
+  "id": "RI.K.5-H2",
+  "correct_feedback": "Yes! The front cover shows the name AND a big picture, without opening the book. Great listening!",
+  "incorrect_feedback": "Almost! Pia did NOT open the book. Which outside part has both the name and a picture?",
+  "reveal_feedback": "That one was tricky! The front cover shows both the name and the picture. Now you know!"
+ },
+ {
+  "id": "RI.K.5-H3",
+  "correct_feedback": "Yes! Ben turned to the title page. It shows the name and who wrote it. Great thinking!",
+  "incorrect_feedback": "Good try! Ben turned just one page past the front. What is that page called?",
+  "reveal_feedback": "That one was tricky! It is the title page. Now you know!"
+ },
+ {
+  "id": "RI.K.5-H4",
+  "correct_feedback": "Yes! The back cover is the very last outside part of the book. Great listening!",
+  "incorrect_feedback": "Hmm, Nan flipped the whole book over to the outside back. Which part is that?",
+  "reveal_feedback": "That one was tricky! Nan is reading the back cover. Now you know!"
+ },
+ {
+  "id": "RI.K.5-H5",
+  "correct_feedback": "Yes! The cover on the other side is the back cover. Great thinking!",
+  "incorrect_feedback": "Almost! One cover is the front. Deb is touching the OTHER one. What is it called?",
+  "reveal_feedback": "That one was tricky! Deb is touching the back cover. Now you know!"
+ },
+ {
+  "id": "RI.K.6-Q1",
+  "correct_feedback": "Yes! The person who writes the book is the author. Great listening!",
+  "incorrect_feedback": "Good try! It says 'Written by.' What do we call the person who writes a book?",
+  "reveal_feedback": "That one was tricky! Dr. Sara Chen is the author. Now you know!"
+ },
+ {
+  "id": "RI.K.6-Q2",
+  "correct_feedback": "Yes! The illustrator draws the pictures and diagrams to help explain. Great thinking!",
+  "incorrect_feedback": "Hmm, the word 'illustrator' sounds like 'illustrate.' What do you think they make?",
+  "reveal_feedback": "That one was tricky! The illustrator draws pictures and diagrams to help explain. Now you know!"
+ },
+ {
+  "id": "RI.K.6-Q3",
+  "correct_feedback": "Yes! It says 'By Astronaut Mike Collins,' so he wrote the words. Great listening!",
+  "incorrect_feedback": "Almost! NASA took the photos. Who does it say wrote the words, right after 'By'?",
+  "reveal_feedback": "That one was tricky! Astronaut Mike Collins wrote the words. Now you know!"
+ },
+ {
+  "id": "RI.K.6-Q4",
+  "correct_feedback": "Yes! The person who takes the photos is like an illustrator or photographer. Great thinking!",
+  "incorrect_feedback": "Good try! The pictures are real photos, not words. Who makes the pictures in a book?",
+  "reveal_feedback": "That one was tricky! The photo-taker is like an illustrator or photographer. Now you know!"
+ },
+ {
+  "id": "RI.K.6-Q5",
+  "correct_feedback": "Yes! The author writes the facts and the illustrator draws pictures to help. Great listening!",
+  "incorrect_feedback": "Hmm, one person made the facts and one made the pictures. Do both of those jobs help you?",
+  "reveal_feedback": "That one was tricky! The author writes facts, and the illustrator draws pictures to help explain. Now you know!"
+ },
+ {
+  "id": "RI.K.6-H1",
+  "correct_feedback": "Yes! Leo makes the pictures, so Leo should fix the ant picture. Great thinking!",
+  "incorrect_feedback": "Almost! The problem is with a picture. Who is the one who makes the pictures?",
+  "reveal_feedback": "That one was tricky! Leo makes the pictures, so Leo should fix it. Now you know!"
+ },
+ {
+  "id": "RI.K.6-H2",
+  "correct_feedback": "Yes! With no pictures at all, the book did not need an illustrator. Great listening!",
+  "incorrect_feedback": "Good try! This book has only words and no pictures. Which helper makes the pictures?",
+  "reveal_feedback": "That one was tricky! The book did not need an illustrator, because it had no pictures. Now you know!"
+ },
+ {
+  "id": "RI.K.6-H3",
+  "correct_feedback": "Yes! Pat made up the words, so Pat is the author. Great thinking!",
+  "incorrect_feedback": "Hmm, the author makes the words, not the pictures. Who made up the words?",
+  "reveal_feedback": "That one was tricky! Pat made the words, so Pat is the author. Now you know!"
+ },
+ {
+  "id": "RI.K.6-H4",
+  "correct_feedback": "Yes! The author picks the words, so you should thank the author. Great listening!",
+  "incorrect_feedback": "Almost! You loved the silly words, not the drawings. Who makes the words in a book?",
+  "reveal_feedback": "That one was tricky! You should thank the author, who chose the silly words. Now you know!"
+ },
+ {
+  "id": "RI.K.6-H5",
+  "correct_feedback": "Yes! A map is a picture, so the illustrator made it. Great thinking!",
+  "incorrect_feedback": "Good try! A map is a kind of picture. Who makes the pictures in a book?",
+  "reveal_feedback": "That one was tricky! The illustrator made the map, because a map is a picture. Now you know!"
+ },
+ {
+  "id": "RI.K.7-Q1",
+  "correct_feedback": "Yes! The picture shows you what a fluffy mane looks like. Great listening!",
+  "incorrect_feedback": "Hmm, the words say 'mane,' but maybe you can't picture it. What can the picture show you?",
+  "reveal_feedback": "That one was tricky! The picture shows what a mane looks like. Now you know!"
+ },
+ {
+  "id": "RI.K.7-Q2",
+  "correct_feedback": "Yes! A map shows you where the states are located. Great thinking!",
+  "incorrect_feedback": "Almost! A map shows places on it. What does a map of the states help you find?",
+  "reveal_feedback": "That one was tricky! The map shows where the states are located. Now you know!"
+ },
+ {
+  "id": "RI.K.7-Q3",
+  "correct_feedback": "Yes! The picture shows all the steps in order, from egg to butterfly. Great listening!",
+  "incorrect_feedback": "Good try! The picture has an egg, caterpillar, cocoon, AND butterfly. How does it show them?",
+  "reveal_feedback": "That one was tricky! The picture shows all the steps in order. Now you know!"
+ },
+ {
+  "id": "RI.K.7-Q4",
+  "correct_feedback": "Yes! The thermometer picture helps you understand how we measure temperature. Great thinking!",
+  "incorrect_feedback": "Hmm, a thermometer is a tool we use with weather. Why would the author show it to you?",
+  "reveal_feedback": "That one was tricky! The picture helps you understand how we measure temperature. Now you know!"
+ },
+ {
+  "id": "RI.K.7-Q5",
+  "correct_feedback": "Yes! The picture shows how different dog sizes can be, tiny to huge! Great listening!",
+  "incorrect_feedback": "Almost! One dog is tiny and one is huge in the picture. What does that show you about dogs?",
+  "reveal_feedback": "That one was tricky! The picture shows how different dog sizes can be. Now you know!"
+ },
+ {
+  "id": "RI.K.7-H1",
+  "correct_feedback": "Yes! The words did not say the color, but the picture shows the frog is green. Great thinking!",
+  "incorrect_feedback": "Hmm, the words already told you about ponds and bugs. What NEW thing does the picture show?",
+  "reveal_feedback": "That one was tricky! The picture shows that the frog is green. Now you know!"
+ },
+ {
+  "id": "RI.K.7-H2",
+  "correct_feedback": "Yes! The second sentence is about the mother bringing food, so that picture fits best. Great listening!",
+  "incorrect_feedback": "Good try! The second sentence says the mother brings it food. Which picture shows that?",
+  "reveal_feedback": "That one was tricky! The best picture is a mother bird putting a worm in the baby's mouth. Now you know!"
+ },
+ {
+  "id": "RI.K.7-H3",
+  "correct_feedback": "Yes! The words say something scared it, but the picture shows the fox that did it. Great thinking!",
+  "incorrect_feedback": "Almost! The words just say 'something' scared it. What extra thing does the picture show you?",
+  "reveal_feedback": "That one was tricky! The picture shows what scared the turtle. Now you know!"
+ },
+ {
+  "id": "RI.K.7-H4",
+  "correct_feedback": "Yes! Putting them side by side shows how much bigger the dog is than the ant. Great listening!",
+  "incorrect_feedback": "Hmm, one is tiny and one is big, right next to each other. Why put them in the same picture?",
+  "reveal_feedback": "That one was tricky! It shows how much bigger the dog is than the ant. Now you know!"
+ },
+ {
+  "id": "RI.K.7-H5",
+  "correct_feedback": "Yes! The diagram's little arrows point to the parts of a bee's body. Great thinking!",
+  "incorrect_feedback": "Good try! The diagram has arrows pointing to wings, legs, and stripes. What do those help you find?",
+  "reveal_feedback": "That one was tricky! The diagram helps you point to the parts of a bee's body. Now you know!"
+ },
+ {
+  "id": "RI.K.8-Q1",
+  "correct_feedback": "Yes! The author says to eat vegetables because they have vitamins that keep you healthy. Great listening!",
+  "incorrect_feedback": "Hmm, think about the good stuff inside vegetables. Why does the author say they are good for you?",
+  "reveal_feedback": "That one was tricky! The author says to eat vegetables because they have vitamins that keep you healthy. Now you know!"
+ }
+]

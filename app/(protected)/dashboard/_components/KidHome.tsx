@@ -18,6 +18,7 @@ import {
   Star,
   Check,
   ChevronRight,
+  ChevronLeft,
   ArrowRight,
   Sparkles,
   Play,
@@ -75,6 +76,12 @@ export interface KidHomeProps {
 export default function KidHome(p: KidHomeProps) {
   const [reaction, setReaction] = useState<"" | "levelup">("");
   const rxTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const skinScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollSkins = (dir: -1 | 1) => {
+    const el = skinScrollRef.current;
+    if (el) el.scrollBy({ left: dir * 180, behavior: "smooth" });
+  };
 
   const celebrate = () => {
     if (reaction) return;
@@ -98,6 +105,9 @@ export default function KidHome(p: KidHomeProps) {
         .kh-tile:hover{transform:translateY(-5px) scale(1.03)}
         .kh-outfit{transition:transform .2s cubic-bezier(0.34,1.56,0.64,1)}
         .kh-outfit:hover{transform:scale(1.12)}
+        .kh-arrow{transition:transform .15s,background .15s}
+        .kh-arrow:hover{transform:scale(1.1);background:#f5f3ff}
+        .kh-skinrow::-webkit-scrollbar{display:none}
       `}</style>
 
       {/* ── Stats bar ── */}
@@ -190,32 +200,63 @@ export default function KidHome(p: KidHomeProps) {
                 ? <BunnyReaction outfitId={p.equippedOutfitId} state="levelup" />
                 : <Bunny outfitId={p.equippedOutfitId} />}
             </button>
-            <div style={{ display: "flex", gap: 10, alignItems: "flex-end", justifyContent: "center", flexWrap: "wrap" }}>
-              {p.outfitChoices.map((c) => {
-                const selected = c.id === p.equippedOutfitId;
-                return (
-                  <button
-                    key={c.id}
-                    onClick={() => c.owned && p.onPickOutfit(c.id)}
-                    title={c.owned ? c.name : `${c.name} — earn it!`}
-                    className="kh-outfit"
-                    style={{
-                      border: `2px solid ${selected ? "#7c3aed" : c.border}`,
-                      cursor: c.owned ? "pointer" : "default",
-                      padding: "4px 4px 0",
-                      borderRadius: 16,
-                      background: c.tint,
-                      boxShadow: selected ? "0 0 0 3px rgba(124,58,237,.3)" : "none",
-                      opacity: c.owned ? 1 : 0.45,
-                      filter: c.owned ? "none" : "grayscale(1)",
-                    }}
-                  >
-                    <div style={{ width: 42, height: 46, pointerEvents: "none" }}>
-                      <Bunny outfitId={c.id} />
-                    </div>
-                  </button>
-                );
-              })}
+            {/* Skin carousel — arrows scroll through unlocked skins;
+                locked ones show greyed-out as aspiration. */}
+            <div style={{ display: "flex", alignItems: "center", gap: 6, width: "100%", maxWidth: 320 }}>
+              <button
+                onClick={() => scrollSkins(-1)}
+                aria-label="Previous skins"
+                className="kh-arrow"
+                style={{ flex: "none", width: 30, height: 30, borderRadius: "50%", border: "2px solid #e0e7ff", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 2px 6px -2px rgba(49,46,129,.2)" }}
+              >
+                <ChevronLeft className="h-4 w-4" stroke="#7c3aed" strokeWidth={2.5} />
+              </button>
+              <div
+                ref={skinScrollRef}
+                className="kh-skinrow"
+                style={{ flex: 1, display: "flex", gap: 10, alignItems: "flex-end", overflowX: "auto", scrollBehavior: "smooth", padding: "2px 2px 6px", scrollbarWidth: "none" }}
+              >
+                {p.outfitChoices.map((c) => {
+                  const selected = c.id === p.equippedOutfitId;
+                  return (
+                    <button
+                      key={c.id}
+                      onClick={() => c.owned && p.onPickOutfit(c.id)}
+                      title={c.owned ? c.name : `${c.name} — earn it!`}
+                      className="kh-outfit"
+                      style={{
+                        position: "relative",
+                        flex: "none",
+                        border: `2px solid ${selected ? "#7c3aed" : c.border}`,
+                        cursor: c.owned ? "pointer" : "default",
+                        padding: "4px 4px 0",
+                        borderRadius: 16,
+                        background: c.tint,
+                        boxShadow: selected ? "0 0 0 3px rgba(124,58,237,.3)" : "none",
+                        opacity: c.owned ? 1 : 0.45,
+                        filter: c.owned ? "none" : "grayscale(1)",
+                      }}
+                    >
+                      <div style={{ width: 42, height: 46, pointerEvents: "none" }}>
+                        <Bunny outfitId={c.id} />
+                      </div>
+                      {!c.owned && (
+                        <div style={{ position: "absolute", top: -4, right: -4, width: 18, height: 18, borderRadius: "50%", background: "#fff", border: "1.5px solid #e4e4e7", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          <Lock className="h-2.5 w-2.5" stroke="#a1a1aa" strokeWidth={2.5} />
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+              <button
+                onClick={() => scrollSkins(1)}
+                aria-label="More skins"
+                className="kh-arrow"
+                style={{ flex: "none", width: 30, height: 30, borderRadius: "50%", border: "2px solid #e0e7ff", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 2px 6px -2px rgba(49,46,129,.2)" }}
+              >
+                <ChevronRight className="h-4 w-4" stroke="#7c3aed" strokeWidth={2.5} />
+              </button>
             </div>
             <div style={{ fontSize: 12, fontWeight: 700, color: "#a1a1aa" }}>
               {p.firstDay ? "Win outfits as you read!" : "Pick an outfit — tap Readee to celebrate!"}
@@ -298,7 +339,8 @@ export default function KidHome(p: KidHomeProps) {
               })}
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 17, color: "#18181b", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.path.unitTitle}</div>
+              <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: "#8b5cf6", marginBottom: 2 }}>Reading Journey</div>
+            <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 17, color: "#18181b", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{p.path.unitTitle}</div>
               <div style={{ height: 8, borderRadius: 99, background: "#e0e7ff", marginTop: 6, overflow: "hidden", maxWidth: 220 }}>
                 <div style={{ height: "100%", borderRadius: 99, background: "linear-gradient(90deg,#6366f1,#8b5cf6)", width: `${p.path.unitPct}%` }} />
               </div>

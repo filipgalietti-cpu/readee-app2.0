@@ -1,0 +1,374 @@
+[
+ {
+  "id": "L.4.6-E4",
+  "standard": "L.4.6",
+  "prompt": "Which sentence uses the most precise (exact) word? The sky at sunset looked ___.",
+  "choices": [
+   "The sky did stuff.",
+   "The sky was nice.",
+   "The sky was there.",
+   "The sky at sunset glowed bright orange."
+  ],
+  "correct": "The sky at sunset glowed bright orange."
+ },
+ {
+  "id": "L.4.6-E5",
+  "standard": "L.4.6",
+  "prompt": "In math class, the word **total** means the whole amount when you add things together. Sam has 3 apples and 2 apples. What is the total?",
+  "choices": [
+   "5 apples",
+   "The color green",
+   "A blue car",
+   "A song"
+  ],
+  "correct": "5 apples"
+ },
+ {
+  "id": "L.4.1-Q4",
+  "standard": "L.4.1",
+  "prompt": "Which sentence correctly combines these two ideas: \"The cat stretched. It jumped onto the couch.\"",
+  "choices": [
+   "Stretched the cat jumped onto the couch.",
+   "The cat stretched, it jumped onto the couch.",
+   "The cat stretched it jumped onto the couch.",
+   "The cat stretched and it jumped onto the couch."
+  ],
+  "correct": "The cat stretched and it jumped onto the couch."
+ },
+ {
+  "id": "L.4.1-H1",
+  "standard": "L.4.1",
+  "prompt": "Choose the word that correctly completes this sentence: \"That old barn is the place ___ my dad learned to milk cows.\"",
+  "choices": [
+   "where",
+   "when",
+   "which",
+   "that"
+  ],
+  "correct": "where"
+ },
+ {
+  "id": "L.4.1-H2",
+  "standard": "L.4.1",
+  "prompt": "Which sentence correctly uses the progressive verb tense to show an action happening right now?",
+  "choices": [
+   "The team is win the game.",
+   "The team is winning the game.",
+   "The team winning the game.",
+   "The team be winning the game."
+  ],
+  "correct": "The team is winning the game."
+ },
+ {
+  "id": "L.4.1-H3",
+  "standard": "L.4.1",
+  "prompt": "Which sentence puts the adjectives in the correct order?",
+  "choices": [
+   "She bought a round wooden small table.",
+   "She bought a wooden round small table.",
+   "She bought a small round wooden table.",
+   "She bought a wooden small round table."
+  ],
+  "correct": "She bought a small round wooden table."
+ },
+ {
+  "id": "L.4.1-H4",
+  "standard": "L.4.1",
+  "prompt": "Which sentence uses 'there,' 'their,' and 'they're' all correctly?",
+  "choices": [
+   "They're going to leave there bikes over their.",
+   "There going to leave they're bikes over their.",
+   "Their going to leave there bikes over they're.",
+   "They're going to leave their bikes over there."
+  ],
+  "correct": "They're going to leave their bikes over there."
+ },
+ {
+  "id": "L.4.1-H5",
+  "standard": "L.4.1",
+  "prompt": "Grandpa is ninety years old, but he ___ still run a whole mile every morning. Which word best shows that he is ABLE to do it?",
+  "choices": [
+   "can",
+   "must",
+   "may",
+   "should"
+  ],
+  "correct": "can"
+ },
+ {
+  "id": "L.4.1-E1",
+  "standard": "L.4.1",
+  "prompt": "Which word correctly completes the sentence? \"The two dogs ___ playing in the yard.\"",
+  "choices": [
+   "am",
+   "are",
+   "be",
+   "is"
+  ],
+  "correct": "are"
+ },
+ {
+  "id": "L.4.1-E2",
+  "standard": "L.4.1",
+  "prompt": "Which word is the CONJUNCTION (joining word) in this sentence? \"I like apples and oranges.\"",
+  "choices": [
+   "apples",
+   "like",
+   "and",
+   "oranges"
+  ],
+  "correct": "and"
+ },
+ {
+  "id": "L.4.1-E3",
+  "standard": "L.4.1",
+  "prompt": "Which sentence uses the correct verb? \"Yesterday, we ___ to the park.\"",
+  "choices": [
+   "walks",
+   "walk",
+   "walking",
+   "walked"
+  ],
+  "correct": "walked"
+ },
+ {
+  "id": "L.4.1-E4",
+  "standard": "L.4.1",
+  "prompt": "Which word correctly completes the sentence? \"She ___ her homework every night.\"",
+  "choices": [
+   "does",
+   "done",
+   "doing",
+   "do"
+  ],
+  "correct": "does"
+ },
+ {
+  "id": "L.4.1-E5",
+  "standard": "L.4.1",
+  "prompt": "Which sentence correctly combines these two ideas with a conjunction: \"I was tired. I went to bed.\"",
+  "choices": [
+   "I was tired I went to bed.",
+   "I was tired so I went to bed.",
+   "Went bed I tired was.",
+   "Tired I bed went."
+  ],
+  "correct": "I was tired so I went to bed."
+ },
+ {
+  "id": "L.4.2-Q1",
+  "standard": "L.4.2",
+  "prompt": "Where should a comma be placed in this sentence? \"The cat stretched lazily ___ and then it jumped onto the couch.\"",
+  "choices": [
+   "after \"then\"",
+   "after \"lazily\"",
+   "after \"cat\"",
+   "no comma is needed"
+  ],
+  "correct": "after \"lazily\""
+ },
+ {
+  "id": "L.4.2-Q2",
+  "standard": "L.4.2",
+  "prompt": "How do you write a book title?",
+  "choices": [
+   "All lowercase",
+   "All uppercase",
+   "Capitalize the important words",
+   "Just first letter only"
+  ],
+  "correct": "Capitalize the important words"
+ },
+ {
+  "id": "L.4.2-Q3",
+  "standard": "L.4.2",
+  "prompt": "Which is correctly punctuated dialogue?",
+  "choices": [
+   "Hello, she said.",
+   "\"Hello, she said.\"",
+   "Hello \"she said\".",
+   "\"Hello,\" she said."
+  ],
+  "correct": "\"Hello,\" she said."
+ },
+ {
+  "id": "L.4.2-Q5",
+  "standard": "L.4.2",
+  "prompt": "Which is the correct possessive: That is the ___ ball.",
+  "choices": [
+   "dogs",
+   "dog's",
+   "dogs'",
+   "dog"
+  ],
+  "correct": "dog's"
+ },
+ {
+  "id": "L.4.2-E1",
+  "standard": "L.4.2",
+  "prompt": "Which sentence has the correct end punctuation? Pick the one that asks a question.",
+  "choices": [
+   "Where is my backpack?",
+   "where is my backpack",
+   "Where is my backpack.",
+   "Where is my backpack,"
+  ],
+  "correct": "Where is my backpack?"
+ },
+ {
+  "id": "L.4.2-E2",
+  "standard": "L.4.2",
+  "prompt": "Every sentence should begin with what kind of letter? \"___he dog ran fast.\"",
+  "choices": [
+   "A comma",
+   "A capital letter",
+   "A lowercase letter",
+   "A number"
+  ],
+  "correct": "A capital letter"
+ },
+ {
+  "id": "L.4.2-E3",
+  "standard": "L.4.2",
+  "prompt": "A person's name, like the one below, should always start with a capital letter. Which is written correctly?",
+  "choices": [
+   "MARIA all caps",
+   "mAria",
+   "Maria",
+   "maria"
+  ],
+  "correct": "Maria"
+ },
+ {
+  "id": "L.4.2-E4",
+  "standard": "L.4.2",
+  "prompt": "Where does the comma belong? \"I bought apples ___ bananas, and grapes.\"",
+  "choices": [
+   "no comma is needed",
+   "after \"and\"",
+   "after \"grapes\"",
+   "after \"apples\""
+  ],
+  "correct": "after \"apples\""
+ },
+ {
+  "id": "L.4.3-Q1",
+  "standard": "L.4.3",
+  "prompt": "Which sentence is most precise?",
+  "choices": [
+   "The dog went over the grass.",
+   "The animal moved on the field.",
+   "The puppy bounded across the meadow.",
+   "The thing went somewhere."
+  ],
+  "correct": "The puppy bounded across the meadow."
+ },
+ {
+  "id": "L.4.3-Q2",
+  "standard": "L.4.3",
+  "prompt": "What is **style** in writing?",
+  "choices": [
+   "the type of paper used",
+   "the font",
+   "the ink color",
+   "the way an author writes"
+  ],
+  "correct": "the way an author writes"
+ },
+ {
+  "id": "L.4.3-Q3",
+  "standard": "L.4.3",
+  "prompt": "Why might a writer use a short, snappy sentence?",
+  "choices": [
+   "for emphasis or impact",
+   "because they ran out of words",
+   "by accident",
+   "to confuse the reader"
+  ],
+  "correct": "for emphasis or impact"
+ },
+ {
+  "id": "L.4.3-Q4",
+  "standard": "L.4.3",
+  "prompt": "Match the style: writing to a friend versus writing a book report. The friend version should be:",
+  "choices": [
+   "more formal",
+   "more casual",
+   "longer",
+   "in another language"
+  ],
+  "correct": "more casual"
+ },
+ {
+  "id": "L.4.3-Q5",
+  "standard": "L.4.3",
+  "prompt": "Which word adds the strongest detail in: She felt ___?",
+  "choices": [
+   "good",
+   "fine",
+   "thrilled",
+   "okay"
+  ],
+  "correct": "thrilled"
+ },
+ {
+  "id": "L.4.3-E1",
+  "standard": "L.4.3",
+  "prompt": "Which sentence uses the most exact, colorful word for how the boy moved?",
+  "choices": [
+   "The boy raced down the street.",
+   "The boy did the street.",
+   "The boy went down the street.",
+   "The boy was on the street."
+  ],
+  "correct": "The boy raced down the street."
+ },
+ {
+  "id": "L.4.3-E2",
+  "standard": "L.4.3",
+  "prompt": "A good writer picks words that paint a clear picture. Which word paints the clearest picture of a happy dog?",
+  "choices": [
+   "fine",
+   "joyful",
+   "nice",
+   "good"
+  ],
+  "correct": "joyful"
+ },
+ {
+  "id": "L.4.3-E3",
+  "standard": "L.4.3",
+  "prompt": "Read this sentence: \"The tiny kitten napped in the warm sunlight.\" Which words help you picture the scene?",
+  "choices": [
+   "napped and",
+   "a the it",
+   "tiny, warm",
+   "The, in, the"
+  ],
+  "correct": "tiny, warm"
+ },
+ {
+  "id": "L.4.3-E4",
+  "standard": "L.4.3",
+  "prompt": "Which sentence is written in a clearer, more exact way?",
+  "choices": [
+   "Some things went someplace.",
+   "The stuff was in the place.",
+   "It was there somehow.",
+   "The books were on the shelf."
+  ],
+  "correct": "The books were on the shelf."
+ },
+ {
+  "id": "L.4.3-E5",
+  "standard": "L.4.3",
+  "prompt": "When a writer wants to describe a very loud noise, which word is the best, most exact choice?",
+  "choices": [
+   "crashed",
+   "walked",
+   "said",
+   "small"
+  ],
+  "correct": "crashed"
+ }
+]

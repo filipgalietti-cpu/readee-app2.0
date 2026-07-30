@@ -1,0 +1,272 @@
+[
+ {
+  "id": "L.1.4a-Q3",
+  "correct_feedback": "Yes! Gloomy means sad, just like Maya felt when her best friend moved away. Nice work!",
+  "incorrect_feedback": "Hmm, think about Maya. Her best friend moved far away. How would that make her heart feel? Try again.",
+  "reveal_feedback": "That one was tricky! Gloomy means sad. Maya missed her friend who moved away. Now you know!"
+ },
+ {
+  "id": "L.1.4a-Q4",
+  "correct_feedback": "Yes! Scorching means very hot. That is why Ben blew on the soup to cool it! Nice work!",
+  "incorrect_feedback": "Almost! Ben had to blow on the soup to cool it down. Why would he need to do that? Take another look.",
+  "reveal_feedback": "That one was tricky! Scorching means very hot. Ben blew on it to cool it off! Now you know!"
+ },
+ {
+  "id": "L.1.4a-Q5",
+  "correct_feedback": "Yes! Worn out means very tired. Sam ran and played all day, then fell right asleep! Nice work!",
+  "incorrect_feedback": "Good try! Sam ran and played all day, then fell asleep right away. How does that make a body feel? Try again.",
+  "reveal_feedback": "That one was tricky! Worn out means very tired. Sam played so much he fell asleep! Now you know!"
+ },
+ {
+  "id": "L.1.4a-H1",
+  "correct_feedback": "Yes! Ravenous means very hungry. The baby birds opened their beaks wide for the worm! Nice work!",
+  "incorrect_feedback": "Close one! The baby birds opened their beaks wide the second mom brought a worm. Why did they want it? Take another look.",
+  "reveal_feedback": "That one was tricky! Ravenous means very hungry. The birds wanted that worm to eat! Now you know!"
+ },
+ {
+  "id": "L.1.4a-H2",
+  "correct_feedback": "Yes! Here bark means the outer skin of a tree. Grandpa peeled it off the branch! Nice work!",
+  "incorrect_feedback": "Hmm, read it again. Grandpa peeled the rough brown part off a tree branch. What could that part be? Try again.",
+  "reveal_feedback": "That one was tricky! Here bark means the outer skin of a tree. Grandpa peeled it off! Now you know!"
+ },
+ {
+  "id": "L.1.4a-H3",
+  "correct_feedback": "Yes! Here still means not moving. The pond was so calm, Emma saw her face like a mirror! Nice work!",
+  "incorrect_feedback": "Almost! The pond was calm and flat like a mirror. What was the water doing, or not doing? Take another look.",
+  "reveal_feedback": "That one was tricky! Here still means not moving. The calm pond was flat like a mirror! Now you know!"
+ },
+ {
+  "id": "L.1.4a-H4",
+  "correct_feedback": "Yes! Narrow means not wide. The path was too small for Ben and his dad to walk side by side! Nice work!",
+  "incorrect_feedback": "Good try! Ben and his dad could not walk next to each other on the path. How small was it? Try again.",
+  "reveal_feedback": "That one was tricky! Narrow means not wide. The path was too skinny for two people! Now you know!"
+ },
+ {
+  "id": "L.1.4a-H5",
+  "correct_feedback": "Yes! Timid means shy and quiet. Owen barely spoke and hid behind his mom! Nice work!",
+  "incorrect_feedback": "Close one! Owen barely said a word and hid behind his mom when guests came. How was he feeling? Take another look.",
+  "reveal_feedback": "That one was tricky! Timid means shy and quiet. Owen hid and hardly talked! Now you know!"
+ },
+ {
+  "id": "L.1.4b-Q4",
+  "correct_feedback": "Yes! A teacher is a person who teaches you things. Nice work!",
+  "incorrect_feedback": "Hmm, think about who helps you learn new things at school. Is it a person, a place, or a thing? Try again.",
+  "reveal_feedback": "That one was tricky! A teacher is a person who teaches you things. Now you know!"
+ },
+ {
+  "id": "L.1.4b-H1",
+  "correct_feedback": "Yes! Re- means again, so reheat means to heat it again. Nice work!",
+  "incorrect_feedback": "Almost! The prefix re- is your clue. Is Mom warming the soup for the very first time, or one more time? Take another look.",
+  "reveal_feedback": "That one was tricky! Reheat means to heat it again, because re- means again. Now you know!"
+ },
+ {
+  "id": "L.1.4b-H2",
+  "correct_feedback": "Yes! The -er ending means a person who bakes. A baker bakes bread! Nice work!",
+  "incorrect_feedback": "Good try! The -er ending often names a person who does something. So who is a baker? Try again.",
+  "reveal_feedback": "That one was tricky! A baker is a person who bakes. The -er tells you it is a person! Now you know!"
+ },
+ {
+  "id": "L.1.4b-H3",
+  "correct_feedback": "Yes! Retie means to tie again, because re- means again. Nice work!",
+  "incorrect_feedback": "Close one! You want a word that means to tie one more time. Which prefix means again? Take another look.",
+  "reveal_feedback": "That one was tricky! The word is retie. Re- means again, so retie means to tie again! Now you know!"
+ },
+ {
+  "id": "L.1.4b-H4",
+  "correct_feedback": "Yes! Careless means without care. Maya was not watching, so she knocked her cup over! Nice work!",
+  "incorrect_feedback": "Hmm, the suffix -less means without. Maya was NOT watching what she did. Which word fits her? Take another look.",
+  "reveal_feedback": "That one was tricky! The answer is careless, meaning without care. Maya was not paying attention! Now you know!"
+ },
+ {
+  "id": "L.1.4b-H5",
+  "correct_feedback": "Yes! Pre- means before, so preschool comes before regular school. Nice work!",
+  "incorrect_feedback": "Almost! The prefix pre- gives you a clue about WHEN. Does preschool come first, or later? Take another look.",
+  "reveal_feedback": "That one was tricky! Kids go to preschool before they start regular school, because pre- means before. Now you know!"
+ },
+ {
+  "id": "L.1.4c-Q1",
+  "correct_feedback": "Yes! The root word in jumping is jump. Take off -ing and you get jump! Nice work!",
+  "incorrect_feedback": "Good try! Cover up the -ing ending. What little word is left over? Take another look.",
+  "reveal_feedback": "That one was tricky! The root word is jump. Take off -ing and jump is left! Now you know!"
+ },
+ {
+  "id": "L.1.4c-Q2",
+  "correct_feedback": "Yes! The root word in played is play. Take off -ed and you get play! Nice work!",
+  "incorrect_feedback": "Hmm, cover up the -ed ending. What little word is left over? Try again.",
+  "reveal_feedback": "That one was tricky! The root word is play. Take off -ed and play is left! Now you know!"
+ },
+ {
+  "id": "L.1.4c-Q3",
+  "correct_feedback": "Yes! Jumping tells us it is happening right now. The -ing shows action happening now! Nice work!",
+  "incorrect_feedback": "Almost! Which ending shows something is happening right now, this very second? Take another look.",
+  "reveal_feedback": "That one was tricky! The answer is jumping. The -ing ending shows it is happening right now! Now you know!"
+ },
+ {
+  "id": "L.1.4c-Q4",
+  "correct_feedback": "Yes! The root word is walk. Take off the -s and you get walk! Nice work!",
+  "incorrect_feedback": "Good try! Cover up the -s ending on that word. What little word is left over? Try again.",
+  "reveal_feedback": "That one was tricky! The root word is walk. Take off -s and walk is left! Now you know!"
+ },
+ {
+  "id": "L.1.4c-Q5",
+  "correct_feedback": "Yes! The root word is run. Runs, running, and runner all start with run! Nice work!",
+  "incorrect_feedback": "Hmm, what little word do you hear at the start of all three words? Take another look.",
+  "reveal_feedback": "That one was tricky! The root word is run. All three words are built from run! Now you know!"
+ },
+ {
+  "id": "L.1.4c-H1",
+  "correct_feedback": "Yes! The root word is stop. Take off -ped and you get stop! Nice work!",
+  "incorrect_feedback": "Almost! Say the word slowly, sound by sound. What little word do you hear at the very beginning? Try again.",
+  "reveal_feedback": "That one was tricky! The root word is stop. Stopped is built from stop! Now you know!"
+ },
+ {
+  "id": "L.1.4c-H2",
+  "correct_feedback": "Yes! The -ed ending tells us it already happened, in the past! Nice work!",
+  "incorrect_feedback": "Close one! Jumped, hopped, and walked all finished. Did they happen before now, or later? Take another look.",
+  "reveal_feedback": "That one was tricky! The -ed ending means it already happened in the past. Now you know!"
+ },
+ {
+  "id": "L.1.4c-H3",
+  "correct_feedback": "Yes! Helping is built from help. Just add -ing to help! Nice work!",
+  "incorrect_feedback": "Good try! Look for the word that has help hiding inside it. Some of these only sound alike! Take another look.",
+  "reveal_feedback": "That one was tricky! The answer is helping. It has the word help right inside it! Now you know!"
+ },
+ {
+  "id": "L.1.4c-H4",
+  "correct_feedback": "Yes! Two birds sing. When there is more than one, we use sing! Nice work!",
+  "incorrect_feedback": "Hmm, there are TWO birds now, not just one. Which word sounds right for more than one? Try again.",
+  "reveal_feedback": "That one was tricky! The answer is sing. Two birds sing, but one bird sings! Now you know!"
+ },
+ {
+  "id": "L.1.4c-H5",
+  "correct_feedback": "Yes! Player has the root word play inside it, plus -er! Nice work!",
+  "incorrect_feedback": "Almost! Look closely for the word play hiding inside. Some of these just start the same way! Take another look.",
+  "reveal_feedback": "That one was tricky! The answer is player. It has play right inside it! Now you know!"
+ },
+ {
+  "id": "L.1.5-Q1",
+  "correct_feedback": "Yes! The opposite of hot is cold. They are as different as can be! Nice work!",
+  "incorrect_feedback": "Good try! Think of ice or snow on a winter day. What is the very opposite of hot? Try again.",
+  "reveal_feedback": "That one was tricky! The opposite of hot is cold, like ice! Now you know!"
+ },
+ {
+  "id": "L.1.5-Q2",
+  "correct_feedback": "Yes! Large means almost the same as big. Both mean not small! Nice work!",
+  "incorrect_feedback": "Hmm, you want a word that means big too, not the opposite. Which one still means big? Take another look.",
+  "reveal_feedback": "That one was tricky! Large means almost the same as big! Now you know!"
+ },
+ {
+  "id": "L.1.5-Q3",
+  "correct_feedback": "Yes! The opposite of fast is slow, like a turtle! Nice work!",
+  "incorrect_feedback": "Almost! Think of a turtle that takes its time. What is the very opposite of fast? Take another look.",
+  "reveal_feedback": "That one was tricky! The opposite of fast is slow, like a turtle! Now you know!"
+ },
+ {
+  "id": "L.1.5-Q4",
+  "correct_feedback": "Yes! A fish can swim in the water, just like a bird can fly! Nice work!",
+  "incorrect_feedback": "Good try! Think about where a fish lives. What does it do all day in the water? Try again.",
+  "reveal_feedback": "That one was tricky! A fish can swim in the water! Now you know!"
+ },
+ {
+  "id": "L.1.5-H1",
+  "correct_feedback": "Yes! Thrilled shows Sam was SO happy he jumped and yelled! It is the strongest word! Nice work!",
+  "incorrect_feedback": "Close one! Sam jumped up and down and yelled for joy. Which word shows the BIGGEST happy of all? Take another look.",
+  "reveal_feedback": "That one was tricky! Thrilled shows the biggest happy. Sam was jumping for joy! Now you know!"
+ },
+ {
+  "id": "L.1.5-H2",
+  "correct_feedback": "Yes! Here park means to stop and leave the car. Dad parks it by the store! Nice work!",
+  "incorrect_feedback": "Hmm, park can mean more than one thing. Dad is doing something with the CAR by the store. What is it? Take another look.",
+  "reveal_feedback": "That one was tricky! Here park means to stop and leave the car by the store! Now you know!"
+ },
+ {
+  "id": "L.1.5-H3",
+  "correct_feedback": "Yes! Raced shows the dog moved the fastest of all! Nice work!",
+  "incorrect_feedback": "Almost! Which word shows moving super quick, even faster than a jog? Take another look.",
+  "reveal_feedback": "That one was tricky! Raced means moving the fastest! Now you know!"
+ },
+ {
+  "id": "L.1.5-H4",
+  "correct_feedback": "Yes! Whisper means to talk in a very quiet voice! Nice work!",
+  "incorrect_feedback": "Good try! The other words are all loud. Which one is soft and quiet instead? Take another look.",
+  "reveal_feedback": "That one was tricky! Whisper means to talk in a very quiet voice! Now you know!"
+ },
+ {
+  "id": "L.1.5-H5",
+  "correct_feedback": "Yes! Here tear means a drop that comes from crying. It rolled down her cheek! Nice work!",
+  "incorrect_feedback": "Hmm, it rolled down her cheek like a little drop. What comes out when someone cries? Take another look.",
+  "reveal_feedback": "That one was tricky! Here tear means a drop that comes from crying, rolling down her cheek! Now you know!"
+ },
+ {
+  "id": "L.1.5a-Q1",
+  "correct_feedback": "Yes! A bird is an animal, just like dog, cat, and cow! Nice work!",
+  "incorrect_feedback": "Good try! Dog, cat, and cow are all animals. Which word on the list is also an animal? Try again.",
+  "reveal_feedback": "That one was tricky! A bird belongs with the animals! Now you know!"
+ },
+ {
+  "id": "L.1.5a-Q3",
+  "correct_feedback": "Yes! Red, blue, and green are all colors! Nice work!",
+  "incorrect_feedback": "Hmm, think about what red, blue, and green really are. You see them everywhere! Try again.",
+  "reveal_feedback": "That one was tricky! Red, blue, and green are all colors! Now you know!"
+ },
+ {
+  "id": "L.1.5a-H1",
+  "correct_feedback": "Yes! An orange is a fruit, just like apple, banana, and grape! Nice work!",
+  "incorrect_feedback": "Close one! Apple, banana, and grape are fruits. Which word on the list is a fruit too, not a vegetable? Take another look.",
+  "reveal_feedback": "That one was tricky! An orange is a fruit, so it goes with apple, banana, and grape! Now you know!"
+ },
+ {
+  "id": "L.1.5a-H2",
+  "correct_feedback": "Yes! Robin, sparrow, and bluejay are all birds! Nice work!",
+  "incorrect_feedback": "Almost! Robins, sparrows, and bluejays all fly and have feathers. What ARE they all? Take another look.",
+  "reveal_feedback": "That one was tricky! Robin, sparrow, and bluejay are all birds! Now you know!"
+ },
+ {
+  "id": "L.1.5a-H3",
+  "correct_feedback": "Yes! A train is something you ride to travel, just like a car, boat, and airplane! Nice work!",
+  "incorrect_feedback": "Good try! You RIDE a car, boat, and airplane. Which word is something else you ride to travel? Take another look.",
+  "reveal_feedback": "That one was tricky! A train belongs in the group, because you ride it to travel! Now you know!"
+ },
+ {
+  "id": "L.1.5a-H4",
+  "correct_feedback": "Yes! A slug has no legs, just like a snake, worm, and eel! Nice work!",
+  "incorrect_feedback": "Hmm, snake, worm, and eel all have NO legs. Which animal on the list also has no legs? Take another look.",
+  "reveal_feedback": "That one was tricky! A slug has no legs, so it goes in the group! Now you know!"
+ },
+ {
+  "id": "L.1.5a-H5",
+  "correct_feedback": "Yes! In this group, bat means a stick you swing to hit a ball, like in baseball! Nice work!",
+  "incorrect_feedback": "Close one! Glove, ball, and helmet are all for baseball. What kind of bat goes with those? Take another look.",
+  "reveal_feedback": "That one was tricky! Here bat means a stick you swing to hit a ball, for baseball! Now you know!"
+ },
+ {
+  "id": "L.1.5b-Q1",
+  "correct_feedback": "Yes! A dog barks and has four legs! Nice work!",
+  "incorrect_feedback": "Good try! Think about a real dog you have seen. What sound does it make, and how many legs? Try again.",
+  "reveal_feedback": "That one was tricky! A dog barks and has four legs! Now you know!"
+ },
+ {
+  "id": "L.1.5b-Q2",
+  "correct_feedback": "Yes! An apple can be red, green, or yellow! Nice work!",
+  "incorrect_feedback": "Hmm, think about apples you have seen at the store. What colors do they come in? Take another look.",
+  "reveal_feedback": "That one was tricky! An apple can be red, green, or yellow! Now you know!"
+ },
+ {
+  "id": "L.1.5b-Q3",
+  "correct_feedback": "Yes! A hammer is used to pound nails! Nice work!",
+  "incorrect_feedback": "Almost! Picture someone building with wood and a hammer. What does the hammer hit? Take another look.",
+  "reveal_feedback": "That one was tricky! A hammer is used to pound nails! Now you know!"
+ },
+ {
+  "id": "L.1.5b-Q4",
+  "correct_feedback": "Yes! A penguin is a bird that swims but cannot fly! Nice work!",
+  "incorrect_feedback": "Good try! Penguins live where it is icy and love the water. Can they lift up into the sky? Take another look.",
+  "reveal_feedback": "That one was tricky! A penguin swims but cannot fly! Now you know!"
+ },
+ {
+  "id": "L.1.5b-Q5",
+  "correct_feedback": "Yes! A fire truck helps fight fires! Nice work!",
+  "incorrect_feedback": "Hmm, listen to the name: FIRE truck. What big, important job do you think it does? Take another look.",
+  "reveal_feedback": "That one was tricky! A fire truck helps fight fires! Now you know!"
+ }
+]

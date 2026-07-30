@@ -1,0 +1,188 @@
+[
+ {
+  "id": "L.4.6-E4",
+  "correct_feedback": "Yes! 'Glowed bright orange' gives us an exact picture we can see in our minds. Precise words paint a clear scene.",
+  "incorrect_feedback": "Hmm, some of these barely tell us anything about the sky. Which one lets you actually picture the color and light?",
+  "reveal_feedback": "The answer is 'The sky at sunset glowed bright orange.' It uses exact words that let you see the color and light."
+ },
+ {
+  "id": "L.4.6-E5",
+  "correct_feedback": "That's right! Total means adding it all together, and 3 apples plus 2 apples makes 5 apples.",
+  "incorrect_feedback": "Almost. Total is about adding amounts together. Try putting Sam's two groups of apples together and count.",
+  "reveal_feedback": "The answer is 5 apples. Total means the whole amount, so 3 apples and 2 apples add up to 5."
+ },
+ {
+  "id": "L.4.1-Q4",
+  "correct_feedback": "Nice work! Joining the two ideas with 'and' makes one smooth, correct sentence instead of two run-together ones.",
+  "incorrect_feedback": "Good try. A comma alone can't glue two full sentences, and jumbled word order won't work. Look for a real joining word.",
+  "reveal_feedback": "The answer is 'The cat stretched and it jumped onto the couch.' The word 'and' correctly joins the two complete ideas."
+ },
+ {
+  "id": "L.4.1-H1",
+  "correct_feedback": "Exactly! The barn is a place, and 'where' is the word we use to point to a place.",
+  "incorrect_feedback": "Close one. Think about what the barn is. Is it a time, a thing, or a place? Pick the word that matches.",
+  "reveal_feedback": "The answer is 'where.' The barn is a place, and 'where' is the word we use to talk about a place."
+ },
+ {
+  "id": "L.4.1-H2",
+  "correct_feedback": "Yes! 'Is winning' shows the action is happening right now. That's the progressive tense in action.",
+  "incorrect_feedback": "Not yet. The progressive tense needs a helping word plus an -ing verb that fit together correctly. Read each one aloud.",
+  "reveal_feedback": "The answer is 'The team is winning the game.' 'Is' plus 'winning' shows the action is happening right now."
+ },
+ {
+  "id": "L.4.1-H3",
+  "correct_feedback": "Perfect! In English, size comes first, then shape, then material. Small, then round, then wooden sounds just right.",
+  "incorrect_feedback": "Take another look. English has an order for adjectives: size, then shape, then what it's made of. Read each aloud.",
+  "reveal_feedback": "The answer is 'She bought a small round wooden table.' Adjectives go in order: size, then shape, then material."
+ },
+ {
+  "id": "L.4.1-H4",
+  "correct_feedback": "Great job! 'They're' means they are, 'their' shows it belongs to them, and 'there' names a place. All three fit.",
+  "incorrect_feedback": "Almost. Remember: one means 'they are,' one shows owning, and one names a place. Check if each word matches its job.",
+  "reveal_feedback": "The answer is 'They're going to leave their bikes over there.' They're means they are, their shows owning, and there is a place."
+ },
+ {
+  "id": "L.4.1-H5",
+  "correct_feedback": "Yes! 'Can' shows he is able to do something. Grandpa is able to run that mile even at ninety.",
+  "incorrect_feedback": "Good try. Some of these show he has to, or might, or ought to. Which one shows he is ABLE to do it?",
+  "reveal_feedback": "The answer is 'can.' 'Can' shows someone is able to do something, like Grandpa being able to run a mile."
+ },
+ {
+  "id": "L.4.1-E1",
+  "correct_feedback": "That's right! 'Two dogs' is more than one, so we use 'are' to match a plural subject.",
+  "incorrect_feedback": "Hmm, count the dogs first. There's more than one, so which verb matches a plural subject? Say it aloud.",
+  "reveal_feedback": "The answer is 'are.' There are two dogs, and a plural subject needs the verb 'are.'"
+ },
+ {
+  "id": "L.4.1-E2",
+  "correct_feedback": "Exactly! A conjunction is a joining word, and 'and' joins apples with oranges.",
+  "incorrect_feedback": "Take another look. A conjunction is a word that joins two things together. Which word links the two fruits?",
+  "reveal_feedback": "The answer is 'and.' It's the conjunction because it joins the two words apples and oranges together."
+ },
+ {
+  "id": "L.4.1-E3",
+  "correct_feedback": "Nice! 'Yesterday' tells us it already happened, so we use the past tense form of the verb.",
+  "incorrect_feedback": "Close one. The word 'yesterday' is a clue about time. Did this happen already? Pick the verb that shows the past.",
+  "reveal_feedback": "The answer is 'walked.' 'Yesterday' means it already happened, so we use the past tense 'walked.'"
+ },
+ {
+  "id": "L.4.1-E4",
+  "correct_feedback": "Yes! 'She' is one person, so the verb changes to 'does' to match a single subject.",
+  "incorrect_feedback": "Almost. The subject is 'she,' just one person. Which form of the verb fits with a single subject? Read it aloud.",
+  "reveal_feedback": "The answer is 'does.' With a single subject like 'she,' the verb becomes 'does.'"
+ },
+ {
+  "id": "L.4.1-E5",
+  "correct_feedback": "Great! 'So' joins the two ideas and shows that being tired is the reason for going to bed.",
+  "incorrect_feedback": "Not yet. Two full ideas need a joining word to connect them, and the words should stay in order. Look for that link.",
+  "reveal_feedback": "The answer is 'I was tired so I went to bed.' The word 'so' joins the ideas and shows the reason."
+ },
+ {
+  "id": "L.4.2-Q1",
+  "correct_feedback": "Yes! The comma goes after 'lazily' because it separates the first complete idea before 'and then.'",
+  "incorrect_feedback": "Good try. A comma often goes before a joining word that connects two full ideas. Where does the first idea end?",
+  "reveal_feedback": "The answer is after 'lazily.' The comma marks the end of the first idea before 'and then it jumped.'"
+ },
+ {
+  "id": "L.4.2-Q2",
+  "correct_feedback": "Right! In a title we capitalize the important words, like the big and meaningful ones.",
+  "incorrect_feedback": "Hmm, titles aren't all lowercase or all uppercase. Think about which words in a title get a capital letter.",
+  "reveal_feedback": "The answer is 'Capitalize the important words.' Titles capitalize the main, meaningful words, not every letter."
+ },
+ {
+  "id": "L.4.2-Q3",
+  "correct_feedback": "Perfect! The exact spoken words go inside the quotation marks, with a comma before 'she said.'",
+  "incorrect_feedback": "Close one. Quotation marks wrap only the words a person actually speaks. Check where those marks belong.",
+  "reveal_feedback": "The answer is '\"Hello,\" she said.' The quotation marks go around only the spoken word, with a comma inside."
+ },
+ {
+  "id": "L.4.2-Q5",
+  "correct_feedback": "Yes! 'Dog's' with an apostrophe shows the ball belongs to the dog. That's a possessive.",
+  "incorrect_feedback": "Almost. To show that the ball belongs to one dog, you need a special mark. Which spelling shows ownership?",
+  "reveal_feedback": "The answer is 'dog's.' The apostrophe before the s shows the ball belongs to one dog."
+ },
+ {
+  "id": "L.4.2-E1",
+  "correct_feedback": "That's right! A question ends with a question mark, and it also starts with a capital letter.",
+  "incorrect_feedback": "Take another look. A sentence that asks something needs a special ending mark and a capital start. Which one has both?",
+  "reveal_feedback": "The answer is 'Where is my backpack?' It's a question, so it ends with a question mark and starts with a capital."
+ },
+ {
+  "id": "L.4.2-E2",
+  "correct_feedback": "Yes! Every sentence begins with a capital letter to show a new idea is starting.",
+  "incorrect_feedback": "Good try. Think about how the very first word of any sentence should look. What kind of letter starts it off?",
+  "reveal_feedback": "The answer is a capital letter. Every sentence begins with one to show a new idea is starting."
+ },
+ {
+  "id": "L.4.2-E3",
+  "correct_feedback": "Right! A person's name starts with one capital letter, so 'Maria' is written correctly.",
+  "incorrect_feedback": "Hmm, a name isn't all capitals or all lowercase. Which one has just the first letter capitalized?",
+  "reveal_feedback": "The answer is 'Maria.' A name gets a capital on the first letter only, not every letter."
+ },
+ {
+  "id": "L.4.2-E4",
+  "correct_feedback": "Nice! When we list three things, we put a comma after each one, so 'apples' gets a comma too.",
+  "incorrect_feedback": "Almost. When you list things in a row, each item needs a comma between it and the next. Where's the first one missing?",
+  "reveal_feedback": "The answer is after 'apples.' In a list, each item gets a comma, so it goes after the first item."
+ },
+ {
+  "id": "L.4.3-Q1",
+  "correct_feedback": "Yes! 'The puppy bounded across the meadow' uses exact words that paint a clear, lively picture.",
+  "incorrect_feedback": "Good try. Precise writing uses exact words instead of vague ones like 'thing' or 'stuff.' Which one shows the most?",
+  "reveal_feedback": "The answer is 'The puppy bounded across the meadow.' Its exact words paint the clearest, most precise picture."
+ },
+ {
+  "id": "L.4.3-Q2",
+  "correct_feedback": "Exactly! Style is the special way an author writes, like their own writing voice.",
+  "incorrect_feedback": "Not yet. Style isn't about paper, ink, or font. Think about how an author's writing itself sounds and feels.",
+  "reveal_feedback": "The answer is 'the way an author writes.' Style is an author's own special way of putting words together."
+ },
+ {
+  "id": "L.4.3-Q3",
+  "correct_feedback": "Right! A short, snappy sentence grabs attention and adds punch, giving an idea real impact.",
+  "incorrect_feedback": "Close one. Writers make choices on purpose. Why would a writer pick a short sentence to make an idea stand out?",
+  "reveal_feedback": "The answer is 'for emphasis or impact.' Short, snappy sentences make an idea stand out and hit harder."
+ },
+ {
+  "id": "L.4.3-Q4",
+  "correct_feedback": "Yes! Writing to a friend can be more casual and relaxed, like how you really talk together.",
+  "incorrect_feedback": "Hmm, think about how you write to a friend versus a teacher. A friendly note can be more relaxed. Which word fits?",
+  "reveal_feedback": "The answer is 'more casual.' Writing to a friend can be relaxed and friendly, not stiff and formal."
+ },
+ {
+  "id": "L.4.3-Q5",
+  "correct_feedback": "Great! 'Thrilled' is a strong, exact word that shows a big, exciting feeling.",
+  "incorrect_feedback": "Take another look. Words like 'good' or 'okay' are pretty plain. Which word shows the strongest, biggest feeling?",
+  "reveal_feedback": "The answer is 'thrilled.' It's the strongest word, showing a big, exciting feeling instead of a plain one."
+ },
+ {
+  "id": "L.4.3-E1",
+  "correct_feedback": "Yes! 'Raced' is an exact, colorful word that shows exactly how fast the boy moved.",
+  "incorrect_feedback": "Almost. Words like 'went' or 'did' are pretty plain. Which one shows exactly how the boy moved down the street?",
+  "reveal_feedback": "The answer is 'The boy raced down the street.' 'Raced' is the exact, colorful word for how he moved."
+ },
+ {
+  "id": "L.4.3-E2",
+  "correct_feedback": "Right! 'Joyful' paints a clear, bright picture of a truly happy dog.",
+  "incorrect_feedback": "Good try. Words like 'fine' or 'nice' are kind of flat. Which word paints the clearest picture of a happy dog?",
+  "reveal_feedback": "The answer is 'joyful.' It paints the clearest, brightest picture of a very happy dog."
+ },
+ {
+  "id": "L.4.3-E3",
+  "correct_feedback": "Yes! 'Tiny' and 'warm' are describing words that help you picture the little kitten and the sunlight.",
+  "incorrect_feedback": "Close one. Some of these are just small words like 'the' or 'a.' Which words actually describe and help you see the scene?",
+  "reveal_feedback": "The answer is 'tiny, warm.' Those describing words help you picture the little kitten in the sunlight."
+ },
+ {
+  "id": "L.4.3-E4",
+  "correct_feedback": "Nice! 'The books were on the shelf' tells us exactly what and where, with no vague words.",
+  "incorrect_feedback": "Hmm, most of these are full of fuzzy words like 'things,' 'stuff,' and 'someplace.' Which one is clear and exact?",
+  "reveal_feedback": "The answer is 'The books were on the shelf.' It's clear and exact, with no vague words like 'stuff' or 'things.'"
+ },
+ {
+  "id": "L.4.3-E5",
+  "correct_feedback": "Yes! 'Crashed' is the exact word for a very loud noise. You can almost hear it!",
+  "incorrect_feedback": "Not yet. Words like 'walked' or 'said' aren't about noise at all. Which word sounds like a big, loud crash?",
+  "reveal_feedback": "The answer is 'crashed.' It's the exact word for a very loud noise, one you can almost hear."
+ }
+]

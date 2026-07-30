@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.3.9-Q5",
+  "correct_feedback": "Yes! You noticed the two texts don't fully agree. Text A wants less screen time, while Text B says some screen time can help kids learn.",
+  "incorrect_feedback": "Hmm, let's slow down. Reread what each text really wants for kids. Do both authors feel the exact same way, or do they land in different spots?",
+  "reveal_feedback": "The best answer is that Text A says screen time should be limited, but Text B says educational screen time can be helpful. They agree screens matter, but land differently."
+ },
+ {
+  "id": "RI.3.9-H1",
+  "correct_feedback": "Great thinking! Both texts agree bees move pollen. But they clash on ONE idea: does the bee plan to help, or does it just happen while it eats?",
+  "incorrect_feedback": "Good try! Both texts actually agree on that one. Look for the spot where the authors say something different about WHY the pollen moves.",
+  "reveal_feedback": "The answer is whether the bees move pollen on purpose or by accident. Text A says it helps; Text B says it happens by accident while bees feed."
+ },
+ {
+  "id": "RI.3.9-H2",
+  "correct_feedback": "Nice work! Text B says the Sahara is not always warm. So its author would agree it's hot by day, but add that it turns cold at night.",
+  "incorrect_feedback": "Almost! Remember, Text B's big point is that the Sahara isn't warm ALL the time. Which reply matches that idea without saying the Sahara is never hot?",
+  "reveal_feedback": "The best answer is: \"That is true in the daytime, but the Sahara is not hot all the time.\" Text B agrees about daytime heat but adds the cold nights."
+ },
+ {
+  "id": "RI.3.9-H3",
+  "correct_feedback": "Exactly! In both stories, food near people is what first pulled the animals close: scraps for dogs, mice by the grain for cats.",
+  "incorrect_feedback": "Close one! One of those is only true for the dogs OR only for the cats. Look for the ONE reason that fits BOTH animals in the texts.",
+  "reveal_feedback": "The answer is that both animals first came close because there was food near people. Dogs wanted scraps; cats wanted the mice by the grain."
+ },
+ {
+  "id": "RI.3.9-H4",
+  "correct_feedback": "Well reasoned! Same ash, different time. Text A talks about later, when ash enriches soil. Text B talks about right away, when ash buries towns.",
+  "incorrect_feedback": "Take another look. Both texts really are about the same volcanic ash. Think about WHEN each author is describing: right after, or a long time later?",
+  "reveal_feedback": "The answer is that Text A describes what ash does long after, while Text B describes what it does right away. Same ash, two different times."
+ },
+ {
+  "id": "RI.3.9-H5",
+  "correct_feedback": "Smart choice! To argue recess helps school, the teacher wants the text about learning, and Text B shows recess helps kids pay attention and learn.",
+  "incorrect_feedback": "Not yet. The teacher's point is about class time and learning. Which text connects recess to doing better AT school, without going overboard?",
+  "reveal_feedback": "The best answer is Text B, because it shows recess actually helps kids do better at learning, which fits the teacher's argument perfectly."
+ },
+ {
+  "id": "RI.3.10-Q1",
+  "correct_feedback": "You got it! Coral polyps are tiny living things, and they build the reef itself. That's why the reef counts as the largest living structure.",
+  "incorrect_feedback": "Good try! Think about what the polyps actually DO to make the reef exist in the first place. What are these tiny creatures building?",
+  "reveal_feedback": "The answer is that they are the tiny organisms that create the reef's structure. The whole reef is built by these little polyps."
+ },
+ {
+  "id": "RI.3.10-Q2",
+  "correct_feedback": "Yes! That's the surprise: tarantulas look scary, but the text says most are actually harmless to people.",
+  "incorrect_feedback": "Hmm, look again. The text says tarantulas do NOT spin webs. Find the part that feels surprising once you read it. What doesn't match how they look?",
+  "reveal_feedback": "The answer is that they are harmless despite looking scary. Even with a spooky appearance, most tarantulas won't hurt people."
+ },
+ {
+  "id": "RI.3.10-Q4",
+  "correct_feedback": "Right! The amazing part is teamwork across families. No single butterfly makes the whole trip, so many generations finish it together.",
+  "incorrect_feedback": "Almost! The text says they fly up to 3,000 miles in fall. So it isn't slow, short, or summer. What's the truly remarkable part about who finishes the trip?",
+  "reveal_feedback": "The answer is that multiple generations complete what no single butterfly could. It takes great-great-grandchildren to finish the journey."
+ },
+ {
+  "id": "RI.3.10-Q5",
+  "correct_feedback": "Exactly! Many people think the Sahara is all sand, but the text says only about a quarter is sandy. The rest is rock, gravel, and mountains.",
+  "incorrect_feedback": "Take another look. A misconception is something people wrongly believe. Which idea does the text prove wrong by giving those percentages?",
+  "reveal_feedback": "The answer is that it's all sand. The text corrects that idea, since only about 25% of the Sahara is actually sandy."
+ },
+ {
+  "id": "RI.3.10-E1",
+  "correct_feedback": "Yes! The passage says most bats sleep during the day and hunt at night. Great reading!",
+  "incorrect_feedback": "Good try! Reread the sentence about when bats sleep and when they hunt. If they sleep during the day, when would they go find food?",
+  "reveal_feedback": "The answer is at night. The passage says most bats sleep during the day and hunt for food at night."
+ },
+ {
+  "id": "RI.3.10-E2",
+  "correct_feedback": "That's right! The passage says the queen bee is the only bee that lays eggs. Nice job finding it!",
+  "incorrect_feedback": "Almost! Look back at the sentence that names which special bee lays the eggs. There's only one kind that does it.",
+  "reveal_feedback": "The answer is the queen bee. The passage says she is the only bee that lays eggs."
+ },
+ {
+  "id": "RI.3.10-E3",
+  "correct_feedback": "Yes! The passage says the Sahara is so dry that very little rain falls there each year. Great reading!",
+  "incorrect_feedback": "Close one! Reread the part about how dry the Sahara is. What does it tell you about the amount of rain?",
+  "reveal_feedback": "The answer is that very little rain falls there. The passage says the Sahara is so dry that very little rain comes each year."
+ },
+ {
+  "id": "RI.3.10-E4",
+  "correct_feedback": "Right! The passage says sea turtles lay their eggs on sandy beaches. Well done!",
+  "incorrect_feedback": "Good try! Look back at where the mother turtle digs her hole and lays her eggs. What kind of place is that?",
+  "reveal_feedback": "The answer is on sandy beaches. The passage says the mother turtle digs a hole there and covers her eggs with sand."
+ },
+ {
+  "id": "RI.3.10-E5",
+  "correct_feedback": "Yes! The passage says maple syrup is made from the sweet sap that people collect from maple trees. Great job!",
+  "incorrect_feedback": "Not yet. Reread the sentence about the sweet liquid people collect from the trees. That liquid is what syrup is made from.",
+  "reveal_feedback": "The answer is sap from maple trees. People collect the sweet sap in early spring to make maple syrup."
+ },
+ {
+  "id": "RF.3.3-Q1",
+  "correct_feedback": "Yes! Peel off 'un' at the front and 'able' at the end, and you're left with the root word comfort. Nice work!",
+  "incorrect_feedback": "Hmm, take off the prefix 'un-' and the suffix '-able' from the ends. What real word is hiding in the middle?",
+  "reveal_feedback": "The root word is comfort. Take off 'un-' and '-able' and comfort is what's left in the middle."
+ },
+ {
+  "id": "RF.3.3-Q2",
+  "correct_feedback": "That's right! Im-por-tant. Clap it out and you hear three beats. Great counting!",
+  "incorrect_feedback": "Almost! Try clapping the word out loud: im...por...tant. How many claps, or beats, do you hear?",
+  "reveal_feedback": "The answer is 3. Im-por-tant has three beats when you clap it out."
+ },
+ {
+  "id": "RF.3.3-Q3",
+  "correct_feedback": "Yes! Station ends in that same '-tion' sound as nation. Both say 'shun' at the end. Nice ear!",
+  "incorrect_feedback": "Good try! Say each word slowly and listen to the ending. Which one finishes with the same 'shun' sound as nation?",
+  "reveal_feedback": "The answer is station. It ends with the same 'shun' sound as nation."
+ },
+ {
+  "id": "RF.3.3-Q4",
+  "correct_feedback": "Right! In 'knight,' the k and the g are both silent. You only hear 'nite.' Sharp work!",
+  "incorrect_feedback": "Close one! Say 'knight' out loud slowly. Which two letters do you NOT hear when you say it?",
+  "reveal_feedback": "The answer is k and g. In 'knight' both of those letters are silent, so it sounds like 'nite.'"
+ },
+ {
+  "id": "RF.3.3-Q5",
+  "correct_feedback": "Yes! Bas-ket-ball breaks into three even beats. Great syllable work!",
+  "incorrect_feedback": "Almost! Clap the word into beats and listen to where each part breaks. Try saying it slowly three times.",
+  "reveal_feedback": "The answer is Bas-ket-ball. That splits the word into its three clear beats."
+ },
+ {
+  "id": "RF.3.3-H1",
+  "correct_feedback": "Nice! In 'untie,' you can peel off 'un-' and still have 'tie,' a real word. That makes 'un-' a true prefix here.",
+  "incorrect_feedback": "Good try! Test each one: cover the 'un' and see if a real word is left. In some of these, 'un' is just part of the word.",
+  "reveal_feedback": "The answer is untie. Peel off 'un-' and 'tie' is left, so it's a real prefix there."
+ },
+ {
+  "id": "RF.3.3-H2",
+  "correct_feedback": "Yes! Take off '-ness' and you're left with happy, the base word. Well spotted!",
+  "incorrect_feedback": "Almost! Take off the ending '-ness' and think about the real word that's left. Watch the spelling of that base word.",
+  "reveal_feedback": "The base word is happy. Take off '-ness' and happy is what's left."
+ },
+ {
+  "id": "RF.3.3-H3",
+  "correct_feedback": "Great ear! Vacation ends with that same 'shun' sound as nation. Both finish with -tion.",
+  "incorrect_feedback": "Close one! Say each word and really listen to the last part. Which one ends with the same 'shun' sound as nation?",
+  "reveal_feedback": "The answer is vacation. It ends with the same 'shun' sound as nation."
+ },
+ {
+  "id": "RF.3.3-H4",
+  "correct_feedback": "Right! When a short word ends in one vowel and one consonant, you double the last letter: hop becomes hopping.",
+  "incorrect_feedback": "Not yet. 'Hop' has a short o sound you want to keep. What happens to that last consonant when you add '-ing'?",
+  "reveal_feedback": "The answer is hopping. You double the p before adding '-ing' to keep the short o sound."
+ },
+ {
+  "id": "RF.3.3-H5",
+  "correct_feedback": "Yes! Ex-plain. Clap it and you hear two beats. Nice counting!",
+  "incorrect_feedback": "Good try! Say 'explain' slowly and clap the beats: ex...plain. How many claps do you hear?",
+  "reveal_feedback": "The answer is 2. Ex-plain has two beats when you clap it out."
+ },
+ {
+  "id": "RF.3.3a-Q1",
+  "correct_feedback": "Yes! 'Dis-' means not or opposite. So disagree means to NOT agree. Great thinking!",
+  "incorrect_feedback": "Hmm, think about what disagree means. If you disagree, are you agreeing or doing the opposite? That points to what 'dis-' means.",
+  "reveal_feedback": "The answer is not or opposite. 'Dis-' flips the word, so disagree means to not agree."
+ },
+ {
+  "id": "RF.3.3a-Q2",
+  "correct_feedback": "Right! '-ment' means the act or state of something. Enjoyment is the state of enjoying. Nice work!",
+  "incorrect_feedback": "Good try! Think about what 'enjoyment' names. Is it a state or feeling, or does it mean full of or without something?",
+  "reveal_feedback": "The answer is the act or state of. Enjoyment means the state of enjoying something."
+ },
+ {
+  "id": "RF.3.3a-Q3",
+  "correct_feedback": "Yes! 'Pre-' means before, so preview means to view something before. Great connecting!",
+  "incorrect_feedback": "Almost! You know 'pre-' means before. Now add it to 'view.' What would viewing 'before' mean?",
+  "reveal_feedback": "The answer is to view before. Since 'pre-' means before, a preview is a look at something ahead of time."
+ },
+ {
+  "id": "RF.3.3a-Q4",
+  "correct_feedback": "Right! '-able' means able to be. So enjoyable means the movie is able to be enjoyed. Nice job!",
+  "incorrect_feedback": "Good try! The suffix '-able' is a clue that means 'able to be.' What does that tell you the movie CAN have happen to it?",
+  "reveal_feedback": "The answer is that the movie is able to be enjoyed. That's what the suffix '-able' tells us."
+ },
+ {
+  "id": "RF.3.3a-Q5",
+  "correct_feedback": "Yes! 'Mis-' means wrongly. To misunderstand is to understand it the wrong way. Great thinking!",
+  "incorrect_feedback": "Almost! Think about 'misunderstand.' If you misunderstand, did you get it right or get it in a wrong way? That's your clue for 'mis-.'",
+  "reveal_feedback": "The answer is wrongly. 'Mis-' means wrongly, so to misunderstand is to understand it the wrong way."
+ },
+ {
+  "id": "RF.3.3a-H1",
+  "correct_feedback": "Nice! In 'unkind,' you can peel off 'un-' and leave 'kind,' so 'un-' means not. Unkind means not kind.",
+  "incorrect_feedback": "Good try! Test each word: cover 'un' and see if a real word is left that 'not' fits in front of. In some, 'un' is just part of the word.",
+  "reveal_feedback": "The answer is unkind. Peel off 'un-' and 'kind' is left, so 'un-' means not there."
+ },
+ {
+  "id": "RF.3.3a-H2",
+  "correct_feedback": "Yes! A painter is a person who paints. There '-er' means a person who does something. Well spotted!",
+  "incorrect_feedback": "Almost! In some of these, '-er' means 'more,' like colder or faster. Which word names a PERSON who does something?",
+  "reveal_feedback": "The answer is painter. There '-er' means a person who does something, someone who paints."
+ },
+ {
+  "id": "RF.3.3a-H3",
+  "correct_feedback": "Right! '-less' means without, so fearless means without fear. Great matching!",
+  "incorrect_feedback": "Good try! You want the word that means WITHOUT fear. Which ending, '-less' or '-ful,' means without something?",
+  "reveal_feedback": "The answer is fearless. The suffix '-less' means without, so fearless means without fear."
+ },
+ {
+  "id": "RF.3.3a-H4",
+  "correct_feedback": "Yes! 'Pre-' means before, so preheat means to heat before. Nice work!",
+  "incorrect_feedback": "Almost! You know 'pre-' means before. Add it to 'heat.' What would heating 'before' mean?",
+  "reveal_feedback": "The answer is to heat before. Since 'pre-' means before, preheat means to heat something ahead of time."
+ },
+ {
+  "id": "RF.3.3a-H5",
+  "correct_feedback": "Right! 'Mis-' means wrongly, so misspell means to spell wrongly. Great thinking!",
+  "incorrect_feedback": "Good try! 'Mis-' means wrongly or badly. Add it to 'spell.' What would spelling in that way mean?",
+  "reveal_feedback": "The answer is to spell wrongly. 'Mis-' means wrongly, so misspell means to spell it the wrong way."
+ },
+ {
+  "id": "RF.3.3b-Q1",
+  "correct_feedback": "Yes! '-tion' at the end of a word says 'shun,' like in nation. Great ear!",
+  "incorrect_feedback": "Almost! Say 'nation' or 'action' out loud and listen to the very end. What sound does '-tion' make?",
+  "reveal_feedback": "The answer is 'shun.' The ending '-tion' says 'shun,' like in nation and action."
+ },
+ {
+  "id": "RF.3.3b-Q4",
+  "correct_feedback": "Yes! Creative uses the Latin suffix '-ive,' like active, to show it has a lot of that quality. Sharp work!",
+  "incorrect_feedback": "Good try! You want the word built like 'active,' with the same kind of ending that shows a quality. Which word ends the same way?",
+  "reveal_feedback": "The answer is creative. Like active, it uses the suffix '-ive' to show it's full of a quality."
+ },
+ {
+  "id": "RF.3.3b-Q5",
+  "correct_feedback": "Right! Invent is the base word, and '-ion' is the ending. So invention breaks into invent + ion. Nice job!",
+  "incorrect_feedback": "Almost! Find the real base word first, the one that means to make something new. Then see what ending is added to it.",
+  "reveal_feedback": "The answer is Invent + ion. 'Invent' is the base word and '-ion' is the ending added to it."
+ },
+ {
+  "id": "RF.3.3b-H1",
+  "correct_feedback": "Great ear and eye! All four say 'shun,' but only 'mission' spells that ending with the letters s-i-o-n.",
+  "incorrect_feedback": "Good try! They all sound the same at the end. Now LOOK at the spelling. Which one uses the letters '-sion' instead of '-tion'?",
+  "reveal_feedback": "The answer is mission. It's the one that spells the 'shun' ending with the letters '-sion.'"
+ },
+ {
+  "id": "RF.3.3b-H2",
+  "correct_feedback": "Yes! In 'famous,' '-ous' is a real suffix meaning full of. The others just happen to end in those letters.",
+  "incorrect_feedback": "Close one! Some words like cactus or walrus only END in those letters. Which word has '-ous' as a real suffix meaning full of?",
+  "reveal_feedback": "The answer is famous. There '-ous' is a true suffix meaning full of, unlike cactus or walrus."
+ },
+ {
+  "id": "RF.3.3b-H3",
+  "correct_feedback": "Sharp ear! Most '-tion' words say 'shun,' but in 'question' the '-tion' says 'chun.' You caught the odd one!",
+  "incorrect_feedback": "Good try! Say each word out loud. Most end in 'shun,' but ONE sounds a little different, like 'chun.' Which one?",
+  "reveal_feedback": "The answer is question. Its '-tion' makes the 'chun' sound instead of the usual 'shun.'"
+ },
+ {
+  "id": "RF.3.3b-H4",
+  "correct_feedback": "Yes! 'Terrible' ends with the suffix '-ible.' The others use '-able' instead. Great looking!",
+  "incorrect_feedback": "Almost! Look closely at the last letters. Some end in '-able' and one ends in '-ible.' Which word uses '-ible'?",
+  "reveal_feedback": "The answer is terrible. It's the one that ends with the suffix '-ible,' not '-able.'"
+ },
+ {
+  "id": "RF.3.3b-H5",
+  "correct_feedback": "Great ear! In 'division,' '-sion' makes the soft 'zhun' sound, like the middle of treasure. Nicely heard!",
+  "incorrect_feedback": "Good try! Say each word and listen for the soft, buzzy ending like in treasure. Which one makes that 'zhun' sound?",
+  "reveal_feedback": "The answer is division. Its '-sion' makes the soft 'zhun' sound, like in treasure."
+ },
+ {
+  "id": "RF.3.3c-Q1",
+  "correct_feedback": "Yes! Un-be-liev-a-ble. Clap it out and you get five beats. Great counting!",
+  "incorrect_feedback": "Almost! Say the word slowly and clap each part: un...be...liev...a...ble. Count your claps carefully.",
+  "reveal_feedback": "The answer is 5. Un-be-liev-a-ble breaks into five beats when you clap it out."
+ },
+ {
+  "id": "RF.3.3c-Q2",
+  "correct_feedback": "Right! Ad-ven-ture splits into three even beats. Great syllable work!",
+  "incorrect_feedback": "Good try! Clap the word into beats and listen for where each part breaks. Say it slowly a few times.",
+  "reveal_feedback": "The answer is Ad-ven-ture. That splits the word into its three clear beats."
+ }
+]

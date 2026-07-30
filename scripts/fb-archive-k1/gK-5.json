@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RF.K.3a-Q3",
+  "correct_feedback": "Yes! \"Sock\" starts with the /s/ sound, just like \"sun.\" Ssss-sock, ssss-sun. Great listening!",
+  "incorrect_feedback": "Hmm, say each word slow. Which one starts with that ssss sound at the front, like \"sun\"? Try again!",
+  "reveal_feedback": "That one was tricky! \"Sun\" and \"sock\" both start with ssss. Say them slow: ssss-un, ssss-ock. Now you know!"
+ },
+ {
+  "id": "RF.K.3a-Q4",
+  "correct_feedback": "Yes! \"Dog\" starts with the /d/ sound. D-d-dog. Great listening!",
+  "incorrect_feedback": "Almost! Say \"dog\" nice and slow. What is the very first little sound your mouth makes? Try again!",
+  "reveal_feedback": "That one was tricky! The first sound in \"dog\" is /d/. D-d-dog. Now you know!"
+ },
+ {
+  "id": "RF.K.3a-Q5",
+  "correct_feedback": "Yes! The letter \"c\" makes the /k/ sound at the start of \"cat.\" Great job!",
+  "incorrect_feedback": "Good try! Think about which letter you see at the very start of \"cat.\" Take another look!",
+  "reveal_feedback": "That one was tricky! The letter \"c\" makes the /k/ sound in \"cat.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3a-H1",
+  "correct_feedback": "Yes! \"Gum\" starts with the same /g/ sound as \"gate.\" G-g-gum, g-g-gate. Great listening!",
+  "incorrect_feedback": "Hmm, say each word slow. Some make a soft /j/ sound. Which one starts with the hard /g/ like \"gate\"? Try again!",
+  "reveal_feedback": "That one was tricky! \"Gum\" starts with the /g/ sound, just like \"gate.\" G-g-gum. Now you know!"
+ },
+ {
+  "id": "RF.K.3a-H2",
+  "correct_feedback": "Yes! \"Cup\" starts with the /k/ sound but uses the letter C. Great listening!",
+  "incorrect_feedback": "Good try! Say each word slow. Which one makes the /k/ sound like \"kite\" but starts with a C? Try again!",
+  "reveal_feedback": "That one was tricky! \"Cup\" makes the /k/ sound with a C at the front. Now you know!"
+ },
+ {
+  "id": "RF.K.3a-H3",
+  "correct_feedback": "Yes! \"Vase\" starts with a /v/ sound, not /f/. Fish, fun, and fan all buzz with /f/. Great ears!",
+  "incorrect_feedback": "Almost! Say each word slow. Three make the /f/ sound. Which one starts a little different? Try again!",
+  "reveal_feedback": "That one was tricky! \"Vase\" starts with /v/, not /f/. Vvv-ase. Now you know!"
+ },
+ {
+  "id": "RF.K.3a-H4",
+  "correct_feedback": "Yes! \"Wheel\" starts with the same /w/ sound as \"win.\" W-w-wheel. Great listening!",
+  "incorrect_feedback": "Close one! Say each word slow. Which one starts with that /w/ sound like \"win\"? Take another look!",
+  "reveal_feedback": "That one was tricky! \"Wheel\" starts with the /w/ sound, just like \"win.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3a-H5",
+  "correct_feedback": "Yes! \"Gum\" was the word we were listening for. Great job using your ears!",
+  "incorrect_feedback": "Hmm, say each word slow and listen to the very first sound. Which one is the odd one out? Try again!",
+  "reveal_feedback": "That one was tricky! The word we wanted was \"gum.\" Say it slow: g-um. Now you know!"
+ },
+ {
+  "id": "RF.K.3b-Q1",
+  "correct_feedback": "Yes! \"Rake\" has a long 'a' sound, just like \"cake.\" It says its own name, A! Great listening!",
+  "incorrect_feedback": "Hmm, say \"rake\" out loud. Does the 'a' say its name, or make a short sound? Try again!",
+  "reveal_feedback": "That one was tricky! \"Rake\" has a long 'a' sound, like in \"cake.\" It says A! Now you know!"
+ },
+ {
+  "id": "RF.K.3b-Q2",
+  "correct_feedback": "Yes! \"Sit\" has a short i sound, just like \"pig.\" I-i-sit. Great ears!",
+  "incorrect_feedback": "Good try! Say each word slow. Which one has that short i sound like \"pig\"? Take another look!",
+  "reveal_feedback": "That one was tricky! \"Sit\" has the short i sound, like in \"pig.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3b-Q3",
+  "correct_feedback": "Yes! \"Fox\" has a short o sound. Rope, home, and bone all have the long o. Great listening!",
+  "incorrect_feedback": "Almost! Say each word slow. Three sound alike in the middle. Which one is different? Try again!",
+  "reveal_feedback": "That one was tricky! \"Fox\" has a short o sound, so it was the different one. Now you know!"
+ },
+ {
+  "id": "RF.K.3b-Q4",
+  "correct_feedback": "Yes! \"Red\" has a short e sound, just like \"bed.\" E-e-red. Great job!",
+  "incorrect_feedback": "Hmm, say each word slow. Which one has that short e sound like \"bed\"? Try again!",
+  "reveal_feedback": "That one was tricky! \"Red\" has the short e sound, like in \"bed.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3b-Q5",
+  "correct_feedback": "Yes! \"Cup\" has a short u sound, just like \"bus.\" U-u-cup. Great listening!",
+  "incorrect_feedback": "Good try! Say each word slow. Which one has that short u sound like \"bus\"? Take another look!",
+  "reveal_feedback": "That one was tricky! \"Cup\" has the short u sound, like in \"bus.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3b-H1",
+  "correct_feedback": "Yes! \"Have\" does not say a long vowel, even with the e. Cane, cone, and cube all say their name. Great ears!",
+  "incorrect_feedback": "Hmm, say each word slow. Three say their vowel name. Which one does not? Try again!",
+  "reveal_feedback": "That one was tricky! \"Have\" keeps a short sound, so it was the odd one. Now you know!"
+ },
+ {
+  "id": "RF.K.3b-H2",
+  "correct_feedback": "Yes! \"No\" has the long 'o' sound, just like \"go.\" It says its name, O! Great listening!",
+  "incorrect_feedback": "Almost! Say each word slow. Which one has the long 'o' that says its name, like \"go\"? Try again!",
+  "reveal_feedback": "That one was tricky! \"No\" has the long 'o' sound, like \"go.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3b-H3",
+  "correct_feedback": "Yes! \"See\" makes the long 'e' sound, just like \"me.\" Eee! Great job!",
+  "incorrect_feedback": "Good try! Say each word slow. Which one makes the long 'e' sound like \"me\"? Take another look!",
+  "reveal_feedback": "That one was tricky! \"See\" makes the long 'e' sound, like \"me.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3b-H4",
+  "correct_feedback": "Yes! \"Mule\" has the long 'u' sound, just like \"cute.\" It says its name, U! Great listening!",
+  "incorrect_feedback": "Hmm, say each word slow. Which one has the long 'u' that says its name, like \"cute\"? Try again!",
+  "reveal_feedback": "That one was tricky! \"Mule\" has the long 'u' sound, like \"cute.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3b-H5",
+  "correct_feedback": "Yes! \"Rope\" has a long vowel that says its name, O. Top, mop, and hop are short. Great ears!",
+  "incorrect_feedback": "Close one! Say each word slow. Three are short. Which one has a long vowel that says its name? Try again!",
+  "reveal_feedback": "That one was tricky! \"Rope\" has the long vowel sound, so it was the different one. Now you know!"
+ },
+ {
+  "id": "RF.K.3c-H1",
+  "correct_feedback": "Yes! \"The dog is big\" sounds just right. One dog uses \"is.\" Great reading!",
+  "incorrect_feedback": "Hmm, read it out loud. There's just one dog. Which little word sounds right when you say it? Try again!",
+  "reveal_feedback": "That one was tricky! \"The dog is big\" is correct. One thing uses \"is.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3c-H2",
+  "correct_feedback": "Yes! \"The cats are big\" sounds just right. More than one uses \"are.\" Great job!",
+  "incorrect_feedback": "Good try! Read it out loud. There is more than one cat. Which word sounds right? Take another look!",
+  "reveal_feedback": "That one was tricky! \"The cats are big\" is correct. More than one uses \"are.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3c-H3",
+  "correct_feedback": "Yes! \"What do you see?\" sounds just right. Great reading!",
+  "incorrect_feedback": "Hmm, read it out loud with each word. Which one makes the question sound right? Try again!",
+  "reveal_feedback": "That one was tricky! \"What do you see?\" is correct. Now you know!"
+ },
+ {
+  "id": "RF.K.3c-H4",
+  "correct_feedback": "Yes! \"What does she want?\" sounds just right. With \"she\" we use \"does.\" Great job!",
+  "incorrect_feedback": "Almost! Read it out loud. The word \"she\" needs a special helper word. Which one sounds right? Try again!",
+  "reveal_feedback": "That one was tricky! \"What does she want?\" is correct. With \"she\" we use \"does.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3c-H5",
+  "correct_feedback": "Yes! You pointed to \"she.\" Great reading!",
+  "incorrect_feedback": "Good try! Look at each word carefully. Which one spells the word we want? Take another look!",
+  "reveal_feedback": "That one was tricky! The word \"she\" was the right one. Now you know!"
+ },
+ {
+  "id": "RF.K.3d-Q3",
+  "correct_feedback": "Yes! The middle sound changes from /a/ to /o/. Map, mop! Great listening!",
+  "incorrect_feedback": "Hmm, say \"map\" then \"mop.\" The first and last sounds stay the same. What changes in the middle? Try again!",
+  "reveal_feedback": "That one was tricky! The middle sound changes from /a/ to /o/. Map, mop! Now you know!"
+ },
+ {
+  "id": "RF.K.3d-Q5",
+  "correct_feedback": "Yes! Change the /d/ to /l/ and \"dog\" becomes \"log.\" Great job!",
+  "incorrect_feedback": "Good try! Say it slow. Take off the /d/ and put an /l/ at the front. What word do you hear? Try again!",
+  "reveal_feedback": "That one was tricky! \"Dog\" with an /l/ becomes \"log.\" Now you know!"
+ },
+ {
+  "id": "RF.K.3d-H1",
+  "correct_feedback": "Yes! The middle sound changes from /e/ to /i/. Pet, pit! Great ears!",
+  "incorrect_feedback": "Hmm, say \"pet\" then \"pit.\" The first and last sounds match. Listen to the middle. Try again!",
+  "reveal_feedback": "That one was tricky! The middle sound changes, /e/ to /i/. Pet, pit! Now you know!"
+ },
+ {
+  "id": "RF.K.3d-H2",
+  "correct_feedback": "Yes! You changed the last sound, /s/ to /g/, to make \"bug.\" Great listening!",
+  "incorrect_feedback": "Almost! Say \"bus\" then \"bug.\" The start stays the same. Which sound changed at the end? Try again!",
+  "reveal_feedback": "That one was tricky! The last sound changed from /s/ to /g/. Bus, bug! Now you know!"
+ },
+ {
+  "id": "RF.K.3d-H3",
+  "correct_feedback": "Yes! The last sound changes from /p/ to /b/. Cap, cab! Great ears!",
+  "incorrect_feedback": "Good try! Say \"cap\" then \"cab.\" The start matches. Listen to the very last sound. Try again!",
+  "reveal_feedback": "That one was tricky! The last sound changes, /p/ to /b/. Cap, cab! Now you know!"
+ },
+ {
+  "id": "RF.K.3d-H4",
+  "correct_feedback": "Yes! You changed the first sound, /t/ to /h/, to make \"hen.\" Great job!",
+  "incorrect_feedback": "Hmm, say \"ten\" then \"hen.\" The end stays the same. Which sound changed at the front? Try again!",
+  "reveal_feedback": "That one was tricky! The first sound changed from /t/ to /h/. Ten, hen! Now you know!"
+ },
+ {
+  "id": "RF.K.3d-H5",
+  "correct_feedback": "Yes! The middle sound changes from /o/ to /a/. Pot, pat! Great listening!",
+  "incorrect_feedback": "Close one! Say \"pot\" then \"pat.\" The first and last sounds match. Listen to the middle. Try again!",
+  "reveal_feedback": "That one was tricky! The middle sound changes, /o/ to /a/. Pot, pat! Now you know!"
+ },
+ {
+  "id": "RF.K.4-Q1",
+  "correct_feedback": "Yes! The story says the cat is on the mat. Great reading!",
+  "incorrect_feedback": "Hmm, look back at the story. It tells us right where the cat is. Try again!",
+  "reveal_feedback": "That one was tricky! The story says the cat is on the mat. Now you know!"
+ },
+ {
+  "id": "RF.K.4-Q2",
+  "correct_feedback": "Yes! The story talks about dogs, cats, and fish. They are all pets! Great thinking!",
+  "incorrect_feedback": "Good try! Dogs, cats, and fish, what are all of those? Take another look at the story!",
+  "reveal_feedback": "That one was tricky! The story is all about pets. Now you know!"
+ },
+ {
+  "id": "RF.K.4-Q3",
+  "correct_feedback": "Yes! The story says run, hop, and skip, but not fly! Great reading!",
+  "incorrect_feedback": "Almost! The story lists run, hop, and skip. Which one is NOT in the story? Try again!",
+  "reveal_feedback": "That one was tricky! The person can't fly, it wasn't in the story. Now you know!"
+ },
+ {
+  "id": "RF.K.4-Q5",
+  "correct_feedback": "Yes! The story says it is cold outside, so they need a coat and hat. Great thinking!",
+  "incorrect_feedback": "Hmm, look back at the story. What did it say about outside? That tells you why. Try again!",
+  "reveal_feedback": "That one was tricky! They needed a coat and hat because it is cold outside. Now you know!"
+ },
+ {
+  "id": "RF.K.4-H1",
+  "correct_feedback": "Yes! The story says Pam has a red bag. Great reading!",
+  "incorrect_feedback": "Good try! Read it again. One has a hat, one has a bag. Who has the bag? Take another look!",
+  "reveal_feedback": "That one was tricky! Pam has the red bag. Now you know!"
+ },
+ {
+  "id": "RF.K.4-H2",
+  "correct_feedback": "Yes! The story says the pig is in the mud. Great reading!",
+  "incorrect_feedback": "Hmm, look back at the story. It tells you just where the pig is. Try again!",
+  "reveal_feedback": "That one was tricky! The pig is in the mud. Now you know!"
+ },
+ {
+  "id": "RF.K.4-H3",
+  "correct_feedback": "Yes! The story says I can not fly, only bugs can. Great reading!",
+  "incorrect_feedback": "Almost! The story says I can hop and run. Which one can I NOT do? Try again!",
+  "reveal_feedback": "That one was tricky! I can not fly. Now you know!"
+ },
+ {
+  "id": "RF.K.4-H4",
+  "correct_feedback": "Yes! The story says the shade is cool, so we sit there. Great thinking!",
+  "incorrect_feedback": "Good try! Read it again. What did the story say about the shade? That's the reason. Try again!",
+  "reveal_feedback": "That one was tricky! We sit in the shade because it is cool. Now you know!"
+ },
+ {
+  "id": "RF.K.4-H5",
+  "correct_feedback": "Yes! The story says a chick came out of the egg. Great reading!",
+  "incorrect_feedback": "Hmm, read the last part again. What came out of the egg? Take another look!",
+  "reveal_feedback": "That one was tricky! A chick came out of the egg. Now you know!"
+ },
+ {
+  "id": "K.L.1-Q1",
+  "correct_feedback": "Yes! \"Dog\" is a noun, it is a thing, an animal! Great job!",
+  "incorrect_feedback": "Good try! A noun is a person, place, or thing. Which word names a thing? Take another look!",
+  "reveal_feedback": "That one was tricky! \"Dog\" is the noun, it names an animal. Now you know!"
+ },
+ {
+  "id": "K.L.1-Q2",
+  "correct_feedback": "Yes! \"Swims\" tells what the fish does. It is the action word! Great thinking!",
+  "incorrect_feedback": "Hmm, read the sentence again. Which word shows the fish moving or doing something? Try again!",
+  "reveal_feedback": "That one was tricky! \"Swims\" tells what the fish does. Now you know!"
+ },
+ {
+  "id": "K.L.1-Q3",
+  "correct_feedback": "Yes! We add an s to make \"cats\" for more than one. Great job!",
+  "incorrect_feedback": "Good try! To mean more than one, we usually add a little s. Which one is that? Take another look!",
+  "reveal_feedback": "That one was tricky! More than one cat is \"cats.\" We add an s. Now you know!"
+ },
+ {
+  "id": "K.L.1-Q4",
+  "correct_feedback": "Yes! \"Where\" asks about a place, like here or there. Great thinking!",
+  "incorrect_feedback": "Hmm, think about which word we use to ask about a place, like a spot or a room. Try again!",
+  "reveal_feedback": "That one was tricky! \"Where\" asks about a place. Now you know!"
+ },
+ {
+  "id": "K.L.1-H1",
+  "correct_feedback": "Yes! More than one mouse is \"mice.\" It is a special word! Great job!",
+  "incorrect_feedback": "Good try! One is a mouse, but more than one has a special word. Say it out loud. Take another look!",
+  "reveal_feedback": "That one was tricky! More than one mouse is \"mice.\" Now you know!"
+ },
+ {
+  "id": "K.L.1-H2",
+  "correct_feedback": "Yes! \"How\" asks the way you do something, like riding the bus. Great thinking!",
+  "incorrect_feedback": "Hmm, the answer tells the way, riding the bus. Which question word asks in what way? Try again!",
+  "reveal_feedback": "That one was tricky! \"How\" asks in what way you do something. Now you know!"
+ }
+]

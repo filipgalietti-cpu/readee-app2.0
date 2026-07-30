@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RI.3.4-E3",
+  "standard": "RI.3.4",
+  "prompt": "The desert is a very dry place. Almost no rain falls there, so the ground stays dusty all year long.\n\nIn this text, what does the word **dry** mean?",
+  "choices": [
+   "Cold and snowy",
+   "Loud and busy",
+   "Full of tall trees",
+   "Having very little water"
+  ],
+  "correct": "Having very little water"
+ },
+ {
+  "id": "RI.3.4-E4",
+  "standard": "RI.3.4",
+  "prompt": "Bees are very helpful insects. They gather sweet nectar from flowers and use it to make honey.\n\nIn this text, what does the word **gather** mean?",
+  "choices": [
+   "To collect",
+   "To sing",
+   "To sleep",
+   "To break"
+  ],
+  "correct": "To collect"
+ },
+ {
+  "id": "RI.3.4-E5",
+  "standard": "RI.3.4",
+  "prompt": "A firefighter's job is dangerous. They rush into burning buildings, so they must be very brave.\n\nIn this text, what does the word **brave** mean?",
+  "choices": [
+   "Very hungry",
+   "Not afraid",
+   "Very quiet",
+   "Very tired"
+  ],
+  "correct": "Not afraid"
+ },
+ {
+  "id": "RI.3.5-Q1",
+  "standard": "RI.3.5",
+  "prompt": "Imagine you have a science textbook and you want to quickly find all the pages that explain what volcanoes are. Which text feature would be the most helpful to use?",
+  "choices": [
+   "The table of contents",
+   "The glossary",
+   "The index",
+   "The title page"
+  ],
+  "correct": "The index"
+ },
+ {
+  "id": "RI.3.5-Q3",
+  "standard": "RI.3.5",
+  "prompt": "You're researching dolphins online. Which search term would give you the BEST results?",
+  "choices": [
+   "Blue things in the ocean",
+   "Cute stuff",
+   "Dolphin habitat and diet",
+   "Animals"
+  ],
+  "correct": "Dolphin habitat and diet"
+ },
+ {
+  "id": "RI.3.5-Q4",
+  "standard": "RI.3.5",
+  "prompt": "Imagine you are reading a non-fiction book about space and you want to quickly find the exact page that talks about \"Mars.\" Which part of the book would you use to efficiently locate this specific information?",
+  "choices": [
+   "The table of contents",
+   "The glossary",
+   "The index",
+   "The dedication page"
+  ],
+  "correct": "The index"
+ },
+ {
+  "id": "RI.3.5-Q5",
+  "standard": "RI.3.5",
+  "prompt": "Hyperlinks in a digital text allow you to \u2014",
+  "choices": [
+   "Delete words",
+   "Jump to related information quickly",
+   "Change the font size",
+   "Print the page"
+  ],
+  "correct": "Jump to related information quickly"
+ },
+ {
+  "id": "RI.3.5-E1",
+  "standard": "RI.3.5",
+  "prompt": "A nonfiction book about sharks has a list at the very front that shows chapter names like \"What Sharks Eat\" and the page each one starts on. What is this list called?",
+  "choices": [
+   "The table of contents",
+   "A photograph",
+   "The back cover",
+   "The author's name"
+  ],
+  "correct": "The table of contents"
+ },
+ {
+  "id": "RI.3.5-E2",
+  "standard": "RI.3.5",
+  "prompt": "You are reading about spiders. You see a bold word you don't know: \"venom.\" Which part of the book would tell you what \"venom\" means?",
+  "choices": [
+   "The chapter titles",
+   "The glossary",
+   "The front cover",
+   "The page numbers"
+  ],
+  "correct": "The glossary"
+ },
+ {
+  "id": "RI.3.5-E3",
+  "standard": "RI.3.5",
+  "prompt": "You are typing a search on the computer because you want to learn what pandas eat. Which words should you type to get the best help?",
+  "choices": [
+   "Black and white",
+   "Cool things",
+   "What do pandas eat",
+   "Fun stuff"
+  ],
+  "correct": "What do pandas eat"
+ },
+ {
+  "id": "RI.3.5-E4",
+  "standard": "RI.3.5",
+  "prompt": "In a book about the ocean, the words at the top of a section say \"How Whales Breathe.\" What is this called, and what does it tell you?",
+  "choices": [
+   "A glossary, which tells you the author",
+   "A page number, which tells you the date",
+   "A cover, which tells you the price",
+   "A heading, which tells you what that section is about"
+  ],
+  "correct": "A heading, which tells you what that section is about"
+ },
+ {
+  "id": "RI.3.5-E5",
+  "standard": "RI.3.5",
+  "prompt": "You want to find just the pages that talk about \"rain\" in a big weather book. There is a list at the back that names topics in ABC order with the pages for each one. What is that list called?",
+  "choices": [
+   "The index",
+   "A caption",
+   "The title",
+   "The first chapter"
+  ],
+  "correct": "The index"
+ },
+ {
+  "id": "RI.3.6-Q1",
+  "standard": "RI.3.6",
+  "prompt": "After a long day at school, some kids just want to play. They might think homework is just more work. But doing a little practice at home can really help your brain remember new things. If you practice your sight words, you'll read faster. If you review your math problems, you'll feel ready for the test. Homework gives your brain a chance to grow even stronger and helps you truly understand what you learned in class.\n\nThe author of this passage most likely believes that homework is:",
+  "choices": [
+   "only for when you have extra time to play.",
+   "something teachers give just to be mean.",
+   "helpful for making your brain stronger and smarter.",
+   "boring and just extra work after school."
+  ],
+  "correct": "helpful for making your brain stronger and smarter."
+ },
+ {
+  "id": "RI.3.6-Q2",
+  "standard": "RI.3.6",
+  "prompt": "A student reads an article that says school should start later. The student likes waking up early. This shows \u2014",
+  "choices": [
+   "The student and author have different points of view",
+   "The student is wrong",
+   "The article is bad",
+   "The author is wrong"
+  ],
+  "correct": "The student and author have different points of view"
+ },
+ {
+  "id": "RI.3.6-Q3",
+  "standard": "RI.3.6",
+  "prompt": "Read the paragraph. What is the author's point of view about dogs?\n\n\"Dogs are the best pets anyone could ask for! They are always so happy to see you when you come home, wagging their tails. Dogs love to play fetch in the park, which is great exercise for both of you. Plus, they can learn tricks like 'sit' and 'stay' very quickly. Having a dog means you always have a loyal friend by your side.\"",
+  "choices": [
+   "Dogs mostly like to stay inside.",
+   "Dogs are sometimes hard to train.",
+   "Dogs are wonderful pets to own.",
+   "Dogs need a lot of healthy food."
+  ],
+  "correct": "Dogs are wonderful pets to own."
+ },
+ {
+  "id": "RI.3.6-Q4",
+  "standard": "RI.3.6",
+  "prompt": "Zoos keep animals in small spaces where they can't roam freely. Animals deserve to live in their natural habitats.\n\nThe author most likely believes \u2014",
+  "choices": [
+   "All animals should be pets",
+   "Zoos aren't the best place for animals",
+   "Animals are happier in zoos",
+   "Zoos are great for animals"
+  ],
+  "correct": "Zoos aren't the best place for animals"
+ },
+ {
+  "id": "RI.3.6-Q5",
+  "standard": "RI.3.6",
+  "prompt": "After reading the text, \"Eating a big salad every single night is the best way to stay strong and smart. Only vegetables can give you all the vitamins you need. If you don't eat a salad, you might not be as healthy as you could be,\" which statement shows a different point of view you might have about staying healthy?",
+  "choices": [
+   "The author is correct that everyone should eat salads every night.",
+   "Eating a big salad every night is the only way to be healthy.",
+   "Salads are good, but I think other healthy foods like fruit or milk are also important for being strong.",
+   "It doesn't matter what you eat, as long as you exercise a lot."
+  ],
+  "correct": "Salads are good, but I think other healthy foods like fruit or milk are also important for being strong."
+ },
+ {
+  "id": "RI.3.6-H1",
+  "standard": "RI.3.6",
+  "prompt": "An author writes: \"Every school should have a garden. Growing vegetables teaches kids patience and shows them where food really comes from. A plain, boring yard can become a place of wonder.\" Jordan reads this and thinks a garden sounds like too much dirty, sweaty work. What does this show?",
+  "choices": [
+   "The author likes school gardens, but Jordan does not want the work",
+   "The author thinks gardens are too much work",
+   "The author and Jordan both dislike school gardens",
+   "Jordan agrees that gardens teach kids patience"
+  ],
+  "correct": "The author likes school gardens, but Jordan does not want the work"
+ },
+ {
+  "id": "RI.3.6-H2",
+  "standard": "RI.3.6",
+  "prompt": "Read this part of an article about bats: \"Bats are the only mammals that can truly fly. They use sounds we cannot hear to find insects at night. One little brown bat can eat thousands of bugs in a single hour. Without a doubt, bats are the most amazing animals in the whole world.\" Which sentence shows the AUTHOR'S opinion, not a fact?",
+  "choices": [
+   "One little brown bat can eat thousands of bugs in a single hour.",
+   "Without a doubt, bats are the most amazing animals in the whole world.",
+   "Bats are the only mammals that can truly fly.",
+   "They use sounds we cannot hear to find insects at night."
+  ],
+  "correct": "Without a doubt, bats are the most amazing animals in the whole world."
+ },
+ {
+  "id": "RI.3.6-H3",
+  "standard": "RI.3.6",
+  "prompt": "An author writes: \"Zoos are wonderful places. They let families see amazing animals up close, and they help protect animals that are in danger. Every city should build one!\" Priya reads this. She agrees that zoos help protect animals, but it makes her sad to see animals living in cages. How is Priya's point of view DIFFERENT from the author's?",
+  "choices": [
+   "Priya thinks every city should build a zoo",
+   "Priya and the author feel exactly the same way about zoos",
+   "Priya agrees zoos protect animals but feels they can also be sad places",
+   "Priya disagrees that zoos help protect animals"
+  ],
+  "correct": "Priya agrees zoos protect animals but feels they can also be sad places"
+ },
+ {
+  "id": "RI.3.6-H4",
+  "standard": "RI.3.6",
+  "prompt": "Two kids wrote about the SAME field trip to the farm. Sam wrote: \"The barn smelled terrible, my shoes got covered in mud, and it rained the whole time.\" Dana wrote: \"We fed baby goats, picked fresh red apples, and learned how cows are milked.\" Even though they went on the same trip, what can you tell?",
+  "choices": [
+   "Dana must have gone on a different trip than Sam",
+   "Sam and Dana felt the same way about the trip",
+   "The field trip was mostly a bad experience",
+   "The two writers had different feelings about the trip"
+  ],
+  "correct": "The two writers had different feelings about the trip"
+ },
+ {
+  "id": "RI.3.6-H5",
+  "standard": "RI.3.6",
+  "prompt": "An author writes that video games are bad for kids because they waste time that could be spent reading books. Leo loves video games. He thinks they help him solve tricky puzzles and make friends online. If Leo wrote a note back to the author, which sentence would BEST show LEO'S own point of view?",
+  "choices": [
+   "Games have taught me to solve problems and work with friends.",
+   "Kids should read more books instead of playing games.",
+   "You are right that games just waste kids' time.",
+   "Video games are bad for children."
+  ],
+  "correct": "Games have taught me to solve problems and work with friends."
+ },
+ {
+  "id": "RI.3.7-Q1",
+  "standard": "RI.3.7",
+  "prompt": "A science text describes the water cycle. Beside it is a diagram with arrows showing evaporation, condensation, and precipitation. The diagram helps by \u2014",
+  "choices": [
+   "Showing the process visually so it's easier to understand",
+   "Adding new vocabulary",
+   "Replacing the text",
+   "Making the page look nice"
+  ],
+  "correct": "Showing the process visually so it's easier to understand"
+ },
+ {
+  "id": "RI.3.7-Q2",
+  "standard": "RI.3.7",
+  "prompt": "A map in a history book shows the route Lewis and Clark traveled. The map helps readers understand \u2014",
+  "choices": [
+   "How far and where they traveled",
+   "What they ate",
+   "When they were born",
+   "What the explorers looked like"
+  ],
+  "correct": "How far and where they traveled"
+ },
+ {
+  "id": "RI.3.7-Q3",
+  "standard": "RI.3.7",
+  "prompt": "A photograph in a textbook shows a volcano erupting with lava flowing down its side. The photograph adds to the text by \u2014",
+  "choices": [
+   "Listing vocabulary words",
+   "Explaining the science of volcanoes",
+   "Showing what an eruption actually looks like",
+   "Providing a map"
+  ],
+  "correct": "Showing what an eruption actually looks like"
+ },
+ {
+  "id": "RI.3.7-Q4",
+  "standard": "RI.3.7",
+  "prompt": "A bar graph in a text about favorite school lunches shows pizza at 45%, tacos at 30%, and salad at 25%. What information does the graph give that the text might not?",
+  "choices": [
+   "The recipes",
+   "The exact percentages at a glance",
+   "Who cooked the food",
+   "What time lunch is served"
+  ],
+  "correct": "The exact percentages at a glance"
+ },
+ {
+  "id": "RI.3.7-Q5",
+  "standard": "RI.3.7",
+  "prompt": "Listen to the story: Ben was reading a science article that described the layers of the Earth. The article explained that our planet has a hard outer crust, a thick middle layer called the mantle, and a very hot center called the core, all fitting inside one another like the layers of an onion. Ben wanted to add one picture that would help readers clearly see how these layers are arranged from the outside to the deep inside. Which illustration would BEST help a reader understand an article about the layers of the Earth?",
+  "choices": [
+   "A map of the continents",
+   "A picture of a mountain",
+   "A cross-section diagram showing the crust, mantle, and core",
+   "A photo of a sunset"
+  ],
+  "correct": "A cross-section diagram showing the crust, mantle, and core"
+ },
+ {
+  "id": "RI.3.7-E1",
+  "standard": "RI.3.7",
+  "prompt": "A book about frogs has a picture of a green frog sitting on a lily pad. Below the picture are the words: \"A frog rests on a leaf in the pond.\" What does the picture show you?",
+  "choices": [
+   "A frog sitting on a leaf in the water",
+   "A car on a road",
+   "A dog running in a field",
+   "A bird flying in the sky"
+  ],
+  "correct": "A frog sitting on a leaf in the water"
+ },
+ {
+  "id": "RI.3.7-E2",
+  "standard": "RI.3.7",
+  "prompt": "A page about weather shows a big yellow sun with the label \"Sunny Day.\" The text says, \"On a sunny day, the sky is bright.\" What kind of day does the picture show?",
+  "choices": [
+   "A windy day",
+   "A sunny day",
+   "A rainy day",
+   "A snowy day"
+  ],
+  "correct": "A sunny day"
+ },
+ {
+  "id": "RI.3.7-E3",
+  "standard": "RI.3.7",
+  "prompt": "A science book has a diagram of a tree. One arrow points to the bottom part and is labeled \"roots.\" What part of the tree do the roots make?",
+  "choices": [
+   "The clouds above the tree",
+   "The birds in the tree",
+   "The bottom part, under the ground",
+   "The top leaves"
+  ],
+  "correct": "The bottom part, under the ground"
+ },
+ {
+  "id": "RI.3.7-E4",
+  "standard": "RI.3.7",
+  "prompt": "A book about the sun has a photo of a garden with the caption: \"Plants need sunlight to grow.\" What does the photo and caption help you learn?",
+  "choices": [
+   "People sleep at night",
+   "Fish live in the ocean",
+   "Cars need gas to go",
+   "Plants need sunlight to grow"
+  ],
+  "correct": "Plants need sunlight to grow"
+ },
+ {
+  "id": "RI.3.7-E5",
+  "standard": "RI.3.7",
+  "prompt": "A map in a book shows a school with a red star on it. The words say, \"The red star shows where the school is.\" What does the red star on the map show?",
+  "choices": [
+   "Where the school is",
+   "How old the school is",
+   "Where the ocean is",
+   "What the teacher's name is"
+  ],
+  "correct": "Where the school is"
+ },
+ {
+  "id": "RI.3.8-Q1",
+  "standard": "RI.3.8",
+  "prompt": "Sentence 1: Plastic bags harm ocean animals. Sentence 2: Sea turtles mistake plastic bags for jellyfish and eat them.\n\nSentence 2 connects to Sentence 1 by \u2014",
+  "choices": [
+   "Giving an example of how plastic harms animals",
+   "Introducing a new idea",
+   "Changing the topic",
+   "Disagreeing with Sentence 1"
+  ],
+  "correct": "Giving an example of how plastic harms animals"
+ },
+ {
+  "id": "RI.3.8-Q2",
+  "standard": "RI.3.8",
+  "prompt": "Listen to the story: A rainbow is a curved band of colors that stretches across the sky, showing red, orange, yellow, green, blue, and purple in a bright arc. Rainbows appear when sunlight shines through tiny raindrops floating in the air. As the light passes into each drop, the drop bends it and splits it into all of its separate colors, and that is why we see the glowing arc after it rains. How do the first two paragraphs of the passage connect to each other?",
+  "choices": [
+   "They compare two different kinds of natural events.",
+   "The first tells what something is, and the second tells why it happens.",
+   "They give a problem and then offer a solution.",
+   "The first gives an opinion, and the second gives facts to support it."
+  ],
+  "correct": "The first tells what something is, and the second tells why it happens."
+ },
+ {
+  "id": "RI.3.8-Q3",
+  "standard": "RI.3.8",
+  "prompt": "Dogs are loyal pets. However, they require a lot of time and attention.\n\nThe word **however** shows \u2014",
+  "choices": [
+   "A cause and effect",
+   "A time sequence",
+   "A contrast or opposing point",
+   "Agreement between the two ideas"
+  ],
+  "correct": "A contrast or opposing point"
+ },
+ {
+  "id": "RI.3.8-Q4",
+  "standard": "RI.3.8",
+  "prompt": "A paragraph about saving water is followed by a paragraph listing specific ways to save water at home. The second paragraph \u2014",
+  "choices": [
+   "Disagrees with the first",
+   "Tells a personal story",
+   "Provides specific examples to support the first paragraph",
+   "Changes the topic completely"
+  ],
+  "correct": "Provides specific examples to support the first paragraph"
+ },
+ {
+  "id": "RI.3.8-Q5",
+  "standard": "RI.3.8",
+  "prompt": "Read these sentences: \"First, Maya watered her plants. Then, she opened the window to let in fresh air.\" What does the word \"Then\" tell us about these two things?",
+  "choices": [
+   "Watering plants causes the air to be fresh.",
+   "Opening the window happened after watering the plants.",
+   "Watering plants and opening the window are opposites.",
+   "Watering plants and opening the window are both good ideas."
+  ],
+  "correct": "Opening the window happened after watering the plants."
+ },
+ {
+  "id": "RI.3.8-E1",
+  "standard": "RI.3.8",
+  "prompt": "Sentence 1: Rain fell hard all night. Sentence 2: Because of this, the river flooded the road.\n\nHow does Sentence 2 connect to Sentence 1?",
+  "choices": [
+   "It tells what the rain caused to happen.",
+   "It asks the reader a question.",
+   "It changes the subject to something new.",
+   "It tells a funny joke about rivers."
+  ],
+  "correct": "It tells what the rain caused to happen."
+ },
+ {
+  "id": "RI.3.8-E2",
+  "standard": "RI.3.8",
+  "prompt": "Sentence 1: Bees are helpful insects. Sentence 2: For example, they move pollen so flowers can grow.\n\nHow does Sentence 2 connect to Sentence 1?",
+  "choices": [
+   "It lists the colors of a flower.",
+   "It gives an example that shows bees are helpful.",
+   "It says bees are not helpful at all.",
+   "It starts talking about a new animal."
+  ],
+  "correct": "It gives an example that shows bees are helpful."
+ },
+ {
+  "id": "RI.3.8-E3",
+  "standard": "RI.3.8",
+  "prompt": "Sentence 1: The library was too noisy for reading. Sentence 2: So the workers added a quiet room.\n\nHow does Sentence 2 connect to Sentence 1?",
+  "choices": [
+   "It changes the topic to a school bus.",
+   "It tells the time the library opens.",
+   "It gives a solution to the problem in Sentence 1.",
+   "It repeats the exact same words as Sentence 1."
+  ],
+  "correct": "It gives a solution to the problem in Sentence 1."
+ },
+ {
+  "id": "RI.3.8-E4",
+  "standard": "RI.3.8",
+  "prompt": "Sentence 1: First, the seed was planted in the dirt. Sentence 2: Next, a tiny green plant popped up.\n\nHow does Sentence 2 connect to Sentence 1?",
+  "choices": [
+   "It gives an opinion about the seed.",
+   "It disagrees with Sentence 1.",
+   "It talks about the weather on Mars.",
+   "It tells the next step in what happened."
+  ],
+  "correct": "It tells the next step in what happened."
+ },
+ {
+  "id": "RI.3.8-E5",
+  "standard": "RI.3.8",
+  "prompt": "Sentence 1: The desert is a very dry place. Sentence 2: In fact, some deserts get almost no rain for years.\n\nHow does Sentence 2 connect to Sentence 1?",
+  "choices": [
+   "It adds more detail that supports Sentence 1.",
+   "It starts a story about the ocean.",
+   "It says the desert is actually very wet.",
+   "It asks what time it is."
+  ],
+  "correct": "It adds more detail that supports Sentence 1."
+ },
+ {
+  "id": "RI.3.9-Q1",
+  "standard": "RI.3.9",
+  "prompt": "Text A explains how sharks find their food. Text B explains why there are fewer sharks in the ocean. How are the main ideas of Text A and Text B different?",
+  "choices": [
+   "Text A is about land animals, but Text B is about sea animals.",
+   "Text A tells about how sharks get food, while Text B tells why sharks might disappear.",
+   "Text A talks about sharks swimming fast, and Text B talks about sharks sleeping.",
+   "Text A and Text B both talk about how sharks move."
+  ],
+  "correct": "Text A tells about how sharks get food, while Text B tells why sharks might disappear."
+ },
+ {
+  "id": "RI.3.9-Q2",
+  "standard": "RI.3.9",
+  "prompt": "Text A says: \"Exercise is important because it keeps your heart healthy.\" Text B says: \"Exercise is important because it improves mood and reduces stress.\"\n\nWhat is DIFFERENT between the two texts?",
+  "choices": [
+   "They disagree about exercise",
+   "They focus on different BENEFITS of exercise",
+   "One is wrong",
+   "One is about food"
+  ],
+  "correct": "They focus on different BENEFITS of exercise"
+ },
+ {
+  "id": "RI.3.9-Q3",
+  "standard": "RI.3.9",
+  "prompt": "Listen to the story: Priya was comparing two different articles about sharks for a class project. Her teacher reminded her that the smartest way to compare two texts is to notice which facts appear in both articles and which facts show up in only one of them. Priya sat down and thought carefully about the one question that would help her compare the texts the most. When comparing two texts, which question is MOST useful?",
+  "choices": [
+   "Which text was written first?",
+   "What information is in both, and what is only in one?",
+   "Which text has bigger pictures?",
+   "Which text is longer?"
+  ],
+  "correct": "What information is in both, and what is only in one?"
+ }
+]

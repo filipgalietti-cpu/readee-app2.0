@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RL.3.1-Q1",
+  "standard": "RL.3.1",
+  "prompt": "Captain Rosie sailed her tiny boat across the lake every morning. One foggy day, she spotted something glowing beneath the water. She leaned over the side and saw a golden chest resting on the sandy bottom.\n\nWhat did Captain Rosie find under the water?",
+  "choices": [
+   "A golden chest",
+   "A glowing rock",
+   "A fish",
+   "A sunken ship"
+  ],
+  "correct": "A golden chest"
+ },
+ {
+  "id": "RL.3.1-Q2",
+  "standard": "RL.3.1",
+  "prompt": "Marcus had practiced his speech twenty times. When he stepped onto the stage, his hands were shaking. But once he started talking, the words flowed easily, and the audience clapped loudly at the end.\n\nHow did Marcus feel when he first stepped on stage?",
+  "choices": [
+   "Confident and calm",
+   "Angry and upset",
+   "Bored and tired",
+   "Nervous and shaky"
+  ],
+  "correct": "Nervous and shaky"
+ },
+ {
+  "id": "RL.3.1-Q3",
+  "standard": "RL.3.1",
+  "prompt": "Grandma Chen kept a garden full of herbs. \"Every plant has a story,\" she told Mei. She pointed to the lavender. \"Your grandfather brought those seeds from his village.\"\n\nWho brought the lavender seeds?",
+  "choices": [
+   "Grandma Chen",
+   "A neighbor",
+   "Mei's grandfather",
+   "Mei"
+  ],
+  "correct": "Mei's grandfather"
+ },
+ {
+  "id": "RL.3.1-Q4",
+  "standard": "RL.3.1",
+  "prompt": "The fox crept through the snow, its orange fur bright against the white. It paused, tilted its head, then leaped straight up and dove nose-first into a snowbank. Seconds later, it emerged with a mouse in its jaws.\n\nWhy did the fox leap into the snowbank?",
+  "choices": [
+   "To play in the snow",
+   "To catch a mouse",
+   "To hide from a predator",
+   "To cool down"
+  ],
+  "correct": "To catch a mouse"
+ },
+ {
+  "id": "RL.3.1-Q5",
+  "standard": "RL.3.1",
+  "prompt": "Aisha's violin had belonged to three generations of her family. The wood was worn smooth where countless fingers had pressed the strings. \"Play with your heart, not just your hands,\" her mother always said.\n\nWhat does the worn wood tell us about the violin?",
+  "choices": [
+   "It needs to be replaced",
+   "It's been played by many people over many years",
+   "It's brand new",
+   "It's broken"
+  ],
+  "correct": "It's been played by many people over many years"
+ },
+ {
+  "id": "RL.3.1-H1",
+  "standard": "RL.3.1",
+  "prompt": "Deshawn saw the last cookie on the plate and reached for it. Then he noticed his little sister Mira coloring quietly in the corner, still wearing her soccer uniform. He remembered she had scored the winning goal that afternoon but nobody had celebrated because Grandma was sick. Deshawn put the cookie on a napkin, walked over, and set it beside Mira's crayons without saying a word. She looked up and smiled.\n\nWhy did Deshawn give Mira the cookie?",
+  "choices": [
+   "He wanted to do something kind for Mira because her big moment had been overlooked",
+   "He wanted Mira to stop coloring and play soccer with him outside",
+   "He was not really hungry and did not want the cookie for himself",
+   "He was afraid Mira would tell their parents that he took the last cookie"
+  ],
+  "correct": "He wanted to do something kind for Mira because her big moment had been overlooked"
+ },
+ {
+  "id": "RL.3.1-H2",
+  "standard": "RL.3.1",
+  "prompt": "Every recess, Priya sat alone on the bench and read her book. The other kids thought she was shy. But Priya always sat where she could see the whole playground, and she kept a small notebook tucked inside her book. When Coach asked who had seen who knocked over the equipment shed, only Priya raised her hand.\n\nWhat does the text suggest about Priya?",
+  "choices": [
+   "She is not telling the truth about what she saw",
+   "She notices and pays attention to what happens around her",
+   "She is too shy to make any friends at recess",
+   "She would rather read than play with the other kids"
+  ],
+  "correct": "She notices and pays attention to what happens around her"
+ },
+ {
+  "id": "RL.3.1-H3",
+  "standard": "RL.3.1",
+  "prompt": "The morning of the trip, Leo checked the sky three times before breakfast. He packed his raincoat even though the forecast said sunny. He added an extra pair of dry socks, a flashlight, and a whistle to his bag. His mom laughed and said, 'It's just a walk in the park.' Leo zipped the bag anyway.\n\nWhich word BEST describes Leo, based on the text?",
+  "choices": [
+   "Forgetful",
+   "Cheerful",
+   "Careful",
+   "Fearful"
+  ],
+  "correct": "Careful"
+ },
+ {
+  "id": "RL.3.1-H4",
+  "standard": "RL.3.1",
+  "prompt": "Nadia and her older brother Theo were building a sandcastle. Theo kept saying, 'Let me do the towers, you're too little.' Every time Nadia patted a tower into shape, Theo smoothed it over and did it his own way. When their dad came to look, he said, 'Wonderful towers, Theo!' Theo grinned. Nadia stood up, brushed the sand off her knees, and went to sit by the water alone.\n\nHow does Nadia most likely feel at the end?",
+  "choices": [
+   "Tired, because building the sandcastle took a very long time",
+   "Excited, because she finished building the sandcastle by herself",
+   "Angry at her dad for not letting them keep building the castle",
+   "Left out, because her work was taken over and only Theo was praised"
+  ],
+  "correct": "Left out, because her work was taken over and only Theo was praised"
+ },
+ {
+  "id": "RL.3.1-H5",
+  "standard": "RL.3.1",
+  "prompt": "For weeks, the old lighthouse keeper had left a bowl of milk on the porch each night, and each morning it was empty. He told the villagers a friendly ghost drank it. One night he stayed up and watched from the window. In the moonlight, a thin gray cat crept onto the porch and lapped up every drop. The next evening, the keeper set out the milk as usual and smiled to himself, but he never told the villagers what he had seen.\n\nWhy does the keeper keep putting out the milk AND stay quiet about the cat?",
+  "choices": [
+   "He enjoys taking care of the cat and likes keeping the fun story alive for the villagers",
+   "He is worried the villagers will make him get rid of the stray cat",
+   "He still believes a ghost might be drinking some of the milk too",
+   "He forgot to tell the villagers and plans to explain it to them soon"
+  ],
+  "correct": "He enjoys taking care of the cat and likes keeping the fun story alive for the villagers"
+ },
+ {
+  "id": "RL.3.1-E1",
+  "standard": "RL.3.1",
+  "prompt": "Maya packed her red backpack for the hike. She put in water, a map, and a snack. Which color was Maya's backpack?",
+  "choices": [
+   "A pair of shoes",
+   "Red",
+   "Yesterday",
+   "Purple"
+  ],
+  "correct": "Red"
+ },
+ {
+  "id": "RL.3.1-E2",
+  "standard": "RL.3.1",
+  "prompt": "Ben's dog Rex loves to run in the park. Every Saturday, Ben takes Rex there to play fetch. Where does Ben take Rex on Saturdays?",
+  "choices": [
+   "To the moon",
+   "Loudly",
+   "To the park",
+   "A sandwich"
+  ],
+  "correct": "To the park"
+ },
+ {
+  "id": "RL.3.1-E3",
+  "standard": "RL.3.1",
+  "prompt": "The class grew a bean plant on the windowsill. It grew tall because it got plenty of sunlight and water. Why did the bean plant grow tall?",
+  "choices": [
+   "A blue crayon",
+   "It ran away",
+   "Because it was Tuesday",
+   "Because it got sunlight and water"
+  ],
+  "correct": "Because it got sunlight and water"
+ },
+ {
+  "id": "RL.3.1-E4",
+  "standard": "RL.3.1",
+  "prompt": "Lily felt happy when she saw the birthday cake with her name on it. How did Lily feel?",
+  "choices": [
+   "Happy",
+   "Under the table",
+   "A bicycle",
+   "Sleepy about math"
+  ],
+  "correct": "Happy"
+ },
+ {
+  "id": "RL.3.1-E5",
+  "standard": "RL.3.1",
+  "prompt": "During the storm, the family stayed inside and read books by candlelight. What did the family do during the storm?",
+  "choices": [
+   "A green hat",
+   "Stayed inside and read books",
+   "Counted to ten",
+   "Went swimming in the ocean"
+  ],
+  "correct": "Stayed inside and read books"
+ },
+ {
+  "id": "RL.3.2-Q1",
+  "standard": "RL.3.2",
+  "prompt": "The crow found a piece of cheese. A fox said, \"What a beautiful voice you must have! Please sing for me.\" The crow opened its beak to sing, and the cheese fell right into the fox's mouth.\n\nWhat is the moral of this fable?",
+  "choices": [
+   "Don't trust flattery from someone who wants something",
+   "Foxes are faster than crows",
+   "Crows can't sing",
+   "Cheese is delicious"
+  ],
+  "correct": "Don't trust flattery from someone who wants something"
+ },
+ {
+  "id": "RL.3.2-Q2",
+  "standard": "RL.3.2",
+  "prompt": "A boy cried \"Wolf!\" when there was no wolf, just to get attention. The villagers came running twice. When a real wolf appeared and the boy cried for help, no one believed him.\n\nWhat is the central message?",
+  "choices": [
+   "Wolves are dangerous",
+   "Boys shouldn't be shepherds",
+   "Lying destroys trust",
+   "Villagers are mean"
+  ],
+  "correct": "Lying destroys trust"
+ },
+ {
+  "id": "RL.3.2-Q3",
+  "standard": "RL.3.2",
+  "prompt": "King Midas wished that everything he touched would turn to gold. His wish came true! But when his food, his flowers, and even his daughter turned to gold, he begged for the wish to be taken away.\n\nWhat lesson does this myth teach?",
+  "choices": [
+   "Magic always works out well",
+   "Kings are always happy",
+   "Gold is the most valuable thing",
+   "Be careful what you wish for \u2014 greed has consequences"
+  ],
+  "correct": "Be careful what you wish for \u2014 greed has consequences"
+ },
+ {
+  "id": "RL.3.2-Q4",
+  "standard": "RL.3.2",
+  "prompt": "Two goats met on a narrow bridge over a river. Neither would step aside. They pushed and shoved until both fell into the water below.\n\nWhat is the lesson?",
+  "choices": [
+   "Always cross bridges quickly",
+   "Goats can't swim",
+   "Stubbornness and refusing to compromise hurts everyone",
+   "Bridges are dangerous"
+  ],
+  "correct": "Stubbornness and refusing to compromise hurts everyone"
+ },
+ {
+  "id": "RL.3.2-Q5",
+  "standard": "RL.3.2",
+  "prompt": "A young girl named Anansi's daughter was always bragging about being the smartest in her village. One day, the village elder gave her a riddle she couldn't solve. A quiet boy named Kofi, who listened more than he talked, solved it easily.\n\nWhat is the central message?",
+  "choices": [
+   "Riddles are hard",
+   "Elders are tricky",
+   "Girls aren't as smart as boys",
+   "Bragging doesn't make you smart \u2014 listening and thinking do"
+  ],
+  "correct": "Bragging doesn't make you smart \u2014 listening and thinking do"
+ },
+ {
+  "id": "RL.3.2-H1",
+  "standard": "RL.3.2",
+  "prompt": "All summer, Mole dug and stacked tunnels while the other meadow animals laughed. \"Why work on such a sunny day?\" they teased, and went back to playing. When the cold rains came and flooded the meadow, the animals had nowhere dry to hide. Then Mole opened his warm tunnels and let everyone crowd inside.\n\nWhat is the central lesson of this story?",
+  "choices": [
+   "Getting ready ahead of time pays off when hard times come",
+   "Rain can flood a meadow very quickly",
+   "You should always share your home with others",
+   "Moles are better at digging than other animals"
+  ],
+  "correct": "Getting ready ahead of time pays off when hard times come"
+ },
+ {
+  "id": "RL.3.2-H2",
+  "standard": "RL.3.2",
+  "prompt": "The proud peacock begged the eagle, \"Teach me to fly high into the clouds!\" The eagle answered, \"Your feathers are too heavy for the sky.\" The peacock spread his glowing tail and cried, \"But no bird is as beautiful as I am!\" Then the eagle soared up and disappeared into the clouds, while the peacock stayed on the ground, staring at his own reflection in a pond.\n\nWhat lesson does the story teach?",
+  "choices": [
+   "Peacocks would rather stay near ponds than fly",
+   "What you can do matters more than how you look",
+   "Looking beautiful is more important than flying",
+   "Eagles are unkind to birds that ask for help"
+  ],
+  "correct": "What you can do matters more than how you look"
+ },
+ {
+  "id": "RL.3.2-H3",
+  "standard": "RL.3.2",
+  "prompt": "A tired traveler asked an old woman, \"How far is it to the town?\" \"Just keep walking,\" she said. Annoyed, he snapped, \"Give me a real answer!\" The woman said nothing. She watched him take a few steps down the road, then called out, \"Two hours.\" \"Why didn't you say so before?\" he demanded. \"Because,\" she said, \"first I had to see how fast you walk.\"\n\nWhat is the main message of this story?",
+  "choices": [
+   "It is rude to demand answers from strangers",
+   "Older people always give the wisest advice",
+   "A good answer sometimes needs information first",
+   "Some questions simply cannot be answered"
+  ],
+  "correct": "A good answer sometimes needs information first"
+ },
+ {
+  "id": "RL.3.2-H4",
+  "standard": "RL.3.2",
+  "prompt": "Two frogs tumbled into a deep bucket of cream. One frog looked at the slippery walls and said, \"This is hopeless,\" then stopped moving and sank. The other frog kicked and kicked all night, refusing to quit. By morning his kicking had churned the cream into a lump of solid butter, and he hopped right out to safety.\n\nWhat lesson does this fable teach?",
+  "choices": [
+   "Cream will turn into butter if it is stirred enough",
+   "When trouble is too big, it is safer to stay still",
+   "Some problems really are impossible to escape",
+   "Not giving up can turn a hopeless problem into a solution"
+  ],
+  "correct": "Not giving up can turn a hopeless problem into a solution"
+ },
+ {
+  "id": "RL.3.2-H5",
+  "standard": "RL.3.2",
+  "prompt": "A little stream begged the great river, \"Let me rush ahead and reach the sea today, like you!\" The river said, \"Slow down. The sea will still be there.\" But the stream raced on, splashing wildly over the rocks. It spread out thin across the hot, dry sand and soaked away long before it ever reached the sea. The river flowed on, calm and steady, and arrived that same evening.\n\nWhat is the central message of this story?",
+  "choices": [
+   "Being steady and patient reaches a goal better than rushing",
+   "Streams should never try to flow toward the sea",
+   "Bigger and stronger things will always win in the end",
+   "Water will always soak away into dry sand"
+  ],
+  "correct": "Being steady and patient reaches a goal better than rushing"
+ },
+ {
+  "id": "RL.3.3-Q1",
+  "standard": "RL.3.3",
+  "prompt": "Dina noticed her classmate sitting alone at lunch every day. She walked over and said, \"Want to sit with us?\" Soon they became best friends and started a book club together.\n\nWhat character trait does Dina show?",
+  "choices": [
+   "Kindness",
+   "Stubbornness",
+   "Laziness",
+   "Shyness"
+  ],
+  "correct": "Kindness"
+ },
+ {
+  "id": "RL.3.3-Q2",
+  "standard": "RL.3.3",
+  "prompt": "When the team's star player got hurt, nobody wanted to take her place. Jaylen was nervous, but he stepped up and said, \"I'll do it.\" He scored the winning goal.\n\nHow did Jaylen's action affect the story?",
+  "choices": [
+   "The team lost the game",
+   "He got hurt too",
+   "Nothing changed",
+   "His bravery led to the team winning"
+  ],
+  "correct": "His bravery led to the team winning"
+ },
+ {
+  "id": "RL.3.3-Q3",
+  "standard": "RL.3.3",
+  "prompt": "Omar found a wallet on the playground with twenty dollars inside. He thought about keeping it, but instead he brought it to the office. The wallet belonged to a kindergartner's mom.\n\nWhat does Omar's action tell us about him?",
+  "choices": [
+   "He doesn't like money",
+   "He is scared of getting caught",
+   "He doesn't need money",
+   "He is honest and does the right thing"
+  ],
+  "correct": "He is honest and does the right thing"
+ },
+ {
+  "id": "RL.3.3-Q4",
+  "standard": "RL.3.3",
+  "prompt": "Marta refused to share the art supplies with her group. She kept the best markers for herself. The other kids stopped inviting her to work on projects.\n\nWhat happened BECAUSE of Marta's actions?",
+  "choices": [
+   "She won an art contest",
+   "The teacher praised her",
+   "She got more supplies",
+   "Her group stopped including her"
+  ],
+  "correct": "Her group stopped including her"
+ },
+ {
+  "id": "RL.3.3-Q5",
+  "standard": "RL.3.3",
+  "prompt": "Lily wanted to build the tallest sandcastle on the beach. First, she watched how the waves came in and where the sand was firmest. Then, she drew a small picture of her castle in the sand with a stick. She decided to dig a wide, shallow moat first, so the water wouldn't wash her castle away. Only after she had a clear idea did she start piling up sand for the towers.\n\nBased on her actions in the story, which word best describes Lily?",
+  "choices": [
+   "Hurried",
+   "Careful",
+   "Lazy",
+   "Fearful"
+  ],
+  "correct": "Careful"
+ },
+ {
+  "id": "RL.3.3-H1",
+  "standard": "RL.3.3",
+  "prompt": "Marisol wanted to win the science fair. When her partner Cole suggested a volcano, she said it sounded good, but that night she quietly rebuilt the whole project into a solar oven by herself. The next day she told Cole, \"I fixed it so we'd win.\" Cole didn't say anything, but he stopped bringing his notebook to their meetings and started eating lunch with a different group.\n\nWhy did Cole most likely change how he acted?",
+  "choices": [
+   "He felt pushed aside when Marisol changed the project without him",
+   "He forgot his notebook at home by accident",
+   "He thought the solar oven was too hard to build",
+   "He was excited to try a brand-new group of friends"
+  ],
+  "correct": "He felt pushed aside when Marisol changed the project without him"
+ },
+ {
+  "id": "RL.3.3-H2",
+  "standard": "RL.3.3",
+  "prompt": "Every recess, Theo lined his toy cars up in the exact same order and got upset if anyone moved them. When the class got a new student, Priya, she asked to play and reached for a car. Theo pulled it back. But the next day, Theo left one red car at the edge of the mat and said to Priya, \"This one can be yours.\"\n\nWhat does Theo leaving the red car at the edge of the mat show about how he is changing?",
+  "choices": [
+   "He wants Priya to line the cars up for him",
+   "He is starting to share, even though it is hard for him",
+   "He no longer cares about his cars at all",
+   "He is trying to trick Priya into leaving"
+  ],
+  "correct": "He is starting to share, even though it is hard for him"
+ },
+ {
+  "id": "RL.3.3-H3",
+  "standard": "RL.3.3",
+  "prompt": "Nadia promised her little brother she would take him to the pond to catch tadpoles on Saturday. On Saturday morning, her best friend called and invited her to a pool party. Nadia looked at her brother, who was already holding the net by the door. She told her friend, \"Maybe next time,\" and picked up her boots.\n\nHow does Nadia's choice move the story forward?",
+  "choices": [
+   "Nadia stays home because she cannot decide",
+   "Nadia gives the net to her friend instead",
+   "Nadia keeps her promise, so she and her brother go to the pond",
+   "Nadia goes to the pool party and forgets her brother"
+  ],
+  "correct": "Nadia keeps her promise, so she and her brother go to the pond"
+ },
+ {
+  "id": "RL.3.3-H4",
+  "standard": "RL.3.3",
+  "prompt": "Big storms scared Lena. During thunder, she usually hid under her blanket. One night the power went out and her baby cousin started crying in the dark. Lena's hands were shaking, but she grabbed the flashlight, crawled to her cousin, and started singing a silly song until he laughed.\n\nWhat do Lena's actions during the storm mostly reveal about her?",
+  "choices": [
+   "She wanted the flashlight for herself",
+   "She is no longer scared of storms at all",
+   "She only sings when the power goes out",
+   "She can be brave for someone else even when she is afraid"
+  ],
+  "correct": "She can be brave for someone else even when she is afraid"
+ },
+ {
+  "id": "RL.3.3-H5",
+  "standard": "RL.3.3",
+  "prompt": "Omar always finished the class relay by running as fast as he could. In the big race, the runner ahead of him tripped and fell right in his path. Omar was about to pass, but he slowed down, helped the boy up, and they crossed the finish line last, together. The coach didn't give Omar a medal, but she wrote his name at the top of the 'Good Sport' board.\n\nWhy did the coach put Omar's name on the 'Good Sport' board instead of giving him a medal?",
+  "choices": [
+   "Omar chose to help someone instead of winning",
+   "Omar was too tired to finish first",
+   "Omar ran faster than everyone in the race",
+   "Omar asked the coach for the board instead of a medal"
+  ],
+  "correct": "Omar chose to help someone instead of winning"
+ },
+ {
+  "id": "RL.3.3-E1",
+  "standard": "RL.3.3",
+  "prompt": "Maya saw a lost puppy shivering in the rain. She picked it up, wrapped it in her warm jacket, and carried it home. What kind of character is Maya?",
+  "choices": [
+   "Sleepy",
+   "Caring",
+   "Angry",
+   "Mean"
+  ],
+  "correct": "Caring"
+ },
+ {
+  "id": "RL.3.3-E2",
+  "standard": "RL.3.3",
+  "prompt": "Sam forgot to bring his homework to school. Because of this, what happened next?",
+  "choices": [
+   "He won a big trophy",
+   "He turned into a bird",
+   "He could not turn in his homework",
+   "He grew ten feet tall"
+  ],
+  "correct": "He could not turn in his homework"
+ },
+ {
+  "id": "RL.3.3-E3",
+  "standard": "RL.3.3",
+  "prompt": "Every morning, Leo made his bed, packed his lunch, and got to the bus on time all by himself. What word best describes Leo?",
+  "choices": [
+   "Scared",
+   "Silly",
+   "Selfish",
+   "Responsible"
+  ],
+  "correct": "Responsible"
+ },
+ {
+  "id": "RL.3.3-E4",
+  "standard": "RL.3.3",
+  "prompt": "Priya practiced the piano a little bit every single day, even when it was hard. Because she kept practicing, what most likely happened?",
+  "choices": [
+   "She got better at the piano",
+   "She never touched a piano",
+   "The piano flew away",
+   "She forgot how to play"
+  ],
+  "correct": "She got better at the piano"
+ },
+ {
+  "id": "RL.3.3-E5",
+  "standard": "RL.3.3",
+  "prompt": "When the new student looked confused, Ben smiled, waved, and said, \"Come sit with me!\" What kind of character is Ben?",
+  "choices": [
+   "Bored",
+   "Friendly",
+   "Grumpy",
+   "Rude"
+  ],
+  "correct": "Friendly"
+ },
+ {
+  "id": "RL.3.4-Q3",
+  "standard": "RL.3.4",
+  "prompt": "Listen to the story: In class, Maya's teacher explained that literal language means exactly what the words say, while figurative language paints a picture with words that are not meant to be taken word for word. The teacher wrote four sentences on the board and asked the students to find the one that was completely literal and could really happen just as it was written. Maya read each one carefully before raising her hand. Which sentence uses LITERAL language?",
+  "choices": [
+   "Time flies when you're having fun.",
+   "She has a heart of gold.",
+   "He was drowning in homework.",
+   "The dog ate his dinner."
+  ],
+  "correct": "The dog ate his dinner."
+ },
+ {
+  "id": "RL.3.4-Q4",
+  "standard": "RL.3.4",
+  "prompt": "The classroom was a zoo today!\n\nThis means \u2014",
+  "choices": [
+   "They went on a field trip to the zoo",
+   "The teacher likes animals",
+   "There were animals in the classroom",
+   "The classroom was very loud and chaotic"
+  ],
+  "correct": "The classroom was very loud and chaotic"
+ },
+ {
+  "id": "RL.3.5-Q1",
+  "standard": "RL.3.5",
+  "prompt": "If your teacher asks you to read the second 'stanza' of a poem, what is she telling you to do?",
+  "choices": [
+   "Find the second scene in a play.",
+   "Read the second group of lines in the poem.",
+   "Look for the second chapter in a book.",
+   "Search for the author's name."
+  ],
+  "correct": "Read the second group of lines in the poem."
+ },
+ {
+  "id": "RL.3.5-Q3",
+  "standard": "RL.3.5",
+  "prompt": "A long novel is usually divided into \u2014",
+  "choices": [
+   "Chapters",
+   "Verses",
+   "Scenes",
+   "Stanzas"
+  ],
+  "correct": "Chapters"
+ },
+ {
+  "id": "RL.3.5-Q4",
+  "standard": "RL.3.5",
+  "prompt": "Read the poem below. How many stanzas are in the poem 'My Dog Spot'?My dog Spot is fluffy and white,He barks all day and sleeps all night.He loves to play with his red ball,And comes running when I call.When we go out for a walk,He likes to sniff and sometimes talk.He wags his tail with happy sound,The best dog ever, all around.He chases squirrels up a tree,And brings his favorite toy to me.He's always there, a loyal friend,Our happy times will never end.",
+  "choices": [
+   "Four",
+   "Two",
+   "Three",
+   "Five"
+  ],
+  "correct": "Three"
+ }
+]

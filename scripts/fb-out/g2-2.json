@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.2.1-Q3",
+  "correct_feedback": "Yes! The story says he made soap and paint from peanuts. You found the right one!",
+  "incorrect_feedback": "Hmm, go back to the story. It names the special things he made from peanuts. Which one did you hear?",
+  "reveal_feedback": "The answer is soap. The story tells us he made soap and paint from peanuts for families to use."
+ },
+ {
+  "id": "RI.2.1-Q4",
+  "correct_feedback": "That's right! They go back to the same beach where they were born to lay their eggs.",
+  "incorrect_feedback": "Take another look. The story tells you the exact spot the turtles swim back to. Where were they born?",
+  "reveal_feedback": "The answer is the beach where they were born. The turtles travel far to return to that same beach."
+ },
+ {
+  "id": "RI.2.1-Q5",
+  "correct_feedback": "Yes! It was 1969. The story gives us the exact year the astronauts walked on the Moon.",
+  "incorrect_feedback": "Almost! Look for the year written right in the story. Read it very carefully.",
+  "reveal_feedback": "The answer is 1969. The story says that is the year Neil Armstrong and Buzz Aldrin walked on the Moon."
+ },
+ {
+  "id": "RI.2.1-H1",
+  "correct_feedback": "Nice thinking! When the cat sits by the door, no birds come. So she keeps it in to help the birds.",
+  "incorrect_feedback": "Good try. Think about what happens to the birds when the cat is near. Why would that be a problem?",
+  "reveal_feedback": "The answer is so the birds are not scared away. When the cat is out, no birds come to eat the seeds."
+ },
+ {
+  "id": "RI.2.1-H2",
+  "correct_feedback": "Great job! First the stem grows up, then the leaves open, and the flower comes last. You got the order!",
+  "incorrect_feedback": "Close one. Read the steps in order. What grows up first, and what comes right after the leaves?",
+  "reveal_feedback": "The leaves open after the stem grows but before the flower. The order is root, stem, leaves, then flower."
+ },
+ {
+  "id": "RI.2.1-H3",
+  "correct_feedback": "You got it! The crumb is too big for one ant, so it taps the others to come help carry it.",
+  "incorrect_feedback": "Not yet. Remember, one ant cannot carry the big crumb alone. Why would it go get the other ants?",
+  "reveal_feedback": "The ant taps the others to ask for help carrying the crumb. It is too big for one ant to move alone."
+ },
+ {
+  "id": "RI.2.1-H4",
+  "correct_feedback": "Smart! Maya does her job last, and the light monitor turns off the lights when the class leaves.",
+  "incorrect_feedback": "Take another look. Maya's job happens LAST. Which helper does their job right as the class leaves the room?",
+  "reveal_feedback": "The answer is light monitor. That helper turns off the lights when the class leaves, so it is done last."
+ },
+ {
+  "id": "RI.2.1-H5",
+  "correct_feedback": "Yes! The fish live so deep that sunlight can't reach them, so it must be dark down there.",
+  "incorrect_feedback": "Hmm, think about why the fish need to make their own light. What does that tell you about the deep sea?",
+  "reveal_feedback": "The answer is it is dark because sunlight cannot reach it. That is why the fish make their own light."
+ },
+ {
+  "id": "RI.2.2-Q1",
+  "correct_feedback": "Yes! The whole text tells why dogs are wonderful pets AND helpers. That is the big main idea.",
+  "incorrect_feedback": "Good try. That is just one part of the text. Think about what ALL the paragraphs are about together.",
+  "reveal_feedback": "The main topic is why dogs make wonderful pets and helpers. That big idea covers the whole text."
+ },
+ {
+  "id": "RI.2.2-Q2",
+  "correct_feedback": "That's right! Paragraph 2 tells about vitamins and fiber, so it is all about why apples are healthy.",
+  "incorrect_feedback": "Almost. Read Paragraph 2 again. It talks about vitamins and fiber. What big idea is that about?",
+  "reveal_feedback": "Paragraph 2 is about why apples are healthy. It says apples have vitamins and fiber that are good for you."
+ },
+ {
+  "id": "RI.2.2-Q3",
+  "correct_feedback": "Yes! The passage tells where penguins live, what they eat, and about their babies. It's all about penguins!",
+  "incorrect_feedback": "Close one. Each of those is only ONE part. Think about what the whole passage is about from start to end.",
+  "reveal_feedback": "The main topic is all about penguins. The passage tells many things, so the big idea covers all of it."
+ },
+ {
+  "id": "RI.2.2-Q4",
+  "correct_feedback": "Great! The text tells about solid, liquid, and gas, so it is about the three ways water can be found.",
+  "incorrect_feedback": "Not quite. That is only a small part. The text tells about ice, water, and steam. What is that all about?",
+  "reveal_feedback": "The main topic is the three ways water can be found. Water can be a solid, a liquid, or a gas."
+ },
+ {
+  "id": "RI.2.2-Q5",
+  "correct_feedback": "You got it! The text tells about dogs, cats, fish, and birds and how to care for them all.",
+  "incorrect_feedback": "Take another look. That is only one part. The text lists many pets, not just one. What is the big idea?",
+  "reveal_feedback": "The main topic is the many kinds of pets and how to care for them. It talks about lots of pets, not just one."
+ },
+ {
+  "id": "RI.2.2-H1",
+  "correct_feedback": "Nice! Bees make honey, move pollen, and live in a hive. The text is about all the jobs bees do.",
+  "incorrect_feedback": "Good try. That is just one thing bees do. The text tells about a few of them. What idea covers them all?",
+  "reveal_feedback": "The text is mostly about the important jobs that bees do, like making honey and helping plants grow."
+ },
+ {
+  "id": "RI.2.2-H2",
+  "correct_feedback": "Yes! The paragraph tells how penguins use their wings to swim fast and dive deep. Great swimmers!",
+  "incorrect_feedback": "Hmm, most of the paragraph is about penguins in the water. What big idea is it telling you about them?",
+  "reveal_feedback": "The paragraph is mostly about how penguins are great swimmers. Their wings work like flippers in the water."
+ },
+ {
+  "id": "RI.2.2-H3",
+  "correct_feedback": "That's right! The text tells what rain forests are like and why they matter to animals and people.",
+  "incorrect_feedback": "Almost. That is just one detail. The text tells lots of things about rain forests. What is the whole idea?",
+  "reveal_feedback": "The text is mostly about what rain forests are like and why they matter. It gives many facts about them."
+ },
+ {
+  "id": "RI.2.2-H4",
+  "correct_feedback": "Great thinking! The whole paragraph tells how people long ago looked at the sun to know the time.",
+  "incorrect_feedback": "Not yet. That is only a small part. The paragraph is about how people once knew the time. How did they?",
+  "reveal_feedback": "The paragraph is mostly about how people long ago used the sun to tell time before there were clocks."
+ },
+ {
+  "id": "RI.2.2-H5",
+  "correct_feedback": "Yes! The librarian opens up, helps kids find books, and reads a story. So many ways she helps!",
+  "incorrect_feedback": "Close one. That is just one thing she does. The text tells about her whole day. What is the big idea?",
+  "reveal_feedback": "The text is mostly about the different ways a librarian helps at the library all day long."
+ },
+ {
+  "id": "RI.2.3-Q1",
+  "correct_feedback": "You got it! First it eats, then makes a chrysalis, and after that it comes out as a butterfly.",
+  "incorrect_feedback": "Take another look. Find the chrysalis step, then read what comes right AFTER it. What happens next?",
+  "reveal_feedback": "After the chrysalis, it becomes a butterfly. The steps are eat leaves, make a chrysalis, then a butterfly."
+ },
+ {
+  "id": "RI.2.3-Q3",
+  "correct_feedback": "Yes! The Wright Brothers flew first, and that led to the big planes we have today. Great connection!",
+  "incorrect_feedback": "Hmm, think about which came first, the short flight or big planes. How did one lead to the other?",
+  "reveal_feedback": "The Wright Brothers' invention led to modern airplanes. Their first flight came before today's big planes."
+ },
+ {
+  "id": "RI.2.3-Q4",
+  "correct_feedback": "Right! The top slice holds everything in so the peanut butter doesn't fall out. Good thinking!",
+  "incorrect_feedback": "Good try. Think about what the top slice is for. What would happen if you did not add it?",
+  "reveal_feedback": "You add the top slice to keep the peanut butter from falling out. It holds everything inside the sandwich."
+ },
+ {
+  "id": "RI.2.3-Q5",
+  "correct_feedback": "Yes! The bees move the pollen from flower to flower, and that helps new plants grow. Nice job!",
+  "incorrect_feedback": "Not quite. Follow the pollen. It sticks to the bees, then goes where? How does that help plants?",
+  "reveal_feedback": "The answer is bees carry pollen to other flowers, which helps plants grow. The pollen sticks to their legs."
+ },
+ {
+  "id": "RI.2.3-Q6",
+  "correct_feedback": "Great! The water vapor rises, gets colder, and joins together to make clouds. You followed the steps!",
+  "incorrect_feedback": "Close one. Think about what happens to the vapor as it goes up high. Does it get warmer or colder?",
+  "reveal_feedback": "The answer is it becomes colder and joins with other tiny pieces. That is how clouds form up in the sky."
+ },
+ {
+  "id": "RI.2.3-Q7",
+  "correct_feedback": "You got it! With fewer otters, the sea urchins grow, and they eat too much kelp. That's the cause!",
+  "incorrect_feedback": "Take another look. What eats the kelp? Follow the chain from fewer otters to the missing kelp forests.",
+  "reveal_feedback": "The kelp disappears because too many sea urchins eat it. With fewer otters, the urchins grow and eat too much."
+ },
+ {
+  "id": "RI.2.3-Q9",
+  "correct_feedback": "Yes! The anemone protects the clownfish, and the clownfish cleans and feeds it. They help each other!",
+  "incorrect_feedback": "Hmm, read what each one does for the other. The anemone protects, and the clownfish cleans. What is that?",
+  "reveal_feedback": "The answer is they help each other. The anemone keeps the clownfish safe, and the clownfish cleans and feeds it."
+ },
+ {
+  "id": "RI.2.3-Q11",
+  "correct_feedback": "Right! The sun heats the water until it disappears into the air, and the salt is left behind. Smart!",
+  "incorrect_feedback": "Good try. Think about what the sun does to the water. What is left in the pool after the water is gone?",
+  "reveal_feedback": "The sun makes the water evaporate, leaving the salt behind. That is how workers gather the sea salt."
+ },
+ {
+  "id": "RI.2.3-Q13",
+  "correct_feedback": "Yes! In the water, plastic bags look like jellyfish, so turtles eat them by mistake. Good reading!",
+  "incorrect_feedback": "Not yet. Read what the bags look like in the water. Why would a turtle eat one by mistake?",
+  "reveal_feedback": "The answer is the bags look like jellyfish. Turtles eat them by mistake, and that can make them sick."
+ },
+ {
+  "id": "RI.2.3-Q15",
+  "correct_feedback": "Great! Shallow water lets sunlight reach the bottom, and plants need that light to grow. You got it!",
+  "incorrect_feedback": "Close one. Think about what plants need to grow. What can reach the bottom when the water is shallow?",
+  "reveal_feedback": "Shallow water lets sunlight reach the ocean floor, where plants need that light to grow."
+ },
+ {
+  "id": "RI.2.3-H1",
+  "correct_feedback": "Nice thinking! Seeds need water to grow, and dry ground has none, so the seeds just stay put.",
+  "incorrect_feedback": "Take another look. What does a seed need to sprout? What is missing when the ground is dry and hard?",
+  "reveal_feedback": "The answer is the dry ground has no water the seeds need. Without rain, the seeds cannot sprout and grow."
+ },
+ {
+  "id": "RI.2.3-H2",
+  "correct_feedback": "Yes! You can't open the sides until they are folded first. That's why it must come last. Great!",
+  "incorrect_feedback": "Hmm, think about the order. What has to happen to the sides before Mia can pull them open?",
+  "reveal_feedback": "The answer is the sides must be folded before they can be opened. So Mia opens them last, not first."
+ },
+ {
+  "id": "RI.2.3-H3",
+  "correct_feedback": "Right! Trains stay on tracks, but cars let families leave from home whenever they want. Good compare!",
+  "incorrect_feedback": "Good try. Think about how cars are different from trains. What new thing could families do with a car?",
+  "reveal_feedback": "Cars let people leave from their own homes whenever they wanted. Trains could not do that, they used tracks."
+ },
+ {
+  "id": "RI.2.3-H4",
+  "correct_feedback": "You got it! Bees carry pollen between flowers, and that lets the flowers make new seeds. Well done!",
+  "incorrect_feedback": "Not quite. Follow the pollen on the bee's legs. Where does it go, and why do flowers need it?",
+  "reveal_feedback": "Bees carry pollen between flowers so the flowers can make seeds. The pollen sticks to their fuzzy legs."
+ },
+ {
+  "id": "RI.2.3-H5",
+  "correct_feedback": "Great! Sam watered it each day, so under the dirt the seed soaked up water and started to sprout.",
+  "incorrect_feedback": "Close one. Sam watered it every day but saw nothing at first. What was the seed doing under the dirt?",
+  "reveal_feedback": "The seed slowly soaked up water and began to sprout under the dirt, then the green stem popped up on Friday."
+ },
+ {
+  "id": "RI.2.4-Q1",
+  "correct_feedback": "Yes! The text says nocturnal animals are active at night, like owls and bats. You found the meaning!",
+  "incorrect_feedback": "Take another look. The sentence right there tells you when nocturnal animals are busy. Read it again.",
+  "reveal_feedback": "Nocturnal means active at night. The text tells us owls, bats, and raccoons are busy in the nighttime."
+ },
+ {
+  "id": "RI.2.4-Q2",
+  "correct_feedback": "That's right! A habitat is a natural home, like the ponds and streams where frogs live. Great work!",
+  "incorrect_feedback": "Hmm, the sentence says wet places are the frogs' habitats. What word means the place an animal lives?",
+  "reveal_feedback": "A habitat is a natural home for an animal. For frogs, that is wet places like ponds and streams."
+ },
+ {
+  "id": "RI.2.4-Q3",
+  "correct_feedback": "Yes! The text says mammals are warm-blooded and have fur or hair, like dogs and cats. Nice reading!",
+  "incorrect_feedback": "Good try. Read the sentence about mammals again. What two things does it say every mammal has?",
+  "reveal_feedback": "A mammal is warm-blooded with fur or hair. The text says dogs, cats, and humans are all mammals."
+ },
+ {
+  "id": "RI.2.4-Q4",
+  "correct_feedback": "Right! Enormous means very huge. The pyramids are big stone structures, so enormous fits perfectly.",
+  "incorrect_feedback": "Almost. The text calls the pyramids huge stone structures. What word means the same as very big?",
+  "reveal_feedback": "Enormous means very huge. The text calls the pyramids huge stone structures that still stand today."
+ },
+ {
+  "id": "RI.2.4-Q5",
+  "correct_feedback": "Yes! The text says nutrients are like food that gives plants energy and helps them grow. Great!",
+  "incorrect_feedback": "Not yet. Read the sentence again. It says nutrients are LIKE food for plants. What does that tell you?",
+  "reveal_feedback": "Nutrients are food-like substances that help plants grow. They give plants energy and keep them healthy."
+ },
+ {
+  "id": "RI.2.4-H1",
+  "correct_feedback": "Great! The cactus keeps water inside its stem to use later on hot days. That's what stores means!",
+  "incorrect_feedback": "Take another look. The cactus puts water in its stem to use on hot days. What does stores mean here?",
+  "reveal_feedback": "Here, stores means keeps something to use later. The cactus saves water in its stem for the hottest days."
+ },
+ {
+  "id": "RI.2.4-H2",
+  "correct_feedback": "Yes! The bee moves the yellow dust to the next flower so new seeds can grow. That's pollinate!",
+  "incorrect_feedback": "Hmm, read what the bee does with the yellow dust. Where does it carry it, and why does that matter?",
+  "reveal_feedback": "Pollinate means to move flower dust so seeds can grow. The bee carries the yellow dust to the next flower."
+ },
+ {
+  "id": "RI.2.4-H3",
+  "correct_feedback": "Right! Deep in the sea no sunlight reaches, so pitch black means completely dark. You got it!",
+  "incorrect_feedback": "Good try. The text says no sunlight reaches that deep. What would pitch black mean down there?",
+  "reveal_feedback": "Pitch black means completely dark. Deep in the sea, no sunlight can reach, so it is totally dark."
+ },
+ {
+  "id": "RI.2.4-H4",
+  "correct_feedback": "Yes! After lots of rain the creek got bigger and rose over its banks. That's what swell means!",
+  "incorrect_feedback": "Close one. The water climbed over its banks and onto the road. What does swell mean about the creek?",
+  "reveal_feedback": "Swell means to get bigger and rise up. After days of rain, the creek grew and spread over its banks."
+ },
+ {
+  "id": "RI.2.4-H5",
+  "correct_feedback": "Great! When you get hot, your body makes little drops of water to cool you down. That's sweats!",
+  "incorrect_feedback": "Not quite. The text says the little drops of water cool you down. What does sweats mean here?",
+  "reveal_feedback": "Sweats means the body makes drops of water to cool itself. Those little drops help you not get too hot."
+ },
+ {
+  "id": "RI.2.5-Q1",
+  "correct_feedback": "Yes! The glossary is where a book lists words and what they mean. Great place to look!",
+  "incorrect_feedback": "Take another look. You want the MEANING of a word. Which part of a book tells you what words mean?",
+  "reveal_feedback": "The answer is the glossary. That is the part of a book that lists words and tells you what they mean."
+ },
+ {
+  "id": "RI.2.5-Q2",
+  "correct_feedback": "Right! A heading is the bold title at the top of a part, and it tells what that part is about.",
+  "incorrect_feedback": "Hmm, think about those big bold words at the top of each part. What do they tell you before you read?",
+  "reveal_feedback": "A heading tells you what that section is about. The bold words at the top show what each part will cover."
+ }
+]

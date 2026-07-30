@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.4.1-Q1",
+  "correct_feedback": "Yes! The story says Grandpa told Elena about the comet, so we can tell he shared what he knew about the stars with her.",
+  "incorrect_feedback": "Hmm, think about who told Elena about the comet in the first place. What does that say about him?",
+  "reveal_feedback": "The answer is that he shared his knowledge of astronomy with Elena. She knew about the comet because Grandpa taught her."
+ },
+ {
+  "id": "RL.4.1-Q2",
+  "correct_feedback": "Exactly! He memorized every word and keeps it close to his chest. Those details show the letter means so much to him.",
+  "incorrect_feedback": "Almost. Why would someone keep a letter close and read it until it's soft and worn? What does that show?",
+  "reveal_feedback": "The answer is that it's extremely important and meaningful to him. He keeps it close and knows every word by heart."
+ },
+ {
+  "id": "RL.4.1-Q3",
+  "correct_feedback": "Nice thinking! Practicing before school and after dinner shows all the hard work that helped Priya make every shot.",
+  "incorrect_feedback": "Good try. Which detail actually shows Priya putting in effort over and over, not just something she did once?",
+  "reveal_feedback": "The best answer is that she practiced before school and after dinner. That steady effort is what made her hard work pay off."
+ },
+ {
+  "id": "RL.4.1-Q4",
+  "correct_feedback": "You got it! The clenched jaw, tight grip, and silence are all clues that Dad is upset or frustrated about something.",
+  "incorrect_feedback": "Close one. Picture Dad's tight grip, clenched jaw, and silence. Do those clues sound like a good mood or a bad one?",
+  "reveal_feedback": "The answer is that he's upset or frustrated about something. His clenched jaw and silence give his feelings away."
+ },
+ {
+  "id": "RL.4.1-Q5",
+  "correct_feedback": "Well done! Even as her shop is torn down, she says books will find a new home. That shows she's optimistic and resilient.",
+  "incorrect_feedback": "Not yet. Think about her calm, hopeful words even when she's losing the shop. What does that reveal about her?",
+  "reveal_feedback": "The answer is that she's optimistic and resilient even in difficult times. She stays hopeful even as the shop is torn down."
+ },
+ {
+  "id": "RL.4.1-E1",
+  "correct_feedback": "Yes! The story says the coach always picked Maria because she was the fastest runner on the team.",
+  "incorrect_feedback": "Take another look. The story tells you one special thing about Maria's running. What made her stand out?",
+  "reveal_feedback": "The answer is that she was the fastest runner on the team. That's exactly why the coach chose her for the final leg."
+ },
+ {
+  "id": "RL.4.1-E2",
+  "correct_feedback": "That's right! The story says the rain fell all day, and that's the reason the game was canceled.",
+  "incorrect_feedback": "Hmm, look back at the weather in the story. What was happening all day long?",
+  "reveal_feedback": "The answer is that it rained all day. The rain is what caused the game to be canceled."
+ },
+ {
+  "id": "RL.4.1-E3",
+  "correct_feedback": "Great! Studying his spelling words every night for a week is the detail that shows Ben really worked hard.",
+  "incorrect_feedback": "Good try. Which detail shows Ben putting in real effort, not goofing off or skipping?",
+  "reveal_feedback": "The answer is that he studied his spelling words every night for a week. That steady practice shows his hard work."
+ },
+ {
+  "id": "RL.4.1-E4",
+  "correct_feedback": "Yes! Wagging its tail and running to greet its owner shows the puppy is happy and excited to see them.",
+  "incorrect_feedback": "Almost. Think about a wagging tail and running to say hello. Do those actions seem happy or upset?",
+  "reveal_feedback": "The answer is that the puppy feels happy and excited to see them. The wagging tail gives it away."
+ },
+ {
+  "id": "RL.4.1-E5",
+  "correct_feedback": "Nice! Grandpa says the glove was his when he was Lily's age, so it has belonged to him since he was young.",
+  "incorrect_feedback": "Not quite. Grandpa said the glove was his 'when I was your age.' What does that tell you about how old it is?",
+  "reveal_feedback": "The answer is that it has belonged to Grandpa since he was young. He had it back when he was Lily's age."
+ },
+ {
+  "id": "RL.4.2-Q1",
+  "correct_feedback": "Exactly! The team that shared ideas and caught mistakes won, showing collaboration leads to better results than working alone.",
+  "incorrect_feedback": "Take another look. Compare Kai working alone to the team that shared ideas. Which one ended up doing better?",
+  "reveal_feedback": "The theme is that collaboration leads to better results than working alone. The team that helped each other won first place."
+ },
+ {
+  "id": "RL.4.2-Q2",
+  "correct_feedback": "Yes! Amara felt an ache when she saw others with their grandparents. The lesson is don't be ashamed of your family, appreciate them.",
+  "incorrect_feedback": "Close one. Amara felt sad after leaving Grandma out, then invited her back. What big lesson did she learn?",
+  "reveal_feedback": "The theme is don't be ashamed of your family, appreciate them. Amara learned this after regretting leaving Grandma out."
+ },
+ {
+  "id": "RL.4.2-Q3",
+  "correct_feedback": "Great! Lily fell many times but kept trying until she rode the bike. The lesson is never give up, even when things are hard.",
+  "incorrect_feedback": "Hmm, think about what Lily did after all her falls and scraped knees. What big idea does her story teach?",
+  "reveal_feedback": "The lesson is never give up, even when things are hard. Lily kept trying after every fall until she succeeded."
+ },
+ {
+  "id": "RL.4.2-Q4",
+  "correct_feedback": "Yes! The seed grew in a rocky crack where nothing else could. The theme is determination can help you thrive in difficult conditions.",
+  "incorrect_feedback": "Almost. The seed grew where nothing else could survive. What bigger idea about not giving up does that show?",
+  "reveal_feedback": "The theme is that determination can help you thrive even in difficult conditions. The seed pushed through against all odds."
+ },
+ {
+  "id": "RL.4.2-Q5",
+  "correct_feedback": "Perfect! That sentence covers the whole story: hungry Lily bravely scared away the blue jay to get her acorn breakfast.",
+  "incorrect_feedback": "Good try. A summary covers the WHOLE story from start to finish, not just one small part. Which one does that?",
+  "reveal_feedback": "The best summary is that Lily the squirrel was hungry, so she bravely scared away a blue jay to get her acorn breakfast. It covers the whole story."
+ },
+ {
+  "id": "RL.4.3-Q2",
+  "correct_feedback": "Yes! The many languages, colorful spices, music, and smells make the setting feel vibrant, busy, and full of sensory experiences.",
+  "incorrect_feedback": "Take another look. Sounds, smells, colors, and crowds fill this scene. What kind of feeling do all those details create?",
+  "reveal_feedback": "The answer is vibrant, busy, and full of sensory experiences. The sounds, smells, and colors bring the marketplace alive."
+ },
+ {
+  "id": "RL.4.3-Q3",
+  "correct_feedback": "You got it! Reading it three times and letting out a happy whoop are clues that the letter held very good news.",
+  "incorrect_feedback": "Close one. Jordan reads it again and again, then whoops with joy. Does that sound like good news or bad?",
+  "reveal_feedback": "The answer is very good news. Jordan's excited whoop and re-reading show he was thrilled by the letter."
+ },
+ {
+  "id": "RL.4.3-Q4",
+  "correct_feedback": "Excellent! The best answer captures it all: Leo is shy but friendly, loves dinosaurs, reads quietly, then shares his interest with Maya.",
+  "incorrect_feedback": "Hmm, describing Leo 'in depth' means using several clues about who he is, not just one. Which answer does the most?",
+  "reveal_feedback": "The best answer is that Leo is a shy but friendly new student who loves reading, especially dinosaurs, and shares his interest with others. It uses the most clues."
+ },
+ {
+  "id": "RL.4.3-Q5",
+  "correct_feedback": "Yes! Peeling paint, crashing waves, and a groaning staircase all build a mood that's eerie and isolated.",
+  "incorrect_feedback": "Not yet. Picture an abandoned lighthouse alone on a cliff with groaning stairs. What mood does that give you?",
+  "reveal_feedback": "The answer is eerie and isolated. The abandoned lighthouse and crashing waves create a lonely, spooky mood."
+ },
+ {
+  "id": "RL.4.3-E1",
+  "correct_feedback": "Yes! Sharing her lunch, helping clean up, and saying nice things all show Maria is kind and helpful.",
+  "incorrect_feedback": "Take another look. Maria shares, helps, and says nice things. What kind of person acts that way?",
+  "reveal_feedback": "The answer is kind and helpful. Maria shares her lunch and helps others, which shows exactly that."
+ },
+ {
+  "id": "RL.4.3-E2",
+  "correct_feedback": "That's right! Darkness, dust, cobwebs, and creaky floors make the house feel spooky and old.",
+  "incorrect_feedback": "Hmm, imagine a dark house full of cobwebs with creaky floors. Does that feel cheerful or something else?",
+  "reveal_feedback": "The answer is spooky and old. The cobwebs, dust, and creaky floors all point to that setting."
+ },
+ {
+  "id": "RL.4.3-E3",
+  "correct_feedback": "Yes! Pumping his fist, shouting 'We won,' and jumping with a huge smile show Ben feels excited and happy.",
+  "incorrect_feedback": "Almost. Ben shouts 'We won' and jumps with a big smile. Do those actions sound happy or upset?",
+  "reveal_feedback": "The answer is excited and happy. Ben's cheering and big smile show his feelings clearly."
+ },
+ {
+  "id": "RL.4.3-E4",
+  "correct_feedback": "Great! Warm sun, splashing waves, and sandcastles make this beach setting sunny and fun.",
+  "incorrect_feedback": "Good try. Think about warm sun, gentle waves, and kids building sandcastles. What is that setting like?",
+  "reveal_feedback": "The answer is sunny and fun. The warm beach and playing kids create that cheerful setting."
+ },
+ {
+  "id": "RL.4.3-E5",
+  "correct_feedback": "Yes! Feeding chickens, fixing fences, and never stopping show that Grandpa is hardworking.",
+  "incorrect_feedback": "Not quite. Grandpa wakes early and never stops working on his chores. What kind of person is that?",
+  "reveal_feedback": "The answer is hardworking. Grandpa's early mornings and endless chores show it well."
+ },
+ {
+  "id": "RL.4.4-Q1",
+  "correct_feedback": "Yes! The Midas touch means whatever she did turned to 'gold,' so everything she did became successful.",
+  "incorrect_feedback": "Take another look. King Midas turned things to gold, but here it's used as a comparison. What does 'turning to gold' really mean for her business?",
+  "reveal_feedback": "The answer is that everything she did became successful. The Midas touch is a way of saying her work always turned out golden."
+ },
+ {
+  "id": "RL.4.4-Q2",
+  "correct_feedback": "Right! Hercules did mighty, tough labors, so a Herculean task is one that's extremely difficult and needs great effort.",
+  "incorrect_feedback": "Hmm, Hercules was famous for his hardest challenges. So what kind of task would a 'Herculean' one be?",
+  "reveal_feedback": "The answer is extremely difficult and required great effort. A Herculean task is a huge, tough job, just like Hercules faced."
+ },
+ {
+  "id": "RL.4.4-Q3",
+  "correct_feedback": "Yes! Light can't really tiptoe, but the word makes it feel like the light entered gently and softly.",
+  "incorrect_feedback": "Close one. Think about how a person tiptoes into a room. How would light 'tiptoe' through the curtains?",
+  "reveal_feedback": "The answer is that it entered gently and softly. 'Tiptoed' makes the morning light seem quiet and careful, like a person on tiptoe."
+ },
+ {
+  "id": "RL.4.4-Q4",
+  "correct_feedback": "Exactly! An Achilles' heel is a person's greatest weakness or vulnerability, just like his temper was his.",
+  "incorrect_feedback": "Take another look. It's not really about his foot. If his temper always got him in trouble, what does 'Achilles heel' stand for?",
+  "reveal_feedback": "The answer is a person's greatest weakness or vulnerability. His temper was the one weak spot that kept tripping him up."
+ },
+ {
+  "id": "RL.4.4-Q5",
+  "correct_feedback": "Yes! You can't really cut silence with a knife. It means the silence was so intense and heavy you could almost feel it.",
+  "incorrect_feedback": "Not yet. Nobody's really using a knife here. What is the phrase saying about how strong the silence felt?",
+  "reveal_feedback": "The answer is that the silence was intense and heavy. Saying you could 'cut it with a knife' means it felt thick and powerful."
+ },
+ {
+  "id": "RL.4.4-E1",
+  "correct_feedback": "Yes! Lions are known for courage, so 'as brave as a lion' means the knight was very brave.",
+  "incorrect_feedback": "Hmm, what are lions famous for? That's the quality the knight has when facing the dragon.",
+  "reveal_feedback": "The answer is very brave. Comparing the knight to a lion means he was full of courage."
+ },
+ {
+  "id": "RL.4.4-E2",
+  "correct_feedback": "Right! The story says the voice was loud and deep enough to fill the cave, so 'booming' means loud and deep.",
+  "incorrect_feedback": "Take another look. A booming voice fills the whole cave. Does that sound tiny and soft, or something bigger?",
+  "reveal_feedback": "The answer is loud and deep. A booming voice is big and powerful, like thunder filling the cave."
+ },
+ {
+  "id": "RL.4.4-E3",
+  "correct_feedback": "Yes! Maya frowned and didn't want to play or smile, so 'gloomy' means she felt sad.",
+  "incorrect_feedback": "Almost. Maya frowned and didn't want to smile or play. What feeling matches those actions?",
+  "reveal_feedback": "The answer is sad. 'Gloomy' describes Maya's down, frowning mood."
+ },
+ {
+  "id": "RL.4.4-E4",
+  "correct_feedback": "Great! A shadow is always right behind you, so calling his sister his 'shadow' means she always stayed close behind him.",
+  "incorrect_feedback": "Good try. She isn't really made of darkness. Think about where a shadow goes. What is the sister doing?",
+  "reveal_feedback": "The answer is that she always stayed close behind him. Like a real shadow, she followed him everywhere."
+ },
+ {
+  "id": "RL.4.4-E5",
+  "correct_feedback": "Yes! Hercules was a mighty hero, so having 'the strength of Hercules' means the hero was very strong.",
+  "incorrect_feedback": "Hmm, Hercules was famous for one amazing ability, and the hero could lift a boulder. What quality is that?",
+  "reveal_feedback": "The answer is strong. Comparing him to Hercules shows just how much power the hero had."
+ },
+ {
+  "id": "RL.4.5-Q1",
+  "correct_feedback": "Yes! The notes in brackets that tell actors how to move are stage directions, which plays have but regular stories don't.",
+  "incorrect_feedback": "Take another look. Which element told the actors exactly how to move? Chapters and paragraphs show up in stories too.",
+  "reveal_feedback": "The answer is stage directions. Those bracketed notes telling actors how to move are found in plays but not in regular stories."
+ },
+ {
+  "id": "RL.4.5-Q3",
+  "correct_feedback": "Right! In plays the speaker's name comes before the lines, while novels wrap the spoken words in quotation marks.",
+  "incorrect_feedback": "Hmm, both plays and novels do have dialogue. Think about HOW each one shows who is speaking.",
+  "reveal_feedback": "The answer is that in plays the character's name appears before their lines, while novels use quotation marks. Both have dialogue, just shown differently."
+ },
+ {
+  "id": "RL.4.5-Q4",
+  "correct_feedback": "Yes! The poem had a steady beat and rhyming end words, so poems often have meter and rhyme scheme that prose doesn't.",
+  "incorrect_feedback": "Close one. The poem had a steady tap-along beat and words that sounded alike at the ends. What are those two things called?",
+  "reveal_feedback": "The answer is meter and rhyme scheme. The steady beat is meter and the matching end sounds are the rhyme scheme."
+ },
+ {
+  "id": "RL.4.5-E1",
+  "correct_feedback": "Yes! A group of lines in a poem is called a stanza, kind of like a paragraph in a story.",
+  "incorrect_feedback": "Take another look. We're talking about poems here. Which word names a group of lines grouped together?",
+  "reveal_feedback": "The answer is a stanza. That's the name for a group of lines in a poem."
+ },
+ {
+  "id": "RL.4.5-E2",
+  "correct_feedback": "Right! A drama, or play, is written so actors can perform it on a stage.",
+  "incorrect_feedback": "Hmm, which of these is written for actors to perform, not just to read or use for information?",
+  "reveal_feedback": "The answer is a drama, or play. It's the kind of writing meant to be acted out on a stage."
+ },
+ {
+  "id": "RL.4.5-E3",
+  "correct_feedback": "Yes! Prose, like stories and novels, is organized into paragraphs.",
+  "incorrect_feedback": "Take another look. Prose is regular story writing. Poems use stanzas, but what does prose group its sentences into?",
+  "reveal_feedback": "The answer is paragraphs. Prose organizes its sentences into paragraphs, while poems use stanzas."
+ },
+ {
+  "id": "RL.4.5-E4",
+  "correct_feedback": "Yes! The words a character says out loud are their lines, also called dialogue.",
+  "incorrect_feedback": "Hmm, page numbers and covers don't tell a character what to say. Which part gives them their spoken words?",
+  "reveal_feedback": "The answer is their lines, also called dialogue. Those are the words a character speaks out loud in a play."
+ },
+ {
+  "id": "RL.4.5-E5",
+  "correct_feedback": "Right! Poems are usually written in short lines, which makes them look different from prose on the page.",
+  "incorrect_feedback": "Take another look. Think about how a poem is shaped on the page compared to a long story. What does it use?",
+  "reveal_feedback": "The answer is short lines. Poems are usually written in short lines, unlike the long paragraphs of prose."
+ },
+ {
+  "id": "RL.4.6-Q1",
+  "correct_feedback": "Yes! Without an inside narrator, the reader would have to guess more about the character's thoughts based on their actions.",
+  "incorrect_feedback": "Take another look. If the narrator is NOT inside the character's head, would we still get to know their private feelings directly?",
+  "reveal_feedback": "The answer is that the reader would have to guess more about the character's inner thoughts based on their actions. An outside narrator can't reveal private feelings directly."
+ },
+ {
+  "id": "RL.4.6-Q2",
+  "correct_feedback": "Exactly! Passage A uses 'I,' so you feel like the character. Passage B uses 'he,' so you watch from the outside.",
+  "incorrect_feedback": "Hmm, notice Passage A says 'I' and Passage B says 'he.' How does each word change how close you feel to Leo?",
+  "reveal_feedback": "The answer is that Passage A makes you feel like you are the character, while Passage B lets you watch the character from the outside. The words 'I' and 'he' create that difference."
+ },
+ {
+  "id": "RL.4.6-Q3",
+  "correct_feedback": "Yes! Using 'I,' the narrator only knows his own thoughts and can't see Kate's, so first person limits you to one character's perspective.",
+  "incorrect_feedback": "Take another look. The narrator says 'I' and never learns Kate's private thoughts. What does that tell you about first person?",
+  "reveal_feedback": "The answer is that first person limits you to one character's perspective and feelings. The 'I' narrator can't know Kate's private thoughts."
+ }
+]

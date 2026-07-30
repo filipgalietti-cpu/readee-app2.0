@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.1.6-Q4",
+  "correct_feedback": "Yes! The words never say anything about roots, but the picture shows them under the ground. Nice work looking at both!",
+  "incorrect_feedback": "Hmm, some of those things are right there in the words. Look for the one thing you can ONLY see in the picture.",
+  "reveal_feedback": "That one was tricky! The answer is 'Flowers have roots.' The words don't say it, but the picture shows roots under the ground. Now you know!"
+ },
+ {
+  "id": "RI.1.6-Q5",
+  "correct_feedback": "Yes! The words just say old, but the picture shows us HOW it looks old, with broken windows and peeling paint. Nice work!",
+  "incorrect_feedback": "Almost! The words already told us the house is old. Think about what EXTRA thing the picture shows you.",
+  "reveal_feedback": "That one was tricky! The answer is 'HOW the house looks old.' The picture shows the broken windows and peeling paint. Now you know!"
+ },
+ {
+  "id": "RI.1.6-H1",
+  "correct_feedback": "Yes! The words tell us the fox naps in its den, but only the picture shows the color and the babies. Nice work!",
+  "incorrect_feedback": "Good try! Some of those are things the words already tell us. Look for what you can ONLY see in the picture.",
+  "reveal_feedback": "That one was tricky! The answer is 'The fox is red and has two babies.' Only the picture shows that. Now you know!"
+ },
+ {
+  "id": "RI.1.6-H2",
+  "correct_feedback": "Yes! You can see the whale in the picture, but you cannot see it breathe air. Only the words tell us that. Nice work!",
+  "incorrect_feedback": "Close one! Some of those are things you can SEE in the picture. Look for the fact only the words can tell you.",
+  "reveal_feedback": "That one was tricky! The answer is 'A whale breathes air.' You cannot see that in a picture, only the words tell it. Now you know!"
+ },
+ {
+  "id": "RI.1.6-H3",
+  "correct_feedback": "Yes! The words and the picture both tell us about the bee. Nice work matching them up!",
+  "incorrect_feedback": "Not yet! Look for the ONE thing that is in the words AND in the picture. What do you see and read in both?",
+  "reveal_feedback": "That one was tricky! The answer is 'There is a bee.' The words say bee and the picture shows a bee too. Now you know!"
+ },
+ {
+  "id": "RI.1.6-H4",
+  "correct_feedback": "Yes! The words only talk about the dog, but the picture shows the hat's color. That's the best place to look. Nice work!",
+  "incorrect_feedback": "Take another look! Tom wants to know a COLOR. Which one can show him a color, the words or the picture?",
+  "reveal_feedback": "That one was tricky! Tom should look at the picture, because it shows the hat's color. Words tell, but pictures show colors. Now you know!"
+ },
+ {
+  "id": "RI.1.6-H5",
+  "correct_feedback": "Yes! You can see the raincoat and umbrella in the picture, but only the words tell us how the boy feels. Nice work!",
+  "incorrect_feedback": "Good try! Some of those things you can SEE in the picture. Look for the feeling that only the words can tell you.",
+  "reveal_feedback": "That one was tricky! The answer is 'The boy felt cold.' You cannot see a feeling, only the words tell it. Now you know!"
+ },
+ {
+  "id": "RI.1.7-Q1",
+  "correct_feedback": "Yes! No leaves on the trees and snow on the ground are clues for the cold season. Nice work reading the picture!",
+  "incorrect_feedback": "Hmm, think about the snow and the bare trees. Which season is cold and snowy like that?",
+  "reveal_feedback": "That one was tricky! The answer is Winter. Snow and bare trees are winter clues. Now you know!"
+ },
+ {
+  "id": "RI.1.7-Q2",
+  "correct_feedback": "Yes! Fruits, vegetables, and grains all on one plate show a healthy, balanced meal. Nice work!",
+  "incorrect_feedback": "Almost! The book is about healthy food, and the picture shows a full plate. What does that plate help you understand?",
+  "reveal_feedback": "That one was tricky! The picture helps you understand what a balanced meal looks like. All the food groups are on one plate. Now you know!"
+ },
+ {
+  "id": "RI.1.7-Q3",
+  "correct_feedback": "Yes! A map with a key shows places, so it tells where lions live in Africa. Nice work!",
+  "incorrect_feedback": "Take another look! A map shows PLACES, not sounds or food. What can a map of Africa help you find out?",
+  "reveal_feedback": "That one was tricky! The map helps you understand where in Africa lions can be found. Maps show places. Now you know!"
+ },
+ {
+  "id": "RI.1.7-Q4",
+  "correct_feedback": "Yes! The arrows point from step to step, so they show the order of the water cycle. Nice work!",
+  "incorrect_feedback": "Close one! Arrows point one way to the next. Think about what the arrows show you about the steps.",
+  "reveal_feedback": "That one was tricky! The arrows help you understand the order of the water cycle. They point from one step to the next. Now you know!"
+ },
+ {
+  "id": "RI.1.7-Q5",
+  "correct_feedback": "Yes! The picture shows you what that strong cat with the shaggy mane really looks like. Nice work!",
+  "incorrect_feedback": "Hmm, the picture can only show what you can SEE. It cannot show sleeping spots or how many cubs. What does it show?",
+  "reveal_feedback": "That one was tricky! The picture helps you understand what a powerful cat with a shaggy mane looks like. Now you know!"
+ },
+ {
+  "id": "RI.1.8-Q1",
+  "correct_feedback": "Yes! The author tells us water helps your body work well. That's the reason to drink it. Nice work!",
+  "incorrect_feedback": "Good try! A reason tells WHY you should do it. Read again and find why the author says to drink water.",
+  "reveal_feedback": "That one was tricky! The reason is that water helps your body work well. That's why the author says to drink it. Now you know!"
+ },
+ {
+  "id": "RI.1.8-Q2",
+  "correct_feedback": "Yes! The author says dogs are loyal, playful, and love their owners. Those are the reasons. Nice work!",
+  "incorrect_feedback": "Almost! Look for the words the author actually wrote about dogs. What three nice things did the author say?",
+  "reveal_feedback": "That one was tricky! The author says dogs are loyal, playful, and loving. Those are the reasons dogs make great pets. Now you know!"
+ },
+ {
+  "id": "RI.1.8-Q3",
+  "correct_feedback": "Yes! The author gives one reason: vegetables have vitamins that help you grow strong. Nice work listening!",
+  "incorrect_feedback": "Take another look! The story said what the author does NOT say. Find the one real reason about vegetables.",
+  "reveal_feedback": "That one was tricky! The reason is that vegetables have vitamins that help you grow strong. That's the one the author gives. Now you know!"
+ },
+ {
+  "id": "RI.1.8-Q4",
+  "correct_feedback": "Yes! The author says recycling reduces trash and keeps Earth clean. That's the reason. Nice work!",
+  "incorrect_feedback": "Close one! A reason tells WHY recycling is important. Read again and find what recycling does.",
+  "reveal_feedback": "That one was tricky! The reason is that it reduces trash and keeps Earth clean. That's why recycling matters. Now you know!"
+ },
+ {
+  "id": "RI.1.8-Q5",
+  "correct_feedback": "Yes! The author says reading helps you learn words and understand stories. Nice work finding the reason!",
+  "incorrect_feedback": "Not yet! Look for the good things the author says reading does for you. What does reading help you do?",
+  "reveal_feedback": "That one was tricky! The author says reading helps you learn words and understand stories. Now you know!"
+ },
+ {
+  "id": "RI.1.8-H1",
+  "correct_feedback": "Yes! Eating bugs that hurt our gardens is WHY bats are helpful. Nice work finding the reason!",
+  "incorrect_feedback": "Good try! One sentence tells WHY bats help us. Sleeping in caves is not a help. Which one is?",
+  "reveal_feedback": "That one was tricky! Bats are helpful because they eat bugs that hurt our gardens. That's the WHY. Now you know!"
+ },
+ {
+  "id": "RI.1.8-H2",
+  "correct_feedback": "Yes! You wear a warm coat so you do not shiver in the cold. Nice work finding the reason!",
+  "incorrect_feedback": "Almost! A coat keeps you warm. Read again and find WHY the author says to wear one.",
+  "reveal_feedback": "That one was tricky! The reason is so you do not shiver. A warm coat keeps you from getting cold. Now you know!"
+ },
+ {
+  "id": "RI.1.8-H3",
+  "correct_feedback": "Yes! Strong bones and good teeth are reasons that show milk is good for kids. Nice work!",
+  "incorrect_feedback": "Take another look! The two reasons both point to one big idea. What are these reasons trying to prove?",
+  "reveal_feedback": "That one was tricky! The reasons show that milk is good for kids. Strong bones and good teeth prove it. Now you know!"
+ },
+ {
+  "id": "RI.1.8-H4",
+  "correct_feedback": "Yes! Staying from getting sick is another great reason to wash your hands. Nice work!",
+  "incorrect_feedback": "Close one! A good reason to wash tells why it helps YOU. The sink and the fingers don't. Which one helps?",
+  "reveal_feedback": "That one was tricky! Another good reason is that clean hands help keep you from getting sick. Now you know!"
+ },
+ {
+  "id": "RI.1.8-H5",
+  "correct_feedback": "Yes! Soft feathers let the owl fly so quietly the mouse never hears it. Nice work finding the reason!",
+  "incorrect_feedback": "Good try! The question asks why the owl is QUIET. Big eyes help it see, but what helps it stay silent?",
+  "reveal_feedback": "That one was tricky! The owl can sneak up because its soft feathers let it fly quietly. Now you know!"
+ },
+ {
+  "id": "RI.1.9-Q1",
+  "correct_feedback": "Yes! A walk IS exercise, so both books mean the same thing with different words. Nice work!",
+  "incorrect_feedback": "Hmm, a walk gives a dog exercise. Are the books really saying different things, or the same idea?",
+  "reveal_feedback": "That one was tricky! The books are saying the same thing in different words. A walk is exercise. Now you know!"
+ },
+ {
+  "id": "RI.1.9-Q2",
+  "correct_feedback": "Yes! Both books call the sun a star, so that's what they agree about. Nice work!",
+  "incorrect_feedback": "Almost! Read both books again. What is the ONE word both of them use for the sun?",
+  "reveal_feedback": "That one was tricky! Both books agree the sun is a star. They both use that word. Now you know!"
+ },
+ {
+  "id": "RI.1.9-Q3",
+  "correct_feedback": "Yes! One book is about a pet dog and one is about a wild wolf. That's how they are different. Nice work!",
+  "incorrect_feedback": "Take another look! A pet and a wild animal are not the same. Think about how the two books are different.",
+  "reveal_feedback": "That one was tricky! The books are different because one is about a pet, one is about a wild animal. Now you know!"
+ },
+ {
+  "id": "RI.1.9-Q4",
+  "correct_feedback": "Yes! One book tells how rain forms and one tells why plants need rain, so both are about rain. Nice work!",
+  "incorrect_feedback": "Close one! Think about what BOTH books talk about. What one thing is in each book?",
+  "reveal_feedback": "That one was tricky! They are similar because they both are about rain. Now you know!"
+ },
+ {
+  "id": "RI.1.9-Q5",
+  "correct_feedback": "Yes! Max and Lucy are different sizes and colors, but they are both dogs. That's the same thing. Nice work!",
+  "incorrect_feedback": "Not yet! One is big and one is small, so those are different. What is the SAME about both of them?",
+  "reveal_feedback": "That one was tricky! The same thing is that they are both dogs. Now you know!"
+ },
+ {
+  "id": "RI.1.9-H1",
+  "correct_feedback": "Yes! Both books say frogs live by ponds, so that's the thing they share. Nice work!",
+  "incorrect_feedback": "Good try! One fact is in BOTH books. Hopping and green are only in one book each. Which fact is in both?",
+  "reveal_feedback": "That one was tricky! Both books tell you frogs live by ponds. Now you know!"
+ },
+ {
+  "id": "RI.1.9-H2",
+  "correct_feedback": "Yes! One book says night and one says morning, so they do not agree about WHEN bats fly. Nice work!",
+  "incorrect_feedback": "Almost! Both books say bats fly, but they say different TIMES. What are they not agreeing on?",
+  "reveal_feedback": "That one was tricky! The books do not agree about WHEN bats fly. One says night, one says morning. Now you know!"
+ },
+ {
+  "id": "RI.1.9-H3",
+  "correct_feedback": "Yes! Stinging is in Book 2 only. Book 1 never says it. Nice work comparing them!",
+  "incorrect_feedback": "Take another look! Find the fact that is ONLY in Book 2. Wings are in both books, so it's not that one.",
+  "reveal_feedback": "That one was tricky! The answer is 'Bees can sting.' It's in Book 2 but not Book 1. Now you know!"
+ },
+ {
+  "id": "RI.1.9-H4",
+  "correct_feedback": "Yes! One book tells you to wear boots and a coat, so it helps you get ready. Nice work picking it!",
+  "incorrect_feedback": "Close one! You want to know what to WEAR outside. One book is about how rain forms. Which book tells about clothes?",
+  "reveal_feedback": "That one was tricky! Book 2 helps you more, because it tells you to wear boots and a coat. Now you know!"
+ },
+ {
+  "id": "RI.1.9-H5",
+  "correct_feedback": "Yes! Book 1 calls ants the best, but Book 2 only says they're okay. Book 1 likes them more. Nice work!",
+  "incorrect_feedback": "Not yet! Read how each book feels about ants. One is very happy about them, one is not. Which book likes ants more?",
+  "reveal_feedback": "That one was tricky! Book 1 likes ants more than Book 2 does. Book 1 calls them the best. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-Q1",
+  "correct_feedback": "Yes! Every sentence starts with a big capital letter. Nice work!",
+  "incorrect_feedback": "Hmm, think about the very FIRST letter of a sentence. Is it a big letter or a small one?",
+  "reveal_feedback": "That one was tricky! A sentence always starts with a capital letter. The first letter is always big. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-Q2",
+  "correct_feedback": "Yes! Sentences end with a period, question mark, or exclamation point. Nice work!",
+  "incorrect_feedback": "Almost! Think about the mark at the very END of a sentence. A comma or a space doesn't stop it. What does?",
+  "reveal_feedback": "That one was tricky! A sentence ends with a period, question mark, or exclamation point. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-Q3",
+  "correct_feedback": "Yes! It starts with a capital and ends with a period. That's a correct sentence. Nice work!",
+  "incorrect_feedback": "Take another look! A good sentence needs a BIG first letter AND an end mark. Which one has both?",
+  "reveal_feedback": "That one was tricky! The correct one is 'The dog ran fast.' It has a capital and a period. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-Q4",
+  "correct_feedback": "Yes! The word 'she' begins the sentence, so it needs a big capital S. Nice work spotting it!",
+  "incorrect_feedback": "Close one! Look at the very first letter. A sentence should always START with a big letter. What is missing?",
+  "reveal_feedback": "That one was tricky! It needs a capital S. The first word of a sentence starts with a big letter. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-Q5",
+  "correct_feedback": "Yes! That one starts with a small letter, so it needs a capital at the beginning. Nice work!",
+  "incorrect_feedback": "Take another look! Three of these already start with a big letter. Find the one that starts with a small letter.",
+  "reveal_feedback": "That one was tricky! The answer is 'do you like to play?' It starts with a small d and needs a capital. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-H1",
+  "correct_feedback": "Yes! It has a big first letter AND a period at the end. That's a complete sentence. Nice work!",
+  "incorrect_feedback": "Good try! A complete sentence needs a capital at the start AND an end mark. Which one has both?",
+  "reveal_feedback": "That one was tricky! The answer is 'The frog can jump.' It has a capital and a period. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-H2",
+  "correct_feedback": "Yes! That one is asking about a hat, so it needs a question mark. Nice work hearing the question!",
+  "incorrect_feedback": "Almost! A question ASKS something. Read each one and find the one that asks, not tells.",
+  "reveal_feedback": "That one was tricky! The answer is 'Where is my red hat.' It asks something, so it needs a question mark. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-H3",
+  "correct_feedback": "Yes! It has a naming part and a doing part, so it's a complete sentence. Nice work!",
+  "incorrect_feedback": "Take another look! A complete sentence needs a WHO and a WHAT they do. Which one tells a whole idea?",
+  "reveal_feedback": "That one was tricky! The complete sentence is 'The cat naps.' It has a who and what it does. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-H4",
+  "correct_feedback": "Yes! Each part ends with its own mark, so there are three sentences. Nice counting!",
+  "incorrect_feedback": "Close one! Count the end marks, like the periods and the exclamation point. Each one ends a sentence. How many?",
+  "reveal_feedback": "That one was tricky! There are 3 sentences. Count the three end marks. Now you know!"
+ },
+ {
+  "id": "RF.1.1a-H5",
+  "correct_feedback": "Yes! 'my' is the first word, so it needs the big capital letter. Nice work!",
+  "incorrect_feedback": "Take another look! The capital goes on the FIRST word of the sentence. Which word comes first?",
+  "reveal_feedback": "That one was tricky! The word 'my' should start with a capital. It's the first word. Now you know!"
+ },
+ {
+  "id": "RF.1.2b-H1",
+  "correct_feedback": "Yes! /s/ /t/ /r/ /a/ /p/ blends together to make strap. Nice work sounding it out!",
+  "incorrect_feedback": "Almost! Say each sound slow, then fast: /s/ /t/ /r/ /a/ /p/. Don't drop any sound. What word is it?",
+  "reveal_feedback": "That one was tricky! The word is strap. All five sounds blend together, /s/ /t/ /r/ /a/ /p/. Now you know!"
+ },
+ {
+  "id": "RF.1.2b-H2",
+  "correct_feedback": "Yes! /d/ /r/ /i/ /f/ /t/ blends together to make drift. Nice work sounding it out!",
+  "incorrect_feedback": "Good try! Blend each sound slow, then fast: /d/ /r/ /i/ /f/ /t/. Keep all five sounds. What word is it?",
+  "reveal_feedback": "That one was tricky! The word is drift. All five sounds blend together, /d/ /r/ /i/ /f/ /t/. Now you know!"
+ },
+ {
+  "id": "RF.1.2b-H3",
+  "correct_feedback": "Yes! In this word you can hear the /s/ and /l/ as two separate sounds. That's a blend. Nice work!",
+  "incorrect_feedback": "Not yet! A blend has two sounds you hear one after the other. Some of these make just ONE new sound. Which has two?",
+  "reveal_feedback": "That one was tricky! The answer is sled. You can hear /s/ and /l/ as two sounds. Now you know!"
+ }
+]

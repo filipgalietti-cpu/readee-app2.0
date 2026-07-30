@@ -1,0 +1,947 @@
+{
+  "summary": "Grade all 201 lessons against the 25-rule rubric on BOTH desktop + mobile screenshots; produce a pass/fail scorecard",
+  "agentCount": 176,
+  "logs": [
+    "[stall] agent \"audit:RF.K.1b\" stalled (no progress) after 415s — retrying (1/5)",
+    "[stall] agent \"audit:RF.K.2b\" stalled (no progress) after 403s — retrying (1/5)",
+    "[stall] agent \"audit:RF.K.2\" stalled (no progress) after 405s — retrying (1/5)",
+    "[stall] agent \"audit:RF.K.1a\" stalled (no progress) after 417s — retrying (1/5)",
+    "[stall] agent \"audit:RF.K.2a\" stalled (no progress) after 404s — retrying (1/5)",
+    "[stall] agent \"audit:RF.K.3\" stalled (no progress) after 381s — retrying (1/5)",
+    "[audit:RL.1.9] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.3b] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.3c] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.3d] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.3f] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.3g] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.2c] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.3e] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.1.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.1.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.1.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.1.4b] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.1.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.1.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.8] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.9] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.7] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.9] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.2.10] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.10] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.2.3a] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.2.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.2.3b] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.2.3c] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.2.3d] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.2.3f] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.2.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.2.3e] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.2d] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.2.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.2.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.2.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.2.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.2.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.2.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.2.7] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.7] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.9] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.9] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.8] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.7] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.3.10] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.3.10] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.3.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.3.3a] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.3.3c] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.3.3d] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.3.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.2b] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.3.3b] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.4b] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.4d] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.5a] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.5b] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.3.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.7] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.9] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.8] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.7] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.9] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.10] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.4.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RI.4.10] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.4.3a] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RL.4.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.4.1] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.4.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.4.2] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.4.3] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.4.4] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.4.4b] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.4.6] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:L.4.5] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[audit:RF.1.1a] failed: You've hit your session limit · resets 1:30am (America/New_York)",
+    "[stall] agent \"audit:RF.1.3\" stalled (no progress) after 9628s — retrying (1/5)",
+    "[stall] agent \"audit:RF.1.3a\" stalled (no progress) after 9619s — retrying (1/5)",
+    "AUDIT COMPLETE: 3 pass / 26 minor / 32 fail (of 61). 49 blocker issues."
+  ],
+  "result": {
+    "audited": 61,
+    "pass": 3,
+    "minor": 26,
+    "fail": 32,
+    "failures": [
+      {
+        "std": "RL.K.2",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "minor",
+        "failedRules": [
+          25,
+          8
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "both",
+            "problem": "Teach slide 3 ('Don't Forget the Middle!') renders the answer pill 'The action!' as plain BLACK body text floating outside any violet/themed card. Black body text outside a card is the explicitly prohibited pattern. Visible on both desktop (s3) and mobile (s3).",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Teach slide 3 on mobile (s3) has severe dead space: heading + two small pills sit in the vertical center with very large empty regions above and below; the panel looks unfinished/floating-in-a-void.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 8,
+            "surface": "desktop",
+            "problem": "Teach slide 2 ('How Do We Retell a Story?') stacks too many pills (Retell:..., Beginning?, Middle?, then a Beginning/Middle/End row). On desktop (s2) the bottom 'Middle' and 'End' pills are crammed against and clipped by the panel edge / Next button.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RL.K.3",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Tip slide (s4) renders the owl image and the 'A HELPFUL TRICK!' eyebrow label, but the three trick pills (Who? / Where? / What?) that appear on desktop are absent on mobile, leaving the entire lower half of the panel empty. The slide reads as floating-in-a-void / unfinished, with severe dead space below the eyebrow label.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.K.3",
+        "desktop": "pass",
+        "mobile": "minor",
+        "content": "fail",
+        "failedRules": [
+          4,
+          20,
+          24
+        ],
+        "issues": [
+          {
+            "rule": 24,
+            "surface": "content",
+            "problem": "MCQ slide index 8 is completely empty: prompt is \"\", choices is null, correct is null. This is a broken/filler practice question that would render blank or crash. Blocker content defect.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 20,
+            "surface": "content",
+            "problem": "MCQ #2 prompt 'What does the passage help us understand about how water and ice are connected?' and MCQ #5 'The passage says a seed needs water and sun...' both reference a passage that is NOT present in the prompt. Kids have nothing to read. Question is unanswerable as shown.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.K.4",
+        "desktop": "minor",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Example slide (s3): the green 'Frigid means Very Cold!' answer card — the payoff of the example — is cut off at the bottom edge of the lesson panel. Only the top of the card and 'Frigid means' is visible; 'Very Cold!' is clipped. Content overflows the mobile viewport.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Teach slide (s2): severe dead space. The CLUE/HOW IT HELPS table and its two rows sit in the lower-middle of the panel with a large empty void above the heading and below the rows; the slide reads as unfinished/floating-in-a-void on the phone.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RL.K.5",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Mobile renderer crashes from the tip slide onward: screenshots s5 (tip 'A Helpful Trick!'), s6 (interactive fork 'Your Turn!'), and s7-s10 (practice-intro) all render the Next.js error boundary ('Something went wrong', Turbopack runtime issue, '1 Issue' overlay) instead of the lesson. The desktop versions of these exact slides render correctly, so the data is valid but the mobile surface fails to display the tip, the interactive 'Your Turn!' fork, and the practice intro. Major mobile-only break.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.K.5",
+        "desktop": "minor",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25,
+          9
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Teach slide 3 (\"Open It Up\") renders a single short pill (\"Tells who made it\") floating in a very tall empty panel with massive dead space above and below it. Looks unfinished compared to the sibling teach slide (\"The Covers\") which has an image plus two pills. The slide has no image to fill the void.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 9,
+            "surface": "mobile",
+            "problem": "Example slide (\"Let's Try One\") worksheet row truncates the answer: \"SHOWS PICTURE AND NAME?  F..\" - the answer \"Front cover!\" is clipped to \"F..\" on the narrow mobile worksheet row. Desktop renders the same answer in full.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.K.6",
+        "desktop": "minor",
+        "mobile": "fail",
+        "content": "fail",
+        "failedRules": [
+          5,
+          13,
+          24,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 5,
+            "surface": "both",
+            "problem": "Teach slide 1 table row reads \"Drawe the PICTURES\" - a spelling typo; should be \"Draws the PICTURES\". Visible on both desktop and mobile.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 24,
+            "surface": "content",
+            "problem": "Same \"Drawe\" typo is a content-quality defect (does not match correct spoken word \"draws\").",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Tip slide (s5) two-column table is clipped on the phone: the entire right \"THAT TELLS YOU...\" column is cut off the right edge, showing only \"AU...\", \"ILL...\", \"ME...\". The kid never sees the AUTHOR/ILLUSTRATOR/MESSAGE answers. Heading also wraps awkwardly. The two-column table does not fit the mobile width.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 13,
+            "surface": "mobile",
+            "problem": "Structured-set table renders correctly on desktop but its second column overflows the phone viewport on mobile, so the table fails as a usable structure on the small surface.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.K.7",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Tip slide (s4) two-column 'Ask Yourself / The picture shows you...' table does not reflow for phone width. The right column renders as BLACK body text ('What things LOOK like', 'What the words MEAN') squeezed into a narrow strip against the right edge, wrapping one word per line. Black body text outside any card plus a cramped, unfinished-looking layout.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.K.8",
+        "desktop": "minor",
+        "mobile": "fail",
+        "content": "minor",
+        "failedRules": [
+          19,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 19,
+            "surface": "both",
+            "problem": "Teach slide (s2) is about 'Recess is the best part of school' with reasons 'you get to run / play with friends', but the image shows a boy hugging a dog. The image clearly does not match the recess/school content of the slide. Visible on both desktop and mobile.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Tip slide (mobile s4) renders only the heading 'A HELPFUL TRICK!' with the two tip pills ('Ask: why is it true?' / 'The why is your reason') missing entirely, leaving a large empty void below the image. These pills render correctly on desktop (s4) but are absent on mobile, so the slide looks unfinished.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Practice-intro slide (mobile s6) shows only the 'TIME TO PRACTICE!' heading; the three displayParts pills ('Your turn!', 'Find the reasons', 'In a book') that appear on desktop (s6) are not rendered, leaving severe dead space below the image.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RL.K.9",
+        "desktop": "pass",
+        "mobile": "minor",
+        "content": "fail",
+        "failedRules": [
+          24,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 24,
+            "surface": "content",
+            "problem": "Second MCQ practice question (slides array index 8) is completely empty in the data: prompt is \"\", choices is null, correct is null. This is a broken/blank practice question that will render as an empty or non-functional MCQ, failing 'every slide earns its screen time'. Genuine data defect requiring a fix.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RL.K.10",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "fail",
+        "failedRules": [
+          25,
+          24,
+          21
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "On the example slide (mobile s4), the first Q->A row's answer is clipped with an ellipsis ('Raise your ha...'). The full answer 'Raise your hand!' does not fit in the compact side-pill row and is cut off, so the kid cannot read the complete answer.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 24,
+            "surface": "content",
+            "problem": "One MCQ practice question (slides[9]) is empty/broken in the data: prompt is \"\", choices is null, correct is null. This would render as a blank or broken practice question.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.K.1",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "fail",
+        "failedRules": [],
+        "issues": [
+          {
+            "rule": 1,
+            "surface": "content",
+            "problem": "No lesson exists for the assigned standard 'RF.K.1'. Neither scripts/audit201-payload.json nor scripts/shot-map.json contains a key 'RF.K.1'. The standard is split into four sub-standard lessons: RF.K.1a, RF.K.1b, RF.K.1c, RF.K.1d. There is no content data and no desktop/mobile screenshots keyed to 'RF.K.1', so this lesson cannot be graded. This is a task/data-mapping issue (the assigned standard does not correspond to a single auditable lesson), not a quality defect of any rendered lesson.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.K.1c",
+        "desktop": "minor",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Teach slide (s2) 'the cat sat' example image overflows/zooms its frame on mobile - text is clipped on both edges, rendering as 'he cat sa' with the leading and trailing 't' cut off. Desktop renders the same image correctly as 'the cat sat'. This is the lesson's key teaching visual and it is cut off on phone.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.K.2a",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "both",
+            "problem": "Interactive fork slide (s5, 'Rhyme Time!') has severe dead space / floating-in-a-void composition. The bunny coach floats high in the left panel while the heading, 'Which word rhymes?' prompt, and the three choice pills sit far below, leaving large empty regions above and below the content group. On mobile the void between the bunny and the prompt is especially large (roughly the middle third of the panel is empty), so the slide reads as unbalanced/unfinished rather than a centered content group filling the panel.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.K.2c",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Teach slide 2 (\"Listening for Sounds\") on mobile renders only the gray heading with NO content below it — the B-A-L-L START/END letter tiles that appear on the desktop version (and on the analogous mobile slides s4/s5) failed to render here, leaving roughly the bottom half of the panel as empty dead space that looks unfinished/broken.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.K.2e",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          8,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Teach slide 2 ('How Does It Work?') on mobile renders only the DJ image plus a tiny gray heading with NO letter-swap pills and a large empty void filling the lower half of the panel. The desktop version shows S-A-T / C-A-N swap tiles; on mobile those tiles are missing, so the slide looks unfinished and the teaching content is dropped.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 8,
+            "surface": "mobile",
+            "problem": "The core teach step (swap beginning/ending sound, shown as S-A-T / C-A-N tiles on desktop) does not render its pills/tiles on mobile, leaving the concept unanchored on the phone surface.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.K.3",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "fail",
+        "failedRules": [],
+        "issues": [
+          {
+            "rule": 1,
+            "surface": "content",
+            "problem": "No lesson keyed 'RF.K.3' exists in scripts/audit201-payload.json or scripts/shot-map.json. The standard is split into sub-standards only: RF.K.3a, RF.K.3b, RF.K.3c, RF.K.3d. There is no content data and no desktop/mobile screenshots for the exact key 'RF.K.3', so the lesson cannot be audited. The orchestrator likely needs to target one of the sub-standards instead.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.K.3a",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          8,
+          24,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Slide 5 'Try Every Letter!' renders only the heading with no alphabet grid below it; the entire interactive A-Z grid that the desktop shows (and that the audio refers to: 'Tap any letter to hear its name and sound') is missing on mobile, leaving the bottom half of the panel as empty dead space and stripping the slide of its content.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 8,
+            "surface": "mobile",
+            "problem": "Slide 5 teach/tip alphabet content fails to render on mobile (no letters shown), so the slide does not deliver the structured set it is supposed to teach.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.K.3c",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "minor",
+        "failedRules": [
+          19,
+          23
+        ],
+        "issues": [
+          {
+            "rule": 19,
+            "surface": "both",
+            "problem": "Tip slide (s5) image has baked-in text 'looong' and 'pop!' rendered into the illustration (a boy pointing at a long snake vs a mouse). The rubric forbids baked-in text/letters in lesson images. Visible on both desktop and mobile.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "K.L.1",
+        "desktop": "minor",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Teach slide (s2) 'Words Have Jobs!' table floats in the vertical center of a very tall phone panel with large empty space both above the heading and below the Verb row. Content does not fill the panel - reads as floating-in-a-void / unfinished.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Interactive fork slide (s5) 'Your Turn!': bunny sits high in the panel and the question + run/jump/cat pills sit low, leaving a vast empty middle band. Severe dead space, composition does not read as one centered group.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Tip slide (s4) 'A Helpful Trick!' renders only the image and a tiny gray heading at the bottom; the tip pills (Find noun?/Touch or see?, Find verb?/Can I do it?) are absent, leaving the lower panel empty. Looks unfinished/clipped on mobile.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "K.L.2",
+        "desktop": "fail",
+        "mobile": "minor",
+        "content": "pass",
+        "failedRules": [
+          3,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "desktop",
+            "problem": "Tip slide (s4): the second part of the trick, 'Number two: Does it end with punctuation?', renders as bare BLACK body text directly on the white panel, outside any violet/themed card (the first part sits in a green card). Black body text outside a card violates the layout rule.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "K.L.4",
+        "desktop": "minor",
+        "mobile": "fail",
+        "content": "minor",
+        "failedRules": [
+          20,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Tip slide (s4) renders only the image and the 'A HELPFUL TRICK!' eyebrow heading, with a large empty void filling the lower half of the panel. The Read/Look/Guess pills that appear on the desktop version of this same slide do not render on mobile, so the slide looks unfinished/floating-in-a-void.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.1.1",
+        "desktop": "fail",
+        "mobile": "minor",
+        "content": "pass",
+        "failedRules": [
+          25,
+          19
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "desktop",
+            "problem": "Interactive fork slide (s5): severe dead space. The bunny coach is small and floats high in the empty left panel while the 'Your Turn!' heading + question + 3 choice pills cluster in the center-right with large empty regions above and below. The composition reads as unfinished / floating-in-a-void rather than a balanced centered group.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.1.2",
+        "desktop": "fail",
+        "mobile": "minor",
+        "content": "pass",
+        "failedRules": [
+          11,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 11,
+            "surface": "both",
+            "problem": "Fork content mismatch: the authored fork data is about Bees (choices Bees/Honey/Flowers, correct=Bees) and the spoken prompt narrates a bees passage, but the RENDERED fork on both desktop s5 and mobile s5 shows a completely different question -- 'Main topic?' with choices Dogs / Tricks / Fetch. The on-screen fork is internally coherent (Dogs is a plausible main topic, Tricks/Fetch are same-category distractors, no giveaway) but it does NOT match the lesson's audio or authored fork, so a child hears a bees prompt and sees dog choices.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "desktop",
+            "problem": "Fork slide (desktop s5) is unbalanced: the bunny coach floats high in the upper-left of the left panel while the heading/prompt/choices sit low in the right panel, leaving large dead space in both panels -- the slide reads as floating-in-a-void rather than one centered group.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RL.1.3",
+        "desktop": "fail",
+        "mobile": "minor",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "desktop",
+            "problem": "Interactive fork slide (s6) has severe dead space: the entire left panel is empty except a tiny placeholder bunny, and the right column (Your Turn! + 3 choice pills) floats high in the upper-middle with a large empty void filling the bottom half of the panel. Reads as unfinished/floating-in-a-void.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.1.3",
+        "desktop": "minor",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Tip slide (s4 'Ask Why'): the anchor pill 'Ask why: cause' that renders on desktop does NOT appear on mobile. The mobile panel shows the image, then the 'ASK WHY' eyebrow, then a large empty void down to the divider. It reads as unfinished / severe dead space with the tip's one memorable trick missing from the screen.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RL.1.6",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          1,
+          5,
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "desktop",
+            "problem": "Fork slide (s5): the bunny coach floats alone in a completely empty left panel with massive dead space - reads as unfinished/floating-in-a-void.",
+            "severity": "blocker"
+          },
+          {
+            "rule": 25,
+            "surface": "desktop",
+            "problem": "Practice-intro slide (s6): the right panel has a large empty void below the one-line subtitle ('Quick questions ahead...'), heading group sits high with big dead space beneath. Tip slide (s4) right panel also has heading + a single pill with substantial empty space.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.1.6",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Mobile render crashes partway through the lesson. Only slides 1 (intro) and 2 (a teach slide) render as actual lesson content; slides 3 through 10 all show the app's \"Something went wrong / An unexpected error occurred\" error page. The interactive fork, tip, second teach slide, and practice-intro never render on mobile, so the mobile lesson experience is broken and unverifiable.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RI.1.7",
+        "desktop": "pass",
+        "mobile": "fail",
+        "content": "pass",
+        "failedRules": [
+          25
+        ],
+        "issues": [
+          {
+            "rule": 25,
+            "surface": "mobile",
+            "problem": "Mobile capture/render breaks from slide 3 onward: instead of the lesson, slides 3-10 show the app's 'Something went wrong / An unexpected error occurred' error page (with the Next.js dev-tools '1 Issue' overlay). Only mobile slides 1 (intro) and 2 (teach/Winter) render correctly. The healthy-food teach, example, tip, fork, practice-intro, and MCQs are all unverifiable on mobile because the surface errored out. Black error-page heading text is also present, but it is the error screen, not lesson chrome.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.1.2",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "fail",
+        "failedRules": [],
+        "issues": [
+          {
+            "rule": 1,
+            "surface": "both",
+            "problem": "Standard 'RF.1.2' does not exist in scripts/audit201-payload.json or scripts/shot-map.json. Available keys only include sub-standards RF.1.2b, RF.1.2c, RF.1.2d (no bare 'RF.1.2'). No lesson content data and no desktop/mobile screenshots could be located for the literal target standard, so the lesson cannot be audited.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.1.2a",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "fail",
+        "failedRules": [],
+        "issues": [
+          {
+            "rule": 0,
+            "surface": "both",
+            "problem": "Standard RF.1.2a is not present in scripts/audit201-payload.json or scripts/shot-map.json (201 lessons present; RF.1.2 variants are RF.1.2b, RF.1.2c, RF.1.2d only). No content data and no desktop/mobile screenshots exist for RF.1.2a, so the lesson cannot be audited against the rubric.",
+            "severity": "blocker"
+          }
+        ]
+      },
+      {
+        "std": "RF.1.3",
+        "desktop": "fail",
+        "mobile": "fail",
+        "content": "fail",
+        "failedRules": [],
+        "issues": [
+          {
+            "rule": 1,
+            "surface": "content",
+            "problem": "The assigned standard 'RF.1.3' does not exist as a discrete lesson in scripts/audit201-payload.json or scripts/shot-map.json. Neither file contains a key 'RF.1.3'. The standard is split into seven separate lessons (RF.1.3a, RF.1.3b, RF.1.3c, RF.1.3d, RF.1.3e, RF.1.3f, RF.1.3g), each its own auditable unit. There is no lesson content or screenshot set to grade for the exact key 'RF.1.3', so no valid audit can be produced. Re-dispatch this task against one of the specific sub-lesson keys (RF.1.3a-RF.1.3g).",
+            "severity": "blocker"
+          }
+        ]
+      }
+    ],
+    "minorList": [
+      {
+        "std": "RI.K.2",
+        "failedRules": []
+      },
+      {
+        "std": "RL.K.4",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RL.K.6",
+        "failedRules": []
+      },
+      {
+        "std": "RL.K.7",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RI.K.9",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RI.K.10",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RF.K.1a",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RF.K.1b",
+        "failedRules": []
+      },
+      {
+        "std": "RF.K.2a",
+        "failedRules": [
+          21
+        ]
+      },
+      {
+        "std": "RF.K.2b",
+        "failedRules": []
+      },
+      {
+        "std": "RF.K.2d",
+        "failedRules": [
+          19,
+          25
+        ]
+      },
+      {
+        "std": "RF.K.3d",
+        "failedRules": []
+      },
+      {
+        "std": "K.L.5",
+        "failedRules": []
+      },
+      {
+        "std": "K.L.6",
+        "failedRules": []
+      },
+      {
+        "std": "RL.1.1",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RL.1.2",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RL.1.4",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RI.1.4",
+        "failedRules": [
+          3,
+          25
+        ]
+      },
+      {
+        "std": "RL.1.5",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RI.1.5",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RL.1.7",
+        "failedRules": []
+      },
+      {
+        "std": "RI.1.8",
+        "failedRules": [
+          19,
+          25
+        ]
+      },
+      {
+        "std": "RI.1.9",
+        "failedRules": [
+          25
+        ]
+      },
+      {
+        "std": "RL.1.10",
+        "failedRules": []
+      },
+      {
+        "std": "RI.1.10",
+        "failedRules": []
+      },
+      {
+        "std": "RF.1.3a",
+        "failedRules": []
+      }
+    ],
+    "blockerRuleFrequency": {
+      "0": 1,
+      "1": 4,
+      "5": 1,
+      "8": 3,
+      "9": 1,
+      "11": 1,
+      "13": 1,
+      "19": 2,
+      "20": 1,
+      "24": 4,
+      "25": 30
+    }
+  }
+}

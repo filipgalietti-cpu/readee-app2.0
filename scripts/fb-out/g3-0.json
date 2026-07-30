@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.3.1-Q1",
+  "correct_feedback": "Yes! The story says Rosie saw a golden chest resting on the sandy bottom. You read carefully and found exactly what she spotted!",
+  "incorrect_feedback": "Hmm, let's look again at the moment Rosie leaned over the boat. What did the story say was glowing beneath the water?",
+  "reveal_feedback": "The answer is a golden chest. The story tells us she saw a golden chest resting on the sandy bottom of the lake."
+ },
+ {
+  "id": "RL.3.1-Q2",
+  "correct_feedback": "Great thinking! His hands were shaking, and that's a clue he felt nervous and shaky when he first stepped on stage.",
+  "incorrect_feedback": "Almost! The words got easy AFTER he started. Think about the very first moment, when his hands were shaking. What does that show?",
+  "reveal_feedback": "The answer is nervous and shaky. His hands were shaking at first, which shows he felt nervous before he began to speak."
+ },
+ {
+  "id": "RL.3.1-Q3",
+  "correct_feedback": "Nice! Grandma pointed to the lavender and said the grandfather brought those seeds from his village. You caught that clue!",
+  "incorrect_feedback": "Good try! Grandma is telling the story, but she points and says someone else brought the seeds. Who does she say brought them?",
+  "reveal_feedback": "The answer is Mei's grandfather. Grandma said he brought those lavender seeds all the way from his village."
+ },
+ {
+  "id": "RL.3.1-Q4",
+  "correct_feedback": "Exactly! The fox came out with a mouse in its jaws, so it dove into the snow to catch a mouse. Smart reading!",
+  "incorrect_feedback": "Close one! Look at what the fox had in its mouth when it came back out. That clue tells you why it dove in.",
+  "reveal_feedback": "The answer is to catch a mouse. The fox came out of the snowbank with a mouse in its jaws, so that was its goal."
+ },
+ {
+  "id": "RL.3.1-Q5",
+  "correct_feedback": "Yes! The wood was worn smooth from countless fingers over three generations. That means it's been played by many people over many years!",
+  "incorrect_feedback": "Take another look. The wood is worn smooth where many fingers pressed it, and it belonged to three generations. What does worn wood tell us?",
+  "reveal_feedback": "The answer is it's been played by many people over many years. Three generations pressed the strings, wearing the wood smooth."
+ },
+ {
+  "id": "RL.3.1-H1",
+  "correct_feedback": "Wonderful thinking! Mira's winning goal went uncelebrated, so Deshawn gave her the cookie to do something kind for her overlooked moment.",
+  "incorrect_feedback": "Good try! Remember, Mira scored the winning goal but nobody celebrated. Why might that make Deshawn want to give her the cookie?",
+  "reveal_feedback": "The answer is he wanted to do something kind for Mira because her big moment had been overlooked. Her goal went uncelebrated, so he cheered her up."
+ },
+ {
+  "id": "RL.3.1-H2",
+  "correct_feedback": "Great inference! Priya sat where she could see everything and kept a notebook, so she notices and pays attention to what happens around her.",
+  "incorrect_feedback": "Not yet. Think about why Priya sat where she could see the whole playground and why only she could answer Coach's question.",
+  "reveal_feedback": "The answer is she notices and pays attention to what happens around her. She watched the playground and saw who knocked over the shed."
+ },
+ {
+  "id": "RL.3.1-H3",
+  "correct_feedback": "Yes! Leo packed a raincoat, dry socks, a flashlight, and a whistle just in case. That careful planning shows he is careful.",
+  "incorrect_feedback": "Almost! Leo checked the sky and packed extra things in case something went wrong. Which word matches someone who plans ahead like that?",
+  "reveal_feedback": "The answer is careful. Leo packed extra supplies and planned for problems, which shows he is a careful person."
+ },
+ {
+  "id": "RL.3.1-H4",
+  "correct_feedback": "Great reading of her feelings! Theo took over her towers and only he got praised, so Nadia most likely feels left out as she sits alone.",
+  "incorrect_feedback": "Take another look. Theo redid all of Nadia's work and Dad praised only Theo. Then she walked away alone. How would that feel?",
+  "reveal_feedback": "The answer is left out, because her work was taken over and only Theo was praised. That's why she quietly went to sit alone."
+ },
+ {
+  "id": "RL.3.1-H5",
+  "correct_feedback": "Excellent thinking! The keeper feeds the cat and keeps the ghost story going, so he enjoys caring for the cat and keeping the fun tale alive.",
+  "incorrect_feedback": "Hmm, think about this. The keeper saw the cat but still smiled and kept quiet. Why would he keep the milk out AND keep the secret?",
+  "reveal_feedback": "The answer is he enjoys taking care of the cat and likes keeping the fun story alive. He feeds the cat and lets the villagers keep believing in the friendly ghost."
+ },
+ {
+  "id": "RL.3.1-E1",
+  "correct_feedback": "That's right! The story says Maya packed her red backpack. You found the color exactly!",
+  "incorrect_feedback": "Good try! Look for the word that describes Maya's backpack in the very first sentence. What color was it?",
+  "reveal_feedback": "The answer is red. The story says Maya packed her red backpack for the hike."
+ },
+ {
+  "id": "RL.3.1-E2",
+  "correct_feedback": "Yes! Every Saturday, Ben takes Rex to the park to play fetch. You read carefully!",
+  "incorrect_feedback": "Almost! Find the place where Ben takes Rex to run and play fetch. Where do they go?",
+  "reveal_feedback": "The answer is to the park. The story says Ben takes Rex there every Saturday to play fetch."
+ },
+ {
+  "id": "RL.3.1-E3",
+  "correct_feedback": "Great! The plant grew tall because it got plenty of sunlight and water. You found the reason!",
+  "incorrect_feedback": "Take another look. The story gives a reason the plant grew tall. What two things did it get plenty of?",
+  "reveal_feedback": "The answer is because it got sunlight and water. Those two things helped the bean plant grow tall."
+ },
+ {
+  "id": "RL.3.1-E4",
+  "correct_feedback": "Yes! Lily felt happy when she saw the cake with her name on it. You matched the feeling perfectly!",
+  "incorrect_feedback": "Good try! The story uses one word to tell how Lily felt about her cake. Which choice tells a feeling?",
+  "reveal_feedback": "The answer is happy. The story says Lily felt happy when she saw the birthday cake with her name on it."
+ },
+ {
+  "id": "RL.3.1-E5",
+  "correct_feedback": "That's it! During the storm the family stayed inside and read books by candlelight. Nice reading!",
+  "incorrect_feedback": "Close one! Think about what the family did while the storm was happening. What did they do inside?",
+  "reveal_feedback": "The answer is stayed inside and read books. The family read by candlelight during the storm."
+ },
+ {
+  "id": "RL.3.2-Q1",
+  "correct_feedback": "Yes! The fox gave fake praise to trick the crow, so the lesson is don't trust flattery from someone who wants something.",
+  "incorrect_feedback": "Almost! The fox said sweet things only to get the cheese. What lesson does that trick teach us?",
+  "reveal_feedback": "The answer is don't trust flattery from someone who wants something. The fox used sweet words just to get the crow's cheese."
+ },
+ {
+  "id": "RL.3.2-Q2",
+  "correct_feedback": "Great! Because the boy lied before, no one believed his real cry. The message is that lying destroys trust.",
+  "incorrect_feedback": "Take another look. The boy told a lie, so no one believed him when it was real. What does that teach about lying?",
+  "reveal_feedback": "The answer is lying destroys trust. Once the boy lied, the villagers stopped believing him, even when he told the truth."
+ },
+ {
+  "id": "RL.3.2-Q3",
+  "correct_feedback": "Yes! Midas's greedy wish hurt him, so the lesson is be careful what you wish for, because greed has consequences.",
+  "incorrect_feedback": "Good try! Midas got his golden wish but it turned out badly, even for his daughter. What does that warn us about?",
+  "reveal_feedback": "The answer is be careful what you wish for, because greed has consequences. Midas's greedy wish turned his own daughter to gold."
+ },
+ {
+  "id": "RL.3.2-Q4",
+  "correct_feedback": "Exactly! Neither goat would give way, so both fell in. The lesson is that stubbornness and refusing to compromise hurts everyone.",
+  "incorrect_feedback": "Hmm, think about why both goats ended up in the water. Neither would step aside. What lesson does that show?",
+  "reveal_feedback": "The answer is stubbornness and refusing to compromise hurts everyone. Because neither goat gave way, they both fell in the river."
+ },
+ {
+  "id": "RL.3.2-Q5",
+  "correct_feedback": "Nice! The quiet boy who listened solved the riddle. The message is bragging doesn't make you smart, but listening and thinking do.",
+  "incorrect_feedback": "Not yet. The bragger couldn't solve it, but the quiet listener could. What does that tell us really makes someone smart?",
+  "reveal_feedback": "The answer is bragging doesn't make you smart, but listening and thinking do. Kofi listened more than he talked, and he solved the riddle."
+ },
+ {
+  "id": "RL.3.2-H1",
+  "correct_feedback": "Great! Mole prepared all summer and stayed safe in the rains. The lesson is getting ready ahead of time pays off when hard times come.",
+  "incorrect_feedback": "Take another look. Mole worked hard early while others played, and later his tunnels saved everyone. What lesson does that teach?",
+  "reveal_feedback": "The answer is getting ready ahead of time pays off when hard times come. Mole's early work gave everyone a dry place when the floods came."
+ },
+ {
+  "id": "RL.3.2-H2",
+  "correct_feedback": "Yes! The eagle could fly but the peacock could only look pretty. The lesson is what you can do matters more than how you look.",
+  "incorrect_feedback": "Almost! The peacock was beautiful but stayed on the ground, while the eagle could actually fly. What does that teach?",
+  "reveal_feedback": "The answer is what you can do matters more than how you look. The eagle could soar, while the beautiful peacock stayed stuck below."
+ },
+ {
+  "id": "RL.3.2-H3",
+  "correct_feedback": "Great thinking! The woman needed to see his walking speed first. The message is a good answer sometimes needs information first.",
+  "incorrect_feedback": "Good try! Why did the woman wait to watch him walk before telling him the time? What does that show about answering well?",
+  "reveal_feedback": "The answer is a good answer sometimes needs information first. She had to see how fast he walked before she could tell him how long it would take."
+ },
+ {
+  "id": "RL.3.2-H4",
+  "correct_feedback": "Yes! The frog that kept kicking made butter and escaped. The lesson is not giving up can turn a hopeless problem into a solution.",
+  "incorrect_feedback": "Take another look. One frog quit and sank, the other kept kicking and got out. What does the kicking frog teach us?",
+  "reveal_feedback": "The answer is not giving up can turn a hopeless problem into a solution. The frog that kept kicking churned the cream into butter and hopped free."
+ },
+ {
+  "id": "RL.3.2-H5",
+  "correct_feedback": "Nice! The calm river arrived while the rushing stream soaked away. The message is being steady and patient reaches a goal better than rushing.",
+  "incorrect_feedback": "Hmm, think about this. The stream raced and dried up, but the calm river made it. What does that teach about hurrying?",
+  "reveal_feedback": "The answer is being steady and patient reaches a goal better than rushing. The calm river reached the sea, while the rushing stream soaked away."
+ },
+ {
+  "id": "RL.3.3-Q1",
+  "correct_feedback": "Yes! Dina welcomed a lonely classmate and became her friend. That warm act shows kindness. Great job!",
+  "incorrect_feedback": "Good try! Think about how Dina invited the lonely kid to sit with her. What trait does that kind of act show?",
+  "reveal_feedback": "The answer is kindness. Dina noticed a lonely classmate and warmly invited her to sit, which shows a kind heart."
+ },
+ {
+  "id": "RL.3.3-Q2",
+  "correct_feedback": "Yes! Jaylen was nervous but stepped up and scored, so his bravery led to the team winning. Nice cause-and-effect reading!",
+  "incorrect_feedback": "Take another look. Jaylen was scared but stepped up and scored the winning goal. How did that change the ending?",
+  "reveal_feedback": "The answer is his bravery led to the team winning. Even though he was nervous, Jaylen stepped up and scored the winning goal."
+ },
+ {
+  "id": "RL.3.3-Q3",
+  "correct_feedback": "Great! Omar returned the wallet with money inside. That shows he is honest and does the right thing. Well read!",
+  "incorrect_feedback": "Almost! Omar could have kept the money but chose to turn the wallet in. What does that choice tell us about him?",
+  "reveal_feedback": "The answer is he is honest and does the right thing. Omar returned the wallet with the money instead of keeping it."
+ },
+ {
+  "id": "RL.3.3-Q4",
+  "correct_feedback": "Yes! Because Marta wouldn't share, her group stopped including her. You spotted the cause and effect!",
+  "incorrect_feedback": "Take another look. Marta kept the best markers and wouldn't share. What happened to her group because of that?",
+  "reveal_feedback": "The answer is her group stopped including her. Because Marta wouldn't share, the other kids stopped inviting her to work with them."
+ },
+ {
+  "id": "RL.3.3-Q5",
+  "correct_feedback": "Yes! Lily watched the waves, drew a plan, and dug a moat first. Planning like that shows she is careful. Great thinking!",
+  "incorrect_feedback": "Good try! Lily studied the waves and made a plan before she built anything. Which word describes someone who thinks and plans that much?",
+  "reveal_feedback": "The answer is careful. Lily watched, planned, and drew her castle before starting, which shows she is careful."
+ },
+ {
+  "id": "RL.3.3-H1",
+  "correct_feedback": "Great inference! Marisol redid the whole project alone, so Cole felt pushed aside and pulled away. You read his feelings well!",
+  "incorrect_feedback": "Not yet. Marisol changed the project by herself without Cole. Why might that make him stop coming to meetings?",
+  "reveal_feedback": "The answer is he felt pushed aside when Marisol changed the project without him. That's why Cole stopped joining their meetings."
+ },
+ {
+  "id": "RL.3.3-H2",
+  "correct_feedback": "Wonderful! Theo used to guard his cars, but he offered one to Priya. That shows he is starting to share, even though it's hard.",
+  "incorrect_feedback": "Take another look. Theo hated anyone touching his cars, but then he offered one to Priya. How is he changing?",
+  "reveal_feedback": "The answer is he is starting to share, even though it is hard for him. Theo gave Priya a car even though he usually guards them closely."
+ },
+ {
+  "id": "RL.3.3-H3",
+  "correct_feedback": "Yes! Nadia said no to the pool party and picked up her boots, so she keeps her promise and they go to the pond. Nice reading!",
+  "incorrect_feedback": "Good try! Nadia told her friend 'maybe next time' and grabbed her boots. What does that choice make happen next?",
+  "reveal_feedback": "The answer is Nadia keeps her promise, so she and her brother go to the pond. She turned down the party to take him tadpole-catching."
+ },
+ {
+  "id": "RL.3.3-H4",
+  "correct_feedback": "Great! Lena was scared but helped her cousin anyway. That shows she can be brave for someone else even when she's afraid.",
+  "incorrect_feedback": "Take another look. Lena's hands were shaking, yet she still went to help her crying cousin. What does that reveal about her?",
+  "reveal_feedback": "The answer is she can be brave for someone else even when she is afraid. Her hands shook, but she comforted her cousin anyway."
+ },
+ {
+  "id": "RL.3.3-H5",
+  "correct_feedback": "Yes! Omar stopped to help the fallen runner and finished last. He chose to help someone instead of winning. That's why he made the board!",
+  "incorrect_feedback": "Hmm, think about what Omar did when the other boy fell. He slowed to help and finished last. Why would a coach honor that?",
+  "reveal_feedback": "The answer is Omar chose to help someone instead of winning. He stopped to help the fallen runner, so the coach called him a good sport."
+ },
+ {
+  "id": "RL.3.3-E1",
+  "correct_feedback": "Yes! Maya wrapped the shivering puppy in her jacket and carried it home. That shows she is caring. Great job!",
+  "incorrect_feedback": "Good try! Maya warmed a cold puppy and took it home safely. Which word describes someone who does that?",
+  "reveal_feedback": "The answer is caring. Maya wrapped the shivering puppy in her jacket and brought it home, which shows she is caring."
+ },
+ {
+  "id": "RL.3.3-E2",
+  "correct_feedback": "Right! Because Sam forgot his homework, he could not turn it in. You found the cause and effect!",
+  "incorrect_feedback": "Take another look. Sam left his homework at home. What would most likely happen at school because of that?",
+  "reveal_feedback": "The answer is he could not turn in his homework. Since Sam forgot it at home, he had nothing to hand in."
+ },
+ {
+  "id": "RL.3.3-E3",
+  "correct_feedback": "Yes! Leo made his bed, packed lunch, and caught the bus by himself. That shows he is responsible. Nice reading!",
+  "incorrect_feedback": "Almost! Leo did all his morning jobs by himself, on time. Which word describes someone who does that?",
+  "reveal_feedback": "The answer is responsible. Leo made his bed, packed his lunch, and got to the bus on time all by himself."
+ },
+ {
+  "id": "RL.3.3-E4",
+  "correct_feedback": "Yes! Priya practiced every day, so she got better at the piano. Practice leads to progress. Great thinking!",
+  "incorrect_feedback": "Good try! Priya practiced a little every single day, even when it was hard. What would that most likely lead to?",
+  "reveal_feedback": "The answer is she got better at the piano. Practicing every day, even when it was hard, helped her improve."
+ },
+ {
+  "id": "RL.3.3-E5",
+  "correct_feedback": "Yes! Ben smiled, waved, and invited the new student to sit with him. That shows he is friendly. Well done!",
+  "incorrect_feedback": "Take another look. Ben smiled, waved, and welcomed the confused new student. Which word describes someone who does that?",
+  "reveal_feedback": "The answer is friendly. Ben smiled, waved, and invited the new student to sit with him, which shows he is friendly."
+ },
+ {
+  "id": "RL.3.4-Q3",
+  "correct_feedback": "Yes! A dog eating dinner can really happen just as the words say, so that sentence is literal. Great job telling them apart!",
+  "incorrect_feedback": "Almost! Literal means the words really happen, not a picture in your mind. Which sentence could truly happen exactly as written?",
+  "reveal_feedback": "The answer is 'The dog ate his dinner.' That sentence is literal because it can really happen just as the words say."
+ },
+ {
+  "id": "RL.3.4-Q4",
+  "correct_feedback": "Yes! Calling the classroom a zoo is figurative. It means the room was very loud and chaotic. Nice thinking!",
+  "incorrect_feedback": "Take another look. There weren't real animals. A zoo is loud and wild, so what is the sentence really describing?",
+  "reveal_feedback": "The answer is the classroom was very loud and chaotic. Calling it a zoo is a fun way to say it was wild and noisy, not that animals were there."
+ },
+ {
+  "id": "RL.3.5-Q1",
+  "correct_feedback": "Yes! A stanza is a group of lines in a poem, so she wants you to read the second group of lines. Great job!",
+  "incorrect_feedback": "Good try! A stanza is a part of a poem, not a play or a book. What part of a poem could she mean?",
+  "reveal_feedback": "The answer is read the second group of lines in the poem. A stanza is a group of lines, like a paragraph in a poem."
+ },
+ {
+  "id": "RL.3.5-Q3",
+  "correct_feedback": "Yes! Long novels are split into chapters. You matched the book part to the right word!",
+  "incorrect_feedback": "Almost! Verses and stanzas belong to poems, and scenes belong to plays. What part is a long novel split into?",
+  "reveal_feedback": "The answer is chapters. Long novels are divided into chapters, while poems have stanzas and plays have scenes."
+ },
+ {
+  "id": "RL.3.5-Q4",
+  "correct_feedback": "Yes! The poem has three groups of lines with space between them, so it has three stanzas. Nice counting!",
+  "incorrect_feedback": "Take another look. A stanza is a group of lines with a space before the next group. Count how many groups this poem has.",
+  "reveal_feedback": "The answer is three. The poem is written in three groups of lines, and each group of lines is one stanza."
+ }
+]

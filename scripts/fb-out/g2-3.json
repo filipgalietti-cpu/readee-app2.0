@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.2.5-Q3",
+  "correct_feedback": "Yes! The index is a list at the back that shows which page each topic is on, so it takes you right to dolphins. Great thinking!",
+  "incorrect_feedback": "Hmm, think about which text feature is a list at the back that tells you what page each topic is on. Take another look!",
+  "reveal_feedback": "The best one is the index. It's the list at the back of a book that shows which page each topic is on, so you can find dolphins fast."
+ },
+ {
+  "id": "RI.2.5-Q4",
+  "correct_feedback": "That's right! Authors put words in bold to show they are important or brand-new words you should learn. Nice work!",
+  "incorrect_feedback": "Almost! Think about why an author would make a word stand out darker than the rest. Is it just for looks, or to help you? Try again.",
+  "reveal_feedback": "Bold words are there to show important or new vocabulary words. The author makes them dark so you notice the words you need to learn."
+ },
+ {
+  "id": "RI.2.5-H1",
+  "correct_feedback": "Great job! A rain gauge is a weather tool, so Chapter 4: Weather Tools is exactly where Maria should look. Smart reading!",
+  "incorrect_feedback": "Good try! A rain gauge is a tool that measures rain. Which chapter title talks about tools? Take another look at the list.",
+  "reveal_feedback": "Maria should turn to Chapter 4: Weather Tools. A rain gauge is a weather tool, so that chapter is where she'll find it."
+ },
+ {
+  "id": "RI.2.5-H2",
+  "correct_feedback": "Yes! Page 15 is listed for BOTH spiders and webs, so that one page tells about both together. Super sleuthing!",
+  "incorrect_feedback": "Close one! Look at the page numbers next to spiders AND next to webs. Which SAME number shows up on both lines? Try again.",
+  "reveal_feedback": "Sam should open page 15. It's listed next to both spiders and webs, so that one page tells about them together."
+ },
+ {
+  "id": "RI.2.5-H3",
+  "correct_feedback": "Perfect! The glossary explains what bold words mean, so it's the fastest way to learn 'migrate.' Great choice!",
+  "incorrect_feedback": "Not yet! You want the MEANING of a bold word, fast. Which book part explains what bold words mean? Take another look.",
+  "reveal_feedback": "The best thing is to look up 'migrate' in the glossary, where bold words are explained. It gives the meaning quickly."
+ },
+ {
+  "id": "RI.2.5-H4",
+  "correct_feedback": "Yes! Catching and hunting fish is about food, so 'What Sea Turtles Eat' is the right section. Nice thinking!",
+  "incorrect_feedback": "Almost! Max wants to know how turtles catch their FOOD. Which heading is all about eating? Take another look at the list.",
+  "reveal_feedback": "Max should read 'What Sea Turtles Eat.' Catching fish to hunt is about food, so that section is the right match."
+ },
+ {
+  "id": "RI.2.5-H5",
+  "correct_feedback": "Great job! The index lists a word and EVERY page it's on, so Rosa can find all the Mars pages fast. Smart reading!",
+  "incorrect_feedback": "Good try! Rosa wants EVERY page with one word on it. Which tool lists a word and all the pages it appears on? Try again.",
+  "reveal_feedback": "The index will help Rosa most, because it lists a word and every page it appears on. That's how she finds all the Mars pages fast."
+ },
+ {
+  "id": "RI.2.6-Q1",
+  "correct_feedback": "Yes! The author gives steps like brushing and visiting the dentist, so the purpose is to explain how to care for your teeth. Nice!",
+  "incorrect_feedback": "Hmm, read the sentences again. They tell you what to do for your teeth. What is the author trying to help you do? Try again.",
+  "reveal_feedback": "The author's purpose is to explain how to take care of your teeth. Each sentence gives a tip, like brushing and seeing the dentist."
+ },
+ {
+  "id": "RI.2.6-Q2",
+  "correct_feedback": "That's right! The author shares real facts about size and weight, so the purpose is to inform you about blue whales. Great work!",
+  "incorrect_feedback": "Almost! The sentences give facts and numbers, not jokes or a story. What does the author want you to LEARN? Take another look.",
+  "reveal_feedback": "The author wrote this to inform you about blue whales. It gives real facts, like how long and heavy they are."
+ },
+ {
+  "id": "RI.2.6-Q3",
+  "correct_feedback": "Yes! The author says 'Please recycle' and gives reasons to do it, so the purpose is to persuade you. Great thinking!",
+  "incorrect_feedback": "Good try! The author is asking you to DO something and telling you why. What is the author trying to talk you into? Try again.",
+  "reveal_feedback": "The author's main purpose is to persuade you to recycle. Words like 'Please recycle' show the author wants you to act."
+ },
+ {
+  "id": "RI.2.6-Q4",
+  "correct_feedback": "Right! A book that teaches you facts about clouds is written to inform. Nice job spotting that!",
+  "incorrect_feedback": "Hmm, a book that TEACHES you facts isn't trying to scare or make you laugh. What does an author do when they teach facts? Try again.",
+  "reveal_feedback": "The book was written to inform. When an author teaches you facts, like about clouds, their purpose is to inform."
+ },
+ {
+  "id": "RI.2.6-Q5",
+  "correct_feedback": "Yes! The whole text lists the stages egg, caterpillar, chrysalis, and butterfly, so it answers what those stages are. Great!",
+  "incorrect_feedback": "Almost! Look at what the whole text is about. It names egg, caterpillar, and more. What question does that answer? Take another look.",
+  "reveal_feedback": "The author is answering: What are the stages of a butterfly's life? The text lists each stage, so that's the question it answers."
+ },
+ {
+  "id": "RI.2.6-H1",
+  "correct_feedback": "Great job! The author uses First, Then, and Last to walk through building a web, so the purpose is to explain those steps. Nice!",
+  "incorrect_feedback": "Good try! Notice the order words First, Then, and Last. What is the author walking you through step by step? Take another look.",
+  "reveal_feedback": "The author's main purpose is to explain the steps a spider takes to build a web. The words First, Then, and Last show the steps."
+ },
+ {
+  "id": "RI.2.6-H2",
+  "correct_feedback": "Yes! The text starts with a question and then gives the answer, so it was written to explain why leaves change color. Smart!",
+  "incorrect_feedback": "Almost! The text opens with a question and then answers it. What question is the author mostly answering? Take another look.",
+  "reveal_feedback": "The author wrote this mostly to answer why leaves change color in the fall. It asks that question, then explains the reason."
+ },
+ {
+  "id": "RI.2.6-H3",
+  "correct_feedback": "Yes! The author says every school SHOULD give a long recess and gives reasons, so the goal is to convince readers. Great thinking!",
+  "incorrect_feedback": "Good try! The author is telling schools what they SHOULD do and why. What is the author trying to talk readers into? Try again.",
+  "reveal_feedback": "The author is trying to convince readers that schools should give kids a long recess. Words like 'should' show they want to persuade you."
+ },
+ {
+  "id": "RI.2.6-H4",
+  "correct_feedback": "Great job! The author paints a word-picture of sights and sounds, so the purpose is to describe what the rainforest is like. Nice!",
+  "incorrect_feedback": "Almost! The author fills the text with sights and sounds, like birds and frogs. What is the author helping you picture? Try again.",
+  "reveal_feedback": "The author mainly wants to describe what the rainforest is like. The words paint a picture of its sights and sounds."
+ },
+ {
+  "id": "RI.2.6-H5",
+  "correct_feedback": "Yes! The author fixes a wrong idea by explaining bats are mammals, not birds. That's why they wrote it. Smart reading!",
+  "incorrect_feedback": "Close one! Some people believe something wrong about bats. What is the author trying to fix or set straight? Take another look.",
+  "reveal_feedback": "The author wrote this to correct the idea that bats are birds. The text explains bats are really mammals, not birds."
+ },
+ {
+  "id": "RI.2.7-Q1",
+  "correct_feedback": "Yes! The labels point to each part, so the diagram shows you exactly where the roots, stem, and leaves are. Great work!",
+  "incorrect_feedback": "Hmm, think about what those labels and arrows are doing. What does a labeled picture help you see about the plant? Try again.",
+  "reveal_feedback": "The diagram shows you exactly where each plant part is. The labels point right to the roots, stem, leaves, and flower."
+ },
+ {
+  "id": "RI.2.7-Q2",
+  "correct_feedback": "Right! The picture lets you see a thermometer AND read the number on it, so it adds to the words. Nice thinking!",
+  "incorrect_feedback": "Almost! The picture doesn't replace reading, and it does add something. What can you SEE in the picture that the words alone can't show? Try again.",
+  "reveal_feedback": "The picture shows what a thermometer looks like and how to read it. Seeing the 32 degrees helps you understand the words."
+ },
+ {
+  "id": "RI.2.7-Q3",
+  "correct_feedback": "Yes! Animal pictures sit on the countries where they live, so the map shows WHERE different animals live. Great reading!",
+  "incorrect_feedback": "Good try! The map has animals placed on different countries. What does putting animals on places help you learn? Take another look.",
+  "reveal_feedback": "The author added the map to show where different animals live. The animal pictures sit on the places where you'd find them."
+ },
+ {
+  "id": "RI.2.7-Q4",
+  "correct_feedback": "Yes! The plate is split into food-group sections, so the picture shows how much of each group to eat. Smart!",
+  "incorrect_feedback": "Almost! The plate is divided into sections for each food group. What does seeing those sizes help you understand? Try again.",
+  "reveal_feedback": "The image helps the reader see how much of each food group to eat. The plate's sections show the right amount of each."
+ },
+ {
+  "id": "RI.2.7-E1",
+  "correct_feedback": "Yes! The photo lets you see what a fox looks like, right next to the words about it. Great job!",
+  "incorrect_feedback": "Hmm, a photo isn't a song or a way to swim. What does looking at a picture of a fox help you do? Take another look.",
+  "reveal_feedback": "The photo helps you see what a fox looks like. Seeing the picture goes right along with the words about it."
+ },
+ {
+  "id": "RI.2.7-E2",
+  "correct_feedback": "Right! The arrow points straight to the ladybug's wings so you know exactly which part it means. Nice!",
+  "incorrect_feedback": "Almost! An arrow is like a pointing finger. Look where it's aiming on the ladybug. What is it pointing to? Try again.",
+  "reveal_feedback": "The arrow points to the ladybug's wings. It shows you exactly which part of the bug the page is talking about."
+ },
+ {
+  "id": "RI.2.7-E3",
+  "correct_feedback": "Yes! The step-by-step pictures show each part of tying a shoe, so you can follow along. Great work!",
+  "incorrect_feedback": "Good try! These pictures aren't music or cars. They go one after another. What do step-by-step pictures show you how to do? Try again.",
+  "reveal_feedback": "The pictures show each step of tying a shoe. Going one step at a time helps you follow how it's done."
+ },
+ {
+  "id": "RI.2.7-E4",
+  "correct_feedback": "Yes! The big yellow picture shows the sun's color and shape, matching the words. Nice thinking!",
+  "incorrect_feedback": "Hmm, the picture isn't about rain or a cold night. Look at that big yellow circle. What does it show you about the sun? Try again.",
+  "reveal_feedback": "The picture shows the sun's color and shape. The big yellow circle matches the words that say the sun is bright and yellow."
+ },
+ {
+  "id": "RI.2.7-E5",
+  "correct_feedback": "Right! The label 'wheel' points to the wheel, so you learn which part that is. Great job!",
+  "incorrect_feedback": "Almost! A label is a word that names a part. This one points at the bike. What part is it telling you about? Take another look.",
+  "reveal_feedback": "The label helps you learn which part is the wheel. The word 'wheel' points right to it on the bike."
+ },
+ {
+  "id": "RI.2.8-Q1",
+  "correct_feedback": "Yes! If kids focus better, they can do their schoolwork better when they get back to class. That reason backs up why recess helps. Great!",
+  "incorrect_feedback": "Almost! The reason is about the KIDS and their focus in class, not the teachers or being tired. What does focusing help kids do? Try again.",
+  "reveal_feedback": "The best answer: it means kids can do their schoolwork better when they return to class. Focusing better helps their learning."
+ },
+ {
+  "id": "RI.2.8-Q2",
+  "correct_feedback": "Yes! The author says water helps your brain work better, and that's her reason to drink more. Great listening!",
+  "incorrect_feedback": "Good try! Think about what the author actually SAID water does for YOU. It wasn't about plants or being sleepy. Take another look.",
+  "reveal_feedback": "The reason the author gives is that water helps your brain work better. She said it helps you think clearly and learn."
+ },
+ {
+  "id": "RI.2.8-Q3",
+  "correct_feedback": "Right! The fact that helmets cut head injuries by 85% is strong proof they are important. Smart thinking!",
+  "incorrect_feedback": "Almost! Colors and looking cool don't prove helmets keep you SAFE. Which sentence gives real proof that helmets protect you? Try again.",
+  "reveal_feedback": "The support is that helmets reduce head injuries by 85%. That fact proves helmets really do keep you safer."
+ },
+ {
+  "id": "RI.2.8-Q4",
+  "correct_feedback": "Yes! The point is to wear a helmet, and the reason is it keeps your head safe if you fall. You matched them perfectly!",
+  "incorrect_feedback": "Good try! The text isn't about bikes being fun or colors. What does the author want you to DO, and WHY? Take another look.",
+  "reveal_feedback": "The author's point is to wear a helmet, and the reason is it keeps your head safe if you fall. Those two go together."
+ },
+ {
+  "id": "RI.2.8-Q5",
+  "correct_feedback": "Yes! Kids eat more veggies when they grow them themselves, so that reason explains HOW gardens help kids eat healthier. Great!",
+  "incorrect_feedback": "Almost! Being pretty or teaching science doesn't explain healthier EATING. Which reason connects gardens to eating veggies? Try again.",
+  "reveal_feedback": "The reason is that kids eat vegetables they grew themselves. Growing their own food makes kids want to eat it, so they eat healthier."
+ },
+ {
+  "id": "RI.2.8-H1",
+  "correct_feedback": "Yes! One bat eating a thousand bugs so farmers have fewer pests shows exactly why bats are helpful. Sharp reading!",
+  "incorrect_feedback": "Good try! Some sentences are about people being scared, not about bats being HELPFUL. Which sentence shows a way bats HELP? Try again.",
+  "reveal_feedback": "The reason is: one bat can eat over a thousand bugs in one night, so farmers have fewer pests. That shows bats are helpful."
+ },
+ {
+  "id": "RI.2.8-H2",
+  "correct_feedback": "Yes! Cars put dirty smoke in the air, so fewer cars means less smoke and cleaner air. Great connecting!",
+  "incorrect_feedback": "Almost! Think about what comes OUT of cars into the air. Why would fewer cars make the air cleaner? Take another look.",
+  "reveal_feedback": "The reason is that cars put dirty smoke into the air, so fewer cars means less smoke. That's how walking keeps the air cleaner."
+ },
+ {
+  "id": "RI.2.8-H3",
+  "correct_feedback": "Yes! Borrowing any book for free so you can read tons of stories is a strong reason libraries are great for kids. Nice work!",
+  "incorrect_feedback": "Good try! Being quiet or old doesn't really show libraries are GREAT for kids. Which sentence gives a real reason kids love them? Try again.",
+  "reveal_feedback": "The best support is: you can borrow any book for free, so you can read as many stories as you want. That's why libraries are great for kids."
+ },
+ {
+  "id": "RI.2.8-H4",
+  "correct_feedback": "Yes! Peanuts can make some kids sick, so pointing them out shows reading the label keeps you safe. Great thinking!",
+  "incorrect_feedback": "Hmm, the author isn't saying snacks are bad or peanuts taste good. Why would knowing about peanuts matter for your safety? Try again.",
+  "reveal_feedback": "The author mentions peanuts to give a reason that reading the label can keep you safe. Some foods can make you sick, so the label warns you."
+ },
+ {
+  "id": "RI.2.8-H5",
+  "correct_feedback": "Yes! Keeping your family company so no one feels lonely is another good reason dogs make great pets. Perfect choice!",
+  "incorrect_feedback": "Almost! Barking all night or vet visits are not reasons dogs are GOOD pets. Which sentence gives one more GOOD reason? Try again.",
+  "reveal_feedback": "The author should add: a dog will keep your family company so no one feels lonely. That's one more reason dogs make good pets."
+ },
+ {
+  "id": "RI.2.9-Q1",
+  "correct_feedback": "Yes! One text says loyal and the other says trainable, but BOTH agree dogs are great pets. Great comparing!",
+  "incorrect_feedback": "Good try! Loyal and trainable are what each text says on its OWN. What big idea do BOTH texts share? Take another look.",
+  "reveal_feedback": "Both texts agree that dogs are great pets. They give different reasons, but they both share that same main idea."
+ },
+ {
+  "id": "RI.2.9-Q2",
+  "correct_feedback": "Yes! Text A describes ocean animals and Text B tells how to keep the ocean clean, so that's the big difference. Sharp reading!",
+  "incorrect_feedback": "Almost! Both texts are about the ocean, not land or swimming. Think about what EACH text mostly teaches. How are they different? Try again.",
+  "reveal_feedback": "The biggest difference: Text A describes different kinds of ocean animals, and Text B explains how to protect the ocean from trash."
+ },
+ {
+  "id": "RI.2.9-Q3",
+  "correct_feedback": "Yes! Only Text B mentions that bats help farmers by keeping pests away. Great job comparing the two!",
+  "incorrect_feedback": "Good try! Using sound was in Text A. Look at what's NEW in Text B only. What extra fact does it add? Take another look.",
+  "reveal_feedback": "Text B tells you that bats help farmers, which Text A does not. Text B adds that bats eat insects and keep pests away."
+ },
+ {
+  "id": "RI.2.9-Q4",
+  "correct_feedback": "Yes! Text 1 and Text 2 both say the pets have soft fur, so that's what they share. Nice comparing!",
+  "incorrect_feedback": "Almost! Walks and barking are only about one pet. Read both texts and find the fact that is TRUE for both. Take another look.",
+  "reveal_feedback": "Both texts say the pets have soft fur. That's the one fact that is true for both the dog and the cat."
+ },
+ {
+  "id": "RI.2.9-Q5",
+  "correct_feedback": "Yes! A healthy heart is only in Text A, while Text B talks about sleep and bones. Great job telling them apart!",
+  "incorrect_feedback": "Good try! Better sleep and stronger bones were in Text B. Which benefit shows up ONLY in Text A? Take another look.",
+  "reveal_feedback": "A healthy heart is mentioned in Text A but not Text B. Text B talks about better sleep and strong bones instead."
+ },
+ {
+  "id": "RI.2.9-H1",
+  "correct_feedback": "Yes! Both texts show a bee going from one flower to another. That's the idea they share. Sharp reading!",
+  "incorrect_feedback": "Good try! Yellow dust, seeds, and baby bees each show up in only ONE text. What does a bee do in BOTH texts? Take another look.",
+  "reveal_feedback": "Both texts tell you that a bee moves from one flower to another. That's the idea they both share."
+ },
+ {
+  "id": "RI.2.9-H2",
+  "correct_feedback": "Yes! Text A says rain helps us, and Text B says too much rain can cause trouble. That's the difference. Great thinking!",
+  "incorrect_feedback": "Almost! Neither text says rain is all bad. Think about how each text FEELS about rain. How are they different? Take another look.",
+  "reveal_feedback": "The difference: Text A says rain helps, but Text B says rain can cause trouble, like flooding roads."
+ },
+ {
+  "id": "RI.2.9-H3",
+  "correct_feedback": "Yes! Text A shows penguins swimming in cold water and Text B shows them staying warm, so both tell us they live where it's cold and near water. Great!",
+  "incorrect_feedback": "Good try! Feathers and paddling wings each come from only ONE text. What idea do BOTH texts help you understand? Take another look.",
+  "reveal_feedback": "Both texts help you understand that penguins live where it is cold and near water. One shows them swimming, the other shows them staying warm."
+ },
+ {
+  "id": "RI.2.9-H4",
+  "correct_feedback": "Yes! Both classes watered their plants, so both plants needed water often to grow. Great comparing!",
+  "incorrect_feedback": "Almost! One class grew red tomatoes and the other grew yellow sunflowers, so those aren't the same. What did BOTH plants need? Try again.",
+  "reveal_feedback": "Both plants needed water often to grow. Each class watered their plant every day, so that's the way they were the same."
+ }
+]

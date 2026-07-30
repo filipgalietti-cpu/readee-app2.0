@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RI.4.1-E5",
+  "standard": "RI.4.1",
+  "prompt": "Read the sentence: \"Because it was raining hard, the class ate lunch inside the school.\" Where did the class eat lunch?",
+  "choices": [
+   "Inside the school",
+   "At the beach",
+   "On the playground",
+   "In a boat"
+  ],
+  "correct": "Inside the school"
+ },
+ {
+  "id": "RI.4.2-Q1",
+  "standard": "RI.4.2",
+  "prompt": "Plastic pollution is devastating ocean ecosystems. Over 8 million tons of plastic enter the oceans each year. Sea turtles mistake plastic bags for jellyfish. Microplastics have been found in fish that humans eat.\n\nWhat is the main idea?",
+  "choices": [
+   "Plastic pollution is seriously harming ocean life",
+   "Sea turtles eat jellyfish",
+   "8 million tons is a lot",
+   "Fish contain microplastics"
+  ],
+  "correct": "Plastic pollution is seriously harming ocean life"
+ },
+ {
+  "id": "RI.4.2-Q2",
+  "standard": "RI.4.2",
+  "prompt": "Ancient Rome's road system was an engineering marvel. Roman roads were built in layers \u2014 gravel, sand, and paving stones \u2014 designed to last centuries. Over 250,000 miles of roads connected the empire. Many of these roads are still visible today.\n\nWhich detail BEST supports the main idea that Roman roads were remarkable?",
+  "choices": [
+   "Roads were made of gravel",
+   "Many roads are still visible centuries later",
+   "Rome had an empire",
+   "Roads connected cities"
+  ],
+  "correct": "Many roads are still visible centuries later"
+ },
+ {
+  "id": "RI.4.2-Q3",
+  "standard": "RI.4.2",
+  "prompt": "Read the passage about bees, then answer the question. \"Bees are amazing insects that play a super important role in nature. They are known for making honey, which is a sweet food that humans and other animals love to eat. But bees do much more than just make honey! When bees fly from flower to flower collecting nectar, they also carry tiny grains of pollen on their bodies. This movement of pollen helps plants make seeds and new plants. Without bees, many fruits, vegetables, and flowers would not be able to grow. There are many different kinds of bees, like honeybees and bumblebees, and they all work hard to help our planet.\" Which choice provides the best summary of the text?",
+  "choices": [
+   "Bees make sweet honey for humans and animals to eat, and they also fly around to different flowers.",
+   "Many kinds of bees, like honeybees and bumblebees, work hard every day to collect nectar for their hives.",
+   "Bees are important insects because they help plants grow new seeds by spreading pollen from flower to flower, and they also make honey.",
+   "Bees collect tiny grains of pollen on their bodies, which helps plants make new seeds and grow many fruits and vegetables."
+  ],
+  "correct": "Bees are important insects because they help plants grow new seeds by spreading pollen from flower to flower, and they also make honey."
+ },
+ {
+  "id": "RI.4.2-Q4",
+  "standard": "RI.4.2",
+  "prompt": "Exercise benefits the brain in multiple ways. Physical activity increases blood flow to the brain, delivering more oxygen. It also triggers the release of chemicals that improve mood and focus. Studies show students who exercise regularly perform better academically.\n\nHow does the detail about students support the main idea?",
+  "choices": [
+   "It's about schools, not brains",
+   "It contradicts the main idea",
+   "It changes the topic",
+   "It provides real-world evidence that exercise helps brains work better"
+  ],
+  "correct": "It provides real-world evidence that exercise helps brains work better"
+ },
+ {
+  "id": "RI.4.2-Q5",
+  "standard": "RI.4.2",
+  "prompt": "Paragraph 1: Renewable energy sources like solar and wind are growing rapidly. Paragraph 2: Solar panel costs have dropped 89% since 2010. Paragraph 3: Wind energy now powers millions of homes.\n\nThe main idea of the ENTIRE passage is \u2014",
+  "choices": [
+   "Renewable energy is growing and becoming more accessible",
+   "Energy is expensive",
+   "Wind energy is popular",
+   "Solar panels are cheap"
+  ],
+  "correct": "Renewable energy is growing and becoming more accessible"
+ },
+ {
+  "id": "RI.4.2-E1",
+  "standard": "RI.4.2",
+  "prompt": "Read the paragraph, then pick the main idea.\n\n\"Bees are very important to farms. They fly from flower to flower and help plants grow fruit. Without bees, many crops would not grow.\"\n\nWhat is the main idea of this paragraph?",
+  "choices": [
+   "Bees are important because they help crops grow",
+   "Fruit tastes sweet",
+   "Bees can fly",
+   "Farms have lots of dirt"
+  ],
+  "correct": "Bees are important because they help crops grow"
+ },
+ {
+  "id": "RI.4.2-E2",
+  "standard": "RI.4.2",
+  "prompt": "Read the paragraph, then pick the main idea.\n\n\"The heart is a busy muscle. It beats all day and all night. Its job is to pump blood to every part of your body.\"\n\nWhat is this paragraph mostly about?",
+  "choices": [
+   "People sleep at night",
+   "The heart pumps blood through your body",
+   "Muscles get tired",
+   "Blood is the color red"
+  ],
+  "correct": "The heart pumps blood through your body"
+ },
+ {
+  "id": "RI.4.2-E3",
+  "standard": "RI.4.2",
+  "prompt": "Read the paragraph, then pick the main idea.\n\n\"Recycling helps our planet. When we recycle paper and cans, we make less trash. Less trash keeps our air and water cleaner.\"\n\nWhat is the main idea?",
+  "choices": [
+   "Trash smells bad",
+   "Water is wet",
+   "Recycling helps keep the planet clean",
+   "Cans are made of metal"
+  ],
+  "correct": "Recycling helps keep the planet clean"
+ },
+ {
+  "id": "RI.4.2-E4",
+  "standard": "RI.4.2",
+  "prompt": "Read the paragraph, then pick the main idea.\n\n\"Deserts are very dry places. They get almost no rain all year. Animals there, like camels, have special ways to save water.\"\n\nWhat is this paragraph mostly about?",
+  "choices": [
+   "Animals like to run",
+   "Camels have humps",
+   "Rain falls from clouds",
+   "Deserts are dry places that get very little rain"
+  ],
+  "correct": "Deserts are dry places that get very little rain"
+ },
+ {
+  "id": "RI.4.2-E5",
+  "standard": "RI.4.2",
+  "prompt": "Read the paragraph, then pick the main idea.\n\n\"Exercise keeps your body strong. Running, jumping, and playing help your muscles grow. Kids who move a lot stay healthy.\"\n\nWhat is the main idea of this paragraph?",
+  "choices": [
+   "Exercise helps keep your body strong and healthy",
+   "Kids like to play games",
+   "Jumping is fun",
+   "Muscles are in your arms"
+  ],
+  "correct": "Exercise helps keep your body strong and healthy"
+ },
+ {
+  "id": "RI.4.3-Q1",
+  "standard": "RI.4.3",
+  "prompt": "In 1773, American colonists were furious about being taxed by Britain without representation in Parliament. A group of colonists disguised as Native Americans boarded British ships and dumped 342 chests of tea into Boston Harbor.\n\nWhat caused the Boston Tea Party?",
+  "choices": [
+   "The ships were blocking the harbor",
+   "Anger over taxation without representation",
+   "The colonists wanted free tea",
+   "Britain declared war"
+  ],
+  "correct": "Anger over taxation without representation"
+ },
+ {
+  "id": "RI.4.3-Q3",
+  "standard": "RI.4.3",
+  "prompt": "The invention of the printing press in 1440 made books affordable for the first time. Before that, books were copied by hand, making them rare and expensive. As books became accessible, literacy rates soared across Europe.\n\nWhat was the EFFECT of the printing press on literacy?",
+  "choices": [
+   "Literacy decreased",
+   "Nothing changed",
+   "Literacy rates soared because books became accessible",
+   "People stopped reading"
+  ],
+  "correct": "Literacy rates soared because books became accessible"
+ },
+ {
+  "id": "RI.4.3-Q4",
+  "standard": "RI.4.3",
+  "prompt": "Photosynthesis occurs in the leaves of plants. Chlorophyll in the leaves absorbs sunlight. The plant combines this energy with water from the roots and carbon dioxide from the air to produce glucose and oxygen.\n\nWhat are the INPUTS (ingredients) of photosynthesis?",
+  "choices": [
+   "Glucose and oxygen",
+   "Only sunlight",
+   "Roots and leaves",
+   "Sunlight, water, and carbon dioxide"
+  ],
+  "correct": "Sunlight, water, and carbon dioxide"
+ },
+ {
+  "id": "RI.4.4-Q2",
+  "standard": "RI.4.4",
+  "prompt": "The legislative branch of government is responsible for making laws. Congress, made up of the Senate and House of Representatives, is the legislative branch.\n\nWhat does **legislative** relate to?",
+  "choices": [
+   "Breaking laws",
+   "Making laws",
+   "Interpreting laws",
+   "Enforcing laws"
+  ],
+  "correct": "Making laws"
+ },
+ {
+  "id": "RI.4.4-E1",
+  "standard": "RI.4.4",
+  "prompt": "Read this sentence: \"A veterinarian is a doctor who takes care of animals.\" In this sentence, what does the word veterinarian mean?",
+  "choices": [
+   "A doctor for animals",
+   "A school subject",
+   "A kind of animal",
+   "A tool for cutting"
+  ],
+  "correct": "A doctor for animals"
+ },
+ {
+  "id": "RI.4.4-E2",
+  "standard": "RI.4.4",
+  "prompt": "Read this sentence: \"Scientists study fossils, which are the hardened remains of animals or plants that lived long ago.\" What does the word fossils mean?",
+  "choices": [
+   "A rule about animals",
+   "The hardened remains of long-ago living things",
+   "A type of new plant",
+   "A machine used by scientists"
+  ],
+  "correct": "The hardened remains of long-ago living things"
+ },
+ {
+  "id": "RI.4.4-E3",
+  "standard": "RI.4.4",
+  "prompt": "Read this sentence: \"The desert is arid, meaning it is very dry and gets almost no rain.\" What does the word arid mean?",
+  "choices": [
+   "Very cold",
+   "Very loud",
+   "Very dry",
+   "Very wet"
+  ],
+  "correct": "Very dry"
+ },
+ {
+  "id": "RI.4.4-E4",
+  "standard": "RI.4.4",
+  "prompt": "Read this sentence: \"Bats are nocturnal, so they are awake and active at night.\" What does the word nocturnal mean?",
+  "choices": [
+   "Good at singing",
+   "Very large",
+   "Able to swim",
+   "Active at night"
+  ],
+  "correct": "Active at night"
+ },
+ {
+  "id": "RI.4.4-E5",
+  "standard": "RI.4.4",
+  "prompt": "Read this sentence: \"The recipe said to combine the flour and sugar, so I mixed them together in a bowl.\" What does the word combine mean?",
+  "choices": [
+   "Mix together",
+   "Count out loud",
+   "Throw away",
+   "Cut in half"
+  ],
+  "correct": "Mix together"
+ },
+ {
+  "id": "RI.4.5-Q5",
+  "standard": "RI.4.5",
+  "prompt": "A science article describes how a tiny seed grows into a big oak tree. It explains what happens first, then next, and finally, what the tree looks like when it's fully grown. What is the overall structure of this article?",
+  "choices": [
+   "Cause and Effect",
+   "Sequence",
+   "Compare and Contrast",
+   "Problem and Solution"
+  ],
+  "correct": "Sequence"
+ },
+ {
+  "id": "RI.4.5-Q3",
+  "standard": "RI.4.5",
+  "prompt": "Plastic pollution is a growing threat to ocean life. Millions of tons of plastic enter the ocean each year, harming sea turtles, fish, and birds. One solution is to reduce single-use plastics. Another is to organize beach cleanups that remove trash before it reaches the water.\n\nWhat text structure does this passage use?",
+  "choices": [
+   "Chronological",
+   "Compare and contrast",
+   "Cause and effect",
+   "Problem and solution"
+  ],
+  "correct": "Problem and solution"
+ },
+ {
+  "id": "RI.4.5-Q4",
+  "standard": "RI.4.5",
+  "prompt": "Both dolphins and porpoises are marine mammals that breathe air and nurse their young. However, dolphins tend to be larger with longer snouts, while porpoises are smaller with rounded faces. Similarly, both travel in groups, but dolphin groups are usually much larger.\n\nWhat text structure does this passage use?",
+  "choices": [
+   "Compare and contrast",
+   "Problem and solution",
+   "Chronological",
+   "Cause and effect"
+  ],
+  "correct": "Compare and contrast"
+ },
+ {
+  "id": "RI.4.5-Q7",
+  "standard": "RI.4.5",
+  "prompt": "Rising ocean temperatures have caused many coral reefs to bleach. Because the coral loses the algae it depends on for food, it turns white and can eventually die. As a result, thousands of species that rely on coral reefs for shelter are now in danger.\n\nWhat text structure does this passage use?",
+  "choices": [
+   "Chronological",
+   "Cause and effect",
+   "Compare and contrast",
+   "Problem and solution"
+  ],
+  "correct": "Cause and effect"
+ },
+ {
+  "id": "RI.4.5-Q10",
+  "standard": "RI.4.5",
+  "prompt": "Overfishing threatens many ocean species. In some areas, fish populations have dropped by more than half. To address this, several countries have created marine protected areas where fishing is limited. These zones have helped fish populations recover significantly.\n\nWhat text structure does this passage use?",
+  "choices": [
+   "Cause and effect",
+   "Chronological",
+   "Problem and solution",
+   "Compare and contrast"
+  ],
+  "correct": "Problem and solution"
+ },
+ {
+  "id": "RI.4.5-Q11",
+  "standard": "RI.4.5",
+  "prompt": "In 1960, Jacques Piccard and Don Walsh descended to the deepest point in the ocean \u2014 the Mariana Trench. Decades later, in 2012, filmmaker James Cameron made the journey alone. Then in 2019, explorer Victor Vescovo reached the bottom five times in a single expedition.\n\nWhat text structure does this passage use?",
+  "choices": [
+   "Compare and contrast",
+   "Problem and solution",
+   "Cause and effect",
+   "Chronological"
+  ],
+  "correct": "Chronological"
+ },
+ {
+  "id": "RI.4.6-Q1",
+  "standard": "RI.4.6",
+  "prompt": "When comparing a firsthand account and a secondhand account of the same event, what is one important difference you would expect to find?",
+  "choices": [
+   "The secondhand account will include the writer's personal feelings from being there.",
+   "The firsthand account will share personal experiences and direct observations.",
+   "The secondhand account will always be written by a famous historian.",
+   "The firsthand account will mostly tell about what others saw and felt."
+  ],
+  "correct": "The firsthand account will share personal experiences and direct observations."
+ },
+ {
+  "id": "RI.4.6-Q2",
+  "standard": "RI.4.6",
+  "prompt": "Read the passage: A firsthand account is written by someone who was actually there and lived through the event themselves. A secondhand account is written by someone who studied or read about the event later but did not see it happen. For example, a diary a person wrote during a battle is firsthand, while a textbook written many years afterward is secondhand. Which is a firsthand account?",
+  "choices": [
+   "A textbook chapter about the Civil War",
+   "A soldier's diary from the Civil War battlefield",
+   "A Wikipedia article about a battle",
+   "A movie about the war"
+  ],
+  "correct": "A soldier's diary from the Civil War battlefield"
+ },
+ {
+  "id": "RI.4.6-Q3",
+  "standard": "RI.4.6",
+  "prompt": "Read the passage: A firsthand account comes from a person who lived through an event, so it often shares their own feelings, senses, and personal experiences. A secondhand account comes from someone who learned about the event afterward, so it usually reports the facts in a calmer, more objective way, without personal emotion. How might a firsthand account DIFFER from a secondhand account of the same event?",
+  "choices": [
+   "Secondhand accounts have more feelings",
+   "They're always exactly the same",
+   "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective",
+   "Firsthand accounts are always shorter"
+  ],
+  "correct": "Firsthand accounts include personal feelings and experiences; secondhand accounts are more objective"
+ },
+ {
+  "id": "RI.4.6-Q4",
+  "standard": "RI.4.6",
+  "prompt": "Read Account A and Account B. Which statement correctly describes how these two accounts tell about the earthquake?Account A: \"I could feel the ground shaking under my feet. Dust filled the air and I couldn't see.\"Account B: \"The earthquake measured 6.7 on the Richter scale and caused significant structural damage.\"",
+  "choices": [
+   "Both Account A and Account B are secondhand.",
+   "Account A is firsthand, and Account B is secondhand.",
+   "Account A is secondhand, and Account B is firsthand.",
+   "Both Account A and Account B are firsthand."
+  ],
+  "correct": "Account A is firsthand, and Account B is secondhand."
+ },
+ {
+  "id": "RI.4.6-Q5",
+  "standard": "RI.4.6",
+  "prompt": "Read the passage: A firsthand account lets you feel what one person actually experienced, sharing their personal perspective. A secondhand account gathers facts from many sources to give the bigger picture and broader context. When you read both kinds together, you understand an event more completely than you could from just one. Why is it valuable to read BOTH firsthand and secondhand accounts?",
+  "choices": [
+   "Firsthand gives personal perspective; secondhand gives broader context \u2014 together you get a fuller picture",
+   "Firsthand is always more accurate",
+   "Secondhand is always more accurate",
+   "You only need one type"
+  ],
+  "correct": "Firsthand gives personal perspective; secondhand gives broader context \u2014 together you get a fuller picture"
+ },
+ {
+  "id": "RI.4.6-E1",
+  "standard": "RI.4.6",
+  "prompt": "Maria wrote: \"I stood on the beach and watched the huge waves crash right in front of me. My feet were freezing in the cold water!\" Is Maria's writing a firsthand account or a secondhand account?",
+  "choices": [
+   "A firsthand account, because she was there and saw it herself",
+   "A list of spelling words",
+   "A secondhand account, because someone told her about it",
+   "A made-up story about pirates"
+  ],
+  "correct": "A firsthand account, because she was there and saw it herself"
+ },
+ {
+  "id": "RI.4.6-E2",
+  "standard": "RI.4.6",
+  "prompt": "A newspaper reporter wrote: \"According to people who were at the game, the crowd cheered loudly when the team scored.\" The reporter was NOT at the game. Is this a firsthand or a secondhand account?",
+  "choices": [
+   "A recipe for soup",
+   "A secondhand account, because the reporter learned it from other people",
+   "A firsthand account, because the reporter played in the game",
+   "A poem about winter"
+  ],
+  "correct": "A secondhand account, because the reporter learned it from other people"
+ },
+ {
+  "id": "RI.4.6-E3",
+  "standard": "RI.4.6",
+  "prompt": "Read the passage: A firsthand account is told by a person who was there and experienced the event with their own senses. These accounts often use the word I and describe what the writer personally saw, heard, or felt at the moment it happened. Which sentence sounds like a FIRSTHAND account, where the writer saw the event with their own eyes?",
+  "choices": [
+   "\"A book explained that earthquakes can be dangerous.\"",
+   "\"People say earthquakes are scary.\"",
+   "\"I felt the ground shake under my feet during the earthquake.\"",
+   "\"Scientists say that earthquakes happen deep underground.\""
+  ],
+  "correct": "\"I felt the ground shake under my feet during the earthquake.\""
+ },
+ {
+  "id": "RI.4.6-E4",
+  "standard": "RI.4.6",
+  "prompt": "Two people wrote about the same school field trip. Ben wrote: \"I rode the bus to the zoo and fed a giraffe.\" A magazine wrote: \"The students visited the zoo, based on reports from their teacher.\" Whose writing is the FIRSTHAND account?",
+  "choices": [
+   "Both were written by the giraffe",
+   "The magazine's, because it is longer",
+   "Neither one is about the trip",
+   "Ben's, because he was on the trip and did it himself"
+  ],
+  "correct": "Ben's, because he was on the trip and did it himself"
+ },
+ {
+  "id": "RI.4.6-E5",
+  "standard": "RI.4.6",
+  "prompt": "A firsthand account and a secondhand account tell about the same storm. Which one would most likely include the writer's OWN feelings from being there?",
+  "choices": [
+   "The firsthand account, because the writer lived through the storm",
+   "Neither, because storms have no feelings",
+   "The secondhand account, because it was written much later",
+   "The one with the most pictures"
+  ],
+  "correct": "The firsthand account, because the writer lived through the storm"
+ },
+ {
+  "id": "RI.4.7-Q1",
+  "standard": "RI.4.7",
+  "prompt": "A bar graph shows that the school recycled 200 pounds in January, 350 in February, and 500 in March. What trend does the graph show?",
+  "choices": [
+   "The school stopped recycling",
+   "Recycling increased each month",
+   "Recycling decreased each month",
+   "Recycling stayed the same"
+  ],
+  "correct": "Recycling increased each month"
+ },
+ {
+  "id": "RI.4.7-Q2",
+  "standard": "RI.4.7",
+  "prompt": "A timeline in a history text shows events from 1760 to 1790. This visual helps readers \u2014",
+  "choices": [
+   "Learn about geography",
+   "Understand the exact words people said",
+   "See the sequence and spacing of events over time",
+   "Read faster"
+  ],
+  "correct": "See the sequence and spacing of events over time"
+ },
+ {
+  "id": "RI.4.7-Q3",
+  "standard": "RI.4.7",
+  "prompt": "A pie chart shows: 45% of students prefer pizza, 30% prefer tacos, 15% prefer pasta, 10% prefer salad. What can you conclude?",
+  "choices": [
+   "Salad is the most popular",
+   "Tacos and pizza are equally popular",
+   "Everyone likes pizza",
+   "Pizza is the most popular but not everyone's favorite"
+  ],
+  "correct": "Pizza is the most popular but not everyone's favorite"
+ },
+ {
+  "id": "RI.4.7-Q4",
+  "standard": "RI.4.7",
+  "prompt": "Read the passage: A science book described the human digestive system in words, listing the stomach, the small intestine, and other organs one by one. But the sentences made it hard to picture how the organs fit together. Then the book added a labeled diagram. The diagram showed exactly where each organ sat and how they all connected in one long path, something that was very hard to imagine from the written description alone. How does a diagram of the human digestive system help a reader MORE than a written description alone?",
+  "choices": [
+   "It shows the physical layout and connections between organs that are hard to describe in words",
+   "It adds color to the page",
+   "It replaces the need to read",
+   "It makes the text longer"
+  ],
+  "correct": "It shows the physical layout and connections between organs that are hard to describe in words"
+ },
+ {
+  "id": "RI.4.7-Q5",
+  "standard": "RI.4.7",
+  "prompt": "A teacher made a bar graph to show the favorite ice cream flavors of her students. The graph shows that the bar for 'Chocolate' is the tallest, while the bar for 'Vanilla' is the shortest of all the flavors listed. What does this graph tell you about the students' ice cream preferences?",
+  "choices": [
+   "Students do not like vanilla ice cream at all.",
+   "The teacher prefers chocolate ice cream.",
+   "Chocolate is the most preferred ice cream flavor among these students.",
+   "Vanilla ice cream is the most popular choice."
+  ],
+  "correct": "Chocolate is the most preferred ice cream flavor among these students."
+ },
+ {
+  "id": "RI.4.7-E1",
+  "standard": "RI.4.7",
+  "prompt": "A bar graph shows how many books each class read. The graph shows Class A read 10 books and Class B read 25 books. Which class read more books?",
+  "choices": [
+   "Class B",
+   "The graph does not say",
+   "Class A",
+   "They read the same amount"
+  ],
+  "correct": "Class B"
+ },
+ {
+  "id": "RI.4.7-E2",
+  "standard": "RI.4.7",
+  "prompt": "A diagram of a plant has labels pointing to the roots, stem, and leaves. What does this diagram help a reader do?",
+  "choices": [
+   "Find out the weather",
+   "Name the parts of a plant",
+   "Learn how to cook dinner",
+   "Count the days in a week"
+  ],
+  "correct": "Name the parts of a plant"
+ },
+ {
+  "id": "RI.4.7-E3",
+  "standard": "RI.4.7",
+  "prompt": "A map in a book has a small key that shows a blue line means a river. On the map, you see a blue line running through the town. What is the blue line?",
+  "choices": [
+   "A mountain",
+   "A building",
+   "A river",
+   "A road"
+  ],
+  "correct": "A river"
+ },
+ {
+  "id": "RI.4.7-E4",
+  "standard": "RI.4.7",
+  "prompt": "A timeline shows: first the seed is planted, then it grows a stem, then it grows flowers. According to the timeline, what happens FIRST?",
+  "choices": [
+   "It is picked",
+   "It grows flowers",
+   "It grows a stem",
+   "The seed is planted"
+  ],
+  "correct": "The seed is planted"
+ }
+]

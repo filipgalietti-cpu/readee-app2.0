@@ -1,0 +1,428 @@
+[
+  {
+    "std": "RL.K.3",
+    "kind": "tap",
+    "prompt": "Where does it happen?",
+    "questionScript": "Your turn, detective! Listen to this little story. Mia went to the beach with her family. They built a big sandcastle in the sand. Where does the story happen?",
+    "correctScript": "Exactly! The beach is the setting. It tells us where the story takes place!",
+    "wrongScript": "Not quite. Think about the place where Mia and her family played. Try again!",
+    "hint": "The setting tells us where they were.",
+    "choices": [
+      "Beach",
+      "Park",
+      "Forest"
+    ],
+    "correct": "Beach"
+  },
+  {
+    "std": "RF.K.1c",
+    "kind": "tap",
+    "prompt": "The cat ran fast.",
+    "questionScript": "Your turn! Look at the sentence. Count the spaces to find each word. How many words do you see?",
+    "correctScript": "Exactly! Four words! The three spaces showed you where each word is!",
+    "wrongScript": "Good try! Find each space, then count the words in between. Try again!",
+    "hint": "Count the spaces, then the words.",
+    "choices": [
+      "Three",
+      "Four",
+      "Five"
+    ],
+    "correct": "Four"
+  },
+  {
+    "std": "RL.1.4",
+    "kind": "tap",
+    "prompt": "Which word shows feeling?",
+    "questionScript": "Your turn! Read this sentence. Big tears rolled down her cheeks. Which word shows us she feels sad?",
+    "correctScript": "Yes! Tears! That one word makes us feel her sadness inside!",
+    "wrongScript": "So close! Find the word that lets you feel her feeling. Try again!",
+    "hint": "Which word makes you feel it?",
+    "choices": [
+      "Tears",
+      "Rolled",
+      "Cheeks"
+    ],
+    "correct": "Tears"
+  },
+  {
+    "std": "RL.1.9",
+    "kind": "tap",
+    "prompt": "What is the same?",
+    "choices": [
+      "Build nests",
+      "Both are afraid",
+      "Both fly"
+    ],
+    "correct": "Build nests",
+    "hint": "What do both Lily and Sam DO in their story?",
+    "questionScript": "Your turn, detective! Listen to two tiny stories. Story one: Lily the bird made a cozy nest. Story two: Sam the squirrel made a cozy nest too. What is the same about these two stories?",
+    "correctScript": "Exactly! In both stories the animal builds a nest. You found what is alike. Great comparing!",
+    "wrongScript": "Good try! Comparing means finding what is alike in BOTH stories. Listen again to what Lily and Sam each do. Try again!"
+  },
+  {
+    "std": "RI.1.6",
+    "kind": "tap",
+    "prompt": "Which shows the color?",
+    "choices": [
+      "The picture",
+      "The words",
+      "The heading"
+    ],
+    "correct": "The picture",
+    "hint": "Which clue lets you SEE the color, not read it?",
+    "questionScript": "Here is a book about a frog. You want to know the frog's exact color. Which clue shows you that best?",
+    "correctScript": "Yes! The picture lets you SEE the exact color right away. Words tell, but pictures show!",
+    "wrongScript": "Almost! Words tell us facts, but only one clue lets you SEE a color with your eyes. Try again!"
+  },
+  {
+    "std": "RF.1.2c",
+    "kind": "tap",
+    "prompt": "Last sound in pig?",
+    "hint": "Stretch pig slowly: p... i... g. What sound ends it?",
+    "questionScript": "Your turn! Stretch this word slowly: pig. Which sound comes at the very end of pig?",
+    "correctScript": "Yes! When you stretch pig, the very last sound is /g/, so that's the last sound!",
+    "wrongScript": "Almost! Say pig nice and slow: p... i... g. Listen for the very last sound. Try again!",
+    "choices": [
+      "g sound",
+      "p sound",
+      "i sound"
+    ],
+    "correct": "g sound"
+  },
+  {
+    "std": "L.1.5",
+    "kind": "match",
+    "prompt": "Match each opposite",
+    "hint": "Each word goes with the word that means the very opposite.",
+    "questionScript": "Now you try! Opposites mean very different things. Match each word to its opposite.",
+    "correctScript": "You matched them all! Big goes with small, fast goes with slow, and day goes with night. They mean very different things!",
+    "wrongScript": "Good try! Look for the word that means the very opposite. Try again!",
+    "pairs": [
+      {
+        "left": "big",
+        "right": "small"
+      },
+      {
+        "left": "fast",
+        "right": "slow"
+      },
+      {
+        "left": "day",
+        "right": "night"
+      }
+    ]
+  },
+  {
+    "std": "RL.2.3",
+    "kind": "tap",
+    "prompt": "How did Maya react?",
+    "hint": "What did Maya do when she dropped the cake?",
+    "questionScript": "Your turn, detective! Listen. Maya baked a cake for her mom. When she dropped it on the floor, she crossed her arms and stomped away. How did Maya react?",
+    "correctScript": "Exactly! Stomping away shows Maya reacted with frustration!",
+    "wrongScript": "Not quite! Listen again to what Maya did after she dropped the cake. Try again!",
+    "choices": [
+      "Frustrated",
+      "Excited",
+      "Proud"
+    ],
+    "correct": "Frustrated"
+  },
+  {
+    "std": "RF.2.3f",
+    "kind": "match",
+    "prompt": "Match each word to its trick",
+    "hint": "Find the letter that stays quiet.",
+    "questionScript": "Now you try! Each sight word hides a silent letter. Match each word to its trick.",
+    "correctScript": "You matched them all! Walk hides a silent L, comb hides a silent B, and hour hides a silent H!",
+    "wrongScript": "Good try \u2014 say each word slowly and listen for the letter you do not hear. Try again!",
+    "pairs": [
+      {
+        "left": "walk",
+        "right": "silent L"
+      },
+      {
+        "left": "comb",
+        "right": "silent B"
+      },
+      {
+        "left": "hour",
+        "right": "silent H"
+      }
+    ]
+  },
+  {
+    "std": "L.2.4d",
+    "kind": "match",
+    "prompt": "Match each compound word",
+    "hint": "Split each word into two smaller words.",
+    "questionScript": "You've got compound power \u2014 match each word to the two smaller words inside it.",
+    "correctScript": "You matched them all! You split each word into two parts to find its meaning!",
+    "wrongScript": "Almost \u2014 look for two smaller words hiding inside each one. Try again!",
+    "pairs": [
+      {
+        "left": "Cupcake",
+        "right": "Cup + cake"
+      },
+      {
+        "left": "Raindrop",
+        "right": "Rain + drop"
+      },
+      {
+        "left": "Baseball",
+        "right": "Base + ball"
+      }
+    ]
+  },
+  {
+    "std": "L.2.5b",
+    "kind": "tap",
+    "prompt": "Which means coldest?",
+    "hint": "Which word shows the biggest cold?",
+    "questionScript": "Your turn! Some words show a stronger feeling than others. Here are three weather words: Frigid, Cool, Chilly. Which one means the coldest?",
+    "correctScript": "Yes! Frigid! It shows the strongest, biggest cold of the three!",
+    "wrongScript": "Good try! One of these words means a much bigger cold. Try again!",
+    "choices": [
+      "Frigid",
+      "Cool",
+      "Chilly"
+    ],
+    "correct": "Frigid"
+  },
+  {
+    "std": "RL.3.5",
+    "kind": "match",
+    "prompt": "Match the part to its form",
+    "hint": "Poems have stanzas, plays have scenes, stories have chapters.",
+    "questionScript": "Now you try! Match each part to the kind of writing it belongs to.",
+    "correctScript": "You matched them all! Stanzas go in poems, scenes go in plays, and chapters go in stories!",
+    "wrongScript": "Almost! Think about where each part belongs. Try again!",
+    "pairs": [
+      {
+        "left": "Stanza",
+        "right": "Poem"
+      },
+      {
+        "left": "Scene",
+        "right": "Play"
+      },
+      {
+        "left": "Chapter",
+        "right": "Story"
+      }
+    ]
+  },
+  {
+    "std": "RL.3.9",
+    "kind": "tap",
+    "prompt": "What is the theme?",
+    "hint": "What big idea runs through the whole story?",
+    "questionScript": "Your turn! Listen closely. Mia tried to ride her bike, but she fell. She tried again and wobbled. She kept trying all afternoon until she finally rode down the street. What big idea does this story share?",
+    "correctScript": "Yes! Perseverance! Mia kept trying again and again until she succeeded.",
+    "wrongScript": "Good thinking! Look at what Mia does over and over in the story. Try again!",
+    "choices": [
+      "Perseverance",
+      "Honesty",
+      "Kindness"
+    ],
+    "correct": "Perseverance"
+  },
+  {
+    "std": "RI.3.7",
+    "kind": "tap",
+    "prompt": "What picture is this?",
+    "questionScript": "Your turn! A map of the zoo shows where each animal lives. What kind of illustration is that?",
+    "correctScript": "Yes! A map shows where places are.",
+    "wrongScript": "Good try! This one shows where things are, not their parts. Try again!",
+    "hint": "It shows where things are found.",
+    "choices": [
+      "A map",
+      "A diagram",
+      "A chart"
+    ],
+    "correct": "A map"
+  },
+  {
+    "std": "L.3.5a",
+    "kind": "tap",
+    "prompt": "What does it really mean?",
+    "questionScript": "Your turn! Sam said the test was a piece of cake. He didn't really eat cake! What does a piece of cake mean?",
+    "correctScript": "Exactly! You saw past the silly words to the real meaning!",
+    "wrongScript": "Almost! Picture how a piece of cake feels to do. Try again!",
+    "hint": "The words sound silly, so picture the real meaning.",
+    "choices": [
+      "Very easy",
+      "Tastes sweet",
+      "Took forever"
+    ],
+    "correct": "Very easy"
+  },
+  {
+    "std": "L.3.6",
+    "kind": "match",
+    "prompt": "Match word to its job",
+    "questionScript": "Your turn! Match each talking word to the job it does in a conversation.",
+    "correctScript": "Nice! You matched each word to the job it does when we talk!",
+    "wrongScript": "Good try! Think about when you'd use each one. Try again!",
+    "hint": "Think about when you'd say each word in a talk.",
+    "pairs": [
+      {
+        "left": "Got it",
+        "right": "Show listening"
+      },
+      {
+        "left": "Now",
+        "right": "Start an idea"
+      },
+      {
+        "left": "Plus",
+        "right": "Connect thoughts"
+      }
+    ]
+  },
+  {
+    "std": "RL.4.5",
+    "kind": "tap",
+    "prompt": "Which form is this?",
+    "hint": "Look for scenes and spoken lines.",
+    "questionScript": "Read this part. Scene One. Max walks in and says, Hello! Then Mia answers. Which story form is this?",
+    "correctScript": "Yes! Scenes and spoken lines mean it is drama, made to act out.",
+    "wrongScript": "Good try! Look for the scene and the spoken lines. Try again!",
+    "choices": [
+      "Drama",
+      "Poems",
+      "Prose"
+    ],
+    "correct": "Drama"
+  },
+  {
+    "std": "RF.4.3a",
+    "kind": "match",
+    "pairs": [
+      {
+        "left": "dolphin",
+        "right": "F sound"
+      },
+      {
+        "left": "school",
+        "right": "K sound"
+      },
+      {
+        "left": "night",
+        "right": "silent"
+      }
+    ],
+    "prompt": "Match word to its sound.",
+    "hint": "Find the combo hiding in each word.",
+    "questionScript": "Now you try new words! Match each word to the sound its combo makes.",
+    "correctScript": "You spotted them all! PH in dolphin says F, CH in school says K, GH in night is silent.",
+    "wrongScript": "Almost! Find the letter combo in each word first. Try again!",
+    "choices": [],
+    "correct": ""
+  },
+  {
+    "std": "L.2.2",
+    "kind": "tap",
+    "prompt": "Make one word: I am",
+    "hint": "An apostrophe takes the place of a missing letter.",
+    "questionScript": "You've got this! When we join two words, an apostrophe stands in for the missing letter. Take the words 'I am'. Which word joins them into one?",
+    "correctScript": "Exactly! I'm joins I and am, and the apostrophe stands in for the missing a!",
+    "wrongScript": "Almost! The apostrophe fills in for the missing letter when you join the two words. Try again!",
+    "choices": [
+      "I'm",
+      "I'll",
+      "I've"
+    ],
+    "correct": "I'm"
+  },
+  {
+    "std": "L.3.1",
+    "kind": "tap",
+    "prompt": "Past tense of swim?",
+    "hint": "Swim is a tricky verb, it does not just add -ed.",
+    "questionScript": "Now you try a new tricky one! Some verbs change their whole shape in the past. What is the past tense of the verb 'swim'?",
+    "correctScript": "Exactly! Swim changes to 'swam', it is one of those tricky verbs that does not add -ed!",
+    "wrongScript": "Almost! Swim is a tricky verb that changes its shape, it does not just add -ed. Try again!",
+    "choices": [
+      "Swam",
+      "Swimmed",
+      "Swum"
+    ],
+    "correct": "Swam"
+  },
+  {
+    "std": "RL.K.10",
+    "kind": "tap",
+    "prompt": "How do you enjoy a story?",
+    "hint": "Think about what helps you understand the story.",
+    "questionScript": "Your turn! We learned good ways to enjoy a story. Which one helps you enjoy and understand a story?",
+    "correctScript": "Yes! Looking at the pictures helps you enjoy and understand the story!",
+    "wrongScript": "Not quite! Think about what we do to enjoy a story together. Try again!",
+    "choices": [
+      "Look at pictures",
+      "Close your eyes",
+      "Skip the pages"
+    ],
+    "correct": "Look at pictures"
+  },
+  {
+    "std": "RI.2.7",
+    "kind": "match",
+    "prompt": "Match the fact to its picture",
+    "hint": "Which picture shows that kind of fact best?",
+    "questionScript": "Now you try! A book needs the best picture for each fact. Match each fact to the picture type that shows it best.",
+    "correctScript": "You matched them all! A photo shows what a frog looks like, a map shows where the frogs live, and a diagram shows a frog's body parts!",
+    "wrongScript": "Good try! Think about which picture fits each fact best. Try again!",
+    "pairs": [
+      {
+        "left": "Frog's real look",
+        "right": "Photo"
+      },
+      {
+        "left": "Where frogs live",
+        "right": "Map"
+      },
+      {
+        "left": "Frog's body parts",
+        "right": "Diagram"
+      }
+    ]
+  },
+  {
+    "std": "RF.2.3d",
+    "kind": "match",
+    "prompt": "Match the word to its meaning",
+    "hint": "Peel off the add-on, then read it.",
+    "questionScript": "You've got add-on power! Peel each word apart and match it to what it means.",
+    "correctScript": "You peeled them all! Redo means do again, jumper means one who jumps, and slowly means in a slow way!",
+    "wrongScript": "Almost! Peel off each add-on and think what it means. Try again!",
+    "pairs": [
+      {
+        "left": "redo",
+        "right": "do again"
+      },
+      {
+        "left": "jumper",
+        "right": "one who jumps"
+      },
+      {
+        "left": "slowly",
+        "right": "in a slow way"
+      }
+    ]
+  },
+  {
+    "std": "RI.3.6",
+    "kind": "tap",
+    "prompt": "How does the author feel?",
+    "hint": "Opinion words like 'should' show the author's feeling.",
+    "questionScript": "Your turn, detective! Listen closely. 'Everyone should visit the lake. You should pack a lunch and stay all day. You will never want to leave!' How does the author feel about the lake?",
+    "correctScript": "Nice thinking! The author loves the lake. Words like 'should' and 'never want to leave' show a strong, happy opinion!",
+    "wrongScript": "Good try! Listen for the author's opinion words to know how they feel. Try again!",
+    "choices": [
+      "Loves it",
+      "Dislikes it",
+      "Has no view"
+    ],
+    "correct": "Loves it"
+  }
+]

@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RL.3.5-H1",
+  "standard": "RL.3.5",
+  "prompt": "Read this poem.\n\nStanza 1:\nThe seed lay sleeping in the ground,\nWrapped up warm, it made no sound.\n\nStanza 2:\nBut when the spring rain came to stay,\nThe little seed woke up one day.\n\nStanza 3:\nNow green and tall, it drinks the sun,\nThe seed's long sleepy rest is done.\n\nHow does the second stanza change the story from the first stanza?",
+  "choices": [
+   "It shows the seed starting to wake up and change.",
+   "It shows a farmer planting the seed in the spring.",
+   "It shows the seed staying quiet and asleep in the ground.",
+   "It shows the seed fully grown and drinking the sun."
+  ],
+  "correct": "It shows the seed starting to wake up and change."
+ },
+ {
+  "id": "RL.3.5-H2",
+  "standard": "RL.3.5",
+  "prompt": "Read this short play.\n\nScene 1 (In the kitchen): Mom says, \"Ana, if you save ten dollars, you may get a puppy.\"\n\nScene 2 (At the park, a week later): Ana counts her coins and smiles. \"I finally have enough!\"\n\nScene 3 (At the animal shelter): Ana holds a small brown puppy. \"You're coming home with me.\"\n\nWhat most likely happened between the end of Scene 2 and the start of Scene 3, even though the play does not show it?",
+  "choices": [
+   "Ana gave the ten dollars back to her mom.",
+   "Ana traveled from the park to the animal shelter.",
+   "Ana lost all of her coins at the park.",
+   "Ana decided she did not want a puppy after all."
+  ],
+  "correct": "Ana traveled from the park to the animal shelter."
+ },
+ {
+  "id": "RL.3.5-H3",
+  "standard": "RL.3.5",
+  "prompt": "Read this poem.\n\nStanza 1:\nThe cold rain falls, the sky is gray,\nand still I wait for you.\n\nStanza 2:\nThe white snow drifts and hides the day,\nand still I wait for you.\n\nStanza 3:\nThe warm sun shines and clears the way,\nand still I wait for you.\n\nWhy does the poet most likely end every stanza with the same line?",
+  "choices": [
+   "To warn the reader that the poem is almost over.",
+   "To show that the speaker loves rain, snow, and sun.",
+   "To show that the speaker keeps waiting no matter what changes.",
+   "To show that the weather keeps changing quickly."
+  ],
+  "correct": "To show that the speaker keeps waiting no matter what changes."
+ },
+ {
+  "id": "RL.3.5-H4",
+  "standard": "RL.3.5",
+  "prompt": "A chapter book has these chapter titles, in order:\n\nChapter 1: The Storm\nChapter 2: Alone on the Island\nChapter 3: A Sail on the Horizon\n\nUsing the order of the chapter titles, what most likely happens across the whole story?",
+  "choices": [
+   "A boy watches a storm from inside his safe, dry house.",
+   "A boy sails on calm seas and never runs into any trouble.",
+   "A boy builds a boat, sells it, and then buys his own island.",
+   "A boy is caught in a storm, ends up stranded, and may finally be rescued."
+  ],
+  "correct": "A boy is caught in a storm, ends up stranded, and may finally be rescued."
+ },
+ {
+  "id": "RL.3.5-H5",
+  "standard": "RL.3.5",
+  "prompt": "Read this poem.\n\nStanza 1:\nA lonely lighthouse stands up tall,\nabove the waves it watches all.\n\nStanza 2:\nThe ships slip by in cloudy fog,\npast rocky shore and floating log.\n\nStanza 3:\nOne ship draws near the jagged stone,\nlost in the dark, afraid, alone.\n\nStanza 4:\nThe bright light turns and shows the way,\nand guides the ship to safe harbor and day.\n\nIn which stanza does the poem show the lighthouse doing its most important job?",
+  "choices": [
+   "The fourth stanza",
+   "The second stanza",
+   "The first stanza",
+   "The third stanza"
+  ],
+  "correct": "The fourth stanza"
+ },
+ {
+  "id": "RL.3.6-Q1",
+  "standard": "RL.3.6",
+  "prompt": "The narrator says, \"Vegetables are the most boring food in the world.\" How does *your* point of view about vegetables compare to the narrator's?",
+  "choices": [
+   "My point of view is the same, because I also think all vegetables are boring.",
+   "My point of view is different, because I enjoy eating some vegetables.",
+   "My point of view is different, because I think vegetables are good for your body.",
+   "My point of view is different, because I don't usually eat vegetables."
+  ],
+  "correct": "My point of view is different, because I enjoy eating some vegetables."
+ },
+ {
+  "id": "RL.3.6-Q2",
+  "standard": "RL.3.6",
+  "prompt": "A character in a story thinks it's okay to cheat on a test. You think cheating is wrong. This shows that \u2014",
+  "choices": [
+   "You and the character have different points of view",
+   "You didn't understand the story",
+   "The character is always right",
+   "The story is wrong"
+  ],
+  "correct": "You and the character have different points of view"
+ },
+ {
+  "id": "RL.3.6-Q4",
+  "standard": "RL.3.6",
+  "prompt": "Read this part of a story: 'Mia skipped happily down the path. She didn't know a small puddle was hiding just ahead!' What does the narrator tell you that Mia does not know?",
+  "choices": [
+   "Mia likes to skip.",
+   "A small puddle is hiding just ahead.",
+   "The path is very long.",
+   "Mia is happy."
+  ],
+  "correct": "A small puddle is hiding just ahead."
+ },
+ {
+  "id": "RL.3.6-Q5",
+  "standard": "RL.3.6",
+  "prompt": "The wolf in the story said he was just trying to borrow sugar. But the pigs said he tried to blow their houses down.\n\nA reader might think \u2014",
+  "choices": [
+   "The wolf is definitely telling the truth",
+   "The pigs are definitely lying",
+   "Both characters have their own version of events, and the reader can decide",
+   "Neither character matters"
+  ],
+  "correct": "Both characters have their own version of events, and the reader can decide"
+ },
+ {
+  "id": "RL.3.7-Q1",
+  "standard": "RL.3.7",
+  "prompt": "A story says \"The girl walked into the room.\" The illustration shows the room decorated with balloons, streamers, and a big cake. The illustration helps show that \u2014",
+  "choices": [
+   "The girl is at school",
+   "The room is empty",
+   "There's a party or celebration happening",
+   "The girl is sad"
+  ],
+  "correct": "There's a party or celebration happening"
+ },
+ {
+  "id": "RL.3.7-Q2",
+  "standard": "RL.3.7",
+  "prompt": "Read this story part: 'Leo crept down the long, spooky hallway. Every little creak and groan made him jump. He wondered what was hiding in the shadows.' Imagine an illustration for this story shows Leo holding a tiny, flickering flashlight, his eyes wide with worry, and tall, dark shadows stretching from corners. How does this illustration help you understand the story words?",
+  "choices": [
+   "It shows that Leo is brave and not afraid at all.",
+   "It helps you see how bright and happy the hallway is.",
+   "It makes the hallway seem even more mysterious and a little scary.",
+   "It tells you exactly what Leo will find at the end of the hallway."
+  ],
+  "correct": "It makes the hallway seem even more mysterious and a little scary."
+ },
+ {
+  "id": "RL.3.7-Q3",
+  "standard": "RL.3.7",
+  "prompt": "In a picture book, the text says the character is \"fine.\" But the illustration shows tears in the character's eyes. What does the illustration tell us?",
+  "choices": [
+   "The illustrator made a mistake",
+   "The character is lying about their feelings",
+   "The character really is fine",
+   "The character is laughing"
+  ],
+  "correct": "The character is lying about their feelings"
+ },
+ {
+  "id": "RL.3.7-Q4",
+  "standard": "RL.3.7",
+  "prompt": "In the story, the words describe Lily: 'Lily skipped into the classroom, her backpack bouncing. She always had a big smile and loved to share her colorful drawings with everyone.' The picture shows Lily with a wide, joyful smile, her eyes sparkling, and holding up a brightly colored drawing. How does this illustration help you understand what kind of person Lily is?",
+  "choices": [
+   "It shows the color of Lily's shirt.",
+   "It explains why Lily's backpack is bouncing.",
+   "It makes it clear that Lily is a cheerful and outgoing friend.",
+   "It tells you that Lily prefers drawing to reading."
+  ],
+  "correct": "It makes it clear that Lily is a cheerful and outgoing friend."
+ },
+ {
+  "id": "RL.3.7-Q5",
+  "standard": "RL.3.7",
+  "prompt": "A story describes a \"small cottage.\" The illustration shows it surrounded by enormous trees and a vast mountain range. How does the illustration add to the story?",
+  "choices": [
+   "It changes the story",
+   "It shows the cottage is actually big",
+   "It doesn't add anything",
+   "It emphasizes how small the cottage is compared to nature"
+  ],
+  "correct": "It emphasizes how small the cottage is compared to nature"
+ },
+ {
+  "id": "RL.3.7-E1",
+  "standard": "RL.3.7",
+  "prompt": "The words say: \"Maya put on her coat.\" The picture next to the words shows snow falling and a big snowman in the yard. What does the picture help you know?",
+  "choices": [
+   "It is cold and snowy outside",
+   "Maya is going to sleep",
+   "It is a hot summer day",
+   "Maya is at the beach"
+  ],
+  "correct": "It is cold and snowy outside"
+ },
+ {
+  "id": "RL.3.7-E2",
+  "standard": "RL.3.7",
+  "prompt": "The words say: \"Ben looked in the box.\" The picture shows a fluffy puppy sitting inside the box. What does the picture help you know?",
+  "choices": [
+   "Ben is eating lunch",
+   "There is a puppy in the box",
+   "The box is empty",
+   "There is a book in the box"
+  ],
+  "correct": "There is a puppy in the box"
+ },
+ {
+  "id": "RL.3.7-E3",
+  "standard": "RL.3.7",
+  "prompt": "The words say: \"The kids played outside.\" The picture shows the kids on a beach building a sandcastle by the water. Where are the kids playing?",
+  "choices": [
+   "On a mountain covered in snow",
+   "Inside a library",
+   "At the beach",
+   "In a cave"
+  ],
+  "correct": "At the beach"
+ },
+ {
+  "id": "RL.3.7-E4",
+  "standard": "RL.3.7",
+  "prompt": "The words say: \"Grandpa smiled.\" The picture shows Grandpa holding a birthday cake with candles and a party hat on his head. What does the picture help you know?",
+  "choices": [
+   "Grandpa is fixing a car",
+   "Grandpa is going to work",
+   "It is raining outside",
+   "It is Grandpa's birthday"
+  ],
+  "correct": "It is Grandpa's birthday"
+ },
+ {
+  "id": "RL.3.7-E5",
+  "standard": "RL.3.7",
+  "prompt": "The words say: \"Lily read her book.\" The picture shows Lily sitting in bed at night with a lamp on and the moon out the window. When is Lily reading?",
+  "choices": [
+   "At night",
+   "At lunchtime",
+   "Early in the morning",
+   "During recess"
+  ],
+  "correct": "At night"
+ },
+ {
+  "id": "RL.3.9-Q2",
+  "standard": "RL.3.9",
+  "prompt": "Imagine two stories by the same author. The first story is about two friends who live near big buildings and play in a busy park. The second story is about two friends who live on a farm and play near animals in a field. Both stories show how important friendship is. Which part of the stories is clearly different?",
+  "choices": [
+   "The lesson they teach",
+   "The places they happen",
+   "The people in them",
+   "The feelings they share"
+  ],
+  "correct": "The places they happen"
+ },
+ {
+  "id": "RL.3.9-Q3",
+  "standard": "RL.3.9",
+  "prompt": "In Story 1, a girl solves a mystery at her school. In Story 2 by the same author, the same girl solves a mystery at a museum. What changed between the stories?",
+  "choices": [
+   "The author",
+   "The main character",
+   "The type of story",
+   "The setting and specific plot"
+  ],
+  "correct": "The setting and specific plot"
+ },
+ {
+  "id": "RL.3.9-Q4",
+  "standard": "RL.3.9",
+  "prompt": "An author writes two stories about a character named Rosie. In the first story, Rosie learns that being kind is important. In the second story, Rosie learns that it's okay to ask for help. What literary element is different between these two stories?",
+  "choices": [
+   "The main character",
+   "The lesson or message",
+   "The time of day",
+   "The type of animal Rosie meets"
+  ],
+  "correct": "The lesson or message"
+ },
+ {
+  "id": "RL.3.9-H1",
+  "standard": "RL.3.9",
+  "prompt": "In \"The Big Race,\" Mira practiced alone every day and told her teammates she didn't need their help. On race day she tripped, and with no one nearby, she finished last. In \"The Science Fair,\" Mira built her project by herself and wouldn't let her friends add any ideas. Her project fell apart on stage. Both stories are by the same author. What lesson do they BOTH teach?",
+  "choices": [
+   "Trying to do everything alone can lead to trouble",
+   "Science and sports both take a lot of practice",
+   "Winning is the most important thing",
+   "You should work hard to reach your goals"
+  ],
+  "correct": "Trying to do everything alone can lead to trouble"
+ },
+ {
+  "id": "RL.3.9-H2",
+  "standard": "RL.3.9",
+  "prompt": "Author Lin writes stories about a dog named Scout. In the first story, Scout lives on a quiet farm and spends his days napping in the sun and slowly herding sheep. In the second story, Scout moves to a busy city, where he spends his days barking at cars and dashing between crowds. By changing where Scout lives, what does the author most likely want readers to notice?",
+  "choices": [
+   "Dogs should not be allowed to live in cities",
+   "A new setting can change how a character acts",
+   "Scout likes the city better than the farm",
+   "Scout is a very lazy dog"
+  ],
+  "correct": "A new setting can change how a character acts"
+ },
+ {
+  "id": "RL.3.9-H3",
+  "standard": "RL.3.9",
+  "prompt": "The same author wrote two tales about a clever fox. In the first, the fox tricks a crow into dropping its cheese, but later a turtle tricks the fox out of a sweet berry. In the second, the fox fools a rabbit into leaving its carrot, but then a mouse fools the fox out of a nut. How are the PLOTS of the two stories alike?",
+  "choices": [
+   "The fox learns to share its food with others",
+   "The fox becomes friends with the other animals",
+   "The fox tricks someone, and then gets tricked back",
+   "The fox is always the one who gets tricked"
+  ],
+  "correct": "The fox tricks someone, and then gets tricked back"
+ },
+ {
+  "id": "RL.3.9-H4",
+  "standard": "RL.3.9",
+  "prompt": "Kai the inventor stars in two stories by one author. In the first, Kai's flying machine crashes three times before it finally lifts into the air. In the second, Kai's robot breaks down again and again until, on the tenth try, it finally walks. The two machines are very different, yet both stories share the same big idea. What is it?",
+  "choices": [
+   "Flying is more exciting than walking",
+   "Building machines is hard work",
+   "Kai is not very good at inventing things",
+   "If you keep trying, you can succeed"
+  ],
+  "correct": "If you keep trying, you can succeed"
+ },
+ {
+  "id": "RL.3.9-H5",
+  "standard": "RL.3.9",
+  "prompt": "An author wrote two stories about a girl named Rosa. In both stories, Rosa finds a lost pet and returns it to a worried neighbor. But in the first story she searches through a cold, snowy mountain town, and in the second she searches through a hot, dusty desert village. Which sentence BEST compares the two stories?",
+  "choices": [
+   "Rosa does the same kind deed, but in a different place",
+   "The two stories have nothing in common at all",
+   "Rosa faces a completely different problem in each story",
+   "Rosa is kind in one story and unkind in the other"
+  ],
+  "correct": "Rosa does the same kind deed, but in a different place"
+ },
+ {
+  "id": "RL.3.9-E1",
+  "standard": "RL.3.9",
+  "prompt": "An author wrote two stories about a boy named Max. In Story 1, Max plays soccer at the park. In Story 2, Max plays soccer at the beach. What is the SAME in both stories?",
+  "choices": [
+   "The time of year",
+   "The main character, Max",
+   "The name of the park",
+   "The color of the ball"
+  ],
+  "correct": "The main character, Max"
+ },
+ {
+  "id": "RL.3.9-E2",
+  "standard": "RL.3.9",
+  "prompt": "An author wrote two stories about a dog named Pip. In Story 1, Pip lives on a farm. In Story 2, Pip lives in a city. What is DIFFERENT between the two stories?",
+  "choices": [
+   "The dog's name, Pip",
+   "The kind of animal",
+   "The place where Pip lives",
+   "The author who wrote them"
+  ],
+  "correct": "The place where Pip lives"
+ },
+ {
+  "id": "RL.3.9-E3",
+  "standard": "RL.3.9",
+  "prompt": "The same author wrote two stories about a girl named Lily. Both stories teach the lesson 'be kind to others.' What do the two stories share?",
+  "choices": [
+   "Different authors",
+   "No lesson at all",
+   "Different characters",
+   "The same lesson"
+  ],
+  "correct": "The same lesson"
+ },
+ {
+  "id": "RL.3.9-E4",
+  "standard": "RL.3.9",
+  "prompt": "An author wrote two stories about a cat named Sam. In Story 1, Sam looks for a lost toy. In Story 2, Sam looks for a lost hat. Both stories are about Sam looking for something lost. What is ALIKE in both plots?",
+  "choices": [
+   "Sam is looking for something lost",
+   "Sam is at school",
+   "Sam is eating dinner",
+   "Sam is sleeping"
+  ],
+  "correct": "Sam is looking for something lost"
+ },
+ {
+  "id": "RL.3.9-E5",
+  "standard": "RL.3.9",
+  "prompt": "The same author wrote two stories about a boy named Theo. Story 1 happens in winter with snow. Story 2 happens in summer at the pool. What is DIFFERENT about when and where the stories happen?",
+  "choices": [
+   "The author is different",
+   "The setting is different",
+   "Nothing is different",
+   "Theo's name is different"
+  ],
+  "correct": "The setting is different"
+ },
+ {
+  "id": "RL.3.10-Q1",
+  "standard": "RL.3.10",
+  "prompt": "What does the old woman's action of putting a lantern in her window every night reveal about the kind of person she is?",
+  "choices": [
+   "She is afraid of the dark forest outside her home.",
+   "She is a thoughtful person who wants to help others.",
+   "She wants to see if anyone is coming to visit her.",
+   "She feels lonely and hopes someone will stop by."
+  ],
+  "correct": "She is a thoughtful person who wants to help others."
+ },
+ {
+  "id": "RL.3.10-Q2",
+  "standard": "RL.3.10",
+  "prompt": "Diego had exactly one week to build his invention for the science fair. On Monday he sketched plans. By Wednesday, he'd used all his supplies and started over. On Friday, with tape on his fingers and glue in his hair, he stepped back and grinned.\n\nWhat can you infer about Diego?",
+  "choices": [
+   "He gave up easily",
+   "He had help from a friend",
+   "He was persistent and creative despite setbacks",
+   "He didn't care about the science fair"
+  ],
+  "correct": "He was persistent and creative despite setbacks"
+ },
+ {
+  "id": "RL.3.10-Q3",
+  "standard": "RL.3.10",
+  "prompt": "After the other kids said Sana couldn't climb the tree, what did she do next?",
+  "choices": [
+   "She walked home.",
+   "She grabbed a branch and started to climb.",
+   "She ignored them and played with a ball.",
+   "She told them they were being mean."
+  ],
+  "correct": "She grabbed a branch and started to climb."
+ },
+ {
+  "id": "RL.3.10-Q4",
+  "standard": "RL.3.10",
+  "prompt": "The package sat on the porch for three days. Each morning, Eliot walked past it. Each evening, he wondered what was inside. On the fourth day, he finally picked it up and read the label: \"To Eliot, from your future self.\"\n\nWhat is the author trying to make the reader feel?",
+  "choices": [
+   "Curious and intrigued",
+   "Bored",
+   "Angry",
+   "Sleepy"
+  ],
+  "correct": "Curious and intrigued"
+ },
+ {
+  "id": "RL.3.10-Q5",
+  "standard": "RL.3.10",
+  "prompt": "Everyone said the old house was haunted. Lina didn't believe in ghosts. She marched up the creaky steps, pushed open the door, and found... a family of raccoons living in the fireplace.\n\nWhat makes this ending effective?",
+  "choices": [
+   "It leaves everything unresolved",
+   "It confirms the house is haunted",
+   "It's scary",
+   "It surprises the reader with a funny, unexpected twist"
+  ],
+  "correct": "It surprises the reader with a funny, unexpected twist"
+ },
+ {
+  "id": "RL.3.10-H1",
+  "standard": "RL.3.10",
+  "prompt": "Read the story.\n\nMaya carried her painting home slowly, holding it flat so the wet paint would not run. Her little brother Sam ran up the sidewalk to meet her, waving a drawing he had made all by himself. \"Look what I did!\" he shouted, bumping right into her arm. Maya looked down at the long smear now streaking across her sky. She opened her mouth, then closed it. \"Wow, Sam,\" she said, kneeling to look at his drawing. \"Tell me about this part right here.\"\n\nWhy does Maya close her mouth before she speaks?",
+  "choices": [
+   "She decides not to make Sam feel bad about the accident.",
+   "She is waiting for Sam to say he is sorry first.",
+   "She cannot think of anything nice to say about Sam's drawing.",
+   "She is too tired from carrying the painting to talk."
+  ],
+  "correct": "She decides not to make Sam feel bad about the accident."
+ },
+ {
+  "id": "RL.3.10-H2",
+  "standard": "RL.3.10",
+  "prompt": "Read the story.\n\nThe whole class had voted to name the class turtle \"Rocket.\" Only Priya had wanted \"Shelly.\" When Mr. Lee announced the winning name, Priya clapped along with everyone and helped tape the new name card to the tank. At recess, her friend Jack asked, \"Aren't you upset your name lost?\" Priya shrugged. \"Everybody gets a say. That's how a class works,\" she said, and went to line up for kickball.\n\nWhat does Priya's behavior most show about her?",
+  "choices": [
+   "She changed her mind and now likes the name Rocket better.",
+   "She can accept a group decision even when it isn't what she wanted.",
+   "She never really cared what the turtle was named.",
+   "She was afraid the other students would laugh at her."
+  ],
+  "correct": "She can accept a group decision even when it isn't what she wanted."
+ },
+ {
+  "id": "RL.3.10-H3",
+  "standard": "RL.3.10",
+  "prompt": "Read the poem.\n\nThe old dog does not chase the ball,\nHe watches from the shady wall.\nHe knew each fence and every gate\nBack when the pup was small and straight.\nNow the pup runs, quick and new,\nThe old dog naps the afternoon through.\n\nWhat is the poem mainly saying about the old dog and the pup?",
+  "choices": [
+   "The pup is lost and the old dog is trying to find him.",
+   "The old dog and the pup do not like each other at all.",
+   "The pup is young and lively while the old dog is now slow with age.",
+   "The old dog is angry that the pup took his favorite ball."
+  ],
+  "correct": "The pup is young and lively while the old dog is now slow with age."
+ },
+ {
+  "id": "RL.3.10-H4",
+  "standard": "RL.3.10",
+  "prompt": "Read the story.\n\nEvery morning, Grandpa set out two cups for tea, even though Grandma had passed away last spring. He would pour hot water into both, then sit quietly until one cup went cold. When Ravi came to visit, he noticed the second cup and started to ask about it, but Grandpa was already smiling out the window at the garden Grandma had planted. Ravi decided to pour himself some tea and sit down beside him.\n\nWhy does Grandpa most likely set out two cups each morning?",
+  "choices": [
+   "He does not like to drink his tea until it has cooled off.",
+   "He forgets each day that Grandma has passed away.",
+   "He is expecting Ravi to come over for tea every morning.",
+   "He is remembering Grandma and keeping her close in his routine."
+  ],
+  "correct": "He is remembering Grandma and keeping her close in his routine."
+ },
+ {
+  "id": "RL.3.10-H5",
+  "standard": "RL.3.10",
+  "prompt": "Read the story.\n\nBefore the spelling bee, Omar had told everyone he would win easily. When he misspelled his very first word and had to sit down, he crossed his arms and muttered that the word wasn't fair. But that night, Omar quietly pulled out the word list and began writing each word three times. He taped the hardest ones to his bathroom mirror. He did not tell anyone what he was doing.\n\nHow does Omar change from the beginning of the story to the end?",
+  "choices": [
+   "He stops bragging and quietly starts working to get better.",
+   "He becomes angrier at the judges as the day goes on.",
+   "He decides spelling bees are unfair and gives up on them.",
+   "He asks his friends to help him practice the word list."
+  ],
+  "correct": "He stops bragging and quietly starts working to get better."
+ },
+ {
+  "id": "RI.3.1-Q1",
+  "standard": "RI.3.1",
+  "prompt": "Listen to the story: The Amazon Rainforest is the largest rainforest on our planet, stretching across many countries in South America. Scientists have found that it produces about 20 percent of the world's oxygen, which is why some people call it the lungs of the Earth. It is also an amazing home to more than 10 million different types of plants and animals, many of which live nowhere else. Because so many living things depend on it, protecting the Amazon is very important. Which statement tells two important things about the Amazon Rainforest, according to the text?",
+  "choices": [
+   "It makes about 10 percent of the world's oxygen and has more than 20 million types of plants and animals.",
+   "It makes about 50 percent of the world's oxygen and has more than 10 million types of plants and animals.",
+   "It makes about 20 percent of the world's oxygen and has more than 10 million types of plants and animals.",
+   "It makes about 20 percent of the world's oxygen and has more than 5 million types of plants and animals."
+  ],
+  "correct": "It makes about 20 percent of the world's oxygen and has more than 10 million types of plants and animals."
+ },
+ {
+  "id": "RI.3.1-Q2",
+  "standard": "RI.3.1",
+  "prompt": "Harriet Tubman escaped slavery in 1849. She then risked her life many times to help others escape through the Underground Railroad. She led about 70 people to freedom.\n\nHow many people did Harriet Tubman help escape?",
+  "choices": [
+   "About 700",
+   "About 17",
+   "About 70",
+   "About 170"
+  ],
+  "correct": "About 70"
+ },
+ {
+  "id": "RI.3.1-Q3",
+  "standard": "RI.3.1",
+  "prompt": "Earthquakes happen when large pieces of the Earth's crust, called tectonic plates, suddenly move. Most earthquakes occur along the edges of these plates.\n\nWhat causes earthquakes?",
+  "choices": [
+   "Heavy rain",
+   "Tectonic plates suddenly moving",
+   "Volcanoes erupting",
+   "Strong winds"
+  ],
+  "correct": "Tectonic plates suddenly moving"
+ }
+]

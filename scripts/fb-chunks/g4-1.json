@@ -1,0 +1,537 @@
+[
+ {
+  "id": "RL.4.6-Q4",
+  "standard": "RL.4.6",
+  "prompt": "Read the story below:\"Lily looked out the window. She felt a little nervous about her first day at the new school. 'What if no one wants to play with me?' she wondered. Her mom smiled, 'You'll do great, sweetie.' But Lily still worried about making new friends.\"Which statement best describes the point of view of this story?",
+  "choices": [
+   "It is told by Lily, using words like \"I\" and \"my.\"",
+   "It is told by Lily's mom, describing her own thoughts and feelings.",
+   "It is told by an outside narrator who focuses on one character's thoughts and feelings.",
+   "It is told by an outside narrator who knows what every character is thinking and feeling."
+  ],
+  "correct": "It is told by an outside narrator who focuses on one character's thoughts and feelings."
+ },
+ {
+  "id": "RL.4.6-Q5",
+  "standard": "RL.4.6",
+  "prompt": "The same event is described two ways: Version A: \"I scored the winning goal and felt like a hero.\" Version B: \"Jake scored the winning goal. His teammates cheered, but the other team walked away in silence.\"\n\nHow does the point of view change what the reader learns?",
+  "choices": [
+   "Version B is better written",
+   "Both versions give the same information",
+   "Version A has more details",
+   "Version A shows Jake's feelings; Version B shows both teams' reactions"
+  ],
+  "correct": "Version A shows Jake's feelings; Version B shows both teams' reactions"
+ },
+ {
+  "id": "RL.4.6-E1",
+  "standard": "RL.4.6",
+  "prompt": "Read this sentence: \"I ran as fast as I could to catch the bus.\" Is this sentence told in first-person or third-person point of view?",
+  "choices": [
+   "First-person",
+   "Third-person",
+   "It has no point of view"
+  ],
+  "correct": "First-person"
+ },
+ {
+  "id": "RL.4.6-E2",
+  "standard": "RL.4.6",
+  "prompt": "Read this sentence: \"Maria opened the box and smiled at what she saw.\" Is this sentence told in first-person or third-person point of view?",
+  "choices": [
+   "Second-person",
+   "Third-person",
+   "First-person"
+  ],
+  "correct": "Third-person"
+ },
+ {
+  "id": "RL.4.6-E3",
+  "standard": "RL.4.6",
+  "prompt": "Listen to the story: One story begins like this: 'I walked down to the pond and dipped my toes in the cool water.' The narrator is a character inside the story, telling it by talking about themselves with one special word. Which word tells you a story is being told in first-person point of view?",
+  "choices": [
+   "She",
+   "They",
+   "I"
+  ],
+  "correct": "I"
+ },
+ {
+  "id": "RL.4.6-E4",
+  "standard": "RL.4.6",
+  "prompt": "A story begins: \"He walked into the room and looked around.\" Which point of view is this story told from?",
+  "choices": [
+   "Third-person",
+   "The reader's point of view",
+   "First-person"
+  ],
+  "correct": "Third-person"
+ },
+ {
+  "id": "RL.4.6-E5",
+  "standard": "RL.4.6",
+  "prompt": "Listen to the story: A teacher wrote three sentences on the board and asked her class to find the one where the writer is telling about themselves. She reminded them that first-person point of view uses the word I, which shows the narrator is a character in the story. Which sentence is told in first-person point of view?",
+  "choices": [
+   "\"They love the smell of fresh cookies.\"",
+   "\"I love the smell of fresh cookies.\"",
+   "\"Tom loves the smell of fresh cookies.\""
+  ],
+  "correct": "\"I love the smell of fresh cookies.\""
+ },
+ {
+  "id": "RL.4.7-Q1",
+  "standard": "RL.4.7",
+  "prompt": "A student reads a chapter about a thunderstorm, then watches a movie version with dramatic music and dark lighting. The movie version adds \u2014",
+  "choices": [
+   "Mood and atmosphere through sound and visuals",
+   "New characters",
+   "A different ending",
+   "More dialogue"
+  ],
+  "correct": "Mood and atmosphere through sound and visuals"
+ },
+ {
+  "id": "RL.4.7-Q2",
+  "standard": "RL.4.7",
+  "prompt": "Listen to the story: In the book, the narrator told readers, 'Deep down, Priya felt afraid, even though she smiled on the outside.' When Priya's class turned the book into a play, there was no narrator to share those private thoughts. The audience could only watch the actors and hear them speak, so Priya's hidden feelings were never told out loud. When a book is turned into a play, what might be LOST?",
+  "choices": [
+   "All the characters",
+   "The character's inner thoughts described by the narrator",
+   "The plot",
+   "Dialogue"
+  ],
+  "correct": "The character's inner thoughts described by the narrator"
+ },
+ {
+  "id": "RL.4.7-Q3",
+  "standard": "RL.4.7",
+  "prompt": "Listen to the story: When Jordan read the book, the words simply said, 'Grandpa was upset.' But when Jordan watched the movie of the same story, he saw the actor's deep frown, heard the shaky, angry sound of his voice, and noticed how he crossed his arms tightly. The movie let Jordan see and hear things that the plain words on the page could not show. What might a visual presentation (movie or play) ADD to a story that the text cannot?",
+  "choices": [
+   "More chapters",
+   "More words",
+   "Facial expressions, tone of voice, and body language of actors",
+   "Longer descriptions"
+  ],
+  "correct": "Facial expressions, tone of voice, and body language of actors"
+ },
+ {
+  "id": "RL.4.7-Q4",
+  "standard": "RL.4.7",
+  "prompt": "A book describes a character as \"a tall woman with kind eyes.\" In the movie, the actress has a warm smile and speaks softly. How does the movie expand on the text?",
+  "choices": [
+   "It contradicts the book",
+   "It removes the description",
+   "It changes the character completely",
+   "It shows specific visual and audio details that bring 'kind eyes' to life"
+  ],
+  "correct": "It shows specific visual and audio details that bring 'kind eyes' to life"
+ },
+ {
+  "id": "RL.4.7-Q5",
+  "standard": "RL.4.7",
+  "prompt": "Imagine reading a book where a wizard's tower is described as being made of smooth, black stone, reaching high into the clouds, with a giant, glowing crystal at the very top. If the movie adaptation of this story shows the wizard's tower as a short, brick building with a regular antenna, what is the biggest difference a reader would notice between the book and the movie?",
+  "choices": [
+   "The movie version has more exciting characters.",
+   "The overall message of the story is changed in the movie.",
+   "How the wizard's tower appears is very different in each version.",
+   "The movie tells the story much faster than the book."
+  ],
+  "correct": "How the wizard's tower appears is very different in each version."
+ },
+ {
+  "id": "RL.4.7-E1",
+  "standard": "RL.4.7",
+  "prompt": "Maya read a book about a scary forest. Then she watched the movie of the same story. In the movie, she could HEAR the wolves howling and the wind blowing. What did the movie add that the book did not have?",
+  "choices": [
+   "Sound you can hear",
+   "Nothing at all",
+   "A brand new story",
+   "The words on the page"
+  ],
+  "correct": "Sound you can hear"
+ },
+ {
+  "id": "RL.4.7-E2",
+  "standard": "RL.4.7",
+  "prompt": "Ben read a play in his book. Then his class ACTED it out on a stage. In the acted-out version, real people said the lines out loud. What could Ben now SEE that he could not see in the book?",
+  "choices": [
+   "No people at all",
+   "Real actors moving and speaking",
+   "The exact same paper pages",
+   "A different, longer story"
+  ],
+  "correct": "Real actors moving and speaking"
+ },
+ {
+  "id": "RL.4.7-E3",
+  "standard": "RL.4.7",
+  "prompt": "A book describes a birthday party as 'colorful and happy.' In the movie of the story, the party scene uses bright colors and cheerful music. The movie and the book both show the party as \u2014",
+  "choices": [
+   "Boring and empty",
+   "About a war",
+   "Happy",
+   "Sad and scary"
+  ],
+  "correct": "Happy"
+ },
+ {
+  "id": "RL.4.7-E4",
+  "standard": "RL.4.7",
+  "prompt": "Liam listened to an AUDIO version of a story instead of reading it. An actor read the words out loud in a soft, gentle voice. The audio version lets Liam \u2014",
+  "choices": [
+   "Change the ending",
+   "Taste the food in the story",
+   "Draw the pictures himself",
+   "Hear how the words sound"
+  ],
+  "correct": "Hear how the words sound"
+ },
+ {
+  "id": "RL.4.7-E5",
+  "standard": "RL.4.7",
+  "prompt": "In the book, a character named Sam is described as tall with red hair. In the MOVIE, the actor playing Sam is tall with red hair. The movie version of Sam \u2014",
+  "choices": [
+   "Matches the book",
+   "Is not in the movie",
+   "Looks nothing like the book",
+   "Is a talking dog"
+  ],
+  "correct": "Matches the book"
+ },
+ {
+  "id": "RL.4.9-Q1",
+  "standard": "RL.4.9",
+  "prompt": "A Greek myth says the sun is pulled across the sky by the god Helios in a chariot. A Native American story says the sun is carried by a spirit eagle. Both stories try to explain \u2014",
+  "choices": [
+   "Why birds can fly",
+   "How the sun moves across the sky",
+   "Why it rains",
+   "How fire was created"
+  ],
+  "correct": "How the sun moves across the sky"
+ },
+ {
+  "id": "RL.4.9-Q2",
+  "standard": "RL.4.9",
+  "prompt": "Imagine you read two flood myths. In the first myth, a powerful god sends the flood because people have become unkind. In the second myth, the flood happens because a giant river overflows for many years without stopping. What is the main difference in how these two myths explain why the flood began?",
+  "choices": [
+   "Both myths explain that water covered the entire land.",
+   "The first myth probably has a hero, and the second one might not.",
+   "The first myth shows the flood as a punishment, while the second shows it as a natural event.",
+   "One myth describes a powerful god, while the other does not."
+  ],
+  "correct": "The first myth shows the flood as a punishment, while the second shows it as a natural event."
+ },
+ {
+  "id": "RL.4.9-Q3",
+  "standard": "RL.4.9",
+  "prompt": "In a European fairy tale, a small fox uses its wits to outsmart a much larger, stronger animal. In a West African folktale, Anansi the spider, who is not very big, uses clever plans to trick powerful creatures. What main idea do these two stories share?",
+  "choices": [
+   "Both stories are about animals that live in forests.",
+   "Both stories teach that being smart can help a weaker character win.",
+   "The main characters in both stories are always kind.",
+   "Strong characters always get what they want in both tales."
+  ],
+  "correct": "Both stories teach that being smart can help a weaker character win."
+ },
+ {
+  "id": "RL.4.9-Q4",
+  "standard": "RL.4.9",
+  "prompt": "Imagine you have read two stories from different cultures that both share the theme of 'courage.' What would be the *best* way to compare *how* each story shows courage?",
+  "choices": [
+   "See if the stories are told by a narrator or by one of the characters.",
+   "Find out if the stories were written a long time ago or more recently.",
+   "Look at what brave actions the characters take and the results of those actions.",
+   "Count how many times the word \"courage\" is used in each story."
+  ],
+  "correct": "Look at what brave actions the characters take and the results of those actions."
+ },
+ {
+  "id": "RL.4.9-E1",
+  "standard": "RL.4.9",
+  "prompt": "A Chinese myth explains why the moon changes shape each month. A Hawaiian myth also explains why the moon changes shape each month. What SAME topic do both myths explain?",
+  "choices": [
+   "Why the moon changes shape",
+   "How to grow rice",
+   "How volcanoes erupt",
+   "Why fish swim"
+  ],
+  "correct": "Why the moon changes shape"
+ },
+ {
+  "id": "RL.4.9-E2",
+  "standard": "RL.4.9",
+  "prompt": "An African folktale teaches that being kind to others brings good things back to you. A Japanese folktale also teaches that being kind to others brings good things back to you. What lesson (theme) do both stories share?",
+  "choices": [
+   "Cats make good pets",
+   "Kindness comes back to you",
+   "Never leave your house",
+   "Winter is very cold"
+  ],
+  "correct": "Kindness comes back to you"
+ },
+ {
+  "id": "RL.4.9-E3",
+  "standard": "RL.4.9",
+  "prompt": "In a Greek myth, a clever hero uses a trick to escape a giant. In a West African tale, a clever spider uses a trick to escape a lion. How are these two stories ALIKE?",
+  "choices": [
+   "Both take place under the ocean",
+   "Both are about the same real king",
+   "Both have a clever character who escapes danger with a trick",
+   "Both are about baking bread"
+  ],
+  "correct": "Both have a clever character who escapes danger with a trick"
+ },
+ {
+  "id": "RL.4.9-E4",
+  "standard": "RL.4.9",
+  "prompt": "One myth says thunder happens because a giant is bowling in the sky. Another myth says thunder happens because a dragon is roaring. What is the SAME about these two myths?",
+  "choices": [
+   "They both explain how to swim",
+   "They both explain why grass is green",
+   "They both are set in a school",
+   "They both try to explain what causes thunder"
+  ],
+  "correct": "They both try to explain what causes thunder"
+ },
+ {
+  "id": "RL.4.9-E5",
+  "standard": "RL.4.9",
+  "prompt": "A Norse myth has a brave hero who fights a monster to protect his village. A Mexican myth has a brave hero who fights a monster to protect her village. What do BOTH heroes have in common?",
+  "choices": [
+   "Each is brave and fights a monster to protect the village",
+   "One is a teacher and one is a chef",
+   "One flies and the other swims",
+   "Neither one is brave at all"
+  ],
+  "correct": "Each is brave and fights a monster to protect the village"
+ },
+ {
+  "id": "RL.4.10-Q1",
+  "standard": "RL.4.10",
+  "prompt": "Nobody knew where the music came from. Every night at midnight, a violin played from somewhere deep in the woods. The townspeople locked their doors and whispered about ghosts. Only young Alma grabbed her lantern and followed the sound.\n\nWhat does Alma's action reveal about her?",
+  "choices": [
+   "She plays violin",
+   "She's foolish and doesn't listen",
+   "She's curious and braver than the other townspeople",
+   "She's a ghost"
+  ],
+  "correct": "She's curious and braver than the other townspeople"
+ },
+ {
+  "id": "RL.4.10-Q2",
+  "standard": "RL.4.10",
+  "prompt": "The treaty was signed on a Tuesday. By Wednesday, the two kingdoms had already broken it. **Peace,** the old queen muttered, \"is harder to keep than to promise.\"\n\nWhat is the queen's message about peace?",
+  "choices": [
+   "Tuesdays are unlucky",
+   "Treaties always work",
+   "Peace is easy",
+   "Making peace is simple but maintaining it is the real challenge"
+  ],
+  "correct": "Making peace is simple but maintaining it is the real challenge"
+ },
+ {
+  "id": "RL.4.10-Q3",
+  "standard": "RL.4.10",
+  "prompt": "Theo didn't notice the first leaf fall. Or the second. But by the time the maple tree was half bare, he understood what his grandmother meant when she said, \"Change happens slowly, then all at once.\"\n\nWhat is Grandmother's saying about?",
+  "choices": [
+   "How change in life can be gradual then suddenly obvious",
+   "Maple trees grow fast",
+   "Only about trees losing leaves",
+   "Autumn is the best season"
+  ],
+  "correct": "How change in life can be gradual then suddenly obvious"
+ },
+ {
+  "id": "RL.4.10-Q4",
+  "standard": "RL.4.10",
+  "prompt": "Zuri had two rules: never break a promise, and always carry a pencil. **You never know,** she said, \"when you'll need to write something down before you forget it \u2014 or before someone tries to make you forget.\"\n\nWhat does the second rule suggest about Zuri?",
+  "choices": [
+   "She forgets everything",
+   "She values truth and recording important things",
+   "She's a teacher",
+   "She likes drawing"
+  ],
+  "correct": "She values truth and recording important things"
+ },
+ {
+  "id": "RL.4.10-Q5",
+  "standard": "RL.4.10",
+  "prompt": "The ship had been at sea for thirty-seven days. Fresh water was running low, and the crew whispered about turning back. Captain Adaeze stood at the bow, eyes fixed on the horizon. **Land by sunrise,** she said. Nobody believed her. But at dawn, there it was.\n\nWhat theme does this passage suggest?",
+  "choices": [
+   "Ships are dangerous",
+   "The ocean is beautiful",
+   "Faith and determination can lead you through doubt",
+   "Captains are always right"
+  ],
+  "correct": "Faith and determination can lead you through doubt"
+ },
+ {
+  "id": "RL.4.10-E1",
+  "standard": "RL.4.10",
+  "prompt": "Maya had never seen the ocean before. When the waves finally came into view, she gasped and pressed her face to the car window. \"It's even bigger than I imagined!\" she said. How does Maya feel when she sees the ocean?",
+  "choices": [
+   "Amazed and excited",
+   "Hungry for lunch",
+   "Bored and sleepy",
+   "Angry at her parents"
+  ],
+  "correct": "Amazed and excited"
+ },
+ {
+  "id": "RL.4.10-E2",
+  "standard": "RL.4.10",
+  "prompt": "The old lighthouse stood at the edge of the cliff. Its light had guided ships safely to shore for over one hundred years. Where does this story take place?",
+  "choices": [
+   "At a birthday party",
+   "At a lighthouse by the sea",
+   "In a busy city subway",
+   "Inside a spaceship"
+  ],
+  "correct": "At a lighthouse by the sea"
+ },
+ {
+  "id": "RL.4.10-E3",
+  "standard": "RL.4.10",
+  "prompt": "Ben studied for the spelling test all week. When he got his paper back, every single word was correct. He jumped up with a huge smile. Why is Ben happy?",
+  "choices": [
+   "He forgot to study",
+   "He missed the bus",
+   "He got every word right",
+   "He lost the test"
+  ],
+  "correct": "He got every word right"
+ },
+ {
+  "id": "RL.4.10-E4",
+  "standard": "RL.4.10",
+  "prompt": "The storm grew worse. Rain slammed against the windows, and thunder shook the little house. The children pulled their blankets tighter and stayed close together. What is happening in the story?",
+  "choices": [
+   "A game of soccer",
+   "A sunny day at the beach",
+   "A quiet trip to the library",
+   "A scary storm at night"
+  ],
+  "correct": "A scary storm at night"
+ },
+ {
+  "id": "RL.4.10-E5",
+  "standard": "RL.4.10",
+  "prompt": "Grandpa handed Lily an old, worn baseball glove. \"This was mine when I was your age,\" he said softly. \"I want you to have it now.\" Why does Grandpa give Lily the glove?",
+  "choices": [
+   "Because he wants to share something special with her",
+   "Because he does not like it",
+   "Because it is broken",
+   "Because Lily bought it"
+  ],
+  "correct": "Because he wants to share something special with her"
+ },
+ {
+  "id": "RI.4.1-Q1",
+  "standard": "RI.4.1",
+  "prompt": "The International Space Station orbits Earth at approximately 17,500 miles per hour. At this speed, astronauts experience 16 sunrises and 16 sunsets every 24 hours.\n\nWhat detail explains why astronauts see so many sunrises?",
+  "choices": [
+   "Astronauts sleep less",
+   "The sun moves faster in space",
+   "The station is large",
+   "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes"
+  ],
+  "correct": "It orbits at 17,500 mph, completing an orbit roughly every 90 minutes"
+ },
+ {
+  "id": "RI.4.1-Q2",
+  "standard": "RI.4.1",
+  "prompt": "Jane Goodall arrived in Tanzania in 1960 with no formal training in science. Within months, she observed chimpanzees using sticks as tools to extract termites \u2014 a discovery that changed our understanding of what makes humans unique.\n\nWhat inference can you make about why this discovery was so important?",
+  "choices": [
+   "Scientists previously believed only humans used tools",
+   "Tanzania is a new country",
+   "People didn't know about termites before",
+   "Chimpanzees are smarter than humans"
+  ],
+  "correct": "Scientists previously believed only humans used tools"
+ },
+ {
+  "id": "RI.4.1-Q3",
+  "standard": "RI.4.1",
+  "prompt": "Honeybees communicate through a \"waggle dance.\" A bee returning from a food source dances in a figure-eight pattern. The angle of the dance indicates the direction of the food relative to the sun.\n\nWhat specific detail tells you HOW bees show direction?",
+  "choices": [
+   "They fly in a straight line",
+   "The angle of the dance relative to the sun",
+   "They make buzzing sounds",
+   "They dance in a circle"
+  ],
+  "correct": "The angle of the dance relative to the sun"
+ },
+ {
+  "id": "RI.4.1-Q4",
+  "standard": "RI.4.1",
+  "prompt": "During the California Gold Rush of 1849, most miners didn't get rich from gold. However, merchants who sold pickaxes, shovels, and jeans to the miners made fortunes.\n\nWhat can you infer from this passage?",
+  "choices": [
+   "The Gold Rush lasted one year",
+   "Merchants also mined for gold",
+   "Selling supplies to miners was more profitable than mining itself",
+   "Gold was easy to find"
+  ],
+  "correct": "Selling supplies to miners was more profitable than mining itself"
+ },
+ {
+  "id": "RI.4.1-Q5",
+  "standard": "RI.4.1",
+  "prompt": "Read the passage below. After reading, what can you infer about Maya?\n\n\"Maya woke up early, even before the sun peeked over the hills. She tiptoed to the kitchen, careful not to wake her sleeping family. Quietly, she gathered flour, sugar, and chocolate chips. She hummed a little tune as she mixed the ingredients, a big smile on her face. By the time her parents came downstairs, the kitchen smelled wonderful, and a plate of warm cookies sat on the counter.\"",
+  "choices": [
+   "Maya was making cookies for a birthday party.",
+   "Maya's family was awake when she started baking.",
+   "Maya used flour, sugar, and chocolate chips.",
+   "Maya enjoys baking."
+  ],
+  "correct": "Maya enjoys baking."
+ },
+ {
+  "id": "RI.4.1-E1",
+  "standard": "RI.4.1",
+  "prompt": "Read the sentence: \"Honeybees live together in a home called a hive.\" What is a honeybee's home called?",
+  "choices": [
+   "A hive",
+   "A pond",
+   "A nest",
+   "A cave"
+  ],
+  "correct": "A hive"
+ },
+ {
+  "id": "RI.4.1-E2",
+  "standard": "RI.4.1",
+  "prompt": "Read the sentence: \"The Sahara is the largest hot desert in the world, and it is very dry.\" According to the text, what is the Sahara like?",
+  "choices": [
+   "Covered in trees",
+   "Very dry",
+   "Very wet",
+   "Full of snow"
+  ],
+  "correct": "Very dry"
+ },
+ {
+  "id": "RI.4.1-E3",
+  "standard": "RI.4.1",
+  "prompt": "Read the sentence: \"Owls hunt at night, so they sleep during the day.\" When do owls sleep?",
+  "choices": [
+   "In the morning while hunting",
+   "All week long",
+   "During the day",
+   "At midnight"
+  ],
+  "correct": "During the day"
+ },
+ {
+  "id": "RI.4.1-E4",
+  "standard": "RI.4.1",
+  "prompt": "Read the sentence: \"The Nile is a long river in Africa that gives people water to drink.\" What does the Nile give people?",
+  "choices": [
+   "Books to read",
+   "Gold to sell",
+   "Cars to drive",
+   "Water to drink"
+  ],
+  "correct": "Water to drink"
+ }
+]

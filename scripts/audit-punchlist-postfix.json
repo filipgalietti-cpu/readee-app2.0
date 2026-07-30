@@ -1,0 +1,404 @@
+{
+  "graded": 88,
+  "pass": 1,
+  "minor": 59,
+  "fail": 28,
+  "artifacts": [
+    "RF.K.1",
+    "RF.K.3",
+    "RF.1.2",
+    "RF.1.3"
+  ],
+  "real_fails": [
+    {
+      "std": "RL.K.2",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "both",
+          "problem": "Slide 3 'Don't Forget the Middle!' renders 'The action!' as black/dark body text on white, outside any violet/themed card (rule 25 explicitly forbids naked black body text). The slide also has NO image and massive vertical dead space above and below the two small elements, so it reads as an unfinished floating-in-a-void panel on both desktop and mobile.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "both",
+          "problem": "Slide 2 teach ('How Do We Retell a Story?') accumulates 6 pills (anchor + 'Beginning?' + 'Middle?' + the 'Beginning/Middle/End' row). The bottom row overflows the panel: on desktop 'Middle'/'End' overlap/clip behind the Next button, and on mobile the 'End' pill is clipped at the footer. Content is cut off.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.K.3",
+      "desktop": "fail",
+      "mobile": "pass",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "desktop",
+          "problem": "On the example slide 3 ('Let's Try One!'), the revealed answer 'Both about the owl!' renders as black/near-black body text sitting directly on the white panel, not wrapped in a violet/themed card. Filip's standing rule bans black text on lesson surfaces; the answer should light up in a theme color or sit inside a card. Rest of the answer reveal (pink 'How do they link?' pill) is fine.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.K.4",
+      "desktop": "minor",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Example slide (s3) overflows the phone frame: the green 'Frigid means Very Cold!' reveal box (the payoff of the example) is clipped at the bottom behind the audio bar. Stacked image + passage card + clue pill + reveal is too tall for the mobile viewport, cutting off the key takeaway.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.K.5",
+      "desktop": "minor",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Slide 3 'Open It Up' teach slide (no image) renders a single pill 'Tells who made it' floating in the vertical center of a tall phone panel with massive empty space above and below - looks unfinished/dead space.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.K.6",
+      "desktop": "minor",
+      "mobile": "minor",
+      "issues": [
+        {
+          "rule": 5,
+          "surface": "both",
+          "problem": "Teach-slide (slide 1) table renders 'Drawe the PICTURES' \u2014 a misspelled/incorrect word. The audio says 'draws the pictures' but the on-screen anchor reads 'Drawe'. A spelling error on screen in a Kindergarten reading lesson is a content correctness blocker; appears on both desktop and mobile.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.K.8",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "desktop",
+          "problem": "Example slide ('Let's Try One'): the closing orange pill 'Reason supports the point' is clipped/overlapped by the Next button. The 4 accumulated example steps (Point pill + passage card + 'One reason?'/answer + closing pill) overflow the fixed desktop panel height, cutting off the last pill.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Tip slide ('A Helpful Trick!'): severe dead space. Image sits at top, then a small eyebrow heading, then a large empty void down to the Next button. The two tip pills ('Ask: why is it true?' and 'The why is your reason') that render fine on desktop do not appear on mobile, leaving the slide looking unfinished.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RF.K.1c",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "both",
+          "problem": "On the teach slide (desktop s2 / mobile s3) the phrase 'It's hard!' renders as naked black body text floating outside any card, while the sibling anchors sit in violet/green pills. Black body text outside a card violates the no-black-text rule.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Teach slide 2 story box: the 'the cat sat' image is cropped horizontally on mobile and displays as 'he cat sa' with both sides cut off, so the sentence being taught is clipped.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Tip slide (s4) renders only the image plus the eyebrow heading 'A HELPFUL TRICK!' with a large empty lower half; the two tip pills ('Finger space between words' / 'Finger after each word') do not appear, leaving heavy dead space that looks unfinished.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RF.K.2c",
+      "desktop": "minor",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Teach slide 'Listening for Sounds' (s2) renders the image and the 'LISTENING FOR SOUNDS' eyebrow, then a large empty void \u2014 the B-A-L-L anchor letter pills that display on the desktop version are missing, so the panel reads as unfinished/dead space.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RF.K.2e",
+      "desktop": "pass",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Teach slide 'How Does It Work?' renders only the image (top) and a small eyebrow heading in the lower third, leaving ~half the panel as empty void. Desktop shows the S-A-T / C-A-N letter tiles filling the right panel, but those content pills do not appear on mobile, so the slide reads as unfinished/floating-in-a-void.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RF.K.3a",
+      "desktop": "minor",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Tip slide 'Try Every Letter!' (s5): the A-Z alphabet grid that renders fully on desktop is completely absent on mobile. The slide shows only the boy image plus a tiny grey caption with a large empty void below it, looking unfinished/severe dead space.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 24,
+          "surface": "mobile",
+          "problem": "Same tip slide (s5) has no interactive content on mobile \u2014 the entire 'tap any letter to hear its sound' alphabet grid is missing, so the slide does not earn its screen time on the phone surface.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RF.K.3c",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 19,
+          "surface": "both",
+          "problem": "Slide 5 tip image has baked-in text and mismatches content. Desktop: boy pointing at a snake with baked-in 'looong'/'pop!' letters; mobile: boy stretching a rainbow with baked-in 'OOOOOH'. Both carry legible baked-in text (rule 19 forbids letters in image) and the sound-stretching imagery contradicts a sight-words lesson (words you do NOT sound out).",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Slide 4 ('the I do is you'): the five-pill row does not fit the 390px phone width; the last pill 'you' overflows and is clipped at the right panel edge.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "K.L.2",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 3,
+          "surface": "content",
+          "problem": "Tip slide prints the audio verbatim as on-screen text: 'Number one: Does it start with a capital letter?' and 'Number two: Does it end with punctuation?' are full spoken sentences transcribed, not terse anchors.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 4,
+          "surface": "content",
+          "problem": "Tip slide pills run ~8-9 words each ('Number one: Does it start with a capital letter?'), far over the <=5-word pill limit.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "desktop",
+          "problem": "Tip slide (s4) renders the 'Number two: Does it end with punctuation?' line as bold near-black body text floating on the white panel with no violet/themed card, unlike the 'Number one' line which sits in a green card.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Tip slide (s4) shows only the 'A HELPFUL TRICK!' eyebrow heading and the image; the tip content is absent, leaving the entire lower two-thirds of the phone as empty dead space that looks unfinished.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.1.2",
+      "desktop": "minor",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Intro slide (s1): the third term pill 'Key details' is clipped/cut off behind the audio-paused footer. The large apple-tree image plus three stacked pills overflow the phone viewport so the last pill does not fully render.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RL.1.4",
+      "desktop": "minor",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Teach slide s3 'One Word Does the Work' (text-only) renders a single pill 'She stomped to the door.' floating in the middle of the tall phone panel with roughly half the content area empty above and below. It reads as unfinished/floating-in-a-void.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.1.4",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "both",
+          "problem": "On the example slide 'What Is a Habitat?', the answer reveal 'Place animal lives!' renders as bold BLACK text outside any violet/themed card, violating the no-black-body-text rule (it is the only content element not wrapped in a card).",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.1.9",
+      "desktop": "pass",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Teach slide 'Two Books on the Sun' rests with only the small grey eyebrow heading over the image; its final beat ('Together, we learn even more') has no displayText, so replace-not-accumulate leaves ~40% of the panel empty below the heading. Reads as unfinished/floating-in-a-void.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Tip slide 'Same Topic, More Info' shows the Venn image + lone grey eyebrow with a large empty void below; the 'Two books = more facts' anchor pill is wiped because the final beat has no displayText. Same mobile dead-space pattern.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RF.1.2a",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 1,
+          "surface": "content",
+          "problem": "Lesson standard RF.1.2a was not found in scripts/audit201-payload.json or scripts/shot-map.json. The RF.1.2 family only contains RF.1.2b, RF.1.2c, and RF.1.2d. There is no content data and no desktop/mobile screenshots to audit for RF.1.2a, so it cannot be graded.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RF.1.3e",
+      "desktop": "fail",
+      "mobile": "pass",
+      "issues": [
+        {
+          "rule": 3,
+          "surface": "desktop",
+          "problem": "Desktop example slide (s3) prints full spoken sentences as pills: 'Read each piece. Pen. Cil.' and 'Now blend. Pencil!' - transcription of the audio rather than terse anchors. (Note: the mobile render of this lesson uses the correct terse Q->A worked-example format, so desktop shots appear to be a stale/older variant.)",
+          "severity": "blocker"
+        },
+        {
+          "rule": 6,
+          "surface": "desktop",
+          "problem": "Desktop example slide (s3) crams six stacked pills ('Let us read' / 'pencil' / 'together.' / 'Split. Pen and cil.' / 'Read each piece. Pen. Cil.' / 'Now blend. Pencil!'), no single focal point.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "desktop",
+          "problem": "Desktop example slide (s3): the last pill 'Now blend. Pencil!' is cut off behind the Next button (overflow), and the heading 'Read PENCIL' is misplaced into the top header row instead of sitting above the content.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RF.1.3f",
+      "desktop": "fail",
+      "mobile": "minor",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "desktop",
+          "problem": "Teach slide 3 ('The -ed and -ing Endings') is crammed: heading + 4 accumulated beats (ED pill, Yesterday/I/Jumped row, ING pill, and 'I am jumping.' pill). The last pill collides with / is clipped behind the floating Next button. Combining two concepts (-ed and -ing) on one slide overloads the panel.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "L.1.2",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 19,
+          "surface": "both",
+          "problem": "Teach slide 'Rule 1: Start Big' (s2) image is a crowned capital 'T' mascot surrounded by a scrambled/garbled baked-in alphabet ('abcef fghjln mpstuvwxyz'). Baked-in letters are explicitly forbidden and the alphabet is distorted AI-slop text.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "L.1.4",
+      "desktop": "minor",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Slide 3 'Try It and See' (teach) renders with no image; a single pill ('Does it make sense?') floats in a very tall, nearly empty panel with severe dead space above and below. Looks unfinished.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "L.1.5",
+      "desktop": "minor",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "mobile",
+          "problem": "Tip slide (s5) is missing its content pill: desktop clearly shows the 'Opposite or close?' trick pill, but on mobile only the small-caps 'MATCH AND MIX' eyebrow renders under the image, leaving the entire lower half of the panel empty and looking unfinished. The tip's one memorable phrase is absent from the screen.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RI.2.1",
+      "desktop": "fail",
+      "mobile": "fail",
+      "issues": [
+        {
+          "rule": 25,
+          "surface": "desktop",
+          "problem": "Slide 2 teach ('Why and How Matter Most') overflows the panel: the heading collides with the top title bar/X, and the bottom pill 'Understand the facts' is clipped by the Next button. Accumulated pills exceed the panel height.",
+          "severity": "blocker"
+        },
+        {
+          "rule": 25,
+          "surface": "both",
+          "problem": "Slide 3 teach ('Find the Answer') has severe dead space \u2014 a single 4-word pill floats in a mostly-empty full-width panel (desktop) / tall empty screen (mobile) with no image. Looks unfinished.",
+          "severity": "blocker"
+        }
+      ]
+    },
+    {
+      "std": "RL.2.3",
+      "desktop": "minor",
+      "mobile": "minor",
+      "issues": [
+        {
+          "rule": 4,
+          "surface": "content",
+          "problem": "MCQ #4 prompt is truncated mid-sentence in the lesson data: 'Sam's best friend moved... How did Sam respond when his friend m' \u2014 the question text is cut off mid-word, producing a broken/unanswerable question stem.",
+          "severity": "blocker"
+        }
+      ]
+    }
+  ]
+}

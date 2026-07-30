@@ -1,0 +1,422 @@
+[
+ {
+  "id": "L.3.6-Q4",
+  "standard": "L.3.6",
+  "prompt": "The academic word **compare** means to \u2014",
+  "choices": [
+   "Draw a picture",
+   "Find how things are alike and different",
+   "Read silently",
+   "Write a story"
+  ],
+  "correct": "Find how things are alike and different"
+ },
+ {
+  "id": "L.3.6-E1",
+  "standard": "L.3.6",
+  "prompt": "Read the sentence: \"The tired dog wanted to rest.\" What does the word **tired** mean?",
+  "choices": [
+   "Needing sleep or rest",
+   "Bright and sunny",
+   "Very hungry",
+   "A kind of ball"
+  ],
+  "correct": "Needing sleep or rest"
+ },
+ {
+  "id": "L.3.6-E2",
+  "standard": "L.3.6",
+  "prompt": "In science class, an animal's **home** is the place where it lives. Which word means the same as **home**?",
+  "choices": [
+   "The color of its fur",
+   "Where it lives",
+   "What it eats",
+   "How fast it runs"
+  ],
+  "correct": "Where it lives"
+ },
+ {
+  "id": "L.3.6-E3",
+  "standard": "L.3.6",
+  "prompt": "Which sentence uses a more exact, describing word?",
+  "choices": [
+   "I saw stuff.",
+   "The food was there.",
+   "The juicy, red apple looked sweet.",
+   "It was a thing."
+  ],
+  "correct": "The juicy, red apple looked sweet."
+ },
+ {
+  "id": "L.3.6-E4",
+  "standard": "L.3.6",
+  "prompt": "Read: \"The huge elephant was the biggest animal at the zoo.\" What does **huge** mean?",
+  "choices": [
+   "Very quiet",
+   "Very small",
+   "Very fast",
+   "Very big"
+  ],
+  "correct": "Very big"
+ },
+ {
+  "id": "L.3.6-E5",
+  "standard": "L.3.6",
+  "prompt": "In a story, someone who feels **happy** feels \u2014 ",
+  "choices": [
+   "Glad and cheerful",
+   "Cold and wet",
+   "Sad and upset",
+   "Sleepy and slow"
+  ],
+  "correct": "Glad and cheerful"
+ },
+ {
+  "id": "L.3.1-Q1",
+  "standard": "L.3.1",
+  "prompt": "Which sentence correctly uses a verb to show something happened in the past?",
+  "choices": [
+   "My little brother run fast at the race.",
+   "My little brother running fast at the race.",
+   "My little brother ran fast at the race.",
+   "My little brother runs fast at the race."
+  ],
+  "correct": "My little brother ran fast at the race."
+ },
+ {
+  "id": "L.3.1-Q2",
+  "standard": "L.3.1",
+  "prompt": "Which sentence agrees correctly?",
+  "choices": [
+   "The dogs run fast.",
+   "The dogs runs fast.",
+   "The dog run fast.",
+   "The dog runned fast."
+  ],
+  "correct": "The dogs run fast."
+ },
+ {
+  "id": "L.3.1-Q3",
+  "standard": "L.3.1",
+  "prompt": "What is the comparative form of **fast**?",
+  "choices": [
+   "faster",
+   "fastest",
+   "more fast",
+   "fastly"
+  ],
+  "correct": "faster"
+ },
+ {
+  "id": "L.3.1-Q4",
+  "standard": "L.3.1",
+  "prompt": "Which is the superlative form of **happy**?",
+  "choices": [
+   "happiest",
+   "happier",
+   "more happy",
+   "happily"
+  ],
+  "correct": "happiest"
+ },
+ {
+  "id": "L.3.1-Q5",
+  "standard": "L.3.1",
+  "prompt": "Which sentence uses the right verb tense?",
+  "choices": [
+   "I am eating an apple now.",
+   "I were eating an apple now.",
+   "I am eat an apple now.",
+   "I am ate an apple now."
+  ],
+  "correct": "I am eating an apple now."
+ },
+ {
+  "id": "L.3.1-H1",
+  "standard": "L.3.1",
+  "prompt": "Ben ran faster than Sara. Tom ran faster than Ben. Which sentence is correct?",
+  "choices": [
+   "Tom ran the fastest.",
+   "Tom ran more fast.",
+   "Ben ran the fastest.",
+   "Tom ran the faster."
+  ],
+  "correct": "Tom ran the fastest."
+ },
+ {
+  "id": "L.3.1-H2",
+  "standard": "L.3.1",
+  "prompt": "Choose the sentence that uses the correct past-tense verbs: 'Yesterday our class ___ to the museum and ___ many old paintings.'",
+  "choices": [
+   "gone, saw",
+   "went, saw",
+   "goed, seen",
+   "went, seen"
+  ],
+  "correct": "went, saw"
+ },
+ {
+  "id": "L.3.1-H3",
+  "standard": "L.3.1",
+  "prompt": "Which word best completes the sentence to show WHY it happened? '___ she practiced every day, Mia became a wonderful violin player.'",
+  "choices": [
+   "So",
+   "Or",
+   "Because",
+   "But"
+  ],
+  "correct": "Because"
+ },
+ {
+  "id": "L.3.1-H4",
+  "standard": "L.3.1",
+  "prompt": "Choose the correct word: 'Of everyone in the room, Jonah spoke ___, so no one could hear him at all.'",
+  "choices": [
+   "quieter",
+   "more quietly",
+   "quietly",
+   "most quietly"
+  ],
+  "correct": "most quietly"
+ },
+ {
+  "id": "L.3.1-H5",
+  "standard": "L.3.1",
+  "prompt": "Which sentence keeps the verb tenses correct? 'Last summer we ___ to the lake, and next summer we ___ there again.'",
+  "choices": [
+   "went, will go",
+   "go, go",
+   "went, go",
+   "will go, went"
+  ],
+  "correct": "went, will go"
+ },
+ {
+  "id": "L.3.2-Q1",
+  "standard": "L.3.2",
+  "prompt": "Which uses quotation marks correctly?",
+  "choices": [
+   "Maya said, \"Hi!\"",
+   "Maya said Hi",
+   "\"Maya said\" Hi",
+   "Maya, said Hi!"
+  ],
+  "correct": "Maya said, \"Hi!\""
+ },
+ {
+  "id": "L.3.2-Q2",
+  "standard": "L.3.2",
+  "prompt": "What punctuation is needed in a date like **March 5 2026**?",
+  "choices": [
+   "a comma between day and year",
+   "no punctuation",
+   "a period after each",
+   "a question mark"
+  ],
+  "correct": "a comma between day and year"
+ },
+ {
+  "id": "L.3.2-Q3",
+  "standard": "L.3.2",
+  "prompt": "Which sentence is punctuated correctly?",
+  "choices": [
+   "I bought apples, bananas, and grapes.",
+   "I bought apples bananas and grapes.",
+   "I bought, apples, bananas, and, grapes.",
+   "I bought apples; bananas; and grapes."
+  ],
+  "correct": "I bought apples, bananas, and grapes."
+ },
+ {
+  "id": "L.3.2-Q4",
+  "standard": "L.3.2",
+  "prompt": "Which is **possessive** (shows owning)?",
+  "choices": [
+   "the kid's bag",
+   "the kids bag",
+   "the kids bags",
+   "the kid bags"
+  ],
+  "correct": "the kid's bag"
+ },
+ {
+  "id": "L.3.2-Q5",
+  "standard": "L.3.2",
+  "prompt": "Where do quotation marks go in: She said hello?",
+  "choices": [
+   "She said, \"hello.\"",
+   "She, said hello",
+   "She said \"hello\"",
+   "She said hello,"
+  ],
+  "correct": "She said, \"hello.\""
+ },
+ {
+  "id": "L.3.2-H1",
+  "standard": "L.3.2",
+  "prompt": "Which sentence is punctuated correctly?",
+  "choices": [
+   "\"I found it!\" yelled Sam.",
+   "\"I found it! yelled Sam.\"",
+   "\"I found it!,\" yelled Sam.",
+   "\"I found it,\" yelled Sam!"
+  ],
+  "correct": "\"I found it!\" yelled Sam."
+ },
+ {
+  "id": "L.3.2-H2",
+  "standard": "L.3.2",
+  "prompt": "Choose the correct word: \"The three ___ tails wagged happily.\"",
+  "choices": [
+   "dogs's",
+   "dogs'",
+   "dog's",
+   "dogs"
+  ],
+  "correct": "dogs'"
+ },
+ {
+  "id": "L.3.2-H3",
+  "standard": "L.3.2",
+  "prompt": "Choose the word that correctly fills the blank: \"The kitten curled up and licked ___ soft paws.\"",
+  "choices": [
+   "its'",
+   "it is'",
+   "its",
+   "it's"
+  ],
+  "correct": "its"
+ },
+ {
+  "id": "L.3.2-H4",
+  "standard": "L.3.2",
+  "prompt": "Which spelling correctly adds -ed to the word 'hop' in this sentence: \"The frog ___ across the pond.\"",
+  "choices": [
+   "hopt",
+   "hoped",
+   "hopd",
+   "hopped"
+  ],
+  "correct": "hopped"
+ },
+ {
+  "id": "L.3.2-H5",
+  "standard": "L.3.2",
+  "prompt": "Which sentence uses capital letters correctly?",
+  "choices": [
+   "We visited Lake Michigan in July.",
+   "We Visited Lake Michigan in July.",
+   "We visited lake Michigan in july.",
+   "we visited Lake michigan in July."
+  ],
+  "correct": "We visited Lake Michigan in July."
+ },
+ {
+  "id": "L.3.3-Q1",
+  "standard": "L.3.3",
+  "prompt": "Which is the strongest way to say **good**?",
+  "choices": [
+   "fantastic",
+   "fine",
+   "okay",
+   "not bad"
+  ],
+  "correct": "fantastic"
+ },
+ {
+  "id": "L.3.3-Q2",
+  "standard": "L.3.3",
+  "prompt": "You are writing to a friend. Which is best?",
+  "choices": [
+   "Hey, what's up?",
+   "To whom it may concern,",
+   "Dear sir or madam,",
+   "Esteemed colleague,"
+  ],
+  "correct": "Hey, what's up?"
+ },
+ {
+  "id": "L.3.3-Q3",
+  "standard": "L.3.3",
+  "prompt": "Which word adds the most picture to **walked**?",
+  "choices": [
+   "strolled",
+   "went",
+   "moved",
+   "came"
+  ],
+  "correct": "strolled"
+ },
+ {
+  "id": "L.3.3-Q5",
+  "standard": "L.3.3",
+  "prompt": "Which sentence has the strongest verb?",
+  "choices": [
+   "The cat pounced on the toy.",
+   "The cat went on the toy.",
+   "The cat sat on the toy.",
+   "The cat was on the toy."
+  ],
+  "correct": "The cat pounced on the toy."
+ },
+ {
+  "id": "L.3.3-H1",
+  "standard": "L.3.3",
+  "prompt": "A storm tore the roof clean off the barn. Which word best replaces \"strong\" in \"The wind was strong\" to show HOW powerful it really was?",
+  "choices": [
+   "fierce",
+   "chilly",
+   "steady",
+   "brisk"
+  ],
+  "correct": "fierce"
+ },
+ {
+  "id": "L.3.3-H2",
+  "standard": "L.3.3",
+  "prompt": "You are writing a thank-you note to your school principal. Which sentence fits the situation best?",
+  "choices": [
+   "The trip was lit, no cap.",
+   "Thank you for organizing our wonderful field trip.",
+   "Thanks a ton for the awesome trip!",
+   "Yo, that trip totally rocked."
+  ],
+  "correct": "Thank you for organizing our wonderful field trip."
+ },
+ {
+  "id": "L.3.3-H3",
+  "standard": "L.3.3",
+  "prompt": "Marco had not eaten all day and was starving. Which word best completes the sentence for effect: \"He ___ his sandwich in seconds.\"?",
+  "choices": [
+   "nibbled",
+   "ate",
+   "devoured",
+   "tasted"
+  ],
+  "correct": "devoured"
+ },
+ {
+  "id": "L.3.3-H4",
+  "standard": "L.3.3",
+  "prompt": "Four words all describe being happy. Which one shows the SMALLEST, mildest amount of happiness?",
+  "choices": [
+   "ecstatic",
+   "joyful",
+   "thrilled",
+   "content"
+  ],
+  "correct": "content"
+ },
+ {
+  "id": "L.3.3-H5",
+  "standard": "L.3.3",
+  "prompt": "An author wants readers to feel uneasy about an old house. Which word should she choose to describe it?",
+  "choices": [
+   "gloomy",
+   "peaceful",
+   "cozy",
+   "spacious"
+  ],
+  "correct": "gloomy"
+ }
+]

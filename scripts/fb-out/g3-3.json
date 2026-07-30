@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.3.4-E3",
+  "correct_feedback": "Yes! The text says almost no rain falls and the ground stays dusty, so dry means having very little water. Nice reading!",
+  "incorrect_feedback": "Hmm, look again at the words 'almost no rain falls.' What would that do to the ground?",
+  "reveal_feedback": "The answer is 'Having very little water.' The desert gets almost no rain, so dry means there is barely any water."
+ },
+ {
+  "id": "RI.3.4-E4",
+  "correct_feedback": "Great job! The bees take nectar from flowers to make honey, so gather means to collect. You used the clues!",
+  "incorrect_feedback": "Almost! Reread how the bees take nectar from flowers. What are they doing with it?",
+  "reveal_feedback": "The answer is 'To collect.' The bees pick up nectar from flowers, and gather means to collect it together."
+ },
+ {
+  "id": "RI.3.4-E5",
+  "correct_feedback": "You got it! They rush into burning buildings, so brave means not afraid. Smart thinking!",
+  "incorrect_feedback": "Good try! Think about someone who runs into a burning building. How must they feel to do that?",
+  "reveal_feedback": "The answer is 'Not afraid.' Firefighters rush into danger, so brave means they are not afraid."
+ },
+ {
+  "id": "RI.3.5-Q1",
+  "correct_feedback": "Yes! The index lists topics with their page numbers, so it quickly points you to every page about volcanoes. Well done!",
+  "incorrect_feedback": "Close one! Which part lists topics with the exact page numbers where you can find them?",
+  "reveal_feedback": "The answer is 'The index.' It lists topics in order with page numbers, so you can quickly find every volcano page."
+ },
+ {
+  "id": "RI.3.5-Q3",
+  "correct_feedback": "Nice! Clear, exact words like 'dolphin habitat and diet' tell the computer just what you want, so you get the best results.",
+  "incorrect_feedback": "Take another look. Which search uses clear, exact words about dolphins instead of vague ones?",
+  "reveal_feedback": "The answer is 'Dolphin habitat and diet.' Exact words tell the computer exactly what you want, giving the best results."
+ },
+ {
+  "id": "RI.3.5-Q4",
+  "correct_feedback": "Yes! The index lists topics with page numbers, so you can find the exact Mars page fast. Great work!",
+  "incorrect_feedback": "Hmm, which part of a book lists topics with the exact page number for each one?",
+  "reveal_feedback": "The answer is 'The index.' It lists topics with page numbers, so you can quickly find the exact page about Mars."
+ },
+ {
+  "id": "RI.3.5-Q5",
+  "correct_feedback": "Right! A hyperlink is like a doorway you click to jump straight to more information. Nice thinking!",
+  "incorrect_feedback": "Almost! Think about what happens when you click a link on a screen. Where does it take you?",
+  "reveal_feedback": "The answer is 'Jump to related information quickly.' A hyperlink is a link you click to go straight to more about that topic."
+ },
+ {
+  "id": "RI.3.5-E1",
+  "correct_feedback": "Yes! A list of chapter names with their starting pages at the front is the table of contents. Great job!",
+  "incorrect_feedback": "Good try! What do we call the list at the front that shows chapter names and their pages?",
+  "reveal_feedback": "The answer is 'The table of contents.' It sits at the front and lists chapter names with the page each one starts on."
+ },
+ {
+  "id": "RI.3.5-E2",
+  "correct_feedback": "Nice! A glossary is like a mini dictionary in the book that tells you what tricky words mean. Well done!",
+  "incorrect_feedback": "Take another look. Which part is like a little dictionary that explains what words mean?",
+  "reveal_feedback": "The answer is 'The glossary.' It works like a small dictionary in the book that tells you what words like venom mean."
+ },
+ {
+  "id": "RI.3.5-E3",
+  "correct_feedback": "Yes! Clear, exact words like 'what do pandas eat' tell the computer just what you want to learn. Great searching!",
+  "incorrect_feedback": "Close one! Which choice uses clear words that ask exactly what you want to know about pandas?",
+  "reveal_feedback": "The answer is 'What do pandas eat.' These clear words tell the computer exactly what you want, so you get the best help."
+ },
+ {
+  "id": "RI.3.5-E4",
+  "correct_feedback": "You got it! A heading sits at the top of a section and tells you what that part is about. Smart!",
+  "incorrect_feedback": "Hmm, words at the top of a section that name what it's about have a special name. Which choice matches that job?",
+  "reveal_feedback": "The answer is 'A heading, which tells you what that section is about.' The words at the top name the topic of that part."
+ },
+ {
+  "id": "RI.3.5-E5",
+  "correct_feedback": "Yes! A list of topics in ABC order with page numbers at the back is the index. Nice work!",
+  "incorrect_feedback": "Almost! Which part is at the back and lists topics in ABC order with their pages?",
+  "reveal_feedback": "The answer is 'The index.' It sits at the back and lists topics in ABC order with the pages for each one."
+ },
+ {
+  "id": "RI.3.6-Q1",
+  "correct_feedback": "Yes! The author says practice helps your brain remember and grow stronger, so the author thinks homework is helpful. Great reading!",
+  "incorrect_feedback": "Good try! Reread how the author says homework helps your brain. Does the author sound for it or against it?",
+  "reveal_feedback": "The answer is 'helpful for making your brain stronger and smarter.' The author says practice helps your brain grow and remember."
+ },
+ {
+  "id": "RI.3.6-Q2",
+  "correct_feedback": "Right! The article wants a later start, but the student likes early mornings, so they see it differently. Nice thinking!",
+  "incorrect_feedback": "Take another look. The article and the student want different things. What does that tell us about how they think?",
+  "reveal_feedback": "The answer is 'The student and author have different points of view.' The article wants a later start, but the student likes early."
+ },
+ {
+  "id": "RI.3.6-Q3",
+  "correct_feedback": "Yes! The author lists only good things about dogs, so the point of view is that dogs are wonderful pets. Well done!",
+  "incorrect_feedback": "Hmm, notice all the good things the author says about dogs. How does the author feel about them overall?",
+  "reveal_feedback": "The answer is 'Dogs are wonderful pets to own.' The author only shares good things, showing they think dogs are great."
+ },
+ {
+  "id": "RI.3.6-Q4",
+  "correct_feedback": "Right! The author says animals deserve their natural homes, so they think zoos aren't the best place. Good thinking!",
+  "incorrect_feedback": "Almost! The author says animals deserve their natural habitats. How does that make them feel about zoos?",
+  "reveal_feedback": "The answer is 'Zoos aren't the best place for animals.' The author says animals deserve their natural homes, not small spaces."
+ },
+ {
+  "id": "RI.3.6-Q5",
+  "correct_feedback": "Yes! You added your own idea that other healthy foods matter too, so that's a different point of view. Great!",
+  "incorrect_feedback": "Good try! A different point of view means your own idea, not just agreeing with the author. Which one shares a new idea?",
+  "reveal_feedback": "The answer is 'Salads are good, but I think other healthy foods like fruit or milk are also important.' It adds your own view."
+ },
+ {
+  "id": "RI.3.6-H1",
+  "correct_feedback": "Yes! The author loves school gardens, but Jordan doesn't want the messy work, so their views differ. Sharp reading!",
+  "incorrect_feedback": "Close one! The author wants gardens, but how does Jordan feel about all that dirty work?",
+  "reveal_feedback": "The answer is 'The author likes school gardens, but Jordan does not want the work.' They feel differently about gardens."
+ },
+ {
+  "id": "RI.3.6-H2",
+  "correct_feedback": "Yes! 'The most amazing animals in the whole world' is what the author feels, not something you can prove. Great catch!",
+  "incorrect_feedback": "Take another look. An opinion is a feeling, not something you can check or count. Which sentence is a feeling?",
+  "reveal_feedback": "The answer is 'Without a doubt, bats are the most amazing animals in the whole world.' That's a feeling, not a fact."
+ },
+ {
+  "id": "RI.3.6-H3",
+  "correct_feedback": "Yes! Priya agrees zoos protect animals but feels sad seeing cages, so her view is different. Thoughtful reading!",
+  "incorrect_feedback": "Hmm, Priya agrees about one thing but feels differently about another. Which choice shows both parts?",
+  "reveal_feedback": "The answer is 'Priya agrees zoos protect animals but feels they can also be sad places.' She shares the author's view only partway."
+ },
+ {
+  "id": "RI.3.6-H4",
+  "correct_feedback": "Yes! Sam noticed bad things and Dana noticed fun things, so they had different feelings about the same trip. Nice!",
+  "incorrect_feedback": "Good try! Sam and Dana went to the same farm but wrote very different things. What does that tell you about their feelings?",
+  "reveal_feedback": "The answer is 'The two writers had different feelings about the trip.' Sam saw the bad, Dana saw the fun."
+ },
+ {
+  "id": "RI.3.6-H5",
+  "correct_feedback": "Yes! Leo's own view is that games help him solve problems and make friends. That sentence is truly his idea. Great!",
+  "incorrect_feedback": "Almost! Leo's point of view is his own feeling about games, not the author's. Which sentence sounds like Leo?",
+  "reveal_feedback": "The answer is 'Games have taught me to solve problems and work with friends.' That shares Leo's own point of view."
+ },
+ {
+  "id": "RI.3.7-Q1",
+  "correct_feedback": "Yes! The diagram with arrows shows the steps, so it helps you see the process and understand it more easily. Well done!",
+  "incorrect_feedback": "Take another look. The diagram uses arrows to show each step. How does seeing the steps help a reader?",
+  "reveal_feedback": "The answer is 'Showing the process visually so it's easier to understand.' The picture and arrows make the steps clear to see."
+ },
+ {
+  "id": "RI.3.7-Q2",
+  "correct_feedback": "Right! A map shows the path and distance, so it helps readers understand how far and where they traveled. Nice!",
+  "incorrect_feedback": "Hmm, think about what a map shows best. Does it show places and paths, or things like food and birthdays?",
+  "reveal_feedback": "The answer is 'How far and where they traveled.' A map shows the route and distance of the journey."
+ },
+ {
+  "id": "RI.3.7-Q3",
+  "correct_feedback": "Yes! A photograph shows the real thing, so it shows what an erupting volcano actually looks like. Great thinking!",
+  "incorrect_feedback": "Close one! A photo shows a real picture, not words or explanations. What does the photo let you see?",
+  "reveal_feedback": "The answer is 'Showing what an eruption actually looks like.' A photograph shows the real thing to the reader."
+ },
+ {
+  "id": "RI.3.7-Q4",
+  "correct_feedback": "Yes! A bar graph lets you see the exact percentages quickly with just one look. Smart!",
+  "incorrect_feedback": "Take another look. A graph shows numbers in a picture. What does it let you spot quickly that words might not?",
+  "reveal_feedback": "The answer is 'The exact percentages at a glance.' A bar graph shows the numbers clearly so you see them fast."
+ },
+ {
+  "id": "RI.3.7-Q5",
+  "correct_feedback": "Yes! A cross-section shows the layers cut open, so you can see the crust, mantle, and core in order. Great choice!",
+  "incorrect_feedback": "Hmm, Ben wants readers to see the layers from outside to inside. Which picture shows the inside of the Earth?",
+  "reveal_feedback": "The answer is 'A cross-section diagram showing the crust, mantle, and core.' It shows the layers cut open, outside to inside."
+ },
+ {
+  "id": "RI.3.7-E1",
+  "correct_feedback": "Yes! The picture shows a frog on a lily pad in the pond, which is a frog on a leaf in the water. Well done!",
+  "incorrect_feedback": "Good try! Look at the picture again. What animal is it, and where is it sitting?",
+  "reveal_feedback": "The answer is 'A frog sitting on a leaf in the water.' The picture shows a green frog on a lily pad in the pond."
+ },
+ {
+  "id": "RI.3.7-E2",
+  "correct_feedback": "Yes! A big yellow sun and a bright sky show a sunny day. Nice reading of the picture!",
+  "incorrect_feedback": "Almost! Look at the big yellow sun in the picture. What kind of day would that be?",
+  "reveal_feedback": "The answer is 'A sunny day.' The big yellow sun and bright sky in the picture show a sunny day."
+ },
+ {
+  "id": "RI.3.7-E3",
+  "correct_feedback": "Yes! The arrow points to the bottom, under the ground, so that's where the roots are. Great job reading the diagram!",
+  "incorrect_feedback": "Take another look. The arrow points to the bottom part of the tree. Where do roots grow?",
+  "reveal_feedback": "The answer is 'The bottom part, under the ground.' The arrow points to the roots at the bottom, below the soil."
+ },
+ {
+  "id": "RI.3.7-E4",
+  "correct_feedback": "Yes! The photo of a garden and its caption teach you that plants need sunlight to grow. Nice work!",
+  "incorrect_feedback": "Good try! Read the caption under the garden photo again. What does it tell you plants need?",
+  "reveal_feedback": "The answer is 'Plants need sunlight to grow.' The garden photo and its caption teach you that idea together."
+ },
+ {
+  "id": "RI.3.7-E5",
+  "correct_feedback": "Yes! The words say the red star shows where the school is, so that's what the star means. Great reading!",
+  "incorrect_feedback": "Almost! Read the words next to the map again. What does the red star point out?",
+  "reveal_feedback": "The answer is 'Where the school is.' The words tell you the red star marks the spot of the school on the map."
+ },
+ {
+  "id": "RI.3.8-Q1",
+  "correct_feedback": "Yes! Sentence 2 tells about turtles eating bags, which is an example of how plastic harms animals. Sharp thinking!",
+  "incorrect_feedback": "Hmm, Sentence 2 tells us one way turtles get hurt by plastic. How does that fit with Sentence 1?",
+  "reveal_feedback": "The answer is 'Giving an example of how plastic harms animals.' The turtle detail is one example of the first sentence's idea."
+ },
+ {
+  "id": "RI.3.8-Q2",
+  "correct_feedback": "Yes! The first part tells what a rainbow is, and the second tells why it happens. Great connecting!",
+  "incorrect_feedback": "Take another look. The first part describes a rainbow, and the second explains how it forms. How do those two link up?",
+  "reveal_feedback": "The answer is 'The first tells what something is, and the second tells why it happens.' One describes, the other explains."
+ },
+ {
+  "id": "RI.3.8-Q3",
+  "correct_feedback": "Yes! 'However' warns you that the next idea goes the other way, so it shows a contrast. Nice!",
+  "incorrect_feedback": "Close one! The word 'however' warns that the next idea is different. What kind of change does that signal?",
+  "reveal_feedback": "The answer is 'A contrast or opposing point.' The word however tells you the next idea goes a different way."
+ },
+ {
+  "id": "RI.3.8-Q4",
+  "correct_feedback": "Yes! The second paragraph lists real ways to save water, so it gives examples that support the first. Well done!",
+  "incorrect_feedback": "Hmm, the second paragraph lists real ways to save water. How does that help the first paragraph's idea?",
+  "reveal_feedback": "The answer is 'Provides specific examples to support the first paragraph.' The list of ways backs up the big idea."
+ },
+ {
+  "id": "RI.3.8-Q5",
+  "correct_feedback": "Yes! The word 'Then' tells you the window was opened after the plants were watered. Great order thinking!",
+  "incorrect_feedback": "Take another look. The word 'Then' is a time word. Which choice tells you what happened after watering?",
+  "reveal_feedback": "The answer is 'Opening the window happened after watering the plants.' The word Then shows the order of the two steps."
+ },
+ {
+  "id": "RI.3.8-E1",
+  "correct_feedback": "Yes! 'Because of this' shows the hard rain caused the river to flood the road. Great cause-and-effect thinking!",
+  "incorrect_feedback": "Good try! The words 'Because of this' are a clue. Does Sentence 2 tell what the rain made happen?",
+  "reveal_feedback": "The answer is 'It tells what the rain caused to happen.' The hard rain made the river flood the road."
+ },
+ {
+  "id": "RI.3.8-E2",
+  "correct_feedback": "Yes! 'For example' shows moving pollen is one way bees are helpful. Nice connecting!",
+  "incorrect_feedback": "Almost! The words 'For example' are a clue. What does Sentence 2 do for the idea that bees are helpful?",
+  "reveal_feedback": "The answer is 'It gives an example that shows bees are helpful.' Moving pollen is one way bees help."
+ },
+ {
+  "id": "RI.3.8-E3",
+  "correct_feedback": "Yes! The library was too noisy, so adding a quiet room is a solution to that problem. Smart thinking!",
+  "incorrect_feedback": "Take another look. Sentence 1 has a problem, the noise. What does adding a quiet room do about it?",
+  "reveal_feedback": "The answer is 'It gives a solution to the problem in Sentence 1.' A quiet room fixes the noisy library problem."
+ },
+ {
+  "id": "RI.3.8-E4",
+  "correct_feedback": "Yes! 'Next' shows the tiny plant popping up is the step that comes after planting the seed. Great job!",
+  "incorrect_feedback": "Close one! The word 'Next' is a clue. Does Sentence 2 tell what happened after the seed was planted?",
+  "reveal_feedback": "The answer is 'It tells the next step in what happened.' First the seed was planted, next the plant popped up."
+ },
+ {
+  "id": "RI.3.8-E5",
+  "correct_feedback": "Yes! 'In fact' adds more detail that the desert is dry, backing up Sentence 1. Nice reading!",
+  "incorrect_feedback": "Hmm, the words 'In fact' add to the idea. Does Sentence 2 give more detail that supports Sentence 1?",
+  "reveal_feedback": "The answer is 'It adds more detail that supports Sentence 1.' It tells us some deserts get almost no rain for years."
+ },
+ {
+  "id": "RI.3.9-Q1",
+  "correct_feedback": "Yes! Text A is about how sharks get food, and Text B is about why sharks might disappear. Great comparing!",
+  "incorrect_feedback": "Take another look. Text A is about finding food, and Text B is about fewer sharks. Which choice matches both?",
+  "reveal_feedback": "The answer is 'Text A tells about how sharks get food, while Text B tells why sharks might disappear.' The main ideas differ."
+ },
+ {
+  "id": "RI.3.9-Q2",
+  "correct_feedback": "Yes! Both texts say exercise is important, but they name different good things it does, so they focus on different benefits. Nice!",
+  "incorrect_feedback": "Hmm, both texts agree exercise is important, but each names a different good thing. What is different between them?",
+  "reveal_feedback": "The answer is 'They focus on different BENEFITS of exercise.' One talks heart health, the other talks mood and stress."
+ },
+ {
+  "id": "RI.3.9-Q3",
+  "correct_feedback": "Yes! To compare texts, the best question asks what facts are in both and what's only in one. Smart thinking!",
+  "incorrect_feedback": "Good try! Comparing means finding what's the same and what's different. Which question helps you do that?",
+  "reveal_feedback": "The answer is 'What information is in both, and what is only in one?' That question helps you compare the two texts best."
+ }
+]

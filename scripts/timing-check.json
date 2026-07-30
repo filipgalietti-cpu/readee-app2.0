@@ -1,0 +1,2298 @@
+[
+  {
+    "std": "RL.K.1",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.K.2a",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.K.1",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"key details\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"key detail\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"key detail\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"key details\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.K.2",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.K.3",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.K.4",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"tricky word\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Re-read\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"clues\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.K.5",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"storybook\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"look\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"characters\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"rhythm\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.K.6",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.K.7",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.K.9",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.K.2",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"main topic\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"main topic\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"main topic\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"topic\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.K.3",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.K.4",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.K.5",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"front cover\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"front cover\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"back cover\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"title page\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"who made it\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"front cover\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"title page\" not found in narration"
+      },
+      {
+        "slide": 7,
+        "type": "practice-intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Your turn\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.K.6",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"fact books\" not found in narration"
+      },
+      {
+        "slide": 1,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"important people\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.K.7",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.K.8",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.K.9",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.K.1a",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.K.1b",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.K.1c",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"mushed\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"thecatsat\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.K.1d",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"uppercase\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.K.2b",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.K.2c",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.K.2d",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"shhh\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.K.2e",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.K.3a",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Pee\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.K.3b",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"aaa\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"aaay\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.K.3c",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.K.3d",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"look-alike\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"first letter\" not found in narration"
+      },
+      {
+        "slide": 6,
+        "type": "practice-intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"look-alike\" not found in narration"
+      },
+      {
+        "slide": 6,
+        "type": "practice-intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"look-alike\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.K.4",
+    "grade": "Kindergarten",
+    "issues": [
+      {
+        "slide": 6,
+        "type": "practice-intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"superpower\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "K.L.1",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "K.L.2",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "K.L.4",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "K.L.5",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "K.L.6",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.1.1",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.1.2",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.1.3",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Tom\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.1.4",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.1.5",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.1.6",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"first person\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.1.7",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.1.9",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.1.1",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"fact finders\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"ask\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Who\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"What\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.1.2",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Firefighters\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.1.3",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.1.4",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.1.5",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"pages\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.1.6",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"different\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.1.7",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.1.8",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.1.9",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.1a",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.2b",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.2c",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.2d",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.4b",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"smooth\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.1.4c",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.1.4",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"baseball bat\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.1.4a",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.1.4b",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"ER\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.1.4c",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.1.5",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Cold\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.1.5a",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.1.5b",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.1.5c",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"cereal\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Chilly\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.1.5d",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.1.6",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"best\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.2.1",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.2.2",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"big parts\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.2.3",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.2.4",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Sizzled\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.2.5",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.2.6",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"point of view\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.2.7",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.2.9",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.2.10",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"rereading\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"stop\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.2.1",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.2.2",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"honey bees\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"honey bees\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.2.3",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.2.4",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"thirst\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.2.5",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.2.6",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.2.7",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.2.8",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"hold up\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Recess\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"backs up\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.2.9",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.2.10",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.2.3",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.2.3a",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.2.3b",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"AY\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.2.3c",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.2.3d",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.2.3e",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.2.3f",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"remember\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"people\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.2.4",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.2.4a",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.2.4b",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"trick\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "reveal_after_audio",
+        "detail": "highlight \"practicing\" at 5500ms but clip is 4032ms"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"practicing\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.2.4c",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"self-correct\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.2.4",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.4a",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.4b",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.4c",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"root words\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.2.4d",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.4e",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.5",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.5a",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.5b",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.6",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.3.1",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Question\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.3.2",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Folktales\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.3.3",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.3.4",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"nonliteral\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.3.5",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.3.6",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.3.7",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.3.9",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 7,
+        "type": "practice-intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"compare\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.3.10",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"fifteen\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.3.1",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.3.2",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"main idea\" not found in narration"
+      },
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Key details\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Main idea\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.3.3",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.3.4",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"trick\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.3.5",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"index\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"trick\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.3.6",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.3.7",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.3.8",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.3.9",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"main points\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"T-chart\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.3.10",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"all-year\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Reread\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"stick-with-it\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.3.3",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.3.3a",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"RE\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"DIS\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.3.3b",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"breakable\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.3.3c",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Multisyllable\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Re-mem-ber\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.3.3d",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"knee\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"rite\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.3.4",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"mood\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.3.4a",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.3.4b",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"scared\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"excited\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"energy\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.3.4c",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"sense\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"self-correct\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.4",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.3.4a",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"signals\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.4b",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"un\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.4c",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"root\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.4d",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"meaning\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Gob-uhl\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.5",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Simile\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"simile\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.5a",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Nonliteral\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"nonliteral\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"nonliteral\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"nonliteral\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.5b",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.3.5c",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.3.6",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.4.1",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.4.2",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.4.3",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"kind\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.4.4",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"deeper\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"allusion\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Hercules\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.4.5",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Prose\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"poem\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.4.6",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"all-knowing\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.4.7",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"pictures\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"same\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.4.9",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.4.10",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"shook\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.4.1",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"night\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.4.2",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"main idea\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.4.3",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.4.4",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"word wall\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"academic words\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.4.5",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.4.6",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"firsthand\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"firsthand\" not found in narration"
+      },
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"secondhand\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Secondhand\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Firsthand\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"firsthand\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"firsthand\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.4.7",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"watered\" not found in narration"
+      },
+      {
+        "slide": 6,
+        "type": "practice-intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"both\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RI.4.8",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.4.9",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.4.10",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"big\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"whole\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.4.3",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.4.3a",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"PH\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"F\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.4.4",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.4.4",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"meaning\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Hopeful\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.4.4a",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.4.4b",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.4.4c",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"thesaurus\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.4.5",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 1,
+        "type": "intro",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"figurative language\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Simile\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Idiom\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.4.5a",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"bee\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Simile\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.4.5b",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.4.5c",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Stare\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.4.6",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"examine\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Examine\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.1.3a",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.3b",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.3c",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.3d",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.3e",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"p's\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.1.3f",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RF.1.3g",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"sed\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"wuz\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"uv\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RF.1.4a",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.1.1",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.1.2",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"mark\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.2.1",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"runned\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"flew\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.2.2",
+    "grade": "2nd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.2.3",
+    "grade": "2nd Grade",
+    "issues": [
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"thrilled\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.1",
+    "grade": "3rd Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"walked\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"tricky\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"verb form\" not found in narration"
+      },
+      {
+        "slide": 5,
+        "type": "tip",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"verb tenses\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.3.2",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.3.3",
+    "grade": "3rd Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.4.1",
+    "grade": "4th Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "L.4.2",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 2,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"half\" not found in narration"
+      },
+      {
+        "slide": 4,
+        "type": "example",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"Inside\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "L.4.3",
+    "grade": "4th Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"right\" not found in narration"
+      },
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"exactly\" not found in narration"
+      }
+    ],
+    "ok": false
+  },
+  {
+    "std": "RL.K.10",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.K.10",
+    "grade": "Kindergarten",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RL.1.10",
+    "grade": "1st Grade",
+    "issues": [],
+    "ok": true
+  },
+  {
+    "std": "RI.1.10",
+    "grade": "1st Grade",
+    "issues": [
+      {
+        "slide": 3,
+        "type": "teach",
+        "kind": "word_not_spoken",
+        "detail": "highlight word \"roadmap\" not found in narration"
+      }
+    ],
+    "ok": false
+  }
+]

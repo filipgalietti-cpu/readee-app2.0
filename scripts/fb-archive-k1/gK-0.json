@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.K.1-Q1",
+  "correct_feedback": "Yes! Max played fetch with a red ball. You listened so well to the story!",
+  "incorrect_feedback": "Hmm, let's go back to the story. It tells us the one thing Max threw and chased. Give it another listen!",
+  "reveal_feedback": "That one was tricky! Max played with a red ball. The story says he played fetch with it. Now you know!"
+ },
+ {
+  "id": "RL.K.1-Q2",
+  "correct_feedback": "Yes! Lily was going to school. The story tells us right at the end. Great listening!",
+  "incorrect_feedback": "Almost! Listen again to where Lily was walking with her raincoat on. The last part tells you!",
+  "reveal_feedback": "That one was tricky! Lily was going to school. The story says she splashed all the way there. Now you know!"
+ },
+ {
+  "id": "RL.K.1-Q3",
+  "correct_feedback": "Yes! Mom made the cake because it was Emma's birthday. Emma turned five! Great thinking!",
+  "incorrect_feedback": "Good try! Think about the party. Emma turned five years old. Why do we have cake on that special day?",
+  "reveal_feedback": "That one was tricky! Mom made the cake because it was Emma's birthday. She turned five! Now you know!"
+ },
+ {
+  "id": "RL.K.1-Q4",
+  "correct_feedback": "Yes! The kitten was gray with white paws. You remembered the story so well!",
+  "incorrect_feedback": "Close one! Think back to how Sam's kitten looked. The story tells the color and the little paws. Look again!",
+  "reveal_feedback": "That one was tricky! The kitten was gray with white paws. That's how Sam found her. Now you know!"
+ },
+ {
+  "id": "RL.K.1-Q5",
+  "correct_feedback": "Yes! Ben's grandma helped him plant the seeds. Great listening to the story!",
+  "incorrect_feedback": "Not yet! Think about who was in the garden with Ben, watering the seeds every day. Who was it?",
+  "reveal_feedback": "That one was tricky! Ben's grandma helped him. They planted sunflowers together. Now you know!"
+ },
+ {
+  "id": "RL.K.1-H1",
+  "correct_feedback": "Yes! It is cold and snowy. Ben wore boots and mittens and made a snowball. Great thinking!",
+  "incorrect_feedback": "Hmm, think about Ben's clothes. He wore a hat and warm mittens and made a snowball. What weather is that?",
+  "reveal_feedback": "That one was tricky! It is cold and snowy. Snowballs and mittens tell us! Now you know!"
+ },
+ {
+  "id": "RL.K.1-H2",
+  "correct_feedback": "Yes! Mia has none now. She gave one away and ate one. That means zero left. Great counting!",
+  "incorrect_feedback": "Good try! Mia had two cookies. She gave one away and ate the other one. How many are left now?",
+  "reveal_feedback": "That one was tricky! Mia has none now. She gave one and ate one, so zero are left. Now you know!"
+ },
+ {
+  "id": "RL.K.1-H3",
+  "correct_feedback": "Yes! Sam feels hungry. His bowl was empty and he asked for food. Great thinking!",
+  "incorrect_feedback": "Almost! Sam had an empty bowl and rubbed his tummy. He asked Mom for food. How would that feel?",
+  "reveal_feedback": "That one was tricky! Sam feels hungry. His empty tummy told us! Now you know!"
+ },
+ {
+  "id": "RL.K.1-H4",
+  "correct_feedback": "Yes! They hid to surprise Rosa. It was her birthday and they jumped up and yelled! Great thinking!",
+  "incorrect_feedback": "Take another look! It was Rosa's birthday. The friends hid and then jumped up and yelled a happy word. Why?",
+  "reveal_feedback": "That one was tricky! They hid to surprise Rosa for her birthday. That's why they yelled! Now you know!"
+ },
+ {
+  "id": "RL.K.1-H5",
+  "correct_feedback": "Yes! The cat wants to catch the fish. It watched the fish bowl all day! Great thinking!",
+  "incorrect_feedback": "Hmm, think about the cat by the fish bowl. Its eyes never left the fish. What might it want to do?",
+  "reveal_feedback": "That one was tricky! The cat wants to catch the fish. It watched and watched! Now you know!"
+ },
+ {
+  "id": "RL.K.3-Q1",
+  "correct_feedback": "Yes! Jake and his sister are in the story. They walked to school together. Great reading!",
+  "incorrect_feedback": "Good try! Listen again to who walked to school with Jake on Monday. The story names them!",
+  "reveal_feedback": "That one was tricky! Jake and his sister are in the story. They walked together. Now you know!"
+ },
+ {
+  "id": "RL.K.3-Q2",
+  "correct_feedback": "Yes! This story takes place at the beach. Rosa built a sandcastle and waves knocked it down! Great job!",
+  "incorrect_feedback": "Close one! Think about the sandcastle and the waves. What place has sand and waves? Look again!",
+  "reveal_feedback": "That one was tricky! This story is at the beach. Sand and waves tell us! Now you know!"
+ },
+ {
+  "id": "RL.K.3-Q3",
+  "correct_feedback": "Yes! The big event is Nora seeing a clown juggle at the circus. Great thinking!",
+  "incorrect_feedback": "Not yet! Think about the most exciting part. What fun thing did Nora see her dad take her to? Look again!",
+  "reveal_feedback": "That one was tricky! The big event was Nora seeing a clown juggle at the circus. Now you know!"
+ },
+ {
+  "id": "RL.K.3-Q4",
+  "correct_feedback": "Yes! This story happens at nighttime. The owl hooted at the moon in the dark! Great thinking!",
+  "incorrect_feedback": "Hmm, think about the dark forest and the moon. When do we see the moon in the sky? Look again!",
+  "reveal_feedback": "That one was tricky! This story happens at nighttime. The dark and the moon tell us! Now you know!"
+ },
+ {
+  "id": "RL.K.3-Q5",
+  "correct_feedback": "Yes! Biscuit found the bone! The puppy dug a hole and there it was. Great listening!",
+  "incorrect_feedback": "Almost! Think about who was digging in the backyard. Lucy's puppy dug a hole. Who found the old bone?",
+  "reveal_feedback": "That one was tricky! Biscuit the puppy found the bone. He dug it up! Now you know!"
+ },
+ {
+  "id": "RL.K.3-H1",
+  "correct_feedback": "Yes! Tom is at school. There is a teacher, crayons, and a cubby. Great thinking!",
+  "incorrect_feedback": "Good try! Think about the clues. There is a teacher, crayons, and a cubby for his coat. Where is that?",
+  "reveal_feedback": "That one was tricky! Tom is at school. The teacher and cubby tell us! Now you know!"
+ },
+ {
+  "id": "RL.K.3-H2",
+  "correct_feedback": "Yes! Rex the dog made the paw prints. He had wet, muddy feet! Great detective work!",
+  "incorrect_feedback": "Take another look! The cat was clean and asleep. Sam has no paws. Who had wet, muddy feet?",
+  "reveal_feedback": "That one was tricky! Rex the dog made the prints. His feet were muddy! Now you know!"
+ },
+ {
+  "id": "RL.K.3-H3",
+  "correct_feedback": "Yes! The big thing was the storm blowing the roof off the playhouse. That's the exciting part! Great thinking!",
+  "incorrect_feedback": "Not yet! Some parts are small, like eating cereal. Which part was the BIG, surprising thing? Look again!",
+  "reveal_feedback": "That one was tricky! The big thing was the storm blowing the roof off the playhouse. Now you know!"
+ },
+ {
+  "id": "RL.K.3-H4",
+  "correct_feedback": "Yes! The girl is being kind. She shared her kite with the sad boy! Great thinking!",
+  "incorrect_feedback": "Almost! One person shared and helped when someone was sad. Who offered to share their kite? Look again!",
+  "reveal_feedback": "That one was tricky! The girl is being kind. She shared her kite! Now you know!"
+ },
+ {
+  "id": "RL.K.3-H5",
+  "correct_feedback": "Yes! It went from sunny to rainy. The park was sunny, then rain poured down! Great thinking!",
+  "incorrect_feedback": "Close one! Think about the start with the sunny park, then the dark clouds and rain. How did it change?",
+  "reveal_feedback": "That one was tricky! It went from sunny to rainy. The clouds rolled in! Now you know!"
+ },
+ {
+  "id": "RL.K.4-Q1",
+  "correct_feedback": "Yes! Enormous means very big. The elephant was bigger than a car! Great job!",
+  "incorrect_feedback": "Hmm, think about the elephant. It was bigger than a car! So what could enormous mean? Look again!",
+  "reveal_feedback": "That one was tricky! Enormous means very big. Bigger than a car! Now you know!"
+ },
+ {
+  "id": "RL.K.4-Q2",
+  "correct_feedback": "Yes! Delighted means very happy. Kai smiled and jumped after he won! Great thinking!",
+  "incorrect_feedback": "Good try! Kai won the game. He smiled and jumped up and down. How do you think he felt? Look again!",
+  "reveal_feedback": "That one was tricky! Delighted means very happy. Kai was so glad he won! Now you know!"
+ },
+ {
+  "id": "RL.K.4-Q3",
+  "correct_feedback": "Yes! Drifted means it floated gently with the water. Nice and slow on the calm lake! Great job!",
+  "incorrect_feedback": "Almost! The lake was calm and there was no motor. Think about a boat moving slow and gentle. Look again!",
+  "reveal_feedback": "That one was tricky! Drifted means the boat floated gently with the water. Now you know!"
+ },
+ {
+  "id": "RL.K.4-Q4",
+  "correct_feedback": "Yes! Chilly means cold. Ana could see her breath outside! Great thinking!",
+  "incorrect_feedback": "Not yet! Ana could see her breath in the air. When can you see your breath? Think about it and look again!",
+  "reveal_feedback": "That one was tricky! Chilly means cold. Seeing your breath is a cold clue! Now you know!"
+ },
+ {
+  "id": "RL.K.4-Q5",
+  "correct_feedback": "Yes! Frightened means scared. The lion roared and the animals ran away! Great job!",
+  "incorrect_feedback": "Close one! The lion let out a mighty roar and all the animals ran away. How did they feel? Look again!",
+  "reveal_feedback": "That one was tricky! Frightened means scared. The big roar scared them! Now you know!"
+ },
+ {
+  "id": "RL.K.4-H1",
+  "correct_feedback": "Yes! Timid means shy and scared. The puppy hid behind the couch! Great thinking!",
+  "incorrect_feedback": "Hmm, the puppy did not play and hid behind the couch when friends came. How did it feel? Look again!",
+  "reveal_feedback": "That one was tricky! Timid means shy and scared. The puppy hid away! Now you know!"
+ },
+ {
+  "id": "RL.K.4-H2",
+  "correct_feedback": "Yes! Parched means very dry. No rain, drooping flowers, and cracked dirt! Great thinking!",
+  "incorrect_feedback": "Good try! It had not rained for many days. The flowers hung down and the dirt cracked. What does that mean?",
+  "reveal_feedback": "That one was tricky! Parched means very dry. No rain for many days! Now you know!"
+ },
+ {
+  "id": "RL.K.4-H3",
+  "correct_feedback": "Yes! Frantic means worried and in a hurry. He ran all around looking for his shoe! Great job!",
+  "incorrect_feedback": "Almost! He ran all around, pulling up pillows, looking fast for his lost shoe. How was he feeling? Look again!",
+  "reveal_feedback": "That one was tricky! Frantic means worried and in a hurry. He rushed everywhere! Now you know!"
+ },
+ {
+  "id": "RL.K.4-H4",
+  "correct_feedback": "Yes! Feeble means weak. Grandpa was sick and could not even lift his cup! Great thinking!",
+  "incorrect_feedback": "Not yet! Grandpa was sick all week. He could not lift his cup or stand alone. How did his body feel?",
+  "reveal_feedback": "That one was tricky! Feeble means weak. Grandpa needed help to stand! Now you know!"
+ },
+ {
+  "id": "RL.K.4-H5",
+  "correct_feedback": "Yes! Hilarious means very funny. The kids laughed so hard they could barely breathe! Great job!",
+  "incorrect_feedback": "Close one! The puppet bonked its head and every kid was laughing so hard. What does that word mean? Look again!",
+  "reveal_feedback": "That one was tricky! Hilarious means very funny. All the kids laughed! Now you know!"
+ },
+ {
+  "id": "RL.K.5-Q2",
+  "correct_feedback": "Yes! This is a poem or song. The lines rhyme, like star and are! Great thinking!",
+  "incorrect_feedback": "Hmm, read it again. The short lines rhyme, like star and are. What kind of text sounds like that?",
+  "reveal_feedback": "That one was tricky! This is a poem or song. The rhyming lines tell us! Now you know!"
+ },
+ {
+  "id": "RL.K.5-Q3",
+  "correct_feedback": "Yes! A storybook has characters and things that happen. That's a real story! Great thinking!",
+  "incorrect_feedback": "Good try! Think about your favorite storybook. It has people or animals and things that happen. Which one is that?",
+  "reveal_feedback": "That one was tricky! A storybook has characters and things that happen. Now you know!"
+ },
+ {
+  "id": "RL.K.5-Q4",
+  "correct_feedback": "Yes! It sounds like a poem because it has words that rhyme, like small and tall! Great thinking!",
+  "incorrect_feedback": "Almost! Listen to the ending sounds, like small, tall, and lot. What do those words do? Look again!",
+  "reveal_feedback": "That one was tricky! It's a poem because the words rhyme. Small and tall! Now you know!"
+ },
+ {
+  "id": "RL.K.5-Q5",
+  "correct_feedback": "Yes! This is a storybook. It tells the story of the pigs and the wolf! Great thinking!",
+  "incorrect_feedback": "Not yet! This tells a story with pigs, a wolf, and houses. What kind of book tells a story like that?",
+  "reveal_feedback": "That one was tricky! This is a storybook. It tells the pigs' story! Now you know!"
+ },
+ {
+  "id": "RL.K.5-H1",
+  "correct_feedback": "Yes! It's a recipe that shows how to make something. It has steps to make a snack! Great thinking!",
+  "incorrect_feedback": "Close one! Look at the parts. It has Step 1, Step 2, Step 3 to make food. What kind of text has steps?",
+  "reveal_feedback": "That one was tricky! It's a recipe. The steps show how to make it! Now you know!"
+ },
+ {
+  "id": "RL.K.5-H2",
+  "correct_feedback": "Yes! It's a letter. It starts with Dear Grandma and ends with Love, Sam! Great thinking!",
+  "incorrect_feedback": "Hmm, look at how it starts and ends. It says Dear Grandma and Love, Sam. What kind of text do we write like that?",
+  "reveal_feedback": "That one was tricky! It's a letter. Dear and Love tell us! Now you know!"
+ },
+ {
+  "id": "RL.K.5-H3",
+  "correct_feedback": "Yes! You can tell it's a poem because the words rhyme and come in short lines! Great thinking!",
+  "incorrect_feedback": "Good try! Look at the short lines and the ending sounds, like fast, last, sad, glad. What clue shows a poem?",
+  "reveal_feedback": "That one was tricky! It's a poem because the words rhyme and come in short lines. Now you know!"
+ },
+ {
+  "id": "RL.K.5-H4",
+  "correct_feedback": "Yes! Ben's book is the storybook. It tells a make-believe story about a talking frog! Great thinking!",
+  "incorrect_feedback": "Almost! One book has steps to plant a seed. The other tells a make-believe story with a character. Which is the story?",
+  "reveal_feedback": "That one was tricky! Ben's book is the storybook. It has a make-believe talking frog! Now you know!"
+ },
+ {
+  "id": "RL.K.5-H5",
+  "correct_feedback": "Yes! It's a fact book that tells true things about the sun! Great thinking!",
+  "incorrect_feedback": "Not yet! Every line tells something true about the sun, like it is hot. What kind of book teaches true things?",
+  "reveal_feedback": "That one was tricky! It's a fact book. It tells true things about the sun! Now you know!"
+ },
+ {
+  "id": "RL.K.6-Q1",
+  "correct_feedback": "Yes! The person who writes a book is the author. Great job!",
+  "incorrect_feedback": "Good try! Think about the person who makes up all the words for a book. What is that person called? Look again!",
+  "reveal_feedback": "That one was tricky! The person who writes a book is the author. Now you know!"
+ },
+ {
+  "id": "RL.K.6-Q2",
+  "correct_feedback": "Yes! The person who draws the pictures is the illustrator. Great job!",
+  "incorrect_feedback": "Hmm, think about who makes the pictures in a book, not the words. What is that person called? Look again!",
+  "reveal_feedback": "That one was tricky! The person who draws the pictures is the illustrator. Now you know!"
+ },
+ {
+  "id": "RL.K.6-Q3",
+  "correct_feedback": "Yes! Maria wrote the story and James drew the pictures. You read the cover so well!",
+  "incorrect_feedback": "Almost! The cover says written by Maria and illustrated by James. Who wrote and who drew? Look again!",
+  "reveal_feedback": "That one was tricky! Maria wrote the story and James drew the pictures. The cover tells us! Now you know!"
+ },
+ {
+  "id": "RL.K.6-Q4",
+  "correct_feedback": "Yes! An author writes the words. Miss Lee wrote all the words on the pages! Great thinking!",
+  "incorrect_feedback": "Good try! Miss Lee thought hard and made all the words for the book. What does an author do? Look again!",
+  "reveal_feedback": "That one was tricky! An author writes the words. Miss Lee wrote them all! Now you know!"
+ },
+ {
+  "id": "RL.K.6-Q5",
+  "correct_feedback": "Yes! Dr. Seuss is the author. The word By means who wrote it! Great thinking!",
+  "incorrect_feedback": "Close one! The book says By Dr. Seuss. The word By tells you who wrote the words. What is that person? Look again!",
+  "reveal_feedback": "That one was tricky! Dr. Seuss is the author. By means who wrote it! Now you know!"
+ },
+ {
+  "id": "RL.K.6-H1",
+  "correct_feedback": "Yes! Ben is the author. He thought up the story and wrote all the words! Great thinking!",
+  "incorrect_feedback": "Not yet! Mia drew the pictures. But who thought up the story and wrote all the words? That's the author. Look again!",
+  "reveal_feedback": "That one was tricky! Ben is the author. He wrote all the words! Now you know!"
+ }
+]

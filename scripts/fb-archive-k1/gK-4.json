@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RF.K.1d-Q5",
+  "correct_feedback": "Yes! That is the big letter P. It stands up tall with a bump at the top. Great looking!",
+  "incorrect_feedback": "Hmm, look again! You want the tall letter with a straight line and one little bump near the top. Which choice is it?",
+  "reveal_feedback": "That one was tricky! The uppercase P is the letter with a straight line and one bump up top. Now you know!"
+ },
+ {
+  "id": "RF.K.1d-H1",
+  "correct_feedback": "Yes! That is the little letter d. It has a circle first, then a tall line. Great looking!",
+  "incorrect_feedback": "Almost! Look for the letter with its round part on the LEFT and a tall line on the RIGHT. Which one is that?",
+  "reveal_feedback": "That one was tricky! The lowercase d has the circle on the left and the tall line on the right. Now you know!"
+ },
+ {
+  "id": "RF.K.1d-H2",
+  "correct_feedback": "Yes! Big G and little g are a team. Great matching!",
+  "incorrect_feedback": "Good try! The little partner for this capital starts the word go and the word goat. Which lowercase letter is it?",
+  "reveal_feedback": "That one was tricky! The lowercase g goes with capital G. They make the same sound. Now you know!"
+ },
+ {
+  "id": "RF.K.1d-H3",
+  "correct_feedback": "Yes! Big R and little r match up. They are a real pair. Great looking!",
+  "incorrect_feedback": "Close one! Look for a big letter and its little letter that look like a family. Which pair goes together?",
+  "reveal_feedback": "That one was tricky! R and r is the pair that matches. Big R and little r are a team. Now you know!"
+ },
+ {
+  "id": "RF.K.1d-H4",
+  "correct_feedback": "Yes! Little r and big R are a team. Great matching!",
+  "incorrect_feedback": "Take another look! You need the BIG partner for this little letter. It has the same name. Which capital is it?",
+  "reveal_feedback": "That one was tricky! The capital R matches the little r. They go together. Now you know!"
+ },
+ {
+  "id": "RF.K.1d-H5",
+  "correct_feedback": "Yes! Little w and big W both look like waves. Great matching!",
+  "incorrect_feedback": "Almost! You need the BIG partner for this little letter. It has the same pointy, wavy shape. Which capital is it?",
+  "reveal_feedback": "That one was tricky! The capital W matches little w. They both look like waves. Now you know!"
+ },
+ {
+  "id": "RF.K.2a-Q2",
+  "correct_feedback": "Yes! Those words end with the same sound, so they rhyme. Great listening!",
+  "incorrect_feedback": "Hmm, say each pair out loud. Rhyming words end with the same sound. Which two sound alike at the end?",
+  "reveal_feedback": "That one was tricky! Fan and Can rhyme. They both end with the -an sound. Now you know!"
+ },
+ {
+  "id": "RF.K.2a-H1",
+  "correct_feedback": "Yes! That word does not sound like the others at the end. Great listening!",
+  "incorrect_feedback": "Good try! Three words end with the -at sound. Say them slowly. Which one has a different ending?",
+  "reveal_feedback": "That one was tricky! Hot is the one that does not rhyme. Cat, hat, and bat all end in -at. Now you know!"
+ },
+ {
+  "id": "RF.K.2a-H2",
+  "correct_feedback": "Yes! That word ends with the same sound as chair. Great listening!",
+  "incorrect_feedback": "Close one! Say chair out loud. Which word ends with that same -air sound?",
+  "reveal_feedback": "That one was tricky! Bear rhymes with chair. They both end with the -air sound. Now you know!"
+ },
+ {
+  "id": "RF.K.2a-H3",
+  "correct_feedback": "Yes! That word ends with the same sound as sun. Great listening!",
+  "incorrect_feedback": "Not yet! Say sun slowly. Which word ends with that same -un sound?",
+  "reveal_feedback": "That one was tricky! Bun rhymes with sun. They both end with the -un sound. Now you know!"
+ },
+ {
+  "id": "RF.K.2a-H4",
+  "correct_feedback": "Yes! That word ends with the same sound as cake. Great listening!",
+  "incorrect_feedback": "Almost! Say cake out loud. Which word ends with that same -ake sound?",
+  "reveal_feedback": "That one was tricky! Lake rhymes with cake. They both end with the -ake sound. Now you know!"
+ },
+ {
+  "id": "RF.K.2a-H5",
+  "correct_feedback": "Yes! That word ends with the same sound as ten. Great listening!",
+  "incorrect_feedback": "Take another look! Say ten slowly. Which word ends with that same -en sound?",
+  "reveal_feedback": "That one was tricky! Hen rhymes with ten. They both end with the -en sound. Now you know!"
+ },
+ {
+  "id": "RF.K.2b-Q1",
+  "correct_feedback": "Yes! Cat is just one clap. Great counting!",
+  "incorrect_feedback": "Hmm, clap the word cat with me. How many claps did you feel?",
+  "reveal_feedback": "That one was tricky! Cat has 1 syllable. You clap it just one time. Now you know!"
+ },
+ {
+  "id": "RF.K.2b-Q2",
+  "correct_feedback": "Yes! Ba-na-na is three claps. Great counting!",
+  "incorrect_feedback": "Good try! Clap the word banana slowly, one clap for each part. How many claps?",
+  "reveal_feedback": "That one was tricky! Banana has 3 syllables: ba-na-na. Three claps! Now you know!"
+ },
+ {
+  "id": "RF.K.2b-Q3",
+  "correct_feedback": "Yes! But-ter-fly is three claps. Great counting!",
+  "incorrect_feedback": "Almost! Clap the word butterfly slowly. Say each part and count your claps. How many?",
+  "reveal_feedback": "That one was tricky! Butterfly has 3 syllables: but-ter-fly. Three claps! Now you know!"
+ },
+ {
+  "id": "RF.K.2b-Q4",
+  "correct_feedback": "Yes! Ap-ple is two claps. Great counting!",
+  "incorrect_feedback": "Close one! Clap each word. You want the one with two claps. Which word has two parts?",
+  "reveal_feedback": "That one was tricky! Apple has 2 syllables: ap-ple. Two claps! Now you know!"
+ },
+ {
+  "id": "RF.K.2b-Q5",
+  "correct_feedback": "Yes! Rain and bow snap together to make one word. Great blending!",
+  "incorrect_feedback": "Hmm, say rain, then say bow, right after each other. What word do they make?",
+  "reveal_feedback": "That one was tricky! Rain plus bow makes Rainbow. Now you know!"
+ },
+ {
+  "id": "RF.K.2b-H1",
+  "correct_feedback": "Yes! Kite is just one clap. Great counting!",
+  "incorrect_feedback": "Not yet! Clap the word kite with me. How many claps did you feel?",
+  "reveal_feedback": "That one was tricky! Kite has 1 syllable. You clap it one time. Now you know!"
+ },
+ {
+  "id": "RF.K.2b-H2",
+  "correct_feedback": "Yes! Tur-tle is two claps. Great counting!",
+  "incorrect_feedback": "Good try! Clap the word turtle slowly. Say each part. How many claps?",
+  "reveal_feedback": "That one was tricky! Turtle has 2 syllables: tur-tle. Two claps! Now you know!"
+ },
+ {
+  "id": "RF.K.2b-H3",
+  "correct_feedback": "Yes! That word is just one clap. Great counting!",
+  "incorrect_feedback": "Almost! Clap each word. You want the one with only ONE clap. Which one is it?",
+  "reveal_feedback": "That one was tricky! Snake has only one syllable. You clap it one time. Now you know!"
+ },
+ {
+  "id": "RF.K.2b-H4",
+  "correct_feedback": "Yes! Jumped is just one clap. Great counting!",
+  "incorrect_feedback": "Take another look! Say jumped out loud. It sounds long, but clap it. How many claps?",
+  "reveal_feedback": "That one was tricky! Jumped has 1 syllable. Even the -ed is part of one clap. Now you know!"
+ },
+ {
+  "id": "RF.K.2b-H5",
+  "correct_feedback": "Yes! That word has two claps. Great counting!",
+  "incorrect_feedback": "Close one! Clap each word. You want the one with TWO claps. Which word has two parts?",
+  "reveal_feedback": "That one was tricky! Pencil has two syllables: pen-cil. Two claps! Now you know!"
+ },
+ {
+  "id": "RF.K.2c-H1",
+  "correct_feedback": "Yes! /f/ and 'ish' snap together. Great blending!",
+  "incorrect_feedback": "Hmm, say /f/ then 'ish' right together. What word do you hear?",
+  "reveal_feedback": "That one was tricky! /f/ and 'ish' make the word fish. Now you know!"
+ },
+ {
+  "id": "RF.K.2c-H2",
+  "correct_feedback": "Yes! /st/ and 'op' snap together. Great blending!",
+  "incorrect_feedback": "Good try! Say /st/ then 'op' right together, nice and fast. What word do they make?",
+  "reveal_feedback": "That one was tricky! /st/ and 'op' make the word stop. Now you know!"
+ },
+ {
+  "id": "RF.K.2c-H3",
+  "correct_feedback": "Yes! Clap breaks into /cl/ and 'ap'. Great sound splitting!",
+  "incorrect_feedback": "Almost! Say clap slowly. The first sounds go together, then the rest. Which one splits it right?",
+  "reveal_feedback": "That one was tricky! Clap splits into /cl/ and 'ap'. That is the beginning and the rest. Now you know!"
+ },
+ {
+  "id": "RF.K.2c-H4",
+  "correct_feedback": "Yes! /ch/ and 'in' snap together. Great blending!",
+  "incorrect_feedback": "Not yet! Say /ch/ then 'in' right together. What word do you hear?",
+  "reveal_feedback": "That one was tricky! /ch/ and 'in' make the word chin. Now you know!"
+ },
+ {
+  "id": "RF.K.2c-H5",
+  "correct_feedback": "Yes! /g/ and 'ift' snap together. Great blending!",
+  "incorrect_feedback": "Close one! Say /g/ then 'ift' right together. What word do they make?",
+  "reveal_feedback": "That one was tricky! /g/ and 'ift' make the word gift. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-Q1",
+  "correct_feedback": "Yes! That word has the /i/ sound right in the middle. Great listening!",
+  "incorrect_feedback": "Hmm, say each word slowly and listen to the middle sound. Which one has an /i/ in the middle?",
+  "reveal_feedback": "That one was tricky! Pig has the /i/ sound in the middle. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-Q3",
+  "correct_feedback": "Yes! The middle sound in pig is /i/. Great listening!",
+  "incorrect_feedback": "Good try! Say pig slowly: p... i... g. Listen to the sound in the middle. What is it?",
+  "reveal_feedback": "That one was tricky! The middle sound in pig is /i/. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-Q4",
+  "correct_feedback": "Yes! Fun starts with the /f/ sound. Great listening!",
+  "incorrect_feedback": "Almost! Say fun out loud. Listen to the very first sound your mouth makes. What is it?",
+  "reveal_feedback": "That one was tricky! The first sound in fun is /f/. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-Q5",
+  "correct_feedback": "Yes! The middle sound in bed is /e/. Great listening!",
+  "incorrect_feedback": "Take another look! Say bed slowly: b... e... d. What sound do you hear in the middle?",
+  "reveal_feedback": "That one was tricky! The middle sound in bed is /e/. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-H1",
+  "correct_feedback": "Yes! That word has the same /e/ middle sound as web. Great listening!",
+  "incorrect_feedback": "Hmm, web has an /e/ in the middle. Say each word and find the one with that same middle sound.",
+  "reveal_feedback": "That one was tricky! Ten has the same middle sound as web, the /e/ sound. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-H2",
+  "correct_feedback": "Yes! That word ends with the /k/ sound. Great listening!",
+  "incorrect_feedback": "Good try! Say each word and listen to the very last sound. Which one ends with /k/?",
+  "reveal_feedback": "That one was tricky! Duck ends with the /k/ sound. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-H3",
+  "correct_feedback": "Yes! That word has the same /u/ middle sound as cut. Great listening!",
+  "incorrect_feedback": "Almost! Cut has a /u/ in the middle. Say each word and find the one with that same middle sound.",
+  "reveal_feedback": "That one was tricky! Mud has the same middle sound as cut, the /u/ sound. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-H4",
+  "correct_feedback": "Yes! That word starts with the /f/ sound, even with a ph! Great listening!",
+  "incorrect_feedback": "Close one! Say each word out loud. Two might trick you. Which one really begins with the /f/ sound?",
+  "reveal_feedback": "That one was tricky! Phone begins with the /f/ sound. The letters ph say /f/. Now you know!"
+ },
+ {
+  "id": "RF.K.2d-H5",
+  "correct_feedback": "Yes! That word has the /o/ sound in the middle, like hot. Great listening!",
+  "incorrect_feedback": "Not yet! Say each word slowly. Which one has the /o/ sound, like in hot, in the middle?",
+  "reveal_feedback": "That one was tricky! Job has the /o/ middle sound, just like hot. Now you know!"
+ },
+ {
+  "id": "RF.K.2e-Q2",
+  "correct_feedback": "Yes! Swap /m/ for /t/ and map becomes that word. Great sound swapping!",
+  "incorrect_feedback": "Hmm, take map and put /t/ at the front instead of /m/. Blend it slow. What word do you hear?",
+  "reveal_feedback": "That one was tricky! Change /m/ to /t/ in map and you get tap. Now you know!"
+ },
+ {
+  "id": "RF.K.2e-Q3",
+  "correct_feedback": "Yes! Those two words are the same except for one sound. Great listening!",
+  "incorrect_feedback": "Good try! Look for two words that sound almost the same, with just one sound changed. Which pair?",
+  "reveal_feedback": "That one was tricky! Cat and hat change only one sound, the first one. Now you know!"
+ },
+ {
+  "id": "RF.K.2e-Q4",
+  "correct_feedback": "Yes! Swap the /o/ for /i/ and dog becomes that word. Great sound swapping!",
+  "incorrect_feedback": "Almost! Take dog and change the middle /o/ to /i/. Blend it slow. What new word do you hear?",
+  "reveal_feedback": "That one was tricky! Change the /o/ in dog to /i/ and you get Dig. Now you know!"
+ },
+ {
+  "id": "RF.K.2e-H1",
+  "correct_feedback": "Yes! Swap the /i/ for /a/ and pin becomes that word. Great sound swapping!",
+  "incorrect_feedback": "Take another look! Take pin and change the middle /i/ to /a/. Blend it slow. What word do you hear?",
+  "reveal_feedback": "That one was tricky! Change the /i/ in pin to /a/ and you get pan. Now you know!"
+ },
+ {
+  "id": "RF.K.2e-H2",
+  "correct_feedback": "Yes! Swap the /t/ for /g/ and bat becomes that word. Great sound swapping!",
+  "incorrect_feedback": "Close one! Take bat and change the last /t/ to /g/. Blend it slow. What new word do you hear?",
+  "reveal_feedback": "That one was tricky! Change the last /t/ in bat to /g/ and you get bag. Now you know!"
+ },
+ {
+  "id": "RF.K.2e-H3",
+  "correct_feedback": "Yes! Add /s/ to the front of lip and you get that word. Great sound adding!",
+  "incorrect_feedback": "Hmm, put an /s/ sound right in front of lip. Blend it slow. What new word do you hear?",
+  "reveal_feedback": "That one was tricky! Add /s/ to the front of lip and you get slip. Now you know!"
+ },
+ {
+  "id": "RF.K.2e-H4",
+  "correct_feedback": "Yes! Swap the /k/ for /h/ and cot becomes that word. Great sound swapping!",
+  "incorrect_feedback": "Good try! Take cot and change the first /k/ to /h/. Blend it slow. What new word do you hear?",
+  "reveal_feedback": "That one was tricky! Change the first sound in cot to /h/ and you get hot. Now you know!"
+ },
+ {
+  "id": "RF.K.2e-H5",
+  "correct_feedback": "Yes! In that pair only the middle sound changed. Great listening!",
+  "incorrect_feedback": "Not yet! Look for the pair where the first and last sounds stay the same and only the middle changes.",
+  "reveal_feedback": "That one was tricky! In hop, hip only the middle sound changed. Now you know!"
+ },
+ {
+  "id": "RF.K.3a-Q2",
+  "correct_feedback": "Yes! That word starts with the /b/ sound, like the letter B. Great listening!",
+  "incorrect_feedback": "Hmm, say each word out loud. Which one begins with the /b/ sound, like B?",
+  "reveal_feedback": "That one was tricky! Bat starts with the /b/ sound. Now you know!"
+ }
+]

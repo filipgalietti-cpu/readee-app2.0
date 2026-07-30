@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RF.2.4a-H5",
+  "standard": "RF.2.4a",
+  "prompt": "Which word has the same vowel sound as the word boy?\n\nboy",
+  "choices": [
+   "coin",
+   "book",
+   "cow",
+   "bone"
+  ],
+  "correct": "coin"
+ },
+ {
+  "id": "RF.2.4b-Q1",
+  "standard": "RF.2.4b",
+  "prompt": "How should you read this sentence? \"I can't believe we won the game!\"",
+  "choices": [
+   "In a whisper",
+   "Slowly and sadly",
+   "With no expression",
+   "With excitement and energy"
+  ],
+  "correct": "With excitement and energy"
+ },
+ {
+  "id": "RF.2.4b-Q2",
+  "standard": "RF.2.4b",
+  "prompt": "When you read a question aloud, your voice should \u2014",
+  "choices": [
+   "Go up at the end",
+   "Stay the same",
+   "Get very loud",
+   "Go down at the end"
+  ],
+  "correct": "Go up at the end"
+ },
+ {
+  "id": "RF.2.4b-Q4",
+  "standard": "RF.2.4b",
+  "prompt": "Imagine you are reading a story out loud to your younger brother or sister. What is the best way to read so they can easily understand and enjoy the story?",
+  "choices": [
+   "Read the words very quickly so you can finish the book fast.",
+   "Read each word super slowly, one by one, with long pauses.",
+   "Read quietly to yourself so no one else can hear.",
+   "Read at a smooth speed, not too fast and not too slow, making the story sound clear."
+  ],
+  "correct": "Read at a smooth speed, not too fast and not too slow, making the story sound clear."
+ },
+ {
+  "id": "RF.2.4b-Q5",
+  "standard": "RF.2.4b",
+  "prompt": "How should you read this line from a character who is scared? \"W-what was that noise?\"",
+  "choices": [
+   "Very fast and cheerful",
+   "Happily and loud",
+   "In a bored voice",
+   "With a shaky, nervous voice"
+  ],
+  "correct": "With a shaky, nervous voice"
+ },
+ {
+  "id": "RF.2.4b-H1",
+  "standard": "RF.2.4b",
+  "prompt": "Someone asks you: \"WHO ate the last apple?\" You answer by reading aloud: \"Sam ate the last apple.\" Which word should you stress (say the strongest) to answer the question?",
+  "choices": [
+   "Sam",
+   "apple",
+   "ate",
+   "last"
+  ],
+  "correct": "Sam"
+ },
+ {
+  "id": "RF.2.4b-H2",
+  "standard": "RF.2.4b",
+  "prompt": "Read this line the right way: \"We won!\" she whispered. How should you read the part \"We won!\"?",
+  "choices": [
+   "In a bored, flat voice",
+   "Softly, in a whisper, but excited",
+   "Loudly, like a shout",
+   "Slowly and sadly"
+  ],
+  "correct": "Softly, in a whisper, but excited"
+ },
+ {
+  "id": "RF.2.4b-H3",
+  "standard": "RF.2.4b",
+  "prompt": "Where should you take a short pause when you read this sentence aloud? \"When the bell rang, the class lined up.\"",
+  "choices": [
+   "After \"lined\"",
+   "After \"When\"",
+   "After \"rang,\"",
+   "After \"the\""
+  ],
+  "correct": "After \"rang,\""
+ },
+ {
+  "id": "RF.2.4b-H4",
+  "standard": "RF.2.4b",
+  "prompt": "Read this sentence aloud: \"You ate the whole thing?\" It has no question word like \"what\" or \"who,\" but it ends with a question mark. How should your voice sound at the end?",
+  "choices": [
+   "Get quieter and fade away",
+   "Go down and stop",
+   "Stay flat and even",
+   "Go up, like a question"
+  ],
+  "correct": "Go up, like a question"
+ },
+ {
+  "id": "RF.2.4b-H5",
+  "standard": "RF.2.4b",
+  "prompt": "You are reading a story aloud. It says: \"The house was silent. Slowly, quietly, she opened the creaky door.\" How should you read this part?",
+  "choices": [
+   "Slowly and quietly, to build suspense",
+   "Loudly and angrily",
+   "Fast and cheerful",
+   "In a giggly, silly voice"
+  ],
+  "correct": "Slowly and quietly, to build suspense"
+ },
+ {
+  "id": "RF.2.4c-Q1",
+  "standard": "RF.2.4c",
+  "prompt": "You read: \"The dog buried a bone in the yard.\" But you accidentally read **bone** as \"bun.\" What should you do?",
+  "choices": [
+   "Go back and reread because 'bun' doesn't make sense",
+   "Ask someone to read for you",
+   "Keep reading",
+   "Stop reading the book"
+  ],
+  "correct": "Go back and reread because 'bun' doesn't make sense"
+ },
+ {
+  "id": "RF.2.4c-Q3",
+  "standard": "RF.2.4c",
+  "prompt": "What is a good strategy when a sentence doesn't make sense?",
+  "choices": [
+   "Skip the whole page",
+   "Reread the sentence and try the hard word again",
+   "Read faster",
+   "Close the book"
+  ],
+  "correct": "Reread the sentence and try the hard word again"
+ },
+ {
+  "id": "RF.2.4c-H1",
+  "standard": "RF.2.4c",
+  "prompt": "Read this sentence: \"Yesterday I read a whole book about frogs.\" How should you say the word **read** here?",
+  "choices": [
+   "Like \"red,\" because the sentence says it already happened (yesterday)",
+   "Like \"road\"",
+   "Like \"reed,\" because you are saying it right now",
+   "Like \"raid\""
+  ],
+  "correct": "Like \"red,\" because the sentence says it already happened (yesterday)"
+ },
+ {
+  "id": "RF.2.4c-H2",
+  "standard": "RF.2.4c",
+  "prompt": "Read this sentence: \"The farmer will lead the cow to the barn.\" Which is the right way to say **lead**?",
+  "choices": [
+   "It rhymes with \"lad\"",
+   "It rhymes with \"feed,\" because he is guiding the cow",
+   "It rhymes with \"bed,\" because it is the heavy gray metal",
+   "It rhymes with \"load\""
+  ],
+  "correct": "It rhymes with \"feed,\" because he is guiding the cow"
+ },
+ {
+  "id": "RF.2.4c-H3",
+  "standard": "RF.2.4c",
+  "prompt": "A reader read this sentence: \"Mom put the groceries in the trunk of the car.\" She first said the word **trunk** as \"truck.\" What is the best fix?",
+  "choices": [
+   "Skip the word and read on",
+   "Change it to 'track'",
+   "Reread it as 'trunk'\u2014groceries go in a car's trunk, and the word ends in -nk",
+   "Keep 'truck' because it looks almost the same"
+  ],
+  "correct": "Reread it as 'trunk'\u2014groceries go in a car's trunk, and the word ends in -nk"
+ },
+ {
+  "id": "RF.2.4c-H4",
+  "standard": "RF.2.4c",
+  "prompt": "A reader read this sentence: \"The library is a quiet place to read.\" He said the word **quiet** as \"quite.\" What should he do?",
+  "choices": [
+   "Say 'quit' instead",
+   "Keep 'quite' because the letters look the same",
+   "Skip the word",
+   "Reread it\u2014'quiet' has two beats (qui-et), means no noise, and fits a library"
+  ],
+  "correct": "Reread it\u2014'quiet' has two beats (qui-et), means no noise, and fits a library"
+ },
+ {
+  "id": "RF.2.4c-H5",
+  "standard": "RF.2.4c",
+  "prompt": "Read this sentence: \"The brave knight rode his horse to the castle.\" A reader said the word **knight** as \"night.\" Which fix is best?",
+  "choices": [
+   "Keep 'knight'\u2014it starts with a silent k and means a man in armor, which fits riding a horse",
+   "Change it to 'kite'",
+   "Change it to 'night,' the dark time of day",
+   "Change it to 'nut'"
+  ],
+  "correct": "Keep 'knight'\u2014it starts with a silent k and means a man in armor, which fits riding a horse"
+ },
+ {
+  "id": "L.2.4-Q1",
+  "standard": "L.2.4",
+  "prompt": "Read the sentence: 'The bag was so light that I could lift it with one finger.' What does the word light mean in this sentence?",
+  "choices": [
+   "not heavy",
+   "brightness from the sun",
+   "a color you can see",
+   "to turn on a lamp"
+  ],
+  "correct": "not heavy"
+ },
+ {
+  "id": "L.2.4-Q2",
+  "standard": "L.2.4",
+  "prompt": "The prefix un- means 'not.' What does the word unhappy mean?",
+  "choices": [
+   "not happy",
+   "very happy",
+   "happy again",
+   "full of happy"
+  ],
+  "correct": "not happy"
+ },
+ {
+  "id": "L.2.4-Q3",
+  "standard": "L.2.4",
+  "prompt": "Read the sentence: 'The soup was so scalding that Mia had to wait for it to cool before eating.' What does scalding most likely mean?",
+  "choices": [
+   "very hot",
+   "very cold",
+   "very sweet",
+   "very old"
+  ],
+  "correct": "very hot"
+ },
+ {
+  "id": "L.2.4-Q4",
+  "standard": "L.2.4",
+  "prompt": "A compound word is made of two smaller words put together. What does the compound word sailboat most likely mean?",
+  "choices": [
+   "a boat that moves using a sail",
+   "a boat that is broken",
+   "a kind of fish",
+   "a place where people swim"
+  ],
+  "correct": "a boat that moves using a sail"
+ },
+ {
+  "id": "L.2.4-Q5",
+  "standard": "L.2.4",
+  "prompt": "Read the sentence: 'The baseball player will bat first in the game.' What does the word bat mean in this sentence?",
+  "choices": [
+   "to take a turn hitting the ball",
+   "a small flying animal",
+   "to blink your eyes fast",
+   "a stick used in a game"
+  ],
+  "correct": "to take a turn hitting the ball"
+ },
+ {
+  "id": "L.2.4-H1",
+  "standard": "L.2.4",
+  "prompt": "Read the sentence: 'The elephant used its trunk to spray water over its dusty back.' What does the word trunk mean in THIS sentence?",
+  "choices": [
+   "the long nose of an elephant",
+   "the back part of a car",
+   "the thick stem of a tree",
+   "a big box for storing things"
+  ],
+  "correct": "the long nose of an elephant"
+ },
+ {
+  "id": "L.2.4-H2",
+  "standard": "L.2.4",
+  "prompt": "Ben was not just a little scared during the storm. He hid under the covers and shook. Which word best shows that Ben was the MOST scared?",
+  "choices": [
+   "unsure",
+   "terrified",
+   "nervous",
+   "worried"
+  ],
+  "correct": "terrified"
+ },
+ {
+  "id": "L.2.4-H3",
+  "standard": "L.2.4",
+  "prompt": "The suffix -less means 'without.' Read: 'The little green snake was harmless, so it would never bite or hurt anyone.' What does harmless most likely mean?",
+  "choices": [
+   "a small amount of harm",
+   "harmed again",
+   "without harm",
+   "causing lots of harm"
+  ],
+  "correct": "without harm"
+ },
+ {
+  "id": "L.2.4-H4",
+  "standard": "L.2.4",
+  "prompt": "The prefix pre- means 'before.' Read: 'Our teacher showed us a preview of the movie before we watched the whole thing.' What does preview mean?",
+  "choices": [
+   "a very long, wide view",
+   "a look at something after it ends",
+   "watching something all over again",
+   "a look at something before it happens"
+  ],
+  "correct": "a look at something before it happens"
+ },
+ {
+  "id": "L.2.4-H5",
+  "standard": "L.2.4",
+  "prompt": "Read the sentence: 'Please save me a seat next to you at lunch today.' What does the word save mean in THIS sentence?",
+  "choices": [
+   "to keep something for someone",
+   "to put money away in a bank",
+   "to rescue someone from danger",
+   "to keep from getting hurt"
+  ],
+  "correct": "to keep something for someone"
+ },
+ {
+  "id": "L.2.4a-Q1",
+  "standard": "L.2.4a",
+  "prompt": "\"The enormous elephant was the biggest animal at the zoo.\"\n\nThe word **enormous** means \u2014",
+  "choices": [
+   "Gray",
+   "Slow",
+   "Very large",
+   "Tiny"
+  ],
+  "correct": "Very large"
+ },
+ {
+  "id": "L.2.4a-Q4",
+  "standard": "L.2.4a",
+  "prompt": "\"The frigid wind made everyone shiver and bundle up in their coats.\"\n\nThe word **frigid** means \u2014",
+  "choices": [
+   "Gentle",
+   "Warm",
+   "Strong",
+   "Very cold"
+  ],
+  "correct": "Very cold"
+ },
+ {
+  "id": "L.2.4a-H1",
+  "standard": "L.2.4a",
+  "prompt": "\"After the long hike, we sat down to rest on the grassy bank and watched the river flow by.\"\n\nIn this sentence, the word **bank** means \u2014",
+  "choices": [
+   "The ground along the edge of a river",
+   "A kind of fish",
+   "A place where people keep their money",
+   "A loud, sudden sound"
+  ],
+  "correct": "The ground along the edge of a river"
+ },
+ {
+  "id": "L.2.4a-H2",
+  "standard": "L.2.4a",
+  "prompt": "\"The tiny mouse crept across the kitchen floor, careful not to wake the sleeping cat.\"\n\nThe word **crept** tells you the mouse moved \u2014",
+  "choices": [
+   "Backwards in a circle",
+   "Slowly and quietly",
+   "Quickly and loudly",
+   "High into the air"
+  ],
+  "correct": "Slowly and quietly"
+ },
+ {
+  "id": "L.2.4a-H3",
+  "standard": "L.2.4a",
+  "prompt": "\"The soup tasted so bland that Grandpa added salt and pepper to give it more flavor.\"\n\nThe word **bland** means \u2014",
+  "choices": [
+   "Boiling hot",
+   "Bright in color",
+   "Having very little flavor",
+   "Too spicy to eat"
+  ],
+  "correct": "Having very little flavor"
+ },
+ {
+  "id": "L.2.4a-H4",
+  "standard": "L.2.4a",
+  "prompt": "\"The elephant reached up with its long trunk and sprayed water all over its back.\"\n\nIn this sentence, the word **trunk** means \u2014",
+  "choices": [
+   "The back part of a car",
+   "A big box for storing things",
+   "The bottom part of a tree",
+   "An elephant's long nose"
+  ],
+  "correct": "An elephant's long nose"
+ },
+ {
+  "id": "L.2.4a-H5",
+  "standard": "L.2.4a",
+  "prompt": "\"Instead of just walking, the excited puppy dashed across the yard to greet its owner.\"\n\nThe word **dashed** means the puppy \u2014",
+  "choices": [
+   "Ran very fast",
+   "Stood still and waited",
+   "Walked in a slow, calm way",
+   "Crawled on its belly"
+  ],
+  "correct": "Ran very fast"
+ },
+ {
+  "id": "L.2.4a-E1",
+  "standard": "L.2.4a",
+  "prompt": "\"The soup was so hot that Maria had to wait for it to cool down before eating.\"\n\nThe word **hot** means \u2014",
+  "choices": [
+   "Round",
+   "Very warm",
+   "Purple",
+   "Cold"
+  ],
+  "correct": "Very warm"
+ },
+ {
+  "id": "L.2.4a-E2",
+  "standard": "L.2.4a",
+  "prompt": "\"The puppy was tiny \u2014 small enough to fit in one hand.\"\n\nThe word **tiny** means \u2014",
+  "choices": [
+   "Loud",
+   "Fast",
+   "Very small",
+   "Green"
+  ],
+  "correct": "Very small"
+ },
+ {
+  "id": "L.2.4a-E3",
+  "standard": "L.2.4a",
+  "prompt": "\"Ben felt happy and smiled big when he opened his birthday present.\"\n\nThe word **happy** means \u2014",
+  "choices": [
+   "Sleepy",
+   "Wet",
+   "Angry",
+   "Glad"
+  ],
+  "correct": "Glad"
+ },
+ {
+  "id": "L.2.4a-E4",
+  "standard": "L.2.4a",
+  "prompt": "\"The road was so wet after the rain that the cars splashed through puddles.\"\n\nThe word **wet** means \u2014",
+  "choices": [
+   "Covered in water",
+   "Yellow",
+   "Tall",
+   "Dry"
+  ],
+  "correct": "Covered in water"
+ },
+ {
+  "id": "L.2.4a-E5",
+  "standard": "L.2.4a",
+  "prompt": "\"The box was heavy, and Sam grunted as he lifted it off the floor.\"\n\nThe word **heavy** means \u2014",
+  "choices": [
+   "Shiny",
+   "Hard to lift",
+   "Quiet",
+   "Light"
+  ],
+  "correct": "Hard to lift"
+ },
+ {
+  "id": "L.2.4b-Q3",
+  "standard": "L.2.4b",
+  "prompt": "The word **preview** means \u2014",
+  "choices": [
+   "To view before",
+   "To not view",
+   "To view after",
+   "To view again"
+  ],
+  "correct": "To view before"
+ },
+ {
+  "id": "L.2.4b-H1",
+  "standard": "L.2.4b",
+  "prompt": "Maria drew her picture, erased the whole thing, and then drew it a second time from the start. Which word tells exactly what Maria did? She ____ her picture.",
+  "choices": [
+   "redrew",
+   "misdrew",
+   "predrew",
+   "undrew"
+  ],
+  "correct": "redrew"
+ },
+ {
+  "id": "L.2.4b-H2",
+  "standard": "L.2.4b",
+  "prompt": "The workers put the box on the wrong shelf because it was **mislabeled**. In this sentence, mislabeled means the box was labeled \u2014",
+  "choices": [
+   "very neatly",
+   "wrongly",
+   "again",
+   "before it was packed"
+  ],
+  "correct": "wrongly"
+ },
+ {
+  "id": "L.2.4b-H3",
+  "standard": "L.2.4b",
+  "prompt": "The rope was knotted tightly, so the sailor had to **unfasten** it fast before the boat drifted. Unfasten means to \u2014",
+  "choices": [
+   "fasten it more tightly",
+   "leave it fastened",
+   "undo what was fastened",
+   "fasten it again"
+  ],
+  "correct": "undo what was fastened"
+ },
+ {
+  "id": "L.2.4b-H4",
+  "standard": "L.2.4b",
+  "prompt": "Dad left the soup on the stove far too long, and it turned into mush. Which word best describes what Dad did to the soup? He ____ it.",
+  "choices": [
+   "precooked",
+   "undercooked",
+   "recooked",
+   "overcooked"
+  ],
+  "correct": "overcooked"
+ },
+ {
+  "id": "L.2.4b-H5",
+  "standard": "L.2.4b",
+  "prompt": "The bridge was **underbuilt** for such heavy trucks, so it began to crack the first day. Underbuilt means the bridge was built \u2014",
+  "choices": [
+   "not strong enough",
+   "a second time",
+   "too strong",
+   "before the road opened"
+  ],
+  "correct": "not strong enough"
+ }
+]

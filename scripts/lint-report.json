@@ -591,6 +591,12 @@
   ],
   "RF.K.1c": [
     {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "auto",
+      "detail": "dead mcq refs: ['RF.K.1c-Q1', 'RF.K.1c-Q2', 'RF.K.1c-Q3', 'RF.K.1c-Q4', 'RF.K.1c-Q5']"
+    },
+    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -705,6 +711,12 @@
   ],
   "RF.K.2c": [
     {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "auto",
+      "detail": "dead mcq refs: ['RF.K.2c-Q1', 'RF.K.2c-Q2', 'RF.K.2c-Q3', 'RF.K.2c-Q4', 'RF.K.2c-Q5']"
+    },
+    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -765,6 +777,12 @@
   ],
   "RF.K.3a": [
     {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "auto",
+      "detail": "dead mcq refs: ['RF.K.3a-Q1']"
+    },
+    {
       "inv": "INV-5",
       "rule": 25,
       "fixer": "renderer",
@@ -785,6 +803,12 @@
   ],
   "RF.K.3b": [],
   "RF.K.3c": [
+    {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "auto",
+      "detail": "dead mcq refs: ['RF.K.3c-Q1', 'RF.K.3c-Q2', 'RF.K.3c-Q3', 'RF.K.3c-Q4', 'RF.K.3c-Q5']"
+    },
     {
       "inv": "INV-5",
       "rule": 25,
@@ -1742,6 +1766,12 @@
   "RF.1.1a": [],
   "RF.1.2b": [
     {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "auto",
+      "detail": "dead mcq refs: ['RF.1.2b-Q1', 'RF.1.2b-Q2', 'RF.1.2b-Q3', 'RF.1.2b-Q4', 'RF.1.2b-Q5']"
+    },
+    {
       "inv": "INV-6",
       "rule": 25,
       "fixer": "auto",
@@ -2030,6 +2060,12 @@
     }
   ],
   "L.1.5a": [
+    {
+      "inv": "INV-3",
+      "rule": 24,
+      "fixer": "auto",
+      "detail": "dead mcq refs: ['L.1.5a-Q2', 'L.1.5a-Q4', 'L.1.5a-Q5']"
+    },
     {
       "inv": "INV-5",
       "rule": 25,

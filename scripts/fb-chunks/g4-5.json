@@ -1,0 +1,542 @@
+[
+ {
+  "id": "L.4.4c-E1",
+  "standard": "L.4.4c",
+  "prompt": "Emma does not know what the word \"gigantic\" means. Which book should she use to find its meaning?",
+  "choices": [
+   "A phone book",
+   "A dictionary",
+   "A cookbook",
+   "A comic book"
+  ],
+  "correct": "A dictionary"
+ },
+ {
+  "id": "L.4.4c-E2",
+  "standard": "L.4.4c",
+  "prompt": "A dictionary shows the word \"cat\" like this: cat (kat). What does the part in parentheses, (kat), tell you?",
+  "choices": [
+   "The color of a cat",
+   "The price of a cat",
+   "How to say the word",
+   "How to spell \"dog\""
+  ],
+  "correct": "How to say the word"
+ },
+ {
+  "id": "L.4.4c-E3",
+  "standard": "L.4.4c",
+  "prompt": "Ben wrote \"happy\" three times and wants a different word that means almost the same thing. Which reference book helps you find another word with a similar meaning?",
+  "choices": [
+   "A calendar",
+   "A menu",
+   "An atlas",
+   "A thesaurus"
+  ],
+  "correct": "A thesaurus"
+ },
+ {
+  "id": "L.4.4c-E4",
+  "standard": "L.4.4c",
+  "prompt": "At the back of Maria's science book is a list of important words with their meanings. What is this helpful list called?",
+  "choices": [
+   "A glossary",
+   "A ruler",
+   "A song",
+   "A map"
+  ],
+  "correct": "A glossary"
+ },
+ {
+  "id": "L.4.4c-E5",
+  "standard": "L.4.4c",
+  "prompt": "You look up \"amazing\" in a dictionary and it says: \"very surprising; wonderful.\" What did the dictionary just tell you?",
+  "choices": [
+   "What day it is",
+   "What the word means",
+   "Where the store is",
+   "How tall you are"
+  ],
+  "correct": "What the word means"
+ },
+ {
+  "id": "L.4.5-Q1",
+  "standard": "L.4.5",
+  "prompt": "The news hit her like a ton of bricks.\n\nThis is an example of \u2014",
+  "choices": [
+   "A simile",
+   "A metaphor",
+   "Personification",
+   "An idiom"
+  ],
+  "correct": "A simile"
+ },
+ {
+  "id": "L.4.5-Q2",
+  "standard": "L.4.5",
+  "prompt": "The world is a stage, and we are merely players.\n\nThis is an example of \u2014",
+  "choices": [
+   "Onomatopoeia",
+   "A metaphor",
+   "Alliteration",
+   "A simile"
+  ],
+  "correct": "A metaphor"
+ },
+ {
+  "id": "L.4.5-Q3",
+  "standard": "L.4.5",
+  "prompt": "What does the idiom \"hit the nail on the head\" mean?",
+  "choices": [
+   "To hammer something",
+   "To build something",
+   "To be exactly right",
+   "To hurt yourself"
+  ],
+  "correct": "To be exactly right"
+ },
+ {
+  "id": "L.4.5-Q4",
+  "standard": "L.4.5",
+  "prompt": "The old car coughed and sputtered before finally dying on the side of the road.\n\nThis is an example of \u2014",
+  "choices": [
+   "Simile",
+   "Alliteration",
+   "Hyperbole",
+   "Personification"
+  ],
+  "correct": "Personification"
+ },
+ {
+  "id": "L.4.5-Q5",
+  "standard": "L.4.5",
+  "prompt": "Which pair of words shows the GREATEST difference in intensity?",
+  "choices": [
+   "Upset and furious",
+   "Big and large",
+   "Walk and stroll",
+   "Warm and hot"
+  ],
+  "correct": "Upset and furious"
+ },
+ {
+  "id": "L.4.5-E1",
+  "standard": "L.4.5",
+  "prompt": "Maria said, \"My backpack is as heavy as an elephant!\"\n\nMaria is using \u2014",
+  "choices": [
+   "A simile, because she uses the word \"as\" to compare two things",
+   "A question for her teacher",
+   "A list of animals at the zoo",
+   "A math problem about weight"
+  ],
+  "correct": "A simile, because she uses the word \"as\" to compare two things"
+ },
+ {
+  "id": "L.4.5-E2",
+  "standard": "L.4.5",
+  "prompt": "\"The wind whispered through the trees.\"\n\nThe wind cannot really talk. Giving the wind a human action, like whispering, is called \u2014",
+  "choices": [
+   "A rhyme",
+   "Personification",
+   "A weather report",
+   "A spelling word"
+  ],
+  "correct": "Personification"
+ },
+ {
+  "id": "L.4.5-E3",
+  "standard": "L.4.5",
+  "prompt": "Grandpa said, \"It's raining cats and dogs outside!\"\n\nGrandpa does NOT mean real cats and dogs are falling. This kind of saying is called \u2014",
+  "choices": [
+   "A spelling test",
+   "A grocery list",
+   "An idiom",
+   "A true fact"
+  ],
+  "correct": "An idiom"
+ },
+ {
+  "id": "L.4.5-E4",
+  "standard": "L.4.5",
+  "prompt": "\"The star shone as bright as a diamond.\"\n\nThis sentence uses the word \"as\" to compare the star to a diamond. This is called \u2014",
+  "choices": [
+   "A shopping list",
+   "A subtraction problem",
+   "A song title",
+   "A simile"
+  ],
+  "correct": "A simile"
+ },
+ {
+  "id": "L.4.5-E5",
+  "standard": "L.4.5",
+  "prompt": "Which sentence uses figurative language (words that don't mean exactly what they say)?",
+  "choices": [
+   "Her smile was as warm as sunshine.",
+   "I ate an apple for lunch.",
+   "The dog ran to the door.",
+   "The bus stopped at the corner."
+  ],
+  "correct": "Her smile was as warm as sunshine."
+ },
+ {
+  "id": "L.4.5a-Q5",
+  "standard": "L.4.5a",
+  "prompt": "What does the simile \"Her laughter was like music to his ears\" mean?",
+  "choices": [
+   "She was listening to music while she laughed.",
+   "Her laughter made him feel happy and pleased.",
+   "Her laughter was very loud.",
+   "Her laughter sounded exactly like a song."
+  ],
+  "correct": "Her laughter made him feel happy and pleased."
+ },
+ {
+  "id": "L.4.5a-H1",
+  "standard": "L.4.5a",
+  "prompt": "When the teacher stepped out, one student wrote, \"Our classroom turned into a zoo.\" What does this metaphor mean?",
+  "choices": [
+   "The students grew wild, loud, and out of control.",
+   "The students grew bored and restless without a lesson.",
+   "The students were crowded together in a small space.",
+   "The students were excited to study animals that day."
+  ],
+  "correct": "The students grew wild, loud, and out of control."
+ },
+ {
+  "id": "L.4.5a-H2",
+  "standard": "L.4.5a",
+  "prompt": "After the long hike, Dad groaned, \"My legs are noodles.\" What does he mean?",
+  "choices": [
+   "His legs were sore and bruised.",
+   "His legs felt weak and wobbly.",
+   "His legs were long and thin.",
+   "His legs were covered in mud."
+  ],
+  "correct": "His legs felt weak and wobbly."
+ },
+ {
+  "id": "L.4.5a-H3",
+  "standard": "L.4.5a",
+  "prompt": "The old man smiled proudly and said, \"My granddaughter is the anchor of our family.\" What does he mean?",
+  "choices": [
+   "She is the heaviest person in the family.",
+   "She spends a lot of her time near boats.",
+   "She keeps the family steady and holds it together.",
+   "She weighs the family down and slows them."
+  ],
+  "correct": "She keeps the family steady and holds it together."
+ },
+ {
+  "id": "L.4.5a-H4",
+  "standard": "L.4.5a",
+  "prompt": "Which sentence contains a METAPHOR (not a simile or plain description)?",
+  "choices": [
+   "The fresh snow was cold, deep, and white.",
+   "The fresh snow was like a thick blanket over the yard.",
+   "The fresh snow fell as softly as feathers.",
+   "The fresh snow was a thick blanket over the yard."
+  ],
+  "correct": "The fresh snow was a thick blanket over the yard."
+ },
+ {
+  "id": "L.4.5a-H5",
+  "standard": "L.4.5a",
+  "prompt": "Nora kept trying the hard math problem long after everyone else quit. Which metaphor best shows that she refused to give up?",
+  "choices": [
+   "Nora was a bulldog, holding on and not letting go.",
+   "Nora was a statue, sitting perfectly still.",
+   "Nora was a butterfly, drifting from problem to problem.",
+   "Nora was a shadow, quietly following the others."
+  ],
+  "correct": "Nora was a bulldog, holding on and not letting go."
+ },
+ {
+  "id": "L.4.5a-E1",
+  "standard": "L.4.5a",
+  "prompt": "Maria was so tired after the race that she said, \"I slept like a log.\" What does \"slept like a log\" mean?",
+  "choices": [
+   "She could not fall asleep.",
+   "She slept very deeply and well.",
+   "She was made of wood.",
+   "She slept on top of a log."
+  ],
+  "correct": "She slept very deeply and well."
+ },
+ {
+  "id": "L.4.5a-E2",
+  "standard": "L.4.5a",
+  "prompt": "The teacher said the classroom was \"as quiet as a mouse\" during the test. What does this mean?",
+  "choices": [
+   "There was a mouse in the room.",
+   "The room smelled bad.",
+   "The room was very quiet.",
+   "The students were very loud."
+  ],
+  "correct": "The room was very quiet."
+ },
+ {
+  "id": "L.4.5a-E3",
+  "standard": "L.4.5a",
+  "prompt": "Dad said, \"My new car is a rocket!\" He means the car is:",
+  "choices": [
+   "made of metal from a rocket.",
+   "broken and slow.",
+   "flying in space.",
+   "very fast."
+  ],
+  "correct": "very fast."
+ },
+ {
+  "id": "L.4.5a-E4",
+  "standard": "L.4.5a",
+  "prompt": "Jake was very hungry, so he said, \"I could eat a horse.\" What does he really mean?",
+  "choices": [
+   "He is extremely hungry.",
+   "He is not hungry at all.",
+   "He is going to a farm.",
+   "He wants to buy a horse."
+  ],
+  "correct": "He is extremely hungry."
+ },
+ {
+  "id": "L.4.5a-E5",
+  "standard": "L.4.5a",
+  "prompt": "Grandma said the freshly baked bread was \"warm as sunshine.\" This simile tells you the bread was:",
+  "choices": [
+   "up in the sky.",
+   "nice and warm.",
+   "cold and hard.",
+   "yellow like the sun."
+  ],
+  "correct": "nice and warm."
+ },
+ {
+  "id": "L.4.5b-Q4",
+  "standard": "L.4.5b",
+  "prompt": "What does the proverb \"The early bird catches the worm\" teach?",
+  "choices": [
+   "Worms are best in the morning",
+   "Birds wake up early",
+   "Those who act first or prepare early have an advantage",
+   "Sleeping late is healthy"
+  ],
+  "correct": "Those who act first or prepare early have an advantage"
+ },
+ {
+  "id": "L.4.5b-E1",
+  "standard": "L.4.5b",
+  "prompt": "Maria's mom said, \"It's raining cats and dogs, so grab your umbrella!\" What does the idiom \"raining cats and dogs\" mean?",
+  "choices": [
+   "It is raining very hard",
+   "It is a sunny day",
+   "Cats and dogs are falling from the sky",
+   "Pets are playing in the yard"
+  ],
+  "correct": "It is raining very hard"
+ },
+ {
+  "id": "L.4.5b-E2",
+  "standard": "L.4.5b",
+  "prompt": "Grandpa smiled and said, \"A penny saved is a penny earned.\" This saying teaches that it is smart to \u2014",
+  "choices": [
+   "give money away",
+   "save your money",
+   "spend all your money",
+   "lose your pennies"
+  ],
+  "correct": "save your money"
+ },
+ {
+  "id": "L.4.5b-E3",
+  "standard": "L.4.5b",
+  "prompt": "The coach told the team, \"Practice makes perfect.\" What does this saying mean?",
+  "choices": [
+   "Games are boring",
+   "You should quit if it's hard",
+   "Practicing a lot helps you get better",
+   "Perfect people never practice"
+  ],
+  "correct": "Practicing a lot helps you get better"
+ },
+ {
+  "id": "L.4.5b-E4",
+  "standard": "L.4.5b",
+  "prompt": "When Sam finished his homework before dinner, Dad said, \"Better late than never.\" What does this saying mean?",
+  "choices": [
+   "Never do your homework",
+   "You should always be late",
+   "Dinner is more important than homework",
+   "Doing something late is still better than not doing it at all"
+  ],
+  "correct": "Doing something late is still better than not doing it at all"
+ },
+ {
+  "id": "L.4.5b-E5",
+  "standard": "L.4.5b",
+  "prompt": "Leo was nervous, and his sister said, \"Don't worry, it's a piece of cake!\" What does the idiom \"a piece of cake\" mean?",
+  "choices": [
+   "It is very easy",
+   "It is very hard",
+   "It is a real dessert",
+   "It is time to eat"
+  ],
+  "correct": "It is very easy"
+ },
+ {
+  "id": "L.4.5c-Q3",
+  "standard": "L.4.5c",
+  "prompt": "The words **happy,** \"joyful,\" and **ecstatic** are synonyms, but they differ in \u2014",
+  "choices": [
+   "They mean completely different things",
+   "Nothing \u2014 they're identical",
+   "Their spelling",
+   "Their intensity \u2014 from mild to extreme happiness"
+  ],
+  "correct": "Their intensity \u2014 from mild to extreme happiness"
+ },
+ {
+  "id": "L.4.5c-E1",
+  "standard": "L.4.5c",
+  "prompt": "An antonym is a word that means the OPPOSITE. Which word is the antonym of \"hot\"?",
+  "choices": [
+   "cold",
+   "oven",
+   "warm",
+   "spicy"
+  ],
+  "correct": "cold"
+ },
+ {
+  "id": "L.4.5c-E2",
+  "standard": "L.4.5c",
+  "prompt": "A synonym is a word that means almost the SAME thing. Which word is a synonym of \"big\"?",
+  "choices": [
+   "empty",
+   "large",
+   "tiny",
+   "short"
+  ],
+  "correct": "large"
+ },
+ {
+  "id": "L.4.5c-E3",
+  "standard": "L.4.5c",
+  "prompt": "Which word is the antonym (opposite) of \"happy\"?",
+  "choices": [
+   "cheerful",
+   "funny",
+   "sad",
+   "glad"
+  ],
+  "correct": "sad"
+ },
+ {
+  "id": "L.4.5c-E4",
+  "standard": "L.4.5c",
+  "prompt": "The words \"begin\" and \"start\" are synonyms because they \u2014",
+  "choices": [
+   "rhyme with each other",
+   "are opposites",
+   "are both animals",
+   "mean almost the same thing"
+  ],
+  "correct": "mean almost the same thing"
+ },
+ {
+  "id": "L.4.5c-E5",
+  "standard": "L.4.5c",
+  "prompt": "Read the sentence: \"The old road was rough, not smooth.\" In this sentence, \"rough\" is the OPPOSITE of \u2014",
+  "choices": [
+   "smooth",
+   "road",
+   "old",
+   "new"
+  ],
+  "correct": "smooth"
+ },
+ {
+  "id": "L.4.6-Q1",
+  "standard": "L.4.6",
+  "prompt": "Which sentence uses the most precise language?",
+  "choices": [
+   "The rocket accelerated through the atmosphere at tremendous speed.",
+   "Something moved quickly up there.",
+   "It went really, really fast.",
+   "The thing went fast."
+  ],
+  "correct": "The rocket accelerated through the atmosphere at tremendous speed."
+ },
+ {
+  "id": "L.4.6-Q2",
+  "standard": "L.4.6",
+  "prompt": "In social studies, the word **democracy** means \u2014",
+  "choices": [
+   "A military government",
+   "A system where citizens have the power to make decisions through voting",
+   "A type of economy",
+   "Rule by one king"
+  ],
+  "correct": "A system where citizens have the power to make decisions through voting"
+ },
+ {
+  "id": "L.4.6-Q4",
+  "standard": "L.4.6",
+  "prompt": "The academic phrase **in contrast** signals that the author is about to \u2014",
+  "choices": [
+   "Give an example",
+   "Summarize",
+   "Show a difference",
+   "Conclude"
+  ],
+  "correct": "Show a difference"
+ },
+ {
+  "id": "L.4.6-Q5",
+  "standard": "L.4.6",
+  "prompt": "Which word BEST describes someone who stammered, looked at the floor, and spoke in a shaky voice?",
+  "choices": [
+   "Excited",
+   "Bored",
+   "Confident",
+   "Nervous"
+  ],
+  "correct": "Nervous"
+ },
+ {
+  "id": "L.4.6-E1",
+  "standard": "L.4.6",
+  "prompt": "In science class, a **habitat** is the place where an animal lives. What is the beaver's habitat?",
+  "choices": [
+   "The river and the woods around it",
+   "A pair of shoes",
+   "A red bicycle",
+   "A slice of pizza"
+  ],
+  "correct": "The river and the woods around it"
+ },
+ {
+  "id": "L.4.6-E2",
+  "standard": "L.4.6",
+  "prompt": "The word **enormous** means very, very big. Which animal is enormous?",
+  "choices": [
+   "A little mouse",
+   "A giant blue whale",
+   "A tiny ant",
+   "A small ladybug"
+  ],
+  "correct": "A giant blue whale"
+ },
+ {
+  "id": "L.4.6-E3",
+  "standard": "L.4.6",
+  "prompt": "In geography, a **coast** is the land right next to the ocean. Which place is a coast?",
+  "choices": [
+   "A tall mountain far from any sea",
+   "A busy kitchen",
+   "A sandy beach where the waves reach the land",
+   "A desert with no water for miles"
+  ],
+  "correct": "A sandy beach where the waves reach the land"
+ }
+]

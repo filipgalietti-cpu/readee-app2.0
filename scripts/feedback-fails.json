@@ -1,0 +1,98 @@
+[
+ {
+  "id": "RL.2.4-H5",
+  "problems": [
+   "LEAK: nudge contains the answer"
+  ],
+  "incorrect": "Close one! The line above ends in 'feet.' Which word rhymes with 'feet' and keep",
+  "answer": "beat"
+ },
+ {
+  "id": "RF.2.3f-H1",
+  "problems": [
+   "LEAK: nudge contains the answer"
+  ],
+  "incorrect": "Take another look. This word is tricky to spell. Say it slowly: be-cause. Which ",
+  "answer": "Because"
+ },
+ {
+  "id": "RF.3.3c-E2",
+  "problems": [
+   "LEAK: nudge contains the answer"
+  ],
+  "incorrect": "Take another look. Say napkin slowly and listen for the two beats. Where does it",
+  "answer": "nap-kin"
+ },
+ {
+  "id": "RF.3.3c-E4",
+  "problems": [
+   "LEAK: nudge contains the answer"
+  ],
+  "incorrect": "Not yet. Say basket slowly and listen for two beats. Where does it break so both",
+  "answer": "bas-ket"
+ },
+ {
+  "id": "L.3.4d-Q1",
+  "problems": [
+   "reveal omits the answer"
+  ],
+  "incorrect": "Read the sentence again. Is it about a dog or a tree? Match that clue to the rig",
+  "answer": "Use definition 1"
+ },
+ {
+  "id": "L.3.2-H2",
+  "problems": [
+   "LEAK: nudge contains the answer"
+  ],
+  "incorrect": "Hmm, there are three dogs, so it is many. Where does the apostrophe go when more",
+  "answer": "dogs'"
+ },
+ {
+  "id": "L.3.2-H3",
+  "problems": [
+   "LEAK: nudge contains the answer"
+  ],
+  "incorrect": "Take another look. 'It's' with an apostrophe means 'it is.' Which spelling shows",
+  "answer": "its"
+ },
+ {
+  "id": "RI.4.2-Q3",
+  "problems": [
+   "reveal omits the answer"
+  ],
+  "incorrect": "Close one. A summary should cover the WHOLE passage, not just one part. Which ch",
+  "answer": "Bees are important insects because they help plants grow new seeds by spreading pollen from flower to flower, and they also make honey."
+ },
+ {
+  "id": "L.4.4-Q4",
+  "problems": [
+   "reveal omits the answer"
+  ],
+  "incorrect": "Close one! Use the roots: \"phil\" means love, \"anthrop\" means human. Put those tw",
+  "answer": "Loves helping humanity through generous donations"
+ },
+ {
+  "id": "L.4.4b-E3",
+  "problems": [
+   "LEAK: nudge contains the answer"
+  ],
+  "incorrect": "Hmm, the root \"tri\" means \"three.\" So how many sides would a \"tri\" angle have?",
+  "answer": "Three"
+ },
+ {
+  "id": "L.4.4b-E5",
+  "problems": [
+   "LEAK: nudge contains the answer"
+  ],
+  "incorrect": "Good try! The root \"bi\" means \"two.\" So how many wheels would a \"bi\" cycle have?",
+  "answer": "Two"
+ },
+ {
+  "id": "L.4.6-Q1",
+  "problems": [
+   "reveal omits the answer"
+  ],
+  "incorrect": "Not yet. Precise language uses exact, clear words. Which sentence gives real det",
+  "answer": "The rocket accelerated through the atmosphere at tremendous speed."
+ }
+]

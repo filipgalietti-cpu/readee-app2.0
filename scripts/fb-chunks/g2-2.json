@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RI.2.1-Q3",
+  "standard": "RI.2.1",
+  "prompt": "Listen to the story: George Washington Carver was a scientist who loved studying peanuts. He worked hard to find hundreds of new ways to use them. From peanuts, he made useful things for people, such as soap and paint that families could use in their homes. Which of these items did George Washington Carver create using peanuts?",
+  "choices": [
+   "Shoes",
+   "Soap",
+   "Cookies",
+   "Books"
+  ],
+  "correct": "Soap"
+ },
+ {
+  "id": "RI.2.1-Q4",
+  "standard": "RI.2.1",
+  "prompt": "Sea turtles travel thousands of miles through the ocean. They return to the same beach where they were born to lay their eggs.\n\nWhere do sea turtles lay their eggs?",
+  "choices": [
+   "On the beach where they were born",
+   "In the deep ocean",
+   "On any beach",
+   "In a nest in a tree"
+  ],
+  "correct": "On the beach where they were born"
+ },
+ {
+  "id": "RI.2.1-Q5",
+  "standard": "RI.2.1",
+  "prompt": "In 1969, astronauts Neil Armstrong and Buzz Aldrin walked on the Moon for the first time. Millions of people watched on television.\n\nWhen did astronauts first walk on the Moon?",
+  "choices": [
+   "1979",
+   "1969",
+   "1959",
+   "1989"
+  ],
+  "correct": "1969"
+ },
+ {
+  "id": "RI.2.1-H1",
+  "standard": "RI.2.1",
+  "prompt": "Every morning, Mrs. Lee puts a dish of seeds on her back porch. Soon little birds fly down to eat. But when her cat sits by the door, no birds come at all. So Mrs. Lee keeps the cat inside during breakfast time.\n\nWhy does Mrs. Lee keep the cat inside in the morning?",
+  "choices": [
+   "So the birds are not scared away",
+   "So the porch stays nice and clean",
+   "So the cat can sleep a little longer",
+   "So the cat will not eat the seeds"
+  ],
+  "correct": "So the birds are not scared away"
+ },
+ {
+  "id": "RI.2.1-H2",
+  "standard": "RI.2.1",
+  "prompt": "Sam plants a bean seed and watches it grow. First, a tiny root grows down into the soil. Next, a green stem pushes up. After many days, small leaves open at the top of the stem. Last of all, a flower appears.\n\nWhen do the leaves open?",
+  "choices": [
+   "At the very end, after the flower",
+   "After the stem grows but before the flower",
+   "Before the stem grows up",
+   "Right after the root grows down"
+  ],
+  "correct": "After the stem grows but before the flower"
+ },
+ {
+  "id": "RI.2.1-H3",
+  "standard": "RI.2.1",
+  "prompt": "Ants are very strong for their size. When one ant finds a big crumb, it cannot carry the crumb alone. So the ant runs back to the nest and taps other ants with its feelers. Then many ants come and carry the crumb home together.\n\nWhy does the ant tap the other ants with its feelers?",
+  "choices": [
+   "To warn them that danger is near",
+   "To show them the way back home",
+   "To ask them to help carry the crumb",
+   "To say hello to its friends"
+  ],
+  "correct": "To ask them to help carry the crumb"
+ },
+ {
+  "id": "RI.2.1-H4",
+  "standard": "RI.2.1",
+  "prompt": "Our class has three helpers each day. The line leader walks in front when the class moves. The door holder keeps the door open for everyone. The light monitor turns off the lights when the class leaves the room. Today, Maya is the very last one to do her job.\n\nWhat is Maya's job today?",
+  "choices": [
+   "Teacher's helper",
+   "Line leader",
+   "Door holder",
+   "Light monitor"
+  ],
+  "correct": "Light monitor"
+ },
+ {
+  "id": "RI.2.1-H5",
+  "standard": "RI.2.1",
+  "prompt": "Deep down in the sea, some fish make their own light. They live so far down that sunlight from above cannot reach them. Their glowing light helps them find food and see each other.\n\nWhat can we tell about the deep sea from this text?",
+  "choices": [
+   "It is dark because sunlight cannot reach it",
+   "It has many green plants growing",
+   "It is warm and full of sunshine",
+   "It is right near the top of the water"
+  ],
+  "correct": "It is dark because sunlight cannot reach it"
+ },
+ {
+  "id": "RI.2.2-Q1",
+  "standard": "RI.2.2",
+  "prompt": "Dogs are very special animals that make great pets. They are often called \"man's best friend\" because they are so loyal and friendly. Dogs love to play with their families and often follow them around. Having a dog can make your home feel happier and safer.\n\nThere are many different kinds of dogs, both small and big. No matter their size, most dogs love to run and play outside. They enjoy going for walks and playing fetch with a ball. It's important to give dogs exercise so they stay healthy and happy.\n\nSome dogs even have important jobs! For example, guide dogs help people who cannot see to walk safely. Police dogs work with officers to keep communities safe. Other dogs can help find people who are lost. These working dogs show how smart and helpful dogs can be.\n\nWhat is the main topic of the text?",
+  "choices": [
+   "Dogs need to exercise and play often.",
+   "Why dogs make wonderful pets and helpers.",
+   "How dogs help people with important jobs.",
+   "The different sizes and kinds of dogs."
+  ],
+  "correct": "Why dogs make wonderful pets and helpers."
+ },
+ {
+  "id": "RI.2.2-Q2",
+  "standard": "RI.2.2",
+  "prompt": "Paragraph 1: Apples come in many colors \u2014 red, green, and yellow. Paragraph 2: Apples are good for you because they have vitamins and fiber.\n\nWhat is Paragraph 2 mostly about?",
+  "choices": [
+   "The colors of apples",
+   "How to grow apples",
+   "Apple pie recipes",
+   "Why apples are healthy"
+  ],
+  "correct": "Why apples are healthy"
+ },
+ {
+  "id": "RI.2.2-Q3",
+  "standard": "RI.2.2",
+  "prompt": "Read the passage below.\n\n**Penguins!**\n\nPenguins are amazing birds that live in very cold places, mostly in the Southern Hemisphere. You can find many of them in Antarctica, where it is snowy and icy. They love to be near the ocean because that is where they find their food. Even though they are birds, penguins cannot fly! They are excellent swimmers.\n\nWhat do penguins eat? These busy birds are very good hunters in the water. They dive deep to catch tasty fish, tiny shrimp called krill, and other small sea animals. Penguins use their strong flippers to \"fly\" through the water as they chase their meals.\n\nWhen it's time for baby penguins, the parents work together. The mother penguin lays one or two eggs. Both mom and dad take turns keeping the eggs warm until the chicks hatch. Once the babies are born, their parents feed them and protect them from the cold. Soon, the little penguins are big enough to swim and find their own food!\n\nWhat is the MAIN topic of the whole passage?",
+  "choices": [
+   "How penguins swim",
+   "What penguins eat",
+   "Where penguins lay eggs",
+   "All about penguins"
+  ],
+  "correct": "All about penguins"
+ },
+ {
+  "id": "RI.2.2-Q4",
+  "standard": "RI.2.2",
+  "prompt": "Water is all around us, and it can look very different! Sometimes it's hard like a rock, and sometimes it flows like a river. Water can even disappear into the air. This is because water can change its shape or form.\n\nOne form of water is a solid. When water gets very cold, it freezes and turns into ice. Ice is solid water. You can hold ice in your hand, and it keeps its shape. Ice cubes in your drink and snow on the ground are examples of solid water.\n\nAnother form of water is a liquid. When ice melts, it becomes liquid water. This is the water you drink, use to wash your hands, or see in a pond. Liquid water flows and takes the shape of its container. It's the most common form of water we see every day.\n\nThe third form of water is a gas. When liquid water gets very hot, it turns into a gas called steam or water vapor. You can sometimes see steam rising from a hot pot of water. Water vapor is in the air all around us, even if we can't always see it. It helps make clouds!\n\nBased on the entire text, what is the main topic?",
+  "choices": [
+   "Why clouds are important",
+   "The three ways water can be found",
+   "Drinking water every day",
+   "How to make ice cubes"
+  ],
+  "correct": "The three ways water can be found"
+ },
+ {
+  "id": "RI.2.2-Q5",
+  "standard": "RI.2.2",
+  "prompt": "Read the passage below. What is the main topic of the passage? Many people love to have pets. Pets are animals that live with us in our homes. They can be fun and bring us joy. Dogs are popular pets. They like to play fetch and go for walks. Dogs need food, water, and lots of love. Cats are also common pets. They like to nap in sunny spots and chase toys. Cats need food, water, and a cozy place to sleep. Other pets include fish, birds, and hamsters. Fish swim in tanks. Birds sing songs. Hamsters run on wheels. No matter what kind, all pets need good care.",
+  "choices": [
+   "How to take care of a cat.",
+   "Different types of animals at the zoo.",
+   "The many kinds of pets and how to care for them.",
+   "Why dogs are the best pets."
+  ],
+  "correct": "The many kinds of pets and how to care for them."
+ },
+ {
+  "id": "RI.2.2-H1",
+  "standard": "RI.2.2",
+  "prompt": "Read the text.\n\nBees live together in a hive with one queen bee. Bees fly from flower to flower and use the sweet juice to make honey. When they land on flowers, they move yellow dust called pollen, and this helps new plants grow.\n\nWhat is this text MOSTLY about?",
+  "choices": [
+   "The important jobs that bees do",
+   "How bees help new plants grow",
+   "Where the queen bee lives in the hive",
+   "How bees turn flower juice into honey"
+  ],
+  "correct": "The important jobs that bees do"
+ },
+ {
+  "id": "RI.2.2-H2",
+  "standard": "RI.2.2",
+  "prompt": "Read the paragraph.\n\nPenguins cannot fly the way other birds do. But in the water they are amazing. Their wings work like flippers to push them fast, and they can dive deep down to catch fish.\n\nWhat is this paragraph MOSTLY about?",
+  "choices": [
+   "Why penguins have wings",
+   "How penguins are great swimmers",
+   "Penguins cannot fly like other birds",
+   "The kinds of fish that penguins eat"
+  ],
+  "correct": "How penguins are great swimmers"
+ },
+ {
+  "id": "RI.2.2-H3",
+  "standard": "RI.2.2",
+  "prompt": "Read the text.\n\nRain forests are hot, and it rains there almost every day. So many animals live in them, like tiny bright frogs and huge, long snakes. Rain forests also give people things we use, like fruit to eat and plants that become medicine.\n\nWhat is this text MOSTLY about?",
+  "choices": [
+   "Why it rains so much in rain forests",
+   "The medicines that come from rain forest plants",
+   "What rain forests are like and why they matter",
+   "The huge snakes that live in rain forests"
+  ],
+  "correct": "What rain forests are like and why they matter"
+ },
+ {
+  "id": "RI.2.2-H4",
+  "standard": "RI.2.2",
+  "prompt": "Read the paragraph.\n\nLong ago, people had no clocks. They looked up at the sun to know the time. When the sun was high in the sky, it was the middle of the day. When the sun went down, they knew it was time to sleep.\n\nWhat is this paragraph MOSTLY about?",
+  "choices": [
+   "Why people needed to build the first clocks",
+   "Why people feel sleepy at night",
+   "How the sun moves across the sky each day",
+   "How people long ago used the sun to tell time"
+  ],
+  "correct": "How people long ago used the sun to tell time"
+ },
+ {
+  "id": "RI.2.2-H5",
+  "standard": "RI.2.2",
+  "prompt": "Read the text.\n\nA librarian's day begins early. She turns on the lights and unlocks the big doors. All morning and afternoon she helps kids find books they will love. Before the library closes, she reads a story out loud so everyone can listen together.\n\nWhat is this text MOSTLY about?",
+  "choices": [
+   "The different ways a librarian helps at the library",
+   "Why kids love to check out library books",
+   "How a librarian opens the library in the morning",
+   "How to find a good book on the shelf"
+  ],
+  "correct": "The different ways a librarian helps at the library"
+ },
+ {
+  "id": "RI.2.3-Q1",
+  "standard": "RI.2.3",
+  "prompt": "First, the caterpillar eats lots of leaves. Then, it makes a chrysalis. Finally, it comes out as a butterfly.\n\nWhat happens AFTER the caterpillar makes a chrysalis?",
+  "choices": [
+   "It makes another chrysalis",
+   "It eats more leaves",
+   "It goes to sleep forever",
+   "It becomes a butterfly"
+  ],
+  "correct": "It becomes a butterfly"
+ },
+ {
+  "id": "RI.2.3-Q3",
+  "standard": "RI.2.3",
+  "prompt": "In 1903, the Wright Brothers flew the first airplane. Their flight lasted only 12 seconds. Today, planes can fly across the whole world.\n\nHow are the events connected?",
+  "choices": [
+   "Modern planes were invented first",
+   "The Wright Brothers' invention led to modern airplanes",
+   "They are not related",
+   "The Wright Brothers flew across the world"
+  ],
+  "correct": "The Wright Brothers' invention led to modern airplanes"
+ },
+ {
+  "id": "RI.2.3-Q4",
+  "standard": "RI.2.3",
+  "prompt": "After you spread peanut butter on one slice, what is the main reason you put the other slice of bread on top?",
+  "choices": [
+   "So the sandwich will have more crunch.",
+   "To keep the peanut butter from falling out.",
+   "To make the bread softer to chew.",
+   "Because it is the last thing you do."
+  ],
+  "correct": "To keep the peanut butter from falling out."
+ },
+ {
+  "id": "RI.2.3-Q5",
+  "standard": "RI.2.3",
+  "prompt": "When bees visit flowers, pollen sticks to their legs. They carry the pollen to other flowers. This helps new plants grow.\n\nHow does pollen getting on bees connect to new plants growing?",
+  "choices": [
+   "Plants grow on their own",
+   "Pollen makes bees fly faster",
+   "Bees eat the plants",
+   "Bees carry pollen to other flowers, which helps plants grow"
+  ],
+  "correct": "Bees carry pollen to other flowers, which helps plants grow"
+ },
+ {
+  "id": "RI.2.3-Q6",
+  "standard": "RI.2.3",
+  "prompt": "The passage explains that the sun makes ocean water evaporate. What must happen to the water vapor *after* it rises for clouds to form?",
+  "choices": [
+   "It must get much saltier to stick together.",
+   "It becomes colder and joins with other tiny pieces.",
+   "It needs to get hotter from the sun's strong rays.",
+   "It is pushed quickly across the sky by fast winds."
+  ],
+  "correct": "It becomes colder and joins with other tiny pieces."
+ },
+ {
+  "id": "RI.2.3-Q7",
+  "standard": "RI.2.3",
+  "prompt": "Sea otters eat sea urchins. When there are fewer sea otters, the number of sea urchins grows. As a result, the sea urchins eat too much kelp, and the kelp forests disappear.\n\nWhat causes the kelp forests to disappear?",
+  "choices": [
+   "Too many sea otters",
+   "Too many sea urchins eating the kelp",
+   "Strong ocean waves",
+   "Cold water"
+  ],
+  "correct": "Too many sea urchins eating the kelp"
+ },
+ {
+  "id": "RI.2.3-Q9",
+  "standard": "RI.2.3",
+  "prompt": "Clownfish live inside sea anemones. The anemone's stinging tentacles protect the clownfish from predators. In return, the clownfish cleans the anemone and brings it food.\n\nHow are the clownfish and anemone connected?",
+  "choices": [
+   "They fight each other",
+   "They live far apart",
+   "They help each other",
+   "One eats the other"
+  ],
+  "correct": "They help each other"
+ },
+ {
+  "id": "RI.2.3-Q11",
+  "standard": "RI.2.3",
+  "prompt": "Listen to the story: To make sea salt, workers first fill shallow pools with salty ocean water. Then they wait for hot, sunny days. The warm sun heats the water until it slowly disappears into the air, and only the salt is left behind in the bottom of the pool. When making sea salt, why is it important that the sun heats the ocean water?",
+  "choices": [
+   "To make the water easier for workers to collect.",
+   "So the salt can become bright and shiny.",
+   "It causes the water to evaporate, leaving the salt behind.",
+   "To keep the shallow pools full of water."
+  ],
+  "correct": "It causes the water to evaporate, leaving the salt behind."
+ },
+ {
+  "id": "RI.2.3-Q13",
+  "standard": "RI.2.3",
+  "prompt": "Plastic bags look like jellyfish in the water. Because of this, sea turtles sometimes eat the plastic by mistake. This can make them very sick.\n\nWhy do sea turtles eat plastic bags?",
+  "choices": [
+   "The bags look like jellyfish",
+   "They are hungry for plastic",
+   "Other turtles told them to",
+   "They like the taste"
+  ],
+  "correct": "The bags look like jellyfish"
+ },
+ {
+  "id": "RI.2.3-Q15",
+  "standard": "RI.2.3",
+  "prompt": "Based on the passage, how does the shallow ocean near the shore help plants grow on the ocean floor?",
+  "choices": [
+   "The shallow water helps small fish find the plants easily.",
+   "It lets sunlight reach the bottom of the ocean, where plants need it to grow.",
+   "The shallow water makes the plants grow big and strong.",
+   "It makes the water very cold for the plants."
+  ],
+  "correct": "It lets sunlight reach the bottom of the ocean, where plants need it to grow."
+ },
+ {
+  "id": "RI.2.3-H1",
+  "standard": "RI.2.3",
+  "prompt": "A seed needs water to grow. When it rains, the ground gets wet, and the wet ground helps a seed sprout into a tiny plant. But when there is no rain for many weeks, the ground turns dry and hard, and the seeds just stay under the dirt.\n\nWhy do the seeds stay under the dirt when it does not rain for weeks?",
+  "choices": [
+   "The dry ground has no water the seeds need",
+   "Birds carried the seeds away in the rain",
+   "The wet ground is too soft for them",
+   "The seeds are too old to grow anymore"
+  ],
+  "correct": "The dry ground has no water the seeds need"
+ },
+ {
+  "id": "RI.2.3-H2",
+  "standard": "RI.2.3",
+  "prompt": "To make a paper boat, Mia first folds the paper in half. Next, she folds the corners down to make a pointed top. Then she folds up the bottom edges to make the two sides. Last, she gently pulls the two sides open so the boat can float.\n\nWhy must Mia pull the sides open LAST and not first?",
+  "choices": [
+   "The paper is easier to hold when it is flat",
+   "The sides must be folded before they can be opened",
+   "Pulling too early would make the paper wet",
+   "The corners cannot be folded once the boat is open"
+  ],
+  "correct": "The sides must be folded before they can be opened"
+ },
+ {
+  "id": "RI.2.3-H3",
+  "standard": "RI.2.3",
+  "prompt": "Long ago, people had to walk or ride horses to travel, and it took a long time. Then trains were built, and people could go much farther in less time. Later, cars were invented, so families could leave right from their own homes and travel whenever they wanted.\n\nWhat did cars let people do that trains did NOT?",
+  "choices": [
+   "Ride only along the train tracks",
+   "Travel before trains were even built",
+   "Leave from their own homes whenever they wanted",
+   "Travel slower than a walking horse"
+  ],
+  "correct": "Leave from their own homes whenever they wanted"
+ },
+ {
+  "id": "RI.2.3-H4",
+  "standard": "RI.2.3",
+  "prompt": "Bees fly from flower to flower to drink sweet nectar. As a bee lands, yellow dust called pollen sticks to its fuzzy legs. When the bee flies to the next flower, some of that pollen rubs off. Flowers need pollen from other flowers before they can make new seeds.\n\nWhy are bees important to flowers?",
+  "choices": [
+   "They dig the flowers' seeds down into the ground",
+   "They drink up all the nectar so the flowers stay dry",
+   "They eat the pollen off of every flower they land on",
+   "They carry pollen between flowers so the flowers can make seeds"
+  ],
+  "correct": "They carry pollen between flowers so the flowers can make seeds"
+ },
+ {
+  "id": "RI.2.3-H5",
+  "standard": "RI.2.3",
+  "prompt": "Sam planted a bean seed in a cup of dirt on Monday, and he watered it every single day. He did not see anything happen at first. Then on Friday, Sam noticed a tiny green stem poking up out of the dirt, so he kept watering it.\n\nWhat most likely happened to the seed between Monday and Friday?",
+  "choices": [
+   "It slowly soaked up water and began to sprout under the dirt",
+   "It grew tall enough to open up its first flowers",
+   "It turned back into a bean for Sam to eat",
+   "It stayed exactly the same until Sam added new dirt"
+  ],
+  "correct": "It slowly soaked up water and began to sprout under the dirt"
+ },
+ {
+  "id": "RI.2.4-Q1",
+  "standard": "RI.2.4",
+  "prompt": "Nocturnal animals are active at night. Owls, bats, and raccoons are nocturnal.\n\nWhat does **nocturnal** mean?",
+  "choices": [
+   "Very fast",
+   "Living in water",
+   "Active at night",
+   "Active during the day"
+  ],
+  "correct": "Active at night"
+ },
+ {
+  "id": "RI.2.4-Q2",
+  "standard": "RI.2.4",
+  "prompt": "Frogs often live near ponds and streams. These wet places are their habitats. What does the word **habitat** mean in this sentence?",
+  "choices": [
+   "A type of food a frog eats",
+   "A natural home for an animal",
+   "A game a frog likes to play",
+   "A kind of weather frogs enjoy"
+  ],
+  "correct": "A natural home for an animal"
+ },
+ {
+  "id": "RI.2.4-Q3",
+  "standard": "RI.2.4",
+  "prompt": "Mammals are warm-blooded animals that have fur or hair. Dogs, cats, and humans are all mammals.\n\nBased on the text, what makes an animal a mammal?",
+  "choices": [
+   "It is warm-blooded with fur or hair",
+   "It can fly",
+   "It lays eggs",
+   "It lives in water"
+  ],
+  "correct": "It is warm-blooded with fur or hair"
+ },
+ {
+  "id": "RI.2.4-Q4",
+  "standard": "RI.2.4",
+  "prompt": "The ancient Egyptians built enormous pyramids. These huge stone structures still stand today.\n\nWhat does **enormous** mean in this sentence?",
+  "choices": [
+   "Very colorful",
+   "Very huge",
+   "Very old",
+   "Very small"
+  ],
+  "correct": "Very huge"
+ },
+ {
+  "id": "RI.2.4-Q5",
+  "standard": "RI.2.4",
+  "prompt": "Plants need nutrients from the soil to grow. Nutrients are like food for plants \u2014 they give plants energy and help them stay healthy.\n\nWhat are **nutrients**?",
+  "choices": [
+   "A type of soil",
+   "Sunlight",
+   "Food-like substances that help plants grow",
+   "Water"
+  ],
+  "correct": "Food-like substances that help plants grow"
+ },
+ {
+  "id": "RI.2.4-H1",
+  "standard": "RI.2.4",
+  "prompt": "Read this from a book about deserts:\n\n\"The desert gets almost no rain. To survive, a cactus stores water deep inside its thick stem. On the hottest days, when other plants wilt and die, the cactus stays green.\"\n\nWhat does the word **stores** mean here?",
+  "choices": [
+   "Keeps something to use later",
+   "Pours something out quickly",
+   "Sells things to people",
+   "Buys water from a shop"
+  ],
+  "correct": "Keeps something to use later"
+ },
+ {
+  "id": "RI.2.4-H2",
+  "standard": "RI.2.4",
+  "prompt": "Read this from a science book:\n\n\"Bees are busy helpers in a garden. As a bee crawls into a flower to drink, yellow dust sticks to its legs. The bee carries this dust to the next flower. This is how bees pollinate the plants so new seeds can grow.\"\n\nWhat does **pollinate** mean in this paragraph?",
+  "choices": [
+   "Sting animals that come too close",
+   "Move flower dust so seeds can grow",
+   "Drink sweet juice from a flower",
+   "Build a home inside a flower"
+  ],
+  "correct": "Move flower dust so seeds can grow"
+ },
+ {
+  "id": "RI.2.4-H3",
+  "standard": "RI.2.4",
+  "prompt": "Read this from a report about the ocean:\n\n\"Deep in the sea it is pitch black. No sunlight reaches down that far. Yet some tiny fish make their own light. The glowing spots help them find each other in the dark.\"\n\nWhat does **pitch black** mean here?",
+  "choices": [
+   "Covered in sticky glue",
+   "A little bit cloudy",
+   "Completely dark",
+   "Full of bright light"
+  ],
+  "correct": "Completely dark"
+ },
+ {
+  "id": "RI.2.4-H4",
+  "standard": "RI.2.4",
+  "prompt": "Read this from a book about weather:\n\n\"After days of rain, the little creek began to swell. The water climbed over its banks and spread across the road. Soon cars could not drive through.\"\n\nWhat does the word **swell** mean in this sentence?",
+  "choices": [
+   "Move very slowly",
+   "Get smaller and dry up",
+   "Turn a bright blue color",
+   "Get bigger and rise up"
+  ],
+  "correct": "Get bigger and rise up"
+ },
+ {
+  "id": "RI.2.4-H5",
+  "standard": "RI.2.4",
+  "prompt": "Read this from a book about the human body:\n\n\"When you run fast, your heart pumps harder. You breathe quickly, and your skin gets warm. Then your body sweats. The little drops of water cool you down so you don't get too hot.\"\n\nWhat does the word **sweats** mean here?",
+  "choices": [
+   "Makes drops of water to cool the body",
+   "Turns a warm red color",
+   "Runs faster and faster",
+   "Takes a long, slow breath"
+  ],
+  "correct": "Makes drops of water to cool the body"
+ },
+ {
+  "id": "RI.2.5-Q1",
+  "standard": "RI.2.5",
+  "prompt": "You want to find the meaning of the word **ecosystem** in a science book. Where should you look?",
+  "choices": [
+   "The title page",
+   "The table of contents",
+   "The index",
+   "The glossary"
+  ],
+  "correct": "The glossary"
+ },
+ {
+  "id": "RI.2.5-Q2",
+  "standard": "RI.2.5",
+  "prompt": "Listen to the story: Maya opened a nonfiction book about the ocean. At the top of each part, she saw big, bold words like \"Ocean Animals\" and \"Ocean Plants.\" Before she even started reading, those words told her exactly what each part of the book would be about. What is the purpose of a heading in a nonfiction text?",
+  "choices": [
+   "To tell you what that section is about",
+   "To end the chapter",
+   "To list the author's name",
+   "To decorate the page"
+  ],
+  "correct": "To tell you what that section is about"
+ }
+]

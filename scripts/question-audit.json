@@ -1,0 +1,369 @@
+{
+  "totals": {
+    "questions": 1841,
+    "by_grade": {
+      "K": 337,
+      "1": 404,
+      "2": 399,
+      "3": 396,
+      "4": 305
+    },
+    "by_type": {
+      "multiple_choice": 1835,
+      "missing_word": 4,
+      "sentence_build": 2
+    }
+  },
+  "defects": {
+    "no_passage": 60,
+    "letter_prefix": 25,
+    "too_few_choices": 16,
+    "dup_choices": 11
+  },
+  "assets": {
+    "missing_audio": 1268,
+    "missing_image": 1283,
+    "by_grade": {
+      "K": {
+        "missing_audio": 234,
+        "missing_image": 237
+      },
+      "1": {
+        "missing_audio": 298,
+        "missing_image": 298
+      },
+      "2": {
+        "missing_audio": 266,
+        "missing_image": 269
+      },
+      "3": {
+        "missing_audio": 272,
+        "missing_image": 275
+      },
+      "4": {
+        "missing_audio": 198,
+        "missing_image": 204
+      }
+    }
+  },
+  "adaptive_generated": {
+    "count": 1036,
+    "missing_audio": 1036,
+    "missing_image": 1036
+  },
+  "examples": {
+    "no_passage": [
+      {
+        "id": "RL.K.1-Q3",
+        "prompt": "Why did Emma's mom make a chocolate cake?"
+      },
+      {
+        "id": "RL.K.2-Q1",
+        "prompt": "What did Bear do right after he felt hungry?"
+      },
+      {
+        "id": "RL.K.2-Q2",
+        "prompt": "Why did Frog get on the lily pad?"
+      },
+      {
+        "id": "RL.K.2-Q3",
+        "prompt": "What was Mia's problem in the story?"
+      },
+      {
+        "id": "RL.K.2-Q4",
+        "prompt": "How did Turtle win the race?"
+      },
+      {
+        "id": "RL.K.6-Q4",
+        "prompt": "What does an AUTHOR do?"
+      },
+      {
+        "id": "RI.K.3-Q2",
+        "prompt": "What does the passage help us understand about how water and ice are connected?"
+      },
+      {
+        "id": "RI.K.6-Q5",
+        "prompt": "Why do informational books need BOTH an author AND an illustrator?"
+      }
+    ],
+    "letter_prefix": [
+      {
+        "id": "RL.K.2-Q2",
+        "prompt": "Why did Frog get on the lily pad?"
+      },
+      {
+        "id": "RL.K.4-Q3",
+        "prompt": "The boat DRIFTED across the calm lake. What does DRIFTED tell us about how the b"
+      },
+      {
+        "id": "K.L.5-Q1",
+        "prompt": "Apple, banana, and orange are alike. Which word is also like them?"
+      },
+      {
+        "id": "RL.1.3-Q1",
+        "prompt": "Which words best describe where the old woman lives?"
+      },
+      {
+        "id": "RL.1.7-Q3",
+        "prompt": "The story says, \"The dog was big.\" Look at the picture that goes with the story."
+      },
+      {
+        "id": "RI.1.4-Q7",
+        "prompt": "A squirrel lives in a tree. A fish lives in the water. A bird lives in a nest. W"
+      },
+      {
+        "id": "RI.1.8-Q3",
+        "prompt": "What reason does the author give to show why kids should eat vegetables?"
+      },
+      {
+        "id": "RF.1.1a-Q5",
+        "prompt": "Which sentence needs a capital letter at the beginning?"
+      }
+    ],
+    "too_few_choices": [
+      {
+        "id": "RF.K.1c-H1",
+        "prompt": "In print, each word has a space around it. Count the words in this line:\n\nthe bi"
+      },
+      {
+        "id": "RF.K.1c-H2",
+        "prompt": "Spaces go BETWEEN the words. How many spaces are between the words in this line?"
+      },
+      {
+        "id": "RF.K.1c-H4",
+        "prompt": "A space is missing in this line. Where should the space go to make TWO real word"
+      },
+      {
+        "id": "RF.K.2b-H4",
+        "prompt": "How many SYLLABLES (claps) are in the word \"jumped\"?"
+      },
+      {
+        "id": "RF.1.3d-H1",
+        "prompt": "How many syllables are in the word **shine**?"
+      },
+      {
+        "id": "RF.1.3d-H2",
+        "prompt": "How many syllables are in the word **boat**?"
+      },
+      {
+        "id": "RF.1.3d-H3",
+        "prompt": "How many syllables are in the word **apple**?"
+      },
+      {
+        "id": "RF.1.3d-H5",
+        "prompt": "How many syllables are in the word **cupcake**?"
+      }
+    ],
+    "dup_choices": [
+      {
+        "id": "K.L.2-H2",
+        "prompt": "Which sentence is written the correct way?"
+      },
+      {
+        "id": "RF.1.1a-Q3",
+        "prompt": "Which is a correct sentence?"
+      },
+      {
+        "id": "RF.1.1a-H1",
+        "prompt": "Which one is written correctly as a complete sentence?"
+      },
+      {
+        "id": "L.1.2-Q1",
+        "prompt": "Which sentence is written correctly?"
+      },
+      {
+        "id": "L.1.2-Q3",
+        "prompt": "Which name is written correctly?"
+      },
+      {
+        "id": "L.1.2-H2",
+        "prompt": "Which line writes this date correctly? (the fourth day of July, 2026)"
+      },
+      {
+        "id": "L.1.2-H3",
+        "prompt": "Maria wants to ask what time it is. Which sentence writes her question correctly"
+      },
+      {
+        "id": "L.1.2-H4",
+        "prompt": "Which sentence is written correctly? (It is about a friend named Sam.)"
+      }
+    ]
+  },
+  "worst_standards": [
+    {
+      "standard": "RL.4.6",
+      "n": 10,
+      "defects": 8,
+      "no_audio": 8,
+      "no_image": 8
+    },
+    {
+      "standard": "L.1.2",
+      "n": 10,
+      "defects": 7,
+      "no_audio": 7,
+      "no_image": 7
+    },
+    {
+      "standard": "RL.1.5",
+      "n": 12,
+      "defects": 5,
+      "no_audio": 10,
+      "no_image": 10
+    },
+    {
+      "standard": "RL.K.2",
+      "n": 9,
+      "defects": 5,
+      "no_audio": 9,
+      "no_image": 9
+    },
+    {
+      "standard": "RF.1.3d",
+      "n": 10,
+      "defects": 5,
+      "no_audio": 8,
+      "no_image": 8
+    },
+    {
+      "standard": "RL.K.10",
+      "n": 9,
+      "defects": 4,
+      "no_audio": 8,
+      "no_image": 8
+    },
+    {
+      "standard": "RI.4.6",
+      "n": 10,
+      "defects": 4,
+      "no_audio": 7,
+      "no_image": 7
+    },
+    {
+      "standard": "RF.3.4",
+      "n": 10,
+      "defects": 3,
+      "no_audio": 9,
+      "no_image": 9
+    },
+    {
+      "standard": "RL.2.1",
+      "n": 10,
+      "defects": 3,
+      "no_audio": 8,
+      "no_image": 8
+    },
+    {
+      "standard": "RL.1.3",
+      "n": 10,
+      "defects": 3,
+      "no_audio": 7,
+      "no_image": 7
+    },
+    {
+      "standard": "RF.1.1a",
+      "n": 10,
+      "defects": 3,
+      "no_audio": 6,
+      "no_image": 6
+    },
+    {
+      "standard": "RF.K.1c",
+      "n": 5,
+      "defects": 3,
+      "no_audio": 5,
+      "no_image": 5
+    },
+    {
+      "standard": "RL.4.5",
+      "n": 8,
+      "defects": 3,
+      "no_audio": 5,
+      "no_image": 6
+    },
+    {
+      "standard": "RI.2.3",
+      "n": 15,
+      "defects": 2,
+      "no_audio": 9,
+      "no_image": 12
+    },
+    {
+      "standard": "L.2.2",
+      "n": 10,
+      "defects": 2,
+      "no_audio": 7,
+      "no_image": 7
+    },
+    {
+      "standard": "RI.3.9",
+      "n": 9,
+      "defects": 2,
+      "no_audio": 7,
+      "no_image": 7
+    },
+    {
+      "standard": "RI.1.8",
+      "n": 10,
+      "defects": 2,
+      "no_audio": 6,
+      "no_image": 6
+    },
+    {
+      "standard": "RL.4.7",
+      "n": 10,
+      "defects": 2,
+      "no_audio": 6,
+      "no_image": 6
+    },
+    {
+      "standard": "RI.1.5",
+      "n": 10,
+      "defects": 2,
+      "no_audio": 5,
+      "no_image": 5
+    },
+    {
+      "standard": "RL.3.9",
+      "n": 13,
+      "defects": 1,
+      "no_audio": 12,
+      "no_image": 12
+    },
+    {
+      "standard": "RI.3.4",
+      "n": 15,
+      "defects": 1,
+      "no_audio": 12,
+      "no_image": 12
+    },
+    {
+      "standard": "L.4.4c",
+      "n": 15,
+      "defects": 1,
+      "no_audio": 12,
+      "no_image": 12
+    },
+    {
+      "standard": "RI.1.4",
+      "n": 11,
+      "defects": 1,
+      "no_audio": 11,
+      "no_image": 11
+    },
+    {
+      "standard": "RI.K.10",
+      "n": 9,
+      "defects": 1,
+      "no_audio": 9,
+      "no_image": 9
+    },
+    {
+      "standard": "RF.1.3g",
+      "n": 9,
+      "defects": 1,
+      "no_audio": 9,
+      "no_image": 9
+    }
+  ]
+}

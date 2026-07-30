@@ -1,0 +1,344 @@
+[
+  {
+    "std": "RL.4.7",
+    "slides": [
+      {
+        "type": "intro",
+        "heading": "Words Into Pictures",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "A story can be read as words, or watched as a movie.",
+            "displayParts": [
+              {
+                "text": "Words"
+              },
+              {
+                "text": "Movie"
+              }
+            ],
+            "highlightWord": "Words"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "Today we line up a story's exact words with what we see on screen.",
+            "displayText": "Words to pictures",
+            "highlightWord": "pictures"
+          }
+        ]
+      },
+      {
+        "type": "teach",
+        "heading": "Find the Detail",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Authors give us exact details, like a green cloak with a silver clasp.",
+            "displayText": "Story details: green cloak, silver clasp",
+            "highlightWord": "details"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "A good movie shows those very things on screen, not just any cloak.",
+            "displayText": "Screen shows the same cloak",
+            "highlightWord": "same"
+          }
+        ]
+      },
+      {
+        "type": "example",
+        "heading": "Let's Try One",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Let's try one. Here is a line from a story.",
+            "displayText": "Read the line",
+            "highlightWord": "line"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "The old lighthouse glowed red as waves crashed against the rocks.",
+            "displayText": "Lighthouse glowed red, waves crashed on rocks.",
+            "highlightWord": "red"
+          },
+          {
+            "sub": "c",
+            "ttsScript": "Which thing must the movie show? A red glowing light!",
+            "displayParts": [
+              {
+                "text": "Show what?"
+              },
+              {
+                "text": "A red light!"
+              }
+            ],
+            "highlightWord": "red"
+          },
+          {
+            "sub": "d",
+            "ttsScript": "And one more? Waves crashing on the rocks!",
+            "displayParts": [
+              {
+                "text": "And?"
+              },
+              {
+                "text": "Crashing waves!"
+              }
+            ],
+            "highlightWord": "waves"
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "heading": "Picture Check",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Here is a handy trick to remember.",
+            "highlightWord": "trick"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "Point to the exact words, then find that very thing on screen.",
+            "displayText": "Exact words to the screen",
+            "highlightWord": "Exact"
+          }
+        ]
+      },
+      {
+        "type": "interactive",
+        "heading": "Your Turn!",
+        "steps": [
+          {
+            "sub": "q",
+            "ttsScript": "Your turn, director! Here is a sentence: A small fox darted past the frozen pond as snow fell in big white flakes. To match these exact words, what must the movie show on screen?"
+          }
+        ],
+        "interactive": {
+          "kind": "tap",
+          "prompt": "What must the movie show?",
+          "hint": "Find the things you could actually see, then picture them on screen.",
+          "choices": [
+            "A fox by a frozen pond, snow falling",
+            "A bright sunny meadow in spring",
+            "How lonely the fox is feeling"
+          ],
+          "correct": "A fox by a frozen pond, snow falling",
+          "correctScript": "Yes! A fox by a frozen pond with snow falling. You matched the exact words to the screen!",
+          "wrongScript": "Not quite. Look back at the words a camera could really show. A fox, a frozen pond, falling snow. Try again!"
+        }
+      },
+      {
+        "type": "practice-intro",
+        "heading": "Time to Practice!",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Your turn! Let's line up more story words with the screen.",
+            "displayParts": [
+              {
+                "text": "Your turn!"
+              },
+              {
+                "text": "Words to screen"
+              }
+            ],
+            "highlightWord": "turn"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "std": "RL.4.10",
+    "slides": [
+      {
+        "type": "intro",
+        "heading": "Read It Closely",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "When a story gets longer, we read closely to understand it.",
+            "displayText": "Read closely to understand",
+            "highlightWord": "understand"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "We watch the characters, the problem, and the small details.",
+            "displayParts": [
+              {
+                "text": "Characters"
+              },
+              {
+                "text": "Problem"
+              },
+              {
+                "text": "Details"
+              }
+            ],
+            "highlightWord": "Problem"
+          }
+        ]
+      },
+      {
+        "type": "teach",
+        "heading": "Follow the Hero",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Good readers ask who the story is about.",
+            "displayText": "Who is it about?",
+            "highlightWord": "Who"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "Then they ask what that person wants.",
+            "displayText": "What do they want?",
+            "highlightWord": "want"
+          }
+        ]
+      },
+      {
+        "type": "teach",
+        "heading": "Read the Signs",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Watch for little signs",
+            "displayText": "Watch for little signs",
+            "highlightWord": "signs"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "that show a hero's mood",
+            "displayText": "A hero's mood",
+            "highlightWord": "mood"
+          },
+          {
+            "sub": "c",
+            "ttsScript": "and what they do next.",
+            "displayText": "What they do next",
+            "highlightWord": "do"
+          }
+        ]
+      },
+      {
+        "type": "example",
+        "heading": "Let's Try One",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Let's try one together. Here's part of a longer story."
+          },
+          {
+            "sub": "b",
+            "ttsScript": "Maya stared at the dark cave. Her hands shook, but she wanted to find her lost dog.",
+            "displayText": "Maya stared at the dark cave. Her hands shook, but she wanted to find her lost dog."
+          },
+          {
+            "sub": "c",
+            "ttsScript": "How does Maya feel? Scared. Her shaking hands are the sign.",
+            "displayParts": [
+              {
+                "text": "How does she feel?"
+              },
+              {
+                "text": "Scared."
+              }
+            ],
+            "highlightWord": "shook"
+          },
+          {
+            "sub": "d",
+            "ttsScript": "What does Maya want? To find her dog. That is why she keeps going.",
+            "displayParts": [
+              {
+                "text": "What does she want?"
+              },
+              {
+                "text": "Her lost dog."
+              }
+            ],
+            "highlightWord": "find"
+          },
+          {
+            "sub": "e",
+            "ttsScript": "Scared, but brave! You read the signs and understood Maya."
+          }
+        ]
+      },
+      {
+        "type": "tip",
+        "heading": "Picture It",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Here is a helpful trick.",
+            "highlightWord": "trick"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "Make a movie in your mind as you read each scene!",
+            "displayText": "Make a movie in your mind",
+            "highlightWord": "movie"
+          },
+          {
+            "sub": "c",
+            "ttsScript": "Then the little signs become easy to spot!",
+            "highlightWord": "spot"
+          }
+        ]
+      },
+      {
+        "type": "interactive",
+        "heading": "Your Turn!",
+        "steps": [
+          {
+            "sub": "q",
+            "ttsScript": "Your turn, detective! Here's a new story. The judge read Lena's name, and the whole crowd cheered. She held up her science ribbon and couldn't stop grinning. What is Lena most likely feeling at the science fair?"
+          }
+        ],
+        "interactive": {
+          "kind": "tap",
+          "prompt": "What is Lena feeling?",
+          "hint": "She held up her ribbon and couldn't stop grinning. What does that grin tell you?",
+          "choices": [
+            "Proud",
+            "Confident",
+            "Excited",
+            "Jealous"
+          ],
+          "correct": "Proud",
+          "correctScript": "Yes! Proud! Holding up her ribbon and grinning after winning was the sign!",
+          "wrongScript": "Almost! She won a ribbon, held it up high, and couldn't stop grinning. How would that make her feel? Try again!"
+        }
+      },
+      {
+        "type": "practice-intro",
+        "heading": "Time to Practice!",
+        "steps": [
+          {
+            "sub": "a",
+            "ttsScript": "Your turn! Now you'll read story bits on your own.",
+            "displayText": "Your turn!",
+            "highlightWord": "turn"
+          },
+          {
+            "sub": "b",
+            "ttsScript": "Follow each character and read the little signs.",
+            "displayParts": [
+              {
+                "text": "Follow the character"
+              },
+              {
+                "text": "Read the signs"
+              }
+            ],
+            "highlightWord": "signs"
+          }
+        ]
+      }
+    ]
+  }
+]

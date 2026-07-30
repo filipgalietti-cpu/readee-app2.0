@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RF.3.3c-Q3",
+  "correct_feedback": "Yes! You broke it into fan-tas-tic. Splitting a big word into little chunks makes it so much easier to read.",
+  "incorrect_feedback": "Hmm, try saying the word slowly and clap each beat you hear. Which chunks sound smooth and easy to say?",
+  "reveal_feedback": "The answer is fan-tas-tic. Each chunk has one vowel sound, so it splits into three clean, easy-to-read parts."
+ },
+ {
+  "id": "RF.3.3c-Q4",
+  "correct_feedback": "That's right, 4! Every syllable has one vowel sound, and hel-i-cop-ter gives you four beats.",
+  "incorrect_feedback": "Almost! Clap the word out loud: hel-i-cop-ter. Count how many beats your hands make.",
+  "reveal_feedback": "The answer is 4. When you clap hel-i-cop-ter, you hear four beats, so it has four syllables."
+ },
+ {
+  "id": "RF.3.3c-Q5",
+  "correct_feedback": "Yes! In-de-pen-dent is right. Each chunk has one vowel sound, so the word splits into four smooth beats.",
+  "incorrect_feedback": "Close one! Say it slowly and listen for each vowel sound. Every beat should have one vowel you can hear.",
+  "reveal_feedback": "The answer is In-de-pen-dent. Each part has just one vowel sound, so it breaks into four even beats."
+ },
+ {
+  "id": "RF.3.3c-E1",
+  "correct_feedback": "Yes, 2! You clapped rab-bit and heard two beats. Nice syllable counting!",
+  "incorrect_feedback": "Good try! Clap it with me: rab-bit. How many claps did your hands make?",
+  "reveal_feedback": "The answer is 2. When you clap rab-bit, you hear two beats, so the word has two syllables."
+ },
+ {
+  "id": "RF.3.3c-E2",
+  "correct_feedback": "Yes! Nap-kin is right. You split it between the two middle consonants, so each part has one vowel sound.",
+  "incorrect_feedback": "Take another look. Say napkin slowly and listen for the two beats. Where does it naturally break in the middle?",
+  "reveal_feedback": "The answer is nap-kin. It splits between the p and k, giving two even beats that are easy to read."
+ },
+ {
+  "id": "RF.3.3c-E3",
+  "correct_feedback": "That's right, 2! Sun-set has two beats, one vowel sound in each chunk. Great counting!",
+  "incorrect_feedback": "Almost! Say it slowly: sun-set. Count the beats you hear as you say each part.",
+  "reveal_feedback": "The answer is 2. Sun-set has two beats, one for sun and one for set, so it has two syllables."
+ },
+ {
+  "id": "RF.3.3c-E4",
+  "correct_feedback": "Yes! Bas-ket is right. You split between the s and k, so each part has one vowel sound.",
+  "incorrect_feedback": "Not yet. Say basket slowly and listen for two beats. Where does it break so both parts sound smooth?",
+  "reveal_feedback": "The answer is bas-ket. It splits between the two middle consonants, giving two easy beats to read."
+ },
+ {
+  "id": "RF.3.3c-E5",
+  "correct_feedback": "Yes! That word has two beats when you clap it. Great job hearing the syllables!",
+  "incorrect_feedback": "Hmm, clap each word out loud. Some of these have only one beat. Which one has exactly two?",
+  "reveal_feedback": "The answer is muffin. When you clap muf-fin you hear two beats, while up, cat, and dog each have just one."
+ },
+ {
+  "id": "RF.3.3d-Q3",
+  "correct_feedback": "Yes! Walking through a gate makes perfect sense. Through means going in one side and out the other.",
+  "incorrect_feedback": "Good try! Read each sentence and picture it. Which one actually makes sense in the real world?",
+  "reveal_feedback": "The answer is: The children walked through the big gate. Through means moving from one side to the other, which fits a gate perfectly."
+ },
+ {
+  "id": "RF.3.3d-Q4",
+  "correct_feedback": "Yes! In write, the w is silent. You only hear the /r/ sound at the start, like in right.",
+  "incorrect_feedback": "Almost! Say each word out loud and listen closely. In which one do you NOT hear the w sound at all?",
+  "reveal_feedback": "The answer is Write. The w is silent, so it sounds just like right, with no /w/ sound at the beginning."
+ },
+ {
+  "id": "RF.3.3d-Q5",
+  "correct_feedback": "Yes! Knowledge is spelled right. It has a silent k at the start and a tricky dge ending.",
+  "incorrect_feedback": "Close one! This word starts with a silent k and ends with dge. Which spelling has both of those parts?",
+  "reveal_feedback": "The answer is Knowledge. It begins with a silent k and ends with dge, which is the correct way to spell it."
+ },
+ {
+  "id": "RF.3.3d-H1",
+  "correct_feedback": "Yes! In sword, the w is silent. You say it like sord, with no /w/ sound in the middle.",
+  "incorrect_feedback": "Take another look. Say each sw word out loud. In three of them you hear the w, but one hides it.",
+  "reveal_feedback": "The answer is sword. Its w is silent, so it sounds like sord, while swing, sweet, and swan all keep the /w/ sound."
+ },
+ {
+  "id": "RF.3.3d-H2",
+  "correct_feedback": "Yes! The t in listen is silent. You say lis-en, and the t just hides quietly.",
+  "incorrect_feedback": "Hmm, say listen slowly out loud. One letter is written but you never hear it. Which one stays quiet?",
+  "reveal_feedback": "The answer is t. In listen, the t is silent, so the word sounds like lis-en when you say it."
+ },
+ {
+  "id": "RF.3.3d-H3",
+  "correct_feedback": "Yes! Pair is right. This pair means two things that go together, like two shoes.",
+  "incorrect_feedback": "Good try! These words sound the same but mean different things. Which spelling means two things that go together?",
+  "reveal_feedback": "The answer is pair. A pair means two matching things, which fits shoes. Pear and bear are different words that just sound alike."
+ },
+ {
+  "id": "RF.3.3d-H4",
+  "correct_feedback": "Yes! In eight, the gh makes no sound at all. You just hear the long a, like ate.",
+  "incorrect_feedback": "Almost! Say each word out loud. In some you hear an /f/ sound from gh. In one, gh is totally silent.",
+  "reveal_feedback": "The answer is eight. The gh is completely silent, so it sounds like ate. In laugh and tough, gh makes an /f/ sound."
+ },
+ {
+  "id": "RF.3.3d-H5",
+  "correct_feedback": "Yes! Would is right. It has a silent l, so it sounds just like wood when you say it.",
+  "incorrect_feedback": "Close one! You need the correctly spelled word with a silent l. Say each one and picture how it's spelled.",
+  "reveal_feedback": "The answer is would. It is spelled correctly and has a silent l, so it sounds like wood but means something different."
+ },
+ {
+  "id": "RF.3.4-Q1",
+  "correct_feedback": "Yes! The word Wow shows big feelings, so your voice should sound excited and full of wonder.",
+  "incorrect_feedback": "Take another look. The word Wow and the exclamation mark are clues. What kind of feeling do they show?",
+  "reveal_feedback": "The answer is: with a voice that shows excitement and wonder. Wow and the exclamation mark tell you the speaker is surprised and happy."
+ },
+ {
+  "id": "RF.3.4-Q2",
+  "correct_feedback": "Yes! Reading smoothly, like talking, helps your brain follow the story and understand it best.",
+  "incorrect_feedback": "Hmm, think about how a good storyteller sounds. Reading too fast or too slow makes it hard to follow. What works best?",
+  "reveal_feedback": "The answer is: reading smoothly, making the words sound like talking. When reading flows like speech, your brain can follow the meaning."
+ },
+ {
+  "id": "RF.3.4-Q3",
+  "correct_feedback": "Yes! The word too is wrong here. It should be the word that means going somewhere, spelled t-o.",
+  "incorrect_feedback": "Good try! Read the sentence slowly. One little word is spelled wrong for its job. Which word sounds right but is spelled wrong?",
+  "reveal_feedback": "The answer is too. It should be to, which means going somewhere. Too means also or very, so it doesn't fit here."
+ },
+ {
+  "id": "RF.3.4-Q4",
+  "correct_feedback": "Yes! Watch out is a warning, so a loud, urgent voice matches the lifeguard shouting to keep someone safe.",
+  "incorrect_feedback": "Almost! A lifeguard is screaming Watch out. What kind of voice do you use when you warn someone quickly?",
+  "reveal_feedback": "The answer is: in a loud, urgent voice. The lifeguard is screaming a warning, so your voice should sound big and full of hurry."
+ },
+ {
+  "id": "RF.3.4-Q5",
+  "correct_feedback": "Yes! You read every word exactly right. Reading each word carefully keeps the story's meaning true.",
+  "incorrect_feedback": "Take another look. Compare each choice to the real sentence, word by word. Which one matches it exactly with no changes?",
+  "reveal_feedback": "The answer is: The little bird sang a happy song. It matches the sentence exactly, while the others swap a word like sung or sad."
+ },
+ {
+  "id": "RF.3.4-H1",
+  "correct_feedback": "Yes! Gigantic has a soft g that sounds like /j/, just like in giraffe. Great ear!",
+  "incorrect_feedback": "Hmm, say each word out loud. Some g's sound hard like in go. Which one makes the /j/ sound like in giraffe?",
+  "reveal_feedback": "The answer is gigantic. Its g sounds like /j/, the soft sound in giraffe. The other words use a hard g like in go."
+ },
+ {
+  "id": "RF.3.4-H2",
+  "correct_feedback": "Yes! Wrist begins with a silent w. You only hear the /r/, so it sounds like rist.",
+  "incorrect_feedback": "Almost! Say each word slowly. Three start with the sound you'd expect. One hides its very first letter.",
+  "reveal_feedback": "The answer is wrist. The w at the start is silent, so it sounds like rist, just like the silent k in knee."
+ },
+ {
+  "id": "RF.3.4-H3",
+  "correct_feedback": "Yes, 4! Clap it out: cal-cu-la-tor. Four beats, four syllables. Nice work!",
+  "incorrect_feedback": "Good try! Clap the word out loud: cal-cu-la-tor. Count each beat your hands make.",
+  "reveal_feedback": "The answer is 4. When you clap cal-cu-la-tor, you hear four beats, so the word has four syllables."
+ },
+ {
+  "id": "RF.3.4-H4",
+  "correct_feedback": "Yes! In banana, the first a makes the lazy schwa /uh/ sound, just like the a in about.",
+  "incorrect_feedback": "Take another look. Say each word slowly. The schwa is a lazy /uh/ sound. In flag and snap, the a sounds sharp and clear.",
+  "reveal_feedback": "The answer is banana. The first a makes the lazy /uh/ schwa sound, like in about, while flag and snap have a clear /a/ sound."
+ },
+ {
+  "id": "RF.3.4-H5",
+  "correct_feedback": "Yes! Soup has the same long /oo/ sound as moon. Great listening!",
+  "incorrect_feedback": "Hmm, say moon, then say each word. Some have a shorter /oo/ like in book. Which one sounds long, just like moon?",
+  "reveal_feedback": "The answer is soup. It has the long /oo/ sound like moon, while wood, book, and cook use a shorter /oo/ sound."
+ },
+ {
+  "id": "RF.3.4a-Q1",
+  "correct_feedback": "Yes! The octopus can change its color, texture, and shape in a flash, so it can hide anywhere. That's a real master of disguise!",
+  "incorrect_feedback": "Take another look at the passage. It tells you exactly what the octopus can do to blend in. What does it change so quickly?",
+  "reveal_feedback": "The answer is: it can change color, texture, and shape instantly. The passage says it does all three in less than a second to blend in."
+ },
+ {
+  "id": "RF.3.4a-Q2",
+  "correct_feedback": "Yes! Setting a purpose means knowing what you want to learn before you start. It helps you read with a plan.",
+  "incorrect_feedback": "Hmm, the word purpose means a reason or a goal. Which choice is about having a goal in mind before you begin?",
+  "reveal_feedback": "The answer is: knowing what you want to learn or find out before you start. A purpose is your reason for reading, decided ahead of time."
+ },
+ {
+  "id": "RF.3.4a-Q3",
+  "correct_feedback": "Yes! Franklin's inventions helped people every day and kept them safe, so we know that's what he cared about.",
+  "incorrect_feedback": "Good try! Think about what inventions are for. What do the things Franklin made tell you about what he cared about?",
+  "reveal_feedback": "The answer is: he liked making everyday life better and safer for people. His inventions were tools that helped people in daily life."
+ },
+ {
+  "id": "RF.3.4a-Q4",
+  "correct_feedback": "Yes! Most fish swim flat, but seahorses swim standing up straight. That's what makes them unusual.",
+  "incorrect_feedback": "Take another look at the passage. It says seahorses swim differently from most fish. How does their swimming position stand out?",
+  "reveal_feedback": "The answer is: they swim upright instead of horizontally. The passage says seahorses swim standing up, unlike most fish that swim flat."
+ },
+ {
+  "id": "RF.3.4a-Q5",
+  "correct_feedback": "Yes! The whole story is about Squeaky saving food because winter is coming. That's the big main idea.",
+  "incorrect_feedback": "Hmm, the main idea is what the WHOLE story is mostly about, not just one small part. Why is Squeaky working so hard?",
+  "reveal_feedback": "The answer is: Squeaky is preparing for winter. Every part of the story shows him saving food so he won't be hungry when the snow falls."
+ },
+ {
+  "id": "RF.3.4a-H1",
+  "correct_feedback": "Yes! Giant has a soft g that sounds like /j/, just like in gem. Great ear!",
+  "incorrect_feedback": "Hmm, say each word out loud. Some g's sound hard like in go. Which one makes the /j/ sound like in gem?",
+  "reveal_feedback": "The answer is giant. Its g sounds like /j/, the soft sound in gem. The other words use a hard g like in go."
+ },
+ {
+  "id": "RF.3.4a-H2",
+  "correct_feedback": "Yes! Basket splits between two middle consonants, bas-ket, exactly like nap-kin. Nice pattern spotting!",
+  "incorrect_feedback": "Take another look. Napkin breaks between two consonants in the middle. Which word has two consonants in the middle to split between?",
+  "reveal_feedback": "The answer is basket. It splits into bas-ket between two consonants, just like nap-kin. Robot and pilot only have one middle consonant."
+ },
+ {
+  "id": "RF.3.4a-H3",
+  "correct_feedback": "Yes! Piece has the long e sound, just like field. The ie spelling makes that /ee/ sound.",
+  "incorrect_feedback": "Almost! Say field, then say each word. You're listening for the long /ee/ sound. Which one matches it?",
+  "reveal_feedback": "The answer is piece. It has the long e sound like field. Weigh and eight sound like long a, and friend has a short e."
+ },
+ {
+  "id": "RF.3.4a-H4",
+  "correct_feedback": "Yes! Thumb has a silent b. You write it but you never say it, so it sounds like thum.",
+  "incorrect_feedback": "Hmm, say each word slowly. Three of them, you hear every letter. One hides a letter at the end.",
+  "reveal_feedback": "The answer is thumb. The b is silent, so it sounds like thum. In clump, drum, and stamp you hear every letter."
+ },
+ {
+  "id": "RF.3.4a-H5",
+  "correct_feedback": "Yes! Search has the /er/ sound, just like her. The ear letters can make that sound too.",
+  "incorrect_feedback": "Take another look. Say her, then say each word. You want the /er/ sound. In clear and beard, ear sounds different.",
+  "reveal_feedback": "The answer is search. Its ear makes the /er/ sound like her. In clear and beard, the ear sounds like /eer/ instead."
+ },
+ {
+  "id": "RF.3.4b-Q1",
+  "correct_feedback": "Yes! Poems have rhythm, and pausing at line breaks helps the poem sound just right when you read it aloud.",
+  "incorrect_feedback": "Hmm, think about what makes a poem special. It has a beat and lines. What should you pay attention to when you read one?",
+  "reveal_feedback": "The answer is: pay attention to rhythm and pause at line breaks. Poems have a beat, and the line breaks tell you where to pause."
+ },
+ {
+  "id": "RF.3.4b-Q2",
+  "correct_feedback": "Yes! The word begged and the word quietly tell you to use a soft, gentle, pleading voice.",
+  "incorrect_feedback": "Take another look at the clue words. She begged quietly. What kind of voice matches begging softly for something?",
+  "reveal_feedback": "The answer is: in a soft, pleading voice. The words begged and quietly show she is gently asking, so your voice should be soft."
+ },
+ {
+  "id": "RF.3.4b-Q3",
+  "correct_feedback": "Yes! Reading at a smooth, natural speed helps your classmates follow along and enjoy the adventure.",
+  "incorrect_feedback": "Hmm, think about how you'd want a story read to you. Too fast, too slow, or too quiet all make it hard. What feels just right?",
+  "reveal_feedback": "The answer is: read at a smooth speed, making the story sound natural and easy to follow. That way listeners can enjoy and understand it."
+ },
+ {
+  "id": "RF.3.4b-Q4",
+  "correct_feedback": "Yes! In an exciting action scene, speeding up a little and adding energy makes the tension feel real.",
+  "incorrect_feedback": "Take another look. The scene is tense and exciting. Should your voice get calmer, or match the action's energy?",
+  "reveal_feedback": "The answer is: speed up slightly and add energy to your voice. That makes the exciting action scene feel fast and thrilling."
+ },
+ {
+  "id": "RF.3.4b-Q5",
+  "correct_feedback": "Yes! Using a slightly different voice for each character helps listeners tell who is talking.",
+  "incorrect_feedback": "Hmm, think about how listeners know who is speaking. What could you do with your voice to keep the two characters apart?",
+  "reveal_feedback": "The answer is: use a slightly different voice for each character. That helps your listeners tell which character is talking."
+ },
+ {
+  "id": "RF.3.4c-Q1",
+  "correct_feedback": "Yes! You caught it because dessert, the sweet treat, makes no sense next to a hot camel. The meaning was your clue.",
+  "incorrect_feedback": "Take another look. Dessert means a sweet treat. Does a sweet treat fit a sentence about a camel and hot sand? Think about meaning.",
+  "reveal_feedback": "The answer is: dessert doesn't make sense in a sentence about camels and heat. When the meaning feels wrong, that's your clue you misread a word."
+ },
+ {
+  "id": "RF.3.4c-Q2",
+  "correct_feedback": "Yes! Rereading and thinking about what the robin does with twigs and grass helps you figure out that construct means to build.",
+  "incorrect_feedback": "Hmm, the best readers use the story's clues to figure out tricky words. Which choice uses what the robin is doing to understand construct?",
+  "reveal_feedback": "The answer is: reread the sentence and think about what the robin is doing with the twigs and grass. Those clues show construct means to build."
+ },
+ {
+  "id": "RF.3.4c-Q4",
+  "correct_feedback": "Yes! When something doesn't make sense, rereading carefully helps you catch what you missed and understand it.",
+  "incorrect_feedback": "Take another look. If a part confuses you, quitting or rushing won't help. What could you do to understand it better?",
+  "reveal_feedback": "The answer is: reread the paragraph more carefully. Going back slowly helps you catch what you missed and make sense of it."
+ },
+ {
+  "id": "RF.3.4c-Q5",
+  "correct_feedback": "Yes! Here wind means moving air, and it rhymes with pinned, not find. The sentence's meaning tells you how to say it.",
+  "incorrect_feedback": "Hmm, wind can be said two ways. In this sentence it means moving air that blows leaves. Does that meaning rhyme with find?",
+  "reveal_feedback": "The answer is: no, in this sentence wind rhymes with pinned. Here wind means moving air, so it's said wind, not the long-i wind."
+ }
+]

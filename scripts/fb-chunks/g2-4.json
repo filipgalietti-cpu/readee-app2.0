@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RI.2.9-H5",
+  "standard": "RI.2.9",
+  "prompt": "Two texts about lunch at school.\n\nText A: Maya thinks packing lunch is best. You get to choose your own food, and you never have to wait in a long line.\n\nText B: Sam thinks buying lunch is best. The food is warm, and you do not have to carry a heavy bag to school.\n\nWhat do Maya and Sam DISAGREE about?",
+  "choices": [
+   "Whether packing or buying lunch is the better choice",
+   "Whether school food is warm enough",
+   "Whether lunch lines are too long",
+   "Whether lunch bags are too heavy"
+  ],
+  "correct": "Whether packing or buying lunch is the better choice"
+ },
+ {
+  "id": "RI.2.10-Q1",
+  "standard": "RI.2.10",
+  "prompt": "Based on the text, why would an octopus change its color?",
+  "choices": [
+   "To find its way home.",
+   "To hide from other animals.",
+   "To show how happy it is.",
+   "To help it eat plants."
+  ],
+  "correct": "To hide from other animals."
+ },
+ {
+  "id": "RI.2.10-Q3",
+  "standard": "RI.2.10",
+  "prompt": "Recycling one aluminum can saves enough energy to power a TV for three hours. Americans throw away enough cans each year to build more than 20 Eiffel Towers.\n\nWhat is the author trying to show with these facts?",
+  "choices": [
+   "Americans watch too much TV",
+   "The Eiffel Tower is made of cans",
+   "Recycling cans saves a lot of energy",
+   "TVs use too much power"
+  ],
+  "correct": "Recycling cans saves a lot of energy"
+ },
+ {
+  "id": "RI.2.10-Q4",
+  "standard": "RI.2.10",
+  "prompt": "Polar bears have black skin under their white fur. The white fur helps them hide in the snow. Their large paws work like snowshoes, helping them walk on ice.\n\nWhat helps polar bears walk on ice?",
+  "choices": [
+   "Their sharp teeth",
+   "Their black skin",
+   "Their white fur",
+   "Their large paws"
+  ],
+  "correct": "Their large paws"
+ },
+ {
+  "id": "RI.2.10-Q5",
+  "standard": "RI.2.10",
+  "prompt": "Over many years, what causes a volcano to slowly get taller and wider?",
+  "choices": [
+   "The ground under the volcano stretches and pushes it up.",
+   "New layers of hardened lava build up on its sides.",
+   "Heavy rains wash dirt and rocks to pile around it.",
+   "Wind blows sand and dust onto the volcano's top."
+  ],
+  "correct": "New layers of hardened lava build up on its sides."
+ },
+ {
+  "id": "RI.2.10-H1",
+  "standard": "RI.2.10",
+  "prompt": "Read the passage.\n\nBeavers cut down trees with their strong front teeth. They drag the branches into a river and stack them until the water stops flowing. This makes a deep, calm pond behind the pile of wood. Beavers build their homes in the middle of these ponds. The deep water keeps hungry wolves and bears from reaching them.\n\nWhy do beavers stack branches until the water stops flowing?",
+  "choices": [
+   "To make deep water that keeps them safe",
+   "To help wolves and bears cross the river",
+   "To have extra branches to eat later",
+   "To clear the trees away from the river"
+  ],
+  "correct": "To make deep water that keeps them safe"
+ },
+ {
+  "id": "RI.2.10-H2",
+  "standard": "RI.2.10",
+  "prompt": "Read the passage.\n\nSome frogs freeze almost solid in winter. Their hearts stop beating and they do not breathe. To an animal that finds one, the frog seems dead. But sugar in the frog's body keeps the inside of its cells from turning hard. When spring warms the ground, the frog thaws out and hops away.\n\nWhat is the sugar's most important job for the frog?",
+  "choices": [
+   "It warms the frog up when spring comes",
+   "It protects the inside of the frog's cells from freezing hard",
+   "It keeps the frog's heart beating all winter",
+   "It makes the frog taste bad to other animals"
+  ],
+  "correct": "It protects the inside of the frog's cells from freezing hard"
+ },
+ {
+  "id": "RI.2.10-H3",
+  "standard": "RI.2.10",
+  "prompt": "Read the passage.\n\nLong ago, sailors could not tell how far east or west they were. Many ships got lost and crashed on rocks. Then a clockmaker built a clock that kept perfect time even on a rocking ship. By comparing the clock's time to the sun, sailors finally knew their place on the sea. After that, far fewer ships were lost.\n\nWhat happened because the clockmaker built his special clock?",
+  "choices": [
+   "Sailors no longer needed to watch the sun",
+   "The sea became calmer for the ships",
+   "Fewer ships got lost and crashed",
+   "Ships could sail faster than before"
+  ],
+  "correct": "Fewer ships got lost and crashed"
+ },
+ {
+  "id": "RI.2.10-H4",
+  "standard": "RI.2.10",
+  "prompt": "Read the passage.\n\nA cactus lives where rain almost never falls. Instead of flat leaves, it has sharp spines, so very little water leaks out into the dry air. Its thick stem swells up like a sponge to store water from one rare rain. Roots spread out just under the sand to soak up a shower fast, before the sun dries the ground.\n\nWhy does having spines instead of flat leaves help the cactus?",
+  "choices": [
+   "It can grow taller in the sand",
+   "It can store more water in its roots",
+   "It can soak up rain more quickly",
+   "It loses less water into the dry air"
+  ],
+  "correct": "It loses less water into the dry air"
+ },
+ {
+  "id": "RI.2.10-H5",
+  "standard": "RI.2.10",
+  "prompt": "Read the passage.\n\nHoney bees dance to talk. When a bee finds flowers full of food, it flies home and dances in a circle. The other bees crowd close and feel the dance with their feelers. Then they fly straight out to find the same flowers. A bee that finds no food does not dance at all.\n\nWhat can you tell about a hive where the bees are NOT dancing?",
+  "choices": [
+   "The bees have not found flowers with food",
+   "The bees are dancing in a different way",
+   "The bees are too tired to fly",
+   "The bees have too much food to eat"
+  ],
+  "correct": "The bees have not found flowers with food"
+ },
+ {
+  "id": "RF.2.3-Q1",
+  "standard": "RF.2.3",
+  "prompt": "Which word has a long vowel sound?",
+  "choices": [
+   "Cap",
+   "Cake",
+   "Cat",
+   "Can"
+  ],
+  "correct": "Cake"
+ },
+ {
+  "id": "RF.2.3-Q2",
+  "standard": "RF.2.3",
+  "prompt": "What is the root word in **playing**?",
+  "choices": [
+   "Paying",
+   "Ing",
+   "Play",
+   "Lay"
+  ],
+  "correct": "Play"
+ },
+ {
+  "id": "RF.2.3-Q3",
+  "standard": "RF.2.3",
+  "prompt": "If you are *not feeling happy*, which word best describes how you feel?",
+  "choices": [
+   "Untidy",
+   "Under",
+   "Unhappy",
+   "Unfair"
+  ],
+  "correct": "Unhappy"
+ },
+ {
+  "id": "RF.2.3-Q4",
+  "standard": "RF.2.3",
+  "prompt": "How many syllables are in the word **pumpkin**?",
+  "choices": [
+   "2",
+   "4",
+   "1",
+   "3"
+  ],
+  "correct": "2"
+ },
+ {
+  "id": "RF.2.3-Q5",
+  "standard": "RF.2.3",
+  "prompt": "What sound does the 'au' make in the word 'because'?",
+  "choices": [
+   "The sound of 'a' in 'apple'",
+   "The sound of 'o' in 'boat'",
+   "The sound of 'aw' in 'saw'",
+   "The sound of 'u' in 'bus'"
+  ],
+  "correct": "The sound of 'aw' in 'saw'"
+ },
+ {
+  "id": "RF.2.3-H1",
+  "standard": "RF.2.3",
+  "prompt": "Which word has a long i sound? **stick, strike, string, script**",
+  "choices": [
+   "strike",
+   "script",
+   "stick",
+   "string"
+  ],
+  "correct": "strike"
+ },
+ {
+  "id": "RF.2.3-H2",
+  "standard": "RF.2.3",
+  "prompt": "Which word has the SAME vowel sound as **bread**? **bead, meant, dream, bean**",
+  "choices": [
+   "bean",
+   "meant",
+   "bead",
+   "dream"
+  ],
+  "correct": "meant"
+ },
+ {
+  "id": "RF.2.3-H3",
+  "standard": "RF.2.3",
+  "prompt": "Which word has the SAME vowel sound as **first**? **farm, nurse, form, fair**",
+  "choices": [
+   "form",
+   "fair",
+   "nurse",
+   "farm"
+  ],
+  "correct": "nurse"
+ },
+ {
+  "id": "RF.2.3-H4",
+  "standard": "RF.2.3",
+  "prompt": "Which word starts with an open syllable that has a long vowel, like **tiger** (ti-ger)? **rabbit, robot, napkin, basket**",
+  "choices": [
+   "basket",
+   "rabbit",
+   "napkin",
+   "robot"
+  ],
+  "correct": "robot"
+ },
+ {
+  "id": "RF.2.3-H5",
+  "standard": "RF.2.3",
+  "prompt": "What is the base (root) word in **unhappily**?",
+  "choices": [
+   "happy",
+   "happily",
+   "hap",
+   "unhappy"
+  ],
+  "correct": "happy"
+ },
+ {
+  "id": "RF.2.3a-Q1",
+  "standard": "RF.2.3a",
+  "prompt": "Which word has a SHORT **a** sound?",
+  "choices": [
+   "Rain",
+   "Bake",
+   "Map",
+   "Day"
+  ],
+  "correct": "Map"
+ },
+ {
+  "id": "RF.2.3a-Q2",
+  "standard": "RF.2.3a",
+  "prompt": "Which word has a LONG **o** sound?",
+  "choices": [
+   "Hot",
+   "Hop",
+   "Lot",
+   "Home"
+  ],
+  "correct": "Home"
+ },
+ {
+  "id": "RF.2.3a-Q3",
+  "standard": "RF.2.3a",
+  "prompt": "The word **bed** has a \u2014",
+  "choices": [
+   "Short 'e' sound",
+   "Long 'a' sound",
+   "Long 'e' sound",
+   "Short 'i' sound"
+  ],
+  "correct": "Short 'e' sound"
+ },
+ {
+  "id": "RF.2.3a-H1",
+  "standard": "RF.2.3a",
+  "prompt": "Which word has a LONG **e** sound? Bread, Sweep, Deck, Kept",
+  "choices": [
+   "Sweep",
+   "Kept",
+   "Bread",
+   "Deck"
+  ],
+  "correct": "Sweep"
+ },
+ {
+  "id": "RF.2.3a-H2",
+  "standard": "RF.2.3a",
+  "prompt": "Which word has a SHORT **i** sound? Child, Print, Find, Might",
+  "choices": [
+   "Might",
+   "Print",
+   "Child",
+   "Find"
+  ],
+  "correct": "Print"
+ },
+ {
+  "id": "RF.2.3a-H3",
+  "standard": "RF.2.3a",
+  "prompt": "Which word has a LONG **a** sound? Draft, Sprain, Blast, Grand",
+  "choices": [
+   "Blast",
+   "Grand",
+   "Sprain",
+   "Draft"
+  ],
+  "correct": "Sprain"
+ },
+ {
+  "id": "RF.2.3a-H4",
+  "standard": "RF.2.3a",
+  "prompt": "Which word has a LONG **u** sound? Trust, Prune, Brush, Crunch",
+  "choices": [
+   "Crunch",
+   "Trust",
+   "Brush",
+   "Prune"
+  ],
+  "correct": "Prune"
+ },
+ {
+  "id": "RF.2.3a-H5",
+  "standard": "RF.2.3a",
+  "prompt": "Which word has a SHORT **o** sound? Coach, Frost, Float, Groan",
+  "choices": [
+   "Frost",
+   "Float",
+   "Coach",
+   "Groan"
+  ],
+  "correct": "Frost"
+ },
+ {
+  "id": "RF.2.3b-Q1",
+  "standard": "RF.2.3b",
+  "prompt": "In the word **boat,** what sound does the vowel team **oa** make?",
+  "choices": [
+   "Short 'a'",
+   "Long 'a'",
+   "Short 'o'",
+   "Long 'o'"
+  ],
+  "correct": "Long 'o'"
+ },
+ {
+  "id": "RF.2.3b-Q2",
+  "standard": "RF.2.3b",
+  "prompt": "Which word has the **ee** vowel team?",
+  "choices": [
+   "Tree",
+   "Red",
+   "Bed",
+   "Ten"
+  ],
+  "correct": "Tree"
+ },
+ {
+  "id": "RF.2.3b-Q3",
+  "standard": "RF.2.3b",
+  "prompt": "Which word correctly completes the sentence and has the same vowel sound as **rain**? We went to the park to ______.",
+  "choices": [
+   "eat",
+   "run",
+   "play",
+   "skip"
+  ],
+  "correct": "play"
+ },
+ {
+  "id": "RF.2.3b-Q4",
+  "standard": "RF.2.3b",
+  "prompt": "What sound does the 'oa' vowel team make in the word 'goat'?",
+  "choices": [
+   "The short 'o' sound",
+   "The long 'e' sound",
+   "The long 'o' sound",
+   "The short 'a' sound"
+  ],
+  "correct": "The long 'o' sound"
+ },
+ {
+  "id": "RF.2.3b-Q5",
+  "standard": "RF.2.3b",
+  "prompt": "Which vowel team is in the word **loud**?",
+  "choices": [
+   "Oi",
+   "Oo",
+   "Oa",
+   "Ou"
+  ],
+  "correct": "Ou"
+ },
+ {
+  "id": "RF.2.3b-H1",
+  "standard": "RF.2.3b",
+  "prompt": "The vowel team **ea** usually says long e, like in **beach**. But it can also say short e, like in **head**. Which word below has **ea** saying the SHORT e sound?",
+  "choices": [
+   "Bread",
+   "Beach",
+   "Dream",
+   "Leaf"
+  ],
+  "correct": "Bread"
+ },
+ {
+  "id": "RF.2.3b-H2",
+  "standard": "RF.2.3b",
+  "prompt": "The vowel team **oo** makes two sounds. In **moon** it is long, but in **book** it is short. Which word has the SAME **oo** sound as **book**?",
+  "choices": [
+   "Moon",
+   "Hook",
+   "Spoon",
+   "Food"
+  ],
+  "correct": "Hook"
+ },
+ {
+  "id": "RF.2.3b-H3",
+  "standard": "RF.2.3b",
+  "prompt": "The vowel team **ie** can say long i, like in **pie**, or long e, like in **chief**. Which word has **ie** saying the long e sound?",
+  "choices": [
+   "Lie",
+   "Pie",
+   "Field",
+   "Tie"
+  ],
+  "correct": "Field"
+ },
+ {
+  "id": "RF.2.3b-H4",
+  "standard": "RF.2.3b",
+  "prompt": "The word **rain** makes its long a sound with the vowel team **ai**. Which word makes the long a sound with a DIFFERENT vowel team?",
+  "choices": [
+   "Paint",
+   "Mail",
+   "Sail",
+   "Tray"
+  ],
+  "correct": "Tray"
+ },
+ {
+  "id": "RF.2.3b-H5",
+  "standard": "RF.2.3b",
+  "prompt": "A vowel team is two vowels working together to make one sound, like **oa** or **ee**. Which word below has NO vowel team?",
+  "choices": [
+   "Camp",
+   "Rain",
+   "Coat",
+   "Seed"
+  ],
+  "correct": "Camp"
+ },
+ {
+  "id": "RF.2.3c-Q1",
+  "standard": "RF.2.3c",
+  "prompt": "Break the word **cupcake** into two syllables:",
+  "choices": [
+   "Cup-cake",
+   "Cu-pcake",
+   "C-upcake",
+   "Cupc-ake"
+  ],
+  "correct": "Cup-cake"
+ },
+ {
+  "id": "RF.2.3c-Q3",
+  "standard": "RF.2.3c",
+  "prompt": "Which two-syllable word has a long **i** sound?",
+  "choices": [
+   "Mitten",
+   "Kitten",
+   "Spider",
+   "Rabbit"
+  ],
+  "correct": "Spider"
+ },
+ {
+  "id": "RF.2.3c-Q4",
+  "standard": "RF.2.3c",
+  "prompt": "Which choice shows how to correctly say the word **robot**?",
+  "choices": [
+   "rob-OT",
+   "ROH-bot",
+   "ruh-BOT",
+   "RAW-bot"
+  ],
+  "correct": "ROH-bot"
+ },
+ {
+  "id": "RF.2.3c-Q5",
+  "standard": "RF.2.3c",
+  "prompt": "Break **open** into syllables:",
+  "choices": [
+   "O-pen",
+   "Open",
+   "Ope-n",
+   "Op-en"
+  ],
+  "correct": "O-pen"
+ },
+ {
+  "id": "RF.2.3c-H1",
+  "standard": "RF.2.3c",
+  "prompt": "Three of these two-syllable words have a long vowel sound. Which word does NOT?\n\nmusic   human   tulip   muffin",
+  "choices": [
+   "muffin",
+   "tulip",
+   "music",
+   "human"
+  ],
+  "correct": "muffin"
+ },
+ {
+  "id": "RF.2.3c-H2",
+  "standard": "RF.2.3c",
+  "prompt": "Which two-syllable word has a long **o** sound?\n\nrobot   rocket   pocket   locket",
+  "choices": [
+   "locket",
+   "robot",
+   "rocket",
+   "pocket"
+  ],
+  "correct": "robot"
+ },
+ {
+  "id": "RF.2.3c-H3",
+  "standard": "RF.2.3c",
+  "prompt": "Which shows the correct way to break **tiger** into two syllables so the **i** stays long?",
+  "choices": [
+   "tige-r",
+   "t-iger",
+   "ti-ger",
+   "tig-er"
+  ],
+  "correct": "ti-ger"
+ }
+]

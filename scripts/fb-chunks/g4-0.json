@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RL.4.1-Q1",
+  "standard": "RL.4.1",
+  "prompt": "Elena clutched her telescope and crept onto the rooftop. The city lights dimmed the stars, but she knew exactly where to look. At 9:47 PM, a streak of light raced across the sky \u2014 the comet her grandfather had told her about.\n\nWhat can you infer about Elena's grandfather?",
+  "choices": [
+   "He shared his knowledge of astronomy with Elena",
+   "He doesn't like stars",
+   "He has never seen a comet",
+   "He lives on the rooftop"
+  ],
+  "correct": "He shared his knowledge of astronomy with Elena"
+ },
+ {
+  "id": "RL.4.1-Q2",
+  "standard": "RL.4.1",
+  "prompt": "The letter had been folded and refolded so many times that the creases were soft as fabric. Marcus kept it in his front pocket, close to his chest, even though he'd memorized every word.\n\nWhat can you infer about how Marcus feels about the letter?",
+  "choices": [
+   "He wants to throw it away",
+   "It's extremely important and meaningful to him",
+   "He just received it today",
+   "He can't read it"
+  ],
+  "correct": "It's extremely important and meaningful to him"
+ },
+ {
+  "id": "RL.4.1-Q3",
+  "standard": "RL.4.1",
+  "prompt": "Priya practiced her free throws every morning before school and every evening after dinner. On the day of tryouts, she was the only one who made all ten shots.\n\nWhat detail from the text BEST supports the idea that hard work pays off?",
+  "choices": [
+   "She goes to school",
+   "She shoots free throws",
+   "She practiced before school and after dinner",
+   "She went to tryouts"
+  ],
+  "correct": "She practiced before school and after dinner"
+ },
+ {
+  "id": "RL.4.1-Q4",
+  "standard": "RL.4.1",
+  "prompt": "Dad hadn't said a word during the entire drive home. He gripped the steering wheel tightly, and his jaw was clenched. When they pulled into the driveway, he finally sighed and said, \"We'll talk about this inside.\"\n\nWhat can you infer about Dad's mood?",
+  "choices": [
+   "He's happy and excited",
+   "He's tired from driving",
+   "He's hungry",
+   "He's upset or frustrated about something"
+  ],
+  "correct": "He's upset or frustrated about something"
+ },
+ {
+  "id": "RL.4.1-Q5",
+  "standard": "RL.4.1",
+  "prompt": "The old bookshop smelled of leather and dust. Mrs. Tanaka knew every book by heart \u2014 where it sat, what it was about, who had loved it last. When the city announced the building would be torn down, she simply said, \"Books always find a new home.\"\n\nWhat does Mrs. Tanaka's response reveal about her character?",
+  "choices": [
+   "She's optimistic and resilient even in difficult times",
+   "She wants a new building",
+   "She doesn't like books",
+   "She doesn't care about the bookshop"
+  ],
+  "correct": "She's optimistic and resilient even in difficult times"
+ },
+ {
+  "id": "RL.4.1-E1",
+  "standard": "RL.4.1",
+  "prompt": "Maria was the fastest runner on her team. When the coach needed someone to run the final leg of the relay, he always picked Maria. Why did the coach pick Maria for the final leg?",
+  "choices": [
+   "Because she was the fastest runner on the team",
+   "Because she did not like running",
+   "Because she forgot her shoes",
+   "Because she was the tallest student"
+  ],
+  "correct": "Because she was the fastest runner on the team"
+ },
+ {
+  "id": "RL.4.1-E2",
+  "standard": "RL.4.1",
+  "prompt": "The rain fell all day, so the baseball game was canceled. The players went home disappointed. Why was the game canceled?",
+  "choices": [
+   "Because everyone was hungry",
+   "Because it rained all day",
+   "Because the players won a prize",
+   "Because the field was too sunny"
+  ],
+  "correct": "Because it rained all day"
+ },
+ {
+  "id": "RL.4.1-E3",
+  "standard": "RL.4.1",
+  "prompt": "Ben studied his spelling words every night for a week. On Friday, he got every word right on the test. What detail shows that Ben worked hard?",
+  "choices": [
+   "He lost his spelling list",
+   "He skipped the test",
+   "He studied his spelling words every night for a week",
+   "He watched TV all week"
+  ],
+  "correct": "He studied his spelling words every night for a week"
+ },
+ {
+  "id": "RL.4.1-E4",
+  "standard": "RL.4.1",
+  "prompt": "When the puppy heard the front door open, it wagged its tail and ran to greet its owner. How does the puppy feel about its owner?",
+  "choices": [
+   "Hungry for the door",
+   "Angry and scared of them",
+   "Bored and sleepy",
+   "Happy and excited to see them"
+  ],
+  "correct": "Happy and excited to see them"
+ },
+ {
+  "id": "RL.4.1-E5",
+  "standard": "RL.4.1",
+  "prompt": "Grandpa handed Lily an old baseball glove. 'This was mine when I was your age,' he said with a smile. What can you tell about the glove?",
+  "choices": [
+   "It has belonged to Grandpa since he was young",
+   "It was made this year",
+   "Lily bought it at the store today",
+   "It belongs to a stranger"
+  ],
+  "correct": "It has belonged to Grandpa since he was young"
+ },
+ {
+  "id": "RL.4.2-Q1",
+  "standard": "RL.4.2",
+  "prompt": "Kai wanted to win the science fair more than anything. He worked alone, refusing help from his classmates. His project looked impressive but had a major flaw he hadn't noticed. Meanwhile, the team next to him \u2014 who had shared ideas and caught each other's mistakes \u2014 won first place.\n\nWhat is the theme?",
+  "choices": [
+   "Working alone is always best",
+   "Collaboration leads to better results than working alone",
+   "Science fairs are unfair",
+   "Winning is everything"
+  ],
+  "correct": "Collaboration leads to better results than working alone"
+ },
+ {
+  "id": "RL.4.2-Q2",
+  "standard": "RL.4.2",
+  "prompt": "Amara was embarrassed by her grandmother's accent and old-fashioned clothes. She asked Grandma not to come to the school play. After the show, Amara saw her classmates laughing with their grandparents and felt a deep ache. She called Grandma that night and said, \"Next time, front row.\"\n\nWhat is the theme?",
+  "choices": [
+   "Clothes matter more than people",
+   "Grandparents shouldn't visit schools",
+   "Don't be ashamed of your family \u2014 appreciate them",
+   "School plays are boring"
+  ],
+  "correct": "Don't be ashamed of your family \u2014 appreciate them"
+ },
+ {
+  "id": "RL.4.2-Q3",
+  "standard": "RL.4.2",
+  "prompt": "Read the story below. What is the main lesson the story about Lily teaches?\n\nLily wanted to learn to ride her bike without training wheels. She fell many times. Her knees got scraped, and she felt like giving up. But her dad told her, \"Keep trying, Lily! You'll get it!\" Lily took a deep breath. She got back on the bike. She pushed off and wobbled. Then, she pedaled a little further. After many more tries, she finally rode all the way down the sidewalk without falling! A big smile spread across her face.",
+  "choices": [
+   "It is important to have a bike.",
+   "Never give up, even when things are hard.",
+   "Trying new things is always easy.",
+   "Parents always know best."
+  ],
+  "correct": "Never give up, even when things are hard."
+ },
+ {
+  "id": "RL.4.2-Q4",
+  "standard": "RL.4.2",
+  "prompt": "The tiny seed was carried by the wind past tall trees and mighty oaks. It landed in a crack between two rocks where nothing grew. But the seed pushed through anyway, and years later it became the only tree on that rocky hill.\n\nWhat is the theme?",
+  "choices": [
+   "Determination can help you thrive even in difficult conditions",
+   "Seeds need good soil",
+   "Trees are stronger than rocks",
+   "Wind is powerful"
+  ],
+  "correct": "Determination can help you thrive even in difficult conditions"
+ },
+ {
+  "id": "RL.4.2-Q5",
+  "standard": "RL.4.2",
+  "prompt": "Read the story about Lily.Lily the squirrel woke up feeling very hungry in her cozy nest. She remembered a big, shiny acorn on the ground. When Lily scurried down the tree to get it, a grumpy blue jay was already pecking at her acorn! Lily didn't give up easily. She puffed up her fur and stamped her tiny feet, making the blue jay squawk and fly away. Happy, Lily grabbed her acorn and carried it back up to her nest for a yummy breakfast.Which sentence best summarizes the story?",
+  "choices": [
+   "A grumpy blue jay was pecking at an acorn, but then it flew away.",
+   "Lily's nest was cozy, and she saw a shiny acorn on the ground near an old fence.",
+   "Lily the squirrel was hungry, so she bravely scared away a blue jay to get a yummy acorn for breakfast.",
+   "Lily woke up feeling hungry and scurried down the tree to get an acorn."
+  ],
+  "correct": "Lily the squirrel was hungry, so she bravely scared away a blue jay to get a yummy acorn for breakfast."
+ },
+ {
+  "id": "RL.4.3-Q2",
+  "standard": "RL.4.3",
+  "prompt": "The marketplace buzzed with voices in a dozen languages. Spices piled in colorful mountains \u2014 saffron yellow, paprika red, turmeric orange. Somewhere a radio played scratchy music, and the smell of roasting lamb drifted through the narrow aisles.\n\nThe author uses these details to create a setting that feels \u2014",
+  "choices": [
+   "Modern and high-tech",
+   "Quiet and lonely",
+   "Cold and frightening",
+   "Vibrant, busy, and full of sensory experiences"
+  ],
+  "correct": "Vibrant, busy, and full of sensory experiences"
+ },
+ {
+  "id": "RL.4.3-Q3",
+  "standard": "RL.4.3",
+  "prompt": "Jordan's hands trembled as he opened the envelope. His eyes scanned the page, then widened. He read it again. Then a third time. Then he let out a whoop so loud the neighbors\" dog started barking.\n\nWhat can you infer about the letter's contents?",
+  "choices": [
+   "Very good news",
+   "Bad news",
+   "A grocery list",
+   "A homework assignment"
+  ],
+  "correct": "Very good news"
+ },
+ {
+  "id": "RL.4.3-Q4",
+  "standard": "RL.4.3",
+  "prompt": "Read the passage about Leo. Then, based on the passage, which statement best describes Leo in depth? Leo was the new kid in Mrs. Davis's class. He often wore a blue shirt and had bright, curious eyes behind his round glasses. During recess, while other kids ran and played tag, Leo found a quiet spot under the big oak tree. He carefully opened a thick book about dinosaurs, his favorite topic. When Maya walked over and asked, 'What are you reading?' Leo looked up, a small smile appearing on his face, and eagerly began to explain the different types of dinosaurs.",
+  "choices": [
+   "Leo is a new student who likes to wear a blue shirt and has round glasses.",
+   "Leo is a shy but friendly new student who loves to read, especially about dinosaurs, and shows this by reading quietly at recess and sharing his interest with others.",
+   "Leo is a new student who enjoys reading books about dinosaurs.",
+   "Leo likes to play tag with his friends during recess."
+  ],
+  "correct": "Leo is a shy but friendly new student who loves to read, especially about dinosaurs, and shows this by reading quietly at recess and sharing his interest with others."
+ },
+ {
+  "id": "RL.4.3-Q5",
+  "standard": "RL.4.3",
+  "prompt": "The abandoned lighthouse stood at the edge of the cliff, its paint peeling like sunburned skin. Waves crashed against the rocks below, sending spray twenty feet into the air. Inside, the spiral staircase groaned under the weight of years.\n\nThe setting creates a mood that is \u2014",
+  "choices": [
+   "Busy and crowded",
+   "Cheerful and bright",
+   "Eerie and isolated",
+   "Warm and cozy"
+  ],
+  "correct": "Eerie and isolated"
+ },
+ {
+  "id": "RL.4.3-E1",
+  "standard": "RL.4.3",
+  "prompt": "Maria was the kindest kid in class. She shared her lunch, helped others clean up, and always said something nice. What kind of person is Maria?",
+  "choices": [
+   "Kind and helpful",
+   "Angry and loud",
+   "Mean and rude",
+   "Lazy and sleepy"
+  ],
+  "correct": "Kind and helpful"
+ },
+ {
+  "id": "RL.4.3-E2",
+  "standard": "RL.4.3",
+  "prompt": "The old house was dark and dusty. Cobwebs hung in every corner, and the floors creaked with each step. What is the setting like?",
+  "choices": [
+   "Warm and sunny",
+   "Spooky and old",
+   "Bright and cheerful",
+   "New and clean"
+  ],
+  "correct": "Spooky and old"
+ },
+ {
+  "id": "RL.4.3-E3",
+  "standard": "RL.4.3",
+  "prompt": "Ben pumped his fist in the air and shouted, \"We won!\" He jumped up and down with a huge smile. How does Ben feel?",
+  "choices": [
+   "Bored and sleepy",
+   "Scared and worried",
+   "Excited and happy",
+   "Sad and tired"
+  ],
+  "correct": "Excited and happy"
+ },
+ {
+  "id": "RL.4.3-E4",
+  "standard": "RL.4.3",
+  "prompt": "The beach was warm and sunny. Waves splashed softly, and kids built sandcastles while seagulls flew above. What is the setting like?",
+  "choices": [
+   "Quiet library",
+   "Cold and snowy",
+   "Dark and scary",
+   "Sunny and fun"
+  ],
+  "correct": "Sunny and fun"
+ },
+ {
+  "id": "RL.4.3-E5",
+  "standard": "RL.4.3",
+  "prompt": "Every morning, Grandpa woke up early to feed the chickens, fix the fence, and water the garden. He never stopped working. What kind of person is Grandpa?",
+  "choices": [
+   "Hardworking",
+   "Always sleeping",
+   "Very lazy",
+   "Afraid of chickens"
+  ],
+  "correct": "Hardworking"
+ },
+ {
+  "id": "RL.4.4-Q1",
+  "standard": "RL.4.4",
+  "prompt": "She had the Midas touch \u2014 every business she started turned into gold.\n\nThis allusion to King Midas means \u2014",
+  "choices": [
+   "She was a queen",
+   "She was greedy",
+   "She literally turned things to gold",
+   "Everything she did became successful"
+  ],
+  "correct": "Everything she did became successful"
+ },
+ {
+  "id": "RL.4.4-Q2",
+  "standard": "RL.4.4",
+  "prompt": "Cleaning out the garage was a Herculean task.\n\nThis allusion to Hercules means the task was \u2014",
+  "choices": [
+   "Extremely difficult and required great effort",
+   "Impossible to start",
+   "Easy and quick",
+   "Fun and entertaining"
+  ],
+  "correct": "Extremely difficult and required great effort"
+ },
+ {
+  "id": "RL.4.4-Q3",
+  "standard": "RL.4.4",
+  "prompt": "The morning light tiptoed through the curtains.\n\nWhat does **tiptoed** suggest about the light?",
+  "choices": [
+   "It was nighttime",
+   "It entered gently and softly",
+   "It was very bright and harsh",
+   "The curtains were open"
+  ],
+  "correct": "It entered gently and softly"
+ },
+ {
+  "id": "RL.4.4-Q4",
+  "standard": "RL.4.4",
+  "prompt": "His Achilles\" heel was his temper \u2014 it always got him into trouble.\n\nAn **Achilles** heel\" refers to \u2014",
+  "choices": [
+   "A type of shoe",
+   "A battle strategy",
+   "A person's greatest weakness or vulnerability",
+   "A foot injury"
+  ],
+  "correct": "A person's greatest weakness or vulnerability"
+ },
+ {
+  "id": "RL.4.4-Q5",
+  "standard": "RL.4.4",
+  "prompt": "The silence in the library was so thick you could cut it with a knife.\n\nThis phrase means \u2014",
+  "choices": [
+   "People were cooking in the library",
+   "Someone had a knife in the library",
+   "The library was noisy",
+   "The silence was intense and heavy"
+  ],
+  "correct": "The silence was intense and heavy"
+ },
+ {
+  "id": "RL.4.4-E1",
+  "standard": "RL.4.4",
+  "prompt": "The knight was as brave as a lion, so he was not scared at all when the dragon roared.\n\nIn this sentence, \"as brave as a lion\" means the knight was \u2014",
+  "choices": [
+   "very brave",
+   "very short",
+   "very hungry",
+   "very sleepy"
+  ],
+  "correct": "very brave"
+ },
+ {
+  "id": "RL.4.4-E2",
+  "standard": "RL.4.4",
+  "prompt": "The old wizard had a booming voice. It was so loud and deep that it filled the whole cave.\n\nIn this sentence, a \"booming\" voice means a voice that is \u2014",
+  "choices": [
+   "shaky and weak",
+   "loud and deep",
+   "soft and quiet",
+   "sweet and kind"
+  ],
+  "correct": "loud and deep"
+ },
+ {
+  "id": "RL.4.4-E3",
+  "standard": "RL.4.4",
+  "prompt": "Maya felt gloomy all day. She frowned and did not want to play or smile.\n\nIn this sentence, \"gloomy\" means Maya felt \u2014",
+  "choices": [
+   "hungry",
+   "curious",
+   "sad",
+   "excited"
+  ],
+  "correct": "sad"
+ },
+ {
+  "id": "RL.4.4-E4",
+  "standard": "RL.4.4",
+  "prompt": "Ben's little sister followed him everywhere, so he called her his shadow because she was always right behind him.\n\nCalling his sister his \"shadow\" means she \u2014",
+  "choices": [
+   "was very tall",
+   "was made of darkness",
+   "could disappear",
+   "always stayed close behind him"
+  ],
+  "correct": "always stayed close behind him"
+ },
+ {
+  "id": "RL.4.4-E5",
+  "standard": "RL.4.4",
+  "prompt": "The hero was so strong he could lift a giant boulder. People said he had the strength of Hercules, a mighty hero from Greek myths.\n\nSaying the hero had \"the strength of Hercules\" means he was very \u2014",
+  "choices": [
+   "strong",
+   "shy",
+   "funny",
+   "hungry"
+  ],
+  "correct": "strong"
+ },
+ {
+  "id": "RL.4.5-Q1",
+  "standard": "RL.4.5",
+  "prompt": "Listen to the story: Maya wrote a play for her class. Part of her script read: MAYA (waving her arms): Wait for me! [She runs across the stage and trips over a chair.] Later, Maya rewrote the very same scene as a regular story: 'Maya waved her arms and shouted for her friends to wait. Then she ran and tripped over a chair.' In the play, the notes inside the brackets told the actors exactly how to move, but the regular story just described everything in plain sentences. Which structural element is found in a drama (play) but NOT in prose (a regular story)?",
+  "choices": [
+   "Stage directions",
+   "Chapters",
+   "Paragraphs",
+   "A title"
+  ],
+  "correct": "Stage directions"
+ },
+ {
+  "id": "RL.4.5-Q3",
+  "standard": "RL.4.5",
+  "prompt": "Listen to the story: Ben wrote the same conversation two ways. In his play, it looked like this: BEN: I found the treasure! ELLA: Show me! In his novel, the same talking looked like this: 'I found the treasure!' Ben shouted. 'Show me!' Ella replied. In the play, each speaker's name is printed right before the words they say. In the novel, quotation marks wrap around the spoken words instead. How is dialogue presented differently in a play versus a novel?",
+  "choices": [
+   "Novels don't have dialogue",
+   "In plays, the character's name appears before their lines; novels use quotation marks",
+   "There's no difference",
+   "Plays don't have dialogue"
+  ],
+  "correct": "In plays, the character's name appears before their lines; novels use quotation marks"
+ },
+ {
+  "id": "RL.4.5-Q4",
+  "standard": "RL.4.5",
+  "prompt": "Listen to the story: Rosa's teacher showed the class a poem: 'The gentle breeze begins to blow, it lifts the kite and lets it go.' The words had a steady beat you could tap along to, and the ending words blow and go sounded alike. Then the teacher showed a regular story about a windy day, written in long sentences that flowed across the page with no steady beat and no matching end sounds. What structural element do poems often have that prose does not?",
+  "choices": [
+   "A beginning and end",
+   "Characters",
+   "Meter and rhyme scheme",
+   "Sentences"
+  ],
+  "correct": "Meter and rhyme scheme"
+ },
+ {
+  "id": "RL.4.5-E1",
+  "standard": "RL.4.5",
+  "prompt": "A poem is written in lines that are grouped together. What do we call a group of lines in a poem?",
+  "choices": [
+   "A stanza",
+   "A password",
+   "A touchdown",
+   "A recipe"
+  ],
+  "correct": "A stanza"
+ },
+ {
+  "id": "RL.4.5-E2",
+  "standard": "RL.4.5",
+  "prompt": "A play (drama) is written so actors can perform it on a stage. Which of these is a type of writing MEANT to be acted out?",
+  "choices": [
+   "A weather report",
+   "A drama (play)",
+   "A poem",
+   "A grocery list"
+  ],
+  "correct": "A drama (play)"
+ },
+ {
+  "id": "RL.4.5-E3",
+  "standard": "RL.4.5",
+  "prompt": "Prose is regular writing, like a story or a novel. Prose is organized into what?",
+  "choices": [
+   "Songs",
+   "Photos",
+   "Paragraphs",
+   "Stanzas"
+  ],
+  "correct": "Paragraphs"
+ },
+ {
+  "id": "RL.4.5-E4",
+  "standard": "RL.4.5",
+  "prompt": "In a play, the words a character says out loud are called their lines. In a play, which piece of writing tells a character what to SAY?",
+  "choices": [
+   "The library shelf",
+   "The page numbers",
+   "The book's cover",
+   "Their lines (dialogue)"
+  ],
+  "correct": "Their lines (dialogue)"
+ },
+ {
+  "id": "RL.4.5-E5",
+  "standard": "RL.4.5",
+  "prompt": "One big difference between a poem and prose is how they look on the page. A poem is usually written in what?",
+  "choices": [
+   "Short lines",
+   "A shopping list",
+   "Long chapters",
+   "A phone number"
+  ],
+  "correct": "Short lines"
+ },
+ {
+  "id": "RL.4.6-Q1",
+  "standard": "RL.4.6",
+  "prompt": "The sentence \"I couldn't believe my eyes when I opened the door\" is narrated from the character's own point of view. If this same event was instead told by a narrator who is *not* a character in the story, what would most likely change for the reader?",
+  "choices": [
+   "The reader would know exactly what every character was thinking and feeling.",
+   "The reader would have to guess more about the character's inner thoughts based on their actions.",
+   "The reader would still know exactly what the character was thinking and feeling directly.",
+   "The reader would only know what the character did, not how they felt."
+  ],
+  "correct": "The reader would have to guess more about the character's inner thoughts based on their actions."
+ },
+ {
+  "id": "RL.4.6-Q2",
+  "standard": "RL.4.6",
+  "prompt": "Read these two passages: Passage A: 'I pressed my face against the cold window, watching the first snowflakes fall. A shiver went down my spine, not from the cold, but from excitement! I couldn't wait to build a snowman.' Passage B: 'Leo pressed his face against the cold window, watching the first snowflakes fall. A shiver went down his spine, not from the cold, but from excitement! He couldn't wait to build a snowman.' How does the way each passage is told affect how you understand the main character's feelings?",
+  "choices": [
+   "Both passages make you feel exactly the same way about the character's feelings.",
+   "Passage B gives more facts about the snow, and Passage A gives more facts about the window.",
+   "Passage A makes you feel like you are the character, while Passage B lets you watch the character from the outside.",
+   "Passage A describes more about the cold, and Passage B describes more about the excitement."
+  ],
+  "correct": "Passage A makes you feel like you are the character, while Passage B lets you watch the character from the outside."
+ },
+ {
+  "id": "RL.4.6-Q3",
+  "standard": "RL.4.6",
+  "prompt": "Listen to the story: In Sam's story, the narrator says, 'I was so nervous I could barely breathe, but I had no idea what my sister Kate was thinking as she stared out the window.' Because Sam wrote using the word I, readers only learn what the narrator himself sees and feels. We never find out Kate's private thoughts, only what the narrator can observe from the outside. How does first-person narration affect a story compared to third-person?",
+  "choices": [
+   "There's no difference",
+   "First person limits you to one character's perspective and feelings",
+   "Third person is always more honest",
+   "First person gives you access to every character's thoughts"
+  ],
+  "correct": "First person limits you to one character's perspective and feelings"
+ }
+]

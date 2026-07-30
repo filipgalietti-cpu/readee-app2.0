@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.2.1-Q1",
+  "correct_feedback": "Yes! The garden is right. The story says Mia walked there and picked strawberries until her basket was full.",
+  "incorrect_feedback": "Hmm, let's go back and find the place where Mia picked strawberries. What spot did she walk to?",
+  "reveal_feedback": "The answer is the garden. Mia walked to the garden and picked strawberries there until her basket was full."
+ },
+ {
+  "id": "RL.2.1-Q2",
+  "correct_feedback": "Great job! A tennis ball is right. Leo could not find a stick, so he grabbed the fuzzy yellow ball instead.",
+  "incorrect_feedback": "Almost! Leo looked for a stick but could not find one. So what did he grab from his backpack instead?",
+  "reveal_feedback": "The answer is a tennis ball. Leo had no stick, so he used the fuzzy yellow tennis ball to play fetch."
+ },
+ {
+  "id": "RL.2.1-Q3",
+  "correct_feedback": "You got it! Emma didn't know anyone in her new class, and that new feeling made her nervous.",
+  "incorrect_feedback": "Good try! Think about Emma's very first day. She looked around the room. What made her tummy feel nervous?",
+  "reveal_feedback": "The answer is she didn't know anyone. It was her first day and all the kids were new to her, so she felt nervous."
+ },
+ {
+  "id": "RL.2.1-Q4",
+  "correct_feedback": "Nice work! They hung it on a tree. The story says right after the last nail, they carried it outside to the tree.",
+  "incorrect_feedback": "Close one! The painting happened before they built it. What did they do right after the very last nail went in?",
+  "reveal_feedback": "The answer is they hung it on a tree in the backyard. As soon as they finished, they carried it outside to hang up."
+ },
+ {
+  "id": "RL.2.1-Q5",
+  "correct_feedback": "Yes! Ava was sad because the soccer game could not happen. The rain made the field too wet to play.",
+  "incorrect_feedback": "Not yet! Remember the dark clouds and heavy rain. What big thing did Ava miss out on that morning?",
+  "reveal_feedback": "The answer is the soccer game could not happen. The rain made the field too wet, so Ava felt disappointed."
+ },
+ {
+  "id": "RL.2.1-H1",
+  "correct_feedback": "You got it! Sam brought an umbrella for rain, but everyone else dressed for a sunny day. That's why he felt out of place.",
+  "incorrect_feedback": "Take another look. Sam had an umbrella, but the other kids wore sunglasses and shorts. How were they dressed differently?",
+  "reveal_feedback": "The answer is he got ready for a different kind of weather. Sam packed for rain, but the others dressed for sun."
+ },
+ {
+  "id": "RL.2.1-H2",
+  "correct_feedback": "Great thinking! Two plates, two glasses, watching the door and clock, hot cookies. Grandpa is getting ready for a visitor!",
+  "incorrect_feedback": "Almost! Why would Grandpa set out two plates and keep looking at the front door? What is he hoping will happen?",
+  "reveal_feedback": "The answer is someone is coming to visit soon. Two plates and watching the door show Grandpa expects a guest."
+ },
+ {
+  "id": "RL.2.1-H3",
+  "correct_feedback": "Yes! Nina held her breath so she would stay quiet and not wake her little brother while sneaking past his room.",
+  "incorrect_feedback": "Hmm, think about why someone stays super quiet near a sleeping person. What might a loud sound do to her brother?",
+  "reveal_feedback": "The answer is she did not want to wake her brother up. Staying quiet helped her sneak past his room."
+ },
+ {
+  "id": "RL.2.1-H4",
+  "correct_feedback": "Nice! Tomas said plain sandwiches were boring, and Dad made a star shape. That shows Dad listened and wanted him happy.",
+  "incorrect_feedback": "Good try! Last week Tomas told Dad plain sandwiches were boring. Why would Dad make a fun star shape now?",
+  "reveal_feedback": "The answer is he listened to what Tomas said and tried to make him happy. Dad remembered and made a special shape."
+ },
+ {
+  "id": "RL.2.1-H5",
+  "correct_feedback": "Smart! Ms. Lopez kept watching the gray sky. She waited because she hoped the weather would get better before the trip.",
+  "incorrect_feedback": "Close one! Ms. Lopez kept looking at the gray sky and told kids to bring raincoats. What was she watching for?",
+  "reveal_feedback": "The answer is she was hoping the weather might get better. She kept watching the gray sky before leaving."
+ },
+ {
+  "id": "RL.2.2-Q1",
+  "correct_feedback": "Yes! It's good to plan ahead. The ant stored food all summer, so he had plenty when winter came.",
+  "incorrect_feedback": "Hmm, think about why the ant had food and the grasshopper had none. What did the ant do all summer?",
+  "reveal_feedback": "The lesson is it's good to plan ahead. The ant worked and saved food, so he was ready for winter."
+ },
+ {
+  "id": "RL.2.2-Q2",
+  "correct_feedback": "You got it! Slow and steady wins the race. The tortoise kept going while the hare stopped to nap.",
+  "incorrect_feedback": "Almost! The hare was fast but napped. The tortoise was slow but never stopped. Who won, and how?",
+  "reveal_feedback": "The moral is slow and steady wins the race. The tortoise kept going steadily and crossed the line first."
+ },
+ {
+  "id": "RL.2.2-Q3",
+  "correct_feedback": "Nice! Being patient and fair matters. Rosa cut the line, upset her friends, and wished she had waited her turn.",
+  "incorrect_feedback": "Good try! Rosa pushed ahead and her friends got upset. What does that teach us about waiting your turn?",
+  "reveal_feedback": "The lesson is being patient and fair matters. Rosa cut the line, and it made her friends upset with her."
+ },
+ {
+  "id": "RL.2.2-Q4",
+  "correct_feedback": "Yes! Even small friends can be a big help. The tiny mouse chewed the ropes and saved the big lion.",
+  "incorrect_feedback": "Not yet! A tiny mouse set the huge lion free. What does that show about small friends helping?",
+  "reveal_feedback": "The message is even small friends can be a big help. The little mouse saved the lion by chewing the ropes."
+ },
+ {
+  "id": "RL.2.2-Q5",
+  "correct_feedback": "Great! Hard work beats bragging. Ben bragged but didn't study, while Kai practiced every night and won.",
+  "incorrect_feedback": "Close one! Ben bragged but skipped studying. Kai practiced every night and won. What does that teach us?",
+  "reveal_feedback": "The message is hard work beats bragging. Kai practiced and won, while Ben only bragged and missed an easy word."
+ },
+ {
+  "id": "RL.2.2-H1",
+  "correct_feedback": "Yes! Thinking of a clever plan can solve a hard problem. The crow dropped pebbles to raise the water up.",
+  "incorrect_feedback": "Hmm, the crow couldn't reach the water, so she dropped pebbles in. What smart idea helped her drink?",
+  "reveal_feedback": "The lesson is thinking of a clever plan can solve a hard problem. The crow's pebble idea raised the water so she could drink."
+ },
+ {
+  "id": "RL.2.2-H2",
+  "correct_feedback": "You got it! The lion is quiet because he learned the small mouse he laughed at really could help him.",
+  "incorrect_feedback": "Take another look. The lion once laughed that a small mouse couldn't help. Now the mouse saved him. What did he learn?",
+  "reveal_feedback": "The answer is he learned that even small friends can help you. The mouse he laughed at set him free, so he was quiet and surprised."
+ },
+ {
+  "id": "RL.2.2-H3",
+  "correct_feedback": "Nice! Wanting more can make you lose what you have. The dog dropped his real bone reaching for a reflection.",
+  "incorrect_feedback": "Almost! The dog already had a bone but reached for another one and dropped his own. What does that teach?",
+  "reveal_feedback": "The lesson is wanting more can make you lose what you already have. The dog reached for a reflection and lost his real bone."
+ },
+ {
+  "id": "RL.2.2-H4",
+  "correct_feedback": "Great! Being gentle can work better than being forceful. The warm, gentle sun won when the strong wind could not.",
+  "incorrect_feedback": "Good try! The hard cold wind failed, but the warm sun made the man take off his coat. Which way worked better?",
+  "reveal_feedback": "The lesson is being gentle can work better than being forceful. The soft, warm sun won where the strong wind failed."
+ },
+ {
+  "id": "RL.2.2-H5",
+  "correct_feedback": "Yes! The boy tricked them so many times that they no longer believed him when he finally told the truth.",
+  "incorrect_feedback": "Close one! The boy yelled 'Wolf!' as a joke again and again. Why would people stop coming after all those tricks?",
+  "reveal_feedback": "The answer is they no longer believed the boy after his false alarms. His jokes made them stop trusting his call."
+ },
+ {
+  "id": "RL.2.3-Q1",
+  "correct_feedback": "Yes! Lily decided to build a bigger one. She turned a sad moment into an exciting new plan.",
+  "incorrect_feedback": "Hmm, after the wave hit, Lily smiled and made a plan. What did she say she would build next?",
+  "reveal_feedback": "The answer is she decided to build a bigger one. Lily smiled and turned the knocked-down castle into a new idea."
+ },
+ {
+  "id": "RL.2.3-Q2",
+  "correct_feedback": "Nice! Jake took a deep breath and started over. He stayed calm instead of giving up.",
+  "incorrect_feedback": "Almost! Jake forgot the words and his face turned red. What calm thing did he do to keep going?",
+  "reveal_feedback": "The answer is he took a deep breath and started over. Jake calmed himself and began his song again."
+ },
+ {
+  "id": "RL.2.3-Q3",
+  "correct_feedback": "You got it! Maya went from scared to laughing. The candles and funny stories changed how she felt.",
+  "incorrect_feedback": "Good try! Maya started out scared. Then Mom told funny stories. How did her feelings change by the end?",
+  "reveal_feedback": "The answer is she went from scared to laughing. The candles and funny stories made her feel happy instead of afraid."
+ },
+ {
+  "id": "RL.2.3-Q4",
+  "correct_feedback": "Yes! Sam found a way to stay in touch. Writing letters kept him close to his friend far away.",
+  "incorrect_feedback": "Not yet! Sam was sad his friend moved, so he had an idea about letters. What did that idea help him do?",
+  "reveal_feedback": "The answer is he found a way to stay in touch. Sam wrote letters, so he and his friend became pen pals."
+ },
+ {
+  "id": "RL.2.3-Q5",
+  "correct_feedback": "Great! Nora is a good sport. She high-fived everyone and said she was proud even after losing.",
+  "incorrect_feedback": "Close one! Nora lost but still high-fived her team and said she was proud. What does that show about her?",
+  "reveal_feedback": "The answer is she is a good sport. Even after losing, Nora was kind, proud, and cheered for her teammates."
+ },
+ {
+  "id": "RL.2.3-H1",
+  "correct_feedback": "Yes! Ben made a plan with the shoebox and carrot, while Maya froze and covered her eyes, too scared to move.",
+  "incorrect_feedback": "Hmm, look at what each kid did. Maya covered her eyes. Ben grabbed a box and carrot. Who made the plan?",
+  "reveal_feedback": "The answer is Ben made a plan to catch Nibbles, while Maya was too scared to move. Ben used a box and carrot; Maya froze."
+ },
+ {
+  "id": "RL.2.3-H2",
+  "correct_feedback": "Nice thinking! 'Wiped her eyes' shows Rosa felt like crying, but she got back in line and tried again anyway.",
+  "incorrect_feedback": "Take another look. Rosa tripped, wiped her eyes, then got back in line. What feeling was she pushing through?",
+  "reveal_feedback": "The answer is she felt like crying but chose to keep trying anyway. Wiping her eyes shows tears, yet she tried again."
+ },
+ {
+  "id": "RL.2.3-H3",
+  "correct_feedback": "You got it! Sam was worried at first, then glad Theo joined after Theo passed him the winning goal.",
+  "incorrect_feedback": "Almost! At the start Sam didn't want Theo. By the end he gave him a high five. How did his feelings change?",
+  "reveal_feedback": "The answer is Sam was worried about Theo at first, then was glad he had joined. Theo's great pass changed Sam's mind."
+ },
+ {
+  "id": "RL.2.3-H4",
+  "correct_feedback": "Great! Ellie wanted to help Grandpa clean up. She skipped cartoons to stack the storm branches, and Grandpa smiled.",
+  "incorrect_feedback": "Good try! Ellie skipped TV and started making a neat pile of the branches. Why would she do that for Grandpa?",
+  "reveal_feedback": "The answer is she wanted to help Grandpa clean up his messy yard. She stacked the storm branches into a neat pile."
+ },
+ {
+  "id": "RL.2.3-H5",
+  "correct_feedback": "Yes! Patient is right. Kwan almost yelled, but he took a big breath and kindly asked to build a new tower together.",
+  "incorrect_feedback": "Close one! Kwan wanted to yell, but he breathed and calmly asked to build again. Which word matches that calm choice?",
+  "reveal_feedback": "The answer is patient. Instead of yelling, Kwan calmed down and kindly asked his sister to build a new tower together."
+ },
+ {
+  "id": "RL.2.4-Q1",
+  "correct_feedback": "Yes! Drip, drip, drop is the sound of rain falling. The words let you hear the raindrops in your mind.",
+  "incorrect_feedback": "Hmm, say 'drip, drip, drop' out loud. What real sound do those words copy in the poem?",
+  "reveal_feedback": "The answer is the sound of rain falling. 'Drip, drip, drop' copies the noise raindrops make as they land."
+ },
+ {
+  "id": "RL.2.4-Q2",
+  "correct_feedback": "Nice! Swoosh and swish help you hear the sound of sweeping the broom across the floor.",
+  "incorrect_feedback": "Almost! Say 'swoosh' and 'swish' out loud. What action's sound do those words help you hear?",
+  "reveal_feedback": "The answer is hear the sound of sweeping. 'Swoosh' and 'swish' copy the noise a broom makes on the floor."
+ },
+ {
+  "id": "RL.2.4-Q3",
+  "correct_feedback": "You got it! Many words start with the same 's' sound, and that makes the sentence fun and tricky to say.",
+  "incorrect_feedback": "Good try! Say it out loud: Silly Sally sat singing by the sea. What sound do you keep hearing at the start of words?",
+  "reveal_feedback": "The answer is many words start with the same sound. All those 's' words make the sentence fun to say fast."
+ },
+ {
+  "id": "RL.2.4-Q4",
+  "correct_feedback": "Yes! 'Danced' makes the leaves seem lively and playful, like they are twirling and having fun in the wind.",
+  "incorrect_feedback": "Not yet! Picture leaves twirling and spinning like dancers. What kind of mood does the word 'danced' give them?",
+  "reveal_feedback": "The answer is lively and playful. Saying the leaves 'danced' makes them seem fun and full of movement."
+ },
+ {
+  "id": "RL.2.4-Q5",
+  "correct_feedback": "Great! Saying 'tick-tock' again copies the sound and rhythm of a clock ticking on the wall.",
+  "incorrect_feedback": "Close one! A clock makes the same sound over and over. Why would the author say 'tick-tock' again and again?",
+  "reveal_feedback": "The answer is to copy the sound and rhythm of a clock. Repeating 'tick-tock' makes the poem sound like real ticking."
+ },
+ {
+  "id": "RL.2.4-H1",
+  "correct_feedback": "Yes! The long dots make you read slow, slow, slow, just like the turtle plodding along at a slow pace.",
+  "incorrect_feedback": "Hmm, read 'slow . . . slow . . . slow' with big pauses. How does that make the words feel, like the turtle?",
+  "reveal_feedback": "The answer is to make the reading feel slow, like the turtle moving. The long dots make you pause and slow down."
+ },
+ {
+  "id": "RL.2.4-H2",
+  "correct_feedback": "Nice! The sounds go from loud and big, like BOOM, to soft and small, like a mouse's quiet tap.",
+  "incorrect_feedback": "Almost! It starts with BOOM-BOOM shaking the room and ends with tiny taps. How do the sounds change from start to end?",
+  "reveal_feedback": "The answer is from loud and big to soft and small. The poem starts with booming drums and ends with quiet little taps."
+ },
+ {
+  "id": "RL.2.4-H3",
+  "correct_feedback": "Yes! Repeating 'Are we there?' three times shows Sam feels impatient and just can't wait to get there.",
+  "incorrect_feedback": "Take another look. Sam keeps asking the same question over and over on the trip. What feeling makes a kid do that?",
+  "reveal_feedback": "The answer is feeling impatient and can't wait to arrive. Asking again and again shows Sam is eager for the trip to end."
+ },
+ {
+  "id": "RL.2.4-H4",
+  "correct_feedback": "Great! Saying the gate 'groaned like it was in pain' makes the old gate seem alive with a sad, creepy sound.",
+  "incorrect_feedback": "Good try! A gate can't really feel pain. Why would the writer say it groaned that way? What mood does it give?",
+  "reveal_feedback": "The answer is to make the old gate seem alive and give it a sad, creepy sound. The groaning makes it feel spooky."
+ },
+ {
+  "id": "RL.2.4-H5",
+  "correct_feedback": "Yes! 'Beat' fits best. It rhymes with 'feet' and keeps the song's rhythm while still making sense.",
+  "incorrect_feedback": "Close one! The line above ends in 'feet.' Which word rhymes with 'feet' and keeps the bouncy beat?",
+  "reveal_feedback": "The answer is beat. It rhymes with 'feet' and keeps the song's rhythm going while still making sense."
+ },
+ {
+  "id": "RL.2.5-Q1",
+  "correct_feedback": "Yes! Zara found a magic key is the beginning. It starts the story before all her adventures happen.",
+  "incorrect_feedback": "Hmm, the beginning is what happens first. What did Zara do at the very start, before the adventures?",
+  "reveal_feedback": "The answer is Zara found a magic key. That happens first and starts off the whole story."
+ },
+ {
+  "id": "RL.2.5-Q2",
+  "correct_feedback": "Nice! The ending wraps up the story and solves the problem, so the reader feels the story is complete.",
+  "incorrect_feedback": "Almost! Think about the last part of a story. What does the ending usually do with the problem?",
+  "reveal_feedback": "The answer is wrap up the story and solve the problem. The ending ties things together and finishes the story."
+ },
+ {
+  "id": "RL.2.5-Q4",
+  "correct_feedback": "You got it! The beginning introduces the main characters and where the story happens, so we know who and where.",
+  "incorrect_feedback": "Good try! Think about the very start of a story. What does the author want you to meet and learn about first?",
+  "reveal_feedback": "The answer is to introduce the main characters and where the story is happening. The beginning sets up who and where."
+ },
+ {
+  "id": "RL.2.5-Q5",
+  "correct_feedback": "Yes! The ending is Mia finds her puppy. That solves the problem and finishes the story happily.",
+  "incorrect_feedback": "Close one! The ending is the last thing that happens. After all her looking, what did Mia do at the end?",
+  "reveal_feedback": "The answer is Mia finds her puppy. That's the ending, where the problem is solved and the story wraps up."
+ },
+ {
+  "id": "RL.2.5-H1",
+  "correct_feedback": "Great! Biscuit wriggling out the gate is the problem that starts the story and sets everything else in motion.",
+  "incorrect_feedback": "Take another look. A problem is what goes wrong that the story must fix. Which sentence shows something going wrong first?",
+  "reveal_feedback": "The answer is Sam's dog, Biscuit, wriggled out through the open gate. That problem starts the story the rest must solve."
+ }
+]

@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RF.2.3c-H4",
+  "correct_feedback": "Yes! You nailed it. The first part says its own name, so it has that long a sound you hear when you say the letter a.",
+  "incorrect_feedback": "Hmm, say each word slowly and listen. Which one has a vowel that says its own name, like the a in cake?",
+  "reveal_feedback": "The answer is mistake. Say it slow: mis-TAKE. That 'take' part makes the long a sound, just like cake."
+ },
+ {
+  "id": "RF.2.3c-H5",
+  "correct_feedback": "Great job! The first part says the letter e's own name, so it has that long e sound like in me.",
+  "incorrect_feedback": "Almost! Say each word out loud. Which one has a vowel that says its own name, like the e in tree?",
+  "reveal_feedback": "The answer is zebra. Say it slow: ZE-bra. That first part makes the long e sound, just like tree."
+ },
+ {
+  "id": "RF.2.3d-Q2",
+  "correct_feedback": "Yes! When you add -ful to hope, it means full of hope. You found exactly what -ful tells us.",
+  "incorrect_feedback": "Good try! Think about a bucket packed to the top. What might -ful be telling you about the word?",
+  "reveal_feedback": "The answer is full of. The suffix -ful means full of, so hopeful means full of hope."
+ },
+ {
+  "id": "RF.2.3d-Q4",
+  "correct_feedback": "Nice work! Helpful means full of help. The ending -ful tells us it is packed with help.",
+  "incorrect_feedback": "Close one! The ending -ful is a clue. Think about what -ful means when you add it to a word.",
+  "reveal_feedback": "The answer is full of help. The ending -ful means full of, so helpful means full of help."
+ },
+ {
+  "id": "RF.2.3d-H1",
+  "correct_feedback": "Yes! A prefix is a word part added to the front. Here it means to un-do the packing, so it means reverse.",
+  "incorrect_feedback": "Take another look. A prefix must sit in FRONT of a real base word. Which word has a base word left over when you take off un?",
+  "reveal_feedback": "The answer is unpack. Take off un and you still have pack, a real word. Un means to reverse the packing."
+ },
+ {
+  "id": "RF.2.3d-H2",
+  "correct_feedback": "You got it! Grinned comes from grin plus -ed. We just doubled the n before adding the ending.",
+  "incorrect_feedback": "Almost! Take off the -ed ending and listen. What smaller word is left that means a big smile?",
+  "reveal_feedback": "The answer is grin. Grinned is grin with -ed added, and we doubled the n. Grin means a big smile."
+ },
+ {
+  "id": "RF.2.3d-H3",
+  "correct_feedback": "Great! Riding comes from ride. We dropped the silent e before adding -ing.",
+  "incorrect_feedback": "Good try! Take off -ing and think. What base word means to sit on a bike and go? Remember it may have a silent e.",
+  "reveal_feedback": "The answer is ride. Riding is ride with -ing added, and we dropped the e. Ride means to go on a bike."
+ },
+ {
+  "id": "RF.2.3d-H4",
+  "correct_feedback": "Yes! Cried comes from cry. When a word ends in y, we change the y to i before adding -ed.",
+  "incorrect_feedback": "Not yet. Take off -ed and think about the base word. What word means to shed tears? It ends in y.",
+  "reveal_feedback": "The answer is cry. Cried is cry with -ed added, and the y changed to i. Cry means to shed tears."
+ },
+ {
+  "id": "RF.2.3d-H5",
+  "correct_feedback": "Perfect! A prefix goes in front. Here it means to write again, so re means again.",
+  "incorrect_feedback": "Take another look. A prefix sits in FRONT of a real base word. Which word has a base word left when you take off re?",
+  "reveal_feedback": "The answer is rewrite. Take off re and you still have write, a real word. Re means to do it again."
+ },
+ {
+  "id": "RF.2.3e-Q1",
+  "correct_feedback": "Yes! This word does not follow the usual rules. You just have to remember how it sounds.",
+  "incorrect_feedback": "Hmm, three of these sound out just fine. Which one has letters that do NOT match the sounds you hear?",
+  "reveal_feedback": "The answer is said. It looks like it should rhyme with paid, but it sounds like sed. You just memorize it."
+ },
+ {
+  "id": "RF.2.3e-Q2",
+  "correct_feedback": "Yes! A silent e usually makes the vowel long, but in have the a stays short. That is the tricky part.",
+  "incorrect_feedback": "Good try! Say have out loud. Words ending in e usually have a long vowel. Is the a in have long or short?",
+  "reveal_feedback": "The answer is: it ends with e but the a is short. Usually an ending e makes the vowel long, but have breaks that rule."
+ },
+ {
+  "id": "RF.2.3e-Q3",
+  "correct_feedback": "Great! There is a letter at the start you do not hear at all. That letter is silent.",
+  "incorrect_feedback": "Close one! Say each word slowly. In which one do you skip right over a letter and not hear it?",
+  "reveal_feedback": "The answer is Know. The k is silent, so you only hear no. Cup, stop, and lamp say every letter."
+ },
+ {
+  "id": "RF.2.3e-Q4",
+  "correct_feedback": "Yes! In love the o does not say its own name. It sounds like the u in cup.",
+  "incorrect_feedback": "Not quite. Say love out loud and listen to the o. Does it sound like bone, or more like the vowel in cup?",
+  "reveal_feedback": "The answer is short u, like cup. In love the o surprises us and sounds like the u in cup, not a long o."
+ },
+ {
+  "id": "RF.2.3e-Q5",
+  "correct_feedback": "Yes! This word's letters do not make their usual sounds. You just have to remember it.",
+  "incorrect_feedback": "Almost! Three of these sound exactly how they look. Which one has a part that sounds different from what you expect?",
+  "reveal_feedback": "The answer is said. It looks like it should rhyme with paid, but it sounds like sed. It breaks the rules."
+ },
+ {
+  "id": "RF.2.3e-H1",
+  "correct_feedback": "You got it! In this word ea makes a short e sound, like in bed, not the long e in eat.",
+  "incorrect_feedback": "Take another look. Three of these have ea saying long e like eat. Which one has ea saying a short e like bed?",
+  "reveal_feedback": "The answer is bread. In bread the ea makes a short e sound, like bed. Clean, dream, and leaf all say long e."
+ },
+ {
+  "id": "RF.2.3e-H2",
+  "correct_feedback": "Yes! Said sounds like sed, and this word ends with that same sound. Great listening!",
+  "incorrect_feedback": "Good try! Remember, said sounds like sed. Say each word and find the one that ends with that same ed sound.",
+  "reveal_feedback": "The answer is bed. Said sounds like sed, and bed rhymes with it. Raid, paid, and made all use a long a."
+ },
+ {
+  "id": "RF.2.3e-H3",
+  "correct_feedback": "Great! This word starts with a letter you do not hear, just like the silent k in knot.",
+  "incorrect_feedback": "Not yet. Say each word slowly. Which one starts with a letter you skip over and do not hear at all?",
+  "reveal_feedback": "The answer is knee. The k is silent, so you only hear nee. Nut, net, and nest all say the n at the start."
+ },
+ {
+  "id": "RF.2.3e-H4",
+  "correct_feedback": "Yes! This word ends in e but the vowel is not long. It breaks the silent e rule.",
+  "incorrect_feedback": "Almost! Three of these have long vowels like bone. Which one ends in e but the vowel is NOT long?",
+  "reveal_feedback": "The answer is come. It ends in e but sounds like cum, with a short vowel. Rope, cone, and stone follow the rule."
+ },
+ {
+  "id": "RF.2.3e-H5",
+  "correct_feedback": "You nailed it! Would sounds like wood, and this word ends with that same sound. Nice ear!",
+  "incorrect_feedback": "Take another look. Would sounds like wood. Say each word and find the one that ends with that same sound.",
+  "reveal_feedback": "The answer is could. Would sounds like wood, and could rhymes with it. Both hide a silent l."
+ },
+ {
+  "id": "RF.2.3f-Q2",
+  "correct_feedback": "Yes! This is the tricky one to remember. The i comes before the e, and it spells a pal.",
+  "incorrect_feedback": "Good try! This word is tricky. Think about which letter comes first, the i or the e, when you spell it.",
+  "reveal_feedback": "The correct spelling is Friend. Remember, the i comes before the e. A friend is a fri-END you like."
+ },
+ {
+  "id": "RF.2.3f-Q4",
+  "correct_feedback": "Great! You picked the right spelling. This word means one more time.",
+  "incorrect_feedback": "Close one! Say the word out loud. It ends with an a-i-n sound. Which spelling has all the right letters?",
+  "reveal_feedback": "The correct spelling is Again. It ends in a-i-n. Again means one more time."
+ },
+ {
+  "id": "RF.2.3f-Q5",
+  "correct_feedback": "Yes! This is a word you memorize because its letters do not follow the usual sounds.",
+  "incorrect_feedback": "Hmm, three of these sound out easily. Which word has tricky letters you have to memorize?",
+  "reveal_feedback": "The answer is Because. Its letters do not sound the way you expect, so you learn it by heart. Help, stop, and jump follow the rules."
+ },
+ {
+  "id": "RF.2.3f-H1",
+  "correct_feedback": "You got it! This is the correct spelling, and it means for the reason that.",
+  "incorrect_feedback": "Take another look. This word is tricky to spell. Say it slowly: be-cause. Which spelling has the right letters at the end?",
+  "reveal_feedback": "The correct spelling is Because. Say it as be-cause. It means for the reason that."
+ },
+ {
+  "id": "RF.2.3f-H2",
+  "correct_feedback": "Yes! This word's letters do not make their usual sounds, so you learn it by heart.",
+  "incorrect_feedback": "Almost! Three of these sound out just fine. Which one has letters that do NOT match the sounds you hear?",
+  "reveal_feedback": "The answer is said. It looks like paid but sounds like sed, so you memorize it. Run, cat, and sit follow the rules."
+ },
+ {
+  "id": "RF.2.3f-H3",
+  "correct_feedback": "Great listening! In this word the letters gh surprise us and make the /f/ sound.",
+  "incorrect_feedback": "Good try! Say each word out loud. Which one has gh that makes an /f/ sound, like the ph in phone?",
+  "reveal_feedback": "The answer is laugh. Say it: laff. The gh makes an /f/ sound. In high and night the gh is silent."
+ },
+ {
+  "id": "RF.2.3f-H4",
+  "correct_feedback": "Yes! This is the correct spelling. It means as much as you need.",
+  "incorrect_feedback": "Not yet. This word is tricky. It ends with a gh that sounds like /f/. Which spelling has all the right letters?",
+  "reveal_feedback": "The correct spelling is Enough. Say it: e-nuff. The gh makes an /f/ sound. It means as much as you need."
+ },
+ {
+  "id": "RF.2.3f-H5",
+  "correct_feedback": "You nailed it! This is the right spelling, and it means was able to.",
+  "incorrect_feedback": "Close one! This word has a silent l inside it. Say it: kood. Which spelling has all the right letters?",
+  "reveal_feedback": "The correct spelling is Could. It has a silent l and sounds like kood. It means was able to."
+ },
+ {
+  "id": "RF.2.4-Q1",
+  "correct_feedback": "Yes! Reading smoothly, like you are telling a story, helps everyone follow along and understand.",
+  "incorrect_feedback": "Good try! Picture a reader who is easy to listen to. Would racing, stopping a lot, or whispering help your friends understand?",
+  "reveal_feedback": "The answer is reading smoothly, like you are telling the story, and saying most words right. That helps everyone understand best."
+ },
+ {
+  "id": "RF.2.4-Q2",
+  "correct_feedback": "Yes! An exclamation mark shows big feeling, so you read it with excitement or strong emotion.",
+  "incorrect_feedback": "Almost! An exclamation mark is a strong-feeling mark. How does your voice sound when you are really excited?",
+  "reveal_feedback": "The answer is excitement or strong feeling. An exclamation mark tells you to read with a big, strong voice."
+ },
+ {
+  "id": "RF.2.4-Q3",
+  "correct_feedback": "Great choice! Reading it again carefully helps your brain catch what you missed the first time.",
+  "incorrect_feedback": "Hmm, a good reader does not give up or skip. What could you do with that same sentence to understand it better?",
+  "reveal_feedback": "The answer is read it again more carefully. Going back and reading slowly helps you understand what you missed."
+ },
+ {
+  "id": "RF.2.4-Q4",
+  "correct_feedback": "Yes! A crossing guard yelling Stop needs a loud, firm voice so everyone hears and stops.",
+  "incorrect_feedback": "Good try! The guard YELLED it to keep kids safe. What kind of voice matches yelling an important warning?",
+  "reveal_feedback": "The answer is a loud, firm voice. The guard yelled Stop to keep everyone safe, so it needs a strong, clear voice."
+ },
+ {
+  "id": "RF.2.4-H1",
+  "correct_feedback": "Yes! You can clap this word into two beats: yel-low. That means it has two syllables.",
+  "incorrect_feedback": "Take another look. Clap as you say each word. Which one has TWO claps, meaning two beats?",
+  "reveal_feedback": "The answer is yellow. Clap it: yel-low, that is two beats. Through, bright, and scratched each have just one."
+ },
+ {
+  "id": "RF.2.4-H2",
+  "correct_feedback": "Great ear! Said sounds like sed, and this word ends with that same sound.",
+  "incorrect_feedback": "Good try! Remember, said sounds like sed. Say each word and find the one that ends with that ed sound.",
+  "reveal_feedback": "The answer is red. Said sounds like sed, and red rhymes with it. Seed, sad, and side have different vowel sounds."
+ },
+ {
+  "id": "RF.2.4-H3",
+  "correct_feedback": "Yes! This word has a long i and a silent e at the end, just like stripe.",
+  "incorrect_feedback": "Not yet. Stripe has a long i and a silent e. Which word says its i's name and ends in a silent e?",
+  "reveal_feedback": "The answer is slide. It has a long i and a silent e, just like stripe. Sniff, spill, and sprint have short i sounds."
+ },
+ {
+  "id": "RF.2.4-H4",
+  "correct_feedback": "Great! Boil has the /oy/ sound, and this word has that same /oy/ sound too.",
+  "incorrect_feedback": "Almost! Boil has the /oy/ sound in the middle. Say each word and find the one with that same /oy/ sound.",
+  "reveal_feedback": "The answer is toy. It has the /oy/ sound just like boil. Book, boat, and bowl each have a different vowel sound."
+ },
+ {
+  "id": "RF.2.4-H5",
+  "correct_feedback": "Yes! Gentle starts with a /j/ sound, and this word starts with that same soft /j/ sound.",
+  "incorrect_feedback": "Take another look. Gentle starts with a /j/ sound. Which word begins with that soft /j/, not a hard g like goat?",
+  "reveal_feedback": "The answer is giant. It starts with a soft /j/ sound, just like gentle. Great, goat, and gum start with a hard g."
+ },
+ {
+  "id": "RF.2.4a-Q1",
+  "correct_feedback": "Yes! To help a garden grow, the farmer planted seeds and gave them water. Great reading!",
+  "incorrect_feedback": "Good try! Think about what a garden needs to START growing. What would a farmer do at the very beginning?",
+  "reveal_feedback": "The answer is he watered the seeds and planted them. That is how he helped his garden grow before summer."
+ },
+ {
+  "id": "RF.2.4a-Q2",
+  "correct_feedback": "Great thinking! Asking what you want to learn helps you pay attention and find important parts.",
+  "incorrect_feedback": "Almost! A smart reader sets a goal before reading. Which question helps you focus on learning from the book?",
+  "reveal_feedback": "The answer is what do I want to learn from this? Asking that before you read helps you focus on the important parts."
+ },
+ {
+  "id": "RF.2.4a-Q3",
+  "correct_feedback": "Yes! The passage says dolphins breathe air and feed milk to babies. That makes them mammals, not fish.",
+  "incorrect_feedback": "Good try! Fish also swim, have tails, and live in the ocean. Look back for what makes dolphins SPECIAL and different.",
+  "reveal_feedback": "The answer is they breathe air and feed milk to babies. The passage says that is what makes dolphins different from fish."
+ },
+ {
+  "id": "RF.2.4a-Q4",
+  "correct_feedback": "Yes! Ben reads it every week because he dreams of being an astronaut someday. Nice reading!",
+  "incorrect_feedback": "Take another look. The story tells you Ben's big dream. Read again to find WHY he loves that space book.",
+  "reveal_feedback": "The answer is he wants to be an astronaut. The story says that is why Ben reads his space book so often."
+ },
+ {
+  "id": "RF.2.4a-Q5",
+  "correct_feedback": "Yes! The tunnels let air and water reach the roots, which helps the plants. Great job!",
+  "incorrect_feedback": "Good try! Look back at what the tunnels DO for the soil. What can now reach the plant roots because of them?",
+  "reveal_feedback": "The answer is they let air and water reach the roots. The passage says that is how earthworm tunnels help plants."
+ },
+ {
+  "id": "RF.2.4a-H1",
+  "correct_feedback": "Great ear! Great sounds like grayt, and this word ends with that same long a sound.",
+  "incorrect_feedback": "Hmm, this one is tricky. Great sounds like grayt with a long a. Find the word that ends with that same ate sound.",
+  "reveal_feedback": "The answer is plate. Great sounds like grayt, and plate rhymes with it. Seat, treat, and meat use a long e sound."
+ },
+ {
+  "id": "RF.2.4a-H2",
+  "correct_feedback": "Yes! When c is followed by e, it often makes the soft /s/ sound, like in ice.",
+  "incorrect_feedback": "Good try! Say each word and listen to the c. Which one makes an /s/ sound like in ice, not a hard /k/?",
+  "reveal_feedback": "The answer is cent. The c makes an /s/ sound, like in ice. In cave, cup, and cot the c makes a hard /k/ sound."
+ },
+ {
+  "id": "RF.2.4a-H3",
+  "correct_feedback": "Yes! You can clap it: im-por-tant. That is three beats, so three syllables. Nice!",
+  "incorrect_feedback": "Almost! Clap the word as you say it slowly: im-por-tant. How many claps, or beats, do you hear?",
+  "reveal_feedback": "The answer is 3. Clap it out: im-por-tant. That is three beats, so the word has three syllables."
+ },
+ {
+  "id": "RF.2.4a-H4",
+  "correct_feedback": "Great! This word has a letter you do not hear at all. That letter is silent.",
+  "incorrect_feedback": "Take another look. Say each word slowly. Which one has a letter you skip right over and never hear?",
+  "reveal_feedback": "The answer is knee. The k is silent, so you only hear nee. Nest, note, and need say every letter."
+ }
+]

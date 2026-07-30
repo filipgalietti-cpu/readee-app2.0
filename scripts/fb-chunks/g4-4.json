@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RF.4.3a-E3",
+  "standard": "RF.4.3a",
+  "prompt": "How many syllables (word chunks) do you hear in \"rabbit\"?",
+  "choices": [
+   "4 (r + a + bb + it)",
+   "3 (ra + bb + it)",
+   "2 (rab + bit)",
+   "1 (rabbit)"
+  ],
+  "correct": "2 (rab + bit)"
+ },
+ {
+  "id": "RF.4.3a-E4",
+  "standard": "RF.4.3a",
+  "prompt": "The word \"unhappy\" is built from parts. Which shows how to break it up?",
+  "choices": [
+   "unhap + py",
+   "u + nhappy",
+   "unh + appy",
+   "un + happy"
+  ],
+  "correct": "un + happy"
+ },
+ {
+  "id": "RF.4.3a-E5",
+  "standard": "RF.4.3a",
+  "prompt": "Break the word \"jumping\" into its two parts.",
+  "choices": [
+   "jump + ing",
+   "jum + ping",
+   "ju + mping",
+   "jumpi + ng"
+  ],
+  "correct": "jump + ing"
+ },
+ {
+  "id": "RF.4.4-Q1",
+  "standard": "RF.4.4",
+  "prompt": "A fluent reader adjusts their reading speed based on \u2014",
+  "choices": [
+   "What time it is",
+   "How many people are listening",
+   "How many pages are left",
+   "The difficulty and type of text they're reading"
+  ],
+  "correct": "The difficulty and type of text they're reading"
+ },
+ {
+  "id": "RF.4.4-Q2",
+  "standard": "RF.4.4",
+  "prompt": "When you read a story out loud, what helps you and others best understand what is happening?",
+  "choices": [
+   "Reading very fast, without pausing.",
+   "Reading at a comfortable speed, smoothly connecting words, and using your voice to match the story's feelings.",
+   "Reading each word slowly, one at a time, with no expression.",
+   "Stopping to spell out every single word, even easy ones."
+  ],
+  "correct": "Reading at a comfortable speed, smoothly connecting words, and using your voice to match the story's feelings."
+ },
+ {
+  "id": "RF.4.4-Q3",
+  "standard": "RF.4.4",
+  "prompt": "When reading a passage with technical vocabulary, a good reader should \u2014",
+  "choices": [
+   "Speed up to get through it faster",
+   "Slow down and use context clues to understand unfamiliar terms",
+   "Stop reading",
+   "Skip the technical words"
+  ],
+  "correct": "Slow down and use context clues to understand unfamiliar terms"
+ },
+ {
+  "id": "RF.4.4-Q4",
+  "standard": "RF.4.4",
+  "prompt": "Imagine a student is reading a story aloud to the class. Which description below shows the student reading with good fluency, making the story clear and easy to understand?",
+  "choices": [
+   "The student reads very quickly, skipping small words and not stopping at periods, making it hard to follow the plot.",
+   "The student reads each word slowly and carefully, sounding out many words, which makes the story sound choppy.",
+   "The student reads at a comfortable speed, using expression in their voice, and pausing where commas and periods are written.",
+   "The student reads in a quiet, flat voice, frequently stopping to guess at words they don't know."
+  ],
+  "correct": "The student reads at a comfortable speed, using expression in their voice, and pausing where commas and periods are written."
+ },
+ {
+  "id": "RF.4.4-Q5",
+  "standard": "RF.4.4",
+  "prompt": "You are reading a book, and suddenly you realize that the words you just read don't make sense in your mind. What is the most helpful thing to do so you can understand the story?",
+  "choices": [
+   "Keep reading until the end of the chapter.",
+   "Ask a friend to explain what happened.",
+   "Reread the part that was confusing to you.",
+   "Just guess what the words probably meant."
+  ],
+  "correct": "Reread the part that was confusing to you."
+ },
+ {
+  "id": "RF.4.4-E1",
+  "standard": "RF.4.4",
+  "prompt": "Read this sentence out loud: \"The dog ran to the park.\" A period ( . ) at the end tells a reader to \u2014",
+  "choices": [
+   "Stop and take a short pause",
+   "Skip the whole sentence",
+   "Read the next word faster",
+   "Shout the last word"
+  ],
+  "correct": "Stop and take a short pause"
+ },
+ {
+  "id": "RF.4.4-E2",
+  "standard": "RF.4.4",
+  "prompt": "Maya read a page but did not understand it, so she read the same page again. Reading something again to understand it better is called \u2014",
+  "choices": [
+   "Erasing",
+   "Rereading",
+   "Napping",
+   "Guessing"
+  ],
+  "correct": "Rereading"
+ },
+ {
+  "id": "RF.4.4-E3",
+  "standard": "RF.4.4",
+  "prompt": "A question mark ( ? ) is at the end of a sentence. When you read it out loud, your voice should \u2014",
+  "choices": [
+   "Get very quiet and sad",
+   "Turn into a whisper you can't hear",
+   "Go up, like you are asking something",
+   "Stay silent the whole time"
+  ],
+  "correct": "Go up, like you are asking something"
+ },
+ {
+  "id": "RF.4.4-E4",
+  "standard": "RF.4.4",
+  "prompt": "A \"fluent\" reader is a reader who can read text \u2014",
+  "choices": [
+   "With their eyes closed",
+   "Only while jumping",
+   "Backwards, word by word",
+   "Smoothly and with few mistakes"
+  ],
+  "correct": "Smoothly and with few mistakes"
+ },
+ {
+  "id": "RF.4.4-E5",
+  "standard": "RF.4.4",
+  "prompt": "Sam comes to a word he does not know while reading a story. The best thing for Sam to do is \u2014",
+  "choices": [
+   "Sound the word out to figure it out",
+   "Just make up any word he wants",
+   "Close the book and stop reading",
+   "Rip the page out"
+  ],
+  "correct": "Sound the word out to figure it out"
+ },
+ {
+  "id": "L.4.4-Q1",
+  "standard": "L.4.4",
+  "prompt": "The company decided to table the discussion until next week's meeting.\n\nIn this sentence, **table** means \u2014",
+  "choices": [
+   "To postpone or delay",
+   "To organize neatly",
+   "A piece of furniture",
+   "To serve food"
+  ],
+  "correct": "To postpone or delay"
+ },
+ {
+  "id": "L.4.4-Q2",
+  "standard": "L.4.4",
+  "prompt": "After the long hike, the exhausted climbers sought refuge in a mountain cabin.\n\nWhat does **refuge** mean?",
+  "choices": [
+   "A type of mountain",
+   "A safe place or shelter",
+   "Food",
+   "A dangerous path"
+  ],
+  "correct": "A safe place or shelter"
+ },
+ {
+  "id": "L.4.4-Q3",
+  "standard": "L.4.4",
+  "prompt": "The word **scale** has many meanings. What does it mean here?\n\n\"The fish's scale shimmered in the sunlight.\"",
+  "choices": [
+   "To climb",
+   "A weighing device",
+   "A thin plate covering a fish's body",
+   "A musical sequence"
+  ],
+  "correct": "A thin plate covering a fish's body"
+ },
+ {
+  "id": "L.4.4-Q4",
+  "standard": "L.4.4",
+  "prompt": "The philanthropist donated millions to build schools in underserved communities.\n\nUsing the Greek roots **phil** (love) and **anthrop** (human), a philanthropist is someone who \u2014",
+  "choices": [
+   "Collects stamps",
+   "Studies philosophy",
+   "Teaches at a school",
+   "Loves helping humanity through generous donations"
+  ],
+  "correct": "Loves helping humanity through generous donations"
+ },
+ {
+  "id": "L.4.4-Q5",
+  "standard": "L.4.4",
+  "prompt": "When you encounter a word with multiple meanings, the BEST way to determine which meaning is correct is \u2014",
+  "choices": [
+   "Use the surrounding context to figure out which meaning fits",
+   "Pick the easiest definition",
+   "Always use the first definition in the dictionary",
+   "Ask someone else"
+  ],
+  "correct": "Use the surrounding context to figure out which meaning fits"
+ },
+ {
+  "id": "L.4.4-E1",
+  "standard": "L.4.4",
+  "prompt": "Read the sentence:\n\n\"The bright sun was so **brilliant** that we had to shade our eyes.\"\n\nIn this sentence, **brilliant** means \u2014",
+  "choices": [
+   "Very bright",
+   "Very slow",
+   "Very quiet",
+   "Very cold"
+  ],
+  "correct": "Very bright"
+ },
+ {
+  "id": "L.4.4-E2",
+  "standard": "L.4.4",
+  "prompt": "Read the sentence:\n\n\"After running the race, Maria felt **exhausted** and needed to rest.\"\n\nWhat does **exhausted** mean?",
+  "choices": [
+   "Very tall",
+   "Very tired",
+   "Very hungry",
+   "Very happy"
+  ],
+  "correct": "Very tired"
+ },
+ {
+  "id": "L.4.4-E3",
+  "standard": "L.4.4",
+  "prompt": "Read the sentence:\n\n\"The tiny puppy was **timid** and hid behind its mother when strangers came near.\"\n\nIn this sentence, **timid** means \u2014",
+  "choices": [
+   "Big and strong",
+   "Fast and hungry",
+   "Shy or afraid",
+   "Loud and brave"
+  ],
+  "correct": "Shy or afraid"
+ },
+ {
+  "id": "L.4.4-E4",
+  "standard": "L.4.4",
+  "prompt": "Read the sentence:\n\n\"We had to **postpone** the picnic because it started to rain, so we planned it for next week.\"\n\nWhat does **postpone** mean?",
+  "choices": [
+   "To run away",
+   "To eat quickly",
+   "To clean up",
+   "To move to a later time"
+  ],
+  "correct": "To move to a later time"
+ },
+ {
+  "id": "L.4.4-E5",
+  "standard": "L.4.4",
+  "prompt": "Read the sentence:\n\n\"The soup was so **delicious** that everyone asked for a second bowl.\"\n\nIn this sentence, **delicious** means \u2014",
+  "choices": [
+   "Tasting very good",
+   "Very small",
+   "Very cold",
+   "Very loud"
+  ],
+  "correct": "Tasting very good"
+ },
+ {
+  "id": "L.4.4a-Q4",
+  "standard": "L.4.4a",
+  "prompt": "The two countries formed an alliance, agreeing to protect each other in times of war.\n\nAn **alliance** is \u2014",
+  "choices": [
+   "A type of weapon",
+   "A partnership or agreement to work together",
+   "A battle between countries",
+   "A border between nations"
+  ],
+  "correct": "A partnership or agreement to work together"
+ },
+ {
+  "id": "L.4.4a-E1",
+  "standard": "L.4.4a",
+  "prompt": "The sky turned dark and gloomy, and everyone felt sad on the rainy day.\n\n**Gloomy** means \u2014",
+  "choices": [
+   "Dark and sad",
+   "Warm and dry",
+   "Bright and sunny",
+   "Loud and noisy"
+  ],
+  "correct": "Dark and sad"
+ },
+ {
+  "id": "L.4.4a-E2",
+  "standard": "L.4.4a",
+  "prompt": "The tired hikers finally reached the top of the mountain, so they stopped to rest.\n\n**Reached** means \u2014",
+  "choices": [
+   "Fell asleep on",
+   "Got to",
+   "Ran away from",
+   "Forgot about"
+  ],
+  "correct": "Got to"
+ },
+ {
+  "id": "L.4.4a-E3",
+  "standard": "L.4.4a",
+  "prompt": "The soup was so hot that it burned my tongue when I took a sip.\n\n**Hot** means \u2014",
+  "choices": [
+   "Very sweet",
+   "Very hard",
+   "Very warm",
+   "Very cold"
+  ],
+  "correct": "Very warm"
+ },
+ {
+  "id": "L.4.4a-E4",
+  "standard": "L.4.4a",
+  "prompt": "My little brother was afraid of the dark, so he slept with a night-light on.\n\n**Afraid** means \u2014",
+  "choices": [
+   "Hungry",
+   "Excited and happy",
+   "Sleepy and calm",
+   "Scared"
+  ],
+  "correct": "Scared"
+ },
+ {
+  "id": "L.4.4a-E5",
+  "standard": "L.4.4a",
+  "prompt": "The puppy was so playful that it ran and jumped all around the yard.\n\n**Playful** means \u2014",
+  "choices": [
+   "Full of play and fun",
+   "Sick and weak",
+   "Sleepy and still",
+   "Mean and angry"
+  ],
+  "correct": "Full of play and fun"
+ },
+ {
+  "id": "L.4.4b-Q4",
+  "standard": "L.4.4b",
+  "prompt": "Using the prefix **micro-** as a clue, what does a **microscope** help you see?",
+  "choices": [
+   "Things far away",
+   "Very large things",
+   "Very small things",
+   "Things in the dark"
+  ],
+  "correct": "Very small things"
+ },
+ {
+  "id": "L.4.4b-E1",
+  "standard": "L.4.4b",
+  "prompt": "The prefix **re-** means \"again.\" If you **rewrite** your story, what are you doing?",
+  "choices": [
+   "Writing it again",
+   "Coloring a picture",
+   "Throwing it away",
+   "Reading it out loud"
+  ],
+  "correct": "Writing it again"
+ },
+ {
+  "id": "L.4.4b-E2",
+  "standard": "L.4.4b",
+  "prompt": "The prefix **un-** means \"not.\" If a shoe is **untied**, that means it is:",
+  "choices": [
+   "Too small",
+   "Not tied",
+   "Very clean",
+   "Brand new"
+  ],
+  "correct": "Not tied"
+ },
+ {
+  "id": "L.4.4b-E3",
+  "standard": "L.4.4b",
+  "prompt": "The root **tri-** means \"three.\" How many sides does a **triangle** have?",
+  "choices": [
+   "Six",
+   "Ten",
+   "Three",
+   "One"
+  ],
+  "correct": "Three"
+ },
+ {
+  "id": "L.4.4b-E4",
+  "standard": "L.4.4b",
+  "prompt": "The prefix **pre-** means \"before.\" When you **preview** a movie, you see part of it:",
+  "choices": [
+   "Twice in a row",
+   "After it ends",
+   "During dinner",
+   "Before the whole movie"
+  ],
+  "correct": "Before the whole movie"
+ },
+ {
+  "id": "L.4.4b-E5",
+  "standard": "L.4.4b",
+  "prompt": "The root **bi-** means \"two.\" How many wheels does a **bicycle** have?",
+  "choices": [
+   "Two",
+   "Eight",
+   "Four",
+   "One"
+  ],
+  "correct": "Two"
+ },
+ {
+  "id": "L.4.4c-Q1",
+  "standard": "L.4.4c",
+  "prompt": "A dictionary entry shows: \"ar\u00b7chi\u00b7pel\u00b7a\u00b7go (ar-kuh-PEL-uh-go) n. a group of islands.\" What does the entry in parentheses tell you?",
+  "choices": [
+   "A synonym",
+   "When to use the word",
+   "The word's origin",
+   "How to pronounce the word"
+  ],
+  "correct": "How to pronounce the word"
+ },
+ {
+  "id": "L.4.4c-Q2",
+  "standard": "L.4.4c",
+  "prompt": "You want to find a word that means the same as **happy** but with a stronger feeling. Which reference should you use?",
+  "choices": [
+   "A thesaurus",
+   "An encyclopedia",
+   "A dictionary",
+   "An atlas"
+  ],
+  "correct": "A thesaurus"
+ },
+ {
+  "id": "L.4.4c-Q3",
+  "standard": "L.4.4c",
+  "prompt": "Read the dictionary entry for \"lumber\":\n\nlumber (LUM-ber) v. To move slowly and heavily. n. Wood that has been cut into boards.\n\nWhich meaning of \"lumber\" is used in the sentence: \"The big bear began to lumber through the forest\"?",
+  "choices": [
+   "To make a loud noise.",
+   "Wood that has been cut into boards.",
+   "To move slowly and heavily.",
+   "To climb quickly."
+  ],
+  "correct": "To move slowly and heavily."
+ },
+ {
+  "id": "L.4.4c-Q4",
+  "standard": "L.4.4c",
+  "prompt": "A dictionary shows three definitions for **crane**: 1. A large bird. 2. A machine for lifting heavy objects. 3. To stretch one's neck. The sentence is: \"She craned her neck to see over the crowd.\" Which definition applies?",
+  "choices": [
+   "Definition 2",
+   "Definition 1",
+   "Definition 3",
+   "All three"
+  ],
+  "correct": "Definition 3"
+ },
+ {
+  "id": "L.4.4c-Q5",
+  "standard": "L.4.4c",
+  "prompt": "Based on the sentence, which dictionary entry best clarifies the precise meaning of the word \"meander\"?\"The river did not flow in a straight line; instead, it began to meander through the valley.\"",
+  "choices": [
+   "meander (mee-AN-der) verb. To flow quickly in a straight line.",
+   "meander (mee-AN-der) verb. To follow a winding or curvy path.",
+   "meander (mee-AN-der) noun. A type of large rock found in a riverbed.",
+   "meander (mee-AN-der) verb. To dry up completely."
+  ],
+  "correct": "meander (mee-AN-der) verb. To follow a winding or curvy path."
+ },
+ {
+  "id": "L.4.4c-H1",
+  "standard": "L.4.4c",
+  "prompt": "A dictionary gives this entry:\n\ntemper\nn. 1. a calm state of mind; composure.\nn. 2. a tendency to become angry easily.\nv. 3. to make something less harsh or severe; to soften.\nv. 4. to harden metal by heating and then cooling it.\n\nRead this sentence: \"A wise teacher learns to temper firm rules with warmth and humor.\"\n\nWhich numbered meaning matches the way temper is used in the sentence?",
+  "choices": [
+   "To make something less harsh or severe; to soften",
+   "To harden metal by heating and then cooling it",
+   "A tendency to become angry easily",
+   "A calm state of mind; composure"
+  ],
+  "correct": "To make something less harsh or severe; to soften"
+ },
+ {
+  "id": "L.4.4c-H2",
+  "standard": "L.4.4c",
+  "prompt": "The two words printed at the very top of a dictionary page are called guide words. They tell you the first and the last word found on that page, in alphabetical order. On one page, the guide words are marble and margin. Which word would you find on that page?",
+  "choices": [
+   "marvel",
+   "march",
+   "maple",
+   "marine"
+  ],
+  "correct": "march"
+ },
+ {
+  "id": "L.4.4c-H3",
+  "standard": "L.4.4c",
+  "prompt": "You are reading your science textbook and reach the word sediment in a chapter about rivers. You want to know exactly what the word means the way this chapter uses it, and you want to find it quickly without putting the book down. Which reference should you use?",
+  "choices": [
+   "A thesaurus",
+   "An encyclopedia",
+   "The glossary at the back of the textbook",
+   "A dictionary from the library"
+  ],
+  "correct": "The glossary at the back of the textbook"
+ },
+ {
+  "id": "L.4.4c-H4",
+  "standard": "L.4.4c",
+  "prompt": "A thesaurus lists these words as synonyms for the word said: whispered, muttered, announced, boasted.\n\nIn a story, a boy does not want the nearby guard to overhear him, so he leans close to his friend's ear and ___ the secret plan.\n\nWhich word best fits the precise meaning the story needs?",
+  "choices": [
+   "boasted",
+   "muttered",
+   "announced",
+   "whispered"
+  ],
+  "correct": "whispered"
+ },
+ {
+  "id": "L.4.4c-H5",
+  "standard": "L.4.4c",
+  "prompt": "A dictionary gives this entry:\n\nminute\n1. (MIN-it) n. a unit of time equal to sixty seconds.\n2. (my-NOOT) adj. extremely small; tiny.\n\nRead this sentence: \"Using a magnifying glass, the scientist studied the minute grains of pollen.\"\n\nHow should minute be pronounced in this sentence, and why?",
+  "choices": [
+   "my-NOOT, because here it means extremely small",
+   "MIN-it, because it is the first pronunciation listed",
+   "MIN-it, because here it means sixty seconds",
+   "my-NOOT, because it is the longer, fancier word"
+  ],
+  "correct": "my-NOOT, because here it means extremely small"
+ }
+]

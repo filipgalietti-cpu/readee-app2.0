@@ -1,0 +1,272 @@
+[
+ {
+  "id": "L.4.4c-E1",
+  "correct_feedback": "Yes! A dictionary is built to give you the meanings of words, so it's exactly where Emma should look up 'gigantic.'",
+  "incorrect_feedback": "Hmm, think about which of these books is made to explain what words mean, not to cook or make you laugh.",
+  "reveal_feedback": "The answer is a dictionary. A dictionary lists words with their meanings, so it's the perfect place to learn what 'gigantic' means."
+ },
+ {
+  "id": "L.4.4c-E2",
+  "correct_feedback": "Nice! Those letters in parentheses spell out the sounds, so they show you how to say the word out loud.",
+  "incorrect_feedback": "Take another look. Say the letters (kat) out loud. What are they helping you do with the word?",
+  "reveal_feedback": "The answer is 'how to say the word.' The part in parentheses spells the sounds so you can pronounce it correctly."
+ },
+ {
+  "id": "L.4.4c-E3",
+  "correct_feedback": "Exactly! A thesaurus lists words with similar meanings, so Ben can swap 'happy' for something like 'cheerful.'",
+  "incorrect_feedback": "Almost. A calendar, menu, and atlas each do a different job. Which book is made for finding words that mean the same?",
+  "reveal_feedback": "The answer is a thesaurus. A thesaurus groups words with similar meanings, so Ben can find another word for 'happy.'"
+ },
+ {
+  "id": "L.4.4c-E4",
+  "correct_feedback": "That's it! A glossary is a mini-dictionary at the back of a book that explains its important words.",
+  "incorrect_feedback": "Good try. A ruler, song, and map don't explain word meanings. What do we call that word list at the back of a book?",
+  "reveal_feedback": "The answer is a glossary. A glossary is the list of key words and meanings found at the back of a book."
+ },
+ {
+  "id": "L.4.4c-E5",
+  "correct_feedback": "Right! 'Very surprising; wonderful' is a definition, so the dictionary told you what the word means.",
+  "incorrect_feedback": "Close one. The dictionary gave you a short description of 'amazing.' What kind of information is that?",
+  "reveal_feedback": "The answer is 'what the word means.' A dictionary gives definitions, so it told you the meaning of 'amazing.'"
+ },
+ {
+  "id": "L.4.5-Q1",
+  "correct_feedback": "Yes! The word 'like' compares the news to a ton of bricks, and comparing with 'like' or 'as' makes it a simile.",
+  "incorrect_feedback": "Not yet. Look at the little word 'like' doing the comparing. Which kind of figurative language uses 'like' or 'as'?",
+  "reveal_feedback": "The answer is a simile. Similes compare two things using 'like' or 'as,' and this one uses 'like a ton of bricks.'"
+ },
+ {
+  "id": "L.4.5-Q2",
+  "correct_feedback": "Exactly! It calls the world a stage directly, without 'like' or 'as,' so it's a metaphor.",
+  "incorrect_feedback": "Almost. Notice it says the world IS a stage, with no 'like' or 'as.' What do we call that direct comparison?",
+  "reveal_feedback": "The answer is a metaphor. A metaphor says one thing IS another, and this one calls the world a stage."
+ },
+ {
+  "id": "L.4.5-Q3",
+  "correct_feedback": "Right! When someone hits the nail on the head, they've said or done something exactly correct.",
+  "incorrect_feedback": "Take another look. This idiom isn't really about hammers or nails. Think about what it means to be spot-on.",
+  "reveal_feedback": "The answer is 'to be exactly right.' The idiom 'hit the nail on the head' means you got something perfectly correct."
+ },
+ {
+  "id": "L.4.5-Q4",
+  "correct_feedback": "Yes! A car can't really cough or die, so giving it those human actions is personification.",
+  "incorrect_feedback": "Close one. Cars can't cough or die like people. What do we call it when we give human actions to a non-living thing?",
+  "reveal_feedback": "The answer is personification. Giving the car human actions like coughing makes this personification."
+ },
+ {
+  "id": "L.4.5-Q5",
+  "correct_feedback": "Great thinking! 'Upset' is a little mad but 'furious' is extremely mad, so that's the biggest jump in strength.",
+  "incorrect_feedback": "Hmm, some of these pairs mean nearly the same thing. Which pair jumps from a mild feeling to a very strong one?",
+  "reveal_feedback": "The answer is 'upset and furious.' 'Upset' is mildly angry while 'furious' is extremely angry, the biggest jump."
+ },
+ {
+  "id": "L.4.5-E1",
+  "correct_feedback": "Yes! Maria uses 'as' to compare her backpack to an elephant, and that comparison makes it a simile.",
+  "incorrect_feedback": "Not quite. Look at the little word 'as' comparing two things. What kind of figurative language does that?",
+  "reveal_feedback": "The answer is a simile, because she uses 'as' to compare two things. That's what makes a simile."
+ },
+ {
+  "id": "L.4.5-E2",
+  "correct_feedback": "Right! Wind can't really whisper, so giving it that human action is personification.",
+  "incorrect_feedback": "Take another look. Whispering is something people do. What do we call giving a human action to the wind?",
+  "reveal_feedback": "The answer is personification. Giving the wind a human action like whispering is personification."
+ },
+ {
+  "id": "L.4.5-E3",
+  "correct_feedback": "Exactly! 'Raining cats and dogs' is a common saying that doesn't mean its literal words, so it's an idiom.",
+  "incorrect_feedback": "Almost. Grandpa isn't being literal, and it's not a list or a test. What do we call a saying like this?",
+  "reveal_feedback": "The answer is an idiom. An idiom is a saying whose real meaning is different from its literal words."
+ },
+ {
+  "id": "L.4.5-E4",
+  "correct_feedback": "Yes! The word 'as' compares the star to a diamond, and comparing with 'as' makes it a simile.",
+  "incorrect_feedback": "Good try. This sentence compares two things using 'as.' What kind of figurative language uses 'like' or 'as'?",
+  "reveal_feedback": "The answer is a simile. Comparing the star to a diamond with the word 'as' makes it a simile."
+ },
+ {
+  "id": "L.4.5-E5",
+  "correct_feedback": "Nice! A smile isn't truly warm like sunshine, so that comparison is figurative language, not a plain fact.",
+  "incorrect_feedback": "Hmm, three of these just say plainly what happened. Which one paints a picture instead of stating a real fact?",
+  "reveal_feedback": "The answer is 'Her smile was as warm as sunshine.' It compares a smile to sunshine, so it's figurative language."
+ },
+ {
+  "id": "L.4.5a-Q5",
+  "correct_feedback": "Right! Comparing her laughter to music means it sounded delightful and made him feel happy and pleased.",
+  "incorrect_feedback": "Take another look. The simile isn't about real music or loudness. How would nice music make you FEEL?",
+  "reveal_feedback": "The answer is that her laughter made him feel happy and pleased. Comparing it to music shows it delighted him."
+ },
+ {
+  "id": "L.4.5a-H1",
+  "correct_feedback": "Yes! A zoo is full of noisy, wild animals, so this metaphor means the students got loud and out of control.",
+  "incorrect_feedback": "Almost. Picture what a zoo is really like. It isn't bored or crowded, so how were the students acting?",
+  "reveal_feedback": "The answer is that the students grew wild, loud, and out of control, just like a noisy zoo full of animals."
+ },
+ {
+  "id": "L.4.5a-H2",
+  "correct_feedback": "Exactly! Noodles are floppy and can't hold you up, so Dad means his tired legs felt weak and wobbly.",
+  "incorrect_feedback": "Close one. Think about how a cooked noodle bends and flops. What would legs like that feel like after a hike?",
+  "reveal_feedback": "The answer is that his legs felt weak and wobbly. Noodles are floppy and soft, just like his tired legs."
+ },
+ {
+  "id": "L.4.5a-H3",
+  "correct_feedback": "Right! An anchor holds a boat steady, so he means his granddaughter keeps the family steady and together.",
+  "incorrect_feedback": "Not yet. Think about what an anchor does for a boat. He's proud of her, so this is a compliment.",
+  "reveal_feedback": "The answer is that she keeps the family steady and holds it together, just like an anchor steadies a boat."
+ },
+ {
+  "id": "L.4.5a-H4",
+  "correct_feedback": "Nice! It says the snow IS a blanket with no 'like' or 'as,' and that direct comparison is a metaphor.",
+  "incorrect_feedback": "Take another look. A metaphor says one thing IS another, with no 'like' or 'as.' Which sentence does that?",
+  "reveal_feedback": "The answer is 'The fresh snow was a thick blanket over the yard.' It says snow IS a blanket, so it's a metaphor."
+ },
+ {
+  "id": "L.4.5a-H5",
+  "correct_feedback": "Yes! A bulldog grips tight and won't let go, which perfectly shows how Nora refused to give up.",
+  "incorrect_feedback": "Almost. You want an animal known for gripping tight and being stubborn, not still, drifting, or quiet.",
+  "reveal_feedback": "The answer is 'Nora was a bulldog, holding on and not letting go.' A bulldog's grip shows she wouldn't give up."
+ },
+ {
+  "id": "L.4.5a-E1",
+  "correct_feedback": "Right! A log lies totally still, so 'slept like a log' means she slept very deeply and well.",
+  "incorrect_feedback": "Take another look. She was tired after a race. A log doesn't move at all, so how do you think she slept?",
+  "reveal_feedback": "The answer is that she slept very deeply and well. A log lies perfectly still, just like a deep sleeper."
+ },
+ {
+  "id": "L.4.5a-E2",
+  "correct_feedback": "Yes! Mice are tiny and barely make a sound, so 'quiet as a mouse' means the room was very quiet.",
+  "incorrect_feedback": "Not quite. This is a test, and mice are known for being silent. What is the simile telling you about the room?",
+  "reveal_feedback": "The answer is that the room was very quiet. A mouse is silent, so 'quiet as a mouse' means very quiet."
+ },
+ {
+  "id": "L.4.5a-E3",
+  "correct_feedback": "Exactly! Rockets zoom incredibly fast, so calling his car a rocket means it is very fast.",
+  "incorrect_feedback": "Close one. Dad is bragging about his new car, and rockets are famous for one thing. What is a rocket known for?",
+  "reveal_feedback": "The answer is 'very fast.' Rockets zoom at amazing speeds, so calling his car a rocket means it's very fast."
+ },
+ {
+  "id": "L.4.5a-E4",
+  "correct_feedback": "Right! Nobody could really eat a whole horse, so it's a big exaggeration meaning he's extremely hungry.",
+  "incorrect_feedback": "Take another look. Jake can't really eat a horse. He's exaggerating, so what is he trying to tell us?",
+  "reveal_feedback": "The answer is that he is extremely hungry. Saying he could eat a horse is a big exaggeration of his hunger."
+ },
+ {
+  "id": "L.4.5a-E5",
+  "correct_feedback": "Yes! Sunshine feels cozy and warm, so 'warm as sunshine' tells you the bread was nice and warm.",
+  "incorrect_feedback": "Almost. The simile compares the bread to sunshine, but not its color or the sky. How does sunshine FEEL?",
+  "reveal_feedback": "The answer is 'nice and warm.' Sunshine feels cozy and warm, so the bread was warm too."
+ },
+ {
+  "id": "L.4.5b-Q4",
+  "correct_feedback": "Right! The bird that wakes early gets the worm, teaching that acting or preparing first gives you an advantage.",
+  "incorrect_feedback": "Take another look. This proverb isn't really about birds or worms. What lesson does starting early teach?",
+  "reveal_feedback": "The answer is that those who act first or prepare early have an advantage, which is the proverb's real lesson."
+ },
+ {
+  "id": "L.4.5b-E1",
+  "correct_feedback": "Yes! Her mom told her to grab an umbrella, so 'raining cats and dogs' means it's raining very hard.",
+  "incorrect_feedback": "Not quite. She needs an umbrella, so it isn't sunny. This idiom describes the rain, not falling pets.",
+  "reveal_feedback": "The answer is that it is raining very hard. 'Raining cats and dogs' is an idiom for heavy rain."
+ },
+ {
+  "id": "L.4.5b-E2",
+  "correct_feedback": "Right! Keeping a penny is like earning one, so this saying teaches that it's smart to save your money.",
+  "incorrect_feedback": "Take another look. If a saved penny is just as good as an earned one, what is Grandpa saying you should do?",
+  "reveal_feedback": "The answer is 'save your money.' The saying means money you keep is as valuable as money you earn."
+ },
+ {
+  "id": "L.4.5b-E3",
+  "correct_feedback": "Exactly! The more you practice something, the better you get, which is why coaches say this.",
+  "incorrect_feedback": "Close one. The coach wants the team to improve. Think about what doing something over and over does for you.",
+  "reveal_feedback": "The answer is that practicing a lot helps you get better. That's what 'practice makes perfect' teaches."
+ },
+ {
+  "id": "L.4.5b-E4",
+  "correct_feedback": "Yes! Sam finished, just later than expected, so 'better late than never' means late is still better than not at all.",
+  "incorrect_feedback": "Almost. Dad is happy the homework got done. Is finishing late better or worse than never finishing?",
+  "reveal_feedback": "The answer is that doing something late is still better than not doing it at all, which is the saying's meaning."
+ },
+ {
+  "id": "L.4.5b-E5",
+  "correct_feedback": "Right! His sister wanted to calm his nerves, so 'a piece of cake' means the task is very easy.",
+  "incorrect_feedback": "Take another look. She's comforting nervous Leo, and there's no real cake. Would she say it's hard or easy?",
+  "reveal_feedback": "The answer is that it is very easy. The idiom 'a piece of cake' means something is simple to do."
+ },
+ {
+  "id": "L.4.5c-Q3",
+  "correct_feedback": "Nice! All three mean happy, but 'happy' is mild and 'ecstatic' is extreme, so they differ in intensity.",
+  "incorrect_feedback": "Not yet. These words all mean happy, so it isn't spelling or opposite meanings. How strong is each feeling?",
+  "reveal_feedback": "The answer is their intensity, from mild to extreme happiness. 'Happy' is gentle while 'ecstatic' is very strong."
+ },
+ {
+  "id": "L.4.5c-E1",
+  "correct_feedback": "Right! Cold is the true opposite of hot, so it's the antonym you're looking for.",
+  "incorrect_feedback": "Take another look. 'Warm' and 'spicy' are close to hot, and 'oven' is a thing. Which word means the opposite?",
+  "reveal_feedback": "The answer is 'cold.' Cold is the exact opposite of hot, so it's the antonym."
+ },
+ {
+  "id": "L.4.5c-E2",
+  "correct_feedback": "Yes! 'Large' means almost the same as 'big,' so it's the synonym.",
+  "incorrect_feedback": "Not quite. A synonym means nearly the same thing. 'Tiny' and 'short' are opposites, so which word matches 'big'?",
+  "reveal_feedback": "The answer is 'large.' 'Large' means nearly the same as 'big,' so they are synonyms."
+ },
+ {
+  "id": "L.4.5c-E3",
+  "correct_feedback": "Right! 'Sad' is the opposite of 'happy,' so it's the antonym.",
+  "incorrect_feedback": "Take another look. 'Cheerful' and 'glad' mean the same as happy. An antonym is an opposite, so which word fits?",
+  "reveal_feedback": "The answer is 'sad.' Sad is the opposite feeling from happy, so it's the antonym."
+ },
+ {
+  "id": "L.4.5c-E4",
+  "correct_feedback": "Exactly! 'Begin' and 'start' mean almost the same thing, and that's what makes them synonyms.",
+  "incorrect_feedback": "Almost. They aren't opposites, animals, or rhymes. Think about what 'synonym' actually means.",
+  "reveal_feedback": "The answer is that they mean almost the same thing. Words with nearly the same meaning are synonyms."
+ },
+ {
+  "id": "L.4.5c-E5",
+  "correct_feedback": "Right! The sentence contrasts 'rough' with 'smooth,' so smooth is its opposite.",
+  "incorrect_feedback": "Take another look at the sentence. The word 'not' points you to the opposite of 'rough.' Which word is it?",
+  "reveal_feedback": "The answer is 'smooth.' The sentence says the road was rough, not smooth, so smooth is the opposite of rough."
+ },
+ {
+  "id": "L.4.6-Q1",
+  "correct_feedback": "Yes! Words like 'accelerated' and 'atmosphere' give exact details, so this sentence is the most precise.",
+  "incorrect_feedback": "Not yet. Precise language uses exact, clear words. Which sentence gives real details instead of vague ones like 'thing'?",
+  "reveal_feedback": "The answer is the rocket sentence. Exact words like 'accelerated' and 'atmosphere' make it the most precise."
+ },
+ {
+  "id": "L.4.6-Q2",
+  "correct_feedback": "Right! In a democracy the citizens hold the power and make decisions by voting.",
+  "incorrect_feedback": "Take another look. Democracy isn't rule by one king or the military. Who holds the power in a democracy?",
+  "reveal_feedback": "The answer is a system where citizens have the power to make decisions through voting. That's democracy."
+ },
+ {
+  "id": "L.4.6-Q4",
+  "correct_feedback": "Exactly! 'In contrast' warns the reader that a difference or opposite idea is coming next.",
+  "incorrect_feedback": "Almost. 'Contrast' is a clue in the phrase itself. Does it signal a similarity or a difference ahead?",
+  "reveal_feedback": "The answer is 'show a difference.' The phrase 'in contrast' tells you a differing idea is coming next."
+ },
+ {
+  "id": "L.4.6-Q5",
+  "correct_feedback": "Yes! Stammering, looking down, and a shaky voice are all signs that a person is feeling nervous.",
+  "incorrect_feedback": "Take another look at the clues. A shaky voice and looking at the floor aren't signs of being excited or confident.",
+  "reveal_feedback": "The answer is 'nervous.' Stammering, looking down, and a shaky voice all show someone is nervous."
+ },
+ {
+  "id": "L.4.6-E1",
+  "correct_feedback": "Right! A beaver lives in and around water, so the river and the woods around it are its habitat.",
+  "incorrect_feedback": "Take another look. A habitat is a place an animal lives. Shoes, bikes, and pizza aren't homes for a beaver.",
+  "reveal_feedback": "The answer is the river and the woods around it. That's where a beaver lives, so it's the beaver's habitat."
+ },
+ {
+  "id": "L.4.6-E2",
+  "correct_feedback": "Yes! A blue whale is huge, and 'enormous' means very, very big, so it's the perfect match.",
+  "incorrect_feedback": "Not quite. 'Enormous' means very, very big. A mouse, ant, and ladybug are all tiny, so which animal is huge?",
+  "reveal_feedback": "The answer is a giant blue whale. Blue whales are enormous, meaning very, very big."
+ },
+ {
+  "id": "L.4.6-E3",
+  "correct_feedback": "Right! A coast is land next to the ocean, so the sandy beach where waves reach the land is a coast.",
+  "incorrect_feedback": "Take another look. A coast touches the ocean. A mountain, kitchen, and dry desert aren't next to the sea.",
+  "reveal_feedback": "The answer is the sandy beach where the waves reach the land. Land right next to the ocean is a coast."
+ }
+]

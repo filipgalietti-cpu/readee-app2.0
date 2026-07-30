@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.K.8-Q2",
+  "correct_feedback": "Yes! The author says sleep helps your body grow and your brain learn. Those are the two big reasons. Great listening!",
+  "incorrect_feedback": "Hmm, let's look again. The story tells us what sleep does for kids. Listen for the words about your body and your brain.",
+  "reveal_feedback": "That one was tricky! Kids need sleep because it helps your body grow and your brain learn. Now you know!"
+ },
+ {
+  "id": "RI.K.8-Q3",
+  "correct_feedback": "Yes! The author says helmets protect your head if you fall. That is the reason to wear one. Great job!",
+  "incorrect_feedback": "Almost! Think about why a helmet is important. What does it do for your head when you fall off your bike?",
+  "reveal_feedback": "That one was tricky! The author says to wear a helmet because it protects your head if you fall. Now you know!"
+ },
+ {
+  "id": "RI.K.8-Q4",
+  "correct_feedback": "Yes! Being loyal means dogs stay by your side. That is why they make great pets. Great thinking!",
+  "incorrect_feedback": "Good try! Think about what makes a dog a GREAT friend to you, not just what a dog does each day.",
+  "reveal_feedback": "That one was tricky! Dogs make great pets because they are loyal. That means they stick with you. Now you know!"
+ },
+ {
+  "id": "RI.K.8-Q5",
+  "correct_feedback": "Yes! The author did NOT say water makes you taller. That one is not a real reason. Great catching it!",
+  "incorrect_feedback": "Close one! Three of these ARE reasons the author gave. Find the one that was NOT in the story at all.",
+  "reveal_feedback": "That one was tricky! The author never said water makes you taller. That is why it was the odd one out. Now you know!"
+ },
+ {
+  "id": "RI.K.8-H1",
+  "correct_feedback": "Yes! The author says a hat keeps the hot sun out of your eyes. That is the reason for a hat. Great listening!",
+  "incorrect_feedback": "Not yet! The hat part and the boots part do different jobs. Listen again for what the HAT does on a sunny day.",
+  "reveal_feedback": "That one was tricky! The author says to wear a hat to keep the sun out of your eyes. The boots keep feet dry. Now you know!"
+ },
+ {
+  "id": "RI.K.8-H2",
+  "correct_feedback": "Yes! The author says walks let dogs run and play so they do not feel sad. Great thinking!",
+  "incorrect_feedback": "Take another look! The story tells us how walks make a dog feel. What happens to a dog that stays inside all day?",
+  "reveal_feedback": "That one was tricky! Dogs need walks so they can run, play, and not feel sad. Now you know!"
+ },
+ {
+  "id": "RI.K.8-H3",
+  "correct_feedback": "Yes! The author gives two reasons: a garden gives you food AND gives bees flowers. Great job finding both!",
+  "incorrect_feedback": "Good try! The story gives TWO good things a garden does. One helps you, and one helps the bees. Listen again.",
+  "reveal_feedback": "That one was tricky! The author says to plant a garden because it gives you food and gives bees flowers. Now you know!"
+ },
+ {
+  "id": "RI.K.8-H4",
+  "correct_feedback": "Yes! The author says firefighters save people and pets from fires. That is why they are helpers. Great listening!",
+  "incorrect_feedback": "Almost! Think about WHAT firefighters do that makes them helpers. Who do they save from the fire?",
+  "reveal_feedback": "That one was tricky! Firefighters are helpers because they save people and pets from fires. Now you know!"
+ },
+ {
+  "id": "RI.K.8-H5",
+  "correct_feedback": "Yes! Strong teeth is the reason to drink milk. That reason goes with milk. Great thinking!",
+  "incorrect_feedback": "Take another look! Milk makes your teeth strong. Which thing does that reason tell you to do?",
+  "reveal_feedback": "That one was tricky! Milk makes teeth strong, so that reason tells you to drink milk. Now you know!"
+ },
+ {
+  "id": "RI.K.9-Q1",
+  "correct_feedback": "Yes! Book 1 said cats sleep and Book 2 said cats chase toys. The books told us different things. Great listening!",
+  "incorrect_feedback": "Hmm, let's think. What did Book 1 say cats like? What did Book 2 say? Find the answer that matches BOTH books.",
+  "reveal_feedback": "That one was tricky! Book 1 says cats like to sleep, but Book 2 says they like to chase toys. Now you know!"
+ },
+ {
+  "id": "RI.K.9-Q2",
+  "correct_feedback": "Yes! Book 1 told WHERE rain comes from, and Book 2 told WHAT rain does. Great job seeing the difference!",
+  "incorrect_feedback": "Almost! Both books ARE about rain, but they tell you different things. What did each book teach you?",
+  "reveal_feedback": "That one was tricky! Book 1 tells where rain comes from, and Book 2 tells what rain does. Now you know!"
+ },
+ {
+  "id": "RI.K.9-Q3",
+  "correct_feedback": "Yes! Both books say the sun is important and gives things to Earth. That is what they agree on. Great thinking!",
+  "incorrect_feedback": "Good try! Look at both books. One says the sun gives light, one says it gives energy. What do they BOTH show?",
+  "reveal_feedback": "That one was tricky! Both books agree the sun is important and gives things to Earth. Now you know!"
+ },
+ {
+  "id": "RI.K.9-Q5",
+  "correct_feedback": "Yes! Both books are all about butterflies. That is what makes them the same. Great listening!",
+  "incorrect_feedback": "Not yet! One book talks about wings, the other about caterpillars. But what animal are BOTH books about?",
+  "reveal_feedback": "That one was tricky! Both books are about butterflies, even though they tell different facts. Now you know!"
+ },
+ {
+  "id": "RI.K.9-H1",
+  "correct_feedback": "Yes! Book 1 says owls sleep in the day, Book 2 says they hunt at night. Both show owls are awake at night. Great thinking!",
+  "incorrect_feedback": "Take another look! When does an owl sleep, and when is it busy? Find the idea that fits BOTH books.",
+  "reveal_feedback": "That one was tricky! Both books show that owls are awake at night, not in the day. Now you know!"
+ },
+ {
+  "id": "RI.K.9-H2",
+  "correct_feedback": "Yes! Book 1 says penguins cannot fly, and Book 2 says they swim well. That is one way they are different. Great job!",
+  "incorrect_feedback": "Hmm, both books say penguins live where it is cold. So that is the same. Look for how the books are DIFFERENT.",
+  "reveal_feedback": "That one was tricky! Book 1 says penguins cannot fly, and Book 2 says penguins swim well. Now you know!"
+ },
+ {
+  "id": "RI.K.9-H3",
+  "correct_feedback": "Yes! Making honey and buzzing to flowers are both jobs. Both books show bees are busy. Great thinking!",
+  "incorrect_feedback": "Close one! Only one book talks about honey. Look for the idea that goes with BOTH books, not just one.",
+  "reveal_feedback": "That one was tricky! Both books show that bees are busy doing a job. Now you know!"
+ },
+ {
+  "id": "RI.K.9-H4",
+  "correct_feedback": "Yes! Book 1 says birds build nests in trees, and Book 2 says birds live in trees. Both talk about birds! Great job!",
+  "incorrect_feedback": "Almost! One book says trees give shade, one says trees clean air. Those are different. What do BOTH books say?",
+  "reveal_feedback": "That one was tricky! Both books tell us that birds are in trees. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-Q1",
+  "correct_feedback": "Yes! When a page is done, you turn to the next page to keep reading. Great job!",
+  "incorrect_feedback": "Hmm, the story is not over yet! You read all the words on this page. Where does the story keep going?",
+  "reveal_feedback": "That one was tricky! When you finish a page, you turn to the next page to keep reading. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-Q2",
+  "correct_feedback": "Yes! When a line is done, you go down to the next line and start on the left. Great reading!",
+  "incorrect_feedback": "Take another look! You finished the line. Which way do your eyes go, and which side do they start on?",
+  "reveal_feedback": "That one was tricky! After a line, you go down to the next line and start on the left side. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-Q3",
+  "correct_feedback": "Yes! When a page is done, you turn to the next page. Great job!",
+  "incorrect_feedback": "Almost! The book still has more story to read. What do you do so you can keep going?",
+  "reveal_feedback": "That one was tricky! When you finish a page, you turn to the next page. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-Q4",
+  "correct_feedback": "Yes! We read left to right. After 'bird' comes 'flew.' Great reading!",
+  "incorrect_feedback": "Good try! We read from left to right. The word 'bird' is done. Which word sits right next to it?",
+  "reveal_feedback": "That one was tricky! After the word 'bird,' the next word is 'flew.' Now you know!"
+ },
+ {
+  "id": "RF.K.1a-Q5",
+  "correct_feedback": "Yes! We start reading at the top left corner. Great job!",
+  "incorrect_feedback": "Not yet! Think about where your eyes go first on a page. Is it the top or the bottom? Which side?",
+  "reveal_feedback": "That one was tricky! You start reading at the top left corner. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-Q7",
+  "correct_feedback": "Yes! We read left to right, so 'The' comes first. Great reading!",
+  "incorrect_feedback": "Hmm, we read from left to right. Look at the very first word on the left side of the line.",
+  "reveal_feedback": "That one was tricky! The first word we read is 'The.' Now you know!"
+ },
+ {
+  "id": "RF.K.1a-Q8",
+  "correct_feedback": "Yes! After the last word, your eyes go down a line and back to the left. Great job!",
+  "incorrect_feedback": "Take another look! The line is done. Do your eyes go up or down? And which side do they start on?",
+  "reveal_feedback": "That one was tricky! After the last word, your eyes go down a line and back to the left. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-H1",
+  "correct_feedback": "Yes! After 'pet' ends the top line, you drop down and start the next line with 'We.' Great reading!",
+  "incorrect_feedback": "Almost! You finished the first line at 'pet.' Now go down to the new line. What is its very first word?",
+  "reveal_feedback": "That one was tricky! After 'pet,' you go to the next line and read 'We' first. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-H2",
+  "correct_feedback": "Yes! You read the last word on the last line, and that is 'today.' Great job!",
+  "incorrect_feedback": "Good try! The LAST word is at the very end of the bottom line. Which word is all the way at the end?",
+  "reveal_feedback": "That one was tricky! The last word you read is 'today.' Now you know!"
+ },
+ {
+  "id": "RF.K.1a-H3",
+  "correct_feedback": "Yes! On a new page, you start at the top on the left. Great job!",
+  "incorrect_feedback": "Hmm, it is not the biggest word or the bottom word. Think about where reading always begins. Top or bottom? Which side?",
+  "reveal_feedback": "That one was tricky! You read the word at the top on the left first. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-H4",
+  "correct_feedback": "Yes! After the top line, you go to the middle line and start on the left. Great reading!",
+  "incorrect_feedback": "Not yet! You finished the top line. You move down one line, not skip. And which side do you start on?",
+  "reveal_feedback": "That one was tricky! You read the middle line next, starting on the left. Now you know!"
+ },
+ {
+  "id": "RF.K.1a-H5",
+  "correct_feedback": "Yes! We say letters left to right, so 'w' comes first in was. Great job!",
+  "incorrect_feedback": "Close one! We read letters from left to right. Which letter is first, all the way on the left?",
+  "reveal_feedback": "That one was tricky! The first letter you say is 'w.' Now you know!"
+ },
+ {
+  "id": "RF.K.1b-Q2",
+  "correct_feedback": "Yes! Words are made up of letters. Great thinking!",
+  "incorrect_feedback": "Hmm, think about what you see when you spell a word like cat. Is it colors, or is it something else?",
+  "reveal_feedback": "That one was tricky! Words are made up of letters. Now you know!"
+ },
+ {
+  "id": "RF.K.1b-Q4",
+  "correct_feedback": "Yes! Change the letters and you get a different word or a nonsense word. Great thinking!",
+  "incorrect_feedback": "Take another look! If you swap letters in a word, does it stay the same, or does it turn into something new?",
+  "reveal_feedback": "That one was tricky! When you change the letters, you get a different word or a nonsense word. Now you know!"
+ },
+ {
+  "id": "RF.K.1b-Q5",
+  "correct_feedback": "Yes! Every word we say can also be written with letters. Great job!",
+  "incorrect_feedback": "Almost! Think about how we put a spoken word on paper. What do we use to write it down?",
+  "reveal_feedback": "That one was tricky! Every word we say can also be written with letters. Now you know!"
+ },
+ {
+  "id": "RF.K.1b-H1",
+  "correct_feedback": "Yes! The letters in the right order are d-o-g. Great spelling!",
+  "incorrect_feedback": "Good try! Say the word dog slowly. Which sound do you hear first, then next, then last? Match the letter order.",
+  "reveal_feedback": "That one was tricky! The right order to spell dog is d-o-g. Now you know!"
+ },
+ {
+  "id": "RF.K.1b-H2",
+  "correct_feedback": "Yes! Pan and nap use the same letters, but in a different order. That makes two words. Great thinking!",
+  "incorrect_feedback": "Not yet! Both words use p, a, and n. Look closely. What is not the same about how the letters are lined up?",
+  "reveal_feedback": "That one was tricky! Pan and nap are different because the letters are in a different order. Now you know!"
+ },
+ {
+  "id": "RF.K.1b-H3",
+  "correct_feedback": "Yes! Tap and pat both use t, a, and p, just moved around. Great thinking!",
+  "incorrect_feedback": "Hmm, check each pair. You want two words that share the SAME three letters, only mixed up. Which pair matches?",
+  "reveal_feedback": "That one was tricky! Tap and pat are made from the same three letters in a different order. Now you know!"
+ },
+ {
+  "id": "RF.K.1b-H4",
+  "correct_feedback": "Yes! Change the middle letter, a to i, and bat becomes bit. Great job!",
+  "incorrect_feedback": "Almost! Say bat, then bit. The first sound and last sound stay the same. Which sound in the middle changed?",
+  "reveal_feedback": "That one was tricky! You change the middle letter, a to i, to make bit. Now you know!"
+ },
+ {
+  "id": "RF.K.1b-H5",
+  "correct_feedback": "Yes! The word pin is spelled p-i-n. Great listening and spelling!",
+  "incorrect_feedback": "Take another look! Say pin slowly and listen to each sound. Which row of letters matches every sound you hear?",
+  "reveal_feedback": "That one was tricky! The word pin is spelled p-i-n. Now you know!"
+ },
+ {
+  "id": "RF.K.1c-H1",
+  "correct_feedback": "Yes! There are 7 words, because each one has a space around it. Great counting!",
+  "incorrect_feedback": "Good try! Point to each word and count them one at a time. The spaces help you tell where each word ends.",
+  "reveal_feedback": "That one was tricky! The line has 7 words. Count each one with a space around it. Now you know!"
+ },
+ {
+  "id": "RF.K.1c-H2",
+  "correct_feedback": "Yes! There are 3 words, so there are 2 spaces between them. Great counting!",
+  "incorrect_feedback": "Almost! Spaces go BETWEEN words, not on the ends. Count the gaps in red hot sun. How many gaps do you see?",
+  "reveal_feedback": "That one was tricky! There are 2 spaces between the words. Now you know!"
+ },
+ {
+  "id": "RF.K.1c-H3",
+  "correct_feedback": "Yes! 'i see the sun' has a space between every word, so we can read them all. Great job!",
+  "incorrect_feedback": "Not yet! We need one space between EVERY word. Find the line where no words are stuck together.",
+  "reveal_feedback": "That one was tricky! The line 'i see the sun' has a space between every word. Now you know!"
+ },
+ {
+  "id": "RF.K.1c-H4",
+  "correct_feedback": "Yes! Put the space as 'sun dog' to make two real words. Great thinking!",
+  "incorrect_feedback": "Hmm, try saying the parts out loud. Where can you split it so BOTH pieces are real words you know?",
+  "reveal_feedback": "That one was tricky! The space goes to make 'sun dog,' two real words. Now you know!"
+ },
+ {
+  "id": "RF.K.1c-H5",
+  "correct_feedback": "Yes! 'a big red dog' has exactly 4 words. Great counting!",
+  "incorrect_feedback": "Take another look! Count the words in each line one by one. You want the line with exactly 4 words.",
+  "reveal_feedback": "That one was tricky! The line with 4 words is 'a big red dog.' Now you know!"
+ },
+ {
+  "id": "RF.K.1d-Q1",
+  "correct_feedback": "Yes! Big A is the uppercase, or capital, version of little a. Great job!",
+  "incorrect_feedback": "Good try! Little a and its big letter make the same sound. Which BIG letter goes with little a?",
+  "reveal_feedback": "That one was tricky! The uppercase version of a is A. Now you know!"
+ },
+ {
+  "id": "RF.K.1d-Q2",
+  "correct_feedback": "Yes! Little g is the lowercase version of big G. Great job!",
+  "incorrect_feedback": "Almost! Big G and its little letter make the same sound. Which small letter goes with big G?",
+  "reveal_feedback": "That one was tricky! The lowercase version of G is g. Now you know!"
+ },
+ {
+  "id": "RF.K.1d-Q4",
+  "correct_feedback": "Yes! That is the letter P. Great job spotting it!",
+  "incorrect_feedback": "Take another look! Listen for the puh sound. That letter has a straight line with one bump near the top. Which one is it?",
+  "reveal_feedback": "That one was tricky! The letter P is the right one. Now you know!"
+ }
+]

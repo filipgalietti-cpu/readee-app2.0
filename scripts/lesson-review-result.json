@@ -1,0 +1,3216 @@
+{
+  "summary": "Claude reviews every K-4 lesson for AI-slop, interactive-fork quality, and weak/thin content; returns a concise scorecard",
+  "agentCount": 41,
+  "logs": [],
+  "result": {
+    "reviewed": 201,
+    "scoreDistribution": {
+      "1": 0,
+      "2": 36,
+      "3": 66,
+      "4": 75,
+      "5": 24
+    },
+    "cleanCount": 112,
+    "strongForks": 106,
+    "needMoreContent": 75,
+    "needWorkCount": 115,
+    "needWork": [
+      {
+        "std": "RI.K.1",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "distractors caves/trees are plausible 'where' but encouragement says 'listen to the story again' - calls it a story when it's a fact, minor mismatch; answer 'dens' never shown so not a giveaway",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Tip slide is off-topic sea-otter trivia that never models finding a key detail - replace with a second worked fact-detail example (e.g. ask/answer a 'what does it do' detail) so the I-do reinforces the skill"
+      },
+      {
+        "std": "RL.K.2",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "clean 1:1 sequence set, answer not shown on screen, affirmation names the order-why",
+        "needsMoreContent": true,
+        "gap": "Teach covers beginning/middle/end abstractly but the worked example and fork both only test 'what happened FIRST' - middle is never modeled or practiced; add a beat that identifies the middle so all three story parts taught are actually used",
+        "topFix": "Model and probe the MIDDLE, not just first - the lesson teaches B/M/E but only exercises the beginning"
+      },
+      {
+        "std": "RL.K.3",
+        "score": 2,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "beach vs ocea n vs home are same-category 'where' and plausible, but ocean is named in the passage as a near-miss; answer not shown - fork itself is fine",
+        "needsMoreContent": true,
+        "gap": "No [example] / I-do slide at all - jumps from teach to tip to fork with no worked model; teach slide has zero SCREEN anchors (all audio); only 'where' is ever practiced though it teaches characters+setting+events",
+        "topFix": "Add a worked example slide that models identifying character, setting AND event in one short story before the fork - this lesson skips the I-do entirely"
+      },
+      {
+        "std": "RL.K.5",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "Distractor 'Song' is off-category — it isn't taught and a K reader can't distinguish poem from song; answer leans on rhyme cue that's a near-giveaway.",
+        "needsMoreContent": true,
+        "gap": "Teach beat has zero anchor pills (full sentences only) and the example never models the SORT decision — add a teach anchor (Story: characters/events vs Poem: rhyme/short lines) and an I-do where you reason through one borderline case.",
+        "topFix": "Intro slide prints two full spoken sentences verbatim ('Did you know there are different kinds of books? / Some tell stories and some have poems!') — replace with a 2-3 word anchor, and add a real worked example.",
+        "std_comment": "Concept fine but thin and transcript-heavy: intro is a verbatim audio dump, teach has no on-screen anchors at all, and 'Song' distractor is off-category."
+      },
+      {
+        "std": "RL.K.7",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Fork asks 'where is the bear' (setting) but the spoken prompt explicitly says 'in a sunny park' — the answer is read aloud, a near-giveaway; distractors fine but the kid isn't inferring from a picture as taught.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rewrite the fork so the answer isn't spoken in the prompt — describe the picture (red blanket, sunshine, trees) and let the kid infer 'park' rather than naming it; the lesson teaches reading pictures, the fork should require inference, not recall.",
+        "std_comment": "Teaching is solid (setting/feelings anchors, real I-do). Weak link is the fork: prompt states the answer ('in a sunny park'), so it tests listening not picture-reading. Repeated 'Setting' anchor across teach/example/tip is slightly padded."
+      },
+      {
+        "std": "RI.K.5",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "Good question but covers only 1 of 4 parts taught; single fork item under-reinforces",
+        "needsMoreContent": true,
+        "gap": "Only 1 practice question (others have 5) for a 4-concept lesson; needs back-cover/title-page practice items too",
+        "topFix": "Add 4+ practice questions and convert teach slides from full-sentence transcripts to terse anchors"
+      },
+      {
+        "std": "RI.K.6",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "weak",
+        "forkNote": "On-screen prompt 'Who writes the words?' + 'author writes WORDS' repeated in teach makes 'author' a near-giveaway",
+        "needsMoreContent": true,
+        "gap": "No intro slide - opens cold on teach; add a real intro beat before the author/illustrator teaching",
+        "topFix": "Convert verbatim-transcript teach/tip slides to terse anchors and fix glued text ('three questionshelp you understand')"
+      },
+      {
+        "std": "RI.K.7",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Cut full-sentence transcripts on example/tip slides to terse anchors (e.g. 'egg->tadpole->frog', 'Ask: What do I see?')",
+        "std_note": ""
+      },
+      {
+        "std": "RI.K.8",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Example slide prints the whole 4-sentence passage verbatim — anchor it instead; teach beat 3 screen 'Dogs are loyal' drops the second reason."
+      },
+      {
+        "std": "RI.K.9",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Distractors 'About cats'/'About fish' are off-category (both facts are obviously about dogs) and the 'same' is a giveaway, so it barely tests compare-skill",
+        "needsMoreContent": true,
+        "gap": "Only 1 real teach beat (same/different stated, not modeled); add a worked compare beat that explicitly names one same AND one different before the fork",
+        "topFix": "Example whole-sentence transcript on screen; thin teaching — add a modeled same-vs-different comparison beat"
+      },
+      {
+        "std": "RF.K.2c",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "distractors muh/tuh are plausible same-category sounds, but teach conflates sound vs letter name (B/L) while fork asks for sound (kuh) - inconsistent framing",
+        "needsMoreContent": true,
+        "topFix": "Make teach/example use phoneme sounds (buh, luh) not letter names so it matches the fork's sound-based question; add SCREEN anchors to the screen-less intro/teach/example slides",
+        "gap": "intro, teach, example, tip slides have NO on-screen anchors at all (only audio) - K lesson needs visual anchors per beat; also no ending-sound modeled in example though concept is taught"
+      },
+      {
+        "std": "RF.K.2d",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "all-number choices, fresh word 'sun', affirmation reinforces slow-say method",
+        "needsMoreContent": true,
+        "topFix": "Add SCREEN anchors to every beat (intro/teach/example/tip are audio-only) and segment-show the sounds (s-u-n) visually like the canon karaoke pattern",
+        "gap": "no on-screen anchors anywhere except practice-intro; teach states counts (dog=3, go=2) but never visually segments the word, so the I-do worked example is audio-only with nothing modeled on screen"
+      },
+      {
+        "std": "RF.K.3a",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "match pairs S/M/T echo the letter and reuse the taught letters; near-trivial, not testing recall",
+        "needsMoreContent": true,
+        "gap": "example beat introduces B/D/F but never models an answer (concept dropped); only 1 practice MCQ; add a worked I-do sound for at least one letter and more practice",
+        "topFix": "Make the fork test a letter NOT just shown next to its echoing slash-sound, and model the example sounds instead of dropping B/D/F"
+      },
+      {
+        "std": "RF.K.3b",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "fork itself is clean (fish->I, answer off-screen, plausible vowel distractors, WHY named), but it only tests vowel-ID, none of the short/long/Magic-E content",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Cut the cram: Magic E + long/short vowels are introduced but never modeled or practiced; split into its own lesson or drop Magic E here"
+      },
+      {
+        "std": "RF.K.3c",
+        "score": 2,
+        "slop": "clean",
+        "fork": "broken",
+        "forkNote": "dead giveaway: the target word 'Do' is one of the visible tappable choices, so kid just matches spoken->printed word; tests letter-matching not sight-word recall",
+        "needsMoreContent": true,
+        "gap": "no practice-intro slide; fork doesn't reinforce instant recognition. Reframe to recognition-in-context (find 'Do' inside a short sentence) so the answer isn't a labeled standalone tile",
+        "topFix": "Rebuild the fork so the answer word isn't shown as a plain choice tile that matches the spoken prompt 1:1"
+      },
+      {
+        "std": "K.L.1",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rewrite teach + example screens as terse anchors — they currently print the full spoken sentences verbatim (transcript slop, no pill breaks)"
+      },
+      {
+        "std": "K.L.2",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Trim the tip screen — it prints both full 'Number one/Number two' sentences as a transcript instead of terse anchors"
+      },
+      {
+        "std": "K.L.5",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "match pairs (hot/cold, up/down, big/small) are all from the teach, but big/small was used as the example AND is a giveaway; teach screens are full-sentence transcripts",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Convert the teach/example screens from transcript sentences to terse anchors, and swap one match pair so it isn't the just-shown example"
+      },
+      {
+        "std": "RL.1.1",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "Teach beat (lines 13-18) has zero on-screen anchors and just lists 5 questions abstractly with no modeling; add a real teach anchor or split into modeled Who/What/Where beats before the worked example",
+        "topFix": "Teach slide is bare audio with no screen text and no modeling — anchor the 5 questions on screen, or fold modeling in",
+        "slopNote": "Intro is anchor-clean; teach slide is thin/under-built"
+      },
+      {
+        "std": "RL.1.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Fork tests feeling-ID (sad/happy/scared, same category, answer not shown) — solid, BUT it's a generic emotion-label question; the lesson actually taught sensory/'feel it' words like 'warmed', so the fork drifts from the modeled skill. Also opens 'Your turn, detective!' — wrong lesson's catchphrase, copy-paste leak",
+        "needsMoreContent": true,
+        "gap": "Lesson conflates two skills (emotion words happy/sad vs sensory words like 'warmed') and only models ONE example (warmed); add a second worked example for the emotion-word strand the fork tests, or narrow the lesson to one skill",
+        "topFix": "Fix the skill mismatch: intro/example teach sensory 'feel-it' words, but teach beat + fork are about emotion labels — pick one and model it twice",
+        "slopNote": "'Your turn, detective!' catchphrase leaked in from RL.1.1; example anchor line 21 is a full sentence"
+      },
+      {
+        "std": "RL.1.7",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Question is a face-reading/feelings inference but the lesson taught reading PICTURES; the fork gives only a verbal story (frown, tears described in words), so it tests inference-from-text, not picture-reading. Slight skill mismatch.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Align the fork to the taught skill: present an actual picture cue, or reword so the kid is reading an image clue not a described one. Also the S2 SCREEN line ('Snow on the ground. Kids in coats and hats.') is near-transcript."
+      },
+      {
+        "std": "RI.1.2",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix example slide: screen prints wrong answer 'Firefighting!' for key details (audio says gear/trucks/helping); also stop printing full passage as on-screen transcript",
+        "std_note": ""
+      },
+      {
+        "std": "RI.1.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Example slide prints three full sentences verbatim as on-screen text - condense to terse anchors"
+      },
+      {
+        "std": "RI.1.5",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "near-giveaway: prompt restates the taught definition, leans on recall not reasoning",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Make the fork require reasoning (e.g. give a goal and ask which part to use) rather than echoing the taught definition"
+      },
+      {
+        "std": "RI.1.6",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "question is plain listening-recall of fur color; does not make kid distinguish what pictures-show vs words-tell, the actual skill taught",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rebuild fork to test the picture-vs-word distinction (e.g. 'which clue would show you the exact color - picture or words?') instead of recalling a color"
+      },
+      {
+        "std": "RI.1.7",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "no worked I-do example before the fork; jumps teach -> fork. Add a 'watch me read this picture' example slide modeling the slow-down trick on one image.",
+        "topFix": "Add a worked-example beat between teach and the fork."
+      },
+      {
+        "std": "RI.1.9",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "answer 'Add facts' is thinly modeled; teach spends more time on 'agree' (dogs) than on 'add facts', so the 3-way discrimination outruns the teaching.",
+        "needsMoreContent": true,
+        "gap": "no worked example, and 'add facts' vs 'agree' distinction is underspecified. Add an I-do example explicitly contrasting agree vs add-facts before the fork.",
+        "topFix": "Teach 'add facts' as clearly as 'agree' and add a worked example contrasting the two."
+      },
+      {
+        "std": "RF.1.2b",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "distractors pig/pin/sit are clean CVCs but pig vs pin differ only in final sound while sit is far off; one near + one far rather than two plausible.",
+        "needsMoreContent": true,
+        "gap": "only one real teach beat (cat) before the example; add a second modeled blend so kids see the skill twice before practicing.",
+        "topFix": "Add a second teach blend before the example beat."
+      },
+      {
+        "std": "RF.1.2c",
+        "score": 2,
+        "slop": "clean",
+        "fork": "broken",
+        "forkNote": "all three choices d/o/g are the letters of the word on screen, and the word itself is shown - massive giveaway; distractors aren't real phoneme confusions",
+        "needsMoreContent": true,
+        "gap": "only 1 teach beat (MAP) and the 'example' for SUN has no modeled answer - audio says 'first/middle/last sound' but never names them; add a fully worked I-do that actually identifies each sound, plus a second teach beat",
+        "topFix": "rework the fork so the answer isn't trivially the middle letter shown on screen, and actually model the sounds in the example"
+      },
+      {
+        "std": "RF.1.2d",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "fork uses CAT but the teach beat already broke CAT into three sounds - it's a recall of the exact modeled word, not transfer; FISH (4 letters/3 sounds) would have been the better, less-giveaway test",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "make the fork use a fresh word instead of re-asking CAT, which was just counted to three in the teach beat"
+      },
+      {
+        "std": "L.1.4",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "lesson teaches multiple-meaning words via 'bat'; fork switches to 'run' (move fast/start engine/water flows) - distractors are too adult (start engine, water flows) for grade 1 and weren't modeled; off the taught example",
+        "needsMoreContent": true,
+        "gap": "only one multiple-meaning word ('bat') is modeled across teach+example; introduce a second clean kid-level multiple-meaning word and model it before the fork so 'run' isn't the first transfer",
+        "topFix": "swap the fork distractors to grade-1-plausible meanings, and add a second worked multiple-meaning word before the we-do; also practice has only 2 MCQs - thin"
+      },
+      {
+        "std": "L.1.5",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "fork only tests opposites; the synonym/'same-family' teach beat is never practiced",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) - jumps from two teach beats straight to the fork. Add an example modeling one match (e.g. 'hot -> cold, why?'). Also the match pairs (hot/cold,big/small,fast/slow) are the exact examples shown on the teach slide line 13 - a dead giveaway",
+        "topFix": "Add a worked example before the fork AND change the match pairs so they aren't the three pairs already printed in the teach beat",
+        "std_note": "Teaches two ideas (opposites + synonyms) but only forks on opposites, and the fork pairs are identical to the teach examples = giveaway. Missing the we-do/I-do worked example."
+      },
+      {
+        "std": "L.1.5c",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Distractors 'tiny ant'/'small mouse' contain the antonym in the label - 'gigantic'=big is near-giveaway; also fork tests a brand-new word (gigantic) never taught in the lesson (cozy, chilly)",
+        "needsMoreContent": true,
+        "gap": "No worked I-do example - 'example' slide is just a second teach beat (chilly) identical in shape to the cozy teach; add a modeled 'match the word to real life' walkthrough before the fork",
+        "topFix": "Make the example an actual worked model, and pick a fork word that was taught (cozy/chilly) instead of introducing 'gigantic' cold"
+      },
+      {
+        "std": "RL.2.2",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Convert the two full-sentence transcript pills in the teach slide (rabbit-nap / tortoise-won lines) to terse anchors."
+      },
+      {
+        "std": "RL.2.3",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "Distractors plausible & same category (feelings), but 'found his lost book' makes Happy a near-giveaway; low rigor.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "De-transcript the teach + example slides (3 full spoken sentences printed verbatim) into short anchors."
+      },
+      {
+        "std": "RL.2.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Distractors off-category: answer must be a FEEL word but 'Loud waves'=hear and 'Bright shell'=see, so the 'feel' framing telegraphs it.",
+        "needsMoreContent": true,
+        "gap": "Lesson teaches rhyme/beat then pivots to sensory words with no worked I-do; the fork tests only sensory words. Add a teach or worked-example beat modeling how to pick the sensory word that matches a given sense.",
+        "topFix": "Add a worked sensory-word example (I-do) before the fork so the skill the fork tests is actually modeled."
+      },
+      {
+        "std": "RL.2.6",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Teach slide prints two full transcript sentences (Tom/Lea lines) verbatim; cut to terse anchors like 'Tom: best place ever' / 'Lea: lonely'."
+      },
+      {
+        "std": "RL.2.9",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Fix example-slide SCREEN transcript dump: 'What is different?The setting.The small parts.The ending sometimes.' is crammed full sentences with no spacing — re-anchor to terse pills",
+        "gap": ""
+      },
+      {
+        "std": "RL.2.10",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "answer 'Stretch books' printed verbatim on teach screen and prompt+encouragement near-give it away",
+        "needsMoreContent": false,
+        "topFix": "Make the fork less of a giveaway — distractors and prompt currently telegraph 'stretch books'",
+        "gap": ""
+      },
+      {
+        "std": "RI.2.1",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "asks 'how many birds' (literal counting recall) — does NOT use the taught who/what/where/when/why/how reasoning skill, especially the why/how depth the lesson stressed",
+        "needsMoreContent": true,
+        "topFix": "Replace the fork question with a who/what/where or why/how question that actually exercises the taught skill",
+        "gap": "fork tests counting, not the six question-words; add a worked why/how example before the fork so the modeled skill matches the assessed skill"
+      },
+      {
+        "std": "RI.2.3",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Trim the two full transcript sentences on the example slide to terse anchors (e.g. 'Egg laid first', 'Butterfly emerges') and fix TTS chunk corruption ('A ca / Terpillar', 'Like first')"
+      },
+      {
+        "std": "RI.2.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "Two word-meaning strategies are taught (definition-in-text AND context clues) but only context clues gets a worked example. Add a short I-do for the 'definition right there' strategy, and trim the full 'thirsty camel' sentence on screen to an anchor.",
+        "topFix": "Model the definition-in-text strategy with its own worked example before the fork"
+      },
+      {
+        "std": "RI.2.9",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "clean 1:1 same/different set, but only tests the 'same' half",
+        "needsMoreContent": false,
+        "topFix": "Rewrite the tip slide anchors — SCREEN prints full audio sentences and chunk fragments ('Here is a / helpful trick'), the transcript-not-anchor violation",
+        "gap": ""
+      },
+      {
+        "std": "RI.2.10",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "answer is a dead giveaway (story names lions/animals); distractors Space/Sports off-topic and implausible; doesn't exercise a real skill",
+        "needsMoreContent": true,
+        "topFix": "Add a worked example and a fork that requires reasoning, not topic-matching",
+        "gap": "Habit/motivation standard with no I-do worked example; two thin teach beats jump straight to a giveaway fork"
+      },
+      {
+        "std": "RF.2.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "topFix": "Add a worked example (I-do) modeling sounding out one word before the match fork",
+        "gap": "Umbrella standard with only 2 teach beats and no worked example; jumps teach->fork. SCREEN 'Most letters make one sound.' also prints the full audio line"
+      },
+      {
+        "std": "RF.2.3a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "topFix": "Model a second vowel (e.g. short/long I) so it isn't only A",
+        "gap": "Only long/short A is taught and modeled; standard covers all vowels - add a second vowel example beat"
+      },
+      {
+        "std": "RF.2.3c",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "Verbose spoken prompt; 'bow: OW team' label collides with the OW intro concept but the match itself is fine 1:1",
+        "needsMoreContent": true,
+        "gap": "Worked example slide is mislabeled — RAINBOW is taught as a second teach beat (I-do), not a true we-do/guided example. There is effectively only one teaching of the 'split + identify rule' move before the fork. Add a real I-do where the kid is walked through splitting a NEW word step-by-step before the match.",
+        "topFix": "Add a genuine worked example (guided split of one fresh word) between teach and the fork"
+      },
+      {
+        "std": "RF.2.3d",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Distractors fine and on-category (affix->meaning), but LY is taught then dropped from the match — fork only covers UN/RE/ER, leaving one of four taught items unpracticed",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) at all — jumps intro -> 2 teach beats -> tip -> fork. Add an [example] slide modeling peeling one word (e.g. 'unkindly' -> UN + kind + LY) so the 'find the root' skill is demonstrated, not just stated. Also only 3 practice MCQs vs 5 in siblings.",
+        "topFix": "Add a worked example modeling peel-apart, and include LY in the match set"
+      },
+      {
+        "std": "RF.2.3e",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) before the fork — goes teach(silent letters) -> teach(PH) -> tip -> match. Add a short guided example walking the kid through identifying the tricky letter in one word.",
+        "topFix": "Insert a worked-example slide before the fork"
+      },
+      {
+        "std": "RF.2.3f",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "'Again: AI sound' label is fuzzy — audio says Again sounds like 'uh-gen', so 'AI sound' as the trick is slightly contradictory/confusing as a match target",
+        "needsMoreContent": true,
+        "gap": "No worked example, and 'Because' is taught (intro teach beat) then never appears in the fork or as a modeled read — concept introduced but dropped. Add a guided read of one sight word and make the taught set match the practiced set.",
+        "topFix": "Add a modeled sight-word read and align taught words with the match set (Because is taught but unpracticed)"
+      },
+      {
+        "std": "RF.2.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "match pairs are verbatim teach-screen strings — recall giveaway, not skill use",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) — jumps teach→tip→fork; add a modeled fluency example",
+        "topFix": "add a worked example modeling fluent reading before the fork"
+      },
+      {
+        "std": "L.2.4",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "fork tests 'un-' prefix meaning that was never modeled in any teach/example beat",
+        "needsMoreContent": true,
+        "gap": "no worked example, and only 2 thin teach beats — add an [example] modeling sentence-clue + word-part decoding (e.g. 'unhappy'), plus more practice (only 1 MCQ)",
+        "topFix": "add a worked example modeling how to decode a tricky word using both strategies before the fork"
+      },
+      {
+        "std": "L.2.4a",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Replace transcript SCREEN lines (full sentences on intro/teach/example) with terse anchors",
+        "std_note": ""
+      },
+      {
+        "std": "L.2.4b",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "giveaway - tip & teach both state 'RE means again', answer 'do again' is handed to kid; only 2 practice Qs is thin",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) before the fork - intro->2 teach->tip->fork jumps straight to practice; add a modeled example like 'unlock = un+lock = not locked'",
+        "topFix": "Add a worked example slide and make the fork test a NEW prefix word not just-taught 'redo'"
+      },
+      {
+        "std": "L.2.4c",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "distractor 'ing' is off-category (a suffix, not a candidate root word) making it a near-giveaway between farm/farmer",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Make all 3 choices plausible whole-word roots (e.g. farm/barn/grow) - drop the off-category 'ing'"
+      },
+      {
+        "std": "L.2.4d",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "clean 1:1 match set, but all three pairs are pre-taught so it's recall not application",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix Sunflower/Toothbrush SCREEN lines printing full audio sentences ('A flower that loves the sun') - reduce to anchors"
+      },
+      {
+        "std": "L.2.4e",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "distractors same category (ordering methods) and answer not on screen, but it's pure recall of a just-stated fact, doesn't make kid USE a skill",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) - never models actually looking up a bold word in a glossary; add a modeled lookup before the fork",
+        "topFix": "Add a worked-example slide showing a real glossary lookup so the fork can test application not recall"
+      },
+      {
+        "std": "L.2.5",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "Match is a clean 1:1 set drawn straight from teach beats, but the affirmation spells out the answer to ALL three pairs (synonyms/antonyms/same group) - a near-giveaway recap; encouragement is generic.",
+        "needsMoreContent": true,
+        "gap": "Tries to teach THREE distinct relationships (synonyms, antonyms, categories) in only 3 short teach beats with no worked example/I-do before the fork. Either narrow to one relationship or add an [example] modeling how to decide a pair's connection.",
+        "topFix": "Add a worked example modeling how to classify one pair, and trim the affirmation so it doesn't recap all three answers."
+      },
+      {
+        "std": "L.2.5a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "Two solid teach words (delicious, exhausted) but no [example]/I-do beat modeling the skill before the fork - jumps from teach+tip straight to we-do. Add a quick worked example applying a word to a scenario.",
+        "topFix": "Add a short worked-example beat (model matching a word to a real moment) between the tip and the fork."
+      },
+      {
+        "std": "L.2.6",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "CORRECT is 'joyful' but the story (won a contest, jumped up and down) most clearly fits 'thrilled' - a distractor - and 'proud' is equally defensible; the affirmation's reasoning ('full of happiness') doesn't distinguish it from the other two. Off the skill and arguably wrong key.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix the answer key / rewrite the scenario so exactly one choice is clearly correct; the three shade-words must not be interchangeable for the prompt."
+      },
+      {
+        "std": "RL.3.1",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "Lesson teaches PROVE-with-text-evidence, but the fork is a plain recall 'what did Leo find?' - kid doesn't have to cite/point to proof; distractors (puppy/bird) are same-category but the skill (find the proving quote) is never actually exercised.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Make the fork require the evidence step the lesson taught - e.g. ask which exact words in the story prove the answer, not just what happened."
+      },
+      {
+        "std": "RL.3.2",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "owl+fox is borderline myth/folktale, and 'fable' giveaway since lesson said fables use talking animals",
+        "needsMoreContent": true,
+        "gap": "Fables get a worked beat but myths get only one teach beat and no example; folktales (the title concept) are never taught or modeled at all before the fork",
+        "topFix": "Add a teach/example beat for folktales (the title term) so the 3 choices in the fork are all genuinely taught",
+        "topFixNote": ""
+      },
+      {
+        "std": "RL.3.6",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "asks narrator's view but never sets up the reader's-view contrast the lesson is about; 'Beautiful' is a near-giveaway echoed straight from the passage",
+        "needsMoreContent": true,
+        "gap": "No worked example beat (I-do) modeling how to separate narrator-view from reader-view; jumps from two teach beats to practice with no demonstration",
+        "topFix": "Fix the missing-space text bugs ('narratortells the storyfrom their view', 'feelingsand opinionsshow') and add a worked example contrasting the two views before the fork",
+        "topFixNote": ""
+      },
+      {
+        "std": "RL.3.7",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "distractors 'Scary'/'Tense' are mood-category and plausible, but the bright/laughing scene is a near-giveaway after the teach beat 'Bright = happy'; question just re-applies the rule verbatim",
+        "gap": "only one teach beat (Bright vs Dark) and a single thin example; storm example introduces 'tense' which isn't taught as a color rule - add a second teach beat or model a sad/dark image before the fork",
+        "needsMoreContent": true,
+        "topFix": "Add a second worked example (model reading a dark/sad picture) so the fork isn't a one-step rule lookup; intro screen 'Hey there / A / Mazing reader' is broken word-splitting",
+        "std_note": ""
+      },
+      {
+        "std": "RL.3.10",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "distractors are off-category and a dead giveaway: Leo just read a 'long adventure story', so 'Adventure' and 'Long story' are obviously what he already read - only 'A poem' is left, kid solves by elimination not skill",
+        "gap": "no worked example (I-do); jumps from soft 'mix it up' teaching straight to practice. Topic is meta/motivational, not a comprehension skill - thin on substance",
+        "needsMoreContent": true,
+        "topFix": "Fix the fork: make all three choices be story-types Leo hasn't read so 'mix it up' actually requires thought, not elimination"
+      },
+      {
+        "std": "RI.3.1",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "'who sang the song' is a literal recall the answer is stated outright ('The little bird sang'); doesn't exercise the taught skill of citing evidence with 'according to the text' - it's a find-the-noun task",
+        "gap": "example models citing for a 'where' question but fork tests a 'who' with no citation required; add a fork that makes the kid pick the text-supported answer vs a tempting non-text inference",
+        "needsMoreContent": false,
+        "topFix": "Align fork to the skill: require choosing the answer the text actually supports (cite-the-evidence), not just naming the character who made a sound"
+      },
+      {
+        "std": "RI.3.3",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "fork tests cause/effect (a teach beat) but never tests sequence, the other half taught; distractors 'flew high'/'was sleepy' are off-category (not causes shown in the story)",
+        "needsMoreContent": true,
+        "gap": "covers cause/effect (2 beats) and sequence (2 beats) but compare/contrast is named in intro then never taught; no worked example (I-do) before the fork - add an example modeling one connection type",
+        "topFix": "add a worked I-do example before the fork and either teach or drop compare/contrast"
+      },
+      {
+        "std": "RI.3.4",
+        "score": 2,
+        "slop": "clean",
+        "fork": "broken",
+        "forkNote": "fork asks 'what does sequence mean?' but sequence was never taught in this lesson (it's a different standard, RI.3.3); the fork doesn't reinforce academic-word skill (context clues / word parts) that THIS lesson taught",
+        "needsMoreContent": true,
+        "gap": "context clues = 1 thin beat; only one worked word-part example (photograph); no I-do example slide modeling how to decode an unknown academic word; fork is off-topic - add a worked example using context clues or a root, and make the fork decode an academic word",
+        "topFix": "replace the off-standard 'sequence' fork with a real academic-word decoding task and model the skill first"
+      },
+      {
+        "std": "RI.3.5",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "no worked I-do example slide (intro->teach->teach->tip->fork); strong otherwise but jumps to practice without modeling a feature lookup - add an example walking through using the index or TOC to find a fact",
+        "topFix": "add an I-do worked example before the fork"
+      },
+      {
+        "std": "RI.3.7",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "clean same-category choices (chart functions vs diagram/map functions) and not a giveaway since answer isn't shown; but it's pure recall ('what do charts help do') rather than applying the skill to a real illustration",
+        "needsMoreContent": true,
+        "gap": "diagrams = 1 thin beat; no I-do worked example of actually reading a diagram/chart; maps named in intro but never taught - add a worked example interpreting an illustration and either teach or drop maps",
+        "topFix": "add an I-do example reading a real chart/diagram so the fork can apply rather than recall"
+      },
+      {
+        "std": "RI.3.9",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Fork tests recall not the compare skill - the lesson taught 'same vs different across two texts' but the question only asks which story said 'berries'; 'fish' distractor is off-set (never mentioned in either story).",
+        "needsMoreContent": false,
+        "topFix": "Reframe fork to actually compare (e.g. 'what did BOTH stories share?' or 'what was different?') so it uses the taught skill instead of single-text recall."
+      },
+      {
+        "std": "RI.3.10",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "Giveaway/off-skill: dinosaurs map to 'Science' but kids will pick 'History' (ancient/long ago); the lesson never taught topic-classification, so the question tests outside knowledge, not the lesson.",
+        "needsMoreContent": true,
+        "gap": "No worked example (no I-do); teach beats are vague meta-talk ('we will read longer fact books') with zero modeled skill. Add a real modeled example applying main-idea/details to a short passage before the fork.",
+        "topFix": "This is a meta/filler lesson - replace the abstract 'read facts all year' framing with a concrete worked example modeling main idea + details, and fix the off-skill fork."
+      },
+      {
+        "std": "RF.3.3c",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "Distractors cat/apple are off-skill: question tests syllable-COUNTING, but lesson taught splitting/chunking strategy — picking 'remember' from 3 words doesn't make the kid USE the chunking method.",
+        "needsMoreContent": false,
+        "topFix": "Fix the slide-11 SCREEN run-on ('Clap each syllable.Re-mem-ber = 3 clapsThree claps...') — three sentences crammed with no spaces; split into one terse anchor.",
+        "gap": ""
+      },
+      {
+        "std": "RF.3.3d",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Silent-K fork is clean and on-category (all single-syllable words), but the tip teaches silent-L/'oul' which is never practiced in the fork — fork only reinforces the silent-letter teach beat, leaving OUGH and oul untouched.",
+        "needsMoreContent": false,
+        "topFix": "Lesson teaches three distinct patterns (silent letters, OUGH, silent-L) but fork tests only one; either narrow the teach scope or add a second fork item for OUGH.",
+        "gap": ""
+      },
+      {
+        "std": "RF.3.4",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "topFix": "Add a worked example (I-do) modeling one reread or one expressive line before the match fork — lesson jumps teach->tip->fork with no modeled application.",
+        "gap": "No worked example/I-do beat. Teach beats are thin one-liners ('Each read smoother', 'Calm'); model rereading a bumpy sentence aloud or show an expressive read before asking the kid to match."
+      },
+      {
+        "std": "RF.3.4b",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "On-screen prompt 'When pause at line breaks?' embeds the answer cue, and 'For effect' is the only fluency-reason distractor while the other two ('show feelings','vary speed') are off-category teaching points, not plausible pause-timing answers",
+        "needsMoreContent": true,
+        "gap": "This is an expressive-reading/fluency standard but the lesson is all telling, no modeling — no worked example slide where a poem line is actually read with a demonstrated pause. Add an I-do example reading a real prose vs poetry snippet before the fork.",
+        "topFix": "Replace the giveaway/off-category tap question with a real fluency choice (e.g. pick which line a reader should slow down on) and add a worked read-aloud example."
+      },
+      {
+        "std": "L.3.4",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "Genuine context-clue use, distractors same-category (size/shape) and plausible, answer not on screen, affirmation names why",
+        "needsMoreContent": true,
+        "gap": "Two teach beats are one-line fragments ('Other words in sentence' / 'Break word into chunks') with a clear transcript-split error ('The other wordsin the sentence' / 'give hints' across two beats). No worked example slide modeling either strategy before the fork; only 2 practice questions.",
+        "topFix": "Fix the broken split-sentence audio beats and add a real I-do worked example for both sentence-clue and word-part strategies."
+      },
+      {
+        "std": "L.3.4a",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "'gigantic' synonym-clue question genuinely uses the taught skill, size/speed distractors same-category, answer not shown, affirmation ties to the sentence clue",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix the garbled intro screen anchor 'Hello / W / Ord detectives' (broken word split); also synonym-teach screen prints the full transcript sentence instead of a terse anchor."
+      },
+      {
+        "std": "L.3.4c",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "needsMoreContent": true,
+        "gap": "only 1 real teach beat (the 'help' family); the second root comes via the example slide. Add a second substantive teach beat showing how a suffix changes meaning before the example.",
+        "topFix": "Add a second teach beat so the I-do isn't carried entirely by the example slide."
+      },
+      {
+        "std": "L.3.5",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "clean 1:1 match set, but anchors slightly truncated ('is something')",
+        "needsMoreContent": true,
+        "gap": "idioms get a single beat with no worked example (no I-do) before the fork. Add a modeled example for each type, especially idiom, so kids see one decoded before matching.",
+        "topFix": "Add a worked example modeling at least the idiom (and ideally each type) before the match fork."
+      },
+      {
+        "std": "L.3.5a",
+        "score": 2,
+        "slop": "clean",
+        "fork": "broken",
+        "forkNote": "fork tests certainty words (knew/believed/suspected) but the lesson's stated topic is literal vs nonliteral; the fork doesn't reinforce what intro/example/tip taught",
+        "needsMoreContent": true,
+        "gap": "two unrelated skills crammed in: literal-vs-nonliteral (intro, couch-potato example, tip) and certainty-word gradations (the teach beat + the entire fork). The nonliteral skill is never practiced; the certainty skill is never properly introduced. Split into two lessons or align the fork to literal/nonliteral.",
+        "topFix": "Make the fork reinforce literal vs nonliteral (the lesson's actual topic), or remove the off-topic certainty-word detour."
+      },
+      {
+        "std": "L.3.5b",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "the 'cozy' tap is on-topic and fine, but it sits on a transcript-dumped, partly off-skill lesson body",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Stop printing full spoken sentences verbatim (intro lines, 'Cozy' beat, and the 27-word tip sentence) — collapse to terse anchors; also drop the certainty (knew/believed) sentence in the tip, which belongs to a different lesson."
+      },
+      {
+        "std": "L.3.6",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "fork tests 'use them often' (intro), but the heaviest content is the tip's conversation-connector words, which the fork never reinforces",
+        "needsMoreContent": true,
+        "topFix": "add a worked example and align the fork to the taught conversation-words content",
+        "gap": "only ~1 real teach idea; the conversation words (Oh/I see/Well/So) are introduced in the tip but never modeled or tested"
+      },
+      {
+        "std": "RL.4.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "topFix": "replace the off-topic 'Watch the Change' example with a worked show-not-tell example that mirrors the Leo question",
+        "gap": "the [example] 'Watch the Change' is a single filler line about character change, never modeled and off-topic from the show-vs-tell fork"
+      },
+      {
+        "std": "RL.4.4",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "keyed answer 'filled space' paraphrases the prompt ('filling every corner') = near-giveaway; 'flew high' is the more defensible figurative read of 'soared' and lesson never taught 'soared'='filled space'",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) modeling how to decode a figurative word before the fork; allusion teach beat is orphaned (never reused or practiced)",
+        "topFix": "re-key the fork to a word whose figurative meaning the lesson actually taught, and add an I-do worked example decoding one figurative word"
+      },
+      {
+        "std": "RL.4.9",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "'Moral Story' distractor wasn't taught and a trickster tale also carries a moral, so the answer is slightly fuzzy/overlapping",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) - jumps intro->teach->teach->tip->fork with no modeled story; add a short modeled trickster-vs-hero comparison before the fork",
+        "topFix": "add a worked example modeling how to spot a shared theme across two named stories, and replace the overlapping 'Moral Story' distractor"
+      },
+      {
+        "std": "RL.4.10",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) between teach and the fork - add a modeled note-taking pass on a short passage",
+        "topFix": "add a worked example modeling note-taking before the fork",
+        "forkNote": ""
+      },
+      {
+        "std": "RI.4.1",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "needsMoreContent": true,
+        "gap": "'example' slide is 3 restatements (Answer is implied / Use details to infer / Implied = infer), not a worked example; only 1 real teach beat - add an actual modeled inference on a short passage",
+        "topFix": "replace the filler example with a real modeled inference from a passage",
+        "forkNote": "solid but coaching is a bit generic on wrong"
+      },
+      {
+        "std": "RI.4.2",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "ok",
+        "needsMoreContent": true,
+        "gap": "intro prints full audio sentences verbatim; example never models finding a main idea across a real passage - add a worked multi-paragraph example",
+        "topFix": "cut transcript intro to terse anchors and add a modeled main-idea example",
+        "forkNote": "distractors are real details vs the umbrella - good, but slightly easy"
+      },
+      {
+        "std": "RI.4.4",
+        "score": 2,
+        "slop": "clean",
+        "fork": "weak",
+        "needsMoreContent": true,
+        "gap": "no worked example; fork just recalls the 'Math: equation' label shown one slide earlier and only 2 practice Qs - add a context/root modeling example and a transfer-based fork",
+        "topFix": "rebuild fork to apply context/roots to a new word, not recall the slide",
+        "forkNote": "giveaway - answer 'equation' was just listed on the teach slide; tests memory not skill"
+      },
+      {
+        "std": "RI.4.5",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) before the fork - jumps teach straight to we-do; add a modeled passage labeled with its structure",
+        "topFix": "Add an [example] worked beat modeling one structure on a short passage before the fork."
+      },
+      {
+        "std": "RI.4.6",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "'Fiction' distractor is off-category (genre, not account type); other two are clean",
+        "needsMoreContent": true,
+        "gap": "only 1 real teach beat; the [example] is a contrast statement, not a worked I-do - add a modeled diary-vs-article passage",
+        "topFix": "Make the [example] a genuine worked example: show a snippet and model deciding firsthand vs secondhand."
+      },
+      {
+        "std": "RI.4.7",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "weak",
+        "forkNote": "answer 'numbers' is shown on the teach screen ('A chart shows numbers') = giveaway; distractors colors/sounds are off-category",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix SCREEN anchors (remove slashed transcript fragments like 'A chart shows / numbers') and rebuild the fork so the answer isn't pre-shown."
+      },
+      {
+        "std": "RI.4.8",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "reason-vs-evidence distinction is subtle; 'Run around' distractor overlaps the answer's category, muddy not clean",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Sharpen distractors so only the evidence option is example/proof; make others clearly a reason or topic, not borderline."
+      },
+      {
+        "std": "RI.4.9",
+        "score": 2,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "answer 'Stronger summary' is shown verbatim on the teach screen = giveaway; distractors shorter story/more pictures are implausible/off-category; question is double-worded",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rebuild fork so the answer isn't on screen and trim the doubled question stem ('what does it help you create? Why combine two texts?')."
+      },
+      {
+        "std": "RI.4.10",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "weak",
+        "forkNote": "distractors 'Drops are light'/'Rain falls down' are real facts from the text, so this tests main-idea-vs-detail but the correct 'Clouds are water' is arguably the most-stated, near-giveaway; coaching is generic",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Cut the redundant teach/tip overlap and de-transcript the screens — the butterfly passage prints verbatim on screen.",
+        "std_note": ""
+      },
+      {
+        "std": "RF.4.3",
+        "score": 2,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "good skill-use (first decoding step) but 'Chunk' is shown verbatim on the example slide just before, so it's close to a giveaway; distractors are clean same-category steps",
+        "needsMoreContent": true,
+        "gap": "Only ONE real teach beat ('use phonics/syllables/word parts') plus a thin 3-frame chunk/read/blend example. No worked example on an actual multisyllable word — model decoding a real word like 'fantastic' before the fork. Add a second teach beat (prefix/suffix is buried in the tip, not taught).",
+        "topFix": "Add a worked I-do on a real long word; promote prefix/suffix from tip to a teach beat."
+      },
+      {
+        "std": "RF.4.3a",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "clean 1:1 match set (PH=F, GH=silent, CH=K) pulled directly from the teach slide; same-category pairs",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) — jumps from teach straight to the match fork. Vowel-combos teach beat is one vague line ('EA, EE, OA, OU show up everywhere') with no sounds modeled, and vowel combos never appear in the fork. Add an I-do decoding a real word using a combo (e.g. 'phone', 'graph').",
+        "topFix": "Add a worked example decoding one real word with a known combo before the fork."
+      },
+      {
+        "std": "RF.4.4",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "'tricky parts' is printed verbatim on the teach screen just before, making the answer a near-giveaway; distractors are same-category (action/easy parts) which is good",
+        "needsMoreContent": true,
+        "gap": "No worked example / I-do at all — intro, two thin teach beats, tip, then fork. Model reading one sentence with pace+expression so the skill is demonstrated, not just stated. Intro screen is a full-sentence transcript dump.",
+        "topFix": "Fix the intro slide (prints the whole spoken sentence) and add a modeled read-aloud example."
+      },
+      {
+        "std": "L.4.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "good context-clue use with -less; but the example slide already teaches 'hopeless = without hope', so applying -less to 'fearless' is a near-parallel giveaway; distractors same-category (full of/without/a little)",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Vary the fork from the example (the -less rule is shown then immediately reused) — test a different strategy like a context clue or a different affix; clean the garbled intro screen ('Hello / W / Ord detectives')."
+      },
+      {
+        "std": "L.4.4a",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "good antonym Q but tests a skill taught in one throwaway line",
+        "needsMoreContent": true,
+        "gap": "'example' slide is a one-line antonym note, not a worked I-do; no modeled example before the fork. Add a real worked example walking through a sentence with a signal word, and expand antonym teaching beyond one line.",
+        "topFix": "Fix slide-1 'S / Uper readers' TTS-letter artifact and add a true worked example",
+        "std_note": ""
+      },
+      {
+        "std": "L.4.4c",
+        "score": 2,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "Glossary distractor was never taught; jumps teach->tip->fork with no modeling",
+        "needsMoreContent": true,
+        "gap": "No worked example at all. Only 2 teach beats; glossary is named in intro and used as a distractor but never explained. Add a glossary teach beat and an I-do example (e.g. 'I need a word that means happy -> which tool?').",
+        "topFix": "Add a worked example and teach the glossary before using it as a distractor"
+      },
+      {
+        "std": "L.4.5b",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "match tests 3 idioms but 'Bite your tongue' and 'Hold your horses' were never taught in the lesson",
+        "needsMoreContent": true,
+        "gap": "only 2 idioms taught and no worked example; either teach the 2 extra idioms used in the fork or drop them, and add an I-do worked idiom before the fork",
+        "topFix": "align the fork pairs with idioms actually taught (or teach them)"
+      },
+      {
+        "std": "L.4.6",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "'silly' is an off-category junk distractor; casual vs academic is the real contrast",
+        "needsMoreContent": true,
+        "gap": "teaching is abstract with no worked example - add an I-do showing one sentence rewritten casual->academic before the fork",
+        "topFix": "add a concrete worked example modeling register before the fork"
+      },
+      {
+        "std": "RF.1.3f",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "Match is pure recall: all three ending->meaning pairs are stated verbatim on the teach screens AND re-stated in the affirmation, so it's a memory echo, not skill use. Kid never applies an ending to a real word.",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) before the fork. Add an [example] beat applying an ending to a word (e.g. 'walk'->'walked'->already happened) and change the fork to apply an ending to a new word rather than match definitions.",
+        "topFix": "Replace the definition-match fork with a 'pick the word that already happened' task using fresh words; add a worked example.",
+        "std_detail": ""
+      },
+      {
+        "std": "RF.1.3g",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "Off-category, dead giveaway: 'said' is the only word taught all lesson and the only sight word; distractors 'cat'/'run' are decodable CVC words, so any kid picks the one word they were just drilled on. Doesn't test the skill, only recall of the single example.",
+        "needsMoreContent": true,
+        "gap": "Only one real teach word ('said'); the second beat lumps was/were/have with shaky reasoning ('Were has a silent E' is a dubious decoding claim for a sight-word lesson). Add a second clean modeled sight word and make the fork choose among plausible sight-word-vs-decodable pairs that weren't the drilled example.",
+        "topFix": "Make the fork use untaught words (e.g. choose the tricky one among 'the','map','sit') so 'said' isn't a giveaway; fix the questionable 'silent E' explanations in teach beat 2.",
+        "std_detail": ""
+      },
+      {
+        "std": "L.1.1",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "answer 'Verb' is on-screen as a recent teach pill, mild giveaway; distractor 'Describe' is off-category (lesson only taught noun+verb, never modeled adjective)",
+        "needsMoreContent": true,
+        "gap": "'Describe' is named in intro but never taught; either add a short describe/adjective teach beat or drop it from the fork choices so distractors match taught categories",
+        "topFix": "Resolve the 'Describe' choice — it tests a category the lesson never modeled"
+      },
+      {
+        "std": "L.2.1",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Intro + teach screens print full spoken sentences with stray punctuation as anchors ('Yesterday I ate. I ran. I flew.', 'Collective nouns / , irregular verbs / , and tricky pronouns.') — rewrite as terse anchors"
+      },
+      {
+        "std": "L.2.2",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "all three choices are contractions so category is clean, but spoken question over-explains and the example 'is not' maps 1:1 to isn't making it close to a giveaway",
+        "needsMoreContent": true,
+        "gap": "Commas are taught only as a single tip beat with no worked example, and the fork tests only contractions — add a comma teach/example beat or split into a tighter single-concept lesson",
+        "topFix": "Commas are under-taught (one tip beat, no I-do) relative to the two apostrophe beats"
+      },
+      {
+        "std": "L.2.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "answer 'heartbroken' is the exact word taught verbatim moments earlier; 'glad' is an off-category distractor (opposite, not just weaker)",
+        "needsMoreContent": true,
+        "gap": "no worked I-do example before the fork; 'stronger words' concept stated but never modeled in a full sentence rewrite",
+        "topFix": "add a worked example modeling a weak->strong word swap in a sentence, and swap 'glad' for a same-category near-miss (e.g. 'upset')"
+      },
+      {
+        "std": "L.3.1",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "weak",
+        "forkNote": "'went' is modeled verbatim in the teach beat right before, so it's near-rote recall; distractor 'ate' is off (it's the answer to a different verb)",
+        "needsMoreContent": true,
+        "gap": "intro prints full audio sentences as on-screen text (transcript, not anchor); no worked example; ask a verb NOT pre-shown",
+        "topFix": "terse-anchor the intro screens and have the fork test an irregular verb that wasn't just displayed on screen"
+      },
+      {
+        "std": "L.3.3",
+        "score": 3,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "teach is thin: 2 short beats, no worked example, 'audience match' concept barely modeled; jumps to fork fast - add an I-do sentence rewrite",
+        "topFix": "add a worked example showing a weak verb rewritten stronger in context before the fork"
+      },
+      {
+        "std": "L.4.2",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "good skill-use + same-category distractors, but lesson covers 3 unrelated topics (compound commas, dialogue/titles, proofread) while fork only tests one - tip slide also wrongly hints to put comma 'before the conjunction' giving it away",
+        "needsMoreContent": true,
+        "gap": "unfocused: teach beat 2 crams two separate concepts (dialogue punctuation AND title capitalization) with no model for titles; no worked I-do example before the fork. Narrow scope to compound-sentence commas and add a worked example, or split into separate lessons.",
+        "topFix": "De-cram teach beat 2 (one concept per slide) and add an I-do worked example before the fork",
+        "std_note": ""
+      },
+      {
+        "std": "L.4.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Two SCREEN lines print full audio sentences verbatim ('Precise words paint clearer pictures.' line 11, 'I love reading' echo) - shorten to terse anchors"
+      },
+      {
+        "std": "RI.1.10",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "stem says Lily used BOTH pictures and headings, but 'Pictures' is a distractor marked wrong — ambiguous, penalizes a story-correct pick",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rewrite the tap scenario so only headings are used (or make the prompt ask which part shows topic names), so the distractors aren't true in the narrative"
+      }
+    ],
+    "all": [
+      {
+        "std": "RL.K.1",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RF.K.2a",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RI.K.1",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "distractors caves/trees are plausible 'where' but encouragement says 'listen to the story again' - calls it a story when it's a fact, minor mismatch; answer 'dens' never shown so not a giveaway",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Tip slide is off-topic sea-otter trivia that never models finding a key detail - replace with a second worked fact-detail example (e.g. ask/answer a 'what does it do' detail) so the I-do reinforces the skill"
+      },
+      {
+        "std": "RL.K.2",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "clean 1:1 sequence set, answer not shown on screen, affirmation names the order-why",
+        "needsMoreContent": true,
+        "gap": "Teach covers beginning/middle/end abstractly but the worked example and fork both only test 'what happened FIRST' - middle is never modeled or practiced; add a beat that identifies the middle so all three story parts taught are actually used",
+        "topFix": "Model and probe the MIDDLE, not just first - the lesson teaches B/M/E but only exercises the beginning"
+      },
+      {
+        "std": "RL.K.3",
+        "score": 2,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "beach vs ocea n vs home are same-category 'where' and plausible, but ocean is named in the passage as a near-miss; answer not shown - fork itself is fine",
+        "needsMoreContent": true,
+        "gap": "No [example] / I-do slide at all - jumps from teach to tip to fork with no worked model; teach slide has zero SCREEN anchors (all audio); only 'where' is ever practiced though it teaches characters+setting+events",
+        "topFix": "Add a worked example slide that models identifying character, setting AND event in one short story before the fork - this lesson skips the I-do entirely"
+      },
+      {
+        "std": "RL.K.4",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Trim the example passage on-screen ('The bunny was famished, so he ate five carrots.') to an anchor — it prints the full spoken sentence, the one transcript-y beat in an otherwise clean lesson.",
+        "std_comment": "Best of the five. Real I-do (famished/carrots context modeled), terse anchors, and a fork that genuinely makes the kid use context clues with a fresh word (scurry); distractors all plausible verbs, answer never shown."
+      },
+      {
+        "std": "RL.K.5",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "Distractor 'Song' is off-category — it isn't taught and a K reader can't distinguish poem from song; answer leans on rhyme cue that's a near-giveaway.",
+        "needsMoreContent": true,
+        "gap": "Teach beat has zero anchor pills (full sentences only) and the example never models the SORT decision — add a teach anchor (Story: characters/events vs Poem: rhyme/short lines) and an I-do where you reason through one borderline case.",
+        "topFix": "Intro slide prints two full spoken sentences verbatim ('Did you know there are different kinds of books? / Some tell stories and some have poems!') — replace with a 2-3 word anchor, and add a real worked example.",
+        "std_comment": "Concept fine but thin and transcript-heavy: intro is a verbatim audio dump, teach has no on-screen anchors at all, and 'Song' distractor is off-category."
+      },
+      {
+        "std": "RL.K.6",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none",
+        "std_comment": "Clean anchors (Author/Illustrator pills), clear I-do reading a real cover, and a fork that makes the kid apply the term to a scenario (Maya wrote words -> Author); distractors same category (book roles), answer not shown, affirmation names why."
+      },
+      {
+        "std": "RL.K.7",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Fork asks 'where is the bear' (setting) but the spoken prompt explicitly says 'in a sunny park' — the answer is read aloud, a near-giveaway; distractors fine but the kid isn't inferring from a picture as taught.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rewrite the fork so the answer isn't spoken in the prompt — describe the picture (red blanket, sunshine, trees) and let the kid infer 'park' rather than naming it; the lesson teaches reading pictures, the fork should require inference, not recall.",
+        "std_comment": "Teaching is solid (setting/feelings anchors, real I-do). Weak link is the fork: prompt states the answer ('in a sunny park'), so it tests listening not picture-reading. Repeated 'Setting' anchor across teach/example/tip is slightly padded."
+      },
+      {
+        "std": "RL.K.9",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none",
+        "std_comment": "Strong same/different framing, anchors terse, real I-do (bear/bee honey). Fork makes the kid pick the SAME trait (eat leaves) while distractors are the DIFFERENT traits (move fast/slow) pulled straight from the story — a clean discrimination task; answer not shown, affirmation names why."
+      },
+      {
+        "std": "RI.K.2",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RI.K.3",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix glued tip text ('because.Tells you WHY!') - add spaces/line breaks so signal words read cleanly"
+      },
+      {
+        "std": "RI.K.4",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Thin teach beats ('Sentence'/'Pictures') - tighten anchors but content arc is complete"
+      },
+      {
+        "std": "RI.K.5",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "Good question but covers only 1 of 4 parts taught; single fork item under-reinforces",
+        "needsMoreContent": true,
+        "gap": "Only 1 practice question (others have 5) for a 4-concept lesson; needs back-cover/title-page practice items too",
+        "topFix": "Add 4+ practice questions and convert teach slides from full-sentence transcripts to terse anchors"
+      },
+      {
+        "std": "RI.K.6",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "weak",
+        "forkNote": "On-screen prompt 'Who writes the words?' + 'author writes WORDS' repeated in teach makes 'author' a near-giveaway",
+        "needsMoreContent": true,
+        "gap": "No intro slide - opens cold on teach; add a real intro beat before the author/illustrator teaching",
+        "topFix": "Convert verbatim-transcript teach/tip slides to terse anchors and fix glued text ('three questionshelp you understand')"
+      },
+      {
+        "std": "RI.K.7",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Cut full-sentence transcripts on example/tip slides to terse anchors (e.g. 'egg->tadpole->frog', 'Ask: What do I see?')",
+        "std_note": ""
+      },
+      {
+        "std": "RI.K.8",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Example slide prints the whole 4-sentence passage verbatim — anchor it instead; teach beat 3 screen 'Dogs are loyal' drops the second reason."
+      },
+      {
+        "std": "RI.K.9",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Distractors 'About cats'/'About fish' are off-category (both facts are obviously about dogs) and the 'same' is a giveaway, so it barely tests compare-skill",
+        "needsMoreContent": true,
+        "gap": "Only 1 real teach beat (same/different stated, not modeled); add a worked compare beat that explicitly names one same AND one different before the fork",
+        "topFix": "Example whole-sentence transcript on screen; thin teaching — add a modeled same-vs-different comparison beat"
+      },
+      {
+        "std": "RF.K.1a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Solid canon shape and terse anchors; could tighten 'Finger helps eyes track' but minor"
+      },
+      {
+        "std": "RF.K.1b",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Skill is real (count letters) but 'go' = 2 is trivially easy and distractors 3/4 are pure number-guesses, not category-tied; affirmation good",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Strong terse anchors throughout; fork could use a longer/less obvious word than 'go' to actually exercise counting"
+      },
+      {
+        "std": "RF.K.1c",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Fix factual mismatch: example slide demos 'I like dogs' (3 words) but fork answer is 'Four' for 'The cat ran fast' - model a 4-word case first",
+        "gap": ""
+      },
+      {
+        "std": "RF.K.1d",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "clean 1:1 A/B/C match set, distractors same-category, no giveaway",
+        "needsMoreContent": false,
+        "topFix": "none"
+      },
+      {
+        "std": "RF.K.2b",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "'rabbit' fork uses a fresh word, all-number distractors, affirmation names why (Rab-bit)",
+        "needsMoreContent": false,
+        "topFix": "none"
+      },
+      {
+        "std": "RF.K.2c",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "distractors muh/tuh are plausible same-category sounds, but teach conflates sound vs letter name (B/L) while fork asks for sound (kuh) - inconsistent framing",
+        "needsMoreContent": true,
+        "topFix": "Make teach/example use phoneme sounds (buh, luh) not letter names so it matches the fork's sound-based question; add SCREEN anchors to the screen-less intro/teach/example slides",
+        "gap": "intro, teach, example, tip slides have NO on-screen anchors at all (only audio) - K lesson needs visual anchors per beat; also no ending-sound modeled in example though concept is taught"
+      },
+      {
+        "std": "RF.K.2d",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "all-number choices, fresh word 'sun', affirmation reinforces slow-say method",
+        "needsMoreContent": true,
+        "topFix": "Add SCREEN anchors to every beat (intro/teach/example/tip are audio-only) and segment-show the sounds (s-u-n) visually like the canon karaoke pattern",
+        "gap": "no on-screen anchors anywhere except practice-intro; teach states counts (dog=3, go=2) but never visually segments the word, so the I-do worked example is audio-only with nothing modeled on screen"
+      },
+      {
+        "std": "RF.K.2e",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "topFix": "none",
+        "forkNote": "",
+        "gap": ""
+      },
+      {
+        "std": "RF.K.3a",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "match pairs S/M/T echo the letter and reuse the taught letters; near-trivial, not testing recall",
+        "needsMoreContent": true,
+        "gap": "example beat introduces B/D/F but never models an answer (concept dropped); only 1 practice MCQ; add a worked I-do sound for at least one letter and more practice",
+        "topFix": "Make the fork test a letter NOT just shown next to its echoing slash-sound, and model the example sounds instead of dropping B/D/F"
+      },
+      {
+        "std": "RF.K.3b",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "fork itself is clean (fish->I, answer off-screen, plausible vowel distractors, WHY named), but it only tests vowel-ID, none of the short/long/Magic-E content",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Cut the cram: Magic E + long/short vowels are introduced but never modeled or practiced; split into its own lesson or drop Magic E here"
+      },
+      {
+        "std": "RF.K.3c",
+        "score": 2,
+        "slop": "clean",
+        "fork": "broken",
+        "forkNote": "dead giveaway: the target word 'Do' is one of the visible tappable choices, so kid just matches spoken->printed word; tests letter-matching not sight-word recall",
+        "needsMoreContent": true,
+        "gap": "no practice-intro slide; fork doesn't reinforce instant recognition. Reframe to recognition-in-context (find 'Do' inside a short sentence) so the answer isn't a labeled standalone tile",
+        "topFix": "Rebuild the fork so the answer word isn't shown as a plain choice tile that matches the spoken prompt 1:1"
+      },
+      {
+        "std": "RF.K.3d",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Swap distractor 'and' for another look-alike (e.g. 'saw' plus one more visual-confusable) and add 1-2 practice MCQs"
+      },
+      {
+        "std": "RF.K.4",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Add a second teach beat or worked example for the 'fact vs story' purpose split before the fork",
+        "std_notes": ""
+      },
+      {
+        "std": "K.L.1",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rewrite teach + example screens as terse anchors — they currently print the full spoken sentences verbatim (transcript slop, no pill breaks)"
+      },
+      {
+        "std": "K.L.2",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Trim the tip screen — it prints both full 'Number one/Number two' sentences as a transcript instead of terse anchors"
+      },
+      {
+        "std": "K.L.4",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "K.L.5",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "match pairs (hot/cold, up/down, big/small) are all from the teach, but big/small was used as the example AND is a giveaway; teach screens are full-sentence transcripts",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Convert the teach/example screens from transcript sentences to terse anchors, and swap one match pair so it isn't the just-shown example"
+      },
+      {
+        "std": "K.L.6",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Trim full-sentence anchors (lines 13, 22) to terse pills; example sentence is printed verbatim = mild transcript creep",
+        "slopNote": "A couple of full example sentences printed on screen (enormous/delighted sentences) read as transcript rather than anchor"
+      },
+      {
+        "std": "RL.1.1",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "Teach beat (lines 13-18) has zero on-screen anchors and just lists 5 questions abstractly with no modeling; add a real teach anchor or split into modeled Who/What/Where beats before the worked example",
+        "topFix": "Teach slide is bare audio with no screen text and no modeling — anchor the 5 questions on screen, or fold modeling in",
+        "slopNote": "Intro is anchor-clean; teach slide is thin/under-built"
+      },
+      {
+        "std": "RL.1.2",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "distractors are clean same-category story facts; 'Crayon broke' is the middle-problem and not shown on screen — genuinely tests the skill",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Example passage printed verbatim (line 22) is a full transcript line — shorten to a 2-line anchor; otherwise solid B-M-E arc",
+        "slopNote": "Full story sentence printed on screen in example; minor"
+      },
+      {
+        "std": "RL.1.3",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "'where' question, all three distractors are places (tree/nest/sky), answer not shown, affirmation names WHY (tree=setting=where)",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none",
+        "slopNote": "Two teach beats (character; setting+events), worked example, tip, fork — full canon arc, anchors terse"
+      },
+      {
+        "std": "RL.1.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Fork tests feeling-ID (sad/happy/scared, same category, answer not shown) — solid, BUT it's a generic emotion-label question; the lesson actually taught sensory/'feel it' words like 'warmed', so the fork drifts from the modeled skill. Also opens 'Your turn, detective!' — wrong lesson's catchphrase, copy-paste leak",
+        "needsMoreContent": true,
+        "gap": "Lesson conflates two skills (emotion words happy/sad vs sensory words like 'warmed') and only models ONE example (warmed); add a second worked example for the emotion-word strand the fork tests, or narrow the lesson to one skill",
+        "topFix": "Fix the skill mismatch: intro/example teach sensory 'feel-it' words, but teach beat + fork are about emotion labels — pick one and model it twice",
+        "slopNote": "'Your turn, detective!' catchphrase leaked in from RL.1.1; example anchor line 21 is a full sentence"
+      },
+      {
+        "std": "RL.1.5",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Tip slide is light - 'Real life? Made up?' anchor is good but the trick could model one quick example before the fork.",
+        "std_note": ""
+      },
+      {
+        "std": "RL.1.6",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Two SCREEN lines print the full example sentence verbatim ('I went to the store with my mom.' / 'Sam ran... He played...') - that's transcript-on-screen; trim to the pronoun clue."
+      },
+      {
+        "std": "RL.1.7",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Question is a face-reading/feelings inference but the lesson taught reading PICTURES; the fork gives only a verbal story (frown, tears described in words), so it tests inference-from-text, not picture-reading. Slight skill mismatch.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Align the fork to the taught skill: present an actual picture cue, or reword so the kid is reading an image clue not a described one. Also the S2 SCREEN line ('Snow on the ground. Kids in coats and hats.') is near-transcript."
+      },
+      {
+        "std": "RL.1.9",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Distractors are plausible/same-category (all 'sameness' claims) but 'Live in trees' and 'Are small' are arguably ALSO true of both stories (both nests are in tall trees), so the single-correct framing is shaky - 'Build nests' is best but not uniquely correct.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix the fork's distractor logic: 'Live in trees' is also true (both nests in a tall tree), making two answers defensible. Make distractors clearly false-for-one story."
+      },
+      {
+        "std": "RI.1.1",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Worked example prints the full fact sentence on screen verbatim (transcript) - trim to an anchor; otherwise solid I-do/we-do structure and a clean 'where' fork with same-category place distractors."
+      },
+      {
+        "std": "RI.1.2",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix example slide: screen prints wrong answer 'Firefighting!' for key details (audio says gear/trucks/helping); also stop printing full passage as on-screen transcript",
+        "std_note": ""
+      },
+      {
+        "std": "RI.1.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Example slide prints three full sentences verbatim as on-screen text - condense to terse anchors"
+      },
+      {
+        "std": "RI.1.4",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RI.1.5",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "near-giveaway: prompt restates the taught definition, leans on recall not reasoning",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Make the fork require reasoning (e.g. give a goal and ask which part to use) rather than echoing the taught definition"
+      },
+      {
+        "std": "RI.1.6",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "question is plain listening-recall of fur color; does not make kid distinguish what pictures-show vs words-tell, the actual skill taught",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rebuild fork to test the picture-vs-word distinction (e.g. 'which clue would show you the exact color - picture or words?') instead of recalling a color"
+      },
+      {
+        "std": "RI.1.7",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "no worked I-do example before the fork; jumps teach -> fork. Add a 'watch me read this picture' example slide modeling the slow-down trick on one image.",
+        "topFix": "Add a worked-example beat between teach and the fork."
+      },
+      {
+        "std": "RI.1.8",
+        "score": 4,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "distractor 'Green' isn't in the story and is off-category (color, not a reason); 'Round' same. Plausible but slightly random.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Swap 'Green'/'Round' for plausible reason-shaped distractors and trim long SCREEN anchors."
+      },
+      {
+        "std": "RI.1.9",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "answer 'Add facts' is thinly modeled; teach spends more time on 'agree' (dogs) than on 'add facts', so the 3-way discrimination outruns the teaching.",
+        "needsMoreContent": true,
+        "gap": "no worked example, and 'add facts' vs 'agree' distinction is underspecified. Add an I-do example explicitly contrasting agree vs add-facts before the fork.",
+        "topFix": "Teach 'add facts' as clearly as 'agree' and add a worked example contrasting the two."
+      },
+      {
+        "std": "RF.1.1a",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RF.1.2b",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "distractors pig/pin/sit are clean CVCs but pig vs pin differ only in final sound while sit is far off; one near + one far rather than two plausible.",
+        "needsMoreContent": true,
+        "gap": "only one real teach beat (cat) before the example; add a second modeled blend so kids see the skill twice before practicing.",
+        "topFix": "Add a second teach blend before the example beat."
+      },
+      {
+        "std": "RF.1.2c",
+        "score": 2,
+        "slop": "clean",
+        "fork": "broken",
+        "forkNote": "all three choices d/o/g are the letters of the word on screen, and the word itself is shown - massive giveaway; distractors aren't real phoneme confusions",
+        "needsMoreContent": true,
+        "gap": "only 1 teach beat (MAP) and the 'example' for SUN has no modeled answer - audio says 'first/middle/last sound' but never names them; add a fully worked I-do that actually identifies each sound, plus a second teach beat",
+        "topFix": "rework the fork so the answer isn't trivially the middle letter shown on screen, and actually model the sounds in the example"
+      },
+      {
+        "std": "RF.1.2d",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "fork uses CAT but the teach beat already broke CAT into three sounds - it's a recall of the exact modeled word, not transfer; FISH (4 letters/3 sounds) would have been the better, less-giveaway test",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "make the fork use a fresh word instead of re-asking CAT, which was just counted to three in the teach beat"
+      },
+      {
+        "std": "RF.1.4b",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "clean 1:1 match of the three marks to the three voice moves taught; same-category, no giveaway",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RF.1.4c",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "cake/rake/lake are plausible same-rhyme-family distractors; answer not shown on screen; tests the meaning-clue skill taught; hint slightly over-helps by naming rake/lake",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "tighten the wrong-answer hint so it nudges rather than steering toward eliminating rake/lake"
+      },
+      {
+        "std": "L.1.4",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "lesson teaches multiple-meaning words via 'bat'; fork switches to 'run' (move fast/start engine/water flows) - distractors are too adult (start engine, water flows) for grade 1 and weren't modeled; off the taught example",
+        "needsMoreContent": true,
+        "gap": "only one multiple-meaning word ('bat') is modeled across teach+example; introduce a second clean kid-level multiple-meaning word and model it before the fork so 'run' isn't the first transfer",
+        "topFix": "swap the fork distractors to grade-1-plausible meanings, and add a second worked multiple-meaning word before the we-do; also practice has only 2 MCQs - thin"
+      },
+      {
+        "std": "L.1.4a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Tighten teach/example SCREEN lines that echo the full spoken sentence (e.g. line 12, 19) - those are transcripts, not anchors",
+        "std_note": "Anchor 'famished' fork is genuinely strong: word never shown, distractors are off-category in degree (hungry/tired/small), affirmation names the seed-clue. Two on-screen lines reprint the full sentence verbatim - borderline transcript."
+      },
+      {
+        "std": "L.1.4b",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Tip beat teaches '-ed' (a NEW ending) instead of reinforcing ER/UN just taught - it introduces a third concept right before a fork that only tests UN; cut or re-anchor to ER/UN",
+        "std_note": "Two solid teach beats (ER, UN). Fork is strong: 'unfold' uses the taught UN rule, distractors are same-category (one who folds = ER pattern, fold again), answer not shown. Tip drifts to -ed which the fork never uses."
+      },
+      {
+        "std": "L.1.4c",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Match pairs (looking/walking/played) reuse 'play' from the worked example - swap 'played' for a fresh root so the fork isn't a partial giveaway of the I-do",
+        "std_note": "Clean root-word build: intro, teach, worked example (Play), tip, match fork. 1:1 match is a clean set and uses the cover-the-ending skill. One pair (played->play) is the exact example word."
+      },
+      {
+        "std": "L.1.5",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "fork only tests opposites; the synonym/'same-family' teach beat is never practiced",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) - jumps from two teach beats straight to the fork. Add an example modeling one match (e.g. 'hot -> cold, why?'). Also the match pairs (hot/cold,big/small,fast/slow) are the exact examples shown on the teach slide line 13 - a dead giveaway",
+        "topFix": "Add a worked example before the fork AND change the match pairs so they aren't the three pairs already printed in the teach beat",
+        "std_note": "Teaches two ideas (opposites + synonyms) but only forks on opposites, and the fork pairs are identical to the teach examples = giveaway. Missing the we-do/I-do worked example."
+      },
+      {
+        "std": "L.1.5a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Distractors Animals/Fruits are strong because they're the two groups just taught - keep; minor: example 'Fruits' SCREEN line reprints all four fruit words, trim to an anchor",
+        "topNote": "",
+        "std_note": "Red/Blue/Green->Colors fork is strong: same-category distractors (Animals, Fruits both taught), answer never shown, affirmation names the colors. Has intro/teach/example/tip/fork - full arc."
+      },
+      {
+        "std": "L.1.5b",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Add a second teach beat or vary the cat example so example/fork aren't both 'pick the group of an animal'",
+        "gap": ""
+      },
+      {
+        "std": "L.1.5c",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Distractors 'tiny ant'/'small mouse' contain the antonym in the label - 'gigantic'=big is near-giveaway; also fork tests a brand-new word (gigantic) never taught in the lesson (cozy, chilly)",
+        "needsMoreContent": true,
+        "gap": "No worked I-do example - 'example' slide is just a second teach beat (chilly) identical in shape to the cozy teach; add a modeled 'match the word to real life' walkthrough before the fork",
+        "topFix": "Make the example an actual worked model, and pick a fork word that was taught (cozy/chilly) instead of introducing 'gigantic' cold"
+      },
+      {
+        "std": "L.1.5d",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Off-category distractors: stronger-than-happy choices include 'huge'/'big' which are size words, not feeling words - a kid can eliminate by category without knowing the skill; keep distractors as feeling-intensity words",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Swap 'huge'/'big' distractors for same-category feeling words (e.g. glad, joyful) so the fork tests intensity not category"
+      },
+      {
+        "std": "L.1.6",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RL.2.1",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RL.2.2",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Convert the two full-sentence transcript pills in the teach slide (rabbit-nap / tortoise-won lines) to terse anchors."
+      },
+      {
+        "std": "RL.2.3",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "Distractors plausible & same category (feelings), but 'found his lost book' makes Happy a near-giveaway; low rigor.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "De-transcript the teach + example slides (3 full spoken sentences printed verbatim) into short anchors."
+      },
+      {
+        "std": "RL.2.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Distractors off-category: answer must be a FEEL word but 'Loud waves'=hear and 'Bright shell'=see, so the 'feel' framing telegraphs it.",
+        "needsMoreContent": true,
+        "gap": "Lesson teaches rhyme/beat then pivots to sensory words with no worked I-do; the fork tests only sensory words. Add a teach or worked-example beat modeling how to pick the sensory word that matches a given sense.",
+        "topFix": "Add a worked sensory-word example (I-do) before the fork so the skill the fork tests is actually modeled."
+      },
+      {
+        "std": "RL.2.5",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RL.2.6",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Teach slide prints two full transcript sentences (Tom/Lea lines) verbatim; cut to terse anchors like 'Tom: best place ever' / 'Lea: lonely'."
+      },
+      {
+        "std": "RL.2.7",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "none",
+        "gap": ""
+      },
+      {
+        "std": "RL.2.9",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Fix example-slide SCREEN transcript dump: 'What is different?The setting.The small parts.The ending sometimes.' is crammed full sentences with no spacing — re-anchor to terse pills",
+        "gap": ""
+      },
+      {
+        "std": "RL.2.10",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "answer 'Stretch books' printed verbatim on teach screen and prompt+encouragement near-give it away",
+        "needsMoreContent": false,
+        "topFix": "Make the fork less of a giveaway — distractors and prompt currently telegraph 'stretch books'",
+        "gap": ""
+      },
+      {
+        "std": "RI.2.1",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "asks 'how many birds' (literal counting recall) — does NOT use the taught who/what/where/when/why/how reasoning skill, especially the why/how depth the lesson stressed",
+        "needsMoreContent": true,
+        "topFix": "Replace the fork question with a who/what/where or why/how question that actually exercises the taught skill",
+        "gap": "fork tests counting, not the six question-words; add a worked why/how example before the fork so the modeled skill matches the assessed skill"
+      },
+      {
+        "std": "RI.2.2",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Re-anchor the one transcript SCREEN line on the Honey Bees example ('One paragraph on how they make honey. Another on where they live.') into terse pills",
+        "gap": ""
+      },
+      {
+        "std": "RI.2.3",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Trim the two full transcript sentences on the example slide to terse anchors (e.g. 'Egg laid first', 'Butterfly emerges') and fix TTS chunk corruption ('A ca / Terpillar', 'Like first')"
+      },
+      {
+        "std": "RI.2.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "Two word-meaning strategies are taught (definition-in-text AND context clues) but only context clues gets a worked example. Add a short I-do for the 'definition right there' strategy, and trim the full 'thirsty camel' sentence on screen to an anchor.",
+        "topFix": "Model the definition-in-text strategy with its own worked example before the fork"
+      },
+      {
+        "std": "RI.2.5",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix TTS chunk corruption on the tip slide ('F / Lip through')"
+      },
+      {
+        "std": "RI.2.6",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RI.2.7",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "match pairs are near-verbatim from the screen anchors, slight giveaway",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Reword the match-prompt answers so they aren't identical to the teach-slide anchor pills"
+      },
+      {
+        "std": "RI.2.8",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Fork tests only the point; add a beat or distractor that tests reason-spotting (the 'because' trick taught in tip)",
+        "gap": ""
+      },
+      {
+        "std": "RI.2.9",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "clean 1:1 same/different set, but only tests the 'same' half",
+        "needsMoreContent": false,
+        "topFix": "Rewrite the tip slide anchors — SCREEN prints full audio sentences and chunk fragments ('Here is a / helpful trick'), the transcript-not-anchor violation",
+        "gap": ""
+      },
+      {
+        "std": "RI.2.10",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "answer is a dead giveaway (story names lions/animals); distractors Space/Sports off-topic and implausible; doesn't exercise a real skill",
+        "needsMoreContent": true,
+        "topFix": "Add a worked example and a fork that requires reasoning, not topic-matching",
+        "gap": "Habit/motivation standard with no I-do worked example; two thin teach beats jump straight to a giveaway fork"
+      },
+      {
+        "std": "RF.2.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "topFix": "Add a worked example (I-do) modeling sounding out one word before the match fork",
+        "gap": "Umbrella standard with only 2 teach beats and no worked example; jumps teach->fork. SCREEN 'Most letters make one sound.' also prints the full audio line"
+      },
+      {
+        "std": "RF.2.3a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "topFix": "Model a second vowel (e.g. short/long I) so it isn't only A",
+        "gap": "Only long/short A is taught and modeled; standard covers all vowels - add a second vowel example beat"
+      },
+      {
+        "std": "RF.2.3b",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RF.2.3c",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "Verbose spoken prompt; 'bow: OW team' label collides with the OW intro concept but the match itself is fine 1:1",
+        "needsMoreContent": true,
+        "gap": "Worked example slide is mislabeled — RAINBOW is taught as a second teach beat (I-do), not a true we-do/guided example. There is effectively only one teaching of the 'split + identify rule' move before the fork. Add a real I-do where the kid is walked through splitting a NEW word step-by-step before the match.",
+        "topFix": "Add a genuine worked example (guided split of one fresh word) between teach and the fork"
+      },
+      {
+        "std": "RF.2.3d",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Distractors fine and on-category (affix->meaning), but LY is taught then dropped from the match — fork only covers UN/RE/ER, leaving one of four taught items unpracticed",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) at all — jumps intro -> 2 teach beats -> tip -> fork. Add an [example] slide modeling peeling one word (e.g. 'unkindly' -> UN + kind + LY) so the 'find the root' skill is demonstrated, not just stated. Also only 3 practice MCQs vs 5 in siblings.",
+        "topFix": "Add a worked example modeling peel-apart, and include LY in the match set"
+      },
+      {
+        "std": "RF.2.3e",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) before the fork — goes teach(silent letters) -> teach(PH) -> tip -> match. Add a short guided example walking the kid through identifying the tricky letter in one word.",
+        "topFix": "Insert a worked-example slide before the fork"
+      },
+      {
+        "std": "RF.2.3f",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "'Again: AI sound' label is fuzzy — audio says Again sounds like 'uh-gen', so 'AI sound' as the trick is slightly contradictory/confusing as a match target",
+        "needsMoreContent": true,
+        "gap": "No worked example, and 'Because' is taught (intro teach beat) then never appears in the fork or as a modeled read — concept introduced but dropped. Add a guided read of one sight word and make the taught set match the practiced set.",
+        "topFix": "Add a modeled sight-word read and align taught words with the match set (Because is taught but unpracticed)"
+      },
+      {
+        "std": "RF.2.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "match pairs are verbatim teach-screen strings — recall giveaway, not skill use",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) — jumps teach→tip→fork; add a modeled fluency example",
+        "topFix": "add a worked example modeling fluent reading before the fork"
+      },
+      {
+        "std": "RF.2.4a",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "shorten the example screen — 'I want to learn three facts about sharks!' is a full-sentence transcript, anchor it"
+      },
+      {
+        "std": "RF.2.4b",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "affirmation should confirm all three pairs, not just the period"
+      },
+      {
+        "std": "RF.2.4c",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "L.2.4",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "fork tests 'un-' prefix meaning that was never modeled in any teach/example beat",
+        "needsMoreContent": true,
+        "gap": "no worked example, and only 2 thin teach beats — add an [example] modeling sentence-clue + word-part decoding (e.g. 'unhappy'), plus more practice (only 1 MCQ)",
+        "topFix": "add a worked example modeling how to decode a tricky word using both strategies before the fork"
+      },
+      {
+        "std": "L.2.4a",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Replace transcript SCREEN lines (full sentences on intro/teach/example) with terse anchors",
+        "std_note": ""
+      },
+      {
+        "std": "L.2.4b",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "giveaway - tip & teach both state 'RE means again', answer 'do again' is handed to kid; only 2 practice Qs is thin",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) before the fork - intro->2 teach->tip->fork jumps straight to practice; add a modeled example like 'unlock = un+lock = not locked'",
+        "topFix": "Add a worked example slide and make the fork test a NEW prefix word not just-taught 'redo'"
+      },
+      {
+        "std": "L.2.4c",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "distractor 'ing' is off-category (a suffix, not a candidate root word) making it a near-giveaway between farm/farmer",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Make all 3 choices plausible whole-word roots (e.g. farm/barn/grow) - drop the off-category 'ing'"
+      },
+      {
+        "std": "L.2.4d",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "clean 1:1 match set, but all three pairs are pre-taught so it's recall not application",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix Sunflower/Toothbrush SCREEN lines printing full audio sentences ('A flower that loves the sun') - reduce to anchors"
+      },
+      {
+        "std": "L.2.4e",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "distractors same category (ordering methods) and answer not on screen, but it's pure recall of a just-stated fact, doesn't make kid USE a skill",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) - never models actually looking up a bold word in a glossary; add a modeled lookup before the fork",
+        "topFix": "Add a worked-example slide showing a real glossary lookup so the fork can test application not recall"
+      },
+      {
+        "std": "L.2.5",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "Match is a clean 1:1 set drawn straight from teach beats, but the affirmation spells out the answer to ALL three pairs (synonyms/antonyms/same group) - a near-giveaway recap; encouragement is generic.",
+        "needsMoreContent": true,
+        "gap": "Tries to teach THREE distinct relationships (synonyms, antonyms, categories) in only 3 short teach beats with no worked example/I-do before the fork. Either narrow to one relationship or add an [example] modeling how to decide a pair's connection.",
+        "topFix": "Add a worked example modeling how to classify one pair, and trim the affirmation so it doesn't recap all three answers."
+      },
+      {
+        "std": "L.2.5a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "Two solid teach words (delicious, exhausted) but no [example]/I-do beat modeling the skill before the fork - jumps from teach+tip straight to we-do. Add a quick worked example applying a word to a scenario.",
+        "topFix": "Add a short worked-example beat (model matching a word to a real moment) between the tip and the fork."
+      },
+      {
+        "std": "L.2.5b",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "Distractors are same-category (all happy-shades) and plausible, answer not shown on a pill at fork time, affirmation names WHY thrilled is strongest.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "L.2.6",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "CORRECT is 'joyful' but the story (won a contest, jumped up and down) most clearly fits 'thrilled' - a distractor - and 'proud' is equally defensible; the affirmation's reasoning ('full of happiness') doesn't distinguish it from the other two. Off the skill and arguably wrong key.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix the answer key / rewrite the scenario so exactly one choice is clearly correct; the three shade-words must not be interchangeable for the prompt."
+      },
+      {
+        "std": "RL.3.1",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "Lesson teaches PROVE-with-text-evidence, but the fork is a plain recall 'what did Leo find?' - kid doesn't have to cite/point to proof; distractors (puppy/bird) are same-category but the skill (find the proving quote) is never actually exercised.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Make the fork require the evidence step the lesson taught - e.g. ask which exact words in the story prove the answer, not just what happened."
+      },
+      {
+        "std": "RL.3.2",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "owl+fox is borderline myth/folktale, and 'fable' giveaway since lesson said fables use talking animals",
+        "needsMoreContent": true,
+        "gap": "Fables get a worked beat but myths get only one teach beat and no example; folktales (the title concept) are never taught or modeled at all before the fork",
+        "topFix": "Add a teach/example beat for folktales (the title term) so the 3 choices in the fork are all genuinely taught",
+        "topFixNote": ""
+      },
+      {
+        "std": "RL.3.3",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RL.3.4",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "distractor 'Excited' overlaps the taught 'her heart raced = excited or scared' example, making Nervous vs Excited genuinely ambiguous for the kid",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Swap 'Excited' distractor for a clearly-wrong literal option (e.g. 'Has bugs') so the answer isn't muddied by the lesson's own example",
+        "topFixNote": ""
+      },
+      {
+        "std": "RL.3.5",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RL.3.6",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "asks narrator's view but never sets up the reader's-view contrast the lesson is about; 'Beautiful' is a near-giveaway echoed straight from the passage",
+        "needsMoreContent": true,
+        "gap": "No worked example beat (I-do) modeling how to separate narrator-view from reader-view; jumps from two teach beats to practice with no demonstration",
+        "topFix": "Fix the missing-space text bugs ('narratortells the storyfrom their view', 'feelingsand opinionsshow') and add a worked example contrasting the two views before the fork",
+        "topFixNote": ""
+      },
+      {
+        "std": "RL.3.7",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "distractors 'Scary'/'Tense' are mood-category and plausible, but the bright/laughing scene is a near-giveaway after the teach beat 'Bright = happy'; question just re-applies the rule verbatim",
+        "gap": "only one teach beat (Bright vs Dark) and a single thin example; storm example introduces 'tense' which isn't taught as a color rule - add a second teach beat or model a sad/dark image before the fork",
+        "needsMoreContent": true,
+        "topFix": "Add a second worked example (model reading a dark/sad picture) so the fork isn't a one-step rule lookup; intro screen 'Hey there / A / Mazing reader' is broken word-splitting",
+        "std_note": ""
+      },
+      {
+        "std": "RL.3.9",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "gap": "",
+        "needsMoreContent": false,
+        "topFix": "Squeaky 'scared of heights but climbed anyway' is genuine bravery inference, distractors are same-category themes from the lesson; could add a worked example (I-do) modeling theme-finding in two stories before the we-do fork"
+      },
+      {
+        "std": "RL.3.10",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "distractors are off-category and a dead giveaway: Leo just read a 'long adventure story', so 'Adventure' and 'Long story' are obviously what he already read - only 'A poem' is left, kid solves by elimination not skill",
+        "gap": "no worked example (I-do); jumps from soft 'mix it up' teaching straight to practice. Topic is meta/motivational, not a comprehension skill - thin on substance",
+        "needsMoreContent": true,
+        "topFix": "Fix the fork: make all three choices be story-types Leo hasn't read so 'mix it up' actually requires thought, not elimination"
+      },
+      {
+        "std": "RI.3.1",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "'who sang the song' is a literal recall the answer is stated outright ('The little bird sang'); doesn't exercise the taught skill of citing evidence with 'according to the text' - it's a find-the-noun task",
+        "gap": "example models citing for a 'where' question but fork tests a 'who' with no citation required; add a fork that makes the kid pick the text-supported answer vs a tempting non-text inference",
+        "needsMoreContent": false,
+        "topFix": "Align fork to the skill: require choosing the answer the text actually supports (cite-the-evidence), not just naming the character who made a sound"
+      },
+      {
+        "std": "RI.3.2",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "gap": "'Summary Sentences' example is told, not modeled on a real text - it states the formula but doesn't work an example; consider modeling the dog-helpers main idea as the I-do",
+        "needsMoreContent": false,
+        "topFix": "Distractors 'Robins lay eggs'/'Robins use twigs' are real too-narrow details (the classic main-idea trap) - genuinely tests big-idea-vs-detail; strengthen the example slide to actually work one main idea aloud"
+      },
+      {
+        "std": "RI.3.3",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "fork tests cause/effect (a teach beat) but never tests sequence, the other half taught; distractors 'flew high'/'was sleepy' are off-category (not causes shown in the story)",
+        "needsMoreContent": true,
+        "gap": "covers cause/effect (2 beats) and sequence (2 beats) but compare/contrast is named in intro then never taught; no worked example (I-do) before the fork - add an example modeling one connection type",
+        "topFix": "add a worked I-do example before the fork and either teach or drop compare/contrast"
+      },
+      {
+        "std": "RI.3.4",
+        "score": 2,
+        "slop": "clean",
+        "fork": "broken",
+        "forkNote": "fork asks 'what does sequence mean?' but sequence was never taught in this lesson (it's a different standard, RI.3.3); the fork doesn't reinforce academic-word skill (context clues / word parts) that THIS lesson taught",
+        "needsMoreContent": true,
+        "gap": "context clues = 1 thin beat; only one worked word-part example (photograph); no I-do example slide modeling how to decode an unknown academic word; fork is off-topic - add a worked example using context clues or a root, and make the fork decode an academic word",
+        "topFix": "replace the off-standard 'sequence' fork with a real academic-word decoding task and model the skill first"
+      },
+      {
+        "std": "RI.3.5",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "no worked I-do example slide (intro->teach->teach->tip->fork); strong otherwise but jumps to practice without modeling a feature lookup - add an example walking through using the index or TOC to find a fact",
+        "topFix": "add an I-do worked example before the fork"
+      },
+      {
+        "std": "RI.3.6",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "good plausible same-category opinion choices, but the passage stuffs 'best'/'most important' so heavily the answer is near-giveaway; affirmation names why - solid",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "soften the passage so 'best' isn't a literal echo of the correct choice"
+      },
+      {
+        "std": "RI.3.7",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "clean same-category choices (chart functions vs diagram/map functions) and not a giveaway since answer isn't shown; but it's pure recall ('what do charts help do') rather than applying the skill to a real illustration",
+        "needsMoreContent": true,
+        "gap": "diagrams = 1 thin beat; no I-do worked example of actually reading a diagram/chart; maps named in intro but never taught - add a worked example interpreting an illustration and either teach or drop maps",
+        "topFix": "add an I-do example reading a real chart/diagram so the fork can apply rather than recall"
+      },
+      {
+        "std": "RI.3.8",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Example slide prints the full spoken sentence verbatim (transcript, not anchor) - shorten to 'sunny -> However -> storm'.",
+        "gap": ""
+      },
+      {
+        "std": "RI.3.9",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Fork tests recall not the compare skill - the lesson taught 'same vs different across two texts' but the question only asks which story said 'berries'; 'fish' distractor is off-set (never mentioned in either story).",
+        "needsMoreContent": false,
+        "topFix": "Reframe fork to actually compare (e.g. 'what did BOTH stories share?' or 'what was different?') so it uses the taught skill instead of single-text recall."
+      },
+      {
+        "std": "RI.3.10",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "Giveaway/off-skill: dinosaurs map to 'Science' but kids will pick 'History' (ancient/long ago); the lesson never taught topic-classification, so the question tests outside knowledge, not the lesson.",
+        "needsMoreContent": true,
+        "gap": "No worked example (no I-do); teach beats are vague meta-talk ('we will read longer fact books') with zero modeled skill. Add a real modeled example applying main-idea/details to a short passage before the fork.",
+        "topFix": "This is a meta/filler lesson - replace the abstract 'read facts all year' framing with a concrete worked example modeling main idea + details, and fix the off-skill fork."
+      },
+      {
+        "std": "RF.3.3",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Match pairs reuse the exact example word (UN+BELIEVE+ABLE) shown two slides earlier, so it's partly a memory echo rather than transfer - swap to a fresh word's parts for true we-do."
+      },
+      {
+        "std": "RF.3.3a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Match is a clean 1:1 prefix set but only re-tests 3 of the 4 taught prefixes and ignores all suffixes taught; spoken prompt says 'drag' while this is a match/tap - minor copy mismatch.",
+        "needsMoreContent": false,
+        "topFix": "Fork only covers prefixes though lesson teaches prefixes AND suffixes - add a suffix into the match (or a second beat) so the we-do mirrors the full teach."
+      },
+      {
+        "std": "RF.3.3b",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "Affirmation/encouragement for -able fork is solid; consider matching distractors to a third real suffix pattern, but minor.",
+        "gap": ""
+      },
+      {
+        "std": "RF.3.3c",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "Distractors cat/apple are off-skill: question tests syllable-COUNTING, but lesson taught splitting/chunking strategy — picking 'remember' from 3 words doesn't make the kid USE the chunking method.",
+        "needsMoreContent": false,
+        "topFix": "Fix the slide-11 SCREEN run-on ('Clap each syllable.Re-mem-ber = 3 clapsThree claps...') — three sentences crammed with no spaces; split into one terse anchor.",
+        "gap": ""
+      },
+      {
+        "std": "RF.3.3d",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "Silent-K fork is clean and on-category (all single-syllable words), but the tip teaches silent-L/'oul' which is never practiced in the fork — fork only reinforces the silent-letter teach beat, leaving OUGH and oul untouched.",
+        "needsMoreContent": false,
+        "topFix": "Lesson teaches three distinct patterns (silent letters, OUGH, silent-L) but fork tests only one; either narrow the teach scope or add a second fork item for OUGH.",
+        "gap": ""
+      },
+      {
+        "std": "RF.3.4",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "topFix": "Add a worked example (I-do) modeling one reread or one expressive line before the match fork — lesson jumps teach->tip->fork with no modeled application.",
+        "gap": "No worked example/I-do beat. Teach beats are thin one-liners ('Each read smoother', 'Calm'); model rereading a bumpy sentence aloud or show an expressive read before asking the kid to match."
+      },
+      {
+        "std": "RF.3.4a",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "none",
+        "gap": ""
+      },
+      {
+        "std": "RF.3.4b",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "On-screen prompt 'When pause at line breaks?' embeds the answer cue, and 'For effect' is the only fluency-reason distractor while the other two ('show feelings','vary speed') are off-category teaching points, not plausible pause-timing answers",
+        "needsMoreContent": true,
+        "gap": "This is an expressive-reading/fluency standard but the lesson is all telling, no modeling — no worked example slide where a poem line is actually read with a demonstrated pause. Add an I-do example reading a real prose vs poetry snippet before the fork.",
+        "topFix": "Replace the giveaway/off-category tap question with a real fluency choice (e.g. pick which line a reader should slow down on) and add a worked read-aloud example."
+      },
+      {
+        "std": "RF.3.4c",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Distractors 'Think' and 'Reread' are clean same-category steps and the answer 'Stop' isn't shown on the prompt, but it's a recall-the-sequence question rather than making the kid USE self-correction on actual text; affirmation/encouragement are solid",
+        "needsMoreContent": false,
+        "std_note": "",
+        "topFix": "Make the fork apply the skill to a real misread sentence instead of just recalling the first step."
+      },
+      {
+        "std": "L.3.4",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "Genuine context-clue use, distractors same-category (size/shape) and plausible, answer not on screen, affirmation names why",
+        "needsMoreContent": true,
+        "gap": "Two teach beats are one-line fragments ('Other words in sentence' / 'Break word into chunks') with a clear transcript-split error ('The other wordsin the sentence' / 'give hints' across two beats). No worked example slide modeling either strategy before the fork; only 2 practice questions.",
+        "topFix": "Fix the broken split-sentence audio beats and add a real I-do worked example for both sentence-clue and word-part strategies."
+      },
+      {
+        "std": "L.3.4a",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "'gigantic' synonym-clue question genuinely uses the taught skill, size/speed distractors same-category, answer not shown, affirmation ties to the sentence clue",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix the garbled intro screen anchor 'Hello / W / Ord detectives' (broken word split); also synonym-teach screen prints the full transcript sentence instead of a terse anchor."
+      },
+      {
+        "std": "L.3.4b",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "Match is a clean 1:1 set (un/re/pre) drawn directly from the taught prefixes, hint nudges without dead-giveaway on first pass, affirmation names each mapping",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "L.3.4c",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "needsMoreContent": true,
+        "gap": "only 1 real teach beat (the 'help' family); the second root comes via the example slide. Add a second substantive teach beat showing how a suffix changes meaning before the example.",
+        "topFix": "Add a second teach beat so the I-do isn't carried entirely by the example slide."
+      },
+      {
+        "std": "L.3.4d",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix the broken on-screen text on the 'meaning' beat ('And finally / T / He meaning') — a word-split render/TTS artifact."
+      },
+      {
+        "std": "L.3.5",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "clean 1:1 match set, but anchors slightly truncated ('is something')",
+        "needsMoreContent": true,
+        "gap": "idioms get a single beat with no worked example (no I-do) before the fork. Add a modeled example for each type, especially idiom, so kids see one decoded before matching.",
+        "topFix": "Add a worked example modeling at least the idiom (and ideally each type) before the match fork."
+      },
+      {
+        "std": "L.3.5a",
+        "score": 2,
+        "slop": "clean",
+        "fork": "broken",
+        "forkNote": "fork tests certainty words (knew/believed/suspected) but the lesson's stated topic is literal vs nonliteral; the fork doesn't reinforce what intro/example/tip taught",
+        "needsMoreContent": true,
+        "gap": "two unrelated skills crammed in: literal-vs-nonliteral (intro, couch-potato example, tip) and certainty-word gradations (the teach beat + the entire fork). The nonliteral skill is never practiced; the certainty skill is never properly introduced. Split into two lessons or align the fork to literal/nonliteral.",
+        "topFix": "Make the fork reinforce literal vs nonliteral (the lesson's actual topic), or remove the off-topic certainty-word detour."
+      },
+      {
+        "std": "L.3.5b",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "the 'cozy' tap is on-topic and fine, but it sits on a transcript-dumped, partly off-skill lesson body",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Stop printing full spoken sentences verbatim (intro lines, 'Cozy' beat, and the 27-word tip sentence) — collapse to terse anchors; also drop the certainty (knew/believed) sentence in the tip, which belongs to a different lesson."
+      },
+      {
+        "std": "L.3.5c",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "all three answer words shown on the teach slide, so the tap leans recall over application",
+        "needsMoreContent": false,
+        "topFix": "convert one teach slide into a real I-do worked example so a model precedes the we-do fork",
+        "gap": ""
+      },
+      {
+        "std": "L.3.6",
+        "score": 2,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "fork tests 'use them often' (intro), but the heaviest content is the tip's conversation-connector words, which the fork never reinforces",
+        "needsMoreContent": true,
+        "topFix": "add a worked example and align the fork to the taught conversation-words content",
+        "gap": "only ~1 real teach idea; the conversation words (Oh/I see/Well/So) are introduced in the tip but never modeled or tested"
+      },
+      {
+        "std": "RL.4.1",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "trim the intro's triple 'details are evidence' repeat",
+        "gap": ""
+      },
+      {
+        "std": "RL.4.2",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "topFix": "make the [example] a modeled theme-find on a tiny story so the I-do mirrors the fork instead of just listing themes",
+        "gap": ""
+      },
+      {
+        "std": "RL.4.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "topFix": "replace the off-topic 'Watch the Change' example with a worked show-not-tell example that mirrors the Leo question",
+        "gap": "the [example] 'Watch the Change' is a single filler line about character change, never modeled and off-topic from the show-vs-tell fork"
+      },
+      {
+        "std": "RL.4.4",
+        "score": 2,
+        "slop": "minor",
+        "fork": "broken",
+        "forkNote": "keyed answer 'filled space' paraphrases the prompt ('filling every corner') = near-giveaway; 'flew high' is the more defensible figurative read of 'soared' and lesson never taught 'soared'='filled space'",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) modeling how to decode a figurative word before the fork; allusion teach beat is orphaned (never reused or practiced)",
+        "topFix": "re-key the fork to a word whose figurative meaning the lesson actually taught, and add an I-do worked example decoding one figurative word"
+      },
+      {
+        "std": "RL.4.5",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "fix text-split bug on intro screen line: 'Drama / A / Nd prose' should read 'Drama / Prose'"
+      },
+      {
+        "std": "RL.4.6",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "'Second person' distractor was never taught (only first/third covered) - mildly off-syllabus",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "balance teaching: first person gets 1 beat vs third person's 3; add a second first-person beat or drop the untaught 'Second person' distractor"
+      },
+      {
+        "std": "RL.4.7",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RL.4.9",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "'Moral Story' distractor wasn't taught and a trickster tale also carries a moral, so the answer is slightly fuzzy/overlapping",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) - jumps intro->teach->teach->tip->fork with no modeled story; add a short modeled trickster-vs-hero comparison before the fork",
+        "topFix": "add a worked example modeling how to spot a shared theme across two named stories, and replace the overlapping 'Moral Story' distractor"
+      },
+      {
+        "std": "RL.4.10",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) between teach and the fork - add a modeled note-taking pass on a short passage",
+        "topFix": "add a worked example modeling note-taking before the fork",
+        "forkNote": ""
+      },
+      {
+        "std": "RI.4.1",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "needsMoreContent": true,
+        "gap": "'example' slide is 3 restatements (Answer is implied / Use details to infer / Implied = infer), not a worked example; only 1 real teach beat - add an actual modeled inference on a short passage",
+        "topFix": "replace the filler example with a real modeled inference from a passage",
+        "forkNote": "solid but coaching is a bit generic on wrong"
+      },
+      {
+        "std": "RI.4.2",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "ok",
+        "needsMoreContent": true,
+        "gap": "intro prints full audio sentences verbatim; example never models finding a main idea across a real passage - add a worked multi-paragraph example",
+        "topFix": "cut transcript intro to terse anchors and add a modeled main-idea example",
+        "forkNote": "distractors are real details vs the umbrella - good, but slightly easy"
+      },
+      {
+        "std": "RI.4.3",
+        "score": 5,
+        "slop": "minor",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "trim example slide to terse anchors instead of full sentences",
+        "forkNote": ""
+      },
+      {
+        "std": "RI.4.4",
+        "score": 2,
+        "slop": "clean",
+        "fork": "weak",
+        "needsMoreContent": true,
+        "gap": "no worked example; fork just recalls the 'Math: equation' label shown one slide earlier and only 2 practice Qs - add a context/root modeling example and a transfer-based fork",
+        "topFix": "rebuild fork to apply context/roots to a new word, not recall the slide",
+        "forkNote": "giveaway - answer 'equation' was just listed on the teach slide; tests memory not skill"
+      },
+      {
+        "std": "RI.4.5",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "no worked example (I-do) before the fork - jumps teach straight to we-do; add a modeled passage labeled with its structure",
+        "topFix": "Add an [example] worked beat modeling one structure on a short passage before the fork."
+      },
+      {
+        "std": "RI.4.6",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "'Fiction' distractor is off-category (genre, not account type); other two are clean",
+        "needsMoreContent": true,
+        "gap": "only 1 real teach beat; the [example] is a contrast statement, not a worked I-do - add a modeled diary-vs-article passage",
+        "topFix": "Make the [example] a genuine worked example: show a snippet and model deciding firsthand vs secondhand."
+      },
+      {
+        "std": "RI.4.7",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "weak",
+        "forkNote": "answer 'numbers' is shown on the teach screen ('A chart shows numbers') = giveaway; distractors colors/sounds are off-category",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix SCREEN anchors (remove slashed transcript fragments like 'A chart shows / numbers') and rebuild the fork so the answer isn't pre-shown."
+      },
+      {
+        "std": "RI.4.8",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "reason-vs-evidence distinction is subtle; 'Run around' distractor overlaps the answer's category, muddy not clean",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Sharpen distractors so only the evidence option is example/proof; make others clearly a reason or topic, not borderline."
+      },
+      {
+        "std": "RI.4.9",
+        "score": 2,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "answer 'Stronger summary' is shown verbatim on the teach screen = giveaway; distractors shorter story/more pictures are implausible/off-category; question is double-worded",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rebuild fork so the answer isn't on screen and trim the doubled question stem ('what does it help you create? Why combine two texts?')."
+      },
+      {
+        "std": "RI.4.10",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "weak",
+        "forkNote": "distractors 'Drops are light'/'Rain falls down' are real facts from the text, so this tests main-idea-vs-detail but the correct 'Clouds are water' is arguably the most-stated, near-giveaway; coaching is generic",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Cut the redundant teach/tip overlap and de-transcript the screens — the butterfly passage prints verbatim on screen.",
+        "std_note": ""
+      },
+      {
+        "std": "RF.4.3",
+        "score": 2,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "good skill-use (first decoding step) but 'Chunk' is shown verbatim on the example slide just before, so it's close to a giveaway; distractors are clean same-category steps",
+        "needsMoreContent": true,
+        "gap": "Only ONE real teach beat ('use phonics/syllables/word parts') plus a thin 3-frame chunk/read/blend example. No worked example on an actual multisyllable word — model decoding a real word like 'fantastic' before the fork. Add a second teach beat (prefix/suffix is buried in the tip, not taught).",
+        "topFix": "Add a worked I-do on a real long word; promote prefix/suffix from tip to a teach beat."
+      },
+      {
+        "std": "RF.4.3a",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "clean 1:1 match set (PH=F, GH=silent, CH=K) pulled directly from the teach slide; same-category pairs",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) — jumps from teach straight to the match fork. Vowel-combos teach beat is one vague line ('EA, EE, OA, OU show up everywhere') with no sounds modeled, and vowel combos never appear in the fork. Add an I-do decoding a real word using a combo (e.g. 'phone', 'graph').",
+        "topFix": "Add a worked example decoding one real word with a known combo before the fork."
+      },
+      {
+        "std": "RF.4.4",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "'tricky parts' is printed verbatim on the teach screen just before, making the answer a near-giveaway; distractors are same-category (action/easy parts) which is good",
+        "needsMoreContent": true,
+        "gap": "No worked example / I-do at all — intro, two thin teach beats, tip, then fork. Model reading one sentence with pace+expression so the skill is demonstrated, not just stated. Intro screen is a full-sentence transcript dump.",
+        "topFix": "Fix the intro slide (prints the whole spoken sentence) and add a modeled read-aloud example."
+      },
+      {
+        "std": "L.4.4",
+        "score": 3,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "good context-clue use with -less; but the example slide already teaches 'hopeless = without hope', so applying -less to 'fearless' is a near-parallel giveaway; distractors same-category (full of/without/a little)",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Vary the fork from the example (the -less rule is shown then immediately reused) — test a different strategy like a context clue or a different affix; clean the garbled intro screen ('Hello / W / Ord detectives')."
+      },
+      {
+        "std": "L.4.4a",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "good antonym Q but tests a skill taught in one throwaway line",
+        "needsMoreContent": true,
+        "gap": "'example' slide is a one-line antonym note, not a worked I-do; no modeled example before the fork. Add a real worked example walking through a sentence with a signal word, and expand antonym teaching beyond one line.",
+        "topFix": "Fix slide-1 'S / Uper readers' TTS-letter artifact and add a true worked example",
+        "std_note": ""
+      },
+      {
+        "std": "L.4.4b",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "L.4.4c",
+        "score": 2,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "Glossary distractor was never taught; jumps teach->tip->fork with no modeling",
+        "needsMoreContent": true,
+        "gap": "No worked example at all. Only 2 teach beats; glossary is named in intro and used as a distractor but never explained. Add a glossary teach beat and an I-do example (e.g. 'I need a word that means happy -> which tool?').",
+        "topFix": "Add a worked example and teach the glossary before using it as a distractor"
+      },
+      {
+        "std": "L.4.5",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Fix slide-1 'L / Anguage explorers' TTS-letter capitalization artifact"
+      },
+      {
+        "std": "L.4.5a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "solid simile Q; 'No comparison' distractor is slightly off-category vs Simile/Metaphor",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Optionally add a dedicated I-do worked example beat before the fork"
+      },
+      {
+        "std": "L.4.5b",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "match tests 3 idioms but 'Bite your tongue' and 'Hold your horses' were never taught in the lesson",
+        "needsMoreContent": true,
+        "gap": "only 2 idioms taught and no worked example; either teach the 2 extra idioms used in the fork or drop them, and add an I-do worked idiom before the fork",
+        "topFix": "align the fork pairs with idioms actually taught (or teach them)"
+      },
+      {
+        "std": "L.4.5c",
+        "score": 4,
+        "slop": "minor",
+        "fork": "ok",
+        "forkNote": "answer 'Yell' was taught as the loud word and choices are shown on screen, so it's a mild giveaway for a tap",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "the 'whisper / / talk / / yell' screen line shows empty pills (likely render artifact) - clean it up"
+      },
+      {
+        "std": "L.4.6",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "'silly' is an off-category junk distractor; casual vs academic is the real contrast",
+        "needsMoreContent": true,
+        "gap": "teaching is abstract with no worked example - add an I-do showing one sentence rewritten casual->academic before the fork",
+        "topFix": "add a concrete worked example modeling register before the fork"
+      },
+      {
+        "std": "RF.1.3a",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none"
+      },
+      {
+        "std": "RF.1.3b",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "CAT/DOG sound-step slides have no on-screen anchor (just audio); add the phoneme/letter on screen so the beat earns its place visually"
+      },
+      {
+        "std": "RF.1.3c",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "Distractors 'cane' isn't a fork choice (match is fine 1:1), but 'cap'->'cape' pair is literally spoken verbatim in the affirmation and the cap/kit pairs were both taught on-screen, so two of three pairs are giveaways from the teach beats.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Swap one taught pair (cap or kit) for an untaught one so the match isn't recall of the two modeled examples; keep 'can->cane' as the only fresh one.",
+        "std_detail": ""
+      },
+      {
+        "std": "RF.1.3d",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "Distractors are same-category counts (one/two/three) and plausible; 'butterfly' is a fresh word not pre-counted on screen, so kid must apply the clap skill. Affirmation names why (three beats). Good.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none",
+        "std_detail": ""
+      },
+      {
+        "std": "RF.1.3e",
+        "score": 5,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "Only lesson with a true worked example (I-do on 'pencil') plus teach + tip; match uses three fresh double-consonant words (muffin/ladder/butter) none modeled on screen, all same category, clean 1:1. Genuinely makes kid apply the split rule.",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "none",
+        "std_detail": ""
+      },
+      {
+        "std": "RF.1.3f",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "Match is pure recall: all three ending->meaning pairs are stated verbatim on the teach screens AND re-stated in the affirmation, so it's a memory echo, not skill use. Kid never applies an ending to a real word.",
+        "needsMoreContent": true,
+        "gap": "No worked example (I-do) before the fork. Add an [example] beat applying an ending to a word (e.g. 'walk'->'walked'->already happened) and change the fork to apply an ending to a new word rather than match definitions.",
+        "topFix": "Replace the definition-match fork with a 'pick the word that already happened' task using fresh words; add a worked example.",
+        "std_detail": ""
+      },
+      {
+        "std": "RF.1.3g",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "Off-category, dead giveaway: 'said' is the only word taught all lesson and the only sight word; distractors 'cat'/'run' are decodable CVC words, so any kid picks the one word they were just drilled on. Doesn't test the skill, only recall of the single example.",
+        "needsMoreContent": true,
+        "gap": "Only one real teach word ('said'); the second beat lumps was/were/have with shaky reasoning ('Were has a silent E' is a dubious decoding claim for a sight-word lesson). Add a second clean modeled sight word and make the fork choose among plausible sight-word-vs-decodable pairs that weren't the drilled example.",
+        "topFix": "Make the fork use untaught words (e.g. choose the tricky one among 'the','map','sit') so 'said' isn't a giveaway; fix the questionable 'silent E' explanations in teach beat 2.",
+        "std_detail": ""
+      },
+      {
+        "std": "RF.1.4a",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Add a 3rd choice category-consistent distractor is fine; consider a second worked example before the fork"
+      },
+      {
+        "std": "L.1.1",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "answer 'Verb' is on-screen as a recent teach pill, mild giveaway; distractor 'Describe' is off-category (lesson only taught noun+verb, never modeled adjective)",
+        "needsMoreContent": true,
+        "gap": "'Describe' is named in intro but never taught; either add a short describe/adjective teach beat or drop it from the fork choices so distractors match taught categories",
+        "topFix": "Resolve the 'Describe' choice — it tests a category the lesson never modeled"
+      },
+      {
+        "std": "L.1.2",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "On-screen prompt 'How does this start?' is vague; tighten to anchor the capital-letter skill"
+      },
+      {
+        "std": "L.2.1",
+        "score": 3,
+        "slop": "sloppy",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Intro + teach screens print full spoken sentences with stray punctuation as anchors ('Yesterday I ate. I ran. I flew.', 'Collective nouns / , irregular verbs / , and tricky pronouns.') — rewrite as terse anchors"
+      },
+      {
+        "std": "L.2.2",
+        "score": 3,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "all three choices are contractions so category is clean, but spoken question over-explains and the example 'is not' maps 1:1 to isn't making it close to a giveaway",
+        "needsMoreContent": true,
+        "gap": "Commas are taught only as a single tip beat with no worked example, and the fork tests only contractions — add a comma teach/example beat or split into a tighter single-concept lesson",
+        "topFix": "Commas are under-taught (one tip beat, no I-do) relative to the two apostrophe beats"
+      },
+      {
+        "std": "L.2.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "weak",
+        "forkNote": "answer 'heartbroken' is the exact word taught verbatim moments earlier; 'glad' is an off-category distractor (opposite, not just weaker)",
+        "needsMoreContent": true,
+        "gap": "no worked I-do example before the fork; 'stronger words' concept stated but never modeled in a full sentence rewrite",
+        "topFix": "add a worked example modeling a weak->strong word swap in a sentence, and swap 'glad' for a same-category near-miss (e.g. 'upset')"
+      },
+      {
+        "std": "L.3.1",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "weak",
+        "forkNote": "'went' is modeled verbatim in the teach beat right before, so it's near-rote recall; distractor 'ate' is off (it's the answer to a different verb)",
+        "needsMoreContent": true,
+        "gap": "intro prints full audio sentences as on-screen text (transcript, not anchor); no worked example; ask a verb NOT pre-shown",
+        "topFix": "terse-anchor the intro screens and have the fork test an irregular verb that wasn't just displayed on screen"
+      },
+      {
+        "std": "L.3.2",
+        "score": 4,
+        "slop": "clean",
+        "fork": "ok",
+        "forkNote": "distractors are all same-category (comma positions) and plausible, but the correct rule is stated verbatim in the teach beat just before",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "have the fork test the speaker-first case (less recently shown) to avoid rote echo of the last teach line"
+      },
+      {
+        "std": "L.3.3",
+        "score": 3,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": true,
+        "gap": "teach is thin: 2 short beats, no worked example, 'audience match' concept barely modeled; jumps to fork fast - add an I-do sentence rewrite",
+        "topFix": "add a worked example showing a weak verb rewritten stronger in context before the fork"
+      },
+      {
+        "std": "L.4.1",
+        "score": 4,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "fix the tip slide - it re-introduces 'what is grammar/pronouns' after teaching, which is redundant filler; make it an actual strategy tip"
+      },
+      {
+        "std": "L.4.2",
+        "score": 2,
+        "slop": "sloppy",
+        "fork": "ok",
+        "forkNote": "good skill-use + same-category distractors, but lesson covers 3 unrelated topics (compound commas, dialogue/titles, proofread) while fork only tests one - tip slide also wrongly hints to put comma 'before the conjunction' giving it away",
+        "needsMoreContent": true,
+        "gap": "unfocused: teach beat 2 crams two separate concepts (dialogue punctuation AND title capitalization) with no model for titles; no worked I-do example before the fork. Narrow scope to compound-sentence commas and add a worked example, or split into separate lessons.",
+        "topFix": "De-cram teach beat 2 (one concept per slide) and add an I-do worked example before the fork",
+        "std_note": ""
+      },
+      {
+        "std": "L.4.3",
+        "score": 3,
+        "slop": "minor",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Two SCREEN lines print full audio sentences verbatim ('Precise words paint clearer pictures.' line 11, 'I love reading' echo) - shorten to terse anchors"
+      },
+      {
+        "std": "RL.K.10",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Strong K lesson - terse anchors, clean fork with same-category color/object distractors not shown on screen; only nit: fork tests recall not the 'kinds of stories/talk about it' skill the lesson taught"
+      },
+      {
+        "std": "RI.K.10",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "distractors (story book, comic book) are same-category and plausible, and fork genuinely tests the fact-vs-fiction concept the lesson taught",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Solid ship-quality K lesson; minor nit: 'Look and Listen' beat 2 audio ('Slow down and look') has no screen anchor"
+      },
+      {
+        "std": "RL.1.10",
+        "score": 4,
+        "slop": "clean",
+        "fork": "strong",
+        "forkNote": "clean same-category distractors (Funny/Tricky are both descriptors from the passage), tests listening-for-detail; not a giveaway since answer requires tracking Monday vs Tuesday",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Good G1 lesson; nit: teach beat 1 screen 'Funny ones' truncates the audio's full list (Funny/Scary/Adventure/Poems) - anchor should mirror all four like RL.K.10 does"
+      },
+      {
+        "std": "RI.1.10",
+        "score": 3,
+        "slop": "clean",
+        "fork": "weak",
+        "forkNote": "stem says Lily used BOTH pictures and headings, but 'Pictures' is a distractor marked wrong — ambiguous, penalizes a story-correct pick",
+        "needsMoreContent": false,
+        "gap": "",
+        "topFix": "Rewrite the tap scenario so only headings are used (or make the prompt ask which part shows topic names), so the distractors aren't true in the narrative"
+      }
+    ]
+  }
+}

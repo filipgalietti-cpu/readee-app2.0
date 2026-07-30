@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.2.5-H2",
+  "correct_feedback": "Yes! That line fixes the problem. The lost book is found and put away safe, so the trouble from the start is all better now.",
+  "incorrect_feedback": "Hmm, let's think. The ending should fix the big problem. Which sentence shows the lost book is finally safe again?",
+  "reveal_feedback": "The answer is \"Nina laughed and tucked the book safely in her bag.\" That solves the lost-book problem, so it ends the story."
+ },
+ {
+  "id": "RL.2.5-H3",
+  "correct_feedback": "Great thinking! Theo grew tall enough, so riding that coaster at last is the happy ending his whole story was building toward.",
+  "incorrect_feedback": "Almost! A good ending finishes what Theo was hoping for. He waited all summer to be tall enough. What does he finally get to do?",
+  "reveal_feedback": "The best ending is \"Theo climbed aboard the roller coaster at last, grinning from ear to ear.\" It finishes his big wish to ride."
+ },
+ {
+  "id": "RL.2.5-H4",
+  "correct_feedback": "You got it! The first sentence meets the shivering kitten and shows its problem, so the rest of the story can solve it.",
+  "incorrect_feedback": "Good try! Think about the very first line. It comes before anything is fixed. What does the start of a story usually do?",
+  "reveal_feedback": "The answer is that it introduces a character and the problem the story will solve. The first line shows us the cold, lost kitten."
+ },
+ {
+  "id": "RL.2.5-H5",
+  "correct_feedback": "Nice! Nothing has grown yet, so that line adds waiting and worry. It builds the problem before the sunflower surprise at the end.",
+  "incorrect_feedback": "Close one! A middle line keeps the problem going, it does not finish it. Has the seed grown yet when we read that sentence?",
+  "reveal_feedback": "The answer is that it builds up the problem but does not solve it yet. We are still waiting for the seed to grow."
+ },
+ {
+  "id": "RL.2.5-E1",
+  "correct_feedback": "Yes! Getting the new puppy is the very first thing that happens, so it is the beginning of the story.",
+  "incorrect_feedback": "Hmm, let's look again. The beginning is the FIRST thing that happens. What does Ben do before the puppy chews or runs?",
+  "reveal_feedback": "The beginning is \"Ben got a new puppy named Spot.\" That happens first, before all the other parts."
+ },
+ {
+  "id": "RL.2.5-E2",
+  "correct_feedback": "Great job! Finding the hat is the LAST thing that happens, so it is the end of the story.",
+  "incorrect_feedback": "Almost! The end is the LAST thing that happens. What happens after Mia looks all over the house?",
+  "reveal_feedback": "The end is \"She found it under her bed.\" That is the last thing that happens in the story."
+ },
+ {
+  "id": "RL.2.5-E3",
+  "correct_feedback": "You got it! The beginning meets the characters and gets the story going, just like a first hello.",
+  "incorrect_feedback": "Take another look. The beginning is the START of a story, not the finish. What would a story do right at the start?",
+  "reveal_feedback": "The answer is that it introduces the characters and starts the story. That is the job of a beginning."
+ },
+ {
+  "id": "RL.2.5-E4",
+  "correct_feedback": "Yes! Planting the seed happens first, before the watering and the flower, so it is the beginning.",
+  "incorrect_feedback": "Good try! The beginning happens FIRST. What does Sam do before he waters it and before the flower grows?",
+  "reveal_feedback": "The beginning is \"Sam planted a seed.\" That happens first, so it starts the story."
+ },
+ {
+  "id": "RL.2.5-E5",
+  "correct_feedback": "Nice work! Getting the kite back is the LAST part, so it is the ending of the story.",
+  "incorrect_feedback": "Not yet. The ending is the LAST thing that happens. What happens after the kite flies away?",
+  "reveal_feedback": "The ending is \"The boy gets his kite back.\" That is the last thing that happens."
+ },
+ {
+  "id": "RL.2.6-Q1",
+  "correct_feedback": "Yes! Ana wanted to ride again but Carlos called it too scary. They feel two different ways about the same ride.",
+  "incorrect_feedback": "Hmm, read what each one said. Ana wanted to ride again, but Carlos shook his head. Did they both feel the same way?",
+  "reveal_feedback": "The answer is \"Ana loved it but Carlos was scared.\" She wanted to ride again, and he said it was too scary."
+ },
+ {
+  "id": "RL.2.6-Q2",
+  "correct_feedback": "Great! Mom wants a cat. Dad wants a dog and Jayden wants both, so both of them think differently than Mom.",
+  "incorrect_feedback": "Almost! Mom wants only a cat. Look at what Dad said AND what Jayden said. Did either one agree with just a cat?",
+  "reveal_feedback": "The answer is \"Both Dad and Jayden.\" Dad wants a dog and Jayden wants both, so neither matches Mom's cat idea."
+ },
+ {
+  "id": "RL.2.6-Q3",
+  "correct_feedback": "You got it! The same rain helps the farmer's crops grow but keeps the children from playing, so they feel different ways.",
+  "incorrect_feedback": "Good try! Think about what rain does for each one. What does the farmer need water for, and what did the children want to do?",
+  "reveal_feedback": "The answer is \"Rain helps the farmer's crops but stops the children's play.\" That is why they feel differently."
+ },
+ {
+  "id": "RL.2.6-Q4",
+  "correct_feedback": "Yes! Ella wants to stay up for the movie, but Mom wants her in bed by 8. Two different wishes.",
+  "incorrect_feedback": "Close one! What does Ella want to do, and what does her mom want instead? They do not want the same thing here.",
+  "reveal_feedback": "The answer is \"Ella wants to stay up but mom wants her to go to bed.\" That is how their points of view differ."
+ },
+ {
+  "id": "RL.2.6-Q5",
+  "correct_feedback": "Great thinking! The wolf says he was just being friendly, but the pigs say he tried to hurt them. Very different stories!",
+  "incorrect_feedback": "Not yet. Look at what the wolf says he wanted, then what the pigs say he did. Do their stories match?",
+  "reveal_feedback": "The answer is \"The wolf says he was friendly but the pigs say he was dangerous.\" Each one tells it a different way."
+ },
+ {
+  "id": "RL.2.6-H1",
+  "correct_feedback": "Yes! Maya runs out to splash, but Nina curls up under a blanket. Same rain, two different feelings.",
+  "incorrect_feedback": "Hmm, notice what each girl does. Maya runs outside, but Nina pulls a blanket over her legs. Do they feel the same?",
+  "reveal_feedback": "The answer is \"Maya is excited about the rain, but Nina would rather stay cozy inside.\" Their actions show it."
+ },
+ {
+  "id": "RL.2.6-H2",
+  "correct_feedback": "Great! Both want a turtle, but Sam loves watching a quiet pet while Priya loves feeding and caring for it.",
+  "incorrect_feedback": "Almost! They both pick a turtle, so look deeper. What does Sam love doing, and what does Priya love doing?",
+  "reveal_feedback": "The answer is \"Sam wants a quiet pet to watch, but Priya wants a pet to take care of.\" Same pet, different reasons."
+ },
+ {
+  "id": "RL.2.6-H3",
+  "correct_feedback": "You got it! Leo shouts that it is the best, but Theo grips the rail and wants to walk down. Different feelings!",
+  "incorrect_feedback": "Good try! Look at what each boy does. Leo shouts at the top, but Theo holds tight and wants the steps. How does Theo feel?",
+  "reveal_feedback": "The answer is \"Theo feels nervous about the slide, while Leo feels excited.\" Theo grips the rail and wants to walk down."
+ },
+ {
+  "id": "RL.2.6-H4",
+  "correct_feedback": "Yes! Ben cheers about no school, but Grandpa grabs a shovel. One sees fun, the other sees hard work.",
+  "incorrect_feedback": "Close one! What makes Ben cheer, and why does Grandpa reach for a shovel? They see the snow two different ways.",
+  "reveal_feedback": "The answer is \"Ben thinks the snow is fun, but Grandpa thinks it means hard work.\" Ben cheers, Grandpa grabs a shovel."
+ },
+ {
+  "id": "RL.2.6-H5",
+  "correct_feedback": "Great thinking! Rosa wants the zoo, but Kwan and Mia both want the museum. Rosa stands apart from the group.",
+  "incorrect_feedback": "Not yet. Two friends agree on one place and one friend picks something else. Who is by themselves with their idea?",
+  "reveal_feedback": "The answer is Rosa, because she wants the zoo while Kwan and Mia both want the museum. She is the odd one out."
+ },
+ {
+  "id": "RL.2.7-Q1",
+  "correct_feedback": "Yes! The words say happy and the picture shows a big smile and jumping, so together they show he is VERY happy.",
+  "incorrect_feedback": "Hmm, add the words and picture together. He smiles big AND jumps. Does that show a little happy or a whole lot of happy?",
+  "reveal_feedback": "The answer is \"Tomas is very happy.\" The words say happy and the big smile and jumping show it even more."
+ },
+ {
+  "id": "RL.2.7-Q2",
+  "correct_feedback": "Great! The words say dark night, and the picture adds rain, lightning, and bent trees. Together that means a big storm.",
+  "incorrect_feedback": "Almost! Look at what the picture adds: rain, lightning, and bent trees. What kind of weather makes trees bend like that?",
+  "reveal_feedback": "The answer is \"There's a big storm.\" The rain, lightning, and bent trees in the picture show stormy weather."
+ },
+ {
+  "id": "RL.2.7-Q3",
+  "correct_feedback": "You got it! Lily sits alone with her head down while a storm rages. The picture shows she feels sad or scared.",
+  "incorrect_feedback": "Good try! Look at Lily's body. Her head is down and she is all alone in a storm. Does that look joyful or more upset?",
+  "reveal_feedback": "The answer is \"A little bit sad or scared.\" Her head is down and she sits alone during the loud storm."
+ },
+ {
+  "id": "RL.2.7-Q4",
+  "correct_feedback": "Yes! Wide eyes, open mouth, balloons, and presents all together show Maya walked into a surprise party!",
+  "incorrect_feedback": "Close one! Look at the picture clues: wide eyes, open mouth, balloons, and presents. What kind of party has all of those?",
+  "reveal_feedback": "The answer is \"Maya is at a surprise party.\" The balloons, presents, and her surprised face all show it."
+ },
+ {
+  "id": "RL.2.7-Q5",
+  "correct_feedback": "Great! The words only say he sat down. The picture adds NEW facts: he feeds pigeons and smiles kindly.",
+  "incorrect_feedback": "Not yet. The question asks what the PICTURE adds that the words leave out. The words already say old, bench, and outside. What is extra?",
+  "reveal_feedback": "The answer is \"He's feeding pigeons and seems kind.\" The words never say that, but the picture shows it."
+ },
+ {
+  "id": "RL.2.9-Q1",
+  "correct_feedback": "Yes! One girl gets a fairy godmother and the other gets magic fish, but in both, a girl goes to a royal party.",
+  "incorrect_feedback": "Hmm, one has a fairy godmother and one has magic fish, so those are different. What big thing happens in BOTH stories?",
+  "reveal_feedback": "The answer is \"A girl attends a royal party.\" That part is the same, even though the magic helpers are different."
+ },
+ {
+  "id": "RL.2.9-Q3",
+  "correct_feedback": "Great! Both heroes save their village, but one is a cowboy and one is a samurai. The type of hero is what changes.",
+  "incorrect_feedback": "Almost! The question asks what is DIFFERENT. Both are brave and both save a village, so those are the same. What changed?",
+  "reveal_feedback": "The answer is \"The type of hero.\" One story has a cowboy and the other has a samurai."
+ },
+ {
+  "id": "RL.2.9-Q4",
+  "correct_feedback": "You got it! In one story the wolf is just a bad guy, but in the other he explains his side. That is a big difference.",
+  "incorrect_feedback": "Good try! Think about how the wolf is shown in each story. Is he shown the same way, or does one let him tell his own side?",
+  "reveal_feedback": "The answer is that in one story the wolf is a bad guy, but in the other he tries to explain why he did things."
+ },
+ {
+  "id": "RL.2.9-Q5",
+  "correct_feedback": "Great thinking! In one story a helper saves the hero, and in the other the hero escapes alone. That is the key difference.",
+  "incorrect_feedback": "Close one! Clothes and trees do not change the story much. Think about HOW the main character gets out of trouble.",
+  "reveal_feedback": "The answer is \"How the main character gets rescued or escapes.\" One is saved by a helper, one escapes alone."
+ },
+ {
+  "id": "RL.2.9-H1",
+  "correct_feedback": "Yes! In both races the fast animal stops, so the slow one never quits and wins. That is the same idea in each story.",
+  "incorrect_feedback": "Hmm, one has a rabbit and carrots, one has a deer and a nap, so those differ. What ending is the SAME in both?",
+  "reveal_feedback": "The answer is \"The slow animal wins because it never stops.\" That happens in both the snail race and the turtle race."
+ },
+ {
+  "id": "RL.2.9-H2",
+  "correct_feedback": "Great! A camel fits a hot desert and a reindeer fits a cold, snowy land. Each author picked an animal that fits its home.",
+  "incorrect_feedback": "Almost! Think about where each story takes place. Why might a desert story use a camel and a snowy story use a reindeer?",
+  "reveal_feedback": "The answer is \"Because each animal fits the land where the story is told.\" Camels suit deserts, reindeer suit the snow."
+ },
+ {
+  "id": "RL.2.9-H3",
+  "correct_feedback": "You got it! One shoe is silk and one is glass, but in both a girl loses a shoe and a boy finds it. That part matches.",
+  "incorrect_feedback": "Good try! The shoe and the names are different in each. What thing HAPPENS the same way in both stories?",
+  "reveal_feedback": "The answer is \"A girl loses a shoe and a boy finds it.\" That part is the same in both tellings."
+ },
+ {
+  "id": "RL.2.9-H4",
+  "correct_feedback": "Great! One wolf blows houses down and one brings soup, but both stories are about a wolf coming to the pigs' houses.",
+  "incorrect_feedback": "Close one! The wolves act very differently, so the scary parts are not the same. What are BOTH stories still about?",
+  "reveal_feedback": "The answer is \"Both stories are about a wolf coming to the pigs' houses.\" That is what stays the same."
+ },
+ {
+  "id": "RL.2.9-H5",
+  "correct_feedback": "Yes! One group sees a rabbit and one sees an old man's face, but both try to explain the shapes on the moon.",
+  "incorrect_feedback": "Not yet. One story says rabbit and one says a face, so those differ. What are both groups TRYING to do with the moon shapes?",
+  "reveal_feedback": "The answer is \"Both stories try to explain the shapes people see on the moon.\" That is how they are alike."
+ },
+ {
+  "id": "RL.2.10-Q1",
+  "correct_feedback": "Yes! Sophie keeps her promise and walks on, but the shadows and wind make her uneasy. She is brave AND a little scared.",
+  "incorrect_feedback": "Hmm, feel the mood. She keeps walking to keep her promise, yet the dancing shadows worry her. What two feelings fit?",
+  "reveal_feedback": "The answer is \"Brave but a little scared.\" She keeps her promise even though the shadows make her nervous."
+ },
+ {
+  "id": "RL.2.10-Q2",
+  "correct_feedback": "Great! His teacher said art just has to be YOURS, so Jackson learned that his own style matters most.",
+  "incorrect_feedback": "Almost! The teacher said art does not have to be perfect, it has to be his own. So what did Jackson learn?",
+  "reveal_feedback": "The answer is \"His own style matters.\" The teacher taught him that art should be his own, not a perfect copy."
+ },
+ {
+  "id": "RL.2.10-Q3",
+  "correct_feedback": "You got it! He climbs 137 steps every day, even in storms, because ships need him. That shows he is dedicated.",
+  "incorrect_feedback": "Good try! He climbs all those steps every day, even in bad storms, because ships count on him. What word fits someone like that?",
+  "reveal_feedback": "The answer is \"Dedicated.\" He works hard every single day, even in storms, to keep the light shining."
+ },
+ {
+  "id": "RL.2.10-Q4",
+  "correct_feedback": "Yes! One tiny acorn grew into the tallest oak. The story shows that small things can grow into something big.",
+  "incorrect_feedback": "Close one! Follow the acorn. It starts tiny and becomes the tallest tree in the forest. What big idea does that show?",
+  "reveal_feedback": "The answer is \"Small things can grow into something big.\" A tiny acorn became the tallest oak."
+ },
+ {
+  "id": "RL.2.10-Q5",
+  "correct_feedback": "Great! Amir thought he would NEVER make friends, but he made three by week's end. That surprised him!",
+  "incorrect_feedback": "Not yet. Amir SAID he would never make friends. What actually happened that was the opposite of what he expected?",
+  "reveal_feedback": "The answer is \"He made friends quickly.\" He thought he never would, but he made three by the end of the week."
+ },
+ {
+  "id": "RL.2.10-H1",
+  "correct_feedback": "Yes! Mia sighs before sharing, which hints she really wanted that big slice for herself, even though she shared it.",
+  "incorrect_feedback": "Hmm, think about WHY she sighs. She took the biggest slice first, then shared it. What might that sigh be telling us she feels?",
+  "reveal_feedback": "The answer is \"She would rather have kept the whole big slice for herself.\" The sigh shows sharing was a little hard."
+ },
+ {
+  "id": "RL.2.10-H2",
+  "correct_feedback": "Great thinking! With no food for a week, most birds flew off to find other meals, so fewer came back.",
+  "incorrect_feedback": "Almost! Mr. Diaz was sick, so the seeds stopped for a whole week. If food disappears, what might most of the birds do?",
+  "reveal_feedback": "The answer is \"Without food for a week, most of the birds found other places to eat.\" That is why fewer returned."
+ },
+ {
+  "id": "RL.2.10-H3",
+  "correct_feedback": "Yes! Even though Ben said he wasn't scared, gripping the rail and freezing shows his body was really afraid.",
+  "incorrect_feedback": "Good try! His WORDS say he is not scared, but his body tells the truth. Which action shows he was really afraid?",
+  "reveal_feedback": "The answer is \"He held the railing tight and didn't move.\" His body showed fear even though he said he wasn't scared."
+ },
+ {
+  "id": "RL.2.10-H4",
+  "correct_feedback": "Great! Rosa frowned and nearly gave up while waiting, then clapped when the sprout came. Her feelings really changed.",
+  "incorrect_feedback": "Close one! Look at the start, when nothing grew, and the end, when the sprout appeared. How did her feelings flip?",
+  "reveal_feedback": "The answer is \"From impatient and disappointed to happy and surprised.\" She frowned while waiting, then clapped with joy."
+ },
+ {
+  "id": "RL.2.10-H5",
+  "correct_feedback": "Yes! Neither goat would step back, so they both fell in. The lesson is that if no one gives way, everyone can lose.",
+  "incorrect_feedback": "Not yet. Think about WHY both goats ended up in the water. Neither would step back. What lesson does that teach?",
+  "reveal_feedback": "The answer is \"If nobody is willing to give way, everyone can lose.\" Neither goat stepped back, so both fell in."
+ },
+ {
+  "id": "RI.2.1-Q1",
+  "correct_feedback": "Yes! The text says the queen bee lays all the eggs. You found the answer right in the words. Nice reading!",
+  "incorrect_feedback": "Hmm, let's reread. The passage tells one special job for the queen bee. Which job does it name just for her?",
+  "reveal_feedback": "The answer is \"Lays all the eggs.\" The text says that is the queen bee's special job."
+ },
+ {
+  "id": "RI.2.1-Q2",
+  "correct_feedback": "Great reading! The text says thick coats keep firefighters safe from fire and heat. You found the reason in the words.",
+  "incorrect_feedback": "Almost! Reread the part about the thick coats. What does the passage say those coats protect firefighters from?",
+  "reveal_feedback": "The answer is \"To keep safe from fire and heat.\" The text says that is why firefighters wear thick coats."
+ }
+]

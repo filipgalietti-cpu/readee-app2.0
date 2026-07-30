@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RF.2.4a-H5",
+  "correct_feedback": "Yes! Coin has that same oy sound you hear in boy. Your ears are working great!",
+  "incorrect_feedback": "Hmm, say boy out loud and listen. Now try each word and feel which one matches that sound.",
+  "reveal_feedback": "The answer is coin. Boy and coin both make the oy sound, like boy and coin. Say them together!"
+ },
+ {
+  "id": "RF.2.4b-Q1",
+  "correct_feedback": "Yes! That sentence is happy and loud, so reading it with excitement and energy shows how they feel!",
+  "incorrect_feedback": "Almost! Look at the exclamation mark. How would you sound if YOU just won a big game?",
+  "reveal_feedback": "The best way is with excitement and energy. They just won, so your voice should sound happy and full of life!"
+ },
+ {
+  "id": "RF.2.4b-Q2",
+  "correct_feedback": "That's right! Your voice goes up at the end of a question, like when you ask a friend something.",
+  "incorrect_feedback": "Good try! Ask a question out loud right now. Listen to what your voice does at the very end.",
+  "reveal_feedback": "Your voice should go up at the end. Questions lift up at the end, like when you say, are you ready?"
+ },
+ {
+  "id": "RF.2.4b-Q4",
+  "correct_feedback": "Perfect! Reading at a smooth speed makes the story easy to hear and fun to follow.",
+  "incorrect_feedback": "Close one! Think about listening to a story. Too fast or too slow makes it hard to enjoy, right?",
+  "reveal_feedback": "The best way is to read at a smooth speed, not too fast and not too slow. That makes the story clear and fun to hear."
+ },
+ {
+  "id": "RF.2.4b-Q5",
+  "correct_feedback": "Yes! A scared character sounds shaky and nervous. Your voice matches how they feel!",
+  "incorrect_feedback": "Take another look! The character is scared. How does a scared voice sound, not a happy one?",
+  "reveal_feedback": "The answer is a shaky, nervous voice. The character is scared, so your voice should shake a little to show it."
+ },
+ {
+  "id": "RF.2.4b-H1",
+  "correct_feedback": "Great thinking! The question asks WHO, and Sam is who did it, so you say Sam the strongest.",
+  "incorrect_feedback": "Almost! The question asks WHO ate it. Which word tells you the person who did it?",
+  "reveal_feedback": "You should stress Sam. The question asks WHO, and Sam is the answer, so that word gets said the strongest."
+ },
+ {
+  "id": "RF.2.4b-H2",
+  "correct_feedback": "Yes! She whispered, so you read it soft, but she's happy, so keep it excited too!",
+  "incorrect_feedback": "Good try! The word whispered is a big clue. But she is also happy she won. How do you mix both?",
+  "reveal_feedback": "The answer is softly, in a whisper, but excited. She whispered it, so stay quiet, but let the happy feeling show."
+ },
+ {
+  "id": "RF.2.4b-H3",
+  "correct_feedback": "Nice! The comma after rang tells you to take a short breath there before you keep reading.",
+  "incorrect_feedback": "Hmm, look for the comma in the sentence. A comma is like a little stop sign for a short pause.",
+  "reveal_feedback": "You should pause after rang. There is a comma right there, and commas tell you to take a short pause."
+ },
+ {
+  "id": "RF.2.4b-H4",
+  "correct_feedback": "Yes! It ends with a question mark, so your voice goes up, like a question, even without a question word.",
+  "incorrect_feedback": "Close one! Look at the very last mark in the sentence. What kind of mark ends a question?",
+  "reveal_feedback": "Your voice should go up, like a question. The question mark at the end tells you to lift your voice up."
+ },
+ {
+  "id": "RF.2.4b-H5",
+  "correct_feedback": "Perfect! The house is silent, so reading slowly and quietly builds the scary, exciting feeling.",
+  "incorrect_feedback": "Not yet! The words silent, slowly, and quietly are clues. Should this part sound loud and silly?",
+  "reveal_feedback": "The answer is slowly and quietly, to build suspense. The silent house needs a soft, slow voice to feel spooky."
+ },
+ {
+  "id": "RF.2.4c-Q1",
+  "correct_feedback": "Smart! Bun doesn't make sense there, so going back and rereading helps you fix the word.",
+  "incorrect_feedback": "Almost! You read a word that doesn't fit the sentence. What can a good reader do to fix a mistake?",
+  "reveal_feedback": "You should go back and reread, because bun doesn't make sense. Good readers stop and fix words that sound wrong."
+ },
+ {
+  "id": "RF.2.4c-Q3",
+  "correct_feedback": "Yes! Rereading the sentence and trying the hard word again helps it make sense.",
+  "incorrect_feedback": "Good try! If a sentence is confusing, do you want to give up, or go back and try it again?",
+  "reveal_feedback": "The best plan is to reread the sentence and try the hard word again. Rereading helps the words make sense."
+ },
+ {
+  "id": "RF.2.4c-H1",
+  "correct_feedback": "Yes! The word yesterday means it already happened, so read reads like red.",
+  "incorrect_feedback": "Take another look! The word yesterday is your clue. Did this happen already, or is it happening now?",
+  "reveal_feedback": "You say it like red. The sentence says yesterday, so it already happened, and past-tense read sounds like red."
+ },
+ {
+  "id": "RF.2.4c-H2",
+  "correct_feedback": "Great! He is guiding the cow, so lead rhymes with feed and means to show the way.",
+  "incorrect_feedback": "Hmm, in this sentence the farmer is guiding the cow. Which sound fits guiding, not a heavy metal?",
+  "reveal_feedback": "It rhymes with feed. The farmer guides the cow, so lead means to show the way and sounds like feed."
+ },
+ {
+  "id": "RF.2.4c-H3",
+  "correct_feedback": "Nice fixing! Groceries go in a car's trunk, and trunk ends in -nk, so rereading it makes sense.",
+  "incorrect_feedback": "Close one! Where do groceries go in a car? Look at the ending letters of the word too.",
+  "reveal_feedback": "The best fix is to reread it as trunk. Groceries go in a car's trunk, and the word ends in -nk, not -ck."
+ },
+ {
+  "id": "RF.2.4c-H4",
+  "correct_feedback": "Yes! A library is a no-noise place, and the word has two beats, qui-et, so rereading it fits.",
+  "incorrect_feedback": "Good try! Think about a library. Is it noisy or calm? Say the word slowly and count the beats.",
+  "reveal_feedback": "He should reread it as quiet. Quiet has two beats, qui-et, means no noise, and that fits a library."
+ },
+ {
+  "id": "RF.2.4c-H5",
+  "correct_feedback": "Great! Knight starts with a silent k and means a man in armor, so it fits riding a horse.",
+  "incorrect_feedback": "Not yet! A man in armor rides a horse to a castle. Which word means that kind of person?",
+  "reveal_feedback": "The best fix is to keep knight. It has a silent k and means a man in armor, which fits riding to a castle."
+ },
+ {
+  "id": "L.2.4-Q1",
+  "correct_feedback": "Yes! You could lift it with one finger, so light here means not heavy.",
+  "incorrect_feedback": "Hmm, the sentence says you can lift it with one finger. What does that tell you about the bag?",
+  "reveal_feedback": "Here light means not heavy. The bag was so easy to lift that one finger could do it, so it was not heavy."
+ },
+ {
+  "id": "L.2.4-Q2",
+  "correct_feedback": "That's right! Un- means not, so unhappy means not happy.",
+  "incorrect_feedback": "Almost! The prefix un- means not. Add that meaning to the word happy and see what you get.",
+  "reveal_feedback": "Unhappy means not happy. The prefix un- means not, so un- plus happy equals not happy."
+ },
+ {
+  "id": "L.2.4-Q3",
+  "correct_feedback": "Yes! Mia had to wait for it to cool, so scalding means very hot.",
+  "incorrect_feedback": "Good try! She had to wait for the soup to cool down. What kind of soup would you need to cool?",
+  "reveal_feedback": "Scalding means very hot. Mia had to wait for the soup to cool down, and only very hot food needs cooling."
+ },
+ {
+  "id": "L.2.4-Q4",
+  "correct_feedback": "Perfect! Sail plus boat means a boat that moves using a sail. You put the words together!",
+  "incorrect_feedback": "Close one! Break sailboat into two words: sail and boat. What do those two words tell you together?",
+  "reveal_feedback": "Sailboat means a boat that moves using a sail. Put the two little words together: sail plus boat."
+ },
+ {
+  "id": "L.2.4-Q5",
+  "correct_feedback": "Yes! The player is in a baseball game, so bat means to take a turn hitting the ball.",
+  "incorrect_feedback": "Take another look! A baseball player is playing a game. What does bat mean when you play baseball?",
+  "reveal_feedback": "Here bat means to take a turn hitting the ball. The baseball player will bat, so it is an action in the game."
+ },
+ {
+  "id": "L.2.4-H1",
+  "correct_feedback": "Yes! An elephant sprays water with its trunk, so here trunk means its long nose.",
+  "incorrect_feedback": "Hmm, the word is about an elephant spraying water. Which meaning of trunk fits an elephant?",
+  "reveal_feedback": "In this sentence trunk means the long nose of an elephant. The elephant used it to spray water on its back."
+ },
+ {
+  "id": "L.2.4-H2",
+  "correct_feedback": "Great! He hid and shook, so terrified is the strongest scared word of them all.",
+  "incorrect_feedback": "Good try! Ben was more than a little scared. Which word means the MOST scared, not just a little?",
+  "reveal_feedback": "The strongest word is terrified. Ben hid and shook, so he was terrified, which means very, very scared."
+ },
+ {
+  "id": "L.2.4-H3",
+  "correct_feedback": "Yes! The suffix -less means without, so harmless means without harm. It would never bite!",
+  "incorrect_feedback": "Almost! The suffix -less means without. Add that to the word harm and think what harmless means.",
+  "reveal_feedback": "Harmless means without harm. The suffix -less means without, and the snake would never bite or hurt anyone."
+ },
+ {
+  "id": "L.2.4-H4",
+  "correct_feedback": "Perfect! Pre- means before, so a preview is a look at something before it happens.",
+  "incorrect_feedback": "Close one! The prefix pre- means before. So a preview is a look at something at what time?",
+  "reveal_feedback": "Preview means a look at something before it happens. Pre- means before, so they saw a bit before the movie."
+ },
+ {
+  "id": "L.2.4-H5",
+  "correct_feedback": "Yes! You want the seat kept for you, so here save means to keep something for someone.",
+  "incorrect_feedback": "Not yet! Nobody is in danger here. What does save mean when a friend holds a seat at lunch?",
+  "reveal_feedback": "Here save means to keep something for someone. Please save me a seat means keep the seat for you at lunch."
+ },
+ {
+  "id": "L.2.4a-Q1",
+  "correct_feedback": "Yes! The elephant was the biggest animal, so enormous means very large.",
+  "incorrect_feedback": "Hmm, the sentence says the elephant was the biggest animal. What does that tell you about its size?",
+  "reveal_feedback": "Enormous means very large. The elephant was the biggest animal at the zoo, so enormous tells us it was huge."
+ },
+ {
+  "id": "L.2.4a-Q4",
+  "correct_feedback": "That's right! People shivered and bundled up, so frigid means very cold.",
+  "incorrect_feedback": "Good try! Everyone shivered and put on coats. Would they do that if the wind were warm?",
+  "reveal_feedback": "Frigid means very cold. The wind made everyone shiver and grab their coats, and that happens when it is very cold."
+ },
+ {
+  "id": "L.2.4a-H1",
+  "correct_feedback": "Yes! They sat by the river and watched it flow, so bank means the ground along the edge of a river.",
+  "incorrect_feedback": "Take another look! They rested by a river and watched it flow. Which meaning of bank fits a river?",
+  "reveal_feedback": "Here bank means the ground along the edge of a river. They sat on the grassy bank and watched the river flow by."
+ },
+ {
+  "id": "L.2.4a-H2",
+  "correct_feedback": "Great! The mouse didn't want to wake the cat, so crept means it moved slowly and quietly.",
+  "incorrect_feedback": "Almost! The mouse was careful not to wake the sleeping cat. How would you move to stay hidden?",
+  "reveal_feedback": "Crept means moved slowly and quietly. The mouse was careful not to wake the cat, so it had to be soft and slow."
+ },
+ {
+  "id": "L.2.4a-H3",
+  "correct_feedback": "Yes! Grandpa added salt and pepper for flavor, so bland means having very little flavor.",
+  "incorrect_feedback": "Close one! Grandpa added salt and pepper to give the soup more flavor. So what was missing before?",
+  "reveal_feedback": "Bland means having very little flavor. The soup needed salt and pepper because it did not taste like much."
+ },
+ {
+  "id": "L.2.4a-H4",
+  "correct_feedback": "Yes! The elephant sprayed water with it, so here trunk means an elephant's long nose.",
+  "incorrect_feedback": "Hmm, this trunk sprayed water on an elephant's back. Which meaning fits an elephant?",
+  "reveal_feedback": "In this sentence trunk means an elephant's long nose. The elephant reached up with it and sprayed water."
+ },
+ {
+  "id": "L.2.4a-H5",
+  "correct_feedback": "Perfect! Instead of walking, the puppy dashed, so dashed means it ran very fast.",
+  "incorrect_feedback": "Good try! The puppy was excited and did NOT just walk. What does dashed tell you about its speed?",
+  "reveal_feedback": "Dashed means ran very fast. Instead of walking, the excited puppy dashed across the yard to say hello."
+ },
+ {
+  "id": "L.2.4a-E1",
+  "correct_feedback": "Yes! Maria had to let it cool, so hot means very warm.",
+  "incorrect_feedback": "Almost! She had to wait for the soup to cool down. What does that tell you about the soup?",
+  "reveal_feedback": "Hot means very warm. Maria had to wait for the soup to cool, so it was very warm."
+ },
+ {
+  "id": "L.2.4a-E2",
+  "correct_feedback": "That's right! It could fit in one hand, so tiny means very small.",
+  "incorrect_feedback": "Good try! The puppy could fit in one hand. Does that make it big or small?",
+  "reveal_feedback": "Tiny means very small. The puppy was small enough to fit in one hand, so tiny means very little."
+ },
+ {
+  "id": "L.2.4a-E3",
+  "correct_feedback": "Yes! Ben smiled big at his present, so happy means glad.",
+  "incorrect_feedback": "Hmm, Ben smiled big when he opened his gift. What word means the same as feeling happy?",
+  "reveal_feedback": "Happy means glad. Ben smiled big at his birthday present, and glad is another word for happy."
+ },
+ {
+  "id": "L.2.4a-E4",
+  "correct_feedback": "Perfect! After the rain the cars splashed, so wet means covered in water.",
+  "incorrect_feedback": "Close one! It rained and cars splashed through puddles. What does that tell you about the road?",
+  "reveal_feedback": "Wet means covered in water. After the rain the road had puddles the cars splashed through."
+ },
+ {
+  "id": "L.2.4a-E5",
+  "correct_feedback": "Yes! Sam grunted lifting it, so heavy means hard to lift.",
+  "incorrect_feedback": "Take another look! Sam grunted as he lifted the box. What does that grunt tell you about it?",
+  "reveal_feedback": "Heavy means hard to lift. Sam grunted when he picked up the box, so it was heavy and hard to lift."
+ },
+ {
+  "id": "L.2.4b-Q3",
+  "correct_feedback": "Yes! Pre- means before, so preview means to view before.",
+  "incorrect_feedback": "Almost! The prefix pre- means before. Add that to the word view and see what it means.",
+  "reveal_feedback": "Preview means to view before. The prefix pre- means before, so pre- plus view is to view before."
+ },
+ {
+  "id": "L.2.4b-H1",
+  "correct_feedback": "Great! She drew it a second time, and re- means again, so redrew fits perfectly.",
+  "incorrect_feedback": "Good try! Maria drew her picture a second time. Which prefix means to do something again?",
+  "reveal_feedback": "The word is redrew. The prefix re- means again, and Maria drew her picture again from the start."
+ },
+ {
+  "id": "L.2.4b-H2",
+  "correct_feedback": "Yes! The box went to the wrong shelf, and mis- means wrongly, so it was labeled wrongly.",
+  "incorrect_feedback": "Hmm, the box ended up on the wrong shelf. The prefix mis- gives you a big clue about how it was labeled.",
+  "reveal_feedback": "Mislabeled means it was labeled wrongly. The prefix mis- means wrongly, so the box got the wrong label."
+ },
+ {
+  "id": "L.2.4b-H3",
+  "correct_feedback": "Perfect! Un- means to undo, so unfasten means to undo what was fastened. He freed the rope!",
+  "incorrect_feedback": "Close one! The sailor needed the rope loose fast. The prefix un- often means to undo something.",
+  "reveal_feedback": "Unfasten means to undo what was fastened. The prefix un- means to undo, so he opened up the tight knot."
+ },
+ {
+  "id": "L.2.4b-H4",
+  "correct_feedback": "Great! He left it on too long and it turned to mush, so overcooked is just right. Over- means too much!",
+  "incorrect_feedback": "Good try! Dad cooked it far too long until it was mush. Which prefix means too much?",
+  "reveal_feedback": "The word is overcooked. The prefix over- means too much, and Dad cooked the soup too long until it was mush."
+ },
+ {
+  "id": "L.2.4b-H5",
+  "correct_feedback": "Yes! The bridge cracked under heavy trucks, and under- means not enough, so it was not strong enough.",
+  "incorrect_feedback": "Not yet! The bridge cracked on day one under heavy trucks. The prefix under- means not enough.",
+  "reveal_feedback": "Underbuilt means not strong enough. The prefix under- means not enough, so the bridge could not hold the trucks."
+ }
+]

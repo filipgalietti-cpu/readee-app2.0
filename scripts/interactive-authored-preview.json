@@ -1,0 +1,18 @@
+[
+  {
+    "std": "L.1.2",
+    "kind": "tap",
+    "heading": "Your Turn!",
+    "prompt": "How does this start?",
+    "hint": "Remember, every sentence starts with a capital letter.",
+    "questionScript": "Your turn! Listen to this sentence: 'my dog barks.' What does the very first word need to start with?",
+    "correctScript": "Exactly! 'Capital M' because every sentence starts with a capital letter.",
+    "wrongScript": "Not quite. Think about how every sentence starts. Try again!",
+    "choices": [
+      "Capital M",
+      "a period",
+      "a question mark"
+    ],
+    "correct": "Capital M"
+  }
+]

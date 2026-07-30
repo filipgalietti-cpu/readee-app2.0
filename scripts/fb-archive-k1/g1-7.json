@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RF.1.3b-H5",
+  "correct_feedback": "Yes! 'Splash' has just one beat, one vowel sound, so it is one syllable. Nice work!",
+  "incorrect_feedback": "Hmm, try clapping each word. How many beats do you hear? Pick the one with just one clap.",
+  "reveal_feedback": "That one was tricky! The one-syllable word is 'splash.' It has just one beat. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-Q1",
+  "correct_feedback": "Yes! Add an E to 'cap' and the A says its name. You get 'cape.' Nice work!",
+  "incorrect_feedback": "Almost! The E is silent, but it makes the A say its own name. Sound it out again.",
+  "reveal_feedback": "That one was tricky! Cap plus a Magic E makes 'cape.' The E makes the A say its name. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-Q2",
+  "correct_feedback": "Yes! Add a Magic E to 'hop' and the O says its name. You get 'hope.' Nice work!",
+  "incorrect_feedback": "Close one! The Magic E makes the O say its own name. Say the new word slowly.",
+  "reveal_feedback": "That one was tricky! Hop plus a Magic E makes 'hope.' The E makes the O say its name. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-Q3",
+  "correct_feedback": "Yes! 'Cake' ends in a silent E, and the A says its name. That is the Magic E. Nice work!",
+  "incorrect_feedback": "Good try! Look for the word that ends with a silent E at the end. Which one has it?",
+  "reveal_feedback": "That one was tricky! The word with a Magic E is 'cake.' It ends in a silent E. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-Q4",
+  "correct_feedback": "Yes! 'Kite' has a Magic E, so the I says its name and you hear long I. Nice work!",
+  "incorrect_feedback": "Take another look! The E is silent and makes the vowel say its own name. What does the I say?",
+  "reveal_feedback": "That one was tricky! 'Kite' has the long I sound, like 'eye.' The Magic E makes the I say its name. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-Q5",
+  "correct_feedback": "Yes! In a Magic E word, the E is silent. You do not say it, but it helps the vowel. Nice work!",
+  "incorrect_feedback": "Not yet! Say a word like 'cake.' Do you hear the E at the end? Think about that.",
+  "reveal_feedback": "That one was tricky! The Magic E is silent. You never say it, but it helps the vowel say its name. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-H1",
+  "correct_feedback": "Yes! 'Have' looks like a Magic E word, but it tricks us. The A stays short. Nice work!",
+  "incorrect_feedback": "Good try! Say each word out loud. Three make a long A. Which one sounds short instead?",
+  "reveal_feedback": "That one was tricky! 'Have' is the sneaky one. It has a short vowel, not a long A. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-H2",
+  "correct_feedback": "Yes! 'Rain' uses the vowel team A-I to make the long A sound. Nice work!",
+  "incorrect_feedback": "Almost! Look for two vowels sitting together that team up to say long A. Which word has that?",
+  "reveal_feedback": "That one was tricky! 'Rain' has the vowel team A-I that makes long A. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-H3",
+  "correct_feedback": "Yes! Add a Magic E to 'plan' and the A says its name. You get 'plane.' Nice work!",
+  "incorrect_feedback": "Close one! Just add a silent E to the end so the A says its name. Say the new word.",
+  "reveal_feedback": "That one was tricky! Plan plus a Magic E makes 'plane,' like an airplane. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-H4",
+  "correct_feedback": "Yes! 'Play' has the long A sound spelled with A-Y at the end. Nice work!",
+  "incorrect_feedback": "Take another look! Which word makes the long A sound, but with different letters than 'ai'?",
+  "reveal_feedback": "That one was tricky! 'Play' has the long A sound, spelled with A-Y. Now you know!"
+ },
+ {
+  "id": "RF.1.3c-H5",
+  "correct_feedback": "Yes! 'Rope' makes the long O sound with a Magic E. Nice work!",
+  "incorrect_feedback": "Good try! Which word ends with a silent E that makes the O say its own name?",
+  "reveal_feedback": "That one was tricky! 'Rope' makes long O with a Magic E at the end. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-Q1",
+  "correct_feedback": "Yes! 'Cat' has one beat when you clap it, so it is one syllable. Nice work!",
+  "incorrect_feedback": "Hmm, clap the word 'cat' out loud. How many claps do you hear?",
+  "reveal_feedback": "That one was tricky! 'Cat' has just one syllable, one clap. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-Q2",
+  "correct_feedback": "Yes! 'Rab-bit' has two beats, so it has two syllables. Nice work!",
+  "incorrect_feedback": "Almost! Clap the word: rab... bit. Count how many claps you make.",
+  "reveal_feedback": "That one was tricky! 'Rabbit' has two syllables: rab-bit. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-Q3",
+  "correct_feedback": "Yes! 'But-ter-fly' has three beats, so it has three syllables. Nice work!",
+  "incorrect_feedback": "Close one! Clap it slowly: but... ter... fly. Count each clap.",
+  "reveal_feedback": "That one was tricky! 'Butterfly' has three syllables: but-ter-fly. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-Q4",
+  "correct_feedback": "Yes! 'Ba-na-na' has three beats, so it has three syllables. Nice work!",
+  "incorrect_feedback": "Good try! Clap the word: ba... na... na. How many claps did you make?",
+  "reveal_feedback": "That one was tricky! 'Banana' has three syllables: ba-na-na. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-Q5",
+  "correct_feedback": "Yes! 'Ap-ple' has two beats, so it has two syllables. Nice work!",
+  "incorrect_feedback": "Not yet! Clap it out: ap... ple. Count how many beats you hear.",
+  "reveal_feedback": "That one was tricky! 'Apple' has two syllables: ap-ple. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-H1",
+  "correct_feedback": "Yes! 'Shine' has just one beat when you clap it. One syllable! Nice work!",
+  "incorrect_feedback": "Take another look! The E is silent, so clap what you hear. How many beats in 'shine'?",
+  "reveal_feedback": "That one was tricky! 'Shine' has just one syllable. The silent E does not add a beat. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-H2",
+  "correct_feedback": "Yes! 'Boat' has just one beat when you clap it. One syllable! Nice work!",
+  "incorrect_feedback": "Hmm, the two vowels team up to make a single sound. Clap 'boat.' How many beats?",
+  "reveal_feedback": "That one was tricky! 'Boat' has just one syllable. The vowel team makes one beat. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-H3",
+  "correct_feedback": "Yes! 'Ap-ple' has two beats, so it has two syllables. Nice work!",
+  "incorrect_feedback": "Almost! Clap it out: ap... ple. Count each beat you hear.",
+  "reveal_feedback": "That one was tricky! 'Apple' has two syllables: ap-ple. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-H4",
+  "correct_feedback": "Yes! 'Robin' claps into two beats: rob-in. That is two syllables. Nice work!",
+  "incorrect_feedback": "Good try! Clap each word. Three of them have one beat. Which one has two?",
+  "reveal_feedback": "That one was tricky! 'Robin' is the two-syllable word: rob-in. Now you know!"
+ },
+ {
+  "id": "RF.1.3d-H5",
+  "correct_feedback": "Yes! 'Cup-cake' has two beats, so it has two syllables. Nice work!",
+  "incorrect_feedback": "Close one! This word is made of smaller words stuck together. Clap each part and count the beats.",
+  "reveal_feedback": "That one was tricky! 'Cupcake' has two syllables: cup-cake. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-Q1",
+  "correct_feedback": "Yes! 'Nap-kin' splits between the two middle letters, so each part can be sounded out. Nice work!",
+  "incorrect_feedback": "Hmm, split the word so each chunk is easy to read. Where do the two middle letters break?",
+  "reveal_feedback": "That one was tricky! The right split is 'nap-kin.' It breaks between the P and K. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-Q2",
+  "correct_feedback": "Yes! 'Rab-bit' splits right between the two B's, so each part is easy to read. Nice work!",
+  "incorrect_feedback": "Almost! When there are two same letters in the middle, split between them. Try again.",
+  "reveal_feedback": "That one was tricky! The right split is 'rab-bit.' It breaks between the two B's. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-Q3",
+  "correct_feedback": "Yes! 'Pen-cil' splits between the two middle letters, so each chunk is easy to read. Nice work!",
+  "incorrect_feedback": "Good try! Break the word so each part has a vowel and is easy to say. Where does it split?",
+  "reveal_feedback": "That one was tricky! The right split is 'pen-cil.' It breaks between the N and C. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-Q4",
+  "correct_feedback": "Yes! 'Hap-py' splits between the two P's, so each part is easy to read. Nice work!",
+  "incorrect_feedback": "Close one! When two same letters sit in the middle, split right between them. Try again.",
+  "reveal_feedback": "That one was tricky! The right split is 'hap-py.' It breaks between the two P's. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-Q5",
+  "correct_feedback": "Yes! 'Pi-lot' splits after the first vowel, so the I can say its long name. Nice work!",
+  "incorrect_feedback": "Take another look! One word is split so each part is easy to sound out. Which one looks right?",
+  "reveal_feedback": "That one was tricky! The right split is 'pi-lot.' The I says its name in the first part. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-H1",
+  "correct_feedback": "Yes! 'In-sect' splits between the two middle letters, so each part is easy to read. Nice work!",
+  "incorrect_feedback": "Hmm, break the word between the middle letters so each chunk can be sounded out. Try again.",
+  "reveal_feedback": "That one was tricky! The right split is 'in-sect.' It breaks between the N and S. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-H2",
+  "correct_feedback": "Yes! 'Muf-fin' splits right between the two F's, so each part is easy to read. Nice work!",
+  "incorrect_feedback": "Almost! Two same letters sit in the middle. Split right between them and try again.",
+  "reveal_feedback": "That one was tricky! The right split is 'muf-fin.' It breaks between the two F's. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-H3",
+  "correct_feedback": "Yes! 'Basket' splits between two different middle letters, bas-ket, just like nap-kin. Nice work!",
+  "incorrect_feedback": "Good try! Which word splits between two DIFFERENT middle letters, not two of the same?",
+  "reveal_feedback": "That one was tricky! 'Basket' is the answer: bas-ket, split between two different letters. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-H4",
+  "correct_feedback": "Yes! 'Wal-nut' splits between the two middle letters, so each part is easy to read. Nice work!",
+  "incorrect_feedback": "Close one! Break the word between the middle letters so each chunk can be sounded out.",
+  "reveal_feedback": "That one was tricky! The right split is 'wal-nut.' It breaks between the L and N. Now you know!"
+ },
+ {
+  "id": "RF.1.3e-H5",
+  "correct_feedback": "Yes! 'Kitten' claps into two beats, kit-ten, so it has two syllables. Nice work!",
+  "incorrect_feedback": "Take another look! Clap each word. Three have just one beat. Which one has two?",
+  "reveal_feedback": "That one was tricky! 'Kitten' has two syllables: kit-ten. Now you know!"
+ },
+ {
+  "id": "RF.1.3f-Q1",
+  "correct_feedback": "Yes! The -s at the end of 'cats' means there is more than one cat. Nice work!",
+  "incorrect_feedback": "Hmm, think about one cat and then a whole group of them. What does the -s tell you?",
+  "reveal_feedback": "That one was tricky! The -s means 'more than one.' Cats means lots of cats. Now you know!"
+ },
+ {
+  "id": "RF.1.3f-Q4",
+  "correct_feedback": "Yes! Take off the -ing from 'playing' and you find the root word 'play.' Nice work!",
+  "incorrect_feedback": "Almost! Cover up the -ing ending. What smaller word is left underneath?",
+  "reveal_feedback": "That one was tricky! The root word is 'play.' Take off -ing and 'play' is left. Now you know!"
+ },
+ {
+  "id": "RF.1.3f-Q5",
+  "correct_feedback": "Yes! The -ed ending means it already happened, so 'walked' is in the past. Nice work!",
+  "incorrect_feedback": "Take another look! The -ed ending is a clue about time. Did it happen before, now, or later?",
+  "reveal_feedback": "That one was tricky! The -ed tells us the walking already happened, in the past. Now you know!"
+ },
+ {
+  "id": "RF.1.3f-H1",
+  "correct_feedback": "Yes! Take off the -ning from 'running' and you find the root word 'run.' Nice work!",
+  "incorrect_feedback": "Good try! Cover up the ending. What small action word is hiding underneath?",
+  "reveal_feedback": "That one was tricky! The root word is 'run.' Take off the ending and 'run' is left. Now you know!"
+ },
+ {
+  "id": "RF.1.3f-H2",
+  "correct_feedback": "Yes! In 'picked' the -ed sounds like /t/, just like in 'jumped.' Nice work!",
+  "incorrect_feedback": "Almost! Say each word out loud. Which -ed ending sounds like a soft /t/, not a /d/?",
+  "reveal_feedback": "That one was tricky! In 'picked' the -ed makes a /t/ sound, like 'jumped.' Now you know!"
+ },
+ {
+  "id": "RF.1.3f-H3",
+  "correct_feedback": "Yes! For 'cry,' change the y to i and add -ed to make 'cried.' Nice work!",
+  "incorrect_feedback": "Close one! When a word ends in y, the y changes to i before you add -ed. Try again.",
+  "reveal_feedback": "That one was tricky! The right spelling is 'cried.' Change the y to i, then add -ed. Now you know!"
+ },
+ {
+  "id": "RF.1.3g-Q2",
+  "correct_feedback": "Yes! 'Was' is a tricky word. It does not sound out the way it is spelled. Nice work!",
+  "incorrect_feedback": "Hmm, three of these sound out just how they look. One does not. Which one surprises you?",
+  "reveal_feedback": "That one was tricky! 'Was' is the tricky word. It sounds like 'wuz,' not how it looks. Now you know!"
+ },
+ {
+  "id": "RF.1.3g-Q3",
+  "correct_feedback": "Yes! 'Have' says its name even though it looks like a Magic E word. Nice work!",
+  "incorrect_feedback": "Almost! Say each word out loud. Which one sounds like 'hav'? Look carefully.",
+  "reveal_feedback": "That one was tricky! The word that says 'have' is spelled h-a-v-e. Now you know!"
+ },
+ {
+  "id": "RF.1.3g-Q4",
+  "correct_feedback": "Yes! 'We were going to the park' has the tricky word 'were' in it. Nice work!",
+  "incorrect_feedback": "Take another look! Read each sentence. Which one has the tricky word that sounds like 'wur'?",
+  "reveal_feedback": "That one was tricky! The sentence is 'We were going to the park.' It has the word 'were.' Now you know!"
+ },
+ {
+  "id": "RF.1.3g-Q5",
+  "correct_feedback": "Yes! 'Said' is a tricky word. It sounds like 'sed,' not how it is spelled. Nice work!",
+  "incorrect_feedback": "Good try! Three of these sound out just how they look. Which one does not?",
+  "reveal_feedback": "That one was tricky! 'Said' is the tricky word. It sounds like 'sed.' Now you know!"
+ },
+ {
+  "id": "RF.1.3g-H1",
+  "correct_feedback": "Yes! 'Said' is the tricky word. It sounds like 'sed,' not how it is spelled. Nice work!",
+  "incorrect_feedback": "Hmm, three of these sound out just how they look. Which one does not follow the rule?",
+  "reveal_feedback": "That one was tricky! 'Said' is the tricky one. It sounds like 'sed.' Now you know!"
+ },
+ {
+  "id": "RF.1.3g-H2",
+  "correct_feedback": "Yes! 'Friend' is the right spelling, even though the i is silent. Nice work!",
+  "incorrect_feedback": "Close one! This tricky word has a sneaky silent i after the r. Which spelling has it?",
+  "reveal_feedback": "That one was tricky! The correct spelling is 'friend.' There is a silent i inside. Now you know!"
+ },
+ {
+  "id": "RF.1.3g-H3",
+  "correct_feedback": "Yes! 'Does' is the tricky word. It sounds like 'duz,' not like 'nose.' Nice work!",
+  "incorrect_feedback": "Take another look! Say each word out loud. Which one sounds different from 'nose'?",
+  "reveal_feedback": "That one was tricky! 'Does' is the odd one. It sounds like 'duz,' not 'doze.' Now you know!"
+ },
+ {
+  "id": "RF.1.3g-H4",
+  "correct_feedback": "Yes! 'Once' is the right spelling, even though it sounds like 'wunce.' Nice work!",
+  "incorrect_feedback": "Good try! This tricky word starts with an o but sounds like a w. Which spelling looks right?",
+  "reveal_feedback": "That one was tricky! The correct spelling is 'once.' It starts with o but says 'wunce.' Now you know!"
+ }
+]

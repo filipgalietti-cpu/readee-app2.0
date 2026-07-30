@@ -1,0 +1,542 @@
+[
+ {
+  "id": "L.2.4c-Q1",
+  "standard": "L.2.4c",
+  "prompt": "If **teach** means to help someone learn, what does a **teacher** do?",
+  "choices": [
+   "Drives a bus",
+   "Helps people learn",
+   "Builds things",
+   "Cooks food"
+  ],
+  "correct": "Helps people learn"
+ },
+ {
+  "id": "L.2.4c-Q3",
+  "standard": "L.2.4c",
+  "prompt": "If someone is *helpless*, what does that mean about them?",
+  "choices": [
+   "They are very strong.",
+   "They like to help others.",
+   "They cannot do things by themselves and need help.",
+   "They have many friends."
+  ],
+  "correct": "They cannot do things by themselves and need help."
+ },
+ {
+  "id": "L.2.4c-H1",
+  "standard": "L.2.4c",
+  "prompt": "You know the word **agree**. Read this sentence: \"The two friends had a **disagreement** about which game to play.\" What does *disagreement* mean?",
+  "choices": [
+   "A time when they did NOT agree about something",
+   "A promise to always agree from now on",
+   "A moment when they finally agreed on the game",
+   "A fun game that they both wanted to play"
+  ],
+  "correct": "A time when they did NOT agree about something"
+ },
+ {
+  "id": "L.2.4c-H2",
+  "standard": "L.2.4c",
+  "prompt": "You know the word **wash**. Read this sentence: \"Mom said the new plates are **washable**.\" What does *washable* mean?",
+  "choices": [
+   "The plates are only used on special days",
+   "The plates can be washed and used again",
+   "The plates are already washed and clean",
+   "The plates cannot get wet or they will break"
+  ],
+  "correct": "The plates can be washed and used again"
+ },
+ {
+  "id": "L.2.4c-H3",
+  "standard": "L.2.4c",
+  "prompt": "You know that **hope** means to wish for something good. Read: \"Even after losing, the coach stayed **hopeful** the team would win next time.\" What does *hopeful* mean?",
+  "choices": [
+   "So sad that there is no hope left",
+   "Angry at the team for losing",
+   "Full of hope that something good will happen",
+   "Sure that the team already won the game"
+  ],
+  "correct": "Full of hope that something good will happen"
+ },
+ {
+  "id": "L.2.4c-H4",
+  "standard": "L.2.4c",
+  "prompt": "You know the word **use**. A grocery bag that is **reusable** is one that you can\u2014",
+  "choices": [
+   "Use only to carry heavy things",
+   "Use only one time and then throw away",
+   "Never use because it is broken",
+   "Use again and again, not just one time"
+  ],
+  "correct": "Use again and again, not just one time"
+ },
+ {
+  "id": "L.2.4c-H5",
+  "standard": "L.2.4c",
+  "prompt": "You know the word **fear**, which means to be scared. A knight who runs straight at the dragon and is NOT scared at all is best called\u2014",
+  "choices": [
+   "Fearless",
+   "Feared",
+   "Fearful",
+   "Fearing"
+  ],
+  "correct": "Fearless"
+ },
+ {
+  "id": "L.2.4d-Q1",
+  "standard": "L.2.4d",
+  "prompt": "What does **sunflower** mean?",
+  "choices": [
+   "A type of sunshine",
+   "A flower that blocks the sun",
+   "The sun made of flowers",
+   "A flower that faces the sun"
+  ],
+  "correct": "A flower that faces the sun"
+ },
+ {
+  "id": "L.2.4d-Q2",
+  "standard": "L.2.4d",
+  "prompt": "If you know what **rain** means and what **coat** means, what does a **raincoat** help you do?",
+  "choices": [
+   "It is a coat you wear to go swimming.",
+   "It is a coat made for sunny days.",
+   "It is a coat that keeps you dry in the rain.",
+   "It is a coat that gets wet in the rain."
+  ],
+  "correct": "It is a coat that keeps you dry in the rain."
+ },
+ {
+  "id": "L.2.4d-Q3",
+  "standard": "L.2.4d",
+  "prompt": "What is a **bookshelf**?",
+  "choices": [
+   "A type of book",
+   "A shelf for holding books",
+   "A book about shelves",
+   "A shelf made of books"
+  ],
+  "correct": "A shelf for holding books"
+ },
+ {
+  "id": "L.2.4d-Q4",
+  "standard": "L.2.4d",
+  "prompt": "If **light** means something that shines and **house** means a building, what is a **lighthouse**?",
+  "choices": [
+   "A light inside a house",
+   "A house that is light-colored",
+   "A building with a bright light to guide ships",
+   "A house made of light"
+  ],
+  "correct": "A building with a bright light to guide ships"
+ },
+ {
+  "id": "L.2.4d-Q5",
+  "standard": "L.2.4d",
+  "prompt": "If \"rain\" means water falling from the sky and a \"coat\" is clothing you wear, what does a \"raincoat\" help you do?",
+  "choices": [
+   "Play with your friends in the park.",
+   "Keep dry when water falls from the sky.",
+   "Sleep better at night.",
+   "Stay warm when it is cold outside."
+  ],
+  "correct": "Keep dry when water falls from the sky."
+ },
+ {
+  "id": "L.2.4e-Q2",
+  "standard": "L.2.4e",
+  "prompt": "Read this sentence: 'Maya was excited to discover a hidden key under the rug.' If you used a dictionary to understand the word 'discover,' which meaning would best fit the sentence?",
+  "choices": [
+   "to lose something important",
+   "to clean up a messy area",
+   "to find something new or hidden",
+   "to break something by accident"
+  ],
+  "correct": "to find something new or hidden"
+ },
+ {
+  "id": "L.2.4e-Q4",
+  "standard": "L.2.4e",
+  "prompt": "A glossary says that 'flutter' means to move wings quickly. If a butterfly starts to flutter, what is it doing?",
+  "choices": [
+   "It is resting on a flower.",
+   "It is moving its wings fast.",
+   "It is flying very slowly.",
+   "It is eating nectar."
+  ],
+  "correct": "It is moving its wings fast."
+ },
+ {
+  "id": "L.2.4e-Q5",
+  "standard": "L.2.4e",
+  "prompt": "A dictionary entry for a word looks like this: penguin (noun): A large bird that lives in cold places, swims very well, and has black and white feathers. It cannot fly.Based on this dictionary entry, which sentence tells you what 'penguin' means?",
+  "choices": [
+   "A small animal that runs fast.",
+   "A furry animal that climbs trees.",
+   "A big bird that swims and cannot fly.",
+   "A fish that lives in warm water."
+  ],
+  "correct": "A big bird that swims and cannot fly."
+ },
+ {
+  "id": "L.2.4e-H1",
+  "standard": "L.2.4e",
+  "prompt": "A dictionary page has the guide word 'ladder' at the top-left corner and 'lamp' at the top-right corner. Guide words tell you the FIRST and LAST word on that page. Which word below would you find on THIS page?",
+  "choices": [
+   "lake",
+   "leaf",
+   "land",
+   "lazy"
+  ],
+  "correct": "lake"
+ },
+ {
+  "id": "L.2.4e-H2",
+  "standard": "L.2.4e",
+  "prompt": "You want to look up the word 'hopping' in the dictionary, but dictionaries only list the base word. Which word should you search for to find 'hopping'?",
+  "choices": [
+   "hops",
+   "hop",
+   "hopping",
+   "hopped"
+  ],
+  "correct": "hop"
+ },
+ {
+  "id": "L.2.4e-H3",
+  "standard": "L.2.4e",
+  "prompt": "A dictionary shows: present \u2014 1. (noun) a gift.  2. (verb) to give or show something.  3. (adjective) here; not away.  4. (noun) the time happening right now. Read this sentence: 'Every student was present, so nobody was missing today.' Which meaning of 'present' fits THIS sentence?",
+  "choices": [
+   "to give or show something",
+   "the time happening right now",
+   "here; not away",
+   "a gift"
+  ],
+  "correct": "here; not away"
+ },
+ {
+  "id": "L.2.4e-H4",
+  "standard": "L.2.4e",
+  "prompt": "A glossary shows: spring \u2014 1. the season after winter.  2. to jump up quickly.  3. a coiled piece of metal.  4. a place where water flows out of the ground. Read this sentence: 'The rabbit will spring over the log to escape the fox.' Which meaning of 'spring' fits THIS sentence?",
+  "choices": [
+   "a place where water flows out of the ground",
+   "the season after winter",
+   "a coiled piece of metal",
+   "to jump up quickly"
+  ],
+  "correct": "to jump up quickly"
+ },
+ {
+  "id": "L.2.4e-H5",
+  "standard": "L.2.4e",
+  "prompt": "A glossary lists four meanings of 'fair'. Read this sentence: 'It isn't fair that Ben got two cookies and I got none!' Which glossary meaning of 'fair' best matches how it is used here?",
+  "choices": [
+   "treating everyone in an equal way",
+   "having light-colored hair or skin",
+   "a fun outdoor event with rides and games",
+   "sunny and pleasant weather"
+  ],
+  "correct": "treating everyone in an equal way"
+ },
+ {
+  "id": "L.2.5-Q1",
+  "standard": "L.2.5",
+  "prompt": "Which word means almost the same as **big**?",
+  "choices": [
+   "Tiny",
+   "Large",
+   "Bright",
+   "Fast"
+  ],
+  "correct": "Large"
+ },
+ {
+  "id": "L.2.5-Q2",
+  "standard": "L.2.5",
+  "prompt": "Which word is the OPPOSITE of **hot**?",
+  "choices": [
+   "Sunny",
+   "Spicy",
+   "Cold",
+   "Warm"
+  ],
+  "correct": "Cold"
+ },
+ {
+  "id": "L.2.5-Q4",
+  "standard": "L.2.5",
+  "prompt": "When would you use the word **whisper**?",
+  "choices": [
+   "At a loud concert",
+   "When calling someone far away",
+   "While cheering at a game",
+   "In a library when you need to be quiet"
+  ],
+  "correct": "In a library when you need to be quiet"
+ },
+ {
+  "id": "L.2.5-Q5",
+  "standard": "L.2.5",
+  "prompt": "Which word means the same as **glad**?",
+  "choices": [
+   "Happy",
+   "Scared",
+   "Angry",
+   "Sad"
+  ],
+  "correct": "Happy"
+ },
+ {
+  "id": "L.2.5-H1",
+  "standard": "L.2.5",
+  "prompt": "The puppy was so tired it could barely move. Which word BEST shows how the puppy felt?",
+  "choices": [
+   "Exhausted",
+   "Cozy",
+   "Sleepy",
+   "Bored"
+  ],
+  "correct": "Exhausted"
+ },
+ {
+  "id": "L.2.5-H2",
+  "standard": "L.2.5",
+  "prompt": "Read this sentence: 'Mom will PARK the car by the store.' Which sentence below uses PARK to mean the SAME thing?",
+  "choices": [
+   "Birds live in the park.",
+   "Please park your bike near the wall.",
+   "We played all day at the park.",
+   "The park has a big slide."
+  ],
+  "correct": "Please park your bike near the wall."
+ },
+ {
+  "id": "L.2.5-H3",
+  "standard": "L.2.5",
+  "prompt": "Which sentence uses the MOST exact word to describe how the wind moved the leaves?",
+  "choices": [
+   "The wind did something to the leaves.",
+   "The wind went by the leaves.",
+   "The wind swirled the leaves in circles.",
+   "The wind moved the leaves."
+  ],
+  "correct": "The wind swirled the leaves in circles."
+ },
+ {
+  "id": "L.2.5-H4",
+  "standard": "L.2.5",
+  "prompt": "A 'careful' person is full of care. Using that clue, a person who is HELPFUL is a person who:",
+  "choices": [
+   "forgot to help",
+   "needs a lot of help",
+   "cannot help at all",
+   "is full of help for others"
+  ],
+  "correct": "is full of help for others"
+ },
+ {
+  "id": "L.2.5-H5",
+  "standard": "L.2.5",
+  "prompt": "Which word shows the child was the MOST happy?",
+  "choices": [
+   "Thrilled",
+   "Fine",
+   "Glad",
+   "Okay"
+  ],
+  "correct": "Thrilled"
+ },
+ {
+  "id": "L.2.5a-Q1",
+  "standard": "L.2.5a",
+  "prompt": "Which of these foods could be described as **crunchy**?",
+  "choices": [
+   "Soup",
+   "Carrots",
+   "Ice cream",
+   "Yogurt"
+  ],
+  "correct": "Carrots"
+ },
+ {
+  "id": "L.2.5a-Q2",
+  "standard": "L.2.5a",
+  "prompt": "Which action is **courageous**?",
+  "choices": [
+   "Watching TV",
+   "Sleeping in your bed",
+   "Standing up to a bully",
+   "Eating lunch"
+  ],
+  "correct": "Standing up to a bully"
+ },
+ {
+  "id": "L.2.5a-Q3",
+  "standard": "L.2.5a",
+  "prompt": "When might you feel **frustrated**?",
+  "choices": [
+   "When you open a birthday present",
+   "When you eat your favorite food",
+   "When you play with your best friend",
+   "When you can't solve a puzzle after many tries"
+  ],
+  "correct": "When you can't solve a puzzle after many tries"
+ },
+ {
+  "id": "L.2.5a-Q4",
+  "standard": "L.2.5a",
+  "prompt": "Which place would you describe as **peaceful**?",
+  "choices": [
+   "A quiet garden with birds singing",
+   "A crowded mall",
+   "A construction site",
+   "A loud gym class"
+  ],
+  "correct": "A quiet garden with birds singing"
+ },
+ {
+  "id": "L.2.5a-Q5",
+  "standard": "L.2.5a",
+  "prompt": "Which animal would you describe as **swift**?",
+  "choices": [
+   "A snail",
+   "A cheetah",
+   "A sloth",
+   "A turtle"
+  ],
+  "correct": "A cheetah"
+ },
+ {
+  "id": "L.2.5a-H1",
+  "standard": "L.2.5a",
+  "prompt": "The desert sand was so hot that it burned Mia's bare feet the second she stepped on it. Which word best describes the sand?",
+  "choices": [
+   "Scorching",
+   "Mild",
+   "Warm",
+   "Cool"
+  ],
+  "correct": "Scorching"
+ },
+ {
+  "id": "L.2.5a-H2",
+  "standard": "L.2.5a",
+  "prompt": "Which situation would most likely make a person feel FURIOUS?",
+  "choices": [
+   "Dropping your pencil under the desk",
+   "Someone breaking your favorite toy on purpose",
+   "Finding one dollar on the ground",
+   "Waiting a few minutes for lunch"
+  ],
+  "correct": "Someone breaking your favorite toy on purpose"
+ },
+ {
+  "id": "L.2.5a-H3",
+  "standard": "L.2.5a",
+  "prompt": "Dad said, \"Please turn down the music, it is too loud.\" What does turn down mean in this sentence?",
+  "choices": [
+   "Fold it over",
+   "Flip it upside down",
+   "Make it quieter",
+   "Say no to it"
+  ],
+  "correct": "Make it quieter"
+ },
+ {
+  "id": "L.2.5a-H4",
+  "standard": "L.2.5a",
+  "prompt": "After running a long race in the hot sun, Leo could barely walk and just wanted to lie down. Which word best describes how Leo felt?",
+  "choices": [
+   "Relaxed",
+   "Sleepy",
+   "Bored",
+   "Exhausted"
+  ],
+  "correct": "Exhausted"
+ },
+ {
+  "id": "L.2.5a-H5",
+  "standard": "L.2.5a",
+  "prompt": "The word delicate means something that breaks easily or must be handled gently. Which sentence uses delicate the correct way?",
+  "choices": [
+   "The delicate glass ornament shattered when it fell.",
+   "He used the delicate hammer to smash the rocks.",
+   "The delicate boulder would not move no matter what.",
+   "The delicate truck crashed through the strong wall."
+  ],
+  "correct": "The delicate glass ornament shattered when it fell."
+ },
+ {
+  "id": "L.2.5b-Q2",
+  "standard": "L.2.5b",
+  "prompt": "Which word means being MORE than just **warm**?",
+  "choices": [
+   "Cold",
+   "Cool",
+   "Hot",
+   "Chilly"
+  ],
+  "correct": "Hot"
+ },
+ {
+  "id": "L.2.5b-Q3",
+  "standard": "L.2.5b",
+  "prompt": "Which word shows a BIGGER size than **big**?",
+  "choices": [
+   "Medium",
+   "Tiny",
+   "Small",
+   "Gigantic"
+  ],
+  "correct": "Gigantic"
+ },
+ {
+  "id": "L.2.5b-Q5",
+  "standard": "L.2.5b",
+  "prompt": "Which word means walking SLOWLY and tiredly?",
+  "choices": [
+   "Trudge",
+   "March",
+   "Sprint",
+   "Skip"
+  ],
+  "correct": "Trudge"
+ },
+ {
+  "id": "L.2.5b-H1",
+  "standard": "L.2.5b",
+  "prompt": "The baby was sleeping in her crib. Dad walked in and _____ to his friend so he wouldn't wake her. Which word fits BEST?",
+  "choices": [
+   "whispered",
+   "called",
+   "shouted",
+   "yelled"
+  ],
+  "correct": "whispered"
+ },
+ {
+  "id": "L.2.5b-H2",
+  "standard": "L.2.5b",
+  "prompt": "Ben had never seen a real dinosaur bone before. He _____ at the giant skeleton for a long, long time without looking away. Which word fits BEST?",
+  "choices": [
+   "blinked",
+   "stared",
+   "glanced",
+   "peeked"
+  ],
+  "correct": "stared"
+ },
+ {
+  "id": "L.2.5b-H3",
+  "standard": "L.2.5b",
+  "prompt": "The school bus was already pulling away, so Lily _____ down the sidewalk to catch it in time. Which word fits BEST?",
+  "choices": [
+   "wandered",
+   "tiptoed",
+   "dashed",
+   "strolled"
+  ],
+  "correct": "dashed"
+ }
+]

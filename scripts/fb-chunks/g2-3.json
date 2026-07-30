@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RI.2.5-Q3",
+  "standard": "RI.2.5",
+  "prompt": "You want to know which page has information about dolphins. Which text feature should you use?",
+  "choices": [
+   "Bold print",
+   "The index",
+   "The glossary",
+   "A caption"
+  ],
+  "correct": "The index"
+ },
+ {
+  "id": "RI.2.5-Q4",
+  "standard": "RI.2.5",
+  "prompt": "In a nonfiction book, some words are in bold print. Why?",
+  "choices": [
+   "To make the page look pretty",
+   "Because the author likes those words",
+   "To show important or new vocabulary words",
+   "Because they are misspelled"
+  ],
+  "correct": "To show important or new vocabulary words"
+ },
+ {
+  "id": "RI.2.5-H1",
+  "standard": "RI.2.5",
+  "prompt": "Here is the Table of Contents for a book about weather:\n\nChapter 1: What Is Weather? ... page 2\nChapter 2: Clouds and Rain ... page 8\nChapter 3: Storms ... page 14\nChapter 4: Weather Tools ... page 20\n\nMaria wants to learn how a rain gauge measures how much water falls. Which chapter should she turn to first?",
+  "choices": [
+   "Chapter 4: Weather Tools",
+   "Chapter 1: What Is Weather?",
+   "Chapter 2: Clouds and Rain",
+   "Chapter 3: Storms"
+  ],
+  "correct": "Chapter 4: Weather Tools"
+ },
+ {
+  "id": "RI.2.5-H2",
+  "standard": "RI.2.5",
+  "prompt": "Here is part of the Index from a bug book:\n\nants ... 4, 9\nbees ... 7, 12\nspiders ... 3, 15, 22\nwebs ... 15\n\nSam wants ONE page that tells about spiders AND their webs together. Which page should he open?",
+  "choices": [
+   "Page 7",
+   "Page 15",
+   "Page 3",
+   "Page 22"
+  ],
+  "correct": "Page 15"
+ },
+ {
+  "id": "RI.2.5-H3",
+  "standard": "RI.2.5",
+  "prompt": "While reading, you see a word printed in dark, thick letters: **migrate**. You do not know what it means and want to find out as fast as you can. What is the BEST thing to do?",
+  "choices": [
+   "Read the whole chapter over again from the start",
+   "Look at the pictures on the page and guess",
+   "Look up 'migrate' in the glossary, where bold words are explained",
+   "Look up 'migrate' in the index to see the page numbers it is on"
+  ],
+  "correct": "Look up 'migrate' in the glossary, where bold words are explained"
+ },
+ {
+  "id": "RI.2.5-H4",
+  "standard": "RI.2.5",
+  "prompt": "A page in a book has these headings:\n\n- Where Sea Turtles Live\n- What Sea Turtles Eat\n- How Baby Sea Turtles Grow\n- Why Sea Turtles Are in Danger\n\nMax wants to find out how sea turtles catch the fish they hunt for food. Which section should he read?",
+  "choices": [
+   "Why Sea Turtles Are in Danger",
+   "Where Sea Turtles Live",
+   "How Baby Sea Turtles Grow",
+   "What Sea Turtles Eat"
+  ],
+  "correct": "What Sea Turtles Eat"
+ },
+ {
+  "id": "RI.2.5-H5",
+  "standard": "RI.2.5",
+  "prompt": "A book about planets has BOTH a table of contents in the front and an index in the back. Rosa wants to find EVERY page that has the word 'Mars' on it. Which one will help her find all of those pages faster?",
+  "choices": [
+   "The index, because it lists a word and every page it appears on",
+   "The glossary, because it tells what the word 'Mars' means",
+   "The table of contents, because it lists the chapters in order",
+   "The title page, because it shows the name of the book"
+  ],
+  "correct": "The index, because it lists a word and every page it appears on"
+ },
+ {
+  "id": "RI.2.6-Q1",
+  "standard": "RI.2.6",
+  "prompt": "Brush your teeth twice a day. Use toothpaste with fluoride. Visit the dentist every six months.\n\nWhat is the author's purpose?",
+  "choices": [
+   "To explain how to take care of your teeth",
+   "To tell a funny story",
+   "To describe a toothbrush",
+   "To sell toothpaste"
+  ],
+  "correct": "To explain how to take care of your teeth"
+ },
+ {
+  "id": "RI.2.6-Q2",
+  "standard": "RI.2.6",
+  "prompt": "The blue whale is the largest animal ever to live on Earth. It can be over 100 feet long and weigh as much as 200 tons.\n\nThe author wrote this to \u2014",
+  "choices": [
+   "Tell a story about a whale",
+   "Inform you about blue whales",
+   "Convince you to visit the ocean",
+   "Make you laugh"
+  ],
+  "correct": "Inform you about blue whales"
+ },
+ {
+  "id": "RI.2.6-Q3",
+  "standard": "RI.2.6",
+  "prompt": "Everyone should recycle! When we recycle, we save trees and keep trash out of the ocean. Please recycle your cans, bottles, and paper.\n\nThe author's main purpose is to \u2014",
+  "choices": [
+   "Describe what recycling looks like",
+   "Teach you how paper is made",
+   "Persuade you to recycle",
+   "Entertain you with a story"
+  ],
+  "correct": "Persuade you to recycle"
+ },
+ {
+  "id": "RI.2.6-Q4",
+  "standard": "RI.2.6",
+  "prompt": "A book that teaches you about different types of clouds was written to \u2014",
+  "choices": [
+   "Persuade",
+   "Scare",
+   "Entertain",
+   "Inform"
+  ],
+  "correct": "Inform"
+ },
+ {
+  "id": "RI.2.6-Q5",
+  "standard": "RI.2.6",
+  "prompt": "Butterflies have four stages in their life: egg, caterpillar, chrysalis, and butterfly. Each stage is an important part of their life cycle.\n\nWhat question is the author trying to answer?",
+  "choices": [
+   "What are the stages of a butterfly's life?",
+   "Why are butterflies colorful?",
+   "Where do butterflies live?",
+   "How fast can butterflies fly?"
+  ],
+  "correct": "What are the stages of a butterfly's life?"
+ },
+ {
+  "id": "RI.2.6-H1",
+  "standard": "RI.2.6",
+  "prompt": "Have you ever watched a spider fix its web? First, the spider makes one strong line between two branches. Then it adds more lines that spread out like the spokes of a wheel. Last, it spins a sticky circle to catch bugs. Now you know how a spider builds its web!\n\nWhat is the author's MAIN purpose?",
+  "choices": [
+   "To explain the steps a spider takes to build a web",
+   "To convince you that spiders are helpful",
+   "To describe what a spider looks like",
+   "To tell an exciting story about a spider and a bug"
+  ],
+  "correct": "To explain the steps a spider takes to build a web"
+ },
+ {
+  "id": "RI.2.6-H2",
+  "standard": "RI.2.6",
+  "prompt": "Why do leaves change color in the fall? In summer, leaves are full of green stuff that helps the tree make food. When the days get short and cold, that green stuff fades away. Then we can finally see the red and orange colors that were hiding all along.\n\nThe author wrote this text mostly to \u2014",
+  "choices": [
+   "Tell a story about a walk on a fall day",
+   "Answer why leaves change color in the fall",
+   "Explain how a tree makes its food in summer",
+   "Describe how pretty the red and orange leaves are"
+  ],
+  "correct": "Answer why leaves change color in the fall"
+ },
+ {
+  "id": "RI.2.6-H3",
+  "standard": "RI.2.6",
+  "prompt": "Recess is the best part of the school day! Kids need time to run and play so their bodies stay strong. Playing outside also helps kids think better when they go back to class. Every school should give kids a long recess.\n\nWhat is the author trying to do?",
+  "choices": [
+   "Explain the rules of the games kids play at recess",
+   "Describe what a school playground looks like",
+   "Convince readers that schools should give kids a long recess",
+   "Inform readers about how the body stays strong"
+  ],
+  "correct": "Convince readers that schools should give kids a long recess"
+ },
+ {
+  "id": "RI.2.6-H4",
+  "standard": "RI.2.6",
+  "prompt": "The rainforest is loud and green. Tall trees block the sun, so the ground below stays dark and wet. Bright birds call from the high branches, and frogs sing near the little streams. Everywhere you look, something is moving.\n\nThe author mainly wants to \u2014",
+  "choices": [
+   "Convince readers to visit the rainforest",
+   "Explain why the trees grow so tall",
+   "Teach readers how to take care of frogs",
+   "Describe what the rainforest is like"
+  ],
+  "correct": "Describe what the rainforest is like"
+ },
+ {
+  "id": "RI.2.6-H5",
+  "standard": "RI.2.6",
+  "prompt": "Some people think bats are birds because they fly. But bats are not birds at all \u2014 they are mammals, just like dogs and people. Bats have soft fur instead of feathers, and mother bats feed their babies milk.\n\nWhy did the author write this?",
+  "choices": [
+   "To correct the idea that bats are birds",
+   "To describe what baby bats look like",
+   "To explain how dogs and people are alike",
+   "To tell readers where bats like to sleep"
+  ],
+  "correct": "To correct the idea that bats are birds"
+ },
+ {
+  "id": "RI.2.7-Q1",
+  "standard": "RI.2.7",
+  "prompt": "A science book has a paragraph about the parts of a plant. Next to it is a diagram with labels pointing to the roots, stem, leaves, and flower. How does the diagram help?",
+  "choices": [
+   "It makes the page look nice",
+   "It shows you exactly where each plant part is",
+   "It replaces the paragraph",
+   "It shows a different topic"
+  ],
+  "correct": "It shows you exactly where each plant part is"
+ },
+ {
+  "id": "RI.2.7-Q2",
+  "standard": "RI.2.7",
+  "prompt": "A text about weather says: \"A thermometer measures temperature.\" Below it is a picture of a thermometer showing 32\u00b0F. What does the picture add?",
+  "choices": [
+   "It replaces the need to read",
+   "Nothing new",
+   "It shows what a thermometer looks like and how to read it",
+   "It tells you about rain"
+  ],
+  "correct": "It shows what a thermometer looks like and how to read it"
+ },
+ {
+  "id": "RI.2.7-Q3",
+  "standard": "RI.2.7",
+  "prompt": "Listen to the story: In her book about animals around the world, the author added a large, colorful map. On the map, she placed small pictures of animals on top of the different countries where they are found. By looking at it, readers could see which animals lived in each part of the world. Why would an author include a map in a book about animals around the world?",
+  "choices": [
+   "To make the book longer",
+   "To show what animals eat",
+   "To teach you to draw",
+   "To show where different animals live"
+  ],
+  "correct": "To show where different animals live"
+ },
+ {
+  "id": "RI.2.7-Q4",
+  "standard": "RI.2.7",
+  "prompt": "A book about healthy eating includes a picture of a food plate divided into sections: fruits, vegetables, grains, protein, and dairy. This image helps the reader \u2014",
+  "choices": [
+   "See how much of each food group to eat",
+   "Learn to draw plates",
+   "Know what to buy at the store",
+   "Cook a meal"
+  ],
+  "correct": "See how much of each food group to eat"
+ },
+ {
+  "id": "RI.2.7-E1",
+  "standard": "RI.2.7",
+  "prompt": "A book says: \"A fox has a bushy tail.\" Next to the words is a photo of a fox. What does the photo help you do?",
+  "choices": [
+   "See what a fox looks like",
+   "Hear a song",
+   "Learn how to swim",
+   "Count to ten"
+  ],
+  "correct": "See what a fox looks like"
+ },
+ {
+  "id": "RI.2.7-E2",
+  "standard": "RI.2.7",
+  "prompt": "A page about bugs has a photo of a ladybug with an arrow pointing to its red wings. What does the arrow do?",
+  "choices": [
+   "Points to the sky",
+   "Points to the ladybug's wings",
+   "Makes the page blue",
+   "Tells a joke"
+  ],
+  "correct": "Points to the ladybug's wings"
+ },
+ {
+  "id": "RI.2.7-E3",
+  "standard": "RI.2.7",
+  "prompt": "A book says: \"This is how you tie a shoe.\" Below the words are step-by-step pictures of hands tying a shoe. How do the pictures help?",
+  "choices": [
+   "They play music",
+   "They are only for fun",
+   "They show each step of tying a shoe",
+   "They show a car driving"
+  ],
+  "correct": "They show each step of tying a shoe"
+ },
+ {
+  "id": "RI.2.7-E4",
+  "standard": "RI.2.7",
+  "prompt": "A page about the sun has a big yellow picture of the sun. The words say the sun is bright and yellow. What does the picture add?",
+  "choices": [
+   "It shows a cold night",
+   "It tells you about rain",
+   "It hides the words",
+   "It shows the sun's color and shape"
+  ],
+  "correct": "It shows the sun's color and shape"
+ },
+ {
+  "id": "RI.2.7-E5",
+  "standard": "RI.2.7",
+  "prompt": "A book about a bike has a photo of a bike with a label that says \"wheel\" pointing to a wheel. What does the label help you learn?",
+  "choices": [
+   "Which part is the wheel",
+   "The name of a dog",
+   "How to bake a cake",
+   "What time it is"
+  ],
+  "correct": "Which part is the wheel"
+ },
+ {
+  "id": "RI.2.8-Q1",
+  "standard": "RI.2.8",
+  "prompt": "The author says recess helps kids \"focus better in class.\" How does this reason help you understand why \"recess is important for kids\"?",
+  "choices": [
+   "It lets teachers have more time to plan lessons.",
+   "It tells us that kids will like school more if they can focus.",
+   "It shows that playing makes kids too tired to pay attention.",
+   "It means kids can do their schoolwork better when they return to class."
+  ],
+  "correct": "It means kids can do their schoolwork better when they return to class."
+ },
+ {
+  "id": "RI.2.8-Q2",
+  "standard": "RI.2.8",
+  "prompt": "Listen to the story: The author of the article wanted kids to drink more water every day. She explained that water helps your body in many important ways. Most of all, she said, drinking water helps your brain work better so you can think clearly and learn new things. Which of these is a reason the author gives for why you should drink more water?",
+  "choices": [
+   "Water helps you grow very tall.",
+   "Water helps plants grow big.",
+   "Water helps your brain work better.",
+   "Water makes you feel sleepy."
+  ],
+  "correct": "Water helps your brain work better."
+ },
+ {
+  "id": "RI.2.8-Q3",
+  "standard": "RI.2.8",
+  "prompt": "Helmets should be worn when riding a bike. They protect your head if you fall. Studies show helmets reduce head injuries by 85%.\n\nWhat supports the author's point that helmets are important?",
+  "choices": [
+   "They reduce head injuries by 85%",
+   "They come in many colors",
+   "Everyone has a bike",
+   "Helmets look cool"
+  ],
+  "correct": "They reduce head injuries by 85%"
+ },
+ {
+  "id": "RI.2.8-Q4",
+  "standard": "RI.2.8",
+  "prompt": "Read the short text. \"You should always wear a helmet when you ride your bike. Wearing a helmet is important because it keeps your head safe if you fall down. So, remember your helmet!\" Which statement best shares the author's main point and the reason that supports it?",
+  "choices": [
+   "The author's point is that bikes are fun, and the reason is they go fast.",
+   "The author's point is to wear a helmet, and the reason is it keeps your head safe if you fall.",
+   "The author's point is that helmets are colorful, and the reason is they are made of plastic.",
+   "The author's point is you might fall down, and the reason is you need to practice riding."
+  ],
+  "correct": "The author's point is to wear a helmet, and the reason is it keeps your head safe if you fall."
+ },
+ {
+  "id": "RI.2.8-Q5",
+  "standard": "RI.2.8",
+  "prompt": "Schools should have gardens. Gardens teach kids about science. They also help kids eat healthier because kids are more likely to eat vegetables they grew themselves.\n\nWhich reason explains HOW gardens help kids eat healthier?",
+  "choices": [
+   "Gardens are pretty",
+   "Schools have space for gardens",
+   "Kids eat vegetables they grew themselves",
+   "Gardens teach science"
+  ],
+  "correct": "Kids eat vegetables they grew themselves"
+ },
+ {
+  "id": "RI.2.8-H1",
+  "standard": "RI.2.8",
+  "prompt": "Read this: \"Bats are helpful animals. One bat can eat over a thousand bugs in one night, so farmers have fewer pests on their crops. Some people are scared of bats. But bats almost never bother people, and they would rather fly away than come close.\" The author wants you to believe that bats are HELPFUL. Which sentence gives a reason for THAT point?",
+  "choices": [
+   "One bat can eat over a thousand bugs in one night, so farmers have fewer pests.",
+   "Bats would rather fly away than come close.",
+   "Some people are scared of bats.",
+   "Bats almost never bother people."
+  ],
+  "correct": "One bat can eat over a thousand bugs in one night, so farmers have fewer pests."
+ },
+ {
+  "id": "RI.2.8-H2",
+  "standard": "RI.2.8",
+  "prompt": "An author writes: \"Kids should walk to school when they can. Walking gives your body exercise before the day even starts. It also means one less car on the road, so the air stays cleaner.\" Why does having one less car help keep the air cleaner?",
+  "choices": [
+   "Because kids like to walk with their friends.",
+   "Because cars put dirty smoke into the air, so fewer cars means less smoke.",
+   "Because cars are faster than walking.",
+   "Because walking gives your body exercise."
+  ],
+  "correct": "Because cars put dirty smoke into the air, so fewer cars means less smoke."
+ },
+ {
+  "id": "RI.2.8-H3",
+  "standard": "RI.2.8",
+  "prompt": "Read this: \"Libraries are great places for kids. At the library, you can borrow any book for free, so you can read as many stories as you want. Libraries are usually very quiet. Some libraries were built a long, long time ago.\" Which sentence best supports the point that libraries are GREAT for kids?",
+  "choices": [
+   "Some libraries were built a long, long time ago.",
+   "Libraries are great places for kids.",
+   "You can borrow any book for free, so you can read as many stories as you want.",
+   "Libraries are usually very quiet."
+  ],
+  "correct": "You can borrow any book for free, so you can read as many stories as you want."
+ },
+ {
+  "id": "RI.2.8-H4",
+  "standard": "RI.2.8",
+  "prompt": "Read this: \"Read the label before you buy a snack. The label tells you how much sugar is inside. It also shows if there is something that might make you sick, like peanuts.\" Why does the author mention that the label shows peanuts?",
+  "choices": [
+   "To tell you that all snacks are bad for you.",
+   "To show that peanuts taste good.",
+   "To show that labels are hard to read.",
+   "To give a reason that reading the label can keep you safe."
+  ],
+  "correct": "To give a reason that reading the label can keep you safe."
+ },
+ {
+  "id": "RI.2.8-H5",
+  "standard": "RI.2.8",
+  "prompt": "Read this: \"Dogs make good pets for families. A dog will play with children for hours. A dog can also learn to sit and stay when you teach it.\" The author wants to add ONE more reason that dogs make good pets. Which sentence should the author add?",
+  "choices": [
+   "A dog will keep your family company so no one feels lonely.",
+   "A dog will bark loudly all through the night.",
+   "Dogs need to visit the vet once every year.",
+   "Dogs come in many different sizes and colors."
+  ],
+  "correct": "A dog will keep your family company so no one feels lonely."
+ },
+ {
+  "id": "RI.2.9-Q1",
+  "standard": "RI.2.9",
+  "prompt": "Text A says dogs are great pets because they are loyal. Text B says dogs are great pets because they can be trained. What do BOTH texts agree on?",
+  "choices": [
+   "Dogs are better than cats",
+   "Dogs can be trained",
+   "Dogs are loyal",
+   "Dogs are great pets"
+  ],
+  "correct": "Dogs are great pets"
+ },
+ {
+  "id": "RI.2.9-Q2",
+  "standard": "RI.2.9",
+  "prompt": "Read Text A and Text B about the ocean.Text A: The ocean is a big home for many amazing animals! Whales are the biggest animals in the ocean. They swim and sing loud songs. Small, colorful fish dart through coral reefs. Crabs walk sideways on the sandy bottom. Jellyfish float and glow. All these animals need a clean ocean to live and play.Text B: Our ocean needs help to stay clean! Sometimes, trash like plastic bottles and bags floats into the ocean. This trash can hurt ocean animals. Fish might try to eat plastic, or turtles can get tangled. We can help by putting our trash in a bin and recycling. Keeping the ocean clean helps all the animals stay safe and healthy.After reading both texts, what is the biggest difference between what Text A and Text B teach us?",
+  "choices": [
+   "Both texts teach us about how big the ocean is.",
+   "Text A is about animals that live on land, and Text B is about ocean animals.",
+   "Text A describes different kinds of ocean animals, and Text B explains how to protect the ocean from trash.",
+   "Both texts tell us how to swim with whales."
+  ],
+  "correct": "Text A describes different kinds of ocean animals, and Text B explains how to protect the ocean from trash."
+ },
+ {
+  "id": "RI.2.9-Q3",
+  "standard": "RI.2.9",
+  "prompt": "Text A: \"Bats use sound to find food in the dark.\" Text B: \"Bats eat insects and help farmers by keeping pests away.\"\n\nWhat does Text B tell you that Text A does not?",
+  "choices": [
+   "Bats are mammals",
+   "Bats help farmers",
+   "Bats use sound",
+   "Bats fly at night"
+  ],
+  "correct": "Bats help farmers"
+ },
+ {
+  "id": "RI.2.9-Q4",
+  "standard": "RI.2.9",
+  "prompt": "Read these two texts. Text 1: 'Dogs are playful pets. They have soft fur. Dogs love to run and fetch balls. They often make a barking sound. Dogs need to go outside for walks.' Text 2: 'Cats are quiet pets. They also have soft fur. Cats like to nap and play with string. They often make a meowing sound. Cats like to stay indoors.' Which statement is true about BOTH texts?",
+  "choices": [
+   "Both pets need to go outside for walks.",
+   "Both pets have soft fur.",
+   "Both pets make a barking sound.",
+   "Both pets like to play with string."
+  ],
+  "correct": "Both pets have soft fur."
+ },
+ {
+  "id": "RI.2.9-Q5",
+  "standard": "RI.2.9",
+  "prompt": "Text A says: \"Exercise keeps your heart healthy.\" Text B says: \"Exercise helps you sleep better and makes your bones strong.\"\n\nWhich benefit is mentioned in Text A but NOT Text B?",
+  "choices": [
+   "Stronger bones",
+   "More energy",
+   "Better sleep",
+   "A healthy heart"
+  ],
+  "correct": "A healthy heart"
+ },
+ {
+  "id": "RI.2.9-H1",
+  "standard": "RI.2.9",
+  "prompt": "Two short texts about bees.\n\nText A: Bees help flowers grow. When a bee lands on a flower to drink, yellow dust sticks to its legs. The bee carries that dust to the next flower. This helps the flower make seeds.\n\nText B: Bees are busy workers. A bee flies from flower to flower all day. It carries sweet food back to its hive to feed the baby bees.\n\nBoth texts tell you that a bee ____.",
+  "choices": [
+   "moves from one flower to another",
+   "carries yellow dust on its legs",
+   "makes seeds for the flower",
+   "feeds the baby bees in the hive"
+  ],
+  "correct": "moves from one flower to another"
+ },
+ {
+  "id": "RI.2.9-H2",
+  "standard": "RI.2.9",
+  "prompt": "Two texts about rain.\n\nText A: Rain is good for us. It fills the rivers we drink from and helps the crops on farms grow tall.\n\nText B: Too much rain can be a problem. When rain falls hard for many days, rivers can flood and cover the roads.\n\nHow are the two texts DIFFERENT?",
+  "choices": [
+   "Text A says rain floods roads, but Text B says rain fills rivers",
+   "Text A says rain helps, but Text B says rain can cause trouble",
+   "Both texts say rain is dangerous",
+   "Text A is about rivers, and Text B is about the sun"
+  ],
+  "correct": "Text A says rain helps, but Text B says rain can cause trouble"
+ },
+ {
+  "id": "RI.2.9-H3",
+  "standard": "RI.2.9",
+  "prompt": "Two texts about penguins.\n\nText A: Penguins have wings, but they cannot fly. They use their wings like paddles to swim fast and catch fish in the cold water.\n\nText B: Penguins stay warm in the freezing cold. Their thick feathers and a layer of fat keep the icy water away from their skin.\n\nBoth texts help you understand that penguins ____.",
+  "choices": [
+   "have thick feathers to stay warm",
+   "paddle with their wings to swim",
+   "live where it is cold and near water",
+   "cannot use their wings to fly"
+  ],
+  "correct": "live where it is cold and near water"
+ },
+ {
+  "id": "RI.2.9-H4",
+  "standard": "RI.2.9",
+  "prompt": "Two texts about a class garden.\n\nText A: Our class grew tomatoes. We watered the plants every morning, and after many weeks the red tomatoes were ready to pick.\n\nText B: Our class grew sunflowers. We gave them water each day, and the tall yellow flowers took the whole spring to bloom.\n\nWhat is ONE way both classes' plants were the same?",
+  "choices": [
+   "Both plants were bright yellow",
+   "Both classes grew red tomatoes",
+   "Both plants grew tall in one week",
+   "Both plants needed water often to grow"
+  ],
+  "correct": "Both plants needed water often to grow"
+ }
+]

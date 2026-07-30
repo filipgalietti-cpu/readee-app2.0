@@ -1,0 +1,1176 @@
+[
+  {
+    "std": "L.1.2",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try!",
+          "ttsScript": "Let's try one together! Here's a sentence."
+        },
+        {
+          "sub": "The sentence",
+          "displayText": "Sam runs fast.",
+          "highlightWord": "Sam",
+          "ttsScript": "Here is the sentence: Sam runs fast."
+        },
+        {
+          "sub": "How it starts",
+          "displayParts": [
+            {
+              "text": "How does it start?"
+            },
+            {
+              "text": "A capital S!"
+            }
+          ],
+          "highlightWord": "S",
+          "ttsScript": "How does it start? A capital S!"
+        },
+        {
+          "sub": "How it ends",
+          "displayParts": [
+            {
+              "text": "How does it end?"
+            },
+            {
+              "text": "A period!"
+            }
+          ],
+          "highlightWord": "period",
+          "ttsScript": "How does it end? A period!"
+        },
+        {
+          "sub": "You did it!",
+          "ttsScript": "So Sam runs fast follows both rules. You did it!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "L.1.5d",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Let's try one together! Here are two words."
+        },
+        {
+          "sub": "Two words",
+          "ttsScript": "Here they are: cold and freezing.",
+          "displayText": "cold ... freezing",
+          "displayParts": [
+            {
+              "text": "cold"
+            },
+            {
+              "text": "freezing"
+            }
+          ]
+        },
+        {
+          "sub": "Which is mild?",
+          "ttsScript": "Which one is a little cold? Cold!",
+          "displayParts": [
+            {
+              "text": "Which is mild?"
+            },
+            {
+              "text": "Cold!"
+            }
+          ],
+          "highlightWord": "Cold"
+        },
+        {
+          "sub": "Which is stronger?",
+          "ttsScript": "And which one is stronger? Freezing!",
+          "displayParts": [
+            {
+              "text": "Which is stronger?"
+            },
+            {
+              "text": "Freezing!"
+            }
+          ],
+          "highlightWord": "Freezing"
+        },
+        {
+          "sub": "You did it!",
+          "ttsScript": "Freezing paints a stronger picture. You picked the right shade!",
+          "displayParts": [
+            {
+              "text": "Strong shade:"
+            },
+            {
+              "text": "Freezing!"
+            }
+          ],
+          "highlightWord": "Freezing"
+        }
+      ]
+    }
+  },
+  {
+    "std": "L.2.4d",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Let's try one together. Here's a compound word."
+        },
+        {
+          "sub": "The word",
+          "displayText": "starfish",
+          "highlightWord": "starfish",
+          "ttsScript": "Here is the word: starfish."
+        },
+        {
+          "sub": "Two words",
+          "displayParts": [
+            {
+              "text": "What two words?"
+            },
+            {
+              "text": "Star and fish!"
+            }
+          ],
+          "highlightWord": "fish",
+          "displayText": "What two words? Star and fish!",
+          "ttsScript": "What two words make it up? Star and fish!"
+        },
+        {
+          "sub": "Meaning",
+          "displayParts": [
+            {
+              "text": "What does it mean?"
+            },
+            {
+              "text": "A fish like a star!"
+            }
+          ],
+          "highlightWord": "star",
+          "displayText": "What does it mean? A fish like a star!",
+          "ttsScript": "What does it mean? A fish shaped like a star!"
+        },
+        {
+          "sub": "You did it",
+          "ttsScript": "So starfish means a fish shaped like a star. You split it apart!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "L.2.5b",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Let's try one together. Here are three words."
+        },
+        {
+          "sub": "The words",
+          "displayText": "damp, wet, soaked",
+          "highlightWord": "damp",
+          "displayParts": [
+            {
+              "text": "damp, wet, soaked"
+            }
+          ],
+          "ttsScript": "Damp, wet, and soaked. They all mean wet, but each one is stronger!"
+        },
+        {
+          "sub": "Weakest?",
+          "displayText": "Damp!",
+          "highlightWord": "Damp",
+          "displayParts": [
+            {
+              "text": "Which is weakest?"
+            },
+            {
+              "text": "Damp!"
+            }
+          ],
+          "ttsScript": "Which is weakest? Damp! Just a little bit wet."
+        },
+        {
+          "sub": "Medium?",
+          "displayText": "Wet!",
+          "highlightWord": "Wet",
+          "displayParts": [
+            {
+              "text": "Which is medium?"
+            },
+            {
+              "text": "Wet!"
+            }
+          ],
+          "ttsScript": "Which is medium? Wet! More than damp."
+        },
+        {
+          "sub": "Strongest?",
+          "displayText": "Soaked!",
+          "highlightWord": "Soaked",
+          "displayParts": [
+            {
+              "text": "Which is strongest?"
+            },
+            {
+              "text": "Soaked!"
+            }
+          ],
+          "ttsScript": "Which is strongest? Soaked! Dripping wet. You found all three shades!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "L.3.5c",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Let's try one together. Here are three words."
+        },
+        {
+          "sub": "The words",
+          "displayText": "Chilly. Cold. Freezing.",
+          "ttsScript": "Chilly. Cold. Freezing."
+        },
+        {
+          "sub": "What do they mean?",
+          "displayText": "What do they mean? Cold!",
+          "displayParts": [
+            {
+              "text": "What do they mean?"
+            },
+            {
+              "text": "Cold!"
+            }
+          ],
+          "highlightWord": "Cold",
+          "ttsScript": "What do they all mean? Cold!"
+        },
+        {
+          "sub": "Which is strongest?",
+          "displayText": "Which is strongest? Freezing!",
+          "displayParts": [
+            {
+              "text": "Which is strongest?"
+            },
+            {
+              "text": "Freezing!"
+            }
+          ],
+          "highlightWord": "Freezing",
+          "ttsScript": "Which one is the strongest? Freezing!"
+        },
+        {
+          "sub": "You did it",
+          "ttsScript": "So freezing means extremely cold. You matched the strength!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "L.4.3",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Ready?",
+          "ttsScript": "Let's try one together. Here's a sentence."
+        },
+        {
+          "sub": "The sentence",
+          "displayText": "The big dog ate fast.",
+          "ttsScript": "Here is our sentence: The big dog ate fast.",
+          "highlightWord": "big"
+        },
+        {
+          "sub": "Vague word?",
+          "displayText": "Which word is vague? Big!",
+          "displayParts": [
+            {
+              "text": "Which word is vague?"
+            },
+            {
+              "text": "Big!"
+            }
+          ],
+          "highlightWord": "Big",
+          "ttsScript": "Which word here is vague? Big!"
+        },
+        {
+          "sub": "Make it precise",
+          "displayText": "A precise word? Enormous!",
+          "displayParts": [
+            {
+              "text": "A precise word?"
+            },
+            {
+              "text": "Enormous!"
+            }
+          ],
+          "highlightWord": "Enormous",
+          "ttsScript": "A precise word for big? Enormous!"
+        },
+        {
+          "sub": "One more",
+          "displayText": "Ate, or gobbled? Gobbled!",
+          "displayParts": [
+            {
+              "text": "Ate, or gobbled?"
+            },
+            {
+              "text": "Gobbled!"
+            }
+          ],
+          "highlightWord": "Gobbled",
+          "ttsScript": "And instead of ate, we could say gobbled! Now your sentence paints a clearer picture. Great job!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "L.4.5a",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try",
+          "ttsScript": "Let's try one together. Here's a sentence."
+        },
+        {
+          "sub": "The sentence",
+          "ttsScript": "Here is the sentence: The runner was as quick as lightning.",
+          "displayText": "The runner was as quick as lightning."
+        },
+        {
+          "sub": "Bridge word",
+          "ttsScript": "What is the bridge word? As!",
+          "highlightWord": "As",
+          "displayParts": [
+            {
+              "text": "Bridge word?"
+            },
+            {
+              "text": "As!"
+            }
+          ]
+        },
+        {
+          "sub": "Compares",
+          "ttsScript": "What two things does it compare? The runner and lightning!",
+          "highlightWord": "lightning",
+          "displayParts": [
+            {
+              "text": "What two things?"
+            },
+            {
+              "text": "Runner and lightning!"
+            }
+          ]
+        },
+        {
+          "sub": "Which one?",
+          "ttsScript": "So is it a simile or a metaphor? A simile! You nailed it!",
+          "highlightWord": "simile",
+          "displayParts": [
+            {
+              "text": "Simile or metaphor?"
+            },
+            {
+              "text": "A simile!"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "std": "L.4.5c",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Let's try one together. Here are three words that all mean cold."
+        },
+        {
+          "sub": "The words",
+          "displayText": "cool, cold, freezing",
+          "ttsScript": "Here are the words: cool, cold, and freezing.",
+          "highlightWord": "freezing"
+        },
+        {
+          "sub": "Weakest?",
+          "displayParts": [
+            {
+              "text": "Which is weakest?"
+            },
+            {
+              "text": "Cool!"
+            }
+          ],
+          "ttsScript": "Which one is weakest? Cool!",
+          "highlightWord": "Cool"
+        },
+        {
+          "sub": "Strongest?",
+          "displayParts": [
+            {
+              "text": "Which is strongest?"
+            },
+            {
+              "text": "Freezing!"
+            }
+          ],
+          "ttsScript": "Which one is strongest? Freezing!",
+          "highlightWord": "Freezing"
+        },
+        {
+          "sub": "You did it",
+          "ttsScript": "So freezing is the most intense. You ranked the word strength!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RI.1.10",
+    "example": {
+      "heading": "Let's Try One!",
+      "steps": [
+        {
+          "sub": "Here's a page",
+          "ttsScript": "Okay, let's try one together! Here's a page from a fact book about bats."
+        },
+        {
+          "sub": "Read the facts",
+          "displayText": "Bats sleep all day. They fly at night to catch moths.",
+          "ttsScript": "Bats sleep all day. They fly at night to catch moths."
+        },
+        {
+          "sub": "When sleep?",
+          "displayText": "When do bats sleep? All day!",
+          "displayParts": [
+            {
+              "text": "When do bats sleep?"
+            },
+            {
+              "text": "All day!"
+            }
+          ],
+          "highlightWord": "day",
+          "ttsScript": "When do bats sleep? All day!"
+        },
+        {
+          "sub": "When fly?",
+          "displayText": "When do they fly? At night!",
+          "displayParts": [
+            {
+              "text": "When do they fly?"
+            },
+            {
+              "text": "At night!"
+            }
+          ],
+          "highlightWord": "night",
+          "ttsScript": "When do they fly? At night!"
+        },
+        {
+          "sub": "You did it!",
+          "displayText": "You found real facts!",
+          "displayParts": [
+            {
+              "text": "You found real facts!"
+            }
+          ],
+          "highlightWord": "facts",
+          "ttsScript": "You found real facts about bats! That's how we read a fact book. Great reading!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RI.1.6",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Let's try one together! Here is a page from a fact book about frogs."
+        },
+        {
+          "sub": "The page",
+          "displayText": "A frog can jump far.",
+          "highlightWord": "far",
+          "ttsScript": "The words say a frog can jump far. And the picture shows its green skin.",
+          "displayParts": [
+            {
+              "text": "A frog can jump far."
+            }
+          ]
+        },
+        {
+          "sub": "Question 1",
+          "displayText": "The words!",
+          "highlightWord": "words",
+          "ttsScript": "What tells us the fact? The words!",
+          "displayParts": [
+            {
+              "text": "What tells the fact?"
+            },
+            {
+              "text": "The words!"
+            }
+          ]
+        },
+        {
+          "sub": "Question 2",
+          "displayText": "The picture!",
+          "highlightWord": "picture",
+          "ttsScript": "What shows the green color? The picture!",
+          "displayParts": [
+            {
+              "text": "What shows the color?"
+            },
+            {
+              "text": "The picture!"
+            }
+          ]
+        },
+        {
+          "sub": "You did it!",
+          "ttsScript": "So words tell facts, and pictures show how things look. You did it!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RI.2.5",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Here's a page",
+          "ttsScript": "Let's try one together! Here's a page from a bug book."
+        },
+        {
+          "sub": "The picture",
+          "displayText": "This ant carries food.",
+          "ttsScript": "Under a picture, it says: This ant carries food.",
+          "displayParts": [
+            {
+              "text": "This ant carries food."
+            }
+          ]
+        },
+        {
+          "sub": "What part?",
+          "displayText": "A caption!",
+          "displayParts": [
+            {
+              "text": "What is this part?"
+            },
+            {
+              "text": "A caption!"
+            }
+          ],
+          "highlightWord": "caption",
+          "ttsScript": "What is this part called? A caption!"
+        },
+        {
+          "sub": "What's its job?",
+          "displayText": "The picture!",
+          "displayParts": [
+            {
+              "text": "What does it tell?"
+            },
+            {
+              "text": "The picture!"
+            }
+          ],
+          "highlightWord": "picture",
+          "ttsScript": "What does the caption tell about? The picture!"
+        },
+        {
+          "sub": "You did it!",
+          "displayText": "Found it fast!",
+          "displayParts": [
+            {
+              "text": "Found it fast!"
+            }
+          ],
+          "highlightWord": "fast",
+          "ttsScript": "So a caption explains a picture. You found it fast!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RI.2.6",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try",
+          "ttsScript": "Okay, let's try one together! Here's a short text."
+        },
+        {
+          "sub": "The text",
+          "displayText": "First dig a hole. Add a seed. Give it water.",
+          "ttsScript": "First dig a hole. Add a seed. Give it water."
+        },
+        {
+          "sub": "What?",
+          "displayParts": [
+            {
+              "text": "What does it give?"
+            },
+            {
+              "text": "Steps to plant!"
+            }
+          ],
+          "highlightWord": "Steps",
+          "ttsScript": "What does this text give us? Steps to plant!"
+        },
+        {
+          "sub": "Why?",
+          "displayParts": [
+            {
+              "text": "Why write this?"
+            },
+            {
+              "text": "To teach us!"
+            }
+          ],
+          "highlightWord": "teach",
+          "ttsScript": "So why did the author write it? To teach us!"
+        },
+        {
+          "sub": "You found it",
+          "ttsScript": "The author's purpose is to teach. You found it!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RI.2.7",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try",
+          "ttsScript": "Okay, let's try one together! Here's a page from a fact book about bees."
+        },
+        {
+          "sub": "The page",
+          "displayText": "A book about bees. The picture shows a bee's wings.",
+          "displayParts": [
+            {
+              "text": "A book about bees. The picture shows a bee's wings."
+            }
+          ],
+          "displayText_note": "",
+          "highlightWord": "picture",
+          "ttsScript": "This book is all about bees. Look, the picture shows a bee's wings up close."
+        },
+        {
+          "sub": "What?",
+          "displayText": "What does picture show?",
+          "displayParts": [
+            {
+              "text": "What does picture show?"
+            },
+            {
+              "text": "A bee's wings!"
+            }
+          ],
+          "highlightWord": "wings",
+          "ttsScript": "What does the picture show us? A bee's wings!"
+        },
+        {
+          "sub": "How?",
+          "displayText": "How does it help?",
+          "displayParts": [
+            {
+              "text": "How does it help?"
+            },
+            {
+              "text": "See how bees fly!"
+            }
+          ],
+          "highlightWord": "fly",
+          "ttsScript": "How does that picture help? Now we can see how bees fly!"
+        },
+        {
+          "sub": "So?",
+          "displayText": "So pictures help us?",
+          "displayParts": [
+            {
+              "text": "So pictures help us?"
+            },
+            {
+              "text": "Understand the facts!"
+            }
+          ],
+          "highlightWord": "Understand",
+          "ttsScript": "So pictures help us do what? Understand the facts!"
+        },
+        {
+          "sub": "You did it!",
+          "ttsScript": "Yes! The picture showed what the words could not. You used the picture to understand the facts!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RI.3.9",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's compare",
+          "ttsScript": "Let's try one together. Here are two short texts about bees."
+        },
+        {
+          "sub": "Two texts",
+          "displayText": "Text 1: Bees make honey. Text 2: Bees carry pollen.",
+          "highlightWord": "Bees",
+          "ttsScript": "Text one: Bees make honey. Text two: Bees carry pollen.",
+          "displayParts": [
+            {
+              "text": "Text 1: Bees make honey."
+            },
+            {
+              "text": "Text 2: Bees carry pollen."
+            }
+          ]
+        },
+        {
+          "sub": "Same?",
+          "highlightWord": "bees",
+          "ttsScript": "What is the same? Both texts are about bees!",
+          "displayParts": [
+            {
+              "text": "What is the same?"
+            },
+            {
+              "text": "Both about bees!"
+            }
+          ]
+        },
+        {
+          "sub": "Different?",
+          "highlightWord": "honey",
+          "ttsScript": "What is different? Only text one talks about honey!",
+          "displayParts": [
+            {
+              "text": "What is different?"
+            },
+            {
+              "text": "One adds honey!"
+            }
+          ]
+        },
+        {
+          "sub": "You did it!",
+          "ttsScript": "So both share bees, but each text adds its own fact. You compared two texts!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RI.K.10",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Okay, let's try one together! Here is a page from a fact book."
+        },
+        {
+          "sub": "Fact book",
+          "ttsScript": "It says: Frogs are green. They hop very high. Frogs like the water.",
+          "displayText": "Frogs are green. They hop very high. Frogs like the water.",
+          "highlightWord": "Frogs"
+        },
+        {
+          "sub": "What about?",
+          "ttsScript": "What is this fact book about? Frogs!",
+          "displayParts": [
+            {
+              "text": "What is it about?"
+            },
+            {
+              "text": "Frogs!"
+            }
+          ],
+          "highlightWord": "Frogs"
+        },
+        {
+          "sub": "What color?",
+          "ttsScript": "What color are frogs? Green!",
+          "displayParts": [
+            {
+              "text": "What color?"
+            },
+            {
+              "text": "Green!"
+            }
+          ],
+          "highlightWord": "Green"
+        },
+        {
+          "sub": "What do they like?",
+          "ttsScript": "What do frogs like? The water! Those are all real facts. You read a fact book!",
+          "displayParts": [
+            {
+              "text": "What do they like?"
+            },
+            {
+              "text": "The water!"
+            }
+          ],
+          "highlightWord": "water"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RL.1.10",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Let's try one together! Here is a little piece to read."
+        },
+        {
+          "sub": "Read it",
+          "displayText": "The moon is bright. It says goodnight to me each night.",
+          "ttsScript": "Here it is. The moon is bright. It says goodnight to me each night."
+        },
+        {
+          "sub": "What kind?",
+          "displayParts": [
+            {
+              "text": "What kind is this?"
+            },
+            {
+              "text": "A poem!"
+            }
+          ],
+          "highlightWord": "poem",
+          "ttsScript": "What kind is this? A poem!"
+        },
+        {
+          "sub": "How do you know?",
+          "displayParts": [
+            {
+              "text": "How do you know?"
+            },
+            {
+              "text": "It rhymes!"
+            }
+          ],
+          "highlightWord": "rhymes",
+          "ttsScript": "How do you know? It rhymes! Bright and night sound the same."
+        },
+        {
+          "sub": "You did it!",
+          "ttsScript": "So a poem can rhyme. You read a poem all by yourself!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RL.1.5",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try",
+          "ttsScript": "Let's try one together! Here is a book."
+        },
+        {
+          "sub": "The book",
+          "displayText": "A pig flew a jet plane.",
+          "ttsScript": "This book says: a pig flew a jet plane.",
+          "highlightWord": "pig"
+        },
+        {
+          "sub": "Could it happen?",
+          "displayParts": [
+            {
+              "text": "Could this happen?"
+            },
+            {
+              "text": "No way!"
+            }
+          ],
+          "displayText": "No way!",
+          "ttsScript": "Could this really happen? No way!",
+          "highlightWord": "No"
+        },
+        {
+          "sub": "Real or made-up?",
+          "displayParts": [
+            {
+              "text": "Real or made-up?"
+            },
+            {
+              "text": "Made up!"
+            }
+          ],
+          "displayText": "Made up!",
+          "ttsScript": "Is it real or made up? Made up!",
+          "highlightWord": "Made"
+        },
+        {
+          "sub": "Which book?",
+          "displayParts": [
+            {
+              "text": "Which kind of book?"
+            },
+            {
+              "text": "A story book!"
+            }
+          ],
+          "displayText": "A story book!",
+          "ttsScript": "So which kind of book is it? A story book! You told them apart!",
+          "highlightWord": "story"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RL.1.6",
+    "example": {
+      "heading": "Let's Try One!",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Okay, let's try one together! Here's a little story."
+        },
+        {
+          "sub": "A story",
+          "displayText": "Mia liked to draw. She made a big yellow sun.",
+          "ttsScript": "Here is the story. Mia liked to draw. She made a big yellow sun."
+        },
+        {
+          "sub": "Clue word",
+          "displayText": "What's the clue word? She!",
+          "displayParts": [
+            {
+              "text": "What's the clue word?"
+            },
+            {
+              "text": "She!"
+            }
+          ],
+          "highlightWord": "She",
+          "ttsScript": "What word gives us the clue? She!"
+        },
+        {
+          "sub": "Who tells it",
+          "displayText": "Who tells it? A narrator!",
+          "displayParts": [
+            {
+              "text": "Who tells it?"
+            },
+            {
+              "text": "A narrator!"
+            }
+          ],
+          "highlightWord": "narrator",
+          "ttsScript": "So who tells this story? A narrator does!"
+        },
+        {
+          "sub": "You did it",
+          "ttsScript": "A voice outside the story tells us about Mia. You did it!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RL.1.7",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try",
+          "ttsScript": "Let's try one together! Here is a picture to read.",
+          "highlightWord": "picture"
+        },
+        {
+          "sub": "The picture",
+          "displayText": "A boy stands in the rain, holding an umbrella.",
+          "ttsScript": "A boy stands in the rain, holding an umbrella. His head hangs down.",
+          "highlightWord": "rain",
+          "displayParts": [
+            {
+              "text": "A boy stands in the rain, holding an umbrella."
+            }
+          ]
+        },
+        {
+          "sub": "Where?",
+          "displayText": "In the rain!",
+          "ttsScript": "Where is the boy? In the rain!",
+          "highlightWord": "rain",
+          "displayParts": [
+            {
+              "text": "Where is he?"
+            },
+            {
+              "text": "In the rain!"
+            }
+          ]
+        },
+        {
+          "sub": "Feeling",
+          "displayText": "Sad!",
+          "ttsScript": "How does he feel? Sad!",
+          "highlightWord": "Sad",
+          "displayParts": [
+            {
+              "text": "How does he feel?"
+            },
+            {
+              "text": "Sad!"
+            }
+          ]
+        },
+        {
+          "sub": "The clue",
+          "displayText": "His droopy head!",
+          "ttsScript": "What told us? His droopy head!",
+          "highlightWord": "head",
+          "displayParts": [
+            {
+              "text": "What told us?"
+            },
+            {
+              "text": "His droopy head!"
+            }
+          ]
+        },
+        {
+          "sub": "You did it",
+          "ttsScript": "The picture showed us his feeling. You used the clues!",
+          "highlightWord": "clues"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RL.1.9",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Let's try one",
+          "ttsScript": "Let's try one together! Here are two little stories."
+        },
+        {
+          "sub": "Two stories",
+          "displayText": "A duck plays in the rain. A frog hides from the rain.",
+          "ttsScript": "A duck plays in the rain. A frog hides from the rain."
+        },
+        {
+          "sub": "Same?",
+          "displayText": "Both about rain!",
+          "displayParts": [
+            {
+              "text": "What is the same?"
+            },
+            {
+              "text": "Both about rain!"
+            }
+          ],
+          "highlightWord": "rain",
+          "ttsScript": "What is the same? Both are about the rain!"
+        },
+        {
+          "sub": "Different?",
+          "displayText": "One plays, one hides!",
+          "displayParts": [
+            {
+              "text": "What is different?"
+            },
+            {
+              "text": "One plays, one hides!"
+            }
+          ],
+          "highlightWord": "plays",
+          "ttsScript": "What is different? One plays, and one hides!"
+        },
+        {
+          "sub": "You did it!",
+          "ttsScript": "So both stories share the rain, but the animals act in different ways. You did it!"
+        }
+      ]
+    }
+  },
+  {
+    "std": "RL.2.7",
+    "example": {
+      "heading": "Let's Try One",
+      "steps": [
+        {
+          "sub": "Ready?",
+          "ttsScript": "Let's try one together! Here's a picture."
+        },
+        {
+          "sub": "The words",
+          "displayText": "Sam went out to play.",
+          "ttsScript": "The words say: Sam went out to play."
+        },
+        {
+          "sub": "Look!",
+          "displayParts": [
+            {
+              "text": "What's in the picture?"
+            },
+            {
+              "text": "Sun and sand!"
+            }
+          ],
+          "highlightWord": "sand",
+          "ttsScript": "What's in the picture? Sun and sand!"
+        },
+        {
+          "sub": "Where?",
+          "displayParts": [
+            {
+              "text": "Where is Sam?"
+            },
+            {
+              "text": "The beach!"
+            }
+          ],
+          "highlightWord": "beach",
+          "ttsScript": "So where is Sam? The beach!"
+        },
+        {
+          "sub": "Feel?",
+          "displayParts": [
+            {
+              "text": "How does Sam feel?"
+            },
+            {
+              "text": "Happy!"
+            }
+          ],
+          "highlightWord": "Happy",
+          "ttsScript": "And how does Sam feel? Happy! You used the picture to learn more!"
+        }
+      ]
+    }
+  }
+]

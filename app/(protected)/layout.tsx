@@ -1,7 +1,6 @@
 import TosGate from "@/app/_components/TosGate";
 import StopAudioOnNav from "@/app/_components/StopAudioOnNav";
 import SidebarShell from "@/app/_components/SidebarShell";
-import FeedbackButton from "@/app/_components/FeedbackButton";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
@@ -39,7 +38,6 @@ export default async function ProtectedLayout({
     <TosGate>
       <StopAudioOnNav />
       <SidebarShell initialOpen={initialSidebarOpen}>{children}</SidebarShell>
-      <FeedbackButton />
     </TosGate>
   );
 }

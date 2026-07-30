@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RI.3.9-Q5",
+  "standard": "RI.3.9",
+  "prompt": "Listen to the story: Text A argues that children spend far too much time in front of screens, and it says that screen time should be limited so kids stay healthy and active. Text B agrees that screens can be overused, but it also points out that educational apps and learning shows can teach children useful new skills, so it says that educational screen time can actually be helpful. Both texts talk about screens, but they reach their points in different ways. Which statement best compares the main points of Text A and Text B?",
+  "choices": [
+   "Both texts agree that children should not use screens at all.",
+   "Text A and Text B both suggest that more screen time is better for learning.",
+   "Text A says screen time should be limited, but Text B says educational screen time can be helpful.",
+   "Text A focuses on playtime, while Text B focuses on outdoor activities."
+  ],
+  "correct": "Text A says screen time should be limited, but Text B says educational screen time can be helpful."
+ },
+ {
+  "id": "RI.3.9-H1",
+  "standard": "RI.3.9",
+  "prompt": "Text A: \"Honeybees are helpful. When they land on a flower to drink its sweet nectar, yellow dust called pollen sticks to their fuzzy legs. They carry it to the next flower, and that helps new plants grow.\"\n\nText B: \"Some farmers say honeybees do not mean to help. Bees only visit flowers to feed themselves. But while they eat, pollen rubs off onto other flowers by accident, so the crops grow better whether the bees mean to help or not.\"\n\nBoth texts agree that bees move pollen between flowers. What do they DISAGREE about?",
+  "choices": [
+   "Whether the bees move pollen on purpose or by accident",
+   "Whether bees drink nectar from flowers",
+   "Whether bees actually touch pollen at all",
+   "Whether pollen helps new plants grow"
+  ],
+  "correct": "Whether the bees move pollen on purpose or by accident"
+ },
+ {
+  "id": "RI.3.9-H2",
+  "standard": "RI.3.9",
+  "prompt": "Text A: \"The Sahara Desert is one of the hottest places on Earth. In the daytime the sand can get hot enough to burn your feet.\"\n\nText B: \"People think deserts are always warm, but that is not true. A desert is any place that gets almost no rain. At night the Sahara can get cold enough to freeze water.\"\n\nHow would the AUTHOR of Text B most likely respond to Text A?",
+  "choices": [
+   "\"I agree, deserts are always warm places.\"",
+   "\"That is true in the daytime, but the Sahara is not hot all the time.\"",
+   "\"You are wrong, the Sahara is never hot.\"",
+   "\"Deserts are hot because they get almost no rain.\""
+  ],
+  "correct": "\"That is true in the daytime, but the Sahara is not hot all the time.\""
+ },
+ {
+  "id": "RI.3.9-H3",
+  "standard": "RI.3.9",
+  "prompt": "Text A: \"Dogs were the first animals people tamed. Long ago, wild dogs came near camps to eat scraps. Over time, the friendliest ones stayed close to people.\"\n\nText B: \"Cats mostly tamed themselves. When people first stored grain, mice came to eat it, and wild cats came to hunt the mice. People let the cats stay because they kept the mice away.\"\n\nBased on BOTH texts, what is one thing that was the same about how dogs and cats first came to live with people?",
+  "choices": [
+   "Both animals came to hunt mice that ate people's grain",
+   "Both animals were tamed because they were the friendliest ones",
+   "Both animals first came close because there was food near people",
+   "Both animals were caught by people and kept in cages"
+  ],
+  "correct": "Both animals first came close because there was food near people"
+ },
+ {
+  "id": "RI.3.9-H4",
+  "standard": "RI.3.9",
+  "prompt": "Text A: \"Volcanoes can be scary, but they also help. When a volcano erupts, ash spreads over the land. After the ash breaks down, it makes the soil rich, so plants grow well near old volcanoes.\"\n\nText B: \"A volcano's eruption can be very dangerous. Hot ash and rock shoot into the air, and thick ash can bury nearby farms and towns.\"\n\nBoth texts mention volcanic ash. Why do the two authors describe the SAME ash so differently?",
+  "choices": [
+   "Only Text B is really talking about volcanoes",
+   "Text A is about a different kind of ash than Text B",
+   "Text A thinks volcanoes are safe and Text B thinks they are made up",
+   "Text A is describing what ash does long after, while Text B describes what it does right away"
+  ],
+  "correct": "Text A is describing what ash does long after, while Text B describes what it does right away"
+ },
+ {
+  "id": "RI.3.9-H5",
+  "standard": "RI.3.9",
+  "prompt": "Text A: \"Recess is good for kids. Running and playing gives their bodies exercise, which keeps them strong and healthy.\"\n\nText B: \"Recess helps kids in school. After a break to play outside, kids can pay attention better and learn more when they go back to class.\"\n\nA teacher wants to argue that recess should NOT be cut to make more class time. Which text gives her the BEST reason, and why?",
+  "choices": [
+   "Text B, because it shows recess actually helps kids do better at learning",
+   "Text A, because it proves kids cannot learn without exercise",
+   "Text A, because being strong and healthy is more important than school",
+   "Text B, because it says kids do not need class time at all"
+  ],
+  "correct": "Text B, because it shows recess actually helps kids do better at learning"
+ },
+ {
+  "id": "RI.3.10-Q1",
+  "standard": "RI.3.10",
+  "prompt": "According to the passage, what role do coral polyps play in the Great Barrier Reef being the largest living structure on Earth?",
+  "choices": [
+   "They protect the fish living in the reef.",
+   "They are the tiny organisms that create the reef's structure.",
+   "They make the reef visible from far away.",
+   "They help the reef stretch over 1,400 miles by moving."
+  ],
+  "correct": "They are the tiny organisms that create the reef's structure."
+ },
+ {
+  "id": "RI.3.10-Q2",
+  "standard": "RI.3.10",
+  "prompt": "Unlike most spiders, tarantulas don't spin webs to catch prey. Instead, they hunt by ambushing insects and small animals. Despite their scary appearance, most tarantulas are harmless to humans.\n\nWhat is surprising about tarantulas based on this text?",
+  "choices": [
+   "They are harmless despite looking scary",
+   "They spin webs",
+   "They are very small",
+   "They only eat plants"
+  ],
+  "correct": "They are harmless despite looking scary"
+ },
+ {
+  "id": "RI.3.10-Q4",
+  "standard": "RI.3.10",
+  "prompt": "Monarch butterflies migrate up to 3,000 miles from Canada to Mexico each fall. No single butterfly makes the entire round trip \u2014 it takes multiple generations. The butterflies that fly south in fall are the great-great-grandchildren of the ones that flew north in spring.\n\nWhy is the monarch migration remarkable?",
+  "choices": [
+   "They fly very slowly",
+   "They only travel short distances",
+   "Multiple generations complete what no single butterfly could",
+   "They migrate in summer"
+  ],
+  "correct": "Multiple generations complete what no single butterfly could"
+ },
+ {
+  "id": "RI.3.10-Q5",
+  "standard": "RI.3.10",
+  "prompt": "The Sahara Desert isn't just sand \u2014 only about 25% is sandy. The rest includes rocky plateaus, gravel plains, and even mountains. Temperatures can swing from over 130\u00b0F during the day to below freezing at night.\n\nWhat common misconception about the Sahara does this text correct?",
+  "choices": [
+   "That it's all sand",
+   "That it's hot",
+   "That it's in Africa",
+   "That it's the largest desert"
+  ],
+  "correct": "That it's all sand"
+ },
+ {
+  "id": "RI.3.10-E1",
+  "standard": "RI.3.10",
+  "prompt": "Read the passage: \"Bats are the only mammals that can truly fly. Most bats sleep during the day and hunt for food at night.\" When do most bats hunt for food?",
+  "choices": [
+   "At night",
+   "All day long",
+   "In the morning",
+   "At lunchtime"
+  ],
+  "correct": "At night"
+ },
+ {
+  "id": "RI.3.10-E2",
+  "standard": "RI.3.10",
+  "prompt": "Read the passage: \"A honeybee lives in a hive with thousands of other bees. The queen bee is the only bee that lays eggs.\" Which bee lays the eggs?",
+  "choices": [
+   "No bee lays eggs",
+   "The queen bee",
+   "Every worker bee",
+   "The baby bees"
+  ],
+  "correct": "The queen bee"
+ },
+ {
+  "id": "RI.3.10-E3",
+  "standard": "RI.3.10",
+  "prompt": "Read the passage: \"The Sahara is the largest hot desert on Earth. It is so dry that very little rain falls there each year.\" What does the passage say about rain in the Sahara?",
+  "choices": [
+   "It never gets hot",
+   "It is covered in snow",
+   "Very little rain falls there",
+   "It rains every day"
+  ],
+  "correct": "Very little rain falls there"
+ },
+ {
+  "id": "RI.3.10-E4",
+  "standard": "RI.3.10",
+  "prompt": "Read the passage: \"Sea turtles lay their eggs on sandy beaches. The mother turtle digs a hole, lays her eggs, and covers them with sand.\" Where do sea turtles lay their eggs?",
+  "choices": [
+   "On floating ice",
+   "At the top of tall trees",
+   "Inside caves",
+   "On sandy beaches"
+  ],
+  "correct": "On sandy beaches"
+ },
+ {
+  "id": "RI.3.10-E5",
+  "standard": "RI.3.10",
+  "prompt": "Read the passage: \"Maple syrup comes from maple trees. In early spring, people collect a sweet liquid called sap from the trees to make it.\" What is maple syrup made from?",
+  "choices": [
+   "Sap from maple trees",
+   "Ocean water",
+   "Melted snow",
+   "Ground-up rocks"
+  ],
+  "correct": "Sap from maple trees"
+ },
+ {
+  "id": "RF.3.3-Q1",
+  "standard": "RF.3.3",
+  "prompt": "What is the root word in **uncomfortable**?",
+  "choices": [
+   "Able",
+   "Table",
+   "Comfort",
+   "Un"
+  ],
+  "correct": "Comfort"
+ },
+ {
+  "id": "RF.3.3-Q2",
+  "standard": "RF.3.3",
+  "prompt": "How many syllables are in the word **important**?",
+  "choices": [
+   "4",
+   "2",
+   "3",
+   "5"
+  ],
+  "correct": "3"
+ },
+ {
+  "id": "RF.3.3-Q3",
+  "standard": "RF.3.3",
+  "prompt": "Which word has the same **tion** sound as **nation**?",
+  "choices": [
+   "Cotton",
+   "Button",
+   "Station",
+   "Mitten"
+  ],
+  "correct": "Station"
+ },
+ {
+  "id": "RF.3.3-Q4",
+  "standard": "RF.3.3",
+  "prompt": "In the word **knight,** which letters are silent?",
+  "choices": [
+   "G and t",
+   "N and h",
+   "K and h",
+   "K and g"
+  ],
+  "correct": "K and g"
+ },
+ {
+  "id": "RF.3.3-Q5",
+  "standard": "RF.3.3",
+  "prompt": "Break the word **basketball** into syllables:",
+  "choices": [
+   "Bask-et-ball",
+   "Bas-ket-ball",
+   "Basket-ball",
+   "Ba-sket-ball"
+  ],
+  "correct": "Bas-ket-ball"
+ },
+ {
+  "id": "RF.3.3-H1",
+  "standard": "RF.3.3",
+  "prompt": "In which word is **un-** a real prefix (a word part added to the front) that you can peel off to leave a smaller word?\n\nuncle  \u2022  until  \u2022  untie  \u2022  under",
+  "choices": [
+   "untie",
+   "under",
+   "uncle",
+   "until"
+  ],
+  "correct": "untie"
+ },
+ {
+  "id": "RF.3.3-H2",
+  "standard": "RF.3.3",
+  "prompt": "What is the base (root) word inside **happiness**?",
+  "choices": [
+   "happye",
+   "happy",
+   "happi",
+   "hap"
+  ],
+  "correct": "happy"
+ },
+ {
+  "id": "RF.3.3-H3",
+  "standard": "RF.3.3",
+  "prompt": "Which word ends with the same **/shun/** sound as **nation**?\n\nmountain  \u2022  question  \u2022  vacation  \u2022  kitchen",
+  "choices": [
+   "question",
+   "kitchen",
+   "vacation",
+   "mountain"
+  ],
+  "correct": "vacation"
+ },
+ {
+  "id": "RF.3.3-H4",
+  "standard": "RF.3.3",
+  "prompt": "Which spelling is correct when you add **-ing** to the word **hop**?",
+  "choices": [
+   "hopeing",
+   "hoping",
+   "hoped",
+   "hopping"
+  ],
+  "correct": "hopping"
+ },
+ {
+  "id": "RF.3.3-H5",
+  "standard": "RF.3.3",
+  "prompt": "How many syllables are in the word **explain**?",
+  "choices": [
+   "2",
+   "3",
+   "1",
+   "4"
+  ],
+  "correct": "2"
+ },
+ {
+  "id": "RF.3.3a-Q1",
+  "standard": "RF.3.3a",
+  "prompt": "The prefix **dis-** in **disagree** means \u2014",
+  "choices": [
+   "Before",
+   "Not or opposite",
+   "Again",
+   "Very"
+  ],
+  "correct": "Not or opposite"
+ },
+ {
+  "id": "RF.3.3a-Q2",
+  "standard": "RF.3.3a",
+  "prompt": "What does the suffix **-ment** mean in the word **enjoyment**?",
+  "choices": [
+   "Full of",
+   "Again",
+   "The act or state of",
+   "Without"
+  ],
+  "correct": "The act or state of"
+ },
+ {
+  "id": "RF.3.3a-Q3",
+  "standard": "RF.3.3a",
+  "prompt": "If **pre-** means **before,** what does **preview** mean?",
+  "choices": [
+   "To not view",
+   "To view after",
+   "To view before",
+   "To view again"
+  ],
+  "correct": "To view before"
+ },
+ {
+  "id": "RF.3.3a-Q4",
+  "standard": "RF.3.3a",
+  "prompt": "If a movie is \"enjoyable,\" what does the suffix -able tell us about the movie?",
+  "choices": [
+   "The movie made someone enjoy it.",
+   "The movie is able to be enjoyed.",
+   "The movie will be enjoyed later.",
+   "The movie has been enjoyed many times."
+  ],
+  "correct": "The movie is able to be enjoyed."
+ },
+ {
+  "id": "RF.3.3a-Q5",
+  "standard": "RF.3.3a",
+  "prompt": "The prefix **mis-** in **misunderstand** means \u2014",
+  "choices": [
+   "Very",
+   "Not",
+   "Before",
+   "Wrongly"
+  ],
+  "correct": "Wrongly"
+ },
+ {
+  "id": "RF.3.3a-H1",
+  "standard": "RF.3.3a",
+  "prompt": "In which word does **un-** work as a real prefix meaning 'not'?  **unkind** \u00b7 **uncle** \u00b7 **under** \u00b7 **uncover**",
+  "choices": [
+   "unkind",
+   "uncover",
+   "uncle",
+   "under"
+  ],
+  "correct": "unkind"
+ },
+ {
+  "id": "RF.3.3a-H2",
+  "standard": "RF.3.3a",
+  "prompt": "The suffix **-er** can mean 'a person who does something.' In which word does **-er** mean that?  **painter** \u00b7 **colder** \u00b7 **faster** \u00b7 **longer**",
+  "choices": [
+   "longer",
+   "painter",
+   "colder",
+   "faster"
+  ],
+  "correct": "painter"
+ },
+ {
+  "id": "RF.3.3a-H3",
+  "standard": "RF.3.3a",
+  "prompt": "The suffix **-less** means 'without.' Which word means 'without fear'?  **fearful** \u00b7 **fearless** \u00b7 **feared** \u00b7 **fearing**",
+  "choices": [
+   "feared",
+   "fearing",
+   "fearless",
+   "fearful"
+  ],
+  "correct": "fearless"
+ },
+ {
+  "id": "RF.3.3a-H4",
+  "standard": "RF.3.3a",
+  "prompt": "The prefix **pre-** means 'before.' What does the word **preheat** mean?  **to heat again** \u00b7 **to heat before** \u00b7 **to not heat** \u00b7 **to heat fully**",
+  "choices": [
+   "to heat fully",
+   "to heat again",
+   "to not heat",
+   "to heat before"
+  ],
+  "correct": "to heat before"
+ },
+ {
+  "id": "RF.3.3a-H5",
+  "standard": "RF.3.3a",
+  "prompt": "The prefix **mis-** means 'wrongly' or 'badly.' What does the word **misspell** mean?  **to spell again** \u00b7 **to spell wrongly** \u00b7 **to spell before** \u00b7 **to spell fully**",
+  "choices": [
+   "to spell wrongly",
+   "to spell before",
+   "to spell again",
+   "to spell fully"
+  ],
+  "correct": "to spell wrongly"
+ },
+ {
+  "id": "RF.3.3b-Q1",
+  "standard": "RF.3.3b",
+  "prompt": "What sound does **-tion** make at the end of a word?",
+  "choices": [
+   "Ton",
+   "Tee-on",
+   "Shun",
+   "Tye-on"
+  ],
+  "correct": "Shun"
+ },
+ {
+  "id": "RF.3.3b-Q4",
+  "standard": "RF.3.3b",
+  "prompt": "The word \"active\" means \"full of action.\" Which word below uses a common Latin suffix to show that something has a lot of a certain quality?",
+  "choices": [
+   "quickly",
+   "biggest",
+   "creative",
+   "playful"
+  ],
+  "correct": "creative"
+ },
+ {
+  "id": "RF.3.3b-Q5",
+  "standard": "RF.3.3b",
+  "prompt": "The word **invention** breaks into which parts?",
+  "choices": [
+   "Inven + tion",
+   "In + vent + ion",
+   "In + vention",
+   "Invent + ion"
+  ],
+  "correct": "Invent + ion"
+ },
+ {
+  "id": "RF.3.3b-H1",
+  "standard": "RF.3.3b",
+  "prompt": "All four words end with the /shun/ sound. In which word is that ending spelled with the letters -sion?",
+  "choices": [
+   "mission",
+   "motion",
+   "nation",
+   "station"
+  ],
+  "correct": "mission"
+ },
+ {
+  "id": "RF.3.3b-H2",
+  "standard": "RF.3.3b",
+  "prompt": "The Latin suffix -ous means 'full of' and sounds like /us/. Which word below actually ends with the suffix -ous?",
+  "choices": [
+   "cactus",
+   "famous",
+   "walrus",
+   "circus"
+  ],
+  "correct": "famous"
+ },
+ {
+  "id": "RF.3.3b-H3",
+  "standard": "RF.3.3b",
+  "prompt": "The letters -tion usually say /shun/, as in 'nation.' In which word do the letters -tion say /chun/ instead?",
+  "choices": [
+   "section",
+   "motion",
+   "question",
+   "action"
+  ],
+  "correct": "question"
+ },
+ {
+  "id": "RF.3.3b-H4",
+  "standard": "RF.3.3b",
+  "prompt": "Read these four words. Which one ends with the Latin suffix -ible?",
+  "choices": [
+   "reliable",
+   "comfortable",
+   "valuable",
+   "terrible"
+  ],
+  "correct": "terrible"
+ },
+ {
+  "id": "RF.3.3b-H5",
+  "standard": "RF.3.3b",
+  "prompt": "The suffix -sion can say /shun/ or /zhun/ (the soft sound in 'treasure'). In which word does -sion make the /zhun/ sound?",
+  "choices": [
+   "division",
+   "tension",
+   "mansion",
+   "session"
+  ],
+  "correct": "division"
+ },
+ {
+  "id": "RF.3.3c-Q1",
+  "standard": "RF.3.3c",
+  "prompt": "How many syllables are in **unbelievable**?",
+  "choices": [
+   "4",
+   "6",
+   "5",
+   "3"
+  ],
+  "correct": "5"
+ },
+ {
+  "id": "RF.3.3c-Q2",
+  "standard": "RF.3.3c",
+  "prompt": "Break **adventure** into syllables:",
+  "choices": [
+   "Adven-ture",
+   "A-dvent-ure",
+   "Ad-ven-ture",
+   "Ad-ventu-re"
+  ],
+  "correct": "Ad-ven-ture"
+ }
+]

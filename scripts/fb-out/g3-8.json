@@ -1,0 +1,212 @@
+[
+ {
+  "id": "L.3.6-Q4",
+  "correct_feedback": "Yes! To compare means to look at two things and see how they are alike and how they are different. Great thinking!",
+  "incorrect_feedback": "Hmm, think about what you do when you hold two things side by side. What are you really checking for?",
+  "reveal_feedback": "The answer is 'find how things are alike and different.' When you compare, you look at two things and notice what matches and what doesn't."
+ },
+ {
+  "id": "L.3.6-E1",
+  "correct_feedback": "That's right! A tired dog wants to rest because being tired means it needs sleep. You used the sentence clues well!",
+  "incorrect_feedback": "Almost! The dog wanted to rest. What kind of feeling makes you want to lie down and stop?",
+  "reveal_feedback": "The word tired means 'needing sleep or rest.' That's why the dog wanted to rest in the sentence."
+ },
+ {
+  "id": "L.3.6-E2",
+  "correct_feedback": "Exactly! A home is the place where an animal lives, just like your home is where you live. Nice job!",
+  "incorrect_feedback": "Take another look. The clue says a home is a place. Which choice tells about a place, not food or fur?",
+  "reveal_feedback": "The answer is 'where it lives.' A home means the place an animal lives, just like the sentence told us."
+ },
+ {
+  "id": "L.3.6-E3",
+  "correct_feedback": "Yes! 'The juicy, red apple looked sweet' uses exact words that help you picture it. Describing words make writing come alive!",
+  "incorrect_feedback": "Good try. Words like 'stuff' and 'thing' are fuzzy. Which sentence paints a clear picture in your mind?",
+  "reveal_feedback": "The best one is 'The juicy, red apple looked sweet.' It uses exact, describing words so you can really picture the apple."
+ },
+ {
+  "id": "L.3.6-E4",
+  "correct_feedback": "Right! Huge means very big, and the elephant was the biggest animal at the zoo. You used the sentence clue perfectly!",
+  "incorrect_feedback": "Close one! The sentence says the elephant was the biggest animal there. So what does huge tell us about its size?",
+  "reveal_feedback": "Huge means 'very big.' The sentence even said the elephant was the biggest animal at the zoo."
+ },
+ {
+  "id": "L.3.6-E5",
+  "correct_feedback": "Yes! Someone who feels happy feels glad and cheerful. You matched the feeling just right!",
+  "incorrect_feedback": "Not yet. Think about how your face feels when something wonderful happens. Which words match a happy feeling?",
+  "reveal_feedback": "Happy means 'glad and cheerful.' Those words describe the good, sunny feeling of being happy."
+ },
+ {
+  "id": "L.3.1-Q1",
+  "correct_feedback": "Great! 'Ran' is the past-tense of run, so it tells us the race already happened. You picked the right verb!",
+  "incorrect_feedback": "Almost! You need a verb that shows the race already finished. Say each one aloud and listen for past-tense.",
+  "reveal_feedback": "The correct sentence is 'My little brother ran fast at the race.' 'Ran' is the past-tense of run, so it shows it already happened."
+ },
+ {
+  "id": "L.3.1-Q2",
+  "correct_feedback": "Yes! 'The dogs run fast' matches. More than one dog needs the verb 'run,' so they agree. Nice work!",
+  "incorrect_feedback": "Good try. Check if the naming word is one or many, then see if the verb matches it. Read each one softly.",
+  "reveal_feedback": "The answer is 'The dogs run fast.' Since there is more than one dog, the verb 'run' matches them correctly."
+ },
+ {
+  "id": "L.3.1-Q3",
+  "correct_feedback": "Right! 'Faster' compares two things, like one runner is faster than another. You know your comparing words!",
+  "incorrect_feedback": "Hmm, a comparative word compares just two things. Which word adds -er to fast to do that?",
+  "reveal_feedback": "The comparative form is 'faster.' We add -er to fast when we compare two things."
+ },
+ {
+  "id": "L.3.1-Q4",
+  "correct_feedback": "Yes! 'Happiest' is superlative, meaning the most happy of all. You spotted the top-of-the-list word!",
+  "incorrect_feedback": "Close one! A superlative shows the most of something out of all. Which word means the MOST happy?",
+  "reveal_feedback": "The superlative form is 'happiest.' It means the most happy of everyone, more than happier."
+ },
+ {
+  "id": "L.3.1-Q5",
+  "correct_feedback": "Great! 'I am eating an apple now' is right. 'Am eating' shows it is happening right now. Perfect tense!",
+  "incorrect_feedback": "Take another look. The word 'now' means it is happening this moment. Which verb sounds right for right now?",
+  "reveal_feedback": "The correct sentence is 'I am eating an apple now.' 'Am eating' shows the action is happening right now."
+ },
+ {
+  "id": "L.3.1-H1",
+  "correct_feedback": "Yes! Tom beat Ben, who beat Sara, so Tom is the fastest of all three. You compared them carefully!",
+  "incorrect_feedback": "Good try. Line them up: Sara, then Ben beat her, then Tom beat Ben. Who ends up on top?",
+  "reveal_feedback": "The answer is 'Tom ran the fastest.' Tom beat Ben, and Ben beat Sara, so Tom is fastest of all three."
+ },
+ {
+  "id": "L.3.1-H2",
+  "correct_feedback": "Right! 'Went, saw' are both correct past-tense verbs. The class already went and already saw the paintings. Nice!",
+  "incorrect_feedback": "Almost! Both blanks happened yesterday, so both verbs need past-tense. Say the pairs aloud and listen carefully.",
+  "reveal_feedback": "The answer is 'went, saw.' Both are the correct past-tense forms, since the trip happened yesterday."
+ },
+ {
+  "id": "L.3.1-H3",
+  "correct_feedback": "Yes! 'Because' tells us WHY Mia got so good. It connects her practice to her success. Great choice!",
+  "incorrect_feedback": "Hmm, the question asks which word shows the reason WHY. Which one answers 'why did this happen?'",
+  "reveal_feedback": "The answer is 'Because.' It shows the reason why Mia became great, since she practiced every day."
+ },
+ {
+  "id": "L.3.1-H4",
+  "correct_feedback": "Right! 'Most quietly' means the quietest of everyone, which is why no one could hear him. Well done!",
+  "incorrect_feedback": "Close one! Jonah was quieter than everyone in the room. Which word shows the MOST out of the whole group?",
+  "reveal_feedback": "The answer is 'most quietly.' Since Jonah was quieter than everyone, we use 'most' to compare him to the whole group."
+ },
+ {
+  "id": "L.3.1-H5",
+  "correct_feedback": "Yes! 'Went, will go' is right. 'Went' is the past for last summer, 'will go' is the future for next summer. Perfect!",
+  "incorrect_feedback": "Take another look. One blank is about last summer and one is about next summer. Match each verb to its time.",
+  "reveal_feedback": "The answer is 'went, will go.' 'Went' shows the past for last summer, and 'will go' shows the future for next summer."
+ },
+ {
+  "id": "L.3.2-Q1",
+  "correct_feedback": "Yes! 'Maya said, \"Hi!\"' puts quotation marks around the exact words Maya spoke. You know your quotes!",
+  "incorrect_feedback": "Good try. Quotation marks wrap around the exact words a person says out loud. Which one does that best?",
+  "reveal_feedback": "The correct one is 'Maya said, \"Hi!\"' The quotation marks go around Hi, the exact word Maya spoke."
+ },
+ {
+  "id": "L.3.2-Q2",
+  "correct_feedback": "Right! A date needs a comma between the day and the year, like March 5, 2026. Great punctuation eye!",
+  "incorrect_feedback": "Hmm, think about how you write a full date. What small mark goes between the day number and the year?",
+  "reveal_feedback": "The answer is 'a comma between day and year.' We write it March 5, 2026, with a comma before the year."
+ },
+ {
+  "id": "L.3.2-Q3",
+  "correct_feedback": "Yes! 'I bought apples, bananas, and grapes' uses commas to separate the list. That's just right!",
+  "incorrect_feedback": "Almost! When you list three things, commas go between the items. Which sentence spaces them out correctly?",
+  "reveal_feedback": "The correct sentence is 'I bought apples, bananas, and grapes.' Commas separate each item in the list."
+ },
+ {
+  "id": "L.3.2-Q4",
+  "correct_feedback": "Right! 'The kid's bag' uses an apostrophe to show the bag belongs to the kid. You spotted the owning word!",
+  "incorrect_feedback": "Take another look. To show something belongs to one person, you add a special mark. Which choice has it?",
+  "reveal_feedback": "The answer is 'the kid's bag.' The apostrophe and s show the bag belongs to the kid."
+ },
+ {
+  "id": "L.3.2-Q5",
+  "correct_feedback": "Yes! 'She said, \"hello.\"' wraps quotation marks around the spoken word and adds a comma. Nicely done!",
+  "incorrect_feedback": "Good try. The quotation marks go around the exact word she said. Which one also has the right comma?",
+  "reveal_feedback": "The correct one is 'She said, \"hello.\"' The comma comes after said, and quotes wrap the spoken word hello."
+ },
+ {
+  "id": "L.3.2-H1",
+  "correct_feedback": "Yes! '\"I found it!\" yelled Sam.' keeps the exclamation mark inside the quotes with Sam's exact words. Great eye!",
+  "incorrect_feedback": "Close one! The exclamation mark belongs inside the quotation marks with the words Sam yelled. Which one does that neatly?",
+  "reveal_feedback": "The correct one is '\"I found it!\" yelled Sam.' The exclamation mark stays inside the quotes with Sam's exact words."
+ },
+ {
+  "id": "L.3.2-H2",
+  "correct_feedback": "Right! 'Dogs'' shows the tails belong to more than one dog. The apostrophe goes after the s. Well done!",
+  "incorrect_feedback": "Hmm, there are three dogs, so it is many. Where does the apostrophe go when more than one owns something?",
+  "reveal_feedback": "The answer is 'dogs'.' When more than one dog owns the tails, the apostrophe goes after the s."
+ },
+ {
+  "id": "L.3.2-H3",
+  "correct_feedback": "Yes! 'Its' shows the paws belong to the kitten, with no apostrophe. That's the tricky one, and you got it!",
+  "incorrect_feedback": "Take another look. 'It's' with an apostrophe means 'it is.' Which spelling shows the paws belong to the kitten?",
+  "reveal_feedback": "The answer is 'its' with no apostrophe. It shows the paws belong to the kitten, while it's means it is."
+ },
+ {
+  "id": "L.3.2-H4",
+  "correct_feedback": "Right! 'Hopped' doubles the p before adding -ed. That short-vowel rule tripped up others, but not you!",
+  "incorrect_feedback": "Almost! When a short word like hop ends in one vowel and one consonant, something happens to the last letter before -ed.",
+  "reveal_feedback": "The answer is 'hopped.' Because hop has a short vowel, we double the p before adding -ed."
+ },
+ {
+  "id": "L.3.2-H5",
+  "correct_feedback": "Yes! 'We visited Lake Michigan in July' capitalizes the place name and the month, but not the little words. Perfect!",
+  "incorrect_feedback": "Good try. Names of places and months start with capital letters, but everyday words do not. Which sentence follows that?",
+  "reveal_feedback": "The correct one is 'We visited Lake Michigan in July.' Lake Michigan and July are names, so they get capitals."
+ },
+ {
+  "id": "L.3.3-Q1",
+  "correct_feedback": "Yes! 'Fantastic' is the strongest, most exciting way to say good. You picked the powerful word!",
+  "incorrect_feedback": "Hmm, some of these barely mean good at all. Which word sounds the biggest and most exciting?",
+  "reveal_feedback": "The strongest word is 'fantastic.' It means much more than fine or okay, it means really, really good."
+ },
+ {
+  "id": "L.3.3-Q2",
+  "correct_feedback": "Right! Writing to a friend, 'Hey, what's up?' is friendly and just the right tone. Good sense of audience!",
+  "incorrect_feedback": "Take another look. You are writing to a friend, not a stranger. Which greeting sounds relaxed and friendly?",
+  "reveal_feedback": "The best one is 'Hey, what's up?' It's friendly and casual, which fits when you write to a friend."
+ },
+ {
+  "id": "L.3.3-Q3",
+  "correct_feedback": "Yes! 'Strolled' shows a slow, easy walk, so you can picture it. That's a word that paints a picture!",
+  "incorrect_feedback": "Good try. Most of these just mean go. Which word shows a special way of walking that you can picture?",
+  "reveal_feedback": "The answer is 'strolled.' It paints a picture of a slow, relaxed walk, more than plain words like went or moved."
+ },
+ {
+  "id": "L.3.3-Q5",
+  "correct_feedback": "Yes! 'Pounced' is a strong verb that shows the cat leaping. It gives you a clear action picture!",
+  "incorrect_feedback": "Close one! A strong verb shows exciting action you can see. Which cat verb is full of energy?",
+  "reveal_feedback": "The strongest verb is 'pounced.' It shows the cat leaping with energy, much more than sat or was."
+ },
+ {
+  "id": "L.3.3-H1",
+  "correct_feedback": "Yes! 'Fierce' shows wind powerful enough to tear off a roof. It matches the strength perfectly!",
+  "incorrect_feedback": "Hmm, the wind ripped a roof clean off. Which word shows wind that wild and powerful, not gentle?",
+  "reveal_feedback": "The best word is 'fierce.' It shows wind wild and powerful enough to tear a roof off, unlike chilly or steady."
+ },
+ {
+  "id": "L.3.3-H2",
+  "correct_feedback": "Right! 'Thank you for organizing our wonderful field trip' is polite and fits writing to a principal. Great tone!",
+  "incorrect_feedback": "Take another look. You are writing to your principal, so slang doesn't fit. Which sentence sounds polite and respectful?",
+  "reveal_feedback": "The best one is 'Thank you for organizing our wonderful field trip.' It's polite and respectful, which fits a note to your principal."
+ },
+ {
+  "id": "L.3.3-H3",
+  "correct_feedback": "Yes! 'Devoured' shows Marco eating fast and hungrily, just right for someone starving. Powerful word choice!",
+  "incorrect_feedback": "Almost! Marco was starving and ate it in seconds. Which word shows big, hungry, fast eating, not tiny bites?",
+  "reveal_feedback": "The best word is 'devoured.' It shows fast, hungry eating, which fits Marco who hadn't eaten all day, unlike nibbled or tasted."
+ },
+ {
+  "id": "L.3.3-H4",
+  "correct_feedback": "Right! 'Content' is a calm, gentle kind of happy, the mildest of them all. You felt the difference!",
+  "incorrect_feedback": "Close one! Some of these mean super, super happy. Which word shows the smallest, calmest bit of happiness?",
+  "reveal_feedback": "The mildest word is 'content.' It means quietly happy and satisfied, much gentler than thrilled or ecstatic."
+ },
+ {
+  "id": "L.3.3-H5",
+  "correct_feedback": "Yes! 'Gloomy' gives the house a dark, uneasy feeling, exactly what the author wanted. Great mood match!",
+  "incorrect_feedback": "Take another look. The author wants readers to feel uneasy and a little scared. Which word gives a dark, spooky feeling?",
+  "reveal_feedback": "The best word is 'gloomy.' It gives a dark, uneasy feeling, unlike cozy or peaceful, which feel safe and calm."
+ }
+]

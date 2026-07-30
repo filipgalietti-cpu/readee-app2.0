@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.2.9-H5",
+  "correct_feedback": "Yes! Maya likes packing and Sam likes buying, so they don't agree on which lunch way is better. Great thinking!",
+  "incorrect_feedback": "Hmm, both kids only talk about lunch. What is the big thing each one says is best? Read their first sentences again.",
+  "reveal_feedback": "The answer is whether packing or buying lunch is the better choice. Maya says packing, Sam says buying. That's what they disagree about."
+ },
+ {
+  "id": "RI.2.10-Q1",
+  "correct_feedback": "Great job! An octopus changes color to blend in so other animals can't spot it. That keeps it safe!",
+  "incorrect_feedback": "Almost! Think about how an octopus stays safe. Would changing color help it stay out of sight? Look again.",
+  "reveal_feedback": "The answer is to hide from other animals. When an octopus changes color, it blends in so animals can't see it."
+ },
+ {
+  "id": "RI.2.10-Q3",
+  "correct_feedback": "Nice work! One can saves TV energy, and we toss out a huge number of cans, so recycling saves lots of energy.",
+  "incorrect_feedback": "Good try! The facts are all about cans and energy. What big idea is the author showing? Read the facts once more.",
+  "reveal_feedback": "The answer is recycling cans saves a lot of energy. Each can saves TV power, so recycling all of them saves a lot."
+ },
+ {
+  "id": "RI.2.10-Q4",
+  "correct_feedback": "You got it! The text says their large paws work like snowshoes to help them walk on ice. Nice reading!",
+  "incorrect_feedback": "Close one! Find the part about walking on ice. What does it say works like snowshoes? Look back at the text.",
+  "reveal_feedback": "The answer is their large paws. The text says the big paws work like snowshoes to help polar bears walk on ice."
+ },
+ {
+  "id": "RI.2.10-Q5",
+  "correct_feedback": "Wonderful! Lava hardens and stacks up layer by layer, so the volcano grows taller and wider over time.",
+  "incorrect_feedback": "Not yet! Think about what comes out of a volcano and cools. What builds up on its sides over time? Try again.",
+  "reveal_feedback": "The answer is new layers of hardened lava build up on its sides. Each time lava cools and stacks, the volcano grows."
+ },
+ {
+  "id": "RI.2.10-H1",
+  "correct_feedback": "Yes! Stacking branches stops the water, making a deep pond. Deep water keeps wolves and bears away. Smart thinking!",
+  "incorrect_feedback": "Take another look! Why would beavers want the water deep? Read the last sentence about what deep water does.",
+  "reveal_feedback": "The answer is to make deep water that keeps them safe. Deep water stops wolves and bears from reaching the beavers."
+ },
+ {
+  "id": "RI.2.10-H2",
+  "correct_feedback": "Great job! The sugar stops the inside of the frog's cells from turning hard, so the frog can thaw and live.",
+  "incorrect_feedback": "Hmm, read the sentence about sugar again. What part of the frog does the sugar keep from getting hard?",
+  "reveal_feedback": "The answer is it protects the inside of the frog's cells from freezing hard. That's how the frog survives the winter."
+ },
+ {
+  "id": "RI.2.10-H3",
+  "correct_feedback": "Nice! The clock helped sailors know their place, so far fewer ships got lost and crashed. Well read!",
+  "incorrect_feedback": "Good try! What changed after the clock was built? Read the very last sentence again to find out.",
+  "reveal_feedback": "The answer is fewer ships got lost and crashed. The clock helped sailors know where they were on the sea."
+ },
+ {
+  "id": "RI.2.10-H4",
+  "correct_feedback": "You got it! Spines are thin, so much less water leaks out into the dry air. That helps the cactus save water!",
+  "incorrect_feedback": "Almost! The cactus lives where it barely rains. Why would spines instead of leaves help it? Read that part again.",
+  "reveal_feedback": "The answer is it loses less water into the dry air. Thin spines let out far less water than flat leaves would."
+ },
+ {
+  "id": "RI.2.10-H5",
+  "correct_feedback": "Great thinking! A bee dances only when it finds food. No dancing means no flowers found yet. Nice work!",
+  "incorrect_feedback": "Close one! The text says when a bee does NOT dance, something is different. Read the last sentence again.",
+  "reveal_feedback": "The answer is the bees have not found flowers with food. A bee that finds no food does not dance at all."
+ },
+ {
+  "id": "RF.2.3-Q1",
+  "correct_feedback": "Yes! \"Cake\" has a long a that says its own name, ay. The silent e makes the vowel long. Great ear!",
+  "incorrect_feedback": "Hmm, a long vowel says its own name. Say each word slowly. Which one has a vowel that sounds like its letter name?",
+  "reveal_feedback": "The answer is \"cake.\" The a says its name, ay, because the silent e at the end makes it long."
+ },
+ {
+  "id": "RF.2.3-Q2",
+  "correct_feedback": "Nice! \"Play\" is the root word. When you take off the ending -ing, \"play\" is left all by itself. Well done!",
+  "incorrect_feedback": "Good try! A root word is the base part before the ending. Cover up the -ing. What word do you see left?",
+  "reveal_feedback": "The answer is \"play.\" Take the -ing off of playing and the root word play is what stays."
+ },
+ {
+  "id": "RF.2.3-Q3",
+  "correct_feedback": "You got it! The prefix un- means not, so unhappy means not happy. Great job spotting it!",
+  "incorrect_feedback": "Almost! Un- means not. Which word means not happy? Say each choice and listen for the happy part.",
+  "reveal_feedback": "The answer is \"unhappy.\" The prefix un- means not, so unhappy means not feeling happy."
+ },
+ {
+  "id": "RF.2.3-Q4",
+  "correct_feedback": "Yes! Pump-kin has two beats. Clap it out and you feel two parts. Nice counting!",
+  "incorrect_feedback": "Not yet! Clap the word as you say it: pump...kin. How many beats did you clap? Try it again.",
+  "reveal_feedback": "The answer is 2. When you clap pump-kin, you hear two beats, so it has two syllables."
+ },
+ {
+  "id": "RF.2.3-Q5",
+  "correct_feedback": "Great ear! In \"because,\" the au sounds like aw, just like in \"saw.\" Well done!",
+  "incorrect_feedback": "Hmm, say \"because\" slowly and listen to the middle. Which everyday word has that same sound? Try again.",
+  "reveal_feedback": "The answer is the sound of aw in \"saw.\" The au in because makes that same aw sound."
+ },
+ {
+  "id": "RF.2.3-H1",
+  "correct_feedback": "Yes! \"Strike\" has a long i that says its name, and the silent e makes it long. Sharp listening!",
+  "incorrect_feedback": "Close one! A long i says its name, like in \"bike.\" Say each word slowly. Which one has that long i sound?",
+  "reveal_feedback": "The answer is \"strike.\" The i says its name because of the silent e, giving it a long i sound."
+ },
+ {
+  "id": "RF.2.3-H2",
+  "correct_feedback": "Nice! \"Bread\" and \"meant\" both have the short e sound, like in \"bed.\" Great matching!",
+  "incorrect_feedback": "Good try! Say \"bread\" and listen to its short e sound. Now say each word. Which one matches that sound?",
+  "reveal_feedback": "The answer is \"meant.\" It has the same short e sound as bread, even though the others sound like long e."
+ },
+ {
+  "id": "RF.2.3-H3",
+  "correct_feedback": "You got it! \"First\" and \"nurse\" have the same er sound made by ir and ur. Great ear!",
+  "incorrect_feedback": "Almost! Say \"first\" and hear the er sound in the middle. Which word has that same sound? Say them all again.",
+  "reveal_feedback": "The answer is \"nurse.\" The ur in nurse makes the same er sound you hear in first."
+ },
+ {
+  "id": "RF.2.3-H4",
+  "correct_feedback": "Great job! \"Robot\" splits ro-bot, and the o ends the first part, so it stays long, like tiger. Nice!",
+  "incorrect_feedback": "Not yet! An open syllable ends in a vowel that says its name. Which word starts like ti-ger with a long vowel?",
+  "reveal_feedback": "The answer is \"robot.\" It breaks ro-bot, and the o ends the first syllable, so it stays long like in tiger."
+ },
+ {
+  "id": "RF.2.3-H5",
+  "correct_feedback": "Yes! Take off un- and -ily and you are left with \"happy,\" the base word. Awesome work!",
+  "incorrect_feedback": "Take another look! A base word has no prefix or ending. Peel off un- at the front and the ending. What's left?",
+  "reveal_feedback": "The answer is \"happy.\" Remove the prefix un- and the ending -ily, and the base word happy is what remains."
+ },
+ {
+  "id": "RF.2.3a-Q1",
+  "correct_feedback": "Yes! \"Map\" has a short a sound, like the a in \"cat.\" Great listening!",
+  "incorrect_feedback": "Hmm, a short a sounds like the a in \"apple.\" Say each word slowly. Which one has that quick a sound?",
+  "reveal_feedback": "The answer is \"map.\" It has a short a sound, just like the a in apple or cat."
+ },
+ {
+  "id": "RF.2.3a-Q2",
+  "correct_feedback": "Nice! \"Home\" has a long o that says its name, and the silent e makes it long. Well done!",
+  "incorrect_feedback": "Almost! A long o says its own name, like \"oh.\" Say each word. Which one has an o that sounds like its letter?",
+  "reveal_feedback": "The answer is \"home.\" The o says its name because the silent e at the end makes it long."
+ },
+ {
+  "id": "RF.2.3a-Q3",
+  "correct_feedback": "You got it! \"Bed\" has a short e sound, like the e in \"pen.\" Great ear!",
+  "incorrect_feedback": "Good try! Say \"bed\" slowly and listen to the vowel. Is that e short and quick, or long? Look again.",
+  "reveal_feedback": "The answer is short e. The word bed has a short e sound, just like the e in pen."
+ },
+ {
+  "id": "RF.2.3a-H1",
+  "correct_feedback": "Great! \"Sweep\" has a long e that says its name, spelled with the ee team. Nice listening!",
+  "incorrect_feedback": "Close one! A long e says its name, like \"ee.\" Say each word slowly. Which one has that long e sound?",
+  "reveal_feedback": "The answer is \"sweep.\" The ee makes a long e sound that says its own name."
+ },
+ {
+  "id": "RF.2.3a-H2",
+  "correct_feedback": "Yes! \"Print\" has a short i sound, like the i in \"sit.\" Sharp ear!",
+  "incorrect_feedback": "Hmm, a short i sounds like the i in \"pig.\" Say each word. The others have a long i. Which one is short?",
+  "reveal_feedback": "The answer is \"print.\" It has a short i sound like pig, while the others say a long i."
+ },
+ {
+  "id": "RF.2.3a-H3",
+  "correct_feedback": "Nice! \"Sprain\" has a long a that says its name, made by the ai team. Great job!",
+  "incorrect_feedback": "Not yet! A long a says its name, like \"ay.\" Say each word slowly. Which one has that long a sound?",
+  "reveal_feedback": "The answer is \"sprain.\" The ai team makes a long a sound that says its own name."
+ },
+ {
+  "id": "RF.2.3a-H4",
+  "correct_feedback": "You got it! \"Prune\" has a long u that says its name, and the silent e makes it long. Well done!",
+  "incorrect_feedback": "Almost! A long u says its name, like \"oo\" in \"tune.\" Say each word. Which one has that long u sound?",
+  "reveal_feedback": "The answer is \"prune.\" The silent e makes the u long so it says its own name."
+ },
+ {
+  "id": "RF.2.3a-H5",
+  "correct_feedback": "Great ear! \"Frost\" has a short o sound, like the o in \"dog.\" Nice work!",
+  "incorrect_feedback": "Good try! A short o sounds like the o in \"hot.\" Say each word. The others have long o. Which one is short?",
+  "reveal_feedback": "The answer is \"frost.\" It has a short o sound like hot, while the others say a long o."
+ },
+ {
+  "id": "RF.2.3b-Q1",
+  "correct_feedback": "Yes! In \"boat,\" the oa team makes a long o that says its name. Great listening!",
+  "incorrect_feedback": "Hmm, say \"boat\" slowly and listen to the vowel sound. Does the o say its own name, or is it short? Try again.",
+  "reveal_feedback": "The answer is long o. In boat, the oa team makes a long o that says its own name."
+ },
+ {
+  "id": "RF.2.3b-Q2",
+  "correct_feedback": "Nice! \"Tree\" has the ee vowel team, and it makes a long e sound. Well spotted!",
+  "incorrect_feedback": "Almost! A vowel team is two vowels together. Look for the word with double e. Which one has ee in it?",
+  "reveal_feedback": "The answer is \"tree.\" It has the ee vowel team, while the others have just one e."
+ },
+ {
+  "id": "RF.2.3b-Q3",
+  "correct_feedback": "You got it! \"Play\" has the same long a sound as \"rain,\" and it fits the sentence. Great job!",
+  "incorrect_feedback": "Good try! Say \"rain\" and hear its long a sound. Which word has that same sound AND makes sense in the park?",
+  "reveal_feedback": "The answer is \"play.\" It has the same long a sound as rain and fits the sentence about the park."
+ },
+ {
+  "id": "RF.2.3b-Q4",
+  "correct_feedback": "Yes! In \"goat,\" the oa team makes a long o that says its name. Great ear!",
+  "incorrect_feedback": "Close one! Say \"goat\" slowly and listen to the oa. Does the o say its own name, or is it short? Look again.",
+  "reveal_feedback": "The answer is the long o sound. In goat, the oa team makes a long o that says its own name."
+ },
+ {
+  "id": "RF.2.3b-Q5",
+  "correct_feedback": "Nice! \"Loud\" has the ou vowel team in the middle. Great job finding it!",
+  "incorrect_feedback": "Hmm, look at the two vowels sitting together in this word. Which vowel team do you see in the middle? Try again.",
+  "reveal_feedback": "The answer is ou. The word loud has the ou vowel team right in the middle."
+ },
+ {
+  "id": "RF.2.3b-H1",
+  "correct_feedback": "Great! In \"bread,\" the ea makes a short e sound, like \"head.\" You caught the tricky one!",
+  "incorrect_feedback": "Take another look! Three of these say long e. Say each word and find the one where ea sounds short, like \"head.\"",
+  "reveal_feedback": "The answer is \"bread.\" Its ea makes a short e sound like head, while the others say long e."
+ },
+ {
+  "id": "RF.2.3b-H2",
+  "correct_feedback": "Yes! \"Hook\" has the same short oo sound as \"book.\" Great matching!",
+  "incorrect_feedback": "Almost! Say \"book\" and hear its short oo sound. The others sound like \"moon.\" Which word matches book?",
+  "reveal_feedback": "The answer is \"hook.\" It has the same short oo sound as book, while the others sound long like moon."
+ },
+ {
+  "id": "RF.2.3b-H3",
+  "correct_feedback": "Nice! In \"field,\" the ie team makes a long e sound, like \"chief.\" Sharp ear!",
+  "incorrect_feedback": "Good try! Say each word. Some ie words sound like long i, as in \"pie.\" Which one sounds like long e instead?",
+  "reveal_feedback": "The answer is \"field.\" Its ie makes a long e sound like chief, while the others say long i."
+ },
+ {
+  "id": "RF.2.3b-H4",
+  "correct_feedback": "You got it! \"Tray\" makes long a with the ay team, not ai like the others. Great thinking!",
+  "incorrect_feedback": "Not yet! Three words use the ai team for long a. Look for the one that spells long a a different way. Which is it?",
+  "reveal_feedback": "The answer is \"tray.\" It makes long a with the ay team, while the others use ai."
+ },
+ {
+  "id": "RF.2.3b-H5",
+  "correct_feedback": "Great! \"Camp\" has just one vowel, so there is no vowel team. Nice spotting!",
+  "incorrect_feedback": "Close one! A vowel team is two vowels together. Look at each word. Which one has only a single vowel?",
+  "reveal_feedback": "The answer is \"camp.\" It has just one vowel, so there is no vowel team, unlike the others."
+ },
+ {
+  "id": "RF.2.3c-Q1",
+  "correct_feedback": "Yes! \"Cupcake\" breaks into cup-cake, two small words you already know. Great job!",
+  "incorrect_feedback": "Hmm, this word is made of two little words put together. Where should you split it so each part is a real word?",
+  "reveal_feedback": "The answer is cup-cake. It breaks between the two little words cup and cake."
+ },
+ {
+  "id": "RF.2.3c-Q3",
+  "correct_feedback": "Nice! \"Spider\" has a long i, spi-der, where the i says its own name. Great ear!",
+  "incorrect_feedback": "Almost! Say each two-part word slowly. Which one has a vowel that says its name, a long i like \"eye\"?",
+  "reveal_feedback": "The answer is \"spider.\" It breaks spi-der, and the i says its name, making a long i sound."
+ },
+ {
+  "id": "RF.2.3c-Q4",
+  "correct_feedback": "Yes! We say ROH-bot, with a strong first part and a long o. Great job saying it right!",
+  "incorrect_feedback": "Good try! Say \"robot\" out loud. Which part do you say louder, and does the o sound long? Pick the match.",
+  "reveal_feedback": "The answer is ROH-bot. We stress the first part and the o says its long name."
+ },
+ {
+  "id": "RF.2.3c-Q5",
+  "correct_feedback": "Nice! \"Open\" breaks o-pen, with the o all by itself saying its long name. Well done!",
+  "incorrect_feedback": "Not yet! Say the word slowly and listen for the two beats. Where do you split it so the o stays long? Try again.",
+  "reveal_feedback": "The answer is o-pen. The o ends the first part all alone, so it says its long name."
+ },
+ {
+  "id": "RF.2.3c-H1",
+  "correct_feedback": "Great! \"Muffin\" is the odd one out. Its u is short, while music, human, and tulip have long vowels. Nice!",
+  "incorrect_feedback": "Take another look! Three words have a vowel that says its name. Which word has a short vowel instead?",
+  "reveal_feedback": "The answer is \"muffin.\" Its u is short, while music, human, and tulip all have long vowels."
+ },
+ {
+  "id": "RF.2.3c-H2",
+  "correct_feedback": "Yes! \"Robot\" splits ro-bot, and the o says its long name. The others have a short o. Sharp ear!",
+  "incorrect_feedback": "Almost! Say each word slowly. Three have a short o, like \"hot.\" Which one has an o that says its own name?",
+  "reveal_feedback": "The answer is \"robot.\" It breaks ro-bot, and the o says its long name, while the others are short."
+ },
+ {
+  "id": "RF.2.3c-H3",
+  "correct_feedback": "Nice! \"Ti-ger\" splits after the i, so the i ends the syllable and stays long. Great thinking!",
+  "incorrect_feedback": "Good try! For the i to stay long, it should end the first part all by itself. Which split lets the i do that?",
+  "reveal_feedback": "The answer is ti-ger. Splitting after the i lets it end the syllable alone, so it stays long."
+ }
+]

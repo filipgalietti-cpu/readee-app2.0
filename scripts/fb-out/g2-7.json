@@ -1,0 +1,272 @@
+[
+ {
+  "id": "L.2.4c-Q1",
+  "correct_feedback": "Yes! A teacher helps people learn, just like the word teach tells us. You matched the word to its job!",
+  "incorrect_feedback": "Hmm, look at the small word inside teacher. What does teach mean? That gives you a big clue about the teacher's job.",
+  "reveal_feedback": "The answer is helps people learn. Teacher comes from teach, and teaching means helping someone learn something new."
+ },
+ {
+  "id": "L.2.4c-Q3",
+  "correct_feedback": "Great thinking! The ending less means without, so helpless means without help and needing others. You nailed it!",
+  "incorrect_feedback": "Almost! Look at the ending less. It means without. So what would being help-less say about a person?",
+  "reveal_feedback": "The answer is they cannot do things by themselves and need help. Less means without, so helpless means without help."
+ },
+ {
+  "id": "L.2.4c-H1",
+  "correct_feedback": "Yes! The part dis means not or opposite. A disagreement is a time when the friends did not agree. Smart work!",
+  "incorrect_feedback": "Good try! Look at the front part, dis. It flips a word to mean the opposite. So what happens to agree?",
+  "reveal_feedback": "The answer is a time when they did NOT agree about something. Dis means not, so disagreement is the opposite of agreeing."
+ },
+ {
+  "id": "L.2.4c-H2",
+  "correct_feedback": "Nice! The ending able means can be done. Washable plates can be washed and used again. You figured it out!",
+  "incorrect_feedback": "Close one! Look at the ending able. It means can be done. So what can happen to washable plates?",
+  "reveal_feedback": "The answer is the plates can be washed and used again. The ending able means can be done, so washable means able to be washed."
+ },
+ {
+  "id": "L.2.4c-H3",
+  "correct_feedback": "Yes! The ending ful means full of. Hopeful means full of hope that something good will happen. Great job!",
+  "incorrect_feedback": "Take another look at the ending ful. It means full of. So a hopeful coach is full of what?",
+  "reveal_feedback": "The answer is full of hope that something good will happen. The ending ful means full of, so hopeful means full of hope."
+ },
+ {
+  "id": "L.2.4c-H4",
+  "correct_feedback": "Great! The ending able means can be done. A reusable bag can be used again and again. You've got it!",
+  "incorrect_feedback": "Not yet. Look at the parts: re means again, and able means can be done. Put them together for reusable.",
+  "reveal_feedback": "The answer is use again and again, not just one time. Re means again and able means can be done, so reusable means able to be used again."
+ },
+ {
+  "id": "L.2.4c-H5",
+  "correct_feedback": "Yes! The ending less means without. A knight without fear is fearless. You matched the ending perfectly!",
+  "incorrect_feedback": "Almost! You want a word that means without fear. Which ending means without: less or ful?",
+  "reveal_feedback": "The answer is fearless. The ending less means without, so fearless means without any fear at all."
+ },
+ {
+  "id": "L.2.4d-Q1",
+  "correct_feedback": "Yes! Sunflower puts sun and flower together. It is a flower that turns to face the sun. Nice thinking!",
+  "incorrect_feedback": "Hmm, break the word into two parts: sun and flower. Together they name a real kind of flower. Which choice fits both parts?",
+  "reveal_feedback": "The answer is a flower that faces the sun. Sunflower joins sun and flower, and this flower really does turn toward the sun."
+ },
+ {
+  "id": "L.2.4d-Q2",
+  "correct_feedback": "Great! Rain plus coat makes raincoat, a coat that keeps you dry when it rains. You put the parts together!",
+  "incorrect_feedback": "Good try! Think about the two parts: rain and coat. What would this coat help you do when it is raining?",
+  "reveal_feedback": "The answer is it is a coat that keeps you dry in the rain. A raincoat joins rain and coat to keep you dry."
+ },
+ {
+  "id": "L.2.4d-Q3",
+  "correct_feedback": "Yes! Book plus shelf makes bookshelf, a shelf that holds your books. You joined the two words just right!",
+  "incorrect_feedback": "Close one! Split it into book and shelf. A shelf is a place to hold things. So what does a bookshelf hold?",
+  "reveal_feedback": "The answer is a shelf for holding books. Bookshelf joins book and shelf, and it holds your books."
+ },
+ {
+  "id": "L.2.4d-Q4",
+  "correct_feedback": "Yes! Light plus house makes lighthouse, a tall building with a bright light to guide ships. Great work!",
+  "incorrect_feedback": "Take another look. The word joins light and house. Think about where you might see a tall one near the ocean helping boats.",
+  "reveal_feedback": "The answer is a building with a bright light to guide ships. A lighthouse joins light and house and helps ships at sea."
+ },
+ {
+  "id": "L.2.4d-Q5",
+  "correct_feedback": "Great! Rain and coat join to make raincoat, which keeps you dry when water falls from the sky. Well done!",
+  "incorrect_feedback": "Not yet. Think about the two parts: rain and coat. Rain is water from the sky. So what would this coat do for you?",
+  "reveal_feedback": "The answer is keep dry when water falls from the sky. A raincoat joins rain and coat to keep you dry in the rain."
+ },
+ {
+  "id": "L.2.4e-Q2",
+  "correct_feedback": "Yes! Maya was excited about a hidden key, so discover means to find something new or hidden. Great use of clues!",
+  "incorrect_feedback": "Hmm, reread the sentence. Maya was excited about a hidden key under the rug. Was she losing it or finding it?",
+  "reveal_feedback": "The answer is to find something new or hidden. Maya was excited because she found the hidden key, and that is what discover means."
+ },
+ {
+  "id": "L.2.4e-Q4",
+  "correct_feedback": "Yes! The glossary says flutter means to move wings quickly, so the butterfly is moving its wings fast. Perfect!",
+  "incorrect_feedback": "Almost! Reread the glossary. It says flutter means to move wings quickly. So what is the butterfly doing with its wings?",
+  "reveal_feedback": "The answer is it is moving its wings fast. The glossary told us flutter means to move wings quickly."
+ },
+ {
+  "id": "L.2.4e-Q5",
+  "correct_feedback": "Yes! The dictionary says a penguin is a big bird that swims well and cannot fly. You read the entry closely!",
+  "incorrect_feedback": "Good try! Read the dictionary entry again. It says a large bird that swims well and cannot fly. Which choice matches those words?",
+  "reveal_feedback": "The answer is a big bird that swims and cannot fly. The entry said a penguin is a large bird that swims and cannot fly."
+ },
+ {
+  "id": "L.2.4e-H1",
+  "correct_feedback": "Yes! Guide words are ladder and lamp. The word falls between them in ABC order, so it fits on this page. Sharp work!",
+  "incorrect_feedback": "Take another look. The guide words are ladder and lamp. Which word fits between them in ABC order, after la?",
+  "reveal_feedback": "The answer is lake. In ABC order, lake comes after ladder and before lamp, so it lands on this page."
+ },
+ {
+  "id": "L.2.4e-H2",
+  "correct_feedback": "Yes! Dictionaries list the base word, and the base of hopping is hop. You found the root word!",
+  "incorrect_feedback": "Almost! The dictionary lists the shortest base word, before any extra endings are added. What is the plain root you started with?",
+  "reveal_feedback": "The answer is hop. Dictionaries list the base word, and hop is the base word for hopping."
+ },
+ {
+  "id": "L.2.4e-H3",
+  "correct_feedback": "Yes! Every student was present means everyone was here, so meaning 3 fits. Great job matching the sentence!",
+  "incorrect_feedback": "Not yet. Reread the sentence. Nobody was missing, so everyone was there. Which meaning tells about being there and not away?",
+  "reveal_feedback": "The answer is here; not away. The sentence says nobody was missing, so present means everyone was here."
+ },
+ {
+  "id": "L.2.4e-H4",
+  "correct_feedback": "Yes! The rabbit springs over the log, so spring means to jump up quickly here. You picked the right meaning!",
+  "incorrect_feedback": "Close one! Reread the sentence. The rabbit does something over the log to escape. Which meaning is an action, not a thing or a season?",
+  "reveal_feedback": "The answer is to jump up quickly. The rabbit springs over the log, so here spring means to jump."
+ },
+ {
+  "id": "L.2.4e-H5",
+  "correct_feedback": "Yes! It isn't fair that one child got more shows the meaning treating everyone in an equal way. Smart choice!",
+  "incorrect_feedback": "Take another look. The sentence is about one kid getting cookies and the other getting none. Which meaning is about being equal?",
+  "reveal_feedback": "The answer is treating everyone in an equal way. The sentence is upset that things were not shared equally, and that is what fair means here."
+ },
+ {
+  "id": "L.2.5-Q1",
+  "correct_feedback": "Yes! Large means almost the same as big. You found the word with a matching meaning!",
+  "incorrect_feedback": "Hmm, you need a word that means about the same as big, not the opposite and not a different idea. Which one still means big?",
+  "reveal_feedback": "The answer is large. Large means almost the same thing as big."
+ },
+ {
+  "id": "L.2.5-Q2",
+  "correct_feedback": "Yes! Cold is the opposite of hot. You found the word that means the very opposite!",
+  "incorrect_feedback": "Almost! You need the opposite of hot. Warm and sunny are close to hot, not opposite. Which word feels the very opposite?",
+  "reveal_feedback": "The answer is cold. Cold is the opposite of hot."
+ },
+ {
+  "id": "L.2.5-Q4",
+  "correct_feedback": "Yes! You whisper when you need to be quiet, like in a library. You matched the word to the right place!",
+  "incorrect_feedback": "Good try! A whisper is a very soft, quiet voice. Would you use it where it is loud, or where you must be quiet?",
+  "reveal_feedback": "The answer is in a library when you need to be quiet. A whisper is a soft voice for quiet places."
+ },
+ {
+  "id": "L.2.5-Q5",
+  "correct_feedback": "Yes! Glad and happy mean almost the same thing. You matched the feeling words!",
+  "incorrect_feedback": "Not yet. Glad is a good feeling. Which word means a good, cheerful feeling too, not a bad one?",
+  "reveal_feedback": "The answer is happy. Glad means the same as happy."
+ },
+ {
+  "id": "L.2.5-H1",
+  "correct_feedback": "Yes! So tired it could barely move means exhausted, the strongest word for very tired. Great choice!",
+  "incorrect_feedback": "Almost! The puppy was so tired it could barely move. Which word shows the strongest, most worn-out kind of tired?",
+  "reveal_feedback": "The answer is exhausted. Exhausted means very, very tired, just like the puppy that could barely move."
+ },
+ {
+  "id": "L.2.5-H2",
+  "correct_feedback": "Yes! In both sentences park means to stop and leave a car or bike. You matched the meaning, not just the word!",
+  "incorrect_feedback": "Take another look. In the first sentence, park means to stop and leave the car. Which sentence uses park as that action, not a place to play?",
+  "reveal_feedback": "The answer is please park your bike near the wall. There park means to stop and leave it, just like parking the car."
+ },
+ {
+  "id": "L.2.5-H3",
+  "correct_feedback": "Yes! Swirled tells us exactly how the wind spun the leaves in circles. You picked the most exact word!",
+  "incorrect_feedback": "Close one! Some choices say the wind did something or moved the leaves, but that is vague. Which word paints the clearest picture?",
+  "reveal_feedback": "The answer is the wind swirled the leaves in circles. Swirled is the most exact word because it shows the leaves spinning."
+ },
+ {
+  "id": "L.2.5-H4",
+  "correct_feedback": "Yes! Careful is full of care, so helpful is full of help for others. You used the ending clue perfectly!",
+  "incorrect_feedback": "Almost! The ending ful means full of. Careful is full of care, so what is a helpful person full of?",
+  "reveal_feedback": "The answer is is full of help for others. The ending ful means full of, so helpful means full of help."
+ },
+ {
+  "id": "L.2.5-H5",
+  "correct_feedback": "Yes! Thrilled is the strongest happy word, even more than glad. You found the biggest feeling!",
+  "incorrect_feedback": "Not yet. Fine, glad, and okay are only a little happy. Which word shows the MOST happy of all?",
+  "reveal_feedback": "The answer is thrilled. Thrilled means super happy, much more than fine, glad, or okay."
+ },
+ {
+  "id": "L.2.5a-Q1",
+  "correct_feedback": "Yes! Carrots make a crunch when you bite them, so they are crunchy. You matched the word to the right food!",
+  "incorrect_feedback": "Hmm, crunchy foods make a crunch sound and feel hard. Soup, yogurt, and ice cream are soft. Which food crunches?",
+  "reveal_feedback": "The answer is carrots. Carrots are crunchy because they are hard and make a crunch when you bite them."
+ },
+ {
+  "id": "L.2.5a-Q2",
+  "correct_feedback": "Yes! Courageous means brave, like standing up to a bully. You matched the word to a brave action!",
+  "incorrect_feedback": "Almost! Courageous means very brave. Which action takes real bravery, not something easy or restful?",
+  "reveal_feedback": "The answer is standing up to a bully. Courageous means brave, and standing up to a bully is a brave thing to do."
+ },
+ {
+  "id": "L.2.5a-Q3",
+  "correct_feedback": "Yes! Frustrated is that upset feeling when something is hard, like a puzzle you can't solve. Great match!",
+  "incorrect_feedback": "Good try! Frustrated is an upset, annoyed feeling. Would that happen during something fun, or when something is hard?",
+  "reveal_feedback": "The answer is when you can't solve a puzzle after many tries. Frustrated is the upset feeling when something is really hard."
+ },
+ {
+  "id": "L.2.5a-Q4",
+  "correct_feedback": "Yes! Peaceful means calm and quiet, like a garden with birds singing. You found the calm place!",
+  "incorrect_feedback": "Close one! Peaceful means calm and quiet. A mall, gym, or construction site are loud and busy. Which place is calm?",
+  "reveal_feedback": "The answer is a quiet garden with birds singing. Peaceful means calm and quiet, just like that garden."
+ },
+ {
+  "id": "L.2.5a-Q5",
+  "correct_feedback": "Yes! Swift means very fast, and a cheetah is super fast. You matched speed to the right animal!",
+  "incorrect_feedback": "Not yet. Swift means very fast. Snails, sloths, and turtles are slow. Which animal is known for being fast?",
+  "reveal_feedback": "The answer is a cheetah. Swift means very fast, and a cheetah is one of the fastest animals."
+ },
+ {
+  "id": "L.2.5a-H1",
+  "correct_feedback": "Yes! Sand so hot it burned her feet is scorching, the strongest hot word. Great choice!",
+  "incorrect_feedback": "Almost! The sand was so hot it burned her feet. Mild, warm, and cool are not that hot. Which word means very, very hot?",
+  "reveal_feedback": "The answer is scorching. Scorching means burning hot, just like sand that burns your feet."
+ },
+ {
+  "id": "L.2.5a-H2",
+  "correct_feedback": "Yes! Furious means really, really angry, like when someone breaks your toy on purpose. You matched the strong feeling!",
+  "incorrect_feedback": "Take another look. Furious means super angry. Which thing would make someone the MOST angry, not just a little?",
+  "reveal_feedback": "The answer is someone breaking your favorite toy on purpose. Furious means very angry, and that would make anyone furious."
+ },
+ {
+  "id": "L.2.5a-H3",
+  "correct_feedback": "Yes! Turn down the music means to make it quieter. You figured out what the phrase really means!",
+  "incorrect_feedback": "Good try! Dad said the music was too loud. So turning it down would do what to the sound?",
+  "reveal_feedback": "The answer is make it quieter. Dad said the music was too loud, so turn down means lower the sound."
+ },
+ {
+  "id": "L.2.5a-H4",
+  "correct_feedback": "Yes! After a long race in the hot sun, Leo could barely walk, so he was exhausted. Great match!",
+  "incorrect_feedback": "Not yet. Leo ran a long race and could barely walk. That is more than relaxed or bored. Which word means super tired?",
+  "reveal_feedback": "The answer is exhausted. Exhausted means very tired, just like Leo after his long race."
+ },
+ {
+  "id": "L.2.5a-H5",
+  "correct_feedback": "Yes! Delicate things break easily, so the delicate glass shattering makes sense. You used delicate the right way!",
+  "incorrect_feedback": "Almost! Delicate means it breaks easily or must be handled gently. A delicate thing would not smash rocks or crash walls. Which sentence fits?",
+  "reveal_feedback": "The answer is the delicate glass ornament shattered when it fell. Delicate means it breaks easily, and glass ornaments do."
+ },
+ {
+  "id": "L.2.5b-Q2",
+  "correct_feedback": "Yes! Hot means even more than warm. You picked the stronger heat word!",
+  "incorrect_feedback": "Hmm, you need a word that is MORE than warm, not less. Cold, cool, and chilly are less. Which one is more?",
+  "reveal_feedback": "The answer is hot. Hot means more than warm, while cool and chilly mean less."
+ },
+ {
+  "id": "L.2.5b-Q3",
+  "correct_feedback": "Yes! Gigantic means much bigger than big. You found the biggest size word!",
+  "incorrect_feedback": "Almost! You need a size that is BIGGER than big. Tiny, small, and medium are not bigger. Which word means huge?",
+  "reveal_feedback": "The answer is gigantic. Gigantic means much bigger than big."
+ },
+ {
+  "id": "L.2.5b-Q5",
+  "correct_feedback": "Yes! Trudge means to walk slowly and tiredly, like your feet are heavy. You matched the word to the movement!",
+  "incorrect_feedback": "Good try! March, sprint, and skip are quick or lively. Which word sounds slow, heavy, and tired?",
+  "reveal_feedback": "The answer is trudge. Trudge means to walk slowly and tiredly, with heavy steps."
+ },
+ {
+  "id": "L.2.5b-H1",
+  "correct_feedback": "Yes! To keep from waking the baby, Dad whispered in a soft, quiet voice. Perfect word for the sentence!",
+  "incorrect_feedback": "Almost! Dad did not want to wake the sleeping baby. Would he use a loud voice, or a very soft, quiet one?",
+  "reveal_feedback": "The answer is whispered. Dad used a soft, quiet voice so he wouldn't wake the sleeping baby."
+ },
+ {
+  "id": "L.2.5b-H2",
+  "correct_feedback": "Yes! Looking a long time without looking away means Ben stared. You picked the exact word!",
+  "incorrect_feedback": "Not yet. Ben looked for a long, long time without looking away. Blinking, glancing, and peeking are quick. Which word means a long look?",
+  "reveal_feedback": "The answer is stared. Stared means to look at something for a long time without looking away, just like Ben did."
+ },
+ {
+  "id": "L.2.5b-H3",
+  "correct_feedback": "Yes! The bus was leaving, so Lily dashed, which means ran very fast. Great word choice!",
+  "incorrect_feedback": "Close one! The bus was pulling away, so Lily had to hurry. Wandering, tiptoeing, and strolling are slow. Which word means to move fast?",
+  "reveal_feedback": "The answer is dashed. Dashed means to run very fast, which Lily did to catch the bus in time."
+ }
+]

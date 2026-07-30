@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RF.1.2b-H4",
+  "correct_feedback": "Yes! When you push those sounds together you hear splash, just like water! Nice work!",
+  "incorrect_feedback": "Hmm, say each sound slowly and blend them: /s/ /p/ /l/ /a/ /sh/. Listen for all five sounds!",
+  "reveal_feedback": "That one was tricky! The word is splash. Say /s/ /p/ /l/ /a/ /sh/ and it melts together. Now you know!"
+ },
+ {
+  "id": "RF.1.2b-H5",
+  "correct_feedback": "Yes! /b/ /l/ /e/ /n/ /d/ all push together to make blend. Nice work!",
+  "incorrect_feedback": "Almost! Say each sound slowly and stick them together: /b/ /l/ /e/ /n/ /d/. Did you catch every sound?",
+  "reveal_feedback": "That one was tricky! The word is blend. Slide the sounds together: /b/ /l/ /e/ /n/ /d/. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-Q1",
+  "correct_feedback": "Yes! Map starts with /m/, like mmm-map. Nice work!",
+  "incorrect_feedback": "Good try! Say map slowly. What sound do your lips make at the very start?",
+  "reveal_feedback": "That one was tricky! The first sound in map is /m/, mmm-map. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-Q2",
+  "correct_feedback": "Yes! In big, the middle sound is /i/, like b-/i/-g. Nice work!",
+  "incorrect_feedback": "Close one! Say big slowly and stretch it out. What sound is right in the middle?",
+  "reveal_feedback": "That one was tricky! The middle sound in big is /i/, b-/i/-g. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-Q3",
+  "correct_feedback": "Yes! Cup ends with /p/, like cu-/p/. Nice work!",
+  "incorrect_feedback": "Not yet! Say cup slowly. What sound do you hear at the very end?",
+  "reveal_feedback": "That one was tricky! The last sound in cup is /p/, cu-/p/. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-Q5",
+  "correct_feedback": "Yes! Cat has the /a/ sound in the middle, and Bat does too! Nice work!",
+  "incorrect_feedback": "Take another look! Cat has the /a/ sound in the middle. Say each word slowly and find the one that matches.",
+  "reveal_feedback": "That one was tricky! The answer is Bat. Cat and Bat both have /a/ in the middle. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-H1",
+  "correct_feedback": "Yes! Flag starts with /f/, like fff-flag. Nice work!",
+  "incorrect_feedback": "Hmm, say flag slowly. What is the very first sound your mouth makes? Just the one sound!",
+  "reveal_feedback": "That one was tricky! The first sound in flag is /f/, fff-flag. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-H2",
+  "correct_feedback": "Yes! Shell starts with /sh/, like a quiet shhh. Nice work!",
+  "incorrect_feedback": "Almost! Say shell slowly. The first sound is one quiet sound, like telling someone to be still.",
+  "reveal_feedback": "That one was tricky! The first sound in shell is /sh/, shhh-ell. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-H3",
+  "correct_feedback": "Yes! In chin, the middle sound is /i/, like ch-/i/-n. Nice work!",
+  "incorrect_feedback": "Good try! Say chin slowly and stretch it. What sound is right in the middle?",
+  "reveal_feedback": "That one was tricky! The middle sound in chin is /i/, ch-/i/-n. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-H4",
+  "correct_feedback": "Yes! Hand ends with /d/, like han-/d/. Nice work!",
+  "incorrect_feedback": "Close one! Say hand slowly. What is the very last sound, right at the end?",
+  "reveal_feedback": "That one was tricky! The last sound in hand is /d/, han-/d/. Now you know!"
+ },
+ {
+  "id": "RF.1.2c-H5",
+  "correct_feedback": "Yes! Fish ends with /sh/, like a quiet shhh. Nice work!",
+  "incorrect_feedback": "Not yet! Say fish slowly. What quiet sound do you hear at the very end?",
+  "reveal_feedback": "That one was tricky! The last sound in fish is /sh/, fi-shhh. Now you know!"
+ },
+ {
+  "id": "RF.1.2d-Q4",
+  "correct_feedback": "Yes! Stop has four sounds: /s/ /t/ /o/ /p/. Nice work!",
+  "incorrect_feedback": "Hmm, tap out each sound in stop: /s/ /t/ /o/ /p/. Count each tap!",
+  "reveal_feedback": "That one was tricky! Stop has 4 sounds, /s/ /t/ /o/ /p/. Now you know!"
+ },
+ {
+  "id": "RF.1.2d-H1",
+  "correct_feedback": "Yes! Ship has three sounds: /sh/ /i/ /p/. Remember, /sh/ is just one sound! Nice work!",
+  "incorrect_feedback": "Good try! Tap out ship slowly: /sh/ /i/ /p/. Careful, /sh/ counts as just one sound!",
+  "reveal_feedback": "That one was tricky! Ship has 3 sounds, /sh/ /i/ /p/. Now you know!"
+ },
+ {
+  "id": "RF.1.2d-H2",
+  "correct_feedback": "Yes! Fox has four sounds: /f/ /o/ /k/ /s/. The x makes two sounds! Nice work!",
+  "incorrect_feedback": "Almost! Say fox slowly. Listen close, the x at the end makes MORE than one sound!",
+  "reveal_feedback": "That one was tricky! Fox has 4 sounds, /f/ /o/ /k/ /s/. The x is /k/ and /s/! Now you know!"
+ },
+ {
+  "id": "RF.1.2d-H3",
+  "correct_feedback": "Yes! Splash has five sounds: /s/ /p/ /l/ /a/ /sh/. Nice work!",
+  "incorrect_feedback": "Take another look! Tap out each word slowly and count the sounds. Which one has all five?",
+  "reveal_feedback": "That one was tricky! The answer is splash, /s/ /p/ /l/ /a/ /sh/, five sounds! Now you know!"
+ },
+ {
+  "id": "RF.1.2d-H4",
+  "correct_feedback": "Yes! Thank has four sounds: /th/ /a/ /n/ /k/. The /th/ is one sound! Nice work!",
+  "incorrect_feedback": "Close one! Say thank slowly. Remember, /th/ at the start is just one sound. Now count them!",
+  "reveal_feedback": "That one was tricky! Thank has 4 sounds, /th/ /a/ /n/ /k/. Now you know!"
+ },
+ {
+  "id": "RF.1.2d-H5",
+  "correct_feedback": "Yes! Duck has three sounds: /d/ /u/ /k/, just like cat! Nice work!",
+  "incorrect_feedback": "Hmm, tap out each word and count. Cat has 3 sounds. Which word matches with just 3?",
+  "reveal_feedback": "That one was tricky! The answer is duck, /d/ /u/ /k/, three sounds like cat! Now you know!"
+ },
+ {
+  "id": "RF.1.4b-Q1",
+  "correct_feedback": "Yes! An exclamation point means read with excitement or big feeling! Nice work!",
+  "incorrect_feedback": "Good try! An exclamation point is used for big, strong feelings. How would your voice sound then?",
+  "reveal_feedback": "That one was tricky! You read a ! with excitement or strong feeling. It means big feelings! Now you know!"
+ },
+ {
+  "id": "RF.1.4b-Q2",
+  "correct_feedback": "Yes! When you ask a question, your voice goes up at the end. Nice work!",
+  "incorrect_feedback": "Almost! Try asking a question out loud, like, Is it time? Listen, which way does your voice go?",
+  "reveal_feedback": "That one was tricky! With a question mark, your voice goes up at the end. Now you know!"
+ },
+ {
+  "id": "RF.1.4b-Q3",
+  "correct_feedback": "Yes! A good reader changes their voice and takes little breaks at commas. It sounds just right! Nice work!",
+  "incorrect_feedback": "Take another look! A good reader is not too fast, too slow, or flat. Which one sounds smooth and just right?",
+  "reveal_feedback": "That one was tricky! A good reader changes their voice for different parts and pauses at commas. Now you know!"
+ },
+ {
+  "id": "RF.1.4b-Q4",
+  "correct_feedback": "Yes! The mouse yells Help! so you read it in a loud, scared voice. Nice work!",
+  "incorrect_feedback": "Hmm, the little mouse is calling Help! How would you feel if you needed help? Read it that way!",
+  "reveal_feedback": "That one was tricky! You read Help! in a loud, scared voice. The mouse needs help! Now you know!"
+ },
+ {
+  "id": "RF.1.4b-H1",
+  "correct_feedback": "Yes! The comma in Yes, I can help you tells your voice to take a little pause. Nice work!",
+  "incorrect_feedback": "Good try! A pause happens where there is a comma. Look for the sentence with a comma in the middle!",
+  "reveal_feedback": "That one was tricky! The answer is Yes, I can help you. The comma makes you pause. Now you know!"
+ },
+ {
+  "id": "RF.1.4b-H2",
+  "correct_feedback": "Yes! Losing your little dog is sad, so you read it in a sad voice. Nice work!",
+  "incorrect_feedback": "Close one! Three sentences are happy and exciting. Which one tells about something that would feel sad?",
+  "reveal_feedback": "That one was tricky! The sad one is, I lost my little dog. Losing a pet feels sad. Now you know!"
+ },
+ {
+  "id": "RF.1.4b-H3",
+  "correct_feedback": "Yes! The talking marks show Sam is speaking out loud, so use his voice! Nice work!",
+  "incorrect_feedback": "Take another look! Find the sentence with talking marks around the words a character says out loud.",
+  "reveal_feedback": "That one was tricky! The answer is, I am so hungry, said Sam. The marks show Sam is talking! Now you know!"
+ },
+ {
+  "id": "RF.1.4b-H4",
+  "correct_feedback": "Yes! Each comma tells your voice to take a little pause. Nice work!",
+  "incorrect_feedback": "Hmm, think about what commas do. They pop up between the things in a list. What do commas tell your voice?",
+  "reveal_feedback": "That one was tricky! You take a short pause after each comma: apples, grapes, nuts. Now you know!"
+ },
+ {
+  "id": "RF.1.4b-H5",
+  "correct_feedback": "Yes! Reading smoothly, not too fast or slow, helps your friend understand. Nice work!",
+  "incorrect_feedback": "Almost! Too fast, too slow, or skipping words is hard to follow. Which way sounds just right?",
+  "reveal_feedback": "That one was tricky! The best way is smoothly, not too fast and not too slow. Now you know!"
+ },
+ {
+  "id": "RF.1.4c-Q4",
+  "correct_feedback": "Yes! When something does not make sense, a good reader rereads and fixes it. Nice work!",
+  "incorrect_feedback": "Good try! Giving up, skipping, or racing ahead will not help. What could you do to fix a mistake?",
+  "reveal_feedback": "That one was tricky! A good reader rereads it and tries to fix the mistake. Now you know!"
+ },
+ {
+  "id": "RF.1.4c-H1",
+  "correct_feedback": "Yes! A frog can hop from rock to rock. That makes sense! Nice work!",
+  "incorrect_feedback": "Hmm, read it again: The frog will blank from rock to rock. What can a frog really DO?",
+  "reveal_feedback": "That one was tricky! The word is hop, a frog can hop from rock to rock! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-H2",
+  "correct_feedback": "Yes! You bake bread in a hot oven. That makes sense! Nice work!",
+  "incorrect_feedback": "Close one! Read it again: what do you do to bread in a hot oven? Pick the word that makes sense.",
+  "reveal_feedback": "That one was tricky! The word is bake, you bake bread in the oven! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-H3",
+  "correct_feedback": "Yes! A class goes on a trip to the farm. That makes sense! Nice work!",
+  "incorrect_feedback": "Take another look! Trap did not make sense. What word means going somewhere fun, like the farm?",
+  "reveal_feedback": "That one was tricky! The word is trip, the class went on a trip to the farm! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-H4",
+  "correct_feedback": "Yes! A snake can slide through the grass. That makes sense! Nice work!",
+  "incorrect_feedback": "Not yet! Read it again: how does a snake move through tall grass? Pick the word that makes sense.",
+  "reveal_feedback": "That one was tricky! The word is slide, a snake can slide through the grass! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-H5",
+  "correct_feedback": "Yes! A hungry baby will cry loudly. That makes sense! Nice work!",
+  "incorrect_feedback": "Hmm, read it again: what does a baby do loudly when she is hungry? Pick the word that fits.",
+  "reveal_feedback": "That one was tricky! The word is cry, a hungry baby will cry loudly! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-E1",
+  "correct_feedback": "Yes! A dog likes to bark. That makes sense! Nice work!",
+  "incorrect_feedback": "Good try! Read it again: The dog likes to blank. What sound or thing does a dog do?",
+  "reveal_feedback": "That one was tricky! The word is bark, a dog likes to bark! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-E2",
+  "correct_feedback": "Yes! You put a hat on your head. That makes sense! Nice work!",
+  "incorrect_feedback": "Close one! Read it again: where do you wear a hat? Pick the word that makes sense.",
+  "reveal_feedback": "That one was tricky! The word is head, you put a hat on your head! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-E3",
+  "correct_feedback": "Yes! A cat can jump on the bed. That makes sense! Nice work!",
+  "incorrect_feedback": "Take another look! Bde is not a real word. What soft thing could a cat jump on to sleep?",
+  "reveal_feedback": "That one was tricky! The word is bed, a cat can jump on the bed! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-E4",
+  "correct_feedback": "Yes! We eat lunch at noon, in the middle of the day. That makes sense! Nice work!",
+  "incorrect_feedback": "Hmm, read it again: We eat lunch at blank. What word tells a TIME of day?",
+  "reveal_feedback": "That one was tricky! The word is noon, we eat lunch at noon! Now you know!"
+ },
+ {
+  "id": "RF.1.4c-E5",
+  "correct_feedback": "Yes! The sun is very hot. That makes sense! Nice work!",
+  "incorrect_feedback": "Almost! Hat does not sound right for the sun. What word tells how the warm sun feels?",
+  "reveal_feedback": "That one was tricky! The word is hot, the sun is very hot! Now you know!"
+ },
+ {
+  "id": "L.1.4-Q3",
+  "correct_feedback": "Yes! You swing a bat to hit a ball, so bat means a stick for a game! Nice work!",
+  "incorrect_feedback": "Good try! Read the sentence again. The boy SWUNG the bat to hit a ball. What kind of bat is that?",
+  "reveal_feedback": "That one was tricky! Here, bat means a stick used to play a game, to hit the ball! Now you know!"
+ },
+ {
+  "id": "L.1.4-H1",
+  "correct_feedback": "Yes! When a ball flies at you, you duck by bending down fast! Nice work!",
+  "incorrect_feedback": "Close one! Read it again. The ball flew fast at his head. What would you DO so it did not hit you?",
+  "reveal_feedback": "That one was tricky! Here, duck means to bend down quickly so the ball misses you! Now you know!"
+ },
+ {
+  "id": "L.1.4-H2",
+  "correct_feedback": "Yes! Boiling is even hotter than hot, like bubbling soup! Nice work!",
+  "incorrect_feedback": "Hmm, warm, cool, and wet are not hotter than hot. Which word means super, super hot?",
+  "reveal_feedback": "That one was tricky! Boiling means even more hot than hot, like bubbly soup! Now you know!"
+ },
+ {
+  "id": "L.1.4-H3",
+  "correct_feedback": "Yes! Un means to undo, so untie means to make the knot come loose! Nice work!",
+  "incorrect_feedback": "Take another look! The little word un means to undo something. So what does untie a knot mean?",
+  "reveal_feedback": "That one was tricky! Untie means to make the knot come loose. Un means undo! Now you know!"
+ },
+ {
+  "id": "L.1.4-H4",
+  "correct_feedback": "Yes! At the beach, a wave is water that rolls up onto the shore! Nice work!",
+  "incorrect_feedback": "Good try! Read it again. It splashed over your feet at the beach. What kind of wave does that?",
+  "reveal_feedback": "That one was tricky! Here, wave means water that rolls onto the shore at the beach! Now you know!"
+ },
+ {
+  "id": "L.1.4-H5",
+  "correct_feedback": "Yes! Exhausted means SO tired you can barely move, even more than tired! Nice work!",
+  "incorrect_feedback": "Almost! Rested, sleepy, and awake do not mean more than tired. Which word means really, REALLY tired?",
+  "reveal_feedback": "That one was tricky! Exhausted means even more than tired, worn all the way out! Now you know!"
+ },
+ {
+  "id": "L.1.4a-Q1",
+  "correct_feedback": "Yes! The dog played in the rain, so soggy means wet! Nice work!",
+  "incorrect_feedback": "Hmm, read it again. The dog played outside in the RAIN. How would that make the dog feel?",
+  "reveal_feedback": "That one was tricky! Soggy means wet, like a dog out in the rain! Now you know!"
+ },
+ {
+  "id": "L.1.4a-Q2",
+  "correct_feedback": "Yes! A little ant next to a big rock is tiny, very small! Nice work!",
+  "incorrect_feedback": "Close one! Read it again. The ant looked little next to a BIG rock. What does tiny tell us?",
+  "reveal_feedback": "That one was tricky! Tiny means very small, like a little ant! Now you know!"
+ }
+]

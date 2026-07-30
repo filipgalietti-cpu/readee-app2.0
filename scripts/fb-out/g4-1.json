@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.4.6-Q4",
+  "correct_feedback": "Yes! The narrator isn't Lily, but it shares only Lily's worries and feelings. That's an outside narrator zooming in on one character.",
+  "incorrect_feedback": "Hmm, look at whose thoughts we hear. Do we get inside everyone's head, or just one person's? And is that person telling the story?",
+  "reveal_feedback": "The answer is an outside narrator who focuses on one character. We hear only Lily's feelings, but the story uses 'she,' not 'I.'"
+ },
+ {
+  "id": "RL.4.6-Q5",
+  "correct_feedback": "Exactly! Version A only shows Jake's own feelings, while Version B stands back and shows how both teams react. Point of view changes what you see.",
+  "incorrect_feedback": "Almost. Reread both. One says 'I' and shares one person's feelings. The other watches from outside and shows more people. Do they really match?",
+  "reveal_feedback": "The answer is: Version A shows Jake's feelings; Version B shows both teams' reactions. The 'I' version stays inside Jake; the other sees everyone."
+ },
+ {
+  "id": "RL.4.6-E1",
+  "correct_feedback": "Right! The word 'I' means the narrator is talking about themselves, so it's first-person point of view.",
+  "incorrect_feedback": "Take another look at the special words. Do you see 'I' and 'my,' or names like 'he' and 'she'? That tells you the point of view.",
+  "reveal_feedback": "The answer is first-person. The word 'I' shows the narrator is a character telling their own story."
+ },
+ {
+  "id": "RL.4.6-E2",
+  "correct_feedback": "Nice! It uses her name 'Maria' and the word 'she,' so an outside narrator is telling it. That's third-person.",
+  "incorrect_feedback": "Good try. Check the words carefully. Does the narrator say 'I,' or do they name Maria and say 'she'? That points to the answer.",
+  "reveal_feedback": "The answer is third-person. The story uses 'Maria' and 'she,' so the narrator is outside the story, not the character."
+ },
+ {
+  "id": "RL.4.6-E3",
+  "correct_feedback": "Yes! The word 'I' shows the narrator is a character in the story, talking about themselves. That's first-person.",
+  "incorrect_feedback": "Close one. Which word means the narrator is talking about their own self, not about someone else? Say each choice aloud.",
+  "reveal_feedback": "The answer is 'I.' That special word shows the narrator is a character telling the story about themselves."
+ },
+ {
+  "id": "RL.4.6-E4",
+  "correct_feedback": "Great! The word 'He' means an outside narrator is telling about the character, not the character speaking. That's third-person.",
+  "incorrect_feedback": "Not yet. Look at the very first word. Does it say 'I,' or does it name someone with 'he'? That decides the point of view.",
+  "reveal_feedback": "The answer is third-person. The story uses 'He,' so a narrator outside the story is telling it."
+ },
+ {
+  "id": "RL.4.6-E5",
+  "correct_feedback": "Yes! 'I love the smell of fresh cookies' uses 'I,' so the writer is telling about themselves. That's first-person.",
+  "incorrect_feedback": "Take another look. Which sentence uses the word 'I' to show the writer is talking about their own self? The others use names or 'they.'",
+  "reveal_feedback": "The answer is 'I love the smell of fresh cookies.' The word 'I' shows the narrator is a character in the story."
+ },
+ {
+  "id": "RL.4.7-Q1",
+  "correct_feedback": "Exactly! The dramatic music and dark lighting create a feeling. Sound and visuals add mood and atmosphere the words alone couldn't give.",
+  "incorrect_feedback": "Hmm, think about what music and dark lighting do to you. Do they add new characters, or do they change how the scene feels?",
+  "reveal_feedback": "The answer is mood and atmosphere through sound and visuals. The music and dark lighting make you feel the storm, not just read it."
+ },
+ {
+  "id": "RL.4.7-Q2",
+  "correct_feedback": "Right! In a play there's no narrator, so Priya's hidden feelings can't be spoken. The character's inner thoughts get lost.",
+  "incorrect_feedback": "Good try. In a play you only see and hear the actors. Which part of the book did only the narrator tell? That's what disappears.",
+  "reveal_feedback": "The answer is the character's inner thoughts described by the narrator. On stage there's no narrator to reveal Priya's private feelings."
+ },
+ {
+  "id": "RL.4.7-Q3",
+  "correct_feedback": "Yes! The plain words just said 'upset,' but the movie showed the frown, voice, and crossed arms. Actors add expressions, tone, and body language.",
+  "incorrect_feedback": "Almost. Think about what Jordan could see and hear in the movie that words couldn't show. Was it more words, or was it the actor?",
+  "reveal_feedback": "The answer is facial expressions, tone of voice, and body language of actors. The movie showed Grandpa's frown and shaky voice that words couldn't."
+ },
+ {
+  "id": "RL.4.7-Q4",
+  "correct_feedback": "Nice! The book just says 'kind eyes,' but the movie shows a warm smile and soft voice. It adds details that bring the words to life.",
+  "incorrect_feedback": "Close one. Does the movie fight against the book, or does it show real sights and sounds that match and expand the words?",
+  "reveal_feedback": "The answer is: it shows specific visual and audio details that bring 'kind eyes' to life. The movie adds a smile and voice the text only hinted at."
+ },
+ {
+  "id": "RL.4.7-Q5",
+  "correct_feedback": "Exactly! The book's tall, glowing tower becomes a short brick building in the movie. The biggest change is how the tower looks.",
+  "incorrect_feedback": "Take another look. The question is about the tower. Compare the tall glowing tower to the short brick one. What's the clearest difference?",
+  "reveal_feedback": "The answer is: how the wizard's tower appears is very different in each version. The book's grand glowing tower became a plain short building."
+ },
+ {
+  "id": "RL.4.7-E1",
+  "correct_feedback": "Yes! In the book you only read words, but the movie let Maya hear the wolves and wind. The movie adds sound you can hear.",
+  "incorrect_feedback": "Hmm, think about the word HEAR. The book had words on a page. What new thing did the movie let Maya's ears do?",
+  "reveal_feedback": "The answer is sound you can hear. The movie let Maya hear the wolves howling and the wind, which a book cannot do."
+ },
+ {
+  "id": "RL.4.7-E2",
+  "correct_feedback": "Right! On the book page you just read the play, but on stage Ben saw real people moving and speaking. That's what acting adds.",
+  "incorrect_feedback": "Good try. Ben's class acted it out on a stage. What new thing could his eyes SEE that flat book pages could not show?",
+  "reveal_feedback": "The answer is real actors moving and speaking. On stage, live people bring the play to life in a way the book pages could not."
+ },
+ {
+  "id": "RL.4.7-E3",
+  "correct_feedback": "Yes! The book called the party 'happy,' and the movie's bright colors and cheerful music feel happy too. They match!",
+  "incorrect_feedback": "Not yet. The book's party is colorful, and the movie uses bright colors and cheerful music. What good feeling do BOTH show?",
+  "reveal_feedback": "The answer is happy. The book says the party is happy, and the movie's bright colors and cheerful music show the same happy feeling."
+ },
+ {
+  "id": "RL.4.7-E4",
+  "correct_feedback": "Nice! Instead of reading, Liam listened. A gentle voice reading aloud lets him hear how the words sound.",
+  "incorrect_feedback": "Take another look. It's an AUDIO version, so an actor reads out loud. What does listening let Liam do that reading silently would not?",
+  "reveal_feedback": "The answer is hear how the words sound. An audio version reads the story aloud, so Liam listens instead of reading with his eyes."
+ },
+ {
+  "id": "RL.4.7-E5",
+  "correct_feedback": "Right! The book says Sam is tall with red hair, and the movie actor is tall with red hair too. The movie matches the book.",
+  "incorrect_feedback": "Close one. Compare them. The book says tall with red hair, and the actor is tall with red hair. Do they look the same or different?",
+  "reveal_feedback": "The answer is: it matches the book. Both the book Sam and the movie actor are tall with red hair, so they look the same."
+ },
+ {
+  "id": "RL.4.9-Q1",
+  "correct_feedback": "Exactly! One story uses a chariot, the other an eagle, but both are trying to explain the same thing: how the sun moves across the sky.",
+  "incorrect_feedback": "Hmm, look past the chariot and the eagle. Both stories are about the sun doing what? Find the idea they share.",
+  "reveal_feedback": "The answer is how the sun moves across the sky. Both myths use different characters to explain that same sky event."
+ },
+ {
+  "id": "RL.4.9-Q2",
+  "correct_feedback": "Yes! In the first myth a god sends the flood as a punishment, but in the second it's just a river overflowing naturally. That's the key difference.",
+  "incorrect_feedback": "Good try. Ask WHY each flood began. One is caused on purpose by a god, the other happens on its own. How are those reasons different?",
+  "reveal_feedback": "The answer is: the first shows the flood as a punishment, the second as a natural event. One god acts on purpose; the other is just a river."
+ },
+ {
+  "id": "RL.4.9-Q3",
+  "correct_feedback": "Right! A small fox and a small spider both beat bigger, stronger foes using their brains. The shared idea is that being smart helps the weaker one win.",
+  "incorrect_feedback": "Almost. Both main characters are small but still win. How do they beat the bigger animals? Think about what those two heroes share.",
+  "reveal_feedback": "The answer is: both teach that being smart can help a weaker character win. The little fox and little spider both outsmart stronger animals."
+ },
+ {
+  "id": "RL.4.9-Q4",
+  "correct_feedback": "Exactly! To compare HOW each story shows courage, you look at the brave actions the characters take and what happens because of them.",
+  "incorrect_feedback": "Take another look. Counting the word 'courage' or checking dates won't show HOW courage looks. What would you actually watch the characters do?",
+  "reveal_feedback": "The answer is: look at what brave actions the characters take and the results. That shows HOW each story pictures courage, not just the word."
+ },
+ {
+  "id": "RL.4.9-E1",
+  "correct_feedback": "Yes! Both the Chinese and Hawaiian myths explain why the moon changes shape each month. Same topic, different cultures.",
+  "incorrect_feedback": "Not yet. Both stories are about the same thing in the sky. Reread what each myth explains, and find the topic they share.",
+  "reveal_feedback": "The answer is why the moon changes shape. Both myths, from different cultures, explain that same thing about the moon."
+ },
+ {
+  "id": "RL.4.9-E2",
+  "correct_feedback": "Right! Both folktales teach that when you are kind to others, good things come back to you. That shared lesson is the theme.",
+  "incorrect_feedback": "Good try. A theme is the lesson a story teaches. Both stories teach the same lesson about how being kind works. What is it?",
+  "reveal_feedback": "The answer is kindness comes back to you. Both folktales teach that same lesson, so it's the theme they share."
+ },
+ {
+  "id": "RL.4.9-E3",
+  "correct_feedback": "Yes! A clever hero and a clever spider both use a trick to escape danger. That's how the two stories are alike.",
+  "incorrect_feedback": "Close one. In both tales a smart character faces something dangerous. How do they get away? Find what both stories have in common.",
+  "reveal_feedback": "The answer is: both have a clever character who escapes danger with a trick. The hero and the spider both trick their way out of trouble."
+ },
+ {
+  "id": "RL.4.9-E4",
+  "correct_feedback": "Right! A bowling giant and a roaring dragon are different, but both myths explain the same thing: what causes thunder.",
+  "incorrect_feedback": "Take another look. Forget the giant and the dragon. What loud thing in the sky are both myths trying to explain?",
+  "reveal_feedback": "The answer is: they both try to explain what causes thunder. Different characters, but the same big question about that sky sound."
+ },
+ {
+  "id": "RL.4.9-E5",
+  "correct_feedback": "Yes! Both heroes are brave and fight a monster to protect their village. That's exactly what they have in common.",
+  "incorrect_feedback": "Not yet. One hero is Norse and one is Mexican, but they do the same brave thing. What do both heroes do for their village?",
+  "reveal_feedback": "The answer is: each is brave and fights a monster to protect the village. Both heroes share that same courageous action."
+ },
+ {
+  "id": "RL.4.10-Q1",
+  "correct_feedback": "Exactly! Everyone else locked their doors, but Alma grabbed a lantern and followed the scary sound. That shows she's curious and brave.",
+  "incorrect_feedback": "Hmm, compare Alma to the townspeople. They hid, but she went toward the mystery. What does that choice tell you about her?",
+  "reveal_feedback": "The answer is: she's curious and braver than the other townspeople. While they locked their doors, Alma chased the mystery with her lantern."
+ },
+ {
+  "id": "RL.4.10-Q2",
+  "correct_feedback": "Right! The treaty was signed fast but broken the next day. The queen means peace is easy to promise but hard to keep going.",
+  "incorrect_feedback": "Good try. The peace was promised quickly, then fell apart. What is the queen really saying about the hard part of peace?",
+  "reveal_feedback": "The answer is: making peace is simple but maintaining it is the real challenge. The treaty was easy to sign but broke the very next day."
+ },
+ {
+  "id": "RL.4.10-Q3",
+  "correct_feedback": "Yes! Theo missed the first leaves, then suddenly the tree was bare. Grandma means change can be slow, then all at once obvious.",
+  "incorrect_feedback": "Almost. Grandma's saying isn't really about maple trees. Think about how the slow, then sudden change could fit life too. What's her bigger point?",
+  "reveal_feedback": "The answer is: how change in life can be gradual then suddenly obvious. The falling leaves are just an example of that bigger idea."
+ },
+ {
+  "id": "RL.4.10-Q4",
+  "correct_feedback": "Right! Zuri always carries a pencil so she can write down the truth before it's forgotten. She values truth and recording what matters.",
+  "incorrect_feedback": "Take another look. Why would Zuri always carry a pencil to write things down, even if someone wants her to forget? What does that show she cares about?",
+  "reveal_feedback": "The answer is: she values truth and recording important things. Her pencil rule shows she wants to keep the truth safe from being forgotten."
+ },
+ {
+  "id": "RL.4.10-Q5",
+  "correct_feedback": "Exactly! No one believed the captain, but she trusted herself and was right at dawn. The theme is that faith and determination guide you through doubt.",
+  "incorrect_feedback": "Not yet. Think about the captain standing firm while others doubted, and land appearing at dawn. What lesson does her belief teach?",
+  "reveal_feedback": "The answer is: faith and determination can lead you through doubt. The captain believed against everyone's doubt, and land appeared at sunrise."
+ },
+ {
+  "id": "RL.4.10-E1",
+  "correct_feedback": "Yes! Maya gasped and said the ocean was bigger than she imagined. Those clues show she feels amazed and excited.",
+  "incorrect_feedback": "Take another look at what Maya does. She gasps and presses her face to the window. Do those actions sound bored, or full of wonder?",
+  "reveal_feedback": "The answer is amazed and excited. Maya gasps and says the ocean is bigger than she imagined, which shows her wonder."
+ },
+ {
+  "id": "RL.4.10-E2",
+  "correct_feedback": "Right! The story talks about a lighthouse on a cliff guiding ships to shore. It takes place at a lighthouse by the sea.",
+  "incorrect_feedback": "Good try. Look at the clue words: a lighthouse, a cliff, and ships. What kind of place do those details point to?",
+  "reveal_feedback": "The answer is at a lighthouse by the sea. The story describes a lighthouse on a cliff guiding ships to shore."
+ },
+ {
+  "id": "RL.4.10-E3",
+  "correct_feedback": "Yes! Ben studied all week and every word was correct, so he jumped up smiling. He's happy because he got every word right.",
+  "incorrect_feedback": "Not yet. Reread what happened. Ben studied hard, and his paper came back with every word a certain way. Why the big smile?",
+  "reveal_feedback": "The answer is: he got every word right. Ben studied all week, and every spelling word was correct, so he cheered."
+ },
+ {
+  "id": "RL.4.10-E4",
+  "correct_feedback": "Right! Rain slams the windows, thunder shakes the house, and the children huddle together. It's a scary storm at night.",
+  "incorrect_feedback": "Take another look at the clues: rain, thunder, and kids pulling blankets tight. Does that sound sunny, or like something else?",
+  "reveal_feedback": "The answer is a scary storm at night. The rain, thunder, and frightened children all point to a nighttime storm."
+ },
+ {
+  "id": "RL.4.10-E5",
+  "correct_feedback": "Yes! Grandpa says the glove was his and softly gives it to Lily. He wants to share something special with her.",
+  "incorrect_feedback": "Good try. Grandpa gives Lily his own old glove and speaks softly. Does that sound like he dislikes it, or that it means a lot?",
+  "reveal_feedback": "The answer is: because he wants to share something special with her. The glove was his as a boy, and he passes it on with love."
+ },
+ {
+  "id": "RI.4.1-Q1",
+  "correct_feedback": "Exactly! Zooming around at 17,500 mph, the station circles Earth about every 90 minutes, so astronauts see a sunrise each time around.",
+  "incorrect_feedback": "Hmm, the sun doesn't really move faster. Look for the detail about how fast the station travels and how often it circles Earth.",
+  "reveal_feedback": "The answer is: it orbits at 17,500 mph, completing an orbit roughly every 90 minutes. Each fast trip around brings another sunrise."
+ },
+ {
+  "id": "RI.4.1-Q2",
+  "correct_feedback": "Right! The passage says this changed what makes humans unique, meaning people once thought only humans used tools. That's why it mattered.",
+  "incorrect_feedback": "Good try. The text says the discovery changed what makes humans 'unique.' What did people probably believe about tools before Goodall saw the chimps?",
+  "reveal_feedback": "The answer is: scientists previously believed only humans used tools. Seeing chimps use sticks changed that idea, which made it important."
+ },
+ {
+  "id": "RI.4.1-Q3",
+  "correct_feedback": "Yes! The passage says the angle of the dance shows the food's direction compared to the sun. That's the detail about HOW bees point the way.",
+  "incorrect_feedback": "Take another look. Buzzing and circles aren't in the passage. Which detail tells the exact way bees show which direction food is?",
+  "reveal_feedback": "The answer is the angle of the dance relative to the sun. The passage says that angle points to the food's direction."
+ },
+ {
+  "id": "RI.4.1-Q4",
+  "correct_feedback": "Exactly! Most miners stayed poor, but the merchants selling tools made fortunes. So selling supplies beat mining for making money.",
+  "incorrect_feedback": "Almost. Compare the miners and the merchants. Who ended up with fortunes? What can you infer about which job made more money?",
+  "reveal_feedback": "The answer is: selling supplies to miners was more profitable than mining itself. The merchants got rich while most miners did not."
+ },
+ {
+  "id": "RI.4.1-Q5",
+  "correct_feedback": "Right! Maya woke early, hummed, and smiled the whole time she baked. Those happy clues let you infer she enjoys baking.",
+  "incorrect_feedback": "Good try. An inference is a smart guess from clues. Notice she hums and smiles while baking. What does that suggest about her, beyond what's stated?",
+  "reveal_feedback": "The answer is: Maya enjoys baking. Her humming and big smile are clues that let you infer she loves it, not just facts she listed."
+ },
+ {
+  "id": "RI.4.1-E1",
+  "correct_feedback": "Yes! The sentence says honeybees live in a home called a hive. You found the answer right in the text.",
+  "incorrect_feedback": "Take another look at the sentence. It names the honeybee's home with one special word. Read it again and find that word.",
+  "reveal_feedback": "The answer is a hive. The sentence says honeybees live together in a home called a hive."
+ },
+ {
+  "id": "RI.4.1-E2",
+  "correct_feedback": "Right! The text says the Sahara is very dry. You pulled the answer straight from the sentence.",
+  "incorrect_feedback": "Good try. Reread the sentence about the Sahara. It tells you exactly what the desert is like. What word does it use?",
+  "reveal_feedback": "The answer is very dry. The sentence says the Sahara is the largest hot desert and it is very dry."
+ },
+ {
+  "id": "RI.4.1-E3",
+  "correct_feedback": "Yes! The sentence says owls hunt at night, so they sleep during the day. You matched it perfectly.",
+  "incorrect_feedback": "Not yet. The sentence says owls hunt at night. If they're busy hunting then, when would they rest? Reread and find it.",
+  "reveal_feedback": "The answer is during the day. The sentence says owls hunt at night, so they sleep during the day."
+ },
+ {
+  "id": "RI.4.1-E4",
+  "correct_feedback": "Right! The sentence says the Nile gives people water to drink. You found the detail in the text.",
+  "incorrect_feedback": "Take another look at the sentence about the Nile. It names one thing the river gives people. What is it?",
+  "reveal_feedback": "The answer is water to drink. The sentence says the Nile is a long river that gives people water to drink."
+ }
+]

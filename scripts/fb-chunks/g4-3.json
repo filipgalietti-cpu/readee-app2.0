@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RI.4.7-E5",
+  "standard": "RI.4.7",
+  "prompt": "A pie chart shows how a class spends recess. Half of the chart is labeled 'playing' and a small slice is labeled 'reading.' Which activity did MORE students choose?",
+  "choices": [
+   "Playing",
+   "Both were equal",
+   "Reading",
+   "Neither one"
+  ],
+  "correct": "Playing"
+ },
+ {
+  "id": "RI.4.8-Q1",
+  "standard": "RI.4.8",
+  "prompt": "Schools should offer more art classes. Studies show that students in art programs score higher on standardized tests. Art also teaches creativity, problem-solving, and collaboration.\n\nThe author supports their point with \u2014",
+  "choices": [
+   "No evidence",
+   "Personal opinions only",
+   "Research studies and specific skills art teaches",
+   "A story about an artist"
+  ],
+  "correct": "Research studies and specific skills art teaches"
+ },
+ {
+  "id": "RI.4.8-Q2",
+  "standard": "RI.4.8",
+  "prompt": "In a text, an author writes: 'Recess actually helps students learn and focus better in class. For example, some schools have seen that students who get a good break outside perform 20% better on their math and reading tests after lunch.' How does the author use the information about students performing 20% better on tests?",
+  "choices": [
+   "To explain what kind of tests students take after recess.",
+   "To give an opinion about why students like recess.",
+   "To provide a specific fact that supports the idea that recess helps students learn better.",
+   "To show that school tests are very important."
+  ],
+  "correct": "To provide a specific fact that supports the idea that recess helps students learn better."
+ },
+ {
+  "id": "RI.4.8-Q3",
+  "standard": "RI.4.8",
+  "prompt": "Endangered species need stronger legal protections. The bald eagle was nearly extinct until the Endangered Species Act helped its population recover from 417 pairs in 1963 to over 316,000 today.\n\nHow does the bald eagle example support the author's point?",
+  "choices": [
+   "It proves that legal protections actually work to save species",
+   "It changes the topic to birds",
+   "It shows eagles are pretty",
+   "It's just an interesting fact"
+  ],
+  "correct": "It proves that legal protections actually work to save species"
+ },
+ {
+  "id": "RI.4.8-Q4",
+  "standard": "RI.4.8",
+  "prompt": "Read the passage: When you read an author's argument, your job is to decide whether it is strong. A strong argument gives reasons and evidence that truly back up its main point. To judge it, a careful reader looks closely at each piece of evidence and asks whether it really supports the claim the author is trying to prove. When evaluating an author's argument, you should ask \u2014",
+  "choices": [
+   "Does it have pictures?",
+   "Does the evidence actually support the point being made?",
+   "Is the text long enough?",
+   "Is the author famous?"
+  ],
+  "correct": "Does the evidence actually support the point being made?"
+ },
+ {
+  "id": "RI.4.8-E1",
+  "standard": "RI.4.8",
+  "prompt": "An author writes: \"Dogs make great pets. One reason is that dogs are very loyal to their owners.\" What reason does the author give to support the point that dogs make great pets?",
+  "choices": [
+   "Dogs are very loyal to their owners.",
+   "The author has a dog named Max.",
+   "Dogs like to eat treats.",
+   "Cats are also pets."
+  ],
+  "correct": "Dogs are very loyal to their owners."
+ },
+ {
+  "id": "RI.4.8-E2",
+  "standard": "RI.4.8",
+  "prompt": "An author writes: \"Reading before bed is a good habit. Studies show that kids who read at night sleep better.\" Which sentence is the EVIDENCE the author uses to support the point?",
+  "choices": [
+   "Books can be found at the library.",
+   "Studies show that kids who read at night sleep better.",
+   "Reading before bed is a good habit.",
+   "Some kids do not like to read."
+  ],
+  "correct": "Studies show that kids who read at night sleep better."
+ },
+ {
+  "id": "RI.4.8-E3",
+  "standard": "RI.4.8",
+  "prompt": "An author writes: \"Our town needs a new park. Right now, there is no safe place for children to play outside.\" Why does the author mention that there is no safe place to play?",
+  "choices": [
+   "To explain how to build a swing set.",
+   "To describe what the town looks like in winter.",
+   "To support the point that the town needs a new park.",
+   "To tell a story about a fun day at the park."
+  ],
+  "correct": "To support the point that the town needs a new park."
+ },
+ {
+  "id": "RI.4.8-E4",
+  "standard": "RI.4.8",
+  "prompt": "An author writes: \"Everyone should drink water every day. Doctors say water keeps your body healthy.\" What point is the author trying to support with this evidence?",
+  "choices": [
+   "Some people drink juice instead.",
+   "Doctors wear white coats.",
+   "Water can be cold or warm.",
+   "Everyone should drink water every day."
+  ],
+  "correct": "Everyone should drink water every day."
+ },
+ {
+  "id": "RI.4.8-E5",
+  "standard": "RI.4.8",
+  "prompt": "An author writes: \"Bikes are a good way to get around. Bikes do not use gas, so they are cheaper than cars.\" What reason does the author give to show bikes are a good way to get around?",
+  "choices": [
+   "Bikes do not use gas, so they are cheaper than cars.",
+   "The author likes to ride bikes.",
+   "Bikes come in many colors.",
+   "Cars can go very fast."
+  ],
+  "correct": "Bikes do not use gas, so they are cheaper than cars."
+ },
+ {
+  "id": "RI.4.9-Q2",
+  "standard": "RI.4.9",
+  "prompt": "Text A: \"Mars has a thin atmosphere made mostly of carbon dioxide.\" Text B: \"Mars has massive dust storms that can cover the entire planet for months.\"\n\nUsing both texts, what can you explain about Mars?",
+  "choices": [
+   "Both its atmospheric composition AND its extreme weather patterns",
+   "Only its atmosphere",
+   "Nothing new",
+   "Only its weather"
+  ],
+  "correct": "Both its atmospheric composition AND its extreme weather patterns"
+ },
+ {
+  "id": "RI.4.9-Q3",
+  "standard": "RI.4.9",
+  "prompt": "Read the two texts about butterflies and moths.\n\nText 1: Butterflies\nButterflies are a type of insect. They are usually active in the daytime, flying around when the sun is out. When a butterfly lands to rest, its colorful wings often close and stand straight up over its back. To grow from a larva into an adult, a butterfly forms a hard casing called a chrysalis.\n\nText 2: Moths\nMoths are also insects, and they are related to butterflies. Many moths are active at night, flying when it is dark. When a moth rests, its wings usually lay flat against its body. To grow from a larva into an adult, a moth spins a soft, silky covering called a cocoon around itself.\n\nWhich statement correctly combines information from both texts?",
+  "choices": [
+   "Butterflies are insects known for their colorful wings that close upwards when they rest.",
+   "Both butterflies and moths are insects that change from larva to adult, but butterflies are active in the daytime and make a chrysalis, while moths are often active at night and make a cocoon.",
+   "Moths are insects that are often active at night and spin a silky cocoon when they grow.",
+   "Butterflies and moths are exactly alike because they both fly and have wings."
+  ],
+  "correct": "Both butterflies and moths are insects that change from larva to adult, but butterflies are active in the daytime and make a chrysalis, while moths are often active at night and make a cocoon."
+ },
+ {
+  "id": "RI.4.9-Q4",
+  "standard": "RI.4.9",
+  "prompt": "Text A says wolves were removed from Yellowstone in the 1920s. Text B says after wolves were reintroduced in 1995, the elk population became healthier and rivers changed course. Combining these texts helps you understand \u2014",
+  "choices": [
+   "Wolves are dangerous",
+   "1995 was an important year",
+   "The long-term impact of removing and then restoring a species to an ecosystem",
+   "Rivers always change course"
+  ],
+  "correct": "The long-term impact of removing and then restoring a species to an ecosystem"
+ },
+ {
+  "id": "RI.4.9-Q5",
+  "standard": "RI.4.9",
+  "prompt": "Read the passage: When researchers study a topic, they read many sources instead of just one. Each source may add a different perspective and new details, and one book might leave out something that another explains clearly. By combining several sources, a reader builds a more complete and balanced understanding of the topic than any single source could give. Why is using multiple sources better than using just one?",
+  "choices": [
+   "One source always has errors",
+   "You should always use exactly one source",
+   "More sources means a longer report",
+   "Multiple sources provide different perspectives, details, and a more complete understanding"
+  ],
+  "correct": "Multiple sources provide different perspectives, details, and a more complete understanding"
+ },
+ {
+  "id": "RI.4.9-E1",
+  "standard": "RI.4.9",
+  "prompt": "Two texts tell about dogs.\n\nText 1 says: \"Dogs have a strong sense of smell.\"\nText 2 says: \"Dogs have very good hearing.\"\n\nUsing BOTH texts, what are two things dogs are good at?",
+  "choices": [
+   "Smelling and hearing",
+   "Reading and counting",
+   "Only smelling",
+   "Flying and swimming"
+  ],
+  "correct": "Smelling and hearing"
+ },
+ {
+  "id": "RI.4.9-E2",
+  "standard": "RI.4.9",
+  "prompt": "Two short texts are about the sun.\n\nText A says: \"The sun gives us light.\"\nText B says: \"The sun gives us heat.\"\n\nUsing information from BOTH texts, what does the sun give us?",
+  "choices": [
+   "Only heat",
+   "Light and heat",
+   "Rain and snow",
+   "Only light"
+  ],
+  "correct": "Light and heat"
+ },
+ {
+  "id": "RI.4.9-E3",
+  "standard": "RI.4.9",
+  "prompt": "Read two texts about bees.\n\nText 1: \"Bees make honey.\"\nText 2: \"Bees help flowers grow.\"\n\nUsing BOTH texts together, what do bees do?",
+  "choices": [
+   "Only make honey",
+   "They chase cats",
+   "They make honey and help flowers grow",
+   "They build nests in the ocean"
+  ],
+  "correct": "They make honey and help flowers grow"
+ },
+ {
+  "id": "RI.4.9-E4",
+  "standard": "RI.4.9",
+  "prompt": "Two texts are about rain.\n\nText A says: \"Rain gives water to plants.\"\nText B says: \"Rain fills up rivers and lakes.\"\n\nUsing information from BOTH texts, name two things rain does.",
+  "choices": [
+   "It makes the sun brighter",
+   "It only waters plants",
+   "It paints the sky orange",
+   "It waters plants and fills rivers and lakes"
+  ],
+  "correct": "It waters plants and fills rivers and lakes"
+ },
+ {
+  "id": "RI.4.9-E5",
+  "standard": "RI.4.9",
+  "prompt": "Read two short texts about the moon.\n\nText 1: \"The moon moves around the Earth.\"\nText 2: \"The moon shines at night.\"\n\nUsing BOTH texts, which sentence is true?",
+  "choices": [
+   "The moon moves around the Earth and shines at night",
+   "The moon is made of cheese",
+   "The moon moves around the sun and shines in the daytime",
+   "The moon stays perfectly still all day"
+  ],
+  "correct": "The moon moves around the Earth and shines at night"
+ },
+ {
+  "id": "RI.4.10-Q2",
+  "standard": "RI.4.10",
+  "prompt": "The Dead Sea, located between Israel and Jordan, is nearly ten times saltier than the ocean. This extreme salinity means no fish or plants can survive in it \u2014 hence the name. However, the mineral-rich mud and water have been used for health treatments for thousands of years.\n\nWhat is ironic about the Dead Sea?",
+  "choices": [
+   "It's between two countries",
+   "Despite being called 'dead,' it has been valuable for human health for millennia",
+   "It's very salty",
+   "It's not really a sea"
+  ],
+  "correct": "Despite being called 'dead,' it has been valuable for human health for millennia"
+ },
+ {
+  "id": "RI.4.10-Q3",
+  "standard": "RI.4.10",
+  "prompt": "In 1983, Dr. Sally Ride became the first American woman in space. She later founded Sally Ride Science, an organization encouraging girls to pursue careers in science, technology, engineering, and math.\n\nWhat does this tell you about Dr. Ride's priorities?",
+  "choices": [
+   "She only cared about her own career",
+   "She stopped working after 1983",
+   "She wanted to inspire the next generation, especially girls, to follow in her footsteps",
+   "She didn't like science"
+  ],
+  "correct": "She wanted to inspire the next generation, especially girls, to follow in her footsteps"
+ },
+ {
+  "id": "RI.4.10-Q4",
+  "standard": "RI.4.10",
+  "prompt": "Bamboo is one of the fastest-growing plants on Earth, capable of growing up to 35 inches in a single day. It's also incredibly strong \u2014 pound for pound, bamboo has a greater tensile strength than steel.\n\nWhy might bamboo be considered a **super-plant**?",
+  "choices": [
+   "It's green",
+   "It grows in Asia",
+   "It's a type of tree",
+   "It grows extremely fast AND is stronger than steel by weight"
+  ],
+  "correct": "It grows extremely fast AND is stronger than steel by weight"
+ },
+ {
+  "id": "RI.4.10-Q5",
+  "standard": "RI.4.10",
+  "prompt": "The Library of Alexandria, built around 300 BCE in Egypt, was the ancient world's greatest center of learning. Scholars from across the Mediterranean came to study its estimated 400,000 scrolls. When it was eventually destroyed, countless works of ancient knowledge were lost forever.\n\nWhat makes the Library's destruction significant?",
+  "choices": [
+   "Irreplaceable knowledge accumulated over centuries was permanently lost",
+   "Libraries are expensive to build",
+   "It had too many scrolls",
+   "It was in Egypt"
+  ],
+  "correct": "Irreplaceable knowledge accumulated over centuries was permanently lost"
+ },
+ {
+  "id": "RI.4.10-E1",
+  "standard": "RI.4.10",
+  "prompt": "Read this: \"The Sahara is the largest hot desert in the world. It covers much of northern Africa.\" Where is the Sahara located?",
+  "choices": [
+   "Northern Africa",
+   "On the moon",
+   "Under the ocean",
+   "In South America"
+  ],
+  "correct": "Northern Africa"
+ },
+ {
+  "id": "RI.4.10-E2",
+  "standard": "RI.4.10",
+  "prompt": "Read this: \"Honeybees make honey from the nectar of flowers. They store the honey inside their hive.\" What do honeybees use to make honey?",
+  "choices": [
+   "Melted snow",
+   "The nectar of flowers",
+   "Ocean water",
+   "Sand from the desert"
+  ],
+  "correct": "The nectar of flowers"
+ },
+ {
+  "id": "RI.4.10-E3",
+  "standard": "RI.4.10",
+  "prompt": "Read this: \"The Great Wall of China is thousands of miles long. It was built long ago to protect the country from invaders.\" Why was the Great Wall built?",
+  "choices": [
+   "To store food for winter",
+   "To give tourists a place to eat",
+   "To protect the country from invaders",
+   "To hold up a bridge"
+  ],
+  "correct": "To protect the country from invaders"
+ },
+ {
+  "id": "RI.4.10-E4",
+  "standard": "RI.4.10",
+  "prompt": "Read this: \"Volcanoes form when hot melted rock rises up from deep inside the Earth. This melted rock is called magma.\" What is the melted rock inside the Earth called?",
+  "choices": [
+   "Wind",
+   "Rain",
+   "Ice",
+   "Magma"
+  ],
+  "correct": "Magma"
+ },
+ {
+  "id": "RI.4.10-E5",
+  "standard": "RI.4.10",
+  "prompt": "Read this: \"Sea turtles lay their eggs on sandy beaches at night. After the baby turtles hatch, they crawl toward the ocean.\" When do sea turtles lay their eggs?",
+  "choices": [
+   "At night",
+   "During a storm",
+   "In the morning",
+   "Never"
+  ],
+  "correct": "At night"
+ },
+ {
+  "id": "RF.4.3-Q1",
+  "standard": "RF.4.3",
+  "prompt": "The word **autobiography** can be broken into: auto + bio + graph + y. Using these parts, what does it mean?",
+  "choices": [
+   "A book about cars",
+   "A life story written by the person themselves",
+   "A drawing of a machine",
+   "A type of photograph"
+  ],
+  "correct": "A life story written by the person themselves"
+ },
+ {
+  "id": "RF.4.3-Q2",
+  "standard": "RF.4.3",
+  "prompt": "Which word contains the Greek root **tele** meaning **far**?",
+  "choices": [
+   "Telescope",
+   "Telephone",
+   "All of the above",
+   "Television"
+  ],
+  "correct": "All of the above"
+ },
+ {
+  "id": "RF.4.3-Q3",
+  "standard": "RF.4.3",
+  "prompt": "How many syllables are in the word **communication**?",
+  "choices": [
+   "4",
+   "6",
+   "3",
+   "5"
+  ],
+  "correct": "5"
+ },
+ {
+  "id": "RF.4.3-Q4",
+  "standard": "RF.4.3",
+  "prompt": "In the word **unbreakable,** the prefix, root, and suffix are \u2014",
+  "choices": [
+   "Un + break + able",
+   "Un + brea + kable",
+   "Unbreak + able",
+   "Unb + reak + able"
+  ],
+  "correct": "Un + break + able"
+ },
+ {
+  "id": "RF.4.3-Q5",
+  "standard": "RF.4.3",
+  "prompt": "Maria likes to write stories, but she wants to use a different name so no one knows she wrote them. If Maria chooses a pseudonym, which kind of name will she use?",
+  "choices": [
+   "Her official, given name",
+   "A name from a famous book",
+   "A name that sounds like her real one",
+   "A name she invents to hide her identity"
+  ],
+  "correct": "A name she invents to hide her identity"
+ },
+ {
+  "id": "RF.4.3-E1",
+  "standard": "RF.4.3",
+  "prompt": "The prefix **re-** means **again**. What does the word **replay** mean?",
+  "choices": [
+   "To play again",
+   "To play loudly",
+   "To stop playing",
+   "A kind of toy"
+  ],
+  "correct": "To play again"
+ },
+ {
+  "id": "RF.4.3-E2",
+  "standard": "RF.4.3",
+  "prompt": "The suffix **-ful** means **full of**. What does the word **helpful** mean?",
+  "choices": [
+   "To ask for help",
+   "Full of help",
+   "Without any help",
+   "A helper's hat"
+  ],
+  "correct": "Full of help"
+ },
+ {
+  "id": "RF.4.3-E3",
+  "standard": "RF.4.3",
+  "prompt": "The prefix **un-** means **not**. What does the word **unhappy** mean?",
+  "choices": [
+   "A happy song",
+   "Happy again",
+   "Not happy",
+   "Very happy"
+  ],
+  "correct": "Not happy"
+ },
+ {
+  "id": "RF.4.3-E4",
+  "standard": "RF.4.3",
+  "prompt": "How many syllables (word beats) are in the word **rabbit**? Clap it out: rab-bit.",
+  "choices": [
+   "8",
+   "1",
+   "5",
+   "2"
+  ],
+  "correct": "2"
+ },
+ {
+  "id": "RF.4.3-E5",
+  "standard": "RF.4.3",
+  "prompt": "The word **sunlight** is made of two smaller words. Which two words make it up?",
+  "choices": [
+   "sun + light",
+   "run + right",
+   "sea + night",
+   "son + like"
+  ],
+  "correct": "sun + light"
+ },
+ {
+  "id": "RF.4.3a-Q1",
+  "standard": "RF.4.3a",
+  "prompt": "You encounter the unfamiliar word \"transportation.\" What's the BEST first step?",
+  "choices": [
+   "Ask someone immediately",
+   "Guess from the first letter",
+   "Break it into parts: trans + port + a + tion",
+   "Skip it"
+  ],
+  "correct": "Break it into parts: trans + port + a + tion"
+ },
+ {
+  "id": "RF.4.3a-Q2",
+  "standard": "RF.4.3a",
+  "prompt": "The word **international** can be decoded as \u2014",
+  "choices": [
+   "Inter + nat + ional",
+   "In + tern + at + ional",
+   "Interna + tional",
+   "In + ter + nation + al"
+  ],
+  "correct": "In + ter + nation + al"
+ },
+ {
+  "id": "RF.4.3a-Q3",
+  "standard": "RF.4.3a",
+  "prompt": "If you know that **-ology** means **study of,** what does **biology** study?",
+  "choices": [
+   "Living things (bio = life)",
+   "Rocks",
+   "Stars",
+   "Weather"
+  ],
+  "correct": "Living things (bio = life)"
+ },
+ {
+  "id": "RF.4.3a-Q4",
+  "standard": "RF.4.3a",
+  "prompt": "Which option shows the correct way to break the word \"extraordinary\" into its syllables?",
+  "choices": [
+   "ex-tra-or-din-ary",
+   "extra-or-di-na-ry",
+   "ex-tra-or-di-nar-y",
+   "ex-traor-di-nar-y"
+  ],
+  "correct": "ex-tra-or-di-nar-y"
+ },
+ {
+  "id": "RF.4.3a-Q5",
+  "standard": "RF.4.3a",
+  "prompt": "You see the word **misconception** for the first time. Using morphology, what does it mean?",
+  "choices": [
+   "A type of puzzle",
+   "A new concept",
+   "A wrong or mistaken belief",
+   "A correct idea"
+  ],
+  "correct": "A wrong or mistaken belief"
+ },
+ {
+  "id": "RF.4.3a-E1",
+  "standard": "RF.4.3a",
+  "prompt": "Break the word \"sunset\" into its two parts to read it.",
+  "choices": [
+   "sun + set",
+   "sunse + t",
+   "su + nset",
+   "s + unset"
+  ],
+  "correct": "sun + set"
+ },
+ {
+  "id": "RF.4.3a-E2",
+  "standard": "RF.4.3a",
+  "prompt": "You come to the word \"basket\" and it looks long. What is the BEST way to read it?",
+  "choices": [
+   "Change it to an easier word",
+   "Break it into parts: bas + ket",
+   "Guess from the first letter",
+   "Skip the word"
+  ],
+  "correct": "Break it into parts: bas + ket"
+ }
+]

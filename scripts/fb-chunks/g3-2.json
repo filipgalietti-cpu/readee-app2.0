@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RI.3.1-Q4",
+  "standard": "RI.3.1",
+  "prompt": "According to the text, what did Thomas Edison say he found instead of failures when trying to invent the light bulb?",
+  "choices": [
+   "Many reasons to stop trying.",
+   "1,000 ways that won't work.",
+   "A new type of electricity.",
+   "Other inventors to help him."
+  ],
+  "correct": "1,000 ways that won't work."
+ },
+ {
+  "id": "RI.3.1-Q5",
+  "standard": "RI.3.1",
+  "prompt": "The International Space Station orbits Earth about every 90 minutes, traveling at 17,500 miles per hour. Astronauts aboard the station see 16 sunrises and sunsets every day.\n\nWhy do astronauts see 16 sunrises each day?",
+  "choices": [
+   "There are 16 suns",
+   "Days are longer in space",
+   "The sun moves faster in space",
+   "The station orbits Earth so quickly"
+  ],
+  "correct": "The station orbits Earth so quickly"
+ },
+ {
+  "id": "RI.3.1-E1",
+  "standard": "RI.3.1",
+  "prompt": "Read the sentence: \"Owls hunt at night. Their large eyes help them see in the dark.\" According to the text, when do owls hunt?",
+  "choices": [
+   "At night",
+   "On weekends",
+   "In the morning",
+   "At lunchtime"
+  ],
+  "correct": "At night"
+ },
+ {
+  "id": "RI.3.1-E2",
+  "standard": "RI.3.1",
+  "prompt": "Read the sentence: \"A camel can go many days without water. It stores fat in its hump.\" According to the text, where does a camel store fat?",
+  "choices": [
+   "In its feet",
+   "In its hump",
+   "In its tail",
+   "In its ears"
+  ],
+  "correct": "In its hump"
+ },
+ {
+  "id": "RI.3.1-E3",
+  "standard": "RI.3.1",
+  "prompt": "Read the sentence: \"Bees make honey. They collect sweet nectar from flowers to do it.\" According to the text, what do bees make?",
+  "choices": [
+   "Shoes",
+   "Rain",
+   "Honey",
+   "Bread"
+  ],
+  "correct": "Honey"
+ },
+ {
+  "id": "RI.3.1-E4",
+  "standard": "RI.3.1",
+  "prompt": "Read the sentence: \"The Sahara is a very hot desert. It gets almost no rain all year.\" According to the text, how much rain does the Sahara get?",
+  "choices": [
+   "A lot of rain",
+   "Rain every day",
+   "Snow every night",
+   "Almost no rain"
+  ],
+  "correct": "Almost no rain"
+ },
+ {
+  "id": "RI.3.1-E5",
+  "standard": "RI.3.1",
+  "prompt": "Read the sentence: \"Penguins live where it is cold. They use their wings to swim instead of fly.\" According to the text, what do penguins use their wings for?",
+  "choices": [
+   "To swim",
+   "To build nests in trees",
+   "To dig tunnels",
+   "To carry food in the sky"
+  ],
+  "correct": "To swim"
+ },
+ {
+  "id": "RI.3.2-Q1",
+  "standard": "RI.3.2",
+  "prompt": "Bees are essential to our food supply. They pollinate flowers that grow into fruits and vegetables. Without bees, we would lose about one-third of the food we eat.\n\nWhat is the main idea?",
+  "choices": [
+   "Bees are important for our food supply",
+   "Fruits and vegetables are healthy",
+   "Flowers need sunlight",
+   "Bees make honey"
+  ],
+  "correct": "Bees are important for our food supply"
+ },
+ {
+  "id": "RI.3.2-Q3",
+  "standard": "RI.3.2",
+  "prompt": "Coral reefs are in danger. Pollution poisons the water. Rising temperatures cause coral to turn white and die. Overfishing removes animals that keep reefs healthy.\n\nThe key details all support the main idea that \u2014",
+  "choices": [
+   "Coral reefs are beautiful",
+   "Fish live in reefs",
+   "The ocean is cold",
+   "Coral reefs face many threats"
+  ],
+  "correct": "Coral reefs face many threats"
+ },
+ {
+  "id": "RI.3.2-Q4",
+  "standard": "RI.3.2",
+  "prompt": "Read the passage below.Butterflies start as tiny eggs. The eggs hatch into larvae, which are called caterpillars. Caterpillars eat many leaves and grow bigger. After growing, a caterpillar forms a pupa around itself, often called a chrysalis. Inside the chrysalis, the caterpillar changes. Finally, a beautiful butterfly comes out!What is the main idea of this passage?",
+  "choices": [
+   "Caterpillars eat many leaves to grow.",
+   "Butterflies are beautiful creatures.",
+   "Butterflies go through different stages to grow.",
+   "A chrysalis is where a caterpillar changes."
+  ],
+  "correct": "Butterflies go through different stages to grow."
+ },
+ {
+  "id": "RI.3.2-Q5",
+  "standard": "RI.3.2",
+  "prompt": "Ancient Egyptians invented many things we still use today. They created one of the first writing systems called hieroglyphics. They developed a 365-day calendar. They even invented toothpaste!\n\nWhat is the main idea?",
+  "choices": [
+   "Ancient Egypt had a calendar",
+   "Ancient Egyptians were great inventors",
+   "Egyptians liked to write",
+   "Toothpaste is important"
+  ],
+  "correct": "Ancient Egyptians were great inventors"
+ },
+ {
+  "id": "RI.3.2-H1",
+  "standard": "RI.3.2",
+  "prompt": "Maya's class wanted a garden, but they had no money and no tools. First, they sold their old books to earn some cash. Then each student brought one small shovel or rake from home. On Saturday, teachers AND parents came to help them dig. By spring, the garden was bursting with plants.\n\nWhat is the main idea of this passage?",
+  "choices": [
+   "The whole class worked together, step by step, to make their garden happen",
+   "Teachers and parents like gardens",
+   "Maya's class sold their old books to earn money",
+   "Spring is the best time to grow plants"
+  ],
+  "correct": "The whole class worked together, step by step, to make their garden happen"
+ },
+ {
+  "id": "RI.3.2-H2",
+  "standard": "RI.3.2",
+  "prompt": "Owls are built to hunt in the dark of night. Their huge eyes soak up even the tiniest bit of moonlight. The author also tells us that owls have soft, fluffy feathers.\n\nHow does the detail about soft feathers help support the main idea?",
+  "choices": [
+   "Soft feathers help owls build better nests",
+   "Soft feathers let owls fly silently, so they can sneak up on prey at night",
+   "Soft feathers keep owls warm on cold nights",
+   "Soft feathers make owls look pretty and fluffy"
+  ],
+  "correct": "Soft feathers let owls fly silently, so they can sneak up on prey at night"
+ },
+ {
+  "id": "RI.3.2-H3",
+  "standard": "RI.3.2",
+  "prompt": "The Nile River gave ancient Egypt almost everything it needed. Its water let farmers grow wheat in the middle of a dry desert. When it flooded, it left behind thick mud that made rich soil for crops. Boats carried food and goods up and down the river so people could trade.\n\nWhich sentence best states the main idea?",
+  "choices": [
+   "Farmers in Egypt grew wheat",
+   "Boats can carry goods from place to place",
+   "The Nile River was very important to life in ancient Egypt",
+   "Rivers are found in many places around the world"
+  ],
+  "correct": "The Nile River was very important to life in ancient Egypt"
+ },
+ {
+  "id": "RI.3.2-H4",
+  "standard": "RI.3.2",
+  "prompt": "Penguins have clever ways to stay warm in the freezing cold. They huddle together in huge groups so their bodies block the icy wind. They also have a thick layer of fat under their skin that holds in heat.\n\nWhich NEW sentence would best support the main idea of this passage?",
+  "choices": [
+   "Baby penguins are covered in soft gray fluff",
+   "Penguins cannot fly up into the air like other birds",
+   "Penguins dive into the sea to catch fish to eat",
+   "Their feathers are packed tightly together to trap warm air against their skin"
+  ],
+  "correct": "Their feathers are packed tightly together to trap warm air against their skin"
+ },
+ {
+  "id": "RI.3.2-H5",
+  "standard": "RI.3.2",
+  "prompt": "Many people think spiders are creepy pests they should squash. But spiders actually help us in ways we hardly notice. They catch flies and mosquitoes that carry germs. They eat the bugs that would chew holes in our garden plants. Some farmers even count on spiders to protect their crops.\n\nWhat is the main idea of this passage?",
+  "choices": [
+   "Spiders are actually helpful to people",
+   "Mosquitoes carry germs that can make people sick",
+   "Spiders are creepy pests that people should squash",
+   "Farmers work hard to grow their crops"
+  ],
+  "correct": "Spiders are actually helpful to people"
+ },
+ {
+  "id": "RI.3.2-E1",
+  "standard": "RI.3.2",
+  "prompt": "Read this paragraph: \"Owls are great hunters at night. They have big eyes that see in the dark. They have sharp ears that hear tiny sounds. They have quiet wings that make no noise when they fly.\" What is the main idea?",
+  "choices": [
+   "Some birds like to swim",
+   "Owls are great night hunters",
+   "Owls build nests in barns",
+   "The moon is bright at night"
+  ],
+  "correct": "Owls are great night hunters"
+ },
+ {
+  "id": "RI.3.2-E2",
+  "standard": "RI.3.2",
+  "prompt": "Read this paragraph: \"Plants need many things to grow. They need water from the rain. They need sunlight from the sky. They need good soil for their roots.\" What is the main idea?",
+  "choices": [
+   "Rain falls in the spring",
+   "Trees can be very tall",
+   "Plants need many things to grow",
+   "Bees like bright flowers"
+  ],
+  "correct": "Plants need many things to grow"
+ },
+ {
+  "id": "RI.3.2-E3",
+  "standard": "RI.3.2",
+  "prompt": "Read this paragraph: \"Dogs help people in many ways. Some dogs guide people who cannot see. Some dogs find people who are lost. Some dogs keep homes safe.\" What is the main idea?",
+  "choices": [
+   "Dogs enjoy chewing bones",
+   "Fish live in a tank",
+   "Cats like to nap all day",
+   "Dogs help people in many ways"
+  ],
+  "correct": "Dogs help people in many ways"
+ },
+ {
+  "id": "RI.3.2-E4",
+  "standard": "RI.3.2",
+  "prompt": "Read this paragraph: \"The library is a busy place. Kids read books at the tables. A teacher reads a story out loud. People use the computers to learn.\" What is the main idea?",
+  "choices": [
+   "The library is a busy place",
+   "The store sells fresh apples",
+   "Rain fell on the roof",
+   "Books can be heavy to carry"
+  ],
+  "correct": "The library is a busy place"
+ },
+ {
+  "id": "RI.3.2-E5",
+  "standard": "RI.3.2",
+  "prompt": "Read this paragraph: \"Winter can be very cold. People wear thick coats to stay warm. Snow covers the ground. Ponds freeze into hard ice.\" What is the main idea?",
+  "choices": [
+   "Flowers bloom in spring",
+   "Winter can be very cold",
+   "The beach has warm sand",
+   "Summer days are long"
+  ],
+  "correct": "Winter can be very cold"
+ },
+ {
+  "id": "RI.3.3-Q1",
+  "standard": "RI.3.3",
+  "prompt": "Because the river flooded, farmers lost their crops. As a result, food prices went up that year.\n\nWhat caused food prices to go up?",
+  "choices": [
+   "Farmers lost crops due to flooding",
+   "Too many people buying food",
+   "A new law about food",
+   "High temperatures"
+  ],
+  "correct": "Farmers lost crops due to flooding"
+ },
+ {
+  "id": "RI.3.3-Q2",
+  "standard": "RI.3.3",
+  "prompt": "Listen to the story: In 1955, in the city of Montgomery, a woman named Rosa Parks was riding home on a crowded bus. When the driver told her to give up her seat, she quietly refused, and she was arrested for it. The news of her brave choice spread quickly through the community. In response, thousands of people decided to stop riding the city buses altogether, and this boycott of the buses lasted for many months. What happened because Rosa Parks refused to give up her bus seat?",
+  "choices": [
+   "The Supreme Court ruled bus segregation was unconstitutional.",
+   "People started a boycott of the city buses.",
+   "Many people started riding buses more often.",
+   "Rosa Parks was given a new bus seat."
+  ],
+  "correct": "People started a boycott of the city buses."
+ },
+ {
+  "id": "RI.3.3-Q5",
+  "standard": "RI.3.3",
+  "prompt": "After the Great Fire of London in 1666, the city was rebuilt with stone and brick instead of wood. This made buildings much safer from future fires.\n\nHow are these two events connected?",
+  "choices": [
+   "The stone buildings caused the fire",
+   "The fire caused the city to change how it built buildings",
+   "London stopped building after the fire",
+   "They are not connected"
+  ],
+  "correct": "The fire caused the city to change how it built buildings"
+ },
+ {
+  "id": "RI.3.3-Q8",
+  "standard": "RI.3.3",
+  "prompt": "Mangrove trees grow along tropical coastlines. Their roots extend into the water and slow down waves. Due to this, mangroves prevent erosion and protect the shore during storms.\n\nWhat is the EFFECT of mangrove roots slowing down waves?",
+  "choices": [
+   "The trees grow taller",
+   "Fish cannot swim",
+   "The shore is protected from erosion",
+   "The water gets warmer"
+  ],
+  "correct": "The shore is protected from erosion"
+ },
+ {
+  "id": "RI.3.3-Q11",
+  "standard": "RI.3.3",
+  "prompt": "To study whale migration, scientists first attach a small tracking device to the whale. Next, they monitor the whale's location using satellites. Then, they record the data over several months. Finally, they compare routes from different years.\n\nWhat do scientists do IMMEDIATELY AFTER attaching the tracking device?",
+  "choices": [
+   "Compare routes from different years",
+   "Record data for months",
+   "Monitor the whale's location using satellites",
+   "Catch the whale again"
+  ],
+  "correct": "Monitor the whale's location using satellites"
+ },
+ {
+  "id": "RI.3.3-Q13",
+  "standard": "RI.3.3",
+  "prompt": "Plastic breaks down into tiny pieces called microplastics. Since microplastics are so small, fish mistake them for food and eat them. Consequently, the chemicals in the plastic enter the food chain.\n\nWhat causes the chemicals to enter the food chain?",
+  "choices": [
+   "Waves break the plastic",
+   "Fish eat the microplastics",
+   "The plastic floats away",
+   "Birds drop the plastic"
+  ],
+  "correct": "Fish eat the microplastics"
+ },
+ {
+  "id": "RI.3.3-Q14",
+  "standard": "RI.3.3",
+  "prompt": "After a hurricane passes over the ocean, the strong winds push huge waves onto the shore. These waves carry sand, shells, and debris inland. In the following weeks, the beach slowly rebuilds as calmer waves bring sand back.\n\nWhat happens FIRST in this process?",
+  "choices": [
+   "The beach rebuilds",
+   "Calm waves bring sand back",
+   "A hurricane's winds push waves onto shore",
+   "Sand returns to the beach"
+  ],
+  "correct": "A hurricane's winds push waves onto shore"
+ },
+ {
+  "id": "RI.3.3-E1",
+  "standard": "RI.3.3",
+  "prompt": "The ground got very cold. Because of the cold, the water in the pond turned to ice.\n\nWhat caused the water to turn to ice?",
+  "choices": [
+   "The ground got very cold",
+   "Someone stirred the water",
+   "A duck landed on the pond",
+   "The sun came out"
+  ],
+  "correct": "The ground got very cold"
+ },
+ {
+  "id": "RI.3.3-E2",
+  "standard": "RI.3.3",
+  "prompt": "First, the seed was planted in the soil. Next, it was watered every day. Then, a small green plant grew.\n\nWhat happened FIRST?",
+  "choices": [
+   "The seed was watered",
+   "The seed was planted in the soil",
+   "A small green plant grew",
+   "The plant was picked"
+  ],
+  "correct": "The seed was planted in the soil"
+ },
+ {
+  "id": "RI.3.3-E3",
+  "standard": "RI.3.3",
+  "prompt": "Maria forgot her umbrella. Because of that, she got wet in the rain.\n\nWhy did Maria get wet?",
+  "choices": [
+   "She was swimming",
+   "She spilled her juice",
+   "She forgot her umbrella",
+   "She jumped in a puddle on purpose"
+  ],
+  "correct": "She forgot her umbrella"
+ },
+ {
+  "id": "RI.3.3-E4",
+  "standard": "RI.3.3",
+  "prompt": "The volcano erupted. After the eruption, hot lava flowed down the mountain.\n\nWhat happened AFTER the volcano erupted?",
+  "choices": [
+   "People planted trees",
+   "The volcano was built",
+   "Snow fell on the town",
+   "Hot lava flowed down the mountain"
+  ],
+  "correct": "Hot lava flowed down the mountain"
+ },
+ {
+  "id": "RI.3.3-E5",
+  "standard": "RI.3.3",
+  "prompt": "To make toast, you first put bread in the toaster. Then you push the lever down.\n\nWhat do you do FIRST to make toast?",
+  "choices": [
+   "Put bread in the toaster",
+   "Wash the plate",
+   "Eat the toast",
+   "Turn off the light"
+  ],
+  "correct": "Put bread in the toaster"
+ },
+ {
+  "id": "RI.3.4-Q1",
+  "standard": "RI.3.4",
+  "prompt": "Imagine a plant soaking up sunshine! It's also drinking water and taking in a special gas from the air. All of these things help the plant do its job of making food for itself. This important job is called photosynthesis.",
+  "choices": [
+   "How plants drink water.",
+   "How plants make their own food.",
+   "The way plants get sunlight.",
+   "A type of gas plants breathe."
+  ],
+  "correct": "How plants make their own food."
+ },
+ {
+  "id": "RI.3.4-Q2",
+  "standard": "RI.3.4",
+  "prompt": "The Constitution is the supreme law of the United States. It establishes the structure of the government and protects citizens\" rights.\n\nWhat does **supreme** mean in this context?",
+  "choices": [
+   "Old",
+   "Secret",
+   "Written on paper",
+   "Highest or most important"
+  ],
+  "correct": "Highest or most important"
+ },
+ {
+  "id": "RI.3.4-Q3",
+  "standard": "RI.3.4",
+  "prompt": "Erosion is the gradual wearing away of land by water, wind, or ice. Over thousands of years, erosion carved the Grand Canyon.\n\nWhat does **gradual** mean?",
+  "choices": [
+   "Sudden and fast",
+   "Underground",
+   "Happening slowly over time",
+   "Very large"
+  ],
+  "correct": "Happening slowly over time"
+ },
+ {
+  "id": "RI.3.4-Q4",
+  "standard": "RI.3.4",
+  "prompt": "Deer, rabbits, and cows are called herbivores. These animals eat things like grass, clover, and hay. Based on this information, what do herbivores eat?",
+  "choices": [
+   "Only plants",
+   "Other animals",
+   "Both meat and plants",
+   "Only seeds"
+  ],
+  "correct": "Only plants"
+ },
+ {
+  "id": "RI.3.4-Q5",
+  "standard": "RI.3.4",
+  "prompt": "The expedition to the South Pole took months of preparation. The team packed food, fuel, and navigation equipment for the dangerous journey.\n\nWhat is an **expedition**?",
+  "choices": [
+   "A type of equipment",
+   "A long journey for a specific purpose",
+   "A type of fuel",
+   "A map"
+  ],
+  "correct": "A long journey for a specific purpose"
+ },
+ {
+  "id": "RI.3.4-H1",
+  "standard": "RI.3.4",
+  "prompt": "Read this science passage:\n\n\"Salmon are strong swimmers. When it is time to lay their eggs, they must travel up the river to the place where they were born. Even when the river's current pushes hard against them, the salmon keep swimming forward and never give up.\"\n\nWhat does the word **current** mean in this passage?",
+  "choices": [
+   "The flow of water moving in a direction",
+   "The newest and most modern kind",
+   "Electricity that powers a light",
+   "Something that is happening right now"
+  ],
+  "correct": "The flow of water moving in a direction"
+ },
+ {
+  "id": "RI.3.4-H2",
+  "standard": "RI.3.4",
+  "prompt": "Read this passage:\n\n\"In winter, a bear does not die. It curls up in its cave for a long, deep sleep. Its heartbeat slows down, and it does not eat a single bite for many months. Scientists say the bear stays dormant until spring warms the air.\"\n\nWhat does **dormant** mean here?",
+  "choices": [
+   "Awake and moving around the cave",
+   "Resting and not active",
+   "Dead and gone forever",
+   "Very hungry and hunting for food"
+  ],
+  "correct": "Resting and not active"
+ },
+ {
+  "id": "RI.3.4-H3",
+  "standard": "RI.3.4",
+  "prompt": "Read this passage:\n\n\"The desert fox has huge, wide ears. On a blazing hot day, extra heat leaves the fox's body right through those big ears. This clever trick helps the fox keep its cool while the sun beats down on the sand.\"\n\nWhat does **keep its cool** mean in this passage?",
+  "choices": [
+   "Find cold water to drink",
+   "Hide in the shade from other animals",
+   "Keep its body from getting too hot",
+   "Stay calm and not feel scared"
+  ],
+  "correct": "Keep its body from getting too hot"
+ },
+ {
+  "id": "RI.3.4-H4",
+  "standard": "RI.3.4",
+  "prompt": "Read this passage:\n\n\"Most metals are stiff. If you try to bend them too far, they will snap in two. But copper is different. You can bend a copper wire into a circle, twist it around, and straighten it out again, all without breaking it. Copper is very flexible.\"\n\nWhat does **flexible** mean here?",
+  "choices": [
+   "Quick to snap into two pieces",
+   "Hard and stiff like most metals",
+   "Shiny and bright in color",
+   "Easy to bend without breaking"
+  ],
+  "correct": "Easy to bend without breaking"
+ },
+ {
+  "id": "RI.3.4-H5",
+  "standard": "RI.3.4",
+  "prompt": "Read this passage:\n\n\"A sponge is full of tiny holes you can barely see. Set it down in a puddle of spilled milk, and the milk seems to vanish. It slips into all those little holes and stays there, so the sponge can absorb the whole spill before it drips off the table.\"\n\nWhat does **absorb** mean in this passage?",
+  "choices": [
+   "To soak up and hold inside",
+   "To make the liquid dry up in the air",
+   "To push the liquid away",
+   "To wipe the table until it shines"
+  ],
+  "correct": "To soak up and hold inside"
+ },
+ {
+  "id": "RI.3.4-E1",
+  "standard": "RI.3.4",
+  "prompt": "The bakery was famous for its enormous cakes. Each one was so big that ten kids could share a single slice!\n\nIn this text, what does the word **enormous** mean?",
+  "choices": [
+   "Very cold",
+   "Very large",
+   "Very sweet",
+   "Very small"
+  ],
+  "correct": "Very large"
+ },
+ {
+  "id": "RI.3.4-E2",
+  "standard": "RI.3.4",
+  "prompt": "Sea turtles begin their life on a sandy beach. When the baby turtles hatch from their eggs, they crawl toward the water.\n\nIn this text, what does the word **hatch** mean?",
+  "choices": [
+   "To swim very fast",
+   "To eat some food",
+   "To come out of an egg",
+   "To dig a deep hole"
+  ],
+  "correct": "To come out of an egg"
+ }
+]

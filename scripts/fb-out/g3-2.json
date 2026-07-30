@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.3.1-Q4",
+  "correct_feedback": "Yes! Edison saw each try that failed as one more way that wouldn't work, so he kept going instead of giving up.",
+  "incorrect_feedback": "Hmm, think about how Edison felt about his mistakes. He didn't call them failures at all. What did he count instead?",
+  "reveal_feedback": "The answer is \"1,000 ways that won't work.\" Edison saw each miss as a lesson, not a failure, so he kept trying."
+ },
+ {
+  "id": "RI.3.1-Q5",
+  "correct_feedback": "That's right! The station zooms around Earth so fast that it passes into day and night 16 times a day.",
+  "incorrect_feedback": "Almost! There is only one sun. Think about how fast the station moves around Earth every 90 minutes.",
+  "reveal_feedback": "The answer is that the station orbits Earth so quickly. Circling Earth every 90 minutes means many sunrises each day."
+ },
+ {
+  "id": "RI.3.1-E1",
+  "correct_feedback": "Great reading! The text says owls hunt when it is dark, and their big eyes help them see.",
+  "incorrect_feedback": "Good try! Look back at the sentence and find the exact time of day it names for owls.",
+  "reveal_feedback": "The answer is \"At night.\" The text says owls hunt when it's dark, which is why their big eyes help."
+ },
+ {
+  "id": "RI.3.1-E2",
+  "correct_feedback": "Nice work! The text tells us a camel stores fat right in its hump.",
+  "incorrect_feedback": "Close one! Read the sentence again and find the body part where the camel keeps its fat.",
+  "reveal_feedback": "The answer is \"In its hump.\" The text says the camel stores fat there, which helps it go days without water."
+ },
+ {
+  "id": "RI.3.1-E3",
+  "correct_feedback": "Yes! The text says bees make honey by collecting sweet nectar from flowers.",
+  "incorrect_feedback": "Take another look. The sentence tells you exactly what bees make. What sweet thing does it name?",
+  "reveal_feedback": "The answer is \"Honey.\" The text says bees make it using the sweet nectar they gather from flowers."
+ },
+ {
+  "id": "RI.3.1-E4",
+  "correct_feedback": "That's right! The text says the Sahara gets almost no rain all year, so it stays very dry.",
+  "incorrect_feedback": "Not yet. The Sahara is a very hot, dry desert. Read again to see how much rain it really gets.",
+  "reveal_feedback": "The answer is \"Almost no rain.\" The text says the Sahara gets barely any rain all year long."
+ },
+ {
+  "id": "RI.3.1-E5",
+  "correct_feedback": "Great job! The text says penguins use their wings to swim instead of to fly.",
+  "incorrect_feedback": "Hmm, look back at the sentence. It tells you what penguins do with their wings in the water.",
+  "reveal_feedback": "The answer is \"To swim.\" The text says penguins use their wings to move through water instead of flying."
+ },
+ {
+  "id": "RI.3.2-Q1",
+  "correct_feedback": "Yes! The whole passage is about how bees help grow our food, so that is the big main idea.",
+  "incorrect_feedback": "Almost! One choice is a small detail. Ask yourself what ALL the sentences are mostly about.",
+  "reveal_feedback": "The main idea is that bees are important for our food supply. Every sentence supports how bees help our food grow."
+ },
+ {
+  "id": "RI.3.2-Q3",
+  "correct_feedback": "Right! Pollution, heat, and overfishing are all dangers, so the details show reefs face many threats.",
+  "incorrect_feedback": "Good try! Look at what pollution, heat, and overfishing all do to reefs. What do these details have in common?",
+  "reveal_feedback": "The answer is that coral reefs face many threats. Pollution, heat, and overfishing are all dangers hurting the reefs."
+ },
+ {
+  "id": "RI.3.2-Q4",
+  "correct_feedback": "Yes! The passage follows a butterfly from egg to caterpillar to chrysalis to butterfly, showing all its growing stages.",
+  "incorrect_feedback": "Close one! Some choices are just one step. Think about what the WHOLE passage, start to finish, is about.",
+  "reveal_feedback": "The main idea is that butterflies go through different stages to grow. The passage lists each step from egg to butterfly."
+ },
+ {
+  "id": "RI.3.2-Q5",
+  "correct_feedback": "Great thinking! Writing, a calendar, and toothpaste are all inventions, so the big idea is that Egyptians were great inventors.",
+  "incorrect_feedback": "Not quite yet. Writing, a calendar, and toothpaste are examples. What do all these examples show about the Egyptians?",
+  "reveal_feedback": "The main idea is that ancient Egyptians were great inventors. The writing, calendar, and toothpaste are all things they invented."
+ },
+ {
+  "id": "RI.3.2-H1",
+  "correct_feedback": "Yes! Selling books, bringing tools, and everyone helping shows the class worked together step by step to build the garden.",
+  "incorrect_feedback": "Take another look. Some choices are just one step. What does the WHOLE story show about how the garden got made?",
+  "reveal_feedback": "The main idea is that the whole class worked together, step by step, to make their garden happen. Each detail is one of those steps."
+ },
+ {
+  "id": "RI.3.2-H2",
+  "correct_feedback": "Sharp thinking! The passage is about hunting at night, and silent feathers help owls sneak up on prey in the dark.",
+  "incorrect_feedback": "Hmm, the main idea is about hunting in the dark. Which choice connects soft feathers to catching prey at night?",
+  "reveal_feedback": "The answer is that soft feathers let owls fly silently to sneak up on prey. That fits the main idea of hunting at night."
+ },
+ {
+  "id": "RI.3.2-H3",
+  "correct_feedback": "Yes! Farming, rich soil, and trade all came from the river, so the Nile was very important to Egypt.",
+  "incorrect_feedback": "Good try! Farming, soil, and boats are all details. What do they all show about the Nile River for Egypt?",
+  "reveal_feedback": "The main idea is that the Nile River was very important to life in ancient Egypt. Each detail shows a way it helped."
+ },
+ {
+  "id": "RI.3.2-H4",
+  "correct_feedback": "Great choice! Feathers trapping warm air is one more way penguins stay warm, so it fits the main idea perfectly.",
+  "incorrect_feedback": "Close one! The passage is about staying warm. Which new sentence gives ANOTHER way penguins keep in heat?",
+  "reveal_feedback": "The answer is that their feathers trap warm air against their skin. Like huddling and fat, it's one more way to stay warm."
+ },
+ {
+  "id": "RI.3.2-H5",
+  "correct_feedback": "Yes! Catching germ-carrying bugs and protecting crops all show that spiders are actually helpful to people.",
+  "incorrect_feedback": "Not yet. One choice is what people WRONGLY think. What does the passage prove spiders really do for us?",
+  "reveal_feedback": "The main idea is that spiders are actually helpful to people. They eat harmful bugs and even protect farmers' crops."
+ },
+ {
+  "id": "RI.3.2-E1",
+  "correct_feedback": "Yes! Big eyes, sharp ears, and quiet wings all help owls hunt at night, so that is the main idea.",
+  "incorrect_feedback": "Almost! Every sentence names a way owls hunt in the dark. What are all the clues mostly about?",
+  "reveal_feedback": "The main idea is that owls are great night hunters. Their eyes, ears, and wings all help them hunt in the dark."
+ },
+ {
+  "id": "RI.3.2-E2",
+  "correct_feedback": "Great job! Water, sunlight, and good soil are all things plants need, so that is the big idea.",
+  "incorrect_feedback": "Good try! The paragraph lists water, sunlight, and soil. What do all these things have to do with plants?",
+  "reveal_feedback": "The main idea is that plants need many things to grow. Water, sunlight, and soil are all things they need."
+ },
+ {
+  "id": "RI.3.2-E3",
+  "correct_feedback": "Yes! Guiding, finding lost people, and keeping homes safe all show that dogs help people in many ways.",
+  "incorrect_feedback": "Take another look. Every sentence tells a way dogs help. What is the whole paragraph mostly about?",
+  "reveal_feedback": "The main idea is that dogs help people in many ways. Guiding, finding, and guarding are all ways they help."
+ },
+ {
+  "id": "RI.3.2-E4",
+  "correct_feedback": "Nice work! Kids reading, a teacher reading aloud, and people on computers all show the library is a busy place.",
+  "incorrect_feedback": "Close one! Every sentence tells something happening at the library. What is the whole paragraph mostly about?",
+  "reveal_feedback": "The main idea is that the library is a busy place. Reading, storytime, and computers all show how busy it is."
+ },
+ {
+  "id": "RI.3.2-E5",
+  "correct_feedback": "Yes! Thick coats, snow, and frozen ponds all show that winter can be very cold.",
+  "incorrect_feedback": "Not yet. Coats, snow, and ice are all clues. What season and feeling are all these details about?",
+  "reveal_feedback": "The main idea is that winter can be very cold. Coats, snow, and frozen ponds all show the cold."
+ },
+ {
+  "id": "RI.3.3-Q1",
+  "correct_feedback": "Yes! The flood made farmers lose crops, and less food made prices go up. You followed the cause!",
+  "incorrect_feedback": "Hmm, read the first sentence again. What happened to the crops that led to prices rising?",
+  "reveal_feedback": "The answer is that farmers lost crops due to flooding. Fewer crops meant less food, so prices went up."
+ },
+ {
+  "id": "RI.3.3-Q2",
+  "correct_feedback": "Right! After Rosa Parks refused, thousands of people stopped riding the buses, starting a long boycott.",
+  "incorrect_feedback": "Good try! Read what thousands of people decided to do after her brave choice. What did they stop doing?",
+  "reveal_feedback": "The answer is that people started a boycott of the city buses. After she refused, thousands stopped riding for months."
+ },
+ {
+  "id": "RI.3.3-Q5",
+  "correct_feedback": "Yes! Because of the fire, London rebuilt with stone and brick to stay safer from future fires.",
+  "incorrect_feedback": "Almost! Think about why London switched from wood to stone. What event made the city change how it built?",
+  "reveal_feedback": "The answer is that the fire caused the city to change how it built. After it, London used stone and brick to be safer."
+ },
+ {
+  "id": "RI.3.3-Q8",
+  "correct_feedback": "Great thinking! Slower waves can't wear away as much land, so the shore is protected from erosion.",
+  "incorrect_feedback": "Close one! When the roots slow the waves down, what does that DO for the shore? Read the last sentence again.",
+  "reveal_feedback": "The answer is that the shore is protected from erosion. Slowing the waves keeps them from wearing away the land."
+ },
+ {
+  "id": "RI.3.3-Q11",
+  "correct_feedback": "Yes! The steps say next they monitor the whale with satellites, so that comes right after the device goes on.",
+  "incorrect_feedback": "Take another look at the order. After attaching the device, what does the word \"next\" tell scientists to do?",
+  "reveal_feedback": "The answer is that they monitor the whale using satellites. The passage says that is the very next step."
+ },
+ {
+  "id": "RI.3.3-Q13",
+  "correct_feedback": "Right! When fish mistake microplastics for food and eat them, the chemicals move into the food chain.",
+  "incorrect_feedback": "Good try! Trace how the plastic gets INTO the food chain. What do the fish do that starts that?",
+  "reveal_feedback": "The answer is that fish eat the microplastics. Once fish swallow them, the chemicals enter the food chain."
+ },
+ {
+  "id": "RI.3.3-Q14",
+  "correct_feedback": "Yes! The passage starts with the hurricane's winds pushing waves onto shore, so that happens first.",
+  "incorrect_feedback": "Not yet. Read the order of events. Which one happens at the very beginning, before the beach rebuilds?",
+  "reveal_feedback": "The answer is that a hurricane's winds push waves onto shore. That is the first step, before the beach slowly rebuilds."
+ },
+ {
+  "id": "RI.3.3-E1",
+  "correct_feedback": "Yes! The cold ground made the pond water freeze into ice. You found the cause!",
+  "incorrect_feedback": "Hmm, read again. The words \"because of the cold\" are a clue. What got cold and froze the water?",
+  "reveal_feedback": "The answer is that the ground got very cold. The cold is what turned the pond water into ice."
+ },
+ {
+  "id": "RI.3.3-E2",
+  "correct_feedback": "Great job! The word \"first\" tells us the seed was planted before it was watered or grew.",
+  "incorrect_feedback": "Good try! Look for the word \"first\" in the story. What happened at the very start?",
+  "reveal_feedback": "The answer is that the seed was planted in the soil. The word \"first\" shows that step came before the others."
+ },
+ {
+  "id": "RI.3.3-E3",
+  "correct_feedback": "Yes! Maria forgot her umbrella, so she had nothing to keep the rain off and got wet.",
+  "incorrect_feedback": "Close one! The words \"because of that\" are a clue. What did Maria forget that led to her getting wet?",
+  "reveal_feedback": "The answer is that she forgot her umbrella. With no umbrella, the rain got her wet."
+ },
+ {
+  "id": "RI.3.3-E4",
+  "correct_feedback": "Right! After the volcano erupted, hot lava flowed down the mountain.",
+  "incorrect_feedback": "Take another look. The word \"after\" is a clue. What happened once the volcano erupted?",
+  "reveal_feedback": "The answer is that hot lava flowed down the mountain. That happened right after the eruption."
+ },
+ {
+  "id": "RI.3.3-E5",
+  "correct_feedback": "Yes! The word \"first\" tells us you put bread in the toaster before pushing the lever.",
+  "incorrect_feedback": "Not yet. Look for the word \"first\" in the steps. What do you do before pushing the lever down?",
+  "reveal_feedback": "The answer is put bread in the toaster. The word \"first\" shows that step comes before pushing the lever."
+ },
+ {
+  "id": "RI.3.4-Q1",
+  "correct_feedback": "Yes! Sunlight, water, and gas all help the plant make its own food, which is called photosynthesis.",
+  "incorrect_feedback": "Almost! Drinking water and getting sunlight are just parts. What ONE big job do they all help the plant do?",
+  "reveal_feedback": "The passage is mostly about how plants make their own food. Sunlight, water, and gas all help do that job."
+ },
+ {
+  "id": "RI.3.4-Q2",
+  "correct_feedback": "Yes! The Constitution is called the supreme law, meaning it is the highest and most important one.",
+  "incorrect_feedback": "Good try! The text calls it the supreme law that everything follows. What would \"supreme\" mean about it?",
+  "reveal_feedback": "\"Supreme\" means highest or most important. The Constitution is the top law that all others must follow."
+ },
+ {
+  "id": "RI.3.4-Q3",
+  "correct_feedback": "Right! The canyon formed over thousands of years, so gradual means happening slowly over time.",
+  "incorrect_feedback": "Close one! The clue is that erosion took thousands of years. Would that be fast or slow?",
+  "reveal_feedback": "\"Gradual\" means happening slowly over time. It took thousands of years of erosion to carve the Grand Canyon."
+ },
+ {
+  "id": "RI.3.4-Q4",
+  "correct_feedback": "Yes! The text says herbivores eat grass, clover, and hay, and those are all plants.",
+  "incorrect_feedback": "Take another look. Grass, clover, and hay are the examples given. What kind of food are all of those?",
+  "reveal_feedback": "The answer is only plants. Grass, clover, and hay are all plants, which is what herbivores eat."
+ },
+ {
+  "id": "RI.3.4-Q5",
+  "correct_feedback": "Great job! A trip to the South Pole that took months of planning is a long journey for a special purpose.",
+  "incorrect_feedback": "Hmm, the team spent months getting ready for a dangerous trip. What would an \"expedition\" be?",
+  "reveal_feedback": "An \"expedition\" is a long journey for a specific purpose, like the months-long trip to the South Pole."
+ },
+ {
+  "id": "RI.3.4-H1",
+  "correct_feedback": "Yes! The river pushes against the salmon, so current means the flow of water moving in a direction.",
+  "incorrect_feedback": "Good try! The word has many meanings. Use the passage: something in the river pushes against the fish. What is that?",
+  "reveal_feedback": "Here \"current\" means the flow of water moving in a direction. It's what pushes against the swimming salmon."
+ },
+ {
+  "id": "RI.3.4-H2",
+  "correct_feedback": "Right! The bear's heartbeat slows and it doesn't eat for months, so dormant means resting and not active.",
+  "incorrect_feedback": "Close one! The bear is in a long, deep sleep, not dead. What does dormant mean if it wakes in spring?",
+  "reveal_feedback": "\"Dormant\" means resting and not active. The bear sleeps deeply all winter, then wakes when spring comes."
+ },
+ {
+  "id": "RI.3.4-H3",
+  "correct_feedback": "Yes! Heat leaves through the fox's big ears, so keep its cool means keep its body from getting too hot.",
+  "incorrect_feedback": "Take another look. The passage is about a blazing hot day and losing heat. What does keeping cool mean here?",
+  "reveal_feedback": "\"Keep its cool\" here means keep its body from getting too hot. Heat leaves through the fox's big ears."
+ },
+ {
+  "id": "RI.3.4-H4",
+  "correct_feedback": "Great thinking! You can bend copper wire without it snapping, so flexible means easy to bend without breaking.",
+  "incorrect_feedback": "Not yet. The passage says copper bends and twists without snapping. What would flexible mean?",
+  "reveal_feedback": "\"Flexible\" means easy to bend without breaking. Unlike stiff metals, copper bends and twists and stays whole."
+ },
+ {
+  "id": "RI.3.4-H5",
+  "correct_feedback": "Yes! The sponge soaks the milk into its little holes and holds it, so absorb means to soak up and hold inside.",
+  "incorrect_feedback": "Good try! The milk slips into the sponge's tiny holes and stays. What does absorb mean from that clue?",
+  "reveal_feedback": "\"Absorb\" means to soak up and hold inside. The sponge pulls the milk into its tiny holes and keeps it there."
+ },
+ {
+  "id": "RI.3.4-E1",
+  "correct_feedback": "Yes! The cakes were so big ten kids shared one slice, so enormous means very large.",
+  "incorrect_feedback": "Almost! The clue is that ten kids could share one slice. Would that cake be big or small?",
+  "reveal_feedback": "\"Enormous\" means very large. The cakes were so big that ten kids could share just one slice."
+ },
+ {
+  "id": "RI.3.4-E2",
+  "correct_feedback": "Great job! Baby turtles hatch from their eggs, so hatch means to come out of an egg.",
+  "incorrect_feedback": "Close one! The text says the baby turtles hatch from their eggs. What does that tell you hatch means?",
+  "reveal_feedback": "\"Hatch\" means to come out of an egg. The baby sea turtles hatch, then crawl toward the water."
+ }
+]

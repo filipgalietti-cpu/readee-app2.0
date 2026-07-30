@@ -1,0 +1,74 @@
+[
+ {
+  "id": "RL.K.10-H3",
+  "correct_feedback": "Yes! Mia gave the seed water every single day, so it grew into a flower. Great listening!",
+  "incorrect_feedback": "Hmm, think about what Mia did every single day to help her tiny seed. Give it another try!",
+  "reveal_feedback": "That one was tricky! The flower grew because Mia gave it water every day. Water helps plants grow. Now you know!"
+ },
+ {
+  "id": "RL.K.10-H4",
+  "correct_feedback": "Yes! The sky was dark and the stars were out, so it is nighttime. Great listening!",
+  "incorrect_feedback": "Almost! Think about the dark sky and all those stars. When do we see those? Try again!",
+  "reveal_feedback": "That one was tricky! It is nighttime in the story. Dark skies and stars come out at night. Now you know!"
+ },
+ {
+  "id": "RL.K.10-H5",
+  "correct_feedback": "Yes! Ben saw the new kid had nothing to eat, so he shared to be kind. Great thinking!",
+  "incorrect_feedback": "Good try! Think about why the new kid looked sad. What did that kid not have? Look again!",
+  "reveal_feedback": "That one was tricky! Ben shared because the new kid had no snack. He wanted to be kind. Now you know!"
+ },
+ {
+  "id": "RI.K.10-Q1",
+  "correct_feedback": "Yes! Lions, tigers, and bears are all wild animals. That is the main topic. Great job!",
+  "incorrect_feedback": "Hmm, think about what lions, tigers, and bears all are. What do they have in common? Try again!",
+  "reveal_feedback": "That one was tricky! The main topic is wild animals. Lions, tigers, and bears are all wild animals. Now you know!"
+ },
+ {
+  "id": "RI.K.10-Q2",
+  "correct_feedback": "Yes! Asking a question about a bug helps you learn more from the book. Great listening!",
+  "incorrect_feedback": "Close one! Which choice helps you learn about the bugs in the book? Take another look!",
+  "reveal_feedback": "That one was tricky! The best way is to ask your teacher a question about a bug. Asking helps you learn! Now you know!"
+ },
+ {
+  "id": "RI.K.10-Q3",
+  "correct_feedback": "Yes! Looking at the pictures and listening carefully helps you learn about animals. Great job!",
+  "incorrect_feedback": "Good try! Which choice keeps your eyes and ears on the animal book? Look again!",
+  "reveal_feedback": "That one was tricky! The best way is to look at the pictures and listen carefully to the words. Now you know!"
+ },
+ {
+  "id": "RI.K.10-Q4",
+  "correct_feedback": "Yes! Talking about the pictures with your friends helps you all learn new things. Great sharing!",
+  "incorrect_feedback": "Almost! Which choice helps you and your friends learn together? Take another look!",
+  "reveal_feedback": "That one was tricky! The best way is to talk about the pictures with your friends. Sharing helps you learn! Now you know!"
+ },
+ {
+  "id": "RI.K.10-H1",
+  "correct_feedback": "Yes! Every sentence tells us about the hive. That is what the page is mostly about. Great listening!",
+  "incorrect_feedback": "Hmm, listen again. Almost every sentence talks about the same thing. What is it? Try again!",
+  "reveal_feedback": "That one was tricky! The page is mostly about a hive. Each sentence tells us about it. Now you know!"
+ },
+ {
+  "id": "RI.K.10-H2",
+  "correct_feedback": "Yes! The turtle hides its head to stay safe from the dog. Great thinking!",
+  "incorrect_feedback": "Good try! Think about the big dog coming close. Why would the turtle want to hide? Look again!",
+  "reveal_feedback": "That one was tricky! The turtle pulls its head in to stay safe from the dog. Now you know!"
+ },
+ {
+  "id": "RI.K.10-H3",
+  "correct_feedback": "Yes! Owls wake up when it is night, so that is when they look for food. Great listening!",
+  "incorrect_feedback": "Almost! The page says owls wake up at one special time. When is that? Try again!",
+  "reveal_feedback": "That one was tricky! Owls look for food at night. They wake up when it is dark. Now you know!"
+ },
+ {
+  "id": "RI.K.10-H4",
+  "correct_feedback": "Yes! A camel and a fish both need food to live. That is how they are the same. Great job!",
+  "incorrect_feedback": "Hmm, listen for the part that says BOTH. What do a camel and a fish both need? Take another look!",
+  "reveal_feedback": "That one was tricky! A camel and a fish are the same because they both need food. Now you know!"
+ },
+ {
+  "id": "RI.K.10-H5",
+  "correct_feedback": "Yes! The plant just poked up, so next it would grow bigger and make flowers. Great thinking!",
+  "incorrect_feedback": "Close one! The tiny plant just poked up. What would happen to it next? Try again!",
+  "reveal_feedback": "That one was tricky! Next the book would tell how the plant grows bigger and makes flowers. Now you know!"
+ }
+]

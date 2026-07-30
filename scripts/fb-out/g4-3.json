@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.4.7-E5",
+  "correct_feedback": "Yes! Half the chart is a big piece, and reading is only a tiny slice. A bigger slice means more students chose it.",
+  "incorrect_feedback": "Hmm, look at the SIZE of each slice. Which one takes up more of the circle? That's the one more kids picked.",
+  "reveal_feedback": "The answer is Playing. It fills half the chart, and reading is just a small slice, so more students chose playing."
+ },
+ {
+  "id": "RI.4.8-Q1",
+  "correct_feedback": "Nice work! The author points to real studies about test scores AND names skills like creativity and problem-solving. That's solid support.",
+  "incorrect_feedback": "Almost. Reread the passage. Does the author just give feelings, or do they mention studies and real skills? Think about what backs up the point.",
+  "reveal_feedback": "The answer is research studies and specific skills art teaches. The author uses test-score studies and names skills like creativity, not just opinions."
+ },
+ {
+  "id": "RI.4.8-Q2",
+  "correct_feedback": "Exactly! The 20% number is a specific fact, and the author uses it as proof that recess helps kids learn better.",
+  "incorrect_feedback": "Good try. Ask yourself: why did the author add that number? Is it just a detail, or is it there to PROVE the main idea?",
+  "reveal_feedback": "The answer is that it provides a specific fact supporting the idea that recess helps students learn. The number is evidence for the main point."
+ },
+ {
+  "id": "RI.4.8-Q3",
+  "correct_feedback": "Great thinking! The eagle went from almost gone to thriving after the law. That's real proof the protections worked.",
+  "incorrect_feedback": "Close one. Look at what happened to the eagles AFTER the law passed. Does the example just share a fact, or does it prove something?",
+  "reveal_feedback": "The answer is it proves legal protections actually work to save species. The eagle recovered because of the law, backing up the author's point."
+ },
+ {
+  "id": "RI.4.8-Q4",
+  "correct_feedback": "You got it! A strong argument needs evidence that truly backs up its point. Checking that is a smart reader's job.",
+  "incorrect_feedback": "Not yet. The passage says a careful reader looks at the evidence. What question would help you decide if an argument is strong?",
+  "reveal_feedback": "The answer is: does the evidence actually support the point being made? That's how you judge if an argument is truly strong."
+ },
+ {
+  "id": "RI.4.8-E1",
+  "correct_feedback": "Yes! The author's point is that dogs make great pets, and being loyal is the reason they give to back it up.",
+  "incorrect_feedback": "Take another look. Find the sentence that tells WHY dogs make great pets. That reason is what supports the point.",
+  "reveal_feedback": "The answer is: dogs are very loyal to their owners. That's the reason the author gives to show dogs make great pets."
+ },
+ {
+  "id": "RI.4.8-E2",
+  "correct_feedback": "Nice! Evidence is proof, and pointing to studies about better sleep is exactly the proof that backs up the point.",
+  "incorrect_feedback": "Almost. Evidence is the proof, not the opinion. Which sentence gives facts from studies instead of just stating the idea?",
+  "reveal_feedback": "The answer is: studies show that kids who read at night sleep better. That's the evidence that supports the author's point."
+ },
+ {
+  "id": "RI.4.8-E3",
+  "correct_feedback": "Exactly! Saying there's nowhere safe to play is the reason the author gives to show the town needs a new park.",
+  "incorrect_feedback": "Good try. Ask why the author added that detail. Does it help the main point, or is it just describing something?",
+  "reveal_feedback": "The answer is to support the point that the town needs a new park. The lack of a safe place is the reason for building one."
+ },
+ {
+  "id": "RI.4.8-E4",
+  "correct_feedback": "Yes! The doctors' words are the evidence, and they back up the author's main point about drinking water.",
+  "incorrect_feedback": "Close one. The point is the big idea the evidence supports. What is the author trying to convince you to do?",
+  "reveal_feedback": "The answer is: everyone should drink water every day. That's the point the doctor evidence is there to support."
+ },
+ {
+  "id": "RI.4.8-E5",
+  "correct_feedback": "Great! Saving money because bikes don't use gas is the reason the author gives to show bikes are a good way to get around.",
+  "incorrect_feedback": "Not quite. Find the sentence that explains WHY bikes are good. A reason gives you a fact, not just a feeling.",
+  "reveal_feedback": "The answer is: bikes don't use gas, so they are cheaper than cars. That's the reason the author gives."
+ },
+ {
+  "id": "RI.4.9-Q2",
+  "correct_feedback": "Well done! Text A tells you about the air on Mars and Text B tells you about its storms. Together you learn both.",
+  "incorrect_feedback": "Almost. The question says use BOTH texts. What does each one add? Don't leave one out.",
+  "reveal_feedback": "The answer is both its atmospheric composition AND its extreme weather. One text covers the air, the other covers the dust storms."
+ },
+ {
+  "id": "RI.4.9-Q3",
+  "correct_feedback": "Excellent! You combined both texts: they share what's alike (insects, larva to adult) and what's different (day vs. night, chrysalis vs. cocoon).",
+  "incorrect_feedback": "Good try. A statement that combines both texts should include facts about butterflies AND moths, not just one of them.",
+  "reveal_feedback": "The correct answer combines both: both are insects that change from larva to adult, but butterflies are active by day with a chrysalis, moths at night with a cocoon."
+ },
+ {
+  "id": "RI.4.9-Q4",
+  "correct_feedback": "Great connecting! Text A shows wolves leaving, Text B shows what happened when they returned. Together they reveal the long-term impact.",
+  "incorrect_feedback": "Take another look. Text A is about removing wolves and Text B is about bringing them back. What BIG idea do both together teach you?",
+  "reveal_feedback": "The answer is the long-term impact of removing and then restoring a species to an ecosystem. Both texts together show that whole change over time."
+ },
+ {
+  "id": "RI.4.9-Q5",
+  "correct_feedback": "Yes! The passage says each source adds new details and perspectives, so together they give a fuller, more balanced picture.",
+  "incorrect_feedback": "Hmm, reread the passage. Why does it say researchers read many sources instead of one? Think about what extra sources give you.",
+  "reveal_feedback": "The answer is that multiple sources provide different perspectives, details, and a more complete understanding than one source alone."
+ },
+ {
+  "id": "RI.4.9-E1",
+  "correct_feedback": "Nice! Text 1 says dogs smell well and Text 2 says they hear well. Using both, you get two things.",
+  "incorrect_feedback": "Almost. Use BOTH texts. Text 1 tells one skill and Text 2 tells another. Put them together.",
+  "reveal_feedback": "The answer is smelling and hearing. Text 1 gives the strong smell and Text 2 gives the good hearing."
+ },
+ {
+  "id": "RI.4.9-E2",
+  "correct_feedback": "Yes! Text A says the sun gives light and Text B says it gives heat. Together, it gives both.",
+  "incorrect_feedback": "Good try. Each text tells you one thing the sun gives. Combine both texts, don't pick just one.",
+  "reveal_feedback": "The answer is light and heat. Text A gives the light and Text B gives the heat, so together it's both."
+ },
+ {
+  "id": "RI.4.9-E3",
+  "correct_feedback": "Great! Text 1 says bees make honey and Text 2 says they help flowers grow. Both together tell what bees do.",
+  "incorrect_feedback": "Close one. Use both texts together. One tells about honey, the other about flowers. Don't leave one out.",
+  "reveal_feedback": "The answer is they make honey and help flowers grow. Text 1 gives the honey, Text 2 gives the flowers."
+ },
+ {
+  "id": "RI.4.9-E4",
+  "correct_feedback": "Nice work! Text A says rain waters plants and Text B says it fills rivers and lakes. Both together give two jobs.",
+  "incorrect_feedback": "Not yet. The question wants TWO things, one from each text. Put both texts together.",
+  "reveal_feedback": "The answer is it waters plants and fills rivers and lakes. Text A gives the plants, Text B gives the rivers and lakes."
+ },
+ {
+  "id": "RI.4.9-E5",
+  "correct_feedback": "Yes! Text 1 says the moon moves around the Earth and Text 2 says it shines at night. Both together are true.",
+  "incorrect_feedback": "Take another look. Which choice uses BOTH texts correctly, with no made-up parts added in?",
+  "reveal_feedback": "The answer is the moon moves around the Earth and shines at night. That combines both texts exactly, with nothing wrong added."
+ },
+ {
+  "id": "RI.4.10-Q2",
+  "correct_feedback": "Great thinking! It's called 'dead,' yet its mud and water have helped human health for thousands of years. That surprise is the irony.",
+  "incorrect_feedback": "Almost. Irony is a surprising twist. Its name says 'dead,' but what has it actually been good for? Look for the mismatch.",
+  "reveal_feedback": "The answer is that despite being called 'dead,' it has been valuable for human health for millennia. The name and its use don't match."
+ },
+ {
+  "id": "RI.4.10-Q3",
+  "correct_feedback": "Yes! After her own flight, she started a group to encourage girls in science. That shows she cared about lifting others up.",
+  "incorrect_feedback": "Good try. Think about what she did AFTER 1983. Starting a group for girls in science tells you what she valued.",
+  "reveal_feedback": "The answer is she wanted to inspire the next generation, especially girls, to follow in her footsteps. Her science group shows that."
+ },
+ {
+  "id": "RI.4.10-Q4",
+  "correct_feedback": "Exactly! Growing up to 35 inches a day AND being stronger than steel by weight is what makes bamboo a super-plant.",
+  "incorrect_feedback": "Close one. A 'super' plant needs powers that are extra special. Which choice names two amazing abilities from the text?",
+  "reveal_feedback": "The answer is it grows extremely fast AND is stronger than steel by weight. Those two powers make it a super-plant."
+ },
+ {
+  "id": "RI.4.10-Q5",
+  "correct_feedback": "Well reasoned! The library held 400,000 scrolls built up over centuries, and when it burned that knowledge was gone forever.",
+  "incorrect_feedback": "Not yet. Think about what was inside and what happened to it. Why is losing all those scrolls such a big deal?",
+  "reveal_feedback": "The answer is that irreplaceable knowledge gathered over centuries was permanently lost. Those works could never be gotten back."
+ },
+ {
+  "id": "RI.4.10-E1",
+  "correct_feedback": "Yes! The passage says it covers much of northern Africa, so that's where the Sahara is.",
+  "incorrect_feedback": "Take another look. The passage names the exact place the Sahara covers. Find that spot in the text.",
+  "reveal_feedback": "The answer is northern Africa. The passage says the Sahara covers much of northern Africa."
+ },
+ {
+  "id": "RI.4.10-E2",
+  "correct_feedback": "Nice! The text says bees make honey from the nectar of flowers, so that's what they use.",
+  "incorrect_feedback": "Almost. Reread the sentence about how bees make honey. What does it say they start with?",
+  "reveal_feedback": "The answer is the nectar of flowers. The passage says honeybees make honey from flower nectar."
+ },
+ {
+  "id": "RI.4.10-E3",
+  "correct_feedback": "Yes! The passage says the wall was built long ago to protect the country from invaders.",
+  "incorrect_feedback": "Good try. The text gives one clear reason the wall was built. Find the sentence that says why.",
+  "reveal_feedback": "The answer is to protect the country from invaders. The passage states that was the reason it was built."
+ },
+ {
+  "id": "RI.4.10-E4",
+  "correct_feedback": "Yes! The passage says the melted rock inside the Earth is called magma. You found it.",
+  "incorrect_feedback": "Take another look. The text gives a name to the hot melted rock. Which word does it use?",
+  "reveal_feedback": "The answer is magma. The passage says the melted rock deep inside the Earth is called magma."
+ },
+ {
+  "id": "RI.4.10-E5",
+  "correct_feedback": "Nice! The text says sea turtles lay their eggs on sandy beaches at night. You read it carefully.",
+  "incorrect_feedback": "Almost. Reread the sentence about laying eggs. What time of day does it name?",
+  "reveal_feedback": "The answer is at night. The passage says sea turtles lay their eggs on sandy beaches at night."
+ },
+ {
+  "id": "RF.4.3-Q1",
+  "correct_feedback": "Great! Auto means self, bio means life, and graph means writing. So it's a life story written by the person themselves.",
+  "incorrect_feedback": "Almost. Use the parts: auto means self, bio means life, graph means writing. Put those meanings together.",
+  "reveal_feedback": "The answer is a life story written by the person themselves. Auto (self) plus bio (life) plus graph (writing) spells it out."
+ },
+ {
+  "id": "RF.4.3-Q2",
+  "correct_feedback": "Yes! Telescope, telephone, and television all start with tele, meaning far. So all of the above is right.",
+  "incorrect_feedback": "Good try. Check EACH word for the root tele meaning far. If more than one has it, think about your choice.",
+  "reveal_feedback": "The answer is all of the above. Telescope, telephone, and television all use tele, meaning far."
+ },
+ {
+  "id": "RF.4.3-Q3",
+  "correct_feedback": "Yes! Say it slowly: com-mu-ni-ca-tion. That's five beats, so five syllables.",
+  "incorrect_feedback": "Hmm, clap it out slowly: com-mu-ni-ca-tion. Count each beat you hear before you choose.",
+  "reveal_feedback": "The answer is 5. Com-mu-ni-ca-tion has five beats, so five syllables."
+ },
+ {
+  "id": "RF.4.3-Q4",
+  "correct_feedback": "Exactly! Un is the prefix, break is the root word, and able is the suffix. You split it perfectly.",
+  "incorrect_feedback": "Close one. Find the real word hiding in the middle. The prefix and suffix should each be a piece you know.",
+  "reveal_feedback": "The answer is un + break + able. Un is the prefix, break is the root, and able is the suffix."
+ },
+ {
+  "id": "RF.4.3-Q5",
+  "correct_feedback": "Yes! A pseudonym is a made-up name a writer uses to hide who they really are, just like Maria wants.",
+  "incorrect_feedback": "Good try. The root pseudo means false or fake. So what kind of name would a pseudonym be?",
+  "reveal_feedback": "The answer is a name she invents to hide her identity. Pseudo means false, so a pseudonym is a fake name."
+ },
+ {
+  "id": "RF.4.3-E1",
+  "correct_feedback": "Yes! Re means again and play means play, so replay means to play again. Nice decoding!",
+  "incorrect_feedback": "Almost. Re means again. Add that to the word play. What do you get?",
+  "reveal_feedback": "The answer is to play again. Re means again, so replay means to play something again."
+ },
+ {
+  "id": "RF.4.3-E2",
+  "correct_feedback": "Great! The suffix -ful means full of, so helpful means full of help. You used the suffix perfectly.",
+  "incorrect_feedback": "Take another look. The suffix -ful means full of. Add that to the word help.",
+  "reveal_feedback": "The answer is full of help. The suffix -ful means full of, so helpful means full of help."
+ },
+ {
+  "id": "RF.4.3-E3",
+  "correct_feedback": "Yes! Un means not and happy means happy, so unhappy means not happy. Nice work with the prefix.",
+  "incorrect_feedback": "Almost. The prefix un means not. Put that in front of happy. What does it become?",
+  "reveal_feedback": "The answer is not happy. The prefix un means not, so unhappy means not happy."
+ },
+ {
+  "id": "RF.4.3-E4",
+  "correct_feedback": "Yes! Clap it: rab-bit. That's two beats, so two syllables. Great clapping!",
+  "incorrect_feedback": "Hmm, clap it out: rab-bit. How many claps did you hear? Count the beats.",
+  "reveal_feedback": "The answer is 2. Rab-bit has two beats when you clap, so two syllables."
+ },
+ {
+  "id": "RF.4.3-E5",
+  "correct_feedback": "Yes! Sunlight is sun plus light, two small words joined together. You spotted them both.",
+  "incorrect_feedback": "Almost. Look for two real words hiding inside sunlight. What smaller words do you see?",
+  "reveal_feedback": "The answer is sun + light. Sunlight is made of the two small words sun and light."
+ },
+ {
+  "id": "RF.4.3a-Q1",
+  "correct_feedback": "Great strategy! Breaking a long word into parts like trans-port-a-tion makes it much easier to read and understand.",
+  "incorrect_feedback": "Almost. For a long, tricky word, what's the smartest thing to do first? Think about making it smaller.",
+  "reveal_feedback": "The answer is to break it into parts: trans + port + a + tion. Chunking a long word makes it easier to read."
+ },
+ {
+  "id": "RF.4.3a-Q2",
+  "correct_feedback": "Yes! You can find nation right in the middle, so in + ter + nation + al breaks it into real, readable parts.",
+  "incorrect_feedback": "Good try. Look for a whole word you already know hiding inside. Which split keeps that word together?",
+  "reveal_feedback": "The answer is in + ter + nation + al. It keeps the real word nation together, which makes it easy to decode."
+ },
+ {
+  "id": "RF.4.3a-Q3",
+  "correct_feedback": "Yes! Bio means life and -ology means study of, so biology is the study of living things.",
+  "incorrect_feedback": "Almost. You know -ology means study of. Now think about what bio means. Put them together.",
+  "reveal_feedback": "The answer is living things, because bio means life. Biology is the study of living things."
+ },
+ {
+  "id": "RF.4.3a-Q4",
+  "correct_feedback": "Great! Say it slowly: ex-tra-or-di-nar-y. Each chunk has one vowel sound, and that's the correct split.",
+  "incorrect_feedback": "Close one. Say the word slowly and listen for each beat. Each syllable usually has one vowel sound.",
+  "reveal_feedback": "The answer is ex-tra-or-di-nar-y. Saying it slowly, that's how the six syllables break apart."
+ },
+ {
+  "id": "RF.4.3a-Q5",
+  "correct_feedback": "Nice! The prefix mis means wrong and conception means an idea, so misconception is a mistaken belief.",
+  "incorrect_feedback": "Good try. The prefix mis means wrong or bad. Add that to concept, meaning an idea. What does it become?",
+  "reveal_feedback": "The answer is a wrong or mistaken belief. Mis means wrong, so a misconception is a mistaken idea."
+ },
+ {
+  "id": "RF.4.3a-E1",
+  "correct_feedback": "Yes! Sunset breaks into sun and set, two small words that help you read it. Nice work.",
+  "incorrect_feedback": "Almost. Look for two real words hiding inside sunset. Which split gives you words you know?",
+  "reveal_feedback": "The answer is sun + set. Sunset is made of the two small words sun and set."
+ },
+ {
+  "id": "RF.4.3a-E2",
+  "correct_feedback": "Great strategy! Breaking basket into bas-ket makes a long word easy to read chunk by chunk.",
+  "incorrect_feedback": "Take another look. When a word looks long, what's the best reading move? Think about making it smaller.",
+  "reveal_feedback": "The answer is to break it into parts: bas + ket. Chunking a long word into pieces makes it easy to read."
+ }
+]

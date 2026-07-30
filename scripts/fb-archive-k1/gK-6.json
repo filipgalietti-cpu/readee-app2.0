@@ -1,0 +1,272 @@
+[
+ {
+  "id": "K.L.1-H3",
+  "correct_feedback": "Yes! The squirrel went up to reach the very top of the tree. That makes sense! Great thinking!",
+  "incorrect_feedback": "Hmm, the nuts are at the very TOP of the tree. Which way does the squirrel need to climb to reach the top?",
+  "reveal_feedback": "That one was tricky! The word is 'up.' The top is high, so the squirrel had to climb up. Now you know!"
+ },
+ {
+  "id": "K.L.1-H4",
+  "correct_feedback": "Yes! A play the class puts on is a show, just like the funny play they watched. Great listening!",
+  "incorrect_feedback": "Almost! In the first sentence, 'play' is a show you watch. Which sentence talks about a show, not playing a game?",
+  "reveal_feedback": "That one was tricky! The answer is 'Our class put on a play for the parents.' A play is a show. Now you know!"
+ },
+ {
+  "id": "K.L.1-H5",
+  "correct_feedback": "Yes! 'She ran to the store' is just right. 'Ran' is the correct word for something that already happened. Great job!",
+  "incorrect_feedback": "Good try! Some of these have a funny word for run. Say each one out loud. Which one sounds right to your ears?",
+  "reveal_feedback": "That one was tricky! The right sentence is 'She ran to the store.' We say 'ran,' not 'runned.' Now you know!"
+ },
+ {
+  "id": "K.L.2-Q3",
+  "correct_feedback": "Yes! 'Do you like apples' is asking something, so it needs a question mark. Great thinking!",
+  "incorrect_feedback": "Hmm, this sentence is ASKING you something. Which mark do we use when we ask a question?",
+  "reveal_feedback": "That one was tricky! The answer is a question mark. We use it when a sentence asks something. Now you know!"
+ },
+ {
+  "id": "K.L.2-Q4",
+  "correct_feedback": "Yes! 'Sam' is a name, and names always start with a big capital letter. Great listening!",
+  "incorrect_feedback": "Good try! Look for the word that is a person's NAME. Names get a capital letter. Which word is a name?",
+  "reveal_feedback": "That one was tricky! The word is 'sam.' It is a name, so it needs a capital S. Now you know!"
+ },
+ {
+  "id": "K.L.2-H1",
+  "correct_feedback": "Yes! 'Max' is the dog's name, so it starts with a capital letter. Great job!",
+  "incorrect_feedback": "Take another look! One word is the dog's NAME. Names get a capital letter. Which word names the dog?",
+  "reveal_feedback": "That one was tricky! The name is 'Max.' It is the dog's name, so it gets a capital M. Now you know!"
+ },
+ {
+  "id": "K.L.2-H2",
+  "correct_feedback": "Yes! 'I see a cat.' has a big I and small letters in the right spots. Great job!",
+  "incorrect_feedback": "Close one! The word 'I' is always big. Cat is not a name, so it stays small. Which one follows both rules?",
+  "reveal_feedback": "That one was tricky! The right one is 'I see a cat.' The I is big and cat stays small. Now you know!"
+ },
+ {
+  "id": "K.L.2-H3",
+  "correct_feedback": "Yes! Ben is very excited, so an exclamation mark shows his big, happy feeling. Great thinking!",
+  "incorrect_feedback": "Hmm, Ben is shouting and SO excited! Which mark shows a big, loud, excited feeling?",
+  "reveal_feedback": "That one was tricky! The answer is an exclamation mark. We use it for big, excited feelings. Now you know!"
+ },
+ {
+  "id": "K.L.2-H4",
+  "correct_feedback": "Yes! /s/ /t/ /o/ /p/ spells 'stop.' You matched every sound! Great listening!",
+  "incorrect_feedback": "Good try! Say the sounds slowly: /s/ /t/ /o/ /p/. Which spelling has a letter for every sound?",
+  "reveal_feedback": "That one was tricky! The word is 'stop.' The letters s-t-o-p match each sound. Now you know!"
+ },
+ {
+  "id": "K.L.2-H5",
+  "correct_feedback": "Yes! The first word 'the' needs a big capital T to start the sentence. Great job!",
+  "incorrect_feedback": "Almost! Every sentence must START with a capital letter. Look at the very first word. What is missing?",
+  "reveal_feedback": "That one was tricky! The first word needs a capital T. Sentences start with a big letter. Now you know!"
+ },
+ {
+  "id": "K.L.4-Q1",
+  "correct_feedback": "Yes! 'Jumped' with -ed means it already happened before. Great thinking!",
+  "incorrect_feedback": "Hmm, the -ed ending tells us about the past. Did the jump happen before, or is it coming later?",
+  "reveal_feedback": "That one was tricky! The -ed means it already happened. The jump is done and over. Now you know!"
+ },
+ {
+  "id": "K.L.4-Q2",
+  "correct_feedback": "Yes! UN- means 'not,' so unhappy means not happy. Great job!",
+  "incorrect_feedback": "Good try! The girl frowned, so she was the opposite of happy. What does UN- do to a word?",
+  "reveal_feedback": "That one was tricky! UN- means 'not.' So unhappy means not happy. Now you know!"
+ },
+ {
+  "id": "K.L.4-Q3",
+  "correct_feedback": "Yes! The -s on dogs means more than one dog. Great listening!",
+  "incorrect_feedback": "Take another look! She has TWO dogs. When we add -s, do we have one thing or lots of them?",
+  "reveal_feedback": "That one was tricky! The -s means more than one dog. Two is more than one! Now you know!"
+ },
+ {
+  "id": "K.L.4-Q4",
+  "correct_feedback": "Yes! -ful means 'full of,' so helpful means full of help. Great thinking!",
+  "incorrect_feedback": "Hmm, say the word slowly: help-FUL. That -ful sounds like 'full.' What could it mean?",
+  "reveal_feedback": "That one was tricky! -ful means full of help. The boy gave lots of help. Now you know!"
+ },
+ {
+  "id": "K.L.4-Q5",
+  "correct_feedback": "Yes! -less means 'without,' so careless means without care. Great job!",
+  "incorrect_feedback": "Close one! The boy spilled his milk because he was not being careful. What might -less mean?",
+  "reveal_feedback": "That one was tricky! -less means without care. He had no care and spilled it. Now you know!"
+ },
+ {
+  "id": "K.L.4-H1",
+  "correct_feedback": "Yes! The bat flew out of the cave, so it is a flying animal with wings. Great thinking!",
+  "incorrect_feedback": "Good try! The bat FLEW out of a dark cave. Which meaning of bat can fly? Picture it flying.",
+  "reveal_feedback": "That one was tricky! Here bat means a flying animal with wings. It flew from the cave. Now you know!"
+ },
+ {
+  "id": "K.L.4-H2",
+  "correct_feedback": "Yes! The ball is coming at your head, so duck means to bend down fast. Great thinking!",
+  "incorrect_feedback": "Hmm, a ball is flying at your head! What would you do with your body to stay safe?",
+  "reveal_feedback": "That one was tricky! Here duck means to bend down low very fast, so the ball misses you. Now you know!"
+ },
+ {
+  "id": "K.L.4-H3",
+  "correct_feedback": "Yes! It poured rain all day, so the puppy was very, very wet. Great listening!",
+  "incorrect_feedback": "Almost! It rained ALL day and the puppy was not just wet. Was he a tiny bit wet, or a whole lot?",
+  "reveal_feedback": "That one was tricky! Soaked means very, very wet. All that rain got the puppy soaked. Now you know!"
+ },
+ {
+  "id": "K.L.4-H4",
+  "correct_feedback": "Yes! UN- means the opposite of lock, so unlock means to open a lock. Great job!",
+  "incorrect_feedback": "Take another look! UN- means the opposite. Lock keeps a door shut. What is the opposite of that?",
+  "reveal_feedback": "That one was tricky! Unlock means to open a lock. UN- flips lock to the opposite. Now you know!"
+ },
+ {
+  "id": "K.L.4-H5",
+  "correct_feedback": "Yes! Freezing is the most cold of all. Great thinking!",
+  "incorrect_feedback": "Good try! All these words mean cold, but one means the MOST cold. Which one feels like ice?",
+  "reveal_feedback": "That one was tricky! The answer is 'Freezing.' It means the most cold of all. Now you know!"
+ },
+ {
+  "id": "K.L.5-Q1",
+  "correct_feedback": "Yes! A grape is a fruit, just like apple, banana, and orange. Great thinking!",
+  "incorrect_feedback": "Hmm, apple, banana, and orange are all FRUITS. Which word on the list is also a fruit you can eat?",
+  "reveal_feedback": "That one was tricky! The answer is 'grape.' A grape is a fruit, like the others. Now you know!"
+ },
+ {
+  "id": "K.L.5-Q2",
+  "correct_feedback": "Yes! Cold is the opposite of hot. Great job!",
+  "incorrect_feedback": "Good try! Opposite means the total other way. Think about ice. What is the other way from hot?",
+  "reveal_feedback": "That one was tricky! The opposite of hot is 'Cold.' They are total opposites. Now you know!"
+ },
+ {
+  "id": "K.L.5-Q3",
+  "correct_feedback": "Yes! Strut means to walk in a proud, fancy way. Great listening!",
+  "incorrect_feedback": "Take another look! Which word means to walk tall and proud, not slow or low to the ground?",
+  "reveal_feedback": "That one was tricky! The answer is 'Strut.' It means to walk in a proud, fancy way. Now you know!"
+ },
+ {
+  "id": "K.L.5-Q4",
+  "correct_feedback": "Yes! Dog, cat, and fish are all animals. Great thinking!",
+  "incorrect_feedback": "Hmm, a dog, a cat, and a fish are all living things. What big group do they all belong to?",
+  "reveal_feedback": "That one was tricky! They all belong to 'Animals.' A dog, cat, and fish are animals. Now you know!"
+ },
+ {
+  "id": "K.L.5-H1",
+  "correct_feedback": "Yes! Freezing means the most cold of all these words. Great job!",
+  "incorrect_feedback": "Good try! These all mean cold, but one is the MOST cold. Which one feels like ice and snow?",
+  "reveal_feedback": "That one was tricky! The answer is 'Freezing.' It means the most cold of all. Now you know!"
+ },
+ {
+  "id": "K.L.5-H2",
+  "correct_feedback": "Yes! Here the boy hit the ball, so bat means a wooden stick you swing. Great thinking!",
+  "incorrect_feedback": "Almost! The boy swung it and hit a ball. Which meaning of bat can you hold and swing?",
+  "reveal_feedback": "That one was tricky! Here bat means a wooden stick you hit a ball with. Now you know!"
+ },
+ {
+  "id": "K.L.5-H3",
+  "correct_feedback": "Yes! A baby cat is called a kitten. Great listening!",
+  "incorrect_feedback": "Take another look! A puppy is a baby dog. Which word is the special name for a baby cat?",
+  "reveal_feedback": "That one was tricky! A baby cat is a 'Kitten.' Just like a baby dog is a puppy. Now you know!"
+ },
+ {
+  "id": "K.L.5-H4",
+  "correct_feedback": "Yes! Gobble means to eat a lot really fast. Great thinking!",
+  "incorrect_feedback": "Hmm, these all mean eat, but one means to eat fast when you are super hungry. Which one is the biggest, fastest eating?",
+  "reveal_feedback": "That one was tricky! The answer is 'Gobble.' It means to eat a lot very fast. Now you know!"
+ },
+ {
+  "id": "K.L.5-H5",
+  "correct_feedback": "Yes! Purple is a color, just like red, blue, and green. Great job!",
+  "incorrect_feedback": "Good try! Red, blue, and green are all COLORS. Which word on the list is also a color?",
+  "reveal_feedback": "That one was tricky! The answer is 'Purple.' Purple is a color, like the others. Now you know!"
+ },
+ {
+  "id": "K.L.6-Q1",
+  "correct_feedback": "Yes! Fish, whales, and dolphins all live in the ocean. Great thinking!",
+  "incorrect_feedback": "Take another look! The ocean is full of water. Which animals swim and live in the water?",
+  "reveal_feedback": "That one was tricky! The answer is fish, whales, and dolphins. They all live in the ocean. Now you know!"
+ },
+ {
+  "id": "K.L.6-Q2",
+  "correct_feedback": "Yes! 'In a row' means standing one behind the other in a line. Great listening!",
+  "incorrect_feedback": "Hmm, think about how a line looks when your class lines up. How do you stand in a row?",
+  "reveal_feedback": "That one was tricky! 'In a row' means one behind the other in a line. Now you know!"
+ },
+ {
+  "id": "K.L.6-Q3",
+  "correct_feedback": "Yes! Hibernate means to sleep for a long time, like bears do in winter. Great thinking!",
+  "incorrect_feedback": "Good try! Bears do this all winter long when it is cold. What do you think hibernate means?",
+  "reveal_feedback": "That one was tricky! Hibernate means to sleep for a long time. Bears do it all winter. Now you know!"
+ },
+ {
+  "id": "K.L.6-Q4",
+  "correct_feedback": "Yes! Tricky means something is hard to figure out. Great job!",
+  "incorrect_feedback": "Almost! A tricky puzzle is not easy. It makes you think hard. What does tricky mean?",
+  "reveal_feedback": "That one was tricky! The word tricky means hard to figure out. Now you know!"
+ },
+ {
+  "id": "K.L.6-Q5",
+  "correct_feedback": "Yes! When leaves turn colors and fall, we call that time autumn. Great thinking!",
+  "incorrect_feedback": "Hmm, this is the time when leaves change color and fall down. Which season is another word for fall?",
+  "reveal_feedback": "That one was tricky! The answer is 'autumn.' It is another word for fall. Now you know!"
+ },
+ {
+  "id": "K.L.6-H1",
+  "correct_feedback": "Yes! Soaked means the most wet a person can be. Great listening!",
+  "incorrect_feedback": "Good try! Sam was not a little wet. He was as wet as could be. Which word means the MOST wet?",
+  "reveal_feedback": "That one was tricky! The answer is 'Soaked.' It means the most wet of all. Now you know!"
+ },
+ {
+  "id": "K.L.6-H2",
+  "correct_feedback": "Yes! Here bark means the rough outside cover of a tree. Great thinking!",
+  "incorrect_feedback": "Take another look! This bark is ON a tree and keeps the trunk safe. Which meaning fits a tree?",
+  "reveal_feedback": "That one was tricky! Here bark means the outside cover of a tree. Now you know!"
+ },
+ {
+  "id": "K.L.6-H3",
+  "correct_feedback": "Yes! Boiling means the most hot, with bubbles and steam. Great job!",
+  "incorrect_feedback": "Hmm, the soup was bubbling and steaming right off the stove. Which word means the MOST hot?",
+  "reveal_feedback": "That one was tricky! The answer is 'Boiling.' It means the most hot, with bubbles. Now you know!"
+ },
+ {
+  "id": "K.L.6-H4",
+  "correct_feedback": "Yes! Here trunk means an elephant's long nose. Great thinking!",
+  "incorrect_feedback": "Almost! The elephant used its trunk to lift a peanut. Which meaning is a part of an elephant?",
+  "reveal_feedback": "That one was tricky! Here trunk means an elephant's long nose. Now you know!"
+ },
+ {
+  "id": "K.L.6-H5",
+  "correct_feedback": "Yes! Thrilled means the most happy you can feel. Great listening!",
+  "incorrect_feedback": "Good try! Maya got her wish and was as happy as could be. Which word means the MOST happy?",
+  "reveal_feedback": "That one was tricky! The answer is 'Thrilled.' It means the most happy of all. Now you know!"
+ },
+ {
+  "id": "RL.K.10-Q1",
+  "correct_feedback": "Yes! Looking at the pictures as the teacher reads shows you are listening. Great job!",
+  "incorrect_feedback": "Take another look! Good listeners stay quiet and keep their eyes on the book. Which choice does that?",
+  "reveal_feedback": "That one was tricky! The answer is looking at the pictures as the teacher reads. That shows good listening. Now you know!"
+ },
+ {
+  "id": "RL.K.10-Q2",
+  "correct_feedback": "Yes! When a story gets tricky, you can ask for help, just like Sam did. Great thinking!",
+  "incorrect_feedback": "Hmm, Sam did not give up. He did something smart to keep going. What is a kind thing you can do?",
+  "reveal_feedback": "That one was tricky! The best thing to do is ask for help. Sam raised his hand. Now you know!"
+ },
+ {
+  "id": "RL.K.10-Q4",
+  "correct_feedback": "Yes! Asking a question about the story shows you understand it. Great thinking!",
+  "incorrect_feedback": "Good try! Ben understood the story and raised his hand. What can you ask about that will show you get it?",
+  "reveal_feedback": "That one was tricky! The answer is to ask a question about what happened in the story. Now you know!"
+ },
+ {
+  "id": "RL.K.10-Q5",
+  "correct_feedback": "Yes! Answering the teacher's questions shows you are engaged in the story. Great job!",
+  "incorrect_feedback": "Take another look! Miss Ray asked questions while she read. What can you do to show you are paying attention?",
+  "reveal_feedback": "That one was tricky! The answer is to answer questions about the story. That shows you are engaged. Now you know!"
+ },
+ {
+  "id": "RL.K.10-H1",
+  "correct_feedback": "Yes! Pip lost his ball and his tail hung low, so he feels sad. Great listening!",
+  "incorrect_feedback": "Hmm, Pip could not find his ball and his tail hung down low. How do you feel when you lose something?",
+  "reveal_feedback": "That one was tricky! Pip feels sad. He lost his ball and his tail hung low. Now you know!"
+ },
+ {
+  "id": "RL.K.10-H2",
+  "correct_feedback": "Yes! Dark gray clouds mean rain is coming, so the children got their coats. Great thinking!",
+  "incorrect_feedback": "Take another look! The sky filled with dark gray clouds. What happens outside when you see clouds like that?",
+  "reveal_feedback": "That one was tricky! The children ran because it was going to rain. Dark clouds bring rain. Now you know!"
+ }
+]

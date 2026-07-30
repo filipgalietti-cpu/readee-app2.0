@@ -22,7 +22,6 @@ import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users, Brain } from "lucide-react";
-import InstallPWATile from "@/app/_components/InstallPWATile";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -82,10 +81,6 @@ function lessonToLearnStandard(lesson: { id: string; standards?: string[] }): st
 const DailyQuestionCard = dynamic(
   () => import("@/app/_components/DailyQuestionCard"),
   { loading: () => <div className="rounded-3xl bg-zinc-100 dark:bg-slate-800/40 animate-pulse" style={{ height: 420 }} /> },
-);
-const LearningPathCard = dynamic(
-  () => import("@/app/_components/LearningPathCard"),
-  { loading: () => <div className="rounded-3xl bg-zinc-100 dark:bg-slate-800/40 animate-pulse" style={{ height: 200 }} /> },
 );
 const SharpenUpCard = dynamic(
   () => import("@/app/_components/SharpenUpCard"),
@@ -1021,9 +1016,20 @@ function ChildDashboard({
     "bunny_classic",
     ...purchases.filter((p) => p.item_id.startsWith("bunny_")).map((p) => p.item_id),
   ]);
-  // Show a compact picker: the equipped outfit plus a curated handful.
-  const pickerIds = Array.from(new Set([equippedOutfitId, ...OUTFITS.map((o) => o.id)])).slice(0, 5);
-  const outfitChoices = pickerIds.map((id) => {
+  // Skin carousel: lead with the unlocked skins (equipped first), then a
+  // few greyed-out locked "defaults" as aspiration when the reader hasn't
+  // unlocked much yet. Always show at least MIN_SKINS so the carousel never
+  // looks empty. The KidHome component adds left/right arrows to scroll it.
+  const MIN_SKINS = 8;
+  const ownedOrdered = [
+    equippedOutfitId,
+    ...OUTFITS.map((o) => o.id).filter((id) => ownedOutfitIds.has(id) && id !== equippedOutfitId),
+  ];
+  const lockedIds = OUTFITS.map((o) => o.id).filter((id) => !ownedOutfitIds.has(id));
+  const carouselIds = ownedOrdered.length >= MIN_SKINS
+    ? ownedOrdered
+    : [...ownedOrdered, ...lockedIds.slice(0, MIN_SKINS - ownedOrdered.length)];
+  const outfitChoices = carouselIds.map((id) => {
     const o = OUTFITS.find((x) => x.id === id)!;
     return { id, name: o.name, tint: o.tint, border: o.border, owned: ownedOutfitIds.has(id) };
   });
@@ -1097,7 +1103,7 @@ function ChildDashboard({
     planSteps,
     path: {
       nodes: pathNodes,
-      unitTitle: firstDay ? "Your reading path" : nextLesson ? nextLesson.title : "Reading path",
+      unitTitle: firstDay ? "Reading Journey" : nextLesson ? nextLesson.title : "Reading Journey",
       unitPct: Math.round(pathRatio * 100),
       unitSub: firstDay ? "Your adventure starts here" : `${completedCount} of ${lessons.length} lessons done`,
       href: `/journey?child=${child.id}`,
@@ -1180,17 +1186,6 @@ function ChildDashboard({
           <DailyQuestionCard variant="parent" />
         </motion.div>
 
-        {/* ── Personalized Readee path (AI from placement test) ──
-            This is parent-info (a curriculum map) more than kid-action
-            so it sits below the action surfaces. */}
-        <motion.div variants={slideUp}>
-          <LearningPathCard
-            childId={child.id}
-            childFirstName={child.first_name ?? null}
-            variant="parent"
-          />
-        </motion.div>
-
         {/* ── Sharpen Up — premium adaptive review.
             Self-hides when the kid has no weak spots in the last
             30 days, so free users with no signal don't see it
@@ -1205,16 +1200,6 @@ function ChildDashboard({
              B2C accounts (which is most of them). */}
         <motion.div variants={slideUp}>
           <TeacherAssignmentsCard childId={child.id} />
-        </motion.div>
-
-        {/* Install App tile — moved to the bottom of the dashboard so
-            that when beforeinstallprompt fires (or iOS Safari unlocks
-            the manual flow), the tile materializes below everything
-            else and shifts no important content. Earlier we rendered
-            it inline above DailyQuestionCard which caused ~140px of
-            CLS each time the prompt resolved. */}
-        <motion.div variants={slideUp}>
-          <InstallPWATile />
         </motion.div>
 
         {/* Testimonial capture — fires once the kid has completed

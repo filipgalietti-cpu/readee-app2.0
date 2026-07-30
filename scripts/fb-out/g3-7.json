@@ -1,0 +1,272 @@
+[
+ {
+  "id": "L.3.4d-E1",
+  "correct_feedback": "Yes! The dictionary told us puppy means a young dog, and you used it perfectly. Great reading!",
+  "incorrect_feedback": "Hmm, let's look at the dictionary again. It tells you exactly what the word means. Read that little definition one more time.",
+  "reveal_feedback": "The answer is 'A young dog.' The dictionary said puppy means a young dog, so that's the one to pick."
+ },
+ {
+  "id": "L.3.4d-E2",
+  "correct_feedback": "That's right! The dictionary said damp means a little bit wet, so a damp towel is a little bit wet. Nice work!",
+  "incorrect_feedback": "Almost! The dictionary gives you the meaning of damp. Peek back at those words and match them to a choice.",
+  "reveal_feedback": "The answer is 'A little bit wet.' The dictionary told us damp means a little bit wet, so that's what a damp towel is."
+ },
+ {
+  "id": "L.3.4d-E3",
+  "correct_feedback": "You got it! Gigantic means very, very big, and huge means the same thing. Super job matching!",
+  "incorrect_feedback": "Good try! Think about what gigantic means. Which word feels really, really big like that?",
+  "reveal_feedback": "The answer is 'Huge.' Gigantic means very big, and huge also means very big, so they match."
+ },
+ {
+  "id": "L.3.4d-E4",
+  "correct_feedback": "Exactly! The glossary told us the stem holds up the leaves and flowers. You read it carefully!",
+  "incorrect_feedback": "Close one! The glossary in the science book explains the stem's job. Read that sentence again slowly.",
+  "reveal_feedback": "The answer is 'Holds up the leaves and flowers.' The glossary said that is exactly what the stem does."
+ },
+ {
+  "id": "L.3.4d-E5",
+  "correct_feedback": "Yes! Whisper means to talk in a soft, quiet voice. You matched the meaning perfectly!",
+  "incorrect_feedback": "Not yet! Think about how you sound when you whisper a secret. Loud or soft? Read the definition again.",
+  "reveal_feedback": "The answer is 'In a soft, quiet voice.' The dictionary said whisper means to talk very softly and quietly."
+ },
+ {
+  "id": "L.3.5-Q1",
+  "correct_feedback": "Wonderful! A heart of gold doesn't mean real gold. It means a person is very kind and generous, just like you said!",
+  "incorrect_feedback": "Take another look! A heart of gold isn't about real metal or money. It describes what kind of person she is inside.",
+  "reveal_feedback": "The answer is 'She was very kind and generous.' A heart of gold is a way to say someone is really kind."
+ },
+ {
+  "id": "L.3.5-Q2",
+  "correct_feedback": "Great eye! A simile compares two things using 'like' or 'as,' and 'as fast as a rocket' does just that. Nice!",
+  "incorrect_feedback": "Almost! A simile compares two things using the words 'like' or 'as.' Which sentence has one of those little words?",
+  "reveal_feedback": "The answer is 'She was as fast as a rocket.' It uses the word 'as' to compare, so it's a simile."
+ },
+ {
+  "id": "L.3.5-Q3",
+  "correct_feedback": "Yes! Break a leg is a fun way people say good luck, especially before a show. You knew it!",
+  "incorrect_feedback": "Good try! Break a leg is a saying, so it doesn't really mean hurting your leg. What do people wish before a big show?",
+  "reveal_feedback": "The answer is 'Good luck.' Break a leg is a friendly way to wish someone good luck before they perform."
+ },
+ {
+  "id": "L.3.5-Q4",
+  "correct_feedback": "Exactly! Antonyms are opposites, and hot and cold are opposites. Well done!",
+  "incorrect_feedback": "Hmm, antonyms are opposite words. The other pairs mean almost the same thing. Which pair is truly opposite?",
+  "reveal_feedback": "The answer is 'Hot and cold.' Those two words are opposites, and opposites are called antonyms."
+ },
+ {
+  "id": "L.3.5-Q5",
+  "correct_feedback": "Impressive! Thunder can't really grumble, so that's personification, and 'like an angry old man' is a simile. You caught both!",
+  "incorrect_feedback": "Close one! Thunder is given a human action, and it's compared using 'like.' Think about which two kinds of language that shows.",
+  "reveal_feedback": "The answer is 'Personification and simile.' Thunder grumbling acts human, and 'like an angry old man' compares with 'like.'"
+ },
+ {
+  "id": "L.3.5a-Q1",
+  "correct_feedback": "Yes! Time doesn't really have wings. It just feels quick when you're having fun. That's nonliteral!",
+  "incorrect_feedback": "Take another look! Does time really grow wings and fly? Think about what the saying is really telling you.",
+  "reveal_feedback": "The answer is 'Nonliteral, it means time seems to pass quickly.' Time can't really fly, so the words don't mean it exactly."
+ },
+ {
+  "id": "L.3.5a-Q2",
+  "correct_feedback": "Great! A cat sitting on a mat means exactly what it says. That's literal language. Nice thinking!",
+  "incorrect_feedback": "Almost! Literal means the words mean exactly what they say. Some of these are sayings that mean something else. Which one is real?",
+  "reveal_feedback": "The answer is 'The cat sat on the mat.' It means exactly what it says, so it is literal."
+ },
+ {
+  "id": "L.3.5a-Q3",
+  "correct_feedback": "You got it! A backpack doesn't really weigh a ton. It just feels super heavy. Great thinking!",
+  "incorrect_feedback": "Not yet! A backpack can't really weigh 2,000 pounds. It's a saying. What is it really telling you about the backpack?",
+  "reveal_feedback": "The answer is 'The backpack feels very heavy.' Weighs a ton is a fun way to say something feels really heavy."
+ },
+ {
+  "id": "L.3.5a-Q4",
+  "correct_feedback": "Yes! She wasn't really in water. Drowning in homework means she had way too much of it. Smart!",
+  "incorrect_feedback": "Good try! There's no real water here. Drowning in homework is a saying. Think about how much homework she had.",
+  "reveal_feedback": "The answer is 'She had way too much homework.' Drowning in it means having so much it feels overwhelming."
+ },
+ {
+  "id": "L.3.5a-Q5",
+  "correct_feedback": "Exactly! Words aren't really knives. Cut like a knife means the words were sharp and hurtful. Well done!",
+  "incorrect_feedback": "Close one! The words aren't a real knife. Think about how a knife feels sharp, and how that describes his words.",
+  "reveal_feedback": "The answer is 'Sharp and hurtful.' Words that cut like a knife hurt someone's feelings."
+ },
+ {
+  "id": "L.3.5a-H1",
+  "correct_feedback": "Yes! His heart didn't really move. It's a way to say he suddenly felt very sad and discouraged by the bad news. Great!",
+  "incorrect_feedback": "Take another look! His heart didn't really sink. Remember, he just heard bad news. How would that make him feel?",
+  "reveal_feedback": "The answer is 'He suddenly felt very sad and discouraged.' Heart sank shows sudden sadness after bad news."
+ },
+ {
+  "id": "L.3.5a-H2",
+  "correct_feedback": "Great thinking! When Mom hit the roof, she got very angry. That's nonliteral, since she didn't touch a real roof. Nice!",
+  "incorrect_feedback": "Almost! Nonliteral means the words don't mean exactly what they say. In three sentences something really touches a roof. Which one doesn't?",
+  "reveal_feedback": "The answer is 'When she saw the huge mess, Mom hit the roof.' Here it means she got very angry, not a real roof."
+ },
+ {
+  "id": "L.3.5a-H3",
+  "correct_feedback": "Yes! The rule seemed bad at first, but it turned out good. That's a blessing in disguise. Wonderful reading!",
+  "incorrect_feedback": "Good try! It's not a costume or a wrapped gift. Remember, everyone complained but then liked it. Think about that change.",
+  "reveal_feedback": "The answer is 'Something that seems bad at first but turns out to be good,' just like the dinner rule did."
+ },
+ {
+  "id": "L.3.5a-H4",
+  "correct_feedback": "Exactly! Let the cat out of the bag means you accidentally told a secret. There's no real cat! Great job!",
+  "incorrect_feedback": "Not yet! There's no real cat or bag here. It's a saying about a secret. Think about what happens when a secret slips out.",
+  "reveal_feedback": "The answer is 'Accidentally told a secret.' Letting the cat out of the bag means a secret got shared by mistake."
+ },
+ {
+  "id": "L.3.5a-H5",
+  "correct_feedback": "Yes! Keep your eyes peeled means to watch very carefully. You didn't get tricked by the word peeled. Nice!",
+  "incorrect_feedback": "Close one! You don't really peel your eyes! Think about what the coach wants the team to do with their eyes.",
+  "reveal_feedback": "The answer is 'Watch very carefully.' Keep your eyes peeled means to look closely for something."
+ },
+ {
+  "id": "L.3.5b-Q1",
+  "correct_feedback": "Yes! A generous person happily shares with others. You knew just what that word means. Great!",
+  "incorrect_feedback": "Hmm, generous is about how someone treats others. It's not about height or speed. Which choice shows sharing?",
+  "reveal_feedback": "The answer is 'When they share with others willingly.' That giving, sharing spirit is what generous means."
+ },
+ {
+  "id": "L.3.5b-Q2",
+  "correct_feedback": "Exactly! Cooperation means working together, and a group building a fort together does just that. Well done!",
+  "incorrect_feedback": "Almost! Cooperation means people working together. Which choice shows more than one person teaming up?",
+  "reveal_feedback": "The answer is 'A group building a fort together.' Working as a team like that is cooperation."
+ },
+ {
+  "id": "L.3.5b-Q3",
+  "correct_feedback": "Yes! When you try something new and scary, you feel anxious, or nervous inside. You matched it well!",
+  "incorrect_feedback": "Take another look! Think about how your tummy feels before something new and scary. Would you feel calm or bored?",
+  "reveal_feedback": "The answer is 'Anxious.' That worried, jittery feeling when something is new and scary is called anxious."
+ },
+ {
+  "id": "L.3.5b-Q4",
+  "correct_feedback": "That's right! A person who always tells the truth is honest. Great vocabulary work!",
+  "incorrect_feedback": "Good try! Think about a word that means always telling the truth. Which choice fits a truthful person?",
+  "reveal_feedback": "The answer is 'Honest.' Someone who always tells the truth is called honest."
+ },
+ {
+  "id": "L.3.5b-Q5",
+  "correct_feedback": "Yes! Persistent means you keep trying even when things get hard. You never gave up, and neither would they!",
+  "incorrect_feedback": "Close one! Think about a word for someone who keeps going even when it's tough. Which choice sounds like never giving up?",
+  "reveal_feedback": "The answer is 'Persistent.' Someone who keeps trying even when things are difficult is persistent."
+ },
+ {
+  "id": "L.3.5b-E1",
+  "correct_feedback": "Yes! Helping a hurt friend is a kind thing to do. You understand what kind means!",
+  "incorrect_feedback": "Hmm, kind is about being nice and caring to others. Napping or wearing a shirt isn't kind or unkind. Which choice helps someone?",
+  "reveal_feedback": "The answer is 'When they help a friend who is hurt.' Helping a hurt friend is a kind thing to do."
+ },
+ {
+  "id": "L.3.5b-E2",
+  "correct_feedback": "Exactly! Speaking up in front of the whole class takes courage. That's brave! Nice job!",
+  "incorrect_feedback": "Almost! Brave means doing something even when it feels scary. Which choice would take real courage?",
+  "reveal_feedback": "The answer is 'Speaking up in front of the whole class.' That takes courage, which is what brave means."
+ },
+ {
+  "id": "L.3.5b-E3",
+  "correct_feedback": "Yes! When your stomach growls and you want food, you feel hungry. You knew it!",
+  "incorrect_feedback": "Take another look! Hungry is about your body wanting food. Which choice sounds like your tummy needs something to eat?",
+  "reveal_feedback": "The answer is 'When their stomach is growling and they want food.' That empty, growly feeling means hungry."
+ },
+ {
+  "id": "L.3.5b-E4",
+  "correct_feedback": "Yes! Toys and clothes all over the floor makes a messy room. Great job picturing it!",
+  "incorrect_feedback": "Good try! Messy means things are not put away and are all over the place. Which room sounds cluttered, not neat?",
+  "reveal_feedback": "The answer is 'Toys and clothes all over the floor.' Things scattered everywhere makes a room messy."
+ },
+ {
+  "id": "L.3.5b-E5",
+  "correct_feedback": "Exactly! Staying up all night long would make anyone tired. You matched the feeling perfectly!",
+  "incorrect_feedback": "Not yet! Tired means your body needs rest and sleep. Which choice would use up your energy and wear you out?",
+  "reveal_feedback": "The answer is 'After staying up all night long.' Missing sleep like that makes you feel tired."
+ },
+ {
+  "id": "L.3.5c-Q2",
+  "correct_feedback": "Yes! Furious is the strongest way to say angry, even stronger than annoyed or bothered. Great job!",
+  "incorrect_feedback": "Take another look! Some anger words are mild, like bothered. You want the biggest, strongest anger word here.",
+  "reveal_feedback": "The answer is 'Furious.' Furious means super, super angry, the strongest of these words."
+ },
+ {
+  "id": "L.3.5c-Q4",
+  "correct_feedback": "Nice! Delighted is more than happy but not as huge as ecstatic. You placed it just right!",
+  "incorrect_feedback": "Hmm, you need a happy word that fits between happy and ecstatic. Sad and okay aren't between them. Which one is a strong happy?",
+  "reveal_feedback": "The answer is 'Delighted.' Delighted is more than happy but not quite as big as ecstatic."
+ },
+ {
+  "id": "L.3.5c-Q5",
+  "correct_feedback": "Great thinking! 'I knew' shows the person was sure, while 'I heard' is just a rumor. You spotted the certainty!",
+  "incorrect_feedback": "Almost! One sentence just heard a rumor, and one felt sure. Which word means the person really knew for certain?",
+  "reveal_feedback": "The answer is that 'I knew' shows more certainty. Knowing something is much more sure than just hearing a rumor."
+ },
+ {
+  "id": "L.3.5c-H1",
+  "correct_feedback": "Yes! 'Might' shows Dad is the least sure it will rain. The other words sound much more certain. Great!",
+  "incorrect_feedback": "Take another look! Some words like 'definitely' sound very sure. You want the one that sounds the least sure, like a maybe.",
+  "reveal_feedback": "The answer is 'It might rain later.' The word 'might' shows he's the least sure it will happen."
+ },
+ {
+  "id": "L.3.5c-H2",
+  "correct_feedback": "Nice! Probably is more sure than maybe but not as sure as definitely. You placed it perfectly!",
+  "incorrect_feedback": "Hmm, you need a word between maybe and definitely. 'Never' and 'possibly' don't fit there. Which shows pretty sure, but not totally?",
+  "reveal_feedback": "The answer is 'Probably.' Probably is more sure than maybe but less sure than definitely."
+ },
+ {
+  "id": "L.3.5c-H3",
+  "correct_feedback": "Yes! Terrified is the strongest fear word, much bigger than nervous or uneasy. Great job!",
+  "incorrect_feedback": "Almost! Some fear words are mild, like nervous or uneasy. You want the biggest, strongest fear word here.",
+  "reveal_feedback": "The answer is 'Terrified.' Terrified means extremely scared, the strongest fear of these words."
+ },
+ {
+  "id": "L.3.5c-H4",
+  "correct_feedback": "Yes! Miserable is the deepest, heaviest sadness, more than gloomy or disappointed. You knew it!",
+  "incorrect_feedback": "Take another look! Some words are only a little sad, like down or disappointed. You want the deepest, saddest word.",
+  "reveal_feedback": "The answer is 'Miserable.' Miserable means the deepest, heaviest kind of sadness."
+ },
+ {
+  "id": "L.3.5c-H5",
+  "correct_feedback": "Great! When Maria says she's positive, she means she's certain, or totally sure. You caught the right meaning!",
+  "incorrect_feedback": "Good try! Positive has more than one meaning. Here Maria is telling how sure she is. Which choice matches being sure?",
+  "reveal_feedback": "The answer is 'Certain.' When Maria says she's positive, she means she is certain, or totally sure."
+ },
+ {
+  "id": "L.3.5c-E1",
+  "correct_feedback": "Yes! Overjoyed is an even bigger happy feeling than glad. You picked the strong one!",
+  "incorrect_feedback": "Hmm, you need a bigger happy word than glad. Hungry, cold, and tired aren't happy at all. Which one is a huge happy?",
+  "reveal_feedback": "The answer is 'Overjoyed.' Overjoyed means a much bigger feeling of happy than glad."
+ },
+ {
+  "id": "L.3.5c-E2",
+  "correct_feedback": "Yes! Terrified is the strongest fear word. The others aren't about being scared at all. Great!",
+  "incorrect_feedback": "Take another look! Sleepy, bored, and curious aren't fear words. Which one means really, really scared?",
+  "reveal_feedback": "The answer is 'Terrified.' Terrified means extremely scared, the strongest fear here."
+ },
+ {
+  "id": "L.3.5c-E3",
+  "correct_feedback": "Yes! Sam felt sure, and certain means sure. You matched the meaning well!",
+  "incorrect_feedback": "Almost! You want a word that means sure. Slow, loud, and silly aren't about being sure. Which one fits?",
+  "reveal_feedback": "The answer is 'Certain.' Certain means sure, which is how Sam felt about locking the door."
+ },
+ {
+  "id": "L.3.5c-E4",
+  "correct_feedback": "Yes! Furious is the strongest anger word. The others aren't about anger at all. Great job!",
+  "incorrect_feedback": "Hmm, fast, funny, and friendly aren't angry words. Which one means really, really angry?",
+  "reveal_feedback": "The answer is 'Furious.' Furious means very, very angry, the strongest anger word here."
+ },
+ {
+  "id": "L.3.5c-E5",
+  "correct_feedback": "Yes! Maya felt not sure, and unsure means not sure. You matched it perfectly!",
+  "incorrect_feedback": "Good try! You want a word meaning not sure. Brave, quiet, and happy don't fit. Which one means not sure?",
+  "reveal_feedback": "The answer is 'Unsure.' Unsure means not sure, which is how Maya felt about the rain."
+ },
+ {
+  "id": "L.3.6-Q1",
+  "correct_feedback": "Great! Delicious and perfectly seasoned paints a clear picture. That's precise, colorful vocabulary. Nice!",
+  "incorrect_feedback": "Take another look! Words like 'stuff,' 'okay,' and 'good' are pretty plain. Which sentence uses rich, exact describing words?",
+  "reveal_feedback": "The answer is 'The pasta was delicious and perfectly seasoned.' Those exact words paint a clearer picture."
+ },
+ {
+  "id": "L.3.6-Q2",
+  "correct_feedback": "Yes! In science, a habitat is the natural home of an animal or plant. You knew the science word!",
+  "incorrect_feedback": "Hmm, habitat is a science word about where living things live. Think about where an animal or plant makes its home.",
+  "reveal_feedback": "The answer is 'The natural home of an animal or plant.' A habitat is where a living thing naturally lives."
+ }
+]

@@ -1,0 +1,1046 @@
+{
+  "fails": [
+    {
+      "std": "RF.K.2a",
+      "slide": 3,
+      "file": "images/lessons/RF.K.2a/S3.png",
+      "reason": "The image depicts a cartoon cat and a party hat, which does not match the expected scene of a cartoon cake on a plate, a beautiful blue lake, and a sparkly golden star."
+    },
+    {
+      "std": "RI.K.1",
+      "slide": 1,
+      "file": "images/lessons/RI.K.1/S1.png",
+      "reason": "The image fails to depict 'real animal photos floating out' from the book. Instead, it shows the child using a magnifying glass to look at cartoon animals *within* the book, and the animals themselves are cartoon, not 'real animal photos.' This is a significant deviation from the requested scene's visual concept."
+    },
+    {
+      "std": "RL.K.2",
+      "slide": 5,
+      "file": "images/lessons/RL.K.2/S4.png",
+      "reason": "The stepping stones do not match the prompt's description. The gold stone has a heart instead of one star, the blue stone has one star instead of two stars, and the green stone has a purple circle instead of three stars. This is a significant deviation from the requested visual details."
+    },
+    {
+      "std": "RL.K.4",
+      "slide": 4,
+      "file": "images/lessons/RL.K.4/S4.png",
+      "reason": "The image depicts a girl with a lightbulb above her head, rather than a 'cartoon lightbulb character' as explicitly requested in the prompt. This is a topic mismatch."
+    },
+    {
+      "std": "RL.K.5",
+      "slide": 2,
+      "file": "images/lessons/RL.K.5/S2.png",
+      "reason": "The image fails to depict the expected scene. It shows a boy reading a book, not a storybook standing upright with characters walking out of it, nor a scroll of poetry. Additionally, the open books contain garbled text, which violates the 'no text, no words, no letters, no hallucinated words' instruction."
+    },
+    {
+      "std": "RL.K.5",
+      "slide": 5,
+      "file": "images/lessons/RL.K.5/S4.png",
+      "reason": "The image contains the words \"STORY\" and \"POEM\", which directly violates the explicit negative constraint \"No text, no words, no letters\". Additionally, the 'poem book' on the right does not depict short lines of text or musical notes as requested in the prompt."
+    },
+    {
+      "std": "RI.K.2",
+      "slide": 6,
+      "file": "images/lessons/RI.K.2/S5.png",
+      "reason": "The image does not match the expected scene. The prompt requested a child pointing at a star with a checkmark, surrounded by fact books. The image depicts a child playing with farm-themed picture cards, which is a complete topic mismatch."
+    },
+    {
+      "std": "RI.K.4",
+      "slide": 2,
+      "file": "images/lessons/RI.K.4/S2.png",
+      "reason": "The image does not depict a magnifying glass hovering over a page of a fact book with context clues. Instead, it shows a cartoon boy looking at pictures of animals and an egg, which is a complete topic mismatch for the expected scene."
+    },
+    {
+      "std": "RI.K.4",
+      "slide": 3,
+      "file": "images/lessons/RI.K.4/S3.png",
+      "reason": "The image does not depict an Arctic scene with icy waters, snow, and a thermometer. Instead, it shows a boy doing a puzzle with a sunny landscape theme."
+    },
+    {
+      "std": "RI.K.3",
+      "slide": 6,
+      "file": "images/lessons/RI.K.3/S5.png",
+      "reason": "The image depicts a child assembling puzzle pieces, which does not match the expected scene of 'A cartoon child connecting dots on a big colorful poster board, making a picture appear as connections form'."
+    },
+    {
+      "std": "RI.K.5",
+      "slide": 1,
+      "file": "images/lessons/RI.K.5/S1.png",
+      "reason": "The image does not depict the expected scene. The prompt requested 'A large cartoon fact book standing open with arrows pointing to its front cover, back cover, and pages inside.' The image shows a boy reading a book, which is a completely different subject."
+    },
+    {
+      "std": "RI.K.8",
+      "slide": 1,
+      "file": "images/lessons/RI.K.8/S1.png",
+      "reason": "The image does not match the expected scene. The prompt requested a child raising a hand asking 'why?' with a teacher pointing to a board with ideas. The image depicts an adult and child looking at a dripping faucet, which is a completely different scenario."
+    },
+    {
+      "std": "RI.K.9",
+      "slide": 2,
+      "file": "images/lessons/RI.K.9/S2.png",
+      "reason": "The image does not depict a Venn diagram with two overlapping circles and fact icons. Instead, it shows a boy looking at a book with various vehicle illustrations, which is a complete topic mismatch."
+    },
+    {
+      "std": "RI.K.8",
+      "slide": 6,
+      "file": "images/lessons/RI.K.8/S5.png",
+      "reason": "The image depicts a child detective examining puzzle pieces instead of 'reasons hidden inside a fact book' as specified in the prompt. The core object of the investigation is incorrect, leading to a significant topic mismatch."
+    },
+    {
+      "std": "RF.K.1a",
+      "slide": 2,
+      "file": "images/lessons/RF.K.1a/S2.gif",
+      "reason": "The image provided is a static illustration of a boy reading a picture book, which does not match the expected scene description of an animated GIF showing a workbook with rows highlighted by green bars cycling through different states."
+    },
+    {
+      "std": "RF.K.1a",
+      "slide": 3,
+      "file": "images/lessons/RF.K.1a/S3-a.png",
+      "reason": "The image depicts an adult and child pointing at a board of shapes, which does not match the expected scene of a 'karaoke animation' with 'blank sentence,' 'line 1 karaoke,' and 'line 2 karaoke.' The topic is completely mismatched."
+    },
+    {
+      "std": "RF.K.1c",
+      "slide": 1,
+      "file": "images/lessons/RF.K.1c/S1.png",
+      "reason": "The image fails to depict the requested scene. It shows a boy with individual building blocks, not colorful cartoon building blocks arranged in groups of three with clear visible gaps between each group, nor tiny smiling spaceman characters standing in each gap."
+    },
+    {
+      "std": "RF.K.1c",
+      "slide": 6,
+      "file": "images/lessons/RF.K.1c/S5.png",
+      "reason": "The image depicts a child looking at a picture book with illustrations of fruits and animals, not a child arranging colorful blocks on a table with gold stars, which is a complete mismatch to the expected scene."
+    },
+    {
+      "std": "RF.K.1d",
+      "slide": 1,
+      "file": "images/lessons/RF.K.1d/S1.png",
+      "reason": "The image does not depict a rainbow arch made of blocks, nor is the child reaching up to touch a rainbow. Instead, it shows a child sitting on the ground with scattered blocks."
+    },
+    {
+      "std": "RF.K.1d",
+      "slide": 3,
+      "file": "images/lessons/RF.K.1d/S3.png",
+      "reason": "The image depicts animal picture cards instead of the requested letter cards (uppercase B, D, S and lowercase b, d, s). This is a complete mismatch of the core subject matter."
+    },
+    {
+      "std": "RF.K.2b",
+      "slide": 2,
+      "file": "images/lessons/RF.K.2b/S2.png",
+      "reason": "The image fails to depict 'word parts bouncing off it like beats \u2014 'ba-na-na' shown as three drum hits.' Instead, it shows a boy holding a literal banana and playing a drum, with generic blue circles that do not represent the syllables or word parts as beats. This is a significant topic mismatch."
+    },
+    {
+      "std": "RF.K.2d",
+      "slide": 3,
+      "file": "images/lessons/RF.K.2d/example.png",
+      "reason": "The prompt requested the child to be holding up three fingers on their right hand, but the image shows the child holding up four fingers."
+    },
+    {
+      "std": "RF.K.3c",
+      "slide": 5,
+      "file": "images/lessons/RF.K.3c/S4.png",
+      "reason": "The image completely fails to depict the expected scene of a child adding a star to a calendar. Instead, it shows a cartoon boy pointing at a snake and a mouse. Additionally, the image contains text (\"loooong\", \"pop!\") which was explicitly forbidden by the prompt (\"No text, no words, no letters. No text overlays, no hallucinated words, no signs with writing.\")."
+    },
+    {
+      "std": "RF.K.3d",
+      "slide": 1,
+      "file": "images/lessons/RF.K.3d/S1.png",
+      "reason": "The character with the red hat is looking into a mirror, but its reflection shows a character with a blue hat. This is an incorrect depiction of a mirror's function, as a reflection should be identical to the object being reflected, and would be confusing to a child."
+    },
+    {
+      "std": "K.L.6",
+      "slide": 3,
+      "file": "images/lessons/K.L.6/S3.png",
+      "reason": "The child's eyes contain star-shaped glints/sparkles, which directly violates the negative prompt instruction: 'No AI-generated glints. No twinkles or sparkles in characters' eyes.'"
+    },
+    {
+      "std": "RL.1.2",
+      "slide": 3,
+      "file": "images/lessons/RL.1.2/S3.png",
+      "reason": "The image does not depict the expected scene. The prompt requested a boy crossing a finish line with a gold medal and confetti. The image shows a boy pointing at an open book, which contains a comic strip of a character on a path, not the boy himself crossing a finish line with a medal and confetti."
+    },
+    {
+      "std": "RL.1.3",
+      "slide": 4,
+      "file": "images/lessons/RL.1.3/S4.png",
+      "reason": "The image depicts a cartoon girl thinking about icons (smiley face, sun, hand) against a plain blue background. This does not match the expected scene of a happy boy playing fetch with a brown dog in a green park under a bright sun."
+    },
+    {
+      "std": "RL.1.2",
+      "slide": 2,
+      "file": "images/lessons/RL.1.2/S2.png",
+      "reason": "The image fails to depict the requested icons (sunrise, star, sunset) on the books. Instead, it shows a sequence of plant growth (seed, sprout, flower), which is a significant topic mismatch."
+    },
+    {
+      "std": "RL.1.6",
+      "slide": 3,
+      "file": "images/lessons/RL.1.6/S3.png",
+      "reason": "The image fails to depict the requested scene. It shows a boy with a magnifying glass looking at three separate scenes, rather than a narrator character in a director's chair gesturing at two characters in the distance."
+    },
+    {
+      "std": "RI.1.1",
+      "slide": 4,
+      "file": "images/lessons/RI.1.1/S4.png",
+      "reason": "The image depicts a child looking at a toy car, a block house, and a flower on a table, not an open informational book as specified in the prompt. This is a significant topic mismatch."
+    },
+    {
+      "std": "RI.1.4",
+      "slide": 2,
+      "file": "images/lessons/RI.1.4/S2.png",
+      "reason": "The image fails to depict the requested scene. The child is shown investigating outdoor clues (paw prints, feather, button) on a path with a treasure chest, instead of pointing at a sentence on a page with a question mark above their head."
+    },
+    {
+      "std": "RI.1.4",
+      "slide": 1,
+      "file": "images/lessons/RI.1.4/S1.png",
+      "reason": "The image fails to depict the requested scene. The child is not shrugging, and there is no open fact book. Instead, a large, unrequested question mark is present, and an apple is in the thought bubble alongside the lightbulb, which was also not requested."
+    },
+    {
+      "std": "RI.1.5",
+      "slide": 2,
+      "file": "images/lessons/RI.1.5/S2.png",
+      "reason": "The image does not depict a 'colorful table of contents' within the open book as requested in the prompt. Instead, it shows a child reading a book with a dinosaur illustration, and a separate panel of icons outside the book."
+    },
+    {
+      "std": "RI.1.5",
+      "slide": 3,
+      "file": "images/lessons/RI.1.5/S3.png",
+      "reason": "The image fails to depict a diagram of a butterfly with its parts labeled. Instead, dashed lines point from the butterflies to unrelated, random objects (magnifying glass, feather, apple, heart, boot), making the 'diagram' aspect incoherent and not matching the prompt's intent for a fact book page."
+    },
+    {
+      "std": "RF.1.2d",
+      "slide": 1,
+      "file": "images/lessons/RF.1.2d/S1.png",
+      "reason": "The image depicts a child playing with toy trains, which does not match the expected scene of a child pulling apart a puzzle word shape."
+    },
+    {
+      "std": "RF.1.2d",
+      "slide": 4,
+      "file": "images/lessons/RF.1.2d/S4.png",
+      "reason": "The image fails to depict the requested activity of 'carefully counting on three colorful fingers' and the expression of 'smiling with eyes closed in concentration.' Instead, the child is making a peace sign with eyes open and laughing."
+    },
+    {
+      "std": "L.1.4b",
+      "slide": 4,
+      "file": "images/lessons/L.1.4b/S4.png",
+      "reason": "The image completely fails to depict the expected scene. The prompt requested 'A cheerful cartoon magnifying glass character examining a colorful word, zooming in on the ends to show a small part changing the word's meaning.' The image shows a cartoon boy holding a toy car, which is an entirely different subject."
+    },
+    {
+      "std": "L.1.4c",
+      "slide": 4,
+      "file": "images/lessons/L.1.4c/S4.png",
+      "reason": "The image depicts a child planting a literal root in the ground, rather than a cheerful cartoon magnifying glass character zooming in on a shiny root word at the center of a word tree. This is a complete mismatch of the main subject and activity requested in the prompt."
+    },
+    {
+      "std": "L.1.4c",
+      "slide": 1,
+      "file": "images/lessons/L.1.4c/S1.png",
+      "reason": "The image contains clear letters (K, M) and emoji-like symbols on the roots, which directly violates the negative prompt instructions \"No text, no words, no letters\" and \"no hallucinated words.\" The glowing effect around these elements also violates the \"No twinkles or\" instruction."
+    },
+    {
+      "std": "L.1.5b",
+      "slide": 4,
+      "file": "images/lessons/L.1.5b/S4.png",
+      "reason": "The image violates multiple explicit negative constraints from the prompt. It includes star-shaped AI-generated glints in the eyes, a star icon (twinkle) on the yellow puzzle piece, and a stylized letter/symbol on the character's hat, all of which were explicitly forbidden by the prompt (\"no AI-generated glints\", \"no twinkles or\", \"no text, no words, no letters\")."
+    },
+    {
+      "std": "L.1.6",
+      "slide": 2,
+      "file": "images/lessons/L.1.6/S2.png",
+      "reason": "The image depicts a child matching image cards, not placing a word card into a matching empty slot on a sentence card as specified in the prompt. This is a significant mismatch in the core activity."
+    },
+    {
+      "std": "RL.2.4",
+      "slide": 2,
+      "file": "images/lessons/RL.2.4/S2.png",
+      "reason": "The image completely fails to depict the expected scene. The prompt requested 'Two cheerful cartoon words shaped like musical notes, connected by a tiny heart,' but the image shows a boy playing a drum with a cat, a bee, and a tree."
+    },
+    {
+      "std": "RL.2.9",
+      "slide": 1,
+      "file": "images/lessons/RL.2.9/S1.png",
+      "reason": "The image does not depict \"two cheerful cartoon open books next to each other\" as requested in the prompt. It shows two cartoon character busts instead."
+    },
+    {
+      "std": "RI.2.2",
+      "slide": 4,
+      "file": "images/lessons/RI.2.2/S4.png",
+      "reason": "The image depicts a boy reading a book with jungle animals, which is a complete mismatch for the expected scene of a cheerful cartoon owl tilting its head and asking a question."
+    },
+    {
+      "std": "RI.2.2",
+      "slide": 2,
+      "file": "images/lessons/RI.2.2/S2.png",
+      "reason": "The image does not depict 'three cheerful cartoon paragraph blocks in a column, each glowing a different color' as requested. Instead, it shows three blocks containing an apple, a star, and a fish, which are not paragraph blocks and are not glowing."
+    },
+    {
+      "std": "RI.2.3",
+      "slide": 2,
+      "file": "images/lessons/RI.2.3/S2.png",
+      "reason": "The image depicts a cartoon boy planting, which is a complete mismatch for the expected scene of 'Three cheerful cartoon numbered arrows in a row, each glowing a different bright color'."
+    },
+    {
+      "std": "RI.2.3",
+      "slide": 4,
+      "file": "images/lessons/RI.2.3/S4.png",
+      "reason": "The image does not depict a magnifying glass over a word list highlighting first / next / last. Instead, it shows a boy with apples, which is a complete mismatch to the expected scene."
+    },
+    {
+      "std": "RI.2.4",
+      "slide": 4,
+      "file": "images/lessons/RI.2.4/S3.png",
+      "reason": "The image depicts a child baking, which does not match the expected scene of 'A cheerful cartoon kid looking at two words linked by a glowing arrow on a page.' The topic is completely mismatched."
+    },
+    {
+      "std": "RI.2.5",
+      "slide": 1,
+      "file": "images/lessons/RI.2.5/S1.png",
+      "reason": "The image does not depict an 'open fact book with a table of contents, heading, caption, and diagram'. Instead, it shows a child playing with building blocks and a potted flower, which is a complete mismatch to the expected scene."
+    },
+    {
+      "std": "RI.2.4",
+      "slide": 2,
+      "file": "images/lessons/RI.2.4/S2.png",
+      "reason": "The image does not depict the requested scene of \"A cheerful cartoon sentence with a tiny definition arrow pointing to it, sparkles around.\" Instead, it shows a boy pointing at a diagram of a butterfly's life cycle, which is a complete topic mismatch."
+    },
+    {
+      "std": "RF.2.3",
+      "slide": 2,
+      "file": "images/lessons/RF.2.3/S2.png",
+      "reason": "The image depicts a cartoon boy holding a red square with sound waves, instead of a cheerful cartoon letter B with a tiny buzz next to it. This is a complete topic mismatch."
+    },
+    {
+      "std": "RI.2.10",
+      "slide": 5,
+      "file": "images/lessons/RI.2.10/S4.png",
+      "reason": "The image does not depict a cheerful cartoon calendar with themed bookmarks. Instead, it shows a boy looking at three framed pictures."
+    },
+    {
+      "std": "RF.2.3",
+      "slide": 1,
+      "file": "images/lessons/RF.2.3/S1.png",
+      "reason": "The prompt specified 'a cape made of letters', but the image depicts a plain red cape without any letters. This is a significant topic mismatch that a child would notice if the text described the cape."
+    },
+    {
+      "std": "RF.2.4b",
+      "slide": 3,
+      "file": "images/lessons/RF.2.4b/S3.png",
+      "reason": "The image fails to depict the core concept of the prompt, which was 'A cheerful cartoon kid reading the same book twice, each time looking more confident.' The image shows only one instance of a kid reading, not a progression of confidence or the same book being read multiple times."
+    },
+    {
+      "std": "RF.2.4c",
+      "slide": 2,
+      "file": "images/lessons/RF.2.4c/S2.png",
+      "reason": "The image does not depict the expected scene of 'A cheerful cartoon stop sign next to a thinking bubble and a small checkmark'. Instead, it shows a boy playing with a shape sorter toy."
+    },
+    {
+      "std": "L.2.4b",
+      "slide": 1,
+      "file": "images/lessons/L.2.4b/S1.png",
+      "reason": "The image depicts a cartoon train and wagon, which does not match the expected scene of \"A cheerful cartoon prefix tile snapping onto the front of a word.\""
+    },
+    {
+      "std": "L.2.4a",
+      "slide": 2,
+      "file": "images/lessons/L.2.4a/S2.png",
+      "reason": "The image depicts two children whispering, which is a scene, not 'A cheerful cartoon ear listening to tiny words' as explicitly requested in the prompt. The primary subject of the prompt (an isolated ear) is not present, indicating a topic mismatch."
+    },
+    {
+      "std": "L.2.4a",
+      "slide": 1,
+      "file": "images/lessons/L.2.4a/S1.png",
+      "reason": "The image completely deviates from the requested scene. The prompt asked for \"A cheerful cartoon magnifying glass hovering over a sentence with tiny sparkles.\" The image depicts a child detective looking at three separate picture frames showing a ball and dogs, which is a fundamental failure to generate the specified visual content."
+    },
+    {
+      "std": "L.2.4c",
+      "slide": 1,
+      "file": "images/lessons/L.2.4c/S1.png",
+      "reason": "The image depicts a cartoon boy playing with blocks, which is a complete mismatch for the expected scene of 'A cheerful cartoon tree with visible roots underground, each root a glowing letter.'"
+    },
+    {
+      "std": "L.2.4c",
+      "slide": 4,
+      "file": "images/lessons/L.2.4c/S4.png",
+      "reason": "The image does not match the expected scene description. The prompt requested 'A cheerful cartoon hand covering the ends of a word, revealing the middle', but the image depicts a boy playing with puzzle pieces."
+    },
+    {
+      "std": "L.2.4e",
+      "slide": 2,
+      "file": "images/lessons/L.2.4e/S2.png",
+      "reason": "The image completely fails to depict the requested scene of 'A cheerful cartoon line of letters A B C D arranged in order with small smiles.' Instead, it shows a boy pointing at cards with an apple, ball, cat, and dog. This is a fundamental topic mismatch."
+    },
+    {
+      "std": "L.2.5",
+      "slide": 1,
+      "file": "images/lessons/L.2.5/S1.png",
+      "reason": "The image depicts two cheerful cartoon puzzle pieces instead of the requested 'two cheerful cartoon words'. Additionally, the characters' eyes contain small white glints/sparkles, which explicitly violates the negative prompt 'No twinkles or sparkles in characters' eyes'."
+    },
+    {
+      "std": "L.2.5",
+      "slide": 2,
+      "file": "images/lessons/L.2.5/S2.png",
+      "reason": "The prompt requested 'A cheerful cartoon pair of words holding hands (synonyms) and another pair back-to-back (antonyms)', but the image depicts children instead of personified words. This is a failure to match the requested subject."
+    },
+    {
+      "std": "L.2.6",
+      "slide": 2,
+      "file": "images/lessons/L.2.6/S2.png",
+      "reason": "The image does not depict 'a cheerful cartoon kid thinking with two word bubbles labeled formal and casual.' Instead, it shows two separate scenes with multiple characters illustrating formal and casual situations, which is a significant deviation from the requested subject."
+    },
+    {
+      "std": "L.2.6",
+      "slide": 4,
+      "file": "images/lessons/L.2.6/S4.png",
+      "reason": "The image depicts a cheerful cartoon kid playing with shape blocks, which does not match the expected scene of 'A cheerful cartoon kid ticking off a word on a fun calendar'."
+    },
+    {
+      "std": "RL.3.1",
+      "slide": 2,
+      "file": "images/lessons/RL.3.1/S2.png",
+      "reason": "The image does not match the expected scene. The prompt requested 'A cheerful cartoon kid pointing to a glowing sentence with a quote bubble,' but the image shows a kid looking at an open book with animal illustrations and holding a magnifying glass. There is no glowing sentence, quote bubble, or pointing action as described."
+    },
+    {
+      "std": "RL.3.1",
+      "slide": 3,
+      "file": "images/lessons/RL.3.1/S3.png",
+      "reason": "The child is drawing a squiggly line on a blank page with a marker, rather than reading and highlighting text with a highlighter as specified in the prompt. The page is blank, not containing any text to be read or highlighted."
+    },
+    {
+      "std": "RL.3.2",
+      "slide": 5,
+      "file": "images/lessons/RL.3.2/S4.png",
+      "reason": "The image fails to depict the 'tiny book' requested in the prompt. Instead, it shows a thought bubble with a heart, which is a significant deviation from the expected scene's content and changes the implied narrative."
+    },
+    {
+      "std": "RL.3.4",
+      "slide": 1,
+      "file": "images/lessons/RL.3.4/S1.png",
+      "reason": "The image fails to depict an 'open story page with a sparkly word'. Instead, the kid is looking at a complex, abstract, intertwined ribbon-like object, which does not match the expected scene's core subject matter."
+    },
+    {
+      "std": "RL.3.4",
+      "slide": 4,
+      "file": "images/lessons/RL.3.4/S4.png",
+      "reason": "The image fails to depict a 'cheerful' kid, instead showing a thoughtful/confused expression. Additionally, the requested 'thought bubble asking wait, what?' is entirely missing from the illustration, which is a significant deviation from the expected scene."
+    },
+    {
+      "std": "RL.3.10",
+      "slide": 1,
+      "file": "images/lessons/RL.3.10/S1.png",
+      "reason": "The image does not depict a 'cheerful cartoon calendar with a bookmark on each month and a stack of books' as requested. Instead, it shows a child reading a book, surrounded by other books with seasonal themes. This is a significant topic mismatch."
+    },
+    {
+      "std": "RI.3.2",
+      "slide": 1,
+      "file": "images/lessons/RI.3.2/S1.png",
+      "reason": "The image fails to depict the requested 'fact book' under the lightbulb. Instead, it shows a collection of unrelated items (cat, girl, bird, flower), which is a significant topic mismatch."
+    },
+    {
+      "std": "RL.3.10",
+      "slide": 4,
+      "file": "images/lessons/RL.3.10/example.png",
+      "reason": "The prompt states that the girl should 'glance at this book [the closed book] with a thoughtful, slightly tired expression.' However, the girl in the image is looking at the open book she is holding with a wide, happy, and engaged smile, and is not glancing at the closed book on the floor. This is a significant deviation from the requested character action and emotion, failing on topic match."
+    },
+    {
+      "std": "RI.3.2",
+      "slide": 3,
+      "file": "images/lessons/RI.3.2/S3.png",
+      "reason": "The image does not depict a cheerful cartoon kid writing a one-line summary. Instead, it shows a kid interacting with game tokens and a thought bubble, which is a different activity than requested."
+    },
+    {
+      "std": "RI.3.4",
+      "slide": 1,
+      "file": "images/lessons/RI.3.4/S1.png",
+      "reason": "The image does not depict the requested objects (a tiny dictionary and a magnifying glass). Instead, it shows a kid with a toy train."
+    },
+    {
+      "std": "RI.3.5",
+      "slide": 3,
+      "file": "images/lessons/RI.3.5/S3.png",
+      "reason": "The image depicts a child reading a storybook with picture icons, which is a significant topic mismatch from the requested 'cheerful cartoon index page with glowing topic words'. The scene type is incorrect."
+    },
+    {
+      "std": "RI.3.4",
+      "slide": 3,
+      "file": "images/lessons/RI.3.4/S3.png",
+      "reason": "The image depicts the word \"CAR\" using stylized letters as puzzle pieces, which directly violates the explicit negative prompt instructions \"No text, no words, no letters\" and \"No text overlays, no hallucinated words, no signs with writing.\" The presence of text, even if stylized and clear, is a failure to adhere to these critical negative constraints."
+    },
+    {
+      "std": "RI.3.6",
+      "slide": 1,
+      "file": "images/lessons/RI.3.6/S1.png",
+      "reason": "The left boy's left hand has only four fingers, while his right hand has five, which is an anatomical distortion when fingers are drawn individually. Additionally, the image depicts a storyteller and a listener rather than an author typing and a reader, which is a deviation from the requested actions."
+    },
+    {
+      "std": "RI.3.8",
+      "slide": 4,
+      "file": "images/lessons/RI.3.8/S4.png",
+      "reason": "The image depicts a cheerful cartoon girl interacting with a board of shapes, circling a star. The expected scene was 'A cheerful cartoon pencil circling a glowing signal word.' This is a complete mismatch of the main subject and action."
+    },
+    {
+      "std": "RI.3.8",
+      "slide": 2,
+      "file": "images/lessons/RI.3.8/S2.png",
+      "reason": "The image does not depict the expected scene. The prompt requested 'A cheerful cartoon row of signal words like because, however, also glowing,' but the image shows a child playing with object matching cards."
+    },
+    {
+      "std": "RI.3.8",
+      "slide": 3,
+      "file": "images/lessons/RI.3.8/S3.png",
+      "reason": "The image does not depict a signpost or paths labeled 'expected' and 'surprise' as requested in the prompt. It shows a boy walking on a path with another path and trees, which is a complete mismatch to the core subject of the prompt."
+    },
+    {
+      "std": "RI.3.9",
+      "slide": 4,
+      "file": "images/lessons/RI.3.9/S4.png",
+      "reason": "The image depicts a cartoon boy playing with toys, which does not match the expected scene of a T-chart with two columns and cartoon checkmarks."
+    },
+    {
+      "std": "RF.3.3",
+      "slide": 2,
+      "file": "images/lessons/RF.3.3/S2.png",
+      "reason": "The image does not depict a 'word tile split into three glowing chunks' as requested. Instead, it shows three cheerful cartoon shapes (star, cloud, sun) stacked like puzzle pieces, which is a significant topic mismatch."
+    },
+    {
+      "std": "RF.3.3",
+      "slide": 4,
+      "file": "images/lessons/RF.3.3/S4.png",
+      "reason": "The image depicts a cheerful cartoon kid playing with a toy train, which does not match the expected scene of 'A cheerful cartoon kid looking at a long word and drawing lines between pieces'."
+    },
+    {
+      "std": "RF.3.3a",
+      "slide": 4,
+      "file": "images/lessons/RF.3.3a/S4.png",
+      "reason": "The image does not depict 'a cheerful cartoon stack of colorful flashcards with prefixes and suffixes.' Instead, it shows a boy holding a sign with puzzle pieces, and a small stack of generic cards. The core subject matter of flashcards for prefixes and suffixes is not present."
+    },
+    {
+      "std": "RF.3.3b",
+      "slide": 1,
+      "file": "images/lessons/RF.3.3b/S1.png",
+      "reason": "The image does not depict a 'cheerful cartoon scroll with ancient Latin-style writing' as requested. Instead, it shows a boy interacting with stone tablets/blocks that have generic ancient symbols, which is a significant deviation from the prompt's subject matter."
+    },
+    {
+      "std": "RF.3.3c",
+      "slide": 1,
+      "file": "images/lessons/RF.3.3c/S1.png",
+      "reason": "The image does not depict the expected scene. It shows a kid standing next to a toy train, not a kid shrugging confidently at a long word."
+    },
+    {
+      "std": "RF.3.3c",
+      "slide": 2,
+      "file": "images/lessons/RF.3.3c/S2.png",
+      "reason": "The image fails to depict \"three clap emojis floating\" as requested, instead showing two clap emojis and one smiley face emoji. Additionally, the character's eyes contain white glints/sparkles, which was explicitly prohibited by the prompt."
+    },
+    {
+      "std": "RF.3.3b",
+      "slide": 4,
+      "file": "images/lessons/RF.3.3b/S4.png",
+      "reason": "The image depicts a girl using a magnifying glass on a toy train, but the prompt specifically requested 'A cheerful cartoon magnifying glass over a word ending.' This is a significant topic mismatch, as the core subject being magnified is incorrect."
+    },
+    {
+      "std": "RF.3.3a",
+      "slide": 1,
+      "file": "images/lessons/RF.3.3a/S1.png",
+      "reason": "The image depicts three generic puzzle pieces instead of the requested 'three cheerful cartoon prefix tiles and three suffix tiles'. This is a mismatch in both quantity (3 items instead of 6 implied) and the specific type of educational tile requested, failing to accurately depict the subject."
+    },
+    {
+      "std": "RF.3.3c",
+      "slide": 4,
+      "file": "images/lessons/RF.3.3c/S4.png",
+      "reason": "The image fails to depict the core subject of the prompt. It shows a cartoon pencil character cutting a segmented creature, rather than a pencil drawing slashes between syllables on a word. The concept of 'word' and 'syllables' is entirely absent, and the 'slashes' are misinterpreted as a physical cutting action on a creature."
+    },
+    {
+      "std": "RF.3.3c",
+      "slide": 3,
+      "file": "images/lessons/RF.3.3c/S3.png",
+      "reason": "The image contains garbled letters that resemble a word ('Rwwvls') which violates the explicit negative prompt 'No text, no words, no letters. No text overlays, no hallucinated words, no signs with writing.' While the prompt asks for divisions in a word, the word itself is an AI hallucination of text."
+    },
+    {
+      "std": "RF.3.3d",
+      "slide": 4,
+      "file": "images/lessons/RF.3.3d/S4.png",
+      "reason": "The image depicts generic cartoon blob characters instead of the requested letter characters ('L', 'C', 'O', 'U', 'D'). The core subject of the prompt is missing."
+    },
+    {
+      "std": "RF.3.4c",
+      "slide": 4,
+      "file": "images/lessons/RF.3.4c/S4.png",
+      "reason": "The image does not depict a cheerful cartoon thought bubble with a checkmark as requested. Instead, it shows a boy reading a book, which is a complete topic mismatch."
+    },
+    {
+      "std": "L.3.4",
+      "slide": 3,
+      "file": "images/lessons/L.3.4/S3.png",
+      "reason": "The image depicts a girl playing with a toy train, which does not match the expected scene of 'A cheerful cartoon word puzzle splitting into prefix, root, suffix'."
+    },
+    {
+      "std": "L.3.4",
+      "slide": 2,
+      "file": "images/lessons/L.3.4/S2.png",
+      "reason": "The image depicts a boy playing with a toy train, which does not match the expected scene description of \"A cheerful cartoon sentence with a glowing word in the middle.\""
+    },
+    {
+      "std": "L.3.4b",
+      "slide": 2,
+      "file": "images/lessons/L.3.4b/S2.png",
+      "reason": "The image does not depict 'prefix tiles' as requested; instead, it shows generic puzzle pieces. The prompt also specified 'three cheerful cartoon prefix tiles in a row,' but the image shows three patterned puzzle pieces connected to a large blank piece, arranged in a cluster rather than a row. This is a significant topic mismatch and deviation from the requested objects and arrangement."
+    },
+    {
+      "std": "L.3.4b",
+      "slide": 4,
+      "file": "images/lessons/L.3.4b/S4.png",
+      "reason": "The image depicts a kid assembling a regular puzzle, not pointing at a glowing word puzzle piece floating in front of them. The action and the nature of the object (glowing, word, floating) do not match the prompt."
+    },
+    {
+      "std": "L.3.4c",
+      "slide": 2,
+      "file": "images/lessons/L.3.4c/S2.png",
+      "reason": "The image depicts generic plants and trees on a floating island, but it completely fails to show 'branches showing different word forms' as requested in the prompt. This is a significant topic mismatch."
+    },
+    {
+      "std": "L.3.4d",
+      "slide": 2,
+      "file": "images/lessons/L.3.4d/S2.png",
+      "reason": "The image depicts a cheerful cartoon train instead of a cheerful cartoon line of letters in alphabetical order, which was explicitly requested in the prompt."
+    },
+    {
+      "std": "L.3.4d",
+      "slide": 1,
+      "file": "images/lessons/L.3.4d/S1.png",
+      "reason": "The image depicts a generic boy reading a book, which does not match the prompt's request for 'A cheerful cartoon dictionary character with glasses smiling'. The character is not a dictionary character and does not have glasses."
+    },
+    {
+      "std": "L.3.4d",
+      "slide": 3,
+      "file": "images/lessons/L.3.4d/S3.png",
+      "reason": "The image contains wavy lines representing text/words on the dictionary pages, which directly violates the negative prompt 'No text, no words, no letters. No text overlays, no hallucinated words, no signs with writing.'"
+    },
+    {
+      "std": "L.3.6",
+      "slide": 2,
+      "file": "images/lessons/L.3.6/S2.png",
+      "reason": "The image fails to depict the requested action of 'tossing sparkly words.' Instead, it shows a kid sitting with various objects. Additionally, there are garbled 'M' shapes on the ground, which violates the explicit instruction 'No text, no words, no letters.'"
+    },
+    {
+      "std": "RL.4.3",
+      "slide": 5,
+      "file": "images/lessons/RL.4.3/S4.png",
+      "reason": "The image completely fails to depict the expected scene of 'A cheerful cartoon highlighter character.' Instead, it shows a cartoon boy reading a book about jungle animals, which is a severe topic mismatch."
+    },
+    {
+      "std": "RL.4.5",
+      "slide": 2,
+      "file": "images/lessons/RL.4.5/S2.png",
+      "reason": "The image depicts a boy reading a book, while the expected scene was 'A cheerful cartoon scroll with poetic lines and tiny musical notes'. The core subject of the image does not match the prompt."
+    },
+    {
+      "std": "RL.4.5",
+      "slide": 1,
+      "file": "images/lessons/RL.4.5/S1.png",
+      "reason": "The image depicts a lyre instead of the requested poem scroll, which is a direct topic mismatch for one of the primary objects."
+    },
+    {
+      "std": "RL.4.6",
+      "slide": 4,
+      "file": "images/lessons/RL.4.6/S4.png",
+      "reason": "The image does not depict a cheerful cartoon highlighter circling pronouns. Instead, it shows several children and a dog playing, which is a complete topic mismatch for the expected scene."
+    },
+    {
+      "std": "RL.4.5",
+      "slide": 4,
+      "file": "images/lessons/RL.4.5/S4.png",
+      "reason": "The image does not match the expected scene description. The prompt requested \"A cheerful cartoon kid pointing at a labeled diagram,\" but the image depicts a kid with a neutral expression holding a shape for a shape sorter. This is a significant mismatch in the depicted activity and object."
+    },
+    {
+      "std": "RL.4.10",
+      "slide": 5,
+      "file": "images/lessons/RL.4.10/S4.png",
+      "reason": "The image depicts a cheerful cartoon boy reading a book, not a cheerful cartoon clock with a book inside as specified in the expected scene."
+    },
+    {
+      "std": "RI.4.1",
+      "slide": 4,
+      "file": "images/lessons/RI.4.1/S3.png",
+      "reason": "The image does not depict the expected scene. The prompt requested 'A cheerful cartoon kid putting two clue puzzle pieces together', but the image shows a kid thinking about rain, with an umbrella and boots nearby. This is a complete mismatch of the core activity."
+    },
+    {
+      "std": "RI.4.1",
+      "slide": 5,
+      "file": "images/lessons/RI.4.1/S4.png",
+      "reason": "The image depicts a cartoon girl reading a book, not a cheerful cartoon highlighter as requested in the prompt. This is a complete topic mismatch."
+    },
+    {
+      "std": "RI.4.2",
+      "slide": 2,
+      "file": "images/lessons/RI.4.2/S2.png",
+      "reason": "The image depicts a cheerful cartoon boy playing with toy trains, which is a complete mismatch for the expected scene of 'A cheerful cartoon pencil writing a one-sentence summary'."
+    },
+    {
+      "std": "RI.4.3",
+      "slide": 1,
+      "file": "images/lessons/RI.4.3/S1.png",
+      "reason": "The expected scene is a cheerful cartoon flowchart with step boxes connected by arrows. The image depicts a boy playing with building blocks and a robot, which is a complete mismatch to the requested topic."
+    },
+    {
+      "std": "RI.4.4",
+      "slide": 3,
+      "file": "images/lessons/RI.4.4/S3.png",
+      "reason": "The prompt explicitly stated \"No text, no words, no letters.\" However, the abacus icon in the red bin contains visible numbers (0-0-0-0, 0-0-0-0, 0-0-0-0), which violates this negative prompt."
+    },
+    {
+      "std": "RI.4.4",
+      "slide": 2,
+      "file": "images/lessons/RI.4.4/S2.png",
+      "reason": "The image depicts a boy playing with building blocks, which does not match the expected scene of 'a cheerful cartoon word being broken into root parts.' The image fails to illustrate the concept of linguistic word roots."
+    },
+    {
+      "std": "RI.4.5",
+      "slide": 1,
+      "file": "images/lessons/RI.4.5/S1.png",
+      "reason": "The image does not depict the expected scene. The prompt requested 'A cheerful cartoon blueprint of a paragraph with labeled parts,' but the image shows a boy building a tower with blocks, which is a complete topic mismatch."
+    },
+    {
+      "std": "L.4.1",
+      "slide": 4,
+      "file": "images/lessons/L.4.1/S4.png",
+      "reason": "The image depicts a child with building blocks, which is a complete mismatch to the expected scene of a child holding a book with a 'G' and surrounded by grammar symbols."
+    },
+    {
+      "std": "L.4.2",
+      "slide": 2,
+      "file": "images/lessons/L.4.2/S2.png",
+      "reason": "The image includes a letter 'C' as the connector between the trains, which violates the negative prompt 'No text, no words, no letters' and 'no hallucinated words'. Additionally, the prompt requested a 'comma' (punctuation mark), not a letter 'C'."
+    }
+  ],
+  "warns": [
+    {
+      "std": "RI.K.3",
+      "slide": 4,
+      "file": "images/lessons/RI.K.3/S4.png",
+      "reason": "The image accurately depicts a cartoon child using colorful yarn to connect pinned pictures on a corkboard, and the visual style matches the house style. However, the specific pairs of pictures on the corkboard do not fully match the prompt's request. The prompt asked for 'rain and a puddle, sun and a rainbow,' but the image depicts 'rain and a rainbow' and 'sun and a cloud.' While the individual elements are related natural phenomena, the specific pairings are not as requested."
+    },
+    {
+      "std": "RI.K.7",
+      "slide": 4,
+      "file": "images/lessons/RI.K.7/S4.png",
+      "reason": "There is a small, extraneous character '3' above the text 'WHAT DO I SEE?' in the left thought bubble, which is a minor visual artifact."
+    },
+    {
+      "std": "RF.K.1b",
+      "slide": 2,
+      "file": "images/lessons/RF.K.1b/alphabet.png",
+      "reason": "The image correctly displays the full English alphabet as colorful cartoon letter blocks. However, it includes three stars next to the 'Z' block, which violates the negative prompt 'No twinkles or sparkles'."
+    },
+    {
+      "std": "RF.K.1b",
+      "slide": 4,
+      "file": "images/lessons/RF.K.1b/S4.png",
+      "reason": "The child is pointing at themselves with index fingers instead of thumbs, which was specifically requested in the prompt."
+    },
+    {
+      "std": "RF.K.2d",
+      "slide": 7,
+      "file": "images/lessons/RF.K.2d/S5.png",
+      "reason": "The image includes star-shaped glints/sparkles in the child's eyes, which directly violates the negative prompt instruction \"No AI-generated glints. No twinkles or sparkles in characters' eyes.\""
+    },
+    {
+      "std": "K.L.2",
+      "slide": 4,
+      "file": "images/lessons/K.L.2/S4.png",
+      "reason": "The image depicts the checkmarks as separate elements rather than integrated with the icons as described in the prompt, and the two checkmarks are rendered inconsistently (one in a box, one standalone)."
+    },
+    {
+      "std": "K.L.4",
+      "slide": 3,
+      "file": "images/lessons/K.L.4/S3.png",
+      "reason": "The image includes a starburst/twinkle in the rabbit's eye, which violates the negative constraint 'No twinkles or sparkles in characters' eyes' and 'no AI-generated glints'."
+    },
+    {
+      "std": "RL.1.4",
+      "slide": 4,
+      "file": "images/lessons/RL.1.4/S3.png",
+      "reason": "The image includes small star-like glints/twinkles around the sun, which contradicts the negative constraint \"No twinkles or. No AI-generated glints.\""
+    },
+    {
+      "std": "RL.1.5",
+      "slide": 3,
+      "file": "images/lessons/RL.1.5/S3.png",
+      "reason": "The image contains lines resembling text blocks on the book pages, which violates the explicit instruction \"No text, no words, no letters.\" It also includes small star-like \"twinkles\" in the background, which violates \"No twinkles or.\""
+    },
+    {
+      "std": "RI.1.2",
+      "slide": 1,
+      "file": "images/lessons/RI.1.2/S1.png",
+      "reason": "The image contains a small sparkle/glint on the tree trunk, which contradicts the negative prompt instruction 'No AI-generated glints'. While the prompt also ambiguously requested 'a tiny bright', the specific negative constraint against AI-generated glints should take precedence."
+    },
+    {
+      "std": "RF.1.2c",
+      "slide": 2,
+      "file": "images/lessons/RF.1.2c/S2.png",
+      "reason": "The image contains small yellow star-like shapes (twinkles/sparkles) around the gold star and in the water, which directly contradicts the negative prompt instruction 'No twinkles or sparkles'."
+    },
+    {
+      "std": "RF.1.2d",
+      "slide": 3,
+      "file": "images/lessons/RF.1.2d/S3.png",
+      "reason": "The image includes prominent star-shaped glints in the fish's eyes and sparkles on the counting bubbles, which directly violates the negative constraints 'No twinkles or sparkles in charact' and 'no AI-generated glints'."
+    },
+    {
+      "std": "L.1.4a",
+      "slide": 1,
+      "file": "images/lessons/L.1.4a/S1.png",
+      "reason": "The image depicts the child looking at picture cards instead of \"a sentence on an open page\" as requested. Additionally, the child's expression is serious/puzzled rather than \"cheerful\"."
+    },
+    {
+      "std": "L.1.4b",
+      "slide": 3,
+      "file": "images/lessons/L.1.4b/S3.png",
+      "reason": ""
+    },
+    {
+      "std": "L.1.4c",
+      "slide": 3,
+      "file": "images/lessons/L.1.4c/S3.png",
+      "reason": "The image includes prominent star-shaped 'twinkles' and 'glints' on the red ball, which were explicitly disallowed by the prompt instructions ('No twinkles or. No AI-generated glints. No twinkles or sparkles in character'). While not a major visual distortion, it is a deviation from the specified stylistic negative constraints."
+    },
+    {
+      "std": "L.1.5",
+      "slide": 5,
+      "file": "images/lessons/L.1.5/S4.png",
+      "reason": "The image contains star-shaped twinkles/sparkles in the character's eyes, which was explicitly forbidden by the prompt's negative constraint: 'No twinkles or sparkles in characters' eyes.'"
+    },
+    {
+      "std": "L.1.5b",
+      "slide": 2,
+      "file": "images/lessons/L.1.5b/S2.png",
+      "reason": "The image includes star-shaped glints in the dog's eyes, which contradicts the explicit instruction 'No AI-generated glints. No twinkle.' in the prompt."
+    },
+    {
+      "std": "L.1.5b",
+      "slide": 3,
+      "file": "images/lessons/L.1.5b/S3.png",
+      "reason": "The apple's eyes contain prominent star-shaped twinkles/glints, which directly violates the negative constraints 'No twinkles or sparkles in characters'' and 'no AI-generated glints'."
+    },
+    {
+      "std": "RL.2.4",
+      "slide": 5,
+      "file": "images/lessons/RL.2.4/S4.png",
+      "reason": "The image includes small white glints/sparkles in the character's eyes, which was explicitly forbidden by the prompt's negative constraint: 'No twinkles or sparkles in characters' eyes. No AI-generated glints.'"
+    },
+    {
+      "std": "RL.2.4",
+      "slide": 4,
+      "file": "images/lessons/RL.2.4/S3.png",
+      "reason": "The image contains prominent star-shaped twinkles/sparkles in the eyes of both the sun and the girl, which directly violates the negative prompt 'No twinkles or sparkles in characters' eyes' and 'No AI-generated glints'."
+    },
+    {
+      "std": "RL.2.10",
+      "slide": 3,
+      "file": "images/lessons/RL.2.10/S3.png",
+      "reason": "The book on top of the bookshelf appears to be slightly floating above the shelf rather than resting on it, which is a minor compositional oddity."
+    },
+    {
+      "std": "RI.2.2",
+      "slide": 3,
+      "file": "images/lessons/RI.2.2/S3.png",
+      "reason": "The bee's eyes contain prominent AI-generated glints/sparkles, which was explicitly prohibited by the negative prompt 'No twinkles or sparkles in characters' eyes. No text overlays, no hallucinated words, no signs with writing. Natural-looking eyes, no AI-generated glints.'"
+    },
+    {
+      "std": "RI.2.8",
+      "slide": 1,
+      "file": "images/lessons/RI.2.8/S1.png",
+      "reason": "The gavel's eyes contain star-shaped glints/sparkles, which directly violates the negative prompt 'No twinkles or sparkles in characters' eyes' and 'Natural-looking eyes, no AI-generated glints'."
+    },
+    {
+      "std": "RF.2.3b",
+      "slide": 7,
+      "file": "images/lessons/RF.2.3b/S6.png",
+      "reason": "The image contains clear letters 'A' and 'C' on the wall, which contradicts the prompt's instruction 'No text, no words, no letters'."
+    },
+    {
+      "std": "RF.2.3c",
+      "slide": 2,
+      "file": "images/lessons/RF.2.3c/S2.png",
+      "reason": "The image contains the letter 'C' on the baseball's hat, which violates the negative prompt 'No text, no words, no letters'."
+    },
+    {
+      "std": "RF.2.3e",
+      "slide": 2,
+      "file": "images/lessons/RF.2.3e/S2.png",
+      "reason": "The image includes prominent star-shaped twinkles/sparkles in the character's glasses, which directly violates the negative prompt instruction 'No twinkles or sparkles in characters' eyes' and 'No twinkles or'."
+    },
+    {
+      "std": "RF.2.3f",
+      "slide": 2,
+      "file": "images/lessons/RF.2.3f/S2.png",
+      "reason": "The characters' eyes contain AI-generated glints/twinkles, which directly violates the negative constraint 'No twinkles or sparkles in characters' eyes'."
+    },
+    {
+      "std": "RF.2.4",
+      "slide": 5,
+      "file": "images/lessons/RF.2.4/S4.png",
+      "reason": "The images within the book contain empty speech/thought bubbles, which violates the explicit instruction 'No text, no words, no letters. No text overlays, no hallucinated words, no signs with writing.' While the bubbles are empty, their presence implies text."
+    },
+    {
+      "std": "RF.2.4b",
+      "slide": 4,
+      "file": "images/lessons/RF.2.4b/S4.png",
+      "reason": "The image includes prominent star-shaped 'twinkles or sparkles' in the character's eyes, which directly violates the negative prompt instruction: 'No twinkles or sparkles in characters' eyes. No AI-generated glints.'"
+    },
+    {
+      "std": "L.2.4",
+      "slide": 5,
+      "file": "images/lessons/L.2.4/S4.png",
+      "reason": "The magnifying glass contains small star-shaped 'twinkles' or 'sparkles,' which goes against the negative prompt instructions 'No twinkles or sparkles' and 'No AI-generated glints.'"
+    },
+    {
+      "std": "L.2.4b",
+      "slide": 3,
+      "file": "images/lessons/L.2.4b/S3.png",
+      "reason": "The image includes small starburst shapes and dashed lines that resemble twinkles or sparkles, which were explicitly disallowed by the prompt's negative constraints ('No twinkles or sparkles')."
+    },
+    {
+      "std": "L.2.4b",
+      "slide": 5,
+      "file": "images/lessons/L.2.4b/S4.png",
+      "reason": "The image includes AI-generated glints/sparkles in the character's eyes, which violates the negative constraint 'No twinkles or sparkles in characters' eyes'."
+    },
+    {
+      "std": "L.2.4e",
+      "slide": 1,
+      "file": "images/lessons/L.2.4e/S1.png",
+      "reason": "The image successfully depicts an open book with a glossary page and alphabetical letters. However, the letters on the pages are not a perfectly ordered or unique alphabet; there are repeated letters (e.g., 'E', 'P') and some letters are slightly distorted or merged, which is a minor visual inconsistency for an image intended to show an alphabet."
+    },
+    {
+      "std": "L.2.6",
+      "slide": 1,
+      "file": "images/lessons/L.2.6/S1.png",
+      "reason": "The image includes prominent sparkles and a glowing trail around the scroll, which contradicts the explicit negative constraint \"No twinkles or.\" in the prompt."
+    },
+    {
+      "std": "RL.3.1",
+      "slide": 1,
+      "file": "images/lessons/RL.3.1/S1.png",
+      "reason": "The child's finger is not pointing to a line in the book as requested, and the expression is serious/puzzled instead of cheerful."
+    },
+    {
+      "std": "RL.3.4",
+      "slide": 3,
+      "file": "images/lessons/RL.3.4/S3.png",
+      "reason": "The character's eyes contain twinkles/sparkles and AI-generated glints, which were explicitly forbidden by the prompt's negative constraints ('No twinkles or sparkles in characters' eyes. No AI-generated glints.')."
+    },
+    {
+      "std": "RL.3.5",
+      "slide": 2,
+      "file": "images/lessons/RL.3.5/S2.png",
+      "reason": "The image includes prominent star-shaped twinkles/sparkles in the character's eyes, which directly violates the negative prompt instruction 'No twinkles or sparkles in characters' eyes'."
+    },
+    {
+      "std": "RL.3.9",
+      "slide": 1,
+      "file": "images/lessons/RL.3.9/S1.png",
+      "reason": "The image includes glints in the characters' eyes and sparkles around the star, which directly violates the negative prompt instructions \"No AI-generated glints\" and \"No twinkles or sparkles in characters' eyes\" and \"No twinkles or.\""
+    },
+    {
+      "std": "RI.3.3",
+      "slide": 1,
+      "file": "images/lessons/RI.3.3/S1.png",
+      "reason": "The image is missing the 'tiny numbered arrows' explicitly requested in the prompt to illustrate the chain of events."
+    },
+    {
+      "std": "RI.3.4",
+      "slide": 5,
+      "file": "images/lessons/RI.3.4/S4.png",
+      "reason": "The image includes small white glints/sparkles in the eyes, which violates the negative constraint 'No twinkles or sparkles in characters' eyes. No AI-generated glints.'"
+    },
+    {
+      "std": "RI.3.6",
+      "slide": 4,
+      "file": "images/lessons/RI.3.6/S4.png",
+      "reason": "The image contains AI-generated glints/twinkles in the character's eyes, which directly violates the prompt's negative constraint: \"No twinkles or sparkles in characters' eyes. No AI-generated glints.\""
+    },
+    {
+      "std": "RI.3.10",
+      "slide": 2,
+      "file": "images/lessons/RI.3.10/S2.png",
+      "reason": "The character's eyes have AI-generated glints/sparkles, which was explicitly forbidden by the prompt's negative constraints ('No AI-generated glints. No twinkles or sparkles in characters' eyes.')."
+    },
+    {
+      "std": "RF.3.3d",
+      "slide": 2,
+      "file": "images/lessons/RF.3.3d/S2.png",
+      "reason": "The image violates the negative constraint 'No twinkles or sparkles in characters' eyes' as the character's eyes have prominent white highlights that resemble twinkles. Additionally, the character's pose with a puff of dust suggests running or walking quickly rather than 'tiptoeing silently'."
+    },
+    {
+      "std": "RF.3.4",
+      "slide": 3,
+      "file": "images/lessons/RF.3.4/S3.png",
+      "reason": "The image includes star-shaped twinkles/sparkles in the character's eyes, which directly contradicts the negative prompt instruction 'No twinkles or sparkles in characters' eyes'."
+    },
+    {
+      "std": "RF.3.3d",
+      "slide": 3,
+      "file": "images/lessons/RF.3.3d/S3.png",
+      "reason": "The 'O' character has white glints/sparkles in its eyes, which directly violates the negative prompt instruction 'No twinkles or sparkles in characters' eyes. No AI-generated glints.'"
+    },
+    {
+      "std": "L.3.4",
+      "slide": 4,
+      "file": "images/lessons/L.3.4/example.png",
+      "reason": "The prompt states the window should be \"completely covered by heavy, dark blue curtains, blocking all outside light,\" but the image shows the curtains pulled back, revealing the window and outside light."
+    },
+    {
+      "std": "L.3.6",
+      "slide": 3,
+      "file": "images/lessons/L.3.6/S3.png",
+      "reason": "The characters' eyes contain star-shaped glints/sparkles, which directly violates the negative prompt instruction: 'Natural-looking eyes, no AI-generated glints. No twinkles or sparkles in characters' eyes.'"
+    },
+    {
+      "std": "L.3.6",
+      "slide": 1,
+      "file": "images/lessons/L.3.6/S1.png",
+      "reason": "The image includes twinkles/sparkles between the characters, which contradicts the negative prompt 'No twinkles or sparkles in characters' eyes' and 'No AI-generated glints'."
+    },
+    {
+      "std": "RL.4.2",
+      "slide": 2,
+      "file": "images/lessons/RL.4.2/S2.png",
+      "reason": "The image includes small sparkles/glints on the fork and arrows, which goes against the negative constraint 'No twinkles or sparkles' and 'No AI-generated glints'. This is a minor stylistic deviation."
+    },
+    {
+      "std": "RL.4.3",
+      "slide": 4,
+      "file": "images/lessons/RL.4.3/S3.png",
+      "reason": "The image includes yellow star/sparkle shapes next to the character's head in the final panel, which goes against the negative prompt \"No twinkles or.\""
+    },
+    {
+      "std": "RL.4.4",
+      "slide": 2,
+      "file": "images/lessons/RL.4.4/S2.png",
+      "reason": "The image contains small star/sparkle shapes on the book, which contradicts the negative prompt instruction 'No twinkles or sparkles'."
+    },
+    {
+      "std": "RL.4.4",
+      "slide": 3,
+      "file": "images/lessons/RL.4.4/S3.png",
+      "reason": "The image includes small stars/twinkles around the dream cloud, which violates the explicit negative constraint 'No twinkles or' from the prompt. The background is also a vibrant blue instead of a pastel background as requested."
+    },
+    {
+      "std": "RI.4.2",
+      "slide": 1,
+      "file": "images/lessons/RI.4.2/S1.png",
+      "reason": "The umbrella's eyes contain star-shaped glints/sparkles, which directly violates the negative prompt instruction 'No twinkles or sparkles in characters' eyes' and 'Natural-looking eyes, no AI-generated glints'."
+    },
+    {
+      "std": "RI.4.3",
+      "slide": 2,
+      "file": "images/lessons/RI.4.3/S2.png",
+      "reason": "The character's eyes contain prominent star-shaped glints/twinkles, which violates the negative prompt instruction 'No twinkles or sparkles in characters' eyes' and 'Natural-looking eyes, no AI-generated glints'."
+    },
+    {
+      "std": "L.4.4c",
+      "slide": 2,
+      "file": "images/lessons/L.4.4c/S2.png",
+      "reason": "The image includes prominent star-shaped glints/sparkles in the character's eyes, which directly violates the negative constraint 'No twinkles or sparkles in characters' eyes. No AI-generated glints.'"
+    }
+  ],
+  "passed": 538,
+  "judged": 917
+}

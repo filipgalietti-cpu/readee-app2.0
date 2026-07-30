@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RF.4.3a-E3",
+  "correct_feedback": "Yes! \"Rab-bit\" claps into two chunks, so \"rabbit\" has two syllables. Nice listening.",
+  "incorrect_feedback": "Hmm, try clapping the word out loud. How many beats do you hear when you say \"rab-bit\"?",
+  "reveal_feedback": "The answer is 2, \"rab + bit.\" When you clap it, you hear exactly two beats, so it's two syllables."
+ },
+ {
+  "id": "RF.4.3a-E4",
+  "correct_feedback": "Great! \"Un\" is a prefix meaning \"not,\" so it snaps right off the base word \"happy.\" Smart splitting.",
+  "incorrect_feedback": "Almost! Look for a little prefix at the front that means \"not.\" Where does that piece end?",
+  "reveal_feedback": "The answer is \"un + happy.\" The prefix \"un\" means \"not,\" and it joins the whole base word \"happy.\""
+ },
+ {
+  "id": "RF.4.3a-E5",
+  "correct_feedback": "Exactly! The base word \"jump\" plus the ending \"ing\" makes \"jumping.\" You found the seam.",
+  "incorrect_feedback": "Good try! Find the whole action word first, then see what ending is added to it.",
+  "reveal_feedback": "The answer is \"jump + ing.\" \"Jump\" is the base word and \"ing\" is the ending added onto it."
+ },
+ {
+  "id": "RF.4.4-Q1",
+  "correct_feedback": "Yes! Good readers slow down for hard parts and speed up for easy ones. Speed matches the text.",
+  "incorrect_feedback": "Take another look. Reading speed shouldn't depend on the clock or the crowd. What about the words themselves?",
+  "reveal_feedback": "The answer is the difficulty and type of text. A fluent reader adjusts speed to match how hard the reading is."
+ },
+ {
+  "id": "RF.4.4-Q2",
+  "correct_feedback": "Perfect! A comfortable speed, smooth words, and feeling in your voice make a story easy to follow.",
+  "incorrect_feedback": "Close one! Think about how a great storyteller sounds. Would racing or robot-reading help people understand?",
+  "reveal_feedback": "The answer is reading at a comfortable speed, connecting words smoothly, and using your voice to match the feelings."
+ },
+ {
+  "id": "RF.4.4-Q3",
+  "correct_feedback": "Right! Slowing down and using context clues helps you unlock tricky, technical words. Smart move.",
+  "incorrect_feedback": "Not yet. When words get hard and technical, does rushing or skipping actually help you understand them?",
+  "reveal_feedback": "The answer is to slow down and use context clues. That helps you figure out unfamiliar technical terms."
+ },
+ {
+  "id": "RF.4.4-Q4",
+  "correct_feedback": "Yes! A comfortable speed, expression, and pausing at commas and periods make the story clear and easy.",
+  "incorrect_feedback": "Good try! Which reader sounds smooth and clear, not too fast, not choppy, not flat and quiet?",
+  "reveal_feedback": "The answer is the student who reads at a comfortable speed with expression and pauses at commas and periods."
+ },
+ {
+  "id": "RF.4.4-Q5",
+  "correct_feedback": "Great choice! Going back to reread the confusing part helps you fix your understanding all by yourself.",
+  "incorrect_feedback": "Hmm, if a part stopped making sense, would guessing or plowing ahead really clear it up for you?",
+  "reveal_feedback": "The answer is to reread the confusing part. Going back over it helps the meaning click into place."
+ },
+ {
+  "id": "RF.4.4-E1",
+  "correct_feedback": "Yes! A period is a stop sign for your voice. You pause a beat before the next sentence. Nice.",
+  "incorrect_feedback": "Take another look. A period marks the end of a sentence. What should your voice do there?",
+  "reveal_feedback": "The answer is to stop and take a short pause. A period tells you the sentence has ended."
+ },
+ {
+  "id": "RF.4.4-E2",
+  "correct_feedback": "Exactly! Reading something again to understand it better is called rereading. Maya used a smart strategy.",
+  "incorrect_feedback": "Almost! Maya read the same page a second time. Which word means to read again?",
+  "reveal_feedback": "The answer is rereading. The prefix \"re\" means \"again,\" so rereading is reading something over again."
+ },
+ {
+  "id": "RF.4.4-E3",
+  "correct_feedback": "Yes! A question mark makes your voice rise at the end, like you're really asking something. Great ear.",
+  "incorrect_feedback": "Good try! Say a question out loud, like \"Are you ready?\" What does your voice do at the very end?",
+  "reveal_feedback": "The answer is your voice should go up, like you're asking something. That's what a question mark signals."
+ },
+ {
+  "id": "RF.4.4-E4",
+  "correct_feedback": "Right! A fluent reader reads smoothly and with few mistakes, almost like talking. Well done.",
+  "incorrect_feedback": "Close one! \"Fluent\" is about reading easily and well. Which choice actually describes good reading?",
+  "reveal_feedback": "The answer is smoothly and with few mistakes. A fluent reader reads easily, like natural talking."
+ },
+ {
+  "id": "RF.4.4-E5",
+  "correct_feedback": "Great! Sounding a word out helps you figure it out on your own so you can keep reading. Smart.",
+  "incorrect_feedback": "Not yet. When you hit a tricky word, which choice actually helps you understand it instead of quitting?",
+  "reveal_feedback": "The answer is to sound the word out. Breaking it into sounds helps Sam figure out the tricky word."
+ },
+ {
+  "id": "L.4.4-Q1",
+  "correct_feedback": "Yes! Here \"table\" means to postpone or delay. The context clue \"until next week\" shows a delay. Nice.",
+  "incorrect_feedback": "Hmm, \"table\" has more than one meaning. It's a verb here. What did they do to the discussion?",
+  "reveal_feedback": "The answer is to postpone or delay. \"Until next week's meeting\" tells you the discussion was put off."
+ },
+ {
+  "id": "L.4.4-Q2",
+  "correct_feedback": "Right! \"Refuge\" is a safe place or shelter. The tired climbers needed somewhere safe to rest. Good clue-hunting.",
+  "incorrect_feedback": "Almost! The exhausted climbers went into a cabin. What would a cabin give tired hikers on a mountain?",
+  "reveal_feedback": "The answer is a safe place or shelter. The climbers sought refuge in the cabin to be safe and rest."
+ },
+ {
+  "id": "L.4.4-Q3",
+  "correct_feedback": "Yes! Here \"scale\" is a thin plate covering a fish's body. The fish clue points to the right meaning. Great.",
+  "incorrect_feedback": "Good try! \"Scale\" has several meanings. This sentence is about a fish. Which meaning fits a fish?",
+  "reveal_feedback": "The answer is a thin plate covering a fish's body. Since it's on a fish, that's the meaning that fits."
+ },
+ {
+  "id": "L.4.4-Q4",
+  "correct_feedback": "Perfect! \"Phil\" means love and \"anthrop\" means human, so a philanthropist loves helping people. Roots unlock it.",
+  "incorrect_feedback": "Close one! Use the roots: \"phil\" means love, \"anthrop\" means human. Put those two ideas together.",
+  "reveal_feedback": "The answer is one who loves helping humanity. \"Phil\" (love) plus \"anthrop\" (human) means loving people."
+ },
+ {
+  "id": "L.4.4-Q5",
+  "correct_feedback": "Yes! The words around it, the context, are the best clue for which meaning fits. Smart reading strategy.",
+  "incorrect_feedback": "Take another look. Picking the easiest or the first definition can trick you. What actually shows the real meaning?",
+  "reveal_feedback": "The answer is to use the surrounding context. The other words in the sentence show which meaning fits best."
+ },
+ {
+  "id": "L.4.4-E1",
+  "correct_feedback": "Yes! \"Brilliant\" means very bright here. The sun was so strong they shaded their eyes. Nice clue-reading.",
+  "incorrect_feedback": "Almost! They had to shade their eyes from the sun. What does that tell you about how the sun looked?",
+  "reveal_feedback": "The answer is very bright. Shading their eyes from the sun shows \"brilliant\" means very bright."
+ },
+ {
+  "id": "L.4.4-E2",
+  "correct_feedback": "Right! \"Exhausted\" means very tired. After a race, Maria needed to rest. The clue fits perfectly.",
+  "incorrect_feedback": "Good try! Maria just ran a race and needed to rest. How would running a whole race make her feel?",
+  "reveal_feedback": "The answer is very tired. Running the race left Maria needing rest, so \"exhausted\" means very tired."
+ },
+ {
+  "id": "L.4.4-E3",
+  "correct_feedback": "Yes! \"Timid\" means shy or afraid. The puppy hid from strangers, a big clue. Well done.",
+  "incorrect_feedback": "Hmm, the puppy hid behind its mother when strangers came. How was the puppy feeling?",
+  "reveal_feedback": "The answer is shy or afraid. Hiding from strangers shows the timid puppy was shy and scared."
+ },
+ {
+  "id": "L.4.4-E4",
+  "correct_feedback": "Right! \"Postpone\" means to move to a later time. They planned the picnic for next week instead. Good work.",
+  "incorrect_feedback": "Almost! The rain pushed the picnic to next week. What does that tell you \"postpone\" means?",
+  "reveal_feedback": "The answer is to move to a later time. They postponed the picnic by planning it for next week."
+ },
+ {
+  "id": "L.4.4-E5",
+  "correct_feedback": "Yes! \"Delicious\" means tasting very good. Everyone wanted seconds, so the soup tasted great. Nice.",
+  "incorrect_feedback": "Good try! Everyone asked for a second bowl. What does that tell you about how the soup tasted?",
+  "reveal_feedback": "The answer is tasting very good. People wanted a second bowl because the soup was delicious."
+ },
+ {
+  "id": "L.4.4a-Q4",
+  "correct_feedback": "Yes! An alliance is a partnership to work together. The countries agreed to protect each other. Great clue-reading.",
+  "incorrect_feedback": "Take another look. The two countries agreed to protect each other. What kind of relationship is that?",
+  "reveal_feedback": "The answer is a partnership or agreement to work together. Protecting each other means they teamed up."
+ },
+ {
+  "id": "L.4.4a-E1",
+  "correct_feedback": "Right! \"Gloomy\" means dark and sad. The dark sky matched everyone's sad mood. Nice matching.",
+  "incorrect_feedback": "Almost! The sky was dark and everyone felt sad. What kind of feeling does \"gloomy\" describe?",
+  "reveal_feedback": "The answer is dark and sad. The dark sky and everyone's sad mood show \"gloomy\" means dark and sad."
+ },
+ {
+  "id": "L.4.4a-E2",
+  "correct_feedback": "Yes! \"Reached\" means got to. The hikers finally got to the top of the mountain. Good work.",
+  "incorrect_feedback": "Good try! The hikers finally arrived at the mountain top. Which choice means they arrived there?",
+  "reveal_feedback": "The answer is got to. The hikers reached, or got to, the top of the mountain."
+ },
+ {
+  "id": "L.4.4a-E3",
+  "correct_feedback": "Right! Here \"hot\" means very warm. The soup was so warm it burned a tongue. Nice.",
+  "incorrect_feedback": "Hmm, the soup burned a tongue. What does that tell you about the temperature of the soup?",
+  "reveal_feedback": "The answer is very warm. Soup that burns your tongue is very warm, so that's what \"hot\" means here."
+ },
+ {
+  "id": "L.4.4a-E4",
+  "correct_feedback": "Yes! \"Afraid\" means scared. The little brother needed a night-light because the dark frightened him. Great.",
+  "incorrect_feedback": "Almost! The brother slept with a night-light because of the dark. How was he feeling about the dark?",
+  "reveal_feedback": "The answer is scared. Needing a night-light because of the dark shows \"afraid\" means scared."
+ },
+ {
+  "id": "L.4.4a-E5",
+  "correct_feedback": "Right! \"Playful\" means full of play and fun. The puppy ran and jumped all around. Nice matching.",
+  "incorrect_feedback": "Good try! The puppy ran and jumped happily around the yard. What does \"playful\" describe?",
+  "reveal_feedback": "The answer is full of play and fun. A playful puppy that runs and jumps is full of play and fun."
+ },
+ {
+  "id": "L.4.4b-Q4",
+  "correct_feedback": "Yes! \"Micro\" means small, so a microscope helps you see very small things. You used the prefix. Great.",
+  "incorrect_feedback": "Take another look. The prefix \"micro\" means tiny or small. What would a \"micro\" scope help you see?",
+  "reveal_feedback": "The answer is very small things. The prefix \"micro\" means small, so a microscope shows tiny things."
+ },
+ {
+  "id": "L.4.4b-E1",
+  "correct_feedback": "Right! \"Re\" means again, so rewriting your story means writing it again. Nice use of the prefix.",
+  "incorrect_feedback": "Almost! The prefix \"re\" means \"again.\" So if you \"re\" plus \"write,\" what are you doing?",
+  "reveal_feedback": "The answer is writing it again. The prefix \"re\" means again, so rewrite means write again."
+ },
+ {
+  "id": "L.4.4b-E2",
+  "correct_feedback": "Yes! \"Un\" means not, so an untied shoe is not tied. You used the prefix perfectly.",
+  "incorrect_feedback": "Good try! The prefix \"un\" means \"not.\" So \"un\" plus \"tied\" tells you the shoe is what?",
+  "reveal_feedback": "The answer is not tied. The prefix \"un\" means not, so untied means not tied."
+ },
+ {
+  "id": "L.4.4b-E3",
+  "correct_feedback": "Right! \"Tri\" means three, so a triangle has three sides. Great job using the root.",
+  "incorrect_feedback": "Hmm, look at the root \"tri\" at the start. Think about what number that root stands for, then count the sides.",
+  "reveal_feedback": "The answer is three. The root \"tri\" means three, so a triangle has three sides."
+ },
+ {
+  "id": "L.4.4b-E4",
+  "correct_feedback": "Yes! \"Pre\" means before, so a preview shows part of the movie before the whole thing. Nice.",
+  "incorrect_feedback": "Almost! The prefix \"pre\" means \"before.\" So when do you see a \"pre\" view of a movie?",
+  "reveal_feedback": "The answer is before the whole movie. The prefix \"pre\" means before, so a preview comes first."
+ },
+ {
+  "id": "L.4.4b-E5",
+  "correct_feedback": "Right! \"Bi\" means two, so a bicycle has two wheels. You cracked it with the root.",
+  "incorrect_feedback": "Good try! Look at the root \"bi\" at the start. Think about what number that root means, then count the wheels.",
+  "reveal_feedback": "The answer is two. The root \"bi\" means two, so a bicycle has two wheels."
+ },
+ {
+  "id": "L.4.4c-Q1",
+  "correct_feedback": "Yes! The part in parentheses shows how to pronounce the word, sounding it out. Smart dictionary reading.",
+  "incorrect_feedback": "Take another look. Those funny syllables in parentheses aren't the meaning. What do they help you do with the word?",
+  "reveal_feedback": "The answer is how to pronounce the word. The parentheses spell out the sounds so you can say it right."
+ },
+ {
+  "id": "L.4.4c-Q2",
+  "correct_feedback": "Right! A thesaurus lists words with similar meanings, so it's perfect for a stronger word for happy. Great.",
+  "incorrect_feedback": "Almost! You want a word with a similar meaning to happy. Which reference is a book of synonyms?",
+  "reveal_feedback": "The answer is a thesaurus. A thesaurus lists synonyms, so it helps you find a stronger word for happy."
+ },
+ {
+  "id": "L.4.4c-Q3",
+  "correct_feedback": "Yes! The bear is moving, so \"lumber\" here means to move slowly and heavily. You picked the meaning that fits.",
+  "incorrect_feedback": "Good try! In the sentence, the bear is moving through the forest. Which meaning of \"lumber\" is an action?",
+  "reveal_feedback": "The answer is to move slowly and heavily. The bear is moving, so that's the meaning that fits the sentence."
+ },
+ {
+  "id": "L.4.4c-Q4",
+  "correct_feedback": "Right! She stretched her neck to see, so definition 3 fits. You matched the meaning to the sentence. Nice.",
+  "incorrect_feedback": "Take another look. In the sentence, she did something with her neck to see over the crowd. Which definition matches that action?",
+  "reveal_feedback": "The answer is definition 3, to stretch one's neck. She craned her neck to see over the crowd."
+ },
+ {
+  "id": "L.4.4c-Q5",
+  "correct_feedback": "Yes! The river was not straight, so \"meander\" means to follow a winding, curvy path. Great context work.",
+  "incorrect_feedback": "Close one! The sentence says the river did NOT go straight. Which entry matches a curvy, not-straight path?",
+  "reveal_feedback": "The answer is the entry meaning to follow a winding or curvy path. The river didn't go straight, so it curved."
+ },
+ {
+  "id": "L.4.4c-H1",
+  "correct_feedback": "Yes! The teacher softens firm rules, so \"temper\" means to make something less harsh. Excellent context reading.",
+  "incorrect_feedback": "Hmm, the teacher softens firm rules with warmth. It's a verb here, not a mood. Which meaning matches softening?",
+  "reveal_feedback": "The answer is to make something less harsh or soften. The teacher tempers firm rules by softening them with warmth."
+ },
+ {
+  "id": "L.4.4c-H2",
+  "correct_feedback": "Yes! \"March\" falls alphabetically between \"marble\" and \"margin,\" so it's on that page. Sharp alphabetizing.",
+  "incorrect_feedback": "Take another look. Guide words are marble and margin. Which word fits alphabetically between those two?",
+  "reveal_feedback": "The answer is \"march.\" It comes alphabetically between the guide words marble and margin, so it's on that page."
+ },
+ {
+  "id": "L.4.4c-H3",
+  "correct_feedback": "Right! The glossary in your textbook defines words the way that book uses them, and it's quick. Smart pick.",
+  "incorrect_feedback": "Almost! You want the meaning for this exact chapter, fast, without leaving the book. Which reference is inside the textbook?",
+  "reveal_feedback": "The answer is the glossary at the back of the textbook. It defines the word as this chapter uses it, and it's right there."
+ },
+ {
+  "id": "L.4.4c-H4",
+  "correct_feedback": "Yes! He's being secret and quiet near a guard, so \"whispered\" fits best. Great precise word choice.",
+  "incorrect_feedback": "Close one! The boy doesn't want the guard to hear, so he's being quiet and secret. Which word matches that?",
+  "reveal_feedback": "The answer is \"whispered.\" Since he doesn't want the guard to overhear, whispering the secret fits best."
+ },
+ {
+  "id": "L.4.4c-H5",
+  "correct_feedback": "Yes! The pollen is tiny, so \"minute\" means extremely small and is said \"my-NOOT.\" You matched sound to meaning.",
+  "incorrect_feedback": "Take another look. The scientist used a magnifying glass on tiny pollen. Which meaning and pronunciation match \"small\"?",
+  "reveal_feedback": "The answer is my-NOOT, because here it means extremely small. Tiny pollen tells you it's the \"small\" meaning."
+ }
+]

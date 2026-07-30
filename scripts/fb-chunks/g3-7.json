@@ -1,0 +1,542 @@
+[
+ {
+  "id": "L.3.4d-E1",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary shows: **puppy** (noun): a young dog. What does the word \"puppy\" mean?",
+  "choices": [
+   "A red apple",
+   "A young dog",
+   "A tall tree",
+   "A big truck"
+  ],
+  "correct": "A young dog"
+ },
+ {
+  "id": "L.3.4d-E2",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary shows: **damp** (adjective): a little bit wet. If a towel is damp, what is it?",
+  "choices": [
+   "Very hot",
+   "Painted blue",
+   "A little bit wet",
+   "Made of glass"
+  ],
+  "correct": "A little bit wet"
+ },
+ {
+  "id": "L.3.4d-E3",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary shows: **gigantic** (adjective): very, very big. Which word means the same as \"gigantic\"?",
+  "choices": [
+   "Sticky",
+   "Cold",
+   "Quiet",
+   "Huge"
+  ],
+  "correct": "Huge"
+ },
+ {
+  "id": "L.3.4d-E4",
+  "standard": "L.3.4d",
+  "prompt": "A glossary in a science book shows: **stem** (noun): the part of a plant that holds up the leaves and flowers. What does the stem do?",
+  "choices": [
+   "Holds up the leaves and flowers",
+   "Melts in the sun",
+   "Rings like a bell",
+   "Barks like a dog"
+  ],
+  "correct": "Holds up the leaves and flowers"
+ },
+ {
+  "id": "L.3.4d-E5",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary shows: **whisper** (verb): to talk in a very soft, quiet voice. If you whisper, how are you talking?",
+  "choices": [
+   "With your eyes closed",
+   "In a soft, quiet voice",
+   "While running fast",
+   "In a very loud shout"
+  ],
+  "correct": "In a soft, quiet voice"
+ },
+ {
+  "id": "L.3.5-Q1",
+  "standard": "L.3.5",
+  "prompt": "She had a heart of gold.\n\nThis means \u2014",
+  "choices": [
+   "She was very kind and generous",
+   "Her heart was made of gold metal",
+   "She was rich",
+   "She wore gold jewelry"
+  ],
+  "correct": "She was very kind and generous"
+ },
+ {
+  "id": "L.3.5-Q2",
+  "standard": "L.3.5",
+  "prompt": "Which sentence uses a simile?",
+  "choices": [
+   "The dog barked loudly.",
+   "The sky was blue.",
+   "He ate his lunch.",
+   "She was as fast as a rocket."
+  ],
+  "correct": "She was as fast as a rocket."
+ },
+ {
+  "id": "L.3.5-Q3",
+  "standard": "L.3.5",
+  "prompt": "What does **break a leg** mean?",
+  "choices": [
+   "Actually break your leg",
+   "Run very fast",
+   "Be careful",
+   "Good luck"
+  ],
+  "correct": "Good luck"
+ },
+ {
+  "id": "L.3.5-Q4",
+  "standard": "L.3.5",
+  "prompt": "Which two words are antonyms (opposites)?",
+  "choices": [
+   "Fast and quick",
+   "Hot and cold",
+   "Happy and joyful",
+   "Big and large"
+  ],
+  "correct": "Hot and cold"
+ },
+ {
+  "id": "L.3.5-Q5",
+  "standard": "L.3.5",
+  "prompt": "The thunder grumbled like an angry old man.\n\nThis is an example of \u2014",
+  "choices": [
+   "Literal language",
+   "A definition",
+   "A fact",
+   "Personification and simile"
+  ],
+  "correct": "Personification and simile"
+ },
+ {
+  "id": "L.3.5a-Q1",
+  "standard": "L.3.5a",
+  "prompt": "Time flies when you're having fun.\n\nIs this literal or nonliteral?",
+  "choices": [
+   "Literal \u2014 time actually has wings",
+   "Nonliteral \u2014 it means time seems to pass quickly",
+   "Neither",
+   "Literal \u2014 clocks move faster"
+  ],
+  "correct": "Nonliteral \u2014 it means time seems to pass quickly"
+ },
+ {
+  "id": "L.3.5a-Q2",
+  "standard": "L.3.5a",
+  "prompt": "Which sentence is LITERAL (means exactly what it says)?",
+  "choices": [
+   "The cat sat on the mat.",
+   "He was on cloud nine.",
+   "He's a real couch potato.",
+   "She has butterflies in her stomach."
+  ],
+  "correct": "The cat sat on the mat."
+ },
+ {
+  "id": "L.3.5a-Q3",
+  "standard": "L.3.5a",
+  "prompt": "My backpack weighs a ton.\n\nWhat does this really mean?",
+  "choices": [
+   "The backpack literally weighs 2,000 pounds",
+   "The backpack feels very heavy",
+   "The backpack is broken",
+   "The backpack is made of metal"
+  ],
+  "correct": "The backpack feels very heavy"
+ },
+ {
+  "id": "L.3.5a-Q4",
+  "standard": "L.3.5a",
+  "prompt": "She was drowning in homework.\n\nThis means \u2014",
+  "choices": [
+   "She fell into a pool of papers",
+   "She had way too much homework",
+   "She needs swimming lessons",
+   "She was in the ocean"
+  ],
+  "correct": "She had way too much homework"
+ },
+ {
+  "id": "L.3.5a-Q5",
+  "standard": "L.3.5a",
+  "prompt": "His words cut like a knife.\n\nThis sentence means his words were \u2014",
+  "choices": [
+   "Long and boring",
+   "Quiet and soft",
+   "Sharp and hurtful",
+   "Made of metal"
+  ],
+  "correct": "Sharp and hurtful"
+ },
+ {
+  "id": "L.3.5a-H1",
+  "standard": "L.3.5a",
+  "prompt": "When Dad heard the bad news, his heart sank.\n\nWhat does \"his heart sank\" MOST precisely mean here?",
+  "choices": [
+   "He suddenly felt very sad and discouraged",
+   "He became very angry and shouted",
+   "He felt just a little worried",
+   "He had a problem with his heart"
+  ],
+  "correct": "He suddenly felt very sad and discouraged"
+ },
+ {
+  "id": "L.3.5a-H2",
+  "standard": "L.3.5a",
+  "prompt": "In which sentence is \"hit the roof\" used NONLITERALLY (not meaning exactly what the words say)?",
+  "choices": [
+   "Rain hit the roof loudly all night long.",
+   "When she saw the huge mess, Mom hit the roof.",
+   "The baseball flew up and hit the roof of the shed.",
+   "The workers hit the roof with their hammers to fix it."
+  ],
+  "correct": "When she saw the huge mess, Mom hit the roof."
+ },
+ {
+  "id": "L.3.5a-H3",
+  "standard": "L.3.5a",
+  "prompt": "Grandpa called the new no-phones-at-dinner rule \"a blessing in disguise.\" At first everyone complained, but soon the family talked and laughed more at dinner.\n\nWhat does \"a blessing in disguise\" mean?",
+  "choices": [
+   "A rule that nobody in the family likes",
+   "A special costume worn to a party",
+   "Something that seems bad at first but turns out to be good",
+   "A gift that is wrapped up so you can't see it"
+  ],
+  "correct": "Something that seems bad at first but turns out to be good"
+ },
+ {
+  "id": "L.3.5a-H4",
+  "standard": "L.3.5a",
+  "prompt": "Which phrase means the SAME as \"let the cat out of the bag\"?",
+  "choices": [
+   "Set a pet free outside",
+   "Kept a secret safely hidden",
+   "Made a very big mistake",
+   "Accidentally told a secret"
+  ],
+  "correct": "Accidentally told a secret"
+ },
+ {
+  "id": "L.3.5a-H5",
+  "standard": "L.3.5a",
+  "prompt": "The coach told the team, \"Keep your eyes peeled for a good pass.\"\n\nWhat does \"keep your eyes peeled\" mean?",
+  "choices": [
+   "Watch very carefully",
+   "Peel something like an orange",
+   "Close your eyes and rest them",
+   "Squint to see something far away"
+  ],
+  "correct": "Watch very carefully"
+ },
+ {
+  "id": "L.3.5b-Q1",
+  "standard": "L.3.5b",
+  "prompt": "When would you describe someone as **generous**?",
+  "choices": [
+   "When they are very tall",
+   "When they run fast",
+   "When they keep everything for themselves",
+   "When they share with others willingly"
+  ],
+  "correct": "When they share with others willingly"
+ },
+ {
+  "id": "L.3.5b-Q2",
+  "standard": "L.3.5b",
+  "prompt": "Which situation shows **cooperation**?",
+  "choices": [
+   "Someone sleeping",
+   "A student working alone on a test",
+   "A person eating lunch",
+   "A group building a fort together"
+  ],
+  "correct": "A group building a fort together"
+ },
+ {
+  "id": "L.3.5b-Q3",
+  "standard": "L.3.5b",
+  "prompt": "Which word BEST describes how you feel when you try something new and scary?",
+  "choices": [
+   "Anxious",
+   "Calm",
+   "Bored",
+   "Sleepy"
+  ],
+  "correct": "Anxious"
+ },
+ {
+  "id": "L.3.5b-Q4",
+  "standard": "L.3.5b",
+  "prompt": "A person who always tells the truth can be described as \u2014",
+  "choices": [
+   "Stubborn",
+   "Honest",
+   "Greedy",
+   "Careless"
+  ],
+  "correct": "Honest"
+ },
+ {
+  "id": "L.3.5b-Q5",
+  "standard": "L.3.5b",
+  "prompt": "Which word describes a person who keeps trying even when things are difficult?",
+  "choices": [
+   "Forgetful",
+   "Persistent",
+   "Nervous",
+   "Lazy"
+  ],
+  "correct": "Persistent"
+ },
+ {
+  "id": "L.3.5b-E1",
+  "standard": "L.3.5b",
+  "prompt": "When would you call someone **kind**?",
+  "choices": [
+   "When they help a friend who is hurt",
+   "When they are taking a nap",
+   "When they are eating breakfast",
+   "When they are wearing a blue shirt"
+  ],
+  "correct": "When they help a friend who is hurt"
+ },
+ {
+  "id": "L.3.5b-E2",
+  "standard": "L.3.5b",
+  "prompt": "Which of these is something **brave**?",
+  "choices": [
+   "Pouring a glass of milk",
+   "Speaking up in front of the whole class",
+   "Sleeping in your bed",
+   "Sitting in a chair"
+  ],
+  "correct": "Speaking up in front of the whole class"
+ },
+ {
+  "id": "L.3.5b-E3",
+  "standard": "L.3.5b",
+  "prompt": "When would you say a person is **hungry**?",
+  "choices": [
+   "When they wave hello",
+   "When they turn on a lamp",
+   "When their stomach is growling and they want food",
+   "When they tie their shoes"
+  ],
+  "correct": "When their stomach is growling and they want food"
+ },
+ {
+  "id": "L.3.5b-E4",
+  "standard": "L.3.5b",
+  "prompt": "Which one shows a **messy** room?",
+  "choices": [
+   "An open, empty closet",
+   "A room where everything is put away neatly",
+   "A room with an empty desk",
+   "Toys and clothes all over the floor"
+  ],
+  "correct": "Toys and clothes all over the floor"
+ },
+ {
+  "id": "L.3.5b-E5",
+  "standard": "L.3.5b",
+  "prompt": "When would you feel **tired**?",
+  "choices": [
+   "After staying up all night long",
+   "After tasting a cookie",
+   "After counting to three",
+   "After hearing a song"
+  ],
+  "correct": "After staying up all night long"
+ },
+ {
+  "id": "L.3.5c-Q2",
+  "standard": "L.3.5c",
+  "prompt": "Which word shows the STRONGEST feeling of anger?",
+  "choices": [
+   "Bothered",
+   "Furious",
+   "Annoyed",
+   "Irritated"
+  ],
+  "correct": "Furious"
+ },
+ {
+  "id": "L.3.5c-Q4",
+  "standard": "L.3.5c",
+  "prompt": "Which word means MORE than **happy** but LESS than **ecstatic**?",
+  "choices": [
+   "Delighted",
+   "Sad",
+   "Content",
+   "Okay"
+  ],
+  "correct": "Delighted"
+ },
+ {
+  "id": "L.3.5c-Q5",
+  "standard": "L.3.5c",
+  "prompt": "I heard the rumor about the snow day.\" vs. \"I knew school would be canceled.\n\nWhich shows MORE certainty?",
+  "choices": [
+   "Neither shows certainty",
+   "Both show the same certainty",
+   "'I heard' shows more certainty",
+   "'I knew' shows more certainty"
+  ],
+  "correct": "'I knew' shows more certainty"
+ },
+ {
+  "id": "L.3.5c-H1",
+  "standard": "L.3.5c",
+  "prompt": "Read the sentences. Which one shows that Dad is LEAST sure it will rain?",
+  "choices": [
+   "It might rain later.",
+   "It will probably rain.",
+   "It will definitely rain.",
+   "It is sure to rain."
+  ],
+  "correct": "It might rain later."
+ },
+ {
+  "id": "L.3.5c-H2",
+  "standard": "L.3.5c",
+  "prompt": "Which word shows MORE certainty than **maybe** but LESS certainty than **definitely**?",
+  "choices": [
+   "Never",
+   "Probably",
+   "Possibly",
+   "Certainly"
+  ],
+  "correct": "Probably"
+ },
+ {
+  "id": "L.3.5c-H3",
+  "standard": "L.3.5c",
+  "prompt": "Which word shows the STRONGEST feeling of fear?",
+  "choices": [
+   "Nervous",
+   "Startled",
+   "Terrified",
+   "Uneasy"
+  ],
+  "correct": "Terrified"
+ },
+ {
+  "id": "L.3.5c-H4",
+  "standard": "L.3.5c",
+  "prompt": "Which word describes the DEEPEST sadness?",
+  "choices": [
+   "Down",
+   "Gloomy",
+   "Disappointed",
+   "Miserable"
+  ],
+  "correct": "Miserable"
+ },
+ {
+  "id": "L.3.5c-H5",
+  "standard": "L.3.5c",
+  "prompt": "Maria said, \"I'm POSITIVE the library is open today.\" In this sentence, **positive** means \u2014",
+  "choices": [
+   "Certain",
+   "Helpful",
+   "Cheerful",
+   "More than zero"
+  ],
+  "correct": "Certain"
+ },
+ {
+  "id": "L.3.5c-E1",
+  "standard": "L.3.5c",
+  "prompt": "Which word means a BIGGER feeling of happy than just \"glad\"?",
+  "choices": [
+   "Hungry",
+   "Overjoyed",
+   "Cold",
+   "Tired"
+  ],
+  "correct": "Overjoyed"
+ },
+ {
+  "id": "L.3.5c-E2",
+  "standard": "L.3.5c",
+  "prompt": "Which word shows the STRONGEST fear?",
+  "choices": [
+   "Sleepy",
+   "Bored",
+   "Terrified",
+   "Curious"
+  ],
+  "correct": "Terrified"
+ },
+ {
+  "id": "L.3.5c-E3",
+  "standard": "L.3.5c",
+  "prompt": "Sam was SURE he locked the door. Which word means Sam felt SURE?",
+  "choices": [
+   "Slow",
+   "Loud",
+   "Silly",
+   "Certain"
+  ],
+  "correct": "Certain"
+ },
+ {
+  "id": "L.3.5c-E4",
+  "standard": "L.3.5c",
+  "prompt": "Which word shows the STRONGEST anger?",
+  "choices": [
+   "Furious",
+   "Fast",
+   "Funny",
+   "Friendly"
+  ],
+  "correct": "Furious"
+ },
+ {
+  "id": "L.3.5c-E5",
+  "standard": "L.3.5c",
+  "prompt": "Maya was NOT sure it would rain. Which word means Maya felt NOT sure?",
+  "choices": [
+   "Brave",
+   "Unsure",
+   "Quiet",
+   "Happy"
+  ],
+  "correct": "Unsure"
+ },
+ {
+  "id": "L.3.6-Q1",
+  "standard": "L.3.6",
+  "prompt": "Which sentence uses more precise vocabulary?",
+  "choices": [
+   "The pasta was delicious and perfectly seasoned.",
+   "I ate stuff",
+   "Lunch was okay",
+   "The food was good."
+  ],
+  "correct": "The pasta was delicious and perfectly seasoned."
+ },
+ {
+  "id": "L.3.6-Q2",
+  "standard": "L.3.6",
+  "prompt": "In science, **habitat** means \u2014",
+  "choices": [
+   "A science experiment",
+   "The natural home of an animal or plant",
+   "A type of animal",
+   "A weather pattern"
+  ],
+  "correct": "The natural home of an animal or plant"
+ }
+]

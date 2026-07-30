@@ -1,0 +1,236 @@
+[
+ {
+  "id": "L.2.5b-H4",
+  "correct_feedback": "Yes! The puppy was starving, so it ate super fast. Gobbled means to eat quickly in big bites. Great pick!",
+  "incorrect_feedback": "Hmm, think about a hungry puppy eating in just a few seconds. Which word shows eating fast, not slow little bites?",
+  "reveal_feedback": "The best word is gobbled. It means to eat fast in big bites, and the hungry puppy ate all its food in seconds."
+ },
+ {
+  "id": "L.2.5b-H5",
+  "correct_feedback": "Nice work! The whole pond turned to solid ice, so the air was the coldest kind. Freezing means very, very cold!",
+  "incorrect_feedback": "Almost! The pond turned to solid ice. That is super cold. Which word means the very coldest air of all?",
+  "reveal_feedback": "The best word is freezing. When a pond turns to solid ice, the air is freezing, which means very, very cold."
+ },
+ {
+  "id": "L.2.6-Q1",
+  "correct_feedback": "You got it! Fluffy is an adjective. It tells us more about the dog, like how it looks and feels. Well done!",
+  "incorrect_feedback": "Good try! An adjective is a word that describes. Which sentence adds a word that tells us more about the dog?",
+  "reveal_feedback": "The answer is \"The fluffy dog ran.\" The word fluffy is an adjective because it describes the dog for us."
+ },
+ {
+  "id": "L.2.6-Q2",
+  "correct_feedback": "Yes! She wanted friends far away to hear, so she had to sing with a big, strong voice. Loudly is just right!",
+  "incorrect_feedback": "Close one! She wanted friends far, far away to hear her. What kind of voice do you need so people far away can hear?",
+  "reveal_feedback": "The answer is loudly. To let friends far away hear her, she had to sing loudly, which means with a big, strong voice."
+ },
+ {
+  "id": "L.2.6-Q4",
+  "correct_feedback": "Great job! Quickly is an adverb. It tells how he ran. Adverbs often tell how something is done. Nice!",
+  "incorrect_feedback": "Take another look! An adverb tells HOW something happens. Which sentence has a word that tells how he ran?",
+  "reveal_feedback": "The answer is \"He ran quickly to the bus.\" Quickly is an adverb because it tells us how he ran."
+ },
+ {
+  "id": "L.2.6-Q5",
+  "correct_feedback": "Perfect! This sentence uses lots of describing words like hungrily, warm, and cheesy. It paints a clear picture!",
+  "incorrect_feedback": "Not yet! The most descriptive sentence uses lots of juicy words. Which one gives you the clearest picture in your head?",
+  "reveal_feedback": "The answer is \"I hungrily ate a warm, cheesy sandwich.\" It uses the most describing words, so you can picture it clearly."
+ },
+ {
+  "id": "L.2.6-H1",
+  "correct_feedback": "Yes! The mouse hid for hours and would not come out. That is the strongest kind of scared. Terrified fits best!",
+  "incorrect_feedback": "Hmm, the mouse was SO scared it hid for hours. Which word shows the very strongest kind of scared feeling?",
+  "reveal_feedback": "The best word is terrified. It means extremely scared, and this mouse was so afraid it hid in its hole for hours."
+ },
+ {
+  "id": "L.2.6-H2",
+  "correct_feedback": "Yes! A whisper is very soft and quiet. The opposite is big and noisy, so speaking loudly is right. Smart thinking!",
+  "incorrect_feedback": "Good try! Maria whispered, which is soft and quiet. We want the OPPOSITE. Which word means the opposite of quiet?",
+  "reveal_feedback": "The answer is \"She spoke loudly.\" Maria whispered, which is soft, and loudly is the opposite because it means noisy."
+ },
+ {
+  "id": "L.2.6-H3",
+  "correct_feedback": "You got it! Dad said to turn it off before bed, so light means a lamp you switch on and off. Nice thinking!",
+  "incorrect_feedback": "Almost! Dad wants to turn the light OFF before bed. Which meaning is something you can switch on and off?",
+  "reveal_feedback": "The answer is a lamp you switch on and off. Dad wants to turn it off before bed, so here light means a lamp."
+ },
+ {
+  "id": "L.2.6-H4",
+  "correct_feedback": "Great! She felt like she had not had a drink in days, so she was super thirsty. Parched means very dry and thirsty!",
+  "incorrect_feedback": "Take another look! The runner was very thirsty and felt like she needed water. Which word means very dry and thirsty?",
+  "reveal_feedback": "The best word is parched. It means very dry and thirsty, just like the runner who felt she had not had a drink in days."
+ },
+ {
+  "id": "L.2.6-H5",
+  "correct_feedback": "Yes! Careful means you pay attention. Careless is the opposite, so it means making messes and not paying attention!",
+  "incorrect_feedback": "Close one! Careful means you pay attention. The word careless means the opposite. What is the opposite of being careful?",
+  "reveal_feedback": "The answer is making messes and not paying attention. Careful means paying attention, so careless means the opposite."
+ },
+ {
+  "id": "L.2.1-Q1",
+  "correct_feedback": "Yes! Mom is one person, so we say bakes. The verb matches who is doing it. Great job matching them!",
+  "incorrect_feedback": "Hmm, read each one out loud. Which sentence has a verb that sounds right and matches who is doing the action?",
+  "reveal_feedback": "The answer is \"Mom bakes yummy cookies.\" Since Mom is one person, bakes is the verb that matches her correctly."
+ },
+ {
+  "id": "L.2.1-Q2",
+  "correct_feedback": "Perfect! Fly is a tricky verb. When it already happened, we say flew, not flied. You remembered it!",
+  "incorrect_feedback": "Good try! Fly is a tricky word for the past. Say it out loud: \"Yesterday the bird ____.\" Which one sounds right?",
+  "reveal_feedback": "The past tense of fly is flew. Fly is a tricky verb, so instead of flied we say flew, like \"the bird flew.\""
+ },
+ {
+  "id": "L.2.1-Q3",
+  "correct_feedback": "Yes! With the word I, we use am. \"I am happy today\" sounds just right and follows the rule. Nice work!",
+  "incorrect_feedback": "Take another look! Read each one out loud. Which sentence uses the right word after I and sounds correct?",
+  "reveal_feedback": "The answer is \"I am happy today.\" With the word I, we use am, so this is the sentence that sounds correct."
+ },
+ {
+  "id": "L.2.1-Q5",
+  "correct_feedback": "Yes! Eat is a tricky verb. When it already happened, we say ate, not eated. You nailed it!",
+  "incorrect_feedback": "Almost! Eat is tricky for the past. Say it out loud: \"Yesterday I ____ lunch.\" Which one sounds right?",
+  "reveal_feedback": "The past tense of eat is ate. Eat is a tricky verb, so instead of eated we say ate, like \"I ate lunch.\""
+ },
+ {
+  "id": "L.2.1-H1",
+  "correct_feedback": "Great! The girls did it by more than one person, so we say themselves. You matched the word perfectly!",
+  "incorrect_feedback": "Good try! The word is for more than one girl doing it alone. Which choice is spelled the right way and sounds correct?",
+  "reveal_feedback": "The answer is themselves. When more than one person does something alone, we say themselves, not the other spellings."
+ },
+ {
+  "id": "L.2.1-H2",
+  "correct_feedback": "Yes! Foot is tricky. More than one is feet, not foots. Grandma made socks for both of them. Nice!",
+  "incorrect_feedback": "Close one! We need the word for more than one foot. Foot is tricky. Which word means more than one foot?",
+  "reveal_feedback": "The answer is feet. Foot is a tricky word, so more than one foot is feet, not foots or feets."
+ },
+ {
+  "id": "L.2.1-H3",
+  "correct_feedback": "Great thinking! With the word has, we say rung. It shows the doorbell already made its sound. Well done!",
+  "incorrect_feedback": "Hmm, this one has the word has before the blank. Say it out loud. Which word sounds right after \"has\"?",
+  "reveal_feedback": "The answer is rung. When we use has before it, we say has rung, which shows the doorbell already made its sound."
+ },
+ {
+  "id": "L.2.1-H4",
+  "correct_feedback": "Yes! Slowly tells HOW the turtle crossed. Words that tell how something is done are adverbs. Nice work!",
+  "incorrect_feedback": "Take another look! We need a word that tells HOW the turtle crossed the road. Which word tells how it moved?",
+  "reveal_feedback": "The answer is slowly. It tells how the turtle crossed the road, and words that tell how are called adverbs."
+ },
+ {
+  "id": "L.2.1-H5",
+  "correct_feedback": "Perfect! We are comparing THREE backpacks, so we use heaviest to show the most heavy one. You got it!",
+  "incorrect_feedback": "Almost! We are comparing all three backpacks, not just two. Which word shows the MOST heavy one of the whole group?",
+  "reveal_feedback": "The answer is heaviest. When we compare three or more things, we use heaviest to show the most heavy one."
+ },
+ {
+  "id": "L.2.2-Q1",
+  "correct_feedback": "Yes! The little mark called an apostrophe shows the bone belongs to the dog. \"The dog's bone\" is just right!",
+  "incorrect_feedback": "Good try! To show something belongs to the dog, we add a special mark. Which one has an apostrophe in the right spot?",
+  "reveal_feedback": "The answer is \"the dog's bone.\" The apostrophe before the s shows that the bone belongs to one dog."
+ },
+ {
+  "id": "L.2.2-Q2",
+  "correct_feedback": "Perfect! Can't is short for cannot. The apostrophe goes where letters are missing. You placed it just right!",
+  "incorrect_feedback": "Close one! Can't needs its little apostrophe in the right spot. Which sentence has the apostrophe placed correctly?",
+  "reveal_feedback": "The answer is \"I can't go to the park today.\" The apostrophe goes between the n and t, where letters are missing."
+ },
+ {
+  "id": "L.2.2-Q3",
+  "correct_feedback": "Yes! When we list things, a comma goes after each one. \"Apples, bananas, and grapes\" is spaced perfectly!",
+  "incorrect_feedback": "Hmm, when we list things, commas go between them to keep them apart. Which one puts the commas in the right places?",
+  "reveal_feedback": "The answer is \"I like apples, bananas, and grapes.\" In a list, a comma goes after each thing to keep them apart."
+ },
+ {
+  "id": "L.2.2-Q4",
+  "correct_feedback": "Great! Let's is a short way to say let us. The apostrophe stands for the missing letter u. Nice job!",
+  "incorrect_feedback": "Take another look! Let's is a squished-together word. Try each choice: \"Let's play\" means \"____ play.\" Which fits?",
+  "reveal_feedback": "The answer is let us. The word let's is a short way to say let us, with an apostrophe for the missing letter."
+ },
+ {
+  "id": "L.2.2-Q5",
+  "correct_feedback": "Yes! Each thing in the list gets a comma: a dog, a cat, and a bird. No extra comma at the end. Perfect!",
+  "incorrect_feedback": "Good try! In a list, a comma goes after each thing but not before \"at the park.\" Which one has them all in the right spots?",
+  "reveal_feedback": "The answer is \"We saw a dog, a cat, and a bird at the park.\" Each thing in the list gets a comma, with none added at the end."
+ },
+ {
+  "id": "L.2.2-H1",
+  "correct_feedback": "Great! We capitalize Grandma as a name and Thanksgiving as a holiday. Seasons like winter stay lowercase. Nice eye!",
+  "incorrect_feedback": "Almost! Names and holidays start with a big letter, but seasons do not. Which one capitals the right words only?",
+  "reveal_feedback": "The answer is \"We visit Grandma every winter for Thanksgiving.\" We capitalize Grandma and Thanksgiving, but winter stays small."
+ },
+ {
+  "id": "L.2.2-H2",
+  "correct_feedback": "Yes! At the end of a letter, we put a comma after the closing word, then the name. \"Love, Rosa\" is just right!",
+  "incorrect_feedback": "Close one! At the end of a letter, a comma goes after the closing word, and the name has no period. Which one does that?",
+  "reveal_feedback": "The answer is \"Love, Rosa.\" A letter closing gets a comma after the word, then the name with no period after it."
+ },
+ {
+  "id": "L.2.2-H3",
+  "correct_feedback": "Great thinking! This its shows the tail belongs to the puppy. This kind of its has no apostrophe. You got it!",
+  "incorrect_feedback": "Hmm, this word shows the tail belongs to the puppy. Careful, the belonging kind is spelled without an apostrophe. Which fits?",
+  "reveal_feedback": "The answer is its. When something belongs to it, like the puppy's tail, we spell its with no apostrophe."
+ },
+ {
+  "id": "L.2.2-H4",
+  "correct_feedback": "Yes! To make baby mean more than one, we change the y to i and add es. Babies is spelled just right!",
+  "incorrect_feedback": "Take another look! When a word ends in y, making it more than one changes the y. Which spelling of more than one baby is right?",
+  "reveal_feedback": "The answer is babies. When a word ends in y, we change the y to i and add es, so more than one baby is babies."
+ },
+ {
+  "id": "L.2.2-H5",
+  "correct_feedback": "Great! The nests belong to more than one bird, so the apostrophe goes after the s in birds'. Smart work!",
+  "incorrect_feedback": "Good try! The nests belong to more than one bird. When more than one owns something, where does the apostrophe go?",
+  "reveal_feedback": "The answer is birds'. Since more than one bird owns the nests, the apostrophe goes after the s in birds'."
+ },
+ {
+  "id": "L.2.3-Q1",
+  "correct_feedback": "Yes! When we write to a teacher, we use kind, full words. \"Thank you for your help\" sounds polite and clear!",
+  "incorrect_feedback": "Almost! Writing to a teacher should sound polite and grown-up, not like quick texting. Which one sounds the most polite?",
+  "reveal_feedback": "The answer is \"Thank you for your help.\" It uses kind, full words, which sounds polite and proper for a teacher."
+ },
+ {
+  "id": "L.2.3-Q2",
+  "correct_feedback": "Great! Assist is a grown-up, formal way to say help. It sounds proper in serious writing. Nice choice!",
+  "incorrect_feedback": "Close one! Formal words sound proper and grown-up, not casual. Which word is the fanciest way to say help?",
+  "reveal_feedback": "The answer is assist. It is the most formal, grown-up way to say help, so it fits proper writing best."
+ },
+ {
+  "id": "L.2.3-Q3",
+  "correct_feedback": "Yes! An essay should sound proper. \"Yeah, it's super cool\" sounds too casual, like talking with a friend. Good ear!",
+  "incorrect_feedback": "Take another look! One of these sounds like chatting with a buddy, not a school essay. Which sounds too casual and relaxed?",
+  "reveal_feedback": "The answer is \"Yeah, it's super cool.\" That sounds too casual, like talking to a friend, so it does not fit an essay."
+ },
+ {
+  "id": "L.2.3-Q4",
+  "correct_feedback": "Perfect! Enormous is a strong word that means really, really big. Strong words make your writing pop. Nice!",
+  "incorrect_feedback": "Hmm, we want ONE strong word that means very big, not words like kinda or medium. Which word means super big?",
+  "reveal_feedback": "The answer is enormous. It is a strong word that means really, really big, which is a powerful way to say big."
+ },
+ {
+  "id": "L.2.3-H1",
+  "correct_feedback": "Great! Writing to a principal should sound polite and grown-up. This one uses kind, formal words. Well done!",
+  "incorrect_feedback": "Good try! A note to your principal should sound polite and proper, not like chatting. Which sentence sounds the most formal?",
+  "reveal_feedback": "The answer is \"We really appreciate the wonderful new library.\" It sounds the most polite and formal for a principal."
+ },
+ {
+  "id": "L.2.3-H2",
+  "correct_feedback": "Yes! For a 4-year-old, we use easy words. \"It means really, really big\" is simple and clear. Perfect choice!",
+  "incorrect_feedback": "Almost! A 4-year-old needs really simple words, not big fancy ones. Which one uses the easiest words to understand?",
+  "reveal_feedback": "The answer is \"It means really, really big.\" For a 4-year-old, simple, easy words like these are the clearest way to explain."
+ },
+ {
+  "id": "L.2.3-H3",
+  "correct_feedback": "Great! A report should sound formal. \"Bats are not birds; they are mammals\" uses full, proper words. Nice work!",
+  "incorrect_feedback": "Take another look! A science report should sound proper, not use words like ain't or like. Which sentence sounds the most formal?",
+  "reveal_feedback": "The answer is \"Bats are not birds; they are mammals.\" It uses full, proper words, so it fits a formal report best."
+ },
+ {
+  "id": "L.2.3-H4",
+  "correct_feedback": "Yes! The puppy raced fast to the door. Dashed means to move very quickly, so it shows the action best. Great pick!",
+  "incorrect_feedback": "Close one! The excited puppy RACED to the door. Which word shows moving super fast, not just plain moving or walking?",
+  "reveal_feedback": "The best word is dashed. It means to move very quickly, which matches the excited puppy racing to the door."
+ },
+ {
+  "id": "L.2.3-H5",
+  "correct_feedback": "Great! The wind was so cold it hurt your face. Biting means so cold and sharp it stings. That fits perfectly!",
+  "incorrect_feedback": "Hmm, this wind was so cold and sharp it HURT your face. Which word shows wind that stings, not just windy or nice?",
+  "reveal_feedback": "The best word is biting. It means so cold and sharp it stings, which matches wind that hurt your face."
+ }
+]

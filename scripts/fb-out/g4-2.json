@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.4.1-E5",
+  "correct_feedback": "Yes! The sentence says the rain sent them 'inside the school' for lunch. You pulled the answer straight from the words.",
+  "incorrect_feedback": "Hmm, look at the sentence again. Where does it actually say the class went when the rain started?",
+  "reveal_feedback": "The answer is 'Inside the school.' The sentence tells us the rain sent the class indoors to eat their lunch."
+ },
+ {
+  "id": "RI.4.2-Q1",
+  "correct_feedback": "Exactly! Every detail is about plastic hurting the ocean, so the main idea is that plastic pollution is seriously harming ocean life.",
+  "incorrect_feedback": "Almost! One of these is just a small detail. Ask yourself what ALL the sentences are about together.",
+  "reveal_feedback": "The main idea is 'Plastic pollution is seriously harming ocean life.' The others are just single details that support that big point."
+ },
+ {
+  "id": "RI.4.2-Q2",
+  "correct_feedback": "Nice thinking! Roads still standing centuries later proves they were remarkably built to last, just like the main idea says.",
+  "incorrect_feedback": "Good try. Some of these are true, but which one best shows the roads were truly amazing, not just ordinary?",
+  "reveal_feedback": "The best support is 'Many roads are still visible centuries later.' Lasting that long is what makes the roads a real engineering marvel."
+ },
+ {
+  "id": "RI.4.2-Q3",
+  "correct_feedback": "Great! A good summary covers the big points, and this one names both how bees help plants grow AND that they make honey.",
+  "incorrect_feedback": "Close one. A summary should cover the WHOLE passage, not just one part. Which choice includes the most important ideas?",
+  "reveal_feedback": "The best summary is the one about bees helping plants grow seeds by spreading pollen and also making honey. It covers all the big ideas, not just one."
+ },
+ {
+  "id": "RI.4.2-Q4",
+  "correct_feedback": "Yes! The students doing better in school is real proof from a study that exercise helps the brain work better.",
+  "incorrect_feedback": "Take another look. The detail about students isn't off-topic. How does it back up the idea that exercise helps the brain?",
+  "reveal_feedback": "The answer is that it provides real-world evidence that exercise helps brains work better. The study result proves the main idea."
+ },
+ {
+  "id": "RI.4.2-Q5",
+  "correct_feedback": "Exactly! All three paragraphs together show renewable energy is growing and getting cheaper, which means more accessible.",
+  "incorrect_feedback": "Almost! A couple of these are just one paragraph's detail. What idea ties ALL three paragraphs together?",
+  "reveal_feedback": "The main idea is 'Renewable energy is growing and becoming more accessible.' The other choices only cover one paragraph, not the whole passage."
+ },
+ {
+  "id": "RI.4.2-E1",
+  "correct_feedback": "Yes! The whole paragraph is about how bees help crops grow. That's the big idea it's built around.",
+  "incorrect_feedback": "Hmm, look again. What is EVERY sentence in the paragraph really talking about?",
+  "reveal_feedback": "The main idea is 'Bees are important because they help crops grow.' That's what all the sentences are about together."
+ },
+ {
+  "id": "RI.4.2-E2",
+  "correct_feedback": "Right! The paragraph tells us the heart's main job is pumping blood all through your body. That's the big idea.",
+  "incorrect_feedback": "Good try. Some choices are barely in the paragraph. What is it MOSTLY about?",
+  "reveal_feedback": "The paragraph is mostly about how the heart pumps blood through your body. That's its whole job and its main idea."
+ },
+ {
+  "id": "RI.4.2-E3",
+  "correct_feedback": "Yes! Every sentence connects to how recycling keeps our planet cleaner. You found the main idea.",
+  "incorrect_feedback": "Not yet. Some of those are tiny details. What is the WHOLE paragraph really about?",
+  "reveal_feedback": "The main idea is 'Recycling helps keep the planet clean.' The other choices are just small facts, not the big point."
+ },
+ {
+  "id": "RI.4.2-E4",
+  "correct_feedback": "Right! The paragraph is all about how dry deserts are and how little rain they get. Great job finding the big idea.",
+  "incorrect_feedback": "Take another look. What is the paragraph MOSTLY describing from start to finish?",
+  "reveal_feedback": "The paragraph is mostly about how deserts are dry places that get very little rain. That's the main idea."
+ },
+ {
+  "id": "RI.4.2-E5",
+  "correct_feedback": "Yes! The whole paragraph shows how exercise keeps your body strong and healthy. That's the main idea.",
+  "incorrect_feedback": "Close one. Some choices are just one little part. What is the paragraph about as a whole?",
+  "reveal_feedback": "The main idea is 'Exercise helps keep your body strong and healthy.' The others are just small details from the paragraph."
+ },
+ {
+  "id": "RI.4.3-Q1",
+  "correct_feedback": "Exactly! The colonists were furious about being taxed without a say, and that anger caused the Boston Tea Party.",
+  "incorrect_feedback": "Hmm, reread the first sentence. What were the colonists so angry about right before they dumped the tea?",
+  "reveal_feedback": "The cause was anger over taxation without representation. The colonists were furious about being taxed with no say in Parliament."
+ },
+ {
+  "id": "RI.4.3-Q3",
+  "correct_feedback": "Yes! When books got cheap and easy to get, more people could learn to read, so literacy soared. Great cause and effect.",
+  "incorrect_feedback": "Good try. The passage says books became affordable. What would that do to the number of people who could read?",
+  "reveal_feedback": "The effect was that literacy rates soared because books became accessible. Cheaper books meant more people could learn to read."
+ },
+ {
+  "id": "RI.4.3-Q4",
+  "correct_feedback": "Right! Inputs are what goes IN. The plant uses sunlight, water, and carbon dioxide to make its food.",
+  "incorrect_feedback": "Take another look. Inputs are the ingredients that go IN, not what comes out. Which things does the plant start with?",
+  "reveal_feedback": "The inputs are sunlight, water, and carbon dioxide. Glucose and oxygen are what photosynthesis makes, not the ingredients."
+ },
+ {
+  "id": "RI.4.4-Q2",
+  "correct_feedback": "Yes! The passage says the legislative branch is responsible for making laws. You used the context perfectly.",
+  "incorrect_feedback": "Hmm, reread the first sentence. What does it say the legislative branch is responsible for doing?",
+  "reveal_feedback": "Legislative relates to 'Making laws.' The passage says the legislative branch is the one responsible for making laws."
+ },
+ {
+  "id": "RI.4.4-E1",
+  "correct_feedback": "Right! The sentence tells you a veterinarian is a doctor who cares for animals. You read the clue perfectly.",
+  "incorrect_feedback": "Good try. The sentence gives the meaning right after the word. What does it say a veterinarian is?",
+  "reveal_feedback": "A veterinarian is 'A doctor for animals.' The sentence says it right there: a doctor who takes care of animals."
+ },
+ {
+  "id": "RI.4.4-E2",
+  "correct_feedback": "Yes! The sentence explains fossils are the hardened remains of animals or plants from long ago. Nice reading.",
+  "incorrect_feedback": "Not yet. The clue is right in the sentence after the word 'fossils.' What does it say they are?",
+  "reveal_feedback": "Fossils are 'The hardened remains of long-ago living things.' The sentence explains it right after the word."
+ },
+ {
+  "id": "RI.4.4-E3",
+  "correct_feedback": "Right! The sentence says arid means very dry with almost no rain. You caught the built-in clue.",
+  "incorrect_feedback": "Hmm, look at the words right after 'arid.' What does the sentence say it means?",
+  "reveal_feedback": "Arid means 'Very dry.' The sentence tells you: the desert gets almost no rain."
+ },
+ {
+  "id": "RI.4.4-E4",
+  "correct_feedback": "Yes! The sentence says nocturnal animals are awake and active at night. Great use of the clue.",
+  "incorrect_feedback": "Good try. The sentence explains the word right after it. When does it say bats are awake?",
+  "reveal_feedback": "Nocturnal means 'Active at night.' The sentence says bats are awake and active when it's dark."
+ },
+ {
+  "id": "RI.4.4-E5",
+  "correct_feedback": "Right! The sentence shows combine means to mix things together in a bowl. You read the clue well.",
+  "incorrect_feedback": "Take another look. What did the person DO with the flour and sugar in the bowl?",
+  "reveal_feedback": "Combine means 'Mix together.' The sentence shows the flour and sugar being mixed in a bowl."
+ },
+ {
+  "id": "RI.4.5-Q5",
+  "correct_feedback": "Yes! First, next, and finally are order words. Telling the steps of growth in order is a sequence structure.",
+  "incorrect_feedback": "Hmm, notice the words 'first,' 'then,' and 'finally.' What kind of structure uses steps in order like that?",
+  "reveal_feedback": "The structure is 'Sequence.' The article tells what happens first, next, and last, in time order."
+ },
+ {
+  "id": "RI.4.5-Q3",
+  "correct_feedback": "Exactly! The passage names a problem, plastic pollution, then gives solutions like cleanups. That's problem and solution.",
+  "incorrect_feedback": "Good try. The passage names a big trouble, then ways to fix it. Which structure matches that pattern?",
+  "reveal_feedback": "The structure is 'Problem and solution.' It describes the plastic problem, then offers ways to solve it."
+ },
+ {
+  "id": "RI.4.5-Q4",
+  "correct_feedback": "Yes! The passage shows how dolphins and porpoises are alike and different. That's compare and contrast.",
+  "incorrect_feedback": "Close one. Notice words like 'both' and 'however.' What structure shows how two things are alike and different?",
+  "reveal_feedback": "The structure is 'Compare and contrast.' The passage tells how dolphins and porpoises are alike and different."
+ },
+ {
+  "id": "RI.4.5-Q7",
+  "correct_feedback": "Right! Warmer water causes coral to lose algae, which causes it to die. That chain of causes is cause and effect.",
+  "incorrect_feedback": "Take another look. Notice 'because' and 'as a result.' What structure shows how one thing leads to another?",
+  "reveal_feedback": "The structure is 'Cause and effect.' Rising temperatures cause bleaching, which causes species to be in danger."
+ },
+ {
+  "id": "RI.4.5-Q10",
+  "correct_feedback": "Yes! The passage names the problem of overfishing, then gives a solution: protected areas. That's problem and solution.",
+  "incorrect_feedback": "Hmm, the passage names a trouble, then a way to fix it. Which structure fits that pattern best?",
+  "reveal_feedback": "The structure is 'Problem and solution.' It names overfishing, then the fix of marine protected areas."
+ },
+ {
+  "id": "RI.4.5-Q11",
+  "correct_feedback": "Right! 1960, 2012, then 2019. Telling events in time order like that is chronological structure.",
+  "incorrect_feedback": "Good try. Notice all the years going in order. What structure lays events out by time?",
+  "reveal_feedback": "The structure is 'Chronological.' The passage lists the ocean journeys in time order, from 1960 to 2019."
+ },
+ {
+  "id": "RI.4.6-Q1",
+  "correct_feedback": "Yes! A firsthand account comes from someone who was there, so it shares personal experiences and things they saw themselves.",
+  "incorrect_feedback": "Hmm, think about who was actually THERE. Which account would share what the writer personally saw and felt?",
+  "reveal_feedback": "The answer is that the firsthand account shares personal experiences and direct observations, because that writer was really there."
+ },
+ {
+  "id": "RI.4.6-Q2",
+  "correct_feedback": "Right! A soldier writing a diary during the battle was there living it, so that's a firsthand account.",
+  "incorrect_feedback": "Take another look. Firsthand means the writer was actually there. Which of these was written by someone at the event?",
+  "reveal_feedback": "The firsthand account is 'A soldier's diary from the Civil War battlefield.' The soldier was there living through it."
+ },
+ {
+  "id": "RI.4.6-Q3",
+  "correct_feedback": "Yes! Firsthand shares personal feelings from being there, while secondhand reports facts more calmly and objectively.",
+  "incorrect_feedback": "Good try. Reread the passage. Which type includes personal feelings, and which one is more fact-based and calm?",
+  "reveal_feedback": "The answer: firsthand accounts include personal feelings and experiences, while secondhand accounts are more objective. The passage explains both."
+ },
+ {
+  "id": "RI.4.6-Q4",
+  "correct_feedback": "Exactly! Account A uses 'I' and personal senses, so it's firsthand. Account B just reports facts, so it's secondhand.",
+  "incorrect_feedback": "Hmm, which account uses 'I' and describes feeling the shaking? That clue tells you which is firsthand.",
+  "reveal_feedback": "Account A is firsthand and Account B is secondhand. Account A shares what the writer felt; Account B just reports facts."
+ },
+ {
+  "id": "RI.4.6-Q5",
+  "correct_feedback": "Yes! Firsthand gives one person's real experience and secondhand gives the bigger picture, so together they tell the fuller story.",
+  "incorrect_feedback": "Close one. Think about what each type gives you. Why would reading BOTH be better than just one?",
+  "reveal_feedback": "The answer: firsthand gives personal perspective and secondhand gives broader context, so together you get a fuller picture."
+ },
+ {
+  "id": "RI.4.6-E1",
+  "correct_feedback": "Right! Maria was on the beach feeling the cold water herself, so her writing is a firsthand account.",
+  "incorrect_feedback": "Take another look. Maria says she was standing right there. Does that make it firsthand or secondhand?",
+  "reveal_feedback": "It's a firsthand account, because Maria was there and saw and felt it herself, right on the beach."
+ },
+ {
+  "id": "RI.4.6-E2",
+  "correct_feedback": "Yes! The reporter wasn't at the game and learned it from other people, so it's a secondhand account.",
+  "incorrect_feedback": "Hmm, the reporter was NOT at the game. If he heard about it from others, is that firsthand or secondhand?",
+  "reveal_feedback": "It's a secondhand account, because the reporter wasn't there and learned about the game from other people."
+ },
+ {
+  "id": "RI.4.6-E3",
+  "correct_feedback": "Right! 'I felt the ground shake under my feet' uses 'I' and describes what the writer sensed. That's firsthand.",
+  "incorrect_feedback": "Good try. A firsthand account uses 'I' and tells what the writer felt. Which sentence sounds like that?",
+  "reveal_feedback": "The firsthand one is 'I felt the ground shake under my feet during the earthquake.' It uses 'I' and describes what the writer felt."
+ },
+ {
+  "id": "RI.4.6-E4",
+  "correct_feedback": "Yes! Ben rode the bus and fed a giraffe himself, so his writing is the firsthand account.",
+  "incorrect_feedback": "Take another look. Who actually went on the trip and did it themselves? That writer's account is firsthand.",
+  "reveal_feedback": "Ben's writing is the firsthand account, because he was on the trip and fed the giraffe himself."
+ },
+ {
+  "id": "RI.4.6-E5",
+  "correct_feedback": "Right! The firsthand writer lived through the storm, so their account would include their own feelings from being there.",
+  "incorrect_feedback": "Hmm, think about who actually lived through the storm. Which writer would include their OWN feelings?",
+  "reveal_feedback": "The firsthand account would include the writer's own feelings, because that person actually lived through the storm."
+ },
+ {
+  "id": "RI.4.7-Q1",
+  "correct_feedback": "Yes! 200, then 350, then 500 pounds. The numbers climb each month, so recycling increased each month.",
+  "incorrect_feedback": "Take another look at the numbers. Are they getting bigger or smaller from January to March?",
+  "reveal_feedback": "The graph shows recycling increased each month. The pounds went up from 200 to 350 to 500."
+ },
+ {
+  "id": "RI.4.7-Q2",
+  "correct_feedback": "Right! A timeline lays out events by year, so it helps you see the sequence and spacing of events over time.",
+  "incorrect_feedback": "Hmm, a timeline is all about dates and order. What does that help a reader understand best?",
+  "reveal_feedback": "A timeline helps readers see the sequence and spacing of events over time, since it lays them out by year."
+ },
+ {
+  "id": "RI.4.7-Q3",
+  "correct_feedback": "Yes! Pizza has the biggest slice at 45%, but that's less than half, so it's most popular but not everyone's favorite.",
+  "incorrect_feedback": "Good try. Pizza has the biggest slice, but is 45% more than half? Think about what that really means.",
+  "reveal_feedback": "The answer: pizza is the most popular but not everyone's favorite. It's the biggest slice, but only 45%, less than half."
+ },
+ {
+  "id": "RI.4.7-Q4",
+  "correct_feedback": "Right! A diagram shows the layout and how organs connect, which is really hard to picture from words alone.",
+  "incorrect_feedback": "Take another look. The passage says words made it hard to picture. What does a diagram show that words can't easily?",
+  "reveal_feedback": "The answer: a diagram shows the physical layout and connections between organs that are hard to describe in words."
+ },
+ {
+  "id": "RI.4.7-Q5",
+  "correct_feedback": "Yes! The tallest bar is chocolate, so chocolate is the most preferred flavor among these students. Great graph reading.",
+  "incorrect_feedback": "Hmm, look at which bar is tallest. What does the tallest bar tell you about what students like most?",
+  "reveal_feedback": "The graph shows chocolate is the most preferred flavor among these students, because its bar is the tallest."
+ },
+ {
+  "id": "RI.4.7-E1",
+  "correct_feedback": "Right! Class B read 25 books and Class A read 10, so Class B read more. Nice comparing.",
+  "incorrect_feedback": "Take another look at the numbers. 10 books or 25 books, which class has the bigger amount?",
+  "reveal_feedback": "Class B read more, with 25 books compared to Class A's 10 books."
+ },
+ {
+  "id": "RI.4.7-E2",
+  "correct_feedback": "Yes! The labels point to the roots, stem, and leaves, so the diagram helps you name the parts of a plant.",
+  "incorrect_feedback": "Hmm, the diagram has labels on parts of a plant. What would that help a reader do?",
+  "reveal_feedback": "The diagram helps a reader name the parts of a plant, since it labels the roots, stem, and leaves."
+ },
+ {
+  "id": "RI.4.7-E3",
+  "correct_feedback": "Right! The key says a blue line means a river, so the blue line on the map is a river. You used the key perfectly.",
+  "incorrect_feedback": "Take another look at the map key. What does it say a blue line stands for?",
+  "reveal_feedback": "The blue line is a river. The map key tells you that a blue line stands for a river."
+ },
+ {
+  "id": "RI.4.7-E4",
+  "correct_feedback": "Yes! The timeline starts with the seed being planted, so that happens first. Great job reading the order.",
+  "incorrect_feedback": "Hmm, look at the very start of the timeline. What is the first thing that happens?",
+  "reveal_feedback": "The first thing is the seed being planted. The timeline starts there, before the stem and flowers grow."
+ }
+]

@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.K.6-H2",
+  "correct_feedback": "Yes! Grace wrote the story AND drew the pictures, so she did two jobs. Great thinking!",
+  "incorrect_feedback": "Hmm, let's count. Grace wrote the story. Grace drew the pictures. How many jobs is that?",
+  "reveal_feedback": "That one was tricky! Grace did two jobs: author and illustrator. She wrote AND drew. Now you know!"
+ },
+ {
+  "id": "RL.K.6-H3",
+  "correct_feedback": "Yes! The book says the pictures are by Anna, so she made them. Great reading!",
+  "incorrect_feedback": "Almost! Read it again. Who made the pictures of the fish? Look for the picture person.",
+  "reveal_feedback": "That one was tricky! Anna made the pictures, so the girl should thank Anna. Now you know!"
+ },
+ {
+  "id": "RL.K.6-H4",
+  "correct_feedback": "Yes! The person who draws pictures is the illustrator, and this book has none. Great thinking!",
+  "incorrect_feedback": "Good try! The book has words but NO pictures. Whose job is to make the pictures?",
+  "reveal_feedback": "That one was tricky! The illustrator draws pictures, and this book has none. So that job was left out. Now you know!"
+ },
+ {
+  "id": "RL.K.6-H5",
+  "correct_feedback": "Yes! The author writes the words, so the author made the funny joke. Great listening!",
+  "incorrect_feedback": "Close one! Think about who makes the WORDS in a story, not the pictures. Who is that?",
+  "reveal_feedback": "That one was tricky! The author writes the words, so the author thought up the joke. Now you know!"
+ },
+ {
+  "id": "RL.K.7-Q1",
+  "correct_feedback": "Yes! The tears in the picture show us how sad looks. Great listening!",
+  "incorrect_feedback": "Hmm, take another look. The girl has tears on her face. What does that show us?",
+  "reveal_feedback": "That one was tricky! The picture shows us what sad looks like, with tears on her face. Now you know!"
+ },
+ {
+  "id": "RL.K.7-Q2",
+  "correct_feedback": "Yes! We wear warm hats and gloves when it is cold, so the picture tells us it is cold. Great thinking!",
+  "incorrect_feedback": "Almost! When do you wear a warm hat and gloves? Think about how the air feels then.",
+  "reveal_feedback": "That one was tricky! The warm hat and gloves show it is cold outside. Now you know!"
+ },
+ {
+  "id": "RL.K.7-Q3",
+  "correct_feedback": "Yes! The words never said balloons or cake, but the picture shows them. Great looking!",
+  "incorrect_feedback": "Good try! The words told us people clapped and cheered. What NEW thing does the picture add?",
+  "reveal_feedback": "That one was tricky! The picture shows balloons and a cake, which the words did not tell us. Now you know!"
+ },
+ {
+  "id": "RL.K.7-Q4",
+  "correct_feedback": "Yes! The words just said the cat hid, but the picture shows it under the bed. Great thinking!",
+  "incorrect_feedback": "Not yet! The words said the cat hid somewhere. What does the picture show you about the hiding spot?",
+  "reveal_feedback": "That one was tricky! The picture helped us see WHERE the cat was hiding, under the bed. Now you know!"
+ },
+ {
+  "id": "RL.K.7-H1",
+  "correct_feedback": "Yes! The words only said Sam ran, but the picture shows the rain. Great looking!",
+  "incorrect_feedback": "Close one! The words told us Sam ran to the door. What new thing does the picture show in the sky?",
+  "reveal_feedback": "That one was tricky! The picture shows it is raining, which the words did not tell us. Now you know!"
+ },
+ {
+  "id": "RL.K.7-H2",
+  "correct_feedback": "Yes! An empty bowl and licking lips show the dog wants food. Great thinking!",
+  "incorrect_feedback": "Hmm, look again. The bowl has no food, and the dog is licking its lips. How might it feel?",
+  "reveal_feedback": "That one was tricky! The empty bowl and licking lips show the dog is hungry. Now you know!"
+ },
+ {
+  "id": "RL.K.7-H3",
+  "correct_feedback": "Yes! Building something tall in the sand is a sandcastle at the beach. Great match!",
+  "incorrect_feedback": "Almost! The words say the kids built something tall in the SAND. Which picture has sand?",
+  "reveal_feedback": "That one was tricky! The best match is kids building a tall sandcastle at the beach. Now you know!"
+ },
+ {
+  "id": "RL.K.7-H4",
+  "correct_feedback": "Yes! The moon and stars in the window show it is night. Great thinking!",
+  "incorrect_feedback": "Not yet! Look out the window in the picture. When do you see the moon and stars?",
+  "reveal_feedback": "That one was tricky! The moon and stars show it is nighttime. Now you know!"
+ },
+ {
+  "id": "RL.K.7-H5",
+  "correct_feedback": "Yes! Putting the bug next to a big shoe shows just how tiny it is. Great thinking!",
+  "incorrect_feedback": "Take another look. The tiny bug is next to a big shoe. Why would the picture do that?",
+  "reveal_feedback": "That one was tricky! The big shoe shows how tiny the bug is. Now you know!"
+ },
+ {
+  "id": "RL.K.9-Q1",
+  "correct_feedback": "Yes! Bear likes honey and Cat likes milk, so they like different foods. Great thinking!",
+  "incorrect_feedback": "Hmm, what does Bear like to eat? What does Cat like? Are those foods the same or different?",
+  "reveal_feedback": "That one was tricky! Bear and Cat are different because they like different foods. Now you know!"
+ },
+ {
+  "id": "RL.K.9-Q3",
+  "correct_feedback": "Yes! Both Maya and Tom were scared of the dark. That is how they are alike. Great thinking!",
+  "incorrect_feedback": "Almost! Alike means the same. How did BOTH kids feel about the dark?",
+  "reveal_feedback": "That one was tricky! Maya and Tom are alike because they were both scared of the dark. Now you know!"
+ },
+ {
+  "id": "RL.K.9-Q4",
+  "correct_feedback": "Yes! The pigs build houses and the wolf tries to knock them down. Great thinking!",
+  "incorrect_feedback": "Good try! Think about what the pigs DO and what the wolf DOES. Are they doing the same thing?",
+  "reveal_feedback": "That one was tricky! They are different because the pigs build, but the wolf destroys. Now you know!"
+ },
+ {
+  "id": "RL.K.9-Q5",
+  "correct_feedback": "Yes! Zoe cried but James looked for his toy, so they acted differently. Great thinking!",
+  "incorrect_feedback": "Not yet! What did Zoe do when she lost her toy? What did James do? Were they the same?",
+  "reveal_feedback": "That one was tricky! Zoe cried, but James searched for his toy. That is how they were different. Now you know!"
+ },
+ {
+  "id": "RL.K.9-H1",
+  "correct_feedback": "Yes! Pip waited for the seed, but Bo dug his up too soon. Great thinking!",
+  "incorrect_feedback": "Close one! Pip left the seed to grow. Bo dug his up the next day. Who was patient?",
+  "reveal_feedback": "That one was tricky! Pip waited, but Bo did not. That is why Pip's flower grew. Now you know!"
+ },
+ {
+  "id": "RL.K.9-H2",
+  "correct_feedback": "Yes! Both kids hid from the barking dog, so they were both scared. Great thinking!",
+  "incorrect_feedback": "Hmm, Mia hid and Jon ran inside. Why did they both do that? How did the dog make them feel?",
+  "reveal_feedback": "That one was tricky! Mia and Jon are alike because they were both scared of the dog. Now you know!"
+ },
+ {
+  "id": "RL.K.9-H3",
+  "correct_feedback": "Yes! Tess put on a coat and Ben sat by the fire, both to get warm. Great thinking!",
+  "incorrect_feedback": "Almost! Both kids got cold. Then they did something. What were they both trying to do?",
+  "reveal_feedback": "That one was tricky! Tess and Ben are alike because they both wanted to get warm. Now you know!"
+ },
+ {
+  "id": "RL.K.9-H4",
+  "correct_feedback": "Yes! Lily played in the rain and Max stayed inside dry. Great thinking!",
+  "incorrect_feedback": "Not yet! What did Lily do in the rain? What did Max do? Were they doing the same thing?",
+  "reveal_feedback": "That one was tricky! Lily had fun in the rain, but Max stayed dry inside. That is how they were different. Now you know!"
+ },
+ {
+  "id": "RL.K.9-H5",
+  "correct_feedback": "Yes! The crow got her cheese, but the fox never got the grape. Great thinking!",
+  "incorrect_feedback": "Take another look. Did the fox reach the grape? Did the crow get the cheese? Were they the same?",
+  "reveal_feedback": "That one was tricky! The crow got her food, but the fox did not. That is how they were different. Now you know!"
+ },
+ {
+  "id": "RI.K.1-Q2",
+  "correct_feedback": "Yes! The passage says most of Earth is covered by water. Great reading!",
+  "incorrect_feedback": "Hmm, look back. The passage says MOST of Earth is covered by one thing. What is it?",
+  "reveal_feedback": "That one was tricky! Water covers most of Earth. The passage told us that. Now you know!"
+ },
+ {
+  "id": "RI.K.1-Q3",
+  "correct_feedback": "Yes! The passage says to brush your teeth two times a day. Great reading!",
+  "incorrect_feedback": "Almost! Read again. How many times a day does the passage say to brush?",
+  "reveal_feedback": "That one was tricky! You should brush two times a day. The passage said so. Now you know!"
+ },
+ {
+  "id": "RI.K.1-Q4",
+  "correct_feedback": "Yes! The passage says penguins live in cold places. Great reading!",
+  "incorrect_feedback": "Good try! Look back at the words. What kind of place do penguins live in?",
+  "reveal_feedback": "That one was tricky! Penguins live in cold places. The passage told us. Now you know!"
+ },
+ {
+  "id": "RI.K.1-Q5",
+  "correct_feedback": "Yes! Plants need sunlight, water, and soil. That other thing is not on the list. Great thinking!",
+  "incorrect_feedback": "Not yet! The passage lists three things plants need. Which choice is NOT on that list?",
+  "reveal_feedback": "That one was tricky! Candy is NOT something plants need. They need sunlight, water, and soil. Now you know!"
+ },
+ {
+  "id": "RI.K.1-H1",
+  "correct_feedback": "Yes! The leaf snaps fast so the fly cannot get away. Great thinking!",
+  "incorrect_feedback": "Hmm, think about it. A fly can fly away quick. Why would the leaf need to close so fast?",
+  "reveal_feedback": "That one was tricky! The leaf closes fast to trap the fly before it flies away. Now you know!"
+ },
+ {
+  "id": "RI.K.1-H2",
+  "correct_feedback": "Yes! The passage says rain and sun help the seed grow. Great reading!",
+  "incorrect_feedback": "Almost! Read again. What two things help the little seed grow into a plant?",
+  "reveal_feedback": "That one was tricky! The seed needs rain and sun to grow. Now you know!"
+ },
+ {
+  "id": "RI.K.1-H3",
+  "correct_feedback": "Yes! A bee can fly to flowers, but an ant cannot fly. Great thinking!",
+  "incorrect_feedback": "Close one! The ant walks on the ground. What can the bee do that the ant cannot?",
+  "reveal_feedback": "That one was tricky! A bee can fly, but an ant cannot. That is how they are different. Now you know!"
+ },
+ {
+  "id": "RI.K.1-H4",
+  "correct_feedback": "Yes! Big eyes help the owl see in the dark when it hunts at night. Great thinking!",
+  "incorrect_feedback": "Not yet! Owls hunt at night when it is dark. How would big eyes help them then?",
+  "reveal_feedback": "That one was tricky! Big eyes help the owl see at night. Now you know!"
+ },
+ {
+  "id": "RI.K.1-H5",
+  "correct_feedback": "Yes! The bat wakes up when the sun goes down, so it is awake in the dark. Great thinking!",
+  "incorrect_feedback": "Take another look. The bat sleeps all day and wakes when the sun goes down. When is that?",
+  "reveal_feedback": "That one was tricky! The bat is awake when it is dark outside. Now you know!"
+ },
+ {
+  "id": "RI.K.2-Q1",
+  "correct_feedback": "Yes! Every sentence tells us about apples, so that is the topic. Great thinking!",
+  "incorrect_feedback": "Hmm, what is every sentence talking about? The colors and the pies all belong to one thing.",
+  "reveal_feedback": "That one was tricky! This passage is mostly about apples. Now you know!"
+ },
+ {
+  "id": "RI.K.2-Q2",
+  "correct_feedback": "Yes! The whole passage tells us about dogs, so that is the main topic. Great thinking!",
+  "incorrect_feedback": "Almost! What is every sentence about? The tricks and the food all belong to one animal.",
+  "reveal_feedback": "That one was tricky! The main topic is dogs. Now you know!"
+ },
+ {
+  "id": "RI.K.2-Q3",
+  "correct_feedback": "Yes! Every sentence tells us about the sun, so that is the topic. Great thinking!",
+  "incorrect_feedback": "Not yet! What gives us light and heat and helps plants grow? That is the topic.",
+  "reveal_feedback": "That one was tricky! This passage is mostly about the sun. Now you know!"
+ },
+ {
+  "id": "RI.K.2-Q4",
+  "correct_feedback": "Yes! The passage says firefighters rescue people. That is a key detail. Great reading!",
+  "incorrect_feedback": "Good try! A key detail is something the passage really says. Which choice did you read in the passage?",
+  "reveal_feedback": "That one was tricky! The passage says firefighters rescue people. That is the key detail. Now you know!"
+ },
+ {
+  "id": "RI.K.2-Q5",
+  "correct_feedback": "Yes! The passage tells how butterflies change from eggs to fliers. Great title pick!",
+  "incorrect_feedback": "Almost! The title should tell the big idea. What does the passage show butterflies doing?",
+  "reveal_feedback": "That one was tricky! The best title is How Butterflies Change. Now you know!"
+ },
+ {
+  "id": "RI.K.2-H1",
+  "correct_feedback": "Yes! The passage tells all the steps of a frog growing up. Great thinking!",
+  "incorrect_feedback": "Hmm, the passage goes egg, tadpole, legs, frog. What big thing is happening to the frog?",
+  "reveal_feedback": "That one was tricky! This passage is mostly about how a frog grows up. Now you know!"
+ },
+ {
+  "id": "RI.K.2-H2",
+  "correct_feedback": "Yes! The passage tells all the things ants do, like dig and carry food. Great thinking!",
+  "incorrect_feedback": "Almost! Every sentence tells about the ants doing something. What is the big idea?",
+  "reveal_feedback": "That one was tricky! The main topic is what ants do. Now you know!"
+ },
+ {
+  "id": "RI.K.2-H3",
+  "correct_feedback": "Yes! The rain fell and the warm sun shined, and that helped the seed grow. Great reading!",
+  "incorrect_feedback": "Not yet! Read again. What two things happened before the green plant popped up?",
+  "reveal_feedback": "That one was tricky! Rain and sun helped the seed grow. Now you know!"
+ },
+ {
+  "id": "RI.K.2-H4",
+  "correct_feedback": "Yes! The passage tells how the turtle's shell keeps it safe. Great title pick!",
+  "incorrect_feedback": "Good try! The title should tell the big idea. What does the passage say the turtle's shell does?",
+  "reveal_feedback": "That one was tricky! The best title is The Turtle's Safe Shell. Now you know!"
+ },
+ {
+  "id": "RI.K.2-H5",
+  "correct_feedback": "Yes! The passage says owls see very well at night, so they can hunt in the dark. Great reading!",
+  "incorrect_feedback": "Almost! Owls hunt in the dark. What can their eyes do that helps them at night?",
+  "reveal_feedback": "That one was tricky! Owls can hunt at night because they can see well in the dark. Now you know!"
+ },
+ {
+  "id": "RI.K.3-Q1",
+  "correct_feedback": "Yes! It rained a lot, and that made the flowers grow tall. Great thinking!",
+  "incorrect_feedback": "Hmm, read again. What happened right before the flowers grew tall?",
+  "reveal_feedback": "That one was tricky! The flowers grew tall because it rained a lot. Now you know!"
+ },
+ {
+  "id": "RI.K.3-Q2",
+  "correct_feedback": "Yes! The water froze into ice, then melted back into water. They can change! Great thinking!",
+  "incorrect_feedback": "Almost! The water turned into ice, then the ice melted. Can they change back and forth?",
+  "reveal_feedback": "That one was tricky! Water can become ice, and ice can become water again. Now you know!"
+ },
+ {
+  "id": "RI.K.3-Q4",
+  "correct_feedback": "Yes! Bears eat a lot in fall to get ready for their long winter sleep. Great thinking!",
+  "incorrect_feedback": "Not yet! Bears sleep all winter long. Why would they need to eat a lot first?",
+  "reveal_feedback": "That one was tricky! Bears eat a lot to get ready for their long winter sleep. Now you know!"
+ },
+ {
+  "id": "RI.K.3-Q5",
+  "correct_feedback": "Yes! Water and sun help the seed grow roots and a stem. Great thinking!",
+  "incorrect_feedback": "Close one! Water and sun help a seed. Do they make it grow bigger or smaller? What starts to grow?",
+  "reveal_feedback": "That one was tricky! Water and sun help the seed start to grow roots and a stem. Now you know!"
+ }
+]

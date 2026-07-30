@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.1.5-H4",
+  "correct_feedback": "Yes! Maya wants true facts, so she needs the book that tells how spiders really spin webs. Nice work!",
+  "incorrect_feedback": "Hmm, think again. Maya wants TRUE facts, not a silly or made-up tale. Which book teaches real things?",
+  "reveal_feedback": "That one was tricky! Maya should pick the book that explains how spiders really spin webs, because it has true facts. Now you know!"
+ },
+ {
+  "id": "RL.1.5-H5",
+  "correct_feedback": "Yes! A real seed cannot yawn or talk, so that sentence must be make-believe. Nice work!",
+  "incorrect_feedback": "Take another look. In real life, seeds just grow. Which sentence shows a seed doing something a real seed could never do?",
+  "reveal_feedback": "That one was tricky! The make-believe line is the one where the little seed yawned and asked the sun to wake it up. Real seeds cannot do that! Now you know!"
+ },
+ {
+  "id": "RL.1.5-E1",
+  "correct_feedback": "Yes! A dragon that talks and flies to the moon is not real, so this is a made-up story. Nice work!",
+  "incorrect_feedback": "Almost! A talking, flying dragon is not real. So is this book about true facts, or is it pretend?",
+  "reveal_feedback": "That one was tricky! It is a made-up story, because a real dragon cannot talk or fly to the moon. Now you know!"
+ },
+ {
+  "id": "RL.1.5-E2",
+  "correct_feedback": "Yes! This book teaches real facts about cows and milk, so it is an information book. Nice work!",
+  "incorrect_feedback": "Good try! This book teaches you real, true facts. What do we call a book that gives us facts?",
+  "reveal_feedback": "That one was tricky! It is an information book, because it teaches you true facts about how cows give us milk. Now you know!"
+ },
+ {
+  "id": "RL.1.5-E3",
+  "correct_feedback": "Yes! A bear who goes to school is make-believe, so that book tells a story. Nice work!",
+  "incorrect_feedback": "Close one! A story book has make-believe characters doing things. Which choice shows a pretend character, not just real facts?",
+  "reveal_feedback": "That one was tricky! The story is the book about a bear who goes to school with his friends, because that bear is make-believe. Now you know!"
+ },
+ {
+  "id": "RL.1.5-E4",
+  "correct_feedback": "Yes! Facts about the real sun are true, so that book gives real information. Nice work!",
+  "incorrect_feedback": "Not yet! A magic hat, flying cat, and talking fish are all pretend. Which book is about something real?",
+  "reveal_feedback": "That one was tricky! The book that tells you true facts about the sun gives real information, because the sun is real. Now you know!"
+ },
+ {
+  "id": "RL.1.5-E5",
+  "correct_feedback": "Yes! True facts and real photos of trucks mean this book gives information. Nice work!",
+  "incorrect_feedback": "Hmm, look again. This book has true facts and real photos. Does that tell a pretend tale, or share real facts?",
+  "reveal_feedback": "That one was tricky! This book gives information, because it is full of true facts and real photos about trucks. Now you know!"
+ },
+ {
+  "id": "RL.1.6-Q1",
+  "correct_feedback": "Yes! The word \"I\" means the child is telling it about their own trip. Nice work!",
+  "incorrect_feedback": "Almost! Look at the word \"I\" in the story. Who says \"I\" when they talk about themselves?",
+  "reveal_feedback": "That one was tricky! The child, the one who says \"I,\" is telling this story. Now you know!"
+ },
+ {
+  "id": "RL.1.6-Q2",
+  "correct_feedback": "Yes! It says \"Sam\" and \"He,\" not \"I,\" so someone outside the story tells it. Nice work!",
+  "incorrect_feedback": "Good try! The story says \"Sam\" and \"he,\" never \"I.\" So is Sam telling it, or is someone else?",
+  "reveal_feedback": "That one was tricky! A narrator outside the story tells it, because it says \"Sam\" and \"he,\" not \"I.\" Now you know!"
+ },
+ {
+  "id": "RL.1.6-Q3",
+  "correct_feedback": "Yes! Maria's words are in quotes, but someone else tells us she said them. That is the narrator. Nice work!",
+  "incorrect_feedback": "Take another look. Maria spoke the words, but who is telling YOU that she said them?",
+  "reveal_feedback": "That one was tricky! The narrator tells you that Maria said it. Maria spoke, but the narrator shares her words. Now you know!"
+ },
+ {
+  "id": "RL.1.6-Q5",
+  "correct_feedback": "Yes! Tom said the words, but someone else tells us that he shouted. That is the storyteller. Nice work!",
+  "incorrect_feedback": "Close one! Tom did the shouting, but who is telling US that Tom shouted?",
+  "reveal_feedback": "That one was tricky! The person telling the story tells us that Tom shouted. Now you know!"
+ },
+ {
+  "id": "RL.1.6-H1",
+  "correct_feedback": "Yes! It says \"Mia\" and \"the cat,\" not \"I,\" so someone outside is telling it. Nice work!",
+  "incorrect_feedback": "Hmm, look again. The story never says \"I.\" It names Mia and the cat. So who is telling it?",
+  "reveal_feedback": "That one was tricky! A narrator who is not in the story tells it, because it names Mia and the cat instead of saying \"I.\" Now you know!"
+ },
+ {
+  "id": "RL.1.6-H2",
+  "correct_feedback": "Yes! The word \"me\" and \"my dad\" tell us the kid is sharing their own bedtime. Nice work!",
+  "incorrect_feedback": "Not yet! Find the words \"my dad\" and \"reads to me.\" Who is the person saying \"me\"?",
+  "reveal_feedback": "That one was tricky! The kid whose dad reads to them is telling the story, because they say \"my dad\" and \"me.\" Now you know!"
+ },
+ {
+  "id": "RL.1.6-H3",
+  "correct_feedback": "Yes! The words inside the quote marks are what he said, so that is Ben talking. Nice work!",
+  "incorrect_feedback": "Good try! The quote marks show the exact words someone spoke out loud. Who said \"I fell down\"?",
+  "reveal_feedback": "That one was tricky! Ben is talking inside the quote marks, because those are the words he said. Now you know!"
+ },
+ {
+  "id": "RL.1.6-H4",
+  "correct_feedback": "Yes! The note says \"Love, Sam,\" so the words inside the note come from Sam. Nice work!",
+  "incorrect_feedback": "Almost! Look at who signed the note at the very end. Whose words are inside the note?",
+  "reveal_feedback": "That one was tricky! Sam is telling the part inside the note, because the note says \"Love, Sam.\" Now you know!"
+ },
+ {
+  "id": "RL.1.6-H5",
+  "correct_feedback": "Yes! She says \"My name is Rosa\" and \"I,\" so Rosa is telling most of it. Nice work!",
+  "incorrect_feedback": "Take another look. Most of the story uses \"I\" and \"my.\" Who says \"My name is...\" at the start?",
+  "reveal_feedback": "That one was tricky! Rosa tells most of the story, because she says \"My name is Rosa\" and uses \"I.\" Now you know!"
+ },
+ {
+  "id": "RL.1.7-Q1",
+  "correct_feedback": "Yes! A big smile and a trophy show she won, so she feels proud and happy. Nice work!",
+  "incorrect_feedback": "Hmm, think again. She has a big SMILE and holds a TROPHY. Do those show a good feeling or a bad one?",
+  "reveal_feedback": "That one was tricky! The girl feels proud and happy, because she is smiling and holding a trophy she won. Now you know!"
+ },
+ {
+  "id": "RL.1.7-Q2",
+  "correct_feedback": "Yes! Snow on the ground and warm coats tell us it is winter. Nice work!",
+  "incorrect_feedback": "Almost! The picture shows SNOW and kids in warm coats. Which cold season has snow?",
+  "reveal_feedback": "That one was tricky! It is winter, because there is snow on the ground and the kids wear coats. Now you know!"
+ },
+ {
+  "id": "RL.1.7-Q3",
+  "correct_feedback": "Yes! The picture shows the dog reaching up as tall as the boy, so it is a big dog! Nice work!",
+  "incorrect_feedback": "Close one! The word \"big\" is a clue. In the picture, how does the dog's size compare to the boy?",
+  "reveal_feedback": "That one was tricky! The dog is about the same height as the boy, which shows us it is a big dog. Now you know!"
+ },
+ {
+  "id": "RL.1.7-Q4",
+  "correct_feedback": "Yes! A smile, a packed backpack, and eyes on the mountain show the bunny is excited for a trip! Nice work!",
+  "incorrect_feedback": "Take another look. The bunny SMILES, has a BACKPACK, and looks at the mountain. What is the bunny getting ready to do?",
+  "reveal_feedback": "That one was tricky! The bunny is excited to go on a trip. The smile, backpack, and mountain are all clues. Now you know!"
+ },
+ {
+  "id": "RL.1.7-Q5",
+  "correct_feedback": "Yes! Tears and a broken toy show the boy feels sad. Nice work!",
+  "incorrect_feedback": "Not yet! The boy has TEARS and his toy is broken. What feeling do tears usually show?",
+  "reveal_feedback": "That one was tricky! The boy feels sad, because he has tears and his toy is broken. Now you know!"
+ },
+ {
+  "id": "RL.1.7-H1",
+  "correct_feedback": "Yes! Bare trees and kids jumping in red and orange leaves tell us it is fall. Nice work!",
+  "incorrect_feedback": "Hmm, look at the clues. There is NO snow, but the leaves are red and orange and dropping down. Which season is that?",
+  "reveal_feedback": "That one was tricky! It is fall, because the leaves are red and orange and dropping, with no snow yet. Now you know!"
+ },
+ {
+  "id": "RL.1.7-H2",
+  "correct_feedback": "Yes! A smile shows Sam is happy, but peeking through his fingers shows he is a little scared too. Nice work!",
+  "incorrect_feedback": "Good try! Sam is SMILING but also peeking through his fingers at a steep hill. That shows TWO feelings mixed. Which one?",
+  "reveal_feedback": "That one was tricky! Sam feels excited but a little scared. He smiles, yet he peeks nervously at the big hill. Now you know!"
+ },
+ {
+  "id": "RL.1.7-H3",
+  "correct_feedback": "Yes! Blocks scattered and a broken tower show Ben just knocked it over. Nice work!",
+  "incorrect_feedback": "Take another look. The tower is broken and blocks are everywhere, and his mouth is open wide. What happened to that tower?",
+  "reveal_feedback": "That one was tricky! Ben knocked over his block tower. That is why the blocks are scattered and the tower fell. Now you know!"
+ },
+ {
+  "id": "RL.1.7-H4",
+  "correct_feedback": "Yes! An empty plate and a rubbed belly show this one was hungry and ate it all up. Nice work!",
+  "incorrect_feedback": "Close one! One kid has an EMPTY plate and rubs his belly. The other has a FULL plate. Who ate up all their food?",
+  "reveal_feedback": "That one was tricky! Tom was hungry. His plate is empty and he rubs his belly with a smile. Now you know!"
+ },
+ {
+  "id": "RL.1.7-H5",
+  "correct_feedback": "Yes! A dark sky and a flash of light mean a storm, and the shaking dog is afraid of it. Nice work!",
+  "incorrect_feedback": "Not yet! The dog is shaking and hiding. Look out the window at the dark sky and bright flash. What is out there?",
+  "reveal_feedback": "That one was tricky! The dog is afraid of the storm outside. The dark sky and bright flash are the clues. Now you know!"
+ },
+ {
+  "id": "RL.1.9-Q1",
+  "correct_feedback": "Yes! The bear looks for honey, but the bee makes it. That is the big difference! Nice work!",
+  "incorrect_feedback": "Hmm, think again. The bear searches for honey to eat. The bee flies and works hard. Does the bee FIND honey or MAKE it?",
+  "reveal_feedback": "That one was tricky! The bear wants to find honey, while the bee works to make honey. Now you know!"
+ },
+ {
+  "id": "RL.1.9-Q2",
+  "correct_feedback": "Yes! Amy climbs and Bob swims, but both do a bold thing, so both are brave! Nice work!",
+  "incorrect_feedback": "Almost! Amy climbs a mountain and Bob swims a lake. Both do something bold. What word tells how they both are?",
+  "reveal_feedback": "That one was tricky! Amy and Bob are both brave. They each do a hard, bold thing. Now you know!"
+ },
+ {
+  "id": "RL.1.9-Q3",
+  "correct_feedback": "Yes! The cat stays in and the dog goes out, so that is how they are different. Nice work!",
+  "incorrect_feedback": "Good try! The cat stays IN the house. The dog plays OUT in the yard. How are those two places different?",
+  "reveal_feedback": "That one was tricky! The difference is that one stays inside and one goes outside. Now you know!"
+ },
+ {
+  "id": "RL.1.9-Q4",
+  "correct_feedback": "Yes! A park and a playground are both outside, so both kids played outdoors. Nice work!",
+  "incorrect_feedback": "Close one! Leo was at a park and Mia was at a playground. Are those places inside a house, or out in the open?",
+  "reveal_feedback": "That one was tricky! Leo and Mia both played outside. A park and a playground are both outdoors. Now you know!"
+ },
+ {
+  "id": "RL.1.9-Q5",
+  "correct_feedback": "Yes! Pip flies up high and Fluffy digs down low, so they like different things. Nice work!",
+  "incorrect_feedback": "Take another look. Pip loves to fly high. Fluffy loves to dig deep. Those are two very different things to do!",
+  "reveal_feedback": "That one was tricky! Pip likes to fly, and Fluffy likes to dig. That is one way they are different. Now you know!"
+ },
+ {
+  "id": "RL.1.9-H1",
+  "correct_feedback": "Yes! Mia searched all day for her ball, but Sam happily got a new toy. Their feelings were different! Nice work!",
+  "incorrect_feedback": "Hmm, think again. Mia looked ALL day and hugged her ball. Sam quickly got a new toy and played. Who cared more?",
+  "reveal_feedback": "That one was tricky! Mia cared a lot about her ball, but Sam did not mind losing his kite. Now you know!"
+ },
+ {
+  "id": "RL.1.9-H2",
+  "correct_feedback": "Yes! Rosa waved and made a friend, but Ben sat alone. They felt very different. Nice work!",
+  "incorrect_feedback": "Not yet! Rosa WAVED and ate with a girl. Ben sat BY HIMSELF and looked down. One felt warm, one felt alone. Which is which?",
+  "reveal_feedback": "That one was tricky! Rosa felt friendly, but Ben felt lonely. Now you know!"
+ },
+ {
+  "id": "RL.1.9-H3",
+  "correct_feedback": "Yes! The ant was tired but did not stop, while the mouse quit halfway. That is the difference! Nice work!",
+  "incorrect_feedback": "Good try! The ant was tired but did NOT stop. The mouse dropped the nut and went home. Who kept going and who quit?",
+  "reveal_feedback": "That one was tricky! The ant kept going, but the mouse gave up. Now you know!"
+ },
+ {
+  "id": "RL.1.9-H4",
+  "correct_feedback": "Yes! Lily jumped and laughed in the rain, but Max ran inside. They felt the opposite! Nice work!",
+  "incorrect_feedback": "Close one! Lily jumped in puddles and LAUGHED. Max ran inside and SHUT the door. Who liked the rain and who did not?",
+  "reveal_feedback": "That one was tricky! Lily was glad it rained, but Max wanted to get away from it. Now you know!"
+ },
+ {
+  "id": "RL.1.9-H5",
+  "correct_feedback": "Yes! Tom fed the cat every day, so it trusted him. Kate stayed away, so hers ran off. Nice work!",
+  "incorrect_feedback": "Take another look. Tom fed the cat EVERY day. Kate never went near hers. Why would a cat come home to Tom?",
+  "reveal_feedback": "That one was tricky! Tom fed the cat every day, so it learned to trust him and came home. Now you know!"
+ },
+ {
+  "id": "RI.1.1-Q1",
+  "correct_feedback": "Yes! The text tells us penguins like cold places, so snowy and icy weather is best. Nice work!",
+  "incorrect_feedback": "Hmm, think about where penguins live. Do they like it hot and sunny, or cold and icy?",
+  "reveal_feedback": "That one was tricky! Penguins like snowy and icy weather, because they live in very cold places. Now you know!"
+ },
+ {
+  "id": "RI.1.1-Q2",
+  "correct_feedback": "Yes! The text says a queen bee leads the group. You found the fact! Nice work!",
+  "incorrect_feedback": "Almost! Read the last line again. It tells who leads the group of bees. What kind of bee is that?",
+  "reveal_feedback": "That one was tricky! A queen bee leads the bees. The text says the queen bee leads the group. Now you know!"
+ },
+ {
+  "id": "RI.1.1-Q3",
+  "correct_feedback": "Yes! The text says the sun gives Earth light and heat. Great finding! Nice work!",
+  "incorrect_feedback": "Good try! Read the line about the sun again. What two things does it say the sun gives to Earth?",
+  "reveal_feedback": "That one was tricky! The sun gives Earth light and heat. Without it, Earth would be cold. Now you know!"
+ },
+ {
+  "id": "RI.1.1-Q4",
+  "correct_feedback": "Yes! The text lists all three: water, food, and exercise. You caught them all! Nice work!",
+  "incorrect_feedback": "Close one! The text names more than one thing dogs need. Try to find ALL of them, not just one.",
+  "reveal_feedback": "That one was tricky! Dogs need water, food, and exercise to stay healthy. The text names all three. Now you know!"
+ },
+ {
+  "id": "RI.1.1-Q5",
+  "correct_feedback": "Yes! First eggs, then tadpoles, then frogs. Tadpole comes right after the egg. Nice work!",
+  "incorrect_feedback": "Take another look at the order. First comes the egg. What is the very next step before it becomes a frog?",
+  "reveal_feedback": "That one was tricky! After the egg comes the tadpole. Then the tadpole grows into a frog. Now you know!"
+ },
+ {
+  "id": "RI.1.1-H1",
+  "correct_feedback": "Yes! The desert has very little water, so going without a drink helps the camel live there. Nice work!",
+  "incorrect_feedback": "Hmm, think about the desert. The text says there is very little water there. Why would that skill help a camel?",
+  "reveal_feedback": "That one was tricky! It helps because the desert has very little water, so the camel can go days without a drink. Now you know!"
+ },
+ {
+  "id": "RI.1.1-H2",
+  "correct_feedback": "Yes! Bats wake up when the sky gets dark and fly out to catch bugs. That means night! Nice work!",
+  "incorrect_feedback": "Almost! The text says bats sleep all day and wake up when the sky gets dark. What time is dark out?",
+  "reveal_feedback": "That one was tricky! Bats look for food at night, when they wake up and catch bugs. Now you know!"
+ },
+ {
+  "id": "RI.1.1-H3",
+  "correct_feedback": "Yes! When a turtle is scared, it pulls into its shell to stay safe. Nice work!",
+  "incorrect_feedback": "Good try! The text says a scared turtle uses its shell to stay safe. What would it do when a fox comes close?",
+  "reveal_feedback": "That one was tricky! The turtle will hide inside its shell, because that is how it stays safe when scared. Now you know!"
+ },
+ {
+  "id": "RI.1.1-H4",
+  "correct_feedback": "Yes! The season right before winter is fall, when maple leaves turn red and orange. Nice work!",
+  "incorrect_feedback": "Take another look. Winter has no leaves. What color are the leaves in the season JUST before winter?",
+  "reveal_feedback": "That one was tricky! Right before winter, in fall, the maple leaves are red and orange. Now you know!"
+ }
+]

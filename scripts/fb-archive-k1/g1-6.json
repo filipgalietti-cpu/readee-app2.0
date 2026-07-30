@@ -1,0 +1,272 @@
+[
+ {
+  "id": "L.1.5b-H1",
+  "correct_feedback": "Yes! A pond is a small pool of water, and a lake is much bigger. Size is the key clue. Nice work!",
+  "incorrect_feedback": "Hmm, let's think. A lake is BIG. So how is a pond different? Look for the one about its size.",
+  "reveal_feedback": "That one was tricky! The answer is a pond is a small pool of water. A pond is little, a lake is big. Now you know!"
+ },
+ {
+  "id": "L.1.5b-H2",
+  "correct_feedback": "Yes! A chair has a back to lean on, but a stool does not. That is the key thing. Nice work!",
+  "incorrect_feedback": "Almost! A stool has legs and can be wood too. Think about the ONE part a stool is missing.",
+  "reveal_feedback": "That one was tricky! The answer is a chair has a back to lean on. A stool has no back. Now you know!"
+ },
+ {
+  "id": "L.1.5b-H3",
+  "correct_feedback": "Yes! A bee, ant, and beetle are insects, and insects have six legs. Great thinking!",
+  "incorrect_feedback": "Good try! Fish, snakes, and birds are not right here. Think about a group of tiny bugs with six legs.",
+  "reveal_feedback": "That one was tricky! The answer is insects, because they have six legs. A bee, ant, and beetle all have six legs. Now you know!"
+ },
+ {
+  "id": "L.1.5b-H4",
+  "correct_feedback": "Yes! The bat flew out of the cave, so that bat is an animal with wings. Nice work!",
+  "incorrect_feedback": "Close one! Some of these bats are for hitting a ball. Which bat can FLY? An animal, not a toy.",
+  "reveal_feedback": "That one was tricky! The answer is the bat flew out of the dark cave. That bat is a flying animal. Now you know!"
+ },
+ {
+  "id": "L.1.5b-H5",
+  "correct_feedback": "Yes! A robin can fly up in the trees, but a penguin cannot fly. That is the key difference. Nice work!",
+  "incorrect_feedback": "Take another look. A penguin also has wings, feathers, and lays eggs. What can a robin DO that a penguin cannot?",
+  "reveal_feedback": "That one was tricky! The answer is a robin can fly up into the trees. Penguins can't fly. Now you know!"
+ },
+ {
+  "id": "L.1.5c-Q1",
+  "correct_feedback": "Yes! A warm blanket is cozy. Cozy means soft and warm and snug. Nice work!",
+  "incorrect_feedback": "Not yet! Cozy means warm and snug. A cactus, a rock, and ice are not soft and warm. Which one is?",
+  "reveal_feedback": "That one was tricky! The answer is a warm blanket. A blanket is cozy, soft, and warm. Now you know!"
+ },
+ {
+  "id": "L.1.5c-Q2",
+  "correct_feedback": "Yes! Carrots are crunchy. They make a big crunch when you bite them. Nice work!",
+  "incorrect_feedback": "Almost! Crunchy means it goes CRUNCH when you bite it. Pudding, soup, and yogurt are soft and mushy. Which one crunches?",
+  "reveal_feedback": "That one was tricky! The answer is carrots. Carrots go crunch when you bite them. Now you know!"
+ },
+ {
+  "id": "L.1.5c-Q3",
+  "correct_feedback": "Yes! Outside in the snow you would feel chilly. Chilly means a little cold. Nice work!",
+  "incorrect_feedback": "Hmm, think again. Chilly means cold. A hot bath, a fire, and a summer beach are all warm. Which place is cold?",
+  "reveal_feedback": "That one was tricky! The answer is outside in the snow. Snow is cold, so you feel chilly. Now you know!"
+ },
+ {
+  "id": "L.1.5c-Q4",
+  "correct_feedback": "Yes! An elephant is enormous. Enormous means very, very big. Nice work!",
+  "incorrect_feedback": "Good try! Enormous means super big. An ant, a ladybug, and a mouse are all tiny. Which animal is huge?",
+  "reveal_feedback": "That one was tricky! The answer is an elephant. An elephant is enormous, or very, very big. Now you know!"
+ },
+ {
+  "id": "L.1.5c-Q5",
+  "correct_feedback": "Yes! You feel proud when you do well on a test. Proud is that happy, glad feeling about yourself. Nice work!",
+  "incorrect_feedback": "Close one! Proud is a great, happy feeling. Being sleepy or breaking a toy is not happy. When do you feel great about yourself?",
+  "reveal_feedback": "That one was tricky! The answer is when you do well on a test. Doing well makes you feel proud. Now you know!"
+ },
+ {
+  "id": "L.1.5c-H1",
+  "correct_feedback": "Yes! Exhausted is the MOST tired, so tired you can barely move. Nice work!",
+  "incorrect_feedback": "Almost! Drowsy, sleepy, and tired all mean just a little tired. Which word means the MOST tired of all?",
+  "reveal_feedback": "That one was tricky! The answer is exhausted. Exhausted means super, super tired. Now you know!"
+ },
+ {
+  "id": "L.1.5c-H2",
+  "correct_feedback": "Yes! Grandma whispered because the baby was sleeping and she didn't want to wake it. Whispering is quiet. Nice work!",
+  "incorrect_feedback": "Take another look. Whispering is very quiet and soft. Why would you be quiet near a baby's crib?",
+  "reveal_feedback": "That one was tricky! The answer is the baby was sleeping and she did not want to wake it. That's why she was quiet. Now you know!"
+ },
+ {
+  "id": "L.1.5c-H3",
+  "correct_feedback": "Yes! Here spring means the season after winter, when flowers grow. Nice work!",
+  "incorrect_feedback": "Hmm, spring can mean a few things. But here flowers GROW. Think about the time of year that comes after winter.",
+  "reveal_feedback": "That one was tricky! The answer is the season that comes after winter. In that spring, flowers grow. Now you know!"
+ },
+ {
+  "id": "L.1.5c-H4",
+  "correct_feedback": "Yes! Gobbled means the lion ate fast in big, hungry bites. Nice work!",
+  "incorrect_feedback": "Good try! Chewed, nibbled, and tasted are all slow and small. Which word means eating fast in big bites?",
+  "reveal_feedback": "That one was tricky! The answer is gobbled. Gobbled means ate fast in big, hungry bites. Now you know!"
+ },
+ {
+  "id": "L.1.5c-H5",
+  "correct_feedback": "Yes! The gigantic elephant filled the whole room. Gigantic means very big, and elephants ARE big. Nice work!",
+  "incorrect_feedback": "Close one! Gigantic means very, very big. A crumb, an ant, and a pocket-sized mouse are tiny. Which sentence uses it for something big?",
+  "reveal_feedback": "That one was tricky! The answer is the gigantic elephant filled the whole room. Gigantic means huge, like an elephant. Now you know!"
+ },
+ {
+  "id": "L.1.5d-Q1",
+  "correct_feedback": "Yes! Gigantic means MORE than big. It means super big! Nice work!",
+  "incorrect_feedback": "Not yet! We want a word bigger than big. Small, tiny, and medium are not big. Which word means the biggest?",
+  "reveal_feedback": "That one was tricky! The answer is gigantic. Gigantic means even bigger than big. Now you know!"
+ },
+ {
+  "id": "L.1.5d-Q3",
+  "correct_feedback": "Yes! Run means to move faster than walk. When you run, you go fast! Nice work!",
+  "incorrect_feedback": "Hmm, think about moving fast. Sit, stand, and crawl are slow or not moving. Which word means to go fast?",
+  "reveal_feedback": "That one was tricky! The answer is run. Running is faster than walking. Now you know!"
+ },
+ {
+  "id": "L.1.5d-Q4",
+  "correct_feedback": "Yes! Thrilled is a stronger feeling than happy. It means super happy and excited! Nice work!",
+  "incorrect_feedback": "Almost! We want a feeling even bigger than happy. Sad, okay, and fine are not that. Which word is the most excited?",
+  "reveal_feedback": "That one was tricky! The answer is thrilled. Thrilled means way more than happy. Now you know!"
+ },
+ {
+  "id": "L.1.5d-H1",
+  "correct_feedback": "Yes! Scorching means very, very hot, hotter than hot. Nice work!",
+  "incorrect_feedback": "Good try! Cool and warm are not super hot. We want a word for very, very hot. Which one burns the most?",
+  "reveal_feedback": "That one was tricky! The answer is scorching. Scorching means very, very hot. Now you know!"
+ },
+ {
+  "id": "L.1.5d-H2",
+  "correct_feedback": "Yes! Sobbed means Ben cried hard for a long time. That fits big tears! Nice work!",
+  "incorrect_feedback": "Take another look. Ben cried a LOT, not a little. Grinned, sniffled, and whimpered are small. Which word means crying hard?",
+  "reveal_feedback": "That one was tricky! The answer is sobbed. Sobbed means crying hard with lots of tears. Now you know!"
+ },
+ {
+  "id": "L.1.5d-H3",
+  "correct_feedback": "Yes! Mom whispered so she wouldn't wake the sleeping baby. Whispering is quiet. Nice work!",
+  "incorrect_feedback": "Close one! Mom wanted to stay quiet for the baby. Yelled, screamed, and shouted are all loud. Which word is soft and quiet?",
+  "reveal_feedback": "That one was tricky! The answer is whispered. Whispering is quiet, so the baby stays asleep. Now you know!"
+ },
+ {
+  "id": "L.1.5d-H4",
+  "correct_feedback": "Yes! Thrilled means the MOST happy. Sara felt thrilled about her puppy! Nice work!",
+  "incorrect_feedback": "Almost! Okay, glad, and pleased mean a little happy. Sara felt the happiest ever. Which word is the biggest happy?",
+  "reveal_feedback": "That one was tricky! The answer is thrilled. Thrilled means the most happy of all. Now you know!"
+ },
+ {
+  "id": "L.1.5d-H5",
+  "correct_feedback": "Yes! Gobbled means the dog ate fast in big bites. That fits a hungry dog! Nice work!",
+  "incorrect_feedback": "Not yet! Tasted, nibbled, and licked are slow and tiny. The dog ate fast in huge bites. Which word shows that?",
+  "reveal_feedback": "That one was tricky! The answer is gobbled. Gobbled means ate fast in big bites. Now you know!"
+ },
+ {
+  "id": "L.1.6-Q2",
+  "correct_feedback": "Yes! Because tells you the reason why something happens. Nice work!",
+  "incorrect_feedback": "Hmm, think about it. Because does not tell who, when, or where. It answers a WHY question. What does it tell?",
+  "reveal_feedback": "That one was tricky! The answer is the reason why. Because tells you why something happened. Now you know!"
+ },
+ {
+  "id": "L.1.6-Q5",
+  "correct_feedback": "Yes! She saw a beautiful sunset. Beautiful describes the sunset, so it fits. Nice work!",
+  "incorrect_feedback": "Take another look. Beautiful describes a thing, like a beautiful flower. It can't do actions or be eaten. Which sentence uses it to describe something?",
+  "reveal_feedback": "That one was tricky! The answer is she saw a beautiful sunset. Beautiful describes the sunset. Now you know!"
+ },
+ {
+  "id": "L.1.6-H1",
+  "correct_feedback": "Yes! Boiling means even hotter than hot, so hot it bubbles! Nice work!",
+  "incorrect_feedback": "Good try! Mild, warm, and cool are not hotter than hot. Which word means the hottest, like bubbling soup?",
+  "reveal_feedback": "That one was tricky! The answer is boiling. Boiling is even hotter than hot. Now you know!"
+ },
+ {
+  "id": "L.1.6-H2",
+  "correct_feedback": "Yes! Here bark means the loud sound a dog makes. The dog barked at the mailman! Nice work!",
+  "incorrect_feedback": "Hmm, bark has a few meanings. But this is about a DOG being loud. What sound does a dog make?",
+  "reveal_feedback": "That one was tricky! The answer is a loud sound a dog makes. The dog barked loudly. Now you know!"
+ },
+ {
+  "id": "L.1.6-H3",
+  "correct_feedback": "Yes! The tiny box was so light the baby could carry it. Here light means not heavy. Nice work!",
+  "incorrect_feedback": "Almost! Light can mean a color or a lamp too. But we want light meaning NOT heavy. Which sentence is about weight?",
+  "reveal_feedback": "That one was tricky! The answer is the tiny box was so light that the baby could carry it. Light there means not heavy. Now you know!"
+ },
+ {
+  "id": "L.1.6-H4",
+  "correct_feedback": "Yes! Lucy was terrified. Terrified means very, very scared, so she screamed and ran. Nice work!",
+  "incorrect_feedback": "Close one! Lucy screamed and ran from a bear, so she was VERY scared. Surprised and annoyed are not that big. Which word is the most scared?",
+  "reveal_feedback": "That one was tricky! The answer is terrified. Terrified means super scared. Now you know!"
+ },
+ {
+  "id": "L.1.6-H5",
+  "correct_feedback": "Yes! Marcus whispered the words softly so the baby stayed asleep. Nice work!",
+  "incorrect_feedback": "Take another look. Marcus talked SOFTLY for the sleeping baby. Yelled, shouted, and announced are all loud. Which word is quiet?",
+  "reveal_feedback": "That one was tricky! The answer is whispered. Whispering is soft and quiet. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-Q1",
+  "correct_feedback": "Yes! Shell starts with the /sh/ sound, just like shoe. Nice work!",
+  "incorrect_feedback": "Hmm, say shoe slowly. It starts with /sh/. Which word starts with that same soft /sh/ sound?",
+  "reveal_feedback": "That one was tricky! The answer is shell. Shell and shoe both start with /sh/. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-Q2",
+  "correct_feedback": "Yes! The letters ch make the /ch/ sound in chip. Nice work!",
+  "incorrect_feedback": "Almost! Say the word chip out loud and listen to its very first sound. Which two letters at the start make that sound?",
+  "reveal_feedback": "That one was tricky! The answer is ch. The letters ch make the /ch/ sound in chip. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-Q3",
+  "correct_feedback": "Yes! Thumb starts with the /th/ sound. Nice work!",
+  "incorrect_feedback": "Good try! Say each word slowly. Which one starts by sticking your tongue out for /th/? Not chimp, shell, or what.",
+  "reveal_feedback": "That one was tricky! The answer is thumb. Thumb starts with the /th/ sound. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-Q4",
+  "correct_feedback": "Yes! In ship, the two letters s and h spell one sound, /sh/. Nice work!",
+  "incorrect_feedback": "Take another look. Two letters at the start of ship team up to spell just ONE sound. Which two letters are they?",
+  "reveal_feedback": "That one was tricky! The answer is sh. The letters s-h spell one sound in ship. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-Q5",
+  "correct_feedback": "Yes! Beach ends with the /ch/ sound. Say it: bea-ch! Nice work!",
+  "incorrect_feedback": "Hmm, listen to the END of each word. Fish, bath, and moth end with /sh/ or /th/. Which one ends with /ch/?",
+  "reveal_feedback": "That one was tricky! The answer is beach. Beach ends with the /ch/ sound. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-H1",
+  "correct_feedback": "Yes! Graph has the /f/ sound made by the letters p and h, even with no letter f. Nice work!",
+  "incorrect_feedback": "Good try! Say each word and listen for /f/. Grab, grip, and glad don't have it. Which word sounds like it has an f but doesn't?",
+  "reveal_feedback": "That one was tricky! The answer is graph. In graph, p-h makes the /f/ sound. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-H2",
+  "correct_feedback": "Yes! Catch ends with the /ch/ sound, just like the start of chip. Nice work!",
+  "incorrect_feedback": "Almost! Listen to the END. Cash ends in /sh/, cast and cap don't have /ch/. Which word ends with /ch/?",
+  "reveal_feedback": "That one was tricky! The answer is catch. Catch ends with the /ch/ sound. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-H3",
+  "correct_feedback": "Yes! Them starts with the buzzing /th/ where your voice turns on, just like this. Nice work!",
+  "incorrect_feedback": "Take another look. Thin, thick, and thumb have the quiet /th/. Which word has the BUZZING /th/ where your voice hums?",
+  "reveal_feedback": "That one was tricky! The answer is them. Them starts with the buzzing /th/, like this. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-H4",
+  "correct_feedback": "Yes! Spin does NOT have a digraph. The s and p each make their own sound. Nice work!",
+  "incorrect_feedback": "Hmm, a digraph is two letters making ONE sound, like sh, ch, wh. Which word has each letter make its OWN sound instead?",
+  "reveal_feedback": "That one was tricky! The answer is spin. In spin, s and p each make their own sound, so it's not a digraph. Now you know!"
+ },
+ {
+  "id": "RF.1.3a-H5",
+  "correct_feedback": "Yes! Brush has the /sh/ sound at the end, like ship. Nice work!",
+  "incorrect_feedback": "Good try! Teach, catch, and much end with /ch/. Which word has the /sh/ sound like ship?",
+  "reveal_feedback": "That one was tricky! The answer is brush. Brush ends with the /sh/ sound. Now you know!"
+ },
+ {
+  "id": "RF.1.3b-Q2",
+  "correct_feedback": "Yes! A cat is a small, furry pet that says meow. Nice work!",
+  "incorrect_feedback": "Hmm, think about which pet says meow. A fox, dog, and pig don't meow. Which furry pet does?",
+  "reveal_feedback": "That one was tricky! The answer is cat. A cat is furry and says meow. Now you know!"
+ },
+ {
+  "id": "RF.1.3b-H1",
+  "correct_feedback": "Yes! Ranch rhymes with branch. They both end in -anch. Nice work!",
+  "incorrect_feedback": "Almost! Say branch, then say each word. Which one ends with the same -anch sound? Brush, bench, and bunch don't.",
+  "reveal_feedback": "That one was tricky! The answer is ranch. Ranch and branch both end in -anch, so they rhyme. Now you know!"
+ },
+ {
+  "id": "RF.1.3b-H2",
+  "correct_feedback": "Yes! Frog does not belong. It starts with fr, but flat, flag, and flip all start with fl. Nice work!",
+  "incorrect_feedback": "Take another look. Say the first two letters of each. Three start with fl. Which word starts with a DIFFERENT blend?",
+  "reveal_feedback": "That one was tricky! The answer is frog. Frog starts with fr, but the others start with fl. Now you know!"
+ },
+ {
+  "id": "RF.1.3b-H3",
+  "correct_feedback": "Yes! Chop has the /ch/ sound, just like chin. Nice work!",
+  "incorrect_feedback": "Good try! Say chin. It starts with /ch/. Thin, when, and shed do not. Which word has that /ch/ sound?",
+  "reveal_feedback": "That one was tricky! The answer is chop. Chop starts with /ch/, like chin. Now you know!"
+ },
+ {
+  "id": "RF.1.3b-H4",
+  "correct_feedback": "Yes! Drum has the same middle sound as plum, the /u/ sound. Nice work!",
+  "incorrect_feedback": "Hmm, say plum and listen to the middle: /u/. Step, clap, and flip have different middle sounds. Which word has /u/?",
+  "reveal_feedback": "That one was tricky! The answer is drum. Drum and plum both have the /u/ sound in the middle. Now you know!"
+ }
+]

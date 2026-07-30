@@ -1,0 +1,541 @@
+[
+ {
+  "id": "RF.2.3c-H4",
+  "standard": "RF.2.3c",
+  "prompt": "Which two-syllable word has a long **a** sound?\n\nmistake   basket   napkin   rabbit",
+  "choices": [
+   "rabbit",
+   "basket",
+   "napkin",
+   "mistake"
+  ],
+  "correct": "mistake"
+ },
+ {
+  "id": "RF.2.3c-H5",
+  "standard": "RF.2.3c",
+  "prompt": "Which two-syllable word has a long **e** sound?\n\nzebra   lemon   wagon   rabbit",
+  "choices": [
+   "zebra",
+   "wagon",
+   "lemon",
+   "rabbit"
+  ],
+  "correct": "zebra"
+ },
+ {
+  "id": "RF.2.3d-Q2",
+  "standard": "RF.2.3d",
+  "prompt": "The suffix **-ful** in **hopeful** means \u2014",
+  "choices": [
+   "Before",
+   "Full of",
+   "Not",
+   "Without"
+  ],
+  "correct": "Full of"
+ },
+ {
+  "id": "RF.2.3d-Q4",
+  "standard": "RF.2.3d",
+  "prompt": "What does it mean if something is \"helpful\"?",
+  "choices": [
+   "Not helping at all",
+   "To make help",
+   "Full of help",
+   "To help again"
+  ],
+  "correct": "Full of help"
+ },
+ {
+  "id": "RF.2.3d-H1",
+  "standard": "RF.2.3d",
+  "prompt": "Read these four words: uncle, under, until, unpack. In which word is un- a PREFIX that means \"not\" or \"reverse\"?",
+  "choices": [
+   "unpack",
+   "until",
+   "uncle",
+   "under"
+  ],
+  "correct": "unpack"
+ },
+ {
+  "id": "RF.2.3d-H2",
+  "standard": "RF.2.3d",
+  "prompt": "The word grinned was made by adding -ed to a base word. Which is the base word?",
+  "choices": [
+   "green",
+   "grin",
+   "grind",
+   "grime"
+  ],
+  "correct": "grin"
+ },
+ {
+  "id": "RF.2.3d-H3",
+  "standard": "RF.2.3d",
+  "prompt": "The word riding was made by adding -ing to a base word. Which is the base word?",
+  "choices": [
+   "rind",
+   "red",
+   "ride",
+   "rid"
+  ],
+  "correct": "ride"
+ },
+ {
+  "id": "RF.2.3d-H4",
+  "standard": "RF.2.3d",
+  "prompt": "The word cried was made by adding -ed to a base word. Which is the base word?",
+  "choices": [
+   "cram",
+   "crie",
+   "crid",
+   "cry"
+  ],
+  "correct": "cry"
+ },
+ {
+  "id": "RF.2.3d-H5",
+  "standard": "RF.2.3d",
+  "prompt": "Read these four words: red, reptile, ready, rewrite. In which word is re- a PREFIX that means \"again\"?",
+  "choices": [
+   "rewrite",
+   "reptile",
+   "red",
+   "ready"
+  ],
+  "correct": "rewrite"
+ },
+ {
+  "id": "RF.2.3e-Q1",
+  "standard": "RF.2.3e",
+  "prompt": "If you were trying to sound out each word below, which one would be the trickiest to read because its letter sounds don't follow the usual phonics rules?",
+  "choices": [
+   "dog",
+   "said",
+   "run",
+   "cat"
+  ],
+  "correct": "said"
+ },
+ {
+  "id": "RF.2.3e-Q2",
+  "standard": "RF.2.3e",
+  "prompt": "The word **have** is tricky because \u2014",
+  "choices": [
+   "It ends with 'e' but the 'a' is short",
+   "The 'a' doesn't make the expected sound",
+   "It has too many letters",
+   "It has a silent 'h'"
+  ],
+  "correct": "It ends with 'e' but the 'a' is short"
+ },
+ {
+  "id": "RF.2.3e-Q3",
+  "standard": "RF.2.3e",
+  "prompt": "Which word has a silent letter?",
+  "choices": [
+   "Cup",
+   "Know",
+   "Stop",
+   "Lamp"
+  ],
+  "correct": "Know"
+ },
+ {
+  "id": "RF.2.3e-Q4",
+  "standard": "RF.2.3e",
+  "prompt": "In the word **love,** the **o** makes the sound of \u2014",
+  "choices": [
+   "Long 'o' (like 'bone')",
+   "Long 'u' (like 'cute')",
+   "Short 'u' (like 'cup')",
+   "Short 'o' (like 'hot')"
+  ],
+  "correct": "Short 'u' (like 'cup')"
+ },
+ {
+  "id": "RF.2.3e-Q5",
+  "standard": "RF.2.3e",
+  "prompt": "Which word below has a part that sounds different from how you would usually expect those letters to sound?",
+  "choices": [
+   "run",
+   "said",
+   "sit",
+   "blue"
+  ],
+  "correct": "said"
+ },
+ {
+  "id": "RF.2.3e-H1",
+  "standard": "RF.2.3e",
+  "prompt": "In three of these words the letters **ea** make the long-e sound you hear in *eat*. Which word is the tricky one, where **ea** makes a SHORT-e sound instead?",
+  "choices": [
+   "bread",
+   "clean",
+   "dream",
+   "leaf"
+  ],
+  "correct": "bread"
+ },
+ {
+  "id": "RF.2.3e-H2",
+  "standard": "RF.2.3e",
+  "prompt": "The word **said** does not sound the way its letters look \u2014 it sounds like /sed/. Which word below **rhymes with said**?",
+  "choices": [
+   "raid",
+   "bed",
+   "paid",
+   "made"
+  ],
+  "correct": "bed"
+ },
+ {
+  "id": "RF.2.3e-H3",
+  "standard": "RF.2.3e",
+  "prompt": "In the word **knot**, the first letter is silent \u2014 you only hear /not/. Which other word begins with a SILENT letter?",
+  "choices": [
+   "nut",
+   "net",
+   "knee",
+   "nest"
+  ],
+  "correct": "knee"
+ },
+ {
+  "id": "RF.2.3e-H4",
+  "standard": "RF.2.3e",
+  "prompt": "Words that end in silent **e** usually make the vowel say its long name, like *bone* and *home*. Which word BREAKS that rule \u2014 it ends in **e** but the vowel is not long?",
+  "choices": [
+   "rope",
+   "cone",
+   "stone",
+   "come"
+  ],
+  "correct": "come"
+ },
+ {
+  "id": "RF.2.3e-H5",
+  "standard": "RF.2.3e",
+  "prompt": "The word **would** is tricky: the **l** is silent and it sounds like /wood/. Which word below **rhymes with would**?",
+  "choices": [
+   "could",
+   "food",
+   "road",
+   "gold"
+  ],
+  "correct": "could"
+ },
+ {
+  "id": "RF.2.3f-Q2",
+  "standard": "RF.2.3f",
+  "prompt": "Choose the correct spelling:",
+  "choices": [
+   "Frend",
+   "Friend",
+   "Freind",
+   "Frind"
+  ],
+  "correct": "Friend"
+ },
+ {
+  "id": "RF.2.3f-Q4",
+  "standard": "RF.2.3f",
+  "prompt": "Choose the correct spelling of the word that means **one more time**:",
+  "choices": [
+   "Agane",
+   "Agin",
+   "Agen",
+   "Again"
+  ],
+  "correct": "Again"
+ },
+ {
+  "id": "RF.2.3f-Q5",
+  "standard": "RF.2.3f",
+  "prompt": "Which word is an irregularly spelled word you need to memorize?",
+  "choices": [
+   "Because",
+   "Help",
+   "Stop",
+   "Jump"
+  ],
+  "correct": "Because"
+ },
+ {
+  "id": "RF.2.3f-H1",
+  "standard": "RF.2.3f",
+  "prompt": "One of these words is spelled correctly. It means \"for the reason that,\" as in \"I stayed inside ___ it was raining.\" Which spelling is correct?",
+  "choices": [
+   "Because",
+   "Becoz",
+   "Becuz",
+   "Becaus"
+  ],
+  "correct": "Because"
+ },
+ {
+  "id": "RF.2.3f-H2",
+  "standard": "RF.2.3f",
+  "prompt": "Three of these words follow the regular sounding-out rules. One is an irregular word you must know by heart because the letters do not make their usual sounds. Which one is the irregular word?",
+  "choices": [
+   "run",
+   "said",
+   "cat",
+   "sit"
+  ],
+  "correct": "said"
+ },
+ {
+  "id": "RF.2.3f-H3",
+  "standard": "RF.2.3f",
+  "prompt": "In one of these words the letters 'gh' make the /f/ sound (like in 'ph'). Which word is it?",
+  "choices": [
+   "high",
+   "though",
+   "laugh",
+   "night"
+  ],
+  "correct": "laugh"
+ },
+ {
+  "id": "RF.2.3f-H4",
+  "standard": "RF.2.3f",
+  "prompt": "One of these words is spelled correctly. It means \"as much as you need,\" as in \"I have ___ money.\" Which spelling is correct?",
+  "choices": [
+   "Ennough",
+   "Enuff",
+   "Enuf",
+   "Enough"
+  ],
+  "correct": "Enough"
+ },
+ {
+  "id": "RF.2.3f-H5",
+  "standard": "RF.2.3f",
+  "prompt": "One of these words is spelled correctly. It means \"was able to,\" as in \"I ___ hear the bird.\" Which spelling is correct?",
+  "choices": [
+   "Could",
+   "Cood",
+   "Coud",
+   "Culd"
+  ],
+  "correct": "Could"
+ },
+ {
+  "id": "RF.2.4-Q1",
+  "standard": "RF.2.4",
+  "prompt": "Imagine you are reading a fun story to your classmates. Which way of reading would help everyone understand the story best?",
+  "choices": [
+   "Reading very fast, almost like a race.",
+   "Reading each word slowly, stopping often to figure it out.",
+   "Reading smoothly, like you are telling the story, and saying most words correctly.",
+   "Reading so quietly that only you can hear yourself."
+  ],
+  "correct": "Reading smoothly, like you are telling the story, and saying most words correctly."
+ },
+ {
+  "id": "RF.2.4-Q2",
+  "standard": "RF.2.4",
+  "prompt": "When you see an exclamation mark (!) at the end of a sentence, you should read it with \u2014",
+  "choices": [
+   "A quiet voice",
+   "A question in your voice",
+   "Excitement or strong feeling",
+   "No change in voice"
+  ],
+  "correct": "Excitement or strong feeling"
+ },
+ {
+  "id": "RF.2.4-Q3",
+  "standard": "RF.2.4",
+  "prompt": "If you don't understand a sentence after reading it, what should you do?",
+  "choices": [
+   "Ask someone to read the whole book",
+   "Close the book",
+   "Skip it and keep going",
+   "Read it again more carefully"
+  ],
+  "correct": "Read it again more carefully"
+ },
+ {
+  "id": "RF.2.4-Q4",
+  "standard": "RF.2.4",
+  "prompt": "\"Stop!\" yelled the crossing guard.\n\nHow should you read the word **Stop**?",
+  "choices": [
+   "In a loud, firm voice",
+   "Very slowly",
+   "In a silly voice",
+   "In a whisper"
+  ],
+  "correct": "In a loud, firm voice"
+ },
+ {
+  "id": "RF.2.4-H1",
+  "standard": "RF.2.4",
+  "prompt": "Which of these words has TWO syllables? Read each one carefully:\n\nthrough    yellow    bright    scratched",
+  "choices": [
+   "yellow",
+   "scratched",
+   "through",
+   "bright"
+  ],
+  "correct": "yellow"
+ },
+ {
+  "id": "RF.2.4-H2",
+  "standard": "RF.2.4",
+  "prompt": "Which word RHYMES with the word 'said'? (Say 'said' out loud first: it sounds like /sed/.)\n\nseed    red    sad    side",
+  "choices": [
+   "side",
+   "red",
+   "seed",
+   "sad"
+  ],
+  "correct": "red"
+ },
+ {
+  "id": "RF.2.4-H3",
+  "standard": "RF.2.4",
+  "prompt": "Which word has the same long-i sound and silent-e pattern as 'stripe'?\n\nslide    sniff    spill    sprint",
+  "choices": [
+   "spill",
+   "sprint",
+   "slide",
+   "sniff"
+  ],
+  "correct": "slide"
+ },
+ {
+  "id": "RF.2.4-H4",
+  "standard": "RF.2.4",
+  "prompt": "Which word has the same vowel sound as 'boil'? (Say 'boil': it has the /oy/ sound in the middle.)\n\ntoy    book    boat    bowl",
+  "choices": [
+   "bowl",
+   "book",
+   "boat",
+   "toy"
+  ],
+  "correct": "toy"
+ },
+ {
+  "id": "RF.2.4-H5",
+  "standard": "RF.2.4",
+  "prompt": "Which word BEGINS with the same sound as 'gentle'? (Say 'gentle': it starts with a /j/ sound.)\n\ngiant    goat    great    gum",
+  "choices": [
+   "giant",
+   "great",
+   "goat",
+   "gum"
+  ],
+  "correct": "giant"
+ },
+ {
+  "id": "RF.2.4a-Q1",
+  "standard": "RF.2.4a",
+  "prompt": "What did the farmer do to help his garden grow before summer?",
+  "choices": [
+   "He picked the ripe corn.",
+   "He watered the seeds and planted them.",
+   "He made soup with his vegetables.",
+   "He waited for the snow to fall."
+  ],
+  "correct": "He watered the seeds and planted them."
+ },
+ {
+  "id": "RF.2.4a-Q2",
+  "standard": "RF.2.4a",
+  "prompt": "Before you start reading, it helps to ask yourself \u2014",
+  "choices": [
+   "Who wrote this book?",
+   "How many pages is this?",
+   "What color is the cover?",
+   "What do I want to learn from this?"
+  ],
+  "correct": "What do I want to learn from this?"
+ },
+ {
+  "id": "RF.2.4a-Q3",
+  "standard": "RF.2.4a",
+  "prompt": "Dolphins are mammals, not fish. They breathe air and feed milk to their babies. Dolphins are very smart and can learn tricks.\n\nWhat makes dolphins different from fish?",
+  "choices": [
+   "They breathe air and feed milk to babies",
+   "They have tails",
+   "They swim",
+   "They live in the ocean"
+  ],
+  "correct": "They breathe air and feed milk to babies"
+ },
+ {
+  "id": "RF.2.4a-Q4",
+  "standard": "RF.2.4a",
+  "prompt": "Ben's favorite book is about space. He reads it every week because he wants to be an astronaut someday.\n\nWhy does Ben read the space book so often?",
+  "choices": [
+   "He has to for school",
+   "He wants to be an astronaut",
+   "It's the only book he has",
+   "His mom makes him"
+  ],
+  "correct": "He wants to be an astronaut"
+ },
+ {
+  "id": "RF.2.4a-Q5",
+  "standard": "RF.2.4a",
+  "prompt": "Earthworms help gardens by making tunnels in the soil. The tunnels let air and water reach plant roots.\n\nHow do earthworm tunnels help plants?",
+  "choices": [
+   "They make the garden look nice",
+   "They keep bugs away",
+   "They let air and water reach the roots",
+   "They make the soil warmer"
+  ],
+  "correct": "They let air and water reach the roots"
+ },
+ {
+  "id": "RF.2.4a-H1",
+  "standard": "RF.2.4a",
+  "prompt": "Which word rhymes with the word great?\n\ngreat",
+  "choices": [
+   "plate",
+   "seat",
+   "treat",
+   "meat"
+  ],
+  "correct": "plate"
+ },
+ {
+  "id": "RF.2.4a-H2",
+  "standard": "RF.2.4a",
+  "prompt": "In which word does the letter c make the /s/ sound (like in 'ice')?\n\ncent   cave   cup   cot",
+  "choices": [
+   "cot",
+   "cent",
+   "cave",
+   "cup"
+  ],
+  "correct": "cent"
+ },
+ {
+  "id": "RF.2.4a-H3",
+  "standard": "RF.2.4a",
+  "prompt": "How many syllables are in the word important?\n\nimportant",
+  "choices": [
+   "4",
+   "2",
+   "3"
+  ],
+  "correct": "3"
+ },
+ {
+  "id": "RF.2.4a-H4",
+  "standard": "RF.2.4a",
+  "prompt": "Which word has a silent letter (a letter you do NOT hear when you say it)?\n\nknee   nest   note   need",
+  "choices": [
+   "note",
+   "nest",
+   "need",
+   "knee"
+  ],
+  "correct": "knee"
+ }
+]

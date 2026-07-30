@@ -1,0 +1,470 @@
+[
+ {
+  "id": "L.2.5b-H4",
+  "standard": "L.2.5b",
+  "prompt": "The puppy hadn't eaten all day and was very hungry. When Mom filled its bowl, it _____ the food in just a few seconds. Which word fits BEST?",
+  "choices": [
+   "licked",
+   "nibbled",
+   "tasted",
+   "gobbled"
+  ],
+  "correct": "gobbled"
+ },
+ {
+  "id": "L.2.5b-H5",
+  "standard": "L.2.5b",
+  "prompt": "It was so cold outside that the whole pond had turned to solid ice. Which word BEST describes the air that day?",
+  "choices": [
+   "freezing",
+   "chilly",
+   "cool",
+   "warm"
+  ],
+  "correct": "freezing"
+ },
+ {
+  "id": "L.2.6-Q1",
+  "standard": "L.2.6",
+  "prompt": "Which sentence uses an adjective to describe the dog?",
+  "choices": [
+   "Dogs are pets",
+   "The fluffy dog ran.",
+   "The dog ran",
+   "The dog ran quickly."
+  ],
+  "correct": "The fluffy dog ran."
+ },
+ {
+  "id": "L.2.6-Q2",
+  "standard": "L.2.6",
+  "prompt": "The girl sang her favorite song. She wanted all her friends to hear it from far away. Which word best tells how she sang?",
+  "choices": [
+   "Softly",
+   "Loudly",
+   "Quickly",
+   "Sadly"
+  ],
+  "correct": "Loudly"
+ },
+ {
+  "id": "L.2.6-Q4",
+  "standard": "L.2.6",
+  "prompt": "Which sentence uses an adverb?",
+  "choices": [
+   "She ate a tasty cookie.",
+   "The cat is orange.",
+   "The tall tree fell.",
+   "He ran quickly to the bus."
+  ],
+  "correct": "He ran quickly to the bus."
+ },
+ {
+  "id": "L.2.6-Q5",
+  "standard": "L.2.6",
+  "prompt": "Choose the MOST descriptive sentence:",
+  "choices": [
+   "I hungrily ate a warm, cheesy sandwich.",
+   "I ate something good.",
+   "I ate a sandwich.",
+   "I ate food"
+  ],
+  "correct": "I hungrily ate a warm, cheesy sandwich."
+ },
+ {
+  "id": "L.2.6-H1",
+  "standard": "L.2.6",
+  "prompt": "The tiny mouse was so scared it would not leave its hole for hours. Which word best describes how the mouse felt?",
+  "choices": [
+   "Terrified",
+   "Unsure",
+   "Nervous",
+   "Worried"
+  ],
+  "correct": "Terrified"
+ },
+ {
+  "id": "L.2.6-H2",
+  "standard": "L.2.6",
+  "prompt": "Maria whispered the secret so no one else could hear it. Which sentence uses an adverb that means the OPPOSITE of how Maria spoke?",
+  "choices": [
+   "She spoke gently.",
+   "She spoke loudly.",
+   "She spoke softly.",
+   "She spoke quietly."
+  ],
+  "correct": "She spoke loudly."
+ },
+ {
+  "id": "L.2.6-H3",
+  "standard": "L.2.6",
+  "prompt": "Dad said, 'Please turn off the light before bed.' In this sentence, what does the word 'light' mean?",
+  "choices": [
+   "A soft color",
+   "Easy to do",
+   "A lamp you switch on and off",
+   "Not heavy"
+  ],
+  "correct": "A lamp you switch on and off"
+ },
+ {
+  "id": "L.2.6-H4",
+  "standard": "L.2.6",
+  "prompt": "The runner was very thirsty after the long race. She felt as if she had not had a drink in days. Which word best describes the runner?",
+  "choices": [
+   "Cool",
+   "Damp",
+   "Wet",
+   "Parched"
+  ],
+  "correct": "Parched"
+ },
+ {
+  "id": "L.2.6-H5",
+  "standard": "L.2.6",
+  "prompt": "A person who is careful never makes messes. So what does it most likely mean if a person is CARELESS?",
+  "choices": [
+   "Making messes and not paying attention",
+   "Caring a lot about others",
+   "Very full of care",
+   "Feeling scared"
+  ],
+  "correct": "Making messes and not paying attention"
+ },
+ {
+  "id": "L.2.1-Q1",
+  "standard": "L.2.1",
+  "prompt": "Which sentence shows the correct way to use a verb?",
+  "choices": [
+   "My brother like to read books.",
+   "We visits our grandma.",
+   "Mom bakes yummy cookies.",
+   "The flowers grows in the garden."
+  ],
+  "correct": "Mom bakes yummy cookies."
+ },
+ {
+  "id": "L.2.1-Q2",
+  "standard": "L.2.1",
+  "prompt": "Which is the past tense of **fly**?",
+  "choices": [
+   "flied",
+   "flyed",
+   "flew",
+   "flying"
+  ],
+  "correct": "flew"
+ },
+ {
+  "id": "L.2.1-Q3",
+  "standard": "L.2.1",
+  "prompt": "Which sentence is correct?",
+  "choices": [
+   "I happy today.",
+   "Me am happy.",
+   "I is happy.",
+   "I am happy today."
+  ],
+  "correct": "I am happy today."
+ },
+ {
+  "id": "L.2.1-Q5",
+  "standard": "L.2.1",
+  "prompt": "Past tense of **eat**?",
+  "choices": [
+   "eated",
+   "ate",
+   "eats",
+   "eating"
+  ],
+  "correct": "ate"
+ },
+ {
+  "id": "L.2.1-H1",
+  "standard": "L.2.1",
+  "prompt": "Read the sentence: \"The girls fixed the flat tire all by ____.\" Which word correctly fills the blank?",
+  "choices": [
+   "themselves",
+   "herselves",
+   "theirselves",
+   "themself"
+  ],
+  "correct": "themselves"
+ },
+ {
+  "id": "L.2.1-H2",
+  "standard": "L.2.1",
+  "prompt": "Read the sentence: \"Grandma knitted warm socks for both of my ____.\" Which word correctly fills the blank?",
+  "choices": [
+   "foot",
+   "feet",
+   "foots",
+   "feets"
+  ],
+  "correct": "feet"
+ },
+ {
+  "id": "L.2.1-H3",
+  "standard": "L.2.1",
+  "prompt": "Read the sentence: \"The doorbell has ____ three times since we sat down.\" Which word correctly fills the blank?",
+  "choices": [
+   "ringed",
+   "ring",
+   "rung",
+   "rang"
+  ],
+  "correct": "rung"
+ },
+ {
+  "id": "L.2.1-H4",
+  "standard": "L.2.1",
+  "prompt": "Read the sentence: \"The old turtle crossed the road very ____.\" Which word correctly fills the blank?",
+  "choices": [
+   "slower",
+   "slow",
+   "slowness",
+   "slowly"
+  ],
+  "correct": "slowly"
+ },
+ {
+  "id": "L.2.1-H5",
+  "standard": "L.2.1",
+  "prompt": "Read the sentence: \"Of all three backpacks, mine is the ____.\" Which word correctly fills the blank?",
+  "choices": [
+   "heaviest",
+   "more heavy",
+   "heavier",
+   "heavyest"
+  ],
+  "correct": "heaviest"
+ },
+ {
+  "id": "L.2.2-Q1",
+  "standard": "L.2.2",
+  "prompt": "Which shows the dog owns the bone?",
+  "choices": [
+   "the dogs bone",
+   "the dog bone",
+   "the dog's bone",
+   "the dogs' bone"
+  ],
+  "correct": "the dog's bone"
+ },
+ {
+  "id": "L.2.2-Q2",
+  "standard": "L.2.2",
+  "prompt": "Which sentence uses the contraction \"can't\" correctly?",
+  "choices": [
+   "I cant go to the park today.",
+   "I ca'nt go to the park today.",
+   "I can't go to the park today.",
+   "I can't' go to the park today."
+  ],
+  "correct": "I can't go to the park today."
+ },
+ {
+  "id": "L.2.2-Q3",
+  "standard": "L.2.2",
+  "prompt": "Which sentence uses commas correctly?",
+  "choices": [
+   "I like apples, bananas, and grapes.",
+   "I like apples bananas and grapes.",
+   "I, like apples, bananas, and, grapes.",
+   "I like, apples, bananas, and grapes."
+  ],
+  "correct": "I like apples, bananas, and grapes."
+ },
+ {
+  "id": "L.2.2-Q4",
+  "standard": "L.2.2",
+  "prompt": "**Let's** is short for:",
+  "choices": [
+   "let is",
+   "let us",
+   "let as",
+   "let it"
+  ],
+  "correct": "let us"
+ },
+ {
+  "id": "L.2.2-Q5",
+  "standard": "L.2.2",
+  "prompt": "Which sentence uses commas correctly to list things?",
+  "choices": [
+   "We saw a dog, a cat and a bird at the park.",
+   "We saw a dog a cat, and a bird at the park.",
+   "We saw a dog, a cat, and a bird at the park.",
+   "We saw a dog, a cat, and a bird, at the park."
+  ],
+  "correct": "We saw a dog, a cat, and a bird at the park."
+ },
+ {
+  "id": "L.2.2-H1",
+  "standard": "L.2.2",
+  "prompt": "Which sentence is written with correct capitalization? \"we visit grandma every winter for thanksgiving.\"",
+  "choices": [
+   "We visit Grandma every winter for Thanksgiving.",
+   "We visit Grandma every Winter for Thanksgiving.",
+   "We visit Grandma every Winter for thanksgiving.",
+   "We visit grandma every winter for Thanksgiving."
+  ],
+  "correct": "We visit Grandma every winter for Thanksgiving."
+ },
+ {
+  "id": "L.2.2-H2",
+  "standard": "L.2.2",
+  "prompt": "Rosa is finishing a letter to her aunt. Which closing is punctuated correctly?",
+  "choices": [
+   "Love, Rosa.",
+   "Love, Rosa",
+   "Love Rosa",
+   "Love Rosa,"
+  ],
+  "correct": "Love, Rosa"
+ },
+ {
+  "id": "L.2.2-H3",
+  "standard": "L.2.2",
+  "prompt": "Choose the word that correctly completes the sentence: \"The puppy wagged ___ tail when we came home.\"",
+  "choices": [
+   "its'",
+   "it,s",
+   "its",
+   "it's"
+  ],
+  "correct": "its"
+ },
+ {
+  "id": "L.2.2-H4",
+  "standard": "L.2.2",
+  "prompt": "Which is the correct spelling of the word that means more than one baby? \"We saw three ___ at the park.\"",
+  "choices": [
+   "babbies",
+   "babys",
+   "babyes",
+   "babies"
+  ],
+  "correct": "babies"
+ },
+ {
+  "id": "L.2.2-H5",
+  "standard": "L.2.2",
+  "prompt": "Pick the word that shows the nests belong to more than one bird: \"The three ___ nests were high in the tree.\"",
+  "choices": [
+   "birds'",
+   "bird's",
+   "birds",
+   "birds's"
+  ],
+  "correct": "birds'"
+ },
+ {
+  "id": "L.2.3-Q1",
+  "standard": "L.2.3",
+  "prompt": "If you are writing to a teacher, which sounds best?",
+  "choices": [
+   "Thanks a bunch!",
+   "Thx a lot.",
+   "Yo thanks.",
+   "Thank you for your help."
+  ],
+  "correct": "Thank you for your help."
+ },
+ {
+  "id": "L.2.3-Q2",
+  "standard": "L.2.3",
+  "prompt": "Which word is most formal?",
+  "choices": [
+   "assist",
+   "help",
+   "lend a hand",
+   "back up"
+  ],
+  "correct": "assist"
+ },
+ {
+  "id": "L.2.3-Q3",
+  "standard": "L.2.3",
+  "prompt": "Which sentence sounds too casual for a school essay?",
+  "choices": [
+   "It is very interesting.",
+   "Yeah, it's super cool.",
+   "It was a fine experience.",
+   "I enjoyed it."
+  ],
+  "correct": "Yeah, it's super cool."
+ },
+ {
+  "id": "L.2.3-Q4",
+  "standard": "L.2.3",
+  "prompt": "Which word is a stronger way to say **big**?",
+  "choices": [
+   "kinda big",
+   "big-ish",
+   "enormous",
+   "medium"
+  ],
+  "correct": "enormous"
+ },
+ {
+  "id": "L.2.3-H1",
+  "standard": "L.2.3",
+  "prompt": "You are writing a note to thank your school principal for the brand-new library. Which sentence sounds the most polite and formal?",
+  "choices": [
+   "We really appreciate the wonderful new library.",
+   "You got us a great library, thanks a lot!",
+   "Thanks for the awesome new books!",
+   "The new library is super cool, thanks!"
+  ],
+  "correct": "We really appreciate the wonderful new library."
+ },
+ {
+  "id": "L.2.3-H2",
+  "standard": "L.2.3",
+  "prompt": "Your brother is only 4 years old and asks what the word 'enormous' means. Which is the BEST way to explain it so he understands?",
+  "choices": [
+   "It is equivalent to gigantic.",
+   "It means really, really big.",
+   "It signifies immense proportions.",
+   "It shows a great magnitude."
+  ],
+  "correct": "It means really, really big."
+ },
+ {
+  "id": "L.2.3-H3",
+  "standard": "L.2.3",
+  "prompt": "You are writing a science report for class, which should sound formal. Which sentence fits a report best?",
+  "choices": [
+   "Bats ain't birds, they're mammals.",
+   "So bats are, like, mammals and not birds!",
+   "Bats are not birds; they are mammals.",
+   "Bats aren't birds, they're mammals."
+  ],
+  "correct": "Bats are not birds; they are mammals."
+ },
+ {
+  "id": "L.2.3-H4",
+  "standard": "L.2.3",
+  "prompt": "The excited puppy raced to the door the second it heard us coming home. Which word shows its movement most precisely?",
+  "choices": [
+   "moved",
+   "went",
+   "walked",
+   "dashed"
+  ],
+  "correct": "dashed"
+ },
+ {
+  "id": "L.2.3-H5",
+  "standard": "L.2.3",
+  "prompt": "The winter wind was so strong and cold it hurt your face. Which word describes that wind most precisely?",
+  "choices": [
+   "biting",
+   "breezy",
+   "nice",
+   "windy"
+  ],
+  "correct": "biting"
+ }
+]

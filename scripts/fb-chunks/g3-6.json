@@ -1,0 +1,542 @@
+[
+ {
+  "id": "L.3.4-Q1",
+  "standard": "L.3.4",
+  "prompt": "The spectators cheered wildly as the runner crossed the finish line.\n\nWhat are **spectators**?",
+  "choices": [
+   "Coaches",
+   "People watching",
+   "Runners",
+   "Judges"
+  ],
+  "correct": "People watching"
+ },
+ {
+  "id": "L.3.4-H1",
+  "standard": "L.3.4",
+  "prompt": "You know the prefix **re-** means \"again\" and the word *examine* means \"to look at closely.\" Read this sentence:\n\n\"Before turning in the test, the teacher told us to **reexamine** every answer.\"\n\nWhat does **reexamine** mean here?",
+  "choices": [
+   "Look closely at the answers again",
+   "Copy someone else's answers",
+   "Erase all of the answers",
+   "Grade the answers quickly"
+  ],
+  "correct": "Look closely at the answers again"
+ },
+ {
+  "id": "L.3.4-H2",
+  "standard": "L.3.4",
+  "prompt": "Maria came inside from the snowstorm with her teeth chattering, unable to stop shivering.\n\nWhich word **best** describes how Maria felt?",
+  "choices": [
+   "Warm",
+   "Freezing",
+   "Cool",
+   "Chilly"
+  ],
+  "correct": "Freezing"
+ },
+ {
+  "id": "L.3.4-H3",
+  "standard": "L.3.4",
+  "prompt": "The Latin root **port** means \"to carry.\" Read this sentence:\n\n\"The **porter** at the train station helped the travelers with their heavy suitcases.\"\n\nBased on the root, what does a **porter** most likely do?",
+  "choices": [
+   "Drives the train down the track",
+   "Sweeps the station floors",
+   "Carries people's bags and luggage",
+   "Sells tickets at a window"
+  ],
+  "correct": "Carries people's bags and luggage"
+ },
+ {
+  "id": "L.3.4-H4",
+  "standard": "L.3.4",
+  "prompt": "Read this sentence:\n\n\"Dad slammed the **trunk** shut after loading the cooler and the beach chairs into the back of the car.\"\n\nWhat does **trunk** mean in this sentence?",
+  "choices": [
+   "A large box for storing clothes",
+   "An elephant's long, bendy nose",
+   "The thick main stem of a tree",
+   "The storage space at the back of a car"
+  ],
+  "correct": "The storage space at the back of a car"
+ },
+ {
+  "id": "L.3.4-H5",
+  "standard": "L.3.4",
+  "prompt": "Read this sentence:\n\n\"The exhausted hikers ______ up the steep, muddy trail, dragging their heavy boots with every step.\"\n\nWhich word fills the blank most **precisely** to show how hard the climb was?",
+  "choices": [
+   "trudged",
+   "walked",
+   "went",
+   "moved"
+  ],
+  "correct": "trudged"
+ },
+ {
+  "id": "L.3.4-E1",
+  "standard": "L.3.4",
+  "prompt": "Maria felt **exhausted** after running all day, so she fell asleep the moment she lay down.\n\nWhat does **exhausted** mean?",
+  "choices": [
+   "Very happy",
+   "Very tired",
+   "Very cold",
+   "Very hungry"
+  ],
+  "correct": "Very tired"
+ },
+ {
+  "id": "L.3.4-E2",
+  "standard": "L.3.4",
+  "prompt": "The soup was **piping hot**, so Dad blew on his spoon to cool it before he ate.\n\nWhat does **piping hot** mean?",
+  "choices": [
+   "A little wet",
+   "Bright blue",
+   "Very hot",
+   "Full of pipes"
+  ],
+  "correct": "Very hot"
+ },
+ {
+  "id": "L.3.4-E3",
+  "standard": "L.3.4",
+  "prompt": "The path was **narrow**, so only one person could walk on it at a time.\n\nWhat does **narrow** mean?",
+  "choices": [
+   "Very loud",
+   "Made of grass",
+   "Very long",
+   "Not wide"
+  ],
+  "correct": "Not wide"
+ },
+ {
+  "id": "L.3.4-E4",
+  "standard": "L.3.4",
+  "prompt": "Read this sentence: \"Please **turn** the page to read the next part of the story.\"\n\nWhat does **turn** mean here?",
+  "choices": [
+   "To flip over",
+   "To become sour",
+   "A player's go in a game",
+   "To spin in a circle"
+  ],
+  "correct": "To flip over"
+ },
+ {
+  "id": "L.3.4-E5",
+  "standard": "L.3.4",
+  "prompt": "The old bridge was **sturdy**, so the heavy truck crossed it safely without any problem.\n\nWhat does **sturdy** mean?",
+  "choices": [
+   "Slippery",
+   "Strong",
+   "Colorful",
+   "Broken"
+  ],
+  "correct": "Strong"
+ },
+ {
+  "id": "L.3.4a-Q5",
+  "standard": "L.3.4a",
+  "prompt": "The nocturnal owl hunted mice while other birds slept.\n\nUsing context clues, **nocturnal** means \u2014",
+  "choices": [
+   "Very fast",
+   "Active at night",
+   "Colorful",
+   "Large and heavy"
+  ],
+  "correct": "Active at night"
+ },
+ {
+  "id": "L.3.4a-E1",
+  "standard": "L.3.4a",
+  "prompt": "The soup was so hot it was scalding, and it burned my tongue.\n\nUsing context clues, **scalding** means \u2014",
+  "choices": [
+   "Burning hot",
+   "Bright green",
+   "Very cold",
+   "Sweet tasting"
+  ],
+  "correct": "Burning hot"
+ },
+ {
+  "id": "L.3.4a-E2",
+  "standard": "L.3.4a",
+  "prompt": "The tired hikers rested because they were exhausted after the long walk.\n\nUsing context clues, **exhausted** means \u2014",
+  "choices": [
+   "Wet from rain",
+   "Very tired",
+   "Very happy",
+   "A little hungry"
+  ],
+  "correct": "Very tired"
+ },
+ {
+  "id": "L.3.4a-E3",
+  "standard": "L.3.4a",
+  "prompt": "The gigantic elephant was so big it could not fit through the door.\n\nUsing context clues, **gigantic** means \u2014",
+  "choices": [
+   "Very fast",
+   "Very loud",
+   "Very big",
+   "Very small"
+  ],
+  "correct": "Very big"
+ },
+ {
+  "id": "L.3.4a-E4",
+  "standard": "L.3.4a",
+  "prompt": "Maria was thrilled and jumped for joy when she won the race.\n\nUsing context clues, **thrilled** means \u2014",
+  "choices": [
+   "Very cold",
+   "Very sad",
+   "Very sleepy",
+   "Very excited"
+  ],
+  "correct": "Very excited"
+ },
+ {
+  "id": "L.3.4a-E5",
+  "standard": "L.3.4a",
+  "prompt": "The old bridge was fragile, so it broke easily when the truck drove over it.\n\nUsing context clues, **fragile** means \u2014",
+  "choices": [
+   "Easily broken",
+   "Very shiny",
+   "Very strong",
+   "Very long"
+  ],
+  "correct": "Easily broken"
+ },
+ {
+  "id": "L.3.4b-Q3",
+  "standard": "L.3.4b",
+  "prompt": "The word **impossible** means \u2014",
+  "choices": [
+   "Very possible",
+   "Possible again",
+   "Not possible",
+   "Possible before"
+  ],
+  "correct": "Not possible"
+ },
+ {
+  "id": "L.3.4b-H1",
+  "standard": "L.3.4b",
+  "prompt": "After the storm knocked it down, the town had to reconstruct the old pier board by board. In this sentence, reconstruct means to \u2014",
+  "choices": [
+   "build it again",
+   "look at it closely",
+   "take it apart",
+   "paint it a new color"
+  ],
+  "correct": "build it again"
+ },
+ {
+  "id": "L.3.4b-H2",
+  "standard": "L.3.4b",
+  "prompt": "Grandpa's directions were so ______ that we drove in circles and got lost twice. Which word fits the blank BEST?",
+  "choices": [
+   "helping",
+   "unhelpful",
+   "helpless",
+   "helpful"
+  ],
+  "correct": "unhelpful"
+ },
+ {
+  "id": "L.3.4b-H3",
+  "standard": "L.3.4b",
+  "prompt": "\"You misjudged how far the puddle was, so you landed right in it,\" Mom said. Misjudged means that you judged the distance \u2014",
+  "choices": [
+   "before",
+   "very carefully",
+   "wrongly",
+   "again"
+  ],
+  "correct": "wrongly"
+ },
+ {
+  "id": "L.3.4b-H4",
+  "standard": "L.3.4b",
+  "prompt": "Grandma held up the old locket and whispered, \"This necklace is priceless.\" In this sentence, priceless means the necklace is \u2014",
+  "choices": [
+   "missing its price tag",
+   "worth nothing at all",
+   "cheap and easy to buy",
+   "worth so much you can't put a price on it"
+  ],
+  "correct": "worth so much you can't put a price on it"
+ },
+ {
+  "id": "L.3.4b-H5",
+  "standard": "L.3.4b",
+  "prompt": "Both words are built from 'view.' Which word means to look at a movie BEFORE it is shown to everyone else?",
+  "choices": [
+   "preview",
+   "viewer",
+   "review",
+   "viewing"
+  ],
+  "correct": "preview"
+ },
+ {
+  "id": "L.3.4b-E1",
+  "standard": "L.3.4b",
+  "prompt": "The prefix **re-** means \"again.\" So the word **replay** means to \u2014",
+  "choices": [
+   "Eat lunch",
+   "Play again",
+   "Run fast",
+   "Stop playing"
+  ],
+  "correct": "Play again"
+ },
+ {
+  "id": "L.3.4b-E2",
+  "standard": "L.3.4b",
+  "prompt": "The prefix **un-** means \"not.\" So the word **unhappy** means \u2014",
+  "choices": [
+   "Very fast",
+   "Happy again",
+   "Not happy",
+   "A big dog"
+  ],
+  "correct": "Not happy"
+ },
+ {
+  "id": "L.3.4b-E3",
+  "standard": "L.3.4b",
+  "prompt": "The suffix **-ful** means \"full of.\" So the word **helpful** means \u2014",
+  "choices": [
+   "Very cold",
+   "Without help",
+   "A kind of hat",
+   "Full of help"
+  ],
+  "correct": "Full of help"
+ },
+ {
+  "id": "L.3.4b-E4",
+  "standard": "L.3.4b",
+  "prompt": "The prefix **un-** means \"not.\" So the word **unlock** means to \u2014",
+  "choices": [
+   "Not lock (open it)",
+   "Jump high",
+   "Sing a song",
+   "Bake a cake"
+  ],
+  "correct": "Not lock (open it)"
+ },
+ {
+  "id": "L.3.4b-E5",
+  "standard": "L.3.4b",
+  "prompt": "The suffix **-less** means \"without.\" So the word **fearless** means \u2014",
+  "choices": [
+   "Full of water",
+   "Without fear",
+   "Very tired",
+   "A green plant"
+  ],
+  "correct": "Without fear"
+ },
+ {
+  "id": "L.3.4c-Q3",
+  "standard": "L.3.4c",
+  "prompt": "You know **graph** means \"to write or draw.\" Which word is related to writing or drawing?",
+  "choices": [
+   "Grammar",
+   "Giraffe",
+   "Photograph",
+   "Grape"
+  ],
+  "correct": "Photograph"
+ },
+ {
+  "id": "L.3.4c-H1",
+  "standard": "L.3.4c",
+  "prompt": "You know the root **port** means \"to carry.\" Read this sentence: \"The campers brought a portable stove they could carry from site to site.\" Using the root, what does **portable** most likely mean?",
+  "choices": [
+   "Able to be carried",
+   "Made out of metal",
+   "Used for cooking food",
+   "Too heavy to lift"
+  ],
+  "correct": "Able to be carried"
+ },
+ {
+  "id": "L.3.4c-H2",
+  "standard": "L.3.4c",
+  "prompt": "The root **aud** means \"to hear.\" Read: \"Hundreds of people packed the auditorium for the concert.\" Using the root, an **auditorium** is a place built mainly for people to \u2014",
+  "choices": [
+   "grow flowers and plants",
+   "hear a performance",
+   "look at paintings",
+   "borrow and store books"
+  ],
+  "correct": "hear a performance"
+ },
+ {
+  "id": "L.3.4c-H3",
+  "standard": "L.3.4c",
+  "prompt": "The root **dict** means \"to speak or say.\" Which word is built from this root and names a person who tells others what to do by giving spoken commands?",
+  "choices": [
+   "predictor",
+   "diner",
+   "dictator",
+   "director"
+  ],
+  "correct": "dictator"
+ },
+ {
+  "id": "L.3.4c-H4",
+  "standard": "L.3.4c",
+  "prompt": "You know **struct** means \"to build.\" Read: \"The instructions showed us how to put the bookshelf together.\" The word **instructions** shares this root, so instructions most likely means information that helps you \u2014",
+  "choices": [
+   "clean up a messy room",
+   "take something apart",
+   "find your way to a place",
+   "build or put something together"
+  ],
+  "correct": "build or put something together"
+ },
+ {
+  "id": "L.3.4c-H5",
+  "standard": "L.3.4c",
+  "prompt": "The root **spect** means \"to look or watch.\" Read: \"Grandpa put on his spectacles so he could read the tiny print.\" Using the root and the sentence, **spectacles** are \u2014",
+  "choices": [
+   "glasses you look through",
+   "shoes you walk in",
+   "tools you listen with",
+   "gloves that keep hands warm"
+  ],
+  "correct": "glasses you look through"
+ },
+ {
+  "id": "L.3.4c-E1",
+  "standard": "L.3.4c",
+  "prompt": "You know that **bake** means \"to cook in an oven.\" Which word uses the root **bake**?",
+  "choices": [
+   "River",
+   "Baker",
+   "Happy",
+   "Table"
+  ],
+  "correct": "Baker"
+ },
+ {
+  "id": "L.3.4c-E2",
+  "standard": "L.3.4c",
+  "prompt": "You know that **play** means \"to have fun with a game.\" Which word uses the root **play**?",
+  "choices": [
+   "Winter",
+   "Cloud",
+   "Playful",
+   "Bottle"
+  ],
+  "correct": "Playful"
+ },
+ {
+  "id": "L.3.4c-E3",
+  "standard": "L.3.4c",
+  "prompt": "You know that **help** means \"to give aid.\" Which word uses the root **help**?",
+  "choices": [
+   "Ocean",
+   "Truck",
+   "Purple",
+   "Helper"
+  ],
+  "correct": "Helper"
+ },
+ {
+  "id": "L.3.4c-E4",
+  "standard": "L.3.4c",
+  "prompt": "You know that **farm** means \"land where crops grow.\" Which word uses the root **farm**?",
+  "choices": [
+   "Farmer",
+   "Jump",
+   "Yellow",
+   "Pencil"
+  ],
+  "correct": "Farmer"
+ },
+ {
+  "id": "L.3.4c-E5",
+  "standard": "L.3.4c",
+  "prompt": "You know that **paint** means \"to put color on something.\" Which word uses the root **paint**?",
+  "choices": [
+   "Dinner",
+   "Painting",
+   "Mountain",
+   "Silver"
+  ],
+  "correct": "Painting"
+ },
+ {
+  "id": "L.3.4d-Q1",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary entry for **bark** shows two definitions: 1. The outer covering of a tree. 2. The sound a dog makes. How do you know which definition fits?\n\n\"The bark of the old oak tree was rough and gray.\"",
+  "choices": [
+   "Use definition 1",
+   "Use definition 2",
+   "Both definitions fit",
+   "Neither fits"
+  ],
+  "correct": "Use definition 1"
+ },
+ {
+  "id": "L.3.4d-H1",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary entry for **current** lists these meanings:\n1. happening right now\n2. a steady flow of water or air\n3. a flow of electric charge\n4. the newest or most up-to-date thing\n\nSentence: \"The lifeguard warned us that a strong current was pulling swimmers away from the shore.\" Which meaning fits this sentence?",
+  "choices": [
+   "A steady flow of water or air",
+   "The newest or most up-to-date thing",
+   "Happening right now",
+   "A flow of electric charge"
+  ],
+  "correct": "A steady flow of water or air"
+ },
+ {
+  "id": "L.3.4d-H2",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary entry for **wind** shows two pronunciations:\n- **wind** (rhymes with 'pinned'): moving air outdoors\n- **wind** (rhymes with 'find'): to turn or tighten something by twisting it\n\nSentence: \"Grandpa has to wind his old watch every morning so it keeps the right time.\" Which meaning fits?",
+  "choices": [
+   "To lose your breath after running",
+   "To turn or tighten something by twisting it",
+   "Moving air outdoors",
+   "To follow a curving path, the way a river bends"
+  ],
+  "correct": "To turn or tighten something by twisting it"
+ },
+ {
+  "id": "L.3.4d-H3",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary page has the guide words **trap** and **tray** printed at the top. Which one of these words would you find on that page?",
+  "choices": [
+   "treat",
+   "trip",
+   "travel",
+   "train"
+  ],
+  "correct": "travel"
+ },
+ {
+  "id": "L.3.4d-H4",
+  "standard": "L.3.4d",
+  "prompt": "A science glossary gives these entries:\n- **transparent**: clear; light passes straight through so you can see objects on the other side\n- **translucent**: lets some light through, but you cannot see clear shapes\n- **opaque**: lets no light through at all\n\nSentence: \"The frosted glass in the front door is ___: sunlight glows softly through it, but you cannot tell who is standing outside.\" Which word belongs in the blank?",
+  "choices": [
+   "reflective",
+   "transparent",
+   "opaque",
+   "translucent"
+  ],
+  "correct": "translucent"
+ },
+ {
+  "id": "L.3.4d-H5",
+  "standard": "L.3.4d",
+  "prompt": "A dictionary entry for **point** lists these meanings:\n1. the sharp end of something\n2. the main idea a person is trying to make\n3. a unit used to keep score in a game\n4. a particular moment or spot in time\n\nSentence: \"With three seconds left on the clock, Maya sank the basket that gave her team the winning point.\" Which meaning fits?",
+  "choices": [
+   "A unit used to keep score in a game",
+   "The main idea a person is trying to make",
+   "A particular moment or spot in time",
+   "The sharp end of something"
+  ],
+  "correct": "A unit used to keep score in a game"
+ }
+]

@@ -1,0 +1,642 @@
+[
+  {
+    "std": "RL.K.5",
+    "fixes": [
+      {
+        "old": "Did you know there are different kinds of books? /  Some tell stories and some have poems!",
+        "new": "Kinds of books"
+      },
+      {
+        "old": "Once upon a time, a frog found a crown.",
+        "new": "Storybook"
+      },
+      {
+        "old": "Roses are red, violets are blue.",
+        "new": "Poem"
+      }
+    ]
+  },
+  {
+    "std": "RI.K.3",
+    "fixes": [
+      {
+        "old": "The sun is hot. Plants need the sun to grow.",
+        "new": "Sun \u2192 plants grow"
+      },
+      {
+        "old": "Then caterpillars turn into butterflies!",
+        "new": "Then: butterflies"
+      },
+      {
+        "old": "There are a few special words that tell us how ideas connect.Each one tells you something different!",
+        "new": "Special connecting words"
+      },
+      {
+        "old": "because.Tells you WHY!",
+        "new": "because \u2192 WHY"
+      },
+      {
+        "old": "so.Tells you WHAT HAPPENED!",
+        "new": "so \u2192 WHAT HAPPENED"
+      },
+      {
+        "old": "then.Tells you WHAT COMES NEXT!",
+        "new": "then \u2192 WHAT NEXT"
+      },
+      {
+        "old": "You're a connection master!",
+        "new": "Connection master!"
+      }
+    ]
+  },
+  {
+    "std": "RI.K.5",
+    "fixes": [
+      {
+        "old": "The front cover is the very first thing you see. It has the title and usually a picture!",
+        "new": "Front cover: first thing"
+      },
+      {
+        "old": "The title tells you what the book is about. It's like the book's name!",
+        "new": "Title: book's name"
+      },
+      {
+        "old": "The back cover is on the other side. It might tell you a little bit about the book.",
+        "new": "Back cover: other side"
+      },
+      {
+        "old": "The title page is inside the book. It shows the title, author, and illustrator!",
+        "new": "Title page: inside"
+      }
+    ]
+  },
+  {
+    "std": "RI.K.6",
+    "fixes": [
+      {
+        "old": "Have you ever wondered who makes the fact books you read? Let's find out!",
+        "new": "Who makes books?"
+      },
+      {
+        "old": "Every fact book has two important people \u2014 the author and the illustrator!",
+        "new": "Author and illustrator"
+      },
+      {
+        "old": "The author writes the WORDS. They chose all the facts for you!",
+        "new": "Author: words"
+      },
+      {
+        "old": "The illustrator draws the PICTURES. They show you what the words say!",
+        "new": "Illustrator: pictures"
+      },
+      {
+        "old": "Together, they teach you everything in the book!",
+        "new": "Together: the book"
+      },
+      {
+        "old": "When you read a fact book,ask yourself three questions!",
+        "new": "Ask three questions"
+      },
+      {
+        "old": "First ask: Who wrote it?That tells you the AUTHOR!",
+        "new": "Who wrote it? \u2192 AUTHOR"
+      },
+      {
+        "old": "Next ask: Who drew the pictures?That tells you the ILLUSTRATOR!",
+        "new": "Who drew it? \u2192 ILLUSTRATOR"
+      },
+      {
+        "old": "Last ask: What are they teaching me?That's the MESSAGE!",
+        "new": "What teaching? \u2192 MESSAGE"
+      },
+      {
+        "old": "Those three questionshelp you understandany fact book!",
+        "new": "Three questions help"
+      }
+    ]
+  },
+  {
+    "std": "RI.K.7",
+    "fixes": [
+      {
+        "old": "This picture shows how a frog grows. First an egg, then a tadpole, then a froglet, then a frog!",
+        "new": "egg \u2192 tadpole \u2192 froglet \u2192 frog"
+      },
+      {
+        "old": "When you read a fact book, ask yourself  / two questions /  about every picture!",
+        "new": "Ask two questions"
+      },
+      {
+        "old": "First ask: What do I see? That shows you what things LOOK like!",
+        "new": "What do I see? \u2192 LOOK"
+      },
+      {
+        "old": "Then ask: What is it teaching me? That shows you what the words MEAN!",
+        "new": "What teaching? \u2192 MEAN"
+      },
+      {
+        "old": "Those two questions help you learn from every picture!",
+        "new": "Two questions help"
+      }
+    ]
+  },
+  {
+    "std": "K.L.1",
+    "fixes": [
+      {
+        "old": "Did you know that words have different jobs? / Some words name things / \u2014 like 'cat' or 'ball.'",
+        "new": "Words have jobs"
+      },
+      {
+        "old": "These are called nouns!A noun names a person, place, or thing.",
+        "new": "Nouns name things"
+      },
+      {
+        "old": "Other words show action \u2014 like 'run,''jump,'or 'eat.' These are verbs!",
+        "new": "Verbs show action"
+      },
+      {
+        "old": "Nouns and verbs work together to make sentences!Like: The cat runs.",
+        "new": "The cat runs"
+      }
+    ]
+  },
+  {
+    "std": "K.L.5",
+    "fixes": [
+      {
+        "old": "Opposites are words that mean the complete reverse. Big and small. Hot and cold. Up and down!",
+        "new": "Opposites: big/small"
+      },
+      {
+        "old": "They're like two sides of a coin!",
+        "new": "Two sides of a coin"
+      },
+      {
+        "old": "Words can also belong to groups. /  'Dog,' 'cat,' and 'fish' are all animals!",
+        "new": "Groups: all animals"
+      },
+      {
+        "old": "And some words mean almost the same thing! /  'Big' and 'large' are alike!",
+        "new": "Big = large"
+      }
+    ]
+  },
+  {
+    "std": "K.L.6",
+    "fixes": [
+      {
+        "old": "That building is enormous!",
+        "new": "enormous!"
+      },
+      {
+        "old": "I was delighted to see my friend!",
+        "new": "delighted!"
+      }
+    ]
+  },
+  {
+    "std": "RI.1.2",
+    "fixes": [
+      {
+        "old": "Apples can be red, green, or yellow. They grow on trees. Apples are a healthy snack.",
+        "new": "All about apples"
+      },
+      {
+        "old": "Firefighters wear special gear. They drive fire trucks. They put out fires and help people.",
+        "new": "All about firefighters"
+      }
+    ]
+  },
+  {
+    "std": "RI.1.3",
+    "fixes": [
+      {
+        "old": "Happens because of it",
+        "new": "One causes another"
+      },
+      {
+        "old": "It rained all day. The next morning, puddles were everywhere.",
+        "new": "Rain, then puddles"
+      },
+      {
+        "old": "Seeds need water and sunlight to grow.",
+        "new": "Seeds need water + sun"
+      },
+      {
+        "old": "A farmer waters the seeds every day.",
+        "new": "Farmer waters daily"
+      },
+      {
+        "old": "Soon, small plants appear!",
+        "new": "Plants appear!"
+      }
+    ]
+  },
+  {
+    "std": "RL.2.3",
+    "fixes": [
+      {
+        "old": "Sam broke his favorite toy. He was heartbroken.",
+        "new": "Sam: heartbroken"
+      },
+      {
+        "old": "Then his friend fixed it. He was overjoyed!",
+        "new": "Fixed \u2192 overjoyed"
+      },
+      {
+        "old": "Maya had a huge pile of homework. She did not give up.",
+        "new": "Maya didn't give up"
+      }
+    ]
+  },
+  {
+    "std": "RL.2.9",
+    "fixes": [
+      {
+        "old": "What is the same? / The main characters. / The big problem.",
+        "new": "Same: characters, problem"
+      },
+      {
+        "old": "What is different?The setting.The small parts.The ending sometimes.",
+        "new": "Different: setting, details, ending"
+      },
+      {
+        "old": "Both ways can be fun / in their own way!",
+        "new": "Both can be fun"
+      }
+    ]
+  },
+  {
+    "std": "RI.2.1",
+    "fixes": [
+      {
+        "old": "Seal pups are born on ice. Their moms teach them to swim.",
+        "new": "Pups born on ice"
+      },
+      {
+        "old": "Who? / Seal pups! Where?",
+        "new": "Who? \u2192 Seal pups!"
+      },
+      {
+        "old": "Who teaches? / Their moms. Why?",
+        "new": "Who teaches? \u2192 Moms"
+      }
+    ]
+  },
+  {
+    "std": "RI.2.3",
+    "fixes": [
+      {
+        "old": "First, a butterfly lays an egg.",
+        "new": "First: egg"
+      },
+      {
+        "old": "Next / A ca / Terpillar hatches",
+        "new": "Next: caterpillar hatches"
+      },
+      {
+        "old": "Then it forms a cocoon.",
+        "new": "Then: cocoon"
+      },
+      {
+        "old": "Finally, a butterfly comes out!",
+        "new": "Finally: butterfly"
+      },
+      {
+        "old": "Like first / Next / Then",
+        "new": "First / Next / Then"
+      }
+    ]
+  },
+  {
+    "std": "RI.2.4",
+    "fixes": [
+      {
+        "old": "The famished puppy ate every last bite.",
+        "new": "Famished puppy ate everything"
+      },
+      {
+        "old": "What's the clue? / Ate every last bite.",
+        "new": "Clue: ate every bite"
+      },
+      {
+        "old": "The thirsty camel gulped a lot of water.",
+        "new": "Thirsty camel gulped water"
+      }
+    ]
+  },
+  {
+    "std": "RI.2.9",
+    "fixes": [
+      {
+        "old": "Here is a  / helpful trick.",
+        "new": "Helpful trick"
+      },
+      {
+        "old": "Make a two-column chart. Same on one, different on the other.",
+        "new": "Two-column chart"
+      },
+      {
+        "old": "Now you are ready to  / compare  / two fact books!",
+        "new": "Ready to compare"
+      }
+    ]
+  },
+  {
+    "std": "L.2.4a",
+    "fixes": [
+      {
+        "old": "Hello / S / Uper readers",
+        "new": "Word detectives"
+      },
+      {
+        "old": "The grumpy kid frowned and crossed his arms.",
+        "new": "Grumpy kid frowned"
+      },
+      {
+        "old": "She stretched her arm up to reach the high shelf.",
+        "new": "Stretched to reach"
+      }
+    ]
+  },
+  {
+    "std": "L.2.4d",
+    "fixes": [
+      {
+        "old": "sun + flower = Sunflower. A flower that loves the sun.",
+        "new": "sun + flower = sunflower"
+      },
+      {
+        "old": "tooth + brush = Toothbrush. A brush for your teeth.",
+        "new": "tooth + brush = toothbrush"
+      }
+    ]
+  },
+  {
+    "std": "RL.3.6",
+    "fixes": [
+      {
+        "old": "Rain fell all day. What a wonderful, cozy day, the narrator said.",
+        "new": "Rain fell. Cozy day!"
+      }
+    ]
+  },
+  {
+    "std": "RI.3.10",
+    "fixes": [
+      {
+        "old": "Bees live in hives. They make sweet honey.",
+        "new": "Bees live in hives"
+      },
+      {
+        "old": "Main idea: what text is about",
+        "new": "Main idea"
+      }
+    ]
+  },
+  {
+    "std": "RF.3.3c",
+    "fixes": [
+      {
+        "old": "Clap each syllable.Re-mem-ber = 3 clapsThree claps. Three syllables!",
+        "new": "Re-mem-ber = 3 claps"
+      },
+      {
+        "old": "Split consonants or before single",
+        "new": "Split between consonants"
+      }
+    ]
+  },
+  {
+    "std": "L.3.4",
+    "fixes": [
+      {
+        "old": "Clues are secret messages",
+        "new": "Clues = secret messages"
+      },
+      {
+        "old": "The room was gloomy. No light came in, and Sam felt sad.",
+        "new": "Room gloomy, Sam sad"
+      }
+    ]
+  },
+  {
+    "std": "L.3.4a",
+    "fixes": [
+      {
+        "old": "Hello / W / Ord detectives",
+        "new": "Word detectives"
+      },
+      {
+        "old": "Clues help understand words",
+        "new": "Clues help us"
+      },
+      {
+        "old": "He felt elated. He was super happy.",
+        "new": "elated = super happy"
+      },
+      {
+        "old": "Mammals, like cats and dogs, have fur.",
+        "new": "Mammals have fur"
+      },
+      {
+        "old": "Look for words like such as",
+        "new": "Look for: such as"
+      }
+    ]
+  },
+  {
+    "std": "L.3.5a",
+    "fixes": [
+      {
+        "old": "Literal: exactly what it says",
+        "new": "Literal: exact words"
+      },
+      {
+        "old": "It was raining cats and dogs all afternoon.",
+        "new": "Raining cats and dogs"
+      }
+    ]
+  },
+  {
+    "std": "L.3.5b",
+    "fixes": [
+      {
+        "old": "Cozy means warm and snug.",
+        "new": "Cozy: warm and snug"
+      },
+      {
+        "old": "I knew my friend was coming because I saw her car, but I only believed she would bring cookies because I wasn't certain.",
+        "new": "Knew vs. believed"
+      }
+    ]
+  },
+  {
+    "std": "RL.4.5",
+    "fixes": [
+      {
+        "old": "Drama / A / Nd prose",
+        "new": "Drama / Prose"
+      }
+    ]
+  },
+  {
+    "std": "RI.4.2",
+    "fixes": [
+      {
+        "old": "Main idea is the umbrella.",
+        "new": "Main idea = umbrella"
+      },
+      {
+        "old": "Details are the rain underneath.",
+        "new": "Details = rain"
+      },
+      {
+        "old": "Bees collect nectar. They make honey. They help flowers grow. Bees are busy helpers.",
+        "new": "Bees are busy helpers"
+      }
+    ]
+  },
+  {
+    "std": "RI.4.3",
+    "fixes": [
+      {
+        "old": "Texts explain how things work",
+        "new": "How things work"
+      },
+      {
+        "old": "Procedural texts: sequence steps",
+        "new": "Sequence of steps"
+      },
+      {
+        "old": "First a seed is planted.",
+        "new": "Seed is planted"
+      },
+      {
+        "old": "Then it sprouts.",
+        "new": "It sprouts"
+      },
+      {
+        "old": "Finally it becomes a plant.",
+        "new": "Becomes a plant"
+      }
+    ]
+  },
+  {
+    "std": "RI.4.7",
+    "fixes": [
+      {
+        "old": "A chart shows  / numbers.",
+        "new": "Chart: numbers"
+      },
+      {
+        "old": "A photo shows something  / real.",
+        "new": "Photo: real"
+      },
+      {
+        "old": "Words  / explain.",
+        "new": "Words: explain"
+      },
+      {
+        "old": "Details: text / Images / Charts",
+        "new": "Text / Images / Charts"
+      },
+      {
+        "old": "When researching / Use / Multiple sources",
+        "new": "Use multiple sources"
+      }
+    ]
+  },
+  {
+    "std": "RI.4.8",
+    "fixes": [
+      {
+        "old": "A reason is the why",
+        "new": "Reason = why"
+      },
+      {
+        "old": "...behind the /  point.",
+        "new": "Behind the point"
+      },
+      {
+        "old": "Highlight reasons, evidence",
+        "new": "Highlight both colors"
+      }
+    ]
+  },
+  {
+    "std": "RI.4.10",
+    "fixes": [
+      {
+        "old": "Butterflies start as tiny eggs, hatch into caterpillars, then form a chrysalis before becoming beautiful butterflies.",
+        "new": "egg \u2192 caterpillar \u2192 butterfly"
+      }
+    ]
+  },
+  {
+    "std": "RF.4.3a",
+    "fixes": [
+      {
+        "old": "Long words / Look / For",
+        "new": "Look in long words"
+      }
+    ]
+  },
+  {
+    "std": "RF.4.4",
+    "fixes": [
+      {
+        "old": "Smooth reading helps you understand more deeply. Smooth = deeper",
+        "new": "Smooth = deeper"
+      }
+    ]
+  },
+  {
+    "std": "L.4.4",
+    "fixes": [
+      {
+        "old": "Hello / W / Ord detectives",
+        "new": "Word detectives"
+      }
+    ]
+  },
+  {
+    "std": "L.2.1",
+    "fixes": [
+      {
+        "old": "Second graders learn more  / sentence skills.",
+        "new": "More sentence skills"
+      },
+      {
+        "old": "Collective nouns / , irregular verbs / , and tricky pronouns.",
+        "new": "Nouns, verbs, pronouns"
+      },
+      {
+        "old": "Yesterday I ate. I ran. I flew.",
+        "new": "ate, ran, flew"
+      }
+    ]
+  },
+  {
+    "std": "L.3.1",
+    "fixes": [
+      {
+        "old": "Third graders learn more grammar moves.",
+        "new": "More grammar moves"
+      },
+      {
+        "old": "Verb tenses, subject agreement, /  and comparing things.",
+        "new": "Tenses, agreement, comparing"
+      }
+    ]
+  },
+  {
+    "std": "L.4.2",
+    "fixes": []
+  },
+  {
+    "std": "RF.3.4c",
+    "fixes": []
+  }
+]

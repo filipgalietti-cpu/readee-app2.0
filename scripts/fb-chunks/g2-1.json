@@ -1,0 +1,542 @@
+[
+ {
+  "id": "RL.2.5-H2",
+  "standard": "RL.2.5",
+  "prompt": "Read the story:\n\"Nina could not find her library book anywhere. She looked under her bed and inside her backpack. Then she saw that her little brother had used it to build a block tower. Nina laughed and tucked the book safely in her bag.\"\nWhich sentence ends the story by finally settling the problem from the beginning?",
+  "choices": [
+   "Nina could not find her library book anywhere.",
+   "Nina laughed and tucked the book safely in her bag.",
+   "Then she saw that her little brother had used it to build a block tower.",
+   "She looked under her bed and inside her backpack."
+  ],
+  "correct": "Nina laughed and tucked the book safely in her bag."
+ },
+ {
+  "id": "RL.2.5-H3",
+  "standard": "RL.2.5",
+  "prompt": "Read the story. It is missing its last sentence:\n\"Theo wanted to ride the big kids' roller coaster, but he was always too short. All summer he measured himself against the door frame. On his birthday, he stood next to the ride's sign and finally reached the line. ______\"\nWhich sentence would best END this story?",
+  "choices": [
+   "The roller coaster was painted a bright, shiny red.",
+   "Theo went back to measure himself against the door frame again.",
+   "Theo climbed aboard the roller coaster at last, grinning from ear to ear.",
+   "Theo had always been afraid of high places."
+  ],
+  "correct": "Theo climbed aboard the roller coaster at last, grinning from ear to ear."
+ },
+ {
+  "id": "RL.2.5-H4",
+  "standard": "RL.2.5",
+  "prompt": "Read the story:\n\"One rainy morning, a lost kitten sat shivering on the Ruiz family's porch. Mr. Ruiz wrapped it in a warm towel right away. The kitten purred and fell fast asleep. The family named her Rainy and kept her forever.\"\nWhat is the MAIN job of the first sentence?",
+  "choices": [
+   "It explains where the kitten got the name Rainy.",
+   "It shows the kitten's problem being solved.",
+   "It tells the reader how the story ends.",
+   "It introduces a character and the problem the story will solve."
+  ],
+  "correct": "It introduces a character and the problem the story will solve."
+ },
+ {
+  "id": "RL.2.5-H5",
+  "standard": "RL.2.5",
+  "prompt": "Read the story:\n\"Grandpa gave Lea a tiny seed and promised it would surprise her. Lea planted it and watered it every single day. Weeks went by with nothing but plain brown dirt. Then one bright morning, a huge sunflower had bloomed.\"\nWhy does the sentence \"Weeks went by with nothing but plain brown dirt\" belong in the MIDDLE of the story instead of at the end?",
+  "choices": [
+   "It builds up the problem but does not solve it yet.",
+   "It tells the reader how the whole story turns out.",
+   "It introduces Lea and Grandpa for the very first time.",
+   "It describes the setting before anything happens."
+  ],
+  "correct": "It builds up the problem but does not solve it yet."
+ },
+ {
+  "id": "RL.2.5-E1",
+  "standard": "RL.2.5",
+  "prompt": "Read the story. \"Ben got a new puppy named Spot. Spot chewed up a shoe and ran in the yard. At the end of the day, Ben and Spot fell asleep together.\" What happens at the BEGINNING of the story?",
+  "choices": [
+   "Spot ran in the yard",
+   "Ben got a new puppy named Spot",
+   "Spot chewed a shoe",
+   "Ben and Spot fell asleep"
+  ],
+  "correct": "Ben got a new puppy named Spot"
+ },
+ {
+  "id": "RL.2.5-E2",
+  "standard": "RL.2.5",
+  "prompt": "Read the story. \"Mia lost her red hat. She looked all over the house. Finally, she found it under her bed.\" What happens at the END of the story?",
+  "choices": [
+   "Mia lost her red hat",
+   "Mia bought a new house",
+   "She found it under her bed",
+   "She looked all over the house"
+  ],
+  "correct": "She found it under her bed"
+ },
+ {
+  "id": "RL.2.5-E3",
+  "standard": "RL.2.5",
+  "prompt": "In most stories, what does the BEGINNING do?",
+  "choices": [
+   "It is the back cover of the book",
+   "It has no words at all",
+   "It ends the story",
+   "It introduces the characters and starts the story"
+  ],
+  "correct": "It introduces the characters and starts the story"
+ },
+ {
+  "id": "RL.2.5-E4",
+  "standard": "RL.2.5",
+  "prompt": "Read the story. \"Sam planted a seed. He gave it water every day. After many days, a big flower grew.\" Which sentence is the BEGINNING?",
+  "choices": [
+   "Sam planted a seed",
+   "Sam went to the moon",
+   "He gave it water every day",
+   "A big flower grew"
+  ],
+  "correct": "Sam planted a seed"
+ },
+ {
+  "id": "RL.2.5-E5",
+  "standard": "RL.2.5",
+  "prompt": "A story starts by telling you about a boy and his kite. Then the kite flies away, and at the end the boy gets it back. Which part is the ENDING?",
+  "choices": [
+   "The kite flies away",
+   "The boy gets his kite back",
+   "The boy eats breakfast",
+   "The story tells about a boy and his kite"
+  ],
+  "correct": "The boy gets his kite back"
+ },
+ {
+  "id": "RL.2.6-Q1",
+  "standard": "RL.2.6",
+  "prompt": "Ana thought the roller coaster was amazing and wanted to ride again. Her brother Carlos shook his head and said, \"No way, that was too scary!\"\n\nHow are Ana's and Carlos's feelings different?",
+  "choices": [
+   "Both were scared",
+   "Ana loved it but Carlos was scared",
+   "Carlos loved it but Ana didn't",
+   "Both wanted to ride again"
+  ],
+  "correct": "Ana loved it but Carlos was scared"
+ },
+ {
+  "id": "RL.2.6-Q2",
+  "standard": "RL.2.6",
+  "prompt": "Mom said, \"We should get a cat.\" Dad said, \"I think a dog would be better.\" Jayden said, \"Can we get both?\"\n\nWho has a different point of view from Mom?",
+  "choices": [
+   "Only Dad",
+   "Nobody",
+   "Both Dad and Jayden",
+   "Only Jayden"
+  ],
+  "correct": "Both Dad and Jayden"
+ },
+ {
+  "id": "RL.2.6-Q3",
+  "standard": "RL.2.6",
+  "prompt": "The farmer was happy when it rained because his crops needed water. The children were sad because they couldn't play outside.\n\nWhy do the farmer and the children feel differently about the rain?",
+  "choices": [
+   "The farmer likes being wet",
+   "They live in different places",
+   "The children don't like water",
+   "Rain helps the farmer's crops but stops the children's play"
+  ],
+  "correct": "Rain helps the farmer's crops but stops the children's play"
+ },
+ {
+  "id": "RL.2.6-Q4",
+  "standard": "RL.2.6",
+  "prompt": "Ella wanted to stay up late to watch a movie. Her mom said it was a school night and bedtime was 8 o'clock.\n\nHow is Ella's point of view different from her mom's?",
+  "choices": [
+   "Ella wants to stay up but mom wants her to go to bed",
+   "Ella wants to sleep but mom says no",
+   "They both agree on bedtime",
+   "Mom wants to watch the movie too"
+  ],
+  "correct": "Ella wants to stay up but mom wants her to go to bed"
+ },
+ {
+  "id": "RL.2.6-Q5",
+  "standard": "RL.2.6",
+  "prompt": "In the story, the Big Bad Wolf said, \"I just wanted to borrow some sugar!\" The Three Little Pigs said, \"He tried to blow our houses down!\"\n\nHow are the points of view different?",
+  "choices": [
+   "They agree on what happened",
+   "The wolf says he was friendly but the pigs say he was dangerous",
+   "The pigs like the wolf",
+   "The wolf admits he was bad"
+  ],
+  "correct": "The wolf says he was friendly but the pigs say he was dangerous"
+ },
+ {
+  "id": "RL.2.6-H1",
+  "standard": "RL.2.6",
+  "prompt": "It started to rain. Maya grabbed her boots and ran outside to jump in the puddles. Her sister Nina sighed, curled up on the couch, and pulled a blanket over her legs.\n\nHow do Maya and Nina feel differently about the rain?",
+  "choices": [
+   "Maya is excited about the rain, but Nina would rather stay cozy inside",
+   "Both girls wish the rain would stop soon",
+   "Both girls are excited to splash in the puddles",
+   "Nina wants to play outside, but Maya wants to nap"
+  ],
+  "correct": "Maya is excited about the rain, but Nina would rather stay cozy inside"
+ },
+ {
+  "id": "RL.2.6-H2",
+  "standard": "RL.2.6",
+  "prompt": "The class was choosing a pet. \"Let's get a turtle,\" said Sam. \"They are quiet, and I love just watching them.\" \"Yes, a turtle!\" said Priya. \"We can each take turns feeding it every single day.\"\n\nSam and Priya both want a turtle, but how are their points of view different?",
+  "choices": [
+   "Neither one really wants a turtle",
+   "Sam wants a quiet pet to watch, but Priya wants a pet to take care of",
+   "Both of them want a pet they can feed every day",
+   "Sam wants to feed the turtle, but Priya wants to watch it"
+  ],
+  "correct": "Sam wants a quiet pet to watch, but Priya wants a pet to take care of"
+ },
+ {
+  "id": "RL.2.6-H3",
+  "standard": "RL.2.6",
+  "prompt": "At the playground, Leo climbed to the top of the tall slide and shouted, \"This is the best!\" Behind him, Theo held the rail tight, looked down, and whispered, \"Maybe I'll just walk back down the steps.\"\n\nHow is Theo's point of view about the slide different from Leo's?",
+  "choices": [
+   "Theo thinks the slide is too short and boring",
+   "Both boys are too scared to go down the slide",
+   "Theo feels nervous about the slide, while Leo feels excited",
+   "Theo thinks the slide is fun, just like Leo does"
+  ],
+  "correct": "Theo feels nervous about the slide, while Leo feels excited"
+ },
+ {
+  "id": "RL.2.6-H4",
+  "standard": "RL.2.6",
+  "prompt": "Snow fell all night. In the morning Ben ran to the window and cheered, \"Snow means no school today!\" Grandpa looked out at the long driveway, then reached for his shovel by the door. \"Going to be a lot of work,\" he said.\n\nWhich sentence best shows that Ben and Grandpa see the snow differently?",
+  "choices": [
+   "Ben grabs the shovel to help clear the driveway",
+   "Both Ben and Grandpa are happy about the snow",
+   "Grandpa is the one who is excited that school is closed",
+   "Ben thinks the snow is fun, but Grandpa thinks it means hard work"
+  ],
+  "correct": "Ben thinks the snow is fun, but Grandpa thinks it means hard work"
+ },
+ {
+  "id": "RL.2.6-H5",
+  "standard": "RL.2.6",
+  "prompt": "The friends talked about the field trip. \"I hope we go to the zoo,\" said Rosa. \"I really want to see the lions.\" Kwan shook his head. \"The science museum has way cooler stuff.\" Mia nodded at Kwan and added, \"And it won't be so hot inside there.\"\n\nWhose point of view is MOST different from the others'?",
+  "choices": [
+   "Rosa, because she wants the zoo while Kwan and Mia want the museum",
+   "Mia, because she does not agree with anyone",
+   "Kwan, because he is the only one who picks the museum",
+   "Nobody has a different point of view"
+  ],
+  "correct": "Rosa, because she wants the zoo while Kwan and Mia want the museum"
+ },
+ {
+  "id": "RL.2.7-Q1",
+  "standard": "RL.2.7",
+  "prompt": "If a story says **Tomas felt happy** and the picture shows him with a big smile and jumping, what do the words AND picture together tell you?",
+  "choices": [
+   "Tomas is pretending",
+   "Tomas is a little happy",
+   "Tomas is very happy",
+   "Tomas is sick"
+  ],
+  "correct": "Tomas is very happy"
+ },
+ {
+  "id": "RL.2.7-Q2",
+  "standard": "RL.2.7",
+  "prompt": "A story's words say: \"It was a dark night.\" The picture shows rain, lightning, and bent trees. What can you tell about the setting?",
+  "choices": [
+   "It's snowing",
+   "It's a calm evening",
+   "It's a sunny morning",
+   "There's a big storm"
+  ],
+  "correct": "There's a big storm"
+ },
+ {
+  "id": "RL.2.7-Q3",
+  "standard": "RL.2.7",
+  "prompt": "In a story, the picture shows a character named Lily sitting alone with her head down, while a big storm rages outside her window. Based on the picture, how is Lily most likely feeling?",
+  "choices": [
+   "Excited for the storm",
+   "Very happy and joyful",
+   "A little bit sad or scared",
+   "Ready to go outside and play"
+  ],
+  "correct": "A little bit sad or scared"
+ },
+ {
+  "id": "RL.2.7-Q4",
+  "standard": "RL.2.7",
+  "prompt": "A story says \"Maya walked into the room.\" The picture shows Maya with wide eyes, an open mouth, and a room full of balloons and presents. What is probably happening?",
+  "choices": [
+   "Maya is sad",
+   "Maya is at a surprise party",
+   "Maya is going to bed",
+   "Maya is at school"
+  ],
+  "correct": "Maya is at a surprise party"
+ },
+ {
+  "id": "RL.2.7-Q5",
+  "standard": "RL.2.7",
+  "prompt": "The text says: \"The old man sat on the bench.\" The picture shows him feeding pigeons with a gentle smile and a cane beside him. What do you learn from the picture that the words don't tell you?",
+  "choices": [
+   "He's an old man",
+   "He's outside",
+   "He's feeding pigeons and seems kind",
+   "He's sitting on a bench"
+  ],
+  "correct": "He's feeding pigeons and seems kind"
+ },
+ {
+  "id": "RL.2.9-Q1",
+  "standard": "RL.2.9",
+  "prompt": "In one Cinderella story, a girl wishes to go to a royal party, and a fairy godmother helps her get there. In another Cinderella story, a different girl also dreams of attending a royal party, and magic fish help her. What happens in BOTH of these Cinderella stories?",
+  "choices": [
+   "A fairy godmother helps the girl.",
+   "Magic fish help the girl.",
+   "A girl attends a royal party.",
+   "The girl finds a magic wand."
+  ],
+  "correct": "A girl attends a royal party."
+ },
+ {
+  "id": "RL.2.9-Q3",
+  "standard": "RL.2.9",
+  "prompt": "In an American version of a folktale, the hero is a cowboy. In a Japanese version, the hero is a samurai. Both heroes save their village. What is DIFFERENT?",
+  "choices": [
+   "The heroes are brave",
+   "The type of hero",
+   "Both save a village",
+   "The stories have a happy ending"
+  ],
+  "correct": "The type of hero"
+ },
+ {
+  "id": "RL.2.9-Q4",
+  "standard": "RL.2.9",
+  "prompt": "Both 'The Three Little Pigs' and 'The True Story of the 3 Little Pigs!' tell about a wolf and three pigs. What is a *big difference* about the wolf in these two stories?",
+  "choices": [
+   "In one story, the wolf only likes to eat vegetables, and in the other, he eats meat.",
+   "In one story, the wolf lives in a brick house, and in the other, he lives in a straw house.",
+   "In one story, the wolf is shown as a bad guy, but in the other, he tries to explain why he did things.",
+   "In one story, the wolf is a pet, and in the other, he is wild."
+  ],
+  "correct": "In one story, the wolf is shown as a bad guy, but in the other, he tries to explain why he did things."
+ },
+ {
+  "id": "RL.2.9-Q5",
+  "standard": "RL.2.9",
+  "prompt": "Imagine you read two different versions of the same story. In the first version, the main character is saved by a friendly helper. In the second version, the main character figures out how to escape all by themselves. When you compare these two stories, what is the most important difference about the characters' experiences?",
+  "choices": [
+   "The number of trees in the setting.",
+   "How the main character gets rescued or escapes.",
+   "The colors of the characters' clothes.",
+   "Whether the main character feels scared."
+  ],
+  "correct": "How the main character gets rescued or escapes."
+ },
+ {
+  "id": "RL.2.9-H1",
+  "standard": "RL.2.9",
+  "prompt": "In one telling of a race story, a slow snail races a fast rabbit. The rabbit stops to nibble carrots, and the snail crawls past to win. In another telling, a slow turtle races a fast deer. The deer lies down for a long nap, and the turtle keeps going to win. What is the SAME in BOTH stories?",
+  "choices": [
+   "The slow animal wins because it never stops.",
+   "The race takes place in a snowy forest.",
+   "The fast animal wins the race in the end.",
+   "The fast animal stops to eat carrots."
+  ],
+  "correct": "The slow animal wins because it never stops."
+ },
+ {
+  "id": "RL.2.9-H2",
+  "standard": "RL.2.9",
+  "prompt": "A story from a hot desert land tells of a lost boy who is carried home by a friendly camel. A story from a cold, snowy land tells the very same tale, but the boy is carried home by a friendly reindeer. Why do you think each author chose a different animal?",
+  "choices": [
+   "Because the boy in each story asked for that animal.",
+   "Because each animal fits the land where the story is told.",
+   "Because both animals are able to fly.",
+   "Because a camel runs faster than a reindeer."
+  ],
+  "correct": "Because each animal fits the land where the story is told."
+ },
+ {
+  "id": "RL.2.9-H3",
+  "standard": "RL.2.9",
+  "prompt": "In one version of a lost-shoe story, a girl named Mei runs from a party and drops a red silk slipper, and a prince finds it. In another version, a girl named Ana leaves a dance and drops a glass shoe, and a king's son finds it. What part of the story is the SAME in both?",
+  "choices": [
+   "The lost shoe is made of shiny glass.",
+   "The girl dances with the king's own son.",
+   "A girl loses a shoe and a boy finds it.",
+   "The girl who loses the shoe is named Mei."
+  ],
+  "correct": "A girl loses a shoe and a boy finds it."
+ },
+ {
+  "id": "RL.2.9-H4",
+  "standard": "RL.2.9",
+  "prompt": "One author tells of a big wolf who huffs and blows down houses while the pigs scream and run. Another author tells the same tale, but the wolf is gentle and only knocks to share a pot of warm soup, and the pigs smile and let him in. Even though the wolf is different, how are the two stories ALIKE?",
+  "choices": [
+   "Both stories end with the pigs running away.",
+   "Both stories feel scary from start to end.",
+   "Both wolves blow the little houses down.",
+   "Both stories are about a wolf coming to the pigs' houses."
+  ],
+  "correct": "Both stories are about a wolf coming to the pigs' houses."
+ },
+ {
+  "id": "RL.2.9-H5",
+  "standard": "RL.2.9",
+  "prompt": "Long ago, one group of people made up a story that the dark shapes on the moon are a rabbit resting there. Far away, another group made up a story that those same shapes are the face of a kind old man. How are these two moon stories alike?",
+  "choices": [
+   "Both stories try to explain the shapes people see on the moon.",
+   "Both stories are about the same old man's face.",
+   "Both stories say the moon is really a rabbit.",
+   "Both stories say the moon is made of soft cheese."
+  ],
+  "correct": "Both stories try to explain the shapes people see on the moon."
+ },
+ {
+  "id": "RL.2.10-Q1",
+  "standard": "RL.2.10",
+  "prompt": "The wind howled through the trees as Sophie clutched her flashlight. She had promised to walk to the mailbox alone, and she wasn't going to break her promise. With each step, the shadows seemed to dance around her.\n\nHow is Sophie feeling?",
+  "choices": [
+   "Brave but a little scared",
+   "Bored and tired",
+   "Angry at someone",
+   "Excited and happy"
+  ],
+  "correct": "Brave but a little scared"
+ },
+ {
+  "id": "RL.2.10-Q2",
+  "standard": "RL.2.10",
+  "prompt": "Jackson's painting looked nothing like the sunset he was trying to copy. He almost crumpled it up, but then his art teacher said, \"Art doesn't have to be perfect \u2014 it just has to be yours.\"\n\nWhat did Jackson learn?",
+  "choices": [
+   "Art should be a perfect copy",
+   "His own style matters",
+   "His teacher is mean",
+   "He should stop painting"
+  ],
+  "correct": "His own style matters"
+ },
+ {
+  "id": "RL.2.10-Q3",
+  "standard": "RL.2.10",
+  "prompt": "Every day, the old lighthouse keeper climbed 137 steps to light the lamp. **Ships depend on me,** he would say. Even in the worst storms, the light always shone.\n\nWhat word BEST describes the lighthouse keeper?",
+  "choices": [
+   "Lazy",
+   "Silly",
+   "Dedicated",
+   "Confused"
+  ],
+  "correct": "Dedicated"
+ },
+ {
+  "id": "RL.2.10-Q4",
+  "standard": "RL.2.10",
+  "prompt": "The squirrel buried an acorn in the fall. By spring, a tiny green sprout poked through the soil. Years later, it became the tallest oak in the forest.\n\nWhat is this story mainly about?",
+  "choices": [
+   "Forests have lots of trees",
+   "Spring is the best season",
+   "Squirrels are forgetful",
+   "Small things can grow into something big"
+  ],
+  "correct": "Small things can grow into something big"
+ },
+ {
+  "id": "RL.2.10-Q5",
+  "standard": "RL.2.10",
+  "prompt": "\"I'll never make friends here,\" whispered Amir on his first day at the new school. By the end of the week, he had joined the soccer team and made three new friends.\n\nWhat happened that Amir did NOT expect?",
+  "choices": [
+   "He made friends quickly",
+   "He went to a new school",
+   "He felt nervous",
+   "He played soccer"
+  ],
+  "correct": "He made friends quickly"
+ },
+ {
+  "id": "RL.2.10-H1",
+  "standard": "RL.2.10",
+  "prompt": "Mia picked out the biggest slice of cake and put it on her own plate. Then she looked at her little brother Sam, who was staring at the empty tray. Mia sighed, cut her slice in two, and slid half onto Sam's plate. \"There,\" she said quietly. What does Mia's sigh most likely tell us?",
+  "choices": [
+   "She would rather have kept the whole big slice for herself",
+   "She was angry that Sam took her plate",
+   "She was tired from cutting the cake",
+   "She did not like the taste of the cake"
+  ],
+  "correct": "She would rather have kept the whole big slice for herself"
+ },
+ {
+  "id": "RL.2.10-H2",
+  "standard": "RL.2.10",
+  "prompt": "Every morning, old Mr. Diaz set a bowl of seeds on his windowsill, and the sparrows came to eat. One winter he was sick in bed for a week. When he finally opened the window again, only two sparrows came instead of the usual ten. Why did fewer sparrows most likely come back?",
+  "choices": [
+   "Mr. Diaz put out a different kind of seed",
+   "Without food for a week, most of the birds found other places to eat",
+   "The sparrows did not like Mr. Diaz anymore",
+   "Sparrows only eat seeds in the summer"
+  ],
+  "correct": "Without food for a week, most of the birds found other places to eat"
+ },
+ {
+  "id": "RL.2.10-H3",
+  "standard": "RL.2.10",
+  "prompt": "Ben told everyone he wasn't scared of the tall slide. But at the top, he held the railing tight and didn't move. \"Go ahead!\" called his friend. Ben looked down, then said, \"I think I'll let you go first.\" Which sentence best shows that Ben was really scared, even though he said he wasn't?",
+  "choices": [
+   "His friend called, \"Go ahead!\"",
+   "The slide was tall",
+   "He held the railing tight and didn't move",
+   "He told everyone he wasn't scared"
+  ],
+  "correct": "He held the railing tight and didn't move"
+ },
+ {
+  "id": "RL.2.10-H4",
+  "standard": "RL.2.10",
+  "prompt": "Rosa planted a bean seed and checked it every single day. For a week, nothing happened, and she frowned each time. On Monday she almost forgot to look. When she did, a tiny green sprout had pushed through the dirt. Rosa clapped her hands. How did Rosa's feelings change from the beginning to the end of the story?",
+  "choices": [
+   "From angry to sleepy",
+   "From excited to bored",
+   "From scared to calm",
+   "From impatient and disappointed to happy and surprised"
+  ],
+  "correct": "From impatient and disappointed to happy and surprised"
+ },
+ {
+  "id": "RL.2.10-H5",
+  "standard": "RL.2.10",
+  "prompt": "The two goats stood on a narrow log over the river. Neither would step back to let the other cross. They pushed and pushed until SPLASH \u2014 both goats fell into the cold water. What lesson does this story most likely teach?",
+  "choices": [
+   "If nobody is willing to give way, everyone can lose",
+   "Rivers are dangerous in winter",
+   "Goats are good at swimming",
+   "It is fun to push your friends"
+  ],
+  "correct": "If nobody is willing to give way, everyone can lose"
+ },
+ {
+  "id": "RI.2.1-Q1",
+  "standard": "RI.2.1",
+  "prompt": "Honeybees live in hives. A hive can have up to 60,000 bees! The queen bee lays all the eggs, and worker bees collect nectar from flowers.\n\nWhat does the queen bee do?",
+  "choices": [
+   "Guards the hive",
+   "Lays all the eggs",
+   "Collects nectar",
+   "Builds the hive"
+  ],
+  "correct": "Lays all the eggs"
+ },
+ {
+  "id": "RI.2.1-Q2",
+  "standard": "RI.2.1",
+  "prompt": "Firefighters wear special gear to stay safe. Their helmets protect their heads. Their thick coats keep them safe from fire and heat.\n\nWhy do firefighters wear thick coats?",
+  "choices": [
+   "Because they like heavy clothes",
+   "To look cool",
+   "To keep safe from fire and heat",
+   "To stay warm in winter"
+  ],
+  "correct": "To keep safe from fire and heat"
+ }
+]

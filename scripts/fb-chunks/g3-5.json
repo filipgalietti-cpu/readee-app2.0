@@ -1,0 +1,540 @@
+[
+ {
+  "id": "RF.3.3c-Q3",
+  "standard": "RF.3.3c",
+  "prompt": "Which choice correctly shows how to break the word \"fantastic\" into smaller parts to help you read it?",
+  "choices": [
+   "fan-tas-tic",
+   "fant-ast-ic",
+   "fa-nta-stic",
+   "fanta-stic"
+  ],
+  "correct": "fan-tas-tic"
+ },
+ {
+  "id": "RF.3.3c-Q4",
+  "standard": "RF.3.3c",
+  "prompt": "How many syllables are in **helicopter**?",
+  "choices": [
+   "2",
+   "4",
+   "3",
+   "5"
+  ],
+  "correct": "4"
+ },
+ {
+  "id": "RF.3.3c-Q5",
+  "standard": "RF.3.3c",
+  "prompt": "Break **independent** into syllables:",
+  "choices": [
+   "In-de-pen-dent",
+   "In-dep-end-ent",
+   "Indepen-dent",
+   "Inde-pend-ent"
+  ],
+  "correct": "In-de-pen-dent"
+ },
+ {
+  "id": "RF.3.3c-E1",
+  "standard": "RF.3.3c",
+  "prompt": "How many syllables are in the word **rabbit**? Clap it out: rab-bit.",
+  "choices": [
+   "2",
+   "1",
+   "4",
+   "5"
+  ],
+  "correct": "2"
+ },
+ {
+  "id": "RF.3.3c-E2",
+  "standard": "RF.3.3c",
+  "prompt": "Break the word **napkin** into its two syllables.",
+  "choices": [
+   "n-apkin",
+   "nap-kin",
+   "na-pkin",
+   "napk-in"
+  ],
+  "correct": "nap-kin"
+ },
+ {
+  "id": "RF.3.3c-E3",
+  "standard": "RF.3.3c",
+  "prompt": "How many syllables are in the word **sunset**? Say it slowly: sun-set.",
+  "choices": [
+   "4",
+   "1",
+   "2",
+   "3"
+  ],
+  "correct": "2"
+ },
+ {
+  "id": "RF.3.3c-E4",
+  "standard": "RF.3.3c",
+  "prompt": "Break the word **basket** into its two syllables.",
+  "choices": [
+   "b-asket",
+   "ba-sket",
+   "bask-et",
+   "bas-ket"
+  ],
+  "correct": "bas-ket"
+ },
+ {
+  "id": "RF.3.3c-E5",
+  "standard": "RF.3.3c",
+  "prompt": "Which word has exactly **two** syllables?",
+  "choices": [
+   "muffin",
+   "up",
+   "cat",
+   "dog"
+  ],
+  "correct": "muffin"
+ },
+ {
+  "id": "RF.3.3d-Q3",
+  "standard": "RF.3.3d",
+  "prompt": "Which sentence uses the word \"through\" correctly?",
+  "choices": [
+   "The children walked through the big gate.",
+   "I through the ball for the dog to catch.",
+   "The tiny bird flew through the deep ocean.",
+   "She wore a hat through her head."
+  ],
+  "correct": "The children walked through the big gate."
+ },
+ {
+  "id": "RF.3.3d-Q4",
+  "standard": "RF.3.3d",
+  "prompt": "Which of these words has a silent **w**?",
+  "choices": [
+   "Window",
+   "Write",
+   "Water",
+   "Winter"
+  ],
+  "correct": "Write"
+ },
+ {
+  "id": "RF.3.3d-Q5",
+  "standard": "RF.3.3d",
+  "prompt": "Choose the correct spelling of the word that means **having knowledge**:",
+  "choices": [
+   "Nolege",
+   "Knowlege",
+   "Knowledge",
+   "Knoledge"
+  ],
+  "correct": "Knowledge"
+ },
+ {
+  "id": "RF.3.3d-H1",
+  "standard": "RF.3.3d",
+  "prompt": "All four of these words begin with the letters 'sw'. Which one has a SILENT letter you do not say out loud?\n\nsword    swing    sweet    swan",
+  "choices": [
+   "sword",
+   "swan",
+   "swing",
+   "sweet"
+  ],
+  "correct": "sword"
+ },
+ {
+  "id": "RF.3.3d-H2",
+  "standard": "RF.3.3d",
+  "prompt": "In the word 'listen', one of the letters is silent \u2014 you do not hear it when you say the word. Which letter is silent?\n\nl-i-s-t-e-n",
+  "choices": [
+   "n",
+   "t",
+   "l",
+   "s"
+  ],
+  "correct": "t"
+ },
+ {
+  "id": "RF.3.3d-H3",
+  "standard": "RF.3.3d",
+  "prompt": "Read this sentence: 'I bought one ___ of new shoes.'\n\nWhich word is spelled correctly to fill the blank?",
+  "choices": [
+   "pare",
+   "bear",
+   "pair",
+   "pear"
+  ],
+  "correct": "pair"
+ },
+ {
+  "id": "RF.3.3d-H4",
+  "standard": "RF.3.3d",
+  "prompt": "The letters 'gh' can be tricky \u2014 sometimes they make a sound and sometimes they are silent. In which word do the letters 'gh' make NO sound at all?\n\neight    ghost    laugh    tough",
+  "choices": [
+   "tough",
+   "ghost",
+   "laugh",
+   "eight"
+  ],
+  "correct": "eight"
+ },
+ {
+  "id": "RF.3.3d-H5",
+  "standard": "RF.3.3d",
+  "prompt": "Read this sentence: 'I ___ like to come and play.'\n\nWhich word is spelled correctly and has a silent 'l'?",
+  "choices": [
+   "would",
+   "wud",
+   "wood",
+   "wold"
+  ],
+  "correct": "would"
+ },
+ {
+  "id": "RF.3.4-Q1",
+  "standard": "RF.3.4",
+  "prompt": "Which choice best describes how a reader should say the sentence, \"Wow, what a surprise!\"",
+  "choices": [
+   "In a quiet, calm voice, like telling a secret.",
+   "With a voice that shows excitement and wonder.",
+   "In a bored, flat voice, like reading a list.",
+   "With a slow, sad voice, like something is wrong."
+  ],
+  "correct": "With a voice that shows excitement and wonder."
+ },
+ {
+  "id": "RF.3.4-Q2",
+  "standard": "RF.3.4",
+  "prompt": "When a student reads a story fluently, what helps them understand the story best?",
+  "choices": [
+   "Reading so fast that some words are skipped.",
+   "Stopping often to ask what every single word means.",
+   "Reading each word very slowly, one at a time.",
+   "Reading smoothly, making the words sound like talking."
+  ],
+  "correct": "Reading smoothly, making the words sound like talking."
+ },
+ {
+  "id": "RF.3.4-Q3",
+  "standard": "RF.3.4",
+  "prompt": "Read the sentence below. Which word makes the sentence confusing and needs to be changed?\"My sister wanted too go to the park with us.\"",
+  "choices": [
+   "sister",
+   "wanted",
+   "too",
+   "park"
+  ],
+  "correct": "too"
+ },
+ {
+  "id": "RF.3.4-Q4",
+  "standard": "RF.3.4",
+  "prompt": "How should you read this sentence? \"'Watch out!\" screamed the lifeguard.\"",
+  "choices": [
+   "Very slowly",
+   "In a bored tone",
+   "In a quiet, calm voice",
+   "In a loud, urgent voice"
+  ],
+  "correct": "In a loud, urgent voice"
+ },
+ {
+  "id": "RF.3.4-Q5",
+  "standard": "RF.3.4",
+  "prompt": "Imagine a student is reading the sentence 'The little bird sang a happy song.' Which choice shows the student reading every word correctly?",
+  "choices": [
+   "The little bird sung a happy song.",
+   "The little bird sang a happy song.",
+   "The tiny bird sang a happy song.",
+   "The little bird sang a sad song."
+  ],
+  "correct": "The little bird sang a happy song."
+ },
+ {
+  "id": "RF.3.4-H1",
+  "standard": "RF.3.4",
+  "prompt": "Which word has a SOFT g sound (the /j/ sound, like in 'giraffe')?",
+  "choices": [
+   "gigantic",
+   "goggles",
+   "gorilla",
+   "gallop"
+  ],
+  "correct": "gigantic"
+ },
+ {
+  "id": "RF.3.4-H2",
+  "standard": "RF.3.4",
+  "prompt": "Which word BEGINS with a silent letter, like the k in 'knee'?",
+  "choices": [
+   "frost",
+   "wrist",
+   "rust",
+   "twist"
+  ],
+  "correct": "wrist"
+ },
+ {
+  "id": "RF.3.4-H3",
+  "standard": "RF.3.4",
+  "prompt": "How many syllables are in the word 'calculator'?",
+  "choices": [
+   "5",
+   "3",
+   "4"
+  ],
+  "correct": "4"
+ },
+ {
+  "id": "RF.3.4-H4",
+  "standard": "RF.3.4",
+  "prompt": "In which word does the letter 'a' make the schwa sound (the lazy /uh/ sound, like in 'about')?",
+  "choices": [
+   "banana",
+   "flag",
+   "snap"
+  ],
+  "correct": "banana"
+ },
+ {
+  "id": "RF.3.4-H5",
+  "standard": "RF.3.4",
+  "prompt": "Which word has the SAME vowel sound as 'moon'?",
+  "choices": [
+   "soup",
+   "wood",
+   "book",
+   "cook"
+  ],
+  "correct": "soup"
+ },
+ {
+  "id": "RF.3.4a-Q1",
+  "standard": "RF.3.4a",
+  "prompt": "The octopus is a master of disguise. It can change its color, texture, and even shape to match its surroundings in less than a second.\n\nWhat makes the octopus a **master of disguise**?",
+  "choices": [
+   "It can change color, texture, and shape instantly",
+   "It's very fast",
+   "It lives in deep water",
+   "It hides in shells"
+  ],
+  "correct": "It can change color, texture, and shape instantly"
+ },
+ {
+  "id": "RF.3.4a-Q2",
+  "standard": "RF.3.4a",
+  "prompt": "Setting a purpose for reading means \u2014",
+  "choices": [
+   "Reading out loud",
+   "Picking the longest book",
+   "Reading as fast as possible",
+   "Knowing what you want to learn or find out before you start"
+  ],
+  "correct": "Knowing what you want to learn or find out before you start"
+ },
+ {
+  "id": "RF.3.4a-Q3",
+  "standard": "RF.3.4a",
+  "prompt": "Based on the inventions mentioned in the text, what can you understand about Benjamin Franklin's interests?",
+  "choices": [
+   "He wanted to write many books and stories.",
+   "He liked making everyday life better and safer for people.",
+   "He was interested in traveling to faraway places.",
+   "He enjoyed studying animals and plants."
+  ],
+  "correct": "He liked making everyday life better and safer for people."
+ },
+ {
+  "id": "RF.3.4a-Q4",
+  "standard": "RF.3.4a",
+  "prompt": "Unlike most fish, seahorses swim upright and are surprisingly slow swimmers. The dwarf seahorse holds the record as the slowest fish in the ocean, moving at just 5 feet per hour.\n\nWhat is unusual about how seahorses swim?",
+  "choices": [
+   "They can fly",
+   "They swim backwards",
+   "They swim upright instead of horizontally",
+   "They swim in circles"
+  ],
+  "correct": "They swim upright instead of horizontally"
+ },
+ {
+  "id": "RF.3.4a-Q5",
+  "standard": "RF.3.4a",
+  "prompt": "Read the story. Squeaky the squirrel was very busy. He spent his days collecting acorns and burying them near the big oak tree. He knew winter was coming soon, and he wanted to have plenty of food saved up. Squeaky worked hard to make sure he would not be hungry when the snow fell. What is the main idea of this story?",
+  "choices": [
+   "Squeaky likes to play near the oak tree.",
+   "Squeaky is preparing for winter.",
+   "Squeaky enjoys eating acorns.",
+   "Squeaky buries food in the ground."
+  ],
+  "correct": "Squeaky is preparing for winter."
+ },
+ {
+  "id": "RF.3.4a-H1",
+  "standard": "RF.3.4a",
+  "prompt": "Which word has the SOFT g sound \u2014 the /j/ sound you hear in \"gem\"?",
+  "choices": [
+   "giant",
+   "gutter",
+   "garden",
+   "goggle"
+  ],
+  "correct": "giant"
+ },
+ {
+  "id": "RF.3.4a-H2",
+  "standard": "RF.3.4a",
+  "prompt": "The word \"napkin\" breaks into two syllables between the two middle consonants: nap-kin. Which word below breaks apart the SAME way, between two consonants?",
+  "choices": [
+   "robot",
+   "basket",
+   "silent",
+   "pilot"
+  ],
+  "correct": "basket"
+ },
+ {
+  "id": "RF.3.4a-H3",
+  "standard": "RF.3.4a",
+  "prompt": "Which word has the SAME vowel sound as \"field\" (long e)?",
+  "choices": [
+   "weigh",
+   "eight",
+   "piece",
+   "friend"
+  ],
+  "correct": "piece"
+ },
+ {
+  "id": "RF.3.4a-H4",
+  "standard": "RF.3.4a",
+  "prompt": "Which word has a SILENT letter \u2014 a letter you spell but do not say?",
+  "choices": [
+   "clump",
+   "drum",
+   "stamp",
+   "thumb"
+  ],
+  "correct": "thumb"
+ },
+ {
+  "id": "RF.3.4a-H5",
+  "standard": "RF.3.4a",
+  "prompt": "In the word \"learn,\" the letters 'ear' make the /er/ sound, like in \"her.\" Which word below has that SAME /er/ sound?",
+  "choices": [
+   "search",
+   "clear",
+   "heart",
+   "beard"
+  ],
+  "correct": "search"
+ },
+ {
+  "id": "RF.3.4b-Q1",
+  "standard": "RF.3.4b",
+  "prompt": "When reading a poem aloud, you should \u2014",
+  "choices": [
+   "Pay attention to rhythm and pause at line breaks",
+   "Skip the rhyming words",
+   "Read as fast as possible",
+   "Read in a monotone voice"
+  ],
+  "correct": "Pay attention to rhythm and pause at line breaks"
+ },
+ {
+  "id": "RF.3.4b-Q2",
+  "standard": "RF.3.4b",
+  "prompt": "How should you read this line? \"'Please,\" she begged quietly, \"don't go.'\"",
+  "choices": [
+   "In a soft, pleading voice",
+   "In an angry voice",
+   "As fast as possible",
+   "In a loud, happy voice"
+  ],
+  "correct": "In a soft, pleading voice"
+ },
+ {
+  "id": "RF.3.4b-Q3",
+  "standard": "RF.3.4b",
+  "prompt": "Imagine you are reading a fun adventure story to your classmates. To make sure they understand and enjoy the story the most, how should you read?",
+  "choices": [
+   "Read quietly, so only the people closest to you can hear.",
+   "Read at a smooth speed, making the story sound natural and easy to follow.",
+   "Read each word slowly, taking long breaks after every sentence.",
+   "Read very, very fast, trying to finish quickly."
+  ],
+  "correct": "Read at a smooth speed, making the story sound natural and easy to follow."
+ },
+ {
+  "id": "RF.3.4b-Q4",
+  "standard": "RF.3.4b",
+  "prompt": "A passage has a tense, exciting action scene. How should your reading change?",
+  "choices": [
+   "Slow down and get quieter",
+   "Read in a bored voice",
+   "Speed up slightly and add energy to your voice",
+   "Stop reading entirely"
+  ],
+  "correct": "Speed up slightly and add energy to your voice"
+ },
+ {
+  "id": "RF.3.4b-Q5",
+  "standard": "RF.3.4b",
+  "prompt": "When reading dialogue between two characters, what should you do?",
+  "choices": [
+   "Skip the dialogue",
+   "Use a slightly different voice for each character",
+   "Only read one character's lines",
+   "Read both characters the same way"
+  ],
+  "correct": "Use a slightly different voice for each character"
+ },
+ {
+  "id": "RF.3.4c-Q1",
+  "standard": "RF.3.4c",
+  "prompt": "You read the word **desert** as **dessert** in this sentence: \"The camel walked across the hot desert.\" How do you know you made a mistake?",
+  "choices": [
+   "Camels eat dessert",
+   "Dessert doesn't make sense in a sentence about camels and heat",
+   "The sentence has too many words",
+   "You can never make mistakes"
+  ],
+  "correct": "Dessert doesn't make sense in a sentence about camels and heat"
+ },
+ {
+  "id": "RF.3.4c-Q2",
+  "standard": "RF.3.4c",
+  "prompt": "Lily loved to watch the birds. One day, she saw a robin building its nest. It used tiny twigs and soft grass. The robin worked hard to *construct* a cozy home for its eggs. If you weren't sure what 'construct' meant, what would be the best way to understand it?",
+  "choices": [
+   "Ask a grown-up what the word means.",
+   "Skip the word and keep reading the story.",
+   "Reread the sentence and think about what the robin is doing with the twigs and grass to make a home.",
+   "Try to sound out the word many times until it makes sense."
+  ],
+  "correct": "Reread the sentence and think about what the robin is doing with the twigs and grass to make a home."
+ },
+ {
+  "id": "RF.3.4c-Q4",
+  "standard": "RF.3.4c",
+  "prompt": "If you read a paragraph and it doesn't make sense, the BEST thing to do is \u2014",
+  "choices": [
+   "Reread the paragraph more carefully",
+   "Close the book",
+   "Move on to the next chapter",
+   "Read it faster"
+  ],
+  "correct": "Reread the paragraph more carefully"
+ },
+ {
+  "id": "RF.3.4c-Q5",
+  "standard": "RF.3.4c",
+  "prompt": "You read **wind** as rhyming with **find** in this sentence: \"The wind blew the leaves across the yard.\" Is that correct?",
+  "choices": [
+   "Yes, it rhymes with find",
+   "You can't tell from the sentence",
+   "No, in this sentence 'wind' rhymes with 'pinned'",
+   "Both pronunciations work"
+  ],
+  "correct": "No, in this sentence 'wind' rhymes with 'pinned'"
+ }
+]

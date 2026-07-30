@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RI.1.1-H5",
+  "correct_feedback": "Yes! Firefighters get close to fire, so their coats keep them safe. Nice work!",
+  "incorrect_feedback": "Hmm, think about where firefighters work. What are they very close to? That is the big clue.",
+  "reveal_feedback": "That one was tricky! They wear those coats to keep safe when they are close to fire. Now you know!"
+ },
+ {
+  "id": "RI.1.2-Q1",
+  "correct_feedback": "Yes! Every sentence tells us about apples, so that is the main topic. Nice work!",
+  "incorrect_feedback": "Almost! What one thing does every sentence talk about? Read them again and see.",
+  "reveal_feedback": "That one was tricky! The main topic is apples, because the whole text is about them. Now you know!"
+ },
+ {
+  "id": "RI.1.2-Q2",
+  "correct_feedback": "Yes! Every sentence tells about firefighters, so they are the main topic. Nice work!",
+  "incorrect_feedback": "Good try! Who wears the gear, drives the truck, and puts out fires? That is your answer.",
+  "reveal_feedback": "That one was tricky! The main topic is firefighters, since the text is all about them. Now you know!"
+ },
+ {
+  "id": "RI.1.2-Q3",
+  "correct_feedback": "Yes! The book says cats sleep a lot, so that is the detail we know. Nice work!",
+  "incorrect_feedback": "Close one! The book only told us ONE fact about cats. What did it say they do a lot?",
+  "reveal_feedback": "That one was tricky! The text tells us cats like to sleep a lot. The rest was not in the book. Now you know!"
+ },
+ {
+  "id": "RI.1.2-Q4",
+  "correct_feedback": "Yes! Salt water and all those animals live in the ocean, so that is the main topic. Nice work!",
+  "incorrect_feedback": "Not yet! Where does the salt water and all the animals belong? That big place is the topic.",
+  "reveal_feedback": "That one was tricky! The main topic is the ocean, the big place where it all happens. Now you know!"
+ },
+ {
+  "id": "RI.1.2-Q5",
+  "correct_feedback": "Yes! The text says to brush your teeth twice a day. That is a key detail. Nice work!",
+  "incorrect_feedback": "Take another look! How many times each day should you brush? The text tells you.",
+  "reveal_feedback": "That one was tricky! A key detail is to brush your teeth twice a day. Now you know!"
+ },
+ {
+  "id": "RI.1.2-H1",
+  "correct_feedback": "Yes! The hive, flowers, and honey all connect to bees. Bees are what it is mostly about. Nice work!",
+  "incorrect_feedback": "Hmm, the hive, flowers, and honey are only parts. Who does the whole text follow? Think again.",
+  "reveal_feedback": "That one was tricky! The text is mostly about bees. Everything else connects back to them. Now you know!"
+ },
+ {
+  "id": "RI.1.2-H2",
+  "correct_feedback": "Yes! A mane, running fast, and 'neigh' all point to a horse. Nice work!",
+  "incorrect_feedback": "Almost! What animal has a mane, runs on grass, and says 'neigh'? Put the clues together.",
+  "reveal_feedback": "That one was tricky! The clues all point to a horse. Now you know!"
+ },
+ {
+  "id": "RI.1.2-H3",
+  "correct_feedback": "Yes! That sentence covers plants, rivers, and animals all at once. It is the big idea. Nice work!",
+  "incorrect_feedback": "Good try! One sentence covers ALL the others, not just one part. Which one is the biggest?",
+  "reveal_feedback": "That one was tricky! The big main idea is that rain is good for the whole earth. It sums up all the rest. Now you know!"
+ },
+ {
+  "id": "RI.1.2-H4",
+  "correct_feedback": "Yes! The text tells lots of things about ants, so that title fits best. Nice work!",
+  "incorrect_feedback": "Close one! The best title covers EVERYTHING about ants, not just one part. Which one is the biggest?",
+  "reveal_feedback": "That one was tricky! The best title is All About Ants, because it covers the whole text. Now you know!"
+ },
+ {
+  "id": "RI.1.2-H5",
+  "correct_feedback": "Yes! Sam watered the plant every day, and then the leaves turned green. Nice work!",
+  "incorrect_feedback": "Hmm, what did Sam do every single day right before the leaves turned green? That is the cause.",
+  "reveal_feedback": "That one was tricky! The leaves turned green because Sam gave it water. Now you know!"
+ },
+ {
+  "id": "RI.1.3-Q1",
+  "correct_feedback": "Yes! It rained all day, so the water made puddles. Nice work!",
+  "incorrect_feedback": "Not yet! What happened all day long before the puddles showed up? That is why they are there.",
+  "reveal_feedback": "That one was tricky! There were puddles because it rained all day. Now you know!"
+ },
+ {
+  "id": "RI.1.3-Q2",
+  "correct_feedback": "Yes! The farmer waters the seeds every day, so the plants grow. Nice work!",
+  "incorrect_feedback": "Take another look! What does the farmer do every day to help the seeds? That makes the plants grow.",
+  "reveal_feedback": "That one was tricky! The plants appear because the farmer waters them. Now you know!"
+ },
+ {
+  "id": "RI.1.3-Q3",
+  "correct_feedback": "Yes! Bears eat a lot in fall to get ready for their long winter sleep. Nice work!",
+  "incorrect_feedback": "Hmm, what do bears do all winter? They eat a lot in fall to get ready for that. Think again.",
+  "reveal_feedback": "That one was tricky! Bears eat a lot to get ready for winter sleep. Now you know!"
+ },
+ {
+  "id": "RI.1.3-Q4",
+  "correct_feedback": "Yes! First he led the army, then people chose him as president. Nice work!",
+  "incorrect_feedback": "Almost! The word 'first' is a clue. Which did he do first, and which came after? Read again.",
+  "reveal_feedback": "That one was tricky! He led the army before he was president. Now you know!"
+ },
+ {
+  "id": "RI.1.3-Q5",
+  "correct_feedback": "Yes! Right after eating, the caterpillar makes a cocoon to get ready. Nice work!",
+  "incorrect_feedback": "Good try! What does the caterpillar build to get ready for its big change? Think about that step.",
+  "reveal_feedback": "That one was tricky! Right after eating, it makes a cocoon. Now you know!"
+ },
+ {
+  "id": "RI.1.3-H1",
+  "correct_feedback": "Yes! The baby brother liked to play by the gate, so he most likely opened it. Nice work!",
+  "incorrect_feedback": "Close one! Who liked to play right by the gate? That person most likely opened it. Look again.",
+  "reveal_feedback": "That one was tricky! Her baby brother most likely opened the gate, since he played there. Now you know!"
+ },
+ {
+  "id": "RI.1.3-H2",
+  "correct_feedback": "Yes! Sam always shared his crayons, so Tom shared back with him. Nice work!",
+  "incorrect_feedback": "Hmm, what did Sam do for Tom every day? Tom did the same kind thing back. Think again.",
+  "reveal_feedback": "That one was tricky! Tom gave Sam crayons because Sam had always shared with him. Now you know!"
+ },
+ {
+  "id": "RI.1.3-H3",
+  "correct_feedback": "Yes! The leaves dropped off in fall, so by winter the trees were bare. Nice work!",
+  "incorrect_feedback": "Not yet! What happened to the leaves back in fall? That is why the trees are bare now. Reread it.",
+  "reveal_feedback": "That one was tricky! The trees are bare because the leaves fell off in fall. Now you know!"
+ },
+ {
+  "id": "RI.1.3-H4",
+  "correct_feedback": "Yes! A turtle hides in its shell, but a rabbit has none, so it runs. Nice work!",
+  "incorrect_feedback": "Take another look! The turtle hides in something the rabbit does not have. What is that? That is why it runs.",
+  "reveal_feedback": "That one was tricky! The rabbit runs because it has no shell to hide in. Now you know!"
+ },
+ {
+  "id": "RI.1.3-H5",
+  "correct_feedback": "Yes! The plant grew tall in the sun, then drooped in the dark corner without it. Nice work!",
+  "incorrect_feedback": "Hmm, the plant was happy by the sunny window. What did it lose in the dark corner? Think about that.",
+  "reveal_feedback": "That one was tricky! The plant drooped because it lost its sunlight in the corner. Now you know!"
+ },
+ {
+  "id": "RI.1.4-Q4",
+  "correct_feedback": "Yes! A habitat is the place where an animal lives, like water for a fish. Nice work!",
+  "incorrect_feedback": "Good try! The text says a fish's habitat IS water. Water is a place. So what does habitat mean?",
+  "reveal_feedback": "That one was tricky! Habitat means the place where a fish lives. Now you know!"
+ },
+ {
+  "id": "RI.1.4-Q3",
+  "correct_feedback": "Yes! Echolocation is using sounds that bounce back to find things. Nice work!",
+  "incorrect_feedback": "Almost! The text says dolphins send out sounds that bounce back. What are the sounds helping them do?",
+  "reveal_feedback": "That one was tricky! Echolocation means using sounds to find things. Now you know!"
+ },
+ {
+  "id": "RI.1.4-Q7",
+  "correct_feedback": "Yes! A tree, water, and a nest are all places. A habitat is where an animal lives. Nice work!",
+  "incorrect_feedback": "Close one! A tree, water, and a nest are all what? They are places to live. So what is a habitat?",
+  "reveal_feedback": "That one was tricky! Habitat means the place where an animal lives. Now you know!"
+ },
+ {
+  "id": "RI.1.4-Q8",
+  "correct_feedback": "Yes! The crab grew too big for its shell, so that question helps you learn 'outgrown.' Nice work!",
+  "incorrect_feedback": "Hmm, 'outgrown' means it got too big. Which question asks about the crab's SIZE? That one helps most.",
+  "reveal_feedback": "That one was tricky! The best question is whether the crab was too big for its old shell. That shows what 'outgrown' means. Now you know!"
+ },
+ {
+  "id": "RI.1.4-Q10",
+  "correct_feedback": "Yes! A tail as long as a school bus is huge, so enormous means very big. Nice work!",
+  "incorrect_feedback": "Take another look! The tail was as long as a school bus. Is that small or huge? Picture it.",
+  "reveal_feedback": "That one was tricky! Enormous means very big, like that whale. Now you know!"
+ },
+ {
+  "id": "RI.1.4-Q11",
+  "correct_feedback": "Yes! Regenerate means to grow back, so the starfish can grow a new arm. Nice work!",
+  "incorrect_feedback": "Not yet! Regenerate means to grow something back. If it lost an arm, what could it grow again?",
+  "reveal_feedback": "That one was tricky! If a starfish loses an arm, it can grow a new arm. Now you know!"
+ },
+ {
+  "id": "RI.1.4-H1",
+  "correct_feedback": "Yes! The seeds did not grow or move, so dormant means resting and not growing. Nice work!",
+  "incorrect_feedback": "Good try! The seeds did not grow and did not move all winter. What word matches that? Think again.",
+  "reveal_feedback": "That one was tricky! Dormant means resting and not growing. Now you know!"
+ },
+ {
+  "id": "RI.1.4-H2",
+  "correct_feedback": "Yes! The hungry puppy ate in one big rush, so 'wolfed down' means ate very fast. Nice work!",
+  "incorrect_feedback": "Hmm, the puppy had not eaten all day and ate in one big rush. Was that slow or fast? Think about it.",
+  "reveal_feedback": "That one was tricky! 'Wolfed down' means ate very fast. Now you know!"
+ },
+ {
+  "id": "RI.1.4-H3",
+  "correct_feedback": "Yes! So many bees flying together is a swarm, a large group flying as one. Nice work!",
+  "incorrect_feedback": "Almost! There were SO many bees the sky went dark. Was that one bee or lots together? Reread it.",
+  "reveal_feedback": "That one was tricky! A swarm means a large group flying together. Now you know!"
+ },
+ {
+  "id": "RI.1.4-H4",
+  "correct_feedback": "Yes! A whole group of ants sharing one home is a colony. Nice work!",
+  "incorrect_feedback": "Close one! The text says a WHOLE group shares one home and works together. What word fits that group?",
+  "reveal_feedback": "That one was tricky! A colony means a group of ants living together. Now you know!"
+ },
+ {
+  "id": "RI.1.4-H5",
+  "correct_feedback": "Yes! The truck broke down a lot and would soon stop, so it was almost worn out. Nice work!",
+  "incorrect_feedback": "Not yet! The old truck broke down every week and would soon stop running. Is it new or almost done?",
+  "reveal_feedback": "That one was tricky! 'On its last legs' means almost worn out and ready to stop. Now you know!"
+ },
+ {
+  "id": "RI.1.5-Q1",
+  "correct_feedback": "Yes! The table of contents lists each chapter and its page. Nice work!",
+  "incorrect_feedback": "Hmm, which part at the FRONT lists each chapter and the page it starts on? That is where to look.",
+  "reveal_feedback": "That one was tricky! You find a chapter's page in the table of contents. Now you know!"
+ },
+ {
+  "id": "RI.1.5-Q2",
+  "correct_feedback": "Yes! A heading tells you what that section is about. Nice work!",
+  "incorrect_feedback": "Good try! A heading in big letters, like 'Baby Animals,' tells you what? Think about what it names.",
+  "reveal_feedback": "That one was tricky! A heading tells what that section is about. Now you know!"
+ },
+ {
+  "id": "RI.1.5-Q3",
+  "correct_feedback": "Yes! A glossary lists words and helps you learn what they mean. Nice work!",
+  "incorrect_feedback": "Take another look! A glossary is like a little dictionary in the back. What does it help you with?",
+  "reveal_feedback": "That one was tricky! A glossary helps you learn word meanings. Now you know!"
+ },
+ {
+  "id": "RI.1.5-Q4",
+  "correct_feedback": "Yes! Bold letters make a word stand out because it is important to know. Nice work!",
+  "incorrect_feedback": "Almost! Why would a book make a word dark and thick? It wants you to notice it. Why might that be?",
+  "reveal_feedback": "That one was tricky! A bold word probably means it is an important word to know. Now you know!"
+ },
+ {
+  "id": "RI.1.5-Q5",
+  "correct_feedback": "Yes! The table of contents or index helps you find polar bears fast. Nice work!",
+  "incorrect_feedback": "Not yet! What part helps you FIND a topic quickly instead of reading the whole book? Look there first.",
+  "reveal_feedback": "That one was tricky! Check the table of contents or index to find it fast. Now you know!"
+ },
+ {
+  "id": "RI.1.5-H1",
+  "correct_feedback": "Yes! A glossary lists words and tells what they mean, so Tim can look up 'tide' there. Nice work!",
+  "incorrect_feedback": "Close one! Tim wants to know what a WORD means. Which part gives word meanings? Think about that.",
+  "reveal_feedback": "That one was tricky! Tim should look in the glossary to find what 'tide' means. Now you know!"
+ },
+ {
+  "id": "RI.1.5-H2",
+  "correct_feedback": "Yes! The index lists every page that talks about a topic, even hidden ones. Nice work!",
+  "incorrect_feedback": "Hmm, Rosa wants EVERY page about rain, even ones inside other chapters. Which part lists all those pages?",
+  "reveal_feedback": "That one was tricky! The index helps her find every page about rain. Now you know!"
+ },
+ {
+  "id": "RI.1.5-H3",
+  "correct_feedback": "Yes! Words right under a photo are a caption that tells about the picture. Nice work!",
+  "incorrect_feedback": "Good try! The words sit right under the spider photo. What would those words most likely be about?",
+  "reveal_feedback": "That one was tricky! Those words tell about the photo. They are a caption. Now you know!"
+ },
+ {
+  "id": "RI.1.5-H4",
+  "correct_feedback": "Yes! Making a word thick and dark shows it is an important word to know. Nice work!",
+  "incorrect_feedback": "Take another look! Why make one word thick and dark while others are thin? The book wants you to notice it. Why?",
+  "reveal_feedback": "That one was tricky! The word looks different to show it is an important word. Now you know!"
+ },
+ {
+  "id": "RI.1.5-H5",
+  "correct_feedback": "Yes! The small words point to each part and name them, like stem, leaf, and roots. Nice work!",
+  "incorrect_feedback": "Almost! The little words point to the stem, leaf, and roots. What are those words doing for each part?",
+  "reveal_feedback": "That one was tricky! Those small words name the parts of the plant. Now you know!"
+ },
+ {
+  "id": "RI.1.6-Q1",
+  "correct_feedback": "Yes! The words never say where the ladybug is, but the picture shows it on a green leaf. Nice work!",
+  "incorrect_feedback": "Hmm, the words already told us ladybugs are small insects. What EXTRA thing can you only see in the picture?",
+  "reveal_feedback": "That one was tricky! The picture shows the ladybug is on a green leaf, which the words did not say. Now you know!"
+ },
+ {
+  "id": "RI.1.6-Q2",
+  "correct_feedback": "Yes! Pictures can show exact colors and shapes that words cannot. Nice work!",
+  "incorrect_feedback": "Good try! A picture cannot make sounds or smells. But you can SEE something in it. What can you see?",
+  "reveal_feedback": "That one was tricky! Pictures can show exact colors and shapes. Now you know!"
+ },
+ {
+  "id": "RI.1.6-Q3",
+  "correct_feedback": "Yes! The words say 'feathers,' but only the picture shows the bird is blue. Nice work!",
+  "incorrect_feedback": "Not yet! The words already told us about feathers. What NEW thing does the picture show you? Look at its color.",
+  "reveal_feedback": "That one was tricky! The picture adds that the bird is blue. Now you know!"
+ }
+]

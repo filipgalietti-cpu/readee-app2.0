@@ -1,0 +1,272 @@
+[
+ {
+  "id": "RL.1.1-Q1",
+  "correct_feedback": "Yes! After Bella picked the apples, she put them in her basket. Nice work!",
+  "incorrect_feedback": "Hmm, think about what Bella did right after she picked the apples. Where would she put them? Try again!",
+  "reveal_feedback": "That one was tricky! After she picked them, Bella put the apples in her basket. Now you know!"
+ },
+ {
+  "id": "RL.1.1-Q2",
+  "correct_feedback": "Yes! The frog sat on a lily pad in the pond. Nice work!",
+  "incorrect_feedback": "Good try! Read the story again. It tells you just where the frog sat. Look for that spot!",
+  "reveal_feedback": "That one was tricky! The frog was sitting on a lily pad. Now you know!"
+ },
+ {
+  "id": "RL.1.1-Q3",
+  "correct_feedback": "Yes! Emma walked to school with her friend Jake. Nice work!",
+  "incorrect_feedback": "Almost! Look back at the story. It says who walked with Emma. Read it one more time!",
+  "reveal_feedback": "That one was tricky! Emma walked with her friend Jake. Now you know!"
+ },
+ {
+  "id": "RL.1.1-Q4",
+  "correct_feedback": "Yes! Dad put blueberries on top of the pancakes. Nice work!",
+  "incorrect_feedback": "Close one! Read the story again. It tells you just what Dad put on top. Look for it!",
+  "reveal_feedback": "That one was tricky! Dad put blueberries on the pancakes. Now you know!"
+ },
+ {
+  "id": "RL.1.1-Q5",
+  "correct_feedback": "Yes! The kitten was scared because it could not get down from the tall tree. Nice work!",
+  "incorrect_feedback": "Take another look! The kitten cried and cried. Think about what was wrong up in that tree.",
+  "reveal_feedback": "That one was tricky! The kitten was scared because it could not get down from the tall tree. Now you know!"
+ },
+ {
+  "id": "RL.1.1-H1",
+  "correct_feedback": "Yes! Sam grabbed his umbrella and boots, so it was raining. Nice work!",
+  "incorrect_feedback": "Hmm, think about it. Why would Sam need boots and an umbrella? What kind of weather is that?",
+  "reveal_feedback": "That one was tricky! It was raining. His umbrella and boots were the clues. Now you know!"
+ },
+ {
+  "id": "RL.1.1-H2",
+  "correct_feedback": "Yes! The dog was licking his lips, so the dog ate the cookie. Nice work!",
+  "incorrect_feedback": "Good try! Look for the clue. Who was licking their lips by the empty plate? Read again!",
+  "reveal_feedback": "That one was tricky! The dog ate the last cookie. The licking lips gave it away. Now you know!"
+ },
+ {
+  "id": "RL.1.1-H3",
+  "correct_feedback": "Yes! Ben's balloon was not in his hand and he looked at the sky. It floated away! Nice work!",
+  "incorrect_feedback": "Almost! Why was Ben looking up at the sky? Think about what left his hand.",
+  "reveal_feedback": "That one was tricky! Ben is crying because his balloon floated away. Now you know!"
+ },
+ {
+  "id": "RL.1.1-H4",
+  "correct_feedback": "Yes! First there was dirt, then a tiny green leaf. The seed started to grow! Nice work!",
+  "incorrect_feedback": "Close one! On Monday there was dirt, and on Friday a green leaf. What happened to the seed?",
+  "reveal_feedback": "That one was tricky! The seed started to grow. The tiny leaf was the clue. Now you know!"
+ },
+ {
+  "id": "RL.1.1-H5",
+  "correct_feedback": "Yes! Max pushed a chair over and climbed up to reach the cookie. Nice work!",
+  "incorrect_feedback": "Take another look! Standing on his toes did not work. What did Max do next to reach the shelf?",
+  "reveal_feedback": "That one was tricky! Max got the cookie by climbing up on a chair. Now you know!"
+ },
+ {
+  "id": "RL.1.2-Q1",
+  "correct_feedback": "Yes! Tom practiced every day and won the race. Practice helps you get better! Nice work!",
+  "incorrect_feedback": "Hmm, think about what Tom did every day before the race. Why did he win? Try again!",
+  "reveal_feedback": "That one was tricky! The lesson is that practice helps you get better. Now you know!"
+ },
+ {
+  "id": "RL.1.2-Q2",
+  "correct_feedback": "Yes! Mia did not share, and her friends felt left out. Sharing is important! Nice work!",
+  "incorrect_feedback": "Good try! Think about what Mia would not do with her crayons. Why did her friends leave?",
+  "reveal_feedback": "That one was tricky! The lesson is that sharing is important. Now you know!"
+ },
+ {
+  "id": "RL.1.2-Q3",
+  "correct_feedback": "Yes! The ant saved food for winter and was ready. It is good to plan ahead! Nice work!",
+  "incorrect_feedback": "Almost! The ant got ready before winter, but the grasshopper played. What is the big lesson?",
+  "reveal_feedback": "That one was tricky! The lesson is that it is good to plan ahead. Now you know!"
+ },
+ {
+  "id": "RL.1.2-Q4",
+  "correct_feedback": "Yes! Leo kept trying and learned to ride his bike. Nice work!",
+  "incorrect_feedback": "Close one! Leo fell, but he did not give up. Think about what happened when he kept going.",
+  "reveal_feedback": "That one was tricky! The lesson is if you keep trying, you can learn new things. Now you know!"
+ },
+ {
+  "id": "RL.1.2-Q5",
+  "correct_feedback": "Yes! Sara felt bad when she lied and better when she told the truth. Nice work!",
+  "incorrect_feedback": "Take another look! How did Sara feel all day after she told the lie? Think about that.",
+  "reveal_feedback": "That one was tricky! The lesson is that lying makes you feel bad. Now you know!"
+ },
+ {
+  "id": "RL.1.2-H1",
+  "correct_feedback": "Yes! Ben asked the owner first before petting the dog. Nice work!",
+  "incorrect_feedback": "Hmm, think about what Ben's mom told him to do first. What did he do before petting?",
+  "reveal_feedback": "That one was tricky! The lesson is to ask before you touch someone's pet. Now you know!"
+ },
+ {
+  "id": "RL.1.2-H2",
+  "correct_feedback": "Yes! Lily waited many days, and then the leaf grew. Good things can take time! Nice work!",
+  "incorrect_feedback": "Good try! Lily wanted to dig it up, but she waited. What did waiting teach her?",
+  "reveal_feedback": "That one was tricky! The lesson is that good things can take time. Now you know!"
+ },
+ {
+  "id": "RL.1.2-H3",
+  "correct_feedback": "Yes! Sam was scared but told the truth anyway. Telling the truth is brave! Nice work!",
+  "incorrect_feedback": "Almost! Sam was scared to tell, but he did not hide it. What big thing did he do?",
+  "reveal_feedback": "That one was tricky! The lesson is that telling the truth is brave. Now you know!"
+ },
+ {
+  "id": "RL.1.2-H4",
+  "correct_feedback": "Yes! Rosa stopped to help Kim and finished last, but smiled. Being a good friend matters most! Nice work!",
+  "incorrect_feedback": "Close one! Rosa could have won, but she stopped to help her friend. Why did she smile?",
+  "reveal_feedback": "That one was tricky! The lesson is that being a good friend matters more than winning. Now you know!"
+ },
+ {
+  "id": "RL.1.2-H5",
+  "correct_feedback": "Yes! Max shared the cookie, and both boys laughed. Sharing makes everyone happy! Nice work!",
+  "incorrect_feedback": "Take another look! Max broke the cookie in two. How did both boys feel after that?",
+  "reveal_feedback": "That one was tricky! The lesson is that sharing can make everyone happy. Now you know!"
+ },
+ {
+  "id": "RL.1.3-Q1",
+  "correct_feedback": "Yes! The woman lived in a little house right by the ocean. Nice work!",
+  "incorrect_feedback": "Hmm, read again. How big was her house, and what was right next to it? Look for both clues!",
+  "reveal_feedback": "That one was tricky! She lives in a small house near the ocean. Now you know!"
+ },
+ {
+  "id": "RL.1.3-Q2",
+  "correct_feedback": "Yes! Ben carried bags and shared his lunch, so he is kind. Nice work!",
+  "incorrect_feedback": "Good try! Think about the nice things Ben did for others. What word matches a helper like that?",
+  "reveal_feedback": "That one was tricky! Ben is kind. His helping was the clue. Now you know!"
+ },
+ {
+  "id": "RL.1.3-Q3",
+  "correct_feedback": "Yes! The story happens by an old barn on a dark, stormy night. Nice work!",
+  "incorrect_feedback": "Almost! Where and when does the story happen? Look for the words about the night and the barn.",
+  "reveal_feedback": "That one was tricky! The setting is a dark, stormy barn. Now you know!"
+ },
+ {
+  "id": "RL.1.3-Q4",
+  "correct_feedback": "Yes! The story began when Rosa found a lost puppy in the grass. Nice work!",
+  "incorrect_feedback": "Close one! The word 'first' is a clue. What happened at the very start of Rosa's story?",
+  "reveal_feedback": "That one was tricky! The story began when Rosa found a lost puppy. Now you know!"
+ },
+ {
+  "id": "RL.1.3-Q5",
+  "correct_feedback": "Yes! Gus never smiled, but the flower made him smile. He goes from grumpy to happy! Nice work!",
+  "incorrect_feedback": "Take another look! How was Gus at the start? How was he after the girl gave him a flower?",
+  "reveal_feedback": "That one was tricky! Gus goes from grumpy to happy. Now you know!"
+ },
+ {
+  "id": "RL.1.3-H1",
+  "correct_feedback": "Yes! Mia let her hat go to hug her brother and cheer him up. She is caring! Nice work!",
+  "incorrect_feedback": "Hmm, think about what Mia did. She left her hat to help her brother. What does that show?",
+  "reveal_feedback": "That one was tricky! This shows Mia is caring. Now you know!"
+ },
+ {
+  "id": "RL.1.3-H2",
+  "correct_feedback": "Yes! Sam wore mittens and his breath made white clouds, so it is winter. Nice work!",
+  "incorrect_feedback": "Good try! Think about the clues. Mittens, cold breath, no leaves. What time of year is that?",
+  "reveal_feedback": "That one was tricky! This story happens in winter. Now you know!"
+ },
+ {
+  "id": "RL.1.3-H3",
+  "correct_feedback": "Yes! Rosa gave the seed water every day and set it in the sun. That helped it grow! Nice work!",
+  "incorrect_feedback": "Almost! What two things did Rosa do every day? Think about the water and the sunny spot.",
+  "reveal_feedback": "That one was tricky! The leaf grew because Rosa watered it and gave it light. Now you know!"
+ },
+ {
+  "id": "RL.1.3-H4",
+  "correct_feedback": "Yes! Leo's tummy felt tight at first, then he smiled when Pip came back. Worried, then happy! Nice work!",
+  "incorrect_feedback": "Close one! How did Leo feel when Pip was lost? How did he feel when Pip ran back? Think of both!",
+  "reveal_feedback": "That one was tricky! Leo felt worried, then happy. Now you know!"
+ },
+ {
+  "id": "RL.1.3-H5",
+  "correct_feedback": "Yes! Nia wore the red cap, and the kid in the red cap touched the tree first. Nia won! Nice work!",
+  "incorrect_feedback": "Take another look! Who touched the tree first? Now, who was wearing the red cap? Match them up!",
+  "reveal_feedback": "That one was tricky! Nia won the race. She wore the red cap. Now you know!"
+ },
+ {
+  "id": "RL.1.4-Q1",
+  "correct_feedback": "Yes! 'Bright' is the word that tells us about the sun. Nice work!",
+  "incorrect_feedback": "Hmm, look for the word that tells us more about the sun. How did the sun look?",
+  "reveal_feedback": "That one was tricky! 'Bright' tells us about the sun. Now you know!"
+ },
+ {
+  "id": "RL.1.4-Q2",
+  "correct_feedback": "Yes! The puppy whimpered softly in the rain, so it feels sad or scared. Nice work!",
+  "incorrect_feedback": "Good try! A puppy whimpering in the rain gives a hint. Does that sound happy or not?",
+  "reveal_feedback": "That one was tricky! The puppy probably feels sad or scared. Now you know!"
+ },
+ {
+  "id": "RL.1.4-Q3",
+  "correct_feedback": "Yes! 'Sweet and warm' are words your nose can smell. Nice work!",
+  "incorrect_feedback": "Almost! Your nose smells things. Which words tell how the cookies smelled?",
+  "reveal_feedback": "That one was tricky! 'Sweet and warm' appeal to your sense of smell. Now you know!"
+ },
+ {
+  "id": "RL.1.4-Q4",
+  "correct_feedback": "Yes! Jake stomped his feet and crossed his arms, so he feels angry. Nice work!",
+  "incorrect_feedback": "Close one! Think about how someone acts when they stomp and cross their arms. How do they feel?",
+  "reveal_feedback": "That one was tricky! Jake feels angry. His stomping was the clue. Now you know!"
+ },
+ {
+  "id": "RL.1.4-Q5",
+  "correct_feedback": "Yes! 'Soft and fluffy' help you feel how the blanket feels. Nice work!",
+  "incorrect_feedback": "Take another look! Which words tell you how the blanket feels when you touch it?",
+  "reveal_feedback": "That one was tricky! 'Soft and fluffy' show how the blanket feels. Now you know!"
+ },
+ {
+  "id": "RL.1.4-H1",
+  "correct_feedback": "Yes! 'Rough' and 'scratched' are words you can feel by touch. Nice work!",
+  "incorrect_feedback": "Hmm, think about touch. Which words tell how the bark felt on your hand?",
+  "reveal_feedback": "That one was tricky! 'Rough, scratched' help you feel by touch. Now you know!"
+ },
+ {
+  "id": "RL.1.4-H2",
+  "correct_feedback": "Yes! Sam sighed and let go of the string after the kite kept dipping. He feels frustrated! Nice work!",
+  "incorrect_feedback": "Good try! Sam said 'Not again' and let go of the string. How would you feel then?",
+  "reveal_feedback": "That one was tricky! Sam most likely feels frustrated. Now you know!"
+ },
+ {
+  "id": "RL.1.4-H3",
+  "correct_feedback": "Yes! 'Crashed and boomed' are loud sound words you can hear. Nice work!",
+  "incorrect_feedback": "Almost! Which words make a loud sound your ears can hear? Read the storm words again.",
+  "reveal_feedback": "That one was tricky! 'Crashed and boomed' help you hear the storm. Now you know!"
+ },
+ {
+  "id": "RL.1.4-H4",
+  "correct_feedback": "Yes! Lily said she missed this place and hugged the fence. That shows she is happy! Nice work!",
+  "incorrect_feedback": "Close one! Which words show Lily is glad to be back? Look at what she said and did.",
+  "reveal_feedback": "That one was tricky! 'I missed this place!' and hugging the fence show she is happy. Now you know!"
+ },
+ {
+  "id": "RL.1.4-H5",
+  "correct_feedback": "Yes! 'Smelled like warm cookies' is something your nose can smell. Nice work!",
+  "incorrect_feedback": "Take another look! Your nose smells things. Which words tell about a smell in the kitchen?",
+  "reveal_feedback": "That one was tricky! 'Smelled like warm cookies' appeals to smell. Now you know!"
+ },
+ {
+  "id": "RL.1.5-Q3",
+  "correct_feedback": "Yes! A storybook can have a talking dragon, so it has made-up characters and events. Nice work!",
+  "incorrect_feedback": "Hmm, think about the talking dragon that flew to the moon. Is that real or made up?",
+  "reveal_feedback": "That one was tricky! Storybooks have made-up characters and events. Now you know!"
+ },
+ {
+  "id": "RL.1.5-Q4",
+  "correct_feedback": "Yes! Sam's book taught true things about real sharks. It teaches real facts! Nice work!",
+  "incorrect_feedback": "Good try! Sam's book was about real sharks and nothing make-believe. What do those books do?",
+  "reveal_feedback": "That one was tricky! Informational books teach real facts. Now you know!"
+ },
+ {
+  "id": "RL.1.5-H1",
+  "correct_feedback": "Yes! A turtle who wants to win a race is make-believe. It is a story! Nice work!",
+  "incorrect_feedback": "Almost! Turtles cannot really wish to win a race. Is this book real or make-believe?",
+  "reveal_feedback": "That one was tricky! This is most likely a make-believe story. Now you know!"
+ },
+ {
+  "id": "RL.1.5-H2",
+  "correct_feedback": "Yes! The book that tells the true way clouds make rain gives you real information. Nice work!",
+  "incorrect_feedback": "Close one! One book is a true way, one is about a scared raindrop. Which one teaches real facts?",
+  "reveal_feedback": "That one was tricky! The book about how clouds make rain gives information. Now you know!"
+ },
+ {
+  "id": "RL.1.5-H3",
+  "correct_feedback": "Yes! Lin's book teaches the true way seeds grow, so it is an information book. Nice work!",
+  "incorrect_feedback": "Take another look! Everything in Lin's book is true. Does that make it a story or a teaching book?",
+  "reveal_feedback": "That one was tricky! It is an information book, because it teaches true things. Now you know!"
+ }
+]

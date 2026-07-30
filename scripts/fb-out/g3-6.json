@@ -1,0 +1,272 @@
+[
+ {
+  "id": "L.3.4-Q1",
+  "correct_feedback": "Yes! Spectators are the people watching. They cheered from the sidelines while the runner did the racing.",
+  "incorrect_feedback": "Hmm, think about who was cheering, not who was running. Were they in the race or watching it?",
+  "reveal_feedback": "The answer is people watching. Spectators watch an event, like the fans cheering as the runner went by."
+ },
+ {
+  "id": "L.3.4-H1",
+  "correct_feedback": "Nice work! Re- means again and examine means to look closely, so reexamine is to look closely at the answers again.",
+  "incorrect_feedback": "Take another look at the two word parts. Re- means again and examine means to look closely. Put them together.",
+  "reveal_feedback": "The answer is look closely at the answers again. Re- means again plus examine means look closely, so you check them once more."
+ },
+ {
+  "id": "L.3.4-H2",
+  "correct_feedback": "Exactly! Chattering teeth and shivering are clues she was freezing, way past just chilly.",
+  "incorrect_feedback": "Close one. She came from a snowstorm with chattering teeth. Which word shows the strongest, coldest feeling?",
+  "reveal_feedback": "The best answer is freezing. Chattering teeth and shivering show she was very, very cold, not just a little cool."
+ },
+ {
+  "id": "L.3.4-H3",
+  "correct_feedback": "Great thinking! Port means to carry, so a porter carries people's bags and luggage.",
+  "incorrect_feedback": "Remember the root port means to carry. Which job is all about carrying something heavy?",
+  "reveal_feedback": "The answer is carries people's bags and luggage. Port means to carry, and the porter helped with the heavy suitcases."
+ },
+ {
+  "id": "L.3.4-H4",
+  "correct_feedback": "You got it! They loaded a cooler and chairs into the back of the car, so trunk means the storage space there.",
+  "incorrect_feedback": "Take another look at the sentence. Where did Dad load the cooler and chairs? That tells you which trunk this is.",
+  "reveal_feedback": "The answer is the storage space at the back of a car. The clue is loading the cooler and chairs into the back."
+ },
+ {
+  "id": "L.3.4-H5",
+  "correct_feedback": "Perfect! Trudged shows they walked slowly and heavily, dragging their boots. It paints the hard climb.",
+  "incorrect_feedback": "Almost. The hikers were exhausted and dragging their boots. Which word shows a slow, heavy, tiring walk?",
+  "reveal_feedback": "The best word is trudged. It means to walk slowly and heavily, which fits the exhausted hikers dragging their boots."
+ },
+ {
+  "id": "L.3.4-E1",
+  "correct_feedback": "Yes! She ran all day and fell asleep right away, so exhausted means very tired.",
+  "incorrect_feedback": "Good try. She ran all day and fell asleep the moment she lay down. How would that make you feel?",
+  "reveal_feedback": "The answer is very tired. Running all day and falling right asleep are the clues that exhausted means very tired."
+ },
+ {
+  "id": "L.3.4-E2",
+  "correct_feedback": "That's right! Dad had to blow on his spoon to cool it, so piping hot means very hot.",
+  "incorrect_feedback": "Hmm, why would Dad blow on his spoon before eating? That clue tells you what piping hot means.",
+  "reveal_feedback": "The answer is very hot. Dad blew on his spoon to cool it down, which shows the soup was very hot."
+ },
+ {
+  "id": "L.3.4-E3",
+  "correct_feedback": "Great! Only one person could fit at a time, so narrow means not wide.",
+  "incorrect_feedback": "Take another look. Only one person could walk on the path at a time. What does that tell you about its width?",
+  "reveal_feedback": "The answer is not wide. Since only one person fit at a time, the path was narrow, meaning not wide."
+ },
+ {
+  "id": "L.3.4-E4",
+  "correct_feedback": "Yes! To turn the page means to flip it over so you can read the next part.",
+  "incorrect_feedback": "Almost. Turn has more than one meaning. Think about what you do to a page in a book.",
+  "reveal_feedback": "The answer is to flip over. When you turn a page, you flip it over to read the next part of the story."
+ },
+ {
+  "id": "L.3.4-E5",
+  "correct_feedback": "You got it! The heavy truck crossed safely, so sturdy means strong.",
+  "incorrect_feedback": "Close one. A heavy truck crossed the bridge safely. What does that tell you about the bridge?",
+  "reveal_feedback": "The answer is strong. A heavy truck crossed safely, so the sturdy bridge was strong."
+ },
+ {
+  "id": "L.3.4a-Q5",
+  "correct_feedback": "Nice! The owl hunted while other birds slept, so nocturnal means active at night.",
+  "incorrect_feedback": "Take another look. The owl was busy hunting while the other birds slept. When was the owl active?",
+  "reveal_feedback": "The answer is active at night. The owl hunted while other birds slept, which is the clue for nocturnal."
+ },
+ {
+  "id": "L.3.4a-E1",
+  "correct_feedback": "Yes! It burned your tongue, so scalding means burning hot.",
+  "incorrect_feedback": "Good try. The soup burned your tongue. Does that sound cold or hot to you?",
+  "reveal_feedback": "The answer is burning hot. The soup burned your tongue, which shows scalding means burning hot."
+ },
+ {
+  "id": "L.3.4a-E2",
+  "correct_feedback": "That's it! The hikers rested after a long walk, so exhausted means very tired.",
+  "incorrect_feedback": "Hmm, the hikers rested after a long walk. How do you feel after a really long walk?",
+  "reveal_feedback": "The answer is very tired. The tired hikers rested after a long walk, so exhausted means very tired."
+ },
+ {
+  "id": "L.3.4a-E3",
+  "correct_feedback": "Great! It was too big to fit through the door, so gigantic means very big.",
+  "incorrect_feedback": "Take another look. The elephant could not fit through the door. What does that tell you about its size?",
+  "reveal_feedback": "The answer is very big. The elephant was too big to fit through the door, so gigantic means very big."
+ },
+ {
+  "id": "L.3.4a-E4",
+  "correct_feedback": "Yes! She jumped for joy after winning, so thrilled means very excited.",
+  "incorrect_feedback": "Almost. Maria jumped for joy when she won. What kind of feeling makes you jump for joy?",
+  "reveal_feedback": "The answer is very excited. Jumping for joy after winning shows that thrilled means very excited."
+ },
+ {
+  "id": "L.3.4a-E5",
+  "correct_feedback": "Right! The bridge broke easily, so fragile means easily broken.",
+  "incorrect_feedback": "Close one. The old bridge broke easily when the truck drove over it. What does that tell you?",
+  "reveal_feedback": "The answer is easily broken. The bridge broke easily, so fragile means easily broken."
+ },
+ {
+  "id": "L.3.4b-Q3",
+  "correct_feedback": "Yes! The prefix im- means not, so impossible means not possible.",
+  "incorrect_feedback": "Take another look at the prefix im-. It means not. Add that to the word possible.",
+  "reveal_feedback": "The answer is not possible. The prefix im- means not, so impossible means not possible."
+ },
+ {
+  "id": "L.3.4b-H1",
+  "correct_feedback": "Nice work! Re- means again, and they put the pier back board by board, so reconstruct means build it again.",
+  "incorrect_feedback": "Remember re- means again. The storm knocked the pier down and the town put it back. What were they doing?",
+  "reveal_feedback": "The answer is build it again. Re- means again plus construct means build, so reconstruct means to build it again."
+ },
+ {
+  "id": "L.3.4b-H2",
+  "correct_feedback": "Exactly! They drove in circles and got lost, so the directions were unhelpful. Un- means not helpful.",
+  "incorrect_feedback": "Hmm, they drove in circles and got lost. Were the directions good or bad? Look for the un- word that means not helpful.",
+  "reveal_feedback": "The answer is unhelpful. Un- means not, and since they got lost, the directions did not help at all."
+ },
+ {
+  "id": "L.3.4b-H3",
+  "correct_feedback": "Great! The prefix mis- means wrongly, and you landed in the puddle, so misjudged means you judged it wrongly.",
+  "incorrect_feedback": "Take another look at the prefix mis-. You landed right in the puddle, so did you judge the distance right or not?",
+  "reveal_feedback": "The answer is wrongly. Mis- means wrong, so misjudged means you judged the distance wrongly and landed in the puddle."
+ },
+ {
+  "id": "L.3.4b-H4",
+  "correct_feedback": "You got it! Grandma treasures the locket, so priceless means worth so much you can't put a price on it.",
+  "incorrect_feedback": "Close one. Grandma whispered about the special old locket with care. Does priceless mean it is worth a lot or a little?",
+  "reveal_feedback": "The answer is worth so much you can't put a price on it. Priceless means something is too valuable to measure with money."
+ },
+ {
+  "id": "L.3.4b-H5",
+  "correct_feedback": "Perfect! The prefix pre- means before, so preview means to look at the movie before everyone else.",
+  "incorrect_feedback": "Think about which prefix means before. You want the word that means seeing the movie ahead of everyone else.",
+  "reveal_feedback": "The answer is preview. Pre- means before, so a preview is a look at the movie before it is shown to everyone."
+ },
+ {
+  "id": "L.3.4b-E1",
+  "correct_feedback": "Yes! Re- means again, so replay means to play again.",
+  "incorrect_feedback": "Take another look at the prefix re-. It means again. Add that to the word play.",
+  "reveal_feedback": "The answer is play again. Re- means again, so replay means to play again."
+ },
+ {
+  "id": "L.3.4b-E2",
+  "correct_feedback": "Great! Un- means not, so unhappy means not happy.",
+  "incorrect_feedback": "Remember the prefix un- means not. Put that together with the word happy.",
+  "reveal_feedback": "The answer is not happy. Un- means not, so unhappy means not happy."
+ },
+ {
+  "id": "L.3.4b-E3",
+  "correct_feedback": "That's it! The suffix -ful means full of, so helpful means full of help.",
+  "incorrect_feedback": "Take another look at the suffix -ful. It means full of. Add that to the word help.",
+  "reveal_feedback": "The answer is full of help. The suffix -ful means full of, so helpful means full of help."
+ },
+ {
+  "id": "L.3.4b-E4",
+  "correct_feedback": "Yes! Un- means not, so unlock means to not lock, or to open it.",
+  "incorrect_feedback": "Remember un- means not. What is the opposite of locking something up?",
+  "reveal_feedback": "The answer is not lock, or to open it. Un- means not, so unlock means to open what was locked."
+ },
+ {
+  "id": "L.3.4b-E5",
+  "correct_feedback": "Great! The suffix -less means without, so fearless means without fear.",
+  "incorrect_feedback": "Take another look at the suffix -less. It means without. Add that to the word fear.",
+  "reveal_feedback": "The answer is without fear. The suffix -less means without, so fearless means without fear."
+ },
+ {
+  "id": "L.3.4c-Q3",
+  "correct_feedback": "Nice! Graph means to write or draw, and a photograph is a drawn or captured picture. Same root!",
+  "incorrect_feedback": "Look for the word that has graph inside it. Graph means to write or draw, so which word is about pictures?",
+  "reveal_feedback": "The answer is photograph. It has the root graph, which means to write or draw, and a photograph captures a picture."
+ },
+ {
+  "id": "L.3.4c-H1",
+  "correct_feedback": "Yes! Port means to carry, and the campers could carry the stove, so portable means able to be carried.",
+  "incorrect_feedback": "Remember the root port means to carry. The campers moved the stove from site to site. What does portable mean?",
+  "reveal_feedback": "The answer is able to be carried. Port means to carry, so a portable stove is one you can carry along."
+ },
+ {
+  "id": "L.3.4c-H2",
+  "correct_feedback": "Great! Aud means to hear, and people packed in for a concert, so an auditorium is a place to hear a performance.",
+  "incorrect_feedback": "Take another look at the root aud, which means to hear. Why did the crowd pack the auditorium for a concert?",
+  "reveal_feedback": "The answer is hear a performance. Aud means to hear, so an auditorium is built for people to hear a show."
+ },
+ {
+  "id": "L.3.4c-H3",
+  "correct_feedback": "You got it! Dict means to speak, so a dictator is someone who gives spoken commands to others.",
+  "incorrect_feedback": "Look for the word built from dict, which means to speak. Which one names a person who gives spoken commands?",
+  "reveal_feedback": "The answer is dictator. It comes from dict, meaning to speak, and a dictator tells others what to do with commands."
+ },
+ {
+  "id": "L.3.4c-H4",
+  "correct_feedback": "Nice! Struct means to build, so instructions help you build or put something together, like the bookshelf.",
+  "incorrect_feedback": "Remember the root struct means to build. The instructions showed how to put a bookshelf together. What do they help you do?",
+  "reveal_feedback": "The answer is build or put something together. Struct means to build, so instructions help you build the bookshelf."
+ },
+ {
+  "id": "L.3.4c-H5",
+  "correct_feedback": "Yes! Spect means to look, and Grandpa read tiny print with them, so spectacles are glasses you look through.",
+  "incorrect_feedback": "Take another look at the root spect, which means to look. Grandpa used spectacles to read tiny print. What are they?",
+  "reveal_feedback": "The answer is glasses you look through. Spect means to look, so spectacles are glasses that help you see."
+ },
+ {
+  "id": "L.3.4c-E1",
+  "correct_feedback": "Great! Baker has the root bake inside it, plus -er for the person who bakes.",
+  "incorrect_feedback": "Look for the word that has bake hiding inside it. Which one is about cooking in an oven?",
+  "reveal_feedback": "The answer is baker. It uses the root bake, and a baker is a person who bakes."
+ },
+ {
+  "id": "L.3.4c-E2",
+  "correct_feedback": "Yes! Playful has the root play inside it, meaning full of play.",
+  "incorrect_feedback": "Look for the word that has play hiding inside it. Which one is about having fun?",
+  "reveal_feedback": "The answer is playful. It uses the root play, and playful means full of play."
+ },
+ {
+  "id": "L.3.4c-E3",
+  "correct_feedback": "Great! Helper has the root help inside it, meaning a person who helps.",
+  "incorrect_feedback": "Look for the word that has help hiding inside it. Which one is about giving aid?",
+  "reveal_feedback": "The answer is helper. It uses the root help, and a helper is a person who gives aid."
+ },
+ {
+  "id": "L.3.4c-E4",
+  "correct_feedback": "Yes! Farmer has the root farm inside it, meaning a person who works on a farm.",
+  "incorrect_feedback": "Look for the word that has farm hiding inside it. Which one is about land where crops grow?",
+  "reveal_feedback": "The answer is farmer. It uses the root farm, and a farmer works on a farm."
+ },
+ {
+  "id": "L.3.4c-E5",
+  "correct_feedback": "Great! Painting has the root paint inside it, meaning something made by painting.",
+  "incorrect_feedback": "Look for the word that has paint hiding inside it. Which one is about putting color on something?",
+  "reveal_feedback": "The answer is painting. It uses the root paint, and a painting is made by painting."
+ },
+ {
+  "id": "L.3.4d-Q1",
+  "correct_feedback": "Yes! The sentence talks about a tree, so definition 1, the outer covering of a tree, fits best.",
+  "incorrect_feedback": "Read the sentence again. Is it about a dog or a tree? Match that clue to the right definition.",
+  "reveal_feedback": "The answer is definition 1. The sentence is about an oak tree, so bark means the outer covering of a tree."
+ },
+ {
+  "id": "L.3.4d-H1",
+  "correct_feedback": "Nice! The current was pulling swimmers in the water, so it means a steady flow of water or air.",
+  "incorrect_feedback": "Read the sentence again. The current was in the ocean pulling swimmers. Which meaning matches water?",
+  "reveal_feedback": "The answer is a steady flow of water or air. The current pulled swimmers at the shore, so it is the water meaning."
+ },
+ {
+  "id": "L.3.4d-H2",
+  "correct_feedback": "Great! Grandpa turns his watch to keep it running, so wind means to turn or tighten by twisting.",
+  "incorrect_feedback": "Read the sentence again. Grandpa does something to his watch each morning to keep it going. Which meaning fits?",
+  "reveal_feedback": "The answer is to turn or tighten something by twisting it. Grandpa winds his watch by twisting it each morning."
+ },
+ {
+  "id": "L.3.4d-H3",
+  "correct_feedback": "Yes! Guide words trap and tray come in ABC order, and travel fits right between them.",
+  "incorrect_feedback": "Use ABC order. The guide words are trap and tray. Which word would land between those two alphabetically?",
+  "reveal_feedback": "The answer is travel. In ABC order it falls between the guide words trap and tray, so it is on that page."
+ },
+ {
+  "id": "L.3.4d-H4",
+  "correct_feedback": "Great! Light glows through but you can't see clear shapes, so the glass is translucent.",
+  "incorrect_feedback": "Read the clue again. Some light glows through, but you cannot see clear shapes. Which word matches that in-between?",
+  "reveal_feedback": "The answer is translucent. It means some light passes through but you cannot see clear shapes, just like the frosted glass."
+ },
+ {
+  "id": "L.3.4d-H5",
+  "correct_feedback": "Yes! Maya's basket won the game by scoring, so point means a unit used to keep score.",
+  "incorrect_feedback": "Read the sentence again. Maya's basket helped her team win the game. Which meaning of point fits a game?",
+  "reveal_feedback": "The answer is a unit used to keep score in a game. Maya's winning basket scored the deciding point."
+ }
+]
