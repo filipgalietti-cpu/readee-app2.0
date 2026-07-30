@@ -2975,7 +2975,7 @@
         {
           "id": "RI.2.3-Q6",
           "type": "multiple_choice",
-          "prompt": "The passage explains that the sun makes ocean water evaporate. What must happen to the water vapor *after* it rises for clouds to form?",
+          "prompt": "The sun warms the ocean and makes some of the water turn into water vapor. This water vapor is so light that it rises high into the sky. Way up high in the sky, the air is very cold. What must happen to the water vapor after it rises for clouds to form?",
           "choices": [
             "It must get much saltier to stick together.",
             "It becomes colder and joins with other tiny pieces.",
@@ -2994,7 +2994,8 @@
           "incorrect_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/194a466d-9f89-4d3a-99f9-73926aadd444.wav",
           "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/da085eb8-9a28-4cce-acf9-8880196c4908.wav",
           "fb_regen": true,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q6.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q6.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RI.2.3-Q7",
@@ -3098,7 +3099,7 @@
         {
           "id": "RI.2.3-Q15",
           "type": "multiple_choice",
-          "prompt": "Based on the passage, how does the shallow ocean near the shore help plants grow on the ocean floor?",
+          "prompt": "Near the shore, the ocean is shallow, which means the water is not very deep. Plants grow down on the ocean floor, and like all plants, they need sunlight to grow. Based on the passage, how does the shallow ocean near the shore help plants grow on the ocean floor?",
           "choices": [
             "The shallow water helps small fish find the plants easily.",
             "It lets sunlight reach the bottom of the ocean, where plants need it to grow.",
@@ -3117,7 +3118,8 @@
           "incorrect_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/221c50cf-79ef-43ac-aa87-b52e1f141435.wav",
           "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/c6422edb-b995-4b2e-924b-48a6c1675295.wav",
           "fb_regen": true,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q15.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.3/RI.2.3-Q15.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RI.2.3-H1",
@@ -4747,7 +4749,7 @@
         {
           "id": "RI.2.10-Q1",
           "type": "multiple_choice",
-          "prompt": "Based on the text, why would an octopus change its color?",
+          "prompt": "An octopus has a special power. It can change the color of its skin to match the rocks and sand around it. When it does this, it is very hard for other animals to see the octopus. Based on the text, why would an octopus change its color?",
           "choices": [
             "To find its way home.",
             "To hide from other animals.",
@@ -4766,7 +4768,8 @@
           "incorrect_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/44d9bdb9-86a9-4f5a-92ba-fb6f93b41573.wav",
           "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/06fc5d2f-4885-42a1-abfc-a6f8b291d0be.wav",
           "fb_regen": true,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q1.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q1.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RI.2.10-Q3",
@@ -4821,7 +4824,7 @@
         {
           "id": "RI.2.10-Q5",
           "type": "multiple_choice",
-          "prompt": "Over many years, what causes a volcano to slowly get taller and wider?",
+          "prompt": "A volcano is a mountain that can erupt. When a volcano erupts, hot lava flows out and runs down its sides. The lava cools and turns as hard as rock. Over many years, what causes a volcano to slowly get taller and wider?",
           "choices": [
             "The ground under the volcano stretches and pushes it up.",
             "New layers of hardened lava build up on its sides.",
@@ -4840,7 +4843,8 @@
           "incorrect_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/a9f930b6-f612-48b9-b54b-6ec043ac5ab3.wav",
           "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/b4c22dcd-bb2b-41ed-94f3-be125c2a9021.wav",
           "fb_regen": true,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q5.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RI.2.10/RI.2.10-Q5.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RI.2.10-H1",
@@ -6808,7 +6812,7 @@
         {
           "id": "RF.2.4a-Q1",
           "type": "multiple_choice",
-          "prompt": "What did the farmer do to help his garden grow before summer?",
+          "prompt": "In the spring, a farmer wanted to grow a garden. First, he planted small seeds down in the soft dirt. Then he gave the seeds water every single day. By summer, green plants were growing all over his garden. What did the farmer do to help his garden grow before summer?",
           "choices": [
             "He picked the ripe corn.",
             "He watered the seeds and planted them.",
@@ -6827,7 +6831,8 @@
           "incorrect_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/3be7667a-687e-428c-848d-8bdb2f780747.wav",
           "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/51c8edc5-b8ca-4b22-8c16-78e474631fb4.wav",
           "fb_regen": true,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4a/RF.2.4a-Q1.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/2nd-grade/RF.2.4a/RF.2.4a-Q1.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RF.2.4a-Q2",

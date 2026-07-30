@@ -812,7 +812,7 @@
         {
           "id": "RL.1.4-Q1",
           "type": "multiple_choice",
-          "prompt": "The bright sun warmed her face.",
+          "prompt": "Read this sentence: \"The bright sun warmed her face.\" Which word helps you picture how the sun looked?",
           "choices": [
             "face",
             "Bright",
@@ -824,7 +824,7 @@
           "difficulty": 2,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RL.1.4/RL.1.4-Q1.wav",
           "adaptiveDifficulty": 15,
-          "audio_regen": true,
+          "audio_regen": "2026-07-30T03:42:27.892Z",
           "correct_feedback": "Yes! 'Bright' is the word that tells us about the sun. Nice work!",
           "correct_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/6dcef748-a576-4eca-b7ae-984a7a7701ce.wav",
           "incorrect_feedback": "Hmm, look for the word that tells us more about the sun. How did the sun look?",
@@ -2170,7 +2170,7 @@
         {
           "id": "RI.1.1-Q1",
           "type": "multiple_choice",
-          "prompt": "Based on the text, what kind of weather do penguins like?",
+          "prompt": "Penguins live where it is very cold. They swim in icy water and walk on the snow. Based on the text, what kind of weather do penguins like?",
           "choices": [
             "Rainy and windy weather",
             "Warm and wet weather",
@@ -2182,7 +2182,7 @@
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.1/RI.1.1-Q1.wav",
           "adaptiveDifficulty": 48,
-          "audio_regen": true,
+          "audio_regen": "2026-07-30T03:42:27.892Z",
           "correct_feedback": "Yes! The text tells us penguins like cold places, so snowy and icy weather is best. Nice work!",
           "correct_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/0d66432e-0b69-45ee-a0e6-92ddbdfcc52d.wav",
           "incorrect_feedback": "Hmm, think about where penguins live. Do they like it hot and sunny, or cold and icy?",
@@ -2437,7 +2437,7 @@
         {
           "id": "RI.1.2-Q1",
           "type": "multiple_choice",
-          "prompt": "Apples can be red, green, or yellow. They grow on trees. Apples are a healthy snack.\n\nWhat is the main topic?",
+          "prompt": "An apple is a crunchy fruit. Apples grow on tall trees. Many kids eat an apple for a snack. What is the main topic?",
           "choices": [
             "Colors",
             "Snacks",
@@ -2451,7 +2451,7 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q1-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.2/RI.1.2-Q1.png",
           "adaptiveDifficulty": 19,
-          "audio_regen": true,
+          "audio_regen": "2026-07-30T03:42:27.892Z",
           "correct_feedback": "Yes! Every sentence tells us about apples, so that is the main topic. Nice work!",
           "correct_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/164d69e8-e702-48b0-89cf-33665d2cb45b.wav",
           "incorrect_feedback": "Almost! What one thing does every sentence talk about? Read them again and see.",
@@ -2463,7 +2463,7 @@
         {
           "id": "RI.1.2-Q2",
           "type": "multiple_choice",
-          "prompt": "Firefighters wear special gear. They drive fire trucks. They put out fires and help people.\n\nWhat is the main topic?",
+          "prompt": "A firefighter has a brave job. Firefighters wear thick gear to stay safe. They ride a fire truck and help people. What is the main topic?",
           "choices": [
             "Gear",
             "Trucks",
@@ -2477,7 +2477,7 @@
           "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.2/RI.1.2-Q2-hint.mp3",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/1st-grade/RI.1.2/RI.1.2-Q2.png",
           "adaptiveDifficulty": 30,
-          "audio_regen": true,
+          "audio_regen": "2026-07-30T03:42:27.892Z",
           "correct_feedback": "Yes! Every sentence tells about firefighters, so they are the main topic. Nice work!",
           "correct_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/92ed2322-2701-4674-875c-277fd2954b4c.wav",
           "incorrect_feedback": "Good try! Who wears the gear, drives the truck, and puts out fires? That is your answer.",
@@ -2807,7 +2807,7 @@
         {
           "id": "RI.1.3-Q5",
           "type": "multiple_choice",
-          "prompt": "The passage tells us about the caterpillar's big change. What does the caterpillar do right after eating to get ready for this change?",
+          "prompt": "A caterpillar eats leaves all day long. Right after it eats, it makes a cocoon. Inside the cocoon it will change into a butterfly. What does the caterpillar do right after it eats?",
           "choices": [
             "It makes a cocoon.",
             "It flies away.",
@@ -2819,7 +2819,7 @@
           "difficulty": 1,
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.3/RI.1.3-Q5.wav",
           "adaptiveDifficulty": 31,
-          "audio_regen": true,
+          "audio_regen": "2026-07-30T03:42:27.892Z",
           "correct_feedback": "Yes! Right after eating, the caterpillar makes a cocoon to get ready. Nice work!",
           "correct_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/247354d9-881c-430c-abba-0a8462daedf5.wav",
           "incorrect_feedback": "Good try! What does the caterpillar build to get ready for its big change? Think about that step.",
@@ -2995,19 +2995,19 @@
         {
           "id": "RI.1.4-Q3",
           "type": "multiple_choice",
-          "prompt": "Dolphins need to find food even when the water is very dark. They use echolocation. This helps them send out sounds that bounce back, showing them where fish are hiding.",
+          "prompt": "Dolphins must find food even when the water is very dark. They use echolocation. This lets them send out sounds that bounce back and show them where fish are hiding. In this text, what does the word echolocation mean?",
           "choices": [
-            "A: swimming very fast",
-            "B: making loud noises to scare fish away",
-            "C: using sounds to find things",
-            "D: sleeping quietly in the water"
+            "swimming very fast",
+            "making loud noises to scare fish away",
+            "using sounds to find things",
+            "sleeping quietly in the water"
           ],
-          "correct": "C: using sounds to find things",
+          "correct": "using sounds to find things",
           "hint": "Look at how the sounds help the dolphins find fish in the dark water.",
           "difficulty": "easy",
           "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/1st-grade/RI.1.4/RI.1.4-Q3.wav",
           "adaptiveDifficulty": 41,
-          "audio_regen": true,
+          "audio_regen": "2026-07-30T03:42:27.892Z",
           "correct_feedback": "Yes! Echolocation is using sounds that bounce back to find things. Nice work!",
           "correct_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/d5de98df-202e-491a-abc3-4224e6080696.wav",
           "incorrect_feedback": "Almost! The text says dolphins send out sounds that bounce back. What are the sounds helping them do?",

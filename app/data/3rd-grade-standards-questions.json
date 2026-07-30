@@ -1679,7 +1679,7 @@
         {
           "id": "RL.3.10-Q1",
           "type": "multiple_choice",
-          "prompt": "What does the old woman's action of putting a lantern in her window every night reveal about the kind of person she is?",
+          "prompt": "Every night, old Mrs. Bell set a glowing lantern in her window. Her little cottage stood at the edge of a dark forest where the paths were hard to see. \"I light it so any lost traveler can find their way to a warm, safe place,\" she said with a smile. Even on cold, windy nights, she never once forgot. What does the old woman's action of putting a lantern in her window every night reveal about the kind of person she is?",
           "choices": [
             "She is afraid of the dark forest outside her home.",
             "She is a thoughtful person who wants to help others.",
@@ -1694,7 +1694,8 @@
           "incorrect_feedback": "Good try. Think about WHY someone would put a light in the window every single night. What kind of person does that show she is?",
           "reveal_feedback": "The answer is that she is a thoughtful person who wants to help others. Lighting a lantern every night helps guide people.",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.10/RL.3.10-Q1.png",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q1.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q1.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RL.3.10-Q2",
@@ -1720,7 +1721,7 @@
         {
           "id": "RL.3.10-Q3",
           "type": "multiple_choice",
-          "prompt": "After the other kids said Sana couldn't climb the tree, what did she do next?",
+          "prompt": "The other kids stood under the tall oak tree. \"You can't climb that, Sana. It's way too high for you,\" they said. Sana looked up at the branches and took a slow, deep breath. Then she reached out, grabbed a branch, and started to climb. After the other kids said Sana couldn't climb the tree, what did she do next?",
           "choices": [
             "She walked home.",
             "She grabbed a branch and started to climb.",
@@ -1735,7 +1736,8 @@
           "incorrect_feedback": "Take another look. Right after the kids doubted her, what did Sana do? Reread that part to find her next action.",
           "reveal_feedback": "The answer is that she grabbed a branch and started to climb. Even after the kids said she couldn't, she went for it.",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RL.3.10/RL.3.10-Q3.png",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q3.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RL.3.10/RL.3.10-Q3.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RL.3.10-Q4",
@@ -1957,7 +1959,7 @@
         {
           "id": "RI.3.1-Q4",
           "type": "multiple_choice",
-          "prompt": "According to the text, what did Thomas Edison say he found instead of failures when trying to invent the light bulb?",
+          "prompt": "Thomas Edison tried many, many times to invent the light bulb, and lots of his tries did not work. But Edison did not think of them as failures. \"I have not failed. I have just found 1,000 ways that won't work,\" he said. He kept going until he finally made a bulb that lit up. According to the text, what did Thomas Edison say he found instead of failures when trying to invent the light bulb?",
           "choices": [
             "Many reasons to stop trying.",
             "1,000 ways that won't work.",
@@ -1972,7 +1974,8 @@
           "incorrect_feedback": "Hmm, think about how Edison felt about his mistakes. He didn't call them failures at all. What did he count instead?",
           "reveal_feedback": "The answer is \"1,000 ways that won't work.\" Edison saw each miss as a lesson, not a failure, so he kept trying.",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.1/RI.3.1-Q4.png",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q4.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.1/RI.3.1-Q4.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RI.3.1-Q5",
@@ -3649,14 +3652,15 @@
             "The first gives an opinion, and the second gives facts to support it."
           ],
           "correct": "The first tells what something is, and the second tells why it happens.",
-          "hint": "Look at what information each paragraph provides about earthquakes.",
+          "hint": "Look at what information each paragraph provides about rainbows.",
           "difficulty": "medium",
           "adaptiveDifficulty": 45,
           "correct_feedback": "Yes! The first part tells what a rainbow is, and the second tells why it happens. Great connecting!",
           "incorrect_feedback": "Take another look. The first part describes a rainbow, and the second explains how it forms. How do those two link up?",
           "reveal_feedback": "The answer is 'The first tells what something is, and the second tells why it happens.' One describes, the other explains.",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RI.3.8/RI.3.8-Q2.png",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.8/RI.3.8-Q2.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RI.3.8/RI.3.8-Q2.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RI.3.8-Q3",
@@ -5482,7 +5486,7 @@
         {
           "id": "RF.3.4a-Q3",
           "type": "multiple_choice",
-          "prompt": "Based on the inventions mentioned in the text, what can you understand about Benjamin Franklin's interests?",
+          "prompt": "Benjamin Franklin loved to invent things that helped people in their daily lives. He made bifocal glasses so people could see both near and far. He invented the lightning rod to keep houses safe from fires during storms. He even built a special stove that warmed rooms while using less wood. Based on the inventions mentioned in the text, what can you understand about Benjamin Franklin's interests?",
           "choices": [
             "He wanted to write many books and stories.",
             "He liked making everyday life better and safer for people.",
@@ -5497,7 +5501,8 @@
           "incorrect_feedback": "Good try! Think about what inventions are for. What do the things Franklin made tell you about what he cared about?",
           "reveal_feedback": "The answer is: he liked making everyday life better and safer for people. His inventions were tools that helped people in daily life.",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/3rd-grade/RF.3.4a/RF.3.4a-Q3.png",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4a/RF.3.4a-Q3.wav"
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/3rd-grade/RF.3.4a/RF.3.4a-Q3.wav",
+          "audio_regen": "2026-07-30T03:42:27.892Z"
         },
         {
           "id": "RF.3.4a-Q4",
