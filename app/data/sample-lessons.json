@@ -18976,27 +18976,27 @@
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.2b-Q1",
+        "mcqId": "RF.1.2b-H1",
         "slide": 7
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.2b-Q2",
+        "mcqId": "RF.1.2b-H2",
         "slide": 8
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.2b-Q3",
+        "mcqId": "RF.1.2b-H3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.2b-Q4",
+        "mcqId": "RF.1.2b-H4",
         "slide": 10
       },
       {
         "type": "mcq",
-        "mcqId": "RF.1.2b-Q5",
+        "mcqId": "RF.1.2b-H5",
         "slide": 11
       }
     ]
@@ -22354,7 +22354,7 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.5a-Q2",
+        "mcqId": "L.1.5a-H2",
         "slide": 7
       },
       {
@@ -22364,12 +22364,12 @@
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.5a-Q4",
+        "mcqId": "L.1.5a-H3",
         "slide": 9
       },
       {
         "type": "mcq",
-        "mcqId": "L.1.5a-Q5",
+        "mcqId": "L.1.5a-H4",
         "slide": 10
       }
     ]
