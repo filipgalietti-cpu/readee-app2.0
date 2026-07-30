@@ -41867,8 +41867,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.3.9/interactive-q.mp3",
-            "ttsScript": "Your turn! Listen to these two short stories about bears. Story one: Lily saw a big, brown bear. It was eating juicy berries in the forest. The bear had thick fur. Story two: Sam saw a bear climbing a tall tree. It had sharp claws. The bear was looking for honey. Now, what did only one story tell you about the bear's food?",
-            "audioRegenAt": "2026-06-03T22:17:16.535Z"
+            "ttsScript": "Your turn! Listen to these two short stories about bears. Story one: Lily saw a big, brown bear. It was eating juicy berries in the forest. The bear had thick fur. Story two: Sam saw a bear climbing a tall tree. It had sharp claws. The bear was looking for honey. Now, what food did the first story say the bear was eating?",
+            "audioRegenAt": "2026-07-30T03:53:08.913Z"
           }
         ],
         "heading": "Your Turn!",
@@ -41877,7 +41877,7 @@
         "interactive": {
           "hint": "Think about what each story told you about what the bear ate.",
           "kind": "tap",
-          "prompt": "What did one story say?",
+          "prompt": "What did the first story say?",
           "choices": [
             "berries",
             "honey",
