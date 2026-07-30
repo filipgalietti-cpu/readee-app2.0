@@ -38106,9 +38106,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.3.6/S2a.mp3",
-            "ttsScript": "The narratortells the storyfrom their view.",
+            "ttsScript": "The narrator tells the story from their view.",
             "displayText": "Narrator's view",
-            "audioRegenAt": "2026-07-22T04:08:54.753Z",
+            "audioRegenAt": "2026-07-30T03:31:42.326Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "narrator",
@@ -38118,9 +38118,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.3.6/S2b.mp3",
-            "ttsScript": "Their feelingsand opinionsshow.",
+            "ttsScript": "Their feelings and opinions show.",
             "displayText": "Feelings and opinions show",
-            "audioRegenAt": "2026-07-22T04:08:54.500Z",
+            "audioRegenAt": "2026-07-30T03:31:46.063Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "feelings",
@@ -41996,8 +41996,8 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.3.10/rb-2b.mp3",
-            "ttsScript": "Space.Volcanoes.",
-            "audioRegenAt": "2026-06-10T20:36:05.288Z",
+            "ttsScript": "Space. Volcanoes.",
+            "audioRegenAt": "2026-07-30T03:29:27.785Z",
             "displayParts": [
               {
                 "text": "Space.",
@@ -42012,8 +42012,8 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.3.10/rb-2c.mp3",
-            "ttsScript": "Animals.Machines.",
-            "audioRegenAt": "2026-06-10T20:36:08.185Z",
+            "ttsScript": "Animals. Machines.",
+            "audioRegenAt": "2026-07-30T03:31:37.897Z",
             "displayParts": [
               {
                 "text": "Animals.",
@@ -44784,9 +44784,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.3.4/S2a.mp3",
-            "ttsScript": "The other wordsin the sentence",
+            "ttsScript": "The other words in the sentence",
             "displayText": "Other words in sentence",
-            "audioRegenAt": "2026-07-22T04:09:07.823Z",
+            "audioRegenAt": "2026-07-30T03:31:49.611Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "words",
