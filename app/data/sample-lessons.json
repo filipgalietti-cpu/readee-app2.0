@@ -16641,20 +16641,24 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.5/rb-0b.mp3",
-            "ttsScript": "Today we meet three helpers: contents, headings, and labels.",
-            "audioRegenAt": "2026-06-10T20:05:06.397Z",
+            "ttsScript": "Today we meet four helpers: a heading, bold words, a glossary, and an index.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Contents",
+                "text": "Heading",
                 "delay": 0
               },
               {
-                "text": "Headings",
-                "delay": 6060
+                "text": "Bold words",
+                "delay": 3000
               },
               {
-                "text": "Labels",
-                "delay": 7500
+                "text": "Glossary",
+                "delay": 5000
+              },
+              {
+                "text": "Index",
+                "delay": 6500
               }
             ],
             "highlightWord": {
@@ -16684,16 +16688,16 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.1.5/rb-1a.mp3",
-            "ttsScript": "The table of contents is up front. It lists chapters and their page numbers.",
-            "audioRegenAt": "2026-06-10T20:05:05.992Z",
+            "ttsScript": "Some words are printed in bold. Bold means dark, thick letters. It shows a word is important to know.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Contents",
+                "text": "Bold words",
                 "delay": 0
               },
               {
-                "text": "lists pages",
-                "delay": 3720
+                "text": "important to know",
+                "delay": 4000
               }
             ],
             "highlightWord": {
@@ -16724,16 +16728,16 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.1.5/rb-1c.mp3",
-            "ttsScript": "A label is a little word that points to a part of a picture.",
-            "audioRegenAt": "2026-06-10T20:05:10.596Z",
+            "ttsScript": "A glossary is in the back of the book. It tells you what a hard word means.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Label",
+                "text": "Glossary",
                 "delay": 0
               },
               {
-                "text": "names a picture part",
-                "delay": 2000
+                "text": "what a word means",
+                "delay": 3000
               }
             ],
             "highlightWord": {
@@ -16764,16 +16768,16 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.5/rb-2b.mp3",
-            "ttsScript": "Which part shows you what page frogs start on? The contents!",
-            "audioRegenAt": "2026-06-10T20:05:11.048Z",
+            "ttsScript": "Which part helps you find every page about frogs? The index!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "What page do frogs start on?",
+                "text": "Find every frog page?",
                 "delay": 0
               },
               {
-                "text": "The contents!",
-                "delay": 5280
+                "text": "The index!",
+                "delay": 5000
               }
             ],
             "highlightWord": {
@@ -16784,16 +16788,16 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.1.5/rb-2c.mp3",
-            "ttsScript": "Now you are on the frog page. Which part names the frog's legs? The label!",
-            "audioRegenAt": "2026-06-10T20:05:12.263Z",
+            "ttsScript": "You spot the bold word gills. Where do you learn what it means? The glossary!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "What names the legs?",
+                "text": "What does 'gills' mean?",
                 "delay": 0
               },
               {
-                "text": "The label!",
-                "delay": 6660
+                "text": "The glossary!",
+                "delay": 5000
               }
             ],
             "highlightWord": {
@@ -16835,16 +16839,16 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.1.5/rb-3b.mp3",
-            "ttsScript": "Ask what you need! A page number? Use contents. A picture part? Use a label.",
-            "audioRegenAt": "2026-06-10T20:05:27.270Z",
+            "ttsScript": "Ask what you need! What a word means? Use the glossary. Every page about a topic? Use the index.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Page number -> contents",
+                "text": "Word meaning: glossary",
                 "delay": 0
               },
               {
-                "text": "Picture part -> label",
-                "delay": 5200
+                "text": "Find a topic: index",
+                "delay": 4500
               }
             ],
             "highlightWord": {
@@ -16886,24 +16890,24 @@
           "kind": "match",
           "prompt": "Match each part to its job",
           "leftItems": [
-            "Contents",
-            "Heading",
-            "Label"
+            "Glossary",
+            "Bold word",
+            "Index"
           ],
           "rightItems": [
-            "shows page numbers",
-            "tells the topic",
-            "names a picture part"
+            "tells what a word means",
+            "shows an important word",
+            "find every page on a topic"
           ],
           "wrongAudio": "audio/lessons/RI.1.5/interactive-wrong.mp3",
-          "wrongScript": "Not quite - think about what each part helps you find. Try again!",
+          "wrongScript": "Not quite. Think about what each part helps you do. Try again!",
           "correctAudio": "audio/lessons/RI.1.5/interactive-correct.mp3",
           "correctPairs": {
-            "Label": "names a picture part",
-            "Heading": "tells the topic",
-            "Contents": "shows page numbers"
+            "Glossary": "tells what a word means",
+            "Bold word": "shows an important word",
+            "Index": "find every page on a topic"
           },
-          "correctScript": "You matched them all! Contents shows pages, a heading tells the topic, and a label names a picture part!"
+          "correctScript": "You matched them all! A glossary tells what a word means, a bold word shows an important word, and an index helps you find every page on a topic!"
         }
       },
       {
@@ -24723,9 +24727,9 @@
           {
             "sub": "hook",
             "audioFile": "audio/lessons/RL.2.4/rb-0hook.mp3",
-            "ttsScript": "Some words do more than tell. They let you hear, see, and feel!",
-            "displayText": "Words you can sense",
-            "audioRegenAt": "2026-06-10T02:30:42.561Z",
+            "ttsScript": "Some words play like music. They can match sounds or say a word again!",
+            "displayText": "Words that make music",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "feel",
               "delay": 6400
@@ -24734,16 +24738,16 @@
           {
             "sub": "key terms",
             "audioFile": "audio/lessons/RL.2.4/rb-0key terms.mp3",
-            "ttsScript": "A sensory word pulls in one of your senses.",
-            "audioRegenAt": "2026-06-10T02:30:41.235Z",
+            "ttsScript": "A sound device makes words match or repeat to give a fun beat.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Sensory word?",
+                "text": "Sound device?",
                 "delay": 0
               },
               {
-                "text": "Pulls in a sense",
-                "delay": 1440
+                "text": "Match or repeat",
+                "delay": 600
               }
             ],
             "highlightWord": {
@@ -24770,16 +24774,16 @@
           {
             "sub": "beat 1",
             "audioFile": "audio/lessons/RL.2.4/rb-1beat 1.mp3",
-            "ttsScript": "The word crash lets you hear the sound.",
-            "audioRegenAt": "2026-06-08T03:21:46.023Z",
+            "ttsScript": "Alliteration is when words start with the same sound, like silly slippery snakes.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Crash",
+                "text": "Alliteration",
                 "delay": 0
               },
               {
-                "text": "We hear it",
-                "delay": 2000
+                "text": "Same first sound",
+                "delay": 600
               }
             ],
             "highlightWord": {
@@ -24790,16 +24794,16 @@
           {
             "sub": "beat 2",
             "audioFile": "audio/lessons/RL.2.4/rb-1beat 2.mp3",
-            "ttsScript": "The word sticky lets you feel it on your hands.",
-            "audioRegenAt": "2026-06-08T03:21:37.338Z",
+            "ttsScript": "Repetition is when a word is said again and again, like go, go, go!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Sticky",
+                "text": "Repetition",
                 "delay": 0
               },
               {
-                "text": "We feel it",
-                "delay": 2000
+                "text": "Said again for effect",
+                "delay": 600
               }
             ],
             "highlightWord": {
@@ -24826,23 +24830,23 @@
           {
             "sub": "passage",
             "audioFile": "audio/lessons/RL.2.4/rb-2passage.mp3",
-            "ttsScript": "The bacon sizzled in the pan.",
-            "displayText": "The bacon sizzled in the pan.",
-            "audioRegenAt": "2026-06-08T03:22:19.274Z"
+            "ttsScript": "The big brown bear bounced by.",
+            "displayText": "The big brown bear bounced by.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           },
           {
             "sub": "find word",
             "audioFile": "audio/lessons/RL.2.4/rb-2find word.mp3",
-            "ttsScript": "Which word is the sensory word? Sizzled!",
-            "audioRegenAt": "2026-06-10T03:35:50.470Z",
+            "ttsScript": "What sound device is this? Alliteration! Big, brown, bear, and bounced all start with the same sound.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Sensory word?",
+                "text": "Sound device?",
                 "delay": 0
               },
               {
-                "text": "Sizzled!",
-                "delay": 2000
+                "text": "Alliteration!",
+                "delay": 600
               }
             ],
             "highlightWord": {
@@ -24853,16 +24857,16 @@
           {
             "sub": "which sense",
             "audioFile": "audio/lessons/RL.2.4/rb-2which sense.mp3",
-            "ttsScript": "Which sense does it pull in? We hear it!",
-            "audioRegenAt": "2026-06-10T02:23:27.918Z",
+            "ttsScript": "How does it sound when you read it? It has a fun, bouncy beat!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Which sense?",
+                "text": "How does it sound?",
                 "delay": 0
               },
               {
-                "text": "We hear it!",
-                "delay": 3360
+                "text": "A bouncy beat!",
+                "delay": 600
               }
             ],
             "highlightWord": {
@@ -24873,9 +24877,9 @@
           {
             "sub": "wrap",
             "audioFile": "audio/lessons/RL.2.4/rb-2wrap.mp3",
-            "ttsScript": "So sizzled is a word we can hear. You found the music!",
-            "displayText": "Sizzled = a sound",
-            "audioRegenAt": "2026-06-10T02:23:37.375Z"
+            "ttsScript": "So those b words make alliteration. You found the music!",
+            "displayText": "That's alliteration",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           }
         ],
         "heading": "Let's Try One",
@@ -24889,9 +24893,9 @@
           {
             "sub": "trick",
             "audioFile": "audio/lessons/RL.2.4/rb-3trick.mp3",
-            "ttsScript": "Here's a trick. Ask, can I hear it, see it, or feel it?",
-            "displayText": "Hear, see, or feel it?",
-            "audioRegenAt": "2026-06-08T03:22:25.138Z",
+            "ttsScript": "Here's a trick. Listen for words that repeat or start with the same sound.",
+            "displayText": "Listen for matching sounds",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "feel",
               "delay": 5040
@@ -24900,9 +24904,9 @@
           {
             "sub": "wrap",
             "audioFile": "audio/lessons/RL.2.4/rb-3wrap.mp3",
-            "ttsScript": "The answer tells you the sense!",
-            "displayText": "That's the sense",
-            "audioRegenAt": "2026-06-08T03:22:24.714Z"
+            "ttsScript": "That tells you it's a sound device!",
+            "displayText": "That's a sound device",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           }
         ],
         "heading": "Ask Your Senses",
@@ -24916,36 +24920,33 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.2.4/interactive-q.mp3",
-            "ttsScript": "Your turn! Match each sensory word to the sense it pulls in. Sweet, glowing, and buzzing.",
-            "audioRegenAt": "2026-06-10T02:47:20.869Z"
+            "ttsScript": "Your turn! Match each phrase to its sound device. Is it alliteration or repetition?",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           }
         ],
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
         "interactive": {
-          "hint": "Could you chew it, see it, or hear it?",
+          "hint": "Do the words start with the same sound, or is a word said again?",
           "kind": "match",
-          "prompt": "Match the word to its sense",
+          "prompt": "Match the phrase to its sound device",
           "leftItems": [
-            "Sweet",
-            "Glowing",
-            "Buzzing"
+            "Silly slippery snakes",
+            "Go, go, go!"
           ],
           "rightItems": [
-            "Taste",
-            "Sight",
-            "Sound"
+            "Alliteration",
+            "Repetition"
           ],
           "wrongAudio": "audio/lessons/RL.2.4/interactive-wrong.mp3",
-          "wrongScript": "Good try! Think about each word. Could you chew it, see it, or hear it? Try again!",
+          "wrongScript": "Good try! Alliteration starts words with the same sound. Repetition says a word again. Try again!",
           "correctAudio": "audio/lessons/RL.2.4/interactive-correct.mp3",
           "correctPairs": {
-            "Sweet": "Taste",
-            "Buzzing": "Sound",
-            "Glowing": "Sight"
+            "Silly slippery snakes": "Alliteration",
+            "Go, go, go!": "Repetition"
           },
-          "correctScript": "You matched them all! Sweet is taste, glowing is sight, and buzzing is sound!"
+          "correctScript": "You matched them all! Silly slippery snakes is alliteration, and go, go, go is repetition!"
         }
       },
       {
@@ -28374,20 +28375,20 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.2.6/S1c.mp3",
-            "ttsScript": "Usually it is to teach, to entertain, or to convince.",
-            "audioRegenAt": "2026-07-22T04:08:34.908Z",
+            "ttsScript": "Usually it is to inform us, to entertain us, or to persuade us.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Teach",
+                "text": "Inform",
                 "delay": 0
               },
               {
                 "text": "Entertain",
-                "delay": 3240
+                "delay": 500
               },
               {
-                "text": "Convince",
-                "delay": 5300
+                "text": "Persuade",
+                "delay": 1000
               }
             ],
             "highlightWord": {
@@ -28413,9 +28414,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RI.2.6/S2a.mp3",
-            "ttsScript": "Fact books want to teach us.",
-            "displayText": "Fact books teach us",
-            "audioRegenAt": "2026-07-22T04:08:35.177Z",
+            "ttsScript": "Fact books want to teach us facts. That is called to inform.",
+            "displayText": "Teach facts = inform",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "teach",
@@ -28478,9 +28479,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RI.2.6/S3b.mp3",
-            "ttsScript": "Some texts try to convince. They give reasons to agree with the author.",
-            "displayText": "Texts try to convince",
-            "audioRegenAt": "2026-07-22T04:08:35.323Z",
+            "ttsScript": "Some texts try to convince us. That is called to persuade. They give reasons to agree with the author.",
+            "displayText": "Convince = persuade",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "convince",
@@ -28538,16 +28539,16 @@
           {
             "sub": "Why?",
             "audioFile": "audio/lessons/RI.2.6/ex3.mp3",
-            "ttsScript": "So why did the author write it? To teach us!",
-            "audioRegenAt": "2026-07-06T04:16:25.734Z",
+            "ttsScript": "So why did the author write it? To inform us!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
                 "text": "Why write this?",
                 "delay": 0
               },
               {
-                "text": "To teach us!",
-                "delay": 4140
+                "text": "To inform us!",
+                "delay": 600
               }
             ],
             "highlightWord": {
@@ -28558,8 +28559,9 @@
           {
             "sub": "You found it",
             "audioFile": "audio/lessons/RI.2.6/ex4.mp3",
-            "ttsScript": "The author's purpose is to teach. You found it!",
-            "audioRegenAt": "2026-07-07T02:44:24.246Z"
+            "ttsScript": "The author's purpose is to inform. You found it!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
+            "displayText": "Purpose: to inform"
           }
         ],
         "heading": "Let's Try One",
@@ -40925,16 +40927,16 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RI.3.6/rb-2d.mp3",
-            "ttsScript": "So how does the author feel about recess? They love it!",
-            "audioRegenAt": "2026-06-10T20:36:40.331Z",
+            "ttsScript": "So the author loves recess. Now what do YOU think? Maybe you agree, or maybe you like quiet reading time more. That is your own view!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Author's view?",
+                "text": "Author loves it.",
                 "delay": 0
               },
               {
-                "text": "Loves recess!",
-                "delay": 6020
+                "text": "What about YOU?",
+                "delay": 1200
               }
             ],
             "highlightWord": {
@@ -40975,12 +40977,13 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RI.3.6/rb-3c.mp3",
-            "ttsScript": "Now you are ready to spot the author's view!",
-            "audioRegenAt": "2026-06-10T20:35:31.083Z",
+            "ttsScript": "Now spot the author's view, then ask yourself: do I agree, or do I think differently? That is how you compare your view with the author's!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "view",
               "delay": 2980
-            }
+            },
+            "displayText": "Your view vs. author's"
           }
         ],
         "heading": "Highlight Opinions",
@@ -47999,11 +48002,11 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.2/S3a.mp3",
-            "ttsScript": "Friendship matters.",
-            "audioRegenAt": "2026-07-22T04:09:14.159Z",
+            "ttsScript": "Here is a tiny story. Kai wanted to win the science fair, so he worked all alone and turned away every friend who offered to help.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Friendship matters.",
+                "text": "Kai worked all alone",
                 "delay": 0
               }
             ],
@@ -48015,16 +48018,16 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.2/S3b.mp3",
-            "ttsScript": "Bravery wins. Be kind.",
-            "audioRegenAt": "2026-07-22T04:09:14.050Z",
+            "ttsScript": "His project had a big mistake a friend would have caught. Ask yourself, what did Kai learn by the end? He learned that working with others beats working all alone.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Bravery wins.",
+                "text": "What did Kai learn?",
                 "delay": 0
               },
               {
-                "text": "Be kind.",
-                "delay": 1620
+                "text": "Others beat working alone",
+                "delay": 2600
               }
             ],
             "highlightWord": {
@@ -48035,16 +48038,16 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.4.2/S3c.mp3",
-            "ttsScript": "Never give up. Big themes!",
-            "audioRegenAt": "2026-07-22T04:09:13.934Z",
+            "ttsScript": "So the theme, said in one short sentence, is that teamwork leads to better results. That is how we figure out a theme!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Never give up.",
+                "text": "Theme in one sentence:",
                 "delay": 0
               },
               {
-                "text": "Big themes!",
-                "delay": 2700
+                "text": "Teamwork works better",
+                "delay": 2500
               }
             ],
             "highlightWord": {
@@ -49184,9 +49187,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.6/rb-1a.mp3",
-            "ttsScript": "When the narrator says 'he' or 'she' but only knows ONE character's thoughts, that is third-person limited.",
-            "displayText": "Third limited: one mind",
-            "audioRegenAt": "2026-06-10T20:44:50.319Z",
+            "ttsScript": "First, listen to the narrator's words. If the narrator says I or we and is a character inside the story, that is first person.",
+            "displayText": "First person: I, we, inside",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "limited",
               "delay": 8660
@@ -49195,9 +49198,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.6/rb-1b.mp3",
-            "ttsScript": "It is like following one person around. You hear only what that person feels.",
-            "displayText": "Follow one person only",
-            "audioRegenAt": "2026-06-10T20:44:50.849Z",
+            "ttsScript": "If the narrator says he, she, or they, and stays outside the story looking in, that is third person.",
+            "displayText": "Third person: he, she, outside",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "feels",
               "delay": 6580
@@ -49215,9 +49218,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.6/rb-2a.mp3",
-            "ttsScript": "When the narrator knows what EVERY character is thinking, that is third-person omniscient.",
-            "displayText": "Third omniscient: all minds",
-            "audioRegenAt": "2026-06-10T20:44:56.021Z",
+            "ttsScript": "Once you know a story is third person, notice how many minds the narrator can read. When the narrator knows only one character's thoughts, that is third-person limited.",
+            "displayText": "Third person, one mind: limited",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "omniscient",
               "delay": 7100
@@ -49226,9 +49229,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.6/rb-2b.mp3",
-            "ttsScript": "Omniscient means all-knowing. This narrator floats above and sees inside everyone.",
-            "displayText": "All-knowing narrator",
-            "audioRegenAt": "2026-06-10T20:44:55.492Z",
+            "ttsScript": "When the narrator knows what every character is thinking, that is third-person omniscient. Omniscient means all-knowing.",
+            "displayText": "All minds: omniscient",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "all-knowing",
               "delay": 1300
@@ -49485,9 +49488,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.7/rb-0b.mp3",
-            "ttsScript": "Today we line up a story's exact words with what we see on screen.",
-            "displayText": "Words to pictures",
-            "audioRegenAt": "2026-06-11T01:55:50.930Z",
+            "ttsScript": "Today we ask two questions. What does a movie or picture ADD to a story, and what might it LOSE, compared to the words?",
+            "displayText": "What movies add and lose",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "pictures",
               "delay": 2000
@@ -49505,9 +49508,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.7/rb-1a.mp3",
-            "ttsScript": "Authors give us exact details, like a green cloak with a silver clasp.",
-            "displayText": "Story details: green cloak, silver clasp",
-            "audioRegenAt": "2026-06-11T01:55:51.139Z",
+            "ttsScript": "When a story becomes a movie, the screen can ADD things the words alone could not, like music, colors, and the look on an actor's face.",
+            "displayText": "Movie adds: music, faces",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "details",
               "delay": 1960
@@ -49516,9 +49519,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.7/rb-1b.mp3",
-            "ttsScript": "A good movie shows those very things on screen, not just any cloak.",
-            "displayText": "Screen shows the same cloak",
-            "audioRegenAt": "2026-06-11T01:55:51.216Z",
+            "ttsScript": "But a movie can also LOSE things, like a character's secret thoughts that only the written words can tell us.",
+            "displayText": "Movie loses: secret thoughts",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "same",
               "delay": 2000
@@ -49547,9 +49550,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.7/rb-2b.mp3",
-            "ttsScript": "The old lighthouse glowed red as waves crashed against the rocks.",
-            "displayText": "Lighthouse glowed red, waves crashed on rocks.",
-            "audioRegenAt": "2026-06-11T01:55:55.576Z",
+            "ttsScript": "The old lighthouse glowed red, and inside, the keeper felt very lonely.",
+            "displayText": "Lighthouse glowed red; keeper felt lonely",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "red",
               "delay": 2460
@@ -49558,16 +49561,16 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RL.4.7/rb-2c.mp3",
-            "ttsScript": "Which thing must the movie show? A red glowing light!",
-            "audioRegenAt": "2026-06-11T01:55:54.868Z",
+            "ttsScript": "What does a movie ADD here? A glowing red light, and maybe some sad music to set the mood!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Show what?",
+                "text": "Movie adds?",
                 "delay": 0
               },
               {
-                "text": "A red light!",
-                "delay": 4040
+                "text": "Red glow, sad music",
+                "delay": 3800
               }
             ],
             "highlightWord": {
@@ -49578,16 +49581,16 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RL.4.7/rb-2d.mp3",
-            "ttsScript": "And one more? Waves crashing on the rocks!",
-            "audioRegenAt": "2026-06-11T01:55:54.744Z",
+            "ttsScript": "And what does it LOSE? The words told us the keeper felt lonely, but a movie has to show that feeling on the actor's face.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "And?",
+                "text": "Movie loses?",
                 "delay": 0
               },
               {
-                "text": "Crashing waves!",
-                "delay": 3820
+                "text": "His lonely thought",
+                "delay": 3600
               }
             ],
             "highlightWord": {
@@ -49617,9 +49620,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RL.4.7/rb-3b.mp3",
-            "ttsScript": "Point to the exact words, then find that very thing on screen.",
-            "displayText": "Exact words to the screen",
-            "audioRegenAt": "2026-06-11T01:55:59.039Z",
+            "ttsScript": "Ask two questions. What did the screen ADD that the words could not? And what did the words tell us that the screen might LOSE?",
+            "displayText": "What did it add? What did it lose?",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "Exact",
               "delay": 1060
@@ -49637,27 +49640,27 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.7/interactive-q.mp3",
-            "ttsScript": "Your turn, director! Here is a sentence: A small fox darted past the frozen pond as snow fell in big white flakes. To match these exact words, what must the movie show on screen?",
-            "audioRegenAt": "2026-06-11T01:58:18.381Z"
+            "ttsScript": "Your turn, director! The words say: A small fox darted past the frozen pond as snow fell, feeling all alone. What can a movie ADD that the words alone could not?",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           }
         ],
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
         "interactive": {
-          "hint": "Find the things you could actually see, then picture them on screen.",
+          "hint": "Think about what you can hear and see in a movie that words cannot give you.",
           "kind": "tap",
-          "prompt": "What must the movie show?",
+          "prompt": "What can a movie ADD?",
           "choices": [
-            "A fox by a frozen pond, snow falling",
-            "A bright sunny meadow in spring",
-            "How lonely the fox is feeling"
+            "Music and the look on the fox's face",
+            "The fox's thoughts told in words",
+            "Nothing new at all"
           ],
-          "correct": "A fox by a frozen pond, snow falling",
+          "correct": "Music and the look on the fox's face",
           "wrongAudio": "audio/lessons/RL.4.7/interactive-wrong.mp3",
-          "wrongScript": "Not quite. Look back at the words a camera could really show. A fox, a frozen pond, falling snow. Try again!",
+          "wrongScript": "Not quite. A movie can ADD things like music and an actor's face. The words already gave us the thoughts. Try again!",
           "correctAudio": "audio/lessons/RL.4.7/interactive-correct.mp3",
-          "correctScript": "Yes! A fox by a frozen pond with snow falling. You matched the exact words to the screen!"
+          "correctScript": "Yes! A movie can add music and show the feeling on the fox's face. That is what a visual story adds!"
         }
       },
       {
@@ -49959,8 +49962,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RL.4.9/interactive-q.mp3",
-            "ttsScript": "Your turn, detective! Listen to this tiny story. A clever rabbit wanted to eat the juicy carrots in Farmer McGregor's garden, but the farmer always watched. The rabbit pretended to be hurt, hopping slowly and limping past the farmer. When the farmer went to help, the rabbit quickly darted into the garden and ate all the carrots! What kind of story is this?",
-            "audioRegenAt": "2026-06-03T22:24:39.037Z"
+            "ttsScript": "Your turn, detective! This clever rabbit tricked the farmer to get the carrots. Stories about clever tricksters like this one appear in many cultures around the world, from Africa to the Americas. When you compare trickster tales from different cultures, what do they usually share?",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           }
         ],
         "heading": "Your Turn!",
@@ -49969,17 +49972,17 @@
         "interactive": {
           "hint": "Think about the main character.",
           "kind": "tap",
-          "prompt": "What kind of story?",
+          "prompt": "What do trickster tales from different cultures share?",
           "choices": [
-            "Trickster Tale",
-            "Hero Journey",
-            "Moral Story"
+            "A clever character who outsmarts others",
+            "The exact same animals",
+            "The same language"
           ],
-          "correct": "Trickster Tale",
+          "correct": "A clever character who outsmarts others",
           "wrongAudio": "audio/lessons/RL.4.9/interactive-wrong.mp3",
-          "wrongScript": "Not quite! Remember, trickster tales often involve a clever character outsmarting someone. Try again!",
+          "wrongScript": "Not quite! Think about what these stories have in common across cultures. The animals and words change, but the clever trickster stays the same. Try again!",
           "correctAudio": "audio/lessons/RL.4.9/interactive-correct.mp3",
-          "correctScript": "Exactly! That's a trickster tale because the clever rabbit used a trick to get what it wanted."
+          "correctScript": "Exactly! Trickster tales from different cultures share a clever character who outsmarts others, even when the animals and details change."
         }
       },
       {
@@ -53429,23 +53432,23 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.4.3/example-b.mp3",
-            "ttsScript": "Here is the word: fantastic.",
-            "displayText": "fantastic",
-            "audioRegenAt": "2026-06-04T03:31:07.467Z"
+            "ttsScript": "Here is the word: unhelpful.",
+            "displayText": "unhelpful",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.4.3/example-c.mp3",
-            "ttsScript": "How do we chunk it? Fan, tas, tic!",
-            "audioRegenAt": "2026-06-04T03:31:03.641Z",
+            "ttsScript": "Look for the word parts. Un, help, ful!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "How do we chunk it?",
+                "text": "Find the word parts",
                 "delay": 0
               },
               {
-                "text": "Fan-tas-tic!",
-                "delay": 3300
+                "text": "un-help-ful",
+                "delay": 1200
               }
             ],
             "highlightWord": {
@@ -53456,16 +53459,16 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.4.3/example-d.mp3",
-            "ttsScript": "Now blend the chunks together. Fantastic!",
-            "audioRegenAt": "2026-06-04T03:31:11.172Z",
+            "ttsScript": "Now blend the parts together. Unhelpful!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Now blend it?",
+                "text": "Blend the parts",
                 "delay": 0
               },
               {
-                "text": "Fantastic!",
-                "delay": 3920
+                "text": "Unhelpful!",
+                "delay": 1200
               }
             ],
             "highlightWord": {
@@ -53476,8 +53479,8 @@
           {
             "sub": "e",
             "audioFile": "audio/lessons/RF.4.3/example-e.mp3",
-            "ttsScript": "You chunked it, read it, and blended it into fantastic. You decoded the whole word!",
-            "audioRegenAt": "2026-06-04T03:31:06.372Z"
+            "ttsScript": "You found the parts un, help, and ful, then blended them into unhelpful. You used word parts to decode!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           }
         ],
         "heading": "Let's Try One",
@@ -53696,9 +53699,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.4.3a/S1b.mp3",
-            "ttsScript": "letter-sound combos",
-            "displayText": "letter-sound combos",
-            "audioRegenAt": "2026-07-22T04:09:23.300Z",
+            "ttsScript": "syllables and word parts",
+            "displayText": "syllables and word parts",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "combos",
@@ -53735,9 +53738,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.4.3a/S2a.mp3",
-            "ttsScript": "PH says F.",
-            "displayText": "PH says F",
-            "audioRegenAt": "2026-07-22T04:09:23.474Z",
+            "ttsScript": "First, split the word into syllables.",
+            "displayText": "Split into syllables",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "PH",
@@ -53753,9 +53756,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.4.3a/S2b.mp3",
-            "ttsScript": "GH can be silent.",
-            "displayText": "GH can be silent",
-            "audioRegenAt": "2026-07-22T04:09:23.199Z",
+            "ttsScript": "Each syllable has one vowel sound.",
+            "displayText": "One vowel each",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "GH",
@@ -53771,9 +53774,9 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.4.3a/S2c.mp3",
-            "ttsScript": "CH can sound like K in some words.",
-            "displayText": "CH sounds like K",
-            "audioRegenAt": "2026-07-22T04:09:23.453Z",
+            "ttsScript": "Look for roots and parts you already know.",
+            "displayText": "Find known parts",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "CH",
@@ -53798,9 +53801,9 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.4.3a/S3a.mp3",
-            "ttsScript": "Vowel combos like EA, EE, OA, OU show up everywhere.",
-            "displayText": "Vowel combos",
-            "audioRegenAt": "2026-07-22T04:09:23.576Z",
+            "ttsScript": "Find the root word, then read the parts around it.",
+            "displayText": "Find the root",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "combos",
@@ -53831,23 +53834,23 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.4.3a/example-b.mp3",
-            "ttsScript": "Here is the word: phone.",
-            "displayText": "phone",
-            "audioRegenAt": "2026-06-04T03:31:19.235Z"
+            "ttsScript": "Here is the word: sunset.",
+            "displayText": "sunset",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           },
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.4.3a/example-c.mp3",
-            "ttsScript": "Which combo do you see? PH!",
-            "audioRegenAt": "2026-06-04T03:31:18.971Z",
+            "ttsScript": "Split it into syllables. Sun, set!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Which combo?",
+                "text": "Split the syllables",
                 "delay": 0
               },
               {
-                "text": "PH!",
-                "delay": 3880
+                "text": "sun-set",
+                "delay": 1200
               }
             ],
             "highlightWord": {
@@ -53858,16 +53861,16 @@
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.4.3a/example-d.mp3",
-            "ttsScript": "What sound does it make? F!",
-            "audioRegenAt": "2026-06-04T03:31:10.726Z",
+            "ttsScript": "Each part has one vowel sound. Sun. Set.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "What sound?",
+                "text": "One vowel each",
                 "delay": 0
               },
               {
-                "text": "F!",
-                "delay": 2200
+                "text": "sun set",
+                "delay": 1200
               }
             ],
             "highlightWord": {
@@ -53878,8 +53881,8 @@
           {
             "sub": "e",
             "audioFile": "audio/lessons/RF.4.3a/example-e.mp3",
-            "ttsScript": "So PH says F. Phone! You spotted the combo!",
-            "audioRegenAt": "2026-06-04T03:31:45.806Z"
+            "ttsScript": "You split sunset into sun and set, then read the whole word. You decoded by syllables!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           }
         ],
         "heading": "Let's Try One",
@@ -53904,9 +53907,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.4.3a/S4b.mp3",
-            "ttsScript": "When decoding, scan for known combos first. They are anchor points.",
+            "ttsScript": "When decoding, split off syllables and roots you know first. They are your anchor points.",
             "displayText": "Anchor points",
-            "audioRegenAt": "2026-07-22T04:09:23.797Z",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "combos",
@@ -54463,10 +54466,10 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/L.4.4/S3a.mp3",
-            "ttsScript": "Some endings change a word's meaning. Like -less and -ful.",
-            "displayText": "Endings change meaning",
+            "ttsScript": "Some words have more than one meaning. The words around them show which meaning is right.",
+            "displayText": "Words around give clues",
             "interaction": "",
-            "audioRegenAt": "2026-06-03T03:08:15.284Z",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "meaning",
@@ -54482,10 +54485,10 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/L.4.4/S3b.mp3",
-            "ttsScript": "Hopeless means without hope. Hopeful means full of hope.",
-            "displayText": "Hopeless = without hope",
+            "ttsScript": "The dog began to bark loudly. The words dog and loudly tell us bark is a sound, not tree skin.",
+            "displayText": "bark = a sound here",
             "interaction": "",
-            "audioRegenAt": "2026-06-03T03:08:15.285Z",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "Hopeful",
@@ -59507,10 +59510,10 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.4a/S1a.mp3",
-            "ttsScript": "Great readers think before they read.",
-            "displayText": "Great readers think",
+            "ttsScript": "Every book has an author who wrote it.",
+            "displayText": "Every book has an author",
             "interaction": "",
-            "audioRegenAt": "2026-07-22T04:09:35.118Z",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "think",
@@ -59526,10 +59529,10 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.4a/S1b.mp3",
-            "ttsScript": "They ask, why am I reading this book?",
-            "displayText": "Why am I reading?",
+            "ttsScript": "Great readers ask, why did the author write this book?",
+            "displayText": "Why did the author write it?",
             "interaction": "",
-            "audioRegenAt": "2026-07-22T04:09:35.249Z",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "why",
@@ -59545,10 +59548,10 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.4a/S1c.mp3",
-            "ttsScript": "That question is called your purpose.",
-            "displayText": "Your purpose",
+            "ttsScript": "That reason is the author's purpose.",
+            "displayText": "Author's purpose",
             "interaction": "",
-            "audioRegenAt": "2026-07-22T04:09:35.241Z",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "purpose",
@@ -59573,8 +59576,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.4a/S2a.mp3",
-            "ttsScript": "We read for two big reasons.",
-            "audioRegenAt": "2026-07-22T04:09:35.241Z",
+            "ttsScript": "Authors write for three big reasons.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "reasons",
               "delay": 2480
@@ -59584,14 +59587,15 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "displayText": "Three big reasons"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.4a/S2b.mp3",
-            "ttsScript": "A storybook. We read it for fun!",
-            "displayText": "Storybook: for fun",
-            "audioRegenAt": "2026-07-22T04:09:35.402Z",
+            "ttsScript": "Sometimes to tell a fun story. That is to entertain you!",
+            "displayText": "To entertain: a fun story",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "fun",
@@ -59607,9 +59611,9 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.4a/S2c.mp3",
-            "ttsScript": "A fact book. We read it to learn!",
-            "displayText": "Fact book: to learn",
-            "audioRegenAt": "2026-07-22T04:09:35.402Z",
+            "ttsScript": "Sometimes to teach you facts. That is to inform you!",
+            "displayText": "To inform: teach facts",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "learn",
@@ -59635,8 +59639,8 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.4a/S3a.mp3",
-            "ttsScript": "Imagine you want to learn how butterflies fly.",
-            "audioRegenAt": "2026-07-22T04:09:35.339Z",
+            "ttsScript": "Read this: Please recycle your cans!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "learn",
               "delay": 1460
@@ -59646,21 +59650,22 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "displayText": "Please recycle!"
           },
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.4a/S3b.mp3",
-            "ttsScript": "Which book fits? A fact book about butterflies!",
-            "audioRegenAt": "2026-07-22T04:09:35.402Z",
+            "ttsScript": "Why did the author write that? To get you to do something!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayParts": [
               {
-                "text": "Which book?",
+                "text": "Why write it?",
                 "delay": 0
               },
               {
-                "text": "Fact book!",
-                "delay": 2960
+                "text": "To get you to act!",
+                "delay": 3000
               }
             ],
             "highlightWord": {
@@ -59677,8 +59682,8 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.4a/S3c.mp3",
-            "ttsScript": "Now imagine you want a bedtime story.",
-            "audioRegenAt": "2026-07-22T04:09:35.628Z",
+            "ttsScript": "Now read a book about how bees make honey.",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "story",
               "delay": 2560
@@ -59688,14 +59693,15 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "displayText": "How bees make honey"
           },
           {
             "sub": "d",
             "audioFile": "audio/lessons/RF.1.4a/S3d.mp3",
-            "ttsScript": "A storybook! Your purpose picks your book.",
-            "displayText": "Purpose picks book",
-            "audioRegenAt": "2026-07-22T04:09:35.735Z",
+            "ttsScript": "Why did the author write that? To inform you! That is the author's purpose.",
+            "displayText": "To inform!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "purpose",
@@ -59730,9 +59736,9 @@
           {
             "sub": "b",
             "audioFile": "audio/lessons/RF.1.4a/S4b.mp3",
-            "ttsScript": "Before you open a book, ask yourself: what do I want from this book?",
-            "displayText": "What do I want?",
-            "audioRegenAt": "2026-07-22T04:09:35.770Z",
+            "ttsScript": "Before you read, ask: why did the author write this? To entertain, to inform, or to get me to do something?",
+            "displayText": "Why did the author write it?",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "displayDelay": 0,
             "highlightWord": {
               "word": "want",
@@ -59748,8 +59754,8 @@
           {
             "sub": "c",
             "audioFile": "audio/lessons/RF.1.4a/S4c.mp3",
-            "ttsScript": "Now you are ready to read with purpose!",
-            "audioRegenAt": "2026-07-22T04:09:35.862Z",
+            "ttsScript": "Now you can find the author's purpose!",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z",
             "highlightWord": {
               "word": "purpose",
               "delay": 2440
@@ -59759,7 +59765,8 @@
                 "pill": 0,
                 "delay": 0
               }
-            ]
+            ],
+            "displayText": "Find the author's purpose"
           }
         ],
         "heading": "Pause Before You Start",
@@ -59773,27 +59780,27 @@
           {
             "sub": "a",
             "audioFile": "audio/lessons/RF.1.4a/interactive-q.mp3",
-            "ttsScript": "Your turn! Imagine you want to find out how to bake cookies. What is your purpose for reading?",
-            "audioRegenAt": "2026-06-03T22:32:25.256Z"
+            "ttsScript": "Your turn! An author wrote a book that teaches how bees make honey. Why did the author write it?",
+            "audioRegenAt": "2026-07-30T04:05:23.691Z"
           }
         ],
         "heading": "Your Turn!",
         "imageFile": "",
         "imagePrompt": "",
         "interactive": {
-          "hint": "Think about why you would read a book about baking cookies.",
+          "hint": "Does it teach facts, tell a fun story, or try to get you to do something?",
           "kind": "tap",
-          "prompt": "What is your purpose?",
+          "prompt": "Why did the author write it?",
           "choices": [
-            "to learn",
-            "for fun",
-            "to share"
+            "to entertain",
+            "to inform",
+            "to get you to act"
           ],
-          "correct": "to learn",
+          "correct": "to inform",
           "wrongAudio": "audio/lessons/RF.1.4a/interactive-wrong.mp3",
-          "wrongScript": "Not quite. Think about what you would gain from reading a book about baking. Try again!",
+          "wrongScript": "Not quite. The book teaches facts about bees, so the author wanted to inform you. Try again!",
           "correctAudio": "audio/lessons/RF.1.4a/interactive-correct.mp3",
-          "correctScript": "Exactly! You read to learn how to bake cookies!"
+          "correctScript": "Exactly! The author wrote it to inform you with facts about bees!"
         }
       },
       {
