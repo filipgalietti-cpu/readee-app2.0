@@ -67,6 +67,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const greetTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   // Rotate the hello bubble like the design (every ~4s).
   useEffect(() => {
@@ -95,9 +96,15 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
   }, [step, name, grade, avatar]);
 
   const shownName = name.trim() ? name.trim() : "Reader";
-  const next = () => setStep((s) => Math.min(5, s + 1));
 
-  const speak = (text: string) => {
+  // Stop any narration when the flow unmounts (e.g. we route to /assessment).
+  useEffect(() => () => {
+    try { audioRef.current?.pause(); } catch { /* ignore */ }
+    try { window.speechSynthesis?.cancel(); } catch { /* ignore */ }
+  }, []);
+
+  // Robotic browser voice — only used if the recorded clip can't play.
+  const speakFallback = (text: string) => {
     if (typeof window === "undefined" || !window.speechSynthesis) return;
     try {
       window.speechSynthesis.cancel();
@@ -105,6 +112,28 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
       u.rate = 0.92; u.pitch = 1.1;
       window.speechSynthesis.speak(u);
     } catch { /* unsupported — silent */ }
+  };
+
+  // Play the recorded Autonoe clip for a step; fall back to browser speech.
+  const playStep = (n: number) => {
+    const fallback = () => speakFallback(currentSpokenText(n, name.trim() || "Reader"));
+    if (typeof window === "undefined") return;
+    try {
+      window.speechSynthesis?.cancel();
+      if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
+      const url = supabaseBrowser().storage.from("audio").getPublicUrl(`onboarding/welcome-${n}.mp3`).data.publicUrl;
+      const a = new Audio(url);
+      audioRef.current = a;
+      a.play().catch(fallback);
+    } catch { fallback(); }
+  };
+
+  // Advance and narrate the next step (both are triggered by a tap, so
+  // audio is allowed to play under the browser's autoplay policy).
+  const next = () => {
+    const n = Math.min(5, step + 1);
+    setStep(n);
+    if (n !== step) playStep(n);
   };
 
   const finish = async () => {
@@ -169,7 +198,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
             <span key={i} style={{ display: "block", width: i === dotIdx ? 26 : 8, height: 8, borderRadius: 99, background: i <= dotIdx ? INDIGO : "rgba(67,56,202,.22)", transition: "all .3s" }} />
           ))}
         </div>
-        <button type="button" onClick={() => speak(currentSpokenText(step, shownName))} aria-label="Read this to me" className="kwf-ring"
+        <button type="button" onClick={() => playStep(step)} aria-label="Read this to me" className="kwf-ring"
           style={{ border: `2px solid ${INDIGO}`, background: "#fff", color: INDIGO, width: 52, height: 52, borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", flex: "none" }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z" /><path d="M15.5 8.5a5 5 0 0 1 0 7" /><path d="M19 5a9 9 0 0 1 0 14" /></svg>
         </button>
