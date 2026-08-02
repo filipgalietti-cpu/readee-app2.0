@@ -57,21 +57,18 @@ export default async function LunaPage({
   const usable = passages.length ? passages : PASSAGES.filter((p) => p.grade === "1st");
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-10">
-      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
-        <Sparkles className="h-4 w-4" />
-        Luna
+    <div className="mx-auto max-w-2xl px-6 py-6">
+      <div className="mb-4 text-center">
+        <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
+          <Sparkles className="h-4 w-4" />
+          Luna
+        </div>
+        <h1 className="mt-0.5 font-extrabold tracking-tight text-zinc-900 dark:text-white" style={{ fontFamily: "'Baloo 2','Nunito',sans-serif", fontSize: 26 }}>
+          Hi, {child.name}!
+        </h1>
       </div>
-      <h1 className="mt-1 font-extrabold tracking-tight text-zinc-900 dark:text-white" style={{ fontFamily: "'Baloo 2','Nunito',sans-serif", fontSize: 30 }}>
-        Hi, {child.name}!
-      </h1>
-      <p className="mt-1 text-sm text-zinc-500">
-        Read out loud with Luna, your reading teacher — she listens and helps you with the tricky words.
-      </p>
 
-      <div className="mt-6">
-        <LunaReader childId={child.id} childName={child.name} passages={usable} />
-      </div>
+      <LunaReader childId={child.id} childName={child.name} passages={usable} />
     </div>
   );
 }
