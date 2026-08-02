@@ -12,7 +12,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, BookOpen, ListChecks, Map, Newspaper,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Star, Menu,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Menu,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -201,7 +201,6 @@ function getNavSections(
       kidSize: true,
       items: [
         { href: "/daily", icon: Newspaper, label: "Daily Readee" },
-        { href: `/levels${q}`, icon: Star, label: "Levels" },
         { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "text-orange-500" },
         { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
         // Long-tail surfaces now live on the /more page instead of a
