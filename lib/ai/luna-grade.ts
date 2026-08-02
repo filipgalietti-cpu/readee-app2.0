@@ -31,8 +31,13 @@ Mark for EACH word:
 - "missed" — skipped or truly unintelligible,
 - "substituted" — read a genuinely DIFFERENT word (put what you heard in "heard"),
 - "self_corrected" — misread then fixed it.
-- Set "disfluent" true only for real fluency issues — stutters, repeated words, long hesitations —
-  NOT for articulation/accent differences.
+
+DISFLUENCY — listen carefully and set "disfluent" true whenever you hear a STUTTER, EVEN IF the word
+ends up correct: a repeated initial sound or syllable ("c-c-cat", "buh-buh-ball"), a part-word
+repetition, a sound prolongation ("ssssnake"), or a hard block / long pause right before a word. A
+stutter is a FLUENCY issue and MUST be caught. This is different from — and separate from — the
+articulation substitutions above (r→w etc.), which are NOT disfluency and NOT errors. Also flag
+whole-word repetitions and long mid-sentence hesitations.
 - words_correct = count of "correct" + "self_corrected".
 - Write ONE short coaching line ("coach") for a young child:
   - If everything was smooth and correct: a brief, genuine praise (max 8 words).

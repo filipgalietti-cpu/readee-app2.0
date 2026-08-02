@@ -195,11 +195,20 @@ export default function LunaReader({
       const willRetry = hasError && curAttempt === 0;
       if (!willRetry) tricky.slice(0, 3).forEach((w) => statsRef.current.trickyWords.add(w));
 
-      const coaching = a.coach?.trim()
-        ? a.coach.trim()
-        : willRetry ? `Let's look at "${tricky[0] ?? "that word"}" and read the line again.` : "Nice! Let's keep going.";
-      setMode("speaking"); setCaption(coaching);
-      speak(coaching, () => proceed(willRetry));
+      if (!hasError) {
+        // Clean read → skip the voice round-trip entirely for speed. Quick
+        // visual cheer, then straight to the next line. Only mistakes wait
+        // for spoken coaching.
+        setMode("idle");
+        setCaption("Nice reading!");
+        window.setTimeout(() => proceed(false), 450);
+      } else {
+        const coaching = a.coach?.trim()
+          ? a.coach.trim()
+          : willRetry ? `Let's look at "${tricky[0] ?? "that word"}" and read the line again.` : "Good try — let's keep going.";
+        setMode("speaking"); setCaption(coaching);
+        speak(coaching, () => proceed(willRetry));
+      }
     } catch (e: unknown) {
       setErr(e instanceof Error ? e.message : "Something went wrong.");
       setMode("idle"); setCaption("Let's try that line again — tap me when you're ready.");
@@ -380,5 +389,9 @@ function Word({ a }: { a: Annotation }) {
         : s === "substituted" ? { background: "#ffedd5", color: "#9a3412", borderRadius: 4, padding: "0 3px", textDecoration: "line-through" }
           : s === "missed" ? { background: "#fee2e2", color: "#991b1b", borderRadius: 4, padding: "0 3px", textDecoration: "line-through" }
             : { color: "#3f3f46" };
-  return <span style={{ marginRight: 4, ...style }} title={a.heard ? `Heard: "${a.heard}"` : ""}>{a.word}</span>;
+  return (
+    <>
+      <span style={{ ...style }} title={a.heard ? `Heard: "${a.heard}"` : ""}>{a.word}</span>{" "}
+    </>
+  );
 }
