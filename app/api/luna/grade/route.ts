@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { analyzeFluencyReading } from "@/lib/ai/build-fluency";
+import { gradeLine } from "@/lib/ai/luna-grade";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 
 export const dynamic = "force-dynamic";
@@ -52,15 +52,13 @@ export async function POST(req: NextRequest) {
   }
 
   const buf = Buffer.from(await audio.arrayBuffer());
-  const res = await analyzeFluencyReading({
-    childId,
+  const res = await gradeLine({
     callerId: user.id,
     audioBase64: buf.toString("base64"),
     audioMimeType: audio.type || "audio/webm",
-    passageText: sentenceText,
-    passageGradeLevel: gradeLevel,
-    persist: false,
+    sentenceText,
+    gradeLevel,
   });
   if (!res.ok) return NextResponse.json({ error: res.error }, { status: 500 });
-  return NextResponse.json({ ok: true, analysis: res.analysis });
+  return NextResponse.json({ ok: true, analysis: res.grade });
 }

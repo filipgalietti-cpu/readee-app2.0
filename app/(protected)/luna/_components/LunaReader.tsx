@@ -25,9 +25,8 @@ type Analysis = {
   wordsTotal: number;
   wordsCorrect: number;
   durationSeconds: number;
-  wcpm: number;
-  encouragement: string;
-  targetPatterns?: string[];
+  disfluent?: boolean;
+  coach?: string;
 };
 
 const SERIF = 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif';
@@ -174,7 +173,11 @@ export default function LunaReader({
         .filter((w) => w.status === "missed" || w.status === "substituted")
         .map((w) => w.word.replace(/[^A-Za-z'-]/g, ""))
         .filter(Boolean);
-      const willRetry = tricky.length > 0 && curAttempt === 0;
+      // Any imperfect read (wrong/missed word OR disfluent) earns one retry —
+      // this is the "hammer the sore spot" behavior. Reliable now: driven by
+      // the real score, not just a substring filter that could miss cases.
+      const hasError = a.wordsCorrect < a.wordsTotal || tricky.length > 0 || !!a.disfluent;
+      const willRetry = hasError && curAttempt === 0;
 
       // Only bank stats on the attempt we move on from (avoid double-count on retry).
       if (!willRetry) {
@@ -182,10 +185,16 @@ export default function LunaReader({
         statsRef.current.total += a.wordsTotal;
         statsRef.current.seconds += a.durationSeconds;
         statsRef.current.annotations.push(...a.wordAnnotations);
-        (a.targetPatterns ?? []).forEach((p) => statsRef.current.patterns.add(p));
+        // Remember the specific words the child struggled with — that's the
+        // weakness signal we persist + use to target future practice.
+        tricky.slice(0, 3).forEach((w) => statsRef.current.patterns.add(w));
       }
 
-      const coaching = buildCoaching(a, willRetry, tricky[0]);
+      const coaching = a.coach?.trim()
+        ? a.coach.trim()
+        : willRetry
+          ? `Let's look at "${tricky[0] ?? "that word"}" and read the line again.`
+          : "Nice reading! Let's keep going.";
       setMode("speaking");
       setCaption(coaching);
       speak(coaching, () => proceed(willRetry));
@@ -257,6 +266,7 @@ export default function LunaReader({
   // weak phonics pattern (from the learner model) and read that instead.
   async function practiceTricky() {
     if (generating || focusPatterns.length === 0) return;
+    unlockAudio();
     setGenerating(true); setErr(null);
     try {
       const r = await fetch("/api/luna/passage", {
@@ -264,8 +274,16 @@ export default function LunaReader({
         body: JSON.stringify({ childId, pattern: focusPatterns[0], gradeLevel: passage.grade }),
       });
       const j = await r.json();
-      if (r.ok && j.ok && j.passage?.text) { setOverride(j.passage); resetState(j.passage); }
-      else setErr("Couldn't make a practice passage right now — try a regular one.");
+      if (r.ok && j.ok && j.passage?.text) {
+        setOverride(j.passage);
+        resetState(j.passage);
+        // Luna proactively names what she noticed, then invites the read.
+        const intro = `I noticed "${focusPatterns[0]}" was a little tricky for you before. Let's practice it! Tap me and read the first line.`;
+        setCaption(intro);
+        speak(intro, () => {});
+      } else {
+        setErr("Couldn't make a practice passage right now — try a regular one.");
+      }
     } catch {
       setErr("Couldn't make a practice passage right now — try a regular one.");
     } finally {
@@ -297,12 +315,12 @@ export default function LunaReader({
             </button>
           )}
         </div>
-        <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.55, color: "#18181b" }}>
+        <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.7, color: "#18181b", overflowWrap: "break-word", wordBreak: "break-word", whiteSpace: "normal" }}>
           {sentences.map((sent, i) => {
             const isCur = i === idx && !done;
             const finished = results[i] && (i < idx || done);
             return (
-              <span key={i} style={{ background: isCur ? "#ede9fe" : "transparent", borderRadius: 6, padding: isCur ? "1px 4px" : 0, boxShadow: isCur ? "inset 0 0 0 2px #c7d2fe" : "none", color: !finished && !isCur ? "#a1a1aa" : "#18181b", marginRight: 4 }}>
+              <span key={i} style={{ background: isCur ? "#ede9fe" : "transparent", borderRadius: 6, padding: isCur ? "2px 4px" : 0, color: !finished && !isCur ? "#a1a1aa" : "#18181b", marginRight: 4, boxDecorationBreak: "clone", WebkitBoxDecorationBreak: "clone" } as React.CSSProperties}>
                 {finished
                   ? results[i].map((a, j) => <Word key={j} a={a} />)
                   : sent + " "}
@@ -326,7 +344,7 @@ export default function LunaReader({
           {focusPatterns.length > 0 && mode === "idle" && idx === 0 && Object.keys(results).length === 0 && (
             <button type="button" onClick={practiceTricky} disabled={generating}
               style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 6, border: "1px solid #ddd6fe", background: "#f5f3ff", color: "#6d28d9", borderRadius: 999, padding: "9px 18px", fontSize: 13, fontWeight: 800, cursor: generating ? "default" : "pointer", opacity: generating ? 0.6 : 1 }}>
-              <Sparkles className="h-4 w-4" /> {generating ? "Making a passage…" : `Practice my tricky sounds`}
+              <Sparkles className="h-4 w-4" /> {generating ? "Getting it ready…" : "Let's practice"}
             </button>
           )}
         </div>
@@ -362,14 +380,6 @@ export default function LunaReader({
       {err && <p style={{ textAlign: "center", color: "#dc2626", fontWeight: 700, fontSize: 14 }}>{err}</p>}
     </div>
   );
-}
-
-function buildCoaching(a: Analysis, willRetry: boolean, word?: string): string {
-  if (willRetry && word) {
-    return `Let's look at "${word}". Say it slowly, then read the whole line again.`;
-  }
-  const base = (a.encouragement || "Nice reading!").trim().split(/(?<=[.!?])\s/)[0];
-  return `${base} Let's keep going!`.slice(0, 300);
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
