@@ -32,12 +32,16 @@ Mark for EACH word:
 - "substituted" — read a genuinely DIFFERENT word (put what you heard in "heard"),
 - "self_corrected" — misread then fixed it.
 
-DISFLUENCY — listen carefully and set "disfluent" true whenever you hear a STUTTER, EVEN IF the word
-ends up correct: a repeated initial sound or syllable ("c-c-cat", "buh-buh-ball"), a part-word
-repetition, a sound prolongation ("ssssnake"), or a hard block / long pause right before a word. A
-stutter is a FLUENCY issue and MUST be caught. This is different from — and separate from — the
-articulation substitutions above (r→w etc.), which are NOT disfluency and NOT errors. Also flag
-whole-word repetitions and long mid-sentence hesitations.
+HEARD_TRANSCRIPT — write down EXACTLY what you heard, VERBATIM, INCLUDING any stutters, repeated
+sounds, or prolongations, written out as heard. Do NOT clean it up. Examples: if the child said the
+b sound over and over before "black", write "b-b-b-b-black"; if they repeated "the the the", write it
+out; "ssssnake" stays "ssssnake". This raw transcript is required.
+
+DISFLUENCY — set "disfluent" true whenever you hear a STUTTER, EVEN IF the word ends up correct:
+repeated initial sounds/syllables ("c-c-cat", "b-b-black", "buh-buh-ball"), part-word repetitions,
+prolongations ("ssssnake"), or a hard block / long pause before a word. A stutter is a FLUENCY issue
+and MUST be caught. This is separate from the articulation substitutions above (r→w etc.), which are
+NOT disfluency and NOT errors. Also flag whole-word repetitions and long mid-sentence hesitations.
 - words_correct = count of "correct" + "self_corrected".
 - Write ONE short coaching line ("coach") for a young child:
   - If everything was smooth and correct: a brief, genuine praise (max 8 words).
@@ -64,9 +68,10 @@ const SCHEMA = {
     words_total: { type: Type.NUMBER },
     duration_seconds: { type: Type.NUMBER },
     disfluent: { type: Type.BOOLEAN },
+    heard_transcript: { type: Type.STRING },
     coach: { type: Type.STRING },
   },
-  required: ["word_annotations", "words_correct", "words_total", "disfluent", "coach"],
+  required: ["word_annotations", "words_correct", "words_total", "disfluent", "heard_transcript", "coach"],
 };
 
 export type LineGrade = {
@@ -75,8 +80,22 @@ export type LineGrade = {
   wordsTotal: number;
   durationSeconds: number;
   disfluent: boolean;
+  heardTranscript: string;
   coach: string;
 };
+
+/** Catch obvious stutters from the verbatim transcript, independent of the
+ *  model's own disfluency judgment (which under-reports). Matches repeated
+ *  initial sounds/syllables like "b-b-b-black", "buhbuhbuh", "ssssnake". */
+export function detectStutter(heard: string): boolean {
+  const t = (heard || "").toLowerCase();
+  if (!t) return false;
+  // 1-3 letter group repeated 2+ more times, separated by -, space, or nothing:
+  if (/([a-z]{1,3})(?:[\s-]?\1){2,}/.test(t)) return true;
+  // same single letter run 4+ (prolongation / mashed stutter): "bbbb", "ssss", "uuuu"
+  if (/([a-z])\1{3,}/.test(t)) return true;
+  return false;
+}
 
 export async function gradeLine(input: {
   callerId: string;
@@ -114,12 +133,16 @@ export async function gradeLine(input: {
 
     const p = JSON.parse(response.text || "{}") as any;
     const wa = Array.isArray(p.word_annotations) ? p.word_annotations : [];
+    const heardTranscript = String(p.heard_transcript ?? "");
     const grade: LineGrade = {
       wordAnnotations: wa,
       wordsTotal: Number(p.words_total ?? wa.length),
       wordsCorrect: Number(p.words_correct ?? 0),
       durationSeconds: Number(p.duration_seconds ?? 0),
-      disfluent: Boolean(p.disfluent),
+      // Trust EITHER the model's flag OR our own repetition check on the raw
+      // transcript — the model under-reports stutters, the regex is the backstop.
+      disfluent: Boolean(p.disfluent) || detectStutter(heardTranscript),
+      heardTranscript,
       coach: String(p.coach ?? "Nice reading!"),
     };
 

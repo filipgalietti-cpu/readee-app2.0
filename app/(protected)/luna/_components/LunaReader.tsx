@@ -63,6 +63,7 @@ export default function LunaReader({
   const [before, setBefore] = useState<OverallScore | null>(null);
   const [after, setAfter] = useState<OverallScore | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  const [preparing, setPreparing] = useState(false);
 
   const streamRef = useRef<MediaStream | null>(null);
   const ctxRef = useRef<AudioContext | null>(null);
@@ -203,9 +204,15 @@ export default function LunaReader({
         setCaption("Nice reading!");
         window.setTimeout(() => proceed(false), 450);
       } else {
-        const coaching = a.coach?.trim()
-          ? a.coach.trim()
-          : willRetry ? `Let's look at "${tricky[0] ?? "that word"}" and read the line again.` : "Good try — let's keep going.";
+        // Disfluent-but-all-words-right (a stutter): the grader's coach line was
+        // written for word accuracy and may say "great reading" — override it so
+        // the coaching matches what actually happened.
+        const stutterOnly = a.disfluent && tricky.length === 0 && a.wordsCorrect >= a.wordsTotal;
+        const coaching = stutterOnly
+          ? "Let's read that line again — nice and smooth, no rush."
+          : a.coach?.trim()
+            ? a.coach.trim()
+            : willRetry ? `Let's look at "${tricky[0] ?? "that word"}" and read the line again.` : "Good try — let's keep going.";
         setMode("speaking"); setCaption(coaching);
         speak(coaching, () => proceed(willRetry));
       }
@@ -246,22 +253,44 @@ export default function LunaReader({
     }).catch(() => {});
   }
 
-  function resetAll(p: Passage) {
+  // Fresh content each session: try to generate a brand-new grade-appropriate
+  // story; fall back to a random curated one (so we're never "stuck" on the
+  // same passage — and it's not always "I have a cat").
+  async function loadFreshPassage(): Promise<Passage> {
+    const grade = passage.grade;
+    try {
+      const r = await fetch("/api/luna/passage", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ childId, gradeLevel: grade }),
+      });
+      const j = await r.json();
+      if (r.ok && j.ok && j.passage?.text) return j.passage as Passage;
+    } catch { /* fall through to curated */ }
+    const n = passages.length > 1 ? Math.floor(Math.random() * passages.length) : 0;
+    return passages[n] ?? passages[0];
+  }
+
+  async function beginWith(p: Passage) {
     stopAudio();
     statsRef.current = { trickyWords: new Set(), afterGrade: null };
     setResults({}); setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setErr(null);
-    setSentences(splitSentences(p.text)); setPhase("intro"); setMode("idle"); setCaption("Ready to read with me?");
-  }
-
-  function startFlow() {
+    setOverride(p);
+    setSentences(splitSentences(p.text));
     setPhase("overall1"); setMode("idle"); setCaption("Read me the whole story out loud!");
   }
 
-  function newPassage() {
-    setOverride(null);
-    let n = pIdx;
-    if (passages.length > 1) { n = Math.floor(Math.random() * passages.length); if (n === pIdx) n = (pIdx + 1) % passages.length; }
-    setPIdx(n); resetAll(passages[n] ?? passages[0]);
+  async function startFlow() {
+    setPreparing(true);
+    const p = await loadFreshPassage();
+    setPreparing(false);
+    await beginWith(p);
+  }
+
+  async function newPassage() {
+    setPreparing(true);
+    const p = await loadFreshPassage();
+    setPreparing(false);
+    await beginWith(p);
   }
 
   function onTap() {
@@ -320,9 +349,9 @@ export default function LunaReader({
 
           {phase === "intro" ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 10 }}>
-              <button type="button" onClick={startFlow}
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: "pointer" }}>
-                <Play className="h-5 w-5" fill="#fff" stroke="none" /> Let&apos;s Start
+              <button type="button" onClick={startFlow} disabled={preparing}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
+                <Play className="h-5 w-5" fill="#fff" stroke="none" /> {preparing ? "Getting your story…" : "Let's Start"}
               </button>
             </div>
           ) : (
@@ -355,7 +384,7 @@ export default function LunaReader({
             )}
           </div>
           <div style={{ display: "flex", gap: 10 }}>
-            <button type="button" onClick={() => resetAll(passage)}
+            <button type="button" onClick={() => beginWith(passage)}
               style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, border: "1px solid #ddd6fe", background: "#fff", color: "#6d28d9", padding: "11px 20px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
               <RotateCcw className="h-4 w-4" /> Read it again
             </button>
