@@ -124,7 +124,7 @@ function getNavSections(
           label: "Readee.ai tools",
           emphasis: true,
         },
-        { href: "/buddy", icon: Mic, label: "Reading Buddy" },
+        { href: "/luna", icon: Mic, label: "Luna" },
       ],
     });
 
@@ -189,7 +189,7 @@ function getNavSections(
         { href: "/dashboard", icon: Home, label: ownsClassroom ? "Parent view" : "Dashboard" },
         { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
         { href: `/stories${q}`, icon: BookOpen, label: "Stories" },
-        { href: `/buddy${q}`, icon: Mic, label: "Reading Buddy" },
+        { href: `/luna${q}`, icon: Mic, label: "Luna" },
         { href: `/journey${q}`, icon: Map, label: "Journey" },
       ],
     });
@@ -314,6 +314,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     "/practice-hub",
     "/practice",
     "/buddy",
+    "/luna",
     "/journey",
     "/stories",
     "/discover",

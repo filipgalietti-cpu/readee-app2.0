@@ -358,7 +358,7 @@ export default function KidHome(p: KidHomeProps) {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 14 }}>
         <QuickTile href={`/practice-hub?child=${p.childId}`} grad="linear-gradient(135deg,#8b5cf6,#6d28d9)" shadow="rgba(49,46,129,.3)" label="Practice" Icon={Target} />
         <QuickTile href={`/stories?child=${p.childId}`} grad="linear-gradient(135deg,#34d399,#14b8a6)" shadow="rgba(13,148,136,.35)" label="Stories" Icon={BookOpen} />
-        <QuickTile href={`/buddy?child=${p.childId}`} grad="linear-gradient(135deg,#a855f7,#ec4899)" shadow="rgba(168,85,247,.35)" label="Reading Buddy" Icon={Mic} />
+        <QuickTile href={`/luna?child=${p.childId}`} grad="linear-gradient(135deg,#a855f7,#ec4899)" shadow="rgba(168,85,247,.35)" label="Luna" Icon={Mic} />
         <QuickTile href="/discover" grad="linear-gradient(135deg,#38bdf8,#2563eb)" shadow="rgba(37,99,235,.35)" label="Discover" Icon={Compass} />
       </div>
 
