@@ -16,7 +16,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
-import { Shuffle, Trophy, RotateCcw, Play } from "lucide-react";
+import { Shuffle, Trophy, RotateCcw, Play, Volume2 } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 
 type Passage = { grade: string; title: string; text: string };
@@ -43,12 +43,14 @@ function splitSentences(text: string): string[] {
 
 export default function LunaReader({
   childId,
+  childName,
   passages,
 }: {
   childId: string;
   childName: string;
   passages: Passage[];
 }) {
+  const name = (childName || "").trim() || "friend";
   const [pIdx, setPIdx] = useState(0);
   const [override, setOverride] = useState<Passage | null>(null);
   const passage = override ?? passages[pIdx] ?? passages[0];
@@ -179,7 +181,7 @@ export default function LunaReader({
       const g = await postGrade(passage.text, blob);
       if (which === "before") {
         setBefore(toScore(g, durSec));
-        const line = "Nice first read! Now let's practice it, one line at a time.";
+        const line = `Nice first read, ${name}! Now let's practice it, one line at a time.`;
         setMode("speaking"); setCaption(line);
         speak(line, () => { setPhase("drill"); setIdx(0); setAttempt(0); setResults({}); setMode("idle"); setCaption("Tap me and read the first line."); });
       } else {
@@ -213,20 +215,26 @@ export default function LunaReader({
         // Clean read → skip the voice round-trip for speed; quick cheer + advance.
         setLastHeard(null);
         setMode("idle");
-        setCaption("Nice reading!");
+        setCaption(`Nice reading, ${name}!`);
         window.setTimeout(() => proceed(false), 450);
       } else if (willRetry) {
-        // First miss → coach EVERY word that was wrong (not just one), then retry.
+        // Coach by the TYPE of difficulty: DECODING (wrong/missed words) -> sound
+        // it out; FLUENCY (stutter/pace, words fine) -> slow & smooth.
         const words = tricky.slice(0, 3);
         let coaching: string;
-        if (words.length >= 2) coaching = `Let's practice ${words.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${words[words.length - 1]}". Read the whole line again.`;
-        else if (words.length === 1) coaching = `Let's look at "${words[0]}". Read the whole line again.`;
-        else coaching = "Let's read that line again — nice and smooth, no rush."; // disfluent only
+        if (words.length >= 2) {
+          const list = `${words.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${words[words.length - 1]}"`;
+          coaching = `Let's sound out ${list} — say each sound slowly. Then read the whole line again.`;
+        } else if (words.length === 1) {
+          coaching = `Let's sound out "${words[0]}" — say each sound slowly, then read the whole line again.`;
+        } else {
+          coaching = `Take your time, ${name}. Read that line again nice and smooth — no rush.`;
+        }
         setMode("speaking"); setCaption(coaching);
         speak(coaching, () => proceed(true));
       } else {
         // Second attempt still not perfect → acknowledge + move on (don't say "again").
-        const coaching = "Good try! Let's keep going.";
+        const coaching = `Good try, ${name}! Let's keep going.`;
         setMode("speaking"); setCaption(coaching);
         speak(coaching, () => proceed(false));
       }
@@ -242,7 +250,7 @@ export default function LunaReader({
     setLastHeard(null);
     const next = idxRef.current + 1;
     if (next >= sentences.length) {
-      const line = "Great practicing! Now read me the whole story one more time.";
+      const line = `Great practicing, ${name}! Now read me the whole story one more time.`;
       setMode("speaking"); setCaption(line);
       speak(line, () => { setPhase("overall2"); setMode("idle"); setCaption("Tap me and read the whole story."); });
     } else {
@@ -253,7 +261,7 @@ export default function LunaReader({
   function finishSession() {
     setPhase("done");
     setMode("idle");
-    setCaption("You did it! Look how much you improved.");
+    setCaption(`You did it, ${name}! Look how much you improved.`);
     const g = statsRef.current.afterGrade;
     void fetch("/api/luna/session-complete", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -316,6 +324,21 @@ export default function LunaReader({
     else if (phase === "overall2") startRecording((b, d) => { void gradeWhole(b, "after", d); });
   }
 
+  // Echo reading: Luna models the correct pronunciation of the line (drill) or
+  // the whole passage, so the child can hear it right, then read it themselves.
+  function listen() {
+    if (mode !== "idle") return;
+    const text = phase === "drill" ? sentences[idx] : passage.text;
+    if (!text?.trim()) return;
+    unlockAudio();
+    setMode("speaking");
+    setCaption("Listen carefully…");
+    speak(text, () => {
+      setMode("idle");
+      setCaption(phase === "drill" ? "Now you try — tap me and read the line." : "Now you read it — tap me.");
+    });
+  }
+
   const busy = mode === "thinking" || mode === "speaking";
   const showPassage = phase !== "intro";
   const micLabel = mode === "listening" ? "Tap when you're done"
@@ -375,10 +398,18 @@ export default function LunaReader({
               </button>
             </div>
           ) : (
-            <button type="button" onClick={onTap} disabled={busy}
-              style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "12px 26px", fontFamily: "'Nunito',sans-serif", fontSize: 15, fontWeight: 800, color: "#fff", background: mode === "listening" ? "#dc2626" : "#4338ca", boxShadow: "0 10px 40px -12px rgba(49,46,129,.45)", cursor: busy ? "default" : "pointer", opacity: busy ? 0.7 : 1 }}>
-              {micLabel}
-            </button>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              {mode === "idle" && (
+                <button type="button" onClick={listen} title="Hear it read correctly"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 6, border: "2px solid #4338ca", background: "#fff", color: "#4338ca", borderRadius: 999, padding: "10px 18px", fontFamily: "'Nunito',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>
+                  <Volume2 className="h-4 w-4" /> Listen
+                </button>
+              )}
+              <button type="button" onClick={onTap} disabled={busy}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "12px 26px", fontFamily: "'Nunito',sans-serif", fontSize: 15, fontWeight: 800, color: "#fff", background: mode === "listening" ? "#dc2626" : "#4338ca", boxShadow: "0 10px 40px -12px rgba(49,46,129,.45)", cursor: busy ? "default" : "pointer", opacity: busy ? 0.7 : 1 }}>
+                {micLabel}
+              </button>
+            </div>
           )}
         </div>
       ) : (
