@@ -27,6 +27,7 @@ type Grade = {
   wordsCorrect: number;
   durationSeconds: number;
   disfluent?: boolean;
+  heardTranscript?: string;
   coach?: string;
 };
 type Phase = "intro" | "overall1" | "drill" | "overall2" | "done";
@@ -64,6 +65,8 @@ export default function LunaReader({
   const [after, setAfter] = useState<OverallScore | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [preparing, setPreparing] = useState(false);
+  const [lastHeard, setLastHeard] = useState<string | null>(null);
+  const recStartRef = useRef(0);
 
   const streamRef = useRef<MediaStream | null>(null);
   const ctxRef = useRef<AudioContext | null>(null);
@@ -71,7 +74,7 @@ export default function LunaReader({
   const chunksRef = useRef<Blob[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const unlockedRef = useRef(false);
-  const onBlobRef = useRef<(b: Blob) => void>(() => {});
+  const onBlobRef = useRef<(b: Blob, durSec: number) => void>(() => {});
   const idxRef = useRef(0);
   const attemptRef = useRef(0);
   const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null });
@@ -110,7 +113,7 @@ export default function LunaReader({
       .catch(() => window.setTimeout(onDone, 1600));
   }
 
-  async function startRecording(onBlob: (b: Blob) => void) {
+  async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
     unlockAudio();
     stopAudio(); // never let old coaching play over a fresh read
     setErr(null);
@@ -128,9 +131,17 @@ export default function LunaReader({
       const rec = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
       chunksRef.current = [];
       rec.ondataavailable = (e) => { if (e.data.size > 0) chunksRef.current.push(e.data); };
-      rec.onstop = () => { const blob = new Blob(chunksRef.current, { type: rec.mimeType || "audio/webm" }); cleanupMic(); onBlobRef.current(blob); };
+      rec.onstop = () => {
+        const blob = new Blob(chunksRef.current, { type: rec.mimeType || "audio/webm" });
+        // Measure the ACTUAL recording length client-side — the model's
+        // duration estimate is unreliable and was giving 0 WCPM.
+        const durSec = Math.max(0.5, (Date.now() - recStartRef.current) / 1000);
+        cleanupMic();
+        onBlobRef.current(blob, durSec);
+      };
       recorderRef.current = rec;
       rec.start();
+      recStartRef.current = Date.now();
       setMode("listening");
     } catch {
       setErr("I couldn't turn on the mic. Check the mic permission and try again.");
@@ -156,23 +167,23 @@ export default function LunaReader({
     return json.analysis as Grade;
   }
 
-  function toScore(g: Grade): OverallScore {
+  function toScore(g: Grade, durSec: number): OverallScore {
     return {
-      wcpm: g.durationSeconds > 0 ? g.wordsCorrect / (g.durationSeconds / 60) : 0,
+      wcpm: durSec > 0 ? g.wordsCorrect / (durSec / 60) : 0,
       accuracy: g.wordsTotal > 0 ? (g.wordsCorrect / g.wordsTotal) * 100 : 0,
     };
   }
 
-  async function gradeWhole(blob: Blob, which: "before" | "after") {
+  async function gradeWhole(blob: Blob, which: "before" | "after", durSec: number) {
     try {
       const g = await postGrade(passage.text, blob);
       if (which === "before") {
-        setBefore(toScore(g));
+        setBefore(toScore(g, durSec));
         const line = "Nice first read! Now let's practice it, one line at a time.";
         setMode("speaking"); setCaption(line);
         speak(line, () => { setPhase("drill"); setIdx(0); setAttempt(0); setResults({}); setMode("idle"); setCaption("Tap me and read the first line."); });
       } else {
-        setAfter(toScore(g));
+        setAfter(toScore(g, durSec));
         statsRef.current.afterGrade = g;
         finishSession();
       }
@@ -194,27 +205,30 @@ export default function LunaReader({
         .map((w) => w.word.replace(/[^A-Za-z'-]/g, "")).filter(Boolean);
       const hasError = a.wordsCorrect < a.wordsTotal || tricky.length > 0 || !!a.disfluent;
       const willRetry = hasError && curAttempt === 0;
-      if (!willRetry) tricky.slice(0, 3).forEach((w) => statsRef.current.trickyWords.add(w));
+      if (!willRetry) tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
+      // Surface what Luna actually heard, so the mismatch is visible.
+      setLastHeard(hasError && a.heardTranscript ? a.heardTranscript : null);
 
       if (!hasError) {
-        // Clean read → skip the voice round-trip entirely for speed. Quick
-        // visual cheer, then straight to the next line. Only mistakes wait
-        // for spoken coaching.
+        // Clean read → skip the voice round-trip for speed; quick cheer + advance.
+        setLastHeard(null);
         setMode("idle");
         setCaption("Nice reading!");
         window.setTimeout(() => proceed(false), 450);
-      } else {
-        // Disfluent-but-all-words-right (a stutter): the grader's coach line was
-        // written for word accuracy and may say "great reading" — override it so
-        // the coaching matches what actually happened.
-        const stutterOnly = a.disfluent && tricky.length === 0 && a.wordsCorrect >= a.wordsTotal;
-        const coaching = stutterOnly
-          ? "Let's read that line again — nice and smooth, no rush."
-          : a.coach?.trim()
-            ? a.coach.trim()
-            : willRetry ? `Let's look at "${tricky[0] ?? "that word"}" and read the line again.` : "Good try — let's keep going.";
+      } else if (willRetry) {
+        // First miss → coach EVERY word that was wrong (not just one), then retry.
+        const words = tricky.slice(0, 3);
+        let coaching: string;
+        if (words.length >= 2) coaching = `Let's practice ${words.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${words[words.length - 1]}". Read the whole line again.`;
+        else if (words.length === 1) coaching = `Let's look at "${words[0]}". Read the whole line again.`;
+        else coaching = "Let's read that line again — nice and smooth, no rush."; // disfluent only
         setMode("speaking"); setCaption(coaching);
-        speak(coaching, () => proceed(willRetry));
+        speak(coaching, () => proceed(true));
+      } else {
+        // Second attempt still not perfect → acknowledge + move on (don't say "again").
+        const coaching = "Good try! Let's keep going.";
+        setMode("speaking"); setCaption(coaching);
+        speak(coaching, () => proceed(false));
       }
     } catch (e: unknown) {
       setErr(e instanceof Error ? e.message : "Something went wrong.");
@@ -225,6 +239,7 @@ export default function LunaReader({
   function proceed(willRetry: boolean) {
     if (willRetry) { setAttempt(1); setMode("idle"); setCaption("Let's read that line one more time — tap me."); return; }
     setAttempt(0);
+    setLastHeard(null);
     const next = idxRef.current + 1;
     if (next >= sentences.length) {
       const line = "Great practicing! Now read me the whole story one more time.";
@@ -296,9 +311,9 @@ export default function LunaReader({
   function onTap() {
     if (mode === "listening") { stopRecording(); return; }
     if (mode !== "idle") return;
-    if (phase === "overall1") startRecording((b) => gradeWhole(b, "before"));
-    else if (phase === "drill") startRecording(gradeSentence);
-    else if (phase === "overall2") startRecording((b) => gradeWhole(b, "after"));
+    if (phase === "overall1") startRecording((b, d) => { void gradeWhole(b, "before", d); });
+    else if (phase === "drill") startRecording((b) => { void gradeSentence(b); });
+    else if (phase === "overall2") startRecording((b, d) => { void gradeWhole(b, "after", d); });
   }
 
   const busy = mode === "thinking" || mode === "speaking";
@@ -334,6 +349,11 @@ export default function LunaReader({
                 ? statsRef.current.afterGrade.wordAnnotations.map((a, i) => <Word key={i} a={a} />)
                 : passage.text}
           </p>
+          {lastHeard && phase === "drill" && (
+            <div style={{ marginTop: 10, fontSize: 12.5, color: "#9a3412", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 10, padding: "6px 10px" }}>
+              I heard: <span style={{ fontStyle: "italic" }}>&ldquo;{lastHeard}&rdquo;</span>
+            </div>
+          )}
         </div>
       )}
 
