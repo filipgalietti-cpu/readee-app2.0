@@ -16,7 +16,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
-import { Shuffle, Trophy, RotateCcw, Sparkles, Play } from "lucide-react";
+import { Shuffle, Trophy, RotateCcw, Play } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 
 type Passage = { grade: string; title: string; text: string };
@@ -43,12 +43,10 @@ function splitSentences(text: string): string[] {
 export default function LunaReader({
   childId,
   passages,
-  focusPatterns = [],
 }: {
   childId: string;
   childName: string;
   passages: Passage[];
-  focusPatterns?: string[];
 }) {
   const [pIdx, setPIdx] = useState(0);
   const [override, setOverride] = useState<Passage | null>(null);
@@ -64,7 +62,6 @@ export default function LunaReader({
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const [before, setBefore] = useState<OverallScore | null>(null);
   const [after, setAfter] = useState<OverallScore | null>(null);
-  const [generating, setGenerating] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
   const streamRef = useRef<MediaStream | null>(null);
@@ -258,26 +255,6 @@ export default function LunaReader({
     setPIdx(n); resetAll(passages[n] ?? passages[0]);
   }
 
-  async function practiceTricky() {
-    if (generating || focusPatterns.length === 0) return;
-    unlockAudio(); setGenerating(true); setErr(null);
-    try {
-      const r = await fetch("/api/luna/passage", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ childId, pattern: focusPatterns[0], gradeLevel: passage.grade }) });
-      const j = await r.json();
-      if (r.ok && j.ok && j.passage?.text) {
-        setOverride(j.passage);
-        statsRef.current = { trickyWords: new Set(), afterGrade: null };
-        setResults({}); setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setErr(null);
-        setSentences(splitSentences(j.passage.text));
-        setPhase("overall1");
-        const intro = `I noticed "${focusPatterns[0]}" was a little tricky for you before. Let's practice it! Read me the whole story out loud.`;
-        setMode("speaking"); setCaption(intro);
-        speak(intro, () => setMode("idle"));
-      } else setErr("Couldn't make a practice story right now — try a regular one.");
-    } catch { setErr("Couldn't make a practice story right now — try a regular one."); }
-    finally { setGenerating(false); }
-  }
-
   function onTap() {
     if (mode === "listening") { stopRecording(); return; }
     if (mode !== "idle") return;
@@ -334,24 +311,10 @@ export default function LunaReader({
 
           {phase === "intro" ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 10 }}>
-              {focusPatterns.length > 0 ? (
-                <>
-                  {/* Luna's core value: practice the child's real weak spot. Make it the hero. */}
-                  <button type="button" onClick={practiceTricky} disabled={generating}
-                    style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: generating ? "default" : "pointer", opacity: generating ? 0.7 : 1 }}>
-                    <Sparkles className="h-5 w-5" /> {generating ? "Getting it ready…" : "Let's practice"}
-                  </button>
-                  <button type="button" onClick={startFlow}
-                    style={{ display: "inline-flex", alignItems: "center", gap: 6, border: "1px solid #ddd6fe", background: "#f5f3ff", color: "#6d28d9", borderRadius: 999, padding: "9px 18px", fontSize: 13, fontWeight: 800, cursor: "pointer" }}>
-                    <Play className="h-4 w-4" fill="currentColor" stroke="none" /> Just read a story
-                  </button>
-                </>
-              ) : (
-                <button type="button" onClick={startFlow}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: "pointer" }}>
-                  <Play className="h-5 w-5" fill="#fff" stroke="none" /> Let&apos;s Start
-                </button>
-              )}
+              <button type="button" onClick={startFlow}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: "pointer" }}>
+                <Play className="h-5 w-5" fill="#fff" stroke="none" /> Let&apos;s Start
+              </button>
             </div>
           ) : (
             <button type="button" onClick={onTap} disabled={busy}
