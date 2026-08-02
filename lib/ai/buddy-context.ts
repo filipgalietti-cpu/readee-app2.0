@@ -118,9 +118,9 @@ export async function buildBuddyContext(input: {
       // Recent practice — last 5 standards touched.
       const { data: practice } = await supabase
         .from("practice_results")
-        .select("standard_id, questions_correct, questions_attempted, updated_at")
+        .select("standard_id, questions_correct, questions_attempted, completed_at")
         .eq("child_id", input.childId)
-        .order("updated_at", { ascending: false })
+        .order("completed_at", { ascending: false })
         .limit(5);
       for (const r of (practice ?? []) as any[]) {
         const pct = r.questions_attempted
@@ -132,9 +132,9 @@ export async function buildBuddyContext(input: {
       // Most recent fluency reading — surface target patterns if any.
       const { data: fluency } = await supabase
         .from("fluency_readings")
-        .select("wcpm, target_patterns, updated_at")
+        .select("wcpm, target_patterns, created_at")
         .eq("child_id", input.childId)
-        .order("updated_at", { ascending: false })
+        .order("created_at", { ascending: false })
         .limit(1);
       const f = ((fluency ?? []) as any[])[0];
       if (f) {
