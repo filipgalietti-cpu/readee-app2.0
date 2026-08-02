@@ -36,6 +36,8 @@ type OverallScore = { wcpm: number; accuracy: number };
 const SERIF = 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif';
 const BALOO = "'Baloo 2','Nunito',sans-serif";
 const SILENT = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=";
+const CLIP_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/luna`;
+const PRELOAD_CLIPS = ["praise-1", "praise-2", "praise-3", "praise-4", "smooth", "goodtry"];
 
 function splitSentences(text: string): string[] {
   return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
@@ -86,6 +88,8 @@ export default function LunaReader({
   useEffect(() => {
     audioRef.current = new Audio();
     audioRef.current.preload = "auto";
+    // Warm the browser cache for the pre-recorded clips so they play instantly.
+    PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(); a.preload = "auto"; a.src = `${CLIP_BASE}/${k}.mp3`; } catch { /* ignore */ } });
     return () => { cleanupMic(); stopAudio(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -104,6 +108,8 @@ export default function LunaReader({
     unlockedRef.current = true;
     try { audioRef.current.src = SILENT; void audioRef.current.play().then(() => audioRef.current?.pause()).catch(() => {}); } catch { /* ignore */ }
   }
+  // Live TTS — only for VARIABLE lines (the specific "sound out X" coaching and
+  // the name-personalized whole-passage transitions).
   function speak(text: string, onDone: () => void) {
     const a = audioRef.current;
     fetch("/api/luna/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) })
@@ -113,6 +119,17 @@ export default function LunaReader({
         else window.setTimeout(onDone, 1600);
       })
       .catch(() => window.setTimeout(onDone, 1600));
+  }
+
+  // Pre-recorded clips (praise, smooth, good-try) — instant, deterministic,
+  // no TTS round-trip. This is the speed win + it fixes spoken/written mismatch.
+  function playCached(key: string, onDone: () => void) {
+    const a = audioRef.current;
+    if (!a) { window.setTimeout(onDone, 500); return; }
+    stopAudio();
+    a.src = `${CLIP_BASE}/${key}.mp3`;
+    a.onended = onDone;
+    a.play().catch(() => window.setTimeout(onDone, 700));
   }
 
   async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
@@ -212,31 +229,29 @@ export default function LunaReader({
       setLastHeard(hasError && a.heardTranscript ? a.heardTranscript : null);
 
       if (!hasError) {
-        // Clean read → skip the voice round-trip for speed; quick cheer + advance.
+        // Clean read → INSTANT pre-recorded praise (spoken + fast), then advance.
         setLastHeard(null);
-        setMode("idle");
-        setCaption(`Nice reading, ${name}!`);
-        window.setTimeout(() => proceed(false), 450);
+        setMode("speaking");
+        setCaption(`Great reading, ${name}!`);
+        playCached(`praise-${1 + Math.floor(Math.random() * 4)}`, () => proceed(false));
       } else if (willRetry) {
-        // Coach by the TYPE of difficulty: DECODING (wrong/missed words) -> sound
-        // it out; FLUENCY (stutter/pace, words fine) -> slow & smooth.
         const words = tricky.slice(0, 3);
-        let coaching: string;
-        if (words.length >= 2) {
-          const list = `${words.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${words[words.length - 1]}"`;
-          coaching = `Let's sound out ${list} — say each sound slowly. Then read the whole line again.`;
-        } else if (words.length === 1) {
-          coaching = `Let's sound out "${words[0]}" — say each sound slowly, then read the whole line again.`;
+        if (words.length >= 1) {
+          // DECODING → live TTS to sound out the SPECIFIC word(s).
+          const coaching = words.length >= 2
+            ? `Let's sound out ${words.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${words[words.length - 1]}" — say each sound slowly. Then read the whole line again.`
+            : `Let's sound out "${words[0]}" — say each sound slowly, then read the whole line again.`;
+          setMode("speaking"); setCaption(coaching);
+          speak(coaching, () => proceed(true));
         } else {
-          coaching = `Take your time, ${name}. Read that line again nice and smooth — no rush.`;
+          // FLUENCY (a stutter, words fine) → instant pre-recorded "smooth" clip.
+          setMode("speaking"); setCaption(`Take your time, ${name}. Read it again — nice and smooth.`);
+          playCached("smooth", () => proceed(true));
         }
-        setMode("speaking"); setCaption(coaching);
-        speak(coaching, () => proceed(true));
       } else {
-        // Second attempt still not perfect → acknowledge + move on (don't say "again").
-        const coaching = `Good try, ${name}! Let's keep going.`;
-        setMode("speaking"); setCaption(coaching);
-        speak(coaching, () => proceed(false));
+        // Second attempt still imperfect → instant "good try" clip + advance.
+        setMode("speaking"); setCaption(`Good try, ${name}! Let's keep going.`);
+        playCached("goodtry", () => proceed(false));
       }
     } catch (e: unknown) {
       setErr(e instanceof Error ? e.message : "Something went wrong.");
