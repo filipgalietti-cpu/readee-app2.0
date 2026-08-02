@@ -117,6 +117,10 @@ export async function analyzeFluencyReading(input: {
   passageGradeLevel: string | null;
   /** When the reading satisfies a teacher assignment, link it back. */
   assignmentId?: string | null;
+  /** Set false to grade a snippet in-memory (no Storage upload, no DB row).
+   *  Luna's guided sentence-by-sentence loop uses this to grade one line at
+   *  a time cheaply; the whole-passage /fluency page leaves it true. */
+  persist?: boolean;
 }): Promise<
   | { ok: true; readingId: string; analysis: FluencyAnalysis; audioUrl: string }
   | { ok: false; error: string }
@@ -124,31 +128,36 @@ export async function analyzeFluencyReading(input: {
   if (!input.audioBase64) return { ok: false, error: "Missing audio." };
   if (!input.passageText.trim()) return { ok: false, error: "Missing passage." };
 
+  const persist = input.persist !== false;
   const admin = supabaseAdmin();
+  const readingId = randomUUID();
 
   // 1) Upload the audio to Supabase Storage so we can replay later.
-  const audioBuffer = Buffer.from(input.audioBase64, "base64");
-  const ext =
-    input.audioMimeType.includes("webm")
-      ? "webm"
-      : input.audioMimeType.includes("mp4")
-        ? "m4a"
-        : input.audioMimeType.includes("wav")
-          ? "wav"
-          : "bin";
-  const readingId = randomUUID();
-  const storagePath = `fluency/${input.childId}/${readingId}.${ext}`;
-  const upload = await admin.storage
-    .from("audio")
-    .upload(storagePath, audioBuffer, {
-      contentType: input.audioMimeType,
-      upsert: false,
-    });
-  if (upload.error) {
-    return { ok: false, error: `Audio upload failed: ${upload.error.message}` };
+  //    Skipped in no-persist mode (per-sentence grading during a session).
+  let audioUrl = "";
+  if (persist) {
+    const audioBuffer = Buffer.from(input.audioBase64, "base64");
+    const ext =
+      input.audioMimeType.includes("webm")
+        ? "webm"
+        : input.audioMimeType.includes("mp4")
+          ? "m4a"
+          : input.audioMimeType.includes("wav")
+            ? "wav"
+            : "bin";
+    const storagePath = `fluency/${input.childId}/${readingId}.${ext}`;
+    const upload = await admin.storage
+      .from("audio")
+      .upload(storagePath, audioBuffer, {
+        contentType: input.audioMimeType,
+        upsert: false,
+      });
+    if (upload.error) {
+      return { ok: false, error: `Audio upload failed: ${upload.error.message}` };
+    }
+    const { data: pub } = admin.storage.from("audio").getPublicUrl(storagePath);
+    audioUrl = pub?.publicUrl ?? "";
   }
-  const { data: pub } = admin.storage.from("audio").getPublicUrl(storagePath);
-  const audioUrl = pub?.publicUrl ?? "";
 
   // 2) Hand the audio to Gemini for analysis.
   const userPrompt = `Grade level: ${input.passageGradeLevel ?? "unspecified"}
@@ -224,6 +233,11 @@ Transcribe and analyze the audio now.`;
   } catch (e: any) {
     trackError(e, { route: "build-fluency", userId: input.callerId });
     return { ok: false, error: e.message ?? "Fluency analysis failed." };
+  }
+
+  // No-persist mode (per-sentence grading): return the analysis only.
+  if (!persist) {
+    return { ok: true, readingId, analysis, audioUrl: "" };
   }
 
   // 3) Persist the row.
