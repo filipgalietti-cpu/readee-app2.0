@@ -334,14 +334,22 @@ export default function LunaReader({
 
           {phase === "intro" ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 10 }}>
-              <button type="button" onClick={startFlow}
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: "pointer" }}>
-                <Play className="h-5 w-5" fill="#fff" stroke="none" /> Let&apos;s Start
-              </button>
-              {focusPatterns.length > 0 && (
-                <button type="button" onClick={practiceTricky} disabled={generating}
-                  style={{ display: "inline-flex", alignItems: "center", gap: 6, border: "1px solid #ddd6fe", background: "#f5f3ff", color: "#6d28d9", borderRadius: 999, padding: "9px 18px", fontSize: 13, fontWeight: 800, cursor: generating ? "default" : "pointer", opacity: generating ? 0.6 : 1 }}>
-                  <Sparkles className="h-4 w-4" /> {generating ? "Getting it ready…" : "Let's practice"}
+              {focusPatterns.length > 0 ? (
+                <>
+                  {/* Luna's core value: practice the child's real weak spot. Make it the hero. */}
+                  <button type="button" onClick={practiceTricky} disabled={generating}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: generating ? "default" : "pointer", opacity: generating ? 0.7 : 1 }}>
+                    <Sparkles className="h-5 w-5" /> {generating ? "Getting it ready…" : "Let's practice"}
+                  </button>
+                  <button type="button" onClick={startFlow}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 6, border: "1px solid #ddd6fe", background: "#f5f3ff", color: "#6d28d9", borderRadius: 999, padding: "9px 18px", fontSize: 13, fontWeight: 800, cursor: "pointer" }}>
+                    <Play className="h-4 w-4" fill="currentColor" stroke="none" /> Just read a story
+                  </button>
+                </>
+              ) : (
+                <button type="button" onClick={startFlow}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: "pointer" }}>
+                  <Play className="h-5 w-5" fill="#fff" stroke="none" /> Let&apos;s Start
                 </button>
               )}
             </div>
