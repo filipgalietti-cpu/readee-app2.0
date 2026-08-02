@@ -4,6 +4,7 @@ import { requireProfile } from "@/lib/auth/helpers";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 import { createClient } from "@/lib/supabase/server";
 import passagesJson from "@/app/data/fluency-passages.json";
+import { getLearnerModel } from "@/lib/adaptive/learner-model";
 import LunaReader from "./_components/LunaReader";
 
 export const dynamic = "force-dynamic";
@@ -56,6 +57,13 @@ export default async function LunaPage({
   const passages = PASSAGES.filter((p) => p.grade === token);
   const usable = passages.length ? passages : PASSAGES.filter((p) => p.grade === "1st");
 
+  // Luna's targeting: the child's real weak patterns from the learner model.
+  let focusPatterns: string[] = [];
+  try {
+    const model = await getLearnerModel(supabase, child.id);
+    focusPatterns = model.focus.patterns;
+  } catch { /* profile unavailable — Luna still works on curated passages */ }
+
   return (
     <div className="mx-auto max-w-2xl px-6 py-6">
       <div className="mb-4 text-center">
@@ -68,7 +76,7 @@ export default async function LunaPage({
         </h1>
       </div>
 
-      <LunaReader childId={child.id} childName={child.name} passages={usable} />
+      <LunaReader childId={child.id} childName={child.name} passages={usable} focusPatterns={focusPatterns} />
     </div>
   );
 }

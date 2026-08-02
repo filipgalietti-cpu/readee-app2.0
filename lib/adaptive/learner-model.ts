@@ -74,14 +74,19 @@ export type LearnerModel = {
   focus: { patterns: string[]; standards: string[] };
 };
 
+/** The CCSS domain token in a standard id (RF/RL/RI/L/W/SL), or null if it
+ *  isn't a real CCSS id (e.g. a story slug that leaked into a skill table). */
+export function ccssDomain(standardId: string): string | null {
+  for (const p of standardId.split(".")) {
+    const u = p.toUpperCase();
+    if (["RF", "RL", "RI", "L", "W", "SL"].includes(u)) return u;
+  }
+  return null;
+}
+
 /** Which of the 5 axes a CCSS standard id rolls up into. */
 export function standardToAxis(standardId: string): SkillAxis {
-  const parts = standardId.split(".");
-  let domain = "";
-  for (const p of parts) {
-    const u = p.toUpperCase();
-    if (["RF", "RL", "RI", "L", "W", "SL"].includes(u)) { domain = u; break; }
-  }
+  const domain = ccssDomain(standardId) ?? "";
   if (domain === "RF") return "phonics";
   if (domain === "L") return "vocabulary";
   if (domain === "RL" || domain === "RI") {
@@ -136,6 +141,7 @@ export async function getLearnerModel(
   };
   for (const s of masteryByStandard) {
     if (s.attempts < 3) continue;
+    if (!ccssDomain(s.standardId)) continue; // ignore non-CCSS ids (e.g. legacy story slugs)
     const axis = standardToAxis(s.standardId);
     axisAgg[axis].sum += s.accuracy;
     axisAgg[axis].n += 1;

@@ -15,7 +15,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
-import { Shuffle, Trophy, RotateCcw } from "lucide-react";
+import { Shuffle, Trophy, RotateCcw, Sparkles } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 
 type Passage = { grade: string; title: string; text: string };
@@ -42,14 +42,18 @@ function splitSentences(text: string): string[] {
 export default function LunaReader({
   childId,
   passages,
+  focusPatterns = [],
 }: {
   childId: string;
   childName: string;
   passages: Passage[];
+  focusPatterns?: string[];
 }) {
   const [pIdx, setPIdx] = useState(0);
-  const passage = passages[pIdx] ?? passages[0];
-  const [sentences, setSentences] = useState<string[]>(() => splitSentences(passage.text));
+  const [override, setOverride] = useState<Passage | null>(null);
+  const passage = override ?? passages[pIdx] ?? passages[0];
+  const [sentences, setSentences] = useState<string[]>(() => splitSentences((passages[0] ?? { text: "" }).text));
+  const [generating, setGenerating] = useState(false);
 
   const [idx, setIdx] = useState(0);
   const [attempt, setAttempt] = useState(0);
@@ -231,20 +235,42 @@ export default function LunaReader({
     }).catch(() => {});
   }
 
-  function resetSession(nextPassageIdx = pIdx) {
+  function resetState(p: Passage) {
     try { audioRef.current?.pause(); } catch { /* ignore */ }
     statsRef.current = { correct: 0, total: 0, seconds: 0, patterns: new Set(), annotations: [] };
     setResults({}); setIdx(0); setAttempt(0); setDone(null); setErr(null); setMode("idle");
     setCaption("Tap Luna, then read the first line out loud.");
-    const p = passages[nextPassageIdx] ?? passages[0];
-    setPIdx(nextPassageIdx);
     setSentences(splitSentences(p.text));
   }
 
+  function readAgain() { resetState(passage); }
+
   function newPassage() {
+    setOverride(null);
     let n = pIdx;
     if (passages.length > 1) { n = Math.floor(Math.random() * passages.length); if (n === pIdx) n = (pIdx + 1) % passages.length; }
-    resetSession(n);
+    setPIdx(n);
+    resetState(passages[n] ?? passages[0]);
+  }
+
+  // Weakness-targeted practice: generate a passage loaded with the child's
+  // weak phonics pattern (from the learner model) and read that instead.
+  async function practiceTricky() {
+    if (generating || focusPatterns.length === 0) return;
+    setGenerating(true); setErr(null);
+    try {
+      const r = await fetch("/api/luna/passage", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ childId, pattern: focusPatterns[0], gradeLevel: passage.grade }),
+      });
+      const j = await r.json();
+      if (r.ok && j.ok && j.passage?.text) { setOverride(j.passage); resetState(j.passage); }
+      else setErr("Couldn't make a practice passage right now — try a regular one.");
+    } catch {
+      setErr("Couldn't make a practice passage right now — try a regular one.");
+    } finally {
+      setGenerating(false);
+    }
   }
 
   const onTap = () => {
@@ -294,9 +320,15 @@ export default function LunaReader({
             <p style={{ margin: 0, textAlign: "center", fontFamily: "'Baloo 2','Nunito',sans-serif", fontSize: 19, lineHeight: 1.35, fontWeight: 700, color: "#18181b" }}>{caption}</p>
           </div>
           <button type="button" onClick={onTap} disabled={busy}
-            style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "12px 26px", fontFamily: "'Nunito',sans-serif", fontSize: 15, fontWeight: 800, color: "#fff", background: mode === "listening" ? "#dc2626" : "#4338ca", boxShadow: "0 10px 40px -12px rgba(49,46,129,.45)", cursor: busy ? "default" : "pointer", opacity: busy ? 0.7 : 1 }}>
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "12px 26px", fontFamily: "'Nunito','Nunito',sans-serif", fontSize: 15, fontWeight: 800, color: "#fff", background: mode === "listening" ? "#dc2626" : "#4338ca", boxShadow: "0 10px 40px -12px rgba(49,46,129,.45)", cursor: busy ? "default" : "pointer", opacity: busy ? 0.7 : 1 }}>
             {micLabel}
           </button>
+          {focusPatterns.length > 0 && mode === "idle" && idx === 0 && Object.keys(results).length === 0 && (
+            <button type="button" onClick={practiceTricky} disabled={generating}
+              style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 6, border: "1px solid #ddd6fe", background: "#f5f3ff", color: "#6d28d9", borderRadius: 999, padding: "9px 18px", fontSize: 13, fontWeight: 800, cursor: generating ? "default" : "pointer", opacity: generating ? 0.6 : 1 }}>
+              <Sparkles className="h-4 w-4" /> {generating ? "Making a passage…" : `Practice my tricky sounds`}
+            </button>
+          )}
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
@@ -315,7 +347,7 @@ export default function LunaReader({
             )}
           </div>
           <div style={{ display: "flex", gap: 10 }}>
-            <button type="button" onClick={() => resetSession(pIdx)}
+            <button type="button" onClick={readAgain}
               style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, border: "1px solid #ddd6fe", background: "#fff", color: "#6d28d9", padding: "11px 20px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
               <RotateCcw className="h-4 w-4" /> Read it again
             </button>

@@ -191,6 +191,7 @@ function getNavSections(
         { href: `/stories${q}`, icon: BookOpen, label: "Stories" },
         { href: `/luna${q}`, icon: Mic, label: "Luna" },
         { href: `/journey${q}`, icon: Map, label: "Journey" },
+        { href: `/learning-report${q}`, icon: BarChart3, label: "Reading Report" },
       ],
     });
 
@@ -328,6 +329,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     "/fluency",
     "/analytics",
     "/leaderboard",
+    "/learning-report",
   ];
   const isParentSurface =
     !!pathname &&

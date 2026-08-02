@@ -53,6 +53,14 @@ function storyAudioUrl(story: Story) {
   return `${SUPABASE_BASE}/audio/stories/${story.grade}/${story.id}-story.mp3?v=5`;
 }
 
+/** Map a story's grade ("kindergarten"/"1st"/…) to a real CCSS literary
+ *  comprehension standard so story quiz results feed the learner model
+ *  (RL.<grade>.1 = ask & answer key details about a story). */
+function storyStandard(grade: string): string {
+  const tok = /^k/i.test(grade) ? "K" : (grade.match(/\d/)?.[0] ?? "1");
+  return `RL.${tok}.1`;
+}
+
 /* ── Page ──────────────────────────────────────────── */
 
 export default function StoriesPage() {
@@ -304,6 +312,26 @@ function StoriesContent() {
             });
             if (error) throw error;
             setSaveError(false);
+            // Feed story comprehension into the skill signal under a REAL
+            // CCSS standard (practice_results above keeps story.id as the
+            // per-story done-marker; practice_answers is what weak-spots +
+            // the learner model actually read). Best-effort — never let this
+            // break the story-save UX.
+            try {
+              const std = storyStandard(story.grade);
+              await supabase.from("practice_answers").insert(
+                story.questions.map((_q, i) => ({
+                  child_id: childId,
+                  question_id: `${story.id}-Q${i + 1}`,
+                  standard_id: std,
+                  type: "mcq",
+                  was_correct: i < finalCorrect,
+                  answered_at: new Date().toISOString(),
+                })),
+              );
+            } catch {
+              /* skill-signal write is non-critical */
+            }
             // Bump the spendable balance too so the kid sees their
             // wallet grow at the shop. Read-then-write to avoid
             // clobbering concurrent updates from other surfaces.
