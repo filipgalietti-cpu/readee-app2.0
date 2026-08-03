@@ -96,19 +96,23 @@ export default function LunaReader({
   const idxRef = useRef(0);
   const attemptRef = useRef(0);
   const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null });
-  // Synthesized "bubble" processing loop (Web Audio) — plays alone during a
-  // wait, always stopped before any speech so it never overlaps the TTS.
-  const bubbleCtxRef = useRef<AudioContext | null>(null);
-  const bubbleTimerRef = useRef<number | null>(null);
+  // "Bubble" processing loop (recorded clip) — plays alone during a wait on its
+  // own audio element, always stopped before any speech so it never overlaps TTS.
+  const bubbleAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => { idxRef.current = idx; }, [idx]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
   useEffect(() => {
     audioRef.current = new Audio();
     audioRef.current.preload = "auto";
+    // Looping "processing" bubbles on a dedicated element (so it can loop under a
+    // wait, independently of the one-shot speech element).
+    const bub = new Audio(`${CLIP_BASE}/processing.mp3`);
+    bub.preload = "auto"; bub.loop = true; bub.volume = 0.55;
+    bubbleAudioRef.current = bub;
     // Warm the browser cache for the pre-recorded clips so they play instantly.
     PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(); a.preload = "auto"; a.src = `${CLIP_BASE}/${k}.mp3`; } catch { /* ignore */ } });
-    return () => { cleanupMic(); stopBubbles(); stopAudio(); try { void bubbleCtxRef.current?.close(); } catch { /* ignore */ } };
+    return () => { cleanupMic(); stopBubbles(); stopAudio(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -138,41 +142,18 @@ export default function LunaReader({
   }
 
   // --- "Bubble" processing loop --------------------------------------------
-  // The ChatGPT-style "looking something up" sound: quick watery bloops
-  // synthesized live. Plays ALONE while we wait, then stopBubbles() is called
-  // BEFORE any speech so the bubbles and the TTS never overlap.
+  // The "looking something up" sound: a recorded bubble clip looped. Plays ALONE
+  // while we wait; stopBubbles() is called BEFORE any speech so the bubbles and
+  // the TTS never overlap.
   function startBubbles() {
-    try {
-      const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const ctx = bubbleCtxRef.current ?? new AC();
-      bubbleCtxRef.current = ctx;
-      if (ctx.state === "suspended") void ctx.resume();
-      if (bubbleTimerRef.current != null) return; // already bubbling
-      const pitches = [430, 510, 600, 690, 560, 470, 640];
-      let i = 0;
-      const fire = () => {
-        const c = bubbleCtxRef.current;
-        if (!c) return;
-        const now = c.currentTime;
-        const base = pitches[i % pitches.length];
-        i++;
-        const o = c.createOscillator(); o.type = "sine";
-        const g = c.createGain();
-        o.connect(g); g.connect(c.destination);
-        // quick upward "bloop" pitch pop + fast pluck envelope = a water droplet
-        o.frequency.setValueAtTime(base, now);
-        o.frequency.exponentialRampToValueAtTime(base * 1.7, now + 0.07);
-        g.gain.setValueAtTime(0.0001, now);
-        g.gain.exponentialRampToValueAtTime(0.1, now + 0.01);
-        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.16);
-        o.start(now); o.stop(now + 0.18);
-      };
-      fire();
-      bubbleTimerRef.current = window.setInterval(fire, 150);
-    } catch { /* bubbles are an optional flourish; ignore failures */ }
+    const b = bubbleAudioRef.current;
+    if (!b) return;
+    try { b.currentTime = 0; b.play().catch(() => {}); } catch { /* ignore */ }
   }
   function stopBubbles() {
-    if (bubbleTimerRef.current != null) { window.clearInterval(bubbleTimerRef.current); bubbleTimerRef.current = null; }
+    const b = bubbleAudioRef.current;
+    if (!b) return;
+    try { b.pause(); b.currentTime = 0; } catch { /* ignore */ }
   }
 
   // Cached feedback: stop the bubbles, THEN speak — never overlapping.
