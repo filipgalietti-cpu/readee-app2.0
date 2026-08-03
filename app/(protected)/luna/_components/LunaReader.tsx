@@ -41,16 +41,17 @@ const CLIP_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/pub
 const PRAISE_COUNT = 12;   // praise-1..12   (clean read)
 const SMOOTH_COUNT = 4;    // smooth-1..4    (fluency retry)
 const GOODTRY_COUNT = 4;   // goodtry-1..4   (2nd attempt)
-// Short "thinking" beats that LOOP to bridge the grade round-trip, and "prep"
-// clips that loop while a story generates + a "landing" beat when it's ready.
-const THINKING_CLIPS = ["thinking-1", "thinking-2", "thinking-3", "thinking-4", "thinking-5", "thinking-6"];
-const PREP_CLIPS = ["prep-1", "prep-2", "prep-3", "prep-4"];
+// A single natural spoken beat plays ONCE over a synthesized ambient bed while
+// we wait — no looping (which sounded finicky). THINKING = grade wait,
+// PREP_LEAD = story generation, PREP_LAND = the "here's your story" beat.
+const THINKING_CLIPS = ["thinking-1", "thinking-2", "thinking-3"];
+const PREP_LEAD = ["prep-1", "prep-2", "prep-3"];
 const PREP_LAND_COUNT = 3; // prep-land-1..3
 const PRELOAD_CLIPS = [
   ...Array.from({ length: PRAISE_COUNT }, (_, i) => `praise-${i + 1}`),
   ...Array.from({ length: SMOOTH_COUNT }, (_, i) => `smooth-${i + 1}`),
   ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
-  ...THINKING_CLIPS, ...PREP_CLIPS,
+  ...THINKING_CLIPS, ...PREP_LEAD,
   ...Array.from({ length: PREP_LAND_COUNT }, (_, i) => `prep-land-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
@@ -98,11 +99,13 @@ export default function LunaReader({
   const idxRef = useRef(0);
   const attemptRef = useRef(0);
   const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null });
-  // Filler loop: `active` clips play back-to-back to bridge a variable wait;
-  // `pending` is the real action, run at the NEXT clip boundary so feedback
-  // never chops a filler mid-word and never leaves dead air.
-  const fillerRef = useRef<{ clips: string[]; active: boolean }>({ clips: [], active: false });
-  const pendingRef = useRef<null | (() => void)>(null);
+  // Ambient "processing" bed (synthesized via Web Audio — seamless, no file) +
+  // a single spoken lead-in. `leadDoneRef` resolves when the lead-in finishes,
+  // so the real response hands off cleanly after it (never chopping a word),
+  // while the ambient bed bridges whatever wait remains.
+  const ambientCtxRef = useRef<AudioContext | null>(null);
+  const ambientNodesRef = useRef<{ master: GainNode; nodes: AudioScheduledSourceNode[] } | null>(null);
+  const leadDoneRef = useRef<Promise<void>>(Promise.resolve());
 
   useEffect(() => { idxRef.current = idx; }, [idx]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
@@ -111,7 +114,7 @@ export default function LunaReader({
     audioRef.current.preload = "auto";
     // Warm the browser cache for the pre-recorded clips so they play instantly.
     PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(); a.preload = "auto"; a.src = `${CLIP_BASE}/${k}.mp3`; } catch { /* ignore */ } });
-    return () => { cleanupMic(); stopFiller(); stopAudio(); };
+    return () => { cleanupMic(); stopAmbient(); stopAudio(); try { void ambientCtxRef.current?.close(); } catch { /* ignore */ } };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -140,56 +143,80 @@ export default function LunaReader({
     a.play().catch(() => window.setTimeout(onDone, 700));
   }
 
-  // --- Filler loop: bridge an unknown wait, hand off at a clip boundary -------
-  // Instead of guessing latency, we loop short filler clips and let the real
-  // response take over the instant a clip ends — so it's timed to actual clips,
-  // never a hard cut mid-word and never silence.
-  function startFiller(clips: string[]) {
-    pendingRef.current = null;
-    fillerRef.current = { clips, active: true };
-    playNextFiller();
+  // --- Ambient "processing" bed --------------------------------------------
+  // A soft, gently breathing major-triad pad synthesized live (like the ChatGPT
+  // voice-mode "thinking" hum). Non-verbal, so it can start/stop any time
+  // without chopping words — it fills the wait under the one spoken beat.
+  function startAmbient() {
+    try {
+      const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const ctx = ambientCtxRef.current ?? new AC();
+      ambientCtxRef.current = ctx;
+      if (ctx.state === "suspended") void ctx.resume();
+      stopAmbient(); // clear any prior bed
+      const master = ctx.createGain();
+      master.gain.value = 0;
+      master.connect(ctx.destination);
+      const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 950; lp.connect(master);
+      const partials = [220, 277.18, 329.63]; // soft A major triad
+      const oscs = partials.map((f, i) => {
+        const o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = f;
+        const g = ctx.createGain(); g.gain.value = i === 0 ? 0.5 : 0.26;
+        o.connect(g); g.connect(lp); o.start();
+        return o;
+      });
+      // slow "breathing" LFO added on top of the base gain
+      const lfo = ctx.createOscillator(); lfo.type = "sine"; lfo.frequency.value = 0.55;
+      const lfoGain = ctx.createGain(); lfoGain.gain.value = 0.016;
+      lfo.connect(lfoGain); lfoGain.connect(master.gain); lfo.start();
+      master.gain.setValueAtTime(0, ctx.currentTime);
+      master.gain.linearRampToValueAtTime(0.055, ctx.currentTime + 0.4);
+      ambientNodesRef.current = { master, nodes: [...oscs, lfo] };
+    } catch { /* ambient is optional flourish; ignore failures */ }
   }
-  function playNextFiller() {
+  function stopAmbient() {
+    const ctx = ambientCtxRef.current; const bed = ambientNodesRef.current;
+    if (!ctx || !bed) return;
+    try {
+      bed.master.gain.cancelScheduledValues(ctx.currentTime);
+      bed.master.gain.setValueAtTime(bed.master.gain.value, ctx.currentTime);
+      bed.master.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.22);
+      bed.nodes.forEach((n) => { try { n.stop(ctx.currentTime + 0.28); } catch { /* already stopped */ } });
+    } catch { /* ignore */ }
+    ambientNodesRef.current = null;
+  }
+
+  // Play ONE spoken lead-in over the ambient; leadDoneRef resolves at its end.
+  function playLead(key: string) {
     const a = audioRef.current;
-    if (!a || !fillerRef.current.active) return;
-    if (pendingRef.current) {
-      const fn = pendingRef.current;
-      pendingRef.current = null;
-      fillerRef.current.active = false;
-      fn();
-      return;
-    }
-    const clips = fillerRef.current.clips;
-    a.src = `${CLIP_BASE}/${clips[rand(clips.length)]}.mp3`;
-    a.onended = () => { if (fillerRef.current.active) playNextFiller(); };
-    a.play().catch(() => window.setTimeout(() => { if (fillerRef.current.active) playNextFiller(); }, 600));
+    if (!a) { leadDoneRef.current = Promise.resolve(); return; }
+    leadDoneRef.current = new Promise<void>((resolve) => {
+      stopAudio();
+      a.src = `${CLIP_BASE}/${key}.mp3`;
+      a.onended = () => resolve();
+      a.play().catch(() => window.setTimeout(resolve, 700));
+    });
   }
-  function stopFiller() {
-    fillerRef.current.active = false;
-    pendingRef.current = null;
+  // Run the real response after the lead-in ends, fading the ambient out first.
+  function afterLead(fn: () => void) {
+    void leadDoneRef.current.then(() => { stopAmbient(); fn(); });
   }
-  // Run `fn` at the next filler boundary (or now, if no filler is looping).
-  function afterFiller(fn: () => void) {
-    if (fillerRef.current.active) pendingRef.current = fn;
-    else fn();
-  }
-  // Cached feedback, timed to the filler boundary.
+  // Cached feedback, handed off cleanly after the lead-in.
   function playCachedQueued(key: string, onStart: () => void, onDone: () => void) {
-    afterFiller(() => { onStart(); playCached(key, onDone); });
+    afterLead(() => { onStart(); playCached(key, onDone); });
   }
-  // Live TTS feedback: fetch NOW (the loop keeps masking the fetch), then hand
-  // off at the next boundary once the audio is ready — so the filler also covers
-  // the TTS latency, not just the grade latency.
+  // Live TTS feedback: fetch NOW (ambient masks the fetch), then hand off once
+  // BOTH the lead-in has ended and the audio is ready.
   function speakQueued(text: string, onDone: () => void, onStart?: () => void) {
     fetch("/api/luna/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) })
       .then((r) => r.json())
-      .then((j) => afterFiller(() => {
+      .then((j) => afterLead(() => {
         onStart?.();
         const a = audioRef.current;
         if (a && j?.ok && j.audioUrl) { stopAudio(); a.src = j.audioUrl; a.onended = onDone; a.play().catch(() => window.setTimeout(onDone, 1600)); }
         else window.setTimeout(onDone, 1600);
       }))
-      .catch(() => afterFiller(() => { onStart?.(); window.setTimeout(onDone, 1200); }));
+      .catch(() => afterLead(() => { onStart?.(); window.setTimeout(onDone, 1200); }));
   }
 
   // Varied captions so the on-screen line matches the audio variety.
@@ -199,7 +226,7 @@ export default function LunaReader({
 
   async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
     unlockAudio();
-    stopFiller(); stopAudio(); // never let old coaching/filler play over a fresh read
+    stopAmbient(); stopAudio(); // never let old coaching/ambient play over a fresh read
     setErr(null);
     onBlobRef.current = onBlob;
     try {
@@ -237,10 +264,11 @@ export default function LunaReader({
     if (rec && rec.state !== "inactive") rec.stop();
     setMode("thinking");
     setCaption("Let me listen…");
-    // Sleight of hand: loop short "hmm… let me think…" fillers to bridge the
-    // grade round-trip. Feedback hands off at the next clip boundary (see
-    // afterFiller) so it's timed to real latency — no chop, no dead air.
-    startFiller(THINKING_CLIPS);
+    // Sleight of hand: a soft ambient bed + ONE spoken "hmm, let me listen…"
+    // beat bridge the grade round-trip. Feedback hands off after the beat (see
+    // afterLead) so it's never chopped, and the ambient covers any extra wait.
+    startAmbient();
+    playLead(THINKING_CLIPS[rand(THINKING_CLIPS.length)]);
   }
 
   async function postGrade(text: string, blob: Blob): Promise<Grade> {
@@ -383,17 +411,18 @@ export default function LunaReader({
     setPhase("overall1"); setMode("idle"); setCaption("Read me the whole story out loud!");
   }
 
-  // Generate a fresh passage while Luna "browses" — the prep clips loop to
-  // bridge however long generation takes, then she lands on an "okay, I think
-  // this'll do!" beat right as the story appears (natural, not a hard cut).
+  // Generate a fresh passage under the ambient bed: one natural "let me find you
+  // a story" beat plays over the ambient while it generates, then she lands on
+  // an "okay, here's a good one!" beat right as the story appears.
   async function prepareAndBegin() {
     unlockAudio();
     setPreparing(true);
-    startFiller(PREP_CLIPS);
+    startAmbient();
+    playLead(PREP_LEAD[rand(PREP_LEAD.length)]);
     const p = await loadFreshPassage();
     setPreparing(false);
-    // Play the landing beat to completion, THEN reveal the story.
-    await new Promise<void>((resolve) => afterFiller(() => playCached(`prep-land-${1 + rand(PREP_LAND_COUNT)}`, resolve)));
+    // After the lead-in (and once the story's ready), land on the reveal beat.
+    await new Promise<void>((resolve) => afterLead(() => playCached(`prep-land-${1 + rand(PREP_LAND_COUNT)}`, resolve)));
     await beginWith(p);
   }
 
