@@ -37,14 +37,21 @@ const SERIF = 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman
 const BALOO = "'Baloo 2','Nunito',sans-serif";
 const SILENT = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=";
 const CLIP_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/luna`;
-// 12 praise variants so the "nice reading!" never gets repetitive.
-const PRAISE_COUNT = 12;
-// Filler "thinking" clips — played to mask the grade round-trip (sleight of
-// hand: Luna sounds like she's listening while the model is actually grading).
-const THINKING_CLIPS = ["thinking-1", "thinking-2", "thinking-3"];
+// Variant pools so no feedback line ever feels one-dimensional.
+const PRAISE_COUNT = 12;   // praise-1..12   (clean read)
+const SMOOTH_COUNT = 4;    // smooth-1..4    (fluency retry)
+const GOODTRY_COUNT = 4;   // goodtry-1..4   (2nd attempt)
+// Short "thinking" beats that LOOP to bridge the grade round-trip, and "prep"
+// clips that loop while a story generates + a "landing" beat when it's ready.
+const THINKING_CLIPS = ["thinking-1", "thinking-2", "thinking-3", "thinking-4", "thinking-5", "thinking-6"];
+const PREP_CLIPS = ["prep-1", "prep-2", "prep-3", "prep-4"];
+const PREP_LAND_COUNT = 3; // prep-land-1..3
 const PRELOAD_CLIPS = [
   ...Array.from({ length: PRAISE_COUNT }, (_, i) => `praise-${i + 1}`),
-  ...THINKING_CLIPS, "prep-1", "smooth", "goodtry",
+  ...Array.from({ length: SMOOTH_COUNT }, (_, i) => `smooth-${i + 1}`),
+  ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
+  ...THINKING_CLIPS, ...PREP_CLIPS,
+  ...Array.from({ length: PREP_LAND_COUNT }, (_, i) => `prep-land-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
 
@@ -91,6 +98,11 @@ export default function LunaReader({
   const idxRef = useRef(0);
   const attemptRef = useRef(0);
   const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null });
+  // Filler loop: `active` clips play back-to-back to bridge a variable wait;
+  // `pending` is the real action, run at the NEXT clip boundary so feedback
+  // never chops a filler mid-word and never leaves dead air.
+  const fillerRef = useRef<{ clips: string[]; active: boolean }>({ clips: [], active: false });
+  const pendingRef = useRef<null | (() => void)>(null);
 
   useEffect(() => { idxRef.current = idx; }, [idx]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
@@ -99,7 +111,7 @@ export default function LunaReader({
     audioRef.current.preload = "auto";
     // Warm the browser cache for the pre-recorded clips so they play instantly.
     PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(); a.preload = "auto"; a.src = `${CLIP_BASE}/${k}.mp3`; } catch { /* ignore */ } });
-    return () => { cleanupMic(); stopAudio(); };
+    return () => { cleanupMic(); stopFiller(); stopAudio(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -117,19 +129,6 @@ export default function LunaReader({
     unlockedRef.current = true;
     try { audioRef.current.src = SILENT; void audioRef.current.play().then(() => audioRef.current?.pause()).catch(() => {}); } catch { /* ignore */ }
   }
-  // Live TTS — only for VARIABLE lines (the specific "sound out X" coaching and
-  // the name-personalized whole-passage transitions).
-  function speak(text: string, onDone: () => void) {
-    const a = audioRef.current;
-    fetch("/api/luna/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) })
-      .then((r) => r.json())
-      .then((j) => {
-        if (a && j?.ok && j.audioUrl) { a.src = j.audioUrl; a.onended = onDone; a.play().catch(() => window.setTimeout(onDone, 1600)); }
-        else window.setTimeout(onDone, 1600);
-      })
-      .catch(() => window.setTimeout(onDone, 1600));
-  }
-
   // Pre-recorded clips (praise, smooth, good-try) — instant, deterministic,
   // no TTS round-trip. This is the speed win + it fixes spoken/written mismatch.
   function playCached(key: string, onDone: () => void) {
@@ -141,9 +140,66 @@ export default function LunaReader({
     a.play().catch(() => window.setTimeout(onDone, 700));
   }
 
+  // --- Filler loop: bridge an unknown wait, hand off at a clip boundary -------
+  // Instead of guessing latency, we loop short filler clips and let the real
+  // response take over the instant a clip ends — so it's timed to actual clips,
+  // never a hard cut mid-word and never silence.
+  function startFiller(clips: string[]) {
+    pendingRef.current = null;
+    fillerRef.current = { clips, active: true };
+    playNextFiller();
+  }
+  function playNextFiller() {
+    const a = audioRef.current;
+    if (!a || !fillerRef.current.active) return;
+    if (pendingRef.current) {
+      const fn = pendingRef.current;
+      pendingRef.current = null;
+      fillerRef.current.active = false;
+      fn();
+      return;
+    }
+    const clips = fillerRef.current.clips;
+    a.src = `${CLIP_BASE}/${clips[rand(clips.length)]}.mp3`;
+    a.onended = () => { if (fillerRef.current.active) playNextFiller(); };
+    a.play().catch(() => window.setTimeout(() => { if (fillerRef.current.active) playNextFiller(); }, 600));
+  }
+  function stopFiller() {
+    fillerRef.current.active = false;
+    pendingRef.current = null;
+  }
+  // Run `fn` at the next filler boundary (or now, if no filler is looping).
+  function afterFiller(fn: () => void) {
+    if (fillerRef.current.active) pendingRef.current = fn;
+    else fn();
+  }
+  // Cached feedback, timed to the filler boundary.
+  function playCachedQueued(key: string, onStart: () => void, onDone: () => void) {
+    afterFiller(() => { onStart(); playCached(key, onDone); });
+  }
+  // Live TTS feedback: fetch NOW (the loop keeps masking the fetch), then hand
+  // off at the next boundary once the audio is ready — so the filler also covers
+  // the TTS latency, not just the grade latency.
+  function speakQueued(text: string, onDone: () => void, onStart?: () => void) {
+    fetch("/api/luna/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) })
+      .then((r) => r.json())
+      .then((j) => afterFiller(() => {
+        onStart?.();
+        const a = audioRef.current;
+        if (a && j?.ok && j.audioUrl) { stopAudio(); a.src = j.audioUrl; a.onended = onDone; a.play().catch(() => window.setTimeout(onDone, 1600)); }
+        else window.setTimeout(onDone, 1600);
+      }))
+      .catch(() => afterFiller(() => { onStart?.(); window.setTimeout(onDone, 1200); }));
+  }
+
+  // Varied captions so the on-screen line matches the audio variety.
+  const praiseCap = () => [`Great reading, ${name}!`, `Wonderful, ${name}!`, `You nailed it, ${name}!`, `Awesome work, ${name}!`, `Beautiful reading, ${name}!`][rand(5)];
+  const smoothCap = () => [`Take your time, ${name} — nice and smooth.`, `Slow and steady, ${name}.`, `Let's read it smooth this time, ${name}.`][rand(3)];
+  const goodtryCap = () => [`Good try, ${name}! Let's keep going.`, `Nice effort, ${name}!`, `You're getting it, ${name}!`][rand(3)];
+
   async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
     unlockAudio();
-    stopAudio(); // never let old coaching play over a fresh read
+    stopFiller(); stopAudio(); // never let old coaching/filler play over a fresh read
     setErr(null);
     onBlobRef.current = onBlob;
     try {
@@ -181,11 +237,10 @@ export default function LunaReader({
     if (rec && rec.state !== "inactive") rec.stop();
     setMode("thinking");
     setCaption("Let me listen…");
-    // Sleight of hand: play a short "hmm, let me listen…" filler so the wait for
-    // the grade round-trip feels like Luna thinking, not dead air. The real
-    // coaching clip (praise/smooth/goodtry) or transition TTS interrupts it the
-    // moment grading returns.
-    playCached(THINKING_CLIPS[rand(THINKING_CLIPS.length)], () => {});
+    // Sleight of hand: loop short "hmm… let me think…" fillers to bridge the
+    // grade round-trip. Feedback hands off at the next clip boundary (see
+    // afterFiller) so it's timed to real latency — no chop, no dead air.
+    startFiller(THINKING_CLIPS);
   }
 
   async function postGrade(text: string, blob: Blob): Promise<Grade> {
@@ -213,12 +268,13 @@ export default function LunaReader({
       if (which === "before") {
         setBefore(toScore(g, durSec));
         const line = `Nice first read, ${name}! Now let's practice it, one line at a time.`;
-        setMode("speaking"); setCaption(line);
-        speak(line, () => { setPhase("drill"); setIdx(0); setAttempt(0); setResults({}); setMode("idle"); setCaption("Tap me and read the first line."); });
+        speakQueued(line, () => { setPhase("drill"); setIdx(0); setAttempt(0); setResults({}); setMode("idle"); setCaption("Tap me and read the first line."); }, () => { setMode("speaking"); setCaption(line); });
       } else {
         setAfter(toScore(g, durSec));
         statsRef.current.afterGrade = g;
-        finishSession();
+        // Land the final read on a spoken cheer (bridged by the filler), then
+        // reveal the results.
+        playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); }, () => finishSession());
       }
     } catch (e: unknown) {
       setErr(e instanceof Error ? e.message : "Something went wrong.");
@@ -243,29 +299,25 @@ export default function LunaReader({
       setLastHeard(hasError && a.heardTranscript ? a.heardTranscript : null);
 
       if (!hasError) {
-        // Clean read → INSTANT pre-recorded praise (spoken + fast), then advance.
+        // Clean read → pre-recorded praise (1 of 12), timed to the filler.
         setLastHeard(null);
-        setMode("speaking");
-        setCaption(`Great reading, ${name}!`);
-        playCached(`praise-${1 + rand(PRAISE_COUNT)}`, () => proceed(false));
+        playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(praiseCap()); }, () => proceed(false));
       } else if (willRetry) {
         const words = tricky.slice(0, 3);
         if (words.length >= 1) {
-          // DECODING → live TTS to sound out the SPECIFIC word(s).
+          // DECODING → live TTS to sound out the SPECIFIC word(s). The filler
+          // keeps looping until the TTS is fetched, then hands off at a boundary.
           const coaching = words.length >= 2
             ? `Let's sound out ${words.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${words[words.length - 1]}" — say each sound slowly. Then read the whole line again.`
             : `Let's sound out "${words[0]}" — say each sound slowly, then read the whole line again.`;
-          setMode("speaking"); setCaption(coaching);
-          speak(coaching, () => proceed(true));
+          speakQueued(coaching, () => proceed(true), () => { setMode("speaking"); setCaption(coaching); });
         } else {
-          // FLUENCY (a stutter, words fine) → instant pre-recorded "smooth" clip.
-          setMode("speaking"); setCaption(`Take your time, ${name}. Read it again — nice and smooth.`);
-          playCached("smooth", () => proceed(true));
+          // FLUENCY (a stutter, words fine) → pre-recorded "smooth" (1 of 4).
+          playCachedQueued(`smooth-${1 + rand(SMOOTH_COUNT)}`, () => { setMode("speaking"); setCaption(smoothCap()); }, () => proceed(true));
         }
       } else {
-        // Second attempt still imperfect → instant "good try" clip + advance.
-        setMode("speaking"); setCaption(`Good try, ${name}! Let's keep going.`);
-        playCached("goodtry", () => proceed(false));
+        // Second attempt still imperfect → "good try" (1 of 4) + advance.
+        playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
       }
     } catch (e: unknown) {
       setErr(e instanceof Error ? e.message : "Something went wrong.");
@@ -281,7 +333,7 @@ export default function LunaReader({
     if (next >= sentences.length) {
       const line = `Great practicing, ${name}! Now read me the whole story one more time.`;
       setMode("speaking"); setCaption(line);
-      speak(line, () => { setPhase("overall2"); setMode("idle"); setCaption("Tap me and read the whole story."); });
+      speakQueued(line, () => { setPhase("overall2"); setMode("idle"); setCaption("Tap me and read the whole story."); });
     } else {
       setIdx(next); setMode("idle"); setCaption("Nice! Tap me to read the next line.");
     }
@@ -331,14 +383,17 @@ export default function LunaReader({
     setPhase("overall1"); setMode("idle"); setCaption("Read me the whole story out loud!");
   }
 
-  // Generate a fresh passage while masking the wait with a spoken "let's find
-  // you a story…" filler (beginWith stops it the moment the story is ready).
+  // Generate a fresh passage while Luna "browses" — the prep clips loop to
+  // bridge however long generation takes, then she lands on an "okay, I think
+  // this'll do!" beat right as the story appears (natural, not a hard cut).
   async function prepareAndBegin() {
     unlockAudio();
     setPreparing(true);
-    playCached("prep-1", () => {});
+    startFiller(PREP_CLIPS);
     const p = await loadFreshPassage();
     setPreparing(false);
+    // Play the landing beat to completion, THEN reveal the story.
+    await new Promise<void>((resolve) => afterFiller(() => playCached(`prep-land-${1 + rand(PREP_LAND_COUNT)}`, resolve)));
     await beginWith(p);
   }
 
@@ -362,7 +417,7 @@ export default function LunaReader({
     unlockAudio();
     setMode("speaking");
     setCaption("Listen carefully…");
-    speak(text, () => {
+    speakQueued(text, () => {
       setMode("idle");
       setCaption(phase === "drill" ? "Now you try — tap me and read the line." : "Now you read it — tap me.");
     });
