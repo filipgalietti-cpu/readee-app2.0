@@ -37,7 +37,16 @@ const SERIF = 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman
 const BALOO = "'Baloo 2','Nunito',sans-serif";
 const SILENT = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=";
 const CLIP_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/luna`;
-const PRELOAD_CLIPS = ["praise-1", "praise-2", "praise-3", "praise-4", "smooth", "goodtry"];
+// 12 praise variants so the "nice reading!" never gets repetitive.
+const PRAISE_COUNT = 12;
+// Filler "thinking" clips — played to mask the grade round-trip (sleight of
+// hand: Luna sounds like she's listening while the model is actually grading).
+const THINKING_CLIPS = ["thinking-1", "thinking-2", "thinking-3"];
+const PRELOAD_CLIPS = [
+  ...Array.from({ length: PRAISE_COUNT }, (_, i) => `praise-${i + 1}`),
+  ...THINKING_CLIPS, "prep-1", "smooth", "goodtry",
+];
+const rand = (n: number) => Math.floor(Math.random() * n);
 
 function splitSentences(text: string): string[] {
   return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
@@ -172,6 +181,11 @@ export default function LunaReader({
     if (rec && rec.state !== "inactive") rec.stop();
     setMode("thinking");
     setCaption("Let me listen…");
+    // Sleight of hand: play a short "hmm, let me listen…" filler so the wait for
+    // the grade round-trip feels like Luna thinking, not dead air. The real
+    // coaching clip (praise/smooth/goodtry) or transition TTS interrupts it the
+    // moment grading returns.
+    playCached(THINKING_CLIPS[rand(THINKING_CLIPS.length)], () => {});
   }
 
   async function postGrade(text: string, blob: Blob): Promise<Grade> {
@@ -233,7 +247,7 @@ export default function LunaReader({
         setLastHeard(null);
         setMode("speaking");
         setCaption(`Great reading, ${name}!`);
-        playCached(`praise-${1 + Math.floor(Math.random() * 4)}`, () => proceed(false));
+        playCached(`praise-${1 + rand(PRAISE_COUNT)}`, () => proceed(false));
       } else if (willRetry) {
         const words = tricky.slice(0, 3);
         if (words.length >= 1) {
@@ -317,19 +331,19 @@ export default function LunaReader({
     setPhase("overall1"); setMode("idle"); setCaption("Read me the whole story out loud!");
   }
 
-  async function startFlow() {
+  // Generate a fresh passage while masking the wait with a spoken "let's find
+  // you a story…" filler (beginWith stops it the moment the story is ready).
+  async function prepareAndBegin() {
+    unlockAudio();
     setPreparing(true);
+    playCached("prep-1", () => {});
     const p = await loadFreshPassage();
     setPreparing(false);
     await beginWith(p);
   }
 
-  async function newPassage() {
-    setPreparing(true);
-    const p = await loadFreshPassage();
-    setPreparing(false);
-    await beginWith(p);
-  }
+  async function startFlow() { await prepareAndBegin(); }
+  async function newPassage() { await prepareAndBegin(); }
 
   function onTap() {
     if (mode === "listening") { stopRecording(); return; }
