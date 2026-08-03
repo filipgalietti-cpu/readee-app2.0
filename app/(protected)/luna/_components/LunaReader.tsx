@@ -41,17 +41,14 @@ const CLIP_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/pub
 const PRAISE_COUNT = 12;   // praise-1..12   (clean read)
 const SMOOTH_COUNT = 4;    // smooth-1..4    (fluency retry)
 const GOODTRY_COUNT = 4;   // goodtry-1..4   (2nd attempt)
-// A single natural spoken beat plays ONCE over a synthesized ambient bed while
-// we wait — no looping (which sounded finicky). THINKING = grade wait,
-// PREP_LEAD = story generation, PREP_LAND = the "here's your story" beat.
-const THINKING_CLIPS = ["thinking-1", "thinking-2", "thinking-3"];
-const PREP_LEAD = ["prep-1", "prep-2", "prep-3"];
-const PREP_LAND_COUNT = 3; // prep-land-1..3
+// While we wait, a synthesized "bubble" loop (like ChatGPT's search sound)
+// plays ALONE — it always stops before any speech, never under it. When the
+// wait ends we speak the result (feedback, or the "here's your story" beat).
+const PREP_LAND_COUNT = 3; // prep-land-1..3 (spoken "here's your story" beat)
 const PRELOAD_CLIPS = [
   ...Array.from({ length: PRAISE_COUNT }, (_, i) => `praise-${i + 1}`),
   ...Array.from({ length: SMOOTH_COUNT }, (_, i) => `smooth-${i + 1}`),
   ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
-  ...THINKING_CLIPS, ...PREP_LEAD,
   ...Array.from({ length: PREP_LAND_COUNT }, (_, i) => `prep-land-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
@@ -99,13 +96,10 @@ export default function LunaReader({
   const idxRef = useRef(0);
   const attemptRef = useRef(0);
   const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null });
-  // Ambient "processing" bed (synthesized via Web Audio — seamless, no file) +
-  // a single spoken lead-in. `leadDoneRef` resolves when the lead-in finishes,
-  // so the real response hands off cleanly after it (never chopping a word),
-  // while the ambient bed bridges whatever wait remains.
-  const ambientCtxRef = useRef<AudioContext | null>(null);
-  const ambientNodesRef = useRef<{ master: GainNode; nodes: AudioScheduledSourceNode[] } | null>(null);
-  const leadDoneRef = useRef<Promise<void>>(Promise.resolve());
+  // Synthesized "bubble" processing loop (Web Audio) — plays alone during a
+  // wait, always stopped before any speech so it never overlaps the TTS.
+  const bubbleCtxRef = useRef<AudioContext | null>(null);
+  const bubbleTimerRef = useRef<number | null>(null);
 
   useEffect(() => { idxRef.current = idx; }, [idx]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
@@ -114,7 +108,7 @@ export default function LunaReader({
     audioRef.current.preload = "auto";
     // Warm the browser cache for the pre-recorded clips so they play instantly.
     PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(); a.preload = "auto"; a.src = `${CLIP_BASE}/${k}.mp3`; } catch { /* ignore */ } });
-    return () => { cleanupMic(); stopAmbient(); stopAudio(); try { void ambientCtxRef.current?.close(); } catch { /* ignore */ } };
+    return () => { cleanupMic(); stopBubbles(); stopAudio(); try { void bubbleCtxRef.current?.close(); } catch { /* ignore */ } };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -143,80 +137,60 @@ export default function LunaReader({
     a.play().catch(() => window.setTimeout(onDone, 700));
   }
 
-  // --- Ambient "processing" bed --------------------------------------------
-  // A soft, gently breathing major-triad pad synthesized live (like the ChatGPT
-  // voice-mode "thinking" hum). Non-verbal, so it can start/stop any time
-  // without chopping words — it fills the wait under the one spoken beat.
-  function startAmbient() {
+  // --- "Bubble" processing loop --------------------------------------------
+  // The ChatGPT-style "looking something up" sound: quick watery bloops
+  // synthesized live. Plays ALONE while we wait, then stopBubbles() is called
+  // BEFORE any speech so the bubbles and the TTS never overlap.
+  function startBubbles() {
     try {
       const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const ctx = ambientCtxRef.current ?? new AC();
-      ambientCtxRef.current = ctx;
+      const ctx = bubbleCtxRef.current ?? new AC();
+      bubbleCtxRef.current = ctx;
       if (ctx.state === "suspended") void ctx.resume();
-      stopAmbient(); // clear any prior bed
-      const master = ctx.createGain();
-      master.gain.value = 0;
-      master.connect(ctx.destination);
-      const lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 950; lp.connect(master);
-      const partials = [220, 277.18, 329.63]; // soft A major triad
-      const oscs = partials.map((f, i) => {
-        const o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = f;
-        const g = ctx.createGain(); g.gain.value = i === 0 ? 0.5 : 0.26;
-        o.connect(g); g.connect(lp); o.start();
-        return o;
-      });
-      // slow "breathing" LFO added on top of the base gain
-      const lfo = ctx.createOscillator(); lfo.type = "sine"; lfo.frequency.value = 0.55;
-      const lfoGain = ctx.createGain(); lfoGain.gain.value = 0.016;
-      lfo.connect(lfoGain); lfoGain.connect(master.gain); lfo.start();
-      master.gain.setValueAtTime(0, ctx.currentTime);
-      master.gain.linearRampToValueAtTime(0.055, ctx.currentTime + 0.4);
-      ambientNodesRef.current = { master, nodes: [...oscs, lfo] };
-    } catch { /* ambient is optional flourish; ignore failures */ }
+      if (bubbleTimerRef.current != null) return; // already bubbling
+      const pitches = [430, 510, 600, 690, 560, 470, 640];
+      let i = 0;
+      const fire = () => {
+        const c = bubbleCtxRef.current;
+        if (!c) return;
+        const now = c.currentTime;
+        const base = pitches[i % pitches.length];
+        i++;
+        const o = c.createOscillator(); o.type = "sine";
+        const g = c.createGain();
+        o.connect(g); g.connect(c.destination);
+        // quick upward "bloop" pitch pop + fast pluck envelope = a water droplet
+        o.frequency.setValueAtTime(base, now);
+        o.frequency.exponentialRampToValueAtTime(base * 1.7, now + 0.07);
+        g.gain.setValueAtTime(0.0001, now);
+        g.gain.exponentialRampToValueAtTime(0.1, now + 0.01);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.16);
+        o.start(now); o.stop(now + 0.18);
+      };
+      fire();
+      bubbleTimerRef.current = window.setInterval(fire, 150);
+    } catch { /* bubbles are an optional flourish; ignore failures */ }
   }
-  function stopAmbient() {
-    const ctx = ambientCtxRef.current; const bed = ambientNodesRef.current;
-    if (!ctx || !bed) return;
-    try {
-      bed.master.gain.cancelScheduledValues(ctx.currentTime);
-      bed.master.gain.setValueAtTime(bed.master.gain.value, ctx.currentTime);
-      bed.master.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.22);
-      bed.nodes.forEach((n) => { try { n.stop(ctx.currentTime + 0.28); } catch { /* already stopped */ } });
-    } catch { /* ignore */ }
-    ambientNodesRef.current = null;
+  function stopBubbles() {
+    if (bubbleTimerRef.current != null) { window.clearInterval(bubbleTimerRef.current); bubbleTimerRef.current = null; }
   }
 
-  // Play ONE spoken lead-in over the ambient; leadDoneRef resolves at its end.
-  function playLead(key: string) {
-    const a = audioRef.current;
-    if (!a) { leadDoneRef.current = Promise.resolve(); return; }
-    leadDoneRef.current = new Promise<void>((resolve) => {
-      stopAudio();
-      a.src = `${CLIP_BASE}/${key}.mp3`;
-      a.onended = () => resolve();
-      a.play().catch(() => window.setTimeout(resolve, 700));
-    });
-  }
-  // Run the real response after the lead-in ends, fading the ambient out first.
-  function afterLead(fn: () => void) {
-    void leadDoneRef.current.then(() => { stopAmbient(); fn(); });
-  }
-  // Cached feedback, handed off cleanly after the lead-in.
+  // Cached feedback: stop the bubbles, THEN speak — never overlapping.
   function playCachedQueued(key: string, onStart: () => void, onDone: () => void) {
-    afterLead(() => { onStart(); playCached(key, onDone); });
+    stopBubbles(); onStart(); playCached(key, onDone);
   }
-  // Live TTS feedback: fetch NOW (ambient masks the fetch), then hand off once
-  // BOTH the lead-in has ended and the audio is ready.
+  // Live TTS feedback: bubbles keep going during the fetch (still "processing"),
+  // then stop the instant the audio is ready so speech plays alone.
   function speakQueued(text: string, onDone: () => void, onStart?: () => void) {
     fetch("/api/luna/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) })
       .then((r) => r.json())
-      .then((j) => afterLead(() => {
-        onStart?.();
+      .then((j) => {
+        stopBubbles(); onStart?.();
         const a = audioRef.current;
         if (a && j?.ok && j.audioUrl) { stopAudio(); a.src = j.audioUrl; a.onended = onDone; a.play().catch(() => window.setTimeout(onDone, 1600)); }
         else window.setTimeout(onDone, 1600);
-      }))
-      .catch(() => afterLead(() => { onStart?.(); window.setTimeout(onDone, 1200); }));
+      })
+      .catch(() => { stopBubbles(); onStart?.(); window.setTimeout(onDone, 1200); });
   }
 
   // Varied captions so the on-screen line matches the audio variety.
@@ -226,7 +200,7 @@ export default function LunaReader({
 
   async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
     unlockAudio();
-    stopAmbient(); stopAudio(); // never let old coaching/ambient play over a fresh read
+    stopBubbles(); stopAudio(); // never let old coaching/bubbles play over a fresh read
     setErr(null);
     onBlobRef.current = onBlob;
     try {
@@ -264,11 +238,9 @@ export default function LunaReader({
     if (rec && rec.state !== "inactive") rec.stop();
     setMode("thinking");
     setCaption("Let me listen…");
-    // Sleight of hand: a soft ambient bed + ONE spoken "hmm, let me listen…"
-    // beat bridge the grade round-trip. Feedback hands off after the beat (see
-    // afterLead) so it's never chopped, and the ambient covers any extra wait.
-    startAmbient();
-    playLead(THINKING_CLIPS[rand(THINKING_CLIPS.length)]);
+    // ChatGPT-style "processing" bubbles fill the grade round-trip; they stop
+    // the instant feedback is ready so speech never overlaps them.
+    startBubbles();
   }
 
   async function postGrade(text: string, blob: Blob): Promise<Grade> {
@@ -305,6 +277,7 @@ export default function LunaReader({
         playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); }, () => finishSession());
       }
     } catch (e: unknown) {
+      stopBubbles();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
       setMode("idle");
       setCaption("Let's try that again — tap me when you're ready.");
@@ -348,6 +321,7 @@ export default function LunaReader({
         playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
       }
     } catch (e: unknown) {
+      stopBubbles();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
       setMode("idle"); setCaption("Let's try that line again — tap me when you're ready.");
     }
@@ -411,18 +385,16 @@ export default function LunaReader({
     setPhase("overall1"); setMode("idle"); setCaption("Read me the whole story out loud!");
   }
 
-  // Generate a fresh passage under the ambient bed: one natural "let me find you
-  // a story" beat plays over the ambient while it generates, then she lands on
-  // an "okay, here's a good one!" beat right as the story appears.
+  // Generate a fresh passage while the bubbles play (Luna "looking one up"),
+  // then stop them and speak the "here's your story" beat — no overlap.
   async function prepareAndBegin() {
     unlockAudio();
     setPreparing(true);
-    startAmbient();
-    playLead(PREP_LEAD[rand(PREP_LEAD.length)]);
+    startBubbles();
     const p = await loadFreshPassage();
     setPreparing(false);
-    // After the lead-in (and once the story's ready), land on the reveal beat.
-    await new Promise<void>((resolve) => afterLead(() => playCached(`prep-land-${1 + rand(PREP_LAND_COUNT)}`, resolve)));
+    stopBubbles();
+    await new Promise<void>((resolve) => playCached(`prep-land-${1 + rand(PREP_LAND_COUNT)}`, resolve));
     await beginWith(p);
   }
 
