@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { gradeLine } from "@/lib/ai/luna-grade";
+import { assessPronunciation, azureConfigured } from "@/lib/ai/azure-pronounce";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 
 export const dynamic = "force-dynamic";
@@ -52,6 +53,17 @@ export async function POST(req: NextRequest) {
   }
 
   const buf = Buffer.from(await audio.arrayBuffer());
+
+  // Measurement engine: prefer Azure Pronunciation Assessment (purpose-built,
+  // deterministic per-word scoring) when configured; the client sends 16 kHz
+  // mono PCM WAV for it. Fall back to the Gemini grader on any Azure miss so a
+  // session never breaks (e.g. >60s reads, transient errors, or no key set).
+  if (azureConfigured() && (audio.type || "").includes("wav")) {
+    const az = await assessPronunciation({ wavBytes: buf, referenceText: sentenceText });
+    if (az.ok) return NextResponse.json({ ok: true, analysis: az.grade, engine: "azure" });
+    console.warn("[luna/grade] Azure failed, falling back to Gemini:", az.error);
+  }
+
   const res = await gradeLine({
     callerId: user.id,
     audioBase64: buf.toString("base64"),
@@ -60,5 +72,5 @@ export async function POST(req: NextRequest) {
     gradeLevel,
   });
   if (!res.ok) return NextResponse.json({ error: res.error }, { status: 500 });
-  return NextResponse.json({ ok: true, analysis: res.grade });
+  return NextResponse.json({ ok: true, analysis: res.grade, engine: "gemini" });
 }

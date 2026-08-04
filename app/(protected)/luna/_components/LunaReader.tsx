@@ -55,6 +55,37 @@ function splitSentences(text: string): string[] {
   return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
 }
 
+// Merge + downsample captured mic PCM to a target rate (average-decimate to
+// avoid harsh aliasing), then encode a 16-bit mono WAV — the format Azure
+// Pronunciation Assessment wants (Gemini also accepts WAV).
+function downsampleMerge(chunks: Float32Array[], inRate: number, outRate: number): Float32Array {
+  let len = 0; for (const c of chunks) len += c.length;
+  const merged = new Float32Array(len);
+  let o = 0; for (const c of chunks) { merged.set(c, o); o += c.length; }
+  if (outRate >= inRate) return merged;
+  const ratio = inRate / outRate;
+  const outLen = Math.floor(merged.length / ratio);
+  const out = new Float32Array(outLen);
+  for (let i = 0; i < outLen; i++) {
+    const start = Math.floor(i * ratio), end = Math.floor((i + 1) * ratio);
+    let sum = 0, cnt = 0;
+    for (let j = start; j < end && j < merged.length; j++) { sum += merged[j]; cnt++; }
+    out[i] = cnt ? sum / cnt : (merged[start] || 0);
+  }
+  return out;
+}
+function encodeWav(samples: Float32Array, sampleRate: number): Blob {
+  const buf = new ArrayBuffer(44 + samples.length * 2);
+  const v = new DataView(buf);
+  const w = (off: number, s: string) => { for (let i = 0; i < s.length; i++) v.setUint8(off + i, s.charCodeAt(i)); };
+  w(0, "RIFF"); v.setUint32(4, 36 + samples.length * 2, true); w(8, "WAVE"); w(12, "fmt ");
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, sampleRate, true); v.setUint32(28, sampleRate * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  w(36, "data"); v.setUint32(40, samples.length * 2, true);
+  let off = 44; for (let i = 0; i < samples.length; i++) { const s = Math.max(-1, Math.min(1, samples[i])); v.setInt16(off, s < 0 ? s * 0x8000 : s * 0x7fff, true); off += 2; }
+  return new Blob([buf], { type: "audio/wav" });
+}
+
 // Split a passage into words + the sentence index each word belongs to, so we
 // can style/animate words individually (build reveal + grade scan).
 function computeWords(text: string): WordInfo {
@@ -99,8 +130,10 @@ export default function LunaReader({
 
   const streamRef = useRef<MediaStream | null>(null);
   const ctxRef = useRef<AudioContext | null>(null);
-  const recorderRef = useRef<MediaRecorder | null>(null);
-  const chunksRef = useRef<Blob[]>([]);
+  // Raw PCM capture (for 16 kHz mono WAV → Azure Pronunciation Assessment).
+  const procRef = useRef<ScriptProcessorNode | null>(null);
+  const pcmRef = useRef<Float32Array[]>([]);
+  const srcRateRef = useRef(48000);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const unlockedRef = useRef(false);
   const onBlobRef = useRef<(b: Blob, durSec: number) => void>(() => {});
@@ -141,9 +174,10 @@ export default function LunaReader({
   }, []);
 
   function cleanupMic() {
+    try { procRef.current?.disconnect(); } catch { /* ignore */ }
     try { streamRef.current?.getTracks().forEach((t) => t.stop()); } catch { /* ignore */ }
     try { void ctxRef.current?.close(); } catch { /* ignore */ }
-    streamRef.current = null; ctxRef.current = null; setAnalyser(null);
+    procRef.current = null; streamRef.current = null; ctxRef.current = null; setAnalyser(null);
   }
   function stopAudio() {
     try { if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; } } catch { /* ignore */ }
@@ -360,24 +394,19 @@ export default function LunaReader({
       streamRef.current = stream;
       const ctx = new AudioContext();
       ctxRef.current = ctx;
+      if (ctx.state === "suspended") { try { await ctx.resume(); } catch { /* ignore */ } }
+      srcRateRef.current = ctx.sampleRate;
       const src = ctx.createMediaStreamSource(stream);
       const an = ctx.createAnalyser(); an.fftSize = 512; an.smoothingTimeConstant = 0.75;
       src.connect(an); setAnalyser(an);
-      const mime = MediaRecorder.isTypeSupported("audio/webm;codecs=opus") ? "audio/webm;codecs=opus"
-        : MediaRecorder.isTypeSupported("audio/webm") ? "audio/webm" : "";
-      const rec = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
-      chunksRef.current = [];
-      rec.ondataavailable = (e) => { if (e.data.size > 0) chunksRef.current.push(e.data); };
-      rec.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: rec.mimeType || "audio/webm" });
-        // Measure the ACTUAL recording length client-side — the model's
-        // duration estimate is unreliable and was giving 0 WCPM.
-        const durSec = Math.max(0.5, (Date.now() - recStartRef.current) / 1000);
-        cleanupMic();
-        onBlobRef.current(blob, durSec);
-      };
-      recorderRef.current = rec;
-      rec.start();
+      // Capture raw PCM (→ 16 kHz mono WAV for Azure). ScriptProcessor must be
+      // connected to the destination to run, so route it through a muted gain.
+      pcmRef.current = [];
+      const proc = ctx.createScriptProcessor(4096, 1, 1);
+      proc.onaudioprocess = (e) => { pcmRef.current.push(new Float32Array(e.inputBuffer.getChannelData(0))); };
+      const sink = ctx.createGain(); sink.gain.value = 0;
+      src.connect(proc); proc.connect(sink); sink.connect(ctx.destination);
+      procRef.current = proc;
       recStartRef.current = Date.now();
       setMode("listening");
     } catch {
@@ -386,18 +415,24 @@ export default function LunaReader({
     }
   }
   function stopRecording() {
-    const rec = recorderRef.current;
-    if (rec && rec.state !== "inactive") rec.stop();
+    // Measure the ACTUAL recording length client-side (reliable WCPM), grab the
+    // captured PCM, then tear the mic down and encode a 16 kHz mono WAV.
+    const durSec = Math.max(0.5, (Date.now() - recStartRef.current) / 1000);
+    const rate = srcRateRef.current;
+    const chunks = pcmRef.current; pcmRef.current = [];
+    cleanupMic();
     setMode("thinking");
     setCaption("Let me listen…");
-    // "Thinking bubbles" + orb sparks fill the grade round-trip; they stop the
-    // instant feedback is ready so speech never overlaps them.
+    // "Thinking bubbles" fill the grade round-trip; they stop the instant
+    // feedback is ready so speech never overlaps them.
     startProcessing();
+    const wav = encodeWav(downsampleMerge(chunks, rate, 16000), 16000);
+    onBlobRef.current(wav, durSec);
   }
 
   async function postGrade(text: string, blob: Blob): Promise<Grade> {
     const fd = new FormData();
-    fd.append("audio", blob, "read.webm");
+    fd.append("audio", blob, "read.wav");
     fd.append("childId", childId);
     fd.append("sentenceText", text);
     fd.append("gradeLevel", passage.grade);
