@@ -85,9 +85,12 @@ export async function proxy(request: NextRequest) {
     "img-src 'self' blob: data: https://*.supabase.co",
     "media-src 'self' blob: https://*.supabase.co",
     "font-src 'self'",
+    // Azure Speech SDK streams pronunciation assessment over a direct WebSocket
+    // to the regional STT host, so it must be allow-listed here (the token fetch
+    // is same-origin, but the wss:// connection is not).
     isDev
-      ? "connect-src 'self' ws://localhost:* https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com https://us-central1-aiplatform.googleapis.com wss://us-central1-aiplatform.googleapis.com"
-      : "connect-src 'self' https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com https://us-central1-aiplatform.googleapis.com wss://us-central1-aiplatform.googleapis.com",
+      ? "connect-src 'self' ws://localhost:* https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com https://us-central1-aiplatform.googleapis.com wss://us-central1-aiplatform.googleapis.com https://*.stt.speech.microsoft.com wss://*.stt.speech.microsoft.com https://*.api.cognitive.microsoft.com"
+      : "connect-src 'self' https://*.supabase.co https://us.i.posthog.com https://*.ingest.us.sentry.io https://generativelanguage.googleapis.com wss://generativelanguage.googleapis.com https://us-central1-aiplatform.googleapis.com wss://us-central1-aiplatform.googleapis.com https://*.stt.speech.microsoft.com wss://*.stt.speech.microsoft.com https://*.api.cognitive.microsoft.com",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
