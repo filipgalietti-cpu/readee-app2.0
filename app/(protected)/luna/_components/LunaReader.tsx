@@ -524,12 +524,16 @@ export default function LunaReader({
     let ctrl: StreamController;
     try {
       dbg("sdk loading…");
-      ctrl = await startPronAssessment({
-        token: tok.token, region: tok.region, referenceText: refText,
-        onRecognizing: (t) => liveHighlight(t),
-        onPhrase: (p) => onStreamPhrase(p),
-        onError: (m) => dbg(`stream err: ${m}`),
-      });
+      ctrl = await Promise.race([
+        startPronAssessment({
+          token: tok.token, region: tok.region, referenceText: refText,
+          onRecognizing: (t) => liveHighlight(t),
+          onPhrase: (p) => onStreamPhrase(p),
+          onError: (m) => dbg(`stream err: ${m}`),
+          log: (m) => dbg(m),
+        }),
+        new Promise<StreamController>((_, rej) => window.setTimeout(() => rej(new Error("init timeout (10s)")), 10000)),
+      ]);
       dbg("recognition started");
     } catch (e) { dbg(`sdk init failed: ${e instanceof Error ? e.message : e}`); return false; }
     recognizerRef.current = ctrl;

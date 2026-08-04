@@ -28,8 +28,11 @@ export async function startPronAssessment(opts: {
   onRecognizing?: (partialText: string) => void;
   onPhrase?: (phrase: PAPhrase) => void;
   onError?: (msg: string) => void;
+  log?: (msg: string) => void;
 }): Promise<StreamController> {
+  const log = opts.log ?? (() => {});
   const SDK = await import("microsoft-cognitiveservices-speech-sdk");
+  log("sdk imported");
 
   const speechConfig = SDK.SpeechConfig.fromAuthorizationToken(opts.token, opts.region);
   speechConfig.speechRecognitionLanguage = opts.language || "en-US";
@@ -39,6 +42,7 @@ export async function startPronAssessment(opts: {
   const audioConfig = SDK.AudioConfig.fromStreamInput(pushStream);
 
   const recognizer = new SDK.SpeechRecognizer(speechConfig, audioConfig);
+  log("recognizer ready");
   const paConfig = new SDK.PronunciationAssessmentConfig(
     opts.referenceText,
     SDK.PronunciationAssessmentGradingSystem.HundredMark,
@@ -69,8 +73,9 @@ export async function startPronAssessment(opts: {
     if (e.reason === SDK.CancellationReason.Error) opts.onError?.(e.errorDetails || "canceled");
   };
 
+  log("starting recognition…");
   await new Promise<void>((resolve, reject) =>
-    recognizer.startContinuousRecognitionAsync(() => resolve(), (err) => reject(new Error(String(err)))),
+    recognizer.startContinuousRecognitionAsync(() => { log("recognition started cb"); resolve(); }, (err) => reject(new Error(String(err)))),
   );
 
   // Continuous linear resampler (native rate → 16 kHz) with phase carried across
