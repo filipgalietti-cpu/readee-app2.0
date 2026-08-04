@@ -15,7 +15,7 @@
  * a new recording starts so nothing plays over the child.
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Shuffle, Trophy, RotateCcw, Play, Volume2 } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 
@@ -30,7 +30,8 @@ type Grade = {
   heardTranscript?: string;
   coach?: string;
 };
-type Phase = "intro" | "overall1" | "drill" | "overall2" | "done";
+type Phase = "intro" | "building" | "overall1" | "drill" | "overall2" | "done";
+type WordInfo = { words: string[]; sents: string[]; wSent: number[] };
 type OverallScore = { wcpm: number; accuracy: number };
 
 const SERIF = 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif';
@@ -41,20 +42,29 @@ const CLIP_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/pub
 const PRAISE_COUNT = 12;   // praise-1..12   (clean read)
 const SMOOTH_COUNT = 4;    // smooth-1..4    (fluency retry)
 const GOODTRY_COUNT = 4;   // goodtry-1..4   (2nd attempt)
-// While we wait, a synthesized "bubble" loop (like ChatGPT's search sound)
-// plays ALONE — it always stops before any speech, never under it. When the
-// wait ends we speak the result (feedback, or the "here's your story" beat).
-const PREP_LAND_COUNT = 3; // prep-land-1..3 (spoken "here's your story" beat)
+// Spoken feedback clips (praise/smooth/goodtry) are pre-recorded; the wait
+// sound + reveal animations are synthesized. Warm the cache for the clips.
 const PRELOAD_CLIPS = [
   ...Array.from({ length: PRAISE_COUNT }, (_, i) => `praise-${i + 1}`),
   ...Array.from({ length: SMOOTH_COUNT }, (_, i) => `smooth-${i + 1}`),
   ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
-  ...Array.from({ length: PREP_LAND_COUNT }, (_, i) => `prep-land-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
 
 function splitSentences(text: string): string[] {
   return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
+}
+
+// Split a passage into words + the sentence index each word belongs to, so we
+// can style/animate words individually (build reveal + grade scan).
+function computeWords(text: string): WordInfo {
+  const words = text.split(/\s+/).filter(Boolean);
+  const sents = splitSentences(text);
+  const lens = sents.map((s) => s.split(/\s+/).filter(Boolean).length);
+  const wSent: number[] = [];
+  let si = 0, count = 0;
+  words.forEach((_, i) => { wSent[i] = Math.min(si, sents.length - 1); count++; if (count >= (lens[si] || 1)) { si++; count = 0; } });
+  return { words, sents, wSent };
 }
 
 export default function LunaReader({
@@ -71,13 +81,14 @@ export default function LunaReader({
   const [override, setOverride] = useState<Passage | null>(null);
   const passage = override ?? passages[pIdx] ?? passages[0];
   const [sentences, setSentences] = useState<string[]>(() => splitSentences((passages[0] ?? { text: "" }).text));
+  // Per-word model for the build reveal + grade scan (words rendered as spans).
+  const { words, wSent } = useMemo(() => computeWords(passage.text), [passage.text]);
 
   const [phase, setPhase] = useState<Phase>("intro");
   const [idx, setIdx] = useState(0);
   const [attempt, setAttempt] = useState(0);
   const [mode, setMode] = useState<LunaMode>("idle");
   const [caption, setCaption] = useState("Ready to read with me?");
-  const [results, setResults] = useState<Record<number, Annotation[]>>({});
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const [before, setBefore] = useState<OverallScore | null>(null);
   const [after, setAfter] = useState<OverallScore | null>(null);
@@ -95,6 +106,11 @@ export default function LunaReader({
   const onBlobRef = useRef<(b: Blob, durSec: number) => void>(() => {});
   const idxRef = useRef(0);
   const attemptRef = useRef(0);
+  const phaseRef = useRef<Phase>("intro");
+  // Per-word status: "pending" | "correct" | "tricky" — styled imperatively so
+  // the reveal/scan animations survive React re-renders.
+  const wordStateRef = useRef<string[]>([]);
+  const animatingRef = useRef(false); // true during build reveal / grade scan
   const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null });
   // Sound + celebration engine (synthesized via Web Audio, ported from the Luna
   // Full Flow design): "thinking bubbles" + praise chime + word ticks, and
@@ -112,6 +128,10 @@ export default function LunaReader({
 
   useEffect(() => { idxRef.current = idx; }, [idx]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
+  useEffect(() => { phaseRef.current = phase; }, [phase]);
+  // Re-apply word styling whenever the phase or current drill line changes
+  // (skip while an animation owns the word styles imperatively).
+  useEffect(() => { if (phase !== "building" && !animatingRef.current) styleWords(); });
   useEffect(() => {
     audioRef.current = new Audio();
     audioRef.current.preload = "auto";
@@ -222,30 +242,88 @@ export default function LunaReader({
     o.connect(g); g.connect(ac.destination);
     o.start(t0); o.stop(t0 + 0.08);
   }
-  // confetti burst from the orb + a springy bounce
+  // chime + a springy orb bounce (NO confetti, per Filip)
   function celebrate(big: boolean) {
     praiseChime(big);
-    const host = sparksHostRef.current;
-    if (host) {
-      const colors = ["#a78bfa", "#fbbf24", "#34d399", "#f472b6", "#60a5fa"];
-      const n = big ? 36 : 20;
-      for (let i = 0; i < n; i++) {
-        const s = document.createElement("div");
-        const sz = 5 + Math.random() * 6;
-        s.style.cssText = `position:absolute;left:50%;top:50%;width:${sz}px;height:${sz}px;border-radius:${Math.random() < 0.5 ? "50%" : "2px"};background:${colors[i % colors.length]};pointer-events:none`;
-        host.appendChild(s);
-        const ang = Math.random() * Math.PI * 2, d = 60 + Math.random() * (big ? 130 : 80);
-        const dx = Math.cos(ang) * d, dy = Math.sin(ang) * d - 30;
-        s.animate([
-          { transform: "translate(0,0) rotate(0deg) scale(0)", opacity: 1 },
-          { transform: `translate(${dx * 0.7}px,${dy * 0.7}px) rotate(${Math.random() * 300 - 150}deg) scale(1)`, opacity: 1, offset: 0.4 },
-          { transform: `translate(${dx}px,${dy + 70}px) rotate(${Math.random() * 600 - 300}deg) scale(.9)`, opacity: 0 },
-        ], { duration: 900 + Math.random() * 500, easing: "cubic-bezier(0.2,0.8,0.4,1)" });
-        sfxTimer(1500, () => s.remove());
-      }
-    }
     const wrap = orbWrapRef.current;
     if (wrap) wrap.animate([{ transform: "scale(1)" }, { transform: "scale(1.14)" }, { transform: "scale(1)" }], { duration: 450, easing: "cubic-bezier(0.34,1.56,0.64,1)" });
+  }
+
+  // --- Per-word styling + reveal/scan animations ---------------------------
+  function wEl(i: number) { return document.querySelector<HTMLElement>(`[data-w="${i}"]`); }
+  // Base styling by phase + current line + per-word status (imperative so it
+  // survives re-renders; the "building" reveal owns styling while it runs).
+  function styleWords() {
+    const p = phaseRef.current;
+    if (p === "building") return;
+    const cur = idxRef.current;
+    words.forEach((_w, i) => {
+      const el = wEl(i); if (!el) return;
+      const st = wordStateRef.current[i] || "pending";
+      el.style.transition = "color .35s ease, background .35s ease, opacity .3s ease";
+      el.style.opacity = "1"; el.style.filter = "blur(0)"; el.style.transform = "none"; el.style.background = "transparent";
+      if (p === "drill") {
+        if (wSent[i] === cur) { el.style.background = "#ede9fe"; el.style.color = st === "tricky" ? "#9a3412" : st === "correct" ? "#047857" : "#18181b"; }
+        else if (wSent[i] < cur) { el.style.color = st === "tricky" ? "#9a3412" : "#047857"; }
+        else { el.style.color = "#a1a1aa"; }
+      } else {
+        el.style.color = st === "tricky" ? "#9a3412" : st === "correct" ? "#047857" : "#18181b";
+      }
+    });
+  }
+  // Map a line/passage grade → per-word status ("tricky" for missed/substituted).
+  function statusMap(anns: Annotation[], offset: number) {
+    return (globalIdx: number): string => {
+      const a = anns[globalIdx - offset];
+      if (!a) return "correct";
+      return a.status === "missed" || a.status === "substituted" ? "tricky" : "correct";
+    };
+  }
+  // Story build: words drift in blurry, then each sentence snaps into focus.
+  function runBuildReveal(info: WordInfo): Promise<void> {
+    return new Promise((resolve) => {
+      animatingRef.current = true;
+      const n = info.words.length || 1;
+      for (let i = 0; i < n; i++) {
+        const el = wEl(i); if (!el) continue;
+        el.style.transition = "opacity .55s ease, filter .6s ease, transform .55s ease, color .35s ease";
+        el.style.opacity = "0"; el.style.filter = "blur(7px)"; el.style.transform = "translateY(6px)"; el.style.color = "#18181b"; el.style.background = "transparent";
+      }
+      // 1) drift in, dim + blurry
+      for (let i = 0; i < n; i++) sfxTimer(120 + (i * 900) / n, () => { const el = wEl(i); if (el) { el.style.opacity = ".6"; el.style.transform = "translateY(0)"; } });
+      // 2) sentences snap into focus one at a time
+      const sc = info.sents.length || 1;
+      info.sents.forEach((_s, si) => sfxTimer(1050 + (si * 1500) / sc, () => {
+        for (let i = 0; i < n; i++) if (info.wSent[i] === si) { const el = wEl(i); if (el) { el.style.opacity = "1"; el.style.filter = "blur(0)"; } }
+        wordTick();
+      }));
+      sfxTimer(1050 + 1500 + 350, () => { praiseChime(false); animatingRef.current = false; resolve(); });
+    });
+  }
+  // Grade scan: a violet highlight settles each word to green (or orange for a
+  // tricky one), driven by the REAL grade result. Then calls onDone.
+  function scanReveal(from: number, to: number, statusOf: (i: number) => string, onDone: () => void) {
+    animatingRef.current = true;
+    setMode("thinking"); setCaption("Let me listen back…");
+    const n = Math.max(1, to - from + 1);
+    const per = Math.min(170, 1500 / n);
+    sfxTimer(n * per * 0.5, () => setCaption("Checking each word…"));
+    for (let k = 0; k < n; k++) {
+      const i = from + k;
+      sfxTimer(140 + k * per, () => {
+        const el = wEl(i); if (!el) return;
+        el.style.transition = "color .3s ease, background .3s ease";
+        el.style.background = "#ede9fe";
+        sfxTimer(per * 1.4, () => {
+          const st = statusOf(i);
+          wordStateRef.current[i] = st;
+          el.style.background = st === "tricky" ? "#ffedd5" : "transparent";
+          el.style.color = st === "tricky" ? "#9a3412" : "#047857";
+          wordTick();
+        });
+      });
+    }
+    sfxTimer(140 + n * per + per * 1.4 + 200, () => { animatingRef.current = false; onDone(); });
   }
   // little sparks drifting off the orb during a wait
   function sparkLoop() {
@@ -293,7 +371,7 @@ export default function LunaReader({
 
   async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
     unlockAudio();
-    stopProcessing(); stopAudio(); // never let old coaching/processing play over a fresh read
+    stopProcessing(); stopAudio(); animatingRef.current = false; // never let old coaching/processing play over a fresh read
     setErr(null);
     onBlobRef.current = onBlob;
     try {
@@ -358,16 +436,25 @@ export default function LunaReader({
   async function gradeWhole(blob: Blob, which: "before" | "after", durSec: number) {
     try {
       const g = await postGrade(passage.text, blob);
+      const statusOf = statusMap(g.wordAnnotations, 0);
+      g.wordAnnotations.forEach((a) => { if (a.status === "missed" || a.status === "substituted") { const w = a.word.replace(/[^A-Za-z'-]/g, ""); if (w) statsRef.current.trickyWords.add(w); } });
       if (which === "before") {
         setBefore(toScore(g, durSec));
-        const line = `Nice first read, ${name}! Now let's practice it, one line at a time.`;
-        speakQueued(line, () => { setPhase("drill"); setIdx(0); setAttempt(0); setResults({}); setMode("idle"); setCaption("Tap me and read the first line."); }, () => { setMode("speaking"); setCaption(line); });
+        // Luna "reads back" the whole story word-by-word, THEN moves to drilling.
+        scanReveal(0, words.length - 1, statusOf, () => {
+          const line = `Nice first read, ${name}! Now let's practice it, one line at a time.`;
+          speakQueued(line, () => {
+            wordStateRef.current = words.map(() => "pending");
+            setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Tap me and read the first line.");
+          }, () => { setMode("speaking"); setCaption(line); });
+        });
       } else {
         setAfter(toScore(g, durSec));
         statsRef.current.afterGrade = g;
-        // Land the final read on a BIG celebration + spoken cheer, then reveal
-        // the results.
-        playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
+        // Scan the final read, then a BIG celebration + spoken cheer + results.
+        scanReveal(0, words.length - 1, statusOf, () => {
+          playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
+        });
       }
     } catch (e: unknown) {
       stopProcessing();
@@ -382,7 +469,9 @@ export default function LunaReader({
     const curAttempt = attemptRef.current;
     try {
       const a = await postGrade(sentences[curIdx], blob);
-      setResults((prev) => ({ ...prev, [curIdx]: a.wordAnnotations }));
+      const from = wSent.indexOf(curIdx), to = wSent.lastIndexOf(curIdx);
+      const lo = from < 0 ? 0 : from, hi = to < 0 ? words.length - 1 : to;
+      const statusOf = statusMap(a.wordAnnotations, lo);
       const tricky = a.wordAnnotations
         .filter((w) => w.status === "missed" || w.status === "substituted")
         .map((w) => w.word.replace(/[^A-Za-z'-]/g, "")).filter(Boolean);
@@ -392,27 +481,28 @@ export default function LunaReader({
       // Surface what Luna actually heard, so the mismatch is visible.
       setLastHeard(hasError && a.heardTranscript ? a.heardTranscript : null);
 
-      if (!hasError) {
-        // Clean read → confetti + chime + pre-recorded praise (1 of 12).
-        setLastHeard(null);
-        playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
-      } else if (willRetry) {
-        const words = tricky.slice(0, 3);
-        if (words.length >= 1) {
-          // DECODING → live TTS to sound out the SPECIFIC word(s). The filler
-          // keeps looping until the TTS is fetched, then hands off at a boundary.
-          const coaching = words.length >= 2
-            ? `Let's sound out ${words.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${words[words.length - 1]}" — say each sound slowly. Then read the whole line again.`
-            : `Let's sound out "${words[0]}" — say each sound slowly, then read the whole line again.`;
-          speakQueued(coaching, () => proceed(true), () => { setMode("speaking"); setCaption(coaching); });
+      // Scan the line word-by-word (real result), THEN coach.
+      scanReveal(lo, hi, statusOf, () => {
+        if (!hasError) {
+          setLastHeard(null);
+          playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
+        } else if (willRetry) {
+          const wds = tricky.slice(0, 3);
+          if (wds.length >= 1) {
+            // DECODING → live TTS to sound out the SPECIFIC word(s).
+            const coaching = wds.length >= 2
+              ? `Let's sound out ${wds.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${wds[wds.length - 1]}" — say each sound slowly. Then read the whole line again.`
+              : `Let's sound out "${wds[0]}" — say each sound slowly, then read the whole line again.`;
+            speakQueued(coaching, () => proceed(true), () => { setMode("speaking"); setCaption(coaching); });
+          } else {
+            // FLUENCY (a stutter, words fine) → pre-recorded "smooth" (1 of 4).
+            playCachedQueued(`smooth-${1 + rand(SMOOTH_COUNT)}`, () => { setMode("speaking"); setCaption(smoothCap()); }, () => proceed(true));
+          }
         } else {
-          // FLUENCY (a stutter, words fine) → pre-recorded "smooth" (1 of 4).
-          playCachedQueued(`smooth-${1 + rand(SMOOTH_COUNT)}`, () => { setMode("speaking"); setCaption(smoothCap()); }, () => proceed(true));
+          // Second attempt still imperfect → "good try" (1 of 4) + advance.
+          playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
         }
-      } else {
-        // Second attempt still imperfect → "good try" (1 of 4) + advance.
-        playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
-      }
+      });
     } catch (e: unknown) {
       stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
@@ -421,14 +511,22 @@ export default function LunaReader({
   }
 
   function proceed(willRetry: boolean) {
-    if (willRetry) { setAttempt(1); setMode("idle"); setCaption("Let's read that line one more time — tap me."); return; }
+    if (willRetry) {
+      // Clear this line's colors so the re-read scans fresh.
+      const s = idxRef.current;
+      const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
+      for (let i = from; i <= to; i++) if (i >= 0) wordStateRef.current[i] = "pending";
+      setAttempt(1); setMode("idle"); setCaption("Let's read that line one more time — tap me.");
+      styleWords();
+      return;
+    }
     setAttempt(0);
     setLastHeard(null);
     const next = idxRef.current + 1;
     if (next >= sentences.length) {
       const line = `Great practicing, ${name}! Now read me the whole story one more time.`;
       setMode("speaking"); setCaption(line);
-      speakQueued(line, () => { setPhase("overall2"); setMode("idle"); setCaption("Tap me and read the whole story."); });
+      speakQueued(line, () => { wordStateRef.current = words.map(() => "pending"); setPhase("overall2"); setMode("idle"); setCaption("Tap me and read the whole story."); });
     } else {
       setIdx(next); setMode("idle"); setCaption("Nice! Tap me to read the next line.");
     }
@@ -469,20 +567,30 @@ export default function LunaReader({
     return passages[n] ?? passages[0];
   }
 
-  async function beginWith(p: Passage) {
+  // Reveal a story: words drift in blurry, then each sentence snaps into focus
+  // (with word ticks + bubbles), then we start the first whole-story read.
+  async function beginBuild(p: Passage) {
     buildingRef.current = false;
-    stopProcessing(); stopAudio();
-    if (sparksHostRef.current) sparksHostRef.current.innerHTML = ""; // clear stray particles
+    animatingRef.current = false;
+    stopAudio();
+    if (sparksHostRef.current) sparksHostRef.current.innerHTML = "";
     statsRef.current = { trickyWords: new Set(), afterGrade: null };
-    setResults({}); setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setErr(null);
+    setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setErr(null); setLastHeard(null);
+    const info = computeWords(p.text);
+    wordStateRef.current = info.words.map(() => "pending");
     setOverride(p);
-    setSentences(splitSentences(p.text));
+    setSentences(info.sents);
+    setPreparing(false);
+    setPhase("building"); setMode("thinking"); setCaption("Here's your story!");
+    startProcessing();
+    await new Promise<void>((r) => sfxTimer(90, r)); // let the word spans render
+    await runBuildReveal(info);
+    stopProcessing();
     setPhase("overall1"); setMode("idle"); setCaption("Read me the whole story out loud!");
   }
 
-  // Generate a fresh passage while Luna "makes a story": thinking bubbles + orb
-  // sparks + cycling build captions, then stop and speak the "here's your story"
-  // beat — no overlap.
+  // Generate a fresh passage while Luna "makes a story" (thinking bubbles + orb
+  // sparks + cycling captions), then reveal it with the build animation.
   async function prepareAndBegin() {
     unlockAudio();
     setPreparing(true);
@@ -494,10 +602,7 @@ export default function LunaReader({
     sfxTimer(3500, () => { if (buildingRef.current) setCaption("Adding the fun parts…"); });
     const p = await loadFreshPassage();
     buildingRef.current = false;
-    setPreparing(false);
-    stopProcessing();
-    await new Promise<void>((resolve) => playCached(`prep-land-${1 + rand(PREP_LAND_COUNT)}`, resolve));
-    await beginWith(p);
+    await beginBuild(p);
   }
 
   async function startFlow() { await prepareAndBegin(); }
@@ -532,32 +637,23 @@ export default function LunaReader({
     : phase === "drill" ? "Tap to read this line" : "Tap to read the story";
 
   return (
-    <div style={{ maxWidth: 640, margin: "0 auto", display: "flex", flexDirection: "column", gap: 14 }}>
+    <div style={{ maxWidth: 640, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
       {/* Passage (hidden on the intro screen) */}
       {showPassage && (
-        <div style={{ borderRadius: 22, border: "2px solid #ddd6fe", background: "linear-gradient(135deg,#f5f3ff,#ffffff 60%,#fdf2f8)", padding: "16px 20px", boxShadow: "0 10px 40px -18px rgba(49,46,129,.25)" }}>
+        <div style={{ width: "100%", borderRadius: 22, border: "2px solid #ddd6fe", background: "linear-gradient(135deg,#f5f3ff,#ffffff 60%,#fdf2f8)", padding: "16px 20px", boxShadow: "0 10px 40px -18px rgba(49,46,129,.25)" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, minHeight: 22 }}>
             <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "#7c3aed" }}>
-              {phase === "overall1" ? "First, the whole story"
-                : phase === "drill" ? `Line ${Math.min(idx + 1, sentences.length)} of ${sentences.length}`
-                  : phase === "overall2" ? "One more time — the whole story"
-                    : "How you read it"}
+              {phase === "building" ? "Making your story…"
+                : phase === "overall1" ? "First, the whole story"
+                  : phase === "drill" ? `Line ${Math.min(idx + 1, sentences.length)} of ${sentences.length}`
+                    : phase === "overall2" ? "One more time — the whole story"
+                      : "How you read it"}
             </span>
           </div>
-          <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.7, color: "#18181b", overflowWrap: "break-word", wordBreak: "break-word" }}>
-            {phase === "drill"
-              ? sentences.map((sent, i) => {
-                  const isCur = i === idx;
-                  const finished = results[i] && i < idx;
-                  return (
-                    <span key={i} style={{ background: isCur ? "#ede9fe" : "transparent", borderRadius: 6, padding: isCur ? "2px 4px" : 0, color: !finished && !isCur ? "#a1a1aa" : "#18181b", marginRight: 4, boxDecorationBreak: "clone", WebkitBoxDecorationBreak: "clone" } as React.CSSProperties}>
-                      {finished ? results[i].map((a, j) => <Word key={j} a={a} />) : sent + " "}
-                    </span>
-                  );
-                })
-              : phase === "done" && statsRef.current.afterGrade
-                ? statsRef.current.afterGrade.wordAnnotations.map((a, i) => <Word key={i} a={a} />)
-                : passage.text}
+          <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.9, color: "#18181b", overflowWrap: "break-word", wordBreak: "break-word" }}>
+            {words.map((w, i) => (
+              <span key={i} data-w={i} style={{ display: "inline-block", borderRadius: 6, padding: "0 2px", marginRight: 3, opacity: 0 }}>{w}</span>
+            ))}
           </p>
           {lastHeard && phase === "drill" && (
             <div style={{ marginTop: 10, fontSize: 12.5, color: "#9a3412", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 10, padding: "6px 10px" }}>
@@ -580,7 +676,7 @@ export default function LunaReader({
             </div>
           )}
 
-          {preparing ? null : phase === "intro" ? (
+          {preparing || phase === "building" ? null : phase === "intro" ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 10 }}>
               <button type="button" onClick={startFlow} disabled={preparing}
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
@@ -603,7 +699,7 @@ export default function LunaReader({
           )}
         </div>
       ) : (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
           <div style={{ width: "100%", borderRadius: 22, border: "1px solid #bbf7d0", background: "linear-gradient(135deg,#ecfdf5,#f5f3ff)", padding: 20 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
               <Trophy className="h-8 w-8" style={{ color: "#059669" }} />
@@ -625,7 +721,7 @@ export default function LunaReader({
             )}
           </div>
           <div style={{ display: "flex", gap: 10 }}>
-            <button type="button" onClick={() => beginWith(passage)}
+            <button type="button" onClick={() => beginBuild(passage)}
               style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, border: "1px solid #ddd6fe", background: "#fff", color: "#6d28d9", padding: "11px 20px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
               <RotateCcw className="h-4 w-4" /> Read it again
             </button>
@@ -651,17 +747,3 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function Word({ a }: { a: Annotation }) {
-  const s = a.status;
-  const style: React.CSSProperties =
-    s === "correct" ? { color: "#047857" }
-      : s === "self_corrected" ? { background: "#fef3c7", color: "#92400e", borderRadius: 4, padding: "0 3px" }
-        : s === "substituted" ? { background: "#ffedd5", color: "#9a3412", borderRadius: 4, padding: "0 3px", textDecoration: "line-through" }
-          : s === "missed" ? { background: "#fee2e2", color: "#991b1b", borderRadius: 4, padding: "0 3px", textDecoration: "line-through" }
-            : { color: "#3f3f46" };
-  return (
-    <>
-      <span style={{ ...style }} title={a.heard ? `Heard: "${a.heard}"` : ""}>{a.word}</span>{" "}
-    </>
-  );
-}
