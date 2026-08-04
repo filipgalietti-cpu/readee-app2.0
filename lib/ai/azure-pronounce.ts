@@ -15,8 +15,10 @@
  */
 import type { LineGrade } from "@/lib/ai/luna-grade";
 
-// Tunables (kids read slowly / with developmental articulation — keep lenient).
-const ACCURACY_TRICKY_BELOW = 40; // ErrorType None but very low accuracy → tricky
+// Tunables. Azure word AccuracyScore: cleanly-read words ~80-100, sloppy/wrong
+// reads drop lower. Threshold catches mispronunciations even when Azure's own
+// ErrorType stays "None". Raise to catch more, lower to be gentler on articulation.
+const ACCURACY_TRICKY_BELOW = 60; // ErrorType None but accuracy below this → tricky
 const FLUENCY_DISFLUENT_BELOW = 50; // NBest FluencyScore below this → disfluent
 
 type AzureWord = {
@@ -36,11 +38,13 @@ export function azureConfigured(): boolean {
   return Boolean(process.env.AZURE_SPEECH_KEY && process.env.AZURE_SPEECH_REGION);
 }
 
+export type PADebugWord = { word: string; acc: number; err: string };
+
 export async function assessPronunciation(input: {
   wavBytes: Buffer;
   referenceText: string;
   language?: string;
-}): Promise<{ ok: true; grade: LineGrade } | { ok: false; error: string }> {
+}): Promise<{ ok: true; grade: LineGrade; debug: PADebugWord[] } | { ok: false; error: string }> {
   const key = process.env.AZURE_SPEECH_KEY;
   const region = process.env.AZURE_SPEECH_REGION;
   if (!key || !region) return { ok: false, error: "Azure Speech not configured." };
@@ -82,6 +86,7 @@ export async function assessPronunciation(input: {
       const refWords = input.referenceText.split(/\s+/).filter(Boolean);
       return {
         ok: true,
+        debug: refWords.map((w) => ({ word: w, acc: 0, err: "NoSpeech" })),
         grade: {
           wordAnnotations: refWords.map((w) => ({ word: w, status: "missed" })),
           wordsCorrect: 0,
@@ -95,11 +100,13 @@ export async function assessPronunciation(input: {
     }
 
     const wordAnnotations: LineGrade["wordAnnotations"] = [];
+    const debug: PADebugWord[] = [];
     let wordsCorrect = 0, wordsTotal = 0, lastEndTicks = 0;
     for (const w of nb.Words) {
       const errType = w.PronunciationAssessment?.ErrorType ?? "None";
-      const acc = w.PronunciationAssessment?.AccuracyScore ?? 100;
+      const acc = Math.round(w.PronunciationAssessment?.AccuracyScore ?? 100);
       if (typeof w.Offset === "number" && typeof w.Duration === "number") lastEndTicks = Math.max(lastEndTicks, w.Offset + w.Duration);
+      debug.push({ word: (w.Word || "").trim() || "?", acc, err: errType });
       // Inserted words aren't part of the reference — don't score them.
       if (errType === "Insertion") continue;
       wordsTotal++;
@@ -121,7 +128,7 @@ export async function assessPronunciation(input: {
       heardTranscript: j.DisplayText || nb.Display || nb.Lexical || "",
       coach: "",
     };
-    return { ok: true, grade };
+    return { ok: true, grade, debug };
   } catch (e: any) {
     return { ok: false, error: e?.message ?? "Azure request failed." };
   }

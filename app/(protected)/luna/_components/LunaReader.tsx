@@ -128,6 +128,7 @@ export default function LunaReader({
   const [lastHeard, setLastHeard] = useState<string | null>(null);
   const [engine, setEngine] = useState<string | null>(null); // which grader ran (debug)
   const [debug, setDebug] = useState(false);
+  const [debugWords, setDebugWords] = useState<{ word: string; acc: number; err: string }[]>([]);
   const recStartRef = useRef(0);
 
   const streamRef = useRef<MediaStream | null>(null);
@@ -443,6 +444,7 @@ export default function LunaReader({
     const json = await r.json();
     if (!r.ok || !json.ok) throw new Error(json.error ?? `HTTP ${r.status}`);
     if (json.engine) setEngine(json.engine as string);
+    if (Array.isArray(json.debugWords)) setDebugWords(json.debugWords);
     return json.analysis as Grade;
   }
 
@@ -756,8 +758,22 @@ export default function LunaReader({
       {err && <p style={{ textAlign: "center", color: "#dc2626", fontWeight: 700, fontSize: 14 }}>{err}</p>}
 
       {debug && engine && (
-        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: engine === "azure" ? "#047857" : "#a16207", background: engine === "azure" ? "#ecfdf5" : "#fefce8", border: `1px solid ${engine === "azure" ? "#a7f3d0" : "#fde68a"}`, borderRadius: 999, padding: "4px 12px" }}>
-          engine: {engine}
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: engine === "azure" ? "#047857" : "#a16207", background: engine === "azure" ? "#ecfdf5" : "#fefce8", border: `1px solid ${engine === "azure" ? "#a7f3d0" : "#fde68a"}`, borderRadius: 999, padding: "4px 12px" }}>
+            engine: {engine}
+          </div>
+          {debugWords.length > 0 && (
+            <div style={{ width: "100%", maxWidth: 560, display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "center", fontFamily: "ui-monospace,Menlo,monospace", fontSize: 12 }}>
+              {debugWords.map((d, i) => {
+                const bad = d.err !== "None" || d.acc < 60;
+                return (
+                  <span key={i} style={{ padding: "2px 7px", borderRadius: 6, background: bad ? "#fef2f2" : "#f0fdf4", color: bad ? "#b91c1c" : "#166534", border: `1px solid ${bad ? "#fecaca" : "#bbf7d0"}` }}>
+                    {d.word} <b>{d.acc}</b>{d.err !== "None" ? ` ${d.err}` : ""}
+                  </span>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
   // session never breaks (e.g. >60s reads, transient errors, or no key set).
   if (azureConfigured() && (audio.type || "").includes("wav")) {
     const az = await assessPronunciation({ wavBytes: buf, referenceText: sentenceText });
-    if (az.ok) return NextResponse.json({ ok: true, analysis: az.grade, engine: "azure" });
+    if (az.ok) return NextResponse.json({ ok: true, analysis: az.grade, engine: "azure", debugWords: az.debug });
     console.warn("[luna/grade] Azure failed, falling back to Gemini:", az.error);
   }
 
