@@ -96,23 +96,28 @@ export default function LunaReader({
   const idxRef = useRef(0);
   const attemptRef = useRef(0);
   const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null });
-  // "Bubble" processing loop (recorded clip) — plays alone during a wait on its
-  // own audio element, always stopped before any speech so it never overlaps TTS.
-  const bubbleAudioRef = useRef<HTMLAudioElement | null>(null);
+  // Sound + celebration engine (synthesized via Web Audio, ported from the Luna
+  // Full Flow design): "thinking bubbles" + praise chime + word ticks, and
+  // confetti / sparks around the orb. Processing sound always stops before any
+  // speech so it never overlaps the TTS.
+  const sfxCtxRef = useRef<AudioContext | null>(null);
+  const verbRef = useRef<ConvolverNode | null>(null);
+  const bubblingRef = useRef(false);
+  const sparkingRef = useRef(false);
+  const buildingRef = useRef(false);
+  const blipNRef = useRef(0);
+  const sfxTimersRef = useRef<number[]>([]);
+  const sparksHostRef = useRef<HTMLDivElement | null>(null);
+  const orbWrapRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => { idxRef.current = idx; }, [idx]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
   useEffect(() => {
     audioRef.current = new Audio();
     audioRef.current.preload = "auto";
-    // Looping "processing" bubbles on a dedicated element (so it can loop under a
-    // wait, independently of the one-shot speech element).
-    const bub = new Audio(`${CLIP_BASE}/processing.mp3`);
-    bub.preload = "auto"; bub.loop = true; bub.volume = 0.55;
-    bubbleAudioRef.current = bub;
     // Warm the browser cache for the pre-recorded clips so they play instantly.
     PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(); a.preload = "auto"; a.src = `${CLIP_BASE}/${k}.mp3`; } catch { /* ignore */ } });
-    return () => { cleanupMic(); stopBubbles(); stopAudio(); };
+    return () => { cleanupMic(); stopProcessing(); clearSfxTimers(); stopAudio(); try { void sfxCtxRef.current?.close(); } catch { /* ignore */ } };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -141,37 +146,144 @@ export default function LunaReader({
     a.play().catch(() => window.setTimeout(onDone, 700));
   }
 
-  // --- "Bubble" processing loop --------------------------------------------
-  // The "looking something up" sound: a recorded bubble clip looped. Plays ALONE
-  // while we wait; stopBubbles() is called BEFORE any speech so the bubbles and
-  // the TTS never overlap.
+  // --- Sound + celebration engine (synthesized, no assets) -----------------
+  function sfxTimer(ms: number, fn: () => void) { const id = window.setTimeout(fn, ms); sfxTimersRef.current.push(id); return id; }
+  function clearSfxTimers() { sfxTimersRef.current.forEach((id) => window.clearTimeout(id)); sfxTimersRef.current = []; }
+  function sfxCtx(): AudioContext | null {
+    try {
+      const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!sfxCtxRef.current) sfxCtxRef.current = new AC();
+      if (sfxCtxRef.current.state === "suspended") void sfxCtxRef.current.resume();
+      return sfxCtxRef.current;
+    } catch { return null; }
+  }
+  // one-time synthesized reverb tail → spacious "thinking bubbles"
+  function verb(): ConvolverNode | null {
+    const ac = sfxCtx(); if (!ac) return null;
+    if (!verbRef.current) {
+      const len = Math.floor(ac.sampleRate * 1.6);
+      const buf = ac.createBuffer(2, len, ac.sampleRate);
+      for (let ch = 0; ch < 2; ch++) { const d = buf.getChannelData(ch); for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.8); }
+      const conv = ac.createConvolver(); conv.buffer = buf;
+      const wet = ac.createGain(); wet.gain.value = 0.5;
+      conv.connect(wet); wet.connect(ac.destination);
+      verbRef.current = conv;
+    }
+    return verbRef.current;
+  }
+  // ChatGPT-style "thinking bubbles": deep soft blips in a boo-boo-boo … rhythm.
   function startBubbles() {
-    const b = bubbleAudioRef.current;
-    if (!b) return;
-    try { b.currentTime = 0; b.play().catch(() => {}); } catch { /* ignore */ }
+    if (!sfxCtx()) return;
+    bubblingRef.current = true;
+    const blip = () => {
+      if (!bubblingRef.current) return;
+      const c = sfxCtx(); if (!c) return;
+      const t0 = c.currentTime;
+      const o = c.createOscillator(), g = c.createGain(), f = c.createBiquadFilter();
+      o.type = "sine"; o.frequency.setValueAtTime(330, t0);
+      f.type = "lowpass"; f.frequency.value = 700;
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.07, t0 + 0.04);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.22);
+      o.connect(f); f.connect(g); g.connect(c.destination);
+      const v = verb(); if (v) g.connect(v);
+      o.start(t0); o.stop(t0 + 0.26);
+      blipNRef.current = (blipNRef.current + 1) % 3;
+      sfxTimer(blipNRef.current === 0 ? 900 : 260, blip);
+    };
+    blip();
   }
-  function stopBubbles() {
-    const b = bubbleAudioRef.current;
-    if (!b) return;
-    try { b.pause(); b.currentTime = 0; } catch { /* ignore */ }
+  function stopBubbles() { bubblingRef.current = false; }
+  // rising praise chime (bigger arpeggio for the final celebration)
+  function praiseChime(big: boolean) {
+    const ac = sfxCtx(); if (!ac) return;
+    const t0 = ac.currentTime;
+    const notes = big ? [523, 659, 784, 1047, 1319] : [523, 659, 784, 1047];
+    notes.forEach((hz, i) => {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = "triangle"; o.frequency.value = hz;
+      const st = t0 + i * 0.09;
+      g.gain.setValueAtTime(0.0001, st);
+      g.gain.exponentialRampToValueAtTime(0.09, st + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, st + 0.5);
+      o.connect(g); g.connect(ac.destination);
+      o.start(st); o.stop(st + 0.55);
+    });
   }
+  // tiny settle tick as a word resolves
+  function wordTick() {
+    const ac = sfxCtx(); if (!ac) return;
+    const t0 = ac.currentTime;
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = "sine"; o.frequency.value = 820 + Math.random() * 60;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(0.012, t0 + 0.008);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.07);
+    o.connect(g); g.connect(ac.destination);
+    o.start(t0); o.stop(t0 + 0.08);
+  }
+  // confetti burst from the orb + a springy bounce
+  function celebrate(big: boolean) {
+    praiseChime(big);
+    const host = sparksHostRef.current;
+    if (host) {
+      const colors = ["#a78bfa", "#fbbf24", "#34d399", "#f472b6", "#60a5fa"];
+      const n = big ? 36 : 20;
+      for (let i = 0; i < n; i++) {
+        const s = document.createElement("div");
+        const sz = 5 + Math.random() * 6;
+        s.style.cssText = `position:absolute;left:50%;top:50%;width:${sz}px;height:${sz}px;border-radius:${Math.random() < 0.5 ? "50%" : "2px"};background:${colors[i % colors.length]};pointer-events:none`;
+        host.appendChild(s);
+        const ang = Math.random() * Math.PI * 2, d = 60 + Math.random() * (big ? 130 : 80);
+        const dx = Math.cos(ang) * d, dy = Math.sin(ang) * d - 30;
+        s.animate([
+          { transform: "translate(0,0) rotate(0deg) scale(0)", opacity: 1 },
+          { transform: `translate(${dx * 0.7}px,${dy * 0.7}px) rotate(${Math.random() * 300 - 150}deg) scale(1)`, opacity: 1, offset: 0.4 },
+          { transform: `translate(${dx}px,${dy + 70}px) rotate(${Math.random() * 600 - 300}deg) scale(.9)`, opacity: 0 },
+        ], { duration: 900 + Math.random() * 500, easing: "cubic-bezier(0.2,0.8,0.4,1)" });
+        sfxTimer(1500, () => s.remove());
+      }
+    }
+    const wrap = orbWrapRef.current;
+    if (wrap) wrap.animate([{ transform: "scale(1)" }, { transform: "scale(1.14)" }, { transform: "scale(1)" }], { duration: 450, easing: "cubic-bezier(0.34,1.56,0.64,1)" });
+  }
+  // little sparks drifting off the orb during a wait
+  function sparkLoop() {
+    const host = sparksHostRef.current;
+    if (sparkingRef.current && host) {
+      const s = document.createElement("div");
+      const ang = Math.random() * Math.PI * 2, d = 65 + Math.random() * 55;
+      const dx = Math.cos(ang) * d, dy = Math.sin(ang) * d;
+      s.style.cssText = `position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:2px;background:${Math.random() < 0.5 ? "#a78bfa" : "#fbbf24"};transform:rotate(45deg)`;
+      host.appendChild(s);
+      s.animate([
+        { transform: "translate(0,0) scale(0)", opacity: 0 },
+        { transform: "translate(0,0) scale(1)", opacity: 1, offset: 0.2 },
+        { transform: `translate(${dx}px,${dy}px) scale(1)`, opacity: 0 },
+      ], { duration: 1000, easing: "ease-out" });
+      sfxTimer(1100, () => s.remove());
+    }
+    if (sparkingRef.current) sfxTimer(140, sparkLoop);
+  }
+  function startProcessing() { startBubbles(); sparkingRef.current = true; sparkLoop(); }
+  function stopProcessing() { stopBubbles(); sparkingRef.current = false; }
 
-  // Cached feedback: stop the bubbles, THEN speak — never overlapping.
+  // Cached feedback: stop the processing sound, THEN speak — never overlapping.
   function playCachedQueued(key: string, onStart: () => void, onDone: () => void) {
-    stopBubbles(); onStart(); playCached(key, onDone);
+    stopProcessing(); onStart(); playCached(key, onDone);
   }
-  // Live TTS feedback: bubbles keep going during the fetch (still "processing"),
-  // then stop the instant the audio is ready so speech plays alone.
+  // Live TTS feedback: processing keeps going during the fetch, then stops the
+  // instant the audio is ready so speech plays alone.
   function speakQueued(text: string, onDone: () => void, onStart?: () => void) {
     fetch("/api/luna/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) })
       .then((r) => r.json())
       .then((j) => {
-        stopBubbles(); onStart?.();
+        stopProcessing(); onStart?.();
         const a = audioRef.current;
         if (a && j?.ok && j.audioUrl) { stopAudio(); a.src = j.audioUrl; a.onended = onDone; a.play().catch(() => window.setTimeout(onDone, 1600)); }
         else window.setTimeout(onDone, 1600);
       })
-      .catch(() => { stopBubbles(); onStart?.(); window.setTimeout(onDone, 1200); });
+      .catch(() => { stopProcessing(); onStart?.(); window.setTimeout(onDone, 1200); });
   }
 
   // Varied captions so the on-screen line matches the audio variety.
@@ -181,7 +293,7 @@ export default function LunaReader({
 
   async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
     unlockAudio();
-    stopBubbles(); stopAudio(); // never let old coaching/bubbles play over a fresh read
+    stopProcessing(); stopAudio(); // never let old coaching/processing play over a fresh read
     setErr(null);
     onBlobRef.current = onBlob;
     try {
@@ -219,9 +331,9 @@ export default function LunaReader({
     if (rec && rec.state !== "inactive") rec.stop();
     setMode("thinking");
     setCaption("Let me listen…");
-    // ChatGPT-style "processing" bubbles fill the grade round-trip; they stop
-    // the instant feedback is ready so speech never overlaps them.
-    startBubbles();
+    // "Thinking bubbles" + orb sparks fill the grade round-trip; they stop the
+    // instant feedback is ready so speech never overlaps them.
+    startProcessing();
   }
 
   async function postGrade(text: string, blob: Blob): Promise<Grade> {
@@ -253,12 +365,12 @@ export default function LunaReader({
       } else {
         setAfter(toScore(g, durSec));
         statsRef.current.afterGrade = g;
-        // Land the final read on a spoken cheer (bridged by the filler), then
-        // reveal the results.
-        playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); }, () => finishSession());
+        // Land the final read on a BIG celebration + spoken cheer, then reveal
+        // the results.
+        playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
       }
     } catch (e: unknown) {
-      stopBubbles();
+      stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
       setMode("idle");
       setCaption("Let's try that again — tap me when you're ready.");
@@ -281,9 +393,9 @@ export default function LunaReader({
       setLastHeard(hasError && a.heardTranscript ? a.heardTranscript : null);
 
       if (!hasError) {
-        // Clean read → pre-recorded praise (1 of 12), timed to the filler.
+        // Clean read → confetti + chime + pre-recorded praise (1 of 12).
         setLastHeard(null);
-        playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(praiseCap()); }, () => proceed(false));
+        playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
       } else if (willRetry) {
         const words = tricky.slice(0, 3);
         if (words.length >= 1) {
@@ -302,7 +414,7 @@ export default function LunaReader({
         playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
       }
     } catch (e: unknown) {
-      stopBubbles();
+      stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
       setMode("idle"); setCaption("Let's try that line again — tap me when you're ready.");
     }
@@ -358,7 +470,9 @@ export default function LunaReader({
   }
 
   async function beginWith(p: Passage) {
-    stopAudio();
+    buildingRef.current = false;
+    stopProcessing(); stopAudio();
+    if (sparksHostRef.current) sparksHostRef.current.innerHTML = ""; // clear stray particles
     statsRef.current = { trickyWords: new Set(), afterGrade: null };
     setResults({}); setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setErr(null);
     setOverride(p);
@@ -366,15 +480,22 @@ export default function LunaReader({
     setPhase("overall1"); setMode("idle"); setCaption("Read me the whole story out loud!");
   }
 
-  // Generate a fresh passage while the bubbles play (Luna "looking one up"),
-  // then stop them and speak the "here's your story" beat — no overlap.
+  // Generate a fresh passage while Luna "makes a story": thinking bubbles + orb
+  // sparks + cycling build captions, then stop and speak the "here's your story"
+  // beat — no overlap.
   async function prepareAndBegin() {
     unlockAudio();
     setPreparing(true);
-    startBubbles();
+    setCaption("Thinking of a story you'll love…");
+    buildingRef.current = true;
+    startProcessing();
+    sfxTimer(1100, () => { if (buildingRef.current) setCaption("Picking just-right words…"); });
+    sfxTimer(2300, () => { if (buildingRef.current) setCaption("Putting the pages together…"); });
+    sfxTimer(3500, () => { if (buildingRef.current) setCaption("Adding the fun parts…"); });
     const p = await loadFreshPassage();
+    buildingRef.current = false;
     setPreparing(false);
-    stopBubbles();
+    stopProcessing();
     await new Promise<void>((resolve) => playCached(`prep-land-${1 + rand(PREP_LAND_COUNT)}`, resolve));
     await beginWith(p);
   }
@@ -406,7 +527,7 @@ export default function LunaReader({
   }
 
   const busy = mode === "thinking" || mode === "speaking";
-  const showPassage = phase !== "intro";
+  const showPassage = phase !== "intro" && !preparing;
   const micLabel = mode === "listening" ? "Tap when you're done"
     : phase === "drill" ? "Tap to read this line" : "Tap to read the story";
 
@@ -447,16 +568,19 @@ export default function LunaReader({
       )}
 
       {/* Luna + controls */}
-      {phase !== "done" ? (
+      {(preparing || phase !== "done") ? (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-          <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
-          {phase !== "intro" && (
+          <div ref={orbWrapRef} style={{ position: "relative", width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
+            <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
+          </div>
+          {(preparing || phase !== "intro") && (
             <div style={{ minHeight: 58, display: "flex", alignItems: "center", justifyContent: "center", maxWidth: 470, padding: "0 8px" }}>
               <p style={{ margin: 0, textAlign: "center", fontFamily: BALOO, fontSize: 19, lineHeight: 1.35, fontWeight: 700, color: "#18181b" }}>{caption}</p>
             </div>
           )}
 
-          {phase === "intro" ? (
+          {preparing ? null : phase === "intro" ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 10 }}>
               <button type="button" onClick={startFlow} disabled={preparing}
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
