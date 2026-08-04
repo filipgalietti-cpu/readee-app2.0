@@ -126,6 +126,8 @@ export default function LunaReader({
   const [err, setErr] = useState<string | null>(null);
   const [preparing, setPreparing] = useState(false);
   const [lastHeard, setLastHeard] = useState<string | null>(null);
+  const [engine, setEngine] = useState<string | null>(null); // which grader ran (debug)
+  const [debug, setDebug] = useState(false);
   const recStartRef = useRef(0);
 
   const streamRef = useRef<MediaStream | null>(null);
@@ -158,6 +160,7 @@ export default function LunaReader({
   const sparksHostRef = useRef<HTMLDivElement | null>(null);
   const orbWrapRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => { try { setDebug(new URLSearchParams(window.location.search).has("debug")); } catch { /* ignore */ } }, []);
   useEffect(() => { idxRef.current = idx; }, [idx]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
   useEffect(() => { phaseRef.current = phase; }, [phase]);
@@ -439,6 +442,7 @@ export default function LunaReader({
     const r = await fetch("/api/luna/grade", { method: "POST", body: fd });
     const json = await r.json();
     if (!r.ok || !json.ok) throw new Error(json.error ?? `HTTP ${r.status}`);
+    if (json.engine) setEngine(json.engine as string);
     return json.analysis as Grade;
   }
 
@@ -750,6 +754,12 @@ export default function LunaReader({
       )}
 
       {err && <p style={{ textAlign: "center", color: "#dc2626", fontWeight: 700, fontSize: 14 }}>{err}</p>}
+
+      {debug && engine && (
+        <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: engine === "azure" ? "#047857" : "#a16207", background: engine === "azure" ? "#ecfdf5" : "#fefce8", border: `1px solid ${engine === "azure" ? "#a7f3d0" : "#fde68a"}`, borderRadius: 999, padding: "4px 12px" }}>
+          engine: {engine}
+        </div>
+      )}
     </div>
   );
 }
