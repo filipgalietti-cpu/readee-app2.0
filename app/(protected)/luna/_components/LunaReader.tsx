@@ -119,7 +119,6 @@ export default function LunaReader({
   const sfxCtxRef = useRef<AudioContext | null>(null);
   const verbRef = useRef<ConvolverNode | null>(null);
   const bubblingRef = useRef(false);
-  const sparkingRef = useRef(false);
   const buildingRef = useRef(false);
   const blipNRef = useRef(0);
   const sfxTimersRef = useRef<number[]>([]);
@@ -325,26 +324,8 @@ export default function LunaReader({
     }
     sfxTimer(140 + n * per + per * 1.4 + 200, () => { animatingRef.current = false; onDone(); });
   }
-  // little sparks drifting off the orb during a wait
-  function sparkLoop() {
-    const host = sparksHostRef.current;
-    if (sparkingRef.current && host) {
-      const s = document.createElement("div");
-      const ang = Math.random() * Math.PI * 2, d = 65 + Math.random() * 55;
-      const dx = Math.cos(ang) * d, dy = Math.sin(ang) * d;
-      s.style.cssText = `position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:2px;background:${Math.random() < 0.5 ? "#a78bfa" : "#fbbf24"};transform:rotate(45deg)`;
-      host.appendChild(s);
-      s.animate([
-        { transform: "translate(0,0) scale(0)", opacity: 0 },
-        { transform: "translate(0,0) scale(1)", opacity: 1, offset: 0.2 },
-        { transform: `translate(${dx}px,${dy}px) scale(1)`, opacity: 0 },
-      ], { duration: 1000, easing: "ease-out" });
-      sfxTimer(1100, () => s.remove());
-    }
-    if (sparkingRef.current) sfxTimer(140, sparkLoop);
-  }
-  function startProcessing() { startBubbles(); sparkingRef.current = true; sparkLoop(); }
-  function stopProcessing() { stopBubbles(); sparkingRef.current = false; }
+  function startProcessing() { startBubbles(); }
+  function stopProcessing() { stopBubbles(); }
 
   // Cached feedback: stop the processing sound, THEN speak — never overlapping.
   function playCachedQueued(key: string, onStart: () => void, onDone: () => void) {
