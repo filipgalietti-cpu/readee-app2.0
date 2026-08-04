@@ -18,6 +18,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Shuffle, Trophy, RotateCcw, Play, Volume2 } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
+import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 
 type Passage = { grade: string; title: string; text: string };
 type Annotation = { word: string; status: string; heard?: string };
@@ -50,6 +51,7 @@ const PRELOAD_CLIPS = [
   ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
+const ACC_TRICKY = 60; // word accuracy below this → "tricky" (mirror azure-pronounce.ts)
 
 function splitSentences(text: string): string[] {
   return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
@@ -133,11 +135,21 @@ export default function LunaReader({
 
   const streamRef = useRef<MediaStream | null>(null);
   const ctxRef = useRef<AudioContext | null>(null);
-  // Raw PCM capture (for 16 kHz mono WAV → Azure Pronunciation Assessment).
+  // Raw PCM capture (mic graph shared by both the WAV-record fallback and the
+  // real-time streaming path).
   const procRef = useRef<ScriptProcessorNode | null>(null);
   const pcmRef = useRef<Float32Array[]>([]);
   const srcRateRef = useRef(48000);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  // Real-time streaming (Azure Speech SDK) state.
+  const tokenRef = useRef<{ token: string; region: string; exp: number } | null>(null);
+  const recognizerRef = useRef<StreamController | null>(null);
+  const streamActiveRef = useRef(false);
+  const streamWordsRef = useRef<{ refIdx: number; acc: number; err: string }[]>([]);
+  const streamCursorRef = useRef(0);
+  const streamRangeRef = useRef<{ from: number; to: number }>({ from: 0, to: 0 });
+  const streamFluencyRef = useRef(100);
+  const streamTextRef = useRef("");
   const unlockedRef = useRef(false);
   const onBlobRef = useRef<(b: Blob, durSec: number) => void>(() => {});
   const idxRef = useRef(0);
@@ -173,7 +185,7 @@ export default function LunaReader({
     audioRef.current.preload = "auto";
     // Warm the browser cache for the pre-recorded clips so they play instantly.
     PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(); a.preload = "auto"; a.src = `${CLIP_BASE}/${k}.mp3`; } catch { /* ignore */ } });
-    return () => { cleanupMic(); stopProcessing(); clearSfxTimers(); stopAudio(); try { void sfxCtxRef.current?.close(); } catch { /* ignore */ } };
+    return () => { streamActiveRef.current = false; try { void recognizerRef.current?.stop(); } catch { /* ignore */ } cleanupMic(); stopProcessing(); clearSfxTimers(); stopAudio(); try { void sfxCtxRef.current?.close(); } catch { /* ignore */ } };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -388,11 +400,10 @@ export default function LunaReader({
   const smoothCap = () => [`Take your time, ${name} — nice and smooth.`, `Slow and steady, ${name}.`, `Let's read it smooth this time, ${name}.`][rand(3)];
   const goodtryCap = () => [`Good try, ${name}! Let's keep going.`, `Nice effort, ${name}!`, `You're getting it, ${name}!`][rand(3)];
 
-  async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
-    unlockAudio();
-    stopProcessing(); stopAudio(); animatingRef.current = false; // never let old coaching/processing play over a fresh read
-    setErr(null);
-    onBlobRef.current = onBlob;
+  // Open the mic graph once; `onPcm` receives each raw Float32 frame + the ctx
+  // sample rate. The ScriptProcessor must reach the destination to run, so it's
+  // routed through a muted gain. Used by BOTH the streaming and record paths.
+  async function openMicGraph(onPcm: (frame: Float32Array, rate: number) => void): Promise<boolean> {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
       streamRef.current = stream;
@@ -403,35 +414,145 @@ export default function LunaReader({
       const src = ctx.createMediaStreamSource(stream);
       const an = ctx.createAnalyser(); an.fftSize = 512; an.smoothingTimeConstant = 0.75;
       src.connect(an); setAnalyser(an);
-      // Capture raw PCM (→ 16 kHz mono WAV for Azure). ScriptProcessor must be
-      // connected to the destination to run, so route it through a muted gain.
-      pcmRef.current = [];
       const proc = ctx.createScriptProcessor(4096, 1, 1);
-      proc.onaudioprocess = (e) => { pcmRef.current.push(new Float32Array(e.inputBuffer.getChannelData(0))); };
+      proc.onaudioprocess = (e) => onPcm(new Float32Array(e.inputBuffer.getChannelData(0)), ctx.sampleRate);
       const sink = ctx.createGain(); sink.gain.value = 0;
       src.connect(proc); proc.connect(sink); sink.connect(ctx.destination);
       procRef.current = proc;
-      recStartRef.current = Date.now();
-      setMode("listening");
-    } catch {
-      setErr("I couldn't turn on the mic. Check the mic permission and try again.");
-      setMode("idle");
-    }
+      return true;
+    } catch { return false; }
+  }
+
+  // --- Fallback path: record a WAV, POST to /api/luna/grade -----------------
+  async function startRecording(onBlob: (b: Blob, durSec: number) => void) {
+    unlockAudio();
+    stopProcessing(); stopAudio(); animatingRef.current = false;
+    setErr(null);
+    onBlobRef.current = onBlob;
+    pcmRef.current = [];
+    const ok = await openMicGraph((frame) => { pcmRef.current.push(frame); });
+    if (!ok) { setErr("I couldn't turn on the mic. Check the mic permission and try again."); setMode("idle"); return; }
+    recStartRef.current = Date.now();
+    setMode("listening");
   }
   function stopRecording() {
-    // Measure the ACTUAL recording length client-side (reliable WCPM), grab the
-    // captured PCM, then tear the mic down and encode a 16 kHz mono WAV.
     const durSec = Math.max(0.5, (Date.now() - recStartRef.current) / 1000);
     const rate = srcRateRef.current;
     const chunks = pcmRef.current; pcmRef.current = [];
     cleanupMic();
-    setMode("thinking");
-    setCaption("Let me listen…");
-    // "Thinking bubbles" fill the grade round-trip; they stop the instant
-    // feedback is ready so speech never overlaps them.
+    setMode("thinking"); setCaption("Let me listen…");
     startProcessing();
     const wav = encodeWav(downsampleMerge(chunks, rate, 16000), 16000);
     onBlobRef.current(wav, durSec);
+  }
+
+  // --- Streaming path: Azure Speech SDK, real-time word coloring ------------
+  async function getToken(): Promise<{ token: string; region: string } | null> {
+    const t = tokenRef.current;
+    if (t && t.exp > Date.now() + 30000) return t;
+    try {
+      const r = await fetch("/api/luna/speech-token", { method: "POST" });
+      const j = await r.json();
+      if (r.ok && j.ok && j.token) { tokenRef.current = { token: j.token, region: j.region, exp: Date.now() + 9 * 60 * 1000 }; return tokenRef.current; }
+    } catch { /* fall through */ }
+    return null;
+  }
+  function statusFrom(acc: number, err: string): "correct" | "tricky" {
+    if (err === "Omission" || err === "Mispronunciation") return "tricky";
+    if (acc < ACC_TRICKY) return "tricky";
+    return "correct";
+  }
+  // Live: highlight the words being spoken in the current phrase (from the
+  // running cursor), so it tracks across phrases in a whole-passage read.
+  function liveHighlight(partialText: string) {
+    const n = partialText.trim().split(/\s+/).filter(Boolean).length;
+    const base = streamCursorRef.current, to = streamRangeRef.current.to;
+    for (let k = 0; k < n; k++) {
+      const idx = base + k; if (idx > to) break;
+      if ((wordStateRef.current[idx] || "pending") === "pending") {
+        const el = wEl(idx); if (el) { el.style.transition = "background .15s ease, color .15s ease"; el.style.background = "#ede9fe"; el.style.color = "#4338ca"; }
+      }
+    }
+  }
+  // Each recognized phrase settles its words to green/orange (karaoke).
+  function onStreamPhrase(p: PAPhrase) {
+    streamFluencyRef.current = Math.min(streamFluencyRef.current, p.fluency);
+    streamTextRef.current = (streamTextRef.current + " " + (p.text || "")).trim();
+    const { to } = streamRangeRef.current;
+    let i = streamCursorRef.current;
+    for (const w of p.words) {
+      if (w.errorType === "Insertion") continue;
+      if (i > to) break;
+      const st = statusFrom(w.accuracy, w.errorType);
+      wordStateRef.current[i] = st;
+      streamWordsRef.current.push({ refIdx: i, acc: w.accuracy, err: w.errorType });
+      const el = wEl(i);
+      if (el) { el.style.transition = "color .25s ease, background .25s ease"; el.style.background = st === "tricky" ? "#ffedd5" : "transparent"; el.style.color = st === "tricky" ? "#9a3412" : "#047857"; }
+      wordTick();
+      i++;
+    }
+    streamCursorRef.current = i;
+  }
+  function buildStreamGrade(from: number, to: number, durSec: number): Grade {
+    const seen = new Set(streamWordsRef.current.map((w) => w.refIdx));
+    const wordAnnotations: Annotation[] = [];
+    let correct = 0, total = 0;
+    for (let i = from; i <= to; i++) {
+      total++;
+      let status: string;
+      if (!seen.has(i)) { status = "missed"; wordStateRef.current[i] = "tricky"; }
+      else if (wordStateRef.current[i] === "tricky") status = "substituted";
+      else { status = "correct"; correct++; }
+      wordAnnotations.push({ word: words[i], status });
+    }
+    return { wordAnnotations, wordsCorrect: correct, wordsTotal: total, durationSeconds: durSec, disfluent: streamFluencyRef.current < 50, heardTranscript: streamTextRef.current };
+  }
+  async function startStream(refText: string, from: number, to: number): Promise<boolean> {
+    const tok = await getToken();
+    if (!tok) return false;
+    unlockAudio();
+    stopProcessing(); stopAudio(); setErr(null);
+    streamWordsRef.current = []; streamCursorRef.current = from; streamRangeRef.current = { from, to }; streamFluencyRef.current = 100; streamTextRef.current = "";
+    let ctrl: StreamController;
+    try {
+      ctrl = await startPronAssessment({
+        token: tok.token, region: tok.region, referenceText: refText,
+        onRecognizing: (t) => liveHighlight(t),
+        onPhrase: (p) => onStreamPhrase(p),
+        onError: (m) => console.warn("[luna stream]", m),
+      });
+    } catch (e) { console.warn("[luna stream] init failed", e); return false; }
+    recognizerRef.current = ctrl;
+    const ok = await openMicGraph((frame, rate) => { if (streamActiveRef.current) ctrl.pushSamples(frame, rate); });
+    if (!ok) { try { await ctrl.stop(); } catch { /* ignore */ } recognizerRef.current = null; return false; }
+    animatingRef.current = true; // hold the styling effect off while we color live
+    setEngine("azure");
+    streamActiveRef.current = true;
+    recStartRef.current = Date.now();
+    setMode("listening");
+    return true;
+  }
+  async function stopStream() {
+    streamActiveRef.current = false;
+    const durSec = Math.max(0.5, (Date.now() - recStartRef.current) / 1000);
+    setMode("thinking"); setCaption("Let me listen…");
+    cleanupMic();
+    const ctrl = recognizerRef.current; recognizerRef.current = null;
+    if (ctrl) { try { await ctrl.stop(); } catch { /* ignore */ } }
+    await new Promise<void>((r) => window.setTimeout(r, 250)); // let final phrase land
+    const { from, to } = streamRangeRef.current;
+    if (debug) setDebugWords(streamWordsRef.current.map((w) => ({ word: words[w.refIdx] ?? "?", acc: w.acc, err: w.err })));
+    const g = buildStreamGrade(from, to, durSec);
+    animatingRef.current = false;
+    finishFromGrade(g, durSec);
+  }
+  // Route a streamed read's assembled grade to the shared feedback (no scan —
+  // words were colored live).
+  function finishFromGrade(g: Grade, durSec: number) {
+    const ph = phaseRef.current;
+    if (ph === "overall1") { addTricky(g.wordAnnotations); setBefore(toScore(g, durSec)); wholeFeedbackBefore(); }
+    else if (ph === "overall2") { addTricky(g.wordAnnotations); setAfter(toScore(g, durSec)); statsRef.current.afterGrade = g; wholeFeedbackAfter(); }
+    else if (ph === "drill") { sentenceFeedback(g, idxRef.current, attemptRef.current); }
   }
 
   async function postGrade(text: string, blob: Blob): Promise<Grade> {
@@ -455,29 +576,54 @@ export default function LunaReader({
     };
   }
 
+  function addTricky(anns: Annotation[]) {
+    anns.forEach((a) => { if (a.status === "missed" || a.status === "substituted") { const w = a.word.replace(/[^A-Za-z'-]/g, ""); if (w) statsRef.current.trickyWords.add(w); } });
+  }
+  // Shared feedback — used after BOTH the streaming read and the REST scan.
+  function wholeFeedbackBefore() {
+    const line = `Nice first read, ${name}! Now let's practice it, one line at a time.`;
+    speakQueued(line, () => {
+      wordStateRef.current = words.map(() => "pending");
+      setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Tap me and read the first line.");
+    }, () => { setMode("speaking"); setCaption(line); });
+  }
+  function wholeFeedbackAfter() {
+    playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
+  }
+  function sentenceFeedback(g: Grade, _curIdx: number, curAttempt: number) {
+    const tricky = g.wordAnnotations
+      .filter((w) => w.status === "missed" || w.status === "substituted")
+      .map((w) => w.word.replace(/[^A-Za-z'-]/g, "")).filter(Boolean);
+    const hasError = g.wordsCorrect < g.wordsTotal || tricky.length > 0 || !!g.disfluent;
+    const willRetry = hasError && curAttempt === 0;
+    if (!willRetry) tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
+    setLastHeard(hasError && g.heardTranscript ? g.heardTranscript : null);
+    if (!hasError) {
+      setLastHeard(null);
+      playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
+    } else if (willRetry) {
+      const wds = tricky.slice(0, 3);
+      if (wds.length >= 1) {
+        const coaching = wds.length >= 2
+          ? `Let's sound out ${wds.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${wds[wds.length - 1]}" — say each sound slowly. Then read the whole line again.`
+          : `Let's sound out "${wds[0]}" — say each sound slowly, then read the whole line again.`;
+        speakQueued(coaching, () => proceed(true), () => { setMode("speaking"); setCaption(coaching); });
+      } else {
+        playCachedQueued(`smooth-${1 + rand(SMOOTH_COUNT)}`, () => { setMode("speaking"); setCaption(smoothCap()); }, () => proceed(true));
+      }
+    } else {
+      playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
+    }
+  }
+
+  // REST fallback: grade the recorded WAV, scan-reveal, then shared feedback.
   async function gradeWhole(blob: Blob, which: "before" | "after", durSec: number) {
     try {
       const g = await postGrade(passage.text, blob);
+      addTricky(g.wordAnnotations);
       const statusOf = statusMap(g.wordAnnotations, 0);
-      g.wordAnnotations.forEach((a) => { if (a.status === "missed" || a.status === "substituted") { const w = a.word.replace(/[^A-Za-z'-]/g, ""); if (w) statsRef.current.trickyWords.add(w); } });
-      if (which === "before") {
-        setBefore(toScore(g, durSec));
-        // Luna "reads back" the whole story word-by-word, THEN moves to drilling.
-        scanReveal(0, words.length - 1, statusOf, () => {
-          const line = `Nice first read, ${name}! Now let's practice it, one line at a time.`;
-          speakQueued(line, () => {
-            wordStateRef.current = words.map(() => "pending");
-            setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Tap me and read the first line.");
-          }, () => { setMode("speaking"); setCaption(line); });
-        });
-      } else {
-        setAfter(toScore(g, durSec));
-        statsRef.current.afterGrade = g;
-        // Scan the final read, then a BIG celebration + spoken cheer + results.
-        scanReveal(0, words.length - 1, statusOf, () => {
-          playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
-        });
-      }
+      if (which === "before") { setBefore(toScore(g, durSec)); scanReveal(0, words.length - 1, statusOf, wholeFeedbackBefore); }
+      else { setAfter(toScore(g, durSec)); statsRef.current.afterGrade = g; scanReveal(0, words.length - 1, statusOf, wholeFeedbackAfter); }
     } catch (e: unknown) {
       stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
@@ -490,41 +636,11 @@ export default function LunaReader({
     const curIdx = idxRef.current;
     const curAttempt = attemptRef.current;
     try {
-      const a = await postGrade(sentences[curIdx], blob);
+      const g = await postGrade(sentences[curIdx], blob);
       const from = wSent.indexOf(curIdx), to = wSent.lastIndexOf(curIdx);
       const lo = from < 0 ? 0 : from, hi = to < 0 ? words.length - 1 : to;
-      const statusOf = statusMap(a.wordAnnotations, lo);
-      const tricky = a.wordAnnotations
-        .filter((w) => w.status === "missed" || w.status === "substituted")
-        .map((w) => w.word.replace(/[^A-Za-z'-]/g, "")).filter(Boolean);
-      const hasError = a.wordsCorrect < a.wordsTotal || tricky.length > 0 || !!a.disfluent;
-      const willRetry = hasError && curAttempt === 0;
-      if (!willRetry) tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
-      // Surface what Luna actually heard, so the mismatch is visible.
-      setLastHeard(hasError && a.heardTranscript ? a.heardTranscript : null);
-
-      // Scan the line word-by-word (real result), THEN coach.
-      scanReveal(lo, hi, statusOf, () => {
-        if (!hasError) {
-          setLastHeard(null);
-          playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
-        } else if (willRetry) {
-          const wds = tricky.slice(0, 3);
-          if (wds.length >= 1) {
-            // DECODING → live TTS to sound out the SPECIFIC word(s).
-            const coaching = wds.length >= 2
-              ? `Let's sound out ${wds.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${wds[wds.length - 1]}" — say each sound slowly. Then read the whole line again.`
-              : `Let's sound out "${wds[0]}" — say each sound slowly, then read the whole line again.`;
-            speakQueued(coaching, () => proceed(true), () => { setMode("speaking"); setCaption(coaching); });
-          } else {
-            // FLUENCY (a stutter, words fine) → pre-recorded "smooth" (1 of 4).
-            playCachedQueued(`smooth-${1 + rand(SMOOTH_COUNT)}`, () => { setMode("speaking"); setCaption(smoothCap()); }, () => proceed(true));
-          }
-        } else {
-          // Second attempt still imperfect → "good try" (1 of 4) + advance.
-          playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
-        }
-      });
+      const statusOf = statusMap(g.wordAnnotations, lo);
+      scanReveal(lo, hi, statusOf, () => sentenceFeedback(g, curIdx, curAttempt));
     } catch (e: unknown) {
       stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
@@ -631,11 +747,30 @@ export default function LunaReader({
   async function newPassage() { await prepareAndBegin(); }
 
   function onTap() {
-    if (mode === "listening") { stopRecording(); return; }
+    if (mode === "listening") { endRead(); return; }
     if (mode !== "idle") return;
-    if (phase === "overall1") startRecording((b, d) => { void gradeWhole(b, "before", d); });
-    else if (phase === "drill") startRecording((b) => { void gradeSentence(b); });
-    else if (phase === "overall2") startRecording((b, d) => { void gradeWhole(b, "after", d); });
+    if (phase === "overall1" || phase === "drill" || phase === "overall2") void beginRead();
+  }
+  // Start a read: try real-time streaming; fall back to record → REST grade.
+  async function beginRead() {
+    const isDrill = phase === "drill";
+    const ci = idxRef.current;
+    const refText = isDrill ? sentences[ci] : passage.text;
+    const from = isDrill ? Math.max(0, wSent.indexOf(ci)) : 0;
+    const to = isDrill ? (wSent.lastIndexOf(ci) < 0 ? words.length - 1 : wSent.lastIndexOf(ci)) : words.length - 1;
+    for (let i = from; i <= to; i++) wordStateRef.current[i] = "pending";
+    styleWords();
+    setMode("listening"); // optimistic; token+mic open next
+    const ok = await startStream(refText, from, to);
+    if (ok) return;
+    // Streaming unavailable → record + REST.
+    if (isDrill) startRecording((b) => { void gradeSentence(b); });
+    else if (phase === "overall1") startRecording((b, d) => { void gradeWhole(b, "before", d); });
+    else startRecording((b, d) => { void gradeWhole(b, "after", d); });
+  }
+  function endRead() {
+    if (streamActiveRef.current) { void stopStream(); return; }
+    stopRecording();
   }
 
   // Echo reading: Luna models the correct pronunciation of the line (drill) or
