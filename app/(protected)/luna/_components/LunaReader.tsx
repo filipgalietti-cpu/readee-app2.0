@@ -131,6 +131,11 @@ export default function LunaReader({
   const [engine, setEngine] = useState<string | null>(null); // which grader ran (debug)
   const [debug, setDebug] = useState(false);
   const [debugWords, setDebugWords] = useState<{ word: string; acc: number; err: string }[]>([]);
+  const [dbgLog, setDbgLog] = useState<string[]>([]);
+  const debugRef = useRef(false);
+  const readModeRef = useRef<"idle" | "starting" | "streaming" | "recording">("idle");
+  const pendingStopRef = useRef(false);
+  const audioFlowRef = useRef(false);
   const recStartRef = useRef(0);
 
   const streamRef = useRef<MediaStream | null>(null);
@@ -173,7 +178,8 @@ export default function LunaReader({
   const sparksHostRef = useRef<HTMLDivElement | null>(null);
   const orbWrapRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => { try { setDebug(new URLSearchParams(window.location.search).has("debug")); } catch { /* ignore */ } }, []);
+  useEffect(() => { try { const d = new URLSearchParams(window.location.search).has("debug"); setDebug(d); debugRef.current = d; } catch { /* ignore */ } }, []);
+  function dbg(m: string) { try { console.log("[luna]", m); } catch { /* ignore */ } if (debugRef.current) setDbgLog((l) => [...l.slice(-14), m]); }
   useEffect(() => { idxRef.current = idx; }, [idx]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
   useEffect(() => { phaseRef.current = phase; }, [phase]);
@@ -453,8 +459,9 @@ export default function LunaReader({
     try {
       const r = await fetch("/api/luna/speech-token", { method: "POST" });
       const j = await r.json();
-      if (r.ok && j.ok && j.token) { tokenRef.current = { token: j.token, region: j.region, exp: Date.now() + 9 * 60 * 1000 }; return tokenRef.current; }
-    } catch { /* fall through */ }
+      if (r.ok && j.ok && j.token) { tokenRef.current = { token: j.token, region: j.region, exp: Date.now() + 9 * 60 * 1000 }; dbg("token ok"); return tokenRef.current; }
+      dbg(`token fail: ${j.configured === false ? "not configured" : (j.error || "no token")}`);
+    } catch (e) { dbg(`token error: ${e instanceof Error ? e.message : e}`); }
     return null;
   }
   function statusFrom(acc: number, err: string): "correct" | "tricky" {
@@ -476,6 +483,7 @@ export default function LunaReader({
   }
   // Each recognized phrase settles its words to green/orange (karaoke).
   function onStreamPhrase(p: PAPhrase) {
+    dbg(`phrase: ${p.words.length}w fluency=${p.fluency} "${(p.text || "").slice(0, 30)}"`);
     streamFluencyRef.current = Math.min(streamFluencyRef.current, p.fluency);
     streamTextRef.current = (streamTextRef.current + " " + (p.text || "")).trim();
     const { to } = streamRangeRef.current;
@@ -512,24 +520,27 @@ export default function LunaReader({
     if (!tok) return false;
     unlockAudio();
     stopProcessing(); stopAudio(); setErr(null);
-    streamWordsRef.current = []; streamCursorRef.current = from; streamRangeRef.current = { from, to }; streamFluencyRef.current = 100; streamTextRef.current = "";
+    streamWordsRef.current = []; streamCursorRef.current = from; streamRangeRef.current = { from, to }; streamFluencyRef.current = 100; streamTextRef.current = ""; audioFlowRef.current = false;
     let ctrl: StreamController;
     try {
+      dbg("sdk loading…");
       ctrl = await startPronAssessment({
         token: tok.token, region: tok.region, referenceText: refText,
         onRecognizing: (t) => liveHighlight(t),
         onPhrase: (p) => onStreamPhrase(p),
-        onError: (m) => console.warn("[luna stream]", m),
+        onError: (m) => dbg(`stream err: ${m}`),
       });
-    } catch (e) { console.warn("[luna stream] init failed", e); return false; }
+      dbg("recognition started");
+    } catch (e) { dbg(`sdk init failed: ${e instanceof Error ? e.message : e}`); return false; }
     recognizerRef.current = ctrl;
-    const ok = await openMicGraph((frame, rate) => { if (streamActiveRef.current) ctrl.pushSamples(frame, rate); });
-    if (!ok) { try { await ctrl.stop(); } catch { /* ignore */ } recognizerRef.current = null; return false; }
+    const ok = await openMicGraph((frame, rate) => { if (streamActiveRef.current) { if (!audioFlowRef.current) { audioFlowRef.current = true; dbg(`audio flowing @${Math.round(rate)}Hz`); } ctrl.pushSamples(frame, rate); } });
+    if (!ok) { dbg("mic failed"); try { await ctrl.stop(); } catch { /* ignore */ } recognizerRef.current = null; return false; }
     animatingRef.current = true; // hold the styling effect off while we color live
     setEngine("azure");
     streamActiveRef.current = true;
     recStartRef.current = Date.now();
     setMode("listening");
+    dbg("LIVE — reading");
     return true;
   }
   async function stopStream() {
@@ -538,12 +549,18 @@ export default function LunaReader({
     setMode("thinking"); setCaption("Let me listen…");
     cleanupMic();
     const ctrl = recognizerRef.current; recognizerRef.current = null;
-    if (ctrl) { try { await ctrl.stop(); } catch { /* ignore */ } }
-    await new Promise<void>((r) => window.setTimeout(r, 250)); // let final phrase land
+    dbg("stopping…");
+    if (ctrl) {
+      // Never let a stuck SDK stop callback hang the whole session.
+      await Promise.race([ctrl.stop(), new Promise<void>((r) => window.setTimeout(r, 2000))]);
+    }
+    await new Promise<void>((r) => window.setTimeout(r, 300)); // let final phrase land
     const { from, to } = streamRangeRef.current;
-    if (debug) setDebugWords(streamWordsRef.current.map((w) => ({ word: words[w.refIdx] ?? "?", acc: w.acc, err: w.err })));
+    if (debugRef.current) setDebugWords(streamWordsRef.current.map((w) => ({ word: words[w.refIdx] ?? "?", acc: w.acc, err: w.err })));
     const g = buildStreamGrade(from, to, durSec);
+    dbg(`grade: ${g.wordsCorrect}/${g.wordsTotal} correct, ${streamWordsRef.current.length} scored`);
     animatingRef.current = false;
+    readModeRef.current = "idle";
     finishFromGrade(g, durSec);
   }
   // Route a streamed read's assembled grade to the shared feedback (no scan —
@@ -760,17 +777,29 @@ export default function LunaReader({
     const to = isDrill ? (wSent.lastIndexOf(ci) < 0 ? words.length - 1 : wSent.lastIndexOf(ci)) : words.length - 1;
     for (let i = from; i <= to; i++) wordStateRef.current[i] = "pending";
     styleWords();
+    readModeRef.current = "starting"; pendingStopRef.current = false;
     setMode("listening"); // optimistic; token+mic open next
     const ok = await startStream(refText, from, to);
-    if (ok) return;
+    if (ok) {
+      readModeRef.current = "streaming";
+      if (pendingStopRef.current) { dbg("deferred stop → stopping now"); void stopStream(); }
+      return;
+    }
     // Streaming unavailable → record + REST.
+    dbg("falling back to record→REST");
+    readModeRef.current = "recording";
     if (isDrill) startRecording((b) => { void gradeSentence(b); });
     else if (phase === "overall1") startRecording((b, d) => { void gradeWhole(b, "before", d); });
     else startRecording((b, d) => { void gradeWhole(b, "after", d); });
+    if (pendingStopRef.current) { dbg("deferred stop (record) → stopping now"); stopRecording(); readModeRef.current = "idle"; }
   }
   function endRead() {
-    if (streamActiveRef.current) { void stopStream(); return; }
-    stopRecording();
+    const m = readModeRef.current;
+    if (m === "streaming") { void stopStream(); return; }
+    if (m === "recording") { readModeRef.current = "idle"; stopRecording(); return; }
+    // Tapped "done" before the mic/SDK finished starting — defer the stop.
+    dbg("stop tapped while starting — deferring");
+    pendingStopRef.current = true;
   }
 
   // Echo reading: Luna models the correct pronunciation of the line (drill) or
@@ -892,11 +921,13 @@ export default function LunaReader({
 
       {err && <p style={{ textAlign: "center", color: "#dc2626", fontWeight: 700, fontSize: 14 }}>{err}</p>}
 
-      {debug && engine && (
+      {debug && (
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
-          <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: engine === "azure" ? "#047857" : "#a16207", background: engine === "azure" ? "#ecfdf5" : "#fefce8", border: `1px solid ${engine === "azure" ? "#a7f3d0" : "#fde68a"}`, borderRadius: 999, padding: "4px 12px" }}>
-            engine: {engine}
-          </div>
+          {engine && (
+            <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".08em", textTransform: "uppercase", color: engine === "azure" ? "#047857" : "#a16207", background: engine === "azure" ? "#ecfdf5" : "#fefce8", border: `1px solid ${engine === "azure" ? "#a7f3d0" : "#fde68a"}`, borderRadius: 999, padding: "4px 12px" }}>
+              engine: {engine}
+            </div>
+          )}
           {debugWords.length > 0 && (
             <div style={{ width: "100%", maxWidth: 560, display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "center", fontFamily: "ui-monospace,Menlo,monospace", fontSize: 12 }}>
               {debugWords.map((d, i) => {
@@ -907,6 +938,11 @@ export default function LunaReader({
                   </span>
                 );
               })}
+            </div>
+          )}
+          {dbgLog.length > 0 && (
+            <div style={{ width: "100%", maxWidth: 560, fontFamily: "ui-monospace,Menlo,monospace", fontSize: 11, color: "#3f3f46", background: "#f4f4f5", border: "1px solid #e4e4e7", borderRadius: 8, padding: "6px 10px", whiteSpace: "pre-wrap", lineHeight: 1.5 }}>
+              {dbgLog.map((l, i) => <div key={i}>{l}</div>)}
             </div>
           )}
         </div>
