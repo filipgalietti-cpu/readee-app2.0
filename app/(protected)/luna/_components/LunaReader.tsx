@@ -41,18 +41,23 @@ const BALOO = "'Baloo 2','Nunito',sans-serif";
 const SILENT = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=";
 const CLIP_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/luna`;
 // Variant pools so no feedback line ever feels one-dimensional.
-const PRAISE_COUNT = 12;   // praise-1..12   (clean read)
+const PRAISE_COUNT = 16;   // praise-1..16   (clean read)
 const SMOOTH_COUNT = 4;    // smooth-1..4    (fluency retry)
 const GOODTRY_COUNT = 4;   // goodtry-1..4   (2nd attempt)
-// Spoken feedback clips (praise/smooth/goodtry) are pre-recorded; the wait
-// sound + reveal animations are synthesized. Warm the cache for the clips.
+const REREAD_COUNT = 4;    // reread-1..4    ("read the whole sentence again")
 const PRELOAD_CLIPS = [
   ...Array.from({ length: PRAISE_COUNT }, (_, i) => `praise-${i + 1}`),
   ...Array.from({ length: SMOOTH_COUNT }, (_, i) => `smooth-${i + 1}`),
   ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
+  ...Array.from({ length: REREAD_COUNT }, (_, i) => `reread-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
-const ACC_TRICKY = 60; // word accuracy below this → "tricky" (mirror azure-pronounce.ts)
+const ACC_TRICKY = 45; // word accuracy below this → "tricky" (lenient; transcript-match wins)
+
+// Normalize spoken/reference text for a "did they read the right words?" match.
+function norm(s: string): string {
+  return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+}
 
 function splitSentences(text: string): string[] {
   return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
@@ -158,6 +163,8 @@ export default function LunaReader({
   const streamFluencyRef = useRef(100);
   const streamProsodyRef = useRef(100);
   const streamTextRef = useRef("");
+  const autoStopRef = useRef<number | null>(null); // silence → auto-end the read
+  const lastPraiseRef = useRef(-1);                 // avoid repeating a praise clip
   const unlockedRef = useRef(false);
   const onBlobRef = useRef<(b: Blob, durSec: number) => void>(() => {});
   const idxRef = useRef(0);
@@ -199,6 +206,7 @@ export default function LunaReader({
   }, []);
 
   function cleanupMic() {
+    if (autoStopRef.current) { window.clearTimeout(autoStopRef.current); autoStopRef.current = null; }
     try { procRef.current?.disconnect(); } catch { /* ignore */ }
     try { streamRef.current?.getTracks().forEach((t) => t.stop()); } catch { /* ignore */ }
     try { void ctxRef.current?.close(); } catch { /* ignore */ }
@@ -404,6 +412,15 @@ export default function LunaReader({
       .catch(() => { stopProcessing(); onStart?.(); window.setTimeout(onDone, 1200); });
   }
 
+  // Pick a praise clip that isn't the one we just played (kills the "same
+  // cheer over and over" feel).
+  function praiseKey() {
+    let n = 1 + rand(PRAISE_COUNT);
+    if (PRAISE_COUNT > 1) { let guard = 0; while (n === lastPraiseRef.current && guard++ < 6) n = 1 + rand(PRAISE_COUNT); }
+    lastPraiseRef.current = n;
+    return `praise-${n}`;
+  }
+
   // Varied captions so the on-screen line matches the audio variety.
   const praiseCap = () => [`Great reading, ${name}!`, `Wonderful, ${name}!`, `You nailed it, ${name}!`, `Awesome work, ${name}!`, `Beautiful reading, ${name}!`][rand(5)];
   const smoothCap = () => [`Take your time, ${name} — nice and smooth.`, `Slow and steady, ${name}.`, `Let's read it smooth this time, ${name}.`][rand(3)];
@@ -472,6 +489,22 @@ export default function LunaReader({
     if (acc < ACC_TRICKY) return "tricky";
     return "correct";
   }
+  // Auto-end the read after a beat of silence — the child shouldn't have to tap
+  // "done". Snappier once they've clearly read the whole thing; more patient
+  // (allows mid-sentence pauses) until then.
+  function noteSpeech(partial: string) {
+    if (!streamActiveRef.current) return;
+    const { from, to } = streamRangeRef.current;
+    const refLen = Math.max(1, to - from + 1);
+    const settled = Math.max(0, streamCursorRef.current - from);
+    const partialWords = partial.trim() ? partial.trim().split(/\s+/).length : 0;
+    const covered = settled + partialWords >= Math.floor(refLen * 0.9);
+    if (autoStopRef.current) window.clearTimeout(autoStopRef.current);
+    autoStopRef.current = window.setTimeout(() => {
+      autoStopRef.current = null;
+      if (streamActiveRef.current) { dbg("auto-stop: silence"); void stopStream(); }
+    }, covered ? 1500 : 3000);
+  }
   // Live: highlight the words being spoken in the current phrase (from the
   // running cursor), so it tracks across phrases in a whole-passage read.
   function liveHighlight(partialText: string) {
@@ -506,18 +539,25 @@ export default function LunaReader({
     streamCursorRef.current = i;
   }
   function buildStreamGrade(from: number, to: number, durSec: number): Grade {
+    // If what Luna heard matches the reference words, it's a CORRECT read — even
+    // if a word's pronunciation score wobbled (we tolerate articulation). This
+    // kills false "I heard …" flags on a genuinely correct read.
+    const refText = words.slice(from, to + 1).join(" ");
+    const matched = streamTextRef.current.trim().length > 0 && norm(streamTextRef.current) === norm(refText);
     const seen = new Set(streamWordsRef.current.map((w) => w.refIdx));
     const wordAnnotations: Annotation[] = [];
     let correct = 0, total = 0;
     for (let i = from; i <= to; i++) {
       total++;
       let status: string;
-      if (!seen.has(i)) { status = "missed"; wordStateRef.current[i] = "tricky"; }
+      if (matched) { status = "correct"; correct++; wordStateRef.current[i] = "correct"; }
+      else if (!seen.has(i)) { status = "missed"; wordStateRef.current[i] = "tricky"; }
       else if (wordStateRef.current[i] === "tricky") status = "substituted";
       else { status = "correct"; correct++; }
       wordAnnotations.push({ word: words[i], status });
     }
-    return { wordAnnotations, wordsCorrect: correct, wordsTotal: total, durationSeconds: durSec, disfluent: streamFluencyRef.current < 50, heardTranscript: streamTextRef.current, prosody: streamProsodyRef.current };
+    if (matched) styleWords(); // recolor any live-orange word back to green
+    return { wordAnnotations, wordsCorrect: correct, wordsTotal: total, durationSeconds: durSec, disfluent: matched ? false : streamFluencyRef.current < 50, heardTranscript: streamTextRef.current, prosody: streamProsodyRef.current };
   }
   async function startStream(refText: string, from: number, to: number): Promise<boolean> {
     const tok = await getToken();
@@ -531,8 +571,8 @@ export default function LunaReader({
       ctrl = await Promise.race([
         startPronAssessment({
           token: tok.token, region: tok.region, referenceText: refText,
-          onRecognizing: (t) => liveHighlight(t),
-          onPhrase: (p) => onStreamPhrase(p),
+          onRecognizing: (t) => { liveHighlight(t); noteSpeech(t); },
+          onPhrase: (p) => { onStreamPhrase(p); noteSpeech(""); },
           onError: (m) => dbg(`stream err: ${m}`),
           log: (m) => dbg(m),
         }),
@@ -613,19 +653,21 @@ export default function LunaReader({
     }, () => { setMode("speaking"); setCaption(line); });
   }
   function wholeFeedbackAfter() {
-    playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
+    playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
   }
-  function sentenceFeedback(g: Grade, _curIdx: number, curAttempt: number) {
+  function sentenceFeedback(g: Grade, curIdx: number, curAttempt: number) {
+    // Read the RIGHT words → correct read, full stop (tolerate articulation).
+    const clean = (g.heardTranscript || "").trim().length > 0 && norm(g.heardTranscript || "") === norm(sentences[curIdx] || "");
     const tricky = g.wordAnnotations
       .filter((w) => w.status === "missed" || w.status === "substituted")
       .map((w) => w.word.replace(/[^A-Za-z'-]/g, "")).filter(Boolean);
-    const hasError = g.wordsCorrect < g.wordsTotal || tricky.length > 0 || !!g.disfluent;
+    const hasError = !clean && (g.wordsCorrect < g.wordsTotal || tricky.length > 0 || !!g.disfluent);
     const willRetry = hasError && curAttempt === 0;
     if (!willRetry) tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
     setLastHeard(hasError && g.heardTranscript ? g.heardTranscript : null);
     if (!hasError) {
       setLastHeard(null);
-      playCachedQueued(`praise-${1 + rand(PRAISE_COUNT)}`, () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
+      playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
     } else if (willRetry) {
       const wds = tricky.slice(0, 3);
       if (wds.length >= 1) {
@@ -634,7 +676,8 @@ export default function LunaReader({
           : `Let's sound out "${wds[0]}" — say each sound slowly, then read the whole line again.`;
         speakQueued(coaching, () => proceed(true), () => { setMode("speaking"); setCaption(coaching); });
       } else {
-        playCachedQueued(`smooth-${1 + rand(SMOOTH_COUNT)}`, () => { setMode("speaking"); setCaption(smoothCap()); }, () => proceed(true));
+        // Fluency wobble (words right, choppy) → "read the whole sentence again".
+        playCachedQueued(`reread-${1 + rand(REREAD_COUNT)}`, () => { setMode("speaking"); setCaption(smoothCap()); }, () => proceed(true));
       }
     } else {
       playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
@@ -826,7 +869,7 @@ export default function LunaReader({
 
   const busy = mode === "thinking" || mode === "speaking";
   const showPassage = phase !== "intro" && !preparing;
-  const micLabel = mode === "listening" ? "Tap when you're done"
+  const micLabel = mode === "listening" ? "Listening… (tap if done)"
     : phase === "drill" ? "Tap to read this line" : "Tap to read the story";
 
   return (
