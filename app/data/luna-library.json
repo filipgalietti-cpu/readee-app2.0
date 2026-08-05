@@ -1,5 +1,659 @@
 [
   {
+    "id": "g1-blends-1",
+    "grade": "1st",
+    "patternId": "g1-blends",
+    "patternLabel": "Consonant blends (st, bl, tr, nd)",
+    "ccss": "RF.1.3b",
+    "theme": "animals",
+    "title": "Frog and Bird Fun",
+    "text": "A blue bird saw a small frog. The frog sat on a green plant. \"Let's jump!\" the bird said. The frog took a big hop. He did not stop. The bird flew fast past a tree. They played in the soft grass. It was a fun time for them both.",
+    "targetWords": [
+      "stop",
+      "blue",
+      "tree",
+      "jump",
+      "fast"
+    ]
+  },
+  {
+    "id": "g1-blends-2",
+    "grade": "1st",
+    "patternId": "g1-blends",
+    "patternLabel": "Consonant blends (st, bl, tr, nd)",
+    "ccss": "RF.1.3b",
+    "theme": "playing outside",
+    "title": "Fun Outside",
+    "text": "Max and Sam play outside. They run fast on the green grass. Sam jumps and skips. Max has a blue ball. He can throw it far. Sam stops the ball with his hand. Max grabs the ball back. They both smile. They like to play. It is a fun trip outside.",
+    "targetWords": [
+      "stop",
+      "blue",
+      "hand",
+      "jump",
+      "fast"
+    ]
+  },
+  {
+    "id": "g1-blends-3",
+    "grade": "1st",
+    "patternId": "g1-blends",
+    "patternLabel": "Consonant blends (st, bl, tr, nd)",
+    "ccss": "RF.1.3b",
+    "theme": "family",
+    "title": "Ben's Fun Trip",
+    "text": "Ben loves his grand family. He likes to play with his mom and dad. They often plan fun trips. Last week, they went to a big park. Ben saw a green frog jump in the pond. He held his dad's hand. His mom packed a soft snack. It was the best day!",
+    "targetWords": [
+      "hand",
+      "jump"
+    ]
+  },
+  {
+    "id": "g1-blends-4",
+    "grade": "1st",
+    "patternId": "g1-blends",
+    "patternLabel": "Consonant blends (st, bl, tr, nd)",
+    "ccss": "RF.1.3b",
+    "theme": "food and snacks",
+    "title": "Pat's Sweet Snack",
+    "text": "Pat felt his tummy growl. He had a plan for a treat. He went to the fridge. He saw fresh plums and green grapes. He grabbed a plate of fruit. He sat down fast. He ate a plum first. Then he ate a crisp grape. This sweet snack was the best! He was glad.",
+    "targetWords": [
+      "fast"
+    ]
+  },
+  {
+    "id": "g1-digraphs-1",
+    "grade": "1st",
+    "patternId": "g1-digraphs",
+    "patternLabel": "Consonant digraphs (sh, ch, th, wh)",
+    "ccss": "RF.1.3a",
+    "theme": "space and stars",
+    "title": "Pat's Wish for a Ship",
+    "text": "When the sun set, Pat went out. She had a wish. She wished for a fish to swim in space! That was a much fun wish. The white stars would shine. She felt the chill air. Then she saw a ship. It was a big ship. What a show!",
+    "targetWords": [
+      "ship",
+      "that",
+      "when",
+      "fish",
+      "much"
+    ]
+  },
+  {
+    "id": "g1-digraphs-2",
+    "grade": "1st",
+    "patternId": "g1-digraphs",
+    "patternLabel": "Consonant digraphs (sh, ch, th, wh)",
+    "ccss": "RF.1.3a",
+    "theme": "animals",
+    "title": "The Fish's Shiny Wish",
+    "text": "When a fish swam, it saw a shiny shell. What a wish! That fish wished it could touch that shell. Then a whale came. 'What is that?' the whale asked. 'It is a shell!' the fish cheered. 'I wish I could touch it.' The whale helped. The fish got its wish.",
+    "targetWords": [
+      "that",
+      "when",
+      "fish"
+    ]
+  },
+  {
+    "id": "g1-digraphs-3",
+    "grade": "1st",
+    "patternId": "g1-digraphs",
+    "patternLabel": "Consonant digraphs (sh, ch, th, wh)",
+    "ccss": "RF.1.3a",
+    "theme": "playing outside",
+    "title": "Pam and Chad Play Outside",
+    "text": "Pam went with Chad. They saw the path. Which way should they choose? Chad wished to chase a chick. Pam did not think that was a good plan. She shook her head. Then Pam said, 'Let's push the big ship!' They had much fun.",
+    "targetWords": [
+      "ship",
+      "that",
+      "much"
+    ]
+  },
+  {
+    "id": "g1-digraphs-4",
+    "grade": "1st",
+    "patternId": "g1-digraphs",
+    "patternLabel": "Consonant digraphs (sh, ch, th, wh)",
+    "ccss": "RF.1.3a",
+    "theme": "family",
+    "title": "Chad Helps Mom",
+    "text": "Chad and his mom had fun. Chad went to wash a dish. He used a brush. Then he put the dish on the shelf. Mom said, \"That is much help!\" Chad put his chin up. He did wish for a fish. What fun they had! They went to the shop. They saw a toy ship. Chad did push the ship.",
+    "targetWords": [
+      "ship",
+      "chin",
+      "that",
+      "fish",
+      "much",
+      "shop"
+    ]
+  },
+  {
+    "id": "g1-magic-e-1",
+    "grade": "1st",
+    "patternId": "g1-magic-e",
+    "patternLabel": "Long vowel silent e (CVCe)",
+    "ccss": "RF.1.3c",
+    "theme": "playing outside",
+    "title": "Kate and Her Kite",
+    "text": "Kate likes to play outside. She has a bike. Kate can ride her bike fast. She went to Pete's home. They will make a big kite. They hope the kite will fly high. It will be a fun game.",
+    "targetWords": [
+      "bike",
+      "home",
+      "ride"
+    ]
+  },
+  {
+    "id": "g1-magic-e-2",
+    "grade": "1st",
+    "patternId": "g1-magic-e",
+    "patternLabel": "Long vowel silent e (CVCe)",
+    "ccss": "RF.1.3c",
+    "theme": "family",
+    "title": "Fun at Home",
+    "text": "Kate is at home. She likes to bake. She will make a big cake. Mike will help her. Mike has a cute bike. He likes to ride it. After the cake, they will ride bikes. It is a fun game to play.",
+    "targetWords": [
+      "cake",
+      "bike",
+      "home",
+      "cute",
+      "ride"
+    ]
+  },
+  {
+    "id": "g1-magic-e-3",
+    "grade": "1st",
+    "patternId": "g1-magic-e",
+    "patternLabel": "Long vowel silent e (CVCe)",
+    "ccss": "RF.1.3c",
+    "theme": "food and snacks",
+    "title": "Kate's Cake",
+    "text": "Kate made a big cake. She did not bake it. Mom made the cake. Kate will take a slice. It has a nice taste. She ate it fast. Kate likes to eat cake at home. She gave a big smile. What a fine snack!",
+    "targetWords": [
+      "cake",
+      "home"
+    ]
+  },
+  {
+    "id": "g1-magic-e-4",
+    "grade": "1st",
+    "patternId": "g1-magic-e",
+    "patternLabel": "Long vowel silent e (CVCe)",
+    "ccss": "RF.1.3c",
+    "theme": "at school",
+    "title": "Mike's School Day",
+    "text": "Mike came to school. He had a nice bike. He did not ride it inside. Mike sat at his desk. He made a shape. It was a cute cone. He hoped to play a game outside. The sun made the day feel fine. Soon, it was time to go home.",
+    "targetWords": [
+      "bike",
+      "home",
+      "cute",
+      "ride"
+    ]
+  },
+  {
+    "id": "g1-vowel-teams-1",
+    "grade": "1st",
+    "patternId": "g1-vowel-teams",
+    "patternLabel": "Vowel teams (ai, ea, oa, ee)",
+    "ccss": "RF.1.3c",
+    "theme": "family",
+    "title": "A Fun Family Trip",
+    "text": "Dad and I like to meet. We like to see a new place. We take a trip on a green road. Dad likes to lead. I eat a treat in my car seat. It is great. We see a big boat on the deep blue lake. We wait for the rain to stop. Then we walk on our feet. What a team!",
+    "targetWords": [
+      "rain",
+      "seat",
+      "boat",
+      "feet",
+      "team",
+      "road"
+    ]
+  },
+  {
+    "id": "g1-vowel-teams-2",
+    "grade": "1st",
+    "patternId": "g1-vowel-teams",
+    "patternLabel": "Vowel teams (ai, ea, oa, ee)",
+    "ccss": "RF.1.3c",
+    "theme": "food and snacks",
+    "title": "A Great Treat",
+    "text": "We will eat a great meal. Mom can make plain toast. She will add jam. We eat green beans. They are sweet. Dad likes to eat a peach. We like cream cheese too. It is a sweet treat for us. We drink hot tea. What a great meal we have!",
+    "targetWords": [
+      "rain",
+      "seat",
+      "boat",
+      "feet"
+    ]
+  },
+  {
+    "id": "g1-vowel-teams-3",
+    "grade": "1st",
+    "patternId": "g1-vowel-teams",
+    "patternLabel": "Vowel teams (ai, ea, oa, ee)",
+    "ccss": "RF.1.3c",
+    "theme": "at school",
+    "title": "Mia and Lee at School",
+    "text": "Mia can see a green tree. She will wait for her friend, Lee. They like to meet at school. Lee has a great treat. Mia will read a book in her seat. They make a good team. The road to school is clean. They can feel the warm sun.",
+    "targetWords": [
+      "seat",
+      "team",
+      "road"
+    ]
+  },
+  {
+    "id": "g1-vowel-teams-4",
+    "grade": "1st",
+    "patternId": "g1-vowel-teams",
+    "patternLabel": "Vowel teams (ai, ea, oa, ee)",
+    "ccss": "RF.1.3c",
+    "theme": "a rainy day",
+    "title": "A Rainy Day Fun",
+    "text": "It was a rainy day. Mia saw the rain fall. She felt cold. She put on her coat. Her mom said, \"Let's make a boat.\" Mia had a great idea. They would paint the boat green. She ate a snack at her seat. Mia had a good dream that night. Her feet were warm. She did not want to leave.",
+    "targetWords": [
+      "rain",
+      "seat",
+      "boat",
+      "feet"
+    ]
+  },
+  {
+    "id": "g2-diphthongs-1",
+    "grade": "2nd",
+    "patternId": "g2-diphthongs",
+    "patternLabel": "Diphthongs (ou, ow, oi, oy)",
+    "ccss": "RF.2.3b",
+    "theme": "at school",
+    "title": "The Shiny Coin",
+    "text": "A boy named Roy ran out to the playground. The sun was out. Roy heard a loud sound. He looked down. Wow! He found a brown coin on the ground. It was shiny. Roy ran to show his friend, Lou. \"Look at this,\" Roy said. Lou smiled. \"A coin! What will we do now?\" Roy thought. \"We can buy a toy!\" Lou cried. They felt much joy.",
+    "targetWords": [
+      "out",
+      "coin",
+      "boy",
+      "loud"
+    ]
+  },
+  {
+    "id": "g2-diphthongs-2",
+    "grade": "2nd",
+    "patternId": "g2-diphthongs",
+    "patternLabel": "Diphthongs (ou, ow, oi, oy)",
+    "ccss": "RF.2.3b",
+    "theme": "a rainy day",
+    "title": "A Rainy Day Inside",
+    "text": "It was a cloudy day. Rain poured down. Roy looked out the window. \"Oh, no!\" he said aloud. \"I wanted to play outside.\" His mom said, \"Don't frown, boy. We can still have fun now. Go find your toy.\" Roy ran to his room. He found his toy truck and a brown mouse. He made loud engine sounds. What a joyful noise! The boy did not feel annoyed. He would enjoy his day inside.",
+    "targetWords": [
+      "out",
+      "boy",
+      "cloud",
+      "loud"
+    ]
+  },
+  {
+    "id": "g2-diphthongs-3",
+    "grade": "2nd",
+    "patternId": "g2-diphthongs",
+    "patternLabel": "Diphthongs (ou, ow, oi, oy)",
+    "ccss": "RF.2.3b",
+    "theme": "the beach",
+    "title": "A Boy at the Beach",
+    "text": "A boy went to the beach. He looked out at the blue ocean. The sun shone down. He saw a big white cloud. The boy played in the sand. He dug a hole. He found a small, round coin. What a joyful sound! He did not shout, but he showed his find. \"Look now!\" he said. He felt proud of his coin. He laid his towel down and began to play again. He would enjoy his day.",
+    "targetWords": [
+      "out",
+      "coin",
+      "boy",
+      "cloud",
+      "loud"
+    ]
+  },
+  {
+    "id": "g2-diphthongs-4",
+    "grade": "2nd",
+    "patternId": "g2-diphthongs",
+    "patternLabel": "Diphthongs (ou, ow, oi, oy)",
+    "ccss": "RF.2.3b",
+    "theme": "space and stars",
+    "title": "Roy Looks Up",
+    "text": "Roy was a boy. He liked to look out his window at night. The sky was dark brown. He saw many stars. They would glow and show their light. He could point out a big cloud. He heard no sound. He felt joy to be outside. He did not know how many stars were up there. He thought it was a proud sight. He would shout, \"Wow!\"",
+    "targetWords": [
+      "out",
+      "boy",
+      "cloud",
+      "loud"
+    ]
+  },
+  {
+    "id": "g2-r-controlled-1",
+    "grade": "2nd",
+    "patternId": "g2-r-controlled",
+    "patternLabel": "R-controlled vowels (ar, or, er, ir, ur)",
+    "ccss": "RF.2.3b",
+    "theme": "food and snacks",
+    "title": "Carla's Snack Search",
+    "text": "Carla was hungry for a morning snack. Her stomach started to grumble. She looked in the kitchen first. She saw a big fork near a jar of corn. Corn was good for her, but she wanted something more. She checked her pantry. There were many jars of jam and some cereal. Not quite right for her after all. Her brother, Mark, came in the room. \"Are you looking for a certain treat?\" he asked. Carla nodded. \"I am!\" Mark found a purple plum and a cracker for her. \"Perfect!\" Carla chirped. She was very happy for her snack.",
+    "targetWords": [
+      "car",
+      "fork",
+      "her",
+      "star",
+      "corn"
+    ]
+  },
+  {
+    "id": "g2-r-controlled-2",
+    "grade": "2nd",
+    "patternId": "g2-r-controlled",
+    "patternLabel": "R-controlled vowels (ar, or, er, ir, ur)",
+    "ccss": "RF.2.3b",
+    "theme": "at school",
+    "title": "Carla's Art Class",
+    "text": "Carla was in art class. Her teacher said, \"Today, we will draw a furry bird.\" Carla felt a little worried. She wanted her bird to be perfect. She took a purple marker. First, she drew a big, round body. Then, she gave it short wings. Her teacher walked over. \"That is a clever bird, Carla!\" she remarked. Carla put a tiny star in the bird's eye. She was proud of her art.",
+    "targetWords": [
+      "car",
+      "her",
+      "bird",
+      "star"
+    ]
+  },
+  {
+    "id": "g2-r-controlled-3",
+    "grade": "2nd",
+    "patternId": "g2-r-controlled",
+    "patternLabel": "R-controlled vowels (ar, or, er, ir, ur)",
+    "ccss": "RF.2.3b",
+    "theme": "a rainy day",
+    "title": "A Rainy Day Fun",
+    "text": "It was a dark, stormy morning. Bert saw the rain fall hard. He could not run to the park and play. Bert felt a little stir of worry. His mother gave him a warm shirt. \"Do not be sad, Bert,\" she told her boy. \"We can play inside. Let's start with a fort.\" Bert had a clever plan. He got a big box. He started to turn it into a race car. His mother put on some fun music. Soon, Bert felt much better. He did not miss the outdoor world. They had a great time after all.",
+    "targetWords": [
+      "car",
+      "her",
+      "turn",
+      "star"
+    ]
+  },
+  {
+    "id": "g2-r-controlled-4",
+    "grade": "2nd",
+    "patternId": "g2-r-controlled",
+    "patternLabel": "R-controlled vowels (ar, or, er, ir, ur)",
+    "ccss": "RF.2.3b",
+    "theme": "the beach",
+    "title": "A Fun Trip to the Shore",
+    "text": "Mark and his sister, Fern, went to the shore. The warm sun was bright. Mark saw a big bird. It flew over the water. Fern had a purple shirt on. She started to dig in the soft dirt. She found a perfect, round shell. It was a charm. They played for a short time. What a fun summer trip for them!",
+    "targetWords": [
+      "bird",
+      "star"
+    ]
+  },
+  {
+    "id": "g2-suffixes-1",
+    "grade": "2nd",
+    "patternId": "g2-suffixes",
+    "patternLabel": "Inflectional endings (-s, -ed, -ing)",
+    "ccss": "RF.2.3d",
+    "theme": "a rainy day",
+    "title": "A Fun Rainy Day",
+    "text": "Ben looked outside. It was raining. Big drops started falling fast. He wished he could play with his friends. Ben wanted to run and jump in the park. But the rain kept coming down.\nHis mom asked, \"What are you doing?\"\nBen smiled. \"I am looking at the rain.\"\nMom said, \"Let's find fun inside!\" They started playing a game. Ben was laughing and hopping. He liked picking up the game pieces. Playing inside was still lots of fun. The rain kept raining, but Ben kept smiling.",
+    "targetWords": [
+      "jumps",
+      "played",
+      "running",
+      "wishes"
+    ]
+  },
+  {
+    "id": "g2-suffixes-2",
+    "grade": "2nd",
+    "patternId": "g2-suffixes",
+    "patternLabel": "Inflectional endings (-s, -ed, -ing)",
+    "ccss": "RF.2.3d",
+    "theme": "the beach",
+    "title": "Max's Beach Day",
+    "text": "Max loved going to the beach. He was wishing for a sunny day. The sun was shining brightly. Max started running to the water. He jumped in the cool waves, splashing and playing. He looked for shells, finding many pretty ones. He started building a big sandcastle. His sister joined him, helping with the walls. They played games, kicking a ball and laughing. Max always wanted to stay longer. He loved his beach days.",
+    "targetWords": [
+      "played",
+      "running"
+    ]
+  },
+  {
+    "id": "g2-suffixes-3",
+    "grade": "2nd",
+    "patternId": "g2-suffixes",
+    "patternLabel": "Inflectional endings (-s, -ed, -ing)",
+    "ccss": "RF.2.3d",
+    "theme": "space and stars",
+    "title": "Leo Looks at Stars",
+    "text": "Leo liked looking at the night sky. He saw many bright stars shining. He was wishing he could fly up high. Leo imagined himself floating among the planets. He started dreaming of rockets zooming past. He pictured himself hopping from moon to moon. The little lights twinkled and sparkled. Leo smiled, feeling happy. He loved watching the stars. They were always waiting for him.",
+    "targetWords": [
+      "jumps",
+      "played",
+      "running",
+      "wishes"
+    ]
+  },
+  {
+    "id": "g2-suffixes-4",
+    "grade": "2nd",
+    "patternId": "g2-suffixes",
+    "patternLabel": "Inflectional endings (-s, -ed, -ing)",
+    "ccss": "RF.2.3d",
+    "theme": "animals",
+    "title": "A Fun Day for Pets",
+    "text": "A small cat was sitting. She watched a dog. The dog was running fast. He liked playing with a red ball. He kept chasing it. The dog barked, wagging his tail. A little bird was singing. It hopped from a tree branch. The cat wished she could play too. She jumped down and walked to the dog. They started playing together. It was a fun day.",
+    "targetWords": [
+      "running",
+      "hopped",
+      "singing",
+      "walked"
+    ]
+  },
+  {
+    "id": "g3-affixes-1",
+    "grade": "3rd",
+    "patternId": "g3-affixes",
+    "patternLabel": "Prefixes & suffixes",
+    "ccss": "RF.3.3a",
+    "theme": "the beach",
+    "title": "A Day at the Beach",
+    "text": "Lily was so happy to go to the beach. She packed her towel carefully and quickly put on her swimsuit. Her brother, Ben, was feeling unhappy because he could not find his favorite shovel. Lily tried to help him. She looked under the bed and inside his toy box. Suddenly, she saw it! \"Here it is!\" she shouted joyfully. Ben was thankful for her kindness.\n\nThey arrived at the beach. The sun was shining brightly. Lily started to build a sandcastle. Ben wanted to redo his part because it looked a little crooked. He worked patiently. A playful little crab scuttled quickly past their feet. They watched it safely disappear into a rock. What a wonderful day! They promised to return next weekend.",
+    "targetWords": [
+      "unhappy",
+      "redo",
+      "careful",
+      "kindness",
+      "quickly"
+    ]
+  },
+  {
+    "id": "g3-affixes-2",
+    "grade": "3rd",
+    "patternId": "g3-affixes",
+    "patternLabel": "Prefixes & suffixes",
+    "ccss": "RF.3.3a",
+    "theme": "space and stars",
+    "title": "Lily and the Night Stars",
+    "text": "Lily was feeling unhappy. Her puzzle pieces were all mixed up. She wished she could redo her afternoon. She went outside and looked up. The sky was dark, but many stars shone brightly. She saw countless stars, some big and some small. She felt a peaceful feeling quickly fill her. Her mom came out, carefully carrying a blanket. \"Look how wonderful the night is,\" her mom said softly. Lily felt a sudden joy. She felt truly happy. The stars made her feel much better. She knew she could bravely try her puzzle again tomorrow. It was a helpful thought.",
+    "targetWords": [
+      "unhappy",
+      "redo",
+      "careful",
+      "quickly",
+      "helpful"
+    ]
+  },
+  {
+    "id": "g3-affixes-3",
+    "grade": "3rd",
+    "patternId": "g3-affixes",
+    "patternLabel": "Prefixes & suffixes",
+    "ccss": "RF.3.3a",
+    "theme": "animals",
+    "title": "A Helpful Friend",
+    "text": "Pip the squirrel felt unhappy. He had a big nut, but it rolled away. He looked carefully under a bush. No nut! He felt a little sadness. He thought, \"I must redo my search.\"\n\nThen, a small bird flew quickly near him. \"What is wrong?\" chirped the bird. Pip explained his trouble. \"Do not be hopeless,\" said the bird with kindness. \"I will help you!\"\n\nThe bird flew swiftly up to a tall tree. From above, it could see everything. \"Look down by the big rock!\" called the bird. Pip ran over and, sure enough, there was his nut. He felt much joyfulness. \"Thank you for your helpfulness!\" he chattered. Pip was very grateful for his friend's thoughtful help.",
+    "targetWords": [
+      "unhappy",
+      "redo",
+      "careful",
+      "kindness",
+      "quickly",
+      "helpful"
+    ]
+  },
+  {
+    "id": "g3-affixes-4",
+    "grade": "3rd",
+    "patternId": "g3-affixes",
+    "patternLabel": "Prefixes & suffixes",
+    "ccss": "RF.3.3a",
+    "theme": "playing outside",
+    "title": "Leo and the Ball",
+    "text": "Leo was feeling a little unhappy. He wanted to play outside, but he could not quickly find his red ball. He looked carefully under the porch. He looked behind the big, green bush. Suddenly, he saw a small, fluffy kitten. It was playing with his ball!\n\nLeo smiled. He knew he could not be angry. He moved slowly and gently. The kitten looked up, then quickly ran away. Leo picked up his ball. He thought about his kindness to the little cat. It felt good. He decided to replay his game of catch. He threw the ball and ran to get it. What a wonderful day to be outside! He felt joyful.",
+    "targetWords": [
+      "unhappy",
+      "careful",
+      "kindness",
+      "quickly",
+      "replay"
+    ]
+  },
+  {
+    "id": "g3-syllables-1",
+    "grade": "3rd",
+    "patternId": "g3-syllables",
+    "patternLabel": "Multisyllabic words",
+    "ccss": "RF.3.3c",
+    "theme": "space and stars",
+    "title": "A Starry Night",
+    "text": "Lily sat on her front steps. The sun had set, and the sky was dark. She looked up. Many tiny stars were shining. Lily wished she had a special rocket to visit a distant planet. She wanted to explore the amazing universe.\n\nHer brother, Ben, came out with a basket. \"Mom sent muffins!\" he said. Lily took a warm muffin. It smelled so good. Ben pointed up. \"Look! Is that a Comet, or just a bright star?\"\n\nThey sat together, eating their muffins and watching the sky. Each star looked like a little diamond. Lily imagined different planets. Some might have green trees. Some might have tiny rabbits. It was wonderful to think about. The night sky was a beautiful, endless garden of light.",
+    "targetWords": [
+      "basket",
+      "rabbit",
+      "garden",
+      "muffin"
+    ]
+  },
+  {
+    "id": "g3-syllables-2",
+    "grade": "3rd",
+    "patternId": "g3-syllables",
+    "patternLabel": "Multisyllabic words",
+    "ccss": "RF.3.3c",
+    "theme": "animals",
+    "title": "Robbie the Rabbit's Garden Snack",
+    "text": "Robbie the rabbit lived near a big garden. Every summer, he watched the vegetables grow. One day, Robbie felt very hungry. He saw a basket full of carrots and juicy berries. A family was having a picnic. They had a big blanket spread out. There were even tasty muffins! Robbie wanted a carrot. He knew it was a problem to take food without asking. He was a good rabbit. Robbie sat down and waited. Soon, a little girl noticed him. She smiled and put a small carrot on a napkin near him. Robbie was so happy! He quickly ate the sweet carrot. The sunset made the sky look orange as Robbie hopped back to his cozy burrow, a full and content rabbit. He would remember this kind family.",
+    "targetWords": [
+      "basket",
+      "rabbit",
+      "garden",
+      "napkin",
+      "sunset",
+      "muffin",
+      "picnic"
+    ]
+  },
+  {
+    "id": "g3-syllables-3",
+    "grade": "3rd",
+    "patternId": "g3-syllables",
+    "patternLabel": "Multisyllabic words",
+    "ccss": "RF.3.3c",
+    "theme": "playing outside",
+    "title": "A Fun Day Outside",
+    "text": "Lily felt happy. It was a sunny day. She wanted to play outside. First, she made a plan. She would have a picnic! Lily packed a big basket. Inside, she put a yummy muffin. She also put a small napkin. Her mother said, \"Have a fantastic time, Lily!\"\n\nLily went to the backyard garden. The flowers were pretty. Suddenly, a little brown rabbit hopped past. It was so fluffy! Lily sat on the grass. She spread her napkin. She took out her muffin. It smelled so sweet. She ate it slowly, enjoying the summer breeze. She watched the sun start to set, painting the sky with colors. This was a perfect day. She decided to remember this special moment forever.",
+    "targetWords": [
+      "basket",
+      "rabbit",
+      "garden",
+      "napkin",
+      "muffin",
+      "picnic"
+    ]
+  },
+  {
+    "id": "g3-syllables-4",
+    "grade": "3rd",
+    "patternId": "g3-syllables",
+    "patternLabel": "Multisyllabic words",
+    "ccss": "RF.3.3c",
+    "theme": "family",
+    "title": "A Sunny Family Picnic",
+    "text": "The family loved to gather together on sunny afternoons. Dad would pack a big picnic basket. Mom would make delicious muffins and put them in a pretty napkin-lined container. Little Lily liked to pick fresh berries from the garden. Her brother, Ben, helped pack a colorful blanket.\n\nOne afternoon, they went to a spot near a small pond. A tiny rabbit hopped by, its nose twitching. Lily giggled. Ben began to discover different kinds of flowers. As the sun began to set, the sky turned a brilliant orange. They ate their dinner, enjoying every moment. It was a perfect family day, full of happy memories.",
+    "targetWords": [
+      "basket",
+      "rabbit",
+      "garden",
+      "napkin",
+      "muffin",
+      "picnic"
+    ]
+  },
+  {
+    "id": "g4-morphology-1",
+    "grade": "4th",
+    "patternId": "g4-morphology",
+    "patternLabel": "Latin roots & morphology",
+    "ccss": "RF.4.3a",
+    "theme": "animals",
+    "title": "The Forest's Grand Construction",
+    "text": "Barnaby Beaver had a big project. He planned the construction of a new dam. It was a complex operation, but Barnaby was a smart engineer. He made a prediction that the dam would be finished before the winter snows. He needed to transport many logs across the river. Barnaby sent instructions to the other beavers. They would collect wood from the far bank. He would inspect each log for quality and correct dimensions. Their collective efforts would ensure its success. Even with an invisible current pulling at the smaller sticks, they worked with great concentration. Barnaby observed the reaction of the dam to the water's force. He made a correction to one section. The prevention of leaks was his main concern. This construction would offer protection to their homes during floods. It was a grand achievement for all the forest animals to observe.",
+    "targetWords": [
+      "transport",
+      "inspect",
+      "predict",
+      "reaction",
+      "invisible",
+      "construction"
+    ]
+  },
+  {
+    "id": "g4-morphology-2",
+    "grade": "4th",
+    "patternId": "g4-morphology",
+    "patternLabel": "Latin roots & morphology",
+    "ccss": "RF.4.3a",
+    "theme": "playing outside",
+    "title": "The Backyard Fort Construction",
+    "text": "Leo and Maya began their afternoon construction project. They wanted to construct a strong fort in the backyard. First, they needed to transport many branches and old blankets from the shed. This was a big job, but they worked together. Maya had a portable wagon, which made the transportation of materials much easier. They knew the fort's construction would be hard work.\n\nOnce they had a good pile, Leo started to inspect the branches. He carefully inspected each one for strength. \"We need the thickest ones for the base,\" he declared. Maya agreed. She made a prediction that if they used thin branches, the fort would not stand. They didn't want a predictable collapse! They worked carefully, forming the frame. Maya thought about the reaction of the fort if it rained; would it hold up?\n\nSuddenly, a tiny bird flew past, almost invisible against the green leaves. It landed on a branch they planned to use. Leo had a quick reaction. \"Wait!\" he whispered. \"Let it stay.\" They watched the bird for a moment. This unexpected interruption was not a problem. Their constructive play continued, and the fort was taking shape. They felt good about their construction skills.",
+    "targetWords": [
+      "transport",
+      "inspect",
+      "predict",
+      "reaction",
+      "invisible",
+      "construction"
+    ]
+  },
+  {
+    "id": "g4-morphology-3",
+    "grade": "4th",
+    "patternId": "g4-morphology",
+    "patternLabel": "Latin roots & morphology",
+    "ccss": "RF.4.3a",
+    "theme": "family",
+    "title": "Building Our Best Fort",
+    "text": "Our family decided to start a fun outdoor project. Dad said we would construct a small fort in the yard. My sister, Lily, and I were excited for the construction to begin. First, we had to transport all the wood and tools from the garage. It was a big job! Dad gave us clear instructions on how to assemble each section. He told us to inspect every piece carefully before attaching it.\n\nLily tried to predict how tall the fort would be when it was complete. I thought it would be taller. During the process, a piece of wood suddenly slipped. My quick reaction saved it from falling into the mud! Dad said I was incredibly capable. We worked hard to prepare the roof. It was amazing to see the structure slowly become visible. We knew it would be a perfect place to explore. Soon, our new fort was complete, a true family accomplishment.",
+    "targetWords": [
+      "transport",
+      "inspect",
+      "predict",
+      "reaction",
+      "construction"
+    ]
+  },
+  {
+    "id": "g4-morphology-4",
+    "grade": "4th",
+    "patternId": "g4-morphology",
+    "patternLabel": "Latin roots & morphology",
+    "ccss": "RF.4.3a",
+    "theme": "food and snacks",
+    "title": "Leo's Snack Project",
+    "text": "Leo loved to construct new snacks. His current project was a super cookie. He had to inspect every ingredient carefully, almost like a food inspector on a mission. He wondered if his taste buds would have a good reaction to his new blend of flavors. Leo made a prediction that it would be delicious, but he knew real results were better than just a guess. He started the construction of his cookie tower. First, he mixed flour and sugar. He needed to transport the bowl across the counter without spilling. Then he added a special, almost invisible, ingredient: a tiny pinch of cinnamon. He hoped its subtle flavor would transport the cookie to a new level of yummy enjoyment. After baking, Leo took a bite. His initial reaction was pure joy! His prediction was correct. This was the best cookie he had ever tasted. He felt a strong connection to his creation. He decided to prepare more, anticipating a great reaction from his friends. He imagined the transportation of these treats to a school picnic. He knew this new invention would be popular. He couldn't wait for his friends to inspect his work. It was a successful construction!",
+    "targetWords": [
+      "transport",
+      "inspect",
+      "predict",
+      "reaction",
+      "invisible",
+      "construction"
+    ]
+  },
+  {
     "id": "k-cvc-a-1",
     "grade": "K",
     "patternId": "k-cvc-a",
@@ -13,6 +667,54 @@
       "hat",
       "bag",
       "ran"
+    ]
+  },
+  {
+    "id": "k-cvc-a-2",
+    "grade": "K",
+    "patternId": "k-cvc-a",
+    "patternLabel": "Short a (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "food and snacks",
+    "title": "A Cat and a Jam",
+    "text": "A fat cat sat. It had a red hat. The cat ran fast. It had jam in a can. A man had a mat. He can nap. The cat can nap.",
+    "targetWords": [
+      "cat",
+      "hat",
+      "ran",
+      "nap"
+    ]
+  },
+  {
+    "id": "k-cvc-a-3",
+    "grade": "K",
+    "patternId": "k-cvc-a",
+    "patternLabel": "Short a (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "at school",
+    "title": "Dan and His Map",
+    "text": "Dan had a map. He ran fast. Dan had a red hat. His bag was big. Dan sat on a mat. He felt happy.",
+    "targetWords": [
+      "map",
+      "hat",
+      "bag",
+      "ran"
+    ]
+  },
+  {
+    "id": "k-cvc-a-4",
+    "grade": "K",
+    "patternId": "k-cvc-a",
+    "patternLabel": "Short a (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "a rainy day",
+    "title": "A Wet Day",
+    "text": "A cat sat. It was a sad day. Rain ran down. The cat had a nap. Mom had a plan. They made a jam tart. The cat was glad.",
+    "targetWords": [
+      "cat",
+      "sad",
+      "ran",
+      "nap"
     ]
   },
   {
@@ -32,6 +734,56 @@
     ]
   },
   {
+    "id": "k-cvc-e-2",
+    "grade": "K",
+    "patternId": "k-cvc-e",
+    "patternLabel": "Short e (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "space and stars",
+    "title": "Ted Sees Stars",
+    "text": "Ted saw ten red stars. He went to his bed. He can get a net. He did not get a star.",
+    "targetWords": [
+      "bed",
+      "red",
+      "ten",
+      "net"
+    ]
+  },
+  {
+    "id": "k-cvc-e-3",
+    "grade": "K",
+    "patternId": "k-cvc-e",
+    "patternLabel": "Short e (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "animals",
+    "title": "A Hen and Her Bed",
+    "text": "A hen had a bed. It was a red bed. The hen sat on the bed. It got wet! The wet hen ran. She went to get a net. A pup met the hen.",
+    "targetWords": [
+      "bed",
+      "hen",
+      "wet",
+      "red",
+      "net"
+    ]
+  },
+  {
+    "id": "k-cvc-e-4",
+    "grade": "K",
+    "patternId": "k-cvc-e",
+    "patternLabel": "Short e (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "playing outside",
+    "title": "Jen and Her Pet Hen",
+    "text": "Jen ran. She had her pet hen. The hen went to the pen. Jen saw a red net. She got it. She did not get wet. Jen ran back.",
+    "targetWords": [
+      "hen",
+      "wet",
+      "red",
+      "net",
+      "pet"
+    ]
+  },
+  {
     "id": "k-cvc-i-1",
     "grade": "K",
     "patternId": "k-cvc-i",
@@ -43,6 +795,52 @@
     "targetWords": [
       "sit",
       "win"
+    ]
+  },
+  {
+    "id": "k-cvc-i-2",
+    "grade": "K",
+    "patternId": "k-cvc-i",
+    "patternLabel": "Short i (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "at school",
+    "title": "Kim's Fun Kit",
+    "text": "Kim can sit. She has a big kit. Kim can zip it. She can fit a pin. Kim will win. This is fun.",
+    "targetWords": [
+      "sit",
+      "win"
+    ]
+  },
+  {
+    "id": "k-cvc-i-3",
+    "grade": "K",
+    "patternId": "k-cvc-i",
+    "patternLabel": "Short i (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "a rainy day",
+    "title": "Tim's Big Day In",
+    "text": "It is a big, wet day. Tim can sit in. His pig can not dig. Tim will win a fun game. He can dip a chip. Tim is a kid. He did not hit his lip.",
+    "targetWords": [
+      "sit",
+      "pig",
+      "win",
+      "dig",
+      "hit",
+      "lip"
+    ]
+  },
+  {
+    "id": "k-cvc-i-4",
+    "grade": "K",
+    "patternId": "k-cvc-i",
+    "patternLabel": "Short i (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "the beach",
+    "title": "Tim at the Beach",
+    "text": "Tim can dig. He digs in the sand. He sees a big fish. The fish has a fin. Tim can swim a bit. He will sit and dip his toes. It is fun.",
+    "targetWords": [
+      "sit",
+      "dig"
     ]
   },
   {
@@ -62,6 +860,54 @@
     ]
   },
   {
+    "id": "k-cvc-o-2",
+    "grade": "K",
+    "patternId": "k-cvc-o",
+    "patternLabel": "Short o (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "a rainy day",
+    "title": "Tom and His Dog",
+    "text": "Tom saw a big drop. It was a lot of rain. His dog, Dot, sat by him. Tom got a toy. It was a red top. Dot ran to the toy. They had fun.",
+    "targetWords": [
+      "dog",
+      "top"
+    ]
+  },
+  {
+    "id": "k-cvc-o-3",
+    "grade": "K",
+    "patternId": "k-cvc-o",
+    "patternLabel": "Short o (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "the beach",
+    "title": "Dot at the Hot Beach",
+    "text": "Dot went to the hot beach. She saw a log. A big dog ran past. It had a red box. Dot sat on the log. She saw a top. The sun was hot.",
+    "targetWords": [
+      "dog",
+      "hot",
+      "top",
+      "box",
+      "log"
+    ]
+  },
+  {
+    "id": "k-cvc-o-4",
+    "grade": "K",
+    "patternId": "k-cvc-o",
+    "patternLabel": "Short o (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "space and stars",
+    "title": "A Hot Sun and Dots",
+    "text": "See a hot sun. It is on top. See many dots. Dots like to pop. A tot got on a log. The log did not go. He had a box. He saw a mop.",
+    "targetWords": [
+      "hot",
+      "mop",
+      "top",
+      "box",
+      "log"
+    ]
+  },
+  {
     "id": "k-cvc-u-1",
     "grade": "K",
     "patternId": "k-cvc-u",
@@ -75,6 +921,55 @@
       "bug",
       "cup",
       "run",
+      "mud",
+      "hug"
+    ]
+  },
+  {
+    "id": "k-cvc-u-2",
+    "grade": "K",
+    "patternId": "k-cvc-u",
+    "patternLabel": "Short u (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "the beach",
+    "title": "Fun in the Sun",
+    "text": "A cub saw the sun. He dug in the mud. A bug ran on his rug. He put it in a cup. Then he gave a hug.",
+    "targetWords": [
+      "sun",
+      "bug",
+      "cup",
+      "mud",
+      "hug"
+    ]
+  },
+  {
+    "id": "k-cvc-u-3",
+    "grade": "K",
+    "patternId": "k-cvc-u",
+    "patternLabel": "Short u (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "space and stars",
+    "title": "A Bug and the Sun",
+    "text": "See the big sun up. It is up, up, up! A fun bug can run. It can run, run, run. The bug can not hug the sun. It is too hot.",
+    "targetWords": [
+      "sun",
+      "bug",
+      "run",
+      "hug"
+    ]
+  },
+  {
+    "id": "k-cvc-u-4",
+    "grade": "K",
+    "patternId": "k-cvc-u",
+    "patternLabel": "Short u (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "animals",
+    "title": "Fun in the Sun",
+    "text": "A bug sat in the sun. A pup ran up. The pup dug in the mud. He had fun. The bug went up. The pup gave a hug.",
+    "targetWords": [
+      "sun",
+      "bug",
       "mud",
       "hug"
     ]
