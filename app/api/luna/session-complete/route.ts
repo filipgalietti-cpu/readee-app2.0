@@ -51,6 +51,7 @@ export async function POST(req: Request) {
     words_correct: Number(b.wordsCorrect) || 0,
     duration_seconds: b.durationSeconds != null ? Number(b.durationSeconds) : null,
     wcpm: b.wcpm != null ? Number(b.wcpm) : null,
+    prosody_score: b.prosody != null ? Math.round(Number(b.prosody)) : null,
     encouragement: "Guided reading session with Luna.",
     teacher_summary: "Sentence-by-sentence guided session (Luna).",
     target_patterns: Array.isArray(b.targetPatterns) ? b.targetPatterns.slice(0, 5) : [],

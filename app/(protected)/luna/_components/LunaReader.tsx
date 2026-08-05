@@ -709,6 +709,7 @@ export default function LunaReader({
         wordsTotal: g?.wordsTotal ?? 0, wordsCorrect: g?.wordsCorrect ?? 0,
         durationSeconds: g?.durationSeconds ?? 0,
         wcpm: after?.wcpm ?? 0,
+        prosody: g?.prosody ?? null,
         targetPatterns: Array.from(statsRef.current.trickyWords),
       }),
     }).catch(() => {});

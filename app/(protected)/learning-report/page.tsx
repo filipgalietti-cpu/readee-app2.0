@@ -3,6 +3,7 @@ import { requireProfile } from "@/lib/auth/helpers";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 import { createClient } from "@/lib/supabase/server";
 import { getLearnerModel } from "@/lib/adaptive/learner-model";
+import { getLunaReport } from "@/lib/luna/report";
 import LearningReport from "./_components/LearningReport";
 
 export const dynamic = "force-dynamic";
@@ -40,9 +41,12 @@ export default async function LearningReportPage({
     redirect("/dashboard");
   }
 
-  const model = await getLearnerModel(supabase, child.id);
+  const [model, luna] = await Promise.all([
+    getLearnerModel(supabase, child.id),
+    getLunaReport(supabase, child.id),
+  ]);
 
   return (
-    <LearningReport name={child.name} childId={child.id} model={model} />
+    <LearningReport name={child.name} childId={child.id} model={model} luna={luna} />
   );
 }

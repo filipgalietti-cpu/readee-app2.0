@@ -120,9 +120,15 @@ export default async function TodayDetailPage({
             </h1>
 
             {d.image_url && (
-              <div className="mt-5 flex max-h-[420px] overflow-hidden rounded-3xl border border-zinc-200 shadow-sm">
+              <div className="mt-5 flex justify-center">
+                {/* Square (1024²) illustrations — contain, not cover, so the
+                    picture is never cropped. Border hugs the image itself. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={d.image_url} alt="" className="w-full object-cover" />
+                <img
+                  src={d.image_url}
+                  alt=""
+                  className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm"
+                />
               </div>
             )}
 

@@ -10,12 +10,35 @@ import {
   Mic,
   Puzzle,
   TrendingUp,
+  Waves,
+  CheckCircle2,
 } from "lucide-react";
 import {
   SKILL_AXES,
   AXIS_LABEL,
   type LearnerModel,
 } from "@/lib/adaptive/learner-model";
+import { type LunaReport } from "@/lib/luna/report";
+
+/* ─── Tiny WCPM-over-time sparkline ────────────────── */
+function Sparkline({ data }: { data: number[] }) {
+  if (data.length < 2) return null;
+  const w = 132, h = 36, pad = 4;
+  const min = Math.min(...data), max = Math.max(...data), range = max - min || 1;
+  const xy = (v: number, i: number) => {
+    const x = pad + (i / (data.length - 1)) * (w - 2 * pad);
+    const y = h - pad - ((v - min) / range) * (h - 2 * pad);
+    return [x, y] as const;
+  };
+  const pts = data.map((v, i) => xy(v, i).join(",")).join(" ");
+  const [lx, ly] = xy(data[data.length - 1], data.length - 1);
+  return (
+    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} aria-hidden>
+      <polyline points={pts} fill="none" stroke="#8b5cf6" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx={lx} cy={ly} r={3} fill="#7c3aed" />
+    </svg>
+  );
+}
 
 /* ─── Color a mastery bar by level ────────────────── */
 function barColors(pct: number): { bar: string; text: string } {
@@ -68,12 +91,15 @@ export default function LearningReport({
   name,
   childId,
   model,
+  luna,
 }: {
   name: string;
   childId: string;
   model: LearnerModel;
+  luna: LunaReport;
 }) {
-  const { dimensions, weakStandards, strengths, weakPatterns, fluency } = model;
+  const { dimensions, weakStandards, strengths, weakPatterns } = model;
+  const hasLuna = luna.sessions > 0;
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-6">
@@ -147,41 +173,54 @@ export default function LearningReport({
           </div>
         </Card>
 
-        {/* ── Reading fluency ── */}
+        {/* ── Reading growth (Luna) ── */}
         <Card>
-          <SectionTitle icon={Mic}>Reading fluency</SectionTitle>
-          {fluency && (fluency.wcpm != null || fluency.accuracy != null) ? (
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
-                <div
-                  className="text-3xl font-extrabold text-violet-700 dark:text-violet-300"
-                  style={HEADING_FONT}
-                >
-                  {fluency.wcpm != null ? Math.round(fluency.wcpm) : "—"}
+          <SectionTitle icon={Mic}>Reading growth</SectionTitle>
+          {hasLuna ? (
+            <>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
+                  <div className="text-3xl font-extrabold text-violet-700 dark:text-violet-300" style={HEADING_FONT}>
+                    {luna.latestWcpm ?? "—"}
+                  </div>
+                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400">Words / min</div>
+                  {luna.gainWcpm != null && luna.gainWcpm > 0 && (
+                    <div className="mt-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">+{luna.gainWcpm} since start</div>
+                  )}
                 </div>
-                <div className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400">
-                  Words per minute
+                <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
+                  <div className="text-3xl font-extrabold text-violet-700 dark:text-violet-300" style={HEADING_FONT}>
+                    {luna.accuracy != null ? `${luna.accuracy}%` : "—"}
+                  </div>
+                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400">Accuracy</div>
+                </div>
+                <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
+                  <div className="text-3xl font-extrabold text-violet-700 dark:text-violet-300" style={HEADING_FONT}>
+                    {luna.expression != null ? `${luna.expression}%` : "—"}
+                  </div>
+                  <div className="mt-0.5 flex items-center justify-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400"><Waves className="h-3 w-3" />Expression</div>
+                </div>
+                <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
+                  <div className="text-3xl font-extrabold text-violet-700 dark:text-violet-300" style={HEADING_FONT}>
+                    {luna.thisWeek}
+                  </div>
+                  <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400">Reads this week</div>
                 </div>
               </div>
-              <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
-                <div
-                  className="text-3xl font-extrabold text-violet-700 dark:text-violet-300"
-                  style={HEADING_FONT}
-                >
-                  {fluency.accuracy != null
-                    ? `${Math.round(fluency.accuracy * 100)}%`
-                    : "—"}
+              {luna.wcpmSeries.length >= 2 && (
+                <div className="mt-4 flex items-center justify-between gap-3 rounded-2xl border border-violet-100 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-900">
+                  <div>
+                    <div className="text-xs font-semibold text-zinc-500 dark:text-slate-400">Reading speed over {luna.sessions} sessions</div>
+                    <div className="text-sm font-bold text-zinc-800 dark:text-slate-100">{luna.firstWcpm} → {luna.latestWcpm} WCPM</div>
+                  </div>
+                  <Sparkline data={luna.wcpmSeries} />
                 </div>
-                <div className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400">
-                  Reading accuracy
-                </div>
-              </div>
-            </div>
+              )}
+            </>
           ) : (
             <div className="rounded-2xl bg-violet-50 p-5 text-center dark:bg-indigo-950/40">
               <p className="text-sm font-medium text-zinc-600 dark:text-slate-300">
-                Read a passage out loud with Luna to measure {name}&apos;s
-                reading speed.
+                Read a passage out loud with Luna to start measuring {name}&apos;s reading speed, accuracy, and expression.
               </p>
               <Link
                 href={`/luna?child=${childId}`}
@@ -193,6 +232,37 @@ export default function LearningReport({
             </div>
           )}
         </Card>
+
+        {/* ── Sound progress (Luna adaptive engine) ── */}
+        {(luna.mastered.length > 0 || luna.workingOn.length > 0) && (
+          <Card>
+            <SectionTitle icon={Puzzle}>Sound progress</SectionTitle>
+            {luna.mastered.length > 0 && (
+              <div className="mb-3">
+                <div className="mb-2 text-xs font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Mastered</div>
+                <div className="flex flex-wrap gap-2">
+                  {luna.mastered.map((p) => (
+                    <span key={p.id} className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">
+                      <CheckCircle2 className="h-3.5 w-3.5" />{p.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            {luna.workingOn.length > 0 && (
+              <div>
+                <div className="mb-2 text-xs font-bold uppercase tracking-wide text-amber-600 dark:text-amber-400">Working on</div>
+                <div className="flex flex-wrap gap-2">
+                  {luna.workingOn.map((p) => (
+                    <span key={p.id} className="rounded-full bg-amber-50 px-3 py-1.5 text-sm font-semibold text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
+                      {p.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </Card>
+        )}
 
         {/* ── Working on + Strengths ── */}
         <div className="grid gap-5 sm:grid-cols-2">
