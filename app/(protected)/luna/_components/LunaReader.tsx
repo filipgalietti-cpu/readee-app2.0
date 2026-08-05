@@ -20,7 +20,7 @@ import { Shuffle, Trophy, RotateCcw, Play, Volume2 } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 
-type Passage = { grade: string; title: string; text: string };
+type Passage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[] };
 type Annotation = { word: string; status: string; heard?: string };
 type Grade = {
   wordAnnotations: Annotation[];
@@ -704,6 +704,7 @@ export default function LunaReader({
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         childId, passageText: passage.text, gradeLevel: passage.grade,
+        patternId: passage.patternId ?? null,
         wordAnnotations: g?.wordAnnotations ?? [],
         wordsTotal: g?.wordsTotal ?? 0, wordsCorrect: g?.wordsCorrect ?? 0,
         durationSeconds: g?.durationSeconds ?? 0,
@@ -718,8 +719,12 @@ export default function LunaReader({
   // generation — that's what makes Luna feel snappy like Duolingo.
   async function loadFreshPassage(): Promise<Passage> {
     const pool = passages.length ? passages : [passage];
+    // `passages` arrives weakest-pattern-first (adaptive order from the server).
+    // Prefer another passage in the weakest pattern; avoid an immediate repeat.
+    const targetPattern = pool[0]?.patternId;
+    const inPattern = pool.filter((p) => p.patternId && p.patternId === targetPattern && p.text !== passage.text);
     const others = pool.filter((p) => p.text !== passage.text);
-    const from = others.length ? others : pool;
+    const from = inPattern.length ? inPattern : others.length ? others : pool;
     return from[Math.floor(Math.random() * from.length)] ?? passage;
   }
 

@@ -56,5 +56,39 @@ export async function POST(req: Request) {
     target_patterns: Array.isArray(b.targetPatterns) ? b.targetPatterns.slice(0, 5) : [],
   });
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  // Adaptive spine: update SM-2 mastery for the phonics pattern this passage
+  // targeted, so next session serves the child's weakest/most-due pattern.
+  const patternId = b?.patternId ? String(b.patternId).slice(0, 80) : null;
+  if (patternId) {
+    try {
+      const total = Number(b.wordsTotal) || 0;
+      const correct = Number(b.wordsCorrect) || 0;
+      const accuracy = total > 0 ? (correct / total) * 100 : 0;
+      const pass = accuracy >= 85; // read the pattern's words accurately enough
+      const { data: existing } = await admin
+        .from("child_skill_memory")
+        .select("ease_factor, interval_days, consecutive_correct, total_correct, total_attempted")
+        .eq("child_id", childId).eq("standard_id", patternId).maybeSingle();
+      const e = (existing ?? {}) as { ease_factor?: number; interval_days?: number; consecutive_correct?: number; total_correct?: number; total_attempted?: number };
+      const ease = e.ease_factor ?? 2.5;
+      const interval = e.interval_days ?? 1;
+      const newEase = pass ? Math.min(2.8, ease + 0.05) : Math.max(1.3, ease - 0.2);
+      const newInterval = pass ? Math.min(60, interval * ease) : 1;
+      const now = new Date();
+      await admin.from("child_skill_memory").upsert({
+        child_id: childId,
+        standard_id: patternId,
+        ease_factor: newEase,
+        interval_days: newInterval,
+        consecutive_correct: pass ? (e.consecutive_correct ?? 0) + 1 : 0,
+        next_due: new Date(now.getTime() + newInterval * 86400000).toISOString(),
+        total_correct: (e.total_correct ?? 0) + (pass ? 1 : 0),
+        total_attempted: (e.total_attempted ?? 0) + 1,
+        last_practiced_at: now.toISOString(),
+        updated_at: now.toISOString(),
+      }, { onConflict: "child_id,standard_id" });
+    } catch { /* mastery update is best-effort; never fail the session save */ }
+  }
   return NextResponse.json({ ok: true });
 }
