@@ -1,5 +1,6 @@
 import ClientProviders from "./_components/ClientProviders";
 import PageTransition from "./_components/PageTransition";
+import RouteProgress from "./_components/RouteProgress";
 import JsonLd from "./_components/JsonLd";
 import ConditionalAnalytics from "./_components/ConditionalAnalytics";
 import type { Metadata, Viewport } from "next";
@@ -86,6 +87,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen flex flex-col font-sans">
 <ClientProviders>
+        <RouteProgress />
         <NavAuth />
 
         {/* Page content */}
