@@ -12,7 +12,7 @@
  */
 
 export type PAWord = { word: string; accuracy: number; errorType: string };
-export type PAPhrase = { words: PAWord[]; fluency: number; text: string };
+export type PAPhrase = { words: PAWord[]; fluency: number; prosody: number; text: string };
 
 export type StreamController = {
   /** Feed a raw Float32 mic frame at its native sample rate; resampled to 16k. */
@@ -49,6 +49,7 @@ export async function startPronAssessment(opts: {
     SDK.PronunciationAssessmentGranularity.Word,
     true, // enableMiscue — align to the reference (omissions/insertions)
   );
+  try { (paConfig as unknown as { enableProsodyAssessment: boolean }).enableProsodyAssessment = true; } catch { /* older SDK */ }
   paConfig.applyTo(recognizer);
 
   recognizer.recognizing = (_s, e) => {
@@ -66,7 +67,8 @@ export async function startPronAssessment(opts: {
         errorType: w.PronunciationAssessment?.ErrorType ?? "None",
       }));
       const fluency = Math.round((pa as unknown as { fluencyScore?: number }).fluencyScore ?? 100);
-      opts.onPhrase?.({ words, fluency, text: e.result.text || "" });
+      const prosody = Math.round((pa as unknown as { prosodyScore?: number }).prosodyScore ?? 100);
+      opts.onPhrase?.({ words, fluency, prosody, text: e.result.text || "" });
     } catch (err) { opts.onError?.(err instanceof Error ? err.message : "parse error"); }
   };
   recognizer.canceled = (_s, e) => {

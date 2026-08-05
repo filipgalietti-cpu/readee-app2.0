@@ -4,11 +4,15 @@ import { requireProfile } from "@/lib/auth/helpers";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 import { createClient } from "@/lib/supabase/server";
 import passagesJson from "@/app/data/fluency-passages.json";
+import libraryJson from "@/app/data/luna-library.json";
 import LunaReader from "./_components/LunaReader";
 
 export const dynamic = "force-dynamic";
 
 const PASSAGES = passagesJson as { grade: string; title: string; text: string }[];
+// Pre-built decodable library (pattern-tagged) — the predetermined content that
+// makes Luna instant. Runtime picks from this, never generates.
+const LIBRARY = libraryJson as { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[] }[];
 
 /** Map a child's stored grade ("Kindergarten"/"1st"...) to a passage token ("K"/"1st"...). */
 function gradeToken(g: string | null): string {
@@ -53,8 +57,11 @@ export default async function LunaPage({
   }
 
   const token = gradeToken(child.grade);
-  const passages = PASSAGES.filter((p) => p.grade === token);
-  const usable = passages.length ? passages : PASSAGES.filter((p) => p.grade === "1st");
+  // Library-first (pre-built, pattern-tagged, instant); fall back to the curated
+  // fluency passages if the library has none for this grade yet.
+  const lib = LIBRARY.filter((p) => p.grade === token).map((p) => ({ grade: p.grade, title: p.title, text: p.text }));
+  const curated = PASSAGES.filter((p) => p.grade === token);
+  const usable = lib.length ? lib : curated.length ? curated : PASSAGES.filter((p) => p.grade === "1st");
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-6">

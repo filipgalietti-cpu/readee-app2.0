@@ -82,6 +82,7 @@ export type LineGrade = {
   disfluent: boolean;
   heardTranscript: string;
   coach: string;
+  prosody?: number; // Azure expression score (0-100); undefined when unavailable
 };
 
 /** Catch obvious stutters from the verbatim transcript, independent of the

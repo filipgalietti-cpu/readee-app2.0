@@ -30,7 +30,7 @@ type AzureWord = {
 type AzureNBest = {
   Lexical?: string;
   Display?: string;
-  PronunciationAssessment?: { AccuracyScore?: number; FluencyScore?: number; CompletenessScore?: number; PronScore?: number };
+  PronunciationAssessment?: { AccuracyScore?: number; FluencyScore?: number; CompletenessScore?: number; PronScore?: number; ProsodyScore?: number };
   Words?: AzureWord[];
 };
 
@@ -57,6 +57,7 @@ export async function assessPronunciation(input: {
     Granularity: "Word",
     Dimension: "Comprehensive",
     EnableMiscue: true,
+    EnableProsodyAssessment: true, // → ProsodyScore (the "Expression" metric)
   };
   const paHeader = Buffer.from(JSON.stringify(paConfig), "utf-8").toString("base64");
   const url = `https://${region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=${encodeURIComponent(lang)}&format=detailed`;
@@ -127,6 +128,7 @@ export async function assessPronunciation(input: {
       disfluent: fluency < FLUENCY_DISFLUENT_BELOW,
       heardTranscript: j.DisplayText || nb.Display || nb.Lexical || "",
       coach: "",
+      prosody: typeof nb.PronunciationAssessment?.ProsodyScore === "number" ? Math.round(nb.PronunciationAssessment.ProsodyScore) : undefined,
     };
     return { ok: true, grade, debug };
   } catch (e: any) {

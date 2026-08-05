@@ -30,6 +30,7 @@ type Grade = {
   disfluent?: boolean;
   heardTranscript?: string;
   coach?: string;
+  prosody?: number;
 };
 type Phase = "intro" | "building" | "overall1" | "drill" | "overall2" | "done";
 type WordInfo = { words: string[]; sents: string[]; wSent: number[] };
@@ -125,6 +126,7 @@ export default function LunaReader({
   const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const [before, setBefore] = useState<OverallScore | null>(null);
   const [after, setAfter] = useState<OverallScore | null>(null);
+  const [expression, setExpression] = useState<number | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [preparing, setPreparing] = useState(false);
   const [lastHeard, setLastHeard] = useState<string | null>(null);
@@ -154,6 +156,7 @@ export default function LunaReader({
   const streamCursorRef = useRef(0);
   const streamRangeRef = useRef<{ from: number; to: number }>({ from: 0, to: 0 });
   const streamFluencyRef = useRef(100);
+  const streamProsodyRef = useRef(100);
   const streamTextRef = useRef("");
   const unlockedRef = useRef(false);
   const onBlobRef = useRef<(b: Blob, durSec: number) => void>(() => {});
@@ -483,8 +486,9 @@ export default function LunaReader({
   }
   // Each recognized phrase settles its words to green/orange (karaoke).
   function onStreamPhrase(p: PAPhrase) {
-    dbg(`phrase: ${p.words.length}w fluency=${p.fluency} "${(p.text || "").slice(0, 30)}"`);
+    dbg(`phrase: ${p.words.length}w fluency=${p.fluency} prosody=${p.prosody} "${(p.text || "").slice(0, 30)}"`);
     streamFluencyRef.current = Math.min(streamFluencyRef.current, p.fluency);
+    streamProsodyRef.current = Math.min(streamProsodyRef.current, p.prosody);
     streamTextRef.current = (streamTextRef.current + " " + (p.text || "")).trim();
     const { to } = streamRangeRef.current;
     let i = streamCursorRef.current;
@@ -513,14 +517,14 @@ export default function LunaReader({
       else { status = "correct"; correct++; }
       wordAnnotations.push({ word: words[i], status });
     }
-    return { wordAnnotations, wordsCorrect: correct, wordsTotal: total, durationSeconds: durSec, disfluent: streamFluencyRef.current < 50, heardTranscript: streamTextRef.current };
+    return { wordAnnotations, wordsCorrect: correct, wordsTotal: total, durationSeconds: durSec, disfluent: streamFluencyRef.current < 50, heardTranscript: streamTextRef.current, prosody: streamProsodyRef.current };
   }
   async function startStream(refText: string, from: number, to: number): Promise<boolean> {
     const tok = await getToken();
     if (!tok) return false;
     unlockAudio();
     stopProcessing(); stopAudio(); setErr(null);
-    streamWordsRef.current = []; streamCursorRef.current = from; streamRangeRef.current = { from, to }; streamFluencyRef.current = 100; streamTextRef.current = ""; audioFlowRef.current = false;
+    streamWordsRef.current = []; streamCursorRef.current = from; streamRangeRef.current = { from, to }; streamFluencyRef.current = 100; streamProsodyRef.current = 100; streamTextRef.current = ""; audioFlowRef.current = false;
     let ctrl: StreamController;
     try {
       dbg("sdk loading…");
@@ -572,7 +576,7 @@ export default function LunaReader({
   function finishFromGrade(g: Grade, durSec: number) {
     const ph = phaseRef.current;
     if (ph === "overall1") { addTricky(g.wordAnnotations); setBefore(toScore(g, durSec)); wholeFeedbackBefore(); }
-    else if (ph === "overall2") { addTricky(g.wordAnnotations); setAfter(toScore(g, durSec)); statsRef.current.afterGrade = g; wholeFeedbackAfter(); }
+    else if (ph === "overall2") { addTricky(g.wordAnnotations); setAfter(toScore(g, durSec)); if (g.prosody != null) setExpression(g.prosody); statsRef.current.afterGrade = g; wholeFeedbackAfter(); }
     else if (ph === "drill") { sentenceFeedback(g, idxRef.current, attemptRef.current); }
   }
 
@@ -644,7 +648,7 @@ export default function LunaReader({
       addTricky(g.wordAnnotations);
       const statusOf = statusMap(g.wordAnnotations, 0);
       if (which === "before") { setBefore(toScore(g, durSec)); scanReveal(0, words.length - 1, statusOf, wholeFeedbackBefore); }
-      else { setAfter(toScore(g, durSec)); statsRef.current.afterGrade = g; scanReveal(0, words.length - 1, statusOf, wholeFeedbackAfter); }
+      else { setAfter(toScore(g, durSec)); if (g.prosody != null) setExpression(g.prosody); statsRef.current.afterGrade = g; scanReveal(0, words.length - 1, statusOf, wholeFeedbackAfter); }
     } catch (e: unknown) {
       stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
@@ -709,21 +713,14 @@ export default function LunaReader({
     }).catch(() => {});
   }
 
-  // Fresh content each session: try to generate a brand-new grade-appropriate
-  // story; fall back to a random curated one (so we're never "stuck" on the
-  // same passage — and it's not always "I have a cat").
+  // Predetermined content = INSTANT: pick from the pre-built decodable library
+  // (passed in as `passages`), avoiding an immediate repeat. No runtime
+  // generation — that's what makes Luna feel snappy like Duolingo.
   async function loadFreshPassage(): Promise<Passage> {
-    const grade = passage.grade;
-    try {
-      const r = await fetch("/api/luna/passage", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ childId, gradeLevel: grade }),
-      });
-      const j = await r.json();
-      if (r.ok && j.ok && j.passage?.text) return j.passage as Passage;
-    } catch { /* fall through to curated */ }
-    const n = passages.length > 1 ? Math.floor(Math.random() * passages.length) : 0;
-    return passages[n] ?? passages[0];
+    const pool = passages.length ? passages : [passage];
+    const others = pool.filter((p) => p.text !== passage.text);
+    const from = others.length ? others : pool;
+    return from[Math.floor(Math.random() * from.length)] ?? passage;
   }
 
   // Reveal a story: words drift in blurry, then each sentence snaps into focus
@@ -734,7 +731,7 @@ export default function LunaReader({
     stopAudio();
     if (sparksHostRef.current) sparksHostRef.current.innerHTML = "";
     statsRef.current = { trickyWords: new Set(), afterGrade: null };
-    setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setErr(null); setLastHeard(null);
+    setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setExpression(null); setErr(null); setLastHeard(null);
     const info = computeWords(p.text);
     wordStateRef.current = info.words.map(() => "pending");
     setOverride(p);
@@ -897,6 +894,7 @@ export default function LunaReader({
                 <Stat label="First read" value={`${(before?.wcpm ?? 0).toFixed(0)} WCPM`} />
                 <Stat label="Final read" value={`${(after?.wcpm ?? 0).toFixed(0)} WCPM`} />
                 <Stat label="Accuracy" value={`${(after?.accuracy ?? 0).toFixed(0)}%`} />
+                {expression != null && <Stat label="Expression" value={`${expression}%`} />}
               </div>
             </div>
             {before && after && after.wcpm > before.wcpm && (

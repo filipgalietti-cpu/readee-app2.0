@@ -1,0 +1,82 @@
+[
+  {
+    "id": "k-cvc-a-1",
+    "grade": "K",
+    "patternId": "k-cvc-a",
+    "patternLabel": "Short a (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "family",
+    "title": "A Cat and Pam",
+    "text": "A fat cat sat on a mat. Dad had a hat. He ran fast. Pam had a bag. The cat ran to Pam. Pam had a ham.",
+    "targetWords": [
+      "cat",
+      "hat",
+      "bag",
+      "ran"
+    ]
+  },
+  {
+    "id": "k-cvc-e-1",
+    "grade": "K",
+    "patternId": "k-cvc-e",
+    "patternLabel": "Short e (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "the beach",
+    "title": "Ben at the Wet Beach",
+    "text": "Ben went to the beach. He saw wet sand. Ben had a red net. He saw ten fish. Can he get them? Yes, he can!",
+    "targetWords": [
+      "wet",
+      "red",
+      "ten",
+      "net"
+    ]
+  },
+  {
+    "id": "k-cvc-i-1",
+    "grade": "K",
+    "patternId": "k-cvc-i",
+    "patternLabel": "Short i (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "food and snacks",
+    "title": "Kim Sips Milk",
+    "text": "Kim has a bib. She can sit. Kim will sip milk. It is good. Kim is a kid. She can win!",
+    "targetWords": [
+      "sit",
+      "win"
+    ]
+  },
+  {
+    "id": "k-cvc-o-1",
+    "grade": "K",
+    "patternId": "k-cvc-o",
+    "patternLabel": "Short o (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "at school",
+    "title": "Pat and His Box",
+    "text": "At school, Pat got a box. It was not a hot box. Pat put a top on it. His pal, Bob, got a mop. Bob will hop and mop. What a fun job!",
+    "targetWords": [
+      "hot",
+      "mop",
+      "top",
+      "box"
+    ]
+  },
+  {
+    "id": "k-cvc-u-1",
+    "grade": "K",
+    "patternId": "k-cvc-u",
+    "patternLabel": "Short u (CVC)",
+    "ccss": "RF.K.3b",
+    "theme": "a rainy day",
+    "title": "A Wet Day",
+    "text": "It was a fun day. The sun did not come up. A little bug sat in the mud. Mom gave a hug. We had a cup. We did not run much. It was wet.",
+    "targetWords": [
+      "sun",
+      "bug",
+      "cup",
+      "run",
+      "mud",
+      "hug"
+    ]
+  }
+]
