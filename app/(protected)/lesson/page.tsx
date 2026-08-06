@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState, useCallback, useRef } from "react";
+import { Suspense, useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -534,6 +534,15 @@ function LessonContent() {
   const [showMiniConfetti, setShowMiniConfetti] = useState(false);
   const [practiceAnswers, setPracticeAnswers] = useState<Array<{ question_id: string; correct: boolean; selected: string; time_ms: number }>>([]);
   const questionStartRef = useRef(Date.now());
+  // Shuffle the "you try" choices once per question so the correct answer isn't
+  // biased to the first slot (correctness is by value, so order is safe).
+  const shuffledLessonChoices = useMemo(() => {
+    const chs = lesson?.practice?.questions?.[practiceIdx]?.choices ?? [];
+    const a = [...chs];
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [practiceIdx, lesson]);
 
   // Streak multiplier state
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
@@ -1121,7 +1130,7 @@ function LessonContent() {
               )}
 
               <div className="grid grid-cols-2 gap-2.5">
-                {q.choices.map((choice: string, i: number) => {
+                {shuffledLessonChoices.map((choice: string, i: number) => {
                   const isSelected = selectedChoice === choice;
                   const isCorrect = choice === q.correct;
                   const isWrong = wrongChoices.has(choice);
