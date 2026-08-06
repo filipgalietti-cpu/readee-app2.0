@@ -151,6 +151,8 @@ export default function LunaReader({
   const pcmRef = useRef<Float32Array[]>([]);
   const srcRateRef = useRef(48000);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const clipCacheRef = useRef<Map<string, HTMLAudioElement>>(new Map()); // preloaded clip elements (crisp playback)
+  const currentAudioRef = useRef<HTMLAudioElement | null>(null);         // whatever is playing now
   // Real-time streaming (Azure Speech SDK) state.
   const tokenRef = useRef<{ token: string; region: string; exp: number } | null>(null);
   const recognizerRef = useRef<StreamController | null>(null);
@@ -197,8 +199,10 @@ export default function LunaReader({
   useEffect(() => {
     audioRef.current = new Audio();
     audioRef.current.preload = "auto";
-    // Warm the browser cache for the pre-recorded clips so they play instantly.
-    PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(); a.preload = "auto"; a.src = `${CLIP_BASE}/${k}.mp3`; } catch { /* ignore */ } });
+    // Keep a fully-preloaded <audio> element per clip and PLAY THAT ELEMENT —
+    // swapping .src on one shared element stutters the first frames ("not crisp").
+    const cache = clipCacheRef.current;
+    PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(`${CLIP_BASE}/${k}.mp3`); a.preload = "auto"; a.load(); cache.set(k, a); } catch { /* ignore */ } });
     return () => { streamActiveRef.current = false; try { void recognizerRef.current?.stop(); } catch { /* ignore */ } cleanupMic(); stopProcessing(); clearSfxTimers(); stopAudio(); try { void sfxCtxRef.current?.close(); } catch { /* ignore */ } };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -211,6 +215,7 @@ export default function LunaReader({
     procRef.current = null; streamRef.current = null; ctxRef.current = null; setAnalyser(null);
   }
   function stopAudio() {
+    try { currentAudioRef.current?.pause(); } catch { /* ignore */ }
     try { if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; } } catch { /* ignore */ }
     try { window.speechSynthesis?.cancel(); } catch { /* ignore */ }
   }
@@ -222,12 +227,14 @@ export default function LunaReader({
   // Pre-recorded clips (praise, smooth, good-try) — instant, deterministic,
   // no TTS round-trip. This is the speed win + it fixes spoken/written mismatch.
   function playCached(key: string, onDone: () => void) {
-    const a = audioRef.current;
-    if (!a) { window.setTimeout(onDone, 500); return; }
+    let el = clipCacheRef.current.get(key);
+    if (!el) { try { el = new Audio(`${CLIP_BASE}/${key}.mp3`); clipCacheRef.current.set(key, el); } catch { window.setTimeout(onDone, 500); return; } }
     stopAudio();
-    a.src = `${CLIP_BASE}/${key}.mp3`;
-    a.onended = onDone;
-    a.play().catch(() => window.setTimeout(onDone, 700));
+    const clip = el;
+    try { clip.currentTime = 0; } catch { /* ignore */ }
+    clip.onended = onDone;
+    currentAudioRef.current = clip;
+    clip.play().catch(() => window.setTimeout(onDone, 700));
   }
 
   // --- Sound + celebration engine (synthesized, no assets) -----------------
@@ -404,7 +411,7 @@ export default function LunaReader({
       .then((j) => {
         stopProcessing(); onStart?.();
         const a = audioRef.current;
-        if (a && j?.ok && j.audioUrl) { stopAudio(); a.src = j.audioUrl; a.onended = onDone; a.play().catch(() => window.setTimeout(onDone, 1600)); }
+        if (a && j?.ok && j.audioUrl) { stopAudio(); a.src = j.audioUrl; a.onended = onDone; currentAudioRef.current = a; a.play().catch(() => window.setTimeout(onDone, 1600)); }
         else window.setTimeout(onDone, 1600);
       })
       .catch(() => { stopProcessing(); onStart?.(); window.setTimeout(onDone, 1200); });
