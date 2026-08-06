@@ -2703,7 +2703,7 @@
             "sub": "b",
             "audioFile": "audio/lessons/RL.K.6/S5b.mp3",
             "ttsScript": "Let's practice figuring out who wrote and who drew. You've totally got this!",
-            "displayText": "Let's find the authors!",
+            "displayText": "Let's find the authors and the illustrators!",
             "interaction": "'Let's Go!' button pulses.",
             "displayDelay": 3250,
             "audioRegenAt": "2026-07-23T00:44:15.725Z"
