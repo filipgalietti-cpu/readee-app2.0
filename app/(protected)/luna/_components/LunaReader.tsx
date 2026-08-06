@@ -55,12 +55,7 @@ const PRELOAD_CLIPS = [
   ...Array.from({ length: TRANSITION_COUNT }, (_, i) => `transition-final-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
-const ACC_TRICKY = 45; // word accuracy below this → "tricky" (lenient; transcript-match wins)
-
-// Normalize spoken/reference text for a "did they read the right words?" match.
-function norm(s: string): string {
-  return (s || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
-}
+const ACC_TRICKY = 50; // word accuracy below this → "tricky" (Azure ErrorType also flags misreads)
 
 function splitSentences(text: string): string[] {
   return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
@@ -542,25 +537,22 @@ export default function LunaReader({
     streamCursorRef.current = i;
   }
   function buildStreamGrade(from: number, to: number, durSec: number): Grade {
-    // If what Luna heard matches the reference words, it's a CORRECT read — even
-    // if a word's pronunciation score wobbled (we tolerate articulation). This
-    // kills false "I heard …" flags on a genuinely correct read.
-    const refText = words.slice(from, to + 1).join(" ");
-    const matched = streamTextRef.current.trim().length > 0 && norm(streamTextRef.current) === norm(refText);
+    // Per-word truth from Azure (colored live). We do NOT trust the transcript to
+    // clear errors — Azure's recognizer is reference-biased and transcribes a
+    // wrong word (e.g. "Jim") as the expected one ("Kim"), so a matched
+    // transcript is not proof of a correct read. The per-word score is.
     const seen = new Set(streamWordsRef.current.map((w) => w.refIdx));
     const wordAnnotations: Annotation[] = [];
     let correct = 0, total = 0;
     for (let i = from; i <= to; i++) {
       total++;
       let status: string;
-      if (matched) { status = "correct"; correct++; wordStateRef.current[i] = "correct"; }
-      else if (!seen.has(i)) { status = "missed"; wordStateRef.current[i] = "tricky"; }
+      if (!seen.has(i)) { status = "missed"; wordStateRef.current[i] = "tricky"; }
       else if (wordStateRef.current[i] === "tricky") status = "substituted";
       else { status = "correct"; correct++; }
       wordAnnotations.push({ word: words[i], status });
     }
-    if (matched) styleWords(); // recolor any live-orange word back to green
-    return { wordAnnotations, wordsCorrect: correct, wordsTotal: total, durationSeconds: durSec, disfluent: matched ? false : streamFluencyRef.current < 50, heardTranscript: streamTextRef.current, prosody: streamProsodyRef.current };
+    return { wordAnnotations, wordsCorrect: correct, wordsTotal: total, durationSeconds: durSec, disfluent: streamFluencyRef.current < 50, heardTranscript: streamTextRef.current, prosody: streamProsodyRef.current };
   }
   async function startStream(refText: string, from: number, to: number): Promise<boolean> {
     const tok = await getToken();
@@ -671,13 +663,14 @@ export default function LunaReader({
   function wholeFeedbackAfter() {
     playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
   }
-  function sentenceFeedback(g: Grade, curIdx: number, curAttempt: number) {
-    // Read the RIGHT words → correct read, full stop (tolerate articulation).
-    const clean = (g.heardTranscript || "").trim().length > 0 && norm(g.heardTranscript || "") === norm(sentences[curIdx] || "");
+  function sentenceFeedback(g: Grade, _curIdx: number, curAttempt: number) {
     const tricky = g.wordAnnotations
       .filter((w) => w.status === "missed" || w.status === "substituted")
       .map((w) => w.word.replace(/[^A-Za-z'-]/g, "")).filter(Boolean);
-    const hasError = !clean && (g.wordsCorrect < g.wordsTotal || tricky.length > 0 || !!g.disfluent);
+    // Error = they read the wrong WORDS. Fluency (slow/choppy) is tracked for the
+    // report but does NOT trigger a "you got it wrong" retry — that was flagging
+    // correct-but-slow reads.
+    const hasError = g.wordsCorrect < g.wordsTotal || tricky.length > 0;
     const willRetry = hasError && curAttempt === 0;
     if (!willRetry) tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
     setLastHeard(hasError && g.heardTranscript ? g.heardTranscript : null);
