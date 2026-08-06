@@ -45,11 +45,14 @@ const PRAISE_COUNT = 16;   // praise-1..16   (clean read)
 const SMOOTH_COUNT = 4;    // smooth-1..4    (fluency retry)
 const GOODTRY_COUNT = 4;   // goodtry-1..4   (2nd attempt)
 const REREAD_COUNT = 4;    // reread-1..4    ("read the whole sentence again")
+const TRANSITION_COUNT = 2; // transition-{drill,final}-1..2 (pre-recorded, no name = instant)
 const PRELOAD_CLIPS = [
   ...Array.from({ length: PRAISE_COUNT }, (_, i) => `praise-${i + 1}`),
   ...Array.from({ length: SMOOTH_COUNT }, (_, i) => `smooth-${i + 1}`),
   ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
   ...Array.from({ length: REREAD_COUNT }, (_, i) => `reread-${i + 1}`),
+  ...Array.from({ length: TRANSITION_COUNT }, (_, i) => `transition-drill-${i + 1}`),
+  ...Array.from({ length: TRANSITION_COUNT }, (_, i) => `transition-final-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
 const ACC_TRICKY = 45; // word accuracy below this → "tricky" (lenient; transcript-match wins)
@@ -503,7 +506,7 @@ export default function LunaReader({
     autoStopRef.current = window.setTimeout(() => {
       autoStopRef.current = null;
       if (streamActiveRef.current) { dbg("auto-stop: silence"); void stopStream(); }
-    }, covered ? 1500 : 3000);
+    }, covered ? 2000 : 3500);
   }
   // Live: highlight the words being spoken in the current phrase (from the
   // running cursor), so it tracks across phrases in a whole-passage read.
@@ -581,13 +584,23 @@ export default function LunaReader({
       dbg("recognition started");
     } catch (e) { dbg(`sdk init failed: ${e instanceof Error ? e.message : e}`); return false; }
     recognizerRef.current = ctrl;
-    const ok = await openMicGraph((frame, rate) => { if (streamActiveRef.current) { if (!audioFlowRef.current) { audioFlowRef.current = true; dbg(`audio flowing @${Math.round(rate)}Hz`); } ctrl.pushSamples(frame, rate); } });
+    const ok = await openMicGraph((frame, rate) => {
+      if (!streamActiveRef.current) return;
+      if (!audioFlowRef.current) {
+        // First real mic frame → NOW the mic is truly capturing. Only now show
+        // "listening" (so the child doesn't start reading before we capture) and
+        // start the WCPM clock. Fixes the clipped first word.
+        audioFlowRef.current = true;
+        dbg(`audio flowing @${Math.round(rate)}Hz`);
+        recStartRef.current = Date.now();
+        setMode("listening");
+      }
+      ctrl.pushSamples(frame, rate);
+    });
     if (!ok) { dbg("mic failed"); try { await ctrl.stop(); } catch { /* ignore */ } recognizerRef.current = null; return false; }
     animatingRef.current = true; // hold the styling effect off while we color live
     setEngine("azure");
     streamActiveRef.current = true;
-    recStartRef.current = Date.now();
-    setMode("listening");
     dbg("LIVE — reading");
     return true;
   }
@@ -602,7 +615,7 @@ export default function LunaReader({
       // Never let a stuck SDK stop callback hang the whole session.
       await Promise.race([ctrl.stop(), new Promise<void>((r) => window.setTimeout(r, 2000))]);
     }
-    await new Promise<void>((r) => window.setTimeout(r, 300)); // let final phrase land
+    await new Promise<void>((r) => window.setTimeout(r, 600)); // let the FINAL recognized (last word) land
     const { from, to } = streamRangeRef.current;
     if (debugRef.current) setDebugWords(streamWordsRef.current.map((w) => ({ word: words[w.refIdx] ?? "?", acc: w.acc, err: w.err })));
     const g = buildStreamGrade(from, to, durSec);
@@ -646,11 +659,14 @@ export default function LunaReader({
   }
   // Shared feedback — used after BOTH the streaming read and the REST scan.
   function wholeFeedbackBefore() {
-    const line = `Nice first read, ${name}! Now let's practice it, one line at a time.`;
-    speakQueued(line, () => {
-      wordStateRef.current = words.map(() => "pending");
-      setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Tap me and read the first line.");
-    }, () => { setMode("speaking"); setCaption(line); });
+    // Pre-recorded (no name) = instant; the personalized name via live TTS added
+    // real latency here.
+    playCachedQueued(`transition-drill-${1 + rand(TRANSITION_COUNT)}`,
+      () => { setMode("speaking"); setCaption("Nice first read! Now let's practice it, one line at a time."); },
+      () => {
+        wordStateRef.current = words.map(() => "pending");
+        setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Tap me and read the first line.");
+      });
   }
   function wholeFeedbackAfter() {
     playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
@@ -730,9 +746,9 @@ export default function LunaReader({
     setLastHeard(null);
     const next = idxRef.current + 1;
     if (next >= sentences.length) {
-      const line = `Great practicing, ${name}! Now read me the whole story one more time.`;
-      setMode("speaking"); setCaption(line);
-      speakQueued(line, () => { wordStateRef.current = words.map(() => "pending"); setPhase("overall2"); setMode("idle"); setCaption("Tap me and read the whole story."); });
+      playCachedQueued(`transition-final-${1 + rand(TRANSITION_COUNT)}`,
+        () => { setMode("speaking"); setCaption("Great practicing! Now read me the whole story one more time."); },
+        () => { wordStateRef.current = words.map(() => "pending"); setPhase("overall2"); setMode("idle"); setCaption("Tap me and read the whole story."); });
     } else {
       setIdx(next); setMode("idle"); setCaption("Nice! Tap me to read the next line.");
     }
@@ -828,7 +844,7 @@ export default function LunaReader({
     for (let i = from; i <= to; i++) wordStateRef.current[i] = "pending";
     styleWords();
     readModeRef.current = "starting"; pendingStopRef.current = false;
-    setMode("listening"); // optimistic; token+mic open next
+    setMode("thinking"); setCaption("Getting ready…"); // don't say "listening" until the mic truly captures
     const ok = await startStream(refText, from, to);
     if (ok) {
       readModeRef.current = "streaming";
