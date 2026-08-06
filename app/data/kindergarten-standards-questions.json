@@ -2,7 +2,7 @@
   "grade": "kindergarten",
   "standard_framework": "Common Core State Standards — English Language Arts",
   "total_standards": 38,
-  "total_questions": 337,
+  "total_questions": 336,
   "standards": [
     {
       "standard_id": "RL.K.1",
@@ -1493,39 +1493,6 @@
           "incorrect_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/428e50be-2eea-4278-9f37-e1162dec1bb1.wav",
           "reveal_feedback": "That one was tricky! An author writes the words. Miss Lee wrote them all! Now you know!",
           "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/68a82819-7970-46b1-9e31-4f4a99733281.wav",
-          "fb_regen": true
-        },
-        {
-          "id": "RL.K.6-Q5",
-          "type": "multiple_choice",
-          "prompt": "A book says: \"By Dr. Seuss\"\n\nDr. Seuss is the...",
-          "passage_audio_url": "/audio/kindergarten/RL.K.6-q5-passage.mp3",
-          "choices": [
-            "Illustrator",
-            "Author",
-            "Publisher",
-            "Main character"
-          ],
-          "choices_audio_urls": [
-            "/audio/kindergarten/RL.K.6-q5-choice1.mp3",
-            "/audio/kindergarten/RL.K.6-q5-choice2.mp3",
-            "/audio/kindergarten/RL.K.6-q5-choice3.mp3",
-            "/audio/kindergarten/RL.K.6-q5-choice4.mp3"
-          ],
-          "correct": "Author",
-          "hint": "'By' on a book cover usually means who wrote it!",
-          "difficulty": 2,
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q5.wav",
-          "hint_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.6/RL.K.6-Q5-hint.mp3",
-          "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.6/RL.K.6-Q5.png",
-          "adaptiveDifficulty": 24,
-          "audio_regen": true,
-          "correct_feedback": "Yes! Dr. Seuss is the author. The word By means who wrote it! Great thinking!",
-          "correct_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/293ed04b-df4e-416e-a531-c90dc311acb2.wav",
-          "incorrect_feedback": "Close one! The book says By Dr. Seuss. The word By tells you who wrote the words. What is that person? Look again!",
-          "incorrect_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/b3848389-0997-44ad-b6e1-466b78da1be5.wav",
-          "reveal_feedback": "That one was tricky! Dr. Seuss is the author. By means who wrote it! Now you know!",
-          "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/b3fc10bf-9e88-4360-8c56-0f811e99d3f7.wav",
           "fb_regen": true
         },
         {
