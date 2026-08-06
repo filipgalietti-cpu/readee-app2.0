@@ -1201,7 +1201,8 @@
           "reveal_feedback": "That one was tricky! It's a poem because the words rhyme. Small and tall! Now you know!",
           "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/1e8fc952-68ba-42b1-8ce1-743c5aa251f9.wav",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.5/RL.K.5-Q4.png",
-          "fb_regen": true
+          "fb_regen": true,
+          "no_wh_highlight": true
         },
         {
           "id": "RL.K.5-Q5",

@@ -124,7 +124,7 @@ const QUESTION_WORDS = new Set([
   "What","Who","Where","When","Why","How","Which",
 ]);
 
-function highlightQuestion(text: string): React.ReactNode[] {
+function highlightQuestion(text: string, noWh = false): React.ReactNode[] {
   // Tokenize on three highlight-eligible groups so we can style each
   // and never leak the raw markers (** or quotes) into the rendered DOM.
   const tokenizer = /(\*\*[^*]+\*\*|"[^"]+"|"[^"]+")/g;
@@ -152,7 +152,7 @@ function highlightQuestion(text: string): React.ReactNode[] {
         if (/^[A-Z]{3,}$/.test(clean)) {
           return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
         }
-      } else if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
+      } else if (!noWh && clean.length > 1 && QUESTION_WORDS.has(clean)) {
         return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
       }
       return part;
@@ -1009,9 +1009,10 @@ function PracticeSession({
         selectAnswer(choice, true, q.id, carrots, CORRECT_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
         if (fromRect) launchCarrots(fromRect); // carrot burst on a first-try win
       } else {
-        // Right on the 2nd try — no first-try credit, but a kind resolve.
+        // Right on the 2nd try — POSITIVE feedback (they DID get it right), just
+        // no first-try carrots. Only a 0/2 (both wrong) shows the sad reaction.
         setConsecutiveCorrect(0);
-        selectAnswer(choice, false, q.id, 0, SECOND_TRY_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
+        selectAnswer(choice, true, q.id, 0, SECOND_TRY_MESSAGES, CORRECT_EMOJIS, INCORRECT_MESSAGES);
       }
       playCorrectChime();
       return;
@@ -1474,7 +1475,7 @@ function PracticeSession({
                 <div className="flex-[1_1_320px] max-w-[520px] flex flex-col gap-3.5 justify-center">
                   <div className="flex items-center gap-3">
                     <Speaker size={46} />
-                    <h2 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(21px,2vw,26px)] leading-tight text-indigo-950">{highlightQuestion(question)}</h2>
+                    <h2 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(21px,2vw,26px)] leading-tight text-indigo-950">{highlightQuestion(question, (q as { no_wh_highlight?: boolean }).no_wh_highlight)}</h2>
                   </div>
                   {choicesGrid}
                   {nudgeEl}
@@ -1495,7 +1496,7 @@ function PracticeSession({
                 <div className="flex-[1_1_320px] max-w-[520px] flex flex-col gap-3.5 justify-center">
                   <div className="flex items-center gap-3">
                     <Speaker size={48} />
-                    <h2 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(21px,2.2vw,28px)] leading-tight text-indigo-950">{highlightQuestion(question)}</h2>
+                    <h2 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(21px,2.2vw,28px)] leading-tight text-indigo-950">{highlightQuestion(question, (q as { no_wh_highlight?: boolean }).no_wh_highlight)}</h2>
                   </div>
                   {choicesGrid}
                   {nudgeEl}
@@ -1508,7 +1509,7 @@ function PracticeSession({
               {q.chart_data && <QuestionChart chart={q.chart_data} />}
               <div className="flex items-center gap-3.5 max-w-[720px]">
                 <Speaker size={52} />
-                <h1 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(23px,2.6vw,31px)] leading-tight text-indigo-950 text-center">{highlightQuestion(question)}</h1>
+                <h1 className="font-[family-name:var(--font-baloo)] font-bold text-[clamp(23px,2.6vw,31px)] leading-tight text-indigo-950 text-center">{highlightQuestion(question, (q as { no_wh_highlight?: boolean }).no_wh_highlight)}</h1>
               </div>
               {choicesGrid}
               {nudgeEl}
