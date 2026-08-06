@@ -151,8 +151,10 @@ export default function LunaReader({
   const pcmRef = useRef<Float32Array[]>([]);
   const srcRateRef = useRef(48000);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const clipCacheRef = useRef<Map<string, HTMLAudioElement>>(new Map()); // preloaded clip elements (crisp playback)
-  const currentAudioRef = useRef<HTMLAudioElement | null>(null);         // whatever is playing now
+  const clipCacheRef = useRef<Map<string, HTMLAudioElement>>(new Map()); // HTMLAudio fallback
+  const currentAudioRef = useRef<HTMLAudioElement | null>(null);         // current HTMLAudio (TTS/fallback)
+  const clipBuffersRef = useRef<Map<string, AudioBuffer>>(new Map());    // decoded clips → crisp Web Audio playback
+  const currentSrcRef = useRef<AudioBufferSourceNode | null>(null);
   // Real-time streaming (Azure Speech SDK) state.
   const tokenRef = useRef<{ token: string; region: string; exp: number } | null>(null);
   const recognizerRef = useRef<StreamController | null>(null);
@@ -203,6 +205,13 @@ export default function LunaReader({
     // swapping .src on one shared element stutters the first frames ("not crisp").
     const cache = clipCacheRef.current;
     PRELOAD_CLIPS.forEach((k) => { try { const a = new Audio(`${CLIP_BASE}/${k}.mp3`); a.preload = "auto"; a.load(); cache.set(k, a); } catch { /* ignore */ } });
+    // Decode clips into Web Audio buffers for crisp, warmup-free playback.
+    try {
+      const ctx = sfxCtx();
+      if (ctx) PRELOAD_CLIPS.forEach((k) => {
+        fetch(`${CLIP_BASE}/${k}.mp3`).then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b)).then((buf) => { clipBuffersRef.current.set(k, buf); }).catch(() => { /* HTMLAudio fallback stays */ });
+      });
+    } catch { /* ignore */ }
     return () => { streamActiveRef.current = false; try { void recognizerRef.current?.stop(); } catch { /* ignore */ } cleanupMic(); stopProcessing(); clearSfxTimers(); stopAudio(); try { void sfxCtxRef.current?.close(); } catch { /* ignore */ } };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -214,27 +223,54 @@ export default function LunaReader({
     try { void ctxRef.current?.close(); } catch { /* ignore */ }
     procRef.current = null; streamRef.current = null; ctxRef.current = null; setAnalyser(null);
   }
+  function stopCurrentSrc() {
+    const s = currentSrcRef.current;
+    if (s) { try { s.onended = null; s.stop(); } catch { /* already stopped */ } currentSrcRef.current = null; }
+  }
   function stopAudio() {
+    stopCurrentSrc();
     try { currentAudioRef.current?.pause(); } catch { /* ignore */ }
     try { if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; } } catch { /* ignore */ }
     try { window.speechSynthesis?.cancel(); } catch { /* ignore */ }
   }
   function unlockAudio() {
+    try { sfxCtx(); } catch { /* ignore */ } // create + resume the Web Audio context on the gesture
     if (unlockedRef.current || !audioRef.current) return;
     unlockedRef.current = true;
     try { audioRef.current.src = SILENT; void audioRef.current.play().then(() => audioRef.current?.pause()).catch(() => {}); } catch { /* ignore */ }
   }
-  // Pre-recorded clips (praise, smooth, good-try) — instant, deterministic,
-  // no TTS round-trip. This is the speed win + it fixes spoken/written mismatch.
+  // Play a decoded clip through Web Audio (crisp, no element warmup); returns
+  // false if the buffer/context isn't ready so the caller can fall back.
+  function playBuffer(buffer: AudioBuffer, onDone: () => void): boolean {
+    const ctx = sfxCtx();
+    if (!ctx) return false;
+    stopCurrentSrc();
+    try {
+      const src = ctx.createBufferSource();
+      src.buffer = buffer;
+      src.connect(ctx.destination);
+      src.onended = () => { if (currentSrcRef.current === src) currentSrcRef.current = null; onDone(); };
+      currentSrcRef.current = src;
+      src.start();
+      return true;
+    } catch { return false; }
+  }
+  // Pre-recorded clips (praise/reread/transition/etc.) — prefer the decoded
+  // Web Audio buffer (crisp); fall back to a preloaded HTMLAudio element.
   function playCached(key: string, onDone: () => void) {
+    stopAudio();
+    const buffer = clipBuffersRef.current.get(key);
+    if (buffer && playBuffer(buffer, onDone)) return;
     let el = clipCacheRef.current.get(key);
     if (!el) { try { el = new Audio(`${CLIP_BASE}/${key}.mp3`); clipCacheRef.current.set(key, el); } catch { window.setTimeout(onDone, 500); return; } }
-    stopAudio();
     const clip = el;
     try { clip.currentTime = 0; } catch { /* ignore */ }
     clip.onended = onDone;
     currentAudioRef.current = clip;
     clip.play().catch(() => window.setTimeout(onDone, 700));
+    // Decode for next time so subsequent plays are crisp.
+    const ctx = sfxCtx();
+    if (ctx) fetch(`${CLIP_BASE}/${key}.mp3`).then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b)).then((buf) => clipBuffersRef.current.set(key, buf)).catch(() => {});
   }
 
   // --- Sound + celebration engine (synthesized, no assets) -----------------
