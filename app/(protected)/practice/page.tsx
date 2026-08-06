@@ -39,7 +39,8 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import LevelProgressCard from "@/app/_components/LevelProgressCard";
-import { didLevelUp } from "@/lib/levels/levels";
+import LevelUpBurst from "@/app/_components/LevelUpBurst";
+import { didLevelUp, computeLevel, levelUpBonus, READER_LEVELS } from "@/lib/levels/levels";
 import { bumpStreak } from "@/lib/streak/bump-streak";
 import type { LucideIcon } from "lucide-react";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
@@ -1670,6 +1671,7 @@ function CompletionScreen({
   const leveledUp =
     priorLifetime !== null && didLevelUp(priorLifetime, priorLifetime + carrotsEarned);
   const [levelUpDone, setLevelUpDone] = useState(false);
+  const [levelUpFull, setLevelUpFull] = useState(false); // fullscreen level-up before the journey
   // Safety net: if the burst's onDone ever misfires, release the praise anyway
   // (the full burst is ~6.5s) so it's never lost.
   useEffect(() => {
@@ -2024,6 +2026,7 @@ function CompletionScreen({
                 outfitId={child.equipped_items?.outfit ?? null}
                 href={`/levels?child=${child.id}`}
                 onLevelUpComplete={() => setLevelUpDone(true)}
+                burstFullscreen={fromLesson}
               />
             </motion.div>
           )}
@@ -2031,13 +2034,19 @@ function CompletionScreen({
           {/* Actions */}
           <motion.div variants={fadeUp} className="flex flex-col gap-2">
             {fromLesson && (
-              <Link
-                href={`/journey?child=${child.id}&completed=${standard.standard_id}`}
+              <button
+                type="button"
+                onClick={() => {
+                  const href = `/journey?child=${child.id}&completed=${standard.standard_id}`;
+                  // Level up? Play it FULL-SCREEN first, then go to the journey.
+                  if (leveledUp && !levelUpFull) { setLevelUpFull(true); return; }
+                  window.location.href = href;
+                }}
                 className="block w-full text-center py-3.5 rounded-2xl font-extrabold text-[15px] text-white transition-all active:scale-[0.97]"
                 style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 4px 0 0 #4f46e5" }}
               >
                 Back to your journey →
-              </Link>
+              </button>
             )}
             {(() => {
               const sessionMissRate = totalQ > 0 ? 1 - correctCount / totalQ : 0;
@@ -2086,6 +2095,28 @@ function CompletionScreen({
           )}
         </div>
       </motion.div>
+
+      {/* Full-screen level-up — plays AFTER the summary, BEFORE the journey. */}
+      {levelUpFull && priorLifetime !== null && (() => {
+        const post = computeLevel(priorLifetime + carrotsEarned);
+        const num = post.current.number;
+        return (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center bg-gradient-to-b from-indigo-600 to-violet-700">
+            <div className="w-full max-w-3xl px-4">
+              <div className="aspect-video w-full">
+                <LevelUpBurst
+                  oldName={READER_LEVELS[num - 2]?.name ?? "Reader"}
+                  newName={post.current.name}
+                  newLevel={num}
+                  bunnyOutfit={child.equipped_items?.outfit ?? null}
+                  carrotBonus={levelUpBonus(num)}
+                  onDone={() => { window.location.href = `/journey?child=${child.id}&completed=${standard.standard_id}`; }}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      })()}
     </div>
   );
 }

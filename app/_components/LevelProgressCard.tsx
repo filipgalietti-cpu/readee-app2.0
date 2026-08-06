@@ -37,6 +37,10 @@ export default function LevelProgressCard({
    *  caller sequence follow-on audio (e.g. the summary praise voice) so it
    *  doesn't talk over the level-up jingle. Not called when no level-up. */
   onLevelUpComplete,
+  /** When true, DON'T render the inline level-up burst — the caller plays it
+   *  full-screen instead (still grants the bonus + shows steady progress here).
+   *  Fires onLevelUpComplete immediately so caller audio sequencing isn't held. */
+  burstFullscreen = false,
 }: {
   priorLifetimeCarrots: number;
   sessionCarrots: number;
@@ -44,6 +48,7 @@ export default function LevelProgressCard({
   outfitId?: string | null;
   href?: string | null;
   onLevelUpComplete?: () => void;
+  burstFullscreen?: boolean;
 }) {
   const prior = Math.max(0, Math.floor(priorLifetimeCarrots || 0));
   const session = Math.max(0, Math.floor(sessionCarrots || 0));
@@ -82,8 +87,15 @@ export default function LevelProgressCard({
     })();
   }, [leveledUp, childId, totalBonus]);
 
+  // When the caller shows the burst full-screen (later, on navigation), release
+  // any audio hold now so the summary praise voice isn't held on the summary.
+  useEffect(() => {
+    if (leveledUp && burstFullscreen) onLevelUpComplete?.();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [leveledUp, burstFullscreen]);
+
   // ─── Level-up celebration ────────────────────────────────────
-  if (leveledUp) {
+  if (leveledUp && !burstFullscreen) {
     // Show one burst per level crossed, in order. `key` remounts the burst
     // per step so its timeline (and onDone) restarts cleanly.
     const idx = Math.min(stepIdx, levelsCrossed.length - 1);
