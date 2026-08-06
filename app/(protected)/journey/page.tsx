@@ -230,8 +230,27 @@ function JourneyContent() {
   // it is locked/premium. Marking every *started* lesson as its own unlocked
   // node was the "everything ahead is unlocked" bug — a kid who peeked into
   // several lessons lit them all up green.
+  // Order lessons the SAME way the journey DISPLAYS them (grade → domain, in
+  // first-appearance order) so the single "current" node follows what the child
+  // actually navigates. Previously statuses were assigned in raw catalog order,
+  // which interleaves strands (RL.K.1, RF.K.2a, RI.K.1, RL.K.2…) — so finishing
+  // the RL strand in order left "current" stuck on an earlier RF/RI lesson.
+  const orderedLessons: SampleLesson[] = (() => {
+    const byGrade = new Map<string, SampleLesson[]>();
+    const gOrder: string[] = [];
+    for (const l of allLessons) { if (!byGrade.has(l.grade)) { byGrade.set(l.grade, []); gOrder.push(l.grade); } byGrade.get(l.grade)!.push(l); }
+    const out: SampleLesson[] = [];
+    for (const g of gOrder) {
+      const byDom = new Map<string, SampleLesson[]>();
+      const dOrder: string[] = [];
+      for (const l of byGrade.get(g)!) { if (!byDom.has(l.domain)) { byDom.set(l.domain, []); dOrder.push(l.domain); } byDom.get(l.domain)!.push(l); }
+      for (const d of dOrder) out.push(...byDom.get(d)!);
+    }
+    return out;
+  })();
+
   let foundCurrent = false;
-  const lessonsWithStatus: LessonWithStatus[] = allLessons.map((lesson, idx) => {
+  const lessonsWithStatus: LessonWithStatus[] = orderedLessons.map((lesson, idx) => {
     // Track per-grade index
     const gradeIdx = gradeCounters.get(lesson.grade) ?? 0;
     gradeCounters.set(lesson.grade, gradeIdx + 1);
