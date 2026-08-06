@@ -779,6 +779,17 @@ function PracticeSession({
     return !!q.choices && q.choices.length > 0 && q.choices.every(c => /^\/[a-zA-Z]{1,3}\/$/.test(c));
   }, [q.choices]);
 
+  // Shuffle MCQ choices (with their per-choice audio) once per question so the
+  // correct answer isn't biased toward the first slot. Correctness is by value
+  // (choice === q.correct), so order is safe. Keyed on q.id → stable across
+  // re-renders within the same question.
+  const displayChoices = useMemo(() => {
+    const chs = q.choices ?? [];
+    const auds = q.choices_audio_urls ?? [];
+    return shuffleArray(chs.map((choice, i) => ({ choice, choiceAudio: auds[i] ?? null })));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [q.id]);
+
   /** Fired on the hype screen's "Let's go!" press — unlock audio inside the
    *  click gesture so the countdown's blips + the quiz audio can play. */
   const handleUnlock = useCallback(() => {
@@ -1404,7 +1415,7 @@ function PracticeSession({
           );
           const choicesGrid = (
             <div className="grid gap-3.5 w-full mx-auto" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(260px,100%),1fr))", maxWidth: passage ? undefined : 780 }}>
-              {(q.choices ?? []).map((choice, i) => {
+              {displayChoices.map(({ choice, choiceAudio }, i) => {
                 const isSelected = selected === choice;
                 const isCorrectChoice = choice === q.correct;
                 const answered = selected !== null;
@@ -1429,7 +1440,7 @@ function PracticeSession({
                       const rect = e.currentTarget.getBoundingClientRect();
                       if (hasChoiceAudio) {
                         if (previewedChoice === choice) { handleMcqPick(choice, rect); }
-                        else { setPreviewedChoice(choice); const audioUrl = q.choices_audio_urls?.[i]; if (audioUrl) { stop(); playUrl(audioUrl, 0); } }
+                        else { setPreviewedChoice(choice); if (choiceAudio) { stop(); playUrl(choiceAudio, 0); } }
                       } else if (choicesArePhonemes) {
                         if (previewedChoice === choice) { handleMcqPick(choice, rect); }
                         else { setPreviewedChoice(choice); playPhonemeAudio(choice); }
