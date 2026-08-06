@@ -230,7 +230,7 @@
           "correct": "To surprise Rosa",
           "hint": "Read to the end before you choose. What happened right after Rosa walked in tells you why they were hiding.",
           "difficulty": "hard",
-          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-H4.wav",
+          "audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-H4-q.mp3",
           "adaptiveDifficulty": 88,
           "adaptiveGenerated": true,
           "audio_regen": true,
@@ -241,7 +241,13 @@
           "reveal_feedback": "That one was tricky! They hid to surprise Rosa for her birthday. That's why they yelled! Now you know!",
           "reveal_feedback_audio_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/custom/readee-content/ab9396e5-7296-4c63-a68b-35edf843e501.wav",
           "image_url": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/images/kindergarten/RL.K.1/RL.K.1-H4.png",
-          "fb_regen": true
+          "fb_regen": true,
+          "choices_audio_urls": [
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-H4-c1.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-H4-c2.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-H4-c3.mp3",
+            "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/kindergarten/RL.K.1/RL.K.1-H4-c4.mp3"
+          ]
         },
         {
           "id": "RL.K.1-H5",
