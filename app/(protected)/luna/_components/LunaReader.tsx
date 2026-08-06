@@ -55,7 +55,8 @@ const PRELOAD_CLIPS = [
   ...Array.from({ length: TRANSITION_COUNT }, (_, i) => `transition-final-${i + 1}`),
 ];
 const rand = (n: number) => Math.floor(Math.random() * n);
-const ACC_TRICKY = 50; // word accuracy below this → "tricky" (Azure ErrorType also flags misreads)
+const ACC_TRICKY = 55; // word accuracy below this → "tricky"
+const PHONEME_TRICKY = 45; // any single phoneme below this → "tricky" (catches one wrong sound)
 
 function splitSentences(text: string): string[] {
   return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
@@ -135,7 +136,7 @@ export default function LunaReader({
   const [lastHeard, setLastHeard] = useState<string | null>(null);
   const [engine, setEngine] = useState<string | null>(null); // which grader ran (debug)
   const [debug, setDebug] = useState(false);
-  const [debugWords, setDebugWords] = useState<{ word: string; acc: number; err: string }[]>([]);
+  const [debugWords, setDebugWords] = useState<{ word: string; acc: number; err: string; ph?: number; worst?: string }[]>([]);
   const [dbgLog, setDbgLog] = useState<string[]>([]);
   const debugRef = useRef(false);
   const readModeRef = useRef<"idle" | "starting" | "streaming" | "recording">("idle");
@@ -159,7 +160,7 @@ export default function LunaReader({
   const tokenRef = useRef<{ token: string; region: string; exp: number } | null>(null);
   const recognizerRef = useRef<StreamController | null>(null);
   const streamActiveRef = useRef(false);
-  const streamWordsRef = useRef<{ refIdx: number; acc: number; err: string }[]>([]);
+  const streamWordsRef = useRef<{ refIdx: number; acc: number; err: string; phonemeMin: number; worst: string }[]>([]);
   const streamCursorRef = useRef(0);
   const streamRangeRef = useRef<{ from: number; to: number }>({ from: 0, to: 0 });
   const streamFluencyRef = useRef(100);
@@ -525,9 +526,10 @@ export default function LunaReader({
     } catch (e) { dbg(`token error: ${e instanceof Error ? e.message : e}`); }
     return null;
   }
-  function statusFrom(acc: number, err: string): "correct" | "tricky" {
+  function statusFrom(acc: number, err: string, phonemeMin: number): "correct" | "tricky" {
     if (err === "Omission" || err === "Mispronunciation") return "tricky";
     if (acc < ACC_TRICKY) return "tricky";
+    if (phonemeMin < PHONEME_TRICKY) return "tricky"; // one clearly-wrong sound
     return "correct";
   }
   // Auto-end the read after a beat of silence — the child shouldn't have to tap
@@ -569,9 +571,9 @@ export default function LunaReader({
     for (const w of p.words) {
       if (w.errorType === "Insertion") continue;
       if (i > to) break;
-      const st = statusFrom(w.accuracy, w.errorType);
+      const st = statusFrom(w.accuracy, w.errorType, w.phonemeMin);
       wordStateRef.current[i] = st;
-      streamWordsRef.current.push({ refIdx: i, acc: w.accuracy, err: w.errorType });
+      streamWordsRef.current.push({ refIdx: i, acc: w.accuracy, err: w.errorType, phonemeMin: w.phonemeMin, worst: w.worst });
       const el = wEl(i);
       if (el) { el.style.transition = "color .25s ease, background .25s ease"; el.style.background = st === "tricky" ? "#ffedd5" : "transparent"; el.style.color = st === "tricky" ? "#9a3412" : "#047857"; }
       wordTick();
@@ -652,7 +654,7 @@ export default function LunaReader({
     }
     await new Promise<void>((r) => window.setTimeout(r, 600)); // let the FINAL recognized (last word) land
     const { from, to } = streamRangeRef.current;
-    if (debugRef.current) setDebugWords(streamWordsRef.current.map((w) => ({ word: words[w.refIdx] ?? "?", acc: w.acc, err: w.err })));
+    if (debugRef.current) setDebugWords(streamWordsRef.current.map((w) => ({ word: words[w.refIdx] ?? "?", acc: w.acc, err: w.err, ph: w.phonemeMin, worst: w.worst })));
     const g = buildStreamGrade(from, to, durSec);
     dbg(`grade: ${g.wordsCorrect}/${g.wordsTotal} correct, ${streamWordsRef.current.length} scored`);
     animatingRef.current = false;
@@ -1034,10 +1036,10 @@ export default function LunaReader({
           {debugWords.length > 0 && (
             <div style={{ width: "100%", maxWidth: 560, display: "flex", flexWrap: "wrap", gap: 6, justifyContent: "center", fontFamily: "ui-monospace,Menlo,monospace", fontSize: 12 }}>
               {debugWords.map((d, i) => {
-                const bad = d.err !== "None" || d.acc < 60;
+                const bad = d.err !== "None" || d.acc < ACC_TRICKY || (d.ph != null && d.ph < PHONEME_TRICKY);
                 return (
                   <span key={i} style={{ padding: "2px 7px", borderRadius: 6, background: bad ? "#fef2f2" : "#f0fdf4", color: bad ? "#b91c1c" : "#166534", border: `1px solid ${bad ? "#fecaca" : "#bbf7d0"}` }}>
-                    {d.word} <b>{d.acc}</b>{d.err !== "None" ? ` ${d.err}` : ""}
+                    {d.word} <b>{d.acc}</b>{d.ph != null ? ` ph${d.ph}${d.worst ? `/${d.worst}` : ""}` : ""}{d.err !== "None" ? ` ${d.err}` : ""}
                   </span>
                 );
               })}

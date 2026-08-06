@@ -11,7 +11,7 @@
  * never touches the client.
  */
 
-export type PAWord = { word: string; accuracy: number; errorType: string };
+export type PAWord = { word: string; accuracy: number; errorType: string; phonemeMin: number; worst: string };
 export type PAPhrase = { words: PAWord[]; fluency: number; prosody: number; text: string };
 
 export type StreamController = {
@@ -46,7 +46,7 @@ export async function startPronAssessment(opts: {
   const paConfig = new SDK.PronunciationAssessmentConfig(
     opts.referenceText,
     SDK.PronunciationAssessmentGradingSystem.HundredMark,
-    SDK.PronunciationAssessmentGranularity.Word,
+    SDK.PronunciationAssessmentGranularity.Phoneme, // per-phoneme scores → catch a single wrong sound
     true, // enableMiscue — align to the reference (omissions/insertions)
   );
   try { (paConfig as unknown as { enableProsodyAssessment: boolean }).enableProsodyAssessment = true; } catch { /* older SDK */ }
@@ -60,12 +60,21 @@ export async function startPronAssessment(opts: {
       if (e.result.reason !== SDK.ResultReason.RecognizedSpeech) return;
       const pa = SDK.PronunciationAssessmentResult.fromResult(e.result);
       const detail = (pa as unknown as { detailResult?: { Words?: unknown[] } }).detailResult ?? {};
-      const rawWords = (detail.Words ?? []) as Array<{ Word?: string; PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string } }>;
-      const words: PAWord[] = rawWords.map((w) => ({
-        word: String(w.Word ?? "").trim(),
-        accuracy: Math.round(w.PronunciationAssessment?.AccuracyScore ?? 100),
-        errorType: w.PronunciationAssessment?.ErrorType ?? "None",
-      }));
+      const rawWords = (detail.Words ?? []) as Array<{ Word?: string; PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string }; Phonemes?: Array<{ Phoneme?: string; PronunciationAssessment?: { AccuracyScore?: number } }> }>;
+      const words: PAWord[] = rawWords.map((w) => {
+        let phonemeMin = 100, worst = "";
+        for (const ph of w.Phonemes ?? []) {
+          const a = ph.PronunciationAssessment?.AccuracyScore ?? 100;
+          if (a < phonemeMin) { phonemeMin = a; worst = ph.Phoneme ?? ""; }
+        }
+        return {
+          word: String(w.Word ?? "").trim(),
+          accuracy: Math.round(w.PronunciationAssessment?.AccuracyScore ?? 100),
+          errorType: w.PronunciationAssessment?.ErrorType ?? "None",
+          phonemeMin: Math.round(phonemeMin),
+          worst,
+        };
+      });
       const fluency = Math.round((pa as unknown as { fluencyScore?: number }).fluencyScore ?? 100);
       const prosody = Math.round((pa as unknown as { prosodyScore?: number }).prosodyScore ?? 100);
       opts.onPhrase?.({ words, fluency, prosody, text: e.result.text || "" });
