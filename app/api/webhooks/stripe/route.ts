@@ -126,9 +126,32 @@ export async function POST(req: NextRequest) {
       break;
     }
 
-    // One-time credit pack checkout — mode:"payment", not subscription.
     case "checkout.session.completed": {
       const session = event.data.object as Stripe.Checkout.Session;
+
+      // Subscription checkout → flip the plan HERE. This event is reliably
+      // delivered; the customer.subscription.* events (which also do this) may
+      // not be configured on the endpoint, so don't depend on them for the
+      // initial upgrade. (Renewals/cancels still need the subscription events.)
+      if (session.mode === "subscription" && session.subscription && session.customer) {
+        const customerId = typeof session.customer === "string" ? session.customer : session.customer.id;
+        const subId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
+        let tier = "premium";
+        try {
+          const sub = await stripe.subscriptions.retrieve(subId);
+          tier = planFromPriceId(sub.items.data[0]?.price?.id) ?? "premium";
+        } catch { /* default to premium */ }
+        const { data: up } = await admin
+          .from("profiles")
+          .update({ plan: tier, stripe_subscription_id: subId })
+          .eq("stripe_customer_id", customerId)
+          .select("id")
+          .maybeSingle();
+        if (!up) console.error("[stripe] checkout.session.completed: no profile for customer", customerId);
+        break;
+      }
+
+      // One-time credit pack checkout — mode:"payment", not subscription.
       if (session.metadata?.kind !== "ai_credit_pack") break;
       if (session.payment_status !== "paid") break;
 
