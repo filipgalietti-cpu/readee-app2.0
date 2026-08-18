@@ -302,7 +302,7 @@ function renderDigest(input: {
       // Wins
       if (c.strongestStandard)
         lines.push(
-          `  · ✅ Strongest: ${standardShortName(c.strongestStandard.standard_id) ?? c.strongestStandard.standard_id} (${Math.round(c.strongestStandard.accuracy * 100)}%)`,
+          `  · Strongest: ${standardShortName(c.strongestStandard.standard_id) ?? c.strongestStandard.standard_id} (${Math.round(c.strongestStandard.accuracy * 100)}%)`,
         );
       if (c.unlocksThisWeek.length > 0) {
         const outfits = c.unlocksThisWeek.filter((u) => u.kind === "outfit").length;
@@ -310,12 +310,12 @@ function renderDigest(input: {
         const parts: string[] = [];
         if (badges > 0) parts.push(`${badges} badge${badges === 1 ? "" : "s"}`);
         if (outfits > 0) parts.push(`${outfits} outfit${outfits === 1 ? "" : "s"}`);
-        lines.push(`  · 🎉 Unlocked: ${parts.join(" + ")}`);
+        lines.push(`  · Unlocked: ${parts.join(" + ")}`);
       }
       // Loss
       if (c.weakestStandard)
         lines.push(
-          `  · ⚠️ Tricky spot: ${standardShortName(c.weakestStandard.standard_id) ?? c.weakestStandard.standard_id} (${Math.round(c.weakestStandard.accuracy * 100)}% so far)`,
+          `  · Tricky spot: ${standardShortName(c.weakestStandard.standard_id) ?? c.weakestStandard.standard_id} (${Math.round(c.weakestStandard.accuracy * 100)}% so far)`,
         );
       if (c.passagesFinished === 0 && c.questionsAttempted === 0)
         lines.push("  · No Readee time this week — try a passage together tonight!");
@@ -337,7 +337,7 @@ function renderDigest(input: {
       if (c.strongestStandard) {
         const label = standardShortName(c.strongestStandard.standard_id) ?? c.strongestStandard.standard_id;
         wins.push(
-          `<div><span style="color:#16a34a;font-weight:700;">✅ Strongest:</span> <a href="${BASE_URL}/standards/${slug(c.strongestStandard.standard_id)}" style="color:#16a34a;text-decoration:none;font-weight:600;">${escapeHtml(label)}</a> &middot; ${Math.round(c.strongestStandard.accuracy * 100)}%</div>`,
+          `<div><span style="color:#16a34a;font-weight:700;">Strongest:</span> <a href="${BASE_URL}/standards/${slug(c.strongestStandard.standard_id)}" style="color:#16a34a;text-decoration:none;font-weight:600;">${escapeHtml(label)}</a> &middot; ${Math.round(c.strongestStandard.accuracy * 100)}%</div>`,
         );
       }
       if (c.unlocksThisWeek.length > 0) {
@@ -347,14 +347,14 @@ function renderDigest(input: {
         if (badges > 0) parts.push(`${badges} badge${badges === 1 ? "" : "s"}`);
         if (outfits > 0) parts.push(`${outfits} outfit${outfits === 1 ? "" : "s"}`);
         wins.push(
-          `<div><span style="color:#7c3aed;font-weight:700;">🎉 Unlocked:</span> ${parts.join(" + ")} this week</div>`,
+          `<div><span style="color:#7c3aed;font-weight:700;">Unlocked:</span> ${parts.join(" + ")} this week</div>`,
         );
       }
       const losses: string[] = [];
       if (c.weakestStandard) {
         const label = standardShortName(c.weakestStandard.standard_id) ?? c.weakestStandard.standard_id;
         losses.push(
-          `<div><span style="color:#d97706;font-weight:700;">⚠️ Tricky spot:</span> <a href="${BASE_URL}/standards/${slug(c.weakestStandard.standard_id)}" style="color:#d97706;text-decoration:none;font-weight:600;">${escapeHtml(label)}</a> &middot; ${Math.round(c.weakestStandard.accuracy * 100)}%</div>`,
+          `<div><span style="color:#d97706;font-weight:700;">Tricky spot:</span> <a href="${BASE_URL}/standards/${slug(c.weakestStandard.standard_id)}" style="color:#d97706;text-decoration:none;font-weight:600;">${escapeHtml(label)}</a> &middot; ${Math.round(c.weakestStandard.accuracy * 100)}%</div>`,
         );
       }
 

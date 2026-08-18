@@ -496,7 +496,7 @@ export async function POST(request: NextRequest) {
         getResend().emails.send({
           from: 'Readee <notify@readee.app>',
           to: process.env.TEAM_INBOX_EMAIL || 'hello@readee.app',
-          subject: `🐣 New Readee signup: ${roleLabel} — ${fullName}`,
+          subject: `New Readee signup: ${roleLabel} — ${fullName}`,
           html: `
             <div style="font-family:sans-serif;max-width:500px">
               <h2 style="margin:0 0 16px">New ${roleLabel} Signup</h2>

@@ -75,9 +75,9 @@ export async function POST(req: NextRequest) {
         const label = tier === "teacher_solo" ? "Teacher Solo" : "Readee+";
         const kind = subscription.status === "trialing" ? "started a free trial of" : "subscribed to";
         await notifyTeam(
-          `💳 New ${label} ${subscription.status === "trialing" ? "trial" : "subscriber"}: ${who}`,
+          `New ${label} ${subscription.status === "trialing" ? "trial" : "subscriber"}: ${who}`,
           `<div style="font-family:sans-serif;max-width:520px">
-             <h2 style="margin:0 0 12px">🎉 Someone ${kind} ${label}</h2>
+             <h2 style="margin:0 0 12px">New ${label} ${subscription.status === "trialing" ? "trial" : "subscription"}</h2>
              <p style="margin:4px 0"><strong>Email:</strong> ${who}</p>
              <p style="margin:4px 0"><strong>Plan:</strong> ${label}</p>
              <p style="margin:4px 0"><strong>Status:</strong> ${subscription.status}</p>
@@ -144,7 +144,7 @@ export async function POST(req: NextRequest) {
 
       const churnEmail = (canceled as { email?: string } | null)?.email ?? "(unknown)";
       await notifyTeam(
-        `👋 Subscription canceled: ${churnEmail}`,
+        `Subscription canceled: ${churnEmail}`,
         `<div style="font-family:sans-serif;max-width:520px">
            <h2 style="margin:0 0 12px">Subscription canceled</h2>
            <p style="margin:4px 0"><strong>Email:</strong> ${churnEmail}</p>
