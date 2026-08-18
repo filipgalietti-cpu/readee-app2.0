@@ -12,7 +12,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { Bunny, BunnyReaction, type ReactionState } from "@/app/_components/Bunny/Bunny";
-import { emoteToReaction } from "@/lib/data/shop-items";
+import { reactionStateFor } from "@/lib/data/shop-items";
 import {
   Flame,
   Carrot,
@@ -52,9 +52,9 @@ export interface KidHomeProps {
   bubbleTitle: string;
   bubbleSub: string;
   equippedOutfitId: string;
-  /** Equipped emote id (equipped_items.emote) — the reaction Readee
-   *  plays when tapped. Falls back to the default emote when unset. */
-  equippedEmoteId?: string | null;
+  /** Equipped reaction id (equipped_items.reaction) — the reaction Readee
+   *  plays when tapped. Falls back to the default reaction when unset. */
+  equippedReactionId?: string | null;
   outfitChoices: OutfitChoice[];
   onPickOutfit: (id: string) => void;
   cta: { href: string; text: string; sub: string };
@@ -89,7 +89,7 @@ export default function KidHome(p: KidHomeProps) {
 
   const celebrate = () => {
     if (reaction) return;
-    const rx = emoteToReaction(p.equippedEmoteId);
+    const rx = reactionStateFor(p.equippedReactionId);
     setReaction(rx);
     if (rxTimer.current) clearTimeout(rxTimer.current);
     // The levelup dance is a long 6.5s loop; the hop/wobble are short, so

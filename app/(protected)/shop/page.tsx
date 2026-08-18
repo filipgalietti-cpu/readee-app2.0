@@ -14,8 +14,8 @@ import {
   getItemsByCategory,
   categoryToSlot,
   BACKGROUND_IMAGES,
-  emoteToReaction,
-  EMOTE_REACTIONS,
+  reactionStateFor,
+  REACTION_STATE,
 } from "@/lib/data/shop-items";
 import { MYSTERY_BOX_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mystery-box";
 import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
@@ -593,7 +593,7 @@ function ShopContent({
           </div>
 
           {/* Right — "Your bunny" preview */}
-          <BunnyPreview previewOutfitId={previewOutfitId} equippedEmoteId={child.equipped_items?.emote ?? null} />
+          <BunnyPreview previewOutfitId={previewOutfitId} equippedReactionId={child.equipped_items?.reaction ?? null} />
         </section>
 
         {buyError && (
@@ -878,13 +878,13 @@ function RevealArt({ reward, glow }: { reward: MysteryReward; glow: string }) {
 }
 
 /** Right column of the hero: the currently-previewed bunny on a lit stage.
- *  Tapping Readee plays the child's equipped emote (reaction state). */
+ *  Tapping Readee plays the child's equipped reaction. */
 function BunnyPreview({
   previewOutfitId,
-  equippedEmoteId,
+  equippedReactionId,
 }: {
   previewOutfitId: string;
-  equippedEmoteId?: string | null;
+  equippedReactionId?: string | null;
 }) {
   const outfit = getOutfit(previewOutfitId);
   const [rx, setRx] = useState<"" | ReactionState>("");
@@ -897,7 +897,7 @@ function BunnyPreview({
   );
   const tapReadee = () => {
     if (rx) return;
-    const state = emoteToReaction(equippedEmoteId);
+    const state = reactionStateFor(equippedReactionId);
     setRx(state);
     if (rxTimer.current) clearTimeout(rxTimer.current);
     rxTimer.current = setTimeout(() => setRx(""), state === "levelup" ? 6500 : 2600);
@@ -1007,9 +1007,9 @@ function ShopItemCard({
           <div style={{ position: "relative", width: 78, height: 84 }}>
             <Bunny outfitId={item.id} showRareSparkle={getOutfit(item.id).rarity === "rare"} />
           </div>
-        ) : item.category === "emotes" ? (
+        ) : item.category === "reactions" ? (
           <div style={{ position: "relative", width: 78, height: 84 }}>
-            <BunnyReaction outfitId="bunny_classic" state={EMOTE_REACTIONS[item.id] ?? "levelup"} />
+            <BunnyReaction outfitId="bunny_classic" state={REACTION_STATE[item.id] ?? "wave"} />
           </div>
         ) : img ? (
           <div style={{ position: "relative", width: 56, height: 56, borderRadius: 12, overflow: "hidden" }}>

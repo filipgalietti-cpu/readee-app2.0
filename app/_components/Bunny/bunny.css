@@ -324,102 +324,140 @@
   animation-delay: -1.3s;
 }
 
-/* ══ UNLOCKABLE EMOTES ═════════════════════════════════════════════════
-   Same rest → react → rest structure as the base reactions, keyed off a
-   `.reaction-<name>` class on the stage. No overlays — just the base rig
-   animating — so new emotes are pure CSS. See EMOTE_REACTIONS in
-   lib/data/shop-items.ts for the id → state mapping. */
+/* ══ REACTION PACK 2 — 10 collectible reactions, ported 1:1 from the Claude
+   Design "Bunny outfits" project (bunny-reactions-2.jsx). Each is a looping
+   breathing → action → breathing cycle keyed off `.reaction-<id>`, with
+   overlay props (.rx2-*) rendered in the bn-overlay SVG (see Bunny.tsx). */
+.rx2-prop { transform-box: fill-box; transform-origin: center; opacity: 0; }
 
-/* ── WAVE — friendly hello, right ear waves like a hand ── */
-.reaction-wave .bn-head-grp { animation: rxWaveHead 4.5s ease-in-out infinite; }
-.reaction-wave .bn-body-grp { animation: rxWaveBody 4.5s ease-in-out infinite; }
-.reaction-wave .bn-ear-r    { animation: rxWaveEarR 4.5s ease-in-out infinite; }
-.reaction-wave .bn-ear-l    { animation: rxWaveEarL 4.5s ease-in-out infinite; }
-@keyframes rxWaveBody { 0%,24%,80%,100% { transform: scaleY(1) rotate(0); } 40%,64% { transform: scaleY(.99) rotate(-4deg); } }
-@keyframes rxWaveHead { 0%,24%,80%,100% { transform: translateY(0) rotate(0); } 40%,64% { transform: translateY(-1px) rotate(-9deg); } }
-@keyframes rxWaveEarR {
-  0%,24%,80%,100% { transform: rotate(6deg); }
-  32% { transform: rotate(-30deg); } 42% { transform: rotate(26deg); }
-  52% { transform: rotate(-26deg); } 62% { transform: rotate(26deg); } 70% { transform: rotate(6deg); }
+/* === WAVE — hello! 5s === */
+.reaction-wave .bn-head-grp { animation: rx2WaveHead 5s ease-in-out infinite; }
+.reaction-wave .bn-body-grp { animation: rx2WaveBody 5s ease-in-out infinite; }
+@keyframes rx2WaveHead { 0%,28%,72%,100%{transform:translateY(0) rotate(0)} 14%{transform:translateY(-1.5px) rotate(.4deg)} 38%,62%{transform:translate(-2px,1px) rotate(-6deg)} 86%{transform:translateY(-1.5px) rotate(.4deg)} }
+@keyframes rx2WaveBody { 0%,28%,72%,100%{transform:scaleY(1)} 14%,86%{transform:scaleY(.985) translateY(.6px)} 40%,60%{transform:scaleY(1.01) rotate(-1.5deg)} }
+.reaction-wave .rx2-wave-paw { animation: rx2WavePaw 5s ease-in-out infinite; }
+@keyframes rx2WavePaw {
+  0%,30%,68%,100% { opacity:0; transform: translate(-20px,50px) rotate(0); }
+  36% { opacity:1; transform: translate(0,0) rotate(0); }
+  42% { opacity:1; transform: translate(2px,-3px) rotate(18deg); }
+  48% { opacity:1; transform: translate(-2px,0) rotate(-14deg); }
+  54% { opacity:1; transform: translate(2px,-3px) rotate(18deg); }
+  60% { opacity:1; transform: translate(-1px,0) rotate(-8deg); }
+  64% { opacity:0; transform: translate(-20px,50px) rotate(0); }
 }
-@keyframes rxWaveEarL { 0%,24%,80%,100% { transform: rotate(-6deg); } 46% { transform: rotate(-12deg); } }
+.reaction-wave .rx2-hi { animation: rx2Hi 5s ease-in-out infinite; }
+@keyframes rx2Hi { 0%,34%,64%,100%{opacity:0; transform:translateY(8px) scale(.6)} 42%{opacity:1; transform:translateY(0) scale(1.08)} 58%{opacity:1; transform:translateY(-5px) scale(1)} }
 
-/* ── JUMP — crouch, big leap, land ── */
-.reaction-jump .bn-body-grp { animation: rxJumpBody 4s ease-in-out infinite; }
-.reaction-jump .bn-head-grp { animation: rxJumpHead 4s ease-in-out infinite; }
-.reaction-jump .bn-ear-l    { animation: rxJumpEarL 4s ease-in-out infinite; }
-.reaction-jump .bn-ear-r    { animation: rxJumpEarR 4s ease-in-out infinite; }
-.reaction-jump .bn-eye      { animation: rxJumpEye 4s ease-in-out infinite; }
-@keyframes rxJumpBody {
-  0%,26%,80%,100% { transform: scaleY(1) translateY(0); }
-  33% { transform: scaleY(.82) translateY(9px); }
-  47% { transform: scaleY(1.1) translateY(-30px); }
-  56% { transform: scaleY(1.05) translateY(-34px); }
-  66% { transform: scaleY(.82) translateY(8px); }
-  72% { transform: scaleY(1.02) translateY(0); }
-}
-@keyframes rxJumpHead {
-  0%,26%,80%,100% { transform: translateY(0); }
-  33% { transform: translateY(6px); }
-  47% { transform: translateY(-34px); }
-  56% { transform: translateY(-38px); }
-  66% { transform: translateY(6px); }
-}
-@keyframes rxJumpEarL { 0%,26%,80%,100% { transform: rotate(-6deg); } 47%,56% { transform: rotate(-22deg); } 66% { transform: rotate(2deg); } }
-@keyframes rxJumpEarR { 0%,26%,80%,100% { transform: rotate(6deg); } 47%,56% { transform: rotate(22deg); } 66% { transform: rotate(-2deg); } }
-@keyframes rxJumpEye { 0%,42%,70%,100% { transform: scaleY(1); } 52%,60% { transform: scaleY(.5); } }
+/* === CLAP — encouraging applause. 5s === */
+.reaction-clap .bn-body-grp { animation: rx2ClapBody 5s ease-in-out infinite; }
+.reaction-clap .bn-head-grp { animation: rx2ClapHead 5s ease-in-out infinite; }
+.reaction-clap .bn-eye { animation: rx2HappyEye 5s ease-in-out infinite; }
+@keyframes rx2ClapBody { 0%,28%,72%,100%{transform:scaleY(1)} 14%,86%{transform:scaleY(.985) translateY(.6px)} 38%,46%,54%,62%{transform:scaleY(.97) translateY(1.5px)} 42%,50%,58%{transform:scaleY(1.02) translateY(-2px)} }
+@keyframes rx2ClapHead { 0%,28%,72%,100%{transform:translateY(0)} 14%,86%{transform:translateY(-1.5px)} 42%,50%,58%{transform:translateY(-3px)} 38%,46%,54%,62%{transform:translateY(1px)} }
+@keyframes rx2HappyEye { 0%,30%,68%,100%{transform:scaleY(1)} 40%,60%{transform:scaleY(.2)} }
+.reaction-clap .rx2-clap-l { animation: rx2ClapL 5s ease-in-out infinite; }
+.reaction-clap .rx2-clap-r { animation: rx2ClapR 5s ease-in-out infinite; }
+@keyframes rx2ClapL { 0%,32%,66%,100%{opacity:0; transform:translate(-24px,40px)} 36%,44%,52%,60%{opacity:1; transform:translate(-9px,0)} 40%,48%,56%{opacity:1; transform:translate(0,0)} 63%{opacity:0; transform:translate(-24px,40px)} }
+@keyframes rx2ClapR { 0%,32%,66%,100%{opacity:0; transform:translate(24px,40px)} 36%,44%,52%,60%{opacity:1; transform:translate(9px,0)} 40%,48%,56%{opacity:1; transform:translate(0,0)} 63%{opacity:0; transform:translate(24px,40px)} }
+.reaction-clap .rx2-clap-burst { animation: rx2ClapBurst 5s ease-in-out infinite; }
+@keyframes rx2ClapBurst { 0%,38%,64%,100%{opacity:0; transform:scale(.4)} 42%,50%,58%{opacity:1; transform:scale(1.05)} 46%,54%{opacity:.25; transform:scale(.7)} }
 
-/* ── CHEER — fast excited double-bounce ── */
-.reaction-cheer .bn-body-grp { animation: rxCheerBody 3.6s ease-in-out infinite; }
-.reaction-cheer .bn-head-grp { animation: rxCheerHead 3.6s ease-in-out infinite; }
-.reaction-cheer .bn-ear-l    { animation: rxCheerEarL 3.6s ease-in-out infinite; }
-.reaction-cheer .bn-ear-r    { animation: rxCheerEarR 3.6s ease-in-out infinite; }
-@keyframes rxCheerBody {
-  0%,24%,84%,100% { transform: scaleY(1) translateY(0); }
-  36% { transform: scaleY(.94) translateY(-6px); }
-  44% { transform: scaleY(1.02) translateY(-12px); }
-  52% { transform: scaleY(.94) translateY(-6px); }
-  60% { transform: scaleY(1.02) translateY(-12px); }
-  70% { transform: scaleY(.97) translateY(-3px); }
-}
-@keyframes rxCheerHead {
-  0%,24%,84%,100% { transform: translateY(0) rotate(0); }
-  36% { transform: translateY(-8px) rotate(-4deg); }
-  44% { transform: translateY(-14px) rotate(4deg); }
-  52% { transform: translateY(-8px) rotate(-4deg); }
-  60% { transform: translateY(-14px) rotate(4deg); }
-}
-@keyframes rxCheerEarL { 0%,24%,84%,100% { transform: rotate(-6deg); } 40%,60% { transform: rotate(-16deg); } }
-@keyframes rxCheerEarR { 0%,24%,84%,100% { transform: rotate(6deg); } 40%,60% { transform: rotate(16deg); } }
+/* === LAUGH — giggle fit. 5s === */
+.reaction-laugh .bn-head-grp { animation: rx2LaughHead 5s ease-in-out infinite; }
+.reaction-laugh .bn-body-grp { animation: rx2LaughBody 5s ease-in-out infinite; }
+.reaction-laugh .bn-eye { animation: rx2HappyEye 5s ease-in-out infinite; }
+@keyframes rx2LaughHead { 0%,28%,72%,100%{transform:translateY(0) rotate(0)} 14%,86%{transform:translateY(-1.5px) rotate(.4deg)} 36%{transform:translateY(-3px) rotate(-7deg)} 40%,48%,56%{transform:translateY(-1px) rotate(-9deg)} 44%,52%,60%{transform:translateY(-4px) rotate(-6deg)} 66%{transform:translateY(0) rotate(-2deg)} }
+@keyframes rx2LaughBody { 0%,28%,72%,100%{transform:scaleY(1)} 14%,86%{transform:scaleY(.985) translateY(.6px)} 38%,46%,54%{transform:scaleY(.96) translateY(2px)} 42%,50%,58%{transform:scaleY(1.01) translateY(-1px)} }
+.reaction-laugh .rx2-ha1 { animation: rx2Ha1 5s ease-in-out infinite; }
+.reaction-laugh .rx2-ha2 { animation: rx2Ha2 5s ease-in-out infinite; }
+@keyframes rx2Ha1 { 0%,36%,62%,100%{opacity:0; transform:translate(0,6px) scale(.5) rotate(-8deg)} 44%{opacity:1; transform:translate(-4px,-6px) scale(1) rotate(-8deg)} 58%{opacity:0; transform:translate(-8px,-20px) scale(1.05) rotate(-14deg)} }
+@keyframes rx2Ha2 { 0%,42%,66%,100%{opacity:0; transform:translate(0,6px) scale(.5) rotate(8deg)} 50%{opacity:1; transform:translate(4px,-6px) scale(1) rotate(8deg)} 63%{opacity:0; transform:translate(8px,-20px) scale(1.05) rotate(14deg)} }
 
-/* ── SLEEPY — eyes close, head droops, slow sway ── */
-.reaction-sleepy .bn-head-grp { animation: rxSleepyHead 5.5s ease-in-out infinite; }
-.reaction-sleepy .bn-body-grp { animation: rxSleepyBody 5.5s ease-in-out infinite; }
-.reaction-sleepy .bn-eye      { animation: rxSleepyEye 5.5s ease-in-out infinite; }
-.reaction-sleepy .bn-ear-l    { animation: rxSleepyEarL 5.5s ease-in-out infinite; }
-.reaction-sleepy .bn-ear-r    { animation: rxSleepyEarR 5.5s ease-in-out infinite; }
-@keyframes rxSleepyBody { 0%,20%,90%,100% { transform: scaleY(1) translateY(0); } 50% { transform: scaleY(.97) translateY(3px); } }
-@keyframes rxSleepyHead { 0%,20%,90%,100% { transform: translateY(0) rotate(0); } 40% { transform: translateY(5px) rotate(-7deg); } 60% { transform: translateY(5px) rotate(-5deg); } }
-@keyframes rxSleepyEye { 0%,20%,90%,100% { transform: scaleY(1); } 38%,70% { transform: scaleY(.12); } }
-@keyframes rxSleepyEarL { 0%,20%,90%,100% { transform: rotate(-6deg); } 50% { transform: rotate(2deg); } }
-@keyframes rxSleepyEarR { 0%,20%,90%,100% { transform: rotate(6deg); } 50% { transform: rotate(-2deg); } }
+/* === WOW — surprised stretch. 5s === */
+.reaction-wow .bn-body-grp { animation: rx2WowBody 5s ease-in-out infinite; }
+.reaction-wow .bn-head-grp { animation: rx2WowHead 5s ease-in-out infinite; }
+.reaction-wow .bn-eye { animation: rx2WowEye 5s ease-in-out infinite; }
+.reaction-wow .bn-ear-l { animation: rx2WowEarL 5s ease-in-out infinite; }
+.reaction-wow .bn-ear-r { animation: rx2WowEarR 5s ease-in-out infinite; }
+@keyframes rx2WowBody { 0%,28%,72%,100%{transform:scaleY(1)} 14%,86%{transform:scaleY(.985) translateY(.6px)} 34%{transform:scaleY(.93) translateY(4px)} 40%,60%{transform:scaleY(1.06) translateY(-6px)} 66%{transform:scaleY(.98) translateY(1px)} }
+@keyframes rx2WowHead { 0%,28%,72%,100%{transform:translateY(0)} 14%,86%{transform:translateY(-1.5px)} 34%{transform:translateY(5px)} 40%,60%{transform:translateY(-9px)} 66%{transform:translateY(2px)} }
+@keyframes rx2WowEye { 0%,30%,68%,100%{transform:scale(1)} 40%,60%{transform:scale(1.45)} }
+@keyframes rx2WowEarL { 0%,28%,72%,100%{transform:rotate(-6deg)} 40%,60%{transform:rotate(-16deg)} }
+@keyframes rx2WowEarR { 0%,28%,72%,100%{transform:rotate(6deg)} 40%,60%{transform:rotate(16deg)} }
+.reaction-wow .rx2-bang { animation: rx2Bang 5s ease-in-out infinite; }
+@keyframes rx2Bang { 0%,34%,66%,100%{opacity:0; transform:translateY(10px) scale(.4)} 41%{opacity:1; transform:translateY(0) scale(1.15)} 60%{opacity:1; transform:translateY(-4px) scale(1)} }
 
-/* ── SHAKE — silly no-no head wiggle ── */
-.reaction-shake .bn-head-grp { animation: rxShakeHead 4s ease-in-out infinite; }
-.reaction-shake .bn-body-grp { animation: rxShakeBody 4s ease-in-out infinite; }
-.reaction-shake .bn-ear-l    { animation: rxShakeEarL 4s ease-in-out infinite; }
-.reaction-shake .bn-ear-r    { animation: rxShakeEarR 4s ease-in-out infinite; }
-@keyframes rxShakeBody { 0%,26%,80%,100% { transform: scaleY(1); } 40%,64% { transform: scaleY(.99); } }
-@keyframes rxShakeHead {
-  0%,26%,80%,100% { transform: rotate(0); }
-  34% { transform: rotate(-11deg); } 42% { transform: rotate(11deg); }
-  50% { transform: rotate(-11deg); } 58% { transform: rotate(11deg); } 66% { transform: rotate(0); }
-}
-@keyframes rxShakeEarL {
-  0%,26%,80%,100% { transform: rotate(-6deg); }
-  34% { transform: rotate(6deg); } 42% { transform: rotate(-16deg); } 50% { transform: rotate(6deg); } 58% { transform: rotate(-16deg); }
-}
-@keyframes rxShakeEarR {
-  0%,26%,80%,100% { transform: rotate(6deg); }
-  34% { transform: rotate(-6deg); } 42% { transform: rotate(16deg); } 50% { transform: rotate(-6deg); } 58% { transform: rotate(16deg); }
-}
+/* === LOVE — heart eyes. 5s === */
+.reaction-love .bn-head-grp { animation: rx2LoveHead 5s ease-in-out infinite; }
+.reaction-love .bn-body-grp { animation: rx2LoveBody 5s ease-in-out infinite; }
+@keyframes rx2LoveHead { 0%,28%,72%,100%{transform:rotate(0)} 14%,86%{transform:translateY(-1.5px) rotate(.4deg)} 38%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} 62%{transform:rotate(-3deg)} }
+@keyframes rx2LoveBody { 0%,28%,72%,100%{transform:scaleY(1)} 14%,86%{transform:scaleY(.985) translateY(.6px)} 44%,56%{transform:scaleY(1.015) translateY(-1.5px)} }
+.reaction-love .rx2-hearteye { animation: rx2HeartEye 5s ease-in-out infinite; }
+@keyframes rx2HeartEye { 0%,32%,66%,100%{opacity:0; transform:scale(.3)} 38%{opacity:1; transform:scale(1.15)} 42%,60%{opacity:1; transform:scale(1)} 64%{opacity:0; transform:scale(.5)} }
+.reaction-love .rx2-heart-1 { animation: rx2HeartFloat 5s ease-in-out infinite; }
+.reaction-love .rx2-heart-2 { animation: rx2HeartFloat 5s ease-in-out infinite; animation-delay: -.5s; }
+@keyframes rx2HeartFloat { 0%,36%,64%,100%{opacity:0; transform:translateY(6px) scale(.4)} 44%{opacity:1; transform:translateY(-10px) scale(1)} 60%{opacity:0; transform:translateY(-30px) scale(.9)} }
+
+/* === SLEEPY — yawn + Zzz. 6s === */
+.reaction-sleepy .bn-head-grp { animation: rx2SleepHead 6s ease-in-out infinite; }
+.reaction-sleepy .bn-body-grp { animation: rx2SleepBody 6s ease-in-out infinite; }
+.reaction-sleepy .bn-eye { animation: rx2SleepEye 6s ease-in-out infinite; }
+.reaction-sleepy .bn-ear-l { animation: rx2SleepEarL 6s ease-in-out infinite; }
+.reaction-sleepy .bn-ear-r { animation: rx2SleepEarR 6s ease-in-out infinite; }
+@keyframes rx2SleepHead { 0%,24%,78%,100%{transform:translateY(0) rotate(0)} 12%,90%{transform:translateY(-1.5px) rotate(.4deg)} 36%,64%{transform:translate(3px,4px) rotate(9deg)} }
+@keyframes rx2SleepBody { 0%,24%,78%,100%{transform:scaleY(1)} 12%,90%{transform:scaleY(.985) translateY(.6px)} 36%,64%{transform:scaleY(.955) translateY(3px)} }
+@keyframes rx2SleepEye { 0%,26%,76%,100%{transform:scaleY(1)} 34%,66%{transform:scaleY(.12)} }
+@keyframes rx2SleepEarL { 0%,24%,78%,100%{transform:rotate(-6deg)} 36%,64%{transform:rotate(-1deg)} }
+@keyframes rx2SleepEarR { 0%,24%,78%,100%{transform:rotate(6deg)} 36%,64%{transform:rotate(13deg)} }
+.reaction-sleepy .rx2-z1 { animation: rx2Z 6s ease-in-out infinite; }
+.reaction-sleepy .rx2-z2 { animation: rx2Z 6s ease-in-out infinite; animation-delay: -.7s; }
+.reaction-sleepy .rx2-z3 { animation: rx2Z 6s ease-in-out infinite; animation-delay: -1.4s; }
+@keyframes rx2Z { 0%,30%,70%,100%{opacity:0; transform:translate(0,4px) scale(.5)} 40%{opacity:1; transform:translate(4px,-8px) scale(.9)} 60%{opacity:0; transform:translate(10px,-26px) scale(1.15)} }
+
+/* === DIZZY — wobble + orbiting stars. 5.5s === */
+.reaction-dizzy .bn-head-grp { animation: rx2DizzyHead 5.5s ease-in-out infinite; }
+.reaction-dizzy .bn-body-grp { animation: rx2DizzyBody 5.5s ease-in-out infinite; }
+@keyframes rx2DizzyHead { 0%,26%,74%,100%{transform:rotate(0)} 13%,88%{transform:translateY(-1.5px) rotate(.4deg)} 34%{transform:rotate(-9deg)} 42%{transform:rotate(8deg)} 50%{transform:rotate(-7deg)} 58%{transform:rotate(6deg)} 66%{transform:rotate(-3deg)} }
+@keyframes rx2DizzyBody { 0%,26%,74%,100%{transform:rotate(0) scaleY(1)} 13%,88%{transform:scaleY(.985) translateY(.6px)} 34%{transform:rotate(2.5deg)} 42%{transform:rotate(-2.5deg)} 50%{transform:rotate(2deg)} 58%{transform:rotate(-2deg)} 66%{transform:rotate(1deg)} }
+.reaction-dizzy .rx2-spiral { animation: rx2Spiral 5.5s ease-in-out infinite; }
+@keyframes rx2Spiral { 0%,30%,70%,100%{opacity:0; transform:scale(.3) rotate(0)} 36%{opacity:1; transform:scale(1) rotate(0)} 64%{opacity:1; transform:scale(1) rotate(300deg)} 68%{opacity:0; transform:scale(.5) rotate(340deg)} }
+.reaction-dizzy .rx2-orbit { animation: rx2Orbit 5.5s linear infinite; transform-box: view-box; transform-origin: 120px 56px; opacity: 0; }
+@keyframes rx2Orbit { 0%,30%{opacity:0; transform:rotate(0)} 34%{opacity:1} 66%{opacity:1; transform:rotate(340deg)} 70%,100%{opacity:0; transform:rotate(360deg)} }
+
+/* === STREAK FIRE — hop + flame. 5s === */
+.reaction-streakfire .bn-body-grp { animation: rx2FireBody 5s ease-in-out infinite; }
+.reaction-streakfire .bn-head-grp { animation: rx2FireHead 5s ease-in-out infinite; }
+.reaction-streakfire .bn-eye { animation: rx2HappyEye 5s ease-in-out infinite; }
+@keyframes rx2FireBody { 0%,28%,72%,100%{transform:scaleY(1)} 14%,86%{transform:scaleY(.985) translateY(.6px)} 34%{transform:scaleY(.88) translateY(6px)} 40%{transform:scaleY(1.06) translateY(-12px)} 46%{transform:scaleY(.94) translateY(2px)} 52%{transform:scaleY(1.04) translateY(-8px)} 58%{transform:scaleY(.97) translateY(1px)} }
+@keyframes rx2FireHead { 0%,28%,72%,100%{transform:translateY(0)} 14%,86%{transform:translateY(-1.5px)} 34%{transform:translateY(10px)} 40%{transform:translateY(-16px)} 46%{transform:translateY(4px)} 52%{transform:translateY(-10px)} 58%{transform:translateY(2px)} }
+.reaction-streakfire .rx2-flame { animation: rx2Flame 5s ease-in-out infinite; }
+@keyframes rx2Flame { 0%,32%,68%,100%{opacity:0; transform:translateY(8px) scale(.4)} 38%{opacity:1; transform:translateY(0) scale(1)} 44%,52%{opacity:1; transform:translateY(-2px) scale(1.08)} 48%,56%{opacity:1; transform:translateY(0) scale(.96)} 64%{opacity:0; transform:translateY(-6px) scale(.6)} }
+.reaction-streakfire .rx2-fire-badge { animation: rx2FireBadge 5s ease-in-out infinite; }
+@keyframes rx2FireBadge { 0%,36%,66%,100%{opacity:0; transform:translateY(8px) scale(.6)} 43%{opacity:1; transform:translateY(0) scale(1.08)} 60%{opacity:1; transform:translateY(-4px) scale(1)} }
+
+/* === SUPERSTAR — spin-around + star burst. 5.5s === */
+.reaction-superstar .bn-body-grp { animation: rx2SuperBody 5.5s ease-in-out infinite; }
+.reaction-superstar .bn-head-grp { animation: rx2SuperHead 5.5s ease-in-out infinite; }
+.reaction-superstar .bn-eye { animation: rx2HappyEye 5.5s ease-in-out infinite; }
+@keyframes rx2SuperBody { 0%,26%,74%,100%{transform:scaleX(1) scaleY(1)} 13%,88%{transform:scaleY(.985) translateY(.6px)} 32%{transform:scaleX(.25) scaleY(1.03)} 36%{transform:scaleX(-1)} 42%{transform:scaleX(-.25) scaleY(1.03)} 46%{transform:scaleX(1)} 52%{transform:scaleX(1) scaleY(.9) translateY(5px)} 58%{transform:scaleX(1) scaleY(1.07) translateY(-14px)} 64%{transform:scaleX(1) scaleY(.96) translateY(2px)} }
+@keyframes rx2SuperHead { 0%,26%,74%,100%{transform:scaleX(1) translateY(0)} 13%,88%{transform:translateY(-1.5px)} 32%{transform:scaleX(.25)} 36%{transform:scaleX(-1)} 42%{transform:scaleX(-.25)} 46%{transform:scaleX(1)} 52%{transform:scaleX(1) translateY(10px)} 58%{transform:scaleX(1) translateY(-20px)} 64%{transform:scaleX(1) translateY(3px)} }
+.reaction-superstar .rx2-star-1 { animation: rx2StarB 5.5s ease-out infinite; }
+.reaction-superstar .rx2-star-2 { animation: rx2StarB 5.5s ease-out infinite; animation-delay: -.12s; }
+.reaction-superstar .rx2-star-3 { animation: rx2StarB 5.5s ease-out infinite; animation-delay: -.24s; }
+@keyframes rx2StarB { 0%,52%,100%{opacity:0; transform:translate(0,0) scale(.3) rotate(0)} 58%{opacity:1; transform:translate(var(--sx,-34px),-30px) scale(1.1) rotate(60deg)} 72%{opacity:0; transform:translate(var(--sx2,-52px),10px) scale(.7) rotate(160deg)} }
+
+/* === RAINBOW — big hop under a rainbow arc. 6s === */
+.reaction-rainbow .bn-body-grp { animation: rx2RainBody 6s ease-in-out infinite; }
+.reaction-rainbow .bn-head-grp { animation: rx2RainHead 6s ease-in-out infinite; }
+.reaction-rainbow .bn-eye { animation: rx2HappyEye 6s ease-in-out infinite; }
+.reaction-rainbow .bn-ear-l { animation: rx2RainEarL 6s ease-in-out infinite; }
+.reaction-rainbow .bn-ear-r { animation: rx2RainEarR 6s ease-in-out infinite; }
+@keyframes rx2RainBody { 0%,26%,76%,100%{transform:scaleY(1)} 13%,88%{transform:scaleY(.985) translateY(.6px)} 34%{transform:scaleY(.84) translateY(9px)} 42%,54%{transform:scaleY(1.08) translateY(-22px)} 62%{transform:scaleY(.92) translateY(3px)} 68%{transform:scaleY(1.02) translateY(-3px)} }
+@keyframes rx2RainHead { 0%,26%,76%,100%{transform:translateY(0) rotate(0)} 13%,88%{transform:translateY(-1.5px)} 34%{transform:translateY(16px)} 42%,54%{transform:translateY(-30px) rotate(-4deg)} 62%{transform:translateY(6px) rotate(2deg)} 68%{transform:translateY(-4px)} }
+@keyframes rx2RainEarL { 0%,26%,76%,100%{transform:rotate(-6deg)} 42%,54%{transform:rotate(-16deg)} 62%{transform:rotate(-3deg)} }
+@keyframes rx2RainEarR { 0%,26%,76%,100%{transform:rotate(6deg)} 42%,54%{transform:rotate(16deg)} 62%{transform:rotate(3deg)} }
+.reaction-rainbow .rx2-rainbow { animation: rx2RainArc 6s ease-in-out infinite; }
+@keyframes rx2RainArc { 0%,32%,74%,100%{opacity:0; transform:translateY(14px) scale(.7)} 42%{opacity:1; transform:translateY(0) scale(1)} 66%{opacity:1; transform:translateY(0) scale(1)} 72%{opacity:0; transform:translateY(-6px) scale(1.04)} }
+.reaction-rainbow .rx2-rd1 { animation: rx2RainDot 6s ease-in-out infinite; }
+.reaction-rainbow .rx2-rd2 { animation: rx2RainDot 6s ease-in-out infinite; animation-delay: -.4s; }
+@keyframes rx2RainDot { 0%,40%,72%,100%{opacity:0; transform:translateY(4px) scale(.4)} 48%{opacity:1; transform:translateY(-6px) scale(1)} 66%{opacity:0; transform:translateY(-18px) scale(.8)} }

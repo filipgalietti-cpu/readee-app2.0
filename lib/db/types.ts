@@ -23,8 +23,8 @@ export interface EquippedItems {
   outfit?: string | null;
   background?: string | null;
   /** Reaction the Readee mascot plays when tapped (home + shop). See
-   *  EMOTE_REACTIONS in lib/data/shop-items.ts. */
-  emote?: string | null;
+   *  REACTION_STATE in lib/data/shop-items.ts. */
+  reaction?: string | null;
 }
 
 export type ChildOwnerType = 'parent' | 'classroom';

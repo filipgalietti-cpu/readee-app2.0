@@ -4,15 +4,28 @@ import "./bunny.css";
 import { getOutfit, type Outfit } from "./outfits";
 
 export type ReactionState =
+  // Base feedback reactions.
   | "correct"
   | "incorrect"
   | "levelup"
-  // Unlockable emotes — base rig only, no overlay (see bunny.css).
+  // Reaction Pack 2 — 10 collectible reactions (ported from the design's
+  // bunny-reactions-2.jsx; rigs in bunny.css, overlays below).
   | "wave"
-  | "jump"
-  | "cheer"
+  | "clap"
+  | "laugh"
+  | "wow"
+  | "love"
   | "sleepy"
-  | "shake";
+  | "dizzy"
+  | "streakfire"
+  | "superstar"
+  | "rainbow";
+
+/** The Reaction Pack 2 ids (collectible reactions, sold in the shop). */
+export const REACTION_PACK_2 = [
+  "wave", "clap", "laugh", "wow", "love",
+  "sleepy", "dizzy", "streakfire", "superstar", "rainbow",
+] as const;
 
 type BunnyBaseProps = { outfit: Outfit };
 
@@ -287,6 +300,147 @@ export type BunnyReactionProps = {
   className?: string;
 };
 
+// ── Reaction Pack 2 overlay props (ported 1:1 from bunny-reactions-2.jsx) ──
+const heartPath = (x: number, y: number, s = 1) =>
+  `M ${x} ${y + 4 * s} C ${x - 6 * s} ${y - 4 * s}, ${x - 12 * s} ${y + 2 * s}, ${x} ${y + 10 * s} C ${x + 12 * s} ${y + 2 * s}, ${x + 6 * s} ${y - 4 * s}, ${x} ${y + 4 * s} Z`;
+
+function Rx2Overlay({ state }: { state: ReactionState }) {
+  switch (state) {
+    case "wave":
+      return (
+        <g>
+          <g className="rx2-prop rx2-wave-paw">
+            <ellipse cx="178" cy="92" rx="13" ry="11" fill="#fafafa" stroke="#1a1a1a" strokeWidth="4" />
+            <circle cx="178" cy="94" r="2.5" fill="#f8b8d0" />
+            <path d="M 194 82 L 199 78 M 196 92 L 202 91" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" opacity=".5" />
+          </g>
+          <g className="rx2-prop rx2-hi">
+            <rect x="26" y="46" width="52" height="30" rx="15" fill="#fff" stroke="#1a1a1a" strokeWidth="3" />
+            <text x="52" y="67" textAnchor="middle" fontFamily="ui-sans-serif, system-ui, sans-serif" fontWeight="900" fontSize="15" fill="#1a1a1a">Hi!</text>
+          </g>
+        </g>
+      );
+    case "clap":
+      return (
+        <g>
+          <g className="rx2-prop rx2-clap-l">
+            <ellipse cx="103" cy="172" rx="12" ry="10" fill="#fafafa" stroke="#1a1a1a" strokeWidth="4" />
+            <circle cx="103" cy="174" r="2.2" fill="#f8b8d0" />
+          </g>
+          <g className="rx2-prop rx2-clap-r">
+            <ellipse cx="137" cy="172" rx="12" ry="10" fill="#fafafa" stroke="#1a1a1a" strokeWidth="4" />
+            <circle cx="137" cy="174" r="2.2" fill="#f8b8d0" />
+          </g>
+          <g className="rx2-prop rx2-clap-burst">
+            <path d="M 120 148 L 120 140 M 104 154 L 98 148 M 136 154 L 142 148" stroke="#ffd14a" strokeWidth="4" strokeLinecap="round" />
+          </g>
+        </g>
+      );
+    case "laugh":
+      return (
+        <g fontFamily="ui-sans-serif, system-ui, sans-serif" fontWeight="900">
+          <g className="rx2-prop rx2-ha1">
+            <text x="58" y="88" textAnchor="middle" fontSize="18" fill="#6E5BFF" stroke="#fff" strokeWidth="4" paintOrder="stroke fill">ha</text>
+          </g>
+          <g className="rx2-prop rx2-ha2">
+            <text x="184" y="88" textAnchor="middle" fontSize="18" fill="#ee5b85" stroke="#fff" strokeWidth="4" paintOrder="stroke fill">ha!</text>
+          </g>
+        </g>
+      );
+    case "wow":
+      return (
+        <g className="rx2-prop rx2-bang">
+          <circle cx="184" cy="52" r="17" fill="#ffd14a" stroke="#1a1a1a" strokeWidth="3" />
+          <text x="184" y="61" textAnchor="middle" fontFamily="ui-sans-serif, system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#1a1a1a">!</text>
+        </g>
+      );
+    case "love":
+      return (
+        <g>
+          <g className="rx2-prop rx2-hearteye">
+            <circle cx="104" cy="118" r="9" fill="#fafafa" />
+            <path d={heartPath(104, 112, 1)} fill="#ee5b85" stroke="#1a1a1a" strokeWidth="2" strokeLinejoin="round" />
+          </g>
+          <g className="rx2-prop rx2-hearteye">
+            <circle cx="136" cy="118" r="9" fill="#fafafa" />
+            <path d={heartPath(136, 112, 1)} fill="#ee5b85" stroke="#1a1a1a" strokeWidth="2" strokeLinejoin="round" />
+          </g>
+          <g className="rx2-prop rx2-heart-1">
+            <path d={heartPath(60, 66, 1.4)} fill="#ee5b85" stroke="#1a1a1a" strokeWidth="2.5" strokeLinejoin="round" />
+          </g>
+          <g className="rx2-prop rx2-heart-2">
+            <path d={heartPath(182, 60, 1.1)} fill="#ff9db8" stroke="#1a1a1a" strokeWidth="2.5" strokeLinejoin="round" />
+          </g>
+        </g>
+      );
+    case "sleepy":
+      return (
+        <g fontFamily="ui-sans-serif, system-ui, sans-serif" fontWeight="900" fill="#6E5BFF" stroke="#fff" strokeWidth="3" paintOrder="stroke fill">
+          <g className="rx2-prop rx2-z1"><text x="168" y="72" fontSize="20">Z</text></g>
+          <g className="rx2-prop rx2-z2"><text x="184" y="54" fontSize="15">z</text></g>
+          <g className="rx2-prop rx2-z3"><text x="196" y="40" fontSize="11">z</text></g>
+        </g>
+      );
+    case "dizzy":
+      return (
+        <g>
+          <g className="rx2-prop rx2-spiral">
+            <circle cx="104" cy="118" r="9" fill="#fafafa" />
+            <path d="M 104 118 m 0 -1 a 1.5 1.5 0 0 1 1.5 1.5 a 3 3 0 0 1 -3 3 a 5 5 0 0 1 -5 -5 a 7 7 0 0 1 7 -7" fill="none" stroke="#1a1a1a" strokeWidth="2.2" strokeLinecap="round" />
+          </g>
+          <g className="rx2-prop rx2-spiral">
+            <circle cx="136" cy="118" r="9" fill="#fafafa" />
+            <path d="M 136 118 m 0 -1 a 1.5 1.5 0 0 1 1.5 1.5 a 3 3 0 0 1 -3 3 a 5 5 0 0 1 -5 -5 a 7 7 0 0 1 7 -7" fill="none" stroke="#1a1a1a" strokeWidth="2.2" strokeLinecap="round" />
+          </g>
+          <g className="rx2-orbit">
+            <path d="M 84 52 L 87 59 L 94 60 L 88 64 L 90 71 L 84 67 L 78 71 L 80 64 L 74 60 L 81 59 Z" fill="#ffd14a" stroke="#1a1a1a" strokeWidth="2" strokeLinejoin="round" />
+            <path d="M 156 46 L 158 51 L 163 52 L 159 55 L 160 60 L 156 57 L 152 60 L 153 55 L 149 52 L 154 51 Z" fill="#ffd14a" stroke="#1a1a1a" strokeWidth="2" strokeLinejoin="round" />
+          </g>
+        </g>
+      );
+    case "streakfire":
+      return (
+        <g>
+          <g className="rx2-prop rx2-flame">
+            <path d="M 120 18 C 130 30, 140 38, 140 50 C 140 62, 131 70, 120 70 C 109 70, 100 62, 100 50 C 100 42, 104 36, 108 32 C 108 40, 112 43, 114 42 C 112 34, 114 26, 120 18 Z" fill="#ff8a3d" stroke="#1a1a1a" strokeWidth="3.5" strokeLinejoin="round" />
+            <path d="M 120 42 C 126 48, 128 52, 128 56 C 128 61, 124 64, 120 64 C 116 64, 112 61, 112 56 C 112 51, 115 47, 120 42 Z" fill="#ffd14a" />
+          </g>
+          <g className="rx2-prop rx2-fire-badge">
+            <rect x="152" y="34" width="66" height="28" rx="14" fill="#fff" stroke="#1a1a1a" strokeWidth="3" />
+            <text x="185" y="53" textAnchor="middle" fontFamily="ui-sans-serif, system-ui, sans-serif" fontWeight="900" fontSize="13" fill="#1a1a1a">7 days</text>
+          </g>
+        </g>
+      );
+    case "superstar":
+      return (
+        <g stroke="#1a1a1a" strokeWidth="2" strokeLinejoin="round" fill="#ffd14a">
+          <path className="rx2-prop rx2-star-1" style={{ "--sx": "-40px", "--sx2": "-60px" } as React.CSSProperties} d="M 120 70 L 124 79 L 133 80 L 126 86 L 128 95 L 120 90 L 112 95 L 114 86 L 107 80 L 116 79 Z" />
+          <path className="rx2-prop rx2-star-2" style={{ "--sx": "42px", "--sx2": "62px" } as React.CSSProperties} d="M 120 70 L 124 79 L 133 80 L 126 86 L 128 95 L 120 90 L 112 95 L 114 86 L 107 80 L 116 79 Z" fill="#ee5b85" />
+          <path className="rx2-prop rx2-star-3" style={{ "--sx": "0px", "--sx2": "4px" } as React.CSSProperties} d="M 120 56 L 123 63 L 130 64 L 125 69 L 126 76 L 120 72 L 114 76 L 115 69 L 110 64 L 117 63 Z" fill="#6E5BFF" />
+        </g>
+      );
+    case "rainbow":
+      return (
+        <g>
+          <g className="rx2-prop rx2-rainbow" style={{ transformOrigin: "120px 90px" }}>
+            <path d="M 40 96 A 80 80 0 0 1 200 96" fill="none" stroke="#ee5b85" strokeWidth="9" strokeLinecap="round" />
+            <path d="M 50 96 A 70 70 0 0 1 190 96" fill="none" stroke="#ffd14a" strokeWidth="9" strokeLinecap="round" />
+            <path d="M 60 96 A 60 60 0 0 1 180 96" fill="none" stroke="#5db657" strokeWidth="9" strokeLinecap="round" />
+            <path d="M 70 96 A 50 50 0 0 1 170 96" fill="none" stroke="#3a6cd8" strokeWidth="9" strokeLinecap="round" />
+          </g>
+          <g className="rx2-prop rx2-rd1">
+            <circle cx="38" cy="110" r="5" fill="#fff" stroke="#1a1a1a" strokeWidth="2.5" />
+          </g>
+          <g className="rx2-prop rx2-rd2">
+            <circle cx="202" cy="110" r="5" fill="#fff" stroke="#1a1a1a" strokeWidth="2.5" />
+          </g>
+        </g>
+      );
+    default:
+      return null;
+  }
+}
+
 export function BunnyReaction({ outfitId, state, className }: BunnyReactionProps) {
   const outfit = getOutfit(outfitId);
   return (
@@ -296,6 +450,7 @@ export function BunnyReaction({ outfitId, state, className }: BunnyReactionProps
         {state === "correct" && <CorrectOverlay />}
         {state === "incorrect" && <IncorrectOverlay />}
         {state === "levelup" && <LevelUpOverlay />}
+        <Rx2Overlay state={state} />
       </svg>
     </div>
   );

@@ -1,6 +1,6 @@
 import type { ReactionState } from "@/app/_components/Bunny/Bunny";
 
-export type ShopCategory = "avatars" | "outfits" | "emotes" | "backgrounds";
+export type ShopCategory = "avatars" | "outfits" | "reactions" | "backgrounds";
 
 export interface ShopItem {
   id: string;
@@ -14,7 +14,7 @@ export interface ShopItem {
 export const SHOP_CATEGORIES: { key: ShopCategory; label: string; icon: string }[] = [
   { key: "avatars", label: "Avatars", icon: "smile" },
   { key: "outfits", label: "Outfits", icon: "crown" },
-  { key: "emotes", label: "Emotes", icon: "sparkles" },
+  { key: "reactions", label: "Reactions", icon: "sparkles" },
   { key: "backgrounds", label: "Backgrounds", icon: "image" },
 ];
 
@@ -111,22 +111,22 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: "bunny_beachtowel", name: "Beach Day", icon: "sun", category: "outfits", price: 250, description: "Beach towel cape + flip flops" },
   { id: "bunny_pineapple", name: "Pineapple", icon: "tree-palm", category: "outfits", price: 250, description: "Pineapple onesie + crown leaves" },
 
-  // ── Emotes ──
-  // Reaction states the Readee mascot plays when tapped (home + shop).
-  // The equipped emote saves to equipped_items.emote; each id maps to a
-  // Bunny reaction rig via EMOTE_REACTIONS below. "Party Dance" is the
-  // free default so every kid always has a tap reaction.
-  // The 3 base reactions ship free (price 0 = owned by everyone); the
-  // rest are unlockable like outfits (price > 0). Each maps to a Bunny
-  // reaction rig via EMOTE_REACTIONS below.
-  { id: "emote_party",  name: "Party Dance",  icon: "sparkles", category: "emotes", price: 0,   description: "Readee breaks into a happy dance" },
-  { id: "emote_happy",  name: "Happy Hop",    icon: "smile",    category: "emotes", price: 0,   description: "A cheerful celebration hop" },
-  { id: "emote_wobble", name: "Silly Wobble", icon: "star",     category: "emotes", price: 0,   description: "A goofy wobble and shrug" },
-  { id: "emote_wave",   name: "Big Wave",     icon: "waves",    category: "emotes", price: 150, description: "Readee waves a big hello" },
-  { id: "emote_jump",   name: "Super Jump",   icon: "sparkles", category: "emotes", price: 200, description: "A giant happy leap" },
-  { id: "emote_cheer",  name: "Cheer",        icon: "star",     category: "emotes", price: 200, description: "A bouncy little celebration" },
-  { id: "emote_sleepy", name: "Sleepy Time",  icon: "moon",     category: "emotes", price: 150, description: "A cozy droopy-ear yawn" },
-  { id: "emote_shake",  name: "No-No Wiggle", icon: "smile",    category: "emotes", price: 150, description: "A silly head wiggle" },
+  // ── Reactions ──
+  // Collectible reactions the Readee mascot plays when tapped (home + shop).
+  // These are "Reaction Pack 2" from the Claude Design bunny project — the
+  // equipped reaction saves to equipped_items.reaction; each id maps to a
+  // BunnyReaction state via REACTION_STATE below. wave/clap/wow ship free
+  // (price 0 = owned by everyone); the rest unlock like outfits.
+  { id: "reaction_wave",       name: "Wave Hello",     icon: "waves",    category: "reactions", price: 0,   description: "Readee waves hello" },
+  { id: "reaction_clap",       name: "Cheer Clap",     icon: "sparkles", category: "reactions", price: 0,   description: "A round of applause" },
+  { id: "reaction_wow",        name: "Big Wow",        icon: "star",     category: "reactions", price: 0,   description: "A surprised gasp" },
+  { id: "reaction_laugh",      name: "Giggle Fit",     icon: "smile",    category: "reactions", price: 150, description: "A fit of giggles" },
+  { id: "reaction_love",       name: "Heart Eyes",     icon: "sparkles", category: "reactions", price: 150, description: "Head-over-heels heart eyes" },
+  { id: "reaction_sleepy",     name: "Sleepy Yawn",    icon: "moon",     category: "reactions", price: 150, description: "A cozy yawn with Zzz's" },
+  { id: "reaction_dizzy",      name: "Dizzy Spin",     icon: "sparkles", category: "reactions", price: 300, description: "A dizzy wobble with orbiting stars" },
+  { id: "reaction_streakfire", name: "Streak Fire",    icon: "flame",    category: "reactions", price: 300, description: "A fired-up streak hop" },
+  { id: "reaction_superstar",  name: "Superstar Spin", icon: "star",     category: "reactions", price: 300, description: "A superstar spin with a star burst" },
+  { id: "reaction_rainbow",    name: "Rainbow Hop",    icon: "sparkles", category: "reactions", price: 600, description: "The grand rainbow-hop finale" },
 
   // ── Backgrounds ──
   { id: "bg_sunset",            name: "Sunset",           icon: "sunset",          category: "backgrounds", price: 50,  description: "A beautiful sunset" },
@@ -218,34 +218,35 @@ export function categoryToSlot(category: ShopCategory): string {
   const map: Record<ShopCategory, string> = {
     avatars: "avatar",
     outfits: "outfit",
-    emotes: "emote",
+    reactions: "reaction",
     backgrounds: "background",
   };
   return map[category];
 }
 
-/** The reaction rig each emote plays. Emote ids map to a Bunny
- *  `BunnyReaction` state so the same mascot animation library powers
- *  the tap reaction everywhere (home + shop). */
-export const EMOTE_REACTIONS: Record<string, ReactionState> = {
-  emote_party: "levelup",
-  emote_happy: "correct",
-  emote_wobble: "incorrect",
-  emote_wave: "wave",
-  emote_jump: "jump",
-  emote_cheer: "cheer",
-  emote_sleepy: "sleepy",
-  emote_shake: "shake",
+/** The BunnyReaction state each shop reaction plays, so the same mascot
+ *  animation library powers the tap reaction everywhere (home + shop). */
+export const REACTION_STATE: Record<string, ReactionState> = {
+  reaction_wave: "wave",
+  reaction_clap: "clap",
+  reaction_wow: "wow",
+  reaction_laugh: "laugh",
+  reaction_love: "love",
+  reaction_sleepy: "sleepy",
+  reaction_dizzy: "dizzy",
+  reaction_streakfire: "streakfire",
+  reaction_superstar: "superstar",
+  reaction_rainbow: "rainbow",
 };
 
 /** Free default so every child always has a tap reaction, even before
  *  they buy/equip one. */
-export const DEFAULT_EMOTE = "emote_party";
+export const DEFAULT_REACTION = "reaction_wave";
 
-/** Resolve an equipped emote id (or null) to the reaction state to play.
- *  Falls back to the default emote's reaction. */
-export function emoteToReaction(
-  emoteId: string | null | undefined,
+/** Resolve an equipped reaction id (or null) to the BunnyReaction state to
+ *  play. Falls back to the default reaction. */
+export function reactionStateFor(
+  reactionId: string | null | undefined,
 ): ReactionState {
-  return EMOTE_REACTIONS[emoteId ?? ""] ?? EMOTE_REACTIONS[DEFAULT_EMOTE];
+  return REACTION_STATE[reactionId ?? ""] ?? REACTION_STATE[DEFAULT_REACTION];
 }
