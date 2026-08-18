@@ -3,6 +3,7 @@ import { stripe, planFromPriceId } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { grantTopUp } from "@/lib/ai/credit-balance";
 import { trackFunnel } from "@/lib/analytics/funnel.server";
+import { notifyTeam } from "@/lib/email/notify-team";
 import Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -65,8 +66,24 @@ export async function POST(req: NextRequest) {
           stripe_subscription_id: subscription.id,
         })
         .eq("stripe_customer_id", customerId)
-        .select("id")
+        .select("id, email")
         .maybeSingle();
+
+      // Team alert on a NEW subscription (skip the noisier .updated event).
+      if (event.type === "customer.subscription.created" && grantsAccess) {
+        const who = (updated as { email?: string } | null)?.email ?? "(unknown email)";
+        const label = tier === "teacher_solo" ? "Teacher Solo" : "Readee+";
+        const kind = subscription.status === "trialing" ? "started a free trial of" : "subscribed to";
+        await notifyTeam(
+          `💳 New ${label} ${subscription.status === "trialing" ? "trial" : "subscriber"}: ${who}`,
+          `<div style="font-family:sans-serif;max-width:520px">
+             <h2 style="margin:0 0 12px">🎉 Someone ${kind} ${label}</h2>
+             <p style="margin:4px 0"><strong>Email:</strong> ${who}</p>
+             <p style="margin:4px 0"><strong>Plan:</strong> ${label}</p>
+             <p style="margin:4px 0"><strong>Status:</strong> ${subscription.status}</p>
+           </div>`,
+        );
+      }
 
       // Funnel steps 5 & 6 — fire only on the `subscription.created`
       // event so a status flip from trialing→active later doesn't
@@ -115,13 +132,25 @@ export async function POST(req: NextRequest) {
           ? subscription.customer
           : subscription.customer.id;
 
-      await admin
+      const { data: canceled } = await admin
         .from("profiles")
         .update({
           plan: "free",
           stripe_subscription_id: null,
         })
-        .eq("stripe_customer_id", customerId);
+        .eq("stripe_customer_id", customerId)
+        .select("email")
+        .maybeSingle();
+
+      const churnEmail = (canceled as { email?: string } | null)?.email ?? "(unknown)";
+      await notifyTeam(
+        `👋 Subscription canceled: ${churnEmail}`,
+        `<div style="font-family:sans-serif;max-width:520px">
+           <h2 style="margin:0 0 12px">Subscription canceled</h2>
+           <p style="margin:4px 0"><strong>Email:</strong> ${churnEmail}</p>
+           <p style="margin:4px 0">They're back on the free plan.</p>
+         </div>`,
+      );
 
       break;
     }

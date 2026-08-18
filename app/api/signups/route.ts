@@ -494,15 +494,16 @@ export async function POST(request: NextRequest) {
           html: welcomeHtml,
         }),
         getResend().emails.send({
-          from: 'hello@readee.app',
-          to: 'filip.galietti@gmail.com',
-          subject: `New Readee Signup: ${roleLabel} - ${fullName}`,
+          from: 'Readee <notify@readee.app>',
+          to: process.env.TEAM_INBOX_EMAIL || 'hello@readee.app',
+          subject: `🐣 New Readee signup: ${roleLabel} — ${fullName}`,
           html: `
             <div style="font-family:sans-serif;max-width:500px">
               <h2 style="margin:0 0 16px">New ${roleLabel} Signup</h2>
               <p style="margin:4px 0"><strong>Name:</strong> ${fullName}</p>
               <p style="margin:4px 0"><strong>Email:</strong> ${email}</p>
               <p style="margin:4px 0"><strong>Role:</strong> ${roleLabel}</p>
+              <p style="margin:4px 0"><strong>Plan:</strong> Free (just signed up)</p>
               ${notifDetailsHtml}
               ${body.notes ? `<p style="margin:16px 0 4px"><strong>Notes:</strong> ${body.notes}</p>` : ''}
             </div>`,
