@@ -8,6 +8,11 @@ export default function JsonLd() {
       "Fun, science-backed reading for K–4th grade.",
     applicationCategory: "EducationalApplication",
     operatingSystem: "Any",
+    sameAs: [
+      "https://instagram.com/readee.app",
+      "https://tiktok.com/@readee.app",
+      "https://x.com/ReadeeLearning",
+    ],
     offers: {
       "@type": "Offer",
       price: "0",
