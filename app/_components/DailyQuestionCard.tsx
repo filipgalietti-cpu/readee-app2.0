@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  Sparkles,
+  Newspaper,
   Volume2,
   Pause,
   ThumbsUp,
@@ -124,7 +124,7 @@ export default function DailyQuestionCard({
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
-            <Sparkles className="h-3 w-3" />
+            <Newspaper className="h-3 w-3" />
             Today's Readee
           </div>
           <h3 className="mt-0.5 text-base font-bold text-zinc-900 dark:text-white">
@@ -139,12 +139,12 @@ export default function DailyQuestionCard({
         </Link>
       </div>
 
-      <div className="mt-4 grid gap-4 sm:grid-cols-[120px_1fr]">
+      <div className="mt-4 grid gap-4 sm:grid-cols-[150px_1fr] sm:items-stretch">
         {data.image_url && (
           <img
             src={data.image_url}
             alt=""
-            className="h-32 w-full rounded-2xl border border-zinc-200 object-cover sm:h-32"
+            className="h-40 w-full rounded-2xl border border-zinc-200 object-cover sm:h-full sm:min-h-[128px]"
           />
         )}
         <div>
@@ -158,8 +158,8 @@ export default function DailyQuestionCard({
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
             }}
           >
-            {data.passage_body.length > 220
-              ? data.passage_body.slice(0, 220) + "…"
+            {data.passage_body.length > 300
+              ? data.passage_body.slice(0, 300) + "…"
               : data.passage_body}
           </p>
           {data.audio_url && (

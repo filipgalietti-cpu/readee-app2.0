@@ -27,7 +27,9 @@ export default function TodayQuestionPlayer({
   date,
   questions,
 }: {
-  date: string;
+  /** Daily-Readee date. When omitted (e.g. reused on Discover articles),
+   *  the daily engagement vote is disabled and its row is hidden. */
+  date?: string;
   questions: Q[];
 }) {
   const qs = useMemo(() => questions.filter((q) => q && q.choices?.length >= 2), [questions]);
@@ -75,7 +77,7 @@ export default function TodayQuestionPlayer({
   }
 
   function vote(dir: "up" | "down") {
-    if (voted) return;
+    if (voted || !date) return;
     setVoted(dir);
     supabaseBrowser().rpc("bump_daily_question_engagement", { p_date: date, p_field: dir });
   }
@@ -122,15 +124,17 @@ export default function TodayQuestionPlayer({
           >
             Try again
           </button>
-          <div className="mt-[18px] flex items-center gap-2 text-xs text-zinc-500">
-            Was today&apos;s Readee good?
-            <button type="button" onClick={() => vote("up")} disabled={voted != null} className={`grid h-8 w-8 place-items-center rounded-full transition ${voted === "up" ? "bg-emerald-100 text-emerald-700" : "bg-zinc-100 text-zinc-400 hover:text-emerald-600"}`}>
-              <ThumbsUp className="h-[15px] w-[15px]" />
-            </button>
-            <button type="button" onClick={() => vote("down")} disabled={voted != null} className={`grid h-8 w-8 place-items-center rounded-full transition ${voted === "down" ? "bg-red-100 text-red-700" : "bg-zinc-100 text-zinc-400 hover:text-red-600"}`}>
-              <ThumbsDown className="h-[15px] w-[15px]" />
-            </button>
-          </div>
+          {date && (
+            <div className="mt-[18px] flex items-center gap-2 text-xs text-zinc-500">
+              Was today&apos;s Readee good?
+              <button type="button" onClick={() => vote("up")} disabled={voted != null} className={`grid h-8 w-8 place-items-center rounded-full transition ${voted === "up" ? "bg-emerald-100 text-emerald-700" : "bg-zinc-100 text-zinc-400 hover:text-emerald-600"}`}>
+                <ThumbsUp className="h-[15px] w-[15px]" />
+              </button>
+              <button type="button" onClick={() => vote("down")} disabled={voted != null} className={`grid h-8 w-8 place-items-center rounded-full transition ${voted === "down" ? "bg-red-100 text-red-700" : "bg-zinc-100 text-zinc-400 hover:text-red-600"}`}>
+                <ThumbsDown className="h-[15px] w-[15px]" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     );

@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ArrowLeft, BookOpen, Sparkles } from "lucide-react";
-import DiscoveryQuestions from "./_components/DiscoveryQuestions";
+import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
+import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 import { CATEGORIES } from "@/lib/discover/categories";
 
 export const dynamic = "force-dynamic";
@@ -73,8 +73,23 @@ export default async function DiscoveryDetailPage({
   const cat = (CATEGORIES as any)[a.category];
   const extras = Array.isArray(a.extra_questions) ? a.extra_questions : [];
 
+  // Same shape the Daily Readee player expects (main question + any bonuses).
+  const questions = [
+    { prompt: a.question_prompt, choices: a.choices, correct: a.correct, hint: a.hint },
+    ...extras.map(
+      (q: { prompt: string; choices: string[]; correct: string; hint?: string | null }) => ({
+        prompt: q.prompt,
+        choices: q.choices,
+        correct: q.correct,
+        hint: q.hint ?? null,
+      }),
+    ),
+  ];
+  const wordCount = a.body.split(/\s+/).filter(Boolean).length;
+
   return (
-    <article className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-10">
+    <div className="mx-auto max-w-[1120px] px-4 py-8 sm:px-6 sm:py-10">
+      {/* Breadcrumb */}
       <div className="flex items-center gap-3">
         <Link
           href="/discover"
@@ -96,65 +111,63 @@ export default async function DiscoveryDetailPage({
         )}
       </div>
 
-      <div className="mt-4 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400">
-        <Sparkles className="h-3 w-3" />
-        {cat?.label ?? a.category}
-      </div>
+      {/* Same layout as Today's Readee: reading on the left, quiz on the right. */}
+      <div className="mt-6 grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
+        {/* LEFT — the reading */}
+        <div className="min-w-0">
+          <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700 dark:text-violet-400">
+            <Sparkles className="h-3 w-3" />
+            {cat?.label ?? a.category}
+          </div>
 
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-        {a.title}
-      </h1>
+          <h1 className="mt-2 font-display text-[32px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 dark:text-white sm:text-[38px]">
+            {a.title}
+          </h1>
 
-      {a.image_url && (
-        // aspect-square reserves space before the image loads so the rest
-        // of the article doesn't pop down when the image resolves. Imagen
-        // 4.0 renders 1:1 by default.
-        <div className="relative mt-6 aspect-square w-full overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
-          <Image
-            src={a.image_url}
-            alt=""
-            fill
-            priority
-            sizes="(max-width: 672px) 100vw, 672px"
-            className="object-cover"
-          />
+          {a.image_url && (
+            <div className="mt-5 flex justify-center">
+              {/* Square (1024²) illustrations — contain, not cover, so the
+                  picture is never cropped (matches Today's Readee). */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={a.image_url}
+                alt=""
+                className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm dark:border-slate-800"
+              />
+            </div>
+          )}
+
+          <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500 dark:text-slate-400">
+            <BookOpen className="h-3.5 w-3.5" />
+            {wordCount} words · {Math.max(1, Math.round(wordCount / 150))} min read
+            <ReadAloudButton audioUrl={a.audio_url} />
+          </div>
+
+          <div
+            className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900 dark:text-slate-100"
+            style={{
+              fontFamily:
+                'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
+            }}
+          >
+            {a.body}
+          </div>
         </div>
-      )}
 
-      <div className="mt-6 flex items-center gap-2 text-xs text-zinc-500 dark:text-slate-400">
-        <BookOpen className="h-3.5 w-3.5" />
-        {a.body.split(/\s+/).length} words ·{" "}
-        {Math.max(1, Math.round(a.body.split(/\s+/).length / 150))} min read
+        {/* RIGHT — the quiz (sticky on desktop, aligned with the illustration) */}
+        <div className="lg:sticky lg:top-[76px] lg:mt-[88px]">
+          <TodayQuestionPlayer questions={questions} />
+        </div>
       </div>
 
-      <p
-        className="mt-4 whitespace-pre-line text-lg leading-relaxed text-zinc-900 dark:text-slate-100"
-        style={{
-          fontFamily:
-            'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
-        }}
-      >
-        {a.body}
-      </p>
-
-      <DiscoveryQuestions
-        audioUrl={a.audio_url}
-        mainQuestion={{
-          prompt: a.question_prompt,
-          choices: a.choices,
-          correct: a.correct,
-          hint: a.hint,
-        }}
-        extras={extras}
-      />
-
+      {/* Keep exploring */}
       <div className="mt-12 rounded-3xl border border-violet-200 bg-white p-6 text-center shadow-sm dark:border-violet-500/30 dark:bg-slate-900/50">
         <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
           Keep exploring
         </h2>
         <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-          Readee adds fresh fact-checked passages every day. Browse another
-          topic and keep your reader going.
+          Readee adds fresh fact-checked passages every day. Browse another topic
+          and keep your reader going.
         </p>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
           <Link
@@ -171,6 +184,6 @@ export default async function DiscoveryDetailPage({
           </Link>
         </div>
       </div>
-    </article>
+    </div>
   );
 }
