@@ -58,8 +58,7 @@ export async function POST(req: Request) {
         // From notify@ (not hello@) to avoid the self-addressed send that
         // got hello@ suppressed; recipient env-overridable.
         from: "Readee <notify@readee.app>",
-        // hello@ is Resend-blocked until ~Sep 1; route to a working inbox.
-        to: process.env.TEAM_INBOX_EMAIL || "filip.galietti@gmail.com",
+        to: process.env.TEAM_INBOX_EMAIL || "hello@readee.app",
         replyTo: user.email ?? undefined,
         subject: `[Readee feedback] ${role ?? "user"}: ${message.slice(0, 60)}`,
         text: [
