@@ -379,7 +379,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
       : hasAdminScope
       ? "Teacher · Admin"
       : "Teacher"
-    : "Family";
+    : null;
   const sidebarDetail = isPlatformAdminRoute || showTeacherIdentity ? email ?? null : null;
 
   const sections = getNavSections(
@@ -586,7 +586,7 @@ function ExpandedNav({
   avatarSrc: string | null;
   sidebarName: string;
   plan: string;
-  subtitle?: string;
+  subtitle?: string | null;
   detail?: string | null;
   showCreditIndicator?: boolean;
   onClose?: () => void;

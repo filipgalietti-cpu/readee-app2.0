@@ -20,17 +20,42 @@
 
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { buildParentSnapshot } from "@/lib/ai/build-parent-snapshot";
+import { standardShortName } from "@/lib/data/standard-short-name";
 
 const FROM = "Readee <hello@readee.app>";
 const BASE_URL = "https://learn.readee.app";
 
+function displayGrade(grade: string | null | undefined): string {
+  if (!grade) return "Kindergarten";
+  const g = grade.toLowerCase();
+  if (g === "pre-k" || g === "prek") return "Pre-K";
+  if (g === "k" || g === "kindergarten") return "Kindergarten";
+  const n = g.replace(/\D/g, "");
+  if (n === "1") return "1st Grade";
+  if (n === "2") return "2nd Grade";
+  if (n === "3") return "3rd Grade";
+  if (n === "4") return "4th Grade";
+  return "Kindergarten";
+}
+
 type ChildSummary = {
   childId: string;
   firstName: string;
+  grade: string | null;
   passagesFinished: number;
   questionsAttempted: number;
   questionsCorrect: number;
   comprehensionPct: number | null;
+  /** Distinct days practiced in the window (0–7). */
+  daysThisWeek: number;
+  streak: number;
+  bestStreak: number;
+  /** AI "coach's note" — grounded-hybrid headline + one action from
+   *  buildParentSnapshot. Null when the child was inactive or the model
+   *  call failed (the card falls back to the static stats copy). */
+  aiHeadline: string | null;
+  aiAction: string | null;
   weakestStandard: {
     standard_id: string;
     accuracy: number;
@@ -75,11 +100,17 @@ async function buildParentSummary(parentId: string): Promise<{
       .single(),
     admin
       .from("children")
-      .select("id, first_name")
+      .select("id, first_name, grade, streak_days, best_streak")
       .eq("parent_id", parentId),
   ]);
 
-  const children = (kids ?? []) as { id: string; first_name: string }[];
+  const children = (kids ?? []) as {
+    id: string;
+    first_name: string;
+    grade: string | null;
+    streak_days: number | null;
+    best_streak: number | null;
+  }[];
   if (children.length === 0) {
     return {
       parentEmail: (profile as any)?.email ?? null,
@@ -150,9 +181,15 @@ async function buildParentSummary(parentId: string): Promise<{
       }
     }
 
-    const passagesFinished = (lessonRows ?? []).filter(
-      (r: any) => r.child_id === c.id,
-    ).length;
+    const childLessonRows = (lessonRows ?? []).filter((r: any) => r.child_id === c.id);
+    const passagesFinished = childLessonRows.length;
+
+    // Distinct days practiced this week (0–7) — from both practice and
+    // lesson activity. Feeds the AI snapshot's effort signal.
+    const daySet = new Set<string>();
+    for (const r of rows as any[]) if (r.created_at) daySet.add(String(r.created_at).slice(0, 10));
+    for (const r of childLessonRows as any[]) if (r.created_at) daySet.add(String(r.created_at).slice(0, 10));
+    const daysThisWeek = Math.min(7, daySet.size);
 
     // Outfits + badges granted to this child in the window. Filter to
     // the items we explicitly render in the wins column (bunny_* and
@@ -170,15 +207,49 @@ async function buildParentSummary(parentId: string): Promise<{
     return {
       childId: c.id,
       firstName: c.first_name,
+      grade: c.grade ?? null,
       passagesFinished,
       questionsAttempted: attempted,
       questionsCorrect: correct,
       comprehensionPct,
+      daysThisWeek,
+      streak: c.streak_days ?? 0,
+      bestStreak: c.best_streak ?? 0,
+      aiHeadline: null,
+      aiAction: null,
       weakestStandard: weakest,
       strongestStandard: strongest,
       unlocksThisWeek,
     };
   });
+
+  // Grounded AI "coach's note" per ACTIVE child. Inactive kids get the
+  // static come-back nudge (no model call, no cost). buildParentSnapshot
+  // only WORDS the facts below — it never invents a number or skill — and
+  // returns null on failure, so the card falls back to the static copy.
+  await Promise.all(
+    summaries.map(async (c) => {
+      const active = c.questionsAttempted > 0 || c.passagesFinished > 0;
+      if (!active) return;
+      const snap = await buildParentSnapshot({
+        firstName: c.firstName,
+        gradeLabel: displayGrade(c.grade),
+        standing: null,
+        questionsThisWeek: c.questionsAttempted,
+        accuracyThisWeek: c.comprehensionPct,
+        daysThisWeek: c.daysThisWeek,
+        streak: c.streak,
+        bestStreak: c.bestStreak,
+        strongestSkill: standardShortName(c.strongestStandard?.standard_id),
+        weakestSkill: standardShortName(c.weakestStandard?.standard_id),
+        trend: null,
+      });
+      if (snap) {
+        c.aiHeadline = snap.headline;
+        c.aiAction = snap.action;
+      }
+    }),
+  );
 
   return {
     parentEmail: (profile as any)?.email ?? null,
@@ -221,6 +292,8 @@ function renderDigest(input: {
     "",
     ...input.children.map((c) => {
       const lines: string[] = [`— ${c.firstName}:`];
+      if (c.aiHeadline) lines.push(`  ${c.aiHeadline}`);
+      if (c.aiAction) lines.push(`  This week: ${c.aiAction}`);
       if (c.passagesFinished > 0) lines.push(`  · ${c.passagesFinished} passage(s) finished`);
       if (c.questionsAttempted > 0)
         lines.push(
@@ -229,7 +302,7 @@ function renderDigest(input: {
       // Wins
       if (c.strongestStandard)
         lines.push(
-          `  · ✅ Strongest: ${c.strongestStandard.standard_id} (${Math.round(c.strongestStandard.accuracy * 100)}%)`,
+          `  · ✅ Strongest: ${standardShortName(c.strongestStandard.standard_id) ?? c.strongestStandard.standard_id} (${Math.round(c.strongestStandard.accuracy * 100)}%)`,
         );
       if (c.unlocksThisWeek.length > 0) {
         const outfits = c.unlocksThisWeek.filter((u) => u.kind === "outfit").length;
@@ -242,7 +315,7 @@ function renderDigest(input: {
       // Loss
       if (c.weakestStandard)
         lines.push(
-          `  · ⚠️ Tricky spot: ${c.weakestStandard.standard_id} (${Math.round(c.weakestStandard.accuracy * 100)}% so far)`,
+          `  · ⚠️ Tricky spot: ${standardShortName(c.weakestStandard.standard_id) ?? c.weakestStandard.standard_id} (${Math.round(c.weakestStandard.accuracy * 100)}% so far)`,
         );
       if (c.passagesFinished === 0 && c.questionsAttempted === 0)
         lines.push("  · No Readee time this week — try a passage together tonight!");
@@ -262,8 +335,9 @@ function renderDigest(input: {
       // for narrow screens (most clients gracefully collapse).
       const wins: string[] = [];
       if (c.strongestStandard) {
+        const label = standardShortName(c.strongestStandard.standard_id) ?? c.strongestStandard.standard_id;
         wins.push(
-          `<div><span style="color:#16a34a;font-weight:700;">✅ Strongest:</span> <a href="${BASE_URL}/standards/${slug(c.strongestStandard.standard_id)}" style="color:#16a34a;text-decoration:none;font-weight:600;">${escapeHtml(c.strongestStandard.standard_id)}</a> &middot; ${Math.round(c.strongestStandard.accuracy * 100)}%</div>`,
+          `<div><span style="color:#16a34a;font-weight:700;">✅ Strongest:</span> <a href="${BASE_URL}/standards/${slug(c.strongestStandard.standard_id)}" style="color:#16a34a;text-decoration:none;font-weight:600;">${escapeHtml(label)}</a> &middot; ${Math.round(c.strongestStandard.accuracy * 100)}%</div>`,
         );
       }
       if (c.unlocksThisWeek.length > 0) {
@@ -278,10 +352,21 @@ function renderDigest(input: {
       }
       const losses: string[] = [];
       if (c.weakestStandard) {
+        const label = standardShortName(c.weakestStandard.standard_id) ?? c.weakestStandard.standard_id;
         losses.push(
-          `<div><span style="color:#d97706;font-weight:700;">⚠️ Tricky spot:</span> <a href="${BASE_URL}/standards/${slug(c.weakestStandard.standard_id)}" style="color:#d97706;text-decoration:none;font-weight:600;">${escapeHtml(c.weakestStandard.standard_id)}</a> &middot; ${Math.round(c.weakestStandard.accuracy * 100)}%</div>`,
+          `<div><span style="color:#d97706;font-weight:700;">⚠️ Tricky spot:</span> <a href="${BASE_URL}/standards/${slug(c.weakestStandard.standard_id)}" style="color:#d97706;text-decoration:none;font-weight:600;">${escapeHtml(label)}</a> &middot; ${Math.round(c.weakestStandard.accuracy * 100)}%</div>`,
         );
       }
+
+      // AI coach's note (grounded headline + this-week action). Sits at the
+      // top of the card as the human "so what / now what"; the stats below
+      // are the proof. Falls back to nothing when the model didn't run.
+      const aiNoteBlock = c.aiHeadline
+        ? `<div style="margin-top:12px;padding:12px 14px;background:#f5f3ff;border-radius:10px;">
+             <div style="font-size:14px;line-height:1.5;color:#312e81;font-weight:600;">${escapeHtml(c.aiHeadline)}</div>
+             ${c.aiAction ? `<div style="margin-top:6px;font-size:13px;line-height:1.5;color:#4f46e5;"><span style="font-weight:700;">This week:</span> ${escapeHtml(c.aiAction)}</div>` : ""}
+           </div>`
+        : "";
 
       const winsLossesBlock =
         wins.length > 0 || losses.length > 0
@@ -309,6 +394,7 @@ function renderDigest(input: {
                 </div>
                 <div style="text-align:right;">${metric}</div>
               </div>
+              ${aiNoteBlock}
               ${winsLossesBlock}
             </td>
           </tr>

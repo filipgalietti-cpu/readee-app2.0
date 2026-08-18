@@ -21,9 +21,10 @@ export interface Profile {
 export interface EquippedItems {
   avatar?: string | null;
   outfit?: string | null;
-  badge?: string | null;
   background?: string | null;
-  theme?: string | null;
+  /** Reaction the Readee mascot plays when tapped (home + shop). See
+   *  EMOTE_REACTIONS in lib/data/shop-items.ts. */
+  emote?: string | null;
 }
 
 export type ChildOwnerType = 'parent' | 'classroom';
@@ -55,6 +56,11 @@ export interface Child {
   /** Longest day-streak the child has ever reached. */
   best_streak?: number;
   last_lesson_at: string | null;
+  /** Active carrot multiplier from a powerup (e.g. mystery-box 2x).
+   *  1 = none. Only in effect until active_multiplier_expires_at. */
+  active_multiplier?: number | null;
+  /** When the active_multiplier powerup expires (ISO/UTC). Null = none. */
+  active_multiplier_expires_at?: string | null;
   equipped_items: EquippedItems;
   /** Journey reward chests/trophy already opened (chest node ids + "__trophy__"),
    *  so each reward pays carrots exactly once. */

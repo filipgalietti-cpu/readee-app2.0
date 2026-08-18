@@ -18,7 +18,7 @@ export function rollMysteryBox(ownedItemIds: Set<string>): MysteryReward {
 
   // 20%: Temporary 2x multiplier
   if (roll < 0.3) {
-    return { type: "multiplier", multiplier: 2, label: "2x Multiplier for next session!" };
+    return { type: "multiplier", multiplier: 2, label: "2x carrots for the next 24 hours!" };
   }
 
   // 30%: Random unowned shop item (falls back to carrots)

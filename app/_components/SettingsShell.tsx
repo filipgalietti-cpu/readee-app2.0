@@ -9,7 +9,7 @@ import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import {
   Home, BarChart3, BookText, ListChecks, Map, Carrot, Trophy,
-  ChevronDown, User, CreditCard, Bell, LogOut, ChevronsUpDown,
+  ChevronDown, User, CreditCard, Bell, LogOut, ChevronsUpDown, LifeBuoy,
 } from "lucide-react";
 
 /**
@@ -285,6 +285,9 @@ function SettingsUserMenu({ avatarSrc, name }: { avatarSrc: string | null; name:
               </Link>
               <Link href="/notifications" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
                 <Bell className="w-4 h-4 text-zinc-400" strokeWidth={1.5} /> Notifications
+              </Link>
+              <Link href="/help" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
+                <LifeBuoy className="w-4 h-4 text-zinc-400" strokeWidth={1.5} /> Help &amp; Support
               </Link>
             </div>
             <div className="h-px bg-zinc-100" />

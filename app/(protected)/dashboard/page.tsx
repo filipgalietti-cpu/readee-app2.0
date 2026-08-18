@@ -810,6 +810,7 @@ function ChildDashboard({
         ? `You're on a ${child.streak_days}-day streak!`
         : motivation,
     equippedOutfitId,
+    equippedEmoteId: currentChild.equipped_items?.emote ?? null,
     outfitChoices,
     onPickOutfit: handleEquipOutfit,
     cta,

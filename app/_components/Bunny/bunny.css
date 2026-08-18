@@ -300,3 +300,126 @@
 @keyframes rxConf4 { 0%,55%,100% { opacity: 0; transform: translate(0,0) rotate(0); } 60% { opacity: 1; transform: translate(14px,-42px) rotate(-50deg); } 78% { opacity: 0; transform: translate(32px,60px) rotate(-260deg); } }
 @keyframes rxConf5 { 0%,55%,100% { opacity: 0; transform: translate(0,0) rotate(0); } 60% { opacity: 1; transform: translate(-46px,-6px) rotate(60deg); } 78% { opacity: 0; transform: translate(-74px,65px) rotate(300deg); } }
 @keyframes rxConf6 { 0%,55%,100% { opacity: 0; transform: translate(0,0) rotate(0); } 60% { opacity: 1; transform: translate(44px,2px) rotate(-80deg); } 78% { opacity: 0; transform: translate(82px,60px) rotate(-300deg); } }
+
+/* Snap the level-up reaction to life the instant Readee is tapped. The
+   choreography holds a still rest pose for the first ~22% (~1.4s) of the
+   6.5s loop, which read as sluggish. A uniform negative delay fast-forwards
+   every layer past that idle hold in lockstep, so motion begins right away
+   without desyncing body / ears / notes / confetti. */
+.reaction-levelup .bn-body-grp,
+.reaction-levelup .bn-head-grp,
+.reaction-levelup .bn-ear-l,
+.reaction-levelup .bn-ear-r,
+.reaction-levelup .bn-eye,
+.reaction-levelup .rx-dance-paw-l,
+.reaction-levelup .rx-dance-paw-r,
+.reaction-levelup .rx-note-1,
+.reaction-levelup .rx-note-2,
+.reaction-levelup .rx-conf-1,
+.reaction-levelup .rx-conf-2,
+.reaction-levelup .rx-conf-3,
+.reaction-levelup .rx-conf-4,
+.reaction-levelup .rx-conf-5,
+.reaction-levelup .rx-conf-6 {
+  animation-delay: -1.3s;
+}
+
+/* ══ UNLOCKABLE EMOTES ═════════════════════════════════════════════════
+   Same rest → react → rest structure as the base reactions, keyed off a
+   `.reaction-<name>` class on the stage. No overlays — just the base rig
+   animating — so new emotes are pure CSS. See EMOTE_REACTIONS in
+   lib/data/shop-items.ts for the id → state mapping. */
+
+/* ── WAVE — friendly hello, right ear waves like a hand ── */
+.reaction-wave .bn-head-grp { animation: rxWaveHead 4.5s ease-in-out infinite; }
+.reaction-wave .bn-body-grp { animation: rxWaveBody 4.5s ease-in-out infinite; }
+.reaction-wave .bn-ear-r    { animation: rxWaveEarR 4.5s ease-in-out infinite; }
+.reaction-wave .bn-ear-l    { animation: rxWaveEarL 4.5s ease-in-out infinite; }
+@keyframes rxWaveBody { 0%,24%,80%,100% { transform: scaleY(1) rotate(0); } 40%,64% { transform: scaleY(.99) rotate(-4deg); } }
+@keyframes rxWaveHead { 0%,24%,80%,100% { transform: translateY(0) rotate(0); } 40%,64% { transform: translateY(-1px) rotate(-9deg); } }
+@keyframes rxWaveEarR {
+  0%,24%,80%,100% { transform: rotate(6deg); }
+  32% { transform: rotate(-30deg); } 42% { transform: rotate(26deg); }
+  52% { transform: rotate(-26deg); } 62% { transform: rotate(26deg); } 70% { transform: rotate(6deg); }
+}
+@keyframes rxWaveEarL { 0%,24%,80%,100% { transform: rotate(-6deg); } 46% { transform: rotate(-12deg); } }
+
+/* ── JUMP — crouch, big leap, land ── */
+.reaction-jump .bn-body-grp { animation: rxJumpBody 4s ease-in-out infinite; }
+.reaction-jump .bn-head-grp { animation: rxJumpHead 4s ease-in-out infinite; }
+.reaction-jump .bn-ear-l    { animation: rxJumpEarL 4s ease-in-out infinite; }
+.reaction-jump .bn-ear-r    { animation: rxJumpEarR 4s ease-in-out infinite; }
+.reaction-jump .bn-eye      { animation: rxJumpEye 4s ease-in-out infinite; }
+@keyframes rxJumpBody {
+  0%,26%,80%,100% { transform: scaleY(1) translateY(0); }
+  33% { transform: scaleY(.82) translateY(9px); }
+  47% { transform: scaleY(1.1) translateY(-30px); }
+  56% { transform: scaleY(1.05) translateY(-34px); }
+  66% { transform: scaleY(.82) translateY(8px); }
+  72% { transform: scaleY(1.02) translateY(0); }
+}
+@keyframes rxJumpHead {
+  0%,26%,80%,100% { transform: translateY(0); }
+  33% { transform: translateY(6px); }
+  47% { transform: translateY(-34px); }
+  56% { transform: translateY(-38px); }
+  66% { transform: translateY(6px); }
+}
+@keyframes rxJumpEarL { 0%,26%,80%,100% { transform: rotate(-6deg); } 47%,56% { transform: rotate(-22deg); } 66% { transform: rotate(2deg); } }
+@keyframes rxJumpEarR { 0%,26%,80%,100% { transform: rotate(6deg); } 47%,56% { transform: rotate(22deg); } 66% { transform: rotate(-2deg); } }
+@keyframes rxJumpEye { 0%,42%,70%,100% { transform: scaleY(1); } 52%,60% { transform: scaleY(.5); } }
+
+/* ── CHEER — fast excited double-bounce ── */
+.reaction-cheer .bn-body-grp { animation: rxCheerBody 3.6s ease-in-out infinite; }
+.reaction-cheer .bn-head-grp { animation: rxCheerHead 3.6s ease-in-out infinite; }
+.reaction-cheer .bn-ear-l    { animation: rxCheerEarL 3.6s ease-in-out infinite; }
+.reaction-cheer .bn-ear-r    { animation: rxCheerEarR 3.6s ease-in-out infinite; }
+@keyframes rxCheerBody {
+  0%,24%,84%,100% { transform: scaleY(1) translateY(0); }
+  36% { transform: scaleY(.94) translateY(-6px); }
+  44% { transform: scaleY(1.02) translateY(-12px); }
+  52% { transform: scaleY(.94) translateY(-6px); }
+  60% { transform: scaleY(1.02) translateY(-12px); }
+  70% { transform: scaleY(.97) translateY(-3px); }
+}
+@keyframes rxCheerHead {
+  0%,24%,84%,100% { transform: translateY(0) rotate(0); }
+  36% { transform: translateY(-8px) rotate(-4deg); }
+  44% { transform: translateY(-14px) rotate(4deg); }
+  52% { transform: translateY(-8px) rotate(-4deg); }
+  60% { transform: translateY(-14px) rotate(4deg); }
+}
+@keyframes rxCheerEarL { 0%,24%,84%,100% { transform: rotate(-6deg); } 40%,60% { transform: rotate(-16deg); } }
+@keyframes rxCheerEarR { 0%,24%,84%,100% { transform: rotate(6deg); } 40%,60% { transform: rotate(16deg); } }
+
+/* ── SLEEPY — eyes close, head droops, slow sway ── */
+.reaction-sleepy .bn-head-grp { animation: rxSleepyHead 5.5s ease-in-out infinite; }
+.reaction-sleepy .bn-body-grp { animation: rxSleepyBody 5.5s ease-in-out infinite; }
+.reaction-sleepy .bn-eye      { animation: rxSleepyEye 5.5s ease-in-out infinite; }
+.reaction-sleepy .bn-ear-l    { animation: rxSleepyEarL 5.5s ease-in-out infinite; }
+.reaction-sleepy .bn-ear-r    { animation: rxSleepyEarR 5.5s ease-in-out infinite; }
+@keyframes rxSleepyBody { 0%,20%,90%,100% { transform: scaleY(1) translateY(0); } 50% { transform: scaleY(.97) translateY(3px); } }
+@keyframes rxSleepyHead { 0%,20%,90%,100% { transform: translateY(0) rotate(0); } 40% { transform: translateY(5px) rotate(-7deg); } 60% { transform: translateY(5px) rotate(-5deg); } }
+@keyframes rxSleepyEye { 0%,20%,90%,100% { transform: scaleY(1); } 38%,70% { transform: scaleY(.12); } }
+@keyframes rxSleepyEarL { 0%,20%,90%,100% { transform: rotate(-6deg); } 50% { transform: rotate(2deg); } }
+@keyframes rxSleepyEarR { 0%,20%,90%,100% { transform: rotate(6deg); } 50% { transform: rotate(-2deg); } }
+
+/* ── SHAKE — silly no-no head wiggle ── */
+.reaction-shake .bn-head-grp { animation: rxShakeHead 4s ease-in-out infinite; }
+.reaction-shake .bn-body-grp { animation: rxShakeBody 4s ease-in-out infinite; }
+.reaction-shake .bn-ear-l    { animation: rxShakeEarL 4s ease-in-out infinite; }
+.reaction-shake .bn-ear-r    { animation: rxShakeEarR 4s ease-in-out infinite; }
+@keyframes rxShakeBody { 0%,26%,80%,100% { transform: scaleY(1); } 40%,64% { transform: scaleY(.99); } }
+@keyframes rxShakeHead {
+  0%,26%,80%,100% { transform: rotate(0); }
+  34% { transform: rotate(-11deg); } 42% { transform: rotate(11deg); }
+  50% { transform: rotate(-11deg); } 58% { transform: rotate(11deg); } 66% { transform: rotate(0); }
+}
+@keyframes rxShakeEarL {
+  0%,26%,80%,100% { transform: rotate(-6deg); }
+  34% { transform: rotate(6deg); } 42% { transform: rotate(-16deg); } 50% { transform: rotate(6deg); } 58% { transform: rotate(-16deg); }
+}
+@keyframes rxShakeEarR {
+  0%,26%,80%,100% { transform: rotate(6deg); }
+  34% { transform: rotate(-6deg); } 42% { transform: rotate(16deg); } 50% { transform: rotate(-6deg); } 58% { transform: rotate(16deg); }
+}

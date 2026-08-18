@@ -3,7 +3,16 @@
 import "./bunny.css";
 import { getOutfit, type Outfit } from "./outfits";
 
-export type ReactionState = "correct" | "incorrect" | "levelup";
+export type ReactionState =
+  | "correct"
+  | "incorrect"
+  | "levelup"
+  // Unlockable emotes — base rig only, no overlay (see bunny.css).
+  | "wave"
+  | "jump"
+  | "cheer"
+  | "sleepy"
+  | "shake";
 
 type BunnyBaseProps = { outfit: Outfit };
 

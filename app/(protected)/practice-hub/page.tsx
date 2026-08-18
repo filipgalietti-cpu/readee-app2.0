@@ -633,7 +633,7 @@ function PracticeHubContent() {
                     transition={{ duration: 0.22 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-4 pb-4 grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-2.5">
+                    <div className="px-4 pt-2 pb-4 grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-2.5 items-start">
                       {stds.map((std) => {
                         const stars = mastery[std.standard_id] || 0;
                         const km = KID_NAMES[std.standard_id];
@@ -667,7 +667,7 @@ function PracticeHubContent() {
                               )}
                             </div>
                             {desc && <p className="text-[11.5px] text-zinc-500 leading-snug">{desc}</p>}
-                            <div className="flex items-center gap-0.5 mt-auto pt-0.5">
+                            <div className="flex items-center gap-0.5 mt-1 pt-0.5">
                               {[0, 1, 2].map((k) => (
                                 <Star
                                   key={k}

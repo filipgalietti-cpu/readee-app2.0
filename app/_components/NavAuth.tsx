@@ -30,8 +30,14 @@ export default function NavAuth() {
   // throws #310, which surfaces as "Application error: a client-side
   // exception" and blanks the page. Compute a `hide` flag here and
   // gate the JSX at the bottom instead.
+  // Also hide during a full-screen takeover (e.g. the shop's mystery-box
+  // ceremony) so the immersive overlay isn't clipped by the fixed header.
+  const immersive = useSidebarStore((s) => s.immersive);
   const hide =
-    pathname === "/practice" || pathname === "/login" || pathname === "/signup";
+    immersive ||
+    pathname === "/practice" ||
+    pathname === "/login" ||
+    pathname === "/signup";
 
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
   const userPlan = usePlanStore((s) => s.plan);

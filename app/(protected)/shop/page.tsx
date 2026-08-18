@@ -14,16 +14,19 @@ import {
   getItemsByCategory,
   categoryToSlot,
   BACKGROUND_IMAGES,
+  emoteToReaction,
+  EMOTE_REACTIONS,
 } from "@/lib/data/shop-items";
 import { MYSTERY_BOX_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mystery-box";
 import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
-import { usePracticeStore } from "@/lib/stores/practice-store";
 import { useAudioStore } from "@/lib/stores/audio-store";
+import { useSidebarStore } from "@/lib/stores/sidebar-store";
+import { grantPowerupFields } from "@/lib/carrots/active-multiplier";
 import { Carrot, Lock, RotateCcw, Volume2, VolumeX, PartyPopper, Zap } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 import { SkeletonPage } from "@/app/_components/Skeleton";
-import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { Bunny, BunnyReaction, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { getOutfit, type Outfit } from "@/app/_components/Bunny/outfits";
 import { UnlockToast } from "@/app/_components/UnlockToast";
 import { checkSeasonalGrants } from "@/lib/unlock";
@@ -132,7 +135,15 @@ function ShopContent({
   const [shake, setShake] = useState(0);
   const [swap, setSwap] = useState<{ from: string; to: string; name: string } | null>(null);
 
-  const setMysteryBoxMultiplier = usePracticeStore((s) => s.setMysteryBoxMultiplier);
+
+  // Hide the top header while the opening ceremony is on screen so the
+  // full-screen reveal isn't clipped by the fixed header band. Reset on
+  // ceremony end and on unmount (leaving the shop mid-ceremony).
+  const setImmersive = useSidebarStore((s) => s.setImmersive);
+  useEffect(() => {
+    setImmersive(ceremony);
+    return () => setImmersive(false);
+  }, [ceremony, setImmersive]);
   const isMuted = useAudioStore((s) => s.isMuted);
   const toggleMute = useAudioStore((s) => s.toggleMute);
 
@@ -235,10 +246,15 @@ function ShopContent({
           { id: crypto.randomUUID(), child_id: c.id, item_id: r.item.id, purchased_at: new Date().toISOString() },
         ]);
       } else if (r.type === "multiplier") {
-        setMysteryBoxMultiplier(r.multiplier);
+        // Persist the powerup on the child row so it survives across
+        // devices and applies to every carrot surface (practice, stories,
+        // lessons), not just this device's practice runner.
+        const fields = grantPowerupFields(r.multiplier);
+        await savedOk("shop:mystery-mult", supabase.from("children").update(fields).eq("id", c.id));
+        setChild({ ...childRef.current, ...fields });
       }
     },
-    [setChild, setPurchases, setMysteryBoxMultiplier],
+    [setChild, setPurchases],
   );
 
   const commitReward = useCallback(() => {
@@ -577,7 +593,7 @@ function ShopContent({
           </div>
 
           {/* Right — "Your bunny" preview */}
-          <BunnyPreview previewOutfitId={previewOutfitId} />
+          <BunnyPreview previewOutfitId={previewOutfitId} equippedEmoteId={child.equipped_items?.emote ?? null} />
         </section>
 
         {buyError && (
@@ -861,9 +877,31 @@ function RevealArt({ reward, glow }: { reward: MysteryReward; glow: string }) {
   return <Carrot size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
 }
 
-/** Right column of the hero: the currently-previewed bunny on a lit stage. */
-function BunnyPreview({ previewOutfitId }: { previewOutfitId: string }) {
+/** Right column of the hero: the currently-previewed bunny on a lit stage.
+ *  Tapping Readee plays the child's equipped emote (reaction state). */
+function BunnyPreview({
+  previewOutfitId,
+  equippedEmoteId,
+}: {
+  previewOutfitId: string;
+  equippedEmoteId?: string | null;
+}) {
   const outfit = getOutfit(previewOutfitId);
+  const [rx, setRx] = useState<"" | ReactionState>("");
+  const rxTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(
+    () => () => {
+      if (rxTimer.current) clearTimeout(rxTimer.current);
+    },
+    [],
+  );
+  const tapReadee = () => {
+    if (rx) return;
+    const state = emoteToReaction(equippedEmoteId);
+    setRx(state);
+    if (rxTimer.current) clearTimeout(rxTimer.current);
+    rxTimer.current = setTimeout(() => setRx(""), state === "levelup" ? 6500 : 2600);
+  };
   return (
     <div
       style={{
@@ -887,9 +925,18 @@ function BunnyPreview({ previewOutfitId }: { previewOutfitId: string }) {
       <div style={{ position: "relative", zIndex: 2, width: 280, height: 290, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
         <div style={{ position: "absolute", bottom: 6, left: "50%", width: 210, height: 56, marginLeft: -105, borderRadius: "50%", background: "radial-gradient(50% 50% at 50% 50%,rgba(124,58,237,.28) 0%,rgba(124,58,237,0) 70%)" }} />
         <div style={{ position: "absolute", bottom: 26, left: "50%", width: 190, height: 22, marginLeft: -95, borderRadius: "50%", background: "linear-gradient(180deg,#c4b5fd,#8b5cf6)" }} />
-        <div style={{ position: "relative", width: 224, height: 244, marginBottom: 14 }}>
-          <Bunny outfitId={previewOutfitId} showRareSparkle={outfit.rarity === "rare"} />
-        </div>
+        <button
+          type="button"
+          onClick={tapReadee}
+          aria-label="Tap Readee"
+          style={{ position: "relative", width: 224, height: 244, marginBottom: 14, border: "none", background: "transparent", padding: 0, cursor: "pointer" }}
+        >
+          {rx ? (
+            <BunnyReaction outfitId={previewOutfitId} state={rx} />
+          ) : (
+            <Bunny outfitId={previewOutfitId} showRareSparkle={outfit.rarity === "rare"} />
+          )}
+        </button>
       </div>
       <div style={{ position: "relative", zIndex: 2, fontFamily: BALOO, fontSize: 30, fontWeight: 800, letterSpacing: "-.02em", color: "#18181b", lineHeight: 1.1, textAlign: "center" }}>{outfit.name}</div>
     </div>
@@ -959,6 +1006,10 @@ function ShopItemCard({
         {isBunny ? (
           <div style={{ position: "relative", width: 78, height: 84 }}>
             <Bunny outfitId={item.id} showRareSparkle={getOutfit(item.id).rarity === "rare"} />
+          </div>
+        ) : item.category === "emotes" ? (
+          <div style={{ position: "relative", width: 78, height: 84 }}>
+            <BunnyReaction outfitId="bunny_classic" state={EMOTE_REACTIONS[item.id] ?? "levelup"} />
           </div>
         ) : img ? (
           <div style={{ position: "relative", width: 56, height: 56, borderRadius: 12, overflow: "hidden" }}>

@@ -19,8 +19,9 @@ export function SidebarUserMenu({
   avatarSrc: string | null;
   name: string;
   plan: string;
-  /** Overrides the plan label (used for teacher identity → role label). */
-  subtitle?: string;
+  /** Overrides the plan label (used for teacher identity → role label).
+   *  null/undefined → falls back to the plan label. */
+  subtitle?: string | null;
   /** Extra detail line shown in the expanded dropdown (e.g. email). */
   detail?: string;
   /** When true, show a compact Readee.ai credit balance and link to /account. */

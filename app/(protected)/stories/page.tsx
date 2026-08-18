@@ -15,7 +15,8 @@ import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import storiesBank from "@/scripts/stories-bank.json";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
-import { getLimits } from "@/lib/plan/limits";
+import { getLimits, isPaidPlan } from "@/lib/plan/limits";
+import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
 import { Lock, ChevronDown, Play, Carrot, Flame, Star, Check } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
@@ -45,6 +46,17 @@ const GRADE_LABELS: Record<string, string> = {
   "4th": "4th Grade",
 };
 
+// Per-grade identity colors — shared with /practice-hub's grade switcher
+// so the grade circles read consistently across both surfaces
+// (K = violet, 1 = rose, 2 = teal, 3 = green, 4 = orange).
+const GRADE_META: Record<string, { letter: string; main: string; soft: string; text: string }> = {
+  kindergarten: { letter: "K", main: "#8b5cf6", soft: "#ede9fe", text: "#6d28d9" },
+  "1st": { letter: "1", main: "#f43f5e", soft: "#ffe4e6", text: "#be123c" },
+  "2nd": { letter: "2", main: "#0d9488", soft: "#ccfbf1", text: "#0f766e" },
+  "3rd": { letter: "3", main: "#22c55e", soft: "#dcfce7", text: "#15803d" },
+  "4th": { letter: "4", main: "#f97316", soft: "#ffedd5", text: "#c2410c" },
+};
+
 function storyImageUrl(story: Story) {
   return `${SUPABASE_BASE}/images/stories/${story.grade}/${story.id}.png?v=5`;
 }
@@ -59,6 +71,27 @@ function storyAudioUrl(story: Story) {
 function storyStandard(grade: string): string {
   const tok = /^k/i.test(grade) ? "K" : (grade.match(/\d/)?.[0] ?? "1");
   return `RL.${tok}.1`;
+}
+
+/* ── Celebration carrot count-up ───────────────────────
+ * Ticks the reward total up one carrot at a time (with a little pop on
+ * the pill) so the payoff at the end of a story feels earned, instead of
+ * snapping straight to the final number. Self-contained hooks so it can
+ * live inside the conditionally-rendered celebration block. */
+function CarrotCountUp({ total }: { total: number }) {
+  // Starts at 0 (fresh mount per celebration) and ticks up to `total`.
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (total <= 0) return;
+    let cur = 0;
+    const id = setInterval(() => {
+      cur += 1;
+      setN(cur);
+      if (cur >= total) clearInterval(id);
+    }, 90);
+    return () => clearInterval(id);
+  }, [total]);
+  return <>{n}</>;
 }
 
 /* ── Page ──────────────────────────────────────────── */
@@ -287,8 +320,9 @@ function StoriesContent() {
         // level ladder. Matches the lesson formula scale (5 carrots
         // per correct answer); a perfect 3/3 = 15 carrots, an even
         // 1/3 = 5. The same value goes into `xp_earned` too so the
-        // existing analytics keep working.
-        const carrotsForStory = finalCorrect * 5;
+        // existing analytics keep working. An active powerup (e.g.
+        // mystery-box 2x) multiplies the reward, same as practice/lessons.
+        const carrotsForStory = Math.floor(finalCorrect * 5 * getActiveMultiplier(child));
         // Hold on to the score for the celebration card BEFORE we
         // close — closeStory() wipes mid-quiz state.
         setFinishedScore({
@@ -419,7 +453,7 @@ function StoriesContent() {
                   </p>
                   <div className="mt-5">
                     <span className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-lg font-extrabold" style={{ background: "#fef3c7", color: "#b45309", animation: "counterPop 0.4s ease 0.4s both" }}>
-                      <Carrot className="h-5 w-5" style={{ color: "#f97316" }} /> +{finishedScore.carrots} carrots
+                      <Carrot className="h-5 w-5" style={{ color: "#f97316" }} /> +<CarrotCountUp total={finishedScore.carrots} /> carrots
                     </span>
                   </div>
                   <div className="mx-auto mt-6 flex max-w-[380px] flex-col gap-2.5">
@@ -521,7 +555,7 @@ function StoriesContent() {
   return (
     <div
       className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto px-4 py-8 md:px-8 lg:left-[272px]"
-      style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
+      style={{ background: "#f8fafc" }}
     >
      <div className="mx-auto space-y-4" style={{ maxWidth: 980 }}>
 
@@ -529,7 +563,8 @@ function StoriesContent() {
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-wrap items-center gap-3 rounded-3xl border border-white/60 bg-white/50 px-7 py-5"
+        className="flex flex-wrap items-center gap-3 rounded-3xl px-7 py-5 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.15)]"
+        style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
       >
         <div className="min-w-[200px] flex-1">
           <h1 className="text-3xl font-extrabold" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>
@@ -563,7 +598,13 @@ function StoriesContent() {
       {/* Grade accordions */}
       {gradeGroups.map((group, gIdx) => {
         const isExpanded = expandedGrade === group.grade;
-        const isLocked = GRADE_ORDER.indexOf(group.grade) > childGradeIdx;
+        const isPremium = isPaidPlan(plan);
+        // Grades above the child's reading level are a Readee+ upsell for
+        // free readers; a subscription unlocks every grade. Free readers can
+        // still expand a locked grade to preview covers — each story shows the
+        // Readee+ lock and taps through to /upgrade.
+        const gradeAboveLevel = GRADE_ORDER.indexOf(group.grade) > childGradeIdx;
+        const isProLocked = gradeAboveLevel && !isPremium;
 
         return (
           <motion.div
@@ -574,23 +615,22 @@ function StoriesContent() {
             className="rounded-2xl bg-white shadow-sm overflow-hidden"
           >
             <button
-              onClick={() => !isLocked && setExpandedGrade(isExpanded ? null : group.grade)}
-              className={`w-full text-left ${isLocked ? "opacity-50 cursor-not-allowed" : ""}`}
+              onClick={() => setExpandedGrade(isExpanded ? null : group.grade)}
+              className="w-full text-left"
             >
               <div className="flex items-center gap-3 px-5 py-4" style={isExpanded ? { background: "linear-gradient(90deg,#4338ca,#7c3aed)" } : undefined}>
-                {isLocked ? (
-                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl bg-zinc-100">
-                    <Lock className="h-4 w-4 text-zinc-400" />
-                  </div>
-                ) : (
-                  <Image
-                    src={`/images/ui/grades/grade-${group.grade === "kindergarten" ? "k" : group.grade.replace(/\D/g, "")}.png`}
-                    alt=""
-                    width={46}
-                    height={46}
-                    className="h-[46px] w-[46px] flex-shrink-0 object-contain"
-                  />
-                )}
+                <div
+                  className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full font-extrabold"
+                  style={{
+                    background: GRADE_META[group.grade].main,
+                    color: "#fff",
+                    fontSize: 20,
+                    fontFamily: "var(--font-baloo, inherit)",
+                    boxShadow: `0 0 0 3px rgba(255,255,255,0.9), 0 4px 10px -2px ${GRADE_META[group.grade].main}80`,
+                  }}
+                >
+                  {GRADE_META[group.grade].letter}
+                </div>
                 <div className="flex-1">
                   <p className="text-xl font-extrabold" style={{ color: isExpanded ? "#fff" : "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>
                     {group.label}
@@ -599,14 +639,16 @@ function StoriesContent() {
                     {group.stories.length} stories
                   </p>
                 </div>
-                {!isLocked && (
+                {isProLocked ? (
+                  <span className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-extrabold" style={{ background: isExpanded ? "rgba(255,255,255,0.22)" : "#fef3c7", color: isExpanded ? "#fff" : "#b45309" }}>
+                    <Lock className="h-3 w-3" /> Readee+
+                  </span>
+                ) : (
                   <span className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-extrabold" style={{ background: isExpanded ? "rgba(255,255,255,0.22)" : "#eef2ff", color: isExpanded ? "#fff" : "#4338ca" }}>
                     <Star className="h-3 w-3" fill="currentColor" /> {group.doneCount} of {group.stories.length} read
                   </span>
                 )}
-                {!isLocked && (
-                  <ChevronDown className={`h-5 w-5 flex-shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} style={{ color: isExpanded ? "rgba(255,255,255,0.7)" : "#a1a1aa" }} />
-                )}
+                <ChevronDown className={`h-5 w-5 flex-shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} style={{ color: isExpanded ? "rgba(255,255,255,0.7)" : "#a1a1aa" }} />
               </div>
             </button>
 
@@ -622,7 +664,8 @@ function StoriesContent() {
                   <div className="grid gap-4 px-4 py-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(196px, 1fr))" }}>
                     {group.stories.map((s, sIdx) => {
                       const limits = getLimits(plan);
-                      const isStoryLocked = sIdx >= limits.storiesPerGrade;
+                      const isStoryLocked =
+                        !isPremium && (gradeAboveLevel || sIdx >= limits.storiesPerGrade);
                       const isDone = doneStories.has(s.id);
 
                       if (isStoryLocked) {

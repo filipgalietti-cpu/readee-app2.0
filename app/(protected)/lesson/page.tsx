@@ -13,6 +13,7 @@ import { gradeOrder, grades, levelNameToGradeKey } from "@/lib/assessment/questi
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { FREE_LIMITS } from "@/lib/plan/limits";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
+import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
 
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
@@ -691,7 +692,7 @@ function LessonContent() {
     } else {
       // All cards seen — complete learn phase
       saveProgress("learn", 100);
-      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+      const mysteryMult = getActiveMultiplier(child);
       const daily = getDailyMultiplier(child?.streak_days ?? 0);
       awardCarrots(Math.floor(5 * daily.multiplier * mysteryMult));
       setPhase("practice");
@@ -716,7 +717,7 @@ function LessonContent() {
       saveProgress("practice", score);
 
       if (passed) {
-        const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+        const mysteryMult = getActiveMultiplier(child);
         const daily = getDailyMultiplier(child?.streak_days ?? 0);
         awardCarrots(Math.floor(5 * daily.multiplier * mysteryMult));
         finishLesson();
@@ -741,7 +742,7 @@ function LessonContent() {
       // Per-question bonus carrot with multipliers
       const daily = getDailyMultiplier(child?.streak_days ?? 0);
       const session = getSessionStreakTier(newConsecutive);
-      const mysteryMult = parseFloat(typeof window !== "undefined" ? localStorage.getItem("readee_mystery_multiplier") || "1" : "1") || 1;
+      const mysteryMult = getActiveMultiplier(child);
       const bonus = Math.floor(1 * daily.multiplier * session.multiplier * mysteryMult);
       if (bonus > 0) awardCarrots(bonus);
       setFeedback({ text: CORRECT_MSGS[Math.floor(Math.random() * CORRECT_MSGS.length)], type: "correct" });
@@ -781,11 +782,8 @@ function LessonContent() {
   }, []);
 
   const finishLesson = async () => {
-    // Clear mystery box multiplier after lesson
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("readee_mystery_multiplier");
-    }
-
+    // Powerup multipliers now live on the child row with their own expiry
+    // (see lib/carrots/active-multiplier) — no per-session clearing needed.
     if (!child || !lessonId) {
       setPhase("complete");
       return;

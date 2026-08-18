@@ -55,14 +55,19 @@ export default function NotificationsPage() {
 
       const { data: profRows } = await supabase
         .from("profiles")
-        .select("notification_prefs")
+        .select("notification_prefs, email_weekly_digest")
         .eq("id", user.id)
         .limit(1);
 
       const prof = profRows?.[0] as any;
-      if (prof?.notification_prefs) {
-        setPrefs({ ...DEFAULT_PREFS, ...prof.notification_prefs });
-      }
+      // `email_weekly_digest` (a dedicated indexed boolean) is what the
+      // weekly-digest cron actually filters on, so it's the source of truth
+      // for the Weekly Report toggle. The rest live in notification_prefs.
+      setPrefs({
+        ...DEFAULT_PREFS,
+        ...(prof?.notification_prefs ?? {}),
+        weekly_report: prof?.email_weekly_digest ?? true,
+      });
       setLoading(false);
     }
     load();
@@ -72,7 +77,13 @@ export default function NotificationsPage() {
     if (!userId) return;
     setSaving(true);
     const supabase = supabaseBrowser();
-    await supabase.from("profiles").update({ notification_prefs: prefs } as any).eq("id", userId);
+    // Mirror the Weekly Report toggle into `email_weekly_digest` — the
+    // column the digest cron filters on — so the toggle actually controls
+    // whether the email sends.
+    await supabase
+      .from("profiles")
+      .update({ notification_prefs: prefs, email_weekly_digest: prefs.weekly_report } as any)
+      .eq("id", userId);
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
@@ -91,11 +102,11 @@ export default function NotificationsPage() {
     );
   }
 
-  const NOTIFICATION_OPTIONS: { key: keyof NotificationPrefs; icon: typeof Bell; title: string; description: string }[] = [
+  const NOTIFICATION_OPTIONS: { key: keyof NotificationPrefs; icon: typeof Bell; title: string; description: string; comingSoon?: boolean }[] = [
     { key: "weekly_report", icon: Mail, title: "Weekly Progress Report", description: "Email summary of your child's reading activity each week" },
-    { key: "streak_reminders", icon: Flame, title: "Streak Reminders", description: "Notify when a reading streak is about to break" },
-    { key: "new_content", icon: BookOpen, title: "New Content Available", description: "Alert when new lessons or stories are added" },
-    { key: "achievements", icon: Trophy, title: "Achievements & Milestones", description: "Celebrate when your child hits reading milestones" },
+    { key: "streak_reminders", icon: Flame, title: "Streak Reminders", description: "Notify when a reading streak is about to break", comingSoon: true },
+    { key: "new_content", icon: BookOpen, title: "New Content Available", description: "Alert when new lessons or stories are added", comingSoon: true },
+    { key: "achievements", icon: Trophy, title: "Achievements & Milestones", description: "Celebrate when your child hits reading milestones", comingSoon: true },
   ];
 
   return (
@@ -114,16 +125,23 @@ export default function NotificationsPage() {
           </div>
 
           <div className="divide-y divide-zinc-100">
-            {NOTIFICATION_OPTIONS.map(({ key, icon: Icon, title, description }) => (
-              <div key={key} className="px-6 py-4 flex items-center gap-4">
+            {NOTIFICATION_OPTIONS.map(({ key, icon: Icon, title, description, comingSoon }) => (
+              <div key={key} className={`px-6 py-4 flex items-center gap-4 ${comingSoon ? "opacity-60" : ""}`}>
                 <div className="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
                   <Icon className="w-4 h-4 text-indigo-500" strokeWidth={1.5} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm font-medium text-zinc-900">{title}</div>
+                  <div className="text-sm font-medium text-zinc-900 flex items-center gap-2">
+                    {title}
+                    {comingSoon && (
+                      <span className="text-[10px] font-semibold uppercase tracking-wide text-zinc-400 border border-zinc-200 rounded px-1.5 py-0.5">
+                        Coming soon
+                      </span>
+                    )}
+                  </div>
                   <div className="text-xs text-zinc-500 mt-0.5">{description}</div>
                 </div>
-                <Toggle checked={prefs[key]} onChange={(v) => updatePref(key, v)} />
+                <Toggle checked={comingSoon ? false : prefs[key]} onChange={(v) => updatePref(key, v)} disabled={comingSoon} />
               </div>
             ))}
           </div>

@@ -32,6 +32,7 @@ import { TapToPair } from "@/app/components/practice/TapToPair";
 import { SoundMachine } from "@/app/components/practice/SoundMachine";
 import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
+import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
 import { StreakFire } from "@/app/_components/StreakFire";
 import SealOfApproval from "./_components/SealOfApproval";
 import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon, Sparkles } from "lucide-react";
@@ -688,8 +689,9 @@ function PracticeSession({
     setCoach(iv);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [adaptive.reading, debugAdaptive]);
-  const mysteryBoxMultiplier = usePracticeStore((s) => s.mysteryBoxMultiplier);
-  const clearMysteryBoxMultiplier = usePracticeStore((s) => s.clearMysteryBoxMultiplier);
+  // Persisted powerup multiplier (mystery-box 2x etc.), read from the
+  // child row so it survives across devices and every carrot surface.
+  const mysteryBoxMultiplier = getActiveMultiplier(child);
   const scrollRef = useRef<HTMLDivElement>(null);
   const prevCarrotsRef = useRef(sessionCarrots);
 
@@ -1125,12 +1127,6 @@ function PracticeSession({
     router.push(`/dashboard`);
   }, [router, stop, resetStore]);
 
-  // Clear mystery box multiplier when session completes
-  useEffect(() => {
-    if (phase === "complete" && mysteryBoxMultiplier > 1) {
-      clearMysteryBoxMultiplier();
-    }
-  }, [phase, mysteryBoxMultiplier, clearMysteryBoxMultiplier]);
 
   if (phase === "complete") {
     const correctCount = answers.filter((a) => a.correct).length;

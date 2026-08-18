@@ -9,6 +9,13 @@ interface SidebarState {
    *  the root-layout footer can offset itself past the fixed rail instead
    *  of being covered by it. */
   desktopSidebarVisible: boolean;
+  /** True while a full-screen takeover is running (e.g. the shop's
+   *  mystery-box opening ceremony). The top NavAuth header hides itself
+   *  when set so the immersive overlay isn't clipped by the fixed header
+   *  band. The desktop sidebar intentionally stays (overlays are inset
+   *  past it), so this is header-only. */
+  immersive: boolean;
+  setImmersive: (v: boolean) => void;
   setOpen: (open: boolean) => void;
   setMobileOpen: (open: boolean) => void;
   setDesktopSidebarVisible: (visible: boolean) => void;
@@ -24,6 +31,8 @@ export const useSidebarStore = create<SidebarState>((set) => ({
   mobileOpen: false,
   desktopSidebarVisible: false,
   setDesktopSidebarVisible: (visible) => set({ desktopSidebarVisible: visible }),
+  immersive: false,
+  setImmersive: (v) => set({ immersive: v }),
   setOpen: (open) => {
     writeSidebarOpenCookie(open);
     set({ open });

@@ -11,7 +11,8 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { Bunny, BunnyReaction, type ReactionState } from "@/app/_components/Bunny/Bunny";
+import { emoteToReaction } from "@/lib/data/shop-items";
 import {
   Flame,
   Carrot,
@@ -51,6 +52,9 @@ export interface KidHomeProps {
   bubbleTitle: string;
   bubbleSub: string;
   equippedOutfitId: string;
+  /** Equipped emote id (equipped_items.emote) — the reaction Readee
+   *  plays when tapped. Falls back to the default emote when unset. */
+  equippedEmoteId?: string | null;
   outfitChoices: OutfitChoice[];
   onPickOutfit: (id: string) => void;
   cta: { href: string; text: string; sub: string };
@@ -74,7 +78,7 @@ export interface KidHomeProps {
 }
 
 export default function KidHome(p: KidHomeProps) {
-  const [reaction, setReaction] = useState<"" | "levelup">("");
+  const [reaction, setReaction] = useState<"" | ReactionState>("");
   const rxTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const skinScrollRef = useRef<HTMLDivElement>(null);
 
@@ -85,9 +89,12 @@ export default function KidHome(p: KidHomeProps) {
 
   const celebrate = () => {
     if (reaction) return;
-    setReaction("levelup");
+    const rx = emoteToReaction(p.equippedEmoteId);
+    setReaction(rx);
     if (rxTimer.current) clearTimeout(rxTimer.current);
-    rxTimer.current = setTimeout(() => setReaction(""), 6500);
+    // The levelup dance is a long 6.5s loop; the hop/wobble are short, so
+    // let them play a couple of beats then settle back to idle.
+    rxTimer.current = setTimeout(() => setReaction(""), rx === "levelup" ? 6500 : 2600);
   };
 
   const ringCirc = 150.8;
@@ -196,8 +203,8 @@ export default function KidHome(p: KidHomeProps) {
           {/* Bunny + outfit picker */}
           <div style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 8, marginTop: 2 }}>
             <button onClick={celebrate} title="Tap Readee!" style={{ border: "none", background: "transparent", cursor: "pointer", width: 200, height: 216, padding: 0, flex: "none" }}>
-              {reaction === "levelup"
-                ? <BunnyReaction outfitId={p.equippedOutfitId} state="levelup" />
+              {reaction
+                ? <BunnyReaction outfitId={p.equippedOutfitId} state={reaction} />
                 : <Bunny outfitId={p.equippedOutfitId} />}
             </button>
             {/* Skin carousel — arrows scroll through unlocked skins;

@@ -1,4 +1,6 @@
-export type ShopCategory = "avatars" | "outfits" | "themes" | "stickers" | "backgrounds";
+import type { ReactionState } from "@/app/_components/Bunny/Bunny";
+
+export type ShopCategory = "avatars" | "outfits" | "emotes" | "backgrounds";
 
 export interface ShopItem {
   id: string;
@@ -12,8 +14,7 @@ export interface ShopItem {
 export const SHOP_CATEGORIES: { key: ShopCategory; label: string; icon: string }[] = [
   { key: "avatars", label: "Avatars", icon: "smile" },
   { key: "outfits", label: "Outfits", icon: "crown" },
-  { key: "themes", label: "Themes", icon: "palette" },
-  { key: "stickers", label: "Stickers", icon: "star" },
+  { key: "emotes", label: "Emotes", icon: "sparkles" },
   { key: "backgrounds", label: "Backgrounds", icon: "image" },
 ];
 
@@ -110,21 +111,22 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: "bunny_beachtowel", name: "Beach Day", icon: "sun", category: "outfits", price: 250, description: "Beach towel cape + flip flops" },
   { id: "bunny_pineapple", name: "Pineapple", icon: "tree-palm", category: "outfits", price: 250, description: "Pineapple onesie + crown leaves" },
 
-  // ── Themes ──
-  { id: "theme_ocean",      name: "Ocean",       icon: "waves",      category: "themes", price: 50,  description: "Deep blue ocean theme" },
-  { id: "theme_forest",     name: "Forest",      icon: "tree-pine",  category: "themes", price: 75,  description: "Enchanted forest theme" },
-  { id: "theme_space",      name: "Space",       icon: "orbit",      category: "themes", price: 100, description: "Outer space adventure" },
-  { id: "theme_candy",      name: "Candy Land",  icon: "candy",      category: "themes", price: 125, description: "Sweet candy land theme" },
-  { id: "theme_dino",       name: "Dino World",  icon: "bone",       category: "themes", price: 150, description: "Prehistoric dino world" },
-  { id: "theme_rainbow",    name: "Rainbow",     icon: "rainbow",    category: "themes", price: 200, description: "Colorful rainbow theme" },
-
-  // ── Stickers & Badges ──
-  { id: "sticker_bookworm",  name: "Bookworm",   icon: "book-open",  category: "stickers", price: 25,  description: "A proud bookworm badge" },
-  { id: "sticker_gold_star", name: "Gold Star",  icon: "star",       category: "stickers", price: 50,  description: "A shining gold star" },
-  { id: "sticker_trophy",    name: "Trophy",     icon: "trophy",     category: "stickers", price: 75,  description: "A champion trophy" },
-  { id: "sticker_rocket",    name: "Rocket",     icon: "rocket",     category: "stickers", price: 100, description: "Blast off to reading!" },
-  { id: "sticker_brain",     name: "Big Brain",  icon: "brain",      category: "stickers", price: 125, description: "Super smart brain badge" },
-  { id: "sticker_diamond",   name: "Diamond",    icon: "gem",        category: "stickers", price: 150, description: "A rare diamond badge" },
+  // ── Emotes ──
+  // Reaction states the Readee mascot plays when tapped (home + shop).
+  // The equipped emote saves to equipped_items.emote; each id maps to a
+  // Bunny reaction rig via EMOTE_REACTIONS below. "Party Dance" is the
+  // free default so every kid always has a tap reaction.
+  // The 3 base reactions ship free (price 0 = owned by everyone); the
+  // rest are unlockable like outfits (price > 0). Each maps to a Bunny
+  // reaction rig via EMOTE_REACTIONS below.
+  { id: "emote_party",  name: "Party Dance",  icon: "sparkles", category: "emotes", price: 0,   description: "Readee breaks into a happy dance" },
+  { id: "emote_happy",  name: "Happy Hop",    icon: "smile",    category: "emotes", price: 0,   description: "A cheerful celebration hop" },
+  { id: "emote_wobble", name: "Silly Wobble", icon: "star",     category: "emotes", price: 0,   description: "A goofy wobble and shrug" },
+  { id: "emote_wave",   name: "Big Wave",     icon: "waves",    category: "emotes", price: 150, description: "Readee waves a big hello" },
+  { id: "emote_jump",   name: "Super Jump",   icon: "sparkles", category: "emotes", price: 200, description: "A giant happy leap" },
+  { id: "emote_cheer",  name: "Cheer",        icon: "star",     category: "emotes", price: 200, description: "A bouncy little celebration" },
+  { id: "emote_sleepy", name: "Sleepy Time",  icon: "moon",     category: "emotes", price: 150, description: "A cozy droopy-ear yawn" },
+  { id: "emote_shake",  name: "No-No Wiggle", icon: "smile",    category: "emotes", price: 150, description: "A silly head wiggle" },
 
   // ── Backgrounds ──
   { id: "bg_sunset",            name: "Sunset",           icon: "sunset",          category: "backgrounds", price: 50,  description: "A beautiful sunset" },
@@ -216,9 +218,34 @@ export function categoryToSlot(category: ShopCategory): string {
   const map: Record<ShopCategory, string> = {
     avatars: "avatar",
     outfits: "outfit",
-    stickers: "badge",
+    emotes: "emote",
     backgrounds: "background",
-    themes: "theme",
   };
   return map[category];
+}
+
+/** The reaction rig each emote plays. Emote ids map to a Bunny
+ *  `BunnyReaction` state so the same mascot animation library powers
+ *  the tap reaction everywhere (home + shop). */
+export const EMOTE_REACTIONS: Record<string, ReactionState> = {
+  emote_party: "levelup",
+  emote_happy: "correct",
+  emote_wobble: "incorrect",
+  emote_wave: "wave",
+  emote_jump: "jump",
+  emote_cheer: "cheer",
+  emote_sleepy: "sleepy",
+  emote_shake: "shake",
+};
+
+/** Free default so every child always has a tap reaction, even before
+ *  they buy/equip one. */
+export const DEFAULT_EMOTE = "emote_party";
+
+/** Resolve an equipped emote id (or null) to the reaction state to play.
+ *  Falls back to the default emote's reaction. */
+export function emoteToReaction(
+  emoteId: string | null | undefined,
+): ReactionState {
+  return EMOTE_REACTIONS[emoteId ?? ""] ?? EMOTE_REACTIONS[DEFAULT_EMOTE];
 }
