@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllStandards, slugifyStandard } from "@/lib/data/standards";
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import { listCategories } from "@/lib/discover/categories";
 
 const BASE = "https://learn.readee.app";
 
@@ -21,7 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/community/grade/2nd`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/community/grade/3rd`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE}/community/grade/4th`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${BASE}/discover`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
     { url: `${BASE}/today`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
     { url: `${BASE}/upgrade`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
@@ -66,37 +64,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Sitemap shouldn't 500 the build if Supabase is briefly unreachable.
   }
 
-  // Discovery category index pages — 7 stable URLs.
-  const categoryRoutes: MetadataRoute.Sitemap = listCategories().map((cat) => ({
-    url: `${BASE}/discover/${cat.slug}`,
-    lastModified: now,
-    changeFrequency: "daily",
-    priority: 0.7,
-  }));
-
-  // Discovery articles (per-article URLs — the SEO surface for organic
-  // acquisition). Filter qc_overall = fail so we don't index pieces
-  // /discover hides at read-time.
-  let discoveryRoutes: MetadataRoute.Sitemap = [];
-  try {
-    const admin = supabaseAdmin();
-    const { data } = await admin
-      .from("discovery_articles")
-      .select("category, slug, updated_at")
-      .eq("published_state", "live")
-      .limit(5000);
-    discoveryRoutes = (
-      (data ?? []) as { category: string; slug: string; updated_at: string }[]
-    ).map((r) => ({
-      url: `${BASE}/discover/${r.category}/${r.slug}`,
-      lastModified: r.updated_at ? new Date(r.updated_at) : now,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    }));
-  } catch {
-    /* sitemap shouldn't 500 on transient DB issues */
-  }
-
   // Daily Readee archive — every past day is its own /today/[slug].
   let dailyRoutes: MetadataRoute.Sitemap = [];
   try {
@@ -123,8 +90,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...standardRoutes,
     ...communityRoutes,
-    ...categoryRoutes,
-    ...discoveryRoutes,
     ...dailyRoutes,
   ];
 }

@@ -46,6 +46,7 @@ const AUTH_REQUIRED_PREFIXES = [
   "/practice-hub",
   "/journey",
   "/stories",
+  "/discover",
   "/analytics",
   "/dashboard",
   "/settings",

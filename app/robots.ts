@@ -16,8 +16,6 @@ export default function robots(): MetadataRoute.Robots {
         "/standards/",
         "/community",
         "/community/",
-        "/discover",
-        "/discover/",
         "/today",
         "/today/",
         "/upgrade",
@@ -26,6 +24,7 @@ export default function robots(): MetadataRoute.Robots {
       ],
       disallow: [
         "/dashboard",
+        "/discover",
         "/practice",
         "/assessment",
         "/account",
