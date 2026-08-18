@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
 import { Sparkles, ArrowLeft, BookOpen } from "lucide-react";
 import TodayQuestionPlayer from "./_components/TodayQuestionPlayer";
 import ReadAloudButton from "./_components/ReadAloudButton";
 import AssignDailyButton from "./_components/AssignDailyButton";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 1800; // half-hour ISR is plenty for a static daily
+// Static daily content — half-hour revalidate. (No `force-dynamic`: it
+// overrode this and re-queried the DB on every navigation, which is what
+// made switching pages laggy.)
+export const revalidate = 1800;
 
 type Daily = {
   date: string;
@@ -24,21 +27,29 @@ type Daily = {
   extra_questions: any;
 };
 
+// One fetch per request — React cache() dedupes the generateMetadata read
+// and the page read (previously two separate DB round-trips every load).
+const getDaily = cache(async (slug: string): Promise<Daily | null> => {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("daily_questions")
+    .select(
+      "date, theme, slug, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions",
+    )
+    .eq("slug", slug)
+    .maybeSingle();
+  return (data as Daily) ?? null;
+});
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("daily_questions")
-    .select("theme, passage_title, passage_body, image_url, date")
-    .eq("slug", slug)
-    .maybeSingle();
-  if (!data) return { title: "Today's Readee" };
-  const d = data as any;
-  const desc = (d.passage_body as string).slice(0, 150);
+  const d = await getDaily(slug);
+  if (!d) return { title: "Today's Readee" };
+  const desc = d.passage_body.slice(0, 150);
   return {
     title: `${d.passage_title} — Readee Daily`,
     description: desc,
@@ -57,19 +68,12 @@ export default async function TodayDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("daily_questions")
-    .select(
-      "date, theme, slug, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions",
-    )
-    .eq("slug", slug)
-    .maybeSingle();
-  if (!data) notFound();
-  const d = data as Daily;
+  const d = await getDaily(slug);
+  if (!d) notFound();
   const extras = Array.isArray(d.extra_questions) ? d.extra_questions : [];
   // Daily Readee is a signed-in feature — send logged-out visitors to sign
   // up (turns shared-link traffic into signups rather than free reads).
+  const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
@@ -91,7 +95,7 @@ export default async function TodayDetailPage({
       <div className="sticky top-0 z-20 border-b border-zinc-100 bg-white/90 backdrop-blur">
         <div className="mx-auto flex max-w-[1120px] items-center gap-3 px-6 py-3">
           <Link
-            href="/today/archive"
+            href="/daily"
             className="inline-flex items-center gap-1.5 text-[13px] font-bold text-zinc-500 transition hover:text-violet-700"
           >
             <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
