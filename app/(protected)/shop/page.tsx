@@ -370,7 +370,7 @@ function ShopContent({
       const { error: insertError } = await supabase.from("shop_purchases").insert({ child_id: c.id, item_id: item.id });
       if (insertError) {
         console.error("[shop] failed to record purchase:", insertError);
-        setBuyError("Couldn't complete that purchase — try again in a moment.");
+        setBuyError("Couldn't complete that purchase - try again in a moment.");
         setBuying(null);
         return;
       }
@@ -564,7 +564,7 @@ function ShopContent({
               <div style={{ position: "absolute", left: 0, right: 0, bottom: 14, display: "flex", justifyContent: "center", pointerEvents: "none", zIndex: 3, opacity: ceremony ? 0 : 1, transition: "opacity .3s ease" }}>
                 <div style={{ padding: "7px 14px", borderRadius: 999, background: "rgba(255,255,255,.86)", backdropFilter: "blur(6px)", fontSize: 12, fontWeight: 800, color: "#4338ca", boxShadow: "0 4px 14px -6px rgba(67,56,202,.6)" }}>
                   {freeReady
-                    ? "Tap to open — free daily box!"
+                    ? "Tap to open - free daily box!"
                     : `Next free box in ~${Math.max(1, Math.round(nextFreeInMs / 3_600_000))}h`}
                 </div>
               </div>

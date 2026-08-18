@@ -493,7 +493,7 @@ function QuestionPhase({
 
       {revealed && isCorrect && (
         <div className="mt-4 text-center text-sm font-semibold text-emerald-700">
-          {attempts === 1 ? "Nailed it on the first try!" : "Great — you got it!"}
+          {attempts === 1 ? "Nailed it on the first try!" : "Great - you got it!"}
         </div>
       )}
     </div>
@@ -532,7 +532,7 @@ function RecapPhase({
       : got === total
       ? `Nailed it, ${childName}! ${got} out of ${total}.`
       : got >= Math.ceil(total * 0.7)
-      ? `Nice work, ${childName} — ${got} out of ${total}.`
+      ? `Nice work, ${childName} - ${got} out of ${total}.`
       : `Good effort, ${childName}. ${got} out of ${total}. Try again?`;
 
   return (

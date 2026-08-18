@@ -24,7 +24,7 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
     q: "What does my child do on Readee each day?",
     a: (
       <>
-        Readee builds a short daily plan from your child&apos;s reading level —
+        Readee builds a short daily plan from your child&apos;s reading level -
         a lesson, some practice, and a story. Each lesson follows the same
         three steps: <strong>Lesson</strong> (learn it), <strong>Practice</strong>{" "}
         (try it), and <strong>Excel</strong> (stretch it). Just tap{" "}
@@ -38,7 +38,7 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
       <>
         Open <Link href="/settings" className="text-indigo-600 font-semibold underline">Settings</Link>{" "}
         and update your child&apos;s grade. Readee adapts the difficulty as they
-        practice, so it&apos;s fine to start a little easy — the app moves them
+        practice, so it&apos;s fine to start a little easy - the app moves them
         up as they master skills. You can also re-take the placement test any
         time from the dashboard.
       </>
@@ -50,7 +50,7 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
       <>
         Readee+ is <strong>$9.99/month</strong> (or $6.99/month billed
         annually) and unlocks all lessons, stories, and analytics. It&apos;s
-        month-to-month through Stripe — cancel anytime from{" "}
+        month-to-month through Stripe - cancel anytime from{" "}
         <Link href="/account" className="text-indigo-600 font-semibold underline">Account → Billing</Link>{" "}
         and you keep access through the end of the period. No app-store fees,
         no lock-in.
@@ -61,7 +61,7 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
     q: "Is my child's information private?",
     a: (
       <>
-        Yes. Readee is built for families and follows COPPA — we never sell
+        Yes. Readee is built for families and follows COPPA - we never sell
         data or show third-party ads to children. You can read the full{" "}
         <Link href="/privacy-policy" className="text-indigo-600 font-semibold underline">Privacy Policy</Link>,
         and you can request deletion of your child&apos;s data any time from
@@ -70,12 +70,12 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
     ),
   },
   {
-    q: "The app isn't working — a lesson won't load or audio is silent.",
+    q: "The app isn't working - a lesson won't load or audio is silent.",
     a: (
       <>
         First try a full refresh, and make sure your device isn&apos;t on
         silent (lessons use read-aloud audio). If it keeps happening, send us a
-        note below with your child&apos;s name and what you were doing — we
+        note below with your child&apos;s name and what you were doing - we
         answer every message.
       </>
     ),
@@ -87,7 +87,7 @@ const FAQS: { q: string; a: React.ReactNode }[] = [
         Readee adjusts automatically as your child answers, but you can nudge
         it: bump the grade in Settings for more challenge, or re-take the
         placement test for a fresh read on their level. When in doubt, message
-        us — we&apos;re happy to help you calibrate it.
+        us - we&apos;re happy to help you calibrate it.
       </>
     ),
   },
@@ -169,7 +169,7 @@ export default function HelpPage() {
           </div>
           <div>
             <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Help &amp; Support</h1>
-            <p className="text-sm text-zinc-500 mt-0.5">Quick answers, or send us a note — we reply to every message.</p>
+            <p className="text-sm text-zinc-500 mt-0.5">Quick answers, or send us a note - we reply to every message.</p>
           </div>
         </div>
 
@@ -231,7 +231,7 @@ export default function HelpPage() {
                   result.success ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"
                 }`}
               >
-                {result.success ? "Thanks — we got it and will reply soon." : result.message}
+                {result.success ? "Thanks - we got it and will reply soon." : result.message}
               </div>
             )}
 

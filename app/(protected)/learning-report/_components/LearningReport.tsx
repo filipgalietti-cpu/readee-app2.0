@@ -181,7 +181,7 @@ export default function LearningReport({
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
                   <div className="text-3xl font-extrabold text-violet-700 dark:text-violet-300" style={HEADING_FONT}>
-                    {luna.latestWcpm ?? "—"}
+                    {luna.latestWcpm ?? "-"}
                   </div>
                   <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400">Words / min</div>
                   {luna.gainWcpm != null && luna.gainWcpm > 0 && (
@@ -190,13 +190,13 @@ export default function LearningReport({
                 </div>
                 <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
                   <div className="text-3xl font-extrabold text-violet-700 dark:text-violet-300" style={HEADING_FONT}>
-                    {luna.accuracy != null ? `${luna.accuracy}%` : "—"}
+                    {luna.accuracy != null ? `${luna.accuracy}%` : "-"}
                   </div>
                   <div className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400">Accuracy</div>
                 </div>
                 <div className="rounded-2xl bg-violet-50 p-4 text-center dark:bg-indigo-950/40">
                   <div className="text-3xl font-extrabold text-violet-700 dark:text-violet-300" style={HEADING_FONT}>
-                    {luna.expression != null ? `${luna.expression}%` : "—"}
+                    {luna.expression != null ? `${luna.expression}%` : "-"}
                   </div>
                   <div className="mt-0.5 flex items-center justify-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-violet-500 dark:text-violet-400"><Waves className="h-3 w-3" />Expression</div>
                 </div>
@@ -286,7 +286,7 @@ export default function LearningReport({
               </ul>
             ) : (
               <p className="rounded-xl bg-violet-50 px-3 py-3 text-sm font-medium text-zinc-600 dark:bg-indigo-950/40 dark:text-slate-300">
-                No trouble spots right now — {name} is keeping up beautifully.
+                No trouble spots right now - {name} is keeping up beautifully.
                 Keep practicing to unlock more insights.
               </p>
             )}
@@ -310,7 +310,7 @@ export default function LearningReport({
               </ul>
             ) : (
               <p className="rounded-xl bg-violet-50 px-3 py-3 text-sm font-medium text-zinc-600 dark:bg-indigo-950/40 dark:text-slate-300">
-                Every reader has strengths — {name}&apos;s will show up here as
+                Every reader has strengths - {name}&apos;s will show up here as
                 more practice rolls in.
               </p>
             )}

@@ -108,7 +108,7 @@ export default function SchoolsPage() {
         <p className="mt-1 max-w-2xl text-sm text-zinc-500 dark:text-slate-400">
           1,300+ pieces of curriculum-aligned content. Every passage, question,
           image, and audio file runs a 12-check quality pipeline before a
-          single student sees it — reading-level audit, Wikipedia fact-check
+          single student sees it - reading-level audit, Wikipedia fact-check
           on non-fiction, pedagogy review, image + audio judges. Fails get
           auto-rewritten or quarantined; never quietly shipped.
         </p>
@@ -169,7 +169,7 @@ export default function SchoolsPage() {
           />
           <FundingCard
             title="Curriculum adoption funds"
-            body="Readee works as a supplement to your core ELA curriculum — purchasable under your annual adoption budget."
+            body="Readee works as a supplement to your core ELA curriculum - purchasable under your annual adoption budget."
           />
         </div>
         <div className="mt-5">
@@ -240,7 +240,7 @@ export default function SchoolsPage() {
           <PaperworkLink
             icon={Download}
             title="Privacy-for-schools detail"
-            body="COPPA, FERPA, NY 2-d, CA SOPIPA, CO, IL — full policy page."
+            body="COPPA, FERPA, NY 2-d, CA SOPIPA, CO, IL - full policy page."
             href="/privacy-for-schools"
           />
           <PaperworkLink
@@ -261,7 +261,7 @@ export default function SchoolsPage() {
       {/* CTA */}
       <section className="mt-14 rounded-3xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-8 text-center dark:border-indigo-900/40 dark:from-indigo-950/30 dark:to-violet-950/30">
         <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          Start with a pilot classroom — free
+          Start with a pilot classroom - free
         </h2>
         <p className="mt-2 text-sm text-zinc-600 dark:text-slate-400">
           One free teacher account, one classroom, full curriculum access.

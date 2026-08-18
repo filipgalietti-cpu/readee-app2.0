@@ -29,7 +29,7 @@ export default function ExitForm({
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setErr(data.error ?? "That didn't work — try again.");
+        setErr(data.error ?? "That didn't work - try again.");
         return;
       }
       // Cookie cleared server-side; bounce to dashboard so the parent

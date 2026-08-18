@@ -117,7 +117,7 @@ export default function BillingPage() {
       );
     } catch {
       setPortalError(
-        `Couldn't reach Stripe. Check your connection and try again — or email ${SUPPORT.email}.`,
+        `Couldn't reach Stripe. Check your connection and try again - or email ${SUPPORT.email}.`,
       );
     } finally {
       setPortalLoading(false);
@@ -177,7 +177,7 @@ export default function BillingPage() {
                     read from lib/billing-copy.ts. */}
                 {isPremium && hasStripe && (
                   <p className="mt-1 text-sm text-violet-700">
-                    {PRICING.monthly.label} or {PRICING.annual.label} —
+                    {PRICING.monthly.label} or {PRICING.annual.label} -
                     full access, cancel anytime
                   </p>
                 )}
@@ -197,7 +197,7 @@ export default function BillingPage() {
                   <p className="text-sm font-medium text-violet-900 mb-1">Subscription managed by Stripe</p>
                   <p className="text-xs text-violet-600/70">
                     Update payment method, switch monthly ↔ annual, view
-                    invoices, or cancel — all in the Stripe billing portal.
+                    invoices, or cancel - all in the Stripe billing portal.
                     Cancellation keeps you on Readee+ until the end of
                     your billing period, then drops you to Free.
                   </p>
@@ -226,7 +226,7 @@ export default function BillingPage() {
                 <p className="text-sm font-medium text-violet-900 mb-1">Promo access</p>
                 <p className="text-xs text-violet-600/70">
                   Your Readee+ access was activated via promo code. No
-                  card on file, no recurring charge — just full access
+                  card on file, no recurring charge - just full access
                   for the promo period.
                 </p>
               </div>
@@ -235,7 +235,7 @@ export default function BillingPage() {
             {!isPremium && (
               <div className="space-y-3">
                 <p className="text-sm text-zinc-600">
-                  You&apos;re on the free plan — adaptive placement test,
+                  You&apos;re on the free plan - adaptive placement test,
                   first lesson per grade, 10 practice questions per
                   standard, 2 stories per grade, the daily question, and
                   the public community library.
@@ -244,7 +244,7 @@ export default function BillingPage() {
                   href="/upgrade"
                   className="block w-full rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 py-3 text-center text-sm font-bold text-white shadow-md transition-all hover:from-indigo-700 hover:to-violet-600"
                 >
-                  Start {PRICING.trialDays}-day free trial — {PRICING.monthly.label}
+                  Start {PRICING.trialDays}-day free trial - {PRICING.monthly.label}
                 </Link>
                 <p className="text-center text-[11px] text-zinc-400">
                   No charge until day {PRICING.trialDays + 1}. Cancel anytime.

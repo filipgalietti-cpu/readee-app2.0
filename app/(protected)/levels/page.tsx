@@ -139,7 +139,7 @@ function LevelsContent() {
               Right now
             </div>
             <h2 className="mt-0.5 text-2xl font-extrabold leading-tight">
-              Level {info.current.number} — {info.current.name}
+              Level {info.current.number} - {info.current.name}
             </h2>
             <p className="mt-1 text-sm text-white/85">
               {info.lifetimeCarrots.toLocaleString()} lifetime carrots

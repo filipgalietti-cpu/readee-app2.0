@@ -117,14 +117,14 @@ function BylineConsentDialog({
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       <div className="relative w-full max-w-md rounded-3xl border border-violet-200 bg-white p-6 shadow-2xl dark:border-violet-900/40 dark:bg-slate-900">
         <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
-          Quick question — one time only
+          Quick question - one time only
         </div>
         <h3 className="mt-1 text-xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
           Want your name on the passages you share?
         </h3>
         <p className="mt-2 text-sm text-zinc-600 dark:text-slate-400">
           Other Readee families will see your contribution. You can stay
-          anonymous, or add a first name and last initial — whatever you
+          anonymous, or add a first name and last initial - whatever you
           prefer.
         </p>
 

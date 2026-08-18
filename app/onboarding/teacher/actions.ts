@@ -34,7 +34,7 @@ export async function saveTeacherIdentity(input: {
   const displayName = input.displayName.trim();
   if (!displayName) return { ok: false, error: "Tell us what kids should call you." };
   if (displayName.length > 80) {
-    return { ok: false, error: "That's a long name — keep it under 80 characters." };
+    return { ok: false, error: "That's a long name - keep it under 80 characters." };
   }
 
   const grades = (input.defaultGrades ?? [])

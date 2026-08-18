@@ -15,7 +15,7 @@ export function TryAgainNudge({ message }: { message: string }) {
     >
       <p className="text-sm font-bold text-amber-800 dark:text-amber-200">{message}</p>
       <p className="mt-0.5 text-xs font-semibold text-amber-600 dark:text-amber-300">
-        Try again — you&apos;ve got this!
+        Try again - you&apos;ve got this!
       </p>
     </motion.div>
   );

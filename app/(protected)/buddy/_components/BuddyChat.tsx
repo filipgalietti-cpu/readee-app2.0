@@ -120,7 +120,7 @@ export default function BuddyChat() {
           Readee can&apos;t hear you on this browser.
         </div>
         <p className="mx-auto mt-2 max-w-sm text-sm text-amber-800">
-          The reading buddy needs microphone access — try Chrome, Safari,
+          The reading buddy needs microphone access - try Chrome, Safari,
           or Edge on a phone or tablet.
         </p>
       </div>

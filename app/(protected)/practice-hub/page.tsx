@@ -496,7 +496,7 @@ function PracticeHubContent() {
   const grade = allGrades.find((g) => g.gradeKey === gk) || allGrades[0];
   const masteredTotal = allStandards.filter((s) => mastery[s.standard_id] === 3).length;
   const heroSubcopy = masteredTotal > 0
-    ? `You've mastered ${masteredTotal} skill${masteredTotal === 1 ? "" : "s"} — keep collecting stars!`
+    ? `You've mastered ${masteredTotal} skill${masteredTotal === 1 ? "" : "s"} - keep collecting stars!`
     : "Pick a world and start collecting stars!";
 
   return (

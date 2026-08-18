@@ -4,7 +4,7 @@ import { ArrowLeft, DollarSign } from "lucide-react";
 import PrintButton from "@/app/_components/PrintButton";
 
 export const metadata: Metadata = {
-  title: "Funding Readee — ESSER, Title I, Title IV, IDEA | Readee for Schools",
+  title: "Funding Readee - ESSER, Title I, Title IV, IDEA | Readee for Schools",
   description:
     "Printable guide for school business managers and grant writers: how to fund a Readee K-4 reading deployment with federal and state grant dollars.",
 };
@@ -53,11 +53,11 @@ export default function FundingGuidePage() {
           <Stream
             code="Title II, Part A"
             allowed="Teacher training and instructional technology"
-            justification="Readee's teacher dashboard, assignment wizard, and Readee.ai content tools function as professional-learning infrastructure — teachers build formative assessments and differentiated passages in minutes instead of hours."
+            justification="Readee's teacher dashboard, assignment wizard, and Readee.ai content tools function as professional-learning infrastructure - teachers build formative assessments and differentiated passages in minutes instead of hours."
             citation="ESEA §2103"
           />
           <Stream
-            code="Title IV, Part A — SSAE"
+            code="Title IV, Part A - SSAE"
             allowed="Well-rounded education, safe &amp; healthy schools, effective use of technology"
             justification="Reading comprehension is a core component of well-rounded education. Readee's use of technology for instruction (not just assessment) meets the Title IV-A effective-use-of-tech criterion."
             citation="ESEA §4107, §4109"
@@ -65,7 +65,7 @@ export default function FundingGuidePage() {
           <Stream
             code="Title III, Part A"
             allowed="Supplemental instruction for English Learners"
-            justification="Readee's comprehension questions use plain, decodable vocabulary with read-aloud audio — suitable as a supplemental ELL support. (Bilingual Spanish content coming late 2026.)"
+            justification="Readee's comprehension questions use plain, decodable vocabulary with read-aloud audio - suitable as a supplemental ELL support. (Bilingual Spanish content coming late 2026.)"
             citation="ESEA §3115"
           />
           <Stream
@@ -127,9 +127,9 @@ export default function FundingGuidePage() {
       <section className="mt-8">
         <h2 className="text-lg font-bold text-zinc-900">How to order</h2>
         <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm text-zinc-700">
-          <li>Request a quote at <strong>hello@readee.app</strong> — tell us seat count and funding source.</li>
+          <li>Request a quote at <strong>hello@readee.app</strong> - tell us seat count and funding source.</li>
           <li>We send a signable SDPC-standard DPA with state exhibits.</li>
-          <li>Your purchasing office cuts a PO — we accept PO, check, ACH, or card.</li>
+          <li>Your purchasing office cuts a PO - we accept PO, check, ACH, or card.</li>
           <li>Rostering: Google Classroom OAuth live; Clever/ClassLink Q3 2026.</li>
           <li>Teachers are onboarded same-week; students join with a 6-char class code.</li>
         </ol>

@@ -138,7 +138,7 @@ function SignupInner() {
         Create your account
       </h1>
       <p className="text-[15px] text-zinc-600 mt-1.5 mb-6 text-center">
-        {role === "educator" ? "Teacher signup — free to start." : "Let the learning begin!"}
+        {role === "educator" ? "Teacher signup - free to start." : "Let the learning begin!"}
       </p>
 
       {/* Parent / Teacher toggle — only when the URL opted into the teacher

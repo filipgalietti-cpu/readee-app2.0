@@ -120,7 +120,7 @@ const LEVEL_INFO: Record<string, { grade: string; summary: string; details: stri
   "Emerging Reader": {
     grade: "Pre-Kindergarten",
     summary: "Just getting started with reading",
-    details: "Your child is learning the building blocks — recognizing letters, hearing sounds in words, and understanding how books work. This is a normal starting point and we'll build from here!",
+    details: "Your child is learning the building blocks - recognizing letters, hearing sounds in words, and understanding how books work. This is a normal starting point and we'll build from here!",
   },
   "Beginning Reader": {
     grade: "Kindergarten",
@@ -603,7 +603,7 @@ function ReadingProfileCard({
         <h2 className="text-lg font-bold text-zinc-900">Reading Profile</h2>
       </div>
       <p className="text-sm text-zinc-500 mb-5 leading-relaxed">
-        Reading isn't one skill — it's five. Here's your child's grade-level
+        Reading isn't one skill - it's five. Here's your child's grade-level
         placement on each dimension we measured.
       </p>
 

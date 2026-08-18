@@ -927,7 +927,7 @@ function CompletionScreen({
     subtitle = `You mastered ${lesson.title}!`;
   } else if (stars === 2) {
     title = "Great Work!";
-    subtitle = "Almost perfect — keep it up!";
+    subtitle = "Almost perfect - keep it up!";
   } else if (stars === 1) {
     title = "Good Effort!";
     subtitle = "Practice makes perfect!";

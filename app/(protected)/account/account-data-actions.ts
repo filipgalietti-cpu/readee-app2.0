@@ -156,7 +156,7 @@ export async function exportUserDataAction(): Promise<
       route: "account.export.failed",
       userId: profile.id,
     });
-    return { ok: false, error: "Couldn't build your export — please try again." };
+    return { ok: false, error: "Couldn't build your export - please try again." };
   }
 }
 
@@ -213,7 +213,7 @@ async function sendDeletionConfirmation(email: string, parentName: string | null
       "",
       "If this wasn't you, please reply to this email immediately.",
       "",
-      "— Readee",
+      "- Readee",
     ].join("\n");
     const html = `<!doctype html>
 <html><body style="margin:0;padding:0;background:#f7f7fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#18181b;">

@@ -2229,7 +2229,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     const sharedContentSlot = isSynthetic ? (
       <CelebrationContent
         title={slide?.heading || "Time to try it yourself!"}
-        body="Quick questions ahead — you've got this."
+        body="Quick questions ahead - you've got this."
       />
     ) : (
       nonSyntheticContent

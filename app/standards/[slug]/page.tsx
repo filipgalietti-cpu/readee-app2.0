@@ -25,12 +25,12 @@ export async function generateMetadata({
   const standard = getStandardBySlug(slug);
   if (!standard) {
     return {
-      title: "Standard not found — Readee",
+      title: "Standard not found - Readee",
     };
   }
   const domain = domainFriendlyName(standard.domain);
-  const title = `${standard.standard_id} — ${standard.gradeLabel} ${domain} practice | Readee`;
-  const description = `${standard.standard_description}. Practice ${standard.standard_id} with Readee — free sample questions, audio read-alouds, and full Common Core ELA coverage for ${standard.gradeLabel}.`;
+  const title = `${standard.standard_id} - ${standard.gradeLabel} ${domain} practice | Readee`;
+  const description = `${standard.standard_description}. Practice ${standard.standard_id} with Readee - free sample questions, audio read-alouds, and full Common Core ELA coverage for ${standard.gradeLabel}.`;
   const canonical = `https://learn.readee.app/standards/${slug}`;
   return {
     title,
@@ -68,7 +68,7 @@ export default async function StandardLandingPage({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LearningResource",
-    name: `${standard.standard_id} — ${standard.gradeLabel} ${domain}`,
+    name: `${standard.standard_id} - ${standard.gradeLabel} ${domain}`,
     description: standard.standard_description,
     educationalLevel: standard.gradeLabel,
     educationalAlignment: {
@@ -201,7 +201,7 @@ export default async function StandardLandingPage({
               className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-indigo-700"
             >
               <GraduationCap className="h-4 w-4" />
-              Start free — no credit card
+              Start free - no credit card
             </Link>
             <Link
               href="/upgrade"

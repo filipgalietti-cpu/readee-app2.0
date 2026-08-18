@@ -633,7 +633,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
               // Hover tooltip ("what's up next") — Claude Design a205aaa2 update.
               const tipRing = done ? "#fde68a" : cur ? "#d1fae5" : "#f4f4f5";
               const tipAccent = done ? "#b45309" : cur ? "#059669" : "#a1a1aa";
-              const tipStatus = done ? `Completed · ${nStars} stars · tap to replay` : cur ? "Ready to start!" : "Locked — finish the path to get here";
+              const tipStatus = done ? `Completed · ${nStars} stars · tap to replay` : cur ? "Ready to start!" : "Locked - finish the path to get here";
               const tipPos: React.CSSProperties = cur ? { top: "calc(100% + 14px)" } : { bottom: "calc(100% + 14px)" };
               const tipArrowPos: React.CSSProperties = cur ? { top: -5 } : { bottom: -5 };
               const tipArrowClip = cur ? "polygon(0 0, 100% 0, 0 100%)" : "polygon(100% 0, 100% 100%, 0 100%)";
@@ -700,7 +700,7 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
                     <div style={{ flex: 1, textAlign: "left" }}>
                       <div style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: 1.4, color: "#4338ca", textTransform: "uppercase" }}>New chapter</div>
                       <div style={{ fontSize: 20, fontWeight: 700, color: "#1e1b4b", fontFamily: "var(--font-baloo), sans-serif", lineHeight: 1.1 }}>{g.title}</div>
-                      <div style={{ fontSize: 12, color: "#71717a", marginTop: 1 }}>{open ? "The gate is open — keep climbing!" : "Finish the chapter to open this gate"}</div>
+                      <div style={{ fontSize: 12, color: "#71717a", marginTop: 1 }}>{open ? "The gate is open - keep climbing!" : "Finish the chapter to open this gate"}</div>
                     </div>
                   </div>
                 </div>

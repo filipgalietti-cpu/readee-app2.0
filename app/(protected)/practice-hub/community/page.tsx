@@ -233,7 +233,7 @@ export default async function CommunityLibraryPage({
             <EmptyState
               mascot="search"
               title="No passages match these filters"
-              description="Try a different grade or topic — or clear filters to see everything."
+              description="Try a different grade or topic - or clear filters to see everything."
               action={{
                 href: "/practice-hub/community",
                 label: "Clear filters",

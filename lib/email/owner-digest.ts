@@ -279,7 +279,7 @@ export async function sendOwnerDigest(): Promise<OwnerDigestResult> {
   };
 
   const today = new Date().toISOString().slice(0, 10);
-  const subject = `Readee daily — ${summary.discovery.total + summary.daily.total + summary.leveled.total} new pieces (${today})`;
+  const subject = `Readee daily - ${summary.discovery.total + summary.daily.total + summary.leveled.total} new pieces (${today})`;
   const text = renderText(summary, today);
   const html = renderHtml(summary, today);
 
@@ -346,7 +346,7 @@ function bucketHoles(
 
 function renderText(s: any, today: string): string {
   const lines: string[] = [];
-  lines.push(`Readee daily digest — ${today}`);
+  lines.push(`Readee daily digest - ${today}`);
   lines.push("");
   lines.push(
     `Discovery articles: ${s.discovery.total} (pass ${s.discovery.pass} / warn ${s.discovery.warn} / fail ${s.discovery.fail})`,
@@ -440,7 +440,7 @@ function renderText(s: any, today: string): string {
     lines.push("Latest discovery articles:");
     for (const r of s.recent) {
       lines.push(
-        `  [${r.qc_overall}] ${r.title} — https://learn.readee.app/discover/${r.category}/${r.slug}`,
+        `  [${r.qc_overall}] ${r.title} - https://learn.readee.app/discover/${r.category}/${r.slug}`,
       );
     }
   }
@@ -590,7 +590,7 @@ function renderHtml(s: any, today: string): string {
           <a href="https://learn.readee.app/owner" style="display:inline-block;background:#6366f1;color:#ffffff;text-decoration:none;font-weight:700;padding:10px 22px;border-radius:999px;font-size:13px;">Open /owner dashboard</a>
         </td></tr>
         <tr><td style="font-size:11px;color:#a1a1aa;line-height:1.6;border-top:1px solid #e4e4e7;padding-top:16px;">
-          Daily owner digest — sent automatically every 24h. Configure recipient via OWNER_DIGEST_TO env var.
+          Daily owner digest - sent automatically every 24h. Configure recipient via OWNER_DIGEST_TO env var.
         </td></tr>
       </table>
     </td></tr>

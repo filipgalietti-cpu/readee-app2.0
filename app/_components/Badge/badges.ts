@@ -218,7 +218,7 @@ export const BADGES: Badge[] = [
         <line x1="32" y1="124" x2="56" y2="124"/>
         <line x1="22" y1="144" x2="56" y2="144"/>
       </g>
-      <!-- book — tilted/zooming right -->
+      <!-- book - tilted/zooming right -->
       <g transform="rotate(8 110 114)">
         <path d="M 60 80 L 160 80 L 160 148 L 60 148 Z" fill="#fafafa" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
         <line x1="110" y1="80" x2="110" y2="148" stroke="#1a1a1a" stroke-width="3"/>
@@ -267,7 +267,7 @@ export const BADGES: Badge[] = [
   {
     id: "badge_streak_30",
     name: "30-Day Streak",
-    desc: "A whole month — keep going.",
+    desc: "A whole month - keep going.",
     tier: "silver",
     art: `
       <!-- Authentic fire-emoji silhouette (same as 7-day) -->
@@ -718,7 +718,7 @@ export const BADGES: Badge[] = [
       <!-- 2. FACE (bigger, drawn AFTER cone so it shows under the brim) -->
       <ellipse cx="100" cy="140" rx="24" ry="18" fill="#f5d3a0" stroke="#1a1a1a" stroke-width="3"/>
 
-      <!-- 3. HAT BRIM — drawn LAST so it sits OVER the top of the face -->
+      <!-- 3. HAT BRIM - drawn LAST so it sits OVER the top of the face -->
       <path d="M 52 122 Q 100 140 148 122 L 146 134 Q 100 152 54 134 Z"
             fill="#2a3490" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
       <!-- brim highlight -->
@@ -827,7 +827,7 @@ export const BADGES: Badge[] = [
       <circle cx="100" cy="112" r="34" fill="#fafafa" stroke="#1a1a1a" stroke-width="3"/>
       <circle cx="100" cy="112" r="22" fill="#e8503a" stroke="#1a1a1a" stroke-width="3"/>
       <circle cx="100" cy="112" r="10" fill="#ffd14a" stroke="#1a1a1a" stroke-width="3"/>
-      <!-- arrow stuck in bullseye — shaft buried in target, fletching symmetric around tail -->
+      <!-- arrow stuck in bullseye - shaft buried in target, fletching symmetric around tail -->
       <g>
         <!-- shaft: from top-right (tail) into the bullseye center -->
         <line x1="170" y1="54" x2="108" y2="112" stroke="#5a3a16" stroke-width="6" stroke-linecap="round"/>

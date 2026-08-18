@@ -26,7 +26,7 @@ export default async function StoriesForMePage() {
           mascot="welcome"
           size="lg"
           title="Add a kid first"
-          description="Stories for me are personalized to a specific kid — name, grade, and what they're into. Add a reader to get started."
+          description="Stories for me are personalized to a specific kid - name, grade, and what they're into. Add a reader to get started."
           action={{ href: "/settings", label: "Go to settings" }}
         />
       </div>
@@ -61,7 +61,7 @@ export default async function StoriesForMePage() {
         {children.length === 1
           ? `${children[0].first_name} is`
           : "they are"}{" "}
-        the main character — illustrated, at their reading level.
+        the main character - illustrated, at their reading level.
       </p>
 
       <div className="mt-6">

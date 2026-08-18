@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Readee",
-    title: "Readee — Unlock Reading",
+    title: "Readee - Unlock Reading",
     description:
       "Fun, science-backed reading for K–4th grade.",
     url: "https://learn.readee.app",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@ReadeeLearning",
     creator: "@ReadeeLearning",
-    title: "Readee — Unlock Reading",
+    title: "Readee - Unlock Reading",
     description:
       "Fun, science-backed reading for K–4th grade.",
     images: ["/og-image.png"],

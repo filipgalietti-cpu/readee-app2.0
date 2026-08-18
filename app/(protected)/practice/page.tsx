@@ -211,7 +211,7 @@ const KID_PROMPTS: Record<string, string> = {
   "RL.K.5": "Do you know your book types? Let's see!",
   "RL.K.6": "Let's learn about the people who make books!",
   "RL.K.7": "How do pictures and words work together? Let's look!",
-  "RL.K.9": "Two stories, one challenge — spot the differences!",
+  "RL.K.9": "Two stories, one challenge - spot the differences!",
   "RI.K.1": "Can you hunt for facts and details? Let's go!",
   "RI.K.2": "What's the big idea? Let's figure it out together!",
   "RI.K.3": "How do ideas connect? Let's link them up!",
@@ -220,26 +220,26 @@ const KID_PROMPTS: Record<string, string> = {
   "RI.K.6": "Who wrote this and why? Let's investigate!",
   "RI.K.7": "Pictures + words = clues! Let's put them together!",
   "RI.K.8": "Why did the author write this? Let's figure it out!",
-  "RI.K.9": "Two texts, same topic — what's different? Let's compare!",
-  "RF.K.1a": "Follow the words with your finger — let's track them!",
+  "RI.K.9": "Two texts, same topic - what's different? Let's compare!",
+  "RF.K.1a": "Follow the words with your finger - let's track them!",
   "RF.K.1b": "Let's learn how books and words work!",
   "RF.K.1c": "Can you spot the spaces between words? Let's look!",
   "RF.K.1d": "A-B-C, let's go! Time to practice your letters!",
-  "RF.K.2a": "Cat, hat, bat — can you find the rhymes?",
+  "RF.K.2a": "Cat, hat, bat - can you find the rhymes?",
   "RF.K.2b": "Clap it out! How many syllables can you hear?",
   "RF.K.2c": "Put the sounds together to make a word!",
   "RF.K.2d": "Break it apart! What sounds do you hear?",
-  "RF.K.2e": "New sounds to discover — let's listen carefully!",
+  "RF.K.2e": "New sounds to discover - let's listen carefully!",
   "RF.K.3a": "What sound does each letter make? Let's practice!",
-  "RF.K.3b": "A, E, I, O, U — time to learn vowel sounds!",
+  "RF.K.3b": "A, E, I, O, U - time to learn vowel sounds!",
   "RF.K.3c": "Can you read these important words super fast?",
   "RF.K.3d": "Use letter clues to figure out new words!",
   "RF.K.4": "Time to read like a superstar! Let's go!",
-  "K.L.1": "Nouns, verbs, and more — let's build sentences!",
-  "K.L.2": "Capitals and periods — let's get them right!",
+  "K.L.1": "Nouns, verbs, and more - let's build sentences!",
+  "K.L.2": "Capitals and periods - let's get them right!",
   "K.L.4": "What does that word mean? Let's find out!",
-  "K.L.5": "Opposites, categories, and more — let's play with words!",
-  "K.L.6": "Big words, small words — let's grow your vocabulary!",
+  "K.L.5": "Opposites, categories, and more - let's play with words!",
+  "K.L.6": "Big words, small words - let's grow your vocabulary!",
 };
 
 const DOMAIN_ICON: Record<string, LucideIcon> = {
@@ -264,8 +264,8 @@ const INCORRECT_MESSAGES = [
 // Shown when the kid gets it right on the SECOND try — kind, but it doesn't
 // count as a first-try win (0 carrots, not scored correct).
 const SECOND_TRY_MESSAGES = [
-  "You found it!", "Got it on the next try!", "Yes — that's the one!",
-  "Nice — you kept going!", "There it is!", "You figured it out!",
+  "You found it!", "Got it on the next try!", "Yes - that's the one!",
+  "Nice - you kept going!", "There it is!", "You figured it out!",
 ];
 
 // Feedback audio files (static .mp3 in /audio/feedback/)
@@ -298,7 +298,7 @@ function splitPrompt(prompt: string): { passage: string | null; question: string
   // cue we can't reliably tell story from question — quoted titles and inner
   // punctuation (e.g. "The True Story of the 3 Little Pigs!") break naive
   // sentence-splitting into a garbled fragment — so we leave the prompt whole.
-  const leadIn = /^\s*(listen to (the )?(story|passage|text)|read (the )?(story|passage|text)|here('|’)?s (a |the )?(story|passage))\s*[:\-–—]?\s*/i;
+  const leadIn = /^\s*(listen to (the )?(story|passage|text)|read (the )?(story|passage|text)|here('|’)?s (a |the )?(story|passage))\s*[:\-–-]?\s*/i;
   const m = prompt.match(leadIn);
   if (m) {
     const stripped = prompt.slice(m[0].length);
@@ -1028,7 +1028,7 @@ function PracticeSession({
       setConsecutiveCorrect(0);
       recordEvent(false, choice);
       const nudgeMsg = (q as { incorrect_feedback?: string }).incorrect_feedback
-        || "Not quite — take another look and try again!";
+        || "Not quite - take another look and try again!";
       setNudge(nudgeMsg.replace(/\*\*/g, ""));
       const nudgeUrl = (q as { incorrect_feedback_audio_url?: string }).incorrect_feedback_audio_url;
       if (nudgeUrl) { stop(); playUrl(nudgeUrl); } else { playIncorrectBuzz(); }
@@ -1241,7 +1241,7 @@ function PracticeSession({
               initial={{ scale: 0.6, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: "spring", stiffness: 500, damping: 20 }}
-              title={`${streakMult}x carrot streak — keep it going!`}
+              title={`${streakMult}x carrot streak - keep it going!`}
               className="relative hidden sm:flex items-center gap-1.5 rounded-full flex-shrink-0"
               style={{
                 padding: "6px 12px 6px 10px",
@@ -1449,7 +1449,7 @@ function PracticeSession({
           const nudgeEl = (selected === null && nudge) ? (
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-1 mx-auto max-w-md rounded-2xl bg-amber-50 border border-amber-200 px-4 py-3 text-center">
               <p className="text-sm font-bold text-amber-800">{nudge}</p>
-              <p className="mt-0.5 text-xs font-semibold text-amber-600">Try again — you&apos;ve got this!</p>
+              <p className="mt-0.5 text-xs font-semibold text-amber-600">Try again - you&apos;ve got this!</p>
             </motion.div>
           ) : null;
 
@@ -1702,7 +1702,7 @@ function CompletionScreen({
     glowColor = "rgba(196,181,253,.55)";
   } else if (stars === 2) {
     title = "Great Work!";
-    subtitle = "Almost perfect — keep it up!";
+    subtitle = "Almost perfect - keep it up!";
     buddyLine = "Your bunny is so proud of you!";
     glowColor = "rgba(165,180,252,.5)";
   } else if (stars === 1) {

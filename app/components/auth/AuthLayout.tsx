@@ -35,7 +35,7 @@ export default function AuthLayout({
         <div className="w-full max-w-[360px] mx-auto pb-10" style={{ paddingTop: "max(40px, calc(50vh - 340px))" }}>
           <Image
             src="/readee-logo.png"
-            alt="Readee — Learn to Read"
+            alt="Readee - Learn to Read"
             width={612}
             height={408}
             priority

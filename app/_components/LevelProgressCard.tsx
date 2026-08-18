@@ -151,7 +151,7 @@ export default function LevelProgressCard({
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-2">
             <div className="text-sm font-bold text-zinc-900 dark:text-white">
-              Level {post.current.number} — {post.current.name}
+              Level {post.current.number} - {post.current.name}
             </div>
             <div className="text-[10px] font-mono text-zinc-400">
               {after} <Carrot className="inline h-3 w-3 -mt-0.5 text-orange-400" strokeWidth={2.4} />
@@ -175,7 +175,7 @@ export default function LevelProgressCard({
             </>
           ) : (
             <div className="mt-1 text-[11px] text-zinc-500 dark:text-slate-400">
-              Max level — you&apos;ve climbed every rung. Keep reading every day to stay sharp!
+              Max level - you&apos;ve climbed every rung. Keep reading every day to stay sharp!
             </div>
           )}
         </div>

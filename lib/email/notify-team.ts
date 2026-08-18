@@ -10,7 +10,7 @@ import { Resend } from "resend";
 export async function notifyTeam(subject: string, html: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.error("[notifyTeam] RESEND_API_KEY not set — skipping:", subject);
+    console.error("[notifyTeam] RESEND_API_KEY not set - skipping:", subject);
     return;
   }
   try {

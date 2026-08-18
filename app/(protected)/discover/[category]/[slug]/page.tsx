@@ -42,10 +42,10 @@ export async function generateMetadata({
   const catLabel = (CATEGORIES as any)[d.category]?.label ?? "Discover";
   const desc = (d.body as string).slice(0, 150);
   return {
-    title: `${d.title} — ${catLabel} on Readee`,
+    title: `${d.title} - ${catLabel} on Readee`,
     description: desc,
     openGraph: {
-      title: `${d.title} — Readee`,
+      title: `${d.title} - Readee`,
       description: desc,
       images: d.image_url ? [d.image_url] : [],
       type: "article",

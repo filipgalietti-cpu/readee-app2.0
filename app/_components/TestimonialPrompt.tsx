@@ -100,7 +100,7 @@ export default function TestimonialPrompt({
       dismiss();
       setTimeout(() => setOpen(false), 1800);
     } catch {
-      setErr("Network glitch — try once more?");
+      setErr("Network glitch - try once more?");
     } finally {
       setSubmitting(false);
     }
@@ -123,7 +123,7 @@ export default function TestimonialPrompt({
           <div className="py-6 text-center">
             <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-500" strokeWidth={2} />
             <p className="mt-3 font-bold text-zinc-900 dark:text-white">
-              Thank you — that helps a lot.
+              Thank you - that helps a lot.
             </p>
           </div>
         ) : (
@@ -171,7 +171,7 @@ export default function TestimonialPrompt({
             <textarea
               value={quote}
               onChange={(e) => setQuote(e.target.value)}
-              placeholder="Tell us what's working — even one sentence helps."
+              placeholder="Tell us what's working - even one sentence helps."
               rows={3}
               className="mt-3 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             />
@@ -185,7 +185,7 @@ export default function TestimonialPrompt({
               />
               <span>
                 OK to use my note on readee.app. We&apos;ll only show your
-                first name + your kid&apos;s grade — never their name.
+                first name + your kid&apos;s grade - never their name.
               </span>
             </label>
 

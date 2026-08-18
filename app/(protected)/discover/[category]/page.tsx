@@ -24,7 +24,7 @@ export async function generateMetadata({
   const cat = getCategory(category);
   if (!cat) return { title: "Readee Discover" };
   return {
-    title: `${cat.label} — Readee Discover`,
+    title: `${cat.label} - Readee Discover`,
     description: cat.blurb,
   };
 }

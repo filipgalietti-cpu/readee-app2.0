@@ -187,7 +187,7 @@ async function openWsWithRetry(opts: {
         TRANSIENT_CLOSE_CODES.has(code) ||
         (e instanceof Error && e.message.includes("Connect timeout"));
       if (attempt === 0 && isTransient) {
-        trackSignal("buddy-live ws handshake transient — retrying", {
+        trackSignal("buddy-live ws handshake transient - retrying", {
           route: "buddy-live.ws.retry",
           level: "warning",
           tags: {
@@ -800,7 +800,7 @@ export default function LiveBuddy({
         <div className="text-center text-xs font-semibold text-zinc-600">
           {status === "idle" && "Tap to start a live conversation"}
           {status === "connecting" && "Connecting…"}
-          {status === "listening" && "Listening — talk to Readee"}
+          {status === "listening" && "Listening - talk to Readee"}
           {status === "speaking" && "Readee is talking…"}
           {status === "thinking" && "Thinking…"}
           {status === "error" && "Tap to try again"}
@@ -898,7 +898,7 @@ export default function LiveBuddy({
             <Sparkles className="h-3 w-3" />
             Live mode
           </div>
-          Real-time voice — under half a second per reply. Tap the mic to
+          Real-time voice - under half a second per reply. Tap the mic to
           end the session.
         </div>
       )}

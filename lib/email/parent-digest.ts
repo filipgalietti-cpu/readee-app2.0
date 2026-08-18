@@ -276,10 +276,10 @@ function renderDigest(input: {
   const leadKid = activeKids[0];
   const subject =
     activeKids.length === 1
-      ? `${leadKid.firstName}'s Readee week — ${leadKid.questionsAttempted} questions, ${
-          leadKid.comprehensionPct ?? "—"
+      ? `${leadKid.firstName}'s Readee week - ${leadKid.questionsAttempted} questions, ${
+          leadKid.comprehensionPct ?? "-"
         }% correct`
-      : `Your family's Readee week — ${activeKids
+      : `Your family's Readee week - ${activeKids
           .map((c) => c.firstName)
           .join(", ")}`;
 
@@ -291,7 +291,7 @@ function renderDigest(input: {
     "Here's how your family's week went on Readee:",
     "",
     ...input.children.map((c) => {
-      const lines: string[] = [`— ${c.firstName}:`];
+      const lines: string[] = [`- ${c.firstName}:`];
       if (c.aiHeadline) lines.push(`  ${c.aiHeadline}`);
       if (c.aiAction) lines.push(`  This week: ${c.aiAction}`);
       if (c.passagesFinished > 0) lines.push(`  · ${c.passagesFinished} passage(s) finished`);
@@ -318,14 +318,14 @@ function renderDigest(input: {
           `  · Tricky spot: ${standardShortName(c.weakestStandard.standard_id) ?? c.weakestStandard.standard_id} (${Math.round(c.weakestStandard.accuracy * 100)}% so far)`,
         );
       if (c.passagesFinished === 0 && c.questionsAttempted === 0)
-        lines.push("  · No Readee time this week — try a passage together tonight!");
+        lines.push("  · No Readee time this week - try a passage together tonight!");
       return lines.join("\n");
     }),
     "",
     `Keep the streak going: ${BASE_URL}/dashboard`,
     "",
     `To stop these weekly emails: ${input.unsubscribeUrl}`,
-    "— Readee",
+    "- Readee",
   ].join("\n");
 
   const childBlocks = input.children
@@ -414,7 +414,7 @@ function renderDigest(input: {
                 <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#4f46e5;text-transform:uppercase;">Your Readee week</div>
                 <h1 style="margin:8px 0 0;font-size:24px;font-weight:800;color:#18181b;">${escapeHtml(greeting)}</h1>
                 <p style="margin:12px 0 0;font-size:15px;line-height:1.5;color:#3f3f46;">
-                  Here's how the week went — what each kid nailed,
+                  Here's how the week went - what each kid nailed,
                   what they unlocked, and where to focus next.
                 </p>
                 ${childBlocks}

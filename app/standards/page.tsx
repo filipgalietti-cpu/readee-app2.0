@@ -7,12 +7,12 @@ export const dynamic = "force-static";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Common Core ELA reading practice — K-4 standards | Readee",
+  title: "Common Core ELA reading practice - K-4 standards | Readee",
   description:
     "Every Common Core ELA reading comprehension standard for Kindergarten through 4th grade, with free practice questions. Reading Literature, Informational Text, Foundational Skills, and Language.",
   alternates: { canonical: "https://learn.readee.app/standards" },
   openGraph: {
-    title: "Common Core ELA reading practice — K-4 standards | Readee",
+    title: "Common Core ELA reading practice - K-4 standards | Readee",
     description:
       "All Common Core ELA reading comprehension standards for K-4 with free sample questions at Readee.",
     url: "https://learn.readee.app/standards",

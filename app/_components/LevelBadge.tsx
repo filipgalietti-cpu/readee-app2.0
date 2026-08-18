@@ -26,7 +26,7 @@ export default function LevelBadge({
   if (size === "sm") {
     return (
       <span
-        title={`Level ${current.number} — ${current.name}`}
+        title={`Level ${current.number} - ${current.name}`}
         className={`inline-flex h-6 w-6 items-center justify-center rounded-full ${current.accent.bg} ${current.accent.fg}`}
       >
         <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />

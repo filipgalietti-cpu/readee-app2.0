@@ -170,7 +170,7 @@ export default function BuddyShell({
                 : "Pick what you want to do today."}
             </p>
             <p className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
-              Tap any card below — Readee will read with you, listen to you,
+              Tap any card below - Readee will read with you, listen to you,
               or make something brand new just for now.
             </p>
           </div>
@@ -206,7 +206,7 @@ export default function BuddyShell({
         <div className="rounded-2xl bg-violet-50 p-3 text-xs text-violet-800">
           <span className="font-bold">Tip: </span>
           {childName
-            ? `Readee makes everything fresh for ${childName} every time — different passage, different story, different words.`
+            ? `Readee makes everything fresh for ${childName} every time - different passage, different story, different words.`
             : "Each activity gets fresh AI-written content tailored to your reader. Reroll any time."}
         </div>
       </div>
@@ -347,7 +347,7 @@ export default function BuddyShell({
             {(content as any).passage}
           </p>
           <div className="mt-3 text-xs text-amber-800">
-            When you're done reading, tap the mic and tell Readee "I&apos;m ready" — Readee will ask
+            When you're done reading, tap the mic and tell Readee "I&apos;m ready" - Readee will ask
             you the {(content as any).questions.length} questions.
           </div>
         </div>

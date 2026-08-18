@@ -296,7 +296,7 @@ function StepIdentity({
         What should kids call you?
       </h1>
       <p className="mt-2 text-sm text-zinc-600">
-        This is how you&apos;ll appear across Readee — on lessons,
+        This is how you&apos;ll appear across Readee - on lessons,
         in messages home, in your students&apos; dashboards.
       </p>
 
@@ -329,7 +329,7 @@ function StepIdentity({
         )}
         {emailHint && !displayName && (
           <p className="mt-2 text-xs text-zinc-500">
-            We had your email as <span className="font-mono">{emailHint}</span> — kids
+            We had your email as <span className="font-mono">{emailHint}</span> - kids
             will never see that.
           </p>
         )}

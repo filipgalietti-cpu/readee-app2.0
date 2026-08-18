@@ -229,7 +229,7 @@ export default function KidHome(p: KidHomeProps) {
                     <button
                       key={c.id}
                       onClick={() => c.owned && p.onPickOutfit(c.id)}
-                      title={c.owned ? c.name : `${c.name} — earn it!`}
+                      title={c.owned ? c.name : `${c.name} - earn it!`}
                       className="kh-outfit"
                       style={{
                         position: "relative",
@@ -266,7 +266,7 @@ export default function KidHome(p: KidHomeProps) {
               </button>
             </div>
             <div style={{ fontSize: 12, fontWeight: 700, color: "#a1a1aa" }}>
-              {p.firstDay ? "Win outfits as you read!" : "Pick an outfit — tap Readee to celebrate!"}
+              {p.firstDay ? "Win outfits as you read!" : "Pick an outfit - tap Readee to celebrate!"}
             </div>
           </div>
 
@@ -324,7 +324,7 @@ export default function KidHome(p: KidHomeProps) {
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 12, padding: "0 4px" }}>
               <Sparkles className="h-4 w-4" stroke="#f59e0b" strokeWidth={2} />
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#71717a" }}>Finish all {p.goalTotal} to fill your ring — confetti time!</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#71717a" }}>Finish all {p.goalTotal} to fill your ring - confetti time!</span>
             </div>
           </div>
 

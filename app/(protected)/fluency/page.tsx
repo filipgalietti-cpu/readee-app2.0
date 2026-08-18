@@ -116,7 +116,7 @@ export default async function FluencyHubPage({
       </h1>
       <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
         {assignedPassage
-          ? "Your teacher assigned this. Read it aloud — Readee.ai listens and gives feedback."
+          ? "Your teacher assigned this. Read it aloud - Readee.ai listens and gives feedback."
           : "Pick a passage, tap record, read it aloud. Readee.ai listens word-by-word."}
       </p>
 

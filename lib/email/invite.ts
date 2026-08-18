@@ -53,7 +53,7 @@ export async function sendInviteEmail(input: SendInviteInput): Promise<void> {
             </tr>
             <tr>
               <td style="font-size:15px;line-height:1.6;color:#3f3f46;padding-bottom:24px;">
-                ${escapeHtml(studentFirstName)} has been added to the class <strong>${escapeHtml(classroomName)}</strong> on Readee — a K-4 reading app aligned to Common Core and the Science of Reading.
+                ${escapeHtml(studentFirstName)} has been added to the class <strong>${escapeHtml(classroomName)}</strong> on Readee - a K-4 reading app aligned to Common Core and the Science of Reading.
                 Tap the button below to connect ${escapeHtml(studentFirstName)}'s Readee account.
               </td>
             </tr>

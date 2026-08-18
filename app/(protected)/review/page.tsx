@@ -123,7 +123,7 @@ export default async function ReviewPage({
             {active.first_name}&apos;s review queue
           </h1>
           <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-            Skills Readee thinks it&apos;s time to revisit — ordered by
+            Skills Readee thinks it&apos;s time to revisit - ordered by
             what&apos;s been waiting longest. 10-15 minutes a day keeps the
             curve fresh.
           </p>
@@ -158,7 +158,7 @@ export default async function ReviewPage({
               seen.size > 0
                 ? `${seen.size} standards are in the review system${
                     (masteredCount ?? 0) > 0
-                      ? ` — ${masteredCount} fully mastered.`
+                      ? ` - ${masteredCount} fully mastered.`
                       : "."
                   }`
                 : "Once they practice some standards, reviews will surface here."
@@ -224,7 +224,7 @@ export default async function ReviewPage({
       <SharpenUpInsights childId={active.id} userPlan={userPlan} />
 
       <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 text-xs text-zinc-600 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-400">
-        <strong>How review works:</strong> Readee uses spaced repetition —
+        <strong>How review works:</strong> Readee uses spaced repetition -
         skills your child gets right show up less often over time; skills
         they struggle with come back sooner. 10-15 minutes a day keeps the
         whole reading journey fresh.{" "}

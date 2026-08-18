@@ -24,21 +24,21 @@ export type Advisor = {
 
 export const ADVISORY_BOARD: Advisor[] = [
   {
-    name: "Seat 1 — Superintendent / Curriculum Director",
+    name: "Seat 1 - Superintendent / Curriculum Director",
     role: "Founding advisor",
     bio: "We're in conversations with district leaders about this seat. If you'd be a fit, reach out at hello@readee.app.",
     status: "placeholder",
   },
   {
-    name: "Seat 2 — Reading researcher",
+    name: "Seat 2 - Reading researcher",
     role: "Founding advisor",
     bio: "Reserved for a Science of Reading researcher or Orton-Gillingham practitioner to keep our content honest to evidence-based methodology.",
     status: "placeholder",
   },
   {
-    name: "Seat 3 — Home reading expert",
+    name: "Seat 3 - Home reading expert",
     role: "Founding advisor",
-    bio: "Reserved for a voice representing homeschool families, reading tutors, or pediatric language specialists — the people who meet kids where they are.",
+    bio: "Reserved for a voice representing homeschool families, reading tutors, or pediatric language specialists - the people who meet kids where they are.",
     status: "placeholder",
   },
 ];

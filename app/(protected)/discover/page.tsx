@@ -8,9 +8,9 @@ import DiscoveryTile from "./_components/DiscoveryTile";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Discover — Readee",
+  title: "Discover - Readee",
   description:
-    "Browse our growing library of fact-checked, kid-friendly reading passages — Science, History, Nature, and more.",
+    "Browse our growing library of fact-checked, kid-friendly reading passages - Science, History, Nature, and more.",
 };
 
 type Latest = {
@@ -49,7 +49,7 @@ export default async function DiscoverIndexPage() {
         What sounds <span className="text-violet-600 dark:text-violet-400">good</span> today?
       </h1>
       <p className="mt-2 max-w-xl text-base leading-relaxed text-zinc-600 dark:text-slate-300">
-        Pick a topic — we bring your reader something fresh to read, every day.
+        Pick a topic - we bring your reader something fresh to read, every day.
       </p>
 
       <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

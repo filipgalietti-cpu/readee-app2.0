@@ -21,7 +21,7 @@ export default function AdvisoryBoardSection({
         <p className="mt-2 text-sm text-zinc-600 dark:text-slate-400">
           Readee is advised by educators, researchers, and administrators who
           care about evidence-based reading instruction. We&apos;re actively
-          seating our founding advisors — if you&apos;re a superintendent,
+          seating our founding advisors - if you&apos;re a superintendent,
           reading researcher, or reading specialist interested in shaping
           Readee&apos;s direction, reach out at{" "}
           <a className="font-semibold text-indigo-700 hover:underline" href="mailto:hello@readee.app?subject=Readee%20advisory%20board">
@@ -97,7 +97,7 @@ function AdvisorCard({ advisor }: { advisor: (typeof ADVISORY_BOARD)[number] }) 
             }`}
           >
             {advisor.name
-              .replace(/Seat \d+\s*—\s*/, "")
+              .replace(/Seat \d+\s*-\s*/, "")
               .split(/\s+/)
               .map((w) => w[0])
               .filter(Boolean)

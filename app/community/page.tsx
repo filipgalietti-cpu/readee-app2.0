@@ -18,12 +18,12 @@ export const dynamic = "force-dynamic";
 export const revalidate = 600;
 
 export const metadata: Metadata = {
-  title: "Readee Community Library — kid-safe reading passages",
+  title: "Readee Community Library - kid-safe reading passages",
   description:
     "Free reading passages for K-4 kids, made by Readee. Comprehension questions, read-aloud audio, and illustrations included. Browse by grade.",
   alternates: { canonical: "/community" },
   openGraph: {
-    title: "Readee Community — kid-safe reading passages",
+    title: "Readee Community - kid-safe reading passages",
     description:
       "Free K-4 reading passages with audio, illustrations, and comprehension questions.",
     type: "website",

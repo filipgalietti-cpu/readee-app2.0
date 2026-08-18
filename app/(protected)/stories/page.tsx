@@ -462,7 +462,7 @@ function StoriesContent() {
                         Read another: {next.title}
                       </button>
                     ) : (
-                      <p className="text-xs" style={{ color: "#a1a1aa" }}>That was the last story in this grade — great job!</p>
+                      <p className="text-xs" style={{ color: "#a1a1aa" }}>That was the last story in this grade - great job!</p>
                     )}
                     <button type="button" onClick={goLibrary} className="w-full rounded-2xl py-3 text-sm font-extrabold transition hover:bg-zinc-100" style={{ color: "#52525b" }}>
                       Back to library
@@ -590,7 +590,7 @@ function StoriesContent() {
           className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800 dark:border-amber-900/40 dark:bg-amber-950/30 dark:text-amber-200"
         >
           We couldn&apos;t save the last story&apos;s progress just now.
-          Your reader still finished it — try reading it again later and
+          Your reader still finished it - try reading it again later and
           it&apos;ll record then.
         </div>
       )}

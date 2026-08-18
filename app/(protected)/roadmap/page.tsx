@@ -956,7 +956,7 @@ function MapNode({
               : "bg-gradient-to-b from-zinc-300 to-zinc-400 text-zinc-500 shadow-[0_2px_0_0_#a1a1aa] opacity-60 border-zinc-200"
             }
           `}
-          aria-label={`${standard.standard_id}: ${standard.standard_description}${isPremium ? " (Readee+ premium)" : " (locked — complete earlier topics to unlock)"}`}
+          aria-label={`${standard.standard_id}: ${standard.standard_description}${isPremium ? " (Readee+ premium)" : " (locked - complete earlier topics to unlock)"}`}
         >
           {isPremium ? (
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">

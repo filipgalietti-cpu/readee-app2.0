@@ -144,7 +144,7 @@ export default async function AskReadeePage({
     suggestedReason = `Based on what ${children[0]?.first_name ?? "your kid"} has been into lately.`;
   } else if (recentTopics.length === 1) {
     suggestedTopic = `A fresh ${recentTopics[0]} story they haven't read yet`;
-    suggestedReason = `${children[0]?.first_name ?? "Your kid"} keeps coming back to ${recentTopics[0]} — let's give them a new one.`;
+    suggestedReason = `${children[0]?.first_name ?? "Your kid"} keeps coming back to ${recentTopics[0]} - let's give them a new one.`;
   } else if (isEvening) {
     suggestedTopic = "A calm bedtime adventure";
     suggestedReason = "Quick wind-down read for the evening.";
@@ -171,7 +171,7 @@ export default async function AskReadeePage({
           Ask Readee
         </h1>
         <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-          A reading made just for your child — in 3 quick taps.
+          A reading made just for your child - in 3 quick taps.
         </p>
       </div>
 
@@ -182,7 +182,7 @@ export default async function AskReadeePage({
             <div className="font-bold">Trusted contributor</div>
             <div className="mt-0.5 text-xs text-amber-800 dark:text-amber-200">
               You&apos;ve had {approvedShares} community submissions approved.
-              Your future shares now go live immediately — no human review
+              Your future shares now go live immediately - no human review
               wait.
             </div>
           </div>

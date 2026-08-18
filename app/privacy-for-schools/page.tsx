@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Shield, FileText, Lock, Building2, ScrollText, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy for Schools — Readee",
+  title: "Privacy for Schools - Readee",
   description:
     "COPPA, FERPA, and state privacy compliance details for schools and districts evaluating Readee Learning.",
 };
@@ -97,7 +97,7 @@ export default function PrivacyForSchoolsPage() {
         </ul>
       </Section>
 
-      <Section id="coppa" icon={Shield} title="COPPA — Children's Online Privacy Protection Act">
+      <Section id="coppa" icon={Shield} title="COPPA - Children's Online Privacy Protection Act">
         <p>
           COPPA applies to online services collecting information from children
           under 13. Readee&apos;s audience is K–4 (ages 5–10), so COPPA
@@ -132,7 +132,7 @@ export default function PrivacyForSchoolsPage() {
         </p>
       </Section>
 
-      <Section id="ferpa" icon={FileText} title="FERPA — Family Educational Rights and Privacy Act">
+      <Section id="ferpa" icon={FileText} title="FERPA - Family Educational Rights and Privacy Act">
         <p>
           When a school contracts with Readee, Readee acts as a{" "}
           <strong>&quot;school official&quot; with a legitimate educational
@@ -169,7 +169,7 @@ export default function PrivacyForSchoolsPage() {
       <Section id="state-laws" icon={Building2} title="State student-privacy laws">
         <p>
           Readee commits to the core obligations of the following state
-          laws. If your district is in a state not listed here, email us —
+          laws. If your district is in a state not listed here, email us -
           we add coverage as customers request it.
         </p>
 
@@ -295,7 +295,7 @@ export default function PrivacyForSchoolsPage() {
         <ul className="list-disc space-y-2 pl-5">
           <li>
             <strong>Hosting:</strong> Vercel (edge/Node runtime) and Supabase
-            (Postgres, Auth, Storage) — both in AWS us-east-1.
+            (Postgres, Auth, Storage) - both in AWS us-east-1.
           </li>
           <li>
             <strong>Encryption in transit:</strong> TLS 1.2+ for all

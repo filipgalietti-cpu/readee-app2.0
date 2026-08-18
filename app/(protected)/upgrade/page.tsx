@@ -96,12 +96,12 @@ function UpgradeContent() {
       }
       setCheckoutError(
         data.error
-          ? `Couldn't start checkout: ${data.error}. Try again — and email hello@readee.app if it keeps happening.`
-          : "Couldn't start checkout. Try again — and email hello@readee.app if it keeps happening.",
+          ? `Couldn't start checkout: ${data.error}. Try again - and email hello@readee.app if it keeps happening.`
+          : "Couldn't start checkout. Try again - and email hello@readee.app if it keeps happening.",
       );
     } catch {
       setCheckoutError(
-        "Couldn't reach Stripe. Check your connection and try again — email hello@readee.app if it keeps happening.",
+        "Couldn't reach Stripe. Check your connection and try again - email hello@readee.app if it keeps happening.",
       );
     } finally {
       setCheckoutLoading(false);
@@ -255,7 +255,7 @@ function UpgradeContent() {
                 </li>
               ))}
               <li className="text-[11px] text-zinc-400">
-                + {PREMIUM_FEATURES.length - 4} more — see below
+                + {PREMIUM_FEATURES.length - 4} more - see below
               </li>
             </ul>
             <button
@@ -301,7 +301,7 @@ function UpgradeContent() {
             My daughter asks to read on her own now.&rdquo;
           </blockquote>
           <figcaption className="mt-2 text-[11px] font-semibold text-zinc-500">
-            — Sarah M., parent of a 1st grader
+            - Sarah M., parent of a 1st grader
           </figcaption>
         </figure>
 
@@ -325,7 +325,7 @@ function UpgradeContent() {
             <p className="font-bold text-zinc-900">Built by a reading specialist</p>
             <p className="text-sm text-zinc-600 mt-1">
               Every lesson in Readee was designed by{" "}
-              <span className="font-semibold">Jennifer Klingerman</span> — Certified Reading Specialist,
+              <span className="font-semibold">Jennifer Klingerman</span> - Certified Reading Specialist,
               3rd Grade Teacher, and Readee co-founder. The curriculum is aligned to Common Core ELA
               and grounded in the Science of Reading.
             </p>
@@ -384,7 +384,7 @@ function UpgradeContent() {
             <li>• Community library (free, no login)</li>
           </ul>
           <p className="mt-3 text-xs text-zinc-500">
-            Free is genuinely useful — try it. Most families upgrade once
+            Free is genuinely useful - try it. Most families upgrade once
             their reader hits the practice cap or runs out of stories.
           </p>
         </details>

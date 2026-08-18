@@ -38,11 +38,11 @@ export async function generateMetadata({
     return { title: "Not found", robots: { index: false, follow: false } };
   }
   return {
-    title: `${g.label} Reading Passages — Readee Community`,
+    title: `${g.label} Reading Passages - Readee Community`,
     description: `Free ${g.label.toLowerCase()} reading passages with comprehension questions, audio, and illustrations. Made and shared by Readee families.`,
     alternates: { canonical: `/community/grade/${grade.toLowerCase()}` },
     openGraph: {
-      title: `${g.label} reading passages — Readee Community`,
+      title: `${g.label} reading passages - Readee Community`,
       description: `Kid-safe ${g.label.toLowerCase()} reading passages from real Readee families.`,
       type: "website",
       url: `/community/grade/${grade.toLowerCase()}`,
@@ -190,7 +190,7 @@ export default async function CommunityGradePage({
           {g.label} reading passages
         </h1>
         <p className="mt-2 max-w-2xl text-base text-zinc-600">
-          Free, kid-safe passages for {g.label.toLowerCase()} readers — each
+          Free, kid-safe passages for {g.label.toLowerCase()} readers - each
           with comprehension questions, read-aloud audio, and an illustration.
           Made and shared by Readee families.
         </p>
@@ -336,7 +336,7 @@ export default async function CommunityGradePage({
             Want a {g.label.toLowerCase()} passage about something specific?
           </h2>
           <p className="mt-1 text-sm text-zinc-600">
-            Make your own with Readee.ai — pick the topic, get a level-locked
+            Make your own with Readee.ai - pick the topic, get a level-locked
             passage with audio in under a minute.
           </p>
           <Link

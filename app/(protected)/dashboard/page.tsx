@@ -318,7 +318,7 @@ export default function Dashboard() {
         </h1>
         <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
           We hit a temporary snag pulling your reader&apos;s profile.
-          Refresh and try again — email hello@readee.app if it sticks.
+          Refresh and try again - email hello@readee.app if it sticks.
         </p>
         <button
           type="button"
@@ -780,18 +780,18 @@ function ChildDashboard({
     ? { href: `/assessment?child=${child.id}`, text: "Take your reading quiz", sub: "A fun 10-question quiz · about 5 min" }
     : nextLesson
       ? { href: nextLessonHref, text: completedCount === 0 ? "Start your adventure" : "Keep going", sub: `Next: ${nextLesson.title}` }
-      : { href: `/practice-hub?child=${child.id}`, text: "Practice time!", sub: "You finished every lesson — amazing!" };
+      : { href: `/practice-hub?child=${child.id}`, text: "Practice time!", sub: "You finished every lesson - amazing!" };
 
   const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string }> = firstDay
     ? [
         { num: "1", label: "Take the reading quiz", sub: "Finds your just-right level", status: "cur", href: `/assessment?child=${child.id}` },
         { num: "2", label: "Your first lesson", sub: "Readee reads along with you", status: "todo" },
-        { num: "3", label: "Meet your Reading Buddy", sub: "Say hi — it talks back!", status: "todo", href: `/buddy?child=${child.id}` },
+        { num: "3", label: "Meet your Reading Buddy", sub: "Say hi - it talks back!", status: "todo", href: `/buddy?child=${child.id}` },
       ]
     : [
         weakStandard
-          ? { num: "1", label: `Review: ${weakStandard.title}`, sub: dailyGoalMet ? "Done — nice work!" : "You missed a few of these last time", status: dailyGoalMet ? "done" : "cur", href: `/practice?standard=${encodeURIComponent(weakStandard.standardId)}&child=${child.id}` }
-          : { num: "1", label: "Warm-up practice", sub: dailyGoalMet ? "Done — nice work!" : "5 quick questions", status: dailyGoalMet ? "done" : "cur", href: `/practice-hub?child=${child.id}` },
+          ? { num: "1", label: `Review: ${weakStandard.title}`, sub: dailyGoalMet ? "Done - nice work!" : "You missed a few of these last time", status: dailyGoalMet ? "done" : "cur", href: `/practice?standard=${encodeURIComponent(weakStandard.standardId)}&child=${child.id}` }
+          : { num: "1", label: "Warm-up practice", sub: dailyGoalMet ? "Done - nice work!" : "5 quick questions", status: dailyGoalMet ? "done" : "cur", href: `/practice-hub?child=${child.id}` },
         { num: "2", label: nextLesson ? nextLesson.title : "All lessons done!", sub: nextLesson ? "About 5 minutes" : "You finished them all", status: nextLesson ? (dailyGoalMet ? "cur" : "todo") : "done", href: nextLesson ? nextLessonHref : undefined },
         { num: "3", label: "Read a story", sub: "You pick which one", status: "todo", href: `/stories?child=${child.id}` },
       ];
@@ -825,7 +825,7 @@ function ChildDashboard({
     goalLabel: firstDay
       ? `${goalTotal} things to do today`
       : goalDone >= goalTotal
-        ? "All done — great job!"
+        ? "All done - great job!"
         : `${goalTotal - goalDone} more to go!`,
     carrots,
     level: {
@@ -1016,7 +1016,7 @@ function ChildDashboard({
                             ? "hover:scale-105"
                             : "opacity-40 cursor-not-allowed grayscale"
                       }`}
-                      title={owned ? item.name : `${item.name} — ${item.price} carrots`}
+                      title={owned ? item.name : `${item.name} - ${item.price} carrots`}
                     >
                       {imgSrc ? (
                         <img src={imgSrc} alt={item.name} className="w-full h-full object-cover rounded-2xl" draggable={false} loading="lazy" decoding="async" />

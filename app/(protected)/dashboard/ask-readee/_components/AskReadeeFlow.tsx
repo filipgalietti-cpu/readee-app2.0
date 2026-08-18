@@ -379,7 +379,7 @@ function SlideTopic({
         What about?
       </h2>
       <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">
-        Type anything you want them to read about — or tap a suggestion.
+        Type anything you want them to read about - or tap a suggestion.
       </p>
 
       <div className="relative mt-4 rounded-2xl border-2 border-violet-300 bg-white p-4 dark:border-violet-700 dark:bg-slate-900">

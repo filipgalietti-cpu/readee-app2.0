@@ -7,7 +7,7 @@ import AdvisoryBoardSection from "@/app/_components/AdvisoryBoardSection";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet the team behind Readee — built by a reading specialist and developer to help every child become a confident reader.",
+    "Meet the team behind Readee - built by a reading specialist and developer to help every child become a confident reader.",
 };
 
 export default async function About() {
@@ -55,12 +55,12 @@ export default async function About() {
             Readee was founded by <strong>Filip Galietti</strong> and{" "}
             <strong>Jennifer Klingerman</strong>, a certified reading specialist
             and 3rd grade teacher. Jennifer saw firsthand how kids were falling
-            behind in reading — and knew a better approach was possible.
+            behind in reading - and knew a better approach was possible.
           </p>
           <p>
             Together, we set out to build an app that brings real teaching
             methodology to the screen. Not flashy gimmicks or mindless
-            screen time — but structured, science-backed lessons that actually
+            screen time - but structured, science-backed lessons that actually
             move the needle.
           </p>
           <p className="text-indigo-700 font-semibold">
@@ -157,13 +157,13 @@ export default async function About() {
         </div>
 
         <p className="text-[15px] text-zinc-600 leading-relaxed">
-          Readee isn&apos;t a textbook. It&apos;s a living library — built by a
+          Readee isn&apos;t a textbook. It&apos;s a living library - built by a
           reading specialist, scaled by an AI production line, and audited 24/7
           by a quality pipeline that catches duds before any kid sees them.
           Every passage, question, image, and audio file passes{" "}
-          <strong>12 automated quality checks</strong> — including fact-checking
+          <strong>12 automated quality checks</strong> - including fact-checking
           against Wikipedia, reading-level audit per grade, and pedagogy review.
-          Anything that fails gets either auto-rewritten or quarantined — never
+          Anything that fails gets either auto-rewritten or quarantined - never
           quietly shipped.
         </p>
 
@@ -207,7 +207,7 @@ export default async function About() {
               icon: GraduationCap,
               title: "Early Readers",
               subtitle: "Pre-K through 4th Grade",
-              desc: "Covering the critical years when reading skills are built — from letter sounds to independent reading.",
+              desc: "Covering the critical years when reading skills are built - from letter sounds to independent reading.",
             },
             {
               icon: Heart,
@@ -264,12 +264,12 @@ export default async function About() {
           <School className="w-6 h-6 text-white" strokeWidth={1.5} />
         </div>
         <h2 className="text-2xl font-bold text-white tracking-tight">
-          Readee Classroom — Coming Soon
+          Readee Classroom - Coming Soon
         </h2>
         <p className="text-indigo-100 max-w-lg mx-auto leading-relaxed">
           Bringing Readee to schools and classrooms everywhere. Teacher
           dashboards, student progress tracking, and structured phonics
-          instruction — built for the way classrooms actually work.
+          instruction - built for the way classrooms actually work.
         </p>
         <Link
           href="/teachers"

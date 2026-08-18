@@ -621,7 +621,7 @@ export default function Settings() {
                           </select>
                         </Field>
                       </div>
-                      <Field label="Reading level" hint="Set by the placement test — override only if needed.">
+                      <Field label="Reading level" hint="Set by the placement test - override only if needed.">
                         <select value={child.reading_level || ""} onChange={(e) => requestLevelChange(child.id, child.first_name, e.target.value)} style={inputStyle}>
                           <option value="" disabled>Not assessed yet</option>
                           {READING_LEVELS.map((level) => <option key={level} value={level}>{level}</option>)}
@@ -631,7 +631,7 @@ export default function Settings() {
                         <Field label="Dashboard background">
                           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                             <button onClick={() => handleEquipBackground(child, null)} title="Default"
-                              style={{ width: 40, height: 40, borderRadius: 12, border: !equippedBg ? "2px solid #7c3aed" : CARD, background: "#fff", color: "#a1a1aa", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>—</button>
+                              style={{ width: 40, height: 40, borderRadius: 12, border: !equippedBg ? "2px solid #7c3aed" : CARD, background: "#fff", color: "#a1a1aa", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>-</button>
                             {ownedBgIds.map((bgId) => {
                               const imgSrc = BACKGROUND_IMAGES[bgId];
                               const item = SHOP_ITEMS.find((i) => i.id === bgId);
@@ -696,7 +696,7 @@ export default function Settings() {
                   <Check className="w-3 h-3" strokeWidth={3} /> Active
                 </span>
               </div>
-              <p style={{ margin: "0 0 18px", fontSize: 13, color: "#71717a" }}>Full access to every lesson, story, unlimited practice, and parent analytics — for all your readers.</p>
+              <p style={{ margin: "0 0 18px", fontSize: 13, color: "#71717a" }}>Full access to every lesson, story, unlimited practice, and parent analytics - for all your readers.</p>
               <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
                 <button onClick={openBillingPortal} disabled={billingBusy}
                   style={{ border: "none", background: "#4338ca", color: "#fff", fontFamily: "inherit", fontSize: 13.5, fontWeight: 700, padding: "10px 20px", borderRadius: 999, cursor: "pointer", opacity: billingBusy ? 0.6 : 1 }}>
@@ -721,7 +721,7 @@ export default function Settings() {
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
                   <div>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 600, color: "#312e81" }}>
-                      <Sparkles className="w-[18px] h-[18px]" style={{ color: "#4338ca" }} strokeWidth={1.5} /> Readee+ — $9.99/mo
+                      <Sparkles className="w-[18px] h-[18px]" style={{ color: "#4338ca" }} strokeWidth={1.5} /> Readee+ - $9.99/mo
                     </div>
                     <div style={{ fontSize: 12.5, color: "#6366f1", marginTop: 2 }}>Every lesson, unlimited practice, all stories, and parent analytics.</div>
                   </div>
@@ -789,7 +789,7 @@ export default function Settings() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0 0", borderTop: "1px solid #f4f4f5" }}>
             <div>
               <div style={{ fontSize: 14, fontWeight: 600, color: "#dc2626" }}>Delete account</div>
-              <div style={{ fontSize: 12, color: "#71717a" }}>Removes your account, every reader profile, and all progress — permanently.</div>
+              <div style={{ fontSize: 12, color: "#71717a" }}>Removes your account, every reader profile, and all progress - permanently.</div>
             </div>
             <button onClick={() => setShowDeleteAccount(true)}
               style={{ border: "1px solid #fecaca", background: "#fff", color: "#dc2626", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "7px 14px", borderRadius: 12, cursor: "pointer", flexShrink: 0 }}>Delete</button>

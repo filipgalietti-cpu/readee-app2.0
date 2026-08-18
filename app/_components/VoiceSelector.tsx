@@ -35,7 +35,7 @@ export default function VoiceSelector({
     if (!url) {
       // env var missing client-side — voiceSampleUrl returned ""
       console.warn(
-        "[VoiceSelector] No NEXT_PUBLIC_SUPABASE_URL — voice sample URL is empty.",
+        "[VoiceSelector] No NEXT_PUBLIC_SUPABASE_URL - voice sample URL is empty.",
       );
       setErrorId(id);
       return;

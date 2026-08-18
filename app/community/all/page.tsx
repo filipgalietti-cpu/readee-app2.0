@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export const revalidate = 600;
 
 export const metadata: Metadata = {
-  title: "All Community Reading Passages — Readee",
+  title: "All Community Reading Passages - Readee",
   description:
     "Browse every approved K-4 reading passage in the Readee community library. Free, kid-safe, with audio and comprehension questions.",
   alternates: { canonical: "/community/all" },

@@ -121,10 +121,10 @@ function formatLearnItem(item: Record<string, unknown>): { icon: React.ReactNode
   if (item.letter) {
     const keyword = item.keyword || item.example || "";
     const hint = item.hint || item.mouth || item.keyword || "";
-    return { icon, title: `${item.letter} — ${keyword}`, detail: String(hint) };
+    return { icon, title: `${item.letter} - ${keyword}`, detail: String(hint) };
   }
   if (item.sound && item.words) {
-    return { icon, title: `${item.sound} — ${(item.words as string[]).join(", ")}`, detail: String(item.hint || "") };
+    return { icon, title: `${item.sound} - ${(item.words as string[]).join(", ")}`, detail: String(item.hint || "") };
   }
   if (item.word && item.rhymes) {
     return { icon, title: `${item.word} rhymes with ${(item.rhymes as string[]).slice(0, 3).join(", ")}`, detail: `Family: ${item.family || ""}` };
@@ -136,7 +136,7 @@ function formatLearnItem(item: Record<string, unknown>): { icon: React.ReactNode
     return { icon, title: `${(item.sounds as string[]).join(" + ")} = ${item.word}`, detail: String(item.tip || "") };
   }
   if (item.word && item.sentence) {
-    return { icon: null, title: String(item.word), detail: `${item.sentence} — ${item.tip || item.trick || ""}` };
+    return { icon: null, title: String(item.word), detail: `${item.sentence} - ${item.tip || item.trick || ""}` };
   }
   if (item.family && item.words) {
     return { icon, title: `${item.family} family`, detail: (item.words as string[]).join(", ") };
@@ -145,7 +145,7 @@ function formatLearnItem(item: Record<string, unknown>): { icon: React.ReactNode
     return { icon, title: `${item.blend} blend`, detail: (item.words as string[]).join(", ") };
   }
   if (item.digraph) {
-    return { icon, title: `${item.digraph} = ${item.sound}`, detail: `${(item.words as string[]).join(", ")} — ${item.tip || ""}` };
+    return { icon, title: `${item.digraph} = ${item.sound}`, detail: `${(item.words as string[]).join(", ")} - ${item.tip || ""}` };
   }
   if (item.short && item.long) {
     return { icon, title: `${item.short} → ${item.long}`, detail: `Vowel ${item.vowel} says its name!` };
@@ -169,7 +169,7 @@ function formatLearnItem(item: Record<string, unknown>): { icon: React.ReactNode
     return { icon, title: String(item.clue), detail: String(item.inference) };
   }
   if (item.pattern) {
-    return { icon: emojiToIcon("🔍"), title: String(item.pattern), detail: `${(item.words as string[] || []).join(", ")} — ${item.rule || ""}` };
+    return { icon: emojiToIcon("🔍"), title: String(item.pattern), detail: `${(item.words as string[] || []).join(", ")} - ${item.rule || ""}` };
   }
   if (item.main_idea) {
     return { icon: emojiToIcon("🎯"), title: String(item.main_idea), detail: String((item.details as string[] || []).join(", ")) };
@@ -181,7 +181,7 @@ function formatLearnItem(item: Record<string, unknown>): { icon: React.ReactNode
     return { icon: emojiToIcon(item.type === "fact" ? "✅" : "💭"), title: String(item.statement), detail: `${item.type}: ${item.why || ""}` };
   }
   if (item.technique) {
-    return { icon: emojiToIcon((item.emoji as string) || "✍️"), title: String(item.technique), detail: `${item.definition || ""} — "${item.example || ""}"` };
+    return { icon: emojiToIcon((item.emoji as string) || "✍️"), title: String(item.technique), detail: `${item.definition || ""} - "${item.example || ""}"` };
   }
   return { icon: emojiToIcon(rawEmoji || "📚"), title: JSON.stringify(item).slice(0, 50), detail: "" };
 }
@@ -1227,7 +1227,7 @@ function LessonContent() {
             </h1>
 
             <p className="text-zinc-500 max-w-xs mx-auto">
-              You got {practiceCorrect} out of {practiceTotal} — you need {PASS_THRESHOLD} to pass!
+              You got {practiceCorrect} out of {practiceTotal} - you need {PASS_THRESHOLD} to pass!
             </p>
 
             {/* Carrots earned (kept across retries) */}

@@ -45,7 +45,7 @@ export default function ProtectedError({
       </h1>
       <p className="mt-2 max-w-md text-sm text-zinc-500 dark:text-slate-400">
         We&apos;ve been pinged automatically. Try the page again, or
-        head back to the dashboard — the rest of Readee is still
+        head back to the dashboard - the rest of Readee is still
         working.
       </p>
       <div className="mt-6 flex flex-wrap items-center justify-center gap-2">

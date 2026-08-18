@@ -125,7 +125,7 @@ export function McqStage(props: McqStageProps) {
   const nudgeEl = (selected === null && nudge) ? (
     <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="mt-1 mx-auto max-w-md rounded-2xl bg-amber-50 border border-amber-200 px-4 py-3 text-center">
       <p className="text-sm font-bold text-amber-800">{nudge}</p>
-      <p className="mt-0.5 text-xs font-semibold text-amber-600">Try again — you&apos;ve got this!</p>
+      <p className="mt-0.5 text-xs font-semibold text-amber-600">Try again - you&apos;ve got this!</p>
     </motion.div>
   ) : null;
 

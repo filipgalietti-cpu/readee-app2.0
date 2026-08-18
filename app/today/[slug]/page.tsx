@@ -51,10 +51,10 @@ export async function generateMetadata({
   if (!d) return { title: "Today's Readee" };
   const desc = d.passage_body.slice(0, 150);
   return {
-    title: `${d.passage_title} — Readee Daily`,
+    title: `${d.passage_title} - Readee Daily`,
     description: desc,
     openGraph: {
-      title: `${d.passage_title} — Readee Daily`,
+      title: `${d.passage_title} - Readee Daily`,
       description: desc,
       images: d.image_url ? [d.image_url] : [],
       type: "article",

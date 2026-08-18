@@ -95,11 +95,11 @@ function shell(opts: {
 
 function renderWelcome(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
   const subject = kidName
-    ? `Welcome to Readee — let's start ${kidName}'s first lesson`
-    : "Welcome to Readee — your first lesson is ready";
+    ? `Welcome to Readee - let's start ${kidName}'s first lesson`
+    : "Welcome to Readee - your first lesson is ready";
   const lead = kidName
-    ? `Glad ${kidName} is here. Readee works best when you do a short lesson together every day — most families spend about 10 minutes.`
-    : `Glad you're here. Readee works best when your reader does a short lesson every day — most families spend about 10 minutes.`;
+    ? `Glad ${kidName} is here. Readee works best when you do a short lesson together every day - most families spend about 10 minutes.`
+    : `Glad you're here. Readee works best when your reader does a short lesson every day - most families spend about 10 minutes.`;
   const text = [
     parentName ? `Hi ${parentName},` : "Hi there,",
     "",
@@ -110,16 +110,16 @@ function renderWelcome(parentName: string | null, kidName: string | null, unsubs
     "",
     "Three things worth knowing:",
     "  · Every lesson is read-aloud with karaoke highlighting (great for emerging readers).",
-    "  · Practice questions teach to Common Core ELA standards — no test prep filler.",
-    "  · You'll get a weekly summary every Monday — what they read, what they're working on.",
+    "  · Practice questions teach to Common Core ELA standards - no test prep filler.",
+    "  · You'll get a weekly summary every Monday - what they read, what they're working on.",
     "",
     `Unsubscribe: ${unsubscribeUrl}`,
-    "— Readee",
+    "- Readee",
   ].join("\n");
   const bodyHtml = `
     <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
     <ul style="margin:16px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:#3f3f46;">
-      <li>Read-aloud lessons with karaoke highlighting — great for emerging readers.</li>
+      <li>Read-aloud lessons with karaoke highlighting - great for emerging readers.</li>
       <li>Practice questions taught to Common Core ELA standards.</li>
       <li>You'll get a weekly summary every Monday.</li>
     </ul>`;
@@ -140,8 +140,8 @@ function renderFirstLessonNudge(
   unsubscribeUrl: string,
 ) {
   const subject = kidName
-    ? `${kidName} hasn't started yet — try a 10-minute lesson tonight`
-    : "Your reader hasn't started yet — try a 10-minute lesson tonight";
+    ? `${kidName} hasn't started yet - try a 10-minute lesson tonight`
+    : "Your reader hasn't started yet - try a 10-minute lesson tonight";
   const lead = kidName
     ? `${kidName}'s account is set up, but no lesson finished yet. A single 10-minute Readee session is usually enough to make tomorrow's session easier.`
     : `Your reader's account is set up, but no lesson finished yet. A single 10-minute Readee session is usually enough to make tomorrow's session easier.`;
@@ -158,7 +158,7 @@ function renderFirstLessonNudge(
     `${BASE_URL}/dashboard`,
     "",
     `Unsubscribe: ${unsubscribeUrl}`,
-    "— Readee",
+    "- Readee",
   ].join("\n");
   const bodyHtml = `
     <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
@@ -188,8 +188,8 @@ function renderReEngage(
     ? `${kidName} hasn't read on Readee in ${daysSince} days`
     : `Your reader hasn't been on Readee in ${daysSince} days`;
   const lead = kidName
-    ? `${kidName} hasn't logged a lesson in ${daysSince} days. Reading streaks rebuild fast — one short session tonight is enough.`
-    : `Your reader hasn't logged a lesson in ${daysSince} days. Reading streaks rebuild fast — one short session tonight is enough.`;
+    ? `${kidName} hasn't logged a lesson in ${daysSince} days. Reading streaks rebuild fast - one short session tonight is enough.`
+    : `Your reader hasn't logged a lesson in ${daysSince} days. Reading streaks rebuild fast - one short session tonight is enough.`;
   const text = [
     parentName ? `Hi ${parentName},` : "Hi there,",
     "",
@@ -201,7 +201,7 @@ function renderReEngage(
     `  · The day's lesson: ${BASE_URL}/today`,
     "",
     `Unsubscribe: ${unsubscribeUrl}`,
-    "— Readee",
+    "- Readee",
   ].join("\n");
   const bodyHtml = `
     <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>

@@ -1356,7 +1356,7 @@ export const OUTFITS: Outfit[] = [
             font-weight="900" font-size="22" fill="#1a3978" stroke="#1a3978" stroke-width="0.8">R</text>
     `,
     head: `
-      <!-- baseball cap (forward-facing) — smaller, sits on top of head -->
+      <!-- baseball cap (forward-facing) - smaller, sits on top of head -->
       <path d="M 80 92
                Q 76 60 120 58
                Q 164 60 160 92
@@ -1531,7 +1531,7 @@ export const OUTFITS: Outfit[] = [
       <path d="M 130 214 L 134 226 L 124 226 L 122 214 Z" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="2"/>
     `,
     head: `
-      <!-- red hachimaki (headband) — clean band wrapping across the head -->
+      <!-- red hachimaki (headband) - clean band wrapping across the head -->
       <path d="M 70 100 Q 120 94 170 100 L 170 112 Q 120 106 70 112 Z"
             fill="#e8503a" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
       <!-- center red dot (rising sun motif) -->
@@ -1572,7 +1572,7 @@ export const OUTFITS: Outfit[] = [
             fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
     `,
     head: `
-      <!-- aero helmet — teardrop dome (compact) -->
+      <!-- aero helmet - teardrop dome (compact) -->
       <path d="M 80 102
                Q 72 84 92 70
                Q 120 64 148 70
@@ -1770,7 +1770,7 @@ export const OUTFITS: Outfit[] = [
         <path d="M 0 0 L 14 -8 L 28 0 L 14 8 Z" fill="#0a7a3a" stroke="#1a1a1a" stroke-width="2.2" stroke-linejoin="round"/>
         <path d="M 8 0 L 14 -4 L 20 0 L 14 4 Z" fill="#ffd14a" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
       </g>
-      <!-- five stars above crest (5x champions) — tucked above the shield -->
+      <!-- five stars above crest (5x champions) - tucked above the shield -->
       <g fill="#ffffff" stroke="#1a1a1a" stroke-width="0.6">
         <path d="M 86 167 l .6 1.5 l 1.5 .3 l -1.5 .3 l -.6 1.5 l -.6 -1.5 l -1.5 -.3 l 1.5 -.3 z"/>
         <path d="M 92 166 l .6 1.5 l 1.5 .3 l -1.5 .3 l -.6 1.5 l -.6 -1.5 l -1.5 -.3 l 1.5 -.3 z"/>
@@ -1853,7 +1853,7 @@ export const OUTFITS: Outfit[] = [
         <!-- simple coq silhouette (like the Germany eagle) -->
         <path d="M 0 -2 Q 6 -8 12 -2 Q 10 2 6 0 Q 2 2 0 -2 Z" fill="#bf2531"/>
       </g>
-      <!-- two stars above the crest (2x champions: 1998/2018) — smaller, tucked above shield -->
+      <!-- two stars above the crest (2x champions: 1998/2018) - smaller, tucked above shield -->
       <g fill="#ffd14a" stroke="#1a1a1a" stroke-width="0.6">
         <path d="M 102 170 l .6 1.5 l 1.5 .3 l -1.5 .3 l -.6 1.5 l -.6 -1.5 l -1.5 -.3 l 1.5 -.3 z"/>
         <path d="M 110 170 l .6 1.5 l 1.5 .3 l -1.5 .3 l -.6 1.5 l -.6 -1.5 l -1.5 -.3 l 1.5 -.3 z"/>
@@ -1894,7 +1894,7 @@ export const OUTFITS: Outfit[] = [
       <g transform="translate(140 176)">
         <path d="M -6 0 Q 0 -6 6 0 Q 4 4 0 2 Q -4 4 -6 0 Z" fill="#1a1a1a"/>
       </g>
-      <!-- four stars (4x champions) — arched above the eagle -->
+      <!-- four stars (4x champions) - arched above the eagle -->
       <g fill="#1a1a1a">
         <path d="M 132 165 l .6 1.5 l 1.5 .3 l -1.5 .3 l -.6 1.5 l -.6 -1.5 l -1.5 -.3 l 1.5 -.3 z"/>
         <path d="M 137 164 l .6 1.5 l 1.5 .3 l -1.5 .3 l -.6 1.5 l -.6 -1.5 l -1.5 -.3 l 1.5 -.3 z"/>
@@ -2229,7 +2229,7 @@ export const OUTFITS: Outfit[] = [
       <path d="M 178 200 Q 196 200 200 210 Q 192 216 180 212 Z"
             fill="#f47fa8" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
       <!-- flamingo head/neck rising up the bunny's left side -->
-      <!-- neck (thick pink curve) — S-curve, extends further left -->
+      <!-- neck (thick pink curve) - S-curve, extends further left -->
       <path d="M 96 184 Q 50 156 46 122 Q 44 92 64 86"
             fill="none" stroke="#f47fa8" stroke-width="22" stroke-linecap="round"/>
       <path d="M 96 184 Q 50 156 46 122 Q 44 92 64 86"
@@ -2238,7 +2238,7 @@ export const OUTFITS: Outfit[] = [
       <ellipse cx="60" cy="82" rx="18" ry="15" fill="#f47fa8" stroke="#1a1a1a" stroke-width="3"/>
       <!-- head shine -->
       <ellipse cx="54" cy="74" rx="5" ry="3" fill="#fde0ec" opacity=".75"/>
-      <!-- beak upper (peach) — hooked downward -->
+      <!-- beak upper (peach) - hooked downward -->
       <path d="M 44 78 Q 18 80 14 94 L 26 98 Q 40 88 50 84 Z"
             fill="#f4a55f" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
       <!-- eye -->

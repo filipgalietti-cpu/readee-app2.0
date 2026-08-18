@@ -203,7 +203,7 @@ function LoginForm() {
         if (error.status === 429 || msg.includes("rate limit")) {
           setErrors({ general: "Too many magic-link requests. Try again in a minute." });
         } else {
-          setErrors({ general: "Couldn't send the link — try again." });
+          setErrors({ general: "Couldn't send the link - try again." });
         }
         setMagicSending(false);
         return;

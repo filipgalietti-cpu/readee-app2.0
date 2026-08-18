@@ -34,12 +34,12 @@ export const PRICING = {
 
 /* ─── What's included in each tier ───────────────────────── */
 export const PREMIUM_FEATURES = [
-  "Full K–4 lesson library — 162 interactive lessons",
+  "Full K–4 lesson library - 162 interactive lessons",
   "Unlimited practice across 200+ Common Core standards",
   "All 25 decodable stories with read-aloud audio",
-  "Reading Buddy — live AI conversation partner",
-  "Homework Scanner — photo to instant practice",
-  "Ask Readee — generate custom passages on any topic",
+  "Reading Buddy - live AI conversation partner",
+  "Homework Scanner - photo to instant practice",
+  "Ask Readee - generate custom passages on any topic",
   "Daily question of the day",
   "Spaced-repetition review engine",
   "Parent progress reports + skill mastery analytics",
@@ -68,7 +68,7 @@ export const PLAN_LABEL: Record<string, string> = {
 /* ─── Trust signals shown near checkout ──────────────────── */
 export const TRUST_SIGNALS = [
   "7-day free trial · No charge until day 8",
-  "Cancel anytime — one click, no questions",
+  "Cancel anytime - one click, no questions",
   "Secure checkout via Stripe",
   "COPPA + FERPA compliant",
 ] as const;
@@ -77,7 +77,7 @@ export const TRUST_SIGNALS = [
 export const SUPPORT = {
   email: "hello@readee.app",
   refundPolicy:
-    "Cancel during the 7-day trial and you won't be charged. After the trial, cancel anytime — your access continues through the end of your current billing period, then drops to Free. We don't offer prorated refunds for partial months.",
+    "Cancel during the 7-day trial and you won't be charged. After the trial, cancel anytime - your access continues through the end of your current billing period, then drops to Free. We don't offer prorated refunds for partial months.",
 } as const;
 
 /* ─── Paywall reason copy (used by /upgrade?reason=…) ────── */
@@ -85,7 +85,7 @@ export const REASON_COPY: Record<string, { title: string; subtitle: string }> = 
   lesson: {
     title: "Keep the streak going.",
     subtitle:
-      "Your reader finished the free lesson. Readee+ unlocks the full 162-lesson library — every CCSS standard, K–4.",
+      "Your reader finished the free lesson. Readee+ unlocks the full 162-lesson library - every CCSS standard, K–4.",
   },
   practice: {
     title: "Practice without a wall.",
@@ -105,12 +105,12 @@ export const REASON_COPY: Record<string, { title: string; subtitle: string }> = 
   child: {
     title: "Unlock everything.",
     subtitle:
-      "Lessons, stories, practice, parent reports — Readee+ removes every gate.",
+      "Lessons, stories, practice, parent reports - Readee+ removes every gate.",
   },
   ask_readee: {
     title: "Ask Readee. Get a passage.",
     subtitle:
-      "Generate a reading passage on any topic in seconds — kid-safe, level-perfect, with audio + comprehension questions baked in. Readee+ only.",
+      "Generate a reading passage on any topic in seconds - kid-safe, level-perfect, with audio + comprehension questions baked in. Readee+ only.",
   },
   homework_scan: {
     title: "Snap any worksheet, get instant practice.",
@@ -130,7 +130,7 @@ export const REASON_COPY: Record<string, { title: string; subtitle: string }> = 
   tools_hub: {
     title: "Unlock everything in Readee+.",
     subtitle:
-      "Reading Buddy, Homework Scanner, Ask Readee, and the full reading toolkit — at your child's exact level.",
+      "Reading Buddy, Homework Scanner, Ask Readee, and the full reading toolkit - at your child's exact level.",
   },
 };
 
@@ -150,15 +150,15 @@ export const FAQ = [
   },
   {
     q: "What happens to my child's progress if I cancel?",
-    a: "All progress is saved permanently. You won't have access to premium features until you resubscribe — but every standard mastered, every lesson completed, stays exactly where you left off.",
+    a: "All progress is saved permanently. You won't have access to premium features until you resubscribe - but every standard mastered, every lesson completed, stays exactly where you left off.",
   },
   {
     q: "What ages is Readee designed for?",
-    a: "Readee covers Kindergarten through 4th grade — ages 5 to 10. The adaptive placement test puts your child at exactly the right level on day one.",
+    a: "Readee covers Kindergarten through 4th grade - ages 5 to 10. The adaptive placement test puts your child at exactly the right level on day one.",
   },
   {
     q: "How is Readee different from other reading apps?",
-    a: "Readee is built on real Common Core ELA standards — the same ones teachers use in school — and follows the Science of Reading. Most reading apps are dressed-up games. Readee teaches.",
+    a: "Readee is built on real Common Core ELA standards - the same ones teachers use in school - and follows the Science of Reading. Most reading apps are dressed-up games. Readee teaches.",
   },
   {
     q: "Is my child's data safe?",

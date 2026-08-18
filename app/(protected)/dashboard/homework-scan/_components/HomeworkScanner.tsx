@@ -104,7 +104,7 @@ export default function HomeworkScanner() {
             </div>
             <div className="mt-1 text-xs text-emerald-800">
               Readee reads the worksheet and tells you which reading skill
-              it&apos;s practicing — then takes you straight to a practice
+              it&apos;s practicing - then takes you straight to a practice
               session for that skill.
             </div>
           </div>
@@ -203,7 +203,7 @@ export default function HomeworkScanner() {
               </div>
               <div className="mx-auto mt-2 max-w-sm text-sm text-amber-800">
                 {result.notes ||
-                  "Try a clearer photo — make sure the text is fully in frame, well-lit, and not blurry."}
+                  "Try a clearer photo - make sure the text is fully in frame, well-lit, and not blurry."}
               </div>
               <ul className="mx-auto mt-3 max-w-xs text-left text-xs text-amber-700 space-y-1">
                 <li>• Hold the phone steady right above the worksheet</li>
@@ -267,7 +267,7 @@ export default function HomeworkScanner() {
                     Try these together
                   </div>
                   <p className="mt-1 text-xs text-zinc-500">
-                    Quick warm-ups in the same skill — read them out loud
+                    Quick warm-ups in the same skill - read them out loud
                     with your reader before tapping the practice button above.
                   </p>
                   <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-zinc-800 marker:font-bold marker:text-emerald-600">

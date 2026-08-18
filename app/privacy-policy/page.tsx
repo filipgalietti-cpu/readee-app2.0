@@ -120,7 +120,7 @@ export default function PrivacyPolicyPage() {
               without a parent account
             </li>
             <li>
-              Child profiles use only a first name — no email, full name, or
+              Child profiles use only a first name - no email, full name, or
               other identifying information is collected from children
             </li>
             <li>

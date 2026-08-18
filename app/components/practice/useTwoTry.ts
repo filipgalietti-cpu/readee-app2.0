@@ -27,7 +27,7 @@ export function useTwoTry(twoTries: boolean) {
       if (isCorrect) return { resolve: true, firstTry: tries === 0 };
       if (twoTries && tries === 0) {
         setTries(1);
-        setNudge(nudgeMsg || "Not quite — take another look and try again!");
+        setNudge(nudgeMsg || "Not quite - take another look and try again!");
         return { resolve: false, firstTry: false };
       }
       return { resolve: true, firstTry: false };

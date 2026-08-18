@@ -227,7 +227,7 @@ export default function AskReadeeWizard({
               {pending ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Building — this takes 20-40 seconds…
+                  Building - this takes 20-40 seconds…
                 </>
               ) : (
                 <>
@@ -637,7 +637,7 @@ function ReadeePlusPaywall() {
       <p className="mx-auto mt-2 max-w-md text-sm text-zinc-600 dark:text-slate-400">
         Generate personalized reading passages, comprehension questions,
         illustrations, and warm read-aloud audio for {" "}
-        your child — at their exact grade level. Up to {MONTHLY_PARENT_CREDIT_LIMIT}{" "}
+        your child - at their exact grade level. Up to {MONTHLY_PARENT_CREDIT_LIMIT}{" "}
         credits of AI content every month.
       </p>
       <Link
@@ -670,7 +670,7 @@ function SuggestedPrompts({
     <div className="rounded-2xl border border-violet-100 bg-violet-50/40 p-4 dark:border-violet-900/30 dark:bg-indigo-950/20">
       <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
         <Sparkles className="h-3.5 w-3.5" />
-        Suggested — tap one to fill the topic
+        Suggested - tap one to fill the topic
       </div>
       <div className="mt-2 flex flex-wrap gap-1.5">
         {categories.map(([key, label]) => (

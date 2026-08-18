@@ -49,7 +49,7 @@ export default async function ReferralLandingPage({
           This referral link was already used
         </h1>
         <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
-          No worries — you can still sign up for Readee and start your own
+          No worries - you can still sign up for Readee and start your own
           classroom.
         </p>
         <Link
@@ -74,7 +74,7 @@ export default async function ReferralLandingPage({
         </h1>
         <p className="mx-auto mt-2 max-w-md text-sm text-zinc-600 dark:text-slate-400">
           Sign up via this link and you&apos;ll both get{" "}
-          <strong>+{REFERRAL_BONUS_CREDITS} Readee.ai credits</strong> — usable
+          <strong>+{REFERRAL_BONUS_CREDITS} Readee.ai credits</strong> - usable
           for AI-generated passages, comprehension questions, images, and
           read-aloud audio.
         </p>
@@ -83,7 +83,7 @@ export default async function ReferralLandingPage({
           <Bullet>K-4 reading curriculum built by a reading specialist</Bullet>
           <Bullet>Classroom tools + AI quiz wizard out of the box</Bullet>
           <Bullet>Common Core ELA aligned · Science of Reading</Bullet>
-          <Bullet>Free to start — no credit card required</Bullet>
+          <Bullet>Free to start - no credit card required</Bullet>
         </ul>
 
         <Link
@@ -99,7 +99,7 @@ export default async function ReferralLandingPage({
           <Link href="/login" className="font-semibold underline hover:text-zinc-800 dark:hover:text-slate-200">
             Log in
           </Link>{" "}
-          — we&apos;ll apply the credits the moment you create your classroom.
+          - we&apos;ll apply the credits the moment you create your classroom.
         </div>
       </div>
     </div>

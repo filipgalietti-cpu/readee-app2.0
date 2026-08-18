@@ -130,7 +130,7 @@ export default function ProductSearchBar({
           onChange={(e) => setQuery(e.target.value)}
           placeholder={
             isPremium
-              ? (placeholder ?? "Describe what your kid needs — \"a 2nd grade story about kindness,\" \"context clues practice,\" …")
+              ? (placeholder ?? "Describe what your kid needs - \"a 2nd grade story about kindness,\" \"context clues practice,\" …")
               : "Smart search is a Readee+ feature"
           }
           disabled={!isPremium}

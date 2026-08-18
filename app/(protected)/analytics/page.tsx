@@ -729,7 +729,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                   {worstRangeSkill && (
                     <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 16px", borderRadius: 16, background: "#fffbeb", border: "1px solid #fde68a" }}>
                       <div style={{ flex: 1, fontSize: 14, color: "#3f3f46" }}>
-                        {child.first_name} missed <strong style={{ color: "#18181b" }}>{worstRangeSkill.attempted - worstRangeSkill.correct} of {worstRangeSkill.attempted} {worstRangeSkill.name} question{worstRangeSkill.attempted === 1 ? "" : "s"}</strong> {rangeWord} — a short practice would help.
+                        {child.first_name} missed <strong style={{ color: "#18181b" }}>{worstRangeSkill.attempted - worstRangeSkill.correct} of {worstRangeSkill.attempted} {worstRangeSkill.name} question{worstRangeSkill.attempted === 1 ? "" : "s"}</strong> {rangeWord} - a short practice would help.
                       </div>
                       <Link href={`/practice?child=${child.id}&standard=${worstRangeSkill.standard_id}`} style={{ flexShrink: 0, whiteSpace: "nowrap", background: "#4338ca", color: "#fff", fontSize: 13, fontWeight: 700, padding: "9px 14px", borderRadius: 10 }}>
                         Practice {worstRangeSkill.name.length > 18 ? "this skill" : worstRangeSkill.name.toLowerCase()}
@@ -738,7 +738,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                   )}
                   <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 16px", borderRadius: 16, background: "#fafafa", border: "1px solid #f4f4f5" }}>
                     <div style={{ flex: 1, fontSize: 14, color: "#3f3f46" }}>
-                      <strong style={{ color: "#18181b" }}>Offline tip:</strong> at dinner, stretch words out together — &quot;c-a-a-a-t&quot;. It builds the same sound skills.
+                      <strong style={{ color: "#18181b" }}>Offline tip:</strong> at dinner, stretch words out together - &quot;c-a-a-a-t&quot;. It builds the same sound skills.
                     </div>
                     <Link href="/practice-hub" style={{ flexShrink: 0, whiteSpace: "nowrap", color: "#4338ca", fontSize: 13, fontWeight: 700, padding: "9px 14px", borderRadius: 10 }}>
                       More tips
@@ -835,7 +835,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                     {weekBest || weekWorst ? (
                       <>
                         {weekBest ? <>{child.first_name} did well on <strong style={{ color: "#18181b" }}>{weekBest.name}</strong> ({weekBest.correct} of {weekBest.attempted} right). </> : null}
-                        {weekWorst && (!weekBest || weekWorst.standard_id !== weekBest.standard_id) ? <>A good next step is <strong style={{ color: "#18181b" }}>{weekWorst.name}</strong> — a short lesson would help.</> : null}
+                        {weekWorst && (!weekBest || weekWorst.standard_id !== weekBest.standard_id) ? <>A good next step is <strong style={{ color: "#18181b" }}>{weekWorst.name}</strong> - a short lesson would help.</> : null}
                       </>
                     ) : (
                       <>No practice recorded this week. A quick session gets {child.first_name} back on track.</>
@@ -952,7 +952,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                         .filter((s) => s.attempted > 0 && s.acc < 60)
                         .sort((a, b) => a.acc - b.acc)
                         .slice(0, 3);
-                      if (weak.length === 0) return <div style={{ fontSize: 13, color: "#71717a" }}>Nothing needs urgent attention — nice work!</div>;
+                      if (weak.length === 0) return <div style={{ fontSize: 13, color: "#71717a" }}>Nothing needs urgent attention - nice work!</div>;
                       return weak.map((s) => (
                         <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 12 }}>
                           <div style={{ flex: 1, minWidth: 0 }}>

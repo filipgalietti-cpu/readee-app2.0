@@ -384,7 +384,7 @@ export default function FluencyRecorder({
               <Square className="h-9 w-9" fill="currentColor" />
             </button>
             <p className="mt-3 text-sm font-bold text-red-600">
-              ● Recording — {mins}:{secs}
+              ● Recording - {mins}:{secs}
             </p>
             <p className="mt-1 text-xs text-zinc-500">
               Tap to stop when you're done.

@@ -465,7 +465,7 @@ export default function LunaReader({
 
   // Varied captions so the on-screen line matches the audio variety.
   const praiseCap = () => [`Great reading, ${name}!`, `Wonderful, ${name}!`, `You nailed it, ${name}!`, `Awesome work, ${name}!`, `Beautiful reading, ${name}!`][rand(5)];
-  const smoothCap = () => [`Take your time, ${name} — nice and smooth.`, `Slow and steady, ${name}.`, `Let's read it smooth this time, ${name}.`][rand(3)];
+  const smoothCap = () => [`Take your time, ${name} - nice and smooth.`, `Slow and steady, ${name}.`, `Let's read it smooth this time, ${name}.`][rand(3)];
   const goodtryCap = () => [`Good try, ${name}! Let's keep going.`, `Nice effort, ${name}!`, `You're getting it, ${name}!`][rand(3)];
 
   // Open the mic graph once; `onPcm` receives each raw Float32 frame + the ctx
@@ -638,7 +638,7 @@ export default function LunaReader({
     animatingRef.current = true; // hold the styling effect off while we color live
     setEngine("azure");
     streamActiveRef.current = true;
-    dbg("LIVE — reading");
+    dbg("LIVE - reading");
     return true;
   }
   async function stopStream() {
@@ -726,8 +726,8 @@ export default function LunaReader({
       const wds = tricky.slice(0, 3);
       if (wds.length >= 1) {
         const coaching = wds.length >= 2
-          ? `Let's sound out ${wds.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${wds[wds.length - 1]}" — say each sound slowly. Then read the whole line again.`
-          : `Let's sound out "${wds[0]}" — say each sound slowly, then read the whole line again.`;
+          ? `Let's sound out ${wds.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${wds[wds.length - 1]}" - say each sound slowly. Then read the whole line again.`
+          : `Let's sound out "${wds[0]}" - say each sound slowly, then read the whole line again.`;
         speakQueued(coaching, () => proceed(true), () => { setMode("speaking"); setCaption(coaching); });
       } else {
         // Fluency wobble (words right, choppy) → "read the whole sentence again".
@@ -750,7 +750,7 @@ export default function LunaReader({
       stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
       setMode("idle");
-      setCaption("Let's try that again — tap me when you're ready.");
+      setCaption("Let's try that again - tap me when you're ready.");
     }
   }
 
@@ -766,7 +766,7 @@ export default function LunaReader({
     } catch (e: unknown) {
       stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
-      setMode("idle"); setCaption("Let's try that line again — tap me when you're ready.");
+      setMode("idle"); setCaption("Let's try that line again - tap me when you're ready.");
     }
   }
 
@@ -776,7 +776,7 @@ export default function LunaReader({
       const s = idxRef.current;
       const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
       for (let i = from; i <= to; i++) if (i >= 0) wordStateRef.current[i] = "pending";
-      setAttempt(1); setMode("idle"); setCaption("Let's read that line one more time — tap me.");
+      setAttempt(1); setMode("idle"); setCaption("Let's read that line one more time - tap me.");
       styleWords();
       return;
     }
@@ -902,7 +902,7 @@ export default function LunaReader({
     if (m === "streaming") { void stopStream(); return; }
     if (m === "recording") { readModeRef.current = "idle"; stopRecording(); return; }
     // Tapped "done" before the mic/SDK finished starting — defer the stop.
-    dbg("stop tapped while starting — deferring");
+    dbg("stop tapped while starting - deferring");
     pendingStopRef.current = true;
   }
 
@@ -917,7 +917,7 @@ export default function LunaReader({
     setCaption("Listen carefully…");
     speakQueued(text, () => {
       setMode("idle");
-      setCaption(phase === "drill" ? "Now you try — tap me and read the line." : "Now you read it — tap me.");
+      setCaption(phase === "drill" ? "Now you try - tap me and read the line." : "Now you read it - tap me.");
     });
   }
 
@@ -936,7 +936,7 @@ export default function LunaReader({
               {phase === "building" ? "Making your story…"
                 : phase === "overall1" ? "First, the whole story"
                   : phase === "drill" ? `Line ${Math.min(idx + 1, sentences.length)} of ${sentences.length}`
-                    : phase === "overall2" ? "One more time — the whole story"
+                    : phase === "overall2" ? "One more time - the whole story"
                       : "How you read it"}
             </span>
           </div>
@@ -1002,7 +1002,7 @@ export default function LunaReader({
             </div>
             {before && after && after.wcpm > before.wcpm && (
               <p style={{ margin: "12px 0 0", fontSize: 14, color: "#047857", fontWeight: 700 }}>
-                You read {(after.wcpm - before.wcpm).toFixed(0)} words per minute faster — awesome!
+                You read {(after.wcpm - before.wcpm).toFixed(0)} words per minute faster - awesome!
               </p>
             )}
             {statsRef.current.trickyWords.size > 0 && (

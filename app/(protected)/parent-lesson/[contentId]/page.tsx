@@ -155,7 +155,7 @@ export default async function ParentLessonPage({
             />
 
             <p className="mt-2 text-[11px] text-zinc-500">
-              Hand the device to your kid — Readee guides them through
+              Hand the device to your kid - Readee guides them through
               the passage and questions.
             </p>
           </div>
@@ -168,7 +168,7 @@ export default async function ParentLessonPage({
         <summary className="flex cursor-pointer items-center justify-between text-sm font-bold text-zinc-700 dark:text-slate-200">
           <span className="inline-flex items-center gap-1.5">
             <Eye className="h-4 w-4 text-zinc-400" />
-            Parent preview — passage + answer key
+            Parent preview - passage + answer key
           </span>
           <span className="text-[11px] font-normal text-zinc-400 group-open:hidden">
             Show

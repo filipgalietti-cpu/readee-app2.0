@@ -85,7 +85,7 @@ export default function SharpenUpInsights({
       </h2>
       <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
         {isPremium
-          ? "Standards + question styles you've missed most over the last 30 days. Different from the SRS queue above — that's time-based, this is accuracy-based."
+          ? "Standards + question styles you've missed most over the last 30 days. Different from the SRS queue above - that's time-based, this is accuracy-based."
           : "We've been tracking what trips up your kid. Unlock Readee+ to surface targeted review based on real accuracy data."}
       </p>
 
@@ -104,7 +104,7 @@ export default function SharpenUpInsights({
                   One Sharpen Up session
                 </div>
                 <div className="mt-0.5 text-xs text-zinc-600">
-                  9 questions mixed across your top {Math.min(weakSpots.length, 3)} tricky spots — start here.
+                  9 questions mixed across your top {Math.min(weakSpots.length, 3)} tricky spots - start here.
                 </div>
               </div>
               <Link
@@ -250,7 +250,7 @@ function WeakTypesGrid({ weakTypes }: { weakTypes: WeakType[] }) {
         })}
       </div>
       <p className="mt-2 text-[11px] text-zinc-500">
-        Insight only — to drill a specific style, pick a standard above that
+        Insight only - to drill a specific style, pick a standard above that
         uses it.
       </p>
     </div>

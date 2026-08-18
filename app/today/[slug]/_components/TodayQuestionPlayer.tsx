@@ -85,7 +85,7 @@ export default function TodayQuestionPlayer({
 
   if (done) {
     const pct = total ? Math.round((correctCount / total) * 100) : 0;
-    const title = correctCount === total ? "Perfect read!" : correctCount >= Math.ceil(total / 2) ? "Nice reading today!" : "Good try — read it again!";
+    const title = correctCount === total ? "Perfect read!" : correctCount >= Math.ceil(total / 2) ? "Nice reading today!" : "Good try - read it again!";
     const bunnyState = correctCount >= Math.ceil((total * 2) / 3) ? "correct" : "incorrect";
     return (
       <div className={CARD}>
@@ -185,7 +185,7 @@ export default function TodayQuestionPlayer({
           className="mt-3.5 flex items-center gap-2 rounded-xl px-3.5 py-2.5 text-sm font-extrabold"
           style={picked === q.correct ? { background: "#d1fae5", color: "#047857" } : { background: "#fef2f2", color: "#b91c1c" }}
         >
-          {picked === q.correct ? "Nice — that's right!" : "Not quite — the right answer is highlighted."}
+          {picked === q.correct ? "Nice - that's right!" : "Not quite - the right answer is highlighted."}
         </div>
       )}
       {revealed && picked !== q.correct && q.hint && (

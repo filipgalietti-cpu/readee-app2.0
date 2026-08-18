@@ -78,7 +78,7 @@ export default function FeedbackButton() {
                   <Check className="h-5 w-5" />
                 </div>
                 <p className="mt-3 text-sm font-semibold text-zinc-900 dark:text-white">
-                  Got it — thanks for sending.
+                  Got it - thanks for sending.
                 </p>
                 <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
                   Filip will follow up if we need more info.
@@ -88,7 +88,7 @@ export default function FeedbackButton() {
               <>
                 <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
                   Bug reports, feature ideas, weird behavior, or just "this is
-                  confusing" — all welcome. We reply by email.
+                  confusing" - all welcome. We reply by email.
                 </p>
                 <textarea
                   value={message}

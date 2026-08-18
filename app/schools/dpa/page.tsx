@@ -4,7 +4,7 @@ import { ArrowLeft, Shield } from "lucide-react";
 import PrintButton from "@/app/_components/PrintButton";
 
 export const metadata: Metadata = {
-  title: "Data Privacy Agreement — Readee for Schools",
+  title: "Data Privacy Agreement - Readee for Schools",
   description:
     "Readee's Data Privacy Agreement (DPA) template and countersignature instructions for school and district procurement offices.",
 };
@@ -44,7 +44,7 @@ export default function DpaPage() {
           <li>
             Email your preferred DPA (district template OR SDPC Standard DPA)
             to <strong>hello@readee.app</strong> with subject{" "}
-            <em>"Readee DPA — [District name]"</em>.
+            <em>"Readee DPA - [District name]"</em>.
           </li>
           <li>
             We return a countersigned version within 5-10 business days,
@@ -71,7 +71,7 @@ export default function DpaPage() {
           </li>
           <li>
             <strong>No secondary use.</strong> Student data is used only to
-            operate Readee as the district directs — not to build a model
+            operate Readee as the district directs - not to build a model
             or product for sale.
           </li>
           <li>

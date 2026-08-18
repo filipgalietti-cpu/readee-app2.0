@@ -44,10 +44,10 @@ export default function TermsOfServicePage() {
           <h2 className="text-xl font-bold text-zinc-900 mb-3">2. Account types and subscriptions</h2>
           <p>Readee offers several access tiers:</p>
           <ul className="list-disc pl-6 space-y-1">
-            <li><strong>Free</strong> — diagnostic + 1 lesson per grade.</li>
-            <li><strong>Readee+</strong> ($9.99/mo or $79.99/yr) — full lesson library + parent analytics.</li>
-            <li><strong>Teacher Solo</strong> ($19/mo or $180/yr) — individual educator AI tools.</li>
-            <li><strong>Classroom / School / District</strong> — site-licensed pricing for institutional customers.</li>
+            <li><strong>Free</strong> - diagnostic + 1 lesson per grade.</li>
+            <li><strong>Readee+</strong> ($9.99/mo or $79.99/yr) - full lesson library + parent analytics.</li>
+            <li><strong>Teacher Solo</strong> ($19/mo or $180/yr) - individual educator AI tools.</li>
+            <li><strong>Classroom / School / District</strong> - site-licensed pricing for institutional customers.</li>
           </ul>
           <p>
             Pricing on <a href="/upgrade" className="text-indigo-600 hover:underline">/upgrade</a>{" "}

@@ -26,7 +26,7 @@ export default function CopyrightPage() {
             parents, or our own daily-content systems. AI-generated text and
             images can occasionally resemble copyrighted material. If you
             believe content on Readee infringes a copyright you own or
-            represent, we want to know — and we&apos;ll act quickly.
+            represent, we want to know - and we&apos;ll act quickly.
           </p>
         </section>
 

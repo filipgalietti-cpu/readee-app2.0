@@ -21,7 +21,7 @@ export default function TeachersPage() {
         </h1>
         <p className="text-lg text-zinc-600 max-w-2xl mx-auto leading-relaxed">
           Bring structured, Science of Reading-based phonics instruction to your
-          classroom. Readee gives every student a personalized reading path — so
+          classroom. Readee gives every student a personalized reading path - so
           you can meet them where they are.
         </p>
       </div>
@@ -36,7 +36,7 @@ export default function TeachersPage() {
             {
               icon: <Target className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Diagnostic Assessment",
-              desc: "A quick 10-question quiz places each student at their reading level — no prep needed from you.",
+              desc: "A quick 10-question quiz places each student at their reading level - no prep needed from you.",
             },
             {
               icon: <ClipboardList className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
@@ -51,7 +51,7 @@ export default function TeachersPage() {
             {
               icon: <Microscope className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />,
               title: "Research-Based",
-              desc: "Built on systematic phonics, phonemic awareness, fluency, vocabulary, and comprehension — the five pillars of reading.",
+              desc: "Built on systematic phonics, phonemic awareness, fluency, vocabulary, and comprehension - the five pillars of reading.",
             },
           ].map((item) => (
             <div
@@ -122,7 +122,7 @@ export default function TeachersPage() {
           <p className="mt-3 text-[15px] text-zinc-600 leading-relaxed">
             1,300+ pieces of curriculum-aligned content. Every passage,
             question, image, and audio file passes a 12-check quality
-            pipeline before a student sees it — reading-level audit,
+            pipeline before a student sees it - reading-level audit,
             Wikipedia fact-check on non-fiction, pedagogy review, image
             + audio judges. Fails get auto-rewritten or quarantined;
             never quietly shipped.

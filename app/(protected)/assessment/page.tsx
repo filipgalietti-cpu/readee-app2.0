@@ -894,7 +894,7 @@ function AssessmentContent() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.75 }}
             >
-              Just try your best — you got this!
+              Just try your best - you got this!
             </motion.p>
 
             {/* Resume previous session if a draft exists. Primary
@@ -1212,7 +1212,7 @@ function AssessmentContent() {
       {
         Icon: Headphones,
         title: "Practice",
-        desc: "Interactive questions with audio — drag, tap, and build answers.",
+        desc: "Interactive questions with audio - drag, tap, and build answers.",
         color: "bg-violet-50 text-violet-600",
       },
       {

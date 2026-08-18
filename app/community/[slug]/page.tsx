@@ -61,7 +61,7 @@ export async function generateMetadata({
     passage.passage_text.replace(/\s+/g, " ").trim().slice(0, 155) +
     (passage.passage_text.length > 155 ? "…" : "");
   return {
-    title: `${passage.title} — ${passage.grade_level} reading · Readee`,
+    title: `${passage.title} - ${passage.grade_level} reading · Readee`,
     description,
     alternates: { canonical: `/community/${passage.slug}` },
     openGraph: {
