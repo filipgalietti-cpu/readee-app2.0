@@ -110,8 +110,8 @@ export default function KidHome(p: KidHomeProps) {
         .kh-lift:hover{transform:translateY(-3px)}
         .kh-tile{transition:transform .2s cubic-bezier(0.34,1.56,0.64,1)}
         .kh-tile:hover{transform:translateY(-5px) scale(1.03)}
-        .kh-outfit{transition:transform .2s cubic-bezier(0.34,1.56,0.64,1)}
-        .kh-outfit:hover{transform:scale(1.12)}
+        .kh-outfit{transition:transform .2s cubic-bezier(0.34,1.56,0.64,1);transform-origin:bottom center}
+        .kh-outfit:hover{transform:scale(1.1)}
         .kh-arrow{transition:transform .15s,background .15s}
         .kh-arrow:hover{transform:scale(1.1);background:#f5f3ff}
         .kh-skinrow::-webkit-scrollbar{display:none}
@@ -221,7 +221,7 @@ export default function KidHome(p: KidHomeProps) {
               <div
                 ref={skinScrollRef}
                 className="kh-skinrow"
-                style={{ flex: 1, display: "flex", gap: 10, alignItems: "flex-end", overflowX: "auto", scrollBehavior: "smooth", padding: "2px 2px 6px", scrollbarWidth: "none" }}
+                style={{ flex: 1, display: "flex", gap: 10, alignItems: "flex-end", overflowX: "auto", scrollBehavior: "smooth", padding: "12px 4px 8px", scrollbarWidth: "none" }}
               >
                 {p.outfitChoices.map((c) => {
                   const selected = c.id === p.equippedOutfitId;

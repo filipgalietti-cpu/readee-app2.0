@@ -720,20 +720,26 @@ function ChildDashboard({
   // Equip a Bunny outfit straight from the home screen's mascot picker
   // (mirrors handleEquipAvatar; writes equipped_items.outfit).
   const handleEquipOutfit = async (outfitId: string) => {
+    const prev = currentChild;
     const newEquipped: EquippedItems = {
       ...currentChild.equipped_items,
       outfit: outfitId,
     };
+    const updated = { ...currentChild, equipped_items: newEquipped };
+    // Optimistic: reflect the pick instantly so it feels like a toggle, then
+    // persist in the background and revert only if the save fails.
+    setCurrentChild(updated);
+    setStoreChildData(updated);
+    setStoreChildren(children.map((c) => (c.id === updated.id ? updated : c)));
     const supabase = supabaseBrowser();
     const { error } = await supabase
       .from("children")
       .update({ equipped_items: newEquipped })
       .eq("id", currentChild.id);
-    if (!error) {
-      const updated = { ...currentChild, equipped_items: newEquipped };
-      setCurrentChild(updated);
-      setStoreChildData(updated);
-      setStoreChildren(children.map((c) => (c.id === updated.id ? updated : c)));
+    if (error) {
+      setCurrentChild(prev);
+      setStoreChildData(prev);
+      setStoreChildren(children.map((c) => (c.id === prev.id ? prev : c)));
     }
   };
 
@@ -745,15 +751,14 @@ function ChildDashboard({
     "bunny_classic",
     ...purchases.filter((p) => p.item_id.startsWith("bunny_")).map((p) => p.item_id),
   ]);
-  // Skin carousel: lead with the unlocked skins (equipped first), then a
-  // few greyed-out locked "defaults" as aspiration when the reader hasn't
-  // unlocked much yet. Always show at least MIN_SKINS so the carousel never
-  // looks empty. The KidHome component adds left/right arrows to scroll it.
+  // Skin carousel: unlocked skins in a STABLE canonical order (OUTFITS
+  // definition order), then a few greyed-out locked "defaults" as aspiration
+  // when the reader hasn't unlocked much yet. Stable order matters — leading
+  // with the equipped skin made the whole row reshuffle on every pick. Now
+  // selecting just highlights in place. Always show at least MIN_SKINS so the
+  // carousel never looks empty. KidHome adds left/right arrows to scroll it.
   const MIN_SKINS = 8;
-  const ownedOrdered = [
-    equippedOutfitId,
-    ...OUTFITS.map((o) => o.id).filter((id) => ownedOutfitIds.has(id) && id !== equippedOutfitId),
-  ];
+  const ownedOrdered = OUTFITS.map((o) => o.id).filter((id) => ownedOutfitIds.has(id));
   const lockedIds = OUTFITS.map((o) => o.id).filter((id) => !ownedOutfitIds.has(id));
   const carouselIds = ownedOrdered.length >= MIN_SKINS
     ? ownedOrdered
