@@ -21,7 +21,7 @@ const TILES: Tile[] = [
   { href: "/word-bank", icon: BookText, label: "Word Bank", desc: "Words your child has learned.", tint: "from-amber-500 to-orange-500" },
   { href: "/assessment-results", icon: ClipboardCheck, label: "Placement Test", desc: "Find the just-right reading level.", tint: "from-emerald-500 to-teal-500" },
   { href: "/analytics", icon: BarChart3, label: "Analytics", desc: "See progress, streaks, and stats.", tint: "from-indigo-500 to-blue-500" },
-  { href: "/practice-hub/community", icon: Users, label: "Community Library", desc: "Stories shared by other families.", tint: "from-rose-500 to-pink-500" },
+  { href: "/practice-hub/community", icon: Users, label: "Community Library", desc: "Kid-safe passages, hand-picked by Readee.", tint: "from-rose-500 to-pink-500" },
   { href: "/help", icon: LifeBuoy, label: "Help & Support", desc: "FAQs and a way to reach us.", tint: "from-slate-500 to-zinc-500" },
 ];
 

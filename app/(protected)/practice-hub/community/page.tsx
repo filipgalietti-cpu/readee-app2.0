@@ -124,11 +124,11 @@ export default async function CommunityLibraryPage({
             Community library
           </div>
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-            Passages from Readee families
+            Community library
           </h1>
           <p className="mt-1 max-w-2xl text-sm text-zinc-500 dark:text-slate-400">
-            Sanitized, kid-safe passages other Readee parents made and shared.
-            Reviewed by our team before going live.
+            Kid-safe reading passages, hand-picked and reviewed by Readee. More
+            arrive as families share their own.
           </p>
         </div>
         <Link
