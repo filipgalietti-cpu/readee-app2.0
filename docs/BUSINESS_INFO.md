@@ -21,7 +21,7 @@
 | **Federal EIN** | `42-1903828` | IRS CP 575G, dated Apr 14 2026 |
 | **NJ Entity ID** | `0451440431` | Business entity identifier (annual reports, filings) |
 | **NJ BRC Certificate Number** | `3233070` | 7-digit; on the Business Registration Certificate. The "unlock" key some tax questionnaires ask for to reveal the full Taxpayer ID. |
-| **NJ Taxpayer ID (Sales Tax Reg #)** | `###-###-372/000` | 12-digit = 9-digit ID + `/000` suffix. Full number is masked everywhere; unmasked copy is on the **Certificate of Authority** (or unlocked via the cert # above). |
+| **NJ Taxpayer ID (Sales Tax Reg #)** | `###-###-372/000` | 12-digit = 9-digit ID + `/000` suffix. ⚠️ **NOT the FEIN** — it ends in `372`, the FEIN ends in `828`. NJ assigned a state number because the LLC registered (Apr 1–2) *before* the FEIN was issued (Apr 14). So do **not** use `421903828000`. Full unmasked number is on the **Certificate of Authority** (or unlocked via the cert # above). |
 | **NJ Document Locator #** | `I0000184465` | Registration confirmation (filed 04/01/2026) |
 
 ## Where to re-download NJ documents
