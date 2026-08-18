@@ -53,7 +53,8 @@ export async function POST(req: Request) {
   if (process.env.RESEND_API_KEY) {
     try {
       const resend = new Resend(process.env.RESEND_API_KEY);
-      await resend.emails.send({
+      // Resend returns { error } instead of throwing on API failures.
+      const { error: sendError } = await resend.emails.send({
         from: "Readee <hello@readee.app>",
         to: "hello@readee.app",
         replyTo: user.email ?? undefined,
@@ -67,6 +68,10 @@ export async function POST(req: Request) {
           message,
         ].join("\n"),
       });
+      if (sendError) {
+        console.error("Feedback email alert failed (Resend):", sendError);
+        trackError(sendError, { route: "api.feedback.email_alert", userId: user.id });
+      }
     } catch (e) {
       console.error("Feedback email alert failed:", e);
       trackError(e, {
