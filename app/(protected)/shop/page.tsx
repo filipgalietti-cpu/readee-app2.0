@@ -26,7 +26,7 @@ import { Carrot, Lock, RotateCcw, Volume2, VolumeX, PartyPopper, Zap } from "luc
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 import { SkeletonPage } from "@/app/_components/Skeleton";
-import { Bunny, BunnyReaction, type ReactionState } from "@/app/_components/Bunny/Bunny";
+import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { getOutfit, type Outfit } from "@/app/_components/Bunny/outfits";
 import { UnlockToast } from "@/app/_components/UnlockToast";
 import { checkSeasonalGrants } from "@/lib/unlock";
@@ -922,7 +922,8 @@ function BunnyPreview({
     const state = reactionStateFor(equippedReactionId);
     setRx(state);
     if (rxTimer.current) clearTimeout(rxTimer.current);
-    rxTimer.current = setTimeout(() => setRx(""), state === "levelup" ? 6500 : 2600);
+    // Dismiss at the reaction's rest pose so the swap to idle is seamless.
+    rxTimer.current = setTimeout(() => setRx(""), reactionHoldMs(state));
   };
   return (
     <div

@@ -21,6 +21,29 @@ export type ReactionState =
   | "superstar"
   | "rainbow";
 
+/**
+ * How long to hold a tapped reaction before dismissing it, in ms. Each
+ * reaction is an infinite loop (bunny.css) that finishes its action and
+ * returns to the REST pose in the last third of the cycle; these values land
+ * inside that rest window so the swap back to the idle <Bunny> is seamless.
+ * Dismissing mid-cycle (the old flat 2600ms) snapped the bunny out of a
+ * half-finished wave — that was the glitch.
+ */
+export function reactionHoldMs(state: ReactionState): number {
+  switch (state) {
+    case "levelup":
+      return 6500; // 6.5s dance loop
+    case "sleepy":
+    case "rainbow":
+      return 4900; // 6s loops
+    case "dizzy":
+    case "superstar":
+      return 4400; // 5.5s loops
+    default:
+      return 4000; // 5s loops (wave/clap/wow/laugh/love/streakfire/correct/incorrect)
+  }
+}
+
 /** The Reaction Pack 2 ids (collectible reactions, sold in the shop). */
 export const REACTION_PACK_2 = [
   "wave", "clap", "laugh", "wow", "love",

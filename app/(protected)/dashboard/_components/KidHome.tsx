@@ -11,7 +11,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { Bunny, BunnyReaction, type ReactionState } from "@/app/_components/Bunny/Bunny";
+import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { reactionStateFor } from "@/lib/data/shop-items";
 import {
   Flame,
@@ -92,9 +92,10 @@ export default function KidHome(p: KidHomeProps) {
     const rx = reactionStateFor(p.equippedReactionId);
     setReaction(rx);
     if (rxTimer.current) clearTimeout(rxTimer.current);
-    // The levelup dance is a long 6.5s loop; the hop/wobble are short, so
-    // let them play a couple of beats then settle back to idle.
-    rxTimer.current = setTimeout(() => setReaction(""), rx === "levelup" ? 6500 : 2600);
+    // Dismiss when the reaction has looped back to its rest pose so the swap
+    // to the idle <Bunny> is seamless (see reactionHoldMs). The old flat
+    // 2600ms cut the bunny off mid-wave and snapped it to rest.
+    rxTimer.current = setTimeout(() => setReaction(""), reactionHoldMs(rx));
   };
 
   const ringCirc = 150.8;
