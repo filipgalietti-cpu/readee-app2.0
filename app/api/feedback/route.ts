@@ -55,8 +55,10 @@ export async function POST(req: Request) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       // Resend returns { error } instead of throwing on API failures.
       const { error: sendError } = await resend.emails.send({
-        from: "Readee <hello@readee.app>",
-        to: "hello@readee.app",
+        // From notify@ (not hello@) to avoid the self-addressed send that
+        // got hello@ suppressed; recipient env-overridable.
+        from: "Readee <notify@readee.app>",
+        to: process.env.TEAM_INBOX_EMAIL || "filip.galietti@gmail.com",
         replyTo: user.email ?? undefined,
         subject: `[Readee feedback] ${role ?? "user"}: ${message.slice(0, 60)}`,
         text: [

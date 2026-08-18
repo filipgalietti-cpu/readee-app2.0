@@ -29,8 +29,12 @@ export async function POST(req: NextRequest) {
     // The Resend SDK does NOT throw on API errors — it returns { data, error }.
     // We must inspect `error` or a failed send looks like a success.
     const { data, error } = await resend.emails.send({
-      from: "Readee Contact Form <hello@readee.app>",
-      to: "hello@readee.app",
+      // From a distinct address (NOT hello@) — sending hello@ -> hello@ is
+      // a self-addressed mail that Google hard-bounces, which got hello@
+      // suppressed in Resend. Recipient is env-overridable so we can point
+      // it back at hello@ once that suppression clears.
+      from: "Readee Contact Form <notify@readee.app>",
+      to: process.env.TEAM_INBOX_EMAIL || "filip.galietti@gmail.com",
       replyTo: email.trim(),
       subject: `Contact form: ${name.trim()}`,
       html: `
