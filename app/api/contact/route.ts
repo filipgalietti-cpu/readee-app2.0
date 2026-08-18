@@ -34,10 +34,11 @@ export async function POST(req: NextRequest) {
       // suppressed in Resend. Recipient is env-overridable so we can point
       // it back at hello@ once that suppression clears.
       from: "Readee Contact Form <notify@readee.app>",
-      // Delivers to hello@ once its Resend suppression clears (~14 days from
-      // Aug 18). To receive contact emails during that window, set
-      // TEAM_INBOX_EMAIL to a working inbox in Vercel; remove it after.
-      to: process.env.TEAM_INBOX_EMAIL || "hello@readee.app",
+      // hello@readee.app is Resend-suppressed (hard-bounce block, clears
+      // ~Sep 1 and can't be lifted manually) so mail to it is accepted but
+      // never delivered. Route to a working inbox until then. Set
+      // TEAM_INBOX_EMAIL=hello@readee.app in Vercel once the block clears.
+      to: process.env.TEAM_INBOX_EMAIL || "filip.galietti@gmail.com",
       replyTo: email.trim(),
       subject: `Contact form: ${name.trim()}`,
       html: `
