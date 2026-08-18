@@ -17,7 +17,7 @@ import {
   reactionStateFor,
   REACTION_STATE,
 } from "@/lib/data/shop-items";
-import { MYSTERY_BOX_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mystery-box";
+import { MYSTERY_BOX_FREE_COOLDOWN_MS, MYSTERY_BOX_PAID_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mystery-box";
 import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
@@ -161,7 +161,14 @@ function ShopContent({
 
   const ownedIds = useMemo(() => new Set(purchases.map((p) => p.item_id)), [purchases]);
   const items = getItemsByCategory(activeCategory);
-  const PRICE = MYSTERY_BOX_PRICE;
+  // Mystery box: free once every 24h (daily engagement loop), then
+  // MYSTERY_BOX_PAID_PRICE carrots for extra opens within the window.
+  const lastFreeMs = child.last_free_mystery_box_at
+    ? new Date(child.last_free_mystery_box_at).getTime()
+    : 0;
+  const freeReady = Date.now() - lastFreeMs >= MYSTERY_BOX_FREE_COOLDOWN_MS;
+  const nextFreeInMs = Math.max(0, lastFreeMs + MYSTERY_BOX_FREE_COOLDOWN_MS - Date.now());
+  const PRICE = freeReady ? 0 : MYSTERY_BOX_PAID_PRICE;
 
   useEffect(() => {
     shopSfx.setMuted(isMuted);
@@ -284,10 +291,19 @@ function ShopContent({
     setCeremony(true);
     setPhase("charging");
 
-    // Deduct the price up front (real economy).
+    // Deduct the price up front (real economy). If this was the FREE daily
+    // open (PRICE 0), stamp the 24h cooldown; a paid re-open leaves the free
+    // clock running so tomorrow's box is still free.
     const supabase = supabaseBrowser();
-    await savedOk("shop:mystery-spend", supabase.from("children").update({ carrots: newCarrots }).eq("id", c.id));
-    setChild({ ...childRef.current, carrots: newCarrots });
+    const openedFreeAt = PRICE === 0 ? new Date().toISOString() : null;
+    const patch: { carrots: number; last_free_mystery_box_at?: string } = { carrots: newCarrots };
+    if (openedFreeAt) patch.last_free_mystery_box_at = openedFreeAt;
+    await savedOk("shop:mystery-spend", supabase.from("children").update(patch).eq("id", c.id));
+    setChild({
+      ...childRef.current,
+      carrots: newCarrots,
+      ...(openedFreeAt ? { last_free_mystery_box_at: openedFreeAt } : {}),
+    });
 
     boxRef.current?.charge(rarity.hex);
     shopSfx.charge(1.75);
@@ -414,10 +430,14 @@ function ShopContent({
       : phase === "opening"
         ? "Opening…"
         : phase === "reveal"
-          ? `Open another · ${PRICE}`
-          : canAfford
-            ? `Open for ${PRICE} carrots`
-            : `Need ${PRICE - child.carrots} more`;
+          ? freeReady
+            ? "Open free daily box"
+            : `Open another · ${PRICE}`
+          : freeReady
+            ? "Open your free daily box"
+            : canAfford
+              ? `Open again · ${PRICE} carrots`
+              : `Need ${PRICE - child.carrots} more`;
   const primaryEnabled = canAfford && phase !== "opening" && phase !== "charging";
 
   const rewardNote = !reward
@@ -543,7 +563,9 @@ function ShopContent({
 
               <div style={{ position: "absolute", left: 0, right: 0, bottom: 14, display: "flex", justifyContent: "center", pointerEvents: "none", zIndex: 3, opacity: ceremony ? 0 : 1, transition: "opacity .3s ease" }}>
                 <div style={{ padding: "7px 14px", borderRadius: 999, background: "rgba(255,255,255,.86)", backdropFilter: "blur(6px)", fontSize: 12, fontWeight: 800, color: "#4338ca", boxShadow: "0 4px 14px -6px rgba(67,56,202,.6)" }}>
-                  Tap the box to open
+                  {freeReady
+                    ? "Tap to open — free daily box!"
+                    : `Next free box in ~${Math.max(1, Math.round(nextFreeInMs / 3_600_000))}h`}
                 </div>
               </div>
             </div>
@@ -790,7 +812,7 @@ function ShopContent({
                 }}
               >
                 <Carrot size={18} strokeWidth={2.2} />
-                {child.carrots >= PRICE ? `Open another · ${PRICE}` : "Not enough carrots"}
+                {freeReady ? "Open free daily box" : child.carrots >= PRICE ? `Open another · ${PRICE}` : "Not enough carrots"}
               </button>
               <button
                 onClick={exitCeremony}

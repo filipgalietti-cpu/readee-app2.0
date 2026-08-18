@@ -1,5 +1,11 @@
 import { ShopItem, SHOP_ITEMS } from "./shop-items";
 
+/** Free to open once every 24h (daily engagement loop); after that, extra
+ *  opens within the window cost MYSTERY_BOX_PAID_PRICE carrots. */
+export const MYSTERY_BOX_FREE_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+export const MYSTERY_BOX_PAID_PRICE = 1000;
+
+/** @deprecated superseded by the free-daily / paid-reopen model. */
 export const MYSTERY_BOX_PRICE = 50;
 
 export type MysteryReward =

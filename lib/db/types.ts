@@ -61,6 +61,9 @@ export interface Child {
   active_multiplier?: number | null;
   /** When the active_multiplier powerup expires (ISO/UTC). Null = none. */
   active_multiplier_expires_at?: string | null;
+  /** When the child last opened the FREE daily mystery box (ISO/UTC).
+   *  Free again 24h later; extra opens within the window cost carrots. */
+  last_free_mystery_box_at?: string | null;
   equipped_items: EquippedItems;
   /** Journey reward chests/trophy already opened (chest node ids + "__trophy__"),
    *  so each reward pays carrots exactly once. */
