@@ -7,6 +7,10 @@ export const FREE_LIMITS = {
   lessons: 1,
   /** Number of stories per grade on free plan */
   storiesPerGrade: 2,
+  /** Free taste of "Read with Luna" — completed reads before the upgrade wall. */
+  lunaReadsFree: 3,
+  /** Free taste of "Story with Luna" — personalized stories before upgrade. */
+  personalizedStoriesFree: 1,
   /** Practice questions per standard on free plan */
   practicePerStandard: 10,
   /** Placement test — available on free */
@@ -26,6 +30,8 @@ export const FREE_LIMITS = {
 export const PREMIUM_LIMITS = {
   lessons: Infinity,
   storiesPerGrade: Infinity,
+  lunaReadsFree: Infinity,
+  personalizedStoriesFree: Infinity,
   practicePerStandard: Infinity,
   placementTest: true,
   analytics: true,
@@ -39,6 +45,8 @@ export const PREMIUM_LIMITS = {
 export const TEACHER_SOLO_LIMITS = {
   lessons: Infinity,
   storiesPerGrade: Infinity,
+  lunaReadsFree: Infinity,
+  personalizedStoriesFree: Infinity,
   practicePerStandard: Infinity,
   placementTest: true,
   analytics: true,

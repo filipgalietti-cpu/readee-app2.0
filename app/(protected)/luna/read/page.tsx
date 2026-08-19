@@ -3,6 +3,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
+import { FREE_LIMITS } from "@/lib/plan/limits";
 import { createClient } from "@/lib/supabase/server";
 import passagesJson from "@/app/data/fluency-passages.json";
 import libraryJson from "@/app/data/luna-library.json";
@@ -34,9 +35,7 @@ export default async function LunaReadPage({
   searchParams: Promise<{ child?: string }>;
 }) {
   const profile = await requireProfile();
-  if (!hasAnyPaidTier((profile as any).plan)) {
-    redirect("/upgrade?reason=reading_buddy");
-  }
+  const paid = hasAnyPaidTier((profile as any).plan);
 
   const { child: childIdParam } = await searchParams;
   const supabase = await createClient();
@@ -58,6 +57,19 @@ export default async function LunaReadPage({
   if (!child) {
     // No reader yet — send them to set one up.
     redirect("/dashboard");
+  }
+
+  // Free taste: free plans get FREE_LIMITS.lunaReadsFree completed reads with
+  // Luna, then hit the upgrade wall. Completed sessions are one row each in
+  // fluency_readings. Paid tiers are unlimited.
+  if (!paid) {
+    const { count } = await supabase
+      .from("fluency_readings")
+      .select("id", { count: "exact", head: true })
+      .eq("child_id", child.id);
+    if ((count ?? 0) >= FREE_LIMITS.lunaReadsFree) {
+      redirect("/upgrade?reason=reading_buddy");
+    }
   }
 
   const token = gradeToken(child.grade);
