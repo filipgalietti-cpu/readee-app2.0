@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Sparkles, BookOpenText, ArrowRight, ImageIcon } from "lucide-react";
+import { Sparkles, BookOpenText, ArrowRight, ArrowLeft, ImageIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import StoryGenerator from "./_components/StoryGenerator";
 import { EmptyState } from "@/app/_components/EmptyState";
@@ -46,18 +46,28 @@ export default async function StoriesForMePage() {
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
-      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+      <Link
+        href="/luna"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Luna
+      </Link>
+      <div className="mt-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
         <Sparkles className="h-4 w-4" />
-        Stories for me
+        Story with Luna
       </div>
-      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1
+        className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white"
+        style={{ fontFamily: "'Baloo 2','Nunito',sans-serif" }}
+      >
         AI stories starring{" "}
         {children.length === 1
           ? children[0].first_name
           : "your kids"}
       </h1>
       <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-        Pick a kid, pick how many pages, and Readee.ai writes a story where{" "}
+        Pick a kid, pick how many pages, and Luna writes a story where{" "}
         {children.length === 1
           ? `${children[0].first_name} is`
           : "they are"}{" "}

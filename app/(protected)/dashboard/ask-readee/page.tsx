@@ -33,11 +33,11 @@ export default async function AskReadeePage({
     return (
       <div className="mx-auto max-w-2xl px-6 py-10">
         <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+          href="/luna"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to dashboard
+          Luna
         </Link>
         <div className="mt-8 overflow-hidden rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30 dark:ring-violet-900/40">
           <Sparkles className="mx-auto h-10 w-10 text-violet-500" />
@@ -45,7 +45,7 @@ export default async function AskReadeePage({
             Add a child first
           </h1>
           <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
-            Ask Readee tailors content to your child&apos;s reading level.
+            Luna tailors content to your child&apos;s reading level.
             Add a child on the dashboard to get started.
           </p>
           <Link
@@ -156,19 +156,22 @@ export default async function AskReadeePage({
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
       <Link
-        href="/dashboard"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        href="/luna"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
       >
         <ArrowLeft className="h-4 w-4" />
-        Back to dashboard
+        Luna
       </Link>
       <div className="mt-3">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
           <Sparkles className="h-4 w-4" />
-          Readee.ai for families
+          Ask Luna
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          Ask Readee
+        <h1
+          className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white"
+          style={{ fontFamily: "'Baloo 2','Nunito',sans-serif" }}
+        >
+          Ask Luna
         </h1>
         <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
           A reading made just for your child - in 3 quick taps.
