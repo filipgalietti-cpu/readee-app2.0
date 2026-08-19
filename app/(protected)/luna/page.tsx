@@ -62,7 +62,7 @@ export default async function LunaPage({
   }));
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-8">
+    <div className="mx-auto max-w-2xl px-6 pt-8 pb-28">
       <LunaCreate
         childId={child.id}
         childName={child.name}
