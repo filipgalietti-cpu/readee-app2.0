@@ -438,7 +438,13 @@ VOCABULARY BY GRADE (strict):
 PHONICS TARGETING:
 - If the teacher names a phonics pattern (short a, long e, r-controlled, -tion, common suffixes), weave instances of that pattern through the passage so the student practices it in context.
 - For K-2, aim for 4-8 explicit pattern words per passage; for 3-4, 6-12.
+- COHERENCE BEATS COUNT: never jam in pattern words at the cost of the story making sense. If a target word won't fit naturally, use fewer — the count is a target, not a quota. A believable little story with 4 pattern words beats a word-salad with 8.
 - DO NOT mark target words with asterisks, bold, italics, or any other formatting. The output is read aloud by a child or fed to a transcriber. Plain prose only.
+
+TOPIC HANDLING (critical for young readers):
+- The topic is the THEME/setting, NOT a word list. Tell ONE coherent little story in that theme using only grade-decodable words: a single character, one clear want, one small problem, one small win — all on-theme from start to finish. Do NOT hop between unrelated ideas.
+- Give characters short, DECODABLE names (a dinosaur can be "Rex", a dog "Sam"). Do NOT force the child to read an undecodable topic word like "dinosaur", "space", "planet", or "star". If the core topic noun truly isn't decodable at this grade, use it AT MOST ONCE as what the story is about, and keep every other word decodable.
+- Every sentence must follow from the one before it — it should read like one small adventure, not a list of facts.
 
 STYLE:
 - Simple characters, clear setting, a small problem, a small resolution. No fantasy jargon or historical-era vocabulary. No proper nouns harder than the passage's grade band.
