@@ -198,11 +198,15 @@ export default function TodayQuestionPlayer({
         </div>
       )}
 
+      {/* Growing spacer keeps the CTA pinned to the bottom on short
+          questions; the button's own margin guarantees a gap from the last
+          choice even when the card is full. */}
+      <div className="flex-1" />
       <button
         type="button"
         onClick={next}
         disabled={!revealed}
-        className={`mt-auto w-full rounded-full py-3.5 text-base font-extrabold transition ${revealed ? "bg-violet-600 text-white hover:bg-violet-700" : "cursor-default bg-zinc-200 text-zinc-400"}`}
+        className={`mt-6 w-full rounded-full py-3.5 text-base font-extrabold transition ${revealed ? "bg-violet-600 text-white hover:bg-violet-700" : "cursor-default bg-zinc-200 text-zinc-400"}`}
       >
         {isLast ? "Finish" : "Next question"}
       </button>

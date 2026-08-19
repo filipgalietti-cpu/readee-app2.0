@@ -159,31 +159,6 @@ export default async function DiscoveryDetailPage({
           <TodayQuestionPlayer questions={questions} />
         </div>
       </div>
-
-      {/* Keep exploring */}
-      <div className="mt-12 rounded-3xl border border-violet-200 bg-white p-6 text-center shadow-sm dark:border-violet-500/30 dark:bg-slate-900/50">
-        <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
-          Keep exploring
-        </h2>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-          Readee adds fresh fact-checked passages every day. Browse another topic
-          and keep your reader going.
-        </p>
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-          <Link
-            href={`/discover/${a.category}`}
-            className="rounded-full bg-violet-600 px-5 py-2 text-sm font-bold text-white transition hover:bg-violet-700"
-          >
-            More {cat?.label?.toLowerCase() ?? "articles"}
-          </Link>
-          <Link
-            href="/discover"
-            className="rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-bold text-zinc-700 transition hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-violet-500/50"
-          >
-            All of Discover
-          </Link>
-        </div>
-      </div>
     </div>
   );
 }
