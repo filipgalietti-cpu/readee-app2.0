@@ -853,7 +853,7 @@ export default function LunaReader({
       durationSeconds: statsRef.current.dur,
       disfluent: false,
       heardTranscript: "",
-      prosody: null,
+      prosody: undefined,
     };
     setAfter(toScore(statsRef.current.afterGrade, statsRef.current.dur || 1));
     const clips = coachingClipsRef.current;
