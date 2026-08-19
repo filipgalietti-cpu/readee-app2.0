@@ -177,7 +177,16 @@ export default function LunaReader({
   // the reveal/scan animations survive React re-renders.
   const wordStateRef = useRef<string[]>([]);
   const animatingRef = useRef(false); // true during build reveal / grade scan
-  const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null });
+  const statsRef = useRef({ trickyWords: new Set<string>(), afterGrade: null as Grade | null, wc: 0, wt: 0, dur: 0, anns: [] as Annotation[] });
+
+  // Feedback recap: custom coaching is generated in the BACKGROUND during the
+  // read (never played live — avoids overlap) and delivered as one sequential
+  // recap at the end. sessionTokenRef invalidates any in-flight coaching or
+  // queued recap clip if the kid restarts, gets a new story, or leaves — so
+  // stale audio never plays over whatever they're doing now.
+  const coachingClipsRef = useRef<{ url: string; words: string[] }[]>([]);
+  const recapIntroUrlRef = useRef<string | null>(null);
+  const sessionTokenRef = useRef(0);
   // Sound + celebration engine (synthesized via Web Audio, ported from the Luna
   // Full Flow design): "thinking bubbles" + praise chime + word ticks, and
   // confetti / sparks around the orb. Processing sound always stops before any
@@ -454,6 +463,35 @@ export default function LunaReader({
       .catch(() => { stopProcessing(); onStart?.(); window.setTimeout(onDone, 1200); });
   }
 
+  // Async TTS → URL. Fire-and-forget: generate custom coaching DURING the read
+  // so it's ready for the end recap. Never plays here.
+  async function speakToUrl(text: string): Promise<string | null> {
+    try {
+      const r = await fetch("/api/luna/speak", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text }) });
+      const j = await r.json();
+      return r.ok && j?.ok && j.audioUrl ? (j.audioUrl as string) : null;
+    } catch { return null; }
+  }
+  // Play one arbitrary audio URL through the shared element (stops prior audio
+  // first, so nothing overlaps). onDone fires when it ends or fails.
+  function playUrl(url: string, onDone: () => void) {
+    const a = audioRef.current;
+    if (!a) { window.setTimeout(onDone, 400); return; }
+    stopAudio(); a.src = url; a.onended = onDone; currentAudioRef.current = a;
+    a.play().catch(() => window.setTimeout(onDone, 1400));
+  }
+  // A sentence's misses → custom coaching, TTS'd in the background and stashed
+  // for the recap. Token-guarded so a stale result can't sneak in.
+  function fireCustomCoaching(missed: string[]) {
+    const wds = missed.slice(0, 3);
+    if (wds.length === 0) return;
+    const line = wds.length >= 2
+      ? `Let's practice ${wds.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${wds[wds.length - 1]}". Say each sound slowly.`
+      : `Let's practice the word "${wds[0]}". Say each sound slowly.`;
+    const tok = sessionTokenRef.current;
+    void speakToUrl(line).then((url) => { if (url && sessionTokenRef.current === tok) coachingClipsRef.current.push({ url, words: wds }); });
+  }
+
   // Pick a praise clip that isn't the one we just played (kills the "same
   // cheer over and over" feel).
   function praiseKey() {
@@ -717,12 +755,17 @@ export default function LunaReader({
     // correct-but-slow reads.
     const hasError = g.wordsCorrect < g.wordsTotal || tricky.length > 0;
     const willRetry = hasError && curAttempt === 0;
-    if (!willRetry) tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
+    // On the FINAL result for this sentence, roll it into the session grade
+    // (there's no whole-story overall read anymore).
+    if (!willRetry) {
+      statsRef.current.wc += g.wordsCorrect;
+      statsRef.current.wt += g.wordsTotal;
+      statsRef.current.dur += g.durationSeconds;
+      statsRef.current.anns.push(...g.wordAnnotations);
+      tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
+    }
     // Only surface "I heard …" when the transcript ACTUALLY diverges from the
-    // target line. Azure's reference-scripted recognition echoes the correct
-    // words even when a word is mispronounced, so blindly showing its
-    // transcript printed "I heard '<the correct phrase>'" on a wrong read —
-    // contradicting the red per-word coloring. Suppress that case.
+    // target line (Azure echoes the reference even on a wrong read).
     const norm = (s: string) =>
       (s || "").toLowerCase().replace(/[^a-z0-9'\s]/g, "").replace(/\s+/g, " ").trim();
     const targetLine = sentences[curIdx] ?? "";
@@ -730,20 +773,16 @@ export default function LunaReader({
       !!g.heardTranscript && norm(g.heardTranscript) !== norm(targetLine);
     setLastHeard(hasError && heardDiffers ? g.heardTranscript! : null);
     if (!hasError) {
+      // Right → instant generic praise ("Great job!").
       setLastHeard(null);
       playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
     } else if (willRetry) {
-      const wds = tricky.slice(0, 3);
-      if (wds.length >= 1) {
-        const coaching = wds.length >= 2
-          ? `Let's sound out ${wds.slice(0, -1).map((w) => `"${w}"`).join(", ")} and "${wds[wds.length - 1]}" - say each sound slowly. Then read the whole line again.`
-          : `Let's sound out "${wds[0]}" - say each sound slowly, then read the whole line again.`;
-        speakQueued(coaching, () => proceed(true), () => { setMode("speaking"); setCaption(coaching); });
-      } else {
-        // Fluency wobble (words right, choppy) → "read the whole sentence again".
-        playCachedQueued(`reread-${1 + rand(REREAD_COUNT)}`, () => { setMode("speaking"); setCaption(smoothCap()); }, () => proceed(true));
-      }
+      // Wrong (1st try) → instant generic "not quite, try again"; the CUSTOM
+      // coaching for these misses generates in the background for the recap.
+      fireCustomCoaching(tricky);
+      playCachedQueued(`reread-${1 + rand(REREAD_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's try that line again!"); }, () => proceed(true));
     } else {
+      // Wrong (2nd try) → warm "keep going" and move on.
       playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
     }
   }
@@ -794,18 +833,50 @@ export default function LunaReader({
     setLastHeard(null);
     const next = idxRef.current + 1;
     if (next >= sentences.length) {
-      playCachedQueued(`transition-final-${1 + rand(TRANSITION_COUNT)}`,
-        () => { setMode("speaking"); setCaption("Great practicing! Now read me the whole story one more time."); },
-        () => { wordStateRef.current = words.map(() => "pending"); setPhase("overall2"); setMode("idle"); setCaption("Tap me and read the whole story."); });
+      playRecap();
     } else {
       setIdx(next); setMode("idle"); setCaption("Nice! Tap me to read the next line.");
     }
   }
 
+  // End recap: play the personalized intro + each background-generated custom
+  // coaching clip, strictly one at a time (each clip's onended triggers the
+  // next through the shared audio element). Token-guarded so a stale queue
+  // stops if the kid left / restarted. Then the results screen.
+  function playRecap() {
+    const tok = sessionTokenRef.current;
+    // Session grade from the per-sentence drills (no more whole-story read).
+    statsRef.current.afterGrade = {
+      wordAnnotations: statsRef.current.anns,
+      wordsCorrect: statsRef.current.wc,
+      wordsTotal: statsRef.current.wt,
+      durationSeconds: statsRef.current.dur,
+      disfluent: false,
+      heardTranscript: "",
+      prosody: null,
+    };
+    setAfter(toScore(statsRef.current.afterGrade, statsRef.current.dur || 1));
+    const clips = coachingClipsRef.current;
+    setMode("speaking");
+    celebrate(true);
+    setCaption(clips.length ? `Great reading, ${name}! Let's practice a few words.` : `Amazing, ${name}!`);
+    const seq: string[] = [];
+    if (recapIntroUrlRef.current) seq.push(recapIntroUrlRef.current);
+    clips.forEach((c) => seq.push(c.url));
+    if (seq.length === 0) { finishSession(); return; }
+    let i = 0;
+    const playNext = () => {
+      if (sessionTokenRef.current !== tok) return; // stale — kid left/restarted
+      if (i >= seq.length) { finishSession(); return; }
+      playUrl(seq[i++], playNext);
+    };
+    playNext();
+  }
+
   function finishSession() {
     setPhase("done");
     setMode("idle");
-    setCaption(`You did it, ${name}! Look how much you improved.`);
+    setCaption(`You did it, ${name}!`);
     const g = statsRef.current.afterGrade;
     void fetch("/api/luna/session-complete", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -843,7 +914,14 @@ export default function LunaReader({
     animatingRef.current = false;
     stopAudio();
     if (sparksHostRef.current) sparksHostRef.current.innerHTML = "";
-    statsRef.current = { trickyWords: new Set(), afterGrade: null };
+    statsRef.current = { trickyWords: new Set(), afterGrade: null, wc: 0, wt: 0, dur: 0, anns: [] };
+    // New session: invalidate any prior in-flight audio, reset the recap, and
+    // start generating the personalized recap intro in the background now so
+    // it's ready by the end.
+    coachingClipsRef.current = [];
+    recapIntroUrlRef.current = null;
+    const sessTok = ++sessionTokenRef.current;
+    void speakToUrl(`Great reading, ${name}!`).then((url) => { if (url && sessionTokenRef.current === sessTok) recapIntroUrlRef.current = url; });
     setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setExpression(null); setErr(null); setLastHeard(null);
     const info = computeWords(p.text);
     wordStateRef.current = info.words.map(() => "pending");
@@ -855,7 +933,9 @@ export default function LunaReader({
     await new Promise<void>((r) => sfxTimer(90, r)); // let the word spans render
     await runBuildReveal(info);
     stopProcessing();
-    setPhase("overall1"); setMode("idle"); setCaption("Read me the whole story out loud!");
+    // Straight into the per-sentence drill — no confusing whole-story baseline
+    // read. Each sentence is its own read → instant generic feedback → recap.
+    setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Tap me and read the first line.");
   }
 
   // Generate a fresh passage while Luna "makes a story" (thinking bubbles + orb
