@@ -46,7 +46,7 @@ export default function LunaCreate({
   const [passage, setPassage] = useState<LunaPassage | null>(null);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [custom, setCustom] = useState("");
-  const [errKind, setErrKind] = useState<"upgrade" | "gen" | null>(null);
+  const [errKind, setErrKind] = useState<"upgrade" | "gen" | "unsafe" | null>(null);
 
   function toggle(t: string) {
     setSelected((prev) => {
@@ -70,7 +70,19 @@ export default function LunaCreate({
         setPhase("error");
         return;
       }
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      if (!r.ok) {
+        // Server moderation (assertSafePrompt/Output) blocks unsafe topics —
+        // show a friendly nudge instead of a generic failure.
+        let msg = "";
+        try {
+          msg = (await r.json())?.error ?? "";
+        } catch {
+          /* ignore */
+        }
+        setErrKind(/kid-safe/i.test(msg) ? "unsafe" : "gen");
+        setPhase("error");
+        return;
+      }
       const j = await r.json();
       if (!j?.passage?.text) throw new Error("no passage");
       setPassage({
@@ -144,7 +156,9 @@ export default function LunaCreate({
           ) : (
             <>
               <p className="text-sm font-semibold text-zinc-600 dark:text-slate-300">
-                Luna couldn&apos;t finish that one. Let&apos;s try again.
+                {errKind === "unsafe"
+                  ? "Let's pick a different idea. Luna keeps every story kid-friendly."
+                  : "Luna couldn't finish that one. Let's try again."}
               </p>
               <button
                 type="button"
@@ -152,7 +166,7 @@ export default function LunaCreate({
                 className="mt-3 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-5 py-2 text-sm font-bold text-violet-700 transition hover:bg-violet-50"
               >
                 <RefreshCw className="h-4 w-4" />
-                Try again
+                {errKind === "unsafe" ? "Pick another" : "Try again"}
               </button>
             </>
           )}
