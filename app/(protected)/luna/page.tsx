@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
 import { createClient } from "@/lib/supabase/server";
-import { BookOpen, MessageCircleHeart, Sparkles, Wand2, ArrowRight } from "lucide-react";
+import { MessageCircleHeart, Sparkles, Wand2, ArrowRight } from "lucide-react";
 import LunaOrb from "./_components/LunaOrb";
 
 export const dynamic = "force-dynamic";
@@ -45,11 +45,11 @@ export default async function LunaHubPage({
   const q = `?child=${child.id}`;
   const activities = [
     {
-      href: `/luna/read${q}`,
-      icon: BookOpen,
-      label: "Read with Luna",
-      desc: "Read out loud — I listen and help you sound out every word.",
-      grad: "linear-gradient(135deg,#4338ca,#7c3aed)",
+      href: `/luna/create${q}`,
+      icon: Wand2,
+      label: "Make a Story",
+      desc: "Tell me a topic — I'll write a story you can read, then help you read it out loud.",
+      grad: "linear-gradient(135deg,#7c3aed,#c026d3)",
       glow: "rgba(124,58,237,.28)",
     },
     {
@@ -59,14 +59,6 @@ export default async function LunaHubPage({
       desc: "Ask me anything — a tricky word, a question, an idea.",
       grad: "linear-gradient(135deg,#2563eb,#22d3ee)",
       glow: "rgba(37,99,235,.26)",
-    },
-    {
-      href: `/luna/create${q}`,
-      icon: Wand2,
-      label: "Make a Story",
-      desc: "Tell me a topic — I'll write a story you can read, then help you read it.",
-      grad: "linear-gradient(135deg,#c026d3,#7c3aed)",
-      glow: "rgba(192,38,211,.26)",
     },
   ];
 
@@ -91,7 +83,7 @@ export default async function LunaHubPage({
       </div>
 
       {/* Activities */}
-      <div className="mt-9 grid gap-4 sm:grid-cols-3">
+      <div className="mt-9 grid gap-4 sm:grid-cols-2">
         {activities.map((a) => {
           const Icon = a.icon;
           return (

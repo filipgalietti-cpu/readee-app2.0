@@ -10,6 +10,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Sparkles, ArrowRight, Wand2, RefreshCw, Lock } from "lucide-react";
 import LunaOrb from "./LunaOrb";
 import LunaReader from "./LunaReader";
@@ -40,6 +41,7 @@ export default function LunaCreate({
   childName: string;
   grade: string;
 }) {
+  const router = useRouter();
   const [phase, setPhase] = useState<Phase>("pick");
   const [passage, setPassage] = useState<LunaPassage | null>(null);
   const [custom, setCustom] = useState("");
@@ -187,9 +189,12 @@ export default function LunaCreate({
             </button>
           </form>
 
+          {/* Surprise me = a free, instant premade read (no generation), so
+              free readers still get a taste; custom topics above are the
+              premium generated path. */}
           <button
             type="button"
-            onClick={() => generate("a short, fun surprise story a young reader will enjoy")}
+            onClick={() => router.push(`/luna/read?child=${childId}`)}
             className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 transition hover:text-violet-800 dark:text-violet-300"
           >
             <Sparkles className="h-4 w-4" />
