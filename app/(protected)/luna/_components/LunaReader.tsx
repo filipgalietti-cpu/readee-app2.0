@@ -951,9 +951,13 @@ export default function LunaReader({
             </span>
           </div>
           <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.9, color: "#18181b", overflowWrap: "break-word", wordBreak: "break-word" }}>
-            {words.map((w, i) => (
-              <span key={i} data-w={i} style={{ display: "inline-block", borderRadius: 6, padding: "0 2px", marginRight: 7, opacity: 0 }}>{w}</span>
-            ))}
+            {words.flatMap((w, i) => [
+              <span key={i} data-w={i} style={{ display: "inline-block", borderRadius: 6, padding: "0 2px", marginRight: 2, opacity: 0 }}>{w}</span>,
+              // Real space text node between word spans so the passage reads
+              // correctly AND copies with spaces (the karaoke spans alone had
+              // only CSS gaps, so copied text jammed to "Acathadahat").
+              " ",
+            ])}
           </p>
           {lastHeard && phase === "drill" && (
             <div style={{ marginTop: 10, fontSize: 12.5, color: "#9a3412", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 10, padding: "6px 10px" }}>
