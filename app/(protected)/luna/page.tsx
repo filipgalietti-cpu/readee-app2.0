@@ -61,10 +61,10 @@ export default async function LunaHubPage({
       glow: "rgba(37,99,235,.26)",
     },
     {
-      href: `/stories-for-me${q}`,
+      href: `/luna/create${q}`,
       icon: Wand2,
-      label: "Story with Luna",
-      desc: "I'll make a brand-new story starring you.",
+      label: "Make a Story",
+      desc: "Tell me a topic — I'll write a story you can read, then help you read it.",
       grad: "linear-gradient(135deg,#c026d3,#7c3aed)",
       glow: "rgba(192,38,211,.26)",
     },
