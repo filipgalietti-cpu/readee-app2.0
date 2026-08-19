@@ -1,48 +1,36 @@
-import { Sparkles } from "lucide-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
-import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 import { createClient } from "@/lib/supabase/server";
-import passagesJson from "@/app/data/fluency-passages.json";
-import libraryJson from "@/app/data/luna-library.json";
-import phonicsJson from "@/app/data/luna-phonics.json";
-import LunaReader from "./_components/LunaReader";
+import { BookOpen, MessageCircleHeart, Sparkles, Wand2, ArrowRight } from "lucide-react";
+import LunaOrb from "./_components/LunaOrb";
 
 export const dynamic = "force-dynamic";
 
-type LunaPassage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[] };
-const PASSAGES = passagesJson as LunaPassage[];
-// Pre-built decodable library (pattern-tagged) — the predetermined content that
-// makes Luna instant. Runtime picks from this, never generates.
-const LIBRARY = libraryJson as (LunaPassage & { patternId: string })[];
-const PHONICS = (phonicsJson as { patterns: { id: string; grade: string; order: number }[] }).patterns;
-
-/** Map a child's stored grade ("Kindergarten"/"1st"...) to a passage token ("K"/"1st"...). */
-function gradeToken(g: string | null): string {
-  const s = (g ?? "").toLowerCase();
-  if (s.startsWith("1") || s.includes("first")) return "1st";
-  if (s.startsWith("2") || s.includes("second")) return "2nd";
-  if (s.startsWith("3") || s.includes("third")) return "3rd";
-  if (s.startsWith("4") || s.includes("fourth")) return "4th";
-  return "K";
-}
-
-export default async function LunaPage({
+/**
+ * Luna hub — the single home for the AI suite. The orb is Luna's face; the
+ * child picks an activity. Everything AI now lives under Luna:
+ *   • Read with Luna  → /luna/read   (Azure-graded read-aloud; subsumes the
+ *                                     old Fluency Check)
+ *   • Ask Luna        → the AI Q&A helper (formerly "Ask Readee")
+ *   • Story with Luna → a story starring the child (formerly "Personalized
+ *                       Stories")
+ * The hub itself is open (free taste) — per-activity gating handles limits.
+ */
+export default async function LunaHubPage({
   searchParams,
 }: {
   searchParams: Promise<{ child?: string }>;
 }) {
   const profile = await requireProfile();
-  if (!hasAnyPaidTier((profile as any).plan)) {
-    redirect("/upgrade?reason=reading_buddy");
-  }
-
   const { child: childIdParam } = await searchParams;
   const supabase = await createClient();
 
-  // Load the named child (verified as this parent's), else the parent's first.
-  let child: { id: string; name: string; grade: string | null } | null = null;
-  const base = supabase.from("children").select("id, first_name, grade, parent_id").eq("parent_id", profile.id);
+  let child: { id: string; name: string } | null = null;
+  const base = supabase
+    .from("children")
+    .select("id, first_name, parent_id")
+    .eq("parent_id", profile.id);
   const { data } = childIdParam
     ? await base.eq("id", childIdParam).maybeSingle()
     : await base.order("created_at", { ascending: true }).limit(1).maybeSingle();
@@ -50,63 +38,92 @@ export default async function LunaPage({
     child = {
       id: (data as any).id,
       name: ((data as any).first_name ?? "").split(" ")[0] || "Reader",
-      grade: (data as any).grade ?? null,
     };
   }
+  if (!child) redirect("/dashboard");
 
-  if (!child) {
-    // No reader yet — send them to set one up.
-    redirect("/dashboard");
-  }
-
-  const token = gradeToken(child.grade);
-  // Library-first (pre-built, pattern-tagged, instant); fall back to the curated
-  // fluency passages if the library has none for this grade yet.
-  const lib: LunaPassage[] = LIBRARY.filter((p) => p.grade === token)
-    .map((p) => ({ grade: p.grade, title: p.title, text: p.text, patternId: p.patternId, patternLabel: p.patternLabel, targetWords: p.targetWords }));
-  const curated: LunaPassage[] = PASSAGES.filter((p) => p.grade === token);
-
-  // Adaptive ordering: serve the child's weakest / most-due phonics pattern
-  // first (SM-2 mastery in child_skill_memory); untouched patterns fall back to
-  // teaching order. This is what makes Luna target the reader, not shuffle.
-  let usable: LunaPassage[] = lib.length ? lib : curated.length ? curated : PASSAGES.filter((p) => p.grade === "1st");
-  if (lib.length) {
-    const gradePatterns = PHONICS.filter((p) => p.grade === token);
-    const { data: skills } = await supabase
-      .from("child_skill_memory")
-      .select("standard_id, total_correct, total_attempted, next_due")
-      .eq("child_id", child.id)
-      .in("standard_id", gradePatterns.map((p) => p.id));
-    const sm = new Map((skills ?? []).map((s: { standard_id: string; total_correct: number; total_attempted: number; next_due: string | null }) => [s.standard_id, s]));
-    const now = Date.now();
-    const attempted = (id: string) => { const s = sm.get(id); return !!s && (s.total_attempted ?? 0) > 0; };
-    const mastery = (id: string) => { const s = sm.get(id); return s && s.total_attempted > 0 ? s.total_correct / s.total_attempted : 0; };
-    const due = (id: string) => { const s = sm.get(id); return s && s.next_due ? new Date(s.next_due).getTime() <= now : true; };
-    const ranked = [...gradePatterns].sort((a, b) => {
-      const au = !attempted(a.id), bu = !attempted(b.id);
-      if (au !== bu) return au ? -1 : 1;      // unattempted first
-      if (au && bu) return a.order - b.order; // both new → teaching order
-      const ad = due(a.id), bd = due(b.id);
-      if (ad !== bd) return ad ? -1 : 1;      // due first
-      return mastery(a.id) - mastery(b.id);   // weakest first
-    }).map((p) => p.id);
-    const rank = new Map(ranked.map((id, i) => [id, i] as const));
-    usable = [...lib].sort((a, b) => (rank.get(a.patternId ?? "") ?? 99) - (rank.get(b.patternId ?? "") ?? 99));
-  }
+  const q = `?child=${child.id}`;
+  const activities = [
+    {
+      href: `/luna/read${q}`,
+      icon: BookOpen,
+      label: "Read with Luna",
+      desc: "Read out loud — I listen and help you sound out every word.",
+      grad: "linear-gradient(135deg,#4338ca,#7c3aed)",
+      glow: "rgba(124,58,237,.28)",
+    },
+    {
+      href: `/dashboard/ask-readee${q}`,
+      icon: MessageCircleHeart,
+      label: "Ask Luna",
+      desc: "Ask me anything — a tricky word, a question, an idea.",
+      grad: "linear-gradient(135deg,#2563eb,#22d3ee)",
+      glow: "rgba(37,99,235,.26)",
+    },
+    {
+      href: `/stories-for-me${q}`,
+      icon: Wand2,
+      label: "Story with Luna",
+      desc: "I'll make a brand-new story starring you.",
+      grad: "linear-gradient(135deg,#c026d3,#7c3aed)",
+      glow: "rgba(192,38,211,.26)",
+    },
+  ];
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-6">
-      <div className="mb-4 text-center">
-        <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
+    <div className="mx-auto max-w-3xl px-6 py-8 sm:py-10">
+      {/* Luna's face */}
+      <div className="flex flex-col items-center text-center">
+        <LunaOrb mode="idle" size={240} />
+        <div className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
           <Sparkles className="h-4 w-4" />
           Luna
         </div>
-        <h1 className="mt-0.5 font-extrabold tracking-tight text-zinc-900 dark:text-white" style={{ fontFamily: "'Baloo 2','Nunito',sans-serif", fontSize: 26 }}>
+        <h1
+          className="mt-1 font-extrabold tracking-tight text-zinc-900 dark:text-white"
+          style={{ fontFamily: "'Baloo 2','Nunito',sans-serif", fontSize: 30 }}
+        >
           Hi, {child.name}!
         </h1>
+        <p className="mt-1 text-sm font-semibold text-zinc-500 dark:text-slate-400">
+          What should we do together?
+        </p>
       </div>
 
-      <LunaReader childId={child.id} childName={child.name} passages={usable} />
+      {/* Activities */}
+      <div className="mt-9 grid gap-4 sm:grid-cols-3">
+        {activities.map((a) => {
+          const Icon = a.icon;
+          return (
+            <Link
+              key={a.href}
+              href={a.href}
+              className="group relative flex flex-col rounded-3xl border border-violet-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900/60"
+              style={{ boxShadow: `0 10px 30px -18px ${a.glow}` }}
+            >
+              <span
+                className="flex h-14 w-14 items-center justify-center rounded-2xl shadow-sm"
+                style={{ background: a.grad }}
+              >
+                <Icon className="h-7 w-7 text-white" strokeWidth={2} />
+              </span>
+              <div
+                className="mt-4 text-lg font-extrabold text-zinc-900 dark:text-white"
+                style={{ fontFamily: "'Baloo 2','Nunito',sans-serif" }}
+              >
+                {a.label}
+              </div>
+              <p className="mt-1 flex-1 text-[13px] font-medium leading-snug text-zinc-500 dark:text-slate-400">
+                {a.desc}
+              </p>
+              <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-bold text-violet-600 transition group-hover:gap-2 dark:text-violet-300">
+                Start
+                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              </span>
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }

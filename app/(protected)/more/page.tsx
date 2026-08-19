@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BarChart3, Sparkles, Mic, BookText, ClipboardCheck, Users, Compass, Star, LifeBuoy } from "lucide-react";
+import { BarChart3, Sparkles, BookText, ClipboardCheck, Users, Compass, Star, LifeBuoy } from "lucide-react";
 
 export const metadata = { title: "More · Readee" };
 
@@ -15,9 +15,7 @@ type Tile = {
 const TILES: Tile[] = [
   { href: "/discover", icon: Compass, label: "Discover", desc: "Explore reading passages by topic.", tint: "from-cyan-500 to-blue-500" },
   { href: "/levels", icon: Star, label: "Levels", desc: "See your reading level and how far you've climbed.", tint: "from-yellow-500 to-amber-500" },
-  { href: "/dashboard/ask-readee", icon: Sparkles, label: "Ask Readee", desc: "Ask the AI reading helper anything.", tint: "from-violet-500 to-pink-500", ai: true },
-  { href: "/stories-for-me", icon: Sparkles, label: "Personalized Stories", desc: "Stories made just for your child.", tint: "from-fuchsia-500 to-violet-500", ai: true },
-  { href: "/fluency", icon: Mic, label: "Fluency Check", desc: "Practice reading out loud.", tint: "from-sky-500 to-indigo-500" },
+  { href: "/luna", icon: Sparkles, label: "Luna", desc: "Read aloud, ask questions, and make stories with your AI buddy.", tint: "from-violet-500 to-indigo-500", ai: true },
   { href: "/word-bank", icon: BookText, label: "Word Bank", desc: "Words your child has learned.", tint: "from-amber-500 to-orange-500" },
   { href: "/assessment-results", icon: ClipboardCheck, label: "Placement Test", desc: "Find the just-right reading level.", tint: "from-emerald-500 to-teal-500" },
   { href: "/analytics", icon: BarChart3, label: "Analytics", desc: "See progress, streaks, and stats.", tint: "from-indigo-500 to-blue-500" },

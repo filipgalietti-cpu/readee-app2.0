@@ -1140,9 +1140,7 @@ function ParentSidebar({
       label: "Main",
       items: [
         { href: "/dashboard", icon: Home, label: "Dashboard" },
-        { href: "/dashboard/ask-readee", icon: Sparkles, label: "Ask Readee", emphasis: true },
-        { href: "/stories-for-me", icon: Sparkles, label: "Stories starring my kid", emphasis: true },
-        { href: "/fluency", icon: Mic, label: "Fluency check" },
+        { href: "/luna", icon: Sparkles, label: "Luna", emphasis: true },
         hasAssessment
           ? { href: `/assessment-results?child=${child.id}`, icon: ClipboardCheck, label: "Placement Test Results" }
           : { href: `/assessment?child=${child.id}`, icon: ClipboardCheck, label: "Take Placement Test", emphasis: true },
