@@ -32,14 +32,18 @@ const TOPICS = [
 
 type Phase = "pick" | "generating" | "reading" | "error";
 
+type Reading = { id: string; title: string; text: string; patternLabel: string | null };
+
 export default function LunaCreate({
   childId,
   childName,
   grade,
+  readings = [],
 }: {
   childId: string;
   childName: string;
   grade: string;
+  readings?: Reading[];
 }) {
   const router = useRouter();
   const [phase, setPhase] = useState<Phase>("pick");
@@ -105,12 +109,18 @@ export default function LunaCreate({
     generate(parts.join(", "));
   }
 
+  // Re-read a saved keepsake — straight to the orb reader, no generation.
+  function reread(r: Reading) {
+    setPassage({ grade, title: r.title, text: r.text, patternLabel: r.patternLabel });
+    setPhase("reading");
+  }
+
   const canMake = selected.size > 0 || custom.trim().length > 0;
 
   // Once we have a passage, hand off to the real orb/Azure reader.
   if (phase === "reading" && passage) {
     return (
-      <LunaReader childId={childId} childName={childName} passages={[passage]} />
+      <LunaReader childId={childId} childName={childName} passages={[{ ...passage, patternLabel: passage.patternLabel ?? undefined }]} />
     );
   }
 
@@ -239,6 +249,27 @@ export default function LunaCreate({
             <Sparkles className="h-4 w-4" />
             Surprise me
           </button>
+
+          {readings.length > 0 && (
+            <div className="mt-8 w-full">
+              <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 dark:text-slate-500">
+                My readings
+              </div>
+              <div className="mt-3 flex flex-wrap justify-center gap-2">
+                {readings.map((r) => (
+                  <button
+                    key={r.id}
+                    type="button"
+                    onClick={() => reread(r)}
+                    title={r.title}
+                    className="max-w-[220px] truncate rounded-full border border-zinc-200 bg-white px-3.5 py-1.5 text-xs font-bold text-zinc-700 transition hover:border-violet-300 hover:text-violet-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200"
+                  >
+                    {r.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>

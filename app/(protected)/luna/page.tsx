@@ -46,12 +46,28 @@ export default async function LunaPage({
   }
   if (!child) redirect("/dashboard");
 
+  // "My Readings" keepsake — the child's recent generated stories, re-readable.
+  const { data: readingRows } = await supabase
+    .from("child_ai_content")
+    .select("id, title, passage_text, phonics_pattern")
+    .eq("child_id", child.id)
+    .eq("kind", "luna_reading")
+    .order("created_at", { ascending: false })
+    .limit(8);
+  const readings = ((readingRows ?? []) as any[]).map((r) => ({
+    id: r.id as string,
+    title: (r.title as string) || "Your story",
+    text: r.passage_text as string,
+    patternLabel: (r.phonics_pattern as string) || null,
+  }));
+
   return (
     <div className="mx-auto max-w-2xl px-6 py-8">
       <LunaCreate
         childId={child.id}
         childName={child.name}
         grade={gradeToken(child.grade)}
+        readings={readings}
       />
     </div>
   );

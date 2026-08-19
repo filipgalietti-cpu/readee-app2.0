@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { generatePassage } from "@/lib/ai/readee-ai";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 import { getTargetPattern, gradeToken } from "@/lib/luna/target-pattern";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -72,6 +73,25 @@ export async function POST(req: Request) {
     lengthLevel: "short",
   });
   if (!res.ok) return NextResponse.json({ error: res.error }, { status: 500 });
+
+  // Keepsake: persist to "My Readings" (best-effort). child_ai_content is the
+  // shared parent-content store; admin client per RLS (same as buildParentContent).
+  try {
+    await supabaseAdmin()
+      .from("child_ai_content")
+      .insert({
+        parent_id: user.id,
+        child_id: childId,
+        kind: "luna_reading",
+        topic: (rawTopic || "Surprise story").slice(0, 400),
+        grade_level: gradeTok,
+        phonics_pattern: patternLabel,
+        title: res.passage.title,
+        passage_text: res.passage.passage,
+      });
+  } catch {
+    /* keepsake save is best-effort — never fail the read on a save hiccup */
+  }
 
   return NextResponse.json({
     ok: true,
