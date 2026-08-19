@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { generatePassage } from "@/lib/ai/readee-ai";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
+import { getTargetPattern, gradeToken } from "@/lib/luna/target-pattern";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -29,7 +30,6 @@ export async function POST(req: Request) {
   try { b = await req.json(); } catch { return NextResponse.json({ error: "bad request" }, { status: 400 }); }
   const childId = String(b?.childId ?? "");
   const pattern = b?.pattern ? String(b.pattern).slice(0, 80) : null;
-  const gradeLevel = b?.gradeLevel ? String(b.gradeLevel) : null;
   // The kid/parent prompt. Falls back to a generic fun story ("surprise me").
   const rawTopic = b?.topic ? String(b.topic).trim().slice(0, 200) : "";
   const topic = rawTopic || "a short, fun story a young reader will enjoy reading out loud";
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
   // Auth: parent of the child + paid gate (Luna is premium B2C).
   const { data: child } = await supabase
     .from("children")
-    .select("id, parent_id")
+    .select("id, parent_id, grade")
     .eq("id", childId)
     .maybeSingle();
   if (!child) return NextResponse.json({ error: "child not found" }, { status: 404 });
@@ -50,17 +50,36 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Luna requires a paid plan.", reason: "plan" }, { status: 402 });
   }
 
+  // Reading level = the child's actual grade (authoritative). Target the
+  // phonics pattern they most need next (unless an explicit one was passed) so
+  // the story DRILLS the right sound, not just grade-decodable text.
+  const gradeTok = gradeToken((child as any).grade);
+  let phonicsPattern = pattern;
+  let patternLabel: string | null = null;
+  if (!phonicsPattern) {
+    const target = await getTargetPattern(childId, gradeTok);
+    if (target) {
+      phonicsPattern = target.focus;
+      patternLabel = target.label;
+    }
+  }
+
   const res = await generatePassage({
     teacherId: user.id,
     topic,
-    gradeLevel,
-    phonicsPattern: pattern,
+    gradeLevel: gradeTok,
+    phonicsPattern,
     lengthLevel: "short",
   });
   if (!res.ok) return NextResponse.json({ error: res.error }, { status: 500 });
 
   return NextResponse.json({
     ok: true,
-    passage: { grade: gradeLevel ?? "1st", title: res.passage.title, text: res.passage.passage },
+    passage: {
+      grade: gradeTok,
+      title: res.passage.title,
+      text: res.passage.passage,
+      patternLabel,
+    },
   });
 }

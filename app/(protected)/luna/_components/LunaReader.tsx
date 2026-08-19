@@ -982,6 +982,11 @@ export default function LunaReader({
 
           {preparing || phase === "building" ? null : phase === "intro" ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 28 }}>
+              {passage.patternLabel && (
+                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".04em", color: "#7c3aed", background: "#f5f3ff", border: "1px solid #ddd6fe", borderRadius: 999, padding: "4px 12px" }}>
+                  Practices {passage.patternLabel}
+                </div>
+              )}
               <button type="button" onClick={startFlow} disabled={preparing}
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
                 <Play className="h-5 w-5" fill="#fff" stroke="none" /> {preparing ? "Getting your story…" : "Let's Start"}

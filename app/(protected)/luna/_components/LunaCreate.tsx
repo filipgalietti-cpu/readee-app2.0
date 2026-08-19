@@ -15,7 +15,7 @@ import { Sparkles, ArrowRight, Wand2, RefreshCw, Lock, Check } from "lucide-reac
 import LunaOrb from "./LunaOrb";
 import LunaReader from "./LunaReader";
 
-type LunaPassage = { grade: string; title: string; text: string };
+type LunaPassage = { grade: string; title: string; text: string; patternLabel?: string | null };
 
 // Tickable story ingredients. Kid agency = the wow. No native emojis
 // (Lucide/text only) per the design rules.
@@ -77,6 +77,7 @@ export default function LunaCreate({
         grade: j.passage.grade ?? grade,
         title: j.passage.title ?? "Your story",
         text: j.passage.text,
+        patternLabel: j.passage.patternLabel ?? null,
       });
       setPhase("reading");
     } catch {
