@@ -105,8 +105,10 @@ export default function KidHome(p: KidHomeProps) {
   return (
     <div style={{ maxWidth: 1080, margin: "0 auto", display: "flex", flexDirection: "column", gap: 20 }}>
       <style>{`
-        @keyframes readeePulse{0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.45)}50%{box-shadow:0 0 0 10px rgba(124,58,237,0)}}
-        @keyframes readeeGlow{0%,100%{filter:drop-shadow(0 0 2px rgba(249,115,22,.4))}50%{filter:drop-shadow(0 0 8px rgba(249,115,22,.8))}}
+        /* transform/opacity only — GPU-composited so Safari (esp. iPad)
+           doesn't repaint every frame like it did animating box-shadow/filter. */
+        @keyframes readeePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+        @keyframes readeeGlow{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.14);opacity:1}}
         .kh-lift{transition:transform .2s cubic-bezier(0.34,1.56,0.64,1),box-shadow .2s}
         .kh-lift:hover{transform:translateY(-3px)}
         .kh-tile{transition:transform .2s cubic-bezier(0.34,1.56,0.64,1)}

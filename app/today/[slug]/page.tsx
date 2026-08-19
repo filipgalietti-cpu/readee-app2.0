@@ -92,7 +92,7 @@ export default async function TodayDetailPage({
   return (
     <article className="min-h-screen bg-white">
       {/* Top bar */}
-      <div className="sticky top-0 z-20 border-b border-zinc-100 bg-white/90 backdrop-blur">
+      <div className="sticky top-0 z-20 border-b border-zinc-100 bg-white">
         <div className="mx-auto flex max-w-[1120px] items-center gap-3 px-6 py-3">
           <Link
             href="/daily"
