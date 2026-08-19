@@ -12,7 +12,11 @@ export const maxDuration = 60;
  * exactly what they struggle with. Reuses readee-ai's passage generator
  * (phonicsPattern is a first-class input there).
  *
- * Body (JSON): { childId, pattern?, gradeLevel? }
+ * Body (JSON): { childId, pattern?, gradeLevel?, topic? }
+ *
+ * `topic` is the kid/parent's prompt ("a story about dinosaurs playing
+ * soccer"). The generator keeps it decodable to gradeLevel + phonicsPattern,
+ * so the prompt drives the STORY while Luna controls the READING LEVEL.
  */
 export async function POST(req: Request) {
   const supabase = await createClient();
@@ -26,6 +30,9 @@ export async function POST(req: Request) {
   const childId = String(b?.childId ?? "");
   const pattern = b?.pattern ? String(b.pattern).slice(0, 80) : null;
   const gradeLevel = b?.gradeLevel ? String(b.gradeLevel) : null;
+  // The kid/parent prompt. Falls back to a generic fun story ("surprise me").
+  const rawTopic = b?.topic ? String(b.topic).trim().slice(0, 200) : "";
+  const topic = rawTopic || "a short, fun story a young reader will enjoy reading out loud";
   if (!childId) return NextResponse.json({ error: "childId required" }, { status: 400 });
 
   // Auth: parent of the child + paid gate (Luna is premium B2C).
@@ -45,7 +52,7 @@ export async function POST(req: Request) {
 
   const res = await generatePassage({
     teacherId: user.id,
-    topic: "a short, fun story a young reader will enjoy reading out loud",
+    topic,
     gradeLevel,
     phonicsPattern: pattern,
     lengthLevel: "short",
