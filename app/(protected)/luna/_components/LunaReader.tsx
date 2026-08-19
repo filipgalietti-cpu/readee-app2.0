@@ -708,7 +708,7 @@ export default function LunaReader({
   function wholeFeedbackAfter() {
     playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
   }
-  function sentenceFeedback(g: Grade, _curIdx: number, curAttempt: number) {
+  function sentenceFeedback(g: Grade, curIdx: number, curAttempt: number) {
     const tricky = g.wordAnnotations
       .filter((w) => w.status === "missed" || w.status === "substituted")
       .map((w) => w.word.replace(/[^A-Za-z'-]/g, "")).filter(Boolean);
@@ -718,7 +718,17 @@ export default function LunaReader({
     const hasError = g.wordsCorrect < g.wordsTotal || tricky.length > 0;
     const willRetry = hasError && curAttempt === 0;
     if (!willRetry) tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
-    setLastHeard(hasError && g.heardTranscript ? g.heardTranscript : null);
+    // Only surface "I heard …" when the transcript ACTUALLY diverges from the
+    // target line. Azure's reference-scripted recognition echoes the correct
+    // words even when a word is mispronounced, so blindly showing its
+    // transcript printed "I heard '<the correct phrase>'" on a wrong read —
+    // contradicting the red per-word coloring. Suppress that case.
+    const norm = (s: string) =>
+      (s || "").toLowerCase().replace(/[^a-z0-9'\s]/g, "").replace(/\s+/g, " ").trim();
+    const targetLine = sentences[curIdx] ?? "";
+    const heardDiffers =
+      !!g.heardTranscript && norm(g.heardTranscript) !== norm(targetLine);
+    setLastHeard(hasError && heardDiffers ? g.heardTranscript! : null);
     if (!hasError) {
       setLastHeard(null);
       playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
