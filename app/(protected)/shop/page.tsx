@@ -170,6 +170,20 @@ function ShopContent({
   const nextFreeInMs = Math.max(0, lastFreeMs + MYSTERY_BOX_FREE_COOLDOWN_MS - Date.now());
   const PRICE = freeReady ? 0 : MYSTERY_BOX_PAID_PRICE;
 
+  // Re-render every second while the free box is on cooldown so the countdown
+  // ticks live and flips to the free open the instant it's ready.
+  const [, setNowTick] = useState(0);
+  useEffect(() => {
+    if (freeReady) return;
+    const id = setInterval(() => setNowTick((n) => n + 1), 1000);
+    return () => clearInterval(id);
+  }, [freeReady]);
+  const fmtCountdown = (ms: number) => {
+    const s = Math.max(0, Math.floor(ms / 1000));
+    const p = (n: number) => String(n).padStart(2, "0");
+    return `${p(Math.floor(s / 3600))}:${p(Math.floor((s % 3600) / 60))}:${p(s % 60)}`;
+  };
+
   useEffect(() => {
     shopSfx.setMuted(isMuted);
   }, [isMuted]);
@@ -439,6 +453,10 @@ function ShopContent({
               ? `Open again · ${PRICE} carrots`
               : `Need ${PRICE - child.carrots} more`;
   const primaryEnabled = canAfford && phase !== "opening" && phase !== "charging";
+  // Show the live "free box" countdown on the idle button while it's on cooldown.
+  const showBoxCountdown =
+    !freeReady && phase !== "charging" && phase !== "opening" && phase !== "reveal";
+  const boxCountdown = fmtCountdown(nextFreeInMs);
 
   const rewardNote = !reward
     ? ""
@@ -565,7 +583,7 @@ function ShopContent({
                 <div style={{ padding: "7px 14px", borderRadius: 999, background: "rgba(255,255,255,.86)", backdropFilter: "blur(6px)", fontSize: 12, fontWeight: 800, color: "#4338ca", boxShadow: "0 4px 14px -6px rgba(67,56,202,.6)" }}>
                   {freeReady
                     ? "Tap to open - free daily box!"
-                    : `Next free box in ~${Math.max(1, Math.round(nextFreeInMs / 3_600_000))}h`}
+                    : `Next free box in ${boxCountdown}`}
                 </div>
               </div>
             </div>
@@ -609,7 +627,14 @@ function ShopContent({
                 }}
               >
                 {phase === "reveal" ? <RotateCcw size={19} strokeWidth={2.2} /> : canAfford ? <Carrot size={19} strokeWidth={2.2} /> : <Lock size={19} strokeWidth={2.2} />}
-                {primaryLabel}
+                {showBoxCountdown ? (
+                  <span style={{ display: "flex", flexDirection: "column", alignItems: "center", lineHeight: 1.15 }}>
+                    <span>{primaryLabel}</span>
+                    <span style={{ fontSize: 12, fontWeight: 700, opacity: 0.9 }}>Free box in {boxCountdown}</span>
+                  </span>
+                ) : (
+                  primaryLabel
+                )}
               </button>
             </div>
           </div>

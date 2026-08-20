@@ -22,7 +22,7 @@ const GRADE_BADGES: Record<string, string> = {
   "4th Grade": "/images/ui/grades/grade-4.png",
 };
 import { PaywallModal } from "@/app/_components/PaywallModal";
-import { SkeletonPage } from "@/app/_components/Skeleton";
+import JourneySkeleton from "./_components/JourneySkeleton";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -82,7 +82,7 @@ const DOMAIN_ICONS: Record<string, typeof BookOpen> = {
 
 export default function JourneyPage() {
   return (
-    <Suspense fallback={<SkeletonPage cards={5} />}>
+    <Suspense fallback={<JourneySkeleton />}>
       <JourneyContent />
     </Suspense>
   );
@@ -192,7 +192,7 @@ function JourneyContent() {
   }, []);
 
   if (loading || !child) {
-    return <SkeletonPage cards={5} />;
+    return <JourneySkeleton />;
   }
 
   // From here on, the child is loaded and the URL has been rewritten

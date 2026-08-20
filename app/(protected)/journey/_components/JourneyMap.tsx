@@ -537,11 +537,11 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
         <path d="M22 9s-1.33-2-3.5-2-3.5 2-3.5 2 1.33 2 3.5 2 3.5-2 3.5-2z" /><path d="M15 2s-2 1.33-2 3.5S15 9 15 9s2-1.84 2-3.5C17 3.33 15 2 15 2z" />
       </svg>
     );
-    // Pull up under the app's fixed 72px nav (main has pt-[72px]) so the sky
+    // Pull up under the app's small top gap (main has pt-2 = 8px) so the sky
     // gradient fills that strip, then pad the content back down so it still
     // clears the nav — removes the white gap above the map.
     return (
-      <div style={{ position: "relative", minHeight: "100vh", overflowX: "clip", fontFamily: "var(--font-nunito), sans-serif", marginTop: -72, paddingTop: 72 }}>
+      <div style={{ position: "relative", minHeight: "100vh", overflowX: "clip", fontFamily: "var(--font-nunito), sans-serif", marginTop: -8, paddingTop: 8 }}>
         <style>{KEYFRAMES}</style>
         <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "linear-gradient(180deg,#cfe8fd 0%,#dbeafe 22%,#fdf3d0 46%,#d9f2dd 66%,#fde9c4 86%,#f8d3e2 100%)" }} />
         {/* Stats banner — pinned top-right, OUTSIDE the z-index:1 map
