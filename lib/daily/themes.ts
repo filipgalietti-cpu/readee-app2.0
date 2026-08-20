@@ -283,16 +283,33 @@ const SEASONAL_THEMES: Record<"winter" | "spring" | "summer" | "fall", DailyThem
 // ───── Day-of-week defaults ────────────────────────────────────────
 // When no other theme matches, vary by weekday so two adjacent days
 // don't both end up "an animal fact passage".
+// Each weekday holds SEVERAL distinct angles. The picker seeds by day-of-month,
+// which increments ~7 per week, so consecutive same-weekdays rotate through the
+// whole list instead of collapsing onto one subject (that single-entry collapse
+// is what made every Thursday a "summer bug" passage). Keep angles in genuinely
+// different domains so the model can't drift back to the same handful of topics.
 const WEEKDAY_THEMES: Record<number, DailyTheme[]> = {
   // 0 = Sunday … 6 = Saturday
   0: [
-    { label: "Sunday story", topic: "A warm short story about a child solving a small problem (lost toy, tangled kite string) with help from a friend." },
+    { label: "Sunday story", topic: "A warm short story about a child solving a small everyday problem (a lost toy, a tangled kite string) with help from a friend." },
+    { label: "Sunday kindness", topic: "A gentle short story where a child does something kind for a neighbor, a sibling, or an animal, and feels good about it." },
+    { label: "Sunday bravery", topic: "A short story about a child facing a small fear (the dark, a first swim, a big slide) and finding their courage." },
+    { label: "Sunday try-again", topic: "A short story about a child trying something new and hard (riding a bike, tying shoes), failing at first, and not giving up." },
+    { label: "Sunday surprise", topic: "A warm short story built around a happy surprise or a lost-and-found moment for a child or animal." },
   ],
   1: [
-    { label: "Monday science", topic: "A short kid-friendly informational passage about a science fact a 2nd grader could repeat at the dinner table." },
+    { label: "Monday science", topic: "A short informational passage about an everyday physics fact a 2nd grader could test at home (why things float or sink, how shadows form, why ice melts)." },
+    { label: "Monday space", topic: "A short informational passage about one space fact — the Moon, the Sun, a planet, or the stars — that a 2nd grader would find amazing." },
+    { label: "Monday human body", topic: "A short informational passage about one cool fact about the human body (why we sneeze, how bones grow, what the heart does)." },
+    { label: "Monday earth & weather", topic: "A short informational passage about an earth-science fact — rainbows, thunder, volcanoes, the water cycle — explained simply." },
+    { label: "Monday how things work", topic: "A short informational passage explaining how one simple everyday thing works (a magnet, a wheel, a bubble, a seesaw)." },
   ],
   2: [
-    { label: "Tuesday animals", topic: "A short informational passage about an animal kids might not know much about (e.g., axolotl, narwhal, capybara) and one cool thing about it." },
+    { label: "Tuesday mammals", topic: "A short informational passage about an unusual mammal kids might not know (axolotl is not a mammal — use capybara, narwhal, pangolin, sloth) and one cool thing about it." },
+    { label: "Tuesday sea life", topic: "A short informational passage about a sea creature (octopus, seahorse, sea turtle, jellyfish) and one surprising thing about it." },
+    { label: "Tuesday birds", topic: "A short informational passage about an interesting bird (penguin, owl, hummingbird, pelican) and something special it can do." },
+    { label: "Tuesday bugs", topic: "A short informational passage about an insect or small crawler (ant, bee, ladybug, spider) and one thing that makes it special." },
+    { label: "Tuesday reptiles & amphibians", topic: "A short informational passage about a reptile or amphibian (chameleon, tortoise, frog, gecko) and one cool fact about it." },
   ],
   3: [
     {
@@ -302,17 +319,26 @@ const WEEKDAY_THEMES: Record<number, DailyTheme[]> = {
     },
   ],
   4: [
-    {
-      label: "Thursday nature",
-      topic:
-        "A short informational passage about a plant, animal, weather phenomenon, or seasonal change a kid could observe in their own neighborhood RIGHT NOW (this month, this season). Anchor the passage to the current month or season — what's blooming, who's migrating, what's hatching, what's changing. Avoid generic 'animals in winter' if it's spring; pick what's actually happening today.",
-    },
+    { label: "Thursday plants", topic: "A short informational passage about a plant a kid could see this season — what's blooming, growing, or dropping seeds right now — and how it grows." },
+    { label: "Thursday sky & weather", topic: "A short informational passage about something in the sky or weather a kid could notice today (clouds, wind, rain, the changing length of the day this season)." },
+    { label: "Thursday birds outside", topic: "A short informational passage about a bird a kid might spot in their neighborhood this season and what it's doing right now (nesting, migrating, feeding)." },
+    { label: "Thursday pond & water", topic: "A short informational passage about life in a pond, puddle, or stream a kid could visit (frogs, tadpoles, dragonflies, water striders) this season." },
+    { label: "Thursday ground & soil", topic: "A short informational passage about what's happening at ground level a kid could observe (worms after rain, ants, mushrooms, seeds sprouting) this season." },
+    { label: "Thursday night sky", topic: "A short informational passage about something a kid could look for in the night sky this season (the Moon's shape, a bright star, why nights are longer or shorter now)." },
   ],
   5: [
-    { label: "Friday fun fact", topic: "A short, surprising kid-friendly fun fact passage — something that makes a child say wait, really? — with a comprehension question." },
+    { label: "Friday animal fact", topic: "A short, surprising fun-fact passage about an animal — something that makes a child say wait, really? — with a comprehension question." },
+    { label: "Friday space fact", topic: "A short, surprising fun-fact passage about space or the universe that makes a child say wait, really?" },
+    { label: "Friday body fact", topic: "A short, surprising fun-fact passage about the human body that makes a child say wait, really?" },
+    { label: "Friday food & plant fact", topic: "A short, surprising fun-fact passage about a food or plant (where honey comes from, why onions make you cry) that makes a child say wait, really?" },
+    { label: "Friday world fact", topic: "A short, surprising fun-fact passage about the world — a place, a landmark, or nature (the tallest waterfall, the biggest desert) — that makes a child say wait, really?" },
   ],
   6: [
-    { label: "Saturday adventure", topic: "A short adventure story about a child or animal exploring somewhere new." },
+    { label: "Saturday forest adventure", topic: "A short adventure story about a child or animal exploring a forest or mountain and discovering something." },
+    { label: "Saturday ocean adventure", topic: "A short adventure story about a child or animal exploring the ocean or a beach and finding something new." },
+    { label: "Saturday space adventure", topic: "A short, gentle adventure story about a child or animal taking a pretend trip to space." },
+    { label: "Saturday city discovery", topic: "A short adventure story about a child exploring a new part of their town or city and noticing something they'd never seen." },
+    { label: "Saturday cave adventure", topic: "A short adventure story about a child or animal carefully exploring a cave or an underground place." },
   ],
 };
 

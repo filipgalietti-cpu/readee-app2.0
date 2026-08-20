@@ -191,17 +191,21 @@ When in doubt, pivot to: science, animals, weather, sports, space, helpers, food
   // pick. Best-effort: a query hiccup just means no avoid-list this run.
   let avoidBlock = "";
   try {
+    // Look back ~8 weeks (56 rows), NOT 3. The same-weekday theme recurs on a
+    // 28-day beat, so a 21-day window never spans a full cycle — that's exactly
+    // how "Summer's Loud Bugs" (Jul 23 Thu) and "The Loud Summer Bugs" (Aug 20
+    // Thu, 28 days later) both slipped through. 8 weeks always covers 2 cycles.
     const { data: recentRows } = await admin
       .from("daily_questions")
       .select("passage_title")
       .lt("date", dateStr)
       .order("date", { ascending: false })
-      .limit(21);
+      .limit(56);
     const recentTitles = ((recentRows ?? []) as { passage_title: string | null }[])
       .map((r) => r.passage_title)
       .filter((t): t is string => !!t);
     if (recentTitles.length) {
-      avoidBlock = `\n\nAVOID REPEATS — these ran in the last three weeks. Pick a subject that is clearly DIFFERENT from every one of these (a different animal, a different phenomenon, a different story premise — not a rephrase or a close cousin):\n${recentTitles.map((t) => `- ${t}`).join("\n")}`;
+      avoidBlock = `\n\nAVOID REPEATS — these ran in the last two months. Pick a subject that is clearly DIFFERENT from every one of these (a different animal, a different phenomenon, a different story premise — not a rephrase or a close cousin, and not a synonym like "loud summer bugs" for "cicadas"):\n${recentTitles.map((t) => `- ${t}`).join("\n")}`;
     }
   } catch {
     /* best-effort; ship without the avoid-list if the lookup fails */
