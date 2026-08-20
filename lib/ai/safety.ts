@@ -74,13 +74,23 @@ function normalizeForScanning(s: string): string {
     .trim();
 }
 
-// De-obfuscated form: strip EVERYTHING non-letter (so "f.u.c.k", "f u c k",
-// "f-u-c-k" all become "fuck") and collapse 3+ repeated letters ("fuuuck" ->
-// "fuck"). Scanned only for STRONG_BANNED to avoid clean-word false positives.
-function tighten(s: string): string {
-  return applyLeet(s)
-    .replace(/[^a-z]/g, "")
-    .replace(/(.)\1+/g, "$1"); // collapse ALL runs to one: "fuuuck" -> "fuck"
+// Join runs of SINGLE letters that are split by spaces/punctuation into one
+// word ("f u c k" / "f.u.c.k" / "f-u-c-k" -> "fuck"), while leaving normal
+// multi-letter words untouched. This is what lets us catch spaced-out evasion
+// WITHOUT merging separate words.
+function joinSpacedLetters(s: string): string {
+  return s.replace(/\b[a-z](?:[^a-z]+[a-z]\b)+/g, (m) => m.replace(/[^a-z]/g, ""));
+}
+
+// De-obfuscated form, computed PER WORD so separate words are never merged
+// (that bug turned "wish it" -> "wishit" -> "shit"). Each word has its in-word
+// separators stripped ("f.u.c.k" -> "fuck") and repeats collapsed ("fuuuck" ->
+// "fuck"); the result is whole-word scanned against STRONG_BANNED.
+function deobfuscate(s: string): string {
+  return joinSpacedLetters(applyLeet(s))
+    .split(/\s+/)
+    .map((w) => w.replace(/[^a-z]/g, "").replace(/([a-z])\1+/g, "$1"))
+    .join(" ");
 }
 
 export function containsUnsafeContent(text: string): string | null {
@@ -95,11 +105,12 @@ export function containsUnsafeContent(text: string): string | null {
     if (word.length >= 6 && norm.includes(word.toLowerCase())) return word;
   }
 
-  // 2) De-obfuscated substring scan for the unambiguous strong words —
-  //    catches separator/repeat evasion the whole-word scan misses.
-  const tight = tighten(text);
+  // 2) De-obfuscated WHOLE-WORD scan for the unambiguous strong words — catches
+  //    separator/repeat evasion ("f.u.c.k", "f u c k", "fuuuck") without the
+  //    cross-word false positives a substring scan caused.
+  const deob = " " + deobfuscate(text) + " ";
   for (const word of STRONG_BANNED) {
-    if (tight.includes(word)) return word;
+    if (deob.includes(" " + word + " ")) return word;
   }
 
   return null;
