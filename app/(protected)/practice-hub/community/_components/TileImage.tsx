@@ -4,10 +4,10 @@ import { useState } from "react";
 
 /** Community library cover with a shimmer skeleton until the (remote) image
  *  loads, then a soft fade — so the grid never pops or flashes blank tiles. */
-export default function TileImage({ src }: { src: string }) {
+export default function TileImage({ src, className }: { src: string; className?: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
-    <div className="relative h-32 w-full overflow-hidden bg-zinc-100 dark:bg-slate-800">
+    <div className={`relative overflow-hidden bg-zinc-100 dark:bg-slate-800 ${className ?? "h-32 w-full"}`}>
       {!loaded && (
         <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-slate-800 dark:to-slate-700" />
       )}
