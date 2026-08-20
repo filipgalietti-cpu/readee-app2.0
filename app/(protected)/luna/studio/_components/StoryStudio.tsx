@@ -624,7 +624,7 @@ function Published({ carrots, onAgain }: { carrots: number; onAgain: () => void 
           <Check className="h-8 w-8 text-emerald-600 dark:text-emerald-300" strokeWidth={3} />
         </span>
         <h2 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white" style={BALOO}>
-          Sent to Readee!
+          Sent to the library!
         </h2>
         <p className="mt-2 text-sm text-zinc-600 dark:text-slate-300">
           Our team checks every story to keep Readee kind and safe. Yours will show

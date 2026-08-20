@@ -1960,6 +1960,67 @@ function buildKidModerationPrompt(text: string, strict: boolean): string {
   return prompt;
 }
 
+// ═══ Community compliance review (the auto-review agent's judge) ════════
+//
+// Judges a FINISHED, kid-authored story that's queued for the community
+// library. Unlike moderateKidInput (which screens the raw idea), this reads
+// the whole published piece and decides approve/reject against the safety
+// policy, and also rejects low-effort "slop". Throws on an AI error so the
+// agent can leave the item pending for a human instead of guessing.
+const COMPLIANCE_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    approve: { type: Type.BOOLEAN },
+    reason: { type: Type.STRING },
+  },
+  required: ["approve"],
+};
+
+export async function judgeCommunityCompliance(input: {
+  teacherId: string;
+  title: string;
+  text: string;
+}): Promise<{ approve: boolean; reason: string }> {
+  const client = getClient();
+  const prompt = [
+    `You are the compliance reviewer for a children's (ages 5-10) story library. A child wrote this story and it is queued to be shared with other children. Approve it ONLY if it is fully safe and appropriate for young kids.`,
+    `REJECT if it contains ANY of the following (judge meaning + intent, catching euphemism, innuendo, or disguised wording): profanity or slurs; sexual, romantic-adult, or nudity content; graphic violence, gore, or weapons used to hurt people; hate, mockery, negative stereotypes, or dehumanizing jokes toward any group or identity (race, ethnicity, nationality, religion, gender, sexual orientation, disability); making light of atrocities, genocide, terrorism, slavery, or tragedy; any real named person, living or dead, including politicians, celebrities, brands, and controversial/historical figures (e.g. Hitler); self-harm or suicide; drugs or alcohol; bullying, threats, or insults aimed at a real person; real personal info (full names, addresses, phone numbers, schools).`,
+    `Also REJECT low-effort "slop": gibberish, empty or nonsensical text, or something that is not actually a story.`,
+    `APPROVE wholesome, coherent, age-appropriate kids' stories, including make-believe, mild cartoon peril, magic, silliness, gentle potty humor, and positive respectful representation of any group. When genuinely unsure, REJECT.`,
+    ``,
+    `Title: ${input.title}`,
+    `Story: ${input.text.slice(0, 4000)}`,
+  ].join("\n");
+
+  const response = await client.models.generateContent({
+    model: MODEL_ID,
+    contents: prompt,
+    config: {
+      responseMimeType: "application/json",
+      responseSchema: COMPLIANCE_SCHEMA,
+      temperature: 0,
+    } as any,
+  });
+  const parsed = JSON.parse(response.text ?? "{}") as {
+    approve?: boolean;
+    reason?: string;
+  };
+  await logUsage({
+    teacherId: input.teacherId,
+    kind: "quiz_generation",
+    model: MODEL_ID,
+    inputTokens: response.usageMetadata?.promptTokenCount,
+    outputTokens: response.usageMetadata?.candidatesTokenCount,
+    creditsUsed: CREDIT_COST.quiz_generation,
+    success: true,
+    requestSummary: `community_compliance approve=${parsed.approve}`,
+  });
+  return {
+    approve: parsed.approve === true,
+    reason: parsed.reason ?? "did not meet the kid-safe bar",
+  };
+}
+
 // ═══ Lesson structure (slide-shaped output) ═════════════════════════════
 //
 // Produces a real instructional slideshow — not a story chunked into

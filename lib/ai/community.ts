@@ -388,6 +388,9 @@ export async function submitForCommunityReview(input: {
     .insert({
       source_content_id: c.id,
       source_parent_id: c.parent_id,
+      // Tag kid Story Studio submissions so the auto-review agent can pick
+      // them out of the pending queue.
+      source_kind: input.deferHeavyMedia ? "kid_story" : null,
       title: c.title ?? c.topic.slice(0, 120),
       passage_text: cleanPassage,
       questions: cleanQuestions,
