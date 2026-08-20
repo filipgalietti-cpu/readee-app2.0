@@ -5,7 +5,6 @@ import {
   generateImage,
   generateImageBrief,
   generateMCQQuestions,
-  generateSpeech,
   moderateKidInput,
 } from "@/lib/ai/readee-ai";
 import { assertSafePrompt, assertSafeOutput } from "@/lib/ai/safety";
@@ -147,10 +146,11 @@ export async function POST(req: Request) {
     );
   }
 
-  // Cover + narration + comprehension questions, generated in PARALLEL (they're
-  // independent and each is slow). Every one is best-effort: a hiccup on any
-  // single piece still saves the story (the UI degrades gracefully).
-  const [coverRes, audioRes, mcqRes] = await Promise.allSettled([
+  // Cover + comprehension questions, generated in PARALLEL. No narration here:
+  // TTS is generated at PUBLISH time (submitForCommunityReview) so the create
+  // step stays fast and cheap and doesn't risk the function timeout. Both are
+  // best-effort: a hiccup still saves the story (UI degrades gracefully).
+  const [coverRes, mcqRes] = await Promise.allSettled([
     (async (): Promise<string | null> => {
       const briefRes = await generateImageBrief({
         teacherId: user.id,
@@ -169,19 +169,12 @@ export async function POST(req: Request) {
         teacherId: user.id,
         prompt: scenePrompt,
         stylePrefix: IMAGE_STYLES[imageStyle],
-        // Gemini 3 Pro Image - real photorealism + honors the chosen style.
-        imageModel: "gemini-3-pro-image",
+        // 3.1 Flash Image: much faster than 3 Pro (which was ~38s and timed the
+        // request out) while still honoring the chosen style well.
+        imageModel: "gemini-3.1-flash-image",
       });
       return img.ok ? img.imageUrl : null;
     })(),
-    generateSpeech({
-      teacherId: user.id,
-      // Flatten paragraph breaks to spaces: the TTS model can read a blank
-      // line as "end of input" and stop, dropping later paragraphs. Sentence
-      // punctuation still gives natural pauses.
-      text: body.replace(/\s*\n+\s*/g, " ").trim().slice(0, 4000),
-      style: "warmly, at a gentle storytime pace",
-    }),
     generateMCQQuestions({
       teacherId: user.id,
       topic: [
@@ -199,10 +192,7 @@ export async function POST(req: Request) {
   ]);
 
   const imageUrl = coverRes.status === "fulfilled" ? coverRes.value : null;
-  const audioUrl =
-    audioRes.status === "fulfilled" && audioRes.value.ok
-      ? audioRes.value.audioUrl
-      : null;
+  const audioUrl = null; // narration is added when the story is published
   const questions =
     mcqRes.status === "fulfilled" && mcqRes.value.ok
       ? mcqRes.value.questions.map((q) => ({
