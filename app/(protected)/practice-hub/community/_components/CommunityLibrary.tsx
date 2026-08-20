@@ -40,11 +40,19 @@ function readerHref(it: Item) {
   return it.slug ? `/community/${it.slug}` : `/practice-hub/community/${it.id}`;
 }
 function gradeLabel(g: string | null) {
-  return g === "K" ? "Kindergarten" : g ? `${g} grade` : "your grade";
+  if (!g) return "your grade";
+  if (g === "K") return "Kindergarten";
+  if (/^pre-?k$/i.test(g)) return "Pre-K";
+  return `${g} grade`;
 }
 function byline(it: Item) {
-  const verb = it.source_kind === "kid_story" ? "Written by" : "Shared by";
-  return it.display_byline ? `${verb} ${it.display_byline}` : "Shared by a Readee family";
+  const b = it.display_byline?.trim();
+  if (!b) return "Shared by a Readee family";
+  if (it.source_kind === "kid_story") return `Written by ${b}`;
+  // Curated/org labels ("Featured by Readee") already read as a full phrase —
+  // don't prepend another "Shared by".
+  if (/\bby\b/i.test(b) || /readee/i.test(b)) return b;
+  return `Shared by ${b}`;
 }
 
 export default function CommunityLibrary({
@@ -73,12 +81,15 @@ export default function CommunityLibrary({
     return () => clearInterval(id);
   }, [spotlight.length]);
 
-  // Topic chips derived from the loaded stories (most common, tidy words).
+  // Topic chips derived from the loaded stories — only short, tag-like topics
+  // (kid-story categories like "Superhero"), never the long sentence-topics
+  // seed content carries, so the chip strip stays clean.
   const topics = useMemo(() => {
     const counts = new Map<string, number>();
     for (const it of items) {
       const t = (it.topic ?? "").trim();
-      if (t) counts.set(t, (counts.get(t) ?? 0) + 1);
+      if (!t || t.length > 18 || t.split(/\s+/).length > 2) continue;
+      counts.set(t, (counts.get(t) ?? 0) + 1);
     }
     return Array.from(counts.entries())
       .sort((a, b) => b[1] - a[1])
