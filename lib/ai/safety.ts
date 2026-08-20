@@ -101,8 +101,20 @@ export function containsUnsafeContent(text: string): string | null {
   for (const word of BANNED_WORDS) {
     const needle = " " + word.toLowerCase() + " ";
     if (norm.includes(needle)) return word;
-    // Long roots may hit inflections (e.g. "molest" -> "molested").
-    if (word.length >= 6 && norm.includes(word.toLowerCase())) return word;
+  }
+  // Roots that are safe to match MID-WORD to catch inflections, WITHOUT hitting
+  // innocent words. (A blanket "any 6+ char banned word as a substring" rule
+  // wrongly flagged e.g. "heroine" -> "heroin", "class" is fine but names
+  // aren't.) Every root here is unambiguous — it never appears inside a clean
+  // English word.
+  // NOTE: written in POST-normalization form (leet applied, "ph" -> "f"), since
+  // `norm` above has already been through normalizeForScanning.
+  const SUBSTRING_ROOTS = [
+    "molest", "masturbat", "pedofil", "paedofil", "decapitat",
+    "porn", "fellati", "ejaculat", "bestiality",
+  ];
+  for (const root of SUBSTRING_ROOTS) {
+    if (norm.includes(root)) return root;
   }
 
   // 2) De-obfuscated WHOLE-WORD scan for the unambiguous strong words — catches

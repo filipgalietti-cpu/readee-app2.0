@@ -279,21 +279,27 @@ export async function submitForCommunityReview(input: {
   const { out: cleanPassage, replaced: passageReplaced } = anonymizeText(c.passage_text);
   const { out: cleanQuestions, replaced: qReplaced } = anonymizeQuestions(c.questions);
 
-  // Belt-and-suspenders safety check on the SANITIZED version.
-  const hit =
-    containsUnsafeContent(cleanPassage) ||
-    (Array.isArray(cleanQuestions)
-      ? cleanQuestions
-          .flatMap((q: any) => [q.prompt, ...(q.choices ?? []), q.hint])
-          .map((s: any) => (typeof s === "string" ? s : ""))
-          .map((s: string) => containsUnsafeContent(s))
-          .find(Boolean)
-      : null);
-  if (hit) {
-    return {
-      ok: false,
-      error: "This passage didn't pass our kid-safe content check. Try regenerating.",
-    };
+  // Belt-and-suspenders safety check on the SANITIZED version. For kid Story
+  // Studio (deferHeavyMedia), we DON'T reject here — the child always sees
+  // "Sent to the library!" and the backend review agent is the sole judge
+  // (banlist + LLM compliance), rejecting on the backend if needed. For the
+  // parent flow, keep the hard stop at submit time.
+  if (!input.deferHeavyMedia) {
+    const hit =
+      containsUnsafeContent(cleanPassage) ||
+      (Array.isArray(cleanQuestions)
+        ? cleanQuestions
+            .flatMap((q: any) => [q.prompt, ...(q.choices ?? []), q.hint])
+            .map((s: any) => (typeof s === "string" ? s : ""))
+            .map((s: string) => containsUnsafeContent(s))
+            .find(Boolean)
+        : null);
+    if (hit) {
+      return {
+        ok: false,
+        error: "This passage didn't pass our kid-safe content check. Try regenerating.",
+      };
+    }
   }
 
   // Withdraw any prior submission for this source row.
