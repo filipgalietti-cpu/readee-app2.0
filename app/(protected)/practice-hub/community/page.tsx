@@ -3,6 +3,7 @@ import { ArrowLeft, Users, Sparkles, Play, Search, Eye } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { EmptyState } from "@/app/_components/EmptyState";
+import TileImage from "./_components/TileImage";
 
 export const dynamic = "force-dynamic";
 
@@ -258,12 +259,7 @@ export default async function CommunityLibraryPage({
               >
                 <Link href={href} className="block">
                   {item.image_url ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={item.image_url}
-                      alt=""
-                      className="h-32 w-full object-cover"
-                    />
+                    <TileImage src={item.image_url} />
                   ) : (
                     <div className="flex h-32 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-500 dark:from-violet-950/30 dark:to-indigo-950/30">
                       <Sparkles className="h-10 w-10" />

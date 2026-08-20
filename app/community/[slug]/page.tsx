@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReportButton from "./_components/ReportButton";
+import RecordCommunityRead from "@/app/_components/RecordCommunityRead";
 import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
 import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 import {
@@ -93,10 +94,6 @@ export default async function PublicCommunityPassagePage({
   const passage = await loadBySlug(slug);
   if (!passage) notFound();
 
-  // Fire-and-forget view increment via the SECURITY DEFINER RPC so we
-  // can count anon traffic without exposing the table to anon writes.
-  await supabaseAdmin().rpc("bump_community_view", { p_slug: slug });
-
   // Related passages — same grade, top by view count, exclude self.
   const { data: relatedRows } = await supabaseAdmin()
     .from("community_passages")
@@ -126,6 +123,7 @@ export default async function PublicCommunityPassagePage({
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
+      <RecordCommunityRead slug={passage.slug} />
       <div className="mx-auto max-w-[1120px] px-6 py-8 pb-16">
         <div className="flex items-center gap-3">
           <Link

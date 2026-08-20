@@ -5,6 +5,7 @@ import { requireProfile } from "@/lib/auth/helpers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
 import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
+import RecordCommunityRead from "@/app/_components/RecordCommunityRead";
 
 export const dynamic = "force-dynamic";
 
@@ -28,11 +29,6 @@ export default async function CommunityPassagePage({
   if (!row) notFound();
   const passage = row as any;
 
-  // Best-effort view increment.
-  await admin
-    .from("community_passages")
-    .update({ view_count: (passage.view_count ?? 0) + 1 })
-    .eq("id", id);
 
   const wordCount = ((passage.passage_text as string) ?? "")
     .trim()
@@ -42,6 +38,7 @@ export default async function CommunityPassagePage({
 
   return (
     <div className="mx-auto max-w-[1120px] px-4 py-8 pb-16 sm:px-6">
+      {passage.slug && <RecordCommunityRead slug={passage.slug} />}
       <Link
         href="/practice-hub/community"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
