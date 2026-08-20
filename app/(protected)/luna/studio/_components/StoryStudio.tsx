@@ -477,7 +477,7 @@ function PublishOverlay({
               animation: "ss-stampIn .45s cubic-bezier(.34,1.56,.64,1) both",
             }}
           >
-            <Check size={20} strokeWidth={3} /> Sent!
+            <Check size={20} strokeWidth={3} /> Published
           </div>
         )}
 
