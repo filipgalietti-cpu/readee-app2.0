@@ -1809,15 +1809,22 @@ export async function generateKidStory(input: {
 
   // Invisibly guide the story to the CHILD's reading level (from their grade)
   // so they can read their own creation - while keeping their exact idea.
+  // The reading level is a FIRM target, not a suggestion - a child of this age
+  // should be able to actually read the result. This is what keeps the community
+  // library stocked at every grade (a K author's piece stays K-readable) instead
+  // of every piece drifting up to 3rd/4th. Even factual/informational topics get
+  // clamped: the trick is one idea per short sentence and defining any tricky
+  // topic word inline ("sharp claws called talons") - simple, but still true and
+  // interesting. Richer grades relax the constraint.
   const gradeReading: Record<string, string> = {
-    K: "Kindergarten reading level: simple, familiar words a 5- to 6-year-old knows, in short but COMPLETE flowing sentences (not 3-word fragments). Write 2 to 3 short paragraphs, about 70 to 120 words total.",
-    "1st": "1st-grade reading level: common, easy words in short flowing sentences. Write 2 to 3 short paragraphs, about 90 to 140 words total.",
-    "2nd": "2nd-grade reading level: mostly common words with a few fun ones, short-to-medium sentences. Write 3 short paragraphs, about 120 to 180 words total.",
-    "3rd": "3rd-grade reading level: richer vocabulary and medium sentences. Write 3 to 4 paragraphs, about 160 to 230 words total.",
+    K: "Kindergarten reading level - THIS IS A HARD RULE, not a suggestion. Use only simple, everyday words a 5-year-old knows, one idea per short but complete sentence. If an important topic word is tricky (like 'talons'), use it once and explain it right away in easy words. Keep it true and interesting, just simple. Write 2 to 3 short paragraphs, about 60 to 110 words total.",
+    "1st": "1st-grade reading level - a firm rule. Common, easy words in short, complete sentences; explain any tricky topic word in easy words the first time it appears. Keep it lively and true, just simple. Write 2 to 3 short paragraphs, about 90 to 140 words total.",
+    "2nd": "2nd-grade reading level. Mostly common words with a few fun new ones (made clear from context), short-to-medium sentences. Write 3 short paragraphs, about 120 to 180 words total.",
+    "3rd": "3rd-grade reading level: richer vocabulary and medium sentences, still clear and readable by an 8-year-old. Write 3 to 4 paragraphs, about 160 to 230 words total.",
     "4th": "4th-grade reading level: varied sentences and vivid vocabulary. Write 4 to 5 paragraphs, about 200 to 280 words total.",
   };
   const gradeLine = input.gradeLevel
-    ? `Write it at a ${gradeReading[input.gradeLevel] ?? `${input.gradeLevel}-grade reading level`} so the child can read it themselves.`
+    ? `Write it at a ${gradeReading[input.gradeLevel] ?? `${input.gradeLevel}-grade reading level`} so a child that age can actually read it themselves. Match this reading level closely even for factual topics - simplify the WORDS and SENTENCES to fit, never the truth of the subject.`
     : "Write 2 to 4 short paragraphs, about 90 to 140 words.";
   const formKey = (input.writingForm ?? "narrative")
     .toLowerCase()
