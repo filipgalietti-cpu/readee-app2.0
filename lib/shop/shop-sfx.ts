@@ -180,8 +180,9 @@ export const shopSfx = {
     tone("sine", 110, t, 0.5, 0.75, { glideTo: 42, attack: 0.004 });
     noise(t, 0.34, 0.34, 1800, 260, 0.7);
 
-    // Brass swell — root, fifth, octave
-    const root = big ? N.C4 : N.A4;
+    // Brass swell — root, fifth, octave. Both tiers rooted in C major so the
+    // reveal sits in the same key as the swap/blip/equip chimes.
+    const root = big ? N.C4 : N.G4;
     [1, 1.5, 2].forEach((mult, i) => {
       tone("sawtooth", root * mult, t + 0.02 + i * 0.012, big ? 1.5 : 0.9, big ? 0.13 : 0.09, {
         attack: 0.05,
@@ -190,11 +191,12 @@ export const shopSfx = {
       });
     });
 
-    // Bell arpeggio
-    const arp = big ? [N.C5, N.E5, N.G5, N.C6, N.E6, N.G6] : [N.A4, N.C5, N.E5, N.A5];
+    // Bell arpeggio — C major for both tiers, softly low-passed for a warm,
+    // friendly ring (was A-minor on small rewards, which read as "wrong").
+    const arp = big ? [N.C5, N.E5, N.G5, N.C6, N.E6, N.G6] : [N.C5, N.E5, N.G5, N.C6];
     arp.forEach((f, i) => {
-      tone("triangle", f, t + 0.14 + i * 0.075, 0.85, 0.2, { attack: 0.006 });
-      tone("sine", f * 2, t + 0.14 + i * 0.075, 0.5, 0.07, { attack: 0.006 });
+      tone("triangle", f, t + 0.14 + i * 0.075, 0.85, 0.18, { attack: 0.008, filter: [4200, 1800] });
+      tone("sine", f * 2, t + 0.14 + i * 0.075, 0.5, 0.06, { attack: 0.008 });
     });
 
     // Legendary gets a shimmer tail
@@ -221,21 +223,27 @@ export const shopSfx = {
     tone("sine", 96, t + 0.52, 0.4, 0.6, { glideTo: 48, attack: 0.004 });
     noise(t + 0.5, 0.22, 0.2, 900, 200, 0.9);
 
-    // Major chime triad + sparkle
-    [N.D5, N.G5, N.B4 * 2].forEach((f, i) => {
-      tone("triangle", f, t + 0.54 + i * 0.05, 1.0, 0.19, { attack: 0.006 });
-      tone("sine", f * 2, t + 0.54 + i * 0.05, 0.55, 0.06, { attack: 0.006 });
+    // Bright ascending C-major arrival chime — same key + bell timbre as the
+    // blip and reveal, each note a soft triangle + octave sine, gently
+    // low-passed for warmth (no more off-key B or random out-of-tune sparkles).
+    [N.C5, N.E5, N.G5, N.C6].forEach((f, i) => {
+      tone("triangle", f, t + 0.54 + i * 0.05, 1.0, 0.17, { attack: 0.008, filter: [3800, 1600] });
+      tone("sine", f * 2, t + 0.54 + i * 0.05, 0.55, 0.05, { attack: 0.008 });
     });
-    for (let i = 0; i < 6; i++) {
-      tone("sine", 1600 + Math.random() * 1800, t + 0.6 + Math.random() * 0.5, 0.35, 0.045, { attack: 0.004 });
-    }
+    const sparkle = [N.E6, N.G6, N.C6, N.E6, N.G6, N.C6];
+    sparkle.forEach((f, i) => {
+      tone("sine", f, t + 0.64 + i * 0.06, 0.32, 0.04, { attack: 0.006 });
+    });
   },
 
-  /* Small confirmation blip for buy/equip taps. */
+  /* Small confirmation blip for buy/equip taps. A warm two-note pop that
+     resolves UP to C — same key + bell timbre as the swap/reveal chimes, and
+     gently low-passed so it's never thin, harsh, or off-octave. */
   blip() {
     if (muted || !ac()) return;
     const t = ctx!.currentTime;
-    tone("triangle", N.E5, t, 0.14, 0.14, { attack: 0.004 });
-    tone("triangle", N.A5, t + 0.07, 0.16, 0.1, { attack: 0.004 });
+    tone("triangle", N.G4, t, 0.14, 0.12, { attack: 0.01, filter: [2600, 1200] });
+    tone("triangle", N.C5, t + 0.06, 0.2, 0.13, { attack: 0.01, filter: [3000, 1300] });
+    tone("sine", N.C6, t + 0.06, 0.16, 0.04, { attack: 0.008 });
   },
 };

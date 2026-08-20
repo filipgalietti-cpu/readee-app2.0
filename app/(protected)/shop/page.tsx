@@ -13,6 +13,7 @@ import {
   ShopItem,
   getItemsByCategory,
   categoryToSlot,
+  getCatchphrase,
   BACKGROUND_IMAGES,
   reactionStateFor,
   REACTION_STATE,
@@ -879,7 +880,7 @@ function ShopContent({
             onClick={() => setSwap(null)}
             style={{ padding: "14px 30px", borderRadius: 16, border: 0, cursor: "pointer", fontFamily: BALOO, fontSize: 17, fontWeight: 800, color: "#3b0764", background: "linear-gradient(135deg,#ddd6fe,#a78bfa)", boxShadow: "0 14px 34px -14px #8b5cf6", animation: "rdRise .5s ease 1.05s both" }}
           >
-            Looking good
+            {getCatchphrase(swap.to)}
           </button>
         </div>
       )}

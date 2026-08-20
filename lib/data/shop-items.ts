@@ -205,6 +205,100 @@ export const BACKGROUND_IMAGES: Record<string, string> = {
   bg_farm_animals:     "/images/backgrounds/bg_farm_animals.png",
 };
 
+/**
+ * Fun per-character catchphrase, shown on the equip celebration in place of a
+ * generic "Looking good!" (e.g. the Dino Onesie shouts "ROOOAR!"). Keyed by
+ * item id; covers avatars + outfits (the characters a child "becomes").
+ *
+ * ‼️ WHEN YOU IMPORT A NEW CHARACTER OR OUTFIT, ADD ITS CATCHPHRASE HERE.
+ * Anything without one falls back to "Looking good!" (see getCatchphrase).
+ */
+export const ITEM_CATCHPHRASES: Record<string, string> = {
+  // ── Avatars ──
+  avatar_fox: "Too cool!",
+  avatar_rabbit: "Zoom zoom!",
+  avatar_fish: "Blub blub!",
+  avatar_owl: "Hoot hoot!",
+  avatar_unicorn: "Sparkle on!",
+  avatar_phoenix: "Feeling fiery!",
+  avatar_dragon: "Little roar!",
+  avatar_pirate: "Arrr, matey!",
+  avatar_astronaut: "To the stars!",
+  avatar_ninja: "Silent and swift!",
+  avatar_robot: "Beep boop!",
+  avatar_leopard: "Cool and quiet!",
+  avatar_dino: "ROOOAR!",
+  avatar_pixel: "Game on!",
+  avatar_lion: "Hear me roar!",
+
+  // ── Outfits ──
+  bunny_classic: "Classic and cozy!",
+  bunny_bookworm: "One more page!",
+  bunny_astronaut: "Blast off!",
+  bunny_superhero: "To the rescue!",
+  bunny_pirate: "Arrr, matey!",
+  bunny_scientist: "Eureka!",
+  bunny_soccer: "Goooal!",
+  bunny_royal: "Royally cozy!",
+  bunny_wizard: "Abracadabra!",
+  bunny_birthday: "Party time!",
+  bunny_detective: "Case closed!",
+  bunny_ninja: "Hi-ya!",
+  bunny_chef: "Dinner's ready!",
+  bunny_robot: "Beep boop!",
+  bunny_cowboy: "Yeehaw!",
+  bunny_knight: "For honor!",
+  bunny_popstar: "Encore!",
+  bunny_dino: "ROOOAR!",
+  bunny_jester: "Tee-hee!",
+  bunny_vampire: "Fang-tastic!",
+  bunny_magician: "Ta-da!",
+  bunny_mermaid: "Making a splash!",
+  bunny_witch: "Bubble, bubble!",
+  bunny_viking: "Sail away!",
+  bunny_surfer: "Cowabunga!",
+  bunny_mountaineer: "To the top!",
+  bunny_mummy: "All wrapped up!",
+  bunny_disco: "Boogie time!",
+  bunny_racer: "Vroom vroom!",
+  bunny_fairy: "Sprinkle sparkle!",
+  bunny_tennis: "Ace!",
+  bunny_boxer: "Float and sting!",
+  bunny_baseball: "Home run!",
+  bunny_hockey: "He shoots, he scores!",
+  bunny_football: "Touchdown!",
+  bunny_karate: "Hi-ya!",
+  bunny_cyclist: "On your bike!",
+  bunny_swimmer: "Making waves!",
+  bunny_gymnast: "Stuck the landing!",
+  bunny_cheer: "Go team!",
+  bunny_brazil: "Vamos!",
+  bunny_argentina: "Vamos!",
+  bunny_france: "Allez!",
+  bunny_germany: "Tor!",
+  bunny_usa: "USA! USA!",
+  bunny_england: "Come on, lads!",
+  bunny_spain: "Vamos!",
+  bunny_italy: "Forza!",
+  bunny_netherlands: "Hup Holland!",
+  bunny_portugal: "Vamos, Portugal!",
+  bunny_flamingo: "Just float!",
+  bunny_scuba: "Dive in!",
+  bunny_lifeguard: "On duty!",
+  bunny_icecream: "Sweet treat!",
+  bunny_watermelon: "So juicy!",
+  bunny_sailor: "Ahoy!",
+  bunny_hula: "Aloha!",
+  bunny_fisherman: "Gone fishin'!",
+  bunny_beachtowel: "Beach day!",
+  bunny_pineapple: "Stay sweet!",
+};
+
+/** The equip-celebration catchphrase for an item, or a friendly default. */
+export function getCatchphrase(id: string): string {
+  return ITEM_CATCHPHRASES[id] ?? "Looking good!";
+}
+
 export function getItemsByCategory(category: ShopCategory): ShopItem[] {
   return SHOP_ITEMS.filter((item) => item.category === category);
 }
