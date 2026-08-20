@@ -27,6 +27,7 @@
 
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { containsUnsafeContent } from "@/lib/ai/safety";
+import { readingGradeToken } from "@/lib/utils/readability";
 import { generateSpeech } from "@/lib/ai/readee-ai";
 import { judgeShouldBeAsked } from "@/lib/ai/qc-question-meta";
 import { judgeAudioFile, judgeImageQuality } from "@/lib/ai/qc-media";
@@ -405,7 +406,12 @@ export async function submitForCommunityReview(input: {
       questions: cleanQuestions,
       image_url: c.image_url,
       audio_url: audioUrl,
-      grade_level: c.grade_level ?? "2nd",
+      // For kid stories the child's grade != the story's reading level (Luna
+      // writes at a read-aloud level), so tag the library with the passage's
+      // ACTUAL readability grade so kids find level-appropriate stories.
+      grade_level: input.deferHeavyMedia
+        ? readingGradeToken(cleanPassage)
+        : c.grade_level ?? "2nd",
       topic: c.topic,
       phonics_pattern: c.phonics_pattern ?? null,
       status: effectivelyTrusted ? "approved" : "pending",

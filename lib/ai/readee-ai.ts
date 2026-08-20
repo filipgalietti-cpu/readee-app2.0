@@ -1749,12 +1749,12 @@ WRITE A REAL STORY (not a word list, not decodable-practice text):
 - Give the hero a fitting name and a little personality. Use vivid, sensory details and a touch of magic or humor.
 - When the idea invites it, gently celebrate or teach something good (caring for nature, kindness, courage) - woven in, never preachy.
 
-READING LEVEL:
-- Luna reads this ALOUD and the child keeps it as a treasure, so you do NOT need to keep words phonetically decodable. Use rich, natural, interesting words a child loves to HEAR.
-- Still keep it clear and easy to follow: mostly short-to-medium sentences, concrete images. Age-appropriate and gentle ALWAYS - nothing scary, violent, mean, or grown-up.
+READING LEVEL (match the target the user prompt gives):
+- Write the story at the reading level named in the prompt so the CHILD can read it mostly on their own. Match that grade's vocabulary, sentence length, and total length.
+- Even at the simplest levels, STAY TRUE to the child's exact idea and characters (a tiger stays a tiger, pollution stays pollution). Simplify the WORDS and SENTENCES to fit the level; never swap, drop, or water down their subject. Keep it a warm, fun little story - clear and easy to follow, never dull or robotic.
+- Age-appropriate and gentle ALWAYS - nothing scary, violent, mean, or grown-up.
 
-LENGTH & FORMAT:
-- About 90-150 words, in 2-3 short paragraphs.
+FORMAT:
 - A fun, fitting title, 8 words or fewer.
 - Plain text only. No markdown, asterisks, underscores, HTML, or emojis. One space after each punctuation mark. Separate paragraphs with a blank line.`;
 
@@ -1785,9 +1785,18 @@ export async function generateKidStory(input: {
     return { ok: false, error: e.message ?? "AI is not configured." };
   }
 
+  // Invisibly guide the story to the CHILD's reading level (from their grade)
+  // so they can read their own creation - while keeping their exact idea.
+  const gradeReading: Record<string, string> = {
+    K: "Kindergarten reading level: very short sentences (about 3 to 6 words), simple everyday words a 5-year-old knows, about 40 to 70 words total.",
+    "1st": "1st-grade reading level: short sentences (about 4 to 8 words), common easy words, about 60 to 100 words total.",
+    "2nd": "2nd-grade reading level: short-to-medium sentences, mostly common words with a few fun ones, about 90 to 140 words total.",
+    "3rd": "3rd-grade reading level: medium sentences and richer vocabulary, about 120 to 190 words total.",
+    "4th": "4th-grade reading level: varied sentences and vivid vocabulary, about 150 to 230 words total.",
+  };
   const gradeLine = input.gradeLevel
-    ? `The child is in ${input.gradeLevel} grade - pick words they love to hear at that age.`
-    : "";
+    ? `Write it at a ${gradeReading[input.gradeLevel] ?? `${input.gradeLevel}-grade reading level`} so the child can read it themselves.`
+    : "About 90 to 140 words.";
   const userPrompt = [
     `The child wants a story about: ${wish}.`,
     gradeLine,
