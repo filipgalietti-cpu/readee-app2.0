@@ -250,6 +250,8 @@ export async function submitForCommunityReview(input: {
    *  passes the child's first name ("Written by Mia") instead of the
    *  parent's opt-in display name. */
   bylineOverride?: string | null;
+  /** Avatar image path shown next to the byline (kid's character face). */
+  avatarOverride?: string | null;
   /** Never take the trusted-parent auto-approve fast lane. Kid-authored
    *  Story Studio content always goes through human review. */
   forceReview?: boolean;
@@ -397,6 +399,7 @@ export async function submitForCommunityReview(input: {
       // Tag kid Story Studio submissions so the auto-review agent can pick
       // them out of the pending queue.
       source_kind: input.deferHeavyMedia ? "kid_story" : null,
+      display_avatar: input.avatarOverride ?? null,
       title: c.title ?? c.topic.slice(0, 120),
       passage_text: cleanPassage,
       questions: cleanQuestions,

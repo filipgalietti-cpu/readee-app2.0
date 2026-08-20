@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReportButton from "./_components/ReportButton";
+import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
+import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 import {
   ArrowLeft,
   Users,
   Sparkles,
-  Volume2,
   Eye,
   ArrowRight,
 } from "lucide-react";
@@ -27,6 +28,8 @@ type CommunityPassage = {
   topic: string;
   phonics_pattern: string | null;
   display_byline: string | null;
+  display_avatar: string | null;
+  source_kind: string | null;
   view_count: number;
   status: string;
   created_at: string;
@@ -37,7 +40,7 @@ async function loadBySlug(slug: string): Promise<CommunityPassage | null> {
   const { data } = await admin
     .from("community_passages")
     .select(
-      "id, slug, title, passage_text, questions, image_url, audio_url, grade_level, topic, phonics_pattern, display_byline, view_count, status, created_at",
+      "id, slug, title, passage_text, questions, image_url, audio_url, grade_level, topic, phonics_pattern, display_byline, display_avatar, source_kind, view_count, status, created_at",
     )
     .eq("slug", slug)
     .eq("status", "approved")
@@ -124,7 +127,7 @@ export default async function PublicCommunityPassagePage({
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-white dark:from-slate-950 dark:via-slate-950 dark:to-slate-950">
-      <div className="mx-auto max-w-3xl px-6 py-10">
+      <div className="mx-auto max-w-[1120px] px-6 py-8 pb-16">
         <div className="flex items-center justify-between gap-3">
           <Link
             href="/"
@@ -141,91 +144,81 @@ export default async function PublicCommunityPassagePage({
           </Link>
         </div>
 
-        <div className="mt-5 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
-          <Users className="h-4 w-4" />
-          {passage.display_byline
-            ? `Shared by ${passage.display_byline}`
-            : "Shared by a Readee family"}
-          <span className="rounded-full bg-violet-100 px-2 py-0.5 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
-            {passage.grade_level}
-          </span>
-          {passage.phonics_pattern && (
-            <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
-              {passage.phonics_pattern}
-            </span>
+        <div className="mt-6 grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
+          {/* LEFT — the reading (Daily Readee layout) */}
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              {passage.display_avatar ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={passage.display_avatar}
+                  alt=""
+                  className="h-7 w-7 flex-none rounded-full object-cover shadow-sm ring-2 ring-white dark:ring-slate-800"
+                />
+              ) : (
+                <Users className="h-4 w-4 text-violet-600 dark:text-violet-300" />
+              )}
+              <span className="text-sm font-bold text-zinc-700 dark:text-slate-200">
+                {passage.display_byline
+                  ? `${passage.source_kind === "kid_story" ? "Written by" : "Shared by"} ${passage.display_byline}`
+                  : "Shared by a Readee family"}
+              </span>
+              <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+                {passage.grade_level}
+              </span>
+              {passage.phonics_pattern && (
+                <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                  {passage.phonics_pattern}
+                </span>
+              )}
+            </div>
+
+            <h1 className="mt-2 font-display text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 dark:text-white sm:text-[38px]">
+              {passage.title}
+            </h1>
+
+            {passage.image_url && (
+              <div className="mt-5 flex justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={passage.image_url}
+                  alt=""
+                  className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm dark:border-slate-700"
+                />
+              </div>
+            )}
+
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-slate-400">
+              <span className="inline-flex items-center gap-1">
+                <Eye className="h-3.5 w-3.5" />
+                {passage.view_count.toLocaleString()} reads
+              </span>
+              <span>·</span>
+              <span>{readMinutes} min read</span>
+              {passage.audio_url && <ReadAloudButton audioUrl={passage.audio_url} />}
+              <span className="ml-auto">
+                <ReportButton slug={passage.slug} />
+              </span>
+            </div>
+
+            <div
+              className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900 dark:text-slate-100"
+              style={{
+                fontFamily:
+                  'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
+              }}
+            >
+              {passage.passage_text}
+            </div>
+          </div>
+
+          {/* RIGHT — the quiz, sticky, same player as Daily Readee + Studio */}
+          {Array.isArray(passage.questions) && passage.questions.length > 0 && (
+            <div className="lg:sticky lg:top-6">
+              <TodayQuestionPlayer questions={passage.questions} />
+            </div>
           )}
         </div>
-
-        <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-          {passage.title}
-        </h1>
-        <div className="mt-2 flex items-center gap-3 text-[11px] text-zinc-500">
-          <span className="inline-flex items-center gap-1">
-            <Eye className="h-3 w-3" />
-            {passage.view_count.toLocaleString()} reads
-          </span>
-          <span>·</span>
-          <span>{readMinutes} min read</span>
-          <span className="ml-auto">
-            <ReportButton slug={passage.slug} />
-          </span>
-        </div>
-
-        {passage.image_url && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={passage.image_url}
-            alt={passage.title}
-            className="mt-6 max-h-80 w-full rounded-2xl object-contain shadow-sm"
-          />
-        )}
-
-        <article className="mt-6 whitespace-pre-line rounded-2xl border border-zinc-200 bg-white p-6 text-base leading-relaxed text-zinc-900 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100">
-          {passage.passage_text}
-        </article>
-
-        {passage.audio_url && (
-          <div className="mt-4 flex items-center gap-2 rounded-2xl border border-violet-200 bg-violet-50 p-3 text-sm dark:border-violet-900/40 dark:bg-violet-950/20">
-            <Volume2 className="h-4 w-4 flex-shrink-0 text-violet-600 dark:text-violet-300" />
-            <audio controls src={passage.audio_url} className="flex-1" />
-          </div>
-        )}
-
-        {Array.isArray(passage.questions) && passage.questions.length > 0 && (
-          <div className="mt-8">
-            <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
-              <Sparkles className="h-4 w-4 text-violet-500" />
-              Comprehension questions
-            </div>
-            <ol className="mt-3 space-y-3">
-              {passage.questions.map((q: any, i: number) => (
-                <li
-                  key={i}
-                  className="rounded-2xl border border-zinc-200 bg-white p-4 text-sm dark:border-slate-800 dark:bg-slate-900/40"
-                >
-                  <div className="font-semibold text-zinc-900 dark:text-white">
-                    Q{i + 1}. {q.prompt}
-                  </div>
-                  {Array.isArray(q.choices) && (
-                    <ul className="mt-2 space-y-1 text-xs">
-                      {q.choices.map((c: string, j: number) => (
-                        <li
-                          key={`${j}-${c}`}
-                          className="rounded-lg px-2 py-1 text-zinc-600 dark:text-slate-400"
-                        >
-                          {String.fromCharCode(65 + j)}. {c}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ol>
-            <p className="mt-3 text-[11px] text-zinc-500">
-              Answers, hints, and read-along are unlocked when you sign in.
-            </p>
-          </div>
-        )}
 
         {/* More like this — same grade, top reads */}
         {related.length > 0 && (

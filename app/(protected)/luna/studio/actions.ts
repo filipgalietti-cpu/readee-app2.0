@@ -3,6 +3,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { submitForCommunityReview } from "@/lib/ai/community";
+import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { STORY_CARROTS } from "@/lib/luna/story-rewards";
 
 /**
@@ -41,10 +42,11 @@ export async function publishKidStory({
   const admin = supabaseAdmin();
   const { data: childRow } = await admin
     .from("children")
-    .select("id, first_name, carrots")
+    .select("id, first_name, carrots, equipped_items")
     .eq("id", childId)
     .maybeSingle();
   const firstName = ((childRow as any)?.first_name as string | null) ?? null;
+  const avatarSrc = childRow ? getChildAvatarImage(childRow as any, 0) : null;
 
   // Has this exact story been submitted before? If so, don't re-award.
   const { count: priorCount } = await admin
@@ -57,6 +59,7 @@ export async function publishKidStory({
     parentId: user.id,
     contentId,
     bylineOverride: firstName,
+    avatarOverride: avatarSrc,
     forceReview: true,
     // Keep publish fast: skip the ~40-60s TTS + LLM-QC chain (it timed the
     // request out). Kid content is already moderated + scanned and a human
