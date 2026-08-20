@@ -217,7 +217,10 @@ export async function POST(req: Request) {
         parent_id: user.id,
         child_id: childId,
         kind: "luna_story",
-        topic: (idea || storyType || "Surprise story").slice(0, 400),
+        // Use the story TYPE as the topic (a clean library category like
+        // "Superhero" / "Animals") rather than the raw idea prompt, so the
+        // community library's topic chips + filters stay tidy.
+        topic: (storyType || idea || "Story").slice(0, 60),
         grade_level: gradeTok,
         phonics_pattern: null,
         title,

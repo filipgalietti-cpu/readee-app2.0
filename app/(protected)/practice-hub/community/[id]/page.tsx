@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Users, Sparkles, Volume2 } from "lucide-react";
+import { ArrowLeft, Users, BookOpen } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
+import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 
 export const dynamic = "force-dynamic";
 
@@ -17,7 +19,9 @@ export default async function CommunityPassagePage({
   const admin = supabaseAdmin();
   const { data: row } = await admin
     .from("community_passages")
-    .select("id, slug, title, passage_text, questions, image_url, audio_url, grade_level, topic, phonics_pattern, status, view_count, play_count, display_byline")
+    .select(
+      "id, slug, title, passage_text, questions, image_url, audio_url, grade_level, topic, phonics_pattern, status, view_count, play_count, display_byline, display_avatar, source_kind",
+    )
     .eq("id", id)
     .eq("status", "approved")
     .maybeSingle();
@@ -30,8 +34,14 @@ export default async function CommunityPassagePage({
     .update({ view_count: (passage.view_count ?? 0) + 1 })
     .eq("id", id);
 
+  const wordCount = ((passage.passage_text as string) ?? "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean).length;
+  const readMinutes = Math.max(1, Math.round(wordCount / 120));
+
   return (
-    <div className="mx-auto max-w-3xl px-6 py-10">
+    <div className="mx-auto max-w-[1120px] px-4 py-8 pb-16 sm:px-6">
       <Link
         href="/practice-hub/community"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
@@ -40,86 +50,76 @@ export default async function CommunityPassagePage({
         Community library
       </Link>
 
-      <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
-        <Users className="h-4 w-4" />
-        {passage.display_byline
-          ? `Shared by ${passage.display_byline}`
-          : "Shared by a Readee family"}
-        <span className="rounded-full bg-violet-100 px-2 py-0.5 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
-          {passage.grade_level}
-        </span>
-        {passage.phonics_pattern && (
-          <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
-            {passage.phonics_pattern}
-          </span>
+      {/* Daily Readee layout: image + passage LEFT, quiz sticky RIGHT. */}
+      <div className="mt-6 grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            {passage.display_avatar ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={passage.display_avatar}
+                alt=""
+                className="h-7 w-7 flex-none rounded-full object-cover shadow-sm ring-2 ring-white dark:ring-slate-800"
+              />
+            ) : (
+              <Users className="h-4 w-4 text-violet-600 dark:text-violet-300" />
+            )}
+            <span className="text-sm font-bold text-zinc-700 dark:text-slate-200">
+              {passage.display_byline
+                ? `${passage.source_kind === "kid_story" ? "Written by" : "Shared by"} ${passage.display_byline}`
+                : "Shared by a Readee family"}
+            </span>
+            <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+              {passage.grade_level}
+            </span>
+            {passage.phonics_pattern && (
+              <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                {passage.phonics_pattern}
+              </span>
+            )}
+          </div>
+
+          <h1 className="mt-2 font-display text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 dark:text-white sm:text-[38px]">
+            {passage.title}
+          </h1>
+
+          {passage.image_url && (
+            <div className="mt-5 flex justify-center">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={passage.image_url}
+                alt=""
+                className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm dark:border-slate-700"
+              />
+            </div>
+          )}
+
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-slate-400">
+            <span className="inline-flex items-center gap-1">
+              <BookOpen className="h-3.5 w-3.5" />
+              {wordCount} words · {readMinutes} min read
+            </span>
+            {passage.audio_url && <ReadAloudButton audioUrl={passage.audio_url} />}
+          </div>
+
+          <div
+            className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900 dark:text-slate-100"
+            style={{
+              fontFamily:
+                'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
+            }}
+          >
+            {passage.passage_text}
+          </div>
+        </div>
+
+        {/* RIGHT — the quiz, sticky, same player as Daily Readee + Studio */}
+        {Array.isArray(passage.questions) && passage.questions.length > 0 && (
+          <div className="lg:sticky lg:top-6">
+            <TodayQuestionPlayer questions={passage.questions} />
+          </div>
         )}
       </div>
-
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-        {passage.title}
-      </h1>
-
-      {passage.image_url && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={passage.image_url}
-          alt=""
-          className="mt-5 max-h-72 w-full rounded-2xl object-contain"
-        />
-      )}
-
-      <div className="mt-5 whitespace-pre-line rounded-2xl border border-zinc-200 bg-white p-6 text-base leading-relaxed text-zinc-900 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100">
-        {passage.passage_text}
-      </div>
-
-      {passage.audio_url && (
-        <div className="mt-4 flex items-center gap-2 rounded-2xl border border-violet-200 bg-violet-50 p-3 text-sm dark:border-violet-900/40 dark:bg-violet-950/20">
-          <Volume2 className="h-4 w-4 text-violet-600 dark:text-violet-300" />
-          <audio controls src={passage.audio_url} className="flex-1" />
-        </div>
-      )}
-
-      {Array.isArray(passage.questions) && passage.questions.length > 0 && (
-        <div className="mt-8">
-          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
-            <Sparkles className="h-4 w-4 text-violet-500" />
-            Comprehension questions
-          </div>
-          <ol className="mt-3 space-y-3">
-            {passage.questions.map((q: any, i: number) => (
-              <li
-                key={i}
-                className="rounded-2xl border border-zinc-200 bg-white p-4 text-sm dark:border-slate-800 dark:bg-slate-900/40"
-              >
-                <div className="font-semibold text-zinc-900 dark:text-white">
-                  Q{i + 1}. {q.prompt}
-                </div>
-                {Array.isArray(q.choices) && (
-                  <ul className="mt-2 space-y-1 text-xs">
-                    {q.choices.map((c: string) => (
-                      <li
-                        key={c}
-                        className={
-                          c === q.correct
-                            ? "rounded-lg bg-green-50 px-2 py-1 font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-300"
-                            : "px-2 py-1 text-zinc-600 dark:text-slate-400"
-                        }
-                      >
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {q.hint && (
-                  <p className="mt-2 text-[11px] text-zinc-500 dark:text-slate-400">
-                    Hint: {q.hint}
-                  </p>
-                )}
-              </li>
-            ))}
-          </ol>
-        </div>
-      )}
     </div>
   );
 }
