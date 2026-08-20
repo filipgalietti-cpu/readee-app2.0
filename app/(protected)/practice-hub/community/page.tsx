@@ -38,7 +38,7 @@ export default async function CommunityLibraryPage({
   let query = admin
     .from("community_passages")
     .select(
-      "id, slug, title, image_url, grade_level, topic, phonics_pattern, view_count, play_count, display_byline, created_at",
+      "id, slug, title, image_url, grade_level, topic, phonics_pattern, view_count, play_count, display_byline, display_avatar, source_kind, created_at",
     )
     .eq("status", "approved");
 
@@ -73,6 +73,8 @@ export default async function CommunityLibraryPage({
     view_count: number;
     play_count: number;
     display_byline: string | null;
+    display_avatar: string | null;
+    source_kind: string | null;
     created_at: string;
   }[];
 
@@ -282,10 +284,20 @@ export default async function CommunityLibraryPage({
                       {item.title}
                     </h3>
                     {item.display_byline && (
-                      <div className="mt-1 text-[11px] text-zinc-500 dark:text-slate-400">
-                        Shared by{" "}
-                        <span className="font-semibold text-zinc-700 dark:text-slate-300">
-                          {item.display_byline}
+                      <div className="mt-1.5 flex items-center gap-1.5 text-[11px] text-zinc-500 dark:text-slate-400">
+                        {item.display_avatar && (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={item.display_avatar}
+                            alt=""
+                            className="h-5 w-5 flex-none rounded-full object-cover ring-1 ring-white dark:ring-slate-800"
+                          />
+                        )}
+                        <span>
+                          {item.source_kind === "kid_story" ? "Written by" : "Shared by"}{" "}
+                          <span className="font-semibold text-zinc-700 dark:text-slate-300">
+                            {item.display_byline}
+                          </span>
                         </span>
                       </div>
                     )}

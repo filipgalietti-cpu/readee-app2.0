@@ -8,7 +8,6 @@ import {
   Users,
   Sparkles,
   Eye,
-  ArrowRight,
 } from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -126,21 +125,15 @@ export default async function PublicCommunityPassagePage({
   const readMinutes = Math.max(1, Math.round(wordCount / 120));
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-violet-50 via-white to-white dark:from-slate-950 dark:via-slate-950 dark:to-slate-950">
+    <div className="min-h-screen bg-white dark:bg-slate-950">
       <div className="mx-auto max-w-[1120px] px-6 py-8 pb-16">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
           <Link
-            href="/"
+            href="/practice-hub/community"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-indigo-600 dark:text-slate-400"
           >
             <ArrowLeft className="h-4 w-4" />
-            Readee
-          </Link>
-          <Link
-            href="/signup"
-            className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm hover:bg-violet-700"
-          >
-            Try Readee free
+            Library
           </Link>
         </div>
 
@@ -274,30 +267,8 @@ export default async function PublicCommunityPassagePage({
           </div>
         )}
 
-        {/* Soft sign-up CTA */}
-        <div className="mt-10 rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-100 via-indigo-50 to-violet-100 p-6 text-center shadow-sm dark:border-violet-900/40 dark:from-violet-950/40 dark:via-indigo-950/30 dark:to-violet-950/40">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
-            Want passages like this for your kid?
-          </div>
-          <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
-            Make your own with Readee
-          </h2>
-          <p className="mx-auto mt-1 max-w-md text-sm text-zinc-700 dark:text-slate-300">
-            Type any topic. Get a level-locked passage, comprehension
-            questions, and read-aloud audio in under a minute. Built by a
-            certified reading specialist.
-          </p>
-          <Link
-            href="/signup"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-violet-700"
-          >
-            Try Readee free
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        <p className="mt-6 text-center text-[11px] text-zinc-500">
-          Anonymized and reviewed before publishing. © Readee Learning LLC.
+        <p className="mt-10 text-center text-[11px] text-zinc-500">
+          Reviewed before publishing. © Readee Learning LLC.
         </p>
       </div>
     </div>
