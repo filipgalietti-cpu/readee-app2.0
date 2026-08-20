@@ -30,7 +30,7 @@ const outDir = resolve(process.cwd(), "public/images/story-styles");
 mkdirSync(outDir, { recursive: true });
 
 for (const [style, words] of Object.entries(STYLES)) {
-  const prompt = `${words} ${SUBJECT}. Single square image, one scene, no text or watermarks.`;
+  const prompt = `${words} ${SUBJECT}. The fox has correct, natural anatomy: exactly one tail, one head, two ears, and four legs - no duplicated, extra, or merged body parts. Single square image, one scene, no text or watermarks.`;
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${KEY}`,
     {
