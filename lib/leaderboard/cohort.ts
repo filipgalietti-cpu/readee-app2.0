@@ -4,31 +4,38 @@
  * B2C reality: 1 parent : 1 child, and pre-launch there are ~no other users,
  * so ranking a kid against "other kids" would be a podium of one. We also
  * can't show other real children's names/carrots (COPPA / privacy). So we
- * seed a stable set of fun fictional rivals (bunny/animal names) with fixed
- * carrot totals and let the child climb the ladder by their REAL carrot
- * count — real effort moves them up a consistent board. Deterministic per
- * child (seeded by child id) so the standings don't reshuffle on every visit.
+ * seed a stable set of rivals shown BY FIRST NAME (fictional kids, NOT real
+ * users) with fixed carrot totals, and let the child climb the ladder by their
+ * REAL carrot count — real effort moves them up a consistent board.
+ * Deterministic per child (seeded by child id) so standings don't reshuffle.
  *
- * When there's a real userbase this can fold in anonymized same-grade peers.
+ * When there's a real userbase this can fold in anonymized same-grade peers by
+ * first name.
  */
 
+// First-name pool for the rivals — a friendly, diverse set so the board reads
+// like a roomful of readers rather than cartoon animals.
 const RIVAL_NAMES = [
-  "Zoomer Bunny",
-  "Clever Fox",
-  "Pip the Rabbit",
-  "Luna Lynx",
-  "Biscuit Bear",
-  "Sunny Hare",
-  "Momo Mouse",
-  "Cocoa Cub",
-  "Ziggy Squirrel",
-  "Pepper Pup",
-  "Marble Mole",
-  "Dash Deer",
-  "Clover Kit",
-  "Hazel Hedgehog",
-  "Waffles Wombat",
-  "Nibbles",
+  "Mia",
+  "Liam",
+  "Ava",
+  "Noah",
+  "Sofia",
+  "Ethan",
+  "Isla",
+  "Mateo",
+  "Zoe",
+  "Kai",
+  "Amara",
+  "Leo",
+  "Nina",
+  "Aiden",
+  "Priya",
+  "Diego",
+  "Ruby",
+  "Omar",
+  "Ella",
+  "Jonah",
 ];
 
 export interface CohortEntry {
@@ -72,7 +79,9 @@ export function buildCohort(
   const rand = mulberry32(hashStr(childId));
 
   // Stable Fisher-Yates shuffle of the name pool → pick RIVAL_COUNT rivals.
-  const names = [...RIVAL_NAMES];
+  // Drop the child's own first name so the board never shows two of them.
+  const mine = childName.trim().toLowerCase();
+  const names = RIVAL_NAMES.filter((n) => n.toLowerCase() !== mine);
   for (let i = names.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));
     [names[i], names[j]] = [names[j], names[i]];
