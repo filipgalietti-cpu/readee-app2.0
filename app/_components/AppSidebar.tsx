@@ -12,7 +12,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import {
   Home, BarChart3, BookText, BookOpen, ListChecks, Map, Newspaper,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Menu,
+  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Menu, PenLine,
 } from "lucide-react";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -187,11 +187,11 @@ function getNavSections(
       kidSize: true,
       items: [
         { href: "/dashboard", icon: Home, label: ownsClassroom ? "Parent view" : "Dashboard" },
-        { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
-        { href: `/stories${q}`, icon: BookOpen, label: "Stories" },
-        { href: `/luna${q}`, icon: Mic, label: "Luna" },
         { href: `/journey${q}`, icon: Map, label: "Journey" },
-        { href: `/learning-report${q}`, icon: BarChart3, label: "Reading Report" },
+        { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
+        { href: `/luna${q}`, icon: Mic, label: "Luna" },
+        { href: `/luna/studio${q}`, icon: PenLine, label: "Studio" },
+        { href: `/stories${q}`, icon: BookOpen, label: "Library" },
       ],
     });
 

@@ -128,7 +128,7 @@ export default function LunaOrb({
         ref={blobRef}
         style={{ width: size, height: size, borderRadius: "50%", background: "#e0e7ff", border: "3px solid #3730a3", boxShadow: "0 10px 40px -12px rgba(49,46,129,.35)", cursor: "pointer", position: "relative", overflow: "hidden", willChange: "transform", padding: 0 }}
       >
-        <canvas ref={canvasRef} width={420} height={420} style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
+        <canvas ref={canvasRef} width={420} height={420} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", borderRadius: "50%" }} />
         {mode === "thinking" && (
           <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
             {[0, 0.15, 0.3].map((d, i) => (

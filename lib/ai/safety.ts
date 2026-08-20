@@ -1,33 +1,33 @@
 /**
- * Child-safety filter for teacher-facing Readee.ai flows.
+ * Child-safety filter for Readee.ai flows (incl. kid-authored Story Studio).
  *
- * Two layers:
- *  1. Substring banlist — catches obvious profanity / unsafe themes before
- *     we spend a single token on the Gemini API.
- *  2. Image-prompt hardening — prepends a "kid-safe, school-appropriate"
- *     preamble to every image generation so Gemini skews wholesome even
- *     when the teacher's prompt is terse.
- *
- * This is defense-in-depth, not a security boundary. Gemini's own safety
- * settings do most of the work; this layer exists so that a surprised
- * teacher doesn't stare at a flagged-content error after waiting 8s.
+ * Layers (defense-in-depth, not a single boundary):
+ *  1. Substring banlist with obfuscation-hardening — catches profanity /
+ *     unsafe themes, INCLUDING evasion tricks kids love: leetspeak (sh1t),
+ *     separators (f.u.c.k, f u c k, f-u-c-k), and stretched repeats (fuuuck).
+ *  2. Image-prompt hardening — IMAGE_SAFETY_PREFIX skews generations wholesome.
+ *  3. (Story Studio) an LLM moderation gate on the raw input — see
+ *     moderateKidInput in readee-ai.ts — which catches intent/paraphrase the
+ *     banlist can't, plus a human review before anything is ever published.
  */
 
-// Lowercased. Matched as whole-ish tokens (word boundary on each side).
+// Lowercased. Matched as whole tokens against the space-normalized text.
 const BANNED_WORDS: string[] = [
   // Profanity / slurs
-  "fuck", "fucking", "fucker", "shit", "bullshit", "bitch", "bitches",
-  "asshole", "dick", "cock", "cunt", "pussy", "tits", "boobs",
-  "damn", "goddamn", "piss", "crap", "bastard", "wanker",
+  "fuck", "fucking", "fucker", "fuckface", "motherfucker", "fux", "phuck",
+  "shit", "bullshit", "shitty", "bitch", "bitches", "biatch",
+  "asshole", "arsehole", "arse", "dumbass", "jackass", "ass", "azz",
+  "dick", "cock", "cunt", "pussy", "tits", "boobs", "twat", "prick",
+  "damn", "goddamn", "piss", "crap", "bastard", "wanker", "bollocks",
   "slut", "whore", "hoe", "faggot", "fag", "dyke", "tranny",
   "nigger", "nigga", "chink", "spic", "kike", "gook", "wetback",
-  "retard", "retarded",
+  "retard", "retarded", "stfu", "gtfo",
 
-  // Violence / gore
-  "kill yourself", "kys", "suicide",
-  "murder", "rape", "raping", "molest", "molestation",
-  "gore", "gory", "bloody corpse", "decapitat",
-  "hang yourself", "shoot yourself",
+  // Violence / self-harm
+  "kill yourself", "kill myself", "kys", "suicide", "self harm",
+  "cut myself", "cutting myself", "hang yourself", "shoot yourself",
+  "murder", "rape", "raping", "rapist", "molest", "molestation", "incest",
+  "pedophile", "pedo", "gore", "gory", "bloody corpse", "decapitat",
 
   // Weapons in a school-inappropriate context
   "bomb making", "build a bomb", "mass shooting", "school shooting",
@@ -35,38 +35,73 @@ const BANNED_WORDS: string[] = [
   // Sexual content
   "porn", "pornography", "nude", "naked child", "naked kid",
   "sexual", "sexy", "erotic", "nsfw", "xxx", "orgasm", "masturbat",
-  "genitals", "penis", "vagina",
+  "genitals", "penis", "vagina", "boner", "cum", "cumming", "blowjob",
+  "handjob", "dildo", "horny",
 
   // Drugs
   "cocaine", "heroin", "meth", "crack pipe", "get high on",
   "weed smoking", "drug dealer",
 ];
 
-// Normalize common evasion tricks (@ → a, 0 → o, $ → s, etc.) before scanning.
+// Words unambiguous enough to match as a SUBSTRING of the de-obfuscated
+// ("tightened") text without false-positiving inside clean/kid words.
+// (Deliberately excludes short/ambiguous roots like ass, cock, dick, fag,
+//  hoe, rape, tit, spic — those would hit class, peacock, grape, title,
+//  despicable, shoe, etc. They still get caught by the whole-word scan.)
+const STRONG_BANNED: string[] = [
+  "fuck", "motherfuck", "shit", "bitch", "cunt", "nigger", "faggot",
+  "molest", "pedophile", "porn", "masturbat", "cocaine", "heroin",
+  "suicide", "blowjob", "dildo",
+];
+
+const LEET: Record<string, string> = {
+  "@": "a", "4": "a", "0": "o", "$": "s", "5": "s", "1": "i",
+  "!": "i", "3": "e", "7": "t", "9": "g", "8": "b", "2": "z",
+};
+
+function applyLeet(s: string): string {
+  let out = s.toLowerCase();
+  for (const [k, v] of Object.entries(LEET)) out = out.split(k).join(v);
+  // ph -> f defeats "phuck"; harmless on clean words ("phone" -> "fone").
+  return out.replace(/ph/g, "f");
+}
+
+// Whole-word-friendly form: letters + single spaces.
 function normalizeForScanning(s: string): string {
-  return s
-    .toLowerCase()
-    .replace(/@/g, "a")
-    .replace(/0/g, "o")
-    .replace(/\$/g, "s")
-    .replace(/1/g, "i")
-    .replace(/3/g, "e")
-    .replace(/5/g, "s")
-    .replace(/!/g, "i")
+  return applyLeet(s)
     .replace(/[^a-z\s']/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
+// De-obfuscated form: strip EVERYTHING non-letter (so "f.u.c.k", "f u c k",
+// "f-u-c-k" all become "fuck") and collapse 3+ repeated letters ("fuuuck" ->
+// "fuck"). Scanned only for STRONG_BANNED to avoid clean-word false positives.
+function tighten(s: string): string {
+  return applyLeet(s)
+    .replace(/[^a-z]/g, "")
+    .replace(/(.)\1+/g, "$1"); // collapse ALL runs to one: "fuuuck" -> "fuck"
+}
+
 export function containsUnsafeContent(text: string): string | null {
   if (!text) return null;
+
+  // 1) Whole-word scan of the full banlist on the space-normalized text.
   const norm = " " + normalizeForScanning(text) + " ";
   for (const word of BANNED_WORDS) {
     const needle = " " + word.toLowerCase() + " ";
     if (norm.includes(needle)) return word;
-    // Also allow a partial-word hit for roots that need it (e.g. "molest" → "molested").
+    // Long roots may hit inflections (e.g. "molest" -> "molested").
     if (word.length >= 6 && norm.includes(word.toLowerCase())) return word;
   }
+
+  // 2) De-obfuscated substring scan for the unambiguous strong words —
+  //    catches separator/repeat evasion the whole-word scan misses.
+  const tight = tighten(text);
+  for (const word of STRONG_BANNED) {
+    if (tight.includes(word)) return word;
+  }
+
   return null;
 }
 

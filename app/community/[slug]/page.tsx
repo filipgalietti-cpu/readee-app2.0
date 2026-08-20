@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReportButton from "./_components/ReportButton";
 import {
   ArrowLeft,
   Users,
@@ -165,6 +166,9 @@ export default async function PublicCommunityPassagePage({
           </span>
           <span>·</span>
           <span>{readMinutes} min read</span>
+          <span className="ml-auto">
+            <ReportButton slug={passage.slug} />
+          </span>
         </div>
 
         {passage.image_url && (

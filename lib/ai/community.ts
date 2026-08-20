@@ -246,6 +246,13 @@ export function anonymizeQuestions(
 export async function submitForCommunityReview(input: {
   parentId: string;
   contentId: string;
+  /** Override the byline shown on the community card. Luna Story Studio
+   *  passes the child's first name ("Written by Mia") instead of the
+   *  parent's opt-in display name. */
+  bylineOverride?: string | null;
+  /** Never take the trusted-parent auto-approve fast lane. Kid-authored
+   *  Story Studio content always goes through human review. */
+  forceReview?: boolean;
 }): Promise<{ ok: true; communityId: string } | { ok: false; error: string }> {
   const admin = supabaseAdmin();
 
@@ -335,9 +342,11 @@ export async function submitForCommunityReview(input: {
     .eq("id", input.parentId)
     .maybeSingle();
   const displayByline =
-    (parentProfile as any)?.community_byline_consent === true
-      ? ((parentProfile as any).community_display_name as string | null) ?? null
-      : null;
+    input.bylineOverride !== undefined
+      ? input.bylineOverride
+      : (parentProfile as any)?.community_byline_consent === true
+        ? ((parentProfile as any).community_display_name as string | null) ?? null
+        : null;
 
   // ── AI QC gate ─────────────────────────────────────────────────
   // Run the same judges we use on the catalog audit BEFORE the row
@@ -356,8 +365,10 @@ export async function submitForCommunityReview(input: {
       error: `Quality check didn't pass — ${qc.reason ?? "try regenerating before sharing"}.`,
     };
   }
-  // Trusted-parent fast lane only fires on a clean QC pass.
-  const effectivelyTrusted = isTrusted && qc.verdict === "pass";
+  // Trusted-parent fast lane only fires on a clean QC pass — and never for
+  // kid-authored Story Studio content (forceReview), which always waits for
+  // a human yes.
+  const effectivelyTrusted = !input.forceReview && isTrusted && qc.verdict === "pass";
 
   // URL slug for /community/[slug]. We salt with a short id chunk so
   // concurrent submissions of similar titles don't collide.
