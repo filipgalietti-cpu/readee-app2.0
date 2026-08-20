@@ -142,6 +142,13 @@ export default function StoryStudio({
 
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
 
+  // Each phase is a fresh screen — snap back to the top so the child never
+  // lands halfway down a new view (which otherwise makes them miss the
+  // generating / preview / published reveal).
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [phase]);
+
   function reset() {
     timers.current.forEach(clearTimeout);
     timers.current = [];
@@ -252,6 +259,9 @@ export default function StoryStudio({
     at(3300, () => setCounterPop(false));
     at(5300, () => setOverlay((o) => (o ? { ...o, out: true } : o)));
     at(6000, () => {
+      // Snap to top while the overlay still covers the screen, so the published
+      // page is already at the top when the overlay fades away.
+      window.scrollTo({ top: 0, behavior: "auto" });
       setOverlay(null);
       setPublishing(false);
       if (result && !result.ok) {
