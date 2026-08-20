@@ -20,11 +20,11 @@ export default async function StoryStudioPage() {
   const supabase = await createClient();
   const { data: childrenRows } = await supabase
     .from("children")
-    .select("id, first_name, grade, reading_level, equipped_items")
+    .select("id, first_name, grade, reading_level, carrots, equipped_items")
     .eq("parent_id", profile.id)
     .order("created_at", { ascending: true });
   const child = (childrenRows ?? [])[0] as
-    | { id: string; first_name: string; grade: string | null; equipped_items?: any }
+    | { id: string; first_name: string; grade: string | null; carrots?: number | null; equipped_items?: any }
     | undefined;
 
   if (!child) {
@@ -94,6 +94,7 @@ export default async function StoryStudioPage() {
       childId={child.id}
       childName={child.first_name}
       avatarSrc={getChildAvatarImage(child as any, 0)}
+      carrots={(child as any).carrots ?? 0}
     />
   );
 }
