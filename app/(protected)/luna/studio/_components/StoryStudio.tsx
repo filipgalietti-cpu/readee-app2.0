@@ -21,6 +21,11 @@ import {
   Carrot,
   Check,
   BookOpen,
+  Feather,
+  ThumbsUp,
+  Megaphone,
+  GraduationCap,
+  Mail,
 } from "lucide-react";
 import LunaOrb from "../../_components/LunaOrb";
 import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
@@ -57,6 +62,22 @@ const STORY_TYPES = [
   "Dinosaurs",
 ];
 
+// The kind of writing. Keys match the whitelist in /api/luna/story; the
+// generator shapes the piece to the form (story arc, stanzas, letter, etc.).
+const WRITING_FORMS: {
+  key: string;
+  label: string;
+  desc: string;
+  icon: typeof BookOpen;
+}[] = [
+  { key: "narrative", label: "Story", desc: "A beginning, middle, and happy ending", icon: BookOpen },
+  { key: "poem", label: "Poem", desc: "Fun lines with rhythm and rhyme", icon: Feather },
+  { key: "opinion", label: "Opinion", desc: "What you think, and why", icon: ThumbsUp },
+  { key: "persuasive", label: "Persuasive", desc: "Convince the reader you're right", icon: Megaphone },
+  { key: "informational", label: "Informational", desc: "Teach real, true facts", icon: GraduationCap },
+  { key: "friendly letter", label: "Friendly Letter", desc: "Dear friend, guess what...", icon: Mail },
+];
+
 const IMAGE_STYLES: { key: string; label: string; from: string; to: string }[] = [
   { key: "cartoon", label: "Cartoon", from: "#fbbf24", to: "#f43f5e" },
   { key: "realistic", label: "Realistic", from: "#64748b", to: "#334155" },
@@ -86,8 +107,9 @@ export default function StoryStudio({
   // Bumping this remounts the wizard so "Start over" returns to question 1.
   const [attempt, setAttempt] = useState(0);
 
-  // The three inputs the wizard collects.
+  // The inputs the wizard collects.
   const [storyType, setStoryType] = useState<string>("");
+  const [writingForm, setWritingForm] = useState<string>("narrative");
   const [idea, setIdea] = useState<string>("");
   const [imageStyle, setImageStyle] = useState<string>("cartoon");
 
@@ -98,6 +120,7 @@ export default function StoryStudio({
 
   function reset() {
     setStoryType("");
+    setWritingForm("narrative");
     setIdea("");
     setImageStyle("cartoon");
     setStory(null);
@@ -113,7 +136,7 @@ export default function StoryStudio({
       const res = await fetch("/api/luna/story", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ childId, storyType, idea, imageStyle }),
+        body: JSON.stringify({ childId, storyType, writingForm, idea, imageStyle }),
       });
       const data = await res.json();
       if (!res.ok || !data?.ok) {
@@ -208,6 +231,8 @@ export default function StoryStudio({
             key={attempt}
             storyType={storyType}
             setStoryType={setStoryType}
+            writingForm={writingForm}
+            setWritingForm={setWritingForm}
             idea={idea}
             setIdea={setIdea}
             imageStyle={imageStyle}
@@ -326,6 +351,50 @@ function TypeChips({ value, onChange }: { value: string; onChange: (v: string) =
   );
 }
 
+function FormChips({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  return (
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+      {WRITING_FORMS.map((f) => {
+        const selected = value === f.key;
+        const Icon = f.icon;
+        return (
+          <button
+            key={f.key}
+            type="button"
+            onClick={() => onChange(f.key)}
+            className={`group flex items-center gap-3 rounded-2xl border p-3 text-left transition hover:-translate-y-0.5 hover:shadow-md ${
+              selected
+                ? "border-violet-500 bg-violet-50 shadow-[0_0_0_3px_rgba(139,92,246,0.15)] dark:bg-violet-950/30"
+                : "border-zinc-200 bg-white hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900/50"
+            }`}
+            style={BALOO}
+          >
+            <span
+              className={`flex h-10 w-10 flex-none items-center justify-center rounded-xl ${
+                selected
+                  ? "bg-violet-600 text-white"
+                  : "bg-zinc-100 text-violet-600 dark:bg-slate-800 dark:text-violet-300"
+              }`}
+            >
+              <Icon className="h-5 w-5" />
+            </span>
+            <span className="min-w-0">
+              <span
+                className={`block text-sm font-extrabold ${
+                  selected ? "text-violet-800 dark:text-violet-200" : "text-zinc-800 dark:text-slate-100"
+                }`}
+              >
+                {f.label}
+              </span>
+              <span className="block text-xs text-zinc-500 dark:text-slate-400">{f.desc}</span>
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function StyleChips({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -388,13 +457,23 @@ function MakeButton({ onClick, disabled, label = "Make my story!" }: { onClick: 
 /* ─────────────────────────── Wizard (A) ─────────────────────────── */
 
 function Wizard(props: MakerProps) {
-  const { storyType, setStoryType, idea, setIdea, imageStyle, setImageStyle, onDone } = props;
+  const {
+    storyType,
+    setStoryType,
+    writingForm,
+    setWritingForm,
+    idea,
+    setIdea,
+    imageStyle,
+    setImageStyle,
+    onDone,
+  } = props;
   const [step, setStep] = useState(0);
 
   return (
     <div>
       <div className="mb-4 flex gap-1.5">
-        {[0, 1, 2].map((i) => (
+        {[0, 1, 2, 3].map((i) => (
           <span key={i} className={`h-1.5 flex-1 rounded-full ${i <= step ? "bg-gradient-to-r from-indigo-500 to-violet-500" : "bg-zinc-200 dark:bg-slate-700"}`} />
         ))}
       </div>
@@ -408,13 +487,21 @@ function Wizard(props: MakerProps) {
       )}
       {step === 1 && (
         <div>
-          <h2 className="text-2xl font-extrabold text-zinc-900 dark:text-white" style={BALOO}>What happens in your story?</h2>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">Tell Luna your idea. A few words is plenty.</p>
-          <div className="mt-4"><IdeaBox value={idea} onChange={setIdea} /></div>
-          <NextButton disabled={!idea.trim()} onClick={() => setStep(2)} />
+          <h2 className="text-2xl font-extrabold text-zinc-900 dark:text-white" style={BALOO}>What kind of writing is it?</h2>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">Luna can write it lots of ways.</p>
+          <div className="mt-4"><FormChips value={writingForm} onChange={setWritingForm} /></div>
+          <NextButton disabled={!writingForm} onClick={() => setStep(2)} />
         </div>
       )}
       {step === 2 && (
+        <div>
+          <h2 className="text-2xl font-extrabold text-zinc-900 dark:text-white" style={BALOO}>What happens in your story?</h2>
+          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">Tell Luna your idea. A few words is plenty.</p>
+          <div className="mt-4"><IdeaBox value={idea} onChange={setIdea} /></div>
+          <NextButton disabled={!idea.trim()} onClick={() => setStep(3)} />
+        </div>
+      )}
+      {step === 3 && (
         <div>
           <h2 className="text-2xl font-extrabold text-zinc-900 dark:text-white" style={BALOO}>How should it look?</h2>
           <div className="mt-4"><StyleChips value={imageStyle} onChange={setImageStyle} /></div>
@@ -656,6 +743,8 @@ function Published({ carrots, onAgain }: { carrots: number; onAgain: () => void 
 type MakerProps = {
   storyType: string;
   setStoryType: (v: string) => void;
+  writingForm: string;
+  setWritingForm: (v: string) => void;
   idea: string;
   setIdea: (v: string) => void;
   imageStyle: string;

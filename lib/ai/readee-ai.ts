@@ -1739,29 +1739,51 @@ export async function generatePassage(input: {
 // reads at a warm read-aloud level (Luna narrates it — no decodability
 // constraint), and has a real story arc. Do NOT route Luna comprehension
 // through this, and do NOT route Story Studio through generatePassage.
-const STORY_SYSTEM = `You are Luna, a warm and imaginative children's storyteller. A child tells you what they want their story to be about, and you write the whole story FOR them.
+const STORY_SYSTEM = `You are Luna, a warm and imaginative children's writer. A child tells you what they want, and you write the whole piece FOR them. The child may ask for a story, a poem, an opinion piece, a persuasive piece, an informational piece, or a friendly letter - the user prompt names which form. Follow that form.
 
 THE ONE RULE THAT MATTERS MOST - STAY TRUE TO THE CHILD'S IDEA:
-- Keep the EXACT characters, animals, places, and topic the child named. If they say "a tiger learning about pollution," the hero is a TIGER and the story is about POLLUTION. Never swap their subject for a simpler or more common one (never turn a tiger into a cat, a dragon into a lizard, or space into a backyard). Never rename or replace what they asked for.
+- Keep the EXACT characters, animals, places, and topic the child named. If they say "a tiger learning about pollution," it is a TIGER and it is about POLLUTION. Never swap their subject for a simpler or more common one (never turn a tiger into a cat, a dragon into a lizard, or space into a backyard).
 
-WRITE A REAL STORY (not a word list, not decodable-practice text):
-- A clear beginning, a problem or a moment of wonder, and a warm, satisfying ending.
-- Give the hero a fitting name and a little personality. Use vivid, sensory details and a touch of magic or humor.
-- When the idea invites it, gently celebrate or teach something good (caring for nature, kindness, courage) - woven in, never preachy.
+KEEP YOUR CHARACTERS STRAIGHT:
+- If the child names characters only by kind (a sea lion, a shark), give each ONE simple name and use that SAME name every single time. Never rename a character partway through, and never introduce a new named character the child did not ask for. A piece about two animals has exactly those two characters - no surprise "Jamie" or "Riley" appearing out of nowhere.
+
+MAKE IT GENUINELY GOOD, NOT WISHY-WASHY:
+- Things should actually HAPPEN and details should be specific. Show characters doing and feeling, with a little natural dialogue where it fits. Avoid vague filler like "they had much fun" - show the fun instead.
+- If the child asks for jokes, riddles, or funny lines, include one or two REAL, correct, kid-friendly jokes with a proper setup and a punchline that actually lands and makes sense. Never garble, cut off, or break a punchline.
+- Age-appropriate and gentle ALWAYS - nothing scary, violent, mean, or grown-up. When it fits, gently celebrate something good (kindness, curiosity, courage), woven in, never preachy.
 
 READING LEVEL (match the target the user prompt gives):
-- Write the story at the reading level named in the prompt so the CHILD can read it mostly on their own. Match that grade's vocabulary, sentence length, and total length.
-- Even at the simplest levels, STAY TRUE to the child's exact idea and characters (a tiger stays a tiger, pollution stays pollution). Simplify the WORDS and SENTENCES to fit the level; never swap, drop, or water down their subject. Keep it a warm, fun little story - clear and easy to follow, never dull or robotic.
-- Age-appropriate and gentle ALWAYS - nothing scary, violent, mean, or grown-up.
+- Write at the grade level named in the prompt so the child can mostly read it themselves, and Luna will also read it aloud - so use flowing, COMPLETE sentences, never a list of choppy 3-word fragments. Match that grade's vocabulary and length.
+- Even at the simplest levels, STAY TRUE to the child's exact idea and characters. Simplify the WORDS and SENTENCES to fit the level; never water down the subject or turn it into dull, robotic text.
 
 FORMAT:
 - A fun, fitting title, 8 words or fewer.
-- Plain text only. No markdown, asterisks, underscores, HTML, or emojis. One space after each punctuation mark. Separate paragraphs with a blank line.`;
+- Write it as 2 to 4 short paragraphs (or stanzas, for a poem) separated by a blank line, like a real book - never one long block, and never a list of one-line fragments.
+- Plain text only. No markdown, asterisks, underscores, HTML, or emojis. One space after each punctuation mark.`;
+
+// The kind of writing the child picked. Each maps to a short instruction that
+// shapes the piece; unknown/empty falls back to a narrative story.
+const FORM_GUIDANCE: Record<string, string> = {
+  narrative:
+    "Form: write a STORY. Give it a clear beginning, a middle where something actually happens (a little problem, adventure, or surprise), and a warm, satisfying ending.",
+  poem: "Form: write a POEM. Use 3 to 5 short stanzas with a bouncy rhythm and gentle rhyme where it fits naturally (never force an awkward rhyme). Keep their exact idea and characters.",
+  opinion:
+    "Form: write an OPINION piece in the child's own voice. State a clear opinion ('I think ... is the best because ...'), give 2 or 3 fun reasons, and end with a strong closing sentence.",
+  persuasive:
+    "Form: write a PERSUASIVE piece. Open with a hook, give 2 or 3 convincing reasons with a little detail each, and end with a call to action. Warm and fun, never pushy.",
+  informational:
+    "Form: write an INFORMATIONAL piece that teaches real, true, age-appropriate facts about the topic, grouped into short paragraphs. Accurate and clear, with a fun voice - no made-up facts.",
+  "friendly letter":
+    "Form: write a FRIENDLY LETTER. Start with 'Dear ...,' then a warm body of 2 or 3 short paragraphs, and close with a friendly sign-off on its own line.",
+};
 
 export async function generateKidStory(input: {
   teacherId: string;
   idea: string;
   storyType?: string | null;
+  /** The kind of writing: narrative | poem | opinion | persuasive |
+   *  informational | friendly letter. Defaults to a narrative story. */
+  writingForm?: string | null;
   /** The child's grade, used only to flavor word choice — NOT to gate the
    *  story down to decodable text. */
   gradeLevel?: string | null;
@@ -1788,19 +1810,25 @@ export async function generateKidStory(input: {
   // Invisibly guide the story to the CHILD's reading level (from their grade)
   // so they can read their own creation - while keeping their exact idea.
   const gradeReading: Record<string, string> = {
-    K: "Kindergarten reading level: very short sentences (about 3 to 6 words), simple everyday words a 5-year-old knows, about 40 to 70 words total.",
-    "1st": "1st-grade reading level: short sentences (about 4 to 8 words), common easy words, about 60 to 100 words total.",
-    "2nd": "2nd-grade reading level: short-to-medium sentences, mostly common words with a few fun ones, about 90 to 140 words total.",
-    "3rd": "3rd-grade reading level: medium sentences and richer vocabulary, about 120 to 190 words total.",
-    "4th": "4th-grade reading level: varied sentences and vivid vocabulary, about 150 to 230 words total.",
+    K: "Kindergarten reading level: simple, familiar words a 5- to 6-year-old knows, in short but COMPLETE flowing sentences (not 3-word fragments). Write 2 to 3 short paragraphs, about 70 to 120 words total.",
+    "1st": "1st-grade reading level: common, easy words in short flowing sentences. Write 2 to 3 short paragraphs, about 90 to 140 words total.",
+    "2nd": "2nd-grade reading level: mostly common words with a few fun ones, short-to-medium sentences. Write 3 short paragraphs, about 120 to 180 words total.",
+    "3rd": "3rd-grade reading level: richer vocabulary and medium sentences. Write 3 to 4 paragraphs, about 160 to 230 words total.",
+    "4th": "4th-grade reading level: varied sentences and vivid vocabulary. Write 4 to 5 paragraphs, about 200 to 280 words total.",
   };
   const gradeLine = input.gradeLevel
     ? `Write it at a ${gradeReading[input.gradeLevel] ?? `${input.gradeLevel}-grade reading level`} so the child can read it themselves.`
-    : "About 90 to 140 words.";
+    : "Write 2 to 4 short paragraphs, about 90 to 140 words.";
+  const formKey = (input.writingForm ?? "narrative")
+    .toLowerCase()
+    .replace(/[-_]+/g, " ")
+    .trim();
+  const formLine = FORM_GUIDANCE[formKey] ?? FORM_GUIDANCE.narrative;
   const userPrompt = [
-    `The child wants a story about: ${wish}.`,
+    `The child wants: ${wish}.`,
+    formLine,
     gradeLine,
-    `Write the story now. Keep their exact idea and characters, make it a real little story with heart, and give it a fun title.`,
+    `Write it now. Keep their exact idea and characters, keep every character's name consistent, make it warm and genuinely good (not vague filler), and give it a fun title.`,
   ]
     .filter(Boolean)
     .join("\n");

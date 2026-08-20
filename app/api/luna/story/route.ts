@@ -70,6 +70,21 @@ export async function POST(req: Request) {
   const childId = String(b?.childId ?? "");
   const storyType = b?.storyType ? String(b.storyType).trim().slice(0, 60) : "";
   const idea = b?.idea ? String(b.idea).trim().slice(0, 200) : "";
+  // Which kind of writing the kid picked. Whitelisted so it can only ever be a
+  // known form; anything else falls back to a narrative story in the generator.
+  const WRITING_FORMS = new Set([
+    "narrative",
+    "poem",
+    "opinion",
+    "persuasive",
+    "informational",
+    "friendly letter",
+  ]);
+  const writingForm = WRITING_FORMS.has(
+    String(b?.writingForm ?? "").toLowerCase().replace(/[-_]+/g, " ").trim(),
+  )
+    ? String(b.writingForm).toLowerCase().replace(/[-_]+/g, " ").trim()
+    : "narrative";
   const imageStyle = IMAGE_STYLES[String(b?.imageStyle ?? "cartoon")]
     ? String(b.imageStyle)
     : "cartoon";
@@ -132,6 +147,7 @@ export async function POST(req: Request) {
     teacherId: user.id,
     idea,
     storyType,
+    writingForm,
     gradeLevel: gradeTok,
   });
   if (!res.ok) return NextResponse.json({ error: res.error }, { status: 500 });
