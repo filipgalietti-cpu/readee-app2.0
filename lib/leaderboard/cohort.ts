@@ -43,7 +43,17 @@ export interface CohortEntry {
   name: string;
   carrots: number;
   isMe: boolean;
+  avatar: string;
 }
+
+// Default avatar paths for seeded (fictional) rivals, so every row has a PFP.
+const SEEDED_AVATARS = [
+  "/images/avatars/default_0.png",
+  "/images/avatars/default_1.png",
+  "/images/avatars/default_2.png",
+  "/images/avatars/default_3.png",
+  "/images/avatars/default_4.png",
+];
 
 /** FNV-1a — stable string hash for seeding (deterministic across requests). */
 function hashStr(s: string): number {
@@ -71,25 +81,51 @@ const RIVAL_COUNT = 8;
 // active reader lands mid-pack with a rabbit to chase and one on their heels.
 const RUNGS = [90, 180, 320, 500, 720, 1000, 1350, 1750];
 
+/** A real same-grade peer (first name + PFP + carrots), passed in by the API. */
+export interface RealPeer {
+  name: string;
+  carrots: number;
+  avatar: string;
+}
+
 export function buildCohort(
   childId: string,
   childName: string,
   childCarrots: number,
+  childAvatar: string,
+  realPeers: RealPeer[] = [],
 ): { leaders: CohortEntry[]; myRank: number } {
   const rand = mulberry32(hashStr(childId));
-
-  // Stable Fisher-Yates shuffle of the name pool → pick RIVAL_COUNT rivals.
-  // Drop the child's own first name so the board never shows two of them.
   const mine = childName.trim().toLowerCase();
-  const names = RIVAL_NAMES.filter((n) => n.toLowerCase() !== mine);
-  for (let i = names.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [names[i], names[j]] = [names[j], names[i]];
-  }
 
-  const rivals: CohortEntry[] = names.slice(0, RIVAL_COUNT).map((name, i) => {
+  // Real same-grade kids first (by first name + their real PFP). Their ids are
+  // anonymized to peer-N so we never leak another child's real id to the client.
+  const real: CohortEntry[] = realPeers.slice(0, RIVAL_COUNT).map((p, i) => ({
+    id: `peer-${i}`,
+    name: p.name,
+    carrots: Math.max(0, Math.round(p.carrots)),
+    isMe: false,
+    avatar: p.avatar,
+  }));
+
+  // Fill the rest of the board with seeded fictional rivals so it never looks
+  // empty pre-scale. Skip names already used (child's own or a real peer's).
+  const used = new Set([mine, ...real.map((r) => r.name.toLowerCase())]);
+  const pool = RIVAL_NAMES.filter((n) => !used.has(n.toLowerCase()));
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  const fillers = Math.max(0, RIVAL_COUNT - real.length);
+  const seeded: CohortEntry[] = pool.slice(0, fillers).map((name, i) => {
     const jitter = Math.floor((rand() - 0.5) * 80); // ±40
-    return { id: `rival-${i}`, name, carrots: Math.max(20, RUNGS[i] + jitter), isMe: false };
+    return {
+      id: `rival-${i}`,
+      name,
+      carrots: Math.max(20, RUNGS[i] + jitter),
+      isMe: false,
+      avatar: SEEDED_AVATARS[i % SEEDED_AVATARS.length],
+    };
   });
 
   const me: CohortEntry = {
@@ -97,9 +133,10 @@ export function buildCohort(
     name: childName,
     carrots: Math.max(0, Math.round(childCarrots)),
     isMe: true,
+    avatar: childAvatar,
   };
 
-  const all = [...rivals, me].sort((a, b) => b.carrots - a.carrots);
+  const all = [...real, ...seeded, me].sort((a, b) => b.carrots - a.carrots);
 
   // Feels-good clamps: never strand the kid alone at the very top or bottom.
   const myIdx = all.findIndex((e) => e.isMe);

@@ -14,6 +14,7 @@ interface LeaderEntry {
   name: string;
   carrots: number;
   isMe: boolean;
+  avatar: string;
 }
 
 const RANK_ICONS: ReactNode[] = [
@@ -158,6 +159,14 @@ function LeaderboardContent() {
                     </span>
                   )}
                 </div>
+                {entry.avatar && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={entry.avatar}
+                    alt=""
+                    className="h-8 w-8 flex-shrink-0 rounded-full object-cover ring-1 ring-zinc-200 dark:ring-slate-700"
+                  />
+                )}
                 <div className="min-w-0 flex-1">
                   <span
                     className={`text-sm font-medium ${

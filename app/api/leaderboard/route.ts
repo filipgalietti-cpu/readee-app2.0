@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { buildCohort } from "@/lib/leaderboard/cohort";
+import { supabaseAdmin } from "@/lib/supabase/admin";
+import { buildCohort, type RealPeer } from "@/lib/leaderboard/cohort";
+import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
+import type { Child } from "@/lib/db/types";
 
 export async function GET(req: NextRequest) {
   const childId = req.nextUrl.searchParams.get("child");
@@ -17,10 +20,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Missing child" }, { status: 400 });
   }
 
-  // Verify the child belongs to this parent, then pull carrots + grade.
+  // Verify the child belongs to this parent, then pull carrots + grade + avatar.
   const { data: me, error } = await supabase
     .from("children")
-    .select("id, first_name, carrots, grade")
+    .select("id, first_name, carrots, grade, equipped_items")
     .eq("id", childId)
     .eq("parent_id", user.id)
     .maybeSingle();
@@ -32,9 +35,37 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  // Grade-cohort board vs. seeded rivals (see lib/leaderboard/cohort.ts) —
-  // ranks the child by their real carrots so effort = rank.
-  const { leaders, myRank } = buildCohort(me.id, me.first_name, me.carrots ?? 0);
+  // Real same-grade peers, shown by FIRST NAME + PFP only (no last name, no ids
+  // leaked — see cohort.ts). Uses the service-role client to read across
+  // families; nothing identifying beyond first name + avatar + carrots leaves
+  // the server. Falls back to seeded rivals to fill the board pre-scale.
+  let realPeers: RealPeer[] = [];
+  if (me.grade) {
+    const { data: peerRows } = await supabaseAdmin()
+      .from("children")
+      .select("id, first_name, carrots, equipped_items")
+      .eq("grade", me.grade)
+      .neq("id", me.id)
+      .gt("carrots", 0)
+      .order("carrots", { ascending: false })
+      .limit(8);
+    realPeers = (peerRows ?? [])
+      .filter((p: any) => (p.first_name ?? "").trim().length > 0)
+      .map((p: any, i: number) => ({
+        name: String(p.first_name).trim(),
+        carrots: p.carrots ?? 0,
+        avatar: getChildAvatarImage(p as Child, i),
+      }));
+  }
+
+  const myAvatar = getChildAvatarImage(me as Child, 0);
+  const { leaders, myRank } = buildCohort(
+    me.id,
+    me.first_name,
+    me.carrots ?? 0,
+    myAvatar,
+    realPeers,
+  );
 
   return NextResponse.json({ leaders, myRank, grade: me.grade });
 }
