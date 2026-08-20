@@ -555,10 +555,15 @@ function PracticeLoader() {
     // Look up by ID — search all grades since the URL specifies the exact standard
     const found = findStandardById(standardId ?? "");
     if (found) {
-      standard = {
-        ...found,
-        questions: found.questions.filter((q) => !blockedSet.has(q.id)),
-      };
+      // Strip QC-blocked questions. If EVERY question in this standard is
+      // blocked (quarantined/retired), leave `standard` undefined so we show
+      // the friendly "not ready" card below — rendering a session with zero
+      // questions crashes (no current question). This is how a fully-
+      // quarantined standard like RF.K.2a used to fail to load.
+      const usable = found.questions.filter((q) => !blockedSet.has(q.id));
+      if (usable.length > 0) {
+        standard = { ...found, questions: usable };
+      }
     }
   }
 
