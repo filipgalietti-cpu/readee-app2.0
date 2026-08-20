@@ -147,14 +147,21 @@ export default function StoryStudio({
       return;
     }
     startPublish(async () => {
-      const res = await publishKidStory({ contentId: story.contentId! });
-      if (!res.ok) {
-        setErrorMsg(res.error);
+      try {
+        const res = await publishKidStory({ contentId: story.contentId! });
+        if (!res.ok) {
+          setErrorMsg(res.error);
+          setPhase("error");
+          return;
+        }
+        setPublished({ carrots: res.carrotsAwarded });
+        setPhase("published");
+      } catch {
+        // A thrown/timed-out action must not leave the button stuck on
+        // "Sending..." forever.
+        setErrorMsg("That took too long. Please try publishing again.");
         setPhase("error");
-        return;
       }
-      setPublished({ carrots: res.carrotsAwarded });
-      setPhase("published");
     });
   }
 

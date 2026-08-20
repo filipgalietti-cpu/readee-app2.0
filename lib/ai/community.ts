@@ -253,6 +253,12 @@ export async function submitForCommunityReview(input: {
   /** Never take the trusted-parent auto-approve fast lane. Kid-authored
    *  Story Studio content always goes through human review. */
   forceReview?: boolean;
+  /** Skip the slow synchronous work (TTS re-record + LLM QC judges) so the
+   *  submit returns fast. Used by the kid Story Studio publish, where the
+   *  content is already input-moderated + output-scanned and a human reviews
+   *  it before it goes live (TTS + deep QC happen at approval time). Without
+   *  this the ~40-60s chain times out the request. */
+  deferHeavyMedia?: boolean;
 }): Promise<{ ok: true; communityId: string } | { ok: false; error: string }> {
   const admin = supabaseAdmin();
 
@@ -324,7 +330,7 @@ export async function submitForCommunityReview(input: {
   // TTS on cleanPassage produces a community-safe version that matches
   // the public text. ~$0.02 per submission, eaten by Readee.
   let audioUrl: string | null = null;
-  if (cleanPassage) {
+  if (cleanPassage && !input.deferHeavyMedia) {
     const tts = await generateSpeech({
       teacherId: input.parentId,
       text: cleanPassage,
@@ -353,12 +359,14 @@ export async function submitForCommunityReview(input: {
   // hits the queue. Hard fails are rejected with a parent-friendly
   // reason; warns force pending status (no trusted-parent fast lane)
   // so a human looks before it goes live.
-  const qc = await runCommunityQC({
-    passage: cleanPassage,
-    questions: cleanQuestions ?? [],
-    imageUrl: c.image_url,
-    audioUrl: audioUrl,
-  });
+  const qc = input.deferHeavyMedia
+    ? { verdict: "warn" as const, reason: "review deferred to a human", checks: [] as any[] }
+    : await runCommunityQC({
+        passage: cleanPassage,
+        questions: cleanQuestions ?? [],
+        imageUrl: c.image_url,
+        audioUrl: audioUrl,
+      });
   if (qc.verdict === "fail") {
     return {
       ok: false,

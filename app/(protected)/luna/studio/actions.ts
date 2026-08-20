@@ -58,6 +58,10 @@ export async function publishKidStory({
     contentId,
     bylineOverride: firstName,
     forceReview: true,
+    // Keep publish fast: skip the ~40-60s TTS + LLM-QC chain (it timed the
+    // request out). Kid content is already moderated + scanned and a human
+    // reviews it before it's public; narration + deep QC happen at approval.
+    deferHeavyMedia: true,
   });
   if (!res.ok) return { ok: false, error: res.error };
 
