@@ -191,7 +191,7 @@ function getNavSections(
         { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
         { href: `/luna${q}`, icon: Mic, label: "Luna" },
         { href: `/luna/studio${q}`, icon: PenLine, label: "Studio" },
-        { href: `/stories${q}`, icon: BookOpen, label: "Library" },
+        { href: `/practice-hub/community${q}`, icon: BookOpen, label: "Library" },
       ],
     });
 
