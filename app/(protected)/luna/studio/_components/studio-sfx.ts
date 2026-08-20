@@ -6,7 +6,6 @@
  */
 
 type Sfx = {
-  whoosh: () => void;
   stamp: () => void;
   fanfare: () => void;
   coin: () => void;
@@ -79,7 +78,6 @@ export function playPublishSfx(): Sfx {
   };
 
   return {
-    whoosh: safe(() => noise(now(), 0.45, 0.12, 1400)),
     stamp: safe(() => {
       noise(now(), 0.14, 0.28, 700);
       tone(140, now(), 0.18, "square", 0.14, 60);

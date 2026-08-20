@@ -129,10 +129,15 @@ export default function StoryStudio({
   // Header carrot counter + publish celebration.
   const [carrotCount, setCarrotCount] = useState<number>(carrots);
   const [counterPop, setCounterPop] = useState(false);
-  const [overlay, setOverlay] = useState<null | { out: boolean; stamped: boolean; confetti: boolean; carrots: number[] }>(null);
+  const [overlay, setOverlay] = useState<null | {
+    out: boolean;
+    stamped: boolean;
+    confetti: boolean;
+    carrots: FlyingCarrot[];
+  }>(null);
   const [publishing, setPublishing] = useState(false);
   const counterRef = useRef<HTMLSpanElement | null>(null);
-  const orbCenterRef = useRef<HTMLDivElement | null>(null);
+  const centerRef = useRef<HTMLDivElement | null>(null);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => () => timers.current.forEach(clearTimeout), []);
@@ -186,17 +191,25 @@ export default function StoryStudio({
     }
   }
 
-  // Measure the flight path from the Luna orb (overlay center) to the header
-  // carrot counter, so the reward carrots visibly fly into the tally.
+  // Measure the flight path from the celebration center to the header carrot
+  // counter, so the reward carrots visibly fly into the tally.
   function launchCarrots() {
-    const orb = orbCenterRef.current?.getBoundingClientRect();
+    const center = centerRef.current?.getBoundingClientRect();
     const counter = counterRef.current?.getBoundingClientRect();
-    if (!orb || !counter) return;
-    const dx = counter.left + counter.width / 2 - (orb.left + orb.width / 2);
-    const dy = counter.top + counter.height / 2 - (orb.top + orb.height / 2);
-    document.documentElement.style.setProperty("--carrot-dx", `${dx}px`);
-    document.documentElement.style.setProperty("--carrot-dy", `${dy}px`);
-    setOverlay((o) => (o ? { ...o, carrots: Array.from({ length: 10 }, (_, i) => i) } : o));
+    if (!center || !counter) return;
+    const ox = center.left + center.width / 2;
+    const oy = center.top + center.height / 2 - 40;
+    const dx = counter.left + counter.width / 2 - ox;
+    const dy = counter.top + counter.height / 2 - oy;
+    const items: FlyingCarrot[] = Array.from({ length: 10 }, (_, i) => ({
+      id: i,
+      x: ox + (Math.random() * 70 - 35),
+      y: oy + (Math.random() * 50 - 25),
+      dx,
+      dy,
+      delay: i * 0.075,
+    }));
+    setOverlay((o) => (o ? { ...o, carrots: items } : o));
   }
 
   function publish() {
@@ -207,7 +220,6 @@ export default function StoryStudio({
     }
     setPublishing(true);
     const sfx = playPublishSfx();
-    sfx.whoosh();
 
     // Kick off the real submit immediately; the celebration runs on timers and
     // we reconcile at the end (submit is fast — deferHeavyMedia).
@@ -362,160 +374,224 @@ export default function StoryStudio({
         </div>
       )}
 
-      {overlay && (
-        <PublishOverlay overlay={overlay} orbCenterRef={orbCenterRef} avatarChildName={childName} />
-      )}
+      {overlay && <PublishOverlay overlay={overlay} centerRef={centerRef} />}
     </div>
   );
 }
 
 /* ───────────────────── Publish celebration overlay ───────────────────── */
 
+type FlyingCarrot = { id: number; x: number; y: number; dx: number; dy: number; delay: number };
+
+// Deterministic pseudo-random so confetti pieces don't reshuffle each render.
+const rnd = (i: number, k: number) => ((i * 7919 + k * 104729 + 12345) % 100003) / 100003;
+
+// One confetti piece — three shapes (rectangle, dot, streamer).
+function piece(i: number, kind: number, color: string): React.CSSProperties {
+  if (kind === 0) return { width: 7 + rnd(i, 3) * 5, height: 11 + rnd(i, 4) * 7, borderRadius: 2, background: color };
+  if (kind === 1) return { width: 8 + rnd(i, 5) * 4, height: 8 + rnd(i, 5) * 4, borderRadius: "50%", background: color };
+  return { width: 3, height: 15 + rnd(i, 6) * 9, borderRadius: 3, background: color };
+}
+
 function PublishOverlay({
   overlay,
-  orbCenterRef,
-  avatarChildName,
+  centerRef,
 }: {
-  overlay: { out: boolean; stamped: boolean; confetti: boolean; carrots: number[] };
-  orbCenterRef: React.RefObject<HTMLDivElement | null>;
-  avatarChildName: string;
+  overlay: { out: boolean; stamped: boolean; confetti: boolean; carrots: FlyingCarrot[] };
+  centerRef: React.RefObject<HTMLDivElement | null>;
 }) {
-  // Deterministic sparkle/confetti positions (no Math.random at module scope).
-  const sparkles = Array.from({ length: 34 }, (_, i) => ({
-    left: (i * 37) % 100,
-    top: (i * 53) % 100,
-    delay: (i % 10) * 0.18,
-  }));
-  const burst = Array.from({ length: 40 }, (_, i) => ({
-    color: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
-    angle: (i / 40) * Math.PI * 2,
-    dist: 120 + (i % 5) * 44,
-    delay: (i % 8) * 0.02,
-  }));
   return (
     <div
-      className="fixed inset-0 z-[70] flex flex-col items-center justify-center overflow-hidden text-center transition-all duration-500"
+      className="fixed inset-0 z-[70] flex items-center justify-center overflow-hidden"
       style={{
-        background: "linear-gradient(165deg,#312e81,#1e1b4b 55%,#2e1065)",
         opacity: overlay.out ? 0 : 1,
         transform: overlay.out ? "scale(1.06)" : "scale(1)",
+        transition: "opacity .6s ease, transform .6s ease",
       }}
       aria-live="polite"
     >
+      {/* Base gradient */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(165deg,#312e81,#1e1b4b 55%,#2e1065)" }} />
       {/* Drifting aurora blobs */}
-      <div className="ss-aurora" style={{ background: "radial-gradient(circle, rgba(167,139,250,.5), transparent 60%)", left: "12%", top: "18%" }} />
-      <div className="ss-aurora" style={{ background: "radial-gradient(circle, rgba(56,189,248,.3), transparent 60%)", right: "10%", top: "24%", animationDelay: "-4s" }} />
-      <div className="ss-aurora" style={{ background: "radial-gradient(circle, rgba(244,114,182,.26), transparent 60%)", left: "30%", bottom: "10%", animationDelay: "-8s" }} />
+      <div style={{ position: "absolute", left: "50%", top: "42%", height: 1100, width: 1100, transform: "translate(-50%,-50%)", background: "radial-gradient(circle,rgba(167,139,250,.5),rgba(99,102,241,.18) 45%,transparent 70%)", animation: "ss-aurora 9s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", left: "12%", top: "70%", height: 520, width: 520, borderRadius: "50%", background: "radial-gradient(circle,rgba(56,189,248,.3),transparent 70%)", filter: "blur(10px)", animation: "ss-aurora 11s ease-in-out 1.5s infinite" }} />
+      <div style={{ position: "absolute", right: "8%", top: "8%", height: 460, width: 460, borderRadius: "50%", background: "radial-gradient(circle,rgba(244,114,182,.26),transparent 70%)", filter: "blur(10px)", animation: "ss-aurora 13s ease-in-out .8s infinite" }} />
+      {/* Bottom purple fade */}
+      <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "38%", background: "linear-gradient(to top,rgba(124,58,237,.42),transparent)" }} />
 
-      {sparkles.map((s, i) => (
-        <span
-          key={i}
-          className="ss-twinkle absolute h-1.5 w-1.5 rounded-full bg-white"
-          style={{ left: `${s.left}%`, top: `${s.top}%`, animationDelay: `${s.delay}s` }}
-        />
-      ))}
-
-      {/* Luna, spinning rays + expanding ring */}
-      <div className="relative flex items-center justify-center" style={{ width: 220, height: 220 }}>
-        <div className="ss-raySpin absolute inset-0" style={{ background: "conic-gradient(from 0deg, transparent, rgba(167,139,250,.45), transparent 30%, rgba(56,189,248,.4), transparent 60%)", borderRadius: "999px" }} />
-        <div className="ss-ring absolute" style={{ width: 150, height: 150, border: "2px solid rgba(196,181,253,.7)", borderRadius: "999px" }} />
-        <div ref={orbCenterRef} className="ss-orbIn relative" style={{ width: 150, height: 150 }}>
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <LunaOrb mode="speaking" size={150} />
-          </div>
-        </div>
+      {/* Twinkling star field */}
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+        {Array.from({ length: 34 }, (_, i) => {
+          const r = ((i * 9301 + 49297) % 233280) / 233280;
+          const r2 = ((i * 4177 + 12345) % 100000) / 100000;
+          return (
+            <span
+              key={i}
+              style={{ position: "absolute", left: `${r * 100}%`, top: `${r2 * 100}%`, width: 3 + r2 * 4, height: 3 + r2 * 4, borderRadius: "50%", background: "#fff", animation: `ss-twinkle ${1.6 + r * 1.8}s ease-in-out ${r2 * 2}s infinite` }}
+            />
+          );
+        })}
       </div>
 
-      {overlay.stamped && (
-        <div
-          className="ss-stampIn mt-5 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-extrabold"
-          style={{ border: "3px solid #34d399", background: "#ecfdf5", color: "#047857", ...BALOO }}
-        >
-          <Check className="h-4 w-4" strokeWidth={3} /> Sent!
+      {/* Center: Luna + spinning rays + glow + expanding ring + copy */}
+      <div ref={centerRef} style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0 24px" }}>
+        <div style={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center", animation: "ss-orbIn .7s cubic-bezier(.34,1.56,.64,1) both" }}>
+          <span
+            style={{
+              position: "absolute",
+              height: 620,
+              width: 620,
+              borderRadius: "50%",
+              background:
+                "conic-gradient(from 0deg,rgba(255,255,255,.16),transparent 12deg,transparent 30deg,rgba(255,255,255,.16) 42deg,transparent 60deg,transparent 78deg,rgba(255,255,255,.13) 90deg,transparent 108deg,transparent 126deg,rgba(255,255,255,.16) 138deg,transparent 156deg,transparent 174deg,rgba(255,255,255,.13) 186deg,transparent 204deg,transparent 222deg,rgba(255,255,255,.16) 234deg,transparent 252deg,transparent 270deg,rgba(255,255,255,.13) 282deg,transparent 300deg,transparent 318deg,rgba(255,255,255,.16) 330deg,transparent 348deg)",
+              WebkitMaskImage: "radial-gradient(circle,transparent 120px,#000 190px,transparent 300px)",
+              maskImage: "radial-gradient(circle,transparent 120px,#000 190px,transparent 300px)",
+              animation: "ss-raySpin 26s linear infinite",
+              pointerEvents: "none",
+            }}
+          />
+          <span style={{ position: "absolute", height: 300, width: 300, borderRadius: "50%", background: "radial-gradient(circle,rgba(255,255,255,.28),transparent 70%)", animation: "ss-glowPulse 3.4s ease-in-out infinite" }} />
+          <span style={{ position: "absolute", height: 240, width: 240, borderRadius: "50%", border: "2px solid rgba(255,255,255,.5)", animation: "ss-ringOut 1.6s ease-out .5s infinite" }} />
+          <LunaOrb mode="speaking" size={150} />
+        </div>
+
+        {overlay.stamped && (
+          <div
+            style={{
+              marginTop: -18,
+              position: "relative",
+              zIndex: 2,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              borderRadius: 999,
+              border: "3px solid #34d399",
+              background: "#ecfdf5",
+              padding: "8px 18px",
+              fontFamily: "'Baloo 2','Nunito',sans-serif",
+              fontSize: 18,
+              fontWeight: 800,
+              letterSpacing: ".02em",
+              color: "#047857",
+              boxShadow: "0 12px 30px -12px rgba(0,0,0,.55)",
+              animation: "ss-stampIn .45s cubic-bezier(.34,1.56,.64,1) both",
+            }}
+          >
+            <Check size={20} strokeWidth={3} /> Sent!
+          </div>
+        )}
+
+        <div style={{ margin: "26px 0 0", display: "flex", alignItems: "center", gap: 8, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".22em", color: "#c4b5fd", animation: "ss-rise .6s ease .45s both" }}>
+          <span style={{ height: 1, width: 28, background: "rgba(196,181,253,.6)" }} />
+          Story Studio
+          <span style={{ height: 1, width: 28, background: "rgba(196,181,253,.6)" }} />
+        </div>
+        <h2 style={{ margin: "12px 0 0", fontFamily: "'Baloo 2','Nunito',sans-serif", fontSize: 56, fontWeight: 800, lineHeight: 1.02, letterSpacing: "-.02em", color: "#fff", textShadow: "0 10px 34px rgba(23,10,60,.5)", animation: "ss-titlePop .6s cubic-bezier(.34,1.56,.64,1) .55s both" }}>
+          Your story is on its way!
+        </h2>
+        <p style={{ margin: "14px 0 0", fontFamily: "'Baloo 2','Nunito',sans-serif", fontSize: 20, fontWeight: 700, color: "#ddd6fe", animation: "ss-rise .6s ease .8s both" }}>
+          Luna is walking it over to the library.
+        </p>
+      </div>
+
+      {/* Confetti: a burst out of Luna + a slower flutter layer */}
+      {overlay.confetti && (
+        <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none", perspective: "700px" }}>
+          {Array.from({ length: 54 }, (_, i) => {
+            const ang = (i / 54) * Math.PI * 2 + rnd(i, 1) * 0.7;
+            const dist = 130 + rnd(i, 2) * 320;
+            const color = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+            return (
+              <span
+                key={`b${i}`}
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "42%",
+                  "--bx": `${Math.cos(ang) * dist}px`,
+                  "--by": `${Math.sin(ang) * dist * 0.72}px`,
+                  "--br": `${(rnd(i, 7) > 0.5 ? 1 : -1) * (360 + rnd(i, 8) * 540)}deg`,
+                  animation: `ss-burst ${1.5 + rnd(i, 9) * 1.1}s cubic-bezier(.2,.6,.3,1) ${rnd(i, 10) * 0.16}s both`,
+                  ...piece(i, i % 3, color),
+                } as React.CSSProperties}
+              />
+            );
+          })}
+          {Array.from({ length: 30 }, (_, i) => {
+            const color = CONFETTI_COLORS[(i + 2) % CONFETTI_COLORS.length];
+            return (
+              <span
+                key={`f${i}`}
+                style={{
+                  position: "absolute",
+                  left: `${rnd(i, 11) * 100}%`,
+                  top: 0,
+                  "--sway": `${(rnd(i, 12) - 0.5) * 130}px`,
+                  animation: `ss-flutter ${3 + rnd(i, 13) * 2.2}s cubic-bezier(.35,.15,.5,.9) ${0.3 + rnd(i, 14) * 1.6}s both`,
+                  ...piece(i, (i + 1) % 3, color),
+                } as React.CSSProperties}
+              />
+            );
+          })}
         </div>
       )}
 
-      <p className="mt-6 text-[11px] font-extrabold uppercase tracking-[0.22em] text-violet-300">Story Studio</p>
-      <h2 className="ss-titlePop mt-2 text-4xl font-extrabold text-white sm:text-5xl" style={BALOO}>
-        Your story is on its way!
-      </h2>
-      <p className="mt-2 text-lg font-bold text-violet-200" style={BALOO}>
-        Luna is walking it over to the library.
-      </p>
-
-      {/* Confetti burst */}
-      {overlay.confetti &&
-        burst.map((b, i) => (
+      {/* Carrots flying into the header counter */}
+      <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 80 }}>
+        {overlay.carrots.map((c) => (
           <span
-            key={i}
-            className="ss-burst absolute h-2.5 w-2.5 rounded-[2px]"
+            key={c.id}
             style={{
-              background: b.color,
-              left: "50%",
-              top: "42%",
-              // @ts-expect-error CSS custom props
-              "--bx": `${Math.cos(b.angle) * b.dist}px`,
-              "--by": `${Math.sin(b.angle) * b.dist}px`,
-              animationDelay: `${b.delay}s`,
-            }}
-          />
+              position: "fixed",
+              left: c.x,
+              top: c.y,
+              "--dx": `${c.dx}px`,
+              "--dy": `${c.dy}px`,
+              animation: `ss-carrotFly 1.05s cubic-bezier(.4,0,.6,1) ${c.delay}s both`,
+              filter: "drop-shadow(0 6px 12px rgba(0,0,0,.35))",
+            } as React.CSSProperties}
+          >
+            <Carrot size={30} fill="#fb923c" color="#fb923c" />
+          </span>
         ))}
-
-      {/* Carrots flying to the header counter */}
-      {overlay.carrots.map((i) => (
-        <span
-          key={i}
-          className="ss-carrotFly absolute left-1/2 top-[42%] text-orange-400"
-          style={{ animationDelay: `${i * 0.06}s` }}
-        >
-          <Carrot className="h-6 w-6" fill="#fb923c" />
-        </span>
-      ))}
+      </div>
     </div>
   );
 }
 
-/* Injects all celebration/step keyframes once. */
+/* Injects all celebration/step keyframes once. Overlay keyframes mirror the
+   Claude Design mock exactly; wizard helpers reuse a few of them. */
 function StudioKeyframes() {
   return (
     <style
       dangerouslySetInnerHTML={{
         __html: `
-@keyframes ss-titlePop{0%{opacity:0;transform:translateY(10px) scale(.9)}60%{transform:translateY(0) scale(1.04)}100%{opacity:1;transform:none}}
-@keyframes ss-popIn{0%{opacity:0;transform:scale(.5)}70%{transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
+@keyframes ss-titlePop{0%{opacity:0;transform:translateY(10px) scale(.9) rotate(-2deg)}60%{opacity:1;transform:translateY(0) scale(1.04) rotate(.6deg)}100%{opacity:1;transform:none}}
+@keyframes ss-popIn{0%{transform:scale(0);opacity:0}60%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
 @keyframes ss-stepIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes ss-rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes ss-bandRise{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:none}}
 @keyframes ss-barFill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes ss-counterPop{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
-@keyframes ss-stampIn{0%{opacity:0;transform:rotate(-12deg) scale(.4)}70%{transform:rotate(4deg) scale(1.12)}100%{opacity:1;transform:rotate(-4deg) scale(1)}}
-@keyframes ss-twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.2)}}
-@keyframes ss-raySpin{to{transform:rotate(360deg)}}
-@keyframes ss-ringOut{0%{opacity:.8;transform:scale(.6)}100%{opacity:0;transform:scale(1.7)}}
-@keyframes ss-orbIn{0%{opacity:0;transform:scale(.6)}100%{opacity:1;transform:scale(1)}}
-@keyframes ss-aurora{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-24px)}}
-@keyframes ss-floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes ss-stampIn{0%{transform:scale(2.6);opacity:0}60%{transform:scale(.92);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes ss-twinkle{0%,100%{opacity:.15;transform:scale(.7)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes ss-raySpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes ss-ringOut{0%{transform:scale(.4);opacity:.55}100%{transform:scale(2.4);opacity:0}}
+@keyframes ss-orbIn{0%{transform:scale(.2);opacity:0}55%{transform:scale(1.12);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes ss-aurora{0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.55}50%{transform:translate3d(4%,-3%,0) scale(1.12);opacity:.8}}
+@keyframes ss-glowPulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.7;transform:scale(1.06)}}
 @keyframes ss-wiggle{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
-@keyframes ss-burst{0%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(calc(-50% + var(--bx)),calc(-50% + var(--by))) rotate(240deg)}}
-@keyframes ss-carrotFly{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}15%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}100%{opacity:0;transform:translate(calc(-50% + var(--carrot-dx)),calc(-50% + var(--carrot-dy))) scale(.35)}}
+@keyframes ss-burst{0%{transform:translate(0,0) rotate(0deg) scale(.4);opacity:0}6%{opacity:1}55%{transform:translate(calc(var(--bx) * .74),calc(var(--by) * .74 - 40px)) rotate(calc(var(--br) * .55)) scale(1)}100%{transform:translate(var(--bx),calc(var(--by) + 260px)) rotate(var(--br)) scale(.92);opacity:0}}
+@keyframes ss-flutter{0%{transform:translate(0,-14vh) rotateZ(0deg) rotateY(0deg);opacity:0}8%{opacity:1}50%{transform:translate(var(--sway),46vh) rotateZ(200deg) rotateY(180deg);opacity:1}100%{transform:translate(calc(var(--sway) * -1),112vh) rotateZ(430deg) rotateY(360deg);opacity:.85}}
+@keyframes ss-carrotFly{0%{transform:translate(0,0) scale(.4);opacity:0}12%{opacity:1}22%{transform:translate(calc(var(--dx) * .18),calc(var(--dy) * .12 - 90px)) scale(1.25)}100%{transform:translate(var(--dx),var(--dy)) scale(.45);opacity:0}}
 .ss-step{animation:ss-stepIn .4s ease both}
 .ss-bandRise{animation:ss-bandRise .5s cubic-bezier(.34,1.56,.64,1) both}
 .ss-counterPop{animation:ss-counterPop .5s ease}
-.ss-aurora{position:absolute;width:340px;height:340px;filter:blur(20px);animation:ss-aurora 12s ease-in-out infinite}
-.ss-twinkle{animation:ss-twinkle 2.4s ease-in-out infinite}
-.ss-raySpin{animation:ss-raySpin 26s linear infinite}
-.ss-ring{animation:ss-ringOut 1.8s ease-out infinite}
-.ss-orbIn{animation:ss-orbIn .6s cubic-bezier(.34,1.56,.64,1) both}
-.ss-stampIn{animation:ss-stampIn .5s cubic-bezier(.34,1.56,.64,1) both}
-.ss-titlePop{animation:ss-titlePop .55s cubic-bezier(.34,1.56,.64,1) both}
-.ss-burst{animation:ss-burst 1.1s ease-out forwards}
-.ss-carrotFly{animation:ss-carrotFly 1.1s cubic-bezier(.5,0,.6,1) forwards}
-.ss-floatY{animation:ss-floatY 3s ease-in-out infinite}
 .ss-wiggle{animation:ss-wiggle 1.8s ease-in-out infinite;transform-origin:center}
 .ss-pop{animation:ss-popIn .4s cubic-bezier(.34,1.56,.64,1) both}
 .ss-titlepop-h2{animation:ss-titlePop .5s cubic-bezier(.34,1.56,.64,1) both}
 .ss-bar{transform-origin:left;animation:ss-barFill .45s ease both}
-@media (prefers-reduced-motion:reduce){.ss-step,.ss-bandRise,.ss-counterPop,.ss-aurora,.ss-twinkle,.ss-raySpin,.ss-ring,.ss-orbIn,.ss-stampIn,.ss-titlePop,.ss-burst,.ss-carrotFly,.ss-floatY,.ss-wiggle,.ss-pop,.ss-titlepop-h2,.ss-bar{animation-duration:.001s!important;animation-iteration-count:1!important}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001s!important;animation-iteration-count:1!important}}
 `,
       }}
     />
