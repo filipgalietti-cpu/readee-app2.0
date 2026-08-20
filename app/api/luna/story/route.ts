@@ -13,7 +13,9 @@ import { gradeToken } from "@/lib/luna/target-pattern";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
+// Headroom for the (now fast) parallel cover + MCQ generation. Actual cap is
+// clamped to the Vercel plan's max; generation runs ~20-25s on 3.1-flash.
+export const maxDuration = 120;
 
 /**
  * POST /api/luna/story — the Luna Story Studio generator. A KID answers a
