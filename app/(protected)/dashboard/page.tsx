@@ -32,6 +32,7 @@ import LevelBadge from "@/app/_components/LevelBadge";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { computeLevel } from "@/lib/levels/levels";
 import KidHome from "./_components/KidHome";
+import WhatsNew from "./_components/WhatsNew";
 import { OUTFITS } from "@/app/_components/Bunny/outfits";
 
 // Set of standards that have a real canonical lesson on the /learn
@@ -908,6 +909,9 @@ function ChildDashboard({
         <motion.div variants={slideUp}>
           <KidHome {...kidHomeProps} />
         </motion.div>
+
+        {/* "What's New" popup: shows off new skins/content on app open */}
+        <WhatsNew />
 
         {/* "Fresh for you" removed — it duplicated the Today's Readee card
             below and rendered as an out-of-place tile. */}

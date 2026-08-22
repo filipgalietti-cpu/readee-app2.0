@@ -216,6 +216,18 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: "bunny_beachtowel", name: "Beach Day", icon: "sun", category: "outfits", price: 250, description: "Beach towel cape + flip flops" },
   { id: "bunny_pineapple", name: "Pineapple", icon: "tree-palm", category: "outfits", price: 250, description: "Pineapple onesie + crown leaves" },
 
+  // ── Season 7: Fall / Halloween ──
+  { id: "bunny_pumpkin", name: "Pumpkin", icon: "citrus", category: "outfits", price: 180, description: "Plump orange pumpkin with a leafy stem" },
+  { id: "bunny_sorceress", name: "Sorceress", icon: "sparkles", category: "outfits", price: 520, description: "Purple robe + pointed hat + star wand" },
+  { id: "bunny_ghost", name: "Ghost", icon: "ghost", category: "outfits", price: 750, description: "Spooky white sheet that says BOO" },
+  { id: "bunny_scarecrow", name: "Scarecrow", icon: "wheat", category: "outfits", price: 240, description: "Straw-stuffed shirt + patched burlap hat" },
+  { id: "bunny_bat", name: "Bat", icon: "moon", category: "outfits", price: 460, description: "Spread wings + pointy ears" },
+  { id: "bunny_blackcat", name: "Black Cat", icon: "cat", category: "outfits", price: 210, description: "Sleek black cat with a curly tail" },
+  { id: "bunny_spider", name: "Spider", icon: "bug", category: "outfits", price: 540, description: "Eight legs + a web on the back" },
+  { id: "bunny_skeleton", name: "Skeleton", icon: "skull", category: "outfits", price: 480, description: "Glow-in-the-dark bones onesie" },
+  { id: "bunny_acorn", name: "Acorn", icon: "leaf", category: "outfits", price: 160, description: "Cozy acorn cap + nutty shell" },
+  { id: "bunny_candycorn", name: "Candy Corn", icon: "candy", category: "outfits", price: 220, description: "Sweet striped candy corn suit + hat" },
+
   // ── Reactions ──
   // Collectible reactions the Readee mascot plays when tapped (home + shop).
   // These are "Reaction Pack 2" from the Claude Design bunny project — the
@@ -500,6 +512,16 @@ export const ITEM_CATCHPHRASES: Record<string, string> = {
   bunny_fisherman: "Gone fishin'!",
   bunny_beachtowel: "Beach day!",
   bunny_pineapple: "Stay sweet!",
+  bunny_pumpkin: "Happy fall!",
+  bunny_sorceress: "Hocus pocus!",
+  bunny_ghost: "Boo!",
+  bunny_scarecrow: "Straw good!",
+  bunny_bat: "Going batty!",
+  bunny_blackcat: "Meow!",
+  bunny_spider: "Itsy bitsy!",
+  bunny_skeleton: "Bone-rattling good!",
+  bunny_acorn: "Nuts about reading!",
+  bunny_candycorn: "Trick or treat!",
 };
 
 /** The equip-celebration catchphrase for an item, or a friendly default. */

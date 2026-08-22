@@ -2753,6 +2753,266 @@ export const OUTFITS: Outfit[] = [
       </g>
     `,
   },
+
+  // ═══════════════════════════════════════════════════════════════
+  // Season 7 — Fall / Halloween costumes
+  // ═══════════════════════════════════════════════════════════════
+
+  {
+    id: "bunny_pumpkin",
+    name: "Pumpkin",
+    tint: "#FFE4CC",
+    border: "#F2BD8C",
+    rarity: "common",
+    price: 180,
+    unlock: { type: "shop", price: 180 },
+    body: `
+      <path d="M 80 148 C 100 156 140 156 160 148 L 164 170 C 166 198 152 214 138 216 L 102 216 C 88 214 74 198 76 170 Z"
+            fill="#f2913d" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 98 152 Q 92 184 100 214 M 142 152 Q 148 184 140 214" fill="none" stroke="#c96f22" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M 120 154 L 120 215" fill="none" stroke="#c96f22" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M 100 150 Q 110 158 120 152 Q 130 158 140 150 L 136 160 Q 120 166 104 160 Z"
+            fill="#5db657" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    `,
+    head: `
+      <path d="M 116 64 Q 112 48 121 40 Q 129 50 125 64 Z" fill="#7a9b3f" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M 124 58 Q 138 48 150 54 Q 141 64 128 62 Z" fill="#5db657" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    `,
+  },
+  {
+    id: "bunny_sorceress",
+    name: "Sorceress",
+    tint: "#E8D9F5",
+    border: "#C7AEE6",
+    rarity: "rare",
+    price: 520,
+    unlock: { type: "shop", price: 520 },
+    body: `
+      <path d="M 80 148 C 100 156 140 156 160 148 L 162 168 C 162 196 152 214 138 216 L 102 216 C 88 214 78 196 78 168 Z"
+            fill="#6b4fb8" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 84 154 L 100 214 M 156 154 L 140 214" stroke="#503a8c" stroke-width="3" stroke-linecap="round"/>
+      <rect x="78" y="196" width="84" height="10" fill="#503a8c" stroke="#1a1a1a" stroke-width="3"/>
+      <rect x="113" y="194" width="14" height="14" rx="2" fill="#ffd14a" stroke="#1a1a1a" stroke-width="2.5"/>
+      <path d="M 120 166 L 123 172 L 130 173 L 125 178 L 126 185 L 120 181 L 114 185 L 115 178 L 110 173 L 117 172 Z"
+            fill="#ffd14a" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
+    `,
+    head: `
+      <path d="M 66 92 Q 120 78 174 92 L 180 102 Q 120 88 60 102 Z" fill="#503a8c" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 88 90 Q 102 44 128 28 Q 120 60 146 88 Z" fill="#6b4fb8" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 94 80 L 138 78" stroke="#ffd14a" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 118 58 L 121 65 L 128 66 L 123 71 L 124 78 L 118 74 L 112 78 L 113 71 L 108 66 L 115 65 Z"
+            fill="#ffd14a" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
+    `,
+  },
+  {
+    id: "bunny_ghost",
+    name: "Ghost",
+    tint: "#E8ECF5",
+    border: "#C3CCE0",
+    rarity: "rare",
+    price: 750,
+    unlock: { type: "shop", price: 750 },
+    head: `
+      <path d="M 68 216 C 64 170 62 120 74 84 C 84 52 100 34 120 34 C 140 34 156 52 166 84 C 178 120 176 170 172 216 Q 164 206 156 217 Q 147 206 138 217 Q 129 206 120 217 Q 111 206 102 217 Q 93 206 84 217 Q 76 206 68 216 Z"
+            fill="#fafafa" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 90 76 Q 82 120 84 170 M 150 76 Q 158 120 156 170" fill="none" stroke="#d8dce8" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="104" cy="106" rx="6.5" ry="10" fill="#1a1a1a"/>
+      <ellipse cx="136" cy="106" rx="6.5" ry="10" fill="#1a1a1a"/>
+      <ellipse cx="120" cy="138" rx="7" ry="9" fill="#1a1a1a"/>
+      <text x="120" y="192" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="900" font-size="20" fill="#1a1a1a">BOO</text>
+    `,
+  },
+  {
+    id: "bunny_scarecrow",
+    name: "Scarecrow",
+    tint: "#F0E4C8",
+    border: "#DCC58C",
+    rarity: "common",
+    price: 240,
+    unlock: { type: "shop", price: 240 },
+    body: `
+      <path d="M 80 148 C 100 156 140 156 160 148 L 162 168 C 162 196 152 214 138 216 L 102 216 C 88 214 78 196 78 168 Z"
+            fill="#c9752e" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 78 158 L 66 150 M 80 170 L 66 166 M 79 182 L 65 182 M 162 158 L 174 150 M 160 170 L 174 166 M 161 182 L 175 182" stroke="#e0aa5c" stroke-width="3" stroke-linecap="round"/>
+      <rect x="100" y="170" width="20" height="18" rx="3" fill="#3a6cd8" stroke="#1a1a1a" stroke-width="2.5" transform="rotate(-6 110 179)"/>
+      <path d="M 103 175 L 117 175 M 103 182 L 117 182" stroke="#2a4da0" stroke-width="2" stroke-linecap="round" transform="rotate(-6 110 179)"/>
+      <rect x="128" y="188" width="16" height="14" rx="3" fill="#ffd14a" stroke="#1a1a1a" stroke-width="2.5" transform="rotate(8 136 195)"/>
+      <path d="M 82 210 L 72 220 M 88 212 L 80 226 M 94 214 L 90 228 M 100 215 L 98 229 M 158 210 L 168 220 M 152 212 L 160 226 M 146 214 L 150 228 M 140 215 L 142 229" stroke="#e0aa5c" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M 86 213 L 76 224 M 96 215 L 94 230 M 154 213 L 164 224 M 144 215 L 146 230" stroke="#c98f3a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 100 148 Q 96 158 88 162 M 106 152 Q 104 162 96 168 M 120 154 L 120 166 M 134 152 Q 136 162 144 168 M 140 148 Q 144 158 152 162" stroke="#e0aa5c" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M 113 150 Q 110 160 104 165 M 127 150 Q 130 160 136 165" stroke="#c98f3a" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    `,
+    head: `
+      <path d="M 74 104 L 62 96 M 76 96 L 64 86 M 164 96 L 176 86 M 166 104 L 178 96" stroke="#e0aa5c" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 64 94 Q 120 78 176 94 L 182 104 Q 120 90 58 104 Z" fill="#b98a5e" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 90 92 Q 96 58 120 54 Q 144 58 150 92 Z" fill="#d8a86a" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 96 74 L 144 74" stroke="#c96f3a" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 104 56 Q 106 46 112 42 M 118 54 L 118 40 M 126 54 Q 128 44 134 42 M 110 55 Q 110 46 106 42 M 132 56 Q 134 48 140 46" stroke="#e0aa5c" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M 66 100 L 54 106 M 72 102 L 62 112 M 78 103 L 72 114 M 174 100 L 186 106 M 168 102 L 178 112 M 162 103 L 168 114" stroke="#e0aa5c" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 69 101 L 58 110 M 171 101 L 182 110" stroke="#c98f3a" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 80 130 Q 74 138 66 140 M 82 138 Q 78 146 70 150 M 160 130 Q 166 138 174 140 M 158 138 Q 162 146 170 150" stroke="#e0aa5c" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <rect x="88" y="128" width="11" height="11" rx="2" fill="#c96f3a" stroke="#1a1a1a" stroke-width="2.5" transform="rotate(-8 93 133)"/>
+    `,
+  },
+  {
+    id: "bunny_bat",
+    name: "Bat",
+    tint: "#DCD8EE",
+    border: "#B4ACD8",
+    rarity: "rare",
+    price: 460,
+    unlock: { type: "shop", price: 460 },
+    back: `
+      <path d="M 80 160 Q 42 148 32 114 Q 56 122 70 138 Q 64 124 68 108 Q 86 126 88 152 Z" fill="#5c5480" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 160 160 Q 198 148 208 114 Q 184 122 170 138 Q 176 124 172 108 Q 154 126 152 152 Z" fill="#5c5480" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+    `,
+    body: `
+      <path d="M 80 148 C 100 156 140 156 160 148 L 162 168 C 162 196 152 214 138 216 L 102 216 C 88 214 78 196 78 168 Z"
+            fill="#3a3550" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 106 168 L 114 178 L 120 168 L 126 178 L 134 168 L 132 186 Q 120 192 108 186 Z"
+            fill="#7a70a8" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/>
+    `,
+    head: `
+      <path d="M 76 98 Q 120 88 164 98 L 164 108 Q 120 98 76 108 Z" fill="#3a3550" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M 92 100 L 84 82 L 102 92 Z" fill="#5c5480" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M 148 100 L 156 82 L 138 92 Z" fill="#5c5480" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    `,
+  },
+  {
+    id: "bunny_blackcat",
+    name: "Black Cat",
+    tint: "#E2E2E8",
+    border: "#BCBCC8",
+    rarity: "common",
+    price: 210,
+    unlock: { type: "shop", price: 210 },
+    back: `
+      <path d="M 150 208 Q 192 210 190 184 Q 188 168 176 172" fill="none" stroke="#1a1a1a" stroke-width="11" stroke-linecap="round"/>
+      <path d="M 150 208 Q 192 210 190 184 Q 188 168 176 172" fill="none" stroke="#3a3a44" stroke-width="6" stroke-linecap="round"/>
+    `,
+    body: `
+      <path d="M 80 148 C 100 156 140 156 160 148 L 162 168 C 162 196 152 214 138 216 L 102 216 C 88 214 78 196 78 168 Z"
+            fill="#3a3a44" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 96 150 Q 120 158 144 150 L 143 160 Q 120 168 97 160 Z" fill="#f2913d" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="120" cy="160" r="4.5" fill="#ffd14a" stroke="#1a1a1a" stroke-width="2"/>
+      <ellipse cx="120" cy="190" rx="18" ry="15" fill="#55555f"/>
+    `,
+    head: `
+      <path d="M 78 100 Q 120 90 162 100 L 162 109 Q 120 99 78 109 Z" fill="#3a3a44" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M 90 102 L 82 84 L 102 94 Z" fill="#3a3a44" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M 91 96 L 88 89 L 96 93 Z" fill="#f8b8d0"/>
+      <path d="M 150 102 L 158 84 L 138 94 Z" fill="#3a3a44" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M 149 96 L 152 89 L 144 93 Z" fill="#f8b8d0"/>
+      <g stroke="#3a3a44" stroke-width="2" stroke-linecap="round" opacity=".85">
+        <path d="M 84 126 L 70 123 M 84 133 L 70 136"/>
+        <path d="M 156 126 L 170 123 M 156 133 L 170 136"/>
+      </g>
+    `,
+  },
+  {
+    id: "bunny_spider",
+    name: "Spider",
+    tint: "#E4E0EE",
+    border: "#BEB6D8",
+    rarity: "rare",
+    price: 540,
+    unlock: { type: "shop", price: 540 },
+    back: `
+      <g stroke="#1a1a1a" stroke-width="6" stroke-linecap="round" fill="none">
+        <path d="M 84 166 Q 58 162 48 146"/>
+        <path d="M 82 184 Q 54 186 42 172"/>
+        <path d="M 84 202 Q 60 208 50 198"/>
+        <path d="M 156 166 Q 182 162 192 146"/>
+        <path d="M 158 184 Q 186 186 198 172"/>
+        <path d="M 156 202 Q 180 208 190 198"/>
+      </g>
+    `,
+    body: `
+      <path d="M 80 148 C 100 156 140 156 160 148 L 162 168 C 162 196 152 214 138 216 L 102 216 C 88 214 78 196 78 168 Z"
+            fill="#55447e" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <g stroke="#9184c0" stroke-width="2.5" fill="none">
+        <circle cx="120" cy="184" r="9"/>
+        <circle cx="120" cy="184" r="17"/>
+        <path d="M 120 165 L 120 203 M 104 172 L 136 196 M 136 172 L 104 196"/>
+      </g>
+    `,
+    head: `
+      <path d="M 78 96 Q 120 86 162 96 L 162 106 Q 120 96 78 106 Z" fill="#55447e" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="100" cy="92" r="6" fill="#fff" stroke="#1a1a1a" stroke-width="2.5"/>
+      <circle cx="101.5" cy="92" r="2.2" fill="#1a1a1a"/>
+      <circle cx="140" cy="92" r="6" fill="#fff" stroke="#1a1a1a" stroke-width="2.5"/>
+      <circle cx="141.5" cy="92" r="2.2" fill="#1a1a1a"/>
+    `,
+  },
+  {
+    id: "bunny_skeleton",
+    name: "Skeleton",
+    tint: "#E4E6EE",
+    border: "#B8BCCE",
+    rarity: "rare",
+    price: 480,
+    unlock: { type: "shop", price: 480 },
+    body: `
+      <path d="M 80 148 C 100 156 140 156 160 148 L 162 168 C 162 196 152 214 138 216 L 102 216 C 88 214 78 196 78 168 Z"
+            fill="#2a2e3a" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 108 158 L 132 158 M 120 152 L 120 200" stroke="#fafafa" stroke-width="5" stroke-linecap="round"/>
+      <path d="M 102 168 Q 120 176 138 168 M 100 180 Q 120 189 140 180 M 102 192 Q 120 200 138 192" fill="none" stroke="#fafafa" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="120" cy="206" rx="12" ry="6" fill="none" stroke="#fafafa" stroke-width="4"/>
+    `,
+    head: `
+      <path d="M 96 26 C 90 26 87 42 90 86 L 106 86 C 108 42 104 26 100 26 Z" fill="#fafafa" opacity=".92" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M 140 26 C 134 26 132 42 134 86 L 150 86 C 152 42 148 26 144 26 Z" fill="#fafafa" opacity=".92" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M 96 40 L 100 72 M 140 40 L 144 72" stroke="#2a2e3a" stroke-width="3" stroke-linecap="round"/>
+    `,
+  },
+  {
+    id: "bunny_acorn",
+    name: "Acorn",
+    tint: "#F2DFD0",
+    border: "#DDB894",
+    rarity: "common",
+    price: 160,
+    unlock: { type: "shop", price: 160 },
+    body: `
+      <path d="M 80 148 C 100 156 140 156 160 148 L 164 172 C 166 200 150 216 136 217 Q 120 222 104 217 C 90 216 74 200 76 172 Z"
+            fill="#b3612e" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 96 154 Q 92 186 98 214 M 144 154 Q 148 186 142 214" fill="none" stroke="#8f4a1f" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 110 214 Q 120 222 130 214 L 128 220 Q 120 226 112 220 Z" fill="#8f4a1f" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"/>
+    `,
+    head: `
+      <path d="M 70 100 Q 74 66 120 64 Q 166 66 170 100 Q 120 112 70 100 Z" fill="#7a5a38" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <g stroke="#5a3a1e" stroke-width="2.5" fill="none" opacity=".7">
+        <path d="M 82 88 Q 120 78 158 88 M 78 96 Q 120 86 162 96"/>
+        <path d="M 96 68 L 100 100 M 120 64 L 120 104 M 144 68 L 140 100"/>
+      </g>
+      <path d="M 118 64 Q 114 50 122 42 Q 130 52 124 64 Z" fill="#5a3a1e" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
+    `,
+  },
+  {
+    id: "bunny_candycorn",
+    name: "Candy Corn",
+    tint: "#FFF3D6",
+    border: "#EED9A0",
+    rarity: "common",
+    price: 220,
+    unlock: { type: "shop", price: 220 },
+    body: `
+      <defs><clipPath id="s7-cc"><path d="M 80 148 C 100 156 140 156 160 148 L 164 172 C 166 200 150 216 136 217 L 104 217 C 90 216 74 200 76 172 Z"/></clipPath></defs>
+      <path d="M 80 148 C 100 156 140 156 160 148 L 164 172 C 166 200 150 216 136 217 L 104 217 C 90 216 74 200 76 172 Z"
+            fill="#fafafa" stroke="none"/>
+      <g clip-path="url(#s7-cc)">
+        <rect x="70" y="170" width="100" height="24" fill="#f2913d"/>
+        <rect x="70" y="194" width="100" height="26" fill="#ffd14a"/>
+      </g>
+      <path d="M 80 148 C 100 156 140 156 160 148 L 164 172 C 166 200 150 216 136 217 L 104 217 C 90 216 74 200 76 172 Z"
+            fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+    `,
+    head: `
+      <path d="M 120 30 L 146 92 Q 120 100 94 92 Z" fill="#fafafa" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 104 68 L 136 68 L 143 86 Q 120 94 97 86 Z" fill="#f2913d" stroke="none"/>
+      <path d="M 120 30 L 146 92 Q 120 100 94 92 Z" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+    `,
+  },
 ];
 
 export const DEFAULT_OUTFIT_ID = "bunny_classic";
