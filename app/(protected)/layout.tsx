@@ -2,6 +2,7 @@ import TosGate from "@/app/_components/TosGate";
 import StopAudioOnNav from "@/app/_components/StopAudioOnNav";
 import SidebarShell from "@/app/_components/SidebarShell";
 import { createClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import * as Sentry from "@sentry/nextjs";
@@ -21,18 +22,36 @@ export default async function ProtectedLayout({
     redirect("/login");
   }
 
-  // Guard the "authenticated but no profile row" edge (signup race, or a
-  // deleted profile). Without this, protected pages that call
-  // requireProfile() throw an unhandled "Profile not found" (500 + Sentry
-  // noise) instead of sending the user somewhere sane. Normal users have a
-  // profile, so this is a no-op for them beyond one light existence check.
+  // Guard the "authenticated but no profile row" edge. The handle_new_user
+  // trigger creates this row on signup, but a legacy account, a trigger
+  // miss, or a deleted profile can leave an authed user without one — which
+  // used to throw "Profile not found" (500 + Sentry noise) on /review and
+  // every requireProfile() page. Normal users have a profile, so this is a
+  // no-op for them beyond one light existence check.
   const { data: profile } = await supabase
     .from("profiles")
     .select("id")
     .eq("id", user.id)
     .maybeSingle();
   if (!profile) {
-    redirect("/login");
+    // Self-heal instead of dead-ending: recreate the row (mirroring the
+    // trigger) via the admin client so RLS can't block the insert, then let
+    // the user continue. Fall back to /login only if the heal itself fails.
+    const metaRole = (user.user_metadata?.role as string | undefined) ?? "parent";
+    const role = metaRole === "educator" ? "educator" : "parent";
+    const { error: healErr } = await supabaseAdmin()
+      .from("profiles")
+      .upsert(
+        { id: user.id, email: user.email, role, onboarding_complete: false },
+        { onConflict: "id", ignoreDuplicates: true },
+      );
+    if (healErr) {
+      Sentry.captureException(healErr, {
+        tags: { where: "protected-layout-profile-heal" },
+        extra: { userId: user.id },
+      });
+      redirect("/login");
+    }
   }
 
   // Tag subsequent server-side errors with the authed user so Sentry
