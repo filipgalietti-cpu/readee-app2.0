@@ -42,12 +42,10 @@ export default function TermsOfServicePage() {
 
         <section>
           <h2 className="text-xl font-bold text-zinc-900 mb-3">2. Account types and subscriptions</h2>
-          <p>Readee offers several access tiers:</p>
+          <p>Readee offers a free tier and a paid subscription:</p>
           <ul className="list-disc pl-6 space-y-1">
-            <li><strong>Free</strong> - diagnostic + 1 lesson per grade.</li>
-            <li><strong>Readee+</strong> ($9.99/mo or $79.99/yr) - full lesson library + parent analytics.</li>
-            <li><strong>Teacher Solo</strong> ($19/mo or $180/yr) - individual educator AI tools.</li>
-            <li><strong>Classroom / School / District</strong> - site-licensed pricing for institutional customers.</li>
+            <li><strong>Free</strong> - placement test, a selection of free lessons, stories, and practice, plus the daily reading, for one child.</li>
+            <li><strong>Readee+</strong> ($9.99/mo, or $6.99/mo billed annually as $83.88/yr) - the full lesson library, unlimited practice and stories, Luna, and parent analytics.</li>
           </ul>
           <p>
             Pricing on <a href="/upgrade" className="text-indigo-600 hover:underline">/upgrade</a>{" "}
@@ -57,7 +55,8 @@ export default function TermsOfServicePage() {
             <strong>Free trials</strong> convert to a paid subscription at the end of the trial period unless you cancel before the trial ends.
           </p>
           <p>
-            <strong>Cancellation.</strong> Consumer subscriptions (Readee+, Teacher Solo) can be cancelled at any time from your account settings. Paid features remain active through the end of the current billing period; you revert to the free tier afterward. Refunds are not issued for partial billing periods. District and school subscriptions cancel at the end of the contracted term unless renewal terms specify otherwise.
+            <strong>Cancellation and refunds.</strong> You can cancel Readee+ at any time from your account settings. Paid features remain active through the end of the current billing period; you revert to the free tier afterward. New subscriptions include a 7-day free trial, and annual subscriptions include a 14-day money-back guarantee. Refunds are not issued for partial monthly billing periods. See our full{" "}
+            <a href="https://readee.app/refund" className="text-indigo-600 hover:underline">Refund and Cancellation Policy</a>.
           </p>
         </section>
 
