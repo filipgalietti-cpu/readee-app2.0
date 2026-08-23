@@ -21,6 +21,20 @@ export default async function ProtectedLayout({
     redirect("/login");
   }
 
+  // Guard the "authenticated but no profile row" edge (signup race, or a
+  // deleted profile). Without this, protected pages that call
+  // requireProfile() throw an unhandled "Profile not found" (500 + Sentry
+  // noise) instead of sending the user somewhere sane. Normal users have a
+  // profile, so this is a no-op for them beyond one light existence check.
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("id", user.id)
+    .maybeSingle();
+  if (!profile) {
+    redirect("/login");
+  }
+
   // Tag subsequent server-side errors with the authed user so Sentry
   // issues carry "who was affected" without leaking extra PII — we
   // already hold id + email via auth anyway.
