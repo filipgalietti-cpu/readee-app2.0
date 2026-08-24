@@ -522,9 +522,12 @@ export default function LunaReader({
   function startProcessing() { startBubbles(); }
   function stopProcessing() { stopBubbles(); }
 
-  // Cached feedback: stop the processing sound, THEN speak — never overlapping.
+  // Cached feedback: stop the processing sound, give the audio pipeline a
+  // beat to settle (the mic→playback route switch mid-sample is what caused
+  // the crunchy artifact right after listening), THEN speak.
   function playCachedQueued(key: string, onStart: () => void, onDone: () => void) {
-    stopProcessing(); onStart(); playCached(key, onDone);
+    stopProcessing(); onStart();
+    window.setTimeout(() => playCached(key, onDone), 180);
   }
   // Live TTS feedback: processing keeps going during the fetch, then stops the
   // instant the audio is ready so speech plays alone.
@@ -1023,7 +1026,12 @@ export default function LunaReader({
       fireCustomCoaching(tricky);
       const target = tricky[0] ?? "";
       const ids = target ? soundOut(target) : null;
-      const heavy = tricky.length >= 4 || (g.wordsTotal > 0 && tricky.length / g.wordsTotal > 0.5);
+      // Heavy = MANY real misreads (substituted). Azure liberally flags
+      // "missed" words it just didn't catch, and the old tricky-based ratio
+      // let one real misread ("win") get lumped into "heavy" — skipping the
+      // sound-out lesson the kid actually needed. Count substitutions only.
+      const subCount = g.wordAnnotations.filter((w) => w.status === "substituted").length;
+      const heavy = subCount >= 4 || (g.wordsTotal >= 6 && subCount / g.wordsTotal > 0.6);
       if (heavy) {
         const tokH = sessionTokenRef.current;
         const linePromise = speakToUrl(sentences[curIdx] ?? ""); // pre-warm during the clips
@@ -1327,7 +1335,7 @@ export default function LunaReader({
     : phase === "drill" ? "Tap to read this line" : "Tap to read the story";
 
   return (
-    <div style={{ maxWidth: 640, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+    <div style={{ maxWidth: 640, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: 14, ...(phase === "done" && !preparing ? { minHeight: "calc(100dvh - 200px)", justifyContent: "center" } : {}) }}>
       <style>{`@keyframes lunaCarrotPop{0%{transform:scale(1)}45%{transform:scale(1.35)}100%{transform:scale(1)}}`}</style>
       {/* Passage (hidden on the intro screen) */}
       {showPassage && (
