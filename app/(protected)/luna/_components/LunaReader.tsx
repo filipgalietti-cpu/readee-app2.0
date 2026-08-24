@@ -1469,14 +1469,18 @@ export default function LunaReader({
           // leaving the dead space below the button).
           ? { minHeight: "calc(100dvh - 320px)", justifyContent: "space-between", width: "100%" }
           : {}) }}>
-          <div ref={orbWrapRef} style={{ position: "relative", width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
-            <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
-            {/* Readee sidekick — the CHILD'S bunny (their equipped skin),
-                SUPPLEMENTAL to the orb: absolutely positioned so it never
-                pushes the orb off-center, tucked to its right. Claps on a
-                correct line, dances at the finish. */}
-            <div style={{ position: "absolute", right: -92, bottom: -6, width: 100, height: 112, pointerEvents: "none" }}>
+          {/* Orb + bunny as ONE centered cluster: the wrapper is sized to the
+              composite (orb + the bunny's visible overhang) and centered, with
+              the bunny overlapping the orb's lower-right — so the GROUP sits
+              in the middle of the page and the orb only shifts ~28px. */}
+          <div style={{ position: "relative", width: 236, height: 184 }}>
+            <div ref={orbWrapRef} style={{ position: "absolute", left: 0, top: 0, width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
+              <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
+            </div>
+            {/* The CHILD'S bunny (their equipped skin) peeking in from the
+                orb's lower-right. Claps on a correct line, dances at the end. */}
+            <div style={{ position: "absolute", right: 0, bottom: -4, width: 100, height: 112, pointerEvents: "none" }}>
               {bunnyRx
                 ? <BunnyReaction outfitId={childOutfitId ?? "classic"} state={bunnyRx} />
                 : <Bunny outfitId={childOutfitId ?? "classic"} />}
