@@ -49,6 +49,10 @@ export default function PostHogProvider({ children }: { children: ReactNode }) {
           // anonymous visits still capture their referrer/utm and merge onto
           // the person once they sign up + identify.
           person_profiles: "identified_only",
+          // COPPA: this app is used by children under a parent's account, so
+          // we must never screen-record them. Session replay stays hard off
+          // here in code, regardless of any PostHog project-level setting.
+          disable_session_recording: true,
         });
       }
 
