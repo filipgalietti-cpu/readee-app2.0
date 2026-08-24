@@ -35,6 +35,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // B2B (schools/teachers) retired — B2C only. 308-redirect the dead
+  // marketing routes to home so indexed URLs and stale links never 404.
+  async redirects() {
+    return [
+      { source: "/schools", destination: "/", permanent: true },
+      { source: "/schools/:path*", destination: "/", permanent: true },
+      { source: "/teachers", destination: "/", permanent: true },
+      { source: "/privacy-for-schools", destination: "/", permanent: true },
+    ];
+  },
 };
 
 export default withSentryConfig(nextConfig, {

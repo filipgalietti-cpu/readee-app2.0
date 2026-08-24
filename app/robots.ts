@@ -7,8 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: [
         "/",
         "/about",
-        "/teachers",
-        "/schools",
         "/contact-us",
         "/privacy-policy",
         "/terms-of-service",

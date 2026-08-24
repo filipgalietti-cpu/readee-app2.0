@@ -259,26 +259,6 @@ export default async function About() {
       <AdvisoryBoardSection />
 
       {/* ── Coming Soon: Readee Classroom ── */}
-      <section className="rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 p-8 sm:p-10 mb-8 text-center space-y-3">
-        <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center mx-auto">
-          <School className="w-6 h-6 text-white" strokeWidth={1.5} />
-        </div>
-        <h2 className="text-2xl font-bold text-white tracking-tight">
-          Readee Classroom - Coming Soon
-        </h2>
-        <p className="text-indigo-100 max-w-lg mx-auto leading-relaxed">
-          Bringing Readee to schools and classrooms everywhere. Teacher
-          dashboards, student progress tracking, and structured phonics
-          instruction - built for the way classrooms actually work.
-        </p>
-        <Link
-          href="/teachers"
-          className="inline-block mt-2 px-6 py-2.5 rounded-xl bg-white text-indigo-700 font-bold text-sm hover:bg-indigo-50 transition-colors shadow-md"
-        >
-          Learn More for Educators
-        </Link>
-      </section>
-
       {/* ── CTA ── */}
       {user ? (
         <div className="text-center py-8 space-y-4">
