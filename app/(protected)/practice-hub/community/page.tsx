@@ -31,7 +31,12 @@ export default async function CommunityLibraryPage({
     .eq("parent_id", profile.id)
     .order("created_at", { ascending: true })
     .limit(1);
-  const childGrade = ((kids?.[0] as any)?.grade as string | null) ?? null;
+  // Readee is K-4. A "pre-k" placement is served kindergarten content
+  // everywhere else (learn/practice/standards all fall back pre-k -> K), and
+  // community passages are tagged "K" (not "pre-k"), so normalize here too.
+  // Without this, the "For {grade}" tab matches zero passages for pre-k kids.
+  const rawGrade = ((kids?.[0] as any)?.grade as string | null) ?? null;
+  const childGrade = rawGrade && /^pre-?k$/i.test(rawGrade) ? "K" : rawGrade;
 
   const { data: rows } = await supabaseAdmin()
     .from("community_passages")
