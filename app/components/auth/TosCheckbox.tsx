@@ -20,7 +20,7 @@ export default function TosCheckbox({
   const lead =
     role === "educator"
       ? "I am at least 18 years old and acting on behalf of myself or my school."
-      : "I am the parent or legal guardian of this child.";
+      : "I am the parent or legal guardian of my child, and I consent to Readee's collection and use of my child's information as described in the Privacy Policy.";
   return (
     <label className="flex items-start gap-3 cursor-pointer select-none">
       <input
