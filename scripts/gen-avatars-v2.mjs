@@ -34,7 +34,7 @@ const defs = JSON.parse(readFileSync(resolve(ROOT, "scripts/avatars-batch-2.json
 const rows = defs.filter((d) => !only || only.includes(d.id));
 
 const style = (bg) =>
-  `Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, solid ${bg} background, centered bust portrait, kid-friendly, no text`;
+  `Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, solid ${bg} background, single character centered in the frame, symmetrical head-and-shoulders bust portrait, fully visible with generous even margins on all sides, not cropped or zoomed in, kid-friendly, no text`;
 
 async function gen(subject, bg) {
   const prompt = `Character portrait of ${subject}. ${style(bg)}`;
