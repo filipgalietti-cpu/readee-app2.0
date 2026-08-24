@@ -108,7 +108,7 @@ export default async function LunaReadPage({
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-6">
+    <div className="mx-auto min-h-[calc(100dvh-72px)] max-w-2xl px-6 pb-28 pt-6">
       <div className="mb-4 flex items-center justify-between">
         <Link
           href={`/luna?child=${child.id}`}
