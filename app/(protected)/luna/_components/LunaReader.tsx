@@ -236,6 +236,9 @@ export default function LunaReader({
   useEffect(() => { try { const d = new URLSearchParams(window.location.search).has("debug"); setDebug(d); debugRef.current = d; } catch { /* ignore */ } }, []);
   function dbg(m: string) { try { console.log("[luna]", m); } catch { /* ignore */ } if (debugRef.current) setDbgLog((l) => [...l.slice(-14), m]); }
   useEffect(() => { idxRef.current = idx; }, [idx]);
+  // Land at the top when the reader mounts (covers /luna/read arriving with a
+  // restored scroll position from the previous page).
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
   useEffect(() => { phaseRef.current = phase; }, [phase]);
   // Re-apply word styling whenever the phase or current drill line changes

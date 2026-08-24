@@ -8,7 +8,7 @@
  * the words are the whole experience.
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Sparkles, ArrowRight, Wand2, RefreshCw, Lock, Check } from "lucide-react";
@@ -51,6 +51,13 @@ export default function LunaCreate({
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [custom, setCustom] = useState("");
   const [errKind, setErrKind] = useState<"upgrade" | "gen" | "unsafe" | null>(null);
+
+  // Pin the page to the top on arrival AND on every phase swap (pick →
+  // generating → reading). Next.js scroll restoration + our phases changing
+  // page height left visitors landing halfway down the page inconsistently.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [phase]);
 
   function toggle(t: string) {
     setSelected((prev) => {
