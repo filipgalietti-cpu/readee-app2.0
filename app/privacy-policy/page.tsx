@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
       <h1 className="text-3xl font-bold text-zinc-900 tracking-tight mb-2">
         Privacy Policy
       </h1>
-      <p className="text-sm text-zinc-400 mb-8">Last updated: February 2026</p>
+      <p className="text-sm text-zinc-400 mb-8">Last updated: August 2026</p>
 
       <div className="prose prose-zinc max-w-none space-y-8">
         <section>
@@ -92,12 +92,40 @@ export default function PrivacyPolicyPage() {
           </p>
           <ul className="list-disc pl-6 space-y-2 text-zinc-600 mt-3">
             <li>
-              <strong>Supabase:</strong> Database and authentication services for
-              secure data storage
+              <strong>Supabase:</strong> Database, authentication, and secure file
+              storage.
+            </li>
+            <li>
+              <strong>Vercel:</strong> Website hosting and aggregate, anonymous
+              performance analytics.
+            </li>
+            <li>
+              <strong>Stripe:</strong> Payment processing for Readee+
+              subscriptions. We never store full card numbers.
+            </li>
+            <li>
+              <strong>Google Cloud (Vertex AI and Gemini):</strong> Generates
+              lesson audio, images, and personalized reading passages. A topic a
+              child selects (for example, a story about sharks) is processed to
+              create that content.
+            </li>
+            <li>
+              <strong>Microsoft Azure:</strong> Speech pronunciation assessment
+              for read-aloud practice. When a child reads aloud, the audio is sent
+              to Azure to score pronunciation. It is not used to identify the
+              child.
+            </li>
+            <li>
+              <strong>PostHog:</strong> Product analytics to see which features
+              are used and improve Readee. Session recording of children is
+              disabled.
+            </li>
+            <li>
+              <strong>Sentry:</strong> Error monitoring to detect and fix bugs.
             </li>
             <li>
               <strong>Resend:</strong> Transactional email delivery for account
-              communications
+              communications.
             </li>
           </ul>
           <p className="text-zinc-600 leading-relaxed mt-3">
