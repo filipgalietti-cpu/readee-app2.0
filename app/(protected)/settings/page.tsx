@@ -139,6 +139,7 @@ export default function Settings() {
   // Preferences (local)
   const [soundEffects, setSoundEffects] = useState(true);
   const [autoAdvance, setAutoAdvance] = useState(true);
+  const [activeTab, setActiveTab] = useState("sec-profile");
 
   // Notifications (real: profiles.email_weekly_digest)
   const [weeklyDigest, setWeeklyDigest] = useState(true);
@@ -161,6 +162,24 @@ export default function Settings() {
       localStorage.setItem("readee_prefs", JSON.stringify(prefs));
     } catch {}
   }, [soundEffects, autoAdvance]);
+
+  // Scroll-spy: highlight the tab for whichever section is currently in view.
+  useEffect(() => {
+    const ids = ["sec-profile", "sec-readers", "sec-billing", "sec-notif", "sec-privacy"];
+    const els = ids.map((id) => document.getElementById(id)).filter((e): e is HTMLElement => !!e);
+    if (!els.length) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const vis = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (vis[0]) setActiveTab(vis[0].target.id);
+      },
+      { rootMargin: "-72px 0px -55% 0px" },
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, [children]);
 
   useEffect(() => {
     async function load() {
@@ -499,13 +518,16 @@ export default function Settings() {
       </div>
 
       {/* Sticky tab nav (scroll-jumps to sections) */}
-      <div style={{ display: "flex", gap: 24, borderBottom: CARD, marginBottom: 24, position: "sticky", top: 0, background: "rgba(255,255,255,.95)", backdropFilter: "blur(6px)", zIndex: 30, overflowX: "auto" }}>
-        {tabs.map(([id, label]) => (
-          <button key={id} onClick={() => scrollToId(id)}
-            style={{ border: "none", background: "transparent", cursor: "pointer", fontFamily: "inherit", fontSize: 14, fontWeight: 600, color: "#71717a", padding: "12px 2px", whiteSpace: "nowrap" }}>
-            {label}
-          </button>
-        ))}
+      <div style={{ display: "flex", gap: 2, marginBottom: 24, position: "sticky", top: 0, background: "#fff", zIndex: 30, overflowX: "auto", borderBottom: "1px solid #e4e4e7" }}>
+        {tabs.map(([id, label]) => {
+          const active = activeTab === id;
+          return (
+            <button key={id} onClick={() => scrollToId(id)}
+              style={{ border: "none", background: "transparent", cursor: "pointer", fontFamily: "inherit", fontSize: 14, fontWeight: active ? 700 : 600, color: active ? "#4338ca" : "#71717a", padding: "12px 14px", whiteSpace: "nowrap", borderBottom: active ? "2px solid #4338ca" : "2px solid transparent", marginBottom: -1, transition: "color .15s ease" }}>
+              {label}
+            </button>
+          );
+        })}
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
