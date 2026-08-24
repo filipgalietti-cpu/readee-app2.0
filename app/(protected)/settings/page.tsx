@@ -487,7 +487,6 @@ export default function Settings() {
   ];
 
   return (
-    <div style={{ background: "#faf9f7", minHeight: "100%" }}>
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "28px 20px 64px", color: "#3f3f46", fontFamily: "var(--font-body)" }}>
       {/* Header + saved pill */}
       <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
@@ -795,7 +794,7 @@ export default function Settings() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0", borderTop: "1px solid #f4f4f5" }}>
             <div>
               <div style={{ fontSize: 14, fontWeight: 600, color: "#18181b" }}>Export learning data</div>
-              <div style={{ fontSize: 12, color: "#71717a" }}>A spreadsheet (CSV) of everything we store about you and your readers - opens in Excel or Sheets.</div>
+              <div style={{ fontSize: 12, color: "#71717a" }}>A spreadsheet (CSV) of everything we store about you and your readers.</div>
             </div>
             <button onClick={handleExportData} disabled={exportBusy}
               style={{ border: CARD, background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "7px 14px", borderRadius: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6, flexShrink: 0, opacity: exportBusy ? 0.6 : 1 }}>
@@ -878,7 +877,6 @@ export default function Settings() {
       )}
 
       <CelebrationOverlay show={!!promoResult?.success} />
-    </div>
     </div>
   );
 }
