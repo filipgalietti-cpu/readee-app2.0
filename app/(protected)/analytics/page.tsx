@@ -88,7 +88,7 @@ function shortName(desc: string): string {
 
 function displayGrade(grade: string | null | undefined): string {
   if (!grade) return "Kindergarten";
-  if (grade.toLowerCase() === "pre-k") return "Pre-K";
+  if (grade.toLowerCase() === "pre-k") return "Kindergarten";
   return grade;
 }
 

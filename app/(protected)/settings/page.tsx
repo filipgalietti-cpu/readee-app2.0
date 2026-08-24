@@ -23,7 +23,7 @@ import {
 } from "@/app/(protected)/account/account-data-actions";
 
 function displayGrade(grade: string): string {
-  if (grade.toLowerCase() === "pre-k") return "Foundational";
+  if (grade.toLowerCase() === "pre-k") return "Kindergarten";
   return grade;
 }
 

@@ -118,7 +118,7 @@ const LEVEL_STEPS = [
 
 const LEVEL_INFO: Record<string, { grade: string; summary: string; details: string }> = {
   "Emerging Reader": {
-    grade: "Pre-Kindergarten",
+    grade: "Kindergarten",
     summary: "Just getting started with reading",
     details: "Your child is learning the building blocks - recognizing letters, hearing sounds in words, and understanding how books work. This is a normal starting point and we'll build from here!",
   },
@@ -552,7 +552,7 @@ const DIMENSION_DISPLAY: Record<
 };
 
 const GRADE_LABEL_SHORT: Record<string, string> = {
-  "pre-k": "Pre-K",
+  "pre-k": "K",
   kindergarten: "K",
   "1st": "1st",
   "2nd": "2nd",

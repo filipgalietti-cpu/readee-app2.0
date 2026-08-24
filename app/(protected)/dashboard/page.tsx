@@ -139,7 +139,7 @@ function useCountUp(target: number, duration = 800) {
 
 const GRADE_KEYS = ["pre-k", "kindergarten", "1st", "2nd", "3rd", "4th"] as const;
 const GRADE_LABELS: Record<string, string> = {
-  "pre-k": "Foundational",
+  "pre-k": "Kindergarten",
   "kindergarten": "Kindergarten",
   "1st": "1st Grade",
   "2nd": "2nd Grade",
