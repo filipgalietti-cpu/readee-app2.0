@@ -181,6 +181,12 @@ export default function Settings() {
     return () => obs.disconnect();
   }, [children]);
 
+  // The skeleton renders first, then swaps to the (taller) real content, which
+  // can leave the viewport scrolled down. Snap back to the top once loaded.
+  useEffect(() => {
+    if (!loading) window.scrollTo({ top: 0 });
+  }, [loading]);
+
   useEffect(() => {
     async function load() {
       const { data: { user } } = await supabase.auth.getUser();
@@ -533,7 +539,7 @@ export default function Settings() {
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
 
         {/* ═══ Profile ═══ */}
-        <div id="sec-profile" style={{ scrollMarginTop: 72, display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 16, alignItems: "stretch" }}>
+        <div id="sec-profile" style={{ scrollMarginTop: 72, display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 16, alignItems: "start" }}>
           <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 16 }}>Profile</div>
             <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
