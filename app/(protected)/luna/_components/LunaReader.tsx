@@ -16,7 +16,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Shuffle, Trophy, RotateCcw, Play, Volume2, Carrot } from "lucide-react";
+import { Shuffle, RotateCcw, Play, Volume2, Carrot, Star, Check, X as XIcon } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut } from "@/lib/luna/sound-out";
@@ -60,6 +60,8 @@ const PRELOAD_CLIPS = [
   ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
   ...Array.from({ length: REREAD_COUNT }, (_, i) => `reread-${i + 1}`),
   ...Array.from({ length: NOTQUITE_COUNT }, (_, i) => `notquite-${i + 1}`),
+  // Mini-lesson spoken instructions (early readers can't read captions).
+  "echome-1", "yourturn-1", "wholeline-1", "listenline-1",
   ...Array.from({ length: TRANSITION_COUNT }, (_, i) => `transition-drill-${i + 1}`),
   ...Array.from({ length: TRANSITION_COUNT }, (_, i) => `transition-final-${i + 1}`),
 ];
@@ -276,6 +278,8 @@ export default function LunaReader({
   // Mid-mini-lesson word-repeat step ("say 'pig'!") — when set, the next
   // grade routes to the word check instead of the sentence feedback.
   const wordDrillRef = useRef<{ word: string; ids: string[] } | null>(null);
+  // Per-line results for the quiz-style finish summary (Line 1 ✓ / Line 2 ✗).
+  const lineResultsRef = useRef<{ text: string; ok: boolean }[]>([]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
   useEffect(() => { phaseRef.current = phase; }, [phase]);
   // Re-apply word styling whenever the phase or current drill line changes
@@ -620,7 +624,8 @@ export default function LunaReader({
     prewarmWordAudio(word); // ready by blend end — no wait
     setMode("speaking");
     setCaption(`"${word}" - say each sound after me!`);
-    playPhonemeSeq(ids, 950, () => {
+    // Spoken instruction first — the kid can't read the caption.
+    playCached("echome-1", () => playPhonemeSeq(ids, 950, () => {
       // Word-level model: Luna says the blended word before the kid tries it.
       const wurl = wordSpeakRef.current.get(normWord(word));
       if (wurl) {
@@ -629,7 +634,7 @@ export default function LunaReader({
       } else {
         beginWordRead(word, ids);
       }
-    });
+    }));
   }
   /** The "your turn - say it!" word check. Opens the mic on JUST that word;
    *  the grade routes to handleWordResult via wordDrillRef. */
@@ -640,15 +645,19 @@ export default function LunaReader({
     let wi = -1;
     for (let i = from; i <= to; i++) if (normWord(words[i]) === normWord(word)) { wi = i; break; }
     if (wi < 0) { proceed(true); return; } // can't locate it — skip to the line
-    wordDrillRef.current = { word, ids };
-    setCaption(`Your turn, ${name} - say "${word}"!`);
-    readModeRef.current = "starting"; pendingStopRef.current = false;
-    void startStream(word, wi, wi).then((ok) => {
-      if (ok) { readModeRef.current = "streaming"; return; }
-      // No streaming (fallback env) — skip the word check, go to the line.
-      readModeRef.current = "idle";
-      wordDrillRef.current = null;
-      proceed(true);
+    // Spoken instruction ("Now you say the word!") BEFORE the mic opens, so
+    // the kid knows exactly what to do — captions alone don't cut it.
+    playCached("yourturn-1", () => {
+      wordDrillRef.current = { word, ids };
+      setCaption(`Your turn, ${name} - say "${word}"!`);
+      readModeRef.current = "starting"; pendingStopRef.current = false;
+      void startStream(word, wi, wi).then((ok) => {
+        if (ok) { readModeRef.current = "streaming"; return; }
+        // No streaming (fallback env) — skip the word check, go to the line.
+        readModeRef.current = "idle";
+        wordDrillRef.current = null;
+        proceed(true);
+      });
     });
   }
   /** Grade of the single-word check: said it right → tiny praise → the line;
@@ -987,6 +996,7 @@ export default function LunaReader({
       statsRef.current.dur += g.durationSeconds;
       statsRef.current.anns.push(...g.wordAnnotations);
       tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
+      lineResultsRef.current.push({ text: sentences[curIdx] ?? "", ok: !hasError });
     }
     // Only surface "I heard …" when the transcript ACTUALLY diverges from the
     // target line (Azure echoes the reference even on a wrong read).
@@ -1003,15 +1013,31 @@ export default function LunaReader({
       awardCarrots(10);
       playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
     } else if (willRetry) {
-      // Wrong (1st try) → instant generic "not quite", then an inline
-      // mini-lesson: point at the broken word and sound it out from the
-      // pre-recorded phoneme clips (zero latency). Falls back to plain
-      // "try again" when the word can't be confidently decomposed. The
-      // CUSTOM recap coaching still generates in the background either way.
+      // Wrong (1st try). How we teach depends on HOW wrong (multi-miss logic):
+      //   1-3 misses → full mini-lesson on the WORST word (echo sounds → say
+      //                the word → re-read the line). One word, done well.
+      //   heavy miss (4+ or over half the line) → drilling one word won't
+      //                help; Luna MODELS the whole line (reads it aloud,
+      //                pre-warmed during the "not quite" clip) → kid re-reads.
+      // The CUSTOM recap coaching still generates in the background either way.
       fireCustomCoaching(tricky);
       const target = tricky[0] ?? "";
       const ids = target ? soundOut(target) : null;
-      if (ids) {
+      const heavy = tricky.length >= 4 || (g.wordsTotal > 0 && tricky.length / g.wordsTotal > 0.5);
+      if (heavy) {
+        const tokH = sessionTokenRef.current;
+        const linePromise = speakToUrl(sentences[curIdx] ?? ""); // pre-warm during the clips
+        playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite."); }, () => {
+          playCached("listenline-1", () => {
+            setCaption("Listen to the whole line…");
+            void linePromise.then((url) => {
+              if (sessionTokenRef.current !== tokH) return;
+              if (url) playUrl(url, () => proceed(true));
+              else proceed(true);
+            });
+          });
+        });
+      } else if (ids) {
         playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's sound it out."); }, () => miniLesson(target, ids));
       } else {
         playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's try that line again!"); }, () => proceed(true));
@@ -1060,9 +1086,11 @@ export default function LunaReader({
       const s = idxRef.current;
       const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
       for (let i = from; i <= to; i++) if (i >= 0) wordStateRef.current[i] = "pending";
-      setAttempt(1); setMode("idle"); setCaption("Now read the whole line again!");
+      setAttempt(1); setCaption("Now read the whole line again!");
       styleWords();
-      armRead(900); // hands-free retry
+      // Spoken direction, then the mic re-arms hands-free.
+      setMode("speaking");
+      playCached("wholeline-1", () => { setMode("idle"); armRead(500); });
       return;
     }
     setAttempt(0);
@@ -1105,6 +1133,7 @@ export default function LunaReader({
     clips.forEach((c) => { if (c.words[0]) prewarmWordAudio(c.words[0]); });
     if (seq.length === 0) { finishSession(); return; }
     let i = 0;
+    let blendBudget = 2; // cap the recap blends so a rough session's recap doesn't drag
     const playNext = () => {
       if (sessionTokenRef.current !== tok) return; // stale — kid left/restarted
       clearPoint(); // drop the previous clip's highlight
@@ -1116,8 +1145,9 @@ export default function LunaReader({
         // TEACH, don't just mention: after "let's practice 'kit'", actually
         // sound the word out (echo gaps) + say it whole, then move on.
         const w = item.words?.[0];
-        const ids = w ? soundOut(w) : null;
+        const ids = w && blendBudget > 0 ? soundOut(w) : null;
         if (w && ids) {
+          blendBudget--;
           setCaption(`"${w}" - say each sound after me!`);
           playPhonemeSeq(ids, 950, () => {
             const wurl = wordSpeakRef.current.get(normWord(w));
@@ -1197,6 +1227,7 @@ export default function LunaReader({
     coachingClipsRef.current = [];
     recapIntroUrlRef.current = null;
     sessionCarrotsRef.current = 0; setSessionCarrots(0); setCarrotShown(0); setBunnyRx("");
+    lineResultsRef.current = [];
     const sessTok = ++sessionTokenRef.current;
     void speakToUrl(`Great reading, ${name}!`).then((url) => { if (url && sessionTokenRef.current === sessTok) recapIntroUrlRef.current = url; });
     setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setExpression(null); setErr(null); setLastHeard(null);
@@ -1336,14 +1367,14 @@ export default function LunaReader({
       {/* Luna + controls */}
       {(preparing || phase !== "done") ? (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 2 }}>
-            <div ref={orbWrapRef} style={{ position: "relative", width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
-              <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
-            </div>
-            {/* Readee sidekick — the CHILD'S bunny (their equipped skin) cheers
-                beside the orb: claps on a correct line, dances at the finish. */}
-            <div style={{ width: 118, height: 130, pointerEvents: "none", marginBottom: -4 }}>
+          <div ref={orbWrapRef} style={{ position: "relative", width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
+            <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
+            {/* Readee sidekick — the CHILD'S bunny (their equipped skin),
+                SUPPLEMENTAL to the orb: absolutely positioned so it never
+                pushes the orb off-center, tucked to its right. Claps on a
+                correct line, dances at the finish. */}
+            <div style={{ position: "absolute", right: -92, bottom: -6, width: 100, height: 112, pointerEvents: "none" }}>
               {bunnyRx
                 ? <BunnyReaction outfitId={childOutfitId ?? "classic"} state={bunnyRx} />
                 : <Bunny outfitId={childOutfitId ?? "classic"} />}
@@ -1356,10 +1387,10 @@ export default function LunaReader({
           )}
 
           {preparing || phase === "building" ? null : phase === "intro" ? (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 28 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 48 }}>
               <button type="button" onClick={startFlow} disabled={preparing}
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "none", borderRadius: 999, padding: "16px 40px", fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
-                <Play className="h-5 w-5" fill="#fff" stroke="none" /> {preparing ? "Getting your story…" : "Let's Start"}
+                style={{ display: "inline-flex", alignItems: "center", gap: 10, border: "none", borderRadius: 999, padding: "20px 56px", fontFamily: BALOO, fontSize: 25, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 14px 36px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
+                <Play className="h-6 w-6" fill="#fff" stroke="none" /> {preparing ? "Getting your story…" : "Let's Start"}
               </button>
             </div>
           ) : (
@@ -1379,27 +1410,52 @@ export default function LunaReader({
         </div>
       ) : (
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
-          <div style={{ width: "100%", borderRadius: 22, border: "1px solid #bbf7d0", background: "linear-gradient(135deg,#ecfdf5,#f5f3ff)", padding: 20 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <Trophy className="h-8 w-8" style={{ color: "#059669" }} />
-              <div style={{ display: "flex", gap: 22 }}>
-                <Stat label="First read" value={`${(before?.wcpm ?? 0).toFixed(0)} WCPM`} />
-                <Stat label="Final read" value={`${(after?.wcpm ?? 0).toFixed(0)} WCPM`} />
-                <Stat label="Accuracy" value={`${(after?.accuracy ?? 0).toFixed(0)}%`} />
-                {expression != null && <Stat label="Expression" value={`${expression}%`} />}
+          {/* Quiz-style finish summary (mirrors the Daily Readee results):
+              bunny + stars + score + per-line review + carrots. */}
+          {(() => {
+            const lines = lineResultsRef.current;
+            const okCount = lines.filter((l) => l.ok).length;
+            const total = Math.max(1, lines.length);
+            const pct = statsRef.current.wt > 0 ? Math.round((statsRef.current.wc / statsRef.current.wt) * 100) : 0;
+            const title = okCount === total ? "Perfect read!" : okCount >= Math.ceil(total / 2) ? `Nice reading today, ${name}!` : "Good practicing - let's read it again!";
+            const bunnyState: ReactionState = okCount >= Math.ceil((total * 2) / 3) ? "correct" : "incorrect";
+            return (
+              <div style={{ width: "100%", borderRadius: 22, border: "1px solid #ddd6fe", background: "#fff", padding: "22px 20px", boxShadow: "0 10px 40px -12px rgba(49,46,129,.15)", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
+                <div style={{ width: 140, height: 152 }}>
+                  <BunnyReaction outfitId={childOutfitId ?? "classic"} state={bunnyState} />
+                </div>
+                <div style={{ marginTop: 6, display: "flex", gap: 4 }}>
+                  {[1, 2, 3].map((n) => {
+                    const filled = okCount / total >= n / 3;
+                    return <Star key={n} className="h-[26px] w-[26px]" style={{ color: filled ? "#f59e0b" : "#e4e4e7", fill: filled ? "#f59e0b" : "#e4e4e7" }} strokeWidth={1.5} />;
+                  })}
+                </div>
+                <div style={{ marginTop: 8, fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#18181b" }}>{title}</div>
+                <div style={{ marginTop: 2, fontSize: 14, color: "#71717a" }}>
+                  You read {okCount} of {total} lines perfectly · <b style={{ color: "#6d28d9" }}>{pct}%</b> of words right
+                </div>
+                <div style={{ marginTop: 14, width: "100%", display: "flex", flexDirection: "column", gap: 6, textAlign: "left" }}>
+                  {lines.map((l, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, borderRadius: 10, padding: "8px 10px", background: l.ok ? "#ecfdf5" : "#fef2f2" }}>
+                      {l.ok ? <Check className="h-3.5 w-3.5" style={{ color: "#059669", flexShrink: 0 }} strokeWidth={3} /> : <XIcon className="h-3.5 w-3.5" style={{ color: "#dc2626", flexShrink: 0 }} strokeWidth={3} />}
+                      <span style={{ fontSize: 11, fontWeight: 800, color: "#71717a", flexShrink: 0 }}>Line {i + 1}</span>
+                      <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{l.text}</span>
+                    </div>
+                  ))}
+                </div>
+                {sessionCarrots > 0 && (
+                  <div style={{ marginTop: 14, display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, background: "#d1fae5", color: "#047857", padding: "8px 20px", fontSize: 15, fontWeight: 800 }}>
+                    <Carrot className="h-4 w-4" strokeWidth={2} /> +{sessionCarrots} carrots
+                  </div>
+                )}
+                {statsRef.current.trickyWords.size > 0 && (
+                  <p style={{ margin: "10px 0 0", fontSize: 13, color: "#3f3f46" }}>
+                    Words to keep practicing: <b style={{ color: "#6d28d9" }}>{Array.from(statsRef.current.trickyWords).slice(0, 3).join(", ")}</b>
+                  </p>
+                )}
               </div>
-            </div>
-            {before && after && after.wcpm > before.wcpm && (
-              <p style={{ margin: "12px 0 0", fontSize: 14, color: "#047857", fontWeight: 700 }}>
-                You read {(after.wcpm - before.wcpm).toFixed(0)} words per minute faster - awesome!
-              </p>
-            )}
-            {statsRef.current.trickyWords.size > 0 && (
-              <p style={{ margin: "8px 0 0", fontSize: 14, color: "#3f3f46" }}>
-                Words to keep practicing: <b style={{ color: "#6d28d9" }}>{Array.from(statsRef.current.trickyWords).slice(0, 3).join(", ")}</b>.
-              </p>
-            )}
-          </div>
+            );
+          })()}
           <div style={{ display: "flex", gap: 10 }}>
             <button type="button" onClick={() => beginBuild(passage)}
               style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, border: "1px solid #ddd6fe", background: "#fff", color: "#6d28d9", padding: "11px 20px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
