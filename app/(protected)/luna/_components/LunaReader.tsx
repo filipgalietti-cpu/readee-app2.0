@@ -19,6 +19,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Shuffle, Trophy, RotateCcw, Play, Volume2 } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
+import { soundOut } from "@/lib/luna/sound-out";
 
 type Passage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[] };
 type Annotation = { word: string; status: string; heard?: string };
@@ -40,17 +41,22 @@ const SERIF = 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman
 const BALOO = "'Baloo 2','Nunito',sans-serif";
 const SILENT = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=";
 const CLIP_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/luna`;
+// The 45 pre-recorded phoneme clips (same ones the lessons use) — power the
+// inline sound-it-out mini-lesson with zero generation latency.
+const PHONEME_BASE = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/phonemes`;
 // Variant pools so no feedback line ever feels one-dimensional.
 const PRAISE_COUNT = 16;   // praise-1..16   (clean read)
 const SMOOTH_COUNT = 4;    // smooth-1..4    (fluency retry)
 const GOODTRY_COUNT = 4;   // goodtry-1..4   (2nd attempt)
 const REREAD_COUNT = 4;    // reread-1..4    ("read the whole sentence again")
+const NOTQUITE_COUNT = 4;  // notquite-1..4  ("hmm, not quite" — wrong 1st try)
 const TRANSITION_COUNT = 2; // transition-{drill,final}-1..2 (pre-recorded, no name = instant)
 const PRELOAD_CLIPS = [
   ...Array.from({ length: PRAISE_COUNT }, (_, i) => `praise-${i + 1}`),
   ...Array.from({ length: SMOOTH_COUNT }, (_, i) => `smooth-${i + 1}`),
   ...Array.from({ length: GOODTRY_COUNT }, (_, i) => `goodtry-${i + 1}`),
   ...Array.from({ length: REREAD_COUNT }, (_, i) => `reread-${i + 1}`),
+  ...Array.from({ length: NOTQUITE_COUNT }, (_, i) => `notquite-${i + 1}`),
   ...Array.from({ length: TRANSITION_COUNT }, (_, i) => `transition-drill-${i + 1}`),
   ...Array.from({ length: TRANSITION_COUNT }, (_, i) => `transition-final-${i + 1}`),
 ];
@@ -492,6 +498,50 @@ export default function LunaReader({
     void speakToUrl(line).then((url) => { if (url && sessionTokenRef.current === tok) coachingClipsRef.current.push({ url, words: wds }); });
   }
 
+  // --- Inline mini-lesson: point at the broken word + sound it out ----------
+  const normWord = (t: string) => t.toLowerCase().replace(/[^a-z']/g, "");
+  /** Amber "Luna is pointing here" style on every occurrence of `word` within
+   *  [from..to] (or the whole passage). Returns the touched indices. */
+  function pointAt(wordList: string[], from = 0, to = words.length - 1): number[] {
+    const targets = new Set(wordList.map(normWord));
+    const touched: number[] = [];
+    for (let i = Math.max(0, from); i <= Math.min(to, words.length - 1); i++) {
+      if (!targets.has(normWord(words[i]))) continue;
+      touched.push(i);
+      const el = wEl(i);
+      if (el) {
+        el.style.transition = "background .25s ease, box-shadow .25s ease, color .25s ease";
+        el.style.background = "#fde68a";
+        el.style.color = "#92400e";
+        el.style.boxShadow = "0 0 0 3px rgba(245,158,11,.35)";
+      }
+    }
+    return touched;
+  }
+  function clearPoint() { styleWords(); }
+  /** Sound out ONE broken word with the pre-recorded phoneme clips (zero
+   *  latency), pointing at it in the passage, then hand back to the retry.
+   *  Sequential (one clip at a time) + session-token guarded. */
+  function miniLesson(word: string, ids: string[]) {
+    const tok = sessionTokenRef.current;
+    const s = idxRef.current;
+    const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
+    pointAt([word], from < 0 ? 0 : from, to < 0 ? words.length - 1 : to);
+    setMode("speaking");
+    setCaption(`"${word}" - sound it out with me!`);
+    let k = 0;
+    const next = () => {
+      if (sessionTokenRef.current !== tok) return; // kid restarted/left
+      if (k >= ids.length) {
+        proceed(true); // resets colors + attempt; then our caption wins
+        setCaption(`"${word}"! Now tap me and read the line again.`);
+        return;
+      }
+      playUrl(`${PHONEME_BASE}/${ids[k++]}.mp3`, () => { window.setTimeout(next, 280); });
+    };
+    next();
+  }
+
   // Pick a praise clip that isn't the one we just played (kills the "same
   // cheer over and over" feel).
   function praiseKey() {
@@ -777,10 +827,19 @@ export default function LunaReader({
       setLastHeard(null);
       playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
     } else if (willRetry) {
-      // Wrong (1st try) → instant generic "not quite, try again"; the CUSTOM
-      // coaching for these misses generates in the background for the recap.
+      // Wrong (1st try) → instant generic "not quite", then an inline
+      // mini-lesson: point at the broken word and sound it out from the
+      // pre-recorded phoneme clips (zero latency). Falls back to plain
+      // "try again" when the word can't be confidently decomposed. The
+      // CUSTOM recap coaching still generates in the background either way.
       fireCustomCoaching(tricky);
-      playCachedQueued(`reread-${1 + rand(REREAD_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's try that line again!"); }, () => proceed(true));
+      const target = tricky[0] ?? "";
+      const ids = target ? soundOut(target) : null;
+      if (ids) {
+        playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's sound it out."); }, () => miniLesson(target, ids));
+      } else {
+        playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's try that line again!"); }, () => proceed(true));
+      }
     } else {
       // Wrong (2nd try) → warm "keep going" and move on.
       playCachedQueued(`goodtry-${1 + rand(GOODTRY_COUNT)}`, () => { setMode("speaking"); setCaption(goodtryCap()); }, () => proceed(false));
@@ -860,15 +919,19 @@ export default function LunaReader({
     setMode("speaking");
     celebrate(true);
     setCaption(clips.length ? `Great reading, ${name}! Let's practice a few words.` : `Amazing, ${name}!`);
-    const seq: string[] = [];
-    if (recapIntroUrlRef.current) seq.push(recapIntroUrlRef.current);
-    clips.forEach((c) => seq.push(c.url));
+    const seq: { url: string; words?: string[] }[] = [];
+    if (recapIntroUrlRef.current) seq.push({ url: recapIntroUrlRef.current });
+    clips.forEach((c) => seq.push({ url: c.url, words: c.words }));
     if (seq.length === 0) { finishSession(); return; }
     let i = 0;
     const playNext = () => {
       if (sessionTokenRef.current !== tok) return; // stale — kid left/restarted
+      clearPoint(); // drop the previous clip's highlight
       if (i >= seq.length) { finishSession(); return; }
-      playUrl(seq[i++], playNext);
+      const item = seq[i++];
+      // Luna "points": highlight the words this clip coaches while it plays.
+      if (item.words?.length) pointAt(item.words);
+      playUrl(item.url, playNext);
     };
     playNext();
   }
