@@ -9,10 +9,10 @@ import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
 import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
-import { BACKGROUND_IMAGES, SHOP_ITEMS } from "@/lib/data/shop-items";
+import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import {
   Carrot, Check, Download, Pencil, Mail, Flame, ShieldCheck,
-  Sparkles, Plus,
+  Sparkles, Plus, LogOut,
 } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
@@ -321,14 +321,6 @@ export default function Settings() {
     flash("Reader removed");
   }
 
-  async function handleEquipBackground(child: Child, bgId: string | null) {
-    const newEquipped: EquippedItems = { ...(child.equipped_items || {}), background: bgId };
-    const { error } = await supabase.from("children").update({ equipped_items: newEquipped }).eq("id", child.id);
-    if (!error) {
-      setChildren((prev) => prev.map((c) => c.id === child.id ? { ...c, equipped_items: newEquipped } : c));
-      flash("Background updated");
-    }
-  }
 
   // === Auth / devices ===
   async function handleLogout() {
@@ -454,6 +446,7 @@ export default function Settings() {
   ];
 
   return (
+    <div style={{ background: "#faf9f7", minHeight: "100%" }}>
     <div style={{ maxWidth: 860, margin: "0 auto", padding: "28px 20px 64px", color: "#3f3f46", fontFamily: "var(--font-body)" }}>
       {/* Header + saved pill */}
       <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
@@ -531,7 +524,7 @@ export default function Settings() {
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: "#18181b" }}>{provider === "google" ? "Google" : "Email & password"}</div>
-                <div style={{ fontSize: 11.5, color: "#a1a1aa" }}>{provider === "google" ? "Connected" : email}</div>
+                <div style={{ fontSize: 11.5, color: "#6b7280" }}>{provider === "google" ? "Connected" : email}</div>
               </div>
               <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#10b981", flexShrink: 0 }} />
             </div>
@@ -557,9 +550,9 @@ export default function Settings() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0 0", borderTop: "1px solid #f4f4f5" }}>
               <div>
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: "#18181b" }}>Signed-in devices</div>
-                <div style={{ fontSize: 11.5, color: "#a1a1aa" }}>Sign out everywhere you&apos;re logged in</div>
+                <div style={{ fontSize: 11.5, color: "#6b7280" }}>Sign out everywhere you&apos;re logged in</div>
               </div>
-              <button onClick={handleSignOutEverywhere} style={{ border: "none", background: "transparent", color: "#4338ca", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, cursor: "pointer", padding: "4px 8px", borderRadius: 8, whiteSpace: "nowrap" }}>Sign out others</button>
+              <button onClick={handleSignOutEverywhere} style={{ border: "none", background: "transparent", color: "#4338ca", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, cursor: "pointer", padding: "4px 8px", borderRadius: 8, whiteSpace: "nowrap" }}>Sign out all</button>
             </div>
           </div>
         </div>
@@ -568,20 +561,16 @@ export default function Settings() {
         <div id="sec-readers" style={{ scrollMarginTop: 72 }}>
           <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 12 }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>My readers</div>
-            <div style={{ fontSize: 12, color: "#a1a1aa" }}>{isPremium ? "All readers included with Readee+" : `${children.length} reader${children.length === 1 ? "" : "s"}`}</div>
+            <div style={{ fontSize: 12, color: "#6b7280" }}>{isPremium ? "All readers included with Readee+" : `${children.length} reader${children.length === 1 ? "" : "s"}`}</div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: 16, alignItems: "stretch" }}>
-            {children.map((child) => {
+            {children.map((child, i) => {
               const expanded = expandedReaderId === child.id;
-              const childPurchases = purchases[child.id] || [];
-              const ownedBgIds = childPurchases.filter((p) => p.item_id.startsWith("bg_")).map((p) => p.item_id);
-              const equippedBg = (child.equipped_items as EquippedItems | null)?.background ?? null;
               return (
                 <div key={child.id} style={{ border: CARD, borderRadius: 20, padding: 18, background: "#fff", gridColumn: expanded ? "1 / -1" : undefined }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                    <div style={{ width: 48, height: 48, borderRadius: 14, background: "linear-gradient(135deg,#7c3aed,#8b5cf6)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 600, flexShrink: 0 }}>
-                      {child.first_name.charAt(0).toUpperCase()}
-                    </div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={getChildAvatarImage(child, i)} alt={child.first_name} width={48} height={48} style={{ width: 48, height: 48, borderRadius: 14, objectFit: "cover", flexShrink: 0, background: "#eef2ff" }} />
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 600, color: "#18181b", lineHeight: 1.2 }}>{child.first_name}</div>
                       <div style={{ fontSize: 12, color: "#71717a" }}>
@@ -627,24 +616,6 @@ export default function Settings() {
                           {READING_LEVELS.map((level) => <option key={level} value={level}>{level}</option>)}
                         </select>
                       </Field>
-                      {ownedBgIds.length > 0 && (
-                        <Field label="Dashboard background">
-                          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                            <button onClick={() => handleEquipBackground(child, null)} title="Default"
-                              style={{ width: 40, height: 40, borderRadius: 12, border: !equippedBg ? "2px solid #7c3aed" : CARD, background: "#fff", color: "#a1a1aa", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>-</button>
-                            {ownedBgIds.map((bgId) => {
-                              const imgSrc = BACKGROUND_IMAGES[bgId];
-                              const item = SHOP_ITEMS.find((i) => i.id === bgId);
-                              if (!imgSrc) return null;
-                              const isActive = equippedBg === bgId;
-                              return (
-                                <button key={bgId} onClick={() => handleEquipBackground(child, isActive ? null : bgId)} title={item?.name || bgId}
-                                  style={{ width: 40, height: 40, borderRadius: 12, border: isActive ? "2px solid #7c3aed" : CARD, backgroundImage: `url(${imgSrc})`, backgroundSize: "cover", backgroundPosition: "center", cursor: "pointer" }} />
-                              );
-                            })}
-                          </div>
-                        </Field>
-                      )}
                       <div style={{ display: "flex", alignItems: "center", gap: 16, paddingTop: 2 }}>
                         <button onClick={() => saveEdit(child.id)} style={{ border: "none", background: "#18181b", color: "#fff", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "8px 18px", borderRadius: 12, cursor: "pointer" }}>Save changes</button>
                         <div style={{ flex: 1 }} />
@@ -665,7 +636,7 @@ export default function Settings() {
                   <Plus className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} />
                 </div>
                 <span style={{ fontSize: 14, fontWeight: 600, color: "#3f3f46" }}>Add a reader</span>
-                <span style={{ fontSize: 11.5, color: "#a1a1aa" }}>Included with your plan</span>
+                <span style={{ fontSize: 11.5, color: "#6b7280" }}>Included with your plan</span>
               </button>
             ) : (
               <div style={{ border: "1px solid #c7d2fe", borderRadius: 20, background: "#eef2ff", padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
@@ -705,7 +676,7 @@ export default function Settings() {
                 <span style={{ fontSize: 12.5, color: "#71717a" }}>Payment method, invoices, and cancellation live in the secure Stripe portal.</span>
               </div>
               {process.env.NODE_ENV === "development" && (
-                <button onClick={handleResetPremium} disabled={resettingPremium} style={{ marginTop: 14, border: "none", background: "transparent", color: "#a1a1aa", fontFamily: "inherit", fontSize: 12, cursor: "pointer" }}>
+                <button onClick={handleResetPremium} disabled={resettingPremium} style={{ marginTop: 14, border: "none", background: "transparent", color: "#6b7280", fontFamily: "inherit", fontSize: 12, cursor: "pointer" }}>
                   {resettingPremium ? "Resetting…" : "Reset to Free (dev)"}
                 </button>
               )}
@@ -751,7 +722,7 @@ export default function Settings() {
         <div id="sec-notif" style={{ scrollMarginTop: 72, border: CARD, borderRadius: 20, padding: 8, background: "#fff" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: 8, padding: "14px 16px 6px" }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>Email notifications</div>
-            <span style={{ fontSize: 12, color: "#a1a1aa" }}>We only email when it&apos;s useful</span>
+            <span style={{ fontSize: 12, color: "#6b7280" }}>We only email when it&apos;s useful</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px", borderTop: "1px solid #f4f4f5" }}>
             <div style={{ width: 34, height: 34, borderRadius: 10, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -797,9 +768,11 @@ export default function Settings() {
         </div>
 
         {/* Footer */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "4px 4px 0", flexWrap: "wrap" }}>
-          <span style={{ fontSize: 12.5, color: "#a1a1aa" }}>Questions? We answer every email. <a href="mailto:hello@readee.app" style={{ color: "#4338ca", fontWeight: 700 }}>hello@readee.app</a></span>
-          <button onClick={handleLogout} style={{ border: "none", background: "transparent", color: "#71717a", fontFamily: "inherit", fontSize: 12.5, fontWeight: 600, cursor: "pointer" }}>Log out</button>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "16px 4px 0", flexWrap: "wrap", borderTop: "1px solid #f4f4f5" }}>
+          <span style={{ fontSize: 12.5, color: "#6b7280" }}>Questions? <a href="mailto:hello@readee.app" style={{ color: "#4338ca", fontWeight: 700 }}>hello@readee.app</a></span>
+          <button onClick={handleLogout} style={{ border: "1px solid #e4e4e7", background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 13, fontWeight: 600, cursor: "pointer", padding: "8px 18px", borderRadius: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
+            <LogOut className="w-[14px] h-[14px]" strokeWidth={2} /> Log out
+          </button>
         </div>
       </div>
 
@@ -854,6 +827,7 @@ export default function Settings() {
 
       <CelebrationOverlay show={!!promoResult?.success} />
     </div>
+    </div>
   );
 }
 
@@ -877,7 +851,7 @@ function Row({ label, sub, last, children }: { label: string; sub: string; last?
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: last ? "13px 0 0" : "13px 0", borderTop: "1px solid #f4f4f5" }}>
       <div>
         <div style={{ fontSize: 14, fontWeight: 600, color: "#18181b" }}>{label}</div>
-        <div style={{ fontSize: 12, color: "#a1a1aa" }}>{sub}</div>
+        <div style={{ fontSize: 12, color: "#6b7280" }}>{sub}</div>
       </div>
       {children}
     </div>
@@ -898,7 +872,7 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
     <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
       <label style={{ fontSize: 12, fontWeight: 600, color: "#71717a" }}>{label}</label>
       {children}
-      {hint && <span style={{ fontSize: 11, color: "#a1a1aa" }}>{hint}</span>}
+      {hint && <span style={{ fontSize: 11, color: "#6b7280" }}>{hint}</span>}
     </div>
   );
 }
