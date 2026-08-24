@@ -39,11 +39,13 @@ export default function LunaCreate({
   childName,
   grade,
   readings = [],
+  childOutfitId = null,
 }: {
   childId: string;
   childName: string;
   grade: string;
   readings?: Reading[];
+  childOutfitId?: string | null;
 }) {
   const router = useRouter();
   const [phase, setPhase] = useState<Phase>("pick");
@@ -131,7 +133,7 @@ export default function LunaCreate({
   // Once we have a passage, hand off to the real orb/Azure reader.
   if (phase === "reading" && passage) {
     return (
-      <LunaReader childId={childId} childName={childName} passages={[{ ...passage, patternLabel: passage.patternLabel ?? undefined }]} />
+      <LunaReader childId={childId} childName={childName} passages={[{ ...passage, patternLabel: passage.patternLabel ?? undefined }]} childOutfitId={childOutfitId} />
     );
   }
 

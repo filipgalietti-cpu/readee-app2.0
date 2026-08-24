@@ -41,8 +41,8 @@ export default async function LunaReadPage({
   const supabase = await createClient();
 
   // Load the named child (verified as this parent's), else the parent's first.
-  let child: { id: string; name: string; grade: string | null } | null = null;
-  const base = supabase.from("children").select("id, first_name, grade, parent_id").eq("parent_id", profile.id);
+  let child: { id: string; name: string; grade: string | null; outfit: string | null } | null = null;
+  const base = supabase.from("children").select("id, first_name, grade, parent_id, equipped_items").eq("parent_id", profile.id);
   const { data } = childIdParam
     ? await base.eq("id", childIdParam).maybeSingle()
     : await base.order("created_at", { ascending: true }).limit(1).maybeSingle();
@@ -51,6 +51,7 @@ export default async function LunaReadPage({
       id: (data as any).id,
       name: ((data as any).first_name ?? "").split(" ")[0] || "Reader",
       grade: (data as any).grade ?? null,
+      outfit: (data as any).equipped_items?.outfit ?? null,
     };
   }
 
@@ -123,7 +124,7 @@ export default async function LunaReadPage({
         </div>
       </div>
 
-      <LunaReader childId={child.id} childName={child.name} passages={usable} />
+      <LunaReader childId={child.id} childName={child.name} passages={usable} childOutfitId={child.outfit} />
     </div>
   );
 }

@@ -118,10 +118,13 @@ export default function LunaReader({
   childId,
   childName,
   passages,
+  childOutfitId = null,
 }: {
   childId: string;
   childName: string;
   passages: Passage[];
+  /** The child's equipped bunny skin — the sidekick wears THEIR bunny. */
+  childOutfitId?: string | null;
 }) {
   const name = (childName || "").trim() || "friend";
   const [pIdx, setPIdx] = useState(0);
@@ -220,6 +223,16 @@ export default function LunaReader({
     sessionCarrotsRef.current += n;
     setSessionCarrots(sessionCarrotsRef.current);
   }
+  // The chip counts UP one by one toward the real total (and pops via the
+  // lunaCarrotPop keyframe, retriggered by key={sessionCarrots}).
+  const [carrotShown, setCarrotShown] = useState(0);
+  useEffect(() => {
+    if (carrotShown >= sessionCarrots) { if (carrotShown > sessionCarrots) setCarrotShown(sessionCarrots); return; }
+    const t = window.setInterval(() => {
+      setCarrotShown((c) => (c >= sessionCarrots ? c : c + 1));
+    }, 45);
+    return () => window.clearInterval(t);
+  }, [carrotShown, sessionCarrots]);
   // Sound + celebration engine (synthesized via Web Audio, ported from the Luna
   // Full Flow design): "thinking bubbles" + praise chime + word ticks, and
   // confetti / sparks around the orb. Processing sound always stops before any
@@ -573,27 +586,50 @@ export default function LunaReader({
     return touched;
   }
   function clearPoint() { styleWords(); }
-  /** Play a phoneme-clip sequence one at a time (session-token guarded). */
-  function playPhonemeSeq(ids: string[], onDone: () => void) {
+  /** Play a phoneme-clip sequence one at a time (session-token guarded).
+   *  gapMs is the pause between sounds — long gaps leave room for the kid to
+   *  ECHO each sound back (call-and-response, the classic phonics routine). */
+  function playPhonemeSeq(ids: string[], gapMs: number, onDone: () => void) {
     const tok = sessionTokenRef.current;
     let k = 0;
     const next = () => {
       if (sessionTokenRef.current !== tok) return; // kid restarted/left
       if (k >= ids.length) { onDone(); return; }
-      playUrl(`${PHONEME_BASE}/${ids[k++]}.mp3`, () => { window.setTimeout(next, 280); });
+      playUrl(`${PHONEME_BASE}/${ids[k++]}.mp3`, () => { window.setTimeout(next, gapMs); });
     };
     next();
   }
-  /** Mini-lesson: point at the broken word, sound it out from the phoneme
-   *  clips, then have the kid SAY THE WORD back (checked by Azure) before
-   *  re-reading the whole line — blend, produce, then apply. */
+  // Luna saying the whole WORD ("pig!") — TTS'd once per word and cached; we
+  // fire it at mini-lesson start so it's ready by the time the blend ends.
+  const wordSpeakRef = useRef<Map<string, string>>(new Map());
+  function prewarmWordAudio(word: string) {
+    const key = normWord(word);
+    if (!key || wordSpeakRef.current.has(key)) return;
+    const tok = sessionTokenRef.current;
+    void speakToUrl(`${word}!`).then((url) => {
+      if (url && sessionTokenRef.current === tok) wordSpeakRef.current.set(key, url);
+    });
+  }
+  /** Mini-lesson: point at the broken word → sound it out with ECHO gaps (kid
+   *  repeats each sound) → Luna says the whole word → kid says the word back
+   *  (Azure-checked) → re-read the line. Blend, model, produce, apply. */
   function miniLesson(word: string, ids: string[]) {
     const s = idxRef.current;
     const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
     pointAt([word], from < 0 ? 0 : from, to < 0 ? words.length - 1 : to);
+    prewarmWordAudio(word); // ready by blend end — no wait
     setMode("speaking");
-    setCaption(`"${word}" - sound it out with me!`);
-    playPhonemeSeq(ids, () => beginWordRead(word, ids));
+    setCaption(`"${word}" - say each sound after me!`);
+    playPhonemeSeq(ids, 950, () => {
+      // Word-level model: Luna says the blended word before the kid tries it.
+      const wurl = wordSpeakRef.current.get(normWord(word));
+      if (wurl) {
+        setCaption(`Put it together: "${word}"!`);
+        playUrl(wurl, () => beginWordRead(word, ids));
+      } else {
+        beginWordRead(word, ids);
+      }
+    });
   }
   /** The "your turn - say it!" word check. Opens the mic on JUST that word;
    *  the grade routes to handleWordResult via wordDrillRef. */
@@ -625,7 +661,11 @@ export default function LunaReader({
     } else {
       setMode("speaking");
       setCaption(`Almost! Listen once more: "${wd.word}".`);
-      playPhonemeSeq(wd.ids, () => proceed(true));
+      playPhonemeSeq(wd.ids, 950, () => {
+        const wurl = wordSpeakRef.current.get(normWord(wd.word));
+        if (wurl) playUrl(wurl, () => proceed(true));
+        else proceed(true);
+      });
     }
   }
 
@@ -925,9 +965,15 @@ export default function LunaReader({
     playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
   }
   function sentenceFeedback(g: Grade, curIdx: number, curAttempt: number) {
-    const tricky = g.wordAnnotations
-      .filter((w) => w.status === "missed" || w.status === "substituted")
-      .map((w) => w.word.replace(/[^A-Za-z'-]/g, "")).filter(Boolean);
+    // SUBSTITUTED first — the kid actually said those wrong (said "dig" for
+    // "pig"), so they're the words to teach. "Missed" can just be Azure not
+    // catching a word, so they rank after; targeting one of those made the
+    // mini-lesson sound out a word the kid didn't even struggle with.
+    const clean = (w: string) => w.replace(/[^A-Za-z'-]/g, "");
+    const tricky = [
+      ...g.wordAnnotations.filter((w) => w.status === "substituted"),
+      ...g.wordAnnotations.filter((w) => w.status === "missed"),
+    ].map((w) => clean(w.word)).filter(Boolean);
     // Error = they read the wrong WORDS. Fluency (slow/choppy) is tracked for the
     // report but does NOT trigger a "you got it wrong" retry — that was flagging
     // correct-but-slow reads.
@@ -1055,6 +1101,8 @@ export default function LunaReader({
     const seq: { url: string; words?: string[] }[] = [];
     if (recapIntroUrlRef.current) seq.push({ url: recapIntroUrlRef.current });
     clips.forEach((c) => seq.push({ url: c.url, words: c.words }));
+    // Make sure Luna can SAY each practice word after its blend.
+    clips.forEach((c) => { if (c.words[0]) prewarmWordAudio(c.words[0]); });
     if (seq.length === 0) { finishSession(); return; }
     let i = 0;
     const playNext = () => {
@@ -1064,7 +1112,22 @@ export default function LunaReader({
       const item = seq[i++];
       // Luna "points": highlight the words this clip coaches while it plays.
       if (item.words?.length) pointAt(item.words);
-      playUrl(item.url, playNext);
+      playUrl(item.url, () => {
+        // TEACH, don't just mention: after "let's practice 'kit'", actually
+        // sound the word out (echo gaps) + say it whole, then move on.
+        const w = item.words?.[0];
+        const ids = w ? soundOut(w) : null;
+        if (w && ids) {
+          setCaption(`"${w}" - say each sound after me!`);
+          playPhonemeSeq(ids, 950, () => {
+            const wurl = wordSpeakRef.current.get(normWord(w));
+            if (wurl) { setCaption(`"${w}"!`); playUrl(wurl, playNext); }
+            else playNext();
+          });
+        } else {
+          playNext();
+        }
+      });
     };
     playNext();
   }
@@ -1133,7 +1196,7 @@ export default function LunaReader({
     // it's ready by the end.
     coachingClipsRef.current = [];
     recapIntroUrlRef.current = null;
-    sessionCarrotsRef.current = 0; setSessionCarrots(0); setBunnyRx("");
+    sessionCarrotsRef.current = 0; setSessionCarrots(0); setCarrotShown(0); setBunnyRx("");
     const sessTok = ++sessionTokenRef.current;
     void speakToUrl(`Great reading, ${name}!`).then((url) => { if (url && sessionTokenRef.current === sessTok) recapIntroUrlRef.current = url; });
     setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setExpression(null); setErr(null); setLastHeard(null);
@@ -1234,6 +1297,7 @@ export default function LunaReader({
 
   return (
     <div style={{ maxWidth: 640, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+      <style>{`@keyframes lunaCarrotPop{0%{transform:scale(1)}45%{transform:scale(1.35)}100%{transform:scale(1)}}`}</style>
       {/* Passage (hidden on the intro screen) */}
       {showPassage && (
         <div style={{ width: "100%", borderRadius: 22, border: "2px solid #ddd6fe", background: "linear-gradient(135deg,#f5f3ff,#ffffff 60%,#fdf2f8)", padding: "16px 20px", boxShadow: "0 10px 40px -18px rgba(49,46,129,.25)" }}>
@@ -1246,9 +1310,9 @@ export default function LunaReader({
                       : "How you read it"}
             </span>
             {sessionCarrots > 0 && (
-              <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 12, fontWeight: 800, color: "#c2410c", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 999, padding: "3px 10px" }}>
-                <Carrot className="h-3.5 w-3.5" strokeWidth={2.4} />
-                +{sessionCarrots}
+              <span key={sessionCarrots} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 13, fontWeight: 800, color: "#c2410c", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 999, padding: "4px 12px", animation: "lunaCarrotPop .55s cubic-bezier(0.34,1.56,0.64,1)", fontVariantNumeric: "tabular-nums" }}>
+                <Carrot className="h-4 w-4" strokeWidth={2.4} />
+                +{carrotShown}
               </span>
             )}
           </div>
@@ -1272,13 +1336,17 @@ export default function LunaReader({
       {/* Luna + controls */}
       {(preparing || phase !== "done") ? (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-          <div ref={orbWrapRef} style={{ position: "relative", width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
-            <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
-            {/* Readee sidekick — cheers from beside the orb (claps on a correct
-                line, dances at the finish). */}
-            <div style={{ position: "absolute", right: -84, bottom: 2, width: 76, height: 84, pointerEvents: "none" }}>
-              {bunnyRx ? <BunnyReaction outfitId="classic" state={bunnyRx} /> : <Bunny outfitId="classic" />}
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center", gap: 2 }}>
+            <div ref={orbWrapRef} style={{ position: "relative", width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
+              <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
+            </div>
+            {/* Readee sidekick — the CHILD'S bunny (their equipped skin) cheers
+                beside the orb: claps on a correct line, dances at the finish. */}
+            <div style={{ width: 118, height: 130, pointerEvents: "none", marginBottom: -4 }}>
+              {bunnyRx
+                ? <BunnyReaction outfitId={childOutfitId ?? "classic"} state={bunnyRx} />
+                : <Bunny outfitId={childOutfitId ?? "classic"} />}
             </div>
           </div>
           {(preparing || phase !== "intro") && (

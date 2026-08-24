@@ -29,10 +29,10 @@ export default async function LunaPage({
   const { child: childIdParam } = await searchParams;
   const supabase = await createClient();
 
-  let child: { id: string; name: string; grade: string | null } | null = null;
+  let child: { id: string; name: string; grade: string | null; outfit: string | null } | null = null;
   const base = supabase
     .from("children")
-    .select("id, first_name, grade, parent_id")
+    .select("id, first_name, grade, parent_id, equipped_items")
     .eq("parent_id", profile.id);
   const { data } = childIdParam
     ? await base.eq("id", childIdParam).maybeSingle()
@@ -42,6 +42,7 @@ export default async function LunaPage({
       id: (data as any).id,
       name: ((data as any).first_name ?? "").split(" ")[0] || "Reader",
       grade: (data as any).grade ?? null,
+      outfit: (data as any).equipped_items?.outfit ?? null,
     };
   }
   if (!child) redirect("/dashboard");
@@ -68,6 +69,7 @@ export default async function LunaPage({
         childName={child.name}
         grade={gradeToken(child.grade)}
         readings={readings}
+        childOutfitId={child.outfit}
       />
     </div>
   );
