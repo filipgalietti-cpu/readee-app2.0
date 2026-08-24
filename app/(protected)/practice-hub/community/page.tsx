@@ -1,7 +1,21 @@
 import { requireProfile } from "@/lib/auth/helpers";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { gradeToKey } from "@/lib/assessment/questions";
 import CommunityLibrary from "./_components/CommunityLibrary";
+
+// Community passages are tagged K/1st/2nd/3rd/4th. A child's stored grade
+// comes in several legacy formats (K, Kindergarten, kindergarten, Pre-K,
+// pre-k, 1st...). gradeToKey normalizes any of them; pre-k is just easier
+// K content, so it maps to K. This bridges gradeToKey's key -> the tag.
+const KEY_TO_COMMUNITY_TAG: Record<string, string> = {
+  "pre-k": "K",
+  kindergarten: "K",
+  "1st": "1st",
+  "2nd": "2nd",
+  "3rd": "3rd",
+  "4th": "4th",
+};
 
 export const dynamic = "force-dynamic";
 
@@ -31,12 +45,8 @@ export default async function CommunityLibraryPage({
     .eq("parent_id", profile.id)
     .order("created_at", { ascending: true })
     .limit(1);
-  // Readee is K-4. A "pre-k" placement is served kindergarten content
-  // everywhere else (learn/practice/standards all fall back pre-k -> K), and
-  // community passages are tagged "K" (not "pre-k"), so normalize here too.
-  // Without this, the "For {grade}" tab matches zero passages for pre-k kids.
   const rawGrade = ((kids?.[0] as any)?.grade as string | null) ?? null;
-  const childGrade = rawGrade && /^pre-?k$/i.test(rawGrade) ? "K" : rawGrade;
+  const childGrade = rawGrade ? (KEY_TO_COMMUNITY_TAG[gradeToKey(rawGrade)] ?? null) : null;
   const childName = ((kids?.[0] as any)?.first_name as string | null) ?? null;
 
   const { data: rows } = await supabaseAdmin()
