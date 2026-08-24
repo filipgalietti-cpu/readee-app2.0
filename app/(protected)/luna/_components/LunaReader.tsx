@@ -278,6 +278,8 @@ export default function LunaReader({
   // Mid-mini-lesson word-repeat step ("say 'pig'!") — when set, the next
   // grade routes to the word check instead of the sentence feedback.
   const wordDrillRef = useRef<{ word: string; ids: string[] } | null>(null);
+  // Clips already queued for background decode (dedupe — see playCached).
+  const decodePendingRef = useRef<Set<string>>(new Set());
   // Per-line results for the quiz-style finish summary (Line 1 ✓ / Line 2 ✗).
   const lineResultsRef = useRef<{ text: string; ok: boolean }[]>([]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
@@ -305,9 +307,16 @@ export default function LunaReader({
 
   function cleanupMic() {
     if (autoStopRef.current) { window.clearTimeout(autoStopRef.current); autoStopRef.current = null; }
+    // Detach the ScriptProcessor callback FIRST — a late 4096-sample callback
+    // firing during the async close is the audible crackle on desktop.
+    try { if (procRef.current) procRef.current.onaudioprocess = null; } catch { /* ignore */ }
     try { procRef.current?.disconnect(); } catch { /* ignore */ }
     try { streamRef.current?.getTracks().forEach((t) => t.stop()); } catch { /* ignore */ }
-    try { void ctxRef.current?.close(); } catch { /* ignore */ }
+    // Suspend (stops the audio pull cleanly) before closing.
+    try {
+      const ctx = ctxRef.current;
+      if (ctx) void ctx.suspend().then(() => ctx.close()).catch(() => { try { void ctx.close(); } catch { /* ignore */ } });
+    } catch { /* ignore */ }
     procRef.current = null; streamRef.current = null; ctxRef.current = null; setAnalyser(null);
   }
   function stopCurrentSrc() {
@@ -355,9 +364,17 @@ export default function LunaReader({
     clip.onended = onDone;
     currentAudioRef.current = clip;
     clip.play().catch(() => window.setTimeout(onDone, 700));
-    // Decode for next time so subsequent plays are crisp.
-    const ctx = sfxCtx();
-    if (ctx) fetch(`${CLIP_BASE}/${key}.mp3`).then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b)).then((buf) => clipBuffersRef.current.set(key, buf)).catch(() => {});
+    // Decode for next time so subsequent plays are crisp — but only once per
+    // key, and AFTER a beat: kicking off fetch+decodeAudioData at the exact
+    // moment the clip starts was main-thread jank under the audio (crunch).
+    if (!decodePendingRef.current.has(key)) {
+      decodePendingRef.current.add(key);
+      window.setTimeout(() => {
+        const ctx = sfxCtx();
+        if (!ctx || clipBuffersRef.current.has(key)) return;
+        fetch(`${CLIP_BASE}/${key}.mp3`).then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b)).then((buf) => clipBuffersRef.current.set(key, buf)).catch(() => {});
+      }, 1200);
+    }
   }
 
   // --- Sound + celebration engine (synthesized, no assets) -----------------
