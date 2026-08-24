@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { READING_LEVELS, GRADES } from "@/app/_components/LevelProgressBar";
+import { GRADES } from "@/app/_components/LevelProgressBar";
 import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
@@ -86,6 +86,8 @@ export default function Settings() {
   const [exportBusy, setExportBusy] = useState(false);
   const [exportError, setExportError] = useState<string | null>(null);
   const [levelChangeChild, setLevelChangeChild] = useState<{ id: string; name: string; newLevel: string } | null>(null);
+  // After a grade change, recommend (not force) a placement retake.
+  const [gradeRec, setGradeRec] = useState<{ id: string; name: string } | null>(null);
 
   // Plan
   const userPlan = usePlanStore((s) => s.plan) ?? "free";
@@ -254,6 +256,11 @@ export default function Settings() {
   // === Add Child ===
   async function handleAddChild() {
     if (!newChild.name.trim()) return;
+    // Additional readers are a Readee+ feature (first reader is free).
+    if (!isPremium && children.length >= 1) {
+      router.push("/upgrade?reason=multi_reader");
+      return;
+    }
     setAddingChild(true);
     const childData = safeValidate(ChildCreateSchema, {
       parent_id: userId,
@@ -276,6 +283,8 @@ export default function Settings() {
   }
 
   async function saveEdit(childId: string) {
+    const original = children.find((c) => c.id === childId);
+    const gradeChanged = !!original && (original.grade || "Kindergarten") !== editValues.grade;
     const updateData = safeValidate(ChildUpdateSchema, {
       first_name: editValues.first_name.trim(),
       grade: editValues.grade,
@@ -283,6 +292,9 @@ export default function Settings() {
     await supabase.from("children").update(updateData).eq("id", childId);
     await loadChildren(userId);
     flash("Reader updated");
+    // Grade is just what school year they're in; reading level is what they can
+    // actually read. Recommend (not force) a placement retake so lessons match.
+    if (gradeChanged) setGradeRec({ id: childId, name: editValues.first_name.trim() || original!.first_name });
   }
 
   function requestLevelChange(childId: string, childName: string, newLevel: string) {
@@ -610,11 +622,16 @@ export default function Settings() {
                           </select>
                         </Field>
                       </div>
-                      <Field label="Reading level" hint="Set by the placement test - override only if needed.">
-                        <select value={child.reading_level || ""} onChange={(e) => requestLevelChange(child.id, child.first_name, e.target.value)} style={inputStyle}>
-                          <option value="" disabled>Not assessed yet</option>
-                          {READING_LEVELS.map((level) => <option key={level} value={level}>{level}</option>)}
-                        </select>
+                      <Field label="Reading level" hint="Set by the placement quiz, the surest way to match lessons to their level.">
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          <div style={{ ...inputStyle, flex: 1, display: "flex", alignItems: "center", color: child.reading_level ? "#18181b" : "#6b7280", background: "#fafafa" }}>
+                            {child.reading_level || "Not assessed yet"}
+                          </div>
+                          <button onClick={() => router.push(`/assessment?child=${child.id}`)}
+                            style={{ border: "1px solid #c7d2fe", background: "#eef2ff", color: "#4338ca", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, padding: "9px 14px", borderRadius: 12, cursor: "pointer", whiteSpace: "nowrap" }}>
+                            {child.reading_level ? "Retake quiz" : "Take quiz"}
+                          </button>
+                        </div>
                       </Field>
                       <div style={{ display: "flex", alignItems: "center", gap: 16, paddingTop: 2 }}>
                         <button onClick={() => saveEdit(child.id)} style={{ border: "none", background: "#18181b", color: "#fff", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "8px 18px", borderRadius: 12, cursor: "pointer" }}>Save changes</button>
@@ -630,13 +647,13 @@ export default function Settings() {
 
             {/* Add a reader */}
             {!showAddChild ? (
-              <button onClick={() => setShowAddChild(true)}
+              <button onClick={() => { if (!isPremium && children.length >= 1) { router.push("/upgrade?reason=multi_reader"); } else { setShowAddChild(true); } }}
                 style={{ border: "1.5px dashed #d4d4d8", borderRadius: 20, background: "#fafafa", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "inherit", minHeight: 150 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Plus className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} />
+                  {!isPremium && children.length >= 1 ? <Sparkles className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} /> : <Plus className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} />}
                 </div>
                 <span style={{ fontSize: 14, fontWeight: 600, color: "#3f3f46" }}>Add a reader</span>
-                <span style={{ fontSize: 11.5, color: "#6b7280" }}>Included with your plan</span>
+                <span style={{ fontSize: 11.5, color: "#6b7280" }}>{!isPremium && children.length >= 1 ? "Add more readers with Readee+" : "Included with Readee+"}</span>
               </button>
             ) : (
               <div style={{ border: "1px solid #c7d2fe", borderRadius: 20, background: "#eef2ff", padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
@@ -793,13 +810,19 @@ export default function Settings() {
           onConfirm={() => handleRemoveChild(removeChildId)} onCancel={() => setRemoveChildId(null)}
         />
       )}
-      {levelChangeChild && (
-        <ConfirmModal
-          title={`Change ${levelChangeChild.name}'s reading level?`}
-          description={`Changing the reading level resets active progress. Completed lessons and carrots stay in history, but they'll start fresh at the new level.`}
-          confirmLabel="Yes, change level" tone="amber"
-          onConfirm={confirmLevelChange} onCancel={() => setLevelChangeChild(null)}
-        />
+      {gradeRec && (
+        <div style={modalScrim} onClick={() => setGradeRec(null)}>
+          <div style={{ ...modalCard, width: 400 }} onClick={(e) => e.stopPropagation()}>
+            <h3 style={{ margin: "0 0 6px", fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 600, color: "#18181b" }}>Take the placement quiz?</h3>
+            <p style={{ margin: "0 0 18px", fontSize: 13.5, color: "#52525b", lineHeight: 1.5 }}>
+              Grade updated. We recommend {gradeRec.name} takes the quick placement quiz so lessons match their actual reading level. Grade and reading level aren&apos;t always the same, a 2nd grader might read at a 1st-grade level, and the quiz is how Readee finds the just-right difficulty.
+            </p>
+            <div style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}>
+              <button onClick={() => setGradeRec(null)} style={{ border: CARD, background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 12, cursor: "pointer" }}>Maybe later</button>
+              <button onClick={() => router.push(`/assessment?child=${gradeRec.id}`)} style={{ border: "none", background: "#4338ca", color: "#fff", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 12, cursor: "pointer" }}>Start placement quiz</button>
+            </div>
+          </div>
+        </div>
       )}
 
       {showDeleteAccount && (
