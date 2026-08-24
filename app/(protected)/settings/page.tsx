@@ -524,7 +524,7 @@ export default function Settings() {
       </div>
 
       {/* Sticky tab nav (scroll-jumps to sections) */}
-      <div style={{ display: "flex", gap: 2, marginBottom: 24, position: "sticky", top: 0, background: "#fff", zIndex: 30, overflowX: "auto", borderBottom: "1px solid #e4e4e7" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 2, marginBottom: 24, position: "sticky", top: 0, background: "#fff", zIndex: 30, borderBottom: "1px solid #e4e4e7" }}>
         {tabs.map(([id, label]) => {
           const active = activeTab === id;
           return (

@@ -297,7 +297,7 @@ function ShopContent({
       return;
     }
     const owned = new Set(purchasesRef.current.map((p) => p.item_id));
-    const r = rollMysteryBox(owned);
+    const r = rollMysteryBox(owned, PRICE > 0);
     const rarity = rarityOf(r);
     clearTimers();
     pendingRef.current = r;
@@ -919,7 +919,7 @@ function RevealArt({ reward, glow }: { reward: MysteryReward; glow: string }) {
     if (img) {
       return (
         <div style={{ position: "relative", width: 118, height: 118, borderRadius: 24, overflow: "hidden" }}>
-          <Image src={img} alt={it.name} fill sizes="118px" style={{ objectFit: "cover" }} />
+          <ShopImage src={img} alt={it.name} sizes="118px" />
         </div>
       );
     }
@@ -997,6 +997,28 @@ function BunnyPreview({
   );
 }
 
+/** Image with a pulse skeleton until it loads, then a quick fade-in. Keeps the
+ *  avatar/background grid from looking laggy while many PNGs decode at once. */
+function ShopImage({ src, alt, sizes }: { src: string; alt: string; sizes: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <>
+      {!loaded && (
+        <div className="animate-pulse" style={{ position: "absolute", inset: 0, background: "#e4e4e7" }} />
+      )}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        style={{ objectFit: "cover", opacity: loaded ? 1 : 0, transition: "opacity .2s ease" }}
+        draggable={false}
+        onLoad={() => setLoaded(true)}
+      />
+    </>
+  );
+}
+
 function ShopItemCard({
   item,
   owned,
@@ -1067,7 +1089,7 @@ function ShopItemCard({
           </div>
         ) : img ? (
           <div style={{ position: "relative", width: 56, height: 56, borderRadius: 12, overflow: "hidden" }}>
-            <Image src={img} alt={item.name} fill sizes="56px" style={{ objectFit: "cover" }} draggable={false} />
+            <ShopImage src={img} alt={item.name} sizes="56px" />
           </div>
         ) : (
           <ShopIcon name={item.icon} size={40} strokeWidth={1.5} style={{ color: "#6366f1" }} />
