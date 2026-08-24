@@ -1088,7 +1088,6 @@ export default function LunaReader({
       //                help; Luna MODELS the whole line (reads it aloud,
       //                pre-warmed during the "not quite" clip) → kid re-reads.
       // The CUSTOM recap coaching still generates in the background either way.
-      fireCustomCoaching(tricky);
       // Heavy = MANY real misreads (substituted). Azure liberally flags
       // "missed" words it just didn't catch, and the old tricky-based ratio
       // let one real misread ("win") get lumped into "heavy" — skipping the
@@ -1193,45 +1192,38 @@ export default function LunaReader({
       prosody: undefined,
     };
     setAfter(toScore(statsRef.current.afterGrade, statsRef.current.dur || 1));
-    const clips = coachingClipsRef.current;
     setMode("speaking");
     celebrate(true);
     bunnyReact("levelup"); // the dance — finish-line celebration
-    setCaption(clips.length ? `Great reading, ${name}! Let's practice a few words.` : `Amazing, ${name}!`);
-    const seq: { url: string; words?: string[] }[] = [];
-    if (recapIntroUrlRef.current) seq.push({ url: recapIntroUrlRef.current });
-    clips.forEach((c) => seq.push({ url: c.url, words: c.words }));
-    // Make sure Luna can SAY each practice word after its blend.
-    clips.forEach((c) => { if (c.words[0]) prewarmWordAudio(c.words[0]); });
-    if (seq.length === 0) { finishSession(); return; }
-    let i = 0;
-    let blendBudget = 2; // cap the recap blends so a rough session's recap doesn't drag
-    const playNext = () => {
-      if (sessionTokenRef.current !== tok) return; // stale — kid left/restarted
-      clearPoint(); // drop the previous clip's highlight
-      if (i >= seq.length) { finishSession(); return; }
-      const item = seq[i++];
-      // Luna "points": highlight the words this clip coaches while it plays.
-      if (item.words?.length) pointAt(item.words);
-      playUrl(item.url, () => {
-        // TEACH, don't just mention: after "let's practice 'kit'", actually
-        // sound the word out (echo gaps) + say it whole, then move on.
-        const w = item.words?.[0];
-        const ids = w && blendBudget > 0 ? soundOut(w) : null;
-        if (w && ids) {
-          blendBudget--;
-          setCaption(`"${w}" - say each sound after me!`);
-          playPhonemeSeq(ids, 950, () => {
-            const wurl = wordSpeakRef.current.get(normWord(w));
-            if (wurl) { setCaption(`"${w}"!`); playUrl(wurl, playNext); }
-            else playNext();
-          });
-        } else {
-          playNext();
+    // SHORT spoken summary only — the inline word lessons already taught the
+    // phonemes; re-blending here felt duplicative. Just: "Great reading,
+    // Bobby! Make sure to practice 'was' and 'hot'." then the results screen.
+    const trickyList = Array.from(statsRef.current.trickyWords).slice(0, 3);
+    setCaption(trickyList.length ? `Great reading, ${name}!` : `Amazing, ${name}!`);
+    let wordsUrl: string | null = null;
+    let wordsReady = trickyList.length === 0;
+    if (trickyList.length) {
+      const line = `Make sure to practice ${trickyList.map((w) => `"${w}"`).join(" and ")}. You'll get them next time!`;
+      void speakToUrl(line).then((u) => { wordsUrl = u; wordsReady = true; });
+    }
+    const afterIntro = () => {
+      if (sessionTokenRef.current !== tok) return;
+      if (trickyList.length) pointAt(trickyList); // Luna points at the words
+      // Wait briefly for the summary TTS (it generated during the intro clip).
+      const t0 = Date.now();
+      const poll = () => {
+        if (sessionTokenRef.current !== tok) return;
+        if (wordsReady || Date.now() - t0 > 4500) {
+          if (wordsUrl) playUrl(wordsUrl, () => { clearPoint(); finishSession(); });
+          else { clearPoint(); finishSession(); }
+          return;
         }
-      });
+        window.setTimeout(poll, 180);
+      };
+      poll();
     };
-    playNext();
+    if (recapIntroUrlRef.current) playUrl(recapIntroUrlRef.current, afterIntro);
+    else afterIntro();
   }
 
   function finishSession() {
@@ -1471,7 +1463,12 @@ export default function LunaReader({
 
       {/* Luna + controls */}
       {(preparing || phase !== "done") ? (
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, ...(phase === "intro" && !preparing
+          // Intro: stretch the column to the viewport and push Let's Start
+          // into the BOTTOM third via space-between (marginTop alone kept
+          // leaving the dead space below the button).
+          ? { minHeight: "calc(100dvh - 320px)", justifyContent: "space-between", width: "100%" }
+          : {}) }}>
           <div ref={orbWrapRef} style={{ position: "relative", width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
             <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
@@ -1492,7 +1489,7 @@ export default function LunaReader({
           )}
 
           {preparing || phase === "building" ? null : phase === "intro" ? (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 72 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, paddingBottom: 8 }}>
               <button type="button" onClick={startFlow} disabled={preparing}
                 style={{ display: "inline-flex", alignItems: "center", gap: 10, border: "none", borderRadius: 999, padding: "20px 56px", fontFamily: BALOO, fontSize: 25, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 14px 36px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
                 <Play className="h-6 w-6" fill="#fff" stroke="none" /> {preparing ? "Getting your story…" : "Let's Start"}
