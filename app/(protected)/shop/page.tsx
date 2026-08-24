@@ -17,6 +17,7 @@ import {
   BACKGROUND_IMAGES,
   reactionStateFor,
   REACTION_STATE,
+  DEFAULT_REACTION,
 } from "@/lib/data/shop-items";
 import { MYSTERY_BOX_FREE_COOLDOWN_MS, MYSTERY_BOX_PAID_PRICE, rollMysteryBox, MysteryReward } from "@/lib/data/mystery-box";
 import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
@@ -688,7 +689,11 @@ function ShopContent({
               key={item.id}
               item={item}
               owned={ownedIds.has(item.id) || item.price === 0}
-              equipped={child.equipped_items?.[categoryToSlot(item.category) as keyof EquippedItems] === item.id}
+              equipped={
+                item.category === "reactions"
+                  ? (child.equipped_items?.reaction ?? DEFAULT_REACTION) === item.id
+                  : child.equipped_items?.[categoryToSlot(item.category) as keyof EquippedItems] === item.id
+              }
               canAfford={child.carrots >= item.price}
               buying={buying === item.id}
               justBought={justBought === item.id}
