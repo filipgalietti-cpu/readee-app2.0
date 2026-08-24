@@ -60,7 +60,7 @@ export default function CommunityLibrary({
   childName: string | null;
   childParam: string | null;
 }) {
-  const [tab, setTab] = useState<"trending" | "new" | "grade" | "kid">("trending");
+  const [tab, setTab] = useState<"trending" | "new" | "grade">("trending");
   const [topic, setTopic] = useState<string | null>(null);
   const [q, setQ] = useState("");
   const [spot, setSpot] = useState(0);
@@ -97,7 +97,6 @@ export default function CommunityLibrary({
     let out = items.slice();
     if (tab === "new") out.sort((a, b) => +new Date(b.created_at) - +new Date(a.created_at));
     else if (tab === "grade") out = out.filter((i) => i.grade_level === childGrade);
-    else if (tab === "kid") out = out.filter((i) => i.source_kind === "kid_story");
     if (topic) out = out.filter((i) => i.topic.toLowerCase().includes(topic.toLowerCase()));
     if (q.trim()) {
       const s = q.trim().toLowerCase();
@@ -113,8 +112,7 @@ export default function CommunityLibrary({
   const tabs = [
     { id: "trending", label: "Trending" },
     { id: "new", label: "New this week" },
-    { id: "grade", label: childName ? `Recommended for ${childName}` : "Recommended for you" },
-    { id: "kid", label: "Kid-written" },
+    { id: "grade", label: childName ? `Just for ${childName}` : "Just for you" },
   ] as const;
 
   return (
@@ -253,9 +251,7 @@ export default function CommunityLibrary({
             No stories here yet
           </p>
           <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-            {tab === "kid"
-              ? "Be the first — make one in Story Studio."
-              : "Try another tab or clear your search."}
+            Try another tab or clear your search.
           </p>
         </div>
       ) : (

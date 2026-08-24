@@ -23,14 +23,6 @@ const RANK_ICONS: ReactNode[] = [
   <Medal key="3rd" className="w-5 h-5 text-amber-600" strokeWidth={1.75} />,
 ];
 
-/** "K" → "Kindergarten", "2nd" → "Grade 2". */
-function gradeLabel(grade: string | null | undefined): string {
-  if (!grade) return "your grade";
-  if (grade.toUpperCase() === "K") return "Kindergarten";
-  const n = grade.replace(/\D/g, "");
-  return n ? `Grade ${n}` : grade;
-}
-
 export default function LeaderboardPage() {
   return (
     <Suspense fallback={<SkeletonPage cards={4} />}>
@@ -83,7 +75,6 @@ function LeaderboardContent() {
     return <SkeletonPage cards={4} />;
   }
 
-  const cohort = gradeLabel(child.grade);
   const ahead = myRank && myRank > 1 ? leaders[myRank - 2] : null;
 
   return (
@@ -99,12 +90,12 @@ function LeaderboardContent() {
               #{myRank}
             </div>
             <p className="mt-1 text-zinc-500 dark:text-slate-400">
-              {child.first_name} in the {cohort} race
+              {child.first_name} on the Readee leaderboard
             </p>
           </>
         ) : (
           <div className="text-2xl font-bold text-zinc-900 dark:text-white">
-            {cohort} race
+            Readee leaderboard
           </div>
         )}
         <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 dark:border-orange-500/30 dark:bg-orange-500/10">
@@ -134,7 +125,7 @@ function LeaderboardContent() {
         <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/50">
           <div className="border-b border-zinc-100 p-4 dark:border-slate-800">
             <h2 className="text-base font-bold text-zinc-900 dark:text-white">
-              {cohort} leaderboard
+              Readee leaderboard
             </h2>
             <p className="mt-0.5 text-xs text-zinc-400 dark:text-slate-500">
               Top readers by carrots earned

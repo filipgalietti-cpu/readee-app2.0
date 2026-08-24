@@ -35,28 +35,24 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  // Real same-grade peers, shown by FIRST NAME + PFP only (no last name, no ids
-  // leaked — see cohort.ts). Uses the service-role client to read across
-  // families; nothing identifying beyond first name + avatar + carrots leaves
-  // the server. Falls back to seeded rivals to fill the board pre-scale.
-  let realPeers: RealPeer[] = [];
-  if (me.grade) {
-    const { data: peerRows } = await supabaseAdmin()
-      .from("children")
-      .select("id, first_name, carrots, equipped_items")
-      .eq("grade", me.grade)
-      .neq("id", me.id)
-      .gt("carrots", 0)
-      .order("carrots", { ascending: false })
-      .limit(8);
-    realPeers = (peerRows ?? [])
-      .filter((p: any) => (p.first_name ?? "").trim().length > 0)
-      .map((p: any, i: number) => ({
-        name: String(p.first_name).trim(),
-        carrots: p.carrots ?? 0,
-        avatar: getChildAvatarImage(p as Child, i),
-      }));
-  }
+  // One overall leaderboard across every grade, shown by FIRST NAME + PFP only
+  // (no last name, no ids leaked — see cohort.ts). Uses the service-role client
+  // to read across families; nothing identifying beyond first name + avatar +
+  // carrots leaves the server. Falls back to seeded rivals to fill pre-scale.
+  const { data: peerRows } = await supabaseAdmin()
+    .from("children")
+    .select("id, first_name, carrots, equipped_items")
+    .neq("id", me.id)
+    .gt("carrots", 0)
+    .order("carrots", { ascending: false })
+    .limit(8);
+  const realPeers: RealPeer[] = (peerRows ?? [])
+    .filter((p: any) => (p.first_name ?? "").trim().length > 0)
+    .map((p: any, i: number) => ({
+      name: String(p.first_name).trim(),
+      carrots: p.carrots ?? 0,
+      avatar: getChildAvatarImage(p as Child, i),
+    }));
 
   const myAvatar = getChildAvatarImage(me as Child, 0);
   const { leaders, myRank } = buildCohort(
