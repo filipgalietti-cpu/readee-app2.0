@@ -27,6 +27,35 @@ function displayGrade(grade: string): string {
   return grade;
 }
 
+// --- Data export as CSV (parent-readable, opens in Excel/Sheets). One
+// labeled section per table so it stays a complete "download your data".
+function csvCell(v: unknown): string {
+  if (v === null || v === undefined) return "";
+  const s = typeof v === "object" ? JSON.stringify(v) : String(v);
+  return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+}
+function tableToCsv(rows: unknown[]): string {
+  const objs = rows.filter((r): r is Record<string, unknown> => !!r && typeof r === "object");
+  if (!objs.length) return "(no records)\n";
+  const cols = Array.from(new Set(objs.flatMap((r) => Object.keys(r))));
+  const lines = [cols.map(csvCell).join(",")];
+  for (const r of objs) lines.push(cols.map((c) => csvCell(r[c])).join(","));
+  return lines.join("\n") + "\n";
+}
+function payloadToCsv(p: {
+  exportedAt: string;
+  parent: { email: string | null; tables: Record<string, unknown[]> };
+  children: Array<{ id: string; first_name: string | null; tables: Record<string, unknown[]> }>;
+}): string {
+  const out: string[] = ["Readee data export", `Exported at,${csvCell(p.exportedAt)}`, `Account email,${csvCell(p.parent.email)}`, ""];
+  for (const [table, rows] of Object.entries(p.parent.tables)) out.push(`# Account: ${table}`, tableToCsv(rows), "");
+  for (const child of p.children) {
+    out.push(`# Reader: ${child.first_name ?? child.id}`, "");
+    for (const [table, rows] of Object.entries(child.tables)) out.push(`## ${child.first_name ?? "Reader"}: ${table}`, tableToCsv(rows), "");
+  }
+  return out.join("\n");
+}
+
 function initialsOf(name: string): string {
   const parts = name.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return "?";
@@ -369,12 +398,12 @@ export default function Settings() {
     try {
       const res = await exportUserDataAction();
       if (!res.ok) { setExportError(res.error); return; }
-      const blob = new Blob([JSON.stringify(res.payload, null, 2)], { type: "application/json" });
+      const blob = new Blob([payloadToCsv(res.payload)], { type: "text/csv;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       const stamp = new Date().toISOString().slice(0, 10);
       a.href = url;
-      a.download = `readee-export-${stamp}.json`;
+      a.download = `readee-export-${stamp}.csv`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -766,7 +795,7 @@ export default function Settings() {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0", borderTop: "1px solid #f4f4f5" }}>
             <div>
               <div style={{ fontSize: 14, fontWeight: 600, color: "#18181b" }}>Export learning data</div>
-              <div style={{ fontSize: 12, color: "#71717a" }}>A JSON file of everything we store about you and your readers.</div>
+              <div style={{ fontSize: 12, color: "#71717a" }}>A spreadsheet (CSV) of everything we store about you and your readers - opens in Excel or Sheets.</div>
             </div>
             <button onClick={handleExportData} disabled={exportBusy}
               style={{ border: CARD, background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "7px 14px", borderRadius: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6, flexShrink: 0, opacity: exportBusy ? 0.6 : 1 }}>
