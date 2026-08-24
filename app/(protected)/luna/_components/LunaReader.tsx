@@ -239,6 +239,30 @@ export default function LunaReader({
   // Land at the top when the reader mounts (covers /luna/read arriving with a
   // restored scroll position from the previous page).
   useEffect(() => { window.scrollTo(0, 0); }, []);
+  // Mode mirror so the auto-arm timer reads FRESH mode (phaseRef already
+  // exists above and is synced below).
+  const modeRef = useRef<LunaMode>("idle");
+  useEffect(() => { modeRef.current = mode; }, [mode]);
+
+  // Hands-free flow: after ONE "Let's Start" tap, the mic re-arms itself after
+  // every feedback beat — the kid just keeps reading (Filip: too many clicks).
+  // Guarded so it never arms over an active read, a non-drill phase, or a
+  // stale session; error/cancel paths deliberately DON'T re-arm (kid taps).
+  const armTimerRef = useRef<number | null>(null);
+  function armRead(delayMs: number) {
+    const tok = sessionTokenRef.current;
+    if (armTimerRef.current) window.clearTimeout(armTimerRef.current);
+    armTimerRef.current = window.setTimeout(() => {
+      armTimerRef.current = null;
+      if (sessionTokenRef.current !== tok) return;
+      if (phaseRef.current !== "drill" || modeRef.current !== "idle") return;
+      if (streamActiveRef.current || readModeRef.current !== "idle") return;
+      void beginRead();
+    }, delayMs);
+  }
+  // Mid-mini-lesson word-repeat step ("say 'pig'!") — when set, the next
+  // grade routes to the word check instead of the sentence feedback.
+  const wordDrillRef = useRef<{ word: string; ids: string[] } | null>(null);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
   useEffect(() => { phaseRef.current = phase; }, [phase]);
   // Re-apply word styling whenever the phase or current drill line changes
@@ -549,27 +573,60 @@ export default function LunaReader({
     return touched;
   }
   function clearPoint() { styleWords(); }
-  /** Sound out ONE broken word with the pre-recorded phoneme clips (zero
-   *  latency), pointing at it in the passage, then hand back to the retry.
-   *  Sequential (one clip at a time) + session-token guarded. */
-  function miniLesson(word: string, ids: string[]) {
+  /** Play a phoneme-clip sequence one at a time (session-token guarded). */
+  function playPhonemeSeq(ids: string[], onDone: () => void) {
     const tok = sessionTokenRef.current;
+    let k = 0;
+    const next = () => {
+      if (sessionTokenRef.current !== tok) return; // kid restarted/left
+      if (k >= ids.length) { onDone(); return; }
+      playUrl(`${PHONEME_BASE}/${ids[k++]}.mp3`, () => { window.setTimeout(next, 280); });
+    };
+    next();
+  }
+  /** Mini-lesson: point at the broken word, sound it out from the phoneme
+   *  clips, then have the kid SAY THE WORD back (checked by Azure) before
+   *  re-reading the whole line — blend, produce, then apply. */
+  function miniLesson(word: string, ids: string[]) {
     const s = idxRef.current;
     const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
     pointAt([word], from < 0 ? 0 : from, to < 0 ? words.length - 1 : to);
     setMode("speaking");
     setCaption(`"${word}" - sound it out with me!`);
-    let k = 0;
-    const next = () => {
-      if (sessionTokenRef.current !== tok) return; // kid restarted/left
-      if (k >= ids.length) {
-        proceed(true); // resets colors + attempt; then our caption wins
-        setCaption(`"${word}"! Now tap me and read the line again.`);
-        return;
-      }
-      playUrl(`${PHONEME_BASE}/${ids[k++]}.mp3`, () => { window.setTimeout(next, 280); });
-    };
-    next();
+    playPhonemeSeq(ids, () => beginWordRead(word, ids));
+  }
+  /** The "your turn - say it!" word check. Opens the mic on JUST that word;
+   *  the grade routes to handleWordResult via wordDrillRef. */
+  function beginWordRead(word: string, ids: string[]) {
+    const s = idxRef.current;
+    const from = Math.max(0, wSent.indexOf(s));
+    const to = wSent.lastIndexOf(s) < 0 ? words.length - 1 : wSent.lastIndexOf(s);
+    let wi = -1;
+    for (let i = from; i <= to; i++) if (normWord(words[i]) === normWord(word)) { wi = i; break; }
+    if (wi < 0) { proceed(true); return; } // can't locate it — skip to the line
+    wordDrillRef.current = { word, ids };
+    setCaption(`Your turn, ${name} - say "${word}"!`);
+    readModeRef.current = "starting"; pendingStopRef.current = false;
+    void startStream(word, wi, wi).then((ok) => {
+      if (ok) { readModeRef.current = "streaming"; return; }
+      // No streaming (fallback env) — skip the word check, go to the line.
+      readModeRef.current = "idle";
+      wordDrillRef.current = null;
+      proceed(true);
+    });
+  }
+  /** Grade of the single-word check: said it right → tiny praise → the line;
+   *  not yet → one more blend, then the line either way (no spiral). */
+  function handleWordResult(wd: { word: string; ids: string[] }, g: Grade) {
+    stopProcessing();
+    if (g.wordsCorrect >= 1) {
+      bunnyReact("correct");
+      playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`That's it - "${wd.word}"!`); }, () => proceed(true));
+    } else {
+      setMode("speaking");
+      setCaption(`Almost! Listen once more: "${wd.word}".`);
+      playPhonemeSeq(wd.ids, () => proceed(true));
+    }
   }
 
   // Pick a praise clip that isn't the one we just played (kills the "same
@@ -786,6 +843,7 @@ export default function LunaReader({
     if (cancelledReadRef.current) {
       // Mic caught nothing — reset without grading.
       cancelledReadRef.current = false;
+      wordDrillRef.current = null; // a stale word-check must not eat the next grade
       cleanupMic();
       const ctrl0 = recognizerRef.current; recognizerRef.current = null;
       if (ctrl0) await Promise.race([ctrl0.stop(), new Promise<void>((r) => window.setTimeout(r, 1500))]);
@@ -814,6 +872,14 @@ export default function LunaReader({
   // Route a streamed read's assembled grade to the shared feedback (no scan —
   // words were colored live).
   function finishFromGrade(g: Grade, durSec: number) {
+    // A word-repeat check (mini-lesson "say 'pig'!") routes to its own
+    // handler — it must NOT be graded as a sentence read.
+    if (wordDrillRef.current) {
+      const wd = wordDrillRef.current;
+      wordDrillRef.current = null;
+      handleWordResult(wd, g);
+      return;
+    }
     const ph = phaseRef.current;
     if (ph === "overall1") { addTricky(g.wordAnnotations); setBefore(toScore(g, durSec)); wholeFeedbackBefore(); }
     else if (ph === "overall2") { addTricky(g.wordAnnotations); setAfter(toScore(g, durSec)); if (g.prosody != null) setExpression(g.prosody); statsRef.current.afterGrade = g; wholeFeedbackAfter(); }
@@ -948,8 +1014,9 @@ export default function LunaReader({
       const s = idxRef.current;
       const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
       for (let i = from; i <= to; i++) if (i >= 0) wordStateRef.current[i] = "pending";
-      setAttempt(1); setMode("idle"); setCaption("Let's read that line one more time - tap me.");
+      setAttempt(1); setMode("idle"); setCaption("Now read the whole line again!");
       styleWords();
+      armRead(900); // hands-free retry
       return;
     }
     setAttempt(0);
@@ -958,7 +1025,8 @@ export default function LunaReader({
     if (next >= sentences.length) {
       playRecap();
     } else {
-      setIdx(next); setMode("idle"); setCaption("Nice! Tap me to read the next line.");
+      setIdx(next); setMode("idle"); setCaption("Nice! Read the next line.");
+      armRead(900); // hands-free next line
     }
   }
 
@@ -1080,8 +1148,10 @@ export default function LunaReader({
     await runBuildReveal(info);
     stopProcessing();
     // Straight into the per-sentence drill — no confusing whole-story baseline
-    // read. Each sentence is its own read → instant generic feedback → recap.
-    setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Tap me and read the first line.");
+    // read. The "Let's Start" tap was the one gesture we need (audio unlock);
+    // from here the mic arms itself after each beat — hands-free reading.
+    setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Read the first line out loud!");
+    armRead(900);
   }
 
   // Generate a fresh passage while Luna "makes a story" (thinking bubbles + orb
@@ -1110,7 +1180,7 @@ export default function LunaReader({
   }
   // Start a read: try real-time streaming; fall back to record → REST grade.
   async function beginRead() {
-    const isDrill = phase === "drill";
+    const isDrill = phaseRef.current === "drill";
     const ci = idxRef.current;
     const refText = isDrill ? sentences[ci] : passage.text;
     const from = isDrill ? Math.max(0, wSent.indexOf(ci)) : 0;

@@ -51,6 +51,23 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Luna requires a paid plan.", reason: "plan" }, { status: 402 });
   }
 
+  // Anti-repeat: same topic + same pattern makes the model converge on nearly
+  // the same story ("I already saw this one!"). Tell it what this child has
+  // recently read so every story feels brand-new.
+  const { data: recentRows } = await supabase
+    .from("child_ai_content")
+    .select("title")
+    .eq("child_id", childId)
+    .eq("kind", "luna_reading")
+    .order("created_at", { ascending: false })
+    .limit(5);
+  const recentTitles = ((recentRows ?? []) as { title: string | null }[])
+    .map((r) => (r.title ?? "").trim())
+    .filter(Boolean);
+  const varietyLine = recentTitles.length
+    ? ` Make it feel brand-new: a different character name and a different little plot from these recent stories: ${recentTitles.join("; ")}.`
+    : "";
+
   // Reading level = the child's actual grade (authoritative). Target the
   // phonics pattern they most need next (unless an explicit one was passed) so
   // the story DRILLS the right sound, not just grade-decodable text.
@@ -67,7 +84,7 @@ export async function POST(req: Request) {
 
   const res = await generatePassage({
     teacherId: user.id,
-    topic,
+    topic: `${topic}.${varietyLine}`,
     gradeLevel: gradeTok,
     phonicsPattern,
     lengthLevel: "short",

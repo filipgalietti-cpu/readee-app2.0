@@ -262,10 +262,12 @@ export default function LunaCreate({
           </button>
 
           {readings.length > 0 && (
-            <div className="mt-8 w-full">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-400 dark:text-slate-500">
-                My readings
-              </div>
+            <details className="group mt-8 w-full">
+              <summary className="cursor-pointer list-none text-[11px] font-bold uppercase tracking-widest text-zinc-400 transition hover:text-violet-600 dark:text-slate-500">
+                My readings ({readings.length})
+                <span className="ml-1 text-zinc-300 group-open:hidden dark:text-slate-600">show</span>
+                <span className="ml-1 hidden text-zinc-300 group-open:inline dark:text-slate-600">hide</span>
+              </summary>
               <div className="mt-3 flex flex-wrap justify-center gap-2">
                 {readings.map((r) => (
                   <button
@@ -279,7 +281,7 @@ export default function LunaCreate({
                   </button>
                 ))}
               </div>
-            </div>
+            </details>
           )}
         </>
       )}
