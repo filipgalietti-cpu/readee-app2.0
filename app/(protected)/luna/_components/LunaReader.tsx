@@ -1387,7 +1387,7 @@ export default function LunaReader({
           )}
 
           {preparing || phase === "building" ? null : phase === "intro" ? (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 48 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 72 }}>
               <button type="button" onClick={startFlow} disabled={preparing}
                 style={{ display: "inline-flex", alignItems: "center", gap: 10, border: "none", borderRadius: 999, padding: "20px 56px", fontFamily: BALOO, fontSize: 25, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 14px 36px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
                 <Play className="h-6 w-6" fill="#fff" stroke="none" /> {preparing ? "Getting your story…" : "Let's Start"}
