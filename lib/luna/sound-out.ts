@@ -56,8 +56,17 @@ const SINGLE: Record<string, string> = {
   x: "x", y: "y", z: "z", q: "q",
 };
 
+/** A grapheme chunk aligned to its phoneme clip — powers the karaoke
+ *  underline in the big word-lesson view ("sh" lights up while /sh/ plays). */
+export type SoundSegment = { graph: string; id: string };
+
 /** Decompose a word into phoneme clip ids, or null if not confident. */
 export function soundOut(raw: string): string[] | null {
+  return soundOutSegments(raw)?.map((s) => s.id) ?? null;
+}
+
+/** Segment-aligned decomposition (grapheme + clip id per sound). */
+export function soundOutSegments(raw: string): SoundSegment[] | null {
   const word = (raw || "").toLowerCase().replace(/[^a-z]/g, "");
   if (word.length < 2 || word.length > 8) return null;
 
@@ -76,25 +85,25 @@ export function soundOut(raw: string): string[] | null {
     letters = letters.slice(0, -1);
   }
 
-  const out: string[] = [];
+  const out: SoundSegment[] = [];
   let i = 0;
   while (i < letters.length) {
     // Longest-match multi-letter grapheme first.
     const team = TEAMS.find(([g]) => letters.startsWith(g, i));
     if (team) {
-      out.push(team[1]);
+      out.push({ graph: team[0], id: team[1] });
       i += team[0].length;
       continue;
     }
     const c = letters[i];
     if (VOWELS.has(c)) {
-      out.push(magicE ? LONG[c] : SHORT[c]);
+      out.push({ graph: c, id: magicE ? LONG[c] : SHORT[c] });
       i++;
       continue;
     }
     if (c === "c") {
       // c before e/i/y → soft; else hard.
-      out.push("eiy".includes(letters[i + 1] ?? "") ? "c_soft" : "c_hard");
+      out.push({ graph: c, id: "eiy".includes(letters[i + 1] ?? "") ? "c_soft" : "c_hard" });
       i++;
       continue;
     }
@@ -103,9 +112,12 @@ export function soundOut(raw: string): string[] | null {
     if (c === "y" && i === letters.length - 1) return null;
     const single = SINGLE[c];
     if (!single) return null; // unmappable — bail rather than guess
-    out.push(single);
+    out.push({ graph: c, id: single });
     i++;
   }
+  // Silent-e display: fold the dropped "e" into the last chunk so the big
+  // word view still shows every letter ("bike" → b·i·ke).
+  if (magicE && out.length > 0) out[out.length - 1].graph += "e";
   // A useful sound-out is 2-5 sounds; longer reads as noise to a young kid.
   return out.length >= 2 && out.length <= 5 ? out : null;
 }

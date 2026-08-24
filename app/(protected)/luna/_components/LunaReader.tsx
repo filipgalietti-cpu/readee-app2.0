@@ -19,7 +19,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Shuffle, RotateCcw, Play, Volume2, Carrot, Star, Check, X as XIcon } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
-import { soundOut } from "@/lib/luna/sound-out";
+import { soundOut, soundOutSegments, type SoundSegment } from "@/lib/luna/sound-out";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
@@ -132,7 +132,10 @@ export default function LunaReader({
   const [pIdx, setPIdx] = useState(0);
   const [override, setOverride] = useState<Passage | null>(null);
   const passage = override ?? passages[pIdx] ?? passages[0];
-  const [sentences, setSentences] = useState<string[]>(() => splitSentences((passages[0] ?? { text: "" }).text));
+  // DERIVED from the passage — was separate state set in beginBuild, which
+  // could desync from the displayed story (audio/grading running against a
+  // different text than shown, seen on Surprise-me).
+  const sentences = useMemo(() => splitSentences(passage.text), [passage.text]);
   // Per-word model for the build reveal + grade scan (words rendered as spans).
   const { words, wSent } = useMemo(() => computeWords(passage.text), [passage.text]);
 
@@ -280,6 +283,11 @@ export default function LunaReader({
   const wordDrillRef = useRef<{ word: string; ids: string[] } | null>(null);
   // Clips already queued for background decode (dedupe — see playCached).
   const decodePendingRef = useRef<Set<string>>(new Set());
+  // Big word-lesson takeover: after a line with misses, the story card is
+  // REPLACED by one large word at a time, karaoke-underlined as each phoneme
+  // plays. segIdx = which grapheme chunk is lit (-1 none, length = whole word).
+  const [wordLesson, setWordLesson] = useState<{ word: string; segs: SoundSegment[]; segIdx: number } | null>(null);
+  const missQueueRef = useRef<string[]>([]);
   // Per-line results for the quiz-style finish summary (Line 1 ✓ / Line 2 ✗).
   const lineResultsRef = useRef<{ text: string; ok: boolean }[]>([]);
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
@@ -637,24 +645,51 @@ export default function LunaReader({
   /** Mini-lesson: point at the broken word → sound it out with ECHO gaps (kid
    *  repeats each sound) → Luna says the whole word → kid says the word back
    *  (Azure-checked) → re-read the line. Blend, model, produce, apply. */
-  function miniLesson(word: string, ids: string[]) {
-    const s = idxRef.current;
-    const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
-    pointAt([word], from < 0 ? 0 : from, to < 0 ? words.length - 1 : to);
-    prewarmWordAudio(word); // ready by blend end — no wait
+  /** Word lessons: the story card is replaced with ONE LARGE word at a time
+   *  (karaoke underline sweeping as each phoneme plays), for EVERY missed
+   *  word (capped at 3), each ending with the kid saying the word back.
+   *  Then the line re-read. Blend → model → produce, word by word. */
+  function startWordLessons(missed: string[]) {
+    const q = Array.from(new Set(missed.map((w) => w.toLowerCase())))
+      .filter((w) => soundOutSegments(w))
+      .slice(0, 3);
+    if (q.length === 0) { proceed(true); return; }
+    q.forEach(prewarmWordAudio); // Luna's whole-word audio, ready in time
+    missQueueRef.current = q;
+    nextWordLesson();
+  }
+  function nextWordLesson() {
+    const word = missQueueRef.current.shift();
+    if (!word) { setWordLesson(null); proceed(true); return; }
+    const segs = soundOutSegments(word)!;
+    setWordLesson({ word, segs, segIdx: -1 });
     setMode("speaking");
     setCaption(`"${word}" - say each sound after me!`);
-    // Spoken instruction first — the kid can't read the caption.
-    playCached("echome-1", () => playPhonemeSeq(ids, 950, () => {
-      // Word-level model: Luna says the blended word before the kid tries it.
-      const wurl = wordSpeakRef.current.get(normWord(word));
-      if (wurl) {
-        setCaption(`Put it together: "${word}"!`);
-        playUrl(wurl, () => beginWordRead(word, ids));
-      } else {
-        beginWordRead(word, ids);
+    playCached("echome-1", () => stepSegments(word, segs));
+  }
+  function stepSegments(word: string, segs: SoundSegment[]) {
+    const tok = sessionTokenRef.current;
+    let k = 0;
+    const step = () => {
+      if (sessionTokenRef.current !== tok) return;
+      if (k >= segs.length) {
+        // Whole-word model: light the full word while Luna says it.
+        setWordLesson((s) => (s ? { ...s, segIdx: segs.length } : s));
+        const wurl = wordSpeakRef.current.get(normWord(word));
+        const go = () => beginWordRead(word, segs.map((sg) => sg.id));
+        if (wurl) { setCaption(`Put it together: "${word}"!`); playUrl(wurl, go); }
+        else go();
+        return;
       }
-    }));
+      setWordLesson((s) => (s ? { ...s, segIdx: k } : s));
+      playUrl(`${PHONEME_BASE}/${segs[k].id}.mp3`, () => { k++; window.setTimeout(step, 950); });
+    };
+    step();
+  }
+  /** After a word's say-it-back check: next queued word, or the line. */
+  function afterWordCheck() {
+    if (missQueueRef.current.length > 0) nextWordLesson();
+    else { setWordLesson(null); proceed(true); }
   }
   /** The "your turn - say it!" word check. Opens the mic on JUST that word;
    *  the grade routes to handleWordResult via wordDrillRef. */
@@ -664,7 +699,7 @@ export default function LunaReader({
     const to = wSent.lastIndexOf(s) < 0 ? words.length - 1 : wSent.lastIndexOf(s);
     let wi = -1;
     for (let i = from; i <= to; i++) if (normWord(words[i]) === normWord(word)) { wi = i; break; }
-    if (wi < 0) { proceed(true); return; } // can't locate it — skip to the line
+    if (wi < 0) { afterWordCheck(); return; } // can't locate it — next word/line
     // Spoken instruction ("Now you say the word!") BEFORE the mic opens, so
     // the kid knows exactly what to do — captions alone don't cut it.
     playCached("yourturn-1", () => {
@@ -673,10 +708,10 @@ export default function LunaReader({
       readModeRef.current = "starting"; pendingStopRef.current = false;
       void startStream(word, wi, wi).then((ok) => {
         if (ok) { readModeRef.current = "streaming"; return; }
-        // No streaming (fallback env) — skip the word check, go to the line.
+        // No streaming (fallback env) — skip the word check, move along.
         readModeRef.current = "idle";
         wordDrillRef.current = null;
-        proceed(true);
+        afterWordCheck();
       });
     });
   }
@@ -686,15 +721,27 @@ export default function LunaReader({
     stopProcessing();
     if (g.wordsCorrect >= 1) {
       bunnyReact("correct");
-      playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`That's it - "${wd.word}"!`); }, () => proceed(true));
+      playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`That's it - "${wd.word}"!`); }, () => afterWordCheck());
     } else {
+      // Not yet — one more karaoke blend of THIS word, then move along.
       setMode("speaking");
       setCaption(`Almost! Listen once more: "${wd.word}".`);
-      playPhonemeSeq(wd.ids, 950, () => {
-        const wurl = wordSpeakRef.current.get(normWord(wd.word));
-        if (wurl) playUrl(wurl, () => proceed(true));
-        else proceed(true);
-      });
+      const segs = soundOutSegments(wd.word);
+      const tok = sessionTokenRef.current;
+      let k = 0;
+      const step = () => {
+        if (sessionTokenRef.current !== tok) return;
+        if (k >= wd.ids.length) {
+          if (segs) setWordLesson((s) => (s ? { ...s, segIdx: segs.length } : s));
+          const wurl = wordSpeakRef.current.get(normWord(wd.word));
+          if (wurl) playUrl(wurl, () => afterWordCheck());
+          else afterWordCheck();
+          return;
+        }
+        setWordLesson((s) => (s ? { ...s, segIdx: k } : s));
+        playUrl(`${PHONEME_BASE}/${wd.ids[k]}.mp3`, () => { k++; window.setTimeout(step, 950); });
+      };
+      step();
     }
   }
 
@@ -913,6 +960,7 @@ export default function LunaReader({
       // Mic caught nothing — reset without grading.
       cancelledReadRef.current = false;
       wordDrillRef.current = null; // a stale word-check must not eat the next grade
+      setWordLesson(null); missQueueRef.current = [];
       cleanupMic();
       const ctrl0 = recognizerRef.current; recognizerRef.current = null;
       if (ctrl0) await Promise.race([ctrl0.stop(), new Promise<void>((r) => window.setTimeout(r, 1500))]);
@@ -1041,8 +1089,6 @@ export default function LunaReader({
       //                pre-warmed during the "not quite" clip) → kid re-reads.
       // The CUSTOM recap coaching still generates in the background either way.
       fireCustomCoaching(tricky);
-      const target = tricky[0] ?? "";
-      const ids = target ? soundOut(target) : null;
       // Heavy = MANY real misreads (substituted). Azure liberally flags
       // "missed" words it just didn't catch, and the old tricky-based ratio
       // let one real misread ("win") get lumped into "heavy" — skipping the
@@ -1062,10 +1108,11 @@ export default function LunaReader({
             });
           });
         });
-      } else if (ids) {
-        playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's sound it out."); }, () => miniLesson(target, ids));
       } else {
-        playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's try that line again!"); }, () => proceed(true));
+        // Word lessons for EVERY missed word (substituted first, capped at 3)
+        // — the big one-word-at-a-time karaoke view. Falls through to a plain
+        // line retry when none decompose.
+        playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's work on those words."); }, () => startWordLessons(tricky));
       }
     } else {
       // Wrong (2nd try) → warm "keep going" and move on.
@@ -1253,13 +1300,13 @@ export default function LunaReader({
     recapIntroUrlRef.current = null;
     sessionCarrotsRef.current = 0; setSessionCarrots(0); setCarrotShown(0); setBunnyRx("");
     lineResultsRef.current = [];
+    setWordLesson(null); missQueueRef.current = [];
     const sessTok = ++sessionTokenRef.current;
     void speakToUrl(`Great reading, ${name}!`).then((url) => { if (url && sessionTokenRef.current === sessTok) recapIntroUrlRef.current = url; });
     setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setExpression(null); setErr(null); setLastHeard(null);
     const info = computeWords(p.text);
     wordStateRef.current = info.words.map(() => "pending");
     setOverride(p);
-    setSentences(info.sents);
     setPreparing(false);
     setPhase("building"); setMode("thinking"); setCaption("Here's your story!");
     startProcessing();
@@ -1347,7 +1394,9 @@ export default function LunaReader({
   }
 
   const busy = mode === "thinking" || mode === "speaking";
-  const showPassage = phase !== "intro" && !preparing;
+  // Hidden on the intro AND on the summary — the finish summary REPLACES the
+  // story card (it was stacking below it, pushing the buttons off-screen).
+  const showPassage = phase !== "intro" && phase !== "done" && !preparing;
   const micLabel = mode === "listening" ? "Listening… (tap if done)"
     : phase === "drill" ? "Tap to read this line" : "Tap to read the story";
 
@@ -1372,15 +1421,46 @@ export default function LunaReader({
               </span>
             )}
           </div>
-          <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.9, color: "#18181b", overflowWrap: "break-word", wordBreak: "break-word" }}>
-            {words.flatMap((w, i) => [
-              <span key={i} data-w={i} style={{ display: "inline-block", borderRadius: 6, padding: "0 2px", marginRight: 2, opacity: 0 }}>{w}</span>,
-              // Real space text node between word spans so the passage reads
-              // correctly AND copies with spaces (the karaoke spans alone had
-              // only CSS gaps, so copied text jammed to "Acathadahat").
-              " ",
-            ])}
-          </p>
+          {wordLesson ? (
+            // Word-lesson takeover: ONE big word, karaoke-underlined chunk by
+            // chunk as its phoneme plays (segIdx). Replaces the story text so
+            // the kid focuses on exactly this word.
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 150, padding: "18px 0 10px" }}>
+              <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 64, lineHeight: 1.1, letterSpacing: 2, color: "#18181b" }}>
+                {wordLesson.segs.map((sg, i) => {
+                  const active = wordLesson.segIdx === i;
+                  const wholeWord = wordLesson.segIdx >= wordLesson.segs.length;
+                  const seen = wordLesson.segIdx > i || wholeWord;
+                  return (
+                    <span
+                      key={i}
+                      style={{
+                        display: "inline-block",
+                        padding: "0 3px",
+                        color: active || wholeWord ? "#6d28d9" : seen ? "#7c3aed" : "#18181b",
+                        borderBottom: active ? "6px solid #7c3aed" : seen ? "6px solid #ddd6fe" : "6px solid transparent",
+                        borderRadius: 2,
+                        transform: active ? "scale(1.12)" : "scale(1)",
+                        transition: "color .2s ease, border-color .2s ease, transform .2s ease",
+                      }}
+                    >
+                      {sg.graph}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.9, color: "#18181b", overflowWrap: "break-word", wordBreak: "break-word" }}>
+              {words.flatMap((w, i) => [
+                <span key={i} data-w={i} style={{ display: "inline-block", borderRadius: 6, padding: "0 2px", marginRight: 2, opacity: 0 }}>{w}</span>,
+                // Real space text node between word spans so the passage reads
+                // correctly AND copies with spaces (the karaoke spans alone had
+                // only CSS gaps, so copied text jammed to "Acathadahat").
+                " ",
+              ])}
+            </p>
+          )}
           {lastHeard && phase === "drill" && (
             <div style={{ marginTop: 10, fontSize: 12.5, color: "#9a3412", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 10, padding: "6px 10px" }}>
               I heard: <span style={{ fontStyle: "italic" }}>&ldquo;{lastHeard}&rdquo;</span>
