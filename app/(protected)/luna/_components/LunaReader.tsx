@@ -16,10 +16,13 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Shuffle, Trophy, RotateCcw, Play, Volume2 } from "lucide-react";
+import { Shuffle, Trophy, RotateCcw, Play, Volume2, Carrot } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut } from "@/lib/luna/sound-out";
+import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
+import { supabaseBrowser } from "@/lib/supabase/client";
+import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
 
 type Passage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[] };
 type Annotation = { word: string; status: string; heard?: string };
@@ -173,6 +176,10 @@ export default function LunaReader({
   const streamProsodyRef = useRef(100);
   const streamTextRef = useRef("");
   const autoStopRef = useRef<number | null>(null); // silence → auto-end the read
+  // Mic caught NOTHING for a while → cancel the read gracefully (no grading a
+  // silent take as "all wrong") instead of leaving the kid waiting awkwardly.
+  const zeroSpeechRef = useRef<number | null>(null);
+  const cancelledReadRef = useRef(false);
   const lastPraiseRef = useRef(-1);                 // avoid repeating a praise clip
   const unlockedRef = useRef(false);
   const onBlobRef = useRef<(b: Blob, durSec: number) => void>(() => {});
@@ -193,6 +200,26 @@ export default function LunaReader({
   const coachingClipsRef = useRef<{ url: string; words: string[] }[]>([]);
   const recapIntroUrlRef = useRef<string | null>(null);
   const sessionTokenRef = useRef(0);
+
+  // Readee bunny sidekick — celebrates alongside the orb (claps on a correct
+  // line, dances at the finish). Purely visual; resets to idle after the
+  // reaction's rest pose (reactionHoldMs, same anti-snap timing as the shop).
+  const [bunnyRx, setBunnyRx] = useState<"" | ReactionState>("");
+  const bunnyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  function bunnyReact(state: ReactionState) {
+    if (bunnyTimerRef.current) clearTimeout(bunnyTimerRef.current);
+    setBunnyRx(state);
+    bunnyTimerRef.current = setTimeout(() => setBunnyRx(""), reactionHoldMs(state));
+  }
+
+  // Carrots: +10 per sentence read correctly, shown live; banked to the
+  // child's balance (with any active powerup multiplier) at session end.
+  const [sessionCarrots, setSessionCarrots] = useState(0);
+  const sessionCarrotsRef = useRef(0);
+  function awardCarrots(n: number) {
+    sessionCarrotsRef.current += n;
+    setSessionCarrots(sessionCarrotsRef.current);
+  }
   // Sound + celebration engine (synthesized via Web Audio, ported from the Luna
   // Full Flow design): "thinking bubbles" + praise chime + word ticks, and
   // confetti / sparks around the orb. Processing sound always stops before any
@@ -629,12 +656,19 @@ export default function LunaReader({
     const refLen = Math.max(1, to - from + 1);
     const settled = Math.max(0, streamCursorRef.current - from);
     const partialWords = partial.trim() ? partial.trim().split(/\s+/).length : 0;
+    // Real speech arrived — the mic works; stand down the zero-speech watchdog.
+    if ((settled > 0 || partialWords > 0) && zeroSpeechRef.current) {
+      window.clearTimeout(zeroSpeechRef.current);
+      zeroSpeechRef.current = null;
+    }
     const covered = settled + partialWords >= Math.floor(refLen * 0.9);
+    // Tightened (was 2000/3500) — a partial read left the kid hanging in
+    // silence before Luna moved on.
     if (autoStopRef.current) window.clearTimeout(autoStopRef.current);
     autoStopRef.current = window.setTimeout(() => {
       autoStopRef.current = null;
       if (streamActiveRef.current) { dbg("auto-stop: silence"); void stopStream(); }
-    }, covered ? 2000 : 3500);
+    }, covered ? 1500 : 2600);
   }
   // Live: highlight the words being spoken in the current phrase (from the
   // running cursor), so it tracks across phrases in a whole-passage read.
@@ -726,12 +760,37 @@ export default function LunaReader({
     animatingRef.current = true; // hold the styling effect off while we color live
     setEngine("azure");
     streamActiveRef.current = true;
+    // Zero-speech watchdog: if Azure hears NOTHING in 10s (muted mic, too
+    // quiet), cancel the read with a friendly nudge instead of grading a
+    // silent take as all-wrong or waiting forever.
+    cancelledReadRef.current = false;
+    if (zeroSpeechRef.current) window.clearTimeout(zeroSpeechRef.current);
+    zeroSpeechRef.current = window.setTimeout(() => {
+      zeroSpeechRef.current = null;
+      if (streamActiveRef.current && streamWordsRef.current.length === 0 && !streamTextRef.current) {
+        dbg("zero-speech: cancelling read");
+        cancelledReadRef.current = true;
+        void stopStream();
+      }
+    }, 10000);
     dbg("LIVE - reading");
     return true;
   }
   async function stopStream() {
     streamActiveRef.current = false;
+    if (zeroSpeechRef.current) { window.clearTimeout(zeroSpeechRef.current); zeroSpeechRef.current = null; }
     const durSec = Math.max(0.5, (Date.now() - recStartRef.current) / 1000);
+    if (cancelledReadRef.current) {
+      // Mic caught nothing — reset without grading.
+      cancelledReadRef.current = false;
+      cleanupMic();
+      const ctrl0 = recognizerRef.current; recognizerRef.current = null;
+      if (ctrl0) await Promise.race([ctrl0.stop(), new Promise<void>((r) => window.setTimeout(r, 1500))]);
+      stopProcessing(); animatingRef.current = false; readModeRef.current = "idle";
+      setMode("idle");
+      setCaption(`I couldn't hear you that time, ${name}. Tap me and let's try again!`);
+      return;
+    }
     setMode("thinking"); setCaption("Let me listen…");
     cleanupMic();
     const ctrl = recognizerRef.current; recognizerRef.current = null;
@@ -823,8 +882,10 @@ export default function LunaReader({
       !!g.heardTranscript && norm(g.heardTranscript) !== norm(targetLine);
     setLastHeard(hasError && heardDiffers ? g.heardTranscript! : null);
     if (!hasError) {
-      // Right → instant generic praise ("Great job!").
+      // Right → instant generic praise ("Great job!") + bunny claps + carrots.
       setLastHeard(null);
+      bunnyReact("clap");
+      awardCarrots(10);
       playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(praiseCap()); celebrate(false); }, () => proceed(false));
     } else if (willRetry) {
       // Wrong (1st try) → instant generic "not quite", then an inline
@@ -918,6 +979,7 @@ export default function LunaReader({
     const clips = coachingClipsRef.current;
     setMode("speaking");
     celebrate(true);
+    bunnyReact("levelup"); // the dance — finish-line celebration
     setCaption(clips.length ? `Great reading, ${name}! Let's practice a few words.` : `Amazing, ${name}!`);
     const seq: { url: string; words?: string[] }[] = [];
     if (recapIntroUrlRef.current) seq.push({ url: recapIntroUrlRef.current });
@@ -940,6 +1002,23 @@ export default function LunaReader({
     setPhase("done");
     setMode("idle");
     setCaption(`You did it, ${name}!`);
+    // Bank the session carrots (with any active powerup multiplier) —
+    // best-effort; never block the celebration on a save hiccup.
+    const base = sessionCarrotsRef.current;
+    if (base > 0) {
+      const sb = supabaseBrowser();
+      void sb
+        .from("children")
+        .select("carrots, active_multiplier, active_multiplier_expires_at")
+        .eq("id", childId)
+        .single()
+        .then(({ data }) => {
+          if (!data) return;
+          const award = Math.round(base * getActiveMultiplier(data as any));
+          return sb.from("children").update({ carrots: (data.carrots ?? 0) + award }).eq("id", childId);
+        })
+        .then(undefined, () => { /* best-effort */ });
+    }
     const g = statsRef.current.afterGrade;
     void fetch("/api/luna/session-complete", {
       method: "POST", headers: { "Content-Type": "application/json" },
@@ -983,6 +1062,7 @@ export default function LunaReader({
     // it's ready by the end.
     coachingClipsRef.current = [];
     recapIntroUrlRef.current = null;
+    sessionCarrotsRef.current = 0; setSessionCarrots(0); setBunnyRx("");
     const sessTok = ++sessionTokenRef.current;
     void speakToUrl(`Great reading, ${name}!`).then((url) => { if (url && sessionTokenRef.current === sessTok) recapIntroUrlRef.current = url; });
     setIdx(0); setAttempt(0); setBefore(null); setAfter(null); setExpression(null); setErr(null); setLastHeard(null);
@@ -1092,6 +1172,12 @@ export default function LunaReader({
                     : phase === "overall2" ? "One more time - the whole story"
                       : "How you read it"}
             </span>
+            {sessionCarrots > 0 && (
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 12, fontWeight: 800, color: "#c2410c", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 999, padding: "3px 10px" }}>
+                <Carrot className="h-3.5 w-3.5" strokeWidth={2.4} />
+                +{sessionCarrots}
+              </span>
+            )}
           </div>
           <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.9, color: "#18181b", overflowWrap: "break-word", wordBreak: "break-word" }}>
             {words.flatMap((w, i) => [
@@ -1116,6 +1202,11 @@ export default function LunaReader({
           <div ref={orbWrapRef} style={{ position: "relative", width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
             <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
+            {/* Readee sidekick — cheers from beside the orb (claps on a correct
+                line, dances at the finish). */}
+            <div style={{ position: "absolute", right: -84, bottom: 2, width: 76, height: 84, pointerEvents: "none" }}>
+              {bunnyRx ? <BunnyReaction outfitId="classic" state={bunnyRx} /> : <Bunny outfitId="classic" />}
+            </div>
           </div>
           {(preparing || phase !== "intro") && (
             <div style={{ minHeight: 58, display: "flex", alignItems: "center", justifyContent: "center", maxWidth: 470, padding: "0 8px" }}>

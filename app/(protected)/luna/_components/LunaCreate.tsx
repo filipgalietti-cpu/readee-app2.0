@@ -55,7 +55,8 @@ export default function LunaCreate({
   function toggle(t: string) {
     setSelected((prev) => {
       const next = new Set(prev);
-      next.has(t) ? next.delete(t) : next.add(t);
+      if (next.has(t)) next.delete(t);
+      else if (next.size < 3) next.add(t); // cap at 3 — more turns to word salad
       return next;
     });
   }
@@ -103,8 +104,11 @@ export default function LunaCreate({
   }
 
   function makeStory() {
+    // The typed idea TRUMPS the chips — it's the most specific signal of what
+    // the kid actually wants; mixing chips back in diluted it into word salad.
+    const own = custom.trim();
+    if (own) { generate(own); return; }
     const parts = [...selected];
-    if (custom.trim()) parts.push(custom.trim());
     if (parts.length === 0) return;
     generate(parts.join(", "));
   }
@@ -194,7 +198,7 @@ export default function LunaCreate({
             What should your story be about, {childName}?
           </h2>
           <p className="mt-1 text-sm font-semibold text-zinc-500 dark:text-slate-400">
-            Tick what you like. Luna makes a story you can read.
+            Pick up to 3, or type your own idea. Luna makes a story you can read.
           </p>
 
           {/* Tickable ingredients */}
