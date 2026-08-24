@@ -27,7 +27,7 @@ export default async function CommunityLibraryPage({
   const supabase = await createClient();
   const { data: kids } = await supabase
     .from("children")
-    .select("grade")
+    .select("grade, first_name")
     .eq("parent_id", profile.id)
     .order("created_at", { ascending: true })
     .limit(1);
@@ -37,6 +37,7 @@ export default async function CommunityLibraryPage({
   // Without this, the "For {grade}" tab matches zero passages for pre-k kids.
   const rawGrade = ((kids?.[0] as any)?.grade as string | null) ?? null;
   const childGrade = rawGrade && /^pre-?k$/i.test(rawGrade) ? "K" : rawGrade;
+  const childName = ((kids?.[0] as any)?.first_name as string | null) ?? null;
 
   const { data: rows } = await supabaseAdmin()
     .from("community_passages")
@@ -68,6 +69,7 @@ export default async function CommunityLibraryPage({
     <CommunityLibrary
       items={items}
       childGrade={childGrade}
+      childName={childName}
       childParam={childParam ?? null}
     />
   );

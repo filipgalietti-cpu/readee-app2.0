@@ -39,12 +39,6 @@ function tintFor(id: string) {
 function readerHref(it: Item) {
   return it.slug ? `/community/${it.slug}` : `/practice-hub/community/${it.id}`;
 }
-function gradeLabel(g: string | null) {
-  if (!g) return "your grade";
-  if (g === "K") return "Kindergarten";
-  if (/^pre-?k$/i.test(g)) return "Pre-K";
-  return `${g} grade`;
-}
 function byline(it: Item) {
   const b = it.display_byline?.trim();
   if (!b) return "Shared by a Readee family";
@@ -58,10 +52,12 @@ function byline(it: Item) {
 export default function CommunityLibrary({
   items,
   childGrade,
+  childName,
   childParam,
 }: {
   items: Item[];
   childGrade: string | null;
+  childName: string | null;
   childParam: string | null;
 }) {
   const [tab, setTab] = useState<"trending" | "new" | "grade" | "kid">("trending");
@@ -117,7 +113,7 @@ export default function CommunityLibrary({
   const tabs = [
     { id: "trending", label: "Trending" },
     { id: "new", label: "New this week" },
-    { id: "grade", label: `For ${gradeLabel(childGrade)}` },
+    { id: "grade", label: childName ? `Recommended for ${childName}` : "Recommended for you" },
     { id: "kid", label: "Kid-written" },
   ] as const;
 
