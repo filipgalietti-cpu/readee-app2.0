@@ -100,8 +100,26 @@ function JourneyContent() {
   const [lessonProgress, setLessonProgress] = useState<LessonProgressRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [showPaywall, setShowPaywall] = useState(false);
+  // Reveal the map with a short fade once it's mounted + has measured its
+  // geometry, so the first-paint settle doesn't flash as a glitch.
+  const [revealed, setRevealed] = useState(false);
+  const [hideSkeleton, setHideSkeleton] = useState(false);
 
   useEffect(() => { fetchPlan(); }, [fetchPlan]);
+
+  useEffect(() => {
+    if (loading || !child) { setRevealed(false); setHideSkeleton(false); return; }
+    const r = requestAnimationFrame(() => requestAnimationFrame(() => setRevealed(true)));
+    return () => cancelAnimationFrame(r);
+  }, [loading, child]);
+
+  // Crossfade: keep the skeleton mounted (fading out) until the map's fade-in
+  // finishes, so there's never a blank frame between them.
+  useEffect(() => {
+    if (!revealed) return;
+    const t = setTimeout(() => setHideSkeleton(true), 360);
+    return () => clearTimeout(t);
+  }, [revealed]);
 
   // Resolve the active child even when ?child= isn't on the URL —
   // same store → DB → fallback pattern used by /practice-hub,
@@ -337,6 +355,8 @@ function JourneyContent() {
         childName={child.first_name}
         trigger="lesson"
       />
+      <div style={{ position: "relative" }}>
+      <div style={{ opacity: revealed ? 1 : 0, transition: "opacity .32s ease" }}>
       <JourneyMap
         grades={journeyGrades}
         kidName={child.first_name}
@@ -356,6 +376,13 @@ function JourneyContent() {
         }}
         onPremium={() => setShowPaywall(true)}
       />
+      </div>
+      {!hideSkeleton && (
+        <div style={{ position: "absolute", inset: 0, opacity: revealed ? 0 : 1, transition: "opacity .32s ease", pointerEvents: "none" }}>
+          <JourneySkeleton />
+        </div>
+      )}
+      </div>
     </>
   );
 }
