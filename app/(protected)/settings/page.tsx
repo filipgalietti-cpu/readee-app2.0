@@ -539,7 +539,7 @@ export default function Settings() {
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
 
         {/* ═══ Profile ═══ */}
-        <div id="sec-profile" style={{ scrollMarginTop: 72, display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 16, alignItems: "start" }}>
+        <div id="sec-profile" style={{ scrollMarginTop: 72, display: "grid", gridTemplateColumns: "1.5fr 1fr", gap: 16, alignItems: "stretch" }}>
           <div style={{ border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b", marginBottom: 16 }}>Profile</div>
             <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16 }}>
@@ -569,14 +569,9 @@ export default function Settings() {
             <Row label="Sound effects" sub="Sounds during lessons and quizzes">
               <Switch on={soundEffects} onClick={() => setSoundEffects((v) => !v)} />
             </Row>
-            <Row label="Auto-advance" sub="Move to the next question automatically">
+            <Row label="Auto-advance" sub="Move to the next question automatically" last>
               <Switch on={autoAdvance} onClick={() => setAutoAdvance((v) => !v)} />
             </Row>
-            {memberSince && (
-              <Row label="Member since" sub="Thanks for reading with us" last>
-                <div style={{ fontSize: 14, fontWeight: 600, color: "#3f3f46" }}>{memberSince}</div>
-              </Row>
-            )}
           </div>
 
           {/* Sign-in & security */}
@@ -615,13 +610,22 @@ export default function Settings() {
               </div>
             )}
 
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0 0", borderTop: "1px solid #f4f4f5" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0", borderTop: "1px solid #f4f4f5" }}>
               <div>
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: "#18181b" }}>Signed-in devices</div>
                 <div style={{ fontSize: 11.5, color: "#6b7280" }}>Sign out everywhere you&apos;re logged in</div>
               </div>
               <button onClick={handleSignOutEverywhere} style={{ border: "none", background: "transparent", color: "#4338ca", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, cursor: "pointer", padding: "4px 8px", borderRadius: 8, whiteSpace: "nowrap" }}>Sign out all</button>
             </div>
+            {memberSince && (
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0 0", borderTop: "1px solid #f4f4f5" }}>
+                <div>
+                  <div style={{ fontSize: 13.5, fontWeight: 600, color: "#18181b" }}>Member since</div>
+                  <div style={{ fontSize: 11.5, color: "#6b7280" }}>Thanks for reading with us</div>
+                </div>
+                <div style={{ fontSize: 13.5, fontWeight: 600, color: "#3f3f46" }}>{memberSince}</div>
+              </div>
+            )}
           </div>
         </div>
 
