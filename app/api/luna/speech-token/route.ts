@@ -23,7 +23,10 @@ export async function POST(req: Request) {
   // word checks, lesson Speak steps). Context inferred from the referer so we
   // don't touch callers. Fire-and-forget; never blocks the token.
   const ref = req.headers.get("referer") ?? "";
-  const context = ref.includes("/luna") ? "luna" : /lesson|learn|demo/.test(ref) ? "lesson" : "other";
+  const context = ref.includes("placement") ? "placement"
+    : ref.includes("/luna") ? "luna"
+    : /lesson|learn|demo|unit/.test(ref) ? "lesson"
+    : "other";
   try {
     // .then() is required — supabase builders only execute when awaited.
     supabaseAdmin().from("speech_token_mints").insert({ user_id: user.id, context })
