@@ -261,17 +261,23 @@ When in doubt, pivot to: science, animals, weather, sports, space, helpers, food
     // 28-day beat, so a 21-day window never spans a full cycle — that's exactly
     // how "Summer's Loud Bugs" (Jul 23 Thu) and "The Loud Summer Bugs" (Aug 20
     // Thu, 28 days later) both slipped through. 8 weeks always covers 2 cycles.
+    // Titles alone hid dupes ("A Long-Ago Call" vs "A New Way to Talk" were
+    // both the Bell story; 7 firefly passages shipped under 7 titles). Include
+    // each passage's opening so the model sees the actual SUBJECT.
     const { data: recentRows } = await admin
       .from("daily_questions")
-      .select("passage_title")
+      .select("passage_title, passage_body")
       .lt("date", dateStr)
       .order("date", { ascending: false })
       .limit(56);
-    const recentTitles = ((recentRows ?? []) as { passage_title: string | null }[])
-      .map((r) => r.passage_title)
-      .filter((t): t is string => !!t);
-    if (recentTitles.length) {
-      avoidBlock = `\n\nAVOID REPEATS — these ran in the last two months. Pick a subject that is clearly DIFFERENT from every one of these (a different animal, a different phenomenon, a different story premise — not a rephrase or a close cousin, and not a synonym like "loud summer bugs" for "cicadas"):\n${recentTitles.map((t) => `- ${t}`).join("\n")}`;
+    const recentSubjects = ((recentRows ?? []) as { passage_title: string | null; passage_body: string | null }[])
+      .filter((r) => !!r.passage_title)
+      .map((r) => {
+        const firstBit = (r.passage_body ?? "").replace(/\s+/g, " ").slice(0, 90);
+        return `- ${r.passage_title}${firstBit ? ` (${firstBit}...)` : ""}`;
+      });
+    if (recentSubjects.length) {
+      avoidBlock = `\n\nAVOID REPEATS — these SUBJECTS ran in the last two months (title + opening shown). Pick a subject clearly DIFFERENT from every one — different animal, different phenomenon, different story premise. Not a rephrase, not a close cousin, not the same fact under a new title:\n${recentSubjects.join("\n")}`;
     }
   } catch {
     /* best-effort; ship without the avoid-list if the lookup fails */
