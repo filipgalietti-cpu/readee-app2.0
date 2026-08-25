@@ -1,13 +1,24 @@
 import * as Sentry from "@sentry/nextjs";
 import posthog from "posthog-js";
 
-Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-  enabled: process.env.NODE_ENV === "production",
-  tracesSampleRate: 0.1,
-  replaysSessionSampleRate: 0,
-  replaysOnErrorSampleRate: 0,
-});
+// init parses the DSN even when `enabled` is false, logging "Invalid Sentry Dsn"
+// to the dev console if the local DSN is malformed — so skip init outside prod.
+if (process.env.NODE_ENV === "production") {
+  Sentry.init({
+    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    tracesSampleRate: 0.1,
+    replaysSessionSampleRate: 0,
+    replaysOnErrorSampleRate: 0,
+    // Navigation noise, not bugs: the browser aborts in-flight fetches /
+    // audio.play() when the user clicks away mid-load (surfaced as unhandled
+    // rejections, e.g. Safari on /community). Aborting is correct behavior.
+    ignoreErrors: [
+      "AbortError",
+      "The operation was aborted",
+      "The play() request was interrupted",
+    ],
+  });
+}
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 
