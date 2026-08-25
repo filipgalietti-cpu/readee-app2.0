@@ -53,15 +53,32 @@ async function main() {
       }
     }
 
-    // 2. Trim silence (head + tail), normalize loudness, encode mp3.
+    // 2. Trim + normalize — tuned for QUIET unvoiced phonemes. The first
+    //    pipeline (-45dB trim + loudnorm) deleted /h/ entirely, cut /f/ to a
+    //    90ms static click, and slammed /p/'s remnant to -2dB. Now:
+    //    - gentle -58dB trim (breath sounds live around -36dB peaks)
+    //    - minimum-duration guard: if the trim still eats the sound, keep it
+    //      untrimmed rather than ship a stub
+    //    - peak-normalize to -6dB (loudnorm misbehaves on sub-second clips)
+    //    - 8ms fades so clip edges never click
     const inWav = path.join(tmp, `${id}.wav`);
+    const trimWav = path.join(tmp, `${id}.trim.wav`);
     const outMp3 = path.join(tmp, `${id}.mp3`);
     fs.writeFileSync(inWav, wav);
+    const TRIM = "silenceremove=start_periods=1:start_threshold=-58dB:start_silence=0.1,areverse,silenceremove=start_periods=1:start_threshold=-58dB:start_silence=0.1,areverse";
+    let t = spawnSync("ffmpeg", ["-y", "-loglevel", "error", "-i", inWav, "-af", TRIM, trimWav], { encoding: "utf-8" });
+    if (t.status !== 0) { console.error(`✗ ${id}: trim ${t.stderr?.slice(0, 160)}`); continue; }
+    const durOut = spawnSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", trimWav], { encoding: "utf-8" });
+    const dur = parseFloat(durOut.stdout.trim() || "0");
+    const src = dur >= 0.15 ? trimWav : inWav; // guard: never ship a stub
+    // Measure peak, then gain to -6dBFS.
+    const vd = spawnSync("ffmpeg", ["-i", src, "-af", "volumedetect", "-f", "null", "-"], { encoding: "utf-8" });
+    const maxMatch = /max_volume:\s*(-?[\d.]+) dB/.exec(vd.stderr || "");
+    const maxDb = maxMatch ? parseFloat(maxMatch[1]) : 0;
+    const gain = (-6 - maxDb).toFixed(1);
     const ff = spawnSync("ffmpeg", [
-      "-y", "-loglevel", "error", "-i", inWav,
-      "-af",
-      // strip head silence, reverse, strip (new) head silence = tail, reverse back, then normalize
-      "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse,silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05,areverse,loudnorm=I=-18:TP=-2:LRA=7",
+      "-y", "-loglevel", "error", "-i", src,
+      "-af", `volume=${gain}dB,afade=t=in:d=0.008,areverse,afade=t=in:d=0.008,areverse`,
       "-ar", "24000", "-ac", "1", "-codec:a", "libmp3lame", "-qscale:a", "2", outMp3,
     ], { encoding: "utf-8" });
     if (ff.status !== 0) { console.error(`✗ ${id}: ffmpeg ${ff.stderr?.slice(0, 160)}`); continue; }
