@@ -1,6 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import DailyArchive from "./_components/DailyArchive";
 
+export const dynamic = "force-dynamic"; // archive reflects DB fixes immediately (was serving stale static snapshots)
+
 export const metadata = { title: "Daily Readee · Readee" };
 
 type Row = {
