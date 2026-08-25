@@ -60,6 +60,24 @@ const SINGLE: Record<string, string> = {
  *  underline in the big word-lesson view ("sh" lights up while /sh/ plays). */
 export type SoundSegment = { graph: string; id: string };
 
+/** Irregular high-frequency words that CANNOT be sounded out — they're
+ *  learned by sight. Blending them letter-by-letter teaches them WRONG
+ *  ("the" is /ðə/, not /th/-/eh/; "was" is /wʌz/, not /w/-/a/-/s/), so the
+ *  decomposer refuses them and Luna teaches them as whole words instead. */
+const SIGHT_WORDS = new Set([
+  "the", "a", "i", "to", "of", "was", "is", "his", "as", "has", "said",
+  "you", "your", "they", "we", "she", "he", "me", "be", "are", "were",
+  "do", "does", "done", "what", "who", "one", "once", "two", "some",
+  "come", "comes", "there", "where", "here", "want", "wants", "from",
+  "have", "give", "live", "love", "put", "pull", "push", "very", "any",
+  "many", "again", "against", "could", "would", "should", "our", "out",
+  "her", "their", "my", "by", "says", "goes", "gone", "eye", "own",
+]);
+
+export function isSightWord(raw: string): boolean {
+  return SIGHT_WORDS.has((raw || "").toLowerCase().replace(/[^a-z]/g, ""));
+}
+
 /** Decompose a word into phoneme clip ids, or null if not confident. */
 export function soundOut(raw: string): string[] | null {
   return soundOutSegments(raw)?.map((s) => s.id) ?? null;
@@ -68,6 +86,7 @@ export function soundOut(raw: string): string[] | null {
 /** Segment-aligned decomposition (grapheme + clip id per sound). */
 export function soundOutSegments(raw: string): SoundSegment[] | null {
   const word = (raw || "").toLowerCase().replace(/[^a-z]/g, "");
+  if (isSightWord(word)) return null; // irregular — must be taught by sight
   if (word.length < 2 || word.length > 8) return null;
 
   // Silent-e (CVCe): "bike" → b + long_i + k. Detect: ends in e, previous is a

@@ -19,7 +19,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Shuffle, RotateCcw, Play, Volume2, Carrot, Star, Check, X as XIcon } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
-import { soundOut, soundOutSegments, type SoundSegment } from "@/lib/luna/sound-out";
+import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
@@ -290,6 +290,8 @@ export default function LunaReader({
   const missQueueRef = useRef<string[]>([]);
   // Per-line results for the quiz-style finish summary (Line 1 ✓ / Line 2 ✗).
   const lineResultsRef = useRef<{ text: string; ok: boolean }[]>([]);
+  // Prewarmed "it's a sight word" explainer lines, per word.
+  const sightLineRef = useRef<Map<string, string>>(new Map());
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
   useEffect(() => { phaseRef.current = phase; }, [phase]);
   // Re-apply word styling whenever the phase or current drill line changes
@@ -651,16 +653,49 @@ export default function LunaReader({
    *  Then the line re-read. Blend → model → produce, word by word. */
   function startWordLessons(missed: string[]) {
     const q = Array.from(new Set(missed.map((w) => w.toLowerCase())))
-      .filter((w) => soundOutSegments(w))
+      .filter((w) => isSightWord(w) || soundOutSegments(w))
       .slice(0, 3);
     if (q.length === 0) { proceed(true); return; }
-    q.forEach(prewarmWordAudio); // Luna's whole-word audio, ready in time
+    q.forEach((w) => {
+      prewarmWordAudio(w); // Luna's whole-word audio, ready in time
+      // Sight words get a spoken explainer instead of a blend — prewarm it.
+      if (isSightWord(w) && !sightLineRef.current.has(w)) {
+        const tok = sessionTokenRef.current;
+        void speakToUrl(`"${w}" is a sight word. We don't sound it out - we just know it by heart! It says "${w}".`)
+          .then((u) => { if (u && sessionTokenRef.current === tok) sightLineRef.current.set(w, u); });
+      }
+    });
     missQueueRef.current = q;
     nextWordLesson();
   }
   function nextWordLesson() {
     const word = missQueueRef.current.shift();
     if (!word) { setWordLesson(null); proceed(true); return; }
+    if (isSightWord(word)) {
+      // SIGHT WORD: no phoneme blend (it would teach it wrong). Show the whole
+      // word lit, Luna explains it's a know-by-heart word + says it, then the
+      // kid says it back.
+      setWordLesson({ word, segs: [{ graph: word, id: "sight" }], segIdx: 1 });
+      setMode("speaking");
+      setCaption(`"${word}" is a sight word - we just know it!`);
+      const goCheck = () => beginWordRead(word, []);
+      const t0 = Date.now();
+      const tok = sessionTokenRef.current;
+      const waitLine = () => {
+        if (sessionTokenRef.current !== tok) return;
+        const line = sightLineRef.current.get(word);
+        if (line) { playUrl(line, goCheck); return; }
+        if (Date.now() - t0 > 3500) {
+          // Explainer TTS not ready — at least model the word itself.
+          const wurl = wordSpeakRef.current.get(normWord(word));
+          if (wurl) playUrl(wurl, goCheck); else goCheck();
+          return;
+        }
+        window.setTimeout(waitLine, 150);
+      };
+      waitLine();
+      return;
+    }
     const segs = soundOutSegments(word)!;
     setWordLesson({ word, segs, segIdx: -1 });
     setMode("speaking");
@@ -1464,10 +1499,10 @@ export default function LunaReader({
       {/* Luna + controls */}
       {(preparing || phase !== "done") ? (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, ...(phase === "intro" && !preparing
-          // Intro: stretch the column to the viewport and push Let's Start
-          // into the BOTTOM third via space-between (marginTop alone kept
-          // leaving the dead space below the button).
-          ? { minHeight: "calc(100dvh - 320px)", justifyContent: "space-between", width: "100%" }
+          // Intro: stretch the column to the viewport and CENTER the orb
+          // vertically (space-between pinned it too high); the button sits
+          // just below the centered orb.
+          ? { minHeight: "calc(100dvh - 320px)", justifyContent: "center", width: "100%" }
           : {}) }}>
           {/* Orb + bunny as ONE centered cluster: the wrapper is sized to the
               composite (orb + the bunny's visible overhang) and centered, with
@@ -1493,7 +1528,7 @@ export default function LunaReader({
           )}
 
           {preparing || phase === "building" ? null : phase === "intro" ? (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, paddingBottom: 8 }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 40, paddingBottom: 8 }}>
               <button type="button" onClick={startFlow} disabled={preparing}
                 style={{ display: "inline-flex", alignItems: "center", gap: 10, border: "none", borderRadius: 999, padding: "20px 56px", fontFamily: BALOO, fontSize: 25, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 14px 36px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
                 <Play className="h-6 w-6" fill="#fff" stroke="none" /> {preparing ? "Getting your story…" : "Let's Start"}
