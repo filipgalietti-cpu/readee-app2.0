@@ -15,6 +15,10 @@
     {
       "path": "/api/cron/community-review",
       "schedule": "*/2 * * * *"
+    },
+    {
+      "path": "/api/cron/monthly-luna-report",
+      "schedule": "23 9 1 * *"
     }
   ]
 }
