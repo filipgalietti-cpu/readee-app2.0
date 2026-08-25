@@ -65,13 +65,32 @@ async function main() {
     const trimWav = path.join(tmp, `${id}.trim.wav`);
     const outMp3 = path.join(tmp, `${id}.mp3`);
     fs.writeFileSync(inWav, wav);
+    // Order matters: SHAPE first (trim → clamp/pad), THEN measure + normalize
+    // — normalizing before the clamp left /f/ and /th/ nearly silent when
+    // their loudest stretch fell past the cut.
+    const STOPS = new Set(["p", "b", "t", "d", "k", "g", "j", "q", "x", "ch", "c_hard", "c_soft"]);
+    const isStop = STOPS.has(id);
+    const MAX_CONT = 0.75; // continuants: long enough to hear, short enough to echo
     const TRIM = "silenceremove=start_periods=1:start_threshold=-58dB:start_silence=0.1,areverse,silenceremove=start_periods=1:start_threshold=-58dB:start_silence=0.1,areverse";
-    let t = spawnSync("ffmpeg", ["-y", "-loglevel", "error", "-i", inWav, "-af", TRIM, trimWav], { encoding: "utf-8" });
+    const t = spawnSync("ffmpeg", ["-y", "-loglevel", "error", "-i", inWav, "-af", TRIM, trimWav], { encoding: "utf-8" });
     if (t.status !== 0) { console.error(`✗ ${id}: trim ${t.stderr?.slice(0, 160)}`); continue; }
     const durOut = spawnSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", trimWav], { encoding: "utf-8" });
     const dur = parseFloat(durOut.stdout.trim() || "0");
-    const src = dur >= 0.15 ? trimWav : inWav; // guard: never ship a stub
-    // Measure peak, then gain to -6dBFS.
+    let src = dur >= 0.15 ? trimWav : inWav; // guard: never ship a stub
+    // Shape: clamp long continuants ("/f/ too long"); pad stop tails so the
+    // release isn't cut dead ("/p/ too short").
+    const shaped = path.join(tmp, `${id}.shaped.wav`);
+    const shapeFilters: string[] = [];
+    if (!isStop && dur > MAX_CONT) {
+      shapeFilters.push(`atrim=0:${MAX_CONT}`, `afade=t=out:st=${(MAX_CONT - 0.09).toFixed(2)}:d=0.09`);
+    }
+    if (isStop) shapeFilters.push("apad=pad_dur=0.12");
+    if (shapeFilters.length) {
+      const sh = spawnSync("ffmpeg", ["-y", "-loglevel", "error", "-i", src, "-af", shapeFilters.join(","), shaped], { encoding: "utf-8" });
+      if (sh.status !== 0) { console.error(`✗ ${id}: shape ${sh.stderr?.slice(0, 160)}`); continue; }
+      src = shaped;
+    }
+    // NOW measure peak on the final shape, gain to -6dBFS, edge-fade, encode.
     const vd = spawnSync("ffmpeg", ["-i", src, "-af", "volumedetect", "-f", "null", "-"], { encoding: "utf-8" });
     const maxMatch = /max_volume:\s*(-?[\d.]+) dB/.exec(vd.stderr || "");
     const maxDb = maxMatch ? parseFloat(maxMatch[1]) : 0;
