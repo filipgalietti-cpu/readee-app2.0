@@ -182,6 +182,10 @@ export async function buildDailyQuestion(opts?: {
   gradeLevel?: string;
   /** When true, regenerate even if a row already exists. */
   force?: boolean;
+  /** Extra subjects to avoid beyond the 8-week lookback. Rebuild sweeps
+   *  pass the WHOLE archive here (the lookback is backward-only, so a
+   *  July rebuild can't see August rows and re-collides without this). */
+  extraAvoid?: string[];
 }): Promise<DailyBuildResult> {
   const date = opts?.date ?? new Date();
   const dateStr = slugForDate(date);
@@ -300,6 +304,7 @@ When in doubt, pivot to: science, animals, weather, sports, space, helpers, food
         const firstBit = (r.passage_body ?? "").replace(/\s+/g, " ").slice(0, 90);
         return `- ${r.passage_title}${firstBit ? ` (${firstBit}...)` : ""}`;
       });
+    for (const extra of opts?.extraAvoid ?? []) recentSubjects.push(`- ${extra}`);
     if (recentSubjects.length) {
       avoidBlock = `\n\nAVOID REPEATS — these SUBJECTS ran in the last two months (title + opening shown). Pick a subject clearly DIFFERENT from every one — different animal, different phenomenon, different story premise. Not a rephrase, not a close cousin, not the same fact under a new title:\n${recentSubjects.join("\n")}`;
     }
