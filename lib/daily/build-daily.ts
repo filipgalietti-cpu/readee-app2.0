@@ -93,6 +93,24 @@ function pickImageStyle(
   return ILLUSTRATION_STYLES[h % ILLUSTRATION_STYLES.length];
 }
 
+/** Filip's rule (Aug 25): an article ships EVERY day. QC failures mean
+ *  "heal and note", never "hide the day" — the only thing allowed to hold
+ *  a day back is a genuine SAFETY failure, and the pipeline heals those
+ *  immediately (safe-harbor image / regenerated text) rather than leaving
+ *  a hole in the archive. */
+function decidePublishState(qc: { overall: string; checks?: Array<{ name?: string; message?: string; severity?: string }> }): "live" | "hidden" {
+  if (qc.overall !== "fail") return "live";
+  const checks = qc.checks ?? [];
+  const safetyHit = checks.some(
+    (c) =>
+      c.severity === "fail" &&
+      /safety|nudit|naked|inappropriate|suggestive|caricature|violence|weapon/i.test(
+        `${c.name ?? ""} ${c.message ?? ""}`,
+      ),
+  );
+  return safetyHit ? "hidden" : "live"; // aesthetic fails ship (and get healed)
+}
+
 /** Filip's rules (Aug 25): every daily MUST have an image, and it must
  *  never be sloppy or unsafe. Ladder: judge the chosen image; on FAIL
  *  retry once with the judge's reason folded in; still failing, drop to
@@ -489,7 +507,7 @@ ${theme.topic}${avoidBlock}`;
       qc_report: qc,
       // Phase 4 pre-publish gate: fails are hidden by default.
       // Heal can promote them later.
-      published_state: qc.overall === "fail" ? "hidden" : "live",
+      published_state: decidePublishState(qc),
     });
 
   if (insertErr) {
@@ -674,7 +692,7 @@ export async function targetedImageRegen(opts: {
       qc_overall: newOverall,
       qc_report: updatedReport,
       // Promote back to live if the heal cleared the fails.
-      published_state: newOverall === "fail" ? "hidden" : "live",
+      published_state: "live" /* heals never unpublish a day (Filip: article-a-day promise) */,
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
@@ -853,7 +871,7 @@ export async function targetedPassageRegen(opts: {
       extra_questions: extras.length > 0 ? extras : null,
       qc_overall: qc.overall,
       qc_report: { ...qc, healedFrom: passageFailReasons.map((c) => c.name) },
-      published_state: qc.overall === "fail" ? "hidden" : "live",
+      published_state: decidePublishState(qc),
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
@@ -986,7 +1004,7 @@ export async function targetedQuestionsRegen(opts: {
       extra_questions: extras.length > 0 ? extras : null,
       qc_overall: qc.overall,
       qc_report: { ...qc, healedFrom: ["lesson.learning_objective"] },
-      published_state: qc.overall === "fail" ? "hidden" : "live",
+      published_state: decidePublishState(qc),
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
@@ -1074,7 +1092,7 @@ export async function targetedAudioRegen(opts: {
       audio_url: newAudioUrl,
       qc_overall: newOverall,
       qc_report: updatedReport,
-      published_state: newOverall === "fail" ? "hidden" : "live",
+      published_state: "live" /* heals never unpublish a day (Filip: article-a-day promise) */,
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
