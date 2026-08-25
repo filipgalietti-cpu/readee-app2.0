@@ -88,8 +88,13 @@ export default function PhonemeRecorderClient({ phonemes }: { phonemes: P[] }) {
     let len = 0; for (const c of chunks) len += c.length;
     const merged = new Float32Array(len);
     let o = 0; for (const c of chunks) { merged.set(c, o); o += c.length; }
-    setTakes((t) => ({ ...t, [id]: encodeWav(merged, rate) }));
+    const wav = encodeWav(merged, rate);
+    setTakes((t) => ({ ...t, [id]: wav }));
     setStaged((s) => ({ ...s, [id]: false }));
+    // AUTO-UPLOAD the take the moment recording stops — takes only exist in
+    // browser memory, and a whole recording session was lost to an unclicked
+    // Upload button. Re-taking simply overwrites the staged file.
+    void uploadBlob(id, wav);
   }
 
   function playTake(id: string) {
@@ -103,9 +108,7 @@ export default function PhonemeRecorderClient({ phonemes }: { phonemes: P[] }) {
     void a.play();
   }
 
-  async function upload(id: string) {
-    const b = takes[id];
-    if (!b) return;
+  async function uploadBlob(id: string, b: Blob) {
     setBusy(id); setErr(null);
     try {
       const fd = new FormData();
@@ -116,9 +119,19 @@ export default function PhonemeRecorderClient({ phonemes }: { phonemes: P[] }) {
       if (!r.ok || !j.ok) throw new Error(j.error || `HTTP ${r.status}`);
       setStaged((s) => ({ ...s, [id]: true }));
     } catch (e) {
-      setErr(e instanceof Error ? e.message : "Upload failed.");
+      setErr(e instanceof Error ? e.message : "Upload failed - hit Upload on that row to retry.");
     } finally {
       setBusy(null);
+    }
+  }
+  async function upload(id: string) {
+    const b = takes[id];
+    if (!b) return;
+    await uploadBlob(id, b);
+  }
+  async function uploadAll() {
+    for (const p of phonemes) {
+      if (takes[p.id] && !staged[p.id]) await uploadBlob(p.id, takes[p.id]);
     }
   }
 
@@ -127,9 +140,12 @@ export default function PhonemeRecorderClient({ phonemes }: { phonemes: P[] }) {
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between rounded-2xl border border-violet-200 bg-violet-50 px-4 py-3 text-sm font-bold text-violet-800 dark:border-violet-900/40 dark:bg-violet-950/30 dark:text-violet-200">
-        <span>{stagedCount} / {phonemes.length} staged</span>
-        <span className="font-mono text-xs">then: npx tsx scripts/finalize-phoneme-takes.ts</span>
+      <div className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-violet-200 bg-violet-50 px-4 py-3 text-sm font-bold text-violet-800 dark:border-violet-900/40 dark:bg-violet-950/30 dark:text-violet-200">
+        <span>{stagedCount} / {phonemes.length} staged · takes auto-upload when you hit Stop</span>
+        <button type="button" onClick={() => void uploadAll()}
+          className="rounded-full bg-violet-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-violet-700">
+          Upload any unsaved
+        </button>
       </div>
       {err && <div className="mb-4 rounded-xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700">{err}</div>}
 
