@@ -62,7 +62,11 @@ FAIL only if a kid would be CONFUSED:
 
 Reason MUST cite the specific issue heard. Don't fail just because the audio "includes more than the prompt" — that's normal.`;
 
-const IMAGE_QUALITY_JUDGE_SYSTEM = `You are auditing an AI-generated children's book illustration. The existing image judge already checks kid-safe + on-prompt. YOUR job is to catch IMAGEN VISUAL FAILURES — the things that make AI art look weird:
+const IMAGE_QUALITY_JUDGE_SYSTEM = `You are auditing an AI-generated children's book illustration for an app used by 4-10 year olds.
+
+CHILD-SAFETY IS ABSOLUTE AND CHECKED FIRST, regardless of what any other judge covers: FAIL immediately for any nudity or partial nudity (shirtless adults, bare torsos, underwear, exposed skin beyond face/arms/lower legs), suggestive poses, or anatomy focus. A passage about sweat/bodies/exercise must show FULLY CLOTHED people. When in doubt about whether skin exposure is appropriate for a kindergartner's app, FAIL.
+
+Beyond safety, YOUR job is to catch IMAGEN VISUAL FAILURES — the things that make AI art look weird:
 
 CONTEXT — Readee's house style is intentionally stylized 2D cartoon. PASS for these stylization choices:
 - Cartoon hands rendered as "mitten" shapes without individual fingers (very common in 2D children's books)
