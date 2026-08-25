@@ -822,6 +822,11 @@ export async function targetedPassageRegen(opts: {
   // skipped the image judge inside runFullQuizQc — that's how the
   // May 12 "wtf animal" row went live: passage was healed, image
   // was never re-judged against the new passage, mismatch shipped.
+  // Aug 25 hardening: judging alone still shipped a squirrel passage
+  // with a pangolin image (mismatch scored warn, and warns publish).
+  // After this heal returns, the caller-visible fix is chained below:
+  // any image.* warn/fail in the post-heal QC triggers an image regen
+  // from the new passage.
   let postHealImageScene: string | null = null;
   const newBriefRes = await generateImageBrief({
     teacherId,
@@ -875,6 +880,21 @@ export async function targetedPassageRegen(opts: {
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
+
+  // Aug 25: a rewritten passage can change SUBJECT (reading-level heal turned
+  // a pangolin fact page into a squirrel story while keeping the pangolin
+  // image). If the post-heal QC flags the reused image at all, chain an
+  // image regen from the NEW passage so text and art always match.
+  const imageFlagged = (qc.checks ?? []).some(
+    (c: any) => String(c.name ?? "").startsWith("image.") && c.severity !== "pass",
+  );
+  if (imageFlagged) {
+    const chained = await targetedImageRegen({ date, force: true });
+    console.info(
+      `[daily] passage-heal chained image regen ${dateStr}:`,
+      JSON.stringify(chained).slice(0, 120),
+    );
+  }
 
   return { ok: true, regenerated: true, newOverall: qc.overall };
 }
@@ -1008,6 +1028,21 @@ export async function targetedQuestionsRegen(opts: {
     })
     .eq("date", dateStr);
   if (updErr) return { ok: false, error: `update: ${updErr.message}` };
+
+  // Aug 25: a rewritten passage can change SUBJECT (reading-level heal turned
+  // a pangolin fact page into a squirrel story while keeping the pangolin
+  // image). If the post-heal QC flags the reused image at all, chain an
+  // image regen from the NEW passage so text and art always match.
+  const imageFlagged = (qc.checks ?? []).some(
+    (c: any) => String(c.name ?? "").startsWith("image.") && c.severity !== "pass",
+  );
+  if (imageFlagged) {
+    const chained = await targetedImageRegen({ date, force: true });
+    console.info(
+      `[daily] passage-heal chained image regen ${dateStr}:`,
+      JSON.stringify(chained).slice(0, 120),
+    );
+  }
 
   return { ok: true, regenerated: true, newOverall: qc.overall };
 }
