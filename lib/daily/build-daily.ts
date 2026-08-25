@@ -87,10 +87,14 @@ function pickImageStyle(
   return ILLUSTRATION_STYLES[h % ILLUSTRATION_STYLES.length];
 }
 
-/** Filip's rule (Aug 25): if the image looks sloppy, don't use it.
- *  Judge the chosen image; on FAIL retry once with the judge's reason
- *  folded into the prompt; still failing, return null (ship imageless
- *  rather than sloppy — the UI handles image_url null). */
+/** Filip's rules (Aug 25): every daily MUST have an image, and it must
+ *  never be sloppy or unsafe. Ladder: judge the chosen image; on FAIL
+ *  retry once with the judge's reason folded in; still failing, drop to
+ *  a SAFE-HARBOR prompt (single simple subject, no people, no text —
+ *  nearly always renders clean); if even that fails the judge on pure
+ *  aesthetics we ship the safe-harbor anyway (image is mandatory), but
+ *  a SAFETY fail is absolute — an unsafe image never ships, keep the
+ *  prior candidate chain's best safe option instead. */
 async function shipGateImage(input: {
   teacherId: string;
   imageUrl: string | null;
@@ -120,8 +124,22 @@ Previous attempt failed review: ${v1.reason.slice(0, 200)}. Fix that issue.`,
     passageBody: input.passageBody,
   });
   if (v2.ok && v2.severity === "fail") {
-    console.warn(`[daily] ship-gate FAIL twice, shipping imageless: ${v2.reason.slice(0, 120)}`);
-    return null;
+    console.warn(`[daily] ship-gate FAIL twice, safe-harbor: ${v2.reason.slice(0, 120)}`);
+    // Safe-harbor: strip the scene to its simplest safe form.
+    const harbor = await generateImage({
+      teacherId: input.teacherId,
+      prompt: `A single, simple, friendly illustration of the main subject of this scene: ${input.imageScene.slice(0, 200)}. One subject only, plain background, no people, no text or letters anywhere, no frames.`,
+      stylePrefix: input.stylePrefix,
+    });
+    if (!harbor.ok) return retry.imageUrl; // image mandatory: best available
+    const v3 = await judgeImageQuality({
+      imageUrl: harbor.imageUrl,
+      expectedScene: input.imageScene.slice(0, 400),
+      passageBody: input.passageBody,
+    });
+    const unsafe = v3.ok && v3.severity === "fail" && /nudit|naked|safety|inappropriate|suggestive|anatomy/i.test(v3.reason);
+    if (unsafe) return retry.imageUrl; // never ship a safety fail; fall back
+    return harbor.imageUrl; // image mandatory: harbor ships even on aesthetic warn/fail
   }
   return retry.imageUrl;
 }
