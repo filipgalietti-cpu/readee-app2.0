@@ -54,9 +54,16 @@ export async function GET(req: NextRequest) {
     byCtx.set(m.context, (byCtx.get(m.context) ?? 0) + 1);
   }
   const mintTotal = (mints ?? []).length;
-  const mintLine = mintTotal
-    ? Array.from(byCtx.entries()).map(([c, n]) => `${c}: ${n}`).join(" · ")
-    : "none recorded";
+  const CTX_LABELS: Record<string, string> = {
+    luna: "Luna (reading tutor)",
+    lesson: "Lessons (Speak steps)",
+    placement: "Placement test",
+    other: "Other",
+  };
+  const mintRows = ["luna", "lesson", "placement", "other"]
+    .filter((c) => byCtx.has(c))
+    .map((c) => `<tr><td style="padding:3px 12px 3px 16px">${CTX_LABELS[c]}</td><td style="text-align:right">${byCtx.get(c)}</td></tr>`)
+    .join("");
 
   const html = `
     <h2 style="margin:0 0 4px">Luna sessions - ${monthLabel}</h2>
@@ -65,7 +72,10 @@ export async function GET(req: NextRequest) {
       <tr><td style="padding:4px 12px 4px 0"><b>Unique readers</b></td><td>${readers}</td></tr>
       <tr><td style="padding:4px 12px 4px 0"><b>Reading time</b></td><td>${minutes} min</td></tr>
       <tr><td style="padding:4px 12px 4px 0"><b>Word accuracy</b></td><td>${accuracy != null ? `${accuracy}%` : "n/a"}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0"><b>Azure speech calls</b></td><td>${mintTotal} (${mintLine})</td></tr>
+    </table>
+    <h3 style="margin:14px 0 4px">Azure speech calls: ${mintTotal}</h3>
+    <table style="border-collapse:collapse;font-size:14px">
+      ${mintRows || `<tr><td style="padding:3px 12px 3px 16px;color:#888">none recorded yet</td><td></td></tr>`}
     </table>
     <p style="font-size:12px;color:#666;margin-top:12px">
       Azure calls = token mints at the streaming choke point (Luna reads, word
