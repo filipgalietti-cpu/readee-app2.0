@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Volume2, Pause } from "lucide-react";
 
 /**
@@ -11,6 +11,17 @@ import { Volume2, Pause } from "lucide-react";
 export default function ReadAloudButton({ audioUrl }: { audioUrl: string | null }) {
   const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
+
+  // The Audio element is detached from the DOM — without this cleanup it
+  // keeps playing after the user navigates away from the article.
+  useEffect(() => {
+    return () => {
+      if (audio) {
+        audio.pause();
+        audio.src = "";
+      }
+    };
+  }, [audio]);
 
   if (!audioUrl) return null;
 
