@@ -53,6 +53,10 @@ export type SceneSpec = {
   mood: string | null;
   /** The single most important action happening in the scene. */
   key_action: string | null;
+  /** "nonfiction" when the passage teaches real-world facts (animals,
+   *  science, history); "fiction" for made-up stories. Drives the
+   *  anthropomorphism rules in the image brief + judge. */
+  genre?: "fiction" | "nonfiction" | null;
 };
 
 const SCENE_SPEC_SCHEMA = {
@@ -75,6 +79,7 @@ const SCENE_SPEC_SCHEMA = {
     time_of_day: { type: Type.STRING, nullable: true },
     mood: { type: Type.STRING, nullable: true },
     key_action: { type: Type.STRING, nullable: true },
+    genre: { type: Type.STRING, nullable: true },
   },
   required: ["characters"],
 };
@@ -90,7 +95,8 @@ Rules:
 - "setting" is the immediate physical place (pond, classroom, jungle, kitchen). One short phrase.
 - "key_action" is the single most important thing happening — what the illustration should depict if it can only show one moment. One short phrase.
 - Concept passages (gravity, photosynthesis) can have empty characters[]; fill setting + key_action.
-- Cap characters at 6. If the passage has more, keep the named/featured ones; drop background extras.`;
+- Cap characters at 6. If the passage has more, keep the named/featured ones; drop background extras.
+- "genre": "nonfiction" if the passage teaches true facts about the real world (real animals, science, history, how things work); "fiction" if it is a made-up story with invented characters or events. When unsure, "nonfiction".`;
 
 /**
  * Extract a SceneSpec from a passage. Returns null on failure rather
@@ -176,7 +182,18 @@ export function renderSpecAsBrief(spec: SceneSpec): string {
     ? `Scene: ${sceneParts.join(" ")}.${moodTail}`
     : `A kid-friendly illustration of a simple scene.${moodTail}`;
 
-  if (spec.characters.length === 0) return sceneSentence;
+  const hardRules = [
+    "No text, letters, words, or numbers anywhere in the image.",
+    "No decorative frames or borders.",
+  ];
+  if (spec.genre === "nonfiction") {
+    hardRules.push(
+      "This is factual content: animals and objects look and behave naturally — no clothing on animals, no waving or human poses, no smiling faces drawn on objects, the sun, or the moon.",
+    );
+  }
+  const rules = `\n\n${hardRules.join(" ")}`;
+
+  if (spec.characters.length === 0) return sceneSentence + rules;
 
   const roster = spec.characters
     .map((c) => {
@@ -190,7 +207,7 @@ export function renderSpecAsBrief(spec: SceneSpec): string {
     })
     .join("; ");
 
-  return `${sceneSentence}\n\nShow exactly: ${roster}. Each item must be drawn as a clearly recognizable real-world species/object — no chimeras, no invented hybrids.`;
+  return `${sceneSentence}\n\nShow exactly: ${roster}. Each item must be drawn as a clearly recognizable real-world species/object — no chimeras, no invented hybrids.${rules}`;
 }
 
 /**

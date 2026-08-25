@@ -26,6 +26,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
 import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
+import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
 import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
 import { trackError } from "@/lib/observability/track";
@@ -71,11 +72,58 @@ const PHOTOREAL_THEMES = new Set(["Tuesday animals", "Thursday nature"]);
  *  animals/nature; otherwise a date-seeded rotation through the
  *  illustration palette so stories vary in look. Deterministic per
  *  date so re-running the cron is stable. */
-function pickImageStyle(themeLabel: string, dateStr: string): string {
+function pickImageStyle(
+  themeLabel: string,
+  dateStr: string,
+  genre?: "fiction" | "nonfiction" | null,
+): string {
   if (PHOTOREAL_THEMES.has(themeLabel)) return PHOTOREAL_STYLE;
+  // Nonfiction fights Imagen's cute-cartoon prior (smiley fireflies kept
+  // shipping despite prompt rules) — bias factual passages to the
+  // naturalistic style so anthropomorphism never enters the frame.
+  if (genre === "nonfiction") return PHOTOREAL_STYLE;
   let h = 0;
   for (const ch of dateStr) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
   return ILLUSTRATION_STYLES[h % ILLUSTRATION_STYLES.length];
+}
+
+/** Filip's rule (Aug 25): if the image looks sloppy, don't use it.
+ *  Judge the chosen image; on FAIL retry once with the judge's reason
+ *  folded into the prompt; still failing, return null (ship imageless
+ *  rather than sloppy — the UI handles image_url null). */
+async function shipGateImage(input: {
+  teacherId: string;
+  imageUrl: string | null;
+  imageScene: string;
+  passageBody: string;
+  stylePrefix?: string;
+}): Promise<string | null> {
+  if (!input.imageUrl) return null;
+  const v1 = await judgeImageQuality({
+    imageUrl: input.imageUrl,
+    expectedScene: input.imageScene.slice(0, 400),
+    passageBody: input.passageBody,
+  });
+  if (!v1.ok || v1.severity !== "fail") return input.imageUrl; // judge error = don't block
+  console.warn(`[daily] ship-gate FAIL, retrying: ${v1.reason.slice(0, 120)}`);
+  const retry = await generateImage({
+    teacherId: input.teacherId,
+    prompt: `${input.imageScene}
+
+Previous attempt failed review: ${v1.reason.slice(0, 200)}. Fix that issue.`,
+    stylePrefix: input.stylePrefix,
+  });
+  if (!retry.ok) return null;
+  const v2 = await judgeImageQuality({
+    imageUrl: retry.imageUrl,
+    expectedScene: input.imageScene.slice(0, 400),
+    passageBody: input.passageBody,
+  });
+  if (v2.ok && v2.severity === "fail") {
+    console.warn(`[daily] ship-gate FAIL twice, shipping imageless: ${v2.reason.slice(0, 120)}`);
+    return null;
+  }
+  return retry.imageUrl;
 }
 
 export type DailyBuildResult =
@@ -317,7 +365,7 @@ ${theme.topic}${avoidBlock}`;
       // single generateImage call when we have no spec (concept
       // passages with empty characters[]) because there's nothing
       // to comparatively grade against.
-      const stylePrefix = pickImageStyle(theme.label, dateStr);
+      const stylePrefix = pickImageStyle(theme.label, dateStr, sceneSpec?.genre ?? null);
       if (sceneSpec) {
         const bestRes = await generateBestImage({
           teacherId,
@@ -341,6 +389,17 @@ ${theme.topic}${avoidBlock}`;
         if (imgRes.ok) imageUrl = imgRes.imageUrl;
       }
     }
+  }
+
+  // Ship-gate: never publish a sloppy image (retry once, else imageless).
+  if (imageUrl && imageScene) {
+    imageUrl = await shipGateImage({
+      teacherId,
+      imageUrl,
+      imageScene,
+      passageBody,
+      stylePrefix: pickImageStyle(theme.label, dateStr, sceneSpec?.genre ?? null),
+    });
   }
 
   // 4) TTS for the passage.
@@ -433,6 +492,12 @@ ${theme.topic}${avoidBlock}`;
  */
 export async function targetedImageRegen(opts: {
   date?: Date;
+  /** Skip the stored-QC gate. For sweeps whose (newer, stricter) judge
+   *  failed an image the OLD stored qc_report considered fine. */
+  force?: boolean;
+  /** Override the style prefix (e.g. force illustration style when the
+   *  genre-default photoreal reads gross — insect close-ups). */
+  stylePrefixOverride?: string;
 }): Promise<
   | { ok: true; regenerated: true; newOverall: string }
   | { ok: true; regenerated: false; reason: string }
@@ -456,19 +521,21 @@ export async function targetedImageRegen(opts: {
   const checks: Array<{ name: string; severity: string; message: string }> =
     Array.isArray(report?.checks) ? report.checks : [];
   const failing = checks.filter((c) => c.severity === "fail");
-  if (failing.length === 0) {
-    return { ok: true, regenerated: false, reason: "no failing checks" };
-  }
-  const allImage = failing.every((c) => c.name.startsWith("image."));
-  if (!allImage) {
-    return {
-      ok: true,
-      regenerated: false,
-      reason: `non-image failures present: ${failing
-        .filter((c) => !c.name.startsWith("image."))
-        .map((c) => c.name)
-        .join(", ")}`,
-    };
+  if (!opts?.force) {
+    if (failing.length === 0) {
+      return { ok: true, regenerated: false, reason: "no failing checks" };
+    }
+    const allImage = failing.every((c) => c.name.startsWith("image."));
+    if (!allImage) {
+      return {
+        ok: true,
+        regenerated: false,
+        reason: `non-image failures present: ${failing
+          .filter((c) => !c.name.startsWith("image."))
+          .map((c) => c.name)
+          .join(", ")}`,
+      };
+    }
   }
 
   // Regen the image. Re-derive the brief from passage so the new
@@ -512,17 +579,19 @@ export async function targetedImageRegen(opts: {
   // candidates is precisely the right move on a known-bad starting
   // point.
   let newImageUrl: string;
+  const healStyle = opts?.stylePrefixOverride ?? pickImageStyle("", dateStr, sceneSpec?.genre ?? null);
   if (sceneSpec) {
     const bestRes = await generateBestImage({
       teacherId,
       prompt: imageScene,
       spec: sceneSpec,
       n: 3,
+      stylePrefix: healStyle,
     });
     if (!bestRes.ok) return { ok: false, error: `image: ${bestRes.error}` };
     newImageUrl = bestRes.imageUrl;
   } else {
-    const imgRes = await generateImage({ teacherId, prompt: imageScene });
+    const imgRes = await generateImage({ teacherId, prompt: imageScene, stylePrefix: healStyle });
     if (!imgRes.ok) return { ok: false, error: `image: ${imgRes.error}` };
     newImageUrl = imgRes.imageUrl;
   }

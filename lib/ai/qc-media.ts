@@ -87,6 +87,12 @@ FAIL for the genuine Imagen failures the kid WILL notice:
 - Wrong number of major body parts (3-armed person, 5-legged dog)
 - Broken / garbled letters in signage
 - Completely incoherent scene that doesn't depict anything specific
+- ANY rendered text, words, letters, or numbers baked into the art (labels, captions, book titles, jar labels, floating words) — signage in a scene is the ONLY exception, and it must be legible and correct
+- COUNTABLE-FEATURE MISMATCH: if the passage or expected scene states a count (eight arms, six legs, three eggs), COUNT them in the image; a mismatch a kid could count is a FAIL
+- FACTUAL-CONTENT ANTHROPOMORPHISM: if the passage is informational/nonfiction about real animals or things, FAIL clothes on animals, animals waving or posing like humans, and smiley faces drawn on inanimate objects (suns, vehicles, food, moons). In FICTION these are fine house-style choices — judge by the passage's genre
+- TIME-OF-DAY / SETTING CONTRADICTION: image shows bright daytime for a passage explicitly about night (or vice versa), or a setting that contradicts a stated one
+- Prominent decorative frames, borders, or smudge bands around or across the art (WARN if subtle, FAIL if prominent)
+- SLOPPY / CHEAP-LOOKING: regardless of style (cartoon OR photoreal), FAIL images that are blurry, muddy, uncanny, greasy-textured, awkwardly cropped, compositionally chaotic, or that an average parent would call ugly or low-quality at a glance. Photoreal macro shots of insects that read as gross rather than fascinating count as FAIL — the bar is "would this look at home in a polished children's app?"
 
 NAMED-FIGURE GUARDRAIL — PASS for thematic stand-ins. When the expected scene contains the phrase "Do not depict <name>'s likeness — show only the activity, era, or setting," the image is INTENTIONALLY a generic stand-in (we have a likeness policy for living and recently-living people). A generic runner for a Roger Bannister passage, a generic farmer for a César Chávez passage, a generic kite for a Benjamin Franklin passage — these are CORRECT by design. PASS unless the image is also visually broken. Do NOT mark "generic person instead of the specific figure" as warn or fail — that's the whole point of the guardrail.
 
