@@ -63,6 +63,12 @@ const ILLUSTRATION_STYLES = [
   "Bright bold 2D cartoon illustration, clean thick outlines, vibrant saturated colors, kid-friendly, no text, no watermarks. ",
   "Cut-paper collage illustration, layered textured paper shapes, playful and tactile, Eric Carle style, no text, no watermarks. ",
   "Soft colored-pencil and crayon illustration, hand-drawn childlike warmth, gentle shading, no text, no watermarks. ",
+  // Spice additions (Aug 25) — each proven-safe for Imagen (simple, strong
+  // conventions it renders cleanly; nothing that invites garbled detail):
+  "Classic storybook ink-and-wash illustration, fine linework with soft muted color washes, timeless picture-book feel, no text, no watermarks. ",
+  "Cozy gouache painting, flat matte colors, rounded friendly shapes, mid-century children's book style, no text, no watermarks. ",
+  "Soft pastel chalk illustration, dreamy blended colors, gentle glowing light, bedtime-story mood, no text, no watermarks. ",
+  "Felt and fabric craft illustration, stitched textures, plush layered shapes, handmade warmth, no text, no watermarks. ",
 ];
 // Themes whose subject is a real animal / natural phenomenon — photoreal
 // beats cartoon here ("a real glowing firefly is cooler than a drawn one").
