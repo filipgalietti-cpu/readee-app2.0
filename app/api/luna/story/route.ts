@@ -7,6 +7,7 @@ import {
   generateMCQQuestions,
   moderateKidInput,
 } from "@/lib/ai/readee-ai";
+import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { assertSafePrompt, assertSafeOutput } from "@/lib/ai/safety";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 import { gradeToken } from "@/lib/luna/target-pattern";
@@ -191,7 +192,38 @@ export async function POST(req: Request) {
         // request out) while still honoring the chosen style well.
         imageModel: "gemini-3.1-flash-image",
       });
-      return img.ok ? img.imageUrl : null;
+      if (!img.ok) return null;
+      // SAFETY GATE (Aug 25, mirrors Daily Readee's ship-gate): the cover is
+      // shown to the CREATOR KID instantly — long before the community review
+      // agent judges it for the public library. Innocent prompts can render
+      // unsafe art (the "Why We Sweat" incident), so judge before display.
+      // Safety fail → one cartoon-safe retry → still bad = no cover (the
+      // story renders fine without one; an unsafe cover never shows).
+      const gate = await judgeImageQuality({
+        imageUrl: img.imageUrl,
+        expectedScene: scenePrompt.slice(0, 400),
+      });
+      const unsafe = (v: typeof gate) =>
+        v.ok && v.severity === "fail" &&
+        /nudit|naked|safety|inappropriate|suggestive|anatomy|caricature/i.test(v.reason);
+      if (!unsafe(gate)) return img.imageUrl; // pass/warn/aesthetic-fail all display
+      console.warn(`[studio] cover safety gate FAIL, retrying: ${gate.ok ? gate.reason.slice(0, 120) : ""}`);
+      const retry = await generateImage({
+        teacherId: user.id,
+        prompt: `${scenePrompt} Everyone fully clothed in everyday clothes, wholesome children's book scene.`,
+        stylePrefix: IMAGE_STYLES.cartoon, // safest style for the retry
+        imageModel: "gemini-3.1-flash-image",
+      });
+      if (!retry.ok) return null;
+      const gate2 = await judgeImageQuality({
+        imageUrl: retry.imageUrl,
+        expectedScene: scenePrompt.slice(0, 400),
+      });
+      if (unsafe(gate2)) {
+        console.warn(`[studio] cover safety gate FAIL twice — no cover shown`);
+        return null;
+      }
+      return retry.imageUrl;
     })(),
     generateMCQQuestions({
       teacherId: user.id,
