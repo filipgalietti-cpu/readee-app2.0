@@ -67,6 +67,16 @@ function lessonToLearnStandard(lesson: { id: string; standards?: string[] }): st
   return std && LEARN_STANDARDS.has(std) ? std : null;
 }
 
+/** Friendly reading-level label for the momentum card. Pre-K is an internal
+ *  tier only — never shown to families — so it surfaces as Kindergarten. */
+function prettyLevel(lvl?: string | null): string {
+  if (!lvl) return "just-right";
+  const s = lvl.toLowerCase();
+  if (s.includes("pre") || s.startsWith("k")) return "Kindergarten";
+  const n = lvl.replace(/\D/g, "");
+  return n ? `Grade ${n}` : lvl;
+}
+
 /**
  * Below-the-fold dashboard subcomponents — dynamic-imported for the
  * bundle-size win but with SSR ON (default) so the server renders
@@ -206,7 +216,7 @@ export default function Dashboard() {
   const setStoreChildren = useChildStore((s) => s.setChildren);
   const setStoreChildData = useChildStore((s) => s.setChildData);
   const [loading, setLoading] = useState(true);
-  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const userPlan = usePlanStore((s) => s.rawPlan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
   // Distinguishes "no children yet (show onboarding)" from "DB blip
@@ -474,8 +484,9 @@ function ChildDashboard({
   const [lessonProgress, setLessonProgress] = useState<LessonProgress[]>([]);
   const [showCurriculum, setShowCurriculum] = useState(false);
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
-  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const userPlan = usePlanStore((s) => s.rawPlan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
+  const dashParams = useSearchParams();
   const setStoreChildren = useChildStore((s) => s.setChildren);
   const setStoreChildData = useChildStore((s) => s.setChildData);
   const childIndex = children.findIndex((c) => c.id === child.id);
@@ -644,27 +655,43 @@ function ChildDashboard({
   // accuracy per standard, and surface the lowest-scoring one (<70%, with
   // at least a few attempts) as a targeted review. No signal → warm-up.
   const [weakStandard, setWeakStandard] = useState<{ standardId: string; title: string } | null>(null);
+  // Distinct standards the child has genuinely mastered (>=80% over a handful
+  // of attempts, all time) — the "skills mastered" number in the momentum card.
+  const [masteredCount, setMasteredCount] = useState(0);
   useEffect(() => {
     async function findWeakSkill() {
       const supabase = supabaseBrowser();
       const since = new Date();
       since.setDate(since.getDate() - 14);
+      // All-time aggregate powers the mastered count; the last-14-days slice
+      // (filtered below) drives the weak-skill review pick.
       const { data } = await supabase
         .from("practice_results")
-        .select("standard_id, questions_correct, questions_attempted")
-        .eq("child_id", child.id)
-        .gte("completed_at", since.toISOString());
-      if (!data || data.length === 0) { setWeakStandard(null); return; }
+        .select("standard_id, questions_correct, questions_attempted, completed_at")
+        .eq("child_id", child.id);
+      if (!data || data.length === 0) { setWeakStandard(null); setMasteredCount(0); return; }
       const agg: Record<string, { correct: number; attempted: number }> = {};
+      const recent: Record<string, { correct: number; attempted: number }> = {};
       for (const r of data) {
         const s = (r as { standard_id?: string }).standard_id;
         if (!s) continue;
+        const correct = Number((r as { questions_correct?: number }).questions_correct) || 0;
+        const attempted = Number((r as { questions_attempted?: number }).questions_attempted) || 0;
         agg[s] ??= { correct: 0, attempted: 0 };
-        agg[s].correct += Number((r as { questions_correct?: number }).questions_correct) || 0;
-        agg[s].attempted += Number((r as { questions_attempted?: number }).questions_attempted) || 0;
+        agg[s].correct += correct; agg[s].attempted += attempted;
+        const at = (r as { completed_at?: string }).completed_at;
+        if (at && new Date(at) >= since) {
+          recent[s] ??= { correct: 0, attempted: 0 };
+          recent[s].correct += correct; recent[s].attempted += attempted;
+        }
       }
+      let mastered = 0;
+      for (const v of Object.values(agg)) {
+        if (v.attempted >= 4 && v.correct / v.attempted >= 0.8) mastered++;
+      }
+      setMasteredCount(mastered);
       let worst: { standardId: string; acc: number } | null = null;
-      for (const [s, v] of Object.entries(agg)) {
+      for (const [s, v] of Object.entries(recent)) {
         if (v.attempted < 3) continue;
         const acc = v.correct / v.attempted;
         if (acc >= 0.7) continue;
@@ -783,7 +810,35 @@ function ChildDashboard({
       ? { href: nextLessonHref, text: completedCount === 0 ? "Start your adventure" : "Keep going", sub: `Next: ${nextLesson.title}` }
       : { href: `/practice-hub?child=${child.id}`, text: "Practice time!", sub: "You finished every lesson - amazing!" };
 
-  const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string }> = firstDay
+  // Reverse trial: a new reader gets full Readee+ access for the first 7 days
+  // (no card), then drops to the limited free tier. Full access = paid OR in
+  // trial; the locks + upgrade card only appear once the trial is over.
+  const TRIAL_DAYS = 7;
+  const signupMs = child.created_at ? new Date(child.created_at).getTime() : Date.now();
+  const daysSinceSignup = Math.max(0, Math.floor((Date.now() - signupMs) / 86400000));
+  const realTrialLeft = Math.max(0, TRIAL_DAYS - daysSinceSignup);
+
+  // Dev-only preview toggle (ignored in production):
+  //   ?preview=trial   full access + trial countdown banner
+  //   ?preview=free    post-trial limited (locks + upgrade card)
+  //   ?preview=locked  lapsed subscriber (harder locks + reactivate pitch)
+  //   ?preview=plus    paid, full access, no nudges
+  const previewMode = process.env.NODE_ENV !== "production" ? dashParams.get("preview") : null;
+  const previewing = !!previewMode;
+  const isPaid = previewMode ? previewMode === "plus" : userPlan === "premium";
+  const inTrial = previewMode ? previewMode === "trial" : (!isPaid && realTrialLeft > 0);
+  // Lapsed = had Readee+ (trial or paid) and let it end. Same free entitlement,
+  // but a win-back pitch built on the progress they'd lose. (Real detection —
+  // a canceled/expired subscription flag — is a follow-up; preview-only today.)
+  const lapsed = previewMode === "locked";
+  const accessFull = isPaid || inTrial; // full access → no locks
+  const trialLeft = previewMode === "trial" ? 5 : realTrialLeft;
+  const upgradeHref = `/upgrade?reason=${lapsed ? "winback" : "momentum"}&child=${child.id}`;
+  // Post-trial free = 1 lesson/grade; lock the next lesson so the free/paid line
+  // is honest + visible. Full-access readers (paid or in-trial) never see it.
+  const lessonLocked = !accessFull && (completedCount >= 1 || previewMode === "free" || lapsed) && !!nextLesson;
+
+  const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string; locked?: boolean }> = (firstDay && !previewing)
     ? [
         { num: "1", label: "Take the reading quiz", sub: "Finds your just-right level", status: "cur", href: `/assessment?child=${child.id}` },
         { num: "2", label: "Your first lesson", sub: "Readee reads along with you", status: "todo" },
@@ -793,14 +848,30 @@ function ChildDashboard({
         weakStandard
           ? { num: "1", label: `Review: ${weakStandard.title}`, sub: dailyGoalMet ? "Done - nice work!" : "You missed a few of these last time", status: dailyGoalMet ? "done" : "cur", href: `/practice?standard=${encodeURIComponent(weakStandard.standardId)}&child=${child.id}` }
           : { num: "1", label: "Warm-up practice", sub: dailyGoalMet ? "Done - nice work!" : "5 quick questions", status: dailyGoalMet ? "done" : "cur", href: `/practice-hub?child=${child.id}` },
-        { num: "2", label: nextLesson ? nextLesson.title : "All lessons done!", sub: nextLesson ? "About 5 minutes" : "You finished them all", status: nextLesson ? (dailyGoalMet ? "cur" : "todo") : "done", href: nextLesson ? nextLessonHref : undefined },
-        { num: "3", label: "Read a story", sub: "You pick which one", status: "todo", href: `/stories?child=${child.id}` },
+        { num: "2", label: nextLesson ? nextLesson.title : "All lessons done!", sub: lessonLocked ? "Unlock the rest of the lessons" : nextLesson ? "About 5 minutes" : "You finished them all", status: nextLesson ? (dailyGoalMet ? "cur" : "todo") : "done", href: lessonLocked ? upgradeHref : nextLesson ? nextLessonHref : undefined, locked: lessonLocked },
+        { num: "3", label: "Read a story", sub: lapsed ? "Reactivate to keep reading" : "You pick which one", status: "todo", href: lapsed ? upgradeHref : `/stories?child=${child.id}`, locked: lapsed },
       ];
-  const goalTotal = planSteps.length;
-  const goalDone = planSteps.filter((s) => s.status === "done").length;
+  // Locked (premium-gated) steps don't count toward the daily goal ring — a
+  // free reader shouldn't see their ring capped by content they can't reach.
+  const goalTotal = planSteps.filter((s) => !s.locked).length;
+  const goalDone = planSteps.filter((s) => s.status === "done" && !s.locked).length;
 
   // Path teaser nodes from real completion within the current grade.
   const pathRatio = lessons.length > 0 ? completedCount / lessons.length : 0;
+
+  // Momentum — the "getting better" proof that heads the dashboard and drives
+  // the day-7 upgrade card. Same delta data will feed the parent report + email.
+  let gradeName = prettyLevel(child.reading_level);
+  if (previewing && gradeName === "just-right") gradeName = "Grade 1";
+  const remainingLessons = Math.max(0, lessons.length - completedCount);
+  const momentum = (firstDay && !previewing) ? null : {
+    levelName: gradeName,
+    skillsMastered: masteredCount,
+    progressPct: Math.round(pathRatio * 100),
+    nextMilestone: remainingLessons > 0
+      ? `${remainingLessons} lesson${remainingLessons === 1 ? "" : "s"} to your ${gradeName} badge`
+      : `You finished every ${gradeName} lesson!`,
+  };
   const doneNodes = Math.min(4, Math.max(0, Math.round(pathRatio * 5)));
   const pathNodes: Array<"done" | "cur" | "lock"> = firstDay
     ? ["cur", "lock", "lock", "lock", "lock"]
@@ -809,6 +880,12 @@ function ChildDashboard({
   const kidHomeProps = {
     childId: child.id,
     firstDay,
+    firstName: kidName,
+    fullAccess: accessFull,
+    trial: inTrial ? { daysLeft: trialLeft } : null,
+    lapsed,
+    upgradeHref,
+    momentum,
     bubbleTitle: firstDay ? `Welcome, ${kidName}!` : `${greeting.text}, ${kidName}!`,
     bubbleSub: firstDay
       ? "Readee is ready to read with you."

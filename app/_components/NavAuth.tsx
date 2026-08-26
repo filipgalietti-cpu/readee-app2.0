@@ -40,7 +40,7 @@ export default function NavAuth() {
     pathname === "/signup";
 
   const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
-  const userPlan = usePlanStore((s) => s.plan);
+  const userPlan = usePlanStore((s) => s.rawPlan);
   const fetchPlan = usePlanStore((s) => s.fetch);
   const [userName, setUserName] = useState<string>("");
   const [userAvatar, setUserAvatar] = useState<string | null>(null);

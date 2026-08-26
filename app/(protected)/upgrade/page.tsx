@@ -43,7 +43,7 @@ function UpgradeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const reason = searchParams.get("reason");
-  const plan = usePlanStore((s) => s.plan);
+  const plan = usePlanStore((s) => s.rawPlan);
   const fetchPlan = usePlanStore((s) => s.fetch);
 
   const [billing, setBilling] = useState<"monthly" | "annual">("annual");

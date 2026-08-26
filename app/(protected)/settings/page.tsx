@@ -119,7 +119,7 @@ export default function Settings() {
   const [gradeRec, setGradeRec] = useState<{ id: string; name: string } | null>(null);
 
   // Plan
-  const userPlan = usePlanStore((s) => s.plan) ?? "free";
+  const userPlan = usePlanStore((s) => s.rawPlan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const setStorePlan = usePlanStore((s) => s.setPlan);
   const [billingBusy, setBillingBusy] = useState(false);

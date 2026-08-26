@@ -64,6 +64,9 @@ export async function POST(req: NextRequest) {
         .update({
           plan: grantsAccess ? tier : "free",
           stripe_subscription_id: subscription.id,
+          // Mark that this account has had a paid subscription, so a later
+          // cancel is treated as "lapsed" (win-back) not never-paid.
+          ...(grantsAccess ? { had_subscription: true } : {}),
         })
         .eq("stripe_customer_id", customerId)
         .select("id, email")
@@ -172,7 +175,7 @@ export async function POST(req: NextRequest) {
         } catch { /* default to premium */ }
         const { data: up } = await admin
           .from("profiles")
-          .update({ plan: tier, stripe_subscription_id: subId })
+          .update({ plan: tier, stripe_subscription_id: subId, had_subscription: true })
           .eq("stripe_customer_id", customerId)
           .select("id")
           .maybeSingle();
