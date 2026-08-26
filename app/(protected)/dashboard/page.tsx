@@ -32,6 +32,7 @@ import LevelBadge from "@/app/_components/LevelBadge";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { computeLevel } from "@/lib/levels/levels";
 import KidHome from "./_components/KidHome";
+import UpgradeCelebration from "./_components/UpgradeCelebration";
 import WhatsNew from "./_components/WhatsNew";
 import { OUTFITS } from "@/app/_components/Bunny/outfits";
 
@@ -352,34 +353,10 @@ export default function Dashboard() {
   if (selectedChild) {
     return (
       <>
-        {/* Checkout Success Banner */}
-        <AnimatePresence>
-          {showCheckoutSuccess && (
-            <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md"
-            >
-              <div className="flex items-center gap-3 rounded-xl bg-emerald-50 border border-emerald-200 px-5 py-4 shadow-lg">
-                <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="w-4 h-4 text-emerald-600" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-emerald-900">Welcome to Readee+!</p>
-                  <p className="text-xs text-emerald-600">Your 7-day free trial has started. Enjoy full access!</p>
-                </div>
-                <button
-                  onClick={() => setShowCheckoutSuccess(false)}
-                  className="text-emerald-400 hover:text-emerald-600 text-lg leading-none flex-shrink-0"
-                  aria-label="Dismiss"
-                >
-                  &times;
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Upgrade celebration (full-screen confetti) on return from checkout */}
+        {showCheckoutSuccess && (
+          <UpgradeCelebration onClose={() => setShowCheckoutSuccess(false)} />
+        )}
         <ChildDashboard
           child={selectedChild}
           children={children}
