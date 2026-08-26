@@ -37,22 +37,20 @@ export const PREMIUM_FEATURES = [
   "Full K–4 lesson library - 162 interactive lessons",
   "Unlimited practice across 200+ Common Core standards",
   "All 25 decodable stories with read-aloud audio",
-  "Reading Buddy - live AI conversation partner",
-  "Homework Scanner - photo to instant practice",
-  "Ask Readee - generate custom passages on any topic",
-  "Daily question of the day",
+  "Luna - your child's AI reading tutor: reads along, grades out loud, writes stories",
+  "Unit + graduation exams to track real progress",
   "Spaced-repetition review engine",
-  "Parent progress reports + skill mastery analytics",
+  "Parent progress reports + skill-mastery analytics",
   "Cancel anytime",
 ] as const;
 
 export const FREE_FEATURES = [
   "Adaptive K–4 placement test",
-  "First lesson per grade level",
+  "First unit (5 lessons) per grade",
   "10 practice questions per standard",
   "2 stories per grade",
-  "Daily question (free, no login)",
-  "Community library (free, no login)",
+  "Daily Readee - a fresh reading passage every day",
+  "Community library - browse and read",
 ] as const;
 
 /* ─── Plan metadata ──────────────────────────────────────── */
@@ -130,7 +128,7 @@ export const REASON_COPY: Record<string, { title: string; subtitle: string }> = 
   tools_hub: {
     title: "Unlock everything in Readee+.",
     subtitle:
-      "Reading Buddy, Homework Scanner, Ask Readee, and the full reading toolkit - at your child's exact level.",
+      "Luna the AI reading tutor, every lesson and exam, and the full reading program - at your child's exact level.",
   },
 };
 
