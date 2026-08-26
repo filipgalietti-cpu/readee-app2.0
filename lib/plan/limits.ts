@@ -10,7 +10,7 @@ export const FREE_LIMITS = {
   /** Free taste of "Read with Luna" — completed reads before the upgrade wall. */
   lunaReadsFree: 3,
   /** Free taste of "Story with Luna" — personalized stories before upgrade. */
-  personalizedStoriesFree: 1,
+  personalizedStoriesFree: 3,
   /** Practice questions per standard on free plan */
   practicePerStandard: 10,
   /** Placement test — available on free */

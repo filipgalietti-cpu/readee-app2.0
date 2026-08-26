@@ -9,7 +9,6 @@ import {
 } from "@/lib/ai/readee-ai";
 import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { assertSafePrompt, assertSafeOutput } from "@/lib/ai/safety";
-import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { gradeToken } from "@/lib/luna/target-pattern";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
@@ -112,17 +111,8 @@ export async function POST(req: Request) {
   if ((child as any).parent_id !== user.id) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
-  const { data: prof } = await supabase
-    .from("profiles")
-    .select("plan, created_at, had_subscription")
-    .eq("id", user.id)
-    .maybeSingle();
-  if (!hasFullAccessFromProfile(prof as any)) {
-    return NextResponse.json(
-      { error: "Luna requires a paid plan.", reason: "plan" },
-      { status: 402 },
-    );
-  }
+  // Luna Story Studio is a free-taste feature: any signed-in parent-of-child may
+  // create; the free allowance (3 stories) is enforced at the studio, not here.
 
   // Story Studio uses its OWN storyteller (generateKidStory), NOT the decodable
   // comprehension generator - so "a tiger learning about pollution" stays a

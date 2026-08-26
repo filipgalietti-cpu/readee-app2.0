@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
@@ -37,10 +36,8 @@ export async function POST(req: Request) {
   const region = process.env.AZURE_SPEECH_REGION;
   if (!key || !region) return NextResponse.json({ ok: false, configured: false }, { status: 200 });
 
-  const { data: profile } = await supabase.from("profiles").select("plan, created_at, had_subscription").eq("id", user.id).maybeSingle();
-  if (!hasFullAccessFromProfile(profile as any)) {
-    return NextResponse.json({ error: "Luna requires a paid plan.", reason: "plan" }, { status: 402 });
-  }
+  // Luna is a free-taste feature: any signed-in reader may use it. The free
+  // allowance (3 tries) is enforced at the read page / studio, not here.
 
   try {
     const r = await fetch(`https://${region}.api.cognitive.microsoft.com/sts/v1.0/issueToken`, {
