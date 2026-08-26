@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { gradeLine } from "@/lib/ai/luna-grade";
 import { assessPronunciation, azureConfigured } from "@/lib/ai/azure-pronounce";
-import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
+import { hasFullAccessFromProfile } from "@/lib/plan/access";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -45,10 +45,10 @@ export async function POST(req: NextRequest) {
 
   const { data: callerProfile } = await supabase
     .from("profiles")
-    .select("plan")
+    .select("plan, created_at, had_subscription")
     .eq("id", user.id)
     .maybeSingle();
-  if (!hasAnyPaidTier(((callerProfile as any)?.plan ?? "free") as string)) {
+  if (!hasFullAccessFromProfile(callerProfile as any)) {
     return NextResponse.json({ error: "Luna requires a paid plan.", reason: "plan" }, { status: 402 });
   }
 

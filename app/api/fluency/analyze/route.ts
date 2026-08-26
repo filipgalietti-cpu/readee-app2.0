@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { analyzeFluencyReading } from "@/lib/ai/build-fluency";
-import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
+import { hasFullAccessFromProfile } from "@/lib/plan/access";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 120; // long-ish — Gemini audio analysis can take ~30s
@@ -72,11 +72,10 @@ export async function POST(req: NextRequest) {
   // of a classroom already have a paid plan via their classroom seat.
   const { data: callerProfile } = await supabase
     .from("profiles")
-    .select("plan")
+    .select("plan, created_at, had_subscription")
     .eq("id", user.id)
     .maybeSingle();
-  const callerPlan = ((callerProfile as any)?.plan ?? "free") as string;
-  if (!hasAnyPaidTier(callerPlan)) {
+  if (!hasFullAccessFromProfile(callerProfile as any)) {
     return NextResponse.json(
       {
         error: "Fluency analysis requires a paid plan. Upgrade to unlock.",
