@@ -66,6 +66,11 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
   const [grade, setGrade] = useState<string | null>(null);
   const [avatar, setAvatar] = useState("avatar_fox");
   const [greetIdx, setGreetIdx] = useState(0);
+  // Runtime "Nice to meet you, {name}!" clip (Autonoe), pre-generated while the
+  // kid is still on the name step so it's ready — with their real name — when
+  // step 3 greets them. Keyed to the name so a re-type regenerates.
+  const [nameAudio, setNameAudio] = useState<{ name: string; url: string } | null>(null);
+  const nameAudioFetching = useRef(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const greetTimer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -76,6 +81,28 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
     greetTimer.current = setInterval(() => setGreetIdx((i) => i + 1), 5000);
     return () => { if (greetTimer.current) clearInterval(greetTimer.current); };
   }, []);
+
+  // Pre-generate the name greeting on the name step (downtime) so step 3 can
+  // greet the kid by name in Autonoe's voice with no wait. Debounced; skips
+  // work once we already hold the clip for this exact name.
+  useEffect(() => {
+    const n = name.trim();
+    if (step !== 2 || n.length < 1 || nameAudio?.name === n || nameAudioFetching.current) return;
+    const t = setTimeout(async () => {
+      nameAudioFetching.current = true;
+      try {
+        const res = await fetch("/api/luna/speak", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: `Nice to meet you, ${n}!` }),
+        });
+        const j = await res.json();
+        if (j?.ok && j.audioUrl) setNameAudio({ name: n, url: j.audioUrl });
+      } catch { /* fall back to the recorded clip / browser speech */ }
+      finally { nameAudioFetching.current = false; }
+    }, 700);
+    return () => clearTimeout(t);
+  }, [name, step, nameAudio]);
 
   // Rehydrate an in-progress draft (a refresh mid-flow shouldn't wipe it).
   useEffect(() => {
@@ -123,7 +150,11 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
     try {
       window.speechSynthesis?.cancel();
       if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; }
-      const url = supabaseBrowser().storage.from("audio").getPublicUrl(`onboarding/welcome-${n}.mp3`).data.publicUrl;
+      // Step 3 greets by name — play the runtime clip (pre-fetched on the name
+      // step) so it actually says their name; else the generic recorded clip.
+      const url = n === 3 && nameAudio && nameAudio.name === (name.trim() || "Reader")
+        ? nameAudio.url
+        : supabaseBrowser().storage.from("audio").getPublicUrl(`onboarding/welcome-${n}.mp3`).data.publicUrl;
       const a = new Audio(url);
       audioRef.current = a;
       a.play().catch(fallback);
