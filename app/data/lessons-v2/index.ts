@@ -201,6 +201,8 @@ import { twoWaysToSee, twoWaysToSeeImages } from "./two-ways-to-see";
 
 import { scienceWordClues, scienceWordCluesImages } from "./science-word-clues";
 
+import { findItFast, findItFastImages } from "./find-it-fast";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -309,4 +311,5 @@ export const LESSONS: Record<string, LessonEntry> = {
   "story-shape": { lesson: storyShape, images: storyShapeImages },
   "two-ways-to-see": { lesson: twoWaysToSee, images: twoWaysToSeeImages },
   "science-word-clues": { lesson: scienceWordClues, images: scienceWordCluesImages },
+  "find-it-fast": { lesson: findItFast, images: findItFastImages },
 };

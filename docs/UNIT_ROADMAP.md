@@ -11,7 +11,7 @@
 > beat — not just quiz the skill. Reference: U1 lessons (RF.K.2a Rhyme Time =
 > hear it → build it → SAY it).
 
-**Progress: 101 / 201 standards shipped · 1 / 21 units complete**
+**Progress: 102 / 201 standards shipped · 1 / 21 units complete**
 
 ## Kindergarten (38 standards · 4 units)
 
@@ -174,7 +174,7 @@
 | ☑ | RL.2.5 | Describe the overall structure of a story, including how the beginning introduces the story and the ending concludes the action. | story read-along → choose/highlight comprehension beats → retell/sequence |
 | ☑ | RL.2.6 | Acknowledge differences in the points of view of characters. | story read-along → choose/highlight comprehension beats → retell/sequence |
 | ☑ | RI.2.4 | Determine the meaning of words and phrases in a text relevant to a grade 2 topic or subject area. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | RI.2.5 | Know and use various text features to locate key facts or information efficiently. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | RI.2.5 | Know and use various text features to locate key facts or information efficiently. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☐ | RI.2.6 | Identify the main purpose of a text, including what the author wants to answer, explain, or describe. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☐ | L.2.4d | Use knowledge of the meaning of individual words to predict the meaning of compound words. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☐ | L.2.4e | Use glossaries and beginning dictionaries to determine or clarify the meaning of words. | word-work: choose/sort meaning + grammar beats → speak production |

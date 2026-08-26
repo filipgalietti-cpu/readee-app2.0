@@ -110,6 +110,7 @@ import { wordMusicQuiz } from "./word-music-quiz";
 import { storyShapeQuiz } from "./story-shape-quiz";
 import { twoWaysToSeeQuiz } from "./two-ways-to-see-quiz";
 import { scienceWordCluesQuiz } from "./science-word-clues-quiz";
+import { findItFastQuiz } from "./find-it-fast-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -220,4 +221,5 @@ export const QUIZZES: Record<string, QuizDef> = {
   "story-shape-quiz": storyShapeQuiz,
   "two-ways-to-see-quiz": twoWaysToSeeQuiz,
   "science-word-clues-quiz": scienceWordCluesQuiz,
+  "find-it-fast-quiz": findItFastQuiz,
 };
