@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 import { FREE_LIMITS } from "@/lib/plan/limits";
+import { resolveAccess } from "@/lib/plan/access";
 import { createClient } from "@/lib/supabase/server";
 import passagesJson from "@/app/data/fluency-passages.json";
 import libraryJson from "@/app/data/luna-library.json";
@@ -35,7 +36,13 @@ export default async function LunaReadPage({
   searchParams: Promise<{ child?: string }>;
 }) {
   const profile = await requireProfile();
-  const paid = hasAnyPaidTier((profile as any).plan);
+  // Full access = paid OR inside the 7-day reverse trial, so a trial reader
+  // isn't walled after 3 Luna reads.
+  const paid = resolveAccess({
+    plan: (profile as any).plan,
+    signupAt: (profile as any).created_at,
+    everSubscribed: (profile as any).had_subscription,
+  }).hasFullAccess;
 
   const { child: childIdParam } = await searchParams;
   const supabase = await createClient();

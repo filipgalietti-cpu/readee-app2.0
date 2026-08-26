@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { decodePlayCookie, PLAY_COOKIE_NAME } from "@/lib/auth/play-mode";
+import { effectivePlan } from "@/lib/plan/access";
 
 /**
  * Proxy (Next.js 16 middleware).
@@ -36,7 +37,11 @@ const PLAY_MODE_BLOCKED_PREFIXES = [
  *  /analytics is intentionally NOT here: free users now land on the page and
  *  see the in-page free preview + upgrade overlay (a soft conversion surface),
  *  instead of a hard redirect. It still requires auth (AUTH_REQUIRED_PREFIXES). */
-const PREMIUM_ONLY_ROUTES: Record<string, string> = {};
+const PREMIUM_ONLY_ROUTES: Record<string, string> = {
+  // Daily Readee is a Readee+ feature. Trial readers pass (see trial-aware
+  // check below); post-trial free readers are sent to /upgrade.
+  "/daily": "daily_readee",
+};
 
 /** Routes that require authentication — redirect to /login */
 const AUTH_REQUIRED_PREFIXES = [
@@ -181,11 +186,13 @@ export async function proxy(request: NextRequest) {
     if (reason) {
       const { data: profile } = await supabase
         .from("profiles")
-        .select("plan")
+        .select("plan, created_at")
         .eq("id", user.id)
         .single();
 
-      if (profile?.plan !== "premium") {
+      // Trial-aware: a reader inside the 7-day reverse trial resolves to
+      // "premium", so the trial unlocks premium-only routes too.
+      if (effectivePlan(profile?.plan ?? "free", (profile as { created_at?: string } | null)?.created_at ?? null) !== "premium") {
         const url = request.nextUrl.clone();
         url.pathname = "/upgrade";
         url.searchParams.set("reason", reason);

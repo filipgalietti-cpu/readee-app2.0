@@ -281,7 +281,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
   const childIndex = activeChild ? storeChildren.indexOf(activeChild) : 0;
   const avatarSrc = activeChild ? getChildAvatarImage(activeChild, childIndex === -1 ? 0 : childIndex) : null;
 
-  const plan = usePlanStore((s) => s.plan);
+  const plan = usePlanStore((s) => s.rawPlan);
   const hasAdminScope = usePlanStore((s) => s.hasAdminScope);
   const ownsClassroom = usePlanStore((s) => s.ownsClassroom);
   const planHasChildren = usePlanStore((s) => s.hasChildren);

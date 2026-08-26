@@ -29,6 +29,7 @@ import {
   Compass,
   Trophy,
   Lock,
+  TrendingUp,
 } from "lucide-react";
 
 const BALOO = "var(--font-baloo), 'Baloo 2', sans-serif";
@@ -45,9 +46,28 @@ export interface OutfitChoice {
   owned: boolean;
 }
 
+export interface Momentum {
+  levelName: string;
+  skillsMastered: number;
+  progressPct: number;
+  nextMilestone: string;
+}
+
 export interface KidHomeProps {
   childId: string;
   firstDay: boolean;
+  firstName: string;
+  /** Full access — paid OR inside the 7-day reverse trial. Gates the locks
+   *  + the post-trial upgrade card. */
+  fullAccess: boolean;
+  /** In-trial countdown; null when not in the reverse trial. */
+  trial: { daysLeft: number } | null;
+  /** Lapsed = had Readee+ and let it end. Swaps the upgrade card for a
+   *  win-back reactivation pitch. */
+  lapsed?: boolean;
+  upgradeHref: string;
+  /** "Getting better" proof card; null on the very first day (no data yet). */
+  momentum: Momentum | null;
   // hero
   bubbleTitle: string;
   bubbleSub: string;
@@ -67,7 +87,7 @@ export interface KidHomeProps {
   level: { name: string; num: number; xpPct: number; xpLabel: string };
   // today's plan
   planBadge: string;
-  planSteps: Array<{ num: string; label: string; sub: string; status: PlanStatus; href?: string }>;
+  planSteps: Array<{ num: string; label: string; sub: string; status: PlanStatus; href?: string; locked?: boolean }>;
   // path teaser
   path: { nodes: NodeKind[]; unitTitle: string; unitPct: number; unitSub: string; href: string };
   // keep-it-up
@@ -189,6 +209,40 @@ export default function KidHome(p: KidHomeProps) {
         </div>
       </div>
 
+      {/* ── Momentum: the "getting better" proof ── */}
+      {p.momentum && (
+        <div style={{ background: "linear-gradient(160deg,#f5f3ff 0%,#eef2ff 55%,#ffffff 100%)", border: "1px solid #e0e7ff", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "20px 24px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 13, minWidth: 0 }}>
+              <div style={{ width: 46, height: 46, borderRadius: 14, flex: "none", background: "linear-gradient(135deg,#4338ca,#7c3aed)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <TrendingUp className="h-[26px] w-[26px] text-white" strokeWidth={2.4} />
+              </div>
+              <div style={{ minWidth: 0 }}>
+                <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".09em", textTransform: "uppercase", color: "#4338ca" }}>{p.firstName} is getting better</div>
+                <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 20, color: "#18181b", lineHeight: 1.15 }}>Reading at a {p.momentum.levelName} level</div>
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: 8, flex: "none" }}>
+              <div style={{ background: "#fff", border: "1px solid #e0e7ff", borderRadius: 14, padding: "8px 14px", textAlign: "center", minWidth: 92 }}>
+                <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 22, lineHeight: 1, color: "#4338ca" }}>{p.momentum.skillsMastered}</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#71717a", marginTop: 3 }}>skills mastered</div>
+              </div>
+              <div style={{ background: "#fff", border: "1px solid #e0e7ff", borderRadius: 14, padding: "8px 14px", textAlign: "center", minWidth: 92 }}>
+                <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 22, lineHeight: 1, color: "#4338ca" }}>{p.momentum.progressPct}%</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#71717a", marginTop: 3 }}>to next badge</div>
+              </div>
+            </div>
+          </div>
+          <div style={{ height: 12, borderRadius: 99, background: "#e0e7ff", marginTop: 16, overflow: "hidden" }}>
+            <div style={{ height: "100%", borderRadius: 99, background: "linear-gradient(90deg,#4338ca,#8b5cf6)", width: `${p.momentum.progressPct}%`, transition: "width .8s cubic-bezier(0.34,1.56,0.64,1)" }} />
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 7, marginTop: 11 }}>
+            <Star className="h-4 w-4" fill="#f59e0b" stroke="#f59e0b" />
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#3f3f46" }}>{p.momentum.nextMilestone}</span>
+          </div>
+        </div>
+      )}
+
       {/* ── Split stage: hero + right column ── */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(330px,1fr))", gap: 20, alignItems: "stretch" }}>
         {/* Hero */}
@@ -299,25 +353,29 @@ export default function KidHome(p: KidHomeProps) {
               {p.planSteps.map((s, i) => {
                 const done = s.status === "done";
                 const cur = s.status === "cur";
+                const locked = !!s.locked;
                 const inner = (
                   <div style={{
                     display: "flex", alignItems: "center", gap: 14, padding: "12px 14px", borderRadius: 18,
-                    background: cur ? "#f5f3ff" : done ? "#f0fdf4" : "#fafafa",
-                    border: `2px solid ${cur ? "#ddd6fe" : done ? "#dcfce7" : "#f4f4f5"}`,
+                    background: locked ? "#fafafa" : cur ? "#f5f3ff" : done ? "#f0fdf4" : "#fafafa",
+                    border: `2px solid ${locked ? "#eef2ff" : cur ? "#ddd6fe" : done ? "#dcfce7" : "#f4f4f5"}`,
+                    borderStyle: locked ? "dashed" : "solid",
                   }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: "50%", flex: "none", display: "flex", alignItems: "center", justifyContent: "center",
-                      background: done ? "#10b981" : cur ? "linear-gradient(135deg,#4338ca,#7c3aed)" : "#e4e4e7",
+                      background: locked ? "#eef2ff" : done ? "#10b981" : cur ? "linear-gradient(135deg,#4338ca,#7c3aed)" : "#e4e4e7",
                       color: done || cur ? "#fff" : "#a1a1aa", fontFamily: BALOO, fontWeight: 800, fontSize: 17,
-                      animation: cur ? "readeePulse 2s ease-in-out infinite" : "none",
+                      animation: cur && !locked ? "readeePulse 2s ease-in-out infinite" : "none",
                     }}>
-                      {done ? <Check className="h-5 w-5" strokeWidth={3.5} /> : s.num}
+                      {locked ? <Lock className="h-[18px] w-[18px]" stroke="#818cf8" strokeWidth={2.4} /> : done ? <Check className="h-5 w-5" strokeWidth={3.5} /> : s.num}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontWeight: 800, fontSize: 15.5, color: done ? "#a1a1aa" : "#18181b", textDecoration: done ? "line-through" : "none" }}>{s.label}</div>
+                      <div style={{ fontWeight: 800, fontSize: 15.5, color: locked ? "#71717a" : done ? "#a1a1aa" : "#18181b", textDecoration: done ? "line-through" : "none" }}>{s.label}</div>
                       <div style={{ fontSize: 12.5, fontWeight: 700, color: "#a1a1aa" }}>{s.sub}</div>
                     </div>
-                    <ChevronRight className="h-5 w-5" stroke={cur ? "#7c3aed" : "#d4d4d8"} strokeWidth={2.5} />
+                    {locked
+                      ? <span style={{ flex: "none", fontSize: 11, fontWeight: 800, letterSpacing: ".03em", textTransform: "uppercase", color: "#4338ca", background: "#e0e7ff", borderRadius: 99, padding: "5px 10px" }}>Readee+</span>
+                      : <ChevronRight className="h-5 w-5" stroke={cur ? "#7c3aed" : "#d4d4d8"} strokeWidth={2.5} />}
                   </div>
                 );
                 return s.href
@@ -364,11 +422,89 @@ export default function KidHome(p: KidHomeProps) {
         </div>
       </div>
 
+      {/* ── Trial countdown (in-trial): full access now, convert before it ends. ── */}
+      {p.trial && (
+        <div style={{ position: "relative", overflow: "hidden", background: "linear-gradient(150deg,#ecfdf5 0%,#eef2ff 100%)", border: "1px solid #bbf7d0", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "22px 26px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
+          <div style={{ position: "absolute", top: -50, right: -30, width: 190, height: 190, borderRadius: "50%", background: "radial-gradient(circle,rgba(16,185,129,.14),transparent 70%)" }} />
+          <div style={{ position: "relative", minWidth: 0, maxWidth: 500 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#fff", borderRadius: 99, padding: "5px 11px", marginBottom: 11 }}>
+              <Sparkles className="h-3.5 w-3.5" stroke="#059669" strokeWidth={2.4} />
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".02em", color: "#047857" }}>{p.trial.daysLeft} {p.trial.daysLeft === 1 ? "day" : "days"} left of full access</span>
+            </div>
+            <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 22, color: "#14532d", lineHeight: 1.15 }}>{p.firstName} has full Readee+ access.</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#3f3f46", marginTop: 7, lineHeight: 1.5 }}>Every lesson, unlimited Luna, and all the stories are unlocked during the free trial. Keep it going so {p.firstName}&rsquo;s progress doesn&rsquo;t stop.</div>
+          </div>
+          <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 9, alignItems: "flex-start", flex: "none" }}>
+            <Link href={p.upgradeHref} className="kh-lift" style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "linear-gradient(90deg,#059669,#4338ca)", color: "#fff", fontFamily: BALOO, fontWeight: 800, fontSize: 17, padding: "14px 24px", borderRadius: 99, boxShadow: "0 12px 30px -8px rgba(5,150,105,.45)" }}>
+              Keep Readee+
+              <ArrowRight className="h-[18px] w-[18px]" strokeWidth={2.6} />
+            </Link>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#047857" }}>$6.99/mo billed yearly &middot; cancel anytime</span>
+          </div>
+        </div>
+      )}
+
+      {/* ── Win-back (lapsed): they had it and let it end — reactivate on the
+             progress they'd lose. ── */}
+      {!p.fullAccess && p.lapsed && p.momentum && (
+        <div style={{ position: "relative", overflow: "hidden", background: "linear-gradient(150deg,#fff1f2 0%,#eef2ff 100%)", border: "1px solid #fecdd3", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "24px 26px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
+          <div style={{ position: "absolute", top: -50, right: -30, width: 190, height: 190, borderRadius: "50%", background: "radial-gradient(circle,rgba(244,63,94,.13),transparent 70%)" }} />
+          <div style={{ position: "relative", minWidth: 0, maxWidth: 500 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#fff", borderRadius: 99, padding: "5px 11px", marginBottom: 11 }}>
+              <Lock className="h-3 w-3" stroke="#e11d48" strokeWidth={2.6} />
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".02em", color: "#be123c" }}>Readee+ has ended</span>
+            </div>
+            <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 23, color: "#4c0519", lineHeight: 1.15 }}>{p.firstName}&rsquo;s journey is paused.</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#3f3f46", marginTop: 7, lineHeight: 1.5 }}>
+              {p.firstName} reached a {p.momentum.levelName} level and mastered {p.momentum.skillsMastered} skill{p.momentum.skillsMastered === 1 ? "" : "s"}. Reactivate to unlock every lesson again and pick up right where {p.firstName} left off.
+            </div>
+          </div>
+          <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 9, alignItems: "flex-start", flex: "none" }}>
+            <Link href={p.upgradeHref} className="kh-lift" style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "linear-gradient(90deg,#e11d48,#4338ca)", color: "#fff", fontFamily: BALOO, fontWeight: 800, fontSize: 17, padding: "14px 24px", borderRadius: 99, boxShadow: "0 12px 30px -8px rgba(225,29,72,.45)" }}>
+              Reactivate Readee+
+              <ArrowRight className="h-[18px] w-[18px]" strokeWidth={2.6} />
+            </Link>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#be123c" }}>$6.99/mo billed yearly &middot; cancel anytime</span>
+          </div>
+        </div>
+      )}
+
+      {/* ── Keep the momentum going (post-trial Free, never paid): sell the
+             parent on Bobby's progress, not a wall. ── */}
+      {!p.fullAccess && !p.lapsed && p.momentum && (
+        <div style={{ position: "relative", overflow: "hidden", background: "linear-gradient(150deg,#eef2ff 0%,#e0e7ff 100%)", border: "1px solid #c7d2fe", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "24px 26px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
+          <div style={{ position: "absolute", top: -50, right: -30, width: 190, height: 190, borderRadius: "50%", background: "radial-gradient(circle,rgba(124,58,237,.14),transparent 70%)" }} />
+          <div style={{ position: "relative", minWidth: 0, maxWidth: 470 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#fff", borderRadius: 99, padding: "5px 11px", marginBottom: 11 }}>
+              <Sparkles className="h-3.5 w-3.5" stroke="#4338ca" strokeWidth={2.4} />
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".02em", color: "#4338ca" }}>Keep the momentum going</span>
+            </div>
+            <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 23, color: "#1e1b4b", lineHeight: 1.15 }}>{p.firstName} is on a roll.</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#3f3f46", marginTop: 7, lineHeight: 1.5 }}>
+              {p.momentum.skillsMastered > 0
+                ? `${p.firstName} has mastered ${p.momentum.skillsMastered} skill${p.momentum.skillsMastered === 1 ? "" : "s"} and is reading at a ${p.momentum.levelName} level. Don't let the momentum stop.`
+                : `${p.firstName} is climbing toward a ${p.momentum.levelName} badge. Unlock every lesson and keep the momentum going.`}
+            </div>
+          </div>
+          <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 9, alignItems: "flex-start", flex: "none" }}>
+            <Link
+              href={p.upgradeHref}
+              className="kh-lift"
+              style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "linear-gradient(90deg,#4338ca,#7c3aed)", color: "#fff", fontFamily: BALOO, fontWeight: 800, fontSize: 17, padding: "14px 24px", borderRadius: 99, boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)" }}
+            >
+              Continue with Readee+
+              <ArrowRight className="h-[18px] w-[18px]" strokeWidth={2.6} />
+            </Link>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#4338ca" }}>$6.99/mo billed yearly &middot; cancel anytime</span>
+          </div>
+        </div>
+      )}
+
       {/* ── Quick play tiles ── */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 14 }}>
         <QuickTile href={`/practice-hub?child=${p.childId}`} grad="linear-gradient(135deg,#8b5cf6,#6d28d9)" shadow="rgba(49,46,129,.3)" label="Practice" Icon={Target} />
         <QuickTile href={`/stories?child=${p.childId}`} grad="linear-gradient(135deg,#34d399,#14b8a6)" shadow="rgba(13,148,136,.35)" label="Stories" Icon={BookOpen} />
-        <QuickTile href={`/luna?child=${p.childId}`} grad="linear-gradient(135deg,#a855f7,#ec4899)" shadow="rgba(168,85,247,.35)" label="Luna" Icon={Mic} />
+        <QuickTile href={`/luna?child=${p.childId}`} grad="linear-gradient(135deg,#a855f7,#ec4899)" shadow="rgba(168,85,247,.35)" label="Luna" Icon={Mic} badge={p.fullAccess ? undefined : "Readee+"} />
         <QuickTile href="/discover" grad="linear-gradient(135deg,#38bdf8,#2563eb)" shadow="rgba(37,99,235,.35)" label="Discover" Icon={Compass} />
       </div>
 
@@ -441,12 +577,19 @@ function StatCard({ children }: { children: React.ReactNode }) {
   return <div style={{ ...statBase, flex: 1, minWidth: 150 }}>{children}</div>;
 }
 
-function QuickTile({ href, grad, shadow, label, Icon }: {
+function QuickTile({ href, grad, shadow, label, Icon, badge }: {
   href: string; grad: string; shadow: string; label: string;
   Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  /** Optional corner lock badge (e.g. "Readee+") for premium-gated tiles. */
+  badge?: string;
 }) {
   return (
-    <Link href={href} className="kh-tile" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, height: 128, borderRadius: 24, background: grad, boxShadow: `0 10px 40px -12px ${shadow}` }}>
+    <Link href={href} className="kh-tile" style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, height: 128, borderRadius: 24, background: grad, boxShadow: `0 10px 40px -12px ${shadow}` }}>
+      {badge && (
+        <span style={{ position: "absolute", top: 10, right: 10, display: "inline-flex", alignItems: "center", gap: 4, background: "rgba(255,255,255,.92)", color: "#4338ca", fontSize: 10.5, fontWeight: 800, letterSpacing: ".02em", borderRadius: 99, padding: "3px 8px" }}>
+          <Lock className="h-2.5 w-2.5" strokeWidth={3} />{badge}
+        </span>
+      )}
       <Icon className="h-[38px] w-[38px] text-white" strokeWidth={1.8} />
       <span style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 17, color: "#fff" }}>{label}</span>
     </Link>
