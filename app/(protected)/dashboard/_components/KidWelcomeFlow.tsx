@@ -207,6 +207,8 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
       .update({ onboarding_complete: true, onboarding_completed_at: new Date().toISOString() })
       .eq("id", user.id);
     trackFunnelClient("funnel.kid_added", { grade: grade ?? "Kindergarten", source: "kid_welcome" });
+    // Fire the welcome email now (don't wait for the daily cron). Fire-and-forget.
+    void fetch("/api/lifecycle/welcome", { method: "POST" }).catch(() => {});
 
     router.push(`/assessment?child=${kid.id}`);
   };
