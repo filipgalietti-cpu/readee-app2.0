@@ -216,25 +216,37 @@ async function sendDeletionConfirmation(email: string, parentName: string | null
       "- Readee",
     ].join("\n");
     const html = `<!doctype html>
-<html><body style="margin:0;padding:0;background:#f7f7fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#18181b;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
-    <tr><td align="center">
-      <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;">
-        <tr><td>
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#4f46e5;text-transform:uppercase;">Readee</div>
-          <h1 style="margin:8px 0 0;font-size:24px;font-weight:800;color:#18181b;">${greeting}</h1>
-          <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">
-            Your Readee account and all associated data have been permanently deleted.
-            If you had a paid subscription, it has been cancelled and no further charges will occur.
-          </p>
-          <p style="margin:16px 0 0;font-size:14px;line-height:1.6;color:#6b7280;">
-            If this wasn't you, please reply to this email immediately so we can investigate.
-          </p>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-</body></html>`;
+<html>
+  <body style="margin:0;padding:0;background:#f6f5f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#18181b;">
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="padding:32px 16px;background:#f6f5f2;">
+      <tr><td align="center">
+        <table width="560" cellpadding="0" cellspacing="0" role="presentation" style="max-width:560px;width:100%;">
+          <tr><td align="center" style="padding-bottom:20px;">
+            <img src="https://learn.readee.app/readee-logo.png" alt="Readee" width="132" style="display:block;width:132px;height:auto;" />
+          </td></tr>
+          <tr><td style="background:#ffffff;border:1px solid #ececf0;border-radius:20px;padding:36px 34px;box-shadow:0 10px 40px -18px rgba(49,46,129,.18);">
+            <img src="https://learn.readee.app/images/ui/bunny-wave-clipboard.png" alt="" width="96" style="display:block;margin:0 auto 18px;width:96px;height:auto;" />
+            <h1 style="margin:0;text-align:center;font-size:23px;font-weight:800;color:#1e1b4b;letter-spacing:-.01em;">${greeting}</h1>
+            <p style="margin:16px 0 0;font-size:15px;line-height:1.65;color:#3f3f46;text-align:center;">
+              Your Readee account and all associated data have been <strong>permanently deleted.</strong> If you had a paid subscription, it has been cancelled and no further charges will occur.
+            </p>
+            <div style="height:1px;background:#ececf0;margin:26px 0;"></div>
+            <p style="margin:0;font-size:13.5px;line-height:1.6;color:#6b7280;text-align:center;">
+              If this wasn't you, reply to this email right away and we'll look into it.
+            </p>
+          </td></tr>
+          <tr><td align="center" style="padding-top:22px;">
+            <p style="margin:0;font-size:12px;line-height:1.7;color:#a1a1aa;">
+              Questions? <a href="mailto:hello@readee.app" style="color:#4f46e5;text-decoration:none;">hello@readee.app</a><br/>
+              <a href="https://instagram.com/readee.app" style="color:#4f46e5;text-decoration:none;">Instagram</a> &middot; <a href="https://tiktok.com/@readee.app" style="color:#4f46e5;text-decoration:none;">TikTok</a><br/>
+              Readee Learning LLC &middot; Built by educators
+            </p>
+          </td></tr>
+        </table>
+      </td></tr>
+    </table>
+  </body>
+</html>`;
     await resend.emails.send({
       from: FROM,
       to: email,
