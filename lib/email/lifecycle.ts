@@ -135,6 +135,23 @@ function renderWelcome(parentName: string | null, kidName: string | null, unsubs
   return { subject, text, html };
 }
 
+/**
+ * Send the welcome email IMMEDIATELY (on signup / onboarding-complete) so a new
+ * parent isn't met with silence for a day. Deduped through the same
+ * lifecycle_email_sends record the daily cron checks, so it never double-sends.
+ */
+export async function sendWelcomeEmailNow(
+  parent: { id: string; email: string | null; display_name?: string | null },
+  kidName: string | null,
+): Promise<void> {
+  if (!parent.email) return;
+  if (await alreadySentEver(parent.id, "welcome")) return;
+  const unsubscribeUrl = `${BASE_URL}/account/unsubscribe/weekly?t=${unsubscribeToken(parent.id)}`;
+  const email = renderWelcome(parent.display_name ?? null, kidName, unsubscribeUrl);
+  const res = await sendEmail({ to: parent.email, subject: email.subject, text: email.text, html: email.html });
+  await recordSend(parent.id, "welcome", res.ok ? "sent" : "failed", res.ok ? undefined : res.error);
+}
+
 function renderFirstLessonNudge(
   parentName: string | null,
   kidName: string | null,
