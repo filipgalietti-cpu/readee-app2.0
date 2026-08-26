@@ -155,7 +155,7 @@ function UpgradeContent() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto py-8 px-4 pb-32 sm:pb-20 space-y-12">
+    <div className="max-w-3xl mx-auto py-8 px-4 pb-32 sm:pb-20 space-y-12">
       {/* ── Hero ── */}
       <motion.div
         className="text-center space-y-4"
@@ -220,7 +220,7 @@ function UpgradeContent() {
         </div>
 
         {/* Single tier — Readee+ for parents. B2C-only per May 4 reshape. */}
-        <div className="mx-auto max-w-md">
+        <div className="mx-auto max-w-lg">
           <div className="rounded-2xl border-2 border-violet-300 bg-white p-6 text-left shadow-sm ring-2 ring-violet-100">
             <div className="flex items-start justify-between gap-2">
               <div>
@@ -229,9 +229,11 @@ function UpgradeContent() {
                 </p>
                 <p className="mt-0.5 text-sm text-zinc-500">For families</p>
               </div>
-              <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
-                Most parents
-              </span>
+              {billing === "annual" && (
+                <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
+                  Most parents
+                </span>
+              )}
             </div>
             <div className="mt-4 flex items-baseline gap-1">
               <span className="text-4xl font-extrabold text-zinc-900">

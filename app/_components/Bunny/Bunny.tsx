@@ -321,15 +321,22 @@ export type BunnyReactionProps = {
   outfitId?: string | null;
   state: ReactionState;
   className?: string;
+  /** Optional text for the wave "hi" bubble (default "Hi!") — lets the welcome
+   *  flow rotate greetings through it. */
+  bubbleText?: string;
 };
 
 // ── Reaction Pack 2 overlay props (ported 1:1 from bunny-reactions-2.jsx) ──
 const heartPath = (x: number, y: number, s = 1) =>
   `M ${x} ${y + 4 * s} C ${x - 6 * s} ${y - 4 * s}, ${x - 12 * s} ${y + 2 * s}, ${x} ${y + 10 * s} C ${x + 12 * s} ${y + 2 * s}, ${x + 6 * s} ${y - 4 * s}, ${x} ${y + 4 * s} Z`;
 
-function Rx2Overlay({ state }: { state: ReactionState }) {
+function Rx2Overlay({ state, bubbleText }: { state: ReactionState; bubbleText?: string }) {
   switch (state) {
-    case "wave":
+    case "wave": {
+      // Bubble widens to fit the greeting (default "Hi!"); the welcome flow
+      // rotates greetings through it, matching the Kid Welcome Flow design.
+      const label = bubbleText ?? "Hi!";
+      const w = Math.max(52, label.length * 8.4 + 22);
       return (
         <g>
           <g className="rx2-prop rx2-wave-paw">
@@ -338,11 +345,12 @@ function Rx2Overlay({ state }: { state: ReactionState }) {
             <path d="M 194 82 L 199 78 M 196 92 L 202 91" stroke="#1a1a1a" strokeWidth="2" strokeLinecap="round" opacity=".5" />
           </g>
           <g className="rx2-prop rx2-hi">
-            <rect x="26" y="46" width="52" height="30" rx="15" fill="#fff" stroke="#1a1a1a" strokeWidth="3" />
-            <text x="52" y="67" textAnchor="middle" fontFamily="ui-sans-serif, system-ui, sans-serif" fontWeight="900" fontSize="15" fill="#1a1a1a">Hi!</text>
+            <rect x={52 - w / 2} y="46" width={w} height="30" rx="15" fill="#fff" stroke="#1a1a1a" strokeWidth="3" />
+            <text x="52" y="67" textAnchor="middle" fontFamily="ui-sans-serif, system-ui, sans-serif" fontWeight="900" fontSize="15" fill="#1a1a1a">{label}</text>
           </g>
         </g>
       );
+    }
     case "clap":
       return (
         <g>
@@ -464,7 +472,7 @@ function Rx2Overlay({ state }: { state: ReactionState }) {
   }
 }
 
-export function BunnyReaction({ outfitId, state, className }: BunnyReactionProps) {
+export function BunnyReaction({ outfitId, state, className, bubbleText }: BunnyReactionProps) {
   const outfit = getOutfit(outfitId);
   return (
     <div className={`bn-stage reaction-${state}${className ? ` ${className}` : ""}`}>
@@ -473,7 +481,7 @@ export function BunnyReaction({ outfitId, state, className }: BunnyReactionProps
         {state === "correct" && <CorrectOverlay />}
         {state === "incorrect" && <IncorrectOverlay />}
         {state === "levelup" && <LevelUpOverlay />}
-        <Rx2Overlay state={state} />
+        <Rx2Overlay state={state} bubbleText={bubbleText} />
       </svg>
     </div>
   );

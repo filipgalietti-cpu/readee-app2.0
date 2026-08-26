@@ -21,13 +21,15 @@ import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import RoboWalk from "./RoboWalk";
+import MagicTrick from "./MagicTrick";
 import type { Child } from "@/lib/db/types";
 
 const BALOO = "var(--font-baloo), 'Baloo 2', Nunito, sans-serif";
 const NUN = "Nunito, ui-sans-serif, system-ui, sans-serif";
 const INDIGO = "#4338ca";
 
-const GREETINGS = ["Hi!", "¡Hola!", "Hello!", "Bonjour!", "Ciao!", "Howdy!", "Aloha!"];
+const GREETINGS = ["Hi!", "¡Hola!", "Hello!", "Bonjour!", "Ciao!", "Greetings!", "Howdy!", "Aloha!"];
 
 const GRADE_OPTS: { label: string; sub: string; value: string }[] = [
   { label: "K", sub: "Kindergarten", value: "Kindergarten" },
@@ -69,9 +71,9 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
   const greetTimer = useRef<ReturnType<typeof setInterval> | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // Rotate the hello bubble like the design (every ~4s).
+  // Rotate the hello bubble like the design (every ~5s, in sync with the wave).
   useEffect(() => {
-    greetTimer.current = setInterval(() => setGreetIdx((i) => i + 1), 4000);
+    greetTimer.current = setInterval(() => setGreetIdx((i) => i + 1), 5000);
     return () => { if (greetTimer.current) clearInterval(greetTimer.current); };
   }, []);
 
@@ -209,10 +211,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
         {step === 1 && (
           <div className="kwf-in" style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 48, padding: "0 40px 40px", flexWrap: "wrap" }}>
             <div style={{ position: "relative", width: 300, height: 320, flex: "none" }}>
-              <Bunny outfitId="bunny_classic" />
-              <div style={{ position: "absolute", left: 4, top: 8, background: "#fff", border: "3.5px solid #1a1a1a", borderRadius: 999, padding: "6px 17px", font: `900 19px/1 ${NUN}`, color: "#1a1a1a", whiteSpace: "nowrap" }}>
-                {GREETINGS[greetIdx % GREETINGS.length]}
-              </div>
+              <BunnyReaction outfitId="bunny_classic" state="wave" bubbleText={GREETINGS[greetIdx % GREETINGS.length]} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", width: 440, maxWidth: "100%", flex: "none" }}>
               <h1 style={{ margin: 0, font: `800 clamp(38px,7vw,54px)/1.06 ${BALOO}`, color: "#1e1b4b", letterSpacing: "-.02em" }}>Welcome to Readee!</h1>
@@ -225,8 +224,8 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
         {/* STEP 2 — name */}
         {step === 2 && (
           <div className="kwf-in" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 40px 44px" }}>
-            <div style={{ width: 240, height: 240, flex: "none" }}><Bunny outfitId="bunny_classic" /></div>
-            <h1 style={{ margin: "8px 0 0", font: `800 clamp(34px,6vw,50px)/1.06 ${BALOO}`, color: "#1e1b4b", letterSpacing: "-.02em", textAlign: "center" }}>What should we call you?</h1>
+            <div style={{ width: 480, maxWidth: "100%", flex: "none" }}><RoboWalk /></div>
+            <h1 style={{ margin: "8px 0 0", font: `800 clamp(34px,6vw,50px)/1.06 ${BALOO}`, color: "#1e1b4b", letterSpacing: "-.02em", textAlign: "center" }}>What is your name?</h1>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Type your name" maxLength={16} autoComplete="off" autoFocus
               style={{ marginTop: 24, width: 460, maxWidth: "100%", boxSizing: "border-box", textAlign: "center", border: "3px solid #c7d2fe", borderRadius: 22, background: "#fff", padding: "16px 20px", font: `800 clamp(28px,5vw,38px)/1.1 ${BALOO}`, color: "#1e1b4b", outline: "none", boxShadow: "0 8px 20px -12px rgba(30,27,75,.35)" }} />
             <button type="button" className="kwf-btn" onClick={next} disabled={!name.trim()} style={{ ...primaryBtn, marginTop: 26, opacity: name.trim() ? 1 : 0.45, cursor: name.trim() ? "pointer" : "not-allowed" }}>That&apos;s me</button>
@@ -236,7 +235,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
         {/* STEP 3 — grade */}
         {step === 3 && (
           <div className="kwf-in" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "0 32px 44px" }}>
-            <div style={{ width: 180, height: 180, flex: "none" }}><Bunny outfitId="bunny_classic" /></div>
+            <div style={{ width: 220, maxWidth: "100%", flex: "none" }}><MagicTrick /></div>
             <h1 style={{ margin: "6px 0 0", font: `800 clamp(30px,5.5vw,42px)/1.08 ${BALOO}`, color: "#1e1b4b", letterSpacing: "-.02em", textAlign: "center" }}>Nice to meet you, {shownName}!</h1>
             <p style={{ margin: "8px 0 0", font: `600 21px/1.35 ${NUN}`, color: "#52525b" }}>What grade are you in?</p>
             <div style={{ display: "flex", gap: 14, marginTop: 20, flexWrap: "wrap", justifyContent: "center" }}>
@@ -300,7 +299,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
 function currentSpokenText(step: number, name: string): string {
   switch (step) {
     case 1: return "Welcome to Readee! Let's get started.";
-    case 2: return "What should we call you?";
+    case 2: return "Welcome to Readee! What is your name?";
     case 3: return `Nice to meet you, ${name}! What grade are you in?`;
     case 4: return "Pick your buddy!";
     case 5: return "Let's see those reading skills! A quick challenge!";
