@@ -68,3 +68,9 @@ next-env.d.ts
 .demo-rec-*/
 scripts/demo-out/
 lesson-shots/
+
+# Content-factory runtime artifacts (logs + queue/error state, not source)
+scripts/*.log
+scripts/factory-queue.json
+scripts/factory-quiz-error.json
+scratch_dl/

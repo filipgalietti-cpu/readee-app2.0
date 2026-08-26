@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // One-off dev/authoring/upload tooling — not shipped product code. Linting
+    // it buried the real app findings under ~575 script errors, making
+    // `npm run lint` useless. Product code (app/, lib/) is still linted.
+    "scripts/**",
   ]),
 ]);
 
