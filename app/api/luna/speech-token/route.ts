@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
+import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
@@ -37,8 +37,8 @@ export async function POST(req: Request) {
   const region = process.env.AZURE_SPEECH_REGION;
   if (!key || !region) return NextResponse.json({ ok: false, configured: false }, { status: 200 });
 
-  const { data: profile } = await supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle();
-  if (!hasAnyPaidTier(((profile as any)?.plan ?? "free") as string)) {
+  const { data: profile } = await supabase.from("profiles").select("plan, created_at, had_subscription").eq("id", user.id).maybeSingle();
+  if (!hasFullAccessFromProfile(profile as any)) {
     return NextResponse.json({ error: "Luna requires a paid plan.", reason: "plan" }, { status: 402 });
   }
 

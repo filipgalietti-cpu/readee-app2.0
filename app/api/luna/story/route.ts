@@ -9,7 +9,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { assertSafePrompt, assertSafeOutput } from "@/lib/ai/safety";
-import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
+import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { gradeToken } from "@/lib/luna/target-pattern";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
@@ -114,10 +114,10 @@ export async function POST(req: Request) {
   }
   const { data: prof } = await supabase
     .from("profiles")
-    .select("plan")
+    .select("plan, created_at, had_subscription")
     .eq("id", user.id)
     .maybeSingle();
-  if (!hasAnyPaidTier(((prof as any)?.plan ?? "free") as string)) {
+  if (!hasFullAccessFromProfile(prof as any)) {
     return NextResponse.json(
       { error: "Luna requires a paid plan.", reason: "plan" },
       { status: 402 },

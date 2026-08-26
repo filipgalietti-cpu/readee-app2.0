@@ -55,3 +55,18 @@ export function effectivePlan(plan: string | null | undefined, signupAt: string 
   if (isPaidPlan(plan)) return plan as string;
   return TRIAL_DAYS - daysSince(signupAt) > 0 ? "premium" : (plan ?? "free");
 }
+
+/**
+ * Full-access check straight off a profile row (plan + created_at +
+ * had_subscription). Server gates that select those columns use this so a
+ * trial reader passes a paid-only gate.
+ */
+export function hasFullAccessFromProfile(
+  p: { plan?: string | null; created_at?: string | null; had_subscription?: boolean | null } | null | undefined,
+): boolean {
+  return resolveAccess({
+    plan: p?.plan,
+    signupAt: p?.created_at,
+    everSubscribed: p?.had_subscription ?? false,
+  }).hasFullAccess;
+}
