@@ -1,0 +1,2087 @@
+{
+ "apply-sequence-cup": {
+  "duration": 18.82,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "let's",
+    "start": 0.54,
+    "end": 1.04
+   },
+   {
+    "word": "put",
+    "start": 1.04,
+    "end": 1.24
+   },
+   {
+    "word": "all",
+    "start": 1.24,
+    "end": 1.84
+   },
+   {
+    "word": "three",
+    "start": 1.84,
+    "end": 2.32
+   },
+   {
+    "word": "sounds",
+    "start": 2.32,
+    "end": 2.72
+   },
+   {
+    "word": "in",
+    "start": 2.72,
+    "end": 3.08
+   },
+   {
+    "word": "order",
+    "start": 3.08,
+    "end": 3.58
+   },
+   {
+    "word": "for",
+    "start": 3.58,
+    "end": 3.98
+   },
+   {
+    "word": "the",
+    "start": 3.98,
+    "end": 4.18
+   },
+   {
+    "word": "word",
+    "start": 4.18,
+    "end": 4.52
+   },
+   {
+    "word": "cup.",
+    "start": 4.52,
+    "end": 5.12
+   },
+   {
+    "word": "Say",
+    "start": 6.4,
+    "end": 6.56
+   },
+   {
+    "word": "cup",
+    "start": 6.56,
+    "end": 7.16
+   },
+   {
+    "word": "slowly",
+    "start": 7.16,
+    "end": 8.18
+   },
+   {
+    "word": "to",
+    "start": 8.18,
+    "end": 8.68
+   },
+   {
+    "word": "yourself.",
+    "start": 8.68,
+    "end": 9.26
+   },
+   {
+    "word": "First,",
+    "start": 10.0,
+    "end": 10.54
+   },
+   {
+    "word": "find",
+    "start": 10.82,
+    "end": 11.14
+   },
+   {
+    "word": "the",
+    "start": 11.14,
+    "end": 11.38
+   },
+   {
+    "word": "beginning",
+    "start": 11.38,
+    "end": 11.78
+   },
+   {
+    "word": "sound.",
+    "start": 11.78,
+    "end": 12.5
+   },
+   {
+    "word": "Then",
+    "start": 12.96,
+    "end": 13.28
+   },
+   {
+    "word": "the",
+    "start": 13.28,
+    "end": 13.52
+   },
+   {
+    "word": "middle,",
+    "start": 13.52,
+    "end": 14.06
+   },
+   {
+    "word": "last",
+    "start": 14.64,
+    "end": 15.26
+   },
+   {
+    "word": "the",
+    "start": 15.26,
+    "end": 15.86
+   },
+   {
+    "word": "end",
+    "start": 15.86,
+    "end": 16.28
+   },
+   {
+    "word": "sound.",
+    "start": 16.28,
+    "end": 16.86
+   },
+   {
+    "word": "Drag",
+    "start": 17.7,
+    "end": 17.98
+   },
+   {
+    "word": "them",
+    "start": 17.98,
+    "end": 18.22
+   },
+   {
+    "word": "into",
+    "start": 18.22,
+    "end": 18.48
+   },
+   {
+    "word": "order.",
+    "start": 18.48,
+    "end": 18.82
+   }
+  ]
+ },
+ "celebrate-success": {
+  "duration": 16.28,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "did",
+    "start": 0.52,
+    "end": 0.94
+   },
+   {
+    "word": "it!",
+    "start": 0.94,
+    "end": 1.26
+   },
+   {
+    "word": "You",
+    "start": 1.68,
+    "end": 1.9
+   },
+   {
+    "word": "are",
+    "start": 1.9,
+    "end": 2.2
+   },
+   {
+    "word": "a",
+    "start": 2.2,
+    "end": 2.34
+   },
+   {
+    "word": "super",
+    "start": 2.34,
+    "end": 2.82
+   },
+   {
+    "word": "sound",
+    "start": 2.82,
+    "end": 3.42
+   },
+   {
+    "word": "detective.",
+    "start": 3.42,
+    "end": 4.02
+   },
+   {
+    "word": "You",
+    "start": 4.64,
+    "end": 4.9
+   },
+   {
+    "word": "learn",
+    "start": 4.9,
+    "end": 5.24
+   },
+   {
+    "word": "to",
+    "start": 5.24,
+    "end": 5.5
+   },
+   {
+    "word": "stretch",
+    "start": 5.5,
+    "end": 5.96
+   },
+   {
+    "word": "words",
+    "start": 5.96,
+    "end": 6.44
+   },
+   {
+    "word": "out",
+    "start": 6.44,
+    "end": 6.7
+   },
+   {
+    "word": "slowly,",
+    "start": 6.7,
+    "end": 7.26
+   },
+   {
+    "word": "find",
+    "start": 7.7,
+    "end": 8.14
+   },
+   {
+    "word": "where",
+    "start": 8.14,
+    "end": 8.38
+   },
+   {
+    "word": "a",
+    "start": 8.38,
+    "end": 8.52
+   },
+   {
+    "word": "sound",
+    "start": 8.52,
+    "end": 8.84
+   },
+   {
+    "word": "lives,",
+    "start": 8.84,
+    "end": 9.24
+   },
+   {
+    "word": "and",
+    "start": 9.8,
+    "end": 9.88
+   },
+   {
+    "word": "say",
+    "start": 9.88,
+    "end": 10.28
+   },
+   {
+    "word": "that",
+    "start": 10.28,
+    "end": 10.6
+   },
+   {
+    "word": "sound",
+    "start": 10.6,
+    "end": 11.1
+   },
+   {
+    "word": "all",
+    "start": 11.1,
+    "end": 11.54
+   },
+   {
+    "word": "by",
+    "start": 11.54,
+    "end": 11.82
+   },
+   {
+    "word": "itself.",
+    "start": 11.82,
+    "end": 12.38
+   },
+   {
+    "word": "Keep",
+    "start": 13.06,
+    "end": 13.34
+   },
+   {
+    "word": "practicing",
+    "start": 13.34,
+    "end": 13.96
+   },
+   {
+    "word": "and",
+    "start": 13.96,
+    "end": 14.38
+   },
+   {
+    "word": "listening",
+    "start": 14.38,
+    "end": 14.78
+   },
+   {
+    "word": "for",
+    "start": 14.78,
+    "end": 15.18
+   },
+   {
+    "word": "those",
+    "start": 15.18,
+    "end": 15.48
+   },
+   {
+    "word": "hidden",
+    "start": 15.48,
+    "end": 15.72
+   },
+   {
+    "word": "sounds.",
+    "start": 15.72,
+    "end": 16.28
+   }
+  ]
+ },
+ "challenge-position-fan": {
+  "duration": 20.68,
+  "words": [
+   {
+    "word": "Here's",
+    "start": 0.0,
+    "end": 0.82
+   },
+   {
+    "word": "a",
+    "start": 0.82,
+    "end": 1.0
+   },
+   {
+    "word": "tricky",
+    "start": 1.0,
+    "end": 1.44
+   },
+   {
+    "word": "one.",
+    "start": 1.44,
+    "end": 1.92
+   },
+   {
+    "word": "Listen",
+    "start": 2.58,
+    "end": 3.04
+   },
+   {
+    "word": "to",
+    "start": 3.04,
+    "end": 3.4
+   },
+   {
+    "word": "the",
+    "start": 3.4,
+    "end": 3.56
+   },
+   {
+    "word": "word",
+    "start": 3.56,
+    "end": 3.88
+   },
+   {
+    "word": "fan.",
+    "start": 3.88,
+    "end": 5.44
+   },
+   {
+    "word": "Ffff.",
+    "start": 6.54,
+    "end": 7.44
+   },
+   {
+    "word": "Ehh.",
+    "start": 8.54,
+    "end": 9.44
+   },
+   {
+    "word": "Mmm.",
+    "start": 9.88,
+    "end": 10.6
+   },
+   {
+    "word": "Where",
+    "start": 11.82,
+    "end": 12.56
+   },
+   {
+    "word": "do",
+    "start": 12.56,
+    "end": 12.8
+   },
+   {
+    "word": "you",
+    "start": 12.8,
+    "end": 13.02
+   },
+   {
+    "word": "hear",
+    "start": 13.02,
+    "end": 13.38
+   },
+   {
+    "word": "the",
+    "start": 13.38,
+    "end": 13.74
+   },
+   {
+    "word": "Ehh",
+    "start": 13.74,
+    "end": 15.14
+   },
+   {
+    "word": "sound",
+    "start": 15.14,
+    "end": 15.84
+   },
+   {
+    "word": "in",
+    "start": 15.84,
+    "end": 16.48
+   },
+   {
+    "word": "fan?",
+    "start": 16.48,
+    "end": 16.92
+   },
+   {
+    "word": "Tap",
+    "start": 17.96,
+    "end": 18.26
+   },
+   {
+    "word": "the",
+    "start": 18.26,
+    "end": 18.54
+   },
+   {
+    "word": "box",
+    "start": 18.54,
+    "end": 18.86
+   },
+   {
+    "word": "that",
+    "start": 18.86,
+    "end": 19.16
+   },
+   {
+    "word": "shows",
+    "start": 19.16,
+    "end": 19.64
+   },
+   {
+    "word": "where",
+    "start": 19.64,
+    "end": 20.12
+   },
+   {
+    "word": "it",
+    "start": 20.12,
+    "end": 20.36
+   },
+   {
+    "word": "lives.",
+    "start": 20.36,
+    "end": 20.68
+   }
+  ]
+ },
+ "challenge-say-map": {
+  "duration": 19.32,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.64
+   },
+   {
+    "word": "last",
+    "start": 0.64,
+    "end": 1.34
+   },
+   {
+    "word": "detective",
+    "start": 1.34,
+    "end": 2.2
+   },
+   {
+    "word": "job.",
+    "start": 2.2,
+    "end": 2.68
+   },
+   {
+    "word": "This",
+    "start": 3.16,
+    "end": 3.68
+   },
+   {
+    "word": "is",
+    "start": 3.68,
+    "end": 4.26
+   },
+   {
+    "word": "a",
+    "start": 4.26,
+    "end": 4.42
+   },
+   {
+    "word": "map.",
+    "start": 4.42,
+    "end": 4.84
+   },
+   {
+    "word": "Stretch",
+    "start": 5.72,
+    "end": 6.4
+   },
+   {
+    "word": "it",
+    "start": 6.4,
+    "end": 7.04
+   },
+   {
+    "word": "out",
+    "start": 7.04,
+    "end": 7.32
+   },
+   {
+    "word": "slowly",
+    "start": 7.32,
+    "end": 7.86
+   },
+   {
+    "word": "with",
+    "start": 7.86,
+    "end": 8.52
+   },
+   {
+    "word": "me.",
+    "start": 8.52,
+    "end": 8.98
+   },
+   {
+    "word": "Mmm,",
+    "start": 9.88,
+    "end": 10.48
+   },
+   {
+    "word": "ah!",
+    "start": 11.36,
+    "end": 12.04
+   },
+   {
+    "word": "P.",
+    "start": 12.72,
+    "end": 12.82
+   },
+   {
+    "word": "Now",
+    "start": 13.6,
+    "end": 14.36
+   },
+   {
+    "word": "say",
+    "start": 14.36,
+    "end": 14.66
+   },
+   {
+    "word": "the",
+    "start": 14.66,
+    "end": 14.84
+   },
+   {
+    "word": "whole",
+    "start": 14.84,
+    "end": 15.16
+   },
+   {
+    "word": "word,",
+    "start": 15.16,
+    "end": 15.66
+   },
+   {
+    "word": "map,",
+    "start": 16.06,
+    "end": 16.46
+   },
+   {
+    "word": "out",
+    "start": 17.1,
+    "end": 17.22
+   },
+   {
+    "word": "loud.",
+    "start": 17.22,
+    "end": 17.58
+   },
+   {
+    "word": "Nice",
+    "start": 18.26,
+    "end": 18.66
+   },
+   {
+    "word": "and",
+    "start": 18.66,
+    "end": 19.02
+   },
+   {
+    "word": "clear.",
+    "start": 19.02,
+    "end": 19.32
+   }
+  ]
+ },
+ "complete": {
+  "duration": 18.44,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "job,",
+    "start": 0.62,
+    "end": 1.08
+   },
+   {
+    "word": "Super",
+    "start": 1.4,
+    "end": 1.6
+   },
+   {
+    "word": "Sound",
+    "start": 1.6,
+    "end": 1.94
+   },
+   {
+    "word": "Detective!",
+    "start": 1.94,
+    "end": 2.46
+   },
+   {
+    "word": "You",
+    "start": 3.22,
+    "end": 3.38
+   },
+   {
+    "word": "learn",
+    "start": 3.38,
+    "end": 3.72
+   },
+   {
+    "word": "to",
+    "start": 3.72,
+    "end": 4.0
+   },
+   {
+    "word": "stretch",
+    "start": 4.0,
+    "end": 4.44
+   },
+   {
+    "word": "words",
+    "start": 4.44,
+    "end": 4.96
+   },
+   {
+    "word": "out",
+    "start": 4.96,
+    "end": 5.32
+   },
+   {
+    "word": "slowly",
+    "start": 5.32,
+    "end": 6.04
+   },
+   {
+    "word": "and",
+    "start": 6.04,
+    "end": 6.54
+   },
+   {
+    "word": "listen",
+    "start": 6.54,
+    "end": 6.86
+   },
+   {
+    "word": "carefully.",
+    "start": 6.86,
+    "end": 7.54
+   },
+   {
+    "word": "You",
+    "start": 8.18,
+    "end": 8.56
+   },
+   {
+    "word": "can",
+    "start": 8.56,
+    "end": 8.76
+   },
+   {
+    "word": "now",
+    "start": 8.76,
+    "end": 9.02
+   },
+   {
+    "word": "find",
+    "start": 9.02,
+    "end": 9.36
+   },
+   {
+    "word": "the",
+    "start": 9.36,
+    "end": 9.6
+   },
+   {
+    "word": "first,",
+    "start": 9.6,
+    "end": 10.04
+   },
+   {
+    "word": "middle,",
+    "start": 10.64,
+    "end": 11.0
+   },
+   {
+    "word": "and",
+    "start": 11.42,
+    "end": 11.52
+   },
+   {
+    "word": "last",
+    "start": 11.52,
+    "end": 11.92
+   },
+   {
+    "word": "sounds",
+    "start": 11.92,
+    "end": 12.64
+   },
+   {
+    "word": "in",
+    "start": 12.64,
+    "end": 12.84
+   },
+   {
+    "word": "words",
+    "start": 12.84,
+    "end": 13.28
+   },
+   {
+    "word": "all",
+    "start": 13.28,
+    "end": 13.64
+   },
+   {
+    "word": "by",
+    "start": 13.64,
+    "end": 13.9
+   },
+   {
+    "word": "yourself.",
+    "start": 13.9,
+    "end": 14.54
+   },
+   {
+    "word": "Keep",
+    "start": 15.14,
+    "end": 15.5
+   },
+   {
+    "word": "practicing",
+    "start": 15.5,
+    "end": 16.18
+   },
+   {
+    "word": "your",
+    "start": 16.18,
+    "end": 16.62
+   },
+   {
+    "word": "amazing",
+    "start": 16.62,
+    "end": 17.38
+   },
+   {
+    "word": "listening",
+    "start": 17.38,
+    "end": 18.0
+   },
+   {
+    "word": "skills.",
+    "start": 18.0,
+    "end": 18.44
+   }
+  ]
+ },
+ "guided-first-sound-pig": {
+  "duration": 20.98,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "job!",
+    "start": 0.58,
+    "end": 1.1
+   },
+   {
+    "word": "Now",
+    "start": 1.9,
+    "end": 2.34
+   },
+   {
+    "word": "it's",
+    "start": 2.34,
+    "end": 2.94
+   },
+   {
+    "word": "your",
+    "start": 2.94,
+    "end": 3.16
+   },
+   {
+    "word": "turn.",
+    "start": 3.16,
+    "end": 3.74
+   },
+   {
+    "word": "Listen",
+    "start": 4.42,
+    "end": 4.76
+   },
+   {
+    "word": "to",
+    "start": 4.76,
+    "end": 5.1
+   },
+   {
+    "word": "the",
+    "start": 5.1,
+    "end": 5.24
+   },
+   {
+    "word": "word",
+    "start": 5.24,
+    "end": 5.52
+   },
+   {
+    "word": "pig.",
+    "start": 5.52,
+    "end": 6.4
+   },
+   {
+    "word": "Stretched",
+    "start": 7.22,
+    "end": 7.86
+   },
+   {
+    "word": "out",
+    "start": 7.86,
+    "end": 8.06
+   },
+   {
+    "word": "slowly.",
+    "start": 8.06,
+    "end": 9.0
+   },
+   {
+    "word": "Puh.",
+    "start": 10.32,
+    "end": 10.62
+   },
+   {
+    "word": "I.",
+    "start": 11.64,
+    "end": 12.0
+   },
+   {
+    "word": "Guh.",
+    "start": 13.26,
+    "end": 14.18
+   },
+   {
+    "word": "What",
+    "start": 15.08,
+    "end": 15.56
+   },
+   {
+    "word": "is",
+    "start": 15.56,
+    "end": 15.86
+   },
+   {
+    "word": "the",
+    "start": 15.86,
+    "end": 16.02
+   },
+   {
+    "word": "very",
+    "start": 16.02,
+    "end": 16.48
+   },
+   {
+    "word": "first",
+    "start": 16.48,
+    "end": 16.96
+   },
+   {
+    "word": "sound",
+    "start": 16.96,
+    "end": 17.48
+   },
+   {
+    "word": "you",
+    "start": 17.48,
+    "end": 17.86
+   },
+   {
+    "word": "hear",
+    "start": 17.86,
+    "end": 18.24
+   },
+   {
+    "word": "in",
+    "start": 18.24,
+    "end": 18.62
+   },
+   {
+    "word": "pig?",
+    "start": 18.62,
+    "end": 19.1
+   },
+   {
+    "word": "Tap",
+    "start": 20.0,
+    "end": 20.34
+   },
+   {
+    "word": "the",
+    "start": 20.34,
+    "end": 20.6
+   },
+   {
+    "word": "sound.",
+    "start": 20.6,
+    "end": 20.98
+   }
+  ]
+ },
+ "guided-last-sound-dog": {
+  "duration": 19.64,
+  "words": [
+   {
+    "word": "Super",
+    "start": 0.0,
+    "end": 0.78
+   },
+   {
+    "word": "work!",
+    "start": 0.78,
+    "end": 1.22
+   },
+   {
+    "word": "Let's",
+    "start": 1.76,
+    "end": 2.16
+   },
+   {
+    "word": "try",
+    "start": 2.16,
+    "end": 2.34
+   },
+   {
+    "word": "another",
+    "start": 2.34,
+    "end": 2.68
+   },
+   {
+    "word": "one.",
+    "start": 2.68,
+    "end": 3.16
+   },
+   {
+    "word": "Listen",
+    "start": 3.82,
+    "end": 4.04
+   },
+   {
+    "word": "to",
+    "start": 4.04,
+    "end": 4.34
+   },
+   {
+    "word": "the",
+    "start": 4.34,
+    "end": 4.5
+   },
+   {
+    "word": "word",
+    "start": 4.5,
+    "end": 4.82
+   },
+   {
+    "word": "dog",
+    "start": 4.82,
+    "end": 5.52
+   },
+   {
+    "word": "stretched",
+    "start": 5.52,
+    "end": 6.6
+   },
+   {
+    "word": "out",
+    "start": 6.6,
+    "end": 7.04
+   },
+   {
+    "word": "slowly.",
+    "start": 7.04,
+    "end": 7.78
+   },
+   {
+    "word": "D",
+    "start": 8.62,
+    "end": 9.02
+   },
+   {
+    "word": "-a",
+    "start": 9.02,
+    "end": 10.42
+   },
+   {
+    "word": "-g.",
+    "start": 10.42,
+    "end": 11.64
+   },
+   {
+    "word": "What",
+    "start": 12.26,
+    "end": 13.2
+   },
+   {
+    "word": "is",
+    "start": 13.2,
+    "end": 13.46
+   },
+   {
+    "word": "the",
+    "start": 13.46,
+    "end": 13.64
+   },
+   {
+    "word": "very",
+    "start": 13.64,
+    "end": 14.18
+   },
+   {
+    "word": "last",
+    "start": 14.18,
+    "end": 14.66
+   },
+   {
+    "word": "sound",
+    "start": 14.66,
+    "end": 15.48
+   },
+   {
+    "word": "you",
+    "start": 15.48,
+    "end": 15.9
+   },
+   {
+    "word": "hear",
+    "start": 15.9,
+    "end": 16.3
+   },
+   {
+    "word": "in",
+    "start": 16.3,
+    "end": 16.76
+   },
+   {
+    "word": "dog?",
+    "start": 16.76,
+    "end": 17.5
+   },
+   {
+    "word": "Tap",
+    "start": 18.4,
+    "end": 18.74
+   },
+   {
+    "word": "the",
+    "start": 18.74,
+    "end": 19.14
+   },
+   {
+    "word": "sound.",
+    "start": 19.14,
+    "end": 19.64
+   }
+  ]
+ },
+ "guided-middle-sound-sun": {
+  "duration": 20.74,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "let's",
+    "start": 0.52,
+    "end": 0.96
+   },
+   {
+    "word": "find",
+    "start": 0.96,
+    "end": 1.22
+   },
+   {
+    "word": "the",
+    "start": 1.22,
+    "end": 1.5
+   },
+   {
+    "word": "middle",
+    "start": 1.5,
+    "end": 1.86
+   },
+   {
+    "word": "sound",
+    "start": 1.86,
+    "end": 2.4
+   },
+   {
+    "word": "in",
+    "start": 2.4,
+    "end": 2.86
+   },
+   {
+    "word": "sun.",
+    "start": 2.86,
+    "end": 3.46
+   },
+   {
+    "word": "Listen",
+    "start": 4.2,
+    "end": 4.64
+   },
+   {
+    "word": "to",
+    "start": 4.64,
+    "end": 5.02
+   },
+   {
+    "word": "sun",
+    "start": 5.02,
+    "end": 6.08
+   },
+   {
+    "word": "stretched",
+    "start": 6.08,
+    "end": 7.24
+   },
+   {
+    "word": "out",
+    "start": 7.24,
+    "end": 8.1
+   },
+   {
+    "word": "slowly.",
+    "start": 8.1,
+    "end": 9.18
+   },
+   {
+    "word": "Sssss...",
+    "start": 11.14,
+    "end": 12.2
+   },
+   {
+    "word": "Uhhh...",
+    "start": 13.3,
+    "end": 14.36
+   },
+   {
+    "word": "Mmm...",
+    "start": 14.36,
+    "end": 16.08
+   },
+   {
+    "word": "What",
+    "start": 16.08,
+    "end": 16.48
+   },
+   {
+    "word": "sound",
+    "start": 16.48,
+    "end": 17.16
+   },
+   {
+    "word": "is",
+    "start": 17.16,
+    "end": 17.52
+   },
+   {
+    "word": "right",
+    "start": 17.52,
+    "end": 18.08
+   },
+   {
+    "word": "in",
+    "start": 18.08,
+    "end": 18.8
+   },
+   {
+    "word": "the",
+    "start": 18.8,
+    "end": 19.02
+   },
+   {
+    "word": "middle?",
+    "start": 19.02,
+    "end": 19.36
+   },
+   {
+    "word": "Tap",
+    "start": 20.14,
+    "end": 20.42
+   },
+   {
+    "word": "it.",
+    "start": 20.42,
+    "end": 20.74
+   }
+  ]
+ },
+ "hook-listen-mission": {
+  "duration": 15.54,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.64
+   },
+   {
+    "word": "Super",
+    "start": 0.98,
+    "end": 1.14
+   },
+   {
+    "word": "Sound",
+    "start": 1.14,
+    "end": 1.52
+   },
+   {
+    "word": "Detectives!",
+    "start": 1.52,
+    "end": 2.3
+   },
+   {
+    "word": "We",
+    "start": 2.86,
+    "end": 3.06
+   },
+   {
+    "word": "have",
+    "start": 3.06,
+    "end": 3.28
+   },
+   {
+    "word": "a",
+    "start": 3.28,
+    "end": 3.46
+   },
+   {
+    "word": "very",
+    "start": 3.46,
+    "end": 3.94
+   },
+   {
+    "word": "important",
+    "start": 3.94,
+    "end": 4.7
+   },
+   {
+    "word": "mission",
+    "start": 4.7,
+    "end": 5.22
+   },
+   {
+    "word": "today.",
+    "start": 5.22,
+    "end": 5.64
+   },
+   {
+    "word": "We",
+    "start": 6.36,
+    "end": 6.58
+   },
+   {
+    "word": "need",
+    "start": 6.58,
+    "end": 6.82
+   },
+   {
+    "word": "to",
+    "start": 6.82,
+    "end": 7.02
+   },
+   {
+    "word": "find",
+    "start": 7.02,
+    "end": 7.46
+   },
+   {
+    "word": "special",
+    "start": 7.46,
+    "end": 8.18
+   },
+   {
+    "word": "sounds",
+    "start": 8.18,
+    "end": 8.86
+   },
+   {
+    "word": "hidden",
+    "start": 8.86,
+    "end": 9.42
+   },
+   {
+    "word": "inside",
+    "start": 9.42,
+    "end": 10.38
+   },
+   {
+    "word": "words.",
+    "start": 10.38,
+    "end": 11.24
+   },
+   {
+    "word": "Listen",
+    "start": 11.94,
+    "end": 12.34
+   },
+   {
+    "word": "closely",
+    "start": 12.34,
+    "end": 13.0
+   },
+   {
+    "word": "to",
+    "start": 13.0,
+    "end": 13.3
+   },
+   {
+    "word": "the",
+    "start": 13.3,
+    "end": 13.44
+   },
+   {
+    "word": "sounds",
+    "start": 13.44,
+    "end": 13.96
+   },
+   {
+    "word": "all",
+    "start": 13.96,
+    "end": 14.46
+   },
+   {
+    "word": "around",
+    "start": 14.46,
+    "end": 15.02
+   },
+   {
+    "word": "us.",
+    "start": 15.02,
+    "end": 15.54
+   }
+  ]
+ },
+ "model-first-sound-cat": {
+  "duration": 13.88,
+  "words": [
+   {
+    "word": "Let's",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "try",
+    "start": 0.62,
+    "end": 0.94
+   },
+   {
+    "word": "with",
+    "start": 0.94,
+    "end": 1.32
+   },
+   {
+    "word": "the",
+    "start": 1.32,
+    "end": 1.54
+   },
+   {
+    "word": "word",
+    "start": 1.54,
+    "end": 1.9
+   },
+   {
+    "word": "cat.",
+    "start": 1.9,
+    "end": 2.64
+   },
+   {
+    "word": "When",
+    "start": 3.2,
+    "end": 3.8
+   },
+   {
+    "word": "I",
+    "start": 3.8,
+    "end": 4.0
+   },
+   {
+    "word": "say",
+    "start": 4.0,
+    "end": 4.32
+   },
+   {
+    "word": "cat,",
+    "start": 4.32,
+    "end": 4.86
+   },
+   {
+    "word": "the",
+    "start": 5.26,
+    "end": 5.68
+   },
+   {
+    "word": "very",
+    "start": 5.68,
+    "end": 6.18
+   },
+   {
+    "word": "first",
+    "start": 6.18,
+    "end": 6.86
+   },
+   {
+    "word": "sound",
+    "start": 6.86,
+    "end": 7.36
+   },
+   {
+    "word": "I",
+    "start": 7.36,
+    "end": 7.54
+   },
+   {
+    "word": "hear",
+    "start": 7.54,
+    "end": 7.82
+   },
+   {
+    "word": "is",
+    "start": 7.82,
+    "end": 8.16
+   },
+   {
+    "word": "k",
+    "start": 8.16,
+    "end": 8.8
+   },
+   {
+    "word": "-c",
+    "start": 8.8,
+    "end": 9.02
+   },
+   {
+    "word": "-c",
+    "start": 9.02,
+    "end": 9.76
+   },
+   {
+    "word": "-c",
+    "start": 9.76,
+    "end": 12.52
+   },
+   {
+    "word": "-cat.",
+    "start": 12.52,
+    "end": 13.88
+   }
+  ]
+ },
+ "model-last-sound-cat": {
+  "duration": 24.0,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "found",
+    "start": 0.6,
+    "end": 1.06
+   },
+   {
+    "word": "the",
+    "start": 1.06,
+    "end": 1.5
+   },
+   {
+    "word": "first",
+    "start": 1.5,
+    "end": 2.06
+   },
+   {
+    "word": "sound.",
+    "start": 2.06,
+    "end": 2.7
+   },
+   {
+    "word": "Now,",
+    "start": 3.06,
+    "end": 3.68
+   },
+   {
+    "word": "let's",
+    "start": 3.98,
+    "end": 4.58
+   },
+   {
+    "word": "find",
+    "start": 4.58,
+    "end": 5.0
+   },
+   {
+    "word": "the",
+    "start": 5.0,
+    "end": 5.42
+   },
+   {
+    "word": "last",
+    "start": 5.42,
+    "end": 5.86
+   },
+   {
+    "word": "sound.",
+    "start": 5.86,
+    "end": 6.7
+   },
+   {
+    "word": "In",
+    "start": 7.16,
+    "end": 7.62
+   },
+   {
+    "word": "the",
+    "start": 7.62,
+    "end": 7.8
+   },
+   {
+    "word": "word",
+    "start": 7.8,
+    "end": 8.12
+   },
+   {
+    "word": "cat,",
+    "start": 8.12,
+    "end": 9.1
+   },
+   {
+    "word": "the",
+    "start": 9.98,
+    "end": 10.3
+   },
+   {
+    "word": "very",
+    "start": 10.3,
+    "end": 10.88
+   },
+   {
+    "word": "last",
+    "start": 10.88,
+    "end": 11.64
+   },
+   {
+    "word": "sound",
+    "start": 11.64,
+    "end": 12.24
+   },
+   {
+    "word": "I",
+    "start": 12.24,
+    "end": 12.44
+   },
+   {
+    "word": "hear",
+    "start": 12.44,
+    "end": 12.84
+   },
+   {
+    "word": "is",
+    "start": 12.84,
+    "end": 13.62
+   },
+   {
+    "word": "t.",
+    "start": 13.62,
+    "end": 14.2
+   },
+   {
+    "word": "Listen.",
+    "start": 15.12,
+    "end": 15.6
+   },
+   {
+    "word": "K",
+    "start": 15.6,
+    "end": 16.9
+   },
+   {
+    "word": "-a",
+    "start": 16.9,
+    "end": 18.56
+   },
+   {
+    "word": "-t.",
+    "start": 18.56,
+    "end": 19.88
+   },
+   {
+    "word": "Hear",
+    "start": 20.42,
+    "end": 21.54
+   },
+   {
+    "word": "that",
+    "start": 21.54,
+    "end": 21.94
+   },
+   {
+    "word": "t",
+    "start": 21.94,
+    "end": 22.5
+   },
+   {
+    "word": "-at",
+    "start": 22.5,
+    "end": 23.32
+   },
+   {
+    "word": "the",
+    "start": 23.32,
+    "end": 23.58
+   },
+   {
+    "word": "end.",
+    "start": 23.58,
+    "end": 24.0
+   }
+  ]
+ },
+ "model-middle-sound-cat": {
+  "duration": 19.68,
+  "words": [
+   {
+    "word": "Fantastic.",
+    "start": 0.0,
+    "end": 1.56
+   },
+   {
+    "word": "Now",
+    "start": 2.2,
+    "end": 2.66
+   },
+   {
+    "word": "for",
+    "start": 2.66,
+    "end": 2.94
+   },
+   {
+    "word": "the",
+    "start": 2.94,
+    "end": 3.14
+   },
+   {
+    "word": "trickier",
+    "start": 3.14,
+    "end": 3.86
+   },
+   {
+    "word": "sound,",
+    "start": 3.86,
+    "end": 4.34
+   },
+   {
+    "word": "it's",
+    "start": 4.72,
+    "end": 5.08
+   },
+   {
+    "word": "the",
+    "start": 5.08,
+    "end": 5.24
+   },
+   {
+    "word": "middle",
+    "start": 5.24,
+    "end": 5.7
+   },
+   {
+    "word": "sound.",
+    "start": 5.7,
+    "end": 6.4
+   },
+   {
+    "word": "In",
+    "start": 6.96,
+    "end": 7.26
+   },
+   {
+    "word": "cat,",
+    "start": 7.26,
+    "end": 7.74
+   },
+   {
+    "word": "the",
+    "start": 8.36,
+    "end": 8.56
+   },
+   {
+    "word": "sound",
+    "start": 8.56,
+    "end": 9.0
+   },
+   {
+    "word": "in",
+    "start": 9.0,
+    "end": 9.18
+   },
+   {
+    "word": "the",
+    "start": 9.18,
+    "end": 9.3
+   },
+   {
+    "word": "middle",
+    "start": 9.3,
+    "end": 9.58
+   },
+   {
+    "word": "is",
+    "start": 9.58,
+    "end": 10.1
+   },
+   {
+    "word": "A.",
+    "start": 10.1,
+    "end": 10.96
+   },
+   {
+    "word": "K.",
+    "start": 12.28,
+    "end": 12.34
+   },
+   {
+    "word": "A.",
+    "start": 13.64,
+    "end": 14.0
+   },
+   {
+    "word": "T.",
+    "start": 14.84,
+    "end": 15.22
+   },
+   {
+    "word": "That",
+    "start": 16.12,
+    "end": 16.56
+   },
+   {
+    "word": "short",
+    "start": 16.56,
+    "end": 17.02
+   },
+   {
+    "word": "A",
+    "start": 17.02,
+    "end": 17.5
+   },
+   {
+    "word": "sound",
+    "start": 17.5,
+    "end": 18.16
+   },
+   {
+    "word": "is",
+    "start": 18.16,
+    "end": 18.48
+   },
+   {
+    "word": "right",
+    "start": 18.48,
+    "end": 18.88
+   },
+   {
+    "word": "in",
+    "start": 18.88,
+    "end": 19.18
+   },
+   {
+    "word": "the",
+    "start": 19.18,
+    "end": 19.32
+   },
+   {
+    "word": "middle.",
+    "start": 19.32,
+    "end": 19.68
+   }
+  ]
+ },
+ "model-stretch-words": {
+  "duration": 26.74,
+  "words": [
+   {
+    "word": "To",
+    "start": 0.0,
+    "end": 0.36
+   },
+   {
+    "word": "be",
+    "start": 0.36,
+    "end": 0.6
+   },
+   {
+    "word": "a",
+    "start": 0.6,
+    "end": 0.88
+   },
+   {
+    "word": "great",
+    "start": 0.88,
+    "end": 1.46
+   },
+   {
+    "word": "sound",
+    "start": 1.46,
+    "end": 2.06
+   },
+   {
+    "word": "detective,",
+    "start": 2.06,
+    "end": 2.64
+   },
+   {
+    "word": "we",
+    "start": 3.04,
+    "end": 3.16
+   },
+   {
+    "word": "need",
+    "start": 3.16,
+    "end": 3.44
+   },
+   {
+    "word": "to",
+    "start": 3.44,
+    "end": 3.72
+   },
+   {
+    "word": "stretch",
+    "start": 3.72,
+    "end": 4.32
+   },
+   {
+    "word": "words",
+    "start": 4.32,
+    "end": 4.92
+   },
+   {
+    "word": "out",
+    "start": 4.92,
+    "end": 5.5
+   },
+   {
+    "word": "slowly.",
+    "start": 5.5,
+    "end": 6.58
+   },
+   {
+    "word": "Listen",
+    "start": 7.4,
+    "end": 7.68
+   },
+   {
+    "word": "as",
+    "start": 7.68,
+    "end": 8.08
+   },
+   {
+    "word": "I",
+    "start": 8.08,
+    "end": 8.26
+   },
+   {
+    "word": "stretch",
+    "start": 8.26,
+    "end": 8.84
+   },
+   {
+    "word": "the",
+    "start": 8.84,
+    "end": 9.14
+   },
+   {
+    "word": "word",
+    "start": 9.14,
+    "end": 9.52
+   },
+   {
+    "word": "cat.",
+    "start": 9.52,
+    "end": 10.18
+   },
+   {
+    "word": "Nice",
+    "start": 11.06,
+    "end": 11.54
+   },
+   {
+    "word": "and",
+    "start": 11.54,
+    "end": 11.98
+   },
+   {
+    "word": "slow.",
+    "start": 11.98,
+    "end": 12.54
+   },
+   {
+    "word": "K.",
+    "start": 13.14,
+    "end": 13.66
+   },
+   {
+    "word": "A.",
+    "start": 15.1,
+    "end": 15.44
+   },
+   {
+    "word": "Then",
+    "start": 17.9,
+    "end": 18.78
+   },
+   {
+    "word": "we",
+    "start": 18.78,
+    "end": 19.44
+   },
+   {
+    "word": "find",
+    "start": 19.44,
+    "end": 19.9
+   },
+   {
+    "word": "where",
+    "start": 19.9,
+    "end": 20.2
+   },
+   {
+    "word": "a",
+    "start": 20.2,
+    "end": 20.38
+   },
+   {
+    "word": "sound",
+    "start": 20.38,
+    "end": 20.8
+   },
+   {
+    "word": "lives.",
+    "start": 20.8,
+    "end": 21.48
+   },
+   {
+    "word": "Is",
+    "start": 22.2,
+    "end": 22.52
+   },
+   {
+    "word": "it",
+    "start": 22.52,
+    "end": 22.68
+   },
+   {
+    "word": "at",
+    "start": 22.68,
+    "end": 22.8
+   },
+   {
+    "word": "the",
+    "start": 22.8,
+    "end": 22.96
+   },
+   {
+    "word": "beginning?",
+    "start": 22.96,
+    "end": 23.38
+   },
+   {
+    "word": "The",
+    "start": 24.26,
+    "end": 24.54
+   },
+   {
+    "word": "middle",
+    "start": 24.54,
+    "end": 24.98
+   },
+   {
+    "word": "or",
+    "start": 24.98,
+    "end": 25.8
+   },
+   {
+    "word": "the",
+    "start": 25.8,
+    "end": 26.2
+   },
+   {
+    "word": "end?",
+    "start": 26.2,
+    "end": 26.74
+   }
+  ]
+ }
+}

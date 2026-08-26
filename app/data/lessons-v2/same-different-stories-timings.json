@@ -1,0 +1,2382 @@
+{
+ "celebrate-compare": {
+  "duration": 13.6,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "did",
+    "start": 0.42,
+    "end": 0.76
+   },
+   {
+    "word": "it!",
+    "start": 0.76,
+    "end": 1.08
+   },
+   {
+    "word": "You",
+    "start": 1.42,
+    "end": 1.6
+   },
+   {
+    "word": "read",
+    "start": 1.6,
+    "end": 1.86
+   },
+   {
+    "word": "two",
+    "start": 1.86,
+    "end": 2.22
+   },
+   {
+    "word": "stories",
+    "start": 2.22,
+    "end": 2.72
+   },
+   {
+    "word": "and",
+    "start": 2.72,
+    "end": 3.04
+   },
+   {
+    "word": "compared",
+    "start": 3.04,
+    "end": 3.42
+   },
+   {
+    "word": "them.",
+    "start": 3.42,
+    "end": 3.8
+   },
+   {
+    "word": "The",
+    "start": 4.4,
+    "end": 4.6
+   },
+   {
+    "word": "same",
+    "start": 4.6,
+    "end": 4.98
+   },
+   {
+    "word": "thing",
+    "start": 4.98,
+    "end": 5.26
+   },
+   {
+    "word": "happened",
+    "start": 5.26,
+    "end": 5.76
+   },
+   {
+    "word": "to",
+    "start": 5.76,
+    "end": 6.14
+   },
+   {
+    "word": "Leo",
+    "start": 6.14,
+    "end": 6.48
+   },
+   {
+    "word": "and",
+    "start": 6.48,
+    "end": 7.16
+   },
+   {
+    "word": "Tazara,",
+    "start": 7.16,
+    "end": 7.72
+   },
+   {
+    "word": "but",
+    "start": 8.36,
+    "end": 8.5
+   },
+   {
+    "word": "each",
+    "start": 8.5,
+    "end": 9.04
+   },
+   {
+    "word": "friend",
+    "start": 9.04,
+    "end": 9.42
+   },
+   {
+    "word": "felt",
+    "start": 9.42,
+    "end": 9.92
+   },
+   {
+    "word": "and",
+    "start": 9.92,
+    "end": 10.34
+   },
+   {
+    "word": "acted",
+    "start": 10.34,
+    "end": 10.88
+   },
+   {
+    "word": "a",
+    "start": 10.88,
+    "end": 11.12
+   },
+   {
+    "word": "different",
+    "start": 11.12,
+    "end": 11.48
+   },
+   {
+    "word": "way.",
+    "start": 11.48,
+    "end": 11.8
+   },
+   {
+    "word": "Great",
+    "start": 12.44,
+    "end": 12.88
+   },
+   {
+    "word": "work,",
+    "start": 12.88,
+    "end": 13.36
+   },
+   {
+    "word": "reader!",
+    "start": 13.48,
+    "end": 13.6
+   }
+  ]
+ },
+ "challenge-kim-ty": {
+  "duration": 25.36,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "is",
+    "start": 0.46,
+    "end": 0.8
+   },
+   {
+    "word": "one",
+    "start": 0.8,
+    "end": 1.18
+   },
+   {
+    "word": "last",
+    "start": 1.18,
+    "end": 1.54
+   },
+   {
+    "word": "story,",
+    "start": 1.54,
+    "end": 2.18
+   },
+   {
+    "word": "and",
+    "start": 2.6,
+    "end": 2.66
+   },
+   {
+    "word": "it",
+    "start": 2.66,
+    "end": 2.82
+   },
+   {
+    "word": "is",
+    "start": 2.82,
+    "end": 2.98
+   },
+   {
+    "word": "only",
+    "start": 2.98,
+    "end": 3.44
+   },
+   {
+    "word": "for",
+    "start": 3.44,
+    "end": 3.72
+   },
+   {
+    "word": "your",
+    "start": 3.72,
+    "end": 3.94
+   },
+   {
+    "word": "ears,",
+    "start": 3.94,
+    "end": 4.48
+   },
+   {
+    "word": "so",
+    "start": 4.92,
+    "end": 5.02
+   },
+   {
+    "word": "listen",
+    "start": 5.02,
+    "end": 5.5
+   },
+   {
+    "word": "closely.",
+    "start": 5.5,
+    "end": 6.34
+   },
+   {
+    "word": "Boom!",
+    "start": 7.42,
+    "end": 7.8
+   },
+   {
+    "word": "Kim",
+    "start": 8.8,
+    "end": 9.08
+   },
+   {
+    "word": "and",
+    "start": 9.08,
+    "end": 9.44
+   },
+   {
+    "word": "Ty",
+    "start": 9.44,
+    "end": 9.7
+   },
+   {
+    "word": "both",
+    "start": 9.7,
+    "end": 10.24
+   },
+   {
+    "word": "heard",
+    "start": 10.24,
+    "end": 10.66
+   },
+   {
+    "word": "loud",
+    "start": 10.66,
+    "end": 11.26
+   },
+   {
+    "word": "thunder.",
+    "start": 11.26,
+    "end": 12.12
+   },
+   {
+    "word": "Kim",
+    "start": 12.8,
+    "end": 13.12
+   },
+   {
+    "word": "ran",
+    "start": 13.12,
+    "end": 13.54
+   },
+   {
+    "word": "inside",
+    "start": 13.54,
+    "end": 14.1
+   },
+   {
+    "word": "to",
+    "start": 14.1,
+    "end": 14.4
+   },
+   {
+    "word": "her",
+    "start": 14.4,
+    "end": 14.52
+   },
+   {
+    "word": "mom.",
+    "start": 14.52,
+    "end": 14.86
+   },
+   {
+    "word": "Ty",
+    "start": 15.6,
+    "end": 15.86
+   },
+   {
+    "word": "stayed",
+    "start": 15.86,
+    "end": 16.34
+   },
+   {
+    "word": "by",
+    "start": 16.34,
+    "end": 16.64
+   },
+   {
+    "word": "the",
+    "start": 16.64,
+    "end": 16.86
+   },
+   {
+    "word": "window",
+    "start": 16.86,
+    "end": 17.34
+   },
+   {
+    "word": "and",
+    "start": 17.34,
+    "end": 17.8
+   },
+   {
+    "word": "watched",
+    "start": 17.8,
+    "end": 18.26
+   },
+   {
+    "word": "the",
+    "start": 18.26,
+    "end": 18.52
+   },
+   {
+    "word": "sky",
+    "start": 18.52,
+    "end": 18.92
+   },
+   {
+    "word": "flash.",
+    "start": 18.92,
+    "end": 19.3
+   },
+   {
+    "word": "Now",
+    "start": 19.3,
+    "end": 20.62
+   },
+   {
+    "word": "tap",
+    "start": 20.62,
+    "end": 21.04
+   },
+   {
+    "word": "the",
+    "start": 21.04,
+    "end": 21.34
+   },
+   {
+    "word": "answer",
+    "start": 21.34,
+    "end": 21.76
+   },
+   {
+    "word": "that",
+    "start": 21.76,
+    "end": 21.98
+   },
+   {
+    "word": "tells",
+    "start": 21.98,
+    "end": 22.34
+   },
+   {
+    "word": "how",
+    "start": 22.34,
+    "end": 22.8
+   },
+   {
+    "word": "Kim",
+    "start": 22.8,
+    "end": 23.2
+   },
+   {
+    "word": "and",
+    "start": 23.2,
+    "end": 23.54
+   },
+   {
+    "word": "Ty",
+    "start": 23.54,
+    "end": 23.96
+   },
+   {
+    "word": "acted",
+    "start": 23.96,
+    "end": 24.64
+   },
+   {
+    "word": "differently.",
+    "start": 24.64,
+    "end": 25.36
+   }
+  ]
+ },
+ "choose-both-did": {
+  "duration": 11.44,
+  "words": [
+   {
+    "word": "Your",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "turn",
+    "start": 0.52,
+    "end": 0.92
+   },
+   {
+    "word": "to",
+    "start": 0.92,
+    "end": 1.12
+   },
+   {
+    "word": "compare.",
+    "start": 1.12,
+    "end": 1.62
+   },
+   {
+    "word": "Think",
+    "start": 2.58,
+    "end": 2.98
+   },
+   {
+    "word": "about",
+    "start": 2.98,
+    "end": 3.5
+   },
+   {
+    "word": "both",
+    "start": 3.5,
+    "end": 4.22
+   },
+   {
+    "word": "pages.",
+    "start": 4.22,
+    "end": 4.8
+   },
+   {
+    "word": "What",
+    "start": 5.84,
+    "end": 6.14
+   },
+   {
+    "word": "did",
+    "start": 6.14,
+    "end": 6.48
+   },
+   {
+    "word": "Leo",
+    "start": 6.48,
+    "end": 6.92
+   },
+   {
+    "word": "and",
+    "start": 6.92,
+    "end": 7.38
+   },
+   {
+    "word": "Zara",
+    "start": 7.38,
+    "end": 7.92
+   },
+   {
+    "word": "both",
+    "start": 7.92,
+    "end": 8.76
+   },
+   {
+    "word": "do?",
+    "start": 8.76,
+    "end": 9.24
+   },
+   {
+    "word": "Tap",
+    "start": 10.26,
+    "end": 10.62
+   },
+   {
+    "word": "your",
+    "start": 10.62,
+    "end": 10.94
+   },
+   {
+    "word": "answer.",
+    "start": 10.94,
+    "end": 11.44
+   }
+  ]
+ },
+ "choose-compare-actions": {
+  "duration": 10.16,
+  "words": [
+   {
+    "word": "After",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "the",
+    "start": 0.58,
+    "end": 0.76
+   },
+   {
+    "word": "pop,",
+    "start": 0.76,
+    "end": 1.04
+   },
+   {
+    "word": "each",
+    "start": 1.68,
+    "end": 1.98
+   },
+   {
+    "word": "friend",
+    "start": 1.98,
+    "end": 2.38
+   },
+   {
+    "word": "did",
+    "start": 2.38,
+    "end": 2.88
+   },
+   {
+    "word": "something",
+    "start": 2.88,
+    "end": 3.48
+   },
+   {
+    "word": "different",
+    "start": 3.48,
+    "end": 4.16
+   },
+   {
+    "word": "with",
+    "start": 4.16,
+    "end": 4.66
+   },
+   {
+    "word": "the",
+    "start": 4.66,
+    "end": 4.86
+   },
+   {
+    "word": "tooth.",
+    "start": 4.86,
+    "end": 5.28
+   },
+   {
+    "word": "What",
+    "start": 5.92,
+    "end": 6.24
+   },
+   {
+    "word": "did",
+    "start": 6.24,
+    "end": 6.5
+   },
+   {
+    "word": "each",
+    "start": 6.5,
+    "end": 6.98
+   },
+   {
+    "word": "friend",
+    "start": 6.98,
+    "end": 7.44
+   },
+   {
+    "word": "do?",
+    "start": 7.44,
+    "end": 7.92
+   },
+   {
+    "word": "Tap",
+    "start": 8.76,
+    "end": 9.08
+   },
+   {
+    "word": "the",
+    "start": 9.08,
+    "end": 9.32
+   },
+   {
+    "word": "best",
+    "start": 9.32,
+    "end": 9.68
+   },
+   {
+    "word": "answer.",
+    "start": 9.68,
+    "end": 10.16
+   }
+  ]
+ },
+ "choose-compare-feelings": {
+  "duration": 10.92,
+  "words": [
+   {
+    "word": "Think",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "about",
+    "start": 0.58,
+    "end": 0.94
+   },
+   {
+    "word": "the",
+    "start": 0.94,
+    "end": 1.22
+   },
+   {
+    "word": "pop",
+    "start": 1.22,
+    "end": 1.62
+   },
+   {
+    "word": "when",
+    "start": 1.62,
+    "end": 2.32
+   },
+   {
+    "word": "each",
+    "start": 2.32,
+    "end": 2.92
+   },
+   {
+    "word": "tooth",
+    "start": 2.92,
+    "end": 3.32
+   },
+   {
+    "word": "came",
+    "start": 3.32,
+    "end": 3.74
+   },
+   {
+    "word": "out.",
+    "start": 3.74,
+    "end": 4.3
+   },
+   {
+    "word": "How",
+    "start": 4.92,
+    "end": 5.22
+   },
+   {
+    "word": "did",
+    "start": 5.22,
+    "end": 5.42
+   },
+   {
+    "word": "each",
+    "start": 5.42,
+    "end": 5.86
+   },
+   {
+    "word": "friend",
+    "start": 5.86,
+    "end": 6.2
+   },
+   {
+    "word": "feel?",
+    "start": 6.2,
+    "end": 6.8
+   },
+   {
+    "word": "Tap",
+    "start": 7.72,
+    "end": 7.94
+   },
+   {
+    "word": "the",
+    "start": 7.94,
+    "end": 8.22
+   },
+   {
+    "word": "answer",
+    "start": 8.22,
+    "end": 8.7
+   },
+   {
+    "word": "that",
+    "start": 8.7,
+    "end": 9.04
+   },
+   {
+    "word": "tells",
+    "start": 9.04,
+    "end": 9.44
+   },
+   {
+    "word": "about",
+    "start": 9.44,
+    "end": 9.86
+   },
+   {
+    "word": "both",
+    "start": 9.86,
+    "end": 10.4
+   },
+   {
+    "word": "friends.",
+    "start": 10.4,
+    "end": 10.92
+   }
+  ]
+ },
+ "choose-only-leo": {
+  "duration": 8.16,
+  "words": [
+   {
+    "word": "Some",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "things",
+    "start": 0.58,
+    "end": 0.92
+   },
+   {
+    "word": "happen",
+    "start": 0.92,
+    "end": 1.38
+   },
+   {
+    "word": "to",
+    "start": 1.38,
+    "end": 1.74
+   },
+   {
+    "word": "just",
+    "start": 1.74,
+    "end": 2.0
+   },
+   {
+    "word": "one",
+    "start": 2.0,
+    "end": 2.58
+   },
+   {
+    "word": "friend.",
+    "start": 2.58,
+    "end": 3.24
+   },
+   {
+    "word": "What",
+    "start": 3.86,
+    "end": 4.12
+   },
+   {
+    "word": "did",
+    "start": 4.12,
+    "end": 4.36
+   },
+   {
+    "word": "only",
+    "start": 4.36,
+    "end": 4.9
+   },
+   {
+    "word": "Leo",
+    "start": 4.9,
+    "end": 5.42
+   },
+   {
+    "word": "do?",
+    "start": 5.42,
+    "end": 5.78
+   },
+   {
+    "word": "Not",
+    "start": 6.28,
+    "end": 6.5
+   },
+   {
+    "word": "Zara.",
+    "start": 6.5,
+    "end": 7.04
+   },
+   {
+    "word": "Tap",
+    "start": 7.62,
+    "end": 7.86
+   },
+   {
+    "word": "it.",
+    "start": 7.86,
+    "end": 8.16
+   }
+  ]
+ },
+ "complete": {
+  "duration": 18.16,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "compared",
+    "start": 0.46,
+    "end": 1.0
+   },
+   {
+    "word": "two",
+    "start": 1.0,
+    "end": 1.58
+   },
+   {
+    "word": "stories",
+    "start": 1.58,
+    "end": 2.26
+   },
+   {
+    "word": "today.",
+    "start": 2.26,
+    "end": 2.7
+   },
+   {
+    "word": "You",
+    "start": 3.42,
+    "end": 3.68
+   },
+   {
+    "word": "found",
+    "start": 3.68,
+    "end": 4.0
+   },
+   {
+    "word": "what",
+    "start": 4.0,
+    "end": 4.26
+   },
+   {
+    "word": "happened",
+    "start": 4.26,
+    "end": 4.68
+   },
+   {
+    "word": "to",
+    "start": 4.68,
+    "end": 4.94
+   },
+   {
+    "word": "both",
+    "start": 4.94,
+    "end": 5.38
+   },
+   {
+    "word": "friends,",
+    "start": 5.38,
+    "end": 6.02
+   },
+   {
+    "word": "what",
+    "start": 6.38,
+    "end": 6.68
+   },
+   {
+    "word": "happened",
+    "start": 6.68,
+    "end": 7.16
+   },
+   {
+    "word": "to",
+    "start": 7.16,
+    "end": 7.42
+   },
+   {
+    "word": "only",
+    "start": 7.42,
+    "end": 7.96
+   },
+   {
+    "word": "one,",
+    "start": 7.96,
+    "end": 8.5
+   },
+   {
+    "word": "and",
+    "start": 8.94,
+    "end": 9.26
+   },
+   {
+    "word": "how",
+    "start": 9.26,
+    "end": 9.6
+   },
+   {
+    "word": "each",
+    "start": 9.6,
+    "end": 10.18
+   },
+   {
+    "word": "friend",
+    "start": 10.18,
+    "end": 10.72
+   },
+   {
+    "word": "felt",
+    "start": 10.72,
+    "end": 11.24
+   },
+   {
+    "word": "and",
+    "start": 11.24,
+    "end": 11.7
+   },
+   {
+    "word": "acted",
+    "start": 11.7,
+    "end": 12.06
+   },
+   {
+    "word": "differently.",
+    "start": 12.06,
+    "end": 12.66
+   },
+   {
+    "word": "That",
+    "start": 13.4,
+    "end": 13.92
+   },
+   {
+    "word": "is",
+    "start": 13.92,
+    "end": 14.3
+   },
+   {
+    "word": "what",
+    "start": 14.3,
+    "end": 14.56
+   },
+   {
+    "word": "strong",
+    "start": 14.56,
+    "end": 15.22
+   },
+   {
+    "word": "readers",
+    "start": 15.22,
+    "end": 15.82
+   },
+   {
+    "word": "do.",
+    "start": 15.82,
+    "end": 16.32
+   },
+   {
+    "word": "Nice",
+    "start": 17.02,
+    "end": 17.5
+   },
+   {
+    "word": "work.",
+    "start": 17.5,
+    "end": 18.16
+   }
+  ]
+ },
+ "hook-two-stories": {
+  "duration": 18.1,
+  "words": [
+   {
+    "word": "Today",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "we",
+    "start": 0.6,
+    "end": 1.22
+   },
+   {
+    "word": "will",
+    "start": 1.22,
+    "end": 1.44
+   },
+   {
+    "word": "read",
+    "start": 1.44,
+    "end": 1.74
+   },
+   {
+    "word": "two",
+    "start": 1.74,
+    "end": 2.26
+   },
+   {
+    "word": "small",
+    "start": 2.26,
+    "end": 2.96
+   },
+   {
+    "word": "stories.",
+    "start": 2.96,
+    "end": 3.74
+   },
+   {
+    "word": "This",
+    "start": 4.34,
+    "end": 4.76
+   },
+   {
+    "word": "is",
+    "start": 4.76,
+    "end": 5.32
+   },
+   {
+    "word": "Leo",
+    "start": 5.32,
+    "end": 5.66
+   },
+   {
+    "word": "and",
+    "start": 5.66,
+    "end": 6.5
+   },
+   {
+    "word": "this",
+    "start": 6.5,
+    "end": 6.84
+   },
+   {
+    "word": "is",
+    "start": 6.84,
+    "end": 7.46
+   },
+   {
+    "word": "Zara.",
+    "start": 7.46,
+    "end": 8.1
+   },
+   {
+    "word": "The",
+    "start": 8.96,
+    "end": 9.3
+   },
+   {
+    "word": "same",
+    "start": 9.3,
+    "end": 9.66
+   },
+   {
+    "word": "thing",
+    "start": 9.66,
+    "end": 9.96
+   },
+   {
+    "word": "happens",
+    "start": 9.96,
+    "end": 10.42
+   },
+   {
+    "word": "to",
+    "start": 10.42,
+    "end": 10.78
+   },
+   {
+    "word": "both",
+    "start": 10.78,
+    "end": 11.08
+   },
+   {
+    "word": "friends,",
+    "start": 11.08,
+    "end": 11.72
+   },
+   {
+    "word": "but",
+    "start": 12.2,
+    "end": 12.42
+   },
+   {
+    "word": "they",
+    "start": 12.42,
+    "end": 12.76
+   },
+   {
+    "word": "do",
+    "start": 12.76,
+    "end": 13.02
+   },
+   {
+    "word": "not",
+    "start": 13.02,
+    "end": 13.38
+   },
+   {
+    "word": "feel",
+    "start": 13.38,
+    "end": 13.8
+   },
+   {
+    "word": "the",
+    "start": 13.8,
+    "end": 14.12
+   },
+   {
+    "word": "same",
+    "start": 14.12,
+    "end": 14.56
+   },
+   {
+    "word": "way",
+    "start": 14.56,
+    "end": 14.96
+   },
+   {
+    "word": "about",
+    "start": 14.96,
+    "end": 15.32
+   },
+   {
+    "word": "it.",
+    "start": 15.32,
+    "end": 15.56
+   },
+   {
+    "word": "Let's",
+    "start": 16.02,
+    "end": 16.48
+   },
+   {
+    "word": "read",
+    "start": 16.48,
+    "end": 16.86
+   },
+   {
+    "word": "and",
+    "start": 16.86,
+    "end": 17.62
+   },
+   {
+    "word": "compare.",
+    "start": 17.62,
+    "end": 18.1
+   }
+  ]
+ },
+ "read-leo-page-sentence": {
+  "duration": 15.78,
+  "words": [
+   {
+    "word": "Leo",
+    "start": 0.0,
+    "end": 0.72
+   },
+   {
+    "word": "has",
+    "start": 0.72,
+    "end": 1.48
+   },
+   {
+    "word": "a",
+    "start": 1.48,
+    "end": 1.78
+   },
+   {
+    "word": "loose",
+    "start": 1.78,
+    "end": 2.2
+   },
+   {
+    "word": "tooth.",
+    "start": 2.2,
+    "end": 2.88
+   },
+   {
+    "word": "He",
+    "start": 3.34,
+    "end": 4.24
+   },
+   {
+    "word": "wiggles",
+    "start": 4.24,
+    "end": 4.74
+   },
+   {
+    "word": "it",
+    "start": 4.74,
+    "end": 5.14
+   },
+   {
+    "word": "with",
+    "start": 5.14,
+    "end": 5.52
+   },
+   {
+    "word": "his",
+    "start": 5.52,
+    "end": 5.8
+   },
+   {
+    "word": "finger.",
+    "start": 5.8,
+    "end": 6.28
+   },
+   {
+    "word": "Pop!",
+    "start": 7.28,
+    "end": 7.6
+   },
+   {
+    "word": "The",
+    "start": 8.1,
+    "end": 8.56
+   },
+   {
+    "word": "tooth",
+    "start": 8.56,
+    "end": 9.04
+   },
+   {
+    "word": "comes",
+    "start": 9.04,
+    "end": 9.52
+   },
+   {
+    "word": "out.",
+    "start": 9.52,
+    "end": 9.86
+   },
+   {
+    "word": "Leo",
+    "start": 10.76,
+    "end": 11.32
+   },
+   {
+    "word": "feels",
+    "start": 11.32,
+    "end": 11.78
+   },
+   {
+    "word": "scared.",
+    "start": 11.78,
+    "end": 12.34
+   },
+   {
+    "word": "He",
+    "start": 13.08,
+    "end": 13.4
+   },
+   {
+    "word": "hides",
+    "start": 13.4,
+    "end": 13.92
+   },
+   {
+    "word": "the",
+    "start": 13.92,
+    "end": 14.16
+   },
+   {
+    "word": "tooth",
+    "start": 14.16,
+    "end": 14.56
+   },
+   {
+    "word": "in",
+    "start": 14.56,
+    "end": 14.96
+   },
+   {
+    "word": "his",
+    "start": 14.96,
+    "end": 15.28
+   },
+   {
+    "word": "pocket.",
+    "start": 15.28,
+    "end": 15.78
+   }
+  ]
+ },
+ "read-leo-page": {
+  "duration": 8.28,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "is",
+    "start": 0.48,
+    "end": 0.9
+   },
+   {
+    "word": "Leo's",
+    "start": 0.9,
+    "end": 1.38
+   },
+   {
+    "word": "page.",
+    "start": 1.38,
+    "end": 1.82
+   },
+   {
+    "word": "Something",
+    "start": 2.3,
+    "end": 2.8
+   },
+   {
+    "word": "is",
+    "start": 2.8,
+    "end": 3.08
+   },
+   {
+    "word": "happening",
+    "start": 3.08,
+    "end": 3.6
+   },
+   {
+    "word": "to",
+    "start": 3.6,
+    "end": 3.9
+   },
+   {
+    "word": "his",
+    "start": 3.9,
+    "end": 4.14
+   },
+   {
+    "word": "tooth.",
+    "start": 4.14,
+    "end": 4.54
+   },
+   {
+    "word": "Read",
+    "start": 5.38,
+    "end": 5.66
+   },
+   {
+    "word": "the",
+    "start": 5.66,
+    "end": 5.86
+   },
+   {
+    "word": "page",
+    "start": 5.86,
+    "end": 6.36
+   },
+   {
+    "word": "to",
+    "start": 6.36,
+    "end": 6.54
+   },
+   {
+    "word": "find",
+    "start": 6.54,
+    "end": 6.88
+   },
+   {
+    "word": "out",
+    "start": 6.88,
+    "end": 7.18
+   },
+   {
+    "word": "what",
+    "start": 7.18,
+    "end": 7.44
+   },
+   {
+    "word": "Leo",
+    "start": 7.44,
+    "end": 7.84
+   },
+   {
+    "word": "does.",
+    "start": 7.84,
+    "end": 8.28
+   }
+  ]
+ },
+ "read-zara-page-sentence": {
+  "duration": 16.12,
+  "words": [
+   {
+    "word": "Zara",
+    "start": 0.0,
+    "end": 0.76
+   },
+   {
+    "word": "has",
+    "start": 0.76,
+    "end": 1.22
+   },
+   {
+    "word": "a",
+    "start": 1.22,
+    "end": 1.44
+   },
+   {
+    "word": "loose",
+    "start": 1.44,
+    "end": 1.82
+   },
+   {
+    "word": "tooth",
+    "start": 1.82,
+    "end": 2.3
+   },
+   {
+    "word": "too.",
+    "start": 2.3,
+    "end": 2.94
+   },
+   {
+    "word": "She",
+    "start": 3.58,
+    "end": 4.18
+   },
+   {
+    "word": "wiggles",
+    "start": 4.18,
+    "end": 4.72
+   },
+   {
+    "word": "it",
+    "start": 4.72,
+    "end": 5.08
+   },
+   {
+    "word": "all",
+    "start": 5.08,
+    "end": 5.62
+   },
+   {
+    "word": "day.",
+    "start": 5.62,
+    "end": 6.34
+   },
+   {
+    "word": "Pop!",
+    "start": 7.22,
+    "end": 7.58
+   },
+   {
+    "word": "The",
+    "start": 8.28,
+    "end": 8.62
+   },
+   {
+    "word": "tooth",
+    "start": 8.62,
+    "end": 9.2
+   },
+   {
+    "word": "comes",
+    "start": 9.2,
+    "end": 9.6
+   },
+   {
+    "word": "out.",
+    "start": 9.6,
+    "end": 10.12
+   },
+   {
+    "word": "Zara",
+    "start": 10.98,
+    "end": 11.56
+   },
+   {
+    "word": "feels",
+    "start": 11.56,
+    "end": 11.9
+   },
+   {
+    "word": "excited.",
+    "start": 11.9,
+    "end": 12.84
+   },
+   {
+    "word": "She",
+    "start": 13.52,
+    "end": 13.86
+   },
+   {
+    "word": "shows",
+    "start": 13.86,
+    "end": 14.3
+   },
+   {
+    "word": "her",
+    "start": 14.3,
+    "end": 14.6
+   },
+   {
+    "word": "tooth",
+    "start": 14.6,
+    "end": 14.96
+   },
+   {
+    "word": "to",
+    "start": 14.96,
+    "end": 15.38
+   },
+   {
+    "word": "her",
+    "start": 15.38,
+    "end": 15.58
+   },
+   {
+    "word": "friends.",
+    "start": 15.58,
+    "end": 16.12
+   }
+  ]
+ },
+ "read-zara-page": {
+  "duration": 9.48,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "here",
+    "start": 0.92,
+    "end": 1.26
+   },
+   {
+    "word": "is",
+    "start": 1.26,
+    "end": 1.6
+   },
+   {
+    "word": "Zara's",
+    "start": 1.6,
+    "end": 2.2
+   },
+   {
+    "word": "page.",
+    "start": 2.2,
+    "end": 2.7
+   },
+   {
+    "word": "The",
+    "start": 3.18,
+    "end": 3.4
+   },
+   {
+    "word": "same",
+    "start": 3.4,
+    "end": 3.86
+   },
+   {
+    "word": "thing",
+    "start": 3.86,
+    "end": 4.3
+   },
+   {
+    "word": "happens",
+    "start": 4.3,
+    "end": 4.8
+   },
+   {
+    "word": "to",
+    "start": 4.8,
+    "end": 5.18
+   },
+   {
+    "word": "her",
+    "start": 5.18,
+    "end": 5.56
+   },
+   {
+    "word": "tooth.",
+    "start": 5.56,
+    "end": 6.14
+   },
+   {
+    "word": "Read",
+    "start": 6.7,
+    "end": 6.96
+   },
+   {
+    "word": "the",
+    "start": 6.96,
+    "end": 7.14
+   },
+   {
+    "word": "page",
+    "start": 7.14,
+    "end": 7.64
+   },
+   {
+    "word": "to",
+    "start": 7.64,
+    "end": 7.84
+   },
+   {
+    "word": "find",
+    "start": 7.84,
+    "end": 8.18
+   },
+   {
+    "word": "out",
+    "start": 8.18,
+    "end": 8.46
+   },
+   {
+    "word": "what",
+    "start": 8.46,
+    "end": 8.66
+   },
+   {
+    "word": "Zara",
+    "start": 8.66,
+    "end": 9.18
+   },
+   {
+    "word": "does.",
+    "start": 9.18,
+    "end": 9.48
+   }
+  ]
+ },
+ "sort-both-only": {
+  "duration": 11.76,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.7
+   },
+   {
+    "word": "sort.",
+    "start": 0.7,
+    "end": 1.34
+   },
+   {
+    "word": "Drag",
+    "start": 2.42,
+    "end": 2.72
+   },
+   {
+    "word": "each",
+    "start": 2.72,
+    "end": 3.12
+   },
+   {
+    "word": "card",
+    "start": 3.12,
+    "end": 3.54
+   },
+   {
+    "word": "to",
+    "start": 3.54,
+    "end": 3.98
+   },
+   {
+    "word": "the",
+    "start": 3.98,
+    "end": 4.12
+   },
+   {
+    "word": "right",
+    "start": 4.12,
+    "end": 4.44
+   },
+   {
+    "word": "box.",
+    "start": 4.44,
+    "end": 5.02
+   },
+   {
+    "word": "Did",
+    "start": 5.8,
+    "end": 6.1
+   },
+   {
+    "word": "it",
+    "start": 6.1,
+    "end": 6.24
+   },
+   {
+    "word": "happen",
+    "start": 6.24,
+    "end": 6.6
+   },
+   {
+    "word": "to",
+    "start": 6.6,
+    "end": 6.84
+   },
+   {
+    "word": "both",
+    "start": 6.84,
+    "end": 7.24
+   },
+   {
+    "word": "friends?",
+    "start": 7.24,
+    "end": 7.82
+   },
+   {
+    "word": "Only",
+    "start": 8.4,
+    "end": 8.92
+   },
+   {
+    "word": "Tileo",
+    "start": 8.92,
+    "end": 9.68
+   },
+   {
+    "word": "or",
+    "start": 9.68,
+    "end": 10.36
+   },
+   {
+    "word": "only",
+    "start": 10.36,
+    "end": 11.04
+   },
+   {
+    "word": "Tizarra?",
+    "start": 11.04,
+    "end": 11.76
+   }
+  ]
+ },
+ "speak-compare-production": {
+  "duration": 13.3,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "you",
+    "start": 0.42,
+    "end": 0.68
+   },
+   {
+    "word": "say",
+    "start": 0.68,
+    "end": 0.96
+   },
+   {
+    "word": "it.",
+    "start": 0.96,
+    "end": 1.3
+   },
+   {
+    "word": "When",
+    "start": 2.04,
+    "end": 2.16
+   },
+   {
+    "word": "the",
+    "start": 2.16,
+    "end": 2.32
+   },
+   {
+    "word": "tooth",
+    "start": 2.32,
+    "end": 2.64
+   },
+   {
+    "word": "came",
+    "start": 2.64,
+    "end": 2.94
+   },
+   {
+    "word": "out,",
+    "start": 2.94,
+    "end": 3.36
+   },
+   {
+    "word": "Leo",
+    "start": 3.86,
+    "end": 4.06
+   },
+   {
+    "word": "did",
+    "start": 4.06,
+    "end": 4.38
+   },
+   {
+    "word": "one",
+    "start": 4.38,
+    "end": 4.72
+   },
+   {
+    "word": "thing,",
+    "start": 4.72,
+    "end": 5.14
+   },
+   {
+    "word": "and",
+    "start": 5.4,
+    "end": 5.64
+   },
+   {
+    "word": "Zara",
+    "start": 5.64,
+    "end": 6.14
+   },
+   {
+    "word": "did",
+    "start": 6.14,
+    "end": 6.5
+   },
+   {
+    "word": "another.",
+    "start": 6.5,
+    "end": 6.96
+   },
+   {
+    "word": "Tap",
+    "start": 7.74,
+    "end": 8.08
+   },
+   {
+    "word": "the",
+    "start": 8.08,
+    "end": 8.3
+   },
+   {
+    "word": "microphone",
+    "start": 8.3,
+    "end": 8.8
+   },
+   {
+    "word": "and",
+    "start": 8.8,
+    "end": 9.18
+   },
+   {
+    "word": "tell",
+    "start": 9.18,
+    "end": 9.38
+   },
+   {
+    "word": "me",
+    "start": 9.38,
+    "end": 9.54
+   },
+   {
+    "word": "what",
+    "start": 9.54,
+    "end": 9.76
+   },
+   {
+    "word": "each",
+    "start": 9.76,
+    "end": 10.28
+   },
+   {
+    "word": "friend",
+    "start": 10.28,
+    "end": 10.62
+   },
+   {
+    "word": "did,",
+    "start": 10.62,
+    "end": 11.16
+   },
+   {
+    "word": "or",
+    "start": 11.44,
+    "end": 11.78
+   },
+   {
+    "word": "how",
+    "start": 11.78,
+    "end": 12.34
+   },
+   {
+    "word": "each",
+    "start": 12.34,
+    "end": 12.6
+   },
+   {
+    "word": "friend",
+    "start": 12.6,
+    "end": 12.88
+   },
+   {
+    "word": "felt.",
+    "start": 12.88,
+    "end": 13.3
+   }
+  ]
+ },
+ "speak-read-zara-line": {
+  "duration": 8.26,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "is",
+    "start": 0.54,
+    "end": 0.84
+   },
+   {
+    "word": "one",
+    "start": 0.84,
+    "end": 1.12
+   },
+   {
+    "word": "line",
+    "start": 1.12,
+    "end": 1.46
+   },
+   {
+    "word": "from",
+    "start": 1.46,
+    "end": 1.8
+   },
+   {
+    "word": "Zara's",
+    "start": 1.8,
+    "end": 2.44
+   },
+   {
+    "word": "page.",
+    "start": 2.44,
+    "end": 2.9
+   },
+   {
+    "word": "Tap",
+    "start": 3.36,
+    "end": 3.72
+   },
+   {
+    "word": "the",
+    "start": 3.72,
+    "end": 3.98
+   },
+   {
+    "word": "microphone",
+    "start": 3.98,
+    "end": 4.56
+   },
+   {
+    "word": "and",
+    "start": 4.56,
+    "end": 5.06
+   },
+   {
+    "word": "read",
+    "start": 5.06,
+    "end": 5.4
+   },
+   {
+    "word": "the",
+    "start": 5.4,
+    "end": 5.64
+   },
+   {
+    "word": "line",
+    "start": 5.64,
+    "end": 5.98
+   },
+   {
+    "word": "out",
+    "start": 5.98,
+    "end": 6.42
+   },
+   {
+    "word": "loud,",
+    "start": 6.42,
+    "end": 6.92
+   },
+   {
+    "word": "nice",
+    "start": 7.2,
+    "end": 7.54
+   },
+   {
+    "word": "and",
+    "start": 7.54,
+    "end": 7.92
+   },
+   {
+    "word": "clear.",
+    "start": 7.92,
+    "end": 8.26
+   }
+  ]
+ },
+ "teach-same-different": {
+  "duration": 32.66,
+  "words": [
+   {
+    "word": "Let's",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "compare",
+    "start": 0.54,
+    "end": 0.88
+   },
+   {
+    "word": "the",
+    "start": 0.88,
+    "end": 1.1
+   },
+   {
+    "word": "two",
+    "start": 1.1,
+    "end": 1.32
+   },
+   {
+    "word": "pages.",
+    "start": 1.32,
+    "end": 1.74
+   },
+   {
+    "word": "Both",
+    "start": 2.56,
+    "end": 2.7
+   },
+   {
+    "word": "friends",
+    "start": 2.7,
+    "end": 3.16
+   },
+   {
+    "word": "had",
+    "start": 3.16,
+    "end": 3.46
+   },
+   {
+    "word": "a",
+    "start": 3.46,
+    "end": 3.6
+   },
+   {
+    "word": "loose",
+    "start": 3.6,
+    "end": 3.84
+   },
+   {
+    "word": "tooth.",
+    "start": 3.84,
+    "end": 4.24
+   },
+   {
+    "word": "Both",
+    "start": 5.0,
+    "end": 5.14
+   },
+   {
+    "word": "friends",
+    "start": 5.14,
+    "end": 5.66
+   },
+   {
+    "word": "wiggled",
+    "start": 5.66,
+    "end": 6.2
+   },
+   {
+    "word": "it.",
+    "start": 6.2,
+    "end": 6.48
+   },
+   {
+    "word": "And",
+    "start": 6.94,
+    "end": 7.12
+   },
+   {
+    "word": "pop!",
+    "start": 7.12,
+    "end": 7.4
+   },
+   {
+    "word": "Both",
+    "start": 8.04,
+    "end": 8.26
+   },
+   {
+    "word": "teeth",
+    "start": 8.26,
+    "end": 8.62
+   },
+   {
+    "word": "came",
+    "start": 8.62,
+    "end": 9.0
+   },
+   {
+    "word": "out.",
+    "start": 9.0,
+    "end": 9.36
+   },
+   {
+    "word": "That",
+    "start": 9.98,
+    "end": 10.26
+   },
+   {
+    "word": "part",
+    "start": 10.26,
+    "end": 10.58
+   },
+   {
+    "word": "was",
+    "start": 10.58,
+    "end": 10.92
+   },
+   {
+    "word": "the",
+    "start": 10.92,
+    "end": 11.14
+   },
+   {
+    "word": "same.",
+    "start": 11.14,
+    "end": 11.48
+   },
+   {
+    "word": "But",
+    "start": 12.42,
+    "end": 12.78
+   },
+   {
+    "word": "their",
+    "start": 12.78,
+    "end": 13.32
+   },
+   {
+    "word": "feelings",
+    "start": 13.32,
+    "end": 13.98
+   },
+   {
+    "word": "were",
+    "start": 13.98,
+    "end": 14.32
+   },
+   {
+    "word": "different.",
+    "start": 14.32,
+    "end": 14.8
+   },
+   {
+    "word": "Leo",
+    "start": 15.68,
+    "end": 15.96
+   },
+   {
+    "word": "felt",
+    "start": 15.96,
+    "end": 16.4
+   },
+   {
+    "word": "scared,",
+    "start": 16.4,
+    "end": 17.12
+   },
+   {
+    "word": "so",
+    "start": 17.6,
+    "end": 17.8
+   },
+   {
+    "word": "he",
+    "start": 17.8,
+    "end": 18.08
+   },
+   {
+    "word": "hid",
+    "start": 18.08,
+    "end": 18.46
+   },
+   {
+    "word": "his",
+    "start": 18.46,
+    "end": 18.68
+   },
+   {
+    "word": "tooth",
+    "start": 18.68,
+    "end": 18.96
+   },
+   {
+    "word": "in",
+    "start": 18.96,
+    "end": 19.28
+   },
+   {
+    "word": "his",
+    "start": 19.28,
+    "end": 19.48
+   },
+   {
+    "word": "pocket.",
+    "start": 19.48,
+    "end": 19.96
+   },
+   {
+    "word": "Zara",
+    "start": 20.86,
+    "end": 21.3
+   },
+   {
+    "word": "felt",
+    "start": 21.3,
+    "end": 21.72
+   },
+   {
+    "word": "excited,",
+    "start": 21.72,
+    "end": 22.58
+   },
+   {
+    "word": "so",
+    "start": 22.92,
+    "end": 23.18
+   },
+   {
+    "word": "she",
+    "start": 23.18,
+    "end": 23.48
+   },
+   {
+    "word": "showed",
+    "start": 23.48,
+    "end": 23.88
+   },
+   {
+    "word": "her",
+    "start": 23.88,
+    "end": 24.08
+   },
+   {
+    "word": "tooth",
+    "start": 24.08,
+    "end": 24.38
+   },
+   {
+    "word": "to",
+    "start": 24.38,
+    "end": 24.68
+   },
+   {
+    "word": "her",
+    "start": 24.68,
+    "end": 24.82
+   },
+   {
+    "word": "friends.",
+    "start": 24.82,
+    "end": 25.28
+   },
+   {
+    "word": "The",
+    "start": 25.84,
+    "end": 26.24
+   },
+   {
+    "word": "same",
+    "start": 26.24,
+    "end": 26.58
+   },
+   {
+    "word": "thing",
+    "start": 26.58,
+    "end": 26.9
+   },
+   {
+    "word": "can",
+    "start": 26.9,
+    "end": 27.08
+   },
+   {
+    "word": "happen",
+    "start": 27.08,
+    "end": 27.48
+   },
+   {
+    "word": "to",
+    "start": 27.48,
+    "end": 27.8
+   },
+   {
+    "word": "two",
+    "start": 27.8,
+    "end": 28.12
+   },
+   {
+    "word": "friends,",
+    "start": 28.12,
+    "end": 28.6
+   },
+   {
+    "word": "and",
+    "start": 28.6,
+    "end": 29.3
+   },
+   {
+    "word": "each",
+    "start": 29.3,
+    "end": 29.72
+   },
+   {
+    "word": "friend",
+    "start": 29.72,
+    "end": 30.04
+   },
+   {
+    "word": "can",
+    "start": 30.04,
+    "end": 30.34
+   },
+   {
+    "word": "feel",
+    "start": 30.34,
+    "end": 30.76
+   },
+   {
+    "word": "an",
+    "start": 30.76,
+    "end": 31.16
+   },
+   {
+    "word": "act",
+    "start": 31.16,
+    "end": 31.56
+   },
+   {
+    "word": "in",
+    "start": 31.56,
+    "end": 31.88
+   },
+   {
+    "word": "a",
+    "start": 31.88,
+    "end": 32.0
+   },
+   {
+    "word": "different",
+    "start": 32.0,
+    "end": 32.28
+   },
+   {
+    "word": "way.",
+    "start": 32.28,
+    "end": 32.66
+   }
+  ]
+ }
+}

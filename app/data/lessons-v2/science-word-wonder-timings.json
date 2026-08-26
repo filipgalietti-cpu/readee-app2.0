@@ -1,0 +1,2092 @@
+{
+ "apply-choose-hatch": {
+  "duration": 18.26,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.34
+   },
+   {
+    "word": "book",
+    "start": 0.34,
+    "end": 0.62
+   },
+   {
+    "word": "says,",
+    "start": 0.62,
+    "end": 1.1
+   },
+   {
+    "word": "a",
+    "start": 1.62,
+    "end": 1.66
+   },
+   {
+    "word": "baby",
+    "start": 1.66,
+    "end": 2.16
+   },
+   {
+    "word": "caterpillar",
+    "start": 2.16,
+    "end": 3.04
+   },
+   {
+    "word": "hatches",
+    "start": 3.04,
+    "end": 4.02
+   },
+   {
+    "word": "out",
+    "start": 4.02,
+    "end": 4.36
+   },
+   {
+    "word": "of",
+    "start": 4.36,
+    "end": 4.52
+   },
+   {
+    "word": "its",
+    "start": 4.52,
+    "end": 4.76
+   },
+   {
+    "word": "egg.",
+    "start": 4.76,
+    "end": 5.26
+   },
+   {
+    "word": "Hatch.",
+    "start": 6.3,
+    "end": 6.74
+   },
+   {
+    "word": "Stop",
+    "start": 7.5,
+    "end": 8.4
+   },
+   {
+    "word": "and",
+    "start": 8.4,
+    "end": 8.92
+   },
+   {
+    "word": "look",
+    "start": 8.92,
+    "end": 9.14
+   },
+   {
+    "word": "closely",
+    "start": 9.14,
+    "end": 9.88
+   },
+   {
+    "word": "at",
+    "start": 9.88,
+    "end": 10.18
+   },
+   {
+    "word": "the",
+    "start": 10.18,
+    "end": 10.34
+   },
+   {
+    "word": "photo",
+    "start": 10.34,
+    "end": 10.86
+   },
+   {
+    "word": "of",
+    "start": 10.86,
+    "end": 11.1
+   },
+   {
+    "word": "the",
+    "start": 11.1,
+    "end": 11.22
+   },
+   {
+    "word": "caterpillar",
+    "start": 11.22,
+    "end": 11.98
+   },
+   {
+    "word": "and",
+    "start": 11.98,
+    "end": 12.36
+   },
+   {
+    "word": "its",
+    "start": 12.36,
+    "end": 12.78
+   },
+   {
+    "word": "egg.",
+    "start": 12.78,
+    "end": 13.24
+   },
+   {
+    "word": "What",
+    "start": 14.1,
+    "end": 14.4
+   },
+   {
+    "word": "does",
+    "start": 14.4,
+    "end": 14.74
+   },
+   {
+    "word": "Hatch",
+    "start": 14.74,
+    "end": 15.64
+   },
+   {
+    "word": "mean?",
+    "start": 15.64,
+    "end": 15.98
+   },
+   {
+    "word": "Tap",
+    "start": 17.12,
+    "end": 17.32
+   },
+   {
+    "word": "your",
+    "start": 17.32,
+    "end": 17.74
+   },
+   {
+    "word": "answer.",
+    "start": 17.74,
+    "end": 18.26
+   }
+  ]
+ },
+ "apply-read-hatch-sentence": {
+  "duration": 5.14,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.36
+   },
+   {
+    "word": "baby",
+    "start": 0.36,
+    "end": 0.96
+   },
+   {
+    "word": "caterpillar",
+    "start": 0.96,
+    "end": 2.08
+   },
+   {
+    "word": "hatches",
+    "start": 2.08,
+    "end": 3.46
+   },
+   {
+    "word": "out",
+    "start": 3.46,
+    "end": 3.9
+   },
+   {
+    "word": "of",
+    "start": 3.9,
+    "end": 4.38
+   },
+   {
+    "word": "its",
+    "start": 4.38,
+    "end": 4.66
+   },
+   {
+    "word": "egg.",
+    "start": 4.66,
+    "end": 5.14
+   }
+  ]
+ },
+ "apply-read-hatch": {
+  "duration": 8.22,
+  "words": [
+   {
+    "word": "New",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "page,",
+    "start": 0.5,
+    "end": 0.92
+   },
+   {
+    "word": "new",
+    "start": 1.44,
+    "end": 1.78
+   },
+   {
+    "word": "science",
+    "start": 1.78,
+    "end": 2.3
+   },
+   {
+    "word": "word.",
+    "start": 2.3,
+    "end": 2.84
+   },
+   {
+    "word": "Watch",
+    "start": 3.26,
+    "end": 3.8
+   },
+   {
+    "word": "the",
+    "start": 3.8,
+    "end": 4.08
+   },
+   {
+    "word": "words",
+    "start": 4.08,
+    "end": 4.42
+   },
+   {
+    "word": "light",
+    "start": 4.42,
+    "end": 4.84
+   },
+   {
+    "word": "up",
+    "start": 4.84,
+    "end": 5.16
+   },
+   {
+    "word": "while",
+    "start": 5.16,
+    "end": 5.38
+   },
+   {
+    "word": "I",
+    "start": 5.38,
+    "end": 5.58
+   },
+   {
+    "word": "read.",
+    "start": 5.58,
+    "end": 5.88
+   },
+   {
+    "word": "Follow",
+    "start": 6.56,
+    "end": 6.88
+   },
+   {
+    "word": "along",
+    "start": 6.88,
+    "end": 7.28
+   },
+   {
+    "word": "with",
+    "start": 7.28,
+    "end": 7.6
+   },
+   {
+    "word": "your",
+    "start": 7.6,
+    "end": 7.78
+   },
+   {
+    "word": "eyes.",
+    "start": 7.78,
+    "end": 8.22
+   }
+  ]
+ },
+ "apply-say-meaning": {
+  "duration": 18.26,
+  "words": [
+   {
+    "word": "word",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "detectives",
+    "start": 0.46,
+    "end": 1.4
+   },
+   {
+    "word": "can",
+    "start": 1.4,
+    "end": 1.58
+   },
+   {
+    "word": "say",
+    "start": 1.58,
+    "end": 1.96
+   },
+   {
+    "word": "what",
+    "start": 1.96,
+    "end": 2.24
+   },
+   {
+    "word": "a",
+    "start": 2.24,
+    "end": 2.36
+   },
+   {
+    "word": "science",
+    "start": 2.36,
+    "end": 2.76
+   },
+   {
+    "word": "word",
+    "start": 2.76,
+    "end": 3.14
+   },
+   {
+    "word": "means.",
+    "start": 3.14,
+    "end": 4.12
+   },
+   {
+    "word": "Think",
+    "start": 4.78,
+    "end": 5.34
+   },
+   {
+    "word": "back",
+    "start": 5.34,
+    "end": 5.58
+   },
+   {
+    "word": "to",
+    "start": 5.58,
+    "end": 5.82
+   },
+   {
+    "word": "our",
+    "start": 5.82,
+    "end": 6.02
+   },
+   {
+    "word": "fact",
+    "start": 6.02,
+    "end": 6.38
+   },
+   {
+    "word": "book.",
+    "start": 6.38,
+    "end": 6.78
+   },
+   {
+    "word": "The",
+    "start": 7.62,
+    "end": 7.72
+   },
+   {
+    "word": "butterfly",
+    "start": 7.72,
+    "end": 8.3
+   },
+   {
+    "word": "sips",
+    "start": 8.3,
+    "end": 9.5
+   },
+   {
+    "word": "from",
+    "start": 9.5,
+    "end": 10.04
+   },
+   {
+    "word": "the",
+    "start": 10.04,
+    "end": 10.2
+   },
+   {
+    "word": "flower",
+    "start": 10.2,
+    "end": 10.74
+   },
+   {
+    "word": "with",
+    "start": 10.74,
+    "end": 11.22
+   },
+   {
+    "word": "its",
+    "start": 11.22,
+    "end": 11.48
+   },
+   {
+    "word": "long",
+    "start": 11.48,
+    "end": 11.98
+   },
+   {
+    "word": "tongue.",
+    "start": 11.98,
+    "end": 12.68
+   },
+   {
+    "word": "What",
+    "start": 13.64,
+    "end": 13.94
+   },
+   {
+    "word": "does",
+    "start": 13.94,
+    "end": 14.26
+   },
+   {
+    "word": "sip",
+    "start": 14.26,
+    "end": 14.88
+   },
+   {
+    "word": "mean?",
+    "start": 14.88,
+    "end": 15.22
+   },
+   {
+    "word": "Tap",
+    "start": 16.22,
+    "end": 16.36
+   },
+   {
+    "word": "the",
+    "start": 16.36,
+    "end": 16.56
+   },
+   {
+    "word": "mic",
+    "start": 16.56,
+    "end": 16.78
+   },
+   {
+    "word": "and",
+    "start": 16.78,
+    "end": 17.14
+   },
+   {
+    "word": "say",
+    "start": 17.14,
+    "end": 17.54
+   },
+   {
+    "word": "your",
+    "start": 17.54,
+    "end": 17.9
+   },
+   {
+    "word": "answer.",
+    "start": 17.9,
+    "end": 18.26
+   }
+  ]
+ },
+ "celebrate-word-wonder": {
+  "duration": 17.18,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "are",
+    "start": 0.48,
+    "end": 0.82
+   },
+   {
+    "word": "a",
+    "start": 0.82,
+    "end": 1.0
+   },
+   {
+    "word": "super",
+    "start": 1.0,
+    "end": 1.6
+   },
+   {
+    "word": "science",
+    "start": 1.6,
+    "end": 2.32
+   },
+   {
+    "word": "word",
+    "start": 2.32,
+    "end": 2.9
+   },
+   {
+    "word": "detective.",
+    "start": 2.9,
+    "end": 3.58
+   },
+   {
+    "word": "You",
+    "start": 4.22,
+    "end": 4.38
+   },
+   {
+    "word": "stopped",
+    "start": 4.38,
+    "end": 4.74
+   },
+   {
+    "word": "at",
+    "start": 4.74,
+    "end": 5.0
+   },
+   {
+    "word": "each",
+    "start": 5.0,
+    "end": 5.54
+   },
+   {
+    "word": "new",
+    "start": 5.54,
+    "end": 5.82
+   },
+   {
+    "word": "word.",
+    "start": 5.82,
+    "end": 6.26
+   },
+   {
+    "word": "You",
+    "start": 6.76,
+    "end": 6.94
+   },
+   {
+    "word": "looked",
+    "start": 6.94,
+    "end": 7.2
+   },
+   {
+    "word": "at",
+    "start": 7.2,
+    "end": 7.38
+   },
+   {
+    "word": "the",
+    "start": 7.38,
+    "end": 7.5
+   },
+   {
+    "word": "photo",
+    "start": 7.5,
+    "end": 7.9
+   },
+   {
+    "word": "and",
+    "start": 7.9,
+    "end": 8.4
+   },
+   {
+    "word": "listened",
+    "start": 8.4,
+    "end": 8.76
+   },
+   {
+    "word": "to",
+    "start": 8.76,
+    "end": 9.02
+   },
+   {
+    "word": "the",
+    "start": 9.02,
+    "end": 9.14
+   },
+   {
+    "word": "sentence",
+    "start": 9.14,
+    "end": 9.6
+   },
+   {
+    "word": "for",
+    "start": 9.6,
+    "end": 10.02
+   },
+   {
+    "word": "clues.",
+    "start": 10.02,
+    "end": 10.5
+   },
+   {
+    "word": "Sip,",
+    "start": 11.48,
+    "end": 11.7
+   },
+   {
+    "word": "nectar,",
+    "start": 12.32,
+    "end": 12.84
+   },
+   {
+    "word": "hatch,",
+    "start": 13.66,
+    "end": 13.8
+   },
+   {
+    "word": "and",
+    "start": 14.22,
+    "end": 14.56
+   },
+   {
+    "word": "migrate.",
+    "start": 14.56,
+    "end": 15.0
+   },
+   {
+    "word": "You",
+    "start": 15.7,
+    "end": 15.96
+   },
+   {
+    "word": "figured",
+    "start": 15.96,
+    "end": 16.3
+   },
+   {
+    "word": "them",
+    "start": 16.3,
+    "end": 16.56
+   },
+   {
+    "word": "all",
+    "start": 16.56,
+    "end": 16.82
+   },
+   {
+    "word": "out.",
+    "start": 16.82,
+    "end": 17.18
+   }
+  ]
+ },
+ "challenge-migrate": {
+  "duration": 23.3,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "is",
+    "start": 0.44,
+    "end": 0.72
+   },
+   {
+    "word": "your",
+    "start": 0.72,
+    "end": 0.88
+   },
+   {
+    "word": "last",
+    "start": 0.88,
+    "end": 1.28
+   },
+   {
+    "word": "page",
+    "start": 1.28,
+    "end": 1.84
+   },
+   {
+    "word": "detective.",
+    "start": 1.84,
+    "end": 2.46
+   },
+   {
+    "word": "The",
+    "start": 3.16,
+    "end": 3.22
+   },
+   {
+    "word": "book",
+    "start": 3.22,
+    "end": 3.6
+   },
+   {
+    "word": "says,",
+    "start": 3.6,
+    "end": 4.12
+   },
+   {
+    "word": "in",
+    "start": 4.8,
+    "end": 4.82
+   },
+   {
+    "word": "the",
+    "start": 4.82,
+    "end": 4.98
+   },
+   {
+    "word": "fall,",
+    "start": 4.98,
+    "end": 5.52
+   },
+   {
+    "word": "monarch",
+    "start": 6.14,
+    "end": 6.42
+   },
+   {
+    "word": "butterflies,",
+    "start": 6.42,
+    "end": 7.18
+   },
+   {
+    "word": "migrate",
+    "start": 7.74,
+    "end": 8.22
+   },
+   {
+    "word": "to",
+    "start": 8.22,
+    "end": 8.7
+   },
+   {
+    "word": "a",
+    "start": 8.7,
+    "end": 8.86
+   },
+   {
+    "word": "warm",
+    "start": 8.86,
+    "end": 9.2
+   },
+   {
+    "word": "place",
+    "start": 9.2,
+    "end": 9.62
+   },
+   {
+    "word": "far",
+    "start": 9.62,
+    "end": 10.34
+   },
+   {
+    "word": "away.",
+    "start": 10.34,
+    "end": 10.76
+   },
+   {
+    "word": "Migrate.",
+    "start": 12.18,
+    "end": 13.02
+   },
+   {
+    "word": "Stop.",
+    "start": 13.92,
+    "end": 14.58
+   },
+   {
+    "word": "Look",
+    "start": 15.4,
+    "end": 15.8
+   },
+   {
+    "word": "at",
+    "start": 15.8,
+    "end": 15.92
+   },
+   {
+    "word": "the",
+    "start": 15.92,
+    "end": 16.1
+   },
+   {
+    "word": "photo",
+    "start": 16.1,
+    "end": 16.5
+   },
+   {
+    "word": "and",
+    "start": 16.5,
+    "end": 16.92
+   },
+   {
+    "word": "think",
+    "start": 16.92,
+    "end": 17.24
+   },
+   {
+    "word": "about",
+    "start": 17.24,
+    "end": 17.52
+   },
+   {
+    "word": "the",
+    "start": 17.52,
+    "end": 17.72
+   },
+   {
+    "word": "sentence.",
+    "start": 17.72,
+    "end": 18.08
+   },
+   {
+    "word": "What",
+    "start": 18.98,
+    "end": 19.26
+   },
+   {
+    "word": "could",
+    "start": 19.26,
+    "end": 19.56
+   },
+   {
+    "word": "migrate",
+    "start": 19.56,
+    "end": 20.26
+   },
+   {
+    "word": "mean?",
+    "start": 20.26,
+    "end": 20.82
+   },
+   {
+    "word": "Tap",
+    "start": 21.7,
+    "end": 21.88
+   },
+   {
+    "word": "your",
+    "start": 21.88,
+    "end": 22.16
+   },
+   {
+    "word": "best",
+    "start": 22.16,
+    "end": 22.58
+   },
+   {
+    "word": "answer.",
+    "start": 22.58,
+    "end": 23.3
+   }
+  ]
+ },
+ "complete": {
+  "duration": 21.62,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "are",
+    "start": 0.58,
+    "end": 1.0
+   },
+   {
+    "word": "a",
+    "start": 1.0,
+    "end": 1.32
+   },
+   {
+    "word": "super",
+    "start": 1.32,
+    "end": 1.98
+   },
+   {
+    "word": "science",
+    "start": 1.98,
+    "end": 2.6
+   },
+   {
+    "word": "-word",
+    "start": 2.6,
+    "end": 3.06
+   },
+   {
+    "word": "detective.",
+    "start": 3.06,
+    "end": 3.78
+   },
+   {
+    "word": "You",
+    "start": 4.28,
+    "end": 4.7
+   },
+   {
+    "word": "stopped",
+    "start": 4.7,
+    "end": 5.12
+   },
+   {
+    "word": "at",
+    "start": 5.12,
+    "end": 5.62
+   },
+   {
+    "word": "each",
+    "start": 5.62,
+    "end": 6.08
+   },
+   {
+    "word": "new",
+    "start": 6.08,
+    "end": 6.34
+   },
+   {
+    "word": "word.",
+    "start": 6.34,
+    "end": 6.76
+   },
+   {
+    "word": "You",
+    "start": 7.22,
+    "end": 7.46
+   },
+   {
+    "word": "looked",
+    "start": 7.46,
+    "end": 7.7
+   },
+   {
+    "word": "at",
+    "start": 7.7,
+    "end": 7.94
+   },
+   {
+    "word": "the",
+    "start": 7.94,
+    "end": 8.14
+   },
+   {
+    "word": "photo",
+    "start": 8.14,
+    "end": 8.56
+   },
+   {
+    "word": "and",
+    "start": 8.56,
+    "end": 9.24
+   },
+   {
+    "word": "listened",
+    "start": 9.24,
+    "end": 9.6
+   },
+   {
+    "word": "to",
+    "start": 9.6,
+    "end": 9.98
+   },
+   {
+    "word": "the",
+    "start": 9.98,
+    "end": 10.12
+   },
+   {
+    "word": "sentence",
+    "start": 10.12,
+    "end": 10.56
+   },
+   {
+    "word": "for",
+    "start": 10.56,
+    "end": 11.02
+   },
+   {
+    "word": "clues.",
+    "start": 11.02,
+    "end": 11.46
+   },
+   {
+    "word": "Sip,",
+    "start": 12.46,
+    "end": 13.34
+   },
+   {
+    "word": "nectar,",
+    "start": 14.48,
+    "end": 14.82
+   },
+   {
+    "word": "hatch,",
+    "start": 15.7,
+    "end": 16.26
+   },
+   {
+    "word": "and",
+    "start": 16.96,
+    "end": 17.78
+   },
+   {
+    "word": "migrate.",
+    "start": 17.78,
+    "end": 18.52
+   },
+   {
+    "word": "You",
+    "start": 19.46,
+    "end": 19.9
+   },
+   {
+    "word": "figured",
+    "start": 19.9,
+    "end": 20.34
+   },
+   {
+    "word": "them",
+    "start": 20.34,
+    "end": 20.62
+   },
+   {
+    "word": "all",
+    "start": 20.62,
+    "end": 21.06
+   },
+   {
+    "word": "out.",
+    "start": 21.06,
+    "end": 21.62
+   }
+  ]
+ },
+ "guided-choose-nectar": {
+  "duration": 23.32,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "book",
+    "start": 0.42,
+    "end": 0.7
+   },
+   {
+    "word": "says,",
+    "start": 0.7,
+    "end": 1.3
+   },
+   {
+    "word": "Butterflies",
+    "start": 1.84,
+    "end": 2.36
+   },
+   {
+    "word": "sip",
+    "start": 2.36,
+    "end": 3.04
+   },
+   {
+    "word": "sweet",
+    "start": 3.04,
+    "end": 3.86
+   },
+   {
+    "word": "nectar",
+    "start": 3.86,
+    "end": 4.44
+   },
+   {
+    "word": "from",
+    "start": 4.44,
+    "end": 5.26
+   },
+   {
+    "word": "flowers.",
+    "start": 5.26,
+    "end": 5.76
+   },
+   {
+    "word": "Nectar.",
+    "start": 7.08,
+    "end": 8.1
+   },
+   {
+    "word": "Stop",
+    "start": 8.88,
+    "end": 9.66
+   },
+   {
+    "word": "at",
+    "start": 9.66,
+    "end": 9.86
+   },
+   {
+    "word": "that",
+    "start": 9.86,
+    "end": 10.04
+   },
+   {
+    "word": "new",
+    "start": 10.04,
+    "end": 10.26
+   },
+   {
+    "word": "word.",
+    "start": 10.26,
+    "end": 10.52
+   },
+   {
+    "word": "Look",
+    "start": 11.48,
+    "end": 11.8
+   },
+   {
+    "word": "at",
+    "start": 11.8,
+    "end": 11.94
+   },
+   {
+    "word": "the",
+    "start": 11.94,
+    "end": 12.08
+   },
+   {
+    "word": "photo.",
+    "start": 12.08,
+    "end": 12.48
+   },
+   {
+    "word": "The",
+    "start": 13.54,
+    "end": 13.68
+   },
+   {
+    "word": "butterfly",
+    "start": 13.68,
+    "end": 14.34
+   },
+   {
+    "word": "is",
+    "start": 14.34,
+    "end": 14.74
+   },
+   {
+    "word": "sipping",
+    "start": 14.74,
+    "end": 15.18
+   },
+   {
+    "word": "the",
+    "start": 15.18,
+    "end": 15.44
+   },
+   {
+    "word": "sweet",
+    "start": 15.44,
+    "end": 15.94
+   },
+   {
+    "word": "drops",
+    "start": 15.94,
+    "end": 16.52
+   },
+   {
+    "word": "inside",
+    "start": 16.52,
+    "end": 17.36
+   },
+   {
+    "word": "the",
+    "start": 17.36,
+    "end": 17.64
+   },
+   {
+    "word": "flower.",
+    "start": 17.64,
+    "end": 18.04
+   },
+   {
+    "word": "What",
+    "start": 19.02,
+    "end": 19.44
+   },
+   {
+    "word": "could",
+    "start": 19.44,
+    "end": 20.02
+   },
+   {
+    "word": "nectar",
+    "start": 20.02,
+    "end": 20.74
+   },
+   {
+    "word": "be?",
+    "start": 20.74,
+    "end": 21.34
+   },
+   {
+    "word": "Tap",
+    "start": 22.48,
+    "end": 22.74
+   },
+   {
+    "word": "your",
+    "start": 22.74,
+    "end": 22.98
+   },
+   {
+    "word": "answer.",
+    "start": 22.98,
+    "end": 23.32
+   }
+  ]
+ },
+ "guided-read-nectar-sentence": {
+  "duration": 4.66,
+  "words": [
+   {
+    "word": "butterflies,",
+    "start": 0.0,
+    "end": 1.0
+   },
+   {
+    "word": "sip,",
+    "start": 1.8,
+    "end": 1.96
+   },
+   {
+    "word": "sweet",
+    "start": 2.16,
+    "end": 2.8
+   },
+   {
+    "word": "nectar",
+    "start": 2.8,
+    "end": 3.46
+   },
+   {
+    "word": "from",
+    "start": 3.46,
+    "end": 4.1
+   },
+   {
+    "word": "flowers.",
+    "start": 4.1,
+    "end": 4.66
+   }
+  ]
+ },
+ "guided-read-nectar": {
+  "duration": 12.88,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "is",
+    "start": 0.62,
+    "end": 1.02
+   },
+   {
+    "word": "the",
+    "start": 1.02,
+    "end": 1.2
+   },
+   {
+    "word": "next",
+    "start": 1.2,
+    "end": 1.68
+   },
+   {
+    "word": "page",
+    "start": 1.68,
+    "end": 2.18
+   },
+   {
+    "word": "of",
+    "start": 2.18,
+    "end": 2.68
+   },
+   {
+    "word": "our",
+    "start": 2.68,
+    "end": 3.1
+   },
+   {
+    "word": "Factbook.",
+    "start": 3.1,
+    "end": 3.96
+   },
+   {
+    "word": "It",
+    "start": 4.4,
+    "end": 5.14
+   },
+   {
+    "word": "has",
+    "start": 5.14,
+    "end": 5.38
+   },
+   {
+    "word": "a",
+    "start": 5.38,
+    "end": 5.58
+   },
+   {
+    "word": "new",
+    "start": 5.58,
+    "end": 6.0
+   },
+   {
+    "word": "science",
+    "start": 6.0,
+    "end": 6.66
+   },
+   {
+    "word": "word.",
+    "start": 6.66,
+    "end": 7.22
+   },
+   {
+    "word": "Watch",
+    "start": 7.9,
+    "end": 8.24
+   },
+   {
+    "word": "the",
+    "start": 8.24,
+    "end": 8.5
+   },
+   {
+    "word": "words",
+    "start": 8.5,
+    "end": 8.76
+   },
+   {
+    "word": "light",
+    "start": 8.76,
+    "end": 9.02
+   },
+   {
+    "word": "up",
+    "start": 9.02,
+    "end": 9.28
+   },
+   {
+    "word": "while",
+    "start": 9.28,
+    "end": 9.7
+   },
+   {
+    "word": "I",
+    "start": 9.7,
+    "end": 9.98
+   },
+   {
+    "word": "read.",
+    "start": 9.98,
+    "end": 10.36
+   },
+   {
+    "word": "Follow",
+    "start": 11.1,
+    "end": 11.5
+   },
+   {
+    "word": "along",
+    "start": 11.5,
+    "end": 11.92
+   },
+   {
+    "word": "with",
+    "start": 11.92,
+    "end": 12.18
+   },
+   {
+    "word": "your",
+    "start": 12.18,
+    "end": 12.38
+   },
+   {
+    "word": "eyes.",
+    "start": 12.38,
+    "end": 12.88
+   }
+  ]
+ },
+ "hook-fact-book-sentence": {
+  "duration": 3.66,
+  "words": [
+   {
+    "word": "This",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "fact",
+    "start": 0.56,
+    "end": 0.86
+   },
+   {
+    "word": "book",
+    "start": 0.86,
+    "end": 1.22
+   },
+   {
+    "word": "is",
+    "start": 1.22,
+    "end": 1.6
+   },
+   {
+    "word": "all",
+    "start": 1.6,
+    "end": 2.16
+   },
+   {
+    "word": "about",
+    "start": 2.16,
+    "end": 2.9
+   },
+   {
+    "word": "butterflies.",
+    "start": 2.9,
+    "end": 3.66
+   }
+  ]
+ },
+ "hook-fact-book": {
+  "duration": 20.3,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "Word",
+    "start": 0.88,
+    "end": 0.96
+   },
+   {
+    "word": "Detectives!",
+    "start": 0.96,
+    "end": 1.78
+   },
+   {
+    "word": "Today",
+    "start": 2.46,
+    "end": 2.76
+   },
+   {
+    "word": "we",
+    "start": 2.76,
+    "end": 3.12
+   },
+   {
+    "word": "will",
+    "start": 3.12,
+    "end": 3.28
+   },
+   {
+    "word": "read",
+    "start": 3.28,
+    "end": 3.58
+   },
+   {
+    "word": "a",
+    "start": 3.58,
+    "end": 3.9
+   },
+   {
+    "word": "Factbook",
+    "start": 3.9,
+    "end": 4.64
+   },
+   {
+    "word": "about",
+    "start": 4.64,
+    "end": 5.2
+   },
+   {
+    "word": "real",
+    "start": 5.2,
+    "end": 5.8
+   },
+   {
+    "word": "butterflies.",
+    "start": 5.8,
+    "end": 6.38
+   },
+   {
+    "word": "Factbooks",
+    "start": 7.42,
+    "end": 8.18
+   },
+   {
+    "word": "use",
+    "start": 8.18,
+    "end": 8.58
+   },
+   {
+    "word": "science",
+    "start": 8.58,
+    "end": 9.08
+   },
+   {
+    "word": "words.",
+    "start": 9.08,
+    "end": 9.56
+   },
+   {
+    "word": "When",
+    "start": 10.42,
+    "end": 10.74
+   },
+   {
+    "word": "we",
+    "start": 10.74,
+    "end": 10.96
+   },
+   {
+    "word": "find",
+    "start": 10.96,
+    "end": 11.28
+   },
+   {
+    "word": "a",
+    "start": 11.28,
+    "end": 11.48
+   },
+   {
+    "word": "new",
+    "start": 11.48,
+    "end": 11.84
+   },
+   {
+    "word": "science",
+    "start": 11.84,
+    "end": 12.36
+   },
+   {
+    "word": "word,",
+    "start": 12.36,
+    "end": 12.8
+   },
+   {
+    "word": "we",
+    "start": 13.12,
+    "end": 13.32
+   },
+   {
+    "word": "stop,",
+    "start": 13.32,
+    "end": 13.78
+   },
+   {
+    "word": "look",
+    "start": 14.24,
+    "end": 14.98
+   },
+   {
+    "word": "at",
+    "start": 14.98,
+    "end": 15.14
+   },
+   {
+    "word": "the",
+    "start": 15.14,
+    "end": 15.28
+   },
+   {
+    "word": "photo,",
+    "start": 15.28,
+    "end": 15.72
+   },
+   {
+    "word": "and",
+    "start": 16.2,
+    "end": 16.58
+   },
+   {
+    "word": "listen",
+    "start": 16.58,
+    "end": 16.98
+   },
+   {
+    "word": "to",
+    "start": 16.98,
+    "end": 17.24
+   },
+   {
+    "word": "the",
+    "start": 17.24,
+    "end": 17.38
+   },
+   {
+    "word": "sentence",
+    "start": 17.38,
+    "end": 17.76
+   },
+   {
+    "word": "for",
+    "start": 17.76,
+    "end": 18.12
+   },
+   {
+    "word": "clues.",
+    "start": 18.12,
+    "end": 18.46
+   },
+   {
+    "word": "Here",
+    "start": 19.28,
+    "end": 19.66
+   },
+   {
+    "word": "is",
+    "start": 19.66,
+    "end": 19.88
+   },
+   {
+    "word": "our",
+    "start": 19.88,
+    "end": 20.04
+   },
+   {
+    "word": "book.",
+    "start": 20.04,
+    "end": 20.3
+   }
+  ]
+ },
+ "model-check-sip": {
+  "duration": 13.28,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "you",
+    "start": 0.48,
+    "end": 0.9
+   },
+   {
+    "word": "show",
+    "start": 0.9,
+    "end": 1.2
+   },
+   {
+    "word": "me.",
+    "start": 1.2,
+    "end": 1.58
+   },
+   {
+    "word": "The",
+    "start": 2.62,
+    "end": 2.74
+   },
+   {
+    "word": "book",
+    "start": 2.74,
+    "end": 3.0
+   },
+   {
+    "word": "says,",
+    "start": 3.0,
+    "end": 3.6
+   },
+   {
+    "word": "the",
+    "start": 4.16,
+    "end": 4.36
+   },
+   {
+    "word": "butterfly",
+    "start": 4.36,
+    "end": 4.76
+   },
+   {
+    "word": "sips",
+    "start": 4.76,
+    "end": 5.48
+   },
+   {
+    "word": "from",
+    "start": 5.48,
+    "end": 5.82
+   },
+   {
+    "word": "the",
+    "start": 5.82,
+    "end": 6.0
+   },
+   {
+    "word": "flower.",
+    "start": 6.0,
+    "end": 6.48
+   },
+   {
+    "word": "Look",
+    "start": 7.04,
+    "end": 7.84
+   },
+   {
+    "word": "at",
+    "start": 7.84,
+    "end": 7.98
+   },
+   {
+    "word": "the",
+    "start": 7.98,
+    "end": 8.14
+   },
+   {
+    "word": "photo",
+    "start": 8.14,
+    "end": 8.54
+   },
+   {
+    "word": "clue.",
+    "start": 8.54,
+    "end": 8.92
+   },
+   {
+    "word": "What",
+    "start": 9.82,
+    "end": 10.02
+   },
+   {
+    "word": "does",
+    "start": 10.02,
+    "end": 10.2
+   },
+   {
+    "word": "sip",
+    "start": 10.2,
+    "end": 10.74
+   },
+   {
+    "word": "mean?",
+    "start": 10.74,
+    "end": 11.14
+   },
+   {
+    "word": "Tap",
+    "start": 12.28,
+    "end": 12.44
+   },
+   {
+    "word": "your",
+    "start": 12.44,
+    "end": 12.76
+   },
+   {
+    "word": "answer.",
+    "start": 12.76,
+    "end": 13.28
+   }
+  ]
+ },
+ "model-picture-clue": {
+  "duration": 32.08,
+  "words": [
+   {
+    "word": "Page",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "1",
+    "start": 0.5,
+    "end": 1.02
+   },
+   {
+    "word": "says,",
+    "start": 1.02,
+    "end": 1.72
+   },
+   {
+    "word": "the",
+    "start": 2.52,
+    "end": 2.56
+   },
+   {
+    "word": "butterfly",
+    "start": 2.56,
+    "end": 3.06
+   },
+   {
+    "word": "sips",
+    "start": 3.06,
+    "end": 4.2
+   },
+   {
+    "word": "from",
+    "start": 4.2,
+    "end": 4.82
+   },
+   {
+    "word": "the",
+    "start": 4.82,
+    "end": 5.08
+   },
+   {
+    "word": "flower.",
+    "start": 5.08,
+    "end": 5.56
+   },
+   {
+    "word": "Sips.",
+    "start": 6.24,
+    "end": 7.08
+   },
+   {
+    "word": "That",
+    "start": 7.74,
+    "end": 8.26
+   },
+   {
+    "word": "is",
+    "start": 8.26,
+    "end": 8.48
+   },
+   {
+    "word": "a",
+    "start": 8.48,
+    "end": 8.66
+   },
+   {
+    "word": "new",
+    "start": 8.66,
+    "end": 9.0
+   },
+   {
+    "word": "science",
+    "start": 9.0,
+    "end": 9.58
+   },
+   {
+    "word": "word.",
+    "start": 9.58,
+    "end": 10.02
+   },
+   {
+    "word": "Watch",
+    "start": 10.94,
+    "end": 11.2
+   },
+   {
+    "word": "how",
+    "start": 11.2,
+    "end": 11.46
+   },
+   {
+    "word": "I",
+    "start": 11.46,
+    "end": 11.66
+   },
+   {
+    "word": "figure",
+    "start": 11.66,
+    "end": 12.06
+   },
+   {
+    "word": "it",
+    "start": 12.06,
+    "end": 12.34
+   },
+   {
+    "word": "out.",
+    "start": 12.34,
+    "end": 12.64
+   },
+   {
+    "word": "I",
+    "start": 13.38,
+    "end": 13.56
+   },
+   {
+    "word": "stop",
+    "start": 13.56,
+    "end": 13.94
+   },
+   {
+    "word": "and",
+    "start": 13.94,
+    "end": 14.4
+   },
+   {
+    "word": "look",
+    "start": 14.4,
+    "end": 14.62
+   },
+   {
+    "word": "at",
+    "start": 14.62,
+    "end": 14.76
+   },
+   {
+    "word": "the",
+    "start": 14.76,
+    "end": 14.9
+   },
+   {
+    "word": "photo.",
+    "start": 14.9,
+    "end": 15.28
+   },
+   {
+    "word": "The",
+    "start": 16.1,
+    "end": 16.28
+   },
+   {
+    "word": "butterfly's",
+    "start": 16.28,
+    "end": 17.24
+   },
+   {
+    "word": "long",
+    "start": 17.24,
+    "end": 17.78
+   },
+   {
+    "word": "tongue",
+    "start": 17.78,
+    "end": 18.4
+   },
+   {
+    "word": "is",
+    "start": 18.4,
+    "end": 18.84
+   },
+   {
+    "word": "inside",
+    "start": 18.84,
+    "end": 19.62
+   },
+   {
+    "word": "the",
+    "start": 19.62,
+    "end": 19.92
+   },
+   {
+    "word": "flower,",
+    "start": 19.92,
+    "end": 20.34
+   },
+   {
+    "word": "like",
+    "start": 20.66,
+    "end": 21.12
+   },
+   {
+    "word": "a",
+    "start": 21.12,
+    "end": 21.28
+   },
+   {
+    "word": "straw",
+    "start": 21.28,
+    "end": 21.7
+   },
+   {
+    "word": "in",
+    "start": 21.7,
+    "end": 22.1
+   },
+   {
+    "word": "a",
+    "start": 22.1,
+    "end": 22.26
+   },
+   {
+    "word": "cup.",
+    "start": 22.26,
+    "end": 22.42
+   },
+   {
+    "word": "It",
+    "start": 23.14,
+    "end": 23.52
+   },
+   {
+    "word": "is",
+    "start": 23.52,
+    "end": 23.7
+   },
+   {
+    "word": "taking",
+    "start": 23.7,
+    "end": 24.12
+   },
+   {
+    "word": "a",
+    "start": 24.12,
+    "end": 24.54
+   },
+   {
+    "word": "tiny",
+    "start": 24.54,
+    "end": 25.26
+   },
+   {
+    "word": "drink.",
+    "start": 25.26,
+    "end": 25.86
+   },
+   {
+    "word": "So",
+    "start": 25.86,
+    "end": 26.86
+   },
+   {
+    "word": "sip",
+    "start": 26.86,
+    "end": 27.5
+   },
+   {
+    "word": "must",
+    "start": 27.5,
+    "end": 28.16
+   },
+   {
+    "word": "mean",
+    "start": 28.16,
+    "end": 28.72
+   },
+   {
+    "word": "drink.",
+    "start": 28.72,
+    "end": 29.56
+   },
+   {
+    "word": "The",
+    "start": 30.34,
+    "end": 30.64
+   },
+   {
+    "word": "photo",
+    "start": 30.64,
+    "end": 31.14
+   },
+   {
+    "word": "was",
+    "start": 31.14,
+    "end": 31.5
+   },
+   {
+    "word": "my",
+    "start": 31.5,
+    "end": 31.72
+   },
+   {
+    "word": "clue.",
+    "start": 31.72,
+    "end": 32.08
+   }
+  ]
+ }
+}

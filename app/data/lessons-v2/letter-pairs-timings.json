@@ -1,0 +1,877 @@
+{
+ "celebrate": {
+  "duration": 7.58,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "did",
+    "start": 0.56,
+    "end": 0.94
+   },
+   {
+    "word": "it!",
+    "start": 0.94,
+    "end": 1.36
+   },
+   {
+    "word": "Big",
+    "start": 1.76,
+    "end": 2.1
+   },
+   {
+    "word": "and",
+    "start": 2.1,
+    "end": 2.38
+   },
+   {
+    "word": "little",
+    "start": 2.38,
+    "end": 2.64
+   },
+   {
+    "word": "letters",
+    "start": 2.64,
+    "end": 2.98
+   },
+   {
+    "word": "are",
+    "start": 2.98,
+    "end": 3.28
+   },
+   {
+    "word": "partners",
+    "start": 3.28,
+    "end": 3.8
+   },
+   {
+    "word": "and",
+    "start": 3.8,
+    "end": 4.36
+   },
+   {
+    "word": "you",
+    "start": 4.36,
+    "end": 4.52
+   },
+   {
+    "word": "matched",
+    "start": 4.52,
+    "end": 4.92
+   },
+   {
+    "word": "them",
+    "start": 4.92,
+    "end": 5.18
+   },
+   {
+    "word": "all!",
+    "start": 5.18,
+    "end": 5.62
+   },
+   {
+    "word": "Amazing",
+    "start": 6.3,
+    "end": 7.06
+   },
+   {
+    "word": "work!",
+    "start": 7.06,
+    "end": 7.58
+   }
+  ]
+ },
+ "challenge": {
+  "duration": 9.04,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "one",
+    "start": 0.6,
+    "end": 1.28
+   },
+   {
+    "word": "all",
+    "start": 1.28,
+    "end": 2.2
+   },
+   {
+    "word": "by",
+    "start": 2.2,
+    "end": 2.52
+   },
+   {
+    "word": "yourself",
+    "start": 2.52,
+    "end": 3.16
+   },
+   {
+    "word": "big",
+    "start": 3.16,
+    "end": 4.24
+   },
+   {
+    "word": "S",
+    "start": 4.24,
+    "end": 5.02
+   },
+   {
+    "word": "needs",
+    "start": 5.02,
+    "end": 6.04
+   },
+   {
+    "word": "its",
+    "start": 6.04,
+    "end": 6.34
+   },
+   {
+    "word": "little",
+    "start": 6.34,
+    "end": 7.0
+   },
+   {
+    "word": "partner",
+    "start": 7.0,
+    "end": 7.54
+   },
+   {
+    "word": "tap",
+    "start": 7.54,
+    "end": 8.78
+   },
+   {
+    "word": "it",
+    "start": 8.78,
+    "end": 9.04
+   }
+  ]
+ },
+ "complete": {
+  "duration": 17.3,
+  "words": [
+   {
+    "word": "Wonderful",
+    "start": 0.0,
+    "end": 0.82
+   },
+   {
+    "word": "work.",
+    "start": 0.82,
+    "end": 1.44
+   },
+   {
+    "word": "You",
+    "start": 1.88,
+    "end": 2.22
+   },
+   {
+    "word": "match",
+    "start": 2.22,
+    "end": 2.58
+   },
+   {
+    "word": "the",
+    "start": 2.58,
+    "end": 2.98
+   },
+   {
+    "word": "big",
+    "start": 2.98,
+    "end": 3.36
+   },
+   {
+    "word": "letters",
+    "start": 3.36,
+    "end": 3.68
+   },
+   {
+    "word": "with",
+    "start": 3.68,
+    "end": 4.08
+   },
+   {
+    "word": "their",
+    "start": 4.08,
+    "end": 4.38
+   },
+   {
+    "word": "little",
+    "start": 4.38,
+    "end": 4.82
+   },
+   {
+    "word": "letter",
+    "start": 4.82,
+    "end": 5.2
+   },
+   {
+    "word": "partners.",
+    "start": 5.2,
+    "end": 5.94
+   },
+   {
+    "word": "Big",
+    "start": 6.56,
+    "end": 6.96
+   },
+   {
+    "word": "B",
+    "start": 6.96,
+    "end": 7.32
+   },
+   {
+    "word": "goes",
+    "start": 7.32,
+    "end": 7.86
+   },
+   {
+    "word": "with",
+    "start": 7.86,
+    "end": 8.24
+   },
+   {
+    "word": "little",
+    "start": 8.24,
+    "end": 8.52
+   },
+   {
+    "word": "B,",
+    "start": 8.52,
+    "end": 8.92
+   },
+   {
+    "word": "big",
+    "start": 9.24,
+    "end": 9.98
+   },
+   {
+    "word": "M",
+    "start": 9.98,
+    "end": 10.48
+   },
+   {
+    "word": "goes",
+    "start": 10.48,
+    "end": 11.1
+   },
+   {
+    "word": "with",
+    "start": 11.1,
+    "end": 11.46
+   },
+   {
+    "word": "little",
+    "start": 11.46,
+    "end": 11.8
+   },
+   {
+    "word": "M,",
+    "start": 11.8,
+    "end": 12.22
+   },
+   {
+    "word": "and",
+    "start": 12.56,
+    "end": 12.86
+   },
+   {
+    "word": "big",
+    "start": 12.86,
+    "end": 13.26
+   },
+   {
+    "word": "S",
+    "start": 13.26,
+    "end": 13.6
+   },
+   {
+    "word": "goes",
+    "start": 13.6,
+    "end": 14.12
+   },
+   {
+    "word": "with",
+    "start": 14.12,
+    "end": 14.48
+   },
+   {
+    "word": "little",
+    "start": 14.48,
+    "end": 14.82
+   },
+   {
+    "word": "S.",
+    "start": 14.82,
+    "end": 15.14
+   },
+   {
+    "word": "You",
+    "start": 15.7,
+    "end": 16.02
+   },
+   {
+    "word": "know",
+    "start": 16.02,
+    "end": 16.26
+   },
+   {
+    "word": "your",
+    "start": 16.26,
+    "end": 16.56
+   },
+   {
+    "word": "letter",
+    "start": 16.56,
+    "end": 16.86
+   },
+   {
+    "word": "pairs.",
+    "start": 16.86,
+    "end": 17.3
+   }
+  ]
+ },
+ "guided-b": {
+  "duration": 6.84,
+  "words": [
+   {
+    "word": "Your",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "turn.",
+    "start": 0.46,
+    "end": 0.96
+   },
+   {
+    "word": "Which",
+    "start": 1.44,
+    "end": 1.92
+   },
+   {
+    "word": "one",
+    "start": 1.92,
+    "end": 2.32
+   },
+   {
+    "word": "is",
+    "start": 2.32,
+    "end": 2.84
+   },
+   {
+    "word": "Big",
+    "start": 2.84,
+    "end": 3.52
+   },
+   {
+    "word": "B's",
+    "start": 3.52,
+    "end": 4.3
+   },
+   {
+    "word": "little",
+    "start": 4.3,
+    "end": 4.96
+   },
+   {
+    "word": "partner?",
+    "start": 4.96,
+    "end": 5.46
+   },
+   {
+    "word": "Tap",
+    "start": 6.3,
+    "end": 6.56
+   },
+   {
+    "word": "it.",
+    "start": 6.56,
+    "end": 6.84
+   }
+  ]
+ },
+ "guided-m": {
+  "duration": 7.08,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "matching!",
+    "start": 0.54,
+    "end": 1.24
+   },
+   {
+    "word": "Now",
+    "start": 1.94,
+    "end": 2.64
+   },
+   {
+    "word": "find",
+    "start": 2.64,
+    "end": 3.24
+   },
+   {
+    "word": "Big",
+    "start": 3.24,
+    "end": 3.78
+   },
+   {
+    "word": "M's",
+    "start": 3.78,
+    "end": 4.9
+   },
+   {
+    "word": "little",
+    "start": 4.9,
+    "end": 5.38
+   },
+   {
+    "word": "partner.",
+    "start": 5.38,
+    "end": 5.92
+   },
+   {
+    "word": "Tap",
+    "start": 6.6,
+    "end": 6.78
+   },
+   {
+    "word": "it.",
+    "start": 6.78,
+    "end": 7.08
+   }
+  ]
+ },
+ "hook": {
+  "duration": 9.34,
+  "words": [
+   {
+    "word": "What",
+    "start": 0.0,
+    "end": 0.08
+   },
+   {
+    "word": "letters",
+    "start": 0.08,
+    "end": 0.68
+   },
+   {
+    "word": "come",
+    "start": 0.68,
+    "end": 1.16
+   },
+   {
+    "word": "in",
+    "start": 1.16,
+    "end": 1.46
+   },
+   {
+    "word": "two",
+    "start": 1.46,
+    "end": 2.02
+   },
+   {
+    "word": "sizes?",
+    "start": 2.02,
+    "end": 2.78
+   },
+   {
+    "word": "These",
+    "start": 3.46,
+    "end": 4.1
+   },
+   {
+    "word": "are",
+    "start": 4.1,
+    "end": 4.52
+   },
+   {
+    "word": "the",
+    "start": 4.52,
+    "end": 4.78
+   },
+   {
+    "word": "big",
+    "start": 4.78,
+    "end": 5.24
+   },
+   {
+    "word": "letters.",
+    "start": 5.24,
+    "end": 5.8
+   },
+   {
+    "word": "Tap",
+    "start": 6.6,
+    "end": 6.96
+   },
+   {
+    "word": "each",
+    "start": 6.96,
+    "end": 7.54
+   },
+   {
+    "word": "one",
+    "start": 7.54,
+    "end": 7.94
+   },
+   {
+    "word": "to",
+    "start": 7.94,
+    "end": 8.42
+   },
+   {
+    "word": "hear",
+    "start": 8.42,
+    "end": 8.72
+   },
+   {
+    "word": "its",
+    "start": 8.72,
+    "end": 8.98
+   },
+   {
+    "word": "name.",
+    "start": 8.98,
+    "end": 9.34
+   }
+  ]
+ },
+ "meet-little": {
+  "duration": 7.12,
+  "words": [
+   {
+    "word": "And",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "these",
+    "start": 0.5,
+    "end": 0.86
+   },
+   {
+    "word": "are",
+    "start": 0.86,
+    "end": 1.22
+   },
+   {
+    "word": "the",
+    "start": 1.22,
+    "end": 1.42
+   },
+   {
+    "word": "little",
+    "start": 1.42,
+    "end": 1.82
+   },
+   {
+    "word": "letters.",
+    "start": 1.82,
+    "end": 2.26
+   },
+   {
+    "word": "They",
+    "start": 2.92,
+    "end": 3.14
+   },
+   {
+    "word": "say",
+    "start": 3.14,
+    "end": 3.4
+   },
+   {
+    "word": "the",
+    "start": 3.4,
+    "end": 3.58
+   },
+   {
+    "word": "same",
+    "start": 3.58,
+    "end": 3.9
+   },
+   {
+    "word": "names.",
+    "start": 3.9,
+    "end": 4.58
+   },
+   {
+    "word": "Tap",
+    "start": 5.24,
+    "end": 5.5
+   },
+   {
+    "word": "each",
+    "start": 5.5,
+    "end": 6.04
+   },
+   {
+    "word": "one",
+    "start": 6.04,
+    "end": 6.36
+   },
+   {
+    "word": "and",
+    "start": 6.36,
+    "end": 6.74
+   },
+   {
+    "word": "listen.",
+    "start": 6.74,
+    "end": 7.12
+   }
+  ]
+ },
+ "sort-sizes": {
+  "duration": 10.84,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "sort",
+    "start": 1.24,
+    "end": 1.44
+   },
+   {
+    "word": "all",
+    "start": 1.44,
+    "end": 1.94
+   },
+   {
+    "word": "the",
+    "start": 1.94,
+    "end": 2.14
+   },
+   {
+    "word": "letters.",
+    "start": 2.14,
+    "end": 2.5
+   },
+   {
+    "word": "Tap",
+    "start": 3.4,
+    "end": 3.84
+   },
+   {
+    "word": "each",
+    "start": 3.84,
+    "end": 4.34
+   },
+   {
+    "word": "letter,",
+    "start": 4.34,
+    "end": 4.76
+   },
+   {
+    "word": "then",
+    "start": 5.16,
+    "end": 5.58
+   },
+   {
+    "word": "tap",
+    "start": 5.58,
+    "end": 6.16
+   },
+   {
+    "word": "its",
+    "start": 6.16,
+    "end": 6.54
+   },
+   {
+    "word": "home.",
+    "start": 6.54,
+    "end": 6.88
+   },
+   {
+    "word": "Is",
+    "start": 7.66,
+    "end": 7.98
+   },
+   {
+    "word": "it",
+    "start": 7.98,
+    "end": 8.16
+   },
+   {
+    "word": "a",
+    "start": 8.16,
+    "end": 8.32
+   },
+   {
+    "word": "big",
+    "start": 8.32,
+    "end": 8.68
+   },
+   {
+    "word": "letter",
+    "start": 8.68,
+    "end": 9.14
+   },
+   {
+    "word": "or",
+    "start": 9.14,
+    "end": 9.96
+   },
+   {
+    "word": "a",
+    "start": 9.96,
+    "end": 10.18
+   },
+   {
+    "word": "little",
+    "start": 10.18,
+    "end": 10.46
+   },
+   {
+    "word": "letter?",
+    "start": 10.46,
+    "end": 10.84
+   }
+  ]
+ },
+ "teach-pairs": {
+  "duration": 12.02,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "is",
+    "start": 0.48,
+    "end": 0.82
+   },
+   {
+    "word": "the",
+    "start": 0.82,
+    "end": 0.98
+   },
+   {
+    "word": "secret.",
+    "start": 0.98,
+    "end": 1.44
+   },
+   {
+    "word": "Every",
+    "start": 2.02,
+    "end": 2.58
+   },
+   {
+    "word": "big",
+    "start": 2.58,
+    "end": 2.94
+   },
+   {
+    "word": "letter",
+    "start": 2.94,
+    "end": 3.32
+   },
+   {
+    "word": "has",
+    "start": 3.32,
+    "end": 3.88
+   },
+   {
+    "word": "a",
+    "start": 3.88,
+    "end": 4.14
+   },
+   {
+    "word": "little",
+    "start": 4.14,
+    "end": 4.42
+   },
+   {
+    "word": "partner.",
+    "start": 4.42,
+    "end": 4.92
+   },
+   {
+    "word": "Big",
+    "start": 5.64,
+    "end": 6.08
+   },
+   {
+    "word": "B",
+    "start": 6.08,
+    "end": 6.32
+   },
+   {
+    "word": "goes",
+    "start": 6.32,
+    "end": 7.02
+   },
+   {
+    "word": "with",
+    "start": 7.02,
+    "end": 7.54
+   },
+   {
+    "word": "little",
+    "start": 7.54,
+    "end": 7.98
+   },
+   {
+    "word": "B.",
+    "start": 7.98,
+    "end": 8.3
+   },
+   {
+    "word": "They",
+    "start": 8.86,
+    "end": 9.32
+   },
+   {
+    "word": "are",
+    "start": 9.32,
+    "end": 9.56
+   },
+   {
+    "word": "the",
+    "start": 9.56,
+    "end": 9.72
+   },
+   {
+    "word": "same",
+    "start": 9.72,
+    "end": 10.2
+   },
+   {
+    "word": "letter",
+    "start": 10.2,
+    "end": 10.62
+   },
+   {
+    "word": "in",
+    "start": 10.62,
+    "end": 11.12
+   },
+   {
+    "word": "two",
+    "start": 11.12,
+    "end": 11.52
+   },
+   {
+    "word": "sizes.",
+    "start": 11.52,
+    "end": 12.02
+   }
+  ]
+ }
+}

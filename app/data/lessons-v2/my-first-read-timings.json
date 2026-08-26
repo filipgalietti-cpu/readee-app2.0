@@ -1,0 +1,1332 @@
+{
+ "apply-page-4": {
+  "duration": 10.26,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "more",
+    "start": 0.62,
+    "end": 0.98
+   },
+   {
+    "word": "page.",
+    "start": 0.98,
+    "end": 1.6
+   },
+   {
+    "word": "This",
+    "start": 2.12,
+    "end": 2.84
+   },
+   {
+    "word": "is",
+    "start": 2.84,
+    "end": 3.3
+   },
+   {
+    "word": "the",
+    "start": 3.3,
+    "end": 3.52
+   },
+   {
+    "word": "end",
+    "start": 3.52,
+    "end": 4.06
+   },
+   {
+    "word": "of",
+    "start": 4.06,
+    "end": 4.32
+   },
+   {
+    "word": "the",
+    "start": 4.32,
+    "end": 4.44
+   },
+   {
+    "word": "story.",
+    "start": 4.44,
+    "end": 5.1
+   },
+   {
+    "word": "Read",
+    "start": 5.66,
+    "end": 6.16
+   },
+   {
+    "word": "it",
+    "start": 6.16,
+    "end": 6.34
+   },
+   {
+    "word": "out",
+    "start": 6.34,
+    "end": 6.54
+   },
+   {
+    "word": "loud",
+    "start": 6.54,
+    "end": 6.88
+   },
+   {
+    "word": "with",
+    "start": 6.88,
+    "end": 7.2
+   },
+   {
+    "word": "your",
+    "start": 7.2,
+    "end": 7.42
+   },
+   {
+    "word": "best",
+    "start": 7.42,
+    "end": 7.84
+   },
+   {
+    "word": "reading",
+    "start": 7.84,
+    "end": 8.3
+   },
+   {
+    "word": "voice.",
+    "start": 8.3,
+    "end": 8.7
+   },
+   {
+    "word": "You",
+    "start": 9.18,
+    "end": 9.52
+   },
+   {
+    "word": "can",
+    "start": 9.52,
+    "end": 9.76
+   },
+   {
+    "word": "do",
+    "start": 9.76,
+    "end": 10.04
+   },
+   {
+    "word": "it.",
+    "start": 10.04,
+    "end": 10.26
+   }
+  ]
+ },
+ "celebrate-finish": {
+  "duration": 17.66,
+  "words": [
+   {
+    "word": "Amazing",
+    "start": 0.0,
+    "end": 1.0
+   },
+   {
+    "word": "job",
+    "start": 1.0,
+    "end": 1.46
+   },
+   {
+    "word": "superstar!",
+    "start": 1.46,
+    "end": 2.16
+   },
+   {
+    "word": "You",
+    "start": 3.04,
+    "end": 3.42
+   },
+   {
+    "word": "read",
+    "start": 3.42,
+    "end": 3.74
+   },
+   {
+    "word": "a",
+    "start": 3.74,
+    "end": 4.04
+   },
+   {
+    "word": "whole",
+    "start": 4.04,
+    "end": 4.4
+   },
+   {
+    "word": "book",
+    "start": 4.4,
+    "end": 4.84
+   },
+   {
+    "word": "and",
+    "start": 4.84,
+    "end": 5.5
+   },
+   {
+    "word": "understood",
+    "start": 5.5,
+    "end": 6.34
+   },
+   {
+    "word": "it!",
+    "start": 6.34,
+    "end": 6.7
+   },
+   {
+    "word": "The",
+    "start": 7.28,
+    "end": 7.54
+   },
+   {
+    "word": "cat",
+    "start": 7.54,
+    "end": 7.8
+   },
+   {
+    "word": "sat,",
+    "start": 7.8,
+    "end": 8.18
+   },
+   {
+    "word": "the",
+    "start": 8.74,
+    "end": 8.98
+   },
+   {
+    "word": "dog",
+    "start": 8.98,
+    "end": 9.4
+   },
+   {
+    "word": "ran",
+    "start": 9.4,
+    "end": 9.62
+   },
+   {
+    "word": "over,",
+    "start": 9.62,
+    "end": 10.04
+   },
+   {
+    "word": "and",
+    "start": 10.52,
+    "end": 10.76
+   },
+   {
+    "word": "they",
+    "start": 10.76,
+    "end": 11.1
+   },
+   {
+    "word": "became",
+    "start": 11.1,
+    "end": 11.62
+   },
+   {
+    "word": "pals!",
+    "start": 11.62,
+    "end": 12.34
+   },
+   {
+    "word": "Keep",
+    "start": 13.26,
+    "end": 13.48
+   },
+   {
+    "word": "reading",
+    "start": 13.48,
+    "end": 13.94
+   },
+   {
+    "word": "every",
+    "start": 13.94,
+    "end": 14.66
+   },
+   {
+    "word": "day!",
+    "start": 14.66,
+    "end": 14.94
+   },
+   {
+    "word": "You",
+    "start": 15.62,
+    "end": 15.96
+   },
+   {
+    "word": "are",
+    "start": 15.96,
+    "end": 16.22
+   },
+   {
+    "word": "a",
+    "start": 16.22,
+    "end": 16.44
+   },
+   {
+    "word": "real",
+    "start": 16.44,
+    "end": 16.86
+   },
+   {
+    "word": "reader",
+    "start": 16.86,
+    "end": 17.32
+   },
+   {
+    "word": "now!",
+    "start": 17.32,
+    "end": 17.66
+   }
+  ]
+ },
+ "challenge-sequence": {
+  "duration": 12.18,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "challenge",
+    "start": 0.6,
+    "end": 1.26
+   },
+   {
+    "word": "reader,",
+    "start": 1.26,
+    "end": 1.7
+   },
+   {
+    "word": "put",
+    "start": 2.26,
+    "end": 2.56
+   },
+   {
+    "word": "the",
+    "start": 2.56,
+    "end": 2.84
+   },
+   {
+    "word": "story",
+    "start": 2.84,
+    "end": 3.48
+   },
+   {
+    "word": "pictures",
+    "start": 3.48,
+    "end": 4.02
+   },
+   {
+    "word": "in",
+    "start": 4.02,
+    "end": 4.48
+   },
+   {
+    "word": "order.",
+    "start": 4.48,
+    "end": 4.98
+   },
+   {
+    "word": "Tap",
+    "start": 5.88,
+    "end": 6.14
+   },
+   {
+    "word": "what",
+    "start": 6.14,
+    "end": 6.4
+   },
+   {
+    "word": "happened",
+    "start": 6.4,
+    "end": 6.86
+   },
+   {
+    "word": "first,",
+    "start": 6.86,
+    "end": 7.38
+   },
+   {
+    "word": "then",
+    "start": 8.02,
+    "end": 8.36
+   },
+   {
+    "word": "what",
+    "start": 8.36,
+    "end": 8.64
+   },
+   {
+    "word": "happened",
+    "start": 8.64,
+    "end": 9.1
+   },
+   {
+    "word": "next,",
+    "start": 9.1,
+    "end": 9.66
+   },
+   {
+    "word": "then",
+    "start": 10.38,
+    "end": 10.58
+   },
+   {
+    "word": "how",
+    "start": 10.58,
+    "end": 10.96
+   },
+   {
+    "word": "the",
+    "start": 10.96,
+    "end": 11.22
+   },
+   {
+    "word": "story",
+    "start": 11.22,
+    "end": 11.66
+   },
+   {
+    "word": "ended.",
+    "start": 11.66,
+    "end": 12.18
+   }
+  ]
+ },
+ "challenge-what-dog-did": {
+  "duration": 12.94,
+  "words": [
+   {
+    "word": "Right,",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "remembering,",
+    "start": 0.88,
+    "end": 1.26
+   },
+   {
+    "word": "here",
+    "start": 1.98,
+    "end": 2.48
+   },
+   {
+    "word": "is",
+    "start": 2.48,
+    "end": 2.72
+   },
+   {
+    "word": "a",
+    "start": 2.72,
+    "end": 2.84
+   },
+   {
+    "word": "trickier",
+    "start": 2.84,
+    "end": 3.6
+   },
+   {
+    "word": "one.",
+    "start": 3.6,
+    "end": 3.94
+   },
+   {
+    "word": "The",
+    "start": 4.76,
+    "end": 4.88
+   },
+   {
+    "word": "dog",
+    "start": 4.88,
+    "end": 5.36
+   },
+   {
+    "word": "ran",
+    "start": 5.36,
+    "end": 5.94
+   },
+   {
+    "word": "to",
+    "start": 5.94,
+    "end": 6.36
+   },
+   {
+    "word": "the",
+    "start": 6.36,
+    "end": 6.62
+   },
+   {
+    "word": "cat.",
+    "start": 6.62,
+    "end": 7.0
+   },
+   {
+    "word": "Then",
+    "start": 7.72,
+    "end": 8.14
+   },
+   {
+    "word": "what",
+    "start": 8.14,
+    "end": 8.62
+   },
+   {
+    "word": "did",
+    "start": 8.62,
+    "end": 8.82
+   },
+   {
+    "word": "the",
+    "start": 8.82,
+    "end": 9.0
+   },
+   {
+    "word": "dog",
+    "start": 9.0,
+    "end": 9.32
+   },
+   {
+    "word": "do?",
+    "start": 9.32,
+    "end": 9.64
+   },
+   {
+    "word": "Tap",
+    "start": 10.7,
+    "end": 11.08
+   },
+   {
+    "word": "the",
+    "start": 11.08,
+    "end": 11.46
+   },
+   {
+    "word": "picture",
+    "start": 11.46,
+    "end": 11.88
+   },
+   {
+    "word": "that",
+    "start": 11.88,
+    "end": 12.28
+   },
+   {
+    "word": "shows",
+    "start": 12.28,
+    "end": 12.62
+   },
+   {
+    "word": "it.",
+    "start": 12.62,
+    "end": 12.94
+   }
+  ]
+ },
+ "complete": {
+  "duration": 15.4,
+  "words": [
+   {
+    "word": "Wow,",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "you",
+    "start": 1.1,
+    "end": 1.64
+   },
+   {
+    "word": "are",
+    "start": 1.64,
+    "end": 1.92
+   },
+   {
+    "word": "an",
+    "start": 1.92,
+    "end": 2.24
+   },
+   {
+    "word": "amazing",
+    "start": 2.24,
+    "end": 3.08
+   },
+   {
+    "word": "story",
+    "start": 3.08,
+    "end": 3.66
+   },
+   {
+    "word": "reader.",
+    "start": 3.66,
+    "end": 4.12
+   },
+   {
+    "word": "You",
+    "start": 4.58,
+    "end": 4.82
+   },
+   {
+    "word": "read",
+    "start": 4.82,
+    "end": 5.04
+   },
+   {
+    "word": "a",
+    "start": 5.04,
+    "end": 5.36
+   },
+   {
+    "word": "whole",
+    "start": 5.36,
+    "end": 5.68
+   },
+   {
+    "word": "story",
+    "start": 5.68,
+    "end": 6.4
+   },
+   {
+    "word": "all",
+    "start": 6.4,
+    "end": 6.8
+   },
+   {
+    "word": "by",
+    "start": 6.8,
+    "end": 7.1
+   },
+   {
+    "word": "yourself.",
+    "start": 7.1,
+    "end": 8.02
+   },
+   {
+    "word": "Keep",
+    "start": 8.68,
+    "end": 8.98
+   },
+   {
+    "word": "practicing",
+    "start": 8.98,
+    "end": 9.64
+   },
+   {
+    "word": "reading",
+    "start": 9.64,
+    "end": 10.18
+   },
+   {
+    "word": "new",
+    "start": 10.18,
+    "end": 10.6
+   },
+   {
+    "word": "words",
+    "start": 10.6,
+    "end": 11.1
+   },
+   {
+    "word": "and",
+    "start": 11.1,
+    "end": 11.54
+   },
+   {
+    "word": "understanding",
+    "start": 11.54,
+    "end": 12.46
+   },
+   {
+    "word": "what",
+    "start": 12.46,
+    "end": 12.96
+   },
+   {
+    "word": "you",
+    "start": 12.96,
+    "end": 13.24
+   },
+   {
+    "word": "read.",
+    "start": 13.24,
+    "end": 13.72
+   },
+   {
+    "word": "Great",
+    "start": 14.22,
+    "end": 14.68
+   },
+   {
+    "word": "job!",
+    "start": 14.68,
+    "end": 15.4
+   }
+  ]
+ },
+ "comprehension-who-ran": {
+  "duration": 12.6,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "read",
+    "start": 0.5,
+    "end": 0.92
+   },
+   {
+    "word": "the",
+    "start": 0.92,
+    "end": 1.28
+   },
+   {
+    "word": "whole",
+    "start": 1.28,
+    "end": 1.66
+   },
+   {
+    "word": "book.",
+    "start": 1.66,
+    "end": 2.22
+   },
+   {
+    "word": "Now,",
+    "start": 2.86,
+    "end": 3.3
+   },
+   {
+    "word": "let's",
+    "start": 3.6,
+    "end": 4.16
+   },
+   {
+    "word": "show",
+    "start": 4.16,
+    "end": 4.44
+   },
+   {
+    "word": "we",
+    "start": 4.44,
+    "end": 4.76
+   },
+   {
+    "word": "understood",
+    "start": 4.76,
+    "end": 5.54
+   },
+   {
+    "word": "the",
+    "start": 5.54,
+    "end": 5.86
+   },
+   {
+    "word": "story.",
+    "start": 5.86,
+    "end": 6.38
+   },
+   {
+    "word": "Think",
+    "start": 7.12,
+    "end": 7.5
+   },
+   {
+    "word": "back.",
+    "start": 7.5,
+    "end": 7.8
+   },
+   {
+    "word": "Who",
+    "start": 8.5,
+    "end": 8.92
+   },
+   {
+    "word": "ran",
+    "start": 8.92,
+    "end": 9.7
+   },
+   {
+    "word": "to",
+    "start": 9.7,
+    "end": 10.26
+   },
+   {
+    "word": "the",
+    "start": 10.26,
+    "end": 10.4
+   },
+   {
+    "word": "cat?",
+    "start": 10.4,
+    "end": 10.68
+   },
+   {
+    "word": "Tap",
+    "start": 11.42,
+    "end": 11.72
+   },
+   {
+    "word": "the",
+    "start": 11.72,
+    "end": 12.18
+   },
+   {
+    "word": "picture.",
+    "start": 12.18,
+    "end": 12.6
+   }
+  ]
+ },
+ "guided-page-2": {
+  "duration": 14.28,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "listen",
+    "start": 0.46,
+    "end": 0.94
+   },
+   {
+    "word": "so",
+    "start": 0.94,
+    "end": 1.56
+   },
+   {
+    "word": "well!",
+    "start": 1.56,
+    "end": 2.2
+   },
+   {
+    "word": "Now",
+    "start": 2.88,
+    "end": 3.12
+   },
+   {
+    "word": "it",
+    "start": 3.12,
+    "end": 3.32
+   },
+   {
+    "word": "is",
+    "start": 3.32,
+    "end": 3.46
+   },
+   {
+    "word": "your",
+    "start": 3.46,
+    "end": 3.68
+   },
+   {
+    "word": "turn.",
+    "start": 3.68,
+    "end": 4.16
+   },
+   {
+    "word": "Here",
+    "start": 4.86,
+    "end": 5.24
+   },
+   {
+    "word": "is",
+    "start": 5.24,
+    "end": 5.62
+   },
+   {
+    "word": "page",
+    "start": 5.62,
+    "end": 5.96
+   },
+   {
+    "word": "2.",
+    "start": 5.96,
+    "end": 6.62
+   },
+   {
+    "word": "Look",
+    "start": 7.36,
+    "end": 7.64
+   },
+   {
+    "word": "at",
+    "start": 7.64,
+    "end": 7.84
+   },
+   {
+    "word": "the",
+    "start": 7.84,
+    "end": 7.98
+   },
+   {
+    "word": "picture.",
+    "start": 7.98,
+    "end": 8.4
+   },
+   {
+    "word": "Then",
+    "start": 9.08,
+    "end": 9.44
+   },
+   {
+    "word": "read",
+    "start": 9.44,
+    "end": 10.08
+   },
+   {
+    "word": "the",
+    "start": 10.08,
+    "end": 10.38
+   },
+   {
+    "word": "words",
+    "start": 10.38,
+    "end": 10.66
+   },
+   {
+    "word": "on",
+    "start": 10.66,
+    "end": 10.84
+   },
+   {
+    "word": "the",
+    "start": 10.84,
+    "end": 10.98
+   },
+   {
+    "word": "page",
+    "start": 10.98,
+    "end": 11.38
+   },
+   {
+    "word": "out",
+    "start": 11.38,
+    "end": 11.74
+   },
+   {
+    "word": "loud.",
+    "start": 11.74,
+    "end": 12.34
+   },
+   {
+    "word": "Nice",
+    "start": 13.08,
+    "end": 13.32
+   },
+   {
+    "word": "and",
+    "start": 13.32,
+    "end": 13.82
+   },
+   {
+    "word": "clear.",
+    "start": 13.82,
+    "end": 14.28
+   }
+  ]
+ },
+ "guided-page-3": {
+  "duration": 7.0,
+  "words": [
+   {
+    "word": "What",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "great",
+    "start": 0.42,
+    "end": 0.88
+   },
+   {
+    "word": "reading!",
+    "start": 0.88,
+    "end": 1.5
+   },
+   {
+    "word": "Turn",
+    "start": 2.18,
+    "end": 2.44
+   },
+   {
+    "word": "the",
+    "start": 2.44,
+    "end": 2.64
+   },
+   {
+    "word": "page,",
+    "start": 2.64,
+    "end": 3.14
+   },
+   {
+    "word": "look",
+    "start": 3.46,
+    "end": 3.72
+   },
+   {
+    "word": "at",
+    "start": 3.72,
+    "end": 3.88
+   },
+   {
+    "word": "what",
+    "start": 3.88,
+    "end": 4.02
+   },
+   {
+    "word": "the",
+    "start": 4.02,
+    "end": 4.16
+   },
+   {
+    "word": "dog",
+    "start": 4.16,
+    "end": 4.44
+   },
+   {
+    "word": "does",
+    "start": 4.44,
+    "end": 4.66
+   },
+   {
+    "word": "now,",
+    "start": 4.66,
+    "end": 5.04
+   },
+   {
+    "word": "then",
+    "start": 5.38,
+    "end": 5.6
+   },
+   {
+    "word": "read",
+    "start": 5.6,
+    "end": 5.9
+   },
+   {
+    "word": "page",
+    "start": 5.9,
+    "end": 6.26
+   },
+   {
+    "word": "3",
+    "start": 6.26,
+    "end": 6.5
+   },
+   {
+    "word": "out",
+    "start": 6.5,
+    "end": 6.74
+   },
+   {
+    "word": "loud.",
+    "start": 6.74,
+    "end": 7.0
+   }
+  ]
+ },
+ "intro-hook": {
+  "duration": 13.36,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "Super",
+    "start": 0.82,
+    "end": 1.0
+   },
+   {
+    "word": "Reader.",
+    "start": 1.0,
+    "end": 1.36
+   },
+   {
+    "word": "Today",
+    "start": 2.04,
+    "end": 2.26
+   },
+   {
+    "word": "is",
+    "start": 2.26,
+    "end": 2.68
+   },
+   {
+    "word": "a",
+    "start": 2.68,
+    "end": 2.88
+   },
+   {
+    "word": "very",
+    "start": 2.88,
+    "end": 3.34
+   },
+   {
+    "word": "big",
+    "start": 3.34,
+    "end": 3.6
+   },
+   {
+    "word": "day.",
+    "start": 3.6,
+    "end": 3.88
+   },
+   {
+    "word": "You",
+    "start": 4.42,
+    "end": 4.82
+   },
+   {
+    "word": "get",
+    "start": 4.82,
+    "end": 5.02
+   },
+   {
+    "word": "to",
+    "start": 5.02,
+    "end": 5.2
+   },
+   {
+    "word": "read",
+    "start": 5.2,
+    "end": 5.38
+   },
+   {
+    "word": "your",
+    "start": 5.38,
+    "end": 5.6
+   },
+   {
+    "word": "first",
+    "start": 5.6,
+    "end": 6.16
+   },
+   {
+    "word": "little",
+    "start": 6.16,
+    "end": 6.56
+   },
+   {
+    "word": "book",
+    "start": 6.56,
+    "end": 6.94
+   },
+   {
+    "word": "all",
+    "start": 6.94,
+    "end": 7.62
+   },
+   {
+    "word": "by",
+    "start": 7.62,
+    "end": 7.88
+   },
+   {
+    "word": "yourself.",
+    "start": 7.88,
+    "end": 8.44
+   },
+   {
+    "word": "It",
+    "start": 9.2,
+    "end": 9.42
+   },
+   {
+    "word": "is",
+    "start": 9.42,
+    "end": 9.62
+   },
+   {
+    "word": "a",
+    "start": 9.62,
+    "end": 9.8
+   },
+   {
+    "word": "tiny",
+    "start": 9.8,
+    "end": 10.32
+   },
+   {
+    "word": "story",
+    "start": 10.32,
+    "end": 10.98
+   },
+   {
+    "word": "about",
+    "start": 10.98,
+    "end": 11.38
+   },
+   {
+    "word": "a",
+    "start": 11.38,
+    "end": 11.7
+   },
+   {
+    "word": "cat.",
+    "start": 11.7,
+    "end": 11.96
+   },
+   {
+    "word": "Let's",
+    "start": 12.56,
+    "end": 12.96
+   },
+   {
+    "word": "open",
+    "start": 12.96,
+    "end": 13.18
+   },
+   {
+    "word": "it.",
+    "start": 13.18,
+    "end": 13.36
+   }
+  ]
+ },
+ "model-page-1-sentence": {
+  "duration": 1.98,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "cat",
+    "start": 0.48,
+    "end": 1.0
+   },
+   {
+    "word": "sat.",
+    "start": 1.0,
+    "end": 1.98
+   }
+  ]
+ },
+ "model-page-1": {
+  "duration": 10.7,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "is",
+    "start": 0.66,
+    "end": 0.92
+   },
+   {
+    "word": "page",
+    "start": 0.92,
+    "end": 1.2
+   },
+   {
+    "word": "1.",
+    "start": 1.2,
+    "end": 1.92
+   },
+   {
+    "word": "Watch",
+    "start": 2.74,
+    "end": 3.24
+   },
+   {
+    "word": "the",
+    "start": 3.24,
+    "end": 3.46
+   },
+   {
+    "word": "words",
+    "start": 3.46,
+    "end": 3.88
+   },
+   {
+    "word": "light",
+    "start": 3.88,
+    "end": 4.32
+   },
+   {
+    "word": "up",
+    "start": 4.32,
+    "end": 4.84
+   },
+   {
+    "word": "while",
+    "start": 4.84,
+    "end": 5.3
+   },
+   {
+    "word": "I",
+    "start": 5.3,
+    "end": 5.58
+   },
+   {
+    "word": "read",
+    "start": 5.58,
+    "end": 5.9
+   },
+   {
+    "word": "with",
+    "start": 5.9,
+    "end": 6.32
+   },
+   {
+    "word": "my",
+    "start": 6.32,
+    "end": 6.58
+   },
+   {
+    "word": "best",
+    "start": 6.58,
+    "end": 7.06
+   },
+   {
+    "word": "reading",
+    "start": 7.06,
+    "end": 7.54
+   },
+   {
+    "word": "voice.",
+    "start": 7.54,
+    "end": 8.12
+   },
+   {
+    "word": "Follow",
+    "start": 8.68,
+    "end": 9.14
+   },
+   {
+    "word": "along",
+    "start": 9.14,
+    "end": 9.6
+   },
+   {
+    "word": "with",
+    "start": 9.6,
+    "end": 9.92
+   },
+   {
+    "word": "your",
+    "start": 9.92,
+    "end": 10.16
+   },
+   {
+    "word": "eyes.",
+    "start": 10.16,
+    "end": 10.7
+   }
+  ]
+ }
+}

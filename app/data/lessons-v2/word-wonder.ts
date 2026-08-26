@@ -1,0 +1,150 @@
+import type { LessonDef } from "@/lib/lesson-engine/types";
+import timings from "./word-wonder-timings.json";
+
+// Word Wonder (RL.K.4) · FACTORY-AUTHORED (scripts/lesson-author.ts), human-reviewed.
+// PURE DATA. Assets: lesson-tts / lesson-timings.py / lesson-images --lesson=word-wonder
+
+const A = (id: string) => `/audio/lessons-v2/word-wonder/${id}.mp3`;
+const W = (w: string) => `/audio/lessons-v2/word-wonder/words/${w.toLowerCase()}.mp3`;
+const IMG = (w: string) => `/images/lessons-v2/word-wonder/${w.toLowerCase()}.png`;
+
+export const wordWonderImages: Record<string, string> = {
+  "snug": "A small orange fox wearing a detective hat, curled up snug under a thick warm blanket in a cozy bed, eyes happy and comfortable.",
+  "cozy": "A warm blanket and a pillow.",
+  "cold": "A shivering snowman.",
+  "gleam": "A bright star shining with sparkling rays of light in a dark blue night sky, a small orange fox in a detective hat looking up at it.",
+  "shine": "A beaming sun.",
+  "dark": "A pitch-black cave opening with nothing visible inside.",
+  "nibble": "A small orange fox in a detective hat taking a tiny little bite from the edge of an apple slice.",
+  "bite": "A cartoon mouth taking a bite of food.",
+  "sleep": "A sleeping teddy bear.",
+  "swift": "A small orange fox in a detective hat running extremely fast, body blurred with speed lines streaking behind her.",
+  "quick": "A speedy cheetah.",
+  "slow": "A snail moving slowly.",
+  "enormous": "An enormous fluffy dog towering over a small orange fox in a detective hat, the dog many times bigger than the fox looking up at it.",
+  "big": "A large red ball.",
+  "small": "A tiny blue button.",
+  "scrumptious": "A small orange fox in a detective hat happily eating a slice of apple pie, smiling with delight, licking her lips.",
+  "yummy": "A happy face eating a delicious cookie.",
+  "yucky": "A cartoon face scrunched up in disgust, sticking out its tongue at a plate of food.",
+  "gem": "A sparkling colorful jewel half buried in brown garden dirt, a small orange fox in a detective hat digging beside it with a tiny shovel.",
+  "rock": "A smooth, grey river stone.",
+  "toy": "A colorful building block."
+};
+
+export const wordWonder: LessonDef = {
+  id: "word-wonder",
+  title: "Word Wonder",
+  grade: "Kindergarten",
+  standard: "RL.K.4",
+  archetype: "vocabulary",
+  objective: "I can be a word detective and figure out new words.",
+  concepts: ["ask and answer questions about unknown words","use pictures to understand words","use sentences to understand words"],
+  timings: timings as LessonDef["timings"],
+  completion: {
+    "script": "You are an amazing Word Detective! You learned to stop at a tricky word. You used the picture and the sentence to figure out what it means. Great job, Word Wonder!",
+    "title": "You're a Word Wonder!",
+    "body": "You've mastered the art of finding clues for tricky words!"
+  },
+  scenes: [
+    {
+      id: "hook-detective-intro",
+      purpose: "hook",
+      layout: "full",
+      gate: "none",
+      prompt: "Welcome, Word Detectives!",
+      fx: {"text":"tricky words","effect":"pop-words"},
+      narration: { audio: A("hook-detective-intro"), script: "Hello, Word Detectives. Today we will read a story about Pip the fox. Some words in her story are tricky. When we find one, we stop, look at the picture, and listen to the sentence for clues. Listen to the start of the story." },
+      interaction: { type: "read-along", text: "Pip the fox is a word detective. Her story is full of tricky words. Can you help her find the clues?", audio: A("hook-detective-intro-sentence") },
+    },
+    {
+      id: "model-picture-clue",
+      purpose: "model",
+      gate: "interaction",
+      prompt: "Watch me find a clue!",
+      image: IMG("snug"),
+      fx: {"text":"snug","effect":"underline"},
+      narration: { audio: A("model-picture-clue"), script: "Our story says, \"Pip was snug in her bed.\" Snug. That is a tricky word. Watch how I figure it out. I stop and look at the picture. Pip is curled up under a warm blanket. She looks warm and comfy. So snug must mean cozy. Now you show me. Tap the picture for cozy." },
+      interaction: { type: "choose", options: [{ id: "cozy", label: "COZY", audio: W("cozy"), image: IMG("cozy") }, { id: "cold", label: "COLD", audio: W("cold"), image: IMG("cold") }], correctId: "cozy", coachWrong: "Look at Pip in the picture. She is warm under her blanket. Tap the picture that shows cozy." },
+    },
+    {
+      id: "guided-picture-practice",
+      purpose: "guided",
+      gate: "interaction",
+      prompt: "What does \"gleam\" mean?",
+      image: IMG("gleam"),
+      fx: {"text":"gleam","effect":"underline"},
+      narration: { audio: A("guided-picture-practice"), script: "Now it is your turn. The story says, \"Pip looked up. The star began to gleam.\" Gleam. Stop at that tricky word. Look at the picture for a clue. What could gleam mean? Tap your answer." },
+      interaction: { type: "choose", options: [{ id: "shine", label: "SHINE", audio: W("shine"), image: IMG("shine") }, { id: "dark", label: "DARK", audio: W("dark"), image: IMG("dark") }], correctId: "shine", coachWrong: "Look at the picture again. What is the star doing in the sky?" },
+    },
+    {
+      id: "model-sentence-clue",
+      purpose: "model",
+      gate: "interaction",
+      prompt: "Watch me find another clue!",
+      image: IMG("nibble"),
+      fx: {"text":"nibble","effect":"underline"},
+      narration: { audio: A("model-sentence-clue"), script: "Sometimes the words around a tricky word help too. The story says, \"Pip was hungry. She took a nibble of her apple.\" Nibble. Watch me. The picture shows Pip taking a tiny little bite. So a nibble must be a small bite. Now you show me. Tap the picture for bite." },
+      interaction: { type: "choose", options: [{ id: "bite", label: "BITE", audio: W("bite"), image: IMG("bite") }, { id: "sleep", label: "SLEEP", audio: W("sleep"), image: IMG("sleep") }], correctId: "bite", coachWrong: "Look at the picture. Pip is taking a tiny bite of her apple. Tap the picture for bite." },
+    },
+    {
+      id: "guided-sentence-practice",
+      purpose: "guided",
+      gate: "interaction",
+      prompt: "What does \"swift\" mean?",
+      image: IMG("swift"),
+      fx: {"text":"swift","effect":"underline"},
+      narration: { audio: A("guided-sentence-practice"), script: "Your turn again. The story says, \"Swift little Pip zoomed to the park before anyone else.\" Swift. Stop at that tricky word. She zoomed. Look at the picture too. What could swift mean? Tap your answer." },
+      interaction: { type: "choose", options: [{ id: "quick", label: "QUICK", audio: W("quick"), image: IMG("quick") }, { id: "slow", label: "SLOW", audio: W("slow"), image: IMG("slow") }], correctId: "quick", coachWrong: "Listen to the clue again. Pip zoomed to the park before anyone else. Think about how she was moving." },
+    },
+    {
+      id: "apply-both-clues",
+      purpose: "apply",
+      gate: "interaction",
+      prompt: "What does \"enormous\" mean?",
+      image: IMG("enormous"),
+      fx: {"text":"enormous","effect":"underline"},
+      narration: { audio: A("apply-both-clues"), script: "Here is a new tricky word. The story says, \"At the park, Pip saw an enormous dog.\" Enormous. Stop and look at the picture of the dog next to Pip. Use the picture clue. What could enormous mean? Tap your answer." },
+      interaction: { type: "choose", options: [{ id: "big", label: "BIG", audio: W("big"), image: IMG("big") }, { id: "small", label: "SMALL", audio: W("small"), image: IMG("small") }], correctId: "big", coachWrong: "Look at the dog standing next to Pip. Look how much space the dog takes up in the picture." },
+    },
+    {
+      id: "apply-both-clues-2",
+      purpose: "apply",
+      gate: "interaction",
+      prompt: "What does \"scrumptious\" mean?",
+      image: IMG("scrumptious"),
+      fx: {"text":"scrumptious","effect":"underline"},
+      narration: { audio: A("apply-both-clues-2"), script: "One more. The story says, \"Pip took a bite of a scrumptious apple pie. She smiled and asked for more.\" Scrumptious. She smiled and asked for more. Look at Pip's face in the picture. What could scrumptious mean? Tap your answer." },
+      interaction: { type: "choose", options: [{ id: "yummy", label: "YUMMY", audio: W("yummy"), image: IMG("yummy") }, { id: "yucky", label: "YUCKY", audio: W("yucky"), image: IMG("yucky") }], correctId: "yummy", coachWrong: "Pip smiled and asked for more pie. Think about how the pie must have tasted." },
+    },
+    {
+      id: "apply-say-meaning",
+      purpose: "apply",
+      gate: "interaction",
+      prompt: "Say what \"snug\" means.",
+      image: IMG("snug"),
+      fx: {"text":"snug","effect":"underline"},
+      narration: { audio: A("apply-say-meaning"), script: "Word detectives can answer questions about tricky words out loud. Think back to our story. Pip was snug in her bed, all warm under her blanket. What does snug mean? Tap the mic and say the word." },
+      interaction: { type: "speak", text: "cozy" },
+    },
+    {
+      id: "challenge-detective-solo",
+      purpose: "challenge",
+      gate: "interaction",
+      prompt: "What does this word mean?",
+      image: IMG("gem"),
+      fx: {"text":"gem","effect":"underline"},
+      narration: { audio: A("challenge-detective-solo"), script: "Here is your final mission, detective. The story says, \"Pip dug in the garden and found a shiny gem in the dirt.\" Gem. Stop, look at the picture, and think about the sentence. What could a gem be? Tap your best guess." },
+      interaction: { type: "choose", options: [{ id: "rock", label: "ROCK", audio: W("rock"), image: IMG("rock") }, { id: "toy", label: "TOY", audio: W("toy"), image: IMG("toy") }], correctId: "rock", coachWrong: "Pip found it buried in the dirt in the garden. Think about what you dig up out of the ground." },
+    },
+    {
+      id: "celebrate-success",
+      purpose: "celebrate",
+      layout: "full",
+      gate: "none",
+      prompt: "You are a Word Wonder!",
+      fx: {"text":"Great job, Word Wonder!","effect":"burst"},
+      narration: { audio: A("celebrate-success"), script: "You are an amazing Word Detective! You learned to stop at a tricky word. You used the picture and the sentence to figure out what it means. Great job, Word Wonder!" },
+    },
+  ],
+};

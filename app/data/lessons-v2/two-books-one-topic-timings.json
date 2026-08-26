@@ -1,0 +1,2337 @@
+{
+ "apply-choose-only-red": {
+  "duration": 25.84,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "find",
+    "start": 0.44,
+    "end": 0.94
+   },
+   {
+    "word": "a",
+    "start": 0.94,
+    "end": 1.36
+   },
+   {
+    "word": "red",
+    "start": 1.36,
+    "end": 1.68
+   },
+   {
+    "word": "book",
+    "start": 1.68,
+    "end": 1.94
+   },
+   {
+    "word": "fact.",
+    "start": 1.94,
+    "end": 2.58
+   },
+   {
+    "word": "The",
+    "start": 3.4,
+    "end": 3.86
+   },
+   {
+    "word": "red",
+    "start": 3.86,
+    "end": 4.12
+   },
+   {
+    "word": "book",
+    "start": 4.12,
+    "end": 4.38
+   },
+   {
+    "word": "said,",
+    "start": 4.38,
+    "end": 4.96
+   },
+   {
+    "word": "Penguins",
+    "start": 5.38,
+    "end": 5.76
+   },
+   {
+    "word": "are",
+    "start": 5.76,
+    "end": 6.22
+   },
+   {
+    "word": "birds,",
+    "start": 6.22,
+    "end": 6.6
+   },
+   {
+    "word": "Penguins",
+    "start": 7.34,
+    "end": 8.14
+   },
+   {
+    "word": "swim,",
+    "start": 8.14,
+    "end": 8.78
+   },
+   {
+    "word": "and",
+    "start": 9.62,
+    "end": 9.98
+   },
+   {
+    "word": "Penguins",
+    "start": 9.98,
+    "end": 10.74
+   },
+   {
+    "word": "slide",
+    "start": 10.74,
+    "end": 11.32
+   },
+   {
+    "word": "on",
+    "start": 11.32,
+    "end": 11.8
+   },
+   {
+    "word": "ice.",
+    "start": 11.8,
+    "end": 12.14
+   },
+   {
+    "word": "The",
+    "start": 13.58,
+    "end": 13.8
+   },
+   {
+    "word": "blue",
+    "start": 13.8,
+    "end": 14.08
+   },
+   {
+    "word": "book",
+    "start": 14.08,
+    "end": 14.36
+   },
+   {
+    "word": "said,",
+    "start": 14.36,
+    "end": 14.86
+   },
+   {
+    "word": "Penguins",
+    "start": 15.34,
+    "end": 15.9
+   },
+   {
+    "word": "are",
+    "start": 15.9,
+    "end": 16.2
+   },
+   {
+    "word": "birds,",
+    "start": 16.2,
+    "end": 16.7
+   },
+   {
+    "word": "Penguins",
+    "start": 17.3,
+    "end": 18.06
+   },
+   {
+    "word": "swim,",
+    "start": 18.06,
+    "end": 18.72
+   },
+   {
+    "word": "and",
+    "start": 19.52,
+    "end": 19.74
+   },
+   {
+    "word": "Penguins",
+    "start": 19.74,
+    "end": 20.5
+   },
+   {
+    "word": "eat",
+    "start": 20.5,
+    "end": 20.82
+   },
+   {
+    "word": "fish.",
+    "start": 20.82,
+    "end": 21.54
+   },
+   {
+    "word": "Tap",
+    "start": 22.46,
+    "end": 22.92
+   },
+   {
+    "word": "the",
+    "start": 22.92,
+    "end": 23.18
+   },
+   {
+    "word": "fact",
+    "start": 23.18,
+    "end": 23.6
+   },
+   {
+    "word": "that",
+    "start": 23.6,
+    "end": 23.86
+   },
+   {
+    "word": "is",
+    "start": 23.86,
+    "end": 24.06
+   },
+   {
+    "word": "only",
+    "start": 24.06,
+    "end": 24.74
+   },
+   {
+    "word": "in",
+    "start": 24.74,
+    "end": 25.18
+   },
+   {
+    "word": "the",
+    "start": 25.18,
+    "end": 25.36
+   },
+   {
+    "word": "red",
+    "start": 25.36,
+    "end": 25.56
+   },
+   {
+    "word": "book.",
+    "start": 25.56,
+    "end": 25.84
+   }
+  ]
+ },
+ "apply-say-topic": {
+  "duration": 15.04,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "is",
+    "start": 0.62,
+    "end": 0.98
+   },
+   {
+    "word": "a",
+    "start": 0.98,
+    "end": 1.16
+   },
+   {
+    "word": "big",
+    "start": 1.16,
+    "end": 1.58
+   },
+   {
+    "word": "question.",
+    "start": 1.58,
+    "end": 2.4
+   },
+   {
+    "word": "The",
+    "start": 3.0,
+    "end": 3.44
+   },
+   {
+    "word": "blue",
+    "start": 3.44,
+    "end": 3.84
+   },
+   {
+    "word": "book",
+    "start": 3.84,
+    "end": 4.2
+   },
+   {
+    "word": "and",
+    "start": 4.2,
+    "end": 4.66
+   },
+   {
+    "word": "the",
+    "start": 4.66,
+    "end": 4.84
+   },
+   {
+    "word": "red",
+    "start": 4.84,
+    "end": 5.14
+   },
+   {
+    "word": "book",
+    "start": 5.14,
+    "end": 5.52
+   },
+   {
+    "word": "are",
+    "start": 5.52,
+    "end": 5.88
+   },
+   {
+    "word": "about",
+    "start": 5.88,
+    "end": 6.16
+   },
+   {
+    "word": "the",
+    "start": 6.16,
+    "end": 6.42
+   },
+   {
+    "word": "same",
+    "start": 6.42,
+    "end": 7.06
+   },
+   {
+    "word": "topic.",
+    "start": 7.06,
+    "end": 7.64
+   },
+   {
+    "word": "They",
+    "start": 8.16,
+    "end": 8.44
+   },
+   {
+    "word": "both",
+    "start": 8.44,
+    "end": 8.88
+   },
+   {
+    "word": "tell",
+    "start": 8.88,
+    "end": 9.2
+   },
+   {
+    "word": "all",
+    "start": 9.2,
+    "end": 9.86
+   },
+   {
+    "word": "about",
+    "start": 9.86,
+    "end": 10.34
+   },
+   {
+    "word": "one",
+    "start": 10.34,
+    "end": 10.92
+   },
+   {
+    "word": "animal.",
+    "start": 10.92,
+    "end": 11.66
+   },
+   {
+    "word": "Press",
+    "start": 12.42,
+    "end": 12.78
+   },
+   {
+    "word": "the",
+    "start": 12.78,
+    "end": 13.08
+   },
+   {
+    "word": "microphone",
+    "start": 13.08,
+    "end": 13.68
+   },
+   {
+    "word": "and",
+    "start": 13.68,
+    "end": 14.24
+   },
+   {
+    "word": "say",
+    "start": 14.24,
+    "end": 14.48
+   },
+   {
+    "word": "the",
+    "start": 14.48,
+    "end": 14.68
+   },
+   {
+    "word": "animal.",
+    "start": 14.68,
+    "end": 15.04
+   }
+  ]
+ },
+ "celebrate-lesson": {
+  "duration": 15.72,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "did",
+    "start": 0.54,
+    "end": 1.1
+   },
+   {
+    "word": "it.",
+    "start": 1.1,
+    "end": 1.6
+   },
+   {
+    "word": "You",
+    "start": 1.98,
+    "end": 2.26
+   },
+   {
+    "word": "read",
+    "start": 2.26,
+    "end": 2.56
+   },
+   {
+    "word": "two",
+    "start": 2.56,
+    "end": 3.08
+   },
+   {
+    "word": "books",
+    "start": 3.08,
+    "end": 3.58
+   },
+   {
+    "word": "about",
+    "start": 3.58,
+    "end": 4.08
+   },
+   {
+    "word": "the",
+    "start": 4.08,
+    "end": 4.3
+   },
+   {
+    "word": "same",
+    "start": 4.3,
+    "end": 4.66
+   },
+   {
+    "word": "topic",
+    "start": 4.66,
+    "end": 5.2
+   },
+   {
+    "word": "and",
+    "start": 5.2,
+    "end": 5.78
+   },
+   {
+    "word": "you",
+    "start": 5.78,
+    "end": 6.0
+   },
+   {
+    "word": "compared",
+    "start": 6.0,
+    "end": 6.7
+   },
+   {
+    "word": "their",
+    "start": 6.7,
+    "end": 7.16
+   },
+   {
+    "word": "facts.",
+    "start": 7.16,
+    "end": 7.84
+   },
+   {
+    "word": "You",
+    "start": 8.3,
+    "end": 8.66
+   },
+   {
+    "word": "found",
+    "start": 8.66,
+    "end": 8.94
+   },
+   {
+    "word": "facts",
+    "start": 8.94,
+    "end": 9.26
+   },
+   {
+    "word": "in",
+    "start": 9.26,
+    "end": 9.5
+   },
+   {
+    "word": "both",
+    "start": 9.5,
+    "end": 9.74
+   },
+   {
+    "word": "books",
+    "start": 9.74,
+    "end": 10.26
+   },
+   {
+    "word": "and",
+    "start": 10.26,
+    "end": 10.8
+   },
+   {
+    "word": "facts",
+    "start": 10.8,
+    "end": 11.32
+   },
+   {
+    "word": "in",
+    "start": 11.32,
+    "end": 11.74
+   },
+   {
+    "word": "just",
+    "start": 11.74,
+    "end": 11.96
+   },
+   {
+    "word": "one",
+    "start": 11.96,
+    "end": 12.36
+   },
+   {
+    "word": "book.",
+    "start": 12.36,
+    "end": 12.7
+   },
+   {
+    "word": "You",
+    "start": 13.12,
+    "end": 13.48
+   },
+   {
+    "word": "are",
+    "start": 13.48,
+    "end": 13.78
+   },
+   {
+    "word": "a",
+    "start": 13.78,
+    "end": 14.04
+   },
+   {
+    "word": "super",
+    "start": 14.04,
+    "end": 14.58
+   },
+   {
+    "word": "fact",
+    "start": 14.58,
+    "end": 15.06
+   },
+   {
+    "word": "finder.",
+    "start": 15.06,
+    "end": 15.72
+   }
+  ]
+ },
+ "challenge-sort": {
+  "duration": 29.94,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "is",
+    "start": 0.52,
+    "end": 0.9
+   },
+   {
+    "word": "your",
+    "start": 0.9,
+    "end": 1.08
+   },
+   {
+    "word": "challenge.",
+    "start": 1.08,
+    "end": 1.74
+   },
+   {
+    "word": "Listen",
+    "start": 2.52,
+    "end": 2.78
+   },
+   {
+    "word": "one",
+    "start": 2.78,
+    "end": 3.22
+   },
+   {
+    "word": "more",
+    "start": 3.22,
+    "end": 3.5
+   },
+   {
+    "word": "time.",
+    "start": 3.5,
+    "end": 4.06
+   },
+   {
+    "word": "The",
+    "start": 4.9,
+    "end": 4.98
+   },
+   {
+    "word": "blue",
+    "start": 4.98,
+    "end": 5.36
+   },
+   {
+    "word": "book",
+    "start": 5.36,
+    "end": 5.86
+   },
+   {
+    "word": "said,",
+    "start": 5.86,
+    "end": 6.38
+   },
+   {
+    "word": "Penguins",
+    "start": 7.24,
+    "end": 7.46
+   },
+   {
+    "word": "are",
+    "start": 7.46,
+    "end": 7.68
+   },
+   {
+    "word": "birds,",
+    "start": 7.68,
+    "end": 8.0
+   },
+   {
+    "word": "penguins",
+    "start": 8.48,
+    "end": 9.2
+   },
+   {
+    "word": "swim,",
+    "start": 9.2,
+    "end": 9.62
+   },
+   {
+    "word": "penguins",
+    "start": 10.44,
+    "end": 11.0
+   },
+   {
+    "word": "eat",
+    "start": 11.0,
+    "end": 11.26
+   },
+   {
+    "word": "fish.",
+    "start": 11.26,
+    "end": 11.94
+   },
+   {
+    "word": "The",
+    "start": 12.68,
+    "end": 12.94
+   },
+   {
+    "word": "red",
+    "start": 12.94,
+    "end": 13.32
+   },
+   {
+    "word": "book",
+    "start": 13.32,
+    "end": 13.66
+   },
+   {
+    "word": "said,",
+    "start": 13.66,
+    "end": 14.42
+   },
+   {
+    "word": "penguins",
+    "start": 15.08,
+    "end": 15.48
+   },
+   {
+    "word": "are",
+    "start": 15.48,
+    "end": 15.62
+   },
+   {
+    "word": "birds,",
+    "start": 15.62,
+    "end": 16.04
+   },
+   {
+    "word": "penguins",
+    "start": 16.54,
+    "end": 17.12
+   },
+   {
+    "word": "swim,",
+    "start": 17.12,
+    "end": 17.54
+   },
+   {
+    "word": "penguins",
+    "start": 18.3,
+    "end": 18.9
+   },
+   {
+    "word": "slide",
+    "start": 18.9,
+    "end": 19.52
+   },
+   {
+    "word": "on",
+    "start": 19.52,
+    "end": 19.98
+   },
+   {
+    "word": "ice.",
+    "start": 19.98,
+    "end": 20.3
+   },
+   {
+    "word": "Now",
+    "start": 21.32,
+    "end": 21.52
+   },
+   {
+    "word": "drag",
+    "start": 21.52,
+    "end": 21.94
+   },
+   {
+    "word": "each",
+    "start": 21.94,
+    "end": 22.66
+   },
+   {
+    "word": "fact",
+    "start": 22.66,
+    "end": 23.04
+   },
+   {
+    "word": "to",
+    "start": 23.04,
+    "end": 23.54
+   },
+   {
+    "word": "the",
+    "start": 23.54,
+    "end": 23.66
+   },
+   {
+    "word": "right",
+    "start": 23.66,
+    "end": 23.86
+   },
+   {
+    "word": "spot.",
+    "start": 23.86,
+    "end": 24.3
+   },
+   {
+    "word": "Is",
+    "start": 24.88,
+    "end": 25.2
+   },
+   {
+    "word": "it",
+    "start": 25.2,
+    "end": 25.42
+   },
+   {
+    "word": "in",
+    "start": 25.42,
+    "end": 25.64
+   },
+   {
+    "word": "both",
+    "start": 25.64,
+    "end": 25.98
+   },
+   {
+    "word": "books?",
+    "start": 25.98,
+    "end": 26.54
+   },
+   {
+    "word": "Only",
+    "start": 26.54,
+    "end": 27.44
+   },
+   {
+    "word": "the",
+    "start": 27.44,
+    "end": 27.68
+   },
+   {
+    "word": "blue",
+    "start": 27.68,
+    "end": 27.88
+   },
+   {
+    "word": "book",
+    "start": 27.88,
+    "end": 28.22
+   },
+   {
+    "word": "or",
+    "start": 28.22,
+    "end": 28.74
+   },
+   {
+    "word": "only",
+    "start": 28.74,
+    "end": 29.2
+   },
+   {
+    "word": "the",
+    "start": 29.2,
+    "end": 29.42
+   },
+   {
+    "word": "red",
+    "start": 29.42,
+    "end": 29.6
+   },
+   {
+    "word": "book?",
+    "start": 29.6,
+    "end": 29.94
+   }
+  ]
+ },
+ "complete": {
+  "duration": 12.34,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "compared",
+    "start": 0.48,
+    "end": 1.04
+   },
+   {
+    "word": "two",
+    "start": 1.04,
+    "end": 1.62
+   },
+   {
+    "word": "fact",
+    "start": 1.62,
+    "end": 2.08
+   },
+   {
+    "word": "books",
+    "start": 2.08,
+    "end": 2.42
+   },
+   {
+    "word": "like",
+    "start": 2.42,
+    "end": 2.72
+   },
+   {
+    "word": "a",
+    "start": 2.72,
+    "end": 2.98
+   },
+   {
+    "word": "real",
+    "start": 2.98,
+    "end": 3.42
+   },
+   {
+    "word": "fact",
+    "start": 3.42,
+    "end": 3.78
+   },
+   {
+    "word": "finder.",
+    "start": 3.78,
+    "end": 4.4
+   },
+   {
+    "word": "You",
+    "start": 4.88,
+    "end": 5.32
+   },
+   {
+    "word": "found",
+    "start": 5.32,
+    "end": 5.62
+   },
+   {
+    "word": "the",
+    "start": 5.62,
+    "end": 5.8
+   },
+   {
+    "word": "facts",
+    "start": 5.8,
+    "end": 6.22
+   },
+   {
+    "word": "that",
+    "start": 6.22,
+    "end": 6.56
+   },
+   {
+    "word": "were",
+    "start": 6.56,
+    "end": 6.76
+   },
+   {
+    "word": "in",
+    "start": 6.76,
+    "end": 6.98
+   },
+   {
+    "word": "both",
+    "start": 6.98,
+    "end": 7.36
+   },
+   {
+    "word": "books",
+    "start": 7.36,
+    "end": 7.92
+   },
+   {
+    "word": "and",
+    "start": 7.92,
+    "end": 8.56
+   },
+   {
+    "word": "the",
+    "start": 8.56,
+    "end": 8.92
+   },
+   {
+    "word": "facts",
+    "start": 8.92,
+    "end": 9.24
+   },
+   {
+    "word": "that",
+    "start": 9.24,
+    "end": 9.46
+   },
+   {
+    "word": "were",
+    "start": 9.46,
+    "end": 9.64
+   },
+   {
+    "word": "in",
+    "start": 9.64,
+    "end": 9.86
+   },
+   {
+    "word": "just",
+    "start": 9.86,
+    "end": 10.16
+   },
+   {
+    "word": "one",
+    "start": 10.16,
+    "end": 10.54
+   },
+   {
+    "word": "book.",
+    "start": 10.54,
+    "end": 10.96
+   },
+   {
+    "word": "Amazing",
+    "start": 11.3,
+    "end": 11.88
+   },
+   {
+    "word": "work!",
+    "start": 11.88,
+    "end": 12.34
+   }
+  ]
+ },
+ "guided-choose-both": {
+  "duration": 21.4,
+  "words": [
+   {
+    "word": "Your",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "turn,",
+    "start": 0.48,
+    "end": 0.82
+   },
+   {
+    "word": "Factor",
+    "start": 0.96,
+    "end": 1.18
+   },
+   {
+    "word": "Finder.",
+    "start": 1.18,
+    "end": 1.56
+   },
+   {
+    "word": "Remember,",
+    "start": 2.22,
+    "end": 2.54
+   },
+   {
+    "word": "the",
+    "start": 3.0,
+    "end": 3.04
+   },
+   {
+    "word": "blue",
+    "start": 3.04,
+    "end": 3.4
+   },
+   {
+    "word": "book",
+    "start": 3.4,
+    "end": 3.64
+   },
+   {
+    "word": "said,",
+    "start": 3.64,
+    "end": 4.14
+   },
+   {
+    "word": "Penguins",
+    "start": 4.56,
+    "end": 4.86
+   },
+   {
+    "word": "are",
+    "start": 4.86,
+    "end": 5.08
+   },
+   {
+    "word": "birds,",
+    "start": 5.08,
+    "end": 5.4
+   },
+   {
+    "word": "Penguins",
+    "start": 5.96,
+    "end": 6.7
+   },
+   {
+    "word": "swim,",
+    "start": 6.7,
+    "end": 7.16
+   },
+   {
+    "word": "and",
+    "start": 7.7,
+    "end": 8.1
+   },
+   {
+    "word": "Penguins",
+    "start": 8.1,
+    "end": 8.78
+   },
+   {
+    "word": "eat",
+    "start": 8.78,
+    "end": 9.12
+   },
+   {
+    "word": "fish.",
+    "start": 9.12,
+    "end": 9.68
+   },
+   {
+    "word": "The",
+    "start": 10.4,
+    "end": 10.64
+   },
+   {
+    "word": "red",
+    "start": 10.64,
+    "end": 11.02
+   },
+   {
+    "word": "book",
+    "start": 11.02,
+    "end": 11.32
+   },
+   {
+    "word": "said,",
+    "start": 11.32,
+    "end": 11.84
+   },
+   {
+    "word": "Penguins",
+    "start": 12.16,
+    "end": 12.6
+   },
+   {
+    "word": "are",
+    "start": 12.6,
+    "end": 12.74
+   },
+   {
+    "word": "birds,",
+    "start": 12.74,
+    "end": 13.2
+   },
+   {
+    "word": "Penguins",
+    "start": 13.9,
+    "end": 14.38
+   },
+   {
+    "word": "swim,",
+    "start": 14.38,
+    "end": 14.88
+   },
+   {
+    "word": "and",
+    "start": 15.58,
+    "end": 15.72
+   },
+   {
+    "word": "Penguins",
+    "start": 15.72,
+    "end": 16.34
+   },
+   {
+    "word": "slide",
+    "start": 16.34,
+    "end": 16.86
+   },
+   {
+    "word": "on",
+    "start": 16.86,
+    "end": 17.28
+   },
+   {
+    "word": "ice.",
+    "start": 17.28,
+    "end": 17.68
+   },
+   {
+    "word": "Tap",
+    "start": 18.5,
+    "end": 18.78
+   },
+   {
+    "word": "the",
+    "start": 18.78,
+    "end": 19.06
+   },
+   {
+    "word": "fact",
+    "start": 19.06,
+    "end": 19.54
+   },
+   {
+    "word": "that",
+    "start": 19.54,
+    "end": 19.84
+   },
+   {
+    "word": "is",
+    "start": 19.84,
+    "end": 20.04
+   },
+   {
+    "word": "in",
+    "start": 20.04,
+    "end": 20.26
+   },
+   {
+    "word": "both",
+    "start": 20.26,
+    "end": 20.72
+   },
+   {
+    "word": "books.",
+    "start": 20.72,
+    "end": 21.4
+   }
+  ]
+ },
+ "guided-choose-only-blue": {
+  "duration": 24.52,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "comparing!",
+    "start": 0.56,
+    "end": 1.32
+   },
+   {
+    "word": "Listen",
+    "start": 2.08,
+    "end": 2.5
+   },
+   {
+    "word": "again.",
+    "start": 2.5,
+    "end": 2.9
+   },
+   {
+    "word": "The",
+    "start": 3.62,
+    "end": 3.72
+   },
+   {
+    "word": "blue",
+    "start": 3.72,
+    "end": 4.1
+   },
+   {
+    "word": "book",
+    "start": 4.1,
+    "end": 4.36
+   },
+   {
+    "word": "said,",
+    "start": 4.36,
+    "end": 4.94
+   },
+   {
+    "word": "Penguins",
+    "start": 5.5,
+    "end": 5.92
+   },
+   {
+    "word": "are",
+    "start": 5.92,
+    "end": 6.28
+   },
+   {
+    "word": "birds,",
+    "start": 6.28,
+    "end": 6.76
+   },
+   {
+    "word": "penguins",
+    "start": 7.4,
+    "end": 8.06
+   },
+   {
+    "word": "swim,",
+    "start": 8.06,
+    "end": 8.54
+   },
+   {
+    "word": "and",
+    "start": 9.12,
+    "end": 9.42
+   },
+   {
+    "word": "penguins",
+    "start": 9.42,
+    "end": 10.1
+   },
+   {
+    "word": "eat",
+    "start": 10.1,
+    "end": 10.34
+   },
+   {
+    "word": "fish.",
+    "start": 10.34,
+    "end": 10.82
+   },
+   {
+    "word": "The",
+    "start": 11.7,
+    "end": 12.04
+   },
+   {
+    "word": "red",
+    "start": 12.04,
+    "end": 12.4
+   },
+   {
+    "word": "book",
+    "start": 12.4,
+    "end": 12.7
+   },
+   {
+    "word": "said,",
+    "start": 12.7,
+    "end": 13.34
+   },
+   {
+    "word": "penguins",
+    "start": 13.84,
+    "end": 14.4
+   },
+   {
+    "word": "are",
+    "start": 14.4,
+    "end": 14.58
+   },
+   {
+    "word": "birds,",
+    "start": 14.58,
+    "end": 15.1
+   },
+   {
+    "word": "penguins",
+    "start": 15.7,
+    "end": 16.28
+   },
+   {
+    "word": "swim,",
+    "start": 16.28,
+    "end": 16.8
+   },
+   {
+    "word": "and",
+    "start": 17.46,
+    "end": 17.58
+   },
+   {
+    "word": "penguins",
+    "start": 17.58,
+    "end": 18.28
+   },
+   {
+    "word": "slide",
+    "start": 18.28,
+    "end": 18.7
+   },
+   {
+    "word": "on",
+    "start": 18.7,
+    "end": 19.16
+   },
+   {
+    "word": "ice.",
+    "start": 19.16,
+    "end": 19.64
+   },
+   {
+    "word": "Tap",
+    "start": 20.52,
+    "end": 20.88
+   },
+   {
+    "word": "the",
+    "start": 20.88,
+    "end": 21.1
+   },
+   {
+    "word": "fact",
+    "start": 21.1,
+    "end": 21.5
+   },
+   {
+    "word": "that",
+    "start": 21.5,
+    "end": 21.76
+   },
+   {
+    "word": "is",
+    "start": 21.76,
+    "end": 21.98
+   },
+   {
+    "word": "only",
+    "start": 21.98,
+    "end": 22.8
+   },
+   {
+    "word": "in",
+    "start": 22.8,
+    "end": 23.44
+   },
+   {
+    "word": "the",
+    "start": 23.44,
+    "end": 23.66
+   },
+   {
+    "word": "blue",
+    "start": 23.66,
+    "end": 24.02
+   },
+   {
+    "word": "book.",
+    "start": 24.02,
+    "end": 24.52
+   }
+  ]
+ },
+ "hook-two-books": {
+  "duration": 24.0,
+  "words": [
+   {
+    "word": "Hello",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "Fact",
+    "start": 0.62,
+    "end": 1.12
+   },
+   {
+    "word": "Finders!",
+    "start": 1.12,
+    "end": 1.96
+   },
+   {
+    "word": "Look",
+    "start": 2.58,
+    "end": 2.86
+   },
+   {
+    "word": "at",
+    "start": 2.86,
+    "end": 3.1
+   },
+   {
+    "word": "these",
+    "start": 3.1,
+    "end": 3.44
+   },
+   {
+    "word": "two",
+    "start": 3.44,
+    "end": 4.0
+   },
+   {
+    "word": "books.",
+    "start": 4.0,
+    "end": 4.48
+   },
+   {
+    "word": "One",
+    "start": 5.26,
+    "end": 5.6
+   },
+   {
+    "word": "book",
+    "start": 5.6,
+    "end": 6.0
+   },
+   {
+    "word": "has",
+    "start": 6.0,
+    "end": 6.46
+   },
+   {
+    "word": "a",
+    "start": 6.46,
+    "end": 6.66
+   },
+   {
+    "word": "blue",
+    "start": 6.66,
+    "end": 7.02
+   },
+   {
+    "word": "cover.",
+    "start": 7.02,
+    "end": 7.46
+   },
+   {
+    "word": "One",
+    "start": 8.18,
+    "end": 8.6
+   },
+   {
+    "word": "book",
+    "start": 8.6,
+    "end": 9.08
+   },
+   {
+    "word": "has",
+    "start": 9.08,
+    "end": 9.48
+   },
+   {
+    "word": "a",
+    "start": 9.48,
+    "end": 9.72
+   },
+   {
+    "word": "red",
+    "start": 9.72,
+    "end": 9.96
+   },
+   {
+    "word": "cover.",
+    "start": 9.96,
+    "end": 10.42
+   },
+   {
+    "word": "They",
+    "start": 11.12,
+    "end": 11.54
+   },
+   {
+    "word": "are",
+    "start": 11.54,
+    "end": 11.76
+   },
+   {
+    "word": "two",
+    "start": 11.76,
+    "end": 12.24
+   },
+   {
+    "word": "different",
+    "start": 12.24,
+    "end": 12.92
+   },
+   {
+    "word": "books,",
+    "start": 12.92,
+    "end": 13.52
+   },
+   {
+    "word": "but",
+    "start": 14.12,
+    "end": 14.3
+   },
+   {
+    "word": "they",
+    "start": 14.3,
+    "end": 14.54
+   },
+   {
+    "word": "are",
+    "start": 14.54,
+    "end": 14.68
+   },
+   {
+    "word": "both",
+    "start": 14.68,
+    "end": 15.2
+   },
+   {
+    "word": "about",
+    "start": 15.2,
+    "end": 15.76
+   },
+   {
+    "word": "the",
+    "start": 15.76,
+    "end": 16.1
+   },
+   {
+    "word": "very",
+    "start": 16.1,
+    "end": 16.56
+   },
+   {
+    "word": "same",
+    "start": 16.56,
+    "end": 17.1
+   },
+   {
+    "word": "topic.",
+    "start": 17.1,
+    "end": 17.7
+   },
+   {
+    "word": "Penguins!",
+    "start": 18.62,
+    "end": 19.22
+   },
+   {
+    "word": "Let's",
+    "start": 20.24,
+    "end": 20.88
+   },
+   {
+    "word": "read",
+    "start": 20.88,
+    "end": 21.14
+   },
+   {
+    "word": "them",
+    "start": 21.14,
+    "end": 21.44
+   },
+   {
+    "word": "and",
+    "start": 21.44,
+    "end": 21.9
+   },
+   {
+    "word": "compare",
+    "start": 21.9,
+    "end": 22.58
+   },
+   {
+    "word": "their",
+    "start": 22.58,
+    "end": 23.22
+   },
+   {
+    "word": "facts.",
+    "start": 23.22,
+    "end": 24.0
+   }
+  ]
+ },
+ "model-both": {
+  "duration": 21.34,
+  "words": [
+   {
+    "word": "Let's",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "compare.",
+    "start": 0.56,
+    "end": 1.06
+   },
+   {
+    "word": "The",
+    "start": 2.16,
+    "end": 2.24
+   },
+   {
+    "word": "blue",
+    "start": 2.24,
+    "end": 2.6
+   },
+   {
+    "word": "book",
+    "start": 2.6,
+    "end": 2.9
+   },
+   {
+    "word": "said,",
+    "start": 2.9,
+    "end": 3.44
+   },
+   {
+    "word": "Penguins",
+    "start": 3.96,
+    "end": 4.38
+   },
+   {
+    "word": "are",
+    "start": 4.38,
+    "end": 4.68
+   },
+   {
+    "word": "birds.",
+    "start": 4.68,
+    "end": 5.18
+   },
+   {
+    "word": "The",
+    "start": 5.84,
+    "end": 6.34
+   },
+   {
+    "word": "red",
+    "start": 6.34,
+    "end": 6.64
+   },
+   {
+    "word": "book",
+    "start": 6.64,
+    "end": 6.94
+   },
+   {
+    "word": "said,",
+    "start": 6.94,
+    "end": 7.4
+   },
+   {
+    "word": "Penguins",
+    "start": 7.88,
+    "end": 8.34
+   },
+   {
+    "word": "are",
+    "start": 8.34,
+    "end": 8.58
+   },
+   {
+    "word": "birds",
+    "start": 8.58,
+    "end": 9.04
+   },
+   {
+    "word": "too.",
+    "start": 9.04,
+    "end": 9.54
+   },
+   {
+    "word": "And",
+    "start": 10.54,
+    "end": 10.76
+   },
+   {
+    "word": "both",
+    "start": 10.76,
+    "end": 11.22
+   },
+   {
+    "word": "books",
+    "start": 11.22,
+    "end": 11.78
+   },
+   {
+    "word": "said,",
+    "start": 11.78,
+    "end": 12.34
+   },
+   {
+    "word": "Penguins",
+    "start": 12.62,
+    "end": 13.28
+   },
+   {
+    "word": "swim.",
+    "start": 13.28,
+    "end": 13.82
+   },
+   {
+    "word": "When",
+    "start": 14.8,
+    "end": 15.06
+   },
+   {
+    "word": "the",
+    "start": 15.06,
+    "end": 15.24
+   },
+   {
+    "word": "blue",
+    "start": 15.24,
+    "end": 15.6
+   },
+   {
+    "word": "book",
+    "start": 15.6,
+    "end": 16.06
+   },
+   {
+    "word": "and",
+    "start": 16.06,
+    "end": 16.5
+   },
+   {
+    "word": "the",
+    "start": 16.5,
+    "end": 16.78
+   },
+   {
+    "word": "red",
+    "start": 16.78,
+    "end": 17.0
+   },
+   {
+    "word": "book",
+    "start": 17.0,
+    "end": 17.46
+   },
+   {
+    "word": "tell",
+    "start": 17.46,
+    "end": 17.78
+   },
+   {
+    "word": "the",
+    "start": 17.78,
+    "end": 17.96
+   },
+   {
+    "word": "same",
+    "start": 17.96,
+    "end": 18.32
+   },
+   {
+    "word": "fact,",
+    "start": 18.32,
+    "end": 18.82
+   },
+   {
+    "word": "that",
+    "start": 19.18,
+    "end": 19.5
+   },
+   {
+    "word": "fact",
+    "start": 19.5,
+    "end": 20.04
+   },
+   {
+    "word": "is",
+    "start": 20.04,
+    "end": 20.28
+   },
+   {
+    "word": "in",
+    "start": 20.28,
+    "end": 20.46
+   },
+   {
+    "word": "both",
+    "start": 20.46,
+    "end": 20.82
+   },
+   {
+    "word": "books.",
+    "start": 20.82,
+    "end": 21.34
+   }
+  ]
+ },
+ "model-only-one": {
+  "duration": 18.56,
+  "words": [
+   {
+    "word": "But",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "listen",
+    "start": 0.44,
+    "end": 0.86
+   },
+   {
+    "word": "to",
+    "start": 0.86,
+    "end": 1.14
+   },
+   {
+    "word": "this.",
+    "start": 1.14,
+    "end": 1.44
+   },
+   {
+    "word": "Only",
+    "start": 2.24,
+    "end": 2.54
+   },
+   {
+    "word": "the",
+    "start": 2.54,
+    "end": 2.84
+   },
+   {
+    "word": "blue",
+    "start": 2.84,
+    "end": 3.2
+   },
+   {
+    "word": "book",
+    "start": 3.2,
+    "end": 3.56
+   },
+   {
+    "word": "said",
+    "start": 3.56,
+    "end": 4.08
+   },
+   {
+    "word": "Penguins",
+    "start": 4.08,
+    "end": 4.8
+   },
+   {
+    "word": "eat",
+    "start": 4.8,
+    "end": 5.14
+   },
+   {
+    "word": "fish.",
+    "start": 5.14,
+    "end": 5.56
+   },
+   {
+    "word": "The",
+    "start": 6.32,
+    "end": 6.62
+   },
+   {
+    "word": "red",
+    "start": 6.62,
+    "end": 6.86
+   },
+   {
+    "word": "book",
+    "start": 6.86,
+    "end": 7.16
+   },
+   {
+    "word": "did",
+    "start": 7.16,
+    "end": 7.54
+   },
+   {
+    "word": "not",
+    "start": 7.54,
+    "end": 7.88
+   },
+   {
+    "word": "say",
+    "start": 7.88,
+    "end": 8.24
+   },
+   {
+    "word": "that.",
+    "start": 8.24,
+    "end": 8.56
+   },
+   {
+    "word": "And",
+    "start": 9.32,
+    "end": 9.8
+   },
+   {
+    "word": "only",
+    "start": 9.8,
+    "end": 10.42
+   },
+   {
+    "word": "the",
+    "start": 10.42,
+    "end": 10.68
+   },
+   {
+    "word": "red",
+    "start": 10.68,
+    "end": 11.02
+   },
+   {
+    "word": "book",
+    "start": 11.02,
+    "end": 11.5
+   },
+   {
+    "word": "said",
+    "start": 11.5,
+    "end": 12.02
+   },
+   {
+    "word": "Penguins",
+    "start": 12.02,
+    "end": 12.84
+   },
+   {
+    "word": "slide",
+    "start": 12.84,
+    "end": 13.42
+   },
+   {
+    "word": "on",
+    "start": 13.42,
+    "end": 13.94
+   },
+   {
+    "word": "ice.",
+    "start": 13.94,
+    "end": 14.3
+   },
+   {
+    "word": "Some",
+    "start": 15.5,
+    "end": 16.02
+   },
+   {
+    "word": "facts",
+    "start": 16.02,
+    "end": 16.52
+   },
+   {
+    "word": "are",
+    "start": 16.52,
+    "end": 16.76
+   },
+   {
+    "word": "in",
+    "start": 16.76,
+    "end": 16.98
+   },
+   {
+    "word": "just",
+    "start": 16.98,
+    "end": 17.3
+   },
+   {
+    "word": "one",
+    "start": 17.3,
+    "end": 17.94
+   },
+   {
+    "word": "book.",
+    "start": 17.94,
+    "end": 18.56
+   }
+  ]
+ },
+ "read-blue-book-sentence": {
+  "duration": 7.12,
+  "words": [
+   {
+    "word": "Penguins",
+    "start": 0.0,
+    "end": 0.86
+   },
+   {
+    "word": "are",
+    "start": 0.86,
+    "end": 1.22
+   },
+   {
+    "word": "birds.",
+    "start": 1.22,
+    "end": 1.7
+   },
+   {
+    "word": "Penguins",
+    "start": 2.36,
+    "end": 3.52
+   },
+   {
+    "word": "swim.",
+    "start": 3.52,
+    "end": 4.14
+   },
+   {
+    "word": "Penguins",
+    "start": 5.32,
+    "end": 6.3
+   },
+   {
+    "word": "eat",
+    "start": 6.3,
+    "end": 6.72
+   },
+   {
+    "word": "fish.",
+    "start": 6.72,
+    "end": 7.12
+   }
+  ]
+ },
+ "read-blue-book": {
+  "duration": 9.32,
+  "words": [
+   {
+    "word": "First,",
+    "start": 0.0,
+    "end": 0.78
+   },
+   {
+    "word": "the",
+    "start": 1.1,
+    "end": 1.22
+   },
+   {
+    "word": "blue",
+    "start": 1.22,
+    "end": 1.5
+   },
+   {
+    "word": "book.",
+    "start": 1.5,
+    "end": 1.94
+   },
+   {
+    "word": "Every",
+    "start": 2.58,
+    "end": 3.08
+   },
+   {
+    "word": "fact",
+    "start": 3.08,
+    "end": 3.56
+   },
+   {
+    "word": "in",
+    "start": 3.56,
+    "end": 3.9
+   },
+   {
+    "word": "a",
+    "start": 3.9,
+    "end": 4.04
+   },
+   {
+    "word": "fact",
+    "start": 4.04,
+    "end": 4.32
+   },
+   {
+    "word": "book",
+    "start": 4.32,
+    "end": 4.76
+   },
+   {
+    "word": "is",
+    "start": 4.76,
+    "end": 5.12
+   },
+   {
+    "word": "true.",
+    "start": 5.12,
+    "end": 5.64
+   },
+   {
+    "word": "Read",
+    "start": 6.54,
+    "end": 6.84
+   },
+   {
+    "word": "the",
+    "start": 6.84,
+    "end": 7.12
+   },
+   {
+    "word": "blue",
+    "start": 7.12,
+    "end": 7.44
+   },
+   {
+    "word": "book's",
+    "start": 7.44,
+    "end": 7.94
+   },
+   {
+    "word": "facts",
+    "start": 7.94,
+    "end": 8.42
+   },
+   {
+    "word": "with",
+    "start": 8.42,
+    "end": 8.94
+   },
+   {
+    "word": "me.",
+    "start": 8.94,
+    "end": 9.32
+   }
+  ]
+ },
+ "read-red-book-sentence": {
+  "duration": 7.7,
+  "words": [
+   {
+    "word": "Penguins",
+    "start": 0.0,
+    "end": 1.02
+   },
+   {
+    "word": "are",
+    "start": 1.02,
+    "end": 1.38
+   },
+   {
+    "word": "birds.",
+    "start": 1.38,
+    "end": 2.0
+   },
+   {
+    "word": "Penguins",
+    "start": 2.56,
+    "end": 3.8
+   },
+   {
+    "word": "swim.",
+    "start": 3.8,
+    "end": 4.36
+   },
+   {
+    "word": "Penguins",
+    "start": 5.3,
+    "end": 6.2
+   },
+   {
+    "word": "slide",
+    "start": 6.2,
+    "end": 6.82
+   },
+   {
+    "word": "on",
+    "start": 6.82,
+    "end": 7.3
+   },
+   {
+    "word": "ice.",
+    "start": 7.3,
+    "end": 7.7
+   }
+  ]
+ },
+ "read-red-book": {
+  "duration": 11.5,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "the",
+    "start": 0.48,
+    "end": 0.98
+   },
+   {
+    "word": "red",
+    "start": 0.98,
+    "end": 1.28
+   },
+   {
+    "word": "book.",
+    "start": 1.28,
+    "end": 1.68
+   },
+   {
+    "word": "Listen",
+    "start": 2.28,
+    "end": 2.68
+   },
+   {
+    "word": "closely.",
+    "start": 2.68,
+    "end": 3.42
+   },
+   {
+    "word": "Some",
+    "start": 4.06,
+    "end": 4.24
+   },
+   {
+    "word": "facts",
+    "start": 4.24,
+    "end": 4.74
+   },
+   {
+    "word": "might",
+    "start": 4.74,
+    "end": 5.2
+   },
+   {
+    "word": "be",
+    "start": 5.2,
+    "end": 5.46
+   },
+   {
+    "word": "the",
+    "start": 5.46,
+    "end": 5.64
+   },
+   {
+    "word": "same",
+    "start": 5.64,
+    "end": 6.06
+   },
+   {
+    "word": "as",
+    "start": 6.06,
+    "end": 6.48
+   },
+   {
+    "word": "the",
+    "start": 6.48,
+    "end": 6.72
+   },
+   {
+    "word": "blue",
+    "start": 6.72,
+    "end": 6.94
+   },
+   {
+    "word": "book.",
+    "start": 6.94,
+    "end": 7.32
+   },
+   {
+    "word": "Some",
+    "start": 7.92,
+    "end": 8.3
+   },
+   {
+    "word": "fact",
+    "start": 8.3,
+    "end": 8.78
+   },
+   {
+    "word": "might",
+    "start": 8.78,
+    "end": 9.32
+   },
+   {
+    "word": "be",
+    "start": 9.32,
+    "end": 9.56
+   },
+   {
+    "word": "new.",
+    "start": 9.56,
+    "end": 9.9
+   },
+   {
+    "word": "Read",
+    "start": 10.72,
+    "end": 11.02
+   },
+   {
+    "word": "with",
+    "start": 11.02,
+    "end": 11.28
+   },
+   {
+    "word": "me.",
+    "start": 11.28,
+    "end": 11.5
+   }
+  ]
+ }
+}

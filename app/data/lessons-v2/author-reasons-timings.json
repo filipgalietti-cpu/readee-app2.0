@@ -1,0 +1,1997 @@
+{
+ "apply-reason-vs-fact": {
+  "duration": 22.6,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "is",
+    "start": 0.56,
+    "end": 0.9
+   },
+   {
+    "word": "the",
+    "start": 0.9,
+    "end": 1.06
+   },
+   {
+    "word": "tricky",
+    "start": 1.06,
+    "end": 1.4
+   },
+   {
+    "word": "part.",
+    "start": 1.4,
+    "end": 1.92
+   },
+   {
+    "word": "The",
+    "start": 2.5,
+    "end": 2.7
+   },
+   {
+    "word": "author",
+    "start": 2.7,
+    "end": 3.16
+   },
+   {
+    "word": "says,",
+    "start": 3.16,
+    "end": 3.82
+   },
+   {
+    "word": "Bear",
+    "start": 4.34,
+    "end": 4.48
+   },
+   {
+    "word": "Cubs",
+    "start": 4.48,
+    "end": 5.04
+   },
+   {
+    "word": "climb",
+    "start": 5.04,
+    "end": 5.72
+   },
+   {
+    "word": "trees.",
+    "start": 5.72,
+    "end": 6.44
+   },
+   {
+    "word": "One",
+    "start": 7.44,
+    "end": 7.96
+   },
+   {
+    "word": "choice",
+    "start": 7.96,
+    "end": 8.54
+   },
+   {
+    "word": "tells",
+    "start": 8.54,
+    "end": 9.14
+   },
+   {
+    "word": "why",
+    "start": 9.14,
+    "end": 10.0
+   },
+   {
+    "word": "Cubs",
+    "start": 10.0,
+    "end": 10.74
+   },
+   {
+    "word": "climb.",
+    "start": 10.74,
+    "end": 11.12
+   },
+   {
+    "word": "The",
+    "start": 12.1,
+    "end": 12.36
+   },
+   {
+    "word": "other",
+    "start": 12.36,
+    "end": 12.64
+   },
+   {
+    "word": "choice",
+    "start": 12.64,
+    "end": 13.02
+   },
+   {
+    "word": "is",
+    "start": 13.02,
+    "end": 13.52
+   },
+   {
+    "word": "true",
+    "start": 13.52,
+    "end": 14.04
+   },
+   {
+    "word": "about",
+    "start": 14.04,
+    "end": 14.46
+   },
+   {
+    "word": "bears,",
+    "start": 14.46,
+    "end": 14.88
+   },
+   {
+    "word": "but",
+    "start": 15.38,
+    "end": 15.66
+   },
+   {
+    "word": "it",
+    "start": 15.66,
+    "end": 16.12
+   },
+   {
+    "word": "does",
+    "start": 16.12,
+    "end": 16.3
+   },
+   {
+    "word": "not",
+    "start": 16.3,
+    "end": 16.72
+   },
+   {
+    "word": "tell",
+    "start": 16.72,
+    "end": 17.06
+   },
+   {
+    "word": "why.",
+    "start": 17.06,
+    "end": 17.68
+   },
+   {
+    "word": "Think",
+    "start": 18.66,
+    "end": 19.02
+   },
+   {
+    "word": "back",
+    "start": 19.02,
+    "end": 19.34
+   },
+   {
+    "word": "to",
+    "start": 19.34,
+    "end": 19.62
+   },
+   {
+    "word": "page",
+    "start": 19.62,
+    "end": 19.96
+   },
+   {
+    "word": "three.",
+    "start": 19.96,
+    "end": 20.52
+   },
+   {
+    "word": "Tap",
+    "start": 21.22,
+    "end": 21.62
+   },
+   {
+    "word": "the",
+    "start": 21.62,
+    "end": 22.08
+   },
+   {
+    "word": "reason.",
+    "start": 22.08,
+    "end": 22.6
+   }
+  ]
+ },
+ "apply-say-why": {
+  "duration": 16.96,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "found",
+    "start": 0.48,
+    "end": 0.92
+   },
+   {
+    "word": "reasons",
+    "start": 0.92,
+    "end": 1.4
+   },
+   {
+    "word": "with",
+    "start": 1.4,
+    "end": 1.76
+   },
+   {
+    "word": "your",
+    "start": 1.76,
+    "end": 1.98
+   },
+   {
+    "word": "eyes.",
+    "start": 1.98,
+    "end": 2.52
+   },
+   {
+    "word": "Now",
+    "start": 3.2,
+    "end": 3.36
+   },
+   {
+    "word": "say",
+    "start": 3.36,
+    "end": 3.7
+   },
+   {
+    "word": "one",
+    "start": 3.7,
+    "end": 4.06
+   },
+   {
+    "word": "with",
+    "start": 4.06,
+    "end": 4.44
+   },
+   {
+    "word": "your",
+    "start": 4.44,
+    "end": 4.66
+   },
+   {
+    "word": "voice.",
+    "start": 4.66,
+    "end": 5.26
+   },
+   {
+    "word": "The",
+    "start": 6.04,
+    "end": 6.24
+   },
+   {
+    "word": "author",
+    "start": 6.24,
+    "end": 6.74
+   },
+   {
+    "word": "says,",
+    "start": 6.74,
+    "end": 7.32
+   },
+   {
+    "word": "Bear's",
+    "start": 7.66,
+    "end": 8.08
+   },
+   {
+    "word": "sleep",
+    "start": 8.08,
+    "end": 8.42
+   },
+   {
+    "word": "all",
+    "start": 8.42,
+    "end": 8.96
+   },
+   {
+    "word": "winter.",
+    "start": 8.96,
+    "end": 9.44
+   },
+   {
+    "word": "Tell",
+    "start": 10.1,
+    "end": 10.2
+   },
+   {
+    "word": "me",
+    "start": 10.2,
+    "end": 10.4
+   },
+   {
+    "word": "why.",
+    "start": 10.4,
+    "end": 10.78
+   },
+   {
+    "word": "Press",
+    "start": 11.78,
+    "end": 12.02
+   },
+   {
+    "word": "the",
+    "start": 12.02,
+    "end": 12.26
+   },
+   {
+    "word": "mic",
+    "start": 12.26,
+    "end": 12.54
+   },
+   {
+    "word": "and",
+    "start": 12.54,
+    "end": 12.9
+   },
+   {
+    "word": "say",
+    "start": 12.9,
+    "end": 13.2
+   },
+   {
+    "word": "the",
+    "start": 13.2,
+    "end": 13.4
+   },
+   {
+    "word": "reason",
+    "start": 13.4,
+    "end": 13.82
+   },
+   {
+    "word": "out",
+    "start": 13.82,
+    "end": 14.24
+   },
+   {
+    "word": "loud.",
+    "start": 14.24,
+    "end": 14.56
+   },
+   {
+    "word": "You",
+    "start": 15.08,
+    "end": 15.34
+   },
+   {
+    "word": "can",
+    "start": 15.34,
+    "end": 15.52
+   },
+   {
+    "word": "start",
+    "start": 15.52,
+    "end": 15.88
+   },
+   {
+    "word": "with",
+    "start": 15.88,
+    "end": 16.36
+   },
+   {
+    "word": "because.",
+    "start": 16.36,
+    "end": 16.96
+   }
+  ]
+ },
+ "celebrate-reasons": {
+  "duration": 16.98,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "do",
+    "start": 0.46,
+    "end": 0.62
+   },
+   {
+    "word": "did",
+    "start": 0.62,
+    "end": 0.98
+   },
+   {
+    "word": "it.",
+    "start": 0.98,
+    "end": 1.28
+   },
+   {
+    "word": "You",
+    "start": 1.66,
+    "end": 1.92
+   },
+   {
+    "word": "found",
+    "start": 1.92,
+    "end": 2.34
+   },
+   {
+    "word": "the",
+    "start": 2.34,
+    "end": 2.56
+   },
+   {
+    "word": "author's",
+    "start": 2.56,
+    "end": 3.12
+   },
+   {
+    "word": "points",
+    "start": 3.12,
+    "end": 3.38
+   },
+   {
+    "word": "and",
+    "start": 3.38,
+    "end": 4.34
+   },
+   {
+    "word": "you",
+    "start": 4.34,
+    "end": 4.7
+   },
+   {
+    "word": "found",
+    "start": 4.7,
+    "end": 5.06
+   },
+   {
+    "word": "the",
+    "start": 5.06,
+    "end": 5.3
+   },
+   {
+    "word": "reasons",
+    "start": 5.3,
+    "end": 5.82
+   },
+   {
+    "word": "for",
+    "start": 5.82,
+    "end": 6.24
+   },
+   {
+    "word": "them.",
+    "start": 6.24,
+    "end": 6.58
+   },
+   {
+    "word": "Remember,",
+    "start": 7.14,
+    "end": 7.6
+   },
+   {
+    "word": "when",
+    "start": 7.9,
+    "end": 8.1
+   },
+   {
+    "word": "you",
+    "start": 8.1,
+    "end": 8.3
+   },
+   {
+    "word": "hear",
+    "start": 8.3,
+    "end": 8.62
+   },
+   {
+    "word": "the",
+    "start": 8.62,
+    "end": 8.84
+   },
+   {
+    "word": "word",
+    "start": 8.84,
+    "end": 9.1
+   },
+   {
+    "word": "because",
+    "start": 9.1,
+    "end": 9.78
+   },
+   {
+    "word": "a",
+    "start": 9.78,
+    "end": 10.7
+   },
+   {
+    "word": "reason",
+    "start": 10.7,
+    "end": 11.32
+   },
+   {
+    "word": "is",
+    "start": 11.32,
+    "end": 11.7
+   },
+   {
+    "word": "coming.",
+    "start": 11.7,
+    "end": 12.14
+   },
+   {
+    "word": "Keep",
+    "start": 12.9,
+    "end": 13.16
+   },
+   {
+    "word": "listening",
+    "start": 13.16,
+    "end": 13.7
+   },
+   {
+    "word": "for",
+    "start": 13.7,
+    "end": 14.02
+   },
+   {
+    "word": "reasons",
+    "start": 14.02,
+    "end": 14.58
+   },
+   {
+    "word": "in",
+    "start": 14.58,
+    "end": 15.04
+   },
+   {
+    "word": "every",
+    "start": 15.04,
+    "end": 15.68
+   },
+   {
+    "word": "fact",
+    "start": 15.68,
+    "end": 16.0
+   },
+   {
+    "word": "book",
+    "start": 16.0,
+    "end": 16.36
+   },
+   {
+    "word": "you",
+    "start": 16.36,
+    "end": 16.64
+   },
+   {
+    "word": "read.",
+    "start": 16.64,
+    "end": 16.98
+   }
+  ]
+ },
+ "challenge-match-reasons": {
+  "duration": 17.6,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "challenge,",
+    "start": 0.6,
+    "end": 1.32
+   },
+   {
+    "word": "Reason",
+    "start": 1.5,
+    "end": 1.76
+   },
+   {
+    "word": "Finders.",
+    "start": 1.76,
+    "end": 2.36
+   },
+   {
+    "word": "Think",
+    "start": 2.94,
+    "end": 3.08
+   },
+   {
+    "word": "back",
+    "start": 3.08,
+    "end": 3.4
+   },
+   {
+    "word": "to",
+    "start": 3.4,
+    "end": 3.72
+   },
+   {
+    "word": "our",
+    "start": 3.72,
+    "end": 3.88
+   },
+   {
+    "word": "whole",
+    "start": 3.88,
+    "end": 4.3
+   },
+   {
+    "word": "bear",
+    "start": 4.3,
+    "end": 4.66
+   },
+   {
+    "word": "book.",
+    "start": 4.66,
+    "end": 5.0
+   },
+   {
+    "word": "Bears",
+    "start": 5.66,
+    "end": 6.0
+   },
+   {
+    "word": "sleep.",
+    "start": 6.0,
+    "end": 6.56
+   },
+   {
+    "word": "Bears",
+    "start": 7.42,
+    "end": 7.82
+   },
+   {
+    "word": "splash.",
+    "start": 7.82,
+    "end": 8.46
+   },
+   {
+    "word": "Bear",
+    "start": 9.4,
+    "end": 9.78
+   },
+   {
+    "word": "Cubs",
+    "start": 9.78,
+    "end": 10.28
+   },
+   {
+    "word": "climb.",
+    "start": 10.28,
+    "end": 10.86
+   },
+   {
+    "word": "Each",
+    "start": 11.66,
+    "end": 12.0
+   },
+   {
+    "word": "one",
+    "start": 12.0,
+    "end": 12.32
+   },
+   {
+    "word": "has",
+    "start": 12.32,
+    "end": 12.7
+   },
+   {
+    "word": "its",
+    "start": 12.7,
+    "end": 12.94
+   },
+   {
+    "word": "own",
+    "start": 12.94,
+    "end": 13.32
+   },
+   {
+    "word": "reason.",
+    "start": 13.32,
+    "end": 13.82
+   },
+   {
+    "word": "Drag",
+    "start": 14.58,
+    "end": 14.78
+   },
+   {
+    "word": "each",
+    "start": 14.78,
+    "end": 15.26
+   },
+   {
+    "word": "reason",
+    "start": 15.26,
+    "end": 15.7
+   },
+   {
+    "word": "picture",
+    "start": 15.7,
+    "end": 16.06
+   },
+   {
+    "word": "to",
+    "start": 16.06,
+    "end": 16.3
+   },
+   {
+    "word": "the",
+    "start": 16.3,
+    "end": 16.42
+   },
+   {
+    "word": "point",
+    "start": 16.42,
+    "end": 16.74
+   },
+   {
+    "word": "it",
+    "start": 16.74,
+    "end": 17.06
+   },
+   {
+    "word": "goes",
+    "start": 17.06,
+    "end": 17.34
+   },
+   {
+    "word": "with.",
+    "start": 17.34,
+    "end": 17.6
+   }
+  ]
+ },
+ "complete": {
+  "duration": 12.04,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "found",
+    "start": 0.52,
+    "end": 1.22
+   },
+   {
+    "word": "the",
+    "start": 1.22,
+    "end": 1.5
+   },
+   {
+    "word": "author's",
+    "start": 1.5,
+    "end": 2.2
+   },
+   {
+    "word": "reasons",
+    "start": 2.2,
+    "end": 2.7
+   },
+   {
+    "word": "when",
+    "start": 2.7,
+    "end": 3.72
+   },
+   {
+    "word": "a",
+    "start": 3.72,
+    "end": 3.9
+   },
+   {
+    "word": "fact",
+    "start": 3.9,
+    "end": 4.3
+   },
+   {
+    "word": "book",
+    "start": 4.3,
+    "end": 4.66
+   },
+   {
+    "word": "tells",
+    "start": 4.66,
+    "end": 5.18
+   },
+   {
+    "word": "you",
+    "start": 5.18,
+    "end": 5.4
+   },
+   {
+    "word": "something.",
+    "start": 5.4,
+    "end": 5.88
+   },
+   {
+    "word": "Listen",
+    "start": 6.52,
+    "end": 6.8
+   },
+   {
+    "word": "for",
+    "start": 6.8,
+    "end": 7.18
+   },
+   {
+    "word": "the",
+    "start": 7.18,
+    "end": 7.38
+   },
+   {
+    "word": "word",
+    "start": 7.38,
+    "end": 7.72
+   },
+   {
+    "word": "because",
+    "start": 7.72,
+    "end": 8.54
+   },
+   {
+    "word": "the",
+    "start": 8.54,
+    "end": 9.7
+   },
+   {
+    "word": "reason",
+    "start": 9.7,
+    "end": 10.16
+   },
+   {
+    "word": "comes",
+    "start": 10.16,
+    "end": 10.6
+   },
+   {
+    "word": "right",
+    "start": 10.6,
+    "end": 11.04
+   },
+   {
+    "word": "after",
+    "start": 11.04,
+    "end": 11.74
+   },
+   {
+    "word": "it.",
+    "start": 11.74,
+    "end": 12.04
+   }
+  ]
+ },
+ "guided-why-sleep": {
+  "duration": 18.02,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "you",
+    "start": 0.48,
+    "end": 1.0
+   },
+   {
+    "word": "find",
+    "start": 1.0,
+    "end": 1.38
+   },
+   {
+    "word": "a",
+    "start": 1.38,
+    "end": 1.58
+   },
+   {
+    "word": "reason.",
+    "start": 1.58,
+    "end": 1.94
+   },
+   {
+    "word": "Listen",
+    "start": 2.74,
+    "end": 3.02
+   },
+   {
+    "word": "to",
+    "start": 3.02,
+    "end": 3.3
+   },
+   {
+    "word": "page",
+    "start": 3.3,
+    "end": 3.62
+   },
+   {
+    "word": "1",
+    "start": 3.62,
+    "end": 4.06
+   },
+   {
+    "word": "again.",
+    "start": 4.06,
+    "end": 4.76
+   },
+   {
+    "word": "Bears",
+    "start": 5.78,
+    "end": 6.3
+   },
+   {
+    "word": "sleep",
+    "start": 6.3,
+    "end": 6.94
+   },
+   {
+    "word": "all",
+    "start": 6.94,
+    "end": 7.58
+   },
+   {
+    "word": "winter",
+    "start": 7.58,
+    "end": 8.12
+   },
+   {
+    "word": "because",
+    "start": 8.12,
+    "end": 9.02
+   },
+   {
+    "word": "it",
+    "start": 9.02,
+    "end": 9.54
+   },
+   {
+    "word": "is",
+    "start": 9.54,
+    "end": 9.74
+   },
+   {
+    "word": "cold.",
+    "start": 9.74,
+    "end": 10.14
+   },
+   {
+    "word": "So",
+    "start": 11.18,
+    "end": 11.62
+   },
+   {
+    "word": "why",
+    "start": 11.62,
+    "end": 12.42
+   },
+   {
+    "word": "do",
+    "start": 12.42,
+    "end": 12.7
+   },
+   {
+    "word": "bears",
+    "start": 12.7,
+    "end": 13.02
+   },
+   {
+    "word": "sleep",
+    "start": 13.02,
+    "end": 13.42
+   },
+   {
+    "word": "all",
+    "start": 13.42,
+    "end": 13.76
+   },
+   {
+    "word": "winter?",
+    "start": 13.76,
+    "end": 14.16
+   },
+   {
+    "word": "Tap",
+    "start": 15.34,
+    "end": 15.58
+   },
+   {
+    "word": "the",
+    "start": 15.58,
+    "end": 15.9
+   },
+   {
+    "word": "picture",
+    "start": 15.9,
+    "end": 16.32
+   },
+   {
+    "word": "that",
+    "start": 16.32,
+    "end": 16.74
+   },
+   {
+    "word": "shows",
+    "start": 16.74,
+    "end": 17.22
+   },
+   {
+    "word": "the",
+    "start": 17.22,
+    "end": 17.56
+   },
+   {
+    "word": "reason.",
+    "start": 17.56,
+    "end": 18.02
+   }
+  ]
+ },
+ "guided-why-splash": {
+  "duration": 15.5,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.64
+   },
+   {
+    "word": "reason",
+    "start": 0.64,
+    "end": 1.26
+   },
+   {
+    "word": "finding.",
+    "start": 1.26,
+    "end": 1.8
+   },
+   {
+    "word": "Listen",
+    "start": 2.9,
+    "end": 3.16
+   },
+   {
+    "word": "to",
+    "start": 3.16,
+    "end": 3.42
+   },
+   {
+    "word": "page",
+    "start": 3.42,
+    "end": 3.68
+   },
+   {
+    "word": "2",
+    "start": 3.68,
+    "end": 4.02
+   },
+   {
+    "word": "again.",
+    "start": 4.02,
+    "end": 4.48
+   },
+   {
+    "word": "Bears",
+    "start": 5.46,
+    "end": 5.86
+   },
+   {
+    "word": "splash",
+    "start": 5.86,
+    "end": 6.42
+   },
+   {
+    "word": "in",
+    "start": 6.42,
+    "end": 6.82
+   },
+   {
+    "word": "the",
+    "start": 6.82,
+    "end": 6.98
+   },
+   {
+    "word": "river",
+    "start": 6.98,
+    "end": 7.36
+   },
+   {
+    "word": "because",
+    "start": 7.36,
+    "end": 8.14
+   },
+   {
+    "word": "they",
+    "start": 8.14,
+    "end": 8.66
+   },
+   {
+    "word": "want",
+    "start": 8.66,
+    "end": 8.96
+   },
+   {
+    "word": "fish.",
+    "start": 8.96,
+    "end": 9.56
+   },
+   {
+    "word": "So",
+    "start": 10.68,
+    "end": 11.08
+   },
+   {
+    "word": "why",
+    "start": 11.08,
+    "end": 11.88
+   },
+   {
+    "word": "do",
+    "start": 11.88,
+    "end": 12.16
+   },
+   {
+    "word": "bears",
+    "start": 12.16,
+    "end": 12.52
+   },
+   {
+    "word": "splash",
+    "start": 12.52,
+    "end": 13.04
+   },
+   {
+    "word": "in",
+    "start": 13.04,
+    "end": 13.3
+   },
+   {
+    "word": "the",
+    "start": 13.3,
+    "end": 13.4
+   },
+   {
+    "word": "river?",
+    "start": 13.4,
+    "end": 13.68
+   },
+   {
+    "word": "Tap",
+    "start": 14.62,
+    "end": 14.88
+   },
+   {
+    "word": "the",
+    "start": 14.88,
+    "end": 15.12
+   },
+   {
+    "word": "reason.",
+    "start": 15.12,
+    "end": 15.5
+   }
+  ]
+ },
+ "hook-bear-book": {
+  "duration": 14.96,
+  "words": [
+   {
+    "word": "Hello",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "Factfinders!",
+    "start": 0.52,
+    "end": 1.6
+   },
+   {
+    "word": "Today",
+    "start": 1.98,
+    "end": 2.22
+   },
+   {
+    "word": "we",
+    "start": 2.22,
+    "end": 2.66
+   },
+   {
+    "word": "will",
+    "start": 2.66,
+    "end": 2.82
+   },
+   {
+    "word": "read",
+    "start": 2.82,
+    "end": 3.1
+   },
+   {
+    "word": "a",
+    "start": 3.1,
+    "end": 3.38
+   },
+   {
+    "word": "Factbook",
+    "start": 3.38,
+    "end": 4.06
+   },
+   {
+    "word": "about",
+    "start": 4.06,
+    "end": 4.58
+   },
+   {
+    "word": "real",
+    "start": 4.58,
+    "end": 5.24
+   },
+   {
+    "word": "bears.",
+    "start": 5.24,
+    "end": 5.88
+   },
+   {
+    "word": "Authors",
+    "start": 6.92,
+    "end": 7.46
+   },
+   {
+    "word": "of",
+    "start": 7.46,
+    "end": 7.58
+   },
+   {
+    "word": "Factbooks",
+    "start": 7.58,
+    "end": 8.14
+   },
+   {
+    "word": "do",
+    "start": 8.14,
+    "end": 8.54
+   },
+   {
+    "word": "two",
+    "start": 8.54,
+    "end": 9.0
+   },
+   {
+    "word": "jobs.",
+    "start": 9.0,
+    "end": 9.5
+   },
+   {
+    "word": "They",
+    "start": 10.04,
+    "end": 10.2
+   },
+   {
+    "word": "tell",
+    "start": 10.2,
+    "end": 10.48
+   },
+   {
+    "word": "us",
+    "start": 10.48,
+    "end": 10.64
+   },
+   {
+    "word": "something",
+    "start": 10.64,
+    "end": 11.04
+   },
+   {
+    "word": "and",
+    "start": 11.04,
+    "end": 11.62
+   },
+   {
+    "word": "they",
+    "start": 11.62,
+    "end": 11.78
+   },
+   {
+    "word": "tell",
+    "start": 11.78,
+    "end": 12.04
+   },
+   {
+    "word": "us",
+    "start": 12.04,
+    "end": 12.28
+   },
+   {
+    "word": "why",
+    "start": 12.28,
+    "end": 12.7
+   },
+   {
+    "word": "it",
+    "start": 12.7,
+    "end": 13.02
+   },
+   {
+    "word": "is",
+    "start": 13.02,
+    "end": 13.16
+   },
+   {
+    "word": "true.",
+    "start": 13.16,
+    "end": 13.44
+   },
+   {
+    "word": "Let's",
+    "start": 14.04,
+    "end": 14.38
+   },
+   {
+    "word": "find",
+    "start": 14.38,
+    "end": 14.52
+   },
+   {
+    "word": "out",
+    "start": 14.52,
+    "end": 14.72
+   },
+   {
+    "word": "how.",
+    "start": 14.72,
+    "end": 14.96
+   }
+  ]
+ },
+ "model-because": {
+  "duration": 28.48,
+  "words": [
+   {
+    "word": "Watch",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "me",
+    "start": 0.44,
+    "end": 0.8
+   },
+   {
+    "word": "find",
+    "start": 0.8,
+    "end": 1.26
+   },
+   {
+    "word": "a",
+    "start": 1.26,
+    "end": 1.5
+   },
+   {
+    "word": "reason.",
+    "start": 1.5,
+    "end": 1.92
+   },
+   {
+    "word": "The",
+    "start": 2.84,
+    "end": 2.98
+   },
+   {
+    "word": "author",
+    "start": 2.98,
+    "end": 3.44
+   },
+   {
+    "word": "says,",
+    "start": 3.44,
+    "end": 4.1
+   },
+   {
+    "word": "bear",
+    "start": 4.56,
+    "end": 4.94
+   },
+   {
+    "word": "sleep",
+    "start": 4.94,
+    "end": 5.54
+   },
+   {
+    "word": "all",
+    "start": 5.54,
+    "end": 6.32
+   },
+   {
+    "word": "winter.",
+    "start": 6.32,
+    "end": 7.02
+   },
+   {
+    "word": "That",
+    "start": 8.08,
+    "end": 8.54
+   },
+   {
+    "word": "is",
+    "start": 8.54,
+    "end": 8.9
+   },
+   {
+    "word": "the",
+    "start": 8.9,
+    "end": 9.06
+   },
+   {
+    "word": "author's",
+    "start": 9.06,
+    "end": 9.62
+   },
+   {
+    "word": "point.",
+    "start": 9.62,
+    "end": 9.94
+   },
+   {
+    "word": "Then",
+    "start": 10.84,
+    "end": 11.12
+   },
+   {
+    "word": "the",
+    "start": 11.12,
+    "end": 11.42
+   },
+   {
+    "word": "author",
+    "start": 11.42,
+    "end": 11.84
+   },
+   {
+    "word": "tells",
+    "start": 11.84,
+    "end": 12.3
+   },
+   {
+    "word": "why.",
+    "start": 12.3,
+    "end": 13.1
+   },
+   {
+    "word": "Because",
+    "start": 13.98,
+    "end": 14.54
+   },
+   {
+    "word": "it",
+    "start": 14.54,
+    "end": 15.18
+   },
+   {
+    "word": "is",
+    "start": 15.18,
+    "end": 15.38
+   },
+   {
+    "word": "cold",
+    "start": 15.38,
+    "end": 15.86
+   },
+   {
+    "word": "and",
+    "start": 15.86,
+    "end": 16.7
+   },
+   {
+    "word": "food",
+    "start": 16.7,
+    "end": 17.24
+   },
+   {
+    "word": "is",
+    "start": 17.24,
+    "end": 17.7
+   },
+   {
+    "word": "hard",
+    "start": 17.7,
+    "end": 18.0
+   },
+   {
+    "word": "to",
+    "start": 18.0,
+    "end": 18.26
+   },
+   {
+    "word": "find.",
+    "start": 18.26,
+    "end": 18.7
+   },
+   {
+    "word": "Do",
+    "start": 19.64,
+    "end": 19.94
+   },
+   {
+    "word": "you",
+    "start": 19.94,
+    "end": 20.16
+   },
+   {
+    "word": "see",
+    "start": 20.16,
+    "end": 20.46
+   },
+   {
+    "word": "the",
+    "start": 20.46,
+    "end": 20.64
+   },
+   {
+    "word": "word",
+    "start": 20.64,
+    "end": 20.96
+   },
+   {
+    "word": "because",
+    "start": 20.96,
+    "end": 21.76
+   },
+   {
+    "word": "glowing?",
+    "start": 21.76,
+    "end": 22.98
+   },
+   {
+    "word": "The",
+    "start": 22.98,
+    "end": 24.2
+   },
+   {
+    "word": "word",
+    "start": 24.2,
+    "end": 24.5
+   },
+   {
+    "word": "because",
+    "start": 24.5,
+    "end": 25.44
+   },
+   {
+    "word": "tells",
+    "start": 25.44,
+    "end": 26.38
+   },
+   {
+    "word": "us",
+    "start": 26.38,
+    "end": 26.72
+   },
+   {
+    "word": "a",
+    "start": 26.72,
+    "end": 27.1
+   },
+   {
+    "word": "reason",
+    "start": 27.1,
+    "end": 27.66
+   },
+   {
+    "word": "is",
+    "start": 27.66,
+    "end": 28.1
+   },
+   {
+    "word": "coming.",
+    "start": 28.1,
+    "end": 28.48
+   }
+  ]
+ },
+ "read-page-1-sentence": {
+  "duration": 4.38,
+  "words": [
+   {
+    "word": "Bear",
+    "start": 0.0,
+    "end": 0.64
+   },
+   {
+    "word": "sleep",
+    "start": 0.64,
+    "end": 1.16
+   },
+   {
+    "word": "all",
+    "start": 1.16,
+    "end": 1.9
+   },
+   {
+    "word": "winter",
+    "start": 1.9,
+    "end": 2.62
+   },
+   {
+    "word": "because",
+    "start": 2.62,
+    "end": 3.44
+   },
+   {
+    "word": "it",
+    "start": 3.44,
+    "end": 3.72
+   },
+   {
+    "word": "is",
+    "start": 3.72,
+    "end": 3.9
+   },
+   {
+    "word": "cold.",
+    "start": 3.9,
+    "end": 4.38
+   }
+  ]
+ },
+ "read-page-1": {
+  "duration": 9.3,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "is",
+    "start": 0.46,
+    "end": 0.78
+   },
+   {
+    "word": "page",
+    "start": 0.78,
+    "end": 1.1
+   },
+   {
+    "word": "one",
+    "start": 1.1,
+    "end": 1.6
+   },
+   {
+    "word": "of",
+    "start": 1.6,
+    "end": 2.0
+   },
+   {
+    "word": "our",
+    "start": 2.0,
+    "end": 2.16
+   },
+   {
+    "word": "bear",
+    "start": 2.16,
+    "end": 2.4
+   },
+   {
+    "word": "book.",
+    "start": 2.4,
+    "end": 2.9
+   },
+   {
+    "word": "Watch",
+    "start": 3.48,
+    "end": 3.94
+   },
+   {
+    "word": "the",
+    "start": 3.94,
+    "end": 4.18
+   },
+   {
+    "word": "words",
+    "start": 4.18,
+    "end": 4.6
+   },
+   {
+    "word": "light",
+    "start": 4.6,
+    "end": 5.08
+   },
+   {
+    "word": "up",
+    "start": 5.08,
+    "end": 5.42
+   },
+   {
+    "word": "while",
+    "start": 5.42,
+    "end": 5.74
+   },
+   {
+    "word": "I",
+    "start": 5.74,
+    "end": 5.96
+   },
+   {
+    "word": "read.",
+    "start": 5.96,
+    "end": 6.4
+   },
+   {
+    "word": "Listen",
+    "start": 7.08,
+    "end": 7.56
+   },
+   {
+    "word": "for",
+    "start": 7.56,
+    "end": 8.06
+   },
+   {
+    "word": "the",
+    "start": 8.06,
+    "end": 8.2
+   },
+   {
+    "word": "word",
+    "start": 8.2,
+    "end": 8.56
+   },
+   {
+    "word": "because.",
+    "start": 8.56,
+    "end": 9.3
+   }
+  ]
+ },
+ "read-page-2-sentence": {
+  "duration": 4.66,
+  "words": [
+   {
+    "word": "Bears",
+    "start": 0.0,
+    "end": 0.84
+   },
+   {
+    "word": "splash",
+    "start": 0.84,
+    "end": 1.56
+   },
+   {
+    "word": "in",
+    "start": 1.56,
+    "end": 2.04
+   },
+   {
+    "word": "the",
+    "start": 2.04,
+    "end": 2.24
+   },
+   {
+    "word": "river",
+    "start": 2.24,
+    "end": 2.68
+   },
+   {
+    "word": "because",
+    "start": 2.68,
+    "end": 3.4
+   },
+   {
+    "word": "they",
+    "start": 3.4,
+    "end": 3.82
+   },
+   {
+    "word": "want",
+    "start": 3.82,
+    "end": 4.16
+   },
+   {
+    "word": "fish.",
+    "start": 4.16,
+    "end": 4.66
+   }
+  ]
+ },
+ "read-page-2": {
+  "duration": 10.16,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "is",
+    "start": 0.46,
+    "end": 0.78
+   },
+   {
+    "word": "page",
+    "start": 0.78,
+    "end": 1.0
+   },
+   {
+    "word": "2.",
+    "start": 1.0,
+    "end": 1.54
+   },
+   {
+    "word": "The",
+    "start": 2.24,
+    "end": 2.44
+   },
+   {
+    "word": "author",
+    "start": 2.44,
+    "end": 2.8
+   },
+   {
+    "word": "tells",
+    "start": 2.8,
+    "end": 3.2
+   },
+   {
+    "word": "us",
+    "start": 3.2,
+    "end": 3.38
+   },
+   {
+    "word": "another",
+    "start": 3.38,
+    "end": 3.86
+   },
+   {
+    "word": "point",
+    "start": 3.86,
+    "end": 4.5
+   },
+   {
+    "word": "and",
+    "start": 4.5,
+    "end": 5.48
+   },
+   {
+    "word": "another",
+    "start": 5.48,
+    "end": 5.92
+   },
+   {
+    "word": "reason.",
+    "start": 5.92,
+    "end": 6.5
+   },
+   {
+    "word": "Ears",
+    "start": 7.44,
+    "end": 7.84
+   },
+   {
+    "word": "open",
+    "start": 7.84,
+    "end": 8.28
+   },
+   {
+    "word": "for",
+    "start": 8.28,
+    "end": 8.72
+   },
+   {
+    "word": "because...",
+    "start": 8.72,
+    "end": 10.16
+   }
+  ]
+ },
+ "read-page-3-sentence": {
+  "duration": 5.1,
+  "words": [
+   {
+    "word": "Bearcubs",
+    "start": 0.0,
+    "end": 1.1
+   },
+   {
+    "word": "climb",
+    "start": 1.1,
+    "end": 1.64
+   },
+   {
+    "word": "trees",
+    "start": 1.64,
+    "end": 2.26
+   },
+   {
+    "word": "because",
+    "start": 2.26,
+    "end": 3.06
+   },
+   {
+    "word": "they",
+    "start": 3.06,
+    "end": 3.38
+   },
+   {
+    "word": "must",
+    "start": 3.38,
+    "end": 3.7
+   },
+   {
+    "word": "stay",
+    "start": 3.7,
+    "end": 4.34
+   },
+   {
+    "word": "safe.",
+    "start": 4.34,
+    "end": 5.1
+   }
+  ]
+ },
+ "read-page-3": {
+  "duration": 6.14,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "more",
+    "start": 0.54,
+    "end": 0.82
+   },
+   {
+    "word": "page.",
+    "start": 0.82,
+    "end": 1.48
+   },
+   {
+    "word": "Listen",
+    "start": 1.92,
+    "end": 2.3
+   },
+   {
+    "word": "closely.",
+    "start": 2.3,
+    "end": 2.96
+   },
+   {
+    "word": "What",
+    "start": 3.58,
+    "end": 3.88
+   },
+   {
+    "word": "comes",
+    "start": 3.88,
+    "end": 4.26
+   },
+   {
+    "word": "after",
+    "start": 4.26,
+    "end": 4.64
+   },
+   {
+    "word": "because",
+    "start": 4.64,
+    "end": 5.06
+   },
+   {
+    "word": "this",
+    "start": 5.06,
+    "end": 5.7
+   },
+   {
+    "word": "time?",
+    "start": 5.7,
+    "end": 6.14
+   }
+  ]
+ }
+}

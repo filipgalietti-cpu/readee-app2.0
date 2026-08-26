@@ -41,6 +41,8 @@ export interface LessonShellDesktopProps {
   contentSlot: ReactNode;
   /** Drives the pulse ring around the speaker icon in the bottom bar. */
   audioPlaying?: boolean;
+  /** Widen the content column (wide activities: sorting, sequencing). */
+  wide?: boolean;
 }
 
 export function LessonShellDesktop({
@@ -56,6 +58,7 @@ export function LessonShellDesktop({
   leftSlot,
   contentSlot,
   audioPlaying = false,
+  wide = false,
 }: LessonShellDesktopProps) {
   // Show the split (and the divider) whenever EITHER a left slot is
   // explicitly provided or an image URL exists. Falls back to a
@@ -126,15 +129,17 @@ export function LessonShellDesktop({
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="w-full max-w-[680px] flex"
+            className={`w-full ${wide ? "max-w-[1100px]" : "max-w-[680px]"} flex`}
           >
             {contentSlot}
           </motion.div>
         </div>
       </main>
 
-      {/* ── Bottom bar — audio pulse + big Next CTA ── */}
-      <footer className="flex h-20 flex-shrink-0 items-center gap-5 border-t border-dashed border-zinc-200 bg-white/90 px-12">
+      {/* ── Bottom bar — audio pulse + big Next CTA ──
+          NB: a plain <div>, not <footer>, so generic "hide the site footer"
+          chrome (e.g. the /demo layout) can't hide the lesson's Next button. */}
+      <div className="flex h-20 flex-shrink-0 items-center gap-5 border-t border-dashed border-zinc-200 bg-white/90 px-12">
         <AudioPulse playing={audioPlaying} />
         <div className="flex-1" />
         <button
@@ -144,7 +149,7 @@ export function LessonShellDesktop({
         >
           {nextLabel}
         </button>
-      </footer>
+      </div>
     </div>
   );
 }

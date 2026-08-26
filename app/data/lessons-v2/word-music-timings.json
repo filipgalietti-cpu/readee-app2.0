@@ -1,0 +1,3317 @@
+{
+ "celebrate-word-music": {
+  "duration": 36.68,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "read",
+    "start": 0.5,
+    "end": 0.88
+   },
+   {
+    "word": "a",
+    "start": 0.88,
+    "end": 1.3
+   },
+   {
+    "word": "whole",
+    "start": 1.3,
+    "end": 1.76
+   },
+   {
+    "word": "poem",
+    "start": 1.76,
+    "end": 2.38
+   },
+   {
+    "word": "and",
+    "start": 2.38,
+    "end": 2.98
+   },
+   {
+    "word": "found",
+    "start": 2.98,
+    "end": 3.5
+   },
+   {
+    "word": "its",
+    "start": 3.5,
+    "end": 3.92
+   },
+   {
+    "word": "word",
+    "start": 3.92,
+    "end": 4.32
+   },
+   {
+    "word": "music.",
+    "start": 4.32,
+    "end": 5.06
+   },
+   {
+    "word": "You",
+    "start": 5.6,
+    "end": 5.9
+   },
+   {
+    "word": "heard",
+    "start": 5.9,
+    "end": 6.3
+   },
+   {
+    "word": "rhyme's",
+    "start": 6.3,
+    "end": 7.06
+   },
+   {
+    "word": "chime,",
+    "start": 7.06,
+    "end": 7.4
+   },
+   {
+    "word": "sky",
+    "start": 8.04,
+    "end": 8.44
+   },
+   {
+    "word": "with",
+    "start": 8.44,
+    "end": 9.02
+   },
+   {
+    "word": "buy,",
+    "start": 9.02,
+    "end": 9.42
+   },
+   {
+    "word": "and",
+    "start": 10.04,
+    "end": 10.44
+   },
+   {
+    "word": "play",
+    "start": 10.44,
+    "end": 10.84
+   },
+   {
+    "word": "with",
+    "start": 10.84,
+    "end": 11.42
+   },
+   {
+    "word": "day.",
+    "start": 11.42,
+    "end": 11.7
+   },
+   {
+    "word": "You",
+    "start": 12.7,
+    "end": 13.06
+   },
+   {
+    "word": "felt",
+    "start": 13.06,
+    "end": 13.42
+   },
+   {
+    "word": "the",
+    "start": 13.42,
+    "end": 13.66
+   },
+   {
+    "word": "refrain",
+    "start": 13.66,
+    "end": 14.24
+   },
+   {
+    "word": "march",
+    "start": 14.24,
+    "end": 15.1
+   },
+   {
+    "word": "back",
+    "start": 15.1,
+    "end": 15.56
+   },
+   {
+    "word": "to",
+    "start": 15.56,
+    "end": 16.06
+   },
+   {
+    "word": "keep",
+    "start": 16.06,
+    "end": 16.36
+   },
+   {
+    "word": "a",
+    "start": 16.36,
+    "end": 16.64
+   },
+   {
+    "word": "steady",
+    "start": 16.64,
+    "end": 17.1
+   },
+   {
+    "word": "beat.",
+    "start": 17.1,
+    "end": 17.52
+   },
+   {
+    "word": "And",
+    "start": 18.44,
+    "end": 18.74
+   },
+   {
+    "word": "you",
+    "start": 18.74,
+    "end": 19.02
+   },
+   {
+    "word": "saw",
+    "start": 19.02,
+    "end": 19.38
+   },
+   {
+    "word": "one",
+    "start": 19.38,
+    "end": 20.12
+   },
+   {
+    "word": "vivid",
+    "start": 20.12,
+    "end": 20.84
+   },
+   {
+    "word": "word",
+    "start": 20.84,
+    "end": 21.42
+   },
+   {
+    "word": "marching,",
+    "start": 21.42,
+    "end": 22.58
+   },
+   {
+    "word": "turn",
+    "start": 23.16,
+    "end": 23.58
+   },
+   {
+    "word": "plain",
+    "start": 23.58,
+    "end": 24.04
+   },
+   {
+    "word": "rain",
+    "start": 24.04,
+    "end": 24.5
+   },
+   {
+    "word": "into",
+    "start": 24.5,
+    "end": 25.28
+   },
+   {
+    "word": "a",
+    "start": 25.28,
+    "end": 25.56
+   },
+   {
+    "word": "parade.",
+    "start": 25.56,
+    "end": 26.0
+   },
+   {
+    "word": "Poets",
+    "start": 26.88,
+    "end": 27.72
+   },
+   {
+    "word": "choose",
+    "start": 27.72,
+    "end": 28.2
+   },
+   {
+    "word": "words",
+    "start": 28.2,
+    "end": 28.78
+   },
+   {
+    "word": "for",
+    "start": 28.78,
+    "end": 29.18
+   },
+   {
+    "word": "their",
+    "start": 29.18,
+    "end": 29.38
+   },
+   {
+    "word": "sound",
+    "start": 29.38,
+    "end": 29.96
+   },
+   {
+    "word": "and",
+    "start": 29.96,
+    "end": 30.76
+   },
+   {
+    "word": "their",
+    "start": 30.76,
+    "end": 31.1
+   },
+   {
+    "word": "meaning.",
+    "start": 31.1,
+    "end": 31.62
+   },
+   {
+    "word": "Now",
+    "start": 32.5,
+    "end": 32.86
+   },
+   {
+    "word": "you",
+    "start": 32.86,
+    "end": 33.4
+   },
+   {
+    "word": "can",
+    "start": 33.4,
+    "end": 33.82
+   },
+   {
+    "word": "hear",
+    "start": 33.82,
+    "end": 34.02
+   },
+   {
+    "word": "the",
+    "start": 34.02,
+    "end": 34.22
+   },
+   {
+    "word": "music",
+    "start": 34.22,
+    "end": 34.64
+   },
+   {
+    "word": "in",
+    "start": 34.64,
+    "end": 35.06
+   },
+   {
+    "word": "any",
+    "start": 35.06,
+    "end": 35.58
+   },
+   {
+    "word": "poem",
+    "start": 35.58,
+    "end": 35.98
+   },
+   {
+    "word": "you",
+    "start": 35.98,
+    "end": 36.28
+   },
+   {
+    "word": "read.",
+    "start": 36.28,
+    "end": 36.68
+   }
+  ]
+ },
+ "check-ending-change": {
+  "duration": 18.62,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "read",
+    "start": 0.56,
+    "end": 1.1
+   },
+   {
+    "word": "it",
+    "start": 1.1,
+    "end": 1.32
+   },
+   {
+    "word": "just",
+    "start": 1.32,
+    "end": 1.66
+   },
+   {
+    "word": "right.",
+    "start": 1.66,
+    "end": 2.1
+   },
+   {
+    "word": "The",
+    "start": 2.72,
+    "end": 2.92
+   },
+   {
+    "word": "last",
+    "start": 2.92,
+    "end": 3.26
+   },
+   {
+    "word": "two",
+    "start": 3.26,
+    "end": 3.6
+   },
+   {
+    "word": "lines",
+    "start": 3.6,
+    "end": 3.88
+   },
+   {
+    "word": "sound",
+    "start": 3.88,
+    "end": 4.34
+   },
+   {
+    "word": "almost",
+    "start": 4.34,
+    "end": 5.1
+   },
+   {
+    "word": "like",
+    "start": 5.1,
+    "end": 5.52
+   },
+   {
+    "word": "the",
+    "start": 5.52,
+    "end": 5.74
+   },
+   {
+    "word": "refrain,",
+    "start": 5.74,
+    "end": 6.14
+   },
+   {
+    "word": "but",
+    "start": 6.56,
+    "end": 6.82
+   },
+   {
+    "word": "the",
+    "start": 6.82,
+    "end": 7.0
+   },
+   {
+    "word": "poet",
+    "start": 7.0,
+    "end": 7.32
+   },
+   {
+    "word": "swapped",
+    "start": 7.32,
+    "end": 7.86
+   },
+   {
+    "word": "in",
+    "start": 7.86,
+    "end": 8.32
+   },
+   {
+    "word": "a",
+    "start": 8.32,
+    "end": 8.54
+   },
+   {
+    "word": "few",
+    "start": 8.54,
+    "end": 8.82
+   },
+   {
+    "word": "new",
+    "start": 8.82,
+    "end": 9.18
+   },
+   {
+    "word": "words.",
+    "start": 9.18,
+    "end": 9.58
+   },
+   {
+    "word": "Small",
+    "start": 10.26,
+    "end": 10.72
+   },
+   {
+    "word": "word",
+    "start": 10.72,
+    "end": 11.08
+   },
+   {
+    "word": "changes",
+    "start": 11.08,
+    "end": 11.54
+   },
+   {
+    "word": "can",
+    "start": 11.54,
+    "end": 11.92
+   },
+   {
+    "word": "change",
+    "start": 11.92,
+    "end": 12.32
+   },
+   {
+    "word": "the",
+    "start": 12.32,
+    "end": 12.62
+   },
+   {
+    "word": "whole",
+    "start": 12.62,
+    "end": 12.94
+   },
+   {
+    "word": "meaning.",
+    "start": 12.94,
+    "end": 13.58
+   },
+   {
+    "word": "What",
+    "start": 14.36,
+    "end": 14.6
+   },
+   {
+    "word": "do",
+    "start": 14.6,
+    "end": 14.8
+   },
+   {
+    "word": "the",
+    "start": 14.8,
+    "end": 14.96
+   },
+   {
+    "word": "new",
+    "start": 14.96,
+    "end": 15.28
+   },
+   {
+    "word": "words",
+    "start": 15.28,
+    "end": 15.64
+   },
+   {
+    "word": "tell",
+    "start": 15.64,
+    "end": 16.0
+   },
+   {
+    "word": "you?",
+    "start": 16.0,
+    "end": 16.38
+   },
+   {
+    "word": "Tap",
+    "start": 17.46,
+    "end": 18.2
+   },
+   {
+    "word": "it.",
+    "start": 18.2,
+    "end": 18.62
+   }
+  ]
+ },
+ "check-refrain-job": {
+  "duration": 17.06,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "think",
+    "start": 0.82,
+    "end": 0.96
+   },
+   {
+    "word": "like",
+    "start": 0.96,
+    "end": 1.26
+   },
+   {
+    "word": "a",
+    "start": 1.26,
+    "end": 1.46
+   },
+   {
+    "word": "poet.",
+    "start": 1.46,
+    "end": 1.88
+   },
+   {
+    "word": "The",
+    "start": 2.42,
+    "end": 2.72
+   },
+   {
+    "word": "poet",
+    "start": 2.72,
+    "end": 3.1
+   },
+   {
+    "word": "chose",
+    "start": 3.1,
+    "end": 3.52
+   },
+   {
+    "word": "to",
+    "start": 3.52,
+    "end": 3.8
+   },
+   {
+    "word": "bring",
+    "start": 3.8,
+    "end": 4.06
+   },
+   {
+    "word": "that",
+    "start": 4.06,
+    "end": 4.34
+   },
+   {
+    "word": "refrain",
+    "start": 4.34,
+    "end": 4.78
+   },
+   {
+    "word": "back",
+    "start": 4.78,
+    "end": 5.34
+   },
+   {
+    "word": "again",
+    "start": 5.34,
+    "end": 6.0
+   },
+   {
+    "word": "and",
+    "start": 6.0,
+    "end": 6.56
+   },
+   {
+    "word": "again.",
+    "start": 6.56,
+    "end": 6.96
+   },
+   {
+    "word": "Repeating",
+    "start": 7.64,
+    "end": 8.16
+   },
+   {
+    "word": "is",
+    "start": 8.16,
+    "end": 8.44
+   },
+   {
+    "word": "not",
+    "start": 8.44,
+    "end": 8.76
+   },
+   {
+    "word": "an",
+    "start": 8.76,
+    "end": 8.94
+   },
+   {
+    "word": "accident.",
+    "start": 8.94,
+    "end": 9.42
+   },
+   {
+    "word": "It",
+    "start": 10.0,
+    "end": 10.1
+   },
+   {
+    "word": "does",
+    "start": 10.1,
+    "end": 10.36
+   },
+   {
+    "word": "a",
+    "start": 10.36,
+    "end": 10.6
+   },
+   {
+    "word": "job",
+    "start": 10.6,
+    "end": 10.98
+   },
+   {
+    "word": "for",
+    "start": 10.98,
+    "end": 11.3
+   },
+   {
+    "word": "the",
+    "start": 11.3,
+    "end": 11.44
+   },
+   {
+    "word": "poem.",
+    "start": 11.44,
+    "end": 11.74
+   },
+   {
+    "word": "Read",
+    "start": 12.58,
+    "end": 12.86
+   },
+   {
+    "word": "each",
+    "start": 12.86,
+    "end": 13.26
+   },
+   {
+    "word": "choice,",
+    "start": 13.26,
+    "end": 13.74
+   },
+   {
+    "word": "then",
+    "start": 14.12,
+    "end": 14.38
+   },
+   {
+    "word": "tap",
+    "start": 14.38,
+    "end": 14.76
+   },
+   {
+    "word": "what",
+    "start": 14.76,
+    "end": 15.12
+   },
+   {
+    "word": "the",
+    "start": 15.12,
+    "end": 15.36
+   },
+   {
+    "word": "refrain",
+    "start": 15.36,
+    "end": 15.82
+   },
+   {
+    "word": "gives",
+    "start": 15.82,
+    "end": 16.3
+   },
+   {
+    "word": "the",
+    "start": 16.3,
+    "end": 16.7
+   },
+   {
+    "word": "poem.",
+    "start": 16.7,
+    "end": 17.06
+   }
+  ]
+ },
+ "check-refrain-line": {
+  "duration": 18.2,
+  "words": [
+   {
+    "word": "Did",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "your",
+    "start": 0.38,
+    "end": 0.68
+   },
+   {
+    "word": "ears",
+    "start": 0.68,
+    "end": 1.06
+   },
+   {
+    "word": "catch",
+    "start": 1.06,
+    "end": 1.44
+   },
+   {
+    "word": "it?",
+    "start": 1.44,
+    "end": 1.84
+   },
+   {
+    "word": "Poets",
+    "start": 2.4,
+    "end": 2.84
+   },
+   {
+    "word": "sometimes",
+    "start": 2.84,
+    "end": 3.44
+   },
+   {
+    "word": "repeat",
+    "start": 3.44,
+    "end": 3.92
+   },
+   {
+    "word": "a",
+    "start": 3.92,
+    "end": 4.32
+   },
+   {
+    "word": "whole",
+    "start": 4.32,
+    "end": 4.64
+   },
+   {
+    "word": "line,",
+    "start": 4.64,
+    "end": 5.18
+   },
+   {
+    "word": "and",
+    "start": 5.44,
+    "end": 5.84
+   },
+   {
+    "word": "that",
+    "start": 5.84,
+    "end": 6.1
+   },
+   {
+    "word": "repeated",
+    "start": 6.1,
+    "end": 6.6
+   },
+   {
+    "word": "line",
+    "start": 6.6,
+    "end": 7.08
+   },
+   {
+    "word": "is",
+    "start": 7.08,
+    "end": 7.46
+   },
+   {
+    "word": "called",
+    "start": 7.46,
+    "end": 7.8
+   },
+   {
+    "word": "a",
+    "start": 7.8,
+    "end": 8.12
+   },
+   {
+    "word": "refrain.",
+    "start": 8.12,
+    "end": 8.64
+   },
+   {
+    "word": "One",
+    "start": 9.48,
+    "end": 9.9
+   },
+   {
+    "word": "line",
+    "start": 9.9,
+    "end": 10.32
+   },
+   {
+    "word": "showed",
+    "start": 10.32,
+    "end": 10.62
+   },
+   {
+    "word": "up",
+    "start": 10.62,
+    "end": 10.86
+   },
+   {
+    "word": "and",
+    "start": 10.86,
+    "end": 11.0
+   },
+   {
+    "word": "stands",
+    "start": 11.0,
+    "end": 11.32
+   },
+   {
+    "word": "a",
+    "start": 11.32,
+    "end": 11.58
+   },
+   {
+    "word": "one,",
+    "start": 11.58,
+    "end": 11.96
+   },
+   {
+    "word": "and",
+    "start": 12.48,
+    "end": 12.62
+   },
+   {
+    "word": "came",
+    "start": 12.62,
+    "end": 12.88
+   },
+   {
+    "word": "right",
+    "start": 12.88,
+    "end": 13.3
+   },
+   {
+    "word": "back",
+    "start": 13.3,
+    "end": 13.74
+   },
+   {
+    "word": "and",
+    "start": 13.74,
+    "end": 14.0
+   },
+   {
+    "word": "stands",
+    "start": 14.0,
+    "end": 14.34
+   },
+   {
+    "word": "a",
+    "start": 14.34,
+    "end": 14.58
+   },
+   {
+    "word": "two.",
+    "start": 14.58,
+    "end": 14.88
+   },
+   {
+    "word": "Which",
+    "start": 15.5,
+    "end": 15.86
+   },
+   {
+    "word": "line",
+    "start": 15.86,
+    "end": 16.26
+   },
+   {
+    "word": "is",
+    "start": 16.26,
+    "end": 16.64
+   },
+   {
+    "word": "the",
+    "start": 16.64,
+    "end": 16.8
+   },
+   {
+    "word": "refrain?",
+    "start": 16.8,
+    "end": 17.14
+   },
+   {
+    "word": "Tap",
+    "start": 17.74,
+    "end": 17.96
+   },
+   {
+    "word": "it.",
+    "start": 17.96,
+    "end": 18.2
+   }
+  ]
+ },
+ "check-rhyme-sky": {
+  "duration": 19.58,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.82
+   },
+   {
+    "word": "reading!",
+    "start": 0.82,
+    "end": 1.6
+   },
+   {
+    "word": "Now",
+    "start": 2.42,
+    "end": 2.64
+   },
+   {
+    "word": "use",
+    "start": 2.64,
+    "end": 3.26
+   },
+   {
+    "word": "your",
+    "start": 3.26,
+    "end": 3.62
+   },
+   {
+    "word": "ears.",
+    "start": 3.62,
+    "end": 3.94
+   },
+   {
+    "word": "One",
+    "start": 4.78,
+    "end": 5.18
+   },
+   {
+    "word": "line",
+    "start": 5.18,
+    "end": 5.66
+   },
+   {
+    "word": "in",
+    "start": 5.66,
+    "end": 6.0
+   },
+   {
+    "word": "stands",
+    "start": 6.0,
+    "end": 6.34
+   },
+   {
+    "word": "a",
+    "start": 6.34,
+    "end": 6.58
+   },
+   {
+    "word": "one",
+    "start": 6.58,
+    "end": 7.0
+   },
+   {
+    "word": "ends",
+    "start": 7.0,
+    "end": 8.02
+   },
+   {
+    "word": "with",
+    "start": 8.02,
+    "end": 8.48
+   },
+   {
+    "word": "the",
+    "start": 8.48,
+    "end": 8.74
+   },
+   {
+    "word": "word",
+    "start": 8.74,
+    "end": 9.06
+   },
+   {
+    "word": "sky.",
+    "start": 9.06,
+    "end": 9.78
+   },
+   {
+    "word": "Another",
+    "start": 10.84,
+    "end": 11.34
+   },
+   {
+    "word": "line",
+    "start": 11.34,
+    "end": 12.0
+   },
+   {
+    "word": "ends",
+    "start": 12.0,
+    "end": 12.64
+   },
+   {
+    "word": "with",
+    "start": 12.64,
+    "end": 12.84
+   },
+   {
+    "word": "a",
+    "start": 12.84,
+    "end": 13.0
+   },
+   {
+    "word": "word",
+    "start": 13.0,
+    "end": 13.36
+   },
+   {
+    "word": "that",
+    "start": 13.36,
+    "end": 13.82
+   },
+   {
+    "word": "chimes",
+    "start": 13.82,
+    "end": 14.44
+   },
+   {
+    "word": "with",
+    "start": 14.44,
+    "end": 14.7
+   },
+   {
+    "word": "it.",
+    "start": 14.7,
+    "end": 14.98
+   },
+   {
+    "word": "Which",
+    "start": 15.64,
+    "end": 16.12
+   },
+   {
+    "word": "word",
+    "start": 16.12,
+    "end": 16.66
+   },
+   {
+    "word": "rhymes",
+    "start": 16.66,
+    "end": 17.3
+   },
+   {
+    "word": "with",
+    "start": 17.3,
+    "end": 17.62
+   },
+   {
+    "word": "sky?",
+    "start": 17.62,
+    "end": 18.14
+   },
+   {
+    "word": "Tap",
+    "start": 18.94,
+    "end": 19.3
+   },
+   {
+    "word": "it.",
+    "start": 19.3,
+    "end": 19.58
+   }
+  ]
+ },
+ "check-vivid-marching": {
+  "duration": 31.08,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "is",
+    "start": 0.62,
+    "end": 1.04
+   },
+   {
+    "word": "the",
+    "start": 1.04,
+    "end": 1.24
+   },
+   {
+    "word": "last",
+    "start": 1.24,
+    "end": 1.62
+   },
+   {
+    "word": "piece",
+    "start": 1.62,
+    "end": 2.04
+   },
+   {
+    "word": "of",
+    "start": 2.04,
+    "end": 2.36
+   },
+   {
+    "word": "word",
+    "start": 2.36,
+    "end": 2.62
+   },
+   {
+    "word": "music.",
+    "start": 2.62,
+    "end": 3.14
+   },
+   {
+    "word": "The",
+    "start": 3.64,
+    "end": 3.74
+   },
+   {
+    "word": "vivid",
+    "start": 3.74,
+    "end": 4.16
+   },
+   {
+    "word": "word.",
+    "start": 4.16,
+    "end": 4.7
+   },
+   {
+    "word": "The",
+    "start": 5.38,
+    "end": 5.44
+   },
+   {
+    "word": "poet",
+    "start": 5.44,
+    "end": 5.78
+   },
+   {
+    "word": "wrote,",
+    "start": 5.78,
+    "end": 6.16
+   },
+   {
+    "word": "rain",
+    "start": 6.98,
+    "end": 6.98
+   },
+   {
+    "word": "comes",
+    "start": 6.98,
+    "end": 7.6
+   },
+   {
+    "word": "marching,",
+    "start": 7.6,
+    "end": 8.46
+   },
+   {
+    "word": "drumming",
+    "start": 9.18,
+    "end": 9.76
+   },
+   {
+    "word": "down.",
+    "start": 9.76,
+    "end": 10.22
+   },
+   {
+    "word": "The",
+    "start": 11.14,
+    "end": 11.32
+   },
+   {
+    "word": "poet",
+    "start": 11.32,
+    "end": 11.64
+   },
+   {
+    "word": "could",
+    "start": 11.64,
+    "end": 12.04
+   },
+   {
+    "word": "have",
+    "start": 12.04,
+    "end": 12.4
+   },
+   {
+    "word": "written,",
+    "start": 12.4,
+    "end": 12.84
+   },
+   {
+    "word": "rain",
+    "start": 13.62,
+    "end": 13.8
+   },
+   {
+    "word": "comes",
+    "start": 13.8,
+    "end": 14.22
+   },
+   {
+    "word": "falling,",
+    "start": 14.22,
+    "end": 15.22
+   },
+   {
+    "word": "dripping",
+    "start": 16.0,
+    "end": 16.38
+   },
+   {
+    "word": "down.",
+    "start": 16.38,
+    "end": 16.96
+   },
+   {
+    "word": "Falling",
+    "start": 17.8,
+    "end": 18.62
+   },
+   {
+    "word": "is",
+    "start": 18.62,
+    "end": 18.9
+   },
+   {
+    "word": "plain.",
+    "start": 18.9,
+    "end": 19.32
+   },
+   {
+    "word": "Marching",
+    "start": 20.5,
+    "end": 21.36
+   },
+   {
+    "word": "is",
+    "start": 21.36,
+    "end": 21.82
+   },
+   {
+    "word": "vivid,",
+    "start": 21.82,
+    "end": 22.38
+   },
+   {
+    "word": "and",
+    "start": 22.86,
+    "end": 23.18
+   },
+   {
+    "word": "it",
+    "start": 23.18,
+    "end": 23.3
+   },
+   {
+    "word": "changes",
+    "start": 23.3,
+    "end": 23.84
+   },
+   {
+    "word": "what",
+    "start": 23.84,
+    "end": 24.1
+   },
+   {
+    "word": "you",
+    "start": 24.1,
+    "end": 24.28
+   },
+   {
+    "word": "see",
+    "start": 24.28,
+    "end": 24.72
+   },
+   {
+    "word": "and",
+    "start": 24.72,
+    "end": 25.16
+   },
+   {
+    "word": "hear",
+    "start": 25.16,
+    "end": 25.52
+   },
+   {
+    "word": "in",
+    "start": 25.52,
+    "end": 25.82
+   },
+   {
+    "word": "your",
+    "start": 25.82,
+    "end": 25.94
+   },
+   {
+    "word": "mind.",
+    "start": 25.94,
+    "end": 26.36
+   },
+   {
+    "word": "What",
+    "start": 26.36,
+    "end": 27.42
+   },
+   {
+    "word": "does",
+    "start": 27.42,
+    "end": 27.72
+   },
+   {
+    "word": "marching",
+    "start": 27.72,
+    "end": 28.26
+   },
+   {
+    "word": "make",
+    "start": 28.26,
+    "end": 28.7
+   },
+   {
+    "word": "the",
+    "start": 28.7,
+    "end": 28.88
+   },
+   {
+    "word": "rain",
+    "start": 28.88,
+    "end": 29.08
+   },
+   {
+    "word": "seem",
+    "start": 29.08,
+    "end": 29.46
+   },
+   {
+    "word": "like?",
+    "start": 29.46,
+    "end": 29.8
+   },
+   {
+    "word": "Tap",
+    "start": 30.56,
+    "end": 30.72
+   },
+   {
+    "word": "it.",
+    "start": 30.72,
+    "end": 31.08
+   }
+  ]
+ },
+ "complete": {
+  "duration": 31.84,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.4
+   },
+   {
+    "word": "read",
+    "start": 0.4,
+    "end": 0.74
+   },
+   {
+    "word": "a",
+    "start": 0.74,
+    "end": 1.08
+   },
+   {
+    "word": "whole",
+    "start": 1.08,
+    "end": 1.44
+   },
+   {
+    "word": "poem",
+    "start": 1.44,
+    "end": 2.0
+   },
+   {
+    "word": "and",
+    "start": 2.0,
+    "end": 2.46
+   },
+   {
+    "word": "found",
+    "start": 2.46,
+    "end": 2.82
+   },
+   {
+    "word": "its",
+    "start": 2.82,
+    "end": 3.12
+   },
+   {
+    "word": "word",
+    "start": 3.12,
+    "end": 3.44
+   },
+   {
+    "word": "music.",
+    "start": 3.44,
+    "end": 4.16
+   },
+   {
+    "word": "You",
+    "start": 4.88,
+    "end": 4.9
+   },
+   {
+    "word": "heard",
+    "start": 4.9,
+    "end": 5.32
+   },
+   {
+    "word": "rhymes",
+    "start": 5.32,
+    "end": 6.04
+   },
+   {
+    "word": "chime,",
+    "start": 6.04,
+    "end": 6.56
+   },
+   {
+    "word": "sky",
+    "start": 7.14,
+    "end": 7.54
+   },
+   {
+    "word": "with",
+    "start": 7.54,
+    "end": 8.2
+   },
+   {
+    "word": "buy",
+    "start": 8.2,
+    "end": 8.62
+   },
+   {
+    "word": "and",
+    "start": 8.62,
+    "end": 9.4
+   },
+   {
+    "word": "play",
+    "start": 9.4,
+    "end": 9.86
+   },
+   {
+    "word": "with",
+    "start": 9.86,
+    "end": 10.48
+   },
+   {
+    "word": "day.",
+    "start": 10.48,
+    "end": 10.76
+   },
+   {
+    "word": "You",
+    "start": 11.88,
+    "end": 12.02
+   },
+   {
+    "word": "felt",
+    "start": 12.02,
+    "end": 12.38
+   },
+   {
+    "word": "the",
+    "start": 12.38,
+    "end": 12.66
+   },
+   {
+    "word": "refrain",
+    "start": 12.66,
+    "end": 13.2
+   },
+   {
+    "word": "march",
+    "start": 13.2,
+    "end": 13.86
+   },
+   {
+    "word": "back",
+    "start": 13.86,
+    "end": 14.32
+   },
+   {
+    "word": "to",
+    "start": 14.32,
+    "end": 14.64
+   },
+   {
+    "word": "keep",
+    "start": 14.64,
+    "end": 14.86
+   },
+   {
+    "word": "a",
+    "start": 14.86,
+    "end": 15.14
+   },
+   {
+    "word": "steady",
+    "start": 15.14,
+    "end": 15.58
+   },
+   {
+    "word": "beat.",
+    "start": 15.58,
+    "end": 16.06
+   },
+   {
+    "word": "And",
+    "start": 16.82,
+    "end": 16.96
+   },
+   {
+    "word": "you",
+    "start": 16.96,
+    "end": 17.16
+   },
+   {
+    "word": "saw",
+    "start": 17.16,
+    "end": 17.5
+   },
+   {
+    "word": "one",
+    "start": 17.5,
+    "end": 18.02
+   },
+   {
+    "word": "vivid",
+    "start": 18.02,
+    "end": 18.54
+   },
+   {
+    "word": "word",
+    "start": 18.54,
+    "end": 19.04
+   },
+   {
+    "word": "marching,",
+    "start": 19.04,
+    "end": 20.0
+   },
+   {
+    "word": "turned",
+    "start": 20.52,
+    "end": 20.94
+   },
+   {
+    "word": "plain",
+    "start": 20.94,
+    "end": 21.34
+   },
+   {
+    "word": "rain",
+    "start": 21.34,
+    "end": 21.76
+   },
+   {
+    "word": "into",
+    "start": 21.76,
+    "end": 22.48
+   },
+   {
+    "word": "a",
+    "start": 22.48,
+    "end": 22.78
+   },
+   {
+    "word": "parade.",
+    "start": 22.78,
+    "end": 23.16
+   },
+   {
+    "word": "Poets",
+    "start": 24.14,
+    "end": 24.46
+   },
+   {
+    "word": "choose",
+    "start": 24.46,
+    "end": 24.88
+   },
+   {
+    "word": "words",
+    "start": 24.88,
+    "end": 25.32
+   },
+   {
+    "word": "for",
+    "start": 25.32,
+    "end": 25.64
+   },
+   {
+    "word": "their",
+    "start": 25.64,
+    "end": 25.82
+   },
+   {
+    "word": "sound",
+    "start": 25.82,
+    "end": 26.38
+   },
+   {
+    "word": "and",
+    "start": 26.38,
+    "end": 27.08
+   },
+   {
+    "word": "their",
+    "start": 27.08,
+    "end": 27.36
+   },
+   {
+    "word": "meaning.",
+    "start": 27.36,
+    "end": 27.82
+   },
+   {
+    "word": "Now",
+    "start": 27.82,
+    "end": 28.9
+   },
+   {
+    "word": "you",
+    "start": 28.9,
+    "end": 29.26
+   },
+   {
+    "word": "can",
+    "start": 29.26,
+    "end": 29.46
+   },
+   {
+    "word": "hear",
+    "start": 29.46,
+    "end": 29.68
+   },
+   {
+    "word": "the",
+    "start": 29.68,
+    "end": 29.88
+   },
+   {
+    "word": "music",
+    "start": 29.88,
+    "end": 30.24
+   },
+   {
+    "word": "in",
+    "start": 30.24,
+    "end": 30.52
+   },
+   {
+    "word": "any",
+    "start": 30.52,
+    "end": 30.96
+   },
+   {
+    "word": "poem",
+    "start": 30.96,
+    "end": 31.3
+   },
+   {
+    "word": "you",
+    "start": 31.3,
+    "end": 31.54
+   },
+   {
+    "word": "read.",
+    "start": 31.54,
+    "end": 31.84
+   }
+  ]
+ },
+ "hook-word-music": {
+  "duration": 22.52,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "reader.",
+    "start": 0.76,
+    "end": 0.96
+   },
+   {
+    "word": "A",
+    "start": 1.64,
+    "end": 1.86
+   },
+   {
+    "word": "poem",
+    "start": 1.86,
+    "end": 2.28
+   },
+   {
+    "word": "is",
+    "start": 2.28,
+    "end": 2.64
+   },
+   {
+    "word": "a",
+    "start": 2.64,
+    "end": 2.76
+   },
+   {
+    "word": "story",
+    "start": 2.76,
+    "end": 3.38
+   },
+   {
+    "word": "with",
+    "start": 3.38,
+    "end": 3.86
+   },
+   {
+    "word": "music",
+    "start": 3.86,
+    "end": 4.48
+   },
+   {
+    "word": "hiding",
+    "start": 4.48,
+    "end": 4.84
+   },
+   {
+    "word": "inside",
+    "start": 4.84,
+    "end": 5.26
+   },
+   {
+    "word": "it.",
+    "start": 5.26,
+    "end": 5.62
+   },
+   {
+    "word": "Poets",
+    "start": 6.36,
+    "end": 6.68
+   },
+   {
+    "word": "pick",
+    "start": 6.68,
+    "end": 6.92
+   },
+   {
+    "word": "words",
+    "start": 6.92,
+    "end": 7.32
+   },
+   {
+    "word": "that",
+    "start": 7.32,
+    "end": 7.66
+   },
+   {
+    "word": "rhyme,",
+    "start": 7.66,
+    "end": 8.02
+   },
+   {
+    "word": "lines",
+    "start": 8.66,
+    "end": 9.16
+   },
+   {
+    "word": "that",
+    "start": 9.16,
+    "end": 9.36
+   },
+   {
+    "word": "repeat,",
+    "start": 9.36,
+    "end": 9.76
+   },
+   {
+    "word": "and",
+    "start": 10.26,
+    "end": 10.5
+   },
+   {
+    "word": "words",
+    "start": 10.5,
+    "end": 10.82
+   },
+   {
+    "word": "so",
+    "start": 10.82,
+    "end": 11.32
+   },
+   {
+    "word": "vivid,",
+    "start": 11.32,
+    "end": 12.0
+   },
+   {
+    "word": "you",
+    "start": 12.44,
+    "end": 12.54
+   },
+   {
+    "word": "can",
+    "start": 12.54,
+    "end": 12.72
+   },
+   {
+    "word": "see",
+    "start": 12.72,
+    "end": 13.08
+   },
+   {
+    "word": "them",
+    "start": 13.08,
+    "end": 13.32
+   },
+   {
+    "word": "in",
+    "start": 13.32,
+    "end": 13.46
+   },
+   {
+    "word": "your",
+    "start": 13.46,
+    "end": 13.62
+   },
+   {
+    "word": "mind.",
+    "start": 13.62,
+    "end": 14.1
+   },
+   {
+    "word": "Today,",
+    "start": 14.92,
+    "end": 15.4
+   },
+   {
+    "word": "you",
+    "start": 15.86,
+    "end": 16.1
+   },
+   {
+    "word": "will",
+    "start": 16.1,
+    "end": 16.28
+   },
+   {
+    "word": "read",
+    "start": 16.28,
+    "end": 16.52
+   },
+   {
+    "word": "a",
+    "start": 16.52,
+    "end": 16.68
+   },
+   {
+    "word": "poem",
+    "start": 16.68,
+    "end": 16.96
+   },
+   {
+    "word": "called",
+    "start": 16.96,
+    "end": 17.32
+   },
+   {
+    "word": "The",
+    "start": 17.32,
+    "end": 17.8
+   },
+   {
+    "word": "Storm",
+    "start": 17.8,
+    "end": 18.28
+   },
+   {
+    "word": "Parade,",
+    "start": 18.28,
+    "end": 18.9
+   },
+   {
+    "word": "and",
+    "start": 19.24,
+    "end": 19.66
+   },
+   {
+    "word": "you",
+    "start": 19.66,
+    "end": 19.82
+   },
+   {
+    "word": "will",
+    "start": 19.82,
+    "end": 19.94
+   },
+   {
+    "word": "find",
+    "start": 19.94,
+    "end": 20.36
+   },
+   {
+    "word": "where",
+    "start": 20.36,
+    "end": 20.92
+   },
+   {
+    "word": "its",
+    "start": 20.92,
+    "end": 21.32
+   },
+   {
+    "word": "music",
+    "start": 21.32,
+    "end": 21.8
+   },
+   {
+    "word": "comes",
+    "start": 21.8,
+    "end": 22.18
+   },
+   {
+    "word": "from.",
+    "start": 22.18,
+    "end": 22.52
+   }
+  ]
+ },
+ "model-rhyme-chime": {
+  "duration": 38.82,
+  "words": [
+   {
+    "word": "Watch",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "me",
+    "start": 0.66,
+    "end": 0.86
+   },
+   {
+    "word": "find",
+    "start": 0.86,
+    "end": 1.36
+   },
+   {
+    "word": "the",
+    "start": 1.36,
+    "end": 1.78
+   },
+   {
+    "word": "first",
+    "start": 1.78,
+    "end": 2.3
+   },
+   {
+    "word": "kind",
+    "start": 2.3,
+    "end": 2.72
+   },
+   {
+    "word": "of",
+    "start": 2.72,
+    "end": 3.12
+   },
+   {
+    "word": "word",
+    "start": 3.12,
+    "end": 3.48
+   },
+   {
+    "word": "music",
+    "start": 3.48,
+    "end": 4.0
+   },
+   {
+    "word": "with",
+    "start": 4.0,
+    "end": 4.56
+   },
+   {
+    "word": "a",
+    "start": 4.56,
+    "end": 4.74
+   },
+   {
+    "word": "tiny",
+    "start": 4.74,
+    "end": 5.18
+   },
+   {
+    "word": "poem.",
+    "start": 5.18,
+    "end": 5.66
+   },
+   {
+    "word": "Listen.",
+    "start": 6.48,
+    "end": 6.76
+   },
+   {
+    "word": "A",
+    "start": 7.92,
+    "end": 8.14
+   },
+   {
+    "word": "frog",
+    "start": 8.14,
+    "end": 8.58
+   },
+   {
+    "word": "sat",
+    "start": 8.58,
+    "end": 9.24
+   },
+   {
+    "word": "down",
+    "start": 9.24,
+    "end": 9.8
+   },
+   {
+    "word": "upon",
+    "start": 9.8,
+    "end": 10.6
+   },
+   {
+    "word": "a",
+    "start": 10.6,
+    "end": 11.04
+   },
+   {
+    "word": "log.",
+    "start": 11.04,
+    "end": 11.36
+   },
+   {
+    "word": "He",
+    "start": 12.0,
+    "end": 12.5
+   },
+   {
+    "word": "sang",
+    "start": 12.5,
+    "end": 12.86
+   },
+   {
+    "word": "all",
+    "start": 12.86,
+    "end": 13.42
+   },
+   {
+    "word": "night",
+    "start": 13.42,
+    "end": 13.86
+   },
+   {
+    "word": "in",
+    "start": 13.86,
+    "end": 14.66
+   },
+   {
+    "word": "the",
+    "start": 14.66,
+    "end": 14.88
+   },
+   {
+    "word": "misty",
+    "start": 14.88,
+    "end": 15.44
+   },
+   {
+    "word": "fog.",
+    "start": 15.44,
+    "end": 15.8
+   },
+   {
+    "word": "Now",
+    "start": 16.96,
+    "end": 17.4
+   },
+   {
+    "word": "I",
+    "start": 17.4,
+    "end": 17.8
+   },
+   {
+    "word": "check",
+    "start": 17.8,
+    "end": 18.16
+   },
+   {
+    "word": "the",
+    "start": 18.16,
+    "end": 18.58
+   },
+   {
+    "word": "ends",
+    "start": 18.58,
+    "end": 19.22
+   },
+   {
+    "word": "of",
+    "start": 19.22,
+    "end": 19.7
+   },
+   {
+    "word": "the",
+    "start": 19.7,
+    "end": 19.9
+   },
+   {
+    "word": "lines.",
+    "start": 19.9,
+    "end": 20.34
+   },
+   {
+    "word": "Log,",
+    "start": 21.56,
+    "end": 21.84
+   },
+   {
+    "word": "fog.",
+    "start": 22.68,
+    "end": 23.26
+   },
+   {
+    "word": "They",
+    "start": 24.16,
+    "end": 24.64
+   },
+   {
+    "word": "chime,",
+    "start": 24.64,
+    "end": 25.12
+   },
+   {
+    "word": "like",
+    "start": 26.0,
+    "end": 26.32
+   },
+   {
+    "word": "two",
+    "start": 26.32,
+    "end": 26.8
+   },
+   {
+    "word": "bells",
+    "start": 26.8,
+    "end": 27.22
+   },
+   {
+    "word": "with",
+    "start": 27.22,
+    "end": 27.8
+   },
+   {
+    "word": "the",
+    "start": 27.8,
+    "end": 28.02
+   },
+   {
+    "word": "same",
+    "start": 28.02,
+    "end": 28.48
+   },
+   {
+    "word": "ring.",
+    "start": 28.48,
+    "end": 28.8
+   },
+   {
+    "word": "Words",
+    "start": 28.8,
+    "end": 30.34
+   },
+   {
+    "word": "that",
+    "start": 30.34,
+    "end": 30.74
+   },
+   {
+    "word": "chime",
+    "start": 30.74,
+    "end": 31.24
+   },
+   {
+    "word": "at",
+    "start": 31.24,
+    "end": 31.68
+   },
+   {
+    "word": "the",
+    "start": 31.68,
+    "end": 31.9
+   },
+   {
+    "word": "ends",
+    "start": 31.9,
+    "end": 32.34
+   },
+   {
+    "word": "of",
+    "start": 32.34,
+    "end": 32.52
+   },
+   {
+    "word": "lines",
+    "start": 32.52,
+    "end": 33.04
+   },
+   {
+    "word": "are",
+    "start": 33.04,
+    "end": 33.54
+   },
+   {
+    "word": "rhymes.",
+    "start": 33.54,
+    "end": 34.08
+   },
+   {
+    "word": "And",
+    "start": 34.86,
+    "end": 35.16
+   },
+   {
+    "word": "rhyme",
+    "start": 35.16,
+    "end": 35.56
+   },
+   {
+    "word": "is",
+    "start": 35.56,
+    "end": 35.88
+   },
+   {
+    "word": "the",
+    "start": 35.88,
+    "end": 36.14
+   },
+   {
+    "word": "first",
+    "start": 36.14,
+    "end": 36.64
+   },
+   {
+    "word": "piece",
+    "start": 36.64,
+    "end": 37.14
+   },
+   {
+    "word": "of",
+    "start": 37.14,
+    "end": 37.58
+   },
+   {
+    "word": "a",
+    "start": 37.58,
+    "end": 37.72
+   },
+   {
+    "word": "poem's",
+    "start": 37.72,
+    "end": 38.32
+   },
+   {
+    "word": "music.",
+    "start": 38.32,
+    "end": 38.82
+   }
+  ]
+ },
+ "page-1-read": {
+  "duration": 13.28,
+  "words": [
+   {
+    "word": "Time",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "to",
+    "start": 0.52,
+    "end": 0.78
+   },
+   {
+    "word": "read",
+    "start": 0.78,
+    "end": 1.14
+   },
+   {
+    "word": "the",
+    "start": 1.14,
+    "end": 1.62
+   },
+   {
+    "word": "storm",
+    "start": 1.62,
+    "end": 2.22
+   },
+   {
+    "word": "parade.",
+    "start": 2.22,
+    "end": 2.76
+   },
+   {
+    "word": "Stanza",
+    "start": 3.88,
+    "end": 4.52
+   },
+   {
+    "word": "1",
+    "start": 4.52,
+    "end": 4.76
+   },
+   {
+    "word": "is",
+    "start": 4.76,
+    "end": 5.14
+   },
+   {
+    "word": "all",
+    "start": 5.14,
+    "end": 5.72
+   },
+   {
+    "word": "yours.",
+    "start": 5.72,
+    "end": 6.3
+   },
+   {
+    "word": "Read",
+    "start": 7.06,
+    "end": 7.36
+   },
+   {
+    "word": "it",
+    "start": 7.36,
+    "end": 7.54
+   },
+   {
+    "word": "out",
+    "start": 7.54,
+    "end": 7.74
+   },
+   {
+    "word": "loud,",
+    "start": 7.74,
+    "end": 8.14
+   },
+   {
+    "word": "nice",
+    "start": 8.56,
+    "end": 9.04
+   },
+   {
+    "word": "and",
+    "start": 9.04,
+    "end": 9.46
+   },
+   {
+    "word": "steady,",
+    "start": 9.46,
+    "end": 9.96
+   },
+   {
+    "word": "and",
+    "start": 10.6,
+    "end": 10.72
+   },
+   {
+    "word": "let",
+    "start": 10.72,
+    "end": 11.02
+   },
+   {
+    "word": "the",
+    "start": 11.02,
+    "end": 11.28
+   },
+   {
+    "word": "lines",
+    "start": 11.28,
+    "end": 11.64
+   },
+   {
+    "word": "bounce",
+    "start": 11.64,
+    "end": 12.36
+   },
+   {
+    "word": "like",
+    "start": 12.36,
+    "end": 12.84
+   },
+   {
+    "word": "a",
+    "start": 12.84,
+    "end": 13.0
+   },
+   {
+    "word": "drum.",
+    "start": 13.0,
+    "end": 13.28
+   }
+  ]
+ },
+ "page-2-read-sentence": {
+  "duration": 17.24,
+  "words": [
+   {
+    "word": "drip",
+    "start": 0.0,
+    "end": 0.68
+   },
+   {
+    "word": "drop",
+    "start": 0.68,
+    "end": 1.58
+   },
+   {
+    "word": "drip",
+    "start": 1.58,
+    "end": 2.62
+   },
+   {
+    "word": "drop",
+    "start": 2.62,
+    "end": 3.66
+   },
+   {
+    "word": "hear",
+    "start": 3.66,
+    "end": 4.64
+   },
+   {
+    "word": "it",
+    "start": 4.64,
+    "end": 4.92
+   },
+   {
+    "word": "play",
+    "start": 4.92,
+    "end": 5.68
+   },
+   {
+    "word": "tapping",
+    "start": 5.68,
+    "end": 6.62
+   },
+   {
+    "word": "on",
+    "start": 6.62,
+    "end": 7.08
+   },
+   {
+    "word": "the",
+    "start": 7.08,
+    "end": 7.32
+   },
+   {
+    "word": "roof",
+    "start": 7.32,
+    "end": 7.8
+   },
+   {
+    "word": "all",
+    "start": 7.8,
+    "end": 8.36
+   },
+   {
+    "word": "day",
+    "start": 8.36,
+    "end": 9.1
+   },
+   {
+    "word": "Rain",
+    "start": 9.74,
+    "end": 10.36
+   },
+   {
+    "word": "comes",
+    "start": 10.36,
+    "end": 10.98
+   },
+   {
+    "word": "marching",
+    "start": 10.98,
+    "end": 11.68
+   },
+   {
+    "word": "drumming",
+    "start": 11.68,
+    "end": 12.84
+   },
+   {
+    "word": "down",
+    "start": 12.84,
+    "end": 13.44
+   },
+   {
+    "word": "the",
+    "start": 13.44,
+    "end": 14.32
+   },
+   {
+    "word": "storm",
+    "start": 14.32,
+    "end": 14.82
+   },
+   {
+    "word": "parade",
+    "start": 14.82,
+    "end": 15.28
+   },
+   {
+    "word": "is",
+    "start": 15.28,
+    "end": 15.88
+   },
+   {
+    "word": "in",
+    "start": 15.88,
+    "end": 16.24
+   },
+   {
+    "word": "our",
+    "start": 16.24,
+    "end": 16.68
+   },
+   {
+    "word": "town",
+    "start": 16.68,
+    "end": 17.24
+   }
+  ]
+ },
+ "page-2-read": {
+  "duration": 12.94,
+  "words": [
+   {
+    "word": "Stanza",
+    "start": 0.0,
+    "end": 0.78
+   },
+   {
+    "word": "2",
+    "start": 0.78,
+    "end": 1.22
+   },
+   {
+    "word": "brings",
+    "start": 1.22,
+    "end": 2.2
+   },
+   {
+    "word": "the",
+    "start": 2.2,
+    "end": 2.54
+   },
+   {
+    "word": "rain",
+    "start": 2.54,
+    "end": 2.94
+   },
+   {
+    "word": "to",
+    "start": 2.94,
+    "end": 3.52
+   },
+   {
+    "word": "the",
+    "start": 3.52,
+    "end": 3.74
+   },
+   {
+    "word": "rooftops.",
+    "start": 3.74,
+    "end": 4.9
+   },
+   {
+    "word": "Read",
+    "start": 5.6,
+    "end": 5.86
+   },
+   {
+    "word": "along",
+    "start": 5.86,
+    "end": 6.24
+   },
+   {
+    "word": "with",
+    "start": 6.24,
+    "end": 6.54
+   },
+   {
+    "word": "me",
+    "start": 6.54,
+    "end": 6.78
+   },
+   {
+    "word": "and",
+    "start": 6.78,
+    "end": 7.46
+   },
+   {
+    "word": "listen",
+    "start": 7.46,
+    "end": 7.96
+   },
+   {
+    "word": "closely.",
+    "start": 7.96,
+    "end": 8.82
+   },
+   {
+    "word": "You",
+    "start": 9.66,
+    "end": 10.0
+   },
+   {
+    "word": "will",
+    "start": 10.0,
+    "end": 10.2
+   },
+   {
+    "word": "hear",
+    "start": 10.2,
+    "end": 10.46
+   },
+   {
+    "word": "something",
+    "start": 10.46,
+    "end": 11.02
+   },
+   {
+    "word": "you",
+    "start": 11.02,
+    "end": 11.46
+   },
+   {
+    "word": "have",
+    "start": 11.46,
+    "end": 11.72
+   },
+   {
+    "word": "already",
+    "start": 11.72,
+    "end": 12.4
+   },
+   {
+    "word": "read.",
+    "start": 12.4,
+    "end": 12.94
+   }
+  ]
+ },
+ "page-3-read": {
+  "duration": 11.46,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "have",
+    "start": 0.42,
+    "end": 0.72
+   },
+   {
+    "word": "one",
+    "start": 0.72,
+    "end": 1.16
+   },
+   {
+    "word": "last",
+    "start": 1.16,
+    "end": 1.66
+   },
+   {
+    "word": "stanza",
+    "start": 1.66,
+    "end": 2.38
+   },
+   {
+    "word": "to",
+    "start": 2.38,
+    "end": 2.62
+   },
+   {
+    "word": "read,",
+    "start": 2.62,
+    "end": 2.92
+   },
+   {
+    "word": "and",
+    "start": 3.42,
+    "end": 3.68
+   },
+   {
+    "word": "something",
+    "start": 3.68,
+    "end": 4.34
+   },
+   {
+    "word": "changes",
+    "start": 4.34,
+    "end": 5.18
+   },
+   {
+    "word": "at",
+    "start": 5.18,
+    "end": 5.54
+   },
+   {
+    "word": "the",
+    "start": 5.54,
+    "end": 5.72
+   },
+   {
+    "word": "end.",
+    "start": 5.72,
+    "end": 6.08
+   },
+   {
+    "word": "Read",
+    "start": 6.8,
+    "end": 6.98
+   },
+   {
+    "word": "Stanza",
+    "start": 6.98,
+    "end": 7.6
+   },
+   {
+    "word": "3",
+    "start": 7.6,
+    "end": 7.88
+   },
+   {
+    "word": "out",
+    "start": 7.88,
+    "end": 8.14
+   },
+   {
+    "word": "loud,",
+    "start": 8.14,
+    "end": 8.38
+   },
+   {
+    "word": "and",
+    "start": 8.84,
+    "end": 9.0
+   },
+   {
+    "word": "listen",
+    "start": 9.0,
+    "end": 9.46
+   },
+   {
+    "word": "for",
+    "start": 9.46,
+    "end": 9.86
+   },
+   {
+    "word": "what",
+    "start": 9.86,
+    "end": 10.08
+   },
+   {
+    "word": "happened",
+    "start": 10.08,
+    "end": 10.56
+   },
+   {
+    "word": "to",
+    "start": 10.56,
+    "end": 10.92
+   },
+   {
+    "word": "the",
+    "start": 10.92,
+    "end": 11.06
+   },
+   {
+    "word": "refrain.",
+    "start": 11.06,
+    "end": 11.46
+   }
+  ]
+ },
+ "sequence-storm-retell": {
+  "duration": 18.16,
+  "words": [
+   {
+    "word": "Time",
+    "start": 0.0,
+    "end": 0.7
+   },
+   {
+    "word": "to",
+    "start": 0.7,
+    "end": 1.02
+   },
+   {
+    "word": "retell",
+    "start": 1.02,
+    "end": 1.76
+   },
+   {
+    "word": "the",
+    "start": 1.76,
+    "end": 2.26
+   },
+   {
+    "word": "storm",
+    "start": 2.26,
+    "end": 2.82
+   },
+   {
+    "word": "parade",
+    "start": 2.82,
+    "end": 3.32
+   },
+   {
+    "word": "like",
+    "start": 3.32,
+    "end": 4.08
+   },
+   {
+    "word": "a",
+    "start": 4.08,
+    "end": 4.26
+   },
+   {
+    "word": "storyteller.",
+    "start": 4.26,
+    "end": 5.4
+   },
+   {
+    "word": "Think",
+    "start": 6.04,
+    "end": 6.66
+   },
+   {
+    "word": "about",
+    "start": 6.66,
+    "end": 7.12
+   },
+   {
+    "word": "what",
+    "start": 7.12,
+    "end": 7.58
+   },
+   {
+    "word": "the",
+    "start": 7.58,
+    "end": 7.9
+   },
+   {
+    "word": "poem",
+    "start": 7.9,
+    "end": 8.3
+   },
+   {
+    "word": "showed",
+    "start": 8.3,
+    "end": 8.96
+   },
+   {
+    "word": "first,",
+    "start": 8.96,
+    "end": 9.56
+   },
+   {
+    "word": "next,",
+    "start": 10.36,
+    "end": 11.0
+   },
+   {
+    "word": "then,",
+    "start": 11.64,
+    "end": 12.1
+   },
+   {
+    "word": "and",
+    "start": 12.6,
+    "end": 13.12
+   },
+   {
+    "word": "last.",
+    "start": 13.12,
+    "end": 13.54
+   },
+   {
+    "word": "Drag",
+    "start": 14.56,
+    "end": 14.94
+   },
+   {
+    "word": "the",
+    "start": 14.94,
+    "end": 15.34
+   },
+   {
+    "word": "events",
+    "start": 15.34,
+    "end": 15.9
+   },
+   {
+    "word": "into",
+    "start": 15.9,
+    "end": 16.62
+   },
+   {
+    "word": "the",
+    "start": 16.62,
+    "end": 16.9
+   },
+   {
+    "word": "poem's",
+    "start": 16.9,
+    "end": 17.68
+   },
+   {
+    "word": "order.",
+    "start": 17.68,
+    "end": 18.16
+   }
+  ]
+ },
+ "sort-rhyme-families": {
+  "duration": 17.1,
+  "words": [
+   {
+    "word": "rhymes",
+    "start": 0.0,
+    "end": 0.84
+   },
+   {
+    "word": "come",
+    "start": 0.84,
+    "end": 1.16
+   },
+   {
+    "word": "in",
+    "start": 1.16,
+    "end": 1.4
+   },
+   {
+    "word": "families.",
+    "start": 1.4,
+    "end": 2.1
+   },
+   {
+    "word": "This",
+    "start": 2.58,
+    "end": 3.46
+   },
+   {
+    "word": "poem",
+    "start": 3.46,
+    "end": 3.82
+   },
+   {
+    "word": "uses",
+    "start": 3.82,
+    "end": 4.4
+   },
+   {
+    "word": "the",
+    "start": 4.4,
+    "end": 4.7
+   },
+   {
+    "word": "day",
+    "start": 4.7,
+    "end": 5.08
+   },
+   {
+    "word": "family",
+    "start": 5.08,
+    "end": 5.76
+   },
+   {
+    "word": "and",
+    "start": 5.76,
+    "end": 6.5
+   },
+   {
+    "word": "the",
+    "start": 6.5,
+    "end": 6.86
+   },
+   {
+    "word": "town",
+    "start": 6.86,
+    "end": 7.62
+   },
+   {
+    "word": "family.",
+    "start": 7.62,
+    "end": 8.44
+   },
+   {
+    "word": "Say",
+    "start": 9.34,
+    "end": 10.02
+   },
+   {
+    "word": "each",
+    "start": 10.02,
+    "end": 10.64
+   },
+   {
+    "word": "word",
+    "start": 10.64,
+    "end": 10.94
+   },
+   {
+    "word": "out",
+    "start": 10.94,
+    "end": 11.34
+   },
+   {
+    "word": "loud,",
+    "start": 11.34,
+    "end": 11.82
+   },
+   {
+    "word": "listen",
+    "start": 12.08,
+    "end": 12.68
+   },
+   {
+    "word": "to",
+    "start": 12.68,
+    "end": 13.02
+   },
+   {
+    "word": "its",
+    "start": 13.02,
+    "end": 13.24
+   },
+   {
+    "word": "ending",
+    "start": 13.24,
+    "end": 13.72
+   },
+   {
+    "word": "and",
+    "start": 13.72,
+    "end": 14.56
+   },
+   {
+    "word": "drag",
+    "start": 14.56,
+    "end": 14.94
+   },
+   {
+    "word": "it",
+    "start": 14.94,
+    "end": 15.2
+   },
+   {
+    "word": "to",
+    "start": 15.2,
+    "end": 15.34
+   },
+   {
+    "word": "the",
+    "start": 15.34,
+    "end": 15.48
+   },
+   {
+    "word": "family",
+    "start": 15.48,
+    "end": 15.94
+   },
+   {
+    "word": "it",
+    "start": 15.94,
+    "end": 16.26
+   },
+   {
+    "word": "chimes",
+    "start": 16.26,
+    "end": 16.82
+   },
+   {
+    "word": "with.",
+    "start": 16.82,
+    "end": 17.1
+   }
+  ]
+ },
+ "speak-make-a-rhyme": {
+  "duration": 17.18,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "job,",
+    "start": 0.6,
+    "end": 1.3
+   },
+   {
+    "word": "poet.",
+    "start": 1.96,
+    "end": 2.38
+   },
+   {
+    "word": "This",
+    "start": 3.2,
+    "end": 3.72
+   },
+   {
+    "word": "poem",
+    "start": 3.72,
+    "end": 4.14
+   },
+   {
+    "word": "rhymed",
+    "start": 4.14,
+    "end": 4.96
+   },
+   {
+    "word": "down",
+    "start": 4.96,
+    "end": 5.56
+   },
+   {
+    "word": "with",
+    "start": 5.56,
+    "end": 6.36
+   },
+   {
+    "word": "town.",
+    "start": 6.36,
+    "end": 6.92
+   },
+   {
+    "word": "Now",
+    "start": 7.6,
+    "end": 7.96
+   },
+   {
+    "word": "you",
+    "start": 7.96,
+    "end": 8.34
+   },
+   {
+    "word": "make",
+    "start": 8.34,
+    "end": 8.66
+   },
+   {
+    "word": "the",
+    "start": 8.66,
+    "end": 8.9
+   },
+   {
+    "word": "music.",
+    "start": 8.9,
+    "end": 9.34
+   },
+   {
+    "word": "Think",
+    "start": 10.16,
+    "end": 10.48
+   },
+   {
+    "word": "of",
+    "start": 10.48,
+    "end": 10.7
+   },
+   {
+    "word": "one",
+    "start": 10.7,
+    "end": 11.02
+   },
+   {
+    "word": "more",
+    "start": 11.02,
+    "end": 11.4
+   },
+   {
+    "word": "word",
+    "start": 11.4,
+    "end": 11.88
+   },
+   {
+    "word": "that",
+    "start": 11.88,
+    "end": 12.36
+   },
+   {
+    "word": "chimes",
+    "start": 12.36,
+    "end": 12.98
+   },
+   {
+    "word": "with",
+    "start": 12.98,
+    "end": 13.5
+   },
+   {
+    "word": "down.",
+    "start": 13.5,
+    "end": 14.08
+   },
+   {
+    "word": "Tap",
+    "start": 15.0,
+    "end": 15.34
+   },
+   {
+    "word": "the",
+    "start": 15.34,
+    "end": 15.64
+   },
+   {
+    "word": "mic",
+    "start": 15.64,
+    "end": 15.96
+   },
+   {
+    "word": "and",
+    "start": 15.96,
+    "end": 16.6
+   },
+   {
+    "word": "say",
+    "start": 16.6,
+    "end": 16.9
+   },
+   {
+    "word": "it.",
+    "start": 16.9,
+    "end": 17.18
+   }
+  ]
+ }
+}

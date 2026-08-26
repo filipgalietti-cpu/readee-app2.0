@@ -1,0 +1,1627 @@
+{
+ "apply-bug-bag": {
+  "duration": 9.44,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "spotting.",
+    "start": 0.54,
+    "end": 1.42
+   },
+   {
+    "word": "Here",
+    "start": 2.12,
+    "end": 2.56
+   },
+   {
+    "word": "is",
+    "start": 2.56,
+    "end": 2.84
+   },
+   {
+    "word": "a",
+    "start": 2.84,
+    "end": 2.94
+   },
+   {
+    "word": "new",
+    "start": 2.94,
+    "end": 3.18
+   },
+   {
+    "word": "pair.",
+    "start": 3.18,
+    "end": 3.54
+   },
+   {
+    "word": "Listen",
+    "start": 4.2,
+    "end": 4.6
+   },
+   {
+    "word": "closely.",
+    "start": 4.6,
+    "end": 5.26
+   },
+   {
+    "word": "Bug.",
+    "start": 6.14,
+    "end": 6.52
+   },
+   {
+    "word": "Tap",
+    "start": 7.46,
+    "end": 7.94
+   },
+   {
+    "word": "the",
+    "start": 7.94,
+    "end": 8.22
+   },
+   {
+    "word": "word",
+    "start": 8.22,
+    "end": 8.52
+   },
+   {
+    "word": "bug.",
+    "start": 8.52,
+    "end": 9.44
+   }
+  ]
+ },
+ "apply-log-leg": {
+  "duration": 11.36,
+  "words": [
+   {
+    "word": "Fantastic",
+    "start": 0.0,
+    "end": 0.98
+   },
+   {
+    "word": "work!",
+    "start": 0.98,
+    "end": 1.72
+   },
+   {
+    "word": "Let's",
+    "start": 2.36,
+    "end": 2.92
+   },
+   {
+    "word": "spot",
+    "start": 2.92,
+    "end": 3.22
+   },
+   {
+    "word": "another",
+    "start": 3.22,
+    "end": 4.0
+   },
+   {
+    "word": "sneaky",
+    "start": 4.0,
+    "end": 4.8
+   },
+   {
+    "word": "letter.",
+    "start": 4.8,
+    "end": 5.22
+   },
+   {
+    "word": "Listen",
+    "start": 5.96,
+    "end": 6.2
+   },
+   {
+    "word": "closely.",
+    "start": 6.2,
+    "end": 6.82
+   },
+   {
+    "word": "Leg.",
+    "start": 7.66,
+    "end": 8.08
+   },
+   {
+    "word": "Tap",
+    "start": 9.16,
+    "end": 9.64
+   },
+   {
+    "word": "the",
+    "start": 9.64,
+    "end": 9.96
+   },
+   {
+    "word": "word",
+    "start": 9.96,
+    "end": 10.4
+   },
+   {
+    "word": "leg.",
+    "start": 10.4,
+    "end": 11.36
+   }
+  ]
+ },
+ "apply-read-hot": {
+  "duration": 11.34,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.88
+   },
+   {
+    "word": "you",
+    "start": 1.26,
+    "end": 1.58
+   },
+   {
+    "word": "get",
+    "start": 1.58,
+    "end": 1.82
+   },
+   {
+    "word": "to",
+    "start": 1.82,
+    "end": 2.0
+   },
+   {
+    "word": "read",
+    "start": 2.0,
+    "end": 2.18
+   },
+   {
+    "word": "a",
+    "start": 2.18,
+    "end": 2.32
+   },
+   {
+    "word": "word",
+    "start": 2.32,
+    "end": 2.5
+   },
+   {
+    "word": "to",
+    "start": 2.5,
+    "end": 2.74
+   },
+   {
+    "word": "me.",
+    "start": 2.74,
+    "end": 2.96
+   },
+   {
+    "word": "Look",
+    "start": 3.74,
+    "end": 3.86
+   },
+   {
+    "word": "closely",
+    "start": 3.86,
+    "end": 4.42
+   },
+   {
+    "word": "at",
+    "start": 4.42,
+    "end": 4.64
+   },
+   {
+    "word": "this",
+    "start": 4.64,
+    "end": 4.9
+   },
+   {
+    "word": "word.",
+    "start": 4.9,
+    "end": 5.26
+   },
+   {
+    "word": "Look",
+    "start": 5.88,
+    "end": 6.22
+   },
+   {
+    "word": "at",
+    "start": 6.22,
+    "end": 6.42
+   },
+   {
+    "word": "its",
+    "start": 6.42,
+    "end": 6.64
+   },
+   {
+    "word": "middle",
+    "start": 6.64,
+    "end": 7.08
+   },
+   {
+    "word": "letter.",
+    "start": 7.08,
+    "end": 7.58
+   },
+   {
+    "word": "When",
+    "start": 8.22,
+    "end": 8.58
+   },
+   {
+    "word": "you're",
+    "start": 8.58,
+    "end": 8.84
+   },
+   {
+    "word": "ready,",
+    "start": 8.84,
+    "end": 9.1
+   },
+   {
+    "word": "say",
+    "start": 9.48,
+    "end": 9.76
+   },
+   {
+    "word": "the",
+    "start": 9.76,
+    "end": 10.02
+   },
+   {
+    "word": "word",
+    "start": 10.02,
+    "end": 10.42
+   },
+   {
+    "word": "out",
+    "start": 10.42,
+    "end": 10.9
+   },
+   {
+    "word": "loud.",
+    "start": 10.9,
+    "end": 11.34
+   }
+  ]
+ },
+ "celebrate-success": {
+  "duration": 13.34,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "did",
+    "start": 0.54,
+    "end": 0.92
+   },
+   {
+    "word": "it!",
+    "start": 0.92,
+    "end": 1.32
+   },
+   {
+    "word": "You",
+    "start": 1.7,
+    "end": 2.1
+   },
+   {
+    "word": "are",
+    "start": 2.1,
+    "end": 2.4
+   },
+   {
+    "word": "an",
+    "start": 2.4,
+    "end": 2.54
+   },
+   {
+    "word": "amazing",
+    "start": 2.54,
+    "end": 3.32
+   },
+   {
+    "word": "word",
+    "start": 3.32,
+    "end": 3.98
+   },
+   {
+    "word": "spotter.",
+    "start": 3.98,
+    "end": 4.56
+   },
+   {
+    "word": "You",
+    "start": 5.08,
+    "end": 5.3
+   },
+   {
+    "word": "looked",
+    "start": 5.3,
+    "end": 5.52
+   },
+   {
+    "word": "closely",
+    "start": 5.52,
+    "end": 6.14
+   },
+   {
+    "word": "at",
+    "start": 6.14,
+    "end": 6.4
+   },
+   {
+    "word": "words",
+    "start": 6.4,
+    "end": 6.82
+   },
+   {
+    "word": "and",
+    "start": 6.82,
+    "end": 7.44
+   },
+   {
+    "word": "found",
+    "start": 7.44,
+    "end": 7.78
+   },
+   {
+    "word": "the",
+    "start": 7.78,
+    "end": 8.1
+   },
+   {
+    "word": "tiny",
+    "start": 8.1,
+    "end": 8.66
+   },
+   {
+    "word": "letter",
+    "start": 8.66,
+    "end": 9.36
+   },
+   {
+    "word": "that",
+    "start": 9.36,
+    "end": 9.76
+   },
+   {
+    "word": "changed",
+    "start": 9.76,
+    "end": 10.38
+   },
+   {
+    "word": "them.",
+    "start": 10.38,
+    "end": 10.78
+   },
+   {
+    "word": "Keep",
+    "start": 11.44,
+    "end": 11.66
+   },
+   {
+    "word": "spotting",
+    "start": 11.66,
+    "end": 12.22
+   },
+   {
+    "word": "those",
+    "start": 12.22,
+    "end": 12.44
+   },
+   {
+    "word": "sneaky",
+    "start": 12.44,
+    "end": 12.86
+   },
+   {
+    "word": "letters!",
+    "start": 12.86,
+    "end": 13.34
+   }
+  ]
+ },
+ "challenge-cot-cat": {
+  "duration": 16.0,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "found",
+    "start": 0.46,
+    "end": 0.86
+   },
+   {
+    "word": "the",
+    "start": 0.86,
+    "end": 1.16
+   },
+   {
+    "word": "sneaky",
+    "start": 1.16,
+    "end": 1.52
+   },
+   {
+    "word": "letter.",
+    "start": 1.52,
+    "end": 1.98
+   },
+   {
+    "word": "Try",
+    "start": 2.6,
+    "end": 2.82
+   },
+   {
+    "word": "one",
+    "start": 2.82,
+    "end": 3.32
+   },
+   {
+    "word": "more.",
+    "start": 3.32,
+    "end": 3.74
+   },
+   {
+    "word": "Look",
+    "start": 4.58,
+    "end": 4.84
+   },
+   {
+    "word": "at",
+    "start": 4.84,
+    "end": 5.04
+   },
+   {
+    "word": "the",
+    "start": 5.04,
+    "end": 5.2
+   },
+   {
+    "word": "picture.",
+    "start": 5.2,
+    "end": 5.62
+   },
+   {
+    "word": "What",
+    "start": 6.3,
+    "end": 6.58
+   },
+   {
+    "word": "animal",
+    "start": 6.58,
+    "end": 7.18
+   },
+   {
+    "word": "do",
+    "start": 7.18,
+    "end": 7.56
+   },
+   {
+    "word": "you",
+    "start": 7.56,
+    "end": 7.74
+   },
+   {
+    "word": "see?",
+    "start": 7.74,
+    "end": 8.0
+   },
+   {
+    "word": "Look",
+    "start": 8.86,
+    "end": 9.1
+   },
+   {
+    "word": "closely",
+    "start": 9.1,
+    "end": 9.86
+   },
+   {
+    "word": "at",
+    "start": 9.86,
+    "end": 10.12
+   },
+   {
+    "word": "the",
+    "start": 10.12,
+    "end": 10.28
+   },
+   {
+    "word": "middle",
+    "start": 10.28,
+    "end": 10.66
+   },
+   {
+    "word": "letter",
+    "start": 10.66,
+    "end": 11.08
+   },
+   {
+    "word": "of",
+    "start": 11.08,
+    "end": 11.46
+   },
+   {
+    "word": "each",
+    "start": 11.46,
+    "end": 11.78
+   },
+   {
+    "word": "word.",
+    "start": 11.78,
+    "end": 12.24
+   },
+   {
+    "word": "Then",
+    "start": 12.8,
+    "end": 13.22
+   },
+   {
+    "word": "tap",
+    "start": 13.22,
+    "end": 13.82
+   },
+   {
+    "word": "the",
+    "start": 13.82,
+    "end": 14.14
+   },
+   {
+    "word": "word",
+    "start": 14.14,
+    "end": 14.4
+   },
+   {
+    "word": "that",
+    "start": 14.4,
+    "end": 14.68
+   },
+   {
+    "word": "matches",
+    "start": 14.68,
+    "end": 15.26
+   },
+   {
+    "word": "the",
+    "start": 15.26,
+    "end": 15.6
+   },
+   {
+    "word": "picture.",
+    "start": 15.6,
+    "end": 16.0
+   }
+  ]
+ },
+ "challenge-sit-set": {
+  "duration": 15.22,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "is",
+    "start": 0.54,
+    "end": 0.84
+   },
+   {
+    "word": "a",
+    "start": 0.84,
+    "end": 0.96
+   },
+   {
+    "word": "challenge.",
+    "start": 0.96,
+    "end": 1.48
+   },
+   {
+    "word": "Look",
+    "start": 2.1,
+    "end": 2.22
+   },
+   {
+    "word": "at",
+    "start": 2.22,
+    "end": 2.36
+   },
+   {
+    "word": "the",
+    "start": 2.36,
+    "end": 2.48
+   },
+   {
+    "word": "picture.",
+    "start": 2.48,
+    "end": 2.84
+   },
+   {
+    "word": "What",
+    "start": 3.46,
+    "end": 3.7
+   },
+   {
+    "word": "is",
+    "start": 3.7,
+    "end": 3.86
+   },
+   {
+    "word": "the",
+    "start": 3.86,
+    "end": 4.0
+   },
+   {
+    "word": "child",
+    "start": 4.0,
+    "end": 4.4
+   },
+   {
+    "word": "doing?",
+    "start": 4.4,
+    "end": 4.8
+   },
+   {
+    "word": "These",
+    "start": 5.66,
+    "end": 6.08
+   },
+   {
+    "word": "two",
+    "start": 6.08,
+    "end": 6.4
+   },
+   {
+    "word": "words",
+    "start": 6.4,
+    "end": 6.88
+   },
+   {
+    "word": "look",
+    "start": 6.88,
+    "end": 7.22
+   },
+   {
+    "word": "very",
+    "start": 7.22,
+    "end": 7.82
+   },
+   {
+    "word": "alike.",
+    "start": 7.82,
+    "end": 8.36
+   },
+   {
+    "word": "Look",
+    "start": 9.06,
+    "end": 9.4
+   },
+   {
+    "word": "closely",
+    "start": 9.4,
+    "end": 10.12
+   },
+   {
+    "word": "at",
+    "start": 10.12,
+    "end": 10.5
+   },
+   {
+    "word": "the",
+    "start": 10.5,
+    "end": 10.66
+   },
+   {
+    "word": "middle",
+    "start": 10.66,
+    "end": 11.08
+   },
+   {
+    "word": "letter",
+    "start": 11.08,
+    "end": 11.5
+   },
+   {
+    "word": "of",
+    "start": 11.5,
+    "end": 11.78
+   },
+   {
+    "word": "each",
+    "start": 11.78,
+    "end": 12.02
+   },
+   {
+    "word": "word,",
+    "start": 12.02,
+    "end": 12.42
+   },
+   {
+    "word": "then",
+    "start": 12.7,
+    "end": 13.02
+   },
+   {
+    "word": "tap",
+    "start": 13.02,
+    "end": 13.3
+   },
+   {
+    "word": "the",
+    "start": 13.3,
+    "end": 13.58
+   },
+   {
+    "word": "word",
+    "start": 13.58,
+    "end": 13.8
+   },
+   {
+    "word": "that",
+    "start": 13.8,
+    "end": 14.1
+   },
+   {
+    "word": "matches",
+    "start": 14.1,
+    "end": 14.54
+   },
+   {
+    "word": "the",
+    "start": 14.54,
+    "end": 14.82
+   },
+   {
+    "word": "picture.",
+    "start": 14.82,
+    "end": 15.22
+   }
+  ]
+ },
+ "complete": {
+  "duration": 11.56,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "are",
+    "start": 0.5,
+    "end": 0.98
+   },
+   {
+    "word": "an",
+    "start": 0.98,
+    "end": 1.2
+   },
+   {
+    "word": "amazing",
+    "start": 1.2,
+    "end": 1.94
+   },
+   {
+    "word": "word",
+    "start": 1.94,
+    "end": 2.38
+   },
+   {
+    "word": "spotter.",
+    "start": 2.38,
+    "end": 2.96
+   },
+   {
+    "word": "You",
+    "start": 3.46,
+    "end": 3.82
+   },
+   {
+    "word": "looked",
+    "start": 3.82,
+    "end": 4.24
+   },
+   {
+    "word": "closely",
+    "start": 4.24,
+    "end": 4.88
+   },
+   {
+    "word": "at",
+    "start": 4.88,
+    "end": 5.18
+   },
+   {
+    "word": "words",
+    "start": 5.18,
+    "end": 5.5
+   },
+   {
+    "word": "and",
+    "start": 5.5,
+    "end": 5.8
+   },
+   {
+    "word": "found",
+    "start": 5.8,
+    "end": 6.16
+   },
+   {
+    "word": "the",
+    "start": 6.16,
+    "end": 6.48
+   },
+   {
+    "word": "tiny",
+    "start": 6.48,
+    "end": 7.08
+   },
+   {
+    "word": "letter",
+    "start": 7.08,
+    "end": 7.64
+   },
+   {
+    "word": "that",
+    "start": 7.64,
+    "end": 7.9
+   },
+   {
+    "word": "changed",
+    "start": 7.9,
+    "end": 8.3
+   },
+   {
+    "word": "them.",
+    "start": 8.3,
+    "end": 8.68
+   },
+   {
+    "word": "Keep",
+    "start": 9.3,
+    "end": 9.62
+   },
+   {
+    "word": "spotting",
+    "start": 9.62,
+    "end": 10.22
+   },
+   {
+    "word": "those",
+    "start": 10.22,
+    "end": 10.48
+   },
+   {
+    "word": "sneaky",
+    "start": 10.48,
+    "end": 11.0
+   },
+   {
+    "word": "letters.",
+    "start": 11.0,
+    "end": 11.56
+   }
+  ]
+ },
+ "guided-can-cap": {
+  "duration": 11.78,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "it's",
+    "start": 0.48,
+    "end": 0.8
+   },
+   {
+    "word": "your",
+    "start": 0.8,
+    "end": 0.92
+   },
+   {
+    "word": "turn.",
+    "start": 0.92,
+    "end": 1.32
+   },
+   {
+    "word": "These",
+    "start": 1.94,
+    "end": 2.24
+   },
+   {
+    "word": "two",
+    "start": 2.24,
+    "end": 2.64
+   },
+   {
+    "word": "words",
+    "start": 2.64,
+    "end": 3.16
+   },
+   {
+    "word": "look",
+    "start": 3.16,
+    "end": 3.58
+   },
+   {
+    "word": "almost",
+    "start": 3.58,
+    "end": 4.32
+   },
+   {
+    "word": "the",
+    "start": 4.32,
+    "end": 4.7
+   },
+   {
+    "word": "same.",
+    "start": 4.7,
+    "end": 5.18
+   },
+   {
+    "word": "Listen",
+    "start": 5.9,
+    "end": 6.44
+   },
+   {
+    "word": "closely.",
+    "start": 6.44,
+    "end": 7.3
+   },
+   {
+    "word": "Can.",
+    "start": 8.0,
+    "end": 8.64
+   },
+   {
+    "word": "Tap",
+    "start": 9.92,
+    "end": 10.22
+   },
+   {
+    "word": "the",
+    "start": 10.22,
+    "end": 10.52
+   },
+   {
+    "word": "word",
+    "start": 10.52,
+    "end": 10.9
+   },
+   {
+    "word": "can.",
+    "start": 10.9,
+    "end": 11.78
+   }
+  ]
+ },
+ "guided-pin-pan": {
+  "duration": 9.52,
+  "words": [
+   {
+    "word": "Excellent",
+    "start": 0.0,
+    "end": 0.68
+   },
+   {
+    "word": "spotting!",
+    "start": 0.68,
+    "end": 1.4
+   },
+   {
+    "word": "Let's",
+    "start": 1.78,
+    "end": 2.1
+   },
+   {
+    "word": "try",
+    "start": 2.1,
+    "end": 2.34
+   },
+   {
+    "word": "another",
+    "start": 2.34,
+    "end": 2.76
+   },
+   {
+    "word": "pair.",
+    "start": 2.76,
+    "end": 3.2
+   },
+   {
+    "word": "Listen",
+    "start": 3.9,
+    "end": 4.14
+   },
+   {
+    "word": "closely.",
+    "start": 4.14,
+    "end": 4.76
+   },
+   {
+    "word": "Pan.",
+    "start": 5.8,
+    "end": 6.4
+   },
+   {
+    "word": "Tap",
+    "start": 7.34,
+    "end": 8.08
+   },
+   {
+    "word": "the",
+    "start": 8.08,
+    "end": 8.32
+   },
+   {
+    "word": "word,",
+    "start": 8.32,
+    "end": 8.62
+   },
+   {
+    "word": "Pan.",
+    "start": 8.88,
+    "end": 9.52
+   }
+  ]
+ },
+ "hook-word-spotter-mission-sentence": {
+  "duration": 15.7,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "hat",
+    "start": 0.38,
+    "end": 0.78
+   },
+   {
+    "word": "sat",
+    "start": 0.78,
+    "end": 1.58
+   },
+   {
+    "word": "on",
+    "start": 1.58,
+    "end": 2.34
+   },
+   {
+    "word": "a",
+    "start": 2.34,
+    "end": 2.62
+   },
+   {
+    "word": "cat.",
+    "start": 2.62,
+    "end": 2.96
+   },
+   {
+    "word": "It",
+    "start": 3.52,
+    "end": 3.96
+   },
+   {
+    "word": "was",
+    "start": 3.96,
+    "end": 4.22
+   },
+   {
+    "word": "very",
+    "start": 4.22,
+    "end": 4.8
+   },
+   {
+    "word": "big.",
+    "start": 4.8,
+    "end": 5.54
+   },
+   {
+    "word": "Then",
+    "start": 6.06,
+    "end": 6.54
+   },
+   {
+    "word": "the",
+    "start": 6.54,
+    "end": 7.0
+   },
+   {
+    "word": "cat",
+    "start": 7.0,
+    "end": 7.44
+   },
+   {
+    "word": "felt",
+    "start": 7.44,
+    "end": 8.24
+   },
+   {
+    "word": "hot.",
+    "start": 8.24,
+    "end": 8.78
+   },
+   {
+    "word": "The",
+    "start": 9.62,
+    "end": 9.88
+   },
+   {
+    "word": "hat",
+    "start": 9.88,
+    "end": 10.46
+   },
+   {
+    "word": "fell",
+    "start": 10.46,
+    "end": 10.96
+   },
+   {
+    "word": "off.",
+    "start": 10.96,
+    "end": 11.64
+   },
+   {
+    "word": "Just",
+    "start": 12.46,
+    "end": 12.86
+   },
+   {
+    "word": "one",
+    "start": 12.86,
+    "end": 13.4
+   },
+   {
+    "word": "letter",
+    "start": 13.4,
+    "end": 13.94
+   },
+   {
+    "word": "made",
+    "start": 13.94,
+    "end": 14.42
+   },
+   {
+    "word": "a",
+    "start": 14.42,
+    "end": 14.72
+   },
+   {
+    "word": "big",
+    "start": 14.72,
+    "end": 15.1
+   },
+   {
+    "word": "change.",
+    "start": 15.1,
+    "end": 15.7
+   }
+  ]
+ },
+ "hook-word-spotter-mission": {
+  "duration": 13.94,
+  "words": [
+   {
+    "word": "Hello",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "super",
+    "start": 0.52,
+    "end": 1.02
+   },
+   {
+    "word": "words,",
+    "start": 1.02,
+    "end": 1.4
+   },
+   {
+    "word": "Potter.",
+    "start": 1.6,
+    "end": 1.86
+   },
+   {
+    "word": "I'm",
+    "start": 2.44,
+    "end": 2.68
+   },
+   {
+    "word": "Jennifer",
+    "start": 2.68,
+    "end": 3.06
+   },
+   {
+    "word": "and",
+    "start": 3.06,
+    "end": 3.76
+   },
+   {
+    "word": "we",
+    "start": 3.76,
+    "end": 4.04
+   },
+   {
+    "word": "have",
+    "start": 4.04,
+    "end": 4.26
+   },
+   {
+    "word": "a",
+    "start": 4.26,
+    "end": 4.48
+   },
+   {
+    "word": "special",
+    "start": 4.48,
+    "end": 5.06
+   },
+   {
+    "word": "mission",
+    "start": 5.06,
+    "end": 5.48
+   },
+   {
+    "word": "today.",
+    "start": 5.48,
+    "end": 5.9
+   },
+   {
+    "word": "We",
+    "start": 6.6,
+    "end": 7.06
+   },
+   {
+    "word": "need",
+    "start": 7.06,
+    "end": 7.32
+   },
+   {
+    "word": "to",
+    "start": 7.32,
+    "end": 7.52
+   },
+   {
+    "word": "find",
+    "start": 7.52,
+    "end": 7.84
+   },
+   {
+    "word": "the",
+    "start": 7.84,
+    "end": 8.26
+   },
+   {
+    "word": "sneaky",
+    "start": 8.26,
+    "end": 8.9
+   },
+   {
+    "word": "letter",
+    "start": 8.9,
+    "end": 9.54
+   },
+   {
+    "word": "that",
+    "start": 9.54,
+    "end": 9.96
+   },
+   {
+    "word": "changes",
+    "start": 9.96,
+    "end": 10.5
+   },
+   {
+    "word": "words.",
+    "start": 10.5,
+    "end": 11.08
+   },
+   {
+    "word": "Listen",
+    "start": 11.7,
+    "end": 12.04
+   },
+   {
+    "word": "to",
+    "start": 12.04,
+    "end": 12.28
+   },
+   {
+    "word": "the",
+    "start": 12.28,
+    "end": 12.42
+   },
+   {
+    "word": "story",
+    "start": 12.42,
+    "end": 12.88
+   },
+   {
+    "word": "about",
+    "start": 12.88,
+    "end": 13.24
+   },
+   {
+    "word": "two",
+    "start": 13.24,
+    "end": 13.58
+   },
+   {
+    "word": "friends.",
+    "start": 13.58,
+    "end": 13.94
+   }
+  ]
+ },
+ "model-hat-hot": {
+  "duration": 16.26,
+  "words": [
+   {
+    "word": "hat,",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "hot.",
+    "start": 1.14,
+    "end": 2.22
+   },
+   {
+    "word": "Did",
+    "start": 2.96,
+    "end": 3.46
+   },
+   {
+    "word": "you",
+    "start": 3.46,
+    "end": 3.7
+   },
+   {
+    "word": "hear",
+    "start": 3.7,
+    "end": 4.06
+   },
+   {
+    "word": "how",
+    "start": 4.06,
+    "end": 4.4
+   },
+   {
+    "word": "hat",
+    "start": 4.4,
+    "end": 5.04
+   },
+   {
+    "word": "and",
+    "start": 5.04,
+    "end": 5.82
+   },
+   {
+    "word": "hot",
+    "start": 5.82,
+    "end": 6.32
+   },
+   {
+    "word": "sound",
+    "start": 6.32,
+    "end": 7.06
+   },
+   {
+    "word": "different?",
+    "start": 7.06,
+    "end": 7.5
+   },
+   {
+    "word": "Let's",
+    "start": 8.38,
+    "end": 9.1
+   },
+   {
+    "word": "line",
+    "start": 9.1,
+    "end": 9.28
+   },
+   {
+    "word": "them",
+    "start": 9.28,
+    "end": 9.5
+   },
+   {
+    "word": "up",
+    "start": 9.5,
+    "end": 9.8
+   },
+   {
+    "word": "so",
+    "start": 9.8,
+    "end": 10.14
+   },
+   {
+    "word": "we",
+    "start": 10.14,
+    "end": 10.32
+   },
+   {
+    "word": "can",
+    "start": 10.32,
+    "end": 10.52
+   },
+   {
+    "word": "look",
+    "start": 10.52,
+    "end": 10.7
+   },
+   {
+    "word": "closely.",
+    "start": 10.7,
+    "end": 11.42
+   },
+   {
+    "word": "Tap",
+    "start": 12.44,
+    "end": 12.66
+   },
+   {
+    "word": "hat",
+    "start": 12.66,
+    "end": 13.36
+   },
+   {
+    "word": "first,",
+    "start": 13.36,
+    "end": 13.86
+   },
+   {
+    "word": "then",
+    "start": 14.3,
+    "end": 15.06
+   },
+   {
+    "word": "tap",
+    "start": 15.06,
+    "end": 15.72
+   },
+   {
+    "word": "hot.",
+    "start": 15.72,
+    "end": 16.26
+   }
+  ]
+ },
+ "model-spot-difference": {
+  "duration": 13.14,
+  "words": [
+   {
+    "word": "Look",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "closely",
+    "start": 0.5,
+    "end": 1.24
+   },
+   {
+    "word": "at",
+    "start": 1.24,
+    "end": 1.9
+   },
+   {
+    "word": "hat",
+    "start": 1.9,
+    "end": 2.3
+   },
+   {
+    "word": "and",
+    "start": 2.3,
+    "end": 3.24
+   },
+   {
+    "word": "hot.",
+    "start": 3.24,
+    "end": 3.74
+   },
+   {
+    "word": "See",
+    "start": 4.48,
+    "end": 5.06
+   },
+   {
+    "word": "how",
+    "start": 5.06,
+    "end": 5.38
+   },
+   {
+    "word": "the",
+    "start": 5.38,
+    "end": 5.64
+   },
+   {
+    "word": "middle",
+    "start": 5.64,
+    "end": 6.0
+   },
+   {
+    "word": "letter",
+    "start": 6.0,
+    "end": 6.42
+   },
+   {
+    "word": "changed?",
+    "start": 6.42,
+    "end": 7.1
+   },
+   {
+    "word": "That's",
+    "start": 7.7,
+    "end": 8.52
+   },
+   {
+    "word": "the",
+    "start": 8.52,
+    "end": 8.76
+   },
+   {
+    "word": "sneaky",
+    "start": 8.76,
+    "end": 9.2
+   },
+   {
+    "word": "letter",
+    "start": 9.2,
+    "end": 9.72
+   },
+   {
+    "word": "that",
+    "start": 9.72,
+    "end": 10.12
+   },
+   {
+    "word": "changed",
+    "start": 10.12,
+    "end": 10.72
+   },
+   {
+    "word": "the",
+    "start": 10.72,
+    "end": 10.98
+   },
+   {
+    "word": "words",
+    "start": 10.98,
+    "end": 11.36
+   },
+   {
+    "word": "sound",
+    "start": 11.36,
+    "end": 12.0
+   },
+   {
+    "word": "and",
+    "start": 12.0,
+    "end": 12.76
+   },
+   {
+    "word": "meaning.",
+    "start": 12.76,
+    "end": 13.14
+   }
+  ]
+ }
+}

@@ -1,0 +1,170 @@
+import type { LessonDef } from "@/lib/lesson-engine/types";
+import timings from "./naming-doing-words-timings.json";
+
+// Naming & Doing Words (K.L.1) · FACTORY-AUTHORED (scripts/lesson-author.ts), human-reviewed.
+// PURE DATA. Assets: lesson-tts / lesson-timings.py / lesson-images --lesson=naming-doing-words
+
+const A = (id: string) => `/audio/lessons-v2/naming-doing-words/${id}.mp3`;
+const W = (w: string) => `/audio/lessons-v2/naming-doing-words/words/${w.toLowerCase()}.mp3`;
+const IMG = (w: string) => `/images/lessons-v2/naming-doing-words/${w.toLowerCase()}.png`;
+
+export const namingDoingWordsImages: Record<string, string> = {
+  "wordy-bot-thinking": "A friendly, round robot with big eyes, a lightbulb over its head, thinking pose.",
+  "wordy-bot-pointing-dog": "A friendly robot pointing to a happy brown dog.",
+  "dog": "A happy brown dog.",
+  "run": "A child running with a big smile.",
+  "cat": "A fluffy orange cat sitting.",
+  "jump": "A child jumping high in the air.",
+  "baby": "A smiling baby crawling.",
+  "play": "Two children playing with a ball.",
+  "park": "A green park with trees and a slide.",
+  "wordy-bot-jumping": "A friendly robot jumping joyfully.",
+  "boy": "A happy boy standing.",
+  "sing": "A child singing into a microphone.",
+  "ball": "A colorful bouncy ball.",
+  "read": "A child reading an open book.",
+  "wordy-bot-with-many-balls": "A friendly robot surrounded by many colorful balls.",
+  "dogs": "Three happy brown dogs playing together.",
+  "book": "A single red storybook.",
+  "books": "A stack of three colorful books.",
+  "kids": "Two smiling children holding hands.",
+  "swim": "A child swimming in a blue pool.",
+  "tree": "A tall green tree with a brown trunk.",
+  "cars": "Two colorful toy cars side by side."
+};
+
+export const namingDoingWords: LessonDef = {
+  id: "naming-doing-words",
+  title: "Naming & Doing Words",
+  grade: "Kindergarten",
+  standard: "K.L.1",
+  archetype: "vocabulary",
+  objective: "I can sort naming words from doing words, and make words mean more than one!",
+  concepts: ["use nouns and verbs when speaking: sort naming words (person, place, thing) from doing words (actions)","make regular plurals by adding s (dog to dogs)"],
+  timings: timings as LessonDef["timings"],
+  completion: {
+    "script": "You did an amazing job helping Wordy Bot! You learned all about naming words, doing words, and how to make words mean many. Keep practicing, and you'll be a word expert!",
+    "title": "You're a Word Whiz!",
+    "body": "You mastered naming words, doing words, and making plurals! Great job!"
+  },
+  scenes: [
+    {
+      id: "intro-story",
+      purpose: "hook",
+      layout: "full",
+      gate: "none",
+      prompt: "Listen to Wordy Bot's story!",
+      narration: { audio: A("intro-story"), script: "Hi friend! This is Wordy Bot. He loves words but sometimes they get mixed up. Let's listen to his story to help him." },
+      interaction: { type: "read-along", text: "Wordy Bot saw a **dog**. It liked to **run** and **jump**. The dog went to the **park** to **play** with a **ball**.", audio: A("intro-story-sentence") },
+    },
+    {
+      id: "model-naming-words-intro",
+      purpose: "model",
+      gate: "none",
+      prompt: "Naming Words!",
+      image: IMG("wordy-bot-thinking"),
+      fx: {"text":"**Naming words** name a person, place, or thing.","effect":"pop-words"},
+      narration: { audio: A("model-naming-words-intro"), script: "We just heard a fun story! Some words name things, like a person, a place, or a thing. These are called naming words. Wordy Bot needs help finding them." },
+    },
+    {
+      id: "model-naming-word-choose",
+      purpose: "model",
+      gate: "none",
+      prompt: "Which one is a naming word?",
+      image: IMG("wordy-bot-pointing-dog"),
+      fx: {"text":"**Dog** is a naming word!","effect":"underline"},
+      narration: { audio: A("model-naming-word-choose"), script: "Watch Wordy Bot. He wants to pick the word that names something. He picked \"dog.\" Dog is a thing, so it's a naming word!" },
+    },
+    {
+      id: "guided-naming-word-choose",
+      purpose: "guided",
+      gate: "interaction",
+      prompt: "Tap the naming word!",
+      narration: { audio: A("guided-naming-word-choose"), script: "Great job watching Wordy Bot! Now it's your turn. Tap on the word that names a person, place, or thing. You can do it!" },
+      interaction: { type: "choose", options: [{ id: "run", label: "RUN", audio: W("run"), image: IMG("run") }, { id: "cat", label: "CAT", audio: W("cat"), image: IMG("cat") }, { id: "jump", label: "JUMP", audio: W("jump"), image: IMG("jump") }], correctId: "cat", coachWrong: "Remember, a naming word names a person, place, or thing. Try again!" },
+    },
+    {
+      id: "model-doing-words-intro",
+      purpose: "model",
+      gate: "none",
+      prompt: "Doing Words!",
+      image: IMG("wordy-bot-jumping"),
+      fx: {"text":"**Doing words** show action.","effect":"pop-words"},
+      narration: { audio: A("model-doing-words-intro"), script: "We found some naming words! But what about words that show action? These are called doing words. Wordy Bot will show you how to find them." },
+    },
+    {
+      id: "guided-doing-word-choose",
+      purpose: "guided",
+      gate: "interaction",
+      prompt: "Tap the doing word!",
+      narration: { audio: A("guided-doing-word-choose"), script: "That's right, doing words show action! Now it's your turn to pick a doing word. Tap the word that shows someone doing something." },
+      interaction: { type: "choose", options: [{ id: "baby", label: "BABY", audio: W("baby"), image: IMG("baby") }, { id: "play", label: "PLAY", audio: W("play"), image: IMG("play") }, { id: "park", label: "PARK", audio: W("park"), image: IMG("park") }], correctId: "play", coachWrong: "A doing word tells what someone or something is doing. Try again!" },
+    },
+    {
+      id: "apply-sort-words",
+      purpose: "apply",
+      layout: "full",
+      gate: "interaction",
+      prompt: "Sort the words!",
+      narration: { audio: A("apply-sort-words"), script: "You are doing great helping Wordy Bot! Now let's sort words into two groups: Naming Words and Doing Words. Drag each word to the right bucket." },
+      interaction: { type: "sort", buckets: ["Naming","Doing"], items: [{ label: "BOY", bucket: "Naming", audio: W("boy") }, { label: "SING", bucket: "Doing", audio: W("sing") }, { label: "BALL", bucket: "Naming", audio: W("ball") }, { label: "READ", bucket: "Doing", audio: W("read") }], coachWrong: "Think about if the word names something or if it shows an action. Try sorting it again!" },
+    },
+    {
+      id: "model-plurals-intro",
+      purpose: "model",
+      gate: "none",
+      prompt: "More than one!",
+      image: IMG("wordy-bot-with-many-balls"),
+      fx: {"text":"Add **s** for more than one.","effect":"underline"},
+      narration: { audio: A("model-plurals-intro"), script: "Wow, you sorted those words like a pro! Sometimes we talk about more than one thing. Wordy Bot wants to show you how we change words to mean 'many.'" },
+    },
+    {
+      id: "guided-make-plural",
+      purpose: "guided",
+      gate: "interaction",
+      prompt: "Make DOG mean more than one!",
+      narration: { audio: A("guided-make-plural"), script: "When we talk about more than one, we add s to the end of the word. One dog. Two dogs! Your turn. Tap the s to make dog mean more than one." },
+      interaction: {
+        type: "transform", base: "DOG", add: "S", result: "DOGS", changeIndex: 2,
+        options: ["S", "E", "T"], labels: { added: "means more than one!" },
+        imageBefore: IMG("dog"), imageAfter: IMG("dogs"),
+        successAudio: W("dogs"), coachWrong: "Remember, we add s to the end to mean more than one. Try again!",
+      },
+    },
+    {
+      id: "speak-plural",
+      purpose: "apply",
+      gate: "interaction",
+      prompt: "Say it out loud: DOGS!",
+      image: IMG("dogs"),
+      narration: { audio: A("speak-plural"), script: "Look at the picture. There is more than one dog. Read the word on your screen out loud, nice and clear." },
+      interaction: { type: "speak", text: "dogs" },
+    },
+    {
+      id: "apply-make-plural",
+      purpose: "apply",
+      gate: "interaction",
+      prompt: "Pick the word for many!",
+      narration: { audio: A("apply-make-plural"), script: "You're getting so good at this! Now, let's try another one. Which word means there is more than one of that thing? Tap on it!" },
+      interaction: { type: "choose", options: [{ id: "book", label: "BOOK", audio: W("book"), image: IMG("book") }, { id: "books", label: "BOOKS", audio: W("books"), image: IMG("books") }], correctId: "books", coachWrong: "Think about how we make a word mean more than one. You've got this!" },
+    },
+    {
+      id: "challenge-mixed-sort",
+      purpose: "challenge",
+      layout: "full",
+      gate: "interaction",
+      prompt: "Help Wordy Bot sort!",
+      narration: { audio: A("challenge-mixed-sort"), script: "You've helped Wordy Bot so much today! For your final challenge, let's sort some tricky words. Remember what we learned about naming words, doing words, and words that mean many!" },
+      interaction: { type: "sort", buckets: ["Naming","Doing"], items: [{ label: "KIDS", bucket: "Naming", audio: W("kids") }, { label: "SWIM", bucket: "Doing", audio: W("swim") }, { label: "TREE", bucket: "Naming", audio: W("tree") }, { label: "READ", bucket: "Doing", audio: W("read") }, { label: "CARS", bucket: "Naming", audio: W("cars") }], coachWrong: "Think carefully! Does the word name something, or does it show an action? You're almost there!" },
+    },
+    {
+      id: "celebrate-success",
+      purpose: "celebrate",
+      layout: "full",
+      gate: "none",
+      prompt: "You are a Word Whiz!",
+      fx: {"text":"You are a Word Whiz!","effect":"burst"},
+      narration: { audio: A("celebrate-success"), script: "Wow, you are amazing! Wordy Bot is so happy. You learned how to tell the difference between naming words and doing words. You also learned how to make words mean more than one! Great job!" },
+    },
+  ],
+};

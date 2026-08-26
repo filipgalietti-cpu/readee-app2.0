@@ -1,0 +1,2037 @@
+{
+ "apply-match-winter": {
+  "duration": 13.3,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "read",
+    "start": 0.88,
+    "end": 1.24
+   },
+   {
+    "word": "some",
+    "start": 1.24,
+    "end": 1.66
+   },
+   {
+    "word": "chunks.",
+    "start": 1.66,
+    "end": 2.16
+   },
+   {
+    "word": "Look",
+    "start": 2.74,
+    "end": 3.22
+   },
+   {
+    "word": "at",
+    "start": 3.22,
+    "end": 3.4
+   },
+   {
+    "word": "the",
+    "start": 3.4,
+    "end": 3.54
+   },
+   {
+    "word": "split",
+    "start": 3.54,
+    "end": 4.0
+   },
+   {
+    "word": "word",
+    "start": 4.0,
+    "end": 4.5
+   },
+   {
+    "word": "at",
+    "start": 4.5,
+    "end": 4.88
+   },
+   {
+    "word": "the",
+    "start": 4.88,
+    "end": 5.06
+   },
+   {
+    "word": "top.",
+    "start": 5.06,
+    "end": 5.54
+   },
+   {
+    "word": "Read",
+    "start": 5.98,
+    "end": 6.58
+   },
+   {
+    "word": "each",
+    "start": 6.58,
+    "end": 7.12
+   },
+   {
+    "word": "chunk,",
+    "start": 7.12,
+    "end": 7.58
+   },
+   {
+    "word": "blend",
+    "start": 8.34,
+    "end": 8.66
+   },
+   {
+    "word": "them",
+    "start": 8.66,
+    "end": 9.0
+   },
+   {
+    "word": "in",
+    "start": 9.0,
+    "end": 9.24
+   },
+   {
+    "word": "your",
+    "start": 9.24,
+    "end": 9.42
+   },
+   {
+    "word": "head,",
+    "start": 9.42,
+    "end": 9.88
+   },
+   {
+    "word": "and",
+    "start": 10.32,
+    "end": 10.56
+   },
+   {
+    "word": "tap",
+    "start": 10.56,
+    "end": 11.0
+   },
+   {
+    "word": "the",
+    "start": 11.0,
+    "end": 11.54
+   },
+   {
+    "word": "whole",
+    "start": 11.54,
+    "end": 11.98
+   },
+   {
+    "word": "word",
+    "start": 11.98,
+    "end": 12.6
+   },
+   {
+    "word": "they",
+    "start": 12.6,
+    "end": 13.0
+   },
+   {
+    "word": "make.",
+    "start": 13.0,
+    "end": 13.3
+   }
+  ]
+ },
+ "apply-sequence-laptop": {
+  "duration": 11.74,
+  "words": [
+   {
+    "word": "Break",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "this",
+    "start": 0.52,
+    "end": 0.84
+   },
+   {
+    "word": "word",
+    "start": 0.84,
+    "end": 1.1
+   },
+   {
+    "word": "yourself,",
+    "start": 1.1,
+    "end": 1.64
+   },
+   {
+    "word": "read",
+    "start": 2.02,
+    "end": 2.72
+   },
+   {
+    "word": "it",
+    "start": 2.72,
+    "end": 2.94
+   },
+   {
+    "word": "in",
+    "start": 2.94,
+    "end": 3.06
+   },
+   {
+    "word": "your",
+    "start": 3.06,
+    "end": 3.2
+   },
+   {
+    "word": "head,",
+    "start": 3.2,
+    "end": 3.62
+   },
+   {
+    "word": "and",
+    "start": 4.1,
+    "end": 4.2
+   },
+   {
+    "word": "split",
+    "start": 4.2,
+    "end": 4.6
+   },
+   {
+    "word": "it",
+    "start": 4.6,
+    "end": 4.8
+   },
+   {
+    "word": "between",
+    "start": 4.8,
+    "end": 5.16
+   },
+   {
+    "word": "the",
+    "start": 5.16,
+    "end": 5.38
+   },
+   {
+    "word": "middle",
+    "start": 5.38,
+    "end": 5.76
+   },
+   {
+    "word": "consonants,",
+    "start": 5.76,
+    "end": 6.7
+   },
+   {
+    "word": "then",
+    "start": 7.04,
+    "end": 7.54
+   },
+   {
+    "word": "drag",
+    "start": 7.54,
+    "end": 8.02
+   },
+   {
+    "word": "the",
+    "start": 8.02,
+    "end": 8.36
+   },
+   {
+    "word": "chunks",
+    "start": 8.36,
+    "end": 8.72
+   },
+   {
+    "word": "into",
+    "start": 8.72,
+    "end": 9.16
+   },
+   {
+    "word": "reading",
+    "start": 9.16,
+    "end": 9.58
+   },
+   {
+    "word": "order",
+    "start": 9.58,
+    "end": 10.06
+   },
+   {
+    "word": "with",
+    "start": 10.06,
+    "end": 10.58
+   },
+   {
+    "word": "the",
+    "start": 10.58,
+    "end": 10.78
+   },
+   {
+    "word": "whole",
+    "start": 10.78,
+    "end": 11.02
+   },
+   {
+    "word": "word",
+    "start": 11.02,
+    "end": 11.36
+   },
+   {
+    "word": "last.",
+    "start": 11.36,
+    "end": 11.74
+   }
+  ]
+ },
+ "apply-speak-puppet": {
+  "duration": 15.48,
+  "words": [
+   {
+    "word": "Time",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "to",
+    "start": 0.54,
+    "end": 0.78
+   },
+   {
+    "word": "read",
+    "start": 0.78,
+    "end": 1.04
+   },
+   {
+    "word": "a",
+    "start": 1.04,
+    "end": 1.32
+   },
+   {
+    "word": "big",
+    "start": 1.32,
+    "end": 1.76
+   },
+   {
+    "word": "word",
+    "start": 1.76,
+    "end": 2.2
+   },
+   {
+    "word": "out",
+    "start": 2.2,
+    "end": 2.64
+   },
+   {
+    "word": "loud,",
+    "start": 2.64,
+    "end": 3.02
+   },
+   {
+    "word": "all",
+    "start": 3.38,
+    "end": 3.86
+   },
+   {
+    "word": "by",
+    "start": 3.86,
+    "end": 4.1
+   },
+   {
+    "word": "yourself.",
+    "start": 4.1,
+    "end": 4.78
+   },
+   {
+    "word": "Break",
+    "start": 5.38,
+    "end": 5.7
+   },
+   {
+    "word": "it",
+    "start": 5.7,
+    "end": 5.9
+   },
+   {
+    "word": "in",
+    "start": 5.9,
+    "end": 6.02
+   },
+   {
+    "word": "your",
+    "start": 6.02,
+    "end": 6.16
+   },
+   {
+    "word": "head.",
+    "start": 6.16,
+    "end": 6.5
+   },
+   {
+    "word": "Find",
+    "start": 6.98,
+    "end": 7.7
+   },
+   {
+    "word": "the",
+    "start": 7.7,
+    "end": 7.94
+   },
+   {
+    "word": "vowels,",
+    "start": 7.94,
+    "end": 8.38
+   },
+   {
+    "word": "split",
+    "start": 9.2,
+    "end": 9.58
+   },
+   {
+    "word": "between",
+    "start": 9.58,
+    "end": 10.0
+   },
+   {
+    "word": "the",
+    "start": 10.0,
+    "end": 10.22
+   },
+   {
+    "word": "consonants,",
+    "start": 10.22,
+    "end": 11.0
+   },
+   {
+    "word": "read",
+    "start": 11.54,
+    "end": 11.88
+   },
+   {
+    "word": "each",
+    "start": 11.88,
+    "end": 12.46
+   },
+   {
+    "word": "chunk,",
+    "start": 12.46,
+    "end": 12.9
+   },
+   {
+    "word": "then",
+    "start": 13.24,
+    "end": 13.38
+   },
+   {
+    "word": "say",
+    "start": 13.38,
+    "end": 13.7
+   },
+   {
+    "word": "the",
+    "start": 13.7,
+    "end": 13.94
+   },
+   {
+    "word": "whole",
+    "start": 13.94,
+    "end": 14.3
+   },
+   {
+    "word": "word",
+    "start": 14.3,
+    "end": 14.7
+   },
+   {
+    "word": "into",
+    "start": 14.7,
+    "end": 15.08
+   },
+   {
+    "word": "the",
+    "start": 15.08,
+    "end": 15.28
+   },
+   {
+    "word": "mic.",
+    "start": 15.28,
+    "end": 15.48
+   }
+  ]
+ },
+ "apply-split-rabbit": {
+  "duration": 14.3,
+  "words": [
+   {
+    "word": "Try",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "another",
+    "start": 0.42,
+    "end": 0.78
+   },
+   {
+    "word": "one.",
+    "start": 0.78,
+    "end": 1.3
+   },
+   {
+    "word": "Read",
+    "start": 2.32,
+    "end": 2.62
+   },
+   {
+    "word": "this",
+    "start": 2.62,
+    "end": 3.02
+   },
+   {
+    "word": "word",
+    "start": 3.02,
+    "end": 3.32
+   },
+   {
+    "word": "in",
+    "start": 3.32,
+    "end": 3.72
+   },
+   {
+    "word": "your",
+    "start": 3.72,
+    "end": 3.88
+   },
+   {
+    "word": "head.",
+    "start": 3.88,
+    "end": 4.36
+   },
+   {
+    "word": "Find",
+    "start": 5.18,
+    "end": 5.38
+   },
+   {
+    "word": "the",
+    "start": 5.38,
+    "end": 5.6
+   },
+   {
+    "word": "vowels,",
+    "start": 5.6,
+    "end": 6.04
+   },
+   {
+    "word": "then",
+    "start": 6.56,
+    "end": 6.88
+   },
+   {
+    "word": "find",
+    "start": 6.88,
+    "end": 7.42
+   },
+   {
+    "word": "the",
+    "start": 7.42,
+    "end": 7.78
+   },
+   {
+    "word": "two",
+    "start": 7.78,
+    "end": 8.2
+   },
+   {
+    "word": "consonants",
+    "start": 8.2,
+    "end": 9.18
+   },
+   {
+    "word": "in",
+    "start": 9.18,
+    "end": 9.42
+   },
+   {
+    "word": "the",
+    "start": 9.42,
+    "end": 9.56
+   },
+   {
+    "word": "middle.",
+    "start": 9.56,
+    "end": 9.84
+   },
+   {
+    "word": "Tap",
+    "start": 10.88,
+    "end": 11.22
+   },
+   {
+    "word": "the",
+    "start": 11.22,
+    "end": 11.52
+   },
+   {
+    "word": "split",
+    "start": 11.52,
+    "end": 12.04
+   },
+   {
+    "word": "that",
+    "start": 12.04,
+    "end": 12.64
+   },
+   {
+    "word": "follows",
+    "start": 12.64,
+    "end": 13.14
+   },
+   {
+    "word": "our",
+    "start": 13.14,
+    "end": 13.78
+   },
+   {
+    "word": "rule.",
+    "start": 13.78,
+    "end": 14.3
+   }
+  ]
+ },
+ "celebrate": {
+  "duration": 15.8,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "did",
+    "start": 0.54,
+    "end": 1.08
+   },
+   {
+    "word": "it.",
+    "start": 1.08,
+    "end": 1.38
+   },
+   {
+    "word": "You",
+    "start": 1.76,
+    "end": 1.9
+   },
+   {
+    "word": "can",
+    "start": 1.9,
+    "end": 2.08
+   },
+   {
+    "word": "break",
+    "start": 2.08,
+    "end": 2.36
+   },
+   {
+    "word": "big",
+    "start": 2.36,
+    "end": 2.74
+   },
+   {
+    "word": "words",
+    "start": 2.74,
+    "end": 3.14
+   },
+   {
+    "word": "into",
+    "start": 3.14,
+    "end": 3.7
+   },
+   {
+    "word": "chunks",
+    "start": 3.7,
+    "end": 4.02
+   },
+   {
+    "word": "and",
+    "start": 4.02,
+    "end": 4.6
+   },
+   {
+    "word": "read",
+    "start": 4.6,
+    "end": 4.88
+   },
+   {
+    "word": "them.",
+    "start": 4.88,
+    "end": 5.26
+   },
+   {
+    "word": "Find",
+    "start": 5.84,
+    "end": 6.2
+   },
+   {
+    "word": "the",
+    "start": 6.2,
+    "end": 6.4
+   },
+   {
+    "word": "vowels,",
+    "start": 6.4,
+    "end": 6.8
+   },
+   {
+    "word": "split",
+    "start": 7.52,
+    "end": 7.84
+   },
+   {
+    "word": "between",
+    "start": 7.84,
+    "end": 8.28
+   },
+   {
+    "word": "the",
+    "start": 8.28,
+    "end": 8.5
+   },
+   {
+    "word": "consonants,",
+    "start": 8.5,
+    "end": 9.26
+   },
+   {
+    "word": "read",
+    "start": 9.78,
+    "end": 9.96
+   },
+   {
+    "word": "each",
+    "start": 9.96,
+    "end": 10.38
+   },
+   {
+    "word": "chunk,",
+    "start": 10.38,
+    "end": 10.88
+   },
+   {
+    "word": "and",
+    "start": 11.08,
+    "end": 11.42
+   },
+   {
+    "word": "blend.",
+    "start": 11.42,
+    "end": 11.76
+   },
+   {
+    "word": "Now",
+    "start": 12.52,
+    "end": 12.96
+   },
+   {
+    "word": "you",
+    "start": 12.96,
+    "end": 13.24
+   },
+   {
+    "word": "can",
+    "start": 13.24,
+    "end": 13.42
+   },
+   {
+    "word": "read",
+    "start": 13.42,
+    "end": 13.68
+   },
+   {
+    "word": "big",
+    "start": 13.68,
+    "end": 14.04
+   },
+   {
+    "word": "words",
+    "start": 14.04,
+    "end": 14.46
+   },
+   {
+    "word": "in",
+    "start": 14.46,
+    "end": 14.8
+   },
+   {
+    "word": "every",
+    "start": 14.8,
+    "end": 15.44
+   },
+   {
+    "word": "book.",
+    "start": 15.44,
+    "end": 15.8
+   }
+  ]
+ },
+ "challenge-blend-chunks": {
+  "duration": 16.58,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "is",
+    "start": 0.52,
+    "end": 0.86
+   },
+   {
+    "word": "your",
+    "start": 0.86,
+    "end": 1.06
+   },
+   {
+    "word": "challenge.",
+    "start": 1.06,
+    "end": 1.66
+   },
+   {
+    "word": "I",
+    "start": 2.3,
+    "end": 2.5
+   },
+   {
+    "word": "will",
+    "start": 2.5,
+    "end": 2.68
+   },
+   {
+    "word": "say",
+    "start": 2.68,
+    "end": 2.98
+   },
+   {
+    "word": "the",
+    "start": 2.98,
+    "end": 3.22
+   },
+   {
+    "word": "chunks",
+    "start": 3.22,
+    "end": 3.56
+   },
+   {
+    "word": "of",
+    "start": 3.56,
+    "end": 3.96
+   },
+   {
+    "word": "a",
+    "start": 3.96,
+    "end": 4.16
+   },
+   {
+    "word": "big",
+    "start": 4.16,
+    "end": 4.58
+   },
+   {
+    "word": "word.",
+    "start": 4.58,
+    "end": 5.08
+   },
+   {
+    "word": "Listen",
+    "start": 5.62,
+    "end": 6.04
+   },
+   {
+    "word": "closely.",
+    "start": 6.04,
+    "end": 6.72
+   },
+   {
+    "word": "CAC?",
+    "start": 7.7,
+    "end": 7.98
+   },
+   {
+    "word": "TUS.",
+    "start": 9.1,
+    "end": 9.9
+   },
+   {
+    "word": "Blend",
+    "start": 10.82,
+    "end": 11.52
+   },
+   {
+    "word": "those",
+    "start": 11.52,
+    "end": 11.9
+   },
+   {
+    "word": "chunks",
+    "start": 11.9,
+    "end": 12.26
+   },
+   {
+    "word": "in",
+    "start": 12.26,
+    "end": 12.56
+   },
+   {
+    "word": "your",
+    "start": 12.56,
+    "end": 12.76
+   },
+   {
+    "word": "head.",
+    "start": 12.76,
+    "end": 13.18
+   },
+   {
+    "word": "Then",
+    "start": 13.66,
+    "end": 14.0
+   },
+   {
+    "word": "say",
+    "start": 14.0,
+    "end": 14.4
+   },
+   {
+    "word": "the",
+    "start": 14.4,
+    "end": 14.76
+   },
+   {
+    "word": "whole",
+    "start": 14.76,
+    "end": 15.16
+   },
+   {
+    "word": "word",
+    "start": 15.16,
+    "end": 15.6
+   },
+   {
+    "word": "into",
+    "start": 15.6,
+    "end": 16.14
+   },
+   {
+    "word": "the",
+    "start": 16.14,
+    "end": 16.36
+   },
+   {
+    "word": "mic.",
+    "start": 16.36,
+    "end": 16.58
+   }
+  ]
+ },
+ "complete": {
+  "duration": 16.7,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "did",
+    "start": 0.52,
+    "end": 0.82
+   },
+   {
+    "word": "it!",
+    "start": 0.82,
+    "end": 1.2
+   },
+   {
+    "word": "You",
+    "start": 1.68,
+    "end": 2.1
+   },
+   {
+    "word": "can",
+    "start": 2.1,
+    "end": 2.32
+   },
+   {
+    "word": "break",
+    "start": 2.32,
+    "end": 2.68
+   },
+   {
+    "word": "big",
+    "start": 2.68,
+    "end": 3.08
+   },
+   {
+    "word": "words",
+    "start": 3.08,
+    "end": 3.46
+   },
+   {
+    "word": "into",
+    "start": 3.46,
+    "end": 3.92
+   },
+   {
+    "word": "chunks",
+    "start": 3.92,
+    "end": 4.3
+   },
+   {
+    "word": "and",
+    "start": 4.3,
+    "end": 4.72
+   },
+   {
+    "word": "read",
+    "start": 4.72,
+    "end": 4.96
+   },
+   {
+    "word": "them.",
+    "start": 4.96,
+    "end": 5.3
+   },
+   {
+    "word": "Find",
+    "start": 6.06,
+    "end": 6.4
+   },
+   {
+    "word": "the",
+    "start": 6.4,
+    "end": 6.66
+   },
+   {
+    "word": "vowels,",
+    "start": 6.66,
+    "end": 7.1
+   },
+   {
+    "word": "split",
+    "start": 7.8,
+    "end": 8.18
+   },
+   {
+    "word": "between",
+    "start": 8.18,
+    "end": 8.6
+   },
+   {
+    "word": "the",
+    "start": 8.6,
+    "end": 8.8
+   },
+   {
+    "word": "consonants,",
+    "start": 8.8,
+    "end": 9.62
+   },
+   {
+    "word": "read",
+    "start": 10.12,
+    "end": 10.38
+   },
+   {
+    "word": "each",
+    "start": 10.38,
+    "end": 10.88
+   },
+   {
+    "word": "chunk",
+    "start": 10.88,
+    "end": 11.3
+   },
+   {
+    "word": "and",
+    "start": 11.3,
+    "end": 11.86
+   },
+   {
+    "word": "blend.",
+    "start": 11.86,
+    "end": 12.18
+   },
+   {
+    "word": "Now",
+    "start": 13.14,
+    "end": 13.6
+   },
+   {
+    "word": "you",
+    "start": 13.6,
+    "end": 14.08
+   },
+   {
+    "word": "can",
+    "start": 14.08,
+    "end": 14.28
+   },
+   {
+    "word": "read",
+    "start": 14.28,
+    "end": 14.56
+   },
+   {
+    "word": "big",
+    "start": 14.56,
+    "end": 14.8
+   },
+   {
+    "word": "words",
+    "start": 14.8,
+    "end": 15.26
+   },
+   {
+    "word": "in",
+    "start": 15.26,
+    "end": 15.5
+   },
+   {
+    "word": "every",
+    "start": 15.5,
+    "end": 16.32
+   },
+   {
+    "word": "book.",
+    "start": 16.32,
+    "end": 16.7
+   }
+  ]
+ },
+ "guided-sequence-muffin": {
+  "duration": 14.04,
+  "words": [
+   {
+    "word": "Your",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "turn.",
+    "start": 0.44,
+    "end": 0.88
+   },
+   {
+    "word": "Here",
+    "start": 1.54,
+    "end": 1.78
+   },
+   {
+    "word": "are",
+    "start": 1.78,
+    "end": 2.04
+   },
+   {
+    "word": "the",
+    "start": 2.04,
+    "end": 2.26
+   },
+   {
+    "word": "chunks",
+    "start": 2.26,
+    "end": 2.62
+   },
+   {
+    "word": "of",
+    "start": 2.62,
+    "end": 3.22
+   },
+   {
+    "word": "our",
+    "start": 3.22,
+    "end": 3.56
+   },
+   {
+    "word": "word,",
+    "start": 3.56,
+    "end": 3.94
+   },
+   {
+    "word": "all",
+    "start": 4.4,
+    "end": 4.64
+   },
+   {
+    "word": "mixed",
+    "start": 4.64,
+    "end": 5.16
+   },
+   {
+    "word": "up.",
+    "start": 5.16,
+    "end": 5.52
+   },
+   {
+    "word": "Drag",
+    "start": 6.24,
+    "end": 6.62
+   },
+   {
+    "word": "them",
+    "start": 6.62,
+    "end": 7.0
+   },
+   {
+    "word": "into",
+    "start": 7.0,
+    "end": 7.52
+   },
+   {
+    "word": "reading",
+    "start": 7.52,
+    "end": 8.14
+   },
+   {
+    "word": "order.",
+    "start": 8.14,
+    "end": 8.62
+   },
+   {
+    "word": "First",
+    "start": 9.24,
+    "end": 9.64
+   },
+   {
+    "word": "chunk,",
+    "start": 9.64,
+    "end": 10.02
+   },
+   {
+    "word": "second",
+    "start": 10.66,
+    "end": 11.08
+   },
+   {
+    "word": "chunk,",
+    "start": 11.08,
+    "end": 11.6
+   },
+   {
+    "word": "then",
+    "start": 11.92,
+    "end": 12.28
+   },
+   {
+    "word": "the",
+    "start": 12.28,
+    "end": 12.72
+   },
+   {
+    "word": "whole",
+    "start": 12.72,
+    "end": 13.04
+   },
+   {
+    "word": "word",
+    "start": 13.04,
+    "end": 13.58
+   },
+   {
+    "word": "last.",
+    "start": 13.58,
+    "end": 14.04
+   }
+  ]
+ },
+ "guided-split-pencil": {
+  "duration": 17.78,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "is",
+    "start": 0.54,
+    "end": 0.9
+   },
+   {
+    "word": "a",
+    "start": 0.9,
+    "end": 1.02
+   },
+   {
+    "word": "new",
+    "start": 1.02,
+    "end": 1.32
+   },
+   {
+    "word": "word.",
+    "start": 1.32,
+    "end": 1.84
+   },
+   {
+    "word": "Read",
+    "start": 2.52,
+    "end": 2.7
+   },
+   {
+    "word": "it",
+    "start": 2.7,
+    "end": 2.86
+   },
+   {
+    "word": "in",
+    "start": 2.86,
+    "end": 3.0
+   },
+   {
+    "word": "your",
+    "start": 3.0,
+    "end": 3.16
+   },
+   {
+    "word": "head.",
+    "start": 3.16,
+    "end": 3.62
+   },
+   {
+    "word": "Find",
+    "start": 4.52,
+    "end": 4.84
+   },
+   {
+    "word": "its",
+    "start": 4.84,
+    "end": 5.26
+   },
+   {
+    "word": "two",
+    "start": 5.26,
+    "end": 5.64
+   },
+   {
+    "word": "vowels.",
+    "start": 5.64,
+    "end": 6.24
+   },
+   {
+    "word": "Then,",
+    "start": 6.96,
+    "end": 7.66
+   },
+   {
+    "word": "find",
+    "start": 8.02,
+    "end": 8.4
+   },
+   {
+    "word": "the",
+    "start": 8.4,
+    "end": 8.66
+   },
+   {
+    "word": "two",
+    "start": 8.66,
+    "end": 9.04
+   },
+   {
+    "word": "consonants",
+    "start": 9.04,
+    "end": 9.92
+   },
+   {
+    "word": "in",
+    "start": 9.92,
+    "end": 10.18
+   },
+   {
+    "word": "the",
+    "start": 10.18,
+    "end": 10.38
+   },
+   {
+    "word": "middle.",
+    "start": 10.38,
+    "end": 10.74
+   },
+   {
+    "word": "Tap",
+    "start": 11.92,
+    "end": 12.3
+   },
+   {
+    "word": "the",
+    "start": 12.3,
+    "end": 12.64
+   },
+   {
+    "word": "split",
+    "start": 12.64,
+    "end": 13.06
+   },
+   {
+    "word": "that",
+    "start": 13.06,
+    "end": 13.46
+   },
+   {
+    "word": "breaks",
+    "start": 13.46,
+    "end": 13.9
+   },
+   {
+    "word": "the",
+    "start": 13.9,
+    "end": 14.18
+   },
+   {
+    "word": "word",
+    "start": 14.18,
+    "end": 14.52
+   },
+   {
+    "word": "right",
+    "start": 14.52,
+    "end": 15.3
+   },
+   {
+    "word": "between",
+    "start": 15.3,
+    "end": 15.94
+   },
+   {
+    "word": "those",
+    "start": 15.94,
+    "end": 16.82
+   },
+   {
+    "word": "consonants.",
+    "start": 16.82,
+    "end": 17.78
+   }
+  ]
+ },
+ "hook-read-the-rule-sentence": {
+  "duration": 8.96,
+  "words": [
+   {
+    "word": "Find",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "the",
+    "start": 0.66,
+    "end": 0.94
+   },
+   {
+    "word": "vowels,",
+    "start": 0.94,
+    "end": 1.48
+   },
+   {
+    "word": "split",
+    "start": 1.8,
+    "end": 2.7
+   },
+   {
+    "word": "between",
+    "start": 2.7,
+    "end": 3.2
+   },
+   {
+    "word": "the",
+    "start": 3.2,
+    "end": 3.52
+   },
+   {
+    "word": "consonants,",
+    "start": 3.52,
+    "end": 4.36
+   },
+   {
+    "word": "read",
+    "start": 4.48,
+    "end": 5.54
+   },
+   {
+    "word": "each",
+    "start": 5.54,
+    "end": 6.04
+   },
+   {
+    "word": "chunk,",
+    "start": 6.04,
+    "end": 6.54
+   },
+   {
+    "word": "then",
+    "start": 6.7,
+    "end": 7.34
+   },
+   {
+    "word": "blend",
+    "start": 7.34,
+    "end": 7.72
+   },
+   {
+    "word": "the",
+    "start": 7.72,
+    "end": 8.06
+   },
+   {
+    "word": "chunks",
+    "start": 8.06,
+    "end": 8.4
+   },
+   {
+    "word": "together.",
+    "start": 8.4,
+    "end": 8.96
+   }
+  ]
+ },
+ "hook-read-the-rule": {
+  "duration": 18.08,
+  "words": [
+   {
+    "word": "Hi,",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "reader.",
+    "start": 0.62,
+    "end": 0.9
+   },
+   {
+    "word": "Big",
+    "start": 2.14,
+    "end": 2.34
+   },
+   {
+    "word": "words",
+    "start": 2.34,
+    "end": 2.84
+   },
+   {
+    "word": "can",
+    "start": 2.84,
+    "end": 3.26
+   },
+   {
+    "word": "look",
+    "start": 3.26,
+    "end": 3.66
+   },
+   {
+    "word": "tricky,",
+    "start": 3.66,
+    "end": 4.2
+   },
+   {
+    "word": "but",
+    "start": 4.48,
+    "end": 4.92
+   },
+   {
+    "word": "every",
+    "start": 4.92,
+    "end": 5.54
+   },
+   {
+    "word": "big",
+    "start": 5.54,
+    "end": 5.86
+   },
+   {
+    "word": "word",
+    "start": 5.86,
+    "end": 6.36
+   },
+   {
+    "word": "is",
+    "start": 6.36,
+    "end": 6.8
+   },
+   {
+    "word": "made",
+    "start": 6.8,
+    "end": 7.08
+   },
+   {
+    "word": "of",
+    "start": 7.08,
+    "end": 7.3
+   },
+   {
+    "word": "small",
+    "start": 7.3,
+    "end": 7.9
+   },
+   {
+    "word": "chunks",
+    "start": 7.9,
+    "end": 8.6
+   },
+   {
+    "word": "called",
+    "start": 8.6,
+    "end": 9.24
+   },
+   {
+    "word": "syllables.",
+    "start": 9.24,
+    "end": 9.82
+   },
+   {
+    "word": "Today,",
+    "start": 10.86,
+    "end": 11.36
+   },
+   {
+    "word": "you",
+    "start": 11.98,
+    "end": 12.06
+   },
+   {
+    "word": "will",
+    "start": 12.06,
+    "end": 12.24
+   },
+   {
+    "word": "break",
+    "start": 12.24,
+    "end": 12.6
+   },
+   {
+    "word": "big",
+    "start": 12.6,
+    "end": 13.04
+   },
+   {
+    "word": "words",
+    "start": 13.04,
+    "end": 13.58
+   },
+   {
+    "word": "into",
+    "start": 13.58,
+    "end": 14.02
+   },
+   {
+    "word": "chunks",
+    "start": 14.02,
+    "end": 14.6
+   },
+   {
+    "word": "and",
+    "start": 14.6,
+    "end": 15.06
+   },
+   {
+    "word": "read",
+    "start": 15.06,
+    "end": 15.28
+   },
+   {
+    "word": "them.",
+    "start": 15.28,
+    "end": 15.52
+   },
+   {
+    "word": "Read",
+    "start": 16.68,
+    "end": 16.92
+   },
+   {
+    "word": "our",
+    "start": 16.92,
+    "end": 17.14
+   },
+   {
+    "word": "plan",
+    "start": 17.14,
+    "end": 17.48
+   },
+   {
+    "word": "with",
+    "start": 17.48,
+    "end": 17.82
+   },
+   {
+    "word": "me.",
+    "start": 17.82,
+    "end": 18.08
+   }
+  ]
+ },
+ "model-blend-muffin": {
+  "duration": 20.8,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "I",
+    "start": 0.56,
+    "end": 1.08
+   },
+   {
+    "word": "read",
+    "start": 1.08,
+    "end": 1.36
+   },
+   {
+    "word": "each",
+    "start": 1.36,
+    "end": 1.96
+   },
+   {
+    "word": "chunk.",
+    "start": 1.96,
+    "end": 2.5
+   },
+   {
+    "word": "Muff.",
+    "start": 3.58,
+    "end": 3.94
+   },
+   {
+    "word": "Fin.",
+    "start": 4.74,
+    "end": 5.32
+   },
+   {
+    "word": "Muff.",
+    "start": 6.36,
+    "end": 7.3
+   },
+   {
+    "word": "Fin.",
+    "start": 7.92,
+    "end": 8.52
+   },
+   {
+    "word": "Then",
+    "start": 9.46,
+    "end": 10.24
+   },
+   {
+    "word": "I",
+    "start": 10.24,
+    "end": 10.72
+   },
+   {
+    "word": "blend",
+    "start": 10.72,
+    "end": 11.06
+   },
+   {
+    "word": "the",
+    "start": 11.06,
+    "end": 11.36
+   },
+   {
+    "word": "chunks",
+    "start": 11.36,
+    "end": 11.6
+   },
+   {
+    "word": "together.",
+    "start": 11.6,
+    "end": 12.26
+   },
+   {
+    "word": "Muffin.",
+    "start": 13.54,
+    "end": 14.32
+   },
+   {
+    "word": "I",
+    "start": 15.54,
+    "end": 15.84
+   },
+   {
+    "word": "broke",
+    "start": 15.84,
+    "end": 16.24
+   },
+   {
+    "word": "a",
+    "start": 16.24,
+    "end": 16.52
+   },
+   {
+    "word": "big",
+    "start": 16.52,
+    "end": 16.78
+   },
+   {
+    "word": "word",
+    "start": 16.78,
+    "end": 17.16
+   },
+   {
+    "word": "into",
+    "start": 17.16,
+    "end": 17.6
+   },
+   {
+    "word": "chunks",
+    "start": 17.6,
+    "end": 17.98
+   },
+   {
+    "word": "and",
+    "start": 17.98,
+    "end": 18.48
+   },
+   {
+    "word": "read",
+    "start": 18.48,
+    "end": 18.76
+   },
+   {
+    "word": "it.",
+    "start": 18.76,
+    "end": 19.06
+   },
+   {
+    "word": "You",
+    "start": 19.52,
+    "end": 19.84
+   },
+   {
+    "word": "can",
+    "start": 19.84,
+    "end": 20.04
+   },
+   {
+    "word": "do",
+    "start": 20.04,
+    "end": 20.22
+   },
+   {
+    "word": "this",
+    "start": 20.22,
+    "end": 20.46
+   },
+   {
+    "word": "too.",
+    "start": 20.46,
+    "end": 20.8
+   }
+  ]
+ },
+ "model-split-muffin": {
+  "duration": 25.66,
+  "words": [
+   {
+    "word": "Watch",
+    "start": 0.0,
+    "end": 0.68
+   },
+   {
+    "word": "me",
+    "start": 0.68,
+    "end": 0.86
+   },
+   {
+    "word": "break",
+    "start": 0.86,
+    "end": 1.28
+   },
+   {
+    "word": "this",
+    "start": 1.28,
+    "end": 1.6
+   },
+   {
+    "word": "word.",
+    "start": 1.6,
+    "end": 1.92
+   },
+   {
+    "word": "First,",
+    "start": 2.72,
+    "end": 3.16
+   },
+   {
+    "word": "I",
+    "start": 3.62,
+    "end": 3.78
+   },
+   {
+    "word": "find",
+    "start": 3.78,
+    "end": 4.24
+   },
+   {
+    "word": "the",
+    "start": 4.24,
+    "end": 4.5
+   },
+   {
+    "word": "vowels.",
+    "start": 4.5,
+    "end": 4.86
+   },
+   {
+    "word": "I",
+    "start": 5.48,
+    "end": 5.88
+   },
+   {
+    "word": "see",
+    "start": 5.88,
+    "end": 6.2
+   },
+   {
+    "word": "you",
+    "start": 6.2,
+    "end": 7.08
+   },
+   {
+    "word": "and",
+    "start": 7.08,
+    "end": 7.74
+   },
+   {
+    "word": "I.",
+    "start": 7.74,
+    "end": 8.24
+   },
+   {
+    "word": "Next,",
+    "start": 9.08,
+    "end": 9.86
+   },
+   {
+    "word": "I",
+    "start": 10.14,
+    "end": 10.4
+   },
+   {
+    "word": "look",
+    "start": 10.4,
+    "end": 10.64
+   },
+   {
+    "word": "between",
+    "start": 10.64,
+    "end": 11.38
+   },
+   {
+    "word": "the",
+    "start": 11.38,
+    "end": 11.86
+   },
+   {
+    "word": "vowels",
+    "start": 11.86,
+    "end": 12.32
+   },
+   {
+    "word": "and",
+    "start": 12.32,
+    "end": 13.04
+   },
+   {
+    "word": "find",
+    "start": 13.04,
+    "end": 13.48
+   },
+   {
+    "word": "two",
+    "start": 13.48,
+    "end": 14.18
+   },
+   {
+    "word": "consonants",
+    "start": 14.18,
+    "end": 15.1
+   },
+   {
+    "word": "in",
+    "start": 15.1,
+    "end": 15.4
+   },
+   {
+    "word": "the",
+    "start": 15.4,
+    "end": 15.54
+   },
+   {
+    "word": "middle.",
+    "start": 15.54,
+    "end": 15.88
+   },
+   {
+    "word": "F",
+    "start": 16.7,
+    "end": 16.94
+   },
+   {
+    "word": "and",
+    "start": 16.94,
+    "end": 18.02
+   },
+   {
+    "word": "F.",
+    "start": 18.02,
+    "end": 18.64
+   },
+   {
+    "word": "I",
+    "start": 19.5,
+    "end": 20.42
+   },
+   {
+    "word": "split",
+    "start": 20.42,
+    "end": 21.02
+   },
+   {
+    "word": "the",
+    "start": 21.02,
+    "end": 21.3
+   },
+   {
+    "word": "word",
+    "start": 21.3,
+    "end": 21.62
+   },
+   {
+    "word": "right",
+    "start": 21.62,
+    "end": 22.24
+   },
+   {
+    "word": "between",
+    "start": 22.24,
+    "end": 22.64
+   },
+   {
+    "word": "them.",
+    "start": 22.64,
+    "end": 22.96
+   },
+   {
+    "word": "Muff.",
+    "start": 23.96,
+    "end": 24.32
+   },
+   {
+    "word": "Fin.",
+    "start": 25.24,
+    "end": 25.66
+   }
+  ]
+ }
+}
