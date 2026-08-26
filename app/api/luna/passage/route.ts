@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { generatePassage } from "@/lib/ai/readee-ai";
-import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { getTargetPattern, gradeToken } from "@/lib/luna/target-pattern";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
@@ -46,10 +45,8 @@ export async function POST(req: Request) {
   if ((child as any).parent_id !== user.id) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
-  const { data: prof } = await supabase.from("profiles").select("plan, created_at, had_subscription").eq("id", user.id).maybeSingle();
-  if (!hasFullAccessFromProfile(prof as any)) {
-    return NextResponse.json({ error: "Luna requires a paid plan.", reason: "plan" }, { status: 402 });
-  }
+  // Luna is a free-taste feature: any signed-in parent-of-child may use it; the
+  // free allowance is enforced at the read page / studio, not here.
 
   // Anti-repeat: same topic + same pattern makes the model converge on nearly
   // the same story ("I already saw this one!"). Tell it what this child has

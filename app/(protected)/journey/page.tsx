@@ -109,7 +109,12 @@ function JourneyContent() {
 
   useEffect(() => {
     if (loading || !child) { setRevealed(false); setHideSkeleton(false); return; }
-    const r = requestAnimationFrame(() => requestAnimationFrame(() => setRevealed(true)));
+    const r = requestAnimationFrame(() => requestAnimationFrame(() => {
+      // Land at the top when you open the journey (the map used to reveal
+      // mid-scroll). Next.js can restore a prior scroll on nav; force top.
+      window.scrollTo({ top: 0 });
+      setRevealed(true);
+    }));
     return () => cancelAnimationFrame(r);
   }, [loading, child]);
 

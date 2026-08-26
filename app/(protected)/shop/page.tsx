@@ -843,7 +843,7 @@ function ShopContent({
                 }}
               >
                 <Carrot size={18} strokeWidth={2.2} />
-                {freeReady ? "Open free daily box" : child.carrots >= PRICE ? `Open another · ${PRICE}` : "Not enough carrots"}
+                {freeReady ? "Open free daily box" : child.carrots >= PRICE ? `Open another · ${PRICE}` : "Your free box is back tomorrow!"}
               </button>
               <button
                 onClick={exitCeremony}

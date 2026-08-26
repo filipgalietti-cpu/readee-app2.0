@@ -344,12 +344,12 @@ export default function KidHome(p: KidHomeProps) {
         {/* Right column */}
         <div style={{ display: "flex", flexDirection: "column", gap: 20, minWidth: 0 }}>
           {/* Today's plan */}
-          <div style={{ background: "#fff", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "22px 24px", flex: 1 }}>
+          <div style={{ background: "#fff", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "22px 24px", flex: 1, display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
               <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 21, color: "#18181b" }}>Today&apos;s plan</div>
               <div style={{ fontSize: 12, fontWeight: 800, color: "#7c3aed", background: "#f5f3ff", borderRadius: 99, padding: "4px 12px" }}>{p.planBadge}</div>
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12, flex: 1, justifyContent: "center" }}>
               {p.planSteps.map((s, i) => {
                 const done = s.status === "done";
                 const cur = s.status === "cur";

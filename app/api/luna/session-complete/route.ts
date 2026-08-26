@@ -91,5 +91,17 @@ export async function POST(req: Request) {
       }, { onConflict: "child_id,standard_id" });
     } catch { /* mastery update is best-effort; never fail the session save */ }
   }
-  return NextResponse.json({ ok: true });
+
+  // Reward the reader with carrots for finishing a guided Luna session
+  // (parity with lessons/practice). Best-effort — never fail the save on it.
+  const LUNA_CARROTS = 10;
+  let carrotsAwarded = 0;
+  try {
+    const { data: cur } = await admin.from("children").select("carrots").eq("id", childId).maybeSingle();
+    const next = ((cur as any)?.carrots ?? 0) + LUNA_CARROTS;
+    await admin.from("children").update({ carrots: next }).eq("id", childId);
+    carrotsAwarded = LUNA_CARROTS;
+  } catch { /* non-fatal */ }
+
+  return NextResponse.json({ ok: true, carrotsAwarded });
 }
