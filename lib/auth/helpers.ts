@@ -4,6 +4,7 @@
  */
 
 import { createClient } from '@/lib/supabase/server';
+import { supabaseAdmin } from '@/lib/supabase/admin';
 import { Profile } from '@/lib/db/types';
 import type { User } from '@supabase/supabase-js';
 
@@ -97,10 +98,32 @@ export async function requireAuth(): Promise<User> {
  */
 export async function requireProfile(): Promise<Profile> {
   const profile = await getUserProfile();
-  
-  if (!profile) {
-    throw new Error('Profile not found');
-  }
-  
-  return profile;
+  if (profile) return profile;
+
+  // No profile row for an authenticated user — a trigger miss, replica lag, or
+  // an RLS read edge. Self-heal (mirroring the handle_new_user trigger + the
+  // protected layout) via the admin client instead of throwing a 500 that
+  // Sentry catches as "Profile not found" on every requireProfile() surface.
+  const user = await getCurrentUser();
+  if (!user) throw new Error('Unauthorized');
+
+  const metaRole = (user.user_metadata?.role as string | undefined) ?? 'parent';
+  const role = metaRole === 'educator' ? 'educator' : 'parent';
+  const admin = supabaseAdmin();
+  await admin
+    .from('profiles')
+    .upsert(
+      { id: user.id, email: user.email, role, onboarding_complete: false },
+      { onConflict: 'id', ignoreDuplicates: true },
+    );
+
+  // Re-read via the admin client (bypasses RLS) so a genuine row is always found.
+  const { data: healed } = await admin
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .maybeSingle();
+  if (healed) return healed as Profile;
+
+  throw new Error('Profile not found');
 }

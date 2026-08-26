@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeft, Brain, ArrowRight, Check, CalendarClock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { requireProfile } from "@/lib/auth/helpers";
+import { getUserProfile } from "@/lib/auth/helpers";
 import { getUserPlan } from "@/lib/plan/check-access";
 import { getAllStandards, slugifyStandard } from "@/lib/data/standards";
 import { EmptyState } from "@/app/_components/EmptyState";
@@ -22,7 +22,11 @@ export default async function ReviewPage({
 }: {
   searchParams: Promise<{ child?: string }>;
 }) {
-  const profile = await requireProfile();
+  // The protected layout already authed + self-heals the profile; if the read
+  // still comes back empty (rare replica/auth edge) redirect to login rather
+  // than throwing a 500 (Profile not found) on a page render.
+  const profile = await getUserProfile();
+  if (!profile) redirect("/login");
   const { child: childParam } = await searchParams;
   const userPlan = (await getUserPlan()) ?? "free";
 

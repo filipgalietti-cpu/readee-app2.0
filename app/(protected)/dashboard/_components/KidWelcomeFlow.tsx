@@ -165,7 +165,10 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
     }
 
     const kid = data as Child;
-    onDone([kid]);
+    // NOTE: intentionally do NOT call onDone() here. It swaps the dashboard to
+    // the home view, which flashed for a frame before /assessment loaded. The
+    // child is saved in the DB and the dashboard reloads it on return, so we
+    // navigate straight into the assessment instead.
     try { window.localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
 
     void supabase
@@ -185,6 +188,8 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
         @keyframes kwfIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         @keyframes kwfRing{0%{box-shadow:0 0 0 0 rgba(67,56,202,.35)}70%{box-shadow:0 0 0 14px rgba(67,56,202,0)}100%{box-shadow:0 0 0 0 rgba(67,56,202,0)}}
         @keyframes kwfPop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+        @keyframes kwfShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+        .kwf-skel{background:linear-gradient(90deg,#eef2ff 25%,#f5f3ff 50%,#eef2ff 75%);background-size:200% 100%;animation:kwfShimmer 1.3s ease-in-out infinite}
         .kwf-in{animation:kwfIn .45s cubic-bezier(.34,1.56,.64,1) both}
         .kwf-ring{animation:kwfRing 2.6s ease-out infinite}
         .kwf-avatar{transition:transform .18s cubic-bezier(.34,1.56,.64,1)}
@@ -264,8 +269,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
                 return (
                   <button key={a.id} type="button" className="kwf-avatar" onClick={() => setAvatar(a.id)}
                     style={{ cursor: "pointer", padding: 8, borderRadius: 24, background: on ? "#e0e7ff" : "#fff", border: `3px solid ${on ? INDIGO : "rgba(30,27,75,.10)"}` }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={`/images/avatars/${a.id}.png`} alt={a.alt} style={{ width: "100%", aspectRatio: "1", objectFit: "cover", borderRadius: 18, display: "block" }} />
+                    <AvatarImg id={a.id} alt={a.alt} />
                   </button>
                 );
               })}
@@ -292,6 +296,23 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+/** Avatar image with a shimmer skeleton until it loads, then a quick fade-in —
+ *  so the buddy grid never pops in raw. */
+function AvatarImg({ id, alt }: { id: string; alt: string }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <div className={loaded ? "" : "kwf-skel"} style={{ position: "relative", width: "100%", aspectRatio: "1", borderRadius: 18, overflow: "hidden" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`/images/avatars/${id}.png`}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 18, display: "block", opacity: loaded ? 1 : 0, transition: "opacity .25s ease" }}
+      />
     </div>
   );
 }

@@ -81,6 +81,7 @@ function shell(opts: {
                 </div>
                 <p style="margin:32px 0 0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.6;">
                   You're getting this because you have a Readee account.<br/>
+                  <a href="https://instagram.com/readee.app" style="color:#a1a1aa;">Instagram</a> &middot; <a href="https://tiktok.com/@readee.app" style="color:#a1a1aa;">TikTok</a><br/>
                   <a href="${opts.unsubscribeUrl}" style="color:#a1a1aa;">Unsubscribe</a>
                 </p>
               </td>
