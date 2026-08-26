@@ -1143,64 +1143,70 @@ export async function generateImage(input: {
       IMAGE_COMPOSITION_GUARD +
       input.prompt.trim();
     const useUltra = input.quality === "ultra";
-    // Imagen Ultra path — generateImages, no image conditioning.
-    let response: any;
-    if (useUltra) {
-      response = await (client.models as any).generateImages({
-        model: IMAGE_ULTRA_MODEL_ID,
-        prompt: fullPrompt,
-        config: {
-          numberOfImages: 1,
-          aspectRatio: "1:1",
-        },
-      });
-    } else {
-      // If a reference image is provided, send it as inlineData alongside the
-      // text. Gemini 2.5 Flash Image uses the image as a visual anchor for
-      // the new generation — same character, new scene.
-      const contents = input.referenceImage
-        ? [
-            {
-              role: "user",
-              parts: [
-                {
-                  inlineData: {
-                    mimeType: input.referenceImage.mimeType,
-                    data: input.referenceImage.data,
-                  },
+    // If a reference image is provided, send it as inlineData alongside the
+    // text. Gemini 2.5 Flash Image uses the image as a visual anchor for
+    // the new generation — same character, new scene.
+    const contents = input.referenceImage
+      ? [
+          {
+            role: "user",
+            parts: [
+              {
+                inlineData: {
+                  mimeType: input.referenceImage.mimeType,
+                  data: input.referenceImage.data,
                 },
-                {
-                  text:
-                    "Use the character(s) shown in the reference image. Keep their species, breed, coat color, eye color, and signature features identical. Only change the scene/pose/setting per the description below.\n\n" +
-                    fullPrompt,
-                },
-              ],
-            },
-          ]
-        : fullPrompt;
-      response = await client.models.generateContent({
-        model: input.imageModel ?? IMAGE_MODEL_ID,
-        contents: contents as any,
-      });
-    }
+              },
+              {
+                text:
+                  "Use the character(s) shown in the reference image. Keep their species, breed, coat color, eye color, and signature features identical. Only change the scene/pose/setting per the description below.\n\n" +
+                  fullPrompt,
+              },
+            ],
+          },
+        ]
+      : fullPrompt;
 
+    // The image model occasionally returns no image on a given call (a
+    // transient hiccup or a safety soft-block). Retry a few times before
+    // giving up — a single empty response was the top Sentry noise source
+    // for the daily-question cron.
+    let response: any;
     let imageBase64: string | null = null;
     let mimeType = "image/png";
-    if (useUltra) {
-      // Imagen response: { generatedImages: [{ image: { imageBytes, mimeType } }] }
-      const gi = (response as any)?.generatedImages?.[0]?.image;
-      imageBase64 = gi?.imageBytes ?? null;
-      mimeType = gi?.mimeType ?? mimeType;
-    } else {
-      // Gemini Flash Image response: parts with inlineData.
-      const parts = (response as any)?.candidates?.[0]?.content?.parts ?? [];
-      for (const p of parts) {
-        if (p.inlineData?.data) {
-          imageBase64 = p.inlineData.data;
-          mimeType = p.inlineData.mimeType ?? mimeType;
-          break;
+    const IMAGE_ATTEMPTS = 3;
+    for (let attempt = 1; attempt <= IMAGE_ATTEMPTS; attempt++) {
+      if (useUltra) {
+        // Imagen Ultra path — generateImages, no image conditioning.
+        response = await (client.models as any).generateImages({
+          model: IMAGE_ULTRA_MODEL_ID,
+          prompt: fullPrompt,
+          config: {
+            numberOfImages: 1,
+            aspectRatio: "1:1",
+          },
+        });
+        // Imagen response: { generatedImages: [{ image: { imageBytes, mimeType } }] }
+        const gi = (response as any)?.generatedImages?.[0]?.image;
+        imageBase64 = gi?.imageBytes ?? null;
+        mimeType = gi?.mimeType ?? mimeType;
+      } else {
+        response = await client.models.generateContent({
+          model: input.imageModel ?? IMAGE_MODEL_ID,
+          contents: contents as any,
+        });
+        // Gemini Flash Image response: parts with inlineData.
+        const parts = (response as any)?.candidates?.[0]?.content?.parts ?? [];
+        for (const p of parts) {
+          if (p.inlineData?.data) {
+            imageBase64 = p.inlineData.data;
+            mimeType = p.inlineData.mimeType ?? mimeType;
+            break;
+          }
         }
       }
+      if (imageBase64) break;
+      if (attempt < IMAGE_ATTEMPTS) await new Promise((r) => setTimeout(r, 400 * attempt));
     }
     if (!imageBase64) {
       throw new Error("The model didn't return an image. Try rephrasing.");

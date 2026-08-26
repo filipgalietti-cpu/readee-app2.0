@@ -48,6 +48,14 @@ const nextConfig: NextConfig = {
 };
 
 export default withSentryConfig(nextConfig, {
+  // Pin the real org/project slugs so source-map upload always targets the
+  // right place. Without these the plugin falls back to SENTRY_ORG /
+  // SENTRY_PROJECT env vars, which were misconfigured ("readee" instead of
+  // "readee-5u" / "javascript-nextjs") — so uploads 404'd and every prod
+  // stack trace stayed minified. Auth still comes from SENTRY_AUTH_TOKEN.
+  org: "readee-5u",
+  project: "javascript-nextjs",
+
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
 

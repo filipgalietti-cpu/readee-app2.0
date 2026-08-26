@@ -1,6 +1,6 @@
 import { Sparkles } from "lucide-react";
 import { redirect } from "next/navigation";
-import { requireProfile } from "@/lib/auth/helpers";
+import { getUserProfile } from "@/lib/auth/helpers";
 import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
 import { createClient } from "@/lib/supabase/server";
 import BuddyShell from "./_components/BuddyShell";
@@ -12,7 +12,13 @@ export default async function BuddyPage({
 }: {
   searchParams: Promise<{ child?: string }>;
 }) {
-  const profile = await requireProfile();
+  // The protected layout already authed the user and self-heals a missing
+  // profile row. If the read still comes back empty (rare auth/replica edge),
+  // send them to log in rather than throwing a 500 (Sentry noise on a page).
+  const profile = await getUserProfile();
+  if (!profile) {
+    redirect("/login");
+  }
   if (!hasAnyPaidTier((profile as any).plan)) {
     redirect("/upgrade?reason=reading_buddy");
   }
