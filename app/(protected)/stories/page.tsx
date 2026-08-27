@@ -279,6 +279,16 @@ function StoriesContent() {
     const target = allStories.find((s) => s.id === decodeURIComponent(raw));
     if (!target) return;
     deepLinkConsumed.current = true;
+    // Respect the paywall on deep links too (smart-search emits #<id>), or a
+    // free reader could open a locked Readee+ story straight from a URL.
+    const grp = gradeGroups.find((g) => g.stories.some((st) => st.id === target.id));
+    const sIdx = grp ? grp.stories.findIndex((st) => st.id === target.id) : 0;
+    const aboveLevel = grp ? GRADE_ORDER.indexOf(grp.grade) > childGradeIdx : false;
+    if (!isPaidPlan(plan) && (aboveLevel || sIdx >= getLimits(plan).storiesPerGrade)) {
+      router.push("/upgrade?reason=story");
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      return;
+    }
     openStory(target);
     window.history.replaceState(
       null,
