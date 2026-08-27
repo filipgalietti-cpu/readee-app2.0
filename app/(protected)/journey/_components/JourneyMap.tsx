@@ -225,11 +225,20 @@ export default class JourneyMap extends React.Component<JourneyMapProps, JState>
     this.after(60, () => {
       this.syncLayout();
       const cur = this.curLesson();
-      // Land at the TOP on a normal visit. Only auto-jump to the current node
-      // when the kid just finished a lesson (the unlock sequence needs it in
-      // view). Otherwise the "Back to your lesson" button jumps down on demand.
       if (cur && this.props.justCompletedId) {
+        // Just finished a lesson → jump straight to the node for the unlock
+        // animation.
         window.scrollTo(0, Math.max(0, this.canvasTop() + cur.y - window.innerHeight * 0.45));
+      } else if (cur) {
+        // Normal visit: land at the top, then after a short beat, if the
+        // current lesson sits below the fold, smoothly scroll down to it so
+        // the kid sees where they are. If it's already on screen (or the kid
+        // has already started scrolling), stay put.
+        this.after(900, () => {
+          const yAbs = this.canvasTop() + cur.y, vTop = window.scrollY, vBot = vTop + window.innerHeight;
+          const outOfView = yAbs < vTop + 60 || yAbs > vBot - 120;
+          if (outOfView && vTop < 40) this.scrollToCurrent();
+        });
       }
       this.camCur = window.scrollY;
       // Real trigger: the kid just finished a lesson → play the unlock sequence.
