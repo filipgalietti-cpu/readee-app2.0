@@ -819,7 +819,6 @@ function ChildDashboard({
     ? [
         { num: "1", label: "Take the reading quiz", sub: "Finds your just-right level", status: "cur", href: `/assessment?child=${child.id}` },
         { num: "2", label: "Your first lesson", sub: "Readee reads along with you", status: "todo" },
-        { num: "3", label: "Meet your Reading Buddy", sub: "Say hi - it talks back!", status: "todo", href: `/buddy?child=${child.id}` },
       ]
     : [
         weakStandard

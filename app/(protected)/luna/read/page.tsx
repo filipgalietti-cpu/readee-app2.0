@@ -76,7 +76,7 @@ export default async function LunaReadPage({
       .select("id", { count: "exact", head: true })
       .eq("child_id", child.id);
     if ((count ?? 0) >= FREE_LIMITS.lunaReadsFree) {
-      redirect("/upgrade?reason=reading_buddy");
+      redirect("/upgrade?reason=tools_hub");
     }
   }
 

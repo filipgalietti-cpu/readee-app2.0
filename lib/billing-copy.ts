@@ -105,21 +105,6 @@ export const REASON_COPY: Record<string, { title: string; subtitle: string }> = 
     subtitle:
       "Lessons, stories, practice, parent reports - Readee+ removes every gate.",
   },
-  ask_readee: {
-    title: "Ask Readee. Get a passage.",
-    subtitle:
-      "Generate a reading passage on any topic in seconds - kid-safe, level-perfect, with audio + comprehension questions baked in. Readee+ only.",
-  },
-  homework_scan: {
-    title: "Snap any worksheet, get instant practice.",
-    subtitle:
-      "Take a photo of a school packet. Readee identifies the skill being tested and pulls live practice on the same standard. Readee+ only.",
-  },
-  reading_buddy: {
-    title: "A reading partner that listens back.",
-    subtitle:
-      "Live conversational AI that reads stories, coaches pronunciation, and remembers what you read together. Readee+ only.",
-  },
   smart_search: {
     title: "Find any passage by what it's about.",
     subtitle:

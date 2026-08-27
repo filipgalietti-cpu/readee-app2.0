@@ -313,7 +313,6 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     "/dashboard",
     "/practice-hub",
     "/practice",
-    "/buddy",
     "/luna",
     "/journey",
     "/stories",

@@ -3,11 +3,9 @@ import { notFound } from "next/navigation";
 import {
   Brain,
   Sparkles,
-  Camera,
   Notebook,
   ClipboardCheck,
   FileSpreadsheet,
-  Mic2,
   Languages,
   Wand2,
   ArrowRight,
@@ -30,26 +28,6 @@ const TOOLS: {
   color: string;
   minTier: Tier;
 }[] = [
-  {
-    id: "buddy",
-    title: "Reading Buddy",
-    desc: "Voice-to-voice AI tutor. Kids talk, Readee answers warmly.",
-    href: "/buddy",
-    icon: Mic2,
-    tag: "Voice",
-    color: "from-violet-500 to-indigo-600",
-    minTier: "premium",
-  },
-  {
-    id: "homework-scan",
-    title: "Homework Scanner",
-    desc: "Snap a worksheet → get the CCSS standard + practice instantly.",
-    href: "/dashboard/homework-scan",
-    icon: Camera,
-    tag: "Vision",
-    color: "from-emerald-500 to-teal-600",
-    minTier: "premium",
-  },
   {
     id: "writing",
     title: "Writing Rubric",
