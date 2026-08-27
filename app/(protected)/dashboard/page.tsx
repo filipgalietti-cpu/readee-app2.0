@@ -9,6 +9,8 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
+import { computeJourneyProgress } from "@/lib/journey/next-lesson";
+import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import LevelProgressBar from "@/app/_components/LevelProgressBar";
 import { useChildStore } from "@/lib/stores/child-store";
@@ -459,6 +461,7 @@ function ChildDashboard({
   const [hasAssessment, setHasAssessment] = useState<boolean | null>(null);
   const [readingLevel, setReadingLevel] = useState<string | null>(child.reading_level);
   const [lessonProgress, setLessonProgress] = useState<LessonProgress[]>([]);
+  const [practiceRows, setPracticeRows] = useState<{ standard_id: string; questions_correct: number }[]>([]);
   const [showCurriculum, setShowCurriculum] = useState(false);
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
   const userPlan = usePlanStore((s) => s.rawPlan) ?? "free";
@@ -534,35 +537,26 @@ function ChildDashboard({
     fetchPurchases();
   }, [child.id]);
 
-  // Compute lesson data for CTA
-  const file = lessonsData as unknown as LessonsFile;
-  const gradeKey = levelNameToGradeKey(readingLevel);
-  const level = file.levels[gradeKey];
-  const lessons = level?.lessons || [];
+  // Next lesson, computed the SAME way the Journey does (single source of
+  // truth) so the CTA, Today's plan, and the journey card all mirror the path.
+  const journeyCatalog = sampleLessons as { standardId: string; grade: string; domain: string; title: string }[];
+  const freeUnitDomain = firstUnitDomainByGrade(journeyCatalog);
+  const jp = computeJourneyProgress({
+    practice: practiceRows,
+    lessonProgress: lessonProgress.map((p) => ({ lesson_id: p.lesson_id, section: p.section, score: p.score })),
+    readingLevel,
+  });
+  const nextLesson = jp.current; // { standardId, title, grade, domain } | null
+  const completedCount = jp.gradeDone; // grade-level, for the badge milestone
+  const gradeTotal = jp.gradeTotal;
+  const unitPct = jp.unitTotal > 0 ? jp.unitDone / jp.unitTotal : 0;
+  const nextLessonHref = nextLesson ? `/learn?child=${child.id}&standard=${nextLesson.standardId}` : "#";
 
-  const isLessonComplete = (lessonId: string) => {
-    return lessonProgress.some(
-      (p) => p.lesson_id === lessonId && p.section === "practice" && p.score >= 60
-    );
-  };
-
-  const completedCount = lessons.filter((l) => isLessonComplete(l.id)).length;
-  let nextLesson: LessonData | null = null;
-  let nextLessonIdx = -1;
-  for (let i = 0; i < lessons.length; i++) {
-    if (!isLessonComplete(lessons[i].id)) {
-      nextLesson = lessons[i];
-      nextLessonIdx = i;
-      break;
-    }
-  }
-
-  // Recent completed lessons (last 3, newest first)
-  const recentCompleted = lessons
-    .map((l, i) => ({ lesson: l, idx: i }))
-    .filter(({ lesson }) => isLessonComplete(lesson.id))
-    .slice(-3)
-    .reverse();
+  // Recent completed (dead ParentSidebar shape, kept type-valid).
+  const recentCompleted = jp.recentCompleted.map((l) => ({
+    lesson: { id: l.standardId, title: l.title, skill: "" },
+    idx: 0,
+  }));
 
   // Get completion dates from progress
   const getCompletionDate = (lessonId: string) => {
@@ -646,6 +640,7 @@ function ChildDashboard({
         .from("practice_results")
         .select("standard_id, questions_correct, questions_attempted, completed_at")
         .eq("child_id", child.id);
+      setPracticeRows((data ?? []).map((r) => ({ standard_id: String((r as { standard_id?: string }).standard_id ?? ""), questions_correct: Number((r as { questions_correct?: number }).questions_correct) || 0 })));
       if (!data || data.length === 0) { setWeakStandard(null); setMasteredCount(0); return; }
       const agg: Record<string, { correct: number; attempted: number }> = {};
       const recent: Record<string, { correct: number; attempted: number }> = {};
@@ -675,7 +670,7 @@ function ChildDashboard({
         if (!worst || acc < worst.acc) worst = { standardId: s, acc };
       }
       if (!worst) { setWeakStandard(null); return; }
-      const match = lessons.find((l) => lessonToLearnStandard(l) === worst!.standardId);
+      const match = journeyCatalog.find((l) => l.standardId === worst!.standardId);
       setWeakStandard({ standardId: worst.standardId, title: match?.title ?? worst.standardId });
     }
     findWeakSkill();
@@ -773,14 +768,8 @@ function ChildDashboard({
     return { id, name: o.name, tint: o.tint, border: o.border, owned: ownedOutfitIds.has(id) };
   });
 
-  // Primary CTA + today's plan, grounded in real state.
-  const nextStandardId = nextLesson ? lessonToLearnStandard(nextLesson) : null;
-  const nextLessonHref = nextLesson
-    ? (nextStandardId
-        ? `/learn?standard=${nextStandardId}&child=${child.id}`
-        : `/lesson?child=${child.id}&lesson=${nextLesson.id}`)
-    : `/practice-hub?child=${child.id}`;
-
+  // Primary CTA + today's plan, grounded in real state (nextLessonHref computed
+  // above from the shared Journey helper — always the /learn route).
   const cta = firstDay
     ? { href: `/assessment?child=${child.id}`, text: "Take your reading quiz", sub: "A fun 10-question quiz · about 5 min" }
     : nextLesson
@@ -813,7 +802,9 @@ function ChildDashboard({
   const upgradeHref = `/upgrade?reason=${lapsed ? "winback" : "momentum"}&child=${child.id}`;
   // Post-trial free = 1 lesson/grade; lock the next lesson so the free/paid line
   // is honest + visible. Full-access readers (paid or in-trial) never see it.
-  const lessonLocked = !accessFull && (completedCount >= 1 || previewMode === "free" || lapsed) && !!nextLesson;
+  // Locked when the next lesson is beyond the free first unit (matches the real
+  // /learn gate) — not a "done >= 1" heuristic.
+  const lessonLocked = !accessFull && !!nextLesson && (previewMode === "free" || !isLessonInFreeUnit({ grade: nextLesson.grade, domain: nextLesson.domain }, freeUnitDomain));
 
   const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string; locked?: boolean }> = (firstDay && !previewing)
     ? [
@@ -832,14 +823,15 @@ function ChildDashboard({
   const goalTotal = planSteps.filter((s) => !s.locked).length;
   const goalDone = planSteps.filter((s) => s.status === "done" && !s.locked).length;
 
-  // Path teaser nodes from real completion within the current grade.
-  const pathRatio = lessons.length > 0 ? completedCount / lessons.length : 0;
+  // Grade-level ratio powers the momentum "badge" milestone; unitPct (above)
+  // powers the path teaser.
+  const pathRatio = gradeTotal > 0 ? completedCount / gradeTotal : 0;
 
   // Momentum — the "getting better" proof that heads the dashboard and drives
   // the day-7 upgrade card. Same delta data will feed the parent report + email.
   let gradeName = prettyLevel(child.reading_level);
   if (previewing && gradeName === "just-right") gradeName = "Grade 1";
-  const remainingLessons = Math.max(0, lessons.length - completedCount);
+  const remainingLessons = Math.max(0, gradeTotal - completedCount);
   const momentum = (firstDay && !previewing) ? null : {
     levelName: gradeName,
     skillsMastered: masteredCount,
@@ -848,7 +840,7 @@ function ChildDashboard({
       ? `${remainingLessons} lesson${remainingLessons === 1 ? "" : "s"} to your ${gradeName} badge`
       : `You finished every ${gradeName} lesson!`,
   };
-  const doneNodes = Math.min(4, Math.max(0, Math.round(pathRatio * 5)));
+  const doneNodes = Math.min(4, Math.max(0, Math.round(unitPct * 5)));
   const pathNodes: Array<"done" | "cur" | "lock"> = firstDay
     ? ["cur", "lock", "lock", "lock", "lock"]
     : Array.from({ length: 5 }, (_, i) => (i < doneNodes ? "done" : i === doneNodes ? "cur" : "lock"));
@@ -895,8 +887,8 @@ function ChildDashboard({
     path: {
       nodes: pathNodes,
       unitTitle: firstDay ? "Reading Journey" : nextLesson ? nextLesson.title : "Reading Journey",
-      unitPct: Math.round(pathRatio * 100),
-      unitSub: firstDay ? "Your adventure starts here" : `${completedCount} of ${lessons.length} lessons done`,
+      unitPct: Math.round(unitPct * 100),
+      unitSub: firstDay ? "Your adventure starts here" : nextLesson ? `${jp.unitDone} of ${jp.unitTotal} in ${jp.unitName}` : "You finished them all!",
       href: `/journey?child=${child.id}`,
     },
     weekSub: firstDay ? "Your chart starts today" : "Keep the bars growing!",
