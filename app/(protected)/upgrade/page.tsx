@@ -285,10 +285,10 @@ function UpgradeContent() {
 
         {/* Trust signal row directly under the price card — close to the
             CTA for max impact. */}
-        <ul className="mx-auto flex max-w-md flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[11px] font-semibold text-zinc-500">
+        <ul className="mx-auto grid w-fit grid-cols-1 gap-x-6 gap-y-1.5 text-[11px] font-semibold text-zinc-500 sm:grid-cols-2">
           {TRUST_SIGNALS.map((t) => (
-            <li key={t} className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="h-3 w-3 text-emerald-500" strokeWidth={2.4} />
+            <li key={t} className="flex items-center gap-1.5">
+              <ShieldCheck className="h-3 w-3 flex-none text-emerald-500" strokeWidth={2.4} />
               {t}
             </li>
           ))}
