@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, Sparkles, Lock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
-import { hasAnyPaidTier } from "@/lib/plan/teacher-gate";
+import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import StoryStudio from "./_components/StoryStudio";
 
@@ -57,7 +57,8 @@ export default async function StoryStudioPage() {
     );
   }
 
-  const isPremium = hasAnyPaidTier((profile.plan ?? "free") as string);
+  // Trial-aware: a reader inside the 7-day reverse trial passes too.
+  const isPremium = hasFullAccessFromProfile(profile);
 
   if (!isPremium) {
     return (

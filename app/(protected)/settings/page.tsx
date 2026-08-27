@@ -120,6 +120,9 @@ export default function Settings() {
 
   // Plan
   const userPlan = usePlanStore((s) => s.rawPlan) ?? "free";
+  // Effective plan (trial -> premium) for the reader-count gate. rawPlan above
+  // stays for billing UI (a trial user isn't actually subscribed).
+  const planEff = usePlanStore((s) => s.plan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
   const setStorePlan = usePlanStore((s) => s.setPlan);
   const [billingBusy, setBillingBusy] = useState(false);
@@ -310,9 +313,11 @@ export default function Settings() {
   // === Add Child ===
   async function handleAddChild() {
     if (!newChild.name.trim()) return;
-    // Additional readers are a Readee+ feature (first reader is free).
-    if (!isPremium && children.length >= 1) {
-      router.push("/upgrade?reason=multi_reader");
+    // Readers: 1 free, up to 2 with full access. Free hits the upsell; a
+    // full-access parent at the cap gets a plain "max 2" note.
+    if (children.length >= maxReaders) {
+      if (maxReaders === 1) router.push("/upgrade?reason=multi_reader");
+      else flash("You can have up to 2 readers on Readee+.");
       return;
     }
     setAddingChild(true);
@@ -502,6 +507,9 @@ export default function Settings() {
   const childForReset = children.find((c) => c.id === resetChildId);
   const childForRemove = children.find((c) => c.id === removeChildId);
   const isPremium = userPlan === "premium";
+  // Readers: 1 on free, up to 2 with full access (trial or paid).
+  const readerFull = planEff === "premium";
+  const maxReaders = readerFull ? 2 : 1;
 
   const tabs: Array<[string, string]> = [
     ["sec-profile", "Profile"],
@@ -707,13 +715,13 @@ export default function Settings() {
 
             {/* Add a reader */}
             {!showAddChild ? (
-              <button onClick={() => { if (!isPremium && children.length >= 1) { router.push("/upgrade?reason=multi_reader"); } else { setShowAddChild(true); } }}
+              <button onClick={() => { if (children.length >= maxReaders) { if (maxReaders === 1) router.push("/upgrade?reason=multi_reader"); else flash("You can have up to 2 readers on Readee+."); } else { setShowAddChild(true); } }}
                 style={{ border: "1.5px dashed #d4d4d8", borderRadius: 20, background: "#fafafa", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "inherit", minHeight: 150 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  {!isPremium && children.length >= 1 ? <Sparkles className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} /> : <Plus className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} />}
+                  {!readerFull && children.length >= 1 ? <Sparkles className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} /> : <Plus className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} />}
                 </div>
                 <span style={{ fontSize: 14, fontWeight: 600, color: "#3f3f46" }}>Add a reader</span>
-                <span style={{ fontSize: 11.5, color: "#6b7280" }}>{!isPremium && children.length >= 1 ? "Add more readers with Readee+" : "Included with Readee+"}</span>
+                <span style={{ fontSize: 11.5, color: "#6b7280" }}>{!readerFull && children.length >= 1 ? "Add more readers with Readee+" : "Included with Readee+"}</span>
               </button>
             ) : (
               <div style={{ border: "1px solid #c7d2fe", borderRadius: 20, background: "#eef2ff", padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>

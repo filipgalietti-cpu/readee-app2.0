@@ -3,6 +3,8 @@ import { createClient } from "@/lib/supabase/server";
 import { generatePassage } from "@/lib/ai/readee-ai";
 import { getTargetPattern, gradeToken } from "@/lib/luna/target-pattern";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { hasFullAccessFromProfile } from "@/lib/plan/access";
+import { FREE_LIMITS } from "@/lib/plan/limits";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -45,8 +47,26 @@ export async function POST(req: Request) {
   if ((child as any).parent_id !== user.id) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
-  // Luna is a free-taste feature: any signed-in parent-of-child may use it; the
-  // free allowance is enforced at the read page / studio, not here.
+  // Free allowance (server-enforced so it can't be bypassed): full-access
+  // readers (paid or inside the 7-day reverse trial) generate unlimited
+  // stories; a genuinely-free reader gets personalizedStoriesFree taste
+  // generations, then a 402 that LunaCreate turns into the Readee+ wall.
+  const admin = supabaseAdmin();
+  const { data: prof } = await admin
+    .from("profiles")
+    .select("plan, created_at, had_subscription")
+    .eq("id", user.id)
+    .maybeSingle();
+  if (!hasFullAccessFromProfile(prof as { plan?: string | null; created_at?: string | null; had_subscription?: boolean | null } | null)) {
+    const { count } = await admin
+      .from("child_ai_content")
+      .select("id", { count: "exact", head: true })
+      .eq("child_id", childId)
+      .eq("kind", "luna_reading");
+    if ((count ?? 0) >= FREE_LIMITS.personalizedStoriesFree) {
+      return NextResponse.json({ error: "limit", reason: "personalized_stories" }, { status: 402 });
+    }
+  }
 
   // Anti-repeat: same topic + same pattern makes the model converge on nearly
   // the same story ("I already saw this one!"). Tell it what this child has
