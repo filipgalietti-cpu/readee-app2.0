@@ -44,6 +44,7 @@ export async function GET(req: NextRequest) {
     .select("id, first_name, carrots, equipped_items")
     .neq("id", me.id)
     .eq("owner_type", "parent") // B2C board = parent-owned kids only, never classroom/demo students
+    .eq("exclude_from_leaderboard", false) // hide dev/test/non-genuine accounts
     .gt("carrots", 0)
     .order("carrots", { ascending: false })
     .limit(8);
