@@ -44,6 +44,8 @@ export interface CohortEntry {
   carrots: number;
   isMe: boolean;
   avatar: string;
+  /** Fictional rival (safe to nudge for feels-good clamps) vs a real child. */
+  seeded?: boolean;
 }
 
 // Default avatar paths for seeded (fictional) rivals, so every row has a PFP.
@@ -106,6 +108,7 @@ export function buildCohort(
     carrots: Math.max(0, Math.round(p.carrots)),
     isMe: false,
     avatar: p.avatar,
+    seeded: false,
   }));
 
   // Fill the rest of the board with seeded fictional rivals so it never looks
@@ -125,6 +128,7 @@ export function buildCohort(
       carrots: Math.max(20, RUNGS[i] + jitter),
       isMe: false,
       avatar: SEEDED_AVATARS[i % SEEDED_AVATARS.length],
+      seeded: true,
     };
   });
 
@@ -134,17 +138,20 @@ export function buildCohort(
     carrots: Math.max(0, Math.round(childCarrots)),
     isMe: true,
     avatar: childAvatar,
+    seeded: false,
   };
 
   const all = [...real, ...seeded, me].sort((a, b) => b.carrots - a.carrots);
 
   // Feels-good clamps: never strand the kid alone at the very top or bottom.
+  // ONLY nudge SEEDED (fictional) rivals — never rewrite a real child's real
+  // carrot count (that would show a false number for an actual user).
   const myIdx = all.findIndex((e) => e.isMe);
-  if (all.length > 1 && myIdx === 0) {
-    // Kid is #1 → raise the runner-up just above so there's a target.
+  if (all.length > 1 && myIdx === 0 && all[1].seeded) {
+    // Kid is #1 → raise the (fictional) runner-up just above so there's a target.
     all[1].carrots = me.carrots + 20 + Math.floor(rand() * 100);
-  } else if (all.length > 1 && myIdx === all.length - 1 && me.carrots > 25) {
-    // Kid is last → drop the next-lowest just below so they're not rock-bottom.
+  } else if (all.length > 1 && myIdx === all.length - 1 && me.carrots > 25 && all[all.length - 2].seeded) {
+    // Kid is last → drop the (fictional) next-lowest just below so they're not rock-bottom.
     all[all.length - 2].carrots = Math.max(5, me.carrots - (10 + Math.floor(rand() * 40)));
   }
   all.sort((a, b) => b.carrots - a.carrots);
