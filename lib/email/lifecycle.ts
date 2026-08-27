@@ -23,11 +23,11 @@ import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 const FROM = "Readee <hello@readee.app>";
-const BASE_URL = "https://learn.readee.app";
+export const BASE_URL = "https://learn.readee.app";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-type Stage = "welcome" | "first_lesson_nudge" | "re_engage";
+type Stage = "welcome" | "first_lesson_nudge" | "trial_ending" | "re_engage";
 
 type ParentRow = {
   id: string;
@@ -35,6 +35,7 @@ type ParentRow = {
   display_name: string | null;
   created_at: string;
   email_weekly_digest: boolean;
+  plan: string | null;
 };
 
 function unsubscribeToken(parentId: string): string {
@@ -44,7 +45,7 @@ function unsubscribeToken(parentId: string): string {
   return b64;
 }
 
-function escapeHtml(s: string | null | undefined): string {
+export function escapeHtml(s: string | null | undefined): string {
   if (!s) return "";
   return s
     .replace(/&/g, "&amp;")
@@ -54,7 +55,7 @@ function escapeHtml(s: string | null | undefined): string {
     .replace(/'/g, "&#39;");
 }
 
-function shell(opts: {
+export function shell(opts: {
   preheader: string;
   parentName: string | null;
   bodyHtml: string;
@@ -393,6 +394,37 @@ async function lastActivityAt(parentId: string): Promise<Date | null> {
   return new Date(Math.max(...candidates.map((d) => d.getTime())));
 }
 
+function renderTrialEnding(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
+  const subject = kidName ? `${kidName}'s Readee+ trial ends tomorrow` : "Your Readee+ trial ends tomorrow";
+  const lead = `${kidName ? `${kidName}'s` : "Your"} 7-day free trial ends tomorrow. Keep Readee+ so every lesson, Luna, and all the progress keep going without interruption.`;
+  const text = [
+    parentName ? `Hi ${parentName},` : "Hi there,",
+    "",
+    lead,
+    "",
+    `Keep Readee+: ${BASE_URL}/upgrade`,
+    "$6.99/mo billed yearly. Cancel anytime.",
+    "",
+    `Unsubscribe: ${unsubscribeUrl}`,
+    "- Readee",
+  ].join("\n");
+  const bodyHtml = `
+    <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;text-align:center;">${escapeHtml(lead)}</p>
+    <p style="margin:12px 0 0;font-size:13px;color:#6b7280;text-align:center;">$6.99/mo billed yearly &middot; cancel anytime</p>`;
+  const html = shell({
+    preheader: "Your free trial ends tomorrow.",
+    parentName,
+    eyebrow: "Trial ending",
+    heading: kidName ? `${kidName}'s trial ends tomorrow` : "Your trial ends tomorrow",
+    bunny: "bunny-cheer.png",
+    bodyHtml,
+    ctaHref: `${BASE_URL}/upgrade`,
+    ctaLabel: "Keep Readee+",
+    unsubscribeUrl,
+  });
+  return { subject, text, html };
+}
+
 type StageResult =
   | { ok: true; sent: true; stage: Stage }
   | { ok: true; sent: false; reason: string }
@@ -463,6 +495,28 @@ export async function evaluateAndSendLifecycle(parent: ParentRow): Promise<Stage
     }
   }
 
+  // Stage 2.5: trial ending — day 6, the last full day of the 7-day reverse
+  // trial, for parents who haven't converted yet. The conversion nudge: on a
+  // no-card trial, this day-6 email is the load-bearing push.
+  if (ageDays >= 6 && ageDays < 7 && parent.plan !== "premium" && parent.plan !== "teacher_solo") {
+    if (!(await alreadySentEver(parent.id, "trial_ending"))) {
+      const kidName = await firstKidName(parent.id);
+      const email = renderTrialEnding(displayName, kidName, unsubscribeUrl);
+      const res = await sendEmail({
+        to: parent.email,
+        subject: email.subject,
+        text: email.text,
+        html: email.html,
+      });
+      if (!res.ok) {
+        await recordSend(parent.id, "trial_ending", "failed", res.error);
+        return { ok: false, error: res.error, stage: "trial_ending" };
+      }
+      await recordSend(parent.id, "trial_ending", "sent");
+      return { ok: true, sent: true, stage: "trial_ending" };
+    }
+  }
+
   // Stage 3: re-engage — kid hasn't been active for 7+ days. Sent at
   // most once every 7 days, and not in the first 7 days of signup
   // (welcome/first-lesson cover that period).
@@ -508,13 +562,14 @@ export async function sendLifecycleBatch(): Promise<{
   const admin = supabaseAdmin();
   const { data: parents } = await admin
     .from("profiles")
-    .select("id, email, display_name, created_at, email_weekly_digest")
+    .select("id, email, display_name, created_at, email_weekly_digest, plan")
     .eq("email_weekly_digest", true)
     .not("email", "is", null);
 
   const byStage: Record<Stage, number> = {
     welcome: 0,
     first_lesson_nudge: 0,
+    trial_ending: 0,
     re_engage: 0,
   };
   let sent = 0;
