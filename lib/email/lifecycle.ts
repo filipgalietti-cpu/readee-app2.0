@@ -99,8 +99,8 @@ export function shell(opts: {
           <tr><td align="center" style="padding-top:22px;">
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 12px;"><tr>
               <td style="padding:0 5px;"><a href="https://instagram.com/readee.app"><img src="${BASE_URL}/images/ui/social/instagram.png" alt="Instagram" width="28" height="28" style="display:block;width:28px;height:28px;border:0;outline:none;text-decoration:none;" /></a></td>
-              <td style="padding:0 5px;"><a href="https://x.com/readee.app"><img src="${BASE_URL}/images/ui/social/x.png" alt="X" width="28" height="28" style="display:block;width:28px;height:28px;border:0;outline:none;text-decoration:none;" /></a></td>
-              <td style="padding:0 5px;"><a href="https://facebook.com/readee.app"><img src="${BASE_URL}/images/ui/social/facebook.png" alt="Facebook" width="28" height="28" style="display:block;width:28px;height:28px;border:0;outline:none;text-decoration:none;" /></a></td>
+              <td style="padding:0 5px;"><a href="https://x.com/ReadeeLearning"><img src="${BASE_URL}/images/ui/social/x.png" alt="X" width="28" height="28" style="display:block;width:28px;height:28px;border:0;outline:none;text-decoration:none;" /></a></td>
+              <td style="padding:0 5px;"><a href="https://www.facebook.com/profile.php?id=61593589711136"><img src="${BASE_URL}/images/ui/social/facebook.png" alt="Facebook" width="28" height="28" style="display:block;width:28px;height:28px;border:0;outline:none;text-decoration:none;" /></a></td>
               <td style="padding:0 5px;"><a href="https://tiktok.com/@readee.app"><img src="${BASE_URL}/images/ui/social/tiktok.png" alt="TikTok" width="28" height="28" style="display:block;width:28px;height:28px;border:0;outline:none;text-decoration:none;" /></a></td>
             </tr></table>
             <p style="margin:0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.8;">
