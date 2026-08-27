@@ -43,6 +43,7 @@ export async function GET(req: NextRequest) {
     .from("children")
     .select("id, first_name, carrots, equipped_items")
     .neq("id", me.id)
+    .eq("owner_type", "parent") // B2C board = parent-owned kids only, never classroom/demo students
     .gt("carrots", 0)
     .order("carrots", { ascending: false })
     .limit(8);
