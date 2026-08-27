@@ -102,9 +102,9 @@ export default function RootLayout({
         <footer className="bg-[#1e1b4b] mt-auto">
           <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-14 pb-8">
             {/* ── Top: columns ── */}
-            <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:grid-cols-6">
+            <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5">
               {/* Brand column */}
-              <div className="col-span-2 sm:col-span-4 lg:col-span-2 mb-4 lg:mb-0">
+              <div className="col-span-2 sm:col-span-3 lg:col-span-2 mb-4 lg:mb-0">
                 <span className="text-2xl font-extrabold tracking-tight text-white">read<span className="text-indigo-300">ee</span></span>
                 <p className="mt-2 text-lg font-bold text-white">Unlock Reading</p>
                 <p className="mt-1 text-sm text-white leading-relaxed max-w-[220px]">
@@ -154,21 +154,6 @@ export default function RootLayout({
                   <li><Link href="/terms-of-service" className="text-sm text-white hover:text-indigo-300 transition-colors">Terms of Service</Link></li>
                   <li><Link href="/feedback" className="text-sm text-white hover:text-indigo-300 transition-colors">Feedback</Link></li>
                 </ul>
-              </div>
-
-              {/* Mobile */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-indigo-400 mb-4">Mobile</h4>
-                <div className="space-y-2">
-                  <div className="h-9 px-3 rounded-lg bg-white/[0.08] border border-white/[0.1] flex items-center gap-2 text-white text-xs font-medium w-fit">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                    App Store
-                  </div>
-                  <div className="h-9 px-3 rounded-lg bg-white/[0.08] border border-white/[0.1] flex items-center gap-2 text-white text-xs font-medium w-fit">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.04l2.651 1.535c.9.521.9 1.075 0 1.596l-2.651 1.535-2.535-2.535 2.535-2.131zM5.864 3.469L16.8 9.802l-2.302 2.302-8.634-8.635z"/></svg>
-                    Google Play
-                  </div>
-                </div>
               </div>
             </div>
 
