@@ -970,16 +970,14 @@ function ChildDashboard({
         {/* "Fresh for you" removed — it duplicated the Today's Readee card
             below and rendered as an out-of-place tile. */}
 
-        {/* ── Deeper cards (kept from the previous dashboard) ── */}
-        <motion.div variants={slideUp} className="mx-auto w-full max-w-3xl space-y-5">
-
-        {/* ── Today's Readee — daily question ritual ──
-            Demoted from position 5 to here so the action stack on
-            top stays focused. Still a high-engagement card; it just
-            lives below the six tiles now. */}
+        {/* Today's Readee: full-width so it lines up with the quick-play
+            tiles directly above it, not the narrower deeper-cards column. */}
         <motion.div variants={slideUp}>
           <DailyQuestionCard variant="parent" />
         </motion.div>
+
+        {/* ── Deeper cards (kept from the previous dashboard) ── */}
+        <motion.div variants={slideUp} className="mx-auto w-full max-w-3xl space-y-5">
 
         {/* ── Sharpen Up — premium adaptive review.
             Self-hides when the kid has no weak spots in the last
