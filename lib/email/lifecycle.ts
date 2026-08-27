@@ -96,11 +96,16 @@ export function shell(opts: {
               <a href="${opts.ctaHref}" style="display:inline-block;background:#4f46e5;color:#ffffff;padding:13px 26px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;">${escapeHtml(opts.ctaLabel)}</a>
             </div>
           </td></tr>
-          <tr><td align="center" style="padding-top:22px;"><p style="margin:0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.8;">
-            <a href="https://instagram.com/readee.app" style="color:#4f46e5;text-decoration:none;">Instagram</a> &middot; <a href="https://tiktok.com/@readee.app" style="color:#4f46e5;text-decoration:none;">TikTok</a><br/>
-            You're getting this because you have a Readee account.<br/>
-            <a href="${opts.unsubscribeUrl}" style="color:#a1a1aa;">Unsubscribe</a>
-          </p></td></tr>
+          <tr><td align="center" style="padding-top:22px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 12px;"><tr>
+              <td style="padding:0 5px;"><a href="https://instagram.com/readee.app"><img src="${BASE_URL}/images/ui/social/instagram.png" alt="Instagram" width="28" height="28" style="display:block;width:28px;height:28px;border:0;outline:none;text-decoration:none;" /></a></td>
+              <td style="padding:0 5px;"><a href="https://tiktok.com/@readee.app"><img src="${BASE_URL}/images/ui/social/tiktok.png" alt="TikTok" width="28" height="28" style="display:block;width:28px;height:28px;border:0;outline:none;text-decoration:none;" /></a></td>
+            </tr></table>
+            <p style="margin:0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.8;">
+              You're getting this because you have a Readee account.<br/>
+              <a href="${opts.unsubscribeUrl}" style="color:#a1a1aa;">Unsubscribe</a>
+            </p>
+          </td></tr>
         </table>
       </td></tr>
     </table>
