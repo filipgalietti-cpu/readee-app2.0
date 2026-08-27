@@ -61,34 +61,47 @@ function shell(opts: {
   ctaHref: string;
   ctaLabel: string;
   unsubscribeUrl: string;
+  /** Specific headline (design). Falls back to the "Hi {name}," greeting. */
+  heading?: string;
+  /** Uppercase eyebrow above the heading. */
+  eyebrow?: string;
+  /** Bunny mascot filename in /images/ui, e.g. "bunny-welcome.png". */
+  bunny?: string;
 }): string {
   const greeting = opts.parentName ? `Hi ${opts.parentName},` : "Hi there,";
+  const heading = opts.heading ?? greeting;
+  const bunnyImg = opts.bunny
+    ? `<tr><td align="center"><img src="${BASE_URL}/images/ui/${opts.bunny}" alt="" width="88" style="display:block;width:88px;height:auto;margin:0 auto 14px;" /></td></tr>`
+    : "";
+  const eyebrowHtml = opts.eyebrow
+    ? `<tr><td align="center"><p style="margin:0 0 6px;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#4338ca;">${escapeHtml(opts.eyebrow)}</p></td></tr>`
+    : "";
   return `<!doctype html>
 <html>
-  <body style="margin:0;padding:0;background:#f7f7fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#18181b;">
-    <div style="display:none;max-height:0;overflow:hidden;color:#f7f7fb;">${escapeHtml(opts.preheader)}</div>
-    <table width="100%" cellpadding="0" cellspacing="0" style="padding:32px 16px;">
-      <tr>
-        <td align="center">
-          <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;">
-            <tr>
-              <td>
-                <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#4f46e5;text-transform:uppercase;">Readee</div>
-                <h1 style="margin:8px 0 0;font-size:24px;font-weight:800;color:#18181b;">${escapeHtml(greeting)}</h1>
-                ${opts.bodyHtml}
-                <div style="margin-top:24px;text-align:center;">
-                  <a href="${opts.ctaHref}" style="display:inline-block;background:#4f46e5;color:#ffffff;padding:12px 24px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;">${escapeHtml(opts.ctaLabel)}</a>
-                </div>
-                <p style="margin:32px 0 0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.6;">
-                  You're getting this because you have a Readee account.<br/>
-                  <a href="https://instagram.com/readee.app" style="color:#a1a1aa;">Instagram</a> &middot; <a href="https://tiktok.com/@readee.app" style="color:#a1a1aa;">TikTok</a><br/>
-                  <a href="${opts.unsubscribeUrl}" style="color:#a1a1aa;">Unsubscribe</a>
-                </p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+  <body style="margin:0;padding:0;background:#f6f5f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#18181b;">
+    <div style="display:none;max-height:0;overflow:hidden;color:#f6f5f2;">${escapeHtml(opts.preheader)}</div>
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="padding:32px 16px;background:#f6f5f2;">
+      <tr><td align="center">
+        <table width="560" cellpadding="0" cellspacing="0" role="presentation" style="max-width:560px;width:100%;">
+          <tr><td align="center" style="padding-bottom:20px;"><img src="${BASE_URL}/readee-logo.png" alt="Readee" width="128" style="display:block;width:128px;height:auto;" /></td></tr>
+          <tr><td style="background:#ffffff;border:1px solid #ececf0;border-radius:20px;padding:34px 32px;box-shadow:0 10px 40px -18px rgba(49,46,129,.18);">
+            <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+              ${bunnyImg}
+              ${eyebrowHtml}
+              <tr><td align="center"><h1 style="margin:0;font-size:22px;font-weight:800;color:#1e1b4b;line-height:1.2;">${escapeHtml(heading)}</h1></td></tr>
+            </table>
+            ${opts.bodyHtml}
+            <div style="margin-top:24px;text-align:center;">
+              <a href="${opts.ctaHref}" style="display:inline-block;background:#4f46e5;color:#ffffff;padding:13px 26px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;">${escapeHtml(opts.ctaLabel)}</a>
+            </div>
+          </td></tr>
+          <tr><td align="center" style="padding-top:22px;"><p style="margin:0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.8;">
+            <a href="https://instagram.com/readee.app" style="color:#4f46e5;text-decoration:none;">Instagram</a> &middot; <a href="https://tiktok.com/@readee.app" style="color:#4f46e5;text-decoration:none;">TikTok</a><br/>
+            You're getting this because you have a Readee account.<br/>
+            <a href="${opts.unsubscribeUrl}" style="color:#a1a1aa;">Unsubscribe</a>
+          </p></td></tr>
+        </table>
+      </td></tr>
     </table>
   </body>
 </html>`;
@@ -127,6 +140,9 @@ function renderWelcome(parentName: string | null, kidName: string | null, unsubs
   const html = shell({
     preheader: "Your first Readee lesson is ready.",
     parentName,
+    eyebrow: "Welcome aboard",
+    heading: kidName ? `Let's start ${kidName}'s first lesson` : "Let's start your first lesson",
+    bunny: "bunny-welcome.png",
     bodyHtml,
     ctaHref: `${BASE_URL}/dashboard`,
     ctaLabel: "Start the first lesson",
@@ -188,6 +204,9 @@ function renderFirstLessonNudge(
   const html = shell({
     preheader: "A 10-minute lesson tonight makes tomorrow easier.",
     parentName,
+    eyebrow: "Quick start",
+    heading: kidName ? `Ready for ${kidName}'s first lesson?` : "Ready for the first lesson?",
+    bunny: "bunny-reading.png",
     bodyHtml,
     ctaHref: `${BASE_URL}/dashboard`,
     ctaLabel: "Start tonight's lesson",
@@ -232,6 +251,9 @@ function renderReEngage(
   const html = shell({
     preheader: "One short session rebuilds the streak.",
     parentName,
+    eyebrow: "Come back",
+    heading: kidName ? `${kidName} hasn't read in ${daysSince} days` : `Your reader has been away ${daysSince} days`,
+    bunny: "bunny-reading.png",
     bodyHtml,
     ctaHref: `${BASE_URL}/today`,
     ctaLabel: "Try a quick session",
