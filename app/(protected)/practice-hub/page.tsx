@@ -308,8 +308,10 @@ function PracticeHubContent() {
   // Hooks. Previously placed below `if (loading) return …`, which
   // caused React error #310 (more hooks rendered after data loaded
   // than before) — that crash is what broke /practice-hub in prod.
-  // Default to the kid's own grade once loaded. All domains start
-  // collapsed (kid taps one to open); switching grades also folds all.
+  // Default to the kid's READING LEVEL (placement-owned), NOT their enrolled
+  // grade — we practice where they actually read. A 4th grader reading at a
+  // 1st-grade level opens on 1st; the grade picker lets them switch up. The
+  // switcher shows a "just right for {name}" note so this doesn't read as a bug.
   useEffect(() => {
     if (child && !selectedGrade) {
       setSelectedGrade(levelNameToGradeKey(child.reading_level));
@@ -493,6 +495,7 @@ function PracticeHubContent() {
   };
 
   const gk = selectedGrade || levelNameToGradeKey(child.reading_level);
+  const rlGk = levelNameToGradeKey(child.reading_level);
   const grade = allGrades.find((g) => g.gradeKey === gk) || allGrades[0];
   const masteredTotal = allStandards.filter((s) => mastery[s.standard_id] === 3).length;
   const heroSubcopy = masteredTotal > 0
@@ -571,6 +574,11 @@ function PracticeHubContent() {
           <p className="mt-2 text-xs font-semibold" style={{ color: GRADE_META[gk].text }}>
             {grade.label} · {grade.standards.length} topics
           </p>
+          {gk === rlGk && (
+            <p className="mt-1 text-[11px] font-medium" style={{ color: GRADE_META[gk].text, opacity: 0.72 }}>
+              Just right for {child.first_name}
+            </p>
+          )}
         </div>
       </motion.section>
 

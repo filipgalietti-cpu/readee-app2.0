@@ -456,14 +456,21 @@ function PracticeLoader() {
       // is part of the lesson flow, not standalone practice — never gate it,
       // or a free kid replaying a lesson would get bounced to /upgrade mid-quiz.
       if (plan !== null && plan !== "premium" && standardId && !fromLesson) {
+        // Sum attempts across ALL sessions for this standard. practice_results
+        // is one row per session (no upsert / no unique key), so the old
+        // .single() read errored once a 2nd row existed → attempted fell back
+        // to 0 → the limit NEVER fired for free/lapsed users. Reduce over every
+        // row so the cap is the true cumulative count.
         const { data: results } = await supabase
           .from("practice_results")
           .select("questions_attempted")
           .eq("child_id", childId)
-          .eq("standard_id", standardId)
-          .single();
+          .eq("standard_id", standardId);
 
-        const attempted = results?.questions_attempted ?? 0;
+        const attempted = (results ?? []).reduce(
+          (sum, r) => sum + (r.questions_attempted ?? 0),
+          0,
+        );
         if (attempted >= getLimits(plan).practicePerStandard) {
           setBlocked(true);
         }
