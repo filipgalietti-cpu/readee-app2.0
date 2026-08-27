@@ -105,6 +105,7 @@ Behavioral + transactional email, all in one branded shell:
 - **PostHog** — product analytics (host-split: landing = acquisition, app = activation/retention).
 - **Sentry** — error monitoring (org `readee-5u`).
 - **Cost metering** — Luna's Azure speech usage is metered (`speech_token_mints`) across surfaces; a monthly "Luna sessions" report breaks usage down per surface.
+- **Growth is instrumented** (channel strategy still evolving): Meta Pixel + PostHog on the funnel, a worried-parent SEO cluster on the marketing site, and Instagram / X / Facebook / TikTok live.
 
 ---
 
