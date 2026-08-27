@@ -41,7 +41,7 @@ Standalone standards practice with six custom interactive question types beyond 
 Every question has read-aloud audio (prompt + hint), a custom "the correct answer is…" clip on a miss, and its own illustration.
 
 ### Luna — AI reading tutor (`/luna`)
-Kids read decodable passages **out loud** and Luna grades pronunciation in real time via **Azure streaming speech**, targeting the child's weak phonics patterns. **Luna Story Studio** lets kids create their own stories (auto-moderated by an agent: banlist + judge + human override).
+Kids read decodable passages **out loud**; the browser streams mic audio **directly to Azure Speech** — a short-lived token minted by `/api/luna/speech-token`, so raw child audio never touches our servers — for real-time pronunciation scoring. Luna targets each child's **weakest phonics pattern** (`lib/luna/target-pattern.ts`), generates a fresh decodable passage on any topic ("Surprise me" is free), and closes the loop with word lessons, sight-word drills, and human-recorded phonemes. **Luna Story Studio** lets kids write and publish their own stories — every one runs the [Content Safety](#content-safety) pipeline before it can appear. Luna routes: `speech-token`, `grade`, `passage`, `story`, `session-complete`, `speak`.
 
 ### Daily Readee (`/daily`)
 A fresh, short **"on this day" read every morning** — the free habit anchor. An archive calendar marks each day the child has read (green outline + check).
@@ -54,6 +54,57 @@ Adaptive diagnostic that places a child K→4 on first sign-up (weighted scoring
 
 ### Parent Dashboard (`/dashboard`)
 Momentum ("your child is getting better"), a "Today's plan," the journey card, streaks/carrots, and weekly activity. All lesson state derives from the Journey helper, so every surface agrees.
+
+### Exams
+Unit exams and grade **final / graduation** quizzes gate progression between units and grades. Per the plan, exams are Readee+ (the placement test stays free).
+
+### Gamification & economy
+The reward layer that keeps kids coming back:
+- **Carrots** — earned for correct answers and finished lessons; the single in-app currency.
+- **Reader levels** — a lifetime-carrot ladder (`READER_LEVELS`) with level-up celebrations.
+- **Streaks** — daily-activity streaks with fire animations.
+- **Leaderboard** — real **same-grade peers** (first name + avatar), not fake bots.
+- **Mystery box** — one free open per day (carrots for extra opens within the window).
+- **Shop** — avatars, outfits, reactions, and watercolor backgrounds, all **earnable with carrots** (no pay-to-win skins).
+- **Journey rewards** — unit treasure chests + a grade trophy, credited once (idempotent).
+
+### Community & Discover
+- **Discover** (`/discover`) — a curated library of reads by category.
+- **Community** (`/community`, also public for SEO) — shared and **kid-written** stories, plus a "Just for [Child]" shelf. Everything kid-authored passes Content Safety before it appears.
+
+---
+
+## Content Safety
+
+Readee is used by young children, so safety is layered and defense-in-depth, not a single check:
+
+- **Prompt + output guards** (`lib/ai/safety.ts`) — every AI call runs `assertSafePrompt` on kid/parent input and `assertSafeOutput` on generated text against an **obfuscation-hardened banlist** (`containsUnsafeContent`). Unsafe in or out is blocked. Image generation carries an `IMAGE_SAFETY_PREFIX`.
+- **Kid-created content pipeline** — a Story Studio submission runs `reviewCommunityStory` (`lib/community/review-agent.ts`): (1) a fast banlist recheck = instant hard reject, (2) an **LLM compliance judge** (`judgeCommunityCompliance`) that approves or rejects, and (3) anything the judge can't rule on (AI error) is **left pending for a human**, never auto-published. A cron drains the queue (`runCommunityReviewQueue`); humans override at `/admin/community`.
+- **Same judges as the catalog** — kid content is held to the same QC bar as first-party lessons (Fulcrum's Judge stage).
+- **COPPA posture** — B2C (one parent : one child), parental consent, one-click data deletion + CSV export, replay-off privacy defaults, `security.txt`, and live Privacy Policy + Terms.
+
+---
+
+## Learner Model
+
+One per-child profile powers all adaptivity (`lib/adaptive/learner-model.ts`, `getLearnerModel`). It maps each standard to a **skill axis** (`standardToAxis`, `ccssDomain`) and tracks mastery with an **SM-2 spaced-repetition** spine in `child_skill_memory`. This is Fulcrum's **Adapt** stage — it drives Sharpen Up (spaced review), Luna's phonics targeting, and the weak-skill picks on the dashboard.
+
+---
+
+## Email & Lifecycle (Resend)
+
+Behavioral + transactional email, all in one branded shell:
+- **Lifecycle** (`lib/email/lifecycle.ts`): `welcome` (immediate on signup), `first_lesson_nudge` (~day 3), `trial_ending` (day 6 — the load-bearing conversion nudge), `re_engage` (7+ days inactive), fired by a daily cron and deduped in `lifecycle_email_sends`.
+- **Weekly progress digest** (`lib/email/parent-digest.ts`) — Mondays, per-child stats.
+- **Transactional** — cancellation, account-deletion, and a **What's New** broadcast (`scripts/send-whats-new.ts`) for content drops.
+
+---
+
+## Analytics & Ops
+
+- **PostHog** — product analytics (host-split: landing = acquisition, app = activation/retention).
+- **Sentry** — error monitoring (org `readee-5u`).
+- **Cost metering** — Luna's Azure speech usage is metered (`speech_token_mints`) across surfaces; a monthly "Luna sessions" report breaks usage down per surface.
 
 ---
 
