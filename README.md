@@ -84,7 +84,18 @@ Gates are enforced **server-side** where it matters: `/learn` and `/practice` ar
 - **25 decodable stories**, **45 phoneme audio files**, thousands of question images + audio clips
 - Assets live in Supabase Storage under `images/{grade}/{standard}/` and `audio/{grade}/{standard}/`
 
-Content is generated then **judged** (Gemini generates, Claude judges) through a QC factory in `scripts/`, with a canonical spec in `docs/CONTENT_SPEC.md`.
+### Fulcrum — the content & learning engine
+
+Readee's content and adaptivity run on **Fulcrum**, an AI learning engine built as a four-stage loop:
+
+**Generate → Judge → Adapt → Grade**
+
+- **Generate** — models (Fable, Gemini) write lessons, decodable passages, and standards-aligned questions to a strict spec.
+- **Judge** — a separate model grades every piece against `docs/CONTENT_SPEC.md`; failures are regenerated, not shipped ("Gemini generates, Claude judges").
+- **Adapt** — content targets each child's placed level and weakest phonics patterns (Luna, Sharpen Up) through a per-child learner model.
+- **Grade** — the app scores answers and, in Luna, real read-aloud pronunciation (Azure speech), feeding results back into Adapt.
+
+Fulcrum is intentionally subject-agnostic: the same generate → judge → adapt → grade loop is designed to power learning content well beyond reading.
 
 ---
 
