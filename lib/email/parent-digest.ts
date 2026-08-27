@@ -419,7 +419,7 @@ function renderDigest(input: {
             </div>
           </td></tr>
           <tr><td align="center" style="padding-top:22px;"><p style="margin:0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.8;">
-            <a href="https://instagram.com/readee.app" style="color:#4f46e5;text-decoration:none;">Instagram</a> &middot; <a href="https://tiktok.com/@readee.app" style="color:#4f46e5;text-decoration:none;">TikTok</a><br/>
+            <a href="https://instagram.com/readee.app"><img src="${BASE_URL}/images/ui/social/instagram.png" alt="Instagram" width="26" height="26" style="display:inline-block;vertical-align:middle;border:0;outline:none;text-decoration:none;" /></a>&nbsp;&nbsp;<a href="https://tiktok.com/@readee.app"><img src="${BASE_URL}/images/ui/social/tiktok.png" alt="TikTok" width="26" height="26" style="display:inline-block;vertical-align:middle;border:0;outline:none;text-decoration:none;" /></a><br/>
             You're getting this because you have a child on Readee.<br/>
             <a href="${input.unsubscribeUrl}" style="color:#a1a1aa;">Unsubscribe from weekly updates</a>
           </p></td></tr>
