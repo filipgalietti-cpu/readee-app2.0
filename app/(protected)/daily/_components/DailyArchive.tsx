@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, ImageIcon, Check } from "lucide-react";
 
 type Entry = {
   date: string;
@@ -23,15 +23,19 @@ type Entry = {
 export default function DailyArchive({
   entries,
   todayDate,
+  completedDates = [],
 }: {
   entries: Entry[];
   todayDate: string;
+  completedDates?: string[];
 }) {
   const byDate = useMemo(() => {
     const m = new Map<string, Entry>();
     for (const e of entries) m.set(e.date, e);
     return m;
   }, [entries]);
+
+  const completedSet = useMemo(() => new Set(completedDates), [completedDates]);
 
   const monthsWithEntries = useMemo(() => {
     const s = new Set<string>();
@@ -121,6 +125,7 @@ export default function DailyArchive({
               entry={entry}
               isToday={cell.date === todayDate}
               isFuture={cell.date > todayDate}
+              completed={entry != null && completedSet.has(cell.date)}
             />
           );
         })}
@@ -134,11 +139,13 @@ function DayCell({
   entry,
   isToday,
   isFuture,
+  completed,
 }: {
   dayNum: number;
   entry: Entry | null;
   isToday: boolean;
   isFuture: boolean;
+  completed: boolean;
 }) {
   const pill = (
     <span
@@ -169,10 +176,19 @@ function DayCell({
       href={`/today/${entry.slug}`}
       title={entry.passage_title}
       className={`group relative block h-full overflow-hidden rounded-xl border bg-zinc-100 transition hover:-translate-y-0.5 hover:shadow-md ${
-        isToday ? "border-violet-500 ring-2 ring-violet-300" : "border-zinc-200 hover:border-zinc-300"
+        completed
+          ? "border-emerald-500 ring-2 ring-emerald-300"
+          : isToday
+          ? "border-violet-500 ring-2 ring-violet-300"
+          : "border-zinc-200 hover:border-zinc-300"
       }`}
     >
       {pill}
+      {completed && (
+        <span className="absolute right-1.5 top-1.5 z-10 grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-white shadow-sm ring-2 ring-white">
+          <Check className="h-3 w-3" strokeWidth={3} />
+        </span>
+      )}
       {entry.image_url ? (
         <Image
           src={entry.image_url}

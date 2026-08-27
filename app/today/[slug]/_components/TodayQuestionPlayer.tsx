@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Volume2, Check, X as XIcon, ThumbsUp, ThumbsDown, Star, Carrot } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
@@ -39,6 +39,18 @@ export default function TodayQuestionPlayer({
   const [results, setResults] = useState<{ prompt: string; ok: boolean }[]>([]);
   const [done, setDone] = useState(false);
   const [voted, setVoted] = useState<"up" | "down" | null>(null);
+
+  // On finish, record the read for the signed-in family so the /daily archive
+  // can mark this day complete (green). Logged-out visitors are a server no-op.
+  useEffect(() => {
+    if (done && date) {
+      fetch("/api/daily/complete", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ date }),
+      }).catch(() => {});
+    }
+  }, [done, date]);
 
   const q = qs[Math.min(qi, qs.length - 1)];
   const total = qs.length;
