@@ -148,6 +148,8 @@ Readee's content and adaptivity run on **Fulcrum**, an AI learning engine built 
 
 Fulcrum is intentionally subject-agnostic: the same generate → judge → adapt → grade loop is designed to power learning content well beyond reading.
 
+> The **QC content factory** in `scripts/` (batch generate → judge/regenerate against `docs/CONTENT_SPEC.md` → upload) is not a separate system — it's the current, script-based implementation of Fulcrum's **Generate + Judge** stages.
+
 ---
 
 ## Architecture
