@@ -611,7 +611,7 @@ function RecapPhase({
           Read it again
         </button>
         <Link
-          href="/dashboard/ask-readee"
+          href="/dashboard"
           className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"
         >
           <Sparkles className="h-4 w-4" />

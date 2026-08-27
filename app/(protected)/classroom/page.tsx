@@ -157,15 +157,6 @@ function PremiumToolsRail({ plan }: { plan: string }) {
     Icon: any;
     color: string;
   }[] = [
-    {
-      id: "buddy",
-      title: "Reading Buddy",
-      desc: "Real-time AI voice tutor for kids",
-      minTier: "premium",
-      href: "/buddy",
-      Icon: Sparkles,
-      color: "from-violet-500 to-indigo-600",
-    },
     // Calibrated questions now lives inside Quiz builder's
     // "+ Add question → AI fill" flow.
     {

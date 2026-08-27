@@ -169,7 +169,7 @@ export default function LunaCreate({
                 their exact reading level, and coaches every word.
               </p>
               <Link
-                href="/upgrade?reason=reading_buddy"
+                href="/upgrade?reason=tools_hub"
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-violet-700"
               >
                 Unlock Luna

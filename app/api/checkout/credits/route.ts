@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
   }
 
   const origin = req.headers.get("origin") || "https://learn.readee.app";
-  const successReturn = body.pool === "parent" ? "/dashboard/ask-readee" : "/classroom";
+  const successReturn = body.pool === "parent" ? "/dashboard" : "/classroom";
 
   const session = await stripe.checkout.sessions.create({
     customer: customerId,
