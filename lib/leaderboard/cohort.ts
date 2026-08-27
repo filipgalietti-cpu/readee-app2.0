@@ -36,6 +36,14 @@ const RIVAL_NAMES = [
   "Omar",
   "Ella",
   "Jonah",
+  "Aisha",
+  "Lily",
+  "Marcus",
+  "Fatima",
+  "Santiago",
+  "Yuki",
+  "Hana",
+  "Malik",
 ];
 
 export interface CohortEntry {
