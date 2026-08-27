@@ -34,6 +34,28 @@ export default async function DailyReadeePage() {
     .limit(120);
   const list = (rows ?? []) as Row[];
 
+  // Which dailies has this family already read? (B2C: the parent's first child.)
+  let completedDates: string[] = [];
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (user) {
+    const { data: kid } = await supabase
+      .from("children")
+      .select("id")
+      .eq("parent_id", user.id)
+      .order("created_at", { ascending: true })
+      .limit(1)
+      .maybeSingle();
+    if (kid) {
+      const { data: reads } = await supabase
+        .from("daily_reads")
+        .select("daily_date")
+        .eq("child_id", (kid as { id: string }).id);
+      completedDates = (reads ?? []).map((r) => (r as { daily_date: string }).daily_date);
+    }
+  }
+
   return (
     <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 flex flex-col overflow-hidden bg-white lg:left-[272px]">
       <div className="mx-auto flex min-h-0 w-full max-w-[960px] flex-1 flex-col px-6 pb-4 pt-3">
@@ -52,7 +74,7 @@ export default async function DailyReadeePage() {
             No dailies published yet. Come back tomorrow morning.
           </div>
         ) : (
-          <DailyArchive entries={list} todayDate={today} />
+          <DailyArchive entries={list} todayDate={today} completedDates={completedDates} />
         )}
       </div>
     </div>
