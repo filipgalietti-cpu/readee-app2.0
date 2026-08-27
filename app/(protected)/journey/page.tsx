@@ -6,7 +6,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
-import { getLimits } from "@/lib/plan/limits";
+import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
 import { levelNameToGradeKey, gradeOrder as ASSESSMENT_GRADE_ORDER } from "@/lib/assessment/questions";
 import { savedOk } from "@/lib/db/checked-write";
 import { audioManager } from "@/lib/audio/audio-manager";
@@ -224,6 +224,8 @@ function JourneyContent() {
   const childId = child.id;
 
   const allLessons = sampleLessons as SampleLesson[];
+  // Free tier unlocks each grade's FIRST unit (its first-appearance domain).
+  const freeUnitDomain = firstUnitDomainByGrade(allLessons);
 
   // Check completion: practice_results has standard_id with good score, OR lessons_progress
   const hasCompleted = (standardId: string) =>
@@ -231,7 +233,6 @@ function JourneyContent() {
     lessonProgress.some((p) => p.lesson_id === standardId && p.section === "practice" && p.score >= 60);
 
   // Build per-grade index map for free tier gating
-  const gradeCounters = new Map<string, number>();
 
   // Placement floor: the journey begins at the grade the child TESTED into.
   // reading_level ("Growing Reader" → "2nd", etc.) → a grade key; every lesson
@@ -274,17 +275,14 @@ function JourneyContent() {
 
   let foundCurrent = false;
   const lessonsWithStatus: LessonWithStatus[] = orderedLessons.map((lesson, idx) => {
-    // Track per-grade index
-    const gradeIdx = gradeCounters.get(lesson.grade) ?? 0;
-    gradeCounters.set(lesson.grade, gradeIdx + 1);
-
     let status: LessonStatus;
     if (hasCompleted(lesson.standardId) || belowTested(lesson.grade)) {
       status = "completed";
     } else if (!foundCurrent) {
       foundCurrent = true;
       status = "current";
-    } else if (gradeIdx >= getLimits(plan).lessons && plan !== "premium") {
+    } else if (plan !== "premium" && !isLessonInFreeUnit(lesson, freeUnitDomain)) {
+      // Free unlocks only the grade's first unit; everything past it is Readee+.
       status = "premium";
     } else {
       status = "locked";
