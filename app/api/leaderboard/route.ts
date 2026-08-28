@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
   // Verify the child belongs to this parent, then pull carrots + grade + avatar.
   const { data: me, error } = await supabase
     .from("children")
-    .select("id, first_name, carrots, grade, equipped_items")
+    .select("id, first_name, carrots, streak_days, grade, equipped_items")
     .eq("id", childId)
     .eq("parent_id", user.id)
     .maybeSingle();
@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
   // carrots leaves the server. Falls back to seeded rivals to fill pre-scale.
   const { data: peerRows } = await supabaseAdmin()
     .from("children")
-    .select("id, first_name, carrots, equipped_items")
+    .select("id, first_name, carrots, streak_days, equipped_items")
     .neq("id", me.id)
     .eq("owner_type", "parent") // B2C board = parent-owned kids only, never classroom/demo students
     .eq("exclude_from_leaderboard", false) // hide dev/test/non-genuine accounts
@@ -53,6 +53,7 @@ export async function GET(req: NextRequest) {
     .map((p: any, i: number) => ({
       name: String(p.first_name).trim(),
       carrots: p.carrots ?? 0,
+      streak: p.streak_days ?? 0,
       avatar: getChildAvatarImage(p as Child, i),
     }));
 
@@ -63,7 +64,14 @@ export async function GET(req: NextRequest) {
     me.carrots ?? 0,
     myAvatar,
     realPeers,
+    me.streak_days ?? 0,
   );
 
-  return NextResponse.json({ leaders, myRank, grade: me.grade });
+  return NextResponse.json({
+    leaders,
+    myRank,
+    grade: me.grade,
+    myStreak: me.streak_days ?? 0,
+    total: leaders.length,
+  });
 }

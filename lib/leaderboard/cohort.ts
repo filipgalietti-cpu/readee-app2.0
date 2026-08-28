@@ -50,6 +50,8 @@ export interface CohortEntry {
   id: string;
   name: string;
   carrots: number;
+  /** Current day-streak — real for me/real peers, seeded for fictional rivals. */
+  streak: number;
   isMe: boolean;
   avatar: string;
   /** Fictional rival (safe to nudge for feels-good clamps) vs a real child. */
@@ -96,6 +98,7 @@ export interface RealPeer {
   name: string;
   carrots: number;
   avatar: string;
+  streak: number;
 }
 
 export function buildCohort(
@@ -104,6 +107,7 @@ export function buildCohort(
   childCarrots: number,
   childAvatar: string,
   realPeers: RealPeer[] = [],
+  childStreak = 0,
 ): { leaders: CohortEntry[]; myRank: number } {
   const rand = mulberry32(hashStr(childId));
   const mine = childName.trim().toLowerCase();
@@ -114,6 +118,7 @@ export function buildCohort(
     id: `peer-${i}`,
     name: p.name,
     carrots: Math.max(0, Math.round(p.carrots)),
+    streak: Math.max(0, Math.round(p.streak ?? 0)),
     isMe: false,
     avatar: p.avatar,
     seeded: false,
@@ -134,6 +139,8 @@ export function buildCohort(
       id: `rival-${i}`,
       name,
       carrots: Math.max(20, RUNGS[i] + jitter),
+      // Deterministic streak so fictional rivals read like active readers.
+      streak: Math.floor(rand() * 13),
       isMe: false,
       avatar: SEEDED_AVATARS[i % SEEDED_AVATARS.length],
       seeded: true,
@@ -144,6 +151,7 @@ export function buildCohort(
     id: childId,
     name: childName,
     carrots: Math.max(0, Math.round(childCarrots)),
+    streak: Math.max(0, Math.round(childStreak)),
     isMe: true,
     avatar: childAvatar,
     seeded: false,
