@@ -11,7 +11,7 @@ export const maxDuration = 60;
 
 export const metadata = {
   title: "Luna Story Studio - Readee",
-  description: "Write your own story with Luna and share it with other kids.",
+  description: "Write your own story with Luna and share it with other children.",
 };
 
 export default async function StoryStudioPage() {
@@ -77,7 +77,7 @@ export default async function StoryStudioPage() {
           </h1>
           <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
             Unlock unlimited stories with Luna, and let {child.first_name} share
-            their creations with other kids.
+            their creations with other children.
           </p>
           <Link
             href="/upgrade?reason=luna"

@@ -54,7 +54,7 @@ export default async function About() {
           <p>
             Readee was founded by <strong>Filip Galietti</strong> and{" "}
             <strong>Jennifer Klingerman</strong>, a certified reading specialist
-            and 3rd grade teacher. Jennifer saw firsthand how kids were falling
+            and 3rd grade teacher. Jennifer saw firsthand how children were falling
             behind in reading - and knew a better approach was possible.
           </p>
           <p>
@@ -106,7 +106,7 @@ export default async function About() {
               icon: Trophy,
               title: "Excel",
               color: "from-purple-600 to-purple-500",
-              desc: "Mastery activities that push kids to the next level. Prove it, own it, move on.",
+              desc: "Mastery activities that push children to the next level. Prove it, own it, move on.",
             },
           ].map((item) => (
             <div
@@ -159,7 +159,7 @@ export default async function About() {
         <p className="text-[15px] text-zinc-600 leading-relaxed">
           Readee isn&apos;t a textbook. It&apos;s a living library - built by a
           reading specialist, scaled by an AI production line, and audited 24/7
-          by a quality pipeline that catches duds before any kid sees them.
+          by a quality pipeline that catches duds before any child sees them.
           Every passage, question, image, and audio file passes{" "}
           <strong>12 automated quality checks</strong> - including fact-checking
           against Wikipedia, reading-level audit per grade, and pedagogy review.
@@ -171,7 +171,7 @@ export default async function About() {
           {[
             { value: "911+", label: "CCSS Questions", sub: "Every one standards-tagged" },
             { value: "200+", label: "Interactive Lessons", sub: "Karaoke audio + animations" },
-            { value: "12", label: "Quality Checks", sub: "Per piece, before kid sees it" },
+            { value: "12", label: "Quality Checks", sub: "Per piece, before a child sees it" },
             { value: "Daily", label: "Fresh Content", sub: "Daily passage + Discover articles" },
           ].map((stat) => (
             <div

@@ -828,7 +828,7 @@ export default function Settings() {
             <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>Privacy &amp; data</div>
           </div>
           <p style={{ margin: "0 0 14px", fontSize: 13.5, color: "#52525b", lineHeight: 1.55, maxWidth: 560 }}>
-            Readee is built from the ground up to protect kids&apos; data. We never sell it or use it for ads.{" "}
+            Readee is built from the ground up to protect children&apos;s data. We never sell it or use it for ads.{" "}
             <a href="/privacy-policy" style={{ color: "#4338ca", fontWeight: 700 }}>Read our privacy promise</a>
           </p>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "13px 0", borderTop: "1px solid #f4f4f5" }}>

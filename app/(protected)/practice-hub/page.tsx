@@ -252,7 +252,7 @@ const canonDomain = (d: string) => DOMAIN_ALIAS[d] ?? d;
 const SEARCH_HINTS = [
   "What do you want to practice?",
   "Try “rhyming words”",
-  "Describe what your kid needs…",
+  "Describe what your child needs…",
   "Try “a story about kindness”",
   "Try “context clues practice”",
   "Search a skill, a story, or a lesson…",
@@ -393,7 +393,7 @@ function PracticeHubContent() {
 
         if (!resolvedId) {
           if (alive) {
-            setLoadError("We couldn't find a kid on this account. Head back to the dashboard and pick one.");
+            setLoadError("We couldn't find a child on this account. Head back to the dashboard and pick one.");
             setLoading(false);
           }
           return;
@@ -415,12 +415,12 @@ function PracticeHubContent() {
           .maybeSingle();
         if (!alive) return;
         if (error) {
-          setLoadError("Couldn't load your kid's profile. Try again in a moment.");
+          setLoadError("Couldn't load your child's profile. Try again in a moment.");
           setLoading(false);
           return;
         }
         if (!data) {
-          setLoadError("This kid profile isn't on your account. Pick a different one from the dashboard.");
+          setLoadError("This child profile isn't on your account. Pick a different one from the dashboard.");
           setLoading(false);
           return;
         }

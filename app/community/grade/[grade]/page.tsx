@@ -43,7 +43,7 @@ export async function generateMetadata({
     alternates: { canonical: `/community/grade/${grade.toLowerCase()}` },
     openGraph: {
       title: `${g.label} reading passages - Readee Community`,
-      description: `Kid-safe ${g.label.toLowerCase()} reading passages from real Readee families.`,
+      description: `Child-safe ${g.label.toLowerCase()} reading passages from real Readee families.`,
       type: "website",
       url: `/community/grade/${grade.toLowerCase()}`,
     },
@@ -190,7 +190,7 @@ export default async function CommunityGradePage({
           {g.label} reading passages
         </h1>
         <p className="mt-2 max-w-2xl text-base text-zinc-600">
-          Free, kid-safe passages for {g.label.toLowerCase()} readers - each
+          Free, child-safe passages for {g.label.toLowerCase()} readers - each
           with comprehension questions, read-aloud audio, and an illustration.
           Made and shared by Readee families.
         </p>

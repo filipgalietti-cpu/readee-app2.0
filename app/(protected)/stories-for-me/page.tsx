@@ -25,8 +25,8 @@ export default async function StoriesForMePage() {
         <EmptyState
           mascot="welcome"
           size="lg"
-          title="Add a kid first"
-          description="Stories for me are personalized to a specific kid - name, grade, and what they're into. Add a reader to get started."
+          title="Add a child first"
+          description="Stories for me are personalized to a specific child - name, grade, and what they're into. Add a reader to get started."
           action={{ href: "/settings", label: "Go to settings" }}
         />
       </div>
@@ -64,10 +64,10 @@ export default async function StoriesForMePage() {
         AI stories starring{" "}
         {children.length === 1
           ? children[0].first_name
-          : "your kids"}
+          : "your children"}
       </h1>
       <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
-        Pick a kid, pick how many pages, and Luna writes a story where{" "}
+        Pick a child, pick how many pages, and Luna writes a story where{" "}
         {children.length === 1
           ? `${children[0].first_name} is`
           : "they are"}{" "}
@@ -107,7 +107,7 @@ export default async function StoriesForMePage() {
                     )}
                     <div className="p-4">
                       <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
-                        For {child?.first_name ?? "kid"} ·{" "}
+                        For {child?.first_name ?? "child"} ·{" "}
                         {pageCount} pages
                       </div>
                       <div className="mt-1.5 truncate text-sm font-bold text-zinc-900">

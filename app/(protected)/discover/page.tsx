@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Discover - Readee",
   description:
-    "Browse our growing library of fact-checked, kid-friendly reading passages - Science, History, Nature, and more.",
+    "Browse our growing library of fact-checked, child-friendly reading passages - Science, History, Nature, and more.",
 };
 
 type Latest = {

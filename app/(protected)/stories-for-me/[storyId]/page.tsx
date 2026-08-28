@@ -46,7 +46,7 @@ export default async function PersonalizedStoryPage({
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
           <Sparkles className="h-4 w-4" />
           A story for{" "}
-          {(child as any)?.first_name ?? "your kid"}
+          {(child as any)?.first_name ?? "your child"}
         </div>
         <h1
           className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white"

@@ -179,7 +179,7 @@ export default function DailyQuestionCard({
         <div className="text-[11px] text-zinc-500 dark:text-slate-400">
           {variant === "teacher"
             ? "Push this to your class as a 5-minute warm-up."
-            : "60-second reading boost - try it with your kid."}
+            : "60-second reading boost - try it with your child."}
         </div>
         <div className="flex items-center gap-2">
           {variant === "teacher" && (

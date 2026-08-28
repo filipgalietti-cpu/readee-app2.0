@@ -185,7 +185,7 @@ export default function TestimonialPrompt({
               />
               <span>
                 OK to use my note on readee.app. We&apos;ll only show your
-                first name + your kid&apos;s grade - never their name.
+                first name + your child&apos;s grade - never their name.
               </span>
             </label>
 
