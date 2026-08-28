@@ -24,6 +24,7 @@ interface LeaderEntry {
 const CELEBRATE_CSS = `
 @keyframes lbFall{0%{transform:translateY(-24px) rotate(0);opacity:0}12%{opacity:1}100%{transform:translateY(220px) rotate(420deg);opacity:0}}
 @keyframes lbFlicker{0%,100%{transform:scale(1) rotate(-3deg)}50%{transform:scale(1.16) rotate(3deg)}}
+@keyframes lbShine{0%{transform:translateX(-140%)}40%{transform:translateX(260%)}100%{transform:translateX(260%)}}
 @media (prefers-reduced-motion:reduce){.lb-anim{animation:none!important}}
 `;
 
@@ -115,7 +116,6 @@ function LeaderboardContent() {
 
   const ahead = myRank && myRank > 1 ? leaders[myRank - 2] : null;
   const carrotsToAhead = ahead ? Math.max(0, ahead.carrots - child.carrots) : 0;
-  const onPodium = !!myRank && myRank <= 3;
 
   // Podium order: 2nd (left) · 1st (center) · 3rd (right).
   const top3 = leaders.slice(0, 3);
@@ -168,7 +168,7 @@ function LeaderboardContent() {
             transition={{ duration: 0.5, delay: 0.05 }}
             className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-gradient-to-b from-indigo-50 to-white px-4 pt-8 shadow-sm dark:border-slate-800 dark:from-slate-900 dark:to-slate-900/40 sm:px-8"
           >
-            {onPodium && (
+            {(
               <div className="pointer-events-none absolute inset-0">
                 {CONFETTI.map((c, i) => (
                   <span
@@ -408,10 +408,16 @@ function PodiumColumn({ entry, rank }: { entry: LeaderEntry; rank: number }) {
         )}
       </div>
       <div
-        className={`mt-3.5 flex w-full items-center justify-center rounded-t-3xl bg-gradient-to-b ${pedestal} font-extrabold`}
+        className={`relative mt-3.5 flex w-full items-center justify-center overflow-hidden rounded-t-3xl bg-gradient-to-b ${pedestal} font-extrabold`}
         style={{ fontSize: isFirst ? 56 : 40 }}
       >
         {rank}
+        {isFirst && (
+          <span
+            className="lb-anim pointer-events-none absolute inset-y-0 w-16 bg-gradient-to-r from-transparent via-white/65 to-transparent"
+            style={{ animation: "lbShine 4.2s cubic-bezier(0.4,0,0.2,1) infinite" }}
+          />
+        )}
       </div>
     </motion.div>
   );
