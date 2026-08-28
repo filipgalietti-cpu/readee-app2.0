@@ -46,6 +46,7 @@ Co-founders: Filip (engineering, product) and Jennifer Klingerman (certified rea
 ### Design Rules (strictly enforced)
 - **No native emojis** - use Lucide icons or custom images only. Swept and enforced Apr 2026.
 - **No em-dashes (—) in customer-facing copy** - the #1 AI-slop giveaway. Use a hyphen, comma, or colon, or rephrase. Applies to UI strings/JSX, page metadata/titles, toasts, error messages, customer emails, and marketing copy. Does NOT apply to code comments, AI-prompt strings, internal tooling, or reading-passage content (where em-dashes are legitimate prose). Swept Aug 2026.
+- **Use "child" not "kid" in customer-facing copy** - say child / children (child's / children's), never kid / kids, in all UI strings, placeholders, labels, page metadata, toasts, error messages, and customer emails. Does NOT apply to code identifiers (variables, components, props, filenames), comments, AI-prompt strings, or lesson/passage/question content. Idiomatic brand or badge names ("Comeback Kid", "Big Kid Words") are exempt. Swept Aug 2026.
 - Quotes: `"` for dialogue/passages, `'` only for contractions, `**word**` for emphasis
 - Image style: "Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors"
 

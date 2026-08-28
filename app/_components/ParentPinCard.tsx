@@ -69,7 +69,7 @@ export default function ParentPinCard({ initialHasPin }: { initialHasPin: boolea
         )}
       </div>
       <p className="text-xs text-zinc-500">
-        4-digit PIN that exits kid play mode. When set, your kid&apos;s
+        4-digit PIN that exits child play mode. When set, your child&apos;s
         device will need the PIN (instead of your full account password)
         to leave play mode and access your dashboard.
       </p>

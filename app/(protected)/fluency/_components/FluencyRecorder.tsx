@@ -318,7 +318,7 @@ export default function FluencyRecorder({
               value={customText}
               onChange={(e) => setCustomText(e.target.value.slice(0, 2000))}
               rows={5}
-              placeholder="Paste any passage here for the kid to read aloud."
+              placeholder="Paste any passage here for the child to read aloud."
               className="mt-3 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             />
           )}
@@ -468,7 +468,7 @@ export default function FluencyRecorder({
 
             <div className="mt-4 rounded-2xl bg-white p-4 dark:bg-slate-900">
               <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
-                For the kid
+                For the child
               </div>
               <p className="mt-1 text-sm text-zinc-800 dark:text-slate-200">
                 {analysis.encouragement}

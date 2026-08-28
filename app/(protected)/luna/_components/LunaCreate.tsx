@@ -180,7 +180,7 @@ export default function LunaCreate({
             <>
               <p className="text-sm font-semibold text-zinc-600 dark:text-slate-300">
                 {errKind === "unsafe"
-                  ? "Let's pick a different idea. Luna keeps every story kid-friendly."
+                  ? "Let's pick a different idea. Luna keeps every story child-friendly."
                   : "Luna couldn't finish that one. Let's try again."}
               </p>
               <button

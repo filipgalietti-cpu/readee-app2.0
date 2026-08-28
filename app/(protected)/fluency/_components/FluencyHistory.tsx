@@ -122,7 +122,7 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
                   </p>
                   {r.encouragement && (
                     <div className="rounded-lg bg-violet-50 p-3 text-xs text-violet-900 dark:bg-violet-950/30 dark:text-violet-200">
-                      <span className="font-bold">For the kid: </span>
+                      <span className="font-bold">For the child: </span>
                       {r.encouragement}
                     </div>
                   )}

@@ -103,7 +103,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
       {children.length > 1 && (
         <div className="mt-4">
           <span className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
-            For which kid?
+            For which child?
           </span>
           <div className="mt-2 flex flex-wrap gap-2">
             {children.map((c) => (
@@ -232,7 +232,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
           ) : (
             <>
               <BookOpenText className="h-4 w-4" />
-              Build story for {child?.first_name ?? "kid"}
+              Build story for {child?.first_name ?? "child"}
             </>
           )}
         </button>

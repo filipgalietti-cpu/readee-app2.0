@@ -18,12 +18,12 @@ export const dynamic = "force-dynamic";
 export const revalidate = 600;
 
 export const metadata: Metadata = {
-  title: "Readee Community Library - kid-safe reading passages",
+  title: "Readee Community Library - child-safe reading passages",
   description:
-    "Free reading passages for K-4 kids, made by Readee. Comprehension questions, read-aloud audio, and illustrations included. Browse by grade.",
+    "Free reading passages for K-4 children, made by Readee. Comprehension questions, read-aloud audio, and illustrations included. Browse by grade.",
   alternates: { canonical: "/community" },
   openGraph: {
-    title: "Readee Community - kid-safe reading passages",
+    title: "Readee Community - child-safe reading passages",
     description:
       "Free K-4 reading passages with audio, illustrations, and comprehension questions.",
     type: "website",
@@ -233,7 +233,7 @@ export default async function CommunityLanding() {
               Community library
             </h1>
             <p className="text-xs font-semibold text-zinc-500">
-              {totalPassages.toLocaleString()} kid-safe reading passages ·
+              {totalPassages.toLocaleString()} child-safe reading passages ·
               free · reviewed
             </p>
           </div>
@@ -351,7 +351,7 @@ export default async function CommunityLanding() {
             Want to make your own?
           </div>
           <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-zinc-900 sm:text-3xl">
-            Build a passage for your kid in 3 taps.
+            Build a passage for your child in 3 taps.
           </h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-zinc-700">
             Pick a topic, pick a mode, Readee builds it. Pass our quality

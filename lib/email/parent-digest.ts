@@ -412,7 +412,7 @@ function renderDigest(input: {
           <tr><td style="background:#ffffff;border:1px solid #ececf0;border-radius:20px;padding:34px 32px;box-shadow:0 10px 40px -18px rgba(49,46,129,.18);">
             <p style="margin:0;text-align:center;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#4338ca;">Your Readee week</p>
             <h1 style="margin:8px 0 0;text-align:center;font-size:22px;font-weight:800;color:#1e1b4b;line-height:1.2;">${escapeHtml(greeting)}</h1>
-            <p style="margin:12px 0 0;font-size:15px;line-height:1.55;color:#3f3f46;text-align:center;">Here's how the week went - what each kid nailed, what they unlocked, and where to focus next.</p>
+            <p style="margin:12px 0 0;font-size:15px;line-height:1.55;color:#3f3f46;text-align:center;">Here's how the week went - what each child nailed, what they unlocked, and where to focus next.</p>
             ${childBlocks}
             <div style="margin-top:24px;text-align:center;">
               <a href="${BASE_URL}/dashboard" style="display:inline-block;background:#4f46e5;color:#ffffff;padding:13px 26px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;">Keep the streak going</a>

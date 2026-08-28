@@ -1042,13 +1042,13 @@ function Published({
             Sent to the library!
           </h2>
           <p className="mt-2 max-w-md text-base text-zinc-600">
-            Our team checks every story to keep Readee kind and safe. Yours will show up for other kids once it&apos;s approved.
+            Our team checks every story to keep Readee kind and safe. Yours will show up for other children once it&apos;s approved.
           </p>
           <div className="ss-pop mt-6 inline-flex items-center gap-2 rounded-full bg-orange-50 px-4 py-2 text-base font-extrabold text-orange-700" style={BALOO}>
             <Carrot className="h-5 w-5" /> +{carrots} carrots for posting!
           </div>
           <p className="mt-3 text-sm text-zinc-500">
-            You&apos;ll earn {STORY_CARROTS.perRead} more carrots every time a kid reads it.
+            You&apos;ll earn {STORY_CARROTS.perRead} more carrots every time a child reads it.
           </p>
         </div>
       </div>

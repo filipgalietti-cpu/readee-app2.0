@@ -151,7 +151,7 @@ export default async function ParentLessonPage({
             />
 
             <p className="mt-2 text-[11px] text-zinc-500">
-              Hand the device to your kid - Readee guides them through
+              Hand the device to your child - Readee guides them through
               the passage and questions.
             </p>
           </div>
