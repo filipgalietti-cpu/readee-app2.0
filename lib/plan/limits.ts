@@ -68,10 +68,3 @@ export function isPaidPlan(plan: string | null | undefined): boolean {
   return plan === "premium" || plan === "teacher_solo";
 }
 
-/**
- * Check if a lesson index (0-based) is available on the free plan.
- * Free users get the first N lessons per grade.
- */
-export function isLessonFree(lessonIndex: number): boolean {
-  return lessonIndex < FREE_LIMITS.lessons;
-}

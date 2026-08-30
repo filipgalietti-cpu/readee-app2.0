@@ -1,41 +1,14 @@
-"use client";
+import { notFound } from "next/navigation";
+import DemoShell from "./DemoShell";
 
-import { useEffect } from "react";
-
+/**
+ * /demo is the internal workbench (factory previews, robot QA, pilots).
+ * Not customer-facing: hidden in production unless ENABLE_DEMOS=1 is set
+ * (e.g. on a preview deployment). Always available in local dev.
+ */
 export default function DemoLayout({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    // Hide nav, footer, and remove main padding for full-screen demo
-    const nav = document.querySelector("nav, [data-nav]") as HTMLElement;
-    const footer = document.querySelector("footer") as HTMLElement;
-    const main = document.querySelector("main") as HTMLElement;
-
-    if (nav) nav.style.display = "none";
-    if (footer) footer.style.display = "none";
-    if (main) {
-      main.style.maxWidth = "none";
-      main.style.padding = "0";
-      main.style.margin = "0";
-    }
-
-    // Hide Next.js dev indicator (the "N" badge in bottom-left)
-    const style = document.createElement("style");
-    style.textContent = `
-      nextjs-portal, [data-nextjs-dialog-overlay], [data-nextjs-toast],
-      #__next-build-indicator, [class*="nextjs-toast"] { display: none !important; }
-    `;
-    document.head.appendChild(style);
-
-    return () => {
-      if (nav) nav.style.display = "";
-      if (footer) footer.style.display = "";
-      if (main) {
-        main.style.maxWidth = "";
-        main.style.padding = "";
-        main.style.margin = "";
-      }
-      style.remove();
-    };
-  }, []);
-
-  return <>{children}</>;
+  if (process.env.NODE_ENV === "production" && process.env.ENABLE_DEMOS !== "1") {
+    notFound();
+  }
+  return <DemoShell>{children}</DemoShell>;
 }

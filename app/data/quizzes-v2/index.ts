@@ -21,6 +21,7 @@ import { g1Unit4Exam } from "./g1-unit-4-exam";
 import { g1Unit5Exam } from "./g1-unit-5-exam";
 import { g1Final } from "./g1-final";
 import { g2Unit1Exam } from "./g2-unit-1-exam";
+import { g2Unit2Exam } from "./g2-unit-2-exam";
 import { soundSlidersQuiz } from "./sound-sliders-quiz";
 import { soundDetectivesQuiz } from "./sound-detectives-quiz";
 import { wordMachinesQuiz } from "./word-machines-quiz";
@@ -111,6 +112,10 @@ import { storyShapeQuiz } from "./story-shape-quiz";
 import { twoWaysToSeeQuiz } from "./two-ways-to-see-quiz";
 import { scienceWordCluesQuiz } from "./science-word-clues-quiz";
 import { findItFastQuiz } from "./find-it-fast-quiz";
+import { whyAuthorsWriteQuiz } from "./why-authors-write-quiz";
+import { wordMathQuiz } from "./word-math-quiz";
+import { wordPlusWordQuiz } from "./word-plus-word-quiz";
+import { lookItUpQuiz } from "./look-it-up-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -132,6 +137,7 @@ export const QUIZZES: Record<string, QuizDef> = {
   "g1-unit-5-exam": g1Unit5Exam,
   "g1-final": g1Final,
   "g2-unit-1-exam": g2Unit1Exam,
+  "g2-unit-2-exam": g2Unit2Exam,
   "sound-sliders-quiz": soundSlidersQuiz,
   "sound-detectives-quiz": soundDetectivesQuiz,
   "word-machines-quiz": wordMachinesQuiz,
@@ -222,4 +228,8 @@ export const QUIZZES: Record<string, QuizDef> = {
   "two-ways-to-see-quiz": twoWaysToSeeQuiz,
   "science-word-clues-quiz": scienceWordCluesQuiz,
   "find-it-fast-quiz": findItFastQuiz,
+  "why-authors-write-quiz": whyAuthorsWriteQuiz,
+  "word-math-quiz": wordMathQuiz,
+  "word-plus-word-quiz": wordPlusWordQuiz,
+  "look-it-up-quiz": lookItUpQuiz,
 };

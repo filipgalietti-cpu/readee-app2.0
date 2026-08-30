@@ -8,7 +8,7 @@ import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
 import { GRADES } from "@/app/_components/LevelProgressBar";
 import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
-import { ChildCreateSchema, ChildUpdateSchema } from "@/lib/schemas";
+import { ChildUpdateSchema } from "@/lib/schemas";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import {
   Carrot, Check, Download, Pencil, Mail, Flame, ShieldCheck,
@@ -314,19 +314,30 @@ export default function Settings() {
   async function handleAddChild() {
     if (!newChild.name.trim()) return;
     // Readers: 1 free, up to 2 with full access. Free hits the upsell; a
-    // full-access parent at the cap gets a plain "max 2" note.
+    // full-access parent at the cap gets a plain "max 2" note. This mirrors
+    // the server cap in /api/children/create — that route is the enforcement.
     if (children.length >= maxReaders) {
       if (maxReaders === 1) router.push("/upgrade?reason=multi_reader");
       else flash("You can have up to 2 readers on Readee+.");
       return;
     }
     setAddingChild(true);
-    const childData = safeValidate(ChildCreateSchema, {
-      parent_id: userId,
-      first_name: newChild.name.trim(),
-      grade: newChild.grade,
+    const res = await fetch("/api/children/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ first_name: newChild.name.trim(), grade: newChild.grade }),
     });
-    await supabase.from("children").insert(childData);
+    if (!res.ok) {
+      setAddingChild(false);
+      if (res.status === 402 || res.status === 403) {
+        // Server says at cap (client state was stale).
+        if (maxReaders === 1) router.push("/upgrade?reason=multi_reader");
+        else flash("You can have up to 2 readers on Readee+.");
+      } else {
+        flash("Couldn't add reader");
+      }
+      return;
+    }
     await loadChildren(userId);
     setNewChild({ name: "", grade: "Kindergarten" });
     setShowAddChild(false);

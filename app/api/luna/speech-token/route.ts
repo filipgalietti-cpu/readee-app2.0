@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { checkLunaReadAllowance } from "@/lib/plan/luna-guard";
 
 export const dynamic = "force-dynamic";
 
@@ -36,8 +37,16 @@ export async function POST(req: Request) {
   const region = process.env.AZURE_SPEECH_REGION;
   if (!key || !region) return NextResponse.json({ ok: false, configured: false }, { status: 200 });
 
-  // Luna is a free-taste feature: any signed-in reader may use it. The free
-  // allowance (3 tries) is enforced at the read page / studio, not here.
+  // Free allowance (server-enforced): Luna reads are a 3-taste feature, so a
+  // genuinely-free reader past 3 completed reads gets a 402 instead of a
+  // token. ONLY the luna context is gated — this same mint also powers
+  // placement and lesson Speak steps, which stay open on free.
+  if (context === "luna") {
+    const gate = await checkLunaReadAllowance(user.id);
+    if (!gate.ok) {
+      return NextResponse.json({ error: "limit", reason: gate.reason }, { status: 402 });
+    }
+  }
 
   try {
     const r = await fetch(`https://${region}.api.cognitive.microsoft.com/sts/v1.0/issueToken`, {

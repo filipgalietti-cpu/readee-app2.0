@@ -21,6 +21,8 @@ export default function robots(): MetadataRoute.Robots {
         "/login",
       ],
       disallow: [
+        "/demo",
+        "/demo/",
         "/dashboard",
         "/discover",
         "/practice",

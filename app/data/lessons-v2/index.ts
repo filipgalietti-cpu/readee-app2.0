@@ -203,6 +203,16 @@ import { scienceWordClues, scienceWordCluesImages } from "./science-word-clues";
 
 import { findItFast, findItFastImages } from "./find-it-fast";
 
+import { whyAuthorsWrite, whyAuthorsWriteImages } from "./why-authors-write";
+
+import { wordMath, wordMathImages } from "./word-math";
+
+import { wordPlusWord, wordPlusWordImages } from "./word-plus-word";
+
+import { lookItUp, lookItUpImages } from "./look-it-up";
+
+import { sameAndOpposite, sameAndOppositeImages } from "./same-and-opposite";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -312,4 +322,9 @@ export const LESSONS: Record<string, LessonEntry> = {
   "two-ways-to-see": { lesson: twoWaysToSee, images: twoWaysToSeeImages },
   "science-word-clues": { lesson: scienceWordClues, images: scienceWordCluesImages },
   "find-it-fast": { lesson: findItFast, images: findItFastImages },
+  "why-authors-write": { lesson: whyAuthorsWrite, images: whyAuthorsWriteImages },
+  "word-math": { lesson: wordMath, images: wordMathImages },
+  "word-plus-word": { lesson: wordPlusWord, images: wordPlusWordImages },
+  "look-it-up": { lesson: lookItUp, images: lookItUpImages },
+  "same-and-opposite": { lesson: sameAndOpposite, images: sameAndOppositeImages },
 };

@@ -74,3 +74,6 @@ scripts/*.log
 scripts/factory-queue.json
 scripts/factory-quiz-error.json
 scratch_dl/
+
+# Instagram ad recorder output
+scripts/ad-out/

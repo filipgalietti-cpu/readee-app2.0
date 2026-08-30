@@ -9,6 +9,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
 import { supabaseAdmin } from '@/lib/supabase/admin';
+import { hasFullAccessFromProfile } from '@/lib/plan/access';
 
 function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
@@ -257,26 +258,56 @@ export async function POST(request: NextRequest) {
           }
         }
 
-        // Insert children — runs for both new and existing accounts
+        // Insert children — runs for both new and existing accounts.
+        // Reader cap is server-enforced here too (same rule as
+        // /api/children/create): 1 reader on free, 2 with full access
+        // (paid or inside the 7-day reverse trial). The questionnaire
+        // accepts up to 5 children, so clamp to whatever room is left —
+        // the normal first-reader flow always fits.
         if (userId && body.children?.length) {
           console.log('Inserting children for user:', userId, 'children data:', JSON.stringify(body.children));
           try {
-            const childrenRows = (body.children as { name?: string; grade?: string }[]).map((c) => ({
-              parent_id: userId as string,
-              first_name: c.name || 'Child',
-              grade: c.grade || null,
-            }));
+            const { data: prof } = await admin
+              .from('profiles')
+              .select('plan, created_at, had_subscription')
+              .eq('id', userId)
+              .maybeSingle();
+            const maxReaders = hasFullAccessFromProfile(
+              prof as { plan?: string | null; created_at?: string | null; had_subscription?: boolean | null } | null,
+            )
+              ? 2
+              : 1;
+            const { count: existingReaders } = await admin
+              .from('children')
+              .select('id', { count: 'exact', head: true })
+              .eq('parent_id', userId);
+            const room = Math.max(0, maxReaders - (existingReaders ?? 0));
+
+            const childrenRows = (body.children as { name?: string; grade?: string }[])
+              .slice(0, room)
+              .map((c) => ({
+                parent_id: userId as string,
+                first_name: c.name || 'Child',
+                grade: c.grade || null,
+              }));
+            if (childrenRows.length < body.children.length) {
+              console.log(`Reader cap: inserting ${childrenRows.length} of ${body.children.length} children (max ${maxReaders}, existing ${existingReaders ?? 0})`);
+            }
             console.log('Children rows to insert:', JSON.stringify(childrenRows));
 
-            const { data: insertedChildren, error: childrenError } = await admin
-              .from('children')
-              .insert(childrenRows)
-              .select();
+            if (childrenRows.length > 0) {
+              const { data: insertedChildren, error: childrenError } = await admin
+                .from('children')
+                .insert(childrenRows)
+                .select();
 
-            if (childrenError) {
-              console.error('Error inserting children:', JSON.stringify(childrenError));
+              if (childrenError) {
+                console.error('Error inserting children:', JSON.stringify(childrenError));
+              } else {
+                console.log(`Inserted ${insertedChildren?.length} children for user:`, userId);
+              }
             } else {
-              console.log(`Inserted ${insertedChildren?.length} children for user:`, userId);
+              console.log('Reader cap reached — no children inserted for user:', userId);
             }
           } catch (childErr) {
             console.error('Error in children insertion:', childErr);

@@ -3,6 +3,7 @@ import { ArrowLeft, Sparkles, Lock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
+import { FREE_LIMITS } from "@/lib/plan/limits";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import StoryStudio from "./_components/StoryStudio";
 
@@ -60,34 +61,44 @@ export default async function StoryStudioPage() {
   // Trial-aware: a reader inside the 7-day reverse trial passes too.
   const isPremium = hasFullAccessFromProfile(profile);
 
+  // Free taste: FREE_LIMITS.personalizedStoriesFree Story Studio creations,
+  // then the Readee+ wall. Same counter /api/luna/story enforces server-side
+  // (child_ai_content rows with kind "luna_story"), so page and server agree.
   if (!isPremium) {
-    return (
-      <div className="mx-auto max-w-2xl px-6 py-10">
-        <Link
-          href="/luna"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Luna
-        </Link>
-        <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30 dark:ring-violet-900/40">
-          <Lock className="mx-auto h-10 w-10 text-violet-500" />
-          <h1 className="mt-4 text-xl font-extrabold text-zinc-900 dark:text-white">
-            Story Studio is a Readee+ feature
-          </h1>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
-            Unlock unlimited stories with Luna, and let {child.first_name} share
-            their creations with other children.
-          </p>
+    const { count } = await supabase
+      .from("child_ai_content")
+      .select("id", { count: "exact", head: true })
+      .eq("child_id", child.id)
+      .eq("kind", "luna_story");
+    if ((count ?? 0) >= FREE_LIMITS.personalizedStoriesFree) {
+      return (
+        <div className="mx-auto max-w-2xl px-6 py-10">
           <Link
-            href="/upgrade?reason=luna"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-violet-700"
+            href="/luna"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
           >
-            See Readee+
+            <ArrowLeft className="h-4 w-4" />
+            Luna
           </Link>
+          <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30 dark:ring-violet-900/40">
+            <Lock className="mx-auto h-10 w-10 text-violet-500" />
+            <h1 className="mt-4 text-xl font-extrabold text-zinc-900 dark:text-white">
+              {child.first_name} used all {FREE_LIMITS.personalizedStoriesFree} free stories
+            </h1>
+            <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+              Readee+ unlocks unlimited stories with Luna, and lets {child.first_name} share
+              their creations with other children.
+            </p>
+            <Link
+              href="/upgrade?reason=luna"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-violet-700"
+            >
+              See Readee+
+            </Link>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   return (

@@ -1,0 +1,153 @@
+import type { LessonDef } from "@/lib/lesson-engine/types";
+import timings from "./same-and-opposite-timings.json";
+
+// Same and Opposite (L.2.5) · FACTORY-AUTHORED (scripts/lesson-author.ts), human-reviewed.
+// PURE DATA. Assets: lesson-tts / lesson-timings.py / lesson-images --lesson=same-and-opposite
+
+const A = (id: string) => `/audio/lessons-v2/same-and-opposite/${id}.mp3`;
+const W = (w: string) => `/audio/lessons-v2/same-and-opposite/words/${w.toLowerCase()}.mp3`;
+const IMG = (w: string) => `/images/lessons-v2/same-and-opposite/${w.toLowerCase()}.png`;
+
+export const sameAndOppositeImages: Record<string, string> = {
+  "lexi": "a friendly robot with gears and a screen for a face",
+  "word friends": "two cartoon words, 'glad' and 'happy', holding hands and smiling",
+  "word foes": "two cartoon words, 'wide' and 'narrow', with frowns and backs turned to each other",
+  "lily": "a cheerful girl with pigtails and a backpack",
+  "grandma": "a kind elderly woman with glasses, knitting",
+  "hug": "two people embracing warmly, smiling",
+  "loud": "a large, bright red megaphone with sound waves coming out",
+  "noisy": "a cartoon child joyfully shouting into a pillow",
+  "quiet": "a child sleeping peacefully in bed, a 'Zzz' bubble above them",
+  "fast": "a speedy cheetah running across a savanna",
+  "quick": "a rabbit hopping swiftly through a field",
+  "start": "a starting line on a race track with a runner poised to go",
+  "shout": "a child with wide-open mouth, yelling excitedly",
+  "yell": "a child with hands cupped around their mouth, calling out loudly",
+  "wide": "a very wide-open gate to a grand garden",
+  "narrow": "a slim, winding path through tall trees",
+  "sad": "a cartoon face with a teardrop falling from one eye",
+  "gloomy": "a dark, cloudy sky with a few raindrops falling",
+  "brave": "a small, confident knight holding a shield and sword",
+  "timid": "a tiny mouse peeking nervously from behind a large cheese block",
+  "glad": "a child with a small, contented smile",
+  "happy": "a child jumping in the air with a big, joyful grin",
+  "thrilled": "a child with wide, sparkling eyes and a huge, excited smile",
+  "maya": "a girl with hiking boots and a backpack, walking on a trail",
+  "tired": "a cartoon character yawning widely, eyes half-closed",
+  "sleepy": "a character leaning on a cloud, almost asleep",
+  "sun": "a bright, golden sun rising over cartoon mountains",
+  "bed": "a cozy bed with soft blankets and pillows",
+  "same-meaning-words": "two identical gears spinning together smoothly",
+  "opposite-meaning-words": "a light switch with 'ON' and 'OFF' labels",
+  "sound-alike-words": "two musical notes floating next to each other, with question marks"
+};
+
+export const sameAndOpposite: LessonDef = {
+  id: "same-and-opposite",
+  title: "Same and Opposite",
+  grade: "2nd Grade",
+  standard: "L.2.5",
+  archetype: "vocabulary",
+  objective: "Today you will become a Word Explorer and learn to find words that mean the same and words that mean the opposite!",
+  concepts: ["Synonyms","Antonyms","Word Relationships","Word Nuance"],
+  timings: timings as LessonDef["timings"],
+  completion: {
+    "script": "You did a fantastic job exploring words today! Remember, Word Friends are words that mean almost the same thing. Word Foes are words that mean the opposite. Keep discovering new words!",
+    "title": "Mission Accomplished!",
+    "body": "You are an amazing Word Explorer! You helped Lexi sort all her words and learned about Word Friends and Word Foes. Keep practicing your word skills!"
+  },
+  scenes: [
+    {
+      id: "scene-1-hook",
+      purpose: "hook",
+      gate: "interaction",
+      prompt: "Meet Lexi, the Word Collector Robot!",
+      fx: {"text":"We need to find **Word Friends** that mean almost the same thing and **Word Foes** that mean the opposite!","effect":"pop-words"},
+      narration: { audio: A("scene-1-hook"), script: "Hello, Word Explorers! I'm Lexi, and I need your help. My word collection is all mixed up. We need to find Word Friends that mean almost the same thing and Word Foes that mean the opposite!" },
+      interaction: { type: "listen", items: [{ label: "LEXI", audio: W("Lexi"), image: IMG("lexi") }, { label: "WORD FRIENDS", audio: W("Word Friends"), image: IMG("word friends") }, { label: "WORD FOES", audio: W("Word Foes"), image: IMG("word foes") }] },
+    },
+    {
+      id: "scene-2-model-synonym",
+      purpose: "model",
+      layout: "full",
+      gate: "none",
+      prompt: "Watch Lexi find some Word Friends!",
+      fx: {"text":"Words that are **Word Friends** mean almost the same thing. They are synonyms!","effect":"underline"},
+      narration: { audio: A("scene-2-model-synonym"), script: "Lexi is going to show us how to find words that are Word Friends. Listen as she reads a short story. Notice the words that mean almost the same." },
+      interaction: { type: "read-along", text: "Lily was so **glad** to see her grandma. She was truly **happy** when Grandma gave her a warm hug. It made Lily feel joyful all over.", audio: A("scene-2-model-synonym-sentence") },
+    },
+    {
+      id: "scene-3-guided-antonym-choose",
+      purpose: "guided",
+      gate: "interaction",
+      prompt: "Which word means the opposite of 'loud'?",
+      image: IMG("loud"),
+      narration: { audio: A("scene-3-guided-antonym-choose"), script: "Now let's find a Word Foe. Word Foes are words that mean the opposite of each other. Lexi heard a loud noise. What is the opposite of loud?" },
+      interaction: { type: "choose", options: [{ id: "noisy", label: "NOISY", audio: W("noisy"), image: IMG("noisy") }, { id: "quiet", label: "QUIET", audio: W("quiet"), image: IMG("quiet") }, { id: "fast", label: "FAST", audio: W("fast"), image: IMG("fast") }], correctId: "quiet", coachWrong: "Noisy means almost the same as loud. Remember, we are looking for the opposite of loud." },
+    },
+    {
+      id: "scene-4-guided-synonym-speak",
+      purpose: "guided",
+      gate: "interaction",
+      prompt: "Tell Lexi a Word Friend for 'quick'.",
+      image: IMG("quick"),
+      narration: { audio: A("scene-4-guided-synonym-speak"), script: "Great job finding that Word Foe! Now, can you help Lexi find a Word Friend? The word is quick. Tell me a word that means almost the same as quick." },
+      interaction: { type: "speak", text: "quick" },
+    },
+    {
+      id: "scene-5-guided-antonym-speak",
+      purpose: "guided",
+      gate: "interaction",
+      prompt: "Tell Lexi a Word Foe for 'start'.",
+      image: IMG("start"),
+      narration: { audio: A("scene-5-guided-antonym-speak"), script: "You're an amazing Word Explorer! Let's find another Word Foe. The word is start. What is a word that means the opposite of start?" },
+      interaction: { type: "speak", text: "start" },
+    },
+    {
+      id: "scene-6-apply-sort",
+      purpose: "apply",
+      layout: "full",
+      gate: "interaction",
+      prompt: "Help Lexi sort these word pairs!",
+      narration: { audio: A("scene-6-apply-sort"), script: "Lexi has found many word pairs! Some are Word Friends, and some are Word Foes. Drag each pair to the correct box: 'Same Meaning' or 'Opposite Meaning'." },
+      interaction: { type: "sort", buckets: ["Same Meaning","Opposite Meaning"], items: [{ label: "SHOUT AND YELL", bucket: "Same Meaning", audio: W("shout and yell") }, { label: "WIDE AND NARROW", bucket: "Opposite Meaning", audio: W("wide and narrow") }, { label: "SAD AND GLOOMY", bucket: "Same Meaning", audio: W("sad and gloomy") }, { label: "BRAVE AND TIMID", bucket: "Opposite Meaning", audio: W("brave and timid") }], coachWrong: "Think carefully. Do these words mean almost the same, or are they very different?" },
+    },
+    {
+      id: "scene-7-apply-nuance-choose",
+      purpose: "apply",
+      gate: "interaction",
+      prompt: "Which sentence shows a very strong feeling?",
+      image: IMG("thrilled"),
+      narration: { audio: A("scene-7-apply-nuance-choose"), script: "Sometimes Word Friends can mean almost the same, but one word is a little stronger! Let's look at glad, happy, and thrilled. Which sentence uses a word that shows a very strong feeling?" },
+      interaction: { type: "choose", options: [{ id: "i was glad to see my friend.", label: "I WAS GLAD TO SEE MY FRIEND.", audio: W("I was glad to see my friend.") }, { id: "i was happy to see my friend.", label: "I WAS HAPPY TO SEE MY FRIEND.", audio: W("I was happy to see my friend.") }, { id: "i was thrilled to see my friend.", label: "I WAS THRILLED TO SEE MY FRIEND.", audio: W("I was thrilled to see my friend.") }], correctId: "i was thrilled to see my friend.", coachWrong: "Glad and happy are good feelings, but 'thrilled' shows an even bigger, stronger feeling!" },
+    },
+    {
+      id: "scene-8-challenge-read-along",
+      purpose: "challenge",
+      layout: "full",
+      gate: "none",
+      prompt: "Read about Maya's exciting day.",
+      fx: {"text":"What an adventure!","effect":"jelly"},
+      narration: { audio: A("scene-8-challenge-read-along"), script: "You are becoming an expert Word Explorer! Now, read this story all by yourself. Look for words that are Word Friends and Word Foes. Pay close attention!" },
+      interaction: { type: "read-along", text: "Maya felt very **tired** after her long hike. She was so **sleepy** she almost fell asleep standing up! Soon, the sun began to **rise** in the morning sky, but Maya just wanted to **fall** back into bed and rest. What an adventure!", audio: A("scene-8-challenge-read-along-sentence") },
+    },
+    {
+      id: "scene-9-challenge-choose",
+      purpose: "challenge",
+      gate: "interaction",
+      prompt: "How are 'rise' and 'fall' related in Maya's story?",
+      image: IMG("opposite-meaning-words"),
+      narration: { audio: A("scene-9-challenge-choose"), script: "You read that story wonderfully! In Maya's story, you heard the words 'rise' and 'fall'. Which of these best describes their relationship?" },
+      interaction: { type: "choose", options: [{ id: "they mean almost the same.", label: "THEY MEAN ALMOST THE SAME.", audio: W("They mean almost the same.") }, { id: "they mean the opposite.", label: "THEY MEAN THE OPPOSITE.", audio: W("They mean the opposite.") }, { id: "they sound alike.", label: "THEY SOUND ALIKE.", audio: W("They sound alike.") }], correctId: "they mean the opposite.", coachWrong: "Think about what 'rise' means and what 'fall' means. Are they almost the same, or are they very different?" },
+    },
+    {
+      id: "scene-10-celebrate",
+      purpose: "celebrate",
+      layout: "full",
+      gate: "none",
+      prompt: "You are a Word Explorer!",
+      fx: {"text":"Fantastic work, Word Explorer!","effect":"fireworks"},
+      narration: { audio: A("scene-10-celebrate"), script: "Fantastic work, Word Explorer! You helped Lexi sort all her words. Remember, Word Friends mean almost the same, and Word Foes mean the opposite. Keep exploring words!" },
+    },
+  ],
+};

@@ -11,7 +11,7 @@ import { useSpeech } from "@/app/_components/SpeechContext";
 import lessonsData from "@/lib/data/lessons.json";
 import { gradeOrder, grades, levelNameToGradeKey } from "@/lib/assessment/questions";
 import { usePlanStore } from "@/lib/stores/plan-store";
-import { FREE_LIMITS } from "@/lib/plan/limits";
+import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
 
@@ -494,12 +494,21 @@ export default function LessonPage() {
   );
 }
 
-/** Check if a lesson ID is free (L1 or L2) */
+/* Free tier = each grade's FIRST UNIT, the same rule /learn and /journey use
+   (isLessonInFreeUnit). This catalog groups lessons by `skill` the way the
+   /learn catalog groups by `domain` — its unit — so the rule keys on
+   (level, skill) here. */
+const LESSON_CATALOG: { id: string; grade: string; domain: string }[] = Object.entries(
+  (lessonsData as unknown as LessonsFile).levels,
+).flatMap(([level, lv]) => lv.lessons.map((l) => ({ id: l.id, grade: level, domain: l.skill })));
+
+const FREE_UNIT_DOMAIN = firstUnitDomainByGrade(LESSON_CATALOG);
+
+/** Check if a lesson ID is in its grade's free (first) unit. */
 function isLessonFree(lessonId: string): boolean {
-  const match = lessonId.match(/L(\d+)$/);
-  if (!match) return true;
-  // L1 = index 0, L2 = index 1, etc. Check against centralized limit.
-  return parseInt(match[1]) - 1 < FREE_LIMITS.lessons;
+  const lesson = LESSON_CATALOG.find((l) => l.id === lessonId);
+  if (!lesson) return true; // unknown id — fail open, matching /learn's default
+  return isLessonInFreeUnit(lesson, FREE_UNIT_DOMAIN);
 }
 
 function LessonContent() {

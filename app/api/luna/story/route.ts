@@ -11,6 +11,7 @@ import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { assertSafePrompt, assertSafeOutput } from "@/lib/ai/safety";
 import { gradeToken } from "@/lib/luna/target-pattern";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { checkLunaStoryAllowance } from "@/lib/plan/luna-guard";
 
 export const dynamic = "force-dynamic";
 // Headroom for the (now fast) parallel cover + MCQ generation. Actual cap is
@@ -111,8 +112,14 @@ export async function POST(req: Request) {
   if ((child as any).parent_id !== user.id) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
-  // Luna Story Studio is a free-taste feature: any signed-in parent-of-child may
-  // create; the free allowance (3 stories) is enforced at the studio, not here.
+  // Free allowance (server-enforced so it can't be bypassed): full-access
+  // readers create unlimited stories; a genuinely-free reader gets 3 Story
+  // Studio creations (same count the studio page gates on), then a 402 that
+  // the client turns into the Readee+ wall.
+  const gate = await checkLunaStoryAllowance(user.id, childId);
+  if (!gate.ok) {
+    return NextResponse.json({ error: "limit", reason: gate.reason }, { status: 402 });
+  }
 
   // Story Studio uses its OWN storyteller (generateKidStory), NOT the decodable
   // comprehension generator - so "a tiger learning about pollution" stays a

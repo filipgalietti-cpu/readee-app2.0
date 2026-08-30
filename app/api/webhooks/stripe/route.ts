@@ -287,6 +287,9 @@ export async function POST(req: NextRequest) {
     // here to send a "your trial ends soon" email — wired loosely
     // for now (just logged) so we have telemetry; the email sender
     // can pick up on this event later without changing the webhook.
+    // TODO(paywall): the day-6 "trial ends tomorrow" email goes through the
+    // parent-notification email loop — send it from there when that loop
+    // ships, keyed off this event. Do NOT add ad-hoc email sending here.
     case "customer.subscription.trial_will_end": {
       const subscription = event.data.object as Stripe.Subscription;
       const customerId =
@@ -315,6 +318,37 @@ export async function POST(req: NextRequest) {
         attemptCount: invoice.attempt_count,
         nextPaymentAttempt: invoice.next_payment_attempt,
       });
+
+      // Re-sync entitlement from the subscription's CURRENT status. Normally
+      // customer.subscription.deleted handles the final downgrade, but if that
+      // event is never delivered (endpoint hiccup, event not configured) an
+      // unpaid sub would keep premium forever. Same grantsAccess mapping as
+      // the subscription handlers above: active/trialing/past_due keep
+      // access, everything else drops to free.
+      const rawSub =
+        (invoice as unknown as { subscription?: string | { id: string } | null }).subscription ??
+        (invoice as unknown as { parent?: { subscription_details?: { subscription?: string | { id: string } | null } } })
+          .parent?.subscription_details?.subscription ??
+        null;
+      const subId = typeof rawSub === "string" ? rawSub : rawSub?.id ?? null;
+      if (subId) {
+        try {
+          const sub = await stripe.subscriptions.retrieve(subId);
+          const grantsAccess =
+            sub.status === "active" ||
+            sub.status === "trialing" ||
+            sub.status === "past_due";
+          if (!grantsAccess) {
+            await admin
+              .from("profiles")
+              .update({ plan: "free" })
+              .eq("stripe_customer_id", customerId);
+            console.warn("[stripe] invoice.payment_failed — sub is", sub.status, "→ dropped to free", { customerId, subId });
+          }
+        } catch (err) {
+          console.error("[stripe] invoice.payment_failed — could not re-sync subscription", { customerId, subId }, err);
+        }
+      }
       break;
     }
 
