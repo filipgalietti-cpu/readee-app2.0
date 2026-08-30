@@ -11,11 +11,11 @@ export const soundSwitchHunt: WarmupDef = {
   title: "Sound Switch Hunt",
   recipe: "sound-hunt",
   mode: "rule",
-  playPrompt: "Pop the words that sound like cow!",
+  playPrompt: "Catch the words that sound like cow!",
   intro: {
     audio: A("intro"),
     script:
-      "Today's letters are o w. Sometimes o w sounds like it does in snow. Sometimes it sounds like it does in cow. Your job: pop every word where o w sounds like cow. Ready? Go!",
+      "Today's letters are o w. Sometimes o w sounds like it does in snow. Sometimes it sounds like it does in cow. Your job: catch every word where o w sounds like cow. Ready? Go!",
     cardText: "ow",
   },
   playSeconds: 45,

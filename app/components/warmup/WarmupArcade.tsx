@@ -121,10 +121,6 @@ export default function WarmupArcade({
 
   useEffect(() => {
     rm.current = !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    const greeting = greetingAudioUrl ?? GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
-    const a = new Audio(greeting);
-    voice.current = a;
-    a.play().catch(() => { /* autoplay blocked without a gesture — fine */ });
     const keyH = (e: KeyboardEvent) => {
       const n = parseInt(e.key, 10);
       if (n >= 1 && n <= 6) tapRef.current(n - 1);
@@ -132,6 +128,32 @@ export default function WarmupArcade({
     window.addEventListener("keydown", keyH);
     return () => { window.removeEventListener("keydown", keyH); stopAll(); };
   }, [stopAll]);
+
+  // Start-screen greeting: prefer the child's personal clip (loads async from
+  // the demo hook / journey context), falling back to a generic variant if it
+  // has not arrived shortly after mount. Plays exactly once.
+  const greetingPlayed = useRef(false);
+  useEffect(() => {
+    if (greetingPlayed.current || screen !== "start") return;
+    const playGreeting = (src: string) => {
+      greetingPlayed.current = true;
+      const a = new Audio(src);
+      voice.current = a;
+      a.play().catch(() => {
+        // Autoplay blocked on a cold load: retry on the first tap anywhere.
+        const retry = () => { a.play().catch(() => {}); };
+        window.addEventListener("pointerdown", retry, { once: true });
+      });
+    };
+    if (greetingAudioUrl) {
+      playGreeting(greetingAudioUrl);
+      return;
+    }
+    const t = setTimeout(() => {
+      if (!greetingPlayed.current) playGreeting(GREETINGS[Math.floor(Math.random() * GREETINGS.length)]);
+    }, 1400);
+    return () => clearTimeout(t);
+  }, [greetingAudioUrl, screen]);
 
   // ---- audio: Autonoe voice clips + WebAudio chimes (C-major family) ----
   const say = useCallback((src: string, onEnd?: () => void) => {
