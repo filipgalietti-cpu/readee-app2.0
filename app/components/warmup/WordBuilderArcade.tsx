@@ -2,15 +2,22 @@
 
 /**
  * Word Builder runner — ported from Filip's Claude Design "Word Builder"
- * round (start → ready countdown → 45s build round → celebration).
+ * round (start → ready countdown → 45s free-build round → celebration).
+ * Owner spec (after two misreads, in writing): OPEN-ENDED AND TIMED.
+ *
+ * FREE BUILD (owner spec): no voice calls, no current target. Parts of
+ * every not-yet-built word float by (plus decoys); the child snaps ANY
+ * two parts onto the bench. An exact ordered match against the build set
+ * fuses (compounds are ordered — sun+set is sunset, set+sun is not a
+ * word); anything else gently shakes apart and the parts return to the
+ * field. Built words stop spawning. The sun-arc timer ends the round.
  *
  * Two skins of one mechanic: "workshop" (word-planks drift by on ropes
- * under a twilight sky) and "pond" (word-fish swim past seaweed). The
- * voice calls a compound target ("Now build sunset!"); tapping a part
- * flies it into a bench slot; the right pair fuses into the big word,
- * says it, and sails to the "My words" shelf. Spawning is imperative DOM
- * into a field layer, same as WarmupArcade: dozens of transient nodes
- * per round is the wrong job for React state.
+ * under a twilight sky) and "pond" (word-fish swim past seaweed).
+ * Tapping a part flies it into a bench slot; a real pair fuses into the
+ * big word, says it, and sails to the "My words" shelf. Spawning is
+ * imperative DOM into a field layer, same as WarmupArcade: dozens of
+ * transient nodes per round is the wrong job for React state.
  *
  * No-fail contract (Jennifer's spec, non-negotiable): a wrong pair just
  * shivers out of the slots with no penalty (input locks for half a
@@ -19,8 +26,8 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { WarmupDef } from "@/lib/warmup-engine/types";
-import { Carrot, Volume2 } from "lucide-react";
+import type { WarmupBuild, WarmupDef } from "@/lib/warmup-engine/types";
+import { Carrot } from "lucide-react";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 
 type Screen = "start" | "intro" | "ready" | "play" | "end";
@@ -106,7 +113,6 @@ export default function WordBuilderArcade({
   const shelfRef = useRef<HTMLDivElement>(null);
   const slotARef = useRef<HTMLDivElement>(null);
   const slotBRef = useRef<HTMLDivElement>(null);
-  const hintRef = useRef<HTMLDivElement>(null);
   const bloomRef = useRef<HTMLDivElement>(null);
 
   const parts = useRef(new Map<number, Live>());
@@ -135,8 +141,6 @@ export default function WordBuilderArcade({
   const playSeconds = warmup.playSeconds ?? 45;
   const bestKey = `warmup-best:${warmup.id}`;
   const gameTitle = isPond ? "Fish Pond" : warmup.title;
-
-  const target = useCallback(() => builds[builtRef.current.length], [builds]);
 
   const to = useCallback((fn: () => void, ms: number) => {
     const t = setTimeout(() => { timers.current.delete(t); fn(); }, ms);
@@ -236,28 +240,25 @@ export default function WordBuilderArcade({
     }
   }, [to]);
 
-  // ---- part picking (needed parts get a .62 spawn bias so the round flows) ----
-  const neededParts = useCallback(() => {
-    const t = target();
-    if (!t || assemblingRef.current) return [] as string[];
-    const n: string[] = [];
-    if (slotAVal.current !== t.parts[0]) n.push(t.parts[0]);
-    if (slotBVal.current !== t.parts[1]) n.push(t.parts[1]);
-    return n;
-  }, [target]);
-
+  // ---- part picking: the free-build pool ----
+  // Both halves of every not-yet-built word cycle through (75% bias) with
+  // decoys mixed in. A word already visible or sitting in a slot doesn't
+  // double up; built words drop out of the pool entirely.
   const pickPart = useCallback((): string | null => {
     const visible = [...parts.current.values()].filter((p) => !p.gone).map((p) => p.word);
-    const needAll = neededParts();
-    const need = needAll.filter((w) => !visible.includes(w));
-    if (need.length && Math.random() < 0.62) return need[Math.floor(Math.random() * need.length)];
-    const idx = builtRef.current.length;
-    const others = builds.filter((_, i) => i !== idx).flatMap((b) => b.parts);
-    let pool = decoyParts.concat(others).filter((w) => !visible.includes(w) && !needAll.includes(w));
-    if (need.length) pool = pool.concat(need);
-    if (!pool.length) return null;
-    return pool[Math.floor(Math.random() * pool.length)];
-  }, [builds, decoyParts, neededParts]);
+    const taken = [slotAVal.current, slotBVal.current].filter((w): w is string => !!w);
+    const avail = (w: string) => !visible.includes(w) && !taken.includes(w);
+    const buildParts = builds
+      .filter((b) => !builtRef.current.includes(b.word))
+      .flatMap((b) => b.parts)
+      .filter(avail);
+    const decoys = decoyParts.filter(avail);
+    if (buildParts.length && (Math.random() < 0.75 || !decoys.length)) {
+      return buildParts[Math.floor(Math.random() * buildParts.length)];
+    }
+    if (!decoys.length) return null;
+    return decoys[Math.floor(Math.random() * decoys.length)];
+  }, [builds, decoyParts]);
 
   // ---- spawn / despawn / tap ----
   const despawn = useCallback((id: number) => {
@@ -327,53 +328,34 @@ export default function WordBuilderArcade({
   }, []);
 
   // ---- the assembly moment ----
-  const announce = useCallback(() => {
-    const t = target();
-    if (!t) return;
-    const h = hintRef.current;
-    if (h) {
-      h.innerHTML = t.emblem ?? "";
-      h.style.animation = "none";
-      void h.offsetWidth;
-      h.style.animation = "wuPopIn .4s cubic-bezier(.34,1.56,.64,1) both";
-    }
-    say(t.call.audio);
-  }, [say, target]);
-
   const setSlot = useCallback((slot: "a" | "b", word: string | null) => {
     if (slot === "a") { slotAVal.current = word; setSlotA(word); }
     else { slotBVal.current = word; setSlotB(word); }
   }, []);
 
-  /** A wrong pair pops back out: shiver the wrong slot(s), no penalty. */
+  /** A pair that is not a real word pops back apart: both slots shiver
+   *  clear and the parts rejoin the pool. No penalty, no red. */
   const unfuse = useCallback(() => {
-    const t = target();
-    if (!t) return;
     locked.current = true;
     sUnfuse();
-    const wrongA = slotAVal.current !== t.parts[0], wrongB = slotBVal.current !== t.parts[1];
-    ([[wrongA, slotARef], [wrongB, slotBRef]] as const).forEach(([wrong, ref]) => {
+    [slotARef, slotBRef].forEach((ref) => {
       const el = ref.current;
-      if (wrong && el && !rm.current) {
+      if (el && !rm.current) {
         el.style.animation = "none";
         void el.offsetWidth;
         el.style.animation = "wuShiver .45s ease both";
       }
     });
     to(() => {
-      if (wrongA) setSlot("a", null);
-      if (wrongB) setSlot("b", null);
+      setSlot("a", null);
+      setSlot("b", null);
       locked.current = false;
     }, rm.current ? 260 : 560);
-  }, [setSlot, sUnfuse, target, to]);
+  }, [setSlot, sUnfuse, to]);
 
   const endRoundRef = useRef<() => void>(() => {});
-  const announceRef = useRef(announce);
-  useEffect(() => { announceRef.current = announce; }, [announce]);
 
-  const assemble = useCallback(() => {
-    const t = target();
-    if (!t) return;
+  const assemble = useCallback((t: WarmupBuild) => {
     assemblingRef.current = true;
     setAssembling(true);
     setBuiltWord(t.word);
@@ -414,10 +396,10 @@ export default function WordBuilderArcade({
       assemblingRef.current = false;
       setAssembling(false);
       setBuiltWord("");
+      // All words built before the sun sets: celebrate early.
       if (builtRef.current.length >= builds.length) { to(() => endRoundRef.current(), 600); return; }
-      if (playing.current) to(() => announceRef.current(), 350);
     }, 1350);
-  }, [builds.length, burst, say, setSlot, sFuse, target, to]);
+  }, [builds.length, burst, say, setSlot, sFuse, to]);
 
   const catchPart = useCallback((id: number, slot: "a" | "b") => {
     pending.current[slot] = true;
@@ -447,9 +429,11 @@ export default function WordBuilderArcade({
         void slotEl.offsetWidth;
         slotEl.style.animation = "wuSlotGlow .55s ease-out both";
       }
-      const t = target();
-      if (t && slotAVal.current && slotBVal.current) {
-        if (slotAVal.current === t.parts[0] && slotBVal.current === t.parts[1]) assemble();
+      const a = slotAVal.current, b = slotBVal.current;
+      if (a && b) {
+        // Ordered match: sun+set is sunset; set+sun is not a word.
+        const match = builds.find((bd) => !builtRef.current.includes(bd.word) && bd.parts[0] === a && bd.parts[1] === b);
+        if (match) assemble(match);
         else to(() => unfuse(), 380);
       }
     };
@@ -462,23 +446,18 @@ export default function WordBuilderArcade({
       }));
       to(done, 390);
     }
-  }, [assemble, setSlot, sThunk, target, to, unfuse]);
+  }, [assemble, builds, setSlot, sThunk, to, unfuse]);
 
   const tap = useCallback((id: number) => {
     if (!playing.current || assemblingRef.current || locked.current) return;
     const p = parts.current.get(id);
     if (!p || p.gone) return;
-    const t = target();
-    if (!t) return;
     const busyA = !!slotAVal.current || pending.current.a;
     const busyB = !!slotBVal.current || pending.current.b;
-    // Prototype rule: a part lands in its own slot when it matches, otherwise
-    // the first free slot — wrong pairs get discovered at the bench (unfuse).
-    if (p.word === t.parts[0] && !busyA) catchPart(id, "a");
-    else if (p.word === t.parts[1] && !busyB) catchPart(id, "b");
-    else if (!busyA) catchPart(id, "a");
+    // Free build: parts land in the first open slot; the bench judges pairs.
+    if (!busyA) catchPart(id, "a");
     else if (!busyB) catchPart(id, "b");
-  }, [catchPart, target]);
+  }, [catchPart]);
   const tapRef = useRef(tap);
   useEffect(() => { tapRef.current = tap; }, [tap]);
 
@@ -525,13 +504,15 @@ export default function WordBuilderArcade({
   }, [bestKey, clearField, sEnd, say, to, warmup.celebrate.audio, warmup.celebrateZero]);
   useEffect(() => { endRoundRef.current = endRound; }, [endRound]);
 
+  // Free-build round: the sun-arc clock runs; the round ends when time is
+  // up, or early if every word gets built.
   const tick = useCallback(() => {
     const rem = endsAt.current - Date.now();
     const t = Math.min(1, Math.max(0, 1 - rem / (playSeconds * 1000)));
-    const s = sunRef.current;
-    if (s) {
-      s.style.left = `${30 + t * (stageW() - 210)}px`;
-      s.style.top = `${124 - Math.sin(Math.PI * t) * 58}px`;
+    const sun = sunRef.current;
+    if (sun) {
+      sun.style.left = `${30 + t * (stageW() - 200)}px`;
+      sun.style.top = `${128 - Math.sin(Math.PI * t) * 58}px`;
     }
     if (rem <= 0) endRoundRef.current();
   }, [playSeconds]);
@@ -546,10 +527,9 @@ export default function WordBuilderArcade({
     locked.current = false;
     playing.current = true;
     endsAt.current = Date.now() + playSeconds * 1000;
-    announceRef.current();
-    scheduleSpawn(400);
     tickI.current = setInterval(tick, 220);
     tick();
+    scheduleSpawn(400);
   }, [playSeconds, scheduleSpawn, setSlot, tick]);
 
   const pulseCount = useCallback(() => {
@@ -588,12 +568,6 @@ export default function WordBuilderArcade({
       say(warmup.intro.audio, () => countdown());
     }
   }, [countdown, say, tone, warmup.intro.audio]);
-
-  const onHear = useCallback(() => {
-    if (!playing.current) return;
-    const t = target();
-    if (t) say(t.call.audio);
-  }, [say, target]);
 
   const onLesson = useCallback(() => { stopAll(); onComplete?.(); }, [onComplete, stopAll]);
   const onReplay = useCallback(() => { tone(659, 0, 0.12, "triangle", 0.07); countdown(); }, [countdown, tone]);
@@ -667,21 +641,11 @@ export default function WordBuilderArcade({
       {/* ---------- play chrome ---------- */}
       {showChrome && (
         <>
-          <div ref={sunRef} className="pointer-events-none absolute z-[6] h-11 w-11 rounded-full" style={{ left: 30, top: 118, background: "radial-gradient(circle at 35% 30%,#fef3c7,#fbbf24 60%,#f59e0b)", boxShadow: "0 0 26px 6px rgba(251,191,36,.55)", transition: "left .25s linear,top .25s linear" }} />
-
-          {/* call banner: emblem hint + rule + Hear it */}
-          <div className="absolute left-1/2 top-4 z-30 flex -translate-x-1/2 items-center justify-center gap-3.5 rounded-3xl bg-white/95 px-4 py-3 shadow-lg" style={{ width: "min(620px, calc(100% - 150px))" }}>
-            <div ref={hintRef} className="h-[52px] w-[52px] flex-none" />
-            <span className="font-display text-lg font-bold leading-tight text-zinc-900">{warmup.playPrompt}</span>
-            <button
-              type="button"
-              onClick={onHear}
-              className="flex flex-none items-center gap-1.5 rounded-full bg-indigo-50 px-4 py-2 text-sm font-extrabold text-indigo-700 transition hover:bg-indigo-100 active:scale-[0.94]"
-            >
-              <Volume2 className="h-4 w-4" />
-              Hear it
-            </button>
+          {/* rule banner */}
+          <div className="absolute left-1/2 top-4 z-30 flex -translate-x-1/2 items-center justify-center rounded-3xl bg-white/95 px-6 py-3 shadow-lg" style={{ width: "min(560px, calc(100% - 150px))" }}>
+            <span className="text-center font-display text-lg font-bold leading-tight text-zinc-900">{warmup.playPrompt}</span>
           </div>
+          <div ref={sunRef} className="pointer-events-none absolute z-[6] h-11 w-11 rounded-full" style={{ left: 26, top: 118, background: "radial-gradient(circle at 35% 30%,#fef3c7,#fbbf24 60%,#f59e0b)", boxShadow: "0 0 26px 6px rgba(251,191,36,.55)", transition: "left .25s linear,top .25s linear" }} />
 
           {/* the "My words" shelf */}
           <div ref={shelfRef} className="pointer-events-none absolute bottom-4 left-4 z-[32] min-w-[130px] rounded-2xl bg-white/95 px-4 py-3 shadow-lg">
@@ -768,14 +732,14 @@ export default function WordBuilderArcade({
           </h1>
           <div className="flex items-center gap-6 sm:gap-8">
             {isPond
-              ? <FlankFish word={firstBuild?.parts[0] ?? "sun"} col={FISHCOLS[1]} delay={0} flip />
-              : <FlankPlank word={firstBuild?.parts[0] ?? "sun"} delay={0} />}
-            <div className="wu-fast-wave pointer-events-none h-44 w-40 sm:h-60 sm:w-56">
+              ? <FlankFish word={firstBuild?.parts[0] ?? "sun"} col={FISHCOLS[1]} flip />
+              : <FlankPlank word={firstBuild?.parts[0] ?? "sun"} />}
+            <div className="pointer-events-none h-44 w-40 sm:h-60 sm:w-56">
               <BunnyReaction outfitId={outfitId} state="wave" />
             </div>
             {isPond
-              ? <FlankFish word={firstBuild?.parts[1] ?? "set"} col={FISHCOLS[0]} delay={1.3} />
-              : <FlankPlank word={firstBuild?.parts[1] ?? "set"} delay={1.3} />}
+              ? <FlankFish word={firstBuild?.parts[1] ?? "set"} col={FISHCOLS[0]} />
+              : <FlankPlank word={firstBuild?.parts[1] ?? "set"} />}
           </div>
           <div className="rounded-3xl bg-white px-7 py-4 font-display text-xl font-bold text-zinc-900 shadow-lg">
             {warmup.startPrompt ?? warmup.playPrompt}
@@ -837,10 +801,10 @@ export default function WordBuilderArcade({
   );
 }
 
-/** Start-screen flanker (workshop): a word-plank bobbing beside the bunny. */
-function FlankPlank({ word, delay }: { word: string; delay: number }) {
+/** Start-screen flanker (workshop): a word-plank sitting beside the bunny. */
+function FlankPlank({ word }: { word: string }) {
   return (
-    <div className="relative hidden h-[66px] w-[130px] sm:block" style={{ animation: `wuBob ${3.4 + delay * 0.45}s ease-in-out ${delay}s infinite` }}>
+    <div className="relative hidden h-[66px] w-[130px] sm:block">
       <div
         className="absolute inset-0 flex items-center justify-center rounded-2xl font-display text-[26px] font-extrabold"
         style={{ background: PLANK_BG, border: "4px solid #854d0e", boxShadow: "0 10px 26px -10px rgba(30,27,75,.4)", color: "#fff7ed", textShadow: "0 2px 0 #7a4b26" }}
@@ -851,11 +815,10 @@ function FlankPlank({ word, delay }: { word: string; delay: number }) {
   );
 }
 
-/** Start-screen flanker (pond): a word-fish bobbing beside the bunny. */
-function FlankFish({ word, col, delay, flip = false }: { word: string; col: { l: string; d: string }; delay: number; flip?: boolean }) {
+/** Start-screen flanker (pond): a word-fish sitting beside the bunny. */
+function FlankFish({ word, col, flip = false }: { word: string; col: { l: string; d: string }; flip?: boolean }) {
   return (
-    <div className="relative hidden h-[80px] w-[150px] sm:block" style={{ animation: `wuBob ${3.4 + delay * 0.45}s ease-in-out ${delay}s infinite` }}>
-      {/* flip lives on an inner wrapper: the bob animation owns the outer transform */}
+    <div className="relative hidden h-[80px] w-[150px] sm:block">
       <div className="absolute inset-0" style={{ transform: flip ? "scaleX(-1)" : undefined }}>
         <svg viewBox="0 0 170 90" width="150" height="80" className="block">
           <path d="M8 22 Q34 45 8 68 Q22 45 8 22 Z" fill={col.d} /><path d="M6 24 L38 36 L38 54 L6 66 Q24 45 6 24 Z" fill={col.d} />

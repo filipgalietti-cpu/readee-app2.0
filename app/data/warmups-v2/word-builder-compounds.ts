@@ -23,12 +23,12 @@ export const wordBuilderCompounds: WarmupDef = {
   title: "Word Builder",
   recipe: "word-catch",
   mode: "builder",
-  playPrompt: "Listen and build the word!",
-  startPrompt: "Listen, then snap the two parts together!",
+  playPrompt: "Snap parts together to build words!",
+  startPrompt: "Snap parts together to build words!",
   intro: {
     audio: A("intro"),
     script:
-      "Two little words can snap together to make one big word! Sun and set make sunset. Listen for the word I call, then tap its two parts to build it. Ready? Go!",
+      "Word parts are floating by! Grab two parts and snap them together on the bench. If they make a real word, it goes on your shelf. Build as many words as you can! Ready? Go!",
     cardText: "sun + set",
   },
   playSeconds: 45,
