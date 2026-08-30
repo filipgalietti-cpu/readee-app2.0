@@ -69,8 +69,15 @@ export const wordBuilderCompounds: WarmupDef = {
       wordAudio: A("w-footprint"),
       emblem: EMBLEMS.footprint,
     },
+    { word: "bedtime", parts: ["bed", "time"], wordAudio: A("w-bedtime") },
+    { word: "doghouse", parts: ["dog", "house"], wordAudio: A("w-doghouse") },
+    { word: "snowman", parts: ["snow", "man"], wordAudio: A("w-snowman") },
+    { word: "starfish", parts: ["star", "fish"], wordAudio: A("w-starfish") },
+    { word: "raindrop", parts: ["rain", "drop"], wordAudio: A("w-raindrop") },
+    { word: "toothbrush", parts: ["tooth", "brush"], wordAudio: A("w-toothbrush") },
+    { word: "campfire", parts: ["camp", "fire"], wordAudio: A("w-campfire") },
   ],
-  decoyParts: ["dog", "tree", "jump", "snow"],
+  decoyParts: ["tree", "jump", "sock", "lamp"],
   celebrate: {
     audio: A("celebrate"),
     script:

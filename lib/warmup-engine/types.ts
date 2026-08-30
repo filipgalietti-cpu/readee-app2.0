@@ -46,8 +46,8 @@ export type WarmupBuild = {
   word: string;
   /** Its two parts in slot order: parts[0] + parts[1] = word. */
   parts: [string, string];
-  /** Call announcing the target ("Now build sunset! Sun. Set."). */
-  call: { audio: string; script: string };
+  /** Legacy guided-mode call — unused in free build. */
+  call?: { audio: string; script: string };
   /** Completion clip played as the parts fuse ("Sunset!"). */
   wordAudio: string;
   /** Inline SVG emblem shown in the banner hint + assembly bloom. */

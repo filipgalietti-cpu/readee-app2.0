@@ -272,7 +272,7 @@ export default function WordBuilderArcade({
 
   const trySpawn = useCallback(() => {
     const alive = [...parts.current.values()].filter((p) => !p.gone).length;
-    if (alive >= 4) return;
+    if (alive >= 5) return;
     const word = pickPart();
     if (!word) return;
     const field = fieldRef.current;
@@ -316,7 +316,7 @@ export default function WordBuilderArcade({
     to(() => {
       if (!playing.current) return;
       trySpawn();
-      scheduleSpawn(700 + Math.random() * 700);
+      scheduleSpawn(600 + Math.random() * 600);
     }, ms);
   }, [to, trySpawn]);
 

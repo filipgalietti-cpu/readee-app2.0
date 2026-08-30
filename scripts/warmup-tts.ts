@@ -72,7 +72,7 @@ async function main() {
   // Builder rounds: per-build call ("Now build sunset! Sun. Set.") and
   // per-word completion clip ("Sunset!") played as the parts fuse.
   for (const b of w.builds ?? []) {
-    jobs.push({ file: base(b.call.audio), script: b.call.script });
+    if (b.call) jobs.push({ file: base(b.call.audio), script: b.call.script });
     jobs.push({ file: base(b.wordAudio), script: `${b.word[0].toUpperCase()}${b.word.slice(1)}!` });
   }
   for (const j of jobs) {
