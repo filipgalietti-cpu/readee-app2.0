@@ -14,11 +14,16 @@ export async function synthesizeChildGreeting(childId: string, firstName: string
   try {
     const name = (firstName ?? "").trim().slice(0, 24);
     if (!name) return;
-    const res = await generateSpeechVertex({
+    let res = await generateSpeechVertex({
       text: `Welcome, ${name}! Time to warm up!`,
       voice: "Autonoe",
     });
-    if (!res.ok) return;
+    if (!res.ok) {
+      // one paced retry — Vertex 429s are transient (the batch backfill proved it)
+      await new Promise((r) => setTimeout(r, 4000));
+      res = await generateSpeechVertex({ text: `Welcome, ${name}! Time to warm up!`, voice: "Autonoe" });
+      if (!res.ok) return;
+    }
     // PCM (24kHz mono s16le) -> WAV container so browsers can play it without ffmpeg.
     const pcm = Buffer.from(res.pcmBase64, "base64");
     const wav = pcmToWav(pcm, 24000);

@@ -151,7 +151,7 @@ export default function WarmupArcade({
     }
     const t = setTimeout(() => {
       if (!greetingPlayed.current) playGreeting(GREETINGS[Math.floor(Math.random() * GREETINGS.length)]);
-    }, 1400);
+    }, 3500);
     return () => clearTimeout(t);
   }, [greetingAudioUrl, screen]);
 
@@ -487,10 +487,10 @@ export default function WarmupArcade({
     if (voice.current) { voice.current.onended = null; voice.current.pause(); }
     clearField();
     setScreen("ready");
-    setCountText("1");
+    setCountText("3");
     to(pulseCount, 20);
     to(() => { setCountText("2"); tone(587, 0, 0.15, "triangle", 0.08); pulseCount(); }, 800);
-    to(() => { setCountText("3"); tone(659, 0, 0.15, "triangle", 0.08); pulseCount(); }, 1600);
+    to(() => { setCountText("1"); tone(659, 0, 0.15, "triangle", 0.08); pulseCount(); }, 1600);
     to(() => { setCountText("GO!"); tone(784, 0, 0.16, "triangle", 0.09); tone(1046, 0.08, 0.24, "triangle", 0.09); pulseCount(); }, 2400);
     to(beginRound, 3200);
   }, [beginRound, clearField, pulseCount, to, tone]);
