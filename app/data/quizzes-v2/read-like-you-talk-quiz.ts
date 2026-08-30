@@ -109,7 +109,7 @@ export const readLikeYouTalkQuiz: QuizDef = {
       difficulty: 5,
       prompt: "Read it out loud like a real question.",
       narration: { audio: `${Q}/c-5-speak-ask.mp3`, script: "Read the question on your screen out loud. Let your voice climb up at the end, like you really want to know the answer." },
-      hint: { audio: `${Q}/c-5-speak-ask-hint.mp3`, script: "Your voice starts easy and reaches up high at the end, like a real question." },
+      hint: { audio: `${Q}/c-5-speak-ask-hint.mp3`, script: "Ask it for real, like you need the answer right now. What does your voice do at the end?" },
       explain: { audio: `${Q}/c-5-speak-ask-explain.mp3`, script: "The question mark makes your voice climb at the end. That is how a question sounds. Who took my pen?" },
       interaction: { type: "speak", text: "Who took my pen?" },
     },
