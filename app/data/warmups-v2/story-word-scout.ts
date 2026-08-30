@@ -63,5 +63,10 @@ export const storyWordScout: WarmupDef = {
     script:
       "You caught every story word! Storm, thunder, window, brave. You already know the big words in today's story. Let's go read it.",
   },
+  celebrateZero: {
+    audio: A("celebrate-zero"),
+    script:
+      "Good warm up! Those story words are big ones. You will meet them again inside today's story, and they will feel like old friends.",
+  },
   carrots: 2,
 };

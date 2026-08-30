@@ -50,5 +50,10 @@ export const soundSwitchHunt: WarmupDef = {
     script:
       "Wow, your ears are warmed up! You heard the o w sound, like in cow, hiding in all those words. Now let's take those sharp ears into today's lesson.",
   },
+  celebrateZero: {
+    audio: A("celebrate-zero"),
+    script:
+      "Good warm up! Those o w words are sneaky. Keep your ears open for the cow sound in today's lesson, and you will catch them next time.",
+  },
   carrots: 2,
 };

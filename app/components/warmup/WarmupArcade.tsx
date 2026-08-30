@@ -93,6 +93,7 @@ export default function WarmupArcade({
   const lastWords = useRef<string[]>([]);
   const callIdx = useRef(0);
   const scoreRef = useRef(0);
+  const tapLockUntil = useRef(0);
   const ac = useRef<AudioContext | null>(null);
   const voice = useRef<HTMLAudioElement | null>(null);
   const rm = useRef(false);
@@ -323,10 +324,16 @@ export default function WarmupArcade({
 
   const tap = useCallback((idx: number) => {
     if (!playing.current) return;
+    // Soft anti-spam: a wrong tap locks input for half a second. Spam-clicking
+    // becomes useless without ever being punished (no-fail contract).
+    if (Date.now() < tapLockUntil.current) return;
     const e = live.current.get(idx);
     if (!e || e.gone) return;
     if (e.correct) collect(idx);
-    else shy(idx);
+    else {
+      tapLockUntil.current = Date.now() + 500;
+      shy(idx);
+    }
   }, [collect, shy]);
   const tapRef = useRef(tap);
   useEffect(() => { tapRef.current = tap; }, [tap]);
@@ -427,7 +434,8 @@ export default function WarmupArcade({
       setEndBest({ best, isBest });
       setScreen("end");
       sEnd();
-      say(warmup.celebrate.audio);
+      const zero = s === 0 && warmup.celebrateZero;
+      say(zero ? warmup.celebrateZero!.audio : warmup.celebrate.audio);
       to(() => {
         if (rm.current) return;
         const c = confettiRef.current;
@@ -508,11 +516,13 @@ export default function WarmupArcade({
 
   const showChrome = screen === "ready" || screen === "play" || screen === "intro";
   const bestLine = endBest
-    ? endBest.isBest && score > 0
-      ? "That's your best catch yet!"
-      : endBest.best > 0
-        ? `Your best is ${Math.max(endBest.best, score)}. Way to go!`
-        : "Way to go!"
+    ? score === 0
+      ? "The words will be waiting in the lesson."
+      : endBest.isBest
+        ? "That's your best catch yet!"
+        : endBest.best > 0
+          ? `Your best is ${Math.max(endBest.best, score)}. Way to go!`
+          : "Way to go!"
     : "";
 
   // soil mounds for the carrot skin
@@ -645,12 +655,14 @@ export default function WarmupArcade({
             <div className="flex max-w-lg flex-col items-center gap-3 text-center sm:gap-4">
               <CelebrationBasket />
               <h2 className="font-display text-4xl font-extrabold leading-tight sm:text-6xl" style={{ background: "linear-gradient(90deg,#4338ca,#7c3aed)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", animation: "wuFadeUp .5s .14s ease both" }}>
-                You caught {score}!
+                {score > 0 ? `You caught ${score}!` : "Great warm up!"}
               </h2>
               <p className="text-lg font-bold text-zinc-600" style={{ animation: "wuFadeUp .5s .2s ease both" }}>{bestLine}</p>
-              <p className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-4 py-2 text-sm font-extrabold text-orange-600" style={{ animation: "wuFadeUp .5s .23s ease both" }}>
-                <Carrot className="h-4 w-4" />+{score} carrots
-              </p>
+              {score > 0 && (
+                <p className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-4 py-2 text-sm font-extrabold text-orange-600" style={{ animation: "wuFadeUp .5s .23s ease both" }}>
+                  <Carrot className="h-4 w-4" />+{score} carrots
+                </p>
+              )}
               <div className="flex items-center gap-6" style={{ animation: "wuFadeUp .5s .26s ease both" }}>
                 <button type="button" onClick={onLesson} className="rounded-full bg-indigo-700 px-8 py-3.5 text-lg font-bold text-white shadow-xl transition hover:-translate-y-0.5 hover:bg-indigo-900 active:scale-[0.96] sm:px-11 sm:py-4 sm:text-xl">
                   On to the lesson!

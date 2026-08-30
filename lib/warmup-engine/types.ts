@@ -57,6 +57,12 @@ export type WarmupDef = {
     audio: string;
     script: string;
   };
+  /** Played instead of `celebrate` when the child caught nothing — honest,
+   *  warm, forward-pointing. No false praise, no shame. */
+  celebrateZero?: {
+    audio: string;
+    script: string;
+  };
   /** Carrots granted on completion (always granted; no-fail). */
   carrots: number;
 };
