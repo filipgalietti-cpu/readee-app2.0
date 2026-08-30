@@ -1,11 +1,13 @@
 import type { WarmupDef } from "@/lib/warmup-engine/types";
 import { soundSwitchHunt } from "./sound-switch-hunt";
 import { storyWordScout } from "./story-word-scout";
+import { wordBuilderCompounds } from "./word-builder-compounds";
 
 /** All Warm-Up Arcade rounds, keyed by warm-up id. */
 export const WARMUPS: Record<string, WarmupDef> = {
   "sound-switch-hunt": soundSwitchHunt,
   "story-word-scout": storyWordScout,
+  "word-builder-compounds": wordBuilderCompounds,
 };
 
 /** Lookup by the lesson a warm-up feeds (journey: warmup → lesson → questions). */

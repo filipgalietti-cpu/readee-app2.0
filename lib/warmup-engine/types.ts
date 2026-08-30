@@ -6,11 +6,15 @@
  * ever marked wrong: off-target taps wobble and cost nothing, the score only
  * counts up, and the round always ends in a celebration + carrots.
  *
- * One engine, two round shapes:
- *  - "rule"  — one standing rule ("pop every word where ow sounds like cow"),
- *              all targets on screen across waves, kid pops matches.
- *  - "call"  — sequential audio calls ("Catch the word storm!"), one match
- *              per call among decoys. Used to pre-teach story/topic words.
+ * One engine, three round shapes:
+ *  - "rule"    — one standing rule ("pop every word where ow sounds like cow"),
+ *                all targets on screen across waves, kid pops matches.
+ *  - "call"    — sequential audio calls ("Catch the word storm!"), one match
+ *                per call among decoys. Used to pre-teach story/topic words.
+ *  - "builder" — sequential audio calls name a compound target ("Now build
+ *                sunset!"); the kid taps its two drifting parts into bench
+ *                slots and they fuse. Runs in WordBuilderArcade, not
+ *                WarmupArcade (different mechanic, shared conventions).
  */
 
 export type WarmupRecipe =
@@ -36,16 +40,34 @@ export type WarmupWave = {
   tiles: WarmupTile[];
 };
 
+/** One target of a "builder" round: a compound word and its two parts. */
+export type WarmupBuild = {
+  /** The finished word, lowercase ("sunset"). */
+  word: string;
+  /** Its two parts in slot order: parts[0] + parts[1] = word. */
+  parts: [string, string];
+  /** Call announcing the target ("Now build sunset! Sun. Set."). */
+  call: { audio: string; script: string };
+  /** Completion clip played as the parts fuse ("Sunset!"). */
+  wordAudio: string;
+  /** Inline SVG emblem shown in the banner hint + assembly bloom. */
+  emblem?: string;
+};
+
 export type WarmupDef = {
   id: string;
   /** Lesson this warm-up feeds. Journey plays warmup → lesson → questions. */
   lessonId: string;
   title: string;
   recipe: WarmupRecipe;
-  /** "rule" = standing match rule; "call" = tap what the voice asks for. */
-  mode: "rule" | "call";
+  /** "rule" = standing match rule; "call" = tap what the voice asks for;
+   *  "builder" = snap two called parts together (WordBuilderArcade). */
+  mode: "rule" | "call" | "builder";
   /** Short kid-facing rule line shown during play, e.g. "Pop the cow sounds!" */
   playPrompt: string;
+  /** Start-screen invitation line; falls back to `playPrompt` when absent
+   *  (builder rounds word it differently: "Listen, then snap…"). */
+  startPrompt?: string;
   intro: {
     audio: string;
     script: string;
@@ -55,6 +77,10 @@ export type WarmupDef = {
   /** Play-phase length in seconds (soft harvest window, default 45). */
   playSeconds?: number;
   waves: WarmupWave[];
+  /** Builder rounds: the compound targets, built in order. Empty `waves`. */
+  builds?: WarmupBuild[];
+  /** Builder rounds: never-needed drifting parts ("dog", "tree", …). */
+  decoyParts?: string[];
   celebrate: {
     audio: string;
     script: string;

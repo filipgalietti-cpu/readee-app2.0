@@ -53,15 +53,20 @@ async function synth(text: string): Promise<Buffer | null> {
 
 async function main() {
   await fs.mkdir(OUT, { recursive: true });
+  const base = (p: string) => path.basename(p).replace(/\.mp3$/, "");
   const jobs: Array<{ file: string; script: string }> = [
     { file: "intro", script: w.intro.script },
     { file: "celebrate", script: w.celebrate.script },
   ];
+  if (w.celebrateZero) jobs.push({ file: "celebrate-zero", script: w.celebrateZero.script });
   for (const wave of w.waves) {
-    if (wave.call) {
-      const file = path.basename(wave.call.audio).replace(/\.mp3$/, "");
-      jobs.push({ file, script: wave.call.script });
-    }
+    if (wave.call) jobs.push({ file: base(wave.call.audio), script: wave.call.script });
+  }
+  // Builder rounds: per-build call ("Now build sunset! Sun. Set.") and
+  // per-word completion clip ("Sunset!") played as the parts fuse.
+  for (const b of w.builds ?? []) {
+    jobs.push({ file: base(b.call.audio), script: b.call.script });
+    jobs.push({ file: base(b.wordAudio), script: `${b.word[0].toUpperCase()}${b.word.slice(1)}!` });
   }
   for (const j of jobs) {
     const out = path.join(OUT, `${j.file}.mp3`);
