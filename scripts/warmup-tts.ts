@@ -2,6 +2,7 @@
  * Warm-Up Arcade TTS — Autonoe clips for a warm-up's intro, calls, celebrate.
  *
  *   npx tsx scripts/warmup-tts.ts --warmup=sound-switch-hunt
+ *   npx tsx scripts/warmup-tts.ts --warmup=rhyme-rain --only=w-hat,celebrate
  */
 import { config as loadEnv } from "dotenv";
 loadEnv({ path: ".env.local" });
@@ -22,6 +23,8 @@ if (!id || !WARMUPS[id]) {
 }
 const w = WARMUPS[id];
 const OUT = path.resolve(process.cwd(), `public/audio/warmups-v2/${id}`);
+// Targeted re-records ("--only=w-hat,celebrate") skip the rest of the set.
+const only = (process.argv.find((a) => a.startsWith("--only=")) ?? "").split("=")[1]?.split(",").filter(Boolean);
 
 async function synth(text: string): Promise<Buffer | null> {
   for (let a = 0; a < 5; a++) {
@@ -61,6 +64,10 @@ async function main() {
   if (w.celebrateZero) jobs.push({ file: "celebrate-zero", script: w.celebrateZero.script });
   for (const wave of w.waves) {
     if (wave.call) jobs.push({ file: base(wave.call.audio), script: wave.call.script });
+    // Per-tile catch call-outs ("Thunder!") — only tiles that declare audio.
+    for (const t of wave.tiles) {
+      if (t.audio) jobs.push({ file: base(t.audio), script: `${t.word[0].toUpperCase()}${t.word.slice(1)}!` });
+    }
   }
   // Builder rounds: per-build call ("Now build sunset! Sun. Set.") and
   // per-word completion clip ("Sunset!") played as the parts fuse.
@@ -69,6 +76,7 @@ async function main() {
     jobs.push({ file: base(b.wordAudio), script: `${b.word[0].toUpperCase()}${b.word.slice(1)}!` });
   }
   for (const j of jobs) {
+    if (only?.length && !only.includes(j.file)) continue;
     const out = path.join(OUT, `${j.file}.mp3`);
     process.stdout.write(`  ${j.file} ... `);
     const buf = await synth(j.script);
@@ -79,6 +87,8 @@ async function main() {
     }
     await fs.writeFile(out, buf);
     console.log("ok");
+    // Pace the shared Vertex quota (factory jobs run alongside warm-up TTS).
+    await new Promise((r) => setTimeout(r, 1500));
   }
 }
 

@@ -2,12 +2,18 @@ import type { WarmupDef } from "@/lib/warmup-engine/types";
 import { soundSwitchHunt } from "./sound-switch-hunt";
 import { storyWordScout } from "./story-word-scout";
 import { wordBuilderCompounds } from "./word-builder-compounds";
+import { snapWordDash } from "./snap-word-dash";
+import { rhymeRain } from "./rhyme-rain";
+import { oppositeBlast } from "./opposite-blast";
 
 /** All Warm-Up Arcade rounds, keyed by warm-up id. */
 export const WARMUPS: Record<string, WarmupDef> = {
   "sound-switch-hunt": soundSwitchHunt,
   "story-word-scout": storyWordScout,
   "word-builder-compounds": wordBuilderCompounds,
+  "snap-word-dash": snapWordDash,
+  "rhyme-rain": rhymeRain,
+  "opposite-blast": oppositeBlast,
 };
 
 /** Lookup by the lesson a warm-up feeds (journey: warmup → lesson → questions). */

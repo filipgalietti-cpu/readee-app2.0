@@ -76,6 +76,10 @@ export type WarmupDef = {
   };
   /** Play-phase length in seconds (soft harvest window, default 45). */
   playSeconds?: number;
+  /** Opt-in arcade ramp (rule rounds): spawn gaps and tile dwell shorten
+   *  gently as the round progresses — playful pace, never punishing.
+   *  Defaults off; reduced-motion players keep the calm base pace. */
+  speedRamp?: boolean;
   waves: WarmupWave[];
   /** Builder rounds: the compound targets, built in order. Empty `waves`. */
   builds?: WarmupBuild[];

@@ -188,6 +188,20 @@ export default function WarmupArcade({
   const sPop = useCallback(() => tone(1046, 0, 0.05, "square", 0.02), [tone]);
   const sEnd = useCallback(() => [523, 659, 784, 1046].forEach((f, i) => tone(f, i * 0.09, 0.26, "triangle", 0.09)), [tone]);
 
+  // ---- speed ramp (opt-in per warmup) ----
+  // 0 → 1 across the play window. Off (always 0) unless the warmup asks for
+  // it, and reduced-motion players keep the calm base pace throughout.
+  const rampT = useCallback(() => {
+    if (!warmup.speedRamp || rm.current || !playing.current) return 0;
+    return Math.min(1, Math.max(0, 1 - (endsAt.current - Date.now()) / (playSeconds * 1000)));
+  }, [warmup.speedRamp, playSeconds]);
+
+  // Spawn gap eases 400-900ms fresh → 300-550ms at the buzzer.
+  const spawnGap = useCallback(() => {
+    const t = rampT();
+    return 400 - 100 * t + Math.random() * (500 - 250 * t);
+  }, [rampT]);
+
   const stageW = () => stageRef.current?.offsetWidth || 1280;
   const stageH = () => stageRef.current?.offsetHeight || 800;
   const slotPx = (i: number) => {
@@ -360,10 +374,12 @@ export default function WarmupArcade({
     if (!rm.current) burst(slot.x, slot.y - 8, ["#a9714b", "#7a4b26", "#d4a373"], 7, 44);
     sPop();
     const entry: Live = { el: c, wrap, word, correct, gone: false };
-    entry.duckT = to(() => dismiss(idx), 2500 + Math.random() * 1500);
+    // Dwell eases 2500-4000ms fresh → 1500-2500ms at the buzzer (speed ramp).
+    const t = rampT();
+    entry.duckT = to(() => dismiss(idx), 2500 - 1000 * t + Math.random() * (1500 - 500 * t));
     c.addEventListener("pointerdown", (e) => { e.preventDefault(); tapRef.current(idx); });
     live.current.set(idx, entry);
-  }, [burst, dismiss, sPop, to]);
+  }, [burst, dismiss, rampT, sPop, to]);
 
   const spawnBalloon = useCallback((idx: number, word: string, correct: boolean) => {
     const x = lanePx(idx), field = fieldRef.current;
@@ -380,7 +396,9 @@ export default function WarmupArcade({
     el.appendChild(inner);
     field.appendChild(el);
     const entry: Live = { el, inner, word, correct, col, gone: false };
-    const stay = 3400 + Math.random() * 1400;
+    // Same speed-ramp spirit as the carrots: drift eases quicker late-round.
+    const rt = rampT();
+    const stay = 3400 - 1000 * rt + Math.random() * (1400 - 400 * rt);
     if (rm.current) {
       el.style.transform = `translateY(${-40 + Math.random() * 380}px)`;
       el.style.opacity = "0";
@@ -397,7 +415,7 @@ export default function WarmupArcade({
     }
     inner.addEventListener("pointerdown", (e) => { e.preventDefault(); tapRef.current(idx); });
     live.current.set(idx, entry);
-  }, [dismiss, to]);
+  }, [dismiss, rampT, to]);
 
   const trySpawn = useCallback(() => {
     if (live.current.size >= 3) return;
@@ -416,9 +434,9 @@ export default function WarmupArcade({
       if (!playing.current) return;
       trySpawn();
       if (Math.random() < 0.3) trySpawn();
-      scheduleSpawn(400 + Math.random() * 500);
-    }, ms ?? 400 + Math.random() * 500);
-  }, [to, trySpawn]);
+      scheduleSpawn(spawnGap());
+    }, ms ?? spawnGap());
+  }, [spawnGap, to, trySpawn]);
 
   const clearField = useCallback(() => {
     if (fieldRef.current) fieldRef.current.innerHTML = "";
