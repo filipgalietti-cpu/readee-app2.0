@@ -496,8 +496,8 @@ export default function WarmupArcade({
     clearField();
     setScreen("ready");
     setCountText("3");
-    to(pulseCount, 20);
-    to(() => { setCountText("2"); tone(587, 0, 0.15, "triangle", 0.08); pulseCount(); }, 800);
+    to(() => { tone(659, 0, 0.15, "triangle", 0.08); pulseCount(); }, 20);
+    to(() => { setCountText("2"); tone(659, 0, 0.15, "triangle", 0.08); pulseCount(); }, 800);
     to(() => { setCountText("1"); tone(659, 0, 0.15, "triangle", 0.08); pulseCount(); }, 1600);
     to(() => { setCountText("GO!"); tone(784, 0, 0.16, "triangle", 0.09); tone(1046, 0.08, 0.24, "triangle", 0.09); pulseCount(); }, 2400);
     to(beginRound, 3200);

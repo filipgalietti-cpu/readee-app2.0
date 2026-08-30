@@ -152,9 +152,9 @@ export const picturesTellMoreQuiz: QuizDef = {
       difficulty: 3,
       prompt: "Say it: how does Grandma feel about the box?",
       narration: { audio: `${Q}/h-3-grandma-box.mp3`, script: "One more new page. The words say: Grandma opened the old box. The picture shows tiny tears shining in her eyes and a soft little smile on her face. Tears and a smile at the same time. Tell me in your own words: how does Grandma feel about what is in that box?" },
-      hint: { audio: `${Q}/h-3-grandma-box-hint.mp3`, script: "A smile with tears is not a sad-only feeling. Think about opening something you love that you have not seen in years." },
+      hint: { audio: `${Q}/h-3-grandma-box-hint.mp3`, script: "A smile with tears is not a sad-only feeling. Think about opening a box of old treasures you have missed for years." },
       explain: { audio: `${Q}/h-3-grandma-box-explain.mp3`, script: "Here is the thinking. A soft smile with happy tears means the box is special to Grandma. She feels touched and happy, like she found a memory she loves." },
-      interaction: { type: "speak", text: "happy glad touched moved loved special joyful teary crying emotional" },
+      interaction: { type: "speak", text: "happy glad touched moved love loved loves special joyful teary crying emotional" },
     },
     {
       id: "h-4-team-game",

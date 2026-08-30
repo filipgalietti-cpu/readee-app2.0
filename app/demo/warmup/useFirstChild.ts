@@ -12,15 +12,17 @@ export type DemoChild = {
   name?: string;
   greetingAudioUrl?: string | null;
   outfitId?: string | null;
+  /** True once the signed-in check + reader fetch have settled. */
+  ready: boolean;
 };
 
 export function useFirstChild(): DemoChild {
-  const [child, setChild] = useState<DemoChild>({});
+  const [child, setChild] = useState<DemoChild>({ ready: false });
   useEffect(() => {
     const supabase = createClient();
     (async () => {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) { setChild({ ready: true }); return; }
       const { data } = await supabase
         .from("children")
         .select("first_name, greeting_audio_url, equipped_items")
@@ -28,8 +30,9 @@ export function useFirstChild(): DemoChild {
         .order("created_at", { ascending: true })
         .limit(1)
         .maybeSingle();
-      if (!data) return;
+      if (!data) { setChild({ ready: true }); return; }
       setChild({
+        ready: true,
         name: data.first_name ?? undefined,
         greetingAudioUrl: data.greeting_audio_url ?? null,
         outfitId: (data.equipped_items as { outfit?: string } | null)?.outfit ?? null,
