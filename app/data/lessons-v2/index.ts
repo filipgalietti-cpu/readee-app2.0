@@ -225,6 +225,8 @@ import { readWithYourBrain, readWithYourBrainImages } from "./read-with-your-bra
 
 import { picturesTellMore, picturesTellMoreImages } from "./pictures-tell-more";
 
+import { oneStoryTwoWays, oneStoryTwoWaysImages } from "./one-story-two-ways";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -345,4 +347,5 @@ export const LESSONS: Record<string, LessonEntry> = {
   "read-like-you-talk": { lesson: readLikeYouTalk, images: readLikeYouTalkImages },
   "read-with-your-brain": { lesson: readWithYourBrain, images: readWithYourBrainImages },
   "pictures-tell-more": { lesson: picturesTellMore, images: picturesTellMoreImages },
+  "one-story-two-ways": { lesson: oneStoryTwoWays, images: oneStoryTwoWaysImages },
 };
