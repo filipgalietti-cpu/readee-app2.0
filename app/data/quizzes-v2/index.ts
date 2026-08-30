@@ -119,6 +119,8 @@ import { lookItUpQuiz } from "./look-it-up-quiz";
 import { sameAndOppositeQuiz } from "./same-and-opposite-quiz";
 import { wordsInYourWorldQuiz } from "./words-in-your-world-quiz";
 import { rootCluesQuiz } from "./root-clues-quiz";
+import { heartWordsQuiz } from "./heart-words-quiz";
+import { readLikeYouTalkQuiz } from "./read-like-you-talk-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -238,4 +240,6 @@ export const QUIZZES: Record<string, QuizDef> = {
   "same-and-opposite-quiz": sameAndOppositeQuiz,
   "words-in-your-world-quiz": wordsInYourWorldQuiz,
   "root-clues-quiz": rootCluesQuiz,
+  "heart-words-quiz": heartWordsQuiz,
+  "read-like-you-talk-quiz": readLikeYouTalkQuiz,
 };

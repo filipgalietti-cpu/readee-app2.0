@@ -38,9 +38,9 @@ const PLAY_MODE_BLOCKED_PREFIXES = [
  *  see the in-page free preview + upgrade overlay (a soft conversion surface),
  *  instead of a hard redirect. It still requires auth (AUTH_REQUIRED_PREFIXES). */
 const PREMIUM_ONLY_ROUTES: Record<string, string> = {
-  // Daily Readee is a Readee+ feature. Trial readers pass (see trial-aware
-  // check below); post-trial free readers are sent to /upgrade.
-  "/daily": "daily_readee",
+  // Daily Readee is FREE (Aug 31 2026, Filip): it is the free tier's daily
+  // habit anchor, keeping free families active and upsellable. Add routes
+  // here only for genuinely premium surfaces.
 };
 
 /** Routes that require authentication — redirect to /login */

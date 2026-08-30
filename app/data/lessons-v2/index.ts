@@ -217,6 +217,10 @@ import { wordsInYourWorld, wordsInYourWorldImages } from "./words-in-your-world"
 
 import { rootClues, rootCluesImages } from "./root-clues";
 
+import { heartWords, heartWordsImages } from "./heart-words";
+
+import { readLikeYouTalk, readLikeYouTalkImages } from "./read-like-you-talk";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -333,4 +337,6 @@ export const LESSONS: Record<string, LessonEntry> = {
   "same-and-opposite": { lesson: sameAndOpposite, images: sameAndOppositeImages },
   "words-in-your-world": { lesson: wordsInYourWorld, images: wordsInYourWorldImages },
   "root-clues": { lesson: rootClues, images: rootCluesImages },
+  "heart-words": { lesson: heartWords, images: heartWordsImages },
+  "read-like-you-talk": { lesson: readLikeYouTalk, images: readLikeYouTalkImages },
 };
