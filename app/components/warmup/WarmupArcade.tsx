@@ -94,7 +94,8 @@ export default function WarmupArcade({
   const callIdx = useRef(0);
   const scoreRef = useRef(0);
   const tapLockUntil = useRef(0);
-  const greetingRetry = useRef<(() => void) | null>(null);
+  const greetingSrc = useRef<string | null>(null);
+  const greetingStarted = useRef(false);
   const ac = useRef<AudioContext | null>(null);
   const voice = useRef<HTMLAudioElement | null>(null);
   const rm = useRef(false);
@@ -139,15 +140,15 @@ export default function WarmupArcade({
     if (greetingPlayed.current || screen !== "start") return;
     const playGreeting = (src: string) => {
       greetingPlayed.current = true;
+      greetingSrc.current = src;
       const a = new Audio(src);
       voice.current = a;
-      a.play().catch(() => {
-        // Autoplay blocked on a cold load: retry on the first tap anywhere.
-        // say() cancels this if another clip starts first (no overlap).
-        const retry = () => { a.play().catch(() => {}); greetingRetry.current = null; };
-        greetingRetry.current = retry;
-        window.addEventListener("pointerdown", retry, { once: true });
-      });
+      a.play()
+        .then(() => { greetingStarted.current = true; })
+        .catch(() => {
+          // Autoplay blocked on a cold load. No retry games: onPlay chains
+          // the greeting in front of the intro so it is always heard.
+        });
     };
     if (greetingAudioUrl) {
       playGreeting(greetingAudioUrl);
@@ -161,7 +162,6 @@ export default function WarmupArcade({
 
   // ---- audio: Autonoe voice clips + WebAudio chimes (C-major family) ----
   const say = useCallback((src: string, onEnd?: () => void) => {
-    if (greetingRetry.current) { window.removeEventListener("pointerdown", greetingRetry.current); greetingRetry.current = null; }
     if (voice.current) voice.current.pause();
     const a = new Audio(src);
     voice.current = a;
@@ -509,10 +509,15 @@ export default function WarmupArcade({
 
   const onPlay = useCallback(() => {
     tone(523, 0, 0.14, "triangle", 0.07);
-    // Greeting already played on the start screen; here Autonoe explains
-    // the rule once, then the countdown rolls.
+    // If the browser blocked the start-screen greeting (cold load), chain it
+    // here so the child always hears their hello; then the rule, then GO.
     setScreen("intro");
-    say(warmup.intro.audio, () => countdown());
+    if (!greetingStarted.current && greetingSrc.current) {
+      greetingStarted.current = true;
+      say(greetingSrc.current, () => say(warmup.intro.audio, () => countdown()));
+    } else {
+      say(warmup.intro.audio, () => countdown());
+    }
   }, [countdown, say, tone, warmup.intro.audio]);
 
   const onLesson = useCallback(() => { stopAll(); onComplete?.(); }, [onComplete, stopAll]);
