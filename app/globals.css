@@ -525,3 +525,18 @@ body {
     break-inside: avoid;
   }
 }
+
+/* Warm-Up Arcade (feel spec from Filip's Claude Design "Carrot Patch" round) */
+@keyframes wuRise{0%{transform:translateY(120%) scale(1,.82)}55%{transform:translateY(-7%) scale(.95,1.07)}78%{transform:translateY(4%) scale(1.05,.94)}100%{transform:translateY(0) scale(1)}}
+@keyframes wuDuck{0%{transform:translateY(0) scale(1)}22%{transform:translateY(-5%) scale(.94,1.08)}100%{transform:translateY(124%) scale(1.06,.8)}}
+@keyframes wuShiver{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-5px) rotate(-3deg)}40%{transform:translateX(5px) rotate(3deg)}60%{transform:translateX(-4px) rotate(-2deg)}80%{transform:translateX(4px) rotate(2deg)}}
+@keyframes wuPopIn{0%{transform:scale(.3);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes wuFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes wuFadeOut{from{opacity:1}to{opacity:0}}
+@keyframes wuFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes wuPart{from{transform:translate(0,0) scale(1);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(.15);opacity:0}}
+@keyframes wuConfetti{to{transform:translate(var(--lx),115vh) rotate(var(--rx));opacity:.9}}
+@keyframes wuSway{0%,100%{transform:rotate(-4deg) translateX(-3px)}50%{transform:rotate(4deg) translateX(3px)}}
+@keyframes wuBasketPop{0%{transform:scale(1)}40%{transform:scale(1.18,.86) translateY(4px)}70%{transform:scale(.94,1.08)}100%{transform:scale(1)}}
+@keyframes wuTwinkle{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes wuPeek{0%,4%{transform:translateY(112%) scale(1,.85)}14%{transform:translateY(-7%) scale(.95,1.07)}20%{transform:translateY(4%) scale(1.05,.94)}24%,62%{transform:translateY(0) scale(1)}68%{transform:translateY(-5%) scale(.94,1.08)}80%,100%{transform:translateY(112%) scale(1.06,.85)}}

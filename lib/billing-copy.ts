@@ -115,6 +115,31 @@ export const REASON_COPY: Record<string, { title: string; subtitle: string }> = 
     subtitle:
       "Luna the AI reading tutor, every lesson and exam, and the full reading program - at your child's exact level.",
   },
+  luna: {
+    title: "Keep reading with Luna.",
+    subtitle:
+      "Luna listens to your child read, coaches every sentence out loud, and writes stories at exactly their level. Readee+ makes it unlimited.",
+  },
+  multi_reader: {
+    title: "Add a second reader.",
+    subtitle:
+      "Free accounts include one reader. Readee+ adds a second child, each with their own lessons, progress, and reports.",
+  },
+  sharpen: {
+    title: "Keep every skill sharp.",
+    subtitle:
+      "Spaced review brings back the skills your child is about to forget, right when a quick refresher works best. Readee+ only.",
+  },
+  daily_readee: {
+    title: "A fresh read, every single day.",
+    subtitle:
+      "Daily Readee serves a new passage at your child's level every morning. Readee+ keeps the daily habit going without limits.",
+  },
+  teacher_solo: {
+    title: "Unlock the teacher tools.",
+    subtitle:
+      "Classrooms, student rosters, and AI-powered teaching tools - everything an educator needs, in one plan.",
+  },
 };
 
 /* ─── FAQ — same questions across /upgrade + marketing ─── */

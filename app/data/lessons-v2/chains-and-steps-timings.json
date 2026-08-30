@@ -1,0 +1,3337 @@
+{
+ "celebrate-chain": {
+  "duration": 33.72,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "read",
+    "start": 0.5,
+    "end": 0.9
+   },
+   {
+    "word": "a",
+    "start": 0.9,
+    "end": 1.2
+   },
+   {
+    "word": "true",
+    "start": 1.2,
+    "end": 1.54
+   },
+   {
+    "word": "text",
+    "start": 1.54,
+    "end": 1.98
+   },
+   {
+    "word": "from",
+    "start": 1.98,
+    "end": 2.58
+   },
+   {
+    "word": "tree",
+    "start": 2.58,
+    "end": 3.0
+   },
+   {
+    "word": "to",
+    "start": 3.0,
+    "end": 3.5
+   },
+   {
+    "word": "syrup,",
+    "start": 3.5,
+    "end": 3.96
+   },
+   {
+    "word": "and",
+    "start": 4.22,
+    "end": 4.6
+   },
+   {
+    "word": "you",
+    "start": 4.6,
+    "end": 4.74
+   },
+   {
+    "word": "found",
+    "start": 4.74,
+    "end": 5.0
+   },
+   {
+    "word": "the",
+    "start": 5.0,
+    "end": 5.3
+   },
+   {
+    "word": "whole",
+    "start": 5.3,
+    "end": 5.54
+   },
+   {
+    "word": "chain.",
+    "start": 5.54,
+    "end": 5.94
+   },
+   {
+    "word": "You",
+    "start": 6.88,
+    "end": 6.98
+   },
+   {
+    "word": "put",
+    "start": 6.98,
+    "end": 7.18
+   },
+   {
+    "word": "the",
+    "start": 7.18,
+    "end": 7.36
+   },
+   {
+    "word": "steps",
+    "start": 7.36,
+    "end": 7.64
+   },
+   {
+    "word": "in",
+    "start": 7.64,
+    "end": 7.92
+   },
+   {
+    "word": "order,",
+    "start": 7.92,
+    "end": 8.22
+   },
+   {
+    "word": "you",
+    "start": 8.78,
+    "end": 9.08
+   },
+   {
+    "word": "linked",
+    "start": 9.08,
+    "end": 9.48
+   },
+   {
+    "word": "step",
+    "start": 9.48,
+    "end": 9.94
+   },
+   {
+    "word": "to",
+    "start": 9.94,
+    "end": 10.18
+   },
+   {
+    "word": "step,",
+    "start": 10.18,
+    "end": 10.52
+   },
+   {
+    "word": "and",
+    "start": 10.84,
+    "end": 11.24
+   },
+   {
+    "word": "you",
+    "start": 11.24,
+    "end": 11.42
+   },
+   {
+    "word": "explained",
+    "start": 11.42,
+    "end": 12.06
+   },
+   {
+    "word": "why",
+    "start": 12.06,
+    "end": 12.78
+   },
+   {
+    "word": "the",
+    "start": 12.78,
+    "end": 13.08
+   },
+   {
+    "word": "order",
+    "start": 13.08,
+    "end": 13.5
+   },
+   {
+    "word": "matters.",
+    "start": 13.5,
+    "end": 14.08
+   },
+   {
+    "word": "Tap",
+    "start": 15.18,
+    "end": 15.38
+   },
+   {
+    "word": "the",
+    "start": 15.38,
+    "end": 15.64
+   },
+   {
+    "word": "tree,",
+    "start": 15.64,
+    "end": 15.96
+   },
+   {
+    "word": "catch",
+    "start": 16.62,
+    "end": 16.94
+   },
+   {
+    "word": "the",
+    "start": 16.94,
+    "end": 17.16
+   },
+   {
+    "word": "sap,",
+    "start": 17.16,
+    "end": 17.42
+   },
+   {
+    "word": "boil",
+    "start": 18.08,
+    "end": 18.22
+   },
+   {
+    "word": "it",
+    "start": 18.22,
+    "end": 18.52
+   },
+   {
+    "word": "down,",
+    "start": 18.52,
+    "end": 18.86
+   },
+   {
+    "word": "and",
+    "start": 19.14,
+    "end": 19.46
+   },
+   {
+    "word": "the",
+    "start": 19.46,
+    "end": 19.66
+   },
+   {
+    "word": "syrup",
+    "start": 19.66,
+    "end": 20.1
+   },
+   {
+    "word": "appears.",
+    "start": 20.1,
+    "end": 20.78
+   },
+   {
+    "word": "Every",
+    "start": 21.86,
+    "end": 22.36
+   },
+   {
+    "word": "step",
+    "start": 22.36,
+    "end": 22.82
+   },
+   {
+    "word": "leads",
+    "start": 22.82,
+    "end": 23.16
+   },
+   {
+    "word": "to",
+    "start": 23.16,
+    "end": 23.52
+   },
+   {
+    "word": "the",
+    "start": 23.52,
+    "end": 23.62
+   },
+   {
+    "word": "next.",
+    "start": 23.62,
+    "end": 23.94
+   },
+   {
+    "word": "When",
+    "start": 23.94,
+    "end": 24.82
+   },
+   {
+    "word": "a",
+    "start": 24.82,
+    "end": 24.94
+   },
+   {
+    "word": "text",
+    "start": 24.94,
+    "end": 25.26
+   },
+   {
+    "word": "tells",
+    "start": 25.26,
+    "end": 25.7
+   },
+   {
+    "word": "you",
+    "start": 25.7,
+    "end": 26.02
+   },
+   {
+    "word": "how",
+    "start": 26.02,
+    "end": 26.26
+   },
+   {
+    "word": "something",
+    "start": 26.26,
+    "end": 26.62
+   },
+   {
+    "word": "is",
+    "start": 26.62,
+    "end": 26.84
+   },
+   {
+    "word": "made,",
+    "start": 26.84,
+    "end": 27.1
+   },
+   {
+    "word": "you",
+    "start": 27.66,
+    "end": 27.88
+   },
+   {
+    "word": "know",
+    "start": 27.88,
+    "end": 28.12
+   },
+   {
+    "word": "just",
+    "start": 28.12,
+    "end": 28.5
+   },
+   {
+    "word": "what",
+    "start": 28.5,
+    "end": 28.88
+   },
+   {
+    "word": "to",
+    "start": 28.88,
+    "end": 29.12
+   },
+   {
+    "word": "do.",
+    "start": 29.12,
+    "end": 29.5
+   },
+   {
+    "word": "Find",
+    "start": 30.0,
+    "end": 30.6
+   },
+   {
+    "word": "the",
+    "start": 30.6,
+    "end": 30.82
+   },
+   {
+    "word": "steps",
+    "start": 30.82,
+    "end": 31.28
+   },
+   {
+    "word": "and",
+    "start": 31.28,
+    "end": 31.76
+   },
+   {
+    "word": "find",
+    "start": 31.76,
+    "end": 32.14
+   },
+   {
+    "word": "the",
+    "start": 32.14,
+    "end": 32.46
+   },
+   {
+    "word": "links",
+    "start": 32.46,
+    "end": 32.88
+   },
+   {
+    "word": "between",
+    "start": 32.88,
+    "end": 33.42
+   },
+   {
+    "word": "them.",
+    "start": 33.42,
+    "end": 33.72
+   }
+  ]
+ },
+ "check-boil-first": {
+  "duration": 19.12,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "is",
+    "start": 0.5,
+    "end": 0.86
+   },
+   {
+    "word": "a",
+    "start": 0.86,
+    "end": 1.0
+   },
+   {
+    "word": "why",
+    "start": 1.0,
+    "end": 1.32
+   },
+   {
+    "word": "question",
+    "start": 1.32,
+    "end": 1.98
+   },
+   {
+    "word": "about",
+    "start": 1.98,
+    "end": 2.52
+   },
+   {
+    "word": "the",
+    "start": 2.52,
+    "end": 2.76
+   },
+   {
+    "word": "order.",
+    "start": 2.76,
+    "end": 3.14
+   },
+   {
+    "word": "Step",
+    "start": 4.16,
+    "end": 4.26
+   },
+   {
+    "word": "3",
+    "start": 4.26,
+    "end": 4.66
+   },
+   {
+    "word": "said,",
+    "start": 4.66,
+    "end": 5.1
+   },
+   {
+    "word": "the",
+    "start": 5.44,
+    "end": 5.44
+   },
+   {
+    "word": "sap",
+    "start": 5.44,
+    "end": 5.76
+   },
+   {
+    "word": "is",
+    "start": 5.76,
+    "end": 6.08
+   },
+   {
+    "word": "boiled",
+    "start": 6.08,
+    "end": 6.56
+   },
+   {
+    "word": "in",
+    "start": 6.56,
+    "end": 6.98
+   },
+   {
+    "word": "a",
+    "start": 6.98,
+    "end": 7.12
+   },
+   {
+    "word": "big",
+    "start": 7.12,
+    "end": 7.48
+   },
+   {
+    "word": "pan",
+    "start": 7.48,
+    "end": 7.86
+   },
+   {
+    "word": "for",
+    "start": 7.86,
+    "end": 8.22
+   },
+   {
+    "word": "hours.",
+    "start": 8.22,
+    "end": 8.7
+   },
+   {
+    "word": "Could",
+    "start": 9.58,
+    "end": 9.8
+   },
+   {
+    "word": "the",
+    "start": 9.8,
+    "end": 9.96
+   },
+   {
+    "word": "workers",
+    "start": 9.96,
+    "end": 10.34
+   },
+   {
+    "word": "do",
+    "start": 10.34,
+    "end": 10.7
+   },
+   {
+    "word": "the",
+    "start": 10.7,
+    "end": 10.9
+   },
+   {
+    "word": "boiling",
+    "start": 10.9,
+    "end": 11.34
+   },
+   {
+    "word": "step",
+    "start": 11.34,
+    "end": 11.78
+   },
+   {
+    "word": "before",
+    "start": 11.78,
+    "end": 12.5
+   },
+   {
+    "word": "the",
+    "start": 12.5,
+    "end": 12.96
+   },
+   {
+    "word": "tapping",
+    "start": 12.96,
+    "end": 13.28
+   },
+   {
+    "word": "step?",
+    "start": 13.28,
+    "end": 13.68
+   },
+   {
+    "word": "Think",
+    "start": 14.58,
+    "end": 14.92
+   },
+   {
+    "word": "about",
+    "start": 14.92,
+    "end": 15.22
+   },
+   {
+    "word": "what",
+    "start": 15.22,
+    "end": 15.52
+   },
+   {
+    "word": "would",
+    "start": 15.52,
+    "end": 15.7
+   },
+   {
+    "word": "be",
+    "start": 15.7,
+    "end": 15.9
+   },
+   {
+    "word": "in",
+    "start": 15.9,
+    "end": 16.32
+   },
+   {
+    "word": "the",
+    "start": 16.32,
+    "end": 16.52
+   },
+   {
+    "word": "pan.",
+    "start": 16.52,
+    "end": 16.98
+   },
+   {
+    "word": "Tap",
+    "start": 17.64,
+    "end": 17.88
+   },
+   {
+    "word": "the",
+    "start": 17.88,
+    "end": 18.34
+   },
+   {
+    "word": "best",
+    "start": 18.34,
+    "end": 18.68
+   },
+   {
+    "word": "answer.",
+    "start": 18.68,
+    "end": 19.12
+   }
+  ]
+ },
+ "check-link-one-two": {
+  "duration": 27.18,
+  "words": [
+   {
+    "word": "Nice",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "reading!",
+    "start": 0.6,
+    "end": 1.34
+   },
+   {
+    "word": "Now,",
+    "start": 2.36,
+    "end": 2.72
+   },
+   {
+    "word": "link",
+    "start": 3.1,
+    "end": 3.42
+   },
+   {
+    "word": "the",
+    "start": 3.42,
+    "end": 3.74
+   },
+   {
+    "word": "first",
+    "start": 3.74,
+    "end": 4.22
+   },
+   {
+    "word": "two",
+    "start": 4.22,
+    "end": 4.84
+   },
+   {
+    "word": "steps.",
+    "start": 4.84,
+    "end": 5.46
+   },
+   {
+    "word": "Step",
+    "start": 6.22,
+    "end": 6.56
+   },
+   {
+    "word": "1",
+    "start": 6.56,
+    "end": 6.98
+   },
+   {
+    "word": "said,",
+    "start": 6.98,
+    "end": 7.64
+   },
+   {
+    "word": "workers",
+    "start": 8.46,
+    "end": 8.8
+   },
+   {
+    "word": "drill",
+    "start": 8.8,
+    "end": 9.38
+   },
+   {
+    "word": "a",
+    "start": 9.38,
+    "end": 9.74
+   },
+   {
+    "word": "small",
+    "start": 9.74,
+    "end": 10.16
+   },
+   {
+    "word": "hole",
+    "start": 10.16,
+    "end": 10.72
+   },
+   {
+    "word": "and",
+    "start": 10.72,
+    "end": 11.32
+   },
+   {
+    "word": "tap",
+    "start": 11.32,
+    "end": 11.62
+   },
+   {
+    "word": "a",
+    "start": 11.62,
+    "end": 11.92
+   },
+   {
+    "word": "spout",
+    "start": 11.92,
+    "end": 12.46
+   },
+   {
+    "word": "into",
+    "start": 12.46,
+    "end": 13.06
+   },
+   {
+    "word": "it.",
+    "start": 13.06,
+    "end": 13.5
+   },
+   {
+    "word": "Step",
+    "start": 14.1,
+    "end": 14.52
+   },
+   {
+    "word": "2",
+    "start": 14.52,
+    "end": 14.94
+   },
+   {
+    "word": "said,",
+    "start": 14.94,
+    "end": 15.54
+   },
+   {
+    "word": "clear",
+    "start": 16.18,
+    "end": 16.5
+   },
+   {
+    "word": "sap",
+    "start": 16.5,
+    "end": 16.96
+   },
+   {
+    "word": "drips",
+    "start": 16.96,
+    "end": 17.7
+   },
+   {
+    "word": "out",
+    "start": 17.7,
+    "end": 17.98
+   },
+   {
+    "word": "of",
+    "start": 17.98,
+    "end": 18.12
+   },
+   {
+    "word": "the",
+    "start": 18.12,
+    "end": 18.28
+   },
+   {
+    "word": "spout",
+    "start": 18.28,
+    "end": 18.8
+   },
+   {
+    "word": "into",
+    "start": 18.8,
+    "end": 19.3
+   },
+   {
+    "word": "a",
+    "start": 19.3,
+    "end": 19.62
+   },
+   {
+    "word": "bucket.",
+    "start": 19.62,
+    "end": 19.96
+   },
+   {
+    "word": "Think",
+    "start": 20.84,
+    "end": 21.34
+   },
+   {
+    "word": "about",
+    "start": 21.34,
+    "end": 21.64
+   },
+   {
+    "word": "how",
+    "start": 21.64,
+    "end": 21.9
+   },
+   {
+    "word": "those",
+    "start": 21.9,
+    "end": 22.32
+   },
+   {
+    "word": "two",
+    "start": 22.32,
+    "end": 22.74
+   },
+   {
+    "word": "steps",
+    "start": 22.74,
+    "end": 23.36
+   },
+   {
+    "word": "hook",
+    "start": 23.36,
+    "end": 23.74
+   },
+   {
+    "word": "together.",
+    "start": 23.74,
+    "end": 24.42
+   },
+   {
+    "word": "Tap",
+    "start": 25.14,
+    "end": 25.5
+   },
+   {
+    "word": "the",
+    "start": 25.5,
+    "end": 25.82
+   },
+   {
+    "word": "link",
+    "start": 25.82,
+    "end": 26.14
+   },
+   {
+    "word": "that",
+    "start": 26.14,
+    "end": 26.5
+   },
+   {
+    "word": "is",
+    "start": 26.5,
+    "end": 26.7
+   },
+   {
+    "word": "true.",
+    "start": 26.7,
+    "end": 27.18
+   }
+  ]
+ },
+ "check-link-three-four": {
+  "duration": 25.6,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "link",
+    "start": 1.04,
+    "end": 1.34
+   },
+   {
+    "word": "the",
+    "start": 1.34,
+    "end": 1.66
+   },
+   {
+    "word": "last",
+    "start": 1.66,
+    "end": 1.98
+   },
+   {
+    "word": "two",
+    "start": 1.98,
+    "end": 2.56
+   },
+   {
+    "word": "steps.",
+    "start": 2.56,
+    "end": 3.16
+   },
+   {
+    "word": "Step",
+    "start": 3.96,
+    "end": 4.36
+   },
+   {
+    "word": "3.",
+    "start": 4.36,
+    "end": 4.98
+   },
+   {
+    "word": "Said",
+    "start": 5.6,
+    "end": 5.8
+   },
+   {
+    "word": "the",
+    "start": 5.8,
+    "end": 6.18
+   },
+   {
+    "word": "water",
+    "start": 6.18,
+    "end": 6.6
+   },
+   {
+    "word": "steams",
+    "start": 6.6,
+    "end": 7.52
+   },
+   {
+    "word": "away",
+    "start": 7.52,
+    "end": 8.14
+   },
+   {
+    "word": "while",
+    "start": 8.14,
+    "end": 8.86
+   },
+   {
+    "word": "the",
+    "start": 8.86,
+    "end": 9.14
+   },
+   {
+    "word": "sap",
+    "start": 9.14,
+    "end": 9.52
+   },
+   {
+    "word": "boils.",
+    "start": 9.52,
+    "end": 10.2
+   },
+   {
+    "word": "Step",
+    "start": 11.24,
+    "end": 11.76
+   },
+   {
+    "word": "4.",
+    "start": 11.76,
+    "end": 12.6
+   },
+   {
+    "word": "Said",
+    "start": 13.0,
+    "end": 13.44
+   },
+   {
+    "word": "thick",
+    "start": 13.44,
+    "end": 14.44
+   },
+   {
+    "word": "golden",
+    "start": 14.44,
+    "end": 15.2
+   },
+   {
+    "word": "syrup",
+    "start": 15.2,
+    "end": 15.96
+   },
+   {
+    "word": "is",
+    "start": 15.96,
+    "end": 16.4
+   },
+   {
+    "word": "left",
+    "start": 16.4,
+    "end": 16.8
+   },
+   {
+    "word": "in",
+    "start": 16.8,
+    "end": 17.26
+   },
+   {
+    "word": "the",
+    "start": 17.26,
+    "end": 17.44
+   },
+   {
+    "word": "pan.",
+    "start": 17.44,
+    "end": 17.82
+   },
+   {
+    "word": "How",
+    "start": 18.82,
+    "end": 19.26
+   },
+   {
+    "word": "do",
+    "start": 19.26,
+    "end": 19.88
+   },
+   {
+    "word": "those",
+    "start": 19.88,
+    "end": 20.36
+   },
+   {
+    "word": "two",
+    "start": 20.36,
+    "end": 20.72
+   },
+   {
+    "word": "steps",
+    "start": 20.72,
+    "end": 21.36
+   },
+   {
+    "word": "hook",
+    "start": 21.36,
+    "end": 21.78
+   },
+   {
+    "word": "together?",
+    "start": 21.78,
+    "end": 22.5
+   },
+   {
+    "word": "Tap",
+    "start": 23.56,
+    "end": 23.9
+   },
+   {
+    "word": "the",
+    "start": 23.9,
+    "end": 24.26
+   },
+   {
+    "word": "link",
+    "start": 24.26,
+    "end": 24.6
+   },
+   {
+    "word": "that",
+    "start": 24.6,
+    "end": 25.0
+   },
+   {
+    "word": "is",
+    "start": 25.0,
+    "end": 25.16
+   },
+   {
+    "word": "true.",
+    "start": 25.16,
+    "end": 25.6
+   }
+  ]
+ },
+ "check-skip-boiling": {
+  "duration": 22.8,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "is",
+    "start": 0.44,
+    "end": 0.68
+   },
+   {
+    "word": "a",
+    "start": 0.68,
+    "end": 0.8
+   },
+   {
+    "word": "what",
+    "start": 0.8,
+    "end": 1.06
+   },
+   {
+    "word": "-if",
+    "start": 1.06,
+    "end": 1.44
+   },
+   {
+    "word": "question.",
+    "start": 1.44,
+    "end": 2.12
+   },
+   {
+    "word": "Remember",
+    "start": 2.76,
+    "end": 3.06
+   },
+   {
+    "word": "step",
+    "start": 3.06,
+    "end": 3.44
+   },
+   {
+    "word": "three.",
+    "start": 3.44,
+    "end": 4.04
+   },
+   {
+    "word": "The",
+    "start": 4.8,
+    "end": 4.9
+   },
+   {
+    "word": "sap",
+    "start": 4.9,
+    "end": 5.36
+   },
+   {
+    "word": "boils",
+    "start": 5.36,
+    "end": 6.02
+   },
+   {
+    "word": "for",
+    "start": 6.02,
+    "end": 6.58
+   },
+   {
+    "word": "hours,",
+    "start": 6.58,
+    "end": 7.12
+   },
+   {
+    "word": "and",
+    "start": 7.52,
+    "end": 7.74
+   },
+   {
+    "word": "the",
+    "start": 7.74,
+    "end": 7.9
+   },
+   {
+    "word": "water",
+    "start": 7.9,
+    "end": 8.42
+   },
+   {
+    "word": "steams",
+    "start": 8.42,
+    "end": 9.42
+   },
+   {
+    "word": "away.",
+    "start": 9.42,
+    "end": 9.96
+   },
+   {
+    "word": "What",
+    "start": 11.26,
+    "end": 11.6
+   },
+   {
+    "word": "if",
+    "start": 11.6,
+    "end": 11.82
+   },
+   {
+    "word": "the",
+    "start": 11.82,
+    "end": 11.96
+   },
+   {
+    "word": "workers",
+    "start": 11.96,
+    "end": 12.42
+   },
+   {
+    "word": "skipped",
+    "start": 12.42,
+    "end": 13.12
+   },
+   {
+    "word": "the",
+    "start": 13.12,
+    "end": 13.6
+   },
+   {
+    "word": "boiling",
+    "start": 13.6,
+    "end": 13.98
+   },
+   {
+    "word": "step",
+    "start": 13.98,
+    "end": 14.42
+   },
+   {
+    "word": "and",
+    "start": 14.42,
+    "end": 14.82
+   },
+   {
+    "word": "poured",
+    "start": 14.82,
+    "end": 15.2
+   },
+   {
+    "word": "the",
+    "start": 15.2,
+    "end": 15.5
+   },
+   {
+    "word": "sap",
+    "start": 15.5,
+    "end": 15.86
+   },
+   {
+    "word": "straight",
+    "start": 15.86,
+    "end": 16.48
+   },
+   {
+    "word": "into",
+    "start": 16.48,
+    "end": 16.8
+   },
+   {
+    "word": "the",
+    "start": 16.8,
+    "end": 17.02
+   },
+   {
+    "word": "jug?",
+    "start": 17.02,
+    "end": 17.3
+   },
+   {
+    "word": "What",
+    "start": 18.14,
+    "end": 18.42
+   },
+   {
+    "word": "would",
+    "start": 18.42,
+    "end": 18.62
+   },
+   {
+    "word": "be",
+    "start": 18.62,
+    "end": 18.96
+   },
+   {
+    "word": "in",
+    "start": 18.96,
+    "end": 19.54
+   },
+   {
+    "word": "the",
+    "start": 19.54,
+    "end": 19.7
+   },
+   {
+    "word": "jug?",
+    "start": 19.7,
+    "end": 20.06
+   },
+   {
+    "word": "Tap",
+    "start": 21.08,
+    "end": 21.32
+   },
+   {
+    "word": "the",
+    "start": 21.32,
+    "end": 21.64
+   },
+   {
+    "word": "best",
+    "start": 21.64,
+    "end": 22.16
+   },
+   {
+    "word": "answer.",
+    "start": 22.16,
+    "end": 22.8
+   }
+  ]
+ },
+ "complete": {
+  "duration": 35.14,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "read",
+    "start": 0.48,
+    "end": 0.84
+   },
+   {
+    "word": "a",
+    "start": 0.84,
+    "end": 1.1
+   },
+   {
+    "word": "true",
+    "start": 1.1,
+    "end": 1.58
+   },
+   {
+    "word": "text",
+    "start": 1.58,
+    "end": 2.24
+   },
+   {
+    "word": "from",
+    "start": 2.24,
+    "end": 2.72
+   },
+   {
+    "word": "tree",
+    "start": 2.72,
+    "end": 3.12
+   },
+   {
+    "word": "to",
+    "start": 3.12,
+    "end": 3.68
+   },
+   {
+    "word": "syrup,",
+    "start": 3.68,
+    "end": 4.1
+   },
+   {
+    "word": "and",
+    "start": 4.36,
+    "end": 4.72
+   },
+   {
+    "word": "you",
+    "start": 4.72,
+    "end": 4.98
+   },
+   {
+    "word": "found",
+    "start": 4.98,
+    "end": 5.42
+   },
+   {
+    "word": "the",
+    "start": 5.42,
+    "end": 5.78
+   },
+   {
+    "word": "whole",
+    "start": 5.78,
+    "end": 6.18
+   },
+   {
+    "word": "chain.",
+    "start": 6.18,
+    "end": 6.72
+   },
+   {
+    "word": "You",
+    "start": 7.74,
+    "end": 7.84
+   },
+   {
+    "word": "put",
+    "start": 7.84,
+    "end": 8.08
+   },
+   {
+    "word": "the",
+    "start": 8.08,
+    "end": 8.32
+   },
+   {
+    "word": "steps",
+    "start": 8.32,
+    "end": 8.6
+   },
+   {
+    "word": "in",
+    "start": 8.6,
+    "end": 8.84
+   },
+   {
+    "word": "order,",
+    "start": 8.84,
+    "end": 9.3
+   },
+   {
+    "word": "you",
+    "start": 9.86,
+    "end": 9.98
+   },
+   {
+    "word": "linked",
+    "start": 9.98,
+    "end": 10.5
+   },
+   {
+    "word": "step",
+    "start": 10.5,
+    "end": 11.08
+   },
+   {
+    "word": "to",
+    "start": 11.08,
+    "end": 11.5
+   },
+   {
+    "word": "step,",
+    "start": 11.5,
+    "end": 11.8
+   },
+   {
+    "word": "and",
+    "start": 12.2,
+    "end": 12.32
+   },
+   {
+    "word": "you",
+    "start": 12.32,
+    "end": 12.44
+   },
+   {
+    "word": "explained",
+    "start": 12.44,
+    "end": 13.0
+   },
+   {
+    "word": "why",
+    "start": 13.0,
+    "end": 13.74
+   },
+   {
+    "word": "the",
+    "start": 13.74,
+    "end": 14.02
+   },
+   {
+    "word": "order",
+    "start": 14.02,
+    "end": 14.38
+   },
+   {
+    "word": "matters.",
+    "start": 14.38,
+    "end": 15.12
+   },
+   {
+    "word": "Tap",
+    "start": 16.22,
+    "end": 16.52
+   },
+   {
+    "word": "the",
+    "start": 16.52,
+    "end": 16.8
+   },
+   {
+    "word": "tree,",
+    "start": 16.8,
+    "end": 17.14
+   },
+   {
+    "word": "catch",
+    "start": 17.68,
+    "end": 18.06
+   },
+   {
+    "word": "the",
+    "start": 18.06,
+    "end": 18.3
+   },
+   {
+    "word": "sap,",
+    "start": 18.3,
+    "end": 18.54
+   },
+   {
+    "word": "boil",
+    "start": 19.26,
+    "end": 19.42
+   },
+   {
+    "word": "it",
+    "start": 19.42,
+    "end": 19.68
+   },
+   {
+    "word": "down,",
+    "start": 19.68,
+    "end": 20.0
+   },
+   {
+    "word": "and",
+    "start": 20.34,
+    "end": 20.6
+   },
+   {
+    "word": "the",
+    "start": 20.6,
+    "end": 20.82
+   },
+   {
+    "word": "syrup",
+    "start": 20.82,
+    "end": 21.22
+   },
+   {
+    "word": "appears.",
+    "start": 21.22,
+    "end": 21.68
+   },
+   {
+    "word": "Every",
+    "start": 22.54,
+    "end": 23.06
+   },
+   {
+    "word": "step",
+    "start": 23.06,
+    "end": 23.56
+   },
+   {
+    "word": "leads",
+    "start": 23.56,
+    "end": 24.06
+   },
+   {
+    "word": "to",
+    "start": 24.06,
+    "end": 24.52
+   },
+   {
+    "word": "the",
+    "start": 24.52,
+    "end": 24.76
+   },
+   {
+    "word": "next.",
+    "start": 24.76,
+    "end": 25.12
+   },
+   {
+    "word": "When",
+    "start": 25.12,
+    "end": 26.18
+   },
+   {
+    "word": "a",
+    "start": 26.18,
+    "end": 26.32
+   },
+   {
+    "word": "text",
+    "start": 26.32,
+    "end": 26.7
+   },
+   {
+    "word": "tells",
+    "start": 26.7,
+    "end": 27.08
+   },
+   {
+    "word": "you",
+    "start": 27.08,
+    "end": 27.26
+   },
+   {
+    "word": "how",
+    "start": 27.26,
+    "end": 27.54
+   },
+   {
+    "word": "something",
+    "start": 27.54,
+    "end": 27.96
+   },
+   {
+    "word": "is",
+    "start": 27.96,
+    "end": 28.2
+   },
+   {
+    "word": "made,",
+    "start": 28.2,
+    "end": 28.58
+   },
+   {
+    "word": "you",
+    "start": 29.06,
+    "end": 29.38
+   },
+   {
+    "word": "know",
+    "start": 29.38,
+    "end": 29.8
+   },
+   {
+    "word": "just",
+    "start": 29.8,
+    "end": 30.3
+   },
+   {
+    "word": "what",
+    "start": 30.3,
+    "end": 30.68
+   },
+   {
+    "word": "to",
+    "start": 30.68,
+    "end": 30.92
+   },
+   {
+    "word": "do.",
+    "start": 30.92,
+    "end": 31.24
+   },
+   {
+    "word": "Find",
+    "start": 31.74,
+    "end": 32.04
+   },
+   {
+    "word": "the",
+    "start": 32.04,
+    "end": 32.24
+   },
+   {
+    "word": "steps",
+    "start": 32.24,
+    "end": 32.72
+   },
+   {
+    "word": "and",
+    "start": 32.72,
+    "end": 33.26
+   },
+   {
+    "word": "find",
+    "start": 33.26,
+    "end": 33.58
+   },
+   {
+    "word": "the",
+    "start": 33.58,
+    "end": 33.88
+   },
+   {
+    "word": "links",
+    "start": 33.88,
+    "end": 34.26
+   },
+   {
+    "word": "between",
+    "start": 34.26,
+    "end": 34.82
+   },
+   {
+    "word": "them.",
+    "start": 34.82,
+    "end": 35.14
+   }
+  ]
+ },
+ "hook-chain-idea": {
+  "duration": 34.48,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "reader.",
+    "start": 0.72,
+    "end": 1.0
+   },
+   {
+    "word": "Today,",
+    "start": 1.76,
+    "end": 2.06
+   },
+   {
+    "word": "you",
+    "start": 2.64,
+    "end": 2.76
+   },
+   {
+    "word": "get",
+    "start": 2.76,
+    "end": 3.04
+   },
+   {
+    "word": "a",
+    "start": 3.04,
+    "end": 3.26
+   },
+   {
+    "word": "true",
+    "start": 3.26,
+    "end": 3.6
+   },
+   {
+    "word": "text",
+    "start": 3.6,
+    "end": 4.14
+   },
+   {
+    "word": "about",
+    "start": 4.14,
+    "end": 4.5
+   },
+   {
+    "word": "how",
+    "start": 4.5,
+    "end": 4.9
+   },
+   {
+    "word": "something",
+    "start": 4.9,
+    "end": 5.42
+   },
+   {
+    "word": "sweet",
+    "start": 5.42,
+    "end": 6.04
+   },
+   {
+    "word": "is",
+    "start": 6.04,
+    "end": 6.62
+   },
+   {
+    "word": "made.",
+    "start": 6.62,
+    "end": 6.94
+   },
+   {
+    "word": "Fact",
+    "start": 7.86,
+    "end": 8.12
+   },
+   {
+    "word": "texts",
+    "start": 8.12,
+    "end": 8.7
+   },
+   {
+    "word": "often",
+    "start": 8.7,
+    "end": 9.32
+   },
+   {
+    "word": "tell",
+    "start": 9.32,
+    "end": 9.66
+   },
+   {
+    "word": "how",
+    "start": 9.66,
+    "end": 9.96
+   },
+   {
+    "word": "things",
+    "start": 9.96,
+    "end": 10.44
+   },
+   {
+    "word": "happen",
+    "start": 10.44,
+    "end": 11.06
+   },
+   {
+    "word": "in",
+    "start": 11.06,
+    "end": 11.66
+   },
+   {
+    "word": "steps.",
+    "start": 11.66,
+    "end": 12.4
+   },
+   {
+    "word": "The",
+    "start": 13.18,
+    "end": 13.4
+   },
+   {
+    "word": "steps",
+    "start": 13.4,
+    "end": 13.9
+   },
+   {
+    "word": "hook",
+    "start": 13.9,
+    "end": 14.2
+   },
+   {
+    "word": "together",
+    "start": 14.2,
+    "end": 14.8
+   },
+   {
+    "word": "like",
+    "start": 14.8,
+    "end": 15.34
+   },
+   {
+    "word": "links",
+    "start": 15.34,
+    "end": 15.8
+   },
+   {
+    "word": "in",
+    "start": 15.8,
+    "end": 16.26
+   },
+   {
+    "word": "a",
+    "start": 16.26,
+    "end": 16.38
+   },
+   {
+    "word": "chain.",
+    "start": 16.38,
+    "end": 16.64
+   },
+   {
+    "word": "Each",
+    "start": 17.68,
+    "end": 17.96
+   },
+   {
+    "word": "step",
+    "start": 17.96,
+    "end": 18.42
+   },
+   {
+    "word": "leads",
+    "start": 18.42,
+    "end": 18.88
+   },
+   {
+    "word": "to",
+    "start": 18.88,
+    "end": 19.34
+   },
+   {
+    "word": "the",
+    "start": 19.34,
+    "end": 19.42
+   },
+   {
+    "word": "next",
+    "start": 19.42,
+    "end": 19.84
+   },
+   {
+    "word": "one",
+    "start": 19.84,
+    "end": 20.14
+   },
+   {
+    "word": "and",
+    "start": 20.14,
+    "end": 20.72
+   },
+   {
+    "word": "the",
+    "start": 20.72,
+    "end": 20.88
+   },
+   {
+    "word": "order",
+    "start": 20.88,
+    "end": 21.36
+   },
+   {
+    "word": "matters.",
+    "start": 21.36,
+    "end": 22.04
+   },
+   {
+    "word": "Today,",
+    "start": 22.72,
+    "end": 23.28
+   },
+   {
+    "word": "you",
+    "start": 23.72,
+    "end": 23.82
+   },
+   {
+    "word": "will",
+    "start": 23.82,
+    "end": 24.0
+   },
+   {
+    "word": "read",
+    "start": 24.0,
+    "end": 24.46
+   },
+   {
+    "word": "from",
+    "start": 24.46,
+    "end": 25.06
+   },
+   {
+    "word": "tree",
+    "start": 25.06,
+    "end": 25.6
+   },
+   {
+    "word": "to",
+    "start": 25.6,
+    "end": 26.22
+   },
+   {
+    "word": "syrup.",
+    "start": 26.22,
+    "end": 26.78
+   },
+   {
+    "word": "A",
+    "start": 26.78,
+    "end": 27.58
+   },
+   {
+    "word": "true",
+    "start": 27.58,
+    "end": 27.98
+   },
+   {
+    "word": "text",
+    "start": 27.98,
+    "end": 28.44
+   },
+   {
+    "word": "about",
+    "start": 28.44,
+    "end": 28.76
+   },
+   {
+    "word": "how",
+    "start": 28.76,
+    "end": 29.04
+   },
+   {
+    "word": "maple",
+    "start": 29.04,
+    "end": 29.5
+   },
+   {
+    "word": "syrup",
+    "start": 29.5,
+    "end": 29.94
+   },
+   {
+    "word": "is",
+    "start": 29.94,
+    "end": 30.2
+   },
+   {
+    "word": "made.",
+    "start": 30.2,
+    "end": 30.52
+   },
+   {
+    "word": "And",
+    "start": 31.0,
+    "end": 31.26
+   },
+   {
+    "word": "you",
+    "start": 31.26,
+    "end": 31.54
+   },
+   {
+    "word": "will",
+    "start": 31.54,
+    "end": 31.72
+   },
+   {
+    "word": "explain",
+    "start": 31.72,
+    "end": 32.38
+   },
+   {
+    "word": "how",
+    "start": 32.38,
+    "end": 32.94
+   },
+   {
+    "word": "it",
+    "start": 32.94,
+    "end": 33.22
+   },
+   {
+    "word": "steps",
+    "start": 33.22,
+    "end": 33.84
+   },
+   {
+    "word": "connect.",
+    "start": 33.84,
+    "end": 34.48
+   }
+  ]
+ },
+ "model-tiny-chain": {
+  "duration": 38.64,
+  "words": [
+   {
+    "word": "Watch",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "me",
+    "start": 0.38,
+    "end": 0.68
+   },
+   {
+    "word": "first",
+    "start": 0.68,
+    "end": 1.08
+   },
+   {
+    "word": "with",
+    "start": 1.08,
+    "end": 1.5
+   },
+   {
+    "word": "the",
+    "start": 1.5,
+    "end": 1.66
+   },
+   {
+    "word": "tiny",
+    "start": 1.66,
+    "end": 1.98
+   },
+   {
+    "word": "chain",
+    "start": 1.98,
+    "end": 2.52
+   },
+   {
+    "word": "about",
+    "start": 2.52,
+    "end": 3.1
+   },
+   {
+    "word": "ice.",
+    "start": 3.1,
+    "end": 3.66
+   },
+   {
+    "word": "I",
+    "start": 4.74,
+    "end": 4.74
+   },
+   {
+    "word": "pour",
+    "start": 4.74,
+    "end": 5.02
+   },
+   {
+    "word": "water",
+    "start": 5.02,
+    "end": 5.5
+   },
+   {
+    "word": "into",
+    "start": 5.5,
+    "end": 5.96
+   },
+   {
+    "word": "a",
+    "start": 5.96,
+    "end": 6.18
+   },
+   {
+    "word": "tray.",
+    "start": 6.18,
+    "end": 6.52
+   },
+   {
+    "word": "I",
+    "start": 7.28,
+    "end": 7.36
+   },
+   {
+    "word": "put",
+    "start": 7.36,
+    "end": 7.6
+   },
+   {
+    "word": "the",
+    "start": 7.6,
+    "end": 7.86
+   },
+   {
+    "word": "tray",
+    "start": 7.86,
+    "end": 8.24
+   },
+   {
+    "word": "in",
+    "start": 8.24,
+    "end": 8.78
+   },
+   {
+    "word": "the",
+    "start": 8.78,
+    "end": 8.92
+   },
+   {
+    "word": "freezer.",
+    "start": 8.92,
+    "end": 9.4
+   },
+   {
+    "word": "The",
+    "start": 10.34,
+    "end": 10.4
+   },
+   {
+    "word": "water",
+    "start": 10.4,
+    "end": 10.72
+   },
+   {
+    "word": "freezes",
+    "start": 10.72,
+    "end": 11.3
+   },
+   {
+    "word": "into",
+    "start": 11.3,
+    "end": 11.94
+   },
+   {
+    "word": "ice",
+    "start": 11.94,
+    "end": 12.52
+   },
+   {
+    "word": "cubes.",
+    "start": 12.52,
+    "end": 12.84
+   },
+   {
+    "word": "Now",
+    "start": 14.0,
+    "end": 14.22
+   },
+   {
+    "word": "watch",
+    "start": 14.22,
+    "end": 14.5
+   },
+   {
+    "word": "my",
+    "start": 14.5,
+    "end": 14.68
+   },
+   {
+    "word": "thinking.",
+    "start": 14.68,
+    "end": 15.12
+   },
+   {
+    "word": "Could",
+    "start": 16.18,
+    "end": 16.28
+   },
+   {
+    "word": "I",
+    "start": 16.28,
+    "end": 16.42
+   },
+   {
+    "word": "freeze",
+    "start": 16.42,
+    "end": 16.88
+   },
+   {
+    "word": "the",
+    "start": 16.88,
+    "end": 17.24
+   },
+   {
+    "word": "water",
+    "start": 17.24,
+    "end": 17.6
+   },
+   {
+    "word": "before",
+    "start": 17.6,
+    "end": 18.3
+   },
+   {
+    "word": "I",
+    "start": 18.3,
+    "end": 19.0
+   },
+   {
+    "word": "pour",
+    "start": 19.0,
+    "end": 19.26
+   },
+   {
+    "word": "it",
+    "start": 19.26,
+    "end": 19.48
+   },
+   {
+    "word": "into",
+    "start": 19.48,
+    "end": 19.64
+   },
+   {
+    "word": "the",
+    "start": 19.64,
+    "end": 19.82
+   },
+   {
+    "word": "tray?",
+    "start": 19.82,
+    "end": 20.08
+   },
+   {
+    "word": "No.",
+    "start": 20.96,
+    "end": 21.68
+   },
+   {
+    "word": "There",
+    "start": 22.32,
+    "end": 22.88
+   },
+   {
+    "word": "would",
+    "start": 22.88,
+    "end": 23.02
+   },
+   {
+    "word": "be",
+    "start": 23.02,
+    "end": 23.22
+   },
+   {
+    "word": "nothing",
+    "start": 23.22,
+    "end": 23.8
+   },
+   {
+    "word": "in",
+    "start": 23.8,
+    "end": 24.0
+   },
+   {
+    "word": "the",
+    "start": 24.0,
+    "end": 24.1
+   },
+   {
+    "word": "tray",
+    "start": 24.1,
+    "end": 24.36
+   },
+   {
+    "word": "to",
+    "start": 24.36,
+    "end": 24.56
+   },
+   {
+    "word": "freeze.",
+    "start": 24.56,
+    "end": 24.92
+   },
+   {
+    "word": "The",
+    "start": 25.6,
+    "end": 26.06
+   },
+   {
+    "word": "pouring",
+    "start": 26.06,
+    "end": 26.64
+   },
+   {
+    "word": "step",
+    "start": 26.64,
+    "end": 27.1
+   },
+   {
+    "word": "makes",
+    "start": 27.1,
+    "end": 27.84
+   },
+   {
+    "word": "the",
+    "start": 27.84,
+    "end": 28.22
+   },
+   {
+    "word": "freezing",
+    "start": 28.22,
+    "end": 28.78
+   },
+   {
+    "word": "step",
+    "start": 28.78,
+    "end": 29.26
+   },
+   {
+    "word": "possible.",
+    "start": 29.26,
+    "end": 30.26
+   },
+   {
+    "word": "That",
+    "start": 30.66,
+    "end": 31.28
+   },
+   {
+    "word": "is",
+    "start": 31.28,
+    "end": 31.58
+   },
+   {
+    "word": "a",
+    "start": 31.58,
+    "end": 31.76
+   },
+   {
+    "word": "chain.",
+    "start": 31.76,
+    "end": 32.22
+   },
+   {
+    "word": "Each",
+    "start": 33.3,
+    "end": 33.66
+   },
+   {
+    "word": "step",
+    "start": 33.66,
+    "end": 34.14
+   },
+   {
+    "word": "leads",
+    "start": 34.14,
+    "end": 34.54
+   },
+   {
+    "word": "to",
+    "start": 34.54,
+    "end": 34.88
+   },
+   {
+    "word": "the",
+    "start": 34.88,
+    "end": 35.04
+   },
+   {
+    "word": "next.",
+    "start": 35.04,
+    "end": 35.5
+   },
+   {
+    "word": "And",
+    "start": 36.08,
+    "end": 36.2
+   },
+   {
+    "word": "that",
+    "start": 36.2,
+    "end": 36.48
+   },
+   {
+    "word": "is",
+    "start": 36.48,
+    "end": 36.64
+   },
+   {
+    "word": "why",
+    "start": 36.64,
+    "end": 36.92
+   },
+   {
+    "word": "the",
+    "start": 36.92,
+    "end": 37.2
+   },
+   {
+    "word": "order",
+    "start": 37.2,
+    "end": 37.88
+   },
+   {
+    "word": "matters.",
+    "start": 37.88,
+    "end": 38.64
+   }
+  ]
+ },
+ "read-step-four-sentence": {
+  "duration": 7.92,
+  "words": [
+   {
+    "word": "Thick",
+    "start": 0.0,
+    "end": 0.72
+   },
+   {
+    "word": "golden",
+    "start": 0.72,
+    "end": 1.28
+   },
+   {
+    "word": "syrup",
+    "start": 1.28,
+    "end": 1.82
+   },
+   {
+    "word": "is",
+    "start": 1.82,
+    "end": 2.24
+   },
+   {
+    "word": "left",
+    "start": 2.24,
+    "end": 2.52
+   },
+   {
+    "word": "in",
+    "start": 2.52,
+    "end": 2.78
+   },
+   {
+    "word": "the",
+    "start": 2.78,
+    "end": 2.9
+   },
+   {
+    "word": "pan.",
+    "start": 2.9,
+    "end": 3.28
+   },
+   {
+    "word": "It",
+    "start": 3.62,
+    "end": 4.08
+   },
+   {
+    "word": "takes",
+    "start": 4.08,
+    "end": 4.44
+   },
+   {
+    "word": "many",
+    "start": 4.44,
+    "end": 5.06
+   },
+   {
+    "word": "buckets",
+    "start": 5.06,
+    "end": 5.58
+   },
+   {
+    "word": "of",
+    "start": 5.58,
+    "end": 5.84
+   },
+   {
+    "word": "sap",
+    "start": 5.84,
+    "end": 6.1
+   },
+   {
+    "word": "to",
+    "start": 6.1,
+    "end": 6.44
+   },
+   {
+    "word": "make",
+    "start": 6.44,
+    "end": 6.62
+   },
+   {
+    "word": "one",
+    "start": 6.62,
+    "end": 7.02
+   },
+   {
+    "word": "jug",
+    "start": 7.02,
+    "end": 7.32
+   },
+   {
+    "word": "of",
+    "start": 7.32,
+    "end": 7.54
+   },
+   {
+    "word": "syrup.",
+    "start": 7.54,
+    "end": 7.92
+   }
+  ]
+ },
+ "read-step-four": {
+  "duration": 6.46,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "step",
+    "start": 0.48,
+    "end": 0.82
+   },
+   {
+    "word": "left",
+    "start": 0.82,
+    "end": 1.18
+   },
+   {
+    "word": "and",
+    "start": 1.18,
+    "end": 1.76
+   },
+   {
+    "word": "it",
+    "start": 1.76,
+    "end": 1.96
+   },
+   {
+    "word": "is",
+    "start": 1.96,
+    "end": 2.24
+   },
+   {
+    "word": "the",
+    "start": 2.24,
+    "end": 2.48
+   },
+   {
+    "word": "sweetest",
+    "start": 2.48,
+    "end": 3.34
+   },
+   {
+    "word": "one.",
+    "start": 3.34,
+    "end": 3.88
+   },
+   {
+    "word": "Read",
+    "start": 4.18,
+    "end": 4.72
+   },
+   {
+    "word": "the",
+    "start": 4.72,
+    "end": 4.94
+   },
+   {
+    "word": "last",
+    "start": 4.94,
+    "end": 5.16
+   },
+   {
+    "word": "step",
+    "start": 5.16,
+    "end": 5.6
+   },
+   {
+    "word": "along",
+    "start": 5.6,
+    "end": 5.88
+   },
+   {
+    "word": "with",
+    "start": 5.88,
+    "end": 6.28
+   },
+   {
+    "word": "me.",
+    "start": 6.28,
+    "end": 6.46
+   }
+  ]
+ },
+ "read-step-one-sentence": {
+  "duration": 7.96,
+  "words": [
+   {
+    "word": "Workers",
+    "start": 0.0,
+    "end": 0.8
+   },
+   {
+    "word": "drill",
+    "start": 0.8,
+    "end": 1.22
+   },
+   {
+    "word": "a",
+    "start": 1.22,
+    "end": 1.68
+   },
+   {
+    "word": "small",
+    "start": 1.68,
+    "end": 2.14
+   },
+   {
+    "word": "hole",
+    "start": 2.14,
+    "end": 2.7
+   },
+   {
+    "word": "in",
+    "start": 2.7,
+    "end": 3.34
+   },
+   {
+    "word": "a",
+    "start": 3.34,
+    "end": 3.46
+   },
+   {
+    "word": "maple",
+    "start": 3.46,
+    "end": 3.76
+   },
+   {
+    "word": "tree.",
+    "start": 3.76,
+    "end": 4.32
+   },
+   {
+    "word": "Then",
+    "start": 4.54,
+    "end": 5.38
+   },
+   {
+    "word": "they",
+    "start": 5.38,
+    "end": 5.62
+   },
+   {
+    "word": "tap",
+    "start": 5.62,
+    "end": 5.9
+   },
+   {
+    "word": "a",
+    "start": 5.9,
+    "end": 6.18
+   },
+   {
+    "word": "spout",
+    "start": 6.18,
+    "end": 6.82
+   },
+   {
+    "word": "into",
+    "start": 6.82,
+    "end": 7.38
+   },
+   {
+    "word": "the",
+    "start": 7.38,
+    "end": 7.68
+   },
+   {
+    "word": "hole.",
+    "start": 7.68,
+    "end": 7.96
+   }
+  ]
+ },
+ "read-step-one": {
+  "duration": 17.3,
+  "words": [
+   {
+    "word": "time",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "to",
+    "start": 0.58,
+    "end": 0.84
+   },
+   {
+    "word": "read",
+    "start": 0.84,
+    "end": 1.22
+   },
+   {
+    "word": "from",
+    "start": 1.22,
+    "end": 2.08
+   },
+   {
+    "word": "tree",
+    "start": 2.08,
+    "end": 2.6
+   },
+   {
+    "word": "to",
+    "start": 2.6,
+    "end": 3.12
+   },
+   {
+    "word": "syrup.",
+    "start": 3.12,
+    "end": 3.64
+   },
+   {
+    "word": "Every",
+    "start": 4.26,
+    "end": 5.06
+   },
+   {
+    "word": "fact",
+    "start": 5.06,
+    "end": 5.5
+   },
+   {
+    "word": "in",
+    "start": 5.5,
+    "end": 5.84
+   },
+   {
+    "word": "it",
+    "start": 5.84,
+    "end": 5.98
+   },
+   {
+    "word": "is",
+    "start": 5.98,
+    "end": 6.24
+   },
+   {
+    "word": "true.",
+    "start": 6.24,
+    "end": 6.64
+   },
+   {
+    "word": "The",
+    "start": 7.46,
+    "end": 7.56
+   },
+   {
+    "word": "text",
+    "start": 7.56,
+    "end": 8.04
+   },
+   {
+    "word": "has",
+    "start": 8.04,
+    "end": 8.38
+   },
+   {
+    "word": "four",
+    "start": 8.38,
+    "end": 8.9
+   },
+   {
+    "word": "steps,",
+    "start": 8.9,
+    "end": 9.6
+   },
+   {
+    "word": "and",
+    "start": 9.92,
+    "end": 10.28
+   },
+   {
+    "word": "each",
+    "start": 10.28,
+    "end": 10.76
+   },
+   {
+    "word": "step",
+    "start": 10.76,
+    "end": 11.16
+   },
+   {
+    "word": "is",
+    "start": 11.16,
+    "end": 11.6
+   },
+   {
+    "word": "one",
+    "start": 11.6,
+    "end": 12.0
+   },
+   {
+    "word": "link",
+    "start": 12.0,
+    "end": 12.48
+   },
+   {
+    "word": "in",
+    "start": 12.48,
+    "end": 12.84
+   },
+   {
+    "word": "the",
+    "start": 12.84,
+    "end": 13.02
+   },
+   {
+    "word": "chain.",
+    "start": 13.02,
+    "end": 13.38
+   },
+   {
+    "word": "Here",
+    "start": 14.06,
+    "end": 14.52
+   },
+   {
+    "word": "is",
+    "start": 14.52,
+    "end": 14.9
+   },
+   {
+    "word": "step",
+    "start": 14.9,
+    "end": 15.2
+   },
+   {
+    "word": "one.",
+    "start": 15.2,
+    "end": 15.66
+   },
+   {
+    "word": "Read",
+    "start": 16.36,
+    "end": 16.5
+   },
+   {
+    "word": "along",
+    "start": 16.5,
+    "end": 16.8
+   },
+   {
+    "word": "with",
+    "start": 16.8,
+    "end": 17.08
+   },
+   {
+    "word": "me.",
+    "start": 17.08,
+    "end": 17.3
+   }
+  ]
+ },
+ "read-step-three": {
+  "duration": 6.22,
+  "words": [
+   {
+    "word": "Step",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "3",
+    "start": 0.62,
+    "end": 1.08
+   },
+   {
+    "word": "is",
+    "start": 1.08,
+    "end": 1.56
+   },
+   {
+    "word": "yours",
+    "start": 1.56,
+    "end": 1.88
+   },
+   {
+    "word": "too.",
+    "start": 1.88,
+    "end": 2.42
+   },
+   {
+    "word": "Tap",
+    "start": 3.06,
+    "end": 3.36
+   },
+   {
+    "word": "the",
+    "start": 3.36,
+    "end": 3.62
+   },
+   {
+    "word": "mic",
+    "start": 3.62,
+    "end": 3.88
+   },
+   {
+    "word": "and",
+    "start": 3.88,
+    "end": 4.38
+   },
+   {
+    "word": "read",
+    "start": 4.38,
+    "end": 4.64
+   },
+   {
+    "word": "Step",
+    "start": 4.64,
+    "end": 5.0
+   },
+   {
+    "word": "3",
+    "start": 5.0,
+    "end": 5.42
+   },
+   {
+    "word": "out",
+    "start": 5.42,
+    "end": 5.88
+   },
+   {
+    "word": "loud.",
+    "start": 5.88,
+    "end": 6.22
+   }
+  ]
+ },
+ "read-step-two": {
+  "duration": 6.32,
+  "words": [
+   {
+    "word": "Step",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "2",
+    "start": 0.56,
+    "end": 1.02
+   },
+   {
+    "word": "is",
+    "start": 1.02,
+    "end": 1.48
+   },
+   {
+    "word": "all",
+    "start": 1.48,
+    "end": 1.96
+   },
+   {
+    "word": "yours.",
+    "start": 1.96,
+    "end": 2.7
+   },
+   {
+    "word": "Tap",
+    "start": 3.12,
+    "end": 3.5
+   },
+   {
+    "word": "the",
+    "start": 3.5,
+    "end": 3.76
+   },
+   {
+    "word": "mic",
+    "start": 3.76,
+    "end": 4.02
+   },
+   {
+    "word": "and",
+    "start": 4.02,
+    "end": 4.54
+   },
+   {
+    "word": "read",
+    "start": 4.54,
+    "end": 4.8
+   },
+   {
+    "word": "Step",
+    "start": 4.8,
+    "end": 5.24
+   },
+   {
+    "word": "2",
+    "start": 5.24,
+    "end": 5.64
+   },
+   {
+    "word": "out",
+    "start": 5.64,
+    "end": 6.0
+   },
+   {
+    "word": "loud.",
+    "start": 6.0,
+    "end": 6.32
+   }
+  ]
+ },
+ "sequence-build-chain": {
+  "duration": 12.62,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "read",
+    "start": 0.46,
+    "end": 0.86
+   },
+   {
+    "word": "the",
+    "start": 0.86,
+    "end": 1.2
+   },
+   {
+    "word": "whole",
+    "start": 1.2,
+    "end": 1.56
+   },
+   {
+    "word": "chain.",
+    "start": 1.56,
+    "end": 2.12
+   },
+   {
+    "word": "Now",
+    "start": 2.82,
+    "end": 3.06
+   },
+   {
+    "word": "build",
+    "start": 3.06,
+    "end": 3.46
+   },
+   {
+    "word": "it",
+    "start": 3.46,
+    "end": 3.7
+   },
+   {
+    "word": "yourself.",
+    "start": 3.7,
+    "end": 4.16
+   },
+   {
+    "word": "Here",
+    "start": 5.1,
+    "end": 5.48
+   },
+   {
+    "word": "are",
+    "start": 5.48,
+    "end": 5.84
+   },
+   {
+    "word": "the",
+    "start": 5.84,
+    "end": 6.04
+   },
+   {
+    "word": "four",
+    "start": 6.04,
+    "end": 6.36
+   },
+   {
+    "word": "steps.",
+    "start": 6.36,
+    "end": 6.78
+   },
+   {
+    "word": "All",
+    "start": 7.34,
+    "end": 7.64
+   },
+   {
+    "word": "mixed",
+    "start": 7.64,
+    "end": 8.08
+   },
+   {
+    "word": "up.",
+    "start": 8.08,
+    "end": 8.44
+   },
+   {
+    "word": "Drag",
+    "start": 9.2,
+    "end": 9.5
+   },
+   {
+    "word": "them",
+    "start": 9.5,
+    "end": 9.82
+   },
+   {
+    "word": "into",
+    "start": 9.82,
+    "end": 10.22
+   },
+   {
+    "word": "the",
+    "start": 10.22,
+    "end": 10.46
+   },
+   {
+    "word": "order",
+    "start": 10.46,
+    "end": 10.8
+   },
+   {
+    "word": "they",
+    "start": 10.8,
+    "end": 11.24
+   },
+   {
+    "word": "happen",
+    "start": 11.24,
+    "end": 11.66
+   },
+   {
+    "word": "in",
+    "start": 11.66,
+    "end": 11.98
+   },
+   {
+    "word": "the",
+    "start": 11.98,
+    "end": 12.12
+   },
+   {
+    "word": "text.",
+    "start": 12.12,
+    "end": 12.62
+   }
+  ]
+ },
+ "speak-explain-link": {
+  "duration": 15.94,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.64
+   },
+   {
+    "word": "one.",
+    "start": 0.64,
+    "end": 1.16
+   },
+   {
+    "word": "And",
+    "start": 1.68,
+    "end": 2.18
+   },
+   {
+    "word": "it",
+    "start": 2.18,
+    "end": 2.74
+   },
+   {
+    "word": "is",
+    "start": 2.74,
+    "end": 2.98
+   },
+   {
+    "word": "out",
+    "start": 2.98,
+    "end": 3.3
+   },
+   {
+    "word": "loud.",
+    "start": 3.3,
+    "end": 3.62
+   },
+   {
+    "word": "Explain",
+    "start": 4.26,
+    "end": 4.84
+   },
+   {
+    "word": "one",
+    "start": 4.84,
+    "end": 5.56
+   },
+   {
+    "word": "link",
+    "start": 5.56,
+    "end": 6.04
+   },
+   {
+    "word": "in",
+    "start": 6.04,
+    "end": 6.38
+   },
+   {
+    "word": "the",
+    "start": 6.38,
+    "end": 6.54
+   },
+   {
+    "word": "chain.",
+    "start": 6.54,
+    "end": 6.88
+   },
+   {
+    "word": "Why",
+    "start": 7.62,
+    "end": 8.0
+   },
+   {
+    "word": "must",
+    "start": 8.0,
+    "end": 8.38
+   },
+   {
+    "word": "the",
+    "start": 8.38,
+    "end": 8.72
+   },
+   {
+    "word": "sap",
+    "start": 8.72,
+    "end": 9.06
+   },
+   {
+    "word": "boil",
+    "start": 9.06,
+    "end": 9.8
+   },
+   {
+    "word": "before",
+    "start": 9.8,
+    "end": 10.8
+   },
+   {
+    "word": "it",
+    "start": 10.8,
+    "end": 11.3
+   },
+   {
+    "word": "can",
+    "start": 11.3,
+    "end": 11.5
+   },
+   {
+    "word": "become",
+    "start": 11.5,
+    "end": 12.1
+   },
+   {
+    "word": "syrup?",
+    "start": 12.1,
+    "end": 12.84
+   },
+   {
+    "word": "Tap",
+    "start": 13.7,
+    "end": 13.86
+   },
+   {
+    "word": "the",
+    "start": 13.86,
+    "end": 14.12
+   },
+   {
+    "word": "mic",
+    "start": 14.12,
+    "end": 14.38
+   },
+   {
+    "word": "and",
+    "start": 14.38,
+    "end": 14.82
+   },
+   {
+    "word": "tell",
+    "start": 14.82,
+    "end": 15.12
+   },
+   {
+    "word": "me",
+    "start": 15.12,
+    "end": 15.42
+   },
+   {
+    "word": "why.",
+    "start": 15.42,
+    "end": 15.94
+   }
+  ]
+ }
+}

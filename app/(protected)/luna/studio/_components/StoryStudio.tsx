@@ -178,6 +178,8 @@ export default function StoryStudio({
         setErrorMsg(
           data?.reason === "plan"
             ? "Story Studio is a Readee+ feature."
+            : data?.error === "limit"
+            ? "You used all your free stories! Ask a grown-up about Readee+ to make more."
             : data?.error || "Luna hit a snag. Let's try again.",
         );
         setPhase("error");

@@ -1,0 +1,1407 @@
+{
+ "apply-practice-1": {
+  "duration": 12.08,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "are",
+    "start": 0.44,
+    "end": 0.76
+   },
+   {
+    "word": "becoming",
+    "start": 0.76,
+    "end": 1.42
+   },
+   {
+    "word": "a",
+    "start": 1.42,
+    "end": 1.82
+   },
+   {
+    "word": "position",
+    "start": 1.82,
+    "end": 2.68
+   },
+   {
+    "word": "word",
+    "start": 2.68,
+    "end": 3.22
+   },
+   {
+    "word": "expert.",
+    "start": 3.22,
+    "end": 4.28
+   },
+   {
+    "word": "Squeaky",
+    "start": 5.1,
+    "end": 5.66
+   },
+   {
+    "word": "found",
+    "start": 5.66,
+    "end": 6.3
+   },
+   {
+    "word": "another",
+    "start": 6.3,
+    "end": 7.08
+   },
+   {
+    "word": "nut.",
+    "start": 7.08,
+    "end": 7.68
+   },
+   {
+    "word": "Look",
+    "start": 8.28,
+    "end": 8.62
+   },
+   {
+    "word": "at",
+    "start": 8.62,
+    "end": 8.8
+   },
+   {
+    "word": "where",
+    "start": 8.8,
+    "end": 9.06
+   },
+   {
+    "word": "it",
+    "start": 9.06,
+    "end": 9.28
+   },
+   {
+    "word": "is.",
+    "start": 9.28,
+    "end": 9.64
+   },
+   {
+    "word": "Tap",
+    "start": 10.46,
+    "end": 10.72
+   },
+   {
+    "word": "the",
+    "start": 10.72,
+    "end": 11.06
+   },
+   {
+    "word": "correct",
+    "start": 11.06,
+    "end": 11.48
+   },
+   {
+    "word": "word.",
+    "start": 11.48,
+    "end": 12.08
+   }
+  ]
+ },
+ "apply-practice-2": {
+  "duration": 8.3,
+  "words": [
+   {
+    "word": "Fantastic!",
+    "start": 0.0,
+    "end": 1.2
+   },
+   {
+    "word": "You're",
+    "start": 2.14,
+    "end": 2.48
+   },
+   {
+    "word": "almost",
+    "start": 2.48,
+    "end": 2.82
+   },
+   {
+    "word": "done",
+    "start": 2.82,
+    "end": 3.18
+   },
+   {
+    "word": "helping",
+    "start": 3.18,
+    "end": 3.58
+   },
+   {
+    "word": "squeaky.",
+    "start": 3.58,
+    "end": 4.2
+   },
+   {
+    "word": "One",
+    "start": 4.76,
+    "end": 5.1
+   },
+   {
+    "word": "more",
+    "start": 5.1,
+    "end": 5.46
+   },
+   {
+    "word": "nut",
+    "start": 5.46,
+    "end": 5.74
+   },
+   {
+    "word": "to",
+    "start": 5.74,
+    "end": 5.98
+   },
+   {
+    "word": "find.",
+    "start": 5.98,
+    "end": 6.34
+   },
+   {
+    "word": "Where",
+    "start": 6.98,
+    "end": 7.3
+   },
+   {
+    "word": "is",
+    "start": 7.3,
+    "end": 7.54
+   },
+   {
+    "word": "this",
+    "start": 7.54,
+    "end": 7.88
+   },
+   {
+    "word": "one?",
+    "start": 7.88,
+    "end": 8.3
+   }
+  ]
+ },
+ "celebrate-success": {
+  "duration": 13.84,
+  "words": [
+   {
+    "word": "Hooray!",
+    "start": 0.0,
+    "end": 0.68
+   },
+   {
+    "word": "You",
+    "start": 1.08,
+    "end": 1.32
+   },
+   {
+    "word": "helped",
+    "start": 1.32,
+    "end": 1.68
+   },
+   {
+    "word": "squeaky",
+    "start": 1.68,
+    "end": 2.18
+   },
+   {
+    "word": "find",
+    "start": 2.18,
+    "end": 2.54
+   },
+   {
+    "word": "all",
+    "start": 2.54,
+    "end": 2.96
+   },
+   {
+    "word": "his",
+    "start": 2.96,
+    "end": 3.26
+   },
+   {
+    "word": "nuts!",
+    "start": 3.26,
+    "end": 3.62
+   },
+   {
+    "word": "You",
+    "start": 4.46,
+    "end": 4.72
+   },
+   {
+    "word": "learned",
+    "start": 4.72,
+    "end": 5.1
+   },
+   {
+    "word": "and",
+    "start": 5.1,
+    "end": 5.3
+   },
+   {
+    "word": "used",
+    "start": 5.3,
+    "end": 5.58
+   },
+   {
+    "word": "the",
+    "start": 5.58,
+    "end": 5.8
+   },
+   {
+    "word": "words",
+    "start": 5.8,
+    "end": 6.1
+   },
+   {
+    "word": "on,",
+    "start": 6.1,
+    "end": 6.8
+   },
+   {
+    "word": "under",
+    "start": 7.42,
+    "end": 7.84
+   },
+   {
+    "word": "and",
+    "start": 7.84,
+    "end": 8.4
+   },
+   {
+    "word": "next",
+    "start": 8.4,
+    "end": 8.8
+   },
+   {
+    "word": "to,",
+    "start": 8.8,
+    "end": 9.16
+   },
+   {
+    "word": "to",
+    "start": 9.66,
+    "end": 9.78
+   },
+   {
+    "word": "tell",
+    "start": 9.78,
+    "end": 10.06
+   },
+   {
+    "word": "where",
+    "start": 10.06,
+    "end": 10.3
+   },
+   {
+    "word": "things",
+    "start": 10.3,
+    "end": 10.66
+   },
+   {
+    "word": "are.",
+    "start": 10.66,
+    "end": 11.0
+   },
+   {
+    "word": "Keep",
+    "start": 11.62,
+    "end": 11.92
+   },
+   {
+    "word": "using",
+    "start": 11.92,
+    "end": 12.48
+   },
+   {
+    "word": "your",
+    "start": 12.48,
+    "end": 12.74
+   },
+   {
+    "word": "big",
+    "start": 12.74,
+    "end": 13.08
+   },
+   {
+    "word": "kid",
+    "start": 13.08,
+    "end": 13.42
+   },
+   {
+    "word": "words.",
+    "start": 13.42,
+    "end": 13.84
+   }
+  ]
+ },
+ "challenge-all-alone": {
+  "duration": 11.46,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "are",
+    "start": 0.48,
+    "end": 0.68
+   },
+   {
+    "word": "doing",
+    "start": 0.68,
+    "end": 1.02
+   },
+   {
+    "word": "wonderful",
+    "start": 1.02,
+    "end": 1.74
+   },
+   {
+    "word": "work.",
+    "start": 1.74,
+    "end": 2.46
+   },
+   {
+    "word": "This",
+    "start": 2.76,
+    "end": 3.08
+   },
+   {
+    "word": "is",
+    "start": 3.08,
+    "end": 3.28
+   },
+   {
+    "word": "your",
+    "start": 3.28,
+    "end": 3.46
+   },
+   {
+    "word": "chance",
+    "start": 3.46,
+    "end": 3.82
+   },
+   {
+    "word": "to",
+    "start": 3.82,
+    "end": 4.2
+   },
+   {
+    "word": "show",
+    "start": 4.2,
+    "end": 4.52
+   },
+   {
+    "word": "what",
+    "start": 4.52,
+    "end": 4.74
+   },
+   {
+    "word": "you",
+    "start": 4.74,
+    "end": 4.94
+   },
+   {
+    "word": "know",
+    "start": 4.94,
+    "end": 5.26
+   },
+   {
+    "word": "all",
+    "start": 5.26,
+    "end": 6.0
+   },
+   {
+    "word": "by",
+    "start": 6.0,
+    "end": 6.24
+   },
+   {
+    "word": "yourself.",
+    "start": 6.24,
+    "end": 6.86
+   },
+   {
+    "word": "Tap",
+    "start": 7.74,
+    "end": 8.0
+   },
+   {
+    "word": "the",
+    "start": 8.0,
+    "end": 8.34
+   },
+   {
+    "word": "word",
+    "start": 8.34,
+    "end": 8.72
+   },
+   {
+    "word": "that",
+    "start": 8.72,
+    "end": 9.18
+   },
+   {
+    "word": "tells",
+    "start": 9.18,
+    "end": 9.62
+   },
+   {
+    "word": "where",
+    "start": 9.62,
+    "end": 10.3
+   },
+   {
+    "word": "the",
+    "start": 10.3,
+    "end": 10.88
+   },
+   {
+    "word": "nut",
+    "start": 10.88,
+    "end": 11.08
+   },
+   {
+    "word": "is.",
+    "start": 11.08,
+    "end": 11.46
+   }
+  ]
+ },
+ "complete": {
+  "duration": 17.68,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "did",
+    "start": 0.62,
+    "end": 1.06
+   },
+   {
+    "word": "it!",
+    "start": 1.06,
+    "end": 1.48
+   },
+   {
+    "word": "You",
+    "start": 2.1,
+    "end": 2.4
+   },
+   {
+    "word": "helped",
+    "start": 2.4,
+    "end": 2.9
+   },
+   {
+    "word": "squeaky",
+    "start": 2.9,
+    "end": 3.56
+   },
+   {
+    "word": "find",
+    "start": 3.56,
+    "end": 4.02
+   },
+   {
+    "word": "all",
+    "start": 4.02,
+    "end": 4.6
+   },
+   {
+    "word": "his",
+    "start": 4.6,
+    "end": 5.14
+   },
+   {
+    "word": "nuts.",
+    "start": 5.14,
+    "end": 5.74
+   },
+   {
+    "word": "You",
+    "start": 6.48,
+    "end": 6.8
+   },
+   {
+    "word": "learned",
+    "start": 6.8,
+    "end": 7.26
+   },
+   {
+    "word": "and",
+    "start": 7.26,
+    "end": 7.66
+   },
+   {
+    "word": "used",
+    "start": 7.66,
+    "end": 8.2
+   },
+   {
+    "word": "the",
+    "start": 8.2,
+    "end": 8.5
+   },
+   {
+    "word": "big",
+    "start": 8.5,
+    "end": 8.86
+   },
+   {
+    "word": "kid",
+    "start": 8.86,
+    "end": 9.18
+   },
+   {
+    "word": "words",
+    "start": 9.18,
+    "end": 9.56
+   },
+   {
+    "word": "on,",
+    "start": 9.56,
+    "end": 10.54
+   },
+   {
+    "word": "under",
+    "start": 11.14,
+    "end": 11.66
+   },
+   {
+    "word": "and",
+    "start": 11.66,
+    "end": 12.3
+   },
+   {
+    "word": "next",
+    "start": 12.3,
+    "end": 12.62
+   },
+   {
+    "word": "to.",
+    "start": 12.62,
+    "end": 13.02
+   },
+   {
+    "word": "Keep",
+    "start": 13.82,
+    "end": 14.12
+   },
+   {
+    "word": "practicing",
+    "start": 14.12,
+    "end": 14.82
+   },
+   {
+    "word": "these",
+    "start": 14.82,
+    "end": 15.28
+   },
+   {
+    "word": "words",
+    "start": 15.28,
+    "end": 15.72
+   },
+   {
+    "word": "to",
+    "start": 15.72,
+    "end": 16.02
+   },
+   {
+    "word": "tell",
+    "start": 16.02,
+    "end": 16.32
+   },
+   {
+    "word": "where",
+    "start": 16.32,
+    "end": 16.68
+   },
+   {
+    "word": "things",
+    "start": 16.68,
+    "end": 17.2
+   },
+   {
+    "word": "are.",
+    "start": 17.2,
+    "end": 17.68
+   }
+  ]
+ },
+ "guided-practice-1": {
+  "duration": 9.98,
+  "words": [
+   {
+    "word": "Wow!",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "You",
+    "start": 1.04,
+    "end": 1.32
+   },
+   {
+    "word": "learned",
+    "start": 1.32,
+    "end": 1.66
+   },
+   {
+    "word": "three",
+    "start": 1.66,
+    "end": 2.12
+   },
+   {
+    "word": "new",
+    "start": 2.12,
+    "end": 2.54
+   },
+   {
+    "word": "words!",
+    "start": 2.54,
+    "end": 2.94
+   },
+   {
+    "word": "Let's",
+    "start": 3.62,
+    "end": 4.04
+   },
+   {
+    "word": "help",
+    "start": 4.04,
+    "end": 4.2
+   },
+   {
+    "word": "squeaky",
+    "start": 4.2,
+    "end": 4.96
+   },
+   {
+    "word": "find",
+    "start": 4.96,
+    "end": 5.44
+   },
+   {
+    "word": "more",
+    "start": 5.44,
+    "end": 5.86
+   },
+   {
+    "word": "nuts.",
+    "start": 5.86,
+    "end": 6.34
+   },
+   {
+    "word": "Tap",
+    "start": 7.02,
+    "end": 7.2
+   },
+   {
+    "word": "the",
+    "start": 7.2,
+    "end": 7.5
+   },
+   {
+    "word": "word",
+    "start": 7.5,
+    "end": 7.84
+   },
+   {
+    "word": "that",
+    "start": 7.84,
+    "end": 8.1
+   },
+   {
+    "word": "tells",
+    "start": 8.1,
+    "end": 8.52
+   },
+   {
+    "word": "where",
+    "start": 8.52,
+    "end": 8.96
+   },
+   {
+    "word": "the",
+    "start": 8.96,
+    "end": 9.34
+   },
+   {
+    "word": "nut",
+    "start": 9.34,
+    "end": 9.62
+   },
+   {
+    "word": "is.",
+    "start": 9.62,
+    "end": 9.98
+   }
+  ]
+ },
+ "guided-practice-2": {
+  "duration": 12.14,
+  "words": [
+   {
+    "word": "You're",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "doing",
+    "start": 0.5,
+    "end": 0.88
+   },
+   {
+    "word": "great!",
+    "start": 0.88,
+    "end": 1.48
+   },
+   {
+    "word": "Squeaky",
+    "start": 2.08,
+    "end": 2.66
+   },
+   {
+    "word": "is",
+    "start": 2.66,
+    "end": 3.0
+   },
+   {
+    "word": "so",
+    "start": 3.0,
+    "end": 3.42
+   },
+   {
+    "word": "happy!",
+    "start": 3.42,
+    "end": 4.06
+   },
+   {
+    "word": "Let's",
+    "start": 5.0,
+    "end": 5.42
+   },
+   {
+    "word": "find",
+    "start": 5.42,
+    "end": 5.66
+   },
+   {
+    "word": "another",
+    "start": 5.66,
+    "end": 6.2
+   },
+   {
+    "word": "nut",
+    "start": 6.2,
+    "end": 6.5
+   },
+   {
+    "word": "for",
+    "start": 6.5,
+    "end": 6.76
+   },
+   {
+    "word": "him.",
+    "start": 6.76,
+    "end": 7.1
+   },
+   {
+    "word": "Tap",
+    "start": 8.12,
+    "end": 8.36
+   },
+   {
+    "word": "the",
+    "start": 8.36,
+    "end": 8.62
+   },
+   {
+    "word": "word",
+    "start": 8.62,
+    "end": 8.92
+   },
+   {
+    "word": "that",
+    "start": 8.92,
+    "end": 9.34
+   },
+   {
+    "word": "tells",
+    "start": 9.34,
+    "end": 9.84
+   },
+   {
+    "word": "where",
+    "start": 9.84,
+    "end": 10.52
+   },
+   {
+    "word": "this",
+    "start": 10.52,
+    "end": 11.24
+   },
+   {
+    "word": "nut",
+    "start": 11.24,
+    "end": 11.6
+   },
+   {
+    "word": "is.",
+    "start": 11.6,
+    "end": 12.14
+   }
+  ]
+ },
+ "hook-squeaky-story-sentence": {
+  "duration": 9.82,
+  "words": [
+   {
+    "word": "Squeaky",
+    "start": 0.0,
+    "end": 0.82
+   },
+   {
+    "word": "the",
+    "start": 0.82,
+    "end": 1.12
+   },
+   {
+    "word": "squirrel",
+    "start": 1.12,
+    "end": 1.62
+   },
+   {
+    "word": "lost",
+    "start": 1.62,
+    "end": 2.28
+   },
+   {
+    "word": "his",
+    "start": 2.28,
+    "end": 2.68
+   },
+   {
+    "word": "favorite",
+    "start": 2.68,
+    "end": 3.36
+   },
+   {
+    "word": "nuts.",
+    "start": 3.36,
+    "end": 3.94
+   },
+   {
+    "word": "He",
+    "start": 4.34,
+    "end": 4.84
+   },
+   {
+    "word": "needs",
+    "start": 4.84,
+    "end": 5.16
+   },
+   {
+    "word": "a",
+    "start": 5.16,
+    "end": 5.38
+   },
+   {
+    "word": "friend",
+    "start": 5.38,
+    "end": 5.78
+   },
+   {
+    "word": "to",
+    "start": 5.78,
+    "end": 6.2
+   },
+   {
+    "word": "help",
+    "start": 6.2,
+    "end": 6.48
+   },
+   {
+    "word": "him",
+    "start": 6.48,
+    "end": 6.78
+   },
+   {
+    "word": "find",
+    "start": 6.78,
+    "end": 7.18
+   },
+   {
+    "word": "them.",
+    "start": 7.18,
+    "end": 7.62
+   },
+   {
+    "word": "Can",
+    "start": 8.3,
+    "end": 8.58
+   },
+   {
+    "word": "you",
+    "start": 8.58,
+    "end": 8.88
+   },
+   {
+    "word": "help",
+    "start": 8.88,
+    "end": 9.22
+   },
+   {
+    "word": "Squeaky?",
+    "start": 9.22,
+    "end": 9.82
+   }
+  ]
+ },
+ "hook-squeaky-story": {
+  "duration": 11.8,
+  "words": [
+   {
+    "word": "Hello",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "there,",
+    "start": 0.66,
+    "end": 1.06
+   },
+   {
+    "word": "friend.",
+    "start": 1.28,
+    "end": 1.52
+   },
+   {
+    "word": "This",
+    "start": 2.48,
+    "end": 2.62
+   },
+   {
+    "word": "is",
+    "start": 2.62,
+    "end": 3.0
+   },
+   {
+    "word": "Squeaky",
+    "start": 3.0,
+    "end": 3.66
+   },
+   {
+    "word": "the",
+    "start": 3.66,
+    "end": 3.9
+   },
+   {
+    "word": "Squirrel.",
+    "start": 3.9,
+    "end": 4.52
+   },
+   {
+    "word": "He",
+    "start": 5.26,
+    "end": 5.78
+   },
+   {
+    "word": "needs",
+    "start": 5.78,
+    "end": 6.18
+   },
+   {
+    "word": "our",
+    "start": 6.18,
+    "end": 6.48
+   },
+   {
+    "word": "help",
+    "start": 6.48,
+    "end": 6.92
+   },
+   {
+    "word": "finding",
+    "start": 6.92,
+    "end": 7.54
+   },
+   {
+    "word": "his",
+    "start": 7.54,
+    "end": 7.98
+   },
+   {
+    "word": "yummy",
+    "start": 7.98,
+    "end": 8.54
+   },
+   {
+    "word": "nuts.",
+    "start": 8.54,
+    "end": 9.12
+   },
+   {
+    "word": "Let's",
+    "start": 9.82,
+    "end": 10.32
+   },
+   {
+    "word": "listen",
+    "start": 10.32,
+    "end": 10.64
+   },
+   {
+    "word": "to",
+    "start": 10.64,
+    "end": 10.94
+   },
+   {
+    "word": "his",
+    "start": 10.94,
+    "end": 11.2
+   },
+   {
+    "word": "story.",
+    "start": 11.2,
+    "end": 11.8
+   }
+  ]
+ },
+ "model-next-to": {
+  "duration": 9.56,
+  "words": [
+   {
+    "word": "You're",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "a",
+    "start": 0.54,
+    "end": 0.66
+   },
+   {
+    "word": "super",
+    "start": 0.66,
+    "end": 1.22
+   },
+   {
+    "word": "helper.",
+    "start": 1.22,
+    "end": 1.76
+   },
+   {
+    "word": "Here's",
+    "start": 2.46,
+    "end": 2.86
+   },
+   {
+    "word": "another",
+    "start": 2.86,
+    "end": 3.24
+   },
+   {
+    "word": "nut.",
+    "start": 3.24,
+    "end": 3.64
+   },
+   {
+    "word": "It",
+    "start": 4.18,
+    "end": 4.28
+   },
+   {
+    "word": "is",
+    "start": 4.28,
+    "end": 4.54
+   },
+   {
+    "word": "next",
+    "start": 4.54,
+    "end": 5.08
+   },
+   {
+    "word": "to",
+    "start": 5.08,
+    "end": 5.58
+   },
+   {
+    "word": "the",
+    "start": 5.58,
+    "end": 5.72
+   },
+   {
+    "word": "rock.",
+    "start": 5.72,
+    "end": 6.08
+   },
+   {
+    "word": "Tap",
+    "start": 6.94,
+    "end": 7.16
+   },
+   {
+    "word": "the",
+    "start": 7.16,
+    "end": 7.44
+   },
+   {
+    "word": "word",
+    "start": 7.44,
+    "end": 7.72
+   },
+   {
+    "word": "that",
+    "start": 7.72,
+    "end": 8.02
+   },
+   {
+    "word": "means",
+    "start": 8.02,
+    "end": 8.44
+   },
+   {
+    "word": "next",
+    "start": 8.44,
+    "end": 9.06
+   },
+   {
+    "word": "to.",
+    "start": 9.06,
+    "end": 9.56
+   }
+  ]
+ },
+ "model-on": {
+  "duration": 14.3,
+  "words": [
+   {
+    "word": "Squeaky",
+    "start": 0.0,
+    "end": 0.94
+   },
+   {
+    "word": "is",
+    "start": 0.94,
+    "end": 1.5
+   },
+   {
+    "word": "looking",
+    "start": 1.5,
+    "end": 1.94
+   },
+   {
+    "word": "for",
+    "start": 1.94,
+    "end": 2.36
+   },
+   {
+    "word": "his",
+    "start": 2.36,
+    "end": 2.66
+   },
+   {
+    "word": "nuts.",
+    "start": 2.66,
+    "end": 3.08
+   },
+   {
+    "word": "Look",
+    "start": 4.18,
+    "end": 4.52
+   },
+   {
+    "word": "at",
+    "start": 4.52,
+    "end": 5.22
+   },
+   {
+    "word": "this",
+    "start": 5.22,
+    "end": 5.76
+   },
+   {
+    "word": "nut.",
+    "start": 5.76,
+    "end": 6.28
+   },
+   {
+    "word": "It",
+    "start": 7.28,
+    "end": 7.54
+   },
+   {
+    "word": "is",
+    "start": 7.54,
+    "end": 8.06
+   },
+   {
+    "word": "on",
+    "start": 8.06,
+    "end": 8.76
+   },
+   {
+    "word": "the",
+    "start": 8.76,
+    "end": 9.42
+   },
+   {
+    "word": "log.",
+    "start": 9.42,
+    "end": 10.06
+   },
+   {
+    "word": "Tap",
+    "start": 11.22,
+    "end": 11.64
+   },
+   {
+    "word": "the",
+    "start": 11.64,
+    "end": 12.02
+   },
+   {
+    "word": "word",
+    "start": 12.02,
+    "end": 12.44
+   },
+   {
+    "word": "that",
+    "start": 12.44,
+    "end": 12.94
+   },
+   {
+    "word": "means",
+    "start": 12.94,
+    "end": 13.46
+   },
+   {
+    "word": "on.",
+    "start": 13.46,
+    "end": 14.3
+   }
+  ]
+ },
+ "model-under": {
+  "duration": 10.78,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "job",
+    "start": 0.58,
+    "end": 1.06
+   },
+   {
+    "word": "finding",
+    "start": 1.06,
+    "end": 1.6
+   },
+   {
+    "word": "that",
+    "start": 1.6,
+    "end": 1.88
+   },
+   {
+    "word": "nut.",
+    "start": 1.88,
+    "end": 2.12
+   },
+   {
+    "word": "Now",
+    "start": 2.74,
+    "end": 3.08
+   },
+   {
+    "word": "look",
+    "start": 3.08,
+    "end": 3.6
+   },
+   {
+    "word": "at",
+    "start": 3.6,
+    "end": 3.78
+   },
+   {
+    "word": "this",
+    "start": 3.78,
+    "end": 4.16
+   },
+   {
+    "word": "one.",
+    "start": 4.16,
+    "end": 4.42
+   },
+   {
+    "word": "It",
+    "start": 4.96,
+    "end": 5.16
+   },
+   {
+    "word": "is",
+    "start": 5.16,
+    "end": 5.4
+   },
+   {
+    "word": "under",
+    "start": 5.4,
+    "end": 6.22
+   },
+   {
+    "word": "the",
+    "start": 6.22,
+    "end": 6.76
+   },
+   {
+    "word": "leaf.",
+    "start": 6.76,
+    "end": 7.18
+   },
+   {
+    "word": "Tap",
+    "start": 7.94,
+    "end": 8.32
+   },
+   {
+    "word": "the",
+    "start": 8.32,
+    "end": 8.62
+   },
+   {
+    "word": "word",
+    "start": 8.62,
+    "end": 8.9
+   },
+   {
+    "word": "that",
+    "start": 8.9,
+    "end": 9.34
+   },
+   {
+    "word": "means",
+    "start": 9.34,
+    "end": 9.76
+   },
+   {
+    "word": "under.",
+    "start": 9.76,
+    "end": 10.78
+   }
+  ]
+ }
+}

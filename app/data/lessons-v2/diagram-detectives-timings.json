@@ -1,0 +1,2162 @@
+{
+ "apply-find-place": {
+  "duration": 18.68,
+  "words": [
+   {
+    "word": "Turn",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "the",
+    "start": 0.48,
+    "end": 0.74
+   },
+   {
+    "word": "page.",
+    "start": 0.74,
+    "end": 1.44
+   },
+   {
+    "word": "The",
+    "start": 1.94,
+    "end": 2.22
+   },
+   {
+    "word": "words",
+    "start": 2.22,
+    "end": 2.7
+   },
+   {
+    "word": "say,",
+    "start": 2.7,
+    "end": 3.34
+   },
+   {
+    "word": "Ladybugs",
+    "start": 3.72,
+    "end": 4.7
+   },
+   {
+    "word": "live",
+    "start": 4.7,
+    "end": 5.26
+   },
+   {
+    "word": "outside.",
+    "start": 5.26,
+    "end": 6.1
+   },
+   {
+    "word": "This",
+    "start": 6.76,
+    "end": 7.48
+   },
+   {
+    "word": "picture",
+    "start": 7.48,
+    "end": 8.02
+   },
+   {
+    "word": "shows",
+    "start": 8.02,
+    "end": 8.6
+   },
+   {
+    "word": "the",
+    "start": 8.6,
+    "end": 8.94
+   },
+   {
+    "word": "place.",
+    "start": 8.94,
+    "end": 9.3
+   },
+   {
+    "word": "Look",
+    "start": 10.4,
+    "end": 10.8
+   },
+   {
+    "word": "at",
+    "start": 10.8,
+    "end": 11.08
+   },
+   {
+    "word": "what",
+    "start": 11.08,
+    "end": 11.38
+   },
+   {
+    "word": "is",
+    "start": 11.38,
+    "end": 11.58
+   },
+   {
+    "word": "growing",
+    "start": 11.58,
+    "end": 12.12
+   },
+   {
+    "word": "there.",
+    "start": 12.12,
+    "end": 12.54
+   },
+   {
+    "word": "What",
+    "start": 13.82,
+    "end": 14.2
+   },
+   {
+    "word": "place",
+    "start": 14.2,
+    "end": 14.94
+   },
+   {
+    "word": "does",
+    "start": 14.94,
+    "end": 15.3
+   },
+   {
+    "word": "the",
+    "start": 15.3,
+    "end": 15.54
+   },
+   {
+    "word": "picture",
+    "start": 15.54,
+    "end": 16.02
+   },
+   {
+    "word": "show?",
+    "start": 16.02,
+    "end": 16.62
+   },
+   {
+    "word": "Tap",
+    "start": 17.48,
+    "end": 17.82
+   },
+   {
+    "word": "the",
+    "start": 17.82,
+    "end": 18.28
+   },
+   {
+    "word": "word.",
+    "start": 18.28,
+    "end": 18.68
+   }
+  ]
+ },
+ "apply-say-spots": {
+  "duration": 17.12,
+  "words": [
+   {
+    "word": "Back",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "to",
+    "start": 0.38,
+    "end": 0.68
+   },
+   {
+    "word": "our",
+    "start": 0.68,
+    "end": 0.86
+   },
+   {
+    "word": "favorite",
+    "start": 0.86,
+    "end": 1.3
+   },
+   {
+    "word": "page.",
+    "start": 1.3,
+    "end": 1.92
+   },
+   {
+    "word": "The",
+    "start": 2.52,
+    "end": 2.86
+   },
+   {
+    "word": "words",
+    "start": 2.86,
+    "end": 3.24
+   },
+   {
+    "word": "say,",
+    "start": 3.24,
+    "end": 3.88
+   },
+   {
+    "word": "look",
+    "start": 4.32,
+    "end": 4.7
+   },
+   {
+    "word": "at",
+    "start": 4.7,
+    "end": 5.08
+   },
+   {
+    "word": "the",
+    "start": 5.08,
+    "end": 5.32
+   },
+   {
+    "word": "ladybug's",
+    "start": 5.32,
+    "end": 6.24
+   },
+   {
+    "word": "back.",
+    "start": 6.24,
+    "end": 6.64
+   },
+   {
+    "word": "Look",
+    "start": 7.3,
+    "end": 8.04
+   },
+   {
+    "word": "at",
+    "start": 8.04,
+    "end": 8.2
+   },
+   {
+    "word": "the",
+    "start": 8.2,
+    "end": 8.32
+   },
+   {
+    "word": "picture.",
+    "start": 8.32,
+    "end": 8.74
+   },
+   {
+    "word": "What",
+    "start": 9.94,
+    "end": 10.22
+   },
+   {
+    "word": "are",
+    "start": 10.22,
+    "end": 10.58
+   },
+   {
+    "word": "the",
+    "start": 10.58,
+    "end": 10.76
+   },
+   {
+    "word": "little",
+    "start": 10.76,
+    "end": 11.24
+   },
+   {
+    "word": "black",
+    "start": 11.24,
+    "end": 11.6
+   },
+   {
+    "word": "shapes",
+    "start": 11.6,
+    "end": 12.22
+   },
+   {
+    "word": "on",
+    "start": 12.22,
+    "end": 12.88
+   },
+   {
+    "word": "its",
+    "start": 12.88,
+    "end": 13.12
+   },
+   {
+    "word": "back",
+    "start": 13.12,
+    "end": 13.56
+   },
+   {
+    "word": "called?",
+    "start": 13.56,
+    "end": 14.32
+   },
+   {
+    "word": "Tap",
+    "start": 15.42,
+    "end": 15.58
+   },
+   {
+    "word": "the",
+    "start": 15.58,
+    "end": 15.82
+   },
+   {
+    "word": "mic",
+    "start": 15.82,
+    "end": 16.06
+   },
+   {
+    "word": "and",
+    "start": 16.06,
+    "end": 16.62
+   },
+   {
+    "word": "say",
+    "start": 16.62,
+    "end": 16.88
+   },
+   {
+    "word": "it.",
+    "start": 16.88,
+    "end": 17.12
+   }
+  ]
+ },
+ "apply-up-up": {
+  "duration": 13.62,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "is",
+    "start": 0.46,
+    "end": 0.8
+   },
+   {
+    "word": "a",
+    "start": 0.8,
+    "end": 0.92
+   },
+   {
+    "word": "tricky",
+    "start": 0.92,
+    "end": 1.4
+   },
+   {
+    "word": "one.",
+    "start": 1.4,
+    "end": 1.84
+   },
+   {
+    "word": "Listen",
+    "start": 2.48,
+    "end": 2.84
+   },
+   {
+    "word": "to",
+    "start": 2.84,
+    "end": 3.12
+   },
+   {
+    "word": "the",
+    "start": 3.12,
+    "end": 3.28
+   },
+   {
+    "word": "words",
+    "start": 3.28,
+    "end": 3.56
+   },
+   {
+    "word": "from",
+    "start": 3.56,
+    "end": 3.9
+   },
+   {
+    "word": "our",
+    "start": 3.9,
+    "end": 4.08
+   },
+   {
+    "word": "book.",
+    "start": 4.08,
+    "end": 4.66
+   },
+   {
+    "word": "Up,",
+    "start": 5.62,
+    "end": 5.84
+   },
+   {
+    "word": "up",
+    "start": 6.1,
+    "end": 6.4
+   },
+   {
+    "word": "goes",
+    "start": 6.4,
+    "end": 7.08
+   },
+   {
+    "word": "the",
+    "start": 7.08,
+    "end": 7.52
+   },
+   {
+    "word": "ladybug.",
+    "start": 7.52,
+    "end": 8.22
+   },
+   {
+    "word": "Which",
+    "start": 8.94,
+    "end": 9.66
+   },
+   {
+    "word": "picture",
+    "start": 9.66,
+    "end": 10.34
+   },
+   {
+    "word": "belongs",
+    "start": 10.34,
+    "end": 10.88
+   },
+   {
+    "word": "with",
+    "start": 10.88,
+    "end": 11.38
+   },
+   {
+    "word": "those",
+    "start": 11.38,
+    "end": 11.68
+   },
+   {
+    "word": "words?",
+    "start": 11.68,
+    "end": 12.14
+   },
+   {
+    "word": "Tap",
+    "start": 12.92,
+    "end": 13.28
+   },
+   {
+    "word": "it.",
+    "start": 13.28,
+    "end": 13.62
+   }
+  ]
+ },
+ "celebrate-detective-success": {
+  "duration": 20.86,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "did",
+    "start": 0.44,
+    "end": 0.92
+   },
+   {
+    "word": "it,",
+    "start": 0.92,
+    "end": 1.2
+   },
+   {
+    "word": "detective!",
+    "start": 1.28,
+    "end": 1.72
+   },
+   {
+    "word": "You",
+    "start": 2.46,
+    "end": 2.86
+   },
+   {
+    "word": "connected",
+    "start": 2.86,
+    "end": 3.34
+   },
+   {
+    "word": "the",
+    "start": 3.34,
+    "end": 3.66
+   },
+   {
+    "word": "words",
+    "start": 3.66,
+    "end": 4.04
+   },
+   {
+    "word": "to",
+    "start": 4.04,
+    "end": 4.62
+   },
+   {
+    "word": "every",
+    "start": 4.62,
+    "end": 5.14
+   },
+   {
+    "word": "picture.",
+    "start": 5.14,
+    "end": 5.64
+   },
+   {
+    "word": "The",
+    "start": 6.36,
+    "end": 6.64
+   },
+   {
+    "word": "words",
+    "start": 6.64,
+    "end": 7.18
+   },
+   {
+    "word": "tell",
+    "start": 7.18,
+    "end": 7.5
+   },
+   {
+    "word": "a",
+    "start": 7.5,
+    "end": 7.64
+   },
+   {
+    "word": "fact",
+    "start": 7.64,
+    "end": 7.98
+   },
+   {
+    "word": "and",
+    "start": 7.98,
+    "end": 8.6
+   },
+   {
+    "word": "the",
+    "start": 8.6,
+    "end": 8.76
+   },
+   {
+    "word": "picture",
+    "start": 8.76,
+    "end": 9.16
+   },
+   {
+    "word": "shows",
+    "start": 9.16,
+    "end": 9.58
+   },
+   {
+    "word": "it.",
+    "start": 9.58,
+    "end": 9.92
+   },
+   {
+    "word": "It",
+    "start": 10.72,
+    "end": 10.86
+   },
+   {
+    "word": "can",
+    "start": 10.86,
+    "end": 11.12
+   },
+   {
+    "word": "show",
+    "start": 11.12,
+    "end": 11.5
+   },
+   {
+    "word": "a",
+    "start": 11.5,
+    "end": 11.92
+   },
+   {
+    "word": "person,",
+    "start": 11.92,
+    "end": 12.56
+   },
+   {
+    "word": "a",
+    "start": 13.1,
+    "end": 13.42
+   },
+   {
+    "word": "place,",
+    "start": 13.42,
+    "end": 13.9
+   },
+   {
+    "word": "or",
+    "start": 14.36,
+    "end": 14.82
+   },
+   {
+    "word": "a",
+    "start": 14.82,
+    "end": 15.04
+   },
+   {
+    "word": "thing.",
+    "start": 15.04,
+    "end": 15.4
+   },
+   {
+    "word": "Keep",
+    "start": 16.4,
+    "end": 16.86
+   },
+   {
+    "word": "looking",
+    "start": 16.86,
+    "end": 17.46
+   },
+   {
+    "word": "closely",
+    "start": 17.46,
+    "end": 18.06
+   },
+   {
+    "word": "at",
+    "start": 18.06,
+    "end": 18.56
+   },
+   {
+    "word": "pictures",
+    "start": 18.56,
+    "end": 18.98
+   },
+   {
+    "word": "every",
+    "start": 18.98,
+    "end": 19.82
+   },
+   {
+    "word": "time",
+    "start": 19.82,
+    "end": 20.2
+   },
+   {
+    "word": "you",
+    "start": 20.2,
+    "end": 20.5
+   },
+   {
+    "word": "read.",
+    "start": 20.5,
+    "end": 20.86
+   }
+  ]
+ },
+ "challenge-sort-pictures": {
+  "duration": 18.34,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "page",
+    "start": 0.58,
+    "end": 1.16
+   },
+   {
+    "word": "detective,",
+    "start": 1.16,
+    "end": 1.76
+   },
+   {
+    "word": "our",
+    "start": 2.14,
+    "end": 2.58
+   },
+   {
+    "word": "fact",
+    "start": 2.58,
+    "end": 2.98
+   },
+   {
+    "word": "book",
+    "start": 2.98,
+    "end": 3.3
+   },
+   {
+    "word": "shows",
+    "start": 3.3,
+    "end": 3.78
+   },
+   {
+    "word": "three",
+    "start": 3.78,
+    "end": 4.36
+   },
+   {
+    "word": "pictures.",
+    "start": 4.36,
+    "end": 4.98
+   },
+   {
+    "word": "Look",
+    "start": 5.46,
+    "end": 5.86
+   },
+   {
+    "word": "closely",
+    "start": 5.86,
+    "end": 6.6
+   },
+   {
+    "word": "at",
+    "start": 6.6,
+    "end": 7.0
+   },
+   {
+    "word": "each",
+    "start": 7.0,
+    "end": 7.4
+   },
+   {
+    "word": "one",
+    "start": 7.4,
+    "end": 7.76
+   },
+   {
+    "word": "and",
+    "start": 7.76,
+    "end": 8.16
+   },
+   {
+    "word": "ask,",
+    "start": 8.16,
+    "end": 8.72
+   },
+   {
+    "word": "does",
+    "start": 9.2,
+    "end": 9.44
+   },
+   {
+    "word": "this",
+    "start": 9.44,
+    "end": 9.84
+   },
+   {
+    "word": "picture",
+    "start": 9.84,
+    "end": 10.36
+   },
+   {
+    "word": "show",
+    "start": 10.36,
+    "end": 10.82
+   },
+   {
+    "word": "a",
+    "start": 10.82,
+    "end": 11.14
+   },
+   {
+    "word": "person,",
+    "start": 11.14,
+    "end": 11.7
+   },
+   {
+    "word": "a",
+    "start": 12.38,
+    "end": 12.54
+   },
+   {
+    "word": "place,",
+    "start": 12.54,
+    "end": 12.98
+   },
+   {
+    "word": "or",
+    "start": 13.54,
+    "end": 13.84
+   },
+   {
+    "word": "a",
+    "start": 13.84,
+    "end": 14.12
+   },
+   {
+    "word": "thing?",
+    "start": 14.12,
+    "end": 14.42
+   },
+   {
+    "word": "Drag",
+    "start": 15.36,
+    "end": 15.74
+   },
+   {
+    "word": "each",
+    "start": 15.74,
+    "end": 16.24
+   },
+   {
+    "word": "picture",
+    "start": 16.24,
+    "end": 16.8
+   },
+   {
+    "word": "to",
+    "start": 16.8,
+    "end": 17.2
+   },
+   {
+    "word": "where",
+    "start": 17.2,
+    "end": 17.58
+   },
+   {
+    "word": "it",
+    "start": 17.58,
+    "end": 17.9
+   },
+   {
+    "word": "belongs.",
+    "start": 17.9,
+    "end": 18.34
+   }
+  ]
+ },
+ "complete": {
+  "duration": 17.04,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "did",
+    "start": 0.48,
+    "end": 0.98
+   },
+   {
+    "word": "it,",
+    "start": 0.98,
+    "end": 1.2
+   },
+   {
+    "word": "Detective.",
+    "start": 1.28,
+    "end": 1.74
+   },
+   {
+    "word": "In",
+    "start": 2.6,
+    "end": 2.72
+   },
+   {
+    "word": "a",
+    "start": 2.72,
+    "end": 2.84
+   },
+   {
+    "word": "fact",
+    "start": 2.84,
+    "end": 3.14
+   },
+   {
+    "word": "book,",
+    "start": 3.14,
+    "end": 3.58
+   },
+   {
+    "word": "the",
+    "start": 3.96,
+    "end": 4.08
+   },
+   {
+    "word": "words",
+    "start": 4.08,
+    "end": 4.6
+   },
+   {
+    "word": "tell",
+    "start": 4.6,
+    "end": 5.08
+   },
+   {
+    "word": "a",
+    "start": 5.08,
+    "end": 5.2
+   },
+   {
+    "word": "fact,",
+    "start": 5.2,
+    "end": 5.64
+   },
+   {
+    "word": "and",
+    "start": 5.82,
+    "end": 6.1
+   },
+   {
+    "word": "the",
+    "start": 6.1,
+    "end": 6.24
+   },
+   {
+    "word": "picture",
+    "start": 6.24,
+    "end": 6.76
+   },
+   {
+    "word": "shows",
+    "start": 6.76,
+    "end": 7.46
+   },
+   {
+    "word": "it.",
+    "start": 7.46,
+    "end": 7.82
+   },
+   {
+    "word": "Now",
+    "start": 8.52,
+    "end": 8.9
+   },
+   {
+    "word": "when",
+    "start": 8.9,
+    "end": 9.12
+   },
+   {
+    "word": "you",
+    "start": 9.12,
+    "end": 9.26
+   },
+   {
+    "word": "read,",
+    "start": 9.26,
+    "end": 9.54
+   },
+   {
+    "word": "you",
+    "start": 9.9,
+    "end": 10.02
+   },
+   {
+    "word": "can",
+    "start": 10.02,
+    "end": 10.18
+   },
+   {
+    "word": "look",
+    "start": 10.18,
+    "end": 10.36
+   },
+   {
+    "word": "at",
+    "start": 10.36,
+    "end": 10.5
+   },
+   {
+    "word": "each",
+    "start": 10.5,
+    "end": 10.98
+   },
+   {
+    "word": "picture",
+    "start": 10.98,
+    "end": 11.54
+   },
+   {
+    "word": "and",
+    "start": 11.54,
+    "end": 11.92
+   },
+   {
+    "word": "ask,",
+    "start": 11.92,
+    "end": 12.44
+   },
+   {
+    "word": "what",
+    "start": 12.84,
+    "end": 13.04
+   },
+   {
+    "word": "person,",
+    "start": 13.04,
+    "end": 13.64
+   },
+   {
+    "word": "place,",
+    "start": 14.04,
+    "end": 14.2
+   },
+   {
+    "word": "or",
+    "start": 14.66,
+    "end": 14.72
+   },
+   {
+    "word": "thing",
+    "start": 14.72,
+    "end": 15.12
+   },
+   {
+    "word": "does",
+    "start": 15.12,
+    "end": 15.76
+   },
+   {
+    "word": "this",
+    "start": 15.76,
+    "end": 16.06
+   },
+   {
+    "word": "picture",
+    "start": 16.06,
+    "end": 16.54
+   },
+   {
+    "word": "show?",
+    "start": 16.54,
+    "end": 17.04
+   }
+  ]
+ },
+ "guided-find-lunch": {
+  "duration": 22.94,
+  "words": [
+   {
+    "word": "New",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "page",
+    "start": 0.48,
+    "end": 0.96
+   },
+   {
+    "word": "detective.",
+    "start": 0.96,
+    "end": 1.82
+   },
+   {
+    "word": "The",
+    "start": 2.52,
+    "end": 2.8
+   },
+   {
+    "word": "words",
+    "start": 2.8,
+    "end": 3.12
+   },
+   {
+    "word": "say,",
+    "start": 3.12,
+    "end": 3.66
+   },
+   {
+    "word": "a",
+    "start": 4.28,
+    "end": 4.44
+   },
+   {
+    "word": "ladybug",
+    "start": 4.44,
+    "end": 5.12
+   },
+   {
+    "word": "is",
+    "start": 5.12,
+    "end": 5.66
+   },
+   {
+    "word": "eating",
+    "start": 5.66,
+    "end": 6.12
+   },
+   {
+    "word": "its",
+    "start": 6.12,
+    "end": 6.6
+   },
+   {
+    "word": "lunch.",
+    "start": 6.6,
+    "end": 7.04
+   },
+   {
+    "word": "But",
+    "start": 7.98,
+    "end": 8.26
+   },
+   {
+    "word": "the",
+    "start": 8.26,
+    "end": 8.48
+   },
+   {
+    "word": "words",
+    "start": 8.48,
+    "end": 9.02
+   },
+   {
+    "word": "do",
+    "start": 9.02,
+    "end": 9.54
+   },
+   {
+    "word": "not",
+    "start": 9.54,
+    "end": 9.88
+   },
+   {
+    "word": "tell",
+    "start": 9.88,
+    "end": 10.32
+   },
+   {
+    "word": "us",
+    "start": 10.32,
+    "end": 10.64
+   },
+   {
+    "word": "what",
+    "start": 10.64,
+    "end": 10.94
+   },
+   {
+    "word": "the",
+    "start": 10.94,
+    "end": 11.16
+   },
+   {
+    "word": "lunch",
+    "start": 11.16,
+    "end": 11.54
+   },
+   {
+    "word": "is.",
+    "start": 11.54,
+    "end": 11.98
+   },
+   {
+    "word": "The",
+    "start": 12.72,
+    "end": 12.84
+   },
+   {
+    "word": "picture",
+    "start": 12.84,
+    "end": 13.4
+   },
+   {
+    "word": "does.",
+    "start": 13.4,
+    "end": 13.84
+   },
+   {
+    "word": "Look",
+    "start": 14.78,
+    "end": 15.04
+   },
+   {
+    "word": "closely,",
+    "start": 15.04,
+    "end": 15.84
+   },
+   {
+    "word": "right",
+    "start": 16.34,
+    "end": 16.68
+   },
+   {
+    "word": "by",
+    "start": 16.68,
+    "end": 17.12
+   },
+   {
+    "word": "the",
+    "start": 17.12,
+    "end": 17.42
+   },
+   {
+    "word": "ladybug's",
+    "start": 17.42,
+    "end": 18.36
+   },
+   {
+    "word": "mouth.",
+    "start": 18.36,
+    "end": 18.78
+   },
+   {
+    "word": "What",
+    "start": 19.58,
+    "end": 19.84
+   },
+   {
+    "word": "is",
+    "start": 19.84,
+    "end": 20.0
+   },
+   {
+    "word": "its",
+    "start": 20.0,
+    "end": 20.24
+   },
+   {
+    "word": "lunch?",
+    "start": 20.24,
+    "end": 20.64
+   },
+   {
+    "word": "Tap",
+    "start": 21.82,
+    "end": 22.04
+   },
+   {
+    "word": "the",
+    "start": 22.04,
+    "end": 22.52
+   },
+   {
+    "word": "word.",
+    "start": 22.52,
+    "end": 22.94
+   }
+  ]
+ },
+ "guided-find-wings": {
+  "duration": 19.1,
+  "words": [
+   {
+    "word": "Time",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "to",
+    "start": 0.58,
+    "end": 0.8
+   },
+   {
+    "word": "turn",
+    "start": 0.8,
+    "end": 1.06
+   },
+   {
+    "word": "the",
+    "start": 1.06,
+    "end": 1.26
+   },
+   {
+    "word": "page.",
+    "start": 1.26,
+    "end": 1.8
+   },
+   {
+    "word": "The",
+    "start": 2.24,
+    "end": 2.82
+   },
+   {
+    "word": "words",
+    "start": 2.82,
+    "end": 3.22
+   },
+   {
+    "word": "say,",
+    "start": 3.22,
+    "end": 3.7
+   },
+   {
+    "word": "a",
+    "start": 4.32,
+    "end": 4.42
+   },
+   {
+    "word": "ladybug",
+    "start": 4.42,
+    "end": 5.22
+   },
+   {
+    "word": "can",
+    "start": 5.22,
+    "end": 5.8
+   },
+   {
+    "word": "fly.",
+    "start": 5.8,
+    "end": 6.26
+   },
+   {
+    "word": "Now",
+    "start": 7.08,
+    "end": 7.66
+   },
+   {
+    "word": "look",
+    "start": 7.66,
+    "end": 8.12
+   },
+   {
+    "word": "at",
+    "start": 8.12,
+    "end": 8.68
+   },
+   {
+    "word": "the",
+    "start": 8.68,
+    "end": 8.92
+   },
+   {
+    "word": "picture.",
+    "start": 8.92,
+    "end": 9.44
+   },
+   {
+    "word": "Which",
+    "start": 10.52,
+    "end": 10.86
+   },
+   {
+    "word": "part",
+    "start": 10.86,
+    "end": 11.3
+   },
+   {
+    "word": "of",
+    "start": 11.3,
+    "end": 11.58
+   },
+   {
+    "word": "the",
+    "start": 11.58,
+    "end": 11.74
+   },
+   {
+    "word": "ladybug",
+    "start": 11.74,
+    "end": 12.7
+   },
+   {
+    "word": "is",
+    "start": 12.7,
+    "end": 13.04
+   },
+   {
+    "word": "spread",
+    "start": 13.04,
+    "end": 13.54
+   },
+   {
+    "word": "open",
+    "start": 13.54,
+    "end": 14.16
+   },
+   {
+    "word": "wide,",
+    "start": 14.16,
+    "end": 14.94
+   },
+   {
+    "word": "lifting",
+    "start": 15.6,
+    "end": 15.86
+   },
+   {
+    "word": "it",
+    "start": 15.86,
+    "end": 16.1
+   },
+   {
+    "word": "into",
+    "start": 16.1,
+    "end": 16.48
+   },
+   {
+    "word": "the",
+    "start": 16.48,
+    "end": 16.7
+   },
+   {
+    "word": "sky?",
+    "start": 16.7,
+    "end": 17.18
+   },
+   {
+    "word": "Tap",
+    "start": 18.14,
+    "end": 18.44
+   },
+   {
+    "word": "that",
+    "start": 18.44,
+    "end": 18.78
+   },
+   {
+    "word": "word.",
+    "start": 18.78,
+    "end": 19.1
+   }
+  ]
+ },
+ "hook-ladybug-book-sentence": {
+  "duration": 6.0,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "words",
+    "start": 0.38,
+    "end": 1.0
+   },
+   {
+    "word": "tell",
+    "start": 1.0,
+    "end": 1.66
+   },
+   {
+    "word": "a",
+    "start": 1.66,
+    "end": 2.14
+   },
+   {
+    "word": "fact.",
+    "start": 2.14,
+    "end": 2.62
+   },
+   {
+    "word": "The",
+    "start": 2.96,
+    "end": 3.54
+   },
+   {
+    "word": "picture",
+    "start": 3.54,
+    "end": 4.12
+   },
+   {
+    "word": "shows",
+    "start": 4.12,
+    "end": 5.02
+   },
+   {
+    "word": "the",
+    "start": 5.02,
+    "end": 5.54
+   },
+   {
+    "word": "fact.",
+    "start": 5.54,
+    "end": 6.0
+   }
+  ]
+ },
+ "hook-ladybug-book": {
+  "duration": 21.14,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "reading",
+    "start": 0.64,
+    "end": 0.84
+   },
+   {
+    "word": "detective.",
+    "start": 0.84,
+    "end": 1.32
+   },
+   {
+    "word": "Today",
+    "start": 2.38,
+    "end": 2.46
+   },
+   {
+    "word": "we",
+    "start": 2.46,
+    "end": 2.8
+   },
+   {
+    "word": "open",
+    "start": 2.8,
+    "end": 3.12
+   },
+   {
+    "word": "a",
+    "start": 3.12,
+    "end": 3.34
+   },
+   {
+    "word": "fact",
+    "start": 3.34,
+    "end": 3.68
+   },
+   {
+    "word": "book",
+    "start": 3.68,
+    "end": 4.04
+   },
+   {
+    "word": "about",
+    "start": 4.04,
+    "end": 4.54
+   },
+   {
+    "word": "ladybugs.",
+    "start": 4.54,
+    "end": 5.36
+   },
+   {
+    "word": "A",
+    "start": 6.22,
+    "end": 6.42
+   },
+   {
+    "word": "fact",
+    "start": 6.42,
+    "end": 6.78
+   },
+   {
+    "word": "book",
+    "start": 6.78,
+    "end": 7.18
+   },
+   {
+    "word": "tells",
+    "start": 7.18,
+    "end": 7.48
+   },
+   {
+    "word": "facts",
+    "start": 7.48,
+    "end": 7.98
+   },
+   {
+    "word": "that",
+    "start": 7.98,
+    "end": 8.5
+   },
+   {
+    "word": "are",
+    "start": 8.5,
+    "end": 8.62
+   },
+   {
+    "word": "true.",
+    "start": 8.62,
+    "end": 8.94
+   },
+   {
+    "word": "Every",
+    "start": 10.2,
+    "end": 10.52
+   },
+   {
+    "word": "page",
+    "start": 10.52,
+    "end": 10.94
+   },
+   {
+    "word": "has",
+    "start": 10.94,
+    "end": 11.28
+   },
+   {
+    "word": "words",
+    "start": 11.28,
+    "end": 11.68
+   },
+   {
+    "word": "and",
+    "start": 11.68,
+    "end": 12.24
+   },
+   {
+    "word": "a",
+    "start": 12.24,
+    "end": 12.36
+   },
+   {
+    "word": "picture.",
+    "start": 12.36,
+    "end": 12.7
+   },
+   {
+    "word": "The",
+    "start": 13.26,
+    "end": 13.56
+   },
+   {
+    "word": "words",
+    "start": 13.56,
+    "end": 14.02
+   },
+   {
+    "word": "tell",
+    "start": 14.02,
+    "end": 14.28
+   },
+   {
+    "word": "a",
+    "start": 14.28,
+    "end": 14.42
+   },
+   {
+    "word": "fact,",
+    "start": 14.42,
+    "end": 14.9
+   },
+   {
+    "word": "and",
+    "start": 15.38,
+    "end": 15.6
+   },
+   {
+    "word": "the",
+    "start": 15.6,
+    "end": 15.74
+   },
+   {
+    "word": "picture",
+    "start": 15.74,
+    "end": 16.18
+   },
+   {
+    "word": "shows",
+    "start": 16.18,
+    "end": 16.72
+   },
+   {
+    "word": "that",
+    "start": 16.72,
+    "end": 17.1
+   },
+   {
+    "word": "same",
+    "start": 17.1,
+    "end": 17.46
+   },
+   {
+    "word": "fact.",
+    "start": 17.46,
+    "end": 17.9
+   },
+   {
+    "word": "Let's",
+    "start": 18.68,
+    "end": 19.34
+   },
+   {
+    "word": "read",
+    "start": 19.34,
+    "end": 19.52
+   },
+   {
+    "word": "our",
+    "start": 19.52,
+    "end": 19.72
+   },
+   {
+    "word": "first",
+    "start": 19.72,
+    "end": 20.22
+   },
+   {
+    "word": "clue",
+    "start": 20.22,
+    "end": 20.6
+   },
+   {
+    "word": "together.",
+    "start": 20.6,
+    "end": 21.14
+   }
+  ]
+ },
+ "model-person-place-thing": {
+  "duration": 16.42,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.3
+   },
+   {
+    "word": "picture",
+    "start": 0.3,
+    "end": 0.74
+   },
+   {
+    "word": "in",
+    "start": 0.74,
+    "end": 1.14
+   },
+   {
+    "word": "a",
+    "start": 1.14,
+    "end": 1.24
+   },
+   {
+    "word": "fact",
+    "start": 1.24,
+    "end": 1.52
+   },
+   {
+    "word": "book",
+    "start": 1.52,
+    "end": 1.94
+   },
+   {
+    "word": "can",
+    "start": 1.94,
+    "end": 2.38
+   },
+   {
+    "word": "show",
+    "start": 2.38,
+    "end": 2.7
+   },
+   {
+    "word": "a",
+    "start": 2.7,
+    "end": 2.96
+   },
+   {
+    "word": "person,",
+    "start": 2.96,
+    "end": 3.46
+   },
+   {
+    "word": "a",
+    "start": 3.8,
+    "end": 4.16
+   },
+   {
+    "word": "place,",
+    "start": 4.16,
+    "end": 4.54
+   },
+   {
+    "word": "or",
+    "start": 5.02,
+    "end": 5.28
+   },
+   {
+    "word": "a",
+    "start": 5.28,
+    "end": 5.42
+   },
+   {
+    "word": "thing",
+    "start": 5.42,
+    "end": 5.68
+   },
+   {
+    "word": "from",
+    "start": 5.68,
+    "end": 6.08
+   },
+   {
+    "word": "the",
+    "start": 6.08,
+    "end": 6.24
+   },
+   {
+    "word": "words.",
+    "start": 6.24,
+    "end": 6.62
+   },
+   {
+    "word": "So",
+    "start": 7.18,
+    "end": 7.6
+   },
+   {
+    "word": "when",
+    "start": 7.6,
+    "end": 7.78
+   },
+   {
+    "word": "you",
+    "start": 7.78,
+    "end": 7.9
+   },
+   {
+    "word": "see",
+    "start": 7.9,
+    "end": 8.08
+   },
+   {
+    "word": "a",
+    "start": 8.08,
+    "end": 8.2
+   },
+   {
+    "word": "picture,",
+    "start": 8.2,
+    "end": 8.56
+   },
+   {
+    "word": "be",
+    "start": 9.02,
+    "end": 9.14
+   },
+   {
+    "word": "a",
+    "start": 9.14,
+    "end": 9.28
+   },
+   {
+    "word": "detective.",
+    "start": 9.28,
+    "end": 9.92
+   },
+   {
+    "word": "Ask",
+    "start": 10.72,
+    "end": 11.02
+   },
+   {
+    "word": "yourself,",
+    "start": 11.02,
+    "end": 11.42
+   },
+   {
+    "word": "what",
+    "start": 12.0,
+    "end": 12.26
+   },
+   {
+    "word": "person,",
+    "start": 12.26,
+    "end": 12.84
+   },
+   {
+    "word": "place,",
+    "start": 13.34,
+    "end": 13.86
+   },
+   {
+    "word": "or",
+    "start": 14.1,
+    "end": 14.42
+   },
+   {
+    "word": "thing",
+    "start": 14.42,
+    "end": 14.82
+   },
+   {
+    "word": "does",
+    "start": 14.82,
+    "end": 15.36
+   },
+   {
+    "word": "this",
+    "start": 15.36,
+    "end": 15.64
+   },
+   {
+    "word": "picture",
+    "start": 15.64,
+    "end": 16.04
+   },
+   {
+    "word": "show?",
+    "start": 16.04,
+    "end": 16.42
+   }
+  ]
+ },
+ "model-words-show": {
+  "duration": 28.36,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "is",
+    "start": 0.5,
+    "end": 0.76
+   },
+   {
+    "word": "a",
+    "start": 0.76,
+    "end": 0.9
+   },
+   {
+    "word": "page",
+    "start": 0.9,
+    "end": 1.24
+   },
+   {
+    "word": "from",
+    "start": 1.24,
+    "end": 1.68
+   },
+   {
+    "word": "our",
+    "start": 1.68,
+    "end": 2.04
+   },
+   {
+    "word": "Ladybug",
+    "start": 2.04,
+    "end": 2.7
+   },
+   {
+    "word": "book.",
+    "start": 2.7,
+    "end": 3.22
+   },
+   {
+    "word": "The",
+    "start": 3.76,
+    "end": 4.18
+   },
+   {
+    "word": "words",
+    "start": 4.18,
+    "end": 4.56
+   },
+   {
+    "word": "on",
+    "start": 4.56,
+    "end": 4.88
+   },
+   {
+    "word": "this",
+    "start": 4.88,
+    "end": 5.14
+   },
+   {
+    "word": "page",
+    "start": 5.14,
+    "end": 5.64
+   },
+   {
+    "word": "say,",
+    "start": 5.64,
+    "end": 6.16
+   },
+   {
+    "word": "a",
+    "start": 6.98,
+    "end": 7.06
+   },
+   {
+    "word": "Ladybug",
+    "start": 7.06,
+    "end": 7.82
+   },
+   {
+    "word": "has",
+    "start": 7.82,
+    "end": 8.42
+   },
+   {
+    "word": "black",
+    "start": 8.42,
+    "end": 8.94
+   },
+   {
+    "word": "spots.",
+    "start": 8.94,
+    "end": 9.72
+   },
+   {
+    "word": "Now",
+    "start": 10.9,
+    "end": 11.3
+   },
+   {
+    "word": "look",
+    "start": 11.3,
+    "end": 11.48
+   },
+   {
+    "word": "at",
+    "start": 11.48,
+    "end": 11.66
+   },
+   {
+    "word": "the",
+    "start": 11.66,
+    "end": 11.8
+   },
+   {
+    "word": "picture.",
+    "start": 11.8,
+    "end": 12.2
+   },
+   {
+    "word": "Do",
+    "start": 12.96,
+    "end": 13.22
+   },
+   {
+    "word": "you",
+    "start": 13.22,
+    "end": 13.42
+   },
+   {
+    "word": "see",
+    "start": 13.42,
+    "end": 13.76
+   },
+   {
+    "word": "the",
+    "start": 13.76,
+    "end": 14.02
+   },
+   {
+    "word": "black",
+    "start": 14.02,
+    "end": 14.28
+   },
+   {
+    "word": "spots?",
+    "start": 14.28,
+    "end": 14.72
+   },
+   {
+    "word": "There",
+    "start": 15.98,
+    "end": 16.4
+   },
+   {
+    "word": "they",
+    "start": 16.4,
+    "end": 16.64
+   },
+   {
+    "word": "are.",
+    "start": 16.64,
+    "end": 17.02
+   },
+   {
+    "word": "Right",
+    "start": 17.56,
+    "end": 17.94
+   },
+   {
+    "word": "on",
+    "start": 17.94,
+    "end": 18.38
+   },
+   {
+    "word": "the",
+    "start": 18.38,
+    "end": 18.58
+   },
+   {
+    "word": "Ladybug's",
+    "start": 18.58,
+    "end": 19.42
+   },
+   {
+    "word": "red",
+    "start": 19.42,
+    "end": 19.74
+   },
+   {
+    "word": "back.",
+    "start": 19.74,
+    "end": 20.2
+   },
+   {
+    "word": "The",
+    "start": 21.32,
+    "end": 21.54
+   },
+   {
+    "word": "words",
+    "start": 21.54,
+    "end": 22.06
+   },
+   {
+    "word": "told",
+    "start": 22.06,
+    "end": 22.58
+   },
+   {
+    "word": "the",
+    "start": 22.58,
+    "end": 22.9
+   },
+   {
+    "word": "fact",
+    "start": 22.9,
+    "end": 23.24
+   },
+   {
+    "word": "and",
+    "start": 23.24,
+    "end": 23.94
+   },
+   {
+    "word": "the",
+    "start": 23.94,
+    "end": 24.12
+   },
+   {
+    "word": "picture",
+    "start": 24.12,
+    "end": 24.5
+   },
+   {
+    "word": "shows",
+    "start": 24.5,
+    "end": 24.98
+   },
+   {
+    "word": "it.",
+    "start": 24.98,
+    "end": 25.3
+   },
+   {
+    "word": "Words",
+    "start": 26.04,
+    "end": 26.4
+   },
+   {
+    "word": "and",
+    "start": 26.4,
+    "end": 26.78
+   },
+   {
+    "word": "pictures",
+    "start": 26.78,
+    "end": 27.2
+   },
+   {
+    "word": "are",
+    "start": 27.2,
+    "end": 27.84
+   },
+   {
+    "word": "partners.",
+    "start": 27.84,
+    "end": 28.36
+   }
+  ]
+ }
+}

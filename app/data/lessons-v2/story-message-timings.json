@@ -1,0 +1,2212 @@
+{
+ "apply-event-or-lesson": {
+  "duration": 13.42,
+  "words": [
+   {
+    "word": "Let's",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "practice",
+    "start": 0.6,
+    "end": 1.02
+   },
+   {
+    "word": "telling",
+    "start": 1.02,
+    "end": 1.44
+   },
+   {
+    "word": "them",
+    "start": 1.44,
+    "end": 1.64
+   },
+   {
+    "word": "apart.",
+    "start": 1.64,
+    "end": 2.02
+   },
+   {
+    "word": "Some",
+    "start": 2.72,
+    "end": 3.14
+   },
+   {
+    "word": "of",
+    "start": 3.14,
+    "end": 3.38
+   },
+   {
+    "word": "these",
+    "start": 3.38,
+    "end": 3.66
+   },
+   {
+    "word": "tell",
+    "start": 3.66,
+    "end": 4.0
+   },
+   {
+    "word": "one",
+    "start": 4.0,
+    "end": 4.52
+   },
+   {
+    "word": "thing",
+    "start": 4.52,
+    "end": 5.02
+   },
+   {
+    "word": "that",
+    "start": 5.02,
+    "end": 5.34
+   },
+   {
+    "word": "happened",
+    "start": 5.34,
+    "end": 5.84
+   },
+   {
+    "word": "in",
+    "start": 5.84,
+    "end": 6.1
+   },
+   {
+    "word": "a",
+    "start": 6.1,
+    "end": 6.22
+   },
+   {
+    "word": "story.",
+    "start": 6.22,
+    "end": 6.74
+   },
+   {
+    "word": "Some",
+    "start": 7.44,
+    "end": 7.88
+   },
+   {
+    "word": "are",
+    "start": 7.88,
+    "end": 8.32
+   },
+   {
+    "word": "lessons",
+    "start": 8.32,
+    "end": 8.86
+   },
+   {
+    "word": "about",
+    "start": 8.86,
+    "end": 9.32
+   },
+   {
+    "word": "life.",
+    "start": 9.32,
+    "end": 9.96
+   },
+   {
+    "word": "Read",
+    "start": 10.68,
+    "end": 10.94
+   },
+   {
+    "word": "each",
+    "start": 10.94,
+    "end": 11.42
+   },
+   {
+    "word": "one",
+    "start": 11.42,
+    "end": 11.76
+   },
+   {
+    "word": "and",
+    "start": 11.76,
+    "end": 12.28
+   },
+   {
+    "word": "drag",
+    "start": 12.28,
+    "end": 12.54
+   },
+   {
+    "word": "it",
+    "start": 12.54,
+    "end": 12.78
+   },
+   {
+    "word": "to",
+    "start": 12.78,
+    "end": 12.96
+   },
+   {
+    "word": "its",
+    "start": 12.96,
+    "end": 13.14
+   },
+   {
+    "word": "bucket.",
+    "start": 13.14,
+    "end": 13.42
+   }
+  ]
+ },
+ "apply-speak-page-two": {
+  "duration": 7.2,
+  "words": [
+   {
+    "word": "Page",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "2",
+    "start": 0.44,
+    "end": 0.9
+   },
+   {
+    "word": "is",
+    "start": 0.9,
+    "end": 1.36
+   },
+   {
+    "word": "short",
+    "start": 1.36,
+    "end": 1.76
+   },
+   {
+    "word": "and",
+    "start": 1.76,
+    "end": 2.28
+   },
+   {
+    "word": "it",
+    "start": 2.28,
+    "end": 2.5
+   },
+   {
+    "word": "is",
+    "start": 2.5,
+    "end": 2.68
+   },
+   {
+    "word": "all",
+    "start": 2.68,
+    "end": 3.02
+   },
+   {
+    "word": "yours.",
+    "start": 3.02,
+    "end": 3.68
+   },
+   {
+    "word": "Tap",
+    "start": 4.04,
+    "end": 4.34
+   },
+   {
+    "word": "the",
+    "start": 4.34,
+    "end": 4.58
+   },
+   {
+    "word": "mic",
+    "start": 4.58,
+    "end": 4.88
+   },
+   {
+    "word": "and",
+    "start": 4.88,
+    "end": 5.4
+   },
+   {
+    "word": "read",
+    "start": 5.4,
+    "end": 5.72
+   },
+   {
+    "word": "Page",
+    "start": 5.72,
+    "end": 6.08
+   },
+   {
+    "word": "2",
+    "start": 6.08,
+    "end": 6.52
+   },
+   {
+    "word": "out",
+    "start": 6.52,
+    "end": 6.92
+   },
+   {
+    "word": "loud.",
+    "start": 6.92,
+    "end": 7.2
+   }
+  ]
+ },
+ "celebrate-message-finder": {
+  "duration": 13.44,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "did",
+    "start": 0.54,
+    "end": 0.86
+   },
+   {
+    "word": "it!",
+    "start": 0.86,
+    "end": 1.28
+   },
+   {
+    "word": "You",
+    "start": 1.82,
+    "end": 2.0
+   },
+   {
+    "word": "retold",
+    "start": 2.0,
+    "end": 2.82
+   },
+   {
+    "word": "Finn's",
+    "start": 2.82,
+    "end": 3.38
+   },
+   {
+    "word": "story",
+    "start": 3.38,
+    "end": 3.7
+   },
+   {
+    "word": "in",
+    "start": 3.7,
+    "end": 4.16
+   },
+   {
+    "word": "order,",
+    "start": 4.16,
+    "end": 4.64
+   },
+   {
+    "word": "and",
+    "start": 5.06,
+    "end": 5.56
+   },
+   {
+    "word": "you",
+    "start": 5.56,
+    "end": 5.82
+   },
+   {
+    "word": "found",
+    "start": 5.82,
+    "end": 6.1
+   },
+   {
+    "word": "its",
+    "start": 6.1,
+    "end": 6.36
+   },
+   {
+    "word": "message.",
+    "start": 6.36,
+    "end": 6.88
+   },
+   {
+    "word": "Keep",
+    "start": 7.58,
+    "end": 7.8
+   },
+   {
+    "word": "trying,",
+    "start": 7.8,
+    "end": 8.38
+   },
+   {
+    "word": "just",
+    "start": 8.72,
+    "end": 8.92
+   },
+   {
+    "word": "like",
+    "start": 8.92,
+    "end": 9.26
+   },
+   {
+    "word": "Finn,",
+    "start": 9.26,
+    "end": 9.62
+   },
+   {
+    "word": "and",
+    "start": 10.2,
+    "end": 10.36
+   },
+   {
+    "word": "every",
+    "start": 10.36,
+    "end": 10.86
+   },
+   {
+    "word": "story's",
+    "start": 10.86,
+    "end": 11.58
+   },
+   {
+    "word": "big",
+    "start": 11.58,
+    "end": 11.78
+   },
+   {
+    "word": "lesson",
+    "start": 11.78,
+    "end": 12.22
+   },
+   {
+    "word": "will",
+    "start": 12.22,
+    "end": 12.64
+   },
+   {
+    "word": "be",
+    "start": 12.64,
+    "end": 12.92
+   },
+   {
+    "word": "yours.",
+    "start": 12.92,
+    "end": 13.44
+   }
+  ]
+ },
+ "challenge-find-the-message": {
+  "duration": 18.92,
+  "words": [
+   {
+    "word": "Challenge",
+    "start": 0.0,
+    "end": 0.64
+   },
+   {
+    "word": "time.",
+    "start": 0.64,
+    "end": 1.16
+   },
+   {
+    "word": "What",
+    "start": 2.02,
+    "end": 2.16
+   },
+   {
+    "word": "is",
+    "start": 2.16,
+    "end": 2.46
+   },
+   {
+    "word": "the",
+    "start": 2.46,
+    "end": 2.7
+   },
+   {
+    "word": "message",
+    "start": 2.7,
+    "end": 3.06
+   },
+   {
+    "word": "of",
+    "start": 3.06,
+    "end": 3.46
+   },
+   {
+    "word": "Finn's",
+    "start": 3.46,
+    "end": 4.02
+   },
+   {
+    "word": "story?",
+    "start": 4.02,
+    "end": 4.6
+   },
+   {
+    "word": "Remember,",
+    "start": 5.6,
+    "end": 6.1
+   },
+   {
+    "word": "the",
+    "start": 6.78,
+    "end": 6.86
+   },
+   {
+    "word": "message",
+    "start": 6.86,
+    "end": 7.42
+   },
+   {
+    "word": "is",
+    "start": 7.42,
+    "end": 7.88
+   },
+   {
+    "word": "a",
+    "start": 7.88,
+    "end": 8.1
+   },
+   {
+    "word": "lesson",
+    "start": 8.1,
+    "end": 8.5
+   },
+   {
+    "word": "about",
+    "start": 8.5,
+    "end": 8.92
+   },
+   {
+    "word": "life.",
+    "start": 8.92,
+    "end": 9.8
+   },
+   {
+    "word": "Not",
+    "start": 10.34,
+    "end": 10.86
+   },
+   {
+    "word": "just",
+    "start": 10.86,
+    "end": 11.2
+   },
+   {
+    "word": "one",
+    "start": 11.2,
+    "end": 11.58
+   },
+   {
+    "word": "thing",
+    "start": 11.58,
+    "end": 11.96
+   },
+   {
+    "word": "that",
+    "start": 11.96,
+    "end": 12.22
+   },
+   {
+    "word": "happened.",
+    "start": 12.22,
+    "end": 12.9
+   },
+   {
+    "word": "Read",
+    "start": 13.98,
+    "end": 14.28
+   },
+   {
+    "word": "every",
+    "start": 14.28,
+    "end": 14.98
+   },
+   {
+    "word": "choice.",
+    "start": 14.98,
+    "end": 15.54
+   },
+   {
+    "word": "Then",
+    "start": 16.16,
+    "end": 16.5
+   },
+   {
+    "word": "tap",
+    "start": 16.5,
+    "end": 17.0
+   },
+   {
+    "word": "the",
+    "start": 17.0,
+    "end": 17.3
+   },
+   {
+    "word": "story's",
+    "start": 17.3,
+    "end": 17.92
+   },
+   {
+    "word": "big",
+    "start": 17.92,
+    "end": 18.2
+   },
+   {
+    "word": "lesson.",
+    "start": 18.2,
+    "end": 18.92
+   }
+  ]
+ },
+ "challenge-say-the-message": {
+  "duration": 7.9,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "say",
+    "start": 0.42,
+    "end": 0.84
+   },
+   {
+    "word": "it",
+    "start": 0.84,
+    "end": 0.98
+   },
+   {
+    "word": "like",
+    "start": 0.98,
+    "end": 1.2
+   },
+   {
+    "word": "a",
+    "start": 1.2,
+    "end": 1.44
+   },
+   {
+    "word": "teacher.",
+    "start": 1.44,
+    "end": 1.9
+   },
+   {
+    "word": "Tap",
+    "start": 2.6,
+    "end": 2.78
+   },
+   {
+    "word": "the",
+    "start": 2.78,
+    "end": 3.0
+   },
+   {
+    "word": "mic",
+    "start": 3.0,
+    "end": 3.26
+   },
+   {
+    "word": "and",
+    "start": 3.26,
+    "end": 3.76
+   },
+   {
+    "word": "tell",
+    "start": 3.76,
+    "end": 3.98
+   },
+   {
+    "word": "me",
+    "start": 3.98,
+    "end": 4.16
+   },
+   {
+    "word": "the",
+    "start": 4.16,
+    "end": 4.34
+   },
+   {
+    "word": "big",
+    "start": 4.34,
+    "end": 4.7
+   },
+   {
+    "word": "lesson",
+    "start": 4.7,
+    "end": 5.16
+   },
+   {
+    "word": "of",
+    "start": 5.16,
+    "end": 5.56
+   },
+   {
+    "word": "Finn's",
+    "start": 5.56,
+    "end": 6.1
+   },
+   {
+    "word": "story",
+    "start": 6.1,
+    "end": 6.68
+   },
+   {
+    "word": "in",
+    "start": 6.68,
+    "end": 7.18
+   },
+   {
+    "word": "your",
+    "start": 7.18,
+    "end": 7.32
+   },
+   {
+    "word": "own",
+    "start": 7.32,
+    "end": 7.54
+   },
+   {
+    "word": "words.",
+    "start": 7.54,
+    "end": 7.9
+   }
+  ]
+ },
+ "complete": {
+  "duration": 18.2,
+  "words": [
+   {
+    "word": "What",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "a",
+    "start": 0.42,
+    "end": 0.68
+   },
+   {
+    "word": "reader",
+    "start": 0.68,
+    "end": 1.12
+   },
+   {
+    "word": "you",
+    "start": 1.12,
+    "end": 1.48
+   },
+   {
+    "word": "are!",
+    "start": 1.48,
+    "end": 1.78
+   },
+   {
+    "word": "You",
+    "start": 2.54,
+    "end": 2.76
+   },
+   {
+    "word": "retold",
+    "start": 2.76,
+    "end": 3.38
+   },
+   {
+    "word": "Finn's",
+    "start": 3.38,
+    "end": 3.92
+   },
+   {
+    "word": "story",
+    "start": 3.92,
+    "end": 4.24
+   },
+   {
+    "word": "in",
+    "start": 4.24,
+    "end": 4.56
+   },
+   {
+    "word": "order",
+    "start": 4.56,
+    "end": 5.0
+   },
+   {
+    "word": "with",
+    "start": 5.0,
+    "end": 5.4
+   },
+   {
+    "word": "its",
+    "start": 5.4,
+    "end": 5.64
+   },
+   {
+    "word": "key",
+    "start": 5.64,
+    "end": 5.86
+   },
+   {
+    "word": "details.",
+    "start": 5.86,
+    "end": 6.4
+   },
+   {
+    "word": "Then",
+    "start": 7.28,
+    "end": 7.68
+   },
+   {
+    "word": "you",
+    "start": 7.68,
+    "end": 8.08
+   },
+   {
+    "word": "found",
+    "start": 8.08,
+    "end": 8.32
+   },
+   {
+    "word": "the",
+    "start": 8.32,
+    "end": 8.5
+   },
+   {
+    "word": "story's",
+    "start": 8.5,
+    "end": 8.98
+   },
+   {
+    "word": "message.",
+    "start": 8.98,
+    "end": 9.38
+   },
+   {
+    "word": "The",
+    "start": 10.1,
+    "end": 10.2
+   },
+   {
+    "word": "big",
+    "start": 10.2,
+    "end": 10.58
+   },
+   {
+    "word": "lesson",
+    "start": 10.58,
+    "end": 11.06
+   },
+   {
+    "word": "teaches",
+    "start": 11.06,
+    "end": 11.48
+   },
+   {
+    "word": "about",
+    "start": 11.48,
+    "end": 11.84
+   },
+   {
+    "word": "life.",
+    "start": 11.84,
+    "end": 12.34
+   },
+   {
+    "word": "Every",
+    "start": 13.12,
+    "end": 13.6
+   },
+   {
+    "word": "story",
+    "start": 13.6,
+    "end": 14.02
+   },
+   {
+    "word": "you",
+    "start": 14.02,
+    "end": 14.32
+   },
+   {
+    "word": "read",
+    "start": 14.32,
+    "end": 14.66
+   },
+   {
+    "word": "has",
+    "start": 14.66,
+    "end": 14.92
+   },
+   {
+    "word": "a",
+    "start": 14.92,
+    "end": 15.08
+   },
+   {
+    "word": "message",
+    "start": 15.08,
+    "end": 15.52
+   },
+   {
+    "word": "waiting",
+    "start": 15.52,
+    "end": 16.06
+   },
+   {
+    "word": "for",
+    "start": 16.06,
+    "end": 16.4
+   },
+   {
+    "word": "you.",
+    "start": 16.4,
+    "end": 16.68
+   },
+   {
+    "word": "Keep",
+    "start": 17.2,
+    "end": 17.4
+   },
+   {
+    "word": "finding",
+    "start": 17.4,
+    "end": 17.92
+   },
+   {
+    "word": "them!",
+    "start": 17.92,
+    "end": 18.2
+   }
+  ]
+ },
+ "guided-end-detail": {
+  "duration": 14.44,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "good",
+    "start": 0.5,
+    "end": 0.78
+   },
+   {
+    "word": "retell",
+    "start": 0.78,
+    "end": 1.42
+   },
+   {
+    "word": "ends",
+    "start": 1.42,
+    "end": 2.26
+   },
+   {
+    "word": "at",
+    "start": 2.26,
+    "end": 2.62
+   },
+   {
+    "word": "the",
+    "start": 2.62,
+    "end": 2.84
+   },
+   {
+    "word": "end.",
+    "start": 2.84,
+    "end": 3.36
+   },
+   {
+    "word": "Think",
+    "start": 4.06,
+    "end": 4.4
+   },
+   {
+    "word": "about",
+    "start": 4.4,
+    "end": 4.78
+   },
+   {
+    "word": "page",
+    "start": 4.78,
+    "end": 5.22
+   },
+   {
+    "word": "3.",
+    "start": 5.22,
+    "end": 5.86
+   },
+   {
+    "word": "How",
+    "start": 6.68,
+    "end": 7.12
+   },
+   {
+    "word": "did",
+    "start": 7.12,
+    "end": 7.36
+   },
+   {
+    "word": "Finn's",
+    "start": 7.36,
+    "end": 8.04
+   },
+   {
+    "word": "story",
+    "start": 8.04,
+    "end": 8.52
+   },
+   {
+    "word": "end?",
+    "start": 8.52,
+    "end": 9.52
+   },
+   {
+    "word": "Read",
+    "start": 10.62,
+    "end": 10.98
+   },
+   {
+    "word": "each",
+    "start": 10.98,
+    "end": 11.6
+   },
+   {
+    "word": "choice,",
+    "start": 11.6,
+    "end": 12.24
+   },
+   {
+    "word": "then",
+    "start": 12.44,
+    "end": 13.02
+   },
+   {
+    "word": "tap",
+    "start": 13.02,
+    "end": 13.72
+   },
+   {
+    "word": "the",
+    "start": 13.72,
+    "end": 14.04
+   },
+   {
+    "word": "ending.",
+    "start": 14.04,
+    "end": 14.44
+   }
+  ]
+ },
+ "guided-first-detail": {
+  "duration": 12.32,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.32
+   },
+   {
+    "word": "good",
+    "start": 0.32,
+    "end": 0.6
+   },
+   {
+    "word": "retail",
+    "start": 0.6,
+    "end": 1.2
+   },
+   {
+    "word": "starts",
+    "start": 1.2,
+    "end": 1.88
+   },
+   {
+    "word": "at",
+    "start": 1.88,
+    "end": 2.3
+   },
+   {
+    "word": "the",
+    "start": 2.3,
+    "end": 2.48
+   },
+   {
+    "word": "beginning.",
+    "start": 2.48,
+    "end": 2.98
+   },
+   {
+    "word": "Think",
+    "start": 3.82,
+    "end": 4.12
+   },
+   {
+    "word": "about",
+    "start": 4.12,
+    "end": 4.44
+   },
+   {
+    "word": "page",
+    "start": 4.44,
+    "end": 4.84
+   },
+   {
+    "word": "1.",
+    "start": 4.84,
+    "end": 5.26
+   },
+   {
+    "word": "What",
+    "start": 5.88,
+    "end": 6.16
+   },
+   {
+    "word": "happened",
+    "start": 6.16,
+    "end": 6.56
+   },
+   {
+    "word": "first",
+    "start": 6.56,
+    "end": 7.06
+   },
+   {
+    "word": "in",
+    "start": 7.06,
+    "end": 7.42
+   },
+   {
+    "word": "the",
+    "start": 7.42,
+    "end": 7.54
+   },
+   {
+    "word": "story?",
+    "start": 7.54,
+    "end": 7.98
+   },
+   {
+    "word": "Read",
+    "start": 8.98,
+    "end": 9.24
+   },
+   {
+    "word": "each",
+    "start": 9.24,
+    "end": 9.62
+   },
+   {
+    "word": "choice,",
+    "start": 9.62,
+    "end": 10.14
+   },
+   {
+    "word": "then",
+    "start": 10.42,
+    "end": 10.66
+   },
+   {
+    "word": "tap",
+    "start": 10.66,
+    "end": 10.92
+   },
+   {
+    "word": "the",
+    "start": 10.92,
+    "end": 11.16
+   },
+   {
+    "word": "one",
+    "start": 11.16,
+    "end": 11.34
+   },
+   {
+    "word": "that",
+    "start": 11.34,
+    "end": 11.52
+   },
+   {
+    "word": "came",
+    "start": 11.52,
+    "end": 11.72
+   },
+   {
+    "word": "first.",
+    "start": 11.72,
+    "end": 12.32
+   }
+  ]
+ },
+ "guided-read-page-three-sentence": {
+  "duration": 12.5,
+  "words": [
+   {
+    "word": "Each",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "day,",
+    "start": 0.54,
+    "end": 0.98
+   },
+   {
+    "word": "Finn",
+    "start": 1.5,
+    "end": 1.68
+   },
+   {
+    "word": "rode",
+    "start": 1.68,
+    "end": 2.12
+   },
+   {
+    "word": "a",
+    "start": 2.12,
+    "end": 2.54
+   },
+   {
+    "word": "bit",
+    "start": 2.54,
+    "end": 2.76
+   },
+   {
+    "word": "more.",
+    "start": 2.76,
+    "end": 3.2
+   },
+   {
+    "word": "One",
+    "start": 3.9,
+    "end": 4.3
+   },
+   {
+    "word": "week",
+    "start": 4.3,
+    "end": 4.58
+   },
+   {
+    "word": "later,",
+    "start": 4.58,
+    "end": 5.12
+   },
+   {
+    "word": "he",
+    "start": 5.54,
+    "end": 5.92
+   },
+   {
+    "word": "rode",
+    "start": 5.92,
+    "end": 6.2
+   },
+   {
+    "word": "all",
+    "start": 6.2,
+    "end": 6.74
+   },
+   {
+    "word": "the",
+    "start": 6.74,
+    "end": 7.06
+   },
+   {
+    "word": "way",
+    "start": 7.06,
+    "end": 7.42
+   },
+   {
+    "word": "down",
+    "start": 7.42,
+    "end": 7.84
+   },
+   {
+    "word": "the",
+    "start": 7.84,
+    "end": 8.2
+   },
+   {
+    "word": "lane.",
+    "start": 8.2,
+    "end": 8.58
+   },
+   {
+    "word": "Finn",
+    "start": 9.42,
+    "end": 9.9
+   },
+   {
+    "word": "grinned",
+    "start": 9.9,
+    "end": 10.54
+   },
+   {
+    "word": "and",
+    "start": 10.54,
+    "end": 10.8
+   },
+   {
+    "word": "said,",
+    "start": 10.8,
+    "end": 11.12
+   },
+   {
+    "word": "I",
+    "start": 11.52,
+    "end": 11.76
+   },
+   {
+    "word": "did",
+    "start": 11.76,
+    "end": 12.14
+   },
+   {
+    "word": "it!",
+    "start": 12.14,
+    "end": 12.5
+   }
+  ]
+ },
+ "guided-read-page-three": {
+  "duration": 6.82,
+  "words": [
+   {
+    "word": "Did",
+    "start": 0.0,
+    "end": 0.34
+   },
+   {
+    "word": "all",
+    "start": 0.34,
+    "end": 0.76
+   },
+   {
+    "word": "that",
+    "start": 0.76,
+    "end": 1.06
+   },
+   {
+    "word": "trying",
+    "start": 1.06,
+    "end": 1.64
+   },
+   {
+    "word": "pay",
+    "start": 1.64,
+    "end": 2.08
+   },
+   {
+    "word": "off?",
+    "start": 2.08,
+    "end": 2.6
+   },
+   {
+    "word": "Page",
+    "start": 3.4,
+    "end": 3.66
+   },
+   {
+    "word": "3",
+    "start": 3.66,
+    "end": 4.34
+   },
+   {
+    "word": "tells",
+    "start": 4.34,
+    "end": 4.84
+   },
+   {
+    "word": "us.",
+    "start": 4.84,
+    "end": 5.24
+   },
+   {
+    "word": "Read",
+    "start": 5.9,
+    "end": 6.1
+   },
+   {
+    "word": "it",
+    "start": 6.1,
+    "end": 6.3
+   },
+   {
+    "word": "with",
+    "start": 6.3,
+    "end": 6.52
+   },
+   {
+    "word": "me.",
+    "start": 6.52,
+    "end": 6.82
+   }
+  ]
+ },
+ "guided-retell-sequence": {
+  "duration": 10.32,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "retell",
+    "start": 1.08,
+    "end": 1.58
+   },
+   {
+    "word": "the",
+    "start": 1.58,
+    "end": 1.84
+   },
+   {
+    "word": "whole",
+    "start": 1.84,
+    "end": 2.04
+   },
+   {
+    "word": "story.",
+    "start": 2.04,
+    "end": 2.72
+   },
+   {
+    "word": "Drag",
+    "start": 3.38,
+    "end": 3.72
+   },
+   {
+    "word": "the",
+    "start": 3.72,
+    "end": 3.98
+   },
+   {
+    "word": "story",
+    "start": 3.98,
+    "end": 4.4
+   },
+   {
+    "word": "parts",
+    "start": 4.4,
+    "end": 4.72
+   },
+   {
+    "word": "in",
+    "start": 4.72,
+    "end": 5.1
+   },
+   {
+    "word": "order.",
+    "start": 5.1,
+    "end": 5.54
+   },
+   {
+    "word": "What",
+    "start": 6.42,
+    "end": 6.88
+   },
+   {
+    "word": "happened",
+    "start": 6.88,
+    "end": 7.4
+   },
+   {
+    "word": "first,",
+    "start": 7.4,
+    "end": 7.92
+   },
+   {
+    "word": "next,",
+    "start": 8.72,
+    "end": 9.06
+   },
+   {
+    "word": "and",
+    "start": 9.6,
+    "end": 9.94
+   },
+   {
+    "word": "last?",
+    "start": 9.94,
+    "end": 10.32
+   }
+  ]
+ },
+ "hook-meet-finn": {
+  "duration": 21.32,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "reader.",
+    "start": 0.74,
+    "end": 0.94
+   },
+   {
+    "word": "This",
+    "start": 1.68,
+    "end": 1.86
+   },
+   {
+    "word": "is",
+    "start": 1.86,
+    "end": 2.36
+   },
+   {
+    "word": "Finn",
+    "start": 2.36,
+    "end": 2.66
+   },
+   {
+    "word": "and",
+    "start": 2.66,
+    "end": 3.28
+   },
+   {
+    "word": "that",
+    "start": 3.28,
+    "end": 3.62
+   },
+   {
+    "word": "is",
+    "start": 3.62,
+    "end": 4.08
+   },
+   {
+    "word": "his",
+    "start": 4.08,
+    "end": 4.26
+   },
+   {
+    "word": "brand",
+    "start": 4.26,
+    "end": 4.62
+   },
+   {
+    "word": "new",
+    "start": 4.62,
+    "end": 5.04
+   },
+   {
+    "word": "bike.",
+    "start": 5.04,
+    "end": 5.58
+   },
+   {
+    "word": "Today,",
+    "start": 6.26,
+    "end": 6.54
+   },
+   {
+    "word": "you",
+    "start": 6.98,
+    "end": 7.26
+   },
+   {
+    "word": "will",
+    "start": 7.26,
+    "end": 7.4
+   },
+   {
+    "word": "read",
+    "start": 7.4,
+    "end": 7.74
+   },
+   {
+    "word": "Finn's",
+    "start": 7.74,
+    "end": 8.42
+   },
+   {
+    "word": "story",
+    "start": 8.42,
+    "end": 8.72
+   },
+   {
+    "word": "and",
+    "start": 8.72,
+    "end": 9.34
+   },
+   {
+    "word": "retell",
+    "start": 9.34,
+    "end": 9.82
+   },
+   {
+    "word": "it",
+    "start": 9.82,
+    "end": 10.04
+   },
+   {
+    "word": "in",
+    "start": 10.04,
+    "end": 10.28
+   },
+   {
+    "word": "order.",
+    "start": 10.28,
+    "end": 10.6
+   },
+   {
+    "word": "Then",
+    "start": 11.38,
+    "end": 11.86
+   },
+   {
+    "word": "you",
+    "start": 11.86,
+    "end": 12.36
+   },
+   {
+    "word": "will",
+    "start": 12.36,
+    "end": 12.48
+   },
+   {
+    "word": "do",
+    "start": 12.48,
+    "end": 12.64
+   },
+   {
+    "word": "something",
+    "start": 12.64,
+    "end": 13.06
+   },
+   {
+    "word": "new.",
+    "start": 13.06,
+    "end": 13.48
+   },
+   {
+    "word": "You",
+    "start": 14.18,
+    "end": 14.5
+   },
+   {
+    "word": "will",
+    "start": 14.5,
+    "end": 14.64
+   },
+   {
+    "word": "find",
+    "start": 14.64,
+    "end": 15.0
+   },
+   {
+    "word": "the",
+    "start": 15.0,
+    "end": 15.22
+   },
+   {
+    "word": "story's",
+    "start": 15.22,
+    "end": 15.9
+   },
+   {
+    "word": "message.",
+    "start": 15.9,
+    "end": 16.54
+   },
+   {
+    "word": "That",
+    "start": 17.08,
+    "end": 17.4
+   },
+   {
+    "word": "is",
+    "start": 17.4,
+    "end": 17.56
+   },
+   {
+    "word": "the",
+    "start": 17.56,
+    "end": 17.8
+   },
+   {
+    "word": "big",
+    "start": 17.8,
+    "end": 18.24
+   },
+   {
+    "word": "lesson",
+    "start": 18.24,
+    "end": 18.82
+   },
+   {
+    "word": "a",
+    "start": 18.82,
+    "end": 19.12
+   },
+   {
+    "word": "story",
+    "start": 19.12,
+    "end": 19.5
+   },
+   {
+    "word": "teaches",
+    "start": 19.5,
+    "end": 20.06
+   },
+   {
+    "word": "us",
+    "start": 20.06,
+    "end": 20.42
+   },
+   {
+    "word": "about",
+    "start": 20.42,
+    "end": 20.78
+   },
+   {
+    "word": "life.",
+    "start": 20.78,
+    "end": 21.32
+   }
+  ]
+ },
+ "hook-read-page-one-sentence": {
+  "duration": 7.32,
+  "words": [
+   {
+    "word": "Finn",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "got",
+    "start": 0.66,
+    "end": 1.04
+   },
+   {
+    "word": "a",
+    "start": 1.04,
+    "end": 1.34
+   },
+   {
+    "word": "red",
+    "start": 1.34,
+    "end": 1.66
+   },
+   {
+    "word": "bike",
+    "start": 1.66,
+    "end": 2.04
+   },
+   {
+    "word": "with",
+    "start": 2.04,
+    "end": 2.5
+   },
+   {
+    "word": "shiny",
+    "start": 2.5,
+    "end": 3.06
+   },
+   {
+    "word": "wheels.",
+    "start": 3.06,
+    "end": 3.6
+   },
+   {
+    "word": "He",
+    "start": 4.14,
+    "end": 4.5
+   },
+   {
+    "word": "tried",
+    "start": 4.5,
+    "end": 4.92
+   },
+   {
+    "word": "to",
+    "start": 4.92,
+    "end": 5.14
+   },
+   {
+    "word": "ride",
+    "start": 5.14,
+    "end": 5.34
+   },
+   {
+    "word": "it,",
+    "start": 5.34,
+    "end": 5.6
+   },
+   {
+    "word": "but",
+    "start": 5.9,
+    "end": 6.1
+   },
+   {
+    "word": "he",
+    "start": 6.1,
+    "end": 6.28
+   },
+   {
+    "word": "fell",
+    "start": 6.28,
+    "end": 6.6
+   },
+   {
+    "word": "in",
+    "start": 6.6,
+    "end": 6.84
+   },
+   {
+    "word": "the",
+    "start": 6.84,
+    "end": 6.98
+   },
+   {
+    "word": "grass.",
+    "start": 6.98,
+    "end": 7.32
+   }
+  ]
+ },
+ "hook-read-page-one": {
+  "duration": 5.36,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "is",
+    "start": 0.58,
+    "end": 0.92
+   },
+   {
+    "word": "page",
+    "start": 0.92,
+    "end": 1.2
+   },
+   {
+    "word": "1",
+    "start": 1.2,
+    "end": 1.8
+   },
+   {
+    "word": "of",
+    "start": 1.8,
+    "end": 2.34
+   },
+   {
+    "word": "Finn's",
+    "start": 2.34,
+    "end": 2.92
+   },
+   {
+    "word": "story.",
+    "start": 2.92,
+    "end": 3.32
+   },
+   {
+    "word": "Read",
+    "start": 3.98,
+    "end": 4.34
+   },
+   {
+    "word": "along",
+    "start": 4.34,
+    "end": 4.82
+   },
+   {
+    "word": "with",
+    "start": 4.82,
+    "end": 5.16
+   },
+   {
+    "word": "me.",
+    "start": 5.16,
+    "end": 5.36
+   }
+  ]
+ },
+ "model-what-is-a-message": {
+  "duration": 40.34,
+  "words": [
+   {
+    "word": "But",
+    "start": 0.0,
+    "end": 0.0
+   },
+   {
+    "word": "you",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "re",
+    "start": 0.46,
+    "end": 0.84
+   },
+   {
+    "word": "-told",
+    "start": 0.84,
+    "end": 1.38
+   },
+   {
+    "word": "the",
+    "start": 1.38,
+    "end": 1.54
+   },
+   {
+    "word": "story.",
+    "start": 1.54,
+    "end": 2.02
+   },
+   {
+    "word": "Now",
+    "start": 2.7,
+    "end": 3.16
+   },
+   {
+    "word": "for",
+    "start": 3.16,
+    "end": 3.76
+   },
+   {
+    "word": "the",
+    "start": 3.76,
+    "end": 3.96
+   },
+   {
+    "word": "new",
+    "start": 3.96,
+    "end": 4.3
+   },
+   {
+    "word": "part.",
+    "start": 4.3,
+    "end": 4.82
+   },
+   {
+    "word": "Every",
+    "start": 5.7,
+    "end": 6.04
+   },
+   {
+    "word": "story",
+    "start": 6.04,
+    "end": 6.6
+   },
+   {
+    "word": "has",
+    "start": 6.6,
+    "end": 7.22
+   },
+   {
+    "word": "a",
+    "start": 7.22,
+    "end": 7.4
+   },
+   {
+    "word": "message.",
+    "start": 7.4,
+    "end": 7.76
+   },
+   {
+    "word": "The",
+    "start": 8.54,
+    "end": 8.74
+   },
+   {
+    "word": "message",
+    "start": 8.74,
+    "end": 9.34
+   },
+   {
+    "word": "is",
+    "start": 9.34,
+    "end": 9.82
+   },
+   {
+    "word": "the",
+    "start": 9.82,
+    "end": 10.04
+   },
+   {
+    "word": "big",
+    "start": 10.04,
+    "end": 10.5
+   },
+   {
+    "word": "lesson",
+    "start": 10.5,
+    "end": 11.1
+   },
+   {
+    "word": "the",
+    "start": 11.1,
+    "end": 11.36
+   },
+   {
+    "word": "story",
+    "start": 11.36,
+    "end": 11.9
+   },
+   {
+    "word": "teaches",
+    "start": 11.9,
+    "end": 12.52
+   },
+   {
+    "word": "us",
+    "start": 12.52,
+    "end": 12.94
+   },
+   {
+    "word": "about",
+    "start": 12.94,
+    "end": 13.32
+   },
+   {
+    "word": "life.",
+    "start": 13.32,
+    "end": 13.94
+   },
+   {
+    "word": "Watch",
+    "start": 14.82,
+    "end": 15.22
+   },
+   {
+    "word": "out!",
+    "start": 15.22,
+    "end": 15.62
+   },
+   {
+    "word": "A",
+    "start": 16.16,
+    "end": 16.34
+   },
+   {
+    "word": "message",
+    "start": 16.34,
+    "end": 16.98
+   },
+   {
+    "word": "is",
+    "start": 16.98,
+    "end": 17.76
+   },
+   {
+    "word": "not",
+    "start": 17.76,
+    "end": 18.26
+   },
+   {
+    "word": "one",
+    "start": 18.26,
+    "end": 18.8
+   },
+   {
+    "word": "thing",
+    "start": 18.8,
+    "end": 19.12
+   },
+   {
+    "word": "that",
+    "start": 19.12,
+    "end": 19.32
+   },
+   {
+    "word": "happened.",
+    "start": 19.32,
+    "end": 19.84
+   },
+   {
+    "word": "Finn",
+    "start": 20.68,
+    "end": 20.9
+   },
+   {
+    "word": "fell",
+    "start": 20.9,
+    "end": 21.18
+   },
+   {
+    "word": "in",
+    "start": 21.18,
+    "end": 21.36
+   },
+   {
+    "word": "the",
+    "start": 21.36,
+    "end": 21.46
+   },
+   {
+    "word": "grass.",
+    "start": 21.46,
+    "end": 21.72
+   },
+   {
+    "word": "That",
+    "start": 22.5,
+    "end": 22.92
+   },
+   {
+    "word": "happened,",
+    "start": 22.92,
+    "end": 23.64
+   },
+   {
+    "word": "but",
+    "start": 23.64,
+    "end": 24.24
+   },
+   {
+    "word": "it",
+    "start": 24.24,
+    "end": 24.36
+   },
+   {
+    "word": "is",
+    "start": 24.36,
+    "end": 24.54
+   },
+   {
+    "word": "not",
+    "start": 24.54,
+    "end": 24.9
+   },
+   {
+    "word": "a",
+    "start": 24.9,
+    "end": 25.3
+   },
+   {
+    "word": "lesson.",
+    "start": 25.3,
+    "end": 25.84
+   },
+   {
+    "word": "To",
+    "start": 25.84,
+    "end": 26.98
+   },
+   {
+    "word": "find",
+    "start": 26.98,
+    "end": 27.28
+   },
+   {
+    "word": "the",
+    "start": 27.28,
+    "end": 27.52
+   },
+   {
+    "word": "message,",
+    "start": 27.52,
+    "end": 28.04
+   },
+   {
+    "word": "ask,",
+    "start": 28.54,
+    "end": 28.98
+   },
+   {
+    "word": "what",
+    "start": 29.62,
+    "end": 30.16
+   },
+   {
+    "word": "does",
+    "start": 30.16,
+    "end": 30.4
+   },
+   {
+    "word": "the",
+    "start": 30.4,
+    "end": 30.7
+   },
+   {
+    "word": "whole",
+    "start": 30.7,
+    "end": 31.04
+   },
+   {
+    "word": "story",
+    "start": 31.04,
+    "end": 31.88
+   },
+   {
+    "word": "teach",
+    "start": 31.88,
+    "end": 32.46
+   },
+   {
+    "word": "me?",
+    "start": 32.46,
+    "end": 32.76
+   },
+   {
+    "word": "Think",
+    "start": 33.62,
+    "end": 34.1
+   },
+   {
+    "word": "about",
+    "start": 34.1,
+    "end": 34.42
+   },
+   {
+    "word": "what",
+    "start": 34.42,
+    "end": 34.82
+   },
+   {
+    "word": "Finn",
+    "start": 34.82,
+    "end": 35.22
+   },
+   {
+    "word": "did",
+    "start": 35.22,
+    "end": 35.78
+   },
+   {
+    "word": "day",
+    "start": 35.78,
+    "end": 36.46
+   },
+   {
+    "word": "after",
+    "start": 36.46,
+    "end": 37.06
+   },
+   {
+    "word": "day",
+    "start": 37.06,
+    "end": 37.48
+   },
+   {
+    "word": "and",
+    "start": 37.48,
+    "end": 38.4
+   },
+   {
+    "word": "how",
+    "start": 38.4,
+    "end": 38.78
+   },
+   {
+    "word": "the",
+    "start": 38.78,
+    "end": 39.04
+   },
+   {
+    "word": "story",
+    "start": 39.04,
+    "end": 39.56
+   },
+   {
+    "word": "ended.",
+    "start": 39.56,
+    "end": 40.34
+   }
+  ]
+ }
+}

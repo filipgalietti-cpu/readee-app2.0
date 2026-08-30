@@ -1,0 +1,1562 @@
+{
+ "apply-sort-actions": {
+  "duration": 12.14,
+  "words": [
+   {
+    "word": "You're",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "doing",
+    "start": 0.44,
+    "end": 0.74
+   },
+   {
+    "word": "wonderfully.",
+    "start": 0.74,
+    "end": 1.54
+   },
+   {
+    "word": "Now",
+    "start": 2.16,
+    "end": 2.3
+   },
+   {
+    "word": "let's",
+    "start": 2.3,
+    "end": 2.96
+   },
+   {
+    "word": "sort",
+    "start": 2.96,
+    "end": 3.16
+   },
+   {
+    "word": "some",
+    "start": 3.16,
+    "end": 3.52
+   },
+   {
+    "word": "actions.",
+    "start": 3.52,
+    "end": 4.02
+   },
+   {
+    "word": "Does",
+    "start": 4.9,
+    "end": 5.22
+   },
+   {
+    "word": "an",
+    "start": 5.22,
+    "end": 5.54
+   },
+   {
+    "word": "author",
+    "start": 5.54,
+    "end": 6.06
+   },
+   {
+    "word": "or",
+    "start": 6.06,
+    "end": 6.66
+   },
+   {
+    "word": "an",
+    "start": 6.66,
+    "end": 7.06
+   },
+   {
+    "word": "illustrator",
+    "start": 7.06,
+    "end": 7.8
+   },
+   {
+    "word": "do",
+    "start": 7.8,
+    "end": 8.16
+   },
+   {
+    "word": "this?",
+    "start": 8.16,
+    "end": 8.58
+   },
+   {
+    "word": "Drag",
+    "start": 9.32,
+    "end": 9.56
+   },
+   {
+    "word": "each",
+    "start": 9.56,
+    "end": 10.08
+   },
+   {
+    "word": "action",
+    "start": 10.08,
+    "end": 10.58
+   },
+   {
+    "word": "to",
+    "start": 10.58,
+    "end": 11.1
+   },
+   {
+    "word": "the",
+    "start": 11.1,
+    "end": 11.3
+   },
+   {
+    "word": "correct",
+    "start": 11.3,
+    "end": 11.64
+   },
+   {
+    "word": "person.",
+    "start": 11.64,
+    "end": 12.14
+   }
+  ]
+ },
+ "apply-sort-tools": {
+  "duration": 10.48,
+  "words": [
+   {
+    "word": "Bookie",
+    "start": 0.0,
+    "end": 0.9
+   },
+   {
+    "word": "found",
+    "start": 0.9,
+    "end": 1.4
+   },
+   {
+    "word": "some",
+    "start": 1.4,
+    "end": 1.86
+   },
+   {
+    "word": "tools.",
+    "start": 1.86,
+    "end": 2.44
+   },
+   {
+    "word": "Can",
+    "start": 3.08,
+    "end": 3.62
+   },
+   {
+    "word": "you",
+    "start": 3.62,
+    "end": 3.9
+   },
+   {
+    "word": "help",
+    "start": 3.9,
+    "end": 4.32
+   },
+   {
+    "word": "him",
+    "start": 4.32,
+    "end": 4.64
+   },
+   {
+    "word": "sort",
+    "start": 4.64,
+    "end": 5.0
+   },
+   {
+    "word": "them?",
+    "start": 5.0,
+    "end": 5.36
+   },
+   {
+    "word": "Drag",
+    "start": 6.38,
+    "end": 6.72
+   },
+   {
+    "word": "each",
+    "start": 6.72,
+    "end": 7.34
+   },
+   {
+    "word": "tool",
+    "start": 7.34,
+    "end": 7.96
+   },
+   {
+    "word": "to",
+    "start": 7.96,
+    "end": 8.42
+   },
+   {
+    "word": "the",
+    "start": 8.42,
+    "end": 8.58
+   },
+   {
+    "word": "person",
+    "start": 8.58,
+    "end": 9.14
+   },
+   {
+    "word": "who",
+    "start": 9.14,
+    "end": 9.56
+   },
+   {
+    "word": "uses",
+    "start": 9.56,
+    "end": 9.98
+   },
+   {
+    "word": "it.",
+    "start": 9.98,
+    "end": 10.48
+   }
+  ]
+ },
+ "celebrate-bookie-thanks": {
+  "duration": 16.98,
+  "words": [
+   {
+    "word": "Wow!",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "You",
+    "start": 1.12,
+    "end": 1.42
+   },
+   {
+    "word": "helped",
+    "start": 1.42,
+    "end": 1.88
+   },
+   {
+    "word": "bookie",
+    "start": 1.88,
+    "end": 2.36
+   },
+   {
+    "word": "so",
+    "start": 2.36,
+    "end": 2.84
+   },
+   {
+    "word": "much",
+    "start": 2.84,
+    "end": 3.48
+   },
+   {
+    "word": "today!",
+    "start": 3.48,
+    "end": 4.06
+   },
+   {
+    "word": "You",
+    "start": 4.72,
+    "end": 4.98
+   },
+   {
+    "word": "learned",
+    "start": 4.98,
+    "end": 5.36
+   },
+   {
+    "word": "that",
+    "start": 5.36,
+    "end": 5.68
+   },
+   {
+    "word": "the",
+    "start": 5.68,
+    "end": 5.9
+   },
+   {
+    "word": "author",
+    "start": 5.9,
+    "end": 6.46
+   },
+   {
+    "word": "writes",
+    "start": 6.46,
+    "end": 7.12
+   },
+   {
+    "word": "the",
+    "start": 7.12,
+    "end": 7.48
+   },
+   {
+    "word": "words",
+    "start": 7.48,
+    "end": 8.08
+   },
+   {
+    "word": "in",
+    "start": 8.08,
+    "end": 8.38
+   },
+   {
+    "word": "a",
+    "start": 8.38,
+    "end": 8.5
+   },
+   {
+    "word": "book,",
+    "start": 8.5,
+    "end": 8.92
+   },
+   {
+    "word": "and",
+    "start": 9.24,
+    "end": 9.56
+   },
+   {
+    "word": "the",
+    "start": 9.56,
+    "end": 9.78
+   },
+   {
+    "word": "illustrator",
+    "start": 9.78,
+    "end": 10.76
+   },
+   {
+    "word": "draws",
+    "start": 10.76,
+    "end": 11.4
+   },
+   {
+    "word": "the",
+    "start": 11.4,
+    "end": 11.84
+   },
+   {
+    "word": "pictures.",
+    "start": 11.84,
+    "end": 12.46
+   },
+   {
+    "word": "Now",
+    "start": 13.3,
+    "end": 13.64
+   },
+   {
+    "word": "you",
+    "start": 13.64,
+    "end": 13.84
+   },
+   {
+    "word": "know",
+    "start": 13.84,
+    "end": 14.04
+   },
+   {
+    "word": "who",
+    "start": 14.04,
+    "end": 14.3
+   },
+   {
+    "word": "makes",
+    "start": 14.3,
+    "end": 14.48
+   },
+   {
+    "word": "every",
+    "start": 14.48,
+    "end": 15.12
+   },
+   {
+    "word": "part",
+    "start": 15.12,
+    "end": 15.56
+   },
+   {
+    "word": "of",
+    "start": 15.56,
+    "end": 15.8
+   },
+   {
+    "word": "a",
+    "start": 15.8,
+    "end": 15.96
+   },
+   {
+    "word": "wonderful",
+    "start": 15.96,
+    "end": 16.36
+   },
+   {
+    "word": "story.",
+    "start": 16.36,
+    "end": 16.98
+   }
+  ]
+ },
+ "challenge-images-in-book": {
+  "duration": 11.24,
+  "words": [
+   {
+    "word": "Almost",
+    "start": 0.0,
+    "end": 0.64
+   },
+   {
+    "word": "done.",
+    "start": 0.64,
+    "end": 1.16
+   },
+   {
+    "word": "Here",
+    "start": 1.68,
+    "end": 2.06
+   },
+   {
+    "word": "is",
+    "start": 2.06,
+    "end": 2.32
+   },
+   {
+    "word": "the",
+    "start": 2.32,
+    "end": 2.54
+   },
+   {
+    "word": "same",
+    "start": 2.54,
+    "end": 2.98
+   },
+   {
+    "word": "book.",
+    "start": 2.98,
+    "end": 3.36
+   },
+   {
+    "word": "But",
+    "start": 3.8,
+    "end": 3.92
+   },
+   {
+    "word": "now",
+    "start": 3.92,
+    "end": 4.34
+   },
+   {
+    "word": "we",
+    "start": 4.34,
+    "end": 4.92
+   },
+   {
+    "word": "are",
+    "start": 4.92,
+    "end": 5.04
+   },
+   {
+    "word": "looking",
+    "start": 5.04,
+    "end": 5.32
+   },
+   {
+    "word": "at",
+    "start": 5.32,
+    "end": 5.48
+   },
+   {
+    "word": "the",
+    "start": 5.48,
+    "end": 5.62
+   },
+   {
+    "word": "pictures.",
+    "start": 5.62,
+    "end": 5.98
+   },
+   {
+    "word": "Who",
+    "start": 6.66,
+    "end": 6.94
+   },
+   {
+    "word": "is",
+    "start": 6.94,
+    "end": 7.14
+   },
+   {
+    "word": "the",
+    "start": 7.14,
+    "end": 7.32
+   },
+   {
+    "word": "person",
+    "start": 7.32,
+    "end": 7.78
+   },
+   {
+    "word": "who",
+    "start": 7.78,
+    "end": 8.02
+   },
+   {
+    "word": "created",
+    "start": 8.02,
+    "end": 8.6
+   },
+   {
+    "word": "these",
+    "start": 8.6,
+    "end": 8.9
+   },
+   {
+    "word": "pretty",
+    "start": 8.9,
+    "end": 9.34
+   },
+   {
+    "word": "images?",
+    "start": 9.34,
+    "end": 9.9
+   },
+   {
+    "word": "You've",
+    "start": 10.5,
+    "end": 10.82
+   },
+   {
+    "word": "got",
+    "start": 10.82,
+    "end": 10.96
+   },
+   {
+    "word": "this.",
+    "start": 10.96,
+    "end": 11.24
+   }
+  ]
+ },
+ "challenge-text-in-book": {
+  "duration": 12.68,
+  "words": [
+   {
+    "word": "You're",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "becoming",
+    "start": 0.58,
+    "end": 1.04
+   },
+   {
+    "word": "a",
+    "start": 1.04,
+    "end": 1.36
+   },
+   {
+    "word": "book",
+    "start": 1.36,
+    "end": 1.66
+   },
+   {
+    "word": "expert.",
+    "start": 1.66,
+    "end": 2.4
+   },
+   {
+    "word": "Bookie",
+    "start": 3.06,
+    "end": 3.88
+   },
+   {
+    "word": "found",
+    "start": 3.88,
+    "end": 4.3
+   },
+   {
+    "word": "a",
+    "start": 4.3,
+    "end": 4.48
+   },
+   {
+    "word": "book",
+    "start": 4.48,
+    "end": 4.8
+   },
+   {
+    "word": "with",
+    "start": 4.8,
+    "end": 5.18
+   },
+   {
+    "word": "words",
+    "start": 5.18,
+    "end": 5.62
+   },
+   {
+    "word": "inside.",
+    "start": 5.62,
+    "end": 6.2
+   },
+   {
+    "word": "Who",
+    "start": 6.92,
+    "end": 7.26
+   },
+   {
+    "word": "is",
+    "start": 7.26,
+    "end": 7.5
+   },
+   {
+    "word": "the",
+    "start": 7.5,
+    "end": 7.7
+   },
+   {
+    "word": "person",
+    "start": 7.7,
+    "end": 8.08
+   },
+   {
+    "word": "responsible",
+    "start": 8.08,
+    "end": 9.0
+   },
+   {
+    "word": "for",
+    "start": 9.0,
+    "end": 9.54
+   },
+   {
+    "word": "those",
+    "start": 9.54,
+    "end": 9.78
+   },
+   {
+    "word": "words?",
+    "start": 9.78,
+    "end": 10.22
+   },
+   {
+    "word": "Make",
+    "start": 11.16,
+    "end": 11.48
+   },
+   {
+    "word": "your",
+    "start": 11.48,
+    "end": 11.72
+   },
+   {
+    "word": "best",
+    "start": 11.72,
+    "end": 12.28
+   },
+   {
+    "word": "guess.",
+    "start": 12.28,
+    "end": 12.68
+   }
+  ]
+ },
+ "complete": {
+  "duration": 16.52,
+  "words": [
+   {
+    "word": "But",
+    "start": 0.0,
+    "end": 0.06
+   },
+   {
+    "word": "you",
+    "start": 0.06,
+    "end": 0.54
+   },
+   {
+    "word": "did",
+    "start": 0.54,
+    "end": 0.86
+   },
+   {
+    "word": "a",
+    "start": 0.86,
+    "end": 1.22
+   },
+   {
+    "word": "fantastic",
+    "start": 1.22,
+    "end": 2.06
+   },
+   {
+    "word": "job",
+    "start": 2.06,
+    "end": 2.54
+   },
+   {
+    "word": "today.",
+    "start": 2.54,
+    "end": 2.98
+   },
+   {
+    "word": "You",
+    "start": 3.64,
+    "end": 3.98
+   },
+   {
+    "word": "learned",
+    "start": 3.98,
+    "end": 4.42
+   },
+   {
+    "word": "that",
+    "start": 4.42,
+    "end": 4.72
+   },
+   {
+    "word": "the",
+    "start": 4.72,
+    "end": 4.94
+   },
+   {
+    "word": "author",
+    "start": 4.94,
+    "end": 5.48
+   },
+   {
+    "word": "writes",
+    "start": 5.48,
+    "end": 6.0
+   },
+   {
+    "word": "all",
+    "start": 6.0,
+    "end": 6.62
+   },
+   {
+    "word": "the",
+    "start": 6.62,
+    "end": 6.94
+   },
+   {
+    "word": "words",
+    "start": 6.94,
+    "end": 7.24
+   },
+   {
+    "word": "in",
+    "start": 7.24,
+    "end": 7.48
+   },
+   {
+    "word": "a",
+    "start": 7.48,
+    "end": 7.56
+   },
+   {
+    "word": "book,",
+    "start": 7.56,
+    "end": 7.88
+   },
+   {
+    "word": "and",
+    "start": 8.16,
+    "end": 8.58
+   },
+   {
+    "word": "the",
+    "start": 8.58,
+    "end": 8.76
+   },
+   {
+    "word": "illustrator",
+    "start": 8.76,
+    "end": 9.62
+   },
+   {
+    "word": "draws",
+    "start": 9.62,
+    "end": 10.14
+   },
+   {
+    "word": "all",
+    "start": 10.14,
+    "end": 10.72
+   },
+   {
+    "word": "the",
+    "start": 10.72,
+    "end": 10.96
+   },
+   {
+    "word": "beautiful",
+    "start": 10.96,
+    "end": 11.38
+   },
+   {
+    "word": "pictures.",
+    "start": 11.38,
+    "end": 11.92
+   },
+   {
+    "word": "Now",
+    "start": 12.54,
+    "end": 13.0
+   },
+   {
+    "word": "you",
+    "start": 13.0,
+    "end": 13.22
+   },
+   {
+    "word": "know",
+    "start": 13.22,
+    "end": 13.46
+   },
+   {
+    "word": "who",
+    "start": 13.46,
+    "end": 13.72
+   },
+   {
+    "word": "makes",
+    "start": 13.72,
+    "end": 13.96
+   },
+   {
+    "word": "every",
+    "start": 13.96,
+    "end": 14.7
+   },
+   {
+    "word": "part",
+    "start": 14.7,
+    "end": 15.1
+   },
+   {
+    "word": "of",
+    "start": 15.1,
+    "end": 15.32
+   },
+   {
+    "word": "a",
+    "start": 15.32,
+    "end": 15.48
+   },
+   {
+    "word": "wonderful",
+    "start": 15.48,
+    "end": 15.86
+   },
+   {
+    "word": "story.",
+    "start": 15.86,
+    "end": 16.52
+   }
+  ]
+ },
+ "guided-who-pictures": {
+  "duration": 10.4,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "job!",
+    "start": 0.52,
+    "end": 1.04
+   },
+   {
+    "word": "Now,",
+    "start": 1.78,
+    "end": 2.16
+   },
+   {
+    "word": "look",
+    "start": 2.48,
+    "end": 2.8
+   },
+   {
+    "word": "at",
+    "start": 2.8,
+    "end": 2.98
+   },
+   {
+    "word": "these",
+    "start": 2.98,
+    "end": 3.2
+   },
+   {
+    "word": "colorful",
+    "start": 3.2,
+    "end": 3.9
+   },
+   {
+    "word": "pictures.",
+    "start": 3.9,
+    "end": 4.52
+   },
+   {
+    "word": "Who",
+    "start": 5.38,
+    "end": 5.74
+   },
+   {
+    "word": "made",
+    "start": 5.74,
+    "end": 6.12
+   },
+   {
+    "word": "these?",
+    "start": 6.12,
+    "end": 6.66
+   },
+   {
+    "word": "Tap",
+    "start": 7.56,
+    "end": 7.88
+   },
+   {
+    "word": "on",
+    "start": 7.88,
+    "end": 8.18
+   },
+   {
+    "word": "the",
+    "start": 8.18,
+    "end": 8.34
+   },
+   {
+    "word": "person",
+    "start": 8.34,
+    "end": 8.76
+   },
+   {
+    "word": "who",
+    "start": 8.76,
+    "end": 9.06
+   },
+   {
+    "word": "draws",
+    "start": 9.06,
+    "end": 9.58
+   },
+   {
+    "word": "the",
+    "start": 9.58,
+    "end": 9.94
+   },
+   {
+    "word": "pictures.",
+    "start": 9.94,
+    "end": 10.4
+   }
+  ]
+ },
+ "guided-who-words": {
+  "duration": 9.44,
+  "words": [
+   {
+    "word": "It's",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "your",
+    "start": 0.56,
+    "end": 0.9
+   },
+   {
+    "word": "turn",
+    "start": 0.9,
+    "end": 1.48
+   },
+   {
+    "word": "to",
+    "start": 1.48,
+    "end": 1.74
+   },
+   {
+    "word": "help",
+    "start": 1.74,
+    "end": 2.08
+   },
+   {
+    "word": "bookie.",
+    "start": 2.08,
+    "end": 2.78
+   },
+   {
+    "word": "Look",
+    "start": 3.32,
+    "end": 3.62
+   },
+   {
+    "word": "at",
+    "start": 3.62,
+    "end": 3.82
+   },
+   {
+    "word": "these",
+    "start": 3.82,
+    "end": 4.18
+   },
+   {
+    "word": "words.",
+    "start": 4.18,
+    "end": 4.58
+   },
+   {
+    "word": "Who",
+    "start": 5.36,
+    "end": 5.58
+   },
+   {
+    "word": "do",
+    "start": 5.58,
+    "end": 5.74
+   },
+   {
+    "word": "you",
+    "start": 5.74,
+    "end": 5.94
+   },
+   {
+    "word": "think",
+    "start": 5.94,
+    "end": 6.22
+   },
+   {
+    "word": "made",
+    "start": 6.22,
+    "end": 6.64
+   },
+   {
+    "word": "them?",
+    "start": 6.64,
+    "end": 7.06
+   },
+   {
+    "word": "Tap",
+    "start": 7.72,
+    "end": 7.98
+   },
+   {
+    "word": "on",
+    "start": 7.98,
+    "end": 8.28
+   },
+   {
+    "word": "the",
+    "start": 8.28,
+    "end": 8.44
+   },
+   {
+    "word": "right",
+    "start": 8.44,
+    "end": 8.76
+   },
+   {
+    "word": "person.",
+    "start": 8.76,
+    "end": 9.44
+   }
+  ]
+ },
+ "hook-bookie-intro": {
+  "duration": 17.22,
+  "words": [
+   {
+    "word": "Hi",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "friends,",
+    "start": 0.42,
+    "end": 0.8
+   },
+   {
+    "word": "I'm",
+    "start": 1.52,
+    "end": 1.92
+   },
+   {
+    "word": "Bucky",
+    "start": 1.92,
+    "end": 2.36
+   },
+   {
+    "word": "and",
+    "start": 2.36,
+    "end": 3.0
+   },
+   {
+    "word": "I",
+    "start": 3.0,
+    "end": 3.38
+   },
+   {
+    "word": "love",
+    "start": 3.38,
+    "end": 4.02
+   },
+   {
+    "word": "books.",
+    "start": 4.02,
+    "end": 4.86
+   },
+   {
+    "word": "I",
+    "start": 5.64,
+    "end": 6.24
+   },
+   {
+    "word": "have",
+    "start": 6.24,
+    "end": 6.44
+   },
+   {
+    "word": "a",
+    "start": 6.44,
+    "end": 6.56
+   },
+   {
+    "word": "new",
+    "start": 6.56,
+    "end": 6.86
+   },
+   {
+    "word": "book",
+    "start": 6.86,
+    "end": 7.22
+   },
+   {
+    "word": "here",
+    "start": 7.22,
+    "end": 7.5
+   },
+   {
+    "word": "and",
+    "start": 7.5,
+    "end": 8.14
+   },
+   {
+    "word": "I'm",
+    "start": 8.14,
+    "end": 8.58
+   },
+   {
+    "word": "so",
+    "start": 8.58,
+    "end": 8.84
+   },
+   {
+    "word": "curious.",
+    "start": 8.84,
+    "end": 9.44
+   },
+   {
+    "word": "Who",
+    "start": 10.22,
+    "end": 10.54
+   },
+   {
+    "word": "made",
+    "start": 10.54,
+    "end": 11.02
+   },
+   {
+    "word": "all",
+    "start": 11.02,
+    "end": 11.7
+   },
+   {
+    "word": "the",
+    "start": 11.7,
+    "end": 11.98
+   },
+   {
+    "word": "wonderful",
+    "start": 11.98,
+    "end": 12.68
+   },
+   {
+    "word": "things",
+    "start": 12.68,
+    "end": 13.32
+   },
+   {
+    "word": "inside",
+    "start": 13.32,
+    "end": 13.82
+   },
+   {
+    "word": "it?",
+    "start": 13.82,
+    "end": 14.18
+   },
+   {
+    "word": "Listen",
+    "start": 14.92,
+    "end": 15.4
+   },
+   {
+    "word": "closely",
+    "start": 15.4,
+    "end": 16.1
+   },
+   {
+    "word": "to",
+    "start": 16.1,
+    "end": 16.52
+   },
+   {
+    "word": "find",
+    "start": 16.52,
+    "end": 16.8
+   },
+   {
+    "word": "out.",
+    "start": 16.8,
+    "end": 17.22
+   }
+  ]
+ },
+ "model-author-writes": {
+  "duration": 15.94,
+  "words": [
+   {
+    "word": "Watch",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "me.",
+    "start": 0.52,
+    "end": 0.86
+   },
+   {
+    "word": "This",
+    "start": 1.92,
+    "end": 2.3
+   },
+   {
+    "word": "is",
+    "start": 2.3,
+    "end": 2.96
+   },
+   {
+    "word": "an",
+    "start": 2.96,
+    "end": 3.18
+   },
+   {
+    "word": "author.",
+    "start": 3.18,
+    "end": 3.68
+   },
+   {
+    "word": "An",
+    "start": 4.22,
+    "end": 4.8
+   },
+   {
+    "word": "author",
+    "start": 4.8,
+    "end": 5.3
+   },
+   {
+    "word": "is",
+    "start": 5.3,
+    "end": 5.76
+   },
+   {
+    "word": "a",
+    "start": 5.76,
+    "end": 5.92
+   },
+   {
+    "word": "special",
+    "start": 5.92,
+    "end": 6.48
+   },
+   {
+    "word": "person",
+    "start": 6.48,
+    "end": 7.1
+   },
+   {
+    "word": "who",
+    "start": 7.1,
+    "end": 7.36
+   },
+   {
+    "word": "writes",
+    "start": 7.36,
+    "end": 7.7
+   },
+   {
+    "word": "all",
+    "start": 7.7,
+    "end": 8.38
+   },
+   {
+    "word": "the",
+    "start": 8.38,
+    "end": 8.7
+   },
+   {
+    "word": "words",
+    "start": 8.7,
+    "end": 9.06
+   },
+   {
+    "word": "you",
+    "start": 9.06,
+    "end": 9.42
+   },
+   {
+    "word": "see",
+    "start": 9.42,
+    "end": 9.72
+   },
+   {
+    "word": "in",
+    "start": 9.72,
+    "end": 10.04
+   },
+   {
+    "word": "a",
+    "start": 10.04,
+    "end": 10.14
+   },
+   {
+    "word": "book.",
+    "start": 10.14,
+    "end": 10.42
+   },
+   {
+    "word": "They",
+    "start": 11.28,
+    "end": 11.66
+   },
+   {
+    "word": "use",
+    "start": 11.66,
+    "end": 12.08
+   },
+   {
+    "word": "their",
+    "start": 12.08,
+    "end": 12.32
+   },
+   {
+    "word": "ideas",
+    "start": 12.32,
+    "end": 12.96
+   },
+   {
+    "word": "to",
+    "start": 12.96,
+    "end": 13.6
+   },
+   {
+    "word": "tell",
+    "start": 13.6,
+    "end": 13.96
+   },
+   {
+    "word": "a",
+    "start": 13.96,
+    "end": 14.26
+   },
+   {
+    "word": "story",
+    "start": 14.26,
+    "end": 14.9
+   },
+   {
+    "word": "with",
+    "start": 14.9,
+    "end": 15.44
+   },
+   {
+    "word": "words.",
+    "start": 15.44,
+    "end": 15.94
+   }
+  ]
+ },
+ "model-illustrator-draws": {
+  "duration": 14.04,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "look",
+    "start": 0.58,
+    "end": 0.88
+   },
+   {
+    "word": "at",
+    "start": 0.88,
+    "end": 1.04
+   },
+   {
+    "word": "this.",
+    "start": 1.04,
+    "end": 1.38
+   },
+   {
+    "word": "This",
+    "start": 2.06,
+    "end": 2.36
+   },
+   {
+    "word": "is",
+    "start": 2.36,
+    "end": 2.74
+   },
+   {
+    "word": "an",
+    "start": 2.74,
+    "end": 3.02
+   },
+   {
+    "word": "illustrator.",
+    "start": 3.02,
+    "end": 3.76
+   },
+   {
+    "word": "An",
+    "start": 4.36,
+    "end": 4.72
+   },
+   {
+    "word": "illustrator",
+    "start": 4.72,
+    "end": 5.54
+   },
+   {
+    "word": "is",
+    "start": 5.54,
+    "end": 5.82
+   },
+   {
+    "word": "a",
+    "start": 5.82,
+    "end": 5.94
+   },
+   {
+    "word": "special",
+    "start": 5.94,
+    "end": 6.48
+   },
+   {
+    "word": "person",
+    "start": 6.48,
+    "end": 7.08
+   },
+   {
+    "word": "who",
+    "start": 7.08,
+    "end": 7.38
+   },
+   {
+    "word": "draws",
+    "start": 7.38,
+    "end": 7.76
+   },
+   {
+    "word": "all",
+    "start": 7.76,
+    "end": 8.28
+   },
+   {
+    "word": "the",
+    "start": 8.28,
+    "end": 8.52
+   },
+   {
+    "word": "beautiful",
+    "start": 8.52,
+    "end": 9.02
+   },
+   {
+    "word": "pictures",
+    "start": 9.02,
+    "end": 9.6
+   },
+   {
+    "word": "in",
+    "start": 9.6,
+    "end": 9.82
+   },
+   {
+    "word": "a",
+    "start": 9.82,
+    "end": 9.94
+   },
+   {
+    "word": "book.",
+    "start": 9.94,
+    "end": 10.18
+   },
+   {
+    "word": "They",
+    "start": 10.82,
+    "end": 11.26
+   },
+   {
+    "word": "bring",
+    "start": 11.26,
+    "end": 11.62
+   },
+   {
+    "word": "the",
+    "start": 11.62,
+    "end": 11.84
+   },
+   {
+    "word": "story",
+    "start": 11.84,
+    "end": 12.36
+   },
+   {
+    "word": "to",
+    "start": 12.36,
+    "end": 12.62
+   },
+   {
+    "word": "life",
+    "start": 12.62,
+    "end": 13.04
+   },
+   {
+    "word": "with",
+    "start": 13.04,
+    "end": 13.4
+   },
+   {
+    "word": "their",
+    "start": 13.4,
+    "end": 13.62
+   },
+   {
+    "word": "art.",
+    "start": 13.62,
+    "end": 14.04
+   }
+  ]
+ }
+}

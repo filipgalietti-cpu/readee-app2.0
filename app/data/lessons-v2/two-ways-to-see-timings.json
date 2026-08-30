@@ -1,0 +1,3267 @@
+{
+ "celebrate-two-ways": {
+  "duration": 25.26,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "read",
+    "start": 0.38,
+    "end": 0.72
+   },
+   {
+    "word": "the",
+    "start": 0.72,
+    "end": 0.98
+   },
+   {
+    "word": "big",
+    "start": 0.98,
+    "end": 1.3
+   },
+   {
+    "word": "storm",
+    "start": 1.3,
+    "end": 1.84
+   },
+   {
+    "word": "and",
+    "start": 1.84,
+    "end": 2.38
+   },
+   {
+    "word": "found",
+    "start": 2.38,
+    "end": 2.7
+   },
+   {
+    "word": "two",
+    "start": 2.7,
+    "end": 3.2
+   },
+   {
+    "word": "points",
+    "start": 3.2,
+    "end": 3.56
+   },
+   {
+    "word": "of",
+    "start": 3.56,
+    "end": 3.74
+   },
+   {
+    "word": "view",
+    "start": 3.74,
+    "end": 3.98
+   },
+   {
+    "word": "inside",
+    "start": 3.98,
+    "end": 4.36
+   },
+   {
+    "word": "it.",
+    "start": 4.36,
+    "end": 4.68
+   },
+   {
+    "word": "Rose",
+    "start": 5.34,
+    "end": 5.54
+   },
+   {
+    "word": "thought",
+    "start": 5.54,
+    "end": 5.9
+   },
+   {
+    "word": "the",
+    "start": 5.9,
+    "end": 6.18
+   },
+   {
+    "word": "storm",
+    "start": 6.18,
+    "end": 6.68
+   },
+   {
+    "word": "was",
+    "start": 6.68,
+    "end": 7.02
+   },
+   {
+    "word": "a",
+    "start": 7.02,
+    "end": 7.18
+   },
+   {
+    "word": "great",
+    "start": 7.18,
+    "end": 7.5
+   },
+   {
+    "word": "show",
+    "start": 7.5,
+    "end": 7.94
+   },
+   {
+    "word": "and",
+    "start": 7.94,
+    "end": 8.44
+   },
+   {
+    "word": "her",
+    "start": 8.44,
+    "end": 8.6
+   },
+   {
+    "word": "clapping",
+    "start": 8.6,
+    "end": 9.04
+   },
+   {
+    "word": "proved",
+    "start": 9.04,
+    "end": 9.54
+   },
+   {
+    "word": "it.",
+    "start": 9.54,
+    "end": 9.84
+   },
+   {
+    "word": "Ben",
+    "start": 10.58,
+    "end": 10.74
+   },
+   {
+    "word": "thought",
+    "start": 10.74,
+    "end": 11.08
+   },
+   {
+    "word": "the",
+    "start": 11.08,
+    "end": 11.28
+   },
+   {
+    "word": "storm",
+    "start": 11.28,
+    "end": 11.7
+   },
+   {
+    "word": "was",
+    "start": 11.7,
+    "end": 11.96
+   },
+   {
+    "word": "scary",
+    "start": 11.96,
+    "end": 12.4
+   },
+   {
+    "word": "and",
+    "start": 12.4,
+    "end": 13.1
+   },
+   {
+    "word": "his",
+    "start": 13.1,
+    "end": 13.3
+   },
+   {
+    "word": "blanket",
+    "start": 13.3,
+    "end": 13.76
+   },
+   {
+    "word": "proved",
+    "start": 13.76,
+    "end": 14.18
+   },
+   {
+    "word": "it.",
+    "start": 14.18,
+    "end": 14.44
+   },
+   {
+    "word": "Same",
+    "start": 15.12,
+    "end": 15.42
+   },
+   {
+    "word": "storm,",
+    "start": 15.42,
+    "end": 15.92
+   },
+   {
+    "word": "two",
+    "start": 16.52,
+    "end": 16.74
+   },
+   {
+    "word": "feelings",
+    "start": 16.74,
+    "end": 17.24
+   },
+   {
+    "word": "and",
+    "start": 17.24,
+    "end": 17.86
+   },
+   {
+    "word": "both",
+    "start": 17.86,
+    "end": 18.24
+   },
+   {
+    "word": "of",
+    "start": 18.24,
+    "end": 18.5
+   },
+   {
+    "word": "them",
+    "start": 18.5,
+    "end": 18.74
+   },
+   {
+    "word": "are",
+    "start": 18.74,
+    "end": 19.04
+   },
+   {
+    "word": "real.",
+    "start": 19.04,
+    "end": 19.42
+   },
+   {
+    "word": "From",
+    "start": 20.22,
+    "end": 20.44
+   },
+   {
+    "word": "now",
+    "start": 20.44,
+    "end": 20.66
+   },
+   {
+    "word": "on,",
+    "start": 20.66,
+    "end": 21.08
+   },
+   {
+    "word": "when",
+    "start": 21.24,
+    "end": 21.34
+   },
+   {
+    "word": "characters",
+    "start": 21.34,
+    "end": 21.78
+   },
+   {
+    "word": "do",
+    "start": 21.78,
+    "end": 22.1
+   },
+   {
+    "word": "not",
+    "start": 22.1,
+    "end": 22.36
+   },
+   {
+    "word": "feel",
+    "start": 22.36,
+    "end": 22.6
+   },
+   {
+    "word": "the",
+    "start": 22.6,
+    "end": 22.8
+   },
+   {
+    "word": "same",
+    "start": 22.8,
+    "end": 23.04
+   },
+   {
+    "word": "way,",
+    "start": 23.04,
+    "end": 23.34
+   },
+   {
+    "word": "you",
+    "start": 23.72,
+    "end": 23.8
+   },
+   {
+    "word": "will",
+    "start": 23.8,
+    "end": 23.92
+   },
+   {
+    "word": "see",
+    "start": 23.92,
+    "end": 24.18
+   },
+   {
+    "word": "both",
+    "start": 24.18,
+    "end": 24.58
+   },
+   {
+    "word": "sides.",
+    "start": 24.58,
+    "end": 25.26
+   }
+  ]
+ },
+ "check-ben-evidence": {
+  "duration": 11.34,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "more",
+    "start": 0.54,
+    "end": 1.04
+   },
+   {
+    "word": "proof.",
+    "start": 1.04,
+    "end": 1.72
+   },
+   {
+    "word": "Read",
+    "start": 2.38,
+    "end": 2.7
+   },
+   {
+    "word": "each",
+    "start": 2.7,
+    "end": 3.2
+   },
+   {
+    "word": "choice.",
+    "start": 3.2,
+    "end": 3.64
+   },
+   {
+    "word": "Which",
+    "start": 4.48,
+    "end": 4.96
+   },
+   {
+    "word": "one",
+    "start": 4.96,
+    "end": 5.28
+   },
+   {
+    "word": "is",
+    "start": 5.28,
+    "end": 5.6
+   },
+   {
+    "word": "a",
+    "start": 5.6,
+    "end": 5.8
+   },
+   {
+    "word": "clue",
+    "start": 5.8,
+    "end": 6.28
+   },
+   {
+    "word": "that",
+    "start": 6.28,
+    "end": 6.92
+   },
+   {
+    "word": "shows",
+    "start": 6.92,
+    "end": 7.42
+   },
+   {
+    "word": "Ben's",
+    "start": 7.42,
+    "end": 8.06
+   },
+   {
+    "word": "feeling",
+    "start": 8.06,
+    "end": 8.6
+   },
+   {
+    "word": "about",
+    "start": 8.6,
+    "end": 9.08
+   },
+   {
+    "word": "the",
+    "start": 9.08,
+    "end": 9.34
+   },
+   {
+    "word": "storm?",
+    "start": 9.34,
+    "end": 9.88
+   },
+   {
+    "word": "Tap",
+    "start": 10.74,
+    "end": 11.0
+   },
+   {
+    "word": "it.",
+    "start": 11.0,
+    "end": 11.34
+   }
+  ]
+ },
+ "check-ben-feeling": {
+  "duration": 16.46,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "think",
+    "start": 0.76,
+    "end": 0.9
+   },
+   {
+    "word": "about",
+    "start": 0.9,
+    "end": 1.22
+   },
+   {
+    "word": "Ben,",
+    "start": 1.22,
+    "end": 1.7
+   },
+   {
+    "word": "same",
+    "start": 2.72,
+    "end": 2.84
+   },
+   {
+    "word": "house,",
+    "start": 2.84,
+    "end": 3.2
+   },
+   {
+    "word": "same",
+    "start": 3.86,
+    "end": 4.22
+   },
+   {
+    "word": "storm,",
+    "start": 4.22,
+    "end": 4.74
+   },
+   {
+    "word": "but",
+    "start": 5.12,
+    "end": 5.64
+   },
+   {
+    "word": "his",
+    "start": 5.64,
+    "end": 5.86
+   },
+   {
+    "word": "own",
+    "start": 5.86,
+    "end": 6.4
+   },
+   {
+    "word": "point",
+    "start": 6.4,
+    "end": 6.74
+   },
+   {
+    "word": "of",
+    "start": 6.74,
+    "end": 6.92
+   },
+   {
+    "word": "view.",
+    "start": 6.92,
+    "end": 7.22
+   },
+   {
+    "word": "Think",
+    "start": 8.02,
+    "end": 8.24
+   },
+   {
+    "word": "about",
+    "start": 8.24,
+    "end": 8.44
+   },
+   {
+    "word": "what",
+    "start": 8.44,
+    "end": 8.62
+   },
+   {
+    "word": "he",
+    "start": 8.62,
+    "end": 8.86
+   },
+   {
+    "word": "did",
+    "start": 8.86,
+    "end": 9.14
+   },
+   {
+    "word": "and",
+    "start": 9.14,
+    "end": 9.56
+   },
+   {
+    "word": "what",
+    "start": 9.56,
+    "end": 9.8
+   },
+   {
+    "word": "he",
+    "start": 9.8,
+    "end": 9.98
+   },
+   {
+    "word": "whispered.",
+    "start": 9.98,
+    "end": 10.6
+   },
+   {
+    "word": "Read",
+    "start": 11.22,
+    "end": 11.5
+   },
+   {
+    "word": "each",
+    "start": 11.5,
+    "end": 11.92
+   },
+   {
+    "word": "choice.",
+    "start": 11.92,
+    "end": 12.32
+   },
+   {
+    "word": "How",
+    "start": 13.3,
+    "end": 13.4
+   },
+   {
+    "word": "does",
+    "start": 13.4,
+    "end": 13.58
+   },
+   {
+    "word": "Ben",
+    "start": 13.58,
+    "end": 13.86
+   },
+   {
+    "word": "feel",
+    "start": 13.86,
+    "end": 14.22
+   },
+   {
+    "word": "about",
+    "start": 14.22,
+    "end": 14.46
+   },
+   {
+    "word": "the",
+    "start": 14.46,
+    "end": 14.66
+   },
+   {
+    "word": "storm?",
+    "start": 14.66,
+    "end": 14.98
+   },
+   {
+    "word": "Tap",
+    "start": 16.04,
+    "end": 16.2
+   },
+   {
+    "word": "it.",
+    "start": 16.2,
+    "end": 16.46
+   }
+  ]
+ },
+ "check-frog-views": {
+  "duration": 25.22,
+  "words": [
+   {
+    "word": "Brand",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "new",
+    "start": 0.62,
+    "end": 1.02
+   },
+   {
+    "word": "story,",
+    "start": 1.02,
+    "end": 1.68
+   },
+   {
+    "word": "brand",
+    "start": 1.92,
+    "end": 2.7
+   },
+   {
+    "word": "new",
+    "start": 2.7,
+    "end": 3.02
+   },
+   {
+    "word": "characters.",
+    "start": 3.02,
+    "end": 3.72
+   },
+   {
+    "word": "Listen.",
+    "start": 4.4,
+    "end": 5.16
+   },
+   {
+    "word": "Pam",
+    "start": 6.34,
+    "end": 6.72
+   },
+   {
+    "word": "and",
+    "start": 6.72,
+    "end": 7.24
+   },
+   {
+    "word": "Tess",
+    "start": 7.24,
+    "end": 7.82
+   },
+   {
+    "word": "found",
+    "start": 7.82,
+    "end": 8.52
+   },
+   {
+    "word": "a",
+    "start": 8.52,
+    "end": 8.78
+   },
+   {
+    "word": "frog",
+    "start": 8.78,
+    "end": 9.24
+   },
+   {
+    "word": "by",
+    "start": 9.24,
+    "end": 9.88
+   },
+   {
+    "word": "the",
+    "start": 9.88,
+    "end": 10.14
+   },
+   {
+    "word": "pond.",
+    "start": 10.14,
+    "end": 10.58
+   },
+   {
+    "word": "Pam",
+    "start": 11.7,
+    "end": 11.98
+   },
+   {
+    "word": "scooped",
+    "start": 11.98,
+    "end": 12.82
+   },
+   {
+    "word": "it",
+    "start": 12.82,
+    "end": 12.9
+   },
+   {
+    "word": "up",
+    "start": 12.9,
+    "end": 13.08
+   },
+   {
+    "word": "and",
+    "start": 13.08,
+    "end": 13.5
+   },
+   {
+    "word": "laughed.",
+    "start": 13.5,
+    "end": 13.92
+   },
+   {
+    "word": "Tess",
+    "start": 14.9,
+    "end": 15.42
+   },
+   {
+    "word": "stepped",
+    "start": 15.42,
+    "end": 15.84
+   },
+   {
+    "word": "back",
+    "start": 15.84,
+    "end": 16.22
+   },
+   {
+    "word": "and",
+    "start": 16.22,
+    "end": 16.76
+   },
+   {
+    "word": "said,",
+    "start": 16.76,
+    "end": 17.14
+   },
+   {
+    "word": "Yuck!",
+    "start": 17.48,
+    "end": 17.78
+   },
+   {
+    "word": "Read",
+    "start": 18.52,
+    "end": 19.0
+   },
+   {
+    "word": "each",
+    "start": 19.0,
+    "end": 19.6
+   },
+   {
+    "word": "choice.",
+    "start": 19.6,
+    "end": 20.12
+   },
+   {
+    "word": "Which",
+    "start": 20.78,
+    "end": 21.14
+   },
+   {
+    "word": "one",
+    "start": 21.14,
+    "end": 21.44
+   },
+   {
+    "word": "tells",
+    "start": 21.44,
+    "end": 21.94
+   },
+   {
+    "word": "both",
+    "start": 21.94,
+    "end": 22.6
+   },
+   {
+    "word": "points",
+    "start": 22.6,
+    "end": 23.32
+   },
+   {
+    "word": "of",
+    "start": 23.32,
+    "end": 23.58
+   },
+   {
+    "word": "view?",
+    "start": 23.58,
+    "end": 23.98
+   },
+   {
+    "word": "Tap",
+    "start": 24.64,
+    "end": 24.92
+   },
+   {
+    "word": "it.",
+    "start": 24.92,
+    "end": 25.22
+   }
+  ]
+ },
+ "check-rose-evidence": {
+  "duration": 19.28,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "found",
+    "start": 0.44,
+    "end": 1.1
+   },
+   {
+    "word": "Rose's",
+    "start": 1.1,
+    "end": 1.96
+   },
+   {
+    "word": "point",
+    "start": 1.96,
+    "end": 2.24
+   },
+   {
+    "word": "of",
+    "start": 2.24,
+    "end": 2.46
+   },
+   {
+    "word": "view.",
+    "start": 2.46,
+    "end": 2.84
+   },
+   {
+    "word": "Now",
+    "start": 3.38,
+    "end": 3.66
+   },
+   {
+    "word": "prove",
+    "start": 3.66,
+    "end": 4.08
+   },
+   {
+    "word": "it",
+    "start": 4.08,
+    "end": 4.48
+   },
+   {
+    "word": "like",
+    "start": 4.48,
+    "end": 4.82
+   },
+   {
+    "word": "a",
+    "start": 4.82,
+    "end": 5.12
+   },
+   {
+    "word": "reader.",
+    "start": 5.12,
+    "end": 5.52
+   },
+   {
+    "word": "A",
+    "start": 6.92,
+    "end": 7.0
+   },
+   {
+    "word": "clue",
+    "start": 7.0,
+    "end": 7.44
+   },
+   {
+    "word": "is",
+    "start": 7.44,
+    "end": 7.96
+   },
+   {
+    "word": "something",
+    "start": 7.96,
+    "end": 8.36
+   },
+   {
+    "word": "a",
+    "start": 8.36,
+    "end": 8.56
+   },
+   {
+    "word": "character",
+    "start": 8.56,
+    "end": 9.04
+   },
+   {
+    "word": "says",
+    "start": 9.04,
+    "end": 9.64
+   },
+   {
+    "word": "or",
+    "start": 9.64,
+    "end": 10.38
+   },
+   {
+    "word": "does.",
+    "start": 10.38,
+    "end": 10.78
+   },
+   {
+    "word": "Read",
+    "start": 11.9,
+    "end": 12.2
+   },
+   {
+    "word": "each",
+    "start": 12.2,
+    "end": 12.7
+   },
+   {
+    "word": "choice.",
+    "start": 12.7,
+    "end": 13.2
+   },
+   {
+    "word": "Which",
+    "start": 14.24,
+    "end": 14.64
+   },
+   {
+    "word": "one",
+    "start": 14.64,
+    "end": 14.92
+   },
+   {
+    "word": "is",
+    "start": 14.92,
+    "end": 15.24
+   },
+   {
+    "word": "a",
+    "start": 15.24,
+    "end": 15.38
+   },
+   {
+    "word": "clue",
+    "start": 15.38,
+    "end": 15.8
+   },
+   {
+    "word": "about",
+    "start": 15.8,
+    "end": 16.32
+   },
+   {
+    "word": "Rose's",
+    "start": 16.32,
+    "end": 17.14
+   },
+   {
+    "word": "feeling?",
+    "start": 17.14,
+    "end": 17.68
+   },
+   {
+    "word": "Tap",
+    "start": 18.64,
+    "end": 18.98
+   },
+   {
+    "word": "it.",
+    "start": 18.98,
+    "end": 19.28
+   }
+  ]
+ },
+ "check-rose-feeling": {
+  "duration": 14.4,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "just",
+    "start": 0.5,
+    "end": 0.94
+   },
+   {
+    "word": "read",
+    "start": 0.94,
+    "end": 1.4
+   },
+   {
+    "word": "Rose's",
+    "start": 1.4,
+    "end": 2.26
+   },
+   {
+    "word": "page.",
+    "start": 2.26,
+    "end": 2.86
+   },
+   {
+    "word": "Think",
+    "start": 3.74,
+    "end": 4.06
+   },
+   {
+    "word": "about",
+    "start": 4.06,
+    "end": 4.36
+   },
+   {
+    "word": "what",
+    "start": 4.36,
+    "end": 4.66
+   },
+   {
+    "word": "she",
+    "start": 4.66,
+    "end": 4.96
+   },
+   {
+    "word": "did",
+    "start": 4.96,
+    "end": 5.3
+   },
+   {
+    "word": "and",
+    "start": 5.3,
+    "end": 5.98
+   },
+   {
+    "word": "what",
+    "start": 5.98,
+    "end": 6.26
+   },
+   {
+    "word": "she",
+    "start": 6.26,
+    "end": 6.5
+   },
+   {
+    "word": "said.",
+    "start": 6.5,
+    "end": 6.88
+   },
+   {
+    "word": "Read",
+    "start": 7.8,
+    "end": 8.1
+   },
+   {
+    "word": "each",
+    "start": 8.1,
+    "end": 8.62
+   },
+   {
+    "word": "choice.",
+    "start": 8.62,
+    "end": 9.08
+   },
+   {
+    "word": "How",
+    "start": 10.04,
+    "end": 10.32
+   },
+   {
+    "word": "does",
+    "start": 10.32,
+    "end": 10.54
+   },
+   {
+    "word": "Rose",
+    "start": 10.54,
+    "end": 10.9
+   },
+   {
+    "word": "feel",
+    "start": 10.9,
+    "end": 11.5
+   },
+   {
+    "word": "about",
+    "start": 11.5,
+    "end": 12.02
+   },
+   {
+    "word": "the",
+    "start": 12.02,
+    "end": 12.24
+   },
+   {
+    "word": "storm?",
+    "start": 12.24,
+    "end": 12.7
+   },
+   {
+    "word": "Tap",
+    "start": 13.76,
+    "end": 13.98
+   },
+   {
+    "word": "it.",
+    "start": 13.98,
+    "end": 14.4
+   }
+  ]
+ },
+ "complete": {
+  "duration": 24.92,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "found",
+    "start": 0.46,
+    "end": 0.94
+   },
+   {
+    "word": "two",
+    "start": 0.94,
+    "end": 1.54
+   },
+   {
+    "word": "points",
+    "start": 1.54,
+    "end": 2.0
+   },
+   {
+    "word": "of",
+    "start": 2.0,
+    "end": 2.24
+   },
+   {
+    "word": "view",
+    "start": 2.24,
+    "end": 2.54
+   },
+   {
+    "word": "inside",
+    "start": 2.54,
+    "end": 3.08
+   },
+   {
+    "word": "one",
+    "start": 3.08,
+    "end": 3.5
+   },
+   {
+    "word": "story.",
+    "start": 3.5,
+    "end": 4.12
+   },
+   {
+    "word": "Rose",
+    "start": 4.8,
+    "end": 5.32
+   },
+   {
+    "word": "loved",
+    "start": 5.32,
+    "end": 5.96
+   },
+   {
+    "word": "the",
+    "start": 5.96,
+    "end": 6.16
+   },
+   {
+    "word": "storm.",
+    "start": 6.16,
+    "end": 6.54
+   },
+   {
+    "word": "Ben",
+    "start": 7.38,
+    "end": 7.56
+   },
+   {
+    "word": "was",
+    "start": 7.56,
+    "end": 7.88
+   },
+   {
+    "word": "scared",
+    "start": 7.88,
+    "end": 8.18
+   },
+   {
+    "word": "of",
+    "start": 8.18,
+    "end": 8.4
+   },
+   {
+    "word": "it.",
+    "start": 8.4,
+    "end": 8.6
+   },
+   {
+    "word": "And",
+    "start": 9.22,
+    "end": 9.36
+   },
+   {
+    "word": "you",
+    "start": 9.36,
+    "end": 9.62
+   },
+   {
+    "word": "proved",
+    "start": 9.62,
+    "end": 10.2
+   },
+   {
+    "word": "both",
+    "start": 10.2,
+    "end": 10.72
+   },
+   {
+    "word": "feelings",
+    "start": 10.72,
+    "end": 11.48
+   },
+   {
+    "word": "with",
+    "start": 11.48,
+    "end": 11.96
+   },
+   {
+    "word": "clues",
+    "start": 11.96,
+    "end": 12.26
+   },
+   {
+    "word": "from",
+    "start": 12.26,
+    "end": 12.68
+   },
+   {
+    "word": "their",
+    "start": 12.68,
+    "end": 12.86
+   },
+   {
+    "word": "words",
+    "start": 12.86,
+    "end": 13.16
+   },
+   {
+    "word": "and",
+    "start": 13.16,
+    "end": 13.38
+   },
+   {
+    "word": "actions.",
+    "start": 13.38,
+    "end": 13.76
+   },
+   {
+    "word": "Same",
+    "start": 14.58,
+    "end": 14.96
+   },
+   {
+    "word": "storm,",
+    "start": 14.96,
+    "end": 15.44
+   },
+   {
+    "word": "two",
+    "start": 16.18,
+    "end": 16.44
+   },
+   {
+    "word": "points",
+    "start": 16.44,
+    "end": 16.82
+   },
+   {
+    "word": "of",
+    "start": 16.82,
+    "end": 17.04
+   },
+   {
+    "word": "view,",
+    "start": 17.04,
+    "end": 17.34
+   },
+   {
+    "word": "and",
+    "start": 17.8,
+    "end": 18.02
+   },
+   {
+    "word": "both",
+    "start": 18.02,
+    "end": 18.32
+   },
+   {
+    "word": "of",
+    "start": 18.32,
+    "end": 18.56
+   },
+   {
+    "word": "them",
+    "start": 18.56,
+    "end": 18.78
+   },
+   {
+    "word": "are",
+    "start": 18.78,
+    "end": 19.12
+   },
+   {
+    "word": "real.",
+    "start": 19.12,
+    "end": 19.42
+   },
+   {
+    "word": "That",
+    "start": 20.16,
+    "end": 20.6
+   },
+   {
+    "word": "is",
+    "start": 20.6,
+    "end": 21.06
+   },
+   {
+    "word": "how",
+    "start": 21.06,
+    "end": 21.28
+   },
+   {
+    "word": "a",
+    "start": 21.28,
+    "end": 21.52
+   },
+   {
+    "word": "strong",
+    "start": 21.52,
+    "end": 22.0
+   },
+   {
+    "word": "reader",
+    "start": 22.0,
+    "end": 22.5
+   },
+   {
+    "word": "listens",
+    "start": 22.5,
+    "end": 23.04
+   },
+   {
+    "word": "to",
+    "start": 23.04,
+    "end": 23.44
+   },
+   {
+    "word": "every",
+    "start": 23.44,
+    "end": 24.16
+   },
+   {
+    "word": "character.",
+    "start": 24.16,
+    "end": 24.92
+   }
+  ]
+ },
+ "hook-two-ways": {
+  "duration": 23.16,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "reader.",
+    "start": 0.6,
+    "end": 0.86
+   },
+   {
+    "word": "Every",
+    "start": 1.66,
+    "end": 2.16
+   },
+   {
+    "word": "character",
+    "start": 2.16,
+    "end": 2.72
+   },
+   {
+    "word": "has",
+    "start": 2.72,
+    "end": 3.06
+   },
+   {
+    "word": "a",
+    "start": 3.06,
+    "end": 3.24
+   },
+   {
+    "word": "point",
+    "start": 3.24,
+    "end": 3.52
+   },
+   {
+    "word": "of",
+    "start": 3.52,
+    "end": 3.74
+   },
+   {
+    "word": "view.",
+    "start": 3.74,
+    "end": 4.06
+   },
+   {
+    "word": "A",
+    "start": 4.34,
+    "end": 5.02
+   },
+   {
+    "word": "point",
+    "start": 5.02,
+    "end": 5.24
+   },
+   {
+    "word": "of",
+    "start": 5.24,
+    "end": 5.42
+   },
+   {
+    "word": "view",
+    "start": 5.42,
+    "end": 5.7
+   },
+   {
+    "word": "is",
+    "start": 5.7,
+    "end": 6.04
+   },
+   {
+    "word": "how",
+    "start": 6.04,
+    "end": 6.24
+   },
+   {
+    "word": "a",
+    "start": 6.24,
+    "end": 6.4
+   },
+   {
+    "word": "character",
+    "start": 6.4,
+    "end": 6.88
+   },
+   {
+    "word": "thinks",
+    "start": 6.88,
+    "end": 7.4
+   },
+   {
+    "word": "or",
+    "start": 7.4,
+    "end": 7.92
+   },
+   {
+    "word": "feels",
+    "start": 7.92,
+    "end": 8.34
+   },
+   {
+    "word": "about",
+    "start": 8.34,
+    "end": 8.76
+   },
+   {
+    "word": "something.",
+    "start": 8.76,
+    "end": 9.2
+   },
+   {
+    "word": "Two",
+    "start": 9.9,
+    "end": 10.1
+   },
+   {
+    "word": "characters",
+    "start": 10.1,
+    "end": 10.56
+   },
+   {
+    "word": "can",
+    "start": 10.56,
+    "end": 10.88
+   },
+   {
+    "word": "look",
+    "start": 10.88,
+    "end": 11.08
+   },
+   {
+    "word": "at",
+    "start": 11.08,
+    "end": 11.22
+   },
+   {
+    "word": "the",
+    "start": 11.22,
+    "end": 11.4
+   },
+   {
+    "word": "very",
+    "start": 11.4,
+    "end": 11.84
+   },
+   {
+    "word": "same",
+    "start": 11.84,
+    "end": 12.4
+   },
+   {
+    "word": "thing",
+    "start": 12.4,
+    "end": 12.68
+   },
+   {
+    "word": "and",
+    "start": 12.68,
+    "end": 13.38
+   },
+   {
+    "word": "feel",
+    "start": 13.38,
+    "end": 13.7
+   },
+   {
+    "word": "two",
+    "start": 13.7,
+    "end": 14.22
+   },
+   {
+    "word": "different",
+    "start": 14.22,
+    "end": 14.7
+   },
+   {
+    "word": "ways.",
+    "start": 14.7,
+    "end": 15.12
+   },
+   {
+    "word": "Today,",
+    "start": 16.04,
+    "end": 16.34
+   },
+   {
+    "word": "you",
+    "start": 16.64,
+    "end": 16.9
+   },
+   {
+    "word": "will",
+    "start": 16.9,
+    "end": 17.08
+   },
+   {
+    "word": "read",
+    "start": 17.08,
+    "end": 17.4
+   },
+   {
+    "word": "the",
+    "start": 17.4,
+    "end": 17.76
+   },
+   {
+    "word": "big",
+    "start": 17.76,
+    "end": 18.16
+   },
+   {
+    "word": "storm",
+    "start": 18.16,
+    "end": 18.76
+   },
+   {
+    "word": "and",
+    "start": 18.76,
+    "end": 19.4
+   },
+   {
+    "word": "find",
+    "start": 19.4,
+    "end": 19.68
+   },
+   {
+    "word": "two",
+    "start": 19.68,
+    "end": 20.32
+   },
+   {
+    "word": "points",
+    "start": 20.32,
+    "end": 20.76
+   },
+   {
+    "word": "of",
+    "start": 20.76,
+    "end": 20.94
+   },
+   {
+    "word": "view",
+    "start": 20.94,
+    "end": 21.24
+   },
+   {
+    "word": "inside",
+    "start": 21.24,
+    "end": 22.1
+   },
+   {
+    "word": "one",
+    "start": 22.1,
+    "end": 22.62
+   },
+   {
+    "word": "story.",
+    "start": 22.62,
+    "end": 23.16
+   }
+  ]
+ },
+ "model-snow-day": {
+  "duration": 47.36,
+  "words": [
+   {
+    "word": "Watch",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "me",
+    "start": 0.52,
+    "end": 0.76
+   },
+   {
+    "word": "find",
+    "start": 0.76,
+    "end": 1.3
+   },
+   {
+    "word": "two",
+    "start": 1.3,
+    "end": 1.82
+   },
+   {
+    "word": "points",
+    "start": 1.82,
+    "end": 2.3
+   },
+   {
+    "word": "of",
+    "start": 2.3,
+    "end": 2.56
+   },
+   {
+    "word": "view",
+    "start": 2.56,
+    "end": 2.94
+   },
+   {
+    "word": "in",
+    "start": 2.94,
+    "end": 3.56
+   },
+   {
+    "word": "one",
+    "start": 3.56,
+    "end": 4.06
+   },
+   {
+    "word": "tiny",
+    "start": 4.06,
+    "end": 4.88
+   },
+   {
+    "word": "story.",
+    "start": 4.88,
+    "end": 5.8
+   },
+   {
+    "word": "Snow",
+    "start": 7.14,
+    "end": 7.36
+   },
+   {
+    "word": "fell",
+    "start": 7.36,
+    "end": 8.02
+   },
+   {
+    "word": "all",
+    "start": 8.02,
+    "end": 8.94
+   },
+   {
+    "word": "night.",
+    "start": 8.94,
+    "end": 9.5
+   },
+   {
+    "word": "Max",
+    "start": 10.44,
+    "end": 10.7
+   },
+   {
+    "word": "grabbed",
+    "start": 10.7,
+    "end": 11.28
+   },
+   {
+    "word": "his",
+    "start": 11.28,
+    "end": 11.62
+   },
+   {
+    "word": "sled",
+    "start": 11.62,
+    "end": 12.04
+   },
+   {
+    "word": "and",
+    "start": 12.04,
+    "end": 12.52
+   },
+   {
+    "word": "cheered",
+    "start": 12.52,
+    "end": 13.12
+   },
+   {
+    "word": "best",
+    "start": 13.12,
+    "end": 13.88
+   },
+   {
+    "word": "day",
+    "start": 13.88,
+    "end": 14.48
+   },
+   {
+    "word": "ever.",
+    "start": 14.48,
+    "end": 15.3
+   },
+   {
+    "word": "Grand",
+    "start": 16.32,
+    "end": 16.94
+   },
+   {
+    "word": "looked",
+    "start": 16.94,
+    "end": 17.68
+   },
+   {
+    "word": "at",
+    "start": 17.68,
+    "end": 17.98
+   },
+   {
+    "word": "her",
+    "start": 17.98,
+    "end": 18.22
+   },
+   {
+    "word": "shovel",
+    "start": 18.22,
+    "end": 18.7
+   },
+   {
+    "word": "and",
+    "start": 18.7,
+    "end": 19.22
+   },
+   {
+    "word": "sighed,",
+    "start": 19.22,
+    "end": 20.08
+   },
+   {
+    "word": "so",
+    "start": 20.79,
+    "end": 21.36
+   },
+   {
+    "word": "much",
+    "start": 21.36,
+    "end": 22.24
+   },
+   {
+    "word": "work.",
+    "start": 22.24,
+    "end": 22.86
+   },
+   {
+    "word": "Same",
+    "start": 23.94,
+    "end": 24.42
+   },
+   {
+    "word": "snow",
+    "start": 24.42,
+    "end": 25.16
+   },
+   {
+    "word": "for",
+    "start": 25.16,
+    "end": 25.8
+   },
+   {
+    "word": "both",
+    "start": 25.8,
+    "end": 26.08
+   },
+   {
+    "word": "of",
+    "start": 26.08,
+    "end": 26.3
+   },
+   {
+    "word": "them.",
+    "start": 26.3,
+    "end": 26.52
+   },
+   {
+    "word": "Max",
+    "start": 27.52,
+    "end": 27.98
+   },
+   {
+    "word": "thinks",
+    "start": 27.98,
+    "end": 28.64
+   },
+   {
+    "word": "the",
+    "start": 28.64,
+    "end": 29.06
+   },
+   {
+    "word": "snow",
+    "start": 29.06,
+    "end": 29.4
+   },
+   {
+    "word": "is",
+    "start": 29.4,
+    "end": 29.78
+   },
+   {
+    "word": "fun.",
+    "start": 29.78,
+    "end": 30.22
+   },
+   {
+    "word": "That",
+    "start": 31.02,
+    "end": 31.26
+   },
+   {
+    "word": "is",
+    "start": 31.26,
+    "end": 31.78
+   },
+   {
+    "word": "his",
+    "start": 31.78,
+    "end": 32.12
+   },
+   {
+    "word": "point",
+    "start": 32.12,
+    "end": 32.56
+   },
+   {
+    "word": "of",
+    "start": 32.56,
+    "end": 32.76
+   },
+   {
+    "word": "view.",
+    "start": 32.76,
+    "end": 33.08
+   },
+   {
+    "word": "Grand",
+    "start": 34.18,
+    "end": 34.68
+   },
+   {
+    "word": "thinks",
+    "start": 34.68,
+    "end": 35.22
+   },
+   {
+    "word": "the",
+    "start": 35.22,
+    "end": 35.44
+   },
+   {
+    "word": "snow",
+    "start": 35.44,
+    "end": 35.86
+   },
+   {
+    "word": "is",
+    "start": 35.86,
+    "end": 36.32
+   },
+   {
+    "word": "work.",
+    "start": 36.32,
+    "end": 36.86
+   },
+   {
+    "word": "That",
+    "start": 37.48,
+    "end": 37.82
+   },
+   {
+    "word": "is",
+    "start": 37.82,
+    "end": 38.38
+   },
+   {
+    "word": "her",
+    "start": 38.38,
+    "end": 38.8
+   },
+   {
+    "word": "point",
+    "start": 38.8,
+    "end": 39.2
+   },
+   {
+    "word": "of",
+    "start": 39.2,
+    "end": 39.4
+   },
+   {
+    "word": "view.",
+    "start": 39.4,
+    "end": 39.7
+   },
+   {
+    "word": "I",
+    "start": 40.64,
+    "end": 40.84
+   },
+   {
+    "word": "did",
+    "start": 40.84,
+    "end": 41.06
+   },
+   {
+    "word": "not",
+    "start": 41.06,
+    "end": 41.36
+   },
+   {
+    "word": "guess.",
+    "start": 41.36,
+    "end": 41.82
+   },
+   {
+    "word": "I",
+    "start": 42.6,
+    "end": 42.86
+   },
+   {
+    "word": "found",
+    "start": 42.86,
+    "end": 43.26
+   },
+   {
+    "word": "each",
+    "start": 43.26,
+    "end": 43.8
+   },
+   {
+    "word": "feeling",
+    "start": 43.8,
+    "end": 44.42
+   },
+   {
+    "word": "in",
+    "start": 44.42,
+    "end": 44.88
+   },
+   {
+    "word": "what",
+    "start": 44.88,
+    "end": 45.12
+   },
+   {
+    "word": "they",
+    "start": 45.12,
+    "end": 45.34
+   },
+   {
+    "word": "said",
+    "start": 45.34,
+    "end": 45.72
+   },
+   {
+    "word": "and",
+    "start": 45.72,
+    "end": 46.38
+   },
+   {
+    "word": "what",
+    "start": 46.38,
+    "end": 46.68
+   },
+   {
+    "word": "they",
+    "start": 46.68,
+    "end": 46.98
+   },
+   {
+    "word": "did.",
+    "start": 46.98,
+    "end": 47.36
+   }
+  ]
+ },
+ "page-1-read-sentence": {
+  "duration": 13.78,
+  "words": [
+   {
+    "word": "Boom!",
+    "start": 0.0,
+    "end": 0.7
+   },
+   {
+    "word": "Funder",
+    "start": 1.46,
+    "end": 2.18
+   },
+   {
+    "word": "rolled",
+    "start": 2.18,
+    "end": 2.78
+   },
+   {
+    "word": "over",
+    "start": 2.78,
+    "end": 3.54
+   },
+   {
+    "word": "the",
+    "start": 3.54,
+    "end": 3.9
+   },
+   {
+    "word": "little",
+    "start": 3.9,
+    "end": 4.34
+   },
+   {
+    "word": "house.",
+    "start": 4.34,
+    "end": 5.02
+   },
+   {
+    "word": "Rain",
+    "start": 5.7,
+    "end": 6.12
+   },
+   {
+    "word": "tapped",
+    "start": 6.12,
+    "end": 6.88
+   },
+   {
+    "word": "on",
+    "start": 6.88,
+    "end": 7.52
+   },
+   {
+    "word": "every",
+    "start": 7.52,
+    "end": 8.32
+   },
+   {
+    "word": "window.",
+    "start": 8.32,
+    "end": 9.02
+   },
+   {
+    "word": "Rose",
+    "start": 9.82,
+    "end": 10.32
+   },
+   {
+    "word": "and",
+    "start": 10.32,
+    "end": 10.9
+   },
+   {
+    "word": "Ben",
+    "start": 10.9,
+    "end": 11.2
+   },
+   {
+    "word": "looked",
+    "start": 11.2,
+    "end": 11.88
+   },
+   {
+    "word": "up",
+    "start": 11.88,
+    "end": 12.46
+   },
+   {
+    "word": "from",
+    "start": 12.46,
+    "end": 12.96
+   },
+   {
+    "word": "their",
+    "start": 12.96,
+    "end": 13.28
+   },
+   {
+    "word": "game.",
+    "start": 13.28,
+    "end": 13.78
+   }
+  ]
+ },
+ "page-1-read": {
+  "duration": 14.08,
+  "words": [
+   {
+    "word": "Time",
+    "start": 0.0,
+    "end": 0.76
+   },
+   {
+    "word": "to",
+    "start": 0.76,
+    "end": 1.0
+   },
+   {
+    "word": "read",
+    "start": 1.0,
+    "end": 1.34
+   },
+   {
+    "word": "the",
+    "start": 1.34,
+    "end": 1.9
+   },
+   {
+    "word": "big",
+    "start": 1.9,
+    "end": 2.38
+   },
+   {
+    "word": "storm.",
+    "start": 2.38,
+    "end": 3.22
+   },
+   {
+    "word": "Rosenben",
+    "start": 3.92,
+    "end": 4.76
+   },
+   {
+    "word": "are",
+    "start": 4.76,
+    "end": 5.12
+   },
+   {
+    "word": "in",
+    "start": 5.12,
+    "end": 5.32
+   },
+   {
+    "word": "the",
+    "start": 5.32,
+    "end": 5.48
+   },
+   {
+    "word": "same",
+    "start": 5.48,
+    "end": 5.84
+   },
+   {
+    "word": "house,",
+    "start": 5.84,
+    "end": 6.36
+   },
+   {
+    "word": "in",
+    "start": 6.72,
+    "end": 6.86
+   },
+   {
+    "word": "the",
+    "start": 6.86,
+    "end": 7.04
+   },
+   {
+    "word": "same",
+    "start": 7.04,
+    "end": 7.5
+   },
+   {
+    "word": "storm.",
+    "start": 7.5,
+    "end": 8.26
+   },
+   {
+    "word": "Read",
+    "start": 8.84,
+    "end": 9.28
+   },
+   {
+    "word": "along",
+    "start": 9.28,
+    "end": 9.86
+   },
+   {
+    "word": "with",
+    "start": 9.86,
+    "end": 10.4
+   },
+   {
+    "word": "me",
+    "start": 10.4,
+    "end": 10.7
+   },
+   {
+    "word": "and",
+    "start": 10.7,
+    "end": 11.4
+   },
+   {
+    "word": "watch",
+    "start": 11.4,
+    "end": 11.82
+   },
+   {
+    "word": "each",
+    "start": 11.82,
+    "end": 12.52
+   },
+   {
+    "word": "character",
+    "start": 12.52,
+    "end": 13.2
+   },
+   {
+    "word": "closely.",
+    "start": 13.2,
+    "end": 14.08
+   }
+  ]
+ },
+ "page-2-read": {
+  "duration": 10.52,
+  "words": [
+   {
+    "word": "Page",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "2",
+    "start": 0.54,
+    "end": 1.16
+   },
+   {
+    "word": "is",
+    "start": 1.16,
+    "end": 1.64
+   },
+   {
+    "word": "all",
+    "start": 1.64,
+    "end": 2.14
+   },
+   {
+    "word": "about",
+    "start": 2.14,
+    "end": 2.78
+   },
+   {
+    "word": "Rose.",
+    "start": 2.78,
+    "end": 3.28
+   },
+   {
+    "word": "Read",
+    "start": 4.18,
+    "end": 4.42
+   },
+   {
+    "word": "it",
+    "start": 4.42,
+    "end": 4.6
+   },
+   {
+    "word": "out",
+    "start": 4.6,
+    "end": 4.8
+   },
+   {
+    "word": "loud",
+    "start": 4.8,
+    "end": 5.14
+   },
+   {
+    "word": "in",
+    "start": 5.14,
+    "end": 5.52
+   },
+   {
+    "word": "your",
+    "start": 5.52,
+    "end": 5.66
+   },
+   {
+    "word": "clearest",
+    "start": 5.66,
+    "end": 6.28
+   },
+   {
+    "word": "voice",
+    "start": 6.28,
+    "end": 6.7
+   },
+   {
+    "word": "and",
+    "start": 6.7,
+    "end": 7.38
+   },
+   {
+    "word": "pay",
+    "start": 7.38,
+    "end": 7.7
+   },
+   {
+    "word": "attention",
+    "start": 7.7,
+    "end": 8.16
+   },
+   {
+    "word": "to",
+    "start": 8.16,
+    "end": 8.6
+   },
+   {
+    "word": "what",
+    "start": 8.6,
+    "end": 8.84
+   },
+   {
+    "word": "Rose",
+    "start": 8.84,
+    "end": 9.2
+   },
+   {
+    "word": "says",
+    "start": 9.2,
+    "end": 9.68
+   },
+   {
+    "word": "and",
+    "start": 9.68,
+    "end": 10.24
+   },
+   {
+    "word": "does.",
+    "start": 10.24,
+    "end": 10.52
+   }
+  ]
+ },
+ "page-3-read-sentence": {
+  "duration": 19.02,
+  "words": [
+   {
+    "word": "Ben",
+    "start": 0.0,
+    "end": 0.8
+   },
+   {
+    "word": "did",
+    "start": 0.8,
+    "end": 1.22
+   },
+   {
+    "word": "not",
+    "start": 1.22,
+    "end": 1.62
+   },
+   {
+    "word": "run",
+    "start": 1.62,
+    "end": 2.08
+   },
+   {
+    "word": "to",
+    "start": 2.08,
+    "end": 2.38
+   },
+   {
+    "word": "the",
+    "start": 2.38,
+    "end": 2.54
+   },
+   {
+    "word": "window.",
+    "start": 2.54,
+    "end": 2.98
+   },
+   {
+    "word": "He",
+    "start": 3.78,
+    "end": 3.84
+   },
+   {
+    "word": "pulled",
+    "start": 3.84,
+    "end": 4.3
+   },
+   {
+    "word": "his",
+    "start": 4.3,
+    "end": 4.64
+   },
+   {
+    "word": "blanket",
+    "start": 4.64,
+    "end": 5.08
+   },
+   {
+    "word": "over",
+    "start": 5.08,
+    "end": 5.6
+   },
+   {
+    "word": "his",
+    "start": 5.6,
+    "end": 5.94
+   },
+   {
+    "word": "head.",
+    "start": 5.94,
+    "end": 6.3
+   },
+   {
+    "word": "Make",
+    "start": 6.3,
+    "end": 7.52
+   },
+   {
+    "word": "it",
+    "start": 7.52,
+    "end": 7.82
+   },
+   {
+    "word": "stop,",
+    "start": 7.82,
+    "end": 8.32
+   },
+   {
+    "word": "he",
+    "start": 8.88,
+    "end": 9.16
+   },
+   {
+    "word": "whispered.",
+    "start": 9.16,
+    "end": 9.82
+   },
+   {
+    "word": "I",
+    "start": 10.36,
+    "end": 10.64
+   },
+   {
+    "word": "do",
+    "start": 10.64,
+    "end": 10.86
+   },
+   {
+    "word": "not",
+    "start": 10.86,
+    "end": 11.24
+   },
+   {
+    "word": "like",
+    "start": 11.24,
+    "end": 11.68
+   },
+   {
+    "word": "the",
+    "start": 11.68,
+    "end": 12.0
+   },
+   {
+    "word": "boom.",
+    "start": 12.0,
+    "end": 12.42
+   },
+   {
+    "word": "At",
+    "start": 13.6,
+    "end": 13.74
+   },
+   {
+    "word": "last",
+    "start": 13.74,
+    "end": 14.18
+   },
+   {
+    "word": "the",
+    "start": 14.18,
+    "end": 14.54
+   },
+   {
+    "word": "storm",
+    "start": 14.54,
+    "end": 15.1
+   },
+   {
+    "word": "rolled",
+    "start": 15.1,
+    "end": 15.32
+   },
+   {
+    "word": "away,",
+    "start": 15.32,
+    "end": 15.74
+   },
+   {
+    "word": "and",
+    "start": 16.34,
+    "end": 16.48
+   },
+   {
+    "word": "Ben",
+    "start": 16.48,
+    "end": 16.92
+   },
+   {
+    "word": "peaked",
+    "start": 16.92,
+    "end": 17.78
+   },
+   {
+    "word": "out",
+    "start": 17.78,
+    "end": 18.18
+   },
+   {
+    "word": "at",
+    "start": 18.18,
+    "end": 18.46
+   },
+   {
+    "word": "a",
+    "start": 18.46,
+    "end": 18.58
+   },
+   {
+    "word": "rainbow.",
+    "start": 18.58,
+    "end": 19.02
+   }
+  ]
+ },
+ "page-3-read": {
+  "duration": 11.24,
+  "words": [
+   {
+    "word": "Page",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "3",
+    "start": 0.46,
+    "end": 1.0
+   },
+   {
+    "word": "is",
+    "start": 1.0,
+    "end": 1.46
+   },
+   {
+    "word": "all",
+    "start": 1.46,
+    "end": 1.8
+   },
+   {
+    "word": "about",
+    "start": 1.8,
+    "end": 2.18
+   },
+   {
+    "word": "Ben.",
+    "start": 2.18,
+    "end": 2.54
+   },
+   {
+    "word": "Same",
+    "start": 3.42,
+    "end": 3.84
+   },
+   {
+    "word": "storm,",
+    "start": 3.84,
+    "end": 4.36
+   },
+   {
+    "word": "same",
+    "start": 5.02,
+    "end": 5.58
+   },
+   {
+    "word": "boom.",
+    "start": 5.58,
+    "end": 6.06
+   },
+   {
+    "word": "Read",
+    "start": 7.1,
+    "end": 7.46
+   },
+   {
+    "word": "along",
+    "start": 7.46,
+    "end": 7.74
+   },
+   {
+    "word": "with",
+    "start": 7.74,
+    "end": 8.06
+   },
+   {
+    "word": "me",
+    "start": 8.06,
+    "end": 8.28
+   },
+   {
+    "word": "and",
+    "start": 8.28,
+    "end": 8.76
+   },
+   {
+    "word": "watch",
+    "start": 8.76,
+    "end": 9.14
+   },
+   {
+    "word": "what",
+    "start": 9.14,
+    "end": 9.42
+   },
+   {
+    "word": "Ben",
+    "start": 9.42,
+    "end": 9.8
+   },
+   {
+    "word": "says",
+    "start": 9.8,
+    "end": 10.44
+   },
+   {
+    "word": "and",
+    "start": 10.44,
+    "end": 10.94
+   },
+   {
+    "word": "does.",
+    "start": 10.94,
+    "end": 11.24
+   }
+  ]
+ },
+ "sequence-retell": {
+  "duration": 13.76,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "retell",
+    "start": 1.1,
+    "end": 1.58
+   },
+   {
+    "word": "the",
+    "start": 1.58,
+    "end": 1.86
+   },
+   {
+    "word": "big",
+    "start": 1.86,
+    "end": 2.18
+   },
+   {
+    "word": "storm",
+    "start": 2.18,
+    "end": 2.76
+   },
+   {
+    "word": "like",
+    "start": 2.76,
+    "end": 3.3
+   },
+   {
+    "word": "a",
+    "start": 3.3,
+    "end": 3.48
+   },
+   {
+    "word": "storyteller.",
+    "start": 3.48,
+    "end": 4.34
+   },
+   {
+    "word": "Think",
+    "start": 5.1,
+    "end": 5.62
+   },
+   {
+    "word": "about",
+    "start": 5.62,
+    "end": 5.94
+   },
+   {
+    "word": "what",
+    "start": 5.94,
+    "end": 6.22
+   },
+   {
+    "word": "happened",
+    "start": 6.22,
+    "end": 6.74
+   },
+   {
+    "word": "first,",
+    "start": 6.74,
+    "end": 7.26
+   },
+   {
+    "word": "next,",
+    "start": 8.08,
+    "end": 8.54
+   },
+   {
+    "word": "then,",
+    "start": 9.08,
+    "end": 9.54
+   },
+   {
+    "word": "and",
+    "start": 10.02,
+    "end": 10.38
+   },
+   {
+    "word": "last.",
+    "start": 10.38,
+    "end": 10.76
+   },
+   {
+    "word": "Drag",
+    "start": 11.72,
+    "end": 11.96
+   },
+   {
+    "word": "the",
+    "start": 11.96,
+    "end": 12.22
+   },
+   {
+    "word": "events",
+    "start": 12.22,
+    "end": 12.52
+   },
+   {
+    "word": "into",
+    "start": 12.52,
+    "end": 12.86
+   },
+   {
+    "word": "story",
+    "start": 12.86,
+    "end": 13.34
+   },
+   {
+    "word": "order.",
+    "start": 13.34,
+    "end": 13.76
+   }
+  ]
+ },
+ "sort-who-said-it": {
+  "duration": 20.3,
+  "words": [
+   {
+    "word": "Same",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "storm,",
+    "start": 0.62,
+    "end": 1.26
+   },
+   {
+    "word": "two",
+    "start": 1.7,
+    "end": 2.1
+   },
+   {
+    "word": "points",
+    "start": 2.1,
+    "end": 2.56
+   },
+   {
+    "word": "of",
+    "start": 2.56,
+    "end": 2.96
+   },
+   {
+    "word": "view.",
+    "start": 2.96,
+    "end": 3.36
+   },
+   {
+    "word": "Rose's",
+    "start": 4.08,
+    "end": 4.58
+   },
+   {
+    "word": "feeling",
+    "start": 4.58,
+    "end": 4.94
+   },
+   {
+    "word": "is",
+    "start": 4.94,
+    "end": 5.18
+   },
+   {
+    "word": "real",
+    "start": 5.18,
+    "end": 5.42
+   },
+   {
+    "word": "and",
+    "start": 5.42,
+    "end": 6.0
+   },
+   {
+    "word": "Ben's",
+    "start": 6.0,
+    "end": 6.5
+   },
+   {
+    "word": "feeling",
+    "start": 6.5,
+    "end": 6.88
+   },
+   {
+    "word": "is",
+    "start": 6.88,
+    "end": 7.14
+   },
+   {
+    "word": "real",
+    "start": 7.14,
+    "end": 7.36
+   },
+   {
+    "word": "too.",
+    "start": 7.36,
+    "end": 7.66
+   },
+   {
+    "word": "Here",
+    "start": 8.58,
+    "end": 9.04
+   },
+   {
+    "word": "are",
+    "start": 9.04,
+    "end": 9.3
+   },
+   {
+    "word": "six",
+    "start": 9.3,
+    "end": 9.88
+   },
+   {
+    "word": "pieces",
+    "start": 9.88,
+    "end": 10.38
+   },
+   {
+    "word": "of",
+    "start": 10.38,
+    "end": 10.82
+   },
+   {
+    "word": "the",
+    "start": 10.82,
+    "end": 11.12
+   },
+   {
+    "word": "big",
+    "start": 11.12,
+    "end": 11.44
+   },
+   {
+    "word": "storm.",
+    "start": 11.44,
+    "end": 12.04
+   },
+   {
+    "word": "Read",
+    "start": 12.94,
+    "end": 13.24
+   },
+   {
+    "word": "each",
+    "start": 13.24,
+    "end": 13.78
+   },
+   {
+    "word": "piece",
+    "start": 13.78,
+    "end": 14.22
+   },
+   {
+    "word": "and",
+    "start": 14.22,
+    "end": 15.04
+   },
+   {
+    "word": "think",
+    "start": 15.04,
+    "end": 15.32
+   },
+   {
+    "word": "about",
+    "start": 15.32,
+    "end": 15.68
+   },
+   {
+    "word": "who",
+    "start": 15.68,
+    "end": 16.1
+   },
+   {
+    "word": "said",
+    "start": 16.1,
+    "end": 16.58
+   },
+   {
+    "word": "or",
+    "start": 16.58,
+    "end": 17.02
+   },
+   {
+    "word": "did",
+    "start": 17.02,
+    "end": 17.28
+   },
+   {
+    "word": "it",
+    "start": 17.28,
+    "end": 17.58
+   },
+   {
+    "word": "and",
+    "start": 17.58,
+    "end": 18.22
+   },
+   {
+    "word": "drag",
+    "start": 18.22,
+    "end": 18.56
+   },
+   {
+    "word": "it",
+    "start": 18.56,
+    "end": 18.88
+   },
+   {
+    "word": "to",
+    "start": 18.88,
+    "end": 19.12
+   },
+   {
+    "word": "that",
+    "start": 19.12,
+    "end": 19.32
+   },
+   {
+    "word": "character's",
+    "start": 19.32,
+    "end": 20.04
+   },
+   {
+    "word": "name.",
+    "start": 20.04,
+    "end": 20.3
+   }
+  ]
+ },
+ "speak-same-or-different": {
+  "duration": 18.04,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "one",
+    "start": 0.5,
+    "end": 1.08
+   },
+   {
+    "word": "and",
+    "start": 1.08,
+    "end": 1.48
+   },
+   {
+    "word": "you",
+    "start": 1.48,
+    "end": 1.78
+   },
+   {
+    "word": "say",
+    "start": 1.78,
+    "end": 2.16
+   },
+   {
+    "word": "it,",
+    "start": 2.16,
+    "end": 2.48
+   },
+   {
+    "word": "Rose",
+    "start": 2.96,
+    "end": 3.36
+   },
+   {
+    "word": "cheered",
+    "start": 3.36,
+    "end": 4.26
+   },
+   {
+    "word": "at",
+    "start": 4.26,
+    "end": 4.38
+   },
+   {
+    "word": "the",
+    "start": 4.38,
+    "end": 4.54
+   },
+   {
+    "word": "storm,",
+    "start": 4.54,
+    "end": 4.96
+   },
+   {
+    "word": "Ben",
+    "start": 5.68,
+    "end": 5.86
+   },
+   {
+    "word": "hid",
+    "start": 5.86,
+    "end": 6.66
+   },
+   {
+    "word": "from",
+    "start": 6.66,
+    "end": 7.04
+   },
+   {
+    "word": "it.",
+    "start": 7.04,
+    "end": 7.32
+   },
+   {
+    "word": "Here",
+    "start": 7.94,
+    "end": 8.34
+   },
+   {
+    "word": "is",
+    "start": 8.34,
+    "end": 8.56
+   },
+   {
+    "word": "the",
+    "start": 8.56,
+    "end": 8.7
+   },
+   {
+    "word": "big",
+    "start": 8.7,
+    "end": 9.12
+   },
+   {
+    "word": "teacher",
+    "start": 9.12,
+    "end": 9.52
+   },
+   {
+    "word": "question.",
+    "start": 9.52,
+    "end": 10.06
+   },
+   {
+    "word": "Did",
+    "start": 10.86,
+    "end": 10.98
+   },
+   {
+    "word": "Rose",
+    "start": 10.98,
+    "end": 11.38
+   },
+   {
+    "word": "and",
+    "start": 11.38,
+    "end": 11.8
+   },
+   {
+    "word": "Ben",
+    "start": 11.8,
+    "end": 12.16
+   },
+   {
+    "word": "feel",
+    "start": 12.16,
+    "end": 12.64
+   },
+   {
+    "word": "the",
+    "start": 12.64,
+    "end": 12.86
+   },
+   {
+    "word": "same",
+    "start": 12.86,
+    "end": 13.24
+   },
+   {
+    "word": "way",
+    "start": 13.24,
+    "end": 13.48
+   },
+   {
+    "word": "about",
+    "start": 13.48,
+    "end": 13.74
+   },
+   {
+    "word": "the",
+    "start": 13.74,
+    "end": 13.92
+   },
+   {
+    "word": "storm",
+    "start": 13.92,
+    "end": 14.34
+   },
+   {
+    "word": "or",
+    "start": 14.34,
+    "end": 14.7
+   },
+   {
+    "word": "two",
+    "start": 14.7,
+    "end": 15.08
+   },
+   {
+    "word": "different",
+    "start": 15.08,
+    "end": 15.7
+   },
+   {
+    "word": "ways?",
+    "start": 15.7,
+    "end": 16.28
+   },
+   {
+    "word": "Tap",
+    "start": 16.84,
+    "end": 17.0
+   },
+   {
+    "word": "the",
+    "start": 17.0,
+    "end": 17.24
+   },
+   {
+    "word": "mic",
+    "start": 17.24,
+    "end": 17.4
+   },
+   {
+    "word": "and",
+    "start": 17.4,
+    "end": 17.6
+   },
+   {
+    "word": "say",
+    "start": 17.6,
+    "end": 17.84
+   },
+   {
+    "word": "it.",
+    "start": 17.84,
+    "end": 18.04
+   }
+  ]
+ }
+}

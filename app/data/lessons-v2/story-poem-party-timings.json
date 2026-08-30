@@ -1,0 +1,3152 @@
+{
+ "celebrate-party": {
+  "duration": 29.24,
+  "words": [
+   {
+    "word": "Stop",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "and",
+    "start": 0.66,
+    "end": 1.1
+   },
+   {
+    "word": "look",
+    "start": 1.1,
+    "end": 1.46
+   },
+   {
+    "word": "at",
+    "start": 1.46,
+    "end": 1.74
+   },
+   {
+    "word": "what",
+    "start": 1.74,
+    "end": 2.1
+   },
+   {
+    "word": "you",
+    "start": 2.1,
+    "end": 2.4
+   },
+   {
+    "word": "just",
+    "start": 2.4,
+    "end": 2.68
+   },
+   {
+    "word": "did.",
+    "start": 2.68,
+    "end": 3.08
+   },
+   {
+    "word": "You",
+    "start": 3.68,
+    "end": 4.04
+   },
+   {
+    "word": "read",
+    "start": 4.04,
+    "end": 4.34
+   },
+   {
+    "word": "a",
+    "start": 4.34,
+    "end": 4.7
+   },
+   {
+    "word": "whole",
+    "start": 4.7,
+    "end": 5.0
+   },
+   {
+    "word": "story.",
+    "start": 5.0,
+    "end": 5.76
+   },
+   {
+    "word": "Start",
+    "start": 6.18,
+    "end": 6.44
+   },
+   {
+    "word": "to",
+    "start": 6.44,
+    "end": 6.8
+   },
+   {
+    "word": "finish.",
+    "start": 6.8,
+    "end": 7.12
+   },
+   {
+    "word": "You",
+    "start": 7.76,
+    "end": 8.02
+   },
+   {
+    "word": "read",
+    "start": 8.02,
+    "end": 8.26
+   },
+   {
+    "word": "a",
+    "start": 8.26,
+    "end": 8.54
+   },
+   {
+    "word": "whole",
+    "start": 8.54,
+    "end": 9.0
+   },
+   {
+    "word": "poem",
+    "start": 9.0,
+    "end": 9.56
+   },
+   {
+    "word": "rhyme",
+    "start": 9.56,
+    "end": 10.24
+   },
+   {
+    "word": "after",
+    "start": 10.24,
+    "end": 10.88
+   },
+   {
+    "word": "rhyme.",
+    "start": 10.88,
+    "end": 11.22
+   },
+   {
+    "word": "You",
+    "start": 11.92,
+    "end": 12.1
+   },
+   {
+    "word": "predicted,",
+    "start": 12.1,
+    "end": 12.64
+   },
+   {
+    "word": "you",
+    "start": 13.1,
+    "end": 13.22
+   },
+   {
+    "word": "checked",
+    "start": 13.22,
+    "end": 13.62
+   },
+   {
+    "word": "feelings,",
+    "start": 13.62,
+    "end": 14.14
+   },
+   {
+    "word": "you",
+    "start": 14.7,
+    "end": 14.86
+   },
+   {
+    "word": "found",
+    "start": 14.86,
+    "end": 15.2
+   },
+   {
+    "word": "rhymes,",
+    "start": 15.2,
+    "end": 15.66
+   },
+   {
+    "word": "and",
+    "start": 16.02,
+    "end": 16.18
+   },
+   {
+    "word": "you",
+    "start": 16.18,
+    "end": 16.36
+   },
+   {
+    "word": "retold",
+    "start": 16.36,
+    "end": 16.98
+   },
+   {
+    "word": "it",
+    "start": 16.98,
+    "end": 17.16
+   },
+   {
+    "word": "all",
+    "start": 17.16,
+    "end": 17.48
+   },
+   {
+    "word": "in",
+    "start": 17.48,
+    "end": 17.78
+   },
+   {
+    "word": "order.",
+    "start": 17.78,
+    "end": 18.14
+   },
+   {
+    "word": "That",
+    "start": 18.76,
+    "end": 19.3
+   },
+   {
+    "word": "is",
+    "start": 19.3,
+    "end": 19.78
+   },
+   {
+    "word": "what",
+    "start": 19.78,
+    "end": 20.04
+   },
+   {
+    "word": "real",
+    "start": 20.04,
+    "end": 20.4
+   },
+   {
+    "word": "readers",
+    "start": 20.4,
+    "end": 20.8
+   },
+   {
+    "word": "do,",
+    "start": 20.8,
+    "end": 21.2
+   },
+   {
+    "word": "and",
+    "start": 21.54,
+    "end": 21.74
+   },
+   {
+    "word": "that",
+    "start": 21.74,
+    "end": 22.14
+   },
+   {
+    "word": "is",
+    "start": 22.14,
+    "end": 22.56
+   },
+   {
+    "word": "what",
+    "start": 22.56,
+    "end": 22.86
+   },
+   {
+    "word": "you",
+    "start": 22.86,
+    "end": 23.26
+   },
+   {
+    "word": "are.",
+    "start": 23.26,
+    "end": 23.64
+   },
+   {
+    "word": "This",
+    "start": 24.24,
+    "end": 24.6
+   },
+   {
+    "word": "is",
+    "start": 24.6,
+    "end": 24.88
+   },
+   {
+    "word": "the",
+    "start": 24.88,
+    "end": 25.12
+   },
+   {
+    "word": "biggest",
+    "start": 25.12,
+    "end": 25.62
+   },
+   {
+    "word": "reading",
+    "start": 25.62,
+    "end": 26.04
+   },
+   {
+    "word": "party",
+    "start": 26.04,
+    "end": 26.36
+   },
+   {
+    "word": "of",
+    "start": 26.36,
+    "end": 26.68
+   },
+   {
+    "word": "the",
+    "start": 26.68,
+    "end": 26.88
+   },
+   {
+    "word": "year,",
+    "start": 26.88,
+    "end": 27.42
+   },
+   {
+    "word": "and",
+    "start": 27.66,
+    "end": 27.82
+   },
+   {
+    "word": "it",
+    "start": 27.82,
+    "end": 27.96
+   },
+   {
+    "word": "is",
+    "start": 27.96,
+    "end": 28.14
+   },
+   {
+    "word": "all",
+    "start": 28.14,
+    "end": 28.58
+   },
+   {
+    "word": "for",
+    "start": 28.58,
+    "end": 28.9
+   },
+   {
+    "word": "you.",
+    "start": 28.9,
+    "end": 29.24
+   }
+  ]
+ },
+ "check-feeling": {
+  "duration": 11.46,
+  "words": [
+   {
+    "word": "Check",
+    "start": 0.0,
+    "end": 0.4
+   },
+   {
+    "word": "in",
+    "start": 0.4,
+    "end": 0.68
+   },
+   {
+    "word": "time.",
+    "start": 0.68,
+    "end": 1.16
+   },
+   {
+    "word": "Think",
+    "start": 1.74,
+    "end": 2.06
+   },
+   {
+    "word": "about",
+    "start": 2.06,
+    "end": 2.42
+   },
+   {
+    "word": "page",
+    "start": 2.42,
+    "end": 2.82
+   },
+   {
+    "word": "1.",
+    "start": 2.82,
+    "end": 3.24
+   },
+   {
+    "word": "The",
+    "start": 3.74,
+    "end": 3.86
+   },
+   {
+    "word": "page",
+    "start": 3.86,
+    "end": 4.16
+   },
+   {
+    "word": "you",
+    "start": 4.16,
+    "end": 4.4
+   },
+   {
+    "word": "just",
+    "start": 4.4,
+    "end": 4.7
+   },
+   {
+    "word": "read.",
+    "start": 4.7,
+    "end": 5.18
+   },
+   {
+    "word": "How",
+    "start": 5.92,
+    "end": 6.2
+   },
+   {
+    "word": "did",
+    "start": 6.2,
+    "end": 6.38
+   },
+   {
+    "word": "Ollie",
+    "start": 6.38,
+    "end": 6.74
+   },
+   {
+    "word": "feel",
+    "start": 6.74,
+    "end": 7.2
+   },
+   {
+    "word": "about",
+    "start": 7.2,
+    "end": 7.54
+   },
+   {
+    "word": "the",
+    "start": 7.54,
+    "end": 7.72
+   },
+   {
+    "word": "dark?",
+    "start": 7.72,
+    "end": 7.96
+   },
+   {
+    "word": "Read",
+    "start": 8.9,
+    "end": 9.16
+   },
+   {
+    "word": "each",
+    "start": 9.16,
+    "end": 9.58
+   },
+   {
+    "word": "word,",
+    "start": 9.58,
+    "end": 9.92
+   },
+   {
+    "word": "then",
+    "start": 10.18,
+    "end": 10.52
+   },
+   {
+    "word": "tap",
+    "start": 10.52,
+    "end": 10.82
+   },
+   {
+    "word": "your",
+    "start": 10.82,
+    "end": 11.08
+   },
+   {
+    "word": "answer.",
+    "start": 11.08,
+    "end": 11.46
+   }
+  ]
+ },
+ "check-why": {
+  "duration": 13.92,
+  "words": [
+   {
+    "word": "Big",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "thinking",
+    "start": 0.56,
+    "end": 1.14
+   },
+   {
+    "word": "time.",
+    "start": 1.14,
+    "end": 1.66
+   },
+   {
+    "word": "At",
+    "start": 2.26,
+    "end": 2.52
+   },
+   {
+    "word": "the",
+    "start": 2.52,
+    "end": 2.66
+   },
+   {
+    "word": "start,",
+    "start": 2.66,
+    "end": 3.06
+   },
+   {
+    "word": "Oli",
+    "start": 3.56,
+    "end": 3.76
+   },
+   {
+    "word": "was",
+    "start": 3.76,
+    "end": 4.0
+   },
+   {
+    "word": "scared",
+    "start": 4.0,
+    "end": 4.46
+   },
+   {
+    "word": "of",
+    "start": 4.46,
+    "end": 4.74
+   },
+   {
+    "word": "the",
+    "start": 4.74,
+    "end": 4.86
+   },
+   {
+    "word": "dark.",
+    "start": 4.86,
+    "end": 5.12
+   },
+   {
+    "word": "At",
+    "start": 5.86,
+    "end": 5.98
+   },
+   {
+    "word": "the",
+    "start": 5.98,
+    "end": 6.16
+   },
+   {
+    "word": "end,",
+    "start": 6.16,
+    "end": 6.66
+   },
+   {
+    "word": "he",
+    "start": 6.78,
+    "end": 7.04
+   },
+   {
+    "word": "loves",
+    "start": 7.04,
+    "end": 7.48
+   },
+   {
+    "word": "the",
+    "start": 7.48,
+    "end": 7.82
+   },
+   {
+    "word": "night.",
+    "start": 7.82,
+    "end": 8.08
+   },
+   {
+    "word": "Why",
+    "start": 8.82,
+    "end": 9.18
+   },
+   {
+    "word": "did",
+    "start": 9.18,
+    "end": 9.34
+   },
+   {
+    "word": "Oli",
+    "start": 9.34,
+    "end": 9.68
+   },
+   {
+    "word": "change?",
+    "start": 9.68,
+    "end": 10.1
+   },
+   {
+    "word": "Read",
+    "start": 11.12,
+    "end": 11.32
+   },
+   {
+    "word": "each",
+    "start": 11.32,
+    "end": 11.86
+   },
+   {
+    "word": "choice,",
+    "start": 11.86,
+    "end": 12.4
+   },
+   {
+    "word": "then",
+    "start": 12.58,
+    "end": 12.88
+   },
+   {
+    "word": "tap",
+    "start": 12.88,
+    "end": 13.24
+   },
+   {
+    "word": "the",
+    "start": 13.24,
+    "end": 13.56
+   },
+   {
+    "word": "reason.",
+    "start": 13.56,
+    "end": 13.92
+   }
+  ]
+ },
+ "compare-events": {
+  "duration": 13.96,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "more",
+    "start": 0.58,
+    "end": 1.02
+   },
+   {
+    "word": "compare.",
+    "start": 1.02,
+    "end": 1.62
+   },
+   {
+    "word": "One",
+    "start": 2.76,
+    "end": 3.02
+   },
+   {
+    "word": "of",
+    "start": 3.02,
+    "end": 3.2
+   },
+   {
+    "word": "them",
+    "start": 3.2,
+    "end": 3.36
+   },
+   {
+    "word": "tells",
+    "start": 3.36,
+    "end": 3.72
+   },
+   {
+    "word": "events.",
+    "start": 3.72,
+    "end": 4.34
+   },
+   {
+    "word": "Things",
+    "start": 5.2,
+    "end": 5.62
+   },
+   {
+    "word": "that",
+    "start": 5.62,
+    "end": 5.86
+   },
+   {
+    "word": "happened",
+    "start": 5.86,
+    "end": 6.46
+   },
+   {
+    "word": "first,",
+    "start": 6.46,
+    "end": 7.28
+   },
+   {
+    "word": "next,",
+    "start": 7.9,
+    "end": 8.2
+   },
+   {
+    "word": "and",
+    "start": 8.68,
+    "end": 8.94
+   },
+   {
+    "word": "last.",
+    "start": 8.94,
+    "end": 9.26
+   },
+   {
+    "word": "Which",
+    "start": 10.4,
+    "end": 10.76
+   },
+   {
+    "word": "one",
+    "start": 10.76,
+    "end": 11.08
+   },
+   {
+    "word": "tells",
+    "start": 11.08,
+    "end": 11.6
+   },
+   {
+    "word": "events?",
+    "start": 11.6,
+    "end": 12.28
+   },
+   {
+    "word": "Tap",
+    "start": 13.22,
+    "end": 13.68
+   },
+   {
+    "word": "it.",
+    "start": 13.68,
+    "end": 13.96
+   }
+  ]
+ },
+ "compare-rhyme": {
+  "duration": 18.54,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "read",
+    "start": 0.46,
+    "end": 0.78
+   },
+   {
+    "word": "two",
+    "start": 0.78,
+    "end": 1.26
+   },
+   {
+    "word": "party",
+    "start": 1.26,
+    "end": 1.8
+   },
+   {
+    "word": "texts",
+    "start": 1.8,
+    "end": 2.26
+   },
+   {
+    "word": "today.",
+    "start": 2.26,
+    "end": 2.78
+   },
+   {
+    "word": "A",
+    "start": 3.56,
+    "end": 3.72
+   },
+   {
+    "word": "story",
+    "start": 3.72,
+    "end": 4.1
+   },
+   {
+    "word": "about",
+    "start": 4.1,
+    "end": 4.5
+   },
+   {
+    "word": "Ollie",
+    "start": 4.5,
+    "end": 4.9
+   },
+   {
+    "word": "and",
+    "start": 4.9,
+    "end": 5.74
+   },
+   {
+    "word": "a",
+    "start": 5.74,
+    "end": 5.98
+   },
+   {
+    "word": "poem",
+    "start": 5.98,
+    "end": 6.2
+   },
+   {
+    "word": "about",
+    "start": 6.2,
+    "end": 6.72
+   },
+   {
+    "word": "the",
+    "start": 6.72,
+    "end": 6.94
+   },
+   {
+    "word": "night.",
+    "start": 6.94,
+    "end": 7.24
+   },
+   {
+    "word": "Compare",
+    "start": 8.04,
+    "end": 8.44
+   },
+   {
+    "word": "them.",
+    "start": 8.44,
+    "end": 8.78
+   },
+   {
+    "word": "In",
+    "start": 9.68,
+    "end": 9.92
+   },
+   {
+    "word": "one",
+    "start": 9.92,
+    "end": 10.2
+   },
+   {
+    "word": "of",
+    "start": 10.2,
+    "end": 10.38
+   },
+   {
+    "word": "them,",
+    "start": 10.38,
+    "end": 10.72
+   },
+   {
+    "word": "the",
+    "start": 11.1,
+    "end": 11.3
+   },
+   {
+    "word": "words",
+    "start": 11.3,
+    "end": 11.72
+   },
+   {
+    "word": "at",
+    "start": 11.72,
+    "end": 12.04
+   },
+   {
+    "word": "the",
+    "start": 12.04,
+    "end": 12.2
+   },
+   {
+    "word": "ends",
+    "start": 12.2,
+    "end": 12.52
+   },
+   {
+    "word": "of",
+    "start": 12.52,
+    "end": 12.64
+   },
+   {
+    "word": "the",
+    "start": 12.64,
+    "end": 12.78
+   },
+   {
+    "word": "lines",
+    "start": 12.78,
+    "end": 13.16
+   },
+   {
+    "word": "made",
+    "start": 13.16,
+    "end": 13.68
+   },
+   {
+    "word": "matching",
+    "start": 13.68,
+    "end": 14.42
+   },
+   {
+    "word": "sounds.",
+    "start": 14.42,
+    "end": 15.12
+   },
+   {
+    "word": "Which",
+    "start": 15.82,
+    "end": 16.1
+   },
+   {
+    "word": "one",
+    "start": 16.1,
+    "end": 16.48
+   },
+   {
+    "word": "rhymes?",
+    "start": 16.48,
+    "end": 17.02
+   },
+   {
+    "word": "Tap",
+    "start": 17.76,
+    "end": 17.92
+   },
+   {
+    "word": "your",
+    "start": 17.92,
+    "end": 18.18
+   },
+   {
+    "word": "answer.",
+    "start": 18.18,
+    "end": 18.54
+   }
+  ]
+ },
+ "complete": {
+  "duration": 26.0,
+  "words": [
+   {
+    "word": "What",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "a",
+    "start": 0.54,
+    "end": 0.86
+   },
+   {
+    "word": "party!",
+    "start": 0.86,
+    "end": 1.46
+   },
+   {
+    "word": "You",
+    "start": 2.14,
+    "end": 2.4
+   },
+   {
+    "word": "read",
+    "start": 2.4,
+    "end": 2.7
+   },
+   {
+    "word": "a",
+    "start": 2.7,
+    "end": 3.04
+   },
+   {
+    "word": "whole",
+    "start": 3.04,
+    "end": 3.34
+   },
+   {
+    "word": "story",
+    "start": 3.34,
+    "end": 3.98
+   },
+   {
+    "word": "about",
+    "start": 3.98,
+    "end": 4.3
+   },
+   {
+    "word": "Oli",
+    "start": 4.3,
+    "end": 4.78
+   },
+   {
+    "word": "the",
+    "start": 4.78,
+    "end": 5.02
+   },
+   {
+    "word": "Owl",
+    "start": 5.02,
+    "end": 5.58
+   },
+   {
+    "word": "and",
+    "start": 5.58,
+    "end": 6.28
+   },
+   {
+    "word": "a",
+    "start": 6.28,
+    "end": 6.54
+   },
+   {
+    "word": "whole",
+    "start": 6.54,
+    "end": 6.96
+   },
+   {
+    "word": "poem",
+    "start": 6.96,
+    "end": 7.42
+   },
+   {
+    "word": "about",
+    "start": 7.42,
+    "end": 7.98
+   },
+   {
+    "word": "the",
+    "start": 7.98,
+    "end": 8.26
+   },
+   {
+    "word": "night.",
+    "start": 8.26,
+    "end": 8.58
+   },
+   {
+    "word": "You",
+    "start": 9.28,
+    "end": 9.54
+   },
+   {
+    "word": "predicted,",
+    "start": 9.54,
+    "end": 10.4
+   },
+   {
+    "word": "you",
+    "start": 11.0,
+    "end": 11.12
+   },
+   {
+    "word": "checked",
+    "start": 11.12,
+    "end": 11.52
+   },
+   {
+    "word": "feelings,",
+    "start": 11.52,
+    "end": 12.06
+   },
+   {
+    "word": "you",
+    "start": 12.66,
+    "end": 12.86
+   },
+   {
+    "word": "found",
+    "start": 12.86,
+    "end": 13.26
+   },
+   {
+    "word": "rhymes",
+    "start": 13.26,
+    "end": 13.76
+   },
+   {
+    "word": "and",
+    "start": 13.76,
+    "end": 14.18
+   },
+   {
+    "word": "sense",
+    "start": 14.18,
+    "end": 14.72
+   },
+   {
+    "word": "words,",
+    "start": 14.72,
+    "end": 15.24
+   },
+   {
+    "word": "and",
+    "start": 15.7,
+    "end": 16.08
+   },
+   {
+    "word": "you",
+    "start": 16.08,
+    "end": 16.56
+   },
+   {
+    "word": "retold",
+    "start": 16.56,
+    "end": 17.24
+   },
+   {
+    "word": "it",
+    "start": 17.24,
+    "end": 17.42
+   },
+   {
+    "word": "all",
+    "start": 17.42,
+    "end": 17.78
+   },
+   {
+    "word": "in",
+    "start": 17.78,
+    "end": 18.2
+   },
+   {
+    "word": "order.",
+    "start": 18.2,
+    "end": 18.66
+   },
+   {
+    "word": "You",
+    "start": 19.38,
+    "end": 19.66
+   },
+   {
+    "word": "used",
+    "start": 19.66,
+    "end": 20.24
+   },
+   {
+    "word": "every",
+    "start": 20.24,
+    "end": 20.76
+   },
+   {
+    "word": "reading",
+    "start": 20.76,
+    "end": 21.24
+   },
+   {
+    "word": "skill",
+    "start": 21.24,
+    "end": 21.56
+   },
+   {
+    "word": "you",
+    "start": 21.56,
+    "end": 21.88
+   },
+   {
+    "word": "have.",
+    "start": 21.88,
+    "end": 22.42
+   },
+   {
+    "word": "You",
+    "start": 23.02,
+    "end": 23.4
+   },
+   {
+    "word": "are",
+    "start": 23.4,
+    "end": 23.74
+   },
+   {
+    "word": "a",
+    "start": 23.74,
+    "end": 23.98
+   },
+   {
+    "word": "real",
+    "start": 23.98,
+    "end": 24.54
+   },
+   {
+    "word": "grade",
+    "start": 24.54,
+    "end": 25.0
+   },
+   {
+    "word": "one",
+    "start": 25.0,
+    "end": 25.5
+   },
+   {
+    "word": "reader.",
+    "start": 25.5,
+    "end": 26.0
+   }
+  ]
+ },
+ "hook-party": {
+  "duration": 23.54,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "reader.",
+    "start": 0.7,
+    "end": 1.04
+   },
+   {
+    "word": "Today",
+    "start": 1.9,
+    "end": 2.16
+   },
+   {
+    "word": "is",
+    "start": 2.16,
+    "end": 2.7
+   },
+   {
+    "word": "a",
+    "start": 2.7,
+    "end": 2.84
+   },
+   {
+    "word": "big",
+    "start": 2.84,
+    "end": 3.24
+   },
+   {
+    "word": "day.",
+    "start": 3.24,
+    "end": 3.76
+   },
+   {
+    "word": "It",
+    "start": 4.42,
+    "end": 4.78
+   },
+   {
+    "word": "is",
+    "start": 4.78,
+    "end": 5.34
+   },
+   {
+    "word": "a",
+    "start": 5.34,
+    "end": 5.48
+   },
+   {
+    "word": "reading",
+    "start": 5.48,
+    "end": 5.88
+   },
+   {
+    "word": "party",
+    "start": 5.88,
+    "end": 6.34
+   },
+   {
+    "word": "and",
+    "start": 6.34,
+    "end": 7.02
+   },
+   {
+    "word": "you",
+    "start": 7.02,
+    "end": 7.54
+   },
+   {
+    "word": "are",
+    "start": 7.54,
+    "end": 7.94
+   },
+   {
+    "word": "the",
+    "start": 7.94,
+    "end": 8.1
+   },
+   {
+    "word": "star.",
+    "start": 8.1,
+    "end": 8.56
+   },
+   {
+    "word": "You",
+    "start": 9.34,
+    "end": 9.8
+   },
+   {
+    "word": "will",
+    "start": 9.8,
+    "end": 9.98
+   },
+   {
+    "word": "read",
+    "start": 9.98,
+    "end": 10.3
+   },
+   {
+    "word": "a",
+    "start": 10.3,
+    "end": 10.66
+   },
+   {
+    "word": "whole",
+    "start": 10.66,
+    "end": 10.98
+   },
+   {
+    "word": "story",
+    "start": 10.98,
+    "end": 11.64
+   },
+   {
+    "word": "and",
+    "start": 11.64,
+    "end": 12.32
+   },
+   {
+    "word": "a",
+    "start": 12.32,
+    "end": 12.8
+   },
+   {
+    "word": "whole",
+    "start": 12.8,
+    "end": 13.2
+   },
+   {
+    "word": "poem",
+    "start": 13.2,
+    "end": 13.74
+   },
+   {
+    "word": "all",
+    "start": 13.74,
+    "end": 14.48
+   },
+   {
+    "word": "the",
+    "start": 14.48,
+    "end": 14.74
+   },
+   {
+    "word": "way",
+    "start": 14.74,
+    "end": 15.0
+   },
+   {
+    "word": "to",
+    "start": 15.0,
+    "end": 15.34
+   },
+   {
+    "word": "the",
+    "start": 15.34,
+    "end": 15.58
+   },
+   {
+    "word": "end.",
+    "start": 15.58,
+    "end": 16.04
+   },
+   {
+    "word": "You",
+    "start": 16.74,
+    "end": 17.06
+   },
+   {
+    "word": "will",
+    "start": 17.06,
+    "end": 17.24
+   },
+   {
+    "word": "use",
+    "start": 17.24,
+    "end": 17.62
+   },
+   {
+    "word": "every",
+    "start": 17.62,
+    "end": 18.36
+   },
+   {
+    "word": "reading",
+    "start": 18.36,
+    "end": 18.84
+   },
+   {
+    "word": "skill",
+    "start": 18.84,
+    "end": 19.22
+   },
+   {
+    "word": "you",
+    "start": 19.22,
+    "end": 19.64
+   },
+   {
+    "word": "have.",
+    "start": 19.64,
+    "end": 20.08
+   },
+   {
+    "word": "Ready?",
+    "start": 20.82,
+    "end": 21.34
+   },
+   {
+    "word": "Let's",
+    "start": 22.12,
+    "end": 22.64
+   },
+   {
+    "word": "start",
+    "start": 22.64,
+    "end": 22.92
+   },
+   {
+    "word": "the",
+    "start": 22.92,
+    "end": 23.14
+   },
+   {
+    "word": "party.",
+    "start": 23.14,
+    "end": 23.54
+   }
+  ]
+ },
+ "poem-read-along-sentence": {
+  "duration": 25.56,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.4
+   },
+   {
+    "word": "sun",
+    "start": 0.4,
+    "end": 0.96
+   },
+   {
+    "word": "dips",
+    "start": 0.96,
+    "end": 1.36
+   },
+   {
+    "word": "down.",
+    "start": 1.36,
+    "end": 2.02
+   },
+   {
+    "word": "The",
+    "start": 2.76,
+    "end": 3.24
+   },
+   {
+    "word": "day",
+    "start": 3.24,
+    "end": 3.64
+   },
+   {
+    "word": "is",
+    "start": 3.64,
+    "end": 4.16
+   },
+   {
+    "word": "done.",
+    "start": 4.16,
+    "end": 4.6
+   },
+   {
+    "word": "The",
+    "start": 5.78,
+    "end": 6.0
+   },
+   {
+    "word": "stars",
+    "start": 6.0,
+    "end": 6.62
+   },
+   {
+    "word": "wink",
+    "start": 6.62,
+    "end": 7.08
+   },
+   {
+    "word": "on",
+    "start": 7.08,
+    "end": 7.74
+   },
+   {
+    "word": "one",
+    "start": 7.74,
+    "end": 8.7
+   },
+   {
+    "word": "by",
+    "start": 8.7,
+    "end": 9.18
+   },
+   {
+    "word": "one.",
+    "start": 9.18,
+    "end": 9.78
+   },
+   {
+    "word": "The",
+    "start": 11.0,
+    "end": 11.18
+   },
+   {
+    "word": "cool",
+    "start": 11.18,
+    "end": 11.66
+   },
+   {
+    "word": "wind",
+    "start": 11.66,
+    "end": 12.16
+   },
+   {
+    "word": "hums",
+    "start": 12.16,
+    "end": 12.98
+   },
+   {
+    "word": "a",
+    "start": 12.98,
+    "end": 13.28
+   },
+   {
+    "word": "low",
+    "start": 13.28,
+    "end": 13.74
+   },
+   {
+    "word": "sweet",
+    "start": 13.74,
+    "end": 14.64
+   },
+   {
+    "word": "tune.",
+    "start": 14.64,
+    "end": 15.48
+   },
+   {
+    "word": "Crickets",
+    "start": 16.64,
+    "end": 17.24
+   },
+   {
+    "word": "sing",
+    "start": 17.24,
+    "end": 17.9
+   },
+   {
+    "word": "to",
+    "start": 17.9,
+    "end": 18.68
+   },
+   {
+    "word": "the",
+    "start": 18.68,
+    "end": 18.92
+   },
+   {
+    "word": "round",
+    "start": 18.92,
+    "end": 19.54
+   },
+   {
+    "word": "white",
+    "start": 19.54,
+    "end": 20.2
+   },
+   {
+    "word": "moon.",
+    "start": 20.2,
+    "end": 21.04
+   },
+   {
+    "word": "Little",
+    "start": 22.16,
+    "end": 22.64
+   },
+   {
+    "word": "lights",
+    "start": 22.64,
+    "end": 23.12
+   },
+   {
+    "word": "blink",
+    "start": 23.12,
+    "end": 23.62
+   },
+   {
+    "word": "far",
+    "start": 23.62,
+    "end": 24.54
+   },
+   {
+    "word": "and",
+    "start": 24.54,
+    "end": 25.14
+   },
+   {
+    "word": "near.",
+    "start": 25.14,
+    "end": 25.56
+   }
+  ]
+ },
+ "poem-read-along": {
+  "duration": 17.7,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.34
+   },
+   {
+    "word": "reading",
+    "start": 0.34,
+    "end": 0.7
+   },
+   {
+    "word": "party",
+    "start": 0.7,
+    "end": 1.16
+   },
+   {
+    "word": "needs",
+    "start": 1.16,
+    "end": 1.58
+   },
+   {
+    "word": "a",
+    "start": 1.58,
+    "end": 1.86
+   },
+   {
+    "word": "poem",
+    "start": 1.86,
+    "end": 2.22
+   },
+   {
+    "word": "too.",
+    "start": 2.22,
+    "end": 2.66
+   },
+   {
+    "word": "Our",
+    "start": 3.58,
+    "end": 3.84
+   },
+   {
+    "word": "poem",
+    "start": 3.84,
+    "end": 4.26
+   },
+   {
+    "word": "is",
+    "start": 4.26,
+    "end": 4.56
+   },
+   {
+    "word": "called",
+    "start": 4.56,
+    "end": 4.84
+   },
+   {
+    "word": "Good",
+    "start": 4.84,
+    "end": 5.3
+   },
+   {
+    "word": "Night,",
+    "start": 5.3,
+    "end": 5.62
+   },
+   {
+    "word": "Bright",
+    "start": 6.3,
+    "end": 6.46
+   },
+   {
+    "word": "Night.",
+    "start": 6.46,
+    "end": 6.9
+   },
+   {
+    "word": "It",
+    "start": 7.64,
+    "end": 7.96
+   },
+   {
+    "word": "is",
+    "start": 7.96,
+    "end": 8.12
+   },
+   {
+    "word": "about",
+    "start": 8.12,
+    "end": 8.4
+   },
+   {
+    "word": "the",
+    "start": 8.4,
+    "end": 8.64
+   },
+   {
+    "word": "night,",
+    "start": 8.64,
+    "end": 8.96
+   },
+   {
+    "word": "just",
+    "start": 9.36,
+    "end": 9.66
+   },
+   {
+    "word": "like",
+    "start": 9.66,
+    "end": 10.14
+   },
+   {
+    "word": "Ollie's",
+    "start": 10.14,
+    "end": 10.74
+   },
+   {
+    "word": "story.",
+    "start": 10.74,
+    "end": 11.12
+   },
+   {
+    "word": "Read",
+    "start": 12.16,
+    "end": 12.4
+   },
+   {
+    "word": "along",
+    "start": 12.4,
+    "end": 12.74
+   },
+   {
+    "word": "with",
+    "start": 12.74,
+    "end": 13.0
+   },
+   {
+    "word": "me",
+    "start": 13.0,
+    "end": 13.24
+   },
+   {
+    "word": "and",
+    "start": 13.24,
+    "end": 13.78
+   },
+   {
+    "word": "listen",
+    "start": 13.78,
+    "end": 14.16
+   },
+   {
+    "word": "for",
+    "start": 14.16,
+    "end": 14.44
+   },
+   {
+    "word": "words",
+    "start": 14.44,
+    "end": 14.82
+   },
+   {
+    "word": "that",
+    "start": 14.82,
+    "end": 15.08
+   },
+   {
+    "word": "match",
+    "start": 15.08,
+    "end": 15.58
+   },
+   {
+    "word": "at",
+    "start": 15.58,
+    "end": 16.24
+   },
+   {
+    "word": "the",
+    "start": 16.24,
+    "end": 16.44
+   },
+   {
+    "word": "ends",
+    "start": 16.44,
+    "end": 16.9
+   },
+   {
+    "word": "of",
+    "start": 16.9,
+    "end": 17.12
+   },
+   {
+    "word": "the",
+    "start": 17.12,
+    "end": 17.3
+   },
+   {
+    "word": "lines.",
+    "start": 17.3,
+    "end": 17.7
+   }
+  ]
+ },
+ "poem-rhyme-find": {
+  "duration": 15.42,
+  "words": [
+   {
+    "word": "Poems",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "play",
+    "start": 0.66,
+    "end": 1.0
+   },
+   {
+    "word": "with",
+    "start": 1.0,
+    "end": 1.26
+   },
+   {
+    "word": "sound.",
+    "start": 1.26,
+    "end": 1.8
+   },
+   {
+    "word": "Rhyming",
+    "start": 2.62,
+    "end": 2.94
+   },
+   {
+    "word": "words",
+    "start": 2.94,
+    "end": 3.34
+   },
+   {
+    "word": "end",
+    "start": 3.34,
+    "end": 3.76
+   },
+   {
+    "word": "with",
+    "start": 3.76,
+    "end": 4.08
+   },
+   {
+    "word": "the",
+    "start": 4.08,
+    "end": 4.28
+   },
+   {
+    "word": "same",
+    "start": 4.28,
+    "end": 4.6
+   },
+   {
+    "word": "sound,",
+    "start": 4.6,
+    "end": 5.14
+   },
+   {
+    "word": "like",
+    "start": 5.34,
+    "end": 5.64
+   },
+   {
+    "word": "night",
+    "start": 5.64,
+    "end": 6.28
+   },
+   {
+    "word": "and",
+    "start": 6.28,
+    "end": 7.08
+   },
+   {
+    "word": "bright.",
+    "start": 7.08,
+    "end": 7.52
+   },
+   {
+    "word": "Here",
+    "start": 8.26,
+    "end": 8.8
+   },
+   {
+    "word": "is",
+    "start": 8.8,
+    "end": 8.98
+   },
+   {
+    "word": "a",
+    "start": 8.98,
+    "end": 9.08
+   },
+   {
+    "word": "line",
+    "start": 9.08,
+    "end": 9.3
+   },
+   {
+    "word": "from",
+    "start": 9.3,
+    "end": 9.52
+   },
+   {
+    "word": "our",
+    "start": 9.52,
+    "end": 9.7
+   },
+   {
+    "word": "poem.",
+    "start": 9.7,
+    "end": 10.1
+   },
+   {
+    "word": "Read",
+    "start": 10.86,
+    "end": 11.0
+   },
+   {
+    "word": "it",
+    "start": 11.0,
+    "end": 11.16
+   },
+   {
+    "word": "to",
+    "start": 11.16,
+    "end": 11.32
+   },
+   {
+    "word": "yourself.",
+    "start": 11.32,
+    "end": 11.84
+   },
+   {
+    "word": "Tap",
+    "start": 12.6,
+    "end": 12.78
+   },
+   {
+    "word": "the",
+    "start": 12.78,
+    "end": 13.04
+   },
+   {
+    "word": "word",
+    "start": 13.04,
+    "end": 13.38
+   },
+   {
+    "word": "that",
+    "start": 13.38,
+    "end": 13.74
+   },
+   {
+    "word": "rhymes",
+    "start": 13.74,
+    "end": 14.26
+   },
+   {
+    "word": "with",
+    "start": 14.26,
+    "end": 14.72
+   },
+   {
+    "word": "tune.",
+    "start": 14.72,
+    "end": 15.42
+   }
+  ]
+ },
+ "poem-sense-find": {
+  "duration": 14.9,
+  "words": [
+   {
+    "word": "Poets",
+    "start": 0.0,
+    "end": 0.72
+   },
+   {
+    "word": "also",
+    "start": 0.72,
+    "end": 1.28
+   },
+   {
+    "word": "pick",
+    "start": 1.28,
+    "end": 1.62
+   },
+   {
+    "word": "words",
+    "start": 1.62,
+    "end": 2.04
+   },
+   {
+    "word": "for",
+    "start": 2.04,
+    "end": 2.4
+   },
+   {
+    "word": "your",
+    "start": 2.4,
+    "end": 2.6
+   },
+   {
+    "word": "senses.",
+    "start": 2.6,
+    "end": 3.24
+   },
+   {
+    "word": "Here",
+    "start": 4.14,
+    "end": 4.36
+   },
+   {
+    "word": "is",
+    "start": 4.36,
+    "end": 4.7
+   },
+   {
+    "word": "another",
+    "start": 4.7,
+    "end": 5.06
+   },
+   {
+    "word": "line",
+    "start": 5.06,
+    "end": 5.54
+   },
+   {
+    "word": "from",
+    "start": 5.54,
+    "end": 5.82
+   },
+   {
+    "word": "our",
+    "start": 5.82,
+    "end": 6.16
+   },
+   {
+    "word": "poem.",
+    "start": 6.16,
+    "end": 6.6
+   },
+   {
+    "word": "Read",
+    "start": 7.16,
+    "end": 7.3
+   },
+   {
+    "word": "it",
+    "start": 7.3,
+    "end": 7.46
+   },
+   {
+    "word": "to",
+    "start": 7.46,
+    "end": 7.64
+   },
+   {
+    "word": "yourself.",
+    "start": 7.64,
+    "end": 8.18
+   },
+   {
+    "word": "One",
+    "start": 8.98,
+    "end": 9.34
+   },
+   {
+    "word": "word",
+    "start": 9.34,
+    "end": 10.0
+   },
+   {
+    "word": "tells",
+    "start": 10.0,
+    "end": 10.38
+   },
+   {
+    "word": "how",
+    "start": 10.38,
+    "end": 10.74
+   },
+   {
+    "word": "the",
+    "start": 10.74,
+    "end": 10.96
+   },
+   {
+    "word": "wind",
+    "start": 10.96,
+    "end": 11.58
+   },
+   {
+    "word": "would",
+    "start": 11.58,
+    "end": 11.94
+   },
+   {
+    "word": "feel",
+    "start": 11.94,
+    "end": 12.38
+   },
+   {
+    "word": "on",
+    "start": 12.38,
+    "end": 12.82
+   },
+   {
+    "word": "your",
+    "start": 12.82,
+    "end": 13.04
+   },
+   {
+    "word": "skin.",
+    "start": 13.04,
+    "end": 13.5
+   },
+   {
+    "word": "Tap",
+    "start": 14.36,
+    "end": 14.64
+   },
+   {
+    "word": "it.",
+    "start": 14.64,
+    "end": 14.9
+   }
+  ]
+ },
+ "poem-speak-line": {
+  "duration": 12.42,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "poem",
+    "start": 0.38,
+    "end": 0.88
+   },
+   {
+    "word": "needs",
+    "start": 0.88,
+    "end": 1.46
+   },
+   {
+    "word": "its",
+    "start": 1.46,
+    "end": 1.9
+   },
+   {
+    "word": "last",
+    "start": 1.9,
+    "end": 2.24
+   },
+   {
+    "word": "line,",
+    "start": 2.24,
+    "end": 2.72
+   },
+   {
+    "word": "and",
+    "start": 3.0,
+    "end": 3.36
+   },
+   {
+    "word": "it",
+    "start": 3.36,
+    "end": 3.54
+   },
+   {
+    "word": "is",
+    "start": 3.54,
+    "end": 3.72
+   },
+   {
+    "word": "yours",
+    "start": 3.72,
+    "end": 4.12
+   },
+   {
+    "word": "to",
+    "start": 4.12,
+    "end": 4.46
+   },
+   {
+    "word": "read.",
+    "start": 4.46,
+    "end": 4.74
+   },
+   {
+    "word": "It",
+    "start": 5.4,
+    "end": 5.62
+   },
+   {
+    "word": "finishes",
+    "start": 5.62,
+    "end": 6.16
+   },
+   {
+    "word": "the",
+    "start": 6.16,
+    "end": 6.48
+   },
+   {
+    "word": "rhyme",
+    "start": 6.48,
+    "end": 6.9
+   },
+   {
+    "word": "with",
+    "start": 6.9,
+    "end": 7.32
+   },
+   {
+    "word": "near.",
+    "start": 7.32,
+    "end": 7.7
+   },
+   {
+    "word": "Look",
+    "start": 8.6,
+    "end": 8.92
+   },
+   {
+    "word": "at",
+    "start": 8.92,
+    "end": 9.08
+   },
+   {
+    "word": "the",
+    "start": 9.08,
+    "end": 9.26
+   },
+   {
+    "word": "line,",
+    "start": 9.26,
+    "end": 9.6
+   },
+   {
+    "word": "tap",
+    "start": 10.24,
+    "end": 10.42
+   },
+   {
+    "word": "the",
+    "start": 10.42,
+    "end": 10.64
+   },
+   {
+    "word": "mic,",
+    "start": 10.64,
+    "end": 10.88
+   },
+   {
+    "word": "and",
+    "start": 11.3,
+    "end": 11.38
+   },
+   {
+    "word": "read",
+    "start": 11.38,
+    "end": 11.66
+   },
+   {
+    "word": "it",
+    "start": 11.66,
+    "end": 11.92
+   },
+   {
+    "word": "out",
+    "start": 11.92,
+    "end": 12.1
+   },
+   {
+    "word": "loud.",
+    "start": 12.1,
+    "end": 12.42
+   }
+  ]
+ },
+ "predict-title": {
+  "duration": 21.9,
+  "words": [
+   {
+    "word": "Before",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "we",
+    "start": 0.46,
+    "end": 0.76
+   },
+   {
+    "word": "read,",
+    "start": 0.76,
+    "end": 1.04
+   },
+   {
+    "word": "good",
+    "start": 1.62,
+    "end": 1.82
+   },
+   {
+    "word": "readers",
+    "start": 1.82,
+    "end": 2.24
+   },
+   {
+    "word": "predict.",
+    "start": 2.24,
+    "end": 3.0
+   },
+   {
+    "word": "That",
+    "start": 3.84,
+    "end": 4.22
+   },
+   {
+    "word": "means",
+    "start": 4.22,
+    "end": 4.5
+   },
+   {
+    "word": "you",
+    "start": 4.5,
+    "end": 4.98
+   },
+   {
+    "word": "make",
+    "start": 4.98,
+    "end": 5.3
+   },
+   {
+    "word": "a",
+    "start": 5.3,
+    "end": 5.54
+   },
+   {
+    "word": "smart",
+    "start": 5.54,
+    "end": 6.06
+   },
+   {
+    "word": "guess.",
+    "start": 6.06,
+    "end": 6.44
+   },
+   {
+    "word": "Our",
+    "start": 7.72,
+    "end": 8.0
+   },
+   {
+    "word": "story",
+    "start": 8.0,
+    "end": 8.52
+   },
+   {
+    "word": "is",
+    "start": 8.52,
+    "end": 8.74
+   },
+   {
+    "word": "called",
+    "start": 8.74,
+    "end": 9.06
+   },
+   {
+    "word": "Oli",
+    "start": 9.06,
+    "end": 9.74
+   },
+   {
+    "word": "and",
+    "start": 9.74,
+    "end": 10.22
+   },
+   {
+    "word": "the",
+    "start": 10.22,
+    "end": 10.4
+   },
+   {
+    "word": "Little",
+    "start": 10.4,
+    "end": 10.78
+   },
+   {
+    "word": "Light.",
+    "start": 10.78,
+    "end": 11.36
+   },
+   {
+    "word": "Look",
+    "start": 12.12,
+    "end": 12.48
+   },
+   {
+    "word": "at",
+    "start": 12.48,
+    "end": 12.6
+   },
+   {
+    "word": "the",
+    "start": 12.6,
+    "end": 12.74
+   },
+   {
+    "word": "cover.",
+    "start": 12.74,
+    "end": 13.1
+   },
+   {
+    "word": "What",
+    "start": 13.98,
+    "end": 14.22
+   },
+   {
+    "word": "do",
+    "start": 14.22,
+    "end": 14.38
+   },
+   {
+    "word": "you",
+    "start": 14.38,
+    "end": 14.5
+   },
+   {
+    "word": "think",
+    "start": 14.5,
+    "end": 14.8
+   },
+   {
+    "word": "Oli",
+    "start": 14.8,
+    "end": 15.34
+   },
+   {
+    "word": "will",
+    "start": 15.34,
+    "end": 15.56
+   },
+   {
+    "word": "find",
+    "start": 15.56,
+    "end": 15.98
+   },
+   {
+    "word": "in",
+    "start": 15.98,
+    "end": 16.24
+   },
+   {
+    "word": "this",
+    "start": 16.24,
+    "end": 16.4
+   },
+   {
+    "word": "story?",
+    "start": 16.4,
+    "end": 16.94
+   },
+   {
+    "word": "Read",
+    "start": 17.92,
+    "end": 18.32
+   },
+   {
+    "word": "each",
+    "start": 18.32,
+    "end": 18.86
+   },
+   {
+    "word": "choice,",
+    "start": 18.86,
+    "end": 19.48
+   },
+   {
+    "word": "then",
+    "start": 19.68,
+    "end": 20.02
+   },
+   {
+    "word": "tap",
+    "start": 20.02,
+    "end": 20.42
+   },
+   {
+    "word": "your",
+    "start": 20.42,
+    "end": 20.9
+   },
+   {
+    "word": "best",
+    "start": 20.9,
+    "end": 21.54
+   },
+   {
+    "word": "guess.",
+    "start": 21.54,
+    "end": 21.9
+   }
+  ]
+ },
+ "retell-story": {
+  "duration": 12.3,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "skill",
+    "start": 0.62,
+    "end": 1.08
+   },
+   {
+    "word": "of",
+    "start": 1.08,
+    "end": 1.28
+   },
+   {
+    "word": "the",
+    "start": 1.28,
+    "end": 1.38
+   },
+   {
+    "word": "party,",
+    "start": 1.38,
+    "end": 1.78
+   },
+   {
+    "word": "tell",
+    "start": 2.22,
+    "end": 2.92
+   },
+   {
+    "word": "Ollie's",
+    "start": 2.92,
+    "end": 3.66
+   },
+   {
+    "word": "story",
+    "start": 3.66,
+    "end": 3.94
+   },
+   {
+    "word": "back",
+    "start": 3.94,
+    "end": 4.3
+   },
+   {
+    "word": "like",
+    "start": 4.3,
+    "end": 4.74
+   },
+   {
+    "word": "a",
+    "start": 4.74,
+    "end": 4.94
+   },
+   {
+    "word": "real",
+    "start": 4.94,
+    "end": 5.44
+   },
+   {
+    "word": "reader.",
+    "start": 5.44,
+    "end": 5.92
+   },
+   {
+    "word": "Tap",
+    "start": 6.86,
+    "end": 7.1
+   },
+   {
+    "word": "what",
+    "start": 7.1,
+    "end": 7.32
+   },
+   {
+    "word": "happened",
+    "start": 7.32,
+    "end": 7.66
+   },
+   {
+    "word": "first,",
+    "start": 7.66,
+    "end": 8.1
+   },
+   {
+    "word": "then",
+    "start": 8.68,
+    "end": 9.1
+   },
+   {
+    "word": "what",
+    "start": 9.1,
+    "end": 9.32
+   },
+   {
+    "word": "happened",
+    "start": 9.32,
+    "end": 9.68
+   },
+   {
+    "word": "next,",
+    "start": 9.68,
+    "end": 10.16
+   },
+   {
+    "word": "then",
+    "start": 10.64,
+    "end": 10.82
+   },
+   {
+    "word": "how",
+    "start": 10.82,
+    "end": 11.2
+   },
+   {
+    "word": "the",
+    "start": 11.2,
+    "end": 11.42
+   },
+   {
+    "word": "story",
+    "start": 11.42,
+    "end": 11.8
+   },
+   {
+    "word": "ended.",
+    "start": 11.8,
+    "end": 12.3
+   }
+  ]
+ },
+ "story-page-1": {
+  "duration": 11.7,
+  "words": [
+   {
+    "word": "Time",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "to",
+    "start": 0.46,
+    "end": 0.68
+   },
+   {
+    "word": "read.",
+    "start": 0.68,
+    "end": 0.96
+   },
+   {
+    "word": "Here",
+    "start": 1.6,
+    "end": 1.8
+   },
+   {
+    "word": "is",
+    "start": 1.8,
+    "end": 2.1
+   },
+   {
+    "word": "page",
+    "start": 2.1,
+    "end": 2.3
+   },
+   {
+    "word": "1",
+    "start": 2.3,
+    "end": 2.72
+   },
+   {
+    "word": "of",
+    "start": 2.72,
+    "end": 3.0
+   },
+   {
+    "word": "our",
+    "start": 3.0,
+    "end": 3.18
+   },
+   {
+    "word": "story",
+    "start": 3.18,
+    "end": 3.64
+   },
+   {
+    "word": "and",
+    "start": 3.64,
+    "end": 4.14
+   },
+   {
+    "word": "it",
+    "start": 4.14,
+    "end": 4.28
+   },
+   {
+    "word": "is",
+    "start": 4.28,
+    "end": 4.46
+   },
+   {
+    "word": "all",
+    "start": 4.46,
+    "end": 4.82
+   },
+   {
+    "word": "yours.",
+    "start": 4.82,
+    "end": 5.24
+   },
+   {
+    "word": "Look",
+    "start": 6.02,
+    "end": 6.26
+   },
+   {
+    "word": "at",
+    "start": 6.26,
+    "end": 6.42
+   },
+   {
+    "word": "the",
+    "start": 6.42,
+    "end": 6.54
+   },
+   {
+    "word": "words,",
+    "start": 6.54,
+    "end": 6.94
+   },
+   {
+    "word": "take",
+    "start": 7.28,
+    "end": 7.54
+   },
+   {
+    "word": "a",
+    "start": 7.54,
+    "end": 7.7
+   },
+   {
+    "word": "breath,",
+    "start": 7.7,
+    "end": 8.18
+   },
+   {
+    "word": "then",
+    "start": 8.52,
+    "end": 8.82
+   },
+   {
+    "word": "tap",
+    "start": 8.82,
+    "end": 9.16
+   },
+   {
+    "word": "the",
+    "start": 9.16,
+    "end": 9.42
+   },
+   {
+    "word": "mic",
+    "start": 9.42,
+    "end": 9.66
+   },
+   {
+    "word": "and",
+    "start": 9.66,
+    "end": 10.0
+   },
+   {
+    "word": "read",
+    "start": 10.0,
+    "end": 10.38
+   },
+   {
+    "word": "the",
+    "start": 10.38,
+    "end": 10.7
+   },
+   {
+    "word": "page",
+    "start": 10.7,
+    "end": 11.12
+   },
+   {
+    "word": "out",
+    "start": 11.12,
+    "end": 11.4
+   },
+   {
+    "word": "loud.",
+    "start": 11.4,
+    "end": 11.7
+   }
+  ]
+ },
+ "story-page-2-sentence": {
+  "duration": 7.0,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "night,",
+    "start": 0.46,
+    "end": 0.84
+   },
+   {
+    "word": "a",
+    "start": 1.26,
+    "end": 1.34
+   },
+   {
+    "word": "small",
+    "start": 1.34,
+    "end": 1.9
+   },
+   {
+    "word": "light",
+    "start": 1.9,
+    "end": 2.46
+   },
+   {
+    "word": "blinked",
+    "start": 2.46,
+    "end": 3.28
+   },
+   {
+    "word": "by",
+    "start": 3.28,
+    "end": 3.48
+   },
+   {
+    "word": "his",
+    "start": 3.48,
+    "end": 3.74
+   },
+   {
+    "word": "tree,",
+    "start": 3.74,
+    "end": 4.18
+   },
+   {
+    "word": "it",
+    "start": 4.76,
+    "end": 5.0
+   },
+   {
+    "word": "was",
+    "start": 5.0,
+    "end": 5.28
+   },
+   {
+    "word": "FURN",
+    "start": 5.28,
+    "end": 5.98
+   },
+   {
+    "word": "the",
+    "start": 5.98,
+    "end": 6.14
+   },
+   {
+    "word": "Firefly!",
+    "start": 6.14,
+    "end": 7.0
+   }
+  ]
+ },
+ "story-page-2": {
+  "duration": 8.44,
+  "words": [
+   {
+    "word": "Poor",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "Ollie.",
+    "start": 0.56,
+    "end": 1.22
+   },
+   {
+    "word": "But",
+    "start": 1.8,
+    "end": 2.18
+   },
+   {
+    "word": "wait,",
+    "start": 2.18,
+    "end": 2.52
+   },
+   {
+    "word": "something",
+    "start": 3.0,
+    "end": 3.58
+   },
+   {
+    "word": "is",
+    "start": 3.58,
+    "end": 3.9
+   },
+   {
+    "word": "coming.",
+    "start": 3.9,
+    "end": 4.26
+   },
+   {
+    "word": "Here",
+    "start": 4.96,
+    "end": 5.78
+   },
+   {
+    "word": "is",
+    "start": 5.78,
+    "end": 6.12
+   },
+   {
+    "word": "page",
+    "start": 6.12,
+    "end": 6.38
+   },
+   {
+    "word": "2.",
+    "start": 6.38,
+    "end": 6.94
+   },
+   {
+    "word": "Read",
+    "start": 7.62,
+    "end": 7.76
+   },
+   {
+    "word": "along",
+    "start": 7.76,
+    "end": 8.0
+   },
+   {
+    "word": "with",
+    "start": 8.0,
+    "end": 8.24
+   },
+   {
+    "word": "me.",
+    "start": 8.24,
+    "end": 8.44
+   }
+  ]
+ },
+ "story-page-3": {
+  "duration": 13.82,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.32
+   },
+   {
+    "word": "Firefly",
+    "start": 0.32,
+    "end": 1.2
+   },
+   {
+    "word": "Friend.",
+    "start": 1.2,
+    "end": 1.76
+   },
+   {
+    "word": "What",
+    "start": 2.56,
+    "end": 2.84
+   },
+   {
+    "word": "will",
+    "start": 2.84,
+    "end": 3.16
+   },
+   {
+    "word": "Fern",
+    "start": 3.16,
+    "end": 3.54
+   },
+   {
+    "word": "do?",
+    "start": 3.54,
+    "end": 3.92
+   },
+   {
+    "word": "Page",
+    "start": 5.18,
+    "end": 5.52
+   },
+   {
+    "word": "3",
+    "start": 5.52,
+    "end": 6.16
+   },
+   {
+    "word": "is",
+    "start": 6.16,
+    "end": 6.66
+   },
+   {
+    "word": "the",
+    "start": 6.66,
+    "end": 6.88
+   },
+   {
+    "word": "last",
+    "start": 6.88,
+    "end": 7.22
+   },
+   {
+    "word": "page",
+    "start": 7.22,
+    "end": 7.86
+   },
+   {
+    "word": "and",
+    "start": 7.86,
+    "end": 8.1
+   },
+   {
+    "word": "it",
+    "start": 8.1,
+    "end": 8.3
+   },
+   {
+    "word": "is",
+    "start": 8.3,
+    "end": 8.48
+   },
+   {
+    "word": "yours",
+    "start": 8.48,
+    "end": 8.76
+   },
+   {
+    "word": "to",
+    "start": 8.76,
+    "end": 9.04
+   },
+   {
+    "word": "read.",
+    "start": 9.04,
+    "end": 9.32
+   },
+   {
+    "word": "Tap",
+    "start": 10.02,
+    "end": 10.22
+   },
+   {
+    "word": "the",
+    "start": 10.22,
+    "end": 10.44
+   },
+   {
+    "word": "mic",
+    "start": 10.44,
+    "end": 10.68
+   },
+   {
+    "word": "and",
+    "start": 10.68,
+    "end": 11.08
+   },
+   {
+    "word": "read",
+    "start": 11.08,
+    "end": 11.32
+   },
+   {
+    "word": "it",
+    "start": 11.32,
+    "end": 11.5
+   },
+   {
+    "word": "out",
+    "start": 11.5,
+    "end": 11.66
+   },
+   {
+    "word": "loud",
+    "start": 11.66,
+    "end": 11.9
+   },
+   {
+    "word": "in",
+    "start": 11.9,
+    "end": 12.32
+   },
+   {
+    "word": "your",
+    "start": 12.32,
+    "end": 12.48
+   },
+   {
+    "word": "best",
+    "start": 12.48,
+    "end": 12.94
+   },
+   {
+    "word": "reading",
+    "start": 12.94,
+    "end": 13.4
+   },
+   {
+    "word": "voice.",
+    "start": 13.4,
+    "end": 13.82
+   }
+  ]
+ }
+}

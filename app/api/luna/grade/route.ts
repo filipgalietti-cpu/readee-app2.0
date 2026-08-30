@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { gradeLine } from "@/lib/ai/luna-grade";
 import { assessPronunciation, azureConfigured } from "@/lib/ai/azure-pronounce";
+import { checkLunaReadAllowance } from "@/lib/plan/luna-guard";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -42,8 +43,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
 
-  // Luna is a free-taste feature: any signed-in parent-of-child may use it; the
-  // free allowance is enforced at the read page, not here.
+  // Free allowance (server-enforced so it can't be bypassed): full-access
+  // readers grade unlimited sentences; a genuinely-free reader passes while
+  // under the 3-completed-reads taste (same counter as the read page).
+  const gate = await checkLunaReadAllowance(user.id, childId);
+  if (!gate.ok) {
+    return NextResponse.json({ error: "limit", reason: gate.reason }, { status: 402 });
+  }
 
   const buf = Buffer.from(await audio.arrayBuffer());
 

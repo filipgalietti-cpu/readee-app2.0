@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { generateSpeech } from "@/lib/ai/readee-ai";
+import { checkLunaReadAllowance } from "@/lib/plan/luna-guard";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -28,6 +29,15 @@ export async function POST(req: Request) {
   }
   if (!text) {
     return NextResponse.json({ ok: false, error: "No text to speak." }, { status: 400 });
+  }
+
+  // Free allowance (server-enforced): full-access readers are unlimited; a
+  // genuinely-free reader passes while under the 3-completed-reads taste.
+  // No childId in this body, so the guard counts across the parent's readers
+  // (identical for free accounts — reader cap is 1).
+  const gate = await checkLunaReadAllowance(user.id);
+  if (!gate.ok) {
+    return NextResponse.json({ error: "limit", reason: gate.reason }, { status: 402 });
   }
 
   const res = await generateSpeech({

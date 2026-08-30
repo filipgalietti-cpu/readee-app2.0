@@ -1,0 +1,2487 @@
+{
+ "apply-build-duck": {
+  "duration": 13.44,
+  "words": [
+   {
+    "word": "Time",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "to",
+    "start": 0.6,
+    "end": 0.88
+   },
+   {
+    "word": "build",
+    "start": 0.88,
+    "end": 1.3
+   },
+   {
+    "word": "a",
+    "start": 1.3,
+    "end": 1.48
+   },
+   {
+    "word": "definition",
+    "start": 1.48,
+    "end": 2.06
+   },
+   {
+    "word": "from",
+    "start": 2.06,
+    "end": 2.54
+   },
+   {
+    "word": "parts.",
+    "start": 2.54,
+    "end": 2.98
+   },
+   {
+    "word": "Read",
+    "start": 3.76,
+    "end": 4.12
+   },
+   {
+    "word": "each",
+    "start": 4.12,
+    "end": 4.78
+   },
+   {
+    "word": "card.",
+    "start": 4.78,
+    "end": 5.2
+   },
+   {
+    "word": "Put",
+    "start": 5.6,
+    "end": 5.72
+   },
+   {
+    "word": "the",
+    "start": 5.72,
+    "end": 5.96
+   },
+   {
+    "word": "word",
+    "start": 5.96,
+    "end": 6.18
+   },
+   {
+    "word": "first,",
+    "start": 6.18,
+    "end": 6.86
+   },
+   {
+    "word": "then",
+    "start": 7.22,
+    "end": 7.52
+   },
+   {
+    "word": "its",
+    "start": 7.52,
+    "end": 7.78
+   },
+   {
+    "word": "group,",
+    "start": 7.78,
+    "end": 8.16
+   },
+   {
+    "word": "then",
+    "start": 8.62,
+    "end": 8.98
+   },
+   {
+    "word": "the",
+    "start": 8.98,
+    "end": 9.28
+   },
+   {
+    "word": "special",
+    "start": 9.28,
+    "end": 9.84
+   },
+   {
+    "word": "thing.",
+    "start": 9.84,
+    "end": 10.4
+   },
+   {
+    "word": "Drag",
+    "start": 11.14,
+    "end": 11.48
+   },
+   {
+    "word": "the",
+    "start": 11.48,
+    "end": 11.78
+   },
+   {
+    "word": "parts",
+    "start": 11.78,
+    "end": 12.32
+   },
+   {
+    "word": "into",
+    "start": 12.32,
+    "end": 13.02
+   },
+   {
+    "word": "order.",
+    "start": 13.02,
+    "end": 13.44
+   }
+  ]
+ },
+ "apply-riddle-penguin": {
+  "duration": 17.44,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.34
+   },
+   {
+    "word": "definition",
+    "start": 0.34,
+    "end": 1.04
+   },
+   {
+    "word": "can",
+    "start": 1.04,
+    "end": 1.56
+   },
+   {
+    "word": "be",
+    "start": 1.56,
+    "end": 1.8
+   },
+   {
+    "word": "a",
+    "start": 1.8,
+    "end": 1.98
+   },
+   {
+    "word": "riddle,",
+    "start": 1.98,
+    "end": 2.34
+   },
+   {
+    "word": "and",
+    "start": 2.62,
+    "end": 2.94
+   },
+   {
+    "word": "the",
+    "start": 2.94,
+    "end": 3.08
+   },
+   {
+    "word": "clues",
+    "start": 3.08,
+    "end": 3.46
+   },
+   {
+    "word": "tell",
+    "start": 3.46,
+    "end": 4.1
+   },
+   {
+    "word": "you",
+    "start": 4.1,
+    "end": 4.4
+   },
+   {
+    "word": "the",
+    "start": 4.4,
+    "end": 4.56
+   },
+   {
+    "word": "answer.",
+    "start": 4.56,
+    "end": 4.94
+   },
+   {
+    "word": "Listen,",
+    "start": 5.64,
+    "end": 5.92
+   },
+   {
+    "word": "it",
+    "start": 6.7,
+    "end": 7.06
+   },
+   {
+    "word": "is",
+    "start": 7.06,
+    "end": 7.24
+   },
+   {
+    "word": "a",
+    "start": 7.24,
+    "end": 7.4
+   },
+   {
+    "word": "bird",
+    "start": 7.4,
+    "end": 7.76
+   },
+   {
+    "word": "that",
+    "start": 7.76,
+    "end": 8.14
+   },
+   {
+    "word": "cannot",
+    "start": 8.14,
+    "end": 8.64
+   },
+   {
+    "word": "fly,",
+    "start": 8.64,
+    "end": 9.22
+   },
+   {
+    "word": "but",
+    "start": 9.72,
+    "end": 9.96
+   },
+   {
+    "word": "it",
+    "start": 9.96,
+    "end": 10.14
+   },
+   {
+    "word": "swims",
+    "start": 10.14,
+    "end": 10.62
+   },
+   {
+    "word": "fast.",
+    "start": 10.62,
+    "end": 11.46
+   },
+   {
+    "word": "Read",
+    "start": 12.26,
+    "end": 12.58
+   },
+   {
+    "word": "the",
+    "start": 12.58,
+    "end": 12.86
+   },
+   {
+    "word": "three",
+    "start": 12.86,
+    "end": 13.2
+   },
+   {
+    "word": "animal",
+    "start": 13.2,
+    "end": 13.68
+   },
+   {
+    "word": "names",
+    "start": 13.68,
+    "end": 14.2
+   },
+   {
+    "word": "and",
+    "start": 14.2,
+    "end": 14.72
+   },
+   {
+    "word": "tap",
+    "start": 14.72,
+    "end": 15.0
+   },
+   {
+    "word": "the",
+    "start": 15.0,
+    "end": 15.3
+   },
+   {
+    "word": "one",
+    "start": 15.3,
+    "end": 15.48
+   },
+   {
+    "word": "that",
+    "start": 15.48,
+    "end": 15.76
+   },
+   {
+    "word": "fits",
+    "start": 15.76,
+    "end": 16.12
+   },
+   {
+    "word": "both",
+    "start": 16.12,
+    "end": 16.8
+   },
+   {
+    "word": "clues.",
+    "start": 16.8,
+    "end": 17.44
+   }
+  ]
+ },
+ "apply-sort-parts": {
+  "duration": 16.08,
+  "words": [
+   {
+    "word": "Definitions",
+    "start": 0.0,
+    "end": 1.2
+   },
+   {
+    "word": "have",
+    "start": 1.2,
+    "end": 1.48
+   },
+   {
+    "word": "two",
+    "start": 1.48,
+    "end": 2.1
+   },
+   {
+    "word": "kinds",
+    "start": 2.1,
+    "end": 2.68
+   },
+   {
+    "word": "of",
+    "start": 2.68,
+    "end": 3.0
+   },
+   {
+    "word": "parts.",
+    "start": 3.0,
+    "end": 3.52
+   },
+   {
+    "word": "Some",
+    "start": 4.22,
+    "end": 4.7
+   },
+   {
+    "word": "cards",
+    "start": 4.7,
+    "end": 5.26
+   },
+   {
+    "word": "name",
+    "start": 5.26,
+    "end": 5.84
+   },
+   {
+    "word": "a",
+    "start": 5.84,
+    "end": 6.1
+   },
+   {
+    "word": "group,",
+    "start": 6.1,
+    "end": 6.48
+   },
+   {
+    "word": "and",
+    "start": 6.74,
+    "end": 7.22
+   },
+   {
+    "word": "some",
+    "start": 7.22,
+    "end": 7.56
+   },
+   {
+    "word": "cards",
+    "start": 7.56,
+    "end": 8.2
+   },
+   {
+    "word": "tell",
+    "start": 8.2,
+    "end": 8.68
+   },
+   {
+    "word": "one",
+    "start": 8.68,
+    "end": 9.2
+   },
+   {
+    "word": "special",
+    "start": 9.2,
+    "end": 9.94
+   },
+   {
+    "word": "thing.",
+    "start": 9.94,
+    "end": 10.6
+   },
+   {
+    "word": "Read",
+    "start": 11.24,
+    "end": 11.8
+   },
+   {
+    "word": "each",
+    "start": 11.8,
+    "end": 12.44
+   },
+   {
+    "word": "card",
+    "start": 12.44,
+    "end": 12.86
+   },
+   {
+    "word": "and",
+    "start": 12.86,
+    "end": 13.6
+   },
+   {
+    "word": "drag",
+    "start": 13.6,
+    "end": 13.92
+   },
+   {
+    "word": "it",
+    "start": 13.92,
+    "end": 14.26
+   },
+   {
+    "word": "to",
+    "start": 14.26,
+    "end": 14.5
+   },
+   {
+    "word": "the",
+    "start": 14.5,
+    "end": 14.66
+   },
+   {
+    "word": "box",
+    "start": 14.66,
+    "end": 15.0
+   },
+   {
+    "word": "where",
+    "start": 15.0,
+    "end": 15.4
+   },
+   {
+    "word": "it",
+    "start": 15.4,
+    "end": 15.66
+   },
+   {
+    "word": "belongs.",
+    "start": 15.66,
+    "end": 16.08
+   }
+  ]
+ },
+ "celebrate-word-expert": {
+  "duration": 24.0,
+  "words": [
+   {
+    "word": "What",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "a",
+    "start": 0.46,
+    "end": 0.76
+   },
+   {
+    "word": "word",
+    "start": 0.76,
+    "end": 1.22
+   },
+   {
+    "word": "expert",
+    "start": 1.22,
+    "end": 1.78
+   },
+   {
+    "word": "you",
+    "start": 1.78,
+    "end": 2.08
+   },
+   {
+    "word": "are.",
+    "start": 2.08,
+    "end": 2.36
+   },
+   {
+    "word": "You",
+    "start": 3.1,
+    "end": 3.24
+   },
+   {
+    "word": "built",
+    "start": 3.24,
+    "end": 3.72
+   },
+   {
+    "word": "definitions",
+    "start": 3.72,
+    "end": 4.5
+   },
+   {
+    "word": "with",
+    "start": 4.5,
+    "end": 5.12
+   },
+   {
+    "word": "a",
+    "start": 5.12,
+    "end": 5.4
+   },
+   {
+    "word": "group",
+    "start": 5.4,
+    "end": 5.78
+   },
+   {
+    "word": "and",
+    "start": 5.78,
+    "end": 6.56
+   },
+   {
+    "word": "a",
+    "start": 6.56,
+    "end": 6.76
+   },
+   {
+    "word": "special",
+    "start": 6.76,
+    "end": 7.28
+   },
+   {
+    "word": "thing.",
+    "start": 7.28,
+    "end": 7.82
+   },
+   {
+    "word": "A",
+    "start": 8.5,
+    "end": 8.74
+   },
+   {
+    "word": "duck",
+    "start": 8.74,
+    "end": 9.08
+   },
+   {
+    "word": "is",
+    "start": 9.08,
+    "end": 9.64
+   },
+   {
+    "word": "a",
+    "start": 9.64,
+    "end": 9.8
+   },
+   {
+    "word": "bird",
+    "start": 9.8,
+    "end": 10.22
+   },
+   {
+    "word": "that",
+    "start": 10.22,
+    "end": 10.74
+   },
+   {
+    "word": "swims.",
+    "start": 10.74,
+    "end": 11.36
+   },
+   {
+    "word": "A",
+    "start": 11.98,
+    "end": 12.28
+   },
+   {
+    "word": "tiger",
+    "start": 12.28,
+    "end": 12.8
+   },
+   {
+    "word": "is",
+    "start": 12.8,
+    "end": 13.52
+   },
+   {
+    "word": "a",
+    "start": 13.52,
+    "end": 13.7
+   },
+   {
+    "word": "big",
+    "start": 13.7,
+    "end": 14.14
+   },
+   {
+    "word": "cat",
+    "start": 14.14,
+    "end": 14.6
+   },
+   {
+    "word": "with",
+    "start": 14.6,
+    "end": 14.96
+   },
+   {
+    "word": "stripes.",
+    "start": 14.96,
+    "end": 15.52
+   },
+   {
+    "word": "You",
+    "start": 16.42,
+    "end": 16.92
+   },
+   {
+    "word": "even",
+    "start": 16.92,
+    "end": 17.52
+   },
+   {
+    "word": "solved",
+    "start": 17.52,
+    "end": 18.16
+   },
+   {
+    "word": "definition",
+    "start": 18.16,
+    "end": 18.86
+   },
+   {
+    "word": "riddles.",
+    "start": 18.86,
+    "end": 19.86
+   },
+   {
+    "word": "Keep",
+    "start": 19.86,
+    "end": 20.68
+   },
+   {
+    "word": "telling",
+    "start": 20.68,
+    "end": 21.1
+   },
+   {
+    "word": "what",
+    "start": 21.1,
+    "end": 21.42
+   },
+   {
+    "word": "things",
+    "start": 21.42,
+    "end": 21.86
+   },
+   {
+    "word": "are",
+    "start": 21.86,
+    "end": 22.34
+   },
+   {
+    "word": "everywhere",
+    "start": 22.34,
+    "end": 23.2
+   },
+   {
+    "word": "you",
+    "start": 23.2,
+    "end": 23.72
+   },
+   {
+    "word": "go.",
+    "start": 23.72,
+    "end": 24.0
+   }
+  ]
+ },
+ "challenge-best-definition": {
+  "duration": 19.42,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.3
+   },
+   {
+    "word": "full",
+    "start": 0.3,
+    "end": 0.64
+   },
+   {
+    "word": "definition",
+    "start": 0.64,
+    "end": 1.42
+   },
+   {
+    "word": "does",
+    "start": 1.42,
+    "end": 1.98
+   },
+   {
+    "word": "two",
+    "start": 1.98,
+    "end": 2.44
+   },
+   {
+    "word": "jobs.",
+    "start": 2.44,
+    "end": 3.06
+   },
+   {
+    "word": "It",
+    "start": 3.58,
+    "end": 3.82
+   },
+   {
+    "word": "names",
+    "start": 3.82,
+    "end": 4.14
+   },
+   {
+    "word": "the",
+    "start": 4.14,
+    "end": 4.4
+   },
+   {
+    "word": "group",
+    "start": 4.4,
+    "end": 4.72
+   },
+   {
+    "word": "and",
+    "start": 4.72,
+    "end": 5.62
+   },
+   {
+    "word": "it",
+    "start": 5.62,
+    "end": 6.06
+   },
+   {
+    "word": "tells",
+    "start": 6.06,
+    "end": 6.28
+   },
+   {
+    "word": "one",
+    "start": 6.28,
+    "end": 6.76
+   },
+   {
+    "word": "special",
+    "start": 6.76,
+    "end": 7.48
+   },
+   {
+    "word": "thing.",
+    "start": 7.48,
+    "end": 8.18
+   },
+   {
+    "word": "Finish",
+    "start": 8.94,
+    "end": 9.26
+   },
+   {
+    "word": "this",
+    "start": 9.26,
+    "end": 9.6
+   },
+   {
+    "word": "sentence.",
+    "start": 9.6,
+    "end": 10.14
+   },
+   {
+    "word": "An",
+    "start": 10.82,
+    "end": 11.12
+   },
+   {
+    "word": "apple",
+    "start": 11.12,
+    "end": 11.6
+   },
+   {
+    "word": "is",
+    "start": 11.6,
+    "end": 12.26
+   },
+   {
+    "word": "what?",
+    "start": 12.26,
+    "end": 13.46
+   },
+   {
+    "word": "Read",
+    "start": 14.6,
+    "end": 14.86
+   },
+   {
+    "word": "the",
+    "start": 14.86,
+    "end": 15.08
+   },
+   {
+    "word": "three",
+    "start": 15.08,
+    "end": 15.52
+   },
+   {
+    "word": "choices",
+    "start": 15.52,
+    "end": 16.12
+   },
+   {
+    "word": "and",
+    "start": 16.12,
+    "end": 16.68
+   },
+   {
+    "word": "tap",
+    "start": 16.68,
+    "end": 17.0
+   },
+   {
+    "word": "the",
+    "start": 17.0,
+    "end": 17.26
+   },
+   {
+    "word": "one",
+    "start": 17.26,
+    "end": 17.6
+   },
+   {
+    "word": "that",
+    "start": 17.6,
+    "end": 18.0
+   },
+   {
+    "word": "does",
+    "start": 18.0,
+    "end": 18.3
+   },
+   {
+    "word": "both",
+    "start": 18.3,
+    "end": 18.78
+   },
+   {
+    "word": "jobs.",
+    "start": 18.78,
+    "end": 19.42
+   }
+  ]
+ },
+ "challenge-riddle-spoon": {
+  "duration": 15.02,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.62
+   },
+   {
+    "word": "is",
+    "start": 0.62,
+    "end": 1.04
+   },
+   {
+    "word": "a",
+    "start": 1.04,
+    "end": 1.22
+   },
+   {
+    "word": "trickier",
+    "start": 1.22,
+    "end": 2.04
+   },
+   {
+    "word": "riddle.",
+    "start": 2.04,
+    "end": 2.48
+   },
+   {
+    "word": "Listen,",
+    "start": 2.88,
+    "end": 3.66
+   },
+   {
+    "word": "it",
+    "start": 4.18,
+    "end": 4.78
+   },
+   {
+    "word": "is",
+    "start": 4.78,
+    "end": 5.06
+   },
+   {
+    "word": "a",
+    "start": 5.06,
+    "end": 5.26
+   },
+   {
+    "word": "tool",
+    "start": 5.26,
+    "end": 5.72
+   },
+   {
+    "word": "that",
+    "start": 5.72,
+    "end": 6.4
+   },
+   {
+    "word": "you",
+    "start": 6.4,
+    "end": 6.66
+   },
+   {
+    "word": "use",
+    "start": 6.66,
+    "end": 7.18
+   },
+   {
+    "word": "to",
+    "start": 7.18,
+    "end": 7.5
+   },
+   {
+    "word": "eat",
+    "start": 7.5,
+    "end": 7.74
+   },
+   {
+    "word": "soup.",
+    "start": 7.74,
+    "end": 8.22
+   },
+   {
+    "word": "Read",
+    "start": 9.4,
+    "end": 9.78
+   },
+   {
+    "word": "the",
+    "start": 9.78,
+    "end": 10.1
+   },
+   {
+    "word": "three",
+    "start": 10.1,
+    "end": 10.44
+   },
+   {
+    "word": "words",
+    "start": 10.44,
+    "end": 11.04
+   },
+   {
+    "word": "and",
+    "start": 11.04,
+    "end": 11.6
+   },
+   {
+    "word": "tap",
+    "start": 11.6,
+    "end": 11.92
+   },
+   {
+    "word": "the",
+    "start": 11.92,
+    "end": 12.22
+   },
+   {
+    "word": "one",
+    "start": 12.22,
+    "end": 12.46
+   },
+   {
+    "word": "that",
+    "start": 12.46,
+    "end": 12.9
+   },
+   {
+    "word": "fits",
+    "start": 12.9,
+    "end": 13.32
+   },
+   {
+    "word": "the",
+    "start": 13.32,
+    "end": 13.76
+   },
+   {
+    "word": "whole",
+    "start": 13.76,
+    "end": 14.22
+   },
+   {
+    "word": "riddle.",
+    "start": 14.22,
+    "end": 15.02
+   }
+  ]
+ },
+ "challenge-speak-cow": {
+  "duration": 15.7,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "you",
+    "start": 0.56,
+    "end": 1.0
+   },
+   {
+    "word": "make",
+    "start": 1.0,
+    "end": 1.28
+   },
+   {
+    "word": "your",
+    "start": 1.28,
+    "end": 1.58
+   },
+   {
+    "word": "own",
+    "start": 1.58,
+    "end": 1.9
+   },
+   {
+    "word": "definition.",
+    "start": 1.9,
+    "end": 2.58
+   },
+   {
+    "word": "Look",
+    "start": 3.1,
+    "end": 3.66
+   },
+   {
+    "word": "at",
+    "start": 3.66,
+    "end": 4.02
+   },
+   {
+    "word": "the",
+    "start": 4.02,
+    "end": 4.22
+   },
+   {
+    "word": "picture.",
+    "start": 4.22,
+    "end": 4.6
+   },
+   {
+    "word": "What",
+    "start": 5.52,
+    "end": 5.82
+   },
+   {
+    "word": "is",
+    "start": 5.82,
+    "end": 6.28
+   },
+   {
+    "word": "a",
+    "start": 6.28,
+    "end": 6.48
+   },
+   {
+    "word": "cow?",
+    "start": 6.48,
+    "end": 6.86
+   },
+   {
+    "word": "Press",
+    "start": 7.9,
+    "end": 8.28
+   },
+   {
+    "word": "the",
+    "start": 8.28,
+    "end": 8.54
+   },
+   {
+    "word": "microphone",
+    "start": 8.54,
+    "end": 9.04
+   },
+   {
+    "word": "and",
+    "start": 9.04,
+    "end": 9.52
+   },
+   {
+    "word": "tell",
+    "start": 9.52,
+    "end": 9.8
+   },
+   {
+    "word": "me.",
+    "start": 9.8,
+    "end": 10.1
+   },
+   {
+    "word": "You",
+    "start": 10.94,
+    "end": 11.18
+   },
+   {
+    "word": "can",
+    "start": 11.18,
+    "end": 11.34
+   },
+   {
+    "word": "name",
+    "start": 11.34,
+    "end": 11.58
+   },
+   {
+    "word": "its",
+    "start": 11.58,
+    "end": 11.8
+   },
+   {
+    "word": "group",
+    "start": 11.8,
+    "end": 12.24
+   },
+   {
+    "word": "or",
+    "start": 12.24,
+    "end": 13.1
+   },
+   {
+    "word": "tell",
+    "start": 13.1,
+    "end": 13.64
+   },
+   {
+    "word": "one",
+    "start": 13.64,
+    "end": 14.08
+   },
+   {
+    "word": "special",
+    "start": 14.08,
+    "end": 14.72
+   },
+   {
+    "word": "thing",
+    "start": 14.72,
+    "end": 15.08
+   },
+   {
+    "word": "about",
+    "start": 15.08,
+    "end": 15.38
+   },
+   {
+    "word": "it.",
+    "start": 15.38,
+    "end": 15.7
+   }
+  ]
+ },
+ "complete": {
+  "duration": 18.54,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "work",
+    "start": 0.56,
+    "end": 1.0
+   },
+   {
+    "word": "today!",
+    "start": 1.0,
+    "end": 1.44
+   },
+   {
+    "word": "A",
+    "start": 2.24,
+    "end": 2.34
+   },
+   {
+    "word": "definition",
+    "start": 2.34,
+    "end": 2.8
+   },
+   {
+    "word": "names",
+    "start": 2.8,
+    "end": 3.28
+   },
+   {
+    "word": "the",
+    "start": 3.28,
+    "end": 3.56
+   },
+   {
+    "word": "group",
+    "start": 3.56,
+    "end": 3.96
+   },
+   {
+    "word": "a",
+    "start": 3.96,
+    "end": 4.3
+   },
+   {
+    "word": "thing",
+    "start": 4.3,
+    "end": 4.58
+   },
+   {
+    "word": "belongs",
+    "start": 4.58,
+    "end": 4.9
+   },
+   {
+    "word": "to,",
+    "start": 4.9,
+    "end": 5.38
+   },
+   {
+    "word": "then",
+    "start": 5.66,
+    "end": 6.16
+   },
+   {
+    "word": "one",
+    "start": 6.16,
+    "end": 6.5
+   },
+   {
+    "word": "special",
+    "start": 6.5,
+    "end": 7.1
+   },
+   {
+    "word": "thing",
+    "start": 7.1,
+    "end": 7.5
+   },
+   {
+    "word": "about",
+    "start": 7.5,
+    "end": 7.82
+   },
+   {
+    "word": "it.",
+    "start": 7.82,
+    "end": 8.16
+   },
+   {
+    "word": "A",
+    "start": 8.84,
+    "end": 8.96
+   },
+   {
+    "word": "duck",
+    "start": 8.96,
+    "end": 9.28
+   },
+   {
+    "word": "is",
+    "start": 9.28,
+    "end": 9.86
+   },
+   {
+    "word": "a",
+    "start": 9.86,
+    "end": 10.04
+   },
+   {
+    "word": "bird",
+    "start": 10.04,
+    "end": 10.38
+   },
+   {
+    "word": "that",
+    "start": 10.38,
+    "end": 10.66
+   },
+   {
+    "word": "swims.",
+    "start": 10.66,
+    "end": 11.12
+   },
+   {
+    "word": "A",
+    "start": 11.9,
+    "end": 12.14
+   },
+   {
+    "word": "tiger",
+    "start": 12.14,
+    "end": 12.68
+   },
+   {
+    "word": "is",
+    "start": 12.68,
+    "end": 13.26
+   },
+   {
+    "word": "a",
+    "start": 13.26,
+    "end": 13.48
+   },
+   {
+    "word": "big",
+    "start": 13.48,
+    "end": 13.76
+   },
+   {
+    "word": "cat",
+    "start": 13.76,
+    "end": 14.12
+   },
+   {
+    "word": "with",
+    "start": 14.12,
+    "end": 14.5
+   },
+   {
+    "word": "stripes.",
+    "start": 14.5,
+    "end": 14.94
+   },
+   {
+    "word": "Keep",
+    "start": 15.8,
+    "end": 16.08
+   },
+   {
+    "word": "building",
+    "start": 16.08,
+    "end": 16.52
+   },
+   {
+    "word": "definitions",
+    "start": 16.52,
+    "end": 17.16
+   },
+   {
+    "word": "for",
+    "start": 17.16,
+    "end": 17.54
+   },
+   {
+    "word": "the",
+    "start": 17.54,
+    "end": 17.68
+   },
+   {
+    "word": "things",
+    "start": 17.68,
+    "end": 17.96
+   },
+   {
+    "word": "you",
+    "start": 17.96,
+    "end": 18.22
+   },
+   {
+    "word": "see.",
+    "start": 18.22,
+    "end": 18.54
+   }
+  ]
+ },
+ "guided-complete-apple": {
+  "duration": 18.12,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "more",
+    "start": 0.42,
+    "end": 0.68
+   },
+   {
+    "word": "fix",
+    "start": 0.68,
+    "end": 1.04
+   },
+   {
+    "word": "it.",
+    "start": 1.04,
+    "end": 1.34
+   },
+   {
+    "word": "Listen.",
+    "start": 2.12,
+    "end": 2.58
+   },
+   {
+    "word": "An",
+    "start": 3.46,
+    "end": 3.94
+   },
+   {
+    "word": "apple",
+    "start": 3.94,
+    "end": 4.38
+   },
+   {
+    "word": "is",
+    "start": 4.38,
+    "end": 5.12
+   },
+   {
+    "word": "a",
+    "start": 5.12,
+    "end": 5.44
+   },
+   {
+    "word": "what?",
+    "start": 5.44,
+    "end": 5.86
+   },
+   {
+    "word": "That",
+    "start": 6.58,
+    "end": 6.72
+   },
+   {
+    "word": "is",
+    "start": 6.72,
+    "end": 6.88
+   },
+   {
+    "word": "sweet.",
+    "start": 6.88,
+    "end": 7.36
+   },
+   {
+    "word": "This",
+    "start": 8.88,
+    "end": 9.32
+   },
+   {
+    "word": "time,",
+    "start": 9.32,
+    "end": 9.72
+   },
+   {
+    "word": "the",
+    "start": 10.02,
+    "end": 10.12
+   },
+   {
+    "word": "group",
+    "start": 10.12,
+    "end": 10.44
+   },
+   {
+    "word": "name",
+    "start": 10.44,
+    "end": 10.8
+   },
+   {
+    "word": "is",
+    "start": 10.8,
+    "end": 11.18
+   },
+   {
+    "word": "missing.",
+    "start": 11.18,
+    "end": 11.66
+   },
+   {
+    "word": "Read",
+    "start": 12.86,
+    "end": 13.18
+   },
+   {
+    "word": "the",
+    "start": 13.18,
+    "end": 13.44
+   },
+   {
+    "word": "three",
+    "start": 13.44,
+    "end": 13.84
+   },
+   {
+    "word": "words",
+    "start": 13.84,
+    "end": 14.48
+   },
+   {
+    "word": "and",
+    "start": 14.48,
+    "end": 15.06
+   },
+   {
+    "word": "tap",
+    "start": 15.06,
+    "end": 15.42
+   },
+   {
+    "word": "the",
+    "start": 15.42,
+    "end": 15.68
+   },
+   {
+    "word": "group",
+    "start": 15.68,
+    "end": 16.08
+   },
+   {
+    "word": "and",
+    "start": 16.08,
+    "end": 16.54
+   },
+   {
+    "word": "apple",
+    "start": 16.54,
+    "end": 17.14
+   },
+   {
+    "word": "belongs",
+    "start": 17.14,
+    "end": 17.7
+   },
+   {
+    "word": "to.",
+    "start": 17.7,
+    "end": 18.12
+   }
+  ]
+ },
+ "guided-complete-tiger": {
+  "duration": 20.68,
+  "words": [
+   {
+    "word": "Your",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "turn",
+    "start": 0.48,
+    "end": 0.96
+   },
+   {
+    "word": "to",
+    "start": 0.96,
+    "end": 1.22
+   },
+   {
+    "word": "finish",
+    "start": 1.22,
+    "end": 1.52
+   },
+   {
+    "word": "a",
+    "start": 1.52,
+    "end": 1.76
+   },
+   {
+    "word": "definition.",
+    "start": 1.76,
+    "end": 2.34
+   },
+   {
+    "word": "Listen,",
+    "start": 3.22,
+    "end": 3.58
+   },
+   {
+    "word": "a",
+    "start": 4.32,
+    "end": 4.72
+   },
+   {
+    "word": "tiger",
+    "start": 4.72,
+    "end": 5.36
+   },
+   {
+    "word": "is",
+    "start": 5.36,
+    "end": 6.12
+   },
+   {
+    "word": "a",
+    "start": 6.12,
+    "end": 6.42
+   },
+   {
+    "word": "big",
+    "start": 6.42,
+    "end": 6.86
+   },
+   {
+    "word": "cat",
+    "start": 6.86,
+    "end": 7.44
+   },
+   {
+    "word": "with",
+    "start": 7.44,
+    "end": 7.94
+   },
+   {
+    "word": "what?",
+    "start": 7.94,
+    "end": 8.28
+   },
+   {
+    "word": "The",
+    "start": 10.02,
+    "end": 10.32
+   },
+   {
+    "word": "special",
+    "start": 10.32,
+    "end": 11.14
+   },
+   {
+    "word": "thing",
+    "start": 11.14,
+    "end": 11.6
+   },
+   {
+    "word": "is",
+    "start": 11.6,
+    "end": 12.08
+   },
+   {
+    "word": "missing.",
+    "start": 12.08,
+    "end": 12.7
+   },
+   {
+    "word": "Read",
+    "start": 13.84,
+    "end": 14.28
+   },
+   {
+    "word": "the",
+    "start": 14.28,
+    "end": 14.62
+   },
+   {
+    "word": "three",
+    "start": 14.62,
+    "end": 15.02
+   },
+   {
+    "word": "words",
+    "start": 15.02,
+    "end": 15.46
+   },
+   {
+    "word": "on",
+    "start": 15.46,
+    "end": 15.84
+   },
+   {
+    "word": "your",
+    "start": 15.84,
+    "end": 16.04
+   },
+   {
+    "word": "screen",
+    "start": 16.04,
+    "end": 16.46
+   },
+   {
+    "word": "and",
+    "start": 16.46,
+    "end": 17.32
+   },
+   {
+    "word": "tap",
+    "start": 17.32,
+    "end": 17.64
+   },
+   {
+    "word": "the",
+    "start": 17.64,
+    "end": 17.94
+   },
+   {
+    "word": "one",
+    "start": 17.94,
+    "end": 18.22
+   },
+   {
+    "word": "that",
+    "start": 18.22,
+    "end": 18.54
+   },
+   {
+    "word": "is",
+    "start": 18.54,
+    "end": 18.72
+   },
+   {
+    "word": "true",
+    "start": 18.72,
+    "end": 19.38
+   },
+   {
+    "word": "about",
+    "start": 19.38,
+    "end": 20.06
+   },
+   {
+    "word": "a",
+    "start": 20.06,
+    "end": 20.28
+   },
+   {
+    "word": "tiger.",
+    "start": 20.28,
+    "end": 20.68
+   }
+  ]
+ },
+ "guided-speak-definition": {
+  "duration": 10.14,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "read",
+    "start": 0.96,
+    "end": 1.06
+   },
+   {
+    "word": "a",
+    "start": 1.06,
+    "end": 1.34
+   },
+   {
+    "word": "whole",
+    "start": 1.34,
+    "end": 1.7
+   },
+   {
+    "word": "definition",
+    "start": 1.7,
+    "end": 2.52
+   },
+   {
+    "word": "out",
+    "start": 2.52,
+    "end": 3.0
+   },
+   {
+    "word": "loud.",
+    "start": 3.0,
+    "end": 3.44
+   },
+   {
+    "word": "The",
+    "start": 4.14,
+    "end": 4.36
+   },
+   {
+    "word": "sentence",
+    "start": 4.36,
+    "end": 4.86
+   },
+   {
+    "word": "is",
+    "start": 4.86,
+    "end": 5.24
+   },
+   {
+    "word": "on",
+    "start": 5.24,
+    "end": 5.54
+   },
+   {
+    "word": "your",
+    "start": 5.54,
+    "end": 5.74
+   },
+   {
+    "word": "screen.",
+    "start": 5.74,
+    "end": 6.24
+   },
+   {
+    "word": "Read",
+    "start": 7.12,
+    "end": 7.36
+   },
+   {
+    "word": "it",
+    "start": 7.36,
+    "end": 7.62
+   },
+   {
+    "word": "in",
+    "start": 7.62,
+    "end": 7.92
+   },
+   {
+    "word": "a",
+    "start": 7.92,
+    "end": 8.08
+   },
+   {
+    "word": "big,",
+    "start": 8.08,
+    "end": 8.58
+   },
+   {
+    "word": "clear",
+    "start": 8.82,
+    "end": 9.4
+   },
+   {
+    "word": "voice.",
+    "start": 9.4,
+    "end": 10.14
+   }
+  ]
+ },
+ "hook-what-is-it": {
+  "duration": 18.78,
+  "words": [
+   {
+    "word": "What",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "is",
+    "start": 0.54,
+    "end": 1.0
+   },
+   {
+    "word": "a",
+    "start": 1.0,
+    "end": 1.34
+   },
+   {
+    "word": "duck?",
+    "start": 1.34,
+    "end": 1.6
+   },
+   {
+    "word": "What",
+    "start": 2.26,
+    "end": 2.9
+   },
+   {
+    "word": "is",
+    "start": 2.9,
+    "end": 3.36
+   },
+   {
+    "word": "a",
+    "start": 3.36,
+    "end": 3.6
+   },
+   {
+    "word": "tiger?",
+    "start": 3.6,
+    "end": 4.02
+   },
+   {
+    "word": "Today",
+    "start": 4.88,
+    "end": 5.46
+   },
+   {
+    "word": "you",
+    "start": 5.46,
+    "end": 5.88
+   },
+   {
+    "word": "will",
+    "start": 5.88,
+    "end": 6.0
+   },
+   {
+    "word": "learn",
+    "start": 6.0,
+    "end": 6.32
+   },
+   {
+    "word": "a",
+    "start": 6.32,
+    "end": 6.6
+   },
+   {
+    "word": "word",
+    "start": 6.6,
+    "end": 6.94
+   },
+   {
+    "word": "trick",
+    "start": 6.94,
+    "end": 7.36
+   },
+   {
+    "word": "for",
+    "start": 7.36,
+    "end": 7.86
+   },
+   {
+    "word": "telling",
+    "start": 7.86,
+    "end": 8.22
+   },
+   {
+    "word": "exactly",
+    "start": 8.22,
+    "end": 8.92
+   },
+   {
+    "word": "what",
+    "start": 8.92,
+    "end": 9.6
+   },
+   {
+    "word": "a",
+    "start": 9.6,
+    "end": 9.74
+   },
+   {
+    "word": "thing",
+    "start": 9.74,
+    "end": 9.98
+   },
+   {
+    "word": "is.",
+    "start": 9.98,
+    "end": 10.6
+   },
+   {
+    "word": "It",
+    "start": 11.18,
+    "end": 11.38
+   },
+   {
+    "word": "works",
+    "start": 11.38,
+    "end": 11.64
+   },
+   {
+    "word": "on",
+    "start": 11.64,
+    "end": 12.04
+   },
+   {
+    "word": "ducks,",
+    "start": 12.04,
+    "end": 12.54
+   },
+   {
+    "word": "tigers,",
+    "start": 12.9,
+    "end": 13.64
+   },
+   {
+    "word": "apples,",
+    "start": 14.22,
+    "end": 14.9
+   },
+   {
+    "word": "and",
+    "start": 15.22,
+    "end": 15.64
+   },
+   {
+    "word": "almost",
+    "start": 15.64,
+    "end": 15.98
+   },
+   {
+    "word": "anything.",
+    "start": 15.98,
+    "end": 16.78
+   },
+   {
+    "word": "Let's",
+    "start": 17.46,
+    "end": 18.02
+   },
+   {
+    "word": "learn",
+    "start": 18.02,
+    "end": 18.26
+   },
+   {
+    "word": "the",
+    "start": 18.26,
+    "end": 18.48
+   },
+   {
+    "word": "trick.",
+    "start": 18.48,
+    "end": 18.78
+   }
+  ]
+ },
+ "model-read-along-sentence": {
+  "duration": 13.3,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.36
+   },
+   {
+    "word": "duck",
+    "start": 0.36,
+    "end": 0.78
+   },
+   {
+    "word": "is",
+    "start": 0.78,
+    "end": 1.42
+   },
+   {
+    "word": "a",
+    "start": 1.42,
+    "end": 1.62
+   },
+   {
+    "word": "bird",
+    "start": 1.62,
+    "end": 1.96
+   },
+   {
+    "word": "that",
+    "start": 1.96,
+    "end": 2.46
+   },
+   {
+    "word": "swims.",
+    "start": 2.46,
+    "end": 2.98
+   },
+   {
+    "word": "A",
+    "start": 3.86,
+    "end": 4.28
+   },
+   {
+    "word": "tiger",
+    "start": 4.28,
+    "end": 4.92
+   },
+   {
+    "word": "is",
+    "start": 4.92,
+    "end": 5.36
+   },
+   {
+    "word": "a",
+    "start": 5.36,
+    "end": 5.58
+   },
+   {
+    "word": "big",
+    "start": 5.58,
+    "end": 6.06
+   },
+   {
+    "word": "cat",
+    "start": 6.06,
+    "end": 6.64
+   },
+   {
+    "word": "with",
+    "start": 6.64,
+    "end": 7.14
+   },
+   {
+    "word": "stripes.",
+    "start": 7.14,
+    "end": 7.76
+   },
+   {
+    "word": "Name",
+    "start": 8.66,
+    "end": 9.62
+   },
+   {
+    "word": "the",
+    "start": 9.62,
+    "end": 9.96
+   },
+   {
+    "word": "group.",
+    "start": 9.96,
+    "end": 10.4
+   },
+   {
+    "word": "Then",
+    "start": 11.18,
+    "end": 11.66
+   },
+   {
+    "word": "tell",
+    "start": 11.66,
+    "end": 12.16
+   },
+   {
+    "word": "the",
+    "start": 12.16,
+    "end": 12.36
+   },
+   {
+    "word": "special",
+    "start": 12.36,
+    "end": 12.9
+   },
+   {
+    "word": "thing.",
+    "start": 12.9,
+    "end": 13.3
+   }
+  ]
+ },
+ "model-read-along": {
+  "duration": 7.38,
+  "words": [
+   {
+    "word": "Let's",
+    "start": 0.0,
+    "end": 0.74
+   },
+   {
+    "word": "read",
+    "start": 0.74,
+    "end": 1.04
+   },
+   {
+    "word": "the",
+    "start": 1.04,
+    "end": 1.54
+   },
+   {
+    "word": "trick",
+    "start": 1.54,
+    "end": 2.16
+   },
+   {
+    "word": "together.",
+    "start": 2.16,
+    "end": 3.24
+   },
+   {
+    "word": "Follow",
+    "start": 3.74,
+    "end": 4.74
+   },
+   {
+    "word": "each",
+    "start": 4.74,
+    "end": 5.5
+   },
+   {
+    "word": "word",
+    "start": 5.5,
+    "end": 6.0
+   },
+   {
+    "word": "as",
+    "start": 6.0,
+    "end": 6.76
+   },
+   {
+    "word": "we",
+    "start": 6.76,
+    "end": 7.0
+   },
+   {
+    "word": "read.",
+    "start": 7.0,
+    "end": 7.38
+   }
+  ]
+ },
+ "model-the-formula": {
+  "duration": 28.6,
+  "words": [
+   {
+    "word": "What",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "is",
+    "start": 0.58,
+    "end": 1.14
+   },
+   {
+    "word": "a",
+    "start": 1.14,
+    "end": 1.34
+   },
+   {
+    "word": "duck?",
+    "start": 1.34,
+    "end": 1.66
+   },
+   {
+    "word": "Here",
+    "start": 2.3,
+    "end": 2.8
+   },
+   {
+    "word": "is",
+    "start": 2.8,
+    "end": 2.98
+   },
+   {
+    "word": "the",
+    "start": 2.98,
+    "end": 3.1
+   },
+   {
+    "word": "trick.",
+    "start": 3.1,
+    "end": 3.46
+   },
+   {
+    "word": "First",
+    "start": 4.0,
+    "end": 4.46
+   },
+   {
+    "word": "name",
+    "start": 4.46,
+    "end": 4.98
+   },
+   {
+    "word": "the",
+    "start": 4.98,
+    "end": 5.34
+   },
+   {
+    "word": "group",
+    "start": 5.34,
+    "end": 5.66
+   },
+   {
+    "word": "it",
+    "start": 5.66,
+    "end": 6.1
+   },
+   {
+    "word": "belongs",
+    "start": 6.1,
+    "end": 6.42
+   },
+   {
+    "word": "to.",
+    "start": 6.42,
+    "end": 6.88
+   },
+   {
+    "word": "A",
+    "start": 7.36,
+    "end": 7.66
+   },
+   {
+    "word": "duck",
+    "start": 7.66,
+    "end": 8.06
+   },
+   {
+    "word": "is",
+    "start": 8.06,
+    "end": 8.74
+   },
+   {
+    "word": "a",
+    "start": 8.74,
+    "end": 8.9
+   },
+   {
+    "word": "bird.",
+    "start": 8.9,
+    "end": 9.2
+   },
+   {
+    "word": "Then",
+    "start": 10.08,
+    "end": 10.62
+   },
+   {
+    "word": "add",
+    "start": 10.62,
+    "end": 11.54
+   },
+   {
+    "word": "one",
+    "start": 11.54,
+    "end": 12.16
+   },
+   {
+    "word": "special",
+    "start": 12.16,
+    "end": 12.92
+   },
+   {
+    "word": "thing",
+    "start": 12.92,
+    "end": 13.52
+   },
+   {
+    "word": "about",
+    "start": 13.52,
+    "end": 14.1
+   },
+   {
+    "word": "it.",
+    "start": 14.1,
+    "end": 14.5
+   },
+   {
+    "word": "A",
+    "start": 15.24,
+    "end": 15.4
+   },
+   {
+    "word": "duck",
+    "start": 15.4,
+    "end": 15.84
+   },
+   {
+    "word": "is",
+    "start": 15.84,
+    "end": 16.38
+   },
+   {
+    "word": "a",
+    "start": 16.38,
+    "end": 16.58
+   },
+   {
+    "word": "bird",
+    "start": 16.58,
+    "end": 17.08
+   },
+   {
+    "word": "that",
+    "start": 17.08,
+    "end": 17.86
+   },
+   {
+    "word": "swims.",
+    "start": 17.86,
+    "end": 18.54
+   },
+   {
+    "word": "Group",
+    "start": 19.44,
+    "end": 19.9
+   },
+   {
+    "word": "first,",
+    "start": 19.9,
+    "end": 20.56
+   },
+   {
+    "word": "then",
+    "start": 21.0,
+    "end": 21.7
+   },
+   {
+    "word": "the",
+    "start": 21.7,
+    "end": 22.48
+   },
+   {
+    "word": "special",
+    "start": 22.48,
+    "end": 23.06
+   },
+   {
+    "word": "thing.",
+    "start": 23.06,
+    "end": 23.5
+   },
+   {
+    "word": "Now",
+    "start": 24.4,
+    "end": 24.88
+   },
+   {
+    "word": "you",
+    "start": 24.88,
+    "end": 25.18
+   },
+   {
+    "word": "can",
+    "start": 25.18,
+    "end": 25.36
+   },
+   {
+    "word": "tell",
+    "start": 25.36,
+    "end": 25.68
+   },
+   {
+    "word": "anyone",
+    "start": 25.68,
+    "end": 26.56
+   },
+   {
+    "word": "what",
+    "start": 26.56,
+    "end": 27.28
+   },
+   {
+    "word": "a",
+    "start": 27.28,
+    "end": 27.64
+   },
+   {
+    "word": "duck",
+    "start": 27.64,
+    "end": 28.0
+   },
+   {
+    "word": "is.",
+    "start": 28.0,
+    "end": 28.6
+   }
+  ]
+ }
+}

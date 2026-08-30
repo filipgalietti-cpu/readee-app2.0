@@ -176,6 +176,55 @@ function buildAccuracySeries(results: PracticeResult[], range: DateRange): Serie
     .map((b) => ({ label: b.label, accuracy: b.attempted > 0 ? Math.round((b.correct / b.attempted) * 100) : 0, attempted: b.attempted }));
 }
 
+/** All-time per-standard attempt/correct totals. */
+function buildStdMap(results: PracticeResult[]): Record<string, { attempted: number; correct: number }> {
+  const map: Record<string, { attempted: number; correct: number }> = {};
+  for (const r of results) {
+    if (!map[r.standard_id]) map[r.standard_id] = { attempted: 0, correct: 0 };
+    map[r.standard_id].attempted += r.questions_attempted;
+    map[r.standard_id].correct += r.questions_correct;
+  }
+  return map;
+}
+
+/* ─── Free-plan sample data ──────────────────────────────
+   Free (non-premium) parents never receive the real premium analytics: the
+   fetch is scoped to the last 7 days (just enough for the free banner) and
+   everything behind the blurred upgrade overlay renders from this hardcoded
+   sample instead. Shapes mirror practice_results rows. */
+
+const SAMPLE_SESSIONS: { daysAgo: number; stdIndex: number; attempted: number; correct: number }[] = [
+  { daysAgo: 0,  stdIndex: 0, attempted: 10, correct: 9 },
+  { daysAgo: 1,  stdIndex: 1, attempted: 8,  correct: 6 },
+  { daysAgo: 2,  stdIndex: 2, attempted: 10, correct: 7 },
+  { daysAgo: 3,  stdIndex: 0, attempted: 6,  correct: 6 },
+  { daysAgo: 5,  stdIndex: 3, attempted: 10, correct: 5 },
+  { daysAgo: 6,  stdIndex: 4, attempted: 8,  correct: 7 },
+  { daysAgo: 8,  stdIndex: 1, attempted: 10, correct: 8 },
+  { daysAgo: 10, stdIndex: 5, attempted: 8,  correct: 4 },
+  { daysAgo: 12, stdIndex: 2, attempted: 10, correct: 9 },
+  { daysAgo: 15, stdIndex: 6, attempted: 6,  correct: 5 },
+  { daysAgo: 18, stdIndex: 0, attempted: 10, correct: 8 },
+  { daysAgo: 21, stdIndex: 3, attempted: 8,  correct: 6 },
+];
+
+/** Materialize the sample sessions against the child's grade standards so the
+ *  blurred teaser (charts, report card, skill map) looks plausible. */
+function buildSampleResults(childId: string, gradeStandards: Standard[]): PracticeResult[] {
+  const now = Date.now();
+  return SAMPLE_SESSIONS.map((s, i) => ({
+    id: `sample-${i}`,
+    child_id: childId,
+    standard_id:
+      gradeStandards[s.stdIndex % Math.max(1, gradeStandards.length)]?.standard_id ??
+      `sample-std-${s.stdIndex}`,
+    questions_attempted: s.attempted,
+    questions_correct: s.correct,
+    carrots_earned: 0,
+    completed_at: new Date(now - s.daysAgo * 86400000).toISOString(),
+  }));
+}
+
 /** Weekly question totals, most recent up to 7 weeks. */
 function buildWeeklyVolume(results: PracticeResult[]) {
   const map = new Map<string, { order: number; label: string; count: number }>();
@@ -297,28 +346,52 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     return map;
   }, [allStandards]);
 
-  // Fetch practice results + user plan
+  // Resolve the plan first — the results fetch below is scoped by it.
   useEffect(() => {
-    async function fetchResults() {
+    fetchPlan();
+  }, [fetchPlan]);
+
+  // Fetch practice results. Free plans only ever download the last 7 days
+  // (what the unblurred free banner shows) — the premium sections behind the
+  // blur render from SAMPLE_SESSIONS, so the real history never reaches a
+  // free client.
+  useEffect(() => {
+    if (rawPlan === null) return; // wait for the plan before choosing scope
+    let cancelled = false;
+    (async () => {
       const supabase = supabaseBrowser();
-      fetchPlan();
-      const { data } = await supabase
+      let query = supabase
         .from("practice_results")
         .select("*")
         .eq("child_id", child.id)
         .order("completed_at", { ascending: false });
+      if (isFree) {
+        const cutoff = new Date();
+        cutoff.setDate(cutoff.getDate() - 7);
+        query = query.gte("completed_at", cutoff.toISOString());
+      }
+      const { data } = await query;
+      if (cancelled) return;
       setPracticeResults((data as PracticeResult[]) || []);
       setLoadingData(false);
-    }
-    fetchResults();
-  }, [child.id, fetchPlan]);
+    })();
+    return () => { cancelled = true; };
+  }, [child.id, rawPlan, isFree]);
 
-  /* ── Overview range stats ── */
+  // What the premium (blurred-when-free) sections render from: real history
+  // for full-access parents, the hardcoded sample for free parents.
+  const sampleResults = useMemo(
+    () => (isFree ? buildSampleResults(child.id, gradeStandards) : []),
+    [isFree, child.id, gradeStandards],
+  );
+  const displayResults = isFree ? sampleResults : practiceResults;
+
+  /* ── Overview range stats (premium section — sample data when free) ── */
   const filteredResults = useMemo(() => {
     const cutoff = getDateCutoff(dateRange);
-    if (!cutoff) return practiceResults;
-    return practiceResults.filter((r) => new Date(r.completed_at) >= cutoff);
-  }, [practiceResults, dateRange]);
+    if (!cutoff) return displayResults;
+    return displayResults.filter((r) => new Date(r.completed_at) >= cutoff);
+  }, [displayResults, dateRange]);
 
   const prevRangeResults = useMemo(() => {
     if (dateRange === "all") return null;
@@ -331,11 +404,11 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
       end = new Date(now.getFullYear(), now.getMonth(), 1);
     }
-    return practiceResults.filter((r) => {
+    return displayResults.filter((r) => {
       const t = new Date(r.completed_at);
       return t >= start && t < end;
     });
-  }, [practiceResults, dateRange]);
+  }, [displayResults, dateRange]);
 
   const totals = useMemo(() => statsOf(filteredResults), [filteredResults]);
   const prevTotals = useMemo(() => (prevRangeResults ? statsOf(prevRangeResults) : null), [prevRangeResults]);
@@ -378,16 +451,14 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     return [...withData].sort((a, b) => a.accuracy - b.accuracy)[0];
   }, [last7]);
 
-  /* ── All-time per-standard stats (skill map) ── */
-  const allTimeStdStats = useMemo(() => {
-    const map: Record<string, { attempted: number; correct: number }> = {};
-    for (const r of practiceResults) {
-      if (!map[r.standard_id]) map[r.standard_id] = { attempted: 0, correct: 0 };
-      map[r.standard_id].attempted += r.questions_attempted;
-      map[r.standard_id].correct += r.questions_correct;
-    }
-    return map;
-  }, [practiceResults]);
+  /* ── All-time per-standard stats (skill map — premium section, so sample
+     when free). realStdMap stays on real data for the unblurred header
+     standing badge. ── */
+  const realStdMap = useMemo(() => buildStdMap(practiceResults), [practiceResults]);
+  const allTimeStdStats = useMemo(
+    () => (isFree ? buildStdMap(displayResults) : realStdMap),
+    [isFree, displayResults, realStdMap],
+  );
 
   const totalGradeSkillsPracticed = useMemo(() => {
     return gradeStandards.filter((s) => (allTimeStdStats[s.standard_id]?.attempted ?? 0) > 0).length;
@@ -398,7 +469,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
      there's enough signal (≥3 grade standards with ≥4 questions each). ── */
   const gradeStanding = useMemo(() => {
     const stats = gradeStandards
-      .map((s) => allTimeStdStats[s.standard_id])
+      .map((s) => realStdMap[s.standard_id])
       .filter((st): st is { attempted: number; correct: number } => !!st && st.attempted >= 4);
     if (stats.length < 3) return null;
     const attempted = stats.reduce((n, st) => n + st.attempted, 0);
@@ -408,7 +479,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     if (acc >= 0.85 && breadth >= 0.25) return { phrase: "reading above grade level", short: "Above grade", color: "#059669", bg: "#ecfdf5" };
     if (acc >= 0.65) return { phrase: "reading on grade level", short: "On grade", color: "#4338ca", bg: "#eef2ff" };
     return { phrase: "building toward grade level", short: "Building toward grade", color: "#b45309", bg: "#fffbeb" };
-  }, [gradeStandards, allTimeStdStats]);
+  }, [gradeStandards, realStdMap]);
 
   /* ── AI flash-snapshot (premium) — a warm 2-sentence headline + one action,
      generated by Gemini from the deterministic facts below and cached per child
@@ -468,7 +539,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
     return () => { cancelled = true; };
   }, [isFree, child.id, snapshotFacts, last7.attempted]);
 
-  const weeklyVolume = useMemo(() => buildWeeklyVolume(practiceResults), [practiceResults]);
+  const weeklyVolume = useMemo(() => buildWeeklyVolume(displayResults), [displayResults]);
 
   /* ── Report card week window ── */
   const [weekOffset, setWeekOffset] = useState(0);
@@ -481,18 +552,18 @@ function AnalyticsDashboard({ child }: { child: Child }) {
   }, [weekOffset]);
 
   const weekResults = useMemo(
-    () => practiceResults.filter((r) => {
+    () => displayResults.filter((r) => {
       const t = new Date(r.completed_at);
       return t >= reportWeek.start && t < reportWeek.end;
     }),
-    [practiceResults, reportWeek],
+    [displayResults, reportWeek],
   );
   const prevWeekResults = useMemo(
-    () => practiceResults.filter((r) => {
+    () => displayResults.filter((r) => {
       const t = new Date(r.completed_at);
       return t >= reportWeek.prevStart && t < reportWeek.start;
     }),
-    [practiceResults, reportWeek],
+    [displayResults, reportWeek],
   );
   const weekTotals = useMemo(() => statsOf(weekResults), [weekResults]);
   const prevWeekTotals = useMemo(() => statsOf(prevWeekResults), [prevWeekResults]);

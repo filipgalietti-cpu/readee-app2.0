@@ -1,0 +1,2397 @@
+{
+ "apply-new-story-sequence": {
+  "duration": 20.1,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "let's",
+    "start": 0.46,
+    "end": 0.86
+   },
+   {
+    "word": "try",
+    "start": 0.86,
+    "end": 1.08
+   },
+   {
+    "word": "a",
+    "start": 1.08,
+    "end": 1.3
+   },
+   {
+    "word": "new,",
+    "start": 1.3,
+    "end": 1.62
+   },
+   {
+    "word": "very",
+    "start": 1.98,
+    "end": 2.4
+   },
+   {
+    "word": "short",
+    "start": 2.4,
+    "end": 2.74
+   },
+   {
+    "word": "story.",
+    "start": 2.74,
+    "end": 3.36
+   },
+   {
+    "word": "Listen",
+    "start": 4.04,
+    "end": 4.3
+   },
+   {
+    "word": "carefully.",
+    "start": 4.3,
+    "end": 4.9
+   },
+   {
+    "word": "A",
+    "start": 6.06,
+    "end": 6.16
+   },
+   {
+    "word": "boy",
+    "start": 6.16,
+    "end": 6.6
+   },
+   {
+    "word": "plants",
+    "start": 6.6,
+    "end": 7.22
+   },
+   {
+    "word": "a",
+    "start": 7.22,
+    "end": 7.54
+   },
+   {
+    "word": "seed.",
+    "start": 7.54,
+    "end": 7.82
+   },
+   {
+    "word": "The",
+    "start": 8.72,
+    "end": 8.92
+   },
+   {
+    "word": "sun",
+    "start": 8.92,
+    "end": 9.52
+   },
+   {
+    "word": "helps",
+    "start": 9.52,
+    "end": 10.08
+   },
+   {
+    "word": "it",
+    "start": 10.08,
+    "end": 10.32
+   },
+   {
+    "word": "grow.",
+    "start": 10.32,
+    "end": 10.72
+   },
+   {
+    "word": "A",
+    "start": 11.72,
+    "end": 11.92
+   },
+   {
+    "word": "big",
+    "start": 11.92,
+    "end": 12.18
+   },
+   {
+    "word": "flower",
+    "start": 12.18,
+    "end": 12.8
+   },
+   {
+    "word": "blooms.",
+    "start": 12.8,
+    "end": 13.44
+   },
+   {
+    "word": "Put",
+    "start": 14.36,
+    "end": 14.68
+   },
+   {
+    "word": "the",
+    "start": 14.68,
+    "end": 14.86
+   },
+   {
+    "word": "pictures",
+    "start": 14.86,
+    "end": 15.18
+   },
+   {
+    "word": "in",
+    "start": 15.18,
+    "end": 15.48
+   },
+   {
+    "word": "order.",
+    "start": 15.48,
+    "end": 15.92
+   },
+   {
+    "word": "What",
+    "start": 16.44,
+    "end": 16.7
+   },
+   {
+    "word": "happened",
+    "start": 16.7,
+    "end": 17.06
+   },
+   {
+    "word": "first?",
+    "start": 17.06,
+    "end": 17.52
+   },
+   {
+    "word": "Next",
+    "start": 18.56,
+    "end": 19.08
+   },
+   {
+    "word": "and",
+    "start": 19.08,
+    "end": 19.82
+   },
+   {
+    "word": "last.",
+    "start": 19.82,
+    "end": 20.1
+   }
+  ]
+ },
+ "celebrate-success": {
+  "duration": 13.82,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "did",
+    "start": 0.54,
+    "end": 0.94
+   },
+   {
+    "word": "it!",
+    "start": 0.94,
+    "end": 1.3
+   },
+   {
+    "word": "You",
+    "start": 1.6,
+    "end": 1.82
+   },
+   {
+    "word": "are",
+    "start": 1.82,
+    "end": 2.12
+   },
+   {
+    "word": "a",
+    "start": 2.12,
+    "end": 2.38
+   },
+   {
+    "word": "super",
+    "start": 2.38,
+    "end": 2.88
+   },
+   {
+    "word": "story",
+    "start": 2.88,
+    "end": 3.54
+   },
+   {
+    "word": "helper!",
+    "start": 3.54,
+    "end": 4.02
+   },
+   {
+    "word": "You",
+    "start": 4.56,
+    "end": 4.84
+   },
+   {
+    "word": "can",
+    "start": 4.84,
+    "end": 5.04
+   },
+   {
+    "word": "tell",
+    "start": 5.04,
+    "end": 5.32
+   },
+   {
+    "word": "what",
+    "start": 5.32,
+    "end": 5.66
+   },
+   {
+    "word": "happens",
+    "start": 5.66,
+    "end": 6.16
+   },
+   {
+    "word": "at",
+    "start": 6.16,
+    "end": 6.54
+   },
+   {
+    "word": "the",
+    "start": 6.54,
+    "end": 6.7
+   },
+   {
+    "word": "beginning,",
+    "start": 6.7,
+    "end": 7.18
+   },
+   {
+    "word": "in",
+    "start": 7.62,
+    "end": 7.88
+   },
+   {
+    "word": "the",
+    "start": 7.88,
+    "end": 8.04
+   },
+   {
+    "word": "middle,",
+    "start": 8.04,
+    "end": 8.36
+   },
+   {
+    "word": "and",
+    "start": 8.68,
+    "end": 9.1
+   },
+   {
+    "word": "at",
+    "start": 9.1,
+    "end": 9.36
+   },
+   {
+    "word": "the",
+    "start": 9.36,
+    "end": 9.54
+   },
+   {
+    "word": "end",
+    "start": 9.54,
+    "end": 9.78
+   },
+   {
+    "word": "of",
+    "start": 9.78,
+    "end": 9.94
+   },
+   {
+    "word": "a",
+    "start": 9.94,
+    "end": 10.04
+   },
+   {
+    "word": "story.",
+    "start": 10.04,
+    "end": 10.44
+   },
+   {
+    "word": "Professor",
+    "start": 10.94,
+    "end": 11.58
+   },
+   {
+    "word": "Hoot",
+    "start": 11.58,
+    "end": 12.06
+   },
+   {
+    "word": "is",
+    "start": 12.06,
+    "end": 12.3
+   },
+   {
+    "word": "so",
+    "start": 12.3,
+    "end": 12.74
+   },
+   {
+    "word": "proud",
+    "start": 12.74,
+    "end": 13.22
+   },
+   {
+    "word": "of",
+    "start": 13.22,
+    "end": 13.46
+   },
+   {
+    "word": "you!",
+    "start": 13.46,
+    "end": 13.82
+   }
+  ]
+ },
+ "challenge-sequence": {
+  "duration": 18.7,
+  "words": [
+   {
+    "word": "Professor",
+    "start": 0.0,
+    "end": 0.74
+   },
+   {
+    "word": "Hout",
+    "start": 0.74,
+    "end": 1.14
+   },
+   {
+    "word": "has",
+    "start": 1.14,
+    "end": 1.58
+   },
+   {
+    "word": "a",
+    "start": 1.58,
+    "end": 1.76
+   },
+   {
+    "word": "tricky",
+    "start": 1.76,
+    "end": 2.2
+   },
+   {
+    "word": "one",
+    "start": 2.2,
+    "end": 2.54
+   },
+   {
+    "word": "for",
+    "start": 2.54,
+    "end": 2.84
+   },
+   {
+    "word": "you.",
+    "start": 2.84,
+    "end": 3.16
+   },
+   {
+    "word": "This",
+    "start": 3.82,
+    "end": 4.08
+   },
+   {
+    "word": "story",
+    "start": 4.08,
+    "end": 4.64
+   },
+   {
+    "word": "is",
+    "start": 4.64,
+    "end": 4.94
+   },
+   {
+    "word": "told",
+    "start": 4.94,
+    "end": 5.2
+   },
+   {
+    "word": "only",
+    "start": 5.2,
+    "end": 5.98
+   },
+   {
+    "word": "in",
+    "start": 5.98,
+    "end": 6.52
+   },
+   {
+    "word": "pictures.",
+    "start": 6.52,
+    "end": 6.96
+   },
+   {
+    "word": "Look",
+    "start": 7.86,
+    "end": 8.32
+   },
+   {
+    "word": "at",
+    "start": 8.32,
+    "end": 8.54
+   },
+   {
+    "word": "each",
+    "start": 8.54,
+    "end": 8.8
+   },
+   {
+    "word": "picture,",
+    "start": 8.8,
+    "end": 9.34
+   },
+   {
+    "word": "then",
+    "start": 9.7,
+    "end": 10.1
+   },
+   {
+    "word": "put",
+    "start": 10.1,
+    "end": 10.4
+   },
+   {
+    "word": "them",
+    "start": 10.4,
+    "end": 10.72
+   },
+   {
+    "word": "in",
+    "start": 10.72,
+    "end": 10.98
+   },
+   {
+    "word": "order.",
+    "start": 10.98,
+    "end": 11.42
+   },
+   {
+    "word": "First,",
+    "start": 12.14,
+    "end": 12.52
+   },
+   {
+    "word": "next,",
+    "start": 13.26,
+    "end": 13.9
+   },
+   {
+    "word": "last.",
+    "start": 14.56,
+    "end": 14.82
+   },
+   {
+    "word": "You",
+    "start": 15.74,
+    "end": 16.18
+   },
+   {
+    "word": "can",
+    "start": 16.18,
+    "end": 16.38
+   },
+   {
+    "word": "do",
+    "start": 16.38,
+    "end": 16.56
+   },
+   {
+    "word": "this",
+    "start": 16.56,
+    "end": 16.78
+   },
+   {
+    "word": "one",
+    "start": 16.78,
+    "end": 17.04
+   },
+   {
+    "word": "all",
+    "start": 17.04,
+    "end": 17.62
+   },
+   {
+    "word": "by",
+    "start": 17.62,
+    "end": 18.04
+   },
+   {
+    "word": "yourself.",
+    "start": 18.04,
+    "end": 18.7
+   }
+  ]
+ },
+ "complete": {
+  "duration": 12.64,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "are",
+    "start": 0.5,
+    "end": 0.8
+   },
+   {
+    "word": "an",
+    "start": 0.8,
+    "end": 1.0
+   },
+   {
+    "word": "amazing",
+    "start": 1.0,
+    "end": 1.56
+   },
+   {
+    "word": "story",
+    "start": 1.56,
+    "end": 2.22
+   },
+   {
+    "word": "helper.",
+    "start": 2.22,
+    "end": 2.72
+   },
+   {
+    "word": "You",
+    "start": 3.12,
+    "end": 3.48
+   },
+   {
+    "word": "learned",
+    "start": 3.48,
+    "end": 3.86
+   },
+   {
+    "word": "to",
+    "start": 3.86,
+    "end": 4.14
+   },
+   {
+    "word": "tell",
+    "start": 4.14,
+    "end": 4.36
+   },
+   {
+    "word": "stories",
+    "start": 4.36,
+    "end": 4.92
+   },
+   {
+    "word": "by",
+    "start": 4.92,
+    "end": 5.28
+   },
+   {
+    "word": "finding",
+    "start": 5.28,
+    "end": 5.8
+   },
+   {
+    "word": "the",
+    "start": 5.8,
+    "end": 6.06
+   },
+   {
+    "word": "beginning,",
+    "start": 6.06,
+    "end": 6.52
+   },
+   {
+    "word": "middle,",
+    "start": 6.98,
+    "end": 7.38
+   },
+   {
+    "word": "and",
+    "start": 7.68,
+    "end": 7.98
+   },
+   {
+    "word": "end.",
+    "start": 7.98,
+    "end": 8.46
+   },
+   {
+    "word": "Keep",
+    "start": 9.04,
+    "end": 9.26
+   },
+   {
+    "word": "practicing",
+    "start": 9.26,
+    "end": 9.9
+   },
+   {
+    "word": "and",
+    "start": 9.9,
+    "end": 10.3
+   },
+   {
+    "word": "telling",
+    "start": 10.3,
+    "end": 10.68
+   },
+   {
+    "word": "all",
+    "start": 10.68,
+    "end": 11.22
+   },
+   {
+    "word": "your",
+    "start": 11.22,
+    "end": 11.52
+   },
+   {
+    "word": "favorite",
+    "start": 11.52,
+    "end": 12.08
+   },
+   {
+    "word": "stories.",
+    "start": 12.08,
+    "end": 12.64
+   }
+  ]
+ },
+ "guided-retell-end": {
+  "duration": 12.94,
+  "words": [
+   {
+    "word": "Super!",
+    "start": 0.0,
+    "end": 0.7
+   },
+   {
+    "word": "The",
+    "start": 1.36,
+    "end": 1.84
+   },
+   {
+    "word": "wolf",
+    "start": 1.84,
+    "end": 2.32
+   },
+   {
+    "word": "huffed",
+    "start": 2.32,
+    "end": 3.1
+   },
+   {
+    "word": "in",
+    "start": 3.1,
+    "end": 3.52
+   },
+   {
+    "word": "the",
+    "start": 3.52,
+    "end": 3.66
+   },
+   {
+    "word": "middle.",
+    "start": 3.66,
+    "end": 4.0
+   },
+   {
+    "word": "What",
+    "start": 4.92,
+    "end": 5.4
+   },
+   {
+    "word": "happened",
+    "start": 5.4,
+    "end": 6.06
+   },
+   {
+    "word": "at",
+    "start": 6.06,
+    "end": 6.5
+   },
+   {
+    "word": "the",
+    "start": 6.5,
+    "end": 6.72
+   },
+   {
+    "word": "end",
+    "start": 6.72,
+    "end": 7.14
+   },
+   {
+    "word": "of",
+    "start": 7.14,
+    "end": 7.34
+   },
+   {
+    "word": "the",
+    "start": 7.34,
+    "end": 7.48
+   },
+   {
+    "word": "story?",
+    "start": 7.48,
+    "end": 8.0
+   },
+   {
+    "word": "Tap",
+    "start": 8.98,
+    "end": 9.4
+   },
+   {
+    "word": "the",
+    "start": 9.4,
+    "end": 9.72
+   },
+   {
+    "word": "picture",
+    "start": 9.72,
+    "end": 10.14
+   },
+   {
+    "word": "that",
+    "start": 10.14,
+    "end": 10.56
+   },
+   {
+    "word": "shows",
+    "start": 10.56,
+    "end": 11.16
+   },
+   {
+    "word": "what",
+    "start": 11.16,
+    "end": 11.74
+   },
+   {
+    "word": "happened",
+    "start": 11.74,
+    "end": 12.34
+   },
+   {
+    "word": "last.",
+    "start": 12.34,
+    "end": 12.94
+   }
+  ]
+ },
+ "guided-retell-middle": {
+  "duration": 11.92,
+  "words": [
+   {
+    "word": "That's",
+    "start": 0.0,
+    "end": 0.68
+   },
+   {
+    "word": "right!",
+    "start": 0.68,
+    "end": 0.98
+   },
+   {
+    "word": "The",
+    "start": 1.44,
+    "end": 1.54
+   },
+   {
+    "word": "pigs",
+    "start": 1.54,
+    "end": 2.06
+   },
+   {
+    "word": "built",
+    "start": 2.06,
+    "end": 2.44
+   },
+   {
+    "word": "their",
+    "start": 2.44,
+    "end": 2.68
+   },
+   {
+    "word": "houses",
+    "start": 2.68,
+    "end": 3.08
+   },
+   {
+    "word": "first.",
+    "start": 3.08,
+    "end": 3.64
+   },
+   {
+    "word": "Now",
+    "start": 4.7,
+    "end": 4.96
+   },
+   {
+    "word": "the",
+    "start": 4.96,
+    "end": 5.28
+   },
+   {
+    "word": "middle.",
+    "start": 5.28,
+    "end": 5.66
+   },
+   {
+    "word": "What",
+    "start": 6.42,
+    "end": 6.74
+   },
+   {
+    "word": "did",
+    "start": 6.74,
+    "end": 7.04
+   },
+   {
+    "word": "the",
+    "start": 7.04,
+    "end": 7.3
+   },
+   {
+    "word": "wolf",
+    "start": 7.3,
+    "end": 7.68
+   },
+   {
+    "word": "do",
+    "start": 7.68,
+    "end": 8.14
+   },
+   {
+    "word": "to",
+    "start": 8.14,
+    "end": 8.44
+   },
+   {
+    "word": "the",
+    "start": 8.44,
+    "end": 8.64
+   },
+   {
+    "word": "houses?",
+    "start": 8.64,
+    "end": 9.12
+   },
+   {
+    "word": "Tap",
+    "start": 10.0,
+    "end": 10.18
+   },
+   {
+    "word": "the",
+    "start": 10.18,
+    "end": 10.46
+   },
+   {
+    "word": "mic",
+    "start": 10.46,
+    "end": 10.74
+   },
+   {
+    "word": "and",
+    "start": 10.74,
+    "end": 11.14
+   },
+   {
+    "word": "say",
+    "start": 11.14,
+    "end": 11.42
+   },
+   {
+    "word": "the",
+    "start": 11.42,
+    "end": 11.62
+   },
+   {
+    "word": "word.",
+    "start": 11.62,
+    "end": 11.92
+   }
+  ]
+ },
+ "guided-retell-start": {
+  "duration": 15.54,
+  "words": [
+   {
+    "word": "Wonderful!",
+    "start": 0.0,
+    "end": 0.76
+   },
+   {
+    "word": "You",
+    "start": 1.5,
+    "end": 1.84
+   },
+   {
+    "word": "put",
+    "start": 1.84,
+    "end": 2.12
+   },
+   {
+    "word": "the",
+    "start": 2.12,
+    "end": 2.38
+   },
+   {
+    "word": "story",
+    "start": 2.38,
+    "end": 2.82
+   },
+   {
+    "word": "in",
+    "start": 2.82,
+    "end": 3.24
+   },
+   {
+    "word": "order.",
+    "start": 3.24,
+    "end": 3.72
+   },
+   {
+    "word": "Now",
+    "start": 4.44,
+    "end": 4.74
+   },
+   {
+    "word": "let's",
+    "start": 4.74,
+    "end": 5.46
+   },
+   {
+    "word": "practice",
+    "start": 5.46,
+    "end": 5.92
+   },
+   {
+    "word": "telling",
+    "start": 5.92,
+    "end": 6.48
+   },
+   {
+    "word": "it",
+    "start": 6.48,
+    "end": 6.68
+   },
+   {
+    "word": "back.",
+    "start": 6.68,
+    "end": 7.12
+   },
+   {
+    "word": "Professor",
+    "start": 7.56,
+    "end": 8.1
+   },
+   {
+    "word": "Hoot",
+    "start": 8.1,
+    "end": 8.56
+   },
+   {
+    "word": "will",
+    "start": 8.56,
+    "end": 8.78
+   },
+   {
+    "word": "help",
+    "start": 8.78,
+    "end": 9.06
+   },
+   {
+    "word": "you",
+    "start": 9.06,
+    "end": 9.28
+   },
+   {
+    "word": "remember",
+    "start": 9.28,
+    "end": 9.72
+   },
+   {
+    "word": "the",
+    "start": 9.72,
+    "end": 9.92
+   },
+   {
+    "word": "parts.",
+    "start": 9.92,
+    "end": 10.44
+   },
+   {
+    "word": "Tap",
+    "start": 11.16,
+    "end": 11.42
+   },
+   {
+    "word": "the",
+    "start": 11.42,
+    "end": 11.66
+   },
+   {
+    "word": "picture",
+    "start": 11.66,
+    "end": 12.0
+   },
+   {
+    "word": "that",
+    "start": 12.0,
+    "end": 12.26
+   },
+   {
+    "word": "shows",
+    "start": 12.26,
+    "end": 12.66
+   },
+   {
+    "word": "what",
+    "start": 12.66,
+    "end": 13.06
+   },
+   {
+    "word": "happened",
+    "start": 13.06,
+    "end": 13.64
+   },
+   {
+    "word": "at",
+    "start": 13.64,
+    "end": 13.92
+   },
+   {
+    "word": "the",
+    "start": 13.92,
+    "end": 14.14
+   },
+   {
+    "word": "start",
+    "start": 14.14,
+    "end": 14.62
+   },
+   {
+    "word": "of",
+    "start": 14.62,
+    "end": 15.02
+   },
+   {
+    "word": "the",
+    "start": 15.02,
+    "end": 15.14
+   },
+   {
+    "word": "story.",
+    "start": 15.14,
+    "end": 15.54
+   }
+  ]
+ },
+ "guided-sequence-story": {
+  "duration": 24.26,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "helped",
+    "start": 0.42,
+    "end": 0.9
+   },
+   {
+    "word": "Professor",
+    "start": 0.9,
+    "end": 1.66
+   },
+   {
+    "word": "Hoot",
+    "start": 1.66,
+    "end": 2.18
+   },
+   {
+    "word": "find",
+    "start": 2.18,
+    "end": 2.76
+   },
+   {
+    "word": "the",
+    "start": 2.76,
+    "end": 3.14
+   },
+   {
+    "word": "beginning,",
+    "start": 3.14,
+    "end": 3.72
+   },
+   {
+    "word": "middle,",
+    "start": 4.32,
+    "end": 4.66
+   },
+   {
+    "word": "and",
+    "start": 5.02,
+    "end": 5.44
+   },
+   {
+    "word": "end.",
+    "start": 5.44,
+    "end": 5.96
+   },
+   {
+    "word": "Now,",
+    "start": 6.64,
+    "end": 7.12
+   },
+   {
+    "word": "let's",
+    "start": 7.48,
+    "end": 8.2
+   },
+   {
+    "word": "put",
+    "start": 8.2,
+    "end": 8.46
+   },
+   {
+    "word": "them",
+    "start": 8.46,
+    "end": 8.8
+   },
+   {
+    "word": "in",
+    "start": 8.8,
+    "end": 9.22
+   },
+   {
+    "word": "order.",
+    "start": 9.22,
+    "end": 9.86
+   },
+   {
+    "word": "Remember,",
+    "start": 10.8,
+    "end": 11.38
+   },
+   {
+    "word": "first,",
+    "start": 12.08,
+    "end": 12.36
+   },
+   {
+    "word": "next,",
+    "start": 13.14,
+    "end": 13.7
+   },
+   {
+    "word": "last.",
+    "start": 14.42,
+    "end": 14.62
+   },
+   {
+    "word": "Drag",
+    "start": 15.78,
+    "end": 16.32
+   },
+   {
+    "word": "the",
+    "start": 16.32,
+    "end": 16.64
+   },
+   {
+    "word": "pictures",
+    "start": 16.64,
+    "end": 17.14
+   },
+   {
+    "word": "to",
+    "start": 17.14,
+    "end": 17.8
+   },
+   {
+    "word": "show",
+    "start": 17.8,
+    "end": 18.16
+   },
+   {
+    "word": "what",
+    "start": 18.16,
+    "end": 18.6
+   },
+   {
+    "word": "happened",
+    "start": 18.6,
+    "end": 19.16
+   },
+   {
+    "word": "first,",
+    "start": 19.16,
+    "end": 19.7
+   },
+   {
+    "word": "next,",
+    "start": 20.52,
+    "end": 20.92
+   },
+   {
+    "word": "and",
+    "start": 21.4,
+    "end": 21.86
+   },
+   {
+    "word": "last.",
+    "start": 21.86,
+    "end": 22.2
+   },
+   {
+    "word": "I'll",
+    "start": 23.02,
+    "end": 23.52
+   },
+   {
+    "word": "help",
+    "start": 23.52,
+    "end": 23.88
+   },
+   {
+    "word": "you.",
+    "start": 23.88,
+    "end": 24.26
+   }
+  ]
+ },
+ "hook-listen-story-sentence": {
+  "duration": 36.38,
+  "words": [
+   {
+    "word": "Once",
+    "start": 0.0,
+    "end": 0.82
+   },
+   {
+    "word": "there",
+    "start": 0.82,
+    "end": 1.4
+   },
+   {
+    "word": "were",
+    "start": 1.4,
+    "end": 1.64
+   },
+   {
+    "word": "three",
+    "start": 1.64,
+    "end": 2.16
+   },
+   {
+    "word": "little",
+    "start": 2.16,
+    "end": 2.88
+   },
+   {
+    "word": "pigs.",
+    "start": 2.88,
+    "end": 3.64
+   },
+   {
+    "word": "They",
+    "start": 4.3,
+    "end": 4.74
+   },
+   {
+    "word": "each",
+    "start": 4.74,
+    "end": 5.22
+   },
+   {
+    "word": "built",
+    "start": 5.22,
+    "end": 5.62
+   },
+   {
+    "word": "a",
+    "start": 5.62,
+    "end": 5.96
+   },
+   {
+    "word": "house.",
+    "start": 5.96,
+    "end": 6.58
+   },
+   {
+    "word": "One",
+    "start": 7.48,
+    "end": 7.64
+   },
+   {
+    "word": "pig",
+    "start": 7.64,
+    "end": 8.12
+   },
+   {
+    "word": "built",
+    "start": 8.12,
+    "end": 8.8
+   },
+   {
+    "word": "a",
+    "start": 8.8,
+    "end": 9.02
+   },
+   {
+    "word": "straw",
+    "start": 9.02,
+    "end": 9.5
+   },
+   {
+    "word": "house.",
+    "start": 9.5,
+    "end": 10.12
+   },
+   {
+    "word": "One",
+    "start": 10.52,
+    "end": 11.06
+   },
+   {
+    "word": "pig",
+    "start": 11.06,
+    "end": 11.6
+   },
+   {
+    "word": "built",
+    "start": 11.6,
+    "end": 12.22
+   },
+   {
+    "word": "a",
+    "start": 12.22,
+    "end": 12.56
+   },
+   {
+    "word": "stick",
+    "start": 12.56,
+    "end": 12.98
+   },
+   {
+    "word": "house.",
+    "start": 12.98,
+    "end": 13.48
+   },
+   {
+    "word": "One",
+    "start": 14.18,
+    "end": 14.52
+   },
+   {
+    "word": "pig",
+    "start": 14.52,
+    "end": 15.02
+   },
+   {
+    "word": "built",
+    "start": 15.02,
+    "end": 15.62
+   },
+   {
+    "word": "a",
+    "start": 15.62,
+    "end": 16.08
+   },
+   {
+    "word": "brick",
+    "start": 16.08,
+    "end": 16.58
+   },
+   {
+    "word": "house.",
+    "start": 16.58,
+    "end": 17.18
+   },
+   {
+    "word": "A",
+    "start": 17.9,
+    "end": 18.32
+   },
+   {
+    "word": "big",
+    "start": 18.32,
+    "end": 18.76
+   },
+   {
+    "word": "bad",
+    "start": 18.76,
+    "end": 19.6
+   },
+   {
+    "word": "wolf",
+    "start": 19.6,
+    "end": 20.16
+   },
+   {
+    "word": "came.",
+    "start": 20.16,
+    "end": 20.56
+   },
+   {
+    "word": "He",
+    "start": 21.18,
+    "end": 21.5
+   },
+   {
+    "word": "blew",
+    "start": 21.5,
+    "end": 21.92
+   },
+   {
+    "word": "down",
+    "start": 21.92,
+    "end": 22.4
+   },
+   {
+    "word": "the",
+    "start": 22.4,
+    "end": 22.88
+   },
+   {
+    "word": "straw",
+    "start": 22.88,
+    "end": 23.38
+   },
+   {
+    "word": "house.",
+    "start": 23.38,
+    "end": 24.04
+   },
+   {
+    "word": "He",
+    "start": 24.4,
+    "end": 24.8
+   },
+   {
+    "word": "blew",
+    "start": 24.8,
+    "end": 25.14
+   },
+   {
+    "word": "down",
+    "start": 25.14,
+    "end": 25.66
+   },
+   {
+    "word": "the",
+    "start": 25.66,
+    "end": 26.06
+   },
+   {
+    "word": "stick",
+    "start": 26.06,
+    "end": 26.5
+   },
+   {
+    "word": "house.",
+    "start": 26.5,
+    "end": 26.98
+   },
+   {
+    "word": "But",
+    "start": 26.98,
+    "end": 27.86
+   },
+   {
+    "word": "he",
+    "start": 27.86,
+    "end": 28.22
+   },
+   {
+    "word": "could",
+    "start": 28.22,
+    "end": 28.54
+   },
+   {
+    "word": "not",
+    "start": 28.54,
+    "end": 29.02
+   },
+   {
+    "word": "blow",
+    "start": 29.02,
+    "end": 29.64
+   },
+   {
+    "word": "down",
+    "start": 29.64,
+    "end": 30.08
+   },
+   {
+    "word": "the",
+    "start": 30.08,
+    "end": 30.6
+   },
+   {
+    "word": "brick",
+    "start": 30.6,
+    "end": 31.06
+   },
+   {
+    "word": "house.",
+    "start": 31.06,
+    "end": 31.52
+   },
+   {
+    "word": "The",
+    "start": 32.12,
+    "end": 32.5
+   },
+   {
+    "word": "three",
+    "start": 32.5,
+    "end": 32.94
+   },
+   {
+    "word": "little",
+    "start": 32.94,
+    "end": 33.38
+   },
+   {
+    "word": "pigs",
+    "start": 33.38,
+    "end": 33.78
+   },
+   {
+    "word": "were",
+    "start": 33.78,
+    "end": 34.24
+   },
+   {
+    "word": "safe",
+    "start": 34.24,
+    "end": 34.8
+   },
+   {
+    "word": "in",
+    "start": 34.8,
+    "end": 35.36
+   },
+   {
+    "word": "the",
+    "start": 35.36,
+    "end": 35.56
+   },
+   {
+    "word": "brick",
+    "start": 35.56,
+    "end": 35.92
+   },
+   {
+    "word": "house.",
+    "start": 35.92,
+    "end": 36.38
+   }
+  ]
+ },
+ "hook-listen-story": {
+  "duration": 20.64,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "little",
+    "start": 0.86,
+    "end": 1.02
+   },
+   {
+    "word": "story",
+    "start": 1.02,
+    "end": 1.46
+   },
+   {
+    "word": "helpers.",
+    "start": 1.46,
+    "end": 2.1
+   },
+   {
+    "word": "I'm",
+    "start": 2.8,
+    "end": 3.1
+   },
+   {
+    "word": "Professor",
+    "start": 3.1,
+    "end": 3.66
+   },
+   {
+    "word": "Hoot.",
+    "start": 3.66,
+    "end": 4.24
+   },
+   {
+    "word": "I",
+    "start": 4.86,
+    "end": 5.42
+   },
+   {
+    "word": "love",
+    "start": 5.42,
+    "end": 5.98
+   },
+   {
+    "word": "stories,",
+    "start": 5.98,
+    "end": 6.72
+   },
+   {
+    "word": "but",
+    "start": 7.16,
+    "end": 7.44
+   },
+   {
+    "word": "sometimes",
+    "start": 7.44,
+    "end": 8.06
+   },
+   {
+    "word": "I",
+    "start": 8.06,
+    "end": 8.52
+   },
+   {
+    "word": "get",
+    "start": 8.52,
+    "end": 8.8
+   },
+   {
+    "word": "them",
+    "start": 8.8,
+    "end": 9.1
+   },
+   {
+    "word": "mixed",
+    "start": 9.1,
+    "end": 9.54
+   },
+   {
+    "word": "up.",
+    "start": 9.54,
+    "end": 9.9
+   },
+   {
+    "word": "Can",
+    "start": 11.0,
+    "end": 11.16
+   },
+   {
+    "word": "you",
+    "start": 11.16,
+    "end": 11.44
+   },
+   {
+    "word": "help",
+    "start": 11.44,
+    "end": 11.76
+   },
+   {
+    "word": "me",
+    "start": 11.76,
+    "end": 11.94
+   },
+   {
+    "word": "learn",
+    "start": 11.94,
+    "end": 12.32
+   },
+   {
+    "word": "to",
+    "start": 12.32,
+    "end": 12.56
+   },
+   {
+    "word": "tell",
+    "start": 12.56,
+    "end": 12.84
+   },
+   {
+    "word": "them",
+    "start": 12.84,
+    "end": 13.04
+   },
+   {
+    "word": "in",
+    "start": 13.04,
+    "end": 13.18
+   },
+   {
+    "word": "order?",
+    "start": 13.18,
+    "end": 13.52
+   },
+   {
+    "word": "Let's",
+    "start": 14.56,
+    "end": 15.06
+   },
+   {
+    "word": "listen",
+    "start": 15.06,
+    "end": 15.32
+   },
+   {
+    "word": "to",
+    "start": 15.32,
+    "end": 15.56
+   },
+   {
+    "word": "a",
+    "start": 15.56,
+    "end": 15.7
+   },
+   {
+    "word": "story",
+    "start": 15.7,
+    "end": 16.04
+   },
+   {
+    "word": "first.",
+    "start": 16.04,
+    "end": 16.58
+   },
+   {
+    "word": "It's",
+    "start": 17.3,
+    "end": 17.58
+   },
+   {
+    "word": "called",
+    "start": 17.58,
+    "end": 17.9
+   },
+   {
+    "word": "The",
+    "start": 17.9,
+    "end": 18.54
+   },
+   {
+    "word": "Three",
+    "start": 18.54,
+    "end": 19.14
+   },
+   {
+    "word": "Little",
+    "start": 19.14,
+    "end": 19.9
+   },
+   {
+    "word": "Pigs.",
+    "start": 19.9,
+    "end": 20.64
+   }
+  ]
+ },
+ "model-beginning": {
+  "duration": 23.38,
+  "words": [
+   {
+    "word": "Wow!",
+    "start": 0.0,
+    "end": 0.7
+   },
+   {
+    "word": "What",
+    "start": 1.18,
+    "end": 1.44
+   },
+   {
+    "word": "a",
+    "start": 1.44,
+    "end": 1.6
+   },
+   {
+    "word": "great",
+    "start": 1.6,
+    "end": 2.02
+   },
+   {
+    "word": "story!",
+    "start": 2.02,
+    "end": 2.78
+   },
+   {
+    "word": "Professor",
+    "start": 3.58,
+    "end": 4.22
+   },
+   {
+    "word": "Hoot",
+    "start": 4.22,
+    "end": 4.68
+   },
+   {
+    "word": "wants",
+    "start": 4.68,
+    "end": 4.96
+   },
+   {
+    "word": "to",
+    "start": 4.96,
+    "end": 5.18
+   },
+   {
+    "word": "show",
+    "start": 5.18,
+    "end": 5.46
+   },
+   {
+    "word": "you",
+    "start": 5.46,
+    "end": 5.72
+   },
+   {
+    "word": "how",
+    "start": 5.72,
+    "end": 5.92
+   },
+   {
+    "word": "to",
+    "start": 5.92,
+    "end": 6.06
+   },
+   {
+    "word": "tell",
+    "start": 6.06,
+    "end": 6.44
+   },
+   {
+    "word": "a",
+    "start": 6.44,
+    "end": 6.64
+   },
+   {
+    "word": "story",
+    "start": 6.64,
+    "end": 7.04
+   },
+   {
+    "word": "in",
+    "start": 7.04,
+    "end": 7.34
+   },
+   {
+    "word": "order.",
+    "start": 7.34,
+    "end": 7.74
+   },
+   {
+    "word": "First,",
+    "start": 8.48,
+    "end": 8.9
+   },
+   {
+    "word": "we",
+    "start": 9.3,
+    "end": 9.44
+   },
+   {
+    "word": "think",
+    "start": 9.44,
+    "end": 9.72
+   },
+   {
+    "word": "about",
+    "start": 9.72,
+    "end": 10.0
+   },
+   {
+    "word": "the",
+    "start": 10.0,
+    "end": 10.28
+   },
+   {
+    "word": "beginning.",
+    "start": 10.28,
+    "end": 10.82
+   },
+   {
+    "word": "The",
+    "start": 11.46,
+    "end": 11.84
+   },
+   {
+    "word": "beginning",
+    "start": 11.84,
+    "end": 12.42
+   },
+   {
+    "word": "is",
+    "start": 12.42,
+    "end": 13.04
+   },
+   {
+    "word": "what",
+    "start": 13.04,
+    "end": 13.36
+   },
+   {
+    "word": "happened",
+    "start": 13.36,
+    "end": 13.86
+   },
+   {
+    "word": "at",
+    "start": 13.86,
+    "end": 14.16
+   },
+   {
+    "word": "the",
+    "start": 14.16,
+    "end": 14.36
+   },
+   {
+    "word": "very",
+    "start": 14.36,
+    "end": 14.86
+   },
+   {
+    "word": "start.",
+    "start": 14.86,
+    "end": 15.46
+   },
+   {
+    "word": "In",
+    "start": 16.2,
+    "end": 16.62
+   },
+   {
+    "word": "our",
+    "start": 16.62,
+    "end": 16.82
+   },
+   {
+    "word": "story,",
+    "start": 16.82,
+    "end": 17.26
+   },
+   {
+    "word": "the",
+    "start": 17.8,
+    "end": 17.9
+   },
+   {
+    "word": "pigs",
+    "start": 17.9,
+    "end": 18.44
+   },
+   {
+    "word": "built",
+    "start": 18.44,
+    "end": 19.0
+   },
+   {
+    "word": "their",
+    "start": 19.0,
+    "end": 19.34
+   },
+   {
+    "word": "houses.",
+    "start": 19.34,
+    "end": 19.86
+   },
+   {
+    "word": "Tap",
+    "start": 20.9,
+    "end": 21.26
+   },
+   {
+    "word": "the",
+    "start": 21.26,
+    "end": 21.56
+   },
+   {
+    "word": "picture",
+    "start": 21.56,
+    "end": 22.08
+   },
+   {
+    "word": "for",
+    "start": 22.08,
+    "end": 22.74
+   },
+   {
+    "word": "build.",
+    "start": 22.74,
+    "end": 23.38
+   }
+  ]
+ },
+ "model-end": {
+  "duration": 17.74,
+  "words": [
+   {
+    "word": "You're",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "doing",
+    "start": 0.58,
+    "end": 0.88
+   },
+   {
+    "word": "super!",
+    "start": 0.88,
+    "end": 1.54
+   },
+   {
+    "word": "Now,",
+    "start": 2.48,
+    "end": 2.9
+   },
+   {
+    "word": "let's",
+    "start": 3.1,
+    "end": 3.58
+   },
+   {
+    "word": "think",
+    "start": 3.58,
+    "end": 3.82
+   },
+   {
+    "word": "about",
+    "start": 3.82,
+    "end": 4.14
+   },
+   {
+    "word": "the",
+    "start": 4.14,
+    "end": 4.52
+   },
+   {
+    "word": "end.",
+    "start": 4.52,
+    "end": 5.32
+   },
+   {
+    "word": "The",
+    "start": 5.86,
+    "end": 6.28
+   },
+   {
+    "word": "end",
+    "start": 6.28,
+    "end": 6.8
+   },
+   {
+    "word": "is",
+    "start": 6.8,
+    "end": 7.08
+   },
+   {
+    "word": "what",
+    "start": 7.08,
+    "end": 7.34
+   },
+   {
+    "word": "happened",
+    "start": 7.34,
+    "end": 7.84
+   },
+   {
+    "word": "last",
+    "start": 7.84,
+    "end": 8.42
+   },
+   {
+    "word": "in",
+    "start": 8.42,
+    "end": 8.86
+   },
+   {
+    "word": "the",
+    "start": 8.86,
+    "end": 8.98
+   },
+   {
+    "word": "story.",
+    "start": 8.98,
+    "end": 9.44
+   },
+   {
+    "word": "And",
+    "start": 10.04,
+    "end": 10.52
+   },
+   {
+    "word": "our",
+    "start": 10.52,
+    "end": 10.88
+   },
+   {
+    "word": "story,",
+    "start": 10.88,
+    "end": 11.4
+   },
+   {
+    "word": "the",
+    "start": 11.86,
+    "end": 11.96
+   },
+   {
+    "word": "pigs",
+    "start": 11.96,
+    "end": 12.38
+   },
+   {
+    "word": "were",
+    "start": 12.38,
+    "end": 12.62
+   },
+   {
+    "word": "safe",
+    "start": 12.62,
+    "end": 13.08
+   },
+   {
+    "word": "in",
+    "start": 13.08,
+    "end": 13.48
+   },
+   {
+    "word": "the",
+    "start": 13.48,
+    "end": 13.68
+   },
+   {
+    "word": "brick",
+    "start": 13.68,
+    "end": 14.02
+   },
+   {
+    "word": "house.",
+    "start": 14.02,
+    "end": 14.7
+   },
+   {
+    "word": "Tap",
+    "start": 15.6,
+    "end": 15.96
+   },
+   {
+    "word": "the",
+    "start": 15.96,
+    "end": 16.26
+   },
+   {
+    "word": "picture",
+    "start": 16.26,
+    "end": 16.7
+   },
+   {
+    "word": "for",
+    "start": 16.7,
+    "end": 17.32
+   },
+   {
+    "word": "safe.",
+    "start": 17.32,
+    "end": 17.74
+   }
+  ]
+ },
+ "model-middle": {
+  "duration": 16.9,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "job!",
+    "start": 0.56,
+    "end": 1.0
+   },
+   {
+    "word": "After",
+    "start": 1.74,
+    "end": 2.18
+   },
+   {
+    "word": "the",
+    "start": 2.18,
+    "end": 2.38
+   },
+   {
+    "word": "beginning,",
+    "start": 2.38,
+    "end": 2.86
+   },
+   {
+    "word": "we",
+    "start": 3.28,
+    "end": 3.5
+   },
+   {
+    "word": "think",
+    "start": 3.5,
+    "end": 3.82
+   },
+   {
+    "word": "about",
+    "start": 3.82,
+    "end": 4.12
+   },
+   {
+    "word": "the",
+    "start": 4.12,
+    "end": 4.46
+   },
+   {
+    "word": "middle.",
+    "start": 4.46,
+    "end": 4.94
+   },
+   {
+    "word": "The",
+    "start": 5.56,
+    "end": 5.84
+   },
+   {
+    "word": "middle",
+    "start": 5.84,
+    "end": 6.2
+   },
+   {
+    "word": "is",
+    "start": 6.2,
+    "end": 6.46
+   },
+   {
+    "word": "what",
+    "start": 6.46,
+    "end": 6.64
+   },
+   {
+    "word": "happened",
+    "start": 6.64,
+    "end": 7.04
+   },
+   {
+    "word": "next",
+    "start": 7.04,
+    "end": 7.6
+   },
+   {
+    "word": "in",
+    "start": 7.6,
+    "end": 7.98
+   },
+   {
+    "word": "the",
+    "start": 7.98,
+    "end": 8.1
+   },
+   {
+    "word": "story.",
+    "start": 8.1,
+    "end": 8.54
+   },
+   {
+    "word": "In",
+    "start": 8.9,
+    "end": 9.34
+   },
+   {
+    "word": "our",
+    "start": 9.34,
+    "end": 9.58
+   },
+   {
+    "word": "story,",
+    "start": 9.58,
+    "end": 10.06
+   },
+   {
+    "word": "the",
+    "start": 10.48,
+    "end": 10.56
+   },
+   {
+    "word": "wolf",
+    "start": 10.56,
+    "end": 10.92
+   },
+   {
+    "word": "came",
+    "start": 10.92,
+    "end": 11.34
+   },
+   {
+    "word": "and",
+    "start": 11.34,
+    "end": 11.72
+   },
+   {
+    "word": "blew",
+    "start": 11.72,
+    "end": 12.06
+   },
+   {
+    "word": "down",
+    "start": 12.06,
+    "end": 12.52
+   },
+   {
+    "word": "two",
+    "start": 12.52,
+    "end": 13.16
+   },
+   {
+    "word": "houses.",
+    "start": 13.16,
+    "end": 13.98
+   },
+   {
+    "word": "Tap",
+    "start": 14.8,
+    "end": 15.12
+   },
+   {
+    "word": "the",
+    "start": 15.12,
+    "end": 15.5
+   },
+   {
+    "word": "picture",
+    "start": 15.5,
+    "end": 15.94
+   },
+   {
+    "word": "for",
+    "start": 15.94,
+    "end": 16.4
+   },
+   {
+    "word": "Huff.",
+    "start": 16.4,
+    "end": 16.9
+   }
+  ]
+ }
+}

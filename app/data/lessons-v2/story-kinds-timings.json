@@ -1,0 +1,1592 @@
+{
+ "apply-choose-mouse": {
+  "duration": 11.58,
+  "words": [
+   {
+    "word": "You're",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "doing",
+    "start": 0.54,
+    "end": 0.8
+   },
+   {
+    "word": "so",
+    "start": 0.8,
+    "end": 1.26
+   },
+   {
+    "word": "well!",
+    "start": 1.26,
+    "end": 1.8
+   },
+   {
+    "word": "Pip",
+    "start": 2.56,
+    "end": 2.82
+   },
+   {
+    "word": "has",
+    "start": 2.82,
+    "end": 3.14
+   },
+   {
+    "word": "another",
+    "start": 3.14,
+    "end": 3.54
+   },
+   {
+    "word": "book",
+    "start": 3.54,
+    "end": 3.92
+   },
+   {
+    "word": "for",
+    "start": 3.92,
+    "end": 4.16
+   },
+   {
+    "word": "us.",
+    "start": 4.16,
+    "end": 4.5
+   },
+   {
+    "word": "It's",
+    "start": 5.12,
+    "end": 5.44
+   },
+   {
+    "word": "about",
+    "start": 5.44,
+    "end": 5.66
+   },
+   {
+    "word": "a",
+    "start": 5.66,
+    "end": 5.86
+   },
+   {
+    "word": "little",
+    "start": 5.86,
+    "end": 6.18
+   },
+   {
+    "word": "mouse",
+    "start": 6.18,
+    "end": 6.76
+   },
+   {
+    "word": "who",
+    "start": 6.76,
+    "end": 7.18
+   },
+   {
+    "word": "built",
+    "start": 7.18,
+    "end": 7.6
+   },
+   {
+    "word": "a",
+    "start": 7.6,
+    "end": 7.88
+   },
+   {
+    "word": "house.",
+    "start": 7.88,
+    "end": 8.44
+   },
+   {
+    "word": "Is",
+    "start": 8.86,
+    "end": 9.38
+   },
+   {
+    "word": "this",
+    "start": 9.38,
+    "end": 9.68
+   },
+   {
+    "word": "real",
+    "start": 9.68,
+    "end": 10.24
+   },
+   {
+    "word": "or",
+    "start": 10.24,
+    "end": 10.86
+   },
+   {
+    "word": "make",
+    "start": 10.86,
+    "end": 11.12
+   },
+   {
+    "word": "believe?",
+    "start": 11.12,
+    "end": 11.58
+   }
+  ]
+ },
+ "apply-sort-robot-tree-witch": {
+  "duration": 7.86,
+  "words": [
+   {
+    "word": "Let's",
+    "start": 0.0,
+    "end": 0.7
+   },
+   {
+    "word": "sort",
+    "start": 0.7,
+    "end": 0.98
+   },
+   {
+    "word": "more.",
+    "start": 0.98,
+    "end": 1.48
+   },
+   {
+    "word": "Where",
+    "start": 2.22,
+    "end": 2.54
+   },
+   {
+    "word": "would",
+    "start": 2.54,
+    "end": 2.74
+   },
+   {
+    "word": "you",
+    "start": 2.74,
+    "end": 2.92
+   },
+   {
+    "word": "put",
+    "start": 2.92,
+    "end": 3.12
+   },
+   {
+    "word": "these",
+    "start": 3.12,
+    "end": 3.4
+   },
+   {
+    "word": "pictures?",
+    "start": 3.4,
+    "end": 3.82
+   },
+   {
+    "word": "Put",
+    "start": 4.58,
+    "end": 4.72
+   },
+   {
+    "word": "them",
+    "start": 4.72,
+    "end": 5.02
+   },
+   {
+    "word": "in",
+    "start": 5.02,
+    "end": 5.32
+   },
+   {
+    "word": "the",
+    "start": 5.32,
+    "end": 5.54
+   },
+   {
+    "word": "story",
+    "start": 5.54,
+    "end": 6.18
+   },
+   {
+    "word": "or",
+    "start": 6.18,
+    "end": 6.8
+   },
+   {
+    "word": "fact",
+    "start": 6.8,
+    "end": 7.4
+   },
+   {
+    "word": "box.",
+    "start": 7.4,
+    "end": 7.86
+   }
+  ]
+ },
+ "celebrate-success": {
+  "duration": 15.32,
+  "words": [
+   {
+    "word": "Fantastic!",
+    "start": 0.0,
+    "end": 1.1
+   },
+   {
+    "word": "You",
+    "start": 1.88,
+    "end": 2.18
+   },
+   {
+    "word": "learned",
+    "start": 2.18,
+    "end": 2.52
+   },
+   {
+    "word": "so",
+    "start": 2.52,
+    "end": 2.96
+   },
+   {
+    "word": "much",
+    "start": 2.96,
+    "end": 3.48
+   },
+   {
+    "word": "about",
+    "start": 3.48,
+    "end": 3.76
+   },
+   {
+    "word": "books",
+    "start": 3.76,
+    "end": 4.14
+   },
+   {
+    "word": "today.",
+    "start": 4.14,
+    "end": 4.52
+   },
+   {
+    "word": "You",
+    "start": 5.16,
+    "end": 5.44
+   },
+   {
+    "word": "know",
+    "start": 5.44,
+    "end": 5.74
+   },
+   {
+    "word": "that",
+    "start": 5.74,
+    "end": 6.02
+   },
+   {
+    "word": "story",
+    "start": 6.02,
+    "end": 6.44
+   },
+   {
+    "word": "books",
+    "start": 6.44,
+    "end": 6.82
+   },
+   {
+    "word": "tell",
+    "start": 6.82,
+    "end": 7.14
+   },
+   {
+    "word": "make",
+    "start": 7.14,
+    "end": 7.48
+   },
+   {
+    "word": "-believe",
+    "start": 7.48,
+    "end": 8.04
+   },
+   {
+    "word": "things,",
+    "start": 8.04,
+    "end": 8.44
+   },
+   {
+    "word": "and",
+    "start": 8.66,
+    "end": 9.08
+   },
+   {
+    "word": "fact",
+    "start": 9.08,
+    "end": 9.44
+   },
+   {
+    "word": "books",
+    "start": 9.44,
+    "end": 9.96
+   },
+   {
+    "word": "tell",
+    "start": 9.96,
+    "end": 10.44
+   },
+   {
+    "word": "about",
+    "start": 10.44,
+    "end": 11.0
+   },
+   {
+    "word": "real",
+    "start": 11.0,
+    "end": 11.66
+   },
+   {
+    "word": "things.",
+    "start": 11.66,
+    "end": 12.38
+   },
+   {
+    "word": "You",
+    "start": 12.9,
+    "end": 13.36
+   },
+   {
+    "word": "are",
+    "start": 13.36,
+    "end": 13.78
+   },
+   {
+    "word": "a",
+    "start": 13.78,
+    "end": 13.96
+   },
+   {
+    "word": "super",
+    "start": 13.96,
+    "end": 14.48
+   },
+   {
+    "word": "book",
+    "start": 14.48,
+    "end": 14.82
+   },
+   {
+    "word": "helper.",
+    "start": 14.82,
+    "end": 15.32
+   }
+  ]
+ },
+ "challenge-choose-frog": {
+  "duration": 10.02,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.6
+   },
+   {
+    "word": "are",
+    "start": 0.6,
+    "end": 1.04
+   },
+   {
+    "word": "a",
+    "start": 1.04,
+    "end": 1.3
+   },
+   {
+    "word": "book",
+    "start": 1.3,
+    "end": 1.62
+   },
+   {
+    "word": "expert.",
+    "start": 1.62,
+    "end": 2.44
+   },
+   {
+    "word": "Pip",
+    "start": 3.08,
+    "end": 3.38
+   },
+   {
+    "word": "found",
+    "start": 3.38,
+    "end": 4.0
+   },
+   {
+    "word": "a",
+    "start": 4.0,
+    "end": 4.22
+   },
+   {
+    "word": "picture",
+    "start": 4.22,
+    "end": 4.66
+   },
+   {
+    "word": "of",
+    "start": 4.66,
+    "end": 5.0
+   },
+   {
+    "word": "a",
+    "start": 5.0,
+    "end": 5.14
+   },
+   {
+    "word": "talking",
+    "start": 5.14,
+    "end": 5.7
+   },
+   {
+    "word": "frog.",
+    "start": 5.7,
+    "end": 6.38
+   },
+   {
+    "word": "What",
+    "start": 7.04,
+    "end": 7.52
+   },
+   {
+    "word": "kind",
+    "start": 7.52,
+    "end": 7.84
+   },
+   {
+    "word": "of",
+    "start": 7.84,
+    "end": 8.06
+   },
+   {
+    "word": "book",
+    "start": 8.06,
+    "end": 8.4
+   },
+   {
+    "word": "would",
+    "start": 8.4,
+    "end": 8.82
+   },
+   {
+    "word": "this",
+    "start": 8.82,
+    "end": 9.12
+   },
+   {
+    "word": "belong",
+    "start": 9.12,
+    "end": 9.54
+   },
+   {
+    "word": "in?",
+    "start": 9.54,
+    "end": 10.02
+   }
+  ]
+ },
+ "challenge-sort-fairy-bear-car": {
+  "duration": 7.68,
+  "words": [
+   {
+    "word": "You're",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "almost",
+    "start": 0.5,
+    "end": 0.94
+   },
+   {
+    "word": "done!",
+    "start": 0.94,
+    "end": 1.46
+   },
+   {
+    "word": "Pip",
+    "start": 1.94,
+    "end": 2.08
+   },
+   {
+    "word": "has",
+    "start": 2.08,
+    "end": 2.4
+   },
+   {
+    "word": "won",
+    "start": 2.4,
+    "end": 2.84
+   },
+   {
+    "word": "last",
+    "start": 2.84,
+    "end": 3.26
+   },
+   {
+    "word": "challenge",
+    "start": 3.26,
+    "end": 3.78
+   },
+   {
+    "word": "for",
+    "start": 3.78,
+    "end": 4.06
+   },
+   {
+    "word": "you!",
+    "start": 4.06,
+    "end": 4.32
+   },
+   {
+    "word": "Sort",
+    "start": 4.9,
+    "end": 5.18
+   },
+   {
+    "word": "these",
+    "start": 5.18,
+    "end": 5.52
+   },
+   {
+    "word": "pictures",
+    "start": 5.52,
+    "end": 5.94
+   },
+   {
+    "word": "into",
+    "start": 5.94,
+    "end": 6.5
+   },
+   {
+    "word": "the",
+    "start": 6.5,
+    "end": 6.72
+   },
+   {
+    "word": "right",
+    "start": 6.72,
+    "end": 6.98
+   },
+   {
+    "word": "book",
+    "start": 6.98,
+    "end": 7.32
+   },
+   {
+    "word": "type.",
+    "start": 7.32,
+    "end": 7.68
+   }
+  ]
+ },
+ "complete": {
+  "duration": 13.04,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "did",
+    "start": 0.44,
+    "end": 0.66
+   },
+   {
+    "word": "such",
+    "start": 0.66,
+    "end": 1.08
+   },
+   {
+    "word": "a",
+    "start": 1.08,
+    "end": 1.42
+   },
+   {
+    "word": "wonderful",
+    "start": 1.42,
+    "end": 1.92
+   },
+   {
+    "word": "job",
+    "start": 1.92,
+    "end": 2.38
+   },
+   {
+    "word": "today.",
+    "start": 2.38,
+    "end": 2.82
+   },
+   {
+    "word": "You",
+    "start": 3.34,
+    "end": 3.56
+   },
+   {
+    "word": "learned",
+    "start": 3.56,
+    "end": 3.88
+   },
+   {
+    "word": "all",
+    "start": 3.88,
+    "end": 4.22
+   },
+   {
+    "word": "about",
+    "start": 4.22,
+    "end": 4.54
+   },
+   {
+    "word": "story",
+    "start": 4.54,
+    "end": 5.06
+   },
+   {
+    "word": "books",
+    "start": 5.06,
+    "end": 5.34
+   },
+   {
+    "word": "and",
+    "start": 5.34,
+    "end": 5.9
+   },
+   {
+    "word": "fact",
+    "start": 5.9,
+    "end": 6.18
+   },
+   {
+    "word": "books.",
+    "start": 6.18,
+    "end": 6.7
+   },
+   {
+    "word": "Now",
+    "start": 7.2,
+    "end": 7.58
+   },
+   {
+    "word": "you",
+    "start": 7.58,
+    "end": 7.86
+   },
+   {
+    "word": "know",
+    "start": 7.86,
+    "end": 8.14
+   },
+   {
+    "word": "which",
+    "start": 8.14,
+    "end": 8.64
+   },
+   {
+    "word": "books",
+    "start": 8.64,
+    "end": 9.14
+   },
+   {
+    "word": "tell",
+    "start": 9.14,
+    "end": 9.38
+   },
+   {
+    "word": "make",
+    "start": 9.38,
+    "end": 9.68
+   },
+   {
+    "word": "-believe",
+    "start": 9.68,
+    "end": 10.16
+   },
+   {
+    "word": "stories",
+    "start": 10.16,
+    "end": 10.64
+   },
+   {
+    "word": "and",
+    "start": 10.64,
+    "end": 11.3
+   },
+   {
+    "word": "which",
+    "start": 11.3,
+    "end": 11.5
+   },
+   {
+    "word": "tell",
+    "start": 11.5,
+    "end": 11.84
+   },
+   {
+    "word": "about",
+    "start": 11.84,
+    "end": 12.22
+   },
+   {
+    "word": "real",
+    "start": 12.22,
+    "end": 12.54
+   },
+   {
+    "word": "things.",
+    "start": 12.54,
+    "end": 13.04
+   }
+  ]
+ },
+ "guided-choose-cat": {
+  "duration": 9.14,
+  "words": [
+   {
+    "word": "PIP",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "found",
+    "start": 0.54,
+    "end": 1.1
+   },
+   {
+    "word": "a",
+    "start": 1.1,
+    "end": 1.3
+   },
+   {
+    "word": "book",
+    "start": 1.3,
+    "end": 1.56
+   },
+   {
+    "word": "about",
+    "start": 1.56,
+    "end": 2.12
+   },
+   {
+    "word": "a",
+    "start": 2.12,
+    "end": 2.38
+   },
+   {
+    "word": "talking",
+    "start": 2.38,
+    "end": 2.82
+   },
+   {
+    "word": "cat.",
+    "start": 2.82,
+    "end": 3.34
+   },
+   {
+    "word": "Can",
+    "start": 3.76,
+    "end": 4.38
+   },
+   {
+    "word": "cats",
+    "start": 4.38,
+    "end": 4.82
+   },
+   {
+    "word": "really",
+    "start": 4.82,
+    "end": 5.28
+   },
+   {
+    "word": "talk?",
+    "start": 5.28,
+    "end": 5.72
+   },
+   {
+    "word": "You",
+    "start": 6.3,
+    "end": 6.68
+   },
+   {
+    "word": "choose.",
+    "start": 6.68,
+    "end": 6.96
+   },
+   {
+    "word": "Is",
+    "start": 7.44,
+    "end": 7.6
+   },
+   {
+    "word": "it",
+    "start": 7.6,
+    "end": 7.74
+   },
+   {
+    "word": "a",
+    "start": 7.74,
+    "end": 7.84
+   },
+   {
+    "word": "story",
+    "start": 7.84,
+    "end": 8.32
+   },
+   {
+    "word": "or",
+    "start": 8.32,
+    "end": 8.76
+   },
+   {
+    "word": "effect?",
+    "start": 8.76,
+    "end": 9.14
+   }
+  ]
+ },
+ "guided-choose-train": {
+  "duration": 12.76,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "is",
+    "start": 0.56,
+    "end": 0.9
+   },
+   {
+    "word": "a",
+    "start": 0.9,
+    "end": 1.0
+   },
+   {
+    "word": "book",
+    "start": 1.0,
+    "end": 1.3
+   },
+   {
+    "word": "about",
+    "start": 1.3,
+    "end": 1.94
+   },
+   {
+    "word": "a",
+    "start": 1.94,
+    "end": 2.2
+   },
+   {
+    "word": "big",
+    "start": 2.2,
+    "end": 2.68
+   },
+   {
+    "word": "fast",
+    "start": 2.68,
+    "end": 3.5
+   },
+   {
+    "word": "train.",
+    "start": 3.5,
+    "end": 4.44
+   },
+   {
+    "word": "Trains",
+    "start": 5.42,
+    "end": 5.88
+   },
+   {
+    "word": "are",
+    "start": 5.88,
+    "end": 6.1
+   },
+   {
+    "word": "real.",
+    "start": 6.1,
+    "end": 6.62
+   },
+   {
+    "word": "Do",
+    "start": 7.5,
+    "end": 7.76
+   },
+   {
+    "word": "they",
+    "start": 7.76,
+    "end": 8.08
+   },
+   {
+    "word": "go",
+    "start": 8.08,
+    "end": 8.42
+   },
+   {
+    "word": "fast?",
+    "start": 8.42,
+    "end": 8.92
+   },
+   {
+    "word": "Is",
+    "start": 9.82,
+    "end": 10.12
+   },
+   {
+    "word": "this",
+    "start": 10.12,
+    "end": 10.36
+   },
+   {
+    "word": "a",
+    "start": 10.36,
+    "end": 10.6
+   },
+   {
+    "word": "story",
+    "start": 10.6,
+    "end": 11.28
+   },
+   {
+    "word": "or",
+    "start": 11.28,
+    "end": 11.94
+   },
+   {
+    "word": "a",
+    "start": 11.94,
+    "end": 12.14
+   },
+   {
+    "word": "fact?",
+    "start": 12.14,
+    "end": 12.76
+   }
+  ]
+ },
+ "guided-sort-dragon-bird": {
+  "duration": 11.98,
+  "words": [
+   {
+    "word": "Great",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "job!",
+    "start": 0.38,
+    "end": 0.8
+   },
+   {
+    "word": "Now",
+    "start": 1.42,
+    "end": 1.68
+   },
+   {
+    "word": "let's",
+    "start": 1.68,
+    "end": 2.36
+   },
+   {
+    "word": "sort",
+    "start": 2.36,
+    "end": 2.64
+   },
+   {
+    "word": "some",
+    "start": 2.64,
+    "end": 2.94
+   },
+   {
+    "word": "ideas.",
+    "start": 2.94,
+    "end": 3.36
+   },
+   {
+    "word": "Drag",
+    "start": 4.22,
+    "end": 4.64
+   },
+   {
+    "word": "each",
+    "start": 4.64,
+    "end": 5.08
+   },
+   {
+    "word": "picture",
+    "start": 5.08,
+    "end": 5.68
+   },
+   {
+    "word": "to",
+    "start": 5.68,
+    "end": 6.06
+   },
+   {
+    "word": "the",
+    "start": 6.06,
+    "end": 6.22
+   },
+   {
+    "word": "right",
+    "start": 6.22,
+    "end": 6.58
+   },
+   {
+    "word": "box.",
+    "start": 6.58,
+    "end": 7.2
+   },
+   {
+    "word": "Does",
+    "start": 7.82,
+    "end": 8.06
+   },
+   {
+    "word": "it",
+    "start": 8.06,
+    "end": 8.24
+   },
+   {
+    "word": "belong",
+    "start": 8.24,
+    "end": 8.5
+   },
+   {
+    "word": "in",
+    "start": 8.5,
+    "end": 8.92
+   },
+   {
+    "word": "a",
+    "start": 8.92,
+    "end": 9.08
+   },
+   {
+    "word": "storybook",
+    "start": 9.08,
+    "end": 9.88
+   },
+   {
+    "word": "or",
+    "start": 9.88,
+    "end": 10.68
+   },
+   {
+    "word": "a",
+    "start": 10.68,
+    "end": 11.02
+   },
+   {
+    "word": "fact",
+    "start": 11.02,
+    "end": 11.38
+   },
+   {
+    "word": "book?",
+    "start": 11.38,
+    "end": 11.98
+   }
+  ]
+ },
+ "hook-intro": {
+  "duration": 14.2,
+  "words": [
+   {
+    "word": "Hi,",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "I'm",
+    "start": 0.9,
+    "end": 1.42
+   },
+   {
+    "word": "Pip.",
+    "start": 1.42,
+    "end": 1.64
+   },
+   {
+    "word": "I",
+    "start": 2.36,
+    "end": 2.64
+   },
+   {
+    "word": "love",
+    "start": 2.64,
+    "end": 2.88
+   },
+   {
+    "word": "to",
+    "start": 2.88,
+    "end": 3.16
+   },
+   {
+    "word": "read",
+    "start": 3.16,
+    "end": 3.46
+   },
+   {
+    "word": "all",
+    "start": 3.46,
+    "end": 4.08
+   },
+   {
+    "word": "kinds",
+    "start": 4.08,
+    "end": 4.56
+   },
+   {
+    "word": "of",
+    "start": 4.56,
+    "end": 4.78
+   },
+   {
+    "word": "books.",
+    "start": 4.78,
+    "end": 5.18
+   },
+   {
+    "word": "Some",
+    "start": 5.76,
+    "end": 6.1
+   },
+   {
+    "word": "books",
+    "start": 6.1,
+    "end": 6.52
+   },
+   {
+    "word": "tell",
+    "start": 6.52,
+    "end": 6.82
+   },
+   {
+    "word": "fun",
+    "start": 6.82,
+    "end": 7.24
+   },
+   {
+    "word": "stories.",
+    "start": 7.24,
+    "end": 7.84
+   },
+   {
+    "word": "Some",
+    "start": 8.44,
+    "end": 8.86
+   },
+   {
+    "word": "books",
+    "start": 8.86,
+    "end": 9.3
+   },
+   {
+    "word": "tell",
+    "start": 9.3,
+    "end": 9.6
+   },
+   {
+    "word": "about",
+    "start": 9.6,
+    "end": 9.98
+   },
+   {
+    "word": "real",
+    "start": 9.98,
+    "end": 10.54
+   },
+   {
+    "word": "things.",
+    "start": 10.54,
+    "end": 11.36
+   },
+   {
+    "word": "Let's",
+    "start": 12.08,
+    "end": 12.54
+   },
+   {
+    "word": "find",
+    "start": 12.54,
+    "end": 12.74
+   },
+   {
+    "word": "out",
+    "start": 12.74,
+    "end": 12.98
+   },
+   {
+    "word": "more",
+    "start": 12.98,
+    "end": 13.38
+   },
+   {
+    "word": "about",
+    "start": 13.38,
+    "end": 13.7
+   },
+   {
+    "word": "books.",
+    "start": 13.7,
+    "end": 14.2
+   }
+  ]
+ },
+ "model-factbook-sentence": {
+  "duration": 5.84,
+  "words": [
+   {
+    "word": "Pigs",
+    "start": 0.0,
+    "end": 0.96
+   },
+   {
+    "word": "live",
+    "start": 0.96,
+    "end": 1.52
+   },
+   {
+    "word": "on",
+    "start": 1.52,
+    "end": 2.06
+   },
+   {
+    "word": "farms.",
+    "start": 2.06,
+    "end": 2.8
+   },
+   {
+    "word": "They",
+    "start": 3.34,
+    "end": 3.96
+   },
+   {
+    "word": "roll",
+    "start": 3.96,
+    "end": 4.58
+   },
+   {
+    "word": "in",
+    "start": 4.58,
+    "end": 5.3
+   },
+   {
+    "word": "mud.",
+    "start": 5.3,
+    "end": 5.84
+   }
+  ]
+ },
+ "model-factbook": {
+  "duration": 13.3,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "look",
+    "start": 0.38,
+    "end": 0.64
+   },
+   {
+    "word": "at",
+    "start": 0.64,
+    "end": 0.82
+   },
+   {
+    "word": "this",
+    "start": 0.82,
+    "end": 1.18
+   },
+   {
+    "word": "book.",
+    "start": 1.18,
+    "end": 1.48
+   },
+   {
+    "word": "It",
+    "start": 2.3,
+    "end": 2.46
+   },
+   {
+    "word": "tells",
+    "start": 2.46,
+    "end": 2.88
+   },
+   {
+    "word": "about",
+    "start": 2.88,
+    "end": 3.36
+   },
+   {
+    "word": "real",
+    "start": 3.36,
+    "end": 3.86
+   },
+   {
+    "word": "pigs.",
+    "start": 3.86,
+    "end": 4.44
+   },
+   {
+    "word": "Pigs",
+    "start": 5.12,
+    "end": 5.64
+   },
+   {
+    "word": "really",
+    "start": 5.64,
+    "end": 6.12
+   },
+   {
+    "word": "live",
+    "start": 6.12,
+    "end": 6.54
+   },
+   {
+    "word": "on",
+    "start": 6.54,
+    "end": 6.76
+   },
+   {
+    "word": "farms.",
+    "start": 6.76,
+    "end": 7.34
+   },
+   {
+    "word": "This",
+    "start": 8.0,
+    "end": 8.34
+   },
+   {
+    "word": "book",
+    "start": 8.34,
+    "end": 8.64
+   },
+   {
+    "word": "tells",
+    "start": 8.64,
+    "end": 8.98
+   },
+   {
+    "word": "about",
+    "start": 8.98,
+    "end": 9.46
+   },
+   {
+    "word": "real",
+    "start": 9.46,
+    "end": 10.04
+   },
+   {
+    "word": "things.",
+    "start": 10.04,
+    "end": 10.78
+   },
+   {
+    "word": "It's",
+    "start": 11.58,
+    "end": 12.06
+   },
+   {
+    "word": "a",
+    "start": 12.06,
+    "end": 12.3
+   },
+   {
+    "word": "fact",
+    "start": 12.3,
+    "end": 12.76
+   },
+   {
+    "word": "book.",
+    "start": 12.76,
+    "end": 13.3
+   }
+  ]
+ },
+ "model-storybook-sentence": {
+  "duration": 5.36,
+  "words": [
+   {
+    "word": "a",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "pig",
+    "start": 0.38,
+    "end": 1.02
+   },
+   {
+    "word": "flew",
+    "start": 1.02,
+    "end": 1.6
+   },
+   {
+    "word": "high.",
+    "start": 1.6,
+    "end": 2.48
+   },
+   {
+    "word": "It",
+    "start": 3.08,
+    "end": 3.72
+   },
+   {
+    "word": "waived.",
+    "start": 3.72,
+    "end": 4.46
+   },
+   {
+    "word": "Bye",
+    "start": 4.86,
+    "end": 5.06
+   },
+   {
+    "word": "-bye.",
+    "start": 5.06,
+    "end": 5.36
+   }
+  ]
+ },
+ "model-storybook": {
+  "duration": 15.16,
+  "words": [
+   {
+    "word": "Look",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "at",
+    "start": 0.52,
+    "end": 0.8
+   },
+   {
+    "word": "this",
+    "start": 0.8,
+    "end": 1.26
+   },
+   {
+    "word": "book!",
+    "start": 1.26,
+    "end": 1.96
+   },
+   {
+    "word": "It",
+    "start": 2.56,
+    "end": 2.8
+   },
+   {
+    "word": "tells",
+    "start": 2.8,
+    "end": 3.14
+   },
+   {
+    "word": "a",
+    "start": 3.14,
+    "end": 3.4
+   },
+   {
+    "word": "story",
+    "start": 3.4,
+    "end": 4.04
+   },
+   {
+    "word": "about",
+    "start": 4.04,
+    "end": 4.62
+   },
+   {
+    "word": "a",
+    "start": 4.62,
+    "end": 4.94
+   },
+   {
+    "word": "flying",
+    "start": 4.94,
+    "end": 5.58
+   },
+   {
+    "word": "pig.",
+    "start": 5.58,
+    "end": 6.2
+   },
+   {
+    "word": "Is",
+    "start": 6.88,
+    "end": 7.42
+   },
+   {
+    "word": "a",
+    "start": 7.42,
+    "end": 7.64
+   },
+   {
+    "word": "pig",
+    "start": 7.64,
+    "end": 8.1
+   },
+   {
+    "word": "really",
+    "start": 8.1,
+    "end": 8.84
+   },
+   {
+    "word": "flying?",
+    "start": 8.84,
+    "end": 9.82
+   },
+   {
+    "word": "No,",
+    "start": 10.6,
+    "end": 11.16
+   },
+   {
+    "word": "this",
+    "start": 11.5,
+    "end": 11.98
+   },
+   {
+    "word": "is",
+    "start": 11.98,
+    "end": 12.38
+   },
+   {
+    "word": "Make",
+    "start": 12.38,
+    "end": 12.74
+   },
+   {
+    "word": "Believe.",
+    "start": 12.74,
+    "end": 13.24
+   },
+   {
+    "word": "It's",
+    "start": 13.8,
+    "end": 14.08
+   },
+   {
+    "word": "a",
+    "start": 14.08,
+    "end": 14.16
+   },
+   {
+    "word": "story",
+    "start": 14.16,
+    "end": 14.74
+   },
+   {
+    "word": "book.",
+    "start": 14.74,
+    "end": 15.16
+   }
+  ]
+ }
+}

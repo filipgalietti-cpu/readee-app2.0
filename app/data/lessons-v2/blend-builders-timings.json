@@ -1,0 +1,1787 @@
+{
+ "apply-choose-trip": {
+  "duration": 13.94,
+  "words": [
+   {
+    "word": "Ready",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "for",
+    "start": 0.46,
+    "end": 0.72
+   },
+   {
+    "word": "a",
+    "start": 0.72,
+    "end": 0.86
+   },
+   {
+    "word": "trickier",
+    "start": 0.86,
+    "end": 1.4
+   },
+   {
+    "word": "one?",
+    "start": 1.4,
+    "end": 1.68
+   },
+   {
+    "word": "Listen.",
+    "start": 2.34,
+    "end": 2.66
+   },
+   {
+    "word": "T",
+    "start": 3.32,
+    "end": 3.58
+   },
+   {
+    "word": "-",
+    "start": 3.58,
+    "end": 3.94
+   },
+   {
+    "word": "R",
+    "start": 3.94,
+    "end": 4.78
+   },
+   {
+    "word": "-",
+    "start": 4.78,
+    "end": 5.16
+   },
+   {
+    "word": "I",
+    "start": 5.16,
+    "end": 6.16
+   },
+   {
+    "word": "-",
+    "start": 6.16,
+    "end": 6.86
+   },
+   {
+    "word": "P",
+    "start": 6.86,
+    "end": 7.3
+   },
+   {
+    "word": "-",
+    "start": 7.3,
+    "end": 7.6
+   },
+   {
+    "word": "Blend",
+    "start": 7.6,
+    "end": 8.68
+   },
+   {
+    "word": "the",
+    "start": 8.68,
+    "end": 8.92
+   },
+   {
+    "word": "sounds",
+    "start": 8.92,
+    "end": 9.22
+   },
+   {
+    "word": "in",
+    "start": 9.22,
+    "end": 9.42
+   },
+   {
+    "word": "your",
+    "start": 9.42,
+    "end": 9.56
+   },
+   {
+    "word": "head.",
+    "start": 9.56,
+    "end": 10.04
+   },
+   {
+    "word": "Read",
+    "start": 10.66,
+    "end": 10.9
+   },
+   {
+    "word": "every",
+    "start": 10.9,
+    "end": 11.44
+   },
+   {
+    "word": "tile,",
+    "start": 11.44,
+    "end": 11.98
+   },
+   {
+    "word": "then",
+    "start": 12.2,
+    "end": 12.5
+   },
+   {
+    "word": "tap",
+    "start": 12.5,
+    "end": 12.86
+   },
+   {
+    "word": "the",
+    "start": 12.86,
+    "end": 13.16
+   },
+   {
+    "word": "word",
+    "start": 13.16,
+    "end": 13.42
+   },
+   {
+    "word": "you",
+    "start": 13.42,
+    "end": 13.66
+   },
+   {
+    "word": "made.",
+    "start": 13.66,
+    "end": 13.94
+   }
+  ]
+ },
+ "apply-read-along-blends-sentence": {
+  "duration": 2.6,
+  "words": [
+   {
+    "word": "We",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "stop",
+    "start": 0.42,
+    "end": 0.88
+   },
+   {
+    "word": "and",
+    "start": 0.88,
+    "end": 1.3
+   },
+   {
+    "word": "clap",
+    "start": 1.3,
+    "end": 1.7
+   },
+   {
+    "word": "at",
+    "start": 1.7,
+    "end": 2.12
+   },
+   {
+    "word": "the",
+    "start": 2.12,
+    "end": 2.26
+   },
+   {
+    "word": "flag.",
+    "start": 2.26,
+    "end": 2.6
+   }
+  ]
+ },
+ "apply-read-along-blends": {
+  "duration": 8.46,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "can",
+    "start": 0.52,
+    "end": 0.8
+   },
+   {
+    "word": "blend",
+    "start": 0.8,
+    "end": 1.2
+   },
+   {
+    "word": "sounds",
+    "start": 1.2,
+    "end": 1.84
+   },
+   {
+    "word": "into",
+    "start": 1.84,
+    "end": 2.26
+   },
+   {
+    "word": "words.",
+    "start": 2.26,
+    "end": 2.8
+   },
+   {
+    "word": "Now,",
+    "start": 3.46,
+    "end": 3.84
+   },
+   {
+    "word": "read",
+    "start": 4.22,
+    "end": 4.42
+   },
+   {
+    "word": "blend",
+    "start": 4.42,
+    "end": 4.84
+   },
+   {
+    "word": "words",
+    "start": 4.84,
+    "end": 5.3
+   },
+   {
+    "word": "inside",
+    "start": 5.3,
+    "end": 5.8
+   },
+   {
+    "word": "a",
+    "start": 5.8,
+    "end": 6.06
+   },
+   {
+    "word": "real",
+    "start": 6.06,
+    "end": 6.26
+   },
+   {
+    "word": "sentence.",
+    "start": 6.26,
+    "end": 6.78
+   },
+   {
+    "word": "Read",
+    "start": 7.5,
+    "end": 7.68
+   },
+   {
+    "word": "along",
+    "start": 7.68,
+    "end": 7.98
+   },
+   {
+    "word": "with",
+    "start": 7.98,
+    "end": 8.24
+   },
+   {
+    "word": "me.",
+    "start": 8.24,
+    "end": 8.46
+   }
+  ]
+ },
+ "apply-speak-clap": {
+  "duration": 14.76,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "say",
+    "start": 0.5,
+    "end": 0.88
+   },
+   {
+    "word": "your",
+    "start": 0.88,
+    "end": 1.12
+   },
+   {
+    "word": "word",
+    "start": 1.12,
+    "end": 1.42
+   },
+   {
+    "word": "out",
+    "start": 1.42,
+    "end": 1.9
+   },
+   {
+    "word": "loud.",
+    "start": 1.9,
+    "end": 2.4
+   },
+   {
+    "word": "Listen",
+    "start": 2.96,
+    "end": 3.42
+   },
+   {
+    "word": "to",
+    "start": 3.42,
+    "end": 3.9
+   },
+   {
+    "word": "the",
+    "start": 3.9,
+    "end": 4.06
+   },
+   {
+    "word": "sounds.",
+    "start": 4.06,
+    "end": 4.58
+   },
+   {
+    "word": "O.",
+    "start": 6.44,
+    "end": 6.86
+   },
+   {
+    "word": "A.",
+    "start": 7.4,
+    "end": 8.18
+   },
+   {
+    "word": "P.",
+    "start": 9.06,
+    "end": 9.26
+   },
+   {
+    "word": "Blend",
+    "start": 9.76,
+    "end": 10.7
+   },
+   {
+    "word": "them",
+    "start": 10.7,
+    "end": 10.9
+   },
+   {
+    "word": "together.",
+    "start": 10.9,
+    "end": 11.44
+   },
+   {
+    "word": "Tap",
+    "start": 12.36,
+    "end": 12.6
+   },
+   {
+    "word": "the",
+    "start": 12.6,
+    "end": 12.88
+   },
+   {
+    "word": "mic",
+    "start": 12.88,
+    "end": 13.16
+   },
+   {
+    "word": "and",
+    "start": 13.16,
+    "end": 13.46
+   },
+   {
+    "word": "say",
+    "start": 13.46,
+    "end": 13.74
+   },
+   {
+    "word": "the",
+    "start": 13.74,
+    "end": 13.98
+   },
+   {
+    "word": "whole",
+    "start": 13.98,
+    "end": 14.28
+   },
+   {
+    "word": "word.",
+    "start": 14.28,
+    "end": 14.76
+   }
+  ]
+ },
+ "celebrate-blend-builder": {
+  "duration": 15.38,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "did",
+    "start": 0.66,
+    "end": 1.04
+   },
+   {
+    "word": "it!",
+    "start": 1.04,
+    "end": 1.4
+   },
+   {
+    "word": "You",
+    "start": 1.8,
+    "end": 2.1
+   },
+   {
+    "word": "blended",
+    "start": 2.1,
+    "end": 2.46
+   },
+   {
+    "word": "sounds",
+    "start": 2.46,
+    "end": 2.98
+   },
+   {
+    "word": "into",
+    "start": 2.98,
+    "end": 3.4
+   },
+   {
+    "word": "whole",
+    "start": 3.4,
+    "end": 3.78
+   },
+   {
+    "word": "words,",
+    "start": 3.78,
+    "end": 4.46
+   },
+   {
+    "word": "even",
+    "start": 4.8,
+    "end": 5.28
+   },
+   {
+    "word": "words",
+    "start": 5.28,
+    "end": 5.62
+   },
+   {
+    "word": "with",
+    "start": 5.62,
+    "end": 5.92
+   },
+   {
+    "word": "tricky",
+    "start": 5.92,
+    "end": 6.26
+   },
+   {
+    "word": "blends",
+    "start": 6.26,
+    "end": 6.62
+   },
+   {
+    "word": "like",
+    "start": 6.62,
+    "end": 7.1
+   },
+   {
+    "word": "stop,",
+    "start": 7.1,
+    "end": 7.98
+   },
+   {
+    "word": "flag,",
+    "start": 8.56,
+    "end": 9.2
+   },
+   {
+    "word": "and",
+    "start": 9.66,
+    "end": 10.02
+   },
+   {
+    "word": "swim.",
+    "start": 10.02,
+    "end": 10.42
+   },
+   {
+    "word": "Blendo",
+    "start": 10.42,
+    "end": 11.78
+   },
+   {
+    "word": "is",
+    "start": 11.78,
+    "end": 12.12
+   },
+   {
+    "word": "dancing",
+    "start": 12.12,
+    "end": 12.76
+   },
+   {
+    "word": "because",
+    "start": 12.76,
+    "end": 13.24
+   },
+   {
+    "word": "you",
+    "start": 13.24,
+    "end": 13.7
+   },
+   {
+    "word": "are",
+    "start": 13.7,
+    "end": 14.04
+   },
+   {
+    "word": "a",
+    "start": 14.04,
+    "end": 14.16
+   },
+   {
+    "word": "true",
+    "start": 14.16,
+    "end": 14.54
+   },
+   {
+    "word": "blend",
+    "start": 14.54,
+    "end": 14.92
+   },
+   {
+    "word": "builder.",
+    "start": 14.92,
+    "end": 15.38
+   }
+  ]
+ },
+ "challenge-choose-grin": {
+  "duration": 16.48,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "is",
+    "start": 0.46,
+    "end": 0.8
+   },
+   {
+    "word": "a",
+    "start": 0.8,
+    "end": 0.94
+   },
+   {
+    "word": "tricky",
+    "start": 0.94,
+    "end": 1.38
+   },
+   {
+    "word": "blend.",
+    "start": 1.38,
+    "end": 1.9
+   },
+   {
+    "word": "Listen.",
+    "start": 2.6,
+    "end": 3.12
+   },
+   {
+    "word": "G.",
+    "start": 4.0,
+    "end": 4.28
+   },
+   {
+    "word": "R.",
+    "start": 4.86,
+    "end": 5.7
+   },
+   {
+    "word": "I.",
+    "start": 7.08,
+    "end": 7.4
+   },
+   {
+    "word": "Mm.",
+    "start": 8.7,
+    "end": 9.12
+   },
+   {
+    "word": "Blend",
+    "start": 10.2,
+    "end": 10.84
+   },
+   {
+    "word": "the",
+    "start": 10.84,
+    "end": 11.16
+   },
+   {
+    "word": "sounds.",
+    "start": 11.16,
+    "end": 11.86
+   },
+   {
+    "word": "Read",
+    "start": 12.72,
+    "end": 12.98
+   },
+   {
+    "word": "all",
+    "start": 12.98,
+    "end": 13.42
+   },
+   {
+    "word": "four",
+    "start": 13.42,
+    "end": 13.84
+   },
+   {
+    "word": "words,",
+    "start": 13.84,
+    "end": 14.5
+   },
+   {
+    "word": "then",
+    "start": 14.7,
+    "end": 15.04
+   },
+   {
+    "word": "tap",
+    "start": 15.04,
+    "end": 15.4
+   },
+   {
+    "word": "the",
+    "start": 15.4,
+    "end": 15.7
+   },
+   {
+    "word": "one",
+    "start": 15.7,
+    "end": 15.92
+   },
+   {
+    "word": "you",
+    "start": 15.92,
+    "end": 16.16
+   },
+   {
+    "word": "made.",
+    "start": 16.16,
+    "end": 16.48
+   }
+  ]
+ },
+ "challenge-speak-drum": {
+  "duration": 17.44,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "one,",
+    "start": 0.48,
+    "end": 1.12
+   },
+   {
+    "word": "blend",
+    "start": 1.6,
+    "end": 1.94
+   },
+   {
+    "word": "builder.",
+    "start": 1.94,
+    "end": 2.72
+   },
+   {
+    "word": "Listen",
+    "start": 3.28,
+    "end": 3.82
+   },
+   {
+    "word": "very",
+    "start": 3.82,
+    "end": 4.58
+   },
+   {
+    "word": "carefully.",
+    "start": 4.58,
+    "end": 5.5
+   },
+   {
+    "word": "Duh.",
+    "start": 6.72,
+    "end": 7.18
+   },
+   {
+    "word": "Ruh.",
+    "start": 8.02,
+    "end": 8.6
+   },
+   {
+    "word": "Uuh.",
+    "start": 9.52,
+    "end": 10.2
+   },
+   {
+    "word": "MMM.",
+    "start": 11.0,
+    "end": 11.86
+   },
+   {
+    "word": "Blend",
+    "start": 12.46,
+    "end": 13.26
+   },
+   {
+    "word": "the",
+    "start": 13.26,
+    "end": 13.58
+   },
+   {
+    "word": "sounds",
+    "start": 13.58,
+    "end": 14.28
+   },
+   {
+    "word": "and",
+    "start": 14.28,
+    "end": 14.88
+   },
+   {
+    "word": "say",
+    "start": 14.88,
+    "end": 15.22
+   },
+   {
+    "word": "the",
+    "start": 15.22,
+    "end": 15.54
+   },
+   {
+    "word": "whole",
+    "start": 15.54,
+    "end": 15.9
+   },
+   {
+    "word": "word",
+    "start": 15.9,
+    "end": 16.5
+   },
+   {
+    "word": "out",
+    "start": 16.5,
+    "end": 16.98
+   },
+   {
+    "word": "loud.",
+    "start": 16.98,
+    "end": 17.44
+   }
+  ]
+ },
+ "challenge-speak-swim": {
+  "duration": 15.38,
+  "words": [
+   {
+    "word": "Challenge",
+    "start": 0.0,
+    "end": 0.64
+   },
+   {
+    "word": "time.",
+    "start": 0.64,
+    "end": 1.22
+   },
+   {
+    "word": "Listen",
+    "start": 1.8,
+    "end": 2.3
+   },
+   {
+    "word": "closely.",
+    "start": 2.3,
+    "end": 3.04
+   },
+   {
+    "word": "Blend",
+    "start": 10.2,
+    "end": 10.7
+   },
+   {
+    "word": "all",
+    "start": 10.7,
+    "end": 11.24
+   },
+   {
+    "word": "the",
+    "start": 11.24,
+    "end": 11.48
+   },
+   {
+    "word": "sounds",
+    "start": 11.48,
+    "end": 11.8
+   },
+   {
+    "word": "together",
+    "start": 11.8,
+    "end": 12.42
+   },
+   {
+    "word": "and",
+    "start": 12.42,
+    "end": 13.06
+   },
+   {
+    "word": "say",
+    "start": 13.06,
+    "end": 13.36
+   },
+   {
+    "word": "the",
+    "start": 13.36,
+    "end": 13.58
+   },
+   {
+    "word": "whole",
+    "start": 13.58,
+    "end": 13.92
+   },
+   {
+    "word": "word",
+    "start": 13.92,
+    "end": 14.42
+   },
+   {
+    "word": "into",
+    "start": 14.42,
+    "end": 14.84
+   },
+   {
+    "word": "the",
+    "start": 14.84,
+    "end": 15.14
+   },
+   {
+    "word": "mic.",
+    "start": 15.14,
+    "end": 15.38
+   }
+  ]
+ },
+ "complete": {
+  "duration": 16.62,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "did",
+    "start": 0.54,
+    "end": 0.88
+   },
+   {
+    "word": "it!",
+    "start": 0.88,
+    "end": 1.22
+   },
+   {
+    "word": "You",
+    "start": 1.64,
+    "end": 1.96
+   },
+   {
+    "word": "blended",
+    "start": 1.96,
+    "end": 2.46
+   },
+   {
+    "word": "sounds",
+    "start": 2.46,
+    "end": 3.02
+   },
+   {
+    "word": "into",
+    "start": 3.02,
+    "end": 3.6
+   },
+   {
+    "word": "whole",
+    "start": 3.6,
+    "end": 4.22
+   },
+   {
+    "word": "words.",
+    "start": 4.22,
+    "end": 4.96
+   },
+   {
+    "word": "Even",
+    "start": 5.38,
+    "end": 5.8
+   },
+   {
+    "word": "words",
+    "start": 5.8,
+    "end": 6.12
+   },
+   {
+    "word": "with",
+    "start": 6.12,
+    "end": 6.44
+   },
+   {
+    "word": "tricky",
+    "start": 6.44,
+    "end": 6.84
+   },
+   {
+    "word": "blends,",
+    "start": 6.84,
+    "end": 7.32
+   },
+   {
+    "word": "like",
+    "start": 7.7,
+    "end": 7.82
+   },
+   {
+    "word": "stop,",
+    "start": 7.82,
+    "end": 8.44
+   },
+   {
+    "word": "flag,",
+    "start": 9.16,
+    "end": 9.78
+   },
+   {
+    "word": "and",
+    "start": 10.16,
+    "end": 10.46
+   },
+   {
+    "word": "swim.",
+    "start": 10.46,
+    "end": 11.0
+   },
+   {
+    "word": "Blendo",
+    "start": 12.02,
+    "end": 12.54
+   },
+   {
+    "word": "is",
+    "start": 12.54,
+    "end": 12.78
+   },
+   {
+    "word": "dancing",
+    "start": 12.78,
+    "end": 13.4
+   },
+   {
+    "word": "because",
+    "start": 13.4,
+    "end": 13.96
+   },
+   {
+    "word": "you",
+    "start": 13.96,
+    "end": 14.34
+   },
+   {
+    "word": "are",
+    "start": 14.34,
+    "end": 14.62
+   },
+   {
+    "word": "a",
+    "start": 14.62,
+    "end": 14.74
+   },
+   {
+    "word": "true",
+    "start": 14.74,
+    "end": 15.26
+   },
+   {
+    "word": "blend",
+    "start": 15.26,
+    "end": 15.94
+   },
+   {
+    "word": "builder.",
+    "start": 15.94,
+    "end": 16.62
+   }
+  ]
+ },
+ "guided-choose-flag": {
+  "duration": 16.54,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "you",
+    "start": 0.38,
+    "end": 0.64
+   },
+   {
+    "word": "try.",
+    "start": 0.64,
+    "end": 1.08
+   },
+   {
+    "word": "Listen",
+    "start": 1.86,
+    "end": 2.26
+   },
+   {
+    "word": "to",
+    "start": 2.26,
+    "end": 2.62
+   },
+   {
+    "word": "the",
+    "start": 2.62,
+    "end": 2.8
+   },
+   {
+    "word": "sounds.",
+    "start": 2.8,
+    "end": 3.44
+   },
+   {
+    "word": "All.",
+    "start": 4.84,
+    "end": 5.56
+   },
+   {
+    "word": "A.",
+    "start": 6.74,
+    "end": 6.92
+   },
+   {
+    "word": "G.",
+    "start": 7.9,
+    "end": 8.18
+   },
+   {
+    "word": "Blend",
+    "start": 9.28,
+    "end": 9.64
+   },
+   {
+    "word": "them",
+    "start": 9.64,
+    "end": 9.94
+   },
+   {
+    "word": "together",
+    "start": 9.94,
+    "end": 10.42
+   },
+   {
+    "word": "in",
+    "start": 10.42,
+    "end": 10.72
+   },
+   {
+    "word": "your",
+    "start": 10.72,
+    "end": 10.88
+   },
+   {
+    "word": "head.",
+    "start": 10.88,
+    "end": 11.34
+   },
+   {
+    "word": "What",
+    "start": 11.9,
+    "end": 12.08
+   },
+   {
+    "word": "word",
+    "start": 12.08,
+    "end": 12.38
+   },
+   {
+    "word": "did",
+    "start": 12.38,
+    "end": 12.56
+   },
+   {
+    "word": "you",
+    "start": 12.56,
+    "end": 12.74
+   },
+   {
+    "word": "make?",
+    "start": 12.74,
+    "end": 13.0
+   },
+   {
+    "word": "Read",
+    "start": 13.94,
+    "end": 14.18
+   },
+   {
+    "word": "each",
+    "start": 14.18,
+    "end": 14.72
+   },
+   {
+    "word": "tile,",
+    "start": 14.72,
+    "end": 15.16
+   },
+   {
+    "word": "then",
+    "start": 15.36,
+    "end": 15.66
+   },
+   {
+    "word": "tap",
+    "start": 15.66,
+    "end": 15.94
+   },
+   {
+    "word": "your",
+    "start": 15.94,
+    "end": 16.22
+   },
+   {
+    "word": "word.",
+    "start": 16.22,
+    "end": 16.54
+   }
+  ]
+ },
+ "guided-sequence-snap": {
+  "duration": 24.66,
+  "words": [
+   {
+    "word": "Blendos",
+    "start": 0.0,
+    "end": 1.24
+   },
+   {
+    "word": "sounds",
+    "start": 1.24,
+    "end": 2.08
+   },
+   {
+    "word": "fell",
+    "start": 2.08,
+    "end": 2.62
+   },
+   {
+    "word": "out",
+    "start": 2.62,
+    "end": 3.06
+   },
+   {
+    "word": "of",
+    "start": 3.06,
+    "end": 3.28
+   },
+   {
+    "word": "order.",
+    "start": 3.28,
+    "end": 3.68
+   },
+   {
+    "word": "The",
+    "start": 4.34,
+    "end": 4.68
+   },
+   {
+    "word": "word",
+    "start": 4.68,
+    "end": 5.08
+   },
+   {
+    "word": "is",
+    "start": 5.08,
+    "end": 5.88
+   },
+   {
+    "word": "snap.",
+    "start": 5.88,
+    "end": 7.08
+   },
+   {
+    "word": "Say",
+    "start": 8.08,
+    "end": 8.62
+   },
+   {
+    "word": "it",
+    "start": 8.62,
+    "end": 8.96
+   },
+   {
+    "word": "slowly.",
+    "start": 8.96,
+    "end": 9.86
+   },
+   {
+    "word": "Sssss.",
+    "start": 11.9,
+    "end": 12.94
+   },
+   {
+    "word": "Mmm.",
+    "start": 12.94,
+    "end": 13.56
+   },
+   {
+    "word": "A",
+    "start": 14.84,
+    "end": 15.36
+   },
+   {
+    "word": "-p.",
+    "start": 15.36,
+    "end": 17.04
+   },
+   {
+    "word": "Drag",
+    "start": 17.94,
+    "end": 18.98
+   },
+   {
+    "word": "the",
+    "start": 18.98,
+    "end": 19.38
+   },
+   {
+    "word": "sound",
+    "start": 19.38,
+    "end": 19.78
+   },
+   {
+    "word": "tiles",
+    "start": 19.78,
+    "end": 20.2
+   },
+   {
+    "word": "into",
+    "start": 20.2,
+    "end": 20.6
+   },
+   {
+    "word": "order,",
+    "start": 20.6,
+    "end": 21.1
+   },
+   {
+    "word": "then",
+    "start": 21.66,
+    "end": 22.08
+   },
+   {
+    "word": "the",
+    "start": 22.08,
+    "end": 22.6
+   },
+   {
+    "word": "whole",
+    "start": 22.6,
+    "end": 22.96
+   },
+   {
+    "word": "word",
+    "start": 22.96,
+    "end": 23.48
+   },
+   {
+    "word": "at",
+    "start": 23.48,
+    "end": 23.9
+   },
+   {
+    "word": "the",
+    "start": 23.9,
+    "end": 24.18
+   },
+   {
+    "word": "end.",
+    "start": 24.18,
+    "end": 24.66
+   }
+  ]
+ },
+ "hook-listen-blendo-intro": {
+  "duration": 23.84,
+  "words": [
+   {
+    "word": "Welcome",
+    "start": 0.0,
+    "end": 0.7
+   },
+   {
+    "word": "to",
+    "start": 0.7,
+    "end": 1.08
+   },
+   {
+    "word": "the",
+    "start": 1.08,
+    "end": 1.3
+   },
+   {
+    "word": "sound",
+    "start": 1.3,
+    "end": 1.74
+   },
+   {
+    "word": "factory.",
+    "start": 1.74,
+    "end": 2.32
+   },
+   {
+    "word": "This",
+    "start": 3.18,
+    "end": 3.36
+   },
+   {
+    "word": "is",
+    "start": 3.36,
+    "end": 3.72
+   },
+   {
+    "word": "Blendo,",
+    "start": 3.72,
+    "end": 4.3
+   },
+   {
+    "word": "the",
+    "start": 4.66,
+    "end": 4.82
+   },
+   {
+    "word": "blending",
+    "start": 4.82,
+    "end": 5.22
+   },
+   {
+    "word": "robot.",
+    "start": 5.22,
+    "end": 5.72
+   },
+   {
+    "word": "Blendo",
+    "start": 6.46,
+    "end": 6.92
+   },
+   {
+    "word": "takes",
+    "start": 6.92,
+    "end": 7.26
+   },
+   {
+    "word": "little",
+    "start": 7.26,
+    "end": 7.72
+   },
+   {
+    "word": "sounds",
+    "start": 7.72,
+    "end": 8.28
+   },
+   {
+    "word": "and",
+    "start": 8.28,
+    "end": 8.68
+   },
+   {
+    "word": "blends",
+    "start": 8.68,
+    "end": 9.06
+   },
+   {
+    "word": "them",
+    "start": 9.06,
+    "end": 9.52
+   },
+   {
+    "word": "into",
+    "start": 9.52,
+    "end": 9.92
+   },
+   {
+    "word": "whole",
+    "start": 9.92,
+    "end": 10.4
+   },
+   {
+    "word": "words.",
+    "start": 10.4,
+    "end": 11.2
+   },
+   {
+    "word": "Listen",
+    "start": 11.82,
+    "end": 12.16
+   },
+   {
+    "word": "to",
+    "start": 12.16,
+    "end": 12.4
+   },
+   {
+    "word": "Blendo's",
+    "start": 12.4,
+    "end": 13.02
+   },
+   {
+    "word": "4",
+    "start": 13.02,
+    "end": 13.5
+   },
+   {
+    "word": "sounds.",
+    "start": 13.5,
+    "end": 14.34
+   },
+   {
+    "word": "Sssss!",
+    "start": 15.88,
+    "end": 16.8
+   },
+   {
+    "word": "Aa",
+    "start": 17.92,
+    "end": 18.38
+   },
+   {
+    "word": "-aa",
+    "start": 18.38,
+    "end": 19.28
+   },
+   {
+    "word": "-aaah!",
+    "start": 19.28,
+    "end": 20.04
+   },
+   {
+    "word": "Tap",
+    "start": 21.1,
+    "end": 21.56
+   },
+   {
+    "word": "a",
+    "start": 21.56,
+    "end": 21.9
+   },
+   {
+    "word": "tile",
+    "start": 21.9,
+    "end": 22.3
+   },
+   {
+    "word": "to",
+    "start": 22.3,
+    "end": 22.78
+   },
+   {
+    "word": "hear",
+    "start": 22.78,
+    "end": 23.02
+   },
+   {
+    "word": "a",
+    "start": 23.02,
+    "end": 23.18
+   },
+   {
+    "word": "sound",
+    "start": 23.18,
+    "end": 23.5
+   },
+   {
+    "word": "again.",
+    "start": 23.5,
+    "end": 23.84
+   }
+  ]
+ },
+ "model-blend-stop": {
+  "duration": 34.18,
+  "words": [
+   {
+    "word": "Watch",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "Blendo",
+    "start": 0.58,
+    "end": 1.56
+   },
+   {
+    "word": "work.",
+    "start": 1.56,
+    "end": 2.58
+   },
+   {
+    "word": "S",
+    "start": 2.76,
+    "end": 3.5
+   },
+   {
+    "word": "-t",
+    "start": 3.5,
+    "end": 4.62
+   },
+   {
+    "word": "-a",
+    "start": 4.62,
+    "end": 6.0
+   },
+   {
+    "word": "-p.",
+    "start": 6.0,
+    "end": 6.98
+   },
+   {
+    "word": "Blendo",
+    "start": 7.86,
+    "end": 8.9
+   },
+   {
+    "word": "says",
+    "start": 8.9,
+    "end": 9.18
+   },
+   {
+    "word": "the",
+    "start": 9.18,
+    "end": 9.42
+   },
+   {
+    "word": "sounds",
+    "start": 9.42,
+    "end": 9.8
+   },
+   {
+    "word": "faster",
+    "start": 9.8,
+    "end": 10.7
+   },
+   {
+    "word": "and",
+    "start": 10.7,
+    "end": 11.0
+   },
+   {
+    "word": "faster",
+    "start": 11.0,
+    "end": 11.72
+   },
+   {
+    "word": "until",
+    "start": 11.72,
+    "end": 12.44
+   },
+   {
+    "word": "they",
+    "start": 12.44,
+    "end": 12.98
+   },
+   {
+    "word": "melt",
+    "start": 12.98,
+    "end": 13.52
+   },
+   {
+    "word": "into",
+    "start": 13.52,
+    "end": 14.0
+   },
+   {
+    "word": "one",
+    "start": 14.0,
+    "end": 14.52
+   },
+   {
+    "word": "word.",
+    "start": 14.52,
+    "end": 15.22
+   },
+   {
+    "word": "S",
+    "start": 15.94,
+    "end": 16.28
+   },
+   {
+    "word": "-t",
+    "start": 16.28,
+    "end": 17.48
+   },
+   {
+    "word": "-a",
+    "start": 17.48,
+    "end": 17.94
+   },
+   {
+    "word": "-p.",
+    "start": 17.94,
+    "end": 18.84
+   },
+   {
+    "word": "The",
+    "start": 19.6,
+    "end": 20.42
+   },
+   {
+    "word": "word",
+    "start": 20.42,
+    "end": 20.72
+   },
+   {
+    "word": "is",
+    "start": 20.72,
+    "end": 21.2
+   },
+   {
+    "word": "stop.",
+    "start": 21.2,
+    "end": 22.06
+   },
+   {
+    "word": "Did",
+    "start": 23.1,
+    "end": 23.4
+   },
+   {
+    "word": "you",
+    "start": 23.4,
+    "end": 23.62
+   },
+   {
+    "word": "hear",
+    "start": 23.62,
+    "end": 24.0
+   },
+   {
+    "word": "how",
+    "start": 24.0,
+    "end": 24.38
+   },
+   {
+    "word": "s",
+    "start": 24.38,
+    "end": 25.22
+   },
+   {
+    "word": "-t",
+    "start": 25.22,
+    "end": 25.92
+   },
+   {
+    "word": "and",
+    "start": 25.92,
+    "end": 25.92
+   },
+   {
+    "word": "t",
+    "start": 25.92,
+    "end": 26.36
+   },
+   {
+    "word": "-stick",
+    "start": 26.36,
+    "end": 27.24
+   },
+   {
+    "word": "together",
+    "start": 27.24,
+    "end": 27.74
+   },
+   {
+    "word": "at",
+    "start": 27.74,
+    "end": 28.02
+   },
+   {
+    "word": "the",
+    "start": 28.02,
+    "end": 28.14
+   },
+   {
+    "word": "start?",
+    "start": 28.14,
+    "end": 28.46
+   },
+   {
+    "word": "Two",
+    "start": 28.46,
+    "end": 29.88
+   },
+   {
+    "word": "consonant",
+    "start": 29.88,
+    "end": 30.7
+   },
+   {
+    "word": "sounds",
+    "start": 30.7,
+    "end": 31.28
+   },
+   {
+    "word": "that",
+    "start": 31.28,
+    "end": 31.54
+   },
+   {
+    "word": "stick",
+    "start": 31.54,
+    "end": 31.94
+   },
+   {
+    "word": "together",
+    "start": 31.94,
+    "end": 32.58
+   },
+   {
+    "word": "are",
+    "start": 32.58,
+    "end": 32.92
+   },
+   {
+    "word": "called",
+    "start": 32.92,
+    "end": 33.42
+   },
+   {
+    "word": "a",
+    "start": 33.42,
+    "end": 33.78
+   },
+   {
+    "word": "blend.",
+    "start": 33.78,
+    "end": 34.18
+   }
+  ]
+ }
+}

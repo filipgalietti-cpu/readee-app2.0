@@ -373,6 +373,23 @@ async function anyChildHasFinishedLesson(parentId: string): Promise<boolean> {
   return ((rows ?? []) as any[]).length > 0;
 }
 
+/** Lessons the parent's children finished in the last 7 days — the real
+ *  data the trial-ending email leads with (a nudge must carry a win). */
+async function lessonsFinishedThisWeek(parentId: string): Promise<number> {
+  const admin = supabaseAdmin();
+  const { data: kids } = await admin.from("children").select("id").eq("parent_id", parentId);
+  const ids = ((kids ?? []) as any[]).map((k) => k.id);
+  if (ids.length === 0) return 0;
+  const since = new Date(Date.now() - 7 * DAY_MS).toISOString();
+  const { count } = await admin
+    .from("lessons_progress")
+    .select("id", { count: "exact", head: true })
+    .in("child_id", ids)
+    .eq("section", "learn")
+    .gte("created_at", since);
+  return count ?? 0;
+}
+
 async function lastActivityAt(parentId: string): Promise<Date | null> {
   const admin = supabaseAdmin();
   const { data: kids } = await admin.from("children").select("id").eq("parent_id", parentId);
@@ -401,9 +418,14 @@ async function lastActivityAt(parentId: string): Promise<Date | null> {
   return new Date(Math.max(...candidates.map((d) => d.getTime())));
 }
 
-function renderTrialEnding(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
+function renderTrialEnding(parentName: string | null, kidName: string | null, unsubscribeUrl: string, weekLessons = 0) {
   const subject = kidName ? `${kidName}'s Readee+ trial ends tomorrow` : "Your Readee+ trial ends tomorrow";
-  const lead = `${kidName ? `${kidName}'s` : "Your"} 7-day free trial ends tomorrow. Keep Readee+ so every lesson, Luna, and all the progress keep going without interruption.`;
+  const who = kidName ?? "Your child";
+  const win =
+    weekLessons > 0
+      ? `${who} finished ${weekLessons} ${weekLessons === 1 ? "lesson" : "lessons"} this week. `
+      : "";
+  const lead = `${win}${kidName ? `${kidName}'s` : "Your"} 7-day free trial ends tomorrow. Keep Readee+ so every lesson, Luna, and all that progress keep going without interruption.`;
   const text = [
     parentName ? `Hi ${parentName},` : "Hi there,",
     "",
@@ -508,7 +530,8 @@ export async function evaluateAndSendLifecycle(parent: ParentRow): Promise<Stage
   if (ageDays >= 6 && ageDays < 7 && parent.plan !== "premium" && parent.plan !== "teacher_solo") {
     if (!(await alreadySentEver(parent.id, "trial_ending"))) {
       const kidName = await firstKidName(parent.id);
-      const email = renderTrialEnding(displayName, kidName, unsubscribeUrl);
+      const weekLessons = await lessonsFinishedThisWeek(parent.id);
+      const email = renderTrialEnding(displayName, kidName, unsubscribeUrl, weekLessons);
       const res = await sendEmail({
         to: parent.email,
         subject: email.subject,
