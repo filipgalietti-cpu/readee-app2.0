@@ -223,6 +223,8 @@ import { readLikeYouTalk, readLikeYouTalkImages } from "./read-like-you-talk";
 
 import { readWithYourBrain, readWithYourBrainImages } from "./read-with-your-brain";
 
+import { picturesTellMore, picturesTellMoreImages } from "./pictures-tell-more";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -342,4 +344,5 @@ export const LESSONS: Record<string, LessonEntry> = {
   "heart-words": { lesson: heartWords, images: heartWordsImages },
   "read-like-you-talk": { lesson: readLikeYouTalk, images: readLikeYouTalkImages },
   "read-with-your-brain": { lesson: readWithYourBrain, images: readWithYourBrainImages },
+  "pictures-tell-more": { lesson: picturesTellMore, images: picturesTellMoreImages },
 };

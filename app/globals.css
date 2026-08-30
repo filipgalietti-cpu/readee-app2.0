@@ -540,3 +540,13 @@ body {
 @keyframes wuBasketPop{0%{transform:scale(1)}40%{transform:scale(1.18,.86) translateY(4px)}70%{transform:scale(.94,1.08)}100%{transform:scale(1)}}
 @keyframes wuTwinkle{0%,100%{opacity:.35}50%{opacity:1}}
 @keyframes wuPeek{0%,4%{transform:translateY(112%) scale(1,.85)}14%{transform:translateY(-7%) scale(.95,1.07)}20%{transform:translateY(4%) scale(1.05,.94)}24%,62%{transform:translateY(0) scale(1)}68%{transform:translateY(-5%) scale(.94,1.08)}80%,100%{transform:translateY(112%) scale(1.06,.85)}}
+
+/* Warm-Up start screen: tighten the wave loop so the paw+Hi greeting lands
+   right away and repeats often (default 5s loop idles 70% of the time).
+   All four wave animations must share the duration to stay in sync. */
+.wu-fast-wave .reaction-wave .bn-head-grp,
+.wu-fast-wave .reaction-wave .bn-body-grp,
+.wu-fast-wave .reaction-wave .rx2-wave-paw,
+.wu-fast-wave .reaction-wave .rx2-hi {
+  animation-duration: 2.8s;
+}

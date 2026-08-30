@@ -9,6 +9,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
 import { supabaseAdmin } from '@/lib/supabase/admin';
+import { synthesizeChildGreeting } from '@/lib/audio/child-greeting';
 import { hasFullAccessFromProfile } from '@/lib/plan/access';
 
 function getResend() {
@@ -300,6 +301,12 @@ export async function POST(request: NextRequest) {
                 .from('children')
                 .insert(childrenRows)
                 .select();
+
+              // Personal greeting clips, synthesized once per reader at name
+              // submission. Fire and forget; never blocks signup.
+              for (const c of insertedChildren ?? []) {
+                void synthesizeChildGreeting(c.id, c.first_name);
+              }
 
               if (childrenError) {
                 console.error('Error inserting children:', JSON.stringify(childrenError));

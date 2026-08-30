@@ -15,7 +15,7 @@ export const soundSwitchHunt: WarmupDef = {
   intro: {
     audio: A("intro"),
     script:
-      "Warm up time! Today's letters are o w. Sometimes o w sounds like it does in snow. Sometimes it sounds like it does in cow. Your job: pop every word where o w sounds like cow. Ready? Go!",
+      "Today's letters are o w. Sometimes o w sounds like it does in snow. Sometimes it sounds like it does in cow. Your job: pop every word where o w sounds like cow. Ready? Go!",
     cardText: "ow",
   },
   playSeconds: 45,
@@ -48,7 +48,7 @@ export const soundSwitchHunt: WarmupDef = {
   celebrate: {
     audio: A("celebrate"),
     script:
-      "Wow, your ears are warmed up! You heard the cow sound hiding in all those words. Now let's take those sharp ears into today's lesson.",
+      "Wow, your ears are warmed up! You heard the o w sound, like in cow, hiding in all those words. Now let's take those sharp ears into today's lesson.",
   },
   carrots: 2,
 };

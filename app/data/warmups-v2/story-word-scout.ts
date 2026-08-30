@@ -16,7 +16,7 @@ export const storyWordScout: WarmupDef = {
   intro: {
     audio: A("intro"),
     script:
-      "Warm up time! Today's story has some big weather words in it. When I call a word, find it and catch it. Listen close. Ready? Go!",
+      "Today's story has some big weather words in it. When I call a word, find it and catch it. Listen close. Ready? Go!",
     cardText: "Story Words",
   },
   playSeconds: 45,

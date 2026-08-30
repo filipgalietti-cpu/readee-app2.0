@@ -17,7 +17,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { WarmupDef } from "@/lib/warmup-engine/types";
 import { Carrot } from "lucide-react";
-import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 
 type Screen = "start" | "intro" | "ready" | "play" | "end";
 export type WarmupSkin = "carrot" | "sky";
@@ -34,6 +34,8 @@ const BCOLS = [
   { l: "#c4b5fd", d: "#8b5cf6" }, { l: "#fda4af", d: "#f43f5e" }, { l: "#7dd3fc", d: "#0284c7" },
   { l: "#fcd34d", d: "#f59e0b" }, { l: "#6ee7b7", d: "#10b981" },
 ];
+const GREETINGS = [1, 2, 3, 4].map((n) => `/audio/warmups-v2/shared/greeting-${n}.mp3`);
+
 const CARROT_SVG = `<svg width="104" height="132" viewBox="0 0 104 132" style="display:block"><ellipse cx="32" cy="18" rx="11" ry="17" fill="#16a34a" transform="rotate(-28 32 18)"></ellipse><ellipse cx="72" cy="18" rx="11" ry="17" fill="#16a34a" transform="rotate(28 72 18)"></ellipse><ellipse cx="52" cy="14" rx="10" ry="19" fill="#4ade80"></ellipse><path d="M22 36 Q52 24 82 36 Q88 46 80 66 Q68 104 57 124 Q52 132 47 124 Q36 104 24 66 Q16 46 22 36 Z" fill="#fb923c" stroke="#c2410c" stroke-width="4" stroke-linejoin="round"></path><path d="M34 80 q9 5 18 5 M41 100 q6 4 12 4" stroke="#ea580c" stroke-width="3.5" fill="none" stroke-linecap="round"></path><ellipse cx="37" cy="48" rx="6" ry="11" fill="#fdba74" opacity=".65" transform="rotate(-10 37 48)"></ellipse></svg>`;
 
 type Live = {
@@ -53,6 +55,8 @@ export default function WarmupArcade({
   skin = "carrot",
   lessonTitle,
   outfitId = null,
+  childName,
+  greetingAudioUrl = null,
   onComplete,
 }: {
   warmup: WarmupDef;
@@ -61,6 +65,11 @@ export default function WarmupArcade({
   lessonTitle?: string;
   /** The child's bunny outfit — journey wiring passes the reader's own. */
   outfitId?: string | null;
+  /** Shown in the on-screen welcome ("Welcome, Maya!"). */
+  childName?: string;
+  /** The child's personal recorded greeting (synthesized at name submission).
+   *  Falls back to a generic variant when absent. */
+  greetingAudioUrl?: string | null;
   onComplete?: () => void;
 }) {
   const [screen, setScreen] = useState<Screen>("start");
@@ -112,6 +121,10 @@ export default function WarmupArcade({
 
   useEffect(() => {
     rm.current = !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const greeting = greetingAudioUrl ?? GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
+    const a = new Audio(greeting);
+    voice.current = a;
+    a.play().catch(() => { /* autoplay blocked without a gesture — fine */ });
     const keyH = (e: KeyboardEvent) => {
       const n = parseInt(e.key, 10);
       if (n >= 1 && n <= 6) tapRef.current(n - 1);
@@ -462,7 +475,8 @@ export default function WarmupArcade({
 
   const onPlay = useCallback(() => {
     tone(523, 0, 0.14, "triangle", 0.07);
-    // Autonoe explains the rule once, then the countdown rolls
+    // Greeting already played on the start screen; here Autonoe explains
+    // the rule once, then the countdown rolls.
     setScreen("intro");
     say(warmup.intro.audio, () => countdown());
   }, [countdown, say, tone, warmup.intro.audio]);
@@ -545,8 +559,11 @@ export default function WarmupArcade({
 
       {/* ---------- intro voice-over veil ---------- */}
       {screen === "intro" && (
-        <div className="absolute inset-0 z-[42] flex flex-col items-center justify-center gap-6" style={{ background: "rgba(30,27,75,.55)" }}>
-          <div className="rounded-3xl bg-white px-7 py-5 text-center font-display text-2xl font-bold text-indigo-900 shadow-xl" style={{ animation: "wuPopIn .4s cubic-bezier(.34,1.56,.64,1) both" }}>
+        <div className="absolute inset-0 z-[42] flex flex-col items-center justify-center gap-6 px-6" style={{ background: "rgba(30,27,75,.55)" }}>
+          <p className="font-display text-2xl font-bold text-white" style={{ textShadow: "0 3px 0 rgba(30,27,75,.4)", animation: "wuFadeUp .4s ease both" }}>
+            Welcome{childName ? `, ${childName}` : ""}!
+          </p>
+          <div className="rounded-[2rem] bg-white px-12 py-8 text-center font-display font-bold text-indigo-900 shadow-2xl" style={{ fontSize: warmup.intro.cardText.length <= 4 ? "5.5rem" : "2.75rem", lineHeight: 1.1, animation: "wuPopIn .4s cubic-bezier(.34,1.56,.64,1) both" }}>
             {warmup.intro.cardText}
           </div>
           <button type="button" onClick={countdown} className="rounded-full bg-white/20 px-5 py-2 text-sm font-bold text-white backdrop-blur transition hover:bg-white/30">
@@ -573,8 +590,8 @@ export default function WarmupArcade({
           </h1>
           <div className="flex items-end gap-6">
             <PeekCarrot delay={0} />
-            <div className="pointer-events-none h-44 w-40 sm:h-60 sm:w-56" style={{ animation: "wuSway 3.4s ease-in-out infinite" }}>
-              <Bunny outfitId={outfitId} />
+            <div className="wu-fast-wave pointer-events-none h-44 w-40 sm:h-60 sm:w-56">
+              <BunnyReaction outfitId={outfitId} state="wave" />
             </div>
             <PeekCarrot delay={1.8} />
           </div>
@@ -610,7 +627,7 @@ export default function WarmupArcade({
               </h2>
               <p className="text-lg font-bold text-zinc-600" style={{ animation: "wuFadeUp .5s .2s ease both" }}>{bestLine}</p>
               <p className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-4 py-2 text-sm font-extrabold text-orange-600" style={{ animation: "wuFadeUp .5s .23s ease both" }}>
-                <Carrot className="h-4 w-4" />+{Math.max(1, Math.min(score, 15))} carrots
+                <Carrot className="h-4 w-4" />+{score} carrots
               </p>
               <div className="flex items-center gap-6" style={{ animation: "wuFadeUp .5s .26s ease both" }}>
                 <button type="button" onClick={onLesson} className="rounded-full bg-indigo-700 px-8 py-3.5 text-lg font-bold text-white shadow-xl transition hover:-translate-y-0.5 hover:bg-indigo-900 active:scale-[0.96] sm:px-11 sm:py-4 sm:text-xl">

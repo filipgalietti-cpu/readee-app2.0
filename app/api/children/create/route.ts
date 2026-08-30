@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { synthesizeChildGreeting } from "@/lib/audio/child-greeting";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
 
 export const dynamic = "force-dynamic";
@@ -69,6 +70,10 @@ export async function POST(req: Request) {
     console.error("[children/create] insert failed:", error);
     return NextResponse.json({ error: "Could not add reader." }, { status: 500 });
   }
+
+  // Personal greeting clip, synthesized once at name submission. Fire and
+  // forget: must never block or fail the creation response.
+  void synthesizeChildGreeting(child.id, firstName);
 
   return NextResponse.json({ ok: true, child });
 }
