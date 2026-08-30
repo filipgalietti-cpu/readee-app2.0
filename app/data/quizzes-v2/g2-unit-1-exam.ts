@@ -10,10 +10,12 @@ import { paragraphPowerQuiz } from "./paragraph-power-quiz";
 import { chainsAndStepsQuiz } from "./chains-and-steps-quiz";
 import { wordSolversQuiz } from "./word-solvers-quiz";
 import { clueHuntersQuiz } from "./clue-hunters-quiz";
+import { rootCluesQuiz } from "./root-clues-quiz";
 
 /**
- * GRADE 2 · UNIT 1 EXAM — 12 hand-chosen questions from the unit's quizzes
- * (every standard represented, mixed formats, speak closer, easy → hard).
+ * GRADE 2 · UNIT 1 EXAM — 13 hand-chosen questions from the unit's quizzes
+ * (mixed formats, speak closer, easy → hard). L.2.4c covered via root-clues
+ * top-up; L.2.4b (word-math) has no pick yet.
  * ADAPTIVE OFF: fixed order, a measure not practice.
  * Selection is Filip+Jennifer's veto surface: swap any pick by id.
  */
@@ -29,7 +31,7 @@ export const g2Unit1Exam: QuizDef = {
   lessonId: "g2-unit-1",
   title: "Unit 1 Exam",
   standard: "G2-U1",
-  askCount: 12,
+  askCount: 13,
   adaptive: false, // fixed order — this is a measure
   questions: [
     // phonics ramp
@@ -47,6 +49,7 @@ export const g2Unit1Exam: QuizDef = {
     // language block
     pick(wordSolversQuiz, "c-3-bank-money-context"),       // L.2.4 multiple meaning
     pick(clueHuntersQuiz, "c-1-mend-meaning"),             // L.2.4a context clue
+    pick(rootCluesQuiz, "c-1-climber-meaning"),            // L.2.4c root as meaning clue
     // production close
     pick(chainsAndStepsQuiz, "c-6-skip-tapping-speak"),    // RI.2.3 speak closer
   ],

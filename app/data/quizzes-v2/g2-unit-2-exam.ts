@@ -11,10 +11,12 @@ import { whyAuthorsWriteQuiz } from "./why-authors-write-quiz";
 import { wordMathQuiz } from "./word-math-quiz";
 import { wordPlusWordQuiz } from "./word-plus-word-quiz";
 import { lookItUpQuiz } from "./look-it-up-quiz";
+import { sameAndOppositeQuiz } from "./same-and-opposite-quiz";
+import { wordsInYourWorldQuiz } from "./words-in-your-world-quiz";
 
 /**
- * GRADE 2 · UNIT 2 EXAM — 13 hand-chosen questions from the unit's quizzes
- * (every standard represented, mixed formats, speak closer, easy → hard).
+ * GRADE 2 · UNIT 2 EXAM — 15 hand-chosen questions from the unit's quizzes
+ * (all 14 standards represented, mixed formats, speak closer, easy → hard).
  * ADAPTIVE OFF: fixed order, a measure not practice.
  * Selection is Filip+Jennifer's veto surface: swap any pick by id.
  */
@@ -30,7 +32,7 @@ export const g2Unit2Exam: QuizDef = {
   lessonId: "g2-unit-2",
   title: "Unit 2 Exam",
   standard: "G2-U2",
-  askCount: 13,
+  askCount: 15,
   adaptive: false, // fixed order — this is a measure
   questions: [
     // gentle open (easier picks)
@@ -49,6 +51,8 @@ export const g2Unit2Exam: QuizDef = {
     // language block
     pick(wordMathQuiz, "c-2-unclear-directions"),            // L.2.4b prefix meaning in context
     pick(wordPlusWordQuiz, "c-3-which-word-moonlight"),      // L.2.4d compound from meaning
+    pick(sameAndOppositeQuiz, "c-1-shiny-coin"),             // L.2.5 synonym from spoken stimulus
+    pick(wordsInYourWorldQuiz, "c-2-splash-place"),          // L.2.5a word-to-place connection
     // harder close
     pick(lookItUpQuiz, "h-1-guide-words"),                   // L.2.4e guide words (G3 transfer)
     pick(prefixSuffixDecodersQuiz, "h-4-build-sadness"),     // RF.2.3d speak closer (build sadness)

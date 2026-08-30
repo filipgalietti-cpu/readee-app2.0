@@ -1,0 +1,2862 @@
+{
+ "apply-choose-camping-sentence": {
+  "duration": 18.02,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.32
+   },
+   {
+    "word": "family",
+    "start": 0.32,
+    "end": 0.82
+   },
+   {
+    "word": "word",
+    "start": 0.82,
+    "end": 1.32
+   },
+   {
+    "word": "still",
+    "start": 1.32,
+    "end": 1.98
+   },
+   {
+    "word": "has",
+    "start": 1.98,
+    "end": 2.4
+   },
+   {
+    "word": "to",
+    "start": 2.4,
+    "end": 2.74
+   },
+   {
+    "word": "make",
+    "start": 2.74,
+    "end": 2.92
+   },
+   {
+    "word": "sense",
+    "start": 2.92,
+    "end": 3.28
+   },
+   {
+    "word": "in",
+    "start": 3.28,
+    "end": 3.78
+   },
+   {
+    "word": "its",
+    "start": 3.78,
+    "end": 4.08
+   },
+   {
+    "word": "sentence.",
+    "start": 4.08,
+    "end": 4.68
+   },
+   {
+    "word": "Camping",
+    "start": 5.78,
+    "end": 6.42
+   },
+   {
+    "word": "means",
+    "start": 6.42,
+    "end": 7.04
+   },
+   {
+    "word": "staying",
+    "start": 7.04,
+    "end": 7.94
+   },
+   {
+    "word": "and",
+    "start": 7.94,
+    "end": 8.54
+   },
+   {
+    "word": "sleeping",
+    "start": 8.54,
+    "end": 9.1
+   },
+   {
+    "word": "outside",
+    "start": 9.1,
+    "end": 9.9
+   },
+   {
+    "word": "at",
+    "start": 9.9,
+    "end": 10.42
+   },
+   {
+    "word": "a",
+    "start": 10.42,
+    "end": 10.6
+   },
+   {
+    "word": "camp.",
+    "start": 10.6,
+    "end": 10.9
+   },
+   {
+    "word": "Read",
+    "start": 11.92,
+    "end": 12.24
+   },
+   {
+    "word": "each",
+    "start": 12.24,
+    "end": 12.68
+   },
+   {
+    "word": "sentence.",
+    "start": 12.68,
+    "end": 13.42
+   },
+   {
+    "word": "Tap",
+    "start": 14.0,
+    "end": 14.36
+   },
+   {
+    "word": "the",
+    "start": 14.36,
+    "end": 14.7
+   },
+   {
+    "word": "sentence",
+    "start": 14.7,
+    "end": 15.2
+   },
+   {
+    "word": "that",
+    "start": 15.2,
+    "end": 15.62
+   },
+   {
+    "word": "uses",
+    "start": 15.62,
+    "end": 16.08
+   },
+   {
+    "word": "camping",
+    "start": 16.08,
+    "end": 16.72
+   },
+   {
+    "word": "the",
+    "start": 16.72,
+    "end": 17.24
+   },
+   {
+    "word": "right",
+    "start": 17.24,
+    "end": 17.6
+   },
+   {
+    "word": "way.",
+    "start": 17.6,
+    "end": 18.02
+   }
+  ]
+ },
+ "apply-find-root-gardening": {
+  "duration": 18.72,
+  "words": [
+   {
+    "word": "New",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "word",
+    "start": 0.52,
+    "end": 0.96
+   },
+   {
+    "word": "family.",
+    "start": 0.96,
+    "end": 1.48
+   },
+   {
+    "word": "Listen.",
+    "start": 2.3,
+    "end": 2.62
+   },
+   {
+    "word": "Graham",
+    "start": 3.52,
+    "end": 4.0
+   },
+   {
+    "word": "spends",
+    "start": 4.0,
+    "end": 4.72
+   },
+   {
+    "word": "every",
+    "start": 4.72,
+    "end": 5.48
+   },
+   {
+    "word": "Sunday",
+    "start": 5.48,
+    "end": 6.0
+   },
+   {
+    "word": "gardening",
+    "start": 6.0,
+    "end": 6.74
+   },
+   {
+    "word": "in",
+    "start": 6.74,
+    "end": 7.26
+   },
+   {
+    "word": "her",
+    "start": 7.26,
+    "end": 7.46
+   },
+   {
+    "word": "yard.",
+    "start": 7.46,
+    "end": 7.88
+   },
+   {
+    "word": "Gardening.",
+    "start": 8.58,
+    "end": 9.22
+   },
+   {
+    "word": "Find",
+    "start": 10.06,
+    "end": 10.8
+   },
+   {
+    "word": "the",
+    "start": 10.8,
+    "end": 11.06
+   },
+   {
+    "word": "small",
+    "start": 11.06,
+    "end": 11.54
+   },
+   {
+    "word": "word",
+    "start": 11.54,
+    "end": 12.14
+   },
+   {
+    "word": "hiding",
+    "start": 12.14,
+    "end": 12.96
+   },
+   {
+    "word": "inside",
+    "start": 12.96,
+    "end": 13.66
+   },
+   {
+    "word": "gardening.",
+    "start": 13.66,
+    "end": 14.76
+   },
+   {
+    "word": "Read",
+    "start": 15.78,
+    "end": 16.1
+   },
+   {
+    "word": "each",
+    "start": 16.1,
+    "end": 16.6
+   },
+   {
+    "word": "card.",
+    "start": 16.6,
+    "end": 17.1
+   },
+   {
+    "word": "Tap",
+    "start": 17.8,
+    "end": 18.16
+   },
+   {
+    "word": "the",
+    "start": 18.16,
+    "end": 18.44
+   },
+   {
+    "word": "root.",
+    "start": 18.44,
+    "end": 18.72
+   }
+  ]
+ },
+ "apply-sort-root-families": {
+  "duration": 20.2,
+  "words": [
+   {
+    "word": "Sorting",
+    "start": 0.0,
+    "end": 0.78
+   },
+   {
+    "word": "time.",
+    "start": 0.78,
+    "end": 1.22
+   },
+   {
+    "word": "Every",
+    "start": 1.92,
+    "end": 2.38
+   },
+   {
+    "word": "word",
+    "start": 2.38,
+    "end": 2.72
+   },
+   {
+    "word": "here",
+    "start": 2.72,
+    "end": 3.2
+   },
+   {
+    "word": "grew",
+    "start": 3.2,
+    "end": 3.74
+   },
+   {
+    "word": "from",
+    "start": 3.74,
+    "end": 4.08
+   },
+   {
+    "word": "the",
+    "start": 4.08,
+    "end": 4.28
+   },
+   {
+    "word": "root",
+    "start": 4.28,
+    "end": 4.5
+   },
+   {
+    "word": "farm",
+    "start": 4.5,
+    "end": 5.18
+   },
+   {
+    "word": "or",
+    "start": 5.18,
+    "end": 6.1
+   },
+   {
+    "word": "the",
+    "start": 6.1,
+    "end": 6.58
+   },
+   {
+    "word": "root",
+    "start": 6.58,
+    "end": 6.92
+   },
+   {
+    "word": "camp.",
+    "start": 6.92,
+    "end": 7.64
+   },
+   {
+    "word": "Read",
+    "start": 8.54,
+    "end": 8.88
+   },
+   {
+    "word": "each",
+    "start": 8.88,
+    "end": 9.44
+   },
+   {
+    "word": "word",
+    "start": 9.44,
+    "end": 9.78
+   },
+   {
+    "word": "and",
+    "start": 9.78,
+    "end": 10.22
+   },
+   {
+    "word": "spot",
+    "start": 10.22,
+    "end": 10.58
+   },
+   {
+    "word": "the",
+    "start": 10.58,
+    "end": 10.86
+   },
+   {
+    "word": "root",
+    "start": 10.86,
+    "end": 11.22
+   },
+   {
+    "word": "hiding",
+    "start": 11.22,
+    "end": 11.64
+   },
+   {
+    "word": "inside.",
+    "start": 11.64,
+    "end": 12.28
+   },
+   {
+    "word": "If",
+    "start": 12.88,
+    "end": 13.14
+   },
+   {
+    "word": "you",
+    "start": 13.14,
+    "end": 13.28
+   },
+   {
+    "word": "see",
+    "start": 13.28,
+    "end": 13.5
+   },
+   {
+    "word": "farm,",
+    "start": 13.5,
+    "end": 14.14
+   },
+   {
+    "word": "drag",
+    "start": 14.7,
+    "end": 14.96
+   },
+   {
+    "word": "it",
+    "start": 14.96,
+    "end": 15.16
+   },
+   {
+    "word": "to",
+    "start": 15.16,
+    "end": 15.36
+   },
+   {
+    "word": "farm",
+    "start": 15.36,
+    "end": 15.8
+   },
+   {
+    "word": "words.",
+    "start": 15.8,
+    "end": 16.14
+   },
+   {
+    "word": "If",
+    "start": 16.72,
+    "end": 17.06
+   },
+   {
+    "word": "you",
+    "start": 17.06,
+    "end": 17.22
+   },
+   {
+    "word": "see",
+    "start": 17.22,
+    "end": 17.46
+   },
+   {
+    "word": "camp,",
+    "start": 17.46,
+    "end": 17.98
+   },
+   {
+    "word": "drag",
+    "start": 18.6,
+    "end": 18.82
+   },
+   {
+    "word": "it",
+    "start": 18.82,
+    "end": 19.08
+   },
+   {
+    "word": "to",
+    "start": 19.08,
+    "end": 19.32
+   },
+   {
+    "word": "camp",
+    "start": 19.32,
+    "end": 19.74
+   },
+   {
+    "word": "words.",
+    "start": 19.74,
+    "end": 20.2
+   }
+  ]
+ },
+ "apply-speak-gardener": {
+  "duration": 18.3,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "found",
+    "start": 0.44,
+    "end": 0.94
+   },
+   {
+    "word": "the",
+    "start": 0.94,
+    "end": 1.24
+   },
+   {
+    "word": "root",
+    "start": 1.24,
+    "end": 1.5
+   },
+   {
+    "word": "garden.",
+    "start": 1.5,
+    "end": 1.92
+   },
+   {
+    "word": "Now",
+    "start": 2.56,
+    "end": 2.96
+   },
+   {
+    "word": "meet",
+    "start": 2.96,
+    "end": 3.32
+   },
+   {
+    "word": "a",
+    "start": 3.32,
+    "end": 3.58
+   },
+   {
+    "word": "family",
+    "start": 3.58,
+    "end": 4.04
+   },
+   {
+    "word": "member.",
+    "start": 4.04,
+    "end": 4.58
+   },
+   {
+    "word": "Gardener.",
+    "start": 5.48,
+    "end": 6.02
+   },
+   {
+    "word": "Gardener",
+    "start": 6.86,
+    "end": 7.68
+   },
+   {
+    "word": "names",
+    "start": 7.68,
+    "end": 8.34
+   },
+   {
+    "word": "a",
+    "start": 8.34,
+    "end": 8.76
+   },
+   {
+    "word": "person.",
+    "start": 8.76,
+    "end": 9.16
+   },
+   {
+    "word": "You",
+    "start": 9.96,
+    "end": 10.3
+   },
+   {
+    "word": "know",
+    "start": 10.3,
+    "end": 10.62
+   },
+   {
+    "word": "garden,",
+    "start": 10.62,
+    "end": 11.36
+   },
+   {
+    "word": "so",
+    "start": 11.92,
+    "end": 12.24
+   },
+   {
+    "word": "do",
+    "start": 12.24,
+    "end": 12.58
+   },
+   {
+    "word": "the",
+    "start": 12.58,
+    "end": 12.88
+   },
+   {
+    "word": "root",
+    "start": 12.88,
+    "end": 13.14
+   },
+   {
+    "word": "move.",
+    "start": 13.14,
+    "end": 13.64
+   },
+   {
+    "word": "Tap",
+    "start": 14.46,
+    "end": 14.68
+   },
+   {
+    "word": "the",
+    "start": 14.68,
+    "end": 14.96
+   },
+   {
+    "word": "mic",
+    "start": 14.96,
+    "end": 15.26
+   },
+   {
+    "word": "and",
+    "start": 15.26,
+    "end": 15.62
+   },
+   {
+    "word": "tell",
+    "start": 15.62,
+    "end": 15.88
+   },
+   {
+    "word": "me",
+    "start": 15.88,
+    "end": 16.06
+   },
+   {
+    "word": "what",
+    "start": 16.06,
+    "end": 16.56
+   },
+   {
+    "word": "a",
+    "start": 16.56,
+    "end": 16.96
+   },
+   {
+    "word": "gardener",
+    "start": 16.96,
+    "end": 17.74
+   },
+   {
+    "word": "is.",
+    "start": 17.74,
+    "end": 18.3
+   }
+  ]
+ },
+ "celebrate-root-clues": {
+  "duration": 21.66,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "used",
+    "start": 0.44,
+    "end": 1.02
+   },
+   {
+    "word": "root",
+    "start": 1.02,
+    "end": 1.32
+   },
+   {
+    "word": "clues",
+    "start": 1.32,
+    "end": 1.64
+   },
+   {
+    "word": "the",
+    "start": 1.64,
+    "end": 2.04
+   },
+   {
+    "word": "whole",
+    "start": 2.04,
+    "end": 2.48
+   },
+   {
+    "word": "way.",
+    "start": 2.48,
+    "end": 3.12
+   },
+   {
+    "word": "When",
+    "start": 3.98,
+    "end": 4.2
+   },
+   {
+    "word": "a",
+    "start": 4.2,
+    "end": 4.36
+   },
+   {
+    "word": "big",
+    "start": 4.36,
+    "end": 4.66
+   },
+   {
+    "word": "word",
+    "start": 4.66,
+    "end": 5.08
+   },
+   {
+    "word": "hides",
+    "start": 5.08,
+    "end": 5.4
+   },
+   {
+    "word": "a",
+    "start": 5.4,
+    "end": 5.64
+   },
+   {
+    "word": "small",
+    "start": 5.64,
+    "end": 6.06
+   },
+   {
+    "word": "word",
+    "start": 6.06,
+    "end": 6.42
+   },
+   {
+    "word": "you",
+    "start": 6.42,
+    "end": 6.68
+   },
+   {
+    "word": "know,",
+    "start": 6.68,
+    "end": 6.96
+   },
+   {
+    "word": "that",
+    "start": 7.52,
+    "end": 7.84
+   },
+   {
+    "word": "root",
+    "start": 7.84,
+    "end": 8.3
+   },
+   {
+    "word": "tells",
+    "start": 8.3,
+    "end": 8.82
+   },
+   {
+    "word": "you",
+    "start": 8.82,
+    "end": 9.12
+   },
+   {
+    "word": "what",
+    "start": 9.12,
+    "end": 9.32
+   },
+   {
+    "word": "the",
+    "start": 9.32,
+    "end": 9.52
+   },
+   {
+    "word": "big",
+    "start": 9.52,
+    "end": 9.88
+   },
+   {
+    "word": "word",
+    "start": 9.88,
+    "end": 10.3
+   },
+   {
+    "word": "means.",
+    "start": 10.3,
+    "end": 10.72
+   },
+   {
+    "word": "A",
+    "start": 11.64,
+    "end": 11.8
+   },
+   {
+    "word": "farmer",
+    "start": 11.8,
+    "end": 12.26
+   },
+   {
+    "word": "farms,",
+    "start": 12.26,
+    "end": 12.92
+   },
+   {
+    "word": "a",
+    "start": 13.4,
+    "end": 13.72
+   },
+   {
+    "word": "camper",
+    "start": 13.72,
+    "end": 14.26
+   },
+   {
+    "word": "camps,",
+    "start": 14.26,
+    "end": 14.88
+   },
+   {
+    "word": "and",
+    "start": 15.34,
+    "end": 15.74
+   },
+   {
+    "word": "a",
+    "start": 15.74,
+    "end": 15.88
+   },
+   {
+    "word": "gardener",
+    "start": 15.88,
+    "end": 16.66
+   },
+   {
+    "word": "works",
+    "start": 16.66,
+    "end": 17.1
+   },
+   {
+    "word": "in",
+    "start": 17.1,
+    "end": 17.38
+   },
+   {
+    "word": "a",
+    "start": 17.38,
+    "end": 17.5
+   },
+   {
+    "word": "garden.",
+    "start": 17.5,
+    "end": 17.9
+   },
+   {
+    "word": "Hunt",
+    "start": 18.78,
+    "end": 19.04
+   },
+   {
+    "word": "for",
+    "start": 19.04,
+    "end": 19.28
+   },
+   {
+    "word": "root",
+    "start": 19.28,
+    "end": 19.6
+   },
+   {
+    "word": "clues",
+    "start": 19.6,
+    "end": 20.0
+   },
+   {
+    "word": "every",
+    "start": 20.0,
+    "end": 20.84
+   },
+   {
+    "word": "time",
+    "start": 20.84,
+    "end": 21.16
+   },
+   {
+    "word": "you",
+    "start": 21.16,
+    "end": 21.36
+   },
+   {
+    "word": "read.",
+    "start": 21.36,
+    "end": 21.66
+   }
+  ]
+ },
+ "challenge-choose-fishing": {
+  "duration": 19.46,
+  "words": [
+   {
+    "word": "Challenge",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "time.",
+    "start": 0.54,
+    "end": 0.96
+   },
+   {
+    "word": "A",
+    "start": 1.56,
+    "end": 1.62
+   },
+   {
+    "word": "brand",
+    "start": 1.62,
+    "end": 1.98
+   },
+   {
+    "word": "new",
+    "start": 1.98,
+    "end": 2.42
+   },
+   {
+    "word": "word.",
+    "start": 2.42,
+    "end": 2.8
+   },
+   {
+    "word": "Listen.",
+    "start": 3.54,
+    "end": 3.9
+   },
+   {
+    "word": "On",
+    "start": 4.94,
+    "end": 5.06
+   },
+   {
+    "word": "Saturday,",
+    "start": 5.06,
+    "end": 5.64
+   },
+   {
+    "word": "we",
+    "start": 6.16,
+    "end": 6.32
+   },
+   {
+    "word": "went",
+    "start": 6.32,
+    "end": 6.58
+   },
+   {
+    "word": "fishing",
+    "start": 6.58,
+    "end": 7.08
+   },
+   {
+    "word": "at",
+    "start": 7.08,
+    "end": 7.48
+   },
+   {
+    "word": "the",
+    "start": 7.48,
+    "end": 7.66
+   },
+   {
+    "word": "pond.",
+    "start": 7.66,
+    "end": 8.08
+   },
+   {
+    "word": "Fishing.",
+    "start": 9.0,
+    "end": 9.46
+   },
+   {
+    "word": "Hunt",
+    "start": 10.42,
+    "end": 10.68
+   },
+   {
+    "word": "for",
+    "start": 10.68,
+    "end": 10.88
+   },
+   {
+    "word": "the",
+    "start": 10.88,
+    "end": 11.02
+   },
+   {
+    "word": "small",
+    "start": 11.02,
+    "end": 11.4
+   },
+   {
+    "word": "word",
+    "start": 11.4,
+    "end": 11.82
+   },
+   {
+    "word": "hiding",
+    "start": 11.82,
+    "end": 12.16
+   },
+   {
+    "word": "inside",
+    "start": 12.16,
+    "end": 12.74
+   },
+   {
+    "word": "and",
+    "start": 13.19,
+    "end": 13.6
+   },
+   {
+    "word": "let",
+    "start": 13.6,
+    "end": 13.8
+   },
+   {
+    "word": "the",
+    "start": 13.8,
+    "end": 14.04
+   },
+   {
+    "word": "root",
+    "start": 14.04,
+    "end": 14.46
+   },
+   {
+    "word": "be",
+    "start": 14.46,
+    "end": 14.96
+   },
+   {
+    "word": "your",
+    "start": 14.96,
+    "end": 15.14
+   },
+   {
+    "word": "clue.",
+    "start": 15.14,
+    "end": 15.44
+   },
+   {
+    "word": "Read",
+    "start": 16.5,
+    "end": 16.64
+   },
+   {
+    "word": "each",
+    "start": 16.64,
+    "end": 16.92
+   },
+   {
+    "word": "card.",
+    "start": 16.92,
+    "end": 17.22
+   },
+   {
+    "word": "Tap",
+    "start": 17.94,
+    "end": 18.12
+   },
+   {
+    "word": "what",
+    "start": 18.12,
+    "end": 18.48
+   },
+   {
+    "word": "fishing",
+    "start": 18.48,
+    "end": 19.04
+   },
+   {
+    "word": "means.",
+    "start": 19.04,
+    "end": 19.46
+   }
+  ]
+ },
+ "challenge-speak-dancer": {
+  "duration": 17.14,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "one",
+    "start": 0.5,
+    "end": 1.0
+   },
+   {
+    "word": "and",
+    "start": 1.0,
+    "end": 1.52
+   },
+   {
+    "word": "this",
+    "start": 1.52,
+    "end": 1.7
+   },
+   {
+    "word": "is",
+    "start": 1.7,
+    "end": 1.96
+   },
+   {
+    "word": "all",
+    "start": 1.96,
+    "end": 2.36
+   },
+   {
+    "word": "you.",
+    "start": 2.36,
+    "end": 3.06
+   },
+   {
+    "word": "A",
+    "start": 3.88,
+    "end": 4.0
+   },
+   {
+    "word": "new",
+    "start": 4.0,
+    "end": 4.38
+   },
+   {
+    "word": "big",
+    "start": 4.38,
+    "end": 4.94
+   },
+   {
+    "word": "word.",
+    "start": 4.94,
+    "end": 5.5
+   },
+   {
+    "word": "Dancer.",
+    "start": 6.5,
+    "end": 6.98
+   },
+   {
+    "word": "Find",
+    "start": 7.88,
+    "end": 8.64
+   },
+   {
+    "word": "the",
+    "start": 8.64,
+    "end": 8.88
+   },
+   {
+    "word": "root",
+    "start": 8.88,
+    "end": 9.2
+   },
+   {
+    "word": "hiding",
+    "start": 9.2,
+    "end": 9.88
+   },
+   {
+    "word": "inside",
+    "start": 9.88,
+    "end": 10.44
+   },
+   {
+    "word": "it.",
+    "start": 10.44,
+    "end": 10.8
+   },
+   {
+    "word": "Then",
+    "start": 11.24,
+    "end": 11.54
+   },
+   {
+    "word": "do",
+    "start": 11.54,
+    "end": 11.74
+   },
+   {
+    "word": "the",
+    "start": 11.74,
+    "end": 11.94
+   },
+   {
+    "word": "root",
+    "start": 11.94,
+    "end": 12.26
+   },
+   {
+    "word": "move.",
+    "start": 12.26,
+    "end": 12.72
+   },
+   {
+    "word": "Tap",
+    "start": 13.58,
+    "end": 13.7
+   },
+   {
+    "word": "the",
+    "start": 13.7,
+    "end": 13.94
+   },
+   {
+    "word": "mic",
+    "start": 13.94,
+    "end": 14.2
+   },
+   {
+    "word": "and",
+    "start": 14.2,
+    "end": 14.8
+   },
+   {
+    "word": "tell",
+    "start": 14.8,
+    "end": 15.14
+   },
+   {
+    "word": "me",
+    "start": 15.14,
+    "end": 15.38
+   },
+   {
+    "word": "what",
+    "start": 15.38,
+    "end": 15.7
+   },
+   {
+    "word": "a",
+    "start": 15.7,
+    "end": 15.88
+   },
+   {
+    "word": "dancer",
+    "start": 15.88,
+    "end": 16.5
+   },
+   {
+    "word": "is.",
+    "start": 16.5,
+    "end": 17.14
+   }
+  ]
+ },
+ "complete": {
+  "duration": 22.16,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "used",
+    "start": 0.48,
+    "end": 1.04
+   },
+   {
+    "word": "root",
+    "start": 1.04,
+    "end": 1.42
+   },
+   {
+    "word": "clues",
+    "start": 1.42,
+    "end": 1.74
+   },
+   {
+    "word": "the",
+    "start": 1.74,
+    "end": 2.16
+   },
+   {
+    "word": "whole",
+    "start": 2.16,
+    "end": 2.52
+   },
+   {
+    "word": "way.",
+    "start": 2.52,
+    "end": 3.1
+   },
+   {
+    "word": "When",
+    "start": 3.72,
+    "end": 3.98
+   },
+   {
+    "word": "a",
+    "start": 3.98,
+    "end": 4.14
+   },
+   {
+    "word": "big",
+    "start": 4.14,
+    "end": 4.44
+   },
+   {
+    "word": "word",
+    "start": 4.44,
+    "end": 4.9
+   },
+   {
+    "word": "hides",
+    "start": 4.9,
+    "end": 5.44
+   },
+   {
+    "word": "a",
+    "start": 5.44,
+    "end": 5.7
+   },
+   {
+    "word": "small",
+    "start": 5.7,
+    "end": 6.22
+   },
+   {
+    "word": "word",
+    "start": 6.22,
+    "end": 6.66
+   },
+   {
+    "word": "you",
+    "start": 6.66,
+    "end": 6.92
+   },
+   {
+    "word": "know,",
+    "start": 6.92,
+    "end": 7.24
+   },
+   {
+    "word": "that",
+    "start": 7.82,
+    "end": 8.2
+   },
+   {
+    "word": "root",
+    "start": 8.2,
+    "end": 8.66
+   },
+   {
+    "word": "tells",
+    "start": 8.66,
+    "end": 9.22
+   },
+   {
+    "word": "you",
+    "start": 9.22,
+    "end": 9.62
+   },
+   {
+    "word": "what",
+    "start": 9.62,
+    "end": 9.84
+   },
+   {
+    "word": "the",
+    "start": 9.84,
+    "end": 10.02
+   },
+   {
+    "word": "big",
+    "start": 10.02,
+    "end": 10.3
+   },
+   {
+    "word": "word",
+    "start": 10.3,
+    "end": 10.62
+   },
+   {
+    "word": "means.",
+    "start": 10.62,
+    "end": 11.1
+   },
+   {
+    "word": "A",
+    "start": 11.86,
+    "end": 12.1
+   },
+   {
+    "word": "farmer",
+    "start": 12.1,
+    "end": 12.62
+   },
+   {
+    "word": "farms,",
+    "start": 12.62,
+    "end": 13.38
+   },
+   {
+    "word": "a",
+    "start": 13.8,
+    "end": 14.04
+   },
+   {
+    "word": "camper",
+    "start": 14.04,
+    "end": 14.52
+   },
+   {
+    "word": "camps,",
+    "start": 14.52,
+    "end": 15.0
+   },
+   {
+    "word": "and",
+    "start": 15.46,
+    "end": 15.92
+   },
+   {
+    "word": "a",
+    "start": 15.92,
+    "end": 16.08
+   },
+   {
+    "word": "gardener",
+    "start": 16.08,
+    "end": 16.74
+   },
+   {
+    "word": "works",
+    "start": 16.74,
+    "end": 17.22
+   },
+   {
+    "word": "in",
+    "start": 17.22,
+    "end": 17.7
+   },
+   {
+    "word": "a",
+    "start": 17.7,
+    "end": 17.86
+   },
+   {
+    "word": "garden.",
+    "start": 17.86,
+    "end": 18.34
+   },
+   {
+    "word": "Hunt",
+    "start": 19.1,
+    "end": 19.44
+   },
+   {
+    "word": "for",
+    "start": 19.44,
+    "end": 19.66
+   },
+   {
+    "word": "root",
+    "start": 19.66,
+    "end": 20.0
+   },
+   {
+    "word": "clues",
+    "start": 20.0,
+    "end": 20.38
+   },
+   {
+    "word": "every",
+    "start": 20.38,
+    "end": 21.2
+   },
+   {
+    "word": "time",
+    "start": 21.2,
+    "end": 21.54
+   },
+   {
+    "word": "you",
+    "start": 21.54,
+    "end": 21.8
+   },
+   {
+    "word": "read.",
+    "start": 21.8,
+    "end": 22.16
+   }
+  ]
+ },
+ "guided-choose-camper-meaning": {
+  "duration": 17.3,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "found",
+    "start": 0.46,
+    "end": 1.06
+   },
+   {
+    "word": "camp",
+    "start": 1.06,
+    "end": 1.6
+   },
+   {
+    "word": "hiding",
+    "start": 1.6,
+    "end": 2.72
+   },
+   {
+    "word": "inside",
+    "start": 2.72,
+    "end": 3.72
+   },
+   {
+    "word": "camper.",
+    "start": 3.72,
+    "end": 4.62
+   },
+   {
+    "word": "You",
+    "start": 5.36,
+    "end": 5.9
+   },
+   {
+    "word": "know",
+    "start": 5.9,
+    "end": 6.1
+   },
+   {
+    "word": "camp,",
+    "start": 6.1,
+    "end": 6.54
+   },
+   {
+    "word": "sleeping",
+    "start": 6.94,
+    "end": 7.66
+   },
+   {
+    "word": "and",
+    "start": 7.66,
+    "end": 8.16
+   },
+   {
+    "word": "cooking",
+    "start": 8.16,
+    "end": 8.58
+   },
+   {
+    "word": "outside",
+    "start": 8.58,
+    "end": 9.26
+   },
+   {
+    "word": "in",
+    "start": 9.26,
+    "end": 9.6
+   },
+   {
+    "word": "a",
+    "start": 9.6,
+    "end": 9.72
+   },
+   {
+    "word": "tent?",
+    "start": 9.72,
+    "end": 10.1
+   },
+   {
+    "word": "Use",
+    "start": 11.08,
+    "end": 11.36
+   },
+   {
+    "word": "the",
+    "start": 11.36,
+    "end": 11.6
+   },
+   {
+    "word": "root",
+    "start": 11.6,
+    "end": 11.9
+   },
+   {
+    "word": "clue.",
+    "start": 11.9,
+    "end": 12.34
+   },
+   {
+    "word": "Read",
+    "start": 13.16,
+    "end": 13.44
+   },
+   {
+    "word": "each",
+    "start": 13.44,
+    "end": 13.98
+   },
+   {
+    "word": "card.",
+    "start": 13.98,
+    "end": 14.36
+   },
+   {
+    "word": "Tap",
+    "start": 15.1,
+    "end": 15.3
+   },
+   {
+    "word": "what",
+    "start": 15.3,
+    "end": 15.86
+   },
+   {
+    "word": "a",
+    "start": 15.86,
+    "end": 16.1
+   },
+   {
+    "word": "camper",
+    "start": 16.1,
+    "end": 16.62
+   },
+   {
+    "word": "is.",
+    "start": 16.62,
+    "end": 17.3
+   }
+  ]
+ },
+ "guided-choose-farmer-meaning": {
+  "duration": 16.38,
+  "words": [
+   {
+    "word": "Your",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "turn.",
+    "start": 0.46,
+    "end": 0.92
+   },
+   {
+    "word": "Roses",
+    "start": 1.56,
+    "end": 1.9
+   },
+   {
+    "word": "and",
+    "start": 1.9,
+    "end": 2.32
+   },
+   {
+    "word": "is",
+    "start": 2.32,
+    "end": 2.86
+   },
+   {
+    "word": "a",
+    "start": 2.86,
+    "end": 3.16
+   },
+   {
+    "word": "farmer.",
+    "start": 3.16,
+    "end": 3.58
+   },
+   {
+    "word": "Farmer",
+    "start": 4.5,
+    "end": 5.38
+   },
+   {
+    "word": "hides",
+    "start": 5.38,
+    "end": 5.94
+   },
+   {
+    "word": "the",
+    "start": 5.94,
+    "end": 6.24
+   },
+   {
+    "word": "root.",
+    "start": 6.24,
+    "end": 6.5
+   },
+   {
+    "word": "Farm.",
+    "start": 7.24,
+    "end": 7.52
+   },
+   {
+    "word": "You",
+    "start": 8.14,
+    "end": 8.8
+   },
+   {
+    "word": "know",
+    "start": 8.8,
+    "end": 8.98
+   },
+   {
+    "word": "farm,",
+    "start": 8.98,
+    "end": 9.54
+   },
+   {
+    "word": "so",
+    "start": 9.54,
+    "end": 10.06
+   },
+   {
+    "word": "use",
+    "start": 10.06,
+    "end": 10.32
+   },
+   {
+    "word": "the",
+    "start": 10.32,
+    "end": 10.5
+   },
+   {
+    "word": "clue.",
+    "start": 10.5,
+    "end": 10.78
+   },
+   {
+    "word": "Read",
+    "start": 12.02,
+    "end": 12.28
+   },
+   {
+    "word": "each",
+    "start": 12.28,
+    "end": 13.0
+   },
+   {
+    "word": "card.",
+    "start": 13.0,
+    "end": 13.46
+   },
+   {
+    "word": "Tap",
+    "start": 14.34,
+    "end": 14.64
+   },
+   {
+    "word": "what",
+    "start": 14.64,
+    "end": 15.36
+   },
+   {
+    "word": "a",
+    "start": 15.36,
+    "end": 15.58
+   },
+   {
+    "word": "farmer",
+    "start": 15.58,
+    "end": 15.98
+   },
+   {
+    "word": "is.",
+    "start": 15.98,
+    "end": 16.38
+   }
+  ]
+ },
+ "guided-find-root-camper": {
+  "duration": 22.46,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "is",
+    "start": 0.54,
+    "end": 0.88
+   },
+   {
+    "word": "a",
+    "start": 0.88,
+    "end": 1.02
+   },
+   {
+    "word": "big",
+    "start": 1.02,
+    "end": 1.38
+   },
+   {
+    "word": "word",
+    "start": 1.38,
+    "end": 1.86
+   },
+   {
+    "word": "from",
+    "start": 1.86,
+    "end": 2.36
+   },
+   {
+    "word": "a",
+    "start": 2.36,
+    "end": 2.52
+   },
+   {
+    "word": "lake",
+    "start": 2.52,
+    "end": 2.7
+   },
+   {
+    "word": "trip.",
+    "start": 2.7,
+    "end": 3.12
+   },
+   {
+    "word": "Listen.",
+    "start": 3.7,
+    "end": 4.14
+   },
+   {
+    "word": "The",
+    "start": 5.14,
+    "end": 5.26
+   },
+   {
+    "word": "camper",
+    "start": 5.26,
+    "end": 5.78
+   },
+   {
+    "word": "slept",
+    "start": 5.78,
+    "end": 6.46
+   },
+   {
+    "word": "in",
+    "start": 6.46,
+    "end": 6.82
+   },
+   {
+    "word": "a",
+    "start": 6.82,
+    "end": 6.94
+   },
+   {
+    "word": "tent",
+    "start": 6.94,
+    "end": 7.28
+   },
+   {
+    "word": "by",
+    "start": 7.28,
+    "end": 7.74
+   },
+   {
+    "word": "the",
+    "start": 7.74,
+    "end": 7.94
+   },
+   {
+    "word": "lake.",
+    "start": 7.94,
+    "end": 8.22
+   },
+   {
+    "word": "Camper.",
+    "start": 9.24,
+    "end": 9.62
+   },
+   {
+    "word": "One",
+    "start": 10.52,
+    "end": 11.38
+   },
+   {
+    "word": "of",
+    "start": 11.38,
+    "end": 11.74
+   },
+   {
+    "word": "these",
+    "start": 11.74,
+    "end": 11.94
+   },
+   {
+    "word": "small",
+    "start": 11.94,
+    "end": 12.44
+   },
+   {
+    "word": "words",
+    "start": 12.44,
+    "end": 12.86
+   },
+   {
+    "word": "is",
+    "start": 12.86,
+    "end": 13.56
+   },
+   {
+    "word": "hiding",
+    "start": 13.56,
+    "end": 14.08
+   },
+   {
+    "word": "inside",
+    "start": 14.08,
+    "end": 14.9
+   },
+   {
+    "word": "camper.",
+    "start": 14.9,
+    "end": 15.56
+   },
+   {
+    "word": "Read",
+    "start": 16.5,
+    "end": 16.92
+   },
+   {
+    "word": "each",
+    "start": 16.92,
+    "end": 17.38
+   },
+   {
+    "word": "card.",
+    "start": 17.38,
+    "end": 17.9
+   },
+   {
+    "word": "Tap",
+    "start": 18.76,
+    "end": 19.08
+   },
+   {
+    "word": "the",
+    "start": 19.08,
+    "end": 19.38
+   },
+   {
+    "word": "small",
+    "start": 19.38,
+    "end": 19.76
+   },
+   {
+    "word": "word",
+    "start": 19.76,
+    "end": 20.12
+   },
+   {
+    "word": "you",
+    "start": 20.12,
+    "end": 20.5
+   },
+   {
+    "word": "can",
+    "start": 20.5,
+    "end": 20.7
+   },
+   {
+    "word": "see",
+    "start": 20.7,
+    "end": 21.0
+   },
+   {
+    "word": "inside",
+    "start": 21.0,
+    "end": 21.84
+   },
+   {
+    "word": "camper.",
+    "start": 21.84,
+    "end": 22.46
+   }
+  ]
+ },
+ "hook-berry-farm-story-sentence": {
+  "duration": 25.86,
+  "words": [
+   {
+    "word": "Rosa",
+    "start": 0.0,
+    "end": 0.68
+   },
+   {
+    "word": "spent",
+    "start": 0.68,
+    "end": 1.24
+   },
+   {
+    "word": "the",
+    "start": 1.24,
+    "end": 1.46
+   },
+   {
+    "word": "summer",
+    "start": 1.46,
+    "end": 1.84
+   },
+   {
+    "word": "on",
+    "start": 1.84,
+    "end": 2.24
+   },
+   {
+    "word": "her",
+    "start": 2.24,
+    "end": 2.48
+   },
+   {
+    "word": "aunt's",
+    "start": 2.48,
+    "end": 3.26
+   },
+   {
+    "word": "berry",
+    "start": 3.26,
+    "end": 3.5
+   },
+   {
+    "word": "farm.",
+    "start": 3.5,
+    "end": 4.08
+   },
+   {
+    "word": "Her",
+    "start": 4.44,
+    "end": 4.86
+   },
+   {
+    "word": "aunt",
+    "start": 4.86,
+    "end": 5.28
+   },
+   {
+    "word": "is",
+    "start": 5.28,
+    "end": 5.56
+   },
+   {
+    "word": "a",
+    "start": 5.56,
+    "end": 5.66
+   },
+   {
+    "word": "farmer.",
+    "start": 5.66,
+    "end": 6.04
+   },
+   {
+    "word": "Each",
+    "start": 6.86,
+    "end": 7.28
+   },
+   {
+    "word": "morning,",
+    "start": 7.28,
+    "end": 7.76
+   },
+   {
+    "word": "they",
+    "start": 8.16,
+    "end": 8.24
+   },
+   {
+    "word": "fed",
+    "start": 8.24,
+    "end": 8.46
+   },
+   {
+    "word": "the",
+    "start": 8.46,
+    "end": 8.72
+   },
+   {
+    "word": "hens",
+    "start": 8.72,
+    "end": 9.28
+   },
+   {
+    "word": "and",
+    "start": 9.28,
+    "end": 9.64
+   },
+   {
+    "word": "picked",
+    "start": 9.64,
+    "end": 10.06
+   },
+   {
+    "word": "ripe",
+    "start": 10.06,
+    "end": 10.48
+   },
+   {
+    "word": "berries.",
+    "start": 10.48,
+    "end": 11.2
+   },
+   {
+    "word": "Rosa",
+    "start": 12.08,
+    "end": 12.52
+   },
+   {
+    "word": "asked,",
+    "start": 12.52,
+    "end": 13.12
+   },
+   {
+    "word": "is",
+    "start": 13.76,
+    "end": 13.96
+   },
+   {
+    "word": "farming",
+    "start": 13.96,
+    "end": 14.46
+   },
+   {
+    "word": "hard",
+    "start": 14.46,
+    "end": 14.94
+   },
+   {
+    "word": "work?",
+    "start": 14.94,
+    "end": 15.36
+   },
+   {
+    "word": "Her",
+    "start": 16.22,
+    "end": 16.58
+   },
+   {
+    "word": "aunt",
+    "start": 16.58,
+    "end": 16.82
+   },
+   {
+    "word": "smiled.",
+    "start": 16.82,
+    "end": 17.36
+   },
+   {
+    "word": "Farming",
+    "start": 18.18,
+    "end": 18.86
+   },
+   {
+    "word": "keeps",
+    "start": 18.86,
+    "end": 19.2
+   },
+   {
+    "word": "me",
+    "start": 19.2,
+    "end": 19.5
+   },
+   {
+    "word": "busy,",
+    "start": 19.5,
+    "end": 19.96
+   },
+   {
+    "word": "but",
+    "start": 20.42,
+    "end": 20.84
+   },
+   {
+    "word": "I",
+    "start": 20.84,
+    "end": 21.42
+   },
+   {
+    "word": "love",
+    "start": 21.42,
+    "end": 21.82
+   },
+   {
+    "word": "it.",
+    "start": 21.82,
+    "end": 22.22
+   },
+   {
+    "word": "Out",
+    "start": 22.88,
+    "end": 23.22
+   },
+   {
+    "word": "here,",
+    "start": 23.22,
+    "end": 23.6
+   },
+   {
+    "word": "no",
+    "start": 23.9,
+    "end": 24.18
+   },
+   {
+    "word": "day",
+    "start": 24.18,
+    "end": 24.54
+   },
+   {
+    "word": "is",
+    "start": 24.54,
+    "end": 24.84
+   },
+   {
+    "word": "ever",
+    "start": 24.84,
+    "end": 25.4
+   },
+   {
+    "word": "boring.",
+    "start": 25.4,
+    "end": 25.86
+   }
+  ]
+ },
+ "hook-berry-farm-story": {
+  "duration": 26.0,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "reader.",
+    "start": 0.76,
+    "end": 0.98
+   },
+   {
+    "word": "Today",
+    "start": 1.7,
+    "end": 1.92
+   },
+   {
+    "word": "you",
+    "start": 1.92,
+    "end": 2.46
+   },
+   {
+    "word": "get",
+    "start": 2.46,
+    "end": 2.68
+   },
+   {
+    "word": "a",
+    "start": 2.68,
+    "end": 2.96
+   },
+   {
+    "word": "new",
+    "start": 2.96,
+    "end": 3.34
+   },
+   {
+    "word": "word",
+    "start": 3.34,
+    "end": 3.8
+   },
+   {
+    "word": "tool",
+    "start": 3.8,
+    "end": 4.3
+   },
+   {
+    "word": "called",
+    "start": 4.3,
+    "end": 5.04
+   },
+   {
+    "word": "a",
+    "start": 5.04,
+    "end": 5.54
+   },
+   {
+    "word": "root",
+    "start": 5.54,
+    "end": 5.84
+   },
+   {
+    "word": "clue.",
+    "start": 5.84,
+    "end": 6.4
+   },
+   {
+    "word": "Some",
+    "start": 7.46,
+    "end": 7.82
+   },
+   {
+    "word": "big",
+    "start": 7.82,
+    "end": 8.2
+   },
+   {
+    "word": "words",
+    "start": 8.2,
+    "end": 8.76
+   },
+   {
+    "word": "hide",
+    "start": 8.76,
+    "end": 9.44
+   },
+   {
+    "word": "a",
+    "start": 9.44,
+    "end": 9.9
+   },
+   {
+    "word": "small",
+    "start": 9.9,
+    "end": 10.3
+   },
+   {
+    "word": "word",
+    "start": 10.3,
+    "end": 10.8
+   },
+   {
+    "word": "you",
+    "start": 10.8,
+    "end": 11.18
+   },
+   {
+    "word": "already",
+    "start": 11.18,
+    "end": 11.54
+   },
+   {
+    "word": "know",
+    "start": 11.54,
+    "end": 11.92
+   },
+   {
+    "word": "inside",
+    "start": 11.92,
+    "end": 12.54
+   },
+   {
+    "word": "them.",
+    "start": 12.54,
+    "end": 12.96
+   },
+   {
+    "word": "That",
+    "start": 13.76,
+    "end": 14.08
+   },
+   {
+    "word": "small",
+    "start": 14.08,
+    "end": 14.48
+   },
+   {
+    "word": "word",
+    "start": 14.48,
+    "end": 14.88
+   },
+   {
+    "word": "is",
+    "start": 14.88,
+    "end": 15.26
+   },
+   {
+    "word": "the",
+    "start": 15.26,
+    "end": 15.46
+   },
+   {
+    "word": "root,",
+    "start": 15.46,
+    "end": 15.8
+   },
+   {
+    "word": "and",
+    "start": 16.3,
+    "end": 16.54
+   },
+   {
+    "word": "it",
+    "start": 16.54,
+    "end": 16.7
+   },
+   {
+    "word": "points",
+    "start": 16.7,
+    "end": 17.08
+   },
+   {
+    "word": "to",
+    "start": 17.08,
+    "end": 17.5
+   },
+   {
+    "word": "what",
+    "start": 17.5,
+    "end": 17.68
+   },
+   {
+    "word": "the",
+    "start": 17.68,
+    "end": 17.84
+   },
+   {
+    "word": "big",
+    "start": 17.84,
+    "end": 18.1
+   },
+   {
+    "word": "word",
+    "start": 18.1,
+    "end": 18.44
+   },
+   {
+    "word": "means.",
+    "start": 18.44,
+    "end": 19.02
+   },
+   {
+    "word": "Read",
+    "start": 19.98,
+    "end": 20.34
+   },
+   {
+    "word": "the",
+    "start": 20.34,
+    "end": 20.58
+   },
+   {
+    "word": "farm",
+    "start": 20.58,
+    "end": 20.9
+   },
+   {
+    "word": "story",
+    "start": 20.9,
+    "end": 21.32
+   },
+   {
+    "word": "with",
+    "start": 21.32,
+    "end": 21.64
+   },
+   {
+    "word": "me,",
+    "start": 21.64,
+    "end": 21.92
+   },
+   {
+    "word": "and",
+    "start": 22.34,
+    "end": 22.5
+   },
+   {
+    "word": "watch",
+    "start": 22.5,
+    "end": 22.94
+   },
+   {
+    "word": "for",
+    "start": 22.94,
+    "end": 23.16
+   },
+   {
+    "word": "big",
+    "start": 23.16,
+    "end": 23.56
+   },
+   {
+    "word": "words",
+    "start": 23.56,
+    "end": 24.08
+   },
+   {
+    "word": "with",
+    "start": 24.08,
+    "end": 24.58
+   },
+   {
+    "word": "farm",
+    "start": 24.58,
+    "end": 25.08
+   },
+   {
+    "word": "hiding",
+    "start": 25.08,
+    "end": 25.48
+   },
+   {
+    "word": "inside.",
+    "start": 25.48,
+    "end": 26.0
+   }
+  ]
+ },
+ "model-root-inside-farming": {
+  "duration": 36.16,
+  "words": [
+   {
+    "word": "Look",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "at",
+    "start": 0.46,
+    "end": 0.86
+   },
+   {
+    "word": "farming.",
+    "start": 0.86,
+    "end": 1.48
+   },
+   {
+    "word": "A",
+    "start": 1.9,
+    "end": 2.4
+   },
+   {
+    "word": "small",
+    "start": 2.4,
+    "end": 2.74
+   },
+   {
+    "word": "word",
+    "start": 2.74,
+    "end": 3.12
+   },
+   {
+    "word": "you",
+    "start": 3.12,
+    "end": 3.34
+   },
+   {
+    "word": "know",
+    "start": 3.34,
+    "end": 3.62
+   },
+   {
+    "word": "is",
+    "start": 3.62,
+    "end": 4.04
+   },
+   {
+    "word": "hiding",
+    "start": 4.04,
+    "end": 4.42
+   },
+   {
+    "word": "right",
+    "start": 4.42,
+    "end": 4.9
+   },
+   {
+    "word": "at",
+    "start": 4.9,
+    "end": 5.32
+   },
+   {
+    "word": "the",
+    "start": 5.32,
+    "end": 5.48
+   },
+   {
+    "word": "front.",
+    "start": 5.48,
+    "end": 5.94
+   },
+   {
+    "word": "Farm.",
+    "start": 6.66,
+    "end": 6.94
+   },
+   {
+    "word": "You",
+    "start": 7.42,
+    "end": 7.76
+   },
+   {
+    "word": "know",
+    "start": 7.76,
+    "end": 7.96
+   },
+   {
+    "word": "a",
+    "start": 7.96,
+    "end": 8.12
+   },
+   {
+    "word": "farm.",
+    "start": 8.12,
+    "end": 8.62
+   },
+   {
+    "word": "The",
+    "start": 9.18,
+    "end": 9.26
+   },
+   {
+    "word": "place",
+    "start": 9.26,
+    "end": 9.7
+   },
+   {
+    "word": "where",
+    "start": 9.7,
+    "end": 10.06
+   },
+   {
+    "word": "food",
+    "start": 10.06,
+    "end": 10.5
+   },
+   {
+    "word": "grows.",
+    "start": 10.5,
+    "end": 10.96
+   },
+   {
+    "word": "So",
+    "start": 11.86,
+    "end": 12.16
+   },
+   {
+    "word": "farming",
+    "start": 12.16,
+    "end": 12.76
+   },
+   {
+    "word": "means",
+    "start": 12.76,
+    "end": 13.4
+   },
+   {
+    "word": "doing",
+    "start": 13.4,
+    "end": 14.14
+   },
+   {
+    "word": "farm",
+    "start": 14.14,
+    "end": 14.48
+   },
+   {
+    "word": "work.",
+    "start": 14.48,
+    "end": 14.84
+   },
+   {
+    "word": "That",
+    "start": 15.58,
+    "end": 15.9
+   },
+   {
+    "word": "small",
+    "start": 15.9,
+    "end": 16.34
+   },
+   {
+    "word": "word",
+    "start": 16.34,
+    "end": 16.74
+   },
+   {
+    "word": "inside",
+    "start": 16.74,
+    "end": 17.26
+   },
+   {
+    "word": "is",
+    "start": 17.26,
+    "end": 17.78
+   },
+   {
+    "word": "called",
+    "start": 17.78,
+    "end": 18.22
+   },
+   {
+    "word": "the",
+    "start": 18.22,
+    "end": 18.74
+   },
+   {
+    "word": "root.",
+    "start": 18.74,
+    "end": 19.1
+   },
+   {
+    "word": "Roots",
+    "start": 20.2,
+    "end": 20.6
+   },
+   {
+    "word": "grow",
+    "start": 20.6,
+    "end": 21.0
+   },
+   {
+    "word": "word",
+    "start": 21.0,
+    "end": 21.6
+   },
+   {
+    "word": "families.",
+    "start": 21.6,
+    "end": 22.16
+   },
+   {
+    "word": "Farm",
+    "start": 23.24,
+    "end": 23.96
+   },
+   {
+    "word": "grows",
+    "start": 23.96,
+    "end": 24.48
+   },
+   {
+    "word": "farming,",
+    "start": 24.48,
+    "end": 25.66
+   },
+   {
+    "word": "farmer,",
+    "start": 26.36,
+    "end": 26.84
+   },
+   {
+    "word": "and",
+    "start": 27.24,
+    "end": 27.78
+   },
+   {
+    "word": "farms.",
+    "start": 27.78,
+    "end": 28.34
+   },
+   {
+    "word": "When",
+    "start": 28.34,
+    "end": 29.68
+   },
+   {
+    "word": "a",
+    "start": 29.68,
+    "end": 29.84
+   },
+   {
+    "word": "big",
+    "start": 29.84,
+    "end": 30.08
+   },
+   {
+    "word": "word",
+    "start": 30.08,
+    "end": 30.42
+   },
+   {
+    "word": "looks",
+    "start": 30.42,
+    "end": 30.8
+   },
+   {
+    "word": "new,",
+    "start": 30.8,
+    "end": 31.24
+   },
+   {
+    "word": "hunt",
+    "start": 31.88,
+    "end": 32.14
+   },
+   {
+    "word": "for",
+    "start": 32.14,
+    "end": 32.56
+   },
+   {
+    "word": "the",
+    "start": 32.56,
+    "end": 32.8
+   },
+   {
+    "word": "root",
+    "start": 32.8,
+    "end": 33.22
+   },
+   {
+    "word": "inside.",
+    "start": 33.22,
+    "end": 34.1
+   },
+   {
+    "word": "It",
+    "start": 34.84,
+    "end": 35.08
+   },
+   {
+    "word": "is",
+    "start": 35.08,
+    "end": 35.58
+   },
+   {
+    "word": "your",
+    "start": 35.58,
+    "end": 35.82
+   },
+   {
+    "word": "clue.",
+    "start": 35.82,
+    "end": 36.16
+   }
+  ]
+ }
+}

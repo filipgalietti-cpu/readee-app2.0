@@ -11,7 +11,7 @@
 > beat — not just quiz the skill. Reference: U1 lessons (RF.K.2a Rhyme Time =
 > hear it → build it → SAY it).
 
-**Progress: 106 / 201 standards shipped · 1 / 21 units complete**
+**Progress: 109 / 201 standards shipped · 1 / 21 units complete**
 
 ## Kindergarten (38 standards · 4 units)
 
@@ -161,8 +161,8 @@
 | ☑ | L.2.4 | Determine or clarify the meaning of unknown and multiple-meaning words and phrases. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☑ | L.2.4a | Use sentence-level context as a clue to the meaning of a word or phrase. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☑ | L.2.4b | Determine the meaning of the new word formed when a known prefix is added to a known word. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.2.4c | Use a known root word as a clue to the meaning of an unknown word with the same root. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | — | — | **G2·U1 EXAM** — 12-Q veto table |
+| ☑ | L.2.4c | Use a known root word as a clue to the meaning of an unknown word with the same root. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☐ | — | — | **G2·U1 EXAM** — 13-Q veto table (L.2.4c covered via root-clues top-up; L.2.4b pick still missing) |
 
 ### G2·U2
 | ✓ | Standard | Skill (what school expects) | How it teaches |
@@ -178,9 +178,9 @@
 | ☑ | RI.2.6 | Identify the main purpose of a text, including what the author wants to answer, explain, or describe. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☑ | L.2.4d | Use knowledge of the meaning of individual words to predict the meaning of compound words. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☑ | L.2.4e | Use glossaries and beginning dictionaries to determine or clarify the meaning of words. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.2.5 | Demonstrate understanding of word relationships and nuances in word meanings. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.2.5a | Identify real-life connections between words and their use. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☑ | — | — | **G2·U2 EXAM** — 13-Q veto table (12 shipped standards covered; L.2.5/L.2.5a not yet produced) |
+| ☑ | L.2.5 | Demonstrate understanding of word relationships and nuances in word meanings. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | L.2.5a | Identify real-life connections between words and their use. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | — | — | **G2·U2 EXAM** — 15-Q veto table (all 14 standards covered) |
 
 ### G2·U3
 | ✓ | Standard | Skill (what school expects) | How it teaches |

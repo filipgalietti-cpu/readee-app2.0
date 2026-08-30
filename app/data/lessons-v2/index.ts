@@ -213,6 +213,10 @@ import { lookItUp, lookItUpImages } from "./look-it-up";
 
 import { sameAndOpposite, sameAndOppositeImages } from "./same-and-opposite";
 
+import { wordsInYourWorld, wordsInYourWorldImages } from "./words-in-your-world";
+
+import { rootClues, rootCluesImages } from "./root-clues";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -327,4 +331,6 @@ export const LESSONS: Record<string, LessonEntry> = {
   "word-plus-word": { lesson: wordPlusWord, images: wordPlusWordImages },
   "look-it-up": { lesson: lookItUp, images: lookItUpImages },
   "same-and-opposite": { lesson: sameAndOpposite, images: sameAndOppositeImages },
+  "words-in-your-world": { lesson: wordsInYourWorld, images: wordsInYourWorldImages },
+  "root-clues": { lesson: rootClues, images: rootCluesImages },
 };

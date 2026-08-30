@@ -116,6 +116,9 @@ import { whyAuthorsWriteQuiz } from "./why-authors-write-quiz";
 import { wordMathQuiz } from "./word-math-quiz";
 import { wordPlusWordQuiz } from "./word-plus-word-quiz";
 import { lookItUpQuiz } from "./look-it-up-quiz";
+import { sameAndOppositeQuiz } from "./same-and-opposite-quiz";
+import { wordsInYourWorldQuiz } from "./words-in-your-world-quiz";
+import { rootCluesQuiz } from "./root-clues-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -232,4 +235,7 @@ export const QUIZZES: Record<string, QuizDef> = {
   "word-math-quiz": wordMathQuiz,
   "word-plus-word-quiz": wordPlusWordQuiz,
   "look-it-up-quiz": lookItUpQuiz,
+  "same-and-opposite-quiz": sameAndOppositeQuiz,
+  "words-in-your-world-quiz": wordsInYourWorldQuiz,
+  "root-clues-quiz": rootCluesQuiz,
 };
