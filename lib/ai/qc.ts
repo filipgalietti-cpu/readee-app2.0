@@ -258,6 +258,10 @@ Severity rules:
 - warn: minor issue worth flagging — awkward phrasing, slightly off-topic, mild factual ambiguity, abrupt ending, or noticeably different from the calibration references in difficulty/scope but still usable.
 - fail: blocking issue — factually wrong if informational, scary/inappropriate content, incoherent narrative, grossly mismatched to the grade level, or fundamentally inconsistent with what the standard asks for.
 
+Fiction world-commitment check (narrative passages — always apply):
+- FAIL any story that mixes a literal fantasy world with imagination hedging: constructions like "in his mind", "in her imagination", "the box began to shake in his mind", or pretend events narrated as literal facts mid-pretend ("He took a big jump in the low gravity" while the child is only playing pretend). Fiction must commit fully to its premise.
+- FAIL dream or imagination reveal endings: waking up at the end, "it was all pretend", "it was just a dream".
+
 Reason must be a single sentence. Be specific about WHAT is wrong, not just that something is.`;
 
 const PASSAGE_JUDGE_SCHEMA = {
@@ -553,7 +557,7 @@ Check ALL of these in order. Stop at the FIRST issue you spot:
    • Bodies: limbs must be proportional. FAIL on extra limbs, missing limbs, or limbs that bend impossibly. FAIL on a head that's not connected to the body or floats.
    • Animals: same rules — count legs, check faces.
 
-2. TEXT — does the image contain ANY readable letters, numbers, words, signs, or watermarks? FAIL — passage images must be text-free. (One exception: a single number on a clock face or a jersey if it's relevant to the scene; describe in the reason.)
+2. TEXT — does the image contain ANY readable letters, numbers, words, signs, or watermarks? FAIL — passage images must be text-free. (One exception: a single number on a clock face or a jersey if it's relevant to the scene; describe in the reason.) Thought bubbles and speech bubbles — even empty ones — are text-adjacent slop: FAIL.
 
 3. SCENE FIDELITY — does the image show what the expected-scene description requested?
    • FAIL if the subject is TOTALLY UNRELATED (asked for a runner, got a fish; asked for a bunny eating an acorn, got a city skyline).

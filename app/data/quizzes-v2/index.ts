@@ -121,6 +121,7 @@ import { wordsInYourWorldQuiz } from "./words-in-your-world-quiz";
 import { rootCluesQuiz } from "./root-clues-quiz";
 import { heartWordsQuiz } from "./heart-words-quiz";
 import { readLikeYouTalkQuiz } from "./read-like-you-talk-quiz";
+import { readWithYourBrainQuiz } from "./read-with-your-brain-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -242,4 +243,5 @@ export const QUIZZES: Record<string, QuizDef> = {
   "root-clues-quiz": rootCluesQuiz,
   "heart-words-quiz": heartWordsQuiz,
   "read-like-you-talk-quiz": readLikeYouTalkQuiz,
+  "read-with-your-brain-quiz": readWithYourBrainQuiz,
 };

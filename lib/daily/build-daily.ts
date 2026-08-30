@@ -168,6 +168,246 @@ Previous attempt failed review: ${v1.reason.slice(0, 200)}. Fix that issue.`,
   return retry.imageUrl;
 }
 
+// Safety preamble for the daily question. Public-facing, mixed-age
+// K-4 audience plus parents reading along — must stay neutral and
+// kid-appropriate. Hard avoid list keeps the model from drifting
+// into edgy "on this day" picks (wars, assassinations, atrocities)
+// or political/religious controversy on themed days. Module-scoped
+// so the easy-rendition generator shares the exact same rules.
+const SAFETY_PREAMBLE = `This is a public-facing daily reading passage for K-4 students and their families.
+
+Hard child-safety rules (non-negotiable, K-4 audience):
+- No graphic violence, no weapons-as-tools-against-people, no on-page death, no abuse, no addiction, no sexual content, no self-harm, no horror imagery.
+- Tragedy is OK to acknowledge factually but never as the focus; if the day's natural anchor is a tragedy, reframe around the recovery, the helpers, or a related neutral angle (a scientific discovery, a famous birthday).
+
+Hard apolitical / non-controversial rules (Readee sells into both red and blue districts; staying neutral on culture-war topics is the product):
+- Avoid politics in any direction. No elections, no party names, no current sitting elected officials except in purely civics-procedural ways ("the president signs bills into law"). No mention of campaigns, primaries, or political commentary.
+- Avoid culture-war topics entirely: ICE / immigration enforcement, abortion, gun policy, gender identity, sexual orientation, Pride Month, transgender topics, Black Lives Matter, critical race theory, Israel/Palestine, religion-as-policy, vaccine debates, school choice, DEI debates. These topics are not appropriate here regardless of viewpoint.
+- Federally recognized heritage months ARE OK (Black History, Women's History, AAPI, Hispanic, Native American, Veterans). Pride Month and other locally-contested observances are NOT — skip them and pick a seasonal or science angle for that day.
+- "Current events" is allowed only when neutral: weather, sports, space, science discoveries, new inventions, animal news, Olympic results, kid-friendly cultural moments. Default away from politics, not toward it.
+
+Approach to real-world topics:
+- Public information, real historical figures, and real organizations are fair game when factually framed and free of partisan adjectives.
+- Pop culture, sports, scientific discoveries, animals, food, gardening, helpers (firefighters, librarians, teachers, doctors), space, music, art — encouraged.
+- Stay journalistic and concrete. Describe, don't editorialize.
+
+Copyright + trademark practical posture:
+- Nominative reference is fine: "the popular video game Minecraft", "the basketball player LeBron James", "the May 4 cultural day fans call Star Wars Day". Naming a thing in passing as part of an educational point is normal speech.
+- Avoid: extended retellings of copyrighted plots, direct quoted dialogue from copyrighted works, character voicing in fan-fiction style, branded merchandise descriptions.
+- Real public figures may be referenced for factual educational content (achievements, sports, science). Don't put words in their mouths they didn't say. Don't reference current elected officials beyond civics procedure.
+
+Religion + culture:
+- Specific religious traditions can be described informationally (what people believe, how they observe) when the day naturally calls for it. Don't proselytize. Don't compare faiths competitively. Don't link a faith to a political stance.
+- Cultural traditions, festivals, and food are fair game.
+
+Fiction framing (Aug 30 quality rule — "Pip's Space Box" class of failure):
+- COMMIT TO THE WORLD: a fiction story lives fully inside its premise (a space squirrel is really in space; a talking crayon really talks). No imagination or pretend-play framing at all — no "in his mind", no "in her imagination", no dream endings, no waking up at the end. Never hedge mid-sentence with constructions like "the box began to shake in his mind". Pretend play as a THEME is fine only if the entire story stays in the real world (a kid plays with a box in the park and it stays a box — the fun is the play, not a fantasy sequence).
+
+When in doubt, pivot to: science, animals, weather, sports, space, helpers, food, gardening, art, music, friendship, kindness.`;
+
+/** Shape stored in daily_questions.easy_variant (jsonb, nullable).
+ *  Mirrors the base columns so the reader can swap renditions 1:1. */
+export type DailyEasyVariant = {
+  passage_title: string;
+  passage_body: string;
+  audio_url: string | null;
+  question_prompt: string;
+  choices: string[];
+  correct: string;
+  hint: string | null;
+  extra_questions: {
+    prompt: string;
+    choices: string[];
+    correct: string;
+    hint: string | null;
+  }[];
+};
+
+/**
+ * K-1 "easy rendition" of an existing daily passage: same topic, same
+ * true facts (nonfiction) or story beats (fiction), told in 55-85
+ * words of short decodable sentences, with 3 K-1 MCQs and its own TTS
+ * narration. Reuses the exact generators + QC judges the base
+ * rendition uses (with a K-1 level hint).
+ *
+ * Filip's article-a-day rule applies: this must NEVER block the day.
+ * One QC failure regenerates with the judge's feedback folded in; a
+ * second failure returns null (base-only day) and logs.
+ */
+export async function generateEasyRendition(opts: {
+  teacherId: string;
+  themeLabel: string;
+  baseTitle: string;
+  baseBody: string;
+  dateStr: string;
+}): Promise<DailyEasyVariant | null> {
+  const { teacherId, baseTitle, baseBody, dateStr } = opts;
+
+  const easyBrief = [
+    SAFETY_PREAMBLE,
+    "",
+    "Below is today's Daily Readee passage, written for 2nd-4th grade readers.",
+    "Write an EASY rendition of the SAME topic for kindergarten and 1st grade readers.",
+    "",
+    "Hard rules for the easy rendition:",
+    "- 55-85 words total.",
+    "- Short decodable sentences, 8 words or fewer each.",
+    "- Simple high-frequency vocabulary a K-1 reader can decode.",
+    "- Keep the SAME topic: the same true facts if informational, the same story beats and characters if narrative. Do not invent new facts or new plot.",
+    "- You may reuse the base title if it is decodable, or write a simpler one.",
+    "",
+    `Base passage title: ${baseTitle}`,
+    "Base passage:",
+    '"""',
+    baseBody,
+    '"""',
+  ].join("\n");
+
+  let feedback = "";
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const passageRes = await generatePassage({
+      teacherId,
+      topic: feedback ? `${easyBrief}\n\n${feedback}` : easyBrief,
+      gradeLevel: "1st",
+      phonicsPattern: null,
+      lengthLevel: "short",
+      trustedSystem: true,
+    });
+    if (!passageRes.ok) {
+      feedback = `IMPORTANT — the previous attempt failed to generate. Try again, following every rule exactly.`;
+      continue;
+    }
+    const easyTitle = passageRes.passage.title;
+    const easyBody = passageRes.passage.passage;
+
+    // Deterministic gate before spending judge credits: word window
+    // (tolerance around the 55-85 spec) + sentence length.
+    const words = easyBody.split(/\s+/).filter(Boolean).length;
+    const sentences = easyBody
+      .split(/[.!?]+/)
+      .map((s) => s.split(/\s+/).filter(Boolean).length)
+      .filter((n) => n > 0);
+    const longest = sentences.length ? Math.max(...sentences) : 0;
+    if (words < 45 || words > 100 || longest > 12) {
+      feedback = `IMPORTANT — the previous attempt broke the length rules: ${words} words (need 55-85) with a ${longest}-word sentence (every sentence must be 8 words or fewer). Fix both.`;
+      continue;
+    }
+
+    // 3 MCQs at K-1 difficulty, grounded in the EASY passage so every
+    // answer is literally findable in the text the young reader saw.
+    const mcqRes = await generateMCQQuestions({
+      teacherId,
+      topic: [
+        "Generate exactly 3 multiple-choice comprehension questions for kindergarten and 1st grade readers about this passage.",
+        "One-line stems in very simple words. Short answer options (1 to 4 words each).",
+        "ALL 3 questions must be LITERAL RECALL: who, what, where, or what happened. No inference, no feelings questions, no 'why' or 'how do you know' questions.",
+        "Every correct answer must restate exact words from the passage — a child should be able to point to the sentence that says it.",
+        "",
+        "Passage:",
+        '"""',
+        easyBody,
+        '"""',
+      ].join("\n"),
+      gradeLevel: "1st",
+      count: 3,
+      trustedSystem: true,
+    });
+    if (!mcqRes.ok || mcqRes.questions.length < 3) {
+      feedback = `IMPORTANT — the previous attempt could not produce 3 valid questions. Keep the passage concrete so simple recall questions are possible.`;
+      continue;
+    }
+
+    // Same QC suite the base rendition runs (passage judge + question
+    // checks) with the K-1 level hint. No image/audio here — the day
+    // shares one image, and TTS runs only after QC passes.
+    const qc = await runFullQuizQc({
+      teacherId,
+      passageTitle: easyTitle,
+      passageBody: easyBody,
+      gradeLevel: "1st",
+      questions: mcqRes.questions.map((q) => ({
+        kind: "multiple_choice" as const,
+        prompt: q.prompt,
+        choices: q.choices,
+        correct: q.correct,
+        hint: q.hint ?? null,
+      })),
+      imageUrl: null,
+      imageScene: null,
+      audioUrl: null,
+    });
+    if (qc.overall === "fail") {
+      const reasons = (qc.checks ?? [])
+        .filter((c: any) => c.severity === "fail")
+        .map((c: any) => `${c.name}: ${c.message}`)
+        .join(" ");
+      console.warn(`[daily] easy rendition QC fail (attempt ${attempt}) ${dateStr}: ${reasons.slice(0, 200)}`);
+      feedback = `IMPORTANT — the previous attempt failed quality review: ${reasons} Rewrite the passage so it does not have these issues.`;
+      continue;
+    }
+
+    // TTS through the same path that produces the base audio_url.
+    // A TTS hiccup ships the easy text without audio rather than
+    // dropping the rendition.
+    let audioUrl: string | null = null;
+    const tts = await generateSpeech({ teacherId, text: easyBody.slice(0, 4000) });
+    if (tts.ok) audioUrl = tts.audioUrl;
+    else console.warn(`[daily] easy rendition TTS failed ${dateStr}: ${tts.error}`);
+
+    const [mainQ, ...extras] = mcqRes.questions;
+    return {
+      passage_title: easyTitle,
+      passage_body: easyBody,
+      audio_url: audioUrl,
+      question_prompt: mainQ.prompt,
+      choices: mainQ.choices,
+      correct: mainQ.correct,
+      hint: mainQ.hint ?? null,
+      extra_questions: extras.map((q) => ({
+        prompt: q.prompt,
+        choices: q.choices,
+        correct: q.correct,
+        hint: q.hint ?? null,
+      })),
+    };
+  }
+
+  trackError(new Error("easy rendition failed twice — base-only day"), {
+    route: "daily-question.easy",
+    extra: { date: dateStr },
+  });
+  return null;
+}
+
+/**
+ * Narrate a daily passage through the standard TTS + storage-upload
+ * path and return the public audio_url. For repair scripts that need
+ * to re-narrate a hand-edited passage for an existing day without
+ * duplicating the pipeline. Does not write the row — the caller
+ * decides which column (audio_url / easy_variant.audio_url) to update.
+ */
+export async function narrateDailyPassage(
+  date: Date | string,
+  text: string,
+): Promise<{ ok: true; audioUrl: string } | { ok: false; error: string }> {
+  let teacherId: string;
+  try {
+    teacherId = systemTeacherId();
+  } catch (e: any) {
+    return { ok: false, error: e.message };
+  }
+  const dateStr = typeof date === "string" ? date : slugForDate(date);
+  const tts = await generateSpeech({ teacherId, text: text.slice(0, 4000) });
+  if (!tts.ok) {
+    trackError(new Error(`narrateDailyPassage: ${tts.error}`), {
+      route: "daily-question.narrate",
+      extra: { date: dateStr },
+    });
+    return { ok: false, error: tts.error };
+  }
+  return { ok: true, audioUrl: tts.audioUrl };
+}
+
 export type DailyBuildResult =
   | { ok: true; date: string; created: boolean; qcOverall: string }
   | { ok: false; error: string; date: string };
@@ -243,39 +483,6 @@ export async function buildDailyQuestion(opts?: {
     year: "numeric",
     timeZone: "UTC",
   });
-  // Safety preamble for the daily question. Public-facing, mixed-age
-  // K-4 audience plus parents reading along — must stay neutral and
-  // kid-appropriate. Hard avoid list keeps the model from drifting
-  // into edgy "on this day" picks (wars, assassinations, atrocities)
-  // or political/religious controversy on themed days.
-  const SAFETY_PREAMBLE = `This is a public-facing daily reading passage for K-4 students and their families.
-
-Hard child-safety rules (non-negotiable, K-4 audience):
-- No graphic violence, no weapons-as-tools-against-people, no on-page death, no abuse, no addiction, no sexual content, no self-harm, no horror imagery.
-- Tragedy is OK to acknowledge factually but never as the focus; if the day's natural anchor is a tragedy, reframe around the recovery, the helpers, or a related neutral angle (a scientific discovery, a famous birthday).
-
-Hard apolitical / non-controversial rules (Readee sells into both red and blue districts; staying neutral on culture-war topics is the product):
-- Avoid politics in any direction. No elections, no party names, no current sitting elected officials except in purely civics-procedural ways ("the president signs bills into law"). No mention of campaigns, primaries, or political commentary.
-- Avoid culture-war topics entirely: ICE / immigration enforcement, abortion, gun policy, gender identity, sexual orientation, Pride Month, transgender topics, Black Lives Matter, critical race theory, Israel/Palestine, religion-as-policy, vaccine debates, school choice, DEI debates. These topics are not appropriate here regardless of viewpoint.
-- Federally recognized heritage months ARE OK (Black History, Women's History, AAPI, Hispanic, Native American, Veterans). Pride Month and other locally-contested observances are NOT — skip them and pick a seasonal or science angle for that day.
-- "Current events" is allowed only when neutral: weather, sports, space, science discoveries, new inventions, animal news, Olympic results, kid-friendly cultural moments. Default away from politics, not toward it.
-
-Approach to real-world topics:
-- Public information, real historical figures, and real organizations are fair game when factually framed and free of partisan adjectives.
-- Pop culture, sports, scientific discoveries, animals, food, gardening, helpers (firefighters, librarians, teachers, doctors), space, music, art — encouraged.
-- Stay journalistic and concrete. Describe, don't editorialize.
-
-Copyright + trademark practical posture:
-- Nominative reference is fine: "the popular video game Minecraft", "the basketball player LeBron James", "the May 4 cultural day fans call Star Wars Day". Naming a thing in passing as part of an educational point is normal speech.
-- Avoid: extended retellings of copyrighted plots, direct quoted dialogue from copyrighted works, character voicing in fan-fiction style, branded merchandise descriptions.
-- Real public figures may be referenced for factual educational content (achievements, sports, science). Don't put words in their mouths they didn't say. Don't reference current elected officials beyond civics procedure.
-
-Religion + culture:
-- Specific religious traditions can be described informationally (what people believe, how they observe) when the day naturally calls for it. Don't proselytize. Don't compare faiths competitively. Don't link a faith to a political stance.
-- Cultural traditions, festivals, and food are fair game.
-
-When in doubt, pivot to: science, animals, weather, sports, space, helpers, food, gardening, art, music, friendship, kindness.`;
-
   // Anti-repeat memory. The weekday theme prompts are generic ("an animal
   // kids might not know — e.g., axolotl, narwhal, capybara") and the model,
   // with no memory of what already ran, collapses onto the same few topics:
@@ -463,6 +670,25 @@ ${theme.topic}${avoidBlock}`;
   });
   if (ttsRes.ok) audioUrl = ttsRes.audioUrl;
 
+  // 4.5) Easy rendition (K-1) — a second, easier telling of the same
+  //      topic for young readers. Never blocks the day: any failure
+  //      stores null and the day ships base-only (article-a-day rule).
+  let easyVariant: DailyEasyVariant | null = null;
+  try {
+    easyVariant = await generateEasyRendition({
+      teacherId,
+      themeLabel: theme.label,
+      baseTitle: passageTitle,
+      baseBody: passageBody,
+      dateStr,
+    });
+  } catch (e: any) {
+    trackError(e, { route: "daily-question.easy", extra: { date: dateStr } });
+  }
+  if (!easyVariant) {
+    console.warn(`[daily] easy rendition unavailable for ${dateStr} — base-only day`);
+  }
+
   // 5) QC the whole thing — passage + questions + image + audio.
   const qc = await runFullQuizQc({
     teacherId,
@@ -508,6 +734,7 @@ ${theme.topic}${avoidBlock}`;
       correct: mainQ.correct,
       hint: mainQ.hint ?? null,
       extra_questions: extras.length > 0 ? extras : null,
+      easy_variant: easyVariant,
       qc_overall: qc.overall,
       qc_report: qc,
       // Phase 4 pre-publish gate: fails are hidden by default.
@@ -821,6 +1048,22 @@ export async function targetedPassageRegen(opts: {
   }
   const [main, ...extras] = mcqRes.questions;
 
+  // The easy rendition mirrors the base passage — a healed base can
+  // change subject entirely, so regenerate the K-1 rendition from the
+  // new body. Failure stores null (base-only day), never blocks the heal.
+  let newEasy: DailyEasyVariant | null = null;
+  try {
+    newEasy = await generateEasyRendition({
+      teacherId,
+      themeLabel: theme,
+      baseTitle: newTitle,
+      baseBody: newBody,
+      dateStr,
+    });
+  } catch (e: any) {
+    trackError(e, { route: "daily-question.easy.heal", extra: { date: dateStr } });
+  }
+
   // Re-derive the image scene from the NEW passage so the post-heal
   // QC actually judges the (reused) image against the (rewritten)
   // text. Previously we passed imageScene: null which silently
@@ -879,6 +1122,7 @@ export async function targetedPassageRegen(opts: {
       correct: main.correct,
       hint: main.hint ?? null,
       extra_questions: extras.length > 0 ? extras : null,
+      easy_variant: newEasy,
       qc_overall: qc.overall,
       qc_report: { ...qc, healedFrom: passageFailReasons.map((c) => c.name) },
       published_state: decidePublishState(qc),

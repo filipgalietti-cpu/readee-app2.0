@@ -15,8 +15,9 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import type { WarmupDef } from "@/lib/warmup-engine/types";
+import { Carrot } from "lucide-react";
+import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 
 type Screen = "start" | "intro" | "ready" | "play" | "end";
 export type WarmupSkin = "carrot" | "sky";
@@ -51,12 +52,15 @@ export default function WarmupArcade({
   warmup,
   skin = "carrot",
   lessonTitle,
+  outfitId = null,
   onComplete,
 }: {
   warmup: WarmupDef;
   skin?: WarmupSkin;
   /** Shown in the "Warming up for …" chip. Falls back to the lesson id. */
   lessonTitle?: string;
+  /** The child's bunny outfit — journey wiring passes the reader's own. */
+  outfitId?: string | null;
   onComplete?: () => void;
 }) {
   const [screen, setScreen] = useState<Screen>("start");
@@ -481,7 +485,7 @@ export default function WarmupArcade({
   return (
     <main
       ref={stageRef}
-      className="relative h-[100dvh] w-full select-none overflow-hidden"
+      className="fixed inset-0 z-50 select-none overflow-hidden"
       style={{ background: "#312e81", touchAction: "manipulation" }}
     >
       {/* ---------- backdrop ---------- */}
@@ -569,7 +573,9 @@ export default function WarmupArcade({
           </h1>
           <div className="flex items-end gap-6">
             <PeekCarrot delay={0} />
-            <Image src="/images/bunny-hero.png" alt="" width={230} height={250} priority className="w-36 drop-shadow-xl sm:w-56" />
+            <div className="pointer-events-none h-44 w-40 sm:h-60 sm:w-56" style={{ animation: "wuSway 3.4s ease-in-out infinite" }}>
+              <Bunny outfitId={outfitId} />
+            </div>
             <PeekCarrot delay={1.8} />
           </div>
           <div className="rounded-3xl bg-white px-7 py-4 font-display text-xl font-bold text-zinc-900 shadow-lg">
@@ -594,14 +600,17 @@ export default function WarmupArcade({
         <div className="absolute inset-0 z-[46] overflow-hidden" style={{ background: "linear-gradient(160deg,#ffe8ed 0%,#ffffff 40%,#f0e8ff 80%,#e0ecff 100%)" }}>
           <div ref={confettiRef} className="pointer-events-none absolute inset-0" />
           <div className="absolute inset-0 flex flex-wrap content-center items-center justify-center gap-4 p-6 sm:gap-12 sm:p-10">
-            <Image src="/images/bunny-hero.png" alt="" width={250} height={270} className="w-36 drop-shadow-xl sm:w-60" style={{ animation: "wuFadeUp .5s ease both" }} />
+            <div className="pointer-events-none h-48 w-44 sm:h-72 sm:w-64" style={{ animation: "wuFadeUp .5s ease both" }}>
+              <BunnyReaction outfitId={outfitId} state="levelup" />
+            </div>
             <div className="flex max-w-lg flex-col items-center gap-3 text-center sm:gap-4">
+              <CelebrationBasket />
               <h2 className="font-display text-4xl font-extrabold leading-tight sm:text-6xl" style={{ background: "linear-gradient(90deg,#4338ca,#7c3aed)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", animation: "wuFadeUp .5s .14s ease both" }}>
                 You caught {score}!
               </h2>
               <p className="text-lg font-bold text-zinc-600" style={{ animation: "wuFadeUp .5s .2s ease both" }}>{bestLine}</p>
-              <p className="rounded-full bg-orange-100 px-4 py-2 text-sm font-extrabold text-orange-600" style={{ animation: "wuFadeUp .5s .23s ease both" }}>
-                +{warmup.carrots} carrots
+              <p className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-4 py-2 text-sm font-extrabold text-orange-600" style={{ animation: "wuFadeUp .5s .23s ease both" }}>
+                <Carrot className="h-4 w-4" />+{Math.max(1, Math.min(score, 15))} carrots
               </p>
               <div className="flex items-center gap-6" style={{ animation: "wuFadeUp .5s .26s ease both" }}>
                 <button type="button" onClick={onLesson} className="rounded-full bg-indigo-700 px-8 py-3.5 text-lg font-bold text-white shadow-xl transition hover:-translate-y-0.5 hover:bg-indigo-900 active:scale-[0.96] sm:px-11 sm:py-4 sm:text-xl">
@@ -634,6 +643,26 @@ function PeekCarrot({ delay }: { delay: number }) {
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 h-[30px] rounded-full" style={{ background: "radial-gradient(ellipse at 50% 30%,#ab7350,#7a4b26 72%)", clipPath: "inset(55% 0 0 0)" }} />
+    </div>
+  );
+}
+
+/** The harvest basket from the Claude Design round: woven basket with three
+ *  carrots poking out — the celebration's visual payoff. */
+function CelebrationBasket() {
+  const carrot = (
+    <svg width="44" height="56" viewBox="0 0 104 132">
+      <ellipse cx="52" cy="14" rx="10" ry="19" fill="#4ade80" />
+      <path d="M22 36 Q52 24 82 36 Q88 46 80 66 Q68 104 57 124 Q52 132 47 124 Q36 104 24 66 Q16 46 22 36 Z" fill="#fb923c" stroke="#c2410c" strokeWidth="6" />
+    </svg>
+  );
+  return (
+    <div className="relative h-[110px] w-[170px]" style={{ animation: "wuFadeUp .5s .08s ease both" }}>
+      <div className="absolute" style={{ left: 16, top: -14, transform: "rotate(-14deg)" }}>{carrot}</div>
+      <div className="absolute" style={{ left: 62, top: -24, transform: "scale(1.15)" }}>{carrot}</div>
+      <div className="absolute" style={{ left: 112, top: -12, transform: "rotate(15deg)" }}>{carrot}</div>
+      <div className="absolute inset-x-2 bottom-0 top-[36px] rounded-b-[38px] rounded-t-2xl border-4" style={{ background: "repeating-linear-gradient(105deg,#d4a373 0 12px,#c08d5a 12px 24px),linear-gradient(180deg,#d4a373,#a16207)", borderColor: "#854d0e", boxShadow: "inset 0 -12px 0 rgba(0,0,0,.16)" }} />
+      <div className="absolute inset-x-0 top-[26px] h-[22px] rounded-xl" style={{ background: "#854d0e", boxShadow: "0 4px 0 rgba(0,0,0,.15)" }} />
     </div>
   );
 }

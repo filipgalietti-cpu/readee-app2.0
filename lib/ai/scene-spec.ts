@@ -184,6 +184,7 @@ export function renderSpecAsBrief(spec: SceneSpec): string {
 
   const hardRules = [
     "No text, letters, words, or numbers anywhere in the image.",
+    "No thought bubbles or speech bubbles.",
     "No decorative frames or borders.",
   ];
   if (spec.genre === "nonfiction") {

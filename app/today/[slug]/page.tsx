@@ -2,15 +2,27 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
-import { Sparkles, ArrowLeft, BookOpen } from "lucide-react";
-import TodayQuestionPlayer from "./_components/TodayQuestionPlayer";
-import ReadAloudButton from "./_components/ReadAloudButton";
+import { ArrowLeft } from "lucide-react";
+import DailyReader, { type DailyRendition } from "./_components/DailyReader";
 import AssignDailyButton from "./_components/AssignDailyButton";
 
 // Static daily content — half-hour revalidate. (No `force-dynamic`: it
 // overrode this and re-queried the DB on every navigation, which is what
 // made switching pages laggy.)
 export const revalidate = 1800;
+
+type RawQ = { prompt: string; choices: string[]; correct: string; hint?: string | null };
+
+type EasyVariant = {
+  passage_title: string;
+  passage_body: string;
+  audio_url: string | null;
+  question_prompt: string;
+  choices: string[];
+  correct: string;
+  hint: string | null;
+  extra_questions: RawQ[] | null;
+};
 
 type Daily = {
   date: string;
@@ -25,6 +37,7 @@ type Daily = {
   correct: string;
   hint: string | null;
   extra_questions: any;
+  easy_variant: EasyVariant | null;
 };
 
 // One fetch per request — React cache() dedupes the generateMetadata read
@@ -34,7 +47,7 @@ const getDaily = cache(async (slug: string): Promise<Daily | null> => {
   const { data } = await supabase
     .from("daily_questions")
     .select(
-      "date, theme, slug, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions",
+      "date, theme, slug, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions, easy_variant",
     )
     .eq("slug", slug)
     .maybeSingle();
@@ -62,6 +75,19 @@ export async function generateMetadata({
   };
 }
 
+// Reading levels / grades that default to the K-1 "Short read".
+// children.reading_level is placement-owned and holds either an
+// assessment band name or a grade key; grade is the fallback when
+// placement hasn't run yet.
+const EARLY_READING_LEVELS = new Set([
+  "Emerging Reader",
+  "Beginning Reader",
+  "kindergarten",
+  "K",
+  "1st",
+]);
+const EARLY_GRADES = new Set(["Pre-K", "kindergarten", "K", "1st"]);
+
 export default async function TodayDetailPage({
   params,
 }: {
@@ -78,16 +104,63 @@ export default async function TodayDetailPage({
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/signup");
-  const questions = [
-    { prompt: d.question_prompt, choices: d.choices, correct: d.correct, hint: d.hint },
-    ...extras.map((q: { prompt: string; choices: string[]; correct: string; hint?: string | null }) => ({
-      prompt: q.prompt,
-      choices: q.choices,
-      correct: q.correct,
-      hint: q.hint ?? null,
-    })),
-  ];
-  const wordCount = d.passage_body.split(/\s+/).filter(Boolean).length;
+
+  const toQ = (q: RawQ) => ({
+    prompt: q.prompt,
+    choices: q.choices,
+    correct: q.correct,
+    hint: q.hint ?? null,
+  });
+
+  const full: DailyRendition = {
+    title: d.passage_title,
+    body: d.passage_body,
+    audioUrl: d.audio_url,
+    questions: [
+      { prompt: d.question_prompt, choices: d.choices, correct: d.correct, hint: d.hint },
+      ...extras.map(toQ),
+    ],
+  };
+
+  const ev = d.easy_variant;
+  const easy: DailyRendition | null =
+    ev && ev.passage_body && ev.question_prompt
+      ? {
+          title: ev.passage_title || d.passage_title,
+          body: ev.passage_body,
+          audioUrl: ev.audio_url ?? null,
+          questions: [
+            { prompt: ev.question_prompt, choices: ev.choices, correct: ev.correct, hint: ev.hint ?? null },
+            ...(Array.isArray(ev.extra_questions) ? ev.extra_questions.map(toQ) : []),
+          ],
+        }
+      : null;
+
+  // Default level: a child placed at K or 1st grade starts on the short
+  // read; everyone else (and families without a reading level yet whose
+  // child is in 2nd grade or above) starts on the full read. The toggle
+  // always lets them switch. (B2C: the parent's first child.)
+  let defaultLevel: "easy" | "full" = "full";
+  if (easy) {
+    const { data: kid } = await supabase
+      .from("children")
+      .select("reading_level, grade")
+      .eq("parent_id", user.id)
+      .order("created_at", { ascending: true })
+      .limit(1)
+      .maybeSingle();
+    const readingLevel = (kid as { reading_level: string | null } | null)?.reading_level ?? null;
+    const grade = (kid as { grade: string | null } | null)?.grade ?? null;
+    if (readingLevel ? EARLY_READING_LEVELS.has(readingLevel) : grade ? EARLY_GRADES.has(grade) : false) {
+      defaultLevel = "easy";
+    }
+  }
+
+  const dateLabel = new Date(d.date + "T00:00:00").toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
   return (
     <article className="min-h-screen bg-white">
@@ -106,58 +179,15 @@ export default async function TodayDetailPage({
       </div>
 
       <div className="mx-auto max-w-[1120px] px-6 py-8 pb-16">
-        <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
-          {/* LEFT — the reading */}
-          <div className="min-w-0">
-            <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700">
-              <Sparkles className="h-3 w-3" />
-              {d.theme} ·{" "}
-              {new Date(d.date + "T00:00:00").toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </div>
-
-            <h1 className="mt-2 font-display text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 sm:text-[38px]">
-              {d.passage_title}
-            </h1>
-
-            {d.image_url && (
-              <div className="mt-5 flex justify-center">
-                {/* Square (1024²) illustrations — contain, not cover, so the
-                    picture is never cropped. Border hugs the image itself. */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={d.image_url}
-                  alt=""
-                  className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm"
-                />
-              </div>
-            )}
-
-            <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
-              <BookOpen className="h-3.5 w-3.5" />
-              {wordCount} words · {Math.max(1, Math.round(wordCount / 150))} min read
-              <ReadAloudButton audioUrl={d.audio_url} />
-            </div>
-
-            <div
-              className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900"
-              style={{
-                fontFamily:
-                  'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
-              }}
-            >
-              {d.passage_body}
-            </div>
-          </div>
-
-          {/* RIGHT — the quiz (sticky on desktop, aligned with the illustration) */}
-          <div className="lg:sticky lg:top-[76px] lg:mt-[88px]">
-            <TodayQuestionPlayer date={d.date} questions={questions} />
-          </div>
-        </div>
+        <DailyReader
+          theme={d.theme}
+          dateLabel={dateLabel}
+          date={d.date}
+          imageUrl={d.image_url}
+          full={full}
+          easy={easy}
+          defaultLevel={defaultLevel}
+        />
 
         {/* Teacher CTA — only renders when authed as a teacher with a classroom. */}
         <div className="mt-10 flex justify-center">

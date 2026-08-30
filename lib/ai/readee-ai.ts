@@ -448,6 +448,7 @@ TOPIC HANDLING (critical for young readers):
 
 STYLE:
 - Simple characters, clear setting, a small problem, a small resolution. No fantasy jargon or historical-era vocabulary. No proper nouns harder than the passage's grade band.
+- COMMIT TO THE WORLD (fiction): a fiction story lives fully inside its premise — a space squirrel is really in space, a talking crayon really talks. NO imagination or pretend-play framing: no "in his mind", no "in her imagination", no dream endings, no waking up at the end, no reveal that it was all pretend. Never hedge mid-sentence with constructions like "the box began to shake in his mind". Pretend play as a THEME is fine only if the entire story stays in the real world (a kid plays with a box in the park and it stays a box — the fun is the play, not a fantasy sequence).
 - Always a single space after every comma, period, question mark, and exclamation point.
 - For prose, separate paragraphs with a blank line. For poems, every line on its own line via \\n.
 
@@ -992,7 +993,7 @@ Rules:
 - Forbidden: invented hybrids. Every animal must be a clearly recognizable real-world species.
 - Use kid-friendly, school-appropriate visuals. No weapons, no violence, no scary creatures, no romantic content.
 - Do NOT include style words ("cartoon", "illustration", "vibrant") — that is set elsewhere. Describe the scene.
-- Do NOT include any text that would appear in the image (no signs, no captions).
+- Do NOT include any text that would appear in the image (no signs, no captions). No thought bubbles or speech bubbles.
 - Pick the most evocative single moment from the passage — not a montage.`;
 
 export async function generateImageBrief(input: {

@@ -22,7 +22,7 @@ export const soundSwitchHunt: WarmupDef = {
   waves: [
     {
       tiles: [
-        { word: "cow", isMatch: true },
+        { word: "gown", isMatch: true },
         { word: "snow", isMatch: false },
         { word: "now", isMatch: true },
         { word: "grow", isMatch: false },

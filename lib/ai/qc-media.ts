@@ -95,6 +95,7 @@ FAIL for the genuine Imagen failures the kid WILL notice:
 - Broken / garbled letters in signage
 - Completely incoherent scene that doesn't depict anything specific
 - ANY rendered text, words, letters, or numbers baked into the art (labels, captions, book titles, jar labels, floating words) — signage in a scene is the ONLY exception, and it must be legible and correct
+- THOUGHT BUBBLES / SPEECH BUBBLES: FAIL any thought bubble or speech bubble, even an empty one — they are rendered-text-adjacent slop and never belong in passage art
 - COUNTABLE-FEATURE MISMATCH: if the passage or expected scene states a count (eight arms, six legs, three eggs), COUNT them in the image; a mismatch a kid could count is a FAIL
 - FACTUAL-CONTENT ANTHROPOMORPHISM: if the passage is informational/nonfiction about real animals or things, FAIL clothes on animals, animals waving or posing like humans, and smiley faces drawn on inanimate objects (suns, vehicles, food, moons). In FICTION these are fine house-style choices — judge by the passage's genre
 - TIME-OF-DAY / SETTING CONTRADICTION: image shows bright daytime for a passage explicitly about night (or vice versa), or a setting that contradicts a stated one
