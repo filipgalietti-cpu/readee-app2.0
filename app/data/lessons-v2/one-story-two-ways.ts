@@ -156,7 +156,7 @@ export const oneStoryTwoWays: LessonDef = {
       purpose: "challenge",
       gate: "interaction",
       prompt: "Two more tellings. What stayed the same?",
-      narration: { audio: A("challenge-two-more-tellings"), script: "One last challenge, and this one is only for your ears, so listen closely. Here are two tellings of another traveling story. In the first telling, a grandpa plants a giant turnip in his garden, and his whole family pulls together until it pops out. In the second telling, a grandma plants a giant carrot in her field, and all her neighbors pull together until it pops out. What stayed the same in both tellings? Tap it." },
+      narration: { audio: A("challenge-two-more-tellings"), script: "One last challenge, and this one is only for your ears, so listen closely. Here are two tellings of another traveling story. In the first telling, a grandpa plants a giant turnip in his garden, and his whole family pulls together until it pops out. In the second telling, a grandma plants a giant carrot in her field, and all her neighbors pull together until it pops out. What stayed the same in both tellings? Tap your answer." },
       interaction: { type: "choose", options: [{ id: "everyone-pulls-together", label: "everyone pulls together" }, { id: "a-giant-turnip-grows", label: "a giant turnip grows" }, { id: "a-grandma-plants-it", label: "a grandma plants it" }, { id: "it-grows-in-a-garden", label: "it grows in a garden" }], correctId: "everyone-pulls-together", coachWrong: "Careful: the turnip, the grandma, and the garden each belong to just one telling. Listen for the part both tellings kept." },
     },
     {

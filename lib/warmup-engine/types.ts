@@ -24,6 +24,8 @@ export type WarmupTile = {
   word: string;
   /** True if tapping this tile scores a point. */
   isMatch: boolean;
+  /** Optional call-out played on catch ("Thunder!") — reinforces the word. */
+  audio?: string;
 };
 
 export type WarmupWave = {

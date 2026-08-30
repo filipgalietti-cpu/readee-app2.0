@@ -44,6 +44,7 @@ type Live = {
   inner?: HTMLDivElement;
   word: string;
   correct: boolean;
+  audio?: string;
   col?: { l: string; d: string };
   fall?: Animation;
   duckT?: ReturnType<typeof setTimeout>;
@@ -250,6 +251,9 @@ export default function WarmupArcade({
     if (e.duckT) clearTimeout(e.duckT);
     e.fall?.pause();
     sCorrect();
+    // Say the caught word ("Thunder!") — pre-teaching through the ears too.
+    const tileAudio = warmup.waves.flatMap((w) => w.tiles).find((t) => t.word === e.word)?.audio;
+    if (tileAudio) say(tileAudio);
     const stage = stageRef.current!, basket = basketRef.current;
     const r = e.el.getBoundingClientRect(), pr = stage.getBoundingClientRect();
     const cx = r.left + r.width / 2 - pr.left, cy = r.top + r.height / 2 - pr.top;
