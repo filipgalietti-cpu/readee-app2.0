@@ -94,6 +94,7 @@ export default function WarmupArcade({
   const callIdx = useRef(0);
   const scoreRef = useRef(0);
   const tapLockUntil = useRef(0);
+  const greetingRetry = useRef<(() => void) | null>(null);
   const ac = useRef<AudioContext | null>(null);
   const voice = useRef<HTMLAudioElement | null>(null);
   const rm = useRef(false);
@@ -142,7 +143,9 @@ export default function WarmupArcade({
       voice.current = a;
       a.play().catch(() => {
         // Autoplay blocked on a cold load: retry on the first tap anywhere.
-        const retry = () => { a.play().catch(() => {}); };
+        // say() cancels this if another clip starts first (no overlap).
+        const retry = () => { a.play().catch(() => {}); greetingRetry.current = null; };
+        greetingRetry.current = retry;
         window.addEventListener("pointerdown", retry, { once: true });
       });
     };
@@ -158,6 +161,7 @@ export default function WarmupArcade({
 
   // ---- audio: Autonoe voice clips + WebAudio chimes (C-major family) ----
   const say = useCallback((src: string, onEnd?: () => void) => {
+    if (greetingRetry.current) { window.removeEventListener("pointerdown", greetingRetry.current); greetingRetry.current = null; }
     if (voice.current) voice.current.pause();
     const a = new Audio(src);
     voice.current = a;
@@ -621,11 +625,11 @@ export default function WarmupArcade({
             {warmup.title}
           </h1>
           <div className="flex items-end gap-6">
-            <PeekCarrot delay={0} />
+            {isCarrot ? <PeekCarrot delay={0} /> : <BobBalloon color="#8b5cf6" light="#c4b5fd" delay={0} />}
             <div className="wu-fast-wave pointer-events-none h-44 w-40 sm:h-60 sm:w-56">
               <BunnyReaction outfitId={outfitId} state="wave" />
             </div>
-            <PeekCarrot delay={1.8} />
+            {isCarrot ? <PeekCarrot delay={1.8} /> : <BobBalloon color="#f43f5e" light="#fda4af" delay={1.4} />}
           </div>
           <div className="rounded-3xl bg-white px-7 py-4 font-display text-xl font-bold text-zinc-900 shadow-lg">
             {warmup.playPrompt}
@@ -714,6 +718,20 @@ function CelebrationBasket() {
       <div className="absolute" style={{ left: 112, top: -12, transform: "rotate(15deg)" }}>{carrot}</div>
       <div className="absolute inset-x-2 bottom-0 top-[36px] rounded-b-[38px] rounded-t-2xl border-4" style={{ background: "repeating-linear-gradient(105deg,#d4a373 0 12px,#c08d5a 12px 24px),linear-gradient(180deg,#d4a373,#a16207)", borderColor: "#854d0e", boxShadow: "inset 0 -12px 0 rgba(0,0,0,.16)" }} />
       <div className="absolute inset-x-0 top-[26px] h-[22px] rounded-xl" style={{ background: "#854d0e", boxShadow: "0 4px 0 rgba(0,0,0,.15)" }} />
+    </div>
+  );
+}
+
+/** Sky Catch start-screen flanker: a balloon bobbing on its string, ported
+ *  from the Claude Design round. */
+function BobBalloon({ color, light, delay }: { color: string; light: string; delay: number }) {
+  return (
+    <div className="relative hidden h-36 w-24 sm:block" style={{ animation: `wuSway 3.4s ease-in-out ${delay}s infinite` }}>
+      <div className="absolute left-2 top-0 h-[92px] w-[78px]" style={{ borderRadius: "50% 50% 50% 50%/55% 55% 45% 45%", background: `radial-gradient(circle at 32% 26%, ${light}, ${color} 78%)`, boxShadow: "inset -6px -9px 0 rgba(0,0,0,.12)" }} />
+      <div className="absolute left-[42px] top-[89px] h-[10px] w-3" style={{ background: color, clipPath: "polygon(50% 0,0 100%,100% 100%)" }} />
+      <svg className="absolute left-1 top-[98px]" width="88" height="46" viewBox="0 0 88 54">
+        <path d="M44 0 Q52 18 42 30 Q34 42 46 54" fill="none" stroke="#64748b" strokeWidth="2.5" strokeLinecap="round" />
+      </svg>
     </div>
   );
 }
