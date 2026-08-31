@@ -19,6 +19,16 @@ interface Notification {
   created_at: string;
 }
 
+// Where tapping a notification takes the kid, by type.
+const NOTIF_HREF: Record<string, string> = {
+  daily: "/daily",
+  lesson: "/journey",
+  streak: "/journey",
+  achievement: "/journey",
+  system: "/dashboard",
+  info: "/dashboard",
+};
+
 export default function NavAuth() {
   const pathname = usePathname();
   const router = useRouter();
@@ -314,7 +324,11 @@ export default function NavAuth() {
                         notifications.map((n) => (
                           <button
                             key={n.id}
-                            onClick={() => !n.read && markAsRead(n.id)}
+                            onClick={() => {
+                              if (!n.read) markAsRead(n.id);
+                              setNotifOpen(false);
+                              router.push(NOTIF_HREF[n.type] ?? "/dashboard");
+                            }}
                             className={`w-full text-left px-4 py-3 border-b border-zinc-50 last:border-0 hover:bg-zinc-50 transition-colors ${
                               n.read ? "opacity-60" : ""
                             }`}
