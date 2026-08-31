@@ -472,6 +472,8 @@ function ShopContent({
   // A won wearable can be equipped straight from the reveal (outfits play the
   // swap ceremony via handleEquip). Null for carrots/jackpot/multiplier wins.
   const wonItem = revealing && reward?.type === "item" ? reward.item : null;
+  // Only outfits are "worn" (and play the swap); backgrounds/avatars/emotes are "used".
+  const equipLabel = wonItem?.category === "outfits" ? "Wear it now" : "Use it now";
 
   return (
     <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto bg-white lg:left-[272px]">
@@ -608,7 +610,7 @@ function ShopContent({
                     boxShadow: "0 12px 26px -14px rgba(249,115,22,.95)",
                   }}
                 >
-                  <PartyPopper size={19} strokeWidth={2.2} /> Wear it now
+                  <PartyPopper size={19} strokeWidth={2.2} /> {equipLabel}
                 </button>
               )}
 
