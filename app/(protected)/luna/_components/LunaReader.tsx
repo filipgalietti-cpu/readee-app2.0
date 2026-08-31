@@ -1595,7 +1595,7 @@ export default function LunaReader({
                 Sits out the pill intro so it can't crowd the topic picker — it
                 joins the moment the story starts to build. */}
             {phase !== "intro" && (
-              <div style={{ position: "absolute", right: 0, bottom: -4, width: 100, height: 112, pointerEvents: "none" }}>
+              <div style={{ position: "absolute", right: -24, bottom: -4, width: 100, height: 112, pointerEvents: "none" }}>
                 {bunnyRx
                   ? <BunnyReaction outfitId={childOutfitId ?? "classic"} state={bunnyRx} />
                   : <Bunny outfitId={childOutfitId ?? "classic"} />}
