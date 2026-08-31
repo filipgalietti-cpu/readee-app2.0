@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Volume2, Check, X as XIcon, ThumbsUp, ThumbsDown, Star, Carrot } from "lucide-react";
+import { Check, X as XIcon, ThumbsUp, ThumbsDown, Star, Carrot } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 
@@ -56,16 +56,6 @@ export default function TodayQuestionPlayer({
   const total = qs.length;
   const revealed = picked != null;
   const isLast = qi === total - 1;
-
-  function speakQuestion() {
-    try {
-      speechSynthesis.cancel();
-      const text = q.prompt.replace(/\*\*/g, "") + ". " + q.choices.map((c, i) => LETTERS[i] + ". " + c.replace(/\*\*/g, "")).join(". ");
-      const u = new SpeechSynthesisUtterance(text);
-      u.rate = 0.92;
-      speechSynthesis.speak(u);
-    } catch { /* speech not available */ }
-  }
 
   // Pick locks the answer + reveals feedback immediately (Readee's
   // green/red pedagogy). Records the result for the finish review.
@@ -156,11 +146,8 @@ export default function TodayQuestionPlayer({
 
   return (
     <div className={CARD}>
-      <div className="flex items-center justify-between">
+      <div>
         <span className="text-[10px] font-extrabold uppercase tracking-widest text-zinc-400">{qLabel}</span>
-        <button type="button" onClick={speakQuestion} title="Read the question aloud" className="grid h-8 w-8 place-items-center rounded-full border border-zinc-200 bg-white text-violet-700 transition hover:bg-violet-50">
-          <Volume2 className="h-[15px] w-[15px]" />
-        </button>
       </div>
       <div className="mt-1.5 text-[17px] font-bold leading-snug text-zinc-900">{q.prompt.replace(/\*\*/g, "")}</div>
 
