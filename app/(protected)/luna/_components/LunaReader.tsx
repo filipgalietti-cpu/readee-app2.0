@@ -288,7 +288,7 @@ export default function LunaReader({
     armTimerRef.current = window.setTimeout(() => {
       armTimerRef.current = null;
       if (sessionTokenRef.current !== tok) return;
-      if (phaseRef.current !== "drill" || modeRef.current !== "idle") return;
+      if ((phaseRef.current !== "drill" && phaseRef.current !== "overall2") || modeRef.current !== "idle") return;
       if (streamActiveRef.current || readModeRef.current !== "idle") return;
       void beginRead();
     }, delayMs);
@@ -1089,7 +1089,10 @@ export default function LunaReader({
       });
   }
   function wholeFeedbackAfter() {
-    playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
+    // The final whole-story read is done and graded (afterGrade + `after` set by
+    // the overall2 routing). Hand straight to the recap, which celebrates, gives
+    // the "practice these words" coaching, and shows the results.
+    playRecap();
   }
   function sentenceFeedback(g: Grade, curIdx: number, curAttempt: number) {
     // SUBSTITUTIONS are the only words we KNOW the child misread (said "dig"
@@ -1220,11 +1223,27 @@ export default function LunaReader({
     setLastHeard(null);
     const next = idxRef.current + 1;
     if (next >= sentences.length) {
-      playRecap();
+      beginFinalRead();
     } else {
       setIdx(next); setMode("idle"); setCaption("Nice! Read the next line.");
       armRead(900); // hands-free next line
     }
+  }
+
+  // Repeated reading — the tutor's closing move. After drilling every line, the
+  // child reads the WHOLE story through once: fluency consolidation, a clean
+  // connected WCPM for the report, and the "I read it all by myself!" beat. This
+  // isn't the intimidating COLD baseline (that's why we skip overall1) — every
+  // line was just scaffolded, so this is the victory lap. On completion the
+  // overall2 grade routes to wholeFeedbackAfter → playRecap → results.
+  function beginFinalRead() {
+    setLastHeard(null);
+    wordStateRef.current = words.map(() => "pending");
+    styleWords();
+    setPhase("overall2"); setIdx(0); setAttempt(0);
+    setMode("speaking");
+    setCaption(`Now put it all together, ${name} - read me the whole story!`);
+    playCached(`transition-final-${1 + rand(TRANSITION_COUNT)}`, () => { setMode("idle"); armRead(700); });
   }
 
   // End recap: play the personalized intro + each background-generated custom
@@ -1233,17 +1252,22 @@ export default function LunaReader({
   // stops if the kid left / restarted. Then the results screen.
   function playRecap() {
     const tok = sessionTokenRef.current;
-    // Session grade from the per-sentence drills (no more whole-story read).
-    statsRef.current.afterGrade = {
-      wordAnnotations: statsRef.current.anns,
-      wordsCorrect: statsRef.current.wc,
-      wordsTotal: statsRef.current.wt,
-      durationSeconds: statsRef.current.dur,
-      disfluent: false,
-      heardTranscript: "",
-      prosody: undefined,
-    };
-    setAfter(toScore(statsRef.current.afterGrade, statsRef.current.dur || 1));
+    // Normally the final whole-story read set afterGrade + the `after` score
+    // (real connected WCPM). Only if that read didn't produce a grade (fallback)
+    // do we synthesize the session grade from the per-line drills so the report
+    // still has numbers.
+    if (!statsRef.current.afterGrade) {
+      statsRef.current.afterGrade = {
+        wordAnnotations: statsRef.current.anns,
+        wordsCorrect: statsRef.current.wc,
+        wordsTotal: statsRef.current.wt,
+        durationSeconds: statsRef.current.dur,
+        disfluent: false,
+        heardTranscript: "",
+        prosody: undefined,
+      };
+      setAfter(toScore(statsRef.current.afterGrade, statsRef.current.dur || 1));
+    }
     setMode("speaking");
     celebrate(true);
     bunnyReact("levelup"); // the dance — finish-line celebration
@@ -1713,6 +1737,11 @@ export default function LunaReader({
                 <div style={{ marginTop: 2, fontSize: 14, color: "#71717a" }}>
                   You read {okCount} of {total} lines perfectly · <b style={{ color: "#6d28d9" }}>{pct}%</b> of words right
                 </div>
+                {after && after.wcpm > 0 && (
+                  <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, background: "#eef2ff", color: "#4338ca", padding: "6px 16px", fontSize: 13.5, fontWeight: 800, fontVariantNumeric: "tabular-nums" }}>
+                    You read the whole story · {Math.round(after.wcpm)} words a minute
+                  </div>
+                )}
                 <div style={{ marginTop: 14, width: "100%", display: "flex", flexDirection: "column", gap: 6, textAlign: "left" }}>
                   {lines.map((l, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, borderRadius: 10, padding: "8px 10px", background: l.ok ? "#ecfdf5" : "#fef2f2" }}>
