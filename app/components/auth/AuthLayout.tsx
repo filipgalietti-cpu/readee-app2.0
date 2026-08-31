@@ -72,7 +72,7 @@ export default function AuthLayout({
           alt="Readee bunny reading"
           width={240}
           height={240}
-          className="relative w-60 h-60 object-cover rounded-full border-[6px] border-indigo-800 shadow-[0_20px_50px_-15px_rgba(49,46,129,0.4)]"
+          className="relative h-64 w-64 object-contain drop-shadow-[0_24px_40px_rgba(49,46,129,0.35)]"
         />
         <div className="relative mt-7 text-center font-[family-name:var(--font-baloo)] font-extrabold text-[28px] text-indigo-950">
           Unlock the Joy of Reading
