@@ -636,6 +636,16 @@ function PracticeSession({
   const nextQuestion = usePracticeStore((s) => s.nextQuestion);
   const resetStore = usePracticeStore((s) => s.reset);
 
+  // Mystery-box 2x is single-use per session. Freeze the finalized carrots the
+  // first time we hit the completion screen so the celebration number can't
+  // change under the kid, and remember once we've paid out the boost so
+  // tapping "Play again" (resetStore) can't re-apply the 2x on a replay.
+  const frozenCarrotsRef = useRef<ReturnType<typeof finalizeSessionCarrots> | null>(null);
+  const boostConsumedRef = useRef(false);
+  useEffect(() => {
+    if (phase !== "complete") frozenCarrotsRef.current = null;
+  }, [phase]);
+
   const [saving, setSaving] = useState(false);
   const [audioReady, setAudioReady] = useState(false);
   const [carrotFlash, setCarrotFlash] = useState(false);
@@ -1118,8 +1128,15 @@ function PracticeSession({
 
   if (phase === "complete") {
     const correctCount = answers.filter((a) => a.correct).length;
-    // Apply the flat mystery-box powerup once, to the session total.
-    const carrots = finalizeSessionCarrots(sessionCarrots, child);
+    // Apply the flat mystery-box powerup once, to the session total. Freeze it
+    // so the number is stable, and once the boost has been paid out a replay
+    // ("Play again") settles the total with no boost instead of re-applying it.
+    if (!frozenCarrotsRef.current) {
+      frozenCarrotsRef.current = boostConsumedRef.current
+        ? { base: sessionCarrots, final: sessionCarrots, boost: 1, boosted: false }
+        : finalizeSessionCarrots(sessionCarrots, child);
+    }
+    const carrots = frozenCarrotsRef.current;
     return (
       <CompletionScreen
         child={child}
@@ -1130,6 +1147,7 @@ function PracticeSession({
         correctCount={correctCount}
         carrotsEarned={carrots.final}
         carrotBoost={carrots.boost}
+        onBoostConsumed={() => { boostConsumedRef.current = true; }}
         saving={saving}
         setSaving={setSaving}
         onRestart={resetStore}
@@ -1604,6 +1622,7 @@ function CompletionScreen({
   correctCount,
   carrotsEarned,
   carrotBoost,
+  onBoostConsumed,
   saving,
   setSaving,
   onRestart,
@@ -1617,6 +1636,7 @@ function CompletionScreen({
   correctCount: number;
   carrotsEarned: number;
   carrotBoost?: number;
+  onBoostConsumed?: () => void;
   saving: boolean;
   setSaving: (v: boolean) => void;
   onRestart: () => void;
@@ -1840,6 +1860,9 @@ function CompletionScreen({
               ...(carrotBoost && carrotBoost > 1 ? clearActiveMultiplierFields() : {}),
             })
             .eq("id", child.id));
+          // Mark the boost spent so a "Play again" replay in this same session
+          // settles with no boost instead of re-applying the (now cleared) 2x.
+          if (carrotBoost && carrotBoost > 1) onBoostConsumed?.();
         }
       }
 
