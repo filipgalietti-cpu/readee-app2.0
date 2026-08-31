@@ -240,21 +240,48 @@ export default function WordBuilderArcade({
     }
   }, [to]);
 
-  // ---- part picking: the free-build pool ----
-  // Both halves of every not-yet-built word cycle through (75% bias) with
-  // decoys mixed in. A word already visible or sitting in a slot doesn't
-  // double up; built words drop out of the pool entirely.
+  // ---- part picking: the free-build pool, rigged to be kind ----
+  // Two fairness rules keep the game buildable (owner: "won't introduce
+  // matches quick enough"):
+  //   1. PARTNER BIAS — a part sitting in a slot makes its completing
+  //      partner the heavily favored next spawn (85%).
+  //   2. PAIR GUARANTEE — with empty slots, the field always works toward
+  //      at least one complete buildable pair being on screen.
+  // Decoys only sprinkle in when the kindness rules have nothing to do.
   const pickPart = useCallback((): string | null => {
     const visible = [...parts.current.values()].filter((p) => !p.gone).map((p) => p.word);
     const taken = [slotAVal.current, slotBVal.current].filter((w): w is string => !!w);
     const avail = (w: string) => !visible.includes(w) && !taken.includes(w);
-    const buildParts = builds
-      .filter((b) => !builtRef.current.includes(b.word))
-      .flatMap((b) => b.parts)
-      .filter(avail);
+    const unbuilt = builds.filter((b) => !builtRef.current.includes(b.word));
+
+    // Rule 1: complete the slotted part.
+    const slotted = taken[0];
+    if (slotted) {
+      const partners = unbuilt
+        .flatMap((b) => (b.parts[0] === slotted ? [b.parts[1]] : b.parts[1] === slotted ? [b.parts[0]] : []))
+        .filter(avail);
+      const partnerVisible = unbuilt.some(
+        (b) => (b.parts[0] === slotted && visible.includes(b.parts[1])) || (b.parts[1] === slotted && visible.includes(b.parts[0])),
+      );
+      if (partners.length && !partnerVisible && Math.random() < 0.85) {
+        return partners[Math.floor(Math.random() * partners.length)];
+      }
+    }
+
+    // Rule 2: keep a complete pair on screen.
+    const pairOnScreen = unbuilt.some((b) => visible.includes(b.parts[0]) && visible.includes(b.parts[1]));
+    if (!pairOnScreen) {
+      const halves = unbuilt
+        .filter((b) => visible.includes(b.parts[0]) !== visible.includes(b.parts[1]))
+        .map((b) => (visible.includes(b.parts[0]) ? b.parts[1] : b.parts[0]))
+        .filter(avail);
+      if (halves.length) return halves[Math.floor(Math.random() * halves.length)];
+    }
+
+    const buildPartsPool = unbuilt.flatMap((b) => b.parts).filter(avail);
     const decoys = decoyParts.filter(avail);
-    if (buildParts.length && (Math.random() < 0.75 || !decoys.length)) {
-      return buildParts[Math.floor(Math.random() * buildParts.length)];
+    if (buildPartsPool.length && (Math.random() < 0.8 || !decoys.length)) {
+      return buildPartsPool[Math.floor(Math.random() * buildPartsPool.length)];
     }
     if (!decoys.length) return null;
     return decoys[Math.floor(Math.random() * decoys.length)];
@@ -431,10 +458,32 @@ export default function WordBuilderArcade({
       }
       const a = slotAVal.current, b = slotBVal.current;
       if (a && b) {
-        // Ordered match: sun+set is sunset; set+sun is not a word.
-        const match = builds.find((bd) => !builtRef.current.includes(bd.word) && bd.parts[0] === a && bd.parts[1] === b);
-        if (match) assemble(match);
-        else to(() => unfuse(), 380);
+        const unbuiltMatch = (x: string, y: string) =>
+          builds.find((bd) => !builtRef.current.includes(bd.word) && bd.parts[0] === x && bd.parts[1] === y);
+        const match = unbuiltMatch(a, b);
+        if (match) { assemble(match); return; }
+        // Reversed pair (set+sun): the chips playfully hop into the right
+        // order, then fuse — teaches the order without ever punishing it.
+        const reversed = unbuiltMatch(b, a);
+        if (reversed) {
+          locked.current = true;
+          [slotARef, slotBRef].forEach((ref) => {
+            const el = ref.current;
+            if (el && !rm.current) {
+              el.style.animation = "none";
+              void el.offsetWidth;
+              el.style.animation = "wuSlotGlow .4s ease-out both";
+            }
+          });
+          to(() => {
+            setSlot("a", reversed.parts[0]);
+            setSlot("b", reversed.parts[1]);
+            locked.current = false;
+            assemble(reversed);
+          }, rm.current ? 120 : 420);
+          return;
+        }
+        to(() => unfuse(), 380);
       }
     };
     if (rm.current) { fly.style.transition = "opacity .3s"; fly.style.opacity = "0"; to(done, 300); }
