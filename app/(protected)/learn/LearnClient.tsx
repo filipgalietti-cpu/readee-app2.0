@@ -22,6 +22,7 @@ import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { findStandardById } from "@/lib/data/all-standards";
 import { fadeUp, fadeIn, staggerContainer, popIn, scaleIn } from "@/lib/motion/variants";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
+import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
@@ -482,7 +483,7 @@ function LearnSession({
         const daily = getDailyMultiplier(child.streak_days);
         const session = getSessionStreakTier(newConsecutive);
         const hintFactor = showHint ? HINT_CARROT_FACTOR : 1;
-        const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * hintFactor);
+        const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * getActiveMultiplier(child) * hintFactor);
         setSessionCarrots((prev) => prev + carrots);
       }
       setFeedbackMsg(q.correct_feedback ?? pickRandom(CORRECT_MESSAGES));
@@ -523,7 +524,7 @@ function LearnSession({
       setConsecutiveCorrect(newConsecutive);
       const daily = getDailyMultiplier(child.streak_days);
       const session = getSessionStreakTier(newConsecutive);
-      const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier);
+      const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * getActiveMultiplier(child));
       setSessionCarrots((prev) => prev + carrots);
       setFeedbackMsg(pickRandom(CORRECT_MESSAGES));
       setFeedbackEmoji(pickRandom(CORRECT_EMOJIS));
