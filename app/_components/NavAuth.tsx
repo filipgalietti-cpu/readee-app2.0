@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
-import { Star, Bell, HelpCircle, Menu } from "lucide-react";
+import { Star, Bell, HelpCircle, Menu, X } from "lucide-react";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { usePlanStore } from "@/lib/stores/plan-store";
 
@@ -253,13 +253,19 @@ export default function NavAuth() {
         <div className="flex items-center gap-2 sm:gap-3">
           {loggedIn ? (
             <>
-              {/* Mobile hamburger (opens sidebar overlay) */}
+              {/* Mobile hamburger — toggles the sidebar overlay (header sits
+                  above it at z-50, so a second tap closes it). */}
               <button
-                onClick={() => useSidebarStore.getState().setMobileOpen(true)}
+                onClick={() => useSidebarStore.getState().setMobileOpen(!mobileOpen)}
                 className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center text-zinc-500 hover:text-zinc-700 hover:bg-zinc-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-colors"
-                aria-label="Menu"
+                aria-label={mobileOpen ? "Close menu" : "Menu"}
+                aria-expanded={mobileOpen}
               >
-                <Menu className="w-5 h-5" strokeWidth={1.5} />
+                {mobileOpen ? (
+                  <X className="w-5 h-5" strokeWidth={1.5} />
+                ) : (
+                  <Menu className="w-5 h-5" strokeWidth={1.5} />
+                )}
               </button>
 
               {/* Upgrade — only for free users on non-admin pages.
