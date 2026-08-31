@@ -469,6 +469,9 @@ function ShopContent({
           ? "The rarest thing in the whole chest."
           : "Added to your carrots.";
   const revealTitle = !reward ? "" : reward.type === "item" ? reward.item.name : reward.label.replace(/!$/, "");
+  // A won wearable can be equipped straight from the reveal (outfits play the
+  // swap ceremony via handleEquip). Null for carrots/jackpot/multiplier wins.
+  const wonItem = revealing && reward?.type === "item" ? reward.item : null;
 
   return (
     <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto bg-white lg:left-[272px]">
@@ -573,6 +576,37 @@ function ShopContent({
                   <span style={{ fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", lineHeight: 1 }}>{PRICE}</span>
                 </div>
               </div>
+
+              {wonItem && (
+                <button
+                  onClick={() => {
+                    handleEquip(wonItem); // equips + plays the swap ceremony for outfits
+                    setCeremony(false);
+                    setPhase("idle");
+                    setReward(null);
+                  }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 9,
+                    width: "100%",
+                    padding: "16px 20px",
+                    borderRadius: 18,
+                    border: 0,
+                    cursor: "pointer",
+                    fontFamily: BALOO,
+                    fontSize: 18,
+                    fontWeight: 800,
+                    letterSpacing: "-.01em",
+                    color: "#fff",
+                    background: "linear-gradient(135deg,#fb923c,#f97316)",
+                    boxShadow: "0 12px 26px -14px rgba(249,115,22,.95)",
+                  }}
+                >
+                  <PartyPopper size={19} strokeWidth={2.2} /> Wear it now
+                </button>
+              )}
 
               <button
                 onClick={() =>
