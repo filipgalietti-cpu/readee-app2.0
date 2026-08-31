@@ -27,7 +27,7 @@ export function rollMysteryBox(ownedItemIds: Set<string>, isPaid = false): Myste
     }
     // 20%: Temporary 2x multiplier
     if (roll < 0.3) {
-      return { type: "multiplier", multiplier: 2, label: "2x carrots for the next 24 hours!" };
+      return { type: "multiplier", multiplier: 2, label: "2x carrots on your next lesson!" };
     }
     // 30%: Random unowned shop item (falls back to a big carrot payout)
     if (roll < 0.6) {
@@ -50,7 +50,7 @@ export function rollMysteryBox(ownedItemIds: Set<string>, isPaid = false): Myste
 
   // 20%: Temporary 2x multiplier
   if (roll < 0.3) {
-    return { type: "multiplier", multiplier: 2, label: "2x carrots for the next 24 hours!" };
+    return { type: "multiplier", multiplier: 2, label: "2x carrots on your next lesson!" };
   }
 
   // 30%: Random unowned shop item (falls back to carrots)

@@ -33,6 +33,7 @@ import { SoundMachine } from "@/app/components/practice/SoundMachine";
 import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { finalizeSessionCarrots } from "@/lib/carrots/finalize-session";
+import { clearActiveMultiplierFields } from "@/lib/carrots/active-multiplier";
 import { StreakFire } from "@/app/_components/StreakFire";
 import SealOfApproval from "./_components/SealOfApproval";
 import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon, Sparkles } from "lucide-react";
@@ -1833,7 +1834,11 @@ function CompletionScreen({
         if (current) {
           await savedOk("practice:carrots", supabase
             .from("children")
-            .update({ carrots: (current.carrots || 0) + carrotsEarned })
+            .update({
+              carrots: (current.carrots || 0) + carrotsEarned,
+              // Single-use: consume the mystery-box boost after this one session.
+              ...(carrotBoost && carrotBoost > 1 ? clearActiveMultiplierFields() : {}),
+            })
             .eq("id", child.id));
         }
       }

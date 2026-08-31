@@ -13,7 +13,7 @@ import { gradeOrder, grades, levelNameToGradeKey } from "@/lib/assessment/questi
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
-import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
+import { getActiveMultiplier, clearActiveMultiplierFields } from "@/lib/carrots/active-multiplier";
 
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
@@ -625,7 +625,8 @@ function LessonContent() {
       if (!child) return;
       // Flat mystery-box powerup applied once, here at the single lesson award
       // choke point — callers pass base carrots and can't forget the boost.
-      const boosted = Math.floor(amount * getActiveMultiplier(child));
+      const boost = getActiveMultiplier(child);
+      const boosted = Math.floor(amount * boost);
       const supabase = supabaseBrowser();
       const { data } = await supabase
         .from("children")
@@ -636,7 +637,12 @@ function LessonContent() {
       const currentCarrots = (data as { carrots: number } | null)?.carrots ?? 0;
       await savedOk("lesson:carrots", supabase
         .from("children")
-        .update({ carrots: currentCarrots + boosted })
+        .update({
+          carrots: currentCarrots + boosted,
+          // Single-use: consume the boost on the first boosted award. The rest
+          // of this lesson still boosts (client snapshot); the next lesson won't.
+          ...(boost > 1 ? clearActiveMultiplierFields() : {}),
+        })
         .eq("id", child.id));
 
       setTotalCarrots((prev) => prev + boosted);

@@ -23,6 +23,7 @@ import { findStandardById } from "@/lib/data/all-standards";
 import { fadeUp, fadeIn, staggerContainer, popIn, scaleIn } from "@/lib/motion/variants";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
 import { finalizeSessionCarrots } from "@/lib/carrots/finalize-session";
+import { clearActiveMultiplierFields } from "@/lib/carrots/active-multiplier";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
@@ -984,6 +985,8 @@ function CompletionScreen({
             .update({
               carrots: (current.carrots || 0) + carrotsEarned,
               last_lesson_at: nowIso,
+              // Single-use: consume the mystery-box boost after this one lesson.
+              ...(carrotBoost && carrotBoost > 1 ? clearActiveMultiplierFields() : {}),
             })
             .eq("id", child.id);
         }
