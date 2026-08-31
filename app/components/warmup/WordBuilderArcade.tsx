@@ -831,7 +831,7 @@ export default function WordBuilderArcade({
               <p className="text-lg font-bold text-zinc-600" style={{ animation: "wuFadeUp .5s .2s ease both" }}>{bestLine}</p>
               {score > 0 && (
                 <p className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-4 py-2 text-sm font-extrabold text-orange-600" style={{ animation: "wuFadeUp .5s .23s ease both" }}>
-                  <Carrot className="h-4 w-4" />+{score} carrots
+                  <Carrot className="h-4 w-4" />+{score * 5} carrots
                 </p>
               )}
               <div className="flex items-center gap-6" style={{ animation: "wuFadeUp .5s .26s ease both" }}>
