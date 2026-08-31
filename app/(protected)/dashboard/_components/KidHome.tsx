@@ -390,7 +390,7 @@ export default function KidHome(p: KidHomeProps) {
           </div>
 
           {/* Path teaser */}
-          <Link href={p.path.href} className="kh-lift" style={{ display: "flex", alignItems: "center", gap: 16, background: "#fff", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "18px 22px" }}>
+          <Link href={p.path.href} className="kh-lift" style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 16, background: "#fff", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "18px 22px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 7, flex: "none" }}>
               {p.path.nodes.map((n, i) => {
                 const size = n === "cur" ? 34 : 24;
