@@ -4,9 +4,10 @@
  * award surface — practice, stories, lessons — not just the localStorage
  * flag the practice runner used before.
  *
- * Granted powerups run for a fixed window (POWERUP_WINDOW_MS) rather than
- * being consumed once, so the reward feels real everywhere for its
- * duration. Expiry is checked client-side against the stored timestamp.
+ * SINGLE-USE: the powerup is consumed the first time a lesson/practice is
+ * completed with it active (callers clear it via clearActiveMultiplierFields).
+ * POWERUP_WINDOW_MS is only a safety fallback so an unused boost eventually
+ * expires instead of lingering forever. Expiry is checked client-side.
  */
 import type { Child } from "@/lib/db/types";
 
@@ -48,4 +49,16 @@ export function grantPowerupFields(multiplier: number): {
       Date.now() + POWERUP_WINDOW_MS,
     ).toISOString(),
   };
+}
+
+/**
+ * The DB patch to CONSUME the powerup (single-use). Spread into the same
+ * `children` update that writes the boosted carrots, and into local child
+ * state, so the boost applies to exactly one lesson and is then gone.
+ */
+export function clearActiveMultiplierFields(): {
+  active_multiplier: null;
+  active_multiplier_expires_at: null;
+} {
+  return { active_multiplier: null, active_multiplier_expires_at: null };
 }
