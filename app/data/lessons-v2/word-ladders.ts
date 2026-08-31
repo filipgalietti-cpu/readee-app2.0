@@ -14,7 +14,7 @@ const A = (id: string) => `/audio/lessons-v2/word-ladders/${id}.mp3`;
 const IMG = (w: string) => `/images/lessons-v2/word-ladders/${w.toLowerCase()}.png`;
 
 export const wordLaddersImages: Record<string, string> = {
-  "garden-weed": "A girl in yellow gardening gloves leaning back and pulling a huge green weed with both hands in a sunny vegetable garden, a few red flowers along the garden edge, plain blue sky, no faces on any object. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, no letters, no words, no text anywhere.",
+  "garden-weed": "A girl with a determined happy face and yellow gardening gloves leaning back and pulling a huge green weed with both hands in a sunny vegetable garden, a few red flowers along the garden edge, plain blue sky. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, no letters, no words, no text anywhere.",
   "wooden-ladder": "A sturdy wooden ladder with three wide rungs leaning against a big leafy apple tree, green grass below, plain blue sky, no people, no faces on any object. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, no letters, no words, no text anywhere.",
   "robot-helper": "A small friendly silver robot with a round head holding a tiny watering can over a leafy potted plant, a plain blue prize rosette pinned to its chest, plain background, no people. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, no letters, no words, no text anywhere.",
   "dropped-cone": "An ice cream cone tipped over on a sunny sidewalk with one scoop of pink ice cream splatted on the ground beside it, no people, no faces on any object. Bright 2D cartoon illustration, bold clean outlines, vibrant saturated colors, no letters, no words, no text anywhere."
@@ -59,7 +59,7 @@ export const wordLadders: LessonDef = {
       gate: "none",
       prompt: "The cry family climbs a ladder too.",
       fx: {"text":"cry, sob, **wail**","effect":"pop-words"},
-      narration: { audio: A("model-cry-ladder"), script: "Here is another word ladder. Cry, sob, wail. Cry is the smallest, a few quiet tears. Sob is stronger, crying hard with shaky breaths. Wail is the strongest, crying so loud the whole street can hear it. Same family, different strength. Listen one more time, climbing from weakest to strongest. Cry. Sob. Wail." },
+      narration: { audio: A("model-cry-ladder"), script: "Here is another word ladder. Cry, then sob, then wail. Cry is the smallest, a few quiet tears. Sob is stronger, crying hard with shaky breaths. Wail is the strongest, crying so loud the whole street can hear it. Same family, different strength. Listen one more time, climbing from weakest to strongest. Cry. Sob. Wail." },
     },
     {
       id: "guided-order-cry",
@@ -67,7 +67,7 @@ export const wordLadders: LessonDef = {
       layout: "full",
       gate: "interaction",
       prompt: "Build the cry ladder: weakest first, strongest last.",
-      narration: { audio: A("guided-order-cry"), script: "Your turn to build a ladder. Drag the words into ladder order. Start with the weakest, a few quiet tears. End with the strongest, the loudest cry of all." },
+      narration: { audio: A("guided-order-cry"), script: "Your turn to build a ladder. Drag the words into ladder order. Start with the weakest, a few quiet tears. Finish with the strongest, the loudest cry of all." },
       interaction: { type: "sequence", items: [{ id: "cry", label: "cry" }, { id: "sob", label: "sob" }, { id: "wail", label: "wail" }], order: ["cry","sob","wail"], coachWrong: "Act each word out in your head. Which one is just a few quiet tears? That one goes first. Try again!" },
     },
     {
@@ -119,7 +119,7 @@ export const wordLadders: LessonDef = {
       layout: "full",
       gate: "interaction",
       prompt: "Build the pull ladder: weakest first, strongest last.",
-      narration: { audio: A("apply-order-pull"), script: "One more ladder to build, and this one is from Rosa's garden. These words are all ways to pull. Drag them into ladder order, from the gentlest pull to the strongest pull of all." },
+      narration: { audio: A("apply-order-pull"), script: "One more ladder to build, and this one is from Rosa's garden. Every one of these words comes from the pull family. Drag them into ladder order, from the gentlest pull to the strongest pull of all." },
       interaction: { type: "sequence", items: [{ id: "pull", label: "pull" }, { id: "tug", label: "tug" }, { id: "yank", label: "yank" }], order: ["pull","tug","yank"], coachWrong: "Picture each one. A wagon, a stuck boot, a monster weed. Gentlest goes first. Try again!" },
     },
     {
