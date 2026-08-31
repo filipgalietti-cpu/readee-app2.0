@@ -130,6 +130,16 @@ function LeaderboardContent() {
         ? `You're in ${ordinal(myRank)} place, ${child.first_name}. ${carrotsToAhead.toLocaleString()} carrots to pass ${ahead.name}.`
         : `You're in ${ordinal(myRank)} place, ${child.first_name}.`;
 
+  // CTA nudge: only promise "one story" when the gap is genuinely small
+  // (~one activity ≈ 25 carrots); otherwise stay motivating but honest.
+  const ctaMsg = !ahead
+    ? "You're on top. Keep the streak alive!"
+    : carrotsToAhead <= 30
+      ? `Read one story and pass ${ahead.name}!`
+      : carrotsToAhead <= 120
+        ? `A few more stories and you'll pass ${ahead.name}!`
+        : `Keep reading to climb past ${ahead.name}!`;
+
   return (
     <div className="min-h-full">
       <style>{CELEBRATE_CSS}</style>
@@ -331,7 +341,7 @@ function LeaderboardContent() {
               </div>
               <div className="flex-1">
                 <p className="mb-3 text-[17px] font-extrabold leading-snug text-white">
-                  {ahead ? `Read one story and pass ${ahead.name}!` : "You're on top. Keep the streak alive!"}
+                  {ctaMsg}
                 </p>
                 <Link
                   href={`/practice?child=${childId}`}
