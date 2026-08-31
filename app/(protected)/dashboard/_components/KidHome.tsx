@@ -141,7 +141,7 @@ export default function KidHome(p: KidHomeProps) {
       `}</style>
 
       {/* ── Stats bar ── */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 12 }}>
         {/* Streak */}
         <StatCard>
           <div style={{ ...iconBox, background: p.streak > 0 ? "#fff7ed" : "#f4f4f5" }}>
@@ -192,7 +192,7 @@ export default function KidHome(p: KidHomeProps) {
         </StatCard>
 
         {/* Level + XP */}
-        <div style={{ ...statBase, flex: 1.4, minWidth: 200 }}>
+        <div style={{ ...statBase, minWidth: 150 }}>
           <div style={{ ...iconBox, background: "linear-gradient(135deg,#4338ca,#7c3aed)" }}>
             <Star className="h-6 w-6" fill="#fde68a" stroke="#fde68a" strokeWidth={1.5} />
           </div>
