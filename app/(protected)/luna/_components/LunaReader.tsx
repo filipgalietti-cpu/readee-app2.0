@@ -22,6 +22,7 @@ import { Shuffle, RotateCcw, Volume2, Carrot, Star, Check, X as XIcon, Wand2, Sp
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
+import { classifyLineRead } from "@/lib/luna/grading-decision";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
@@ -1095,21 +1096,10 @@ export default function LunaReader({
     playRecap();
   }
   function sentenceFeedback(g: Grade, curIdx: number, curAttempt: number) {
-    // SUBSTITUTIONS are the only words we KNOW the child misread (said "dig"
-    // for "pig") — those are the words to teach. Azure "missed"/omission is
-    // frequently just the recognizer not catching a word the child read fine,
-    // so a lone missed word is treated as a CLEAN read: a tutor never re-teaches
-    // a correct read (the fastest way to lose a young reader's trust). A real
-    // skip shows up as MANY missed words, so a large share still counts.
-    const clean = (w: string) => w.replace(/[^A-Za-z'-]/g, "");
-    const subWords = g.wordAnnotations.filter((w) => w.status === "substituted").map((w) => clean(w.word)).filter(Boolean);
-    const subCount = subWords.length;
-    const missCount = g.wordAnnotations.filter((w) => w.status === "missed").length;
-    // Error = wrong words (substitutions), or so many undetected words that it
-    // reads as a genuine skip/mumble (>= 40% of the line, min 2), not recognizer
-    // noise. Fluency (slow/choppy) is tracked for the report but never triggers
-    // a retry.
-    const hasError = subCount > 0 || missCount >= Math.max(2, Math.ceil(g.wordsTotal * 0.4));
+    // The tutoring decision (which words are real misreads, whether to re-read,
+    // and whether to sound-out vs model the line) lives in a pure, unit-tested
+    // module so we can verify the pedagogy without a mic. See grading-decision.
+    const { subWords, hasError, heavy } = classifyLineRead(g.wordAnnotations, g.wordsTotal);
     const willRetry = hasError && curAttempt === 0;
     // On the FINAL result for this sentence, roll it into the session grade
     // (there's no whole-story overall read anymore).
@@ -1148,7 +1138,6 @@ export default function LunaReader({
       // word won't help and, for a skip, we don't even know WHICH words were
       // wrong, so Luna MODELS the whole line and the child re-reads it. Light
       // (1-3 substitutions) → sound-out mini-lesson on those exact words.
-      const heavy = subCount >= 4 || (g.wordsTotal >= 6 && subCount / g.wordsTotal > 0.6) || subCount === 0;
       if (heavy) {
         const tokH = sessionTokenRef.current;
         const linePromise = speakToUrl(sentences[curIdx] ?? ""); // pre-warm during the clips
