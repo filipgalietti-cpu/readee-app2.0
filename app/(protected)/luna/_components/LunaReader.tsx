@@ -264,6 +264,7 @@ export default function LunaReader({
   const sfxTimersRef = useRef<number[]>([]);
   const sparksHostRef = useRef<HTMLDivElement | null>(null);
   const orbWrapRef = useRef<HTMLDivElement | null>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => { try { const d = new URLSearchParams(window.location.search).has("debug"); setDebug(d); debugRef.current = d; } catch { /* ignore */ } }, []);
   function dbg(m: string) { try { console.log("[luna]", m); } catch { /* ignore */ } if (debugRef.current) setDbgLog((l) => [...l.slice(-14), m]); }
@@ -1349,9 +1350,20 @@ export default function LunaReader({
     wordStateRef.current = info.words.map(() => "pending");
     setOverride(p);
     setPreparing(false);
+    // Capture the orb's spot BEFORE the card takes the space above it (and the
+    // cluster widens to seat the bunny), so we can glide it there on BOTH axes
+    // instead of letting it jump (Luna Full Flow "thinking→ready").
+    const orbBefore = orbWrapRef.current?.getBoundingClientRect();
     setPhase("building"); setMode("thinking"); setCaption("Here's your story!");
     startProcessing();
-    await new Promise<void>((r) => sfxTimer(90, r)); // let the word spans render
+    await new Promise<void>((r) => sfxTimer(90, r)); // let the card + word spans render
+    // The orb glides to its new position as the story card unfolds from behind
+    // it — one continuous motion, no pop, no jump.
+    const orbAfter = orbWrapRef.current?.getBoundingClientRect();
+    const dx = (orbBefore?.left ?? 0) - (orbAfter?.left ?? 0);
+    const dy = (orbBefore?.top ?? 0) - (orbAfter?.top ?? 0);
+    if (Math.abs(dx) > 1 || Math.abs(dy) > 1) orbWrapRef.current?.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: "translate(0, 0)" }], { duration: 760, easing: "cubic-bezier(.32,.72,.24,1)" });
+    cardRef.current?.animate([{ transform: "translateY(14px)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }], { duration: 700, easing: "cubic-bezier(.22,.61,.36,1)" });
     await runBuildReveal(info);
     stopProcessing();
     // Straight into the per-sentence drill — no confusing whole-story baseline
@@ -1498,7 +1510,7 @@ export default function LunaReader({
       <style>{`@keyframes lunaCarrotPop{0%{transform:scale(1)}45%{transform:scale(1.35)}100%{transform:scale(1)}}`}</style>
       {/* Passage (hidden on the intro screen) */}
       {showPassage && (
-        <div style={{ width: "100%", borderRadius: 22, border: "2px solid #ddd6fe", background: "linear-gradient(135deg,#f5f3ff,#ffffff 60%,#fdf2f8)", padding: "16px 20px", boxShadow: "0 10px 40px -18px rgba(49,46,129,.25)" }}>
+        <div ref={cardRef} style={{ width: "100%", borderRadius: 22, border: "2px solid #ddd6fe", background: "linear-gradient(135deg,#f5f3ff,#ffffff 60%,#fdf2f8)", padding: "16px 20px", boxShadow: "0 10px 40px -18px rgba(49,46,129,.25)" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, minHeight: 22 }}>
             <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "#7c3aed" }}>
               {phase === "building" ? "Making your story…"
@@ -1573,18 +1585,22 @@ export default function LunaReader({
               composite (orb + the bunny's visible overhang) and centered, with
               the bunny overlapping the orb's lower-right — so the GROUP sits
               in the middle of the page and the orb only shifts ~28px. */}
-          <div style={{ position: "relative", width: 236, height: 184 }}>
+          <div style={{ position: "relative", width: phase === "intro" ? 180 : 236, height: 184 }}>
             <div ref={orbWrapRef} style={{ position: "absolute", left: 0, top: 0, width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
               <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
               <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
             </div>
             {/* The CHILD'S bunny (their equipped skin) peeking in from the
-                orb's lower-right. Claps on a correct line, dances at the end. */}
-            <div style={{ position: "absolute", right: 0, bottom: -4, width: 100, height: 112, pointerEvents: "none" }}>
-              {bunnyRx
-                ? <BunnyReaction outfitId={childOutfitId ?? "classic"} state={bunnyRx} />
-                : <Bunny outfitId={childOutfitId ?? "classic"} />}
-            </div>
+                orb's lower-right. Claps on a correct line, dances at the end.
+                Sits out the pill intro so it can't crowd the topic picker — it
+                joins the moment the story starts to build. */}
+            {phase !== "intro" && (
+              <div style={{ position: "absolute", right: 0, bottom: -4, width: 100, height: 112, pointerEvents: "none" }}>
+                {bunnyRx
+                  ? <BunnyReaction outfitId={childOutfitId ?? "classic"} state={bunnyRx} />
+                  : <Bunny outfitId={childOutfitId ?? "classic"} />}
+              </div>
+            )}
           </div>
           {(preparing || phase !== "intro") && (
             <div style={{ minHeight: 58, display: "flex", alignItems: "center", justifyContent: "center", maxWidth: 470, padding: "0 8px" }}>
