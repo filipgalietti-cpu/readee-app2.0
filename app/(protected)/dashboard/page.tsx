@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { effectiveStreak } from "@/lib/streak/effective-streak";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child, LessonProgress } from "@/lib/db/types";
@@ -421,7 +422,7 @@ function ChildSelector({
                   </div>
                   <div className="text-right text-xs text-zinc-400 space-y-1">
                     <div className="flex items-center gap-0.5">{Number(child.carrots) || 0} <Carrot className="w-3 h-3 text-orange-500" strokeWidth={1.5} /></div>
-                    <div>{child.streak_days}d streak</div>
+                    <div>{effectiveStreak(child.streak_days, child.last_lesson_at)}d streak</div>
                   </div>
                 </div>
                 <div className="mt-3">
@@ -680,7 +681,9 @@ function ChildDashboard({
   const carrots = Number(child.carrots) || 0;
   const carrotCount = useCountUp(carrots);
   const storiesCount = useCountUp(child.stories_read);
-  const streakCount = useCountUp(child.streak_days);
+  // Honest streak: 0 once a day is missed, even before the next activity.
+  const liveStreak = effectiveStreak(child.streak_days, child.last_lesson_at);
+  const streakCount = useCountUp(liveStreak);
   // Lifetime carrots fuels the reader-level ladder — distinct from
   // the spendable `carrots` balance above, which shop purchases burn
   // down. Showing both in the same dashboard view keeps the level
@@ -857,15 +860,15 @@ function ChildDashboard({
     bubbleTitle: firstDay ? `Welcome, ${kidName}!` : `${greeting.text}, ${kidName}!`,
     bubbleSub: firstDay
       ? "Readee is ready to read with you."
-      : child.streak_days > 0
-        ? `You're on a ${child.streak_days}-day streak!`
+      : liveStreak > 0
+        ? `You're on a ${liveStreak}-day streak!`
         : motivation,
     equippedOutfitId,
     equippedReactionId: currentChild.equipped_items?.reaction ?? null,
     outfitChoices,
     onPickOutfit: handleEquipOutfit,
     cta,
-    streak: child.streak_days,
+    streak: liveStreak,
     goalDone,
     goalTotal,
     goalLabel: firstDay

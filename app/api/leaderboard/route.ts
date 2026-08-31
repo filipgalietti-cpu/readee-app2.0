@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { buildCohort, type RealPeer } from "@/lib/leaderboard/cohort";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
+import { effectiveStreak } from "@/lib/streak/effective-streak";
 import type { Child } from "@/lib/db/types";
 
 export async function GET(req: NextRequest) {
@@ -23,7 +24,7 @@ export async function GET(req: NextRequest) {
   // Verify the child belongs to this parent, then pull carrots + grade + avatar.
   const { data: me, error } = await supabase
     .from("children")
-    .select("id, first_name, carrots, streak_days, grade, equipped_items")
+    .select("id, first_name, carrots, streak_days, last_lesson_at, grade, equipped_items")
     .eq("id", childId)
     .eq("parent_id", user.id)
     .maybeSingle();
@@ -41,7 +42,7 @@ export async function GET(req: NextRequest) {
   // carrots leaves the server. Falls back to seeded rivals to fill pre-scale.
   const { data: peerRows } = await supabaseAdmin()
     .from("children")
-    .select("id, first_name, carrots, streak_days, equipped_items")
+    .select("id, first_name, carrots, streak_days, last_lesson_at, equipped_items")
     .neq("id", me.id)
     .eq("owner_type", "parent") // B2C board = parent-owned kids only, never classroom/demo students
     .eq("exclude_from_leaderboard", false) // hide dev/test/non-genuine accounts
@@ -53,7 +54,7 @@ export async function GET(req: NextRequest) {
     .map((p: any, i: number) => ({
       name: String(p.first_name).trim(),
       carrots: p.carrots ?? 0,
-      streak: p.streak_days ?? 0,
+      streak: effectiveStreak(p.streak_days, p.last_lesson_at),
       avatar: getChildAvatarImage(p as Child, i),
     }));
 
@@ -64,14 +65,14 @@ export async function GET(req: NextRequest) {
     me.carrots ?? 0,
     myAvatar,
     realPeers,
-    me.streak_days ?? 0,
+    effectiveStreak(me.streak_days, me.last_lesson_at),
   );
 
   return NextResponse.json({
     leaders,
     myRank,
     grade: me.grade,
-    myStreak: me.streak_days ?? 0,
+    myStreak: effectiveStreak(me.streak_days, me.last_lesson_at),
     total: leaders.length,
   });
 }
