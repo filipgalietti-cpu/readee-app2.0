@@ -1,0 +1,175 @@
+import type { QuizDef } from "@/lib/lesson-engine/quiz";
+
+// Letter Perfect QUIZ (L.2.2) · FACTORY-AUTHORED from the finished lesson
+// (scripts/quiz-author.ts), human-reviewed. Bands: easier(G1-bridge, 2-opt +
+// picture support: person-name capitals, I'm, greeting comma, simple
+// possessive) / core(on-grade G2: place capitals, contraction squeeze and
+// unsqueeze, closing comma, apostrophe-job sort, didn't production) /
+// harder(G3 transfer taught in the stimulus: its vs it's, plural possessive
+// girls', city-comma-state address, irregular squeeze won't). ALL word sets
+// FRESH vs the lesson (lesson taught: Ruby, Gram, Zoe's, Duke's, Halloween,
+// Ohio, Chicago, Boston, Cleo, Hugo, Vera, don't, can't, isn't, mom's cup,
+// bird's nest, cat's bowl, we're, hasn't, doesn't, dear). Quiz words: Pearl,
+// I'm, Jasper, Aunt Iris, Hana's, Denver, wasn't, she's, Sage, dad's truck,
+// hen's egg, Nina's coat, they're, he's, won't, didn't, its/it's, the girls'
+// tent, Salem, Oregon. Case-bearing and apostrophe-bearing tiles are the
+// tested content; all tiles audio-free. Images reuse the lesson's quiz-support
+// set (pearl-girl, im-kid, jasper-writing, kite-girl).
+
+const Q = "/audio/quizzes-v2/letter-perfect-quiz";
+const IMG = (w: string) => `/images/lessons-v2/letter-perfect/${w.toLowerCase()}.png`;
+
+export const letterPerfectQuiz: QuizDef = {
+  id: "letter-perfect-quiz",
+  lessonId: "letter-perfect",
+  title: "Letter Perfect Quiz",
+  standard: "L.2.2",
+  askCount: 7,
+  adaptive: true,
+  questions: [
+    {
+      id: "e-1-pearl-capital",
+      band: "easier",
+      difficulty: 1,
+      prompt: "Tap her name written the right way.",
+      image: IMG("pearl-girl"),
+      narration: { audio: `${Q}/e-1-pearl-capital.mp3`, script: "Here is a friendly girl, and her name is Pearl. A person's name always starts with a capital letter. Read both cards, then tap her name written the right way." },
+      hint: { audio: `${Q}/e-1-pearl-capital-hint.mp3`, script: "A person's name always begins with a big letter. Check the very first letter on each card." },
+      explain: { audio: `${Q}/e-1-pearl-capital-explain.mp3`, script: "Pearl starts with a capital P, because Pearl is the name of one special person." },
+      interaction: { type: "choose", options: [{ id: "pearl-cap", label: "Pearl" }, { id: "pearl-low", label: "pearl" }], correctId: "pearl-cap", coachWrong: "Look at the very first letter. A person's name starts big. Try again!" },
+    },
+    {
+      id: "e-2-im-squeeze",
+      band: "easier",
+      difficulty: 2,
+      prompt: "Tap the squeezed word written right.",
+      image: IMG("im-kid"),
+      narration: { audio: `${Q}/e-2-im-squeeze.mp3`, script: "This boy is telling us about himself. I am happy, he says. I am can be squeezed into one little word, and the apostrophe must hold the squeezed spot. Read both cards, then tap the squeezed word written right." },
+      hint: { audio: `${Q}/e-2-im-squeeze-hint.mp3`, script: "When two words get squeezed, the apostrophe has to hold the empty spot. One card forgot its apostrophe." },
+      explain: { audio: `${Q}/e-2-im-squeeze-explain.mp3`, script: "I'm needs its apostrophe. The a in am got squeezed out, and the apostrophe holds that spot." },
+      interaction: { type: "choose", options: [{ id: "im-right", label: "I'm" }, { id: "im-bare", label: "Im" }], correctId: "im-right", coachWrong: "A squeezed word needs its apostrophe holding the empty spot. Try again!" },
+    },
+    {
+      id: "e-3-iris-greeting",
+      band: "easier",
+      difficulty: 3,
+      prompt: "Tap the greeting written right.",
+      image: IMG("jasper-writing"),
+      narration: { audio: `${Q}/e-3-iris-greeting.mp3`, script: "Jasper is writing a letter to his aunt Iris. His greeting needs a comma resting right after her name. Read both cards, then tap the greeting written right." },
+      hint: { audio: `${Q}/e-3-iris-greeting-hint.mp3`, script: "In a letter greeting, the comma rests at the very end, right after the person's name." },
+      explain: { audio: `${Q}/e-3-iris-greeting-explain.mp3`, script: "Dear Aunt Iris, comma. In a greeting, the comma rests right after the person's name, at the end." },
+      interaction: { type: "choose", options: [{ id: "greet-right", label: "Dear Aunt Iris," }, { id: "greet-early", label: "Dear, Aunt Iris" }], correctId: "greet-right", coachWrong: "Where does the comma rest? Right after the person's name, at the very end. Try again!" },
+    },
+    {
+      id: "e-4-hana-kite",
+      band: "easier",
+      difficulty: 4,
+      prompt: "The kite belongs to Hana. Tap the card written right.",
+      image: IMG("kite-girl"),
+      narration: { audio: `${Q}/e-4-hana-kite.mp3`, script: "Look at Hana fly her red kite. That kite belongs to Hana. One card uses the apostrophe to show it. Read both cards, then tap the one written right." },
+      hint: { audio: `${Q}/e-4-hana-kite-hint.mp3`, script: "To show an owner, write the name, then an apostrophe, then an s." },
+      explain: { audio: `${Q}/e-4-hana-kite-explain.mp3`, script: "Hana's kite, with an apostrophe before the s. That little mark shows the kite belongs to Hana." },
+      interaction: { type: "choose", options: [{ id: "hana-right", label: "Hana's kite" }, { id: "hana-bare", label: "Hanas kite" }], correctId: "hana-right", coachWrong: "The owner needs an apostrophe right before the s. Try again!" },
+    },
+    {
+      id: "c-1-denver-capital",
+      band: "core",
+      difficulty: 1,
+      prompt: "Which word needs a capital letter?",
+      narration: { audio: `${Q}/c-1-denver-capital.mp3`, script: "One of these four words is the name of one special city, a real place on a map. The other three could mean any old thing in any town. The name of one special place always needs its capital letter. Read all four words, then tap the one that needs a capital." },
+      hint: { audio: `${Q}/c-1-denver-capital-hint.mp3`, script: "Ask about each word. Could it mean lots of different ones? Then it stays small. Only the name of one special place gets the capital." },
+      explain: { audio: `${Q}/c-1-denver-capital-explain.mp3`, script: "Denver needs the capital. Denver names one special city, but town, river, and corner could mean any old ones anywhere." },
+      interaction: { type: "choose", options: [{ id: "denver", label: "denver" }, { id: "town", label: "town" }, { id: "river", label: "river" }, { id: "corner", label: "corner" }], correctId: "denver", coachWrong: "Could that word mean lots of different ones? Then it stays small. Hunt for the name of one special place. Try again!" },
+    },
+    {
+      id: "c-2-wasnt-hidden",
+      band: "core",
+      difficulty: 2,
+      prompt: "Which two words hide inside wasn't?",
+      narration: { audio: `${Q}/c-2-wasnt-hidden.mp3`, script: "Every contraction hides two small words inside it. Listen. The bus wasn't late today. Wasn't is a squeezed word. Read each pair on the cards, then tap the two words hiding inside wasn't." },
+      hint: { audio: `${Q}/c-2-wasnt-hidden-hint.mp3`, script: "Unsqueeze it. Say the squeezed word slowly and listen for the two small words inside." },
+      explain: { audio: `${Q}/c-2-wasnt-hidden-explain.mp3`, script: "Was not. The o in not got squeezed out, and was not became wasn't." },
+      interaction: { type: "choose", options: [{ id: "was-not", label: "was not" }, { id: "will-not", label: "will not" }, { id: "is-not", label: "is not" }, { id: "was-it", label: "was it" }], correctId: "was-not", coachWrong: "Say the squeezed word slowly. Which two small words do you hear inside it? Try again!" },
+    },
+    {
+      id: "c-3-shes-spelling",
+      band: "core",
+      difficulty: 3,
+      prompt: "How do you write the squeezed word for she is?",
+      narration: { audio: `${Q}/c-3-shes-spelling.mp3`, script: "Time to squeeze a pair yourself. She is. Listen. She is ready for school. When she is gets squeezed into one word, the apostrophe must hold the squeezed spot. Read each card letter by letter, then tap the one written right." },
+      hint: { audio: `${Q}/c-3-shes-spelling-hint.mp3`, script: "Which letter got squeezed out of she is? The apostrophe belongs in that exact spot." },
+      explain: { audio: `${Q}/c-3-shes-spelling-explain.mp3`, script: "She apostrophe s. The i in is got squeezed out, so the apostrophe rests right before the s." },
+      interaction: { type: "choose", options: [{ id: "shes-right", label: "she's" }, { id: "shes-bare", label: "shes" }, { id: "shes-early", label: "she'is" }, { id: "shes-end", label: "shes'" }], correctId: "shes-right", coachWrong: "Find the squeezed spot. The apostrophe holds the place of the missing letter. Try again!" },
+    },
+    {
+      id: "c-4-sage-closing",
+      band: "core",
+      difficulty: 4,
+      prompt: "Tap the closing that is written right.",
+      narration: { audio: `${Q}/c-4-sage-closing.mp3`, script: "Sage is finishing a letter to her cousin. Her closing needs warm words first, then a resting comma, then her own name, and it must start with a capital letter. Only one of these closings follows every rule. Read each one closely, then tap it." },
+      hint: { audio: `${Q}/c-4-sage-closing-hint.mp3`, script: "Check two things. Does the closing start with a capital? Does the comma rest right after the warm words, before the name?" },
+      explain: { audio: `${Q}/c-4-sage-closing-explain.mp3`, script: "Your friend, comma, Sage. The closing starts with a capital Y, and the comma rests after the warm words, just before the name." },
+      interaction: { type: "choose", options: [{ id: "close-right", label: "Your friend, Sage" }, { id: "close-end", label: "Your friend Sage," }, { id: "close-early", label: "Your, friend Sage" }, { id: "close-low", label: "your friend, Sage" }], correctId: "close-right", coachWrong: "The comma rests right after the warm words, and a closing starts with a capital. Try again!" },
+    },
+    {
+      id: "c-5-apostrophe-sort",
+      band: "core",
+      difficulty: 5,
+      prompt: "What job is each apostrophe doing? Sort the cards.",
+      narration: { audio: `${Q}/c-5-apostrophe-sort.mp3`, script: "Every card here carries an apostrophe, but the apostrophes are doing two different jobs. Some show that something belongs to someone. Some hold the spot in a squeezed word. Read each card, decide the apostrophe's job, and drag it to its bucket." },
+      hint: { audio: `${Q}/c-5-apostrophe-sort-hint.mp3`, script: "Is there an owner with an s right after it, or two words squeezed into one? That is the apostrophe's job." },
+      explain: { audio: `${Q}/c-5-apostrophe-sort-explain.mp3`, script: "Dad's truck, the hen's egg, and Nina's coat show belonging. They're, he's, and won't are squeezed words with the apostrophe holding the spot." },
+      interaction: { type: "sort", buckets: ["Shows Belonging","Squeezed Words"], bucketAudio: { "Shows Belonging": `${Q}/b-shows-belonging.mp3`, "Squeezed Words": `${Q}/b-squeezed-words.mp3` }, items: [{ label: "dad's truck", bucket: "Shows Belonging" }, { label: "hen's egg", bucket: "Shows Belonging" }, { label: "Nina's coat", bucket: "Shows Belonging" }, { label: "they're", bucket: "Squeezed Words" }, { label: "he's", bucket: "Squeezed Words" }, { label: "won't", bucket: "Squeezed Words" }], coachWrong: "Look at that apostrophe again. Is there an owner with an s after it, or two words squeezed into one? Try again!" },
+    },
+    {
+      id: "c-6-speak-didnt",
+      band: "core",
+      difficulty: 6,
+      prompt: "Say the squeezed word for did not.",
+      narration: { audio: `${Q}/c-6-speak-didnt.mp3`, script: "Finish my sentence out loud. The rain did not stop all day. Did not can be squeezed into one little word, with the apostrophe holding the spot of the o. Tap the mic and say the squeezed word for did not." },
+      hint: { audio: `${Q}/c-6-speak-didnt-hint.mp3`, script: "Start with did, then squeeze the not so the o disappears. Say it as one quick word." },
+      explain: { audio: `${Q}/c-6-speak-didnt-explain.mp3`, script: "Didn't. Did not squeezes into didn't, and the apostrophe holds the spot of the missing o." },
+      interaction: { type: "speak", text: "didn't didnt" },
+    },
+    {
+      id: "h-1-its-feathers",
+      band: "harder",
+      difficulty: 1,
+      prompt: "The bird cleaned ___ feathers. Tap the card that fits.",
+      narration: { audio: `${Q}/h-1-its-feathers.mp3`, script: "Here is a third grade move. It's with an apostrophe always means it is, a squeezed word. But its without an apostrophe shows belonging, like a tail or a nest that belongs to it. Now listen. The bird cleaned blank feathers. The feathers belong to the bird. Read each card, then tap the one that fits." },
+      hint: { audio: `${Q}/h-1-its-feathers-hint.mp3`, script: "Try the squeeze test. The bird cleaned it is feathers sounds wrong, so the squeezed word cannot fit here." },
+      explain: { audio: `${Q}/h-1-its-feathers-explain.mp3`, script: "Its, with no apostrophe. The feathers belong to the bird. It's with an apostrophe would mean it is, and that does not fit the sentence." },
+      interaction: { type: "choose", options: [{ id: "its-bare", label: "its" }, { id: "its-apos", label: "it's" }, { id: "its-end", label: "its'" }, { id: "it-only", label: "it" }], correctId: "its-bare", coachWrong: "Unsqueeze it and listen. Would it is fit in the sentence? If not, skip the apostrophe. Try again!" },
+    },
+    {
+      id: "h-2-girls-tent",
+      band: "harder",
+      difficulty: 2,
+      prompt: "The tent belongs to both girls. Tap the card written right.",
+      narration: { audio: `${Q}/h-2-girls-tent.mp3`, script: "Third graders learn a new apostrophe trick. When something belongs to a group, and the group's name already ends with s, the apostrophe moves to the very end, after the s. Two boys can share the boys' fort. Now you. Two girls share one tent. Read each card, then tap the one that shows the tent belongs to both girls." },
+      hint: { audio: `${Q}/h-2-girls-tent-hint.mp3`, script: "More than one girl, so the word already ends with s. Where does the apostrophe move for a group?" },
+      explain: { audio: `${Q}/h-2-girls-tent-explain.mp3`, script: "The girls' tent, with the apostrophe after the s. More than one girl owns it, so the apostrophe rests at the very end." },
+      interaction: { type: "choose", options: [{ id: "girls-end", label: "the girls' tent" }, { id: "girl-one", label: "the girl's tent" }, { id: "girls-bare", label: "the girls tent" }, { id: "girls-fake", label: "the girlses tent" }], correctId: "girls-end", coachWrong: "The tent belongs to more than one girl. For a group ending in s, the apostrophe moves after the s. Try again!" },
+    },
+    {
+      id: "h-3-salem-oregon",
+      band: "harder",
+      difficulty: 3,
+      prompt: "Tap the city and state written right.",
+      narration: { audio: `${Q}/h-3-salem-oregon.mp3`, script: "Here is a third grade address trick. When writers name a city and its state, a comma rests between them, and both names keep their capital letters. A pen pal lives in the city of Salem, in the state of Oregon. Read each card, then tap the one written right." },
+      hint: { audio: `${Q}/h-3-salem-oregon-hint.mp3`, script: "Check two things. Does the comma rest between the city and the state? Do both special names start with capitals?" },
+      explain: { audio: `${Q}/h-3-salem-oregon-explain.mp3`, script: "Salem, comma, Oregon. The comma rests between the city and its state, and both special names keep their capital letters." },
+      interaction: { type: "choose", options: [{ id: "salem-right", label: "Salem, Oregon" }, { id: "salem-end", label: "Salem Oregon," }, { id: "salem-low-city", label: "salem, Oregon" }, { id: "salem-low-state", label: "Salem, oregon" }], correctId: "salem-right", coachWrong: "The comma rests between the city and the state, and both names need their capitals. Try again!" },
+    },
+    {
+      id: "h-4-speak-wont",
+      band: "harder",
+      difficulty: 4,
+      prompt: "Say the squeezed word for will not.",
+      narration: { audio: `${Q}/h-4-speak-wont.mp3`, script: "One last third grade squeeze, and it is a rule breaker. Will not does not squeeze the ordinary way. The whole word changes into a surprise word that starts with w and rhymes with don't. Listen. The puppy will not sit still. Tap the mic and say the squeezed word for will not." },
+      hint: { audio: `${Q}/h-4-speak-wont-hint.mp3`, script: "It is not willn't. Start with w and let it rhyme with don't." },
+      explain: { audio: `${Q}/h-4-speak-wont-explain.mp3`, script: "Won't. Will not squeezes into won't, a real rule breaker word." },
+      interaction: { type: "speak", text: "won't wont" },
+    },
+  ],
+};

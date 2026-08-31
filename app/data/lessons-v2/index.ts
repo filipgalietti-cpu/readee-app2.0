@@ -241,6 +241,8 @@ import { describeItBetter, describeItBetterImages } from "./describe-it-better";
 
 import { ruleBreakerWords, ruleBreakerWordsImages } from "./rule-breaker-words";
 
+import { letterPerfect, letterPerfectImages } from "./letter-perfect";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -369,4 +371,5 @@ export const LESSONS: Record<string, LessonEntry> = {
   "word-ladders": { lesson: wordLadders, images: wordLaddersImages },
   "describe-it-better": { lesson: describeItBetter, images: describeItBetterImages },
   "rule-breaker-words": { lesson: ruleBreakerWords, images: ruleBreakerWordsImages },
+  "letter-perfect": { lesson: letterPerfect, images: letterPerfectImages },
 };

@@ -475,9 +475,12 @@ function ShopContent({
     <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto bg-white lg:left-[272px]">
       <UnlockToast unlocked={unlocks} onDone={() => setUnlocks([])} />
 
-      <div className="mx-auto w-full" style={{ maxWidth: 1180, padding: "32px 32px 72px", fontFamily: "'Nunito', ui-sans-serif, system-ui, sans-serif" }}>
+      <style>{`@media (max-width:560px){.shop-wrap{padding:20px 16px 60px !important}.shop-hero{flex-direction:column !important;align-items:flex-start !important;gap:16px !important;padding:20px !important}.shop-hero-title{font-size:40px !important}}`}</style>
+
+      <div className="mx-auto w-full shop-wrap" style={{ maxWidth: 1180, padding: "32px 32px 72px", fontFamily: "'Nunito', ui-sans-serif, system-ui, sans-serif" }}>
         {/* Title banner + carrot balance */}
         <div
+          className="shop-hero"
           style={{
             position: "relative",
             overflow: "hidden",
@@ -496,6 +499,7 @@ function ShopContent({
           <div style={{ position: "absolute", right: -40, top: -70, width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle,rgba(249,115,22,.18),rgba(249,115,22,0) 66%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 6 }}>
             <h1
+              className="shop-hero-title"
               style={{
                 margin: 0,
                 fontFamily: BALOO,
@@ -523,7 +527,7 @@ function ShopContent({
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
               <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "#c2410c" }}>{child.first_name}&apos;s carrots</div>
-              <div style={{ fontFamily: BALOO, fontSize: 30, fontWeight: 800, lineHeight: 1, letterSpacing: "-.01em", color: "#7c2d12" }}>{child.carrots}</div>
+              <div style={{ fontFamily: BALOO, fontSize: 30, fontWeight: 800, lineHeight: 1, letterSpacing: "-.01em", color: "#7c2d12" }}>{child.carrots.toLocaleString()}</div>
             </div>
           </div>
         </div>
@@ -532,7 +536,7 @@ function ShopContent({
         <section
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(340px,1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(min(340px,100%),1fr))",
             gap: 0,
             borderRadius: 28,
             overflow: "hidden",

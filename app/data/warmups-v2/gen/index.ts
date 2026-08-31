@@ -3,29 +3,117 @@
 // directory up and always win on lessonId collisions (see ../index.ts).
 import type { WarmupDef } from "@/lib/warmup-engine/types";
 import { warmupDef as w0 } from "./ask-it-find-it-warmup";
-import { warmupDef as w1 } from "./chains-and-steps-warmup";
-import { warmupDef as w2 } from "./fable-tellers-warmup";
-import { warmupDef as w3 } from "./key-details-warmup";
-import { warmupDef as w4 } from "./long-or-short-warmup";
-import { warmupDef as w5 } from "./prefix-power-warmup";
-import { warmupDef as w6 } from "./silent-e-warmup";
-import { warmupDef as w7 } from "./snap-words-warmup";
-import { warmupDef as w8 } from "./tricky-words-warmup";
-import { warmupDef as w9 } from "./word-families-friends-warmup";
-import { warmupDef as w10 } from "./word-ladders-warmup";
-import { warmupDef as w11 } from "./word-math-warmup";
+import { warmupDef as w1 } from "./author-reasons-warmup";
+import { warmupDef as w2 } from "./big-kid-words-warmup";
+import { warmupDef as w3 } from "./book-basics-warmup";
+import { warmupDef as w4 } from "./book-makers-warmup";
+import { warmupDef as w5 } from "./capital-start-warmup";
+import { warmupDef as w6 } from "./category-captain-warmup";
+import { warmupDef as w7 } from "./chains-and-steps-warmup";
+import { warmupDef as w8 } from "./check-and-fix-warmup";
+import { warmupDef as w9 } from "./diagram-detectives-warmup";
+import { warmupDef as w10 } from "./double-duty-words-warmup";
+import { warmupDef as w11 } from "./fable-tellers-warmup";
+import { warmupDef as w12 } from "./fact-book-makers-warmup";
+import { warmupDef as w13 } from "./fact-finder-basics-warmup";
+import { warmupDef as w14 } from "./fact-links-warmup";
+import { warmupDef as w15 } from "./fact-questions-warmup";
+import { warmupDef as w16 } from "./fact-reading-party-warmup";
+import { warmupDef as w17 } from "./fact-word-finder-warmup";
+import { warmupDef as w18 } from "./how-they-connect-warmup";
+import { warmupDef as w19 } from "./key-details-warmup";
+import { warmupDef as w20 } from "./letter-pairs-warmup";
+import { warmupDef as w21 } from "./long-or-short-warmup";
+import { warmupDef as w22 } from "./my-first-read-warmup";
+import { warmupDef as w23 } from "./naming-doing-words-warmup";
+import { warmupDef as w24 } from "./parts-of-a-book-warmup";
+import { warmupDef as w25 } from "./picture-clues-warmup";
+import { warmupDef as w26 } from "./picture-or-words-warmup";
+import { warmupDef as w27 } from "./prefix-power-warmup";
+import { warmupDef as w28 } from "./reading-detective-warmup";
+import { warmupDef as w29 } from "./reading-party-warmup";
+import { warmupDef as w30 } from "./same-and-different-warmup";
+import { warmupDef as w31 } from "./science-word-wonder-warmup";
+import { warmupDef as w32 } from "./sentence-clues-warmup";
+import { warmupDef as w33 } from "./sentence-shapes-warmup";
+import { warmupDef as w34 } from "./silent-e-warmup";
+import { warmupDef as w35 } from "./smooth-reader-warmup";
+import { warmupDef as w36 } from "./snap-words-warmup";
+import { warmupDef as w37 } from "./story-elements-warmup";
+import { warmupDef as w38 } from "./story-kinds-warmup";
+import { warmupDef as w39 } from "./story-parts-warmup";
+import { warmupDef as w40 } from "./tell-it-back-warmup";
+import { warmupDef as w41 } from "./text-feature-finders-warmup";
+import { warmupDef as w42 } from "./topic-spotter-warmup";
+import { warmupDef as w43 } from "./tricky-words-warmup";
+import { warmupDef as w44 } from "./two-books-one-topic-warmup";
+import { warmupDef as w45 } from "./two-kinds-of-books-warmup";
+import { warmupDef as w46 } from "./what-is-it-warmup";
+import { warmupDef as w47 } from "./whats-it-about-warmup";
+import { warmupDef as w48 } from "./whos-telling-it-warmup";
+import { warmupDef as w49 } from "./word-changers-warmup";
+import { warmupDef as w50 } from "./word-families-friends-warmup";
+import { warmupDef as w51 } from "./word-ladders-warmup";
+import { warmupDef as w52 } from "./word-math-warmup";
+import { warmupDef as w53 } from "./word-pictures-warmup";
+import { warmupDef as w54 } from "./word-toolbox-warmup";
+import { warmupDef as w55 } from "./word-wonder-warmup";
 
 export const GEN_WARMUPS: Record<string, WarmupDef> = {
   "ask-it-find-it-warmup": w0,
-  "chains-and-steps-warmup": w1,
-  "fable-tellers-warmup": w2,
-  "key-details-warmup": w3,
-  "long-or-short-warmup": w4,
-  "prefix-power-warmup": w5,
-  "silent-e-warmup": w6,
-  "snap-words-warmup": w7,
-  "tricky-words-warmup": w8,
-  "word-families-friends-warmup": w9,
-  "word-ladders-warmup": w10,
-  "word-math-warmup": w11,
+  "author-reasons-warmup": w1,
+  "big-kid-words-warmup": w2,
+  "book-basics-warmup": w3,
+  "book-makers-warmup": w4,
+  "capital-start-warmup": w5,
+  "category-captain-warmup": w6,
+  "chains-and-steps-warmup": w7,
+  "check-and-fix-warmup": w8,
+  "diagram-detectives-warmup": w9,
+  "double-duty-words-warmup": w10,
+  "fable-tellers-warmup": w11,
+  "fact-book-makers-warmup": w12,
+  "fact-finder-basics-warmup": w13,
+  "fact-links-warmup": w14,
+  "fact-questions-warmup": w15,
+  "fact-reading-party-warmup": w16,
+  "fact-word-finder-warmup": w17,
+  "how-they-connect-warmup": w18,
+  "key-details-warmup": w19,
+  "letter-pairs-warmup": w20,
+  "long-or-short-warmup": w21,
+  "my-first-read-warmup": w22,
+  "naming-doing-words-warmup": w23,
+  "parts-of-a-book-warmup": w24,
+  "picture-clues-warmup": w25,
+  "picture-or-words-warmup": w26,
+  "prefix-power-warmup": w27,
+  "reading-detective-warmup": w28,
+  "reading-party-warmup": w29,
+  "same-and-different-warmup": w30,
+  "science-word-wonder-warmup": w31,
+  "sentence-clues-warmup": w32,
+  "sentence-shapes-warmup": w33,
+  "silent-e-warmup": w34,
+  "smooth-reader-warmup": w35,
+  "snap-words-warmup": w36,
+  "story-elements-warmup": w37,
+  "story-kinds-warmup": w38,
+  "story-parts-warmup": w39,
+  "tell-it-back-warmup": w40,
+  "text-feature-finders-warmup": w41,
+  "topic-spotter-warmup": w42,
+  "tricky-words-warmup": w43,
+  "two-books-one-topic-warmup": w44,
+  "two-kinds-of-books-warmup": w45,
+  "what-is-it-warmup": w46,
+  "whats-it-about-warmup": w47,
+  "whos-telling-it-warmup": w48,
+  "word-changers-warmup": w49,
+  "word-families-friends-warmup": w50,
+  "word-ladders-warmup": w51,
+  "word-math-warmup": w52,
+  "word-pictures-warmup": w53,
+  "word-toolbox-warmup": w54,
+  "word-wonder-warmup": w55,
 };
