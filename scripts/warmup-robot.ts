@@ -28,11 +28,14 @@ async function loadDef(id: string): Promise<WarmupDef> {
   return mod.warmupDef as WarmupDef;
 }
 
-/** Click every visible element whose exact text is one of `words`. */
-async function tapWords(page: Page, words: string[]): Promise<number> {
-  return page.evaluate((targets: string[]) => {
+/** Click visible elements whose exact text is one of `words`. `max` caps taps
+ *  (builder rounds must tap exactly one floater per part — duplicate parts on
+ *  the field would otherwise fill both bench slots with the same word). */
+async function tapWords(page: Page, words: string[], max = Infinity): Promise<number> {
+  return page.evaluate(({ targets, cap }: { targets: string[]; cap: number }) => {
     let hits = 0;
     for (const el of Array.from(document.querySelectorAll("div"))) {
+      if (hits >= cap) break;
       const t = el.textContent?.trim();
       if (!t || !targets.includes(t)) continue;
       // climb to the interactive node (cursor:pointer with a pointerdown handler)
@@ -47,7 +50,20 @@ async function tapWords(page: Page, words: string[]): Promise<number> {
       }
     }
     return hits;
-  }, words);
+  }, { targets: words, cap: max === Infinity ? 1e9 : max });
+}
+
+/** Words currently on the field (text of cursor:pointer floaters). */
+async function visibleWords(page: Page): Promise<string[]> {
+  return page.evaluate(() => {
+    const out: string[] = [];
+    for (const el of Array.from(document.querySelectorAll("div"))) {
+      if (getComputedStyle(el).cursor !== "pointer" || el.style.pointerEvents === "none") continue;
+      const t = el.textContent?.trim();
+      if (t && /^[a-z]{1,14}$/.test(t)) out.push(t);
+    }
+    return out;
+  });
 }
 
 async function run(id: string) {
@@ -63,19 +79,29 @@ async function run(id: string) {
   const result = { id, celebrated: false, score: -1, callouts: 0, intro: false, celebrateClip: false, overflow: false, error: "" };
   try {
     await page.goto(`${BASE}/demo/warmup/${id}`, { waitUntil: "networkidle", timeout: 30000 });
-    await page.getByRole("button", { name: /let'?s play/i }).click({ timeout: 15000 });
+    // Tap rounds say "Let's play!", builder rounds say "Let's build!".
+    await page.getByRole("button", { name: /let'?s (play|build)/i }).click({ timeout: 15000 });
     await page.getByRole("button", { name: /^skip$/i }).click({ timeout: 10000 });
     // countdown 3-2-1-GO ≈ 3.2s, then the 45s round
     await page.waitForTimeout(3600);
     const deadline = Date.now() + (def.playSeconds ?? 45) * 1000 + 6000;
     if (def.mode === "builder") {
-      const builds = (def.builds ?? []).map((b) => b.parts);
-      let bi = 0;
-      while (Date.now() < deadline && bi < builds.length) {
-        const [a, b] = builds[bi];
-        if ((await tapWords(page, [a])) > 0) {
-          await page.waitForTimeout(700);
-          if ((await tapWords(page, [b])) > 0) { bi++; await page.waitForTimeout(2600); continue; }
+      // Tap a build only when BOTH its parts are on the field right now —
+      // waiting on a fixed build order stalls when the partner never spawns.
+      const remaining = (def.builds ?? []).map((b) => b.parts);
+      while (Date.now() < deadline && remaining.length) {
+        const vis = await visibleWords(page);
+        const idx = remaining.findIndex(([a, b]) => vis.includes(a) && vis.includes(b));
+        if (idx >= 0) {
+          const [a, b] = remaining[idx];
+          if ((await tapWords(page, [a], 1)) > 0) {
+            await page.waitForTimeout(650);
+            if ((await tapWords(page, [b], 1)) > 0) {
+              remaining.splice(idx, 1);
+              await page.waitForTimeout(2600);
+              continue;
+            }
+          }
         }
         await page.waitForTimeout(500);
         if (await page.getByText(/you (caught|built)|great warm up/i).count()) break;
