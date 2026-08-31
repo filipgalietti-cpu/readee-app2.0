@@ -130,6 +130,7 @@ import { holdItUpQuiz } from "./hold-it-up-quiz";
 import { bookTeamUpQuiz } from "./book-team-up-quiz";
 import { wordLaddersQuiz } from "./word-ladders-quiz";
 import { describeItBetterQuiz } from "./describe-it-better-quiz";
+import { ruleBreakerWordsQuiz } from "./rule-breaker-words-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -260,4 +261,5 @@ export const QUIZZES: Record<string, QuizDef> = {
   "book-team-up-quiz": bookTeamUpQuiz,
   "word-ladders-quiz": wordLaddersQuiz,
   "describe-it-better-quiz": describeItBetterQuiz,
+  "rule-breaker-words-quiz": ruleBreakerWordsQuiz,
 };

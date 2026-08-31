@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc --noEmit)",
+      "Bash(dig *)",
+      "Bash(ffprobe *)",
+      "Bash(sips -g *)",
+      "mcp__claude-design__read_file",
+      "mcp__claude-design__list_files",
+      "mcp__claude-design__list_projects",
+      "mcp__claude-design__get_claude_design_prompt",
+      "mcp__claude-design__get_project",
+      "mcp__claude_ai_Supabase__get_advisors",
+      "mcp__claude_ai_Supabase__list_projects",
+      "mcp__claude_ai_Supabase__list_migrations",
+      "mcp__claude_ai_Supabase__list_tables"
+    ]
+  }
+}

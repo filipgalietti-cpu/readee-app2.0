@@ -239,6 +239,8 @@ import { wordLadders, wordLaddersImages } from "./word-ladders";
 
 import { describeItBetter, describeItBetterImages } from "./describe-it-better";
 
+import { ruleBreakerWords, ruleBreakerWordsImages } from "./rule-breaker-words";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -366,4 +368,5 @@ export const LESSONS: Record<string, LessonEntry> = {
   "book-team-up": { lesson: bookTeamUp, images: bookTeamUpImages },
   "word-ladders": { lesson: wordLadders, images: wordLaddersImages },
   "describe-it-better": { lesson: describeItBetter, images: describeItBetterImages },
+  "rule-breaker-words": { lesson: ruleBreakerWords, images: ruleBreakerWordsImages },
 };

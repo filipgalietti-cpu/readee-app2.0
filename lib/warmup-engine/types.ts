@@ -54,11 +54,21 @@ export type WarmupBuild = {
   emblem?: string;
 };
 
+/** Arcade skin hint. WarmupArcade renders "carrot" | "sky"; WordBuilderArcade
+ *  renders "workshop" | "pond". Optional — surfaces fall back to a per-recipe
+ *  default when absent (hand-built pilots pass skins explicitly). */
+export type WarmupSkinHint = "carrot" | "sky" | "workshop" | "pond";
+
 export type WarmupDef = {
   id: string;
   /** Lesson this warm-up feeds. Journey plays warmup → lesson → questions. */
   lessonId: string;
   title: string;
+  /** Human lesson title for the "Warming up for …" chip (generated defs carry
+   *  it so the dynamic demo route doesn't need the full lesson manifest). */
+  lessonTitle?: string;
+  /** Default skin for surfaces that don't choose one (dynamic demo route). */
+  skin?: WarmupSkinHint;
   recipe: WarmupRecipe;
   /** "rule" = standing match rule; "call" = tap what the voice asks for;
    *  "builder" = snap two called parts together (WordBuilderArcade). */
