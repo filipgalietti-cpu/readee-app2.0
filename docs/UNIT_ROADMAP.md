@@ -11,7 +11,7 @@
 > beat — not just quiz the skill. Reference: U1 lessons (RF.K.2a Rhyme Time =
 > hear it → build it → SAY it).
 
-**Progress: 122 / 201 standards shipped · 1 / 21 units complete**
+**Progress: 123 / 201 standards shipped · 1 / 21 units complete**
 
 ## Kindergarten (38 standards · 4 units)
 
@@ -203,7 +203,7 @@
 ### G2·U4
 | ✓ | Standard | Skill (what school expects) | How it teaches |
 |---|---|---|---|
-| ☐ | RF.2.4b | Read grade-level text orally with accuracy, appropriate rate, and expression. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
+| ☑ | RF.2.4b | Read grade-level text orally with accuracy, appropriate rate, and expression. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
 | ☐ | RF.2.4c | Use context to confirm or self-correct word recognition and understanding, rereading as necessary. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
 | ☐ | RI.2.10 | By end of year, read and comprehend informational texts in the grades 2-3 text complexity band proficiently. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☐ | L.2.3 | Use knowledge of language and its conventions when writing, speaking, reading, or listening | word-work: choose/sort meaning + grammar beats → speak production |

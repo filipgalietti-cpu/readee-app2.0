@@ -243,6 +243,8 @@ import { ruleBreakerWords, ruleBreakerWordsImages } from "./rule-breaker-words";
 
 import { letterPerfect, letterPerfectImages } from "./letter-perfect";
 
+import { readItOutLoud, readItOutLoudImages } from "./read-it-out-loud";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -372,4 +374,5 @@ export const LESSONS: Record<string, LessonEntry> = {
   "describe-it-better": { lesson: describeItBetter, images: describeItBetterImages },
   "rule-breaker-words": { lesson: ruleBreakerWords, images: ruleBreakerWordsImages },
   "letter-perfect": { lesson: letterPerfect, images: letterPerfectImages },
+  "read-it-out-loud": { lesson: readItOutLoud, images: readItOutLoudImages },
 };
