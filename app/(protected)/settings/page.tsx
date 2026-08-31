@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
+import { useAudioStore } from "@/lib/stores/audio-store";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import {
   exportUserDataAction,
@@ -140,7 +141,7 @@ export default function Settings() {
   const [purchases, setPurchases] = useState<Record<string, ShopPurchase[]>>({});
 
   // Preferences (local)
-  const [soundEffects, setSoundEffects] = useState(true);
+  const readQuestionsAloud = useAudioStore((s) => s.readQuestionsAloud);
   const [autoAdvance, setAutoAdvance] = useState(true);
   const [activeTab, setActiveTab] = useState("sec-profile");
 
@@ -151,7 +152,6 @@ export default function Settings() {
     const stored = localStorage.getItem("readee_prefs");
     if (stored) {
       const prefs = JSON.parse(stored);
-      setSoundEffects(prefs.soundEffects ?? true);
       setAutoAdvance(prefs.autoAdvance ?? true);
     }
   }, []);
@@ -160,11 +160,10 @@ export default function Settings() {
     try {
       const stored = localStorage.getItem("readee_prefs");
       const prefs = stored ? JSON.parse(stored) : {};
-      prefs.soundEffects = soundEffects;
       prefs.autoAdvance = autoAdvance;
       localStorage.setItem("readee_prefs", JSON.stringify(prefs));
     } catch {}
-  }, [soundEffects, autoAdvance]);
+  }, [autoAdvance]);
 
   // Scroll-spy: highlight the tab for whichever section is currently in view.
   useEffect(() => {
@@ -585,8 +584,8 @@ export default function Settings() {
                 <div style={{ fontSize: 13, color: "#71717a", marginTop: 2 }}>{email}</div>
               </div>
             </div>
-            <Row label="Sound effects" sub="Sounds during lessons and quizzes">
-              <Switch on={soundEffects} onClick={() => setSoundEffects((v) => !v)} />
+            <Row label="Read questions aloud" sub="Off = your child reads the questions themselves (a challenge). Lessons are always read aloud.">
+              <Switch on={readQuestionsAloud} onClick={() => useAudioStore.getState().setReadQuestionsAloud(!readQuestionsAloud)} />
             </Row>
             <Row label="Auto-advance" sub="Move to the next question automatically" last>
               <Switch on={autoAdvance} onClick={() => setAutoAdvance((v) => !v)} />

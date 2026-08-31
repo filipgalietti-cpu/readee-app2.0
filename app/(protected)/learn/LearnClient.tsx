@@ -613,7 +613,6 @@ function LearnSession({
           />
         </div>
 
-        <MuteToggle />
       </div>
 
       {/* ── Question area ── */}
@@ -752,32 +751,6 @@ function LearnSession({
         <NextCta label={currentIdx + 1 >= totalQ ? "Finish" : "Next"} onClick={handleContinue} />
       )}
     </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════ */
-/*  Mute Toggle                                           */
-/* ═══════════════════════════════════════════════════════ */
-
-function MuteToggle() {
-  const { muted, toggleMute } = useAudio();
-  return (
-    <button
-      onClick={toggleMute}
-      className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
-      aria-label={muted ? "Unmute" : "Mute"}
-    >
-      {muted ? (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-        </svg>
-      ) : (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
-        </svg>
-      )}
-    </button>
   );
 }
 

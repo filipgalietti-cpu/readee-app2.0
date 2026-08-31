@@ -16,7 +16,8 @@ export function useAudio() {
 
   const playUrl = useCallback(
     (url: string, fadeMs?: number) => {
-      if (!audioManager) return;
+      // Spoken narration plays only when "Read questions aloud" is on (default).
+      if (!audioManager || !useAudioStore.getState().readQuestionsAloud) return;
       setIsSpeaking(true);
       audioManager.play(url, fadeMs).finally(() => {
         if (mountedRef.current) setIsSpeaking(false);
@@ -27,7 +28,8 @@ export function useAudio() {
 
   const playSequence = useCallback(
     (items: Array<{ url?: string; delayMs?: number }>) => {
-      if (!audioManager) return;
+      // Spoken narration plays only when "Read questions aloud" is on (default).
+      if (!audioManager || !useAudioStore.getState().readQuestionsAloud) return;
       setIsSpeaking(true);
       audioManager.playSequence(items).finally(() => {
         if (mountedRef.current) setIsSpeaking(false);
