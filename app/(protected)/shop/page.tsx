@@ -24,7 +24,7 @@ import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { grantPowerupFields } from "@/lib/carrots/active-multiplier";
-import { Carrot, Lock, RotateCcw, Volume2, VolumeX, PartyPopper, Zap } from "lucide-react";
+import { Carrot, Lock, RotateCcw, PartyPopper, Zap } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -147,7 +147,6 @@ function ShopContent({
     return () => setImmersive(false);
   }, [ceremony, setImmersive]);
   const isMuted = useAudioStore((s) => s.isMuted);
-  const toggleMute = useAudioStore((s) => s.toggleMute);
 
   // Refs so the async ceremony + long-lived box callbacks never read stale
   // React state.
@@ -560,30 +559,6 @@ function ShopContent({
               >
                 <MysteryBox3D ref={boxRef} onTap={handleBoxClick} onPop={onBoxPop} />
               </div>
-
-              <button
-                onClick={toggleMute}
-                aria-label="Sound"
-                style={{
-                  position: "absolute",
-                  top: 14,
-                  right: 14,
-                  zIndex: 4,
-                  width: 38,
-                  height: 38,
-                  borderRadius: 999,
-                  border: "1px solid #e4e4e7",
-                  background: "rgba(255,255,255,.86)",
-                  color: isMuted ? "#a1a1aa" : "#7c3aed",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  cursor: "pointer",
-                  boxShadow: "0 4px 14px -8px rgba(67,56,202,.7)",
-                }}
-              >
-                {isMuted ? <VolumeX size={18} strokeWidth={2} /> : <Volume2 size={18} strokeWidth={2} />}
-              </button>
 
               <div style={{ position: "absolute", left: 0, right: 0, bottom: 14, display: "flex", justifyContent: "center", pointerEvents: "none", zIndex: 3, opacity: ceremony ? 0 : 1, transition: "opacity .3s ease" }}>
                 <div style={{ padding: "7px 14px", borderRadius: 999, background: "rgba(255,255,255,.86)", backdropFilter: "blur(6px)", fontSize: 12, fontWeight: 800, color: "#4338ca", boxShadow: "0 4px 14px -6px rgba(67,56,202,.6)" }}>
