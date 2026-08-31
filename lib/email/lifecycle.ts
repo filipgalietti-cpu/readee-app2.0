@@ -194,8 +194,8 @@ function renderFirstLessonNudge(
     "",
     "Tonight's quick win:",
     "  1. Open Readee together.",
-    "  2. Tap the green lesson card on the dashboard.",
-    "  3. Let the bunny read the first slide aloud.",
+    "  2. Tap Today's Readee on the dashboard.",
+    "  3. Press play and read along together.",
     "",
     `${BASE_URL}/dashboard`,
     "",
@@ -206,8 +206,8 @@ function renderFirstLessonNudge(
     <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
     <ol style="margin:16px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:#3f3f46;">
       <li>Open Readee together.</li>
-      <li>Tap the green lesson card on the dashboard.</li>
-      <li>Let the bunny read the first slide aloud.</li>
+      <li>Tap Today's Readee on the dashboard.</li>
+      <li>Press play and read along together.</li>
     </ol>`;
   const html = shell({
     preheader: "A 10-minute lesson tonight makes tomorrow easier.",
