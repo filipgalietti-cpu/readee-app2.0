@@ -629,6 +629,12 @@ export default function WarmupArcade({
           <div className="rounded-[2rem] bg-white px-12 py-8 text-center font-display font-bold text-indigo-900 shadow-2xl" style={{ fontSize: warmup.intro.cardText.length <= 4 ? "5.5rem" : "2.75rem", lineHeight: 1.1, animation: "wuPopIn .4s cubic-bezier(.34,1.56,.64,1) both" }}>
             {warmup.intro.cardText}
           </div>
+          <p className="max-w-md px-4 text-center font-display text-3xl font-extrabold leading-snug text-white" style={{ textShadow: "0 3px 0 rgba(30,27,75,.45)", animation: "wuFadeUp .45s .15s ease both" }}>
+            {warmup.playPrompt}
+          </p>
+          <p className="text-lg font-bold text-amber-300" style={{ textShadow: "0 2px 0 rgba(30,27,75,.4)", animation: "wuFadeUp .45s .25s ease both" }}>
+            Every catch earns carrots!
+          </p>
           <button type="button" onClick={countdown} className="rounded-full bg-white/20 px-5 py-2 text-sm font-bold text-white backdrop-blur transition hover:bg-white/30">
             Skip
           </button>
