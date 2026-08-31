@@ -162,7 +162,7 @@
 | ☑ | L.2.4a | Use sentence-level context as a clue to the meaning of a word or phrase. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☑ | L.2.4b | Determine the meaning of the new word formed when a known prefix is added to a known word. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☑ | L.2.4c | Use a known root word as a clue to the meaning of an unknown word with the same root. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | — | — | **G2·U1 EXAM** — 13-Q veto table (L.2.4c covered via root-clues top-up; L.2.4b pick still missing) |
+| ☑ | — | — | **G2·U1 EXAM** — 14-Q veto table (all 13 standards covered; L.2.4c via root-clues top-up, L.2.4b via word-math top-up) |
 
 ### G2·U2
 | ✓ | Standard | Skill (what school expects) | How it teaches |
@@ -198,7 +198,7 @@
 | ☑ | L.2.6 | Use words and phrases acquired through conversations, reading, and being read to, including adjectives and adverbs. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☑ | L.2.1 | Demonstrate command of the conventions of standard English grammar and usage | word-work: choose/sort meaning + grammar beats → speak production |
 | ☑ | L.2.2 | Demonstrate command of the conventions of capitalization, punctuation, and spelling when writing | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | — | — | **G2·U3 EXAM** — 12-Q veto table |
+| ☑ | — | — | **G2·U3 EXAM** — 15-Q veto table (all 13 standards covered) |
 
 ### G2·U4
 | ✓ | Standard | Skill (what school expects) | How it teaches |
