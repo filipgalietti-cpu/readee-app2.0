@@ -16,7 +16,9 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Shuffle, RotateCcw, Play, Volume2, Carrot, Star, Check, X as XIcon } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Shuffle, RotateCcw, Volume2, Carrot, Star, Check, X as XIcon, Wand2, Sparkles, ArrowRight, Lock, RefreshCw } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
@@ -116,18 +118,25 @@ function computeWords(text: string): WordInfo {
   return { words, sents, wSent };
 }
 
+// Tickable story ingredients (kid agency = the wow). No native emojis.
+const TOPICS = ["Animals", "Space", "Dinosaurs", "Sports", "Ocean", "Magic", "Trucks & diggers", "Something funny"];
+
 export default function LunaReader({
   childId,
   childName,
   passages,
+  grade,
   childOutfitId = null,
 }: {
   childId: string;
   childName: string;
   passages: Passage[];
+  /** The child's grade token ("K"/"1st"…) — used to generate a topic story. */
+  grade: string;
   /** The child's equipped bunny skin — the sidekick wears THEIR bunny. */
   childOutfitId?: string | null;
 }) {
+  const router = useRouter();
   const name = (childName || "").trim() || "friend";
   const [pIdx, setPIdx] = useState(0);
   const [override, setOverride] = useState<Passage | null>(null);
@@ -150,6 +159,11 @@ export default function LunaReader({
   const [expression, setExpression] = useState<number | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [preparing, setPreparing] = useState(false);
+  // Intro pill-picker (the resting state): tick topics or type an idea, then
+  // "Let's Go" generates a story right here — no page hop, one orb throughout.
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [custom, setCustom] = useState("");
+  const [errKind, setErrKind] = useState<"upgrade" | "gen" | "unsafe" | null>(null);
   const [lastHeard, setLastHeard] = useState<string | null>(null);
   const [engine, setEngine] = useState<string | null>(null); // which grader ran (debug)
   const [debug, setDebug] = useState(false);
@@ -1347,23 +1361,75 @@ export default function LunaReader({
     armRead(900);
   }
 
-  // Generate a fresh passage while Luna "makes a story" (thinking bubbles + orb
-  // sparks + cycling captions), then reveal it with the build animation.
-  async function prepareAndBegin() {
+  // Ask the server for a story about the child's chosen topic, decodable to
+  // their level. Sets errKind + throws on paywall/moderation/failure so the
+  // intro can show a friendly nudge instead of dropping into a broken build.
+  async function generateFromTopic(topic: string): Promise<Passage> {
+    const r = await fetch("/api/luna/passage", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ childId, topic, gradeLevel: grade }),
+    });
+    if (r.status === 402) { setErrKind("upgrade"); throw new Error("upgrade"); }
+    if (!r.ok) {
+      let msg = ""; try { msg = (await r.json())?.error ?? ""; } catch { /* ignore */ }
+      setErrKind(/kid-safe/i.test(msg) ? "unsafe" : "gen");
+      throw new Error("gen");
+    }
+    const j = await r.json();
+    if (!j?.passage?.text) { setErrKind("gen"); throw new Error("gen"); }
+    return { grade: j.passage.grade ?? grade, title: j.passage.title ?? "Your story", text: j.passage.text, patternLabel: j.passage.patternLabel ?? undefined };
+  }
+
+  // The one continuous hand-off: the pills fade, Luna "thinks" (bubbles + orb
+  // sparks + cycling captions) while the passage loads, then the build reveal
+  // runs — all on the same page, same orb. `loader` picks how the story comes:
+  // topic generation ("Let's Go") or an instant library pick ("New story").
+  async function prepareAndBegin(loader?: () => Promise<Passage>, makingCaption?: string) {
     unlockAudio();
+    setErrKind(null);
     setPreparing(true);
-    setCaption("Thinking of a story you'll love…");
+    setMode("thinking");
+    setCaption(makingCaption ?? "Thinking of a story you'll love…");
     buildingRef.current = true;
     startProcessing();
     sfxTimer(1100, () => { if (buildingRef.current) setCaption("Picking just-right words…"); });
     sfxTimer(2300, () => { if (buildingRef.current) setCaption("Putting the pages together…"); });
     sfxTimer(3500, () => { if (buildingRef.current) setCaption("Adding the fun parts…"); });
-    const p = await loadFreshPassage();
-    buildingRef.current = false;
-    await beginBuild(p);
+    try {
+      const p = await (loader ?? loadFreshPassage)();
+      buildingRef.current = false;
+      await beginBuild(p);
+    } catch {
+      // Generation failed / was walled → back to the pills with a nudge.
+      buildingRef.current = false;
+      stopProcessing();
+      setPreparing(false);
+      setMode("idle");
+      setCaption("Ready to read with me?");
+      setErrKind((k) => k ?? "gen");
+    }
   }
 
-  async function startFlow() { await prepareAndBegin(); }
+  // "Let's Go" — the typed idea trumps the chips (most specific signal); a bare
+  // topic list is joined. No selection → the button is disabled, so this no-ops.
+  function makeStory() {
+    const own = custom.trim();
+    const topic = own || [...selected].join(", ");
+    if (!topic) return;
+    void prepareAndBegin(() => generateFromTopic(topic), "Luna is writing your story…");
+  }
+  const canMake = selected.size > 0 || custom.trim().length > 0;
+  function toggleTopic(t: string) {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(t)) next.delete(t);
+      else if (next.size < 3) next.add(t); // cap at 3 — more turns to word salad
+      return next;
+    });
+  }
+  // "Surprise me" — a free, instant premade read (gated per-child at /luna/read).
+  function surpriseMe() { router.push(`/luna/read?child=${childId}`); }
   async function newPassage() { await prepareAndBegin(); }
 
   function onTap() {
@@ -1499,10 +1565,9 @@ export default function LunaReader({
       {/* Luna + controls */}
       {(preparing || phase !== "done") ? (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, ...(phase === "intro" && !preparing
-          // Intro: stretch the column to the viewport and CENTER the orb
-          // vertically (space-between pinned it too high); the button sits
-          // just below the centered orb.
-          ? { minHeight: "calc(100dvh - 320px)", justifyContent: "center", width: "100%" }
+          // Intro (resting state): orb up top, pills + "Let's Go" below. Full
+          // width, top-aligned so the topic picker has room.
+          ? { width: "100%", paddingTop: 4 }
           : {}) }}>
           {/* Orb + bunny as ONE centered cluster: the wrapper is sized to the
               composite (orb + the bunny's visible overhang) and centered, with
@@ -1528,12 +1593,67 @@ export default function LunaReader({
           )}
 
           {preparing || phase === "building" ? null : phase === "intro" ? (
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, marginTop: 40, paddingBottom: 8 }}>
-              <button type="button" onClick={startFlow} disabled={preparing}
-                style={{ display: "inline-flex", alignItems: "center", gap: 10, border: "none", borderRadius: 999, padding: "20px 56px", fontFamily: BALOO, fontSize: 25, fontWeight: 800, color: "#fff", background: "#4338ca", boxShadow: "0 14px 36px -8px rgba(67,56,202,.5)", cursor: preparing ? "default" : "pointer", opacity: preparing ? 0.75 : 1 }}>
-                <Play className="h-6 w-6" fill="#fff" stroke="none" /> {preparing ? "Getting your story…" : "Let's Start"}
-              </button>
-            </div>
+            errKind ? (
+              // Generation was walled / blocked / failed — a friendly nudge that
+              // keeps the child on the same page (tap to return to the pills).
+              <div className="mt-6 flex flex-col items-center text-center" style={{ maxWidth: 460 }}>
+                {errKind === "upgrade" ? (
+                  <>
+                    <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
+                      <Lock className="h-3 w-3" /> Readee+
+                    </div>
+                    <h2 className="mt-2 text-xl font-extrabold text-zinc-900 dark:text-white" style={{ fontFamily: BALOO }}>Make unlimited stories with Luna</h2>
+                    <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">Luna writes a new story about anything {name} loves, at their exact reading level, and coaches every word.</p>
+                    <Link href="/upgrade?reason=tools_hub" className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-violet-700">
+                      Unlock Luna <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-sm font-semibold text-zinc-600 dark:text-slate-300">
+                      {errKind === "unsafe" ? "Let's pick a different idea. Luna keeps every story child-friendly." : "Luna couldn't finish that one. Let's try again."}
+                    </p>
+                    <button type="button" onClick={() => setErrKind(null)} className="mt-3 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-5 py-2 text-sm font-bold text-violet-700 transition hover:bg-violet-50">
+                      <RefreshCw className="h-4 w-4" /> {errKind === "unsafe" ? "Pick another" : "Try again"}
+                    </button>
+                  </>
+                )}
+              </div>
+            ) : (
+              // Resting state: the topic picker sits with the orb. Tapping
+              // "Let's Go" hands off to prepareAndBegin — pills fade, orb thinks.
+              <div className="mt-3 flex w-full flex-col items-center text-center" style={{ paddingBottom: 8 }}>
+                <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+                  <Sparkles className="h-4 w-4" /> Luna
+                </div>
+                <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white" style={{ fontFamily: BALOO }}>
+                  What should your story be about, {name}?
+                </h2>
+                <p className="mt-1 text-sm font-semibold text-zinc-500 dark:text-slate-400">Pick up to 3, or type your own idea. Luna makes a story you can read.</p>
+                <div className="mt-5 flex flex-wrap justify-center gap-2.5">
+                  {TOPICS.map((t) => {
+                    const on = selected.has(t);
+                    return (
+                      <button key={t} type="button" aria-pressed={on} onClick={() => toggleTopic(t)}
+                        className={`inline-flex items-center gap-1.5 rounded-full border-2 px-4 py-2 text-sm font-bold shadow-sm transition ${on ? "border-violet-500 bg-violet-600 text-white" : "border-violet-100 bg-white text-zinc-700 hover:-translate-y-0.5 hover:border-violet-300 hover:text-violet-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200"}`}>
+                        {on && <Check className="h-3.5 w-3.5" strokeWidth={3.5} />} {t}
+                      </button>
+                    );
+                  })}
+                </div>
+                <input value={custom} onChange={(e) => setCustom(e.target.value)} maxLength={200} placeholder="…or add your own idea"
+                  className="mt-5 w-full max-w-md rounded-full border-2 border-zinc-200 bg-white px-4 py-2 text-center text-sm text-zinc-900 outline-none transition focus:border-violet-300 dark:border-slate-800 dark:bg-slate-900 dark:text-white" />
+                <button type="button" onClick={makeStory} disabled={!canMake}
+                  className="mt-5 inline-flex items-center gap-2 rounded-full bg-violet-600 px-7 py-3 text-base font-extrabold text-white shadow-lg shadow-violet-500/25 transition hover:bg-violet-700 disabled:cursor-default disabled:opacity-40"
+                  style={{ fontFamily: BALOO }}>
+                  <Wand2 className="h-5 w-5" /> Let&apos;s Go
+                </button>
+                <button type="button" onClick={surpriseMe}
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 transition hover:text-violet-800 dark:text-violet-300">
+                  <Sparkles className="h-4 w-4" /> Surprise me
+                </button>
+              </div>
+            )
           ) : (
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               {mode === "idle" && (
