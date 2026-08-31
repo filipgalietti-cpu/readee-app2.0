@@ -34,8 +34,7 @@ export const warmupDef: WarmupDef = {
         },
         {
           "word": "pour",
-          "isMatch": true,
-          "audio": "/audio/warmups-v2/hold-it-up-warmup/w-pour.mp3"
+          "isMatch": true
         },
         {
           "word": "train",

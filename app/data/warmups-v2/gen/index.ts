@@ -8,88 +8,91 @@ import { warmupDef as w2 } from "./author-reasons-warmup";
 import { warmupDef as w3 } from "./big-kid-words-warmup";
 import { warmupDef as w4 } from "./book-basics-warmup";
 import { warmupDef as w5 } from "./book-makers-warmup";
-import { warmupDef as w6 } from "./capital-start-warmup";
-import { warmupDef as w7 } from "./category-captain-warmup";
-import { warmupDef as w8 } from "./chains-and-steps-warmup";
-import { warmupDef as w9 } from "./character-challenges-warmup";
-import { warmupDef as w10 } from "./check-and-fix-warmup";
-import { warmupDef as w11 } from "./clue-hunters-warmup";
-import { warmupDef as w12 } from "./diagram-detectives-warmup";
-import { warmupDef as w13 } from "./double-duty-words-warmup";
-import { warmupDef as w14 } from "./fable-tellers-warmup";
-import { warmupDef as w15 } from "./fact-book-makers-warmup";
-import { warmupDef as w16 } from "./fact-finder-basics-warmup";
-import { warmupDef as w17 } from "./fact-finders-ask-warmup";
-import { warmupDef as w18 } from "./fact-links-warmup";
-import { warmupDef as w19 } from "./fact-party-g1-warmup";
-import { warmupDef as w20 } from "./fact-questions-warmup";
-import { warmupDef as w21 } from "./fact-reading-party-warmup";
-import { warmupDef as w22 } from "./fact-word-finder-warmup";
-import { warmupDef as w23 } from "./find-it-fast-warmup";
-import { warmupDef as w24 } from "./grammar-builders-warmup";
-import { warmupDef as w25 } from "./hold-it-up-warmup";
-import { warmupDef as w26 } from "./how-they-connect-warmup";
-import { warmupDef as w27 } from "./idea-illustrators-warmup";
-import { warmupDef as w28 } from "./key-details-warmup";
-import { warmupDef as w29 } from "./letter-pairs-warmup";
-import { warmupDef as w30 } from "./long-or-short-warmup";
-import { warmupDef as w31 } from "./look-it-up-warmup";
-import { warmupDef as w32 } from "./my-first-read-warmup";
-import { warmupDef as w33 } from "./naming-doing-words-warmup";
-import { warmupDef as w34 } from "./one-story-two-ways-warmup";
-import { warmupDef as w35 } from "./paragraph-power-warmup";
-import { warmupDef as w36 } from "./parts-of-a-book-warmup";
-import { warmupDef as w37 } from "./picture-clues-warmup";
-import { warmupDef as w38 } from "./picture-detectives-warmup";
-import { warmupDef as w39 } from "./picture-or-words-warmup";
-import { warmupDef as w40 } from "./pictures-tell-more-warmup";
-import { warmupDef as w41 } from "./pictures-that-teach-warmup";
-import { warmupDef as w42 } from "./prefix-power-warmup";
-import { warmupDef as w43 } from "./prove-it-warmup";
-import { warmupDef as w44 } from "./read-like-you-talk-warmup";
-import { warmupDef as w45 } from "./read-with-your-brain-warmup";
-import { warmupDef as w46 } from "./reading-detective-warmup";
-import { warmupDef as w47 } from "./reading-party-warmup";
-import { warmupDef as w48 } from "./reading-with-purpose-warmup";
-import { warmupDef as w49 } from "./root-clues-warmup";
-import { warmupDef as w50 } from "./same-and-different-warmup";
-import { warmupDef as w51 } from "./science-word-clues-warmup";
-import { warmupDef as w52 } from "./science-word-wonder-warmup";
-import { warmupDef as w53 } from "./sentence-clues-warmup";
-import { warmupDef as w54 } from "./sentence-shapes-warmup";
-import { warmupDef as w55 } from "./silent-e-warmup";
-import { warmupDef as w56 } from "./smooth-reader-warmup";
-import { warmupDef as w57 } from "./snap-words-warmup";
-import { warmupDef as w58 } from "./story-elements-warmup";
-import { warmupDef as w59 } from "./story-kinds-warmup";
-import { warmupDef as w60 } from "./story-parts-warmup";
-import { warmupDef as w61 } from "./story-poem-party-warmup";
-import { warmupDef as w62 } from "./story-shape-warmup";
-import { warmupDef as w63 } from "./tell-it-back-warmup";
-import { warmupDef as w64 } from "./text-feature-finders-warmup";
-import { warmupDef as w65 } from "./the-whole-story-warmup";
-import { warmupDef as w66 } from "./topic-spotter-warmup";
-import { warmupDef as w67 } from "./tricky-words-warmup";
-import { warmupDef as w68 } from "./two-books-one-topic-warmup";
-import { warmupDef as w69 } from "./two-kinds-of-books-warmup";
-import { warmupDef as w70 } from "./two-texts-compare-warmup";
-import { warmupDef as w71 } from "./what-is-it-warmup";
-import { warmupDef as w72 } from "./whats-it-about-warmup";
-import { warmupDef as w73 } from "./whos-telling-it-warmup";
-import { warmupDef as w74 } from "./why-authors-write-warmup";
-import { warmupDef as w75 } from "./word-changers-warmup";
-import { warmupDef as w76 } from "./word-families-friends-warmup";
-import { warmupDef as w77 } from "./word-ladders-warmup";
-import { warmupDef as w78 } from "./word-math-warmup";
-import { warmupDef as w79 } from "./word-music-warmup";
-import { warmupDef as w80 } from "./word-pictures-warmup";
-import { warmupDef as w81 } from "./word-solvers-warmup";
-import { warmupDef as w82 } from "./word-toolbox-warmup";
-import { warmupDef as w83 } from "./word-wonder-warmup";
-import { warmupDef as w84 } from "./words-in-real-life-warmup";
-import { warmupDef as w85 } from "./words-in-your-world-warmup";
-import { warmupDef as w86 } from "./words-we-use-warmup";
-import { warmupDef as w87 } from "./write-it-right-warmup";
+import { warmupDef as w6 } from "./book-team-up-warmup";
+import { warmupDef as w7 } from "./capital-start-warmup";
+import { warmupDef as w8 } from "./category-captain-warmup";
+import { warmupDef as w9 } from "./chains-and-steps-warmup";
+import { warmupDef as w10 } from "./character-challenges-warmup";
+import { warmupDef as w11 } from "./check-and-fix-warmup";
+import { warmupDef as w12 } from "./clue-hunters-warmup";
+import { warmupDef as w13 } from "./describe-it-better-warmup";
+import { warmupDef as w14 } from "./diagram-detectives-warmup";
+import { warmupDef as w15 } from "./double-duty-words-warmup";
+import { warmupDef as w16 } from "./fable-tellers-warmup";
+import { warmupDef as w17 } from "./fact-book-makers-warmup";
+import { warmupDef as w18 } from "./fact-finder-basics-warmup";
+import { warmupDef as w19 } from "./fact-finders-ask-warmup";
+import { warmupDef as w20 } from "./fact-links-warmup";
+import { warmupDef as w21 } from "./fact-party-g1-warmup";
+import { warmupDef as w22 } from "./fact-questions-warmup";
+import { warmupDef as w23 } from "./fact-reading-party-warmup";
+import { warmupDef as w24 } from "./fact-word-finder-warmup";
+import { warmupDef as w25 } from "./find-it-fast-warmup";
+import { warmupDef as w26 } from "./grammar-builders-warmup";
+import { warmupDef as w27 } from "./hold-it-up-warmup";
+import { warmupDef as w28 } from "./how-they-connect-warmup";
+import { warmupDef as w29 } from "./idea-illustrators-warmup";
+import { warmupDef as w30 } from "./key-details-warmup";
+import { warmupDef as w31 } from "./letter-pairs-warmup";
+import { warmupDef as w32 } from "./long-or-short-warmup";
+import { warmupDef as w33 } from "./look-it-up-warmup";
+import { warmupDef as w34 } from "./my-first-read-warmup";
+import { warmupDef as w35 } from "./naming-doing-words-warmup";
+import { warmupDef as w36 } from "./one-story-two-ways-warmup";
+import { warmupDef as w37 } from "./paragraph-power-warmup";
+import { warmupDef as w38 } from "./parts-of-a-book-warmup";
+import { warmupDef as w39 } from "./picture-clues-warmup";
+import { warmupDef as w40 } from "./picture-detectives-warmup";
+import { warmupDef as w41 } from "./picture-or-words-warmup";
+import { warmupDef as w42 } from "./pictures-tell-more-warmup";
+import { warmupDef as w43 } from "./pictures-that-teach-warmup";
+import { warmupDef as w44 } from "./prefix-power-warmup";
+import { warmupDef as w45 } from "./prove-it-warmup";
+import { warmupDef as w46 } from "./read-like-you-talk-warmup";
+import { warmupDef as w47 } from "./read-with-your-brain-warmup";
+import { warmupDef as w48 } from "./reading-detective-warmup";
+import { warmupDef as w49 } from "./reading-party-warmup";
+import { warmupDef as w50 } from "./reading-with-purpose-warmup";
+import { warmupDef as w51 } from "./root-clues-warmup";
+import { warmupDef as w52 } from "./rule-breaker-words-warmup";
+import { warmupDef as w53 } from "./same-and-different-warmup";
+import { warmupDef as w54 } from "./science-word-clues-warmup";
+import { warmupDef as w55 } from "./science-word-wonder-warmup";
+import { warmupDef as w56 } from "./sentence-clues-warmup";
+import { warmupDef as w57 } from "./sentence-shapes-warmup";
+import { warmupDef as w58 } from "./silent-e-warmup";
+import { warmupDef as w59 } from "./smooth-reader-warmup";
+import { warmupDef as w60 } from "./snap-words-warmup";
+import { warmupDef as w61 } from "./story-elements-warmup";
+import { warmupDef as w62 } from "./story-kinds-warmup";
+import { warmupDef as w63 } from "./story-parts-warmup";
+import { warmupDef as w64 } from "./story-poem-party-warmup";
+import { warmupDef as w65 } from "./story-shape-warmup";
+import { warmupDef as w66 } from "./tell-it-back-warmup";
+import { warmupDef as w67 } from "./text-feature-finders-warmup";
+import { warmupDef as w68 } from "./the-whole-story-warmup";
+import { warmupDef as w69 } from "./topic-spotter-warmup";
+import { warmupDef as w70 } from "./tricky-words-warmup";
+import { warmupDef as w71 } from "./two-books-one-topic-warmup";
+import { warmupDef as w72 } from "./two-kinds-of-books-warmup";
+import { warmupDef as w73 } from "./two-texts-compare-warmup";
+import { warmupDef as w74 } from "./what-is-it-warmup";
+import { warmupDef as w75 } from "./whats-it-about-warmup";
+import { warmupDef as w76 } from "./whos-telling-it-warmup";
+import { warmupDef as w77 } from "./why-authors-write-warmup";
+import { warmupDef as w78 } from "./word-changers-warmup";
+import { warmupDef as w79 } from "./word-families-friends-warmup";
+import { warmupDef as w80 } from "./word-ladders-warmup";
+import { warmupDef as w81 } from "./word-math-warmup";
+import { warmupDef as w82 } from "./word-music-warmup";
+import { warmupDef as w83 } from "./word-pictures-warmup";
+import { warmupDef as w84 } from "./word-solvers-warmup";
+import { warmupDef as w85 } from "./word-toolbox-warmup";
+import { warmupDef as w86 } from "./word-wonder-warmup";
+import { warmupDef as w87 } from "./words-in-real-life-warmup";
+import { warmupDef as w88 } from "./words-in-your-world-warmup";
+import { warmupDef as w89 } from "./words-we-use-warmup";
+import { warmupDef as w90 } from "./write-it-right-warmup";
 
 export const GEN_WARMUPS: Record<string, WarmupDef> = {
   "ask-and-answer-g2-warmup": w0,
@@ -98,86 +101,89 @@ export const GEN_WARMUPS: Record<string, WarmupDef> = {
   "big-kid-words-warmup": w3,
   "book-basics-warmup": w4,
   "book-makers-warmup": w5,
-  "capital-start-warmup": w6,
-  "category-captain-warmup": w7,
-  "chains-and-steps-warmup": w8,
-  "character-challenges-warmup": w9,
-  "check-and-fix-warmup": w10,
-  "clue-hunters-warmup": w11,
-  "diagram-detectives-warmup": w12,
-  "double-duty-words-warmup": w13,
-  "fable-tellers-warmup": w14,
-  "fact-book-makers-warmup": w15,
-  "fact-finder-basics-warmup": w16,
-  "fact-finders-ask-warmup": w17,
-  "fact-links-warmup": w18,
-  "fact-party-g1-warmup": w19,
-  "fact-questions-warmup": w20,
-  "fact-reading-party-warmup": w21,
-  "fact-word-finder-warmup": w22,
-  "find-it-fast-warmup": w23,
-  "grammar-builders-warmup": w24,
-  "hold-it-up-warmup": w25,
-  "how-they-connect-warmup": w26,
-  "idea-illustrators-warmup": w27,
-  "key-details-warmup": w28,
-  "letter-pairs-warmup": w29,
-  "long-or-short-warmup": w30,
-  "look-it-up-warmup": w31,
-  "my-first-read-warmup": w32,
-  "naming-doing-words-warmup": w33,
-  "one-story-two-ways-warmup": w34,
-  "paragraph-power-warmup": w35,
-  "parts-of-a-book-warmup": w36,
-  "picture-clues-warmup": w37,
-  "picture-detectives-warmup": w38,
-  "picture-or-words-warmup": w39,
-  "pictures-tell-more-warmup": w40,
-  "pictures-that-teach-warmup": w41,
-  "prefix-power-warmup": w42,
-  "prove-it-warmup": w43,
-  "read-like-you-talk-warmup": w44,
-  "read-with-your-brain-warmup": w45,
-  "reading-detective-warmup": w46,
-  "reading-party-warmup": w47,
-  "reading-with-purpose-warmup": w48,
-  "root-clues-warmup": w49,
-  "same-and-different-warmup": w50,
-  "science-word-clues-warmup": w51,
-  "science-word-wonder-warmup": w52,
-  "sentence-clues-warmup": w53,
-  "sentence-shapes-warmup": w54,
-  "silent-e-warmup": w55,
-  "smooth-reader-warmup": w56,
-  "snap-words-warmup": w57,
-  "story-elements-warmup": w58,
-  "story-kinds-warmup": w59,
-  "story-parts-warmup": w60,
-  "story-poem-party-warmup": w61,
-  "story-shape-warmup": w62,
-  "tell-it-back-warmup": w63,
-  "text-feature-finders-warmup": w64,
-  "the-whole-story-warmup": w65,
-  "topic-spotter-warmup": w66,
-  "tricky-words-warmup": w67,
-  "two-books-one-topic-warmup": w68,
-  "two-kinds-of-books-warmup": w69,
-  "two-texts-compare-warmup": w70,
-  "what-is-it-warmup": w71,
-  "whats-it-about-warmup": w72,
-  "whos-telling-it-warmup": w73,
-  "why-authors-write-warmup": w74,
-  "word-changers-warmup": w75,
-  "word-families-friends-warmup": w76,
-  "word-ladders-warmup": w77,
-  "word-math-warmup": w78,
-  "word-music-warmup": w79,
-  "word-pictures-warmup": w80,
-  "word-solvers-warmup": w81,
-  "word-toolbox-warmup": w82,
-  "word-wonder-warmup": w83,
-  "words-in-real-life-warmup": w84,
-  "words-in-your-world-warmup": w85,
-  "words-we-use-warmup": w86,
-  "write-it-right-warmup": w87,
+  "book-team-up-warmup": w6,
+  "capital-start-warmup": w7,
+  "category-captain-warmup": w8,
+  "chains-and-steps-warmup": w9,
+  "character-challenges-warmup": w10,
+  "check-and-fix-warmup": w11,
+  "clue-hunters-warmup": w12,
+  "describe-it-better-warmup": w13,
+  "diagram-detectives-warmup": w14,
+  "double-duty-words-warmup": w15,
+  "fable-tellers-warmup": w16,
+  "fact-book-makers-warmup": w17,
+  "fact-finder-basics-warmup": w18,
+  "fact-finders-ask-warmup": w19,
+  "fact-links-warmup": w20,
+  "fact-party-g1-warmup": w21,
+  "fact-questions-warmup": w22,
+  "fact-reading-party-warmup": w23,
+  "fact-word-finder-warmup": w24,
+  "find-it-fast-warmup": w25,
+  "grammar-builders-warmup": w26,
+  "hold-it-up-warmup": w27,
+  "how-they-connect-warmup": w28,
+  "idea-illustrators-warmup": w29,
+  "key-details-warmup": w30,
+  "letter-pairs-warmup": w31,
+  "long-or-short-warmup": w32,
+  "look-it-up-warmup": w33,
+  "my-first-read-warmup": w34,
+  "naming-doing-words-warmup": w35,
+  "one-story-two-ways-warmup": w36,
+  "paragraph-power-warmup": w37,
+  "parts-of-a-book-warmup": w38,
+  "picture-clues-warmup": w39,
+  "picture-detectives-warmup": w40,
+  "picture-or-words-warmup": w41,
+  "pictures-tell-more-warmup": w42,
+  "pictures-that-teach-warmup": w43,
+  "prefix-power-warmup": w44,
+  "prove-it-warmup": w45,
+  "read-like-you-talk-warmup": w46,
+  "read-with-your-brain-warmup": w47,
+  "reading-detective-warmup": w48,
+  "reading-party-warmup": w49,
+  "reading-with-purpose-warmup": w50,
+  "root-clues-warmup": w51,
+  "rule-breaker-words-warmup": w52,
+  "same-and-different-warmup": w53,
+  "science-word-clues-warmup": w54,
+  "science-word-wonder-warmup": w55,
+  "sentence-clues-warmup": w56,
+  "sentence-shapes-warmup": w57,
+  "silent-e-warmup": w58,
+  "smooth-reader-warmup": w59,
+  "snap-words-warmup": w60,
+  "story-elements-warmup": w61,
+  "story-kinds-warmup": w62,
+  "story-parts-warmup": w63,
+  "story-poem-party-warmup": w64,
+  "story-shape-warmup": w65,
+  "tell-it-back-warmup": w66,
+  "text-feature-finders-warmup": w67,
+  "the-whole-story-warmup": w68,
+  "topic-spotter-warmup": w69,
+  "tricky-words-warmup": w70,
+  "two-books-one-topic-warmup": w71,
+  "two-kinds-of-books-warmup": w72,
+  "two-texts-compare-warmup": w73,
+  "what-is-it-warmup": w74,
+  "whats-it-about-warmup": w75,
+  "whos-telling-it-warmup": w76,
+  "why-authors-write-warmup": w77,
+  "word-changers-warmup": w78,
+  "word-families-friends-warmup": w79,
+  "word-ladders-warmup": w80,
+  "word-math-warmup": w81,
+  "word-music-warmup": w82,
+  "word-pictures-warmup": w83,
+  "word-solvers-warmup": w84,
+  "word-toolbox-warmup": w85,
+  "word-wonder-warmup": w86,
+  "words-in-real-life-warmup": w87,
+  "words-in-your-world-warmup": w88,
+  "words-we-use-warmup": w89,
+  "write-it-right-warmup": w90,
 };
