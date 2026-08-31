@@ -127,6 +127,7 @@ import { oneStoryTwoWaysQuiz } from "./one-story-two-ways-quiz";
 import { theWholeStoryQuiz } from "./the-whole-story-quiz";
 import { picturesThatTeachQuiz } from "./pictures-that-teach-quiz";
 import { holdItUpQuiz } from "./hold-it-up-quiz";
+import { bookTeamUpQuiz } from "./book-team-up-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -254,4 +255,5 @@ export const QUIZZES: Record<string, QuizDef> = {
   "the-whole-story-quiz": theWholeStoryQuiz,
   "pictures-that-teach-quiz": picturesThatTeachQuiz,
   "hold-it-up-quiz": holdItUpQuiz,
+  "book-team-up-quiz": bookTeamUpQuiz,
 };

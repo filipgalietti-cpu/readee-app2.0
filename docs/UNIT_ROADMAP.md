@@ -11,7 +11,7 @@
 > beat — not just quiz the skill. Reference: U1 lessons (RF.K.2a Rhyme Time =
 > hear it → build it → SAY it).
 
-**Progress: 117 / 201 standards shipped · 1 / 21 units complete**
+**Progress: 118 / 201 standards shipped · 1 / 21 units complete**
 
 ## Kindergarten (38 standards · 4 units)
 
@@ -193,7 +193,7 @@
 | ☑ | RL.2.10 | By end of year, read and comprehend literature in the grades 2-3 text complexity band proficiently. | story read-along → choose/highlight comprehension beats → retell/sequence |
 | ☑ | RI.2.7 | Explain how specific images contribute to and clarify a text. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☑ | RI.2.8 | Describe how reasons support specific points the author makes in a text. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | RI.2.9 | Compare and contrast the most important points presented by two texts on the same topic. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | RI.2.9 | Compare and contrast the most important points presented by two texts on the same topic. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☐ | L.2.5b | Distinguish shades of meaning among closely related verbs and adjectives. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☐ | L.2.6 | Use words and phrases acquired through conversations, reading, and being read to, including adjectives and adverbs. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☐ | L.2.1 | Demonstrate command of the conventions of standard English grammar and usage | word-work: choose/sort meaning + grammar beats → speak production |
