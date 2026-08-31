@@ -623,6 +623,9 @@ function LessonContent() {
   const awardCarrots = useCallback(
     async (amount: number) => {
       if (!child) return;
+      // Flat mystery-box powerup applied once, here at the single lesson award
+      // choke point — callers pass base carrots and can't forget the boost.
+      const boosted = Math.floor(amount * getActiveMultiplier(child));
       const supabase = supabaseBrowser();
       const { data } = await supabase
         .from("children")
@@ -633,10 +636,10 @@ function LessonContent() {
       const currentCarrots = (data as { carrots: number } | null)?.carrots ?? 0;
       await savedOk("lesson:carrots", supabase
         .from("children")
-        .update({ carrots: currentCarrots + amount })
+        .update({ carrots: currentCarrots + boosted })
         .eq("id", child.id));
 
-      setTotalCarrots((prev) => prev + amount);
+      setTotalCarrots((prev) => prev + boosted);
     },
     [child]
   );
@@ -679,9 +682,8 @@ function LessonContent() {
     } else {
       // All cards seen — complete learn phase
       saveProgress("learn", 100);
-      const mysteryMult = getActiveMultiplier(child);
       const daily = getDailyMultiplier(child?.streak_days ?? 0);
-      awardCarrots(Math.floor(5 * daily.multiplier * mysteryMult));
+      awardCarrots(Math.floor(5 * daily.multiplier));
       setPhase("practice");
       questionStartRef.current = Date.now();
     }
@@ -704,9 +706,8 @@ function LessonContent() {
       saveProgress("practice", score);
 
       if (passed) {
-        const mysteryMult = getActiveMultiplier(child);
         const daily = getDailyMultiplier(child?.streak_days ?? 0);
-        awardCarrots(Math.floor(5 * daily.multiplier * mysteryMult));
+        awardCarrots(Math.floor(5 * daily.multiplier));
         finishLesson();
       } else {
         setPhase("complete"); // shows retry screen
@@ -729,8 +730,7 @@ function LessonContent() {
       // Per-question bonus carrot with multipliers
       const daily = getDailyMultiplier(child?.streak_days ?? 0);
       const session = getSessionStreakTier(newConsecutive);
-      const mysteryMult = getActiveMultiplier(child);
-      const bonus = Math.floor(1 * daily.multiplier * session.multiplier * mysteryMult);
+      const bonus = Math.floor(1 * daily.multiplier * session.multiplier);
       if (bonus > 0) awardCarrots(bonus);
       setFeedback({ text: CORRECT_MSGS[Math.floor(Math.random() * CORRECT_MSGS.length)], type: "correct" });
       setShowMiniConfetti(true);

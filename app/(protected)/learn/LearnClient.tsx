@@ -22,7 +22,7 @@ import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { findStandardById } from "@/lib/data/all-standards";
 import { fadeUp, fadeIn, staggerContainer, popIn, scaleIn } from "@/lib/motion/variants";
 import { getDailyMultiplier, getSessionStreakTier } from "@/lib/carrots/multipliers";
-import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
+import { finalizeSessionCarrots } from "@/lib/carrots/finalize-session";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
@@ -483,7 +483,7 @@ function LearnSession({
         const daily = getDailyMultiplier(child.streak_days);
         const session = getSessionStreakTier(newConsecutive);
         const hintFactor = showHint ? HINT_CARROT_FACTOR : 1;
-        const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * getActiveMultiplier(child) * hintFactor);
+        const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * hintFactor);
         setSessionCarrots((prev) => prev + carrots);
       }
       setFeedbackMsg(q.correct_feedback ?? pickRandom(CORRECT_MESSAGES));
@@ -524,7 +524,7 @@ function LearnSession({
       setConsecutiveCorrect(newConsecutive);
       const daily = getDailyMultiplier(child.streak_days);
       const session = getSessionStreakTier(newConsecutive);
-      const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier * getActiveMultiplier(child));
+      const carrots = Math.floor(CARROTS_PER_CORRECT * daily.multiplier * session.multiplier);
       setSessionCarrots((prev) => prev + carrots);
       setFeedbackMsg(pickRandom(CORRECT_MESSAGES));
       setFeedbackEmoji(pickRandom(CORRECT_EMOJIS));
@@ -573,6 +573,8 @@ function LearnSession({
   /* ── Phase: Complete ── */
   if (phase === "complete") {
     const correctCount = answers.filter((a) => a.correct).length;
+    // Apply the flat mystery-box powerup once, to the session total.
+    const carrots = finalizeSessionCarrots(sessionCarrots, child);
     return (
       <CompletionScreen
         child={child}
@@ -580,7 +582,8 @@ function LearnSession({
         answers={answers}
         questions={mcqQuestions}
         correctCount={correctCount}
-        carrotsEarned={sessionCarrots}
+        carrotsEarned={carrots.final}
+        carrotBoost={carrots.boost}
       />
     );
   }
@@ -850,6 +853,7 @@ function CompletionScreen({
   questions,
   correctCount,
   carrotsEarned,
+  carrotBoost,
 }: {
   child: Child;
   lesson: SampleLesson;
@@ -857,6 +861,7 @@ function CompletionScreen({
   questions: Question[];
   correctCount: number;
   carrotsEarned: number;
+  carrotBoost?: number;
 }) {
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -1098,6 +1103,9 @@ function CompletionScreen({
           <div className="text-center">
             <div className="text-4xl font-extrabold text-orange-600 dark:text-orange-400">+{carrotsEarned}</div>
             <div className="text-xs text-slate-500 mt-1 font-medium">Carrots Earned</div>
+            {carrotBoost && carrotBoost > 1 ? (
+              <div className="mt-1 inline-block rounded-full bg-orange-100 px-2 py-0.5 text-[11px] font-extrabold text-orange-700">{carrotBoost}× boost!</div>
+            ) : null}
           </div>
         </motion.div>
 
