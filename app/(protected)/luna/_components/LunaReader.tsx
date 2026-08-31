@@ -1092,19 +1092,21 @@ export default function LunaReader({
     playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`Amazing, ${name}!`); celebrate(true); }, () => finishSession());
   }
   function sentenceFeedback(g: Grade, curIdx: number, curAttempt: number) {
-    // SUBSTITUTED first — the kid actually said those wrong (said "dig" for
-    // "pig"), so they're the words to teach. "Missed" can just be Azure not
-    // catching a word, so they rank after; targeting one of those made the
-    // mini-lesson sound out a word the kid didn't even struggle with.
+    // SUBSTITUTIONS are the only words we KNOW the child misread (said "dig"
+    // for "pig") — those are the words to teach. Azure "missed"/omission is
+    // frequently just the recognizer not catching a word the child read fine,
+    // so a lone missed word is treated as a CLEAN read: a tutor never re-teaches
+    // a correct read (the fastest way to lose a young reader's trust). A real
+    // skip shows up as MANY missed words, so a large share still counts.
     const clean = (w: string) => w.replace(/[^A-Za-z'-]/g, "");
-    const tricky = [
-      ...g.wordAnnotations.filter((w) => w.status === "substituted"),
-      ...g.wordAnnotations.filter((w) => w.status === "missed"),
-    ].map((w) => clean(w.word)).filter(Boolean);
-    // Error = they read the wrong WORDS. Fluency (slow/choppy) is tracked for the
-    // report but does NOT trigger a "you got it wrong" retry — that was flagging
-    // correct-but-slow reads.
-    const hasError = g.wordsCorrect < g.wordsTotal || tricky.length > 0;
+    const subWords = g.wordAnnotations.filter((w) => w.status === "substituted").map((w) => clean(w.word)).filter(Boolean);
+    const subCount = subWords.length;
+    const missCount = g.wordAnnotations.filter((w) => w.status === "missed").length;
+    // Error = wrong words (substitutions), or so many undetected words that it
+    // reads as a genuine skip/mumble (>= 40% of the line, min 2), not recognizer
+    // noise. Fluency (slow/choppy) is tracked for the report but never triggers
+    // a retry.
+    const hasError = subCount > 0 || missCount >= Math.max(2, Math.ceil(g.wordsTotal * 0.4));
     const willRetry = hasError && curAttempt === 0;
     // On the FINAL result for this sentence, roll it into the session grade
     // (there's no whole-story overall read anymore).
@@ -1113,7 +1115,7 @@ export default function LunaReader({
       statsRef.current.wt += g.wordsTotal;
       statsRef.current.dur += g.durationSeconds;
       statsRef.current.anns.push(...g.wordAnnotations);
-      tricky.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
+      subWords.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
       lineResultsRef.current.push({ text: sentences[curIdx] ?? "", ok: !hasError });
     }
     // Only surface "I heard …" when the transcript ACTUALLY diverges from the
@@ -1138,12 +1140,12 @@ export default function LunaReader({
       //                help; Luna MODELS the whole line (reads it aloud,
       //                pre-warmed during the "not quite" clip) → kid re-reads.
       // The CUSTOM recap coaching still generates in the background either way.
-      // Heavy = MANY real misreads (substituted). Azure liberally flags
-      // "missed" words it just didn't catch, and the old tricky-based ratio
-      // let one real misread ("win") get lumped into "heavy" — skipping the
-      // sound-out lesson the kid actually needed. Count substitutions only.
-      const subCount = g.wordAnnotations.filter((w) => w.status === "substituted").length;
-      const heavy = subCount >= 4 || (g.wordsTotal >= 6 && subCount / g.wordsTotal > 0.6);
+      // Heavy = MANY real misreads (substituted), OR a skip/mumble with no
+      // clear substitutions (subCount === 0) — in both cases drilling a single
+      // word won't help and, for a skip, we don't even know WHICH words were
+      // wrong, so Luna MODELS the whole line and the child re-reads it. Light
+      // (1-3 substitutions) → sound-out mini-lesson on those exact words.
+      const heavy = subCount >= 4 || (g.wordsTotal >= 6 && subCount / g.wordsTotal > 0.6) || subCount === 0;
       if (heavy) {
         const tokH = sessionTokenRef.current;
         const linePromise = speakToUrl(sentences[curIdx] ?? ""); // pre-warm during the clips
@@ -1161,7 +1163,7 @@ export default function LunaReader({
         // Word lessons for EVERY missed word (substituted first, capped at 3)
         // — the big one-word-at-a-time karaoke view. Falls through to a plain
         // line retry when none decompose.
-        playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's work on those words."); }, () => startWordLessons(tricky));
+        playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite. Let's work on those words."); }, () => startWordLessons(subWords));
       }
     } else {
       // Wrong (2nd try) → warm "keep going" and move on.
