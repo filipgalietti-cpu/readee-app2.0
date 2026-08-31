@@ -131,7 +131,7 @@ export default async function LunaReadPage({
         </div>
       </div>
 
-      <LunaReader childId={child.id} childName={child.name} passages={usable} childOutfitId={child.outfit} />
+      <LunaReader childId={child.id} childName={child.name} passages={usable} grade={token} childOutfitId={child.outfit} />
     </div>
   );
 }
