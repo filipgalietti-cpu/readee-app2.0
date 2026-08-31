@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { notify } from "@/lib/notifications/notify";
+import { effectiveStreak } from "@/lib/streak/effective-streak";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -25,7 +26,7 @@ async function run(req: NextRequest) {
 
   const { data: kids, error } = await supabaseAdmin()
     .from("children")
-    .select("parent_id, streak_days")
+    .select("parent_id, streak_days, last_lesson_at")
     .eq("owner_type", "parent")
     .not("parent_id", "is", null);
 
@@ -53,11 +54,12 @@ async function run(req: NextRequest) {
       dedupeKey: `next-lesson-${today}`,
     });
 
-    if ((kid.streak_days ?? 0) >= 2) {
+    const streak = effectiveStreak(kid.streak_days, kid.last_lesson_at);
+    if (streak >= 2) {
       await notify({
         userId: uid,
         type: "streak",
-        title: `You're on a ${kid.streak_days}-day streak!`,
+        title: `You're on a ${streak}-day streak!`,
         message: "Do one lesson today to keep it going.",
         dedupeKey: `streak-${today}`,
       });
