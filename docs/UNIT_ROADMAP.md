@@ -11,7 +11,7 @@
 > beat — not just quiz the skill. Reference: U1 lessons (RF.K.2a Rhyme Time =
 > hear it → build it → SAY it).
 
-**Progress: 119 / 201 standards shipped · 1 / 21 units complete**
+**Progress: 120 / 201 standards shipped · 1 / 21 units complete**
 
 ## Kindergarten (38 standards · 4 units)
 
@@ -195,7 +195,7 @@
 | ☑ | RI.2.8 | Describe how reasons support specific points the author makes in a text. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☑ | RI.2.9 | Compare and contrast the most important points presented by two texts on the same topic. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☑ | L.2.5b | Distinguish shades of meaning among closely related verbs and adjectives. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.2.6 | Use words and phrases acquired through conversations, reading, and being read to, including adjectives and adverbs. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | L.2.6 | Use words and phrases acquired through conversations, reading, and being read to, including adjectives and adverbs. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☐ | L.2.1 | Demonstrate command of the conventions of standard English grammar and usage | word-work: choose/sort meaning + grammar beats → speak production |
 | ☐ | L.2.2 | Demonstrate command of the conventions of capitalization, punctuation, and spelling when writing | word-work: choose/sort meaning + grammar beats → speak production |
 | ☐ | — | — | **G2·U3 EXAM** — 12-Q veto table |
