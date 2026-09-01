@@ -37,7 +37,7 @@ async function readReviews(): Promise<{ reviews: Review[]; updated: string | nul
 
 export async function GET() {
   const profile = await requireProfile();
-  if (!isPlatformAdmin(profile as any)) {
+  if (!(await isPlatformAdmin(profile.id))) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
   const data = await readReviews();
@@ -46,7 +46,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
   const profile = await requireProfile();
-  if (!isPlatformAdmin(profile as any)) {
+  if (!(await isPlatformAdmin(profile.id))) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
   const body = await req.json().catch(() => ({}));
