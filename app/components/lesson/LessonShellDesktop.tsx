@@ -425,7 +425,7 @@ export function CelebrationLeftPanel() {
   // emoji (glossy 3D, off our flat-cartoon style + breaks no-native-emoji).
   return (
     <div className="relative flex h-full w-full items-center justify-center">
-      <div className="relative flex h-[70%] w-[86%] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-violet-100 to-violet-300 shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)]">
+      <div className="relative flex h-[70%] w-[86%] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-violet-100 to-indigo-100 shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)]">
         {[
           { x: "20%", y: "25%", s: 18 },
           { x: "75%", y: "18%", s: 14 },

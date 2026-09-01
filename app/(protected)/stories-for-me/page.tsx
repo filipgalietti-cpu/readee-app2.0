@@ -101,7 +101,7 @@ export default async function StoriesForMePage() {
                         className="h-40 w-full object-cover"
                       />
                     ) : (
-                      <div className="flex h-40 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-pink-100 text-violet-400">
+                      <div className="flex h-40 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-400">
                         <ImageIcon className="h-10 w-10" />
                       </div>
                     )}

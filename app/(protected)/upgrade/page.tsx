@@ -174,7 +174,7 @@ function UpgradeContent() {
           <>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
               Unlock the full{" "}
-              <span className="bg-gradient-to-r from-violet-600 to-violet-500 bg-clip-text text-transparent">
+              <span className="text-violet-600">
                 reading journey
               </span>
             </h1>

@@ -79,7 +79,7 @@ export default function CelebrationOverlay({ show }: { show: boolean }) {
             </motion.div>
 
             {/* Heading */}
-            <h2 className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-indigo-600 via-purple-500 to-violet-500 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-violet-600">
               Welcome to Readee+!
             </h2>
 

@@ -2119,7 +2119,7 @@ function CompletionScreen({
         const post = computeLevel(priorLifetime + carrotsEarned);
         const num = post.current.number;
         return (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center bg-gradient-to-b from-indigo-600 to-violet-700">
+          <div className="fixed inset-0 z-[200] flex items-center justify-center bg-gradient-to-b from-violet-600 to-violet-500">
             <div className="w-full max-w-3xl px-4">
               <div className="aspect-video w-full">
                 <LevelUpBurst

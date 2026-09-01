@@ -234,7 +234,7 @@ export function SoundMachine({
         {/* Gradient border wrapper */}
         <div
           className={`absolute inset-0 rounded-2xl -z-10 ${
-            result !== null ? "" : "bg-gradient-to-br from-indigo-400 to-purple-500"
+            result !== null ? "" : "bg-gradient-to-br from-violet-600 to-violet-500"
           }`}
           style={{ margin: "-3px", borderRadius: "inherit" }}
         />

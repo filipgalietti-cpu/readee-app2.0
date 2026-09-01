@@ -817,7 +817,7 @@ function AssessmentContent() {
           </motion.div>
 
           {/* Gradient header */}
-          <div className="relative px-6 pt-10 pb-8 text-center overflow-hidden rounded-t-3xl bg-gradient-to-br from-violet-500 via-violet-500 to-violet-400">
+          <div className="relative px-6 pt-10 pb-8 text-center overflow-hidden rounded-t-3xl bg-gradient-to-br from-violet-600 to-violet-500">
             {/* Floating sparkles */}
             <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
               {sparkles.map((dot, i) => (

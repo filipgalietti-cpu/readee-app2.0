@@ -106,7 +106,7 @@ export default function InstallPWATile() {
         <motion.div
           whileHover={{ scale: 1.05, y: -4 }}
           whileTap={{ scale: 0.95 }}
-          className="relative h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-violet-500 to-fuchsia-600 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer overflow-hidden"
+          className="relative h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-violet-600 to-violet-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer overflow-hidden"
         >
           <button
             onClick={dismiss}

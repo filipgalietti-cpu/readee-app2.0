@@ -116,7 +116,7 @@ export default async function DiscoverIndexPage() {
                       className="h-14 w-14 flex-shrink-0 rounded-xl object-cover"
                     />
                   ) : (
-                    <div className="h-14 w-14 flex-shrink-0 rounded-xl bg-gradient-to-br from-violet-100 to-violet-200 dark:from-violet-500/20 dark:to-violet-500/10" />
+                    <div className="h-14 w-14 flex-shrink-0 rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-500/20 dark:to-violet-500/10" />
                   )}
                   <div className="min-w-0">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400">
