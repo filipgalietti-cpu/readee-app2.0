@@ -178,7 +178,7 @@ function WordBankContent() {
         {!isPremium && filteredWords.length > FREE_WORD_LIMIT && (
           <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-white dark:from-slate-900 via-white/90 dark:via-slate-900/90 to-transparent flex items-end justify-center pb-6">
             <div className="text-center px-6 py-6 max-w-sm">
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-100 to-violet-100 dark:from-violet-900/40 dark:to-violet-900/40 mx-auto mb-3 flex items-center justify-center shadow-sm">
+              <div className="w-14 h-14 rounded-2xl bg-violet-100 dark:bg-violet-900/40 mx-auto mb-3 flex items-center justify-center shadow-sm">
                 <BookOpen className="w-7 h-7 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
               </div>
               <h2 className="text-lg font-extrabold text-zinc-900 dark:text-slate-100 mb-1.5">
@@ -190,7 +190,7 @@ function WordBankContent() {
               </p>
               <Link
                 href="/upgrade"
-                className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-600 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
+                className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-violet-600 text-white font-bold text-sm hover:bg-violet-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                 <Star className="relative w-4 h-4" strokeWidth={1.5} />

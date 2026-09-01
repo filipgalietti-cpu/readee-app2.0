@@ -968,7 +968,7 @@ function MapNode({
             </svg>
           )}
           {isPremium && (
-            <span className="absolute -top-1 -right-1 px-1 py-0.5 rounded-full bg-gradient-to-r from-violet-500 to-violet-500 text-[6px] font-extrabold text-white shadow-sm leading-none border border-white">
+            <span className="absolute -top-1 -right-1 px-1 py-0.5 rounded-full bg-violet-500 text-[6px] font-extrabold text-white shadow-sm leading-none border border-white">
               R+
             </span>
           )}
@@ -1071,7 +1071,7 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
             </div>
             <div className="mt-1.5 h-2 bg-violet-100 dark:bg-violet-900/30 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-violet-500 to-violet-500 rounded-full"
+                className="h-full bg-violet-500 rounded-full"
                 style={{ width: `${((progress.score || 0) / (progress.total || 1)) * 100}%` }}
               />
             </div>
@@ -1095,14 +1095,14 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
 
         {status === "locked" && isPremium && (
           <div className="space-y-2">
-            <div className="bg-gradient-to-r from-violet-50 to-violet-50 dark:from-violet-900/20 dark:to-violet-900/20 rounded-xl p-3 text-center">
+            <div className="bg-violet-50 dark:bg-violet-900/20 rounded-xl p-3 text-center">
               <p className="text-[11px] text-violet-600 dark:text-violet-400 font-medium">
                 This standard is part of Readee+
               </p>
             </div>
             <Link
               href={`/upgrade?child=${childId}`}
-              className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-violet-500 text-white text-sm font-bold hover:from-violet-600 hover:to-violet-600 transition-all shadow-md"
+              className="flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-xl bg-violet-500 text-white text-sm font-bold hover:bg-violet-600 transition-all shadow-md"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -1126,7 +1126,7 @@ function StatusBadge({ status, isPremium }: { status: StandardProgress["status"]
     return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400">In Progress</span>;
   }
   if (isPremium) {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-gradient-to-r from-violet-100 to-violet-100 dark:from-violet-900/30 dark:to-violet-900/30 text-violet-600 dark:text-violet-400">Readee+</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400">Readee+</span>;
   }
   return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 inline-flex items-center gap-0.5">Locked <Lock className="w-3 h-3" strokeWidth={1.5} /></span>;
 }

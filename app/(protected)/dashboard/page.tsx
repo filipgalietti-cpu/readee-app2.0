@@ -434,7 +434,7 @@ function ChildSelector({
               </button>
               <a
                 href={`/play/${child.id}`}
-                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-violet-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:from-violet-700 hover:to-violet-700"
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-violet-600 px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-violet-700"
               >
                 Hand the device to {child.first_name}
               </a>

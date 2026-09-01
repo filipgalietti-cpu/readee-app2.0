@@ -314,7 +314,7 @@ function UpgradeContent() {
 
       {/* ── Trust Signal (lifted above features for higher impact) ── */}
       <motion.div
-        className="rounded-2xl bg-gradient-to-r from-violet-50 to-violet-50 p-6 border border-violet-100"
+        className="rounded-2xl bg-violet-50 p-6 border border-violet-100"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.15 }}
