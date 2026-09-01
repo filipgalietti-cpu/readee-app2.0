@@ -1,10 +1,10 @@
 /**
- * FULCRUM KERNEL — reading PLUGIN: the help rungs for a stuck word.
+ * ORION — reading PLUGIN: the help rungs for a stuck word.
  *
  * This is the only reading-specific part of the coaching loop. It maps a word
  * to the graded, feasibility-gated rungs the kernel's help-ladder engine will
  * order and pace. The escalation LOGIC (least→most, short, no spiral) lives in
- * lib/tutor/help-ladder; here we just say which rungs even apply to THIS word.
+ * lib/orion/help-ladder; here we just say which rungs even apply to THIS word.
  *
  * Decode-first (Science of Reading): a decodable word climbs first-sound →
  * onset-rime → sound-out, then the ladder MODELS it (says the whole word). A
@@ -14,7 +14,7 @@
  * it's what the kernel's `model` step means for reading, so it never doubles up.
  */
 
-import type { HelpRung } from "@/lib/tutor/help-ladder";
+import type { HelpRung } from "@/lib/orion/help-ladder";
 import { isSightWord, soundOutSegments } from "@/lib/luna/sound-out";
 
 export const READING_RUNG = {

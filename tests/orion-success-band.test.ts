@@ -5,7 +5,7 @@ import {
   TARGET_SUCCESS,
   ADVANCE_ABOVE,
   EASE_BELOW,
-} from "@/lib/tutor/success-band";
+} from "@/lib/orion/success-band";
 
 const r = (correct: number, total: number): boolean[] =>
   Array.from({ length: total }, (_, i) => i < correct);

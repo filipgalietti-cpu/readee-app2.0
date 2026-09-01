@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { readingRungs, READING_RUNG, READING_MAX_HELPS } from "@/lib/tutor/reading/rungs";
-import { nextLadderStep, MODELED } from "@/lib/tutor/help-ladder";
+import { readingRungs, READING_RUNG, READING_MAX_HELPS } from "@/lib/orion/reading/rungs";
+import { nextLadderStep, MODELED } from "@/lib/orion/help-ladder";
 
 const feasibleIds = (word: string) =>
   readingRungs({ word }).filter((r) => r.feasible).map((r) => r.id);

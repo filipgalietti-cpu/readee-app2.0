@@ -1,5 +1,5 @@
 /**
- * FULCRUM TUTORING KERNEL — Success-Band Controller (the difficulty thermostat).
+ * ORION TUTORING ENGINE — Success-Band Controller (the difficulty thermostat).
  *
  * Domain-general. Keeps a learner near the ~80-85% success sweet spot where
  * learning is fastest — the point where the ZPD (Vygotsky), desirable

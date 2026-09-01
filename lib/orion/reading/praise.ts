@@ -1,12 +1,12 @@
 /**
- * FULCRUM KERNEL — reading PLUGIN: the process-praise bank + growth phrasing.
+ * ORION — reading PLUGIN: the process-praise bank + growth phrasing.
  *
  * These are the words Luna actually says. Every line names what the child DID
  * (a strategy/process), never who they are — no "you're smart", no "good job".
  * Copy rules apply (spoken to the child): no em-dashes, warm, second person.
  */
 
-import { personalGrowth, type PraiseBank } from "@/lib/tutor/motivation";
+import { personalGrowth, type PraiseBank } from "@/lib/orion/motivation";
 
 export const READING_WIN = {
   SELF_CORRECTED: "self_corrected",
