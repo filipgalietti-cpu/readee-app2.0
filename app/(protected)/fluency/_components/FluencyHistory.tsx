@@ -135,7 +135,11 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
                   {r.audio_url && (
                     <audio
                       controls
-                      src={r.audio_url}
+                      // audio_url now holds a private-bucket path; play it via
+                      // the ownership-checked signing route (COPPA).
+                      src={r.audio_url.startsWith("http")
+                        ? r.audio_url
+                        : `/api/child-audio?path=${encodeURIComponent(r.audio_url)}`}
                       preload="none"
                       className="block w-full"
                     />

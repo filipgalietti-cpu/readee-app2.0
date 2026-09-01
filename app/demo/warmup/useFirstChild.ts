@@ -31,10 +31,18 @@ export function useFirstChild(): DemoChild {
         .limit(1)
         .maybeSingle();
       if (!data) { setChild({ ready: true }); return; }
+      // greeting_audio_url now holds a private-bucket PATH; serve it through
+      // the ownership-checked signing route so <audio>/new Audio() still works.
+      const gp = data.greeting_audio_url;
+      const greetingAudioUrl = gp
+        ? gp.startsWith("http")
+          ? gp // legacy public URL (pre-migration) — still plays
+          : `/api/child-audio?path=${encodeURIComponent(gp)}`
+        : null;
       setChild({
         ready: true,
         name: data.first_name ?? undefined,
-        greetingAudioUrl: data.greeting_audio_url ?? null,
+        greetingAudioUrl,
         outfitId: (data.equipped_items as { outfit?: string } | null)?.outfit ?? null,
       });
     })();

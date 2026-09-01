@@ -146,8 +146,11 @@ export async function analyzeFluencyReading(input: {
             ? "wav"
             : "bin";
     const storagePath = `fluency/${input.childId}/${readingId}.${ext}`;
+    // PRIVATE bucket — a child's voice recording must never be world-readable
+    // (COPPA). Store the object PATH; read sites sign a short-TTL URL behind an
+    // ownership check via /api/child-audio.
     const upload = await admin.storage
-      .from("audio")
+      .from("child-audio")
       .upload(storagePath, audioBuffer, {
         contentType: input.audioMimeType,
         upsert: false,
@@ -155,8 +158,7 @@ export async function analyzeFluencyReading(input: {
     if (upload.error) {
       return { ok: false, error: `Audio upload failed: ${upload.error.message}` };
     }
-    const { data: pub } = admin.storage.from("audio").getPublicUrl(storagePath);
-    audioUrl = pub?.publicUrl ?? "";
+    audioUrl = storagePath;
   }
 
   // 2) Hand the audio to Gemini for analysis.
