@@ -933,15 +933,17 @@ export default function LunaReader({
       zeroSpeechRef.current = null;
     }
     const covered = settled + partialWords >= Math.floor(refLen * 0.9);
-    // Must be MORE patient than Azure's in-phrase silence tolerance (2.5s) when
-    // the line isn't done yet, or Luna ends the mic mid-pause and only a
-    // fragment of a slow, word-by-word read survives. Snappy once ~all the line
-    // is read (they're clearly finished), patient while words remain.
+    // Must be MORE patient than Azure's in-phrase silence tolerance (2.5s) while
+    // words remain, or Luna ends the mic mid-pause and only a fragment survives.
+    // The whole-story read is long and the child pauses between sentences, so it
+    // needs a lot more room than a single line. Snappy only once ~all of it is
+    // read (they're clearly finished).
+    const isWholeRead = phaseRef.current === "overall1" || phaseRef.current === "overall2";
     if (autoStopRef.current) window.clearTimeout(autoStopRef.current);
     autoStopRef.current = window.setTimeout(() => {
       autoStopRef.current = null;
       if (streamActiveRef.current) { dbg("auto-stop: silence"); void stopStream(); }
-    }, covered ? 1600 : 3800);
+    }, covered ? 1600 : isWholeRead ? 5500 : 3800);
   }
   // Live: highlight the words being spoken in the current phrase (from the
   // running cursor), so it tracks across phrases in a whole-passage read.
