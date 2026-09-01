@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { rateLimit, clientIp } from "@/lib/security/rate-limit";
 
 /**
  * Marketing-site newsletter capture.
@@ -44,6 +45,12 @@ export async function OPTIONS(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const origin = req.headers.get("origin");
   const headers = corsHeaders(origin);
+
+  // Unauthenticated + service-role insert → throttle per IP against DB bloat.
+  const rl = await rateLimit({ bucket: "newsletter", key: clientIp(req), limit: 10, windowMs: 3600_000 });
+  if (!rl.ok) {
+    return NextResponse.json({ error: "Too many requests." }, { status: 429, headers });
+  }
 
   let body: { email?: unknown; source?: unknown };
   try {
