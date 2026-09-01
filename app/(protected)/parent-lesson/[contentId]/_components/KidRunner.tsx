@@ -13,6 +13,7 @@ import {
   Sparkles,
   Lightbulb,
   RotateCcw,
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
 import KidThumbs from "@/components/feedback/KidThumbs";
@@ -557,8 +558,9 @@ function RecapPhase({
             ))}
           </div>
           {firstTry > 0 && (
-            <p className="mt-2 text-sm text-zinc-500">
-              {firstTry} on the first try. ⚡
+            <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-zinc-500">
+              {firstTry} on the first try.
+              <Zap className="h-4 w-4 text-amber-500" strokeWidth={2.2} aria-hidden />
             </p>
           )}
 

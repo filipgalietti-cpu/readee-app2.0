@@ -12,7 +12,9 @@ import {
   ClipboardCheck,
   BarChart3, CheckCircle2, XCircle, RotateCcw, ChevronDown,
   AudioLines, BookOpen, MessageSquareText, Sparkles,
+  Type, FileText, Lightbulb,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 /* ── Animated counter hook ─────────────────────────── */
 
@@ -522,32 +524,32 @@ function AssessmentResultsContent() {
 
 const DIMENSION_DISPLAY: Record<
   string,
-  { label: string; blurb: string; icon: string }
+  { label: string; blurb: string; icon: LucideIcon }
 > = {
   phonics: {
     label: "Phonics & Decoding",
     blurb: "Letter sounds, blends, sounding out new words.",
-    icon: "🔤",
+    icon: Type,
   },
   vocabulary: {
     label: "Vocabulary",
     blurb: "Word meaning, sight words, context clues.",
-    icon: "📖",
+    icon: BookOpen,
   },
   literal_comprehension: {
     label: "Literal Comprehension",
     blurb: "Recalling details, names, sequence from the text.",
-    icon: "📝",
+    icon: FileText,
   },
   inferential_comprehension: {
     label: "Inferential Comprehension",
     blurb: "Main idea, why characters act, author's purpose.",
-    icon: "💡",
+    icon: Lightbulb,
   },
   fluency: {
     label: "Fluency",
     blurb: "Reading aloud smoothly, with pace and expression.",
-    icon: "🗣️",
+    icon: AudioLines,
   },
 };
 
@@ -659,9 +661,11 @@ function ReadingProfileCard({
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-start gap-2 min-w-0">
-                  <span className="text-lg leading-none" aria-hidden>
-                    {display.icon}
-                  </span>
+                  <display.icon
+                    className="h-[18px] w-[18px] flex-shrink-0 text-violet-500"
+                    strokeWidth={1.8}
+                    aria-hidden
+                  />
                   <div className="min-w-0">
                     <div className="font-bold text-sm text-zinc-900 truncate">
                       {display.label}
