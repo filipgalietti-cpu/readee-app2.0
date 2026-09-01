@@ -25,6 +25,8 @@ import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/li
 import { classifyLineRead } from "@/lib/luna/grading-decision";
 import { readingGrowthLine, READING_PRAISE, READING_WIN } from "@/lib/orion/reading/praise";
 import { pickProcessPraise } from "@/lib/orion/motivation";
+import { nextLadderStep, MODELED } from "@/lib/orion/help-ladder";
+import { readingRungs, READING_RUNG, READING_MAX_HELPS } from "@/lib/orion/reading/rungs";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
@@ -342,6 +344,10 @@ export default function LunaReader({
   // plays. segIdx = which grapheme chunk is lit (-1 none, length = whole word).
   const [wordLesson, setWordLesson] = useState<{ word: string; segs: SoundSegment[]; segIdx: number } | null>(null);
   const missQueueRef = useRef<string[]>([]);
+  // Orion help-ladder state for the word currently being taught: which rungs
+  // have been tried. Escalates first-sound → onset-rime → sound-out → model →
+  // move on (never a spiral). Cleared when the word resolves or we move on.
+  const wordLadderRef = useRef<{ word: string; segs: SoundSegment[] | null; tried: string[] } | null>(null);
   // Per-line results for the quiz-style finish summary (Line 1 ✓ / Line 2 ✗).
   const lineResultsRef = useRef<{ text: string; ok: boolean }[]>([]);
   // Words the child fixed by sounding them out — used for specific process
@@ -727,37 +733,105 @@ export default function LunaReader({
   }
   function nextWordLesson() {
     const word = missQueueRef.current.shift();
-    if (!word) { setWordLesson(null); proceed(true); return; }
-    if (isSightWord(word)) {
-      // SIGHT WORD: no phoneme blend (it would teach it wrong). Show the whole
-      // word lit, Luna explains it's a know-by-heart word + says it, then the
-      // kid says it back.
-      setWordLesson({ word, segs: [{ graph: word, id: "sight" }], segIdx: 1 });
-      setMode("speaking");
-      setCaption(`"${word}" is a sight word - we just know it!`);
-      const goCheck = () => beginWordRead(word, []);
-      const t0 = Date.now();
-      const tok = sessionTokenRef.current;
-      const waitLine = () => {
-        if (sessionTokenRef.current !== tok) return;
-        const line = sightLineRef.current.get(word);
-        if (line) { playUrl(line, goCheck); return; }
-        if (Date.now() - t0 > 3500) {
-          // Explainer TTS not ready — at least model the word itself.
-          const wurl = wordSpeakRef.current.get(normWord(word));
-          if (wurl) playUrl(wurl, goCheck); else goCheck();
-          return;
-        }
-        window.setTimeout(waitLine, 150);
-      };
-      waitLine();
-      return;
-    }
-    const segs = soundOutSegments(word)!;
+    if (!word) { wordLadderRef.current = null; setWordLesson(null); proceed(true); return; }
+    // Start a fresh Orion help-ladder for this word: lightest feasible rung
+    // first, escalating only while the child stays stuck.
+    wordLadderRef.current = { word, segs: isSightWord(word) ? null : soundOutSegments(word), tried: [] };
+    advanceWordLadder();
+  }
+  /** One ladder step for the current word: deliver the next rung (or model),
+   *  then the say-it-back check. Called again by handleWordResult on a miss —
+   *  that's the escalation. Orion decides the rung; Luna just performs it. */
+  function advanceWordLadder() {
+    const lad = wordLadderRef.current;
+    if (!lad) { afterWordCheck(); return; }
+    const step = nextLadderStep(readingRungs({ word: lad.word }), { triedRungs: lad.tried }, { maxHelps: READING_MAX_HELPS });
+    if (step.kind === "move-on") { wordLadderRef.current = null; afterWordCheck(); return; }
+    if (step.kind === "model") { lad.tried.push(MODELED); deliverModel(lad.word, lad.segs); return; }
+    lad.tried.push(step.rung.id);
+    if (step.rung.id === READING_RUNG.FIRST_SOUND && lad.segs) deliverFirstSound(lad.word, lad.segs);
+    else if (step.rung.id === READING_RUNG.ONSET_RIME && lad.segs) deliverOnsetRime(lad.word, lad.segs);
+    else if (step.rung.id === READING_RUNG.SOUND_OUT && lad.segs) deliverSoundOut(lad.word, lad.segs);
+    else if (step.rung.id === READING_RUNG.SIGHT_SAY) deliverSightSay(lad.word);
+    else { lad.tried.push(MODELED); deliverModel(lad.word, lad.segs); } // unknown/ungated rung → safest
+  }
+  /** Rung 1 — FIRST SOUND: the lightest nudge. Light the first chunk, play its
+   *  sound, hand the word straight back. If this is all they needed, help ends
+   *  here — the shortest possible intervention. */
+  function deliverFirstSound(word: string, segs: SoundSegment[]) {
+    setWordLesson({ word, segs, segIdx: 0 });
+    setMode("speaking");
+    setCaption(`It starts with "${segs[0].graph}" - listen!`);
+    playUrl(`${PHONEME_BASE}/${segs[0].id}.mp3`, () => beginWordRead(word, [segs[0].id]));
+  }
+  /** Rung 2 — ONSET-RIME: break the word apart. Onset sound, a beat, then the
+   *  rest of the chunks quickly (no whole-word model yet — that's rung 4). */
+  function deliverOnsetRime(word: string, segs: SoundSegment[]) {
+    setWordLesson({ word, segs, segIdx: 0 });
+    setMode("speaking");
+    setCaption(`Break it apart: "${segs[0].graph}" then the rest!`);
+    const tok = sessionTokenRef.current;
+    let k = 0;
+    const step = () => {
+      if (sessionTokenRef.current !== tok) return;
+      if (k >= segs.length) {
+        setWordLesson((s) => (s ? { ...s, segIdx: segs.length } : s));
+        beginWordRead(word, segs.map((sg) => sg.id));
+        return;
+      }
+      setWordLesson((s) => (s ? { ...s, segIdx: k } : s));
+      playUrl(`${PHONEME_BASE}/${segs[k].id}.mp3`, () => { k++; window.setTimeout(step, k === 1 ? 500 : 250); });
+    };
+    step();
+  }
+  /** Rung 3 — SOUND OUT: the full echo blend (the big karaoke Luna already
+   *  had — but now it's the THIRD response to a stuck word, not the first). */
+  function deliverSoundOut(word: string, segs: SoundSegment[]) {
     setWordLesson({ word, segs, segIdx: -1 });
     setMode("speaking");
     setCaption(`"${word}" - say each sound after me!`);
     playCached("echome-1", () => stepSegments(word, segs));
+  }
+  /** SIGHT WORD rung: no phoneme blend (it would teach it wrong). Luna explains
+   *  it's a know-by-heart word + says it, then the kid says it back. */
+  function deliverSightSay(word: string) {
+    setWordLesson({ word, segs: [{ graph: word, id: "sight" }], segIdx: 1 });
+    setMode("speaking");
+    setCaption(`"${word}" is a sight word - we just know it!`);
+    const goCheck = () => beginWordRead(word, []);
+    const t0 = Date.now();
+    const tok = sessionTokenRef.current;
+    const waitLine = () => {
+      if (sessionTokenRef.current !== tok) return;
+      const line = sightLineRef.current.get(word);
+      if (line) { playUrl(line, goCheck); return; }
+      if (Date.now() - t0 > 3500) {
+        // Explainer TTS not ready — at least model the word itself.
+        const wurl = wordSpeakRef.current.get(normWord(word));
+        if (wurl) playUrl(wurl, goCheck); else goCheck();
+        return;
+      }
+      window.setTimeout(waitLine, 150);
+    };
+    waitLine();
+  }
+  /** MODEL ("my turn"): Luna says the whole word, the child echoes it once.
+   *  Whatever happens next, the ladder ends — no spiral. */
+  function deliverModel(word: string, segs: SoundSegment[] | null) {
+    setWordLesson({ word, segs: segs ?? [{ graph: word, id: "sight" }], segIdx: (segs?.length ?? 1) });
+    setMode("speaking");
+    setCaption(`Listen: "${word}". Then you say it!`);
+    const goCheck = () => beginWordRead(word, segs?.map((sg) => sg.id) ?? []);
+    const t0 = Date.now();
+    const tok = sessionTokenRef.current;
+    const waitWord = () => {
+      if (sessionTokenRef.current !== tok) return;
+      const wurl = wordSpeakRef.current.get(normWord(word));
+      if (wurl) { playUrl(wurl, goCheck); return; }
+      if (Date.now() - t0 > 3500) { goCheck(); return; } // TTS not ready — still let them try
+      window.setTimeout(waitWord, 150);
+    };
+    waitWord();
   }
   function stepSegments(word: string, segs: SoundSegment[]) {
     const tok = sessionTokenRef.current;
@@ -819,6 +893,7 @@ export default function LunaReader({
   }
   /** After a word's say-it-back check: next queued word, or the line. */
   function afterWordCheck() {
+    wordLadderRef.current = null;
     if (missQueueRef.current.length > 0) nextWordLesson();
     else { setWordLesson(null); proceed(true); }
   }
@@ -847,33 +922,19 @@ export default function LunaReader({
     });
   }
   /** Grade of the single-word check: said it right → tiny praise → the line;
-   *  not yet → one more blend, then the line either way (no spiral). */
+   *  not yet → ESCALATE the Orion ladder (next rung up, then model, then move
+   *  on — never a spiral). */
   function handleWordResult(wd: { word: string; ids: string[] }, g: Grade) {
     stopProcessing();
     if (g.wordsCorrect >= 1) {
       bunnyReact("correct");
       fixedWordsRef.current.push(wd.word); // fixed it by sounding out → praise later
+      wordLadderRef.current = null;
       playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`That's it - "${wd.word}"!`); }, () => afterWordCheck());
     } else {
-      // Not yet — one more karaoke blend of THIS word, then move along.
-      setMode("speaking");
-      setCaption(`Almost! Listen once more: "${wd.word}".`);
-      const segs = soundOutSegments(wd.word);
-      const tok = sessionTokenRef.current;
-      let k = 0;
-      const step = () => {
-        if (sessionTokenRef.current !== tok) return;
-        if (k >= wd.ids.length) {
-          if (segs) setWordLesson((s) => (s ? { ...s, segIdx: segs.length } : s));
-          const wurl = wordSpeakRef.current.get(normWord(wd.word));
-          if (wurl) playUrl(wurl, () => afterWordCheck());
-          else afterWordCheck();
-          return;
-        }
-        setWordLesson((s) => (s ? { ...s, segIdx: k } : s));
-        playUrl(`${PHONEME_BASE}/${wd.ids[k]}.mp3`, () => { k++; window.setTimeout(step, 950); });
-      };
-      step();
+      // Not yet → the ladder decides what's next: a stronger hint, the model,
+      // or moving on. Escalation IS the response — no lecture in between.
+      advanceWordLadder();
     }
   }
 

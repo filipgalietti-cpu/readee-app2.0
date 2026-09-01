@@ -45,7 +45,7 @@ describe("pickProcessPraise — specific, varied, process-focused", () => {
 
 describe("notYet — power of yet, not 'wrong'", () => {
   it("frames the error as not-yet, with and without a detail", () => {
-    expect(notYet("flat")).toBe("Not yet — let's work out flat together.");
+    expect(notYet("flat")).toBe("Not yet - let's work out flat together.");
     expect(notYet()).toContain("Not yet");
   });
 });

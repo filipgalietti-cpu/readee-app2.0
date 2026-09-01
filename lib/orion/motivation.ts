@@ -68,7 +68,8 @@ export function pickProcessPraise(
  * power of yet). The domain adds the phonics/step cue after this.
  */
 export function notYet(detail?: string): string {
-  return detail ? `Not yet — let's work out ${detail} together.` : "Not yet — let's figure it out together.";
+  // Customer-facing spoken copy: hyphen, never an em-dash (app copy rule).
+  return detail ? `Not yet - let's work out ${detail} together.` : "Not yet - let's figure it out together.";
 }
 
 /**
