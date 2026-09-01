@@ -87,7 +87,7 @@ export default function TrendingCarousel({ items }: { items: Card[] }) {
                   className="aspect-[3/4] w-full object-cover transition group-hover:scale-[1.04]"
                 />
               ) : (
-                <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-violet-300 to-indigo-500 text-white">
+                <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-white">
                   <Sparkles className="h-10 w-10" />
                 </div>
               )}

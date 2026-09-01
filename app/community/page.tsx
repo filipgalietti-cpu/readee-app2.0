@@ -458,7 +458,7 @@ function FeedPost({ post }: { post: Card }) {
             className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.04]"
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-violet-300 via-indigo-400 to-violet-600 text-white">
+          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-white">
             <Sparkles className="h-12 w-12" />
           </div>
         )}

@@ -31,7 +31,7 @@ export default async function About() {
         </div>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-zinc-900 tracking-tight">
           Unlock Reading with{" "}
-          <span className="bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+          <span className="text-violet-600">
             Readee
           </span>
         </h1>

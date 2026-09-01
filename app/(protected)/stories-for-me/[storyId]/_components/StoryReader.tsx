@@ -56,7 +56,7 @@ export default function StoryReader({
             className="mx-auto h-72 w-full rounded-2xl object-cover shadow-sm sm:h-80"
           />
         ) : (
-          <div className="flex h-72 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 to-pink-100 text-violet-400">
+          <div className="flex h-72 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-400">
             <ImageIcon className="h-14 w-14" />
           </div>
         )}

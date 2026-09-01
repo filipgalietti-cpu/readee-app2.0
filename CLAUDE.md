@@ -54,9 +54,20 @@ screen re-derives the gradient instead of copying the canon.
   stops may not.
 - **Never write `from-X to-X` with the same colour at both stops.** That is a
   gradient function painting a flat fill. Use `bg-violet-500` instead.
-- Deliberate exceptions exist and are fine when the colour means something:
-  rose on the Fluency record button, fuchsia on the PWA install tile, lighter
-  violet on locked/disabled states. New exceptions need a reason beyond taste.
+- **There are exactly six gradients in the whole app.** Three canonical (above)
+  cover 74 of 77 uses. The other three are semantic *states*, where the colour
+  is information rather than decoration:
+
+  | Exception | Where | Why it earns an exception |
+  |---|---|---|
+  | `from-rose-500 to-violet-600` | Fluency record button | rose = recording, a real affordance convention |
+  | `from-violet-300 to-violet-400` | roadmap locked node | lighter = disabled |
+  | `from-emerald-50/50 to-violet-50/50` | Fluency success | emerald = success, matches the semantic border colours |
+
+- **"Decorative" is not a reason.** A Sep 2026 pass found 17 one-off recipes
+  each justified as decorative; 14 of them were drift and collapsed into the
+  canon with no visible loss. If a new gradient can't name the *state* it
+  encodes, it should be one of the three canonical ones.
 
 ### ‼️ NEVER (anti-slop). These override any default styling instinct.
 Checked against nine ed-tech leaders in Sep 2026 (Duolingo, Khan Kids, Teach

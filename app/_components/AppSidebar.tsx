@@ -239,7 +239,7 @@ function navLinkClass(pathname: string, href: string, emphasis?: boolean, shimme
   // near-black inner face by design — that read as "black button" rather
   // than "AI button" for us. ShineBorder gets layered in by the render.
   if (shimmer) {
-    return "relative overflow-hidden flex w-full items-center gap-2.5 rounded-xl bg-gradient-to-r from-violet-600 via-violet-600 to-pink-500 px-3 py-2 text-[13px] font-bold text-white shadow-sm transition hover:brightness-110";
+    return "relative overflow-hidden flex w-full items-center gap-2.5 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 px-3 py-2 text-[13px] font-bold text-white shadow-sm transition hover:brightness-110";
   }
   // Kid-size rows (family view): chunky, finger-friendly tap targets.
   const size = kidSize

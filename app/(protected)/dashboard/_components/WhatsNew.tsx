@@ -212,7 +212,7 @@ function AnnouncementStage({ a }: { a: Announcement }) {
   );
 
   return (
-    <div className="relative flex h-64 items-center justify-center overflow-hidden bg-gradient-to-b from-violet-50 to-violet-100/60">
+    <div className="relative flex h-64 items-center justify-center overflow-hidden bg-gradient-to-b from-violet-50 to-indigo-50">
       {/* drifting fall leaves */}
       <div className="pointer-events-none absolute inset-0">
         {leaves.map((l, n) => (
