@@ -36,6 +36,11 @@ export async function startPronAssessment(opts: {
 
   const speechConfig = SDK.SpeechConfig.fromAuthorizationToken(opts.token, opts.region);
   speechConfig.speechRecognitionLanguage = opts.language || "en-US";
+  // Early/struggling readers pause between words while they decode. Azure's
+  // default endpointing (~0.5s) treats those pauses as the end of the utterance
+  // and chops the read into a fragment. Widen the in-phrase silence tolerance so
+  // a slow, word-by-word read is still captured as one continuous phrase.
+  try { speechConfig.setProperty(SDK.PropertyId.Speech_SegmentationSilenceTimeoutMs, "2500"); } catch { /* older SDK */ }
 
   const format = SDK.AudioStreamFormat.getWaveFormatPCM(16000, 16, 1);
   const pushStream = SDK.AudioInputStream.createPushStream(format);
