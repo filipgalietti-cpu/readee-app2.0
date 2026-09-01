@@ -145,7 +145,7 @@ export function LessonShellDesktop({
         <button
           onClick={onNext}
           disabled={nextDisabled}
-          className="flex h-14 w-[280px] items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_8px_24px_-8px_rgba(99,102,241,0.6)] transition hover:translate-y-[-1px] hover:shadow-[0_12px_28px_-8px_rgba(99,102,241,0.7)] disabled:translate-y-0 disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
+          className="flex h-14 w-[280px] items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.6)] transition hover:translate-y-[-1px] hover:shadow-[0_12px_28px_-8px_rgba(139,92,246,0.7)] disabled:translate-y-0 disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
         >
           {nextLabel}
         </button>
