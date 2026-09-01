@@ -272,7 +272,7 @@ export default function QuizSummary({
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between gap-2">
                   <div className="min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-[13px] font-extrabold text-zinc-900">
-                    Level {post.current.number} — {post.current.name}
+                    Level {post.current.number}: {post.current.name}
                   </div>
                   <div className="flex items-center gap-[3px] font-mono text-[10px] text-zinc-400">
                     <span>{after}</span>

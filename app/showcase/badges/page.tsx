@@ -4,7 +4,7 @@ import { Badge } from "@/app/_components/Badge/Badge";
 export const dynamic = "force-static";
 
 export const metadata = {
-  title: "Achievement badges — preview",
+  title: "Achievement badges preview",
   robots: { index: false, follow: false },
 };
 

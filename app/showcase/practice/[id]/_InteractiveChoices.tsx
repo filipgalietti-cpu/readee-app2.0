@@ -119,7 +119,7 @@ export default function InteractiveChoices({
             ) : (
               <>
                 <div className="inline-flex items-center gap-2 rounded-full bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-700 ring-1 ring-rose-200">
-                  Not quite — the answer was{" "}
+                  Not quite. The answer was{" "}
                   <span className="ml-1 rounded-md bg-rose-600 px-2 py-0.5 text-white">
                     {correct}
                   </span>

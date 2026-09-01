@@ -474,7 +474,7 @@ function StandingRow({
             : "text-zinc-700 dark:text-slate-200"
         }`}
       >
-        {entry.isMe ? `You — ${entry.name}` : entry.name}
+        {entry.isMe ? `You (${entry.name})` : entry.name}
       </span>
       <span className="inline-flex items-center gap-1.5 text-[15px] font-bold text-orange-600 dark:text-orange-400">
         <Carrot className="h-4 w-4 text-orange-500" strokeWidth={2} />
