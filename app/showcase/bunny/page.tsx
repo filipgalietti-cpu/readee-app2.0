@@ -4,7 +4,7 @@ import { OUTFITS } from "@/app/_components/Bunny/outfits";
 export const dynamic = "force-static";
 
 export const metadata = {
-  title: "Bunny outfits — preview",
+  title: "Bunny outfits preview",
   robots: { index: false, follow: false },
 };
 
@@ -56,7 +56,7 @@ export default function BunnyShowcase() {
             10 collectible <span className="text-violet-600">Readee bunnies.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600">
-            Same bunny, ten skins. Locked anatomy across the set — only
+            Same bunny, ten skins. Locked anatomy across the set: only
             shirts, hats, and capes change. Pick one in the shop, see it
             celebrate, scratch its head, and dance at the end of every lesson.
           </p>
@@ -161,7 +161,7 @@ export default function BunnyShowcase() {
 
         <section className="mt-20">
           <h2 className="font-display text-2xl font-extrabold tracking-tight text-zinc-900">
-            QA sheet — all {OUTFITS.length} bunnies dancing
+            QA sheet: all {OUTFITS.length} bunnies dancing
           </h2>
           <p className="mt-2 text-sm text-zinc-600">
             Every outfit looping the lesson-complete dance. Use this to spot

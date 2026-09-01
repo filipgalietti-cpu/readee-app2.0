@@ -23,7 +23,7 @@ const PILLARS = [
     label: "Stories",
     icon: BookOpen,
     title: "Original decodable tales.",
-    body: "25 stories across K-4, hand-illustrated, every line read aloud. Phonics-matched to the grade — emerging readers can actually decode them.",
+    body: "25 stories across K-4, hand-illustrated, every line read aloud. Phonics-matched to the grade, so emerging readers can actually decode them.",
     bg: "from-violet-500 to-brand-600",
     accent: "violet",
     stat: "25 stories",

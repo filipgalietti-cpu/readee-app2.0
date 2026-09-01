@@ -93,7 +93,7 @@ export default async function PracticeShowcase() {
         <div className="text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-700 shadow-sm">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-            911 practice questions · K — 4th · Common Core
+            911 practice questions · K-4th · Common Core
           </div>
           <h1 className="mt-6 font-display text-5xl font-extrabold tracking-tight text-zinc-900 sm:text-6xl">
             Practice that <span className="text-emerald-600">clicks.</span>

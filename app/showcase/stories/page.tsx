@@ -57,13 +57,13 @@ export default function StoriesShowcase() {
         <div className="text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-violet-700 shadow-sm">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-violet-500" />
-            25 original stories · K — 4th
+            25 original stories · K-4th
           </div>
           <h1 className="mt-6 font-display text-5xl font-extrabold tracking-tight text-zinc-900 sm:text-6xl">
             Stories worth <span className="text-violet-600">reading.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-zinc-600">
-            Original decodable tales written for early readers — every word
+            Original decodable tales written for early readers. Every word
             chosen for the grade's phonics, every picture drawn to match.
           </p>
         </div>
