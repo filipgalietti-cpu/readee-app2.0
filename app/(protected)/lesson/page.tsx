@@ -17,13 +17,14 @@ import { getActiveMultiplier, clearActiveMultiplierFields } from "@/lib/carrots/
 
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
-import { Star, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, Check, PenTool, BookOpen, MessageSquare, Flame, Carrot } from "lucide-react";
+import { Star, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, Check, PenTool, BookOpen, MessageSquare, Flame } from "lucide-react";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
 import type { Outfit } from "@/app/_components/Bunny/outfits";
 import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
 import KidThumbs from "@/components/feedback/KidThumbs";
 import type { LucideIcon } from "lucide-react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const LEARN_ICON_MAP: Record<string, LucideIcon> = {
   "📝": FileText,
@@ -1225,7 +1226,7 @@ function LessonContent() {
             {totalCarrots > 0 && (
               <div className="inline-block rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-3 text-white">
                 <div className="text-sm font-medium text-orange-200">You earned</div>
-                <div className="text-2xl font-bold mt-1 flex items-center justify-center gap-2">+{totalCarrots} <Carrot className="w-6 h-6" strokeWidth={1.5} /></div>
+                <div className="text-2xl font-bold mt-1 flex items-center justify-center gap-2">+{totalCarrots} <FluentIcon name="carrot" size={24} /></div>
               </div>
             )}
 
@@ -1281,7 +1282,7 @@ function LessonContent() {
               real-estate so it pops above everything else. */}
           <div className="inline-block rounded-2xl bg-gradient-to-r from-orange-500 to-amber-500 px-8 py-5 text-white animate-carrotCountUp">
             <div className="text-sm font-medium text-orange-200">You earned</div>
-            <div className="text-4xl font-bold mt-1 flex items-center justify-center gap-2">+{totalCarrots} <Carrot className="w-8 h-8" strokeWidth={1.5} /></div>
+            <div className="text-4xl font-bold mt-1 flex items-center justify-center gap-2">+{totalCarrots} <FluentIcon name="carrot" size={32} /></div>
           </div>
 
           {/* Streak rewards row — multiplier pill + day-streak pill

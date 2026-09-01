@@ -18,7 +18,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Shuffle, RotateCcw, Volume2, Carrot, Star, Check, X as XIcon, Wand2, Sparkles, ArrowRight, Lock, RefreshCw } from "lucide-react";
+import { Shuffle, RotateCcw, Volume2, Star, Check, X as XIcon, Wand2, Sparkles, ArrowRight, Lock, RefreshCw } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
@@ -31,6 +31,7 @@ import { GENTLE_AFTER_FAILED_LINES } from "@/lib/orion/reading/text-level";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Passage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[] };
 type Annotation = { word: string; status: string; heard?: string };
@@ -1757,7 +1758,7 @@ export default function LunaReader({
             </span>
             {sessionCarrots > 0 && (
               <span key={sessionCarrots} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 13, fontWeight: 800, color: "#c2410c", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 999, padding: "4px 12px", animation: "lunaCarrotPop .55s cubic-bezier(0.34,1.56,0.64,1)", fontVariantNumeric: "tabular-nums" }}>
-                <Carrot className="h-4 w-4" strokeWidth={2.4} />
+                <FluentIcon name="carrot" size={16} />
                 +{carrotShown}
               </span>
             )}
@@ -1968,7 +1969,7 @@ export default function LunaReader({
                 </div>
                 {sessionCarrots > 0 && (
                   <div style={{ marginTop: 14, display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, background: "#d1fae5", color: "#047857", padding: "8px 20px", fontSize: 15, fontWeight: 800 }}>
-                    <Carrot className="h-4 w-4" strokeWidth={2} /> +{sessionCarrots} carrots
+                    <FluentIcon name="carrot" size={16} /> +{sessionCarrots} carrots
                   </div>
                 )}
                 {statsRef.current.trickyWords.size > 0 && (

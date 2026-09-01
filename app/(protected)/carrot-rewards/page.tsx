@@ -11,6 +11,7 @@ import { ChildSchema } from "@/lib/schemas";
 import { Medal, Gem, Crown, Carrot, Lock, ShoppingBag } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const TIERS: { name: string; carrots: number; icon: LucideIcon; iconColor: string; color: string; bg: string; border: string; text: string }[] = [
   { name: "Bronze", carrots: 50, icon: Medal, iconColor: "text-amber-600", color: "from-amber-600 to-amber-700", bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
@@ -77,7 +78,7 @@ function CarrotRewardsContent() {
 
       {/* Carrots Display */}
       <div className="text-center animate-slideUp">
-        <Carrot className="w-12 h-12 text-orange-500 mx-auto mb-3" strokeWidth={1.5} />
+        <FluentIcon name="carrot" size={48} />
         <div className="text-4xl font-bold text-orange-600">{carrots} Carrots</div>
         <p className="text-zinc-500 mt-1">{child.first_name}&apos;s Carrot Collection</p>
       </div>
@@ -89,7 +90,7 @@ function CarrotRewardsContent() {
             <span className="text-sm font-medium text-zinc-600">
               Next: <nextTier.icon className="w-4 h-4 inline-block" strokeWidth={1.5} /> {nextTier.name}
             </span>
-            <span className="text-sm font-bold text-orange-600 flex items-center gap-1">{carrots}/{nextTier.carrots} <Carrot className="w-3.5 h-3.5 text-orange-500" strokeWidth={1.5} /></span>
+            <span className="text-sm font-bold text-orange-600 flex items-center gap-1">{carrots}/{nextTier.carrots} <FluentIcon name="carrot" size={14} /></span>
           </div>
           <div className="h-3 bg-zinc-100 rounded-full overflow-hidden">
             <div
@@ -130,7 +131,7 @@ function CarrotRewardsContent() {
                   {tier.name}
                 </div>
                 <div className="text-xs text-zinc-400">
-                  {tier.carrots} <Carrot className="w-3 h-3 inline-block text-orange-400" strokeWidth={1.5} /> required
+                  {tier.carrots} <FluentIcon name="carrot" size={12} /> required
                 </div>
               </div>
               {earned ? (

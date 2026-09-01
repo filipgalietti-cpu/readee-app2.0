@@ -3,11 +3,12 @@
 import { useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Carrot, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import type { QuizResultItem } from "@/lib/lesson-engine/quiz";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { computeLevel } from "@/lib/levels/levels";
 import { playUrl } from "@/lib/lesson-engine/cues";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
  * QuizSummary — implements Filip's "Practice Summary" Claude Design
@@ -212,7 +213,7 @@ export default function QuizSummary({
                 <span className="font-['Baloo_2'] text-[28px] font-extrabold leading-none text-orange-600">
                   +{carrotsEarned}
                 </span>
-                <Carrot size={20} className="text-orange-500" strokeWidth={2} />
+                <FluentIcon name="carrot" size={20} />
               </div>
               <div className="mt-[3px] text-[11px] font-bold text-zinc-500">Carrots earned</div>
             </div>
@@ -276,7 +277,7 @@ export default function QuizSummary({
                   </div>
                   <div className="flex items-center gap-[3px] font-mono text-[10px] text-zinc-400">
                     <span>{after}</span>
-                    <Carrot size={11} className="text-orange-400" strokeWidth={2.4} />
+                    <FluentIcon name="carrot" size={11} />
                   </div>
                 </div>
                 <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-100">

@@ -15,7 +15,6 @@ import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/
 import { reactionStateFor } from "@/lib/data/shop-items";
 import {
   Flame,
-  Carrot,
   Star,
   Check,
   ChevronRight,
@@ -31,6 +30,7 @@ import {
   Lock,
   TrendingUp,
 } from "lucide-react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const BALOO = "var(--font-baloo), 'Baloo 2', sans-serif";
 const CARD_SHADOW = "0 10px 40px -12px rgba(49,46,129,.15)";
@@ -183,7 +183,7 @@ export default function KidHome(p: KidHomeProps) {
         {/* Carrots */}
         <StatCard>
           <div style={{ ...iconBox, background: "#fff7ed" }}>
-            <Carrot className="h-[26px] w-[26px]" stroke="#f97316" strokeWidth={2} />
+            <FluentIcon name="carrot" size={26} />
           </div>
           <div style={{ minWidth: 0 }}>
             <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 24, lineHeight: 1, color: "#18181b" }}>{p.carrots}</div>
@@ -538,7 +538,7 @@ export default function KidHome(p: KidHomeProps) {
             <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 17, color: "#18181b" }}>Shop</div>
             <div style={{ fontSize: 12.5, fontWeight: 700, color: "#71717a", marginTop: 2 }}>{p.shop.sub}</div>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 5, marginTop: 7, background: "#fff7ed", borderRadius: 99, padding: "4px 10px" }}>
-              <Carrot className="h-3.5 w-3.5" stroke="#f97316" strokeWidth={2.2} />
+              <FluentIcon name="carrot" size={14} />
               <span style={{ fontSize: 12, fontWeight: 800, color: "#c2410c" }}>{p.shop.chip}</span>
             </div>
           </div>

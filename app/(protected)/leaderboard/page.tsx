@@ -7,9 +7,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
-import { Crown, Carrot, Flame, ArrowRight } from "lucide-react";
+import { Crown, Flame, ArrowRight } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { EmptyState } from "@/app/_components/EmptyState";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 interface LeaderEntry {
   id: string;
@@ -267,7 +268,7 @@ function LeaderboardContent() {
                     {myRank ? `${ordinal(myRank)} of ${leaders.length}` : "On the board"}
                   </div>
                   <div className="mt-0.5 flex items-center gap-1.5 text-sm font-semibold text-orange-600">
-                    <Carrot className="h-4 w-4" strokeWidth={2} />
+                    <FluentIcon name="carrot" size={16} />
                     {child.carrots.toLocaleString()} carrots
                   </div>
                 </div>
@@ -402,7 +403,7 @@ function PodiumColumn({ entry, rank }: { entry: LeaderEntry; rank: number }) {
       </div>
       <div className="mt-1 flex items-center gap-2.5">
         <span className="inline-flex items-center gap-1 text-sm font-bold text-orange-600">
-          <Carrot className="h-4 w-4 text-orange-500" strokeWidth={2} />
+          <FluentIcon name="carrot" size={16} />
           {entry.carrots.toLocaleString()}
         </span>
         {entry.streak > 0 && (
@@ -477,7 +478,7 @@ function StandingRow({
         {entry.isMe ? `You (${entry.name})` : entry.name}
       </span>
       <span className="inline-flex items-center gap-1.5 text-[15px] font-bold text-orange-600">
-        <Carrot className="h-4 w-4 text-orange-500" strokeWidth={2} />
+        <FluentIcon name="carrot" size={16} />
         {entry.carrots.toLocaleString()}
       </span>
       <span
