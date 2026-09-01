@@ -95,6 +95,17 @@ export default async function LunaPage({
     usable = [...lib].sort((a, b) => (rank.get(a.patternId ?? "") ?? 99) - (rank.get(b.patternId ?? "") ?? 99));
   }
 
+  // The child's own last connected-read WCPM → the self-referential growth beat.
+  const { data: prevRead } = await supabase
+    .from("fluency_readings")
+    .select("wcpm")
+    .eq("child_id", child.id)
+    .not("wcpm", "is", null)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  const previousWcpm = (prevRead as { wcpm: number | null } | null)?.wcpm ?? null;
+
   return (
     <div className="mx-auto min-h-[calc(100dvh-72px)] max-w-2xl px-6 pt-8 pb-28">
       <LunaReader
@@ -102,6 +113,7 @@ export default async function LunaPage({
         childName={child.name}
         passages={usable}
         grade={token}
+        previousWcpm={previousWcpm}
         childOutfitId={child.outfit}
       />
     </div>
