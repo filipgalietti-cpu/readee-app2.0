@@ -822,7 +822,14 @@ export default function LunaReader({
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
       streamRef.current = stream;
-      const ctx = new AudioContext();
+      // Capture at 16 kHz — the rate Azure's models want. Letting the browser's
+      // (proper, anti-aliased) resampler do 48→16 kHz here means our own
+      // resampler becomes a clean pass-through; the old path decimated 48→16
+      // with NO anti-alias filter, which mangled speech (Azure heard garbage).
+      // Falls back to the default rate if a browser rejects the option.
+      let ctx: AudioContext;
+      try { ctx = new AudioContext({ sampleRate: 16000 }); }
+      catch { ctx = new AudioContext(); }
       ctxRef.current = ctx;
       if (ctx.state === "suspended") { try { await ctx.resume(); } catch { /* ignore */ } }
       srcRateRef.current = ctx.sampleRate;
