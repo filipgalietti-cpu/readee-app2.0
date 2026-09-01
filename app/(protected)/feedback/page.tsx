@@ -177,7 +177,7 @@ export default function FeedbackPage() {
         <>
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-50 to-violet-50 mx-auto mb-4 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-2xl bg-violet-50 mx-auto mb-4 flex items-center justify-center">
               <MessageCircle className="w-8 h-8 text-violet-500" strokeWidth={1.5} />
             </div>
             <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">

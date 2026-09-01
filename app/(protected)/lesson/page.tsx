@@ -263,7 +263,7 @@ function SectionProgressBar({
                 isComplete
                   ? "bg-green-400"
                   : isCurrent
-                  ? "bg-gradient-to-r from-violet-500 to-violet-500"
+                  ? "bg-violet-500"
                   : "bg-zinc-100"
               }`} />
             </div>
@@ -1321,7 +1321,7 @@ function LessonContent() {
                 </div>
               )}
               {showLevelUp && (
-                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-violet-100 to-violet-100 border border-violet-200">
+                <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-violet-100 border border-violet-200">
                   <Rocket className="w-5 h-5 text-violet-600" strokeWidth={1.5} />
                   <div className="text-left">
                     <div className="text-[10px] font-medium text-violet-600 uppercase tracking-wider">Leveled up</div>
@@ -1383,7 +1383,7 @@ function LessonContent() {
 
           {/* Parent snapshot — collapsed by default so the kid's
               celebration owns the screen. Parents tap to expand. */}
-          <details className="text-left rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50/80 to-violet-50/80 p-4 group">
+          <details className="text-left rounded-2xl border border-violet-200 bg-violet-50/80 p-4 group">
             <summary className="flex items-center justify-between cursor-pointer list-none">
               <p className="text-sm font-semibold text-zinc-900">Parent progress snapshot</p>
               <span className="px-2 py-1 rounded-full text-[11px] font-bold bg-white text-violet-700 border border-violet-100">
