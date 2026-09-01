@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowLeft,
-  Sparkles,
   Eye,
   Search,
   ArrowRight,
@@ -10,6 +9,7 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { CoverFallback } from "@/app/_components/EmptyState";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -300,7 +300,7 @@ export default async function CommunityGradePage({
                     />
                   ) : (
                     <div className="flex h-36 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-400">
-                      <Sparkles className="h-10 w-10" />
+                      <CoverFallback size={40} />
                     </div>
                   )}
                   <div className="p-4">
