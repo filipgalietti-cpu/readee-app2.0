@@ -87,15 +87,30 @@ a generic default, not for Readee.
 - **No native emoji** (existing rule) and **no icon standing in for a mascot** —
   empty states use the bunny, carrots use Readee's carrot.
 
-### Icons: split by audience, not one set for everything
-- **Parent surfaces** (settings, billing, analytics, account, admin): Lucide is
-  correct. Keep it. A parent reading a data screen wants that register.
-- **Child surfaces** (lesson, practice, journey, leaderboard, shop, Luna, daily):
-  filled, rounded, colourful. Lucide's 2px monochrome stroke is the shadcn/ui
-  default and reads as a developer dashboard; it also loses its silhouette at
-  small sizes, which is where children actually tap.
-- **Emotional moments** (carrots, badges, celebration, empty states): Readee's
-  own art. Never anything generic at a moment that is supposed to feel earned.
+### Icons: split by audience (DECIDED Sep 2026)
+| Surface | Use | Why |
+|---|---|---|
+| **Parent** (settings, billing, analytics, account, admin) | **Lucide** | Correct register for a data screen. Keep it. |
+| **UI chrome anywhere** (arrows, chevrons, close, spinners, search) | **Lucide** | A nav arrow is not a reward. Emoji chrome would be absurd. |
+| **Child content + rewards** (carrots, stars, streaks, trophies, books) | **`<FluentIcon />`** | Microsoft Fluent Emoji, Flat. Self-hosted in `public/icons/fluent`. |
+| **Empty states** | **the bunny** (`<EmptyState mascot=...>`) | Nine poses already exist. Never an icon. |
+| **Missing story cover** | **`<CoverFallback />`** | The reading bunny. |
+
+- `<FluentIcon name="carrot" size={20} />`. Sizes in use: 11, 14, 16, 18, 20,
+  22, 24, 30, 88. Verified legible from 11px up.
+- **Never a native emoji character.** The device renders it, so the same carrot
+  is different artwork on iPhone, Chromebook and Samsung. We control none of it.
+  Fluent Emoji is one fixed artwork everywhere, sized by us. That distinction is
+  the whole point; do not "simplify" it back to a plain emoji.
+- Licence: MIT, Copyright (c) Microsoft Corporation. `public/icons/fluent/LICENSE`
+  ships alongside the assets because MIT requires the notice. Do not delete it.
+- Adding an icon: download the Flat SVG from
+  github.com/microsoft/fluentui-emoji into `public/icons/fluent/`, then add the
+  name to `FLUENT_ICONS` in `app/_components/FluentIcon.tsx`.
+- **Why not Lucide on child surfaces:** it is a 2px monochrome stroke set and
+  the shadcn/ui default. It reads as a developer dashboard, and thin strokes
+  lose their silhouette at the size a child taps. Filled colour survives the
+  shrink; outlines do not.
 
 ### Shadows (canonical — copy these, don't invent)
 An audit on Sep 2 2026 found **30 bespoke shadow recipes**, including the same
