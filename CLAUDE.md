@@ -58,6 +58,34 @@ screen re-derives the gradient instead of copying the canon.
   rose on the Fluency record button, fuchsia on the PWA install tile, lighter
   violet on locked/disabled states. New exceptions need a reason beyond taste.
 
+### ‼️ NEVER (anti-slop). These override any default styling instinct.
+Checked against nine ed-tech leaders in Sep 2026 (Duolingo, Khan Kids, Teach
+Your Monster, HOMER, Epic, Ello, Amira, Lexia, Reading Eggs). **Not one of them
+uses any of the following.** If a screen wants one of these, it is reaching for
+a generic default, not for Readee.
+
+- **No pill/badge above a headline.** No pulsing or animated status dots.
+- **No gradient on text.** Headlines are a solid colour. `bg-clip-text` is banned.
+- **No floating/drifting background orbs or blobs.**
+- **No shimmer sweeps, meteors, border beams, or animated grid patterns.**
+- **No scroll-reveal on every section.** First screenful only, if at all.
+- **No three generic feature cards in a row.** Real content grids are fine.
+- **No dark mode.** Readee is a bright reading product for children; light text
+  on a dark ground causes halation, which is actively bad for decoding.
+- **No thin monochrome line icons on child-facing surfaces.** See below.
+- **No native emoji** (existing rule) and **no icon standing in for a mascot** —
+  empty states use the bunny, carrots use Readee's carrot.
+
+### Icons: split by audience, not one set for everything
+- **Parent surfaces** (settings, billing, analytics, account, admin): Lucide is
+  correct. Keep it. A parent reading a data screen wants that register.
+- **Child surfaces** (lesson, practice, journey, leaderboard, shop, Luna, daily):
+  filled, rounded, colourful. Lucide's 2px monochrome stroke is the shadcn/ui
+  default and reads as a developer dashboard; it also loses its silhouette at
+  small sizes, which is where children actually tap.
+- **Emotional moments** (carrots, badges, celebration, empty states): Readee's
+  own art. Never anything generic at a moment that is supposed to feel earned.
+
 ### Rules
 - Spacing: Tailwind default scale only (4, 8, 12, 16, 24, 32, 48px). No arbitrary values.
 - Shadows: One consistent shadow style across the app. Do not mix depths.
