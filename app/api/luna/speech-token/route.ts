@@ -37,6 +37,23 @@ export async function POST(req: Request) {
   const region = process.env.AZURE_SPEECH_REGION;
   if (!key || !region) return NextResponse.json({ ok: false, configured: false }, { status: 200 });
 
+  // Hard per-user mint cap across ALL contexts — a token authorizes real-time
+  // Azure streaming billed per second, so an authed user looping this endpoint
+  // is an unbounded Azure bill. 60/hour is far above any real child's use
+  // (a read refreshes a token every ~10 min) but stops the abuse, and it also
+  // bounds the Referer-spoof path that dodges the free-taste gate below.
+  {
+    const oneHourAgo = new Date(Date.now() - 3600_000).toISOString();
+    const { count } = await supabaseAdmin()
+      .from("speech_token_mints")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .gte("created_at", oneHourAgo);
+    if ((count ?? 0) >= 60) {
+      return NextResponse.json({ error: "rate_limit", reason: "too many requests" }, { status: 429 });
+    }
+  }
+
   // Free allowance (server-enforced): Luna reads are a 3-taste feature, so a
   // genuinely-free reader past 3 completed reads gets a 402 instead of a
   // token. ONLY the luna context is gated — this same mint also powers
