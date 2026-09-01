@@ -1,5 +1,5 @@
 /**
- * FULCRUM KERNEL — Motivation Layer (feedback language + growth framing).
+ * ORION — Motivation Layer (feedback language + growth framing).
  *
  * Two research-backed levers, written once for every domain:
  *

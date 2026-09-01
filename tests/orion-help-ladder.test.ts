@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { nextLadderStep, MODELED, type HelpRung } from "@/lib/tutor/help-ladder";
+import { nextLadderStep, MODELED, type HelpRung } from "@/lib/orion/help-ladder";
 
 // A reading-flavored rung set (but the engine is domain-agnostic).
 const RUNGS: HelpRung[] = [

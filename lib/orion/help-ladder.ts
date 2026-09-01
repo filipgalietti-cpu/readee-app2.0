@@ -1,5 +1,5 @@
 /**
- * FULCRUM TUTORING KERNEL — Help-Ladder Engine (the COACH stage).
+ * ORION TUTORING ENGINE — Help-Ladder Engine (the COACH stage).
  *
  * Domain-general escalation policy for corrective feedback. Every validated
  * reading program (UFLI, Wilson, Intervention Central, Pause-Prompt-Praise) and

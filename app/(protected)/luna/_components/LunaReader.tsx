@@ -23,7 +23,7 @@ import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
 import { classifyLineRead } from "@/lib/luna/grading-decision";
-import { readingGrowthLine } from "@/lib/tutor/reading/praise";
+import { readingGrowthLine } from "@/lib/orion/reading/praise";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";

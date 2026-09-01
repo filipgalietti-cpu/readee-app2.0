@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { pickProcessPraise, notYet, personalGrowth, type PraiseBank } from "@/lib/tutor/motivation";
-import { READING_PRAISE, READING_WIN, readingGrowthLine } from "@/lib/tutor/reading/praise";
+import { pickProcessPraise, notYet, personalGrowth, type PraiseBank } from "@/lib/orion/motivation";
+import { READING_PRAISE, READING_WIN, readingGrowthLine } from "@/lib/orion/reading/praise";
 
 const BANK: PraiseBank = {
   win_detail: ["You worked out {detail}!", "Yes, {detail}!"],
