@@ -201,7 +201,26 @@ function detectProperNames(text: string): Set<string> {
   return names;
 }
 
+/**
+ * Deterministic PII scrub — runs BEFORE name detection so a child can't
+ * publish real contact info to other children (COPPA). The name-only
+ * anonymizer ignored digits/emails/addresses entirely.
+ */
+function redactPii(text: string): string {
+  return text
+    .replace(/\b[\w.+-]+@[\w-]+\.[\w.-]+\b/g, "[email]")
+    .replace(/\bhttps?:\/\/\S+/gi, "[link]")
+    .replace(/\bwww\.\S+/gi, "[link]")
+    // US-style phone: 555-123-4567, (555) 123 4567, 5551234567
+    .replace(/\(?\b\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\b/g, "[number]")
+    // any bare run of 10+ digits (raw phone / account-ish)
+    .replace(/\b\d{10,}\b/g, "[number]")
+    // street address: "12 Oak Lane", "1600 Pennsylvania Ave"
+    .replace(/\b\d{1,5}\s+(?:[A-Za-z]+\s){1,3}(?:street|st|avenue|ave|road|rd|lane|ln|drive|dr|boulevard|blvd|court|ct|way|circle|cir|place|pl)\b\.?/gi, "[address]");
+}
+
 export function anonymizeText(text: string): { out: string; replaced: string[] } {
+  text = redactPii(text);
   const detected = Array.from(detectProperNames(text));
   if (detected.length === 0) return { out: text, replaced: [] };
   let out = text;
