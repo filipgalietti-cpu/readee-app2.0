@@ -80,6 +80,17 @@ export default async function LunaReadPage({
     }
   }
 
+  // The child's own last connected-read WCPM → the self-referential growth beat.
+  const { data: prevRead } = await supabase
+    .from("fluency_readings")
+    .select("wcpm")
+    .eq("child_id", child.id)
+    .not("wcpm", "is", null)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  const previousWcpm = (prevRead as { wcpm: number | null } | null)?.wcpm ?? null;
+
   const token = gradeToken(child.grade);
   // Library-first (pre-built, pattern-tagged, instant); fall back to the curated
   // fluency passages if the library has none for this grade yet.
@@ -131,7 +142,7 @@ export default async function LunaReadPage({
         </div>
       </div>
 
-      <LunaReader childId={child.id} childName={child.name} passages={usable} grade={token} childOutfitId={child.outfit} />
+      <LunaReader childId={child.id} childName={child.name} passages={usable} grade={token} previousWcpm={previousWcpm} childOutfitId={child.outfit} />
     </div>
   );
 }

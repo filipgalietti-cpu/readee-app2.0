@@ -23,6 +23,7 @@ import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
 import { classifyLineRead } from "@/lib/luna/grading-decision";
+import { readingGrowthLine } from "@/lib/tutor/reading/praise";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
@@ -127,6 +128,7 @@ export default function LunaReader({
   childName,
   passages,
   grade,
+  previousWcpm = null,
   childOutfitId = null,
 }: {
   childId: string;
@@ -134,6 +136,9 @@ export default function LunaReader({
   passages: Passage[];
   /** The child's grade token ("K"/"1st"…) — used to generate a topic story. */
   grade: string;
+  /** The child's own last connected-read WCPM, for the self-referential growth
+   *  beat ("faster than YOUR last time"). null = no clean prior read yet. */
+  previousWcpm?: number | null;
   /** The child's equipped bunny skin — the sidekick wears THEIR bunny. */
   childOutfitId?: string | null;
 }) {
@@ -1265,11 +1270,20 @@ export default function LunaReader({
     // Bobby! Make sure to practice 'was' and 'hot'." then the results screen.
     const trickyList = Array.from(statsRef.current.trickyWords).slice(0, 3);
     setCaption(trickyList.length ? `Great reading, ${name}!` : `Amazing, ${name}!`);
+    // Self-referential growth beat ("faster than YOUR last time") from the
+    // motivation layer. WCPM comes from the afterGrade ref (reliable now — the
+    // `after` state may not have flushed this tick).
+    const ag = statsRef.current.afterGrade;
+    const finalWcpm = ag ? toScore(ag, ag.durationSeconds || 1).wcpm : 0;
+    const growthLine = readingGrowthLine(finalWcpm, previousWcpm);
+    const practiceLine = trickyList.length
+      ? `Make sure to practice ${trickyList.map((w) => `"${w}"`).join(" and ")}. You'll get them next time!`
+      : "";
+    const summary = [growthLine, practiceLine].filter(Boolean).join(" ");
     let wordsUrl: string | null = null;
-    let wordsReady = trickyList.length === 0;
-    if (trickyList.length) {
-      const line = `Make sure to practice ${trickyList.map((w) => `"${w}"`).join(" and ")}. You'll get them next time!`;
-      void speakToUrl(line).then((u) => { wordsUrl = u; wordsReady = true; });
+    let wordsReady = !summary;
+    if (summary) {
+      void speakToUrl(summary).then((u) => { wordsUrl = u; wordsReady = true; });
     }
     const afterIntro = () => {
       if (sessionTokenRef.current !== tok) return;
@@ -1729,6 +1743,11 @@ export default function LunaReader({
                 {after && after.wcpm > 0 && (
                   <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, background: "#eef2ff", color: "#4338ca", padding: "6px 16px", fontSize: 13.5, fontWeight: 800, fontVariantNumeric: "tabular-nums" }}>
                     You read the whole story · {Math.round(after.wcpm)} words a minute
+                  </div>
+                )}
+                {after && readingGrowthLine(after.wcpm, previousWcpm) && (
+                  <div style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 800, color: "#047857" }}>
+                    <Sparkles className="h-4 w-4" strokeWidth={2.4} /> {readingGrowthLine(after.wcpm, previousWcpm)}
                   </div>
                 )}
                 <div style={{ marginTop: 14, width: "100%", display: "flex", flexDirection: "column", gap: 6, textAlign: "left" }}>
