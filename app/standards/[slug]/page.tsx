@@ -181,7 +181,7 @@ export default async function StandardLandingPage({
         </div>
 
         <div className="mt-10 rounded-3xl border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-8 text-center shadow-sm dark:border-indigo-900/50 dark:from-indigo-950/20 dark:via-slate-900 dark:to-violet-950/20">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-lg">
             <Sparkles className="h-7 w-7" />
           </div>
           <h2 className="mt-4 text-xl font-extrabold text-zinc-900 dark:text-white">

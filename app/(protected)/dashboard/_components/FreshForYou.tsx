@@ -11,7 +11,7 @@ const KIND_META: Record<
 > = {
   ask_readee: {
     label: "Made for you",
-    tone: "from-violet-500 to-indigo-600",
+    tone: "from-violet-600 to-violet-500",
     Icon: Wand2,
   },
   personalized_story: {
@@ -26,7 +26,7 @@ const KIND_META: Record<
   },
   daily_question: {
     label: "Today's read",
-    tone: "from-indigo-500 to-violet-600",
+    tone: "from-violet-600 to-violet-500",
     Icon: Calendar,
   },
 };

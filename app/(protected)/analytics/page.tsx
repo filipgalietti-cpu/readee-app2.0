@@ -1059,7 +1059,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
               </div>
               <h2 style={{ margin: "0 0 8px", fontFamily: "var(--font-display)", fontSize: 24, fontWeight: 600, color: "#18181b" }}>See where {child.first_name} needs help</h2>
               <p style={{ margin: "0 0 20px", fontSize: 14, lineHeight: 1.6, color: "#52525b" }}>Progress charts, weekly report cards, the full skill map, and next-step suggestions with Readee+</p>
-              <Link href="/upgrade?reason=analytics" className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-sm hover:from-violet-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl hover:scale-105">
+              <Link href="/upgrade?reason=analytics" className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg hover:shadow-xl hover:scale-105">
                 Try Readee+ free for 7 days
               </Link>
               <p style={{ margin: "12px 0 0", fontSize: 12, color: "#a1a1aa" }}>$9.99/mo or $6.99/mo billed annually · cancel in one click</p>

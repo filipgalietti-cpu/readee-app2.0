@@ -276,7 +276,7 @@ function LeaderboardContent() {
                 <div className="mt-4">
                   <div className="h-3 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                      className="h-full rounded-full bg-gradient-to-r from-violet-600 to-violet-500"
                       style={{
                         width: `${Math.min(100, ahead.carrots > 0 ? (child.carrots / ahead.carrots) * 100 : 100)}%`,
                       }}
@@ -329,7 +329,7 @@ function LeaderboardContent() {
             </div>
 
             {/* CTA */}
-            <div className="flex min-h-[132px] flex-1 items-center gap-4 rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-600 p-5 shadow-sm">
+            <div className="flex min-h-[132px] flex-1 items-center gap-4 rounded-3xl bg-gradient-to-br from-violet-600 to-violet-500 p-5 shadow-sm">
               <div className="h-20 w-20 shrink-0 overflow-hidden rounded-2xl border-2 border-white/70 bg-white">
                 <Image
                   src="/images/ui/bunny-cheer.png"

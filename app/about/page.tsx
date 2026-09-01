@@ -41,7 +41,7 @@ export default async function About() {
       </div>
 
       {/* ── Our Story ── */}
-      <section className="rounded-2xl bg-gradient-to-br from-indigo-50 to-violet-50 border border-indigo-100 p-8 sm:p-10 space-y-5 mb-8">
+      <section className="rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 border border-indigo-100 p-8 sm:p-10 space-y-5 mb-8">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-white border border-indigo-100 flex items-center justify-center">
             <Heart className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
@@ -270,7 +270,7 @@ export default async function About() {
           </p>
           <Link
             href="/dashboard"
-            className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+            className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-lg hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg"
           >
             Go to Dashboard
           </Link>
@@ -286,7 +286,7 @@ export default async function About() {
           </p>
           <Link
             href="/signup"
-            className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-lg hover:from-indigo-700 hover:to-violet-600 transition-all shadow-lg"
+            className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-lg hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg"
           >
             Sign Up for Free
           </Link>

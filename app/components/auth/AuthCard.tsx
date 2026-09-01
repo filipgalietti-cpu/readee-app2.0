@@ -32,7 +32,7 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
           }`}
         >
           {banner && (
-            <span className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white text-sm font-semibold shadow-md">
+            <span className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-violet-600 to-violet-500 text-white text-sm font-semibold shadow-md">
               {banner}
             </span>
           )}

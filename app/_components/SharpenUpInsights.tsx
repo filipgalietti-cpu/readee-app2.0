@@ -98,7 +98,7 @@ export default function SharpenUpInsights({
               across the kid's top 3 weak standards. Shown only when
               there are enough weak spots to compose a meaningful deck. */}
           {weakSpots && weakSpots.length >= 2 && (
-            <div className="mt-5 flex items-center justify-between gap-3 rounded-2xl border-2 border-violet-300 bg-gradient-to-br from-violet-100 to-violet-50 p-5">
+            <div className="mt-5 flex items-center justify-between gap-3 rounded-2xl border-2 border-violet-300 bg-gradient-to-br from-violet-50 to-violet-100 p-5">
               <div className="min-w-0 flex-1">
                 <div className="text-sm font-bold text-zinc-900">
                   One Sharpen Up session

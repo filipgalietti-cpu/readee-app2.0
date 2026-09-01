@@ -242,7 +242,7 @@ export default function BillingPage() {
                 </p>
                 <Link
                   href="/upgrade"
-                  className="block w-full rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 py-3 text-center text-sm font-bold text-white shadow-md transition-all hover:from-indigo-700 hover:to-violet-600"
+                  className="block w-full rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 py-3 text-center text-sm font-bold text-white shadow-md transition-all hover:from-violet-700 hover:to-violet-600"
                 >
                   Start {PRICING.trialDays}-day free trial - {PRICING.monthly.label}
                 </Link>

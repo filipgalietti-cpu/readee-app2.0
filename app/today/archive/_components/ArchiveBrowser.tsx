@@ -284,7 +284,7 @@ function ArchiveCard({ entry, isToday }: { entry: Entry; isToday: boolean }) {
             className="h-36 w-full object-cover transition group-hover:scale-[1.02]"
           />
         ) : (
-          <div className="flex h-36 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-400">
+          <div className="flex h-36 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-indigo-400">
             <ImageIcon className="h-10 w-10" />
           </div>
         )}

@@ -932,7 +932,7 @@ function MapNode({
           whileHover={{ scale: 1.1 }}
           className={`
             w-full h-full relative rounded-full flex items-center justify-center
-            bg-gradient-to-br from-violet-500 to-violet-600 text-white
+            bg-gradient-to-br from-violet-600 to-violet-500 text-white
             shadow-[0_4px_0_0_#4338ca] outline-none select-none cursor-pointer
             border-[3px] border-violet-300/80
             roadmap-breathe

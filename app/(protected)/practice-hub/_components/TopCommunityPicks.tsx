@@ -29,7 +29,7 @@ export default function TopCommunityPicks() {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="mt-2 rounded-2xl bg-gradient-to-br from-violet-50 via-indigo-50 to-violet-100 p-4 shadow-sm dark:from-violet-950/20 dark:via-indigo-950/30 dark:to-violet-950/30">
+    <div className="mt-2 rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 p-4 shadow-sm dark:from-violet-950/20 dark:to-indigo-950/30">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
           <Users className="h-3.5 w-3.5" />

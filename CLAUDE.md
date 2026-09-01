@@ -33,6 +33,31 @@ Co-founders: Filip (engineering, product) and Jennifer Klingerman (certified rea
 **Mascot:** Readee bunny.
 **Tone:** Playful, encouraging, game-like — but credibly educational.
 
+### Gradients (canonical — do not invent new ones)
+There are exactly two Readee gradients. Copy these strings verbatim; never
+write a new violet/indigo pair. An audit on Sep 1 2026 found **35 different
+recipes for what was meant to be one brand gradient**, 13 of which were flat
+(`from-violet-500 to-violet-500` renders a solid fill). That happens when each
+screen re-derives the gradient instead of copying the canon.
+
+| Role | Class | Use for |
+|---|---|---|
+| **Action** | `bg-gradient-to-r from-violet-600 to-violet-500` | buttons, CTAs, progress fills, avatar chips, filled badges |
+| Action hover | `hover:from-violet-700 hover:to-violet-600` | pairs with the above |
+| **Surface soft** | `bg-gradient-to-br from-violet-50 to-indigo-50` | tinted cards, callouts, empty-state panels |
+| **Surface medium** | `bg-gradient-to-br from-violet-100 to-indigo-100` | the same, one step stronger |
+
+- The action gradient is **same-hue on purpose**. It reads as a soft sheen, not
+  a colour shift. Cross-hue indigo-to-violet is the pattern that makes an app
+  look AI-generated; violet carries the brand, indigo lives in the soft tints.
+- Direction (`-r` / `-br` / `-b`) may vary to suit the element. The colour
+  stops may not.
+- **Never write `from-X to-X` with the same colour at both stops.** That is a
+  gradient function painting a flat fill. Use `bg-violet-500` instead.
+- Deliberate exceptions exist and are fine when the colour means something:
+  rose on the Fluency record button, fuchsia on the PWA install tile, lighter
+  violet on locked/disabled states. New exceptions need a reason beyond taste.
+
 ### Rules
 - Spacing: Tailwind default scale only (4, 8, 12, 16, 24, 32, 48px). No arbitrary values.
 - Shadows: One consistent shadow style across the app. Do not mix depths.

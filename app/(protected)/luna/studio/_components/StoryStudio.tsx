@@ -773,7 +773,7 @@ function Wizard(props: MakerProps) {
       <div className="mb-6 flex gap-2">
         {[0, 1, 2, 3].map((i) => (
           <span key={i} className="h-[9px] flex-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-slate-700">
-            {i <= step && <span className="ss-bar block h-full w-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" />}
+            {i <= step && <span className="ss-bar block h-full w-full rounded-full bg-gradient-to-r from-violet-600 to-violet-500" />}
           </span>
         ))}
       </div>

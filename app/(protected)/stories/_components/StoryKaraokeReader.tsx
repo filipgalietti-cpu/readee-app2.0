@@ -213,7 +213,7 @@ export default function StoryKaraokeReader({
               <button onClick={() => playUrl(fallbackAudioUrl)} className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-50 px-3 py-1.5 text-sm font-medium text-violet-600 hover:bg-violet-100">
                 <Volume2 className="h-4 w-4" /> Listen
               </button>
-              <button onClick={finish} className="mt-4 block w-full rounded-2xl bg-gradient-to-r from-indigo-700 to-violet-600 py-4 text-base font-extrabold text-white shadow-sm active:scale-[0.98]">
+              <button onClick={finish} className="mt-4 block w-full rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 py-4 text-base font-extrabold text-white shadow-sm active:scale-[0.98]">
                 I&apos;m done reading →
               </button>
             </div>
