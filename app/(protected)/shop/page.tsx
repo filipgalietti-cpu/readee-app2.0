@@ -24,7 +24,7 @@ import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { grantPowerupFields } from "@/lib/carrots/active-multiplier";
-import { Carrot, Lock, RotateCcw, PartyPopper, Zap } from "lucide-react";
+import { Lock, RotateCcw, PartyPopper, Zap } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -34,6 +34,7 @@ import { UnlockToast } from "@/app/_components/UnlockToast";
 import { checkSeasonalGrants } from "@/lib/unlock";
 import { MysteryBox3D, type MysteryBox3DHandle } from "./_components/MysteryBox3D";
 import { shopSfx } from "@/lib/shop/shop-sfx";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const BALOO = "'Baloo 2', cursive";
 
@@ -527,7 +528,7 @@ function ShopContent({
           </div>
           <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 16, padding: "14px 28px 14px 16px", borderRadius: 999, border: "1px solid #fed7aa", background: "#fff", boxShadow: "0 1px 0 #fff inset,0 10px 24px -16px rgba(194,65,12,.55)" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 46, height: 46, borderRadius: 999, background: "linear-gradient(160deg,#fb923c,#ea580c)", boxShadow: "0 4px 10px -4px rgba(234,88,12,.7)" }}>
-              <Carrot size={24} strokeWidth={2} style={{ color: "#fff", display: "block" }} />
+              <FluentIcon name="carrot" size={24} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
               <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "#c2410c" }}>{child.first_name}&apos;s carrots</div>
@@ -578,7 +579,7 @@ function ShopContent({
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
                 <h2 style={{ margin: 0, fontFamily: BALOO, fontSize: 30, fontWeight: 800, letterSpacing: "-.025em", color: "#18181b", lineHeight: 1.1, whiteSpace: "nowrap" }}>Mystery Box</h2>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, flex: "0 0 auto", padding: "9px 15px 9px 12px", borderRadius: 999, background: "linear-gradient(135deg,#fb923c,#f59e0b)", boxShadow: "0 8px 20px -10px rgba(249,115,22,1)" }}>
-                  <Carrot size={20} strokeWidth={2.2} style={{ color: "#fff", display: "block" }} />
+                  <FluentIcon name="carrot" size={20} />
                   <span style={{ fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", lineHeight: 1 }}>{PRICE}</span>
                 </div>
               </div>
@@ -643,7 +644,7 @@ function ShopContent({
                   transition: "transform .12s ease",
                 }}
               >
-                {phase === "reveal" ? <RotateCcw size={19} strokeWidth={2.2} /> : canAfford ? <Carrot size={19} strokeWidth={2.2} /> : <Lock size={19} strokeWidth={2.2} />}
+                {phase === "reveal" ? <RotateCcw size={19} strokeWidth={2.2} /> : canAfford ? <FluentIcon name="carrot" size={19} /> : <Lock size={19} strokeWidth={2.2} />}
                 {showBoxCountdown ? (
                   <span style={{ display: "flex", flexDirection: "column", alignItems: "center", lineHeight: 1.15 }}>
                     <span>{primaryLabel}</span>
@@ -857,7 +858,7 @@ function ShopContent({
                   boxShadow: child.carrots >= PRICE ? `0 14px 34px -14px ${live.hex}` : "none",
                 }}
               >
-                <Carrot size={18} strokeWidth={2.2} />
+                <FluentIcon name="carrot" size={18} />
                 {freeReady ? "Open free daily box" : child.carrots >= PRICE ? `Open another · ${PRICE}` : "Your free box is back tomorrow!"}
               </button>
               <button
@@ -942,7 +943,7 @@ function RevealArt({ reward, glow }: { reward: MysteryReward; glow: string }) {
   }
   if (reward.type === "jackpot") return <PartyPopper size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
   if (reward.type === "multiplier") return <Zap size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
-  return <Carrot size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
+  return <FluentIcon name="carrot" size={88} />;
 }
 
 /** Right column of the hero: the currently-previewed bunny on a lit stage.
@@ -1129,7 +1130,7 @@ function ShopItemCard({
         ) : (
           <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
             {item.price}
-            <Carrot size={14} strokeWidth={2} style={{ display: "block" }} />
+            <FluentIcon name="carrot" size={14} />
           </span>
         )}
       </button>

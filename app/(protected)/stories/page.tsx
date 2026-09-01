@@ -21,6 +21,7 @@ import { Lock, ChevronDown, Play, Carrot, Flame, Star, Check } from "lucide-reac
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
 import storiesKaraoke from "@/app/data/stories-karaoke.json";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -463,7 +464,7 @@ function StoriesContent() {
                   </p>
                   <div className="mt-5">
                     <span className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-lg font-extrabold" style={{ background: "#fef3c7", color: "#b45309", animation: "counterPop 0.4s ease 0.4s both" }}>
-                      <Carrot className="h-5 w-5" style={{ color: "#f97316" }} /> +<CarrotCountUp total={finishedScore.carrots} /> carrots
+                      <FluentIcon name="carrot" size={20} /> +<CarrotCountUp total={finishedScore.carrots} /> carrots
                     </span>
                   </div>
                   <div className="mx-auto mt-6 flex max-w-[380px] flex-col gap-2.5">
@@ -585,7 +586,7 @@ function StoriesContent() {
           </p>
         </div>
         <span className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-extrabold" style={{ background: "#fef3c7", color: "#b45309" }}>
-          <Carrot className="h-4 w-4" style={{ color: "#f97316" }} /> {child.carrots ?? 0}
+          <FluentIcon name="carrot" size={16} /> {child.carrots ?? 0}
         </span>
         {typeof child.streak_days === "number" && child.streak_days > 0 && (
           <span className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-extrabold" style={{ background: "#ffe4e6", color: "#be123c" }}>

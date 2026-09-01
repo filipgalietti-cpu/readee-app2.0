@@ -13,6 +13,7 @@ import QuizSummary from "./QuizSummary";
 import QuizHypeIntro from "@/app/(protected)/practice/_components/QuizHypeIntro";
 import SealOfApproval from "@/app/(protected)/practice/_components/SealOfApproval";
 import { Carrot } from "lucide-react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
  * QuizRunner — the post-lesson quiz, built on Filip's designed beats:
@@ -309,7 +310,7 @@ export default function QuizRunner({
             carrotFlash ? "bg-orange-50 ring-orange-300" : "bg-zinc-50 ring-zinc-200"
           }`}
         >
-          <Carrot size={16} className="text-orange-500" strokeWidth={2.5} />
+          <FluentIcon name="carrot" size={16} />
           <span className="text-sm font-extrabold text-zinc-700">{displayCarrots}</span>
           <AnimatePresence>
             {carrotGains.map((g) => (
@@ -420,7 +421,7 @@ export default function QuizRunner({
       {/* flying carrots (legacy launchCarrots) */}
       {flyers.map((f) => (
         <span key={f.key} style={f.style}>
-          <Carrot size={22} className="fill-orange-200 text-orange-500" strokeWidth={2.5} />
+          <FluentIcon name="carrot" size={22} />
         </span>
       ))}
 

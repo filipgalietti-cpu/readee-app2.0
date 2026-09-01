@@ -12,9 +12,10 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
-import { BookOpen, Newspaper, Type, MessageCircle, Trophy, Carrot, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, Trophy, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -773,7 +774,7 @@ function TopProgressBar({ pct, completedCount, totalStandards, totalCarrots, str
       <div className="grid grid-cols-3 gap-2">
         <div className="bg-white/10 rounded-lg p-2 text-center">
           <div className="text-white font-bold text-sm">{totalCarrots}</div>
-          <Carrot className="w-3 h-3 text-white/50 mx-auto" strokeWidth={1.5} />
+          <FluentIcon name="carrot" size={12} />
         </div>
         <div className="bg-white/10 rounded-lg p-2 text-center">
           <div className="text-white font-bold text-sm">{streakDays}</div>
@@ -1048,7 +1049,7 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
                 <div className="text-emerald-600 text-[10px]">Correct</div>
               </div>
               <div className="flex-1 bg-orange-50 rounded-xl p-2.5 text-center">
-                <div className="text-orange-700 font-bold text-sm flex items-center justify-center gap-1">+{progress.carrotsEarned} <Carrot className="w-3.5 h-3.5" strokeWidth={1.5} /></div>
+                <div className="text-orange-700 font-bold text-sm flex items-center justify-center gap-1">+{progress.carrotsEarned} <FluentIcon name="carrot" size={14} /></div>
                 <div className="text-orange-600 text-[10px]">Carrots Earned</div>
               </div>
             </div>

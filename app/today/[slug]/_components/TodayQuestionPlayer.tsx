@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, X as XIcon, ThumbsUp, ThumbsDown, Star, Carrot } from "lucide-react";
+import { Check, X as XIcon, ThumbsUp, ThumbsDown, Star } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Q = {
   prompt: string;
@@ -117,7 +118,7 @@ export default function TodayQuestionPlayer({
             ))}
           </div>
           <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-5 py-2 text-[15px] font-extrabold text-emerald-700">
-            <Carrot className="h-4 w-4" strokeWidth={2} /> +{correctCount * 5} carrots
+            <FluentIcon name="carrot" size={16} /> +{correctCount * 5} carrots
           </div>
           <button
             type="button"

@@ -18,6 +18,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { WarmupDef } from "@/lib/warmup-engine/types";
 import { Carrot } from "lucide-react";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Screen = "start" | "intro" | "ready" | "play" | "end";
 export type WarmupSkin = "carrot" | "sky";
@@ -697,7 +698,7 @@ export default function WarmupArcade({
               <p className="text-lg font-bold text-zinc-600" style={{ animation: "wuFadeUp .5s .2s ease both" }}>{bestLine}</p>
               {score > 0 && (
                 <p className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-4 py-2 text-sm font-extrabold text-orange-600" style={{ animation: "wuFadeUp .5s .23s ease both" }}>
-                  <Carrot className="h-4 w-4" />+{score} carrots
+                  <FluentIcon name="carrot" size={16} />+{score} carrots
                 </p>
               )}
               <div className="flex items-center gap-6" style={{ animation: "wuFadeUp .5s .26s ease both" }}>

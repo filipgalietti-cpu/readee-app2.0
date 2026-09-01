@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Sparkles, Flame, Carrot, ArrowRight } from "lucide-react";
+import { Sparkles, Flame, ArrowRight } from "lucide-react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
  * Pre-quiz hype sequence — a port of the "Quiz Hype Intro" Claude Design.
@@ -218,7 +219,7 @@ export default function QuizHypeIntro({
               className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-base font-extrabold"
               style={{ background: "#ffedd5", color: "#9a3412", animation: "chipIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.3s both" }}
             >
-              <Carrot className="h-[18px] w-[18px]" style={{ color: "#ea580c" }} strokeWidth={2.5} />
+              <FluentIcon name="carrot" size={18} />
               <span>{carrots} carrots</span>
             </div>
           </div>

@@ -24,7 +24,7 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { Target, Puzzle, BookOpen, Map, Carrot, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users, Brain } from "lucide-react";
+import { Target, Puzzle, BookOpen, Map, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users, Brain, Carrot} from "lucide-react";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -38,6 +38,7 @@ import KidHome from "./_components/KidHome";
 import UpgradeCelebration from "./_components/UpgradeCelebration";
 import WhatsNew from "./_components/WhatsNew";
 import { OUTFITS } from "@/app/_components/Bunny/outfits";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 // Set of standards that have a real canonical lesson on the /learn
 // slideshow route. Used to route navigation to /learn when possible
@@ -421,7 +422,7 @@ function ChildSelector({
                     )}
                   </div>
                   <div className="text-right text-xs text-zinc-400 space-y-1">
-                    <div className="flex items-center gap-0.5">{Number(child.carrots) || 0} <Carrot className="w-3 h-3 text-orange-500" strokeWidth={1.5} /></div>
+                    <div className="flex items-center gap-0.5">{Number(child.carrots) || 0} <FluentIcon name="carrot" size={12} /></div>
                     <div>{effectiveStreak(child.streak_days, child.last_lesson_at)}d streak</div>
                   </div>
                 </div>
@@ -1084,7 +1085,7 @@ function ChildDashboard({
               </div>
               {shopAvatars.some((item) => !ownedAvatarIds.has(item.id)) && (
                 <p className="text-xs text-zinc-400 mt-3 text-center">
-                  Earn carrots <Carrot className="w-3 h-3 inline-block text-orange-500" strokeWidth={1.5} /> to unlock more avatars in the <Link href={`/shop?child=${currentChild.id}`} className="text-violet-600 font-semibold hover:underline" onClick={() => setAvatarPickerOpen(false)}>Shop</Link>!
+                  Earn carrots <FluentIcon name="carrot" size={12} /> to unlock more avatars in the <Link href={`/shop?child=${currentChild.id}`} className="text-violet-600 font-semibold hover:underline" onClick={() => setAvatarPickerOpen(false)}>Shop</Link>!
                 </p>
               )}
             </div>

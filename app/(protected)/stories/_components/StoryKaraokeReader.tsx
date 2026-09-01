@@ -12,8 +12,9 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
-import { Volume2, ArrowLeft, ArrowRight, Carrot } from "lucide-react";
+import { Volume2, ArrowLeft, ArrowRight } from "lucide-react";
 import { useAudio } from "@/lib/audio/use-audio";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export type KaraokeWord = { t: string; start: number; end: number };
 export type KaraokeSentence = { text: string; audioUrl?: string; words: KaraokeWord[] };
@@ -245,7 +246,7 @@ export default function StoryKaraokeReader({
           <h1 className="flex-1 text-center text-2xl font-extrabold tracking-tight" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>{title}</h1>
           {typeof carrots === "number" && (
             <span ref={counterRef} className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-[7px] text-[15px] font-extrabold" style={{ background: "#fef3c7", color: "#b45309", animation: carrotPop ? "counterPop 0.28s ease" : undefined }}>
-              <Carrot className="h-[17px] w-[17px]" style={{ color: "#f97316" }} /> {displayCarrots}
+              <FluentIcon name="carrot" size={17} /> {displayCarrots}
             </span>
           )}
           {!showQuiz && !isProse && (
@@ -376,16 +377,6 @@ function Flyer({ sx, sy, dx, dy, delay }: { sx: number; sy: number; dx: number; 
     return () => clearTimeout(t);
   }, [delay]);
   return (
-    <Carrot
-      className="pointer-events-none fixed z-[60] h-7 w-7"
-      style={{
-        left: sx,
-        top: sy,
-        color: "#f97316",
-        transform: go ? `translate(${dx}px, ${dy}px) scale(0.5)` : "translate(0,0) scale(1.15)",
-        opacity: go ? 0 : 1,
-        transition: "transform 0.85s cubic-bezier(0.22,1,0.36,1), opacity 0.85s ease",
-      }}
-    />
+    <FluentIcon name="carrot" size={28} />
   );
 }

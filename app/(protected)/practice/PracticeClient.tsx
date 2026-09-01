@@ -35,7 +35,7 @@ import { finalizeSessionCarrots } from "@/lib/carrots/finalize-session";
 import { clearActiveMultiplierFields } from "@/lib/carrots/active-multiplier";
 import { StreakFire } from "@/app/_components/StreakFire";
 import SealOfApproval from "./_components/SealOfApproval";
-import { BookOpen, Newspaper, Type, MessageCircle, Carrot, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon, Sparkles } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon, Sparkles } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
@@ -49,6 +49,7 @@ import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/
 import QuizHypeIntro from "./_components/QuizHypeIntro";
 import type { Outfit } from "@/app/_components/Bunny/outfits";
 import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -1191,7 +1192,7 @@ function PracticeSession({
       {/* flying carrots (first-try win) */}
       {flyers.map((fl) => (
         <div key={fl.key} style={fl.style}>
-          <Carrot className="w-6 h-6 text-orange-500" strokeWidth={2} fill="#fdba74" />
+          <FluentIcon name="carrot" size={24} />
         </div>
       ))}
       {debugAdaptive && <AdaptiveDebugBadge reading={adaptive.reading} />}
@@ -1290,7 +1291,7 @@ function PracticeSession({
           animate={carrotFlash ? { scale: [1, 1.35, 1] } : {}}
           transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
         >
-          <Carrot className="w-[18px] h-[18px] text-orange-500" strokeWidth={1.8} />
+          <FluentIcon name="carrot" size={18} />
           <span className="text-base font-extrabold text-orange-600 tabular-nums">{sessionCarrots}</span>
         </motion.div>
 
@@ -2007,7 +2008,7 @@ function CompletionScreen({
             <div className="flex-1">
               <div className="flex items-center gap-1.5">
                 <span className="font-[family-name:var(--font-baloo)] font-extrabold text-[28px] leading-none text-orange-600">+{carrotsEarned}</span>
-                <Carrot className="w-5 h-5 text-orange-500" strokeWidth={2} />
+                <FluentIcon name="carrot" size={20} />
               </div>
               <div className="mt-0.5 text-[11px] font-bold text-zinc-500">Carrots earned</div>
               {carrotBoost && carrotBoost > 1 ? (

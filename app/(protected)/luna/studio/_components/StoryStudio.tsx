@@ -21,7 +21,6 @@ import {
   Send,
   RotateCcw,
   ShieldCheck,
-  Carrot,
   Check,
   Clock,
   BookOpen,
@@ -37,6 +36,7 @@ import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 import { publishKidStory } from "../actions";
 import { STORY_CARROTS } from "@/lib/luna/story-rewards";
 import { playPublishSfx } from "./studio-sfx";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Phase = "make" | "generating" | "preview" | "published" | "error";
 
@@ -307,7 +307,7 @@ export default function StoryStudio({
           }`}
           style={BALOO}
         >
-          <Carrot className="h-4 w-4" /> {carrotCount}
+          <FluentIcon name="carrot" size={16} /> {carrotCount}
         </span>
       </div>
 
@@ -563,7 +563,7 @@ function PublishOverlay({
               filter: "drop-shadow(0 6px 12px rgba(0,0,0,.35))",
             } as React.CSSProperties}
           >
-            <Carrot size={30} fill="#fb923c" color="#fb923c" />
+            <FluentIcon name="carrot" size={30} />
           </span>
         ))}
       </div>
@@ -1047,7 +1047,7 @@ function Published({
             Our team checks every story to keep Readee kind and safe. Yours will show up for other children once it&apos;s approved.
           </p>
           <div className="ss-pop mt-6 inline-flex items-center gap-2 rounded-full bg-orange-50 px-4 py-2 text-base font-extrabold text-orange-700" style={BALOO}>
-            <Carrot className="h-5 w-5" /> +{carrots} carrots for posting!
+            <FluentIcon name="carrot" size={20} /> +{carrots} carrots for posting!
           </div>
           <p className="mt-3 text-sm text-zinc-500">
             You&apos;ll earn {STORY_CARROTS.perRead} more carrots every time a child reads it.
