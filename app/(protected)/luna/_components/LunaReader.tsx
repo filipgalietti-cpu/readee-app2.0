@@ -23,7 +23,8 @@ import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
 import { classifyLineRead } from "@/lib/luna/grading-decision";
-import { readingGrowthLine } from "@/lib/orion/reading/praise";
+import { readingGrowthLine, READING_PRAISE, READING_WIN } from "@/lib/orion/reading/praise";
+import { pickProcessPraise } from "@/lib/orion/motivation";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
@@ -343,6 +344,9 @@ export default function LunaReader({
   const missQueueRef = useRef<string[]>([]);
   // Per-line results for the quiz-style finish summary (Line 1 ✓ / Line 2 ✗).
   const lineResultsRef = useRef<{ text: string; ok: boolean }[]>([]);
+  // Words the child fixed by sounding them out — used for specific process
+  // praise in the recap ("you sounded out 'stop' yourself"), the d≈0.99 lever.
+  const fixedWordsRef = useRef<string[]>([]);
   // Prewarmed "it's a sight word" explainer lines, per word.
   const sightLineRef = useRef<Map<string, string>>(new Map());
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
@@ -848,6 +852,7 @@ export default function LunaReader({
     stopProcessing();
     if (g.wordsCorrect >= 1) {
       bunnyReact("correct");
+      fixedWordsRef.current.push(wd.word); // fixed it by sounding out → praise later
       playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`That's it - "${wd.word}"!`); }, () => afterWordCheck());
     } else {
       // Not yet — one more karaoke blend of THIS word, then move along.
@@ -1358,10 +1363,16 @@ export default function LunaReader({
     const ag = statsRef.current.afterGrade;
     const finalWcpm = ag ? toScore(ag, ag.durationSeconds || 1).wcpm : 0;
     const growthLine = readingGrowthLine(finalWcpm, previousWcpm);
+    // Specific PROCESS praise (Orion motivation layer) — naming the strategy is
+    // ~4x generic praise. Celebrate a word the child fixed by sounding it out.
+    const fixed = fixedWordsRef.current;
+    const praiseLine = fixed.length
+      ? pickProcessPraise({ kind: READING_WIN.DECODED_WORD, detail: fixed[fixed.length - 1] }, READING_PRAISE)
+      : null;
     const practiceLine = trickyList.length
       ? `Make sure to practice ${trickyList.map((w) => `"${w}"`).join(" and ")}. You'll get them next time!`
       : "";
-    const summary = [growthLine, practiceLine].filter(Boolean).join(" ");
+    const summary = [praiseLine, growthLine, practiceLine].filter(Boolean).join(" ");
     let wordsUrl: string | null = null;
     let wordsReady = !summary;
     if (summary) {
@@ -1453,6 +1464,7 @@ export default function LunaReader({
     recapIntroUrlRef.current = null;
     sessionCarrotsRef.current = 0; setSessionCarrots(0); setCarrotShown(0); setBunnyRx("");
     lineResultsRef.current = [];
+    fixedWordsRef.current = [];
     setWordLesson(null); missQueueRef.current = [];
     const sessTok = ++sessionTokenRef.current;
     void speakToUrl(`Great reading, ${name}!`).then((url) => { if (url && sessionTokenRef.current === sessTok) recapIntroUrlRef.current = url; });
