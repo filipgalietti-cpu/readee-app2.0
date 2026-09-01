@@ -59,8 +59,33 @@ const LEET: Record<string, string> = {
   "!": "i", "3": "e", "7": "t", "9": "g", "8": "b", "2": "z",
 };
 
+// Look-alike letters attackers use to smuggle a banned word past an ASCII
+// scanner (Cyrillic / Greek homoglyphs). Folded to their Latin twin.
+const CONFUSABLES: Record<string, string> = {
+  "а": "a", "е": "e", "о": "o", "р": "p", "с": "c", "у": "y", "х": "x",
+  "і": "i", "ѕ": "s", "к": "k", "ԁ": "d", "ո": "n", "м": "m", "т": "t", "в": "b",
+  "α": "a", "ο": "o", "ρ": "p", "ε": "e", "ι": "i", "ν": "v", "κ": "k",
+  "τ": "t", "υ": "u", "χ": "x", "ϲ": "c", "ѡ": "w", "ⅼ": "l", "ｉ": "i",
+};
+
+/**
+ * Fold obfuscation the ASCII scanner would otherwise be blind to: strip
+ * zero-width chars (in-word splits), map homoglyphs to Latin, and drop accents
+ * — so "fu​ck", "fuсk" (Cyrillic с), and "fück" all reduce to "fuck"
+ * BEFORE the banlist runs. Without this the entire banlist is one paste away
+ * from being bypassed.
+ */
+function foldToAscii(s: string): string {
+  // strip zero-width joiners / BOM / soft hyphen (in-word splits like "fu<zwsp>ck")
+  let out = s.normalize("NFKC").replace(/[\u200B-\u200D\uFEFF\u00AD]/g, "");
+  // map non-ASCII homoglyphs to their Latin twin
+  out = out.replace(/[^\u0000-\u007F]/g, (ch) => CONFUSABLES[ch.toLowerCase()] ?? ch);
+  // drop combining accent marks (fück -> fuck)
+  return out.normalize("NFD").replace(/[\u0300-\u036F]/g, "");
+}
+
 function applyLeet(s: string): string {
-  let out = s.toLowerCase();
+  let out = foldToAscii(s).toLowerCase();
   for (const [k, v] of Object.entries(LEET)) out = out.split(k).join(v);
   // ph -> f defeats "phuck"; harmless on clean words ("phone" -> "fone").
   return out.replace(/ph/g, "f");

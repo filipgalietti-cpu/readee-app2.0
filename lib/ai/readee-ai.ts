@@ -1970,8 +1970,13 @@ export async function moderateKidInput(input: {
   let client: GoogleGenAI;
   try {
     client = getClient();
-  } catch {
-    return { ok: true }; // fail open
+  } catch (e: any) {
+    // FAIL CLOSED: this guards a kid-facing CREATE path — the story/cover is
+    // shown to the child instantly, before any human review. A moderation
+    // outage must block, not wave the idea through (the banlist alone is
+    // evadable). The child just sees "pick a different idea".
+    trackError(e, { route: "readee-ai.moderateKidInput.config", userId: input.teacherId });
+    return { ok: false, reason: "moderation_unavailable" };
   }
 
   try {
@@ -1988,7 +1993,7 @@ export async function moderateKidInput(input: {
       route: "readee-ai.moderateKidInput",
       userId: input.teacherId,
     });
-    return { ok: true }; // fail open — output scan + human review still apply
+    return { ok: false, reason: "moderation_unavailable" }; // fail closed (see above)
   }
 }
 
