@@ -901,13 +901,15 @@ export default function LunaReader({
       zeroSpeechRef.current = null;
     }
     const covered = settled + partialWords >= Math.floor(refLen * 0.9);
-    // Tightened (was 2000/3500) — a partial read left the kid hanging in
-    // silence before Luna moved on.
+    // Must be MORE patient than Azure's in-phrase silence tolerance (2.5s) when
+    // the line isn't done yet, or Luna ends the mic mid-pause and only a
+    // fragment of a slow, word-by-word read survives. Snappy once ~all the line
+    // is read (they're clearly finished), patient while words remain.
     if (autoStopRef.current) window.clearTimeout(autoStopRef.current);
     autoStopRef.current = window.setTimeout(() => {
       autoStopRef.current = null;
       if (streamActiveRef.current) { dbg("auto-stop: silence"); void stopStream(); }
-    }, covered ? 1500 : 2600);
+    }, covered ? 1600 : 3800);
   }
   // Live: highlight the words being spoken in the current phrase (from the
   // running cursor), so it tracks across phrases in a whole-passage read.
@@ -1492,6 +1494,7 @@ export default function LunaReader({
     const refText = isDrill ? sentences[ci] : passage.text;
     const from = isDrill ? Math.max(0, wSent.indexOf(ci)) : 0;
     const to = isDrill ? (wSent.lastIndexOf(ci) < 0 ? words.length - 1 : wSent.lastIndexOf(ci)) : words.length - 1;
+    dbg(`read line ${ci + 1}/${sentences.length} [w${from}-${to}] ref="${isDrill ? refText : "WHOLE PASSAGE"}"`);
     for (let i = from; i <= to; i++) wordStateRef.current[i] = "pending";
     styleWords();
     readModeRef.current = "starting"; pendingStopRef.current = false;
