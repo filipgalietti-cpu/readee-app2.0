@@ -78,9 +78,17 @@ function buildCorsHeaders(origin: string) {
 }
 
 function getClientIp(request: NextRequest): string {
+  // Prefer Vercel's x-real-ip (platform-set, not client-forgeable). The
+  // LEFTMOST x-forwarded-for value is attacker-supplied — rotating it defeated
+  // the per-IP throttle; use the right-most hop as the fallback instead.
+  const real = request.headers.get('x-real-ip');
+  if (real) return real.trim();
   const xff = request.headers.get('x-forwarded-for');
-  if (xff) return xff.split(',')[0].trim();
-  return request.headers.get('x-real-ip')?.trim() || '';
+  if (xff) {
+    const parts = xff.split(',').map((s) => s.trim()).filter(Boolean);
+    if (parts.length) return parts[parts.length - 1];
+  }
+  return '';
 }
 
 async function verifyTurnstileToken(token: string | undefined, remoteIp: string): Promise<boolean> {
@@ -226,7 +234,7 @@ export async function POST(request: NextRequest) {
         if (authError) {
           if (authError.message?.includes('already been registered')) {
             existingAccount = true;
-            console.log('Auth account already exists for:', email);
+            console.log('Auth account already exists (existing user)');
 
             // Look up existing user to get their ID for children insert
             const { data: userList } = await admin.auth.admin.listUsers();
@@ -266,7 +274,7 @@ export async function POST(request: NextRequest) {
         // accepts up to 5 children, so clamp to whatever room is left —
         // the normal first-reader flow always fits.
         if (userId && body.children?.length) {
-          console.log('Inserting children for user:', userId, 'children data:', JSON.stringify(body.children));
+          console.log('Inserting children for user:', userId, 'count:', body.children?.length ?? 0);
           try {
             const { data: prof } = await admin
               .from('profiles')
@@ -294,7 +302,7 @@ export async function POST(request: NextRequest) {
             if (childrenRows.length < body.children.length) {
               console.log(`Reader cap: inserting ${childrenRows.length} of ${body.children.length} children (max ${maxReaders}, existing ${existingReaders ?? 0})`);
             }
-            console.log('Children rows to insert:', JSON.stringify(childrenRows));
+            console.log('Children rows to insert:', childrenRows.length);
 
             if (childrenRows.length > 0) {
               const { data: insertedChildren, error: childrenError } = await admin
@@ -336,7 +344,7 @@ export async function POST(request: NextRequest) {
             console.error('Error generating password reset link:', linkError);
           } else if (linkData?.properties?.action_link) {
             passwordResetLink = linkData.properties.action_link;
-            console.log('Password reset link generated for:', email);
+            console.log('Password reset link generated for user:', userId);
           }
         }
       } catch (accountErr) {
@@ -549,7 +557,7 @@ export async function POST(request: NextRequest) {
       ]);
 
       if (welcomeResult.error) console.error('Welcome email error:', welcomeResult.error);
-      else console.log('Welcome email sent:', welcomeResult.data);
+      else console.log('Welcome email sent (id):', welcomeResult.data?.id);
 
       if (notifResult.error) console.error('Notification email error:', notifResult.error);
       else console.log('Notification email sent:', notifResult.data);

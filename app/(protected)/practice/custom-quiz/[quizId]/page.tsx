@@ -27,14 +27,11 @@ export default async function ParentCustomQuizPage({
 }) {
   const { quizId } = await params;
   const { child: childId } = await searchParams;
-  console.log("[parent-quiz] enter", { quizId, childId });
   if (!childId) {
-    console.log("[parent-quiz] 404: missing childId");
     notFound();
   }
 
   const profile = await requireProfile();
-  console.log("[parent-quiz] profile", { id: profile.id, role: (profile as any).role });
   const supabase = await createClient();
 
   // 1) Parent-child ownership
@@ -44,9 +41,7 @@ export default async function ParentCustomQuizPage({
     .eq("id", childId)
     .eq("parent_id", profile.id)
     .maybeSingle();
-  console.log("[parent-quiz] child fetch", { child, childErr });
   if (!child) {
-    console.log("[parent-quiz] 404: child not found or not owned by parent");
     notFound();
   }
   const homeLanguage = ((child as any).home_language ?? null) as string | null;
@@ -60,9 +55,7 @@ export default async function ParentCustomQuizPage({
     .select("classroom_id")
     .eq("child_id", childId);
   const classroomIds = (memberships ?? []).map((m: any) => m.classroom_id);
-  console.log("[parent-quiz] memberships", { classroomIds });
   if (classroomIds.length === 0) {
-    console.log("[parent-quiz] redirect: no classroom memberships");
     redirect(`/dashboard?child=${childId}`);
   }
 
@@ -75,9 +68,7 @@ export default async function ParentCustomQuizPage({
     .order("assigned_at", { ascending: false })
     .limit(1)
     .maybeSingle();
-  console.log("[parent-quiz] assignment", { assignmentRow });
   if (!assignmentRow) {
-    console.log("[parent-quiz] 404: no matching assignment");
     notFound();
   }
 
@@ -87,9 +78,7 @@ export default async function ParentCustomQuizPage({
     .select("id, title, description")
     .eq("id", quizId)
     .maybeSingle();
-  console.log("[parent-quiz] quiz", { quiz });
   if (!quiz) {
-    console.log("[parent-quiz] 404: quiz not found");
     notFound();
   }
 
