@@ -180,14 +180,14 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
         }}
       />
       {/* View toggle */}
-      <div className="mb-3 inline-flex rounded-full border border-zinc-200 bg-white p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+      <div className="mb-3 inline-flex rounded-full border border-zinc-200 bg-white p-0.5 text-xs font-semibold">
         <button
           type="button"
           onClick={() => setViewMode("standards")}
           className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 transition ${
             viewMode === "standards"
               ? "bg-indigo-600 text-white"
-              : "text-zinc-500 hover:text-zinc-700 dark:hover:text-slate-300"
+              : "text-zinc-500 hover:text-zinc-700"
           }`}
         >
           <Grid className="h-3 w-3" />
@@ -199,7 +199,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
           className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 transition ${
             viewMode === "questions"
               ? "bg-indigo-600 text-white"
-              : "text-zinc-500 hover:text-zinc-700 dark:hover:text-slate-300"
+              : "text-zinc-500 hover:text-zinc-700"
           }`}
         >
           <List className="h-3 w-3" />
@@ -208,20 +208,20 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
       </div>
 
       {/* Filter bar */}
-      <div className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="space-y-3 rounded-2xl border border-zinc-200 bg-white p-4">
         <div className="relative">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search by prompt, standard, or domain…"
-            className="w-full rounded-xl border border-zinc-200 bg-white py-2 pl-9 pr-3 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            className="w-full rounded-xl border border-zinc-200 bg-white py-2 pl-9 pr-3 text-sm focus:border-indigo-400 focus:outline-none"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex items-center gap-1.5">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-500">
               Grade
             </span>
             <div className="flex flex-wrap gap-1">
@@ -233,7 +233,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
                   className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
                     grade === g
                       ? "bg-indigo-600 text-white"
-                      : "border border-zinc-200 bg-white text-zinc-700 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                      : "border border-zinc-200 bg-white text-zinc-700 hover:border-indigo-300"
                   }`}
                 >
                   {g}
@@ -243,13 +243,13 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-500">
               Type
             </span>
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-700 focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+              className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-700 focus:border-indigo-400 focus:outline-none"
             >
               {typeOptions.map((t) => (
                 <option key={t} value={t}>
@@ -259,7 +259,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
             </select>
           </div>
 
-          <div className="ml-auto text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <div className="ml-auto text-xs font-semibold text-zinc-500">
             <Filter className="mr-1 inline h-3 w-3" />
             {filtered.length.toLocaleString()} match
             {filtered.length === 1 ? "" : "es"} · {byStandard.length} standard
@@ -270,8 +270,8 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
 
       {/* Results */}
       {filtered.length === 0 ? (
-        <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-          <p className="text-sm text-zinc-500 dark:text-slate-400">
+        <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+          <p className="text-sm text-zinc-500">
             No questions match these filters.
           </p>
         </div>
@@ -289,21 +289,21 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
               <li
                 key={standardId}
                 id={`std-${standardId}`}
-                className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/40"
+                className="overflow-hidden rounded-2xl border border-zinc-200 bg-white"
               >
                 <button
                   type="button"
                   onClick={() => toggleExpand(standardId)}
-                  className="flex w-full items-center gap-4 p-4 text-left transition hover:bg-zinc-50 dark:hover:bg-slate-900/60"
+                  className="flex w-full items-center gap-4 p-4 text-left transition hover:bg-zinc-50"
                 >
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-xs font-bold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-xs font-bold text-indigo-700">
                     {info.grade}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="truncate font-extrabold text-zinc-900 dark:text-white">
+                    <div className="truncate font-extrabold text-zinc-900">
                       {info.standardTitle}
                     </div>
-                    <div className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                    <div className="mt-0.5 text-xs text-zinc-500">
                       <span className="font-mono">{standardId}</span> ·{" "}
                       {info.domain} · {info.items.length} question
                       {info.items.length === 1 ? "" : "s"}
@@ -315,7 +315,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
                 </button>
 
                 {isExpanded && (
-                  <ul className="divide-y divide-zinc-100 border-t border-zinc-100 bg-zinc-50/40 dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-950/30">
+                  <ul className="divide-y divide-zinc-100 border-t border-zinc-100 bg-zinc-50/40">
                     {info.items.map((qn) => {
                       const imgFailed = imageErrors.has(qn.id);
                       const isPlaying = playingId === qn.id;
@@ -326,13 +326,13 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
                           id={`q-${qn.id}`}
                           className={`px-4 py-3 transition-colors ${
                             isFocused
-                              ? "bg-violet-50 ring-2 ring-violet-300 dark:bg-violet-950/40 dark:ring-violet-700"
+                              ? "bg-violet-50 ring-2 ring-violet-300"
                               : ""
                           }`}
                         >
                           <div className="flex items-start gap-3">
                             {/* Thumbnail */}
-                            <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+                            <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl border border-zinc-200 bg-white">
                               {imgFailed ? (
                                 <ImageOff className="h-5 w-5 text-zinc-300" />
                               ) : (
@@ -350,7 +350,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
 
                             <div className="min-w-0 flex-1">
                               <div className="flex flex-wrap items-center gap-2">
-                                <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:bg-slate-900 dark:text-slate-400">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600">
                                   {TYPE_LABELS[qn.type] ?? qn.type}
                                 </span>
                                 <span className="font-mono text-[10px] text-zinc-400">
@@ -368,7 +368,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
                                     className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold transition ${
                                       isPlaying
                                         ? "bg-indigo-600 text-white"
-                                        : "border border-indigo-200 bg-white text-indigo-700 hover:bg-indigo-50 dark:border-indigo-900 dark:bg-slate-900 dark:text-indigo-300"
+                                        : "border border-indigo-200 bg-white text-indigo-700 hover:bg-indigo-50"
                                     }`}
                                   >
                                     <Volume2 className="h-3 w-3" />
@@ -376,7 +376,7 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
                                   </button>
                                 )}
                               </div>
-                              <div className="mt-1.5 whitespace-pre-line text-sm text-zinc-800 dark:text-slate-200">
+                              <div className="mt-1.5 whitespace-pre-line text-sm text-zinc-800">
                                 {qn.prompt}
                               </div>
                               {qn.choices && qn.choices.length > 0 && (
@@ -388,8 +388,8 @@ export default function LibraryBrowser({ questions }: { questions: LibraryQuesti
                                         key={c}
                                         className={`inline-flex items-center gap-1.5 rounded-lg px-2 py-0.5 ${
                                           isCorrect
-                                            ? "bg-green-50 font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-300"
-                                            : "bg-white text-zinc-600 dark:bg-slate-900 dark:text-slate-400"
+                                            ? "bg-green-50 font-semibold text-green-800"
+                                            : "bg-white text-zinc-600"
                                         }`}
                                       >
                                         {isCorrect && <Check className="h-3 w-3" />}
@@ -516,12 +516,12 @@ function StandardsGrid({
         return (
           <section
             key={g}
-            className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/40"
+            className="overflow-hidden rounded-2xl border border-zinc-200 bg-white"
           >
             <button
               type="button"
               onClick={() => toggleGrade(g)}
-              className="flex w-full items-center gap-3 px-5 py-4 text-left transition hover:bg-zinc-50 dark:hover:bg-slate-900/60"
+              className="flex w-full items-center gap-3 px-5 py-4 text-left transition hover:bg-zinc-50"
             >
               <span
                 className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md text-zinc-400 transition ${
@@ -534,10 +534,10 @@ function StandardsGrid({
                 {g}
               </div>
               <div className="min-w-0 flex-1">
-                <h2 className="text-base font-extrabold text-zinc-900 dark:text-white">
+                <h2 className="text-base font-extrabold text-zinc-900">
                   {g === "K" ? "Kindergarten" : `${g} Grade`}
                 </h2>
-                <div className="text-xs text-zinc-500 dark:text-slate-400">
+                <div className="text-xs text-zinc-500">
                   {standardCount} standard{standardCount === 1 ? "" : "s"} ·{" "}
                   {qCount.toLocaleString()} question{qCount === 1 ? "" : "s"}
                 </div>
@@ -545,7 +545,7 @@ function StandardsGrid({
             </button>
 
             {isOpen && (
-              <div className="border-t border-zinc-100 bg-zinc-50/40 px-5 py-4 dark:border-slate-800 dark:bg-slate-950/30">
+              <div className="border-t border-zinc-100 bg-zinc-50/40 px-5 py-4">
                 <DomainAccordion
                   domains={domains}
                   onPick={onPick}
@@ -591,12 +591,12 @@ function DomainAccordion({
         return (
           <div
             key={domain}
-            className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+            className="overflow-hidden rounded-xl border border-zinc-200 bg-white"
           >
             <button
               type="button"
               onClick={() => toggle(domain)}
-              className="flex w-full items-center gap-2 px-4 py-2 text-left transition hover:bg-zinc-50 dark:hover:bg-slate-900/60"
+              className="flex w-full items-center gap-2 px-4 py-2 text-left transition hover:bg-zinc-50"
             >
               <span
                 className={`flex h-5 w-5 flex-shrink-0 items-center justify-center text-zinc-400 transition ${
@@ -605,36 +605,36 @@ function DomainAccordion({
               >
                 <ChevronDown className="h-3.5 w-3.5" />
               </span>
-              <span className="flex-1 text-[12px] font-bold uppercase tracking-widest text-zinc-600 dark:text-slate-300">
+              <span className="flex-1 text-[12px] font-bold uppercase tracking-widest text-zinc-600">
                 {domain}
               </span>
-              <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] font-bold text-zinc-600 dark:bg-slate-800 dark:text-slate-400">
+              <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[10px] font-bold text-zinc-600">
                 {standards.length}
               </span>
             </button>
 
             {isOpen && (
-              <ul className="grid gap-2 border-t border-zinc-100 p-3 dark:border-slate-800 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="grid gap-2 border-t border-zinc-100 p-3 sm:grid-cols-2 lg:grid-cols-3">
                 {standards.map(([sid, info]) => (
                   <li key={sid}>
                     <button
                       type="button"
                       onClick={() => onPick(sid)}
-                      className="flex w-full items-start gap-3 rounded-xl border border-zinc-200 bg-white p-3 text-left transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm dark:border-slate-700 dark:bg-slate-900"
+                      className="flex w-full items-start gap-3 rounded-xl border border-zinc-200 bg-white p-3 text-left transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm"
                     >
-                      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-[11px] font-extrabold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                      <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-[11px] font-extrabold text-indigo-700">
                         {sid.split(".").slice(-1)[0]}
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-mono text-xs font-bold text-zinc-900 dark:text-white">
+                          <span className="font-mono text-xs font-bold text-zinc-900">
                             {sid}
                           </span>
-                          <span className="rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:bg-slate-800 dark:text-slate-400">
+                          <span className="rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-600">
                             {info.items.length}
                           </span>
                         </div>
-                        <p className="mt-0.5 line-clamp-2 text-xs text-zinc-500 dark:text-slate-400">
+                        <p className="mt-0.5 line-clamp-2 text-xs text-zinc-500">
                           {info.standardTitle}
                         </p>
                       </div>

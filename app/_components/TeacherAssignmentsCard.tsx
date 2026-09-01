@@ -130,11 +130,11 @@ export default function TeacherAssignmentsCard({ childId }: { childId: string })
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="rounded-3xl bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border-2 border-amber-300 dark:border-amber-700/60 p-5 space-y-3"
+      className="rounded-3xl bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 p-5 space-y-3"
     >
       <div className="flex items-center gap-2">
-        <GraduationCap className="w-5 h-5 text-amber-600 dark:text-amber-400" strokeWidth={2} />
-        <div className="text-[11px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">
+        <GraduationCap className="w-5 h-5 text-amber-600" strokeWidth={2} />
+        <div className="text-[11px] font-bold uppercase tracking-widest text-amber-700">
           From your teacher
         </div>
       </div>
@@ -147,22 +147,22 @@ export default function TeacherAssignmentsCard({ childId }: { childId: string })
             <Link
               key={a.id}
               href={assignmentHref(a, childId)}
-              className="block rounded-2xl bg-white dark:bg-slate-800 p-4 shadow-sm hover:shadow-md transition-shadow"
+              className="block rounded-2xl bg-white p-4 shadow-sm hover:shadow-md transition-shadow"
             >
               <div className="flex items-center gap-3">
                 <div className="flex-1 min-w-0">
-                  <div className="text-[11px] font-semibold text-zinc-500 dark:text-slate-400 truncate">
+                  <div className="text-[11px] font-semibold text-zinc-500 truncate">
                     {a.classroom_name}
                   </div>
-                  <div className="font-extrabold text-zinc-900 dark:text-slate-100 truncate leading-tight mt-0.5">
+                  <div className="font-extrabold text-zinc-900 truncate leading-tight mt-0.5">
                     {a.title}
                   </div>
                   {due && (
                     <div
                       className={`mt-1 inline-flex items-center gap-1 text-xs font-semibold ${
                         overdue
-                          ? "text-red-600 dark:text-red-400"
-                          : "text-amber-700 dark:text-amber-300"
+                          ? "text-red-600"
+                          : "text-amber-700"
                       }`}
                     >
                       <Clock className="w-3.5 h-3.5" strokeWidth={2} />

@@ -70,9 +70,9 @@ export default async function PlayHomePage({
   const childAvatar = getChildAvatarImage(child, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-violet-50 dark:from-indigo-950/30 dark:via-slate-900 dark:to-violet-950/30">
+    <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-white to-violet-50">
       {/* Locked top bar — only exit is via the grown-up button */}
-      <div className="border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80">
+      <div className="border-b border-zinc-200 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
           <div className="flex items-center gap-2">
             {childAvatar && (
@@ -80,16 +80,16 @@ export default async function PlayHomePage({
               <img
                 src={childAvatar}
                 alt={child.first_name}
-                className="h-8 w-8 rounded-lg object-cover ring-1 ring-zinc-200 dark:ring-slate-700"
+                className="h-8 w-8 rounded-lg object-cover ring-1 ring-zinc-200"
               />
             )}
-            <span className="text-sm font-bold text-zinc-900 dark:text-white">
+            <span className="text-sm font-bold text-zinc-900">
               {child.first_name}&apos;s reading time
             </span>
           </div>
           <Link
             href={`/play/${childId}/exit`}
-            className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-3 py-1 text-[11px] font-semibold text-zinc-600 transition hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+            className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-3 py-1 text-[11px] font-semibold text-zinc-600 transition hover:border-indigo-300"
           >
             <LogOut className="h-3 w-3" />
             Grown-up exit
@@ -98,10 +98,10 @@ export default async function PlayHomePage({
       </div>
 
       <div className="mx-auto max-w-3xl px-6 py-10">
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
           Hi {child.first_name}!
         </h1>
-        <p className="mt-2 text-base text-zinc-600 dark:text-slate-400">
+        <p className="mt-2 text-base text-zinc-600">
           Pick what you want to do today.
         </p>
 
@@ -150,11 +150,11 @@ export default async function PlayHomePage({
           />
         </div>
 
-        <p className="mt-8 text-center text-[11px] text-zinc-400 dark:text-slate-500">
+        <p className="mt-8 text-center text-[11px] text-zinc-400">
           Ready to take a break?{" "}
           <Link
             href={`/play/${childId}/exit`}
-            className="font-semibold text-indigo-600 underline hover:text-indigo-700 dark:text-indigo-300"
+            className="font-semibold text-indigo-600 underline hover:text-indigo-700"
           >
             Hand the device back to a grown-up
           </Link>
@@ -189,7 +189,7 @@ function PlayCard({
   return (
     <Link
       href={href}
-      className="group flex items-center gap-4 rounded-3xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
+      className="group flex items-center gap-4 rounded-3xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md"
     >
       <div
         className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${ringByColor[color]} text-white shadow-sm`}
@@ -197,8 +197,8 @@ function PlayCard({
         {icon}
       </div>
       <div className="min-w-0 flex-1">
-        <div className="font-bold text-zinc-900 dark:text-white">{title}</div>
-        <div className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">{subtitle}</div>
+        <div className="font-bold text-zinc-900">{title}</div>
+        <div className="mt-0.5 text-xs text-zinc-500">{subtitle}</div>
       </div>
       <ArrowRight className="h-4 w-4 flex-shrink-0 text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-indigo-500" />
     </Link>

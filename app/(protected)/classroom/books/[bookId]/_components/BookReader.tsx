@@ -37,8 +37,8 @@ export default function BookReader({
   const p = pages[page];
 
   return (
-    <div className="rounded-3xl border border-zinc-200 bg-gradient-to-br from-amber-50/40 via-white to-violet-50/40 shadow-sm dark:border-slate-800 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900">
-      <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-2.5 text-xs dark:border-slate-800">
+    <div className="rounded-3xl border border-zinc-200 bg-gradient-to-br from-amber-50/40 via-white to-violet-50/40 shadow-sm">
+      <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-2.5 text-xs">
         <span className="font-semibold text-zinc-500">
           Page {page + 1} of {total}
         </span>
@@ -72,7 +72,7 @@ export default function BookReader({
           </div>
         )}
         <p
-          className="mx-auto mt-8 max-w-2xl text-center text-[28px] font-medium leading-snug text-zinc-900 dark:text-slate-100"
+          className="mx-auto mt-8 max-w-2xl text-center text-[28px] font-medium leading-snug text-zinc-900"
           style={{
             fontFamily:
               'Andika, "Comic Sans MS", "Trebuchet MS", "Open Sans", system-ui, sans-serif',
@@ -82,7 +82,7 @@ export default function BookReader({
         </p>
       </div>
 
-      <div className="flex items-center justify-between border-t border-zinc-100 px-5 py-3 dark:border-slate-800">
+      <div className="flex items-center justify-between border-t border-zinc-100 px-5 py-3">
         <button
           type="button"
           onClick={() => setPage((p) => Math.max(0, p - 1))}

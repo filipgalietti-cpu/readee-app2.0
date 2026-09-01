@@ -71,14 +71,14 @@ function WordBankContent() {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-12 h-12 rounded-2xl bg-violet-100 dark:bg-violet-900/50 flex items-center justify-center">
-            <BookOpen className="w-6 h-6 text-violet-500 dark:text-violet-400" strokeWidth={1.5} />
+          <div className="w-12 h-12 rounded-2xl bg-violet-100 flex items-center justify-center">
+            <BookOpen className="w-6 h-6 text-violet-500" strokeWidth={1.5} />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+            <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
               Word Bank
             </h1>
-            <p className="text-sm text-zinc-500 dark:text-slate-400">
+            <p className="text-sm text-zinc-500">
               {filteredWords.length} words &middot; Tap to hear
             </p>
           </div>
@@ -94,7 +94,7 @@ function WordBankContent() {
             className={`flex-shrink-0 py-2 px-4 rounded-xl text-sm font-medium transition-all ${
               activeFilter === f.tag
                 ? "bg-violet-600 text-white shadow-sm"
-                : "bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-400 hover:bg-zinc-200 dark:hover:bg-slate-700"
+                : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
             }`}
           >
             {f.label}
@@ -124,17 +124,17 @@ function WordBankContent() {
                 disabled={isLocked}
                 className={`relative rounded-xl border-2 p-3 text-center transition-all duration-200 ${
                   isLocked
-                    ? "blur-sm opacity-50 cursor-default border-zinc-200 dark:border-slate-700 bg-zinc-50 dark:bg-slate-800"
+                    ? "blur-sm opacity-50 cursor-default border-zinc-200 bg-zinc-50"
                     : isPlaying
-                    ? "border-violet-500 bg-violet-50 dark:bg-violet-900/30 dark:border-violet-400 scale-[1.05] shadow-md"
-                    : "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-violet-300 dark:hover:border-violet-600 hover:shadow-sm active:scale-95"
+                    ? "border-violet-500 bg-violet-50 scale-[1.05] shadow-md"
+                    : "border-zinc-200 bg-white hover:border-violet-300 hover:shadow-sm active:scale-95"
                 }`}
               >
                 <div
                   className={`text-base font-bold capitalize ${
                     isPlaying
-                      ? "text-violet-700 dark:text-violet-300"
-                      : "text-zinc-800 dark:text-slate-200"
+                      ? "text-violet-700"
+                      : "text-zinc-800"
                   }`}
                 >
                   {entry.word}
@@ -155,7 +155,7 @@ function WordBankContent() {
                 {!isPlaying && !isLocked && (
                   <div className="mt-1">
                     <svg
-                      className="w-4 h-4 mx-auto text-zinc-400 dark:text-slate-500"
+                      className="w-4 h-4 mx-auto text-zinc-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -176,15 +176,15 @@ function WordBankContent() {
 
         {/* Upgrade overlay for free users */}
         {!isPremium && filteredWords.length > FREE_WORD_LIMIT && (
-          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-white dark:from-slate-900 via-white/90 dark:via-slate-900/90 to-transparent flex items-end justify-center pb-6">
+          <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-white via-white/90 to-transparent flex items-end justify-center pb-6">
             <div className="text-center px-6 py-6 max-w-sm">
-              <div className="w-14 h-14 rounded-2xl bg-violet-100 dark:bg-violet-900/40 mx-auto mb-3 flex items-center justify-center shadow-sm">
-                <BookOpen className="w-7 h-7 text-violet-600 dark:text-violet-400" strokeWidth={1.5} />
+              <div className="w-14 h-14 rounded-2xl bg-violet-100 mx-auto mb-3 flex items-center justify-center shadow-sm">
+                <BookOpen className="w-7 h-7 text-violet-600" strokeWidth={1.5} />
               </div>
-              <h2 className="text-lg font-extrabold text-zinc-900 dark:text-slate-100 mb-1.5">
+              <h2 className="text-lg font-extrabold text-zinc-900 mb-1.5">
                 Unlock All {wordBank.length} Words
               </h2>
-              <p className="text-sm text-zinc-500 dark:text-slate-400 mb-4 leading-relaxed">
+              <p className="text-sm text-zinc-500 mb-4 leading-relaxed">
                 Get access to the full word library, audio playback, and
                 unlimited practice exercises with Readee+.
               </p>

@@ -29,17 +29,17 @@ export default async function JoinClassroomPage() {
       <p className="text-xs font-semibold uppercase tracking-widest text-indigo-600">
         For parents
       </p>
-      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
         Join your child&apos;s classroom
       </h1>
-      <p className="mt-3 text-sm leading-relaxed text-zinc-500 dark:text-slate-400">
+      <p className="mt-3 text-sm leading-relaxed text-zinc-500">
         If your child&apos;s teacher is using Readee Classroom, they gave you a
         6-character code. Enter it below and pick which child is joining.
       </p>
 
       <div className="mt-8">
         {list.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white px-6 py-10 text-center text-sm text-zinc-500 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-400">
+          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white px-6 py-10 text-center text-sm text-zinc-500">
             Add a child profile first, then come back to join a class.
           </div>
         ) : (

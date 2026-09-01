@@ -93,8 +93,8 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
   }
 
   return (
-    <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-pink-50 p-6 shadow-sm dark:border-violet-900/40 dark:from-violet-950/20 dark:via-slate-900 dark:to-pink-950/20">
-      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+    <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-pink-50 p-6 shadow-sm">
+      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
         <Sparkles className="h-4 w-4" />
         Build a new story
       </div>
@@ -102,7 +102,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
       {/* Kid picker */}
       {children.length > 1 && (
         <div className="mt-4">
-          <span className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <span className="block text-xs font-semibold text-zinc-500">
             For which child?
           </span>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -126,7 +126,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
 
       {/* Interests */}
       <div className="mt-5">
-        <span className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block text-xs font-semibold text-zinc-500">
           {child?.first_name ?? "Their"}'s interests{" "}
           <span className="font-normal text-zinc-400">
             (Readee will weave these into the story)
@@ -136,7 +136,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
           {interests.map((s) => (
             <span
               key={s}
-              className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-semibold text-violet-800 dark:bg-violet-950/40 dark:text-violet-200"
+              className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2.5 py-1 text-xs font-semibold text-violet-800"
             >
               {s}
               <button
@@ -160,7 +160,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
                   }
                 }}
                 placeholder="add interest…"
-                className="w-32 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                className="w-32 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs focus:border-violet-400 focus:outline-none"
               />
               {interestInput && (
                 <button
@@ -181,7 +181,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
                 key={s}
                 type="button"
                 onClick={() => addInterest(s)}
-                className="rounded-full border border-zinc-200 bg-white px-2.5 py-0.5 text-[11px] text-zinc-600 transition hover:border-violet-300 hover:text-violet-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
+                className="rounded-full border border-zinc-200 bg-white px-2.5 py-0.5 text-[11px] text-zinc-600 transition hover:border-violet-300 hover:text-violet-700"
               >
                 + {s}
               </button>
@@ -192,7 +192,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
 
       {/* Length */}
       <div className="mt-5">
-        <span className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block text-xs font-semibold text-zinc-500">
           Story length{" "}
           <span className="font-normal text-zinc-400">({pageCount} pages)</span>
         </span>

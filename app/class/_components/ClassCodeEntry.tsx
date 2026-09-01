@@ -20,7 +20,7 @@ export default function ClassCodeEntry() {
 
   return (
     <div>
-      <div className="flex items-center gap-2 rounded-2xl border-2 border-zinc-200 bg-white p-2 focus-within:border-indigo-400 dark:border-slate-700 dark:bg-slate-900">
+      <div className="flex items-center gap-2 rounded-2xl border-2 border-zinc-200 bg-white p-2 focus-within:border-indigo-400">
         <input
           value={code}
           onChange={(e) => {
@@ -33,7 +33,7 @@ export default function ClassCodeEntry() {
           placeholder="ABCDE1"
           maxLength={6}
           autoFocus
-          className="flex-1 bg-transparent px-3 py-3 text-center font-mono text-2xl font-extrabold tracking-[0.3em] text-indigo-700 focus:outline-none dark:text-indigo-200"
+          className="flex-1 bg-transparent px-3 py-3 text-center font-mono text-2xl font-extrabold tracking-[0.3em] text-indigo-700 focus:outline-none"
         />
         <button
           type="button"

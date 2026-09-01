@@ -140,7 +140,7 @@ export default function LevelProgressCard({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"
+      className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm"
     >
       <div className="flex items-center gap-3">
         <span
@@ -150,7 +150,7 @@ export default function LevelProgressCard({
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-2">
-            <div className="text-sm font-bold text-zinc-900 dark:text-white">
+            <div className="text-sm font-bold text-zinc-900">
               Level {post.current.number} - {post.current.name}
             </div>
             <div className="text-[10px] font-mono text-zinc-400">
@@ -159,7 +159,7 @@ export default function LevelProgressCard({
           </div>
           {post.next ? (
             <>
-              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800">
+              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-zinc-100">
                 <motion.div
                   initial={{ width: `${Math.min(100, Math.max(0, (computeLevel(prior).progress01) * 100))}%` }}
                   animate={{ width: `${Math.min(100, Math.max(0, post.progress01 * 100))}%` }}
@@ -167,14 +167,14 @@ export default function LevelProgressCard({
                   className={`h-full rounded-full ${post.current.accent.bg}`}
                 />
               </div>
-              <div className="mt-1 text-[11px] text-zinc-500 dark:text-slate-400">
+              <div className="mt-1 text-[11px] text-zinc-500">
                 {carrotsToNext > 0
                   ? `${carrotsToNext} more carrots to ${post.next.name}.`
                   : "Ready to level up next round!"}
               </div>
             </>
           ) : (
-            <div className="mt-1 text-[11px] text-zinc-500 dark:text-slate-400">
+            <div className="mt-1 text-[11px] text-zinc-500">
               Max level - you&apos;ve climbed every rung. Keep reading every day to stay sharp!
             </div>
           )}
@@ -183,7 +183,7 @@ export default function LevelProgressCard({
       {href && (
         <Link
           href={href}
-          className="mt-3 block text-center text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400"
+          className="mt-3 block text-center text-xs font-semibold text-indigo-600 hover:text-indigo-700"
         >
           See all levels →
         </Link>

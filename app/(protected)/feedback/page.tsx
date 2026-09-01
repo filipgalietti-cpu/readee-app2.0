@@ -144,17 +144,17 @@ export default function FeedbackPage() {
               </svg>
             </motion.div>
 
-            <motion.h1 variants={fadeUp} className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+            <motion.h1 variants={fadeUp} className="text-2xl font-bold text-zinc-900 tracking-tight">
               Thank you!
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-zinc-500 dark:text-slate-400 mt-2 leading-relaxed">
+            <motion.p variants={fadeUp} className="text-zinc-500 mt-2 leading-relaxed">
               Your feedback helps us make Readee better for every family <Heart className="w-4 h-4 inline-block text-violet-500" strokeWidth={1.5} />
             </motion.p>
 
             {rating && (
-              <motion.div variants={fadeUp} className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 dark:bg-violet-900/40">
+              <motion.div variants={fadeUp} className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50">
                 {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-6 h-6 text-violet-600" strokeWidth={1.5} /> : null; })()}
-                <span className="text-sm font-medium text-violet-700 dark:text-violet-300">
+                <span className="text-sm font-medium text-violet-700">
                   {RATINGS.find((r) => r.value === rating)?.label}
                 </span>
               </motion.div>
@@ -180,10 +180,10 @@ export default function FeedbackPage() {
             <div className="w-16 h-16 rounded-2xl bg-violet-50 mx-auto mb-4 flex items-center justify-center">
               <MessageCircle className="w-8 h-8 text-violet-500" strokeWidth={1.5} />
             </div>
-            <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+            <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
               Share Your Feedback
             </h1>
-            <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">
+            <p className="text-zinc-500 text-sm mt-1">
               We&apos;d love to hear how your family&apos;s experience is going
             </p>
           </div>
@@ -198,8 +198,8 @@ export default function FeedbackPage() {
                   s === step
                     ? "w-8 bg-violet-500"
                     : s < step
-                    ? "bg-violet-300 dark:bg-violet-600 cursor-pointer"
-                    : "bg-zinc-200 dark:bg-slate-700"
+                    ? "bg-violet-300 cursor-pointer"
+                    : "bg-zinc-200"
                 }`}
               />
             ))}
@@ -208,7 +208,7 @@ export default function FeedbackPage() {
           {/* Step 1: Rating */}
           {step === 1 && (
             <div className="space-y-6">
-              <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
+              <h2 className="text-lg font-bold text-zinc-900 text-center">
                 How&apos;s your experience with Readee?
               </h2>
 
@@ -222,13 +222,13 @@ export default function FeedbackPage() {
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     className={`group flex flex-col items-center gap-1.5 p-3 rounded-2xl transition-colors duration-200 ${
                       rating === r.value
-                        ? "bg-violet-100 dark:bg-violet-900/40 ring-2 ring-violet-400"
-                        : "hover:bg-zinc-50 dark:hover:bg-slate-800"
+                        ? "bg-violet-100 ring-2 ring-violet-400"
+                        : "hover:bg-zinc-50"
                     }`}
                   >
                     <r.icon className="w-8 h-8" strokeWidth={1.5} />
                     <span className={`text-[10px] font-medium ${
-                      rating === r.value ? "text-violet-700 dark:text-violet-300" : "text-zinc-400 dark:text-slate-500"
+                      rating === r.value ? "text-violet-700" : "text-zinc-400"
                     }`}>
                       {r.label}
                     </span>
@@ -241,7 +241,7 @@ export default function FeedbackPage() {
           {/* Step 2: Category */}
           {step === 2 && (
             <div className="space-y-6">
-              <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
+              <h2 className="text-lg font-bold text-zinc-900 text-center">
                 What kind of feedback?
               </h2>
 
@@ -253,7 +253,7 @@ export default function FeedbackPage() {
                     className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all duration-200 ${
                       category === c.id
                         ? "bg-violet-600 text-white border-violet-600 shadow-md"
-                        : "bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 border-zinc-200 dark:border-slate-600 hover:border-violet-300 dark:hover:border-violet-700 hover:bg-violet-50/50 dark:hover:bg-indigo-950/30"
+                        : "bg-white text-zinc-700 border-zinc-200 hover:border-violet-300 hover:bg-violet-50/50"
                     }`}
                   >
                     <c.icon className="w-4 h-4" strokeWidth={1.5} />
@@ -264,7 +264,7 @@ export default function FeedbackPage() {
 
               <button
                 onClick={() => setStep(1)}
-                className="block mx-auto text-xs text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
+                className="block mx-auto text-xs text-zinc-400 hover:text-zinc-600 transition-colors"
               >
                 &larr; Change rating
               </button>
@@ -274,22 +274,22 @@ export default function FeedbackPage() {
           {/* Step 3: Message + Submit */}
           {step === 3 && (
             <div className="space-y-6">
-              <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 text-center">
-                Tell us more <span className="text-zinc-400 dark:text-slate-500 font-normal">(optional)</span>
+              <h2 className="text-lg font-bold text-zinc-900 text-center">
+                Tell us more <span className="text-zinc-400 font-normal">(optional)</span>
               </h2>
 
               {/* Rating & category summary */}
               <div className="flex items-center justify-center gap-3">
                 {rating && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 dark:bg-violet-900/40 text-sm">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 text-sm">
                     {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-5 h-5 text-violet-600" strokeWidth={1.5} /> : null; })()}
-                    <span className="font-medium text-violet-700 dark:text-violet-300">{RATINGS.find((r) => r.value === rating)?.label}</span>
+                    <span className="font-medium text-violet-700">{RATINGS.find((r) => r.value === rating)?.label}</span>
                   </span>
                 )}
                 {category && (
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 dark:bg-violet-900/40 text-sm">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 text-sm">
                     {(() => { const C = CATEGORIES.find((c) => c.id === category); return C ? <C.icon className="w-4 h-4 text-violet-600" strokeWidth={1.5} /> : null; })()}
-                    <span className="font-medium text-violet-700 dark:text-violet-300">{CATEGORIES.find((c) => c.id === category)?.label}</span>
+                    <span className="font-medium text-violet-700">{CATEGORIES.find((c) => c.id === category)?.label}</span>
                   </span>
                 )}
               </div>
@@ -299,7 +299,7 @@ export default function FeedbackPage() {
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="What could we do better? What do you love?"
                 rows={4}
-                className="w-full px-4 py-3 rounded-xl border border-zinc-200 dark:border-slate-600 text-sm text-zinc-900 dark:text-slate-100 bg-white dark:bg-slate-800 resize-none focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-transparent placeholder:text-zinc-400 dark:placeholder:text-slate-500"
+                className="w-full px-4 py-3 rounded-xl border border-zinc-200 text-sm text-zinc-900 bg-white resize-none focus:outline-none focus:ring-2 focus:ring-violet-400 focus:border-transparent placeholder:text-zinc-400"
               />
 
               <button
@@ -312,7 +312,7 @@ export default function FeedbackPage() {
 
               <button
                 onClick={() => setStep(2)}
-                className="block mx-auto text-xs text-zinc-400 dark:text-slate-500 hover:text-zinc-600 dark:hover:text-slate-300 transition-colors"
+                className="block mx-auto text-xs text-zinc-400 hover:text-zinc-600 transition-colors"
               >
                 &larr; Change category
               </button>

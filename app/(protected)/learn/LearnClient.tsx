@@ -12,7 +12,6 @@ import { useAudio } from "@/lib/audio/use-audio";
 import { getAudioUrl } from "@/lib/audio";
 import { usePracticeStore } from "@/lib/stores/practice-store";
 import { logLearningEvent, newSessionId } from "@/lib/adaptive/events";
-import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { PracticeResultSchema } from "@/lib/schemas";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
@@ -90,10 +89,10 @@ const CARROTS_PER_CORRECT = 5;
 const HINT_CARROT_FACTOR = 0.5;
 
 const CHOICE_COLORS = [
-  "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
-  "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
-  "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/60 dark:text-amber-200 dark:border-amber-700",
-  "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
+  "bg-blue-100 text-blue-800 border-blue-300",
+  "bg-purple-100 text-purple-800 border-purple-300",
+  "bg-amber-100 text-amber-800 border-amber-300",
+  "bg-emerald-100 text-emerald-800 border-emerald-300",
 ];
 
 const CORRECT_MESSAGES = [
@@ -166,10 +165,10 @@ export default function LearnPage() {
 
 function LoadingScreen() {
   return (
-    <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex items-center justify-center">
+    <div className="min-h-[100dvh] bg-gray-50 flex items-center justify-center">
       <div className="flex flex-col items-center gap-3">
         <div className="w-10 h-10 rounded-full border-4 border-violet-200 border-t-violet-500 animate-spin" />
-        <p className="text-sm text-zinc-500 dark:text-slate-400">Loading lesson...</p>
+        <p className="text-sm text-zinc-500">Loading lesson...</p>
       </div>
     </div>
   );
@@ -264,7 +263,7 @@ function LearnLoader() {
 
   if (error) {
     return (
-      <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex items-center justify-center px-6">
+      <div className="min-h-[100dvh] bg-gray-50 flex items-center justify-center px-6">
         <div className="text-center max-w-sm">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -272,8 +271,8 @@ function LearnLoader() {
             alt=""
             className="mx-auto h-24 w-24 object-contain"
           />
-          <p className="mt-3 text-lg font-bold text-zinc-900 dark:text-white">Hmm.</p>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">{error}</p>
+          <p className="mt-3 text-lg font-bold text-zinc-900">Hmm.</p>
+          <p className="mt-1 text-sm text-zinc-500">{error}</p>
           <Link
             href="/dashboard"
             className="mt-5 inline-block rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"
@@ -595,12 +594,12 @@ function LearnSession({
   const { passage, question } = splitPrompt(q.prompt);
 
   return (
-    <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] flex flex-col">
+    <div className="min-h-[100dvh] bg-gray-50 flex flex-col">
       {/* ── Top bar ── */}
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
         <button
           onClick={() => router.push("/dashboard")}
-          className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors"
+          className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200 transition-colors"
           aria-label="Exit"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -609,7 +608,7 @@ function LearnSession({
         </button>
 
         {/* Progress bar */}
-        <div className="flex-1 mx-3 h-2.5 rounded-full bg-zinc-200 dark:bg-slate-700 overflow-hidden">
+        <div className="flex-1 mx-3 h-2.5 rounded-full bg-zinc-200 overflow-hidden">
           <motion.div
             className="h-full rounded-full bg-violet-500"
             initial={{ width: 0 }}
@@ -881,7 +880,6 @@ function CompletionScreen({
       setPriorLifetime(lifetimeCarrots);
     }
   }, [loadingLifetime, lifetimeCarrots, priorLifetime]);
-  const darkMode = useThemeStore((s) => s.darkMode);
   const { playUrl: playCompletionUrl } = useAudio();
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);
@@ -1039,7 +1037,7 @@ function CompletionScreen({
   }, [saved, saving, child.id, lesson.standardId, totalQ, correctCount, carrotsEarned]);
 
   return (
-    <div className="min-h-[100dvh] bg-gray-50 dark:bg-[#0f172a] relative overflow-hidden flex flex-col">
+    <div className="min-h-[100dvh] bg-gray-50 relative overflow-hidden flex flex-col">
       {/* Confetti */}
       {confettiPieces.map((c) => (
         <motion.div
@@ -1080,8 +1078,8 @@ function CompletionScreen({
               <svg
                 viewBox="0 0 24 24"
                 className={`${s === 2 ? "w-16 h-16" : "w-12 h-12"}`}
-                fill={s <= stars ? "#facc15" : darkMode ? "#334155" : "#d4d4d8"}
-                stroke={s <= stars ? "#eab308" : darkMode ? "#475569" : "#a1a1aa"}
+                fill={s <= stars ? "#facc15" : "#d4d4d8"}
+                stroke={s <= stars ? "#eab308" : "#a1a1aa"}
                 strokeWidth="0.5"
               >
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -1091,20 +1089,20 @@ function CompletionScreen({
         </motion.div>
 
         {/* Title */}
-        <motion.h1 variants={fadeUp} className="text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight text-center mb-1">
+        <motion.h1 variants={fadeUp} className="text-3xl font-extrabold text-zinc-900 tracking-tight text-center mb-1">
           {title}
         </motion.h1>
-        <motion.p variants={fadeUp} className="text-zinc-500 dark:text-slate-400 text-center mb-8">{subtitle}</motion.p>
+        <motion.p variants={fadeUp} className="text-zinc-500 text-center mb-8">{subtitle}</motion.p>
 
         {/* Score + Carrots */}
         <motion.div variants={fadeUp} className="flex gap-6 mb-8">
           <div className="text-center">
-            <div className="text-4xl font-extrabold text-zinc-900 dark:text-white">{correctCount}/{totalQ}</div>
-            <div className="text-xs text-zinc-500 dark:text-slate-500 mt-1 font-medium">Correct</div>
+            <div className="text-4xl font-extrabold text-zinc-900">{correctCount}/{totalQ}</div>
+            <div className="text-xs text-zinc-500 mt-1 font-medium">Correct</div>
           </div>
-          <div className="w-px bg-zinc-300 dark:bg-slate-700" />
+          <div className="w-px bg-zinc-300" />
           <div className="text-center">
-            <div className="text-4xl font-extrabold text-orange-600 dark:text-orange-400">+{carrotsEarned}</div>
+            <div className="text-4xl font-extrabold text-orange-600">+{carrotsEarned}</div>
             <div className="text-xs text-slate-500 mt-1 font-medium">Carrots Earned</div>
             {carrotBoost && carrotBoost > 1 ? (
               <div className="mt-1 inline-block rounded-full bg-orange-100 px-2 py-0.5 text-[11px] font-extrabold text-orange-700">{carrotBoost}× boost!</div>
@@ -1138,7 +1136,7 @@ function CompletionScreen({
                     </svg>
                   )}
                 </span>
-                <span className="text-sm text-zinc-600 dark:text-slate-300 flex-1 min-w-0 truncate">{qText}</span>
+                <span className="text-sm text-zinc-600 flex-1 min-w-0 truncate">{qText}</span>
               </div>
             );
           })}
@@ -1164,7 +1162,7 @@ function CompletionScreen({
           <NextStepCta child={child} lesson={lesson} />
           <Link
             href={`/dashboard`}
-            className="block w-full text-center py-3 rounded-2xl text-zinc-500 dark:text-slate-400 font-semibold text-sm hover:text-zinc-900 dark:hover:text-white transition-colors"
+            className="block w-full text-center py-3 rounded-2xl text-zinc-500 font-semibold text-sm hover:text-zinc-900 transition-colors"
           >
             Back to Dashboard
           </Link>

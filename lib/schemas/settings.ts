@@ -15,7 +15,6 @@ export const ChildUpdateSchema = z.object({
 export const PreferencesSchema = z.object({
   soundEffects: z.boolean(),
   autoAdvance: z.boolean(),
-  darkMode: z.boolean().optional(),
 });
 
 export type ChildCreateZ = z.infer<typeof ChildCreateSchema>;

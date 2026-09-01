@@ -57,8 +57,8 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
 
   if (loading) {
     return (
-      <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-        <div className="h-12 animate-pulse rounded-lg bg-zinc-100 dark:bg-slate-800/40" />
+      <div className="rounded-2xl border border-zinc-200 bg-white p-5">
+        <div className="h-12 animate-pulse rounded-lg bg-zinc-100" />
       </div>
     );
   }
@@ -79,16 +79,16 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
           return (
             <li
               key={r.id}
-              className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+              className="overflow-hidden rounded-2xl border border-zinc-200 bg-white"
             >
               <button
                 type="button"
                 onClick={() => setOpen(isOpen ? null : r.id)}
-                className="flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-zinc-50 dark:hover:bg-slate-900/60"
+                className="flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-zinc-50"
               >
                 <Trophy className="h-5 w-5 flex-shrink-0 text-emerald-600" />
                 <div className="min-w-0 flex-1">
-                  <div className="text-sm font-bold text-zinc-900 dark:text-white">
+                  <div className="text-sm font-bold text-zinc-900">
                     {kid?.first_name ?? "Reader"} ·{" "}
                     {(r.wcpm ?? 0).toFixed(0)} WCPM
                   </div>
@@ -107,12 +107,12 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
                 />
               </button>
               {isOpen && (
-                <div className="space-y-3 border-t border-zinc-100 bg-zinc-50/40 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/30">
+                <div className="space-y-3 border-t border-zinc-100 bg-zinc-50/40 px-4 py-3">
                   <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-500">
                     Passage
                   </div>
                   <p
-                    className="text-sm text-zinc-700 dark:text-slate-300"
+                    className="text-sm text-zinc-700"
                     style={{
                       fontFamily:
                         'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
@@ -121,13 +121,13 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
                     {r.passage_text}
                   </p>
                   {r.encouragement && (
-                    <div className="rounded-lg bg-violet-50 p-3 text-xs text-violet-900 dark:bg-violet-950/30 dark:text-violet-200">
+                    <div className="rounded-lg bg-violet-50 p-3 text-xs text-violet-900">
                       <span className="font-bold">For the child: </span>
                       {r.encouragement}
                     </div>
                   )}
                   {r.teacher_summary && (
-                    <div className="rounded-lg bg-indigo-50 p-3 text-xs text-indigo-900 dark:bg-indigo-950/30 dark:text-indigo-200">
+                    <div className="rounded-lg bg-indigo-50 p-3 text-xs text-indigo-900">
                       <span className="font-bold">For the teacher: </span>
                       {r.teacher_summary}
                     </div>

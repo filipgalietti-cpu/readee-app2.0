@@ -71,12 +71,12 @@ export default async function ClassroomIndex({
           <p className="text-xs font-semibold uppercase tracking-widest text-indigo-600">
             Teacher Dashboard
           </p>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             {hasClass
               ? `Welcome back, ${profile.display_name || profile.email?.split("@")[0] || "teacher"}.`
               : "Welcome to Readee Classroom"}
           </h1>
-          <p className="mt-2 max-w-lg text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-2 max-w-lg text-sm text-zinc-500">
             Create a class, invite your students, and assign lessons or custom
             quizzes. Track who&apos;s done, who&apos;s stuck, and what to teach
             next.
@@ -87,16 +87,16 @@ export default async function ClassroomIndex({
 
       {/* Just-onboarded celebration */}
       {justOnboarded && (
-        <div className="mt-6 rounded-3xl border-2 border-violet-300 bg-gradient-to-br from-violet-50 via-white to-pink-50 p-5 shadow-sm dark:border-violet-900/40">
+        <div className="mt-6 rounded-3xl border-2 border-violet-300 bg-gradient-to-br from-violet-50 via-white to-pink-50 p-5 shadow-sm">
           <div className="flex items-start gap-4">
             <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-fuchsia-500 text-white shadow-md">
               <Sparkles className="h-6 w-6" strokeWidth={1.5} />
             </div>
             <div className="flex-1">
-              <h2 className="text-lg font-extrabold text-zinc-900 dark:text-white">
+              <h2 className="text-lg font-extrabold text-zinc-900">
                 Welcome to Readee, {profile.display_name?.split(" ")[0] ?? "teacher"}!
               </h2>
-              <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">
+              <p className="mt-1 text-sm text-zinc-600">
                 We set up a demo class with 3 sample students so you can poke around
                 before inviting your real ones. Click the class card below to take a
                 tour, or add your students whenever you&apos;re ready.
@@ -108,7 +108,7 @@ export default async function ClassroomIndex({
 
       {/* Demo class notice — only shows when teacher's only classes are demos */}
       {hasOnlyDemo && !justOnboarded && (
-        <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-200">
+        <div className="mt-6 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
           <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
           <div className="flex-1">
             <span className="font-bold">This is a demo class.</span>{" "}
@@ -238,15 +238,15 @@ function PremiumToolsRail({ plan }: { plan: string }) {
 function Onboarding() {
   return (
     <div className="mt-10 space-y-6">
-      <div className="rounded-3xl border border-indigo-200 bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-8 dark:border-indigo-900/40 dark:from-indigo-950/30 dark:via-slate-900 dark:to-violet-950/30">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+      <div className="rounded-3xl border border-indigo-200 bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-8">
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-700">
           <GraduationCap className="h-4 w-4" />
           How Readee Classroom works
         </div>
-        <h2 className="mt-3 text-2xl font-extrabold text-zinc-900 dark:text-white">
+        <h2 className="mt-3 text-2xl font-extrabold text-zinc-900">
           Three steps to your first assignment.
         </h2>
-        <p className="mt-2 max-w-2xl text-sm text-zinc-600 dark:text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm text-zinc-600">
           You can do this entirely free for one classroom — no credit card, no
           commitment. Pilot with Jennifer&apos;s class for a week and see if
           it clicks.
@@ -275,7 +275,7 @@ function Onboarding() {
 
         <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
           <CreateClassroomButton />
-          <span className="text-xs text-zinc-500 dark:text-slate-400">
+          <span className="text-xs text-zinc-500">
             Takes about 30 seconds.
           </span>
         </div>
@@ -299,7 +299,7 @@ function Onboarding() {
         />
       </div>
 
-      <p className="text-center text-xs text-zinc-500 dark:text-slate-400">
+      <p className="text-center text-xs text-zinc-500">
         Bringing Readee to your school or district?{" "}
         <Link
           href="/schools"
@@ -324,15 +324,15 @@ function OnboardingStep({
   body: string;
 }) {
   return (
-    <li className="relative rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/60">
+    <li className="relative rounded-2xl border border-zinc-200 bg-white p-5">
       <div className="absolute -top-3 left-5 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 text-xs font-bold text-white">
         {n}
       </div>
-      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
+      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600">
         <Icon className="h-4 w-4" />
       </div>
-      <h3 className="mt-3 font-bold text-zinc-900 dark:text-white">{title}</h3>
-      <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">{body}</p>
+      <h3 className="mt-3 font-bold text-zinc-900">{title}</h3>
+      <p className="mt-1 text-xs text-zinc-500">{body}</p>
     </li>
   );
 }
@@ -347,14 +347,14 @@ function InfoCard({
   body: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
-      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600">
         <Icon className="h-4 w-4" />
       </div>
-      <h4 className="mt-3 text-sm font-bold text-zinc-900 dark:text-white">
+      <h4 className="mt-3 text-sm font-bold text-zinc-900">
         {title}
       </h4>
-      <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">{body}</p>
+      <p className="mt-1 text-xs text-zinc-500">{body}</p>
     </div>
   );
 }
@@ -386,20 +386,20 @@ function NextStepNudge({
       };
 
   return (
-    <div className="mt-8 rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-violet-50 p-5 dark:border-indigo-900/40 dark:from-indigo-950/30 dark:to-violet-950/30">
-      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+    <div className="mt-8 rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-violet-50 p-5">
+      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-700">
         <Sparkles className="h-3.5 w-3.5" />
         Next step
       </div>
       <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <h3 className="font-extrabold text-zinc-900 dark:text-white">
+          <h3 className="font-extrabold text-zinc-900">
             {nextStep.title}
           </h3>
-          <p className="mt-0.5 text-sm text-zinc-600 dark:text-slate-400">
+          <p className="mt-0.5 text-sm text-zinc-600">
             {nextStep.body}
           </p>
-          <div className="mt-2 flex items-center gap-3 text-xs text-zinc-500 dark:text-slate-400">
+          <div className="mt-2 flex items-center gap-3 text-xs text-zinc-500">
             <span className="inline-flex items-center gap-1">
               <CheckCircle2 className="h-3 w-3 text-green-600" />
               Class created
@@ -443,24 +443,24 @@ function ClassroomGrid({ classrooms }: { classrooms: Classroom[] }) {
         <Link
           key={c.id}
           href={`/classroom/${c.id}`}
-          className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900/40"
+          className="group relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-lg"
         >
           <div className="flex items-start justify-between">
             <div>
-              <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
+              <h3 className="text-lg font-bold text-zinc-900">
                 {c.name}
               </h3>
               {c.grade_level && (
-                <p className="mt-0.5 text-xs font-medium text-zinc-500 dark:text-slate-400">
+                <p className="mt-0.5 text-xs font-medium text-zinc-500">
                   {c.grade_level} grade
                 </p>
               )}
             </div>
-            <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+            <span className="rounded-full bg-indigo-50 px-2.5 py-1 text-[11px] font-mono font-bold uppercase tracking-wider text-indigo-700">
               {c.join_code}
             </span>
           </div>
-          <div className="mt-6 flex items-center gap-2 text-xs text-zinc-500 dark:text-slate-400">
+          <div className="mt-6 flex items-center gap-2 text-xs text-zinc-500">
             <Users className="h-3.5 w-3.5" />
             <span>Open classroom →</span>
           </div>
@@ -469,7 +469,7 @@ function ClassroomGrid({ classrooms }: { classrooms: Classroom[] }) {
 
       <Link
         href="/classroom#create"
-        className="flex items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-zinc-200 p-5 text-sm font-medium text-zinc-500 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-800 dark:text-slate-400 dark:hover:text-indigo-300"
+        className="flex items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-zinc-200 p-5 text-sm font-medium text-zinc-500 transition hover:border-indigo-300 hover:text-indigo-600"
       >
         <Plus className="h-4 w-4" />
         New class

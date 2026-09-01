@@ -57,7 +57,7 @@ export default async function BookDetailPage({
 
         <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
           <div>
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
               <BookOpenText className="h-4 w-4" />
               Decodable book
               {b.grade_level && (
@@ -67,10 +67,10 @@ export default async function BookDetailPage({
                 </>
               )}
             </div>
-            <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
               {b.title}
             </h1>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-1 text-sm text-zinc-500">
               Pattern: <span className="font-semibold">{b.pattern_label}</span> ·{" "}
               {pages.length} page{pages.length === 1 ? "" : "s"}
             </p>

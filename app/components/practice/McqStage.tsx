@@ -35,10 +35,10 @@ export function highlightQuestion(text: string): React.ReactNode[] {
   return text.split(tokenizer).map((segment, si) => {
     if (/^\*\*[^*]+\*\*$/.test(segment)) {
       const inner = segment.slice(2, -2);
-      return <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">{inner}</span>;
+      return <span key={si} className="text-violet-600 font-extrabold">{inner}</span>;
     }
     if (/^[""][^""]+[""]$/.test(segment)) {
-      return <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">{segment}</span>;
+      return <span key={si} className="text-violet-600 font-extrabold">{segment}</span>;
     }
     const cleanSegment = segment.replace(/\*\*/g, "");
     const hasEmphasis = /\b[A-Z]{3,}\b/.test(cleanSegment);
@@ -46,10 +46,10 @@ export function highlightQuestion(text: string): React.ReactNode[] {
       const clean = part.replace(/[^a-zA-Z']/g, "");
       if (hasEmphasis) {
         if (/^[A-Z]{3,}$/.test(clean)) {
-          return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
+          return <span key={`${si}-${pi}`} className="text-violet-600 font-extrabold">{part}</span>;
         }
       } else if (clean.length > 1 && QUESTION_WORDS.has(clean)) {
-        return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
+        return <span key={`${si}-${pi}`} className="text-violet-600 font-extrabold">{part}</span>;
       }
       return part;
     });

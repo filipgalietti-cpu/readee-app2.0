@@ -98,14 +98,14 @@ export default function KidRunner({
   }
 
   return (
-    <div className="fixed inset-0 z-[80] flex flex-col bg-gradient-to-b from-violet-50 via-white to-indigo-50 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900">
+    <div className="fixed inset-0 z-[80] flex flex-col bg-gradient-to-b from-violet-50 via-white to-indigo-50">
       {/* Top bar */}
-      <div className="flex items-center justify-between border-b border-zinc-200 bg-white/80 px-4 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-950/80">
+      <div className="flex items-center justify-between border-b border-zinc-200 bg-white/80 px-4 py-3 backdrop-blur">
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold text-zinc-600 hover:bg-zinc-100 dark:text-slate-300 dark:hover:bg-slate-900"
+          className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold text-zinc-600 hover:bg-zinc-100"
         >
           <X className="h-4 w-4" />
           Done
@@ -120,7 +120,7 @@ export default function KidRunner({
             type="button"
             onClick={() => setMuted((m) => !m)}
             aria-label={muted ? "Unmute" : "Mute"}
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-900 dark:text-slate-300"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
           >
             {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
           </button>
@@ -264,7 +264,7 @@ function ReadPhase({
       <div className="text-center text-[10px] font-bold uppercase tracking-widest text-violet-600">
         Read with {childName}
       </div>
-      <h1 className="mt-2 text-center text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+      <h1 className="mt-2 text-center text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
         {content.title ?? content.topic}
       </h1>
 
@@ -308,7 +308,7 @@ function ReadPhase({
 
       {content.passage_text && (
         <article
-          className="mt-6 whitespace-pre-line rounded-3xl border border-zinc-200 bg-white p-6 text-lg leading-relaxed text-zinc-900 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100 sm:p-8 sm:text-xl"
+          className="mt-6 whitespace-pre-line rounded-3xl border border-zinc-200 bg-white p-6 text-lg leading-relaxed text-zinc-900 shadow-sm sm:p-8 sm:text-xl"
           style={{ fontFamily: "'Atkinson Hyperlegible', system-ui, sans-serif" }}
         >
           {content.passage_text}
@@ -404,7 +404,7 @@ function QuestionPhase({
       </div>
 
       <h2
-        className="mt-3 text-center text-2xl font-extrabold leading-snug text-zinc-900 dark:text-white sm:text-3xl"
+        className="mt-3 text-center text-2xl font-extrabold leading-snug text-zinc-900 sm:text-3xl"
         style={{ fontFamily: "'Atkinson Hyperlegible', system-ui, sans-serif" }}
       >
         {question.prompt}
@@ -440,7 +440,7 @@ function QuestionPhase({
                   ? "border-red-400 bg-red-50 text-red-900"
                   : showAsTriedWrong
                   ? "border-amber-400 bg-amber-50 text-amber-900 animate-shake"
-                  : "border-zinc-200 bg-white text-zinc-900 hover:border-violet-400 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  : "border-zinc-200 bg-white text-zinc-900 hover:border-violet-400"
               }`}
               style={{
                 fontFamily: "'Atkinson Hyperlegible', system-ui, sans-serif",
@@ -471,7 +471,7 @@ function QuestionPhase({
         <motion.div
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-4 flex items-start gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:bg-amber-950/30 dark:text-amber-100"
+          className="mt-4 flex items-start gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-900"
         >
           <Lightbulb className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-500" />
           <span>
@@ -541,7 +541,7 @@ function RecapPhase({
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-lg">
         <Sparkles className="h-8 w-8" />
       </div>
-      <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+      <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
         {message}
       </h2>
 
@@ -607,7 +607,7 @@ function RecapPhase({
         <button
           type="button"
           onClick={onRestart}
-          className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-bold text-zinc-700 hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+          className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-bold text-zinc-700 hover:border-violet-300"
         >
           <RotateCcw className="h-4 w-4" />
           Read it again
@@ -622,7 +622,7 @@ function RecapPhase({
         <button
           type="button"
           onClick={onClose}
-          className="inline-flex items-center gap-2 rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-bold text-white hover:bg-zinc-700 dark:bg-white dark:text-zinc-900"
+          className="inline-flex items-center gap-2 rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-bold text-white hover:bg-zinc-700"
         >
           Done
         </button>

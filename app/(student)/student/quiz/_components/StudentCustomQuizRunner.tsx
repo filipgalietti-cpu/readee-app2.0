@@ -408,11 +408,11 @@ export default function StudentCustomQuizRunner({
     return (
       <div className="space-y-4">
         {previouslyCompleted && previousScore !== null && (
-          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/30 dark:text-amber-200">
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm font-semibold text-amber-900">
             You finished this one before, scored {previousScore}%. Want to try again?
           </div>
         )}
-        <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
+        <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
           {passageImage && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -423,7 +423,7 @@ export default function StudentCustomQuizRunner({
           )}
           {passageBody && (
             <article
-              className="text-[18px] leading-[1.8] text-zinc-900 dark:text-slate-100"
+              className="text-[18px] leading-[1.8] text-zinc-900"
               style={{ fontFamily: FRIENDLY_FONT, letterSpacing: "0.005em" }}
             >
               <div className="whitespace-pre-line">{passageBody}</div>
@@ -436,7 +436,7 @@ export default function StudentCustomQuizRunner({
           )}
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <div className="text-xs font-semibold text-zinc-500">
             {total} question{total === 1 ? "" : "s"} · take your time, you can
             re-read the passage anytime.
           </div>
@@ -483,7 +483,7 @@ export default function StudentCustomQuizRunner({
   return (
     <div>
       {/* Sticky chrome: progress + open-passage */}
-      <div className="sticky top-0 z-20 -mx-2 -mt-2 bg-gradient-to-b from-zinc-50/95 via-zinc-50/90 to-transparent px-2 pt-2 pb-3 backdrop-blur-sm dark:from-slate-950/90 dark:via-slate-950/80">
+      <div className="sticky top-0 z-20 -mx-2 -mt-2 bg-gradient-to-b from-zinc-50/95 via-zinc-50/90 to-transparent px-2 pt-2 pb-3 backdrop-blur-sm">
         <div className="flex items-center justify-between gap-2">
           <div className="text-xs font-semibold text-indigo-600">
             Question {idx + 1} of {total}
@@ -493,18 +493,18 @@ export default function StudentCustomQuizRunner({
               <button
                 type="button"
                 onClick={() => setDrawerOpen(true)}
-                className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-bold text-violet-700 transition hover:bg-violet-50 dark:border-violet-800 dark:bg-slate-900 dark:text-violet-300"
+                className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-white px-2.5 py-1 text-[11px] font-bold text-violet-700 transition hover:bg-violet-50"
               >
                 <BookOpen className="h-3 w-3" />
                 Read passage again
               </button>
             )}
-            <div className="font-mono text-xs font-bold text-green-700 dark:text-green-300">
+            <div className="font-mono text-xs font-bold text-green-700">
               ✓ {correctCount}
             </div>
           </div>
         </div>
-        <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800">
+        <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-zinc-100">
           <div
             className="h-full bg-indigo-500 transition-all"
             style={{ width: `${((idx + (revealed ? 1 : 0)) / total) * 100}%` }}
@@ -512,7 +512,7 @@ export default function StudentCustomQuizRunner({
         </div>
       </div>
 
-      <div className="mt-4 rounded-3xl border border-zinc-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="mt-4 rounded-3xl border border-zinc-200 bg-white p-6">
         {showInlineImage && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -522,7 +522,7 @@ export default function StudentCustomQuizRunner({
           />
         )}
         <div className="flex items-start gap-3">
-          <div className="whitespace-pre-line text-base font-semibold leading-relaxed text-zinc-900 dark:text-white">
+          <div className="whitespace-pre-line text-base font-semibold leading-relaxed text-zinc-900">
             {q.prompt}
           </div>
           {showInlineAudio && (
@@ -545,12 +545,12 @@ export default function StudentCustomQuizRunner({
                   onClick={() => !revealed && setPickedChoice(choice)}
                   className={`flex w-full items-center justify-between gap-3 rounded-2xl border-2 p-4 text-left text-sm font-semibold transition ${
                     isCorrect
-                      ? "border-green-500 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-950/30 dark:text-green-200"
+                      ? "border-green-500 bg-green-50 text-green-900"
                       : isWrongPick
-                      ? "border-red-500 bg-red-50 text-red-900 dark:border-red-500 dark:bg-red-950/30 dark:text-red-200"
+                      ? "border-red-500 bg-red-50 text-red-900"
                       : isPick
-                      ? "border-indigo-500 bg-indigo-50 text-indigo-900 dark:border-indigo-500 dark:bg-indigo-950/30 dark:text-indigo-200"
-                      : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                      ? "border-indigo-500 bg-indigo-50 text-indigo-900"
+                      : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300"
                   }`}
                 >
                   <span>{choice}</span>
@@ -574,12 +574,12 @@ export default function StudentCustomQuizRunner({
                   onClick={() => !revealed && setPickedChoice(choice)}
                   className={`flex w-full items-center justify-between gap-3 rounded-2xl border-2 p-4 text-left text-sm font-semibold transition ${
                     isCorrect
-                      ? "border-green-500 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-950/30 dark:text-green-200"
+                      ? "border-green-500 bg-green-50 text-green-900"
                       : isWrongPick
-                      ? "border-red-500 bg-red-50 text-red-900 dark:border-red-500 dark:bg-red-950/30 dark:text-red-200"
+                      ? "border-red-500 bg-red-50 text-red-900"
                       : isPick
-                      ? "border-indigo-500 bg-indigo-50 text-indigo-900 dark:border-indigo-500 dark:bg-indigo-950/30 dark:text-indigo-200"
-                      : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                      ? "border-indigo-500 bg-indigo-50 text-indigo-900"
+                      : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300"
                   }`}
                 >
                   <span>{choice}</span>
@@ -599,7 +599,7 @@ export default function StudentCustomQuizRunner({
                   if (e.key === "Enter") check();
                 }}
                 placeholder="Type your answer"
-                className={`w-full rounded-2xl border-2 bg-white px-4 py-3 text-lg font-semibold focus:outline-none dark:bg-slate-900 dark:text-white ${
+                className={`w-full rounded-2xl border-2 bg-white px-4 py-3 text-lg font-semibold focus:outline-none ${
                   revealed
                     ? currentAnswerCorrect()
                       ? "border-green-500"
@@ -608,9 +608,9 @@ export default function StudentCustomQuizRunner({
                 }`}
               />
               {revealed && !currentAnswerCorrect() && Array.isArray(q.correct) && (
-                <p className="mt-2 text-xs font-semibold text-zinc-600 dark:text-slate-400">
+                <p className="mt-2 text-xs font-semibold text-zinc-600">
                   Accepted:{" "}
-                  <span className="text-green-700 dark:text-green-300">
+                  <span className="text-green-700">
                     {(q.correct as string[]).join(" / ")}
                   </span>
                 </p>
@@ -642,7 +642,7 @@ export default function StudentCustomQuizRunner({
         </div>
 
         {revealed && q.hint && !currentAnswerCorrect() && (
-          <p className="mt-4 rounded-xl bg-amber-50 px-4 py-2 text-xs text-amber-800 dark:bg-amber-950/30 dark:text-amber-200">
+          <p className="mt-4 rounded-xl bg-amber-50 px-4 py-2 text-xs text-amber-800">
             {q.hint}
           </p>
         )}
@@ -732,7 +732,7 @@ function FreeResponseInput({
         disabled={revealed}
         rows={6}
         placeholder="Type your answer here. Take your time, you can write a few sentences."
-        className={`w-full resize-y rounded-2xl border-2 bg-white px-4 py-3 text-base focus:outline-none dark:bg-slate-900 dark:text-white ${
+        className={`w-full resize-y rounded-2xl border-2 bg-white px-4 py-3 text-base focus:outline-none ${
           revealed
             ? "border-emerald-300"
             : "border-zinc-200 focus:border-indigo-400"
@@ -746,7 +746,7 @@ function FreeResponseInput({
         )}
       </div>
       {scoring && (
-        <div className="flex items-center gap-2 rounded-xl bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700 dark:bg-blue-950/30 dark:text-blue-300">
+        <div className="flex items-center gap-2 rounded-xl bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700">
           <Loader2 className="h-4 w-4 animate-spin" />
           Coach is reading your writing…
         </div>
@@ -765,19 +765,19 @@ function FreeResponseInput({
             <RubricStat label="Conventions" v={score.conventions} />
           </div>
           {score.strength && (
-            <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-900 dark:border-emerald-900/40 dark:bg-emerald-950/30 dark:text-emerald-200">
+            <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-900">
               <span className="font-bold">What worked: </span>
               {score.strength}
             </div>
           )}
           {score.growthTip && (
-            <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/30 dark:text-amber-200">
+            <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-900">
               <span className="font-bold">Try next time: </span>
               {score.growthTip}
             </div>
           )}
           {score.encouragingClose && (
-            <p className="text-center text-sm font-semibold text-zinc-600 dark:text-slate-300">
+            <p className="text-center text-sm font-semibold text-zinc-600">
               {score.encouragingClose}
             </p>
           )}
@@ -790,12 +790,12 @@ function FreeResponseInput({
 function RubricStat({ label, v }: { label: string; v: number }) {
   const tone =
     v >= 4
-      ? "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-200"
+      ? "bg-emerald-100 text-emerald-800 border-emerald-300"
       : v >= 3
-      ? "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-950/40 dark:text-blue-200"
+      ? "bg-blue-100 text-blue-800 border-blue-300"
       : v >= 2
-      ? "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-950/40 dark:text-amber-200"
-      : "bg-rose-100 text-rose-800 border-rose-300 dark:bg-rose-950/40 dark:text-rose-200";
+      ? "bg-amber-100 text-amber-800 border-amber-300"
+      : "bg-rose-100 text-rose-800 border-rose-300";
   return (
     <div className={`rounded-2xl border-2 p-3 text-center ${tone}`}>
       <div className="text-2xl font-extrabold">{v}/4</div>
@@ -838,19 +838,19 @@ function PassageDrawer({
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl bg-white p-6 shadow-2xl dark:bg-slate-900 sm:rounded-3xl">
+      <div className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl bg-white p-6 shadow-2xl sm:rounded-3xl">
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-3 top-3 rounded-full p-1.5 text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-slate-800"
+          className="absolute right-3 top-3 rounded-full p-1.5 text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-700"
           aria-label="Close passage"
         >
           <X className="h-5 w-5" />
         </button>
-        <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-600">
           Passage
         </div>
-        <h2 className="mt-1 text-xl font-extrabold text-zinc-900 dark:text-white">
+        <h2 className="mt-1 text-xl font-extrabold text-zinc-900">
           {title}
         </h2>
         {image && (
@@ -863,7 +863,7 @@ function PassageDrawer({
         )}
         {body && (
           <article
-            className="mt-4 text-[17px] leading-[1.8] text-zinc-900 dark:text-slate-100"
+            className="mt-4 text-[17px] leading-[1.8] text-zinc-900"
             style={{ fontFamily: FRIENDLY_FONT, letterSpacing: "0.005em" }}
           >
             <div className="whitespace-pre-line">{body}</div>
@@ -906,7 +906,7 @@ function PassageAudioPlayer({ src }: { src: string }) {
   }
 
   return (
-    <div className="flex items-center gap-2 rounded-2xl border border-violet-200 bg-violet-50 p-3 dark:border-violet-900/40 dark:bg-violet-950/30">
+    <div className="flex items-center gap-2 rounded-2xl border border-violet-200 bg-violet-50 p-3">
       <audio
         ref={audioRef}
         src={src}
@@ -926,17 +926,17 @@ function PassageAudioPlayer({ src }: { src: string }) {
       <button
         type="button"
         onClick={restart}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-violet-300 text-violet-600 transition hover:bg-white dark:border-violet-700 dark:text-violet-300"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-violet-300 text-violet-600 transition hover:bg-white"
         aria-label="Start over"
         title="Start over"
       >
         <RotateCcw className="h-4 w-4" />
       </button>
       <div className="flex flex-col">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
           Read aloud
         </span>
-        <span className="text-xs font-semibold text-violet-900 dark:text-violet-200">
+        <span className="text-xs font-semibold text-violet-900">
           Listen to the passage
         </span>
       </div>
@@ -994,7 +994,7 @@ function PromptAudioButton({
         className={`inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full transition ${
           playing
             ? "bg-violet-600 text-white"
-            : "border border-violet-300 text-violet-600 hover:bg-violet-50 dark:border-violet-700 dark:text-violet-300 dark:hover:bg-violet-950/30"
+            : "border border-violet-300 text-violet-600 hover:bg-violet-50"
         }`}
       >
         <Volume2 className="h-4 w-4" />
@@ -1040,8 +1040,8 @@ function ResultsPanel({
       <div
         className={`rounded-3xl border p-6 text-center shadow-sm ${
           passed
-            ? "border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 dark:border-green-900/40 dark:from-green-950/30 dark:to-emerald-950/30"
-            : "border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 dark:border-amber-900/40 dark:from-amber-950/30 dark:to-orange-950/30"
+            ? "border-green-200 bg-gradient-to-br from-green-50 to-emerald-50"
+            : "border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50"
         }`}
       >
         <div
@@ -1053,27 +1053,27 @@ function ResultsPanel({
         >
           <Trophy className="h-8 w-8" />
         </div>
-        <h2 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white">
+        <h2 className="mt-4 text-2xl font-extrabold text-zinc-900">
           {passed ? "Great work!" : "Almost there!"}
         </h2>
-        <div className="mt-2 font-mono text-3xl font-black text-indigo-700 dark:text-indigo-300">
+        <div className="mt-2 font-mono text-3xl font-black text-indigo-700">
           {displayScore} / {total}
         </div>
-        <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">
+        <div className="text-sm font-semibold text-zinc-500">
           {scorePct}% correct
         </div>
         {typeof passThreshold === "number" && (
           <div
             className={`mt-2 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold ${
               passed
-                ? "bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-300"
-                : "bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300"
+                ? "bg-green-100 text-green-700"
+                : "bg-amber-100 text-amber-800"
             }`}
           >
             Goal: {passThreshold}% · {passed ? "Hit it!" : "Try again to pass"}
           </div>
         )}
-        <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-4 py-1.5 text-sm font-bold text-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
+        <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-4 py-1.5 text-sm font-bold text-amber-800">
           <Carrot className="h-4 w-4" />+{carrotsEarned} carrots
         </div>
         {saveErr && (
@@ -1094,8 +1094,8 @@ function ResultsPanel({
         </button>
       </div>
 
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
-        <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
+        <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-500">
           How did you do?
         </div>
         <ul className="mt-3 grid gap-2">
@@ -1116,12 +1116,12 @@ function ResultsPanel({
               ? !fully && !none
               : score !== null && score > 0 && score < 1;
             const tone = fully
-              ? "border-green-200 bg-green-50 dark:border-green-900/40 dark:bg-green-950/30"
+              ? "border-green-200 bg-green-50"
               : partial
-              ? "border-amber-200 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-950/30"
+              ? "border-amber-200 bg-amber-50"
               : none
-              ? "border-red-200 bg-red-50 dark:border-red-900/40 dark:bg-red-950/30"
-              : "border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900";
+              ? "border-red-200 bg-red-50"
+              : "border-zinc-200 bg-white";
             const badge = fully
               ? "bg-green-500 text-white"
               : partial
@@ -1146,11 +1146,11 @@ function ResultsPanel({
                   )}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <div className="line-clamp-2 text-sm font-semibold text-zinc-900 dark:text-slate-100">
+                  <div className="line-clamp-2 text-sm font-semibold text-zinc-900">
                     {q.prompt}
                   </div>
                   {isWriting && got?.writingRubric && (
-                    <div className="mt-1.5 text-xs font-semibold text-zinc-700 dark:text-slate-300">
+                    <div className="mt-1.5 text-xs font-semibold text-zinc-700">
                       Rubric: {got.writingRubric.ideas}/{4} ideas ·{" "}
                       {got.writingRubric.organization}/{4} org ·{" "}
                       {got.writingRubric.voice}/{4} voice ·{" "}
@@ -1159,17 +1159,17 @@ function ResultsPanel({
                     </div>
                   )}
                   {got?.partial && (
-                    <div className="mt-1 text-xs font-semibold text-amber-800 dark:text-amber-200">
+                    <div className="mt-1 text-xs font-semibold text-amber-800">
                       You matched {got.partial.gotPairs} of {got.partial.totalPairs} pairs.
                     </div>
                   )}
                   {!fully && !isWriting && q.hint && (
-                    <div className="mt-1 text-xs text-amber-800 dark:text-amber-200">
+                    <div className="mt-1 text-xs text-amber-800">
                       Hint: {q.hint}
                     </div>
                   )}
                   {isWriting && got?.writingRubric?.growthTip && !fully && (
-                    <div className="mt-1 text-xs text-amber-800 dark:text-amber-200">
+                    <div className="mt-1 text-xs text-amber-800">
                       Try next time: {got.writingRubric.growthTip}
                     </div>
                   )}
@@ -1250,7 +1250,7 @@ function MatchingPairsBoard({
 
   return (
     <div>
-      <div className="mb-3 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+      <div className="mb-3 text-xs font-semibold text-zinc-500">
         Tap an item on the left, then tap its match on the right.
       </div>
       <div className="grid grid-cols-2 gap-3">
@@ -1269,14 +1269,14 @@ function MatchingPairsBoard({
                 disabled={revealed}
                 className={`flex w-full items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-left text-sm font-semibold transition ${
                   isCorrect
-                    ? "border-green-500 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-950/30 dark:text-green-200"
+                    ? "border-green-500 bg-green-50 text-green-900"
                     : isWrong
-                    ? "border-red-500 bg-red-50 text-red-900 dark:border-red-500 dark:bg-red-950/30 dark:text-red-200"
+                    ? "border-red-500 bg-red-50 text-red-900"
                     : isActive
-                    ? "border-indigo-500 bg-indigo-50 text-indigo-900 dark:border-indigo-500 dark:bg-indigo-950/30 dark:text-indigo-200"
+                    ? "border-indigo-500 bg-indigo-50 text-indigo-900"
                     : matched
-                    ? "border-violet-300 bg-violet-50 text-violet-900 dark:border-violet-700 dark:bg-violet-950/30 dark:text-violet-200"
-                    : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                    ? "border-violet-300 bg-violet-50 text-violet-900"
+                    : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300"
                 }`}
               >
                 <span className="flex-1">{p.left}</span>
@@ -1294,14 +1294,14 @@ function MatchingPairsBoard({
                         clearMatch(p.left);
                       }
                     }}
-                    className="rounded-full bg-white/80 px-1.5 py-0.5 text-[10px] font-bold text-violet-700 hover:bg-white dark:bg-slate-800/80"
+                    className="rounded-full bg-white/80 px-1.5 py-0.5 text-[10px] font-bold text-violet-700 hover:bg-white"
                     aria-label={`Clear match for ${p.left}`}
                   >
                     ✕
                   </span>
                 )}
                 {revealed && !isCorrect && (
-                  <span className="text-[10px] font-bold text-green-700 dark:text-green-300">
+                  <span className="text-[10px] font-bold text-green-700">
                     → {correctRightFor(p.left)}
                   </span>
                 )}
@@ -1328,18 +1328,18 @@ function MatchingPairsBoard({
                 disabled={revealed || !activeLeft}
                 className={`flex w-full items-center gap-2 rounded-xl border-2 px-3 py-2.5 text-left text-sm font-semibold transition ${
                   isCorrect
-                    ? "border-green-500 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-950/30 dark:text-green-200"
+                    ? "border-green-500 bg-green-50 text-green-900"
                     : isWrong
-                    ? "border-red-500 bg-red-50 text-red-900 dark:border-red-500 dark:bg-red-950/30 dark:text-red-200"
+                    ? "border-red-500 bg-red-50 text-red-900"
                     : pairedLeft
-                    ? "border-violet-300 bg-violet-50 text-violet-900 dark:border-violet-700 dark:bg-violet-950/30 dark:text-violet-200"
+                    ? "border-violet-300 bg-violet-50 text-violet-900"
                     : isActiveTarget
-                    ? "border-indigo-300 bg-white text-zinc-800 hover:border-indigo-500 hover:bg-indigo-50 dark:border-indigo-700 dark:bg-slate-900"
-                    : "border-zinc-200 bg-white text-zinc-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                    ? "border-indigo-300 bg-white text-zinc-800 hover:border-indigo-500 hover:bg-indigo-50"
+                    : "border-zinc-200 bg-white text-zinc-800"
                 } ${!activeLeft && !pairedLeft && !revealed ? "opacity-60" : ""}`}
               >
                 {pairedLeft && !revealed && (
-                  <span className="rounded-full bg-violet-200 px-1.5 py-0.5 text-[10px] font-bold text-violet-800 dark:bg-violet-900/60 dark:text-violet-200">
+                  <span className="rounded-full bg-violet-200 px-1.5 py-0.5 text-[10px] font-bold text-violet-800">
                     {pairs.findIndex((p) => p.left === pairedLeft) + 1}
                   </span>
                 )}

@@ -50,8 +50,8 @@ export default function TopUpCreditsButton({
 
   const btnCls =
     variant === "primary"
-      ? "relative overflow-hidden inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-violet-700 transition hover:bg-violet-50 dark:bg-slate-900 dark:text-violet-300"
-      : "relative overflow-hidden inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-violet-700 transition hover:bg-violet-50 dark:bg-slate-900 dark:text-violet-300";
+      ? "relative overflow-hidden inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-violet-700 transition hover:bg-violet-50"
+      : "relative overflow-hidden inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-violet-700 transition hover:bg-violet-50";
 
   return (
     <>
@@ -71,14 +71,14 @@ export default function TopUpCreditsButton({
             className="absolute inset-0 bg-black/50"
             onClick={() => setOpen(false)}
           />
-          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl dark:bg-slate-900">
-            <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3 dark:border-slate-800">
-              <h3 className="text-base font-bold text-zinc-900 dark:text-white">
+          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl">
+            <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3">
+              <h3 className="text-base font-bold text-zinc-900">
                 Top up Readee.ai credits
               </h3>
               <button
                 onClick={() => setOpen(false)}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
@@ -86,7 +86,7 @@ export default function TopUpCreditsButton({
             </div>
 
             <div className="space-y-3 p-5">
-              <p className="text-xs text-zinc-500 dark:text-slate-400">
+              <p className="text-xs text-zinc-500">
                 One-time purchase. Credits never expire and stack on top
                 of your monthly allowance.
               </p>
@@ -98,16 +98,16 @@ export default function TopUpCreditsButton({
                   onClick={() => checkout(pack.sku)}
                   className={`flex w-full items-center gap-3 rounded-2xl border p-4 text-left transition disabled:opacity-60 ${
                     pack.best
-                      ? "border-violet-300 bg-violet-50 hover:border-violet-400 dark:border-violet-700 dark:bg-violet-950/20 dark:hover:border-violet-500"
-                      : "border-zinc-200 bg-white hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-violet-500"
+                      ? "border-violet-300 bg-violet-50 hover:border-violet-400"
+                      : "border-zinc-200 bg-white hover:border-violet-300"
                   }`}
                 >
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
                     <Sparkles className="h-5 w-5" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-bold text-zinc-900 dark:text-white">
+                      <span className="font-bold text-zinc-900">
                         {pack.label}
                       </span>
                       {pack.best && (
@@ -116,12 +116,12 @@ export default function TopUpCreditsButton({
                         </span>
                       )}
                     </div>
-                    <div className="mt-0.5 text-[11px] text-zinc-500 dark:text-slate-400">
+                    <div className="mt-0.5 text-[11px] text-zinc-500">
                       {pack.subtitle}
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-mono text-lg font-extrabold text-zinc-900 dark:text-white">
+                    <div className="font-mono text-lg font-extrabold text-zinc-900">
                       ${(pack.usdCents / 100).toFixed(2)}
                     </div>
                     {pending === pack.sku && (
@@ -133,7 +133,7 @@ export default function TopUpCreditsButton({
 
               {err && <p className="text-xs font-semibold text-red-600">{err}</p>}
 
-              <div className="flex items-start gap-2 rounded-xl bg-zinc-50 px-3 py-2 text-[11px] text-zinc-500 dark:bg-slate-950/60 dark:text-slate-400">
+              <div className="flex items-start gap-2 rounded-xl bg-zinc-50 px-3 py-2 text-[11px] text-zinc-500">
                 <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
                 Credits are applied immediately after payment. One-time
                 purchase. No auto-renewal.

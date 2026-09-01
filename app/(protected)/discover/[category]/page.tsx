@@ -51,7 +51,7 @@ export default async function DiscoverCategoryPage({
     <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-10">
       <Link
         href="/discover"
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
+        className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-600"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
         All categories
@@ -66,20 +66,20 @@ export default async function DiscoverCategoryPage({
           className="h-20 w-20 flex-shrink-0 rounded-2xl object-cover shadow-sm"
         />
         <div>
-          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400">
+          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
             <Sparkles className="h-3 w-3" />
             {cat.label}
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
             {cat.label}
           </h1>
-          <p className="mt-1 text-zinc-600 dark:text-slate-300">{cat.blurb}</p>
+          <p className="mt-1 text-zinc-600">{cat.blurb}</p>
         </div>
       </div>
 
       <div className="mt-10 space-y-4">
         {items.length === 0 ? (
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-sm italic text-zinc-500 dark:border-slate-800 dark:bg-slate-900/50 dark:text-slate-400">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 text-sm italic text-zinc-500">
             The first {cat.label.toLowerCase()} articles drop in this category
             soon. Come back tomorrow.
           </div>
@@ -88,7 +88,7 @@ export default async function DiscoverCategoryPage({
             <Link
               key={a.slug}
               href={`/discover/${category}/${a.slug}`}
-              className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm transition hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/50 dark:hover:border-violet-500/50"
+              className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm transition hover:border-violet-300 hover:shadow-md"
             >
               {a.image_url && (
                 <Image
@@ -100,10 +100,10 @@ export default async function DiscoverCategoryPage({
                 />
               )}
               <div className="min-w-0">
-                <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
+                <h2 className="text-lg font-bold text-zinc-900">
                   {a.title}
                 </h2>
-                <p className="mt-1 line-clamp-2 text-sm text-zinc-500 dark:text-slate-400">
+                <p className="mt-1 line-clamp-2 text-sm text-zinc-500">
                   {a.body.slice(0, 140)}…
                 </p>
               </div>

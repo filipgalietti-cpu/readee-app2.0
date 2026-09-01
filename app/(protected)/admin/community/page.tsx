@@ -51,21 +51,21 @@ export default async function CommunityModerationPage({
     <div className="mx-auto max-w-5xl px-6 py-10">
       <Link
         href="/admin"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Admin home
       </Link>
 
       <div className="mt-3">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
           <Users className="h-4 w-4" />
           Community moderation
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
           Parent-shared content review
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           Content parents contributed to the community library. Approve to
           publish it for all Readee families. Reject with a reason when
           the content isn&apos;t a fit.
@@ -125,7 +125,7 @@ function TabLink({
       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition ${
         active
           ? "bg-indigo-600 text-white"
-          : "border border-zinc-200 bg-white text-zinc-700 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+          : "border border-zinc-200 bg-white text-zinc-700 hover:border-indigo-300"
       }`}
     >
       {icon}
@@ -134,7 +134,7 @@ function TabLink({
         className={`ml-1 rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
           active
             ? "bg-white/20 text-white"
-            : "bg-zinc-100 text-zinc-500 dark:bg-slate-800 dark:text-slate-400"
+            : "bg-zinc-100 text-zinc-500"
         }`}
       >
         {count}

@@ -112,24 +112,24 @@ export default async function ParentCustomQuizPage({
     <div className="mx-auto max-w-3xl px-6 py-10">
       <Link
         href="/dashboard"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Back
       </Link>
       <div className="mt-3">
-        <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
           <ClipboardPen className="h-3 w-3" />
           Custom quiz · {(child as any).first_name}
         </div>
-        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900">
           {q.title}
         </h1>
       </div>
 
       {questions.length === 0 ? (
-        <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-          <p className="text-sm text-zinc-500 dark:text-slate-400">
+        <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+          <p className="text-sm text-zinc-500">
             This quiz has no questions yet.
           </p>
         </div>

@@ -33,17 +33,17 @@ export default async function StoryStudioPage() {
       <div className="mx-auto max-w-2xl px-6 py-10">
         <Link
           href="/luna"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
         >
           <ArrowLeft className="h-4 w-4" />
           Luna
         </Link>
-        <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30 dark:ring-violet-900/40">
+        <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100">
           <Sparkles className="mx-auto h-10 w-10 text-violet-500" />
-          <h1 className="mt-4 text-xl font-extrabold text-zinc-900 dark:text-white">
+          <h1 className="mt-4 text-xl font-extrabold text-zinc-900">
             Add a child first
           </h1>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-2 text-sm text-zinc-500">
             Story Studio writes at your child&apos;s reading level. Add a child on
             the dashboard to get started.
           </p>
@@ -75,17 +75,17 @@ export default async function StoryStudioPage() {
         <div className="mx-auto max-w-2xl px-6 py-10">
           <Link
             href="/luna"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
           >
             <ArrowLeft className="h-4 w-4" />
             Luna
           </Link>
-          <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30 dark:ring-violet-900/40">
+          <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100">
             <Lock className="mx-auto h-10 w-10 text-violet-500" />
-            <h1 className="mt-4 text-xl font-extrabold text-zinc-900 dark:text-white">
+            <h1 className="mt-4 text-xl font-extrabold text-zinc-900">
               {child.first_name} used all {FREE_LIMITS.personalizedStoriesFree} free stories
             </h1>
-            <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-2 text-sm text-zinc-500">
               Readee+ unlocks unlimited stories with Luna, and lets {child.first_name} share
               their creations with other children.
             </p>

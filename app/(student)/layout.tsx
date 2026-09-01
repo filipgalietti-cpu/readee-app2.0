@@ -55,23 +55,23 @@ export default async function StudentLayout({
   }
 
   return (
-    <div className="min-h-[100dvh] bg-gradient-to-b from-indigo-50/40 via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      <header className="border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80">
+    <div className="min-h-[100dvh] bg-gradient-to-b from-indigo-50/40 via-white to-white">
+      <header className="border-b border-zinc-200 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
           <Link href="/student" className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 text-sm font-extrabold text-white">
               R
             </div>
-            <div className="text-sm font-extrabold text-zinc-900 dark:text-white">
+            <div className="text-sm font-extrabold text-zinc-900">
               Readee
             </div>
           </Link>
           <div className="flex items-center gap-3">
             <div className="text-right">
-              <div className="text-sm font-extrabold text-zinc-900 dark:text-white">
+              <div className="text-sm font-extrabold text-zinc-900">
                 {child.first_name}
               </div>
-              <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+              <div className="text-[11px] text-zinc-500">
                 {classroom.name}
               </div>
             </div>

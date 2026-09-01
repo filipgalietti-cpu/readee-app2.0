@@ -151,16 +151,16 @@ export default function PushPlanModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50" onClick={pushing ? undefined : onClose} />
-      <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3 dark:border-slate-800">
-          <h3 className="text-base font-bold text-zinc-900 dark:text-white">
+      <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+        <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3">
+          <h3 className="text-base font-bold text-zinc-900">
             Push plan to assignments
           </h3>
           <button
             type="button"
             onClick={onClose}
             disabled={pushing}
-            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 disabled:opacity-50 dark:hover:bg-slate-800"
+            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 disabled:opacity-50"
           >
             <X className="h-4 w-4" />
           </button>
@@ -183,37 +183,37 @@ export default function PushPlanModal({
         {preview && (
           <>
             <div className="space-y-4 overflow-y-auto p-5">
-              <div className="rounded-2xl border border-violet-200 bg-violet-50 p-4 dark:border-violet-900/40 dark:bg-violet-950/30">
-                <div className="flex items-center gap-2 rounded-xl border border-violet-300 bg-white px-3 py-2 dark:border-violet-900/40 dark:bg-slate-900">
+              <div className="rounded-2xl border border-violet-200 bg-violet-50 p-4">
+                <div className="flex items-center gap-2 rounded-xl border border-violet-300 bg-white px-3 py-2">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-violet-600 text-white">
                     <User className="h-4 w-4" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                       Pushing to one student only
                     </div>
-                    <div className="truncate text-sm font-bold text-zinc-900 dark:text-white">
+                    <div className="truncate text-sm font-bold text-zinc-900">
                       {preview.childFirstName}
                     </div>
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold text-violet-800 dark:bg-violet-900/40 dark:text-violet-200">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold text-violet-800">
                     <Lock className="h-3 w-3" />
                     private
                   </span>
                 </div>
-                <p className="mt-2 text-[11px] text-violet-700 dark:text-violet-300">
+                <p className="mt-2 text-[11px] text-violet-700">
                   Only {preview.childFirstName} sees these assignments — classmates
                   in the same room will not. The classroom below is just where the
                   assignments are organized.
                 </p>
 
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                  <label className="block text-xs font-semibold text-violet-700 dark:text-violet-300">
+                  <label className="block text-xs font-semibold text-violet-700">
                     Classroom (organization only)
                     <select
                       value={classroomId}
                       onChange={(e) => setClassroomId(e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-violet-300 bg-white px-2 py-2 text-sm focus:border-violet-500 focus:outline-none dark:border-violet-900/40 dark:bg-slate-900 dark:text-white"
+                      className="mt-1 w-full rounded-lg border border-violet-300 bg-white px-2 py-2 text-sm focus:border-violet-500 focus:outline-none"
                     >
                       {preview.eligibleClassrooms.length === 0 ? (
                         <option value="">No eligible classroom</option>
@@ -226,13 +226,13 @@ export default function PushPlanModal({
                       )}
                     </select>
                   </label>
-                  <label className="block text-xs font-semibold text-violet-700 dark:text-violet-300">
+                  <label className="block text-xs font-semibold text-violet-700">
                     Start date
                     <input
                       type="date"
                       value={startDate}
                       onChange={(e) => setStartDate(e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-violet-300 bg-white px-2 py-2 text-sm focus:border-violet-500 focus:outline-none dark:border-violet-900/40 dark:bg-slate-900 dark:text-white"
+                      className="mt-1 w-full rounded-lg border border-violet-300 bg-white px-2 py-2 text-sm focus:border-violet-500 focus:outline-none"
                     />
                   </label>
                 </div>
@@ -257,12 +257,12 @@ export default function PushPlanModal({
                     </span>
                   )}
                   {preview.startDate && preview.endDate && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 font-bold text-violet-800 dark:bg-slate-900 dark:text-violet-200">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 font-bold text-violet-800">
                       {formatLongDate(preview.startDate)} → {formatLongDate(preview.endDate)}
                     </span>
                   )}
                 </div>
-                <p className="mt-1 text-[10px] text-violet-600 dark:text-violet-400">
+                <p className="mt-1 text-[10px] text-violet-600">
                   Sessions land on weekdays only — Saturdays and Sundays are skipped.
                 </p>
               </div>
@@ -281,7 +281,7 @@ export default function PushPlanModal({
                   <div className="space-y-4">
                     {groups.map((g, gi) => (
                       <div key={gi}>
-                        <div className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                        <div className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700">
                           {g.weekLabel}
                         </div>
                         <ul className="space-y-2">
@@ -293,8 +293,8 @@ export default function PushPlanModal({
                                 key={s.index}
                                 className={`rounded-xl border px-3 py-2 text-xs ${
                                   ok
-                                    ? "border-emerald-200 bg-emerald-50 dark:border-emerald-900/40 dark:bg-emerald-950/20"
-                                    : "border-blue-200 bg-blue-50 dark:border-blue-900/40 dark:bg-blue-950/20"
+                                    ? "border-emerald-200 bg-emerald-50"
+                                    : "border-blue-200 bg-blue-50"
                                 }`}
                               >
                                 <div className="flex items-start gap-2">
@@ -305,20 +305,20 @@ export default function PushPlanModal({
                                   )}
                                   <div className="min-w-0 flex-1">
                                     <div className="flex flex-wrap items-baseline gap-1.5">
-                                      <span className="font-bold text-zinc-800 dark:text-slate-200">
+                                      <span className="font-bold text-zinc-800">
                                         {s.session.dayLabel}
                                       </span>
                                       {s.scheduledDate && (
-                                        <span className="rounded-full bg-white px-1.5 py-0.5 text-[10px] font-bold text-violet-700 dark:bg-slate-900 dark:text-violet-300">
+                                        <span className="rounded-full bg-white px-1.5 py-0.5 text-[10px] font-bold text-violet-700">
                                           {formatShortDate(s.scheduledDate)}
                                         </span>
                                       )}
-                                      <span className="text-zinc-500 dark:text-slate-400">
+                                      <span className="text-zinc-500">
                                         {s.session.activity}
                                       </span>
                                     </div>
                                     {ok ? (
-                                      <div className="mt-1 text-emerald-800 dark:text-emerald-300">
+                                      <div className="mt-1 text-emerald-800">
                                         → <span className="font-semibold">{r.title}</span>{" "}
                                         <span className="font-mono text-[10px] text-emerald-600">
                                           {r.standardId}
@@ -335,7 +335,7 @@ export default function PushPlanModal({
                                         )}
                                       </div>
                                     ) : (
-                                      <div className="mt-1 text-blue-800 dark:text-blue-300">
+                                      <div className="mt-1 text-blue-800">
                                         {r.reason}
                                       </div>
                                     )}
@@ -359,12 +359,12 @@ export default function PushPlanModal({
               </div>
             )}
 
-            <div className="flex justify-end gap-2 border-t border-zinc-100 bg-zinc-50 px-5 py-3 dark:border-slate-800 dark:bg-slate-950">
+            <div className="flex justify-end gap-2 border-t border-zinc-100 bg-zinc-50 px-5 py-3">
               <button
                 type="button"
                 onClick={onClose}
                 disabled={pushing}
-                className="rounded-full px-4 py-1.5 text-xs font-semibold text-zinc-600 hover:bg-white disabled:opacity-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                className="rounded-full px-4 py-1.5 text-xs font-semibold text-zinc-600 hover:bg-white disabled:opacity-50"
               >
                 Cancel
               </button>

@@ -37,13 +37,13 @@ export default function PromptSuggestionsTyper({
   const current = suggestions[idx % suggestions.length];
 
   return (
-    <div className="mt-2 flex items-start gap-2 rounded-xl border border-violet-100 bg-violet-50/50 px-3 py-2 text-xs dark:border-violet-900/40 dark:bg-violet-950/20">
+    <div className="mt-2 flex items-start gap-2 rounded-xl border border-violet-100 bg-violet-50/50 px-3 py-2 text-xs">
       <Sparkles className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-violet-500" />
       <div className="min-w-0 flex-1">
-        <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+        <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
           Try a prompt like
         </div>
-        <div className="mt-0.5 text-zinc-700 dark:text-slate-300">
+        <div className="mt-0.5 text-zinc-700">
           <TypingAnimation
             // Re-mount on idx change so each suggestion starts from blank
             key={idx}
@@ -58,7 +58,7 @@ export default function PromptSuggestionsTyper({
           <button
             type="button"
             onClick={() => onPick(current)}
-            className="mt-1 inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold text-violet-700 shadow-sm transition hover:bg-violet-100 dark:bg-slate-900 dark:text-violet-300"
+            className="mt-1 inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-semibold text-violet-700 shadow-sm transition hover:bg-violet-100"
           >
             Use this
           </button>

@@ -89,7 +89,7 @@ export default async function ParentLessonPage({
     <div className="mx-auto max-w-3xl px-6 py-10">
       <Link
         href={backHref}
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         {backLabel}
@@ -97,7 +97,7 @@ export default async function ParentLessonPage({
 
       {/* Hero card — dominates the page. The reading IS the product;
           everything else is parent meta. */}
-      <section className="mt-4 overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 shadow-sm dark:border-violet-900/40 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30">
+      <section className="mt-4 overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 shadow-sm">
         <div className="grid gap-0 sm:grid-cols-5">
           {content.image_url && (
             // eslint-disable-next-line @next/next/no-img-element
@@ -112,15 +112,15 @@ export default async function ParentLessonPage({
               content.image_url ? "sm:col-span-3" : "sm:col-span-5"
             }`}
           >
-            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
               <Sparkles className="h-3.5 w-3.5" />
               Made for {childName}
             </div>
-            <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-3xl">
+            <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-zinc-900 sm:text-3xl">
               {content.title ?? content.topic}
             </h1>
 
-            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-semibold text-zinc-600 dark:text-slate-400">
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-semibold text-zinc-600">
               <span className="inline-flex items-center gap-1">
                 <Clock className="h-3 w-3" />
                 ~{readMinutes} min read
@@ -138,7 +138,7 @@ export default async function ParentLessonPage({
                 </span>
               )}
               {content.grade_level && (
-                <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] uppercase tracking-wider text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+                <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] uppercase tracking-wider text-violet-700">
                   {content.grade_level}
                 </span>
               )}
@@ -160,8 +160,8 @@ export default async function ParentLessonPage({
 
       {/* Parent preview — collapsed by default. Open if you want to
           spot-check the questions and answers before handing over. */}
-      <details className="group mt-6 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
-        <summary className="flex cursor-pointer items-center justify-between text-sm font-bold text-zinc-700 dark:text-slate-200">
+      <details className="group mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
+        <summary className="flex cursor-pointer items-center justify-between text-sm font-bold text-zinc-700">
           <span className="inline-flex items-center gap-1.5">
             <Eye className="h-4 w-4 text-zinc-400" />
             Parent preview - passage + answer key
@@ -176,7 +176,7 @@ export default async function ParentLessonPage({
 
         <div className="mt-4 space-y-5">
           {content.passage_text && (
-            <article className="whitespace-pre-line rounded-xl border border-zinc-100 bg-zinc-50/60 p-4 text-sm leading-relaxed text-zinc-800 dark:border-slate-800 dark:bg-slate-950/40 dark:text-slate-200">
+            <article className="whitespace-pre-line rounded-xl border border-zinc-100 bg-zinc-50/60 p-4 text-sm leading-relaxed text-zinc-800">
               {content.passage_text}
             </article>
           )}
@@ -197,9 +197,9 @@ export default async function ParentLessonPage({
                 {questions.map((q, i) => (
                   <li
                     key={i}
-                    className="rounded-xl border border-zinc-200 bg-white p-3 text-sm dark:border-slate-800 dark:bg-slate-900/40"
+                    className="rounded-xl border border-zinc-200 bg-white p-3 text-sm"
                   >
-                    <div className="font-semibold text-zinc-900 dark:text-white">
+                    <div className="font-semibold text-zinc-900">
                       Q{i + 1}. {q.prompt}
                     </div>
                     {Array.isArray(q.choices) && q.choices.length > 0 && (
@@ -211,8 +211,8 @@ export default async function ParentLessonPage({
                               key={`${j}-${c}`}
                               className={
                                 isCorrect
-                                  ? "rounded-md bg-emerald-50 px-2 py-0.5 font-semibold text-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-300"
-                                  : "px-2 py-0.5 text-zinc-600 dark:text-slate-400"
+                                  ? "rounded-md bg-emerald-50 px-2 py-0.5 font-semibold text-emerald-800"
+                                  : "px-2 py-0.5 text-zinc-600"
                               }
                             >
                               {String.fromCharCode(65 + j)}. {c}
@@ -240,12 +240,12 @@ export default async function ParentLessonPage({
         </div>
       </details>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-indigo-50 p-4 text-sm dark:border-violet-900/40 dark:from-violet-950/20 dark:to-indigo-950/20">
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-indigo-50 p-4 text-sm">
         <div>
-          <div className="font-bold text-zinc-900 dark:text-white">
+          <div className="font-bold text-zinc-900">
             Make another for {childName}
           </div>
-          <div className="text-xs text-zinc-500 dark:text-slate-400">
+          <div className="text-xs text-zinc-500">
             Pick a mode and Readee builds it in 3 taps.
           </div>
         </div>

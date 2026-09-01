@@ -110,16 +110,16 @@ export default async function LiveQuizHostPage({
     <div className="mx-auto max-w-5xl px-6 py-10">
       <Link
         href={`/classroom/${s.classroom_id}?tab=assignments`}
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to classroom
       </Link>
-      <div className="mt-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+      <div className="mt-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
         <Zap className="h-4 w-4" />
         Live quiz · host view
       </div>
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900">
         {s.title}
       </h1>
 

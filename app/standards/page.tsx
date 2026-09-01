@@ -36,14 +36,14 @@ export default async function StandardsIndexPage() {
   return (
     <div className="mx-auto max-w-4xl px-6 py-10">
       <div>
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
           <BookOpen className="h-4 w-4" />
           Common Core ELA · K-4
         </div>
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+        <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
           Every K-4 reading standard. Every practice question.
         </h1>
-        <p className="mt-2 max-w-2xl text-base leading-relaxed text-zinc-600 dark:text-slate-400">
+        <p className="mt-2 max-w-2xl text-base leading-relaxed text-zinc-600">
           {all.length} Common Core ELA reading comprehension standards across
           Kindergarten through 4th grade, with {totalQuestions}+ practice
           questions. Tap any standard for free sample questions and plain-English
@@ -64,11 +64,11 @@ export default async function StandardsIndexPage() {
           }
           return (
             <section key={grade}>
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-white">{grade}</h2>
+              <h2 className="text-xl font-bold text-zinc-900">{grade}</h2>
               <div className="mt-3 space-y-4">
                 {Array.from(byDomain.entries()).map(([dom, standards]) => (
                   <div key={dom}>
-                    <div className="mb-2 text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+                    <div className="mb-2 text-[11px] font-bold uppercase tracking-widest text-zinc-500">
                       {dom}
                     </div>
                     <ul className="grid gap-2 sm:grid-cols-2">
@@ -76,16 +76,16 @@ export default async function StandardsIndexPage() {
                         <li key={s.standard_id}>
                           <Link
                             href={`/standards/${slugifyStandard(s.standard_id)}`}
-                            className="flex items-start gap-3 rounded-2xl border border-zinc-200 bg-white p-3 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900/40"
+                            className="flex items-start gap-3 rounded-2xl border border-zinc-200 bg-white p-3 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm"
                           >
-                            <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-[11px] font-extrabold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                            <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-100 font-mono text-[11px] font-extrabold text-indigo-700">
                               {s.standard_id.split(".").slice(-1)[0]}
                             </div>
                             <div className="min-w-0 flex-1">
-                              <div className="text-sm font-bold text-zinc-900 dark:text-white">
+                              <div className="text-sm font-bold text-zinc-900">
                                 {s.standard_id}
                               </div>
-                              <div className="mt-0.5 line-clamp-2 text-xs text-zinc-500 dark:text-slate-400">
+                              <div className="mt-0.5 line-clamp-2 text-xs text-zinc-500">
                                 {s.standard_description}
                               </div>
                             </div>

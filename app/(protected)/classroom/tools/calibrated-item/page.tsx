@@ -15,19 +15,19 @@ export default async function CalibratedItemPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-8 text-center shadow-sm dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30">
+      <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-8 text-center shadow-sm">
         <div className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-600 text-white shadow-md">
           <Wand2 className="h-6 w-6" />
         </div>
-        <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900">
           Calibrated questions moved
         </h1>
-        <p className="mt-2 text-sm text-zinc-600 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-600">
           Generating one targeted question now lives inside Quiz builder.
           Open any custom quiz, click <span className="font-bold">+ Add question</span>,
           and switch the method to <span className="font-bold">AI fill</span>.
         </p>
-        <p className="mt-2 text-xs text-zinc-500 dark:text-slate-500">
+        <p className="mt-2 text-xs text-zinc-500">
           You get the same Grade → Domain → Standard picker, the same
           difficulty slider, and the same optional anchor passage —
           plus the question lands in a real quiz instead of a one-off page.
@@ -43,7 +43,7 @@ export default async function CalibratedItemPage() {
           </Link>
           <Link
             href="/classroom/tools"
-            className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-semibold text-zinc-700 transition hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+            className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-semibold text-zinc-700 transition hover:border-violet-300"
           >
             All tools
           </Link>

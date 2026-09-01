@@ -64,16 +64,16 @@ export default function CreateClassroomButton({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900"
+              className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl"
             >
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+                <h2 className="text-xl font-extrabold tracking-tight text-zinc-900">
                   Create a class
                 </h2>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="rounded-lg p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-slate-800 dark:hover:text-white"
+                  className="rounded-lg p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900"
                   aria-label="Close"
                 >
                   <X className="h-5 w-5" />
@@ -83,7 +83,7 @@ export default function CreateClassroomButton({
               <div className="mt-5">
                 <label
                   htmlFor="cls-name"
-                  className="text-sm font-semibold text-zinc-700 dark:text-slate-300"
+                  className="text-sm font-semibold text-zinc-700"
                 >
                   Class name
                 </label>
@@ -93,12 +93,12 @@ export default function CreateClassroomButton({
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Mrs. K's 3rd Grade — Period 2"
                   maxLength={80}
-                  className="mt-1.5 block w-full rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm text-zinc-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                  className="mt-1.5 block w-full rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm text-zinc-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
                 />
               </div>
 
               <div className="mt-4">
-                <label className="text-sm font-semibold text-zinc-700 dark:text-slate-300">
+                <label className="text-sm font-semibold text-zinc-700">
                   Grade level
                 </label>
                 <div className="mt-1.5 flex flex-wrap gap-2">
@@ -110,7 +110,7 @@ export default function CreateClassroomButton({
                       className={`rounded-full px-3.5 py-1.5 text-sm font-semibold transition ${
                         g === grade
                           ? "bg-indigo-600 text-white"
-                          : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-slate-800 dark:text-slate-300"
+                          : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
                       }`}
                     >
                       {g}
@@ -120,7 +120,7 @@ export default function CreateClassroomButton({
               </div>
 
               {error && (
-                <p className="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-300">
+                <p className="mt-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
                   {error}
                 </p>
               )}
@@ -129,7 +129,7 @@ export default function CreateClassroomButton({
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="flex-1 rounded-full border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                  className="flex-1 rounded-full border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-50"
                 >
                   Cancel
                 </button>

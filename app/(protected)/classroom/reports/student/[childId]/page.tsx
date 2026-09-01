@@ -180,10 +180,10 @@ export default async function StudentReportPage({
           <BarChart3 className="h-3.5 w-3.5" />
           Reader report
         </div>
-        <h1 className="mt-1 text-2xl font-bold text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-2xl font-bold text-zinc-900">
           {c.first_name}
         </h1>
-        <p className="mt-0.5 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-0.5 text-sm text-zinc-500">
           {classroomNames}
           {c.grade ? ` · ${c.grade}` : ""}
           {c.reading_level ? ` · ${c.reading_level}` : ""}
@@ -191,7 +191,7 @@ export default async function StudentReportPage({
       </div>
 
       {(isInactive || (accuracy !== null && accuracy < 60 && totalAttempted >= 10)) && (
-        <div className="flex items-start gap-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-200">
+        <div className="flex items-start gap-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
           <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
           <div>
             <div className="font-bold">Worth a check-in.</div>
@@ -232,29 +232,29 @@ export default async function StudentReportPage({
       </section>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+        <section className="rounded-2xl border border-zinc-200 bg-white p-5">
           <div className="flex items-center gap-2">
             <TrendingDown className="h-4 w-4 text-amber-600" />
-            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
               Needs work
             </h3>
           </div>
           {weakest.length === 0 ? (
-            <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-3 text-sm text-zinc-500">
               Not enough data yet — standards with 3+ attempts show up here.
             </p>
           ) : (
-            <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+            <ul className="mt-3 divide-y divide-zinc-100">
               {weakest.map((s) => (
                 <li
                   key={s.standardId}
                   className="flex items-center justify-between gap-3 py-3"
                 >
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                    <div className="truncate text-sm font-semibold text-zinc-900">
                       {s.title}
                     </div>
-                    <div className="font-mono text-[11px] text-zinc-500 dark:text-slate-400">
+                    <div className="font-mono text-[11px] text-zinc-500">
                       {s.standardId} · {s.correct}/{s.attempted}
                     </div>
                   </div>
@@ -275,29 +275,29 @@ export default async function StudentReportPage({
           )}
         </section>
 
-        <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+        <section className="rounded-2xl border border-zinc-200 bg-white p-5">
           <div className="flex items-center gap-2">
             <Target className="h-4 w-4 text-emerald-600" />
-            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
               Strongest
             </h3>
           </div>
           {strongest.length === 0 ? (
-            <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-3 text-sm text-zinc-500">
               Not enough data yet.
             </p>
           ) : (
-            <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+            <ul className="mt-3 divide-y divide-zinc-100">
               {strongest.map((s) => (
                 <li
                   key={s.standardId}
                   className="flex items-center justify-between gap-3 py-3"
                 >
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                    <div className="truncate text-sm font-semibold text-zinc-900">
                       {s.title}
                     </div>
-                    <div className="font-mono text-[11px] text-zinc-500 dark:text-slate-400">
+                    <div className="font-mono text-[11px] text-zinc-500">
                       {s.standardId} · {s.correct}/{s.attempted}
                     </div>
                   </div>
@@ -311,29 +311,29 @@ export default async function StudentReportPage({
         </section>
       </div>
 
-      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-5">
         <div className="flex items-center gap-2">
           <Activity className="h-4 w-4 text-indigo-600" />
-          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
             Last 5 practice sessions
           </h3>
         </div>
         {lastFive.length === 0 ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-3 text-sm text-zinc-500">
             No practice sessions in the last 30 days.
           </p>
         ) : (
-          <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+          <ul className="mt-3 divide-y divide-zinc-100">
             {lastFive.map((s, i) => (
               <li
                 key={i}
                 className="flex items-center justify-between gap-3 py-3"
               >
                 <div className="min-w-0">
-                  <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-900">
                     {s.title}
                   </div>
-                  <div className="text-[11px] text-zinc-400 dark:text-slate-500">
+                  <div className="text-[11px] text-zinc-400">
                     {friendlyDate(s.completedAt)} · {s.correct}/{s.attempted}
                   </div>
                 </div>
@@ -355,29 +355,29 @@ export default async function StudentReportPage({
       </section>
 
       {recentAssignments.length > 0 && (
-        <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+        <section className="rounded-2xl border border-zinc-200 bg-white p-5">
           <div className="flex items-center gap-2">
             <GraduationCap className="h-4 w-4 text-indigo-600" />
-            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
               Assignments completed
             </h3>
           </div>
-          <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+          <ul className="mt-3 divide-y divide-zinc-100">
             {recentAssignments.map((s, i) => (
               <li
                 key={i}
                 className="flex items-center justify-between gap-3 py-3"
               >
                 <div className="min-w-0">
-                  <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-900">
                     {s.title}
                   </div>
-                  <div className="text-[11px] text-zinc-400 dark:text-slate-500">
+                  <div className="text-[11px] text-zinc-400">
                     {friendlyDate(s.completedAt)}
                   </div>
                 </div>
                 {s.score !== null && (
-                  <div className="font-mono text-sm font-bold text-indigo-600 dark:text-indigo-300">
+                  <div className="font-mono text-sm font-bold text-indigo-600">
                     {s.score}%
                   </div>
                 )}
@@ -402,15 +402,15 @@ function SummaryCard({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
         <Icon className="h-3.5 w-3.5" />
         {label}
       </div>
-      <div className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">
+      <div className="mt-2 text-2xl font-extrabold text-zinc-900">
         {value}
       </div>
-      <div className="mt-1 text-[11px] text-zinc-400 dark:text-slate-500">
+      <div className="mt-1 text-[11px] text-zinc-400">
         {hint}
       </div>
     </div>

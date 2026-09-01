@@ -103,20 +103,20 @@ export default async function LiveHubPage() {
           <Zap className="h-3.5 w-3.5" />
           Live quiz
         </div>
-        <h1 className="mt-1 text-2xl font-bold text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-2xl font-bold text-zinc-900">
           Run a real-time quiz with your class
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           Project the join code, students enter on their devices, you advance
           the questions. Resume an in-progress session or launch a new one.
         </p>
       </header>
 
       {active.length > 0 && (
-        <section className="rounded-2xl border-2 border-violet-200 bg-violet-50/40 p-5 dark:border-violet-900/40 dark:bg-violet-950/20">
+        <section className="rounded-2xl border-2 border-violet-200 bg-violet-50/40 p-5">
           <div className="mb-3 flex items-center gap-2">
             <PlayCircle className="h-4 w-4 text-violet-600" />
-            <h2 className="text-sm font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-violet-700">
               In progress
             </h2>
           </div>
@@ -124,20 +124,20 @@ export default async function LiveHubPage() {
             {active.map((s) => (
               <li
                 key={s.id}
-                className="flex items-center justify-between gap-3 rounded-xl bg-white px-4 py-3 shadow-sm dark:bg-slate-900/40"
+                className="flex items-center justify-between gap-3 rounded-xl bg-white px-4 py-3 shadow-sm"
               >
                 <div className="min-w-0">
-                  <div className="truncate text-sm font-bold text-zinc-900 dark:text-white">
+                  <div className="truncate text-sm font-bold text-zinc-900">
                     {s.title}
                   </div>
-                  <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+                  <div className="text-[11px] text-zinc-500">
                     {classroomNameById.get(s.classroom_id) ?? "Classroom"} ·
                     started {friendlyDate(s.created_at)}
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="hidden text-right sm:block">
-                    <div className="font-mono text-base font-bold tracking-widest text-violet-700 dark:text-violet-300">
+                    <div className="font-mono text-base font-bold tracking-widest text-violet-700">
                       {s.session_code}
                     </div>
                     <div className="text-[10px] uppercase tracking-widest text-zinc-400">
@@ -145,7 +145,7 @@ export default async function LiveHubPage() {
                     </div>
                   </div>
                   <div className="hidden text-right sm:block">
-                    <div className="flex items-center gap-1 text-sm font-bold text-zinc-700 dark:text-slate-300">
+                    <div className="flex items-center gap-1 text-sm font-bold text-zinc-700">
                       <Users className="h-3.5 w-3.5" />
                       {participantsBySession.get(s.id) ?? 0}
                     </div>
@@ -167,29 +167,29 @@ export default async function LiveHubPage() {
         </section>
       )}
 
-      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-5">
         <div className="mb-3 flex items-center gap-2">
           <GraduationCap className="h-4 w-4 text-indigo-600" />
-          <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
             Launch a new session
           </h2>
         </div>
-        <p className="mb-3 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mb-3 text-sm text-zinc-500">
           Open a classroom and use the <span className="font-semibold">Start live quiz</span>{" "}
           button to pick a standard or custom quiz to run.
         </p>
-        <ul className="divide-y divide-zinc-100 dark:divide-slate-800">
+        <ul className="divide-y divide-zinc-100">
           {classrooms.map((c) => (
             <li
               key={c.id}
               className="flex items-center justify-between gap-3 py-3"
             >
-              <div className="text-sm font-semibold text-zinc-900 dark:text-white">
+              <div className="text-sm font-semibold text-zinc-900">
                 {c.name}
               </div>
               <Link
                 href={`/classroom/${c.id}`}
-                className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-100 dark:bg-indigo-950/40 dark:text-indigo-300"
+                className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-100"
               >
                 Open
                 <ArrowRight className="h-3 w-3" />
@@ -200,24 +200,24 @@ export default async function LiveHubPage() {
       </section>
 
       {ended.length > 0 && (
-        <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+        <section className="rounded-2xl border border-zinc-200 bg-white p-5">
           <div className="mb-3 flex items-center gap-2">
             <Clock className="h-4 w-4 text-zinc-500" />
-            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
               Recently ended
             </h2>
           </div>
-          <ul className="divide-y divide-zinc-100 dark:divide-slate-800">
+          <ul className="divide-y divide-zinc-100">
             {ended.map((s) => (
               <li
                 key={s.id}
                 className="flex items-center justify-between gap-3 py-3"
               >
                 <div className="min-w-0">
-                  <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-900">
                     {s.title}
                   </div>
-                  <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+                  <div className="text-[11px] text-zinc-500">
                     {classroomNameById.get(s.classroom_id) ?? "Classroom"} ·{" "}
                     {(s.question_ids ?? []).length} question
                     {(s.question_ids ?? []).length === 1 ? "" : "s"} ·{" "}
@@ -226,7 +226,7 @@ export default async function LiveHubPage() {
                 </div>
                 <Link
                   href={`/classroom/live/${s.id}`}
-                  className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-300"
+                  className="text-xs font-semibold text-indigo-600 hover:text-indigo-700"
                 >
                   See results
                 </Link>
@@ -245,10 +245,10 @@ function EmptyLiveHub() {
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-violet-100 text-violet-600">
         <Zap className="h-8 w-8" />
       </div>
-      <h1 className="mt-5 text-xl font-bold text-zinc-900 dark:text-white">
+      <h1 className="mt-5 text-xl font-bold text-zinc-900">
         No classrooms yet
       </h1>
-      <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-2 text-sm text-zinc-500">
         Live quiz needs at least one classroom with students enrolled. Start a
         classroom and invite kids before kicking off your first session.
       </p>

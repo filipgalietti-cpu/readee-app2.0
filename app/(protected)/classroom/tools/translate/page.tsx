@@ -14,15 +14,15 @@ export default async function TranslateToolPage() {
         Translate
       </div>
       <div className="mt-1 flex flex-wrap items-baseline gap-3">
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
           Translate any passage
         </h1>
         <details className="group">
-          <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-500 transition hover:border-fuchsia-300 hover:text-fuchsia-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 [&::-webkit-details-marker]:hidden">
+          <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-500 transition hover:border-fuchsia-300 hover:text-fuchsia-700 [&::-webkit-details-marker]:hidden">
             <Info className="h-3 w-3" />
             How it works
           </summary>
-          <p className="mt-2 max-w-2xl rounded-2xl border border-fuchsia-200 bg-fuchsia-50 px-4 py-3 text-sm text-zinc-700 dark:border-fuchsia-900/40 dark:bg-fuchsia-950/30 dark:text-slate-300">
+          <p className="mt-2 max-w-2xl rounded-2xl border border-fuchsia-200 bg-fuchsia-50 px-4 py-3 text-sm text-zinc-700">
             Sandbox for one-off translations. The real win is automatic,
             set a student&apos;s home language on their profile and Readee
             translates parent letters, weekly digests, and in-reader
@@ -33,14 +33,14 @@ export default async function TranslateToolPage() {
       <div className="mt-6">
         <TranslatePlayground />
       </div>
-      <div className="mt-8 rounded-3xl border border-fuchsia-200 bg-fuchsia-50 p-5 text-sm dark:border-fuchsia-900/40 dark:bg-fuchsia-950/30">
-        <div className="text-[10px] font-bold uppercase tracking-widest text-fuchsia-700 dark:text-fuchsia-300">
+      <div className="mt-8 rounded-3xl border border-fuchsia-200 bg-fuchsia-50 p-5 text-sm">
+        <div className="text-[10px] font-bold uppercase tracking-widest text-fuchsia-700">
           Multilingual Family Mode
         </div>
-        <p className="mt-1 font-semibold text-zinc-900 dark:text-white">
-          Set <span className="rounded bg-white px-1.5 dark:bg-slate-900">Home language</span> on a student&apos;s profile and the rest is automatic.
+        <p className="mt-1 font-semibold text-zinc-900">
+          Set <span className="rounded bg-white px-1.5">Home language</span> on a student&apos;s profile and the rest is automatic.
         </p>
-        <ul className="mt-2 list-disc space-y-1 pl-5 text-zinc-700 dark:text-slate-300">
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-zinc-700">
           <li>
             Student opens an assignment, taps &quot;Show in [Spanish]&quot;,
             sees passage side-by-side without leaving the reader.

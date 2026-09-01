@@ -60,11 +60,11 @@ export function InteractiveExample({
   return (
     <div className="flex w-full flex-col items-center gap-4 lg:gap-6 text-center">
       {anchor && (
-        <span className="rounded-full bg-emerald-100 px-4 py-1.5 text-base sm:text-lg font-bold text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-200">
+        <span className="rounded-full bg-emerald-100 px-4 py-1.5 text-base sm:text-lg font-bold text-emerald-700">
           {anchor}
         </span>
       )}
-      <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]">
+      <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-violet-800 [text-wrap:balance]">
         {prompt}
       </p>
 
@@ -82,10 +82,10 @@ export function InteractiveExample({
               transition={{ duration: 0.45 }}
               className={`rounded-2xl px-6 py-4 text-lg sm:text-xl lg:text-2xl font-bold shadow-sm transition-colors ${
                 isCorrect
-                  ? "bg-emerald-100 text-emerald-700 ring-2 ring-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200"
+                  ? "bg-emerald-100 text-emerald-700 ring-2 ring-emerald-400"
                   : isWrong
-                    ? "bg-zinc-100 text-zinc-300 line-through dark:bg-zinc-800 dark:text-zinc-600"
-                    : "bg-violet-100 text-violet-800 hover:bg-violet-200 dark:bg-violet-900/40 dark:text-violet-200"
+                    ? "bg-zinc-100 text-zinc-300 line-through"
+                    : "bg-violet-100 text-violet-800 hover:bg-violet-200"
               }`}
             >
               {c}
@@ -100,7 +100,7 @@ export function InteractiveExample({
             key="win"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-lg sm:text-xl font-extrabold text-emerald-600 dark:text-emerald-300"
+            className="flex items-center gap-2 text-lg sm:text-xl font-extrabold text-emerald-600"
           >
             <Sparkles className="h-5 w-5" /> Yes! You got it!
           </motion.div>
@@ -109,7 +109,7 @@ export function InteractiveExample({
             key="hint"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 rounded-xl bg-amber-50 px-4 py-2 text-sm sm:text-base font-semibold text-amber-700 dark:bg-amber-900/30 dark:text-amber-200 [text-wrap:balance]"
+            className="flex items-center gap-2 rounded-xl bg-amber-50 px-4 py-2 text-sm sm:text-base font-semibold text-amber-700 [text-wrap:balance]"
           >
             <Lightbulb className="h-5 w-5 flex-shrink-0" /> {hint} Try again!
           </motion.div>

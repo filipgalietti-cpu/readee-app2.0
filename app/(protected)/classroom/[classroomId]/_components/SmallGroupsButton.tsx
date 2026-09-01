@@ -67,7 +67,7 @@ export default function SmallGroupsButton({
         type="button"
         onClick={generate}
         disabled={pending}
-        className="inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-4 py-1.5 text-xs font-bold text-violet-700 shadow-sm transition hover:bg-violet-50 disabled:opacity-60 dark:bg-slate-900 dark:hover:bg-violet-950/30"
+        className="inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-4 py-1.5 text-xs font-bold text-violet-700 shadow-sm transition hover:bg-violet-50 disabled:opacity-60"
       >
         {pending && !open ? (
           <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -83,17 +83,17 @@ export default function SmallGroupsButton({
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={pending ? undefined : () => setOpen(false)}
           />
-          <div className="relative max-h-full w-full max-w-3xl overflow-y-auto rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900">
+          <div className="relative max-h-full w-full max-w-3xl overflow-y-auto rounded-2xl bg-white p-6 shadow-xl">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
                   <Sparkles className="h-3 w-3" />
                   Readee.ai
                 </div>
-                <h3 className="mt-0.5 text-lg font-bold text-zinc-900 dark:text-white">
+                <h3 className="mt-0.5 text-lg font-bold text-zinc-900">
                   Suggested small groups
                 </h3>
-                <p className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                <p className="mt-0.5 text-xs text-zinc-500">
                   Built from the last 30 days of practice data. Use these as
                   rotation groups — Readee picked a focus skill and a lesson
                   for each.
@@ -140,7 +140,7 @@ export default function SmallGroupsButton({
                 {groups.map((g, i) => (
                   <div
                     key={i}
-                    className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+                    className="overflow-hidden rounded-2xl border border-zinc-200 bg-white"
                   >
                     <div
                       className={`bg-gradient-to-r ${ACCENTS[i % ACCENTS.length]} px-5 py-3 text-white`}
@@ -159,22 +159,22 @@ export default function SmallGroupsButton({
                       </div>
                     </div>
                     <div className="px-5 py-3">
-                      <p className="text-xs italic text-zinc-600 dark:text-slate-400">
+                      <p className="text-xs italic text-zinc-600">
                         &ldquo;{g.rationale}&rdquo;
                       </p>
                       <div className="mt-3 flex flex-wrap gap-1.5">
                         {g.student_ids.map((sid) => (
                           <span
                             key={sid}
-                            className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-semibold text-zinc-700 dark:bg-slate-800 dark:text-slate-300"
+                            className="rounded-full bg-zinc-100 px-2.5 py-1 text-xs font-semibold text-zinc-700"
                           >
                             {roster[sid] ?? "Unknown"}
                           </span>
                         ))}
                       </div>
-                      <div className="mt-3 flex items-center gap-2 rounded-xl bg-violet-50 px-3 py-2 text-xs dark:bg-violet-950/20">
+                      <div className="mt-3 flex items-center gap-2 rounded-xl bg-violet-50 px-3 py-2 text-xs">
                         <Sparkles className="h-3 w-3 flex-shrink-0 text-violet-600" />
-                        <span className="text-violet-900 dark:text-violet-200">
+                        <span className="text-violet-900">
                           Suggested lesson:{" "}
                           <span className="font-mono font-bold">
                             {g.suggested_lesson_id}

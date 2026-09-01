@@ -35,14 +35,14 @@ export default async function LeveledHomePage() {
     <div className="mx-auto max-w-5xl px-6 py-10">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
             <Layers className="h-4 w-4" />
             Leveled passages
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             Your differentiated passages
           </h1>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-zinc-500">
             One topic, three reading levels. Easy / on-level / advanced —
             same plot, different vocabulary. Assign the right version to
             each kid in a mixed-ability class.
@@ -58,14 +58,14 @@ export default async function LeveledHomePage() {
       </div>
 
       {list.length === 0 ? (
-        <div className="mt-10 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
+        <div className="mt-10 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
             <Layers className="h-7 w-7" />
           </div>
-          <h2 className="mt-4 text-lg font-bold text-zinc-900 dark:text-white">
+          <h2 className="mt-4 text-lg font-bold text-zinc-900">
             One passage, every reader
           </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500">
             Type one topic. Get three versions of the SAME story at three
             reading levels. Drop each kid into the version that fits — no
             more retyping content for SPED + on-level + GT.
@@ -87,7 +87,7 @@ export default async function LeveledHomePage() {
                 <AssetCardActions type="leveled" id={p.id} initialTitle={p.title} />
                 <Link
                   href={`/classroom/leveled/${p.id}`}
-                  className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
+                  className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md"
                 >
                   {p.shared_image_url ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -97,12 +97,12 @@ export default async function LeveledHomePage() {
                       className="h-36 w-full object-cover"
                     />
                   ) : (
-                    <div className="flex h-36 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-400 dark:from-indigo-950/40 dark:to-violet-950/40">
+                    <div className="flex h-36 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-400">
                       <ImageIcon className="h-10 w-10" />
                     </div>
                   )}
                   <div className="p-4">
-                    <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+                    <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-violet-600">
                       Center: {p.base_grade ?? "?"}
                       <span className="text-zinc-300">·</span>
                       <span>{versionCount} levels</span>
@@ -117,10 +117,10 @@ export default async function LeveledHomePage() {
                         </span>
                       )}
                     </div>
-                    <div className="mt-1.5 truncate text-sm font-bold text-zinc-900 dark:text-white">
+                    <div className="mt-1.5 truncate text-sm font-bold text-zinc-900">
                       {p.title}
                     </div>
-                    <div className="mt-1 line-clamp-2 text-xs text-zinc-500 dark:text-slate-400">
+                    <div className="mt-1 line-clamp-2 text-xs text-zinc-500">
                       {p.topic}
                     </div>
                     <div className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-indigo-600">

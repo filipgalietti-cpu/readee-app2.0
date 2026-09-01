@@ -116,13 +116,13 @@ export function SpaceInsertion({
   return (
     <div className="flex flex-col gap-6">
       {/* Prompt */}
-      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center">
+      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 leading-tight text-center">
         {prompt}
       </h2>
 
       {/* Instruction */}
-      <div className="rounded-xl bg-indigo-50 border border-indigo-200 dark:bg-indigo-900/20 dark:border-indigo-700 px-4 py-3 text-center">
-        <p className="text-sm font-medium text-indigo-800 dark:text-indigo-200">
+      <div className="rounded-xl bg-indigo-50 border border-indigo-200 px-4 py-3 text-center">
+        <p className="text-sm font-medium text-indigo-800">
           Tap between letters to add spaces!
         </p>
       </div>
@@ -131,10 +131,10 @@ export function SpaceInsertion({
       <motion.div
         className={`rounded-2xl border-2 p-4 md:p-6 transition-colors ${
           result === "correct"
-            ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
+            ? "border-emerald-400 bg-emerald-50/50"
             : result === "incorrect"
-            ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
-            : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
+            ? "border-red-400 bg-red-50/50"
+            : "border-zinc-300 bg-white"
         }`}
         animate={
           shaking
@@ -151,10 +151,10 @@ export function SpaceInsertion({
               <span
                 className={`text-2xl md:text-3xl font-bold select-none ${
                   result === "correct"
-                    ? "text-emerald-700 dark:text-emerald-300"
+                    ? "text-emerald-700"
                     : result === "incorrect"
-                    ? "text-red-700 dark:text-red-300"
-                    : "text-zinc-900 dark:text-white"
+                    ? "text-red-700"
+                    : "text-zinc-900"
                 }`}
               >
                 {char}
@@ -178,14 +178,14 @@ export function SpaceInsertion({
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      className="w-full h-8 md:h-10 rounded-lg bg-indigo-100 border-2 border-dashed border-indigo-400 dark:bg-indigo-900/40 dark:border-indigo-500 flex items-center justify-center"
+                      className="w-full h-8 md:h-10 rounded-lg bg-indigo-100 border-2 border-dashed border-indigo-400 flex items-center justify-center"
                     >
-                      <span className="text-indigo-400 dark:text-indigo-500 text-xs font-bold">
+                      <span className="text-indigo-400 text-xs font-bold">
                         _
                       </span>
                     </motion.div>
                   ) : (
-                    <div className="w-full h-8 md:h-10 rounded-lg opacity-0 hover:opacity-100 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 border border-transparent hover:border-dashed hover:border-indigo-300 dark:hover:border-indigo-600 transition-opacity" />
+                    <div className="w-full h-8 md:h-10 rounded-lg opacity-0 hover:opacity-100 hover:bg-indigo-50 border border-transparent hover:border-dashed hover:border-indigo-300 transition-opacity" />
                   )}
                 </button>
               )}
@@ -197,9 +197,9 @@ export function SpaceInsertion({
       {/* Preview of current attempt */}
       {hasSpaces && result === null && (
         <div className="text-center">
-          <p className="text-sm text-zinc-500 dark:text-slate-400">
+          <p className="text-sm text-zinc-500">
             Your sentence:{" "}
-            <span className="font-semibold text-zinc-700 dark:text-slate-200">
+            <span className="font-semibold text-zinc-700">
               {currentAttempt}
             </span>
           </p>
@@ -219,7 +219,7 @@ export function SpaceInsertion({
           className={`w-full py-4 rounded-2xl font-extrabold text-lg transition-all active:scale-[0.97] ${
             hasSpaces
               ? "text-white"
-              : "bg-zinc-200 text-zinc-400 dark:bg-slate-700 dark:text-slate-500 cursor-not-allowed"
+              : "bg-zinc-200 text-zinc-400 cursor-not-allowed"
           }`}
           style={
             hasSpaces
@@ -242,7 +242,7 @@ export function SpaceInsertion({
         <div className="flex flex-col items-center gap-2">
           <button
             onClick={() => setShowHint((v) => !v)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 hover:bg-amber-100 dark:hover:bg-amber-500/20 transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold text-amber-700 bg-amber-50 border border-amber-200 hover:bg-amber-100 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5.002 5.002 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -250,7 +250,7 @@ export function SpaceInsertion({
             Hint
           </button>
           {showHint && (
-            <div className="rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 px-4 py-3 text-sm text-amber-800 dark:text-amber-200 max-w-sm text-center">
+            <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-800 max-w-sm text-center">
               {hint}
             </div>
           )}

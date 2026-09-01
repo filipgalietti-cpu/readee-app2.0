@@ -38,14 +38,14 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
 
   if (totalStudents === 0) {
     return (
-      <div className="flex flex-col items-center rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 ring-1 ring-indigo-100 px-6 py-16 text-center dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
-        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
+      <div className="flex flex-col items-center rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 ring-1 ring-indigo-100 px-6 py-16 text-center">
+        <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600">
           <BarChart3 className="h-7 w-7" />
         </span>
-        <h2 className="mt-5 text-lg font-bold text-zinc-900 dark:text-white">
+        <h2 className="mt-5 text-lg font-bold text-zinc-900">
           No insights yet
         </h2>
-        <p className="mt-2 max-w-sm text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 max-w-sm text-sm text-zinc-500">
           Insights appear here once students join and start practicing.
         </p>
       </div>
@@ -154,26 +154,26 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
       </div>
 
       {/* Most-missed standards */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-5">
         <div className="flex items-center gap-2">
           <TrendingDown className="h-4 w-4 text-amber-600" />
-          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
             Hardest standards (30d)
           </h3>
         </div>
         {mostMissed.length === 0 ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-3 text-sm text-zinc-500">
             Not enough data yet — standards with at least 5 attempts show up here.
           </p>
         ) : (
-          <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+          <ul className="mt-3 divide-y divide-zinc-100">
             {mostMissed.map((m) => (
               <li key={m.standardId} className="flex items-center justify-between gap-3 py-3">
                 <div className="min-w-0">
-                  <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-900">
                     {m.title}
                   </div>
-                  <div className="font-mono text-[11px] text-zinc-500 dark:text-slate-400">
+                  <div className="font-mono text-[11px] text-zinc-500">
                     {m.standardId}
                   </div>
                 </div>
@@ -181,15 +181,15 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
                   <div
                     className={`font-mono text-sm font-bold ${
                       m.accuracy < 60
-                        ? "text-red-600 dark:text-red-400"
+                        ? "text-red-600"
                         : m.accuracy < 75
-                        ? "text-amber-600 dark:text-amber-400"
-                        : "text-zinc-700 dark:text-slate-300"
+                        ? "text-amber-600"
+                        : "text-zinc-700"
                     }`}
                   >
                     {m.accuracy}%
                   </div>
-                  <div className="text-[11px] text-zinc-400 dark:text-slate-500">
+                  <div className="text-[11px] text-zinc-400">
                     {m.correct}/{m.attempted}
                   </div>
                 </div>
@@ -200,35 +200,35 @@ export default async function InsightsTab({ classroomId }: { classroomId: string
       </section>
 
       {/* Recent completions */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-5">
         <div className="flex items-center gap-2">
           <Activity className="h-4 w-4 text-indigo-600" />
-          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
             Recent completions
           </h3>
         </div>
         {recentActivity.length === 0 ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-3 text-sm text-zinc-500">
             No assignments completed yet. Completions show up here as students finish.
           </p>
         ) : (
-          <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+          <ul className="mt-3 divide-y divide-zinc-100">
             {recentActivity.map((r, i) => (
               <li key={i} className="flex items-center justify-between gap-3 py-3">
                 <div className="min-w-0">
-                  <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-900">
                     {r.firstName}{" "}
-                    <span className="font-normal text-zinc-500 dark:text-slate-400">
+                    <span className="font-normal text-zinc-500">
                       finished
                     </span>{" "}
                     {r.title}
                   </div>
-                  <div className="text-[11px] text-zinc-400 dark:text-slate-500">
+                  <div className="text-[11px] text-zinc-400">
                     {friendlyDate(r.completedAt)}
                   </div>
                 </div>
                 {r.scorePercent !== null && (
-                  <div className="flex-shrink-0 font-mono text-sm font-bold text-indigo-600 dark:text-indigo-300">
+                  <div className="flex-shrink-0 font-mono text-sm font-bold text-indigo-600">
                     {r.scorePercent}%
                   </div>
                 )}
@@ -253,15 +253,15 @@ function SummaryCard({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
         <Icon className="h-3.5 w-3.5" />
         {label}
       </div>
-      <div className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">
+      <div className="mt-2 text-2xl font-extrabold text-zinc-900">
         {value}
       </div>
-      <div className="mt-1 text-[11px] text-zinc-400 dark:text-slate-500">{hint}</div>
+      <div className="mt-1 text-[11px] text-zinc-400">{hint}</div>
     </div>
   );
 }

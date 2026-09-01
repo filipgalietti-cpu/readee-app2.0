@@ -114,10 +114,10 @@ function LevelsContent() {
         <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-400">
           {childName}&apos;s ladder
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
           Reader Levels
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           Earn{" "}
           <Carrot className="inline h-3.5 w-3.5 -mt-0.5 text-orange-500" strokeWidth={2.4} />{" "}
           carrots from lessons, practice, and stories to climb the ladder.
@@ -186,19 +186,19 @@ function LevelsContent() {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: Math.min(idx, 12) * 0.04 }}
-              className={`flex items-center gap-3 rounded-2xl border bg-white p-3 dark:bg-slate-900 ${
+              className={`flex items-center gap-3 rounded-2xl border bg-white p-3 ${
                 isCurrent
-                  ? "border-indigo-300 ring-2 ring-indigo-200 dark:border-indigo-700 dark:ring-indigo-900/40"
+                  ? "border-indigo-300 ring-2 ring-indigo-200"
                   : achieved
-                    ? "border-zinc-200 dark:border-slate-700"
-                    : "border-zinc-100 opacity-70 dark:border-slate-800"
+                    ? "border-zinc-200"
+                    : "border-zinc-100 opacity-70"
               }`}
             >
               <span
                 className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl ${
                   achieved
                     ? `${lvl.accent.bg} ${lvl.accent.fg}`
-                    : "bg-zinc-100 text-zinc-400 dark:bg-slate-800 dark:text-slate-500"
+                    : "bg-zinc-100 text-zinc-400"
                 }`}
               >
                 <Icon className="h-6 w-6" strokeWidth={2.2} />
@@ -208,16 +208,16 @@ function LevelsContent() {
                   <span className="font-mono text-[11px] font-bold text-zinc-400">
                     Lv {lvl.number}
                   </span>
-                  <span className="text-sm font-extrabold text-zinc-900 dark:text-white">
+                  <span className="text-sm font-extrabold text-zinc-900">
                     {lvl.name}
                   </span>
                   {isCurrent && (
-                    <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                    <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold text-indigo-700">
                       You are here
                     </span>
                   )}
                 </div>
-                <div className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                <div className="mt-0.5 text-xs text-zinc-500">
                   {achieved ? (
                     <>Unlocked at {lvl.threshold.toLocaleString()} carrots</>
                   ) : (
@@ -231,7 +231,7 @@ function LevelsContent() {
               {achieved ? (
                 <Check className="h-5 w-5 flex-shrink-0 text-emerald-500" strokeWidth={2.4} />
               ) : (
-                <Lock className="h-4 w-4 flex-shrink-0 text-zinc-300 dark:text-slate-600" strokeWidth={2.2} />
+                <Lock className="h-4 w-4 flex-shrink-0 text-zinc-300" strokeWidth={2.2} />
               )}
             </motion.li>
           );

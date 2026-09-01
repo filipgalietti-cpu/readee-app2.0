@@ -70,9 +70,9 @@ export default function LessonPlayer({
   const slide = onSlide ? slides[page] : null;
 
   return (
-    <div className="rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
+    <div className="rounded-3xl border border-zinc-200 bg-white shadow-sm">
       {/* Page indicator */}
-      <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-2.5 text-xs dark:border-slate-800">
+      <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-2.5 text-xs">
         <span className="font-semibold text-zinc-500">
           {onSlide
             ? `Slide ${page + 1} of ${slides.length}`
@@ -108,7 +108,7 @@ export default function LessonPlayer({
       </div>
 
       {/* Nav */}
-      <div className="flex items-center justify-between border-t border-zinc-100 px-5 py-3 dark:border-slate-800">
+      <div className="flex items-center justify-between border-t border-zinc-100 px-5 py-3">
         <button
           type="button"
           onClick={() => setPage((p) => Math.max(0, p - 1))}
@@ -158,12 +158,12 @@ function SlideView({
 
       <div className="mt-6">
         {slide.display_text && (
-          <h2 className="mb-3 text-2xl font-extrabold text-zinc-900 dark:text-white">
+          <h2 className="mb-3 text-2xl font-extrabold text-zinc-900">
             {slide.display_text}
           </h2>
         )}
         <p
-          className="whitespace-pre-line text-[18px] leading-[1.7] text-zinc-900 dark:text-slate-100"
+          className="whitespace-pre-line text-[18px] leading-[1.7] text-zinc-900"
           style={{
             fontFamily:
               'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
@@ -195,7 +195,7 @@ function ComprehensionView({ questions }: { questions: Question[] }) {
           <HelpCircle className="h-3 w-3" />
           Comprehension check
         </div>
-        <h2 className="mt-3 text-2xl font-extrabold text-zinc-900 dark:text-white">
+        <h2 className="mt-3 text-2xl font-extrabold text-zinc-900">
           Let&apos;s see what we remember!
         </h2>
       </div>
@@ -211,7 +211,7 @@ function ComprehensionItem({ index, q }: { index: number; q: Question }) {
   const isCorrect = picked === q.correct;
   const isWrong = picked != null && !isCorrect;
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-5">
       <div className="flex items-center gap-2">
         <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 text-[11px] font-bold text-white">
           {index + 1}
@@ -220,7 +220,7 @@ function ComprehensionItem({ index, q }: { index: number; q: Question }) {
           Question {index + 1}
         </span>
       </div>
-      <p className="mt-2 text-base font-semibold text-zinc-900 dark:text-white">
+      <p className="mt-2 text-base font-semibold text-zinc-900">
         {q.prompt}
       </p>
       <div className="mt-3 grid gap-2 sm:grid-cols-2">

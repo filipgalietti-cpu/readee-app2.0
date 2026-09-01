@@ -25,38 +25,38 @@ interface CategorySortProps {
 const BUCKET_STYLES = [
   {
     header: "bg-blue-500 text-white",
-    body: "bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-700",
-    glow: "ring-4 ring-blue-300 dark:ring-blue-500 border-blue-400 dark:border-blue-500 scale-[1.02]",
-    correctFlash: "ring-4 ring-emerald-400 dark:ring-emerald-500 border-emerald-400",
-    incorrectFlash: "ring-4 ring-red-400 dark:ring-red-500 border-red-400",
-    chip: "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
+    body: "bg-blue-50 border-blue-200",
+    glow: "ring-4 ring-blue-300 border-blue-400 scale-[1.02]",
+    correctFlash: "ring-4 ring-emerald-400 border-emerald-400",
+    incorrectFlash: "ring-4 ring-red-400 border-red-400",
+    chip: "bg-blue-100 text-blue-800 border-blue-300",
   },
   {
     header: "bg-emerald-500 text-white",
-    body: "bg-emerald-50 border-emerald-200 dark:bg-emerald-900/20 dark:border-emerald-700",
-    glow: "ring-4 ring-emerald-300 dark:ring-emerald-500 border-emerald-400 dark:border-emerald-500 scale-[1.02]",
-    correctFlash: "ring-4 ring-emerald-400 dark:ring-emerald-500 border-emerald-400",
-    incorrectFlash: "ring-4 ring-red-400 dark:ring-red-500 border-red-400",
-    chip: "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
+    body: "bg-emerald-50 border-emerald-200",
+    glow: "ring-4 ring-emerald-300 border-emerald-400 scale-[1.02]",
+    correctFlash: "ring-4 ring-emerald-400 border-emerald-400",
+    incorrectFlash: "ring-4 ring-red-400 border-red-400",
+    chip: "bg-emerald-100 text-emerald-800 border-emerald-300",
   },
   {
     header: "bg-purple-500 text-white",
-    body: "bg-purple-50 border-purple-200 dark:bg-purple-900/20 dark:border-purple-700",
-    glow: "ring-4 ring-purple-300 dark:ring-purple-500 border-purple-400 dark:border-purple-500 scale-[1.02]",
-    correctFlash: "ring-4 ring-emerald-400 dark:ring-emerald-500 border-emerald-400",
-    incorrectFlash: "ring-4 ring-red-400 dark:ring-red-500 border-red-400",
-    chip: "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
+    body: "bg-purple-50 border-purple-200",
+    glow: "ring-4 ring-purple-300 border-purple-400 scale-[1.02]",
+    correctFlash: "ring-4 ring-emerald-400 border-emerald-400",
+    incorrectFlash: "ring-4 ring-red-400 border-red-400",
+    chip: "bg-purple-100 text-purple-800 border-purple-300",
   },
 ];
 
 const BANK_CHIP_COLORS = [
-  "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
-  "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
-  "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/60 dark:text-amber-200 dark:border-amber-700",
-  "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
-  "bg-pink-100 text-pink-800 border-pink-300 dark:bg-pink-900/60 dark:text-pink-200 dark:border-pink-700",
-  "bg-cyan-100 text-cyan-800 border-cyan-300 dark:bg-cyan-900/60 dark:text-cyan-200 dark:border-cyan-700",
-  "bg-orange-100 text-orange-800 border-orange-300 dark:bg-orange-900/60 dark:text-orange-200 dark:border-orange-700",
+  "bg-blue-100 text-blue-800 border-blue-300",
+  "bg-purple-100 text-purple-800 border-purple-300",
+  "bg-amber-100 text-amber-800 border-amber-300",
+  "bg-emerald-100 text-emerald-800 border-emerald-300",
+  "bg-pink-100 text-pink-800 border-pink-300",
+  "bg-cyan-100 text-cyan-800 border-cyan-300",
+  "bg-orange-100 text-orange-800 border-orange-300",
 ];
 
 /** Play a word/phrase audio file */
@@ -281,7 +281,7 @@ export function CategorySort({
   return (
     <div className="flex flex-col gap-6">
       {/* Prompt */}
-      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center">
+      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 leading-tight text-center">
         {prompt}
       </h2>
 
@@ -350,7 +350,7 @@ export function CategorySort({
                   ))}
                 </AnimatePresence>
                 {buckets[cat].length === 0 && (
-                  <span className="text-xs text-zinc-400 dark:text-slate-500 px-1 py-1">
+                  <span className="text-xs text-zinc-400 px-1 py-1">
                     {selectedBankItem ? "Tap here to place!" : "Tap a word, then tap here"}
                   </span>
                 )}
@@ -406,7 +406,7 @@ export function CategorySort({
           className={`w-full py-4 rounded-2xl font-extrabold text-lg transition-all active:scale-[0.97] ${
             allPlaced
               ? "text-white"
-              : "bg-zinc-200 text-zinc-400 dark:bg-slate-700 dark:text-slate-500 cursor-not-allowed"
+              : "bg-zinc-200 text-zinc-400 cursor-not-allowed"
           }`}
           style={
             allPlaced

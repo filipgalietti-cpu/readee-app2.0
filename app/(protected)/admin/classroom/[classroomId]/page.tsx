@@ -156,20 +156,20 @@ export default async function AdminClassroomDetailPage({
     <div className="mx-auto max-w-6xl px-6 py-10">
       <Link
         href={`/admin/school/${c.school_id}`}
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to school
       </Link>
 
       <div className="mt-3">
-        <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+        <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-700">
           Classroom · admin view
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
           {c.name}
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           {c.grade_level ? `${c.grade_level} · ` : ""}Teacher: {teacherEmail}
           {c.archived_at && " · Archived"}
         </p>
@@ -200,19 +200,19 @@ export default async function AdminClassroomDetailPage({
       <section className="mt-10">
         <div className="mb-3 flex items-center gap-2">
           <Users2 className="h-4 w-4 text-indigo-600" />
-          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
             Roster
           </h2>
         </div>
         {roster.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-8 text-center text-sm text-zinc-500 dark:border-slate-800 dark:bg-slate-900/40">
+          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-8 text-center text-sm text-zinc-500">
             No students enrolled yet.
           </div>
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white">
             <table className="w-full text-sm">
-              <thead className="border-b border-zinc-200 bg-zinc-50 text-left dark:border-slate-800 dark:bg-slate-900/60">
-                <tr className="text-xs uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+              <thead className="border-b border-zinc-200 bg-zinc-50 text-left">
+                <tr className="text-xs uppercase tracking-wider text-zinc-500">
                   <th className="px-5 py-3 font-semibold">Student</th>
                   <th className="px-5 py-3 font-semibold">Grade</th>
                   <th className="px-5 py-3 text-right font-semibold">Mastery (30d)</th>
@@ -232,21 +232,21 @@ export default async function AdminClassroomDetailPage({
                   return (
                     <tr
                       key={s.id}
-                      className="border-b border-zinc-100 last:border-0 hover:bg-zinc-50/60 dark:border-slate-800"
+                      className="border-b border-zinc-100 last:border-0 hover:bg-zinc-50/60"
                     >
-                      <td className="px-5 py-3 font-semibold text-zinc-900 dark:text-white">
+                      <td className="px-5 py-3 font-semibold text-zinc-900">
                         {s.first_name}
                       </td>
-                      <td className="px-5 py-3 text-zinc-600 dark:text-slate-400">
+                      <td className="px-5 py-3 text-zinc-600">
                         {s.grade ?? "—"}
                       </td>
-                      <td className="px-5 py-3 text-right font-mono text-zinc-700 dark:text-slate-300">
+                      <td className="px-5 py-3 text-right font-mono text-zinc-700">
                         {masteryPct === null ? "—" : `${masteryPct}%`}
                       </td>
-                      <td className="px-5 py-3 text-right font-mono text-zinc-700 dark:text-slate-300">
+                      <td className="px-5 py-3 text-right font-mono text-zinc-700">
                         {m?.attempted ?? 0}
                       </td>
-                      <td className="px-5 py-3 text-right text-xs text-zinc-500 dark:text-slate-400">
+                      <td className="px-5 py-3 text-right text-xs text-zinc-500">
                         {daysAgo === null
                           ? "Never"
                           : daysAgo === 0
@@ -267,12 +267,12 @@ export default async function AdminClassroomDetailPage({
       <section className="mt-10">
         <div className="mb-3 flex items-center gap-2">
           <ClipboardList className="h-4 w-4 text-indigo-600" />
-          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
             Assignments
           </h2>
         </div>
         {assignmentsList.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-8 text-center text-sm text-zinc-500 dark:border-slate-800 dark:bg-slate-900/40">
+          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-8 text-center text-sm text-zinc-500">
             No assignments yet.
           </div>
         ) : (
@@ -283,13 +283,13 @@ export default async function AdminClassroomDetailPage({
               return (
                 <li
                   key={a.id}
-                  className="flex items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-3 dark:border-slate-800 dark:bg-slate-900/40"
+                  className="flex items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white px-5 py-3"
                 >
                   <div className="min-w-0">
-                    <div className="truncate font-semibold text-zinc-900 dark:text-white">
+                    <div className="truncate font-semibold text-zinc-900">
                       {a.title}
                     </div>
-                    <div className="mt-0.5 text-[11px] text-zinc-500 dark:text-slate-400">
+                    <div className="mt-0.5 text-[11px] text-zinc-500">
                       {a.kind === "readee_lesson" ? "Lesson" : "Custom quiz"} · {a.source_id}
                       {a.due_at && (
                         <>
@@ -303,7 +303,7 @@ export default async function AdminClassroomDetailPage({
                     </div>
                   </div>
                   <div className="flex flex-shrink-0 items-center gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2 py-0.5 font-mono text-[11px] font-semibold text-zinc-700 dark:bg-slate-800 dark:text-slate-300">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2 py-0.5 font-mono text-[11px] font-semibold text-zinc-700">
                       <CheckCircle2 className="h-3 w-3" />
                       {done}/{total}
                     </span>
@@ -315,7 +315,7 @@ export default async function AdminClassroomDetailPage({
         )}
       </section>
 
-      <p className="mt-10 text-xs text-zinc-400 dark:text-slate-500">
+      <p className="mt-10 text-xs text-zinc-400">
         Read-only admin view. For roster edits, assignments, and settings,
         the classroom teacher manages this from their{" "}
         <Link
@@ -342,13 +342,13 @@ function SummaryCard({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
         <Icon className="h-3.5 w-3.5" />
         {label}
       </div>
-      <div className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">{value}</div>
-      <div className="mt-1 text-[11px] text-zinc-400 dark:text-slate-500">{hint}</div>
+      <div className="mt-2 text-2xl font-extrabold text-zinc-900">{value}</div>
+      <div className="mt-1 text-[11px] text-zinc-400">{hint}</div>
     </div>
   );
 }

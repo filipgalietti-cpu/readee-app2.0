@@ -87,10 +87,10 @@ export default async function StudentHome() {
   return (
     <div className="space-y-6">
       <section>
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
           Hi, {firstName}!
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           Here&apos;s what your teacher set up for you.
         </p>
       </section>
@@ -98,18 +98,18 @@ export default async function StudentHome() {
       <section>
         <div className="mb-3 flex items-center gap-2">
           <GraduationCap className="h-4 w-4 text-amber-600" />
-          <h2 className="text-xs font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-amber-700">
             From your teacher
           </h2>
         </div>
 
         {open.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-            <BookOpen className="mx-auto h-10 w-10 text-zinc-300 dark:text-slate-600" />
-            <p className="mt-3 text-sm font-semibold text-zinc-700 dark:text-slate-300">
+          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+            <BookOpen className="mx-auto h-10 w-10 text-zinc-300" />
+            <p className="mt-3 text-sm font-semibold text-zinc-700">
               All caught up!
             </p>
-            <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+            <p className="mt-1 text-xs text-zinc-500">
               Nothing new from your teacher right now.
             </p>
           </div>
@@ -121,17 +121,17 @@ export default async function StudentHome() {
                 <li key={a.id}>
                   <Link
                     href={assignmentHref(a)}
-                    className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
+                    className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md"
                   >
                     <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white">
                       <BookOpen className="h-7 w-7" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="truncate text-base font-extrabold text-zinc-900 dark:text-white">
+                      <div className="truncate text-base font-extrabold text-zinc-900">
                         {a.title}
                       </div>
                       {a.note && (
-                        <div className="mt-0.5 truncate text-xs text-zinc-500 dark:text-slate-400">
+                        <div className="mt-0.5 truncate text-xs text-zinc-500">
                           {a.note}
                         </div>
                       )}
@@ -157,7 +157,7 @@ export default async function StudentHome() {
         <section>
           <div className="mb-3 flex items-center gap-2">
             <CheckCircle2 className="h-4 w-4 text-green-600" />
-            <h2 className="text-xs font-bold uppercase tracking-widest text-green-700 dark:text-green-300">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-green-700">
               Finished
             </h2>
           </div>
@@ -165,10 +165,10 @@ export default async function StudentHome() {
             {done.map((a) => (
               <li
                 key={a.id}
-                className="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50/60 px-4 py-3 dark:border-green-900/40 dark:bg-green-950/20"
+                className="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50/60 px-4 py-3"
               >
                 <CheckCircle2 className="h-4 w-4 text-green-600" />
-                <div className="text-sm font-semibold text-green-800 dark:text-green-200">
+                <div className="text-sm font-semibold text-green-800">
                   {a.title}
                 </div>
               </li>

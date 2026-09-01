@@ -118,24 +118,24 @@ export default async function StudentQuizPage({
     <div>
       <Link
         href="/student"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Back
       </Link>
       <div className="mt-3">
-        <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
           <ClipboardPen className="h-3 w-3" />
           Custom quiz
         </div>
-        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900">
           {q.title}
         </h1>
       </div>
 
       {questions.length === 0 ? (
-        <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-          <p className="text-sm text-zinc-500 dark:text-slate-400">
+        <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+          <p className="text-sm text-zinc-500">
             Your teacher hasn&apos;t added questions yet.
           </p>
         </div>
@@ -174,17 +174,17 @@ function AlreadyDone({
   const score = submission?.score_percent ?? 0;
   const carrots = submission?.carrots_earned ?? 0;
   return (
-    <div className="mt-6 rounded-3xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-8 text-center dark:border-green-900/40 dark:from-green-950/30 dark:to-emerald-950/30">
+    <div className="mt-6 rounded-3xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-8 text-center">
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-lg">
         <Trophy className="h-8 w-8" />
       </div>
-      <h2 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white">
+      <h2 className="mt-4 text-2xl font-extrabold text-zinc-900">
         You already finished this one!
       </h2>
-      <div className="mt-2 font-mono text-3xl font-black text-indigo-700 dark:text-indigo-300">
+      <div className="mt-2 font-mono text-3xl font-black text-indigo-700">
         {score}%
       </div>
-      <p className="mt-1 text-sm font-semibold text-zinc-500 dark:text-slate-400">
+      <p className="mt-1 text-sm font-semibold text-zinc-500">
         +{carrots} carrots earned
       </p>
       <Link

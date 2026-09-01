@@ -59,7 +59,7 @@ export default function ConferenceNotesButton({
         type="button"
         onClick={generate}
         disabled={pending}
-        className="inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-4 py-1.5 text-xs font-bold text-violet-700 shadow-sm transition hover:bg-violet-50 disabled:opacity-60 dark:bg-slate-900 dark:hover:bg-violet-950/30"
+        className="inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-4 py-1.5 text-xs font-bold text-violet-700 shadow-sm transition hover:bg-violet-50 disabled:opacity-60"
       >
         {pending && !open ? (
           <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -75,17 +75,17 @@ export default function ConferenceNotesButton({
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={pending ? undefined : () => setOpen(false)}
           />
-          <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900">
+          <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
                   <Sparkles className="h-3 w-3" />
                   Readee.ai
                 </div>
-                <h3 className="mt-0.5 text-lg font-bold text-zinc-900 dark:text-white">
+                <h3 className="mt-0.5 text-lg font-bold text-zinc-900">
                   Conference notes — {childFirstName ?? "Student"}
                 </h3>
-                <p className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                <p className="mt-0.5 text-xs text-zinc-500">
                   Editable. Copy and paste into your conference doc.
                 </p>
               </div>
@@ -123,7 +123,7 @@ export default function ConferenceNotesButton({
                     value={summary}
                     onChange={(e) => setSummary(e.target.value)}
                     rows={5}
-                    className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm leading-relaxed focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm leading-relaxed focus:border-indigo-400 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -134,7 +134,7 @@ export default function ConferenceNotesButton({
                     value={nextSteps}
                     onChange={(e) => setNextSteps(e.target.value)}
                     rows={3}
-                    className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm leading-relaxed focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm leading-relaxed focus:border-indigo-400 focus:outline-none"
                   />
                 </div>
                 <div className="flex items-center justify-end gap-2">

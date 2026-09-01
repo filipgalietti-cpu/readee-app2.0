@@ -96,7 +96,7 @@ function prettyLevel(lvl?: string | null): string {
  */
 const DailyQuestionCard = dynamic(
   () => import("@/app/_components/DailyQuestionCard"),
-  { loading: () => <div className="rounded-3xl bg-zinc-100 dark:bg-slate-800/40 animate-pulse" style={{ height: 420 }} /> },
+  { loading: () => <div className="rounded-3xl bg-zinc-100 animate-pulse" style={{ height: 420 }} /> },
 );
 const SharpenUpCard = dynamic(
   () => import("@/app/_components/SharpenUpCard"),
@@ -328,10 +328,10 @@ export default function Dashboard() {
           height={120}
           className="h-28 w-28 object-contain"
         />
-        <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900">
           Couldn&apos;t load your account.
         </h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-500">
           We hit a temporary snag pulling your reader&apos;s profile.
           Refresh and try again - email hello@readee.app if it sticks.
         </p>
@@ -387,10 +387,10 @@ function ChildSelector({
   return (
     <div className="py-10 space-y-10 max-w-3xl mx-auto">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+        <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
           Who&apos;s reading today?
         </h1>
-        <p className="text-zinc-500 dark:text-slate-400 mt-2">Select a reader to get started</p>
+        <p className="text-zinc-500 mt-2">Select a reader to get started</p>
       </div>
 
       <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-5" variants={staggerFast} initial="hidden" animate="visible">
@@ -400,7 +400,7 @@ function ChildSelector({
             className="group text-left w-full"
             variants={slideUp}
           >
-            <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6 hover:border-violet-300 dark:hover:border-violet-700 hover:shadow-md transition-all duration-200 space-y-4">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-6 hover:border-violet-300 hover:shadow-md transition-all duration-200 space-y-4">
               <button
                 type="button"
                 onClick={() => onSelect(child)}
@@ -411,7 +411,7 @@ function ChildSelector({
                     <img src={getChildAvatarImage(child, index)} alt={child.first_name} className="w-full h-full object-cover" draggable={false} loading="lazy" decoding="async" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100 truncate">
+                    <h2 className="text-lg font-bold text-zinc-900 truncate">
                       {child.first_name}
                     </h2>
                     {child.grade && (
@@ -942,7 +942,7 @@ function ChildDashboard({
                 const next = children.find((c) => c.id === e.target.value);
                 if (next) onSwitch(next);
               }}
-              className="text-sm border border-zinc-200 dark:border-slate-600 rounded-lg px-3 py-1.5 bg-white dark:bg-slate-800 text-zinc-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500"
+              className="text-sm border border-zinc-200 rounded-lg px-3 py-1.5 bg-white text-zinc-700 focus:outline-none focus:ring-2 focus:ring-violet-500"
             >
               {children.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -1007,14 +1007,14 @@ function ChildDashboard({
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative w-full max-w-md mx-4 mb-4 sm:mb-0 rounded-3xl bg-white dark:bg-slate-800 shadow-2xl overflow-hidden"
+            className="relative w-full max-w-md mx-4 mb-4 sm:mb-0 rounded-3xl bg-white shadow-2xl overflow-hidden"
           >
             <div className="p-6 pb-2">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-bold text-zinc-900 dark:text-slate-100">Choose Your Avatar</h2>
+                <h2 className="text-lg font-bold text-zinc-900">Choose Your Avatar</h2>
                 <button
                   onClick={() => setAvatarPickerOpen(false)}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-slate-700 transition-colors"
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-zinc-100 transition-colors"
                 >
                   <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1680,12 +1680,12 @@ function CurriculumOverview({
   }
 
   return (
-    <div className="rounded-2xl border border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
+    <div className="rounded-2xl border border-zinc-200 bg-white overflow-hidden">
       <button
         onClick={handleToggle}
-        className="w-full flex items-center justify-between p-5 hover:bg-zinc-50/50 dark:hover:bg-slate-700/50 transition-colors"
+        className="w-full flex items-center justify-between p-5 hover:bg-zinc-50/50 transition-colors"
       >
-        <h3 className="text-base font-bold text-zinc-900 dark:text-slate-100">Full Curriculum</h3>
+        <h3 className="text-base font-bold text-zinc-900">Full Curriculum</h3>
         <span className="text-xs text-violet-600 font-medium">
           {showCurriculum ? "Hide" : "View All Levels"}
         </span>
@@ -1705,15 +1705,15 @@ function CurriculumOverview({
                   onClick={() => setExpandedGrade(isExpanded ? null : key)}
                   className={`w-full flex items-center justify-between p-3 rounded-xl text-left transition-colors ${
                     isCurrent
-                      ? "bg-violet-50 dark:bg-indigo-950/30 border border-violet-200 dark:border-violet-800/40"
-                      : "bg-zinc-50 dark:bg-slate-700/50 border border-zinc-100 dark:border-slate-700 hover:bg-zinc-100 dark:hover:bg-slate-700"
+                      ? "bg-violet-50 border border-violet-200"
+                      : "bg-zinc-50 border border-zinc-100 hover:bg-zinc-100"
                   }`}
                 >
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className={`text-sm font-semibold ${isCurrent ? "text-violet-700 dark:text-violet-300" : "text-zinc-700 dark:text-slate-300"}`}>
+                    <span className={`text-sm font-semibold ${isCurrent ? "text-violet-700" : "text-zinc-700"}`}>
                       {GRADE_LABELS[key]}
                     </span>
-                    <span className={`text-xs ${isCurrent ? "text-violet-500 dark:text-violet-400" : "text-zinc-400 dark:text-slate-500"}`}>
+                    <span className={`text-xs ${isCurrent ? "text-violet-500" : "text-zinc-400"}`}>
                       {level.level_name}
                     </span>
                     {isCurrent && (
@@ -1729,8 +1729,8 @@ function CurriculumOverview({
                 </button>
 
                 {isExpanded && (
-                  <div className="mt-1 ml-3 pl-3 border-l-2 border-zinc-100 dark:border-slate-700 space-y-1.5 py-2">
-                    <p className="text-[11px] text-zinc-400 dark:text-slate-500 mb-1">{level.focus}</p>
+                  <div className="mt-1 ml-3 pl-3 border-l-2 border-zinc-100 space-y-1.5 py-2">
+                    <p className="text-[11px] text-zinc-400 mb-1">{level.focus}</p>
                     {level.lessons.map((lesson: LessonData, i: number) => {
                       const complete = isCurrent && isLessonComplete(lesson.id);
                       return (
@@ -1743,14 +1743,14 @@ function CurriculumOverview({
                             {complete ? "✓" : i + 1}
                           </span>
                           <div className="min-w-0">
-                            <span className="text-sm text-zinc-700 dark:text-slate-300">{lesson.title}</span>
-                            <span className="text-xs text-zinc-400 dark:text-slate-500 ml-1.5">
+                            <span className="text-sm text-zinc-700">{lesson.title}</span>
+                            <span className="text-xs text-zinc-400 ml-1.5">
                               · {formatSkillName(lesson.skill)}
                             </span>
                             {lesson.standards && lesson.standards.length > 0 && (
                               <div className="flex flex-wrap gap-1 mt-0.5">
                                 {lesson.standards.map((s) => (
-                                  <span key={s} className="text-[10px] px-1 py-px rounded bg-zinc-100 dark:bg-slate-700 text-zinc-400 dark:text-slate-500">
+                                  <span key={s} className="text-[10px] px-1 py-px rounded bg-zinc-100 text-zinc-400">
                                     {s}
                                   </span>
                                 ))}

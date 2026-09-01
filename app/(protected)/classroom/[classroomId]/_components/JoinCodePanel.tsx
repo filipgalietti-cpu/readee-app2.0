@@ -33,19 +33,19 @@ export default function JoinCodePanel({
   }
 
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white px-5 py-4 dark:border-slate-800 dark:bg-slate-900/40">
-      <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+    <div className="rounded-2xl border border-zinc-200 bg-white px-5 py-4">
+      <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
         Join code
       </p>
       <div className="mt-1 flex items-center gap-3">
-        <span className="font-mono text-2xl font-extrabold tracking-[0.2em] text-indigo-700 dark:text-indigo-300">
+        <span className="font-mono text-2xl font-extrabold tracking-[0.2em] text-indigo-700">
           {code}
         </span>
         <div className="flex gap-1">
           <button
             type="button"
             onClick={copy}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 text-zinc-500 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:text-slate-400"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 text-zinc-500 transition hover:border-indigo-300 hover:text-indigo-600"
             aria-label="Copy join code"
           >
             {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
@@ -54,7 +54,7 @@ export default function JoinCodePanel({
             type="button"
             onClick={rotate}
             disabled={pending}
-            className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 text-zinc-500 transition hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-50 dark:border-slate-700 dark:text-slate-400"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 text-zinc-500 transition hover:border-indigo-300 hover:text-indigo-600 disabled:opacity-50"
             aria-label="Rotate join code"
             title="Rotate code"
           >
@@ -62,7 +62,7 @@ export default function JoinCodePanel({
           </button>
         </div>
       </div>
-      <p className="mt-2 text-xs text-zinc-500 dark:text-slate-400">
+      <p className="mt-2 text-xs text-zinc-500">
         Parents enter this code on the student&apos;s Readee account to join.
       </p>
       {err && <p className="mt-2 text-xs text-red-600">{err}</p>}

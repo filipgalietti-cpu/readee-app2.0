@@ -41,14 +41,14 @@ export default async function DiscoverIndexPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
-      <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
+      <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700">
         <Sparkles className="h-3 w-3" />
         Discover
       </div>
-      <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
-        What sounds <span className="text-violet-600 dark:text-violet-400">good</span> today?
+      <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
+        What sounds <span className="text-violet-600">good</span> today?
       </h1>
-      <p className="mt-2 max-w-xl text-base leading-relaxed text-zinc-600 dark:text-slate-300">
+      <p className="mt-2 max-w-xl text-base leading-relaxed text-zinc-600">
         Pick a topic - we bring your reader something fresh to read, every day.
       </p>
 
@@ -59,25 +59,25 @@ export default async function DiscoverIndexPage() {
             <Link
               key={cat.slug}
               href={`/discover/${cat.slug}`}
-              className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-violet-300 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900/50 dark:hover:border-violet-500/50"
+              className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-violet-300 hover:shadow-xl"
             >
-              <div className="aspect-square w-full overflow-hidden bg-zinc-50 transition duration-500 group-hover:scale-105 dark:bg-slate-950/40">
+              <div className="aspect-square w-full overflow-hidden bg-zinc-50 transition duration-500 group-hover:scale-105">
                 <DiscoveryTile category={cat.slug} />
               </div>
               <div className="p-5">
-                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                <h2 className="text-xl font-bold text-zinc-900">
                   {cat.label}
                 </h2>
-                <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+                <p className="mt-1 text-sm text-zinc-500">
                   {cat.blurb}
                 </p>
                 <div className="mt-3 flex items-baseline justify-between text-xs">
-                  <span className="font-semibold text-zinc-500 dark:text-slate-400">
+                  <span className="font-semibold text-zinc-500">
                     {items.length > 0
                       ? `${items.length === 1 ? "1 article" : `${items.length}+ articles`}`
                       : "First articles dropping soon"}
                   </span>
-                  <span className="font-bold text-violet-600 transition group-hover:text-violet-800 dark:text-violet-400 dark:group-hover:text-violet-300">
+                  <span className="font-bold text-violet-600 transition group-hover:text-violet-800">
                     Browse →
                   </span>
                 </div>
@@ -93,10 +93,10 @@ export default async function DiscoverIndexPage() {
       {articles.length > 0 && (
         <section className="mt-14">
           <div className="flex items-baseline justify-between">
-            <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+            <h2 className="text-xl font-bold text-zinc-900">
               Just published
             </h2>
-            <span className="text-xs font-semibold text-zinc-400 dark:text-slate-500">
+            <span className="text-xs font-semibold text-zinc-400">
               Fresh today
             </span>
           </div>
@@ -105,7 +105,7 @@ export default async function DiscoverIndexPage() {
               <li key={`${a.category}/${a.slug}`}>
                 <Link
                   href={`/discover/${a.category}/${a.slug}`}
-                  className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-3 transition hover:border-violet-300 hover:bg-violet-50 dark:border-slate-800 dark:bg-slate-900/50 dark:hover:border-violet-500/50 dark:hover:bg-violet-500/10"
+                  className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-3 transition hover:border-violet-300 hover:bg-violet-50"
                 >
                   {a.image_url ? (
                     <Image
@@ -116,13 +116,13 @@ export default async function DiscoverIndexPage() {
                       className="h-14 w-14 flex-shrink-0 rounded-xl object-cover"
                     />
                   ) : (
-                    <div className="h-14 w-14 flex-shrink-0 rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-500/20 dark:to-violet-500/10" />
+                    <div className="h-14 w-14 flex-shrink-0 rounded-xl bg-gradient-to-br from-violet-100 to-indigo-100" />
                   )}
                   <div className="min-w-0">
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400">
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
                       {a.category.replace(/_/g, " ")}
                     </div>
-                    <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                    <div className="truncate text-sm font-semibold text-zinc-900">
                       {a.title}
                     </div>
                   </div>

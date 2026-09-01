@@ -63,7 +63,7 @@ export default function EditStudentButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex h-7 items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 text-[11px] font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+        className="inline-flex h-7 items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 text-[11px] font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600"
         title={`Edit ${firstName}`}
       >
         <Pencil className="h-3 w-3" />
@@ -75,12 +75,12 @@ export default function EditStudentButton({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-      <div className="relative w-full max-w-sm rounded-2xl bg-white p-5 shadow-2xl dark:bg-slate-900">
+      <div className="relative w-full max-w-sm rounded-2xl bg-white p-5 shadow-2xl">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-bold text-zinc-900 dark:text-white">Edit student</h3>
+          <h3 className="text-base font-bold text-zinc-900">Edit student</h3>
           <button
             onClick={() => setOpen(false)}
-            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
             aria-label="Close"
           >
             <X className="h-4 w-4" />
@@ -88,24 +88,24 @@ export default function EditStudentButton({
         </div>
         <div className="mt-4 space-y-3">
           <label className="block">
-            <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <span className="text-xs font-semibold text-zinc-500">
               First name
             </span>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               maxLength={60}
-              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
             />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <span className="text-xs font-semibold text-zinc-500">
               Grade
             </span>
             <select
               value={g}
               onChange={(e) => setG(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
             >
               {GRADES.map((o) => (
                 <option key={o.v || "none"} value={o.v}>
@@ -120,7 +120,7 @@ export default function EditStudentButton({
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100"
           >
             Cancel
           </button>

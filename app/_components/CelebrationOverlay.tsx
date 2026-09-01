@@ -66,16 +66,16 @@ export default function CelebrationOverlay({ show }: { show: boolean }) {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 30, delay: 0.1 }}
-            className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl max-w-sm w-full p-8 text-center space-y-5 relative overflow-hidden"
+            className="bg-white rounded-3xl shadow-2xl max-w-sm w-full p-8 text-center space-y-5 relative overflow-hidden"
           >
             {/* Icon */}
             <motion.div
               variants={popIn}
               initial="hidden"
               animate="visible"
-              className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/40 flex items-center justify-center"
+              className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-violet-100 to-indigo-100 flex items-center justify-center"
             >
-              <Sparkles className="w-8 h-8 text-indigo-600 dark:text-indigo-400" strokeWidth={1.5} />
+              <Sparkles className="w-8 h-8 text-indigo-600" strokeWidth={1.5} />
             </motion.div>
 
             {/* Heading */}
@@ -84,7 +84,7 @@ export default function CelebrationOverlay({ show }: { show: boolean }) {
             </h2>
 
             {/* Subtitle */}
-            <p className="text-sm text-zinc-500 dark:text-slate-400 leading-relaxed">
+            <p className="text-sm text-zinc-500 leading-relaxed">
               All lessons, reading levels, and premium features are now unlocked. Let the reading adventure begin!
             </p>
 

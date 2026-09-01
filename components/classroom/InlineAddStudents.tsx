@@ -119,9 +119,9 @@ export default function InlineAddStudents({
   }
 
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+        <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-blue-700">
           <UserPlus className="h-3 w-3" />
           Add students
         </div>
@@ -129,7 +129,7 @@ export default function InlineAddStudents({
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="rounded-full p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-slate-800"
+            className="rounded-full p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
             aria-label="Close"
           >
             <X className="h-3.5 w-3.5" />

@@ -54,27 +54,27 @@ export default async function CustomQuizPreviewPage({
     <div className="mx-auto max-w-3xl px-6 py-10">
       <Link
         href={`/classroom/authoring/quiz/${quizId}`}
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to editor
       </Link>
 
-      <div className="mt-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+      <div className="mt-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
         <Eye className="h-4 w-4" />
         Teacher preview
       </div>
-      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
         {(quiz as any).title}
       </h1>
-      <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-1 text-sm text-zinc-500">
         This is what students see. Nothing is saved — your responses
         won&apos;t be recorded.
       </p>
 
       {questions.length === 0 ? (
-        <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-          <p className="text-sm text-zinc-500 dark:text-slate-400">
+        <div className="mt-6 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+          <p className="text-sm text-zinc-500">
             This quiz has no questions yet.
           </p>
         </div>

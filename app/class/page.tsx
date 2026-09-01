@@ -18,10 +18,10 @@ export default async function ClassLanding({
   return (
     <div className="mx-auto min-h-[100dvh] max-w-md px-5 py-16">
       <div className="text-center">
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
           Class sign-in
         </h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-500">
           Type your class code to get to the name picker.
         </p>
       </div>

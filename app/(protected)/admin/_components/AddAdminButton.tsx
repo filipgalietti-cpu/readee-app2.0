@@ -46,7 +46,7 @@ export default function AddAdminButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+        className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600"
       >
         <UserPlus className="h-3.5 w-3.5" />
         {label ?? "Add admin"}
@@ -55,26 +55,26 @@ export default function AddAdminButton({
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-zinc-900 dark:text-white">
+              <h3 className="text-base font-bold text-zinc-900">
                 Add {scope} admin
               </h3>
               <button
                 onClick={() => setOpen(false)}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
-            <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+            <p className="mt-1 text-xs text-zinc-500">
               The user must already have a Readee account. If they
               don&apos;t, ask them to sign up at learn.readee.app/signup
               first.
             </p>
             <label className="mt-4 block">
-              <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <span className="text-xs font-semibold text-zinc-500">
                 Email
               </span>
               <input
@@ -82,7 +82,7 @@ export default function AddAdminButton({
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="principal@district.edu"
                 type="email"
-                className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
               />
             </label>
             {err && <p className="mt-3 text-xs font-semibold text-red-600">{err}</p>}
@@ -90,7 +90,7 @@ export default function AddAdminButton({
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100"
               >
                 Cancel
               </button>

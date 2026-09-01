@@ -60,7 +60,7 @@ export default function PassageImageLightbox({
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="group relative block h-full w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+          className="group relative block h-full w-full overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-violet-300 hover:shadow-md"
           aria-label="Open illustration"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -80,7 +80,7 @@ export default function PassageImageLightbox({
           type="button"
           onClick={regenerate}
           disabled={pending}
-          className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-bold text-violet-700 shadow ring-1 ring-violet-200 transition hover:bg-violet-50 disabled:opacity-60 dark:bg-slate-900/90 dark:text-violet-300 dark:ring-violet-900/40"
+          className="absolute bottom-2 right-2 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 text-[11px] font-bold text-violet-700 shadow ring-1 ring-violet-200 transition hover:bg-violet-50 disabled:opacity-60"
           title="Generate a new illustration for this passage"
         >
           <RefreshCw className={`h-3 w-3 ${pending ? "animate-spin" : ""}`} />

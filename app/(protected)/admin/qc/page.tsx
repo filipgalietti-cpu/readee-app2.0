@@ -117,10 +117,10 @@ export default async function QcDashboardPage({
           <ShieldCheck className="h-3.5 w-3.5" />
           AI quality control
         </div>
-        <h1 className="mt-1 text-2xl font-bold text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-2xl font-bold text-zinc-900">
           Review queue
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           Every Build with AI run is auto-checked. Anything flagged warn or
           fail lands here for a human pass. Marking a report reviewed
           unblocks community publication.

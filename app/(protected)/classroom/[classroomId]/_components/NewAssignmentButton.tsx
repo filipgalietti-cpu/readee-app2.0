@@ -243,16 +243,16 @@ export default function NewAssignmentButton({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: 12 }}
               onClick={(e) => e.stopPropagation()}
-              className="flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-slate-900"
+              className="flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-xl"
             >
-              <header className="flex items-center justify-between border-b border-zinc-100 px-6 py-4 dark:border-slate-800">
-                <h2 className="text-lg font-extrabold tracking-tight text-zinc-900 dark:text-white">
+              <header className="flex items-center justify-between border-b border-zinc-100 px-6 py-4">
+                <h2 className="text-lg font-extrabold tracking-tight text-zinc-900">
                   {step === "pick" ? "Choose a Readee lesson" : "Assignment details"}
                 </h2>
                 <button
                   type="button"
                   onClick={close}
-                  className="rounded-lg p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-slate-800"
+                  className="rounded-lg p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900"
                   aria-label="Close"
                 >
                   <X className="h-5 w-5" />
@@ -261,14 +261,14 @@ export default function NewAssignmentButton({
 
               {step === "pick" ? (
                 <>
-                  <div className="flex gap-1 border-b border-zinc-100 px-6 pt-3 text-xs font-semibold dark:border-slate-800">
+                  <div className="flex gap-1 border-b border-zinc-100 px-6 pt-3 text-xs font-semibold">
                     <button
                       type="button"
                       onClick={() => setSource("readee")}
                       className={`inline-flex items-center gap-1.5 border-b-2 px-3 py-2 transition ${
                         source === "readee"
-                          ? "border-indigo-600 text-indigo-700 dark:text-indigo-300"
-                          : "border-transparent text-zinc-500 hover:text-zinc-800 dark:text-slate-400"
+                          ? "border-indigo-600 text-indigo-700"
+                          : "border-transparent text-zinc-500 hover:text-zinc-800"
                       }`}
                     >
                       <BookOpen className="h-3.5 w-3.5" />
@@ -279,14 +279,14 @@ export default function NewAssignmentButton({
                       onClick={() => setSource("custom")}
                       className={`inline-flex items-center gap-1.5 border-b-2 px-3 py-2 transition ${
                         source === "custom"
-                          ? "border-indigo-600 text-indigo-700 dark:text-indigo-300"
-                          : "border-transparent text-zinc-500 hover:text-zinc-800 dark:text-slate-400"
+                          ? "border-indigo-600 text-indigo-700"
+                          : "border-transparent text-zinc-500 hover:text-zinc-800"
                       }`}
                     >
                       <ClipboardPen className="h-3.5 w-3.5" />
                       My quizzes{" "}
                       {customQuizzes && customQuizzes.length > 0 && (
-                        <span className="ml-0.5 rounded-full bg-indigo-100 px-1.5 py-0.5 text-[10px] text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                        <span className="ml-0.5 rounded-full bg-indigo-100 px-1.5 py-0.5 text-[10px] text-indigo-700">
                           {customQuizzes.length}
                         </span>
                       )}
@@ -294,20 +294,20 @@ export default function NewAssignmentButton({
                   </div>
 
                   {source === "readee" && (
-                    <div className="flex items-center gap-2 border-b border-zinc-100 px-6 py-3 dark:border-slate-800">
+                    <div className="flex items-center gap-2 border-b border-zinc-100 px-6 py-3">
                       <div className="relative flex-1">
                         <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
                         <input
                           value={query}
                           onChange={(e) => setQuery(e.target.value)}
                           placeholder="Search by title, standard, or domain"
-                          className="block w-full rounded-xl border border-zinc-200 bg-white py-2 pl-9 pr-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                          className="block w-full rounded-xl border border-zinc-200 bg-white py-2 pl-9 pr-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
                         />
                       </div>
                       <select
                         value={gradeFilter}
                         onChange={(e) => setGradeFilter(e.target.value)}
-                        className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                        className="rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
                       >
                         {grades.map((g) => (
                           <option key={g} value={g}>
@@ -327,18 +327,18 @@ export default function NewAssignmentButton({
                             <button
                               type="button"
                               onClick={() => setPickedQuiz(cq)}
-                              className={`flex w-full items-start gap-3 border-b border-zinc-100 px-6 py-3 text-left transition last:border-0 hover:bg-zinc-50 dark:border-slate-800 dark:hover:bg-slate-800/40 ${
-                                chosen ? "bg-indigo-50 dark:bg-indigo-950/30" : ""
+                              className={`flex w-full items-start gap-3 border-b border-zinc-100 px-6 py-3 text-left transition last:border-0 hover:bg-zinc-50 ${
+                                chosen ? "bg-indigo-50" : ""
                               }`}
                             >
-                              <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300 dark:border-slate-600">
+                              <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300">
                                 {chosen && <Check className="h-3.5 w-3.5 text-indigo-600" />}
                               </span>
                               <span className="min-w-0 flex-1">
-                                <span className="block text-sm font-bold text-zinc-900 dark:text-white">
+                                <span className="block text-sm font-bold text-zinc-900">
                                   {cq.title}
                                 </span>
-                                <span className="mt-0.5 block text-xs text-zinc-500 dark:text-slate-400">
+                                <span className="mt-0.5 block text-xs text-zinc-500">
                                   {cq.question_count} question
                                   {cq.question_count === 1 ? "" : "s"}
                                   {cq.grade_level ? ` · ${cq.grade_level}` : ""}
@@ -349,7 +349,7 @@ export default function NewAssignmentButton({
                         );
                       })}
                       {(!customQuizzes || customQuizzes.length === 0) && (
-                        <li className="px-6 py-10 text-center text-sm text-zinc-500 dark:text-slate-400">
+                        <li className="px-6 py-10 text-center text-sm text-zinc-500">
                           No custom quizzes yet.{" "}
                           <Link
                             href="/classroom/authoring"
@@ -371,18 +371,18 @@ export default function NewAssignmentButton({
                           <button
                             type="button"
                             onClick={() => setPicked(l)}
-                            className={`flex w-full items-start gap-3 border-b border-zinc-100 px-6 py-3 text-left transition last:border-0 hover:bg-zinc-50 dark:border-slate-800 dark:hover:bg-slate-800/40 ${
-                              chosen ? "bg-indigo-50 dark:bg-indigo-950/30" : ""
+                            className={`flex w-full items-start gap-3 border-b border-zinc-100 px-6 py-3 text-left transition last:border-0 hover:bg-zinc-50 ${
+                              chosen ? "bg-indigo-50" : ""
                             }`}
                           >
-                            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300 dark:border-slate-600">
+                            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300">
                               {chosen && <Check className="h-3.5 w-3.5 text-indigo-600" />}
                             </span>
                             <span className="min-w-0 flex-1">
-                              <span className="block text-sm font-bold text-zinc-900 dark:text-white">
+                              <span className="block text-sm font-bold text-zinc-900">
                                 {l.title}
                               </span>
-                              <span className="mt-0.5 block text-xs text-zinc-500 dark:text-slate-400">
+                              <span className="mt-0.5 block text-xs text-zinc-500">
                                 {l.grade} · {l.domain} · {l.standardId}
                               </span>
                             </span>
@@ -391,14 +391,14 @@ export default function NewAssignmentButton({
                       );
                     })}
                     {filtered.length === 0 && (
-                      <li className="px-6 py-10 text-center text-sm text-zinc-500 dark:text-slate-400">
+                      <li className="px-6 py-10 text-center text-sm text-zinc-500">
                         No lessons match your search.
                       </li>
                     )}
                   </ul>}
 
-                  <footer className="flex items-center justify-between border-t border-zinc-100 bg-zinc-50 px-6 py-3 dark:border-slate-800 dark:bg-slate-900/60">
-                    <p className="text-xs text-zinc-500 dark:text-slate-400">
+                  <footer className="flex items-center justify-between border-t border-zinc-100 bg-zinc-50 px-6 py-3">
+                    <p className="text-xs text-zinc-500">
                       {source === "readee"
                         ? `${filtered.length} lesson${filtered.length === 1 ? "" : "s"}`
                         : `${customQuizzes?.length ?? 0} quiz${(customQuizzes?.length ?? 0) === 1 ? "" : "zes"}`}
@@ -416,25 +416,25 @@ export default function NewAssignmentButton({
               ) : (
                 <>
                   <div className="flex-1 space-y-5 overflow-y-auto p-6">
-                    <div className="rounded-xl bg-indigo-50 px-4 py-3 dark:bg-indigo-950/30">
-                      <div className="text-xs font-semibold uppercase tracking-wider text-indigo-600 dark:text-indigo-300">
+                    <div className="rounded-xl bg-indigo-50 px-4 py-3">
+                      <div className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
                         Assigning
                       </div>
                       {source === "readee" ? (
                         <>
-                          <div className="mt-0.5 font-bold text-indigo-900 dark:text-indigo-100">
+                          <div className="mt-0.5 font-bold text-indigo-900">
                             {picked?.title}
                           </div>
-                          <div className="text-xs text-indigo-700/70 dark:text-indigo-300/70">
+                          <div className="text-xs text-indigo-700/70">
                             {picked?.grade} · {picked?.standardId}
                           </div>
                         </>
                       ) : (
                         <>
-                          <div className="mt-0.5 font-bold text-indigo-900 dark:text-indigo-100">
+                          <div className="mt-0.5 font-bold text-indigo-900">
                             {pickedQuiz?.title}
                           </div>
-                          <div className="text-xs text-indigo-700/70 dark:text-indigo-300/70">
+                          <div className="text-xs text-indigo-700/70">
                             Custom quiz · {pickedQuiz?.question_count ?? 0} question
                             {pickedQuiz?.question_count === 1 ? "" : "s"}
                             {pickedQuiz?.grade_level ? ` · ${pickedQuiz.grade_level}` : ""}
@@ -446,7 +446,7 @@ export default function NewAssignmentButton({
                     <div>
                       <label
                         htmlFor="due"
-                        className="text-sm font-semibold text-zinc-700 dark:text-slate-300"
+                        className="text-sm font-semibold text-zinc-700"
                       >
                         Due date (optional)
                       </label>
@@ -455,14 +455,14 @@ export default function NewAssignmentButton({
                         type="date"
                         value={dueAt}
                         onChange={(e) => setDueAt(e.target.value)}
-                        className="mt-1.5 block w-full rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm text-zinc-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                        className="mt-1.5 block w-full rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm text-zinc-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="note"
-                        className="text-sm font-semibold text-zinc-700 dark:text-slate-300"
+                        className="text-sm font-semibold text-zinc-700"
                       >
                         Note to students (optional)
                       </label>
@@ -472,21 +472,21 @@ export default function NewAssignmentButton({
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
                         placeholder="e.g. Read the whole passage before answering."
-                        className="mt-1.5 block w-full rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+                        className="mt-1.5 block w-full rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
                       />
                     </div>
 
                     <div>
                       <div className="flex items-center justify-between">
-                        <label className="flex items-center gap-1.5 text-sm font-semibold text-zinc-700 dark:text-slate-300">
+                        <label className="flex items-center gap-1.5 text-sm font-semibold text-zinc-700">
                           <Target className="h-4 w-4 text-indigo-600" />
                           Pass threshold
                         </label>
-                        <div className="text-xs font-mono font-bold text-indigo-700 dark:text-indigo-300">
+                        <div className="text-xs font-mono font-bold text-indigo-700">
                           {passThreshold === null ? "Off" : `${passThreshold}%`}
                         </div>
                       </div>
-                      <p className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                      <p className="mt-0.5 text-xs text-zinc-500">
                         Set a minimum score students must hit to complete this assignment. Below it, the assignment stays on their list for retake.
                       </p>
                       <div className="mt-3 flex items-center gap-3">
@@ -505,7 +505,7 @@ export default function NewAssignmentButton({
                           className={`rounded-full px-3 py-1 text-xs font-semibold ${
                             passThreshold === null
                               ? "bg-indigo-600 text-white"
-                              : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-800 dark:text-slate-300"
+                              : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
                           }`}
                         >
                           Off
@@ -514,7 +514,7 @@ export default function NewAssignmentButton({
                     </div>
 
                     <div>
-                      <label className="flex items-center gap-1.5 text-sm font-semibold text-zinc-700 dark:text-slate-300">
+                      <label className="flex items-center gap-1.5 text-sm font-semibold text-zinc-700">
                         <Volume2 className="h-4 w-4 text-indigo-600" />
                         Audio
                       </label>
@@ -535,7 +535,7 @@ export default function NewAssignmentButton({
                     </div>
 
                     <div>
-                      <label className="flex items-center gap-1.5 text-sm font-semibold text-zinc-700 dark:text-slate-300">
+                      <label className="flex items-center gap-1.5 text-sm font-semibold text-zinc-700">
                         <Settings2 className="h-4 w-4 text-indigo-600" />
                         Behavior
                       </label>
@@ -559,13 +559,13 @@ export default function NewAssignmentButton({
                           helper="Turn off for test-mode (show only the final score, no per-question feedback)."
                         />
                       </div>
-                      <div className="mt-3 flex items-start justify-between gap-3 rounded-xl border border-zinc-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900">
+                      <div className="mt-3 flex items-start justify-between gap-3 rounded-xl border border-zinc-200 bg-white p-3">
                         <div className="min-w-0 flex-1">
-                          <div className="flex items-center gap-1.5 text-sm font-semibold text-zinc-900 dark:text-white">
+                          <div className="flex items-center gap-1.5 text-sm font-semibold text-zinc-900">
                             <RotateCcw className="h-3.5 w-3.5 text-indigo-600" />
                             Attempts allowed
                           </div>
-                          <div className="mt-0.5 text-[11px] text-zinc-500 dark:text-slate-400">
+                          <div className="mt-0.5 text-[11px] text-zinc-500">
                             Unlimited lets a struggling student keep practicing until they pass the threshold.
                           </div>
                         </div>
@@ -574,7 +574,7 @@ export default function NewAssignmentButton({
                           onChange={(e) =>
                             setAttemptsAllowed(e.target.value === "" ? null : Number(e.target.value))
                           }
-                          className="flex-shrink-0 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                          className="flex-shrink-0 rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold focus:border-indigo-400 focus:outline-none"
                         >
                           <option value="">Unlimited</option>
                           <option value="1">1 attempt</option>
@@ -587,7 +587,7 @@ export default function NewAssignmentButton({
                     {source === "readee" && questions.length > 0 && (
                       <div>
                         <div className="flex items-center justify-between">
-                          <label className="text-sm font-semibold text-zinc-700 dark:text-slate-300">
+                          <label className="text-sm font-semibold text-zinc-700">
                             Questions ({includedCount} of {questions.length})
                           </label>
                           {includedQuestionIds !== null && (
@@ -600,10 +600,10 @@ export default function NewAssignmentButton({
                             </button>
                           )}
                         </div>
-                        <p className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                        <p className="mt-0.5 text-xs text-zinc-500">
                           Uncheck to exclude. Default: all questions included.
                         </p>
-                        <ul className="mt-3 max-h-56 overflow-y-auto rounded-xl border border-zinc-200 dark:border-slate-700">
+                        <ul className="mt-3 max-h-56 overflow-y-auto rounded-xl border border-zinc-200">
                           {questions.map((q) => {
                             const included = includedQuestionIds
                               ? includedQuestionIds.has(q.id)
@@ -611,9 +611,9 @@ export default function NewAssignmentButton({
                             return (
                               <li
                                 key={q.id}
-                                className="border-b border-zinc-100 last:border-0 dark:border-slate-800"
+                                className="border-b border-zinc-100 last:border-0"
                               >
-                                <label className="flex cursor-pointer items-start gap-3 px-3 py-2 transition hover:bg-zinc-50 dark:hover:bg-slate-800/40">
+                                <label className="flex cursor-pointer items-start gap-3 px-3 py-2 transition hover:bg-zinc-50">
                                   <input
                                     type="checkbox"
                                     checked={included}
@@ -625,7 +625,7 @@ export default function NewAssignmentButton({
                                       {q.id}
                                       {q.difficulty ? ` · difficulty ${q.difficulty}` : ""}
                                     </div>
-                                    <div className="mt-0.5 line-clamp-2 text-sm text-zinc-700 dark:text-slate-300">
+                                    <div className="mt-0.5 line-clamp-2 text-sm text-zinc-700">
                                       {q.prompt}
                                     </div>
                                   </div>
@@ -638,17 +638,17 @@ export default function NewAssignmentButton({
                     )}
 
                     {err && (
-                      <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-300">
+                      <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
                         {err}
                       </p>
                     )}
                   </div>
 
-                  <footer className="flex items-center justify-between border-t border-zinc-100 bg-zinc-50 px-6 py-3 dark:border-slate-800 dark:bg-slate-900/60">
+                  <footer className="flex items-center justify-between border-t border-zinc-100 bg-zinc-50 px-6 py-3">
                     <button
                       type="button"
                       onClick={() => setStep("pick")}
-                      className="text-sm font-semibold text-zinc-600 hover:text-zinc-900 dark:text-slate-400 dark:hover:text-white"
+                      className="text-sm font-semibold text-zinc-600 hover:text-zinc-900"
                     >
                       Back
                     </button>

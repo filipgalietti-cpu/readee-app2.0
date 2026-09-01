@@ -94,7 +94,7 @@ export default function LeveledViewer({
   return (
     <div className="space-y-4">
       {/* Level toggle */}
-      <div className="rounded-2xl border border-zinc-200 bg-white p-2 dark:border-slate-800 dark:bg-slate-900">
+      <div className="rounded-2xl border border-zinc-200 bg-white p-2">
         <div className="grid grid-cols-3 gap-1">
           {(["easy", "on_level", "advanced"] as Level[]).map((l) => {
             const ver = versions.find((x) => x.level === l);
@@ -111,28 +111,28 @@ export default function LeveledViewer({
                 className={`flex flex-col items-start gap-0.5 rounded-xl px-4 py-2 text-left transition ${
                   active
                     ? "bg-violet-600 text-white"
-                    : "text-zinc-600 hover:bg-zinc-50 dark:text-slate-400 dark:hover:bg-slate-800"
+                    : "text-zinc-600 hover:bg-zinc-50"
                 }`}
               >
                 <span className="text-[10px] font-bold uppercase tracking-widest opacity-80">
                   {LEVEL_LABEL[l]}
                 </span>
-                <span className={`text-xs font-semibold ${active ? "text-white" : "text-zinc-900 dark:text-slate-200"}`}>
+                <span className={`text-xs font-semibold ${active ? "text-white" : "text-zinc-900"}`}>
                   Grade {ver?.grade ?? "?"}
                 </span>
               </button>
             );
           })}
         </div>
-        <p className="mt-1 px-2 text-[11px] text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 px-2 text-[11px] text-zinc-500">
           {LEVEL_DESCRIPTION[level]}
         </p>
       </div>
 
       {/* Passage card */}
-      <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
         {sharedImageUrl ? (
-          <div className="flex items-center justify-center bg-gradient-to-br from-violet-50 to-indigo-50 p-4 dark:from-violet-950/20 dark:to-indigo-950/20">
+          <div className="flex items-center justify-center bg-gradient-to-br from-violet-50 to-indigo-50 p-4">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={sharedImageUrl}
@@ -146,12 +146,12 @@ export default function LeveledViewer({
           </div>
         )}
         <div className="px-6 py-6 sm:px-10 sm:py-8">
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-violet-600">
             {LEVEL_LABEL[level]} · Grade {v?.grade}
             <span className="text-zinc-300">·</span>
             <span>{wordCount} words</span>
           </div>
-          <h2 className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">
+          <h2 className="mt-2 text-2xl font-extrabold text-zinc-900">
             {v?.title}
           </h2>
           {v?.audio_url && (
@@ -165,7 +165,7 @@ export default function LeveledViewer({
             </button>
           )}
           <p
-            className="mt-5 whitespace-pre-line text-[18px] leading-[1.7] text-zinc-900 dark:text-slate-100"
+            className="mt-5 whitespace-pre-line text-[18px] leading-[1.7] text-zinc-900"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
@@ -178,8 +178,8 @@ export default function LeveledViewer({
 
       {/* Comprehension questions for this level */}
       {questions.length > 0 && (
-        <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+        <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
             Comprehension check ({LEVEL_LABEL[level]})
           </h3>
           <div className="mt-4 space-y-3">
@@ -253,7 +253,7 @@ function ComprehensionItem({
   }
 
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4">
       <div className="flex items-start justify-between gap-2">
         <div className="flex items-center gap-2">
           <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-[10px] font-bold text-white">
@@ -298,7 +298,7 @@ function ComprehensionItem({
         </div>
       </div>
 
-      <p className="mt-2 text-sm font-semibold text-zinc-900 dark:text-white">
+      <p className="mt-2 text-sm font-semibold text-zinc-900">
         {q.prompt}
       </p>
       <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
@@ -309,8 +309,8 @@ function ComprehensionItem({
               key={c}
               className={`flex items-center justify-between gap-2 rounded-xl border px-3 py-2 text-left text-xs ${
                 isCorrect
-                  ? "border-emerald-300 bg-emerald-50 font-semibold text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-200"
-                  : "border-zinc-200 bg-white text-zinc-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                  ? "border-emerald-300 bg-emerald-50 font-semibold text-emerald-900"
+                  : "border-zinc-200 bg-white text-zinc-700"
               }`}
             >
               <span>{c}</span>

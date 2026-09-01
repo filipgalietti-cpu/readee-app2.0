@@ -34,14 +34,14 @@ export default function JoinClassroomForm({
 
   if (done) {
     return (
-      <div className="flex flex-col items-center rounded-2xl bg-green-50 px-6 py-10 text-center dark:bg-green-950/30">
+      <div className="flex flex-col items-center rounded-2xl bg-green-50 px-6 py-10 text-center">
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-green-600 text-white">
           <Check className="h-6 w-6" />
         </span>
-        <h2 className="mt-4 text-lg font-bold text-green-900 dark:text-green-200">
+        <h2 className="mt-4 text-lg font-bold text-green-900">
           You&apos;re in!
         </h2>
-        <p className="mt-1 text-sm text-green-800/80 dark:text-green-300/80">
+        <p className="mt-1 text-sm text-green-800/80">
           Heading back to your dashboard…
         </p>
       </div>
@@ -53,7 +53,7 @@ export default function JoinClassroomForm({
       <div>
         <label
           htmlFor="code"
-          className="text-sm font-semibold text-zinc-700 dark:text-slate-300"
+          className="text-sm font-semibold text-zinc-700"
         >
           Join code
         </label>
@@ -64,12 +64,12 @@ export default function JoinClassroomForm({
           placeholder="6-CHAR"
           maxLength={6}
           autoComplete="off"
-          className="mt-1.5 block w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-center font-mono text-2xl font-extrabold uppercase tracking-[0.3em] text-zinc-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+          className="mt-1.5 block w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-center font-mono text-2xl font-extrabold uppercase tracking-[0.3em] text-zinc-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-100"
         />
       </div>
 
       <div>
-        <label className="text-sm font-semibold text-zinc-700 dark:text-slate-300">
+        <label className="text-sm font-semibold text-zinc-700">
           Which child?
         </label>
         <div className="mt-1.5 grid gap-2 sm:grid-cols-2">
@@ -80,13 +80,13 @@ export default function JoinClassroomForm({
               onClick={() => setChildId(c.id)}
               className={`rounded-xl border px-4 py-3 text-left transition ${
                 c.id === childId
-                  ? "border-indigo-600 bg-indigo-50 text-indigo-900 dark:bg-indigo-950/30 dark:text-indigo-200"
-                  : "border-zinc-200 bg-white text-zinc-700 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+                  ? "border-indigo-600 bg-indigo-50 text-indigo-900"
+                  : "border-zinc-200 bg-white text-zinc-700 hover:border-indigo-300"
               }`}
             >
               <span className="block text-sm font-bold">{c.first_name}</span>
               {c.grade && (
-                <span className="block text-xs font-medium text-zinc-500 dark:text-slate-400">
+                <span className="block text-xs font-medium text-zinc-500">
                   {c.grade}
                 </span>
               )}
@@ -96,7 +96,7 @@ export default function JoinClassroomForm({
       </div>
 
       {err && (
-        <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-300">
+        <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
           {err}
         </p>
       )}

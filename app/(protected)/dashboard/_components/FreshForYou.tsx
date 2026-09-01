@@ -68,14 +68,14 @@ export default function FreshForYou({
     <section className="mt-6 px-4 sm:px-6 lg:px-8">
       <div className="flex items-center gap-2">
         <Sparkles className="h-5 w-5 text-violet-600" />
-        <h2 className="text-base font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h2 className="text-base font-extrabold tracking-tight text-zinc-900">
           Fresh for you
         </h2>
         <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-violet-700">
           {items.length} new
         </span>
       </div>
-      <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+      <p className="mt-1 text-xs text-zinc-500">
         New reads since you last visited.
       </p>
 
@@ -87,7 +87,7 @@ export default function FreshForYou({
             <Link
               key={`${item.kind}-${item.id}`}
               href={item.href}
-              className="group relative flex-shrink-0 w-44 overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg dark:bg-slate-900"
+              className="group relative flex-shrink-0 w-44 overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg"
             >
               <div className="relative h-24 w-full overflow-hidden bg-zinc-100">
                 {item.imageUrl ? (
@@ -113,11 +113,11 @@ export default function FreshForYou({
                 </span>
               </div>
               <div className="px-3 py-2.5">
-                <h3 className="line-clamp-2 text-xs font-bold text-zinc-900 dark:text-white">
+                <h3 className="line-clamp-2 text-xs font-bold text-zinc-900">
                   {item.title}
                 </h3>
                 {item.topicOrSubtitle && (
-                  <p className="mt-0.5 line-clamp-1 text-[10px] text-zinc-500 dark:text-slate-400">
+                  <p className="mt-0.5 line-clamp-1 text-[10px] text-zinc-500">
                     {item.topicOrSubtitle}
                   </p>
                 )}

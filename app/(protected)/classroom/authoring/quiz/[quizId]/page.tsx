@@ -158,21 +158,21 @@ export default async function QuizBuilderPage({
     <div className="mx-auto max-w-4xl px-6 py-10">
       <Link
         href="/classroom/authoring"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         All quizzes
       </Link>
       <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
             <ClipboardPen className="h-4 w-4" />
             Quiz builder
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             {q.title}
           </h1>
-          <div className="mt-1 inline-flex items-center gap-1.5 text-xs text-zinc-500 dark:text-slate-400">
+          <div className="mt-1 inline-flex items-center gap-1.5 text-xs text-zinc-500">
             <ListChecks className="h-3 w-3" />
             {questions.length} question{questions.length === 1 ? "" : "s"}
             {q.grade_level ? ` · ${q.grade_level}` : ""}
@@ -182,7 +182,7 @@ export default async function QuizBuilderPage({
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href={`/classroom/authoring/quiz/${quizId}/preview`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:bg-indigo-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+              className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:bg-indigo-50"
             >
               <Eye className="h-3.5 w-3.5" />
               Preview as student
@@ -216,7 +216,7 @@ export default async function QuizBuilderPage({
           <div className="flex flex-col gap-2">
             {q.description && (
               <article
-                className="rounded-2xl border border-zinc-200 bg-white p-4 text-[16px] leading-[1.75] text-zinc-900 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-100"
+                className="rounded-2xl border border-zinc-200 bg-white p-4 text-[16px] leading-[1.75] text-zinc-900 shadow-sm"
                 style={{
                   // Kid-friendly rounded sans stack. Comic Neue / Comic Sans
                   // are the friendly defaults; Quicksand and Nunito are warm
@@ -230,7 +230,7 @@ export default async function QuizBuilderPage({
               </article>
             )}
             {passageAudio && (
-              <div className="flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div className="flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm">
                 <Volume2 className="h-4 w-4 flex-shrink-0 text-violet-600" />
                 <span className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
                   Read-aloud
@@ -248,7 +248,7 @@ export default async function QuizBuilderPage({
       )}
 
       {built === "1" && warn && (
-        <div className="mt-5 flex items-start gap-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/20 dark:text-amber-200">
+        <div className="mt-5 flex items-start gap-2 rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
           <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
           <div>
             <div className="font-bold">Build finished with warnings.</div>
@@ -258,12 +258,12 @@ export default async function QuizBuilderPage({
       )}
 
       {built === "1" && (
-        <div className="mt-5 flex flex-wrap items-start justify-between gap-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-indigo-50 p-4 text-sm text-violet-900 dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30 dark:text-violet-100">
+        <div className="mt-5 flex flex-wrap items-start justify-between gap-3 rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 to-indigo-50 p-4 text-sm text-violet-900">
           <div className="flex items-start gap-2">
-            <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-violet-600 dark:text-violet-300" />
+            <Sparkles className="mt-0.5 h-4 w-4 flex-shrink-0 text-violet-600" />
             <div>
               <div className="font-bold">Your assignment is ready.</div>
-              <div className="mt-0.5 text-xs text-violet-800 dark:text-violet-200">
+              <div className="mt-0.5 text-xs text-violet-800">
                 Preview it as a student, or assign it to a classroom —
                 students can only play it after it&apos;s been assigned.
               </div>

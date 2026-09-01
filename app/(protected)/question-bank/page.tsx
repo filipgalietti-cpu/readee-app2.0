@@ -243,7 +243,7 @@ function TabButton({
       className={`px-4 py-2.5 rounded-xl font-semibold text-sm transition-all whitespace-nowrap ${
         active
           ? "bg-indigo-600 text-white shadow-md"
-          : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700"
+          : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
       }`}
     >
       {label} ({count})
@@ -309,28 +309,28 @@ function QuestionCard({
     <div
       className={`rounded-2xl border-2 transition-all overflow-hidden ${
         expanded
-          ? "border-indigo-400 dark:border-indigo-500 bg-white dark:bg-slate-800/80"
-          : "border-zinc-200 dark:border-slate-700 bg-white dark:bg-slate-800/50"
+          ? "border-indigo-400 bg-white"
+          : "border-zinc-200 bg-white"
       }`}
     >
       {/* Header — always visible */}
       <button
         onClick={onToggle}
-        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-zinc-50 dark:hover:bg-slate-700/50 transition-colors"
+        className="w-full flex items-center gap-3 px-4 py-3 text-left hover:bg-zinc-50 transition-colors"
       >
         {/* ID badge */}
-        <span className="flex-shrink-0 px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 font-mono font-bold text-xs">
+        <span className="flex-shrink-0 px-2.5 py-1 rounded-lg bg-indigo-100 text-indigo-700 font-mono font-bold text-xs">
           {entry.id}
         </span>
 
         {/* Preview */}
-        <span className="flex-1 text-sm text-zinc-700 dark:text-slate-300 truncate font-medium">
+        <span className="flex-1 text-sm text-zinc-700 truncate font-medium">
           {entry.preview}
         </span>
 
         {/* Toggle arrow */}
         <span
-          className={`flex-shrink-0 text-zinc-400 dark:text-slate-500 transition-transform ${
+          className={`flex-shrink-0 text-zinc-400 transition-transform ${
             expanded ? "rotate-180" : ""
           }`}
         >
@@ -342,7 +342,7 @@ function QuestionCard({
 
       {/* Expanded content */}
       {expanded && (
-        <div className="px-4 pb-4 border-t border-zinc-100 dark:border-slate-700">
+        <div className="px-4 pb-4 border-t border-zinc-100">
           <div className="pt-4 max-w-lg mx-auto">
             {/* Reset button */}
             {answered && (
@@ -352,7 +352,7 @@ function QuestionCard({
                     e.stopPropagation();
                     handleReset();
                   }}
-                  className="px-3 py-1.5 rounded-lg bg-zinc-100 text-zinc-600 dark:bg-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-zinc-200 dark:hover:bg-slate-600 transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-zinc-100 text-zinc-600 text-xs font-semibold hover:bg-zinc-200 transition-colors"
                 >
                   Reset
                 </button>
@@ -413,13 +413,13 @@ function QuestionCard({
                 <div key={answered ? "reset" : "active"}>
                   {/* Passage */}
                   {passage && (
-                    <div className="mb-5 rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
-                      <p className="text-lg leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line">{passage}</p>
+                    <div className="mb-5 rounded-2xl bg-white border border-zinc-200 p-5">
+                      <p className="text-lg leading-relaxed text-zinc-900 whitespace-pre-line">{passage}</p>
                     </div>
                   )}
 
                   {/* Question */}
-                  <h2 className="text-[22px] font-bold text-zinc-900 dark:text-white leading-snug mb-5">
+                  <h2 className="text-[22px] font-bold text-zinc-900 leading-snug mb-5">
                     {question}
                   </h2>
 
@@ -429,22 +429,22 @@ function QuestionCard({
                       const isSelected = mcqSelected === choice;
                       const isCorrectChoice = choice === mcq.correct;
 
-                      let bg = "bg-white border-zinc-200 dark:bg-slate-800 dark:border-slate-600 hover:bg-zinc-50 dark:hover:bg-slate-700/50";
-                      let textColor = "text-zinc-900 dark:text-white";
+                      let bg = "bg-white border-zinc-200 hover:bg-zinc-50";
+                      let textColor = "text-zinc-900";
 
                       if (hasAnswered) {
                         if (isSelected && isCorrect) {
-                          bg = "bg-emerald-50 border-emerald-500 ring-2 ring-emerald-500/30 dark:bg-emerald-900/60";
-                          textColor = "text-emerald-800 dark:text-emerald-100";
+                          bg = "bg-emerald-50 border-emerald-500 ring-2 ring-emerald-500/30";
+                          textColor = "text-emerald-800";
                         } else if (isSelected && !isCorrect) {
-                          bg = "bg-red-50 border-red-500 ring-2 ring-red-500/30 dark:bg-red-900/40";
-                          textColor = "text-red-800 dark:text-red-200";
+                          bg = "bg-red-50 border-red-500 ring-2 ring-red-500/30";
+                          textColor = "text-red-800";
                         } else if (isCorrectChoice && !isCorrect) {
-                          bg = "bg-emerald-50/80 border-emerald-500 dark:bg-emerald-900/40";
-                          textColor = "text-emerald-800 dark:text-emerald-200";
+                          bg = "bg-emerald-50/80 border-emerald-500";
+                          textColor = "text-emerald-800";
                         } else {
-                          bg = "bg-zinc-100 border-zinc-200 opacity-40 dark:bg-slate-800/40 dark:border-slate-700";
-                          textColor = "text-zinc-400 dark:text-slate-400";
+                          bg = "bg-zinc-100 border-zinc-200 opacity-40";
+                          textColor = "text-zinc-400";
                         }
                       }
 
@@ -502,9 +502,9 @@ function QuestionCard({
 
                   {/* Hint on wrong answer */}
                   {hasAnswered && !isCorrect && (
-                    <div className="mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200 dark:bg-amber-900/30 dark:border-amber-700">
-                      <p className="text-sm font-semibold text-amber-800 dark:text-amber-200 mb-1">Hint</p>
-                      <p className="text-sm text-amber-700 dark:text-amber-300">{mcq.hint}</p>
+                    <div className="mt-4 p-4 rounded-xl bg-amber-50 border border-amber-200">
+                      <p className="text-sm font-semibold text-amber-800 mb-1">Hint</p>
+                      <p className="text-sm text-amber-700">{mcq.hint}</p>
                     </div>
                   )}
                 </div>
@@ -589,14 +589,14 @@ export default function QuestionBankPage() {
   );
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-zinc-50">
       <div className="max-w-2xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-2xl font-extrabold text-zinc-900 dark:text-white">
+          <h1 className="text-2xl font-extrabold text-zinc-900">
             Question Bank
           </h1>
-          <p className="text-sm text-zinc-500 dark:text-slate-400 mt-1">
+          <p className="text-sm text-zinc-500 mt-1">
             {total} questions &middot; Tap any question to test it
           </p>
         </div>

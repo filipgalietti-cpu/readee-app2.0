@@ -56,20 +56,20 @@ export default async function ClassroomPage({
     <div className="mx-auto max-w-6xl px-6 py-10">
       <Link
         href="/classroom"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         All classes
       </Link>
 
       {googleError && (
-        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20">
-          <AlertTriangle className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-700 dark:text-amber-400" />
+        <div className="mt-4 flex items-start gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4">
+          <AlertTriangle className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-700" />
           <div className="text-sm">
-            <div className="font-bold text-amber-900 dark:text-amber-200">
+            <div className="font-bold text-amber-900">
               Google Classroom isn&apos;t hooked up yet
             </div>
-            <div className="mt-1 text-xs text-amber-800 dark:text-amber-300">
+            <div className="mt-1 text-xs text-amber-800">
               {googleError === "not_configured"
                 ? "The operator needs to set GOOGLE_OAUTH_CLIENT_ID and GOOGLE_OAUTH_CLIENT_SECRET in Vercel, and add https://learn.readee.app/api/classroom/google/callback as an authorized redirect URI in Google Cloud Console."
                 : googleError === "token_exchange"
@@ -86,11 +86,11 @@ export default async function ClassroomPage({
 
       <div className="mt-4 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
             {c.name}
           </h1>
           {c.grade_level && (
-            <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-slate-400">
+            <p className="mt-1 text-sm font-medium text-zinc-500">
               {c.grade_level} grade
             </p>
           )}
@@ -101,7 +101,7 @@ export default async function ClassroomPage({
             <SmallGroupsButton classroomId={c.id} />
             <Link
               href={`/classroom/${c.id}/parent-letter`}
-              className="inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-4 py-1.5 text-xs font-bold text-violet-700 shadow-sm transition hover:bg-violet-50 dark:bg-slate-900 dark:hover:bg-violet-950/30"
+              className="inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-4 py-1.5 text-xs font-bold text-violet-700 shadow-sm transition hover:bg-violet-50"
             >
               <Mail className="h-3.5 w-3.5" />
               Parent letter
@@ -114,7 +114,7 @@ export default async function ClassroomPage({
       <nav
         role="tablist"
         aria-label="Classroom sections"
-        className="mt-8 flex gap-1 border-b border-zinc-200 dark:border-slate-800"
+        className="mt-8 flex gap-1 border-b border-zinc-200"
       >
         {TABS.map((t) => {
           const Icon = t.icon;
@@ -127,8 +127,8 @@ export default async function ClassroomPage({
               href={`/classroom/${c.id}?tab=${t.key}`}
               className={`relative -mb-px flex items-center gap-2 px-4 py-3 text-sm font-semibold transition ${
                 isActive
-                  ? "border-b-2 border-indigo-600 text-indigo-700 dark:text-indigo-300"
-                  : "border-b-2 border-transparent text-zinc-500 hover:text-zinc-800 dark:text-slate-400 dark:hover:text-slate-200"
+                  ? "border-b-2 border-indigo-600 text-indigo-700"
+                  : "border-b-2 border-transparent text-zinc-500 hover:text-zinc-800"
               }`}
             >
               <Icon className="h-4 w-4" />

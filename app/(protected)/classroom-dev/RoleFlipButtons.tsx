@@ -35,7 +35,7 @@ export default function RoleFlipButtons({ currentRole }: { currentRole: string }
         type="button"
         disabled={pending || currentRole === "parent"}
         onClick={() => flip("parent")}
-        className="rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+        className="rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50"
       >
         Become parent
       </button>

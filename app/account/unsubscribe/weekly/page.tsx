@@ -36,10 +36,10 @@ export default async function UnsubscribeWeeklyPage({
       <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
         <Check className="h-7 w-7" />
       </div>
-      <h1 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white">
+      <h1 className="mt-4 text-2xl font-extrabold text-zinc-900">
         You&apos;re unsubscribed
       </h1>
-      <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-2 text-sm text-zinc-500">
         You won&apos;t get the weekly Readee family digest anymore. Your
         account and your child&apos;s progress are untouched - this only
         affects email.

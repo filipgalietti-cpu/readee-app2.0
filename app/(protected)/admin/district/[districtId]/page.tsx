@@ -119,7 +119,7 @@ export default async function DistrictAdminPage({
     <div className="mx-auto max-w-6xl px-6 py-10">
       <Link
         href="/admin"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         All scopes
@@ -127,15 +127,15 @@ export default async function DistrictAdminPage({
 
       <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="text-[11px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+          <div className="text-[11px] font-bold uppercase tracking-widest text-violet-700">
             District admin
           </div>
-          <h1 className="mt-1 flex items-center gap-3 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 flex items-center gap-3 text-3xl font-extrabold tracking-tight text-zinc-900">
             <Building2 className="h-7 w-7 text-violet-600" />
             {d.name}
           </h1>
           {d.state && (
-            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">{d.state}</p>
+            <p className="mt-1 text-sm text-zinc-500">{d.state}</p>
           )}
         </div>
         <div className="flex flex-wrap items-center gap-2 pt-2">
@@ -170,7 +170,7 @@ export default async function DistrictAdminPage({
       <section className="mt-10">
         <div className="mb-3 flex items-center gap-2">
           <Users2 className="h-4 w-4 text-violet-600" />
-          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
             District admins
           </h2>
         </div>
@@ -180,13 +180,13 @@ export default async function DistrictAdminPage({
       <section className="mt-10">
         <div className="mb-3 flex items-center gap-2">
           <School className="h-4 w-4 text-indigo-600" />
-          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
             Schools
           </h2>
         </div>
         {schoolList.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-            <p className="text-sm text-zinc-500 dark:text-slate-400">
+          <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+            <p className="text-sm text-zinc-500">
               No schools in this district yet. Contact{" "}
               <a href="mailto:hello@readee.app" className="font-semibold text-indigo-600 underline">
                 hello@readee.app
@@ -203,23 +203,23 @@ export default async function DistrictAdminPage({
                 <Link
                   key={s.id}
                   href={`/admin/school/${s.id}`}
-                  className="flex items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900/40"
+                  className="flex items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm"
                 >
                   <div className="min-w-0">
-                    <div className="font-extrabold text-zinc-900 dark:text-white">{s.name}</div>
+                    <div className="font-extrabold text-zinc-900">{s.name}</div>
                     {(s.city || s.state) && (
-                      <div className="text-xs text-zinc-500 dark:text-slate-400">
+                      <div className="text-xs text-zinc-500">
                         {[s.city, s.state].filter(Boolean).join(", ")}
                       </div>
                     )}
                   </div>
                   <div className="flex flex-shrink-0 items-center gap-6 text-right">
                     <div>
-                      <div className="font-mono text-sm font-bold text-zinc-900 dark:text-white">{classroomCount}</div>
+                      <div className="font-mono text-sm font-bold text-zinc-900">{classroomCount}</div>
                       <div className="text-[10px] uppercase tracking-wider text-zinc-400">Classrooms</div>
                     </div>
                     <div>
-                      <div className="font-mono text-sm font-bold text-zinc-900 dark:text-white">{studentCount}</div>
+                      <div className="font-mono text-sm font-bold text-zinc-900">{studentCount}</div>
                       <div className="text-[10px] uppercase tracking-wider text-zinc-400">Students</div>
                     </div>
                   </div>
@@ -245,13 +245,13 @@ function SummaryCard({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
         <Icon className="h-3.5 w-3.5" />
         {label}
       </div>
-      <div className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">{value}</div>
-      <div className="mt-1 text-[11px] text-zinc-400 dark:text-slate-500">{hint}</div>
+      <div className="mt-2 text-2xl font-extrabold text-zinc-900">{value}</div>
+      <div className="mt-1 text-[11px] text-zinc-400">{hint}</div>
     </div>
   );
 }

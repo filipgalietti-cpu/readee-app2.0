@@ -520,20 +520,20 @@ function PracticeHubContent() {
             className="h-[76px] w-[76px] sm:h-[92px] sm:w-[92px] object-contain drop-shadow flex-shrink-0"
           />
           <div className="min-w-0">
-            <h1 className="text-[26px] sm:text-[32px] font-semibold text-[#1e1b4b] dark:text-white leading-[1.15] font-[family-name:var(--font-baloo)]">
+            <h1 className="text-[26px] sm:text-[32px] font-semibold text-[#1e1b4b] leading-[1.15] font-[family-name:var(--font-baloo)]">
               Welcome back, {child.first_name}!
             </h1>
-            <p className="mt-1 text-sm text-[#475569] dark:text-slate-300">{heroSubcopy}</p>
+            <p className="mt-1 text-sm text-[#475569]">{heroSubcopy}</p>
             <div className="flex flex-wrap gap-2 mt-2.5">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 dark:bg-slate-800/70 px-3 py-1 text-xs font-semibold text-orange-700 dark:text-orange-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-orange-700">
                 <Flame className="w-3.5 h-3.5 text-orange-500" strokeWidth={2} />
                 {child.streak_days ?? 0}-day streak
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 dark:bg-slate-800/70 px-3 py-1 text-xs font-semibold text-amber-700 dark:text-amber-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-amber-700">
                 <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" strokeWidth={1} />
                 {masteredTotal} skills mastered
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 dark:bg-slate-800/70 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-emerald-700">
                 <Check className="w-3.5 h-3.5 text-emerald-500" strokeWidth={2.5} />
                 {questionsDone} questions done
               </span>
@@ -544,7 +544,7 @@ function PracticeHubContent() {
         {/* Grade switcher — wraps below the greeting when the content
             column is narrow (e.g. sidebar open) so the stat pills keep room. */}
         <div className="flex-shrink-0 text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300 mb-2">
+          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-violet-700 mb-2">
             Pick a grade
           </p>
           <div className="flex items-center justify-center gap-2">
@@ -603,7 +603,7 @@ function PracticeHubContent() {
             <motion.div
               key={domain.domain}
               layout
-              className={`rounded-3xl bg-white dark:bg-slate-800 border shadow-sm overflow-hidden ${open ? "@3xl:col-span-2" : ""}`}
+              className={`rounded-3xl bg-white border shadow-sm overflow-hidden ${open ? "@3xl:col-span-2" : ""}`}
               style={{ borderColor: open ? `${meta.accent}55` : "#e4e4e7" }}
             >
               <button
@@ -618,10 +618,10 @@ function PracticeHubContent() {
                   <DIcon className="w-6 h-6" strokeWidth={2} style={{ color: meta.accent }} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[18px] font-semibold text-[#18181b] dark:text-white leading-tight font-[family-name:var(--font-baloo)]">{domain.domain}</p>
-                  <p className="text-xs text-zinc-500 dark:text-slate-400 mb-1.5">{meta.friendly}</p>
+                  <p className="text-[18px] font-semibold text-[#18181b] leading-tight font-[family-name:var(--font-baloo)]">{domain.domain}</p>
+                  <p className="text-xs text-zinc-500 mb-1.5">{meta.friendly}</p>
                   <div className="flex items-center gap-2.5">
-                    <div className="flex-1 max-w-[220px] h-2 rounded-full bg-zinc-100 dark:bg-slate-700 overflow-hidden">
+                    <div className="flex-1 max-w-[220px] h-2 rounded-full bg-zinc-100 overflow-hidden">
                       <div className="h-full rounded-full transition-all" style={{ width: `${pct}%`, background: meta.accent }} />
                     </div>
                     <span className="text-xs font-semibold whitespace-nowrap" style={{ color: meta.accentText }}>

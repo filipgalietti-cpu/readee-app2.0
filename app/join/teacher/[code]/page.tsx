@@ -42,13 +42,13 @@ export default async function ReferralLandingPage({
   if (redeemed) {
     return (
       <div className="mx-auto max-w-xl px-6 py-16 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500 dark:bg-slate-800 dark:text-slate-400">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500">
           <Sparkles className="h-7 w-7" />
         </div>
-        <h1 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white">
+        <h1 className="mt-4 text-2xl font-extrabold text-zinc-900">
           This referral link was already used
         </h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-500">
           No worries - you can still sign up for Readee and start your own
           classroom.
         </p>
@@ -65,14 +65,14 @@ export default async function ReferralLandingPage({
 
   return (
     <div className="mx-auto max-w-xl px-6 py-16">
-      <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-8 text-center shadow-sm dark:border-violet-900/40 dark:from-violet-950/20 dark:via-slate-900 dark:to-indigo-950/20">
+      <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-8 text-center shadow-sm">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg">
           <Sparkles className="h-7 w-7" />
         </div>
-        <h1 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white sm:text-3xl">
+        <h1 className="mt-4 text-2xl font-extrabold text-zinc-900 sm:text-3xl">
           {referrerName} thinks you&apos;ll love Readee
         </h1>
-        <p className="mx-auto mt-2 max-w-md text-sm text-zinc-600 dark:text-slate-400">
+        <p className="mx-auto mt-2 max-w-md text-sm text-zinc-600">
           Sign up via this link and you&apos;ll both get{" "}
           <strong>+{REFERRAL_BONUS_CREDITS} Readee.ai credits</strong> - usable
           for AI-generated passages, comprehension questions, images, and
@@ -94,9 +94,9 @@ export default async function ReferralLandingPage({
           Claim my {REFERRAL_BONUS_CREDITS} credits
         </Link>
 
-        <div className="mt-4 text-[11px] text-zinc-500 dark:text-slate-400">
+        <div className="mt-4 text-[11px] text-zinc-500">
           Already have an account?{" "}
-          <Link href="/login" className="font-semibold underline hover:text-zinc-800 dark:hover:text-slate-200">
+          <Link href="/login" className="font-semibold underline hover:text-zinc-800">
             Log in
           </Link>{" "}
           - we&apos;ll apply the credits the moment you create your classroom.
@@ -110,7 +110,7 @@ function Bullet({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-2">
       <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" />
-      <span className="text-zinc-700 dark:text-slate-300">{children}</span>
+      <span className="text-zinc-700">{children}</span>
     </li>
   );
 }

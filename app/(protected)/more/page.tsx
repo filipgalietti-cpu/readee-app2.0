@@ -35,10 +35,10 @@ export default async function MorePage({
   return (
     <div className="mx-auto max-w-4xl px-5 py-8 sm:px-8 sm:py-12">
       <header className="mb-8">
-        <h1 className="font-display text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
+        <h1 className="font-display text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
           More to explore
         </h1>
-        <p className="mt-2 text-base text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-base text-zinc-500">
           Extra tools and surprises for your reader.
         </p>
       </header>
@@ -48,18 +48,18 @@ export default async function MorePage({
           <Link
             key={href}
             href={`${href}${q}`}
-            className="group relative flex flex-col rounded-3xl border-2 border-zinc-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-violet-500/40"
+            className="group relative flex flex-col rounded-3xl border-2 border-zinc-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-200 hover:shadow-md"
           >
             {ai && (
-              <span className="absolute right-4 top-4 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700 dark:bg-violet-500/20 dark:text-violet-300">
+              <span className="absolute right-4 top-4 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
                 AI
               </span>
             )}
             <div className={`mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${tint} shadow-sm`}>
               <Icon className="h-7 w-7 text-white" strokeWidth={2} />
             </div>
-            <h2 className="text-lg font-bold text-zinc-900 dark:text-white">{label}</h2>
-            <p className="mt-1 text-sm leading-snug text-zinc-500 dark:text-slate-400">{desc}</p>
+            <h2 className="text-lg font-bold text-zinc-900">{label}</h2>
+            <p className="mt-1 text-sm leading-snug text-zinc-500">{desc}</p>
           </Link>
         ))}
       </div>

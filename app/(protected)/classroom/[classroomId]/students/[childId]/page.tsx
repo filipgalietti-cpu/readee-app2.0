@@ -198,7 +198,7 @@ export default async function StudentDetailPage({
       <div className="flex flex-wrap items-center justify-between gap-3 print:hidden">
         <Link
           href={`/classroom/${classroomId}?tab=students`}
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to roster
@@ -213,16 +213,16 @@ export default async function StudentDetailPage({
       </div>
 
       {/* Header block — also used for the print layout */}
-      <header className="mt-4 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/40 print:border-black print:bg-white print:text-black">
-        <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600 print:text-black dark:text-indigo-300">
+      <header className="mt-4 rounded-2xl border border-zinc-200 bg-white p-6 print:border-black print:bg-white print:text-black">
+        <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600 print:text-black">
           Student progress report
         </div>
         <div className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white print:text-black">
+            <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 print:text-black">
               {c.first_name}
             </h1>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400 print:text-black">
+            <p className="mt-1 text-sm text-zinc-500 print:text-black">
               {cls.name}
               {c.grade ? ` · ${c.grade}` : ""}
             </p>
@@ -276,12 +276,12 @@ export default async function StudentDetailPage({
       </section>
 
       {/* Activity status */}
-      <section className="mt-4 rounded-2xl border border-zinc-200 bg-white p-4 text-sm dark:border-slate-800 dark:bg-slate-900/40 print:border-black">
+      <section className="mt-4 rounded-2xl border border-zinc-200 bg-white p-4 text-sm print:border-black">
         <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-500">
           <Calendar className="h-3.5 w-3.5" />
           Last active
         </div>
-        <div className="mt-1 text-zinc-800 dark:text-slate-200 print:text-black">
+        <div className="mt-1 text-zinc-800 print:text-black">
           {c.last_lesson_at
             ? `${new Date(c.last_lesson_at).toLocaleDateString("en-US", {
                 month: "long",
@@ -299,17 +299,17 @@ export default async function StudentDetailPage({
 
       {/* Standards mastery */}
       <section className="mt-6">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400 print:text-black">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 print:text-black">
           Standards mastery
         </h2>
         {standardRows.length === 0 ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-3 text-sm text-zinc-500">
             No practice data yet.
           </p>
         ) : (
-          <div className="mt-3 overflow-hidden rounded-2xl border border-zinc-200 dark:border-slate-800 print:border-black">
+          <div className="mt-3 overflow-hidden rounded-2xl border border-zinc-200 print:border-black">
             <table className="w-full text-sm">
-              <thead className="bg-zinc-50 text-left text-[11px] uppercase tracking-wider text-zinc-500 dark:bg-slate-900/60 dark:text-slate-400 print:bg-white print:text-black">
+              <thead className="bg-zinc-50 text-left text-[11px] uppercase tracking-wider text-zinc-500 print:bg-white print:text-black">
                 <tr>
                   <th className="px-4 py-2 font-semibold">Standard</th>
                   <th className="px-4 py-2 font-semibold">Domain</th>
@@ -317,19 +317,19 @@ export default async function StudentDetailPage({
                   <th className="px-4 py-2 text-right font-semibold">Accuracy</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-zinc-100">
                 {standardRows.map((r) => (
                   <tr key={r.standardId}>
                     <td className="px-4 py-2">
-                      <div className="font-semibold text-zinc-900 dark:text-white print:text-black">
+                      <div className="font-semibold text-zinc-900 print:text-black">
                         {r.title}
                       </div>
                       <div className="font-mono text-[11px] text-zinc-400">{r.standardId}</div>
                     </td>
-                    <td className="px-4 py-2 text-zinc-600 dark:text-slate-400 print:text-black">
+                    <td className="px-4 py-2 text-zinc-600 print:text-black">
                       {r.domain}
                     </td>
-                    <td className="px-4 py-2 text-right font-mono text-zinc-700 dark:text-slate-300 print:text-black">
+                    <td className="px-4 py-2 text-right font-mono text-zinc-700 print:text-black">
                       {r.correct}/{r.attempted}
                     </td>
                     <td
@@ -353,11 +353,11 @@ export default async function StudentDetailPage({
 
       {/* Assignments */}
       <section className="mt-6">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400 print:text-black">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 print:text-black">
           Assignments
         </h2>
         {assignmentsList.length === 0 ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-3 text-sm text-zinc-500">
             No assignments in this class yet.
           </p>
         ) : (
@@ -369,13 +369,13 @@ export default async function StudentDetailPage({
               return (
                 <li
                   key={a.id}
-                  className="flex items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 dark:border-slate-800 dark:bg-slate-900/40 print:border-black"
+                  className="flex items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 print:border-black"
                 >
                   <div className="min-w-0">
-                    <div className="truncate font-semibold text-zinc-900 dark:text-white print:text-black">
+                    <div className="truncate font-semibold text-zinc-900 print:text-black">
                       {a.title}
                     </div>
-                    <div className="text-[11px] text-zinc-400 dark:text-slate-500 print:text-black">
+                    <div className="text-[11px] text-zinc-400 print:text-black">
                       {a.due_at
                         ? `Due ${new Date(a.due_at).toLocaleDateString("en-US", {
                             month: "short",
@@ -387,11 +387,11 @@ export default async function StudentDetailPage({
                   </div>
                   <div className="flex-shrink-0 text-right">
                     {isDone ? (
-                      <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700 dark:bg-green-950/40 dark:text-green-300 print:bg-white print:text-black">
+                      <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-[11px] font-bold text-green-700 print:bg-white print:text-black">
                         {score === null ? "Done" : `Done · ${score}%`}
                       </span>
                     ) : (
-                      <span className="inline-flex items-center rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] font-bold text-zinc-500 dark:bg-slate-800 dark:text-slate-400 print:bg-white print:text-black">
+                      <span className="inline-flex items-center rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] font-bold text-zinc-500 print:bg-white print:text-black">
                         Not started
                       </span>
                     )}
@@ -406,25 +406,25 @@ export default async function StudentDetailPage({
       {/* Custom quizzes — separate from CCSS mastery */}
       {customQuizRowsFormatted.length > 0 && (
         <section className="mt-6">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400 print:text-black">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 print:text-black">
             Custom quizzes
           </h2>
-          <div className="mt-3 overflow-hidden rounded-2xl border border-zinc-200 dark:border-slate-800 print:border-black">
+          <div className="mt-3 overflow-hidden rounded-2xl border border-zinc-200 print:border-black">
             <table className="w-full text-sm">
-              <thead className="bg-zinc-50 text-left text-[11px] uppercase tracking-wider text-zinc-500 dark:bg-slate-900/60 dark:text-slate-400 print:bg-white print:text-black">
+              <thead className="bg-zinc-50 text-left text-[11px] uppercase tracking-wider text-zinc-500 print:bg-white print:text-black">
                 <tr>
                   <th className="px-4 py-2 font-semibold">Quiz</th>
                   <th className="px-4 py-2 text-right font-semibold">Correct</th>
                   <th className="px-4 py-2 text-right font-semibold">Accuracy</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-100 dark:divide-slate-800">
+              <tbody className="divide-y divide-zinc-100">
                 {customQuizRowsFormatted.map((r) => (
                   <tr key={r.quizId}>
-                    <td className="px-4 py-2 font-semibold text-zinc-900 dark:text-white print:text-black">
+                    <td className="px-4 py-2 font-semibold text-zinc-900 print:text-black">
                       {r.title}
                     </td>
-                    <td className="px-4 py-2 text-right font-mono text-zinc-700 dark:text-slate-300 print:text-black">
+                    <td className="px-4 py-2 text-right font-mono text-zinc-700 print:text-black">
                       {r.correct}/{r.attempted}
                     </td>
                     <td
@@ -448,11 +448,11 @@ export default async function StudentDetailPage({
 
       {/* Recent activity */}
       <section className="mt-6 print:break-inside-avoid">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400 print:text-black">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 print:text-black">
           Recent practice
         </h2>
         {recentActivity.length === 0 ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-3 text-sm text-zinc-500">
             No practice sessions recorded yet.
           </p>
         ) : (
@@ -469,10 +469,10 @@ export default async function StudentDetailPage({
               return (
                 <li
                   key={i}
-                  className="flex items-center justify-between gap-3 rounded-xl bg-zinc-50 px-3 py-2 text-sm dark:bg-slate-900/40 print:bg-white print:border print:border-black"
+                  className="flex items-center justify-between gap-3 rounded-xl bg-zinc-50 px-3 py-2 text-sm print:bg-white print:border print:border-black"
                 >
                   <div className="min-w-0">
-                    <div className="truncate font-semibold text-zinc-900 dark:text-white print:text-black">
+                    <div className="truncate font-semibold text-zinc-900 print:text-black">
                       {label}
                     </div>
                     <div className="text-[11px] text-zinc-400 print:text-black">
@@ -521,15 +521,15 @@ function SummaryCard({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40 print:border-black">
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400 print:text-black">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4 print:border-black">
+      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 print:text-black">
         <Icon className="h-3.5 w-3.5" />
         {label}
       </div>
-      <div className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white print:text-black">
+      <div className="mt-2 text-2xl font-extrabold text-zinc-900 print:text-black">
         {value}
       </div>
-      <div className="mt-1 text-[11px] text-zinc-400 dark:text-slate-500 print:text-black">{hint}</div>
+      <div className="mt-1 text-[11px] text-zinc-400 print:text-black">{hint}</div>
     </div>
   );
 }

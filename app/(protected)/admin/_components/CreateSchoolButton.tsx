@@ -38,7 +38,7 @@ export default function CreateSchoolButton({ districtId }: { districtId?: string
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100 dark:border-indigo-900 dark:bg-indigo-950/30 dark:text-indigo-300"
+        className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100"
       >
         <Plus className="h-4 w-4" />
         New school
@@ -47,17 +47,17 @@ export default function CreateSchoolButton({ districtId }: { districtId?: string
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <School className="h-5 w-5 text-indigo-600" />
-                <h3 className="text-base font-bold text-zinc-900 dark:text-white">
+                <h3 className="text-base font-bold text-zinc-900">
                   Create a school
                 </h3>
               </div>
               <button
                 onClick={() => setOpen(false)}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
@@ -65,7 +65,7 @@ export default function CreateSchoolButton({ districtId }: { districtId?: string
             </div>
             <div className="mt-4 space-y-3">
               <label className="block">
-                <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                <span className="text-xs font-semibold text-zinc-500">
                   School name
                 </span>
                 <input
@@ -73,12 +73,12 @@ export default function CreateSchoolButton({ districtId }: { districtId?: string
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Franklin Elementary"
                   maxLength={120}
-                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
                 />
               </label>
               <div className="grid grid-cols-[1fr_80px] gap-3">
                 <label className="block">
-                  <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                  <span className="text-xs font-semibold text-zinc-500">
                     City
                   </span>
                   <input
@@ -86,11 +86,11 @@ export default function CreateSchoolButton({ districtId }: { districtId?: string
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="Somerset"
                     maxLength={80}
-                    className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
                   />
                 </label>
                 <label className="block">
-                  <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                  <span className="text-xs font-semibold text-zinc-500">
                     State
                   </span>
                   <input
@@ -98,7 +98,7 @@ export default function CreateSchoolButton({ districtId }: { districtId?: string
                     onChange={(e) => setState(e.target.value.toUpperCase().slice(0, 2))}
                     placeholder="NJ"
                     maxLength={2}
-                    className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold uppercase focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold uppercase focus:border-indigo-400 focus:outline-none"
                   />
                 </label>
               </div>
@@ -108,7 +108,7 @@ export default function CreateSchoolButton({ districtId }: { districtId?: string
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100"
               >
                 Cancel
               </button>

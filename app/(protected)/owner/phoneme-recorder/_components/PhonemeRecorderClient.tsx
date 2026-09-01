@@ -140,7 +140,7 @@ export default function PhonemeRecorderClient({ phonemes }: { phonemes: P[] }) {
 
   return (
     <div>
-      <div className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-violet-200 bg-violet-50 px-4 py-3 text-sm font-bold text-violet-800 dark:border-violet-900/40 dark:bg-violet-950/30 dark:text-violet-200">
+      <div className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-violet-200 bg-violet-50 px-4 py-3 text-sm font-bold text-violet-800">
         <span>{stagedCount} / {phonemes.length} staged · takes auto-upload when you hit Stop</span>
         <button type="button" onClick={() => void uploadAll()}
           className="rounded-full bg-violet-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-violet-700">
@@ -151,20 +151,20 @@ export default function PhonemeRecorderClient({ phonemes }: { phonemes: P[] }) {
 
       {groups.map((g) => (
         <div key={g} className="mb-6">
-          <h2 className="mb-2 text-[11px] font-bold uppercase tracking-widest text-zinc-400 dark:text-slate-500">{g}</h2>
+          <h2 className="mb-2 text-[11px] font-bold uppercase tracking-widest text-zinc-400">{g}</h2>
           <div className="flex flex-col gap-2">
             {phonemes.filter((p) => p.type === g).map((p) => {
               const isRec = recordingId === p.id;
               const hasTake = !!takes[p.id];
               return (
-                <div key={p.id} className={`flex items-center gap-3 rounded-2xl border px-4 py-2.5 ${staged[p.id] ? "border-emerald-200 bg-emerald-50/60 dark:border-emerald-900/40 dark:bg-emerald-950/20" : "border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/50"}`}>
-                  <div className="w-14 flex-shrink-0 font-mono text-lg font-bold text-zinc-900 dark:text-white">{p.phoneme}</div>
+                <div key={p.id} className={`flex items-center gap-3 rounded-2xl border px-4 py-2.5 ${staged[p.id] ? "border-emerald-200 bg-emerald-50/60" : "border-zinc-200 bg-white"}`}>
+                  <div className="w-14 flex-shrink-0 font-mono text-lg font-bold text-zinc-900">{p.phoneme}</div>
                   <div className="min-w-0 flex-1">
-                    <div className="truncate text-sm font-semibold text-zinc-700 dark:text-slate-200">as in <b>{p.example}</b></div>
-                    <div className="text-[11px] text-zinc-400 dark:text-slate-500">{p.id}</div>
+                    <div className="truncate text-sm font-semibold text-zinc-700">as in <b>{p.example}</b></div>
+                    <div className="text-[11px] text-zinc-400">{p.id}</div>
                   </div>
                   <button type="button" title="Play current live clip" onClick={() => playCurrent(p.id)}
-                    className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-zinc-200 text-zinc-500 transition hover:border-violet-300 hover:text-violet-600 dark:border-slate-700 dark:text-slate-400">
+                    className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-zinc-200 text-zinc-500 transition hover:border-violet-300 hover:text-violet-600">
                     <Volume2 className="h-4 w-4" />
                   </button>
                   {isRec ? (
@@ -174,12 +174,12 @@ export default function PhonemeRecorderClient({ phonemes }: { phonemes: P[] }) {
                     </button>
                   ) : (
                     <button type="button" onClick={() => void startRecording(p.id)}
-                      className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full border-2 border-violet-500 px-4 py-2 text-xs font-bold text-violet-700 transition hover:bg-violet-50 dark:text-violet-300">
+                      className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full border-2 border-violet-500 px-4 py-2 text-xs font-bold text-violet-700 transition hover:bg-violet-50">
                       <Mic className="h-3.5 w-3.5" /> {hasTake ? "Re-take" : "Record"}
                     </button>
                   )}
                   <button type="button" disabled={!hasTake} onClick={() => playTake(p.id)} title="Play your take"
-                    className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-zinc-200 text-zinc-500 transition enabled:hover:border-violet-300 enabled:hover:text-violet-600 disabled:opacity-30 dark:border-slate-700 dark:text-slate-400">
+                    className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-zinc-200 text-zinc-500 transition enabled:hover:border-violet-300 enabled:hover:text-violet-600 disabled:opacity-30">
                     <Play className="h-4 w-4" />
                   </button>
                   <button type="button" disabled={!hasTake || busy === p.id} onClick={() => void upload(p.id)}

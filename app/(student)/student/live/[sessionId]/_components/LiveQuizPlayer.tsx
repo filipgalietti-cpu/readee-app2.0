@@ -129,10 +129,10 @@ export default function LiveQuizPlayer({
         <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-xl">
           <Zap className="h-8 w-8" />
         </div>
-        <h1 className="mt-5 text-2xl font-extrabold text-zinc-900 dark:text-white">
+        <h1 className="mt-5 text-2xl font-extrabold text-zinc-900">
           You&apos;re in!
         </h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-500">
           {title}
         </p>
         <p className="mt-4 text-xs text-zinc-400">
@@ -149,10 +149,10 @@ export default function LiveQuizPlayer({
         <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-xl">
           <Trophy className="h-8 w-8" />
         </div>
-        <h1 className="mt-5 text-2xl font-extrabold text-zinc-900 dark:text-white">
+        <h1 className="mt-5 text-2xl font-extrabold text-zinc-900">
           Great job!
         </h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-500">
           Your teacher is showing the leaderboard.
         </p>
         <button
@@ -186,8 +186,8 @@ export default function LiveQuizPlayer({
         </div>
       </div>
 
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/40">
-        <div className="whitespace-pre-line text-center text-lg font-bold text-zinc-900 dark:text-white sm:text-xl">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-6">
+        <div className="whitespace-pre-line text-center text-lg font-bold text-zinc-900 sm:text-xl">
           {q.prompt}
         </div>
       </div>
@@ -224,11 +224,11 @@ export default function LiveQuizPlayer({
       {locked && (
         <div className="mt-5 text-center text-sm font-semibold">
           {myResult ? (
-            <span className="text-green-700 dark:text-green-400">
+            <span className="text-green-700">
               ✓ Correct — waiting for the next question
             </span>
           ) : (
-            <span className="text-amber-700 dark:text-amber-400">
+            <span className="text-amber-700">
               Got it. Waiting for the next question…
             </span>
           )}

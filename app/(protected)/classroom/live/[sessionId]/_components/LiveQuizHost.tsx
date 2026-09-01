@@ -238,24 +238,24 @@ export default function LiveQuizHost({
 
   if (status === "lobby") {
     return (
-      <div className="rounded-3xl border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-8 text-center dark:border-indigo-900/50 dark:from-indigo-950/30 dark:to-violet-950/30">
-        <div className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+      <div className="rounded-3xl border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-8 text-center">
+        <div className="text-xs font-bold uppercase tracking-widest text-indigo-700">
           Waiting room
         </div>
-        <h2 className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">
+        <h2 className="mt-2 text-2xl font-extrabold text-zinc-900">
           Students join with this code
         </h2>
-        <div className="mx-auto mt-4 inline-block rounded-2xl bg-white px-8 py-6 shadow-lg dark:bg-slate-800">
-          <div className="font-mono text-6xl font-black tracking-[0.3em] text-indigo-700 dark:text-indigo-200">
+        <div className="mx-auto mt-4 inline-block rounded-2xl bg-white px-8 py-6 shadow-lg">
+          <div className="font-mono text-6xl font-black tracking-[0.3em] text-indigo-700">
             {sessionCode}
           </div>
         </div>
-        <p className="mt-4 text-sm text-zinc-600 dark:text-slate-400">
+        <p className="mt-4 text-sm text-zinc-600">
           On their device: sign in to the student app → tap the live quiz banner,
-          or visit <code className="rounded bg-zinc-200 px-1 dark:bg-slate-700">/student/live</code> and enter this code.
+          or visit <code className="rounded bg-zinc-200 px-1">/student/live</code> and enter this code.
         </p>
 
-        <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-indigo-700 dark:bg-slate-800 dark:text-indigo-300">
+        <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-indigo-700">
           <Users className="h-4 w-4" />
           {participants.length} student{participants.length === 1 ? "" : "s"} joined
         </div>
@@ -265,7 +265,7 @@ export default function LiveQuizHost({
             {participants.map((p) => (
               <li
                 key={p.child_id}
-                className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-zinc-700 shadow-sm dark:bg-slate-800 dark:text-slate-300"
+                className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-zinc-700 shadow-sm"
               >
                 {p.first_name}
               </li>
@@ -286,7 +286,7 @@ export default function LiveQuizHost({
           <button
             type="button"
             onClick={end}
-            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-xs font-semibold text-zinc-600 transition hover:border-red-300 hover:text-red-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
+            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-4 py-2 text-xs font-semibold text-zinc-600 transition hover:border-red-300 hover:text-red-700"
           >
             <Square className="h-3.5 w-3.5" />
             Cancel
@@ -315,7 +315,7 @@ export default function LiveQuizHost({
                   type="button"
                   onClick={replayAudio}
                   disabled={muted}
-                  className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-indigo-700 transition hover:bg-indigo-50 disabled:opacity-40 dark:border-indigo-900 dark:bg-slate-900 dark:text-indigo-300"
+                  className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-indigo-700 transition hover:bg-indigo-50 disabled:opacity-40"
                   title="Play audio through classroom speakers"
                 >
                   <Volume2 className="h-3 w-3" />
@@ -326,8 +326,8 @@ export default function LiveQuizHost({
                   onClick={() => setMuted((m) => !m)}
                   className={`inline-flex h-7 w-7 items-center justify-center rounded-full border ${
                     muted
-                      ? "border-red-200 bg-red-50 text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300"
-                      : "border-zinc-200 bg-white text-zinc-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                      ? "border-red-200 bg-red-50 text-red-700"
+                      : "border-zinc-200 bg-white text-zinc-600"
                   }`}
                   title={muted ? "Unmute — audio will play on next question" : "Mute host audio"}
                 >
@@ -335,14 +335,14 @@ export default function LiveQuizHost({
                 </button>
               </>
             )}
-            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 px-3 py-1 font-mono text-xs font-bold text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 px-3 py-1 font-mono text-xs font-bold text-indigo-700">
               <Users className="h-3 w-3" />
               {answered}/{total} answered
             </div>
           </div>
         </div>
 
-        <div className="rounded-3xl border-2 border-indigo-200 bg-white p-8 shadow-lg dark:border-indigo-900/50 dark:bg-slate-900">
+        <div className="rounded-3xl border-2 border-indigo-200 bg-white p-8 shadow-lg">
           {currentQ.imageUrl && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -351,7 +351,7 @@ export default function LiveQuizHost({
               className="mx-auto mb-4 max-h-64 rounded-2xl object-contain"
             />
           )}
-          <div className="text-center text-2xl font-extrabold leading-tight text-zinc-900 dark:text-white sm:text-3xl">
+          <div className="text-center text-2xl font-extrabold leading-tight text-zinc-900 sm:text-3xl">
             {currentQ.prompt}
           </div>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -364,21 +364,21 @@ export default function LiveQuizHost({
                   key={c}
                   className={`relative overflow-hidden rounded-2xl border-2 p-4 ${
                     isCorrect
-                      ? "border-green-500 bg-green-50 dark:border-green-700 dark:bg-green-950/30"
-                      : "border-zinc-200 bg-zinc-50 dark:border-slate-700 dark:bg-slate-800"
+                      ? "border-green-500 bg-green-50"
+                      : "border-zinc-200 bg-zinc-50"
                   }`}
                 >
                   <div
                     className={`absolute inset-y-0 left-0 ${
-                      isCorrect ? "bg-green-200/60 dark:bg-green-900/40" : "bg-indigo-100/50 dark:bg-indigo-950/30"
+                      isCorrect ? "bg-green-200/60" : "bg-indigo-100/50"
                     }`}
                     style={{ width: `${pct}%` }}
                   />
                   <div className="relative flex items-center justify-between">
-                    <span className="font-semibold text-zinc-900 dark:text-white">
+                    <span className="font-semibold text-zinc-900">
                       {c}
                     </span>
-                    <span className="font-mono text-sm font-bold text-zinc-700 dark:text-slate-300">
+                    <span className="font-mono text-sm font-bold text-zinc-700">
                       {count}
                     </span>
                   </div>
@@ -404,7 +404,7 @@ export default function LiveQuizHost({
           <button
             type="button"
             onClick={end}
-            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-600 transition hover:border-red-300 hover:text-red-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
+            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-600 transition hover:border-red-300 hover:text-red-700"
           >
             <Square className="h-3 w-3" />
             End early
@@ -417,17 +417,17 @@ export default function LiveQuizHost({
 
   // Ended — leaderboard
   return (
-    <div className="rounded-3xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-8 dark:border-amber-900/50 dark:from-amber-950/30 dark:to-orange-950/30">
-      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">
+    <div className="rounded-3xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-8">
+      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-amber-700">
         <Trophy className="h-4 w-4" />
         Final leaderboard
       </div>
-      <h2 className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">
+      <h2 className="mt-2 text-2xl font-extrabold text-zinc-900">
         Great work, class!
       </h2>
 
       {leaderboard.length === 0 ? (
-        <p className="mt-4 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-4 text-sm text-zinc-500">
           No answers recorded.
         </p>
       ) : (
@@ -435,7 +435,7 @@ export default function LiveQuizHost({
           {leaderboard.map((r, i) => (
             <li
               key={r.childId}
-              className="flex items-center justify-between rounded-2xl bg-white px-4 py-3 dark:bg-slate-900"
+              className="flex items-center justify-between rounded-2xl bg-white px-4 py-3"
             >
               <div className="flex items-center gap-3">
                 <div
@@ -446,16 +446,16 @@ export default function LiveQuizHost({
                       ? "bg-zinc-300 text-zinc-800"
                       : i === 2
                       ? "bg-orange-300 text-orange-900"
-                      : "bg-zinc-100 text-zinc-500 dark:bg-slate-800 dark:text-slate-400"
+                      : "bg-zinc-100 text-zinc-500"
                   }`}
                 >
                   {i + 1}
                 </div>
-                <span className="font-semibold text-zinc-900 dark:text-white">
+                <span className="font-semibold text-zinc-900">
                   {r.name}
                 </span>
               </div>
-              <div className="font-mono text-sm font-bold text-zinc-900 dark:text-white">
+              <div className="font-mono text-sm font-bold text-zinc-900">
                 {r.score} / {questions.length}
               </div>
             </li>

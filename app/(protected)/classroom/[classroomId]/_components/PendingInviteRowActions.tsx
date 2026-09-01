@@ -55,7 +55,7 @@ export default function PendingInviteRowActions({
       <button
         type="button"
         onClick={copy}
-        className="inline-flex h-7 items-center gap-1 rounded-full border border-zinc-200 bg-white px-2 text-[11px] font-semibold text-zinc-600 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+        className="inline-flex h-7 items-center gap-1 rounded-full border border-zinc-200 bg-white px-2 text-[11px] font-semibold text-zinc-600 transition hover:border-indigo-300 hover:text-indigo-600"
         title="Copy invite link"
       >
         {copied ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
@@ -66,7 +66,7 @@ export default function PendingInviteRowActions({
           type="button"
           onClick={resend}
           disabled={pending}
-          className="inline-flex h-7 items-center gap-1 rounded-full border border-indigo-200 bg-indigo-50 px-2 text-[11px] font-semibold text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100 disabled:opacity-50 dark:border-indigo-900 dark:bg-indigo-950/30 dark:text-indigo-300"
+          className="inline-flex h-7 items-center gap-1 rounded-full border border-indigo-200 bg-indigo-50 px-2 text-[11px] font-semibold text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100 disabled:opacity-50"
           title="Resend invite email"
         >
           {pending ? <Loader2 className="h-3 w-3 animate-spin" /> : <Mail className="h-3 w-3" />}
@@ -77,7 +77,7 @@ export default function PendingInviteRowActions({
         type="button"
         onClick={revoke}
         disabled={pending}
-        className="inline-flex h-7 items-center gap-1 rounded-full border border-red-200 bg-red-50 px-2 text-[11px] font-semibold text-red-700 transition hover:border-red-300 hover:bg-red-100 disabled:opacity-50 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300"
+        className="inline-flex h-7 items-center gap-1 rounded-full border border-red-200 bg-red-50 px-2 text-[11px] font-semibold text-red-700 transition hover:border-red-300 hover:bg-red-100 disabled:opacity-50"
         title="Revoke invite"
       >
         <X className="h-3 w-3" />

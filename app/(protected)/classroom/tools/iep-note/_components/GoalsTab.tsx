@@ -47,7 +47,7 @@ export default function GoalsTab({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
           Annual goals
         </h2>
         <button
@@ -61,8 +61,8 @@ export default function GoalsTab({
       </div>
 
       {active.length === 0 && !creating && (
-        <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-8 text-center dark:border-slate-800 dark:bg-slate-900/40">
-          <p className="text-sm text-zinc-500 dark:text-slate-400">
+        <div className="rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-8 text-center">
+          <p className="text-sm text-zinc-500">
             No active goals yet. Click &quot;New goal&quot; to add one — paste
             it from the IEP and you&apos;ll never have to type it again.
           </p>
@@ -137,40 +137,40 @@ function GoalCard({
   }
   const typeLabel = GOAL_TYPES.find((t) => t.id === goal.goalType)?.label ?? null;
   return (
-    <li className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <li className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider">
             {typeLabel && (
-              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
+              <span className="rounded-full bg-amber-100 px-2 py-0.5 text-amber-800">
                 {typeLabel}
               </span>
             )}
             <span
               className={`rounded-full px-2 py-0.5 ${
                 goal.status === "active"
-                  ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300"
+                  ? "bg-emerald-100 text-emerald-800"
                   : goal.status === "mastered"
-                  ? "bg-indigo-100 text-indigo-800 dark:bg-indigo-950/40 dark:text-indigo-300"
-                  : "bg-zinc-100 text-zinc-700 dark:bg-slate-800 dark:text-slate-400"
+                  ? "bg-indigo-100 text-indigo-800"
+                  : "bg-zinc-100 text-zinc-700"
               }`}
             >
               {STATUS_LABEL[goal.status]}
             </span>
             {goal.targetDate && (
-              <span className="text-zinc-400 dark:text-slate-500">
+              <span className="text-zinc-400">
                 Target: {goal.targetDate}
               </span>
             )}
           </div>
-          <p className="mt-2 whitespace-pre-line text-sm text-zinc-800 dark:text-slate-200">
+          <p className="mt-2 whitespace-pre-line text-sm text-zinc-800">
             {goal.goalText}
           </p>
           {(goal.baseline || goal.targetCriterion) && (
-            <div className="mt-2 flex flex-wrap gap-3 text-[11px] text-zinc-500 dark:text-slate-400">
+            <div className="mt-2 flex flex-wrap gap-3 text-[11px] text-zinc-500">
               {goal.baseline && (
                 <span>
-                  <span className="font-semibold text-zinc-600 dark:text-slate-300">
+                  <span className="font-semibold text-zinc-600">
                     Baseline:
                   </span>{" "}
                   {goal.baseline}
@@ -178,7 +178,7 @@ function GoalCard({
               )}
               {goal.targetCriterion && (
                 <span>
-                  <span className="font-semibold text-zinc-600 dark:text-slate-300">
+                  <span className="font-semibold text-zinc-600">
                     Target:
                   </span>{" "}
                   {goal.targetCriterion}
@@ -191,7 +191,7 @@ function GoalCard({
           <button
             type="button"
             onClick={onEdit}
-            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-amber-500 transition hover:bg-amber-50 dark:hover:bg-amber-950/30"
+            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-amber-500 transition hover:bg-amber-50"
             title="Edit"
           >
             <Pencil className="h-3.5 w-3.5" />
@@ -201,7 +201,7 @@ function GoalCard({
               type="button"
               onClick={archive}
               disabled={pending}
-              className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-700 disabled:opacity-50 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+              className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-700 disabled:opacity-50"
               title="Archive"
             >
               <Archive className="h-3.5 w-3.5" />
@@ -269,38 +269,38 @@ function GoalEditor({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className="relative flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3 dark:border-slate-800">
-          <h3 className="text-base font-bold text-zinc-900 dark:text-white">
+      <div className="relative flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+        <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3">
+          <h3 className="text-base font-bold text-zinc-900">
             {initial ? "Edit goal" : "New annual goal"}
           </h3>
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+            className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
           >
             <X className="h-4 w-4" />
           </button>
         </div>
         <div className="flex-1 space-y-4 overflow-y-auto p-5">
-          <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <label className="block text-xs font-semibold text-zinc-500">
             Goal text (paste from the IEP)
             <textarea
               value={goalText}
               onChange={(e) => setGoalText(e.target.value)}
               rows={5}
               placeholder="By June 2026, given a grade-level passage, [Student] will read aloud with at least 50 WCPM and 95% accuracy across three consecutive trials, as measured by curriculum-based oral reading fluency probes."
-              className="mt-1 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm focus:border-amber-500 focus:outline-none"
             />
           </label>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <label className="block text-xs font-semibold text-zinc-500">
               Goal type
               <select
                 value={goalType}
                 onChange={(e) => setGoalType(e.target.value as GoalType | "")}
-                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
               >
                 <option value="">— select —</option>
                 {GOAL_TYPES.map((t) => (
@@ -310,46 +310,46 @@ function GoalEditor({
                 ))}
               </select>
             </label>
-            <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <label className="block text-xs font-semibold text-zinc-500">
               Target date
               <input
                 type="date"
                 value={targetDate}
                 onChange={(e) => setTargetDate(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
               />
             </label>
           </div>
 
-          <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <label className="block text-xs font-semibold text-zinc-500">
             Baseline (where they started this period)
             <input
               type="text"
               value={baseline}
               onChange={(e) => setBaseline(e.target.value)}
               placeholder="e.g. 32 WCPM, 88% accuracy on 1st-grade passages (Sep 2025)"
-              className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
             />
           </label>
 
-          <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <label className="block text-xs font-semibold text-zinc-500">
             Target criterion (what mastery looks like)
             <input
               type="text"
               value={target}
               onChange={(e) => setTarget(e.target.value)}
               placeholder="e.g. 50 WCPM, 95% accuracy across three consecutive trials"
-              className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
             />
           </label>
 
           {initial && (
-            <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <label className="block text-xs font-semibold text-zinc-500">
               Status
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as GoalStatus)}
-                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
               >
                 <option value="active">Active</option>
                 <option value="mastered">Mastered</option>
@@ -366,11 +366,11 @@ function GoalEditor({
             </div>
           )}
         </div>
-        <div className="flex justify-end gap-2 border-t border-zinc-100 bg-zinc-50 px-5 py-3 dark:border-slate-800 dark:bg-slate-950">
+        <div className="flex justify-end gap-2 border-t border-zinc-100 bg-zinc-50 px-5 py-3">
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full px-4 py-1.5 text-xs font-semibold text-zinc-600 hover:bg-white dark:text-slate-400 dark:hover:bg-slate-800"
+            className="rounded-full px-4 py-1.5 text-xs font-semibold text-zinc-600 hover:bg-white"
           >
             Cancel
           </button>

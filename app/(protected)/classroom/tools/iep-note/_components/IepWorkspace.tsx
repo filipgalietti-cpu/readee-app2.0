@@ -41,13 +41,13 @@ export default function IepWorkspace({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
+        <label className="block text-xs font-semibold text-zinc-500">
           Student
           <select
             value={childId}
             onChange={(e) => setChildId(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
           >
             <option value="">Choose a student…</option>
             {students.map((s) => (
@@ -61,7 +61,7 @@ export default function IepWorkspace({
 
       {childId && (
         <>
-          <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+          <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
             <TabButton
               active={tab === "goals"}
               onClick={() => setTab("goals")}
@@ -144,7 +144,7 @@ function TabButton({
       onClick={onClick}
       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition ${
         active
-          ? "bg-white text-amber-700 shadow-sm dark:bg-slate-800 dark:text-amber-300"
+          ? "bg-white text-amber-700 shadow-sm"
           : "text-zinc-500"
       }`}
     >

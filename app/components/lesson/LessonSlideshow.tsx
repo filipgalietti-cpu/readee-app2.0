@@ -185,11 +185,11 @@ const SUPABASE_STORAGE = "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/ob
 
 // Soft pastel pill backgrounds — clean, educational feel
 const PILL_COLORS = [
-  "bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300",
-  "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
-  "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
-  "bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300",
-  "bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300",
+  "bg-violet-100 text-violet-700",
+  "bg-emerald-100 text-emerald-700",
+  "bg-amber-100 text-amber-700",
+  "bg-rose-100 text-rose-700",
+  "bg-violet-100 text-violet-700",
 ];
 
 const SLIDE_THEMES: Record<string, {
@@ -201,17 +201,17 @@ const SLIDE_THEMES: Record<string, {
   contentBg: string;
 }> = {
   intro: {
-    bg: "bg-gray-50 dark:bg-[#0f172a]",
-    text: "text-violet-600 dark:text-violet-400",
-    cardText: "text-violet-700 dark:text-violet-300",
+    bg: "bg-gray-50",
+    text: "text-violet-600",
+    cardText: "text-violet-700",
     qaBg: "",
     storyBg: "",
     contentBg: "",
   },
   teach: {
-    bg: "bg-gray-50 dark:bg-[#0f172a]",
-    text: "text-violet-600 dark:text-violet-400",
-    cardText: "text-violet-700 dark:text-violet-300",
+    bg: "bg-gray-50",
+    text: "text-violet-600",
+    cardText: "text-violet-700",
     qaBg: "",
     storyBg: "",
     // Dropped the blue-50/60 backdrop — it stacked under blue-tinted
@@ -221,30 +221,30 @@ const SLIDE_THEMES: Record<string, {
     contentBg: "",
   },
   example: {
-    bg: "bg-gray-50 dark:bg-[#0f172a]",
-    text: "text-emerald-600 dark:text-emerald-400",
-    cardText: "text-emerald-700 dark:text-emerald-300",
+    bg: "bg-gray-50",
+    text: "text-emerald-600",
+    cardText: "text-emerald-700",
     qaBg: "",
     // Example slides keep the white card — it's a real "passage
     // anchor" container (defines the story-text region), not a
     // tinted backdrop. Mobile-first padding via responsive class.
-    storyBg: "bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700",
-    contentBg: "bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl shadow-sm p-2 sm:p-4",
+    storyBg: "bg-white border border-gray-200",
+    contentBg: "bg-white border border-gray-200 rounded-xl shadow-sm p-2 sm:p-4",
   },
   tip: {
-    bg: "bg-gray-50 dark:bg-[#0f172a]",
-    text: "text-amber-600 dark:text-amber-400",
-    cardText: "text-amber-700 dark:text-amber-300",
-    qaBg: "bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800",
+    bg: "bg-gray-50",
+    text: "text-amber-600",
+    cardText: "text-amber-700",
+    qaBg: "bg-amber-50 border border-amber-200",
     storyBg: "",
     // Dropped amber-on-amber double-tint (anchor pill bg-amber-100
     // sitting on a bg-amber-50/60 container looked templated).
     contentBg: "",
   },
   "practice-intro": {
-    bg: "bg-gray-50 dark:bg-[#0f172a]",
-    text: "text-violet-600 dark:text-violet-400",
-    cardText: "text-violet-700 dark:text-violet-300",
+    bg: "bg-gray-50",
+    text: "text-violet-600",
+    cardText: "text-violet-700",
     qaBg: "",
     storyBg: "",
     contentBg: "",
@@ -252,9 +252,9 @@ const SLIDE_THEMES: Record<string, {
   // The fork — emerald accent (the "you try it" moment, kin to the
   // example's emerald but its own beat).
   interactive: {
-    bg: "bg-gray-50 dark:bg-[#0f172a]",
-    text: "text-emerald-600 dark:text-emerald-400",
-    cardText: "text-emerald-700 dark:text-emerald-300",
+    bg: "bg-gray-50",
+    text: "text-emerald-600",
+    cardText: "text-emerald-700",
     qaBg: "",
     storyBg: "",
     contentBg: "",
@@ -768,7 +768,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
   // of <span>s so it drops into existing render call sites.
   const highlightCaps = (
     text: string,
-    cls = "text-rose-600 dark:text-rose-400 font-bold",
+    cls = "text-rose-600 font-bold",
   ) => {
     // First, slice on **…** so emphasis spans are atomic tokens.
     // Pattern keeps the delimiters in the split groups so we know
@@ -867,7 +867,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 initial={{ opacity: 0, y: 12, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                className="text-2xl lg:text-4xl font-bold text-zinc-800 dark:text-zinc-100"
+                className="text-2xl lg:text-4xl font-bold text-zinc-800"
               >
                 {parts[1].text}
               </motion.span>
@@ -1017,7 +1017,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           >
             {parts[0].text}
           </motion.span>
-          <span className="text-xl font-semibold text-zinc-700 dark:text-zinc-200 min-h-[2.5rem] flex items-center">
+          <span className="text-xl font-semibold text-zinc-700 min-h-[2.5rem] flex items-center">
             {aVisible && (
               <motion.span
                 initial={{ opacity: 0, x: 8 }}
@@ -1047,7 +1047,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     // ── Story text pair: stacked lines in a light card (example slides) ──
     if (isPair && !isQA) {
       const wrapClass = isExample
-        ? "bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl px-5 py-3"
+        ? "bg-white border border-gray-200 rounded-xl px-5 py-3"
         : "";
       return (
         <motion.div
@@ -1076,7 +1076,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 // the passage, not the focal teaching word.
                 className={`leading-relaxed ${
                   isExample
-                    ? "text-xl lg:text-2xl font-semibold text-zinc-700 dark:text-zinc-200"
+                    ? "text-xl lg:text-2xl font-semibold text-zinc-700"
                     : `text-2xl lg:text-4xl font-bold ${theme.cardText}`
                 }`}
               >
@@ -1110,9 +1110,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-4 py-3 sm:px-5 sm:py-4 lg:px-8 lg:py-6 text-center"
+            className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-4 py-3 sm:px-5 sm:py-4 lg:px-8 lg:py-6 text-center"
           >
-            <p className="text-base sm:text-2xl lg:text-3xl font-semibold text-violet-800 dark:text-violet-200 leading-relaxed [text-wrap:balance]">
+            <p className="text-base sm:text-2xl lg:text-3xl font-semibold text-violet-800 leading-relaxed [text-wrap:balance]">
               {parts.map((part, p) => {
                 if (!partsVisible.has(`${i}-${p}`)) return null;
                 return (
@@ -1146,9 +1146,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-4 text-center"
+                className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-5 py-4 text-center"
               >
-                <p className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.15] tracking-tight text-violet-800">
                   {part.text}
                 </p>
               </motion.div>
@@ -1187,7 +1187,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                   initial={{ opacity: 0, scale: 0.6 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 18 }}
-                  className="rounded-full bg-violet-100 dark:bg-violet-900/40 px-4 py-2 text-[22px] font-bold text-violet-800 dark:text-violet-200 shadow-sm"
+                  className="rounded-full bg-violet-100 px-4 py-2 text-[22px] font-bold text-violet-800 shadow-sm"
                 >
                   {part.text}
                 </motion.span>
@@ -1209,9 +1209,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-4 py-3.5 text-center"
+                className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-4 py-3.5 text-center"
               >
-                <p className="text-[24px] font-bold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]">
+                <p className="text-[24px] font-bold leading-[1.15] tracking-tight text-violet-800 [text-wrap:balance]">
                   {part.text}
                 </p>
               </motion.div>
@@ -1340,17 +1340,17 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             : !stepHasPhoneme && li === revealCount - 1 && playingStep === i;
           const isRevealed = li < revealCount;
           const tileColor = !isRevealed
-            ? "bg-zinc-50 text-zinc-300 border-2 border-dashed border-zinc-200 dark:bg-slate-900/40 dark:text-slate-600 dark:border-slate-700"
+            ? "bg-zinc-50 text-zinc-300 border-2 border-dashed border-zinc-200"
             : isActive
-            ? "bg-violet-100 text-violet-700 ring-4 ring-violet-500 dark:bg-violet-900/40 dark:text-violet-200"
+            ? "bg-violet-100 text-violet-700 ring-4 ring-violet-500"
             : isStart
-            ? "bg-blue-100 text-blue-700 ring-4 ring-blue-400 dark:bg-blue-900/40 dark:text-blue-200"
+            ? "bg-blue-100 text-blue-700 ring-4 ring-blue-400"
             : isEnd
-            ? "bg-amber-100 text-amber-700 ring-4 ring-amber-400 dark:bg-amber-900/40 dark:text-amber-200"
-            : "bg-zinc-100 text-zinc-500 dark:bg-slate-800 dark:text-slate-400";
+            ? "bg-amber-100 text-amber-700 ring-4 ring-amber-400"
+            : "bg-zinc-100 text-zinc-500";
           const labelColor = isStart
-            ? "text-blue-600 dark:text-blue-300"
-            : "text-amber-600 dark:text-amber-300";
+            ? "text-blue-600"
+            : "text-amber-600";
           return (
             <div key={li} className="flex flex-col items-center gap-1">
               {(isStart || isEnd) ? (
@@ -1420,7 +1420,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             transition={{ type: "spring", stiffness: 500, damping: 18, delay: idx * 0.02 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => playLetterThenPhoneme(letter)}
-            className="aspect-square rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold shadow-sm bg-violet-50 text-violet-700 hover:bg-violet-100 active:bg-violet-200 transition-colors dark:bg-violet-900/40 dark:text-violet-200 dark:hover:bg-violet-900/60"
+            className="aspect-square rounded-xl flex items-center justify-center text-xl sm:text-2xl font-bold shadow-sm bg-violet-50 text-violet-700 hover:bg-violet-100 active:bg-violet-200 transition-colors"
             aria-label={`Letter ${letter}`}
           >
             {letter}
@@ -1446,8 +1446,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           const isSwapTile = li === swapAt;
           const currentLetter = isSwapTile && swapped ? toLetter : baseLetter;
           const tileColor = isSwapTile && swapped
-            ? "bg-violet-100 text-violet-700 ring-4 ring-violet-500 dark:bg-violet-900/40 dark:text-violet-200"
-            : "bg-zinc-100 text-zinc-600 dark:bg-slate-800 dark:text-slate-400";
+            ? "bg-violet-100 text-violet-700 ring-4 ring-violet-500"
+            : "bg-zinc-100 text-zinc-600";
           return (
             <motion.div
               key={li}
@@ -1537,9 +1537,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           // Bumped to text-2xl/3xl on laptop — narrow phone column
           // keeps text-lg, but shell-mode laptop kids see the passage
           // at proper reading size. py also scales.
-          className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-4 lg:px-8 lg:py-6 text-center"
+          className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-5 py-4 lg:px-8 lg:py-6 text-center"
         >
-          <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed whitespace-pre-line">
+          <p className="text-lg sm:text-xl lg:text-2xl font-semibold text-zinc-800 leading-relaxed whitespace-pre-line">
             {renderPassageText()}
           </p>
         </motion.div>
@@ -1558,12 +1558,12 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
-          className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-4 lg:px-8 lg:py-6 text-center"
+          className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-5 py-4 lg:px-8 lg:py-6 text-center"
         >
-          <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-zinc-800 dark:text-zinc-200 leading-relaxed">
+          <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-zinc-800 leading-relaxed">
             {step.displayText.split(/(\s+)/).map((seg, si) =>
               /^[A-Z]{2,}[!?.,]?$/.test(seg) ? (
-                <span key={si} className="text-violet-700 dark:text-violet-300 font-bold">{seg}</span>
+                <span key={si} className="text-violet-700 font-bold">{seg}</span>
               ) : (
                 <span key={si}>{seg}</span>
               )
@@ -1624,9 +1624,9 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
-          className="w-full rounded-2xl bg-violet-50 dark:bg-indigo-950/30 border border-violet-100 dark:border-violet-800 px-5 py-5 text-center"
+          className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-5 py-5 text-center"
         >
-          <p className={`${sizeClass} font-bold leading-[1.15] tracking-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]`}>
+          <p className={`${sizeClass} font-bold leading-[1.15] tracking-tight text-violet-800 [text-wrap:balance]`}>
             {content}
           </p>
         </motion.div>
@@ -1665,7 +1665,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
         })()
       : step.displayText.split(/(\s+)/).map((seg, si) =>
           /^[A-Z]{2,}[!?.,]?$/.test(seg) ? (
-            <span key={si} className="text-blue-700 dark:text-blue-300 font-bold">{seg}</span>
+            <span key={si} className="text-blue-700 font-bold">{seg}</span>
           ) : (
             <span key={si}>{seg}</span>
           ),
@@ -1937,8 +1937,8 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                           }}
                           className={`rounded-2xl border-2 px-3 py-3 transition-colors duration-500 ${
                             rowHighlighted
-                              ? "border-emerald-300 bg-emerald-50 dark:bg-emerald-950/20"
-                              : "border-violet-100 bg-white dark:bg-slate-900"
+                              ? "border-emerald-300 bg-emerald-50"
+                              : "border-violet-100 bg-white"
                           }`}
                         >
                           <span
@@ -1946,11 +1946,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                           >
                             {row.label}
                           </span>
-                          <span className="mt-2 block text-base font-semibold text-violet-800 dark:text-violet-200 text-center break-words">
+                          <span className="mt-2 block text-base font-semibold text-violet-800 text-center break-words">
                             {row.value}
                           </span>
                           {hasExamples && row.example && (
-                            <span className="mt-1 block text-sm italic text-violet-500 dark:text-violet-400 text-center break-words">
+                            <span className="mt-1 block text-sm italic text-violet-500 text-center break-words">
                               {row.example}
                             </span>
                           )}
@@ -1967,13 +1967,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 >
                   {headers && (
                     <div
-                      className="grid items-center gap-x-3 lg:gap-x-4 pb-2 lg:pb-3 border-b-2 border-violet-200 dark:border-violet-700"
+                      className="grid items-center gap-x-3 lg:gap-x-4 pb-2 lg:pb-3 border-b-2 border-violet-200"
                       style={{ gridTemplateColumns: gridCols }}
                     >
                       {headers.map((h, hi) => (
                         <span
                           key={hi}
-                          className="text-xs sm:text-sm lg:text-2xl font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center"
+                          className="text-xs sm:text-sm lg:text-2xl font-bold uppercase tracking-wider text-violet-600 text-center"
                         >
                           {h}
                         </span>
@@ -2010,7 +2010,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                         }}
                         className={`grid items-center gap-x-3 lg:gap-x-4 rounded-xl px-2 py-2 lg:py-4 transition-colors duration-500 ${
                           rowHighlighted
-                            ? "bg-emerald-50 dark:bg-emerald-950/20 ring-2 ring-emerald-300 dark:ring-emerald-700"
+                            ? "bg-emerald-50 ring-2 ring-emerald-300"
                             : ""
                         }`}
                         style={{ gridTemplateColumns: gridCols }}
@@ -2020,11 +2020,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                         >
                           {row.label}
                         </span>
-                        <span className="text-base sm:text-lg lg:text-3xl font-semibold text-zinc-700 dark:text-zinc-200 text-center">
+                        <span className="text-base sm:text-lg lg:text-3xl font-semibold text-zinc-700 text-center">
                           {row.value}
                         </span>
                         {hasExamples && (
-                          <span className="text-sm sm:text-base lg:text-2xl text-zinc-500 dark:text-zinc-400 italic text-center">
+                          <span className="text-sm sm:text-base lg:text-2xl text-zinc-500 italic text-center">
                             {row.example ?? ""}
                           </span>
                         )}
@@ -2295,7 +2295,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
       {/* ── Progress bar ── */}
       <div className="flex-shrink-0 px-4 sm:px-6 pt-2 pb-1">
         <div className="flex items-center gap-2">
-          <div className="flex-1 h-2 rounded-full bg-gray-200 dark:bg-slate-700 overflow-hidden">
+          <div className="flex-1 h-2 rounded-full bg-gray-200 overflow-hidden">
             <motion.div
               className="h-full rounded-full bg-violet-500"
               initial={{ width: 0 }}
@@ -2303,13 +2303,13 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               transition={{ duration: 0.5, ease: "easeOut" }}
             />
           </div>
-          <span className="text-xs font-semibold text-gray-400 dark:text-slate-500 tabular-nums min-w-6 text-right">
+          <span className="text-xs font-semibold text-gray-400 tabular-nums min-w-6 text-right">
             {currentSlide + 1}/{totalSlides}
           </span>
           {isPlaying ? (
             <button
               onClick={handleSkip}
-              className="ml-1 inline-flex h-11 items-center gap-1 px-2 text-xs font-semibold text-gray-400 dark:text-slate-500 hover:text-gray-600 dark:hover:text-slate-300 transition-colors"
+              className="ml-1 inline-flex h-11 items-center gap-1 px-2 text-xs font-semibold text-gray-400 hover:text-gray-600 transition-colors"
               aria-label="Skip audio"
             >
               Skip <SkipForward className="w-3 h-3" />
@@ -2318,7 +2318,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             stepsRevealed > 0 && (
               <button
                 onClick={handleReplay}
-                className="ml-1 inline-flex h-11 items-center gap-1 px-2 text-xs font-semibold text-violet-500 hover:text-violet-700 dark:text-violet-300 transition-colors"
+                className="ml-1 inline-flex h-11 items-center gap-1 px-2 text-xs font-semibold text-violet-500 hover:text-violet-700 transition-colors"
                 aria-label="Listen again"
               >
                 <RotateCcw className="w-3 h-3" /> Again
@@ -2328,7 +2328,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           {devMode && !isPlaying && (
             <button
               onClick={handleSkip}
-              className="ml-1 w-6 h-6 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-500 dark:text-slate-400 hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors"
+              className="ml-1 w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-300 transition-colors"
               aria-label="Skip slide"
             >
               <SkipForward className="w-3 h-3" />
@@ -2466,11 +2466,11 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                         {/* Header row */}
                         {headers && (
                           <div
-                            className="grid items-center gap-x-4 pb-2 border-b-2 border-violet-200 dark:border-violet-700"
+                            className="grid items-center gap-x-4 pb-2 border-b-2 border-violet-200"
                             style={{ gridTemplateColumns: gridCols }}
                           >
                             {headers.map((h, hi) => (
-                              <span key={hi} className="text-base lg:text-xl font-bold uppercase tracking-wider text-violet-600 dark:text-violet-300 text-center">
+                              <span key={hi} className="text-base lg:text-xl font-bold uppercase tracking-wider text-violet-600 text-center">
                                 {h}
                               </span>
                             ))}
@@ -2525,7 +2525,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                                 },
                               }}
                               className={`grid items-center gap-x-4 rounded-xl px-2 py-1 transition-colors duration-500 ${
-                                rowHighlighted ? "bg-emerald-50 dark:bg-emerald-950/20 ring-2 ring-emerald-300 dark:ring-emerald-700" : ""
+                                rowHighlighted ? "bg-emerald-50 ring-2 ring-emerald-300" : ""
                               }`}
                               style={{ gridTemplateColumns: gridCols }}
                             >
@@ -2544,17 +2544,17 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                                   </motion.span>
                                 )}
                               </span>
-                              <span className="text-lg font-semibold text-zinc-700 dark:text-zinc-200 text-center">
+                              <span className="text-lg font-semibold text-zinc-700 text-center">
                                 {row.value.split(/(\s+)/).map((seg, si) =>
                                   /^[A-Z]{2,}$/.test(seg) ? (
-                                    <span key={si} className="text-violet-600 dark:text-violet-400 font-bold">{seg}</span>
+                                    <span key={si} className="text-violet-600 font-bold">{seg}</span>
                                   ) : (
                                     <span key={si}>{seg}</span>
                                   )
                                 )}
                               </span>
                               {hasExamples && (
-                                <span className="text-base text-zinc-500 dark:text-zinc-400 italic text-center">
+                                <span className="text-base text-zinc-500 italic text-center">
                                   {row.example ?? ""}
                                 </span>
                               )}
@@ -2647,7 +2647,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 }}
               >
                 {!showNext && (
-                  <span className="absolute inset-0 rounded-2xl bg-gray-300 dark:bg-slate-600" />
+                  <span className="absolute inset-0 rounded-2xl bg-gray-300" />
                 )}
                 {showNext && (
                   <motion.span
@@ -2743,19 +2743,19 @@ function ExampleWorksheetGridMobile({
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             className={`flex items-center justify-between gap-3 rounded-xl border-2 px-4 py-2.5 transition-all duration-300 ${
               isCurrent
-                ? "border-violet-400 bg-violet-50 dark:bg-violet-950/30 shadow-sm"
+                ? "border-violet-400 bg-violet-50 shadow-sm"
                 : aVisible
-                  ? "border-emerald-200 bg-emerald-50 dark:bg-emerald-950/20"
-                  : "border-violet-100 bg-white dark:bg-slate-900"
+                  ? "border-emerald-200 bg-emerald-50"
+                  : "border-violet-100 bg-white"
             }`}
           >
             <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-              <span className="text-xs font-bold uppercase tracking-wider text-violet-500 dark:text-violet-400 break-words">
+              <span className="text-xs font-bold uppercase tracking-wider text-violet-500 break-words">
                 {qVisible ? q : "?"}
               </span>
-              <span className="min-w-0 whitespace-normal break-words text-base font-bold text-violet-800 dark:text-violet-200">
+              <span className="min-w-0 whitespace-normal break-words text-base font-bold text-violet-800">
                 {!qVisible ? (
-                  <span className="text-violet-200 dark:text-violet-800">…</span>
+                  <span className="text-violet-200">…</span>
                 ) : aVisible ? (
                   <motion.span
                     initial={{ opacity: 0, y: 4 }}
@@ -2765,7 +2765,7 @@ function ExampleWorksheetGridMobile({
                     {a}
                   </motion.span>
                 ) : (
-                  <span className="text-violet-200 dark:text-violet-800">…</span>
+                  <span className="text-violet-200">…</span>
                 )}
               </span>
             </div>
@@ -2820,12 +2820,12 @@ function ExampleWorksheetGrid({
               damping: 22,
               delay: rowIdx * 0.1,
             }}
-            className={`grid items-center gap-4 lg:gap-6 rounded-2xl border-2 bg-white dark:bg-slate-900 px-5 py-4 lg:px-7 lg:py-6 transition-all duration-300 ${
+            className={`grid items-center gap-4 lg:gap-6 rounded-2xl border-2 bg-white px-5 py-4 lg:px-7 lg:py-6 transition-all duration-300 ${
               isCurrent
-                ? "border-violet-400 shadow-md ring-4 ring-violet-100 dark:ring-violet-900/40"
+                ? "border-violet-400 shadow-md ring-4 ring-violet-100"
                 : wasTaught
-                  ? "border-emerald-200 dark:border-emerald-800"
-                  : "border-zinc-200 dark:border-slate-700"
+                  ? "border-emerald-200"
+                  : "border-zinc-200"
             }`}
             style={{ gridTemplateColumns: "7.5rem 1fr 2.5rem" }}
           >
@@ -2834,7 +2834,7 @@ function ExampleWorksheetGrid({
             >
               {q}
             </span>
-            <span className="text-xl lg:text-3xl font-bold text-zinc-800 dark:text-zinc-100 leading-tight">
+            <span className="text-xl lg:text-3xl font-bold text-zinc-800 leading-tight">
               {aVisible ? (
                 <motion.span
                   initial={{ opacity: 0, y: 6 }}
@@ -2845,7 +2845,7 @@ function ExampleWorksheetGrid({
                   {a}
                 </motion.span>
               ) : (
-                <span className="text-zinc-300 dark:text-slate-600">…</span>
+                <span className="text-zinc-300">…</span>
               )}
             </span>
             <span className="flex items-center justify-center">
