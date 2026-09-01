@@ -74,7 +74,16 @@ const ACC_TRICKY = 55; // word accuracy below this → "tricky"
 const PHONEME_TRICKY = 45; // any single phoneme below this → "tricky" (catches one wrong sound)
 
 function splitSentences(text: string): string[] {
-  return (text.match(/[^.!?]+[.!?]*/g) ?? [text]).map((s) => s.trim()).filter(Boolean);
+  // Split on sentence punctuation AND hard line breaks. Generated passages
+  // sometimes separate sentences with a newline and no period; the old regex
+  // swallowed those into one giant "sentence", so the drill highlighted/graded
+  // several sentences as a single line (the "Luna is on a different sentence"
+  // bug — you read one sentence, it graded a longer chunk).
+  return text
+    .split(/[\r\n]+/)
+    .flatMap((line) => line.match(/[^.!?]+[.!?]*/g) ?? [line])
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 // Merge + downsample captured mic PCM to a target rate (average-decimate to
@@ -111,12 +120,18 @@ function encodeWav(samples: Float32Array, sampleRate: number): Blob {
 // Split a passage into words + the sentence index each word belongs to, so we
 // can style/animate words individually (build reveal + grade scan).
 function computeWords(text: string): WordInfo {
-  const words = text.split(/\s+/).filter(Boolean);
+  // Build the word list AND its per-word sentence index straight from the
+  // sentence split, so the rendered/highlighted words can NEVER drift from
+  // `sentences[idx]` (the text sent to Azure as the answer key). The old path
+  // split the whole text independently and counted words per sentence to assign
+  // wSent, which desynced the moment the two splits disagreed — the drill then
+  // highlighted one line while grading a different one.
   const sents = splitSentences(text);
-  const lens = sents.map((s) => s.split(/\s+/).filter(Boolean).length);
+  const words: string[] = [];
   const wSent: number[] = [];
-  let si = 0, count = 0;
-  words.forEach((_, i) => { wSent[i] = Math.min(si, sents.length - 1); count++; if (count >= (lens[si] || 1)) { si++; count = 0; } });
+  sents.forEach((s, si) => {
+    for (const w of s.split(/\s+/).filter(Boolean)) { words.push(w); wSent.push(si); }
+  });
   return { words, sents, wSent };
 }
 
