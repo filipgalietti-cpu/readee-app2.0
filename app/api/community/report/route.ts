@@ -4,8 +4,19 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { containsUnsafeContent } from "@/lib/ai/safety";
 import { judgeCommunityCompliance } from "@/lib/ai/readee-ai";
 import { notifyTeam } from "@/lib/email/notify-team";
+import { rateLimit, clientIp } from "@/lib/security/rate-limit";
 
 export const dynamic = "force-dynamic";
+
+// Escape kid/attacker-controlled text before it lands in the moderation email
+// HTML. `reason` is fully user-supplied and the endpoint is anonymous, so an
+// unescaped <a>/<style> could spoof the very email an admin uses to decide
+// takedowns.
+function esc(s: unknown): string {
+  return String(s ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!,
+  );
+}
 
 /**
  * POST /api/community/report — flag a published community story. Returns fast;
@@ -29,6 +40,12 @@ export async function POST(req: Request) {
   const slug = String(b?.slug ?? "").trim();
   const reason = b?.reason ? String(b.reason).trim().slice(0, 500) : null;
   if (!slug) return NextResponse.json({ error: "slug required" }, { status: 400 });
+
+  // Anonymous reports are allowed by design, so throttle per IP — each report
+  // triggers a paid AI re-review + a team email; looping slugs would flood
+  // both. Silent-ok (return ok) so it isn't a probe oracle.
+  const rl = await rateLimit({ bucket: "community-report", key: clientIp(req), limit: 10, windowMs: 3600_000 });
+  if (!rl.ok) return NextResponse.json({ ok: true });
 
   const admin = supabaseAdmin();
   const { data: passage } = await admin
@@ -102,12 +119,12 @@ export async function POST(req: Request) {
       `Community story flagged${removed ? " + auto-removed" : ""}: ${p.title}`,
       `<p>A community story was flagged.</p>
        <ul>
-         <li><b>Title:</b> ${p.title}</li>
-         <li><b>By:</b> ${p.display_byline ?? "unknown"}</li>
-         <li><b>Reason given:</b> ${reason ?? "(none)"}</li>
-         <li><b>AI re-review:</b> ${verdict}</li>
+         <li><b>Title:</b> ${esc(p.title)}</li>
+         <li><b>By:</b> ${esc(p.display_byline ?? "unknown")}</li>
+         <li><b>Reason given:</b> ${esc(reason ?? "(none)")}</li>
+         <li><b>AI re-review:</b> ${esc(verdict)}</li>
          <li><b>Action:</b> ${removed ? "TAKEN DOWN (status -> rejected)" : "left live; please review"}</li>
-         <li><b>Link:</b> https://learn.readee.app/community/${slug}</li>
+         <li><b>Link:</b> https://learn.readee.app/community/${esc(slug)}</li>
        </ul>
        <p>Review the queue at /admin/community.</p>`,
     );
