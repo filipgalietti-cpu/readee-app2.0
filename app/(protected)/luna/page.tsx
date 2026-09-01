@@ -5,6 +5,7 @@ import passagesJson from "@/app/data/fluency-passages.json";
 import libraryJson from "@/app/data/luna-library.json";
 import phonicsJson from "@/app/data/luna-phonics.json";
 import LunaReader from "./_components/LunaReader";
+import { rankSkills } from "@/lib/orion/learner";
 
 export const dynamic = "force-dynamic";
 
@@ -79,18 +80,15 @@ export default async function LunaPage({
       .eq("child_id", child.id)
       .in("standard_id", gradePatterns.map((p) => p.id));
     const sm = new Map((skills ?? []).map((s: { standard_id: string; total_correct: number; total_attempted: number; next_due: string | null }) => [s.standard_id, s]));
-    const now = Date.now();
-    const attempted = (id: string) => { const s = sm.get(id); return !!s && (s.total_attempted ?? 0) > 0; };
-    const mastery = (id: string) => { const s = sm.get(id); return s && s.total_attempted > 0 ? s.total_correct / s.total_attempted : 0; };
-    const due = (id: string) => { const s = sm.get(id); return s && s.next_due ? new Date(s.next_due).getTime() <= now : true; };
-    const ranked = [...gradePatterns].sort((a, b) => {
-      const au = !attempted(a.id), bu = !attempted(b.id);
-      if (au !== bu) return au ? -1 : 1;      // unattempted first
-      if (au && bu) return a.order - b.order; // both new → teaching order
-      const ad = due(a.id), bd = due(b.id);
-      if (ad !== bd) return ad ? -1 : 1;      // due first
-      return mastery(a.id) - mastery(b.id);   // weakest first
-    }).map((p) => p.id);
+    // Orion's Learner Model decides the order (brand-new patterns first, then
+    // due, then weakest mastery) — one tested place instead of an inline copy.
+    const ranked = rankSkills(
+      gradePatterns.map((p) => {
+        const s = sm.get(p.id);
+        return { id: p.id, order: p.order, totalCorrect: s?.total_correct ?? 0, totalAttempted: s?.total_attempted ?? 0, nextDue: s?.next_due ?? null };
+      }),
+      Date.now(),
+    ).map((s) => s.id);
     const rank = new Map(ranked.map((id, i) => [id, i] as const));
     usable = [...lib].sort((a, b) => (rank.get(a.patternId ?? "") ?? 99) - (rank.get(b.patternId ?? "") ?? 99));
   }
