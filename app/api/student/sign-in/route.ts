@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { setStudentCookie } from "@/lib/auth/student-session";
+import { rateLimit, clientIp } from "@/lib/security/rate-limit";
 
 /**
  * Parent-signin happens through Supabase auth. This route is for
@@ -55,6 +56,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Class code does not match." }, { status: 403 });
   }
   if (c.student_pin) {
+    // Throttle PIN attempts per classroom+IP — a 4-digit PIN is only 10k
+    // combos, trivially brute-forceable without a cap.
+    const rl = await rateLimit({
+      bucket: "student-pin",
+      key: `${classroomId}:${clientIp(req)}`,
+      limit: 8,
+      windowMs: 600_000,
+    });
+    if (!rl.ok) {
+      return NextResponse.json(
+        { error: "too_many", message: "Too many tries. Wait a few minutes and try again." },
+        { status: 429 },
+      );
+    }
     if (!/^[0-9]{4}$/.test(pin) || pin !== c.student_pin) {
       return NextResponse.json(
         { error: "pin_required", message: "Enter the 4-digit class PIN." },

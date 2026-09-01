@@ -57,9 +57,10 @@ export async function POST(req: NextRequest) {
   // deterministic per-word scoring) when configured; the client sends 16 kHz
   // mono PCM WAV for it. Fall back to the Gemini grader on any Azure miss so a
   // session never breaks (e.g. >60s reads, transient errors, or no key set).
+  const wantDebug = req.nextUrl.searchParams.get("debug") != null;
   if (azureConfigured() && (audio.type || "").includes("wav")) {
     const az = await assessPronunciation({ wavBytes: buf, referenceText: sentenceText });
-    if (az.ok) return NextResponse.json({ ok: true, analysis: az.grade, engine: "azure", debugWords: az.debug });
+    if (az.ok) return NextResponse.json({ ok: true, analysis: az.grade, engine: "azure", ...(wantDebug ? { debugWords: az.debug } : {}) });
     console.warn("[luna/grade] Azure failed, falling back to Gemini:", az.error);
   }
 
