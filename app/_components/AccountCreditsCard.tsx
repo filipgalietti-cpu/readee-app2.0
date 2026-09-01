@@ -107,7 +107,7 @@ function CreditDetail({ data }: { data: Budget["monthly"] }) {
           className={`h-full rounded-full transition-all ${
             isLow
               ? "bg-amber-500"
-              : "bg-gradient-to-r from-indigo-500 to-violet-500"
+              : "bg-gradient-to-r from-violet-600 to-violet-500"
           }`}
           style={{ width: `${pct}%` }}
         />

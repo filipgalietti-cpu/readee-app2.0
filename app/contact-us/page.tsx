@@ -98,7 +98,7 @@ export default function ContactUsPage() {
             <button
               type="submit"
               disabled={sending}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-semibold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-sm disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-semibold text-sm hover:from-violet-700 hover:to-violet-600 transition-all shadow-sm disabled:opacity-50 flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               {sending ? "Sending..." : "Send Message"}

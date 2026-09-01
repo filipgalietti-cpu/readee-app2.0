@@ -205,7 +205,7 @@ export default function SettingsShell({ children }: { children: React.ReactNode 
                   {avatarSrc ? (
                     <img src={avatarSrc} alt={childName} className="w-full h-full object-cover" draggable={false} />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm font-bold">
+                    <div className="w-full h-full bg-gradient-to-br from-violet-600 to-violet-500 flex items-center justify-center text-white text-sm font-bold">
                       {childName.charAt(0).toUpperCase()}
                     </div>
                   )}
@@ -256,7 +256,7 @@ function SettingsUserMenu({ avatarSrc, name }: { avatarSrc: string | null; name:
           {avatarSrc ? (
             <img src={avatarSrc} alt={name} className="w-full h-full object-cover" draggable={false} />
           ) : (
-            <div className="w-full h-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-xs font-bold">
+            <div className="w-full h-full bg-gradient-to-br from-violet-600 to-violet-500 flex items-center justify-center text-white text-xs font-bold">
               {name.charAt(0).toUpperCase()}
             </div>
           )}

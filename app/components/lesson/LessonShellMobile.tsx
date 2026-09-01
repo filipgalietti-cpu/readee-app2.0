@@ -135,7 +135,7 @@ export function LessonShellMobile({
         <button
           onClick={onNext}
           disabled={nextDisabled}
-          className="mt-3 flex h-14 w-full items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 text-lg font-semibold text-white shadow-[0_6px_18px_-6px_rgba(99,102,241,0.6)] transition active:scale-[0.98] disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
+          className="mt-3 flex h-14 w-full items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_6px_18px_-6px_rgba(99,102,241,0.6)] transition active:scale-[0.98] disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
         >
           {nextLabel}
         </button>

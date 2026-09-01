@@ -73,7 +73,7 @@ export default function CelebrationOverlay({ show }: { show: boolean }) {
               variants={popIn}
               initial="hidden"
               animate="visible"
-              className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-indigo-100 to-violet-100 dark:from-indigo-900/40 dark:to-violet-900/40 flex items-center justify-center"
+              className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/40 dark:to-indigo-900/40 flex items-center justify-center"
             >
               <Sparkles className="w-8 h-8 text-indigo-600 dark:text-indigo-400" strokeWidth={1.5} />
             </motion.div>
@@ -91,7 +91,7 @@ export default function CelebrationOverlay({ show }: { show: boolean }) {
             {/* Button */}
             <button
               onClick={() => router.push("/dashboard")}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-500 text-white font-bold text-sm hover:from-indigo-700 hover:to-violet-600 transition-all shadow-md"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-600 transition-all shadow-md"
             >
               Go to Dashboard
             </button>

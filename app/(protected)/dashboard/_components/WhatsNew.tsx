@@ -138,7 +138,7 @@ export default function WhatsNew() {
               <Link
                 href={current.cta.href}
                 onClick={dismiss}
-                className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-gradient-to-b from-violet-500 to-violet-600 px-5 py-3.5 text-base font-extrabold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-600 hover:to-violet-700 active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-gradient-to-b from-violet-600 to-violet-500 px-5 py-3.5 text-base font-extrabold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-700 hover:to-violet-600 active:scale-[0.98]"
               >
                 {current.cta.label}
                 <ArrowRight className="h-4 w-4" />

@@ -157,7 +157,7 @@ export default function LearningPathCard({
     return (
       <div className="overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-6 dark:border-violet-900/40 dark:from-violet-950/20 dark:via-slate-900 dark:to-indigo-950/20">
         <div className="flex items-start gap-3">
-          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
+          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-violet-500 text-white">
             <Loader2 className="h-5 w-5 animate-spin" />
           </div>
           <div className="flex-1">
@@ -190,7 +190,7 @@ export default function LearningPathCard({
       {/* Header */}
       <div className="flex items-start justify-between gap-3 px-5 pt-5">
         <div className="flex items-start gap-3">
-          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
+          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-violet-500 text-white">
             <MapIcon className="h-5 w-5" />
           </div>
           <div>
@@ -221,7 +221,7 @@ export default function LearningPathCard({
       {/* Progress bar */}
       <div className="mx-5 mt-3 h-2 overflow-hidden rounded-full bg-white/80 dark:bg-slate-800/40">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-600 transition-all"
+          className="h-full rounded-full bg-gradient-to-r from-violet-600 to-violet-500 transition-all"
           style={{ width: `${pct}%` }}
         />
       </div>

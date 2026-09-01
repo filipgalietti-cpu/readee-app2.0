@@ -51,7 +51,7 @@ export default function LevelProgressBar({
         {/* Filled track */}
         {currentIdx >= 0 && (
           <div
-            className="absolute top-4 left-4 h-1 bg-gradient-to-r from-indigo-400 to-violet-500 rounded-full transition-all duration-500"
+            className="absolute top-4 left-4 h-1 bg-gradient-to-r from-violet-600 to-violet-500 rounded-full transition-all duration-500"
             style={{ width: `${(currentIdx / (READING_LEVELS.length - 1)) * 100}%`, maxWidth: "calc(100% - 32px)" }}
           />
         )}

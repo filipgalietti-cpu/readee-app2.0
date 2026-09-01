@@ -93,7 +93,7 @@ function AdvisorCard({ advisor }: { advisor: (typeof ADVISORY_BOARD)[number] }) 
             className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full text-lg font-bold ${
               isPlaceholder
                 ? "bg-zinc-100 text-zinc-400 dark:bg-slate-800 dark:text-slate-500"
-                : "bg-gradient-to-br from-indigo-500 to-violet-600 text-white"
+                : "bg-gradient-to-br from-violet-600 to-violet-500 text-white"
             }`}
           >
             {advisor.name

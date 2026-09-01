@@ -610,7 +610,7 @@ function ExpandedNav({
             <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
           </div>
         ) : (
-          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-500 to-violet-600 text-xs font-bold text-white ring-1 ring-violet-200 dark:ring-violet-900/60">
+          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200 dark:ring-violet-900/60">
             {initials}
           </div>
         )}

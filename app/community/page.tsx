@@ -81,7 +81,7 @@ function avatarTone(byline: string | null | undefined): string {
   // Stable tone bucket from byline so the same author always gets the
   // same avatar color. 6 brand-aligned tones.
   const tones = [
-    "from-violet-500 to-indigo-600",
+    "from-violet-600 to-violet-500",
     "from-rose-400 to-pink-500",
     "from-amber-400 to-orange-500",
     "from-emerald-400 to-teal-500",
@@ -225,7 +225,7 @@ export default async function CommunityLanding() {
       <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6">
         {/* Compact intro */}
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-md">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-md">
             <Users className="h-6 w-6" />
           </div>
           <div>
@@ -346,7 +346,7 @@ export default async function CommunityLanding() {
         </section>
 
         {/* Final CTA */}
-        <section className="mt-8 overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-100 via-indigo-50 to-violet-100 p-6 text-center shadow-sm sm:p-8">
+        <section className="mt-8 overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-100 to-indigo-100 p-6 text-center shadow-sm sm:p-8">
           <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
             Want to make your own?
           </div>

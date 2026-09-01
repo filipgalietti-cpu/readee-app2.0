@@ -102,7 +102,7 @@ export function SidebarUserMenu({
     const cls = size === "sm" ? "w-8 h-8 text-xs" : "w-9 h-9 text-sm";
     return (
       <div
-        className={`${cls} rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-indigo-500 to-violet-600 font-bold text-white ring-1 ring-indigo-200 dark:ring-indigo-900/60`}
+        className={`${cls} rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 font-bold text-white ring-1 ring-indigo-200 dark:ring-indigo-900/60`}
       >
         {initials || "U"}
       </div>

@@ -276,7 +276,7 @@ export default function NavAuth() {
               {userPlan === "free" && !pathname?.startsWith("/admin") && (
                 <Link
                   href="/upgrade"
-                  className="relative text-sm font-bold px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-indigo-600 to-violet-500 text-white hover:from-indigo-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group"
+                  className="relative text-sm font-bold px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-violet-600 to-violet-500 text-white hover:from-violet-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
                   <Star className="relative w-4 h-4" strokeWidth={1.5} />
@@ -371,7 +371,7 @@ export default function NavAuth() {
                 {childAvatarSrc ? (
                   <img src={childAvatarSrc} alt={activeChild?.first_name || ""} className="w-full h-full object-cover" draggable={false} />
                 ) : (
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm font-bold">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-violet-600 to-violet-500 flex items-center justify-center text-white text-sm font-bold">
                     {displayInitial}
                   </div>
                 )}

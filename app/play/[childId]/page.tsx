@@ -180,7 +180,7 @@ function PlayCard({
 }) {
   const ringByColor: Record<string, string> = {
     indigo: "from-indigo-500 to-indigo-600",
-    violet: "from-violet-500 to-violet-600",
+    violet: "from-violet-600 to-violet-500",
     emerald: "from-emerald-500 to-emerald-600",
     amber: "from-amber-500 to-amber-600",
     rose: "from-rose-500 to-pink-600",
