@@ -417,5 +417,14 @@ function LoginForm() {
 }
 
 export default function Login() {
-  return <LoginForm />;
+  // LoginForm calls useSearchParams() for the ?redirect= target, so it needs
+  // its own boundary or the page cannot be prerendered. Same shape signup
+  // already uses. This was latent until the dark-theme ThemeProvider came
+  // out: that provider returned null until a client effect ran, which
+  // suppressed prerendering everywhere and hid the missing boundary.
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
+  );
 }
