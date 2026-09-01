@@ -86,9 +86,34 @@ a generic default, not for Readee.
 - **Emotional moments** (carrots, badges, celebration, empty states): Readee's
   own art. Never anything generic at a moment that is supposed to feel earned.
 
+### Shadows (canonical — copy these, don't invent)
+An audit on Sep 2 2026 found **30 bespoke shadow recipes**, including the same
+indigo drop written five ways (`.15` / `0.15` / `.18` / `.25`, and a `30px_-10px`
+near-twin). Consolidated to four:
+
+| Role | Class |
+|---|---|
+| Resting card / panel | `shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]` |
+| Small resting card | `shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)]` |
+| Violet glow (interactive) | `shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)]` |
+| ...its hover | `hover:shadow-[0_12px_28px_-8px_rgba(139,92,246,0.55)]` |
+| Focus / selection ring | `shadow-[0_0_0_3px_rgba(139,92,246,0.15)]` (+ `_inset`) |
+
+- Always write opacity as `0.18`, never `.18`. The bare-dot form is how the
+  duplicates got in: they look different to grep but identical on screen.
+- **Glows under violet elements must be violet** (`139,92,246`), not indigo. A
+  violet button with an indigo glow was a real bug this sweep fixed.
+- Prefer plain Tailwind (`shadow-sm` / `md` / `lg`) for anything neutral. Reach
+  for an arbitrary shadow only when it needs a brand tint.
+
+**Hard 3D-button shadows are a DIFFERENT thing and are correct.**
+`shadow-[0_4px_0_0_#4338ca]` is the chunky pressed-button look (Duolingo uses
+the same trick). The offset colour must match a darker shade of the button.
+Keep these; they are not drift.
+
 ### Rules
 - Spacing: Tailwind default scale only (4, 8, 12, 16, 24, 32, 48px). No arbitrary values.
-- Shadows: One consistent shadow style across the app. Do not mix depths.
+- Shadows: use the four canonical recipes above. Do not invent new tinted shadows.
 - Typography: One font family, regular + semibold weights only.
 - Animations: Framer Motion for all transitions and reveals. Keep them purposeful.
 - Empty states: Every empty list/tab needs a designed state — use the bunny mascot.
