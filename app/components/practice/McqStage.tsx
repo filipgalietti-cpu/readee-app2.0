@@ -132,7 +132,7 @@ export function McqStage(props: McqStageProps) {
   if (passage) {
     return (
       <div className="flex flex-wrap gap-6 items-stretch justify-center w-full">
-        <div className="flex-[1.05_1_340px] max-w-[560px] bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-[0_10px_40px_-12px_rgba(49,46,129,.18)] flex flex-col">
+        <div className="flex-[1.05_1_340px] max-w-[560px] bg-white rounded-3xl overflow-hidden border border-zinc-200 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] flex flex-col">
           {imgSrc && <LoadingImage src={imgSrc} fallback={null} className="w-full h-[clamp(180px,34vh,340px)] object-contain p-2" />}
           <div className="px-5 pt-4 pb-5 flex flex-col gap-2.5 flex-1 justify-center">
             <div className="flex items-center gap-2">
@@ -161,7 +161,7 @@ export function McqStage(props: McqStageProps) {
     return (
       <div className="flex flex-wrap gap-6 lg:gap-9 items-center justify-center w-full">
         <div className="flex-[1_1_360px] max-w-[600px] flex justify-center">
-          <LoadingImage src={imgSrc} fallback={null} className="w-full max-h-[64vh] object-contain rounded-[24px] border-[3px] border-white shadow-[0_10px_40px_-12px_rgba(49,46,129,.25)]" />
+          <LoadingImage src={imgSrc} fallback={null} className="w-full max-h-[64vh] object-contain rounded-[24px] border-[3px] border-white shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]" />
         </div>
         <div className="flex-[1_1_320px] max-w-[520px] flex flex-col gap-3.5 justify-center">
           <div className="flex items-center gap-3">
@@ -210,7 +210,7 @@ export function BunnyBubble({ outfitId, state, bubble }: {
           key={bubble.text}
           initial={{ opacity: 0, scale: 0.8, y: 6 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          className="relative max-w-[min(320px,44vw)] px-4 py-3 mb-12 border-2 shadow-[0_10px_30px_-10px_rgba(49,46,129,.25)]"
+          className="relative max-w-[min(320px,44vw)] px-4 py-3 mb-12 border-2 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]"
           style={{ background: tone.bg, borderColor: tone.border, borderRadius: "18px 18px 18px 4px" }}
         >
           <p className="text-[15.5px] font-bold leading-snug" style={{ color: tone.fg }}>{bubble.text}</p>
@@ -230,12 +230,12 @@ export function QuestionDock({ onReplay, hint, showHint, hintDisabled, onHint }:
 }) {
   return (
     <div className="fixed right-3 sm:right-5 bottom-3 z-[6] flex items-center gap-2.5">
-      <button onClick={onReplay} className="flex items-center gap-2 bg-white/95 border-[1.5px] border-indigo-200 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,.2)] hover:-translate-y-0.5 active:scale-95 transition">
+      <button onClick={onReplay} className="flex items-center gap-2 bg-white/95 border-[1.5px] border-indigo-200 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] hover:-translate-y-0.5 active:scale-95 transition">
         <Volume2 className="w-[19px] h-[19px] text-indigo-700" strokeWidth={2.2} />
         <span className="text-[15px] font-extrabold text-indigo-950">Read to me</span>
       </button>
       {hint && (
-        <button onClick={onHint} disabled={hintDisabled} className="flex items-center gap-2 bg-white/95 border-[1.5px] border-amber-300 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,.2)] disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:active:scale-95 transition">
+        <button onClick={onHint} disabled={hintDisabled} className="flex items-center gap-2 bg-white/95 border-[1.5px] border-amber-300 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:active:scale-95 transition">
           <Lightbulb className="w-[19px] h-[19px] text-amber-600" strokeWidth={2.2} />
           <span className="text-[15px] font-extrabold text-amber-800">{showHint ? "Hint used" : "Hint"}</span>
         </button>

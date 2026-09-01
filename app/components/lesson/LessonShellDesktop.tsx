@@ -91,7 +91,7 @@ export function LessonShellDesktop({
                 key={imageUrl}
                 src={imageUrl ?? ""}
                 alt={imageAlt ?? ""}
-                containerClassName="aspect-square h-[70%] rounded-3xl shadow-[0_8px_24px_-8px_rgba(50,30,90,0.18)]"
+                containerClassName="aspect-square h-[70%] rounded-3xl shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]"
                 className="h-full w-full rounded-3xl object-contain"
               />
             )}
@@ -145,7 +145,7 @@ export function LessonShellDesktop({
         <button
           onClick={onNext}
           disabled={nextDisabled}
-          className="flex h-14 w-[280px] items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.6)] transition hover:translate-y-[-1px] hover:shadow-[0_12px_28px_-8px_rgba(139,92,246,0.7)] disabled:translate-y-0 disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
+          className="flex h-14 w-[280px] items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)] transition hover:translate-y-[-1px] hover:shadow-[0_12px_28px_-8px_rgba(139,92,246,0.55)] disabled:translate-y-0 disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
         >
           {nextLabel}
         </button>
@@ -425,7 +425,7 @@ export function CelebrationLeftPanel() {
   // emoji (glossy 3D, off our flat-cartoon style + breaks no-native-emoji).
   return (
     <div className="relative flex h-full w-full items-center justify-center">
-      <div className="relative flex h-[70%] w-[86%] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-violet-100 to-violet-300 shadow-[0_8px_24px_-8px_rgba(108,76,224,0.3)]">
+      <div className="relative flex h-[70%] w-[86%] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-violet-100 to-violet-300 shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)]">
         {[
           { x: "20%", y: "25%", s: 18 },
           { x: "75%", y: "18%", s: 14 },

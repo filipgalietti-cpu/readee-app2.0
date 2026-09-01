@@ -263,7 +263,7 @@ export default function CommunityLibrary({
             <Link
               key={it.id}
               href={readerHref(it)}
-              className="group block overflow-hidden rounded-[20px] border border-zinc-200 bg-white transition hover:-translate-y-[3px] hover:border-indigo-200 hover:shadow-[0_12px_28px_-14px_rgba(49,46,129,0.4)] dark:border-slate-800 dark:bg-slate-900/40"
+              className="group block overflow-hidden rounded-[20px] border border-zinc-200 bg-white transition hover:-translate-y-[3px] hover:border-indigo-200 hover:shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] dark:border-slate-800 dark:bg-slate-900/40"
             >
               <div className="flex h-[132px] items-end justify-center" style={{ background: tintFor(it.id) }}>
                 {it.image_url ? (

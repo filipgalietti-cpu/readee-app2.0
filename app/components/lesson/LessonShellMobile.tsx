@@ -102,7 +102,7 @@ export function LessonShellMobile({
               src={imageUrl ?? ""}
               alt={imageAlt ?? ""}
               style={{ height: `${imageHeightVh}vh` }}
-              containerClassName="aspect-square rounded-2xl shadow-[0_4px_16px_-6px_rgba(50,30,90,0.18)]"
+              containerClassName="aspect-square rounded-2xl shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)]"
               className="h-full w-full rounded-2xl object-cover"
             />
           )}
@@ -135,7 +135,7 @@ export function LessonShellMobile({
         <button
           onClick={onNext}
           disabled={nextDisabled}
-          className="mt-3 flex h-14 w-full items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_6px_18px_-6px_rgba(139,92,246,0.6)] transition active:scale-[0.98] disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
+          className="mt-3 flex h-14 w-full items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)] transition active:scale-[0.98] disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
         >
           {nextLabel}
         </button>

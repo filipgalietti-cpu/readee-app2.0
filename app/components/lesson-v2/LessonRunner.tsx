@@ -146,7 +146,7 @@ export default function LessonRunner({
   if (done) {
     leftSlot = (
       <div className="relative flex h-full w-full items-center justify-center">
-        <div className="relative flex h-[74%] w-[88%] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-violet-100 to-indigo-100 shadow-[0_8px_24px_-8px_rgba(108,76,224,0.3)]">
+        <div className="relative flex h-[74%] w-[88%] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-violet-100 to-indigo-100 shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)]">
           <div className="h-[64%] w-[64%]">
             <BunnyReaction outfitId={null} state="levelup" />
           </div>

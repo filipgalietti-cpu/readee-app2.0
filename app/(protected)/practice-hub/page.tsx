@@ -509,7 +509,7 @@ function PracticeHubContent() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         style={{ background: "linear-gradient(160deg, #e8e0ff 0%, #ffffff 45%, #e0ecff 100%)" }}
-        className="rounded-[24px] p-5 sm:p-7 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.15)] flex flex-col gap-5 @4xl:flex-row @4xl:items-center @4xl:gap-8"
+        className="rounded-[24px] p-5 sm:p-7 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] flex flex-col gap-5 @4xl:flex-row @4xl:items-center @4xl:gap-8"
       >
         <div className="flex items-center gap-4 flex-1 min-w-0">
           <Image

@@ -719,7 +719,7 @@ function FormChips({ value, onChange }: { value: string; onChange: (v: string) =
             onClick={() => onChange(f.key)}
             className={`group flex items-center gap-3 rounded-2xl border p-4 text-left transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98] ${
               selected
-                ? "border-violet-500 bg-violet-50 shadow-[0_0_0_3px_rgba(139,92,246,0.12)_inset] dark:bg-violet-950/30"
+                ? "border-violet-500 bg-violet-50 shadow-[0_0_0_3px_rgba(139,92,246,0.15)_inset] dark:bg-violet-950/30"
                 : "border-zinc-200 bg-white hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900/50"
             }`}
             style={BALOO}
@@ -753,7 +753,7 @@ function IdeaBox({ value, onChange }: { value: string; onChange: (v: string) => 
         rows={5}
         maxLength={200}
         placeholder="A brave space puppy who is scared of the dark..."
-        className="w-full resize-none rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-lg text-zinc-900 outline-none transition focus:border-violet-400 focus:bg-white focus:shadow-[0_0_0_4px_rgba(139,92,246,0.12)] dark:border-slate-700 dark:bg-slate-900/50 dark:text-white"
+        className="w-full resize-none rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-lg text-zinc-900 outline-none transition focus:border-violet-400 focus:bg-white focus:shadow-[0_0_0_3px_rgba(139,92,246,0.15)] dark:border-slate-700 dark:bg-slate-900/50 dark:text-white"
       />
       <span className="pointer-events-none absolute bottom-3 right-4 text-xs font-bold text-zinc-400">{value.length}/200</span>
     </div>

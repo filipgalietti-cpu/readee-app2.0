@@ -85,7 +85,7 @@ export default function TodayQuestionPlayer({
   }
 
   const CARD =
-    "flex min-h-[420px] flex-col rounded-3xl border border-zinc-200 bg-white p-[22px] shadow-[0_10px_40px_-12px_rgba(49,46,129,.15)]";
+    "flex min-h-[420px] flex-col rounded-3xl border border-zinc-200 bg-white p-[22px] shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]";
 
   if (done) {
     const pct = total ? Math.round((correctCount / total) * 100) : 0;

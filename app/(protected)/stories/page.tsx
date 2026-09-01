@@ -573,7 +573,7 @@ function StoriesContent() {
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex flex-wrap items-center gap-3 rounded-3xl px-7 py-5 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.15)]"
+        className="flex flex-wrap items-center gap-3 rounded-3xl px-7 py-5 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]"
         style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
       >
         <div className="min-w-[200px] flex-1">
