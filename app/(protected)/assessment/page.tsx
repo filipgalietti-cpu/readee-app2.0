@@ -35,6 +35,7 @@ import { TapToPair } from "@/app/components/practice/TapToPair";
 import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import { Bunny } from "@/app/_components/Bunny/Bunny";
 
 /* ── Types ─────────────────────────────────────────────── */
 
@@ -810,13 +811,9 @@ function AssessmentContent() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.6, type: "spring", bounce: 0.4 }}
           >
-            <Image
-              src="/images/bunny-hero.png"
-              alt="Readee bunny"
-              width={818}
-              height={1436}
-              className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-[100px] sm:w-[120px] h-auto"
-            />
+            <div className="h-[120px] w-[100px] sm:h-[144px] sm:w-[120px] drop-shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
+              <Bunny />
+            </div>
           </motion.div>
 
           {/* Gradient header */}

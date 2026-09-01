@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { X, Sparkles, BookOpen, Headphones, BarChart3, Users } from "lucide-react";
+import { Bunny } from "./Bunny/Bunny";
 
 interface PaywallModalProps {
   open: boolean;
@@ -82,13 +82,9 @@ export function PaywallModal({ open, onClose, childId, childName, trigger = "les
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.1, type: "spring", bounce: 0.5 }}
               >
-                <Image
-                  src="/images/bunny-hero.png"
-                  alt="Readee bunny"
-                  width={818}
-                  height={1436}
-                  className="mx-auto w-[70px] h-auto drop-shadow-lg mb-3"
-                />
+                <div className="mx-auto mb-3 h-[84px] w-[70px] drop-shadow-lg">
+                  <Bunny />
+                </div>
               </motion.div>
               <h2 className="text-xl font-extrabold text-white">{t.title}</h2>
               <p className="text-sm text-white/80 mt-1.5 max-w-[280px] mx-auto">{t.subtitle}</p>
