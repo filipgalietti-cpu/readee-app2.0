@@ -169,6 +169,23 @@ export default function LunaReader({
   // Per-word model for the build reveal + grade scan (words rendered as spans).
   const { words, wSent } = useMemo(() => computeWords(passage.text), [passage.text]);
 
+  // The drill + grading run from timers and Azure stream callbacks that can be
+  // scheduled BEFORE a newly generated passage's render flushes (the reader now
+  // swaps stories in place instead of remounting). Mirror the passage-derived
+  // data into refs so those callbacks always grade the CURRENT story — never a
+  // stale closure from the previous passage (which handed Azure the wrong answer
+  // key: you read "Tod the fox" while it graded "At school, Pat got a box").
+  const sentencesRef = useRef(sentences);
+  const wordsRef = useRef(words);
+  const wSentRef = useRef(wSent);
+  const passageRef = useRef(passage);
+  useEffect(() => {
+    sentencesRef.current = sentences;
+    wordsRef.current = words;
+    wSentRef.current = wSent;
+    passageRef.current = passage;
+  }, [sentences, words, wSent, passage]);
+
   const [phase, setPhase] = useState<Phase>("intro");
   const [idx, setIdx] = useState(0);
   const [attempt, setAttempt] = useState(0);
@@ -514,14 +531,14 @@ export default function LunaReader({
     const p = phaseRef.current;
     if (p === "building") return;
     const cur = idxRef.current;
-    words.forEach((_w, i) => {
+    wordsRef.current.forEach((_w, i) => {
       const el = wEl(i); if (!el) return;
       const st = wordStateRef.current[i] || "pending";
       el.style.transition = "color .35s ease, background .35s ease, opacity .3s ease";
       el.style.opacity = "1"; el.style.filter = "blur(0)"; el.style.transform = "none"; el.style.background = "transparent";
       if (p === "drill") {
-        if (wSent[i] === cur) { el.style.background = "#ede9fe"; el.style.color = st === "tricky" ? "#9a3412" : st === "correct" ? "#047857" : "#18181b"; }
-        else if (wSent[i] < cur) { el.style.color = st === "tricky" ? "#9a3412" : "#047857"; }
+        if (wSentRef.current[i] === cur) { el.style.background = "#ede9fe"; el.style.color = st === "tricky" ? "#9a3412" : st === "correct" ? "#047857" : "#18181b"; }
+        else if (wSentRef.current[i] < cur) { el.style.color = st === "tricky" ? "#9a3412" : "#047857"; }
         else { el.style.color = "#a1a1aa"; }
       } else {
         el.style.color = st === "tricky" ? "#9a3412" : st === "correct" ? "#047857" : "#18181b";
@@ -639,11 +656,11 @@ export default function LunaReader({
   const normWord = (t: string) => t.toLowerCase().replace(/[^a-z']/g, "");
   /** Amber "Luna is pointing here" style on every occurrence of `word` within
    *  [from..to] (or the whole passage). Returns the touched indices. */
-  function pointAt(wordList: string[], from = 0, to = words.length - 1): number[] {
+  function pointAt(wordList: string[], from = 0, to = wordsRef.current.length - 1): number[] {
     const targets = new Set(wordList.map(normWord));
     const touched: number[] = [];
-    for (let i = Math.max(0, from); i <= Math.min(to, words.length - 1); i++) {
-      if (!targets.has(normWord(words[i]))) continue;
+    for (let i = Math.max(0, from); i <= Math.min(to, wordsRef.current.length - 1); i++) {
+      if (!targets.has(normWord(wordsRef.current[i]))) continue;
       touched.push(i);
       const el = wEl(i);
       if (el) {
@@ -766,10 +783,10 @@ export default function LunaReader({
    *  the grade routes to handleWordResult via wordDrillRef. */
   function beginWordRead(word: string, ids: string[]) {
     const s = idxRef.current;
-    const from = Math.max(0, wSent.indexOf(s));
-    const to = wSent.lastIndexOf(s) < 0 ? words.length - 1 : wSent.lastIndexOf(s);
+    const from = Math.max(0, wSentRef.current.indexOf(s));
+    const to = wSentRef.current.lastIndexOf(s) < 0 ? wordsRef.current.length - 1 : wSentRef.current.lastIndexOf(s);
     let wi = -1;
-    for (let i = from; i <= to; i++) if (normWord(words[i]) === normWord(word)) { wi = i; break; }
+    for (let i = from; i <= to; i++) if (normWord(wordsRef.current[i]) === normWord(word)) { wi = i; break; }
     if (wi < 0) { afterWordCheck(); return; } // can't locate it — next word/line
     // Spoken instruction ("Now you say the word!") BEFORE the mic opens, so
     // the kid knows exactly what to do — captions alone don't cut it.
@@ -973,7 +990,7 @@ export default function LunaReader({
       if (!seen.has(i)) { status = "missed"; wordStateRef.current[i] = "tricky"; }
       else if (wordStateRef.current[i] === "tricky") status = "substituted";
       else { status = "correct"; correct++; }
-      wordAnnotations.push({ word: words[i], status });
+      wordAnnotations.push({ word: wordsRef.current[i], status });
     }
     return { wordAnnotations, wordsCorrect: correct, wordsTotal: total, durationSeconds: durSec, disfluent: streamFluencyRef.current < 50, heardTranscript: streamTextRef.current, prosody: streamProsodyRef.current };
   }
@@ -1088,7 +1105,7 @@ export default function LunaReader({
     fd.append("audio", blob, "read.wav");
     fd.append("childId", childId);
     fd.append("sentenceText", text);
-    fd.append("gradeLevel", passage.grade);
+    fd.append("gradeLevel", passageRef.current.grade);
     const r = await fetch("/api/luna/grade", { method: "POST", body: fd });
     const json = await r.json();
     if (!r.ok || !json.ok) throw new Error(json.error ?? `HTTP ${r.status}`);
@@ -1114,7 +1131,7 @@ export default function LunaReader({
     playCachedQueued(`transition-drill-${1 + rand(TRANSITION_COUNT)}`,
       () => { setMode("speaking"); setCaption("Nice first read! Now let's practice it, one line at a time."); },
       () => {
-        wordStateRef.current = words.map(() => "pending");
+        wordStateRef.current = wordsRef.current.map(() => "pending");
         setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Tap me and read the first line.");
       });
   }
@@ -1138,13 +1155,13 @@ export default function LunaReader({
       statsRef.current.dur += g.durationSeconds;
       statsRef.current.anns.push(...g.wordAnnotations);
       subWords.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
-      lineResultsRef.current.push({ text: sentences[curIdx] ?? "", ok: !hasError });
+      lineResultsRef.current.push({ text: sentencesRef.current[curIdx] ?? "", ok: !hasError });
     }
     // Only surface "I heard …" when the transcript ACTUALLY diverges from the
     // target line (Azure echoes the reference even on a wrong read).
     const norm = (s: string) =>
       (s || "").toLowerCase().replace(/[^a-z0-9'\s]/g, "").replace(/\s+/g, " ").trim();
-    const targetLine = sentences[curIdx] ?? "";
+    const targetLine = sentencesRef.current[curIdx] ?? "";
     const heardDiffers =
       !!g.heardTranscript && norm(g.heardTranscript) !== norm(targetLine);
     setLastHeard(hasError && heardDiffers ? g.heardTranscript! : null);
@@ -1169,7 +1186,7 @@ export default function LunaReader({
       // (1-3 substitutions) → sound-out mini-lesson on those exact words.
       if (heavy) {
         const tokH = sessionTokenRef.current;
-        const linePromise = speakToUrl(sentences[curIdx] ?? ""); // pre-warm during the clips
+        const linePromise = speakToUrl(sentencesRef.current[curIdx] ?? ""); // pre-warm during the clips
         playCachedQueued(`notquite-${1 + rand(NOTQUITE_COUNT)}`, () => { setMode("speaking"); setCaption("Hmm, not quite."); }, () => {
           playCached("listenline-1", () => {
             setCaption("Listen to the whole line…");
@@ -1195,11 +1212,11 @@ export default function LunaReader({
   // REST fallback: grade the recorded WAV, scan-reveal, then shared feedback.
   async function gradeWhole(blob: Blob, which: "before" | "after", durSec: number) {
     try {
-      const g = await postGrade(passage.text, blob);
+      const g = await postGrade(passageRef.current.text, blob);
       addTricky(g.wordAnnotations);
       const statusOf = statusMap(g.wordAnnotations, 0);
-      if (which === "before") { setBefore(toScore(g, durSec)); scanReveal(0, words.length - 1, statusOf, wholeFeedbackBefore); }
-      else { setAfter(toScore(g, durSec)); if (g.prosody != null) setExpression(g.prosody); statsRef.current.afterGrade = g; scanReveal(0, words.length - 1, statusOf, wholeFeedbackAfter); }
+      if (which === "before") { setBefore(toScore(g, durSec)); scanReveal(0, wordsRef.current.length - 1, statusOf, wholeFeedbackBefore); }
+      else { setAfter(toScore(g, durSec)); if (g.prosody != null) setExpression(g.prosody); statsRef.current.afterGrade = g; scanReveal(0, wordsRef.current.length - 1, statusOf, wholeFeedbackAfter); }
     } catch (e: unknown) {
       stopProcessing();
       setErr(e instanceof Error ? e.message : "Something went wrong.");
@@ -1212,9 +1229,9 @@ export default function LunaReader({
     const curIdx = idxRef.current;
     const curAttempt = attemptRef.current;
     try {
-      const g = await postGrade(sentences[curIdx], blob);
-      const from = wSent.indexOf(curIdx), to = wSent.lastIndexOf(curIdx);
-      const lo = from < 0 ? 0 : from, hi = to < 0 ? words.length - 1 : to;
+      const g = await postGrade(sentencesRef.current[curIdx], blob);
+      const from = wSentRef.current.indexOf(curIdx), to = wSentRef.current.lastIndexOf(curIdx);
+      const lo = from < 0 ? 0 : from, hi = to < 0 ? wordsRef.current.length - 1 : to;
       const statusOf = statusMap(g.wordAnnotations, lo);
       scanReveal(lo, hi, statusOf, () => sentenceFeedback(g, curIdx, curAttempt));
     } catch (e: unknown) {
@@ -1228,7 +1245,7 @@ export default function LunaReader({
     if (willRetry) {
       // Clear this line's colors so the re-read scans fresh.
       const s = idxRef.current;
-      const from = wSent.indexOf(s), to = wSent.lastIndexOf(s);
+      const from = wSentRef.current.indexOf(s), to = wSentRef.current.lastIndexOf(s);
       for (let i = from; i <= to; i++) if (i >= 0) wordStateRef.current[i] = "pending";
       setAttempt(1); setCaption("Now read the whole line again!");
       styleWords();
@@ -1240,7 +1257,7 @@ export default function LunaReader({
     setAttempt(0);
     setLastHeard(null);
     const next = idxRef.current + 1;
-    if (next >= sentences.length) {
+    if (next >= sentencesRef.current.length) {
       beginFinalRead();
     } else {
       setIdx(next); setMode("idle"); setCaption("Nice! Read the next line.");
@@ -1354,8 +1371,8 @@ export default function LunaReader({
     void fetch("/api/luna/session-complete", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        childId, passageText: passage.text, gradeLevel: passage.grade,
-        patternId: passage.patternId ?? null,
+        childId, passageText: passageRef.current.text, gradeLevel: passageRef.current.grade,
+        patternId: passageRef.current.patternId ?? null,
         wordAnnotations: g?.wordAnnotations ?? [],
         wordsTotal: g?.wordsTotal ?? 0, wordsCorrect: g?.wordsCorrect ?? 0,
         durationSeconds: g?.durationSeconds ?? 0,
@@ -1374,8 +1391,8 @@ export default function LunaReader({
     // `passages` arrives weakest-pattern-first (adaptive order from the server).
     // Prefer another passage in the weakest pattern; avoid an immediate repeat.
     const targetPattern = pool[0]?.patternId;
-    const inPattern = pool.filter((p) => p.patternId && p.patternId === targetPattern && p.text !== passage.text);
-    const others = pool.filter((p) => p.text !== passage.text);
+    const inPattern = pool.filter((p) => p.patternId && p.patternId === targetPattern && p.text !== passageRef.current.text);
+    const others = pool.filter((p) => p.text !== passageRef.current.text);
     const from = inPattern.length ? inPattern : others.length ? others : pool;
     return from[Math.floor(Math.random() * from.length)] ?? passage;
   }
@@ -1506,10 +1523,10 @@ export default function LunaReader({
   async function beginRead() {
     const isDrill = phaseRef.current === "drill";
     const ci = idxRef.current;
-    const refText = isDrill ? sentences[ci] : passage.text;
-    const from = isDrill ? Math.max(0, wSent.indexOf(ci)) : 0;
-    const to = isDrill ? (wSent.lastIndexOf(ci) < 0 ? words.length - 1 : wSent.lastIndexOf(ci)) : words.length - 1;
-    dbg(`read line ${ci + 1}/${sentences.length} [w${from}-${to}] ref="${isDrill ? refText : "WHOLE PASSAGE"}"`);
+    const refText = isDrill ? sentencesRef.current[ci] : passageRef.current.text;
+    const from = isDrill ? Math.max(0, wSentRef.current.indexOf(ci)) : 0;
+    const to = isDrill ? (wSentRef.current.lastIndexOf(ci) < 0 ? wordsRef.current.length - 1 : wSentRef.current.lastIndexOf(ci)) : wordsRef.current.length - 1;
+    dbg(`read line ${ci + 1}/${sentencesRef.current.length} [w${from}-${to}] ref="${isDrill ? refText : "WHOLE PASSAGE"}"`);
     for (let i = from; i <= to; i++) wordStateRef.current[i] = "pending";
     styleWords();
     readModeRef.current = "starting"; pendingStopRef.current = false;
@@ -1541,7 +1558,7 @@ export default function LunaReader({
   // the whole passage, so the child can hear it right, then read it themselves.
   function listen() {
     if (mode !== "idle") return;
-    const text = phase === "drill" ? sentences[idx] : passage.text;
+    const text = phase === "drill" ? sentencesRef.current[idx] : passageRef.current.text;
     if (!text?.trim()) return;
     unlockAudio();
     setMode("speaking");
