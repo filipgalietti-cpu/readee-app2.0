@@ -27,6 +27,7 @@ import { readingGrowthLine, READING_PRAISE, READING_WIN } from "@/lib/orion/read
 import { pickProcessPraise } from "@/lib/orion/motivation";
 import { nextLadderStep, MODELED } from "@/lib/orion/help-ladder";
 import { readingRungs, READING_RUNG, READING_MAX_HELPS } from "@/lib/orion/reading/rungs";
+import { GENTLE_AFTER_FAILED_LINES } from "@/lib/orion/reading/text-level";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
@@ -353,6 +354,15 @@ export default function LunaReader({
   // Words the child fixed by sounding them out — used for specific process
   // praise in the recap ("you sounded out 'stop' yourself"), the d≈0.99 lever.
   const fixedWordsRef = useRef<string[]>([]);
+  // Frustration circuit-breaker (industry standard: don't grind a child through
+  // a too-hard text). After GENTLE_AFTER_FAILED_LINES lines finish with real
+  // errors, the session switches to ECHO mode: Luna models each remaining line
+  // first ("listen, then you read it"), errors get a warm good-try instead of
+  // drills, and the final whole-story read is skipped. The low accuracy still
+  // reaches fluency_readings, so Orion's text-level guard serves easier text
+  // next session — the child leaves with success, not defeat.
+  const lineFailsRef = useRef(0);
+  const gentleRef = useRef(false);
   // Prewarmed "it's a sight word" explainer lines, per word.
   const sightLineRef = useRef<Map<string, string>>(new Map());
   useEffect(() => { attemptRef.current = attempt; }, [attempt]);
@@ -1253,7 +1263,9 @@ export default function LunaReader({
     // and whether to sound-out vs model the line) lives in a pure, unit-tested
     // module so we can verify the pedagogy without a mic. See grading-decision.
     const { subWords, hasError, heavy } = classifyLineRead(g.wordAnnotations, g.wordsTotal);
-    const willRetry = hasError && curAttempt === 0;
+    // In gentle (echo) mode there are no retries or drills — every result is
+    // final and errors get a warm good-try; the rescue is the modeling itself.
+    const willRetry = hasError && curAttempt === 0 && !gentleRef.current;
     // On the FINAL result for this sentence, roll it into the session grade
     // (there's no whole-story overall read anymore).
     if (!willRetry) {
@@ -1263,6 +1275,15 @@ export default function LunaReader({
       statsRef.current.anns.push(...g.wordAnnotations);
       subWords.slice(0, 5).forEach((w) => statsRef.current.trickyWords.add(w));
       lineResultsRef.current.push({ text: sentencesRef.current[curIdx] ?? "", ok: !hasError });
+      // Frustration guard: enough failed lines → switch the REST of the session
+      // to echo mode (activation affects the next lines, not this one).
+      if (hasError) {
+        lineFailsRef.current += 1;
+        if (!gentleRef.current && lineFailsRef.current >= GENTLE_AFTER_FAILED_LINES) {
+          gentleRef.current = true;
+          dbg("gentle mode ON (echo rescue)");
+        }
+      }
     }
     // Only surface "I heard …" when the transcript ACTUALLY diverges from the
     // target line (Azure echoes the reference even on a wrong read).
@@ -1365,7 +1386,22 @@ export default function LunaReader({
     setLastHeard(null);
     const next = idxRef.current + 1;
     if (next >= sentencesRef.current.length) {
+      // In echo-rescue mode, skip the whole-story victory lap — re-reading a
+      // too-hard text end to end is a defeat lap. Straight to the warm recap;
+      // the low accuracy still reaches the DB so next session serves easier text.
+      if (gentleRef.current) { playRecap(); return; }
       beginFinalRead();
+    } else if (gentleRef.current) {
+      // ECHO mode (assisted reading, the standard rescue): Luna reads the next
+      // line FIRST, then the child reads it after her. I-do → you-do per line.
+      setIdx(next); setMode("speaking"); setCaption("Listen first. Then you read it!");
+      const tok = sessionTokenRef.current;
+      const line = sentencesRef.current[next] ?? "";
+      void speakToUrl(line).then((url) => {
+        if (sessionTokenRef.current !== tok) return;
+        if (url) playUrl(url, () => { setMode("idle"); setCaption("Your turn - read the line!"); armRead(600); });
+        else { setMode("idle"); setCaption("Your turn - read the line!"); armRead(900); }
+      });
     } else {
       setIdx(next); setMode("idle"); setCaption("Nice! Read the next line.");
       armRead(900); // hands-free next line
@@ -1433,7 +1469,17 @@ export default function LunaReader({
     const practiceLine = trickyList.length
       ? `Make sure to practice ${trickyList.map((w) => `"${w}"`).join(" and ")}. You'll get them next time!`
       : "";
-    const summary = [praiseLine, growthLine, practiceLine].filter(Boolean).join(" ");
+    // Reader IDENTITY (Bandura/Stanovich): after a rescue session, praise the
+    // PERSISTENCE — the child must never leave feeling like a failed reader.
+    // After a strong session, name the identity: they're becoming a reader.
+    const lines = lineResultsRef.current;
+    const okRatio = lines.length ? lines.filter((l) => l.ok).length / lines.length : 0;
+    const identityLine = gentleRef.current
+      ? "Those were tricky words today and you kept going. That is exactly what strong readers do!"
+      : okRatio >= 0.67 && lines.length >= 3
+        ? `You're becoming a strong reader, ${name}!`
+        : null;
+    const summary = [identityLine, praiseLine, growthLine, practiceLine].filter(Boolean).join(" ");
     let wordsUrl: string | null = null;
     let wordsReady = !summary;
     if (summary) {
@@ -1526,6 +1572,8 @@ export default function LunaReader({
     sessionCarrotsRef.current = 0; setSessionCarrots(0); setCarrotShown(0); setBunnyRx("");
     lineResultsRef.current = [];
     fixedWordsRef.current = [];
+    lineFailsRef.current = 0;
+    gentleRef.current = false;
     setWordLesson(null); missQueueRef.current = [];
     const sessTok = ++sessionTokenRef.current;
     void speakToUrl(`Great reading, ${name}!`).then((url) => { if (url && sessionTokenRef.current === sessTok) recapIntroUrlRef.current = url; });
