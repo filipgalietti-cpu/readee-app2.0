@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, RotateCcw, X } from "lucide-react";
+import { Carrot, Check, RotateCcw, X } from "lucide-react";
 import { useState } from "react";
 
 /**
@@ -97,7 +97,7 @@ export default function InteractiveChoices({
                   transition={{ type: "spring", stiffness: 320, damping: 22 }}
                   className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-400 px-6 py-3 text-white shadow-lg"
                 >
-                  <span className="text-2xl">🥕</span>
+                  <Carrot className="h-6 w-6" strokeWidth={2.2} aria-hidden />
                   <span className="text-base font-extrabold">+10 carrots</span>
                 </motion.div>
                 {/* Floating carrots */}
@@ -108,9 +108,9 @@ export default function InteractiveChoices({
                       initial={{ y: 0, opacity: 0, x: -50 + k * 33 }}
                       animate={{ y: -110, opacity: [0, 1, 1, 0] }}
                       transition={{ delay: 0.1 + k * 0.1, duration: 1.6, ease: "easeOut" }}
-                      className="absolute top-0 text-3xl"
+                      className="absolute top-0"
                     >
-                      🥕
+                      <Carrot className="h-7 w-7 text-orange-500" strokeWidth={2.2} aria-hidden />
                     </motion.div>
                   ))}
                 </div>
