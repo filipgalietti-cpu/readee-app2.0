@@ -1,7 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { rateLimit, clientIp } from "@/lib/security/rate-limit";
 
 export async function POST(req: NextRequest) {
+  // Unauthenticated + sends email → throttle per IP to stop Resend bombing.
+  const rl = await rateLimit({ bucket: "contact", key: clientIp(req), limit: 5, windowMs: 3600_000 });
+  if (!rl.ok) {
+    return NextResponse.json({ error: "Too many messages. Please try again later." }, { status: 429 });
+  }
+
   const { name, email, message } = (await req.json()) as {
     name?: string;
     email?: string;

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { rateLimit, clientIp } from "@/lib/security/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,13 @@ export const dynamic = "force-dynamic";
  * directly). Net new info disclosure: minimal.
  */
 export async function POST(req: NextRequest) {
+  // Account-enumeration + admin-API amplification surface → throttle per IP.
+  // Return a neutral "unknown" (not 429) so the limiter itself isn't an oracle.
+  const rl = await rateLimit({ bucket: "login-hint", key: clientIp(req), limit: 10, windowMs: 600_000 });
+  if (!rl.ok) {
+    return NextResponse.json({ hint: "unknown" });
+  }
+
   let email = "";
   try {
     const body = await req.json();
