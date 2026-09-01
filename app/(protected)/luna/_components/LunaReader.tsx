@@ -774,6 +774,45 @@ export default function LunaReader({
     };
     step();
   }
+  /** Phoneme WARM-UP (I-do, model-only): before the drill, Luna shows one of the
+   *  story's target-pattern words BIG and sounds it out phoneme by phoneme, so
+   *  every session has guaranteed phonics work even when the child reads cleanly.
+   *  No mic check — pure modeling — then straight into the read. Resolves (and a
+   *  watchdog guarantees it) so it can never hang the drill. */
+  function preTeach(p: Passage): Promise<void> {
+    return new Promise((resolve) => {
+      let done = false;
+      const finish = () => { if (done) return; done = true; window.clearTimeout(wd); setWordLesson(null); resolve(); };
+      const wd = window.setTimeout(finish, 12000); // never block the read
+      const inText = new Set(computeWords(p.text).words.map(normWord));
+      const cands = (p.targetWords ?? []).map((w) => w.trim()).filter(Boolean);
+      const pick = cands.find((w) => !isSightWord(w) && soundOutSegments(w) && inText.has(normWord(w)))
+        ?? cands.find((w) => !isSightWord(w) && soundOutSegments(w));
+      const segs = pick ? soundOutSegments(pick) : null;
+      if (!pick || !segs) { finish(); return; }
+      prewarmWordAudio(pick);
+      const tok = sessionTokenRef.current;
+      setMode("speaking");
+      setCaption("Warm-up! Say each sound with me.");
+      setWordLesson({ word: pick, segs, segIdx: -1 });
+      playCached("echome-1", () => {
+        let k = 0;
+        const step = () => {
+          if (sessionTokenRef.current !== tok) { finish(); return; }
+          if (k >= segs.length) {
+            setWordLesson((s) => (s ? { ...s, segIdx: segs.length } : s));
+            const wurl = wordSpeakRef.current.get(normWord(pick));
+            if (wurl) { setCaption(`Put it together: "${pick}"! Now read the story.`); playUrl(wurl, finish); }
+            else finish();
+            return;
+          }
+          setWordLesson((s) => (s ? { ...s, segIdx: k } : s));
+          playUrl(`${PHONEME_BASE}/${segs[k].id}.mp3`, () => { k++; window.setTimeout(step, 950); });
+        };
+        step();
+      });
+    });
+  }
   /** After a word's say-it-back check: next queued word, or the line. */
   function afterWordCheck() {
     if (missQueueRef.current.length > 0) nextWordLesson();
@@ -1438,9 +1477,12 @@ export default function LunaReader({
     cardRef.current?.animate([{ transform: "translateY(14px)", opacity: 0 }, { transform: "translateY(0)", opacity: 1 }], { duration: 700, easing: "cubic-bezier(.22,.61,.36,1)" });
     await runBuildReveal(info);
     stopProcessing();
-    // Straight into the per-sentence drill — no confusing whole-story baseline
-    // read. The "Let's Start" tap was the one gesture we need (audio unlock);
-    // from here the mic arms itself after each beat — hands-free reading.
+    // Phoneme warm-up (I-do): model the target-pattern sound before reading, so
+    // every session has phonics work even when the child reads cleanly.
+    await preTeach(p);
+    // Then straight into the per-sentence drill. The "Let's Start" tap was the
+    // one gesture we need (audio unlock); from here the mic arms itself after
+    // each beat — hands-free reading.
     setPhase("drill"); setIdx(0); setAttempt(0); setMode("idle"); setCaption("Read the first line out loud!");
     armRead(900);
   }
