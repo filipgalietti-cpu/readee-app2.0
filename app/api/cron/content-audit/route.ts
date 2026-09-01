@@ -111,6 +111,15 @@ async function alreadyRanToday(): Promise<boolean> {
 }
 
 export async function GET(req: NextRequest) {
+  // Same CRON_SECRET Bearer gate every other cron uses — this route was the
+  // one exception: an unauthenticated GET that runs a full ~1,200-item
+  // service-role catalog scan, loopable for a compute/DB-write DoS.
+  const provided = req.headers.get("authorization");
+  const secret = process.env.CRON_SECRET;
+  if (!secret || provided !== `Bearer ${secret}`) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
+
   const force = req.nextUrl.searchParams.get("force") === "1";
   if (!force && (await alreadyRanToday())) {
     return NextResponse.json({ skipped: "already ran in the last 23h" });

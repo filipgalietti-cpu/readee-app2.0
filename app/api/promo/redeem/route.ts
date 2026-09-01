@@ -30,11 +30,14 @@ export async function POST(req: NextRequest) {
   const admin = supabaseAdmin();
   const trimmedCode = code.trim();
 
-  // Look up the promo code (case-insensitive)
+  // Look up the promo code (case-insensitive). Escape LIKE metacharacters so a
+  // submitted "%" can't wildcard-match ANY code and hand out premium for free
+  // (ilike treats %/_ as wildcards; \ is the default escape char).
+  const escapedCode = trimmedCode.replace(/[\\%_]/g, (m) => `\\${m}`);
   const { data: promoCode, error: lookupError } = await admin
     .from("promo_codes")
     .select("*")
-    .ilike("code", trimmedCode)
+    .ilike("code", escapedCode)
     .single();
 
   if (lookupError || !promoCode) {
