@@ -152,20 +152,20 @@ function LeaderboardContent() {
           className="flex flex-col items-center gap-4 text-center"
         >
           <div>
-            <div className="mb-2 text-sm font-bold uppercase tracking-[0.14em] text-indigo-600 dark:text-indigo-400">
+            <div className="mb-2 text-sm font-bold uppercase tracking-[0.14em] text-indigo-600">
               Leaderboard
             </div>
-            <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-indigo-950 dark:text-white sm:text-4xl">
+            <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-indigo-950 sm:text-4xl">
               Top readers
             </h1>
-            <p className="mx-auto mt-3 max-w-lg text-lg text-zinc-600 dark:text-slate-400">
+            <p className="mx-auto mt-3 max-w-lg text-lg text-zinc-600">
               {subhead}
             </p>
           </div>
         </motion.div>
 
         {loadError && (
-          <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-200">
+          <div className="rounded-2xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800">
             {loadError}
           </div>
         )}
@@ -176,7 +176,7 @@ function LeaderboardContent() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-gradient-to-b from-indigo-50 to-white px-4 pt-8 shadow-sm dark:border-slate-800 dark:from-slate-900 dark:to-slate-900/40 sm:px-8"
+            className="relative overflow-hidden rounded-3xl border border-indigo-100 bg-gradient-to-b from-indigo-50 to-white px-4 pt-8 shadow-sm sm:px-8"
           >
             {(
               <div className="pointer-events-none absolute inset-0">
@@ -214,13 +214,13 @@ function LeaderboardContent() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900/50"
+            className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm"
           >
-            <div className="flex items-baseline justify-between border-b border-zinc-100 px-5 py-4 dark:border-slate-800">
-              <h2 className="text-lg font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            <div className="flex items-baseline justify-between border-b border-zinc-100 px-5 py-4">
+              <h2 className="text-lg font-extrabold tracking-tight text-zinc-900">
                 {rest.length > 0 ? "Everyone else" : "The board"}
               </h2>
-              <span className="text-[13px] font-semibold text-zinc-400 dark:text-slate-500">
+              <span className="text-[13px] font-semibold text-zinc-400">
                 {leaders.length} readers
               </span>
             </div>
@@ -247,26 +247,26 @@ function LeaderboardContent() {
             className="flex flex-col gap-4"
           >
             {/* Rank card */}
-            <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+            <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="relative shrink-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={leaders.find((l) => l.isMe)?.avatar || "/images/avatars/default_0.png"}
                     alt=""
-                    className="h-14 w-14 rounded-full object-cover ring-2 ring-indigo-300 dark:ring-indigo-500/40"
+                    className="h-14 w-14 rounded-full object-cover ring-2 ring-indigo-300"
                   />
                   {myRank && (
-                    <span className="absolute -bottom-1 -right-1.5 rounded-full border-2 border-white bg-indigo-600 px-2 py-0.5 text-xs font-extrabold text-white dark:border-slate-900">
+                    <span className="absolute -bottom-1 -right-1.5 rounded-full border-2 border-white bg-indigo-600 px-2 py-0.5 text-xs font-extrabold text-white">
                       #{myRank}
                     </span>
                   )}
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-lg font-extrabold text-zinc-900 dark:text-white">
+                  <div className="text-lg font-extrabold text-zinc-900">
                     {myRank ? `${ordinal(myRank)} of ${leaders.length}` : "On the board"}
                   </div>
-                  <div className="mt-0.5 flex items-center gap-1.5 text-sm font-semibold text-orange-600 dark:text-orange-400">
+                  <div className="mt-0.5 flex items-center gap-1.5 text-sm font-semibold text-orange-600">
                     <Carrot className="h-4 w-4" strokeWidth={2} />
                     {child.carrots.toLocaleString()} carrots
                   </div>
@@ -274,7 +274,7 @@ function LeaderboardContent() {
               </div>
               {ahead ? (
                 <div className="mt-4">
-                  <div className="h-3 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800">
+                  <div className="h-3 w-full overflow-hidden rounded-full bg-zinc-100">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-violet-600 to-violet-500"
                       style={{
@@ -283,26 +283,26 @@ function LeaderboardContent() {
                     />
                   </div>
                   <div className="mt-2 flex justify-between text-[13px] font-bold">
-                    <span className="text-zinc-500 dark:text-slate-400">
+                    <span className="text-zinc-500">
                       {child.carrots.toLocaleString()}
                     </span>
-                    <span className="text-indigo-600 dark:text-indigo-300">
+                    <span className="text-indigo-600">
                       {ahead.name} · {ahead.carrots.toLocaleString()}
                     </span>
                   </div>
                 </div>
               ) : (
-                <p className="mt-4 text-sm font-semibold text-zinc-500 dark:text-slate-400">
+                <p className="mt-4 text-sm font-semibold text-zinc-500">
                   Nobody&rsquo;s ahead of you. Keep the lead!
                 </p>
               )}
             </div>
 
             {/* Streak card */}
-            <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/50">
+            <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
               <div className="flex items-center gap-2">
                 <Flame className="h-5 w-5 text-amber-500" fill="currentColor" strokeWidth={0} />
-                <h3 className="text-lg font-extrabold tracking-tight text-zinc-900 dark:text-white">
+                <h3 className="text-lg font-extrabold tracking-tight text-zinc-900">
                   {myStreak}-day streak
                 </h3>
               </div>
@@ -314,8 +314,8 @@ function LeaderboardContent() {
                       key={i}
                       className={`flex h-11 items-center justify-center rounded-xl text-xs font-extrabold ${
                         lit
-                          ? "bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300"
-                          : "border-2 border-dashed border-indigo-200 bg-indigo-50/40 text-indigo-400 dark:border-slate-700 dark:bg-slate-800/40 dark:text-slate-500"
+                          ? "bg-amber-100 text-amber-700"
+                          : "border-2 border-dashed border-indigo-200 bg-indigo-50/40 text-indigo-400"
                       }`}
                     >
                       {"MTWTFSS"[i]}
@@ -323,7 +323,7 @@ function LeaderboardContent() {
                   );
                 })}
               </div>
-              <p className="mt-3 text-sm font-semibold text-zinc-600 dark:text-slate-400">
+              <p className="mt-3 text-sm font-semibold text-zinc-600">
                 One lesson today keeps your flame lit.
               </p>
             </div>
@@ -390,10 +390,10 @@ function PodiumColumn({ entry, rank }: { entry: LeaderEntry; rank: number }) {
       <img
         src={entry.avatar}
         alt={entry.name}
-        className={`${isFirst ? "h-24 w-24 border-[5px] border-amber-400" : "h-16 w-16 border-4 border-zinc-200 dark:border-slate-700"} rounded-full bg-white object-cover shadow-lg`}
+        className={`${isFirst ? "h-24 w-24 border-[5px] border-amber-400" : "h-16 w-16 border-4 border-zinc-200"} rounded-full bg-white object-cover shadow-lg`}
       />
       <div
-        className={`mt-2.5 text-center font-extrabold text-indigo-950 dark:text-white ${isFirst ? "text-xl" : "text-base"}`}
+        className={`mt-2.5 text-center font-extrabold text-indigo-950 ${isFirst ? "text-xl" : "text-base"}`}
       >
         {entry.name}
         {entry.isMe && (
@@ -448,13 +448,13 @@ function StandingRow({
       ref={rowRef}
       className={`flex items-center gap-3.5 rounded-2xl px-4 py-3 transition-colors ${
         entry.isMe
-          ? "border-2 border-indigo-500 bg-indigo-50 shadow-[0_6px_0_#c7d2fe] dark:border-indigo-500 dark:bg-indigo-500/10 dark:shadow-none"
-          : "border border-zinc-200 hover:bg-zinc-50 dark:border-slate-800 dark:hover:bg-slate-800/40"
+          ? "border-2 border-indigo-500 bg-indigo-50 shadow-[0_6px_0_#c7d2fe]"
+          : "border border-zinc-200 hover:bg-zinc-50"
       }`}
     >
       <span
         className={`w-8 text-center text-xl font-extrabold ${
-          entry.isMe ? "text-indigo-700 dark:text-indigo-300" : "text-zinc-400 dark:text-slate-500"
+          entry.isMe ? "text-indigo-700" : "text-zinc-400"
         }`}
       >
         {rank}
@@ -464,25 +464,25 @@ function StandingRow({
         src={entry.avatar}
         alt=""
         className={`h-10 w-10 rounded-full object-cover ${
-          entry.isMe ? "ring-2 ring-indigo-400" : "ring-1 ring-zinc-200 dark:ring-slate-700"
+          entry.isMe ? "ring-2 ring-indigo-400" : "ring-1 ring-zinc-200"
         }`}
       />
       <span
         className={`min-w-0 flex-1 truncate font-bold ${
           entry.isMe
-            ? "text-indigo-700 dark:text-indigo-300"
-            : "text-zinc-700 dark:text-slate-200"
+            ? "text-indigo-700"
+            : "text-zinc-700"
         }`}
       >
         {entry.isMe ? `You (${entry.name})` : entry.name}
       </span>
-      <span className="inline-flex items-center gap-1.5 text-[15px] font-bold text-orange-600 dark:text-orange-400">
+      <span className="inline-flex items-center gap-1.5 text-[15px] font-bold text-orange-600">
         <Carrot className="h-4 w-4 text-orange-500" strokeWidth={2} />
         {entry.carrots.toLocaleString()}
       </span>
       <span
         className={`inline-flex w-11 items-center justify-end gap-0.5 text-[15px] font-bold ${
-          entry.streak > 0 ? "text-amber-600 dark:text-amber-400" : "text-zinc-300 dark:text-slate-600"
+          entry.streak > 0 ? "text-amber-600" : "text-zinc-300"
         }`}
       >
         <Flame

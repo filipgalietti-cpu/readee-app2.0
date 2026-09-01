@@ -45,12 +45,12 @@ export default function CreateQuizButton() {
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-zinc-900 dark:text-white">New quiz</h3>
+              <h3 className="text-base font-bold text-zinc-900">New quiz</h3>
               <button
                 onClick={() => setOpen(false)}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
@@ -58,7 +58,7 @@ export default function CreateQuizButton() {
             </div>
             <div className="mt-4 space-y-3">
               <label className="block">
-                <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                <span className="text-xs font-semibold text-zinc-500">
                   Title
                 </span>
                 <input
@@ -67,17 +67,17 @@ export default function CreateQuizButton() {
                   placeholder="Friday phonics check"
                   maxLength={120}
                   autoFocus
-                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
                 />
               </label>
               <label className="block">
-                <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                <span className="text-xs font-semibold text-zinc-500">
                   Grade (optional)
                 </span>
                 <select
                   value={grade}
                   onChange={(e) => setGrade(e.target.value)}
-                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
                 >
                   <option value="">—</option>
                   <option value="K">Kindergarten</option>
@@ -88,7 +88,7 @@ export default function CreateQuizButton() {
                 </select>
               </label>
               <label className="block">
-                <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+                <span className="text-xs font-semibold text-zinc-500">
                   Description (optional)
                 </span>
                 <textarea
@@ -96,7 +96,7 @@ export default function CreateQuizButton() {
                   onChange={(e) => setDescription(e.target.value)}
                   rows={2}
                   placeholder="Quick exit ticket to check main-idea understanding."
-                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
                 />
               </label>
             </div>
@@ -105,7 +105,7 @@ export default function CreateQuizButton() {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100"
               >
                 Cancel
               </button>

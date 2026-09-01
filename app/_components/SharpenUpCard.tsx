@@ -76,25 +76,25 @@ export default function SharpenUpCard({
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 to-white p-6 shadow-sm dark:border-violet-900/40 dark:from-violet-950/30 dark:to-slate-900"
+      className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 to-white p-6 shadow-sm"
     >
       <div className="flex items-start gap-4">
-        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300">
+        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-violet-100 text-violet-700">
           <Brain className="h-6 w-6" strokeWidth={1.8} />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <h3 className="font-display text-lg font-extrabold tracking-tight text-zinc-900 dark:text-white">
+            <h3 className="font-display text-lg font-extrabold tracking-tight text-zinc-900">
               Sharpen Up
             </h3>
             <span className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
               {isPremium ? "Premium" : <><Lock className="h-2.5 w-2.5" strokeWidth={2.4} /> Premium</>}
             </span>
           </div>
-          <p className="mt-1 text-sm leading-relaxed text-zinc-600 dark:text-slate-400">
+          <p className="mt-1 text-sm leading-relaxed text-zinc-600">
             {isPremium ? (
               <>
-                Your tricky spot right now: <span className="font-bold text-zinc-900 dark:text-white">{standardLabel}</span>.
+                Your tricky spot right now: <span className="font-bold text-zinc-900">{standardLabel}</span>.
                 {" "}
                 {weakSpots.length === 1
                   ? "5 quick questions to nail it down."
@@ -104,7 +104,7 @@ export default function SharpenUpCard({
               <>
                 We&apos;ve been watching where {standardLabel.toLowerCase().includes("read") ? "" : ""}you trip up.
                 {" "}
-                <span className="font-bold text-zinc-900 dark:text-white">Readee+ rebuilds a session from your tricky spots.</span>
+                <span className="font-bold text-zinc-900">Readee+ rebuilds a session from your tricky spots.</span>
               </>
             )}
           </p>
@@ -120,12 +120,12 @@ export default function SharpenUpCard({
                 return (
                   <div
                     key={spot.standard_id}
-                    className="flex-1 rounded-xl border border-violet-200 bg-white px-3 py-2 dark:border-violet-900/40 dark:bg-slate-800"
+                    className="flex-1 rounded-xl border border-violet-200 bg-white px-3 py-2"
                   >
-                    <div className="font-mono text-[10px] font-bold text-violet-700 dark:text-violet-300">
+                    <div className="font-mono text-[10px] font-bold text-violet-700">
                       {s?.standard_id ?? spot.standard_id}
                     </div>
-                    <div className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                    <div className="mt-0.5 text-xs text-zinc-500">
                       {pct}% missed
                     </div>
                   </div>

@@ -69,8 +69,8 @@ export default async function InvitePage({
         classroomName={inv.classroom_name}
         studentDisplay={studentDisplay}
       >
-        <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/40">
-          <p className="text-sm text-zinc-700 dark:text-slate-300">
+        <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-6">
+          <p className="text-sm text-zinc-700">
             Sign in or create a free Readee account to connect{" "}
             <strong>{studentDisplay}</strong> to this class.
           </p>
@@ -83,7 +83,7 @@ export default async function InvitePage({
             </Link>
             <Link
               href={`/signup?redirect=${nextPath}${emailPrefill}`}
-              className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-800 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+              className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-800 transition hover:border-indigo-300 hover:text-indigo-600"
             >
               <UserPlus className="h-4 w-4" />
               Create account
@@ -129,17 +129,17 @@ function Shell({
   return (
     <div className="mx-auto max-w-xl px-5 py-12">
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600">
           <GraduationCap className="h-5 w-5" />
         </span>
-        <div className="text-xs font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+        <div className="text-xs font-bold uppercase tracking-widest text-indigo-700">
           Classroom invite
         </div>
       </div>
-      <h1 className="mt-5 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="mt-5 text-2xl font-extrabold tracking-tight text-zinc-900">
         {teacherDisplay} invited {studentDisplay} to {classroomName}
       </h1>
-      <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-2 text-sm text-zinc-500">
         Connect {studentDisplay}&apos;s Readee profile below. Once linked,
         {" "}
         {studentDisplay} will see assignments from this class on their
@@ -163,10 +163,10 @@ function StatusShell({
 }) {
   return (
     <div className="mx-auto max-w-xl px-5 py-16 text-center">
-      <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900">
         {title}
       </h1>
-      <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">{body}</p>
+      <p className="mt-3 text-sm text-zinc-500">{body}</p>
       {ctaHref && ctaLabel && (
         <Link
           href={ctaHref}

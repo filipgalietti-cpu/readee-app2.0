@@ -39,7 +39,7 @@ export default function FeedbackButton() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white shadow-lg transition hover:scale-105 hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100 print:hidden"
+        className="fixed bottom-6 right-6 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-zinc-900 text-white shadow-lg transition hover:scale-105 hover:bg-zinc-800 print:hidden"
         aria-label="Report an issue or share feedback"
         title="Report an issue"
       >
@@ -52,20 +52,20 @@ export default function FeedbackButton() {
             className="absolute inset-0 bg-black/40"
             onClick={() => !pending && setOpen(false)}
           />
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-5 shadow-2xl dark:bg-slate-900 sm:p-6">
+          <div className="relative w-full max-w-md rounded-2xl bg-white p-5 shadow-2xl sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+                <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600">
                   Feedback
                 </div>
-                <h3 className="mt-0.5 text-base font-bold text-zinc-900 dark:text-white">
+                <h3 className="mt-0.5 text-base font-bold text-zinc-900">
                   Tell us what&apos;s up
                 </h3>
               </div>
               <button
                 onClick={() => setOpen(false)}
                 disabled={pending}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 disabled:opacity-50 dark:hover:bg-slate-800"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 disabled:opacity-50"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
@@ -74,19 +74,19 @@ export default function FeedbackButton() {
 
             {sent ? (
               <div className="my-6 text-center">
-                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-300">
+                <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-700">
                   <Check className="h-5 w-5" />
                 </div>
-                <p className="mt-3 text-sm font-semibold text-zinc-900 dark:text-white">
+                <p className="mt-3 text-sm font-semibold text-zinc-900">
                   Got it - thanks for sending.
                 </p>
-                <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+                <p className="mt-1 text-xs text-zinc-500">
                   Filip will follow up if we need more info.
                 </p>
               </div>
             ) : (
               <>
-                <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+                <p className="mt-1 text-xs text-zinc-500">
                   Bug reports, feature ideas, weird behavior, or just "this is
                   confusing" - all welcome. We reply by email.
                 </p>
@@ -97,7 +97,7 @@ export default function FeedbackButton() {
                   maxLength={5000}
                   placeholder="What happened? What did you expect?"
                   autoFocus
-                  className="mt-4 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-4 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
                 />
                 <p className="mt-1 text-right text-[11px] text-zinc-400">
                   {message.length}/5000
@@ -109,7 +109,7 @@ export default function FeedbackButton() {
                   <button
                     type="button"
                     onClick={() => setOpen(false)}
-                    className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                    className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100"
                   >
                     Cancel
                   </button>

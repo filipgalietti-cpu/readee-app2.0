@@ -48,7 +48,7 @@ export default function RegenerateQuestionButton({
         type="button"
         onClick={regenerate}
         disabled={pending}
-        className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-violet-500 transition hover:bg-violet-50 hover:text-violet-700 disabled:opacity-60 dark:hover:bg-violet-950/40"
+        className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-violet-500 transition hover:bg-violet-50 hover:text-violet-700 disabled:opacity-60"
         title="Regenerate with Readee.ai (1 credit)"
         aria-label="Regenerate this question with Readee.ai"
       >

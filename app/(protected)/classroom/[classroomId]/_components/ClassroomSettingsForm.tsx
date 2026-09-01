@@ -76,25 +76,25 @@ export default function ClassroomSettingsForm({
       className="space-y-4"
     >
       <div>
-        <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <label className="block text-xs font-semibold text-zinc-500">
           Class name
         </label>
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={80}
-          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-900 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-900 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-200"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <label className="block text-xs font-semibold text-zinc-500">
           Grade level
         </label>
         <select
           value={gradeLevel}
           onChange={(e) => setGradeLevel(e.target.value as GradeLevel | "")}
-          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-900 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-900 focus:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-200"
         >
           {GRADE_OPTIONS.map((o) => (
             <option key={o.value || "none"} value={o.value}>
@@ -104,7 +104,7 @@ export default function ClassroomSettingsForm({
         </select>
       </div>
 
-      <div className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-3 dark:border-slate-800 dark:bg-slate-900/60">
+      <div className="rounded-xl border border-zinc-200 bg-zinc-50/60 p-3">
         <label className="flex cursor-pointer items-center gap-2">
           <input
             type="checkbox"
@@ -115,12 +115,12 @@ export default function ClassroomSettingsForm({
             }}
             className="h-4 w-4 accent-indigo-600"
           />
-          <span className="inline-flex items-center gap-1 text-sm font-semibold text-zinc-800 dark:text-slate-200">
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-zinc-800">
             <Lock className="h-3.5 w-3.5 text-indigo-600" />
             Require a 4-digit class PIN
           </span>
         </label>
-        <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-xs text-zinc-500">
           Useful for shared classroom devices — students enter this PIN
           after tapping their name tile. Leave off for kiosk-style use.
         </p>
@@ -131,7 +131,7 @@ export default function ClassroomSettingsForm({
             inputMode="numeric"
             maxLength={4}
             placeholder="••••"
-            className="mt-3 w-28 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-center font-mono text-xl font-extrabold tracking-[0.3em] text-indigo-700 focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-indigo-200"
+            className="mt-3 w-28 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-center font-mono text-xl font-extrabold tracking-[0.3em] text-indigo-700 focus:border-indigo-400 focus:outline-none"
           />
         )}
       </div>
@@ -146,7 +146,7 @@ export default function ClassroomSettingsForm({
           Save changes
         </button>
         {savedAt && !pending && !err && (
-          <span className="inline-flex items-center gap-1 text-xs font-semibold text-green-600 dark:text-green-400">
+          <span className="inline-flex items-center gap-1 text-xs font-semibold text-green-600">
             <Check className="h-3.5 w-3.5" />
             Saved
           </span>

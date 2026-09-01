@@ -57,27 +57,27 @@ export default async function AdminList({
 
   if (admins.length === 0) {
     return (
-      <div className="rounded-xl border border-dashed border-zinc-200 bg-white p-4 text-center text-xs text-zinc-500 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-400">
+      <div className="rounded-xl border border-dashed border-zinc-200 bg-white p-4 text-center text-xs text-zinc-500">
         No admins yet. Use the &quot;Add admin&quot; button above.
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
-      <ul className="divide-y divide-zinc-100 dark:divide-slate-800">
+    <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white">
+      <ul className="divide-y divide-zinc-100">
         {admins.map((a) => (
           <li key={a.id} className="flex items-center justify-between gap-3 px-4 py-2.5">
             <div className="min-w-0">
-              <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+              <div className="truncate text-sm font-semibold text-zinc-900">
                 {a.email}
                 {a.profile_id === selfProfileId && (
-                  <span className="ml-2 rounded-full bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                  <span className="ml-2 rounded-full bg-indigo-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
                     You
                   </span>
                 )}
               </div>
-              <div className="mt-0.5 text-[11px] text-zinc-400 dark:text-slate-500">
+              <div className="mt-0.5 text-[11px] text-zinc-400">
                 Admin since{" "}
                 {new Date(a.created_at).toLocaleDateString("en-US", {
                   month: "short",

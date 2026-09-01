@@ -293,7 +293,7 @@ export default function StoryStudio({
           <button
             type="button"
             onClick={reset}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
           >
             <ArrowLeft className="h-4 w-4" /> Start over
           </button>
@@ -302,7 +302,7 @@ export default function StoryStudio({
         )}
         <span
           ref={counterRef}
-          className={`inline-flex items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1.5 text-sm font-extrabold text-orange-700 dark:bg-orange-950/30 dark:text-orange-300 ${
+          className={`inline-flex items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1.5 text-sm font-extrabold text-orange-700 ${
             counterPop ? "ss-counterPop" : ""
           }`}
           style={BALOO}
@@ -320,7 +320,7 @@ export default function StoryStudio({
                 <LunaOrb mode="idle" size={44} />
               </div>
             </div>
-            <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-3xl" style={BALOO}>
+            <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 sm:text-3xl" style={BALOO}>
               Write a story with Luna
             </h1>
           </div>
@@ -338,9 +338,9 @@ export default function StoryStudio({
             onDone={generate}
           />
 
-          <p className="mt-6 flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-center text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-6 flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-center text-sm text-zinc-500">
             <ShieldCheck className="h-4 w-4 flex-none text-emerald-500" /> Every story is checked to keep readers safe. Check out our{" "}
-            <Link href="/safety" className="font-bold text-violet-600 underline transition hover:text-violet-700 dark:text-violet-300">
+            <Link href="/safety" className="font-bold text-violet-600 underline transition hover:text-violet-700">
               safety policy
             </Link>
             .
@@ -374,8 +374,8 @@ export default function StoryStudio({
       )}
 
       {phase === "error" && (
-        <div className="mt-10 rounded-3xl border border-rose-200 bg-rose-50 p-8 text-center dark:border-rose-900/40 dark:bg-rose-950/20">
-          <p className="text-base font-bold text-rose-800 dark:text-rose-200">{errorMsg}</p>
+        <div className="mt-10 rounded-3xl border border-rose-200 bg-rose-50 p-8 text-center">
+          <p className="text-base font-bold text-rose-800">{errorMsg}</p>
           <button
             type="button"
             onClick={reset}
@@ -616,9 +616,9 @@ function StudioKeyframes() {
 function ThumbImage({ src }: { src: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
-    <span className="relative block h-[120px] w-full overflow-hidden bg-zinc-100 dark:bg-slate-800 sm:h-[150px]">
+    <span className="relative block h-[120px] w-full overflow-hidden bg-zinc-100 sm:h-[150px]">
       {!loaded && (
-        <span className="absolute inset-0 animate-pulse bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-slate-800 dark:to-slate-700" />
+        <span className="absolute inset-0 animate-pulse bg-gradient-to-br from-zinc-100 to-zinc-200" />
       )}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -650,17 +650,17 @@ function ImageTile({
     <button
       type="button"
       onClick={onClick}
-      className={`group relative overflow-hidden rounded-2xl border bg-white text-center transition duration-200 active:scale-[0.96] dark:bg-slate-900/50 ${
+      className={`group relative overflow-hidden rounded-2xl border bg-white text-center transition duration-200 active:scale-[0.96] ${
         selected
           ? "border-violet-500 shadow-[0_0_0_3px_rgba(139,92,246,0.15)_inset]"
-          : "border-zinc-200 hover:-translate-y-0.5 hover:shadow-md dark:border-slate-700"
+          : "border-zinc-200 hover:-translate-y-0.5 hover:shadow-md"
       }`}
       style={BALOO}
     >
       <ThumbImage src={src} />
       <span
         className={`block px-1.5 py-3 text-[15px] sm:text-[17px] ${
-          selected ? "bg-violet-50 text-violet-800 dark:bg-violet-950/30 dark:text-violet-200" : "text-zinc-700 dark:text-slate-200"
+          selected ? "bg-violet-50 text-violet-800" : "text-zinc-700"
         }`}
       >
         {label}
@@ -719,23 +719,23 @@ function FormChips({ value, onChange }: { value: string; onChange: (v: string) =
             onClick={() => onChange(f.key)}
             className={`group flex items-center gap-3 rounded-2xl border p-4 text-left transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98] ${
               selected
-                ? "border-violet-500 bg-violet-50 shadow-[0_0_0_3px_rgba(139,92,246,0.15)_inset] dark:bg-violet-950/30"
-                : "border-zinc-200 bg-white hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900/50"
+                ? "border-violet-500 bg-violet-50 shadow-[0_0_0_3px_rgba(139,92,246,0.15)_inset]"
+                : "border-zinc-200 bg-white hover:border-violet-300"
             }`}
             style={BALOO}
           >
             <span
               className={`flex h-[52px] w-[52px] flex-none items-center justify-center rounded-2xl ${
-                selected ? "ss-pop bg-violet-600 text-white" : "bg-zinc-100 text-violet-600 dark:bg-slate-800 dark:text-violet-300"
+                selected ? "ss-pop bg-violet-600 text-white" : "bg-zinc-100 text-violet-600"
               }`}
             >
               <Icon className="h-6 w-6" />
             </span>
             <span className="min-w-0">
-              <span className={`block text-[18px] font-extrabold ${selected ? "text-violet-800 dark:text-violet-200" : "text-zinc-800 dark:text-slate-100"}`}>
+              <span className={`block text-[18px] font-extrabold ${selected ? "text-violet-800" : "text-zinc-800"}`}>
                 {f.label}
               </span>
-              <span className="block text-sm text-zinc-500 dark:text-slate-400">{f.desc}</span>
+              <span className="block text-sm text-zinc-500">{f.desc}</span>
             </span>
           </button>
         );
@@ -753,7 +753,7 @@ function IdeaBox({ value, onChange }: { value: string; onChange: (v: string) => 
         rows={5}
         maxLength={200}
         placeholder="A brave space puppy who is scared of the dark..."
-        className="w-full resize-none rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-lg text-zinc-900 outline-none transition focus:border-violet-400 focus:bg-white focus:shadow-[0_0_0_3px_rgba(139,92,246,0.15)] dark:border-slate-700 dark:bg-slate-900/50 dark:text-white"
+        className="w-full resize-none rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-lg text-zinc-900 outline-none transition focus:border-violet-400 focus:bg-white focus:shadow-[0_0_0_3px_rgba(139,92,246,0.15)]"
       />
       <span className="pointer-events-none absolute bottom-3 right-4 text-xs font-bold text-zinc-400">{value.length}/200</span>
     </div>
@@ -772,7 +772,7 @@ function Wizard(props: MakerProps) {
       {/* 4-segment cumulative progress bar. */}
       <div className="mb-6 flex gap-2">
         {[0, 1, 2, 3].map((i) => (
-          <span key={i} className="h-[9px] flex-1 overflow-hidden rounded-full bg-zinc-200 dark:bg-slate-700">
+          <span key={i} className="h-[9px] flex-1 overflow-hidden rounded-full bg-zinc-200">
             {i <= step && <span className="ss-bar block h-full w-full rounded-full bg-gradient-to-r from-violet-600 to-violet-500" />}
           </span>
         ))}
@@ -780,30 +780,30 @@ function Wizard(props: MakerProps) {
 
       {step === 0 && (
         <div className="ss-step">
-          <h2 className="ss-titlepop-h2 text-2xl font-extrabold text-zinc-900 dark:text-white sm:text-3xl" style={BALOO}>Pick a kind of story</h2>
+          <h2 className="ss-titlepop-h2 text-2xl font-extrabold text-zinc-900 sm:text-3xl" style={BALOO}>Pick a kind of story</h2>
           <div className="mt-5"><TypeChips value={storyType} onChange={setStoryType} /></div>
           <NextButton disabled={!storyType} onClick={next} />
         </div>
       )}
       {step === 1 && (
         <div className="ss-step">
-          <h2 className="ss-titlepop-h2 text-2xl font-extrabold text-zinc-900 dark:text-white sm:text-3xl" style={BALOO}>What kind of writing is it?</h2>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">Luna can write it lots of ways.</p>
+          <h2 className="ss-titlepop-h2 text-2xl font-extrabold text-zinc-900 sm:text-3xl" style={BALOO}>What kind of writing is it?</h2>
+          <p className="mt-1 text-sm text-zinc-500">Luna can write it lots of ways.</p>
           <div className="mt-5"><FormChips value={writingForm} onChange={setWritingForm} /></div>
           <NextButton disabled={!writingForm} onClick={next} />
         </div>
       )}
       {step === 2 && (
         <div className="ss-step">
-          <h2 className="ss-titlepop-h2 text-2xl font-extrabold text-zinc-900 dark:text-white sm:text-3xl" style={BALOO}>What happens in your story?</h2>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">Tell Luna your idea. A few words is plenty.</p>
+          <h2 className="ss-titlepop-h2 text-2xl font-extrabold text-zinc-900 sm:text-3xl" style={BALOO}>What happens in your story?</h2>
+          <p className="mt-1 text-sm text-zinc-500">Tell Luna your idea. A few words is plenty.</p>
           <div className="mt-5"><IdeaBox value={idea} onChange={setIdea} /></div>
           <NextButton disabled={!idea.trim()} onClick={next} />
         </div>
       )}
       {step === 3 && (
         <div className="ss-step">
-          <h2 className="ss-titlepop-h2 text-2xl font-extrabold text-zinc-900 dark:text-white sm:text-3xl" style={BALOO}>How should it look?</h2>
+          <h2 className="ss-titlepop-h2 text-2xl font-extrabold text-zinc-900 sm:text-3xl" style={BALOO}>How should it look?</h2>
           <div className="mt-5"><StyleChips value={imageStyle} onChange={setImageStyle} /></div>
           <MakeButton onClick={onDone} />
         </div>
@@ -850,10 +850,10 @@ function Generating() {
   return (
     <div className="mt-12 flex flex-col items-center text-center">
       <LunaOrb mode="thinking" size={140} />
-      <h2 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white sm:text-3xl" style={BALOO}>
+      <h2 className="mt-4 text-2xl font-extrabold text-zinc-900 sm:text-3xl" style={BALOO}>
         Luna is writing your story...
       </h2>
-      <p className="mt-1 text-base text-zinc-600 dark:text-slate-300">{GEN_CAPTIONS[cap]}</p>
+      <p className="mt-1 text-base text-zinc-600">{GEN_CAPTIONS[cap]}</p>
     </div>
   );
 }
@@ -863,12 +863,12 @@ function CoverImage({ src, styleGradient }: { src: string | null; styleGradient:
   const [loaded, setLoaded] = useState(false);
   return (
     <div
-      className="relative aspect-square overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-100 shadow-md ring-1 ring-black/5 dark:border-slate-700 dark:bg-slate-800"
+      className="relative aspect-square overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-100 shadow-md ring-1 ring-black/5"
       style={{ background: src ? undefined : styleGradient }}
     >
       {src && (
         <>
-          {!loaded && <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-slate-800 dark:to-slate-700" />}
+          {!loaded && <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-zinc-100 to-zinc-200" />}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}
@@ -887,10 +887,10 @@ function Byline({ avatarSrc, childName }: { avatarSrc: string; childName: string
   return (
     <div className="flex items-center gap-2">
       <span
-        className="h-7 w-7 flex-none rounded-full bg-cover bg-center shadow-sm ring-2 ring-white dark:ring-slate-800"
+        className="h-7 w-7 flex-none rounded-full bg-cover bg-center shadow-sm ring-2 ring-white"
         style={{ backgroundImage: `url(${avatarSrc})` }}
       />
-      <span className="text-sm font-bold text-zinc-600 dark:text-slate-300" style={BALOO}>
+      <span className="text-sm font-bold text-zinc-600" style={BALOO}>
         Written by {childName}
       </span>
     </div>
@@ -927,11 +927,11 @@ function Preview({
       {/* Daily Readee reader layout: image + passage LEFT, quiz sticky RIGHT. */}
       <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="min-w-0">
-          <motion.div {...rise(0)} className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+          <motion.div {...rise(0)} className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700">
             <Sparkles className="h-3 w-3" /> Story Studio
           </motion.div>
 
-          <motion.h1 {...rise(0.08)} className="mt-2 text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 dark:text-white sm:text-[38px]" style={BALOO}>
+          <motion.h1 {...rise(0.08)} className="mt-2 text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 sm:text-[38px]" style={BALOO}>
             {story.title}
           </motion.h1>
 
@@ -945,7 +945,7 @@ function Preview({
             </div>
           </motion.div>
 
-          <motion.div {...rise(0.4)} className="mt-4 flex items-center gap-2 text-xs text-zinc-500 dark:text-slate-400">
+          <motion.div {...rise(0.4)} className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
             <BookOpen className="h-3.5 w-3.5" />
             {wordCount} words · {Math.max(1, Math.round(wordCount / 150))} min read
             {story.audioUrl && <ReadAloudButton audioUrl={story.audioUrl} />}
@@ -953,7 +953,7 @@ function Preview({
 
           <motion.div
             {...rise(0.5)}
-            className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900 dark:text-slate-100"
+            className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900"
             style={{ fontFamily: 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif' }}
           >
             {story.text}
@@ -982,7 +982,7 @@ function Preview({
           type="button"
           onClick={onRetry}
           disabled={publishing}
-          className="flex items-center justify-center gap-2 rounded-2xl border border-zinc-200 bg-white px-6 py-4 text-lg font-bold text-indigo-600 transition hover:bg-zinc-50 active:scale-[0.98] disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900/50 dark:text-indigo-300"
+          className="flex items-center justify-center gap-2 rounded-2xl border border-zinc-200 bg-white px-6 py-4 text-lg font-bold text-indigo-600 transition hover:bg-zinc-50 active:scale-[0.98] disabled:opacity-60"
           style={BALOO}
         >
           <RotateCcw className="h-5 w-5" /> Try again
@@ -1014,18 +1014,18 @@ function Published({
     <div className="mt-4">
       <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-[420px_minmax(0,1fr)]">
         {/* LEFT — the story card, "In review" */}
-        <div className="ss-bandRise rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900/50">
+        <div className="ss-bandRise rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
           <div className="mx-auto w-full max-w-[372px]">
             <CoverImage src={story.imageUrl} styleGradient={styleGradient} />
           </div>
-          <h3 className="mt-4 text-[26px] font-extrabold leading-tight text-zinc-900 dark:text-white" style={BALOO}>
+          <h3 className="mt-4 text-[26px] font-extrabold leading-tight text-zinc-900" style={BALOO}>
             {story.title}
           </h3>
           <div className="mt-2">
             <Byline avatarSrc={avatarSrc} childName={childName} />
           </div>
           <div className="mt-4 flex items-center gap-3 text-xs">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 font-bold text-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 font-bold text-amber-800">
               <Clock className="h-3.5 w-3.5" /> In review
             </span>
             <span className="font-bold text-zinc-400">{wordCount} words</span>
@@ -1034,7 +1034,7 @@ function Published({
 
         {/* RIGHT — success panel */}
         <div
-          className="ss-bandRise flex flex-col items-center justify-center rounded-3xl border border-emerald-200 p-10 text-center dark:border-emerald-900/40"
+          className="ss-bandRise flex flex-col items-center justify-center rounded-3xl border border-emerald-200 p-10 text-center"
           style={{ background: "linear-gradient(135deg,#ecfdf5,#f5f3ff)" }}
         >
           <span className="ss-pop flex h-[76px] w-[76px] items-center justify-center rounded-full bg-emerald-100">

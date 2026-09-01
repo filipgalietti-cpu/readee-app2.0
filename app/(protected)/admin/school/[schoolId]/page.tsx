@@ -136,7 +136,7 @@ export default async function SchoolAdminPage({
     <div className="mx-auto max-w-6xl px-6 py-10">
       <Link
         href="/admin"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         All scopes
@@ -144,14 +144,14 @@ export default async function SchoolAdminPage({
 
       <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+          <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-700">
             School admin
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             {s.name}
           </h1>
           {(s.city || s.state) && (
-            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-1 text-sm text-zinc-500">
               {[s.city, s.state].filter(Boolean).join(", ")}
             </p>
           )}
@@ -167,7 +167,7 @@ export default async function SchoolAdminPage({
           <AddAdminButton scope="school" schoolId={schoolId} label="Add school admin" />
           <a
             href={`/api/admin/school/${schoolId}/export`}
-            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+            className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600"
             title="Download school-wide progress as CSV"
           >
             <Download className="h-3.5 w-3.5" />
@@ -200,7 +200,7 @@ export default async function SchoolAdminPage({
       <section className="mt-10">
         <div className="mb-3 flex items-center gap-2">
           <Users2 className="h-4 w-4 text-indigo-600" />
-          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
             School admins
           </h2>
         </div>
@@ -210,21 +210,21 @@ export default async function SchoolAdminPage({
       <section className="mt-10">
         <div className="flex items-center gap-2">
           <ClipboardList className="h-4 w-4 text-indigo-600" />
-          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
             Classrooms ({totalClassrooms})
           </h2>
         </div>
         {classroomList.length === 0 ? (
-          <div className="mt-4 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-            <p className="text-sm text-zinc-500 dark:text-slate-400">
+          <div className="mt-4 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+            <p className="text-sm text-zinc-500">
               No classrooms linked to this school yet.
             </p>
           </div>
         ) : (
-          <div className="mt-3 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900/40">
+          <div className="mt-3 overflow-hidden rounded-2xl border border-zinc-200 bg-white">
             <table className="w-full text-sm">
-              <thead className="border-b border-zinc-200 bg-zinc-50 text-left dark:border-slate-800 dark:bg-slate-900/60">
-                <tr className="text-xs uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+              <thead className="border-b border-zinc-200 bg-zinc-50 text-left">
+                <tr className="text-xs uppercase tracking-wider text-zinc-500">
                   <th className="px-5 py-3 font-semibold">Classroom</th>
                   <th className="px-5 py-3 font-semibold">Grade</th>
                   <th className="px-5 py-3 text-right font-semibold">Students</th>
@@ -235,24 +235,24 @@ export default async function SchoolAdminPage({
                 {classroomList.map((c) => (
                   <tr
                     key={c.id}
-                    className="border-b border-zinc-100 last:border-0 hover:bg-indigo-50/40 dark:border-slate-800 dark:hover:bg-indigo-950/20"
+                    className="border-b border-zinc-100 last:border-0 hover:bg-indigo-50/40"
                   >
                     <td className="px-5 py-3">
                       <Link
                         href={`/admin/classroom/${c.id}`}
-                        className="group inline-flex items-center gap-1 font-semibold text-zinc-900 hover:text-indigo-700 hover:underline dark:text-white dark:hover:text-indigo-300"
+                        className="group inline-flex items-center gap-1 font-semibold text-zinc-900 hover:text-indigo-700 hover:underline"
                       >
                         {c.name}
                         <ChevronRight className="h-3.5 w-3.5 text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-indigo-600" />
                       </Link>
                     </td>
-                    <td className="px-5 py-3 text-zinc-600 dark:text-slate-400">
+                    <td className="px-5 py-3 text-zinc-600">
                       {c.grade_level ?? "—"}
                     </td>
-                    <td className="px-5 py-3 text-right font-mono text-zinc-700 dark:text-slate-300">
+                    <td className="px-5 py-3 text-right font-mono text-zinc-700">
                       {studentIdsByClassroom.get(c.id)?.size ?? 0}
                     </td>
-                    <td className="px-5 py-3 text-right font-mono text-zinc-700 dark:text-slate-300">
+                    <td className="px-5 py-3 text-right font-mono text-zinc-700">
                       {assignmentCountByClassroom.get(c.id) ?? 0}
                     </td>
                   </tr>
@@ -261,7 +261,7 @@ export default async function SchoolAdminPage({
             </table>
           </div>
         )}
-        <p className="mt-4 text-xs text-zinc-400 dark:text-slate-500">
+        <p className="mt-4 text-xs text-zinc-400">
           Totals computed over the last 30 days of practice activity.{" "}
           {totalAssignments} assignment{totalAssignments === 1 ? "" : "s"} total across the school.
         </p>
@@ -282,13 +282,13 @@ function SummaryCard({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
         <Icon className="h-3.5 w-3.5" />
         {label}
       </div>
-      <div className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">{value}</div>
-      <div className="mt-1 text-[11px] text-zinc-400 dark:text-slate-500">{hint}</div>
+      <div className="mt-2 text-2xl font-extrabold text-zinc-900">{value}</div>
+      <div className="mt-1 text-[11px] text-zinc-400">{hint}</div>
     </div>
   );
 }

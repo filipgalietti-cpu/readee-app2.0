@@ -29,15 +29,15 @@ export default function TopCommunityPicks() {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="mt-2 rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 p-4 shadow-sm dark:from-violet-950/20 dark:to-indigo-950/30">
+    <div className="mt-2 rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 p-4 shadow-sm">
       <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+        <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700">
           <Users className="h-3.5 w-3.5" />
           From the community
         </div>
         <Link
           href="/practice-hub/community"
-          className="inline-flex items-center gap-1 text-[11px] font-semibold text-violet-700 hover:underline dark:text-violet-300"
+          className="inline-flex items-center gap-1 text-[11px] font-semibold text-violet-700 hover:underline"
         >
           See all
           <ArrowRight className="h-3 w-3" />
@@ -53,7 +53,7 @@ export default function TopCommunityPicks() {
             <Link
               key={p.id}
               href={href}
-              className="flex items-center gap-3 rounded-xl bg-white p-2 transition hover:shadow-sm dark:bg-slate-900"
+              className="flex items-center gap-3 rounded-xl bg-white p-2 transition hover:shadow-sm"
             >
               {p.image_url ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -76,7 +76,7 @@ export default function TopCommunityPicks() {
                     {p.view_count.toLocaleString()} reads
                   </span>
                 </div>
-                <div className="mt-0.5 truncate text-xs font-bold text-zinc-900 dark:text-white">
+                <div className="mt-0.5 truncate text-xs font-bold text-zinc-900">
                   {p.title}
                 </div>
               </div>

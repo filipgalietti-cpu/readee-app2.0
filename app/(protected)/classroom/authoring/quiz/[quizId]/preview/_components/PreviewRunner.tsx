@@ -52,13 +52,13 @@ export default function PreviewRunner({
 
   return (
     <div className="space-y-4">
-      <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+      <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
         <button
           type="button"
           onClick={() => setMode("cards")}
           className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 transition ${
             mode === "cards"
-              ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+              ? "bg-white text-indigo-700 shadow-sm"
               : "text-zinc-500"
           }`}
         >
@@ -70,7 +70,7 @@ export default function PreviewRunner({
           onClick={() => setMode("play")}
           className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 transition ${
             mode === "play"
-              ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+              ? "bg-white text-indigo-700 shadow-sm"
               : "text-zinc-500"
           }`}
         >
@@ -132,7 +132,7 @@ function CardsPreview({
               <Card className="overflow-hidden">
                 <CardHeader className="!p-5 !pb-3">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
                       <BookOpen className="h-3 w-3" />
                       Passage
                     </span>
@@ -153,7 +153,7 @@ function CardsPreview({
                   )}
                   {quizDescription && (
                     <article
-                      className="text-[15px] leading-[1.7] text-zinc-900 dark:text-slate-100"
+                      className="text-[15px] leading-[1.7] text-zinc-900"
                       style={{
                         fontFamily:
                           '"Comic Neue", "Comic Sans MS", Quicksand, Nunito, ui-rounded, system-ui, -apple-system, sans-serif',
@@ -163,8 +163,8 @@ function CardsPreview({
                     </article>
                   )}
                   {passageAudio && (
-                    <div className="flex items-center gap-2 rounded-lg bg-violet-50 px-3 py-2 dark:bg-violet-950/30">
-                      <Volume2 className="h-3.5 w-3.5 text-violet-600 dark:text-violet-300" />
+                    <div className="flex items-center gap-2 rounded-lg bg-violet-50 px-3 py-2">
+                      <Volume2 className="h-3.5 w-3.5 text-violet-600" />
                       <audio src={passageAudio} controls className="flex-1 max-w-full" />
                     </div>
                   )}
@@ -180,7 +180,7 @@ function CardsPreview({
                 <Card className="overflow-hidden">
                   <CardHeader className="!p-5 !pb-3">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                      <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
                         {kindLabel(q.kind)}
                       </span>
                       <span className="font-mono text-[11px] font-bold text-zinc-400">
@@ -202,8 +202,8 @@ function CardsPreview({
                     )}
 
                     {showAudio && (
-                      <div className="flex items-center gap-2 rounded-lg bg-violet-50 px-3 py-2 dark:bg-violet-950/30">
-                        <Volume2 className="h-3.5 w-3.5 text-violet-600 dark:text-violet-300" />
+                      <div className="flex items-center gap-2 rounded-lg bg-violet-50 px-3 py-2">
+                        <Volume2 className="h-3.5 w-3.5 text-violet-600" />
                         <audio src={q.audioUrl!} controls className="flex-1 max-w-full" />
                       </div>
                     )}
@@ -211,7 +211,7 @@ function CardsPreview({
                     {renderChoices(q)}
 
                     {q.hint && (
-                      <div className="flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:bg-amber-950/30 dark:text-amber-200">
+                      <div className="flex items-start gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">
                         <Lightbulb className="mt-0.5 h-3 w-3 flex-shrink-0" />
                         <span>
                           <strong>Hint:</strong> {q.hint}
@@ -227,7 +227,7 @@ function CardsPreview({
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-      <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] text-zinc-500 dark:text-slate-400">
+      <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] text-zinc-500">
         <Sparkles className="h-3 w-3 text-violet-500" />
         Tip: arrow keys also navigate. Card view mirrors what the student sees.
       </div>
@@ -254,8 +254,8 @@ function renderChoices(q: Question): React.ReactNode {
               key={c}
               className={`flex items-center gap-2 rounded-lg border px-3 py-2 ${
                 isCorrect
-                  ? "border-green-300 bg-green-50 font-semibold text-green-900 dark:border-green-800/40 dark:bg-green-950/30 dark:text-green-200"
-                  : "border-zinc-200 text-zinc-700 dark:border-slate-700 dark:text-slate-300"
+                  ? "border-green-300 bg-green-50 font-semibold text-green-900"
+                  : "border-zinc-200 text-zinc-700"
               }`}
             >
               {isCorrect ? (
@@ -280,8 +280,8 @@ function renderChoices(q: Question): React.ReactNode {
               key={v}
               className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 ${
                 isCorrect
-                  ? "border-green-300 bg-green-50 font-semibold text-green-900 dark:border-green-800/40 dark:bg-green-950/30 dark:text-green-200"
-                  : "border-zinc-200 text-zinc-500 dark:border-slate-700 dark:text-slate-400"
+                  ? "border-green-300 bg-green-50 font-semibold text-green-900"
+                  : "border-zinc-200 text-zinc-500"
               }`}
             >
               {isCorrect && <Check className="h-3 w-3 text-green-600" />}
@@ -294,9 +294,9 @@ function renderChoices(q: Question): React.ReactNode {
   }
   if (q.kind === "fill_in_blank" && Array.isArray(q.correct)) {
     return (
-      <div className="rounded-lg border border-green-300 bg-green-50 px-3 py-2 text-xs dark:border-green-800/40 dark:bg-green-950/30">
-        <span className="font-semibold text-green-900 dark:text-green-200">Accepted answers:</span>{" "}
-        <span className="text-green-800 dark:text-green-300">
+      <div className="rounded-lg border border-green-300 bg-green-50 px-3 py-2 text-xs">
+        <span className="font-semibold text-green-900">Accepted answers:</span>{" "}
+        <span className="text-green-800">
           {(q.correct as string[]).join(" / ")}
         </span>
       </div>
@@ -309,11 +309,11 @@ function renderChoices(q: Question): React.ReactNode {
         {pairs.map((p, i) => (
           <li
             key={i}
-            className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 rounded-lg border border-zinc-200 px-3 py-2 dark:border-slate-700"
+            className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 rounded-lg border border-zinc-200 px-3 py-2"
           >
-            <span className="font-semibold text-zinc-900 dark:text-white">{p.left}</span>
+            <span className="font-semibold text-zinc-900">{p.left}</span>
             <span className="text-violet-500">→</span>
-            <span className="text-violet-700 dark:text-violet-300">{p.right}</span>
+            <span className="text-violet-700">{p.right}</span>
           </li>
         ))}
       </ul>

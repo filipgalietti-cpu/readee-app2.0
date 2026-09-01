@@ -215,18 +215,18 @@ export default function NoteTab({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
+        <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700">
           Annual goal
         </div>
-        <div className="mt-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+        <div className="mt-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
           <button
             type="button"
             onClick={() => setGoalMode("saved")}
             disabled={activeGoals.length === 0}
             className={`rounded-full px-3 py-1 transition disabled:opacity-50 ${
               goalMode === "saved"
-                ? "bg-white text-amber-700 shadow-sm dark:bg-slate-800 dark:text-amber-300"
+                ? "bg-white text-amber-700 shadow-sm"
                 : "text-zinc-500"
             }`}
           >
@@ -237,7 +237,7 @@ export default function NoteTab({
             onClick={() => setGoalMode("paste")}
             className={`rounded-full px-3 py-1 transition ${
               goalMode === "paste"
-                ? "bg-white text-amber-700 shadow-sm dark:bg-slate-800 dark:text-amber-300"
+                ? "bg-white text-amber-700 shadow-sm"
                 : "text-zinc-500"
             }`}
           >
@@ -249,7 +249,7 @@ export default function NoteTab({
           <select
             value={goalId}
             onChange={(e) => setGoalId(e.target.value)}
-            className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
           >
             {activeGoals.length === 0 ? (
               <option value="">(no active goals — switch to the Goals tab)</option>
@@ -270,17 +270,17 @@ export default function NoteTab({
             onChange={(e) => setPastedGoal(e.target.value)}
             rows={4}
             placeholder="By the end of Q4, [Student] will…"
-            className="mt-2 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            className="mt-2 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
           />
         )}
 
         <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_120px]">
-          <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <label className="block text-xs font-semibold text-zinc-500">
             Reporting period
             <select
               value={presetId}
               onChange={(e) => setPresetId(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
             >
               {PRESETS.map((g) => (
                 <optgroup key={g.group} label={g.group}>
@@ -295,26 +295,26 @@ export default function NoteTab({
             </select>
           </label>
           {presetId !== "CUSTOM" && (
-            <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <label className="block text-xs font-semibold text-zinc-500">
               School year
               <input
                 type="text"
                 value={schoolYear}
                 onChange={(e) => setSchoolYear(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
               />
             </label>
           )}
         </div>
         {presetId === "CUSTOM" && (
-          <label className="mt-3 block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <label className="mt-3 block text-xs font-semibold text-zinc-500">
             Period label
             <input
               type="text"
               value={customPeriod}
               onChange={(e) => setCustomPeriod(e.target.value)}
               placeholder="e.g. 6-week probe window"
-              className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-amber-500 focus:outline-none"
             />
           </label>
         )}
@@ -342,7 +342,7 @@ export default function NoteTab({
       )}
 
       {pending && !note && (
-        <div className="rounded-3xl border border-amber-100 bg-white px-5 py-10 shadow-sm dark:border-amber-900/40 dark:bg-slate-900">
+        <div className="rounded-3xl border border-amber-100 bg-white px-5 py-10 shadow-sm">
           <ReadeeAiLoader
             size={140}
             label="Readee.ai is drafting the IEP note"
@@ -353,7 +353,7 @@ export default function NoteTab({
 
       {note && (
         <div className="space-y-3">
-          <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 shadow-sm dark:border-amber-900/40 dark:bg-amber-950/20">
+          <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5 shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <span
@@ -383,7 +383,7 @@ export default function NoteTab({
                 {copied ? "Copied" : "Copy full note"}
               </button>
             </div>
-            <p className="mt-3 text-sm font-semibold italic text-amber-900 dark:text-amber-200">
+            <p className="mt-3 text-sm font-semibold italic text-amber-900">
               &ldquo;{note.oneLineSummary}&rdquo;
             </p>
             <Section title="Present Levels of Performance">{note.plop}</Section>
@@ -396,12 +396,12 @@ export default function NoteTab({
             </Section>
           </div>
 
-          <div className="flex items-center justify-between gap-2 rounded-2xl border border-violet-200 bg-violet-50 px-4 py-3 dark:border-violet-900/40 dark:bg-violet-950/30">
+          <div className="flex items-center justify-between gap-2 rounded-2xl border border-violet-200 bg-violet-50 px-4 py-3">
             <div className="text-sm">
-              <div className="font-bold text-violet-900 dark:text-violet-200">
+              <div className="font-bold text-violet-900">
                 Turn this into a 2-week intervention plan
               </div>
-              <div className="text-xs text-violet-700 dark:text-violet-300">
+              <div className="text-xs text-violet-700">
                 Same goal + same data. Get concrete sessions to run Monday.
               </div>
             </div>
@@ -423,11 +423,11 @@ export default function NoteTab({
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="mt-3 rounded-2xl bg-white p-3 dark:bg-slate-900">
-      <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">
+    <div className="mt-3 rounded-2xl bg-white p-3">
+      <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700">
         {title}
       </div>
-      <p className="mt-1 whitespace-pre-line text-sm text-zinc-800 dark:text-slate-200">
+      <p className="mt-1 whitespace-pre-line text-sm text-zinc-800">
         {children}
       </p>
     </div>

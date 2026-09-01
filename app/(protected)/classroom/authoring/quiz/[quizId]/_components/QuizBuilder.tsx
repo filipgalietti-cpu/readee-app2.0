@@ -84,7 +84,7 @@ export default function QuizBuilder({
 
       <section>
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
             Questions
           </h2>
           <div className="flex flex-wrap items-center gap-2">
@@ -101,8 +101,8 @@ export default function QuizBuilder({
         </div>
 
         {questions.length === 0 ? (
-          <div className="mt-3 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-            <p className="text-sm text-zinc-500 dark:text-slate-400">
+          <div className="mt-3 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+            <p className="text-sm text-zinc-500">
               No questions yet. Click &quot;Add question&quot; to start.
             </p>
           </div>
@@ -180,14 +180,14 @@ function QuestionCard({
   const showImage = q.imageUrl && q.imageUrl !== passageImageUrl;
   const showAudio = q.audioUrl && q.audioUrl !== passageAudioUrl;
   return (
-    <li className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-indigo-200 dark:border-slate-800 dark:bg-slate-900/40">
+    <li className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-indigo-200">
       {/* Header strip */}
-      <div className="flex items-center justify-between gap-3 border-b border-zinc-100 bg-gradient-to-r from-zinc-50 to-white px-5 py-2.5 dark:border-slate-800 dark:from-slate-900 dark:to-slate-900/60">
+      <div className="flex items-center justify-between gap-3 border-b border-zinc-100 bg-gradient-to-r from-zinc-50 to-white px-5 py-2.5">
         <div className="flex items-center gap-2">
           <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 text-[11px] font-bold text-white">
             {index + 1}
           </span>
-          <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+          <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
             {kindLabel(q.kind)}
           </span>
           {showAudio && (
@@ -197,7 +197,7 @@ function QuestionCard({
                 const a = new Audio(q.audioUrl!);
                 a.play().catch(() => {});
               }}
-              className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 transition hover:bg-violet-100 dark:bg-violet-950/30 dark:text-violet-300"
+              className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 transition hover:bg-violet-100"
               title="Play question audio"
             >
               <Volume2 className="h-3 w-3" />
@@ -217,7 +217,7 @@ function QuestionCard({
             <button
               type="button"
               onClick={onEdit}
-              className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-indigo-400 transition hover:bg-indigo-50 hover:text-indigo-700 dark:hover:bg-indigo-950/40"
+              className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-indigo-400 transition hover:bg-indigo-50 hover:text-indigo-700"
               title="Edit"
             >
               <Pencil className="h-3.5 w-3.5" />
@@ -235,12 +235,12 @@ function QuestionCard({
             <img
               src={q.imageUrl!}
               alt=""
-              className="h-24 w-24 flex-shrink-0 rounded-xl border border-zinc-200 object-cover dark:border-slate-700"
+              className="h-24 w-24 flex-shrink-0 rounded-xl border border-zinc-200 object-cover"
             />
           )}
           <div className="min-w-0 flex-1">
             <p
-              className="whitespace-pre-line text-[15px] font-semibold leading-snug text-zinc-900 dark:text-white"
+              className="whitespace-pre-line text-[15px] font-semibold leading-snug text-zinc-900"
               style={{
                 fontFamily:
                   'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
@@ -254,7 +254,7 @@ function QuestionCard({
         <div className="mt-4">{renderChoicesAsCards(q)}</div>
 
         {q.hint && (
-          <div className="mt-4 flex items-start gap-2 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:bg-amber-950/20 dark:text-amber-200">
+          <div className="mt-4 flex items-start gap-2 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800">
             <Lightbulb className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-amber-600" />
             <div>
               <span className="font-bold">Hint: </span>
@@ -283,8 +283,8 @@ function renderChoicesAsCards(q: Question): React.ReactNode {
               key={`${i}-${c}`}
               className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-sm ${
                 isCorrect
-                  ? "border-emerald-300 bg-emerald-50 font-semibold text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-200"
-                  : "border-zinc-200 bg-white text-zinc-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                  ? "border-emerald-300 bg-emerald-50 font-semibold text-emerald-900"
+                  : "border-zinc-200 bg-white text-zinc-700"
               }`}
             >
               {isCorrect && (
@@ -308,8 +308,8 @@ function renderChoicesAsCards(q: Question): React.ReactNode {
               key={label}
               className={`flex items-center justify-center gap-2 rounded-xl border px-3 py-3 text-sm font-bold ${
                 isCorrect
-                  ? "border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-700/60 dark:bg-emerald-950/30 dark:text-emerald-200"
-                  : "border-zinc-200 bg-white text-zinc-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
+                  ? "border-emerald-300 bg-emerald-50 text-emerald-900"
+                  : "border-zinc-200 bg-white text-zinc-600"
               }`}
             >
               {isCorrect && <Check className="h-4 w-4 text-emerald-600" />}
@@ -322,11 +322,11 @@ function renderChoicesAsCards(q: Question): React.ReactNode {
   }
   if (q.kind === "fill_in_blank" && Array.isArray(q.correct)) {
     return (
-      <div className="rounded-xl bg-emerald-50 px-3 py-2 text-xs dark:bg-emerald-950/20">
-        <span className="font-bold text-emerald-800 dark:text-emerald-300">
+      <div className="rounded-xl bg-emerald-50 px-3 py-2 text-xs">
+        <span className="font-bold text-emerald-800">
           Accepted answers:{" "}
         </span>
-        <span className="text-emerald-900 dark:text-emerald-200">
+        <span className="text-emerald-900">
           {q.correct.join(" · ")}
         </span>
       </div>
@@ -339,13 +339,13 @@ function renderChoicesAsCards(q: Question): React.ReactNode {
         {pairs.map((p, i) => (
           <div
             key={i}
-            className="flex items-center gap-3 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900"
+            className="flex items-center gap-3 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm"
           >
-            <div className="flex-1 font-semibold text-zinc-800 dark:text-slate-200">
+            <div className="flex-1 font-semibold text-zinc-800">
               {p.left}
             </div>
             <div className="text-zinc-300">→</div>
-            <div className="flex-1 rounded-lg bg-violet-50 px-2 py-1 font-semibold text-violet-800 dark:bg-violet-950/30 dark:text-violet-300">
+            <div className="flex-1 rounded-lg bg-violet-50 px-2 py-1 font-semibold text-violet-800">
               {p.right}
             </div>
           </div>
@@ -355,9 +355,9 @@ function renderChoicesAsCards(q: Question): React.ReactNode {
   }
   if (q.kind === "free_response") {
     return (
-      <div className="rounded-xl border-2 border-dashed border-rose-300 bg-rose-50/40 px-3 py-3 text-xs text-rose-800 dark:border-rose-900/40 dark:bg-rose-950/20 dark:text-rose-200">
+      <div className="rounded-xl border-2 border-dashed border-rose-300 bg-rose-50/40 px-3 py-3 text-xs text-rose-800">
         <div className="font-bold">AI-graded writing response</div>
-        <div className="mt-0.5 text-rose-700 dark:text-rose-300">
+        <div className="mt-0.5 text-rose-700">
           Student types an answer; Readee scores it on a 4-domain rubric
           (ideas, organization, voice, conventions) and surfaces a
           strength + growth tip.
@@ -413,8 +413,8 @@ function QuizMetaForm({
   }
 
   return (
-    <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
-      <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+    <section className="rounded-2xl border border-zinc-200 bg-white p-5">
+      <h2 className="text-sm font-bold uppercase tracking-widest text-zinc-500">
         Quiz details
       </h2>
       <form
@@ -425,35 +425,35 @@ function QuizMetaForm({
         className="mt-3 space-y-3"
       >
         <label className="block">
-          <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <span className="text-xs font-semibold text-zinc-500">
             Title
           </span>
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             maxLength={120}
-            className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
           />
         </label>
         <div className="grid gap-3 sm:grid-cols-[1fr_180px]">
           <label className="block">
-            <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <span className="text-xs font-semibold text-zinc-500">
               Description
             </span>
             <input
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
             />
           </label>
           <label className="block">
-            <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <span className="text-xs font-semibold text-zinc-500">
               Grade
             </span>
             <select
               value={gradeLevel}
               onChange={(e) => setGradeLevel(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
             >
               <option value="">—</option>
               <option value="K">Kindergarten</option>
@@ -500,7 +500,7 @@ function RemoveQuestionButton({ quizId, questionId }: { quizId: string; question
       type="button"
       onClick={submit}
       disabled={pending}
-      className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 hover:bg-red-50 hover:text-red-600 disabled:opacity-50 dark:hover:bg-red-950/40"
+      className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 hover:bg-red-50 hover:text-red-600 disabled:opacity-50"
       title="Delete question"
     >
       {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5" />}
@@ -526,12 +526,12 @@ function DangerZone({ quizId }: { quizId: string }) {
     });
   }
   return (
-    <section className="rounded-2xl border border-red-200 bg-red-50/60 p-4 dark:border-red-900/50 dark:bg-red-950/20">
-      <h3 className="text-xs font-bold uppercase tracking-widest text-red-700 dark:text-red-300">
+    <section className="rounded-2xl border border-red-200 bg-red-50/60 p-4">
+      <h3 className="text-xs font-bold uppercase tracking-widest text-red-700">
         Danger zone
       </h3>
       <div className="mt-2 flex items-center justify-between gap-3">
-        <div className="text-xs text-red-800 dark:text-red-300">
+        <div className="text-xs text-red-800">
           Delete this quiz. Existing assignments that referenced it will
           stop working for students.
         </div>
@@ -539,7 +539,7 @@ function DangerZone({ quizId }: { quizId: string }) {
           type="button"
           onClick={submit}
           disabled={pending}
-          className="inline-flex items-center gap-1.5 rounded-full border border-red-300 bg-white px-3 py-1.5 text-xs font-semibold text-red-700 transition hover:bg-red-50 disabled:opacity-50 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300"
+          className="inline-flex items-center gap-1.5 rounded-full border border-red-300 bg-white px-3 py-1.5 text-xs font-semibold text-red-700 transition hover:bg-red-50 disabled:opacity-50"
         >
           {pending ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Trash2 className="h-3.5 w-3.5" />}
           Delete quiz
@@ -893,9 +893,9 @@ function QuestionFormModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
-      <div className="relative flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3 dark:border-slate-800">
-          <h3 className="text-base font-bold text-zinc-900 dark:text-white">
+      <div className="relative flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+        <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3">
+          <h3 className="text-base font-bold text-zinc-900">
             {isEdit ? "Edit question" : "New question"}
           </h3>
           <div className="flex items-center gap-2">
@@ -903,7 +903,7 @@ function QuestionFormModal({
             <TopUpCreditsButton pool="teacher" label="Top up" />
             <button
               onClick={onClose}
-              className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+              className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
               aria-label="Close"
             >
               <X className="h-4 w-4" />
@@ -914,16 +914,16 @@ function QuestionFormModal({
         <div className="flex-1 space-y-4 overflow-y-auto p-5">
           {!isEdit && (
             <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <span className="text-xs font-semibold text-zinc-500">
                 Method
               </span>
-              <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+              <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
                 <button
                   type="button"
                   onClick={() => setAuthorMode("manual")}
                   className={`rounded-full px-3 py-1 transition ${
                     authorMode === "manual"
-                      ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                      ? "bg-white text-indigo-700 shadow-sm"
                       : "text-zinc-500"
                   }`}
                 >
@@ -934,7 +934,7 @@ function QuestionFormModal({
                   onClick={() => setAuthorMode("ai-fill")}
                   className={`inline-flex items-center gap-1 rounded-full px-3 py-1 transition ${
                     authorMode === "ai-fill"
-                      ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                      ? "bg-white text-violet-700 shadow-sm"
                       : "text-zinc-500"
                   }`}
                 >
@@ -946,8 +946,8 @@ function QuestionFormModal({
           )}
 
           {!isEdit && authorMode === "ai-fill" && (
-            <div className="space-y-4 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-4 dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30">
-              <div className="flex items-start gap-2 text-xs text-zinc-600 dark:text-slate-400">
+            <div className="space-y-4 rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-4">
+              <div className="flex items-start gap-2 text-xs text-zinc-600">
                 <Sparkles className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-violet-600" />
                 <span>
                   Pick a standard + difficulty. Readee writes one calibrated MCQ.
@@ -956,10 +956,10 @@ function QuestionFormModal({
               </div>
 
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                   1. Grade
                 </div>
-                <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-white p-0.5 text-xs font-bold dark:border-slate-700 dark:bg-slate-950">
+                <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-white p-0.5 text-xs font-bold">
                   {GRADES.map((g) => (
                     <button
                       key={g}
@@ -978,13 +978,13 @@ function QuestionFormModal({
               </div>
 
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                   2. Domain
                 </div>
                 <select
                   value={aiDomain}
                   onChange={(e) => setAiDomain(e.target.value)}
-                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none"
                 >
                   {aiDomains.map((d) => (
                     <option key={d} value={d}>
@@ -995,13 +995,13 @@ function QuestionFormModal({
               </div>
 
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                   3. Standard
                 </div>
                 <select
                   value={aiStandardId}
                   onChange={(e) => setAiStandardId(e.target.value)}
-                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none"
                 >
                   {aiStandardsInDomain.map((s) => (
                     <option key={s.standardId} value={s.standardId}>
@@ -1010,8 +1010,8 @@ function QuestionFormModal({
                   ))}
                 </select>
                 {aiSelectedStandard && (
-                  <div className="mt-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
-                    <span className="mr-2 inline-flex items-center rounded-full bg-violet-100 px-2 py-0.5 font-mono text-[10px] font-bold text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+                  <div className="mt-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 text-xs text-zinc-600">
+                    <span className="mr-2 inline-flex items-center rounded-full bg-violet-100 px-2 py-0.5 font-mono text-[10px] font-bold text-violet-700">
                       {aiSelectedStandard.standardId}
                     </span>
                     {aiSelectedStandard.standardDescription}
@@ -1020,7 +1020,7 @@ function QuestionFormModal({
               </div>
 
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                   4. Target difficulty
                 </div>
                 <input
@@ -1032,17 +1032,17 @@ function QuestionFormModal({
                   onChange={(e) => setAiDifficulty(Number(e.target.value))}
                   className="mt-2 w-full accent-violet-600"
                 />
-                <div className="mt-1 flex justify-between text-[10px] font-semibold text-zinc-500 dark:text-slate-400">
+                <div className="mt-1 flex justify-between text-[10px] font-semibold text-zinc-500">
                   <span>Below grade</span>
                   <span>On grade</span>
                   <span>Above grade</span>
                 </div>
-                <div className="mt-1 text-center text-xs font-bold text-violet-700 dark:text-violet-300">
+                <div className="mt-1 text-center text-xs font-bold text-violet-700">
                   {["", "Below grade", "Easy on-grade", "On grade (typical)", "Hard on-grade", "Above grade"][aiDifficulty]}
                 </div>
               </div>
 
-              <details className="group rounded-xl border border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900">
+              <details className="group rounded-xl border border-zinc-200 bg-white">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 text-[11px] font-bold text-zinc-500 [&::-webkit-details-marker]:hidden">
                   <span>
                     5. Anchor to a passage{" "}
@@ -1051,13 +1051,13 @@ function QuestionFormModal({
                   <span className="text-zinc-400 transition-transform group-open:rotate-180">▾</span>
                 </summary>
                 <div className="px-3 pb-3">
-                  <div className="mb-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-bold dark:border-slate-700 dark:bg-slate-950">
+                  <div className="mb-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-bold">
                     <button
                       type="button"
                       onClick={() => setAiPassageMode("paste")}
                       className={`rounded-full px-2.5 py-0.5 transition ${
                         aiPassageMode === "paste"
-                          ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                          ? "bg-white text-violet-700 shadow-sm"
                           : "text-zinc-500"
                       }`}
                     >
@@ -1068,7 +1068,7 @@ function QuestionFormModal({
                       onClick={() => setAiPassageMode("generate")}
                       className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 transition ${
                         aiPassageMode === "generate"
-                          ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                          ? "bg-white text-violet-700 shadow-sm"
                           : "text-zinc-500"
                       }`}
                     >
@@ -1078,8 +1078,8 @@ function QuestionFormModal({
                   </div>
 
                   {aiPassageMode === "generate" && (
-                    <div className="mb-2 rounded-2xl border border-violet-200 bg-violet-50 p-3 dark:border-violet-900/40 dark:bg-violet-950/30">
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                    <div className="mb-2 rounded-2xl border border-violet-200 bg-violet-50 p-3">
+                      <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                         Theme
                       </div>
                       <div className="mt-2 flex flex-wrap gap-1.5">
@@ -1100,7 +1100,7 @@ function QuestionFormModal({
                             className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition ${
                               aiPassageTopic === t
                                 ? "border-violet-500 bg-violet-600 text-white"
-                                : "border-violet-200 bg-white text-violet-700 hover:bg-violet-100 dark:border-violet-900/40 dark:bg-slate-900 dark:text-violet-300"
+                                : "border-violet-200 bg-white text-violet-700 hover:bg-violet-100"
                             }`}
                           >
                             {t}
@@ -1116,9 +1116,9 @@ function QuestionFormModal({
                             ? `Or type a topic (default: passage targeting "${aiSelectedStandard.title}")`
                             : "Or type a topic"
                         }
-                        className="mt-2 w-full rounded-lg border border-violet-200 bg-white px-2 py-1.5 text-xs focus:border-violet-500 focus:outline-none dark:border-violet-900/40 dark:bg-slate-900"
+                        className="mt-2 w-full rounded-lg border border-violet-200 bg-white px-2 py-1.5 text-xs focus:border-violet-500 focus:outline-none"
                       />
-                      <div className="mt-2 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                      <div className="mt-2 text-[10px] font-bold uppercase tracking-widest text-violet-700">
                         Length
                       </div>
                       <div className="mt-1 flex gap-1.5">
@@ -1130,14 +1130,14 @@ function QuestionFormModal({
                             className={`flex-1 rounded-full border px-2.5 py-1 text-[11px] font-semibold capitalize transition ${
                               aiPassageLength === tier
                                 ? "border-violet-500 bg-violet-600 text-white"
-                                : "border-violet-200 bg-white text-violet-700 hover:bg-violet-100 dark:border-violet-900/40 dark:bg-slate-900 dark:text-violet-300"
+                                : "border-violet-200 bg-white text-violet-700 hover:bg-violet-100"
                             }`}
                           >
                             {tier}
                           </button>
                         ))}
                       </div>
-                      <div className="mt-1 text-[10px] text-violet-700 dark:text-violet-300">
+                      <div className="mt-1 text-[10px] text-violet-700">
                         {gradeLengthRange(aiGrade, aiPassageLength)}
                       </div>
                       <button
@@ -1180,13 +1180,13 @@ function QuestionFormModal({
                         ? "Paste a passage the class is reading. The question will be grounded in this text."
                         : "Generated passage will appear here. You can edit it before generating the question."
                     }
-                    className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none"
                   />
                 </div>
               </details>
 
               {aiErr && (
-                <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-300">
+                <div className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
                   <AlertCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
                   <span>{aiErr}</span>
                 </div>
@@ -1214,28 +1214,28 @@ function QuestionFormModal({
           )}
 
           {!isEdit && authorMode === "manual" && aiResultMeta && (
-            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-3 py-2 text-[11px] dark:border-violet-900/40 dark:bg-violet-950/30">
-              <span className="inline-flex items-center gap-1 font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300">
+            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-3 py-2 text-[11px]">
+              <span className="inline-flex items-center gap-1 font-bold uppercase tracking-wider text-violet-700">
                 <Sparkles className="h-3 w-3" />
                 AI calibration
               </span>
-              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700 dark:bg-slate-900 dark:text-violet-300">
+              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700">
                 Bloom: {aiResultMeta.bloomsLevel}
               </span>
-              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700 dark:bg-slate-900 dark:text-violet-300">
+              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700">
                 Skill: {aiResultMeta.skillMicrolabel}
               </span>
-              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700 dark:bg-slate-900 dark:text-violet-300">
+              <span className="rounded-full bg-white px-2 py-0.5 font-semibold text-violet-700">
                 Difficulty: {aiResultMeta.difficultyActual}/5
               </span>
             </div>
           )}
 
           <div>
-            <label className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <label className="text-xs font-semibold text-zinc-500">
               Type
             </label>
-            <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+            <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
               {(["multiple_choice", "true_false", "fill_in_blank", "free_response"] as QuestionKind[]).map((k) => (
                 <button
                   key={k}
@@ -1243,7 +1243,7 @@ function QuestionFormModal({
                   onClick={() => setKind(k)}
                   className={`rounded-full px-3 py-1 transition ${
                     kind === k
-                      ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                      ? "bg-white text-indigo-700 shadow-sm"
                       : "text-zinc-500"
                   }`}
                 >
@@ -1254,7 +1254,7 @@ function QuestionFormModal({
           </div>
 
           <label className="block">
-            <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <span className="text-xs font-semibold text-zinc-500">
               Prompt
             </span>
             <textarea
@@ -1262,13 +1262,13 @@ function QuestionFormModal({
               onChange={(e) => setPrompt(e.target.value)}
               rows={3}
               placeholder="e.g. What was the main idea of the passage?"
-              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
             />
           </label>
 
           {kind === "multiple_choice" && (
             <div>
-              <label className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <label className="text-xs font-semibold text-zinc-500">
                 Choices (tap the radio for the correct answer)
               </label>
               <div className="mt-2 space-y-2">
@@ -1290,13 +1290,13 @@ function QuestionFormModal({
                         if (correctMcq && c === correctMcq) setCorrectMcq(val);
                       }}
                       placeholder={`Choice ${i + 1}`}
-                      className="flex-1 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                      className="flex-1 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm focus:border-indigo-400 focus:outline-none"
                     />
                     {choices.length > 2 && (
                       <button
                         type="button"
                         onClick={() => removeChoice(i)}
-                        className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40"
+                        className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 hover:bg-red-50 hover:text-red-600"
                         aria-label="Remove choice"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
@@ -1319,7 +1319,7 @@ function QuestionFormModal({
 
           {kind === "true_false" && (
             <div>
-              <label className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <label className="text-xs font-semibold text-zinc-500">
                 Correct answer
               </label>
               <div className="mt-2 inline-flex gap-2">
@@ -1331,7 +1331,7 @@ function QuestionFormModal({
                     className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${
                       correctTf === v
                         ? "bg-indigo-600 text-white"
-                        : "border border-zinc-200 bg-white text-zinc-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                        : "border border-zinc-200 bg-white text-zinc-700"
                     }`}
                   >
                     {v}
@@ -1343,7 +1343,7 @@ function QuestionFormModal({
 
           {kind === "fill_in_blank" && (
             <label className="block">
-              <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <span className="text-xs font-semibold text-zinc-500">
                 Accepted answers (comma or newline-separated)
               </span>
               <textarea
@@ -1351,15 +1351,15 @@ function QuestionFormModal({
                 onChange={(e) => setFillAnswers(e.target.value)}
                 rows={2}
                 placeholder="cat, kitten"
-                className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
               />
             </label>
           )}
 
           {kind === "free_response" && (
-            <div className="rounded-xl border-2 border-dashed border-rose-300 bg-rose-50/40 px-3 py-3 text-xs text-rose-800 dark:border-rose-900/40 dark:bg-rose-950/20 dark:text-rose-200">
+            <div className="rounded-xl border-2 border-dashed border-rose-300 bg-rose-50/40 px-3 py-3 text-xs text-rose-800">
               <div className="font-bold">AI-graded writing response</div>
-              <div className="mt-0.5 text-rose-700 dark:text-rose-300">
+              <div className="mt-0.5 text-rose-700">
                 The student types an answer to the prompt above. Readee
                 rubric-scores it on Ideas / Organization / Voice /
                 Conventions and returns a strength + growth tip.
@@ -1371,41 +1371,41 @@ function QuestionFormModal({
           )}
 
           <label className="block">
-            <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+            <span className="text-xs font-semibold text-zinc-500">
               Hint (optional)
             </span>
             <input
               value={hint}
               onChange={(e) => setHint(e.target.value)}
               placeholder="Shown only if a student answers incorrectly."
-              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
             />
           </label>
 
           <div>
             <div className="flex items-center gap-2">
-              <ImagePlus className="h-3.5 w-3.5 text-zinc-500 dark:text-slate-400" />
-              <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <ImagePlus className="h-3.5 w-3.5 text-zinc-500" />
+              <span className="text-xs font-semibold text-zinc-500">
                 Image (optional)
               </span>
             </div>
             {imageUrl ? (
               <div className="mt-2 space-y-2">
-                <div className="flex items-start gap-3 rounded-xl border border-zinc-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-900">
+                <div className="flex items-start gap-3 rounded-xl border border-zinc-200 bg-white p-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={imageUrl}
                     alt=""
-                    className="h-24 w-24 flex-shrink-0 rounded-lg border border-zinc-200 object-cover dark:border-slate-700"
+                    className="h-24 w-24 flex-shrink-0 rounded-lg border border-zinc-200 object-cover"
                   />
-                  <div className="flex-1 text-xs text-zinc-500 dark:text-slate-400">
+                  <div className="flex-1 text-xs text-zinc-500">
                     Attached to this question.
                     <div className="mt-2 flex flex-wrap gap-1.5">
                       <button
                         type="button"
                         onClick={() => generateImage()}
                         disabled={imgPending || !visualPrompt.trim()}
-                        className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-white px-2 py-0.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-50 disabled:opacity-50 dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300 dark:hover:bg-violet-950/30"
+                        className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-white px-2 py-0.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-50 disabled:opacity-50"
                         title={visualPrompt.trim() ? "Regenerate with the same prompt" : "Edit prompt to regenerate"}
                       >
                         {imgPending ? (
@@ -1418,7 +1418,7 @@ function QuestionFormModal({
                       <button
                         type="button"
                         onClick={() => setImageUrl(null)}
-                        className="inline-flex items-center gap-1 rounded-full border border-zinc-200 px-2 py-0.5 text-[11px] font-semibold text-zinc-600 hover:bg-red-50 hover:text-red-600 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-red-950/40"
+                        className="inline-flex items-center gap-1 rounded-full border border-zinc-200 px-2 py-0.5 text-[11px] font-semibold text-zinc-600 hover:bg-red-50 hover:text-red-600"
                       >
                         <Trash2 className="h-3 w-3" /> Remove
                       </button>
@@ -1430,7 +1430,7 @@ function QuestionFormModal({
                   onChange={(e) => setVisualPrompt(e.target.value)}
                   placeholder="Change the description and click Regenerate"
                   disabled={imgPending}
-                  className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none disabled:opacity-50"
                 />
                 {imgErr && (
                   <p className="text-xs font-semibold text-red-600">{imgErr}</p>
@@ -1443,7 +1443,7 @@ function QuestionFormModal({
                   onChange={(e) => setVisualPrompt(e.target.value)}
                   placeholder="Describe the image — e.g. a red apple on a white plate"
                   disabled={imgPending}
-                  className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none disabled:opacity-50"
                 />
                 <button
                   type="button"
@@ -1467,21 +1467,21 @@ function QuestionFormModal({
 
           <div>
             <div className="flex items-center gap-2">
-              <Volume2 className="h-3.5 w-3.5 text-zinc-500 dark:text-slate-400" />
-              <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <Volume2 className="h-3.5 w-3.5 text-zinc-500" />
+              <span className="text-xs font-semibold text-zinc-500">
                 Prompt audio (optional)
               </span>
             </div>
             {audioUrl ? (
               <div className="mt-2 space-y-2">
-                <div className="flex flex-wrap items-center gap-3 rounded-xl border border-zinc-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-900">
+                <div className="flex flex-wrap items-center gap-3 rounded-xl border border-zinc-200 bg-white p-2">
                   <audio src={audioUrl} controls className="min-w-0 flex-1" />
                   <div className="flex gap-1.5">
                     <button
                       type="button"
                       onClick={generateAudio}
                       disabled={ttsPending || !prompt.trim()}
-                      className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-white px-2 py-0.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-50 disabled:opacity-50 dark:border-violet-700 dark:bg-slate-900 dark:text-violet-300 dark:hover:bg-violet-950/30"
+                      className="inline-flex items-center gap-1 rounded-full border border-violet-300 bg-white px-2 py-0.5 text-[11px] font-semibold text-violet-700 hover:bg-violet-50 disabled:opacity-50"
                       title="Regenerate audio from the current prompt"
                     >
                       {ttsPending ? (
@@ -1494,7 +1494,7 @@ function QuestionFormModal({
                     <button
                       type="button"
                       onClick={() => setAudioUrl(null)}
-                      className="inline-flex items-center gap-1 rounded-full border border-zinc-200 px-2 py-0.5 text-[11px] font-semibold text-zinc-600 hover:bg-red-50 hover:text-red-600 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-red-950/40"
+                      className="inline-flex items-center gap-1 rounded-full border border-zinc-200 px-2 py-0.5 text-[11px] font-semibold text-zinc-600 hover:bg-red-50 hover:text-red-600"
                     >
                       <Trash2 className="h-3 w-3" /> Remove
                     </button>
@@ -1504,7 +1504,7 @@ function QuestionFormModal({
               </div>
             ) : (
               <div className="mt-2 space-y-2">
-                <p className="text-xs text-zinc-500 dark:text-slate-400">
+                <p className="text-xs text-zinc-500">
                   Generates a warm read-aloud of the prompt above. Regenerate
                   if you edit the prompt text.
                 </p>
@@ -1529,18 +1529,18 @@ function QuestionFormModal({
           </div>
 
           {err && (
-            <div className="flex items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700 dark:bg-red-950/30 dark:text-red-300">
+            <div className="flex items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">
               <AlertCircle className="mt-0.5 h-4 w-4" />
               {err}
             </div>
           )}
         </div>
 
-        <div className="flex items-center justify-end gap-2 border-t border-zinc-100 bg-zinc-50 px-5 py-3 dark:border-slate-800 dark:bg-slate-900/60">
+        <div className="flex items-center justify-end gap-2 border-t border-zinc-100 bg-zinc-50 px-5 py-3">
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full px-4 py-1.5 text-sm font-semibold text-zinc-600 hover:bg-zinc-100"
           >
             Cancel
           </button>
@@ -1585,8 +1585,8 @@ function AiBudgetBadge({ refreshKey }: { refreshKey: string }) {
     <span
       className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
         warn
-          ? "bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300"
-          : "bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300"
+          ? "bg-amber-100 text-amber-800"
+          : "bg-violet-100 text-violet-700"
       }`}
       title={`Readee.ai credits this month — ${used} of ${limit} used, ${remaining} remaining.`}
     >

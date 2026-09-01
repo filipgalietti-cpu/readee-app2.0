@@ -152,15 +152,15 @@ export default async function BatchQcPage({
             <Factory className="h-4 w-4" />
             Content factory
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             Batch QC queue
           </h1>
         </div>
       </div>
 
       {/* Today's runs */}
-      <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+      <div className="mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
+        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
           <Clock className="h-3 w-3" />
           Today&apos;s factory runs
         </div>
@@ -171,13 +171,13 @@ export default async function BatchQcPage({
             {runs.map((r) => (
               <li
                 key={r.id}
-                className="flex flex-wrap items-center gap-2 rounded-lg bg-zinc-50 px-2 py-1.5 text-xs dark:bg-slate-950"
+                className="flex flex-wrap items-center gap-2 rounded-lg bg-zinc-50 px-2 py-1.5 text-xs"
               >
-                <span className="font-bold text-zinc-700 dark:text-slate-200">
+                <span className="font-bold text-zinc-700">
                   {ASSET_KIND_LABEL[r.asset_kind] ?? r.asset_kind}
                 </span>
                 <StatusPill status={r.status} />
-                <span className="text-zinc-500 dark:text-slate-400">
+                <span className="text-zinc-500">
                   {r.generated_count}/{(r.pass_count + r.warn_count + r.fail_count) || 0} generated
                 </span>
                 <span className="inline-flex items-center gap-1 text-emerald-600">

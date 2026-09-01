@@ -163,16 +163,16 @@ export default async function StudentLearnPage({
     <div>
       <Link
         href="/student"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Back
       </Link>
       <div className="mt-3">
-        <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600">
           {standard.domain} · {standardId}
         </div>
-        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900">
           {lesson?.title ?? standard.standard_description}
         </h1>
       </div>

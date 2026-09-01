@@ -14,7 +14,7 @@ export default async function RosterImportPage() {
         <FileSpreadsheet className="h-4 w-4" />
         Roster importer
       </div>
-      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
         Paste any roster — Readee makes sense of it
       </h1>
       <p className="mt-1 text-sm text-zinc-500">

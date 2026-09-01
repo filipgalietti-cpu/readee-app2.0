@@ -11,21 +11,21 @@ export default function CsvHelpPage() {
     <div className="mx-auto max-w-3xl px-6 py-10">
       <Link
         href="/classroom/authoring"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Authoring
       </Link>
 
       <div className="mt-3">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
           <FileText className="h-4 w-4" />
           CSV import tutorial
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
           Import a quiz from a spreadsheet
         </h1>
-        <p className="mt-2 max-w-2xl text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 max-w-2xl text-sm text-zinc-500">
           Already have your questions in Excel, Google Sheets, or another
           quiz tool? Save as CSV and upload them all at once. About 30
           seconds for 50 questions.
@@ -43,7 +43,7 @@ export default function CsvHelpPage() {
         </a>
         <Link
           href="/classroom/authoring"
-          className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-bold text-zinc-700 transition hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+          className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2 text-sm font-bold text-zinc-700 transition hover:border-indigo-300"
         >
           <Upload className="h-4 w-4" />
           Pick a quiz to import into
@@ -119,7 +119,7 @@ export default function CsvHelpPage() {
       </Section>
 
       <Section title="Editing tips">
-        <ul className="list-disc space-y-1.5 pl-5 text-sm text-zinc-700 dark:text-slate-300">
+        <ul className="list-disc space-y-1.5 pl-5 text-sm text-zinc-700">
           <li>
             <strong>Google Sheets:</strong> File → Download → Comma Separated Values (.csv).
           </li>
@@ -140,7 +140,7 @@ export default function CsvHelpPage() {
       </Section>
 
       <Section title="What happens after upload">
-        <ul className="list-disc space-y-1.5 pl-5 text-sm text-zinc-700 dark:text-slate-300">
+        <ul className="list-disc space-y-1.5 pl-5 text-sm text-zinc-700">
           <li>
             Each row is validated. Valid rows are added to your quiz in
             order, after any existing questions.
@@ -166,8 +166,8 @@ export default function CsvHelpPage() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mt-10">
-      <h2 className="text-xl font-bold text-zinc-900 dark:text-white">{title}</h2>
-      <div className="mt-3 space-y-3 text-sm leading-relaxed text-zinc-700 dark:text-slate-300">
+      <h2 className="text-xl font-bold text-zinc-900">{title}</h2>
+      <div className="mt-3 space-y-3 text-sm leading-relaxed text-zinc-700">
         {children}
       </div>
     </section>
@@ -197,18 +197,18 @@ function ColumnTable() {
     },
   ];
   return (
-    <div className="overflow-x-auto rounded-2xl border border-zinc-200 dark:border-slate-700">
+    <div className="overflow-x-auto rounded-2xl border border-zinc-200">
       <table className="min-w-full text-sm">
-        <thead className="bg-zinc-50 text-left dark:bg-slate-950">
+        <thead className="bg-zinc-50 text-left">
           <tr>
-            <th className="px-3 py-2 font-bold text-zinc-700 dark:text-slate-300">Column</th>
-            <th className="px-3 py-2 font-bold text-zinc-700 dark:text-slate-300">Required</th>
-            <th className="px-3 py-2 font-bold text-zinc-700 dark:text-slate-300">What it does</th>
+            <th className="px-3 py-2 font-bold text-zinc-700">Column</th>
+            <th className="px-3 py-2 font-bold text-zinc-700">Required</th>
+            <th className="px-3 py-2 font-bold text-zinc-700">What it does</th>
           </tr>
         </thead>
-        <tbody className="bg-white dark:bg-slate-900">
+        <tbody className="bg-white">
           {cols.map((c) => (
-            <tr key={c.name} className="border-t border-zinc-100 dark:border-slate-800">
+            <tr key={c.name} className="border-t border-zinc-100">
               <td className="px-3 py-2 font-mono text-xs">{c.name}</td>
               <td className="px-3 py-2">
                 {c.req ? (
@@ -221,7 +221,7 @@ function ColumnTable() {
                   </span>
                 )}
               </td>
-              <td className="px-3 py-2 text-zinc-600 dark:text-slate-400">{c.desc}</td>
+              <td className="px-3 py-2 text-zinc-600">{c.desc}</td>
             </tr>
           ))}
         </tbody>
@@ -240,36 +240,36 @@ function Example({
   note: string;
 }) {
   return (
-    <div className="rounded-2xl border border-indigo-200 bg-indigo-50/40 p-4 dark:border-indigo-900/40 dark:bg-indigo-950/20">
+    <div className="rounded-2xl border border-indigo-200 bg-indigo-50/40 p-4">
       <div className="flex items-center gap-2">
-        <CheckCircle2 className="h-4 w-4 text-indigo-600 dark:text-indigo-300" />
-        <div className="font-bold text-zinc-900 dark:text-white">{title}</div>
+        <CheckCircle2 className="h-4 w-4 text-indigo-600" />
+        <div className="font-bold text-zinc-900">{title}</div>
       </div>
       <table className="mt-2 min-w-full text-xs">
         <tbody>
           {rows.map(([k, v]) => (
             <tr key={k} className="align-top">
-              <td className="w-32 py-0.5 pr-3 font-mono font-semibold text-zinc-500 dark:text-slate-400">
+              <td className="w-32 py-0.5 pr-3 font-mono font-semibold text-zinc-500">
                 {k}
               </td>
-              <td className="py-0.5 font-mono text-zinc-800 dark:text-slate-200">{v}</td>
+              <td className="py-0.5 font-mono text-zinc-800">{v}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p className="mt-2 text-[11px] text-zinc-500 dark:text-slate-400">{note}</p>
+      <p className="mt-2 text-[11px] text-zinc-500">{note}</p>
     </div>
   );
 }
 
 function Mistake({ title, fix }: { title: string; fix: string }) {
   return (
-    <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4 dark:border-amber-900/40 dark:bg-amber-950/20">
+    <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4">
       <div className="flex items-center gap-2">
-        <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-300" />
-        <div className="font-bold text-zinc-900 dark:text-white">{title}</div>
+        <AlertCircle className="h-4 w-4 text-amber-600" />
+        <div className="font-bold text-zinc-900">{title}</div>
       </div>
-      <p className="mt-1 text-xs text-zinc-700 dark:text-slate-300">{fix}</p>
+      <p className="mt-1 text-xs text-zinc-700">{fix}</p>
     </div>
   );
 }

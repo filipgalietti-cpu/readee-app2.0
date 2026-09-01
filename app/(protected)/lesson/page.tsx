@@ -908,8 +908,8 @@ function LessonContent() {
             alt=""
             className="mx-auto h-24 w-24 object-contain"
           />
-          <p className="text-lg font-bold text-zinc-900 dark:text-white">Hmm.</p>
-          <p className="text-sm text-zinc-500 dark:text-slate-400">{loadError}</p>
+          <p className="text-lg font-bold text-zinc-900">Hmm.</p>
+          <p className="text-sm text-zinc-500">{loadError}</p>
           <Link
             href="/dashboard"
             className="mt-2 inline-block rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"

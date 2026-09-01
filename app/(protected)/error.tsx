@@ -40,10 +40,10 @@ export default function ProtectedError({
         className="h-28 w-28 object-contain"
         priority
       />
-      <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-zinc-900">
         Hmm, that page tripped on something.
       </h1>
-      <p className="mt-2 max-w-md text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-2 max-w-md text-sm text-zinc-500">
         We&apos;ve been pinged automatically. Try the page again, or
         head back to the dashboard - the rest of Readee is still
         working.
@@ -59,14 +59,14 @@ export default function ProtectedError({
         </button>
         <Link
           href="/dashboard"
-          className="inline-flex h-11 items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 text-sm font-bold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+          className="inline-flex h-11 items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 text-sm font-bold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-700"
         >
           <Home className="h-4 w-4" />
           Back to dashboard
         </Link>
       </div>
       {error?.digest && (
-        <p className="mt-6 font-mono text-[10px] text-zinc-300 dark:text-slate-600">
+        <p className="mt-6 font-mono text-[10px] text-zinc-300">
           ref: {error.digest}
         </p>
       )}

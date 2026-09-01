@@ -101,7 +101,7 @@ export default async function ToolsHubPage() {
         <Sparkles className="h-4 w-4" />
         Readee.ai tools
       </div>
-      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
         Your AI co-teacher
       </h1>
       <p className="mt-1 max-w-2xl text-sm text-zinc-500">
@@ -146,9 +146,9 @@ export default async function ToolsHubPage() {
                 </ul>
               </section>
             ) : (
-              <section className="mt-8 rounded-3xl border-2 border-dashed border-violet-200 bg-violet-50/40 p-6 text-center dark:border-violet-900/40 dark:bg-violet-950/20">
+              <section className="mt-8 rounded-3xl border-2 border-dashed border-violet-200 bg-violet-50/40 p-6 text-center">
                 <Sparkles className="mx-auto h-7 w-7 text-violet-500" />
-                <div className="mt-2 text-base font-bold text-zinc-900 dark:text-white">
+                <div className="mt-2 text-base font-bold text-zinc-900">
                   Unlock your first AI tool
                 </div>
                 <p className="mt-1 text-xs text-zinc-500">
@@ -214,10 +214,10 @@ function ToolCard({
     <li>
       <Link
         href={href}
-        className={`group relative flex h-full flex-col rounded-3xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:bg-slate-900/40 ${
+        className={`group relative flex h-full flex-col rounded-3xl border bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
           unlocked
-            ? "border-zinc-200 hover:border-violet-300 dark:border-slate-800"
-            : "border-zinc-200 dark:border-slate-800"
+            ? "border-zinc-200 hover:border-violet-300"
+            : "border-zinc-200"
         }`}
       >
         {!unlocked && (
@@ -239,18 +239,18 @@ function ToolCard({
         <div className="mt-3 text-[10px] font-bold uppercase tracking-widest text-zinc-400">
           {tool.tag}
         </div>
-        <div className="mt-0.5 text-base font-bold text-zinc-900 dark:text-white">
+        <div className="mt-0.5 text-base font-bold text-zinc-900">
           {tool.title}
         </div>
         <div className="mt-1 flex-1 text-xs text-zinc-500">{tool.desc}</div>
-        <div className="mt-4 border-t border-zinc-100 pt-3 dark:border-slate-800">
+        <div className="mt-4 border-t border-zinc-100 pt-3">
           {unlocked ? (
             <span className="inline-flex items-center gap-1 text-xs font-semibold text-violet-600 group-hover:gap-2">
               Open
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 text-xs font-bold text-zinc-700 dark:text-slate-300 group-hover:text-violet-700">
+            <span className="inline-flex items-center gap-1 text-xs font-bold text-zinc-700 group-hover:text-violet-700">
               Unlock with {TIER_LABEL[tool.minTier]}
               <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
             </span>

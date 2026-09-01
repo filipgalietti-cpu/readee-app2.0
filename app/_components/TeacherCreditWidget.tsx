@@ -44,12 +44,12 @@ export default function TeacherCreditWidget() {
 
   if (!data) {
     return (
-      <div className="mx-3 my-2 rounded-2xl border border-zinc-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="mx-3 my-2 rounded-2xl border border-zinc-200 bg-white p-3">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-400">
           <Sparkles className="h-3 w-3" />
           Readee.ai credits
         </div>
-        <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800" />
+        <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-100" />
         <div className="mt-1.5 text-[11px] text-zinc-400">Loading…</div>
       </div>
     );
@@ -61,14 +61,14 @@ export default function TeacherCreditWidget() {
   const hasTopUp = (topUpBalance ?? 0) > 0;
 
   return (
-    <div className="mx-3 my-2 rounded-2xl border border-zinc-200 bg-white p-3 transition hover:border-violet-200 dark:border-slate-800 dark:bg-slate-900/40">
+    <div className="mx-3 my-2 rounded-2xl border border-zinc-200 bg-white p-3 transition hover:border-violet-200">
       <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+        <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-violet-600">
           <Sparkles className="h-3 w-3" />
           Readee.ai credits
         </div>
         <div className="text-right">
-          <div className="font-mono text-sm font-extrabold text-zinc-900 dark:text-white">
+          <div className="font-mono text-sm font-extrabold text-zinc-900">
             {remaining}
             <span className="ml-0.5 text-[11px] font-semibold text-zinc-400">
               /{limit}
@@ -76,7 +76,7 @@ export default function TeacherCreditWidget() {
           </div>
         </div>
       </div>
-      <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800">
+      <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-100">
         <div
           className={`h-full rounded-full transition-all ${
             isLow
@@ -87,13 +87,13 @@ export default function TeacherCreditWidget() {
         />
       </div>
       <div className="mt-2 flex items-center justify-between text-[11px]">
-        <div className="text-zinc-500 dark:text-slate-400">
+        <div className="text-zinc-500">
           {hasTopUp ? (
             <>
-              {entitlement} monthly + <span className="font-bold text-violet-600 dark:text-violet-300">{topUpBalance}</span> top-up
+              {entitlement} monthly + <span className="font-bold text-violet-600">{topUpBalance}</span> top-up
             </>
           ) : isLow ? (
-            <span className="font-semibold text-amber-700 dark:text-amber-400">Running low</span>
+            <span className="font-semibold text-amber-700">Running low</span>
           ) : (
             <>{used} used this month</>
           )}

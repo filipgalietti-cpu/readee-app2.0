@@ -39,15 +39,15 @@ function daysSince(iso: string | null): number | null {
 function statusFor(row: RosterRow): { label: string; tone: string; Icon: typeof Sparkles } {
   const inactiveDays = daysSince(row.last_lesson_at);
   if (inactiveDays === null || inactiveDays > 5) {
-    return { label: "Inactive", tone: "bg-zinc-100 text-zinc-600 dark:bg-slate-800 dark:text-slate-400", Icon: AlertTriangle };
+    return { label: "Inactive", tone: "bg-zinc-100 text-zinc-600", Icon: AlertTriangle };
   }
   if (row.mastery_pct !== null && row.mastery_pct >= 85 && row.lessons_this_week >= 3) {
-    return { label: "Excelling", tone: "bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-300", Icon: Sparkles };
+    return { label: "Excelling", tone: "bg-green-100 text-green-700", Icon: Sparkles };
   }
   if (row.mastery_pct !== null && row.mastery_pct < 60) {
-    return { label: "Falling behind", tone: "bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300", Icon: AlertTriangle };
+    return { label: "Falling behind", tone: "bg-amber-100 text-amber-700", Icon: AlertTriangle };
   }
-  return { label: "On track", tone: "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300", Icon: Sparkles };
+  return { label: "On track", tone: "bg-indigo-100 text-indigo-700", Icon: Sparkles };
 }
 
 async function loadRoster(classroomId: string): Promise<RosterRow[]> {
@@ -156,7 +156,7 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
       )}
 
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-sm text-zinc-500 dark:text-slate-400">
+        <p className="text-sm text-zinc-500">
           {roster.length} student{roster.length === 1 ? "" : "s"}
           {pending.length > 0 && <> · {pending.length} pending</>}
         </p>
@@ -165,7 +165,7 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
             <>
               <a
                 href={`/api/classroom/${classroomId}/export?type=roster`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600"
                 title="Download class roster as CSV"
               >
                 <Download className="h-3.5 w-3.5" />
@@ -173,7 +173,7 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
               </a>
               <a
                 href={`/api/classroom/${classroomId}/export?type=assignments`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-600"
                 title="Download per-assignment completions as CSV"
               >
                 <Download className="h-3.5 w-3.5" />
@@ -186,14 +186,14 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
       </div>
 
       {roster.length === 0 && pending.length === 0 ? (
-        <div className="flex flex-col items-center rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 ring-1 ring-indigo-100 px-6 py-16 text-center dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
-          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
+        <div className="flex flex-col items-center rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 ring-1 ring-indigo-100 px-6 py-16 text-center">
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600">
             <UserRound className="h-7 w-7" />
           </span>
-          <h2 className="mt-5 text-lg font-bold text-zinc-900 dark:text-white">
+          <h2 className="mt-5 text-lg font-bold text-zinc-900">
             No students yet
           </h2>
-          <p className="mt-2 max-w-sm text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-2 max-w-sm text-sm text-zinc-500">
             Invite students by email or share the join code above — they show up here as they join.
           </p>
           <div className="mt-5">
@@ -203,10 +203,10 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
       ) : (
         <>
           {roster.length > 0 && (
-            <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
+            <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white">
               <table className="w-full text-sm">
-                <thead className="border-b border-zinc-200 bg-zinc-50 text-left dark:border-slate-800 dark:bg-slate-900/60">
-                  <tr className="text-xs uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+                <thead className="border-b border-zinc-200 bg-zinc-50 text-left">
+                  <tr className="text-xs uppercase tracking-wider text-zinc-500">
                     <th className="px-5 py-3 font-semibold">Student</th>
                     <th className="px-5 py-3 font-semibold">Status</th>
                     <th className="px-5 py-3 text-right font-semibold">Mastery (7d)</th>
@@ -222,18 +222,18 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
                     return (
                       <tr
                         key={r.child_id}
-                        className="border-b border-zinc-100 last:border-0 hover:bg-zinc-50/60 dark:border-slate-800 dark:hover:bg-slate-900/60"
+                        className="border-b border-zinc-100 last:border-0 hover:bg-zinc-50/60"
                       >
                         <td className="px-5 py-3">
                           <Link
                             href={`/classroom/${classroomId}/students/${r.child_id}`}
                             className="group inline-flex flex-col"
                           >
-                            <span className="font-semibold text-zinc-900 group-hover:text-indigo-600 group-hover:underline dark:text-white">
+                            <span className="font-semibold text-zinc-900 group-hover:text-indigo-600 group-hover:underline">
                               {r.first_name}
                             </span>
                             {r.grade && (
-                              <span className="text-xs text-zinc-500 dark:text-slate-400">
+                              <span className="text-xs text-zinc-500">
                                 {r.grade}
                               </span>
                             )}
@@ -245,22 +245,22 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
                             {label}
                           </span>
                         </td>
-                        <td className="px-5 py-3 text-right font-mono font-semibold text-zinc-900 dark:text-white">
+                        <td className="px-5 py-3 text-right font-mono font-semibold text-zinc-900">
                           {r.mastery_pct === null ? "—" : `${r.mastery_pct}%`}
                         </td>
-                        <td className="px-5 py-3 text-right font-mono text-zinc-700 dark:text-slate-300">
+                        <td className="px-5 py-3 text-right font-mono text-zinc-700">
                           <span className="inline-flex items-center gap-1.5">
                             <BookOpen className="h-3.5 w-3.5 text-zinc-400" />
                             {r.lessons_this_week}
                           </span>
                         </td>
-                        <td className="px-5 py-3 text-right font-mono text-zinc-700 dark:text-slate-300">
+                        <td className="px-5 py-3 text-right font-mono text-zinc-700">
                           <span className="inline-flex items-center gap-1.5">
                             <Flame className="h-3.5 w-3.5 text-rose-400" />
                             {r.streak_days}
                           </span>
                         </td>
-                        <td className="px-5 py-3 text-right font-mono text-zinc-700 dark:text-slate-300">
+                        <td className="px-5 py-3 text-right font-mono text-zinc-700">
                           <span className="inline-flex items-center gap-1.5">
                             <Carrot className="h-3.5 w-3.5 text-orange-500" />
                             {r.carrots}
@@ -290,16 +290,16 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
           )}
 
           {pending.length > 0 && (
-            <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/40 dark:border-amber-900/50 dark:bg-amber-950/10">
-              <div className="flex items-center gap-2 border-b border-amber-200 px-5 py-3 dark:border-amber-900/50">
-                <Mail className="h-4 w-4 text-amber-700 dark:text-amber-400" />
-                <h3 className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+            <div className="overflow-hidden rounded-2xl border border-amber-200 bg-amber-50/40">
+              <div className="flex items-center gap-2 border-b border-amber-200 px-5 py-3">
+                <Mail className="h-4 w-4 text-amber-700" />
+                <h3 className="text-xs font-bold uppercase tracking-wider text-amber-800">
                   Pending invites ({pending.length})
                 </h3>
               </div>
               <table className="w-full text-sm">
-                <thead className="bg-amber-50 text-left dark:bg-amber-950/20">
-                  <tr className="text-xs uppercase tracking-wider text-amber-800 dark:text-amber-300">
+                <thead className="bg-amber-50 text-left">
+                  <tr className="text-xs uppercase tracking-wider text-amber-800">
                     <th className="px-5 py-2 font-semibold">Student</th>
                     <th className="px-5 py-2 font-semibold">Parent email</th>
                     <th className="px-5 py-2 font-semibold">Sent</th>
@@ -310,15 +310,15 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
                   {pending.map((inv) => (
                     <tr
                       key={inv.id}
-                      className="border-b border-amber-100 last:border-0 dark:border-amber-950/40"
+                      className="border-b border-amber-100 last:border-0"
                     >
                       <td className="px-5 py-2.5">
-                        <div className="font-semibold text-zinc-900 dark:text-white">
+                        <div className="font-semibold text-zinc-900">
                           {inv.student_first_name}
                           {inv.student_last_initial ? ` ${inv.student_last_initial}.` : ""}
                         </div>
                       </td>
-                      <td className="px-5 py-2.5 text-zinc-700 dark:text-slate-300">
+                      <td className="px-5 py-2.5 text-zinc-700">
                         {inv.parent_email ?? (
                           <span className="inline-flex items-center gap-1 text-xs text-zinc-400">
                             <MailX className="h-3 w-3" />
@@ -326,7 +326,7 @@ export default async function StudentsTab({ classroomId }: { classroomId: string
                           </span>
                         )}
                       </td>
-                      <td className="px-5 py-2.5 text-xs text-zinc-500 dark:text-slate-400">
+                      <td className="px-5 py-2.5 text-xs text-zinc-500">
                         {inv.email_sent_at
                           ? new Date(inv.email_sent_at).toLocaleDateString("en-US", {
                               month: "short",

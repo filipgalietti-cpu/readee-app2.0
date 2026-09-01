@@ -10,10 +10,10 @@ export default async function StudentLiveJoin() {
   return (
     <div className="mx-auto max-w-md py-12">
       <div className="text-center">
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
           Join live quiz
         </h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-500">
           Your teacher will say a 6-character code.
         </p>
       </div>

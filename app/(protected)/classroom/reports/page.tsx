@@ -232,10 +232,10 @@ export default async function ReportsPage() {
           <BarChart3 className="h-3.5 w-3.5" />
           Reports
         </div>
-        <h1 className="mt-1 text-2xl font-bold text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-2xl font-bold text-zinc-900">
           How your students are doing
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           Cross-classroom view. Last 30 days unless noted.
         </p>
       </header>
@@ -267,21 +267,21 @@ export default async function ReportsPage() {
         />
       </section>
 
-      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-5">
         <div className="mb-3 flex items-center gap-2">
           <GraduationCap className="h-4 w-4 text-indigo-600" />
-          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
             By classroom
           </h3>
         </div>
-        <ul className="divide-y divide-zinc-100 dark:divide-slate-800">
+        <ul className="divide-y divide-zinc-100">
           {perClassroom.map((c) => (
             <li key={c.id} className="flex items-center justify-between gap-3 py-3">
               <div className="min-w-0">
-                <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                <div className="truncate text-sm font-semibold text-zinc-900">
                   {c.name}
                 </div>
-                <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+                <div className="text-[11px] text-zinc-500">
                   {c.enrolled} enrolled · {c.active7d} active this week ·{" "}
                   {c.attempted.toLocaleString()} questions answered
                 </div>
@@ -307,7 +307,7 @@ export default async function ReportsPage() {
                 </div>
                 <Link
                   href={`/classroom/${c.id}?tab=insights`}
-                  className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-100 dark:bg-indigo-950/40 dark:text-indigo-300"
+                  className="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-100"
                 >
                   Open
                   <ArrowRight className="h-3 w-3" />
@@ -319,31 +319,31 @@ export default async function ReportsPage() {
       </section>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+        <section className="rounded-2xl border border-zinc-200 bg-white p-5">
           <div className="flex items-center gap-2">
             <AlertCircle className="h-4 w-4 text-red-600" />
-            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
               Needs your attention
             </h3>
           </div>
           {struggling.length === 0 ? (
-            <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-3 text-sm text-zinc-500">
               Everyone's been active this week and hitting their accuracy bar.
               Nothing to flag.
             </p>
           ) : (
-            <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+            <ul className="mt-3 divide-y divide-zinc-100">
               {struggling.map((s) => (
                 <li key={s.childId}>
                   <Link
                     href={`/classroom/reports/student/${s.childId}`}
-                    className="flex items-center justify-between gap-3 py-3 transition hover:bg-indigo-50/40 dark:hover:bg-indigo-950/20"
+                    className="flex items-center justify-between gap-3 py-3 transition hover:bg-indigo-50/40"
                   >
                     <div className="min-w-0">
-                      <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                      <div className="truncate text-sm font-semibold text-zinc-900">
                         {s.firstName}
                       </div>
-                      <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+                      <div className="text-[11px] text-zinc-500">
                         {s.isInactive
                           ? s.lastActivity
                             ? `Last active ${friendlyDate(s.lastActivity)}`
@@ -352,12 +352,12 @@ export default async function ReportsPage() {
                       </div>
                     </div>
                     {s.isLowAccuracy && (
-                      <span className="rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-700 dark:bg-red-950/30 dark:text-red-300">
+                      <span className="rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-700">
                         Low accuracy
                       </span>
                     )}
                     {!s.isLowAccuracy && s.isInactive && (
-                      <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
+                      <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-bold text-amber-700">
                         Inactive
                       </span>
                     )}
@@ -368,29 +368,29 @@ export default async function ReportsPage() {
           )}
         </section>
 
-        <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+        <section className="rounded-2xl border border-zinc-200 bg-white p-5">
           <div className="flex items-center gap-2">
             <TrendingDown className="h-4 w-4 text-amber-600" />
-            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
               Hardest standards
             </h3>
           </div>
           {hardestStandards.length === 0 ? (
-            <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-3 text-sm text-zinc-500">
               Not enough data yet — standards with 5+ attempts show up here.
             </p>
           ) : (
-            <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+            <ul className="mt-3 divide-y divide-zinc-100">
               {hardestStandards.map((m) => (
                 <li
                   key={m.standardId}
                   className="flex items-center justify-between gap-3 py-3"
                 >
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                    <div className="truncate text-sm font-semibold text-zinc-900">
                       {m.title}
                     </div>
-                    <div className="font-mono text-[11px] text-zinc-500 dark:text-slate-400">
+                    <div className="font-mono text-[11px] text-zinc-500">
                       {m.standardId}
                     </div>
                   </div>
@@ -401,12 +401,12 @@ export default async function ReportsPage() {
                           ? "text-red-600"
                           : m.accuracy < 75
                             ? "text-amber-600"
-                            : "text-zinc-700 dark:text-slate-300"
+                            : "text-zinc-700"
                       }`}
                     >
                       {m.accuracy}%
                     </div>
-                    <div className="text-[10px] text-zinc-400 dark:text-slate-500">
+                    <div className="text-[10px] text-zinc-400">
                       {m.correct}/{m.attempted}
                     </div>
                   </div>
@@ -417,38 +417,38 @@ export default async function ReportsPage() {
         </section>
       </div>
 
-      <section className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-5">
         <div className="flex items-center gap-2">
           <Activity className="h-4 w-4 text-indigo-600" />
-          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
             Recent completions
           </h3>
         </div>
         {recentActivity.length === 0 ? (
-          <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-3 text-sm text-zinc-500">
             No assignments completed yet. Completions across all your classes show up here.
           </p>
         ) : (
-          <ul className="mt-3 divide-y divide-zinc-100 dark:divide-slate-800">
+          <ul className="mt-3 divide-y divide-zinc-100">
             {recentActivity.map((r, i) => (
               <li
                 key={i}
                 className="flex items-center justify-between gap-3 py-3"
               >
                 <div className="min-w-0">
-                  <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-900">
                     {r.firstName}{" "}
-                    <span className="font-normal text-zinc-500 dark:text-slate-400">
+                    <span className="font-normal text-zinc-500">
                       finished
                     </span>{" "}
                     {r.title}
                   </div>
-                  <div className="text-[11px] text-zinc-400 dark:text-slate-500">
+                  <div className="text-[11px] text-zinc-400">
                     {r.classroomName} · {friendlyDate(r.completedAt)}
                   </div>
                 </div>
                 {r.scorePercent !== null && (
-                  <div className="font-mono text-sm font-bold text-indigo-600 dark:text-indigo-300">
+                  <div className="font-mono text-sm font-bold text-indigo-600">
                     {r.scorePercent}%
                   </div>
                 )}
@@ -473,15 +473,15 @@ function SummaryCard({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/40">
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-4">
+      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
         <Icon className="h-3.5 w-3.5" />
         {label}
       </div>
-      <div className="mt-2 text-2xl font-extrabold text-zinc-900 dark:text-white">
+      <div className="mt-2 text-2xl font-extrabold text-zinc-900">
         {value}
       </div>
-      <div className="mt-1 text-[11px] text-zinc-400 dark:text-slate-500">
+      <div className="mt-1 text-[11px] text-zinc-400">
         {hint}
       </div>
     </div>
@@ -494,10 +494,10 @@ function EmptyReports() {
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600">
         <BarChart3 className="h-8 w-8" />
       </div>
-      <h1 className="mt-5 text-xl font-bold text-zinc-900 dark:text-white">
+      <h1 className="mt-5 text-xl font-bold text-zinc-900">
         No classrooms yet
       </h1>
-      <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-2 text-sm text-zinc-500">
         Reports show how every student across all your classrooms is doing.
         Start a classroom to begin collecting data.
       </p>

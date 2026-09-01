@@ -20,14 +20,14 @@ export default async function LessonWizardPage() {
         All lessons
       </Link>
       <div className="mt-3">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
           <Sparkles className="h-4 w-4" />
           Build with Readee.ai
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
           Build a lesson
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           Describe what you want to teach and we&apos;ll build a slideshow —
           passage split into slides, an image and read-aloud per slide,
           and end-of-lesson comprehension questions.

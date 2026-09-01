@@ -216,7 +216,7 @@ export default async function OwnerAssetsPage({
             <Boxes className="h-4 w-4" />
             Owner · Daily content feed
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             Everything Readee just made
           </h1>
         </div>

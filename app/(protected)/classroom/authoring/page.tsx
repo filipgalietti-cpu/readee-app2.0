@@ -52,14 +52,14 @@ export default async function AuthoringHomePage() {
     <div className="mx-auto max-w-4xl px-6 py-10">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
             <ClipboardPen className="h-4 w-4" />
             Authoring
           </div>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900">
             Your custom quizzes
           </h1>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-zinc-500">
             Let Readee.ai build a full assignment — passage, questions, audio,
             and visuals — or write one from scratch.
           </p>
@@ -77,14 +77,14 @@ export default async function AuthoringHomePage() {
       </div>
 
       {list.length === 0 ? (
-        <div className="mt-10 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center dark:border-slate-800 dark:bg-slate-900/40">
+        <div className="mt-10 rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-12 text-center">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
             <Sparkles className="h-7 w-7" />
           </div>
-          <h2 className="mt-4 text-lg font-bold text-zinc-900 dark:text-white">
+          <h2 className="mt-4 text-lg font-bold text-zinc-900">
             Your first assignment
           </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500">
             Start with Readee.ai — describe the topic and we&apos;ll write
             the passage, questions, and audio in one pass. You can also
             build an empty quiz and author questions yourself.
@@ -108,7 +108,7 @@ export default async function AuthoringHomePage() {
             return (
               <li
                 key={q.id}
-                className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:border-indigo-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900/40"
+                className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:border-indigo-300 hover:shadow-sm"
               >
                 <Link
                   href={`/classroom/authoring/quiz/${q.id}`}
@@ -118,10 +118,10 @@ export default async function AuthoringHomePage() {
                     <ClipboardPen className="h-6 w-6" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="font-extrabold text-zinc-900 dark:text-white">
+                    <div className="font-extrabold text-zinc-900">
                       {q.title}
                     </div>
-                    <div className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+                    <div className="mt-0.5 text-xs text-zinc-500">
                       {count} question{count === 1 ? "" : "s"}
                       {q.grade_level ? ` · ${q.grade_level}` : ""}
                       {" · Updated "}
@@ -131,7 +131,7 @@ export default async function AuthoringHomePage() {
                       })}
                     </div>
                     {q.description && (
-                      <div className="mt-1 line-clamp-1 text-xs text-zinc-500 dark:text-slate-400">
+                      <div className="mt-1 line-clamp-1 text-xs text-zinc-500">
                         {q.description}
                       </div>
                     )}
@@ -149,7 +149,7 @@ export default async function AuthoringHomePage() {
                   )}
                   <Link
                     href={`/classroom/authoring/quiz/${q.id}`}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-100 hover:text-indigo-600 dark:hover:bg-slate-800"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-100 hover:text-indigo-600"
                     aria-label={`Open ${q.title}`}
                   >
                     <ArrowRight className="h-4 w-4" />
@@ -161,7 +161,7 @@ export default async function AuthoringHomePage() {
         </ul>
       )}
 
-      <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 text-xs text-zinc-600 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-400">
+      <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 text-xs text-zinc-600">
         <strong>Tip:</strong> once a quiz has at least one question, you can
         assign it to any of your classrooms the same way you assign Readee
         lessons — from the classroom&apos;s Assignments tab.

@@ -588,10 +588,10 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
 
         {/* ── Title ── */}
         <div className="text-center mb-5">
-          <h1 className="text-2xl font-bold text-zinc-900 dark:text-slate-100 tracking-tight">
+          <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
             {child.first_name}&apos;s Learning Journey
           </h1>
-          <p className="text-zinc-500 dark:text-slate-400 text-sm mt-1">Kindergarten ELA Standards</p>
+          <p className="text-zinc-500 text-sm mt-1">Kindergarten ELA Standards</p>
         </div>
 
         {/* ── Top Progress Bar ── */}
@@ -647,7 +647,6 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
             stroke="#312e81"
             strokeWidth={PATH_BORDER_W}
             strokeLinecap="round"
-            className="dark:stroke-indigo-950"
           />
 
           {/* Road surface — base trail color */}
@@ -657,7 +656,6 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
             stroke="#ede9fe"
             strokeWidth={PATH_ROAD_W}
             strokeLinecap="round"
-            className="dark:stroke-slate-700"
           />
 
           {/* Completed road — gradient overlay */}
@@ -821,7 +819,7 @@ function MascotBubble({ mascot, containerWidth, totalHeight }: {
           {mascot.message}
         </div>
       )}
-      <mascot.icon className="w-10 h-10 text-violet-500 dark:text-violet-300 drop-shadow-md" strokeWidth={1.5} />
+      <mascot.icon className="w-10 h-10 text-violet-500 drop-shadow-md" strokeWidth={1.5} />
       {mascot.side === "right" && (
         <div className={`rounded-xl px-3 py-2 shadow-md text-sm font-medium max-w-[160px] ${bubbleClass}`}>
           {mascot.message}
@@ -1027,17 +1025,17 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.2 }}
     >
-      <div className="rounded-2xl bg-white dark:bg-slate-800 border border-zinc-200 dark:border-slate-700 shadow-xl p-4 space-y-3">
-        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white dark:bg-slate-800 border-l border-t border-zinc-200 dark:border-slate-700 rotate-45" />
+      <div className="rounded-2xl bg-white border border-zinc-200 shadow-xl p-4 space-y-3">
+        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-l border-t border-zinc-200 rotate-45" />
 
         <div className="relative">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-50 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-50 text-violet-700">
               {KID_NAMES[standard.standard_id] || "Lesson"}
             </span>
             <StatusBadge status={status} isPremium={isPremium} />
           </div>
-          <h4 className="font-bold text-sm text-zinc-900 dark:text-slate-100 mt-2 leading-snug">
+          <h4 className="font-bold text-sm text-zinc-900 mt-2 leading-snug">
             {shortName(standard.standard_description)}
           </h4>
         </div>
@@ -1045,18 +1043,18 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
         {status === "completed" && progress.score != null && (
           <>
             <div className="flex gap-3">
-              <div className="flex-1 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl p-2.5 text-center">
-                <div className="text-emerald-700 dark:text-emerald-400 font-bold text-sm">{progress.score}/{progress.total}</div>
-                <div className="text-emerald-600 dark:text-emerald-500 text-[10px]">Correct</div>
+              <div className="flex-1 bg-emerald-50 rounded-xl p-2.5 text-center">
+                <div className="text-emerald-700 font-bold text-sm">{progress.score}/{progress.total}</div>
+                <div className="text-emerald-600 text-[10px]">Correct</div>
               </div>
-              <div className="flex-1 bg-orange-50 dark:bg-orange-900/20 rounded-xl p-2.5 text-center">
-                <div className="text-orange-700 dark:text-orange-400 font-bold text-sm flex items-center justify-center gap-1">+{progress.carrotsEarned} <Carrot className="w-3.5 h-3.5" strokeWidth={1.5} /></div>
-                <div className="text-orange-600 dark:text-orange-500 text-[10px]">Carrots Earned</div>
+              <div className="flex-1 bg-orange-50 rounded-xl p-2.5 text-center">
+                <div className="text-orange-700 font-bold text-sm flex items-center justify-center gap-1">+{progress.carrotsEarned} <Carrot className="w-3.5 h-3.5" strokeWidth={1.5} /></div>
+                <div className="text-orange-600 text-[10px]">Carrots Earned</div>
               </div>
             </div>
             <Link
               href={`/practice?child=${childId}&standard=${standard.standard_id}`}
-              className="block w-full text-center px-4 py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 text-sm font-bold hover:bg-emerald-100 dark:hover:bg-emerald-900/30 transition-all border border-emerald-200 dark:border-emerald-800"
+              className="block w-full text-center px-4 py-2.5 rounded-xl bg-emerald-50 text-emerald-700 text-sm font-bold hover:bg-emerald-100 transition-all border border-emerald-200"
             >
               Practice Again
             </Link>
@@ -1064,12 +1062,12 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
         )}
 
         {status === "current" && progress.score != null && (
-          <div className="bg-violet-50 dark:bg-violet-900/20 rounded-xl p-2.5">
+          <div className="bg-violet-50 rounded-xl p-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-xs text-violet-600 dark:text-violet-400 font-medium">Progress</span>
-              <span className="text-xs font-bold text-violet-700 dark:text-violet-300">{progress.score}/{progress.total}</span>
+              <span className="text-xs text-violet-600 font-medium">Progress</span>
+              <span className="text-xs font-bold text-violet-700">{progress.score}/{progress.total}</span>
             </div>
-            <div className="mt-1.5 h-2 bg-violet-100 dark:bg-violet-900/30 rounded-full overflow-hidden">
+            <div className="mt-1.5 h-2 bg-violet-100 rounded-full overflow-hidden">
               <div
                 className="h-full bg-violet-500 rounded-full"
                 style={{ width: `${((progress.score || 0) / (progress.total || 1)) * 100}%` }}
@@ -1088,15 +1086,15 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
         )}
 
         {status === "locked" && !isPremium && (
-          <p className="text-center text-[11px] text-zinc-400 dark:text-slate-500 py-1">
+          <p className="text-center text-[11px] text-zinc-400 py-1">
             Complete previous standards to unlock
           </p>
         )}
 
         {status === "locked" && isPremium && (
           <div className="space-y-2">
-            <div className="bg-violet-50 dark:bg-violet-900/20 rounded-xl p-3 text-center">
-              <p className="text-[11px] text-violet-600 dark:text-violet-400 font-medium">
+            <div className="bg-violet-50 rounded-xl p-3 text-center">
+              <p className="text-[11px] text-violet-600 font-medium">
                 This standard is part of Readee+
               </p>
             </div>
@@ -1120,13 +1118,13 @@ function NodeTooltip({ standard, progress, isPremium, childId, nodeSize }: {
 
 function StatusBadge({ status, isPremium }: { status: StandardProgress["status"]; isPremium: boolean }) {
   if (status === "completed") {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400">Completed ✓</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700">Completed ✓</span>;
   }
   if (status === "current") {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-400">In Progress</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-100 text-violet-700">In Progress</span>;
   }
   if (isPremium) {
-    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400">Readee+</span>;
+    return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-100 text-violet-600">Readee+</span>;
   }
-  return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 inline-flex items-center gap-0.5">Locked <Lock className="w-3 h-3" strokeWidth={1.5} /></span>;
+  return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 text-zinc-500 inline-flex items-center gap-0.5">Locked <Lock className="w-3 h-3" strokeWidth={1.5} /></span>;
 }

@@ -59,10 +59,10 @@ export default async function BuildHubPage() {
           <Sparkles className="h-3 w-3" />
           Readee.ai
         </div>
-        <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-5xl">
+        <h1 className="mt-3 text-4xl font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
           What do you want to build?
         </h1>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mx-auto mt-3 max-w-xl text-sm text-zinc-500">
           Pick what you need. Every tool produces standards-aligned, kid-safe
           content with a quality-control pass — and you own the file.
         </p>
@@ -75,7 +75,7 @@ export default async function BuildHubPage() {
             <Link
               key={t.href}
               href={t.href}
-              className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
+              className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md"
             >
               <div className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${t.accent} text-white shadow-sm`}>
                 <Icon className="h-7 w-7" />
@@ -84,10 +84,10 @@ export default async function BuildHubPage() {
                 <Clock className="h-3 w-3" />
                 {t.timing}
               </div>
-              <h2 className="mt-1 text-xl font-extrabold text-zinc-900 dark:text-white">
+              <h2 className="mt-1 text-xl font-extrabold text-zinc-900">
                 {t.label}
               </h2>
-              <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+              <p className="mt-2 text-sm text-zinc-500">
                 {t.description}
               </p>
               <div className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-violet-700">
@@ -99,7 +99,7 @@ export default async function BuildHubPage() {
         })}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 text-center text-xs text-zinc-500 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-400">
+      <div className="mt-10 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 text-center text-xs text-zinc-500">
         Every build runs a quality-control pass — passage, questions, image —
         and writes a report Jennifer reviews at <span className="font-semibold">/admin/qc</span>.
       </div>

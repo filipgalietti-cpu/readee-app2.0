@@ -36,17 +36,17 @@ export default function SchoolJoinCodePanel({
   }
 
   return (
-    <div className="rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-4 dark:border-indigo-900/40 dark:from-indigo-950/30 dark:to-violet-950/30">
-      <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+    <div className="rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-4">
+      <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-indigo-700">
         <KeyRound className="h-3.5 w-3.5" />
         School code for teachers
       </div>
       <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <div className="font-mono text-2xl font-extrabold tracking-[0.25em] text-indigo-700 dark:text-indigo-200">
+          <div className="font-mono text-2xl font-extrabold tracking-[0.25em] text-indigo-700">
             {code}
           </div>
-          <div className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+          <div className="mt-1 text-xs text-zinc-500">
             Teachers enter this in classroom Settings → School to link their
             class to this school. Works without granting them admin scope.
           </div>
@@ -55,7 +55,7 @@ export default function SchoolJoinCodePanel({
           <button
             type="button"
             onClick={copy}
-            className="inline-flex h-9 items-center gap-1.5 rounded-full border border-indigo-300 bg-white px-3 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-50 dark:border-indigo-700 dark:bg-slate-900 dark:text-indigo-300"
+            className="inline-flex h-9 items-center gap-1.5 rounded-full border border-indigo-300 bg-white px-3 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-50"
           >
             {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
             {copied ? "Copied" : "Copy"}
@@ -64,7 +64,7 @@ export default function SchoolJoinCodePanel({
             type="button"
             onClick={rotate}
             disabled={pending}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-indigo-300 bg-white text-indigo-700 transition hover:bg-indigo-50 disabled:opacity-50 dark:border-indigo-700 dark:bg-slate-900 dark:text-indigo-300"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-indigo-300 bg-white text-indigo-700 transition hover:bg-indigo-50 disabled:opacity-50"
             aria-label="Rotate code"
             title="Rotate code"
           >

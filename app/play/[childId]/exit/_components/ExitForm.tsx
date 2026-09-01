@@ -42,7 +42,7 @@ export default function ExitForm({
   return (
     <form onSubmit={submit} className="space-y-4">
       <label className="block">
-        <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="text-xs font-semibold text-zinc-500">
           {hasPin ? "Grown-up PIN" : "Account password"}
         </span>
         <input
@@ -57,7 +57,7 @@ export default function ExitForm({
             setValue(hasPin ? e.target.value.replace(/[^0-9]/g, "").slice(0, 4) : e.target.value)
           }
           placeholder={hasPin ? "••••" : "Your password"}
-          className="mt-1 w-full rounded-xl border-2 border-zinc-200 bg-white px-4 py-3 text-center text-lg font-bold tracking-widest focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          className="mt-1 w-full rounded-xl border-2 border-zinc-200 bg-white px-4 py-3 text-center text-lg font-bold tracking-widest focus:border-indigo-400 focus:outline-none"
         />
       </label>
       {err && (

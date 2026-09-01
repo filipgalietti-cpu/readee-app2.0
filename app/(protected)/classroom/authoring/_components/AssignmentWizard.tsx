@@ -201,7 +201,7 @@ export default function AssignmentWizard() {
   }
 
   return (
-    <div className="rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
+    <div className="rounded-3xl border border-zinc-200 bg-white shadow-sm">
       <StepHeader step={step} />
 
       <div className="px-6 pb-6">
@@ -225,7 +225,7 @@ export default function AssignmentWizard() {
         )}
 
         {err && (
-          <div className="mt-4 flex items-start gap-2 rounded-xl bg-red-50 px-3 py-2 text-sm font-semibold text-red-700 dark:bg-red-950/30 dark:text-red-300">
+          <div className="mt-4 flex items-start gap-2 rounded-xl bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">
             <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
             {err}
           </div>
@@ -242,7 +242,7 @@ export default function AssignmentWizard() {
             type="button"
             onClick={stepBack}
             disabled={step === 1 || pending}
-            className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-semibold text-zinc-500 hover:bg-zinc-100 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
+            className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-semibold text-zinc-500 hover:bg-zinc-100 disabled:opacity-40"
           >
             <ArrowLeft className="h-4 w-4" />
             Back
@@ -260,7 +260,7 @@ export default function AssignmentWizard() {
           ) : pending ? (
             <div className="flex w-full flex-col items-center gap-3 sm:max-w-md">
               <ReadeeAiLoader size={120} label={buildStep} />
-              <div className="flex w-full items-center gap-2 text-xs font-bold text-violet-700 dark:text-violet-300">
+              <div className="flex w-full items-center gap-2 text-xs font-bold text-violet-700">
                 {buildStep}
                 <span className="ml-auto font-mono text-zinc-500">
                   {buildProgress}%
@@ -295,7 +295,7 @@ function StepHeader({ step }: { step: Step }) {
     { n: 4, label: "Audio & visuals" },
   ];
   return (
-    <div className="flex items-center gap-2 border-b border-zinc-100 px-6 py-4 dark:border-slate-800">
+    <div className="flex items-center gap-2 border-b border-zinc-100 px-6 py-4">
       {steps.map((s, i) => (
         <div key={s.n} className="flex items-center gap-2">
           <div
@@ -304,7 +304,7 @@ function StepHeader({ step }: { step: Step }) {
                 ? "bg-indigo-600 text-white"
                 : s.n < step
                 ? "bg-green-500 text-white"
-                : "bg-zinc-200 text-zinc-500 dark:bg-slate-800 dark:text-slate-500"
+                : "bg-zinc-200 text-zinc-500"
             }`}
           >
             {s.n < step ? <Check className="h-3.5 w-3.5" /> : s.n}
@@ -312,14 +312,14 @@ function StepHeader({ step }: { step: Step }) {
           <span
             className={`text-xs font-semibold ${
               s.n === step
-                ? "text-zinc-900 dark:text-white"
-                : "text-zinc-400 dark:text-slate-500"
+                ? "text-zinc-900"
+                : "text-zinc-400"
             }`}
           >
             {s.label}
           </span>
           {i < steps.length - 1 && (
-            <div className="h-px w-6 bg-zinc-200 dark:bg-slate-800" />
+            <div className="h-px w-6 bg-zinc-200" />
           )}
         </div>
       ))}
@@ -357,7 +357,7 @@ function StepBrief({
   return (
     <div className="space-y-5 pt-5">
       <label className="block">
-        <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="text-xs font-semibold text-zinc-500">
           Assignment title{" "}
           <span className="font-normal text-zinc-400">(optional)</span>
         </span>
@@ -367,15 +367,15 @@ function StepBrief({
             setBrief((b) => ({ ...b, title: e.target.value.slice(0, 120) }))
           }
           placeholder="Leave blank — Readee will use the passage title"
-          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
         />
       </label>
 
       <div>
-        <span className="block mb-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block mb-2 text-xs font-semibold text-zinc-500">
           Grade level
         </span>
-        <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+        <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
           {GRADES.map((g) => (
             <button
               key={g}
@@ -383,7 +383,7 @@ function StepBrief({
               onClick={() => setGrade(g)}
               className={`rounded-full px-3 py-1 transition ${
                 brief.gradeLevel === g
-                  ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                  ? "bg-white text-indigo-700 shadow-sm"
                   : "text-zinc-500"
               }`}
             >
@@ -407,7 +407,7 @@ function StepBrief({
 
       <div>
         <label className="block">
-          <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <span className="text-xs font-semibold text-zinc-500">
             What is the assignment about?
           </span>
           <div className="relative mt-1">
@@ -435,7 +435,7 @@ function StepBrief({
                   ? "Tell Readee.ai what you want your students to read about…"
                   : ""
               }
-              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
             />
             {!brief.topic.trim() && (
               <div className="pointer-events-none absolute inset-x-0 top-0 px-3 py-2 text-sm leading-relaxed text-zinc-400">
@@ -456,7 +456,7 @@ function StepBrief({
         </label>
         {!brief.topic.trim() && (
           <div className="mt-2 flex items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 text-violet-600 dark:text-violet-300">
+            <div className="flex items-center gap-1.5 text-violet-600">
               <Sparkles className="h-3 w-3" />
               <span className="text-[10px] font-semibold uppercase tracking-widest">
                 Try a prompt
@@ -470,10 +470,10 @@ function StepBrief({
                   topic: TEACHER_PROMPT_SUGGESTIONS[suggestionIdx],
                 }))
               }
-              className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-semibold text-violet-700 transition hover:bg-violet-200 dark:bg-violet-900/40 dark:text-violet-200"
+              className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-semibold text-violet-700 transition hover:bg-violet-200"
             >
               Use this prompt
-              <kbd className="rounded bg-white/70 px-1 text-[9px] font-bold text-violet-700 dark:bg-slate-900/70 dark:text-violet-200">
+              <kbd className="rounded bg-white/70 px-1 text-[9px] font-bold text-violet-700">
                 Tab
               </kbd>
             </button>
@@ -482,7 +482,7 @@ function StepBrief({
       </div>
 
       <label className="block">
-        <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="text-xs font-semibold text-zinc-500">
           Phonics focus (optional)
         </span>
         <input
@@ -491,9 +491,9 @@ function StepBrief({
             setBrief((b) => ({ ...b, phonicsPattern: e.target.value }))
           }
           placeholder="e.g. short a, r-controlled, silent e"
-          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
         />
-        <p className="mt-1 text-[11px] text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-[11px] text-zinc-500">
           If set, passage target words are bolded and the questions lean
           into the pattern.
         </p>
@@ -549,7 +549,7 @@ function StandardPicker({
   return (
     <div>
       <div className="flex items-baseline justify-between">
-        <span className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block text-xs font-semibold text-zinc-500">
           CCSS standard{" "}
           <span className="font-normal text-zinc-400">
             (optional but strongly recommended)
@@ -573,7 +573,7 @@ function StandardPicker({
           const s = gradeStandards.find((x) => x.standard_id === id);
           onPick(id, s?.standard_description ?? null);
         }}
-        className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+        className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
       >
         <option value="">— Pick a skill (Readee will lock questions to it) —</option>
         {byDomain.map(([domain, standards]) => (
@@ -588,7 +588,7 @@ function StandardPicker({
         ))}
       </select>
       {selected && (
-        <p className="mt-1.5 rounded-lg bg-violet-50 px-2 py-1 text-[11px] leading-relaxed text-violet-900 dark:bg-violet-950/30 dark:text-violet-200">
+        <p className="mt-1.5 rounded-lg bg-violet-50 px-2 py-1 text-[11px] leading-relaxed text-violet-900">
           <span className="font-bold">{selected.standard_id}:</span>{" "}
           {selected.standard_description}
         </p>
@@ -608,14 +608,14 @@ function StepPassage({
 }) {
   return (
     <div className="space-y-4 pt-5">
-      <div className="rounded-2xl border border-zinc-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-5 dark:border-slate-800 dark:from-indigo-950/20 dark:to-violet-950/20">
+      <div className="rounded-2xl border border-zinc-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-5">
         <div className="flex items-start gap-3">
-          <BookOpen className="mt-0.5 h-5 w-5 flex-shrink-0 text-indigo-600 dark:text-indigo-300" />
+          <BookOpen className="mt-0.5 h-5 w-5 flex-shrink-0 text-indigo-600" />
           <div className="flex-1">
-            <div className="font-bold text-zinc-900 dark:text-white">
+            <div className="font-bold text-zinc-900">
               Generate a reading passage
             </div>
-            <p className="mt-1 text-xs text-zinc-600 dark:text-slate-400">
+            <p className="mt-1 text-xs text-zinc-600">
               Students read the passage first, then answer questions based
               on it. Recommended — it gives the questions real grounding
               instead of being trivia.
@@ -636,7 +636,7 @@ function StepPassage({
       {brief.passage.enabled && (
         <>
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-600">
               Length
             </div>
             <div className="mt-1 flex gap-1.5">
@@ -655,7 +655,7 @@ function StepPassage({
                     className={`flex-1 rounded-full border px-3 py-1.5 text-xs font-semibold capitalize transition ${
                       active
                         ? "border-indigo-500 bg-indigo-600 text-white"
-                        : "border-zinc-200 bg-white text-zinc-700 hover:bg-indigo-50 hover:text-indigo-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                        : "border-zinc-200 bg-white text-zinc-700 hover:bg-indigo-50 hover:text-indigo-700"
                     }`}
                   >
                     {tier}
@@ -663,12 +663,12 @@ function StepPassage({
                 );
               })}
             </div>
-            <div className="mt-1 text-[10px] text-zinc-500 dark:text-slate-400">
+            <div className="mt-1 text-[10px] text-zinc-500">
               {wizardLengthRange(brief.gradeLevel, brief.passage.length ?? "short")}
             </div>
           </div>
 
-          <p className="text-xs text-zinc-500 dark:text-slate-400">
+          <p className="text-xs text-zinc-500">
             Your phonics focus{" "}
             <span className="font-semibold">
               {brief.phonicsPattern?.trim()
@@ -681,7 +681,7 @@ function StepPassage({
       )}
 
       {!brief.passage.enabled && (
-        <div className="rounded-xl bg-amber-50 px-4 py-3 text-xs text-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
+        <div className="rounded-xl bg-amber-50 px-4 py-3 text-xs text-amber-800">
           Questions will be topic-only (no passage). Good for vocabulary
           review, phonics drills, and quick formative checks.
         </div>
@@ -711,7 +711,7 @@ function StepQuestions({
     (brief.questions.writingPrompts ?? 0);
   return (
     <div className="space-y-3 pt-5">
-      <p className="text-xs text-zinc-500 dark:text-slate-400">
+      <p className="text-xs text-zinc-500">
         Pick a mix. Total across all types should stay under 20.
       </p>
       <Counter
@@ -742,9 +742,9 @@ function StepQuestions({
         setValue={(v) => set("writingPrompts", v)}
         max={3}
       />
-      <div className="pt-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+      <div className="pt-2 text-xs font-semibold text-zinc-500">
         Total:{" "}
-        <span className="text-zinc-900 dark:text-white">{total} questions</span>
+        <span className="text-zinc-900">{total} questions</span>
       </div>
     </div>
   );
@@ -847,7 +847,7 @@ function YesNo({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <div className="inline-flex rounded-full border border-zinc-200 bg-white p-0.5 dark:border-slate-700 dark:bg-slate-900">
+    <div className="inline-flex rounded-full border border-zinc-200 bg-white p-0.5">
       {[
         { v: true, label: "Yes" },
         { v: false, label: "No" },
@@ -859,7 +859,7 @@ function YesNo({
           className={`rounded-full px-3 py-1 text-xs font-bold transition ${
             value === o.v
               ? "bg-indigo-600 text-white"
-              : "text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+              : "text-zinc-500 hover:bg-zinc-100"
           }`}
         >
           {o.label}
@@ -883,10 +883,10 @@ function Counter({
   max: number;
 }) {
   return (
-    <div className="flex items-start justify-between gap-3 rounded-2xl border border-zinc-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+    <div className="flex items-start justify-between gap-3 rounded-2xl border border-zinc-200 bg-white p-4">
       <div className="min-w-0 flex-1">
-        <div className="font-bold text-zinc-900 dark:text-white">{label}</div>
-        <div className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+        <div className="font-bold text-zinc-900">{label}</div>
+        <div className="mt-0.5 text-xs text-zinc-500">
           {sublabel}
         </div>
       </div>
@@ -895,18 +895,18 @@ function Counter({
           type="button"
           onClick={() => setValue(Math.max(0, value - 1))}
           disabled={value === 0}
-          className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 hover:bg-zinc-200 disabled:opacity-40 dark:bg-slate-800 dark:text-slate-300"
+          className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 hover:bg-zinc-200 disabled:opacity-40"
         >
           −
         </button>
-        <span className="w-8 text-center font-mono text-sm font-bold text-zinc-900 dark:text-white">
+        <span className="w-8 text-center font-mono text-sm font-bold text-zinc-900">
           {value}
         </span>
         <button
           type="button"
           onClick={() => setValue(Math.min(max, value + 1))}
           disabled={value === max}
-          className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 hover:bg-zinc-200 disabled:opacity-40 dark:bg-slate-800 dark:text-slate-300"
+          className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 hover:bg-zinc-200 disabled:opacity-40"
         >
           +
         </button>
@@ -936,16 +936,16 @@ function MediaRow({
     <div
       className={`flex items-start gap-3 rounded-2xl border p-4 ${
         disabled
-          ? "border-zinc-200 bg-zinc-50 opacity-70 dark:border-slate-800 dark:bg-slate-950/50"
-          : "border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+          ? "border-zinc-200 bg-zinc-50 opacity-70"
+          : "border-zinc-200 bg-white"
       }`}
     >
-      <div className="mt-0.5 flex-shrink-0 text-violet-600 dark:text-violet-300">
+      <div className="mt-0.5 flex-shrink-0 text-violet-600">
         {icon}
       </div>
       <div className="min-w-0 flex-1">
-        <div className="font-bold text-zinc-900 dark:text-white">{title}</div>
-        <div className="mt-0.5 text-xs text-zinc-500 dark:text-slate-400">
+        <div className="font-bold text-zinc-900">{title}</div>
+        <div className="mt-0.5 text-xs text-zinc-500">
           {disabled ? disabledHint : description}
         </div>
       </div>
@@ -967,12 +967,12 @@ function CostFooter({
   exceedsRemaining: boolean;
 }) {
   return (
-    <div className="mt-5 rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-xs dark:border-slate-800 dark:bg-slate-950/50">
+    <div className="mt-5 rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-xs">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-1.5 font-semibold text-zinc-600 dark:text-slate-400">
+        <div className="flex items-center gap-1.5 font-semibold text-zinc-600">
           <Sparkles className="h-3.5 w-3.5 text-violet-500" />
           Projected cost:{" "}
-          <span className="font-mono font-bold text-zinc-900 dark:text-white">
+          <span className="font-mono font-bold text-zinc-900">
             {cost} credits
           </span>
         </div>
@@ -981,7 +981,7 @@ function CostFooter({
             className={`font-mono font-semibold ${
               exceedsRemaining
                 ? "text-red-600"
-                : "text-zinc-500 dark:text-slate-400"
+                : "text-zinc-500"
             }`}
           >
             {budget.remaining} / {budget.limit} credits left this month
@@ -990,7 +990,7 @@ function CostFooter({
       </div>
       {exceedsRemaining && (
         <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
-          <div className="text-red-700 dark:text-red-300">
+          <div className="text-red-700">
             Over your monthly cap. Reduce options — or top up for more
             credits.
           </div>

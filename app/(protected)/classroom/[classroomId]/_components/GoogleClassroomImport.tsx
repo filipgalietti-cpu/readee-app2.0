@@ -99,14 +99,14 @@ export default function GoogleClassroomImport({
   if (notConnected) {
     const connectHref = `/api/classroom/google/connect?redirect=${encodeURIComponent(`/classroom/${classroomId}?tab=students&gc=connected`)}`;
     return (
-      <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 text-center dark:border-slate-800 dark:bg-slate-900/40">
-        <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-sm dark:bg-slate-800">
+      <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 text-center">
+        <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-sm">
           <Link2 className="h-5 w-5 text-indigo-600" />
         </div>
-        <h3 className="mt-3 font-bold text-zinc-900 dark:text-white">
+        <h3 className="mt-3 font-bold text-zinc-900">
           Connect Google Classroom
         </h3>
-        <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-xs text-zinc-500">
           Pull your class roster straight from Google Classroom — students go
           into the editor below and you review before adding.
         </p>
@@ -122,7 +122,7 @@ export default function GoogleClassroomImport({
 
   if (loading && !courses) {
     return (
-      <div className="flex items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 p-10 text-sm text-zinc-500 dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="flex items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 p-10 text-sm text-zinc-500">
         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
         Loading your Google Classroom courses…
       </div>
@@ -131,7 +131,7 @@ export default function GoogleClassroomImport({
 
   if (err) {
     return (
-      <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/40 dark:bg-red-950/20 dark:text-red-300">
+      <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
         {err}{" "}
         <button onClick={loadCourses} className="ml-1 font-semibold underline">
           Try again
@@ -143,7 +143,7 @@ export default function GoogleClassroomImport({
   if (!pickedCourse) {
     return (
       <div>
-        <div className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+        <div className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-zinc-500">
           <School className="h-3 w-3" />
           Pick a course
         </div>
@@ -153,14 +153,14 @@ export default function GoogleClassroomImport({
               <button
                 type="button"
                 onClick={() => pickCourse(c)}
-                className="flex w-full items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-left transition hover:border-indigo-300 hover:bg-indigo-50/40 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
+                className="flex w-full items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-left transition hover:border-indigo-300 hover:bg-indigo-50/40"
               >
                 <div>
-                  <div className="text-sm font-semibold text-zinc-900 dark:text-white">
+                  <div className="text-sm font-semibold text-zinc-900">
                     {c.name}
                   </div>
                   {c.section && (
-                    <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+                    <div className="text-[11px] text-zinc-500">
                       {c.section}
                     </div>
                   )}
@@ -182,7 +182,7 @@ export default function GoogleClassroomImport({
   return (
     <div>
       <div className="mb-2 flex items-center justify-between">
-        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+        <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-widest text-zinc-500">
           <Users2 className="h-3 w-3" />
           Roster for {pickedCourse.name}
         </div>
@@ -197,7 +197,7 @@ export default function GoogleClassroomImport({
         </button>
       </div>
       {loading ? (
-        <div className="flex items-center justify-center rounded-xl bg-zinc-50 p-6 text-sm text-zinc-500 dark:bg-slate-900/40">
+        <div className="flex items-center justify-center rounded-xl bg-zinc-50 p-6 text-sm text-zinc-500">
           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
           Loading roster…
         </div>
@@ -207,11 +207,11 @@ export default function GoogleClassroomImport({
         </div>
       ) : (
         <>
-          <ul className="max-h-48 overflow-y-auto rounded-xl border border-zinc-200 bg-white text-sm dark:border-slate-700 dark:bg-slate-900">
+          <ul className="max-h-48 overflow-y-auto rounded-xl border border-zinc-200 bg-white text-sm">
             {(students ?? []).map((s) => (
               <li
                 key={s.userId}
-                className="border-b border-zinc-100 px-3 py-1.5 last:border-0 dark:border-slate-800"
+                className="border-b border-zinc-100 px-3 py-1.5 last:border-0"
               >
                 {s.name}
               </li>
@@ -224,7 +224,7 @@ export default function GoogleClassroomImport({
           >
             Add {students?.length ?? 0} students to the editor
           </button>
-          <p className="mt-2 text-[11px] text-zinc-500 dark:text-slate-400">
+          <p className="mt-2 text-[11px] text-zinc-500">
             Readee only keeps first name + last initial — reviewing names in
             the editor before submitting lets you edit both.
           </p>

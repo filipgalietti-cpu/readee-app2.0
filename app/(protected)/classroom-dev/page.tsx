@@ -17,19 +17,19 @@ export default async function ClassroomDevPage() {
 
   return (
     <div className="mx-auto max-w-lg px-6 py-12">
-      <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900">
         Classroom — dev helpers
       </h1>
-      <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-2 text-sm text-zinc-500">
         Quick role-flip controls so you can dogfood both sides of the teacher
         flow on a single account.
       </p>
 
-      <section className="mt-8 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
-        <h2 className="text-sm font-bold text-zinc-900 dark:text-white">Your role</h2>
-        <p className="mt-1 font-mono text-xs text-zinc-600 dark:text-slate-400">
+      <section className="mt-8 rounded-2xl border border-zinc-200 bg-white p-5">
+        <h2 className="text-sm font-bold text-zinc-900">Your role</h2>
+        <p className="mt-1 font-mono text-xs text-zinc-600">
           role ={" "}
-          <span className="font-semibold text-indigo-600 dark:text-indigo-300">
+          <span className="font-semibold text-indigo-600">
             {profile.role}
           </span>
         </p>
@@ -38,7 +38,7 @@ export default async function ClassroomDevPage() {
           <RoleFlipButtons currentRole={profile.role} />
         </div>
 
-        <ul className="mt-5 list-disc space-y-1 pl-5 text-xs text-zinc-500 dark:text-slate-400">
+        <ul className="mt-5 list-disc space-y-1 pl-5 text-xs text-zinc-500">
           <li>
             As <strong>educator</strong>:{" "}
             <Link href="/classroom" className="text-indigo-600 underline">

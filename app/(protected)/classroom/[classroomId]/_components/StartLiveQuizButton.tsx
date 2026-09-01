@@ -155,7 +155,7 @@ export default function StartLiveQuizButton({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 bg-gradient-to-r from-amber-50 to-orange-50 px-4 py-2 text-sm font-bold text-amber-800 transition hover:border-amber-400 hover:shadow-sm dark:border-amber-900/50 dark:from-amber-950/30 dark:to-orange-950/30 dark:text-amber-300"
+        className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 bg-gradient-to-r from-amber-50 to-orange-50 px-4 py-2 text-sm font-bold text-amber-800 transition hover:border-amber-400 hover:shadow-sm"
       >
         <Zap className="h-4 w-4" />
         Live quiz
@@ -164,30 +164,30 @@ export default function StartLiveQuizButton({
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={close} />
-          <div className="relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-slate-900">
-            <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3 dark:border-slate-800">
+          <div className="relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+            <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-3">
               <div className="flex items-center gap-2">
                 <Zap className="h-5 w-5 text-amber-600" />
-                <h3 className="text-base font-bold text-zinc-900 dark:text-white">
+                <h3 className="text-base font-bold text-zinc-900">
                   Start a live quiz
                 </h3>
               </div>
               <button
                 onClick={close}
-                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            <div className="flex gap-1 border-b border-zinc-100 px-5 pt-3 text-xs font-semibold dark:border-slate-800">
+            <div className="flex gap-1 border-b border-zinc-100 px-5 pt-3 text-xs font-semibold">
               <button
                 type="button"
                 onClick={() => setSource("readee")}
                 className={`border-b-2 px-3 py-2 transition ${
                   source === "readee"
-                    ? "border-indigo-600 text-indigo-700 dark:text-indigo-300"
+                    ? "border-indigo-600 text-indigo-700"
                     : "border-transparent text-zinc-500"
                 }`}
               >
@@ -199,7 +199,7 @@ export default function StartLiveQuizButton({
                 onClick={() => !customDisabled && setSource("custom")}
                 className={`border-b-2 px-3 py-2 transition ${
                   source === "custom"
-                    ? "border-indigo-600 text-indigo-700 dark:text-indigo-300"
+                    ? "border-indigo-600 text-indigo-700"
                     : "border-transparent text-zinc-500"
                 } disabled:opacity-40`}
               >
@@ -210,20 +210,20 @@ export default function StartLiveQuizButton({
             <div className="flex-1 overflow-y-auto">
               {source === "readee" ? (
                 <>
-                  <div className="flex items-center gap-2 border-b border-zinc-100 px-5 py-2 dark:border-slate-800">
+                  <div className="flex items-center gap-2 border-b border-zinc-100 px-5 py-2">
                     <div className="relative flex-1">
                       <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
                       <input
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder="Search standard or title"
-                        className="w-full rounded-xl border border-zinc-200 bg-white py-2 pl-9 pr-3 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        className="w-full rounded-xl border border-zinc-200 bg-white py-2 pl-9 pr-3 text-sm focus:border-indigo-400 focus:outline-none"
                       />
                     </div>
                     <select
                       value={gradeFilter}
                       onChange={(e) => setGradeFilter(e.target.value)}
-                      className="rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                      className="rounded-xl border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold focus:border-indigo-400 focus:outline-none"
                     >
                       {grades.map((g) => (
                         <option key={g} value={g}>
@@ -240,18 +240,18 @@ export default function StartLiveQuizButton({
                           <button
                             type="button"
                             onClick={() => setPickedStandard(l)}
-                            className={`flex w-full items-start gap-3 border-b border-zinc-100 px-5 py-2.5 text-left transition hover:bg-zinc-50 dark:border-slate-800 dark:hover:bg-slate-800/40 ${
-                              chosen ? "bg-indigo-50 dark:bg-indigo-950/30" : ""
+                            className={`flex w-full items-start gap-3 border-b border-zinc-100 px-5 py-2.5 text-left transition hover:bg-zinc-50 ${
+                              chosen ? "bg-indigo-50" : ""
                             }`}
                           >
-                            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300 dark:border-slate-600">
+                            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300">
                               {chosen && <Check className="h-3 w-3 text-indigo-600" />}
                             </span>
                             <span className="min-w-0 flex-1">
-                              <span className="block text-sm font-bold text-zinc-900 dark:text-white">
+                              <span className="block text-sm font-bold text-zinc-900">
                                 {l.title}
                               </span>
-                              <span className="mt-0.5 block text-xs text-zinc-500 dark:text-slate-400">
+                              <span className="mt-0.5 block text-xs text-zinc-500">
                                 {l.grade} · {l.domain} · {l.standardId}
                               </span>
                             </span>
@@ -277,20 +277,20 @@ export default function StartLiveQuizButton({
                           type="button"
                           disabled={disabled}
                           onClick={() => setPickedQuizId(cq.id)}
-                          className={`flex w-full items-start gap-3 border-b border-zinc-100 px-5 py-2.5 text-left transition disabled:opacity-50 dark:border-slate-800 ${
+                          className={`flex w-full items-start gap-3 border-b border-zinc-100 px-5 py-2.5 text-left transition disabled:opacity-50 ${
                             chosen
-                              ? "bg-indigo-50 dark:bg-indigo-950/30"
-                              : "hover:bg-zinc-50 dark:hover:bg-slate-800/40"
+                              ? "bg-indigo-50"
+                              : "hover:bg-zinc-50"
                           }`}
                         >
-                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300 dark:border-slate-600">
+                          <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300">
                             {chosen && <Check className="h-3 w-3 text-indigo-600" />}
                           </span>
                           <span className="min-w-0 flex-1">
-                            <span className="block text-sm font-bold text-zinc-900 dark:text-white">
+                            <span className="block text-sm font-bold text-zinc-900">
                               {cq.title}
                             </span>
-                            <span className="mt-0.5 block text-xs text-zinc-500 dark:text-slate-400">
+                            <span className="mt-0.5 block text-xs text-zinc-500">
                               {cq.question_count} question
                               {cq.question_count === 1 ? "" : "s"}
                             </span>
@@ -303,8 +303,8 @@ export default function StartLiveQuizButton({
               )}
             </div>
 
-            <div className="flex items-center justify-between border-t border-zinc-100 bg-zinc-50 px-5 py-3 dark:border-slate-800 dark:bg-slate-900/60">
-              <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+            <div className="flex items-center justify-between border-t border-zinc-100 bg-zinc-50 px-5 py-3">
+              <div className="text-[11px] text-zinc-500">
                 MCQ-only in v1. Timer + leaderboard are basic — more polish coming.
               </div>
               <div className="flex items-center gap-2">

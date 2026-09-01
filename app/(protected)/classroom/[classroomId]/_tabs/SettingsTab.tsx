@@ -73,8 +73,8 @@ export default async function SettingsTab({ classroomId }: { classroomId: string
 
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/40">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-6">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
           Class details
         </h3>
         <div className="mt-4">
@@ -87,11 +87,11 @@ export default async function SettingsTab({ classroomId }: { classroomId: string
         </div>
       </section>
 
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/40">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+      <section className="rounded-2xl border border-zinc-200 bg-white p-6">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-500">
           School
         </h3>
-        <p className="mt-2 text-xs text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-xs text-zinc-500">
           Linking this class to a school rolls up your classroom into
           principal and district admin dashboards. Only admins of the school
           or district can link it.
@@ -105,16 +105,16 @@ export default async function SettingsTab({ classroomId }: { classroomId: string
         </div>
       </section>
 
-      <section className="rounded-2xl border border-red-200 bg-red-50/60 p-6 dark:border-red-950/50 dark:bg-red-950/20">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-red-700 dark:text-red-300">
+      <section className="rounded-2xl border border-red-200 bg-red-50/60 p-6">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-red-700">
           Danger zone
         </h3>
         <div className="mt-3 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <div className="text-sm font-semibold text-zinc-900 dark:text-white">
+            <div className="text-sm font-semibold text-zinc-900">
               Archive this class
             </div>
-            <p className="mt-0.5 text-xs text-zinc-600 dark:text-slate-400">
+            <p className="mt-0.5 text-xs text-zinc-600">
               Removes it from your list and stops new joiners. Student
               history and submissions are preserved.
             </p>

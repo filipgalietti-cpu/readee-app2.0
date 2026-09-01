@@ -21,7 +21,7 @@ export default function SignOutButton() {
       type="button"
       onClick={signOut}
       disabled={pending}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-800 disabled:opacity-50 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-800 disabled:opacity-50"
       aria-label="Sign out"
       title="Sign out"
     >

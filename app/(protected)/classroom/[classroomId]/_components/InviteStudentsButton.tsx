@@ -159,7 +159,7 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100 dark:border-indigo-900 dark:bg-indigo-950/30 dark:text-indigo-300 dark:hover:bg-indigo-950/50"
+        className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700 transition hover:border-indigo-300 hover:bg-indigo-100"
       >
         <UserPlus className="h-4 w-4" />
         Invite students
@@ -168,34 +168,34 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/40" onClick={close} />
-          <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+          <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-2xl">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-extrabold text-zinc-900 dark:text-white">
+              <h2 className="text-lg font-extrabold text-zinc-900">
                 Invite students
               </h2>
               <button
                 onClick={close}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
                 aria-label="Close"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-1 text-sm text-zinc-500">
               {flow === "direct"
                 ? "Students sign in at learn.readee.app/class with the class code + their name. No email needed."
                 : "Parents get a link to connect their child to this class from home."}
             </p>
 
-            <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-1 dark:border-slate-800 dark:bg-slate-950">
+            <div className="mt-4 grid grid-cols-2 gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-1">
               <button
                 type="button"
                 onClick={() => setFlow("direct")}
                 className={`inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-semibold transition ${
                   flow === "direct"
-                    ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
-                    : "text-zinc-500 dark:text-slate-400"
+                    ? "bg-white text-indigo-700 shadow-sm"
+                    : "text-zinc-500"
                 }`}
               >
                 <Users className="h-3.5 w-3.5" />
@@ -206,8 +206,8 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                 onClick={() => setFlow("parent")}
                 className={`inline-flex items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-semibold transition ${
                   flow === "parent"
-                    ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
-                    : "text-zinc-500 dark:text-slate-400"
+                    ? "bg-white text-indigo-700 shadow-sm"
+                    : "text-zinc-500"
                 }`}
               >
                 <Mail className="h-3.5 w-3.5" />
@@ -215,14 +215,14 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
               </button>
             </div>
 
-            <div className="mt-4 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-800 dark:bg-slate-950">
+            <div className="mt-4 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
               <button
                 type="button"
                 onClick={() => setMode("manual")}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition ${
                   mode === "manual"
-                    ? "bg-white text-indigo-700 shadow dark:bg-slate-800 dark:text-indigo-300"
-                    : "text-zinc-500 dark:text-slate-400"
+                    ? "bg-white text-indigo-700 shadow"
+                    : "text-zinc-500"
                 }`}
               >
                 <Pencil className="h-3.5 w-3.5" />
@@ -233,8 +233,8 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                 onClick={() => setMode("csv")}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition ${
                   mode === "csv"
-                    ? "bg-white text-indigo-700 shadow dark:bg-slate-800 dark:text-indigo-300"
-                    : "text-zinc-500 dark:text-slate-400"
+                    ? "bg-white text-indigo-700 shadow"
+                    : "text-zinc-500"
                 }`}
               >
                 <FileSpreadsheet className="h-3.5 w-3.5" />
@@ -245,8 +245,8 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                 onClick={() => setMode("gc")}
                 className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 transition ${
                   mode === "gc"
-                    ? "bg-white text-indigo-700 shadow dark:bg-slate-800 dark:text-indigo-300"
-                    : "text-zinc-500 dark:text-slate-400"
+                    ? "bg-white text-indigo-700 shadow"
+                    : "text-zinc-500"
                 }`}
               >
                 <School className="h-3.5 w-3.5" />
@@ -254,7 +254,7 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
               </button>
             </div>
 
-            <div className="mt-4 max-h-[50vh] overflow-y-auto rounded-xl border border-zinc-200 p-3 dark:border-slate-800">
+            <div className="mt-4 max-h-[50vh] overflow-y-auto rounded-xl border border-zinc-200 p-3">
               {mode === "gc" ? (
                 <GoogleClassroomImport
                   classroomId={classroomId}
@@ -263,7 +263,7 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
               ) : mode === "manual" ? (
                 <div className="space-y-2">
                   <div
-                    className={`grid items-center gap-2 px-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400 ${
+                    className={`grid items-center gap-2 px-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 ${
                       flow === "direct"
                         ? "grid-cols-[1fr_60px_32px]"
                         : "grid-cols-[1fr_60px_1.6fr_32px]"
@@ -287,14 +287,14 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                         value={r.firstName}
                         onChange={(e) => updateRow(i, { firstName: e.target.value })}
                         placeholder="Emma"
-                        className="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-900 focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        className="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-900 focus:border-indigo-400 focus:outline-none"
                       />
                       <input
                         value={r.lastInitial}
                         onChange={(e) => updateRow(i, { lastInitial: e.target.value.slice(0, 1) })}
                         placeholder="T"
                         maxLength={1}
-                        className="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-center text-sm uppercase text-zinc-900 focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                        className="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-center text-sm uppercase text-zinc-900 focus:border-indigo-400 focus:outline-none"
                       />
                       {flow === "parent" && (
                         <input
@@ -302,17 +302,17 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                           onChange={(e) => updateRow(i, { parentEmail: e.target.value })}
                           placeholder="parent@example.com"
                           type="email"
-                          className={`rounded-lg border bg-white px-3 py-1.5 text-sm text-zinc-900 focus:outline-none dark:bg-slate-900 dark:text-white ${
+                          className={`rounded-lg border bg-white px-3 py-1.5 text-sm text-zinc-900 focus:outline-none ${
                             isValidEmail(r.parentEmail)
-                              ? "border-zinc-200 focus:border-indigo-400 dark:border-slate-700"
-                              : "border-red-300 focus:border-red-500 dark:border-red-900"
+                              ? "border-zinc-200 focus:border-indigo-400"
+                              : "border-red-300 focus:border-red-500"
                           }`}
                         />
                       )}
                       <button
                         type="button"
                         onClick={() => removeRow(i)}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-zinc-400 hover:bg-red-50 hover:text-red-600"
                         aria-label="Remove row"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
@@ -322,7 +322,7 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                   <button
                     type="button"
                     onClick={addRow}
-                    className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-dashed border-zinc-300 px-3 py-1.5 text-xs font-semibold text-zinc-500 hover:border-indigo-300 hover:text-indigo-600 dark:border-slate-700 dark:text-slate-400"
+                    className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-dashed border-zinc-300 px-3 py-1.5 text-xs font-semibold text-zinc-500 hover:border-indigo-300 hover:text-indigo-600"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     Add another
@@ -330,9 +330,9 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                 </div>
               ) : (
                 <>
-                  <p className="mb-2 text-xs text-zinc-500 dark:text-slate-400">
+                  <p className="mb-2 text-xs text-zinc-500">
                     One student per line. Format:{" "}
-                    <code className="rounded bg-zinc-100 px-1 py-0.5 text-[11px] dark:bg-slate-800">
+                    <code className="rounded bg-zinc-100 px-1 py-0.5 text-[11px]">
                       First name, Last initial, parent@example.com
                     </code>
                     {" "}(last initial optional, email optional if you just want to save the name)
@@ -342,21 +342,21 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                     onChange={(e) => setCsvText(e.target.value)}
                     rows={10}
                     placeholder={"Emma, T, parent1@example.com\nNoah, K, parent2@example.com\nAva,, parent3@example.com"}
-                    className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 font-mono text-xs text-zinc-900 focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                    className="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 font-mono text-xs text-zinc-900 focus:border-indigo-400 focus:outline-none"
                   />
                   {allRows.length > 0 && (
-                    <div className="mt-3 max-h-48 overflow-y-auto rounded-lg bg-zinc-50 p-2 dark:bg-slate-950/50">
-                      <div className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-500 dark:text-slate-400">
+                    <div className="mt-3 max-h-48 overflow-y-auto rounded-lg bg-zinc-50 p-2">
+                      <div className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
                         Preview ({allRows.length})
                       </div>
                       <ul className="space-y-1">
                         {allRows.slice(0, 50).map((r, i) => (
                           <li key={i} className="flex items-center gap-2 text-xs">
-                            <span className="font-semibold text-zinc-900 dark:text-white">
+                            <span className="font-semibold text-zinc-900">
                               {r.firstName}
                               {r.lastInitial ? ` ${r.lastInitial}.` : ""}
                             </span>
-                            <span className="text-zinc-500 dark:text-slate-400">
+                            <span className="text-zinc-500">
                               {r.parentEmail || "(no email)"}
                             </span>
                             {!isValidEmail(r.parentEmail) && (
@@ -379,7 +379,7 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
             </div>
 
             {flow === "parent" && (
-              <label className="mt-4 flex items-center gap-2 text-sm text-zinc-700 dark:text-slate-300">
+              <label className="mt-4 flex items-center gap-2 text-sm text-zinc-700">
                 <input
                   type="checkbox"
                   checked={sendEmails}
@@ -391,10 +391,10 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
             )}
 
             <div className="mt-5 flex items-center justify-between">
-              <div className="text-xs text-zinc-500 dark:text-slate-400">
+              <div className="text-xs text-zinc-500">
                 {validRows.length} ready{" "}
                 {invalidCount > 0 && (
-                  <span className="ml-1 text-amber-600 dark:text-amber-400">
+                  <span className="ml-1 text-amber-600">
                     ({invalidCount} skipped — missing name or invalid email)
                   </span>
                 )}
@@ -404,7 +404,7 @@ export default function InviteStudentsButton({ classroomId }: { classroomId: str
                 <button
                   type="button"
                   onClick={close}
-                  className="rounded-full px-4 py-2 text-sm font-semibold text-zinc-600 hover:bg-zinc-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                  className="rounded-full px-4 py-2 text-sm font-semibold text-zinc-600 hover:bg-zinc-100"
                 >
                   Cancel
                 </button>

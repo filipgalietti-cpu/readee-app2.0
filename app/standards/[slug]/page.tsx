@@ -96,30 +96,30 @@ export default async function StandardLandingPage({
       <div className="mx-auto max-w-3xl px-6 py-10">
         <Link
           href="/standards"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
         >
           <ArrowLeft className="h-4 w-4" />
           All standards
         </Link>
 
-        <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
           <BookOpen className="h-4 w-4" />
           <span>{domain}</span>
-          <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+          <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-indigo-700">
             {standard.gradeLabel}
           </span>
         </div>
 
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
           {standard.standard_id}
         </h1>
-        <p className="mt-2 text-lg leading-relaxed text-zinc-700 dark:text-slate-300">
+        <p className="mt-2 text-lg leading-relaxed text-zinc-700">
           {standard.standard_description}
         </p>
 
         {standard.parent_tip && (
-          <div className="mt-5 rounded-2xl border border-indigo-200 bg-indigo-50/60 p-4 text-sm text-indigo-900 dark:border-indigo-900/40 dark:bg-indigo-950/20 dark:text-indigo-200">
-            <div className="mb-1 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+          <div className="mt-5 rounded-2xl border border-indigo-200 bg-indigo-50/60 p-4 text-sm text-indigo-900">
+            <div className="mb-1 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
               For parents
             </div>
             {standard.parent_tip}
@@ -127,7 +127,7 @@ export default async function StandardLandingPage({
         )}
 
         <div className="mt-8">
-          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+          <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-zinc-500">
             <ListChecks className="h-4 w-4 text-violet-500" />
             Free sample questions
           </div>
@@ -135,7 +135,7 @@ export default async function StandardLandingPage({
             {sampleQuestions.map((q, i) => (
               <li
                 key={q.id}
-                className="rounded-2xl border border-zinc-200 bg-white p-5 text-sm dark:border-slate-800 dark:bg-slate-900/40"
+                className="rounded-2xl border border-zinc-200 bg-white p-5 text-sm"
               >
                 {q.image_url && (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -148,7 +148,7 @@ export default async function StandardLandingPage({
                 <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-400">
                   Question {i + 1}
                 </div>
-                <div className="mt-1 whitespace-pre-line font-semibold text-zinc-900 dark:text-white">
+                <div className="mt-1 whitespace-pre-line font-semibold text-zinc-900">
                   {q.prompt}
                 </div>
                 {Array.isArray(q.choices) && (
@@ -164,8 +164,8 @@ export default async function StandardLandingPage({
                           key={c}
                           className={
                             isCorrect
-                              ? "inline-flex items-center gap-1.5 rounded-lg bg-green-50 px-2 py-1 font-semibold text-green-800 dark:bg-green-950/30 dark:text-green-300"
-                              : "inline-flex px-2 py-1 text-zinc-600 dark:text-slate-400"
+                              ? "inline-flex items-center gap-1.5 rounded-lg bg-green-50 px-2 py-1 font-semibold text-green-800"
+                              : "inline-flex px-2 py-1 text-zinc-600"
                           }
                         >
                           {isCorrect && <Check className="h-3 w-3" />}
@@ -180,16 +180,16 @@ export default async function StandardLandingPage({
           </ol>
         </div>
 
-        <div className="mt-10 rounded-3xl border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-8 text-center shadow-sm dark:border-indigo-900/50 dark:from-indigo-950/20 dark:via-slate-900 dark:to-violet-950/20">
+        <div className="mt-10 rounded-3xl border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-8 text-center shadow-sm">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-lg">
             <Sparkles className="h-7 w-7" />
           </div>
-          <h2 className="mt-4 text-xl font-extrabold text-zinc-900 dark:text-white">
+          <h2 className="mt-4 text-xl font-extrabold text-zinc-900">
             {remaining > 0
               ? `Unlock ${remaining} more questions for ${standard.standard_id}`
               : `Unlock the full Readee library`}
           </h2>
-          <p className="mx-auto mt-2 max-w-md text-sm text-zinc-600 dark:text-slate-400">
+          <p className="mx-auto mt-2 max-w-md text-sm text-zinc-600">
             Readee covers all {"911"}+ K-4 reading comprehension
             questions aligned to Common Core ELA, with audio read-alouds,
             comprehension hints, and Science-of-Reading lesson
@@ -205,7 +205,7 @@ export default async function StandardLandingPage({
             </Link>
             <Link
               href="/upgrade"
-              className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-6 py-2.5 text-sm font-bold text-zinc-700 transition hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+              className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-6 py-2.5 text-sm font-bold text-zinc-700 transition hover:border-indigo-300"
             >
               See all plans
             </Link>

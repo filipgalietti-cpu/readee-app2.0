@@ -152,7 +152,7 @@ export default async function QcTargetTimelinePage({
             <Bot className="h-4 w-4" />
             Target timeline
           </div>
-          <h1 className="mt-1 font-mono text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 font-mono text-3xl font-extrabold tracking-tight text-zinc-900">
             {targetId}
           </h1>
           <p className="mt-1 text-xs text-zinc-500">

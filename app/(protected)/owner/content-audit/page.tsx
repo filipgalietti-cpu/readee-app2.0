@@ -156,7 +156,7 @@ export default async function ContentAuditPage({
           <ScanLine className="h-4 w-4" />
           Content audit
         </div>
-        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
           {severity === "fail"
             ? `${findings.length} fails`
             : severity === "warn"
@@ -369,7 +369,7 @@ export default async function ContentAuditPage({
                 )}
                 <span className="font-mono text-[10px] text-zinc-500">{f.finding_type}</span>
               </div>
-              <p className="mt-2 text-sm text-zinc-800 dark:text-slate-200">{f.message}</p>
+              <p className="mt-2 text-sm text-zinc-800">{f.message}</p>
               {f.suggestion && (
                 <div className="mt-1 rounded-lg bg-amber-50 px-2 py-1 text-[11px] text-amber-900">
                   <span className="font-bold">Suggestion:</span> {f.suggestion}

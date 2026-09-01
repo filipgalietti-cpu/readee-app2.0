@@ -184,15 +184,15 @@ export function MysteryBoxOpener({
                   <RewardIcon className="w-20 h-20 text-amber-400" strokeWidth={1.5} />
                 </motion.div>
 
-                <div className="rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-2xl">
-                  <div className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider mb-1">
+                <div className="rounded-2xl bg-white p-6 shadow-2xl">
+                  <div className="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">
                     {reward.type === "jackpot" ? "JACKPOT!" : "You got..."}
                   </div>
-                  <div className="text-2xl font-extrabold text-zinc-900 dark:text-white">
+                  <div className="text-2xl font-extrabold text-zinc-900">
                     {reward.label}
                   </div>
                   {reward.type === "multiplier" && (
-                    <p className="text-sm text-zinc-500 dark:text-slate-400 mt-1">
+                    <p className="text-sm text-zinc-500 mt-1">
                       Your next practice session earns double carrots!
                     </p>
                   )}

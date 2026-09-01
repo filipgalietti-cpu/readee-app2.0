@@ -21,19 +21,19 @@ interface TapToPairProps {
 }
 
 const LEFT_COLORS = [
-  "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
-  "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
-  "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/60 dark:text-amber-200 dark:border-amber-700",
-  "bg-sky-100 text-sky-800 border-sky-300 dark:bg-sky-900/60 dark:text-sky-200 dark:border-sky-700",
-  "bg-pink-100 text-pink-800 border-pink-300 dark:bg-pink-900/60 dark:text-pink-200 dark:border-pink-700",
+  "bg-blue-100 text-blue-800 border-blue-300",
+  "bg-purple-100 text-purple-800 border-purple-300",
+  "bg-amber-100 text-amber-800 border-amber-300",
+  "bg-sky-100 text-sky-800 border-sky-300",
+  "bg-pink-100 text-pink-800 border-pink-300",
 ];
 
 const RIGHT_COLORS = [
-  "bg-cyan-100 text-cyan-800 border-cyan-300 dark:bg-cyan-900/60 dark:text-cyan-200 dark:border-cyan-700",
-  "bg-orange-100 text-orange-800 border-orange-300 dark:bg-orange-900/60 dark:text-orange-200 dark:border-orange-700",
-  "bg-rose-100 text-rose-800 border-rose-300 dark:bg-rose-900/60 dark:text-rose-200 dark:border-rose-700",
-  "bg-teal-100 text-teal-800 border-teal-300 dark:bg-teal-900/60 dark:text-teal-200 dark:border-teal-700",
-  "bg-indigo-100 text-indigo-800 border-indigo-300 dark:bg-indigo-900/60 dark:text-indigo-200 dark:border-indigo-700",
+  "bg-cyan-100 text-cyan-800 border-cyan-300",
+  "bg-orange-100 text-orange-800 border-orange-300",
+  "bg-rose-100 text-rose-800 border-rose-300",
+  "bg-teal-100 text-teal-800 border-teal-300",
+  "bg-indigo-100 text-indigo-800 border-indigo-300",
 ];
 
 interface MatchedPair {
@@ -190,7 +190,7 @@ export function TapToPair({
   return (
     <div className="flex flex-col gap-6">
       {prompt ? (
-        <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center mb-2">
+        <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 leading-tight text-center mb-2">
           {prompt}
         </h2>
       ) : null}
@@ -229,10 +229,10 @@ export function TapToPair({
               if (isMatched) {
                 style = assessmentMode
                   ? style + " opacity-60"
-                  : "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
+                  : "bg-emerald-100 text-emerald-800 border-emerald-400 opacity-70";
               } else if (isSelected) {
                 style =
-                  "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50 dark:bg-indigo-800 dark:text-indigo-100 dark:border-indigo-400";
+                  "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50";
               }
 
               return (
@@ -276,10 +276,10 @@ export function TapToPair({
               if (isMatched) {
                 style = assessmentMode
                   ? style + " opacity-60"
-                  : "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500 opacity-70";
+                  : "bg-emerald-100 text-emerald-800 border-emerald-400 opacity-70";
               } else if (isSelected) {
                 style =
-                  "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50 dark:bg-indigo-800 dark:text-indigo-100 dark:border-indigo-400";
+                  "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/50";
               }
 
               return (

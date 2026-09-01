@@ -17,7 +17,6 @@ import { useAudio } from "@/lib/audio/use-audio";
 import { audioManager } from "@/lib/audio/audio-manager";
 import { getAudioUrl } from "@/lib/audio";
 import { usePracticeStore } from "@/lib/stores/practice-store";
-import { useThemeStore } from "@/lib/stores/theme-store";
 import { safeValidate } from "@/lib/validate";
 import { PracticeResultSchema } from "@/lib/schemas";
 import { savedOk } from "@/lib/db/checked-write";
@@ -107,10 +106,10 @@ const QUESTIONS_PER_SESSION = 5;
 const CARROTS_PER_CORRECT = 5;
 
 const CHOICE_COLORS = [
-  "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
-  "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
-  "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/60 dark:text-amber-200 dark:border-amber-700",
-  "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
+  "bg-blue-100 text-blue-800 border-blue-300",
+  "bg-purple-100 text-purple-800 border-purple-300",
+  "bg-amber-100 text-amber-800 border-amber-300",
+  "bg-emerald-100 text-emerald-800 border-emerald-300",
 ];
 
 // Claude Design "Practice Runner" choice-card palette (letter chip + card).
@@ -136,14 +135,14 @@ function highlightQuestion(text: string, noWh = false): React.ReactNode[] {
     if (/^\*\*[^*]+\*\*$/.test(segment)) {
       const inner = segment.slice(2, -2);
       return (
-        <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">
+        <span key={si} className="text-violet-600 font-extrabold">
           {inner}
         </span>
       );
     }
     // "quoted" — render as is, just styled.
     if (/^[""][^""]+[""]$/.test(segment)) {
-      return <span key={si} className="text-violet-600 dark:text-violet-400 font-extrabold">{segment}</span>;
+      return <span key={si} className="text-violet-600 font-extrabold">{segment}</span>;
     }
     // Plain segment — handle ALL CAPS / question-word highlighting,
     // and defensively strip any stray asterisks that survived.
@@ -153,10 +152,10 @@ function highlightQuestion(text: string, noWh = false): React.ReactNode[] {
       const clean = part.replace(/[^a-zA-Z']/g, "");
       if (hasEmphasis) {
         if (/^[A-Z]{3,}$/.test(clean)) {
-          return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
+          return <span key={`${si}-${pi}`} className="text-violet-600 font-extrabold">{part}</span>;
         }
       } else if (!noWh && clean.length > 1 && QUESTION_WORDS.has(clean)) {
-        return <span key={`${si}-${pi}`} className="text-violet-600 dark:text-violet-400 font-extrabold">{part}</span>;
+        return <span key={`${si}-${pi}`} className="text-violet-600 font-extrabold">{part}</span>;
       }
       return part;
     });
@@ -364,9 +363,9 @@ export default function PracticePage() {
 
 function LoadingScreen() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-white dark:bg-[#0f172a] gap-4">
-      <div className="h-12 w-12 rounded-full border-4 border-violet-200 border-t-violet-500 dark:border-violet-900 dark:border-t-violet-400 animate-spin" />
-      <p className="text-violet-600 dark:text-violet-300 text-sm font-medium">Loading questions...</p>
+    <div className="flex flex-col items-center justify-center min-h-[100dvh] bg-white gap-4">
+      <div className="h-12 w-12 rounded-full border-4 border-violet-200 border-t-violet-500 animate-spin" />
+      <p className="text-violet-600 text-sm font-medium">Loading questions...</p>
     </div>
   );
 }
@@ -560,7 +559,7 @@ function PracticeLoader() {
     // the kid still sees a friendly explanation, not a sterile
     // "No reader selected."
     return (
-      <div className="min-h-[100dvh] bg-white dark:bg-[#0f172a] flex items-center justify-center px-6">
+      <div className="min-h-[100dvh] bg-white flex items-center justify-center px-6">
         <div className="max-w-sm text-center space-y-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -568,12 +567,12 @@ function PracticeLoader() {
             alt=""
             className="mx-auto h-24 w-24 object-contain"
           />
-          <h1 className="text-lg font-bold text-zinc-900 dark:text-white">
+          <h1 className="text-lg font-bold text-zinc-900">
             {!child
               ? "Pick a reader to start"
               : "This skill isn't ready right now"}
           </h1>
-          <p className="text-sm text-zinc-500 dark:text-slate-400">
+          <p className="text-sm text-zinc-500">
             {!child
               ? "Head back to the dashboard and tap the reader profile you want to practice with."
               : "Try a different topic from the dashboard."}
@@ -1644,7 +1643,6 @@ function CompletionScreen({
 }) {
   const [saved, setSaved] = useState(false);
   const [unlocks, setUnlocks] = useState<UnlockableItem[]>([]);
-  const darkMode = useThemeStore((s) => s.darkMode);
   const { playUrl: playCompletionUrl, muted } = useAudio();
   const totalQ = questions.length;
   const stars = getStars(correctCount, totalQ);

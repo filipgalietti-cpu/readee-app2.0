@@ -149,10 +149,10 @@ export default function LeveledWizard() {
   }
 
   return (
-    <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
+    <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
       {/* Title */}
       <label className="block">
-        <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="text-xs font-semibold text-zinc-500">
           Passage title{" "}
           <span className="font-normal text-zinc-400">(optional)</span>
         </span>
@@ -160,16 +160,16 @@ export default function LeveledWizard() {
           value={brief.title}
           onChange={(e) => setField("title", e.target.value.slice(0, 120))}
           placeholder="Leave blank — Readee will use the AI title"
-          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
         />
       </label>
 
       {/* Center grade */}
       <div className="mt-5">
-        <span className="block mb-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block mb-2 text-xs font-semibold text-zinc-500">
           Center grade <span className="font-normal text-zinc-400">— easy = one below, advanced = one above</span>
         </span>
-        <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+        <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
           {GRADES.map((g) => (
             <button
               key={g}
@@ -177,7 +177,7 @@ export default function LeveledWizard() {
               onClick={() => setField("baseGrade", g)}
               className={`rounded-full px-3 py-1 transition ${
                 brief.baseGrade === g
-                  ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                  ? "bg-white text-indigo-700 shadow-sm"
                   : "text-zinc-500"
               }`}
             >
@@ -190,7 +190,7 @@ export default function LeveledWizard() {
       {/* Topic */}
       <div className="mt-5">
         <label className="block">
-          <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+          <span className="text-xs font-semibold text-zinc-500">
             What should the passage be about?
           </span>
           <div className="relative mt-1">
@@ -207,7 +207,7 @@ export default function LeveledWizard() {
               }}
               rows={3}
               placeholder={brief.topic.trim() ? "Describe the topic…" : ""}
-              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-indigo-400 focus:outline-none"
             />
             {!brief.topic.trim() && (
               <div
@@ -221,7 +221,7 @@ export default function LeveledWizard() {
         </label>
         {!brief.topic.trim() && (
           <div className="mt-2 flex items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 text-violet-600 dark:text-violet-300">
+            <div className="flex items-center gap-1.5 text-violet-600">
               <Sparkles className="h-3 w-3" />
               <span className="text-[10px] font-semibold uppercase tracking-widest">
                 Try a prompt
@@ -245,7 +245,7 @@ export default function LeveledWizard() {
 
       {/* Questions per level */}
       <div className="mt-5">
-        <span className="block mb-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block mb-2 text-xs font-semibold text-zinc-500">
           Comprehension questions per level{" "}
           <span className="font-normal text-zinc-400">({brief.questionsPerLevel})</span>
         </span>
@@ -284,10 +284,10 @@ export default function LeveledWizard() {
       </div>
 
       {/* Cost */}
-      <div className="mt-6 flex items-center justify-between rounded-xl bg-zinc-50 p-3 text-xs dark:bg-slate-900/40">
-        <span className="text-zinc-600 dark:text-slate-300">
+      <div className="mt-6 flex items-center justify-between rounded-xl bg-zinc-50 p-3 text-xs">
+        <span className="text-zinc-600">
           Estimated cost:{" "}
-          <span className="font-bold text-violet-700 dark:text-violet-300">
+          <span className="font-bold text-violet-700">
             {cost} credits
           </span>
         </span>
@@ -358,8 +358,8 @@ function Toggle({
     <div
       className={`flex items-start justify-between gap-3 rounded-2xl border p-3 transition ${
         enabled
-          ? "border-violet-300 bg-violet-50/40 dark:border-violet-700 dark:bg-violet-950/20"
-          : "border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+          ? "border-violet-300 bg-violet-50/40"
+          : "border-zinc-200 bg-white"
       }`}
     >
       <div className="flex items-start gap-3">
@@ -373,10 +373,10 @@ function Toggle({
           {icon}
         </div>
         <div>
-          <div className="text-sm font-bold text-zinc-900 dark:text-white">
+          <div className="text-sm font-bold text-zinc-900">
             {title}
           </div>
-          <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+          <div className="text-[11px] text-zinc-500">
             {description}
           </div>
         </div>

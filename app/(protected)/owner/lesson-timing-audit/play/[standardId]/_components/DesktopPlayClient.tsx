@@ -22,7 +22,7 @@ export default function DesktopPlayClient({
   const [nonce, setNonce] = useState(0);
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-zinc-100 dark:bg-zinc-900">
+    <div className="relative h-screen w-screen overflow-hidden bg-zinc-100">
       <button
         onClick={() => setNonce((n) => n + 1)}
         className="absolute right-4 top-4 z-[200] inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-zinc-900 shadow-md hover:bg-white"
@@ -34,7 +34,7 @@ export default function DesktopPlayClient({
 
       <div className="flex h-full w-full items-center justify-center p-6">
         <div
-          className="relative w-full max-w-[1100px] overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-xl dark:border-zinc-700"
+          className="relative w-full max-w-[1100px] overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-xl"
           style={{ height: "88vh", transform: "translateZ(0)" }}
         >
           <LessonSlideshow

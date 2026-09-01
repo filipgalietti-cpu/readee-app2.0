@@ -41,7 +41,7 @@ export default async function CommunityPassagePage({
       {passage.slug && <RecordCommunityRead slug={passage.slug} />}
       <Link
         href="/practice-hub/community"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Community library
@@ -56,27 +56,27 @@ export default async function CommunityPassagePage({
               <img
                 src={passage.display_avatar}
                 alt=""
-                className="h-7 w-7 flex-none rounded-full object-cover shadow-sm ring-2 ring-white dark:ring-slate-800"
+                className="h-7 w-7 flex-none rounded-full object-cover shadow-sm ring-2 ring-white"
               />
             ) : (
-              <Users className="h-4 w-4 text-violet-600 dark:text-violet-300" />
+              <Users className="h-4 w-4 text-violet-600" />
             )}
-            <span className="text-sm font-bold text-zinc-700 dark:text-slate-200">
+            <span className="text-sm font-bold text-zinc-700">
               {passage.display_byline
                 ? `${passage.source_kind === "kid_story" ? "Written by" : "Shared by"} ${passage.display_byline}`
                 : "Shared by a Readee family"}
             </span>
-            <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+            <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-violet-700">
               {passage.grade_level}
             </span>
             {passage.phonics_pattern && (
-              <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+              <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-indigo-700">
                 {passage.phonics_pattern}
               </span>
             )}
           </div>
 
-          <h1 className="mt-2 font-display text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 dark:text-white sm:text-[38px]">
+          <h1 className="mt-2 font-display text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 sm:text-[38px]">
             {passage.title}
           </h1>
 
@@ -86,12 +86,12 @@ export default async function CommunityPassagePage({
               <img
                 src={passage.image_url}
                 alt=""
-                className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm dark:border-slate-700"
+                className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm"
               />
             </div>
           )}
 
-          <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-slate-400">
+          <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-zinc-500">
             <span className="inline-flex items-center gap-1">
               <BookOpen className="h-3.5 w-3.5" />
               {wordCount} words · {readMinutes} min read
@@ -100,7 +100,7 @@ export default async function CommunityPassagePage({
           </div>
 
           <div
-            className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900 dark:text-slate-100"
+            className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',

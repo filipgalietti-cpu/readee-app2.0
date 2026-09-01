@@ -43,11 +43,11 @@ export default function ChildLanguagePicker({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <div className="inline-flex items-center gap-1 text-[11px] font-semibold text-zinc-500 dark:text-slate-400">
+      <div className="inline-flex items-center gap-1 text-[11px] font-semibold text-zinc-500">
         <Globe className="h-3 w-3" />
         {childName}&apos;s language:
       </div>
-      <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 dark:border-slate-700 dark:bg-slate-950">
+      <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5">
         {SUPPORTED_LOCALES.map((l) => (
           <button
             key={l.code}
@@ -56,8 +56,8 @@ export default function ChildLanguagePicker({
             disabled={pending}
             className={`rounded-full px-3 py-1 text-[11px] font-bold transition disabled:opacity-60 ${
               value === l.code
-                ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
-                : "text-zinc-500 hover:text-zinc-700 dark:hover:text-slate-300"
+                ? "bg-white text-indigo-700 shadow-sm"
+                : "text-zinc-500 hover:text-zinc-700"
             }`}
           >
             {l.native}

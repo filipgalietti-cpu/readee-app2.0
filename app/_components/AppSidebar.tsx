@@ -246,12 +246,12 @@ function navLinkClass(pathname: string, href: string, emphasis?: boolean, shimme
     ? "gap-3 px-3 py-3 rounded-2xl text-[15px]"
     : "gap-2.5 px-2 py-1.5 rounded-lg text-[13px]";
   if (emphasis && !isActive(pathname, href)) {
-    return `flex items-center ${size} font-semibold transition-colors bg-violet-50 text-violet-700 hover:bg-violet-100 dark:bg-indigo-950/40 dark:text-violet-300 dark:hover:bg-indigo-950/60`;
+    return `flex items-center ${size} font-semibold transition-colors bg-violet-50 text-violet-700 hover:bg-violet-100`;
   }
   return `flex items-center ${size} transition-colors ${
     isActive(pathname, href)
-      ? `bg-violet-50 text-violet-700 ${kidSize ? "font-bold" : "font-medium"} dark:bg-indigo-950/40 dark:text-violet-300`
-      : `text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 ${kidSize ? "font-semibold" : ""}`
+      ? `bg-violet-50 text-violet-700 ${kidSize ? "font-bold" : "font-medium"}`
+      : `text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 ${kidSize ? "font-semibold" : ""}`
   }`;
 }
 
@@ -260,7 +260,7 @@ function navIconClass(pathname: string, href: string, kidSize?: boolean) {
   // generic zinc grey — keeps hierarchy with active (violet-500) but
   // makes the whole sidebar read as "Readee" instead of "SaaS dashboard."
   const dim = kidSize ? "w-6 h-6" : "w-4 h-4";
-  return `${dim} ${isActive(pathname, href) ? "text-violet-700 dark:text-violet-300" : "text-violet-500 dark:text-violet-400"}`;
+  return `${dim} ${isActive(pathname, href) ? "text-violet-700" : "text-violet-500"}`;
 }
 
 /* ═══════════════════════════════════════════════════ */
@@ -412,7 +412,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -280, opacity: 0 }}
               transition={{ type: "spring", damping: 28, stiffness: 350 }}
-              className="absolute top-0 left-0 bottom-0 w-[272px] bg-white dark:bg-slate-900 shadow-2xl overflow-hidden border-r border-zinc-200 dark:border-slate-700"
+              className="absolute top-0 left-0 bottom-0 w-[272px] bg-white shadow-2xl overflow-hidden border-r border-zinc-200"
             >
               <ExpandedNav
                 pathname={pathname}
@@ -432,7 +432,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
 
       {/* ── Desktop fixed sidebar — always open (collapse removed) ── */}
       {!mobileOnly && <aside
-        className="hidden lg:flex flex-col fixed top-[76px] left-0 bottom-0 z-30 w-[272px] bg-white dark:bg-slate-900 border-r border-zinc-200 dark:border-slate-700"
+        className="hidden lg:flex flex-col fixed top-[76px] left-0 bottom-0 z-30 w-[272px] bg-white border-r border-zinc-200"
       >
         <div className="flex flex-col h-full">
           <div className="flex-1 overflow-y-auto overflow-x-hidden">
@@ -477,7 +477,7 @@ function NavSectionBlock({
   if (!section.collapsible) {
     return (
       <div className="px-3">
-        <p className="px-2 mb-1 text-[11px] font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-widest">
+        <p className="px-2 mb-1 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest">
           {section.label}
         </p>
         <nav className={navSpacing}>
@@ -520,7 +520,7 @@ function NavSectionBlock({
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center gap-1 px-2 mb-1 text-[11px] font-semibold text-zinc-400 dark:text-slate-500 uppercase tracking-widest hover:text-zinc-600 dark:hover:text-slate-300"
+        className="flex w-full items-center gap-1 px-2 mb-1 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest hover:text-zinc-600"
         aria-expanded={open}
       >
         <ChevronRight
@@ -606,20 +606,20 @@ function ExpandedNav({
       {/* Header */}
       <div className="px-3 pt-3 pb-2 flex items-center gap-2.5">
         {avatarSrc ? (
-          <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200 dark:ring-slate-700">
+          <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
             <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
           </div>
         ) : (
-          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200 dark:ring-violet-900/60">
+          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200">
             {initials}
           </div>
         )}
         <div className="flex-1 min-w-0">
-          <div className="text-sm font-bold text-zinc-900 dark:text-slate-100 truncate leading-tight">
+          <div className="text-sm font-bold text-zinc-900 truncate leading-tight">
             {sidebarName}
           </div>
           {subtitle && (
-            <div className="text-[11px] text-zinc-400 dark:text-slate-500 truncate leading-tight">
+            <div className="text-[11px] text-zinc-400 truncate leading-tight">
               {subtitle}
             </div>
           )}
@@ -627,15 +627,15 @@ function ExpandedNav({
         {dismiss && (
           <button
             onClick={dismiss}
-            className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors"
+            className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors"
             aria-label="Collapse"
           >
-            <ChevronDown className="w-4 h-4 text-zinc-400 dark:text-slate-500 -rotate-90" strokeWidth={2} />
+            <ChevronDown className="w-4 h-4 text-zinc-400 -rotate-90" strokeWidth={2} />
           </button>
         )}
       </div>
 
-      <div className="mx-3 h-px bg-zinc-200 dark:bg-slate-700" />
+      <div className="mx-3 h-px bg-zinc-200" />
 
       {/* Nav links */}
       <div className="flex-1 overflow-y-auto py-2 space-y-4">
@@ -650,7 +650,7 @@ function ExpandedNav({
       </div>
 
       {/* Account menu */}
-      <div className="mx-3 h-px bg-zinc-200 dark:bg-slate-700" />
+      <div className="mx-3 h-px bg-zinc-200" />
       <SidebarUserMenu
         avatarSrc={avatarSrc}
         name={sidebarName}

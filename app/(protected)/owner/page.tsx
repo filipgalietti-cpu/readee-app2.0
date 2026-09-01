@@ -397,7 +397,7 @@ export default async function OwnerAdminPage({
             <Crown className="h-4 w-4" />
             Owner · Readee Inc back-office
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             Business overview
           </h1>
           <p className="mt-1 text-sm text-zinc-500">

@@ -129,7 +129,7 @@ export default async function LunaReadPage({
       <div className="mb-4 flex items-center justify-between">
         <Link
           href={`/luna?child=${child.id}`}
-          className="inline-flex items-center gap-1.5 text-[13px] font-bold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
+          className="inline-flex items-center gap-1.5 text-[13px] font-bold text-zinc-500 transition hover:text-violet-700"
         >
           <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
           Luna

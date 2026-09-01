@@ -130,7 +130,7 @@ export default function AssignFluencyButton({
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={pending ? undefined : close}
           />
-          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900">
+          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
             <button
               type="button"
               onClick={close}
@@ -138,7 +138,7 @@ export default function AssignFluencyButton({
             >
               <X className="h-4 w-4" />
             </button>
-            <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
+            <h3 className="text-lg font-bold text-zinc-900">
               Assign fluency reading
             </h3>
             <p className="mt-0.5 text-sm text-zinc-500">

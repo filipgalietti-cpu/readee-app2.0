@@ -33,14 +33,14 @@ export default async function LessonsHomePage() {
     <div className="mx-auto max-w-5xl px-6 py-10">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
             <BookOpen className="h-4 w-4" />
             Lessons
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             Your custom lessons
           </h1>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-zinc-500">
             AI-built slideshow lessons. Each one has a passage split into
             slides, an image and read-aloud per slide, and end-of-lesson
             comprehension questions.
@@ -56,14 +56,14 @@ export default async function LessonsHomePage() {
       </div>
 
       {list.length === 0 ? (
-        <div className="mt-10 rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 shadow-sm ring-1 ring-indigo-100 p-12 text-center dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800">
+        <div className="mt-10 rounded-3xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 shadow-sm ring-1 ring-indigo-100 p-12 text-center">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 text-white">
             <BookOpen className="h-7 w-7" />
           </div>
-          <h2 className="mt-4 text-lg font-bold text-zinc-900 dark:text-white">
+          <h2 className="mt-4 text-lg font-bold text-zinc-900">
             Your first lesson
           </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500">
             Tell Readee what you want to teach and we&apos;ll write the
             passage, split it into slides, and draw an illustration for each
             one — start to finish in about a minute.
@@ -85,7 +85,7 @@ export default async function LessonsHomePage() {
                 <AssetCardActions type="lesson" id={l.id} initialTitle={l.title} />
                 <Link
                   href={`/classroom/lessons/${l.id}`}
-                  className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 dark:ring-slate-800"
+                  className="block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md"
                 >
                   {l.cover_image_url ? (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -95,12 +95,12 @@ export default async function LessonsHomePage() {
                       className="h-36 w-full object-cover"
                     />
                   ) : (
-                    <div className="flex h-36 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-400 dark:from-indigo-950/40 dark:to-violet-950/40">
+                    <div className="flex h-36 w-full items-center justify-center bg-gradient-to-br from-indigo-100 to-violet-100 text-indigo-400">
                       <ImageIcon className="h-10 w-10" />
                     </div>
                   )}
                   <div className="p-4">
-                    <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+                    <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-indigo-600">
                       {l.grade_level ?? "Grade?"}
                       <span className="text-zinc-300">·</span>
                       <span className="text-zinc-500">
@@ -117,10 +117,10 @@ export default async function LessonsHomePage() {
                         </span>
                       )}
                     </div>
-                    <div className="mt-1.5 text-sm font-bold text-zinc-900 dark:text-white">
+                    <div className="mt-1.5 text-sm font-bold text-zinc-900">
                       {l.title}
                     </div>
-                    <div className="mt-1 line-clamp-2 text-xs text-zinc-500 dark:text-slate-400">
+                    <div className="mt-1 line-clamp-2 text-xs text-zinc-500">
                       {l.topic}
                     </div>
                     <div className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-indigo-600">

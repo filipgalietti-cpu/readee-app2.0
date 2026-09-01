@@ -36,15 +36,15 @@ export default async function IepNotePage() {
         IEP / 504 workspace
       </div>
       <div className="mt-1 flex flex-wrap items-baseline gap-3">
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
           Special-education tools
         </h1>
         <details className="group">
-          <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-500 transition hover:border-amber-300 hover:text-amber-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 [&::-webkit-details-marker]:hidden">
+          <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded-full border border-zinc-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-zinc-500 transition hover:border-amber-300 hover:text-amber-700 [&::-webkit-details-marker]:hidden">
             <Info className="h-3 w-3" />
             How it works
           </summary>
-          <p className="mt-2 max-w-2xl rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-zinc-700 dark:border-amber-900/40 dark:bg-amber-950/30 dark:text-slate-300">
+          <p className="mt-2 max-w-2xl rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-zinc-700">
             Three tabs: <span className="font-bold">Goals</span> stores
             each student&apos;s annual IEP/504 goals once, so you don&apos;t
             paste them every quarter. <span className="font-bold">Note</span>{" "}
@@ -61,7 +61,7 @@ export default async function IepNotePage() {
         <IepWorkspace students={students} />
       </div>
 
-      <div className="mt-8 flex items-start gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-3 text-[11px] text-zinc-500 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-500">
+      <div className="mt-8 flex items-start gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-3 text-[11px] text-zinc-500">
         <ShieldCheck className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
         <span>
           AI-assisted drafts. Always review with your IEP team before

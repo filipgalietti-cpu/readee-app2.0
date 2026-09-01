@@ -46,7 +46,7 @@ export const RAINBOW_BUTTON_CLASSES = [
   "bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]",
   "text-white",
   SHARED_GLOW,
-  "dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(255,255,255,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] dark:text-zinc-900",
+  "",
 ].join(" ");
 
 /** White face, violet text. Inverse of canonical: light face in light mode. */
@@ -56,7 +56,7 @@ export const RAINBOW_BUTTON_WHITE_CLASSES = [
   "bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(255,255,255,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]",
   "text-violet-700 font-semibold",
   SHARED_GLOW,
-  "dark:bg-[linear-gradient(#0f172a,#0f172a),linear-gradient(#0f172a_50%,rgba(15,23,42,0.6)_80%,rgba(15,23,42,0)),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))] dark:text-violet-200",
+  "",
 ].join(" ");
 
 /** Transparent / ghost — no inner face, the rainbow shows through. */
@@ -68,7 +68,7 @@ export const RAINBOW_BUTTON_GHOST_CLASSES = [
   "bg-[linear-gradient(transparent,transparent),linear-gradient(transparent,transparent),linear-gradient(90deg,hsl(var(--color-1)),hsl(var(--color-5)),hsl(var(--color-3)),hsl(var(--color-4)),hsl(var(--color-2)))]",
   "text-zinc-900 font-semibold",
   SHARED_GLOW,
-  "dark:text-white",
+  "",
 ].join(" ");
 
 export type RainbowVariant = "default" | "white" | "ghost";

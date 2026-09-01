@@ -112,8 +112,8 @@ export default function ProductSearchBar({
   if (!childId) return null;
 
   return (
-    <div className="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-3 shadow-sm dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30">
-      <div className="flex items-center gap-2 px-2 pt-1 text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+    <div className="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-3 shadow-sm">
+      <div className="flex items-center gap-2 px-2 pt-1 text-[10px] font-bold uppercase tracking-widest text-violet-700">
         <Sparkles className="h-3 w-3" />
         Smart search
         {!isPremium && (
@@ -122,7 +122,7 @@ export default function ProductSearchBar({
           </span>
         )}
       </div>
-      <div className="mt-2 flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <div className="mt-2 flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 shadow-sm">
         <Search className="h-4 w-4 text-zinc-400" />
         <input
           type="text"
@@ -134,7 +134,7 @@ export default function ProductSearchBar({
               : "Smart search is a Readee+ feature"
           }
           disabled={!isPremium}
-          className="flex-1 bg-transparent text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none disabled:cursor-not-allowed dark:text-slate-100"
+          className="flex-1 bg-transparent text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none disabled:cursor-not-allowed"
         />
         {pending ? (
           <Loader2 className="h-4 w-4 animate-spin text-violet-500" />
@@ -146,7 +146,7 @@ export default function ProductSearchBar({
               setHits(null);
               setErr(null);
             }}
-            className="rounded-full p-1 text-zinc-400 hover:bg-zinc-100 dark:hover:bg-slate-800"
+            className="rounded-full p-1 text-zinc-400 hover:bg-zinc-100"
           >
             <X className="h-3.5 w-3.5" />
           </button>
@@ -154,7 +154,7 @@ export default function ProductSearchBar({
       </div>
 
       {!isPremium && (
-        <div className="mt-2 flex items-center justify-between gap-2 px-2 text-xs text-zinc-600 dark:text-slate-400">
+        <div className="mt-2 flex items-center justify-between gap-2 px-2 text-xs text-zinc-600">
           <div className="flex items-center gap-1.5">
             <Lock className="h-3 w-3" />
             Upgrade to search by meaning, not just keywords.
@@ -173,7 +173,7 @@ export default function ProductSearchBar({
       )}
 
       {hits && hits.length === 0 && (
-        <div className="mt-3 flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-4 py-5 text-center dark:border-slate-700 dark:bg-slate-900">
+        <div className="mt-3 flex flex-col items-center rounded-xl border border-zinc-200 bg-white px-4 py-5 text-center">
           <Image
             src="/images/ui/bunny-thinking.png"
             alt=""
@@ -181,16 +181,16 @@ export default function ProductSearchBar({
             height={56}
             className="h-14 w-14 object-contain"
           />
-          <p className="mt-2 text-sm font-semibold text-zinc-900 dark:text-white">
+          <p className="mt-2 text-sm font-semibold text-zinc-900">
             Nothing matched that.
           </p>
-          <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+          <p className="mt-1 text-xs text-zinc-500">
             Try a skill name like
             {" "}
             <button
               type="button"
               onClick={() => setQuery("context clues")}
-              className="rounded-full bg-violet-50 px-2 py-0.5 font-bold text-violet-700 hover:bg-violet-100 dark:bg-violet-950/40 dark:text-violet-300"
+              className="rounded-full bg-violet-50 px-2 py-0.5 font-bold text-violet-700 hover:bg-violet-100"
             >
               context clues
             </button>
@@ -198,7 +198,7 @@ export default function ProductSearchBar({
             <button
               type="button"
               onClick={() => setQuery("main idea")}
-              className="rounded-full bg-violet-50 px-2 py-0.5 font-bold text-violet-700 hover:bg-violet-100 dark:bg-violet-950/40 dark:text-violet-300"
+              className="rounded-full bg-violet-50 px-2 py-0.5 font-bold text-violet-700 hover:bg-violet-100"
             >
               main idea
             </button>
@@ -206,7 +206,7 @@ export default function ProductSearchBar({
             <button
               type="button"
               onClick={() => setQuery("RL.2.1")}
-              className="rounded-full bg-violet-50 px-2 py-0.5 font-mono font-bold text-violet-700 hover:bg-violet-100 dark:bg-violet-950/40 dark:text-violet-300"
+              className="rounded-full bg-violet-50 px-2 py-0.5 font-mono font-bold text-violet-700 hover:bg-violet-100"
             >
               RL.2.1
             </button>
@@ -236,7 +236,7 @@ export default function ProductSearchBar({
               <Link
                 key={h.contentType + h.contentId}
                 href={href}
-                className="flex items-start gap-3 rounded-xl border border-transparent bg-white px-3 py-2 transition hover:border-violet-300 hover:shadow-sm dark:bg-slate-900 dark:hover:border-violet-700"
+                className="flex items-start gap-3 rounded-xl border border-transparent bg-white px-3 py-2 transition hover:border-violet-300 hover:shadow-sm"
               >
                 <div
                   className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg ${meta.color}`}
@@ -244,7 +244,7 @@ export default function ProductSearchBar({
                   <Icon className="h-3.5 w-3.5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+                  <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
                     {meta.label}
                     {sub && (
                       <>
@@ -253,7 +253,7 @@ export default function ProductSearchBar({
                       </>
                     )}
                   </div>
-                  <div className="truncate text-sm font-semibold text-zinc-900 dark:text-white">
+                  <div className="truncate text-sm font-semibold text-zinc-900">
                     {String(title)}
                   </div>
                 </div>

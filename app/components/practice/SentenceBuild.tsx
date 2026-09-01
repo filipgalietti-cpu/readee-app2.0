@@ -32,13 +32,13 @@ const SUPABASE_AUDIO_BASE = process.env.NEXT_PUBLIC_SUPABASE_URL
 
 
 const CHIP_COLORS = [
-  "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
-  "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
-  "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/60 dark:text-amber-200 dark:border-amber-700",
-  "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
-  "bg-pink-100 text-pink-800 border-pink-300 dark:bg-pink-900/60 dark:text-pink-200 dark:border-pink-700",
-  "bg-cyan-100 text-cyan-800 border-cyan-300 dark:bg-cyan-900/60 dark:text-cyan-200 dark:border-cyan-700",
-  "bg-orange-100 text-orange-800 border-orange-300 dark:bg-orange-900/60 dark:text-orange-200 dark:border-orange-700",
+  "bg-blue-100 text-blue-800 border-blue-300",
+  "bg-purple-100 text-purple-800 border-purple-300",
+  "bg-amber-100 text-amber-800 border-amber-300",
+  "bg-emerald-100 text-emerald-800 border-emerald-300",
+  "bg-pink-100 text-pink-800 border-pink-300",
+  "bg-cyan-100 text-cyan-800 border-cyan-300",
+  "bg-orange-100 text-orange-800 border-orange-300",
 ];
 
 export function SentenceBuild({
@@ -158,22 +158,22 @@ export function SentenceBuild({
     <div className="flex flex-col gap-6">
       {/* Passage */}
       {passage && (
-        <div className="rounded-2xl bg-white border border-zinc-200 dark:bg-slate-800/80 dark:border-slate-700 p-5">
-          <p className="text-lg leading-relaxed text-zinc-900 dark:text-white/90 whitespace-pre-line">
+        <div className="rounded-2xl bg-white border border-zinc-200 p-5">
+          <p className="text-lg leading-relaxed text-zinc-900 whitespace-pre-line">
             {passage}
           </p>
         </div>
       )}
 
       {/* Prompt */}
-      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center">
+      <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 leading-tight text-center">
         {prompt}
       </h2>
 
       {/* Sentence hint */}
       {sentenceHint && (
-        <div className="rounded-xl bg-amber-50 border border-amber-200 dark:bg-amber-900/20 dark:border-amber-700 px-4 py-3 text-center">
-          <p className="text-sm font-medium text-amber-800 dark:text-amber-200">
+        <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-center">
+          <p className="text-sm font-medium text-amber-800">
             Hint: {sentenceHint}
           </p>
         </div>
@@ -206,17 +206,17 @@ export function SentenceBuild({
                       ? `border-solid cursor-pointer active:scale-95 ${CHIP_COLORS[wordIdx % CHIP_COLORS.length]}`
                       : `border-dashed ${
                           result === "correct" && !assessmentMode
-                            ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
+                            ? "border-emerald-400 bg-emerald-50/50"
                             : result === "incorrect" && !assessmentMode
-                            ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
-                            : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
+                            ? "border-red-400 bg-red-50/50"
+                            : "border-zinc-300 bg-white"
                         }`
                   } ${answered || result !== null ? "cursor-default" : ""}`}
                 >
                   {filled ? (
                     <span>{filteredWords[wordIdx]}</span>
                   ) : (
-                    <span className="text-zinc-400 dark:text-slate-500 text-lg font-bold">{slotIdx + 1}</span>
+                    <span className="text-zinc-400 text-lg font-bold">{slotIdx + 1}</span>
                   )}
                 </motion.button>
               );
@@ -228,10 +228,10 @@ export function SentenceBuild({
             <motion.div
               className={`flex-1 min-h-[72px] rounded-2xl border-2 border-dashed p-3 flex flex-wrap gap-2 items-center justify-center transition-colors ${
                 result === "correct"
-                  ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
+                  ? "border-emerald-400 bg-emerald-50/50"
                   : result === "incorrect"
-                  ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
-                  : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
+                  ? "border-red-400 bg-red-50/50"
+                  : "border-zinc-300 bg-white"
               }`}
               animate={
                 shaking
@@ -242,7 +242,7 @@ export function SentenceBuild({
               }
             >
               {placed.length === 0 && (
-                <span className="text-zinc-400 dark:text-slate-500 text-sm px-2">
+                <span className="text-zinc-400 text-sm px-2">
                   Tap words below to build your sentence
                 </span>
               )}
@@ -266,7 +266,7 @@ export function SentenceBuild({
               </AnimatePresence>
               {/* Trailing punctuation inside the box, after last word */}
               {trailingPunctuation && placed.length > 0 && (
-                <span className="text-xl font-bold text-zinc-700 dark:text-slate-300 select-none">
+                <span className="text-xl font-bold text-zinc-700 select-none">
                   {trailingPunctuation}
                 </span>
               )}
@@ -310,7 +310,7 @@ export function SentenceBuild({
           className={`w-full py-4 rounded-2xl font-extrabold text-lg transition-all active:scale-[0.97] ${
             allPlaced
               ? "text-white"
-              : "bg-zinc-200 text-zinc-400 dark:bg-slate-700 dark:text-slate-500 cursor-not-allowed"
+              : "bg-zinc-200 text-zinc-400 cursor-not-allowed"
           }`}
           style={
             allPlaced

@@ -111,7 +111,7 @@ export default async function ReviewPage({
     <div className="mx-auto max-w-3xl px-6 py-10">
       <Link
         href="/dashboard"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Dashboard
@@ -119,14 +119,14 @@ export default async function ReviewPage({
 
       <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+          <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
             <Brain className="h-4 w-4" />
             Today&apos;s review
           </div>
-          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
             {active.first_name}&apos;s review queue
           </h1>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-zinc-500">
             Skills Readee thinks it&apos;s time to revisit - ordered by
             what&apos;s been waiting longest. 10-15 minutes a day keeps the
             curve fresh.
@@ -142,7 +142,7 @@ export default async function ReviewPage({
                 className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
                   active.id === c.id
                     ? "bg-indigo-600 text-white"
-                    : "border border-zinc-200 bg-white text-zinc-700 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                    : "border border-zinc-200 bg-white text-zinc-700 hover:border-indigo-300"
                 }`}
               >
                 {c.first_name}
@@ -179,26 +179,26 @@ export default async function ReviewPage({
             <li key={item.standard.standard_id}>
               <Link
                 href={`/practice?standard=${item.standard.standard_id}&child=${active.id}&source=review`}
-                className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm dark:border-slate-800 dark:bg-slate-900/40"
+                className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-sm"
               >
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-700">
                   <span className="font-mono text-xs font-extrabold">{i + 1}</span>
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-zinc-900 dark:text-white">
+                    <span className="font-bold text-zinc-900">
                       {item.standard.standard_id}
                     </span>
-                    <span className="text-[11px] font-semibold text-zinc-500 dark:text-slate-400">
+                    <span className="text-[11px] font-semibold text-zinc-500">
                       {item.standard.gradeLabel}
                     </span>
                     {item.streak >= 3 && (
-                      <span className="inline-flex items-center gap-0.5 rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300">
+                      <span className="inline-flex items-center gap-0.5 rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800">
                         <Check className="h-2.5 w-2.5" /> streak {item.streak}
                       </span>
                     )}
                   </div>
-                  <div className="mt-0.5 line-clamp-1 text-xs text-zinc-500 dark:text-slate-400">
+                  <div className="mt-0.5 line-clamp-1 text-xs text-zinc-500">
                     {item.standard.standard_description}
                   </div>
                   <div className="mt-1 flex items-center gap-3 text-[11px] text-zinc-400">
@@ -227,14 +227,14 @@ export default async function ReviewPage({
           no signal yet (kid hasn't accumulated enough practice_answers). */}
       <SharpenUpInsights childId={active.id} userPlan={userPlan} />
 
-      <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 text-xs text-zinc-600 dark:border-slate-800 dark:bg-slate-900/40 dark:text-slate-400">
+      <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50/60 p-4 text-xs text-zinc-600">
         <strong>How review works:</strong> Readee uses spaced repetition -
         skills your child gets right show up less often over time; skills
         they struggle with come back sooner. 10-15 minutes a day keeps the
         whole reading journey fresh.{" "}
         <Link
           href={`/standards`}
-          className="font-semibold text-indigo-700 underline hover:text-indigo-800 dark:text-indigo-300"
+          className="font-semibold text-indigo-700 underline hover:text-indigo-800"
         >
           Browse all standards
         </Link>

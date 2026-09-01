@@ -98,31 +98,31 @@ const TYPE_LABELS: { key: TypeFilter; label: string }[] = [
 ];
 
 const TYPE_BADGE: Record<QuestionType, { bg: string; text: string }> = {
-  mcq: { bg: "bg-blue-100 dark:bg-blue-900/50", text: "text-blue-700 dark:text-blue-300" },
-  category_sort: { bg: "bg-purple-100 dark:bg-purple-900/50", text: "text-purple-700 dark:text-purple-300" },
-  missing_word: { bg: "bg-amber-100 dark:bg-amber-900/50", text: "text-amber-700 dark:text-amber-300" },
-  sentence_build: { bg: "bg-emerald-100 dark:bg-emerald-900/50", text: "text-emerald-700 dark:text-emerald-300" },
-  tap_to_pair: { bg: "bg-pink-100 dark:bg-pink-900/50", text: "text-pink-700 dark:text-pink-300" },
-  word_builder: { bg: "bg-cyan-100 dark:bg-cyan-900/50", text: "text-cyan-700 dark:text-cyan-300" },
+  mcq: { bg: "bg-blue-100", text: "text-blue-700" },
+  category_sort: { bg: "bg-purple-100", text: "text-purple-700" },
+  missing_word: { bg: "bg-amber-100", text: "text-amber-700" },
+  sentence_build: { bg: "bg-emerald-100", text: "text-emerald-700" },
+  tap_to_pair: { bg: "bg-pink-100", text: "text-pink-700" },
+  word_builder: { bg: "bg-cyan-100", text: "text-cyan-700" },
 };
 
 const DIFFICULTY_BADGE: Record<string, string> = {
-  easy: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
-  medium: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/40 dark:text-yellow-300",
-  hard: "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300",
+  easy: "bg-green-100 text-green-700",
+  medium: "bg-yellow-100 text-yellow-700",
+  hard: "bg-red-100 text-red-700",
 };
 
 const CHOICE_COLORS = [
-  "bg-blue-50 border-blue-200 dark:bg-blue-900/30 dark:border-blue-700",
-  "bg-purple-50 border-purple-200 dark:bg-purple-900/30 dark:border-purple-700",
-  "bg-amber-50 border-amber-200 dark:bg-amber-900/30 dark:border-amber-700",
-  "bg-emerald-50 border-emerald-200 dark:bg-emerald-900/30 dark:border-emerald-700",
+  "bg-blue-50 border-blue-200",
+  "bg-purple-50 border-purple-200",
+  "bg-amber-50 border-amber-200",
+  "bg-emerald-50 border-emerald-200",
 ];
 
 const BUCKET_COLORS = [
-  { header: "bg-blue-500 text-white", body: "bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-700" },
-  { header: "bg-emerald-500 text-white", body: "bg-emerald-50 border-emerald-200 dark:bg-emerald-900/20 dark:border-emerald-700" },
-  { header: "bg-purple-500 text-white", body: "bg-purple-50 border-purple-200 dark:bg-purple-900/20 dark:border-purple-700" },
+  { header: "bg-blue-500 text-white", body: "bg-blue-50 border-blue-200" },
+  { header: "bg-emerald-500 text-white", body: "bg-emerald-50 border-emerald-200" },
+  { header: "bg-purple-500 text-white", body: "bg-purple-50 border-purple-200" },
 ];
 
 /* ── Component ────────────────────────────────────────── */
@@ -256,23 +256,23 @@ export default function AssessmentAuditPage() {
     : undefined;
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-zinc-50">
       <div className="max-w-2xl mx-auto px-4 py-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-2">
           <a
             href="/dashboard"
-            className="flex items-center gap-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-700 dark:text-slate-400 dark:hover:text-slate-200"
+            className="flex items-center gap-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-700"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
             Back
           </a>
-          <h1 className="text-xl font-bold text-zinc-900 dark:text-white">Assessment Audit</h1>
+          <h1 className="text-xl font-bold text-zinc-900">Assessment Audit</h1>
           <button
             onClick={exportData}
-            className="text-xs font-semibold text-zinc-500 hover:text-zinc-700 dark:text-slate-400 dark:hover:text-slate-200 bg-zinc-100 dark:bg-slate-700 rounded-lg px-2.5 py-1.5 hover:bg-zinc-200 dark:hover:bg-slate-600"
+            className="text-xs font-semibold text-zinc-500 hover:text-zinc-700 bg-zinc-100 rounded-lg px-2.5 py-1.5 hover:bg-zinc-200"
           >
             Export
           </button>
@@ -292,9 +292,9 @@ export default function AssessmentAuditPage() {
         />
 
         {/* Progress bar */}
-        <div className="flex items-center gap-3 mb-4 text-xs text-zinc-500 dark:text-slate-400">
+        <div className="flex items-center gap-3 mb-4 text-xs text-zinc-500">
           <span className="font-medium">{reviewedCount}/{ALL_QUESTIONS.length} reviewed</span>
-          <div className="flex-1 h-1.5 bg-zinc-200 dark:bg-slate-700 rounded-full overflow-hidden">
+          <div className="flex-1 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
             <div
               className="h-full bg-indigo-500 rounded-full transition-all"
               style={{ width: `${(reviewedCount / ALL_QUESTIONS.length) * 100}%` }}
@@ -317,11 +317,11 @@ export default function AssessmentAuditPage() {
                 className={`rounded-lg px-2 py-1.5 text-center text-xs font-semibold transition-colors ${
                   active
                     ? "bg-indigo-600 text-white shadow-sm"
-                    : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-100 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700"
+                    : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-100"
                 }`}
               >
                 {label}
-                <span className={`block text-[10px] font-normal mt-0.5 ${active ? "text-indigo-200" : "text-zinc-400 dark:text-slate-500"}`}>
+                <span className={`block text-[10px] font-normal mt-0.5 ${active ? "text-indigo-200" : "text-zinc-400"}`}>
                   {count}
                 </span>
               </button>
@@ -341,7 +341,7 @@ export default function AssessmentAuditPage() {
                 className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
                   active
                     ? "bg-indigo-600 text-white shadow-sm"
-                    : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-100 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700"
+                    : "bg-white text-zinc-600 border border-zinc-200 hover:bg-zinc-100"
                 }`}
               >
                 {label} ({count})
@@ -353,7 +353,7 @@ export default function AssessmentAuditPage() {
             className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap transition-colors ${
               showFlagged
                 ? "bg-red-500 text-white shadow-sm"
-                : "bg-white text-red-500 border border-red-200 hover:bg-red-50 dark:bg-slate-800 dark:text-red-400 dark:border-red-800 dark:hover:bg-red-900/20"
+                : "bg-white text-red-500 border border-red-200 hover:bg-red-50"
             }`}
           >
             Flagged ({flaggedCount})
@@ -362,23 +362,23 @@ export default function AssessmentAuditPage() {
 
         {/* Question Card */}
         {q ? (
-          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-zinc-200 dark:border-slate-700 overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-sm border border-zinc-200 overflow-hidden">
             {/* Nav header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-100 dark:border-slate-700">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-100">
               <button
                 onClick={goPrev}
                 disabled={currentIndex === 0}
-                className="rounded-lg px-3 py-1.5 text-sm font-medium bg-zinc-100 hover:bg-zinc-200 disabled:opacity-30 disabled:cursor-not-allowed dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200"
+                className="rounded-lg px-3 py-1.5 text-sm font-medium bg-zinc-100 hover:bg-zinc-200 disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 Prev
               </button>
-              <span className="text-sm font-semibold text-zinc-700 dark:text-slate-300">
+              <span className="text-sm font-semibold text-zinc-700">
                 {currentIndex + 1} / {total}
               </span>
               <button
                 onClick={goNext}
                 disabled={currentIndex >= total - 1}
-                className="rounded-lg px-3 py-1.5 text-sm font-medium bg-zinc-100 hover:bg-zinc-200 disabled:opacity-30 disabled:cursor-not-allowed dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200"
+                className="rounded-lg px-3 py-1.5 text-sm font-medium bg-zinc-100 hover:bg-zinc-200 disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 Next
               </button>
@@ -386,7 +386,7 @@ export default function AssessmentAuditPage() {
 
             {/* Badges row */}
             <div className="flex flex-wrap items-center gap-1.5 px-4 pt-3">
-              <span className="rounded-md px-2 py-0.5 text-xs font-bold bg-zinc-200 text-zinc-700 dark:bg-slate-600 dark:text-slate-200">
+              <span className="rounded-md px-2 py-0.5 text-xs font-bold bg-zinc-200 text-zinc-700">
                 {q.id}
               </span>
               <span className={`rounded-md px-2 py-0.5 text-xs font-semibold ${TYPE_BADGE[q.type].bg} ${TYPE_BADGE[q.type].text}`}>
@@ -395,18 +395,18 @@ export default function AssessmentAuditPage() {
               <span className={`rounded-md px-2 py-0.5 text-xs font-semibold ${DIFFICULTY_BADGE[q.difficulty] || "bg-zinc-100 text-zinc-500"}`}>
                 {q.difficulty}
               </span>
-              <span className="rounded-md px-2 py-0.5 text-xs font-medium bg-zinc-100 text-zinc-500 dark:bg-slate-700 dark:text-slate-400">
+              <span className="rounded-md px-2 py-0.5 text-xs font-medium bg-zinc-100 text-zinc-500">
                 {q.level}
               </span>
-              <span className="rounded-md px-2 py-0.5 text-xs font-medium bg-zinc-100 text-zinc-500 dark:bg-slate-700 dark:text-slate-400">
+              <span className="rounded-md px-2 py-0.5 text-xs font-medium bg-zinc-100 text-zinc-500">
                 {q.standard}
               </span>
               {/* Rating indicator */}
               {currentRating && (
                 <span className={`rounded-md px-2 py-0.5 text-xs font-bold ${
                   currentRating === "good"
-                    ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300"
-                    : "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300"
+                    ? "bg-emerald-100 text-emerald-700"
+                    : "bg-red-100 text-red-700"
                 }`}>
                   {currentRating === "good" ? "\uD83D\uDC4D" : "\uD83D\uDC4E"}
                 </span>
@@ -420,13 +420,13 @@ export default function AssessmentAuditPage() {
                   <img
                     src={q.image_url}
                     alt={`Image for ${q.id}`}
-                    className="max-h-[240px] w-auto object-contain rounded-2xl shadow-md border-2 border-white dark:border-slate-700"
+                    className="max-h-[240px] w-auto object-contain rounded-2xl shadow-md border-2 border-white"
                     onError={() => setImgError(true)}
                   />
                 </div>
               ) : (
-                <div className="flex items-center justify-center h-24 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
-                  <span className="text-sm text-red-500 dark:text-red-400">Image missing</span>
+                <div className="flex items-center justify-center h-24 rounded-xl bg-red-50 border border-red-200">
+                  <span className="text-sm text-red-500">Image missing</span>
                 </div>
               )}
             </div>
@@ -449,7 +449,7 @@ export default function AssessmentAuditPage() {
 
             {/* Prompt */}
             <div className="px-4 pt-4">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-white text-center leading-relaxed">
+              <h2 className="text-xl font-bold text-zinc-900 text-center leading-relaxed">
                 {q.prompt}
               </h2>
             </div>
@@ -457,8 +457,8 @@ export default function AssessmentAuditPage() {
             {/* Stimulus (if present) */}
             {q.stimulus && !q.stimulus2 && (
               <div className="px-4 pt-3">
-                <div className="rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 p-4 text-center">
-                  <p className="text-lg text-indigo-800 dark:text-indigo-200 leading-relaxed italic whitespace-pre-line">
+                <div className="rounded-xl bg-indigo-50 border border-indigo-200 p-4 text-center">
+                  <p className="text-lg text-indigo-800 leading-relaxed italic whitespace-pre-line">
                     {q.stimulus}
                   </p>
                 </div>
@@ -468,15 +468,15 @@ export default function AssessmentAuditPage() {
             {/* Dual text stimulus */}
             {q.stimulus && q.stimulus2 && (
               <div className="px-4 pt-3 space-y-2">
-                <div className="rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-700 p-4">
-                  <p className="text-xs font-bold text-indigo-500 dark:text-indigo-400 uppercase mb-1">Text A</p>
-                  <p className="text-base text-indigo-800 dark:text-indigo-200 leading-relaxed italic">
+                <div className="rounded-xl bg-indigo-50 border border-indigo-200 p-4">
+                  <p className="text-xs font-bold text-indigo-500 uppercase mb-1">Text A</p>
+                  <p className="text-base text-indigo-800 leading-relaxed italic">
                     {q.stimulus}
                   </p>
                 </div>
-                <div className="rounded-xl bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-700 p-4">
-                  <p className="text-xs font-bold text-purple-500 dark:text-purple-400 uppercase mb-1">Text B</p>
-                  <p className="text-base text-purple-800 dark:text-purple-200 leading-relaxed italic">
+                <div className="rounded-xl bg-purple-50 border border-purple-200 p-4">
+                  <p className="text-xs font-bold text-purple-500 uppercase mb-1">Text B</p>
+                  <p className="text-base text-purple-800 leading-relaxed italic">
                     {q.stimulus2}
                   </p>
                 </div>
@@ -501,7 +501,7 @@ export default function AssessmentAuditPage() {
                   className={`flex items-center gap-1.5 rounded-xl px-5 py-2.5 text-sm font-bold transition-all ${
                     currentRating === "good"
                       ? "bg-emerald-500 text-white shadow-md scale-105"
-                      : "bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-700 dark:hover:bg-emerald-900/40"
+                      : "bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100"
                   }`}
                 >
                   <span className="text-lg">{"\uD83D\uDC4D"}</span>
@@ -512,7 +512,7 @@ export default function AssessmentAuditPage() {
                   className={`flex items-center gap-1.5 rounded-xl px-5 py-2.5 text-sm font-bold transition-all ${
                     currentRating === "flagged"
                       ? "bg-red-500 text-white shadow-md scale-105"
-                      : "bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 dark:bg-red-900/20 dark:text-red-300 dark:border-red-700 dark:hover:bg-red-900/40"
+                      : "bg-red-50 text-red-700 border border-red-200 hover:bg-red-100"
                   }`}
                 >
                   <span className="text-lg">{"\uD83D\uDC4E"}</span>
@@ -529,10 +529,10 @@ export default function AssessmentAuditPage() {
                 onBlur={saveComment}
                 placeholder="Add a comment (auto-saves on blur)..."
                 rows={2}
-                className="w-full rounded-xl border border-zinc-200 dark:border-slate-600 bg-zinc-50 dark:bg-slate-900 px-3 py-2 text-sm text-zinc-700 dark:text-slate-300 placeholder:text-zinc-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
+                className="w-full rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm text-zinc-700 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent resize-none"
               />
               {myReviews[q.id]?.comment && (
-                <p className="text-[10px] text-zinc-400 dark:text-slate-500 mt-1 text-right">
+                <p className="text-[10px] text-zinc-400 mt-1 text-right">
                   Comment saved
                 </p>
               )}
@@ -545,10 +545,10 @@ export default function AssessmentAuditPage() {
             </div>
 
             {/* Expandable details */}
-            <div className="border-t border-zinc-100 dark:border-slate-700 px-4 py-3 space-y-2">
+            <div className="border-t border-zinc-100 px-4 py-3 space-y-2">
               <button
                 onClick={() => setShowSSML(!showSSML)}
-                className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
+                className="text-xs font-medium text-indigo-600 hover:underline"
               >
                 {showSSML ? "Hide" : "Show"} SSML
               </button>
@@ -556,13 +556,13 @@ export default function AssessmentAuditPage() {
                 <div className="space-y-2">
                   <div>
                     <p className="text-[10px] uppercase font-bold text-zinc-400 mb-1">Question SSML</p>
-                    <pre className="text-xs bg-zinc-50 dark:bg-slate-900 rounded-lg p-3 overflow-x-auto text-zinc-600 dark:text-slate-400 whitespace-pre-wrap break-words">
+                    <pre className="text-xs bg-zinc-50 rounded-lg p-3 overflow-x-auto text-zinc-600 whitespace-pre-wrap break-words">
                       {q.tts_ssml}
                     </pre>
                   </div>
                   <div>
                     <p className="text-[10px] uppercase font-bold text-zinc-400 mb-1">Hint SSML</p>
-                    <pre className="text-xs bg-zinc-50 dark:bg-slate-900 rounded-lg p-3 overflow-x-auto text-zinc-600 dark:text-slate-400 whitespace-pre-wrap break-words">
+                    <pre className="text-xs bg-zinc-50 rounded-lg p-3 overflow-x-auto text-zinc-600 whitespace-pre-wrap break-words">
                       {q.hint_tts_ssml}
                     </pre>
                   </div>
@@ -571,23 +571,23 @@ export default function AssessmentAuditPage() {
 
               <button
                 onClick={() => setShowImagePrompt(!showImagePrompt)}
-                className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:underline block"
+                className="text-xs font-medium text-indigo-600 hover:underline block"
               >
                 {showImagePrompt ? "Hide" : "Show"} Image Prompt
               </button>
               {showImagePrompt && (
-                <pre className="text-xs bg-zinc-50 dark:bg-slate-900 rounded-lg p-3 overflow-x-auto text-zinc-600 dark:text-slate-400 whitespace-pre-wrap break-words">
+                <pre className="text-xs bg-zinc-50 rounded-lg p-3 overflow-x-auto text-zinc-600 whitespace-pre-wrap break-words">
                   {q.image_prompt}
                 </pre>
               )}
             </div>
 
             {/* Bottom nav */}
-            <div className="flex items-center justify-between px-4 py-3 border-t border-zinc-100 dark:border-slate-700">
+            <div className="flex items-center justify-between px-4 py-3 border-t border-zinc-100">
               <button
                 onClick={goPrev}
                 disabled={currentIndex === 0}
-                className="rounded-lg px-4 py-2 text-sm font-medium bg-zinc-100 hover:bg-zinc-200 disabled:opacity-30 disabled:cursor-not-allowed dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200"
+                className="rounded-lg px-4 py-2 text-sm font-medium bg-zinc-100 hover:bg-zinc-200 disabled:opacity-30 disabled:cursor-not-allowed"
               >
                 Prev
               </button>
@@ -601,7 +601,7 @@ export default function AssessmentAuditPage() {
             </div>
           </div>
         ) : (
-          <div className="text-center py-16 text-zinc-400 dark:text-slate-500">
+          <div className="text-center py-16 text-zinc-400">
             No questions match this filter.
           </div>
         )}
@@ -629,7 +629,7 @@ function AudioButton({
       className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
         playing
           ? "bg-indigo-600 text-white shadow-sm animate-pulse"
-          : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+          : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
       }`}
     >
       <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -654,20 +654,20 @@ function MCQView({ q }: { q: AuditQuestion }) {
             key={i}
             className={`rounded-xl border-2 px-3 py-2.5 flex items-center gap-2 ${
               isCorrect
-                ? "border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 dark:border-emerald-600"
-                : `border-zinc-200 dark:border-slate-600 ${CHOICE_COLORS[i]}`
+                ? "border-emerald-500 bg-emerald-50"
+                : `border-zinc-200 ${CHOICE_COLORS[i]}`
             }`}
           >
             <span
               className={`flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                 isCorrect
                   ? "bg-emerald-500 text-white"
-                  : "bg-zinc-200 text-zinc-600 dark:bg-slate-600 dark:text-slate-300"
+                  : "bg-zinc-200 text-zinc-600"
               }`}
             >
               {letters[i]}
             </span>
-            <span className={`text-sm font-medium ${isCorrect ? "text-emerald-700 dark:text-emerald-300" : "text-zinc-700 dark:text-slate-300"}`}>
+            <span className={`text-sm font-medium ${isCorrect ? "text-emerald-700" : "text-zinc-700"}`}>
               {choice}
             </span>
             {isCorrect && (
@@ -700,12 +700,12 @@ function CategorySortView({ q }: { q: AuditQuestion }) {
               <div className="p-2 space-y-1">
                 {items.length > 0 ? (
                   items.map((item) => (
-                    <div key={item} className="rounded-lg bg-white dark:bg-slate-700 px-2.5 py-1.5 text-sm font-medium text-zinc-700 dark:text-slate-200 text-center shadow-sm">
+                    <div key={item} className="rounded-lg bg-white px-2.5 py-1.5 text-sm font-medium text-zinc-700 text-center shadow-sm">
                       {item}
                     </div>
                   ))
                 ) : (
-                  <p className="text-xs text-zinc-400 dark:text-slate-500 text-center py-2 italic">
+                  <p className="text-xs text-zinc-400 text-center py-2 italic">
                     (no mapping found)
                   </p>
                 )}
@@ -717,12 +717,12 @@ function CategorySortView({ q }: { q: AuditQuestion }) {
 
       {/* All items to sort */}
       <div>
-        <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1.5">Items to sort</p>
+        <p className="text-xs font-semibold text-zinc-400 uppercase mb-1.5">Items to sort</p>
         <div className="flex flex-wrap gap-1.5">
           {q.items.map((item, i) => (
             <span
               key={i}
-              className={`rounded-lg px-3 py-1.5 text-sm font-medium border ${CHOICE_COLORS[i % CHOICE_COLORS.length]} text-zinc-700 dark:text-slate-300`}
+              className={`rounded-lg px-3 py-1.5 text-sm font-medium border ${CHOICE_COLORS[i % CHOICE_COLORS.length]} text-zinc-700`}
             >
               {item}
             </span>
@@ -753,12 +753,12 @@ function MissingWordView({ q }: { q: AuditQuestion }) {
           return isBlank ? (
             <span
               key={i}
-              className="inline-flex items-center justify-center min-w-[80px] h-10 rounded-lg border-2 border-dashed border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20 px-3 text-base font-bold text-emerald-700 dark:text-emerald-300"
+              className="inline-flex items-center justify-center min-w-[80px] h-10 rounded-lg border-2 border-dashed border-emerald-400 bg-emerald-50 px-3 text-base font-bold text-emerald-700"
             >
               {correctWord}
             </span>
           ) : (
-            <span key={i} className="text-lg font-medium text-zinc-800 dark:text-slate-200">
+            <span key={i} className="text-lg font-medium text-zinc-800">
               {word}
             </span>
           );
@@ -767,7 +767,7 @@ function MissingWordView({ q }: { q: AuditQuestion }) {
 
       {/* Choices */}
       <div>
-        <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1.5">Choices</p>
+        <p className="text-xs font-semibold text-zinc-400 uppercase mb-1.5">Choices</p>
         <div className="grid grid-cols-2 gap-2">
           {q.choices.map((choice, i) => {
             const isCorrect = choice.toLowerCase() === correctWord?.toLowerCase();
@@ -776,8 +776,8 @@ function MissingWordView({ q }: { q: AuditQuestion }) {
                 key={i}
                 className={`rounded-xl border-2 px-3 py-2 text-center text-sm font-medium ${
                   isCorrect
-                    ? "border-emerald-500 bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-600"
-                    : `border-zinc-200 dark:border-slate-600 text-zinc-600 dark:text-slate-400 ${CHOICE_COLORS[i]}`
+                    ? "border-emerald-500 bg-emerald-50 text-emerald-700"
+                    : `border-zinc-200 text-zinc-600 ${CHOICE_COLORS[i]}`
                 }`}
               >
                 {choice}
@@ -790,8 +790,8 @@ function MissingWordView({ q }: { q: AuditQuestion }) {
 
       {/* Full correct sentence */}
       <div className="text-center">
-        <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1">Correct sentence</p>
-        <p className="text-base font-medium text-zinc-700 dark:text-slate-300">{q.correct}</p>
+        <p className="text-xs font-semibold text-zinc-400 uppercase mb-1">Correct sentence</p>
+        <p className="text-base font-medium text-zinc-700">{q.correct}</p>
       </div>
     </div>
   );
@@ -800,19 +800,19 @@ function MissingWordView({ q }: { q: AuditQuestion }) {
 /* ── Tap to Pair View ─────────────────────────────────── */
 
 function TapToPairView({ q }: { q: AuditQuestion }) {
-  const LEFT_COLOR = "bg-blue-50 border-blue-200 dark:bg-blue-900/30 dark:border-blue-700";
-  const RIGHT_COLOR = "bg-emerald-50 border-emerald-200 dark:bg-emerald-900/30 dark:border-emerald-700";
+  const LEFT_COLOR = "bg-blue-50 border-blue-200";
+  const RIGHT_COLOR = "bg-emerald-50 border-emerald-200";
 
   return (
     <div className="space-y-3">
       <div className="grid grid-cols-2 gap-4">
         {/* Left column */}
         <div className="space-y-2">
-          <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase text-center">Left</p>
+          <p className="text-xs font-semibold text-zinc-400 uppercase text-center">Left</p>
           {q.left_items.map((word) => (
             <div
               key={word}
-              className={`rounded-xl border-2 px-3 py-2.5 text-center text-sm font-semibold text-zinc-700 dark:text-slate-200 ${LEFT_COLOR}`}
+              className={`rounded-xl border-2 px-3 py-2.5 text-center text-sm font-semibold text-zinc-700 ${LEFT_COLOR}`}
             >
               {word}
             </div>
@@ -821,11 +821,11 @@ function TapToPairView({ q }: { q: AuditQuestion }) {
 
         {/* Right column */}
         <div className="space-y-2">
-          <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase text-center">Right</p>
+          <p className="text-xs font-semibold text-zinc-400 uppercase text-center">Right</p>
           {q.right_items.map((word) => (
             <div
               key={word}
-              className={`rounded-xl border-2 px-3 py-2.5 text-center text-sm font-semibold text-zinc-700 dark:text-slate-200 ${RIGHT_COLOR}`}
+              className={`rounded-xl border-2 px-3 py-2.5 text-center text-sm font-semibold text-zinc-700 ${RIGHT_COLOR}`}
             >
               {word}
             </div>
@@ -835,18 +835,18 @@ function TapToPairView({ q }: { q: AuditQuestion }) {
 
       {/* Correct pairs */}
       <div>
-        <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1.5">Correct Pairs</p>
+        <p className="text-xs font-semibold text-zinc-400 uppercase mb-1.5">Correct Pairs</p>
         <div className="space-y-1.5">
           {Object.entries(q.correct_pairs).map(([left, right]) => (
             <div
               key={left}
-              className="flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 dark:border-emerald-600 px-3 py-2"
+              className="flex items-center justify-center gap-2 rounded-xl border-2 border-emerald-300 bg-emerald-50 px-3 py-2"
             >
-              <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">{left}</span>
+              <span className="text-sm font-bold text-emerald-700">{left}</span>
               <svg className="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
-              <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">{right}</span>
+              <span className="text-sm font-bold text-emerald-700">{right}</span>
             </div>
           ))}
         </div>
@@ -862,24 +862,24 @@ function WordBuilderView({ q }: { q: AuditQuestion }) {
     <div className="space-y-4">
       {/* Blank + ending display */}
       <div className="flex items-center justify-center gap-1">
-        <span className="inline-flex items-center justify-center w-12 h-12 rounded-lg border-2 border-dashed border-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 text-lg font-bold text-indigo-500">
+        <span className="inline-flex items-center justify-center w-12 h-12 rounded-lg border-2 border-dashed border-indigo-400 bg-indigo-50 text-lg font-bold text-indigo-500">
           _
         </span>
-        <span className="text-2xl font-bold text-zinc-800 dark:text-slate-200">
+        <span className="text-2xl font-bold text-zinc-800">
           {q.word_ending}
         </span>
       </div>
 
       {/* Valid words */}
       <div>
-        <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1.5">
+        <p className="text-xs font-semibold text-zinc-400 uppercase mb-1.5">
           Valid words ({q.valid_words.length})
         </p>
         <div className="flex flex-wrap gap-1.5 justify-center">
           {q.valid_words.map((word) => (
             <span
               key={word}
-              className="rounded-lg px-3 py-1.5 text-sm font-semibold border-2 border-emerald-300 bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-600"
+              className="rounded-lg px-3 py-1.5 text-sm font-semibold border-2 border-emerald-300 bg-emerald-50 text-emerald-700"
             >
               {word}
             </span>
@@ -889,7 +889,7 @@ function WordBuilderView({ q }: { q: AuditQuestion }) {
 
       {/* Max attempts */}
       <div className="text-center">
-        <p className="text-xs text-zinc-400 dark:text-slate-500">
+        <p className="text-xs text-zinc-400">
           Max attempts: <span className="font-bold">{q.max_attempts}</span> &middot; Kid types a letter + enter, word validated as real or nonsense
         </p>
       </div>
@@ -904,12 +904,12 @@ function SentenceBuildView({ q }: { q: AuditQuestion }) {
     <div className="space-y-4">
       {/* Jumbled words */}
       <div>
-        <p className="text-xs font-semibold text-zinc-400 dark:text-slate-500 uppercase mb-1.5">Words (shuffled)</p>
+        <p className="text-xs font-semibold text-zinc-400 uppercase mb-1.5">Words (shuffled)</p>
         <div className="flex flex-wrap gap-1.5 justify-center">
           {q.words.map((word, i) => (
             <span
               key={i}
-              className={`rounded-lg px-3 py-2 text-base font-semibold border ${CHOICE_COLORS[i % CHOICE_COLORS.length]} text-zinc-700 dark:text-slate-200 shadow-sm`}
+              className={`rounded-lg px-3 py-2 text-base font-semibold border ${CHOICE_COLORS[i % CHOICE_COLORS.length]} text-zinc-700 shadow-sm`}
             >
               {word}
             </span>
@@ -918,9 +918,9 @@ function SentenceBuildView({ q }: { q: AuditQuestion }) {
       </div>
 
       {/* Correct sentence */}
-      <div className="rounded-xl border-2 border-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 dark:border-emerald-600 p-4 text-center">
-        <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase mb-1">Correct order</p>
-        <p className="text-lg font-bold text-emerald-700 dark:text-emerald-300">{q.correct}</p>
+      <div className="rounded-xl border-2 border-emerald-300 bg-emerald-50 p-4 text-center">
+        <p className="text-xs font-semibold text-emerald-600 uppercase mb-1">Correct order</p>
+        <p className="text-lg font-bold text-emerald-700">{q.correct}</p>
       </div>
     </div>
   );

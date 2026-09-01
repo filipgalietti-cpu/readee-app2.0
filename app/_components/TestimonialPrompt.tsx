@@ -110,11 +110,11 @@ export default function TestimonialPrompt({
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 pb-[max(1rem,env(safe-area-inset-bottom))] px-4 sm:bottom-6 sm:right-6 sm:left-auto sm:max-w-sm sm:px-0">
-      <div className="relative rounded-3xl border border-violet-200 bg-white p-5 shadow-2xl ring-1 ring-black/5 dark:border-violet-900/40 dark:bg-slate-900">
+      <div className="relative rounded-3xl border border-violet-200 bg-white p-5 shadow-2xl ring-1 ring-black/5">
         <button
           onClick={() => close()}
           aria-label="Not now"
-          className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-slate-800"
+          className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
         >
           <X className="h-4 w-4" />
         </button>
@@ -122,7 +122,7 @@ export default function TestimonialPrompt({
         {submitted ? (
           <div className="py-6 text-center">
             <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-500" strokeWidth={2} />
-            <p className="mt-3 font-bold text-zinc-900 dark:text-white">
+            <p className="mt-3 font-bold text-zinc-900">
               Thank you - that helps a lot.
             </p>
           </div>
@@ -137,10 +137,10 @@ export default function TestimonialPrompt({
                 className="h-14 w-14 flex-shrink-0 object-contain"
               />
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
                   Quick favor
                 </div>
-                <p className="mt-0.5 text-sm font-bold text-zinc-900 dark:text-white">
+                <p className="mt-0.5 text-sm font-bold text-zinc-900">
                   How&apos;s Readee going
                   {childFirstName ? ` for ${childFirstName}` : ""}?
                 </p>
@@ -160,7 +160,7 @@ export default function TestimonialPrompt({
                     className={`h-7 w-7 ${
                       n <= rating
                         ? "fill-amber-400 text-amber-400"
-                        : "text-zinc-300 dark:text-slate-600"
+                        : "text-zinc-300"
                     }`}
                     strokeWidth={1.5}
                   />
@@ -173,10 +173,10 @@ export default function TestimonialPrompt({
               onChange={(e) => setQuote(e.target.value)}
               placeholder="Tell us what's working - even one sentence helps."
               rows={3}
-              className="mt-3 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-200 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="mt-3 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-violet-400 focus:outline-none focus:ring-2 focus:ring-violet-200"
             />
 
-            <label className="mt-3 flex cursor-pointer items-start gap-2 text-xs text-zinc-600 dark:text-slate-400">
+            <label className="mt-3 flex cursor-pointer items-start gap-2 text-xs text-zinc-600">
               <input
                 type="checkbox"
                 checked={consent}
@@ -205,7 +205,7 @@ export default function TestimonialPrompt({
               </button>
               <button
                 onClick={() => close()}
-                className="rounded-full px-3 py-2.5 text-sm font-semibold text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+                className="rounded-full px-3 py-2.5 text-sm font-semibold text-zinc-500 hover:bg-zinc-100"
               >
                 Not now
               </button>

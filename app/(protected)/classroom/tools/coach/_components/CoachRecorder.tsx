@@ -400,14 +400,14 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
             <span className="text-xs font-semibold text-zinc-500">
               Passage the student is reading
             </span>
-            <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-bold dark:border-slate-700 dark:bg-slate-950">
+            <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-bold">
               <button
                 type="button"
                 onClick={() => setPassageMode("paste")}
                 disabled={recording || pending}
                 className={`rounded-full px-2.5 py-0.5 transition disabled:opacity-60 ${
                   passageMode === "paste"
-                    ? "bg-white text-blue-700 shadow-sm dark:bg-slate-800 dark:text-blue-300"
+                    ? "bg-white text-blue-700 shadow-sm"
                     : "text-zinc-500"
                 }`}
               >
@@ -419,7 +419,7 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
                 disabled={recording || pending}
                 className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 transition disabled:opacity-60 ${
                   passageMode === "generate"
-                    ? "bg-white text-blue-700 shadow-sm dark:bg-slate-800 dark:text-blue-300"
+                    ? "bg-white text-blue-700 shadow-sm"
                     : "text-zinc-500"
                 }`}
               >
@@ -431,11 +431,11 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
 
           {passageMode === "generate" && (
             <details
-              className="group mt-2 rounded-2xl border border-blue-200 bg-blue-50 dark:border-blue-900/40 dark:bg-blue-950/30"
+              className="group mt-2 rounded-2xl border border-blue-200 bg-blue-50"
               open={!passage}
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-2 px-3 py-2 [&::-webkit-details-marker]:hidden">
-                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+                <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-700">
                   <Wand2 className="h-3 w-3" />
                   Skill focus for {gradeLevel}
                   {skillFocus && (
@@ -444,7 +444,7 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
                     </span>
                   )}
                 </span>
-                <ChevronDown className="h-3 w-3 text-blue-700 transition-transform duration-200 group-open:rotate-180 dark:text-blue-300" />
+                <ChevronDown className="h-3 w-3 text-blue-700 transition-transform duration-200 group-open:rotate-180" />
               </summary>
               <div className="px-3 pb-3">
                 <div className="flex flex-wrap gap-1.5">
@@ -459,7 +459,7 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
                         className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition disabled:opacity-60 ${
                           isActive
                             ? "border-blue-500 bg-blue-600 text-white"
-                            : "border-blue-200 bg-white text-blue-700 hover:bg-blue-100 dark:border-blue-900/40 dark:bg-slate-900 dark:text-blue-300"
+                            : "border-blue-200 bg-white text-blue-700 hover:bg-blue-100"
                         }`}
                       >
                         {s}
@@ -473,9 +473,9 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
                   onChange={(e) => setSkillFocus(e.target.value)}
                   placeholder="Or type a skill (e.g. -tion suffix)"
                   disabled={recording || pending || genPending}
-                  className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60 dark:border-blue-900/40 dark:bg-slate-900"
+                  className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-2 py-1.5 text-sm focus:border-blue-500 focus:outline-none disabled:opacity-60"
                 />
-                <div className="mt-2 text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+                <div className="mt-2 text-[10px] font-bold uppercase tracking-widest text-blue-700">
                   Length
                 </div>
                 <div className="mt-1 flex gap-1.5">
@@ -488,14 +488,14 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
                       className={`flex-1 rounded-full border px-2.5 py-1 text-[11px] font-semibold capitalize transition disabled:opacity-60 ${
                         passageLength === tier
                           ? "border-blue-500 bg-blue-600 text-white"
-                          : "border-blue-200 bg-white text-blue-700 hover:bg-blue-100 dark:border-blue-900/40 dark:bg-slate-900 dark:text-blue-300"
+                          : "border-blue-200 bg-white text-blue-700 hover:bg-blue-100"
                       }`}
                     >
                       {tier}
                     </button>
                   ))}
                 </div>
-                <div className="mt-1 text-[10px] text-blue-700 dark:text-blue-300">
+                <div className="mt-1 text-[10px] text-blue-700">
                   {gradeLengthRange(gradeLevel, passageLength)}
                 </div>
                 <div className="mt-2 flex items-center justify-between gap-2">
@@ -540,7 +540,7 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
                 ? "Generated passage will appear here, edit if you like…"
                 : "Paste the text the student will read aloud…"
             }
-            className="mt-2 w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3 text-zinc-900 shadow-inner focus:border-blue-500 focus:outline-none disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+            className="mt-2 w-full rounded-2xl border border-zinc-300 bg-white px-4 py-3 text-zinc-900 shadow-inner focus:border-blue-500 focus:outline-none disabled:opacity-60"
             style={{
               fontFamily: FRIENDLY_FONT,
               fontSize: passageFontPx(gradeLevel),
@@ -576,7 +576,7 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
           <button
             type="button"
             onClick={() => setFullscreen(true)}
-            className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-blue-300 bg-white px-3 py-1.5 text-xs font-bold text-blue-700 transition hover:bg-blue-50 dark:border-blue-800 dark:bg-slate-900 dark:text-blue-300"
+            className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-blue-300 bg-white px-3 py-1.5 text-xs font-bold text-blue-700 transition hover:bg-blue-50"
           >
             <Maximize2 className="h-3 w-3" />
             Hand to student
@@ -600,13 +600,13 @@ export default function RunningRecordRecorder({ roster }: { roster: Roster }) {
       )}
 
       {recording && (
-        <div className="rounded-2xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900/40 dark:bg-blue-950/30">
-          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+        <div className="rounded-2xl border border-blue-200 bg-blue-50 p-4">
+          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-700">
             <Activity className="h-3 w-3" />
             Live preview · what the mic is hearing
           </div>
           <div
-            className="mt-2 min-h-[3em] text-sm text-zinc-800 dark:text-slate-100"
+            className="mt-2 min-h-[3em] text-sm text-zinc-800"
             style={{ fontFamily: FRIENDLY_FONT }}
           >
             {livePreview || (
@@ -791,10 +791,10 @@ function StudentReadView({
   }, [passage, idealSize, recording]);
 
   return (
-    <div className="fixed inset-0 z-[60] flex flex-col bg-gradient-to-b from-blue-50 via-white to-violet-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="fixed inset-0 z-[60] flex flex-col bg-gradient-to-b from-blue-50 via-white to-violet-50">
       {/* Top bar */}
-      <div className="flex items-center justify-between border-b border-zinc-200 bg-white/70 px-5 py-3 backdrop-blur dark:border-slate-800 dark:bg-slate-900/70">
-        <div className="flex items-center gap-2 text-xs font-bold text-blue-700 dark:text-blue-300">
+      <div className="flex items-center justify-between border-b border-zinc-200 bg-white/70 px-5 py-3 backdrop-blur">
+        <div className="flex items-center gap-2 text-xs font-bold text-blue-700">
           <BookOpen className="h-4 w-4" />
           {studentName}&apos;s passage
         </div>
@@ -802,7 +802,7 @@ function StudentReadView({
           type="button"
           onClick={onClose}
           disabled={recording}
-          className="inline-flex items-center gap-1 rounded-full p-2 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-900 disabled:opacity-40 dark:text-slate-400 dark:hover:bg-slate-800"
+          className="inline-flex items-center gap-1 rounded-full p-2 text-zinc-500 transition hover:bg-zinc-100 hover:text-zinc-900 disabled:opacity-40"
           aria-label="Close"
         >
           <X className="h-5 w-5" />
@@ -817,7 +817,7 @@ function StudentReadView({
       >
         <article
           ref={articleRef as any}
-          className="mx-auto w-full max-w-3xl whitespace-pre-line text-zinc-900 dark:text-slate-100"
+          className="mx-auto w-full max-w-3xl whitespace-pre-line text-zinc-900"
           style={{
             fontFamily: FRIENDLY_FONT,
             fontSize: fsSize,
@@ -831,13 +831,13 @@ function StudentReadView({
 
       {/* Live preview — only shows while recording */}
       {recording && (
-        <div className="border-t border-blue-200 bg-blue-50 px-6 py-3 text-center dark:border-blue-900/40 dark:bg-blue-950/30">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+        <div className="border-t border-blue-200 bg-blue-50 px-6 py-3 text-center">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-blue-700">
             <Activity className="mr-1 inline h-3 w-3" />
             Listening
           </div>
           <div
-            className="mx-auto mt-1 max-w-3xl text-base text-zinc-800 dark:text-slate-100"
+            className="mx-auto mt-1 max-w-3xl text-base text-zinc-800"
             style={{ fontFamily: FRIENDLY_FONT }}
           >
             {livePreview || "…"}
@@ -846,7 +846,7 @@ function StudentReadView({
       )}
 
       {/* Bottom record bar */}
-      <div className="flex items-center justify-center gap-4 border-t border-zinc-200 bg-white px-6 py-5 dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex items-center justify-center gap-4 border-t border-zinc-200 bg-white px-6 py-5">
         <button
           type="button"
           onClick={recording ? onStop : onStart}
@@ -865,7 +865,7 @@ function StudentReadView({
             {recording ? "Reading" : pending ? "Done, scoring…" : "Ready"}
           </div>
           <div
-            className="text-2xl font-extrabold text-zinc-900 dark:text-white"
+            className="text-2xl font-extrabold text-zinc-900"
             style={{ fontFamily: FRIENDLY_FONT }}
           >
             {recording
@@ -924,8 +924,8 @@ function ResultsPanel({
   ).length;
   return (
     <div className="space-y-3">
-      <div className="rounded-3xl border border-blue-200 bg-blue-50 p-5 dark:border-blue-900/40 dark:bg-blue-950/30">
-        <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-700 dark:text-blue-300">
+      <div className="rounded-3xl border border-blue-200 bg-blue-50 p-5">
+        <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-blue-700">
           <User className="h-3 w-3" />
           {studentName}&apos;s running record
         </div>
@@ -936,13 +936,13 @@ function ResultsPanel({
           <Stat label="Self-corr" v={selfCorrect} icon={ListChecks} />
         </div>
         {record.focusArea && (
-          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-bold text-blue-800 ring-1 ring-blue-200 dark:bg-slate-900 dark:text-blue-200 dark:ring-blue-900/40">
+          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-bold text-blue-800 ring-1 ring-blue-200">
             <Target className="h-3 w-3" />
             Focus tomorrow: {record.focusArea}
           </div>
         )}
         {record.teacherSummary && (
-          <p className="mt-3 text-sm text-zinc-800 dark:text-slate-100">
+          <p className="mt-3 text-sm text-zinc-800">
             {record.teacherSummary}
           </p>
         )}
@@ -958,8 +958,8 @@ function ResultsPanel({
       )}
 
       {record.miscues.length > 0 && (
-        <div className="rounded-3xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
-          <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+        <div className="rounded-3xl border border-zinc-200 bg-white p-5">
+          <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-500">
             Miscues
           </div>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
@@ -968,14 +968,14 @@ function ResultsPanel({
                 key={i}
                 className={`rounded-2xl border px-3 py-2 text-sm ${
                   m.kind === "self_correction"
-                    ? "border-emerald-200 bg-emerald-50 dark:border-emerald-900/40 dark:bg-emerald-950/30"
-                    : "border-amber-200 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-950/30"
+                    ? "border-emerald-200 bg-emerald-50"
+                    : "border-amber-200 bg-amber-50"
                 }`}
               >
                 <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
                   {m.kind.replace("_", " ")}
                 </div>
-                <div className="mt-1 font-semibold text-zinc-900 dark:text-white">
+                <div className="mt-1 font-semibold text-zinc-900">
                   {m.kind === "omission"
                     ? `Skipped: "${m.expected}"`
                     : m.kind === "insertion"
@@ -989,12 +989,12 @@ function ResultsPanel({
       )}
 
       {record.transcript && (
-        <details className="rounded-3xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
-          <summary className="cursor-pointer text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+        <details className="rounded-3xl border border-zinc-200 bg-white p-5">
+          <summary className="cursor-pointer text-[11px] font-bold uppercase tracking-widest text-zinc-500">
             Full transcript
           </summary>
           <p
-            className="mt-3 whitespace-pre-line text-sm leading-[1.7] text-zinc-800 dark:text-slate-100"
+            className="mt-3 whitespace-pre-line text-sm leading-[1.7] text-zinc-800"
             style={{ fontFamily: FRIENDLY_FONT }}
           >
             {record.transcript}
@@ -1086,7 +1086,7 @@ function SuggestedPractice({
 
   if (loading) {
     return (
-      <div className="flex items-center gap-2 rounded-2xl bg-blue-50 px-4 py-3 text-xs font-semibold text-blue-700 dark:bg-blue-950/30 dark:text-blue-300">
+      <div className="flex items-center gap-2 rounded-2xl bg-blue-50 px-4 py-3 text-xs font-semibold text-blue-700">
         <Loader2 className="h-3.5 w-3.5 animate-spin" />
         Finding practice for {studentName}…
       </div>
@@ -1094,19 +1094,19 @@ function SuggestedPractice({
   }
   if (err || suggestions.length === 0) {
     return (
-      <div className="rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-xs text-zinc-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
+      <div className="rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-xs text-zinc-500">
         {err ?? "No matching lessons in the catalog yet — try a different passage."}
       </div>
     );
   }
 
   return (
-    <div className="rounded-3xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40">
-      <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+    <div className="rounded-3xl border border-zinc-200 bg-white p-5">
+      <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-zinc-500">
         <BookOpen className="h-3 w-3" />
         Suggested practice
       </div>
-      <p className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+      <p className="mt-1 text-xs text-zinc-500">
         Targeted lessons matching &quot;{focusArea}&quot;.
       </p>
       <ul className="mt-3 grid gap-2">
@@ -1115,22 +1115,22 @@ function SuggestedPractice({
           return (
             <li
               key={s.standardId}
-              className="flex flex-col gap-2 rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between"
+              className="flex flex-col gap-2 rounded-2xl border border-zinc-200 bg-white p-3 shadow-sm sm:flex-row sm:items-center sm:justify-between"
             >
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                  <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
                     {s.standardId}
                   </span>
                   <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
                     {s.grade}
                   </span>
                 </div>
-                <div className="mt-1 text-sm font-semibold text-zinc-900 dark:text-white">
+                <div className="mt-1 text-sm font-semibold text-zinc-900">
                   {s.title}
                 </div>
                 {s.why && (
-                  <div className="mt-1 text-xs text-zinc-500 dark:text-slate-400">
+                  <div className="mt-1 text-xs text-zinc-500">
                     {s.why}
                   </div>
                 )}
@@ -1194,8 +1194,8 @@ function RosterControls({
         onClick={() => setOpen(!open)}
         className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-bold transition ${
           open
-            ? "border-blue-500 bg-blue-50 text-blue-800 dark:border-blue-700 dark:bg-blue-950/40 dark:text-blue-200"
-            : "border-blue-300 bg-white text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:bg-slate-900 dark:text-blue-300"
+            ? "border-blue-500 bg-blue-50 text-blue-800"
+            : "border-blue-300 bg-white text-blue-700 hover:bg-blue-50"
         }`}
         aria-expanded={open}
       >
@@ -1210,7 +1210,7 @@ function RosterControls({
       {classroomId && (
         <Link
           href={`/classroom/${classroomId}`}
-          className="inline-flex items-center gap-1 text-[11px] font-bold text-zinc-500 transition hover:text-blue-700 dark:text-slate-400"
+          className="inline-flex items-center gap-1 text-[11px] font-bold text-zinc-500 transition hover:text-blue-700"
           title="Open the classroom for full roster management"
         >
           Manage roster
@@ -1231,9 +1231,9 @@ function Stat({
   icon: any;
 }) {
   return (
-    <div className="rounded-2xl bg-white px-3 py-2 text-center shadow-sm dark:bg-slate-900">
+    <div className="rounded-2xl bg-white px-3 py-2 text-center shadow-sm">
       <Icon className="mx-auto h-3 w-3 text-blue-500" />
-      <div className="mt-1 text-xl font-extrabold text-zinc-900 dark:text-white">
+      <div className="mt-1 text-xl font-extrabold text-zinc-900">
         {v}
       </div>
       <div className="text-[9px] font-bold uppercase tracking-widest text-zinc-500">

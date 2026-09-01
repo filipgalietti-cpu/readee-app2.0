@@ -189,24 +189,24 @@ export default function PrototypePage() {
   const feedbackResult = results[questionKey];
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-zinc-50">
       {/* Header */}
-      <div className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-zinc-200 dark:border-slate-700">
+      <div className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-zinc-200">
         <div className="max-w-2xl mx-auto px-4 py-3">
-          <h1 className="text-lg font-bold text-zinc-900 dark:text-white text-center">
+          <h1 className="text-lg font-bold text-zinc-900 text-center">
             Question Prototypes
           </h1>
 
           {/* Tab bar */}
-          <div className="flex gap-1 mt-2 bg-zinc-100 dark:bg-slate-800 rounded-xl p-1">
+          <div className="flex gap-1 mt-2 bg-zinc-100 rounded-xl p-1">
             {TABS.map((t) => (
               <button
                 key={t.key}
                 onClick={() => setTab(t.key)}
                 className={`flex-1 py-2 px-3 rounded-lg text-sm font-semibold transition-all ${
                   tab === t.key
-                    ? "bg-white dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 shadow-sm"
-                    : "text-zinc-500 dark:text-slate-400 hover:text-zinc-700 dark:hover:text-slate-300"
+                    ? "bg-white text-indigo-600 shadow-sm"
+                    : "text-zinc-500 hover:text-zinc-700"
                 }`}
               >
                 {t.label}
@@ -223,9 +223,9 @@ export default function PrototypePage() {
           <button
             onClick={() => goTo(idx - 1)}
             disabled={idx === 0}
-            className="w-10 h-10 rounded-full flex items-center justify-center bg-white dark:bg-slate-800 border border-zinc-200 dark:border-slate-700 disabled:opacity-30 transition-all hover:bg-zinc-50 dark:hover:bg-slate-700"
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-zinc-200 disabled:opacity-30 transition-all hover:bg-zinc-50"
           >
-            <svg className="w-5 h-5 text-zinc-600 dark:text-slate-300" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-zinc-600" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -241,14 +241,14 @@ export default function PrototypePage() {
                   onClick={() => goTo(i)}
                   className={`w-3 h-3 rounded-full transition-all ${
                     i === idx
-                      ? "ring-2 ring-indigo-400 ring-offset-2 dark:ring-offset-slate-900"
+                      ? "ring-2 ring-indigo-400 ring-offset-2"
                       : ""
                   } ${
                     r === "correct"
                       ? "bg-emerald-400"
                       : r === "incorrect"
                       ? "bg-red-400"
-                      : "bg-zinc-300 dark:bg-slate-600"
+                      : "bg-zinc-300"
                   }`}
                 />
               );
@@ -258,16 +258,16 @@ export default function PrototypePage() {
           <button
             onClick={() => goTo(idx + 1)}
             disabled={idx === total - 1}
-            className="w-10 h-10 rounded-full flex items-center justify-center bg-white dark:bg-slate-800 border border-zinc-200 dark:border-slate-700 disabled:opacity-30 transition-all hover:bg-zinc-50 dark:hover:bg-slate-700"
+            className="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-zinc-200 disabled:opacity-30 transition-all hover:bg-zinc-50"
           >
-            <svg className="w-5 h-5 text-zinc-600 dark:text-slate-300" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-zinc-600" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
 
         {/* Counter */}
-        <p className="text-center text-sm text-zinc-500 dark:text-slate-400 mb-4">
+        <p className="text-center text-sm text-zinc-500 mb-4">
           {idx + 1} / {total}
         </p>
 
@@ -279,7 +279,7 @@ export default function PrototypePage() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.2 }}
-            className="bg-white dark:bg-slate-800/80 rounded-2xl border border-zinc-200 dark:border-slate-700 p-5 shadow-sm"
+            className="bg-white rounded-2xl border border-zinc-200 p-5 shadow-sm"
           >
             {tab === "phoneme" && (
               <SoundMachine
@@ -333,8 +333,8 @@ export default function PrototypePage() {
               <div
                 className={`rounded-2xl p-4 text-center font-bold text-lg ${
                   feedbackResult === "correct"
-                    ? "bg-emerald-100 text-emerald-800 border border-emerald-300 dark:bg-emerald-900/30 dark:text-emerald-200 dark:border-emerald-700"
-                    : "bg-red-100 text-red-800 border border-red-300 dark:bg-red-900/30 dark:text-red-200 dark:border-red-700"
+                    ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
+                    : "bg-red-100 text-red-800 border border-red-300"
                 }`}
               >
                 {feedbackResult === "correct" ? "Correct!" : "Not quite — try the next one!"}

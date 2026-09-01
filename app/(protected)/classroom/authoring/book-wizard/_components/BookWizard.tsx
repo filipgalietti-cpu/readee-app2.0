@@ -139,26 +139,26 @@ export default function BookWizard() {
   }
 
   return (
-    <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900/40">
+    <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
       {/* Title */}
       <label className="block">
-        <span className="text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="text-xs font-semibold text-zinc-500">
           Book title <span className="font-normal text-zinc-400">(optional)</span>
         </span>
         <input
           value={brief.title}
           onChange={(e) => setField("title", e.target.value.slice(0, 120))}
           placeholder="Leave blank — Readee will write a title"
-          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          className="mt-1 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold focus:border-indigo-400 focus:outline-none"
         />
       </label>
 
       {/* Grade */}
       <div className="mt-5">
-        <span className="block mb-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block mb-2 text-xs font-semibold text-zinc-500">
           Grade level
         </span>
-        <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+        <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
           {GRADES.map((g) => (
             <button
               key={g}
@@ -166,7 +166,7 @@ export default function BookWizard() {
               onClick={() => setField("gradeLevel", g)}
               className={`rounded-full px-3 py-1 transition ${
                 brief.gradeLevel === g
-                  ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300"
+                  ? "bg-white text-indigo-700 shadow-sm"
                   : "text-zinc-500"
               }`}
             >
@@ -178,7 +178,7 @@ export default function BookWizard() {
 
       {/* Phonics pattern picker — grouped */}
       <div className="mt-5">
-        <span className="block mb-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block mb-2 text-xs font-semibold text-zinc-500">
           Phonics pattern
         </span>
         <div className="space-y-3">
@@ -197,8 +197,8 @@ export default function BookWizard() {
                       onClick={() => pickPattern(p)}
                       className={`rounded-full border px-3 py-1 text-xs transition ${
                         selected
-                          ? "border-violet-400 bg-violet-100 font-bold text-violet-800 dark:border-violet-500 dark:bg-violet-900/40 dark:text-violet-200"
-                          : "border-zinc-200 bg-white text-zinc-700 hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                          ? "border-violet-400 bg-violet-100 font-bold text-violet-800"
+                          : "border-zinc-200 bg-white text-zinc-700 hover:border-violet-300"
                       }`}
                     >
                       {p.label}
@@ -213,7 +213,7 @@ export default function BookWizard() {
 
       {/* Page count */}
       <div className="mt-5">
-        <span className="block mb-2 text-xs font-semibold text-zinc-500 dark:text-slate-400">
+        <span className="block mb-2 text-xs font-semibold text-zinc-500">
           How many pages?{" "}
           <span className="font-normal text-zinc-400">({brief.pageCount})</span>
         </span>
@@ -243,10 +243,10 @@ export default function BookWizard() {
       </div>
 
       {/* Cost footer */}
-      <div className="mt-6 flex items-center justify-between rounded-xl bg-zinc-50 p-3 text-xs dark:bg-slate-900/40">
-        <span className="text-zinc-600 dark:text-slate-300">
+      <div className="mt-6 flex items-center justify-between rounded-xl bg-zinc-50 p-3 text-xs">
+        <span className="text-zinc-600">
           Estimated cost:{" "}
-          <span className="font-bold text-violet-700 dark:text-violet-300">
+          <span className="font-bold text-violet-700">
             {cost} credits
           </span>
         </span>
@@ -318,8 +318,8 @@ function Toggle({
     <div
       className={`flex items-start justify-between gap-3 rounded-2xl border p-3 transition ${
         enabled
-          ? "border-violet-300 bg-violet-50/40 dark:border-violet-700 dark:bg-violet-950/20"
-          : "border-zinc-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+          ? "border-violet-300 bg-violet-50/40"
+          : "border-zinc-200 bg-white"
       }`}
     >
       <div className="flex items-start gap-3">
@@ -333,10 +333,10 @@ function Toggle({
           {icon}
         </div>
         <div>
-          <div className="text-sm font-bold text-zinc-900 dark:text-white">
+          <div className="text-sm font-bold text-zinc-900">
             {title}
           </div>
-          <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+          <div className="text-[11px] text-zinc-500">
             {description}
           </div>
         </div>

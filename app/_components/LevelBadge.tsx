@@ -47,7 +47,7 @@ export default function LevelBadge({
             <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
               Level {current.number}
             </div>
-            <div className="text-base font-extrabold text-zinc-900 dark:text-white">
+            <div className="text-base font-extrabold text-zinc-900">
               {current.name}
             </div>
           </div>

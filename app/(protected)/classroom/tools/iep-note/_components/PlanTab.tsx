@@ -153,18 +153,18 @@ export default function PlanTab({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
+        <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
           Annual goal to plan against
         </div>
-        <div className="mt-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+        <div className="mt-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
           <button
             type="button"
             onClick={() => setGoalMode("saved")}
             disabled={activeGoals.length === 0}
             className={`rounded-full px-3 py-1 transition disabled:opacity-50 ${
               goalMode === "saved"
-                ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                ? "bg-white text-violet-700 shadow-sm"
                 : "text-zinc-500"
             }`}
           >
@@ -175,7 +175,7 @@ export default function PlanTab({
             onClick={() => setGoalMode("paste")}
             className={`rounded-full px-3 py-1 transition ${
               goalMode === "paste"
-                ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                ? "bg-white text-violet-700 shadow-sm"
                 : "text-zinc-500"
             }`}
           >
@@ -186,7 +186,7 @@ export default function PlanTab({
           <select
             value={goalId}
             onChange={(e) => setGoalId(e.target.value)}
-            className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-violet-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-2 py-2 text-sm focus:border-violet-500 focus:outline-none"
           >
             {activeGoals.length === 0 ? (
               <option value="">(no active goals — switch to the Goals tab)</option>
@@ -207,15 +207,15 @@ export default function PlanTab({
             onChange={(e) => setPastedGoal(e.target.value)}
             rows={4}
             placeholder="Paste the annual goal you want a plan against."
-            className="mt-2 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-violet-500 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            className="mt-2 w-full rounded-lg border border-zinc-300 px-2 py-2 text-sm focus:border-violet-500 focus:outline-none"
           />
         )}
 
         <div className="mt-4">
-          <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
             Cycle length
           </div>
-          <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-bold dark:border-slate-700 dark:bg-slate-950">
+          <div className="mt-1 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-bold">
             {[1, 2, 3, 4].map((n) => (
               <button
                 key={n}
@@ -231,7 +231,7 @@ export default function PlanTab({
               </button>
             ))}
           </div>
-          <p className="mt-1 text-[10px] text-zinc-500 dark:text-slate-400">
+          <p className="mt-1 text-[10px] text-zinc-500">
             One cycle of an intervention. Re-probe and re-plan at the end. 2 weeks
             is the SPED standard cadence.
           </p>
@@ -260,7 +260,7 @@ export default function PlanTab({
       )}
 
       {pending && !plan && (
-        <div className="rounded-3xl border border-violet-100 bg-white px-5 py-10 shadow-sm dark:border-violet-900/40 dark:bg-slate-900">
+        <div className="rounded-3xl border border-violet-100 bg-white px-5 py-10 shadow-sm">
           <ReadeeAiLoader
             size={140}
             label="Readee.ai is drafting the intervention plan"
@@ -275,12 +275,12 @@ export default function PlanTab({
             <div
               className={`flex flex-wrap items-center gap-2 rounded-2xl border px-4 py-2 text-xs ${
                 runway.isFinalCycle
-                  ? "border-amber-300 bg-amber-50 dark:border-amber-900/40 dark:bg-amber-950/30"
-                  : "border-violet-200 bg-white dark:border-violet-900/40 dark:bg-slate-900"
+                  ? "border-amber-300 bg-amber-50"
+                  : "border-violet-200 bg-white"
               }`}
             >
               {runway.goalTargetDate && (
-                <span className="font-semibold text-zinc-700 dark:text-slate-200">
+                <span className="font-semibold text-zinc-700">
                   Goal target:{" "}
                   <span className="font-bold">
                     {new Date(runway.goalTargetDate + "T00:00:00").toLocaleDateString(
@@ -291,7 +291,7 @@ export default function PlanTab({
                 </span>
               )}
               {typeof runway.daysToGoalTarget === "number" && (
-                <span className="rounded-full bg-violet-100 px-2 py-0.5 font-bold text-violet-800 dark:bg-violet-900/40 dark:text-violet-200">
+                <span className="rounded-full bg-violet-100 px-2 py-0.5 font-bold text-violet-800">
                   {runway.daysToGoalTarget} day{runway.daysToGoalTarget === 1 ? "" : "s"} remaining
                 </span>
               )}
@@ -299,8 +299,8 @@ export default function PlanTab({
                 <span
                   className={`rounded-full px-2 py-0.5 font-bold ${
                     runway.isFinalCycle
-                      ? "bg-amber-200 text-amber-900 dark:bg-amber-900/60 dark:text-amber-100"
-                      : "bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-200"
+                      ? "bg-amber-200 text-amber-900"
+                      : "bg-violet-100 text-violet-800"
                   }`}
                 >
                   {runway.isFinalCycle
@@ -310,20 +310,20 @@ export default function PlanTab({
               )}
             </div>
           )}
-          <div className="rounded-3xl border border-violet-200 bg-violet-50 p-5 shadow-sm dark:border-violet-900/40 dark:bg-violet-950/30">
+          <div className="rounded-3xl border border-violet-200 bg-violet-50 p-5 shadow-sm">
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div className="min-w-0 flex-1">
-                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                   Plan summary
                 </div>
-                <p className="mt-1 text-sm text-zinc-800 dark:text-slate-200">
+                <p className="mt-1 text-sm text-zinc-800">
                   {plan.summary}
                 </p>
                 <div className="mt-2 flex flex-wrap gap-1.5">
                   {plan.focusSkills.map((s) => (
                     <span
                       key={s}
-                      className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold text-violet-700 dark:bg-slate-900 dark:text-violet-300"
+                      className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold text-violet-700"
                     >
                       <Target className="h-3 w-3" />
                       {s}
@@ -353,7 +353,7 @@ export default function PlanTab({
               </div>
             </div>
             {pushedCount !== null && (
-              <div className="mt-3 rounded-xl border border-emerald-200 bg-white px-3 py-2 text-xs font-semibold text-emerald-700 dark:border-emerald-900/40 dark:bg-slate-900 dark:text-emerald-300">
+              <div className="mt-3 rounded-xl border border-emerald-200 bg-white px-3 py-2 text-xs font-semibold text-emerald-700">
                 ✓ Pushed {pushedCount} private assignment
                 {pushedCount === 1 ? "" : "s"} — only this student sees them. They
                 appear in their dashboard.
@@ -364,17 +364,17 @@ export default function PlanTab({
           {plan.weeklyBlocks.map((w, wi) => (
             <div
               key={wi}
-              className="rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+              className="rounded-3xl border border-zinc-200 bg-white p-4 shadow-sm"
             >
               {/* Hide the week header when the cycle is a single week — */}
               {/* "Week 1" of 1 is redundant. */}
               {plan.weeklyBlocks.length > 1 && (
-                <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-700">
                   <Calendar className="h-3.5 w-3.5" />
                   {w.weekLabel}
                 </div>
               )}
-              <p className="text-[10px] text-zinc-500 dark:text-slate-400">
+              <p className="text-[10px] text-zinc-500">
                 {w.sessions.length} session{w.sessions.length === 1 ? "" : "s"} this
                 week — interventions run Mon-Thu, with Friday reserved for the
                 weekly probe.
@@ -383,26 +383,26 @@ export default function PlanTab({
                 {w.sessions.map((s, si) => (
                   <li
                     key={si}
-                    className="rounded-2xl border border-zinc-100 bg-zinc-50 p-3 dark:border-slate-800 dark:bg-slate-950"
+                    className="rounded-2xl border border-zinc-100 bg-zinc-50 p-3"
                   >
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <div className="text-xs font-bold text-zinc-700 dark:text-slate-200">
+                      <div className="text-xs font-bold text-zinc-700">
                         {s.dayLabel}
                       </div>
                       <div className="text-[11px] font-semibold text-violet-600">
                         {s.durationMin} min
                       </div>
                     </div>
-                    <p className="mt-1 text-sm text-zinc-800 dark:text-slate-200">
+                    <p className="mt-1 text-sm text-zinc-800">
                       {s.activity}
                     </p>
                     <div className="mt-1 text-[11px] text-zinc-500">
-                      <span className="font-semibold text-zinc-600 dark:text-slate-400">
+                      <span className="font-semibold text-zinc-600">
                         Material:
                       </span>{" "}
                       {s.materialHint}
                     </div>
-                    <div className="mt-0.5 text-[11px] text-emerald-700 dark:text-emerald-400">
+                    <div className="mt-0.5 text-[11px] text-emerald-700">
                       <span className="font-semibold">Expected:</span> {s.expectedOutcome}
                     </div>
                   </li>
@@ -411,23 +411,23 @@ export default function PlanTab({
             </div>
           ))}
 
-          <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
             <div className="flex items-start gap-2 text-sm">
               <Calendar className="mt-0.5 h-4 w-4 flex-shrink-0 text-violet-600" />
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                   Probe schedule
                 </div>
-                <p className="mt-1 text-zinc-800 dark:text-slate-200">{plan.probeSchedule}</p>
+                <p className="mt-1 text-zinc-800">{plan.probeSchedule}</p>
               </div>
             </div>
             <div className="mt-3 flex items-start gap-2 text-sm">
               <Target className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-600" />
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-emerald-700 dark:text-emerald-400">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
                   Expected criterion at end of week 2
                 </div>
-                <p className="mt-1 text-zinc-800 dark:text-slate-200">
+                <p className="mt-1 text-zinc-800">
                   {plan.expectedCriterion}
                 </p>
               </div>
@@ -435,16 +435,16 @@ export default function PlanTab({
             <div className="mt-3 flex items-start gap-2 text-sm">
               <TriangleAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
               <div>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-400">
+                <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700">
                   Escalation trigger
                 </div>
-                <p className="mt-1 text-zinc-800 dark:text-slate-200">
+                <p className="mt-1 text-zinc-800">
                   {plan.escalationTrigger}
                 </p>
               </div>
             </div>
             {plan.caregiverNote && (
-              <div className="mt-3 rounded-2xl border border-amber-100 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-900/40 dark:bg-amber-950/30 dark:text-amber-200">
+              <div className="mt-3 rounded-2xl border border-amber-100 bg-amber-50 p-3 text-sm text-amber-900">
                 <div className="text-[10px] font-bold uppercase tracking-widest">
                   Note for caregiver
                 </div>

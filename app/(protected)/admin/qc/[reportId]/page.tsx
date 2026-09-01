@@ -77,7 +77,7 @@ export default async function QcReportDetailPage({
           QC report
         </div>
         <div className="mt-1 flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">
+          <h1 className="text-2xl font-bold text-zinc-900">
             {(quiz as any)?.title ?? "(unknown quiz)"}
           </h1>
           <OverallBadge severity={r.overall} />

@@ -64,7 +64,7 @@ export function InteractiveMatch({
   return (
     <div className="flex w-full flex-col items-center gap-4 lg:gap-6 text-center">
       {anchor && (
-        <span className="rounded-full bg-emerald-100 px-4 py-1.5 text-base sm:text-lg font-bold text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-200">
+        <span className="rounded-full bg-emerald-100 px-4 py-1.5 text-base sm:text-lg font-bold text-emerald-700">
           {anchor}
         </span>
       )}
@@ -72,7 +72,7 @@ export function InteractiveMatch({
       {/* Render the instruction in our themed style — TapToPair's own h2 is
           black (text-zinc-900) which breaks the no-black-text rule + crowds
           the phone, so we pass it an empty prompt below. */}
-      <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-violet-800 dark:text-violet-200 [text-wrap:balance]">
+      <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight text-violet-800 [text-wrap:balance]">
         {prompt}
       </p>
 
@@ -109,7 +109,7 @@ export function InteractiveMatch({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="flex items-center gap-2 rounded-xl bg-amber-50 px-4 py-2 text-sm sm:text-base font-semibold text-amber-700 dark:bg-amber-900/30 dark:text-amber-200 [text-wrap:balance]"
+            className="flex items-center gap-2 rounded-xl bg-amber-50 px-4 py-2 text-sm sm:text-base font-semibold text-amber-700 [text-wrap:balance]"
           >
             <Lightbulb className="h-5 w-5 flex-shrink-0" /> {hint}
           </motion.div>

@@ -22,7 +22,7 @@ export function Skeleton({
   return (
     <div
       className={cn(
-        "animate-pulse rounded-lg bg-zinc-200/70 dark:bg-slate-800/60",
+        "animate-pulse rounded-lg bg-zinc-200/70",
         className,
       )}
       {...props}
@@ -69,7 +69,7 @@ export function SkeletonCard({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-zinc-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900/40",
+        "rounded-2xl border border-zinc-200 bg-white p-5",
         className,
       )}
     >

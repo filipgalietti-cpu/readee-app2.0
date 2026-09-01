@@ -93,17 +93,17 @@ export default async function DiscoveryDetailPage({
       <div className="flex items-center gap-3">
         <Link
           href="/discover"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-600"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           Discover
         </Link>
         {cat && (
           <>
-            <span className="text-zinc-300 dark:text-slate-600">·</span>
+            <span className="text-zinc-300">·</span>
             <Link
               href={`/discover/${a.category}`}
-              className="text-xs font-semibold text-zinc-500 hover:text-violet-600 dark:text-slate-400 dark:hover:text-violet-400"
+              className="text-xs font-semibold text-zinc-500 hover:text-violet-600"
             >
               {cat.label}
             </Link>
@@ -115,12 +115,12 @@ export default async function DiscoveryDetailPage({
       <div className="mt-6 grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
         {/* LEFT — the reading */}
         <div className="min-w-0">
-          <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700 dark:text-violet-400">
+          <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700">
             <Sparkles className="h-3 w-3" />
             {cat?.label ?? a.category}
           </div>
 
-          <h1 className="mt-2 font-display text-[32px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 dark:text-white sm:text-[38px]">
+          <h1 className="mt-2 font-display text-[32px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 sm:text-[38px]">
             {a.title}
           </h1>
 
@@ -132,19 +132,19 @@ export default async function DiscoveryDetailPage({
               <img
                 src={a.image_url}
                 alt=""
-                className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm dark:border-slate-800"
+                className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm"
               />
             </div>
           )}
 
-          <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500 dark:text-slate-400">
+          <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
             <BookOpen className="h-3.5 w-3.5" />
             {wordCount} words · {Math.max(1, Math.round(wordCount / 150))} min read
             <ReadAloudButton audioUrl={a.audio_url} />
           </div>
 
           <div
-            className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900 dark:text-slate-100"
+            className="mt-[18px] flex flex-col gap-[18px] whitespace-pre-line text-[19px] leading-[1.75] text-zinc-900"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',

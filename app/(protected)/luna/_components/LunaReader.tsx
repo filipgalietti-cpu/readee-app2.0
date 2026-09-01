@@ -1742,18 +1742,18 @@ export default function LunaReader({
               <div className="mt-6 flex flex-col items-center text-center" style={{ maxWidth: 460 }}>
                 {errKind === "upgrade" ? (
                   <>
-                    <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
+                    <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700">
                       <Lock className="h-3 w-3" /> Readee+
                     </div>
-                    <h2 className="mt-2 text-xl font-extrabold text-zinc-900 dark:text-white" style={{ fontFamily: BALOO }}>Make unlimited stories with Luna</h2>
-                    <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">Luna writes a new story about anything {name} loves, at their exact reading level, and coaches every word.</p>
+                    <h2 className="mt-2 text-xl font-extrabold text-zinc-900" style={{ fontFamily: BALOO }}>Make unlimited stories with Luna</h2>
+                    <p className="mt-1 text-sm text-zinc-500">Luna writes a new story about anything {name} loves, at their exact reading level, and coaches every word.</p>
                     <Link href="/upgrade?reason=tools_hub" className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-violet-700">
                       Unlock Luna <ArrowRight className="h-4 w-4" />
                     </Link>
                   </>
                 ) : (
                   <>
-                    <p className="text-sm font-semibold text-zinc-600 dark:text-slate-300">
+                    <p className="text-sm font-semibold text-zinc-600">
                       {errKind === "unsafe" ? "Let's pick a different idea. Luna keeps every story child-friendly." : "Luna couldn't finish that one. Let's try again."}
                     </p>
                     <button type="button" onClick={() => setErrKind(null)} className="mt-3 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-5 py-2 text-sm font-bold text-violet-700 transition hover:bg-violet-50">
@@ -1766,33 +1766,33 @@ export default function LunaReader({
               // Resting state: the topic picker sits with the orb. Tapping
               // "Let's Go" hands off to prepareAndBegin — pills fade, orb thinks.
               <div className="mt-3 flex w-full flex-col items-center text-center" style={{ paddingBottom: 8 }}>
-                <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+                <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
                   <Sparkles className="h-4 w-4" /> Luna
                 </div>
-                <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white" style={{ fontFamily: BALOO }}>
+                <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900" style={{ fontFamily: BALOO }}>
                   What should your story be about, {name}?
                 </h2>
-                <p className="mt-1 text-sm font-semibold text-zinc-500 dark:text-slate-400">Pick up to 3, or type your own idea. Luna makes a story you can read.</p>
+                <p className="mt-1 text-sm font-semibold text-zinc-500">Pick up to 3, or type your own idea. Luna makes a story you can read.</p>
                 <div className="mt-5 flex flex-wrap justify-center gap-2.5">
                   {TOPICS.map((t) => {
                     const on = selected.has(t);
                     return (
                       <button key={t} type="button" aria-pressed={on} onClick={() => toggleTopic(t)}
-                        className={`inline-flex items-center gap-1.5 rounded-full border-2 px-4 py-2 text-sm font-bold shadow-sm transition ${on ? "border-violet-500 bg-violet-600 text-white" : "border-violet-100 bg-white text-zinc-700 hover:-translate-y-0.5 hover:border-violet-300 hover:text-violet-700 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-200"}`}>
+                        className={`inline-flex items-center gap-1.5 rounded-full border-2 px-4 py-2 text-sm font-bold shadow-sm transition ${on ? "border-violet-500 bg-violet-600 text-white" : "border-violet-100 bg-white text-zinc-700 hover:-translate-y-0.5 hover:border-violet-300 hover:text-violet-700"}`}>
                         {on && <Check className="h-3.5 w-3.5" strokeWidth={3.5} />} {t}
                       </button>
                     );
                   })}
                 </div>
                 <input value={custom} onChange={(e) => setCustom(e.target.value)} maxLength={200} placeholder="…or add your own idea"
-                  className="mt-5 w-full max-w-md rounded-full border-2 border-zinc-200 bg-white px-4 py-2 text-center text-sm text-zinc-900 outline-none transition focus:border-violet-300 dark:border-slate-800 dark:bg-slate-900 dark:text-white" />
+                  className="mt-5 w-full max-w-md rounded-full border-2 border-zinc-200 bg-white px-4 py-2 text-center text-sm text-zinc-900 outline-none transition focus:border-violet-300" />
                 <button type="button" onClick={makeStory} disabled={!canMake}
                   className="mt-5 inline-flex items-center gap-2 rounded-full bg-violet-600 px-7 py-3 text-base font-extrabold text-white shadow-lg shadow-violet-500/25 transition hover:bg-violet-700 disabled:cursor-default disabled:opacity-40"
                   style={{ fontFamily: BALOO }}>
                   <Wand2 className="h-5 w-5" /> Let&apos;s Go
                 </button>
                 <button type="button" onClick={surpriseMe}
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 transition hover:text-violet-800 dark:text-violet-300">
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 transition hover:text-violet-800">
                   <Sparkles className="h-4 w-4" /> Surprise me
                 </button>
               </div>

@@ -48,17 +48,17 @@ export default async function StoriesForMePage() {
     <div className="mx-auto max-w-5xl px-6 py-10">
       <Link
         href="/luna"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
       >
         <ArrowLeft className="h-4 w-4" />
         Luna
       </Link>
-      <div className="mt-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+      <div className="mt-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
         <Sparkles className="h-4 w-4" />
         Story with Luna
       </div>
       <h1
-        className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white"
+        className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900"
         style={{ fontFamily: "'Baloo 2','Nunito',sans-serif" }}
       >
         AI stories starring{" "}
@@ -66,7 +66,7 @@ export default async function StoriesForMePage() {
           ? children[0].first_name
           : "your children"}
       </h1>
-      <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-1 text-sm text-zinc-500">
         Pick a child, pick how many pages, and Luna writes a story where{" "}
         {children.length === 1
           ? `${children[0].first_name} is`

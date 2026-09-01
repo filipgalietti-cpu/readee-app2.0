@@ -70,7 +70,7 @@ export function EmptyState({
 
   return (
     <div
-      className={`rounded-3xl border border-zinc-200 bg-white text-center dark:border-slate-800 dark:bg-slate-900/40 ${padding}`}
+      className={`rounded-3xl border border-zinc-200 bg-white text-center ${padding}`}
     >
       {variant === "bunny" ? (
         <div className="mx-auto mb-3" style={{ width: imgSize, height: imgSize }}>
@@ -88,11 +88,11 @@ export function EmptyState({
           {icon}
         </div>
       ) : null}
-      <h3 className={`font-bold text-zinc-900 dark:text-white ${size === "lg" ? "text-xl" : "text-base"}`}>
+      <h3 className={`font-bold text-zinc-900 ${size === "lg" ? "text-xl" : "text-base"}`}>
         {title}
       </h3>
       {description && (
-        <p className="mx-auto mt-2 max-w-md text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mx-auto mt-2 max-w-md text-sm text-zinc-500">
           {description}
         </p>
       )}

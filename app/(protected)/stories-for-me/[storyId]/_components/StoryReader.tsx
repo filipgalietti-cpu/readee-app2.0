@@ -27,7 +27,7 @@ export default function StoryReader({
   }
   const p = pages[page];
   return (
-    <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50/40 via-white to-pink-50/40 shadow-sm dark:border-slate-800">
+    <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50/40 via-white to-pink-50/40 shadow-sm">
       <div className="flex items-center justify-between border-b border-zinc-100 px-5 py-2.5 text-xs">
         <span className="font-semibold text-zinc-500">
           Page {page + 1} of {total}
@@ -61,7 +61,7 @@ export default function StoryReader({
           </div>
         )}
         <p
-          className="mx-auto mt-8 max-w-2xl text-center text-[28px] font-medium leading-snug text-zinc-900 dark:text-slate-100"
+          className="mx-auto mt-8 max-w-2xl text-center text-[28px] font-medium leading-snug text-zinc-900"
           style={{
             fontFamily:
               'Andika, "Comic Sans MS", "Trebuchet MS", system-ui, sans-serif',

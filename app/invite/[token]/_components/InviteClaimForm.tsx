@@ -46,7 +46,7 @@ export default function InviteClaimForm({
 
   return (
     <div className="mt-6 space-y-3">
-      <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-slate-400">
+      <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">
         Connect as
       </p>
 
@@ -55,8 +55,8 @@ export default function InviteClaimForm({
           key={c.id}
           className={`flex cursor-pointer items-center gap-3 rounded-2xl border p-4 transition ${
             selected === c.id
-              ? "border-indigo-400 bg-indigo-50 dark:border-indigo-500 dark:bg-indigo-950/30"
-              : "border-zinc-200 bg-white hover:border-indigo-200 dark:border-slate-800 dark:bg-slate-900/40"
+              ? "border-indigo-400 bg-indigo-50"
+              : "border-zinc-200 bg-white hover:border-indigo-200"
           }`}
         >
           <input
@@ -68,11 +68,11 @@ export default function InviteClaimForm({
             className="h-4 w-4 accent-indigo-600"
           />
           <div className="flex-1 min-w-0">
-            <div className="font-semibold text-zinc-900 dark:text-white">
+            <div className="font-semibold text-zinc-900">
               {c.first_name}
             </div>
             {c.grade && (
-              <div className="text-xs text-zinc-500 dark:text-slate-400">{c.grade}</div>
+              <div className="text-xs text-zinc-500">{c.grade}</div>
             )}
           </div>
         </label>
@@ -81,8 +81,8 @@ export default function InviteClaimForm({
       <label
         className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition ${
           selected === "__new__"
-            ? "border-indigo-400 bg-indigo-50 dark:border-indigo-500 dark:bg-indigo-950/30"
-            : "border-zinc-200 bg-white hover:border-indigo-200 dark:border-slate-800 dark:bg-slate-900/40"
+            ? "border-indigo-400 bg-indigo-50"
+            : "border-zinc-200 bg-white hover:border-indigo-200"
         }`}
       >
         <input
@@ -94,7 +94,7 @@ export default function InviteClaimForm({
           className="mt-0.5 h-4 w-4 accent-indigo-600"
         />
         <div className="flex-1">
-          <div className="flex items-center gap-1.5 font-semibold text-zinc-900 dark:text-white">
+          <div className="flex items-center gap-1.5 font-semibold text-zinc-900">
             <Plus className="h-4 w-4 text-indigo-600" />
             Create a new child
           </div>
@@ -104,7 +104,7 @@ export default function InviteClaimForm({
               onChange={(e) => setNewName(e.target.value)}
               placeholder="First name"
               maxLength={40}
-              className="mt-2 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-900 focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-2 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm font-semibold text-zinc-900 focus:border-indigo-400 focus:outline-none"
             />
           )}
         </div>

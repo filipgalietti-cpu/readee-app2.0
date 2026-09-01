@@ -37,8 +37,8 @@ export default function QuestionChart({ chart }: { chart: ChartSpec }) {
   const maxValue = Math.max(...series.map((s) => s.value), 1);
 
   return (
-    <div className="mx-auto w-full max-w-md rounded-2xl border-2 border-violet-200 bg-white p-4 shadow-md dark:border-violet-900/40 dark:bg-slate-900">
-      <div className="mb-3 text-center text-base font-extrabold text-zinc-900 dark:text-white">
+    <div className="mx-auto w-full max-w-md rounded-2xl border-2 border-violet-200 bg-white p-4 shadow-md">
+      <div className="mb-3 text-center text-base font-extrabold text-zinc-900">
         {chart.title}
       </div>
 

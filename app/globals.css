@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* Enable class-based dark mode for Tailwind v4 */
-@custom-variant dark (&:is(.dark *));
-
 /* App-wide "kid" type pairing (from the Claude Design system):
    Nunito is the rounded body/UI font, Baloo 2 the chunky display
    font for headings. Both are set by next/font/google in
@@ -67,19 +64,6 @@ body {
     color: rgb(82 82 91); /* zinc-600 */
   }
 
-  /* ═══ Dark mode overrides ═══ */
-  .dark body {
-    background-color: #0f172a; /* slate-900 */
-    color: #e2e8f0; /* slate-200 */
-  }
-
-  .dark h1, .dark h2, .dark h3 {
-    color: #f1f5f9; /* slate-100 */
-  }
-
-  .dark p {
-    color: #94a3b8; /* slate-400 */
-  }
 }
 
 /* Custom component classes */
@@ -104,12 +88,6 @@ body {
   border: 1px solid rgb(228 228 231); /* zinc-200 */
   background-color: white;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-}
-
-.dark .card {
-  background-color: #1e293b; /* slate-800 */
-  border-color: #334155; /* slate-700 */
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.2);
 }
 
 .btn {
@@ -167,14 +145,6 @@ body {
   background-color: rgb(244 244 245); /* zinc-100 */
 }
 
-.dark .btn-primary {
-  background-color: #6366f1; /* indigo-500 */
-  color: white;
-}
-.dark .btn-primary:hover { background-color: #4f46e5; }
-.dark .btn-ghost { color: #cbd5e1; }
-.dark .btn-ghost:hover { background-color: #1e293b; }
-
 .input {
   width: 100%;
   border-radius: 0.75rem;
@@ -192,13 +162,6 @@ body {
   border-color: rgb(161 161 170); /* zinc-400 */
 }
 
-.dark .input {
-  background-color: #1e293b; /* slate-800 */
-  border-color: #475569; /* slate-600 */
-  color: #e2e8f0; /* slate-200 */
-}
-.dark .input:focus { border-color: #818cf8; /* indigo-400 */ }
-
 .label {
   font-size: 0.75rem;
   font-weight: 500;
@@ -209,9 +172,6 @@ body {
   font-size: 0.875rem;
   color: rgb(82 82 91); /* zinc-600 */
 }
-
-.dark .label { color: #94a3b8; /* slate-400 */ }
-.dark .muted { color: #94a3b8; }
 
 /* Kept animations (infinite/decorative — better as CSS) */
 @keyframes floatDown {
@@ -486,12 +446,6 @@ body {
 
 .skeleton-shimmer {
   background: linear-gradient(90deg, #e4e4e7 25%, #f4f4f5 50%, #e4e4e7 75%); /* zinc-200 → zinc-100 → zinc-200 */
-  background-size: 200% 100%;
-  animation: skeletonShimmer 1.5s ease-in-out infinite;
-}
-
-.dark .skeleton-shimmer {
-  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%); /* slate-800 → slate-700 → slate-800 */
   background-size: 200% 100%;
   animation: skeletonShimmer 1.5s ease-in-out infinite;
 }

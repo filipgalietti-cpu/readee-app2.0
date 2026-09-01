@@ -218,8 +218,8 @@ export default function StudentLessonRunner({
       <div
         className={`rounded-3xl border p-8 text-center ${
           passed
-            ? "border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 dark:border-green-900/40 dark:from-green-950/30 dark:to-emerald-950/30"
-            : "border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 dark:border-amber-900/40 dark:from-amber-950/30 dark:to-orange-950/30"
+            ? "border-green-200 bg-gradient-to-br from-green-50 to-emerald-50"
+            : "border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50"
         }`}
       >
         <div
@@ -231,23 +231,23 @@ export default function StudentLessonRunner({
         >
           <Trophy className="h-8 w-8" />
         </div>
-        <h2 className="mt-4 text-2xl font-extrabold text-zinc-900 dark:text-white">
+        <h2 className="mt-4 text-2xl font-extrabold text-zinc-900">
           {heading}
         </h2>
         {total > 0 && (
           <>
-            <div className="mt-2 font-mono text-3xl font-black text-indigo-700 dark:text-indigo-300">
+            <div className="mt-2 font-mono text-3xl font-black text-indigo-700">
               {correctCount} / {total}
             </div>
-            <div className="text-sm font-semibold text-zinc-500 dark:text-slate-400">
+            <div className="text-sm font-semibold text-zinc-500">
               {pct}% correct
             </div>
             {hasThreshold && (
               <div
                 className={`mt-2 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold ${
                   passed
-                    ? "bg-green-100 text-green-700 dark:bg-green-950/40 dark:text-green-300"
-                    : "bg-amber-100 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-amber-100 text-amber-800"
                 }`}
               >
                 Goal: {passThreshold}% · {passed ? "Hit it!" : "Try again to pass"}
@@ -256,7 +256,7 @@ export default function StudentLessonRunner({
           </>
         )}
         {carrots > 0 && (
-          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-4 py-1.5 text-sm font-bold text-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
+          <div className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-4 py-1.5 text-sm font-bold text-amber-800">
             <Carrot className="h-4 w-4" />+{carrots} carrots
           </div>
         )}
@@ -292,25 +292,25 @@ export default function StudentLessonRunner({
             <BookOpen className="h-3 w-3" />
             Lesson — {lessonTitle}
           </span>
-          <span className="text-zinc-500 dark:text-slate-400">
+          <span className="text-zinc-500">
             Slide {slideIdx + 1} of {slides.length}
           </span>
         </div>
-        <div className="h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800">
+        <div className="h-1.5 overflow-hidden rounded-full bg-zinc-100">
           <div
             className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all"
             style={{ width: `${progressPct}%` }}
           />
         </div>
 
-        <div className="mt-6 rounded-3xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-8 dark:border-indigo-900/40 dark:from-indigo-950/30 dark:to-violet-950/30">
+        <div className="mt-6 rounded-3xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-violet-50 p-8">
           {currentStep.displayText && (
-            <div className="text-center text-2xl font-extrabold leading-tight text-zinc-900 dark:text-white sm:text-3xl">
+            <div className="text-center text-2xl font-extrabold leading-tight text-zinc-900 sm:text-3xl">
               {renderDisplayText(currentStep.displayText)}
             </div>
           )}
           {currentStep.ttsScript && (
-            <p className="mt-4 text-center text-sm leading-relaxed text-zinc-600 dark:text-slate-300">
+            <p className="mt-4 text-center text-sm leading-relaxed text-zinc-600">
               {currentStep.ttsScript}
             </p>
           )}
@@ -320,7 +320,7 @@ export default function StudentLessonRunner({
               <button
                 type="button"
                 onClick={replayAudio}
-                className="inline-flex items-center gap-1.5 rounded-full border border-indigo-300 bg-white px-4 py-2 text-xs font-bold text-indigo-700 transition hover:bg-indigo-50 dark:border-indigo-700 dark:bg-slate-900 dark:text-indigo-300"
+                className="inline-flex items-center gap-1.5 rounded-full border border-indigo-300 bg-white px-4 py-2 text-xs font-bold text-indigo-700 transition hover:bg-indigo-50"
                 aria-label="Replay audio"
               >
                 <Volume2 className="h-3.5 w-3.5" />
@@ -357,9 +357,9 @@ export default function StudentLessonRunner({
   // ── PRACTICE (MCQ) ───────────────────────────────────────────────
   if (mcqs.length === 0) {
     return (
-      <div className="rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
+      <div className="rounded-3xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
         <Play className="mx-auto h-10 w-10 text-zinc-300" />
-        <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-3 text-sm text-zinc-500">
           No practice questions for this lesson yet.
         </p>
         <button
@@ -391,27 +391,27 @@ export default function StudentLessonRunner({
             <button
               type="button"
               onClick={replayAudio}
-              className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700 hover:bg-indigo-100 dark:border-indigo-900 dark:bg-indigo-950/30 dark:text-indigo-300"
+              className="inline-flex items-center gap-1 rounded-full border border-indigo-200 bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-700 hover:bg-indigo-100"
               title="Listen again"
             >
               <Volume2 className="h-3 w-3" />
               Listen
             </button>
           )}
-          <div className="font-mono text-xs font-bold text-green-700 dark:text-green-300">
+          <div className="font-mono text-xs font-bold text-green-700">
             ✓ {correctCount}
           </div>
         </div>
       </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-slate-800">
+      <div className="h-1.5 overflow-hidden rounded-full bg-zinc-100">
         <div
           className="h-full bg-indigo-500 transition-all"
           style={{ width: `${((mcqIdx + (revealed ? 1 : 0)) / total) * 100}%` }}
         />
       </div>
 
-      <div className="mt-6 rounded-3xl border border-zinc-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900/40">
-        <div className="whitespace-pre-line text-base font-semibold leading-relaxed text-zinc-900 dark:text-white">
+      <div className="mt-6 rounded-3xl border border-zinc-200 bg-white p-6">
+        <div className="whitespace-pre-line text-base font-semibold leading-relaxed text-zinc-900">
           {q.prompt}
         </div>
 
@@ -428,12 +428,12 @@ export default function StudentLessonRunner({
                 onClick={() => !revealed && setPicked(choice)}
                 className={`flex w-full items-center justify-between gap-3 rounded-2xl border-2 p-4 text-left text-sm font-semibold transition ${
                   isCorrect
-                    ? "border-green-500 bg-green-50 text-green-900 dark:border-green-500 dark:bg-green-950/30 dark:text-green-200"
+                    ? "border-green-500 bg-green-50 text-green-900"
                     : isWrongPick
-                    ? "border-red-500 bg-red-50 text-red-900 dark:border-red-500 dark:bg-red-950/30 dark:text-red-200"
+                    ? "border-red-500 bg-red-50 text-red-900"
                     : isPicked
-                    ? "border-indigo-500 bg-indigo-50 text-indigo-900 dark:border-indigo-500 dark:bg-indigo-950/30 dark:text-indigo-200"
-                    : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+                    ? "border-indigo-500 bg-indigo-50 text-indigo-900"
+                    : "border-zinc-200 bg-white text-zinc-800 hover:border-indigo-300"
                 }`}
               >
                 <span>{choice}</span>
@@ -445,7 +445,7 @@ export default function StudentLessonRunner({
         </div>
 
         {revealed && q.hint && !mcqCorrectSet.has(picked ?? "") && (
-          <p className="mt-4 rounded-xl bg-amber-50 px-4 py-2 text-xs text-amber-800 dark:bg-amber-950/30 dark:text-amber-200">
+          <p className="mt-4 rounded-xl bg-amber-50 px-4 py-2 text-xs text-amber-800">
             {q.hint}
           </p>
         )}
@@ -482,7 +482,7 @@ function renderDisplayText(text: string): React.ReactNode {
   return parts.map((p, i) => {
     if (p.startsWith("**") && p.endsWith("**")) {
       return (
-        <strong key={i} className="text-indigo-700 dark:text-indigo-300">
+        <strong key={i} className="text-indigo-700">
           {p.slice(2, -2)}
         </strong>
       );

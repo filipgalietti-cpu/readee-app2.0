@@ -98,19 +98,19 @@ export default async function LibraryPage() {
     <div className="mx-auto max-w-6xl px-6 py-10">
       <Link
         href="/classroom"
-        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" />
         Back to classrooms
       </Link>
 
       <div className="mt-3">
-        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
           <Library className="h-4 w-4" />
           Question library
         </div>
         <div className="mt-2 flex flex-wrap items-baseline gap-3">
-          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900">
             {all.length.toLocaleString()} questions
           </h1>
           <Link

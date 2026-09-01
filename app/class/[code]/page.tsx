@@ -58,20 +58,20 @@ export default async function ClassCodePage({
   return (
     <div className="mx-auto min-h-[100dvh] max-w-4xl px-5 py-10">
       <div className="text-center">
-        <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+        <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-600">
           {c.grade_level ? `${c.grade_level} · ` : ""}Class sign-in
         </div>
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900">
           {c.name}
         </h1>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500">
           Tap your name to start.
         </p>
       </div>
 
       {tiles.length === 0 ? (
-        <div className="mt-10 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900/40">
-          <p className="text-sm text-zinc-500 dark:text-slate-400">
+        <div className="mt-10 rounded-2xl border-2 border-dashed border-zinc-200 bg-white p-10 text-center">
+          <p className="text-sm text-zinc-500">
             Your teacher hasn&apos;t added student names yet. Check back soon.
           </p>
         </div>
@@ -99,10 +99,10 @@ export default async function ClassCodePage({
 function CenteredMessage({ title, body }: { title: string; body: string }) {
   return (
     <div className="mx-auto min-h-[100dvh] max-w-md px-5 py-16 text-center">
-      <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900">
         {title}
       </h1>
-      <p className="mt-3 text-sm text-zinc-500 dark:text-slate-400">{body}</p>
+      <p className="mt-3 text-sm text-zinc-500">{body}</p>
     </div>
   );
 }

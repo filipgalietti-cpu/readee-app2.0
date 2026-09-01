@@ -226,7 +226,7 @@ export default function NavAuth() {
   // Avoid flicker
   if (loggedIn === null) {
     return (
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-b border-zinc-200 dark:border-slate-700">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-zinc-200">
         <div className="flex items-center justify-between px-4 sm:px-6 h-[76px]">
           <div className="flex items-center gap-3">
             <img src="/readee-logo.png" alt="Readee" className="w-[140px] sm:w-[160px] h-auto" />
@@ -239,7 +239,7 @@ export default function NavAuth() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-b border-zinc-200 dark:border-slate-700 transition-transform duration-300"
+      className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-zinc-200 transition-transform duration-300"
       style={{ transform: navHidden ? "translateY(-100%)" : undefined }}
     >
       <div className="flex items-center justify-between px-5 sm:px-8 h-[76px]">
@@ -257,7 +257,7 @@ export default function NavAuth() {
                   above it at z-50, so a second tap closes it). */}
               <button
                 onClick={() => useSidebarStore.getState().setMobileOpen(!mobileOpen)}
-                className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center text-zinc-500 hover:text-zinc-700 hover:bg-zinc-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800 transition-colors"
+                className="lg:hidden w-10 h-10 rounded-lg flex items-center justify-center text-zinc-500 hover:text-zinc-700 hover:bg-zinc-100 transition-colors"
                 aria-label={mobileOpen ? "Close menu" : "Menu"}
                 aria-expanded={mobileOpen}
               >

@@ -172,7 +172,7 @@ export default function AssignQuizDialog({
   const triggerCls =
     variant === "primary"
       ? "inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-3 py-1.5 text-xs font-bold text-white transition hover:bg-violet-700"
-      : "inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-violet-300 hover:bg-violet-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300";
+      : "inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 transition hover:border-violet-300 hover:bg-violet-50";
 
   return (
     <>
@@ -191,20 +191,20 @@ export default function AssignQuizDialog({
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={pending ? undefined : close}
           />
-          <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl dark:bg-slate-900">
+          <div className="relative w-full max-w-lg rounded-2xl bg-white p-6 shadow-xl">
             <button
               type="button"
               onClick={close}
-              className="absolute right-3 top-3 rounded-full p-1 text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-slate-800"
+              className="absolute right-3 top-3 rounded-full p-1 text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-700"
               aria-label="Close"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
+            <h3 className="text-lg font-bold text-zinc-900">
               Assign quiz
             </h3>
-            <p className="mt-0.5 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-0.5 text-sm text-zinc-500">
               Pick where <span className="font-semibold">{quizTitle}</span> shows up.
             </p>
 
@@ -222,8 +222,8 @@ export default function AssignQuizDialog({
                       key={c.id}
                       className={`rounded-xl border transition ${
                         sel.selected
-                          ? "border-violet-400 bg-violet-50/40 dark:border-violet-500 dark:bg-violet-950/20"
-                          : "border-zinc-200 bg-white dark:border-slate-700 dark:bg-slate-900"
+                          ? "border-violet-400 bg-violet-50/40"
+                          : "border-zinc-200 bg-white"
                       }`}
                     >
                       <button
@@ -231,7 +231,7 @@ export default function AssignQuizDialog({
                         onClick={() => toggleClassroom(c.id)}
                         className="flex w-full items-center justify-between gap-2 px-3 py-2 text-sm"
                       >
-                        <span className="font-semibold text-zinc-900 dark:text-white">
+                        <span className="font-semibold text-zinc-900">
                           {c.name}
                         </span>
                         <span className="flex items-center gap-2">
@@ -251,7 +251,7 @@ export default function AssignQuizDialog({
                       </button>
 
                       {sel.selected && (
-                        <div className="border-t border-violet-200/60 px-3 py-2 dark:border-violet-900/40">
+                        <div className="border-t border-violet-200/60 px-3 py-2">
                           <div className="flex flex-wrap items-center gap-2 text-xs">
                             <button
                               type="button"
@@ -259,7 +259,7 @@ export default function AssignQuizDialog({
                               className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition ${
                                 sel.mode === "all"
                                   ? "bg-violet-600 text-white"
-                                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-800 dark:text-slate-300"
+                                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
                               }`}
                             >
                               <Users className="h-3 w-3" />
@@ -272,7 +272,7 @@ export default function AssignQuizDialog({
                               className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 font-semibold transition disabled:cursor-not-allowed disabled:opacity-50 ${
                                 sel.mode === "students"
                                   ? "bg-violet-600 text-white"
-                                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-slate-800 dark:text-slate-300"
+                                  : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
                               }`}
                             >
                               <User className="h-3 w-3" />
@@ -304,8 +304,8 @@ export default function AssignQuizDialog({
                                         onClick={() => toggleChild(c.id, kid.id)}
                                         className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-semibold transition ${
                                           isOn
-                                            ? "border-violet-500 bg-violet-100 text-violet-800 dark:border-violet-500 dark:bg-violet-950/40 dark:text-violet-200"
-                                            : "border-zinc-200 bg-white text-zinc-600 hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+                                            ? "border-violet-500 bg-violet-100 text-violet-800"
+                                            : "border-zinc-200 bg-white text-zinc-600 hover:border-violet-300"
                                         }`}
                                       >
                                         {isOn && <Check className="h-2.5 w-2.5" />}
@@ -326,7 +326,7 @@ export default function AssignQuizDialog({
             )}
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <label className="block text-xs font-semibold text-zinc-500">
                 <span className="flex items-center gap-1.5">
                   <CalendarDays className="h-3 w-3" />
                   Due date (optional)
@@ -335,10 +335,10 @@ export default function AssignQuizDialog({
                   type="date"
                   value={dueAt}
                   onChange={(e) => setDueAt(e.target.value)}
-                  className="mt-1 w-full rounded-lg border border-zinc-200 bg-white px-2 py-1.5 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-1 w-full rounded-lg border border-zinc-200 bg-white px-2 py-1.5 text-sm focus:border-indigo-400 focus:outline-none"
                 />
               </label>
-              <label className="block text-xs font-semibold text-zinc-500 dark:text-slate-400">
+              <label className="block text-xs font-semibold text-zinc-500">
                 <span className="flex items-center gap-1.5">
                   <Target className="h-3 w-3" />
                   Pass threshold % (optional)
@@ -351,7 +351,7 @@ export default function AssignQuizDialog({
                   value={passThreshold}
                   onChange={(e) => setPassThreshold(e.target.value)}
                   placeholder="e.g. 70"
-                  className="mt-1 w-full rounded-lg border border-zinc-200 bg-white px-2 py-1.5 text-sm focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="mt-1 w-full rounded-lg border border-zinc-200 bg-white px-2 py-1.5 text-sm focus:border-indigo-400 focus:outline-none"
                 />
               </label>
             </div>
@@ -378,7 +378,7 @@ export default function AssignQuizDialog({
                   type="button"
                   onClick={close}
                   disabled={pending}
-                  className="rounded-full px-3 py-1.5 text-xs font-semibold text-zinc-500 hover:bg-zinc-100 disabled:opacity-50 dark:hover:bg-slate-800"
+                  className="rounded-full px-3 py-1.5 text-xs font-semibold text-zinc-500 hover:bg-zinc-100 disabled:opacity-50"
                 >
                   {doneMsg ? "Done" : "Cancel"}
                 </button>

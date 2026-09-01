@@ -18,10 +18,10 @@ export function StreakFire({ consecutiveCorrect }: { consecutiveCorrect: number 
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.5 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
-        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-orange-50 border border-orange-200 dark:bg-orange-950/30 dark:border-orange-800"
+        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-orange-50 border border-orange-200"
       >
         <span className="text-lg">{fireEmojis}</span>
-        <span className="text-sm font-bold text-orange-700 dark:text-orange-300">
+        <span className="text-sm font-bold text-orange-700">
           {multiplier}x Streak!
         </span>
       </motion.div>

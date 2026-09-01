@@ -210,7 +210,7 @@ export default function FluencyRecorder({
     <div className="space-y-4">
       {/* Kid + passage picker — hidden when fulfilling an assignment */}
       {!isAssigned && (
-      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
         {kids.length > 1 && (
           <div className="mb-4">
             <span className="block text-xs font-semibold text-zinc-500">
@@ -239,18 +239,18 @@ export default function FluencyRecorder({
           <span className="block text-xs font-semibold text-zinc-500">
             Passage
           </span>
-          <div className="mt-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold dark:border-slate-700 dark:bg-slate-950">
+          <div className="mt-2 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-xs font-semibold">
             <button
               type="button"
               onClick={() => setCustomMode(false)}
-              className={`rounded-full px-3 py-1 transition ${!customMode ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300" : "text-zinc-500"}`}
+              className={`rounded-full px-3 py-1 transition ${!customMode ? "bg-white text-indigo-700 shadow-sm" : "text-zinc-500"}`}
             >
               Sample
             </button>
             <button
               type="button"
               onClick={() => setCustomMode(true)}
-              className={`rounded-full px-3 py-1 transition ${customMode ? "bg-white text-indigo-700 shadow-sm dark:bg-slate-800 dark:text-indigo-300" : "text-zinc-500"}`}
+              className={`rounded-full px-3 py-1 transition ${customMode ? "bg-white text-indigo-700 shadow-sm" : "text-zinc-500"}`}
             >
               Custom
             </button>
@@ -259,7 +259,7 @@ export default function FluencyRecorder({
           {!customMode ? (
             <>
               {/* Grade filter */}
-              <div className="mt-3 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-semibold dark:border-slate-700 dark:bg-slate-950">
+              <div className="mt-3 inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5 text-[11px] font-semibold">
                 {(["K", "1st", "2nd", "3rd", "4th"] as const).map((g) => (
                   <button
                     key={g}
@@ -270,7 +270,7 @@ export default function FluencyRecorder({
                     }}
                     className={`rounded-full px-2.5 py-1 transition ${
                       gradeFilter === g
-                        ? "bg-white text-violet-700 shadow-sm dark:bg-slate-800 dark:text-violet-300"
+                        ? "bg-white text-violet-700 shadow-sm"
                         : "text-zinc-500"
                     }`}
                   >
@@ -319,7 +319,7 @@ export default function FluencyRecorder({
               onChange={(e) => setCustomText(e.target.value.slice(0, 2000))}
               rows={5}
               placeholder="Paste any passage here for the child to read aloud."
-              className="mt-3 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="mt-3 w-full rounded-xl border border-zinc-200 bg-white px-3 py-2 text-sm focus:border-violet-400 focus:outline-none"
             />
           )}
         </div>
@@ -328,9 +328,9 @@ export default function FluencyRecorder({
 
       {/* The passage to read */}
       {passage.text && (
-        <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50/40 via-white to-pink-50/40 p-6 shadow-sm dark:border-violet-900/40">
+        <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50/40 via-white to-pink-50/40 p-6 shadow-sm">
           <div className="flex items-start justify-between gap-3">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+            <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
               Read this aloud
             </div>
             {!isAssigned && (
@@ -342,7 +342,7 @@ export default function FluencyRecorder({
             )}
           </div>
           <p
-            className="mt-3 text-[22px] font-medium leading-snug text-zinc-900 dark:text-white"
+            className="mt-3 text-[22px] font-medium leading-snug text-zinc-900"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
@@ -354,7 +354,7 @@ export default function FluencyRecorder({
       )}
 
       {/* Recorder controls */}
-      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
         {!recordedBlob && !recording && (
           <div className="text-center">
             <button
@@ -365,7 +365,7 @@ export default function FluencyRecorder({
             >
               <Mic className="h-10 w-10" />
             </button>
-            <p className="mt-3 text-sm font-bold text-zinc-700 dark:text-slate-300">
+            <p className="mt-3 text-sm font-bold text-zinc-700">
               Tap to start recording
             </p>
             <p className="mt-1 text-xs text-zinc-500">
@@ -394,7 +394,7 @@ export default function FluencyRecorder({
 
         {recordedBlob && !analyzing && !analysis && (
           <div className="space-y-3">
-            <p className="text-sm font-bold text-zinc-900 dark:text-white text-center">
+            <p className="text-sm font-bold text-zinc-900 text-center">
               Recording captured ({mins}:{secs})
             </p>
             {recordedUrl && (
@@ -444,7 +444,7 @@ export default function FluencyRecorder({
       {analysis && (
         <div className="space-y-4">
           {/* Score header */}
-          <div className="rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50/50 to-violet-50/50 p-6 shadow-sm dark:border-emerald-900/40">
+          <div className="rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50/50 to-violet-50/50 p-6 shadow-sm">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <Trophy className="h-8 w-8 text-emerald-600" />
@@ -452,7 +452,7 @@ export default function FluencyRecorder({
                   <div className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
                     Fluency score
                   </div>
-                  <div className="text-3xl font-extrabold text-zinc-900 dark:text-white">
+                  <div className="text-3xl font-extrabold text-zinc-900">
                     {analysis.wcpm.toFixed(0)}
                     <span className="ml-1 text-base font-bold text-zinc-500">
                       WCPM
@@ -466,26 +466,26 @@ export default function FluencyRecorder({
               </div>
             </div>
 
-            <div className="mt-4 rounded-2xl bg-white p-4 dark:bg-slate-900">
+            <div className="mt-4 rounded-2xl bg-white p-4">
               <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
                 For the child
               </div>
-              <p className="mt-1 text-sm text-zinc-800 dark:text-slate-200">
+              <p className="mt-1 text-sm text-zinc-800">
                 {analysis.encouragement}
               </p>
             </div>
-            <div className="mt-2 rounded-2xl bg-white p-4 dark:bg-slate-900">
+            <div className="mt-2 rounded-2xl bg-white p-4">
               <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-600">
                 For the teacher
               </div>
-              <p className="mt-1 text-sm text-zinc-800 dark:text-slate-200">
+              <p className="mt-1 text-sm text-zinc-800">
                 {analysis.teacherSummary}
               </p>
             </div>
           </div>
 
           {/* Word-by-word */}
-          <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm">
             <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-500">
               Word-by-word
             </div>
@@ -521,7 +521,7 @@ export default function FluencyRecorder({
           </div>
 
           {audioPlaybackUrl && (
-            <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
               <div className="text-[11px] font-bold uppercase tracking-widest text-zinc-500">
                 Listen back
               </div>

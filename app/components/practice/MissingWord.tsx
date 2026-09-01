@@ -33,10 +33,10 @@ function gradeFolder(questionId: string): string {
 }
 
 const CHOICE_COLORS = [
-  "bg-blue-100 text-blue-800 border-blue-300 dark:bg-blue-900/60 dark:text-blue-200 dark:border-blue-700",
-  "bg-purple-100 text-purple-800 border-purple-300 dark:bg-purple-900/60 dark:text-purple-200 dark:border-purple-700",
-  "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-900/60 dark:text-amber-200 dark:border-amber-700",
-  "bg-emerald-100 text-emerald-800 border-emerald-300 dark:bg-emerald-900/60 dark:text-emerald-200 dark:border-emerald-700",
+  "bg-blue-100 text-blue-800 border-blue-300",
+  "bg-purple-100 text-purple-800 border-purple-300",
+  "bg-amber-100 text-amber-800 border-amber-300",
+  "bg-emerald-100 text-emerald-800 border-emerald-300",
 ];
 
 export function MissingWord({
@@ -101,16 +101,16 @@ export function MissingWord({
     <div className="flex flex-col gap-6">
       {/* Prompt */}
       <div className="flex items-start gap-2">
-        <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 dark:text-white leading-tight text-center flex-1">
+        <h2 className="font-[family-name:var(--font-baloo)] text-[clamp(21px,2vw,26px)] font-bold text-indigo-950 leading-tight text-center flex-1">
           {prompt}
         </h2>
         {sentenceAudioUrl && (
           <button
             onClick={handleReplay}
-            className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors flex-shrink-0"
+            className="inline-flex items-center justify-center w-8 h-8 rounded-full hover:bg-zinc-200 transition-colors flex-shrink-0"
             aria-label="Replay audio"
           >
-            <svg className="w-5 h-5 text-indigo-600 dark:text-indigo-300" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M11 5L6 9H2v6h4l5 4V5z" />
             </svg>
           </button>
@@ -119,8 +119,8 @@ export function MissingWord({
 
       {/* Hint */}
       {sentenceHint && (
-        <div className="rounded-xl bg-amber-50 border border-amber-200 dark:bg-amber-900/20 dark:border-amber-700 px-4 py-3 text-center">
-          <p className="text-sm font-medium text-amber-800 dark:text-amber-200">
+        <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-center">
+          <p className="text-sm font-medium text-amber-800">
             Hint: {sentenceHint}
           </p>
         </div>
@@ -130,10 +130,10 @@ export function MissingWord({
       <motion.div
         className={`rounded-2xl border-2 p-5 text-center transition-colors ${
           result === "correct" && !assessmentMode
-            ? "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 dark:border-emerald-500"
+            ? "border-emerald-400 bg-emerald-50/50"
             : result === "incorrect" && !assessmentMode
-            ? "border-red-400 bg-red-50/50 dark:bg-red-900/20 dark:border-red-500"
-            : "border-zinc-300 bg-white dark:border-slate-600 dark:bg-slate-800/50"
+            ? "border-red-400 bg-red-50/50"
+            : "border-zinc-300 bg-white"
         }`}
         animate={
           !assessmentMode && result === "incorrect"
@@ -152,7 +152,7 @@ export function MissingWord({
           const endPunct = answerIsPunct ? "" : (trailingPunct || ".");
 
           return (
-            <p className="text-2xl font-bold text-zinc-900 dark:text-white leading-relaxed flex flex-wrap items-center justify-center gap-2">
+            <p className="text-2xl font-bold text-zinc-900 leading-relaxed flex flex-wrap items-center justify-center gap-2">
               {sentenceWords.map((word, idx) => {
                 if (idx === blankIndex) {
                   if (selected) {
@@ -162,10 +162,10 @@ export function MissingWord({
                         key={idx}
                         className={`inline-block px-3 py-1 rounded-lg font-extrabold ${
                           assessmentMode
-                            ? "bg-indigo-100 text-indigo-800 dark:bg-indigo-800 dark:text-indigo-100"
+                            ? "bg-indigo-100 text-indigo-800"
                             : isCorrectChoice
-                            ? "bg-emerald-200 text-emerald-800 dark:bg-emerald-800 dark:text-emerald-100"
-                            : "bg-red-200 text-red-800 dark:bg-red-800 dark:text-red-100"
+                            ? "bg-emerald-200 text-emerald-800"
+                            : "bg-red-200 text-red-800"
                         }`}
                       >
                         {assessmentMode ? selected : isCorrectChoice ? selected : correctWord}
@@ -175,7 +175,7 @@ export function MissingWord({
                   return (
                     <span
                       key={idx}
-                      className="inline-block w-24 h-10 rounded-lg border-2 border-dashed border-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 dark:border-indigo-500"
+                      className="inline-block w-24 h-10 rounded-lg border-2 border-dashed border-indigo-400 bg-indigo-50"
                     />
                   );
                 }
@@ -198,16 +198,16 @@ export function MissingWord({
           if (done) {
             if (assessmentMode) {
               if (isSelected) {
-                style = "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/40 dark:bg-indigo-800 dark:text-indigo-100 dark:border-indigo-500";
+                style = "bg-indigo-200 text-indigo-900 border-indigo-500 ring-2 ring-indigo-400/40";
               } else {
                 style += " opacity-40";
               }
             } else if (isSelected && result === "correct") {
-              style = "bg-emerald-200 text-emerald-900 border-emerald-500 ring-2 ring-emerald-400/40 dark:bg-emerald-800 dark:text-emerald-100 dark:border-emerald-500";
+              style = "bg-emerald-200 text-emerald-900 border-emerald-500 ring-2 ring-emerald-400/40";
             } else if (isSelected && result === "incorrect") {
-              style = "bg-red-200 text-red-900 border-red-500 ring-2 ring-red-400/40 dark:bg-red-800 dark:text-red-100 dark:border-red-500";
+              style = "bg-red-200 text-red-900 border-red-500 ring-2 ring-red-400/40";
             } else if (isCorrectChoice) {
-              style = "bg-emerald-100 text-emerald-800 border-emerald-400 dark:bg-emerald-900/40 dark:text-emerald-200 dark:border-emerald-500";
+              style = "bg-emerald-100 text-emerald-800 border-emerald-400";
             } else {
               style += " opacity-40";
             }

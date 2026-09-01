@@ -402,7 +402,7 @@ export function CelebrationContent({
           {eyebrow}
         </div>
       )}
-      <div className="text-[52px] font-bold leading-[1.2] tracking-tight text-violet-700 dark:text-violet-300">
+      <div className="text-[52px] font-bold leading-[1.2] tracking-tight text-violet-700">
         {title}
       </div>
       {body && (

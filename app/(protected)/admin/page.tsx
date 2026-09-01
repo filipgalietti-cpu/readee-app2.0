@@ -34,13 +34,13 @@ export default async function AdminHomePage() {
   if (rows.length === 0 && !isOwner) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500 dark:bg-slate-800 dark:text-slate-400">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500">
           <ShieldOff className="h-7 w-7" />
         </div>
-        <h1 className="mt-5 text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+        <h1 className="mt-5 text-2xl font-extrabold tracking-tight text-zinc-900">
           No admin scope yet
         </h1>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-500">
           Create a district or a standalone school to get started. You
           become the admin automatically, and can add more admins from
           there.
@@ -89,16 +89,16 @@ export default async function AdminHomePage() {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-10">
-      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-300">
+      <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
         <Users2 className="h-4 w-4" />
         Admin
       </div>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900">
             Your scopes
           </h1>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-zinc-500">
             You have admin access to the places below. Pick one to dive in.
           </p>
         </div>
@@ -113,18 +113,18 @@ export default async function AdminHomePage() {
           <Link
             key={d.id}
             href={`/admin/district/${d.id}`}
-            className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
+            className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-violet-700">
               <Building2 className="h-6 w-6" />
             </div>
             <div className="flex-1">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+              <div className="text-[11px] font-bold uppercase tracking-widest text-violet-700">
                 District
               </div>
-              <div className="mt-0.5 font-extrabold text-zinc-900 dark:text-white">{d.name}</div>
+              <div className="mt-0.5 font-extrabold text-zinc-900">{d.name}</div>
               {d.state && (
-                <div className="text-xs text-zinc-500 dark:text-slate-400">{d.state}</div>
+                <div className="text-xs text-zinc-500">{d.state}</div>
               )}
             </div>
             <ArrowRight className="h-5 w-5 text-zinc-400" />
@@ -134,18 +134,18 @@ export default async function AdminHomePage() {
           <Link
             key={s.id}
             href={`/admin/school/${s.id}`}
-            className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/40"
+            className="flex items-center gap-4 rounded-2xl border border-zinc-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-md"
           >
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-700">
               <School className="h-6 w-6" />
             </div>
             <div className="flex-1">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+              <div className="text-[11px] font-bold uppercase tracking-widest text-indigo-700">
                 School
               </div>
-              <div className="mt-0.5 font-extrabold text-zinc-900 dark:text-white">{s.name}</div>
+              <div className="mt-0.5 font-extrabold text-zinc-900">{s.name}</div>
               {(s.city || s.state) && (
-                <div className="text-xs text-zinc-500 dark:text-slate-400">
+                <div className="text-xs text-zinc-500">
                   {[s.city, s.state].filter(Boolean).join(", ")}
                 </div>
               )}
@@ -162,16 +162,16 @@ export default async function AdminHomePage() {
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
           <Link
             href="/admin/qc"
-            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-indigo-300 dark:border-slate-800 dark:bg-slate-900/40"
+            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-indigo-300"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-700">
               <Users2 className="h-5 w-5" />
             </div>
             <div className="flex-1">
-              <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-700 dark:text-indigo-300">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-indigo-700">
                 Teacher quiz QC
               </div>
-              <div className="text-sm font-bold text-zinc-900 dark:text-white">
+              <div className="text-sm font-bold text-zinc-900">
                 Quiz QC queue
               </div>
             </div>
@@ -179,16 +179,16 @@ export default async function AdminHomePage() {
           </Link>
           <Link
             href="/owner/batch-qc"
-            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-violet-300 dark:border-slate-800 dark:bg-slate-900/40"
+            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-violet-300"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
               <Users2 className="h-5 w-5" />
             </div>
             <div className="flex-1">
-              <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-violet-700">
                 Content factory
               </div>
-              <div className="text-sm font-bold text-zinc-900 dark:text-white">
+              <div className="text-sm font-bold text-zinc-900">
                 Batch QC queue
               </div>
             </div>
@@ -196,16 +196,16 @@ export default async function AdminHomePage() {
           </Link>
           <Link
             href="/owner"
-            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-amber-300 dark:border-slate-800 dark:bg-slate-900/40"
+            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-amber-300"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
               <Users2 className="h-5 w-5" />
             </div>
             <div className="flex-1">
-              <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-amber-700">
                 Owner
               </div>
-              <div className="text-sm font-bold text-zinc-900 dark:text-white">
+              <div className="text-sm font-bold text-zinc-900">
                 All accounts
               </div>
             </div>
@@ -213,16 +213,16 @@ export default async function AdminHomePage() {
           </Link>
           <Link
             href="/owner/content-audit"
-            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-rose-300 dark:border-slate-800 dark:bg-slate-900/40"
+            className="flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-rose-300"
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-100 text-rose-700 dark:bg-rose-950/40 dark:text-rose-300">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-100 text-rose-700">
               <Users2 className="h-5 w-5" />
             </div>
             <div className="flex-1">
-              <div className="text-[10px] font-bold uppercase tracking-widest text-rose-700 dark:text-rose-300">
+              <div className="text-[10px] font-bold uppercase tracking-widest text-rose-700">
                 Audit findings
               </div>
-              <div className="text-sm font-bold text-zinc-900 dark:text-white">
+              <div className="text-sm font-bold text-zinc-900">
                 Content audit (lessons + questions)
               </div>
             </div>

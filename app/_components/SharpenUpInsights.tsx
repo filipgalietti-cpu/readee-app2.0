@@ -80,10 +80,10 @@ export default function SharpenUpInsights({
           Sharpen Up{!isPremium && " · Premium"}
         </span>
       </div>
-      <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+      <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-zinc-900">
         {isPremium ? "Where you've been slipping up" : "Personalized review is a Readee+ feature"}
       </h2>
-      <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+      <p className="mt-1 text-sm text-zinc-500">
         {isPremium
           ? "Standards + question styles you've missed most over the last 30 days. Different from the SRS queue above - that's time-based, this is accuracy-based."
           : "We've been tracking what trips up your child. Unlock Readee+ to surface targeted review based on real accuracy data."}

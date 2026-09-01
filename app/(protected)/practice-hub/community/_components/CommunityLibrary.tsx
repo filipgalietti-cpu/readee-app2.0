@@ -119,13 +119,13 @@ export default function CommunityLibrary({
     <div className="mx-auto max-w-[1200px] px-5 py-8 sm:px-8">
       <Link
         href={`/practice-hub${cq}`}
-        className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-500 transition hover:text-indigo-600 dark:text-slate-400"
+        className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-500 transition hover:text-indigo-600"
       >
         <ArrowLeft className="h-4 w-4" /> Practice Hub
       </Link>
 
       <div className="mt-3 flex flex-wrap items-end justify-between gap-3">
-        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white sm:text-[34px]" style={BALOO}>
+        <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-[34px]" style={BALOO}>
           Community Library
         </h1>
         <Link
@@ -139,7 +139,7 @@ export default function CommunityLibrary({
 
       {/* Spotlight */}
       {cur && (
-        <div className="mt-6 flex flex-col gap-4 rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-violet-50 p-4 dark:border-slate-800 dark:from-slate-900 dark:to-violet-950/20 sm:flex-row sm:gap-5">
+        <div className="mt-6 flex flex-col gap-4 rounded-3xl border border-zinc-200 bg-gradient-to-br from-white to-violet-50 p-4 sm:flex-row sm:gap-5">
           <Link
             href={readerHref(cur)}
             className="relative flex h-[184px] w-full flex-none items-center justify-center overflow-hidden rounded-2xl sm:w-[220px]"
@@ -153,25 +153,25 @@ export default function CommunityLibrary({
           </Link>
           <div className="flex min-w-0 flex-1 flex-col">
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-indigo-700 dark:text-indigo-300">
+              <span className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-indigo-700">
                 Spotlight {spot + 1} of {spotlight.length}
               </span>
             </div>
             <Link href={readerHref(cur)}>
-              <h2 className="mt-1.5 text-2xl font-extrabold leading-tight text-zinc-900 hover:text-indigo-700 dark:text-white" style={BALOO}>
+              <h2 className="mt-1.5 text-2xl font-extrabold leading-tight text-zinc-900 hover:text-indigo-700" style={BALOO}>
                 {cur.title}
               </h2>
             </Link>
-            <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-zinc-500 dark:text-slate-400">
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-zinc-500">
               {cur.display_avatar ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={cur.display_avatar} alt="" className="h-6 w-6 flex-none rounded-full object-cover ring-1 ring-white dark:ring-slate-800" />
+                <img src={cur.display_avatar} alt="" className="h-6 w-6 flex-none rounded-full object-cover ring-1 ring-white" />
               ) : null}
               <span>{byline(cur)}</span>
               <span className="text-zinc-400">· {cur.view_count.toLocaleString()} reads</span>
             </div>
             {cur.blurb && (
-              <p className="mt-2 line-clamp-2 max-w-2xl text-[15px] leading-snug text-zinc-600 dark:text-slate-300">
+              <p className="mt-2 line-clamp-2 max-w-2xl text-[15px] leading-snug text-zinc-600">
                 {cur.blurb}
               </p>
             )}
@@ -203,7 +203,7 @@ export default function CommunityLibrary({
       )}
 
       {/* Tabs */}
-      <div className="mt-8 flex gap-5 overflow-x-auto border-b border-zinc-200 dark:border-slate-800">
+      <div className="mt-8 flex gap-5 overflow-x-auto border-b border-zinc-200">
         {tabs.map((t) => {
           const active = tab === t.id;
           return (
@@ -213,8 +213,8 @@ export default function CommunityLibrary({
               onClick={() => setTab(t.id)}
               className={`whitespace-nowrap border-b-[3px] pb-3 text-base font-extrabold transition ${
                 active
-                  ? "border-indigo-700 text-zinc-900 dark:border-indigo-400 dark:text-white"
-                  : "border-transparent text-zinc-400 hover:text-zinc-600 dark:hover:text-slate-300"
+                  ? "border-indigo-700 text-zinc-900"
+                  : "border-transparent text-zinc-400 hover:text-zinc-600"
               }`}
               style={BALOO}
             >
@@ -226,13 +226,13 @@ export default function CommunityLibrary({
 
       {/* Search + topic chips */}
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        <div className="flex items-center gap-2 rounded-xl border border-zinc-200 px-3 py-2 dark:border-slate-700">
+        <div className="flex items-center gap-2 rounded-xl border border-zinc-200 px-3 py-2">
           <Search className="h-4 w-4 flex-none text-zinc-400" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search stories"
-            className="w-[180px] bg-transparent text-sm text-zinc-900 outline-none placeholder:text-zinc-400 dark:text-white"
+            className="w-[180px] bg-transparent text-sm text-zinc-900 outline-none placeholder:text-zinc-400"
           />
         </div>
         <Chip active={topic === null} onClick={() => setTopic(null)}>All topics</Chip>
@@ -245,12 +245,12 @@ export default function CommunityLibrary({
 
       {/* Grid */}
       {visible.length === 0 ? (
-        <div className="mt-10 rounded-3xl border border-dashed border-zinc-200 py-16 text-center dark:border-slate-800">
+        <div className="mt-10 rounded-3xl border border-dashed border-zinc-200 py-16 text-center">
           <Sparkles className="mx-auto h-9 w-9 text-violet-400" />
-          <p className="mt-3 text-base font-bold text-zinc-700 dark:text-slate-200" style={BALOO}>
+          <p className="mt-3 text-base font-bold text-zinc-700" style={BALOO}>
             No stories here yet
           </p>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+          <p className="mt-1 text-sm text-zinc-500">
             Try another tab or clear your search.
           </p>
         </div>
@@ -263,7 +263,7 @@ export default function CommunityLibrary({
             <Link
               key={it.id}
               href={readerHref(it)}
-              className="group block overflow-hidden rounded-[20px] border border-zinc-200 bg-white transition hover:-translate-y-[3px] hover:border-indigo-200 hover:shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] dark:border-slate-800 dark:bg-slate-900/40"
+              className="group block overflow-hidden rounded-[20px] border border-zinc-200 bg-white transition hover:-translate-y-[3px] hover:border-indigo-200 hover:shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]"
             >
               <div className="flex h-[132px] items-end justify-center" style={{ background: tintFor(it.id) }}>
                 {it.image_url ? (
@@ -274,22 +274,22 @@ export default function CommunityLibrary({
               </div>
               <div className="p-3.5">
                 <div className="flex flex-wrap items-center gap-1.5">
-                  <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-950/40 dark:text-indigo-300">
+                  <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-indigo-700">
                     {it.grade_level}
                   </span>
                   {it.phonics_pattern && (
-                    <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700 dark:bg-violet-950/40 dark:text-violet-300">
+                    <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-violet-700">
                       {it.phonics_pattern}
                     </span>
                   )}
                 </div>
-                <h3 className="mt-2 line-clamp-2 text-[18px] font-extrabold leading-tight text-zinc-900 group-hover:text-indigo-700 dark:text-white" style={BALOO}>
+                <h3 className="mt-2 line-clamp-2 text-[18px] font-extrabold leading-tight text-zinc-900 group-hover:text-indigo-700" style={BALOO}>
                   {it.title}
                 </h3>
-                <div className="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500 dark:text-slate-400">
+                <div className="mt-1.5 flex items-center gap-1.5 text-xs text-zinc-500">
                   {it.display_avatar ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={it.display_avatar} alt="" className="h-5 w-5 flex-none rounded-full object-cover ring-1 ring-white dark:ring-slate-800" />
+                    <img src={it.display_avatar} alt="" className="h-5 w-5 flex-none rounded-full object-cover ring-1 ring-white" />
                   ) : null}
                   <span>{byline(it)}</span>
                 </div>
@@ -297,7 +297,7 @@ export default function CommunityLibrary({
                   <span className="inline-flex items-center gap-1">
                     <Eye className="h-3.5 w-3.5" /> {it.view_count.toLocaleString()} reads
                   </span>
-                  <span className="ml-auto text-indigo-700 dark:text-indigo-300">Read →</span>
+                  <span className="ml-auto text-indigo-700">Read →</span>
                 </div>
               </div>
             </Link>
@@ -310,7 +310,7 @@ export default function CommunityLibrary({
           <button
             type="button"
             onClick={() => setLimit((l) => l + 9)}
-            className="rounded-2xl border border-zinc-200 bg-white px-6 py-3 text-sm font-extrabold text-indigo-700 transition hover:bg-zinc-50 dark:border-slate-700 dark:bg-slate-900/50 dark:text-indigo-300"
+            className="rounded-2xl border border-zinc-200 bg-white px-6 py-3 text-sm font-extrabold text-indigo-700 transition hover:bg-zinc-50"
             style={BALOO}
           >
             Show more stories
@@ -337,7 +337,7 @@ function Chip({
       className={`rounded-full border px-3.5 py-1.5 text-[13px] font-bold transition ${
         active
           ? "border-indigo-700 bg-indigo-700 text-white"
-          : "border-zinc-200 bg-white text-zinc-600 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300"
+          : "border-zinc-200 bg-white text-zinc-600 hover:border-indigo-300"
       }`}
     >
       {children}

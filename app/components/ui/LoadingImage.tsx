@@ -21,7 +21,7 @@ interface LoadingImageProps {
 function DefaultBunnyFallback({ className }: { className?: string }) {
   return (
     <div
-      className={`flex items-center justify-center rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 dark:from-indigo-950/30 dark:via-violet-950/30 dark:to-pink-950/30 ${className ?? ""}`}
+      className={`flex items-center justify-center rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 ${className ?? ""}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

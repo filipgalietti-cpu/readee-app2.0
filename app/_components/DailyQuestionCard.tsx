@@ -109,7 +109,7 @@ export default function DailyQuestionCard({
 
   if (loading) {
     return (
-      <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-5 dark:border-violet-900/40 dark:from-violet-950/30 dark:to-indigo-950/30">
+      <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-5">
         <div className="h-32 animate-pulse rounded-2xl bg-white/60" />
       </div>
     );
@@ -120,20 +120,20 @@ export default function DailyQuestionCard({
   }
 
   return (
-    <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-5 shadow-sm dark:border-violet-900/40 dark:from-violet-950/30 dark:via-slate-900 dark:to-indigo-950/30">
+    <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-5 shadow-sm">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-300">
+          <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
             <Newspaper className="h-3 w-3" />
             Today's Readee
           </div>
-          <h3 className="mt-0.5 text-base font-bold text-zinc-900 dark:text-white">
+          <h3 className="mt-0.5 text-base font-bold text-zinc-900">
             {data.theme}
           </h3>
         </div>
         <Link
           href={`/today/${data.slug}`}
-          className="text-[11px] font-semibold text-violet-700 transition hover:text-violet-900 dark:text-violet-300"
+          className="text-[11px] font-semibold text-violet-700 transition hover:text-violet-900"
         >
           See more
         </Link>
@@ -148,11 +148,11 @@ export default function DailyQuestionCard({
           />
         )}
         <div>
-          <div className="text-sm font-bold text-zinc-900 dark:text-white">
+          <div className="text-sm font-bold text-zinc-900">
             {data.passage_title}
           </div>
           <p
-            className="mt-1 text-[13px] leading-snug text-zinc-700 dark:text-slate-300"
+            className="mt-1 text-[13px] leading-snug text-zinc-700"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
@@ -176,7 +176,7 @@ export default function DailyQuestionCard({
       </div>
 
       <div className="mt-3 flex items-center justify-between">
-        <div className="text-[11px] text-zinc-500 dark:text-slate-400">
+        <div className="text-[11px] text-zinc-500">
           {variant === "teacher"
             ? "Push this to your class as a 5-minute warm-up."
             : "60-second reading boost - try it with your child."}

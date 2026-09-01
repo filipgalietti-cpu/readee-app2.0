@@ -108,7 +108,7 @@ export default function QueueRow({
 
   return (
     <li
-      className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition dark:bg-slate-900 ${
+      className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition ${
         item.status === "rejected"
           ? "border-red-200"
           : item.status === "ready"
@@ -159,7 +159,7 @@ export default function QueueRow({
             )}
             <span className="text-zinc-400">{friendlyDate}</span>
           </div>
-          <div className="mt-1 line-clamp-2 text-sm font-bold text-zinc-900 dark:text-white">
+          <div className="mt-1 line-clamp-2 text-sm font-bold text-zinc-900">
             {item.title ?? "(untitled)"}
           </div>
           {/* Inline reviewer note (system OR human) for at-a-glance */}
@@ -174,7 +174,7 @@ export default function QueueRow({
                   reviewer
                 </span>
               )}
-              <span className="text-zinc-700 dark:text-slate-300">
+              <span className="text-zinc-700">
                 {autoNote ?? humanNote}
               </span>
             </div>
@@ -183,7 +183,7 @@ export default function QueueRow({
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-2 py-1 text-[11px] font-semibold text-zinc-600 hover:border-violet-300 dark:border-slate-700 dark:bg-slate-900"
+          className="inline-flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-2 py-1 text-[11px] font-semibold text-zinc-600 hover:border-violet-300"
         >
           {open ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
           {open ? "Hide" : "Show"}
@@ -191,7 +191,7 @@ export default function QueueRow({
       </div>
 
       {open && (
-        <div className="border-t border-zinc-100 bg-zinc-50 px-3 py-3 text-xs dark:border-slate-800 dark:bg-slate-950">
+        <div className="border-t border-zinc-100 bg-zinc-50 px-3 py-3 text-xs">
           {/* Content preview — the "what we're approving" view */}
           {preview ? (
             <div className="mb-3 space-y-3 rounded-xl bg-white p-3 ring-1 ring-zinc-100">
@@ -282,7 +282,7 @@ export default function QueueRow({
                     <span className="font-mono text-[10px] font-bold text-zinc-600">
                       {c.name}
                     </span>
-                    <span className="ml-2 text-zinc-700 dark:text-slate-300">
+                    <span className="ml-2 text-zinc-700">
                       {c.message}
                     </span>
                   </div>
@@ -292,7 +292,7 @@ export default function QueueRow({
           </ul>
 
           {item.asset_ref?.table && item.asset_ref?.id && (
-            <div className="mt-3 text-[10px] text-zinc-500 dark:text-slate-500">
+            <div className="mt-3 text-[10px] text-zinc-500">
               Asset:{" "}
               <span className="font-mono">
                 {item.asset_ref.table}/{item.asset_ref.id}
@@ -305,13 +305,13 @@ export default function QueueRow({
       {/* Action row — always visible now, not just for needs_review.
           Lets operators force-approve a wrongly-rejected row or pull
           back something that auto-promoted. */}
-      <div className="flex flex-wrap items-center gap-2 border-t border-zinc-100 bg-white px-3 py-2 dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex flex-wrap items-center gap-2 border-t border-zinc-100 bg-white px-3 py-2">
         <input
           type="text"
           value={note}
           onChange={(e) => setNote(e.target.value)}
           placeholder="Optional reviewer note"
-          className="flex-1 rounded-lg border border-zinc-200 px-2 py-1 text-xs focus:border-violet-400 focus:outline-none dark:border-slate-700 dark:bg-slate-950"
+          className="flex-1 rounded-lg border border-zinc-200 px-2 py-1 text-xs focus:border-violet-400 focus:outline-none"
         />
         {item.status !== "ready" && (
           <button

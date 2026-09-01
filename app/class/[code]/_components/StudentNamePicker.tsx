@@ -88,28 +88,28 @@ export default function StudentNamePicker({
   return (
     <div>
       {err && !pinFor && (
-        <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-center text-sm font-semibold text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300">
+        <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-2 text-center text-sm font-semibold text-red-700">
           {err}
         </div>
       )}
       {pinFor && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={() => setPinFor(null)} />
-          <div className="relative w-full max-w-xs rounded-3xl bg-white p-6 text-center shadow-2xl dark:bg-slate-900">
+          <div className="relative w-full max-w-xs rounded-3xl bg-white p-6 text-center shadow-2xl">
             <button
               onClick={() => setPinFor(null)}
-              className="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-slate-800"
+              className="absolute right-3 top-3 inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
               aria-label="Close"
             >
               <X className="h-4 w-4" />
             </button>
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-300">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600">
               <Lock className="h-6 w-6" />
             </div>
-            <h3 className="mt-4 text-lg font-extrabold text-zinc-900 dark:text-white">
+            <h3 className="mt-4 text-lg font-extrabold text-zinc-900">
               Hi, {pinFor.name}!
             </h3>
-            <p className="mt-1 text-sm text-zinc-500 dark:text-slate-400">
+            <p className="mt-1 text-sm text-zinc-500">
               Enter your class PIN.
             </p>
             <input
@@ -125,7 +125,7 @@ export default function StudentNamePicker({
               inputMode="numeric"
               maxLength={4}
               placeholder="••••"
-              className="mt-4 w-full rounded-2xl border-2 border-zinc-200 bg-white px-4 py-3 text-center font-mono text-3xl font-extrabold tracking-[0.4em] text-indigo-700 focus:border-indigo-400 focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-indigo-200"
+              className="mt-4 w-full rounded-2xl border-2 border-zinc-200 bg-white px-4 py-3 text-center font-mono text-3xl font-extrabold tracking-[0.4em] text-indigo-700 focus:border-indigo-400 focus:outline-none"
             />
             {err && <p className="mt-3 text-xs font-semibold text-red-600">{err}</p>}
             <button
@@ -152,7 +152,7 @@ export default function StudentNamePicker({
               type="button"
               onClick={() => pick(s.id)}
               disabled={pending}
-              className={`group flex aspect-square flex-col items-center justify-center rounded-2xl border-2 border-transparent bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-lg disabled:opacity-60 dark:bg-slate-900 ${
+              className={`group flex aspect-square flex-col items-center justify-center rounded-2xl border-2 border-transparent bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-300 hover:shadow-lg disabled:opacity-60 ${
                 isLoading ? "ring-4 ring-indigo-300" : ""
               }`}
             >
@@ -161,7 +161,7 @@ export default function StudentNamePicker({
               >
                 {isLoading ? <Loader2 className="h-6 w-6 animate-spin" /> : initial}
               </div>
-              <div className="mt-3 truncate text-sm font-extrabold text-zinc-900 sm:text-base dark:text-white">
+              <div className="mt-3 truncate text-sm font-extrabold text-zinc-900 sm:text-base">
                 {s.first_name}
               </div>
             </button>
