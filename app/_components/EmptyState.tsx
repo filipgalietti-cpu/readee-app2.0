@@ -107,3 +107,28 @@ export function EmptyState({
     </div>
   );
 }
+
+/**
+ * CoverFallback — what a story tile shows when it has no cover image yet.
+ *
+ * Was a Lucide <Sparkles /> in six places, which meant nothing and was the
+ * same generic mark the app used for premium, for AI output, for "new" and
+ * for celebration. A story without a cover should still look like Readee, so
+ * it gets the reading bunny.
+ *
+ * One component on purpose: six inline copies is how the Sparkle spread in
+ * the first place.
+ */
+export function CoverFallback({ size = 48 }: { size?: number }) {
+  return (
+    <Image
+      src="/images/ui/bunny-reading.png"
+      alt=""
+      width={size}
+      height={size}
+      className="object-contain opacity-90"
+      style={{ width: size, height: size }}
+      priority={false}
+    />
+  );
+}

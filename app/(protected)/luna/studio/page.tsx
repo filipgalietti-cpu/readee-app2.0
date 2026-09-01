@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { ArrowLeft, Sparkles, Lock } from "lucide-react";
+import { ArrowLeft, Lock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { FREE_LIMITS } from "@/lib/plan/limits";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import StoryStudio from "./_components/StoryStudio";
+import { EmptyState } from "@/app/_components/EmptyState";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -38,21 +39,14 @@ export default async function StoryStudioPage() {
           <ArrowLeft className="h-4 w-4" />
           Luna
         </Link>
-        <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100">
-          <Sparkles className="mx-auto h-10 w-10 text-violet-500" />
-          <h1 className="mt-4 text-xl font-extrabold text-zinc-900">
-            Add a child first
-          </h1>
-          <p className="mt-2 text-sm text-zinc-500">
-            Story Studio writes at your child&apos;s reading level. Add a child on
-            the dashboard to get started.
-          </p>
-          <Link
-            href="/dashboard"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-violet-700"
-          >
-            Go to dashboard
-          </Link>
+        <div className="mt-8">
+          <EmptyState
+            mascot="wave-clipboard"
+            size="lg"
+            title="Add a child first"
+            description="Story Studio writes at your child's reading level. Add a child on the dashboard to get started."
+            action={{ href: "/dashboard", label: "Go to dashboard" }}
+          />
         </div>
       </div>
     );

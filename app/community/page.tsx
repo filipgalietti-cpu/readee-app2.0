@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  Sparkles,
   Eye,
   ArrowRight,
   BookOpen,
@@ -13,6 +12,7 @@ import {
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import TrendingCarousel from "./_components/TrendingCarousel";
+import { CoverFallback } from "@/app/_components/EmptyState";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -459,7 +459,7 @@ function FeedPost({ post }: { post: Card }) {
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-white">
-            <Sparkles className="h-12 w-12" />
+            <CoverFallback size={48} />
           </div>
         )}
 

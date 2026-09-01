@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Eye, Sparkles } from "lucide-react";
+import { Eye } from "lucide-react";
+import { CoverFallback } from "@/app/_components/EmptyState";
 
 type Card = {
   id: string;
@@ -88,7 +89,7 @@ export default function TrendingCarousel({ items }: { items: Card[] }) {
                 />
               ) : (
                 <div className="flex aspect-[3/4] w-full items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-white">
-                  <Sparkles className="h-10 w-10" />
+                  <CoverFallback size={40} />
                 </div>
               )}
 

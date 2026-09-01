@@ -9,8 +9,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, PenLine, Search, Sparkles, Eye, ArrowRight } from "lucide-react";
+import { ArrowLeft, PenLine, Search, Eye, ArrowRight } from "lucide-react";
 import TileImage from "./TileImage";
+import { EmptyState, CoverFallback } from "@/app/_components/EmptyState";
 
 type Item = {
   id: string;
@@ -148,7 +149,7 @@ export default function CommunityLibrary({
             {cur.image_url ? (
               <TileImage src={cur.image_url} className="h-full w-full" />
             ) : (
-              <Sparkles className="h-12 w-12 text-violet-400" />
+              <CoverFallback size={48} />
             )}
           </Link>
           <div className="flex min-w-0 flex-1 flex-col">
@@ -245,14 +246,12 @@ export default function CommunityLibrary({
 
       {/* Grid */}
       {visible.length === 0 ? (
-        <div className="mt-10 rounded-3xl border border-dashed border-zinc-200 py-16 text-center">
-          <Sparkles className="mx-auto h-9 w-9 text-violet-400" />
-          <p className="mt-3 text-base font-bold text-zinc-700" style={BALOO}>
-            No stories here yet
-          </p>
-          <p className="mt-1 text-sm text-zinc-500">
-            Try another tab or clear your search.
-          </p>
+        <div className="mt-10">
+          <EmptyState
+            mascot="search"
+            title="No stories here yet"
+            description="Try another tab or clear your search."
+          />
         </div>
       ) : (
         <div
@@ -269,7 +268,7 @@ export default function CommunityLibrary({
                 {it.image_url ? (
                   <TileImage src={it.image_url} className="h-full w-full" />
                 ) : (
-                  <Sparkles className="mb-6 h-10 w-10 text-violet-400" />
+                  <CoverFallback size={40} />
                 )}
               </div>
               <div className="p-3.5">
