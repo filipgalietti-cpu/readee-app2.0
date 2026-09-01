@@ -29,13 +29,15 @@ export async function synthesizeChildGreeting(childId: string, firstName: string
     const wav = pcmToWav(pcm, 24000);
     const admin = supabaseAdmin();
     const path = `greetings/${childId}.wav`;
-    const { error } = await admin.storage.from("audio").upload(path, wav, {
+    // PRIVATE bucket — this is a clip speaking the child's real first name;
+    // it must not be world-readable (COPPA). Store the PATH; the reader signs
+    // a short-TTL URL behind an ownership check via /api/child-audio.
+    const { error } = await admin.storage.from("child-audio").upload(path, wav, {
       contentType: "audio/wav",
       upsert: true,
     });
     if (error) return;
-    const { data } = admin.storage.from("audio").getPublicUrl(path);
-    await admin.from("children").update({ greeting_audio_url: data.publicUrl }).eq("id", childId);
+    await admin.from("children").update({ greeting_audio_url: path }).eq("id", childId);
   } catch {
     // greeting is a garnish; the child record must never suffer for it
   }
