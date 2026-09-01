@@ -6,6 +6,7 @@ import libraryJson from "@/app/data/luna-library.json";
 import phonicsJson from "@/app/data/luna-phonics.json";
 import LunaReader from "./_components/LunaReader";
 import { rankSkills } from "@/lib/orion/learner";
+import { recommendTextLevel } from "@/lib/orion/reading/text-level";
 
 export const dynamic = "force-dynamic";
 
@@ -61,7 +62,28 @@ export default async function LunaPage({
   }
   if (!child) redirect("/dashboard");
 
-  const token = gradeToken(child.grade);
+  // Recent reads power two things: the self-referential growth beat (last
+  // WCPM) and Orion's text-level guard — if pooled accuracy over recent reads
+  // is FRUSTRATION level (<90%, the Clay/F&P band), serve text one grade down.
+  // Confidence is built on success at the right level, not grinding too-hard text.
+  const { data: recentRows } = await supabase
+    .from("fluency_readings")
+    .select("wcpm, words_correct, words_total")
+    .eq("child_id", child.id)
+    .order("created_at", { ascending: false })
+    .limit(3);
+  const recent = (recentRows ?? []) as { wcpm: number | null; words_correct: number | null; words_total: number | null }[];
+  const previousWcpm = recent.find((r) => r.wcpm != null)?.wcpm ?? null;
+  const { stepDown } = recommendTextLevel(
+    recent.map((r) => ({ wordsCorrect: r.words_correct ?? 0, wordsTotal: r.words_total ?? 0 })),
+  );
+
+  const GRADE_ORDER = ["K", "1st", "2nd", "3rd", "4th"];
+  let token = gradeToken(child.grade);
+  if (stepDown) {
+    const gi = GRADE_ORDER.indexOf(token);
+    if (gi > 0) token = GRADE_ORDER[gi - 1]; // easier text AND easier patterns
+  }
   // Library-first (pre-built, pattern-tagged, instant); fall back to the curated
   // fluency passages if the library has none for this grade yet.
   const lib: LunaPassage[] = LIBRARY.filter((p) => p.grade === token)
@@ -92,17 +114,6 @@ export default async function LunaPage({
     const rank = new Map(ranked.map((id, i) => [id, i] as const));
     usable = [...lib].sort((a, b) => (rank.get(a.patternId ?? "") ?? 99) - (rank.get(b.patternId ?? "") ?? 99));
   }
-
-  // The child's own last connected-read WCPM → the self-referential growth beat.
-  const { data: prevRead } = await supabase
-    .from("fluency_readings")
-    .select("wcpm")
-    .eq("child_id", child.id)
-    .not("wcpm", "is", null)
-    .order("created_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  const previousWcpm = (prevRead as { wcpm: number | null } | null)?.wcpm ?? null;
 
   return (
     <div className="mx-auto min-h-[calc(100dvh-72px)] max-w-2xl px-6 pt-8 pb-28">
