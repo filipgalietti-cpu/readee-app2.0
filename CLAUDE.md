@@ -90,11 +90,24 @@ a generic default, not for Readee.
 ### Icons: split by audience (DECIDED Sep 2026)
 | Surface | Use | Why |
 |---|---|---|
-| **Parent** (settings, billing, analytics, account, admin) | **Lucide** | Correct register for a data screen. Keep it. |
-| **UI chrome anywhere** (arrows, chevrons, close, spinners, search) | **Lucide** | A nav arrow is not a reward. Emoji chrome would be absurd. |
-| **Child content + rewards** (carrots, stars, streaks, trophies, books) | **`<FluentIcon />`** | Microsoft Fluent Emoji, Flat. Self-hosted in `public/icons/fluent`. |
+| **All customer chrome + state + parent screens** (arrows, chevrons, close, search, billing, settings, analytics, nav) | **`<Glyph />`** | Fluent System Icons, self-hosted in `public/icons/ui`. Rendered with `mask-image` + `currentColor`, so **semantic colour still works**: grey = locked, emerald = success, white = on a coloured fill. |
+| **Child content + rewards** (carrots, stars, streaks, trophies, books, medals) | **`<FluentIcon />`** | Microsoft Fluent Emoji, Flat. Self-hosted in `public/icons/fluent`. |
 | **Empty states** | **the bunny** (`<EmptyState mascot=...>`) | Nine poses already exist. Never an icon. |
 | **Missing story cover** | **`<CoverFallback />`** | The reading bunny. |
+| **Internal only** (owner, admin, classroom, student) | **Lucide** | Developer dashboards. None of it ships to a family. Not a migration miss - leave them. |
+
+**Lucide is no longer allowed on any customer surface.** Glyph and FluentIcon are
+the same vendor and design language; mixing in Lucide put two studios' drawing
+conventions on one screen and it read as broken.
+
+‼️ **`<Glyph name>` and `icon:` fields carry a NAME STRING, not a component.**
+`<Icon />` where `Icon` is the string `"home"` renders a bare unknown element
+that paints nothing, silently - and `<map>`/`<menu>` are real HTML tags, so they
+do not even show up as unknown. Type icon fields as `GlyphName`, never `any`;
+the `any` is what let this ship. Render with `<Glyph name={Icon} size={16} />`.
+When auditing, ask **"does the imported name appear anywhere in the file body
+outside the import?"** - not "does `<Name` appear". Verify in a browser
+(`scripts/_shot-glyphaudit.ts`), because a missing icon leaves nothing to measure.
 
 - `<FluentIcon name="carrot" size={20} />`. Sizes in use: 11, 14, 16, 18, 20,
   22, 24, 30, 88. Verified legible from 11px up.
@@ -107,6 +120,8 @@ a generic default, not for Readee.
 - Adding an icon: download the Flat SVG from
   github.com/microsoft/fluentui-emoji into `public/icons/fluent/`, then add the
   name to `FLUENT_ICONS` in `app/_components/FluentIcon.tsx`.
+- Adding a Glyph: drop the 24px regular SVG into `public/icons/ui/` as
+  kebab-case.svg and add the name to `UI_ICONS` in `app/_components/Glyph.tsx`.
 - **Why not Lucide on child surfaces:** it is a 2px monochrome stroke set and
   the shadcn/ui default. It reads as a developer dashboard, and thin strokes
   lose their silhouette at the size a child taps. Filled colour survives the
@@ -169,7 +184,7 @@ Keep these; they are not drift.
 - Toasts: shadcn/ui toasts for all success/error feedback. Consistent placement.
 
 ### Design Rules (strictly enforced)
-- **No native emojis** - use Lucide icons or custom images only. Swept and enforced Apr 2026.
+- **No native emojis** - use `<Glyph />` / `<FluentIcon />` or custom images only. Swept and enforced Apr 2026; icon set replaced Sep 2026.
 - **No em-dashes (—) in customer-facing copy** - the #1 AI-slop giveaway. Use a hyphen, comma, or colon, or rephrase. Applies to UI strings/JSX, page metadata/titles, toasts, error messages, customer emails, and marketing copy. Does NOT apply to code comments, AI-prompt strings, internal tooling, or reading-passage content (where em-dashes are legitimate prose). Swept Aug 2026.
 - **Use "child" not "kid" in customer-facing copy** - say child / children (child's / children's), never kid / kids, in all UI strings, placeholders, labels, page metadata, toasts, error messages, and customer emails. Does NOT apply to code identifiers (variables, components, props, filenames), comments, AI-prompt strings, or lesson/passage/question content. Idiomatic brand or badge names ("Comeback Kid", "Big Kid Words") are exempt. Swept Aug 2026.
 - Quotes: `"` for dialogue/passages, `'` only for contractions, `**word**` for emphasis

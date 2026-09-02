@@ -429,7 +429,7 @@ function UpgradeContent() {
                 className="w-full px-5 py-4 flex items-center justify-between text-left"
               >
                 <span className="text-sm font-semibold text-zinc-900">{faq.q}</span>
-                <Glyph name="chevron-down" size={16} className="text-zinc-400 transition-transform duration-200 flex-shrink-0 ${ openFaq === i ?" />
+                <Glyph name="chevron-down" size={16} className={`text-zinc-400 transition-transform duration-200 flex-shrink-0 ${openFaq === i ? "rotate-180" : ""}`} />
               </button>
               {openFaq === i && (
                 <div className="px-5 pb-4">

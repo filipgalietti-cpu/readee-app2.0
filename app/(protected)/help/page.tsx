@@ -95,7 +95,7 @@ function Faq({ q, a }: { q: string; a: React.ReactNode }) {
         className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left"
       >
         <span className="text-sm font-semibold text-zinc-900">{q}</span>
-        <Glyph name="chevron-down" size={16} className="flex-shrink-0 text-zinc-400 transition-transform ${open ?" />
+        <Glyph name="chevron-down" size={16} className={`flex-shrink-0 text-zinc-400 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       <AnimatePresence initial={false}>
         {open && (

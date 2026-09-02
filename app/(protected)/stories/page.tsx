@@ -659,7 +659,7 @@ function StoriesContent() {
                     <Glyph name="star" size={12} /> {group.doneCount} of {group.stories.length} read
                   </span>
                 )}
-                <Glyph name="chevron-down" size={20} className="flex-shrink-0 transition-transform ${isExpanded ?" style={{ color: isExpanded ? "rgba(255,255,255,0.7)" : "#a1a1aa" }} />
+                <Glyph name="chevron-down" size={20} className={`flex-shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} style={{ color: isExpanded ? "rgba(255,255,255,0.7)" : "#a1a1aa" }} />
               </div>
             </button>
 

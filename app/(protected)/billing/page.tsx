@@ -149,7 +149,7 @@ export default function BillingPage() {
               : "border-zinc-200 bg-white"
           }`}>
             <div className="flex items-center gap-2 mb-4">
-              <Glyph name="credit-card" size={20} className="${isPremium ?" />
+              <Glyph name="credit-card" size={20} className={isPremium ? "text-violet-500" : "text-zinc-400"} />
               <h2 className="text-base font-semibold text-zinc-900">Current Plan</h2>
             </div>
 
@@ -261,7 +261,7 @@ export default function BillingPage() {
                       isPremium ? "bg-violet-100" : "bg-zinc-100"
                     }`}
                   >
-                    <Glyph name="check" size={16} className="${ isPremium ?" />
+                    <Glyph name="check" size={16} className={isPremium ? "text-violet-600" : "text-zinc-400"} />
                   </div>
                   <span className="text-sm leading-snug text-zinc-700">
                     {line}

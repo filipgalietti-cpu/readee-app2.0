@@ -423,7 +423,7 @@ function AssessmentResultsContent() {
           className="w-full px-6 py-4 flex items-center justify-between hover:bg-zinc-50 transition-colors"
         >
           <span className="font-bold text-zinc-900">Question Details</span>
-          <Glyph name="chevron-down" size={20} className="text-zinc-400 transition-transform ${showDetails ?" />
+          <Glyph name="chevron-down" size={20} className={`text-zinc-400 transition-transform ${showDetails ? "rotate-180" : ""}`} />
         </button>
 
         {showDetails && (

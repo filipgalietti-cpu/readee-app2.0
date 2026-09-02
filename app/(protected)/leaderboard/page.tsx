@@ -408,7 +408,7 @@ function PodiumColumn({ entry, rank }: { entry: LeaderEntry; rank: number }) {
         </span>
         {entry.streak > 0 && (
           <span className="inline-flex items-center gap-0.5 text-sm font-bold text-amber-600">
-            <Glyph name="flame" size={16} className="${isFirst ?" />
+            <Glyph name="flame" size={16} className={isFirst ? "lb-anim" : ""} style={isFirst ? { animation: "lbFlicker 1.8s ease-in-out infinite" } : undefined} />
             {entry.streak}
           </span>
         )}
