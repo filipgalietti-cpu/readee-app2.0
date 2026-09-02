@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { generatePassage } from "@/lib/ai/readee-ai";
+import { generateLunaQuestions } from "@/lib/ai/luna-questions";
 import { getTargetPattern, gradeToken } from "@/lib/luna/target-pattern";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
@@ -108,6 +109,21 @@ export async function POST(req: Request) {
   });
   if (!res.ok) return NextResponse.json({ error: res.error }, { status: 500 });
 
+  // Comprehension questions for the custom story (best-effort, ~2-4s): one
+  // literal + one inferential MCQ, same strict QC as the library factory. A
+  // generation miss just means the reader skips the quiz — never fail the read.
+  let questions: unknown = null;
+  try {
+    const qres = await generateLunaQuestions({
+      passage: res.passage.passage,
+      gradeLevel: gradeTok,
+      teacherId: user.id,
+    });
+    if (qres.ok) questions = qres.questions;
+  } catch {
+    /* quiz-less story is fine */
+  }
+
   // Keepsake: persist to "My Readings" (best-effort). child_ai_content is the
   // shared parent-content store; admin client per RLS (same as buildParentContent).
   try {
@@ -122,6 +138,7 @@ export async function POST(req: Request) {
         phonics_pattern: patternLabel,
         title: res.passage.title,
         passage_text: res.passage.passage,
+        questions,
       });
   } catch {
     /* keepsake save is best-effort — never fail the read on a save hiccup */
@@ -134,6 +151,7 @@ export async function POST(req: Request) {
       title: res.passage.title,
       text: res.passage.passage,
       patternLabel,
+      questions,
     },
   });
 }
