@@ -44,7 +44,7 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
             width={1200}
             height={404}
             priority
-            className="w-40 sm:w-48 h-auto mx-auto mb-4"
+            className="w-45 h-auto mx-auto mb-4"
           />
           <h1 className="text-2xl sm:text-3xl font-bold text-zinc-900 mb-6 text-center tracking-tight">
             {title}
