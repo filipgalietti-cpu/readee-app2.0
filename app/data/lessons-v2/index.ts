@@ -249,6 +249,8 @@ import { clickAndClunk, clickAndClunkImages } from "./click-and-clunk";
 
 import { readToLearn, readToLearnImages } from "./read-to-learn";
 
+import { matchYourVoice, matchYourVoiceImages } from "./match-your-voice";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -381,4 +383,5 @@ export const LESSONS: Record<string, LessonEntry> = {
   "read-it-out-loud": { lesson: readItOutLoud, images: readItOutLoudImages },
   "click-and-clunk": { lesson: clickAndClunk, images: clickAndClunkImages },
   "read-to-learn": { lesson: readToLearn, images: readToLearnImages },
+  "match-your-voice": { lesson: matchYourVoice, images: matchYourVoiceImages },
 };

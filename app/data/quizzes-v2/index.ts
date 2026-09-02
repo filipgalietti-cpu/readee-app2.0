@@ -136,6 +136,7 @@ import { letterPerfectQuiz } from "./letter-perfect-quiz";
 import { readItOutLoudQuiz } from "./read-it-out-loud-quiz";
 import { clickAndClunkQuiz } from "./click-and-clunk-quiz";
 import { readToLearnQuiz } from "./read-to-learn-quiz";
+import { matchYourVoiceQuiz } from "./match-your-voice-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -272,4 +273,5 @@ export const QUIZZES: Record<string, QuizDef> = {
   "read-it-out-loud-quiz": readItOutLoudQuiz,
   "click-and-clunk-quiz": clickAndClunkQuiz,
   "read-to-learn-quiz": readToLearnQuiz,
+  "match-your-voice-quiz": matchYourVoiceQuiz,
 };
