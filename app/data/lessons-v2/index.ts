@@ -253,6 +253,8 @@ import { matchYourVoice, matchYourVoiceImages } from "./match-your-voice";
 
 import { meaningMachines, meaningMachinesImages } from "./meaning-machines";
 
+import { longWordTrains, longWordTrainsImages } from "./long-word-trains";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -387,4 +389,5 @@ export const LESSONS: Record<string, LessonEntry> = {
   "read-to-learn": { lesson: readToLearn, images: readToLearnImages },
   "match-your-voice": { lesson: matchYourVoice, images: matchYourVoiceImages },
   "meaning-machines": { lesson: meaningMachines, images: meaningMachinesImages },
+  "long-word-trains": { lesson: longWordTrains, images: longWordTrainsImages },
 };

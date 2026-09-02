@@ -140,6 +140,7 @@ import { clickAndClunkQuiz } from "./click-and-clunk-quiz";
 import { readToLearnQuiz } from "./read-to-learn-quiz";
 import { matchYourVoiceQuiz } from "./match-your-voice-quiz";
 import { meaningMachinesQuiz } from "./meaning-machines-quiz";
+import { longWordTrainsQuiz } from "./long-word-trains-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -280,4 +281,5 @@ export const QUIZZES: Record<string, QuizDef> = {
   "read-to-learn-quiz": readToLearnQuiz,
   "match-your-voice-quiz": matchYourVoiceQuiz,
   "meaning-machines-quiz": meaningMachinesQuiz,
+  "long-word-trains-quiz": longWordTrainsQuiz,
 };

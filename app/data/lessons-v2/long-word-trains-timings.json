@@ -1,0 +1,4772 @@
+{
+ "apply-choose-chunk-count": {
+  "duration": 22.42,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "count",
+    "start": 0.54,
+    "end": 1.24
+   },
+   {
+    "word": "the",
+    "start": 1.24,
+    "end": 1.44
+   },
+   {
+    "word": "cars",
+    "start": 1.44,
+    "end": 1.82
+   },
+   {
+    "word": "on",
+    "start": 1.82,
+    "end": 2.28
+   },
+   {
+    "word": "this",
+    "start": 2.28,
+    "end": 2.54
+   },
+   {
+    "word": "train.",
+    "start": 2.54,
+    "end": 3.0
+   },
+   {
+    "word": "The",
+    "start": 3.8,
+    "end": 4.06
+   },
+   {
+    "word": "long",
+    "start": 4.06,
+    "end": 4.48
+   },
+   {
+    "word": "word",
+    "start": 4.48,
+    "end": 5.0
+   },
+   {
+    "word": "on",
+    "start": 5.0,
+    "end": 5.36
+   },
+   {
+    "word": "your",
+    "start": 5.36,
+    "end": 5.54
+   },
+   {
+    "word": "screen",
+    "start": 5.54,
+    "end": 6.18
+   },
+   {
+    "word": "names",
+    "start": 6.18,
+    "end": 6.84
+   },
+   {
+    "word": "everything",
+    "start": 6.84,
+    "end": 7.96
+   },
+   {
+    "word": "school",
+    "start": 7.96,
+    "end": 8.68
+   },
+   {
+    "word": "teaches",
+    "start": 8.68,
+    "end": 9.52
+   },
+   {
+    "word": "you.",
+    "start": 9.52,
+    "end": 10.12
+   },
+   {
+    "word": "Read",
+    "start": 10.98,
+    "end": 11.26
+   },
+   {
+    "word": "it",
+    "start": 11.26,
+    "end": 11.62
+   },
+   {
+    "word": "car",
+    "start": 11.62,
+    "end": 12.06
+   },
+   {
+    "word": "by",
+    "start": 12.06,
+    "end": 12.4
+   },
+   {
+    "word": "car,",
+    "start": 12.4,
+    "end": 13.04
+   },
+   {
+    "word": "count",
+    "start": 13.22,
+    "end": 14.26
+   },
+   {
+    "word": "every",
+    "start": 14.26,
+    "end": 15.1
+   },
+   {
+    "word": "chunk",
+    "start": 15.1,
+    "end": 15.6
+   },
+   {
+    "word": "including",
+    "start": 15.6,
+    "end": 16.74
+   },
+   {
+    "word": "the",
+    "start": 16.74,
+    "end": 17.44
+   },
+   {
+    "word": "caboose,",
+    "start": 17.44,
+    "end": 18.14
+   },
+   {
+    "word": "and",
+    "start": 18.66,
+    "end": 19.04
+   },
+   {
+    "word": "tap",
+    "start": 19.04,
+    "end": 19.48
+   },
+   {
+    "word": "the",
+    "start": 19.48,
+    "end": 20.02
+   },
+   {
+    "word": "number",
+    "start": 20.02,
+    "end": 20.54
+   },
+   {
+    "word": "of",
+    "start": 20.54,
+    "end": 20.9
+   },
+   {
+    "word": "chunks",
+    "start": 20.9,
+    "end": 21.34
+   },
+   {
+    "word": "you",
+    "start": 21.34,
+    "end": 22.04
+   },
+   {
+    "word": "read.",
+    "start": 22.04,
+    "end": 22.42
+   }
+  ]
+ },
+ "apply-choose-imagination": {
+  "duration": 25.96,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "is",
+    "start": 0.48,
+    "end": 0.78
+   },
+   {
+    "word": "a",
+    "start": 0.78,
+    "end": 0.9
+   },
+   {
+    "word": "giant",
+    "start": 0.9,
+    "end": 1.4
+   },
+   {
+    "word": "train",
+    "start": 1.4,
+    "end": 1.84
+   },
+   {
+    "word": "nobody",
+    "start": 1.84,
+    "end": 2.68
+   },
+   {
+    "word": "has",
+    "start": 2.68,
+    "end": 3.02
+   },
+   {
+    "word": "read",
+    "start": 3.02,
+    "end": 3.26
+   },
+   {
+    "word": "for",
+    "start": 3.26,
+    "end": 3.52
+   },
+   {
+    "word": "you.",
+    "start": 3.52,
+    "end": 4.02
+   },
+   {
+    "word": "Deja",
+    "start": 4.84,
+    "end": 5.2
+   },
+   {
+    "word": "closed",
+    "start": 5.2,
+    "end": 5.84
+   },
+   {
+    "word": "her",
+    "start": 5.84,
+    "end": 6.12
+   },
+   {
+    "word": "eyes",
+    "start": 6.12,
+    "end": 6.58
+   },
+   {
+    "word": "and",
+    "start": 6.58,
+    "end": 7.0
+   },
+   {
+    "word": "pictured",
+    "start": 7.0,
+    "end": 7.46
+   },
+   {
+    "word": "a",
+    "start": 7.46,
+    "end": 7.8
+   },
+   {
+    "word": "castle",
+    "start": 7.8,
+    "end": 8.34
+   },
+   {
+    "word": "made",
+    "start": 8.34,
+    "end": 8.76
+   },
+   {
+    "word": "of",
+    "start": 8.76,
+    "end": 9.12
+   },
+   {
+    "word": "clouds",
+    "start": 9.12,
+    "end": 9.64
+   },
+   {
+    "word": "using",
+    "start": 9.64,
+    "end": 10.6
+   },
+   {
+    "word": "nothing",
+    "start": 10.6,
+    "end": 11.22
+   },
+   {
+    "word": "but",
+    "start": 11.22,
+    "end": 11.62
+   },
+   {
+    "word": "her",
+    "start": 11.62,
+    "end": 11.98
+   },
+   {
+    "word": "imagination.",
+    "start": 11.98,
+    "end": 12.94
+   },
+   {
+    "word": "One",
+    "start": 13.78,
+    "end": 14.24
+   },
+   {
+    "word": "of",
+    "start": 14.24,
+    "end": 14.36
+   },
+   {
+    "word": "these",
+    "start": 14.36,
+    "end": 14.56
+   },
+   {
+    "word": "words",
+    "start": 14.56,
+    "end": 14.9
+   },
+   {
+    "word": "says,",
+    "start": 14.9,
+    "end": 15.32
+   },
+   {
+    "word": "imagination",
+    "start": 15.96,
+    "end": 16.4
+   },
+   {
+    "word": "and",
+    "start": 16.4,
+    "end": 17.36
+   },
+   {
+    "word": "the",
+    "start": 17.36,
+    "end": 17.5
+   },
+   {
+    "word": "others",
+    "start": 17.5,
+    "end": 17.94
+   },
+   {
+    "word": "are",
+    "start": 17.94,
+    "end": 18.24
+   },
+   {
+    "word": "close",
+    "start": 18.24,
+    "end": 18.58
+   },
+   {
+    "word": "enough",
+    "start": 18.58,
+    "end": 18.98
+   },
+   {
+    "word": "to",
+    "start": 18.98,
+    "end": 19.28
+   },
+   {
+    "word": "fool",
+    "start": 19.28,
+    "end": 19.68
+   },
+   {
+    "word": "a",
+    "start": 19.68,
+    "end": 20.02
+   },
+   {
+    "word": "hasty",
+    "start": 20.02,
+    "end": 20.54
+   },
+   {
+    "word": "reader.",
+    "start": 20.54,
+    "end": 20.96
+   },
+   {
+    "word": "Read",
+    "start": 21.66,
+    "end": 21.96
+   },
+   {
+    "word": "every",
+    "start": 21.96,
+    "end": 22.42
+   },
+   {
+    "word": "car,",
+    "start": 22.42,
+    "end": 22.8
+   },
+   {
+    "word": "then",
+    "start": 23.2,
+    "end": 23.5
+   },
+   {
+    "word": "tap",
+    "start": 23.5,
+    "end": 23.8
+   },
+   {
+    "word": "the",
+    "start": 23.8,
+    "end": 24.08
+   },
+   {
+    "word": "word",
+    "start": 24.08,
+    "end": 24.34
+   },
+   {
+    "word": "that",
+    "start": 24.34,
+    "end": 24.66
+   },
+   {
+    "word": "says,",
+    "start": 24.66,
+    "end": 25.1
+   },
+   {
+    "word": "imagination.",
+    "start": 25.36,
+    "end": 25.96
+   }
+  ]
+ },
+ "apply-speak-caution-sign": {
+  "duration": 15.34,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "is",
+    "start": 0.5,
+    "end": 0.88
+   },
+   {
+    "word": "a",
+    "start": 0.88,
+    "end": 1.02
+   },
+   {
+    "word": "warning,",
+    "start": 1.02,
+    "end": 1.6
+   },
+   {
+    "word": "a",
+    "start": 2.02,
+    "end": 2.1
+   },
+   {
+    "word": "Ranger",
+    "start": 2.1,
+    "end": 2.6
+   },
+   {
+    "word": "might",
+    "start": 2.6,
+    "end": 2.88
+   },
+   {
+    "word": "post,",
+    "start": 2.88,
+    "end": 3.42
+   },
+   {
+    "word": "and",
+    "start": 3.76,
+    "end": 4.04
+   },
+   {
+    "word": "it",
+    "start": 4.04,
+    "end": 4.18
+   },
+   {
+    "word": "holds",
+    "start": 4.18,
+    "end": 4.6
+   },
+   {
+    "word": "three",
+    "start": 4.6,
+    "end": 5.44
+   },
+   {
+    "word": "long",
+    "start": 5.44,
+    "end": 6.32
+   },
+   {
+    "word": "trains.",
+    "start": 6.32,
+    "end": 7.24
+   },
+   {
+    "word": "Read",
+    "start": 8.16,
+    "end": 8.42
+   },
+   {
+    "word": "the",
+    "start": 8.42,
+    "end": 8.62
+   },
+   {
+    "word": "sentence",
+    "start": 8.62,
+    "end": 8.96
+   },
+   {
+    "word": "out",
+    "start": 8.96,
+    "end": 9.34
+   },
+   {
+    "word": "loud,",
+    "start": 9.34,
+    "end": 9.76
+   },
+   {
+    "word": "car",
+    "start": 10.36,
+    "end": 10.56
+   },
+   {
+    "word": "by",
+    "start": 10.56,
+    "end": 10.76
+   },
+   {
+    "word": "car",
+    "start": 10.76,
+    "end": 11.12
+   },
+   {
+    "word": "if",
+    "start": 11.12,
+    "end": 11.64
+   },
+   {
+    "word": "you",
+    "start": 11.64,
+    "end": 11.8
+   },
+   {
+    "word": "need",
+    "start": 11.8,
+    "end": 12.0
+   },
+   {
+    "word": "to,",
+    "start": 12.0,
+    "end": 12.3
+   },
+   {
+    "word": "then",
+    "start": 12.84,
+    "end": 13.2
+   },
+   {
+    "word": "smooth",
+    "start": 13.2,
+    "end": 13.82
+   },
+   {
+    "word": "and",
+    "start": 13.82,
+    "end": 14.64
+   },
+   {
+    "word": "strong.",
+    "start": 14.64,
+    "end": 15.34
+   }
+  ]
+ },
+ "apply-speak-park-passage": {
+  "duration": 14.6,
+  "words": [
+   {
+    "word": "This",
+    "start": 0.0,
+    "end": 0.54
+   },
+   {
+    "word": "little",
+    "start": 0.54,
+    "end": 1.08
+   },
+   {
+    "word": "passage",
+    "start": 1.08,
+    "end": 1.56
+   },
+   {
+    "word": "is",
+    "start": 1.56,
+    "end": 1.98
+   },
+   {
+    "word": "packed",
+    "start": 1.98,
+    "end": 2.38
+   },
+   {
+    "word": "with",
+    "start": 2.38,
+    "end": 2.74
+   },
+   {
+    "word": "long",
+    "start": 2.74,
+    "end": 3.22
+   },
+   {
+    "word": "trains.",
+    "start": 3.22,
+    "end": 4.3
+   },
+   {
+    "word": "Read",
+    "start": 4.6,
+    "end": 5.42
+   },
+   {
+    "word": "both",
+    "start": 5.42,
+    "end": 5.94
+   },
+   {
+    "word": "sentences",
+    "start": 5.94,
+    "end": 6.68
+   },
+   {
+    "word": "out",
+    "start": 6.68,
+    "end": 7.26
+   },
+   {
+    "word": "loud",
+    "start": 7.26,
+    "end": 7.7
+   },
+   {
+    "word": "with",
+    "start": 7.7,
+    "end": 8.28
+   },
+   {
+    "word": "a",
+    "start": 8.28,
+    "end": 8.46
+   },
+   {
+    "word": "clear,",
+    "start": 8.46,
+    "end": 8.96
+   },
+   {
+    "word": "steady",
+    "start": 9.34,
+    "end": 9.82
+   },
+   {
+    "word": "voice,",
+    "start": 9.82,
+    "end": 10.42
+   },
+   {
+    "word": "and",
+    "start": 10.86,
+    "end": 11.02
+   },
+   {
+    "word": "let",
+    "start": 11.02,
+    "end": 11.38
+   },
+   {
+    "word": "every",
+    "start": 11.38,
+    "end": 12.2
+   },
+   {
+    "word": "caboose",
+    "start": 12.2,
+    "end": 13.08
+   },
+   {
+    "word": "do",
+    "start": 13.08,
+    "end": 13.58
+   },
+   {
+    "word": "its",
+    "start": 13.58,
+    "end": 14.08
+   },
+   {
+    "word": "job.",
+    "start": 14.08,
+    "end": 14.6
+   }
+  ]
+ },
+ "celebrate-word-engineer": {
+  "duration": 47.1,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "ran",
+    "start": 0.56,
+    "end": 1.08
+   },
+   {
+    "word": "the",
+    "start": 1.08,
+    "end": 1.54
+   },
+   {
+    "word": "whole",
+    "start": 1.54,
+    "end": 2.06
+   },
+   {
+    "word": "rail",
+    "start": 2.06,
+    "end": 2.58
+   },
+   {
+    "word": "yard",
+    "start": 2.58,
+    "end": 2.98
+   },
+   {
+    "word": "today.",
+    "start": 2.98,
+    "end": 3.46
+   },
+   {
+    "word": "The",
+    "start": 4.48,
+    "end": 4.56
+   },
+   {
+    "word": "shun",
+    "start": 4.56,
+    "end": 5.1
+   },
+   {
+    "word": "ending",
+    "start": 5.1,
+    "end": 5.72
+   },
+   {
+    "word": "is",
+    "start": 5.72,
+    "end": 6.2
+   },
+   {
+    "word": "spelled",
+    "start": 6.2,
+    "end": 6.68
+   },
+   {
+    "word": "T",
+    "start": 6.68,
+    "end": 7.28
+   },
+   {
+    "word": "-I",
+    "start": 7.28,
+    "end": 7.96
+   },
+   {
+    "word": "-O",
+    "start": 7.96,
+    "end": 8.48
+   },
+   {
+    "word": "-N.",
+    "start": 8.48,
+    "end": 9.0
+   },
+   {
+    "word": "And",
+    "start": 9.5,
+    "end": 9.94
+   },
+   {
+    "word": "the",
+    "start": 9.94,
+    "end": 10.12
+   },
+   {
+    "word": "churr",
+    "start": 10.12,
+    "end": 10.82
+   },
+   {
+    "word": "ending",
+    "start": 10.82,
+    "end": 11.18
+   },
+   {
+    "word": "is",
+    "start": 11.18,
+    "end": 11.8
+   },
+   {
+    "word": "spelled",
+    "start": 11.8,
+    "end": 12.3
+   },
+   {
+    "word": "T",
+    "start": 12.3,
+    "end": 12.9
+   },
+   {
+    "word": "-U",
+    "start": 12.9,
+    "end": 13.58
+   },
+   {
+    "word": "-R",
+    "start": 13.58,
+    "end": 14.12
+   },
+   {
+    "word": "-E.",
+    "start": 14.12,
+    "end": 14.52
+   },
+   {
+    "word": "The",
+    "start": 15.38,
+    "end": 15.8
+   },
+   {
+    "word": "us",
+    "start": 15.8,
+    "end": 16.14
+   },
+   {
+    "word": "ending",
+    "start": 16.14,
+    "end": 16.94
+   },
+   {
+    "word": "is",
+    "start": 16.94,
+    "end": 17.46
+   },
+   {
+    "word": "spelled",
+    "start": 17.46,
+    "end": 17.98
+   },
+   {
+    "word": "O",
+    "start": 17.98,
+    "end": 18.44
+   },
+   {
+    "word": "-U",
+    "start": 18.44,
+    "end": 18.82
+   },
+   {
+    "word": "-S.",
+    "start": 18.82,
+    "end": 19.32
+   },
+   {
+    "word": "And",
+    "start": 19.9,
+    "end": 20.3
+   },
+   {
+    "word": "the",
+    "start": 20.3,
+    "end": 20.58
+   },
+   {
+    "word": "abl",
+    "start": 20.58,
+    "end": 21.24
+   },
+   {
+    "word": "ending",
+    "start": 21.24,
+    "end": 21.8
+   },
+   {
+    "word": "is",
+    "start": 21.8,
+    "end": 22.36
+   },
+   {
+    "word": "spelled",
+    "start": 22.36,
+    "end": 22.86
+   },
+   {
+    "word": "A",
+    "start": 22.86,
+    "end": 23.4
+   },
+   {
+    "word": "-B",
+    "start": 23.4,
+    "end": 23.78
+   },
+   {
+    "word": "-L",
+    "start": 23.78,
+    "end": 24.26
+   },
+   {
+    "word": "-E",
+    "start": 24.26,
+    "end": 24.56
+   },
+   {
+    "word": "or",
+    "start": 24.56,
+    "end": 25.46
+   },
+   {
+    "word": "I",
+    "start": 25.46,
+    "end": 26.08
+   },
+   {
+    "word": "-B",
+    "start": 26.08,
+    "end": 26.4
+   },
+   {
+    "word": "-L",
+    "start": 26.4,
+    "end": 26.84
+   },
+   {
+    "word": "-E.",
+    "start": 26.84,
+    "end": 27.16
+   },
+   {
+    "word": "Same",
+    "start": 27.16,
+    "end": 28.22
+   },
+   {
+    "word": "caboose,",
+    "start": 28.22,
+    "end": 29.1
+   },
+   {
+    "word": "same",
+    "start": 29.42,
+    "end": 29.86
+   },
+   {
+    "word": "sound,",
+    "start": 29.86,
+    "end": 30.58
+   },
+   {
+    "word": "every",
+    "start": 30.82,
+    "end": 31.46
+   },
+   {
+    "word": "single",
+    "start": 31.46,
+    "end": 32.0
+   },
+   {
+    "word": "time.",
+    "start": 32.0,
+    "end": 32.64
+   },
+   {
+    "word": "When",
+    "start": 33.06,
+    "end": 33.6
+   },
+   {
+    "word": "a",
+    "start": 33.6,
+    "end": 33.76
+   },
+   {
+    "word": "giant",
+    "start": 33.76,
+    "end": 34.24
+   },
+   {
+    "word": "word",
+    "start": 34.24,
+    "end": 34.7
+   },
+   {
+    "word": "rolls",
+    "start": 34.7,
+    "end": 35.06
+   },
+   {
+    "word": "into",
+    "start": 35.06,
+    "end": 35.48
+   },
+   {
+    "word": "your",
+    "start": 35.48,
+    "end": 35.64
+   },
+   {
+    "word": "book,",
+    "start": 35.64,
+    "end": 35.96
+   },
+   {
+    "word": "you",
+    "start": 36.28,
+    "end": 36.58
+   },
+   {
+    "word": "will",
+    "start": 36.58,
+    "end": 36.74
+   },
+   {
+    "word": "not",
+    "start": 36.74,
+    "end": 37.06
+   },
+   {
+    "word": "skip",
+    "start": 37.06,
+    "end": 37.54
+   },
+   {
+    "word": "it",
+    "start": 37.54,
+    "end": 37.92
+   },
+   {
+    "word": "and",
+    "start": 37.92,
+    "end": 38.36
+   },
+   {
+    "word": "you",
+    "start": 38.36,
+    "end": 38.5
+   },
+   {
+    "word": "will",
+    "start": 38.5,
+    "end": 38.66
+   },
+   {
+    "word": "not",
+    "start": 38.66,
+    "end": 39.02
+   },
+   {
+    "word": "swallow",
+    "start": 39.02,
+    "end": 39.56
+   },
+   {
+    "word": "it",
+    "start": 39.56,
+    "end": 39.84
+   },
+   {
+    "word": "whole.",
+    "start": 39.84,
+    "end": 40.08
+   },
+   {
+    "word": "You",
+    "start": 40.76,
+    "end": 41.0
+   },
+   {
+    "word": "will",
+    "start": 41.0,
+    "end": 41.14
+   },
+   {
+    "word": "read",
+    "start": 41.14,
+    "end": 41.42
+   },
+   {
+    "word": "it",
+    "start": 41.42,
+    "end": 41.62
+   },
+   {
+    "word": "car",
+    "start": 41.62,
+    "end": 42.16
+   },
+   {
+    "word": "by",
+    "start": 42.16,
+    "end": 42.7
+   },
+   {
+    "word": "car,",
+    "start": 42.7,
+    "end": 43.32
+   },
+   {
+    "word": "snap",
+    "start": 43.84,
+    "end": 44.22
+   },
+   {
+    "word": "it",
+    "start": 44.22,
+    "end": 44.46
+   },
+   {
+    "word": "together",
+    "start": 44.46,
+    "end": 44.9
+   },
+   {
+    "word": "and",
+    "start": 44.9,
+    "end": 45.52
+   },
+   {
+    "word": "roll",
+    "start": 45.52,
+    "end": 45.98
+   },
+   {
+    "word": "right",
+    "start": 45.98,
+    "end": 46.5
+   },
+   {
+    "word": "on.",
+    "start": 46.5,
+    "end": 47.1
+   }
+  ]
+ },
+ "challenge-speak-plan": {
+  "duration": 16.52,
+  "words": [
+   {
+    "word": "This",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "is",
+    "start": 0.48,
+    "end": 0.88
+   },
+   {
+    "word": "your",
+    "start": 0.88,
+    "end": 1.18
+   },
+   {
+    "word": "last",
+    "start": 1.18,
+    "end": 1.62
+   },
+   {
+    "word": "stop",
+    "start": 1.62,
+    "end": 2.3
+   },
+   {
+    "word": "engineer.",
+    "start": 2.3,
+    "end": 2.94
+   },
+   {
+    "word": "Tomorrow,",
+    "start": 4.04,
+    "end": 4.56
+   },
+   {
+    "word": "a",
+    "start": 4.94,
+    "end": 5.02
+   },
+   {
+    "word": "giant",
+    "start": 5.02,
+    "end": 5.64
+   },
+   {
+    "word": "word",
+    "start": 5.64,
+    "end": 6.1
+   },
+   {
+    "word": "you",
+    "start": 6.1,
+    "end": 6.42
+   },
+   {
+    "word": "have",
+    "start": 6.42,
+    "end": 6.64
+   },
+   {
+    "word": "never",
+    "start": 6.64,
+    "end": 7.14
+   },
+   {
+    "word": "seen",
+    "start": 7.14,
+    "end": 7.76
+   },
+   {
+    "word": "will",
+    "start": 7.76,
+    "end": 8.34
+   },
+   {
+    "word": "roll",
+    "start": 8.34,
+    "end": 8.76
+   },
+   {
+    "word": "into",
+    "start": 8.76,
+    "end": 9.16
+   },
+   {
+    "word": "one",
+    "start": 9.16,
+    "end": 9.42
+   },
+   {
+    "word": "of",
+    "start": 9.42,
+    "end": 9.56
+   },
+   {
+    "word": "your",
+    "start": 9.56,
+    "end": 9.68
+   },
+   {
+    "word": "books.",
+    "start": 9.68,
+    "end": 10.14
+   },
+   {
+    "word": "Tap",
+    "start": 11.06,
+    "end": 11.36
+   },
+   {
+    "word": "the",
+    "start": 11.36,
+    "end": 11.64
+   },
+   {
+    "word": "mic",
+    "start": 11.64,
+    "end": 11.92
+   },
+   {
+    "word": "and",
+    "start": 11.92,
+    "end": 12.52
+   },
+   {
+    "word": "tell",
+    "start": 12.52,
+    "end": 12.82
+   },
+   {
+    "word": "me",
+    "start": 12.82,
+    "end": 13.04
+   },
+   {
+    "word": "your",
+    "start": 13.04,
+    "end": 13.26
+   },
+   {
+    "word": "plan",
+    "start": 13.26,
+    "end": 13.72
+   },
+   {
+    "word": "for",
+    "start": 13.72,
+    "end": 14.0
+   },
+   {
+    "word": "reading",
+    "start": 14.0,
+    "end": 14.36
+   },
+   {
+    "word": "it.",
+    "start": 14.36,
+    "end": 14.68
+   },
+   {
+    "word": "Step",
+    "start": 15.04,
+    "end": 15.44
+   },
+   {
+    "word": "by",
+    "start": 15.44,
+    "end": 16.02
+   },
+   {
+    "word": "step.",
+    "start": 16.02,
+    "end": 16.52
+   }
+  ]
+ },
+ "complete": {
+  "duration": 26.28,
+  "words": [
+   {
+    "word": "Long",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "words",
+    "start": 0.5,
+    "end": 1.0
+   },
+   {
+    "word": "cannot",
+    "start": 1.0,
+    "end": 1.48
+   },
+   {
+    "word": "slow",
+    "start": 1.48,
+    "end": 2.04
+   },
+   {
+    "word": "you",
+    "start": 2.04,
+    "end": 2.3
+   },
+   {
+    "word": "down",
+    "start": 2.3,
+    "end": 2.62
+   },
+   {
+    "word": "anymore.",
+    "start": 2.62,
+    "end": 3.14
+   },
+   {
+    "word": "You",
+    "start": 3.88,
+    "end": 4.04
+   },
+   {
+    "word": "found",
+    "start": 4.04,
+    "end": 4.4
+   },
+   {
+    "word": "the",
+    "start": 4.4,
+    "end": 4.64
+   },
+   {
+    "word": "caboose.",
+    "start": 4.64,
+    "end": 5.22
+   },
+   {
+    "word": "You",
+    "start": 5.68,
+    "end": 5.76
+   },
+   {
+    "word": "read",
+    "start": 5.76,
+    "end": 6.12
+   },
+   {
+    "word": "the",
+    "start": 6.12,
+    "end": 6.36
+   },
+   {
+    "word": "front",
+    "start": 6.36,
+    "end": 6.6
+   },
+   {
+    "word": "cars,",
+    "start": 6.6,
+    "end": 6.96
+   },
+   {
+    "word": "and",
+    "start": 7.44,
+    "end": 7.74
+   },
+   {
+    "word": "you",
+    "start": 7.74,
+    "end": 7.98
+   },
+   {
+    "word": "snapped",
+    "start": 7.98,
+    "end": 8.5
+   },
+   {
+    "word": "whole",
+    "start": 8.5,
+    "end": 8.94
+   },
+   {
+    "word": "trains",
+    "start": 8.94,
+    "end": 9.62
+   },
+   {
+    "word": "together.",
+    "start": 9.62,
+    "end": 10.3
+   },
+   {
+    "word": "Tradition,",
+    "start": 11.1,
+    "end": 11.68
+   },
+   {
+    "word": "capture,",
+    "start": 12.28,
+    "end": 13.08
+   },
+   {
+    "word": "dangerous,",
+    "start": 13.92,
+    "end": 14.66
+   },
+   {
+    "word": "incredible,",
+    "start": 16.32,
+    "end": 17.18
+   },
+   {
+    "word": "imagination.",
+    "start": 17.18,
+    "end": 18.04
+   },
+   {
+    "word": "You",
+    "start": 19.0,
+    "end": 19.34
+   },
+   {
+    "word": "read",
+    "start": 19.34,
+    "end": 19.58
+   },
+   {
+    "word": "every",
+    "start": 19.58,
+    "end": 20.28
+   },
+   {
+    "word": "one",
+    "start": 20.28,
+    "end": 20.6
+   },
+   {
+    "word": "of",
+    "start": 20.6,
+    "end": 20.76
+   },
+   {
+    "word": "them,",
+    "start": 20.76,
+    "end": 20.96
+   },
+   {
+    "word": "chunk",
+    "start": 21.22,
+    "end": 21.44
+   },
+   {
+    "word": "by",
+    "start": 21.44,
+    "end": 21.8
+   },
+   {
+    "word": "chunk,",
+    "start": 21.8,
+    "end": 22.2
+   },
+   {
+    "word": "and",
+    "start": 22.42,
+    "end": 22.84
+   },
+   {
+    "word": "that",
+    "start": 22.84,
+    "end": 23.0
+   },
+   {
+    "word": "is",
+    "start": 23.0,
+    "end": 23.14
+   },
+   {
+    "word": "exactly",
+    "start": 23.14,
+    "end": 23.76
+   },
+   {
+    "word": "how",
+    "start": 23.76,
+    "end": 24.0
+   },
+   {
+    "word": "strong",
+    "start": 24.0,
+    "end": 24.5
+   },
+   {
+    "word": "readers",
+    "start": 24.5,
+    "end": 24.98
+   },
+   {
+    "word": "handle",
+    "start": 24.98,
+    "end": 25.5
+   },
+   {
+    "word": "giant",
+    "start": 25.5,
+    "end": 25.88
+   },
+   {
+    "word": "words.",
+    "start": 25.88,
+    "end": 26.28
+   }
+  ]
+ },
+ "guided-choose-caution": {
+  "duration": 23.46,
+  "words": [
+   {
+    "word": "Your",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "turn",
+    "start": 0.42,
+    "end": 0.88
+   },
+   {
+    "word": "to",
+    "start": 0.88,
+    "end": 1.2
+   },
+   {
+    "word": "use",
+    "start": 1.2,
+    "end": 1.56
+   },
+   {
+    "word": "the",
+    "start": 1.56,
+    "end": 1.8
+   },
+   {
+    "word": "caboose.",
+    "start": 1.8,
+    "end": 2.54
+   },
+   {
+    "word": "A",
+    "start": 3.36,
+    "end": 3.58
+   },
+   {
+    "word": "yellow",
+    "start": 3.58,
+    "end": 3.94
+   },
+   {
+    "word": "sign",
+    "start": 3.94,
+    "end": 4.54
+   },
+   {
+    "word": "near",
+    "start": 4.54,
+    "end": 4.98
+   },
+   {
+    "word": "the",
+    "start": 4.98,
+    "end": 5.2
+   },
+   {
+    "word": "tracks",
+    "start": 5.2,
+    "end": 5.78
+   },
+   {
+    "word": "warns",
+    "start": 5.78,
+    "end": 6.76
+   },
+   {
+    "word": "visitors",
+    "start": 6.76,
+    "end": 7.14
+   },
+   {
+    "word": "to",
+    "start": 7.14,
+    "end": 7.66
+   },
+   {
+    "word": "slow",
+    "start": 7.66,
+    "end": 8.18
+   },
+   {
+    "word": "down",
+    "start": 8.18,
+    "end": 8.64
+   },
+   {
+    "word": "and",
+    "start": 8.64,
+    "end": 9.18
+   },
+   {
+    "word": "stay",
+    "start": 9.18,
+    "end": 9.68
+   },
+   {
+    "word": "alert.",
+    "start": 9.68,
+    "end": 10.3
+   },
+   {
+    "word": "The",
+    "start": 10.92,
+    "end": 11.36
+   },
+   {
+    "word": "word",
+    "start": 11.36,
+    "end": 11.66
+   },
+   {
+    "word": "on",
+    "start": 11.66,
+    "end": 11.88
+   },
+   {
+    "word": "that",
+    "start": 11.88,
+    "end": 12.12
+   },
+   {
+    "word": "sign",
+    "start": 12.12,
+    "end": 12.64
+   },
+   {
+    "word": "is",
+    "start": 12.64,
+    "end": 13.24
+   },
+   {
+    "word": "caution.",
+    "start": 13.24,
+    "end": 13.82
+   },
+   {
+    "word": "Read",
+    "start": 14.84,
+    "end": 15.16
+   },
+   {
+    "word": "each",
+    "start": 15.16,
+    "end": 15.74
+   },
+   {
+    "word": "word",
+    "start": 15.74,
+    "end": 16.16
+   },
+   {
+    "word": "car",
+    "start": 16.16,
+    "end": 16.76
+   },
+   {
+    "word": "by",
+    "start": 16.76,
+    "end": 17.16
+   },
+   {
+    "word": "car,",
+    "start": 17.16,
+    "end": 17.74
+   },
+   {
+    "word": "check",
+    "start": 18.04,
+    "end": 18.68
+   },
+   {
+    "word": "its",
+    "start": 18.68,
+    "end": 19.16
+   },
+   {
+    "word": "ending,",
+    "start": 19.16,
+    "end": 19.7
+   },
+   {
+    "word": "and",
+    "start": 20.18,
+    "end": 20.42
+   },
+   {
+    "word": "tap",
+    "start": 20.42,
+    "end": 20.8
+   },
+   {
+    "word": "the",
+    "start": 20.8,
+    "end": 21.1
+   },
+   {
+    "word": "word",
+    "start": 21.1,
+    "end": 21.46
+   },
+   {
+    "word": "that",
+    "start": 21.46,
+    "end": 21.9
+   },
+   {
+    "word": "says",
+    "start": 21.9,
+    "end": 22.44
+   },
+   {
+    "word": "caution.",
+    "start": 22.44,
+    "end": 23.46
+   }
+  ]
+ },
+ "guided-sequence-hibernation": {
+  "duration": 22.66,
+  "words": [
+   {
+    "word": "Some",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "trains",
+    "start": 0.52,
+    "end": 0.92
+   },
+   {
+    "word": "run",
+    "start": 0.92,
+    "end": 1.24
+   },
+   {
+    "word": "longer.",
+    "start": 1.24,
+    "end": 1.8
+   },
+   {
+    "word": "A",
+    "start": 2.52,
+    "end": 2.72
+   },
+   {
+    "word": "bear",
+    "start": 2.72,
+    "end": 3.02
+   },
+   {
+    "word": "sleeps",
+    "start": 3.02,
+    "end": 3.52
+   },
+   {
+    "word": "through",
+    "start": 3.52,
+    "end": 3.94
+   },
+   {
+    "word": "the",
+    "start": 3.94,
+    "end": 4.24
+   },
+   {
+    "word": "whole",
+    "start": 4.24,
+    "end": 4.64
+   },
+   {
+    "word": "winter.",
+    "start": 4.64,
+    "end": 5.26
+   },
+   {
+    "word": "And",
+    "start": 5.84,
+    "end": 5.96
+   },
+   {
+    "word": "that",
+    "start": 5.96,
+    "end": 6.2
+   },
+   {
+    "word": "long",
+    "start": 6.2,
+    "end": 6.5
+   },
+   {
+    "word": "sleep",
+    "start": 6.5,
+    "end": 6.9
+   },
+   {
+    "word": "is",
+    "start": 6.9,
+    "end": 7.3
+   },
+   {
+    "word": "called",
+    "start": 7.3,
+    "end": 7.7
+   },
+   {
+    "word": "hibernation.",
+    "start": 7.7,
+    "end": 8.76
+   },
+   {
+    "word": "Here",
+    "start": 9.26,
+    "end": 9.82
+   },
+   {
+    "word": "is",
+    "start": 9.82,
+    "end": 10.18
+   },
+   {
+    "word": "hibernation",
+    "start": 10.18,
+    "end": 11.28
+   },
+   {
+    "word": "with",
+    "start": 11.28,
+    "end": 11.72
+   },
+   {
+    "word": "its",
+    "start": 11.72,
+    "end": 11.98
+   },
+   {
+    "word": "cars",
+    "start": 11.98,
+    "end": 12.36
+   },
+   {
+    "word": "uncoupled.",
+    "start": 12.36,
+    "end": 13.5
+   },
+   {
+    "word": "Drag",
+    "start": 14.14,
+    "end": 14.32
+   },
+   {
+    "word": "the",
+    "start": 14.32,
+    "end": 14.58
+   },
+   {
+    "word": "chunks",
+    "start": 14.58,
+    "end": 14.82
+   },
+   {
+    "word": "into",
+    "start": 14.82,
+    "end": 15.32
+   },
+   {
+    "word": "reading",
+    "start": 15.32,
+    "end": 15.68
+   },
+   {
+    "word": "order,",
+    "start": 15.68,
+    "end": 16.1
+   },
+   {
+    "word": "the",
+    "start": 16.52,
+    "end": 16.6
+   },
+   {
+    "word": "front",
+    "start": 16.6,
+    "end": 16.94
+   },
+   {
+    "word": "cars",
+    "start": 16.94,
+    "end": 17.28
+   },
+   {
+    "word": "first,",
+    "start": 17.28,
+    "end": 17.78
+   },
+   {
+    "word": "then",
+    "start": 18.32,
+    "end": 18.64
+   },
+   {
+    "word": "the",
+    "start": 18.64,
+    "end": 18.9
+   },
+   {
+    "word": "shun",
+    "start": 18.9,
+    "end": 19.28
+   },
+   {
+    "word": "kaboos",
+    "start": 19.28,
+    "end": 19.98
+   },
+   {
+    "word": "and",
+    "start": 19.98,
+    "end": 20.44
+   },
+   {
+    "word": "the",
+    "start": 20.44,
+    "end": 20.6
+   },
+   {
+    "word": "whole",
+    "start": 20.6,
+    "end": 20.96
+   },
+   {
+    "word": "word",
+    "start": 20.96,
+    "end": 21.38
+   },
+   {
+    "word": "at",
+    "start": 21.38,
+    "end": 21.58
+   },
+   {
+    "word": "the",
+    "start": 21.58,
+    "end": 21.74
+   },
+   {
+    "word": "end",
+    "start": 21.74,
+    "end": 22.0
+   },
+   {
+    "word": "of",
+    "start": 22.0,
+    "end": 22.16
+   },
+   {
+    "word": "the",
+    "start": 22.16,
+    "end": 22.28
+   },
+   {
+    "word": "line.",
+    "start": 22.28,
+    "end": 22.66
+   }
+  ]
+ },
+ "guided-sort-shun-chur": {
+  "duration": 28.9,
+  "words": [
+   {
+    "word": "Six",
+    "start": 0.0,
+    "end": 0.58
+   },
+   {
+    "word": "words",
+    "start": 0.58,
+    "end": 1.28
+   },
+   {
+    "word": "are",
+    "start": 1.28,
+    "end": 1.72
+   },
+   {
+    "word": "waiting",
+    "start": 1.72,
+    "end": 2.2
+   },
+   {
+    "word": "in",
+    "start": 2.2,
+    "end": 2.6
+   },
+   {
+    "word": "the",
+    "start": 2.6,
+    "end": 2.84
+   },
+   {
+    "word": "yard",
+    "start": 2.84,
+    "end": 3.22
+   },
+   {
+    "word": "and",
+    "start": 3.22,
+    "end": 4.1
+   },
+   {
+    "word": "everyone",
+    "start": 4.1,
+    "end": 5.08
+   },
+   {
+    "word": "carries",
+    "start": 5.08,
+    "end": 5.92
+   },
+   {
+    "word": "a",
+    "start": 5.92,
+    "end": 6.3
+   },
+   {
+    "word": "caboose,",
+    "start": 6.3,
+    "end": 7.14
+   },
+   {
+    "word": "you",
+    "start": 7.2,
+    "end": 7.56
+   },
+   {
+    "word": "know?",
+    "start": 7.56,
+    "end": 7.92
+   },
+   {
+    "word": "Read",
+    "start": 8.86,
+    "end": 9.08
+   },
+   {
+    "word": "each",
+    "start": 9.08,
+    "end": 9.72
+   },
+   {
+    "word": "word",
+    "start": 9.72,
+    "end": 10.14
+   },
+   {
+    "word": "car",
+    "start": 10.14,
+    "end": 10.92
+   },
+   {
+    "word": "by",
+    "start": 10.92,
+    "end": 11.36
+   },
+   {
+    "word": "car",
+    "start": 11.36,
+    "end": 11.92
+   },
+   {
+    "word": "and",
+    "start": 11.92,
+    "end": 12.72
+   },
+   {
+    "word": "look",
+    "start": 12.72,
+    "end": 13.02
+   },
+   {
+    "word": "at",
+    "start": 13.02,
+    "end": 13.42
+   },
+   {
+    "word": "its",
+    "start": 13.42,
+    "end": 13.72
+   },
+   {
+    "word": "ending.",
+    "start": 13.72,
+    "end": 14.28
+   },
+   {
+    "word": "If",
+    "start": 15.08,
+    "end": 15.42
+   },
+   {
+    "word": "the",
+    "start": 15.42,
+    "end": 15.6
+   },
+   {
+    "word": "caboose",
+    "start": 15.6,
+    "end": 16.42
+   },
+   {
+    "word": "says",
+    "start": 16.42,
+    "end": 17.0
+   },
+   {
+    "word": "shun,",
+    "start": 17.0,
+    "end": 18.08
+   },
+   {
+    "word": "drag",
+    "start": 18.76,
+    "end": 19.2
+   },
+   {
+    "word": "the",
+    "start": 19.2,
+    "end": 19.52
+   },
+   {
+    "word": "word",
+    "start": 19.52,
+    "end": 19.88
+   },
+   {
+    "word": "to",
+    "start": 19.88,
+    "end": 20.54
+   },
+   {
+    "word": "says",
+    "start": 20.54,
+    "end": 21.36
+   },
+   {
+    "word": "shun.",
+    "start": 21.36,
+    "end": 22.3
+   },
+   {
+    "word": "If",
+    "start": 23.02,
+    "end": 23.32
+   },
+   {
+    "word": "the",
+    "start": 23.32,
+    "end": 23.54
+   },
+   {
+    "word": "caboose",
+    "start": 23.54,
+    "end": 24.24
+   },
+   {
+    "word": "says",
+    "start": 24.24,
+    "end": 24.74
+   },
+   {
+    "word": "chur,",
+    "start": 24.74,
+    "end": 25.44
+   },
+   {
+    "word": "drag",
+    "start": 26.14,
+    "end": 26.54
+   },
+   {
+    "word": "it",
+    "start": 26.54,
+    "end": 26.84
+   },
+   {
+    "word": "to",
+    "start": 26.84,
+    "end": 27.2
+   },
+   {
+    "word": "says",
+    "start": 27.2,
+    "end": 27.98
+   },
+   {
+    "word": "chur.",
+    "start": 27.98,
+    "end": 28.9
+   }
+  ]
+ },
+ "guided-transform-agreeable": {
+  "duration": 22.76,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "build",
+    "start": 0.56,
+    "end": 1.34
+   },
+   {
+    "word": "one",
+    "start": 1.34,
+    "end": 1.74
+   },
+   {
+    "word": "more",
+    "start": 1.74,
+    "end": 2.18
+   },
+   {
+    "word": "train.",
+    "start": 2.18,
+    "end": 2.88
+   },
+   {
+    "word": "Everyone",
+    "start": 3.44,
+    "end": 4.34
+   },
+   {
+    "word": "at",
+    "start": 4.34,
+    "end": 4.68
+   },
+   {
+    "word": "the",
+    "start": 4.68,
+    "end": 4.88
+   },
+   {
+    "word": "club",
+    "start": 4.88,
+    "end": 5.18
+   },
+   {
+    "word": "meeting",
+    "start": 5.18,
+    "end": 5.72
+   },
+   {
+    "word": "liked",
+    "start": 5.72,
+    "end": 6.48
+   },
+   {
+    "word": "Deja's",
+    "start": 6.48,
+    "end": 7.48
+   },
+   {
+    "word": "bake",
+    "start": 7.48,
+    "end": 7.76
+   },
+   {
+    "word": "sale",
+    "start": 7.76,
+    "end": 8.12
+   },
+   {
+    "word": "plan",
+    "start": 8.12,
+    "end": 8.64
+   },
+   {
+    "word": "because",
+    "start": 8.64,
+    "end": 9.36
+   },
+   {
+    "word": "it",
+    "start": 9.36,
+    "end": 9.82
+   },
+   {
+    "word": "was",
+    "start": 9.82,
+    "end": 10.02
+   },
+   {
+    "word": "easy",
+    "start": 10.02,
+    "end": 10.6
+   },
+   {
+    "word": "to",
+    "start": 10.6,
+    "end": 10.9
+   },
+   {
+    "word": "say",
+    "start": 10.9,
+    "end": 11.16
+   },
+   {
+    "word": "yes",
+    "start": 11.16,
+    "end": 11.48
+   },
+   {
+    "word": "to.",
+    "start": 11.48,
+    "end": 11.84
+   },
+   {
+    "word": "Her",
+    "start": 12.5,
+    "end": 12.84
+   },
+   {
+    "word": "plan",
+    "start": 12.84,
+    "end": 13.38
+   },
+   {
+    "word": "was",
+    "start": 13.38,
+    "end": 13.88
+   },
+   {
+    "word": "easy",
+    "start": 13.88,
+    "end": 14.52
+   },
+   {
+    "word": "to",
+    "start": 14.52,
+    "end": 14.88
+   },
+   {
+    "word": "agree",
+    "start": 14.88,
+    "end": 15.22
+   },
+   {
+    "word": "with.",
+    "start": 15.22,
+    "end": 15.64
+   },
+   {
+    "word": "Start",
+    "start": 16.38,
+    "end": 16.9
+   },
+   {
+    "word": "with",
+    "start": 16.9,
+    "end": 17.24
+   },
+   {
+    "word": "the",
+    "start": 17.24,
+    "end": 17.46
+   },
+   {
+    "word": "base,",
+    "start": 17.46,
+    "end": 17.96
+   },
+   {
+    "word": "agree,",
+    "start": 18.16,
+    "end": 18.66
+   },
+   {
+    "word": "and",
+    "start": 19.16,
+    "end": 19.62
+   },
+   {
+    "word": "snap",
+    "start": 19.62,
+    "end": 20.02
+   },
+   {
+    "word": "on",
+    "start": 20.02,
+    "end": 20.28
+   },
+   {
+    "word": "the",
+    "start": 20.28,
+    "end": 20.48
+   },
+   {
+    "word": "caboose",
+    "start": 20.48,
+    "end": 21.06
+   },
+   {
+    "word": "that",
+    "start": 21.06,
+    "end": 21.28
+   },
+   {
+    "word": "says",
+    "start": 21.28,
+    "end": 21.78
+   },
+   {
+    "word": "a",
+    "start": 21.78,
+    "end": 22.32
+   },
+   {
+    "word": "bull.",
+    "start": 22.32,
+    "end": 22.76
+   }
+  ]
+ },
+ "guided-transform-dangerous": {
+  "duration": 19.5,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "you",
+    "start": 0.42,
+    "end": 0.92
+   },
+   {
+    "word": "build",
+    "start": 0.92,
+    "end": 1.48
+   },
+   {
+    "word": "the",
+    "start": 1.48,
+    "end": 1.66
+   },
+   {
+    "word": "train.",
+    "start": 1.66,
+    "end": 2.08
+   },
+   {
+    "word": "The",
+    "start": 2.96,
+    "end": 3.16
+   },
+   {
+    "word": "park",
+    "start": 3.16,
+    "end": 3.5
+   },
+   {
+    "word": "ranger",
+    "start": 3.5,
+    "end": 3.96
+   },
+   {
+    "word": "warns",
+    "start": 3.96,
+    "end": 4.74
+   },
+   {
+    "word": "hikers",
+    "start": 4.74,
+    "end": 5.16
+   },
+   {
+    "word": "about",
+    "start": 5.16,
+    "end": 5.44
+   },
+   {
+    "word": "the",
+    "start": 5.44,
+    "end": 5.66
+   },
+   {
+    "word": "steep",
+    "start": 5.66,
+    "end": 6.14
+   },
+   {
+    "word": "cliff",
+    "start": 6.14,
+    "end": 6.56
+   },
+   {
+    "word": "trail.",
+    "start": 6.56,
+    "end": 7.22
+   },
+   {
+    "word": "Because",
+    "start": 7.7,
+    "end": 8.06
+   },
+   {
+    "word": "one",
+    "start": 8.06,
+    "end": 8.42
+   },
+   {
+    "word": "wrong",
+    "start": 8.42,
+    "end": 8.72
+   },
+   {
+    "word": "step",
+    "start": 8.72,
+    "end": 9.1
+   },
+   {
+    "word": "up",
+    "start": 9.1,
+    "end": 9.32
+   },
+   {
+    "word": "there",
+    "start": 9.32,
+    "end": 9.6
+   },
+   {
+    "word": "is",
+    "start": 9.6,
+    "end": 10.0
+   },
+   {
+    "word": "not",
+    "start": 10.0,
+    "end": 10.36
+   },
+   {
+    "word": "safe.",
+    "start": 10.36,
+    "end": 10.94
+   },
+   {
+    "word": "The",
+    "start": 11.72,
+    "end": 11.94
+   },
+   {
+    "word": "base",
+    "start": 11.94,
+    "end": 12.38
+   },
+   {
+    "word": "word",
+    "start": 12.38,
+    "end": 12.62
+   },
+   {
+    "word": "is",
+    "start": 12.62,
+    "end": 13.04
+   },
+   {
+    "word": "danger.",
+    "start": 13.04,
+    "end": 13.58
+   },
+   {
+    "word": "And",
+    "start": 14.18,
+    "end": 14.32
+   },
+   {
+    "word": "the",
+    "start": 14.32,
+    "end": 14.42
+   },
+   {
+    "word": "word",
+    "start": 14.42,
+    "end": 14.66
+   },
+   {
+    "word": "you",
+    "start": 14.66,
+    "end": 14.88
+   },
+   {
+    "word": "want",
+    "start": 14.88,
+    "end": 15.18
+   },
+   {
+    "word": "describes",
+    "start": 15.18,
+    "end": 15.82
+   },
+   {
+    "word": "that",
+    "start": 15.82,
+    "end": 16.2
+   },
+   {
+    "word": "trail.",
+    "start": 16.2,
+    "end": 16.64
+   },
+   {
+    "word": "Snap",
+    "start": 17.14,
+    "end": 17.52
+   },
+   {
+    "word": "on",
+    "start": 17.52,
+    "end": 17.76
+   },
+   {
+    "word": "the",
+    "start": 17.76,
+    "end": 17.9
+   },
+   {
+    "word": "caboose",
+    "start": 17.9,
+    "end": 18.32
+   },
+   {
+    "word": "that",
+    "start": 18.32,
+    "end": 18.48
+   },
+   {
+    "word": "says,",
+    "start": 18.48,
+    "end": 18.94
+   },
+   {
+    "word": "us.",
+    "start": 19.36,
+    "end": 19.5
+   }
+  ]
+ },
+ "hook-train-yard-sentence": {
+  "duration": 52.38,
+  "words": [
+   {
+    "word": "Every",
+    "start": 0.0,
+    "end": 0.78
+   },
+   {
+    "word": "Saturday,",
+    "start": 0.78,
+    "end": 1.54
+   },
+   {
+    "word": "by",
+    "start": 2.04,
+    "end": 2.28
+   },
+   {
+    "word": "family",
+    "start": 2.28,
+    "end": 2.9
+   },
+   {
+    "word": "tradition,",
+    "start": 2.9,
+    "end": 3.6
+   },
+   {
+    "word": "Deja",
+    "start": 4.3,
+    "end": 4.84
+   },
+   {
+    "word": "and",
+    "start": 4.84,
+    "end": 5.34
+   },
+   {
+    "word": "Grandpa",
+    "start": 5.34,
+    "end": 5.96
+   },
+   {
+    "word": "Ray",
+    "start": 5.96,
+    "end": 6.44
+   },
+   {
+    "word": "walked",
+    "start": 6.44,
+    "end": 7.24
+   },
+   {
+    "word": "down",
+    "start": 7.24,
+    "end": 7.64
+   },
+   {
+    "word": "to",
+    "start": 7.64,
+    "end": 8.04
+   },
+   {
+    "word": "the",
+    "start": 8.04,
+    "end": 8.22
+   },
+   {
+    "word": "rail",
+    "start": 8.22,
+    "end": 8.6
+   },
+   {
+    "word": "yard",
+    "start": 8.6,
+    "end": 9.1
+   },
+   {
+    "word": "to",
+    "start": 9.1,
+    "end": 9.74
+   },
+   {
+    "word": "watch",
+    "start": 9.74,
+    "end": 10.14
+   },
+   {
+    "word": "the",
+    "start": 10.14,
+    "end": 10.46
+   },
+   {
+    "word": "morning",
+    "start": 10.46,
+    "end": 10.9
+   },
+   {
+    "word": "freight",
+    "start": 10.9,
+    "end": 11.52
+   },
+   {
+    "word": "roll",
+    "start": 11.52,
+    "end": 12.1
+   },
+   {
+    "word": "through.",
+    "start": 12.1,
+    "end": 12.48
+   },
+   {
+    "word": "A",
+    "start": 13.22,
+    "end": 13.7
+   },
+   {
+    "word": "tremendous",
+    "start": 13.7,
+    "end": 14.72
+   },
+   {
+    "word": "engine,",
+    "start": 14.72,
+    "end": 15.76
+   },
+   {
+    "word": "thundered",
+    "start": 16.38,
+    "end": 16.86
+   },
+   {
+    "word": "past,",
+    "start": 16.86,
+    "end": 17.32
+   },
+   {
+    "word": "pulling",
+    "start": 18.14,
+    "end": 18.38
+   },
+   {
+    "word": "car",
+    "start": 18.38,
+    "end": 18.98
+   },
+   {
+    "word": "after",
+    "start": 18.98,
+    "end": 19.68
+   },
+   {
+    "word": "car,",
+    "start": 19.68,
+    "end": 20.16
+   },
+   {
+    "word": "and",
+    "start": 20.86,
+    "end": 21.18
+   },
+   {
+    "word": "a",
+    "start": 21.18,
+    "end": 21.3
+   },
+   {
+    "word": "bright",
+    "start": 21.3,
+    "end": 21.78
+   },
+   {
+    "word": "red",
+    "start": 21.78,
+    "end": 22.42
+   },
+   {
+    "word": "caboose",
+    "start": 22.42,
+    "end": 23.54
+   },
+   {
+    "word": "rode",
+    "start": 23.54,
+    "end": 24.04
+   },
+   {
+    "word": "at",
+    "start": 24.04,
+    "end": 24.44
+   },
+   {
+    "word": "the",
+    "start": 24.44,
+    "end": 24.68
+   },
+   {
+    "word": "very",
+    "start": 24.68,
+    "end": 25.24
+   },
+   {
+    "word": "end",
+    "start": 25.24,
+    "end": 25.9
+   },
+   {
+    "word": "of",
+    "start": 25.9,
+    "end": 26.24
+   },
+   {
+    "word": "the",
+    "start": 26.24,
+    "end": 26.44
+   },
+   {
+    "word": "line.",
+    "start": 26.44,
+    "end": 26.84
+   },
+   {
+    "word": "A",
+    "start": 27.42,
+    "end": 27.88
+   },
+   {
+    "word": "train",
+    "start": 27.88,
+    "end": 28.44
+   },
+   {
+    "word": "is",
+    "start": 28.44,
+    "end": 29.14
+   },
+   {
+    "word": "like",
+    "start": 29.14,
+    "end": 29.46
+   },
+   {
+    "word": "a",
+    "start": 29.46,
+    "end": 29.84
+   },
+   {
+    "word": "long",
+    "start": 29.84,
+    "end": 30.38
+   },
+   {
+    "word": "word,",
+    "start": 30.38,
+    "end": 31.18
+   },
+   {
+    "word": "said",
+    "start": 31.54,
+    "end": 32.0
+   },
+   {
+    "word": "Grandpa",
+    "start": 32.0,
+    "end": 32.42
+   },
+   {
+    "word": "Ray.",
+    "start": 32.42,
+    "end": 32.84
+   },
+   {
+    "word": "Nobody",
+    "start": 33.68,
+    "end": 34.14
+   },
+   {
+    "word": "reads",
+    "start": 34.14,
+    "end": 34.82
+   },
+   {
+    "word": "it",
+    "start": 34.82,
+    "end": 35.04
+   },
+   {
+    "word": "in",
+    "start": 35.04,
+    "end": 35.32
+   },
+   {
+    "word": "one",
+    "start": 35.32,
+    "end": 35.66
+   },
+   {
+    "word": "gulp.",
+    "start": 35.66,
+    "end": 36.1
+   },
+   {
+    "word": "You",
+    "start": 36.72,
+    "end": 36.84
+   },
+   {
+    "word": "read",
+    "start": 36.84,
+    "end": 37.1
+   },
+   {
+    "word": "it,",
+    "start": 37.1,
+    "end": 37.38
+   },
+   {
+    "word": "car",
+    "start": 37.62,
+    "end": 37.96
+   },
+   {
+    "word": "by",
+    "start": 37.96,
+    "end": 38.62
+   },
+   {
+    "word": "car,",
+    "start": 38.62,
+    "end": 39.18
+   },
+   {
+    "word": "and",
+    "start": 39.48,
+    "end": 40.2
+   },
+   {
+    "word": "the",
+    "start": 40.2,
+    "end": 40.36
+   },
+   {
+    "word": "caboose",
+    "start": 40.36,
+    "end": 41.2
+   },
+   {
+    "word": "comes",
+    "start": 41.2,
+    "end": 41.58
+   },
+   {
+    "word": "last,",
+    "start": 41.58,
+    "end": 42.06
+   },
+   {
+    "word": "every",
+    "start": 42.82,
+    "end": 43.42
+   },
+   {
+    "word": "single",
+    "start": 43.42,
+    "end": 44.12
+   },
+   {
+    "word": "time.",
+    "start": 44.12,
+    "end": 44.86
+   },
+   {
+    "word": "Deja",
+    "start": 45.84,
+    "end": 46.4
+   },
+   {
+    "word": "grinned",
+    "start": 46.4,
+    "end": 47.0
+   },
+   {
+    "word": "because",
+    "start": 47.0,
+    "end": 47.5
+   },
+   {
+    "word": "she",
+    "start": 47.5,
+    "end": 47.88
+   },
+   {
+    "word": "planned",
+    "start": 47.88,
+    "end": 48.36
+   },
+   {
+    "word": "to",
+    "start": 48.36,
+    "end": 48.72
+   },
+   {
+    "word": "try",
+    "start": 48.72,
+    "end": 49.04
+   },
+   {
+    "word": "that",
+    "start": 49.04,
+    "end": 49.34
+   },
+   {
+    "word": "trick",
+    "start": 49.34,
+    "end": 49.72
+   },
+   {
+    "word": "on",
+    "start": 49.72,
+    "end": 50.08
+   },
+   {
+    "word": "the",
+    "start": 50.08,
+    "end": 50.28
+   },
+   {
+    "word": "longest",
+    "start": 50.28,
+    "end": 50.82
+   },
+   {
+    "word": "words",
+    "start": 50.82,
+    "end": 51.28
+   },
+   {
+    "word": "in",
+    "start": 51.28,
+    "end": 51.7
+   },
+   {
+    "word": "her",
+    "start": 51.7,
+    "end": 51.9
+   },
+   {
+    "word": "books.",
+    "start": 51.9,
+    "end": 52.38
+   }
+  ]
+ },
+ "hook-train-yard": {
+  "duration": 17.2,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "reader.",
+    "start": 0.72,
+    "end": 0.96
+   },
+   {
+    "word": "Today,",
+    "start": 1.78,
+    "end": 2.02
+   },
+   {
+    "word": "you",
+    "start": 2.36,
+    "end": 2.64
+   },
+   {
+    "word": "learn",
+    "start": 2.64,
+    "end": 2.96
+   },
+   {
+    "word": "how",
+    "start": 2.96,
+    "end": 3.24
+   },
+   {
+    "word": "third",
+    "start": 3.24,
+    "end": 3.64
+   },
+   {
+    "word": "graders",
+    "start": 3.64,
+    "end": 4.2
+   },
+   {
+    "word": "read",
+    "start": 4.2,
+    "end": 4.72
+   },
+   {
+    "word": "giant",
+    "start": 4.72,
+    "end": 5.34
+   },
+   {
+    "word": "words",
+    "start": 5.34,
+    "end": 5.84
+   },
+   {
+    "word": "without",
+    "start": 5.84,
+    "end": 6.62
+   },
+   {
+    "word": "slowing",
+    "start": 6.62,
+    "end": 7.38
+   },
+   {
+    "word": "down.",
+    "start": 7.38,
+    "end": 7.94
+   },
+   {
+    "word": "The",
+    "start": 8.84,
+    "end": 9.06
+   },
+   {
+    "word": "trick",
+    "start": 9.06,
+    "end": 9.42
+   },
+   {
+    "word": "starts",
+    "start": 9.42,
+    "end": 9.88
+   },
+   {
+    "word": "at",
+    "start": 9.88,
+    "end": 10.7
+   },
+   {
+    "word": "a",
+    "start": 10.7,
+    "end": 10.96
+   },
+   {
+    "word": "rail",
+    "start": 10.96,
+    "end": 11.32
+   },
+   {
+    "word": "yard.",
+    "start": 11.32,
+    "end": 11.84
+   },
+   {
+    "word": "Read",
+    "start": 12.64,
+    "end": 12.98
+   },
+   {
+    "word": "along",
+    "start": 12.98,
+    "end": 13.42
+   },
+   {
+    "word": "with",
+    "start": 13.42,
+    "end": 13.8
+   },
+   {
+    "word": "me",
+    "start": 13.8,
+    "end": 14.14
+   },
+   {
+    "word": "and",
+    "start": 14.14,
+    "end": 14.7
+   },
+   {
+    "word": "keep",
+    "start": 14.7,
+    "end": 15.08
+   },
+   {
+    "word": "your",
+    "start": 15.08,
+    "end": 15.48
+   },
+   {
+    "word": "eye",
+    "start": 15.48,
+    "end": 15.8
+   },
+   {
+    "word": "on",
+    "start": 15.8,
+    "end": 16.28
+   },
+   {
+    "word": "the",
+    "start": 16.28,
+    "end": 16.52
+   },
+   {
+    "word": "caboose.",
+    "start": 16.52,
+    "end": 17.2
+   }
+  ]
+ },
+ "model-chur-caboose": {
+  "duration": 43.12,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "is",
+    "start": 0.48,
+    "end": 0.9
+   },
+   {
+    "word": "the",
+    "start": 0.9,
+    "end": 1.08
+   },
+   {
+    "word": "second",
+    "start": 1.08,
+    "end": 1.64
+   },
+   {
+    "word": "caboose,",
+    "start": 1.64,
+    "end": 2.56
+   },
+   {
+    "word": "the",
+    "start": 2.98,
+    "end": 3.1
+   },
+   {
+    "word": "churr",
+    "start": 3.1,
+    "end": 3.9
+   },
+   {
+    "word": "ending",
+    "start": 3.9,
+    "end": 4.52
+   },
+   {
+    "word": "spelled",
+    "start": 4.52,
+    "end": 5.38
+   },
+   {
+    "word": "T",
+    "start": 5.38,
+    "end": 6.02
+   },
+   {
+    "word": "-U",
+    "start": 6.02,
+    "end": 6.84
+   },
+   {
+    "word": "-R",
+    "start": 6.84,
+    "end": 7.6
+   },
+   {
+    "word": "-E.",
+    "start": 7.6,
+    "end": 8.2
+   },
+   {
+    "word": "It",
+    "start": 8.98,
+    "end": 9.46
+   },
+   {
+    "word": "always",
+    "start": 9.46,
+    "end": 10.04
+   },
+   {
+    "word": "says",
+    "start": 10.04,
+    "end": 10.56
+   },
+   {
+    "word": "churr.",
+    "start": 10.56,
+    "end": 11.58
+   },
+   {
+    "word": "Watch",
+    "start": 12.2,
+    "end": 12.4
+   },
+   {
+    "word": "it",
+    "start": 12.4,
+    "end": 12.72
+   },
+   {
+    "word": "ride",
+    "start": 12.72,
+    "end": 13.14
+   },
+   {
+    "word": "at",
+    "start": 13.14,
+    "end": 13.58
+   },
+   {
+    "word": "the",
+    "start": 13.58,
+    "end": 13.76
+   },
+   {
+    "word": "end",
+    "start": 13.76,
+    "end": 14.28
+   },
+   {
+    "word": "of",
+    "start": 14.28,
+    "end": 14.66
+   },
+   {
+    "word": "two",
+    "start": 14.66,
+    "end": 15.28
+   },
+   {
+    "word": "trains.",
+    "start": 15.28,
+    "end": 16.06
+   },
+   {
+    "word": "Future.",
+    "start": 17.14,
+    "end": 17.72
+   },
+   {
+    "word": "I",
+    "start": 18.58,
+    "end": 18.96
+   },
+   {
+    "word": "read",
+    "start": 18.96,
+    "end": 19.26
+   },
+   {
+    "word": "the",
+    "start": 19.26,
+    "end": 19.46
+   },
+   {
+    "word": "caboose",
+    "start": 19.46,
+    "end": 20.08
+   },
+   {
+    "word": "churr,",
+    "start": 20.08,
+    "end": 20.98
+   },
+   {
+    "word": "then",
+    "start": 21.28,
+    "end": 21.62
+   },
+   {
+    "word": "the",
+    "start": 21.62,
+    "end": 21.84
+   },
+   {
+    "word": "front",
+    "start": 21.84,
+    "end": 22.22
+   },
+   {
+    "word": "car,",
+    "start": 22.22,
+    "end": 22.62
+   },
+   {
+    "word": "few,",
+    "start": 23.06,
+    "end": 23.38
+   },
+   {
+    "word": "and",
+    "start": 23.94,
+    "end": 24.2
+   },
+   {
+    "word": "I",
+    "start": 24.2,
+    "end": 24.4
+   },
+   {
+    "word": "snap",
+    "start": 24.4,
+    "end": 24.92
+   },
+   {
+    "word": "it",
+    "start": 24.92,
+    "end": 25.14
+   },
+   {
+    "word": "together.",
+    "start": 25.14,
+    "end": 25.6
+   },
+   {
+    "word": "Future.",
+    "start": 25.6,
+    "end": 26.94
+   },
+   {
+    "word": "Capture.",
+    "start": 28.38,
+    "end": 29.54
+   },
+   {
+    "word": "The",
+    "start": 30.12,
+    "end": 30.82
+   },
+   {
+    "word": "front",
+    "start": 30.82,
+    "end": 31.2
+   },
+   {
+    "word": "car",
+    "start": 31.2,
+    "end": 31.62
+   },
+   {
+    "word": "says",
+    "start": 31.62,
+    "end": 32.14
+   },
+   {
+    "word": "cap.",
+    "start": 32.14,
+    "end": 32.7
+   },
+   {
+    "word": "The",
+    "start": 33.46,
+    "end": 33.6
+   },
+   {
+    "word": "caboose",
+    "start": 33.6,
+    "end": 34.34
+   },
+   {
+    "word": "says",
+    "start": 34.34,
+    "end": 34.8
+   },
+   {
+    "word": "churr.",
+    "start": 34.8,
+    "end": 36.22
+   },
+   {
+    "word": "Capture.",
+    "start": 36.26,
+    "end": 37.12
+   },
+   {
+    "word": "Two",
+    "start": 37.12,
+    "end": 38.58
+   },
+   {
+    "word": "different",
+    "start": 38.58,
+    "end": 39.02
+   },
+   {
+    "word": "trains,",
+    "start": 39.02,
+    "end": 39.56
+   },
+   {
+    "word": "same",
+    "start": 40.04,
+    "end": 40.46
+   },
+   {
+    "word": "caboose,",
+    "start": 40.46,
+    "end": 41.24
+   },
+   {
+    "word": "same",
+    "start": 41.86,
+    "end": 42.12
+   },
+   {
+    "word": "sound.",
+    "start": 42.12,
+    "end": 43.12
+   }
+  ]
+ },
+ "model-shun-caboose": {
+  "duration": 51.38,
+  "words": [
+   {
+    "word": "Grandpa",
+    "start": 0.0,
+    "end": 0.68
+   },
+   {
+    "word": "raised",
+    "start": 0.68,
+    "end": 1.36
+   },
+   {
+    "word": "trick",
+    "start": 1.36,
+    "end": 1.84
+   },
+   {
+    "word": "works",
+    "start": 1.84,
+    "end": 2.34
+   },
+   {
+    "word": "on",
+    "start": 2.34,
+    "end": 2.66
+   },
+   {
+    "word": "words",
+    "start": 2.66,
+    "end": 3.06
+   },
+   {
+    "word": "because",
+    "start": 3.06,
+    "end": 3.74
+   },
+   {
+    "word": "a",
+    "start": 3.74,
+    "end": 3.92
+   },
+   {
+    "word": "long",
+    "start": 3.92,
+    "end": 4.2
+   },
+   {
+    "word": "word",
+    "start": 4.2,
+    "end": 4.68
+   },
+   {
+    "word": "is",
+    "start": 4.68,
+    "end": 5.12
+   },
+   {
+    "word": "a",
+    "start": 5.12,
+    "end": 5.24
+   },
+   {
+    "word": "train",
+    "start": 5.24,
+    "end": 5.78
+   },
+   {
+    "word": "of",
+    "start": 5.78,
+    "end": 6.26
+   },
+   {
+    "word": "chunks.",
+    "start": 6.26,
+    "end": 6.86
+   },
+   {
+    "word": "And",
+    "start": 7.64,
+    "end": 7.72
+   },
+   {
+    "word": "the",
+    "start": 7.72,
+    "end": 7.9
+   },
+   {
+    "word": "ending",
+    "start": 7.9,
+    "end": 8.48
+   },
+   {
+    "word": "chunk",
+    "start": 8.48,
+    "end": 9.0
+   },
+   {
+    "word": "is",
+    "start": 9.0,
+    "end": 9.46
+   },
+   {
+    "word": "the",
+    "start": 9.46,
+    "end": 9.66
+   },
+   {
+    "word": "caboose.",
+    "start": 9.66,
+    "end": 10.6
+   },
+   {
+    "word": "Here",
+    "start": 11.38,
+    "end": 11.62
+   },
+   {
+    "word": "is",
+    "start": 11.62,
+    "end": 11.92
+   },
+   {
+    "word": "the",
+    "start": 11.92,
+    "end": 12.06
+   },
+   {
+    "word": "first",
+    "start": 12.06,
+    "end": 12.52
+   },
+   {
+    "word": "caboose.",
+    "start": 12.52,
+    "end": 13.2
+   },
+   {
+    "word": "The",
+    "start": 13.82,
+    "end": 13.9
+   },
+   {
+    "word": "shun",
+    "start": 13.9,
+    "end": 14.54
+   },
+   {
+    "word": "ending",
+    "start": 14.54,
+    "end": 15.3
+   },
+   {
+    "word": "spelled",
+    "start": 15.3,
+    "end": 16.12
+   },
+   {
+    "word": "T",
+    "start": 16.12,
+    "end": 16.68
+   },
+   {
+    "word": "-I",
+    "start": 16.68,
+    "end": 17.42
+   },
+   {
+    "word": "-O",
+    "start": 17.42,
+    "end": 18.06
+   },
+   {
+    "word": "-N.",
+    "start": 18.06,
+    "end": 18.88
+   },
+   {
+    "word": "It",
+    "start": 19.38,
+    "end": 19.76
+   },
+   {
+    "word": "always",
+    "start": 19.76,
+    "end": 20.34
+   },
+   {
+    "word": "says",
+    "start": 20.34,
+    "end": 20.8
+   },
+   {
+    "word": "shun.",
+    "start": 20.8,
+    "end": 21.92
+   },
+   {
+    "word": "Watch",
+    "start": 22.78,
+    "end": 23.02
+   },
+   {
+    "word": "me",
+    "start": 23.02,
+    "end": 23.18
+   },
+   {
+    "word": "read",
+    "start": 23.18,
+    "end": 23.4
+   },
+   {
+    "word": "the",
+    "start": 23.4,
+    "end": 23.6
+   },
+   {
+    "word": "word",
+    "start": 23.6,
+    "end": 23.84
+   },
+   {
+    "word": "tradition",
+    "start": 23.84,
+    "end": 24.64
+   },
+   {
+    "word": "car",
+    "start": 24.64,
+    "end": 25.5
+   },
+   {
+    "word": "by",
+    "start": 25.5,
+    "end": 25.88
+   },
+   {
+    "word": "car.",
+    "start": 25.88,
+    "end": 26.26
+   },
+   {
+    "word": "I",
+    "start": 26.26,
+    "end": 27.44
+   },
+   {
+    "word": "spot",
+    "start": 27.44,
+    "end": 27.78
+   },
+   {
+    "word": "the",
+    "start": 27.78,
+    "end": 28.04
+   },
+   {
+    "word": "caboose",
+    "start": 28.04,
+    "end": 28.58
+   },
+   {
+    "word": "first",
+    "start": 28.58,
+    "end": 28.98
+   },
+   {
+    "word": "and",
+    "start": 28.98,
+    "end": 30.0
+   },
+   {
+    "word": "it",
+    "start": 30.0,
+    "end": 30.24
+   },
+   {
+    "word": "says",
+    "start": 30.24,
+    "end": 30.6
+   },
+   {
+    "word": "shun.",
+    "start": 30.6,
+    "end": 31.54
+   },
+   {
+    "word": "Then",
+    "start": 32.72,
+    "end": 32.88
+   },
+   {
+    "word": "I",
+    "start": 32.88,
+    "end": 33.16
+   },
+   {
+    "word": "read",
+    "start": 33.16,
+    "end": 33.42
+   },
+   {
+    "word": "the",
+    "start": 33.42,
+    "end": 33.6
+   },
+   {
+    "word": "front",
+    "start": 33.6,
+    "end": 33.96
+   },
+   {
+    "word": "cars,",
+    "start": 33.96,
+    "end": 34.56
+   },
+   {
+    "word": "tr",
+    "start": 35.04,
+    "end": 35.5
+   },
+   {
+    "word": "-a,",
+    "start": 35.5,
+    "end": 35.7
+   },
+   {
+    "word": "then",
+    "start": 36.26,
+    "end": 36.68
+   },
+   {
+    "word": "d.",
+    "start": 36.68,
+    "end": 37.34
+   },
+   {
+    "word": "Now",
+    "start": 38.08,
+    "end": 38.92
+   },
+   {
+    "word": "I",
+    "start": 38.92,
+    "end": 39.2
+   },
+   {
+    "word": "snap",
+    "start": 39.2,
+    "end": 39.56
+   },
+   {
+    "word": "the",
+    "start": 39.56,
+    "end": 39.92
+   },
+   {
+    "word": "whole",
+    "start": 39.92,
+    "end": 40.42
+   },
+   {
+    "word": "train",
+    "start": 40.42,
+    "end": 41.0
+   },
+   {
+    "word": "together,",
+    "start": 41.0,
+    "end": 41.7
+   },
+   {
+    "word": "tr",
+    "start": 42.46,
+    "end": 42.94
+   },
+   {
+    "word": "-a,",
+    "start": 42.94,
+    "end": 43.54
+   },
+   {
+    "word": "d",
+    "start": 43.86,
+    "end": 43.92
+   },
+   {
+    "word": "-shun.",
+    "start": 43.92,
+    "end": 45.34
+   },
+   {
+    "word": "Tradition.",
+    "start": 46.34,
+    "end": 47.16
+   },
+   {
+    "word": "The",
+    "start": 48.1,
+    "end": 48.42
+   },
+   {
+    "word": "caboose",
+    "start": 48.42,
+    "end": 49.18
+   },
+   {
+    "word": "never",
+    "start": 49.18,
+    "end": 50.04
+   },
+   {
+    "word": "changes",
+    "start": 50.04,
+    "end": 50.76
+   },
+   {
+    "word": "its",
+    "start": 50.76,
+    "end": 51.0
+   },
+   {
+    "word": "sound.",
+    "start": 51.0,
+    "end": 51.38
+   }
+  ]
+ },
+ "model-uhbul-caboose": {
+  "duration": 47.48,
+  "words": [
+   {
+    "word": "One",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "caboose",
+    "start": 0.48,
+    "end": 1.36
+   },
+   {
+    "word": "is",
+    "start": 1.36,
+    "end": 1.6
+   },
+   {
+    "word": "left,",
+    "start": 1.6,
+    "end": 2.04
+   },
+   {
+    "word": "and",
+    "start": 2.44,
+    "end": 2.68
+   },
+   {
+    "word": "it",
+    "start": 2.68,
+    "end": 2.84
+   },
+   {
+    "word": "comes",
+    "start": 2.84,
+    "end": 3.1
+   },
+   {
+    "word": "in",
+    "start": 3.1,
+    "end": 3.48
+   },
+   {
+    "word": "two",
+    "start": 3.48,
+    "end": 3.86
+   },
+   {
+    "word": "spellings.",
+    "start": 3.86,
+    "end": 4.72
+   },
+   {
+    "word": "The",
+    "start": 5.32,
+    "end": 5.4
+   },
+   {
+    "word": "A",
+    "start": 5.4,
+    "end": 6.18
+   },
+   {
+    "word": "-Bull",
+    "start": 6.18,
+    "end": 6.9
+   },
+   {
+    "word": "ending",
+    "start": 6.9,
+    "end": 7.56
+   },
+   {
+    "word": "can",
+    "start": 7.56,
+    "end": 8.2
+   },
+   {
+    "word": "be",
+    "start": 8.2,
+    "end": 8.38
+   },
+   {
+    "word": "spelled",
+    "start": 8.38,
+    "end": 8.88
+   },
+   {
+    "word": "A",
+    "start": 8.88,
+    "end": 9.64
+   },
+   {
+    "word": "-B",
+    "start": 9.64,
+    "end": 10.32
+   },
+   {
+    "word": "-L",
+    "start": 10.32,
+    "end": 11.22
+   },
+   {
+    "word": "-E",
+    "start": 11.22,
+    "end": 11.8
+   },
+   {
+    "word": "or",
+    "start": 11.8,
+    "end": 12.92
+   },
+   {
+    "word": "I",
+    "start": 12.92,
+    "end": 13.62
+   },
+   {
+    "word": "-B",
+    "start": 13.62,
+    "end": 14.24
+   },
+   {
+    "word": "-L",
+    "start": 14.24,
+    "end": 15.02
+   },
+   {
+    "word": "-E.",
+    "start": 15.02,
+    "end": 15.66
+   },
+   {
+    "word": "And",
+    "start": 16.14,
+    "end": 16.6
+   },
+   {
+    "word": "both",
+    "start": 16.6,
+    "end": 17.02
+   },
+   {
+    "word": "say",
+    "start": 17.02,
+    "end": 17.48
+   },
+   {
+    "word": "A",
+    "start": 17.48,
+    "end": 18.16
+   },
+   {
+    "word": "-Bull.",
+    "start": 18.16,
+    "end": 18.94
+   },
+   {
+    "word": "Last",
+    "start": 20.3,
+    "end": 20.66
+   },
+   {
+    "word": "night's",
+    "start": 20.66,
+    "end": 21.52
+   },
+   {
+    "word": "storm",
+    "start": 21.52,
+    "end": 21.86
+   },
+   {
+    "word": "was",
+    "start": 21.86,
+    "end": 22.36
+   },
+   {
+    "word": "terrible.",
+    "start": 22.36,
+    "end": 23.18
+   },
+   {
+    "word": "Ter",
+    "start": 24.24,
+    "end": 24.82
+   },
+   {
+    "word": "-R",
+    "start": 24.82,
+    "end": 25.66
+   },
+   {
+    "word": "-Bull.",
+    "start": 25.66,
+    "end": 26.94
+   },
+   {
+    "word": "Ter",
+    "start": 27.38,
+    "end": 27.68
+   },
+   {
+    "word": "-R",
+    "start": 27.68,
+    "end": 28.0
+   },
+   {
+    "word": "-Bull.",
+    "start": 28.0,
+    "end": 28.22
+   },
+   {
+    "word": "This",
+    "start": 28.22,
+    "end": 29.34
+   },
+   {
+    "word": "morning's",
+    "start": 29.34,
+    "end": 30.14
+   },
+   {
+    "word": "double",
+    "start": 30.14,
+    "end": 30.44
+   },
+   {
+    "word": "rainbow",
+    "start": 30.44,
+    "end": 31.08
+   },
+   {
+    "word": "is",
+    "start": 31.08,
+    "end": 32.14
+   },
+   {
+    "word": "incredible.",
+    "start": 32.14,
+    "end": 33.56
+   },
+   {
+    "word": "In",
+    "start": 35.08,
+    "end": 35.74
+   },
+   {
+    "word": "cred",
+    "start": 35.74,
+    "end": 36.98
+   },
+   {
+    "word": "a",
+    "start": 36.98,
+    "end": 38.34
+   },
+   {
+    "word": "bull.",
+    "start": 38.34,
+    "end": 39.58
+   },
+   {
+    "word": "Incredible.",
+    "start": 40.12,
+    "end": 40.86
+   },
+   {
+    "word": "Two",
+    "start": 41.94,
+    "end": 42.48
+   },
+   {
+    "word": "spellings,",
+    "start": 42.48,
+    "end": 43.22
+   },
+   {
+    "word": "one",
+    "start": 43.6,
+    "end": 43.92
+   },
+   {
+    "word": "sound,",
+    "start": 43.92,
+    "end": 44.58
+   },
+   {
+    "word": "and",
+    "start": 44.82,
+    "end": 45.18
+   },
+   {
+    "word": "the",
+    "start": 45.18,
+    "end": 45.34
+   },
+   {
+    "word": "caboose",
+    "start": 45.34,
+    "end": 45.94
+   },
+   {
+    "word": "still",
+    "start": 45.94,
+    "end": 46.58
+   },
+   {
+    "word": "comes",
+    "start": 46.58,
+    "end": 47.12
+   },
+   {
+    "word": "last.",
+    "start": 47.12,
+    "end": 47.48
+   }
+  ]
+ },
+ "model-us-caboose": {
+  "duration": 41.54,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "third",
+    "start": 0.38,
+    "end": 0.78
+   },
+   {
+    "word": "caboose",
+    "start": 0.78,
+    "end": 1.46
+   },
+   {
+    "word": "is",
+    "start": 1.46,
+    "end": 1.82
+   },
+   {
+    "word": "the",
+    "start": 1.82,
+    "end": 2.06
+   },
+   {
+    "word": "us",
+    "start": 2.06,
+    "end": 2.54
+   },
+   {
+    "word": "ending.",
+    "start": 2.54,
+    "end": 3.32
+   },
+   {
+    "word": "Spelled",
+    "start": 4.06,
+    "end": 4.58
+   },
+   {
+    "word": "O",
+    "start": 4.58,
+    "end": 5.2
+   },
+   {
+    "word": "-U",
+    "start": 5.2,
+    "end": 5.48
+   },
+   {
+    "word": "-S,",
+    "start": 5.48,
+    "end": 5.96
+   },
+   {
+    "word": "and",
+    "start": 6.32,
+    "end": 6.58
+   },
+   {
+    "word": "it",
+    "start": 6.58,
+    "end": 6.76
+   },
+   {
+    "word": "says",
+    "start": 6.76,
+    "end": 7.14
+   },
+   {
+    "word": "us.",
+    "start": 7.14,
+    "end": 7.94
+   },
+   {
+    "word": "Watch",
+    "start": 8.84,
+    "end": 9.18
+   },
+   {
+    "word": "it",
+    "start": 9.18,
+    "end": 9.34
+   },
+   {
+    "word": "work.",
+    "start": 9.34,
+    "end": 9.58
+   },
+   {
+    "word": "This",
+    "start": 10.52,
+    "end": 10.82
+   },
+   {
+    "word": "tiny",
+    "start": 10.82,
+    "end": 11.36
+   },
+   {
+    "word": "rainforest",
+    "start": 11.36,
+    "end": 11.92
+   },
+   {
+    "word": "frog",
+    "start": 11.92,
+    "end": 12.56
+   },
+   {
+    "word": "is",
+    "start": 12.56,
+    "end": 13.2
+   },
+   {
+    "word": "famous",
+    "start": 13.2,
+    "end": 13.98
+   },
+   {
+    "word": "because",
+    "start": 13.98,
+    "end": 14.98
+   },
+   {
+    "word": "its",
+    "start": 14.98,
+    "end": 15.28
+   },
+   {
+    "word": "bright",
+    "start": 15.28,
+    "end": 15.62
+   },
+   {
+    "word": "skin",
+    "start": 15.62,
+    "end": 16.08
+   },
+   {
+    "word": "warns",
+    "start": 16.08,
+    "end": 17.08
+   },
+   {
+    "word": "that",
+    "start": 17.08,
+    "end": 17.42
+   },
+   {
+    "word": "it",
+    "start": 17.42,
+    "end": 17.82
+   },
+   {
+    "word": "is",
+    "start": 17.82,
+    "end": 18.34
+   },
+   {
+    "word": "poisonous.",
+    "start": 18.34,
+    "end": 19.3
+   },
+   {
+    "word": "Famous.",
+    "start": 20.56,
+    "end": 21.36
+   },
+   {
+    "word": "I",
+    "start": 21.96,
+    "end": 22.32
+   },
+   {
+    "word": "read",
+    "start": 22.32,
+    "end": 22.62
+   },
+   {
+    "word": "it",
+    "start": 22.62,
+    "end": 22.9
+   },
+   {
+    "word": "car",
+    "start": 22.9,
+    "end": 23.26
+   },
+   {
+    "word": "by",
+    "start": 23.26,
+    "end": 23.48
+   },
+   {
+    "word": "car.",
+    "start": 23.48,
+    "end": 23.92
+   },
+   {
+    "word": "Faye",
+    "start": 24.7,
+    "end": 25.02
+   },
+   {
+    "word": "must.",
+    "start": 25.02,
+    "end": 25.82
+   },
+   {
+    "word": "Famous.",
+    "start": 26.74,
+    "end": 27.48
+   },
+   {
+    "word": "Poisonous.",
+    "start": 28.9,
+    "end": 29.74
+   },
+   {
+    "word": "Poi.",
+    "start": 30.3,
+    "end": 31.14
+   },
+   {
+    "word": "Zun.",
+    "start": 31.66,
+    "end": 32.22
+   },
+   {
+    "word": "Us.",
+    "start": 32.94,
+    "end": 33.16
+   },
+   {
+    "word": "Poisonous.",
+    "start": 34.12,
+    "end": 34.96
+   },
+   {
+    "word": "When",
+    "start": 35.4,
+    "end": 36.24
+   },
+   {
+    "word": "you",
+    "start": 36.24,
+    "end": 36.54
+   },
+   {
+    "word": "spot",
+    "start": 36.54,
+    "end": 37.02
+   },
+   {
+    "word": "the",
+    "start": 37.02,
+    "end": 37.28
+   },
+   {
+    "word": "us",
+    "start": 37.28,
+    "end": 37.72
+   },
+   {
+    "word": "caboose,",
+    "start": 37.72,
+    "end": 38.48
+   },
+   {
+    "word": "the",
+    "start": 38.9,
+    "end": 38.98
+   },
+   {
+    "word": "end",
+    "start": 38.98,
+    "end": 39.34
+   },
+   {
+    "word": "of",
+    "start": 39.34,
+    "end": 39.48
+   },
+   {
+    "word": "a",
+    "start": 39.48,
+    "end": 39.58
+   },
+   {
+    "word": "long",
+    "start": 39.58,
+    "end": 39.88
+   },
+   {
+    "word": "word",
+    "start": 39.88,
+    "end": 40.24
+   },
+   {
+    "word": "is",
+    "start": 40.24,
+    "end": 40.64
+   },
+   {
+    "word": "already",
+    "start": 40.64,
+    "end": 41.18
+   },
+   {
+    "word": "red.",
+    "start": 41.18,
+    "end": 41.54
+   }
+  ]
+ }
+}
