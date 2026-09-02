@@ -39,7 +39,7 @@ export default function AuthLayout({
             width={1200}
             height={404}
             priority
-            className="w-45 h-auto mx-auto mb-6"
+            className="w-60 h-auto mx-auto mb-6"
           />
 
           {showTabs && (
@@ -75,7 +75,7 @@ export default function AuthLayout({
           className="relative h-64 w-64 object-contain drop-shadow-[0_24px_40px_rgba(49,46,129,0.35)]"
         />
         <div className="relative mt-7 text-center font-[family-name:var(--font-baloo)] font-extrabold text-[28px] text-indigo-950">
-          Unlock the Joy of Reading
+          Built by Educators, for Education
         </div>
         <p className="relative mt-2 max-w-[380px] text-center text-[15px] leading-relaxed text-zinc-600">
           Expert-designed lessons that help young readers build confidence and comprehension.
