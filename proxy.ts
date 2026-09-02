@@ -142,6 +142,14 @@ export async function proxy(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
+  // ── Old placement quiz → Luna's reading placement (Sep 2026) ─────
+  // Bookmarks, emails and stale links keep working; NEXT_PUBLIC_PLACEMENT_V2=0 restores the quiz.
+  if (pathname === "/assessment" && process.env.NEXT_PUBLIC_PLACEMENT_V2 !== "0") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/placement";
+    return NextResponse.redirect(url);
+  }
+
   // ── Auth gating ───────────────────────────────────────────────────
   const needsAuth = AUTH_REQUIRED_PREFIXES.some(
     (prefix) => pathname === prefix || pathname.startsWith(prefix + "/"),
