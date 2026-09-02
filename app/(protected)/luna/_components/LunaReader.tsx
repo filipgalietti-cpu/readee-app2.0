@@ -344,7 +344,7 @@ export default function LunaReader({
   // Big word-lesson takeover: after a line with misses, the story card is
   // REPLACED by one large word at a time, karaoke-underlined as each phoneme
   // plays. segIdx = which grapheme chunk is lit (-1 none, length = whole word).
-  const [wordLesson, setWordLesson] = useState<{ word: string; segs: SoundSegment[]; segIdx: number } | null>(null);
+  const [wordLesson, setWordLesson] = useState<{ word: string; segs: SoundSegment[]; segIdx: number; label?: string; done?: boolean } | null>(null);
   const missQueueRef = useRef<string[]>([]);
   // Orion help-ladder state for the word currently being taught: which rungs
   // have been tried. Escalates first-sound → onset-rime → sound-out → model →
@@ -770,7 +770,7 @@ export default function LunaReader({
    *  sound, hand the word straight back. If this is all they needed, help ends
    *  here — the shortest possible intervention. */
   function deliverFirstSound(word: string, segs: SoundSegment[]) {
-    setWordLesson({ word, segs, segIdx: 0 });
+    setWordLesson({ word, segs, segIdx: 0, label: "Hint - first sound" });
     setMode("speaking");
     setCaption(`It starts with "${segs[0].graph}" - listen!`);
     playUrl(`${PHONEME_BASE}/${segs[0].id}.mp3`, () => beginWordRead(word, [segs[0].id]));
@@ -778,7 +778,7 @@ export default function LunaReader({
   /** Rung 2 — ONSET-RIME: break the word apart. Onset sound, a beat, then the
    *  rest of the chunks quickly (no whole-word model yet — that's rung 4). */
   function deliverOnsetRime(word: string, segs: SoundSegment[]) {
-    setWordLesson({ word, segs, segIdx: 0 });
+    setWordLesson({ word, segs, segIdx: 0, label: "Hint - break it apart" });
     setMode("speaking");
     setCaption(`Break it apart: "${segs[0].graph}" then the rest!`);
     const tok = sessionTokenRef.current;
@@ -798,7 +798,7 @@ export default function LunaReader({
   /** Rung 3 — SOUND OUT: the full echo blend (the big karaoke Luna already
    *  had — but now it's the THIRD response to a stuck word, not the first). */
   function deliverSoundOut(word: string, segs: SoundSegment[]) {
-    setWordLesson({ word, segs, segIdx: -1 });
+    setWordLesson({ word, segs, segIdx: -1, label: "Hint - sound it out" });
     setMode("speaking");
     setCaption(`"${word}" - say each sound after me!`);
     playCached("echome-1", () => stepSegments(word, segs));
@@ -806,7 +806,7 @@ export default function LunaReader({
   /** SIGHT WORD rung: no phoneme blend (it would teach it wrong). Luna explains
    *  it's a know-by-heart word + says it, then the kid says it back. */
   function deliverSightSay(word: string) {
-    setWordLesson({ word, segs: [{ graph: word, id: "sight" }], segIdx: 1 });
+    setWordLesson({ word, segs: [{ graph: word, id: "sight" }], segIdx: 1, label: "Sight word - know it by heart" });
     setMode("speaking");
     setCaption(`"${word}" is a sight word - we just know it!`);
     const goCheck = () => beginWordRead(word, []);
@@ -829,7 +829,7 @@ export default function LunaReader({
   /** MODEL ("my turn"): Luna says the whole word, the child echoes it once.
    *  Whatever happens next, the ladder ends — no spiral. */
   function deliverModel(word: string, segs: SoundSegment[] | null) {
-    setWordLesson({ word, segs: segs ?? [{ graph: word, id: "sight" }], segIdx: (segs?.length ?? 1) });
+    setWordLesson({ word, segs: segs ?? [{ graph: word, id: "sight" }], segIdx: (segs?.length ?? 1), label: "My turn - listen" });
     setMode("speaking");
     setCaption(`Listen: "${word}". Then you say it!`);
     const goCheck = () => beginWordRead(word, segs?.map((sg) => sg.id) ?? []);
@@ -883,7 +883,7 @@ export default function LunaReader({
       const tok = sessionTokenRef.current;
       setMode("speaking");
       setCaption("Warm-up! Say each sound with me.");
-      setWordLesson({ word: pick, segs, segIdx: -1 });
+      setWordLesson({ word: pick, segs, segIdx: -1, label: "Warm-up - say each sound" });
       playCached("echome-1", () => {
         let k = 0;
         const step = () => {
@@ -941,7 +941,9 @@ export default function LunaReader({
       bunnyReact("correct");
       fixedWordsRef.current.push(wd.word); // fixed it by sounding out → praise later
       wordLadderRef.current = null;
-      playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`That's it - "${wd.word}"!`); }, () => afterWordCheck());
+      // Design beat: every chip flips GREEN while Luna celebrates.
+      setWordLesson((s) => (s ? { ...s, segIdx: s.segs.length, done: true, label: "You read it!" } : s));
+      playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption(`You read it! The word is "${wd.word}"!`); }, () => afterWordCheck());
     } else {
       // Not yet → the ladder decides what's next: a stronger hint, the model,
       // or moving on. Escalation IS the response — no lecture in between.
@@ -1750,11 +1752,12 @@ export default function LunaReader({
         <div ref={cardRef} style={{ width: "100%", borderRadius: 22, border: "2px solid #ddd6fe", background: "linear-gradient(to bottom right,#f5f3ff,#eef2ff)", padding: "16px 20px", boxShadow: "0 10px 40px -12px rgba(49,46,129,0.18)" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, minHeight: 22 }}>
             <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "#7c3aed" }}>
-              {phase === "building" ? "Making your story…"
-                : phase === "overall1" ? "First, the whole story"
-                  : phase === "drill" ? `Line ${Math.min(idx + 1, sentences.length)} of ${sentences.length}`
-                    : phase === "overall2" ? "One more time - the whole story"
-                      : "How you read it"}
+              {wordLesson?.label ? wordLesson.label
+                : phase === "building" ? "Making your story…"
+                  : phase === "overall1" ? "First, the whole story"
+                    : phase === "drill" ? `Line ${Math.min(idx + 1, sentences.length)} of ${sentences.length}`
+                      : phase === "overall2" ? "One more time - the whole story"
+                        : "How you read it"}
             </span>
             {sessionCarrots > 0 && (
               <span key={sessionCarrots} style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 13, fontWeight: 800, color: "#c2410c", background: "#fff7ed", border: "1px solid #fed7aa", borderRadius: 999, padding: "4px 12px", animation: "lunaCarrotPop .55s cubic-bezier(0.34,1.56,0.64,1)", fontVariantNumeric: "tabular-nums" }}>
@@ -1764,30 +1767,48 @@ export default function LunaReader({
             )}
           </div>
           {wordLesson ? (
-            // Word-lesson takeover: ONE big word, karaoke-underlined chunk by
-            // chunk as its phoneme plays (segIdx). Replaces the story text so
-            // the kid focuses on exactly this word.
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 150, padding: "18px 0 10px" }}>
-              <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 64, lineHeight: 1.1, letterSpacing: 2, color: "#18181b" }}>
+            // Word-lesson takeover (Filip's "Luna Hint First Sound" design):
+            // the current line with the target word pilled, then the word as
+            // rounded CHIPS - active chip solid violet with an underline bar,
+            // played chips soft violet, upcoming chips grey outline, and ALL
+            // chips green on `done` (the child produced the word).
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22, padding: "14px 0 16px" }}>
+              {phase === "drill" && (
+                <p style={{ margin: 0, fontFamily: SERIF, fontSize: 21, lineHeight: 1.8, color: "#18181b", textAlign: "center" }}>
+                  {(sentences[idx] ?? "").split(/\s+/).map((w, i) => (
+                    normWord(w) === normWord(wordLesson.word)
+                      ? <span key={i} style={{ background: "#ede9fe", borderRadius: 8, padding: "2px 8px", marginRight: 4, display: "inline-block" }}>{w}</span>
+                      : <span key={i} style={{ marginRight: 4, display: "inline-block" }}>{w}</span>
+                  ))}
+                </p>
+              )}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 12, padding: "0 0 10px" }}>
                 {wordLesson.segs.map((sg, i) => {
-                  const active = wordLesson.segIdx === i;
                   const wholeWord = wordLesson.segIdx >= wordLesson.segs.length;
-                  const seen = wordLesson.segIdx > i || wholeWord;
+                  const green = !!wordLesson.done;
+                  const active = !green && wordLesson.segIdx === i;
+                  const played = !green && !wholeWord && wordLesson.segIdx > i;
+                  const lit = green || active || wholeWord;
+                  const size = wordLesson.segs.length > 5 ? 52 : 64;
                   return (
-                    <span
-                      key={i}
-                      style={{
-                        display: "inline-block",
-                        padding: "0 3px",
-                        color: active || wholeWord ? "#6d28d9" : seen ? "#7c3aed" : "#18181b",
-                        borderBottom: active ? "6px solid #7c3aed" : seen ? "6px solid #ddd6fe" : "6px solid transparent",
-                        borderRadius: 2,
-                        transform: active ? "scale(1.12)" : "scale(1)",
-                        transition: "color .2s ease, border-color .2s ease, transform .2s ease",
-                      }}
-                    >
-                      {sg.graph}
-                    </span>
+                    <div key={i} style={{ position: "relative" }}>
+                      <div
+                        style={{
+                          boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center",
+                          minWidth: size, height: size, padding: "0 12px", borderRadius: 18,
+                          background: green ? "#10b981" : active || wholeWord ? "#7c3aed" : played ? "#ede9fe" : "transparent",
+                          border: lit || played ? "none" : "2px solid #e4e4e7",
+                          color: lit ? "#ffffff" : played ? "#6d28d9" : "#a1a1aa",
+                          boxShadow: green ? "0 6px 18px -6px rgba(16,185,129,0.55)" : active || wholeWord ? "0 6px 18px -6px rgba(124,58,237,0.55)" : "none",
+                          fontFamily: BALOO, fontWeight: 800, fontSize: size > 56 ? 32 : 26, lineHeight: 1,
+                          transform: active ? "scale(1.08)" : "scale(1)",
+                          transition: "background .3s ease, border-color .3s ease, color .3s ease, box-shadow .3s ease, transform .2s ease",
+                        }}
+                      >
+                        {sg.graph}
+                      </div>
+                      <span style={{ position: "absolute", left: 8, right: 8, bottom: -10, height: 5, borderRadius: 2, background: "#7c3aed", opacity: active ? 1 : 0, transition: "opacity .3s ease" }} />
+                    </div>
                   );
                 })}
               </div>
