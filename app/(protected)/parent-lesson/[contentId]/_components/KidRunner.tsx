@@ -537,7 +537,7 @@ function RecapPhase({
         <>
           <div className="mt-3 flex justify-center gap-1.5">
             {[0, 1, 2].map((i) => (
-              <Glyph name="sparkles" size={28} className="${ i < stars ?" />
+              <Glyph key={i} name="sparkles" size={28} className={i < stars ? "text-amber-400" : "text-zinc-200"} />
             ))}
           </div>
           {firstTry > 0 && (

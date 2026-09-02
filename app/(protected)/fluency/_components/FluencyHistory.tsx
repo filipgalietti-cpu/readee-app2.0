@@ -100,7 +100,7 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
                       : ""}
                   </div>
                 </div>
-                <Glyph name="chevron-down" size={16} className="text-zinc-400 transition ${ isOpen ?" />
+                <Glyph name="chevron-down" size={16} className={`text-zinc-400 transition ${isOpen ? "rotate-180" : ""}`} />
               </button>
               {isOpen && (
                 <div className="space-y-3 border-t border-zinc-100 bg-zinc-50/40 px-4 py-3">

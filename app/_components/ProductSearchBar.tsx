@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { semanticSearch } from "@/app/(protected)/_actions/search-actions";
 import type { SearchHit } from "@/lib/ai/embeddings";
-import { Glyph } from "@/app/_components/Glyph";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 type HrefArgs = {
   id: string;
@@ -49,7 +49,7 @@ function buildHref(contentType: string, args: HrefArgs): string {
   }
 }
 
-const TYPE_META: Record<string, { label: string; icon: any; color: string }> = {
+const TYPE_META: Record<string, { label: string; icon: GlyphName; color: string }> = {
   sample_lesson:   { label: "Lesson",     icon: "book-open",     color: "text-indigo-600 bg-indigo-50" },
   sample_question: { label: "Practice Q", icon: "clipboard-pen", color: "text-emerald-600 bg-emerald-50" },
   story:           { label: "Story",      icon: "book-open", color: "text-amber-600 bg-amber-50" },
@@ -232,7 +232,7 @@ export default function ProductSearchBar({
                 <div
                   className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg ${meta.color}`}
                 >
-                  <Icon className="h-3.5 w-3.5" />
+                  <Glyph name={Icon} size={14} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">

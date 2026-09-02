@@ -156,7 +156,7 @@ export default function TestimonialPrompt({
                   aria-label={`${n} stars`}
                   className="rounded-md p-0.5 transition hover:scale-110"
                 >
-                  <Glyph name="star" size={28} className="${ n <= rating ?" />
+                  <Glyph name="star" size={28} className={n <= rating ? "text-amber-400" : "text-zinc-300"} />
                 </button>
               ))}
             </div>

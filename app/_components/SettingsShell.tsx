@@ -85,7 +85,7 @@ export default function SettingsShell({ children }: { children: React.ReactNode 
     {
       label: "Fun",
       items: [
-        { href: `/shop?child=${childId}`, icon: "carrot", label: "Shop", path: "/shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+        { href: `/shop?child=${childId}`, icon: "carrot", label: "Shop", path: "/shop", iconColor: "text-orange-500" },
         { href: `/leaderboard?child=${childId}`, icon: "trophy", label: "Leaderboard", path: "/leaderboard" },
       ],
     },
@@ -139,7 +139,7 @@ export default function SettingsShell({ children }: { children: React.ReactNode 
                       <nav className="space-y-0.5">
                         {items.map(({ href, icon: Icon, label: itemLabel, iconColor }: any) => (
                           <Link key={href} href={href} className={navLinkClass(href)}>
-                            <Icon className={iconColor || navIconClass(href)} strokeWidth={1.5} />
+                            <Glyph name={Icon} size={16} className={iconColor || navIconClass(href)} />
                             <span>{itemLabel}</span>
                           </Link>
                         ))}

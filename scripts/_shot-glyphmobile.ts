@@ -8,6 +8,14 @@ const PROBE = `(() => {
     const r = el.getBoundingClientRect();
     const name = (mask.match(/icons\\/ui\\/([^."]+)\\.svg/) || [])[1] || "?";
     if (r.width >= 6 && r.height >= 6) continue;
+    // an icon inside a breakpoint-hidden container correctly measures zero;
+    // only a collapsed VISIBLE parent is a real defect
+    let p = el, hidden = false;
+    while (p && p !== document.body) {
+      if (getComputedStyle(p).display === "none") { hidden = true; break; }
+      p = p.parentElement;
+    }
+    if (hidden) continue;
     out.push({ name, w: Math.round(r.width), h: Math.round(r.height) });
   }
   return out;

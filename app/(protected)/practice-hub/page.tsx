@@ -627,7 +627,7 @@ function PracticeHubContent() {
                     </span>
                   </div>
                 </div>
-                <Glyph name="chevron-down" size={20} className="text-zinc-400 flex-shrink-0 transition-transform ${open ?" />
+                <Glyph name="chevron-down" size={20} className={`text-zinc-400 flex-shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
               </button>
 
               <AnimatePresence initial={false}>

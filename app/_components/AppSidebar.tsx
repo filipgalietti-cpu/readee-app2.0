@@ -11,13 +11,13 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
-import { Glyph } from "@/app/_components/Glyph";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ─── Nav items ──────────────────────────────────── */
 
 type NavItem = {
   href: string;
-  icon: any;
+  icon: GlyphName;
   label: string;
   /** Reward destinations render a Fluent Emoji instead of the Lucide glyph, so
    *  the "Fun" group reads as reward rather than admin. See CLAUDE.md. */
@@ -468,7 +468,6 @@ function NavSectionBlock({
   const childHrefs = section.items.map((i) => i.href.split("?")[0]);
   const containsActive = childHrefs.some((h) => pathname === h);
   const kid = section.kidSize;
-  const iconDim = kid ? "w-6 h-6" : "w-4 h-4";
   const navSpacing = kid ? "space-y-1.5" : "space-y-0.5";
   // Start expanded if user is currently on a route inside this section.
   const [open, setOpen] = useState(
@@ -499,17 +498,18 @@ function NavSectionBlock({
               {fluent ? (
                 <FluentIcon name={fluent} size={kid ? 24 : 20} className="relative z-10 flex-shrink-0" />
               ) : (
-                <Icon
+                <Glyph
+                  name={Icon}
+                  size={kid ? 24 : 16}
                   className={
                     shimmer
-                      ? `relative z-10 ${iconDim} text-white drop-shadow-sm`
+                      ? "relative z-10 text-white drop-shadow-sm"
                       : emphasis && !isActive(pathname, href)
-                        ? `${iconDim} text-violet-500`
+                        ? "text-violet-500"
                         : iconColor
-                          ? `${iconDim} ${iconColor}`
+                          ? iconColor
                           : navIconClass(pathname, href, kid)
                   }
-                  strokeWidth={1.5}
                 />
               )}
               <span className={shimmer ? "relative z-10" : undefined}>{itemLabel}</span>
@@ -528,7 +528,7 @@ function NavSectionBlock({
         className="flex w-full items-center gap-1 px-2 mb-1 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest hover:text-zinc-600"
         aria-expanded={open}
       >
-        <Glyph name="chevron-right" size={12} className="transition-transform ${open ?" />
+        <Glyph name="chevron-right" size={12} className={`transition-transform ${open ? "rotate-90" : ""}`} />
         {section.label}
       </button>
       {open && (
@@ -547,17 +547,18 @@ function NavSectionBlock({
                   shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
                 />
               )}
-              <Icon
+              <Glyph
+                name={Icon}
+                size={kid ? 24 : 16}
                 className={
                   shimmer
-                    ? `relative z-10 ${iconDim} text-white drop-shadow-sm`
+                    ? "relative z-10 text-white drop-shadow-sm"
                     : emphasis && !isActive(pathname, href)
-                      ? `${iconDim} text-violet-500`
+                      ? "text-violet-500"
                       : iconColor
-                        ? `${iconDim} ${iconColor}`
+                        ? iconColor
                         : navIconClass(pathname, href, kid)
                 }
-                strokeWidth={1.5}
               />
               <span className={shimmer ? "relative z-10" : undefined}>{itemLabel}</span>
             </Link>

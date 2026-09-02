@@ -1213,7 +1213,7 @@ function ParentSidebar({
       label: "Fun",
       items: [
         { href: `/levels?child=${child.id}`, icon: "star", label: "Reader Levels" },
-        { href: `/shop?child=${child.id}`, icon: "carrot", label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+        { href: `/shop?child=${child.id}`, icon: "carrot", label: "Shop", iconColor: "text-orange-500" },
         { href: `/leaderboard?child=${child.id}`, icon: "trophy", label: "Leaderboard" },
       ],
     },
@@ -1274,7 +1274,7 @@ function ParentSidebar({
                     : navLinkClass(href)
                   }
                 >
-                  <Icon className={iconColor || (emphasis && !isActive(href) ? "w-4 h-4 text-violet-500" : navIconClass(href))} strokeWidth={1.5} />
+                  <Glyph name={Icon} size={16} className={iconColor || (emphasis && !isActive(href) ? "text-violet-500" : navIconClass(href))} />
                   <span>{itemLabel}</span>
                 </Link>
               ))}
@@ -1723,7 +1723,7 @@ function CurriculumOverview({
                       </span>
                     )}
                   </div>
-                  <Glyph name="chevron-down" size={16} className="text-zinc-400 transition-transform flex-shrink-0 ${isExpanded ?" />
+                  <Glyph name="chevron-down" size={16} className={`text-zinc-400 transition-transform flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`} />
                 </button>
 
                 {isExpanded && (
