@@ -36,8 +36,8 @@ export default function AuthLayout({
           <Image
             src="/readee-logo.png"
             alt="Readee - Learn to Read"
-            width={612}
-            height={408}
+            width={1200}
+            height={404}
             priority
             className="w-44 h-auto mx-auto mb-6"
           />

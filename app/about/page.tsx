@@ -24,8 +24,8 @@ export default async function About() {
           <img
             src="/readee-logo.png"
             alt="Readee"
-            width={612}
-            height={408}
+            width={1200}
+            height={404}
             className="w-full h-auto"
           />
         </div>
