@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, BookOpen } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import TodayQuestionPlayer from "./TodayQuestionPlayer";
 import ReadAloudButton from "./ReadAloudButton";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Q = {
   prompt: string;
@@ -59,7 +60,7 @@ export default function DailyReader({
       {/* LEFT — the reading */}
       <div className="min-w-0">
         <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700">
-          <Sparkles className="h-3 w-3" />
+          <FluentIcon name="sparkles" size={12} />
           {theme} · {dateLabel}
         </div>
 
@@ -114,7 +115,7 @@ export default function DailyReader({
         )}
 
         <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
-          <BookOpen className="h-3.5 w-3.5" />
+          <FluentIcon name="open-book" size={14} />
           {wordCount} words · {Math.max(1, Math.round(wordCount / 150))} min read
           {/* Keyed by level so switching tears down the old Audio element
               (its unmount cleanup pauses playback) and points at the right

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Lock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
@@ -7,6 +7,7 @@ import { FREE_LIMITS } from "@/lib/plan/limits";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import StoryStudio from "./_components/StoryStudio";
 import { EmptyState } from "@/app/_components/EmptyState";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -75,7 +76,7 @@ export default async function StoryStudioPage() {
             Luna
           </Link>
           <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100">
-            <Lock className="mx-auto h-10 w-10 text-violet-500" />
+            <FluentIcon name="lock" size={40} />
             <h1 className="mt-4 text-xl font-extrabold text-zinc-900">
               {child.first_name} used all {FREE_LIMITS.personalizedStoriesFree} free stories
             </h1>

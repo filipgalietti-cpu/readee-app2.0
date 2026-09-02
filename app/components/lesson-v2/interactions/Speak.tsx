@@ -5,6 +5,7 @@ import type { SpeakDef } from "@/lib/lesson-engine/types";
 import { Mic } from "lucide-react";
 import { sfxCorrect, playTryAgain, playPraise, playNiceTry, speak as sayFallback } from "@/lib/lesson-engine/cues";
 import { startPronAssessment, type PAPhrase, type StreamController } from "@/app/(protected)/luna/_components/azure-stream";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 // Minimal Web Speech API typing (not in the DOM lib).
 interface SRResult { transcript: string }
@@ -237,7 +238,7 @@ export default function Speak({
       )}
       {engine === "azure" && status !== "good" ? (
         <div className="gb-piece gb-listening" style={{ width: "auto", padding: "0 22px", display: "inline-flex", alignItems: "center", gap: 8 }}>
-          <Mic size={22} className="animate-pulse" /> I&apos;m listening…
+          <FluentIcon name="microphone" size={22} /> I&apos;m listening…
         </div>
       ) : (
         status !== "good" && (
@@ -251,7 +252,7 @@ export default function Speak({
               "listening…"
             ) : (
               <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                <Mic size={22} /> read it aloud
+                <FluentIcon name="microphone" size={22} /> read it aloud
               </span>
             )}
           </button>

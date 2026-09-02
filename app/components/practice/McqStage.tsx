@@ -15,9 +15,10 @@
  */
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Volume2, Lightbulb, Check as CheckIcon, X as XIcon, ArrowRight } from "lucide-react";
+import { Volume2, ArrowRight, X as XIcon } from "lucide-react";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /* Claude Design "Practice Runner" choice-card palette (letter chip + card). */
 export const DESIGN_CHOICE_COLORS = [
@@ -114,7 +115,7 @@ export function McqStage(props: McqStageProps) {
           >
             <span className="w-9 h-9 rounded-xl flex items-center justify-center font-[family-name:var(--font-baloo)] font-bold text-[17px] flex-none" style={{ background: chipBg, color: chipFg }}>{"ABCD"[i]}</span>
             <span className="flex-1 font-bold text-[17px] leading-snug" style={{ color: fg }}>{String(choice).replace(/\*\*/g, "")}</span>
-            {showCheck && <CheckIcon className="w-6 h-6 flex-none" stroke="#059669" strokeWidth={3} />}
+            {showCheck && <FluentIcon name="check" size={24} />}
             {showX && <XIcon className="w-5 h-5 flex-none" stroke="#a1a1aa" strokeWidth={3} />}
           </motion.button>
         );
@@ -138,7 +139,7 @@ export function McqStage(props: McqStageProps) {
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-extrabold tracking-[0.14em] text-indigo-700">THE STORY</span>
               <button onClick={onReplay} className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 rounded-full px-3 py-1 hover:bg-indigo-100 active:scale-95 transition">
-                <Volume2 className="w-3.5 h-3.5 text-indigo-700" strokeWidth={2.2} />
+                <FluentIcon name="speaker" size={14} />
                 <span className="text-[12.5px] font-extrabold text-indigo-700">Read to me</span>
               </button>
             </div>
@@ -231,12 +232,12 @@ export function QuestionDock({ onReplay, hint, showHint, hintDisabled, onHint }:
   return (
     <div className="fixed right-3 sm:right-5 bottom-3 z-[6] flex items-center gap-2.5">
       <button onClick={onReplay} className="flex items-center gap-2 bg-white/95 border-[1.5px] border-indigo-200 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] hover:-translate-y-0.5 active:scale-95 transition">
-        <Volume2 className="w-[19px] h-[19px] text-indigo-700" strokeWidth={2.2} />
+        <FluentIcon name="speaker" size={19} />
         <span className="text-[15px] font-extrabold text-indigo-950">Read to me</span>
       </button>
       {hint && (
         <button onClick={onHint} disabled={hintDisabled} className="flex items-center gap-2 bg-white/95 border-[1.5px] border-amber-300 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:active:scale-95 transition">
-          <Lightbulb className="w-[19px] h-[19px] text-amber-600" strokeWidth={2.2} />
+          <FluentIcon name="lightbulb" size={19} />
           <span className="text-[15px] font-extrabold text-amber-800">{showHint ? "Hint used" : "Hint"}</span>
         </button>
       )}

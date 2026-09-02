@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Sparkles, X, ArrowRight } from "lucide-react";
+import { X, ArrowRight, Sparkles } from "lucide-react";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import {
@@ -12,6 +12,7 @@ import {
   WHATS_NEW_SEEN_KEY,
   type Announcement,
 } from "@/lib/data/announcements";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /** Read the dismissed-announcement ids from localStorage (per device). */
 function readSeen(): string[] {
@@ -124,7 +125,7 @@ export default function WhatsNew() {
 
           <div className="px-6 pb-6 pt-5 text-center">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-50 px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-violet-600">
-              <Sparkles className="h-3.5 w-3.5" />
+              <FluentIcon name="sparkles" size={14} />
               New
             </span>
             <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight text-slate-900">

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, Sparkles, BookOpenText } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import StoryReader from "./_components/StoryReader";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -44,7 +45,7 @@ export default async function PersonalizedStoryPage({
       </Link>
       <div className="mt-3">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
-          <Sparkles className="h-4 w-4" />
+          <FluentIcon name="sparkles" size={16} />
           A story for{" "}
           {(child as any)?.first_name ?? "your child"}
         </div>

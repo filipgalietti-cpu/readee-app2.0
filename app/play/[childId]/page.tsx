@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { ArrowRight, BookOpen, BookText, Brain, Compass, Library as LibraryIcon, LogOut } from "lucide-react";
+import { ArrowRight, BookText, Compass, Library as LibraryIcon, LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import {
@@ -111,14 +111,14 @@ export default async function PlayHomePage({
             href={`/review?child=${childId}`}
             title="Today's review"
             subtitle="What Readee thinks you're ready for"
-            icon={<Brain className="h-5 w-5" />}
+            icon={<FluentIcon name="brain" size={20} />}
             color="indigo"
           />
           <PlayCard
             href={`/journey?child=${childId}`}
             title="Reading Journey"
             subtitle="Your progress through every grade"
-            icon={<BookOpen className="h-5 w-5" />}
+            icon={<FluentIcon name="open-book" size={20} />}
             color="violet"
           />
           <PlayCard

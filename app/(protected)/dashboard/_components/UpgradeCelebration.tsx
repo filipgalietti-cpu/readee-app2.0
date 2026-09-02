@@ -25,6 +25,7 @@
  */
 
 import { useEffect, useMemo, useState } from "react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const CONFETTI_COLORS = [
   "#6366f1",
@@ -301,7 +302,7 @@ export default function UpgradeCelebration({ onClose }: { onClose: () => void })
         <div className="uc-perks">
           {perks.map((perk, i) => (
             <div key={perk} className={`uc-perk uc-perk-${i}`}>
-              <Check />
+              <FluentIcon name="check" size={20} />
               {perk}
             </div>
           ))}

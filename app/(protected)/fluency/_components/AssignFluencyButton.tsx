@@ -2,15 +2,14 @@
 
 import { useEffect, useState, useTransition } from "react";
 import {
-  GraduationCap,
   X,
-  Check,
   Loader2,
   AlertCircle,
   CalendarDays,
 } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { assignFluencyPassage } from "@/app/(protected)/classroom/actions";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Classroom = { id: string; name: string };
 
@@ -120,7 +119,7 @@ export default function AssignFluencyButton({
         disabled={!passageText.trim()}
         className="inline-flex items-center gap-1.5 rounded-full border border-violet-300 bg-white px-4 py-2 text-xs font-bold text-violet-700 shadow-sm transition hover:bg-violet-50 disabled:opacity-50"
       >
-        <GraduationCap className="h-3.5 w-3.5" />
+        <FluentIcon name="graduation-cap" size={14} />
         Assign to my class
       </button>
 
@@ -167,7 +166,7 @@ export default function AssignFluencyButton({
                           : "border-zinc-300 bg-white"
                       }`}
                     >
-                      {isSel && <Check className="h-3 w-3" />}
+                      {isSel && <FluentIcon name="check" size={12} />}
                     </span>
                   </button>
                 );
@@ -193,7 +192,7 @@ export default function AssignFluencyButton({
             )}
             {doneMsg && (
               <div className="mt-3 flex items-start gap-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700">
-                <Check className="mt-0.5 h-4 w-4 flex-shrink-0" />
+                <FluentIcon name="check" size={16} />
                 {doneMsg}
               </div>
             )}
@@ -220,7 +219,7 @@ export default function AssignFluencyButton({
                     </>
                   ) : (
                     <>
-                      <GraduationCap className="h-3.5 w-3.5" />
+                      <FluentIcon name="graduation-cap" size={14} />
                       Assign
                     </>
                   )}

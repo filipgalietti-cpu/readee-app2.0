@@ -3,17 +3,16 @@
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
-  Sparkles,
   Loader2,
   AlertCircle,
   X,
   Plus,
-  BookOpenText,
-} from "lucide-react";
+  } from "lucide-react";
 import {
   buildPersonalizedStoryAction,
   updateChildInterests,
 } from "@/lib/ai/path-actions";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Child = {
   id: string;
@@ -95,7 +94,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
   return (
     <div className="rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-pink-50 p-6 shadow-sm">
       <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
-        <Sparkles className="h-4 w-4" />
+        <FluentIcon name="sparkles" size={16} />
         Build a new story
       </div>
 
@@ -231,7 +230,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
             </>
           ) : (
             <>
-              <BookOpenText className="h-4 w-4" />
+              <FluentIcon name="open-book" size={16} />
               Build story for {child?.first_name ?? "child"}
             </>
           )}

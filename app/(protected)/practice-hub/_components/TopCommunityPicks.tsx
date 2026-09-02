@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Users, Sparkles, ArrowRight } from "lucide-react";
+import { Users, ArrowRight } from "lucide-react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Pick = {
   id: string;
@@ -64,7 +65,7 @@ export default function TopCommunityPicks() {
                 />
               ) : (
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-violet-100 text-violet-500">
-                  <Sparkles className="h-5 w-5" />
+                  <FluentIcon name="sparkles" size={20} />
                 </div>
               )}
               <div className="min-w-0 flex-1">

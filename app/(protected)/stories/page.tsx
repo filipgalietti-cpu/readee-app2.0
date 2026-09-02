@@ -17,7 +17,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits, isPaidPlan } from "@/lib/plan/limits";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
-import { Lock, ChevronDown, Play, Carrot, Star, Check } from "lucide-react";
+import { ChevronDown, Play, Star } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
 import storiesKaraoke from "@/app/data/stories-karaoke.json";
@@ -652,7 +652,7 @@ function StoriesContent() {
                 </div>
                 {isProLocked ? (
                   <span className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-extrabold" style={{ background: isExpanded ? "rgba(255,255,255,0.22)" : "#fef3c7", color: isExpanded ? "#fff" : "#b45309" }}>
-                    <Lock className="h-3 w-3" /> Readee+
+                    <FluentIcon name="lock" size={12} /> Readee+
                   </span>
                 ) : (
                   <span className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-extrabold" style={{ background: isExpanded ? "rgba(255,255,255,0.22)" : "#eef2ff", color: isExpanded ? "#fff" : "#4338ca" }}>
@@ -694,7 +694,7 @@ function StoriesContent() {
                                 <div className="absolute inset-0 flex items-center justify-center overflow-hidden" style={{ background: "linear-gradient(180deg, rgba(255,251,235,0.35), rgba(245,158,11,0.22))" }}>
                                   <span className="pointer-events-none absolute" style={{ inset: "-20% -40%", background: "linear-gradient(105deg, transparent 40%, rgba(255,236,170,0.65) 50%, transparent 60%)", animation: "goldSweep 3.2s ease-in-out infinite" }} />
                                   <div className="relative flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-extrabold" style={{ background: "#fef3c7", color: "#b45309", boxShadow: "0 2px 8px rgba(180,83,9,0.25)" }}>
-                                    <Lock className="h-3 w-3" /> Readee+
+                                    <FluentIcon name="lock" size={12} /> Readee+
                                   </div>
                                 </div>
                               </div>
@@ -734,7 +734,7 @@ function StoriesContent() {
                           <p className="text-[17px] font-bold leading-tight" style={{ color: "#18181b", fontFamily: "var(--font-baloo, inherit)" }}>{s.title}</p>
                           {isDone ? (
                             <span className="mt-1.5 inline-flex items-center gap-1 text-[12.5px] font-extrabold" style={{ color: "#b45309" }}>
-                              <Check className="h-3 w-3" strokeWidth={3} /> Finished!
+                              <FluentIcon name="check" size={12} /> Finished!
                             </span>
                           ) : (
                             <span className="mt-1.5 inline-flex items-center gap-1 text-[12.5px] font-bold" style={{ color: "#71717a" }}>

@@ -25,9 +25,10 @@
  * Touch targets ≥44×44; active:scale press feedback; no hover states.
  */
 import type { ReactNode } from "react";
-import { X, Volume2 } from "lucide-react";
+import { X } from "lucide-react";
 import { motion } from "framer-motion";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export interface LessonShellMobileProps {
   slideNum: number;
@@ -179,7 +180,7 @@ function AudioPulse({ playing }: { playing: boolean }) {
           <span className="absolute inset-0 animate-ping rounded-full bg-violet-100" />
         )}
         <span className="absolute inset-1 flex items-center justify-center rounded-full border border-violet-300 bg-white text-violet-500">
-          <Volume2 size={13} />
+          <FluentIcon name="speaker" size={13} />
         </span>
       </div>
       <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">

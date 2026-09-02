@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
@@ -170,7 +170,7 @@ export default function QuizHypeIntro({
             className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[15px] font-extrabold"
             style={{ background: "#eef2ff", borderColor: "#c7d2fe", color: "#4338ca", animation: "chipIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.35s both" }}
           >
-            <Sparkles className="h-4 w-4" strokeWidth={2.5} />
+            <FluentIcon name="sparkles" size={16} />
             <span>{quizName}</span>
             <span style={{ color: "#6366f1" }}>·</span>
             <span>{questionCount} questions</span>

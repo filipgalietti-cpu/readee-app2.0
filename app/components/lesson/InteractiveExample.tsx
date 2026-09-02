@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Lightbulb } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
  * The "we do" of a lesson — a scaffolded, interactive example. The kid
@@ -102,7 +103,7 @@ export function InteractiveExample({
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-lg sm:text-xl font-extrabold text-emerald-600"
           >
-            <Sparkles className="h-5 w-5" /> Yes! You got it!
+            <FluentIcon name="sparkles" size={20} /> Yes! You got it!
           </motion.div>
         ) : showHint ? (
           <motion.div
@@ -111,7 +112,7 @@ export function InteractiveExample({
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 rounded-xl bg-amber-50 px-4 py-2 text-sm sm:text-base font-semibold text-amber-700 [text-wrap:balance]"
           >
-            <Lightbulb className="h-5 w-5 flex-shrink-0" /> {hint} Try again!
+            <FluentIcon name="lightbulb" size={20} /> {hint} Try again!
           </motion.div>
         ) : null}
       </AnimatePresence>

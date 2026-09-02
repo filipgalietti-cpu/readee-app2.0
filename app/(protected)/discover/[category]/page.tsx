@@ -2,8 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { getCategory } from "@/lib/discover/categories";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -67,7 +68,7 @@ export default async function DiscoverCategoryPage({
         />
         <div>
           <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
-            <Sparkles className="h-3 w-3" />
+            <FluentIcon name="sparkles" size={12} />
             {cat.label}
           </div>
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">

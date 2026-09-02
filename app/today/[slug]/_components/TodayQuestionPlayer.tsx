@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, X as XIcon, ThumbsUp, ThumbsDown, Star } from "lucide-react";
+import { Check, X as XIcon, ThumbsUp, ThumbsDown } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -101,7 +101,7 @@ export default function TodayQuestionPlayer({
           <div className="mt-1.5 flex gap-1">
             {[1, 2, 3].map((n) => {
               const filled = correctCount / total >= n / 3;
-              return <Star key={n} className="h-[26px] w-[26px]" style={{ color: filled ? "#f59e0b" : "#e4e4e7", fill: filled ? "#f59e0b" : "#e4e4e7" }} strokeWidth={1.5} />;
+              return <FluentIcon name="star" size={26} />;
             })}
           </div>
           <div className="mt-2 font-display text-[22px] font-extrabold text-zinc-900">{title}</div>

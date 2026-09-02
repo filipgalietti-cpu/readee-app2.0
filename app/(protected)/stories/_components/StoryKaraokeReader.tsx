@@ -12,7 +12,7 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
-import { Volume2, ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useAudio } from "@/lib/audio/use-audio";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 
@@ -212,7 +212,7 @@ export default function StoryKaraokeReader({
                 ))}
               </div>
               <button onClick={() => playUrl(fallbackAudioUrl)} className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-50 px-3 py-1.5 text-sm font-medium text-violet-600 hover:bg-violet-100">
-                <Volume2 className="h-4 w-4" /> Listen
+                <FluentIcon name="speaker" size={16} /> Listen
               </button>
               <button onClick={finish} className="mt-4 block w-full rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 py-4 text-base font-extrabold text-white shadow-sm active:scale-[0.98]">
                 I&apos;m done reading →
@@ -345,7 +345,7 @@ export default function StoryKaraokeReader({
                     className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full text-[15px] font-extrabold transition hover:-translate-y-0.5 active:scale-95"
                     style={{ height: 52, padding: "0 20px", background: playing ? "#6d28d9" : "#ede9fe", color: playing ? "#fff" : "#6d28d9" }}
                   >
-                    <Volume2 className="h-5 w-5" />
+                    <FluentIcon name="speaker" size={20} />
                     {isProse ? (playing ? "Stop reading" : "Read it to me") : "Play again"}
                   </button>
 

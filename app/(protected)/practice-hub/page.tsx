@@ -9,9 +9,8 @@ import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import Image from "next/image";
 import {
-  Shuffle, BookOpen, Type, Newspaper, MessageCircle,
-  ChevronDown, ChevronRight, Zap, Star, Check,
-} from "lucide-react";
+  Shuffle, Type, Newspaper, MessageCircle,
+  ChevronDown, ChevronRight, Star, Check, BookOpen } from "lucide-react";
 import TopCommunityPicks from "./_components/TopCommunityPicks";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import ProductSearchBar from "@/app/_components/ProductSearchBar";
@@ -531,7 +530,7 @@ function PracticeHubContent() {
                 {child.streak_days ?? 0}-day streak
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-amber-700">
-                <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" strokeWidth={1} />
+                <FluentIcon name="star" size={14} />
                 {masteredTotal} skills mastered
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-emerald-700">
@@ -665,7 +664,7 @@ function PracticeHubContent() {
                               <p className="text-sm font-semibold text-zinc-900 leading-snug">{name}</p>
                               {isNext && (
                                 <span className="inline-flex items-center gap-1 flex-shrink-0 rounded-full bg-amber-100 text-amber-700 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide">
-                                  <Zap className="w-2.5 h-2.5 fill-amber-500" strokeWidth={1} />
+                                  <FluentIcon name="zap" size={20} />
                                   Next
                                 </span>
                               )}

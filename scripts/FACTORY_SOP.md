@@ -131,3 +131,35 @@ quiz-qa must PASS.
   with plausible parallel distractors, ≥2 speak beats leaning EXPLANATION ("tell why"), paragraph-
   focus questions, sentence-length tiles allowed (≤28 chars).
 - All K/G1 rules still apply verbatim (reveals, enumeration, stimulus, whisper-verify, namespaced exams).
+
+## Grade 3 production (Sep 1+ · G3 GATE calibration — the mold for 41 lessons)
+- Factories take `--grade="3rd Grade"`. Core = ON-GRADE G3; easier = G2-bridge; harder = G4
+  concept TAUGHT IN THE STIMULUS first (a transfer question teaches its new tool in the
+  narration, then asks — never an ambush; G2 harder bands already proved this pattern works).
+- FELT STEP-UP vs G2, line by line (one-line why on each):
+  - **Passages**: RL/RI anchor texts 12-16 sentences over 5-6 child-read pages — G2 capstones
+    topped out at 12-13 over 5 (the-whole-story, read-to-learn), so G3 must read as a real
+    chapter, not a longer caption. Word-work/RF read-alongs 4-6 sentences (density of taught
+    words beats raw length in a phonics beat).
+  - **Sentences**: compound standard; EARLY COMPLEX joins the diet (because/when/after/so-that
+    clauses, mid-sentence commas) — that is the grades-2-3 band ceiling G3 owns. Dialogue WITH
+    speech tags ("Every part has one job," said Rosa) appears in anchors: G3 readers must carry
+    quoted speech, which no G2 passage carried.
+  - **Vocabulary**: tier-2 words with in-text context support are STANDARD, 3-4 stretch words
+    per anchor (G2 carried 2: puckered/scattered) — L.3.4a makes context-attack the daily tool,
+    so passages must plant attackable words on purpose.
+  - **Scenes**: 13-16 per lesson (G2 ran 12-15) — the extra beats buy guided/apply depth on
+    longer texts, never a longer hook or a second celebrate.
+  - **Speak**: multi-sentence accept-mode reads (2-3 sentences) are the STANDARD read beat, and
+    ≥1 PRODUCTION speak carries a fuller accept list (12+ tokens) — G3 answers arrive as
+    phrases and reasons, not single words, and RF.3.4b grades expression over longer runs.
+  - **Quiz bands**: easier = G2-bridge at 3 options (2-option only when the scaffold is
+    GENUINELY easier work, e.g. picture-anchored either/or — a 2-opt coin flip under-measures a
+    G3 kid); core = 4-option parallel-length TEXT tiles (unchanged law); harder = G4 transfer
+    (Greek/Latin roots, theme/summary, firsthand-secondhand) taught in the stimulus.
+  - **Tone**: drop the sing-song, keep the warmth — "you're a big kid reader now" respect:
+    shorter praise, more workshop ("Run the machine yourself"), zero babying. Same teacher, same
+    voice, NO tonal cliff from G2: a G2 finisher must not feel talked down to OR handed to a
+    stranger.
+- All K/G1/G2 rules still apply verbatim (reveals, enumeration, stimulus, whisper-verify,
+  textless images, tiles ≤28 lowercase audio-free, speak scenes imageless, namespaced exams).

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Sparkles, BookOpenText, ArrowRight, ArrowLeft, ImageIcon } from "lucide-react";
+import { ArrowRight, ArrowLeft, ImageIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import StoryGenerator from "./_components/StoryGenerator";
 import { EmptyState } from "@/app/_components/EmptyState";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -54,7 +55,7 @@ export default async function StoriesForMePage() {
         Luna
       </Link>
       <div className="mt-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
-        <Sparkles className="h-4 w-4" />
+        <FluentIcon name="sparkles" size={16} />
         Story with Luna
       </div>
       <h1

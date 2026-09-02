@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Sparkles, BookOpen, Wand2, Users, Calendar } from "lucide-react";
+import { Users, Calendar, BookOpen, Wand2 } from "lucide-react";
 import { loadKidUnlocks, type KidUnlock } from "@/lib/dashboard/kid-unlocks";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const KIND_META: Record<
   KidUnlock["kind"],
@@ -67,7 +68,7 @@ export default function FreshForYou({
   return (
     <section className="mt-6 px-4 sm:px-6 lg:px-8">
       <div className="flex items-center gap-2">
-        <Sparkles className="h-5 w-5 text-violet-600" />
+        <FluentIcon name="sparkles" size={20} />
         <h2 className="text-base font-extrabold tracking-tight text-zinc-900">
           Fresh for you
         </h2>

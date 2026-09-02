@@ -250,7 +250,7 @@ export default function QuizSummary({
               className="flex items-center gap-3 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50 px-4 py-3 ring-1 ring-amber-200"
             >
               <span className="grid h-9 w-9 flex-shrink-0 place-items-center rounded-xl bg-amber-400 text-white">
-                <Star size={18} fill="white" strokeWidth={0} />
+                <FluentIcon name="star" size={18} />
               </span>
               <div className="min-w-0">
                 <div className="text-[13px] font-extrabold text-amber-800">
