@@ -20,7 +20,7 @@ export default async function About() {
     <div className="max-w-4xl mx-auto pb-16 px-4">
       {/* ── Hero ── */}
       <div className="text-center py-16 space-y-5">
-        <div className="w-24 h-24 mx-auto mb-2">
+        <div className="w-56 sm:w-64 mx-auto mb-2">
           <img
             src="/readee-logo.png"
             alt="Readee"
@@ -29,15 +29,13 @@ export default async function About() {
             className="w-full h-auto"
           />
         </div>
+        {/* The lockup above already says "readee" - no tagline repeat. */}
         <h1 className="text-4xl sm:text-5xl font-extrabold text-zinc-900 tracking-tight">
-          Unlock Reading with{" "}
+          Built by Educators,{" "}
           <span className="text-violet-600">
-            Readee
+            for Education
           </span>
         </h1>
-        <p className="text-lg sm:text-xl text-zinc-500 max-w-xl mx-auto leading-relaxed font-medium">
-          Built by Educators, for Education.
-        </p>
       </div>
 
       {/* ── Our Story ── */}
