@@ -39,7 +39,7 @@ export default function Library() {
     return (
       <div className="container-page py-12">
         <div className="text-center">
-          <Icon name="book" className="mx-auto mb-4 text-zinc-500 animate-pulse" size={48} />
+          <Icon name="open-book" className="mx-auto mb-4 text-zinc-500 animate-pulse" size={48} />
           <p className="text-zinc-600">Loading library...</p>
         </div>
       </div>
@@ -64,7 +64,7 @@ export default function Library() {
                       <span className="inline-block px-3 py-1 text-xs font-semibold text-zinc-700 bg-zinc-100 rounded-full">
                         {story.grade_level}
                       </span>
-                      <Icon name="book" className="text-zinc-500" size={20} />
+                      <Icon name="open-book" className="text-zinc-500" size={20} />
                     </div>
                     <CardTitle>{story.title}</CardTitle>
                   </CardHeader>
