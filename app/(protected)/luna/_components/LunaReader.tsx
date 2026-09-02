@@ -1745,7 +1745,7 @@ export default function LunaReader({
     }
     const j = await r.json();
     if (!j?.passage?.text) { setErrKind("gen"); throw new Error("gen"); }
-    return { grade: j.passage.grade ?? grade, title: j.passage.title ?? "Your story", text: j.passage.text, patternLabel: j.passage.patternLabel ?? undefined };
+    return { grade: j.passage.grade ?? grade, title: j.passage.title ?? "Your story", text: j.passage.text, patternLabel: j.passage.patternLabel ?? undefined, questions: j.passage.questions };
   }
 
   // The one continuous hand-off: the pills fade, Luna "thinks" (bubbles + orb
