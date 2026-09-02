@@ -3,12 +3,12 @@
 import { useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Star } from "lucide-react";
 import type { QuizResultItem } from "@/lib/lesson-engine/quiz";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { computeLevel } from "@/lib/levels/levels";
 import { playUrl } from "@/lib/lesson-engine/cues";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * QuizSummary — implements Filip's "Practice Summary" Claude Design
@@ -180,12 +180,7 @@ export default function QuizSummary({
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.15 + s * 0.1, type: "spring", stiffness: 400, damping: 15 }}
                 >
-                  <Star
-                    size={s === 2 ? 40 : 32}
-                    fill={s <= stars ? "#facc15" : "#d4d4d8"}
-                    stroke={s <= stars ? "#eab308" : "#a1a1aa"}
-                    strokeWidth={0.5}
-                  />
+                  <Glyph name="star" size={20} />
                 </motion.span>
               ))}
             </div>
@@ -268,7 +263,7 @@ export default function QuizSummary({
           <motion.div {...fadeUp(0.3)} className="rounded-2xl border border-zinc-200 bg-white px-4 py-[13px] shadow-sm">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-500">
-                <Star size={20} className="text-white" strokeWidth={2.2} />
+                <Glyph name="star" size={20} className="text-white" />
               </span>
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between gap-2">

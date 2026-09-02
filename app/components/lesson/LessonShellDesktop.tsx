@@ -15,11 +15,11 @@
  * globally via app/layout.tsx, so the chrome inherits font-sans.
  */
 import type { ReactNode } from "react";
-import { X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export interface LessonShellDesktopProps {
   slideNum: number;
@@ -79,7 +79,7 @@ export function LessonShellDesktop({
           aria-label="Close lesson"
           className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition hover:bg-zinc-100"
         >
-          <X size={18} />
+          <Glyph name="x" size={18} />
         </button>
       </header>
 

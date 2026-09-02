@@ -8,13 +8,6 @@ import { motion, useInView } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { grades, gradeToKey, type GradeKey } from "@/lib/assessment/questions";
-import {
-  ClipboardCheck,
-  BarChart3, CheckCircle2, XCircle, RotateCcw, ChevronDown,
-  AudioLines, BookOpen, MessageSquareText, Sparkles,
-  Type, FileText, Lightbulb,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 
 /* ── Animated counter hook ─────────────────────────── */
 
@@ -49,6 +42,7 @@ import LearningPathCard from "@/app/_components/LearningPathCard";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { EmptyState } from "@/app/_components/EmptyState";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -92,11 +86,11 @@ interface QuestionMeta {
   skill: string;
 }
 
-const SKILL_MAP: Record<string, { label: string; Icon: typeof AudioLines }> = {
-  RF: { label: "Phonics & Word Skills", Icon: AudioLines },
-  RL: { label: "Reading Comprehension", Icon: BookOpen },
-  RI: { label: "Reading Comprehension", Icon: BookOpen },
-  L:  { label: "Vocabulary & Grammar", Icon: MessageSquareText },
+const SKILL_MAP: Record<string, { label: string; Icon: GlyphName }> = {
+  RF: { label: "Phonics & Word Skills", Icon: "waves" },
+  RL: { label: "Reading Comprehension", Icon: "book-open" },
+  RI: { label: "Reading Comprehension", Icon: "book-open" },
+  L:  { label: "Vocabulary & Grammar", Icon: "message-square" },
 };
 
 const questionLookup: Record<string, QuestionMeta> = {};
@@ -242,12 +236,12 @@ function AssessmentResultsContent() {
   const placedIdx = Math.max(0, LEVEL_STEPS.findIndex((s) => s.label === placedLevel));
 
   // Group answers by reading skill
-  const bySkill: Record<string, { correct: number; total: number; Icon: typeof AudioLines }> = {};
+  const bySkill: Record<string, { correct: number; total: number; Icon: GlyphName }> = {};
   for (const a of assessment.answers) {
     const q = questionLookup[a.question_id];
     const skill = q?.skill || "General";
     const domain = q?.standard?.split(".")[0] || "";
-    const Icon = SKILL_MAP[domain]?.Icon || BookOpen;
+    const Icon = SKILL_MAP[domain]?.Icon || "book-open";
     if (!bySkill[skill]) bySkill[skill] = { correct: 0, total: 0, Icon };
     bySkill[skill].total++;
     if (a.is_correct) bySkill[skill].correct++;
@@ -365,7 +359,7 @@ function AssessmentResultsContent() {
         className="rounded-2xl bg-white shadow-md p-6"
       >
         <div className="flex items-center gap-2 mb-5">
-          <BarChart3 className="w-5 h-5 text-indigo-500" />
+          <Glyph name="bar-chart3" size={20} className="text-indigo-500" />
           <h2 className="text-lg font-bold text-zinc-900">Skill Breakdown</h2>
         </div>
         <div className="space-y-4">
@@ -383,7 +377,7 @@ function AssessmentResultsContent() {
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-2">
-                    <stats.Icon className="w-4 h-4 text-indigo-500" strokeWidth={1.5} />
+                    <Glyph name={stats.Icon} size={16} className="text-indigo-500" />
                     <span className="font-semibold text-sm text-zinc-800">{skill}</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -429,9 +423,7 @@ function AssessmentResultsContent() {
           className="w-full px-6 py-4 flex items-center justify-between hover:bg-zinc-50 transition-colors"
         >
           <span className="font-bold text-zinc-900">Question Details</span>
-          <ChevronDown
-            className={`w-5 h-5 text-zinc-400 transition-transform ${showDetails ? "rotate-180" : ""}`}
-          />
+          <Glyph name="chevron-down" size={20} className="text-zinc-400 transition-transform ${showDetails ?" />
         </button>
 
         {showDetails && (
@@ -449,9 +441,9 @@ function AssessmentResultsContent() {
                 >
                   <div className="flex items-start gap-2">
                     {a.is_correct ? (
-                      <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <Glyph name="check-circle2" size={20} className="text-emerald-500 flex-shrink-0 mt-0.5" />
                     ) : (
-                      <XCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                      <Glyph name="x-circle" size={20} className="text-red-400 flex-shrink-0 mt-0.5" />
                     )}
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-zinc-800">
@@ -506,7 +498,7 @@ function AssessmentResultsContent() {
           href={`/assessment?child=${childId}`}
           className="flex-1 flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border-2 border-indigo-200 text-indigo-700 font-bold hover:bg-indigo-50 transition-colors"
         >
-          <RotateCcw className="w-5 h-5" />
+          <Glyph name="rotate-ccw" size={20} />
           Retake Placement Test
         </Link>
         <Link
@@ -524,32 +516,32 @@ function AssessmentResultsContent() {
 
 const DIMENSION_DISPLAY: Record<
   string,
-  { label: string; blurb: string; icon: LucideIcon }
+  { label: string; blurb: string; icon: GlyphName }
 > = {
   phonics: {
     label: "Phonics & Decoding",
     blurb: "Letter sounds, blends, sounding out new words.",
-    icon: Type,
+    icon: "text",
   },
   vocabulary: {
     label: "Vocabulary",
     blurb: "Word meaning, sight words, context clues.",
-    icon: BookOpen,
+    icon: "book-open",
   },
   literal_comprehension: {
     label: "Literal Comprehension",
     blurb: "Recalling details, names, sequence from the text.",
-    icon: FileText,
+    icon: "file-text",
   },
   inferential_comprehension: {
     label: "Inferential Comprehension",
     blurb: "Main idea, why characters act, author's purpose.",
-    icon: Lightbulb,
+    icon: "lightbulb",
   },
   fluency: {
     label: "Fluency",
     blurb: "Reading aloud smoothly, with pace and expression.",
-    icon: AudioLines,
+    icon: "waves",
   },
 };
 
@@ -601,7 +593,7 @@ function ReadingProfileCard({
       className="rounded-2xl bg-white shadow-md p-6"
     >
       <div className="flex items-center gap-2 mb-3">
-        <Sparkles className="w-5 h-5 text-indigo-500" />
+        <Glyph name="sparkles" size={20} className="text-indigo-500" />
         <h2 className="text-lg font-bold text-zinc-900">Reading Profile</h2>
       </div>
       <p className="text-sm text-zinc-500 mb-5 leading-relaxed">
@@ -661,10 +653,10 @@ function ReadingProfileCard({
             >
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex items-start gap-2 min-w-0">
-                  <display.icon
-                    className="h-[18px] w-[18px] flex-shrink-0 text-violet-500"
-                    strokeWidth={1.8}
-                    aria-hidden
+                  <Glyph
+                    name={display.icon}
+                    size={18}
+                    className="flex-shrink-0 text-violet-500"
                   />
                   <div className="min-w-0">
                     <div className="font-bold text-sm text-zinc-900 truncate">

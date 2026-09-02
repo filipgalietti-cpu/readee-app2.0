@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles } from "lucide-react";
 import TodayQuestionPlayer from "./TodayQuestionPlayer";
 import ReadAloudButton from "./ReadAloudButton";
 import { FluentIcon } from "@/app/_components/FluentIcon";

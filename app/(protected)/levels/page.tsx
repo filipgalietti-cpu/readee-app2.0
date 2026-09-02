@@ -4,7 +4,6 @@ import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Check, ArrowLeft } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { useChildStore } from "@/lib/stores/child-store";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
@@ -12,6 +11,7 @@ import { READER_LEVELS, MILESTONE_LEVELS, computeLevel } from "@/lib/levels/leve
 import type { Child } from "@/lib/db/types";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Browse-all-levels page. Kid + parent surface — shows every level on
@@ -107,7 +107,7 @@ function LevelsContent() {
         href="/dashboard"
         className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-700"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <Glyph name="arrow-left" size={16} />
         Back to dashboard
       </Link>
 
@@ -133,7 +133,7 @@ function LevelsContent() {
       >
         <div className="flex items-center gap-4">
           <span className="inline-flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-white/25 shadow-inner">
-            <info.current.icon className="h-9 w-9" strokeWidth={2.2} />
+            <FluentIcon name={info.current.icon} size={36} />
           </span>
           <div className="min-w-0 flex-1">
             <div className="text-[11px] font-bold uppercase tracking-widest text-white/80">
@@ -202,7 +202,7 @@ function LevelsContent() {
                     : "bg-zinc-100 text-zinc-400"
                 }`}
               >
-                <Icon className="h-6 w-6" strokeWidth={2.2} />
+                <FluentIcon name={Icon} size={24} />
               </span>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2">
@@ -230,7 +230,7 @@ function LevelsContent() {
                 </div>
               </div>
               {achieved ? (
-                <Check className="h-5 w-5 flex-shrink-0 text-emerald-500" strokeWidth={2.4} />
+                <Glyph name="check" size={20} className="flex-shrink-0 text-emerald-500" />
               ) : (
                 <FluentIcon name="lock" size={16} />
               )}

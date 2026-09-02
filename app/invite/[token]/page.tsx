@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { GraduationCap, UserPlus } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import InviteClaimForm from "./_components/InviteClaimForm";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -85,7 +85,7 @@ export default async function InvitePage({
               href={`/signup?redirect=${nextPath}${emailPrefill}`}
               className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-800 transition hover:border-indigo-300 hover:text-indigo-600"
             >
-              <UserPlus className="h-4 w-4" />
+              <Glyph name="user-plus" size={16} />
               Create account
             </Link>
           </div>
@@ -130,7 +130,7 @@ function Shell({
     <div className="mx-auto max-w-xl px-5 py-12">
       <div className="flex items-center gap-3">
         <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600">
-          <GraduationCap className="h-5 w-5" />
+          <Glyph name="graduation-cap" size={20} />
         </span>
         <div className="text-xs font-bold uppercase tracking-widest text-indigo-700">
           Classroom invite

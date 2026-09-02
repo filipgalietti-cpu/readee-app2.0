@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import StoryReader from "./_components/StoryReader";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -40,7 +40,7 @@ export default async function PersonalizedStoryPage({
         href="/stories-for-me"
         className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-indigo-600"
       >
-        <ArrowLeft className="h-3.5 w-3.5" />
+        <Glyph name="arrow-left" size={14} />
         All my stories
       </Link>
       <div className="mt-3">

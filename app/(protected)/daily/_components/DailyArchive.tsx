@@ -3,8 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Entry = {
   date: string;
@@ -88,7 +88,7 @@ export default function DailyArchive({
             aria-label="Previous month"
             className="ml-0.5 grid h-[34px] w-[34px] place-items-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
           >
-            <ChevronLeft className="h-4 w-4" strokeWidth={2.4} />
+            <Glyph name="chevron-left" size={16} />
           </button>
           <button
             type="button"
@@ -97,7 +97,7 @@ export default function DailyArchive({
             aria-label="Next month"
             className="grid h-[34px] w-[34px] place-items-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
           >
-            <ChevronRight className="h-4 w-4" strokeWidth={2.4} />
+            <Glyph name="chevron-right" size={16} />
           </button>
         </div>
       </div>
@@ -200,7 +200,7 @@ function DayCell({
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-zinc-100 to-zinc-200 text-zinc-400">
-          <ImageIcon className="h-5 w-5" />
+          <Glyph name="image" size={20} />
         </div>
       )}
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent px-1.5 pb-1 pt-3.5">

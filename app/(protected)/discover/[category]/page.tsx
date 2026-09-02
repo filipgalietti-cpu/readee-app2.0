@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { ArrowLeft } from "lucide-react";
 import { getCategory } from "@/lib/discover/categories";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -54,7 +54,7 @@ export default async function DiscoverCategoryPage({
         href="/discover"
         className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-600"
       >
-        <ArrowLeft className="h-3.5 w-3.5" />
+        <Glyph name="arrow-left" size={14} />
         All categories
       </Link>
 

@@ -25,7 +25,6 @@ import { trackFunnelClient } from "@/lib/analytics/funnel";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Sparkles, Volume2, Rocket, BookOpen, Trophy, Headphones } from "lucide-react";
 
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
@@ -36,6 +35,7 @@ import manifestRaw from "@/scripts/assessment_mixed_manifest.json";
 import bankRaw from "@/lib/assessment/mixed-bank-k4.json";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
+import { Glyph } from "@/app/_components/Glyph";
 
 /* ── Types ─────────────────────────────────────────────── */
 
@@ -872,7 +872,7 @@ function AssessmentContent() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6 }}
             >
-              <Volume2 className="w-4 h-4" />
+              <Glyph name="volume2" size={16} />
               Tap to listen
             </motion.button>
 
@@ -913,7 +913,7 @@ function AssessmentContent() {
                 <span className="relative">
                   Pick up at question {pendingDraft.currentIdx + 1}
                 </span>
-                <Rocket className="relative w-5 h-5" />
+                <Glyph name="rocket" size={20} className="relative" />
               </motion.button>
             )}
 
@@ -952,7 +952,7 @@ function AssessmentContent() {
               <span className="relative">
                 {pendingDraft ? "Start over instead" : "Let's Go!"}
               </span>
-              {!pendingDraft && <Rocket className="relative w-6 h-6" />}
+              {!pendingDraft && <Glyph name="rocket" size={24} className="relative" />}
             </motion.button>
 
             <div className="mt-4">
@@ -1033,7 +1033,7 @@ function AssessmentContent() {
               className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-violet-50 hover:bg-violet-100 transition-colors flex-shrink-0"
               aria-label="Replay audio"
             >
-              <Volume2 className="w-5 h-5 text-violet-600" />
+              <Glyph name="volume2" size={20} className="text-violet-600" />
             </button>
           )}
         </div>
@@ -1175,7 +1175,7 @@ function AssessmentContent() {
               style={{ borderTopColor: "#6366f1", borderRightColor: "#8b5cf6" }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <Sparkles className="w-8 h-8 text-violet-500" />
+              <Glyph name="sparkles" size={32} className="text-violet-500" />
             </div>
           </div>
 
@@ -1201,24 +1201,24 @@ function AssessmentContent() {
   if (phase === "results") {
     const NEXT_STEPS = [
       {
-        Icon: BookOpen,
+        Icon: "book-open",
         title: "Learn",
         desc: "Short, fun lessons that teach you new reading skills step by step.",
         color: "bg-violet-50 text-violet-600",
       },
       {
-        Icon: Headphones,
+        Icon: "headphones",
         title: "Practice",
         desc: "Interactive questions with audio - drag, tap, and build answers.",
         color: "bg-violet-50 text-violet-600",
       },
       {
-        Icon: Trophy,
+        Icon: "trophy",
         title: "Earn Rewards",
         desc: "Get carrots for every lesson, unlock items in the shop, and climb the leaderboard.",
         color: "bg-amber-50 text-amber-600",
       },
-    ];
+    ] as const;
 
     return (
       <div className="max-w-md mx-auto text-center py-10 px-4 relative overflow-hidden">
@@ -1284,7 +1284,7 @@ function AssessmentContent() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.45 }}
           >
-            <Volume2 className="w-4 h-4" />
+            <Glyph name="volume2" size={16} />
             Tap to listen
           </motion.button>
 
@@ -1308,7 +1308,7 @@ function AssessmentContent() {
                   transition={{ delay: 0.6 + i * 0.15 }}
                 >
                   <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${step.color}`}>
-                    <step.Icon className="w-4.5 h-4.5" strokeWidth={1.5} />
+                    <Glyph name={step.Icon} size={18} />
                   </div>
                   <div>
                     <p className="text-sm font-bold text-zinc-900">{step.title}</p>
@@ -1334,7 +1334,7 @@ function AssessmentContent() {
               }}
             >
               <span>Let&apos;s Start Reading</span>
-              <Rocket className="w-6 h-6" />
+              <Glyph name="rocket" size={24} />
             </Link>
           </motion.div>
         </motion.div>

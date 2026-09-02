@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, ClipboardPen } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { requireProfile } from "@/lib/auth/helpers";
 import StudentCustomQuizRunner from "@/app/(student)/student/quiz/_components/StudentCustomQuizRunner";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -114,12 +114,12 @@ export default async function ParentCustomQuizPage({
         href="/dashboard"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <Glyph name="arrow-left" size={16} />
         Back
       </Link>
       <div className="mt-3">
         <div className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
-          <ClipboardPen className="h-3 w-3" />
+          <Glyph name="clipboard-pen" size={12} />
           Custom quiz · {(child as any).first_name}
         </div>
         <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900">

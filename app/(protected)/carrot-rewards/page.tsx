@@ -8,17 +8,16 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
-import { Medal, Gem, Crown, Lock } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
-import { FluentIcon } from "@/app/_components/FluentIcon";
+import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
-const TIERS: { name: string; carrots: number; icon: LucideIcon; iconColor: string; color: string; bg: string; border: string; text: string }[] = [
-  { name: "Bronze", carrots: 50, icon: Medal, iconColor: "text-amber-600", color: "from-amber-600 to-amber-700", bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
-  { name: "Silver", carrots: 100, icon: Medal, iconColor: "text-gray-500", color: "from-gray-400 to-gray-500", bg: "bg-gray-50", border: "border-gray-200", text: "text-gray-600" },
-  { name: "Gold", carrots: 200, icon: Medal, iconColor: "text-yellow-500", color: "from-yellow-400 to-yellow-500", bg: "bg-yellow-50", border: "border-yellow-200", text: "text-yellow-700" },
-  { name: "Platinum", carrots: 500, icon: Gem, iconColor: "text-cyan-500", color: "from-cyan-400 to-cyan-600", bg: "bg-cyan-50", border: "border-cyan-200", text: "text-cyan-700" },
-  { name: "Diamond", carrots: 1000, icon: Crown, iconColor: "text-violet-500", color: "from-violet-500 to-purple-600", bg: "bg-violet-50", border: "border-violet-200", text: "text-violet-700" },
+const TIERS: { name: string; carrots: number; icon: FluentIconName; iconColor: string; color: string; bg: string; border: string; text: string }[] = [
+  { name: "Bronze", carrots: 50, icon: "third-place", iconColor: "text-amber-600", color: "from-amber-600 to-amber-700", bg: "bg-amber-50", border: "border-amber-200", text: "text-amber-700" },
+  { name: "Silver", carrots: 100, icon: "second-place", iconColor: "text-gray-500", color: "from-gray-400 to-gray-500", bg: "bg-gray-50", border: "border-gray-200", text: "text-gray-600" },
+  { name: "Gold", carrots: 200, icon: "first-place", iconColor: "text-yellow-500", color: "from-yellow-400 to-yellow-500", bg: "bg-yellow-50", border: "border-yellow-200", text: "text-yellow-700" },
+  { name: "Platinum", carrots: 500, icon: "gem", iconColor: "text-cyan-500", color: "from-cyan-400 to-cyan-600", bg: "bg-cyan-50", border: "border-cyan-200", text: "text-cyan-700" },
+  { name: "Diamond", carrots: 1000, icon: "crown", iconColor: "text-violet-500", color: "from-violet-500 to-purple-600", bg: "bg-violet-50", border: "border-violet-200", text: "text-violet-700" },
 ];
 
 export default function CarrotRewardsPage() {
@@ -88,7 +87,7 @@ function CarrotRewardsContent() {
         <div className="rounded-2xl border border-zinc-200 bg-white p-5 dash-slide-up-1">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-zinc-600">
-              Next: <nextTier.icon className="w-4 h-4 inline-block" strokeWidth={1.5} /> {nextTier.name}
+              Next: <span className="inline-block align-text-bottom"><FluentIcon name={nextTier.icon} size={16} /></span> {nextTier.name}
             </span>
             <span className="text-sm font-bold text-orange-600 flex items-center gap-1">{carrots}/{nextTier.carrots} <FluentIcon name="carrot" size={14} /></span>
           </div>
@@ -124,7 +123,7 @@ function CarrotRewardsContent() {
                   earned ? "shadow-md" : "grayscale"
                 }`}
               >
-                <tier.icon className={`w-8 h-8 ${earned ? tier.iconColor : "text-zinc-400"}`} strokeWidth={1.5} />
+                <FluentIcon name={tier.icon} size={32} className={earned ? "" : "opacity-40 grayscale"} />
               </div>
               <div className="flex-1 min-w-0">
                 <div className={`font-bold ${earned ? tier.text : "text-zinc-400"}`}>
@@ -139,7 +138,7 @@ function CarrotRewardsContent() {
                   Earned!
                 </span>
               ) : (
-                <Lock className="w-6 h-6 text-zinc-400 opacity-40" strokeWidth={1.5} />
+                <Glyph name="lock" size={24} className="text-zinc-400 opacity-40" />
               )}
             </div>
           );

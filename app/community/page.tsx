@@ -1,18 +1,10 @@
 import Link from "next/link";
-import {
-  Eye,
-  ArrowRight,
-  BookOpen,
-  Heart,
-  Shield,
-  Users,
-  CircleHelp,
-} from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import TrendingCarousel from "./_components/TrendingCarousel";
 import { CoverFallback } from "@/app/_components/EmptyState";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -200,7 +192,7 @@ export default async function CommunityLanding() {
               className="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-indigo-500 transition-colors hover:bg-indigo-50 hover:text-indigo-700 sm:px-3"
               aria-label="Help"
             >
-              <CircleHelp className="h-5 w-5" />
+              <Glyph name="circle-help" size={20} />
               <span className="hidden text-sm font-semibold sm:inline">Help</span>
             </Link>
             <Link
@@ -223,7 +215,7 @@ export default async function CommunityLanding() {
         {/* Compact intro */}
         <div className="flex items-center gap-3">
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-md">
-            <Users className="h-6 w-6" />
+            <Glyph name="users" size={24} />
           </div>
           <div>
             <h1 className="text-2xl font-extrabold tracking-tight text-zinc-900">
@@ -329,15 +321,15 @@ export default async function CommunityLanding() {
         {/* Trust strip — replaces the old "How it works" wall */}
         <section className="mt-8 grid gap-2 sm:grid-cols-3">
           <Trust
-            icon={<Shield className="h-4 w-4 text-emerald-600" />}
+            icon={<Glyph name="shield" size={16} className="text-emerald-600" />}
             label="Reviewed before publishing"
           />
           <Trust
-            icon={<Heart className="h-4 w-4 text-rose-500" />}
+            icon={<Glyph name="heart" size={16} className="text-rose-500" />}
             label="Free for every family"
           />
           <Trust
-            icon={<BookOpen className="h-4 w-4 text-violet-600" />}
+            icon={<Glyph name="book-open" size={16} className="text-violet-600" />}
             label="K-4 reading specialist designed"
           />
         </section>
@@ -360,7 +352,7 @@ export default async function CommunityLanding() {
               className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-3 text-base font-bold text-white shadow hover:bg-violet-700"
             >
               Try Readee free
-              <ArrowRight className="h-4 w-4" />
+              <Glyph name="arrow-right" size={16} />
             </Link>
             <Link
               href="/about"
@@ -504,7 +496,7 @@ function FeedPost({ post }: { post: Card }) {
           </h3>
           <div className="mt-2 flex items-center justify-between text-[11px] text-white/85">
             <span className="inline-flex items-center gap-1 font-semibold">
-              <Eye className="h-3 w-3" />
+              <Glyph name="eye" size={12} />
               {post.view_count.toLocaleString()} reads
             </span>
             <span className="rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-violet-700 transition group-hover:bg-violet-600 group-hover:text-white">

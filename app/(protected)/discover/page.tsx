@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
-import { Sparkles } from "lucide-react";
 import { listCategories } from "@/lib/discover/categories";
 import DiscoveryTile from "./_components/DiscoveryTile";
 import { FluentIcon } from "@/app/_components/FluentIcon";

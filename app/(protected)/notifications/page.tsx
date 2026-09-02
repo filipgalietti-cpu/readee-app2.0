@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { Bell, Mail, Flame, BookOpen, Trophy, Check, Loader2 } from "lucide-react";
 import SettingsShell from "@/app/_components/SettingsShell";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 interface NotificationPrefs {
   weekly_report: boolean;
@@ -102,11 +102,11 @@ export default function NotificationsPage() {
     );
   }
 
-  const NOTIFICATION_OPTIONS: { key: keyof NotificationPrefs; icon: typeof Bell; title: string; description: string; comingSoon?: boolean }[] = [
-    { key: "weekly_report", icon: Mail, title: "Weekly Progress Report", description: "Email summary of your child's reading activity each week" },
-    { key: "streak_reminders", icon: Flame, title: "Streak Reminders", description: "Notify when a reading streak is about to break", comingSoon: true },
-    { key: "new_content", icon: BookOpen, title: "New Content Available", description: "Alert when new lessons or stories are added", comingSoon: true },
-    { key: "achievements", icon: Trophy, title: "Achievements & Milestones", description: "Celebrate when your child hits reading milestones", comingSoon: true },
+  const NOTIFICATION_OPTIONS: { key: keyof NotificationPrefs; icon: GlyphName; title: string; description: string; comingSoon?: boolean }[] = [
+    { key: "weekly_report", icon: "mail", title: "Weekly Progress Report", description: "Email summary of your child's reading activity each week" },
+    { key: "streak_reminders", icon: "flame", title: "Streak Reminders", description: "Notify when a reading streak is about to break", comingSoon: true },
+    { key: "new_content", icon: "book-open", title: "New Content Available", description: "Alert when new lessons or stories are added", comingSoon: true },
+    { key: "achievements", icon: "trophy", title: "Achievements & Milestones", description: "Celebrate when your child hits reading milestones", comingSoon: true },
   ];
 
   return (
@@ -120,7 +120,7 @@ export default function NotificationsPage() {
 
         <section className="rounded-2xl border border-zinc-200 bg-white shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-zinc-100 flex items-center gap-2">
-            <Bell className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+            <Glyph name="bell" size={20} className="text-indigo-500" />
             <h2 className="text-base font-semibold text-zinc-900">Email Notifications</h2>
           </div>
 
@@ -128,7 +128,7 @@ export default function NotificationsPage() {
             {NOTIFICATION_OPTIONS.map(({ key, icon: Icon, title, description, comingSoon }) => (
               <div key={key} className={`px-6 py-4 flex items-center gap-4 ${comingSoon ? "opacity-60" : ""}`}>
                 <div className="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-4 h-4 text-indigo-500" strokeWidth={1.5} />
+                  <Glyph name={Icon} size={16} className="text-indigo-500" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium text-zinc-900 flex items-center gap-2">
@@ -155,7 +155,7 @@ export default function NotificationsPage() {
             className="px-6 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center gap-2"
           >
             {saving ? (
-              <><Loader2 className="w-4 h-4 animate-spin" /> Saving...</>
+              <><Glyph name="loader2" size={16} className="animate-spin" /> Saving...</>
             ) : (
               "Save Preferences"
             )}
@@ -166,7 +166,7 @@ export default function NotificationsPage() {
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center gap-1 text-sm text-emerald-600 font-medium"
             >
-              <Check className="w-4 h-4" /> Saved
+              <Glyph name="check" size={16} /> Saved
             </motion.span>
           )}
         </div>

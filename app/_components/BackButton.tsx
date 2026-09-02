@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /** Simple "Back" control for standalone pages (policies, etc.). Goes back in
  *  history; falls back to the dashboard if there's nowhere to go. */
@@ -22,7 +22,7 @@ export default function BackButton({
       }}
       className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
     >
-      <ArrowLeft className="h-4 w-4" />
+      <Glyph name="arrow-left" size={16} />
       {label}
     </button>
   );

@@ -1,5 +1,5 @@
-import { Users } from "lucide-react";
 import { ADVISORY_BOARD } from "@/lib/data/advisors";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Shared UI for /about and /schools. Renders all seats — including
@@ -15,7 +15,7 @@ export default function AdvisoryBoardSection({
     return (
       <section className="rounded-2xl border border-zinc-200 bg-white p-5">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
-          <Users className="h-4 w-4" />
+          <Glyph name="users" size={16} />
           Advisory board
         </div>
         <p className="mt-2 text-sm text-zinc-600">
@@ -36,7 +36,7 @@ export default function AdvisoryBoardSection({
   return (
     <section className="mt-10">
       <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
-        <Users className="h-4 w-4" />
+        <Glyph name="users" size={16} />
         Advisory board
       </div>
       <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-zinc-900">

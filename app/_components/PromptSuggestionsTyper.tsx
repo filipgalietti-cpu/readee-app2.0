@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sparkles } from "lucide-react";
 import { TypingAnimation } from "@/app/components/magicui/typing-animation";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Cycles through a list of example prompts, typing each one out, holding
@@ -38,7 +38,7 @@ export default function PromptSuggestionsTyper({
 
   return (
     <div className="mt-2 flex items-start gap-2 rounded-xl border border-violet-100 bg-violet-50/50 px-3 py-2 text-xs">
-      <Sparkles className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-violet-500" />
+      <Glyph name="sparkles" size={14} className="mt-0.5 flex-shrink-0 text-violet-500" />
       <div className="min-w-0 flex-1">
         <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
           Try a prompt like

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { BookOpen } from "lucide-react";
 import KidRunner from "./KidRunner";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Question = {
   prompt: string;
@@ -41,7 +41,7 @@ export default function LessonRunnerLauncher({
         onClick={() => setOpen(true)}
         className="mt-5 inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-3 text-base font-bold text-white shadow-lg transition hover:scale-[1.02] hover:bg-violet-700 active:scale-[.99]"
       >
-        <BookOpen className="h-5 w-5" />
+        <Glyph name="book-open" size={20} />
         {ctaLabel}
       </button>
 

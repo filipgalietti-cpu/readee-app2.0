@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check } from "lucide-react";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +34,7 @@ export default async function UnsubscribeWeeklyPage({
   return (
     <div className="mx-auto max-w-lg px-6 py-16 text-center">
       <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600">
-        <Check className="h-7 w-7" />
+        <Glyph name="check" size={28} />
       </div>
       <h1 className="mt-4 text-2xl font-extrabold text-zinc-900">
         You&apos;re unsubscribed

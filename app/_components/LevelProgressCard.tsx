@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { computeLevel, didLevelUp, levelUpBonus, READER_LEVELS } from "@/lib/levels/levels";
-import { Carrot, ChevronRight } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { savedOk } from "@/lib/db/checked-write";
 import LevelUpBurst from "@/app/_components/LevelUpBurst";
+import { Glyph } from "@/app/_components/Glyph";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
  * Big celebratory progress card for completion screens.
@@ -123,7 +124,7 @@ export default function LevelProgressCard({
             className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-zinc-900 shadow transition hover:bg-white"
           >
             All levels
-            <ChevronRight className="h-3 w-3" />
+            <Glyph name="chevron-right" size={12} />
           </Link>
         )}
       </div>
@@ -146,7 +147,7 @@ export default function LevelProgressCard({
         <span
           className={`inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl ${post.current.accent.bg} ${post.current.accent.fg}`}
         >
-          <Icon className="h-5 w-5" strokeWidth={2.2} />
+          <FluentIcon name={Icon} size={20} />
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-baseline justify-between gap-2">
@@ -154,7 +155,7 @@ export default function LevelProgressCard({
               Level {post.current.number} - {post.current.name}
             </div>
             <div className="text-[10px] font-mono text-zinc-400">
-              {after} <Carrot className="inline h-3 w-3 -mt-0.5 text-orange-400" strokeWidth={2.4} />
+              {after} <Glyph name="carrot" size={12} className="inline -mt-0.5 text-orange-400" />
             </div>
           </div>
           {post.next ? (

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sparkles, Loader2 } from "lucide-react";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
 import { CREDIT_COST } from "@/lib/ai/credits";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Budget = {
   monthly: {
@@ -48,7 +48,7 @@ export default function AccountCreditsCard() {
       className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm scroll-mt-20"
     >
       <div className="flex items-center gap-2 mb-4">
-        <Sparkles className="w-5 h-5 text-violet-500" strokeWidth={1.5} />
+        <Glyph name="sparkles" size={20} className="text-violet-500" />
         <h2 className="text-base font-semibold text-zinc-900">
           Readee.ai credits
         </h2>
@@ -58,7 +58,7 @@ export default function AccountCreditsCard() {
         <p className="text-sm text-red-600">{err}</p>
       ) : !data ? (
         <div className="flex items-center gap-2 text-sm text-zinc-500">
-          <Loader2 className="w-4 h-4 animate-spin" /> Loading balance…
+          <Glyph name="loader2" size={16} className="animate-spin" /> Loading balance…
         </div>
       ) : (
         <CreditDetail data={data.monthly} />

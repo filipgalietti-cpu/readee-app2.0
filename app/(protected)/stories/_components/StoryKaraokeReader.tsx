@@ -12,9 +12,9 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useAudio } from "@/lib/audio/use-audio";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export type KaraokeWord = { t: string; start: number; end: number };
 export type KaraokeSentence = { text: string; audioUrl?: string; words: KaraokeWord[] };
@@ -200,7 +200,7 @@ export default function StoryKaraokeReader({
       <div className="fixed inset-x-0 bottom-0 top-[76px] z-10 overflow-y-auto lg:left-[272px]" style={{ background: GRADIENT, padding: "22px 28px 40px" }}>
         <div className="mx-auto max-w-2xl">
           <button onClick={back} className="mb-4 flex items-center gap-1 text-sm font-semibold text-violet-600">
-            <ArrowLeft className="h-4 w-4" /> Back to Stories
+            <Glyph name="arrow-left" size={16} /> Back to Stories
           </button>
           <div className="overflow-hidden rounded-3xl bg-white shadow-md">
             <Image src={imageUrl} alt="" width={640} height={360} className="aspect-video w-full bg-violet-50 object-contain" />
@@ -241,7 +241,7 @@ export default function StoryKaraokeReader({
             className="flex h-[46px] w-[46px] items-center justify-center rounded-full border border-zinc-200 bg-white transition hover:scale-105 active:scale-95"
             style={{ color: "#4338ca", boxShadow: "0 1px 2px rgba(0,0,0,0.05)" }}
           >
-            <ArrowLeft className="h-[22px] w-[22px]" strokeWidth={2.5} />
+            <Glyph name="arrow-left" size={22} />
           </button>
           <h1 className="flex-1 text-center text-2xl font-extrabold tracking-tight" style={{ color: "#1e1b4b", fontFamily: "var(--font-baloo, inherit)" }}>{title}</h1>
           {typeof carrots === "number" && (
@@ -355,7 +355,7 @@ export default function StoryKaraokeReader({
                     style={{ height: 60, minWidth: 208, padding: "0 30px", fontSize: 21, fontFamily: "var(--font-baloo, inherit)", background: "linear-gradient(90deg,#4338ca,#7c3aed)", boxShadow: "0 8px 22px rgba(67,56,202,0.35)" }}
                   >
                     <span className="flex items-center justify-center rounded-full" style={{ width: 34, height: 34, background: "rgba(255,255,255,0.2)" }}>
-                      <ArrowRight className="h-[17px] w-[17px]" strokeWidth={3} />
+                      <Glyph name="arrow-right" size={17} />
                     </span>
                     Take the quiz
                   </button>

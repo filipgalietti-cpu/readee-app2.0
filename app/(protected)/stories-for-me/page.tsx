@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowRight, ArrowLeft, ImageIcon } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import StoryGenerator from "./_components/StoryGenerator";
 import { EmptyState } from "@/app/_components/EmptyState";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -51,7 +51,7 @@ export default async function StoriesForMePage() {
         href="/luna"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <Glyph name="arrow-left" size={16} />
         Luna
       </Link>
       <div className="mt-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
@@ -103,7 +103,7 @@ export default async function StoriesForMePage() {
                       />
                     ) : (
                       <div className="flex h-40 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-400">
-                        <ImageIcon className="h-10 w-10" />
+                        <Glyph name="image" size={40} />
                       </div>
                     )}
                     <div className="p-4">
@@ -116,7 +116,7 @@ export default async function StoriesForMePage() {
                       </div>
                       <div className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-violet-700">
                         Read
-                        <ArrowRight className="h-3 w-3" />
+                        <Glyph name="arrow-right" size={12} />
                       </div>
                     </div>
                   </Link>

@@ -2,7 +2,8 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, Lock, X } from "lucide-react";
+import { X } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 const AVATAR_COLORS = [
   "from-indigo-500 to-violet-600",
@@ -104,7 +105,7 @@ export default function StudentNamePicker({
               <X className="h-4 w-4" />
             </button>
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-100 text-indigo-600">
-              <Lock className="h-6 w-6" />
+              <Glyph name="lock" size={24} />
             </div>
             <h3 className="mt-4 text-lg font-extrabold text-zinc-900">
               Hi, {pinFor.name}!
@@ -134,7 +135,7 @@ export default function StudentNamePicker({
               disabled={pending || pin.length !== 4}
               className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-indigo-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-700 disabled:opacity-40"
             >
-              {pending ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+              {pending ? <Glyph name="loader2" size={16} className="animate-spin" /> : null}
               Sign in
             </button>
           </div>
@@ -159,7 +160,7 @@ export default function StudentNamePicker({
               <div
                 className={`flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${color} text-2xl font-extrabold text-white shadow-md sm:h-20 sm:w-20 sm:text-3xl`}
               >
-                {isLoading ? <Loader2 className="h-6 w-6 animate-spin" /> : initial}
+                {isLoading ? <Glyph name="loader2" size={24} className="animate-spin" /> : initial}
               </div>
               <div className="mt-3 truncate text-sm font-extrabold text-zinc-900 sm:text-base">
                 {s.first_name}

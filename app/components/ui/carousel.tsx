@@ -21,9 +21,9 @@ import * as React from "react";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { Glyph } from "@/app/_components/Glyph";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -216,7 +216,7 @@ const CarouselPrevious = React.forwardRef<
       )}
       {...props}
     >
-      <ArrowLeft className="mx-auto h-4 w-4" />
+      <Glyph name="arrow-left" size={16} className="mx-auto" />
       <span className="sr-only">Previous slide</span>
     </button>
   );
@@ -243,7 +243,7 @@ const CarouselNext = React.forwardRef<
       )}
       {...props}
     >
-      <ArrowRight className="mx-auto h-4 w-4" />
+      <Glyph name="arrow-right" size={16} className="mx-auto" />
       <span className="sr-only">Next slide</span>
     </button>
   );

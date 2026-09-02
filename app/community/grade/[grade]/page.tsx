@@ -1,15 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeft,
-  Eye,
-  Search,
-  ArrowRight,
-  CircleHelp,
-} from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { CoverFallback } from "@/app/_components/EmptyState";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -155,7 +149,7 @@ export default async function CommunityGradePage({
               className="flex items-center gap-1.5 rounded-lg px-2.5 py-2 text-indigo-500 transition-colors hover:bg-indigo-50 hover:text-indigo-700 sm:px-3"
               aria-label="Help"
             >
-              <CircleHelp className="h-5 w-5" />
+              <Glyph name="circle-help" size={20} />
               <span className="hidden text-sm font-semibold sm:inline">Help</span>
             </Link>
             <Link
@@ -179,7 +173,7 @@ export default async function CommunityGradePage({
           href="/community"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-500 hover:text-violet-700"
         >
-          <ArrowLeft className="h-3.5 w-3.5" />
+          <Glyph name="arrow-left" size={14} />
           All grades
         </Link>
 
@@ -208,7 +202,7 @@ export default async function CommunityGradePage({
           method="get"
           className="mt-6 flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-3 py-2 shadow-sm"
         >
-          <Search className="h-4 w-4 flex-shrink-0 text-zinc-400" />
+          <Glyph name="search" size={16} className="flex-shrink-0 text-zinc-400" />
           <input
             name="topic"
             defaultValue={activeTopic ?? ""}
@@ -306,7 +300,7 @@ export default async function CommunityGradePage({
                         {p.grade_level}
                       </span>
                       <span className="inline-flex items-center gap-1 text-zinc-400">
-                        <Eye className="h-3 w-3" />
+                        <Glyph name="eye" size={12} />
                         {p.view_count.toLocaleString()}
                       </span>
                     </div>
@@ -341,7 +335,7 @@ export default async function CommunityGradePage({
             className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"
           >
             Try Readee free
-            <ArrowRight className="h-4 w-4" />
+            <Glyph name="arrow-right" size={16} />
           </Link>
         </div>
       </div>

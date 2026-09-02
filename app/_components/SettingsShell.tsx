@@ -7,10 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import {
-  Home, BarChart3, BookText, ListChecks, Map, Carrot, Trophy,
-  ChevronDown, User, CreditCard, Bell, LogOut, ChevronsUpDown, LifeBuoy,
-} from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Shared shell for settings pages (Account, Billing, Notifications).
@@ -73,26 +70,26 @@ export default function SettingsShell({ children }: { children: React.ReactNode 
     {
       label: "Main",
       items: [
-        { href: "/dashboard", icon: Home, label: "Dashboard" },
-        { href: `/analytics?child=${childId}`, icon: BarChart3, label: "Analytics", path: "/analytics" },
+        { href: "/dashboard", icon: "home", label: "Dashboard" },
+        { href: `/analytics?child=${childId}`, icon: "bar-chart3", label: "Analytics", path: "/analytics" },
       ],
     },
     {
       label: "Learning",
       items: [
-        { href: "/word-bank", icon: BookText, label: "Word Bank" },
-        { href: "/question-bank", icon: ListChecks, label: "Question Bank" },
-        { href: `/roadmap?child=${childId}`, icon: Map, label: "Reading Journey", path: "/roadmap" },
+        { href: "/word-bank", icon: "book", label: "Word Bank" },
+        { href: "/question-bank", icon: "list-checks", label: "Question Bank" },
+        { href: `/roadmap?child=${childId}`, icon: "map", label: "Reading Journey", path: "/roadmap" },
       ],
     },
     {
       label: "Fun",
       items: [
-        { href: `/shop?child=${childId}`, icon: Carrot, label: "Shop", path: "/shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
-        { href: `/leaderboard?child=${childId}`, icon: Trophy, label: "Leaderboard", path: "/leaderboard" },
+        { href: `/shop?child=${childId}`, icon: "carrot", label: "Shop", path: "/shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+        { href: `/leaderboard?child=${childId}`, icon: "trophy", label: "Leaderboard", path: "/leaderboard" },
       ],
     },
-  ];
+  ] as const;
 
   return (
     <>
@@ -128,7 +125,7 @@ export default function SettingsShell({ children }: { children: React.ReactNode 
                     className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-indigo-50 border border-zinc-200 transition-colors"
                     title="Collapse sidebar"
                   >
-                    <ChevronDown className="w-4 h-4 text-indigo-500 -rotate-90" strokeWidth={2} />
+                    <Glyph name="chevron-down" size={16} className="text-indigo-500 -rotate-90" />
                   </button>
                 </div>
 
@@ -168,33 +165,33 @@ export default function SettingsShell({ children }: { children: React.ReactNode 
                 onClick={() => setSidebarOpen(true)}
                 className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors mb-2"
               >
-                <ChevronDown className="w-5 h-5 text-zinc-400 rotate-90" strokeWidth={2} />
+                <Glyph name="chevron-down" size={20} className="text-zinc-400 rotate-90" />
               </button>
-              {[
-                { href: "/dashboard", icon: Home, label: "Dashboard" },
-                { href: `/analytics?child=${childId}`, icon: BarChart3, label: "Analytics" },
-              ].map(({ href, icon: Icon, label }) => (
+              {([
+                { href: "/dashboard", icon: "home", label: "Dashboard" },
+                { href: `/analytics?child=${childId}`, icon: "bar-chart3", label: "Analytics" },
+              ] as const).map(({ href, icon: Icon, label }) => (
                 <Link key={href} href={href} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors" title={label}>
-                  <Icon className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  <Glyph name={Icon} size={20} className="text-zinc-500" />
                 </Link>
               ))}
               <div className="w-5 h-px bg-zinc-200 my-2" />
-              {[
-                { href: "/word-bank", icon: BookText, label: "Word Bank" },
-                { href: "/question-bank", icon: ListChecks, label: "Question Bank" },
-                { href: `/roadmap?child=${childId}`, icon: Map, label: "Reading Journey" },
-              ].map(({ href, icon: Icon, label }) => (
+              {([
+                { href: "/word-bank", icon: "book", label: "Word Bank" },
+                { href: "/question-bank", icon: "list-checks", label: "Question Bank" },
+                { href: `/roadmap?child=${childId}`, icon: "map", label: "Reading Journey" },
+              ] as const).map(({ href, icon: Icon, label }) => (
                 <Link key={href} href={href} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors" title={label}>
-                  <Icon className="w-5 h-5 text-zinc-500" strokeWidth={1.5} />
+                  <Glyph name={Icon} size={20} className="text-zinc-500" />
                 </Link>
               ))}
               <div className="w-5 h-px bg-zinc-200 my-2" />
-              {[
-                { href: `/shop?child=${childId}`, icon: Carrot, label: "Shop", color: "text-orange-500" },
-                { href: `/leaderboard?child=${childId}`, icon: Trophy, label: "Leaderboard" },
-              ].map(({ href, icon: Icon, label, color }: any) => (
+              {([
+                { href: `/shop?child=${childId}`, icon: "carrot", label: "Shop", color: "text-orange-500" },
+                { href: `/leaderboard?child=${childId}`, icon: "trophy", label: "Leaderboard", color: undefined },
+              ] as const).map(({ href, icon: Icon, label, color }) => (
                 <Link key={href} href={href} className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors" title={label}>
-                  <Icon className={`w-5 h-5 ${color || "text-zinc-500"}`} strokeWidth={1.5} />
+                  <Glyph name={Icon} size={20} className={color || "text-zinc-500"} />
                 </Link>
               ))}
               <div className="mt-auto">
@@ -264,7 +261,7 @@ function SettingsUserMenu({ avatarSrc, name }: { avatarSrc: string | null; name:
         <div className="flex-1 min-w-0 text-left">
           <div className="text-[13px] font-medium text-zinc-900 truncate">{name}</div>
         </div>
-        <ChevronsUpDown className="w-4 h-4 text-zinc-400 flex-shrink-0" strokeWidth={1.5} />
+        <Glyph name="chevrons-up-down" size={16} className="text-zinc-400 flex-shrink-0" />
       </button>
 
       <AnimatePresence>
@@ -278,22 +275,22 @@ function SettingsUserMenu({ avatarSrc, name }: { avatarSrc: string | null; name:
           >
             <div className="py-1 px-1">
               <Link href="/account" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
-                <User className="w-4 h-4 text-zinc-400" strokeWidth={1.5} /> Account
+                <Glyph name="user" size={16} className="text-zinc-400" /> Account
               </Link>
               <Link href="/billing" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
-                <CreditCard className="w-4 h-4 text-zinc-400" strokeWidth={1.5} /> Billing
+                <Glyph name="credit-card" size={16} className="text-zinc-400" /> Billing
               </Link>
               <Link href="/notifications" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
-                <Bell className="w-4 h-4 text-zinc-400" strokeWidth={1.5} /> Notifications
+                <Glyph name="bell" size={16} className="text-zinc-400" /> Notifications
               </Link>
               <Link href="/help" onClick={() => setOpen(false)} className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
-                <LifeBuoy className="w-4 h-4 text-zinc-400" strokeWidth={1.5} /> Help &amp; Support
+                <Glyph name="life-buoy" size={16} className="text-zinc-400" /> Help &amp; Support
               </Link>
             </div>
             <div className="h-px bg-zinc-100" />
             <div className="py-1 px-1">
               <button onClick={handleLogout} className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
-                <LogOut className="w-4 h-4 text-zinc-400" strokeWidth={1.5} /> Log out
+                <Glyph name="log-out" size={16} className="text-zinc-400" /> Log out
               </button>
             </div>
           </motion.div>

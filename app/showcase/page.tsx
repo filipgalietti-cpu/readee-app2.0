@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, Target, Sparkles, ArrowRight } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Showcase hub — the "what's inside Readee" landing page for
@@ -21,7 +21,7 @@ const PILLARS = [
   {
     href: "/showcase/stories",
     label: "Stories",
-    icon: BookOpen,
+    icon: "book-open",
     title: "Original decodable tales.",
     body: "25 stories across K-4, hand-illustrated, every line read aloud. Phonics-matched to the grade, so emerging readers can actually decode them.",
     bg: "from-violet-500 to-brand-600",
@@ -31,14 +31,14 @@ const PILLARS = [
   {
     href: "/showcase/practice",
     label: "Practice",
-    icon: Target,
+    icon: "target",
     title: "Standards-aligned questions.",
     body: "911 multiple-choice questions across every K-4 reading skill. Bright illustrations, audio prompts, instant feedback.",
     bg: "from-emerald-500 to-sky-500",
     accent: "emerald",
     stat: "911 questions",
   },
-];
+] as const;
 
 export default function ShowcaseHub() {
   return (
@@ -47,7 +47,7 @@ export default function ShowcaseHub() {
         {/* Hero */}
         <div className="text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-violet-700 shadow-sm">
-            <Sparkles className="h-3 w-3" />
+            <Glyph name="sparkles" size={12} />
             What's inside Readee
           </div>
           <h1 className="mt-6 font-display text-5xl font-extrabold tracking-tight text-zinc-900 sm:text-7xl">
@@ -70,7 +70,7 @@ export default function ShowcaseHub() {
                 className="group relative overflow-hidden rounded-3xl bg-white p-8 shadow-md ring-1 ring-zinc-100 transition duration-500 hover:-translate-y-1 hover:shadow-xl sm:p-10"
               >
                 <div className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${p.bg} text-white shadow-soft`}>
-                  <Icon className="h-7 w-7" strokeWidth={2.2} />
+                  <Glyph name={p.icon} size={28} />
                 </div>
                 <div className={`text-xs font-bold uppercase tracking-widest text-${p.accent}-600`}>
                   {p.label}
@@ -85,7 +85,7 @@ export default function ShowcaseHub() {
                   <span className="text-sm font-bold text-zinc-400">{p.stat}</span>
                   <span className={`inline-flex items-center gap-1.5 text-sm font-bold text-${p.accent}-600 transition group-hover:text-${p.accent}-800`}>
                     Browse
-                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                    <Glyph name="arrow-right" size={16} className="transition group-hover:translate-x-0.5" />
                   </span>
                 </div>
               </Link>

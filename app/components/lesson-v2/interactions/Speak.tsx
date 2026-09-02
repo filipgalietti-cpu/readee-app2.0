@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { SpeakDef } from "@/lib/lesson-engine/types";
-import { Mic } from "lucide-react";
 import { sfxCorrect, playTryAgain, playPraise, playNiceTry, speak as sayFallback } from "@/lib/lesson-engine/cues";
 import { startPronAssessment, type PAPhrase, type StreamController } from "@/app/(protected)/luna/_components/azure-stream";
 import { FluentIcon } from "@/app/_components/FluentIcon";

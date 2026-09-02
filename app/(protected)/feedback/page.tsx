@@ -8,25 +8,24 @@ import { safeValidate } from "@/lib/validate";
 import { FeedbackSchema } from "@/lib/schemas";
 import { fadeUp, slideUp, popIn, staggerContainer } from "@/lib/motion/variants";
 import { useAudio } from "@/lib/audio/use-audio";
-import { MessageCircle, Bug, Lightbulb, BookOpen, Star, Heart, Frown, Meh, Smile, SmilePlus, Angry } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ─── Constants ──────────────────────────────────────── */
 
-const RATINGS: { value: number; icon: LucideIcon; label: string }[] = [
-  { value: 1, icon: Angry,     label: "Terrible" },
-  { value: 2, icon: Frown,     label: "Poor" },
-  { value: 3, icon: Meh,       label: "Okay" },
-  { value: 4, icon: Smile,     label: "Good" },
-  { value: 5, icon: SmilePlus, label: "Amazing" },
+const RATINGS: { value: number; icon: GlyphName; label: string }[] = [
+  { value: 1, icon: "angry",     label: "Terrible" },
+  { value: 2, icon: "frown",     label: "Poor" },
+  { value: 3, icon: "meh",       label: "Okay" },
+  { value: 4, icon: "smile",     label: "Good" },
+  { value: 5, icon: "smile-plus", label: "Amazing" },
 ];
 
-const CATEGORIES: { id: string; label: string; icon: LucideIcon }[] = [
-  { id: "bug", label: "Bug Report", icon: Bug },
-  { id: "feature", label: "Feature Request", icon: Lightbulb },
-  { id: "content", label: "Content Feedback", icon: BookOpen },
-  { id: "general", label: "General", icon: MessageCircle },
-  { id: "praise", label: "Praise", icon: Star },
+const CATEGORIES: { id: string; label: string; icon: GlyphName }[] = [
+  { id: "bug", label: "Bug Report", icon: "bug" },
+  { id: "feature", label: "Feature Request", icon: "lightbulb" },
+  { id: "content", label: "Content Feedback", icon: "book-open" },
+  { id: "general", label: "General", icon: "message-circle" },
+  { id: "praise", label: "Praise", icon: "star" },
 ];
 
 /* ─── Page ───────────────────────────────────────────── */
@@ -148,12 +147,12 @@ export default function FeedbackPage() {
               Thank you!
             </motion.h1>
             <motion.p variants={fadeUp} className="text-zinc-500 mt-2 leading-relaxed">
-              Your feedback helps us make Readee better for every family <Heart className="w-4 h-4 inline-block text-violet-500" strokeWidth={1.5} />
+              Your feedback helps us make Readee better for every family <Glyph name="heart" size={16} className="inline-block text-violet-500" />
             </motion.p>
 
             {rating && (
               <motion.div variants={fadeUp} className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50">
-                {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-6 h-6 text-violet-600" strokeWidth={1.5} /> : null; })()}
+                {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <Glyph name={R.icon} size={24} className="text-violet-600" /> : null; })()}
                 <span className="text-sm font-medium text-violet-700">
                   {RATINGS.find((r) => r.value === rating)?.label}
                 </span>
@@ -178,7 +177,7 @@ export default function FeedbackPage() {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 rounded-2xl bg-violet-50 mx-auto mb-4 flex items-center justify-center">
-              <MessageCircle className="w-8 h-8 text-violet-500" strokeWidth={1.5} />
+              <Glyph name="message-circle" size={32} className="text-violet-500" />
             </div>
             <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
               Share Your Feedback
@@ -226,7 +225,7 @@ export default function FeedbackPage() {
                         : "hover:bg-zinc-50"
                     }`}
                   >
-                    <r.icon className="w-8 h-8" strokeWidth={1.5} />
+                    <Glyph name={r.icon} size={32} />
                     <span className={`text-[10px] font-medium ${
                       rating === r.value ? "text-violet-700" : "text-zinc-400"
                     }`}>
@@ -256,7 +255,7 @@ export default function FeedbackPage() {
                         : "bg-white text-zinc-700 border-zinc-200 hover:border-violet-300 hover:bg-violet-50/50"
                     }`}
                   >
-                    <c.icon className="w-4 h-4" strokeWidth={1.5} />
+                    <Glyph name={c.icon} size={16} />
                     {c.label}
                   </button>
                 ))}
@@ -282,13 +281,13 @@ export default function FeedbackPage() {
               <div className="flex items-center justify-center gap-3">
                 {rating && (
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 text-sm">
-                    {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <R.icon className="w-5 h-5 text-violet-600" strokeWidth={1.5} /> : null; })()}
+                    {(() => { const R = RATINGS.find((r) => r.value === rating); return R ? <Glyph name={R.icon} size={20} className="text-violet-600" /> : null; })()}
                     <span className="font-medium text-violet-700">{RATINGS.find((r) => r.value === rating)?.label}</span>
                   </span>
                 )}
                 {category && (
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-50 text-sm">
-                    {(() => { const C = CATEGORIES.find((c) => c.id === category); return C ? <C.icon className="w-4 h-4 text-violet-600" strokeWidth={1.5} /> : null; })()}
+                    {(() => { const C = CATEGORIES.find((c) => c.id === category); return C ? <Glyph name={C.icon} size={16} className="text-violet-600" /> : null; })()}
                     <span className="font-medium text-violet-700">{CATEGORIES.find((c) => c.id === category)?.label}</span>
                   </span>
                 )}

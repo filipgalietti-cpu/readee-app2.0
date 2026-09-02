@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { usePathname } from "next/navigation";
-import { MessageSquare, X, Loader2, Check } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 export default function FeedbackButton() {
   const pathname = usePathname();
@@ -43,7 +43,7 @@ export default function FeedbackButton() {
         aria-label="Report an issue or share feedback"
         title="Report an issue"
       >
-        <MessageSquare className="h-5 w-5" />
+        <Glyph name="message-square" size={20} />
       </button>
 
       {open && (
@@ -68,14 +68,14 @@ export default function FeedbackButton() {
                 className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 disabled:opacity-50"
                 aria-label="Close"
               >
-                <X className="h-4 w-4" />
+                <Glyph name="x" size={16} />
               </button>
             </div>
 
             {sent ? (
               <div className="my-6 text-center">
                 <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-700">
-                  <Check className="h-5 w-5" />
+                  <Glyph name="check" size={20} />
                 </div>
                 <p className="mt-3 text-sm font-semibold text-zinc-900">
                   Got it - thanks for sending.
@@ -119,7 +119,7 @@ export default function FeedbackButton() {
                     disabled={pending || !message.trim()}
                     className="inline-flex items-center gap-1.5 rounded-full bg-indigo-600 px-5 py-1.5 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:opacity-50"
                   >
-                    {pending && <Loader2 className="h-4 w-4 animate-spin" />}
+                    {pending && <Glyph name="loader2" size={16} className="animate-spin" />}
                     Send
                   </button>
                 </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Star, X, CheckCircle2 } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Lightweight testimonial-capture prompt for the parent dashboard.
@@ -116,12 +116,12 @@ export default function TestimonialPrompt({
           aria-label="Not now"
           className="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
         >
-          <X className="h-4 w-4" />
+          <Glyph name="x" size={16} />
         </button>
 
         {submitted ? (
           <div className="py-6 text-center">
-            <CheckCircle2 className="mx-auto h-10 w-10 text-emerald-500" strokeWidth={2} />
+            <Glyph name="check-circle2" size={40} className="mx-auto text-emerald-500" />
             <p className="mt-3 font-bold text-zinc-900">
               Thank you - that helps a lot.
             </p>
@@ -156,14 +156,7 @@ export default function TestimonialPrompt({
                   aria-label={`${n} stars`}
                   className="rounded-md p-0.5 transition hover:scale-110"
                 >
-                  <Star
-                    className={`h-7 w-7 ${
-                      n <= rating
-                        ? "fill-amber-400 text-amber-400"
-                        : "text-zinc-300"
-                    }`}
-                    strokeWidth={1.5}
-                  />
+                  <Glyph name="star" size={28} className="${ n <= rating ?" />
                 </button>
               ))}
             </div>

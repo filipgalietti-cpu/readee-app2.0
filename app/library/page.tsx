@@ -4,8 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
-import { Icon } from "../components/ui/Icon";
-import { Lock } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 interface Story {
   id: string;
@@ -39,7 +38,7 @@ export default function Library() {
     return (
       <div className="container-page py-12">
         <div className="text-center">
-          <Icon name="open-book" className="mx-auto mb-4 text-zinc-500 animate-pulse" size={48} />
+          <Glyph name="book" className="mx-auto mb-4 text-zinc-500 animate-pulse" size={48} />
           <p className="text-zinc-600">Loading library...</p>
         </div>
       </div>
@@ -64,7 +63,7 @@ export default function Library() {
                       <span className="inline-block px-3 py-1 text-xs font-semibold text-zinc-700 bg-zinc-100 rounded-full">
                         {story.grade_level}
                       </span>
-                      <Icon name="open-book" className="text-zinc-500" size={20} />
+                      <Glyph name="book" className="text-zinc-500" size={20} />
                     </div>
                     <CardTitle>{story.title}</CardTitle>
                   </CardHeader>
@@ -80,13 +79,13 @@ export default function Library() {
                     <span className="inline-block px-3 py-1 text-xs font-semibold text-zinc-500 bg-zinc-100 rounded-full">
                       {story.grade_level}
                     </span>
-                    <Icon name="lock" className="text-zinc-400" size={20} />
+                    <Glyph name="lock" className="text-zinc-400" size={20} />
                   </div>
                   <CardTitle className="text-zinc-500">{story.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-zinc-400">{story.description}</p>
-                  <p className="text-xs text-zinc-500 mt-3 flex items-center gap-1"><Lock className="w-3 h-3" strokeWidth={1.5} /> Complete more lessons to unlock</p>
+                  <p className="text-xs text-zinc-500 mt-3 flex items-center gap-1"><Glyph name="lock" size={12} /> Complete more lessons to unlock</p>
                 </CardContent>
               </Card>
             )}

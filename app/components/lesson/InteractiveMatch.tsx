@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lightbulb } from "lucide-react";
 import { TapToPair } from "../practice/TapToPair";
 import { audioManager } from "@/lib/audio/audio-manager";
 import { FluentIcon } from "@/app/_components/FluentIcon";

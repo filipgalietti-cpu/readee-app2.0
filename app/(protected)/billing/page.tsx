@@ -4,14 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import {
-  CreditCard,
-  Star,
-  Check,
-  ExternalLink,
-  Mail,
-  ShieldCheck,
-} from "lucide-react";
 import SettingsShell from "@/app/_components/SettingsShell";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -23,6 +15,7 @@ import {
   PLAN_LABEL,
   SUPPORT,
 } from "@/lib/billing-copy";
+import { Glyph } from "@/app/_components/Glyph";
 
 interface BillingData {
   plan: string;
@@ -156,7 +149,7 @@ export default function BillingPage() {
               : "border-zinc-200 bg-white"
           }`}>
             <div className="flex items-center gap-2 mb-4">
-              <CreditCard className={`w-5 h-5 ${isPremium ? "text-violet-500" : "text-zinc-400"}`} strokeWidth={1.5} />
+              <Glyph name="credit-card" size={20} className="${isPremium ?" />
               <h2 className="text-base font-semibold text-zinc-900">Current Plan</h2>
             </div>
 
@@ -188,7 +181,7 @@ export default function BillingPage() {
                   <p className="text-xs text-violet-500 mt-0.5">Via promo code: {billing.promo_code}</p>
                 )}
               </div>
-              {isPremium && <Star className="w-10 h-10 text-violet-400" fill="currentColor" strokeWidth={0} />}
+              {isPremium && <Glyph name="star" size={40} className="text-violet-400" />}
             </div>
 
             {isPremium && hasStripe && (
@@ -207,7 +200,7 @@ export default function BillingPage() {
                   disabled={portalLoading}
                   className="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-violet-200 text-sm font-semibold text-violet-700 hover:bg-violet-50 transition-colors disabled:opacity-50"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <Glyph name="external-link" size={16} />
                   {portalLoading ? "Opening..." : "Manage subscription"}
                 </button>
                 {portalError && (
@@ -268,12 +261,7 @@ export default function BillingPage() {
                       isPremium ? "bg-violet-100" : "bg-zinc-100"
                     }`}
                   >
-                    <Check
-                      className={`h-4 w-4 ${
-                        isPremium ? "text-violet-600" : "text-zinc-400"
-                      }`}
-                      strokeWidth={2.4}
-                    />
+                    <Glyph name="check" size={16} className="${ isPremium ?" />
                   </div>
                   <span className="text-sm leading-snug text-zinc-700">
                     {line}
@@ -294,7 +282,7 @@ export default function BillingPage() {
                   disabled={portalLoading}
                   className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors disabled:opacity-50"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <Glyph name="external-link" size={14} />
                   {portalLoading ? "Opening..." : "View in Stripe"}
                 </button>
                 {portalError && (
@@ -331,7 +319,7 @@ export default function BillingPage() {
               </div>
             ) : (
               <div className="text-center py-8">
-                <CreditCard className="w-8 h-8 text-zinc-300 mx-auto mb-2" strokeWidth={1.5} />
+                <Glyph name="credit-card" size={32} className="text-zinc-300 mx-auto mb-2" />
                 <p className="text-sm text-zinc-400">No billing history</p>
               </div>
             )}
@@ -351,11 +339,11 @@ export default function BillingPage() {
                 href={`mailto:${SUPPORT.email}`}
                 className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1.5 font-semibold text-indigo-700 transition hover:bg-indigo-100"
               >
-                <Mail className="h-3.5 w-3.5" strokeWidth={2.2} />
+                <Glyph name="mail" size={14} />
                 {SUPPORT.email}
               </a>
               <span className="inline-flex items-center gap-1.5 text-zinc-500">
-                <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" strokeWidth={2.2} />
+                <Glyph name="shield-check" size={14} className="text-emerald-500" />
                 Secure checkout via Stripe
               </span>
             </div>

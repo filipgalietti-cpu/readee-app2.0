@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { Search, ImageIcon, X } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Entry = {
   date: string;
@@ -95,7 +95,7 @@ export default function ArchiveBrowser({
       {/* Search + theme chips */}
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-3 py-2 shadow-sm">
-          <Search className="h-4 w-4 flex-shrink-0 text-zinc-400" />
+          <Glyph name="search" size={16} className="flex-shrink-0 text-zinc-400" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -109,7 +109,7 @@ export default function ArchiveBrowser({
               aria-label="Clear search"
               className="rounded-full p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700"
             >
-              <X className="h-3.5 w-3.5" />
+              <Glyph name="x" size={14} />
             </button>
           )}
         </div>
@@ -285,7 +285,7 @@ function ArchiveCard({ entry, isToday }: { entry: Entry; isToday: boolean }) {
           />
         ) : (
           <div className="flex h-36 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-indigo-400">
-            <ImageIcon className="h-10 w-10" />
+            <Glyph name="image" size={40} />
           </div>
         )}
         <div className="p-4">

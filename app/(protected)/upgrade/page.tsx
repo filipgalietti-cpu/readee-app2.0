@@ -6,17 +6,6 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { usePlanStore } from "@/lib/stores/plan-store";
-import {
-  Check,
-  BookOpen,
-  ChevronDown,
-  ShieldCheck,
-  ArrowLeft,
-  Sparkles,
-  Lock,
-  Award,
-  GraduationCap,
-} from "lucide-react";
 // Single source of truth for billing copy, pricing, features, FAQ.
 // If you edit any of these, update lib/billing-copy.ts — never inline.
 import {
@@ -28,6 +17,7 @@ import {
   SUPPORT,
 } from "@/lib/billing-copy";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import { Glyph } from "@/app/_components/Glyph";
 
 /* ─── Page ────────────────────────────────────────────── */
 
@@ -138,7 +128,7 @@ function UpgradeContent() {
     return (
       <div className="max-w-lg mx-auto py-16 px-4 text-center space-y-4">
         <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto">
-          <Check className="w-8 h-8 text-emerald-600" />
+          <Glyph name="check" size={32} className="text-emerald-600" />
         </div>
         <h1 className="text-2xl font-bold text-zinc-900">You have {planLabel}</h1>
         <p className="text-zinc-500">
@@ -252,7 +242,7 @@ function UpgradeContent() {
             <ul className="mt-4 space-y-1.5 text-xs text-zinc-600">
               {PREMIUM_FEATURES.slice(0, 4).map((line) => (
                 <li key={line} className="flex items-start gap-1.5">
-                  <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" strokeWidth={2.4} />
+                  <Glyph name="check" size={12} className="mt-0.5 flex-shrink-0 text-emerald-500" />
                   {line}
                 </li>
               ))}
@@ -288,7 +278,7 @@ function UpgradeContent() {
         <ul className="mx-auto grid w-fit grid-cols-1 gap-x-6 gap-y-1.5 text-[11px] font-semibold text-zinc-500 sm:grid-cols-2">
           {TRUST_SIGNALS.map((t) => (
             <li key={t} className="flex items-center gap-1.5">
-              <ShieldCheck className="h-3 w-3 flex-none text-emerald-500" strokeWidth={2.4} />
+              <Glyph name="shield-check" size={12} className="flex-none text-emerald-500" />
               {t}
             </li>
           ))}
@@ -321,7 +311,7 @@ function UpgradeContent() {
       >
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0">
-            <Award className="w-6 h-6 text-violet-600" />
+            <Glyph name="award" size={24} className="text-violet-600" />
           </div>
           <div>
             <p className="font-bold text-zinc-900">Built by a reading specialist</p>
@@ -333,13 +323,13 @@ function UpgradeContent() {
             </p>
             <div className="flex flex-wrap gap-2 mt-3">
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-violet-700 border border-violet-200">
-                <ShieldCheck className="w-3 h-3" /> Certified Reading Specialist
+                <Glyph name="shield-check" size={12} /> Certified Reading Specialist
               </span>
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-violet-700 border border-violet-200">
-                <GraduationCap className="w-3 h-3" /> 3rd Grade Teacher
+                <Glyph name="graduation-cap" size={12} /> 3rd Grade Teacher
               </span>
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white text-xs font-medium text-violet-700 border border-violet-200">
-                <BookOpen className="w-3 h-3" /> Readee Co-founder
+                <Glyph name="book-open" size={12} /> Readee Co-founder
               </span>
             </div>
           </div>
@@ -363,7 +353,7 @@ function UpgradeContent() {
               className="flex items-start gap-3 rounded-xl border border-zinc-100 bg-white p-4 shadow-sm"
             >
               <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-violet-50">
-                <Check className="h-4 w-4 text-violet-600" strokeWidth={2.4} />
+                <Glyph name="check" size={16} className="text-violet-600" />
               </div>
               <p className="text-sm leading-snug text-zinc-700">{line}</p>
             </li>
@@ -374,7 +364,7 @@ function UpgradeContent() {
             the gold version. Trust through clarity. */}
         <details className="group rounded-xl border border-zinc-200 bg-zinc-50/60 p-4">
           <summary className="cursor-pointer text-sm font-semibold text-zinc-700 [&::-webkit-details-marker]:hidden">
-            <Lock className="mr-2 inline h-3.5 w-3.5 text-zinc-500" strokeWidth={2.2} />
+            <Glyph name="lock" size={14} className="mr-2 inline text-zinc-500" />
             What&apos;s in the Free plan?
           </summary>
           <ul className="mt-3 space-y-1.5 text-xs text-zinc-600">
@@ -439,11 +429,7 @@ function UpgradeContent() {
                 className="w-full px-5 py-4 flex items-center justify-between text-left"
               >
                 <span className="text-sm font-semibold text-zinc-900">{faq.q}</span>
-                <ChevronDown
-                  className={`w-4 h-4 text-zinc-400 transition-transform duration-200 flex-shrink-0 ${
-                    openFaq === i ? "rotate-180" : ""
-                  }`}
-                />
+                <Glyph name="chevron-down" size={16} className="text-zinc-400 transition-transform duration-200 flex-shrink-0 ${ openFaq === i ?" />
               </button>
               {openFaq === i && (
                 <div className="px-5 pb-4">
@@ -484,7 +470,7 @@ function UpgradeContent() {
           href="/dashboard"
           className="inline-flex items-center gap-1.5 text-sm text-zinc-400 hover:text-zinc-600 transition-colors"
         >
-          <ArrowLeft className="w-3.5 h-3.5" />
+          <Glyph name="arrow-left" size={14} />
           Continue with free plan
         </Link>
       </div>

@@ -4,7 +4,7 @@ import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Home, RotateCw } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Route-level error boundary for the protected (signed-in) zone.
@@ -54,14 +54,14 @@ export default function ProtectedError({
           onClick={reset}
           className="inline-flex h-11 items-center gap-2 rounded-full bg-indigo-600 px-5 text-sm font-bold text-white shadow-sm transition hover:bg-indigo-700"
         >
-          <RotateCw className="h-4 w-4" />
+          <Glyph name="rotate-cw" size={16} />
           Try again
         </button>
         <Link
           href="/dashboard"
           className="inline-flex h-11 items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 text-sm font-bold text-zinc-700 transition hover:border-indigo-300 hover:text-indigo-700"
         >
-          <Home className="h-4 w-4" />
+          <Glyph name="home" size={16} />
           Back to dashboard
         </Link>
       </div>

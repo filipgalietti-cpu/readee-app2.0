@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { X, Loader2, Sparkles, Check } from "lucide-react";
 import { CREDIT_PACKS, type CreditPackSku } from "@/lib/ai/credit-balance";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Reusable button that pops a modal of credit packs and fires one-time
@@ -61,7 +61,7 @@ export default function TopUpCreditsButton({
           duration={5}
           shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
         />
-        <Sparkles className="relative z-10 h-3.5 w-3.5" />
+        <Glyph name="sparkles" size={14} className="relative z-10" />
         <span className="relative z-10">{label}</span>
       </button>
 
@@ -81,7 +81,7 @@ export default function TopUpCreditsButton({
                 className="inline-flex h-7 w-7 items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100"
                 aria-label="Close"
               >
-                <X className="h-4 w-4" />
+                <Glyph name="x" size={16} />
               </button>
             </div>
 
@@ -103,7 +103,7 @@ export default function TopUpCreditsButton({
                   }`}
                 >
                   <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
-                    <Sparkles className="h-5 w-5" />
+                    <Glyph name="sparkles" size={20} />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ export default function TopUpCreditsButton({
                       ${(pack.usdCents / 100).toFixed(2)}
                     </div>
                     {pending === pack.sku && (
-                      <Loader2 className="mx-auto mt-1 h-3 w-3 animate-spin text-violet-500" />
+                      <Glyph name="loader2" size={12} className="mx-auto mt-1 animate-spin text-violet-500" />
                     )}
                   </div>
                 </button>
@@ -134,7 +134,7 @@ export default function TopUpCreditsButton({
               {err && <p className="text-xs font-semibold text-red-600">{err}</p>}
 
               <div className="flex items-start gap-2 rounded-xl bg-zinc-50 px-3 py-2 text-[11px] text-zinc-500">
-                <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
+                <Glyph name="check" size={12} className="mt-0.5 flex-shrink-0 text-emerald-500" />
                 Credits are applied immediately after payment. One-time
                 purchase. No auto-renewal.
               </div>

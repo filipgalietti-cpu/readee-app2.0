@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 export default function ClassCodeEntry() {
   const router = useRouter();
@@ -42,7 +42,7 @@ export default function ClassCodeEntry() {
           className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600 text-white transition hover:bg-indigo-700 disabled:opacity-40"
           aria-label="Continue"
         >
-          <ArrowRight className="h-5 w-5" />
+          <Glyph name="arrow-right" size={20} />
         </button>
       </div>
       {err && <p className="mt-2 text-center text-xs font-semibold text-red-600">{err}</p>}

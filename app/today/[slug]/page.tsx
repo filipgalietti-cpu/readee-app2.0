@@ -2,9 +2,9 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { cache } from "react";
 import { createClient } from "@/lib/supabase/server";
-import { ArrowLeft } from "lucide-react";
 import DailyReader, { type DailyRendition } from "./_components/DailyReader";
 import AssignDailyButton from "./_components/AssignDailyButton";
+import { Glyph } from "@/app/_components/Glyph";
 
 // Static daily content — half-hour revalidate. (No `force-dynamic`: it
 // overrode this and re-queried the DB on every navigation, which is what
@@ -171,7 +171,7 @@ export default async function TodayDetailPage({
             href="/daily"
             className="inline-flex items-center gap-1.5 text-[13px] font-bold text-zinc-500 transition hover:text-violet-700"
           >
-            <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
+            <Glyph name="arrow-left" size={16} />
             Back
           </Link>
           <span className="font-display text-lg font-extrabold text-zinc-900">Today&apos;s Readee</span>

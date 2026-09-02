@@ -2,14 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X as XIcon } from "lucide-react";
 import { audioManager } from "@/lib/audio/audio-manager";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { InteractiveExample } from "./InteractiveExample";
 import { InteractiveMatch } from "./InteractiveMatch";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { useAudioStore } from "@/lib/stores/audio-store";
-import { ChevronRight, SkipForward, RotateCcw } from "lucide-react";
 import { Fredoka } from "next/font/google";
 import {
   LessonShellDesktop,
@@ -18,6 +16,7 @@ import {
 } from "./LessonShellDesktop";
 import { LessonShellMobile } from "./LessonShellMobile";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
@@ -982,7 +981,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               {feedback === "positive" ? (
                 <FluentIcon name="check" size={28} />
               ) : (
-                <XIcon className="h-7 w-7" strokeWidth={3} />
+                <Glyph name="x" size={28} />
               )}
             </motion.span>
           )}
@@ -2313,7 +2312,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               className="ml-1 inline-flex h-11 items-center gap-1 px-2 text-xs font-semibold text-gray-400 hover:text-gray-600 transition-colors"
               aria-label="Skip audio"
             >
-              Skip <SkipForward className="w-3 h-3" />
+              Skip <Glyph name="skip-forward" size={12} />
             </button>
           ) : (
             stepsRevealed > 0 && (
@@ -2322,7 +2321,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 className="ml-1 inline-flex h-11 items-center gap-1 px-2 text-xs font-semibold text-violet-500 hover:text-violet-700 transition-colors"
                 aria-label="Listen again"
               >
-                <RotateCcw className="w-3 h-3" /> Again
+                <Glyph name="rotate-ccw" size={12} /> Again
               </button>
             )
           )}
@@ -2332,7 +2331,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               className="ml-1 w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-300 transition-colors"
               aria-label="Skip slide"
             >
-              <SkipForward className="w-3 h-3" />
+              <Glyph name="skip-forward" size={12} />
             </button>
           )}
         </div>
@@ -2681,7 +2680,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                   ) : (
                     <>
                       {devMode && !showNext ? "Skip" : "Next"}
-                      <ChevronRight className="w-5 h-5" />
+                      <Glyph name="chevron-right" size={20} />
                     </>
                   )}
                 </span>

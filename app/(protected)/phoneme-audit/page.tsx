@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { ThumbsUp, Square, Play } from "lucide-react";
 import phonemeData from "@/scripts/phoneme-database.json";
+import { Glyph } from "@/app/_components/Glyph";
 
 interface Phoneme {
   id: string;
@@ -152,7 +152,7 @@ export default function PhonemeAuditPage() {
           }}
           className="px-4 py-2 text-sm bg-white border rounded-lg font-medium hover:bg-gray-50"
         >
-          <Square className="w-4 h-4 inline-block mr-1" /> Stop
+          <Glyph name="square" size={16} className="inline-block mr-1" /> Stop
         </button>
         <button
           onClick={() => {
@@ -209,7 +209,7 @@ export default function PhonemeAuditPage() {
                           : "bg-gray-100 text-gray-600 hover:bg-indigo-100 hover:text-indigo-600"
                       }`}
                     >
-                      {isPlaying ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                      {isPlaying ? <Glyph name="square" size={16} /> : <Glyph name="play" size={16} />}
                     </button>
 
                     {/* Phoneme info */}
@@ -238,7 +238,7 @@ export default function PhonemeAuditPage() {
                       }`}
                       title="Sounds correct"
                     >
-                      <ThumbsUp className="w-4 h-4" />
+                      <Glyph name="thumbs-up" size={16} />
                     </button>
                     <button
                       onClick={() => toggleRating(p.id, "bad")}

@@ -4,14 +4,9 @@ import ReportButton from "./_components/ReportButton";
 import RecordCommunityRead from "@/app/_components/RecordCommunityRead";
 import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
 import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
-import {
-  ArrowLeft,
-  Users,
-  Sparkles,
-  Eye,
-} from "lucide-react";
 import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -130,7 +125,7 @@ export default async function PublicCommunityPassagePage({
             href="/practice-hub/community"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-indigo-600"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <Glyph name="arrow-left" size={16} />
             Library
           </Link>
         </div>
@@ -147,7 +142,7 @@ export default async function PublicCommunityPassagePage({
                   className="h-7 w-7 flex-none rounded-full object-cover shadow-sm ring-2 ring-white"
                 />
               ) : (
-                <Users className="h-4 w-4 text-violet-600" />
+                <Glyph name="users" size={16} className="text-violet-600" />
               )}
               <span className="text-sm font-bold text-zinc-700">
                 {passage.display_byline
@@ -181,7 +176,7 @@ export default async function PublicCommunityPassagePage({
 
             <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-zinc-500">
               <span className="inline-flex items-center gap-1">
-                <Eye className="h-3.5 w-3.5" />
+                <Glyph name="eye" size={14} />
                 {passage.view_count.toLocaleString()} reads
               </span>
               <span>·</span>
@@ -241,7 +236,7 @@ export default async function PublicCommunityPassagePage({
                       />
                     ) : (
                       <div className="flex h-28 w-full items-center justify-center bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-400">
-                        <Sparkles className="h-8 w-8" />
+                        <Glyph name="sparkles" size={32} />
                       </div>
                     )}
                     <div className="p-3">
@@ -250,7 +245,7 @@ export default async function PublicCommunityPassagePage({
                           {r.grade_level}
                         </span>
                         <span className="inline-flex items-center gap-1 text-zinc-400">
-                          <Eye className="h-3 w-3" />
+                          <Glyph name="eye" size={12} />
                           {r.view_count.toLocaleString()}
                         </span>
                       </div>

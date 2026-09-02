@@ -10,11 +10,8 @@ import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
-import {
-  Home, BarChart3, BookText, BookOpen, ListChecks, Map, Newspaper,
-  Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Menu, PenLine,
-} from "lucide-react";
 import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 /* ─── Nav items ──────────────────────────────────── */
 
@@ -53,25 +50,25 @@ function getNavSections(
     sections.push({
       label: "Owner",
       items: [
-        { href: "/owner", icon: Users, label: "All accounts" },
+        { href: "/owner", icon: "users", label: "All accounts" },
       ],
     });
     sections.push({
       label: "Content",
       items: [
-        { href: "/owner/qc-bot", icon: Bot, label: "QC bot" },
-        { href: "/owner/content-audit", icon: ScanLine, label: "Content audit" },
-        { href: "/owner/batch-qc", icon: Factory, label: "Factory QC" },
+        { href: "/owner/qc-bot", icon: "bot", label: "QC bot" },
+        { href: "/owner/content-audit", icon: "scan", label: "Content audit" },
+        { href: "/owner/batch-qc", icon: "factory", label: "Factory QC" },
       ],
     });
     sections.push({
       label: "Exit",
       items: [
         ownsClassroom
-          ? { href: "/classroom", icon: LogOut, label: "Back to classroom" }
+          ? { href: "/classroom", icon: "log-out", label: "Back to classroom" }
           : hasChildren
-          ? { href: "/dashboard", icon: LogOut, label: "Back to family view" }
-          : { href: "/", icon: LogOut, label: "Back to home" },
+          ? { href: "/dashboard", icon: "log-out", label: "Back to family view" }
+          : { href: "/", icon: "log-out", label: "Back to home" },
       ],
     });
     return sections;
@@ -83,16 +80,16 @@ function getNavSections(
     sections.push({
       label: "Admin",
       items: [
-        { href: "/admin", icon: Building2, label: "My scopes" },
-        { href: "/admin/qc", icon: ShieldCheck, label: "Quiz QC queue" },
-        { href: "/admin/community", icon: Users, label: "Community review" },
+        { href: "/admin", icon: "building", label: "My scopes" },
+        { href: "/admin/qc", icon: "shield-check", label: "Quiz QC queue" },
+        { href: "/admin/community", icon: "users", label: "Community review" },
       ],
     });
     if (ownsClassroom) {
       sections.push({
         label: "Exit",
         items: [
-          { href: "/classroom", icon: GraduationCap, label: "Back to classroom" },
+          { href: "/classroom", icon: "graduation-cap", label: "Back to classroom" },
         ],
       });
     }
@@ -109,13 +106,13 @@ function getNavSections(
       items: [
         {
           href: "/classroom/build",
-          icon: Sparkles,
+          icon: "sparkles",
           label: "Build with AI",
           emphasis: true,
           shimmer: true,
         },
-        { href: "/classroom", icon: GraduationCap, label: "Classroom" },
-        { href: "/classroom/live", icon: Zap, label: "Live quiz", collapsedHidden: true },
+        { href: "/classroom", icon: "graduation-cap", label: "Classroom" },
+        { href: "/classroom/live", icon: "zap", label: "Live quiz", collapsedHidden: true },
       ],
     });
 
@@ -124,30 +121,30 @@ function getNavSections(
       items: [
         {
           href: "/classroom/tools",
-          icon: Brain,
+          icon: "brain",
           label: "Readee.ai tools",
           emphasis: true,
         },
-        { href: "/luna", icon: Mic, label: "Luna" },
+        { href: "/luna", icon: "mic", label: "Luna" },
       ],
     });
 
     sections.push({
       label: "Insights",
       items: [
-        { href: "/classroom/reports", icon: BarChart3, label: "Reports" },
-        { href: "/fluency", icon: Mic, label: "Fluency check", collapsedHidden: true },
+        { href: "/classroom/reports", icon: "bar-chart3", label: "Reports" },
+        { href: "/fluency", icon: "mic", label: "Fluency check", collapsedHidden: true },
       ],
     });
 
     sections.push({
       label: "Library",
       items: [
-        { href: "/classroom/library", icon: Library, label: "Library" },
-        { href: "/classroom/lessons", icon: BookText, label: "Lessons", collapsedHidden: true },
-        { href: "/classroom/books", icon: BookOpenText, label: "Books", collapsedHidden: true },
-        { href: "/classroom/leveled", icon: Layers, label: "Leveled passages", collapsedHidden: true },
-        { href: "/classroom/authoring", icon: ClipboardPen, label: "Quizzes", collapsedHidden: true },
+        { href: "/classroom/library", icon: "library", label: "Library" },
+        { href: "/classroom/lessons", icon: "book", label: "Lessons", collapsedHidden: true },
+        { href: "/classroom/books", icon: "book-open", label: "Books", collapsedHidden: true },
+        { href: "/classroom/leveled", icon: "layers", label: "Leveled passages", collapsedHidden: true },
+        { href: "/classroom/authoring", icon: "clipboard-pen", label: "Quizzes", collapsedHidden: true },
       ],
     });
 
@@ -155,7 +152,7 @@ function getNavSections(
       label: "Grow",
       collapsible: true,
       items: [
-        { href: "/classroom/refer", icon: Users, label: "Refer a teacher", collapsedHidden: true },
+        { href: "/classroom/refer", icon: "users", label: "Refer a teacher", collapsedHidden: true },
       ],
     });
 
@@ -163,9 +160,9 @@ function getNavSections(
       sections.push({
         label: "Admin",
         items: [
-          { href: "/admin", icon: Building2, label: "Admin" },
-          { href: "/admin/qc", icon: ShieldCheck, label: "QC queue" },
-          { href: "/admin/community", icon: Users, label: "Community review" },
+          { href: "/admin", icon: "building", label: "Admin" },
+          { href: "/admin/qc", icon: "shield-check", label: "QC queue" },
+          { href: "/admin/community", icon: "users", label: "Community review" },
         ],
       });
     }
@@ -190,12 +187,12 @@ function getNavSections(
       collapsible: collapseByDefault,
       kidSize: true,
       items: [
-        { href: "/dashboard", icon: Home, label: ownsClassroom ? "Parent view" : "Dashboard" },
-        { href: `/journey${q}`, icon: Map, label: "Journey" },
-        { href: `/practice-hub${q}`, icon: ListChecks, label: "Practice" },
-        { href: `/luna${q}`, icon: Mic, label: "Luna" },
-        { href: `/luna/studio${q}`, icon: PenLine, label: "Studio" },
-        { href: `/practice-hub/community${q}`, icon: BookOpen, label: "Library" },
+        { href: "/dashboard", icon: "home", label: ownsClassroom ? "Parent view" : "Dashboard" },
+        { href: `/journey${q}`, icon: "map", label: "Journey" },
+        { href: `/practice-hub${q}`, icon: "list-checks", label: "Practice" },
+        { href: `/luna${q}`, icon: "mic", label: "Luna" },
+        { href: `/luna/studio${q}`, icon: "pen-line", label: "Studio" },
+        { href: `/practice-hub/community${q}`, icon: "book-open", label: "Library" },
       ],
     });
 
@@ -204,12 +201,12 @@ function getNavSections(
       collapsible: collapseByDefault,
       kidSize: true,
       items: [
-        { href: "/daily", icon: Newspaper, label: "Daily Readee", fluent: "open-book" },
-        { href: `/shop${q}`, icon: Carrot, label: "Shop", fluent: "carrot" },
-        { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard", fluent: "trophy" },
+        { href: "/daily", icon: "newspaper", label: "Daily Readee", fluent: "open-book" },
+        { href: `/shop${q}`, icon: "carrot", label: "Shop", fluent: "carrot" },
+        { href: `/leaderboard${q}`, icon: "trophy", label: "Leaderboard", fluent: "trophy" },
         // Long-tail surfaces now live on the /more page instead of a
         // cramped dropdown — one big, tappable entry point.
-        { href: `/more${q}`, icon: Menu, label: "More" },
+        { href: `/more${q}`, icon: "menu", label: "More" },
       ],
     });
   }
@@ -222,8 +219,8 @@ function getNavSections(
     sections.push({
       label: "Admin",
       items: [
-        { href: "/admin", icon: Building2, label: "Admin" },
-        { href: "/admin/community", icon: Users, label: "Community review" },
+        { href: "/admin", icon: "building", label: "Admin" },
+        { href: "/admin/community", icon: "users", label: "Community review" },
       ],
     });
   }
@@ -531,10 +528,7 @@ function NavSectionBlock({
         className="flex w-full items-center gap-1 px-2 mb-1 text-[11px] font-semibold text-zinc-400 uppercase tracking-widest hover:text-zinc-600"
         aria-expanded={open}
       >
-        <ChevronRight
-          className={`w-3 h-3 transition-transform ${open ? "rotate-90" : ""}`}
-          strokeWidth={2}
-        />
+        <Glyph name="chevron-right" size={12} className="transition-transform ${open ?" />
         {section.label}
       </button>
       {open && (
@@ -638,7 +632,7 @@ function ExpandedNav({
             className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors"
             aria-label="Collapse"
           >
-            <ChevronDown className="w-4 h-4 text-zinc-400 -rotate-90" strokeWidth={2} />
+            <Glyph name="chevron-down" size={16} className="text-zinc-400 -rotate-90" />
           </button>
         )}
       </div>

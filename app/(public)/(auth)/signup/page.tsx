@@ -8,7 +8,7 @@ import GoogleButton from "@/app/components/auth/GoogleButton";
 import Divider from "@/app/components/auth/Divider";
 import TosCheckbox from "@/app/components/auth/TosCheckbox";
 import { CURRENT_TOS_VERSION } from "@/lib/tos";
-import { GraduationCap, Heart } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 const CTA_BTN =
   "w-full bg-indigo-700 text-white py-3.5 rounded-full font-extrabold text-base shadow-[0_8px_20px_-8px_rgba(67,56,202,0.5)] hover:bg-indigo-800 transition disabled:opacity-50 disabled:cursor-not-allowed";
@@ -154,7 +154,7 @@ function SignupInner() {
                 : "border-zinc-200 bg-white text-zinc-500 hover:border-indigo-300"
             }`}
           >
-            <Heart className="h-4 w-4" />
+            <Glyph name="heart" size={16} />
             I&apos;m a parent
           </button>
           <button
@@ -166,7 +166,7 @@ function SignupInner() {
                 : "border-zinc-200 bg-white text-zinc-500 hover:border-violet-300"
             }`}
           >
-            <GraduationCap className="h-4 w-4" />
+            <Glyph name="graduation-cap" size={16} />
             I&apos;m a teacher
           </button>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { computeLevel } from "@/lib/levels/levels";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
  * Compact reader-level badge. Used in headers, sidebars, leaderboard
@@ -29,7 +30,7 @@ export default function LevelBadge({
         title={`Level ${current.number} - ${current.name}`}
         className={`inline-flex h-6 w-6 items-center justify-center rounded-full ${current.accent.bg} ${current.accent.fg}`}
       >
-        <Icon className="h-3.5 w-3.5" strokeWidth={2.2} />
+        <FluentIcon name={Icon} size={14} />
       </span>
     );
   }
@@ -40,7 +41,7 @@ export default function LevelBadge({
         <span
           className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl ${current.accent.bg} ${current.accent.fg} shadow-lg`}
         >
-          <Icon className="h-7 w-7" strokeWidth={2.2} />
+          <FluentIcon name={Icon} size={28} />
         </span>
         {showName && (
           <div>
@@ -61,7 +62,7 @@ export default function LevelBadge({
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold ${current.accent.soft}`}
     >
-      <Icon className="h-3.5 w-3.5" strokeWidth={2.4} />
+      <FluentIcon name={Icon} size={14} />
       {showName ? (
         <span>
           <span className="font-mono">Lv {current.number}</span> · {current.name}

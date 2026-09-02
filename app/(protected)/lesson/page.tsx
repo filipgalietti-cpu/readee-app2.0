@@ -17,30 +17,29 @@ import { getActiveMultiplier, clearActiveMultiplierFields } from "@/lib/carrots/
 
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
-import { Medal, Gem, Type, FileText, Search, Eye, CheckCircle, PenTool, MessageSquare, Crown, BookOpen, Target } from "lucide-react";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
 import type { Outfit } from "@/app/_components/Bunny/outfits";
 import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
 import KidThumbs from "@/components/feedback/KidThumbs";
-import type { LucideIcon } from "lucide-react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
-const LEARN_ICON_MAP: Record<string, LucideIcon> = {
-  "📝": FileText,
-  "🔤": Type,
-  "🔍": Search,
-  "🎯": Target,
-  "🔎": Eye,
-  "✅": CheckCircle,
-  "💭": MessageSquare,
-  "✍️": PenTool,
-  "📚": BookOpen,
+const LEARN_ICON_MAP: Record<string, GlyphName> = {
+  "📝": "file-text",
+  "🔤": "text",
+  "🔍": "search",
+  "🎯": "target",
+  "🔎": "eye",
+  "✅": "check-circle2",
+  "💭": "message-square",
+  "✍️": "pen-line",
+  "📚": "book-open",
 };
 
 function emojiToIcon(emoji: string): React.ReactNode {
   const Icon = LEARN_ICON_MAP[emoji];
-  if (Icon) return <Icon className="w-12 h-12 text-violet-500" strokeWidth={1.5} />;
+  if (Icon) return <Glyph name={Icon} size={48} className="text-violet-500" />;
   if (!emoji) return null;
   // For any unmapped emoji from JSON data, use BookOpen as fallback
   return <FluentIcon name="open-book" size={48} />;
@@ -91,11 +90,11 @@ const CELEBRATION_MESSAGES = [
 ];
 
 const CARROT_MILESTONES = [
-  { name: "Bronze", carrots: 50, icon: Medal },
-  { name: "Silver", carrots: 100, icon: Medal },
-  { name: "Gold", carrots: 200, icon: Medal },
-  { name: "Platinum", carrots: 500, icon: Gem },
-  { name: "Diamond", carrots: 1000, icon: Crown },
+  { name: "Bronze", carrots: 50, icon: "third-place" },
+  { name: "Silver", carrots: 100, icon: "second-place" },
+  { name: "Gold", carrots: 200, icon: "first-place" },
+  { name: "Platinum", carrots: 500, icon: "gem" },
+  { name: "Diamond", carrots: 1000, icon: "crown" },
 ];
 
 const CARD_COLORS = [

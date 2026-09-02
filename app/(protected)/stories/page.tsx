@@ -17,11 +17,11 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits, isPaidPlan } from "@/lib/plan/limits";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
-import { ChevronDown, Play, Star } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
 import storiesKaraoke from "@/app/data/stories-karaoke.json";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -452,7 +452,7 @@ function StoriesContent() {
                 <div className="relative mx-auto flex-shrink-0">
                   <Image src={storyImageUrl(story)} alt="" width={270} height={270} className="block object-cover" style={{ width: 270, height: 270, borderRadius: 24, boxShadow: "0 10px 30px rgba(30,27,75,0.25)" }} />
                   <span className="absolute -right-5 -top-3.5 inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-base font-extrabold" style={{ background: "#fef3c7", border: "3px solid #f59e0b", color: "#b45309", fontFamily: "var(--font-baloo, inherit)", animation: "stampIn 0.55s cubic-bezier(0.34,1.56,0.64,1) 0.35s both" }}>
-                    <Star className="h-4 w-4" fill="currentColor" /> Finished!
+                    <Glyph name="star" size={16} /> Finished!
                   </span>
                 </div>
                 <div className="min-w-[280px] flex-1 text-center">
@@ -656,10 +656,10 @@ function StoriesContent() {
                   </span>
                 ) : (
                   <span className="inline-flex flex-shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-[13px] font-extrabold" style={{ background: isExpanded ? "rgba(255,255,255,0.22)" : "#eef2ff", color: isExpanded ? "#fff" : "#4338ca" }}>
-                    <Star className="h-3 w-3" fill="currentColor" /> {group.doneCount} of {group.stories.length} read
+                    <Glyph name="star" size={12} /> {group.doneCount} of {group.stories.length} read
                   </span>
                 )}
-                <ChevronDown className={`h-5 w-5 flex-shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`} style={{ color: isExpanded ? "rgba(255,255,255,0.7)" : "#a1a1aa" }} />
+                <Glyph name="chevron-down" size={20} className="flex-shrink-0 transition-transform ${isExpanded ?" style={{ color: isExpanded ? "rgba(255,255,255,0.7)" : "#a1a1aa" }} />
               </div>
             </button>
 
@@ -721,12 +721,12 @@ function StoriesContent() {
                           <Image src={storyImageUrl(s)} alt="" fill sizes="240px" className="object-cover" />
                           {isDone && (
                             <span className="absolute right-2 top-2 flex h-[34px] w-[34px] items-center justify-center rounded-full" style={{ background: "#f59e0b", boxShadow: "0 2px 8px rgba(180,83,9,0.4), 0 0 0 3px #fff" }}>
-                              <Star className="h-[18px] w-[18px] text-white" fill="#fff" />
+                              <Glyph name="star" size={18} className="text-white" />
                             </span>
                           )}
                           <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/10">
                             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white/85 opacity-0 shadow transition-opacity group-hover:opacity-100">
-                              <Play className="ml-0.5 h-5 w-5" style={{ color: "#6d28d9" }} fill="currentColor" />
+                              <Glyph name="play" size={20} className="ml-0.5" style={{ color: "#6d28d9" }} />
                             </div>
                           </div>
                         </div>
@@ -738,7 +738,7 @@ function StoriesContent() {
                             </span>
                           ) : (
                             <span className="mt-1.5 inline-flex items-center gap-1 text-[12.5px] font-bold" style={{ color: "#71717a" }}>
-                              <Play className="h-3 w-3" fill="currentColor" /> New story
+                              <Glyph name="play" size={12} /> New story
                             </span>
                           )}
                         </div>

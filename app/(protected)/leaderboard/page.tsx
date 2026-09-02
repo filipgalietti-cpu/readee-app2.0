@@ -7,10 +7,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
-import { Crown, Flame, ArrowRight } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { EmptyState } from "@/app/_components/EmptyState";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 interface LeaderEntry {
   id: string;
@@ -349,7 +349,7 @@ function LeaderboardContent() {
                   className="inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-indigo-700 transition-transform hover:scale-[1.03]"
                 >
                   Practice now
-                  <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                  <Glyph name="arrow-right" size={16} />
                 </Link>
               </div>
             </div>
@@ -383,7 +383,7 @@ function PodiumColumn({ entry, rank }: { entry: LeaderEntry; rank: number }) {
     >
       {isFirst && (
         <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-white shadow-md">
-          <Crown className="h-3.5 w-3.5" fill="currentColor" strokeWidth={0} />
+          <Glyph name="crown" size={14} />
           Champion
         </div>
       )}
@@ -408,12 +408,7 @@ function PodiumColumn({ entry, rank }: { entry: LeaderEntry; rank: number }) {
         </span>
         {entry.streak > 0 && (
           <span className="inline-flex items-center gap-0.5 text-sm font-bold text-amber-600">
-            <Flame
-              className={`h-4 w-4 ${isFirst ? "lb-anim" : ""}`}
-              fill="currentColor"
-              strokeWidth={0}
-              style={isFirst ? { animation: "lbFlicker 1.8s ease-in-out infinite" } : undefined}
-            />
+            <Glyph name="flame" size={16} className="${isFirst ?" />
             {entry.streak}
           </span>
         )}
@@ -486,11 +481,7 @@ function StandingRow({
           entry.streak > 0 ? "text-amber-600" : "text-zinc-300"
         }`}
       >
-        <Flame
-          className="h-4 w-4"
-          fill="currentColor"
-          strokeWidth={0}
-        />
+        <Glyph name="flame" size={16} />
         {entry.streak}
       </span>
     </div>

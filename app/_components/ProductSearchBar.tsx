@@ -3,18 +3,9 @@
 import { useState, useTransition, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Search,
-  Sparkles,
-  Loader2,
-  BookOpen,
-  BookOpenText,
-  ClipboardPen,
-  Lock,
-  X,
-} from "lucide-react";
 import { semanticSearch } from "@/app/(protected)/_actions/search-actions";
 import type { SearchHit } from "@/lib/ai/embeddings";
+import { Glyph } from "@/app/_components/Glyph";
 
 type HrefArgs = {
   id: string;
@@ -59,9 +50,9 @@ function buildHref(contentType: string, args: HrefArgs): string {
 }
 
 const TYPE_META: Record<string, { label: string; icon: any; color: string }> = {
-  sample_lesson:   { label: "Lesson",     icon: BookOpen,     color: "text-indigo-600 bg-indigo-50" },
-  sample_question: { label: "Practice Q", icon: ClipboardPen, color: "text-emerald-600 bg-emerald-50" },
-  story:           { label: "Story",      icon: BookOpenText, color: "text-amber-600 bg-amber-50" },
+  sample_lesson:   { label: "Lesson",     icon: "book-open",     color: "text-indigo-600 bg-indigo-50" },
+  sample_question: { label: "Practice Q", icon: "clipboard-pen", color: "text-emerald-600 bg-emerald-50" },
+  story:           { label: "Story",      icon: "book-open", color: "text-amber-600 bg-amber-50" },
 };
 
 export default function ProductSearchBar({
@@ -114,7 +105,7 @@ export default function ProductSearchBar({
   return (
     <div className="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-indigo-50 p-3 shadow-sm">
       <div className="flex items-center gap-2 px-2 pt-1 text-[10px] font-bold uppercase tracking-widest text-violet-700">
-        <Sparkles className="h-3 w-3" />
+        <Glyph name="sparkles" size={12} />
         Smart search
         {!isPremium && (
           <span className="ml-1 rounded-full bg-violet-600 px-2 py-0.5 text-[9px] text-white">
@@ -123,7 +114,7 @@ export default function ProductSearchBar({
         )}
       </div>
       <div className="mt-2 flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 shadow-sm">
-        <Search className="h-4 w-4 text-zinc-400" />
+        <Glyph name="search" size={16} className="text-zinc-400" />
         <input
           type="text"
           value={query}
@@ -137,7 +128,7 @@ export default function ProductSearchBar({
           className="flex-1 bg-transparent text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none disabled:cursor-not-allowed"
         />
         {pending ? (
-          <Loader2 className="h-4 w-4 animate-spin text-violet-500" />
+          <Glyph name="loader2" size={16} className="animate-spin text-violet-500" />
         ) : query.trim().length > 0 ? (
           <button
             type="button"
@@ -148,7 +139,7 @@ export default function ProductSearchBar({
             }}
             className="rounded-full p-1 text-zinc-400 hover:bg-zinc-100"
           >
-            <X className="h-3.5 w-3.5" />
+            <Glyph name="x" size={14} />
           </button>
         ) : null}
       </div>
@@ -156,7 +147,7 @@ export default function ProductSearchBar({
       {!isPremium && (
         <div className="mt-2 flex items-center justify-between gap-2 px-2 text-xs text-zinc-600">
           <div className="flex items-center gap-1.5">
-            <Lock className="h-3 w-3" />
+            <Glyph name="lock" size={12} />
             Upgrade to search by meaning, not just keywords.
           </div>
           <Link

@@ -1,18 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  Square,
-  Loader2,
-  X as XIcon,
-  AlertCircle,
-  RotateCcw,
-  Trophy,
-  ArrowRight,
-  Shuffle,
-} from "lucide-react";
 import AssignFluencyButton from "./AssignFluencyButton";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Kid = { id: string; first_name: string; grade: string };
 type Passage = { grade: string; title: string; text: string };
@@ -300,7 +291,7 @@ export default function FluencyRecorder({
                     className="ml-1 inline-flex items-center gap-1 rounded-full border border-violet-300 bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700 hover:bg-violet-100"
                     title="Try a different passage"
                   >
-                    <Shuffle className="h-3 w-3" />
+                    <Glyph name="shuffle" size={12} />
                     Try a different one
                   </button>
                 )}
@@ -379,7 +370,7 @@ export default function FluencyRecorder({
               onClick={stopRecording}
               className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-red-600 text-white shadow-lg transition hover:bg-red-700"
             >
-              <Square className="h-9 w-9" fill="currentColor" />
+              <Glyph name="square" size={36} />
             </button>
             <p className="mt-3 text-sm font-bold text-red-600">
               ● Recording - {mins}:{secs}
@@ -408,7 +399,7 @@ export default function FluencyRecorder({
                 onClick={reset}
                 className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-2 text-xs font-bold text-zinc-700 hover:bg-zinc-50"
               >
-                <RotateCcw className="h-3.5 w-3.5" />
+                <Glyph name="rotate-ccw" size={14} />
                 Re-record
               </button>
               <button
@@ -425,7 +416,7 @@ export default function FluencyRecorder({
 
         {analyzing && (
           <div className="flex flex-col items-center gap-2 py-4 text-sm text-zinc-500">
-            <Loader2 className="h-5 w-5 animate-spin text-violet-600" />
+            <Glyph name="loader2" size={20} className="animate-spin text-violet-600" />
             Listening and analyzing…
           </div>
         )}
@@ -433,7 +424,7 @@ export default function FluencyRecorder({
 
       {err && (
         <div className="flex items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">
-          <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+          <Glyph name="alert-circle" size={16} className="mt-0.5 flex-shrink-0" />
           {err}
         </div>
       )}
@@ -445,7 +436,7 @@ export default function FluencyRecorder({
           <div className="rounded-3xl border border-emerald-200 bg-gradient-to-br from-emerald-50/50 to-violet-50/50 p-6 shadow-sm">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-3">
-                <Trophy className="h-8 w-8 text-emerald-600" />
+                <Glyph name="trophy" size={32} className="text-emerald-600" />
                 <div>
                   <div className="text-[10px] font-bold uppercase tracking-widest text-emerald-700">
                     Fluency score
@@ -537,7 +528,7 @@ export default function FluencyRecorder({
               onClick={reset}
               className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-5 py-2 text-xs font-bold text-white transition hover:bg-violet-700"
             >
-              <ArrowRight className="h-3.5 w-3.5" />
+              <Glyph name="arrow-right" size={14} />
               Read another passage
             </button>
           </div>

@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Brain, Lock, ArrowRight } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getWeakSpots, type WeakSpot } from "@/lib/adaptive/weak-spots";
 import { findStandardById } from "@/lib/data/all-standards";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Sharpen Up — premium adaptive review tile.
@@ -80,7 +80,7 @@ export default function SharpenUpCard({
     >
       <div className="flex items-start gap-4">
         <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-violet-100 text-violet-700">
-          <Brain className="h-6 w-6" strokeWidth={1.8} />
+          <Glyph name="brain" size={24} />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
@@ -88,7 +88,7 @@ export default function SharpenUpCard({
               Sharpen Up
             </h3>
             <span className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white">
-              {isPremium ? "Premium" : <><Lock className="h-2.5 w-2.5" strokeWidth={2.4} /> Premium</>}
+              {isPremium ? "Premium" : <><Glyph name="lock" size={10} /> Premium</>}
             </span>
           </div>
           <p className="mt-1 text-sm leading-relaxed text-zinc-600">
@@ -143,7 +143,7 @@ export default function SharpenUpCard({
             }`}
           >
             {isPremium ? "Start review session" : "Unlock Sharpen Up"}
-            <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
+            <Glyph name="arrow-right" size={16} />
           </Link>
         </div>
       </div>
