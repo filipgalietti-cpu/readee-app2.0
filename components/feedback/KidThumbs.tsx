@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { ThumbsUp, ThumbsDown, Check } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 import { recordKidFeedbackAction } from "@/app/actions/kid-feedback";
 import type { KidAssetKind, KidVerdict } from "@/lib/feedback/kid-thumbs";
 
@@ -51,7 +52,7 @@ export default function KidThumbs({
     });
   }
 
-  const dim = size === "sm" ? "h-4 w-4" : "h-5 w-5";
+  const dim = size === "sm" ? 16 : 20;
   const pad = size === "sm" ? "px-2.5 py-1.5 text-xs" : "px-3.5 py-2 text-sm";
   const justify = align === "center" ? "justify-center" : "justify-start";
 
@@ -72,8 +73,8 @@ export default function KidThumbs({
               : "bg-white text-emerald-700 ring-emerald-200 hover:bg-emerald-50"
           }`}
         >
-          <ThumbsUp className={dim} />
-          {verdict === "up" ? <Check className="h-3.5 w-3.5" /> : "Loved it"}
+          <Glyph name="thumbs-up" size={dim} />
+          {verdict === "up" ? <Glyph name="check" size={14} /> : "Loved it"}
         </button>
         <button
           type="button"
@@ -86,12 +87,14 @@ export default function KidThumbs({
               : "bg-white text-rose-700 ring-rose-200 hover:bg-rose-50"
           }`}
         >
-          <ThumbsDown className={dim} />
-          {verdict === "down" ? <Check className="h-3.5 w-3.5" /> : "Not for me"}
+          <Glyph name="thumbs-down" size={dim} />
+          {verdict === "down" ? <Glyph name="check" size={14} /> : "Not for me"}
         </button>
       </div>
       {verdict && !errored && !pending && (
-        <p className="text-[11px] text-zinc-500">Got it — thanks! 🌱</p>
+        <p className="inline-flex items-center gap-1 text-[11px] text-zinc-500">
+          Got it, thanks! <FluentIcon name="seedling" size={12} />
+        </p>
       )}
       {errored && (
         <p className="text-[11px] text-rose-600">
