@@ -1,4 +1,3 @@
-import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
@@ -13,10 +12,11 @@ import LunaReader from "../_components/LunaReader";
 import { rankSkills } from "@/lib/orion/learner";
 import { recommendTextLevel } from "@/lib/orion/reading/text-level";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
-type LunaPassage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[] };
+type LunaPassage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[]; questions?: unknown };
 const PASSAGES = passagesJson as LunaPassage[];
 // Pre-built decodable library (pattern-tagged) — the predetermined content that
 // makes Luna instant. Runtime picks from this, never generates.
@@ -108,7 +108,7 @@ export default async function LunaReadPage({
   // Library-first (pre-built, pattern-tagged, instant); fall back to the curated
   // fluency passages if the library has none for this grade yet.
   const lib: LunaPassage[] = LIBRARY.filter((p) => p.grade === token)
-    .map((p) => ({ grade: p.grade, title: p.title, text: p.text, patternId: p.patternId, patternLabel: p.patternLabel, targetWords: p.targetWords }));
+    .map((p) => ({ grade: p.grade, title: p.title, text: p.text, patternId: p.patternId, patternLabel: p.patternLabel, targetWords: p.targetWords, questions: (p as { questions?: unknown }).questions }));
   const curated: LunaPassage[] = PASSAGES.filter((p) => p.grade === token);
 
   // Adaptive ordering: serve the child's weakest / most-due phonics pattern
@@ -143,7 +143,7 @@ export default async function LunaReadPage({
           href={`/luna?child=${child.id}`}
           className="inline-flex items-center gap-1.5 text-[13px] font-bold text-zinc-500 transition hover:text-violet-700"
         >
-          <ArrowLeft className="h-4 w-4" strokeWidth={2.5} />
+          <Glyph name="arrow-left" size={16} />
           Luna
         </Link>
         <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">

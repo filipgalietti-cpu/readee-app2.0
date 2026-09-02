@@ -18,7 +18,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Shuffle, RotateCcw, X as XIcon, ArrowRight, RefreshCw } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
@@ -28,12 +27,14 @@ import { pickProcessPraise } from "@/lib/orion/motivation";
 import { nextLadderStep, MODELED } from "@/lib/orion/help-ladder";
 import { readingRungs, READING_RUNG, READING_MAX_HELPS } from "@/lib/orion/reading/rungs";
 import { GENTLE_AFTER_FAILED_LINES } from "@/lib/orion/reading/text-level";
+import { validateLunaQuestions, type LunaQuestion } from "@/lib/luna/comprehension";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
-type Passage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[] };
+type Passage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[]; questions?: unknown };
 type Annotation = { word: string; status: string; heard?: string };
 type Grade = {
   wordAnnotations: Annotation[];
@@ -45,7 +46,7 @@ type Grade = {
   coach?: string;
   prosody?: number;
 };
-type Phase = "intro" | "building" | "overall1" | "drill" | "overall2" | "done";
+type Phase = "intro" | "building" | "overall1" | "drill" | "overall2" | "quiz" | "done";
 type WordInfo = { words: string[]; sents: string[]; wSent: number[] };
 type OverallScore = { wcpm: number; accuracy: number };
 
@@ -345,6 +346,14 @@ export default function LunaReader({
   // REPLACED by one large word at a time, karaoke-underlined as each phoneme
   // plays. segIdx = which grapheme chunk is lit (-1 none, length = whole word).
   const [wordLesson, setWordLesson] = useState<{ word: string; segs: SoundSegment[]; segIdx: number; label?: string; done?: boolean } | null>(null);
+  // Comprehension quiz (Reading = Decoding x Comprehension): after the final
+  // read, Luna asks up to two gentle questions - literal first, then
+  // inferential - with three tappable choices. Wrong answers get a warm
+  // reveal, never a fail. Stories without questions skip straight to the
+  // recap, so rollout stays zero-risk while the library backfills.
+  const [quiz, setQuiz] = useState<{ i: number; total: number; q: LunaQuestion; status: "asking" | "waiting" | "right" | "wrong"; picked: number | null } | null>(null);
+  const quizQsRef = useRef<LunaQuestion[]>([]);
+  const compResultRef = useRef({ correct: 0, total: 0 });
   // Big-orb → mini-orb dock (Filip: "large luna shrinks when the lesson
   // starts"). When a word lesson opens, the BIG orb flies down and shrinks
   // into the card's mini-orb slot (FLIP animation); when the lesson resolves
@@ -1306,7 +1315,7 @@ export default function LunaReader({
     // The final whole-story read is done and graded (afterGrade + `after` set by
     // the overall2 routing). Hand straight to the recap, which celebrates, gives
     // the "practice these words" coaching, and shows the results.
-    playRecap();
+    startQuiz();
   }
   function sentenceFeedback(g: Grade, curIdx: number, curAttempt: number) {
     // The tutoring decision (which words are real misreads, whether to re-read,
@@ -1439,7 +1448,7 @@ export default function LunaReader({
       // In echo-rescue mode, skip the whole-story victory lap — re-reading a
       // too-hard text end to end is a defeat lap. Straight to the warm recap;
       // the low accuracy still reaches the DB so next session serves easier text.
-      if (gentleRef.current) { playRecap(); return; }
+      if (gentleRef.current) { startQuiz(); return; }
       beginFinalRead();
     } else if (gentleRef.current) {
       // ECHO mode (assisted reading, the standard rescue): Luna reads the next
@@ -1472,6 +1481,63 @@ export default function LunaReader({
     setMode("speaking");
     setCaption(`Now put it all together, ${name} - read me the whole story!`);
     playCached(`transition-final-${1 + rand(TRANSITION_COUNT)}`, () => { setMode("idle"); armRead(700); });
+  }
+
+  /* ── Comprehension quiz ── */
+  // After the final read: up to two questions (literal anchor, then
+  // inferential), spoken by Luna, answered by tap. No mic, no failure state -
+  // a wrong tap gets the warm reveal and we move on. No questions → recap.
+  function startQuiz() {
+    const qs = validateLunaQuestions(passageRef.current.questions);
+    if (qs.length === 0) { playRecap(); return; }
+    quizQsRef.current = qs;
+    compResultRef.current = { correct: 0, total: qs.length };
+    setPhase("quiz");
+    askQuestion(0);
+  }
+  function askQuestion(i: number) {
+    const q = quizQsRef.current[i];
+    if (!q) { setQuiz(null); playRecap(); return; }
+    const tok = sessionTokenRef.current;
+    setQuiz({ i, total: quizQsRef.current.length, q, status: "asking", picked: null });
+    setMode("speaking");
+    setCaption("Quick question about the story!");
+    // Luna reads the question AND the choices aloud (K readers can't rely on
+    // reading the buttons), then waits for the tap.
+    const spoken = `${q.q} Is it ${q.choices[0]}, ${q.choices[1]}, or ${q.choices[2]}?`;
+    void speakToUrl(spoken).then((url) => {
+      if (sessionTokenRef.current !== tok) return;
+      const ready = () => { setMode("idle"); setCaption("Tap your answer!"); setQuiz((s) => (s ? { ...s, status: "waiting" } : s)); };
+      if (url) playUrl(url, ready); else ready();
+    });
+  }
+  function answerQuiz(choice: number) {
+    const s = quiz;
+    if (!s || s.status !== "waiting") return;
+    const correct = choice === s.q.answer;
+    const tok = sessionTokenRef.current;
+    const next = () => {
+      if (sessionTokenRef.current !== tok) return;
+      if (s.i + 1 < quizQsRef.current.length) askQuestion(s.i + 1);
+      else { setQuiz(null); playRecap(); }
+    };
+    if (correct) {
+      compResultRef.current.correct += 1;
+      awardCarrots(5);
+      bunnyReact("correct");
+      setQuiz({ ...s, status: "right", picked: choice });
+      playCachedQueued(praiseKey(), () => { setMode("speaking"); setCaption("That's right! You really understood the story."); }, next);
+    } else {
+      // Warm reveal - name the answer, praise the thinking, move on.
+      setQuiz({ ...s, status: "wrong", picked: choice });
+      setMode("speaking");
+      const reveal = `It was ${s.q.choices[s.q.answer]}. Good thinking!`;
+      setCaption(reveal);
+      void speakToUrl(reveal).then((url) => {
+        if (sessionTokenRef.current !== tok) return;
+        if (url) playUrl(url, next); else next();
+      });
+    }
   }
 
   // End recap: play the personalized intro + each background-generated custom
@@ -1588,6 +1654,8 @@ export default function LunaReader({
         wcpm: after?.wcpm ?? 0,
         prosody: g?.prosody ?? null,
         targetPatterns: Array.from(statsRef.current.trickyWords),
+        comprehensionCorrect: compResultRef.current.correct,
+        comprehensionTotal: compResultRef.current.total,
       }),
     }).catch(() => {});
   }
@@ -1624,6 +1692,8 @@ export default function LunaReader({
     fixedWordsRef.current = [];
     lineFailsRef.current = 0;
     gentleRef.current = false;
+    quizQsRef.current = []; setQuiz(null);
+    compResultRef.current = { correct: 0, total: 0 };
     setWordLesson(null); missQueueRef.current = [];
     const sessTok = ++sessionTokenRef.current;
     void speakToUrl(`Great reading, ${name}!`).then((url) => { if (url && sessionTokenRef.current === sessTok) recapIntroUrlRef.current = url; });
@@ -1802,6 +1872,7 @@ export default function LunaReader({
               {wordLesson?.label ? wordLesson.label
                 : phase === "building" ? "Making your story…"
                   : phase === "overall1" ? "First, the whole story"
+                    : phase === "quiz" ? `Story question ${(quiz?.i ?? 0) + 1} of ${quiz?.total ?? 1}`
                     : phase === "drill" ? `Line ${Math.min(idx + 1, sentences.length)} of ${sentences.length}`
                       : phase === "overall2" ? "One more time - the whole story"
                         : "How you read it"}
@@ -1813,7 +1884,44 @@ export default function LunaReader({
               </span>
             )}
           </div>
-          {wordLesson ? (
+          {phase === "quiz" && quiz ? (
+            // Comprehension quiz: the question big, three tappable choices.
+            // Right = green + praise; wrong = warm reveal (the correct choice
+            // glows green, the tapped one soft amber - never red-X a 6 year old).
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, padding: "18px 4px 16px" }}>
+              <p style={{ margin: 0, fontFamily: BALOO, fontWeight: 800, fontSize: 26, lineHeight: 1.35, color: "#18181b", textAlign: "center", maxWidth: 520 }}>
+                {quiz.q.q}
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, width: "100%", maxWidth: 380 }}>
+                {quiz.q.choices.map((c, ci) => {
+                  const isAnswer = ci === quiz.q.answer;
+                  const isPicked = quiz.picked === ci;
+                  const resolved = quiz.status === "right" || quiz.status === "wrong";
+                  const bg = resolved && isAnswer ? "#10b981" : resolved && isPicked && !isAnswer ? "#fef3c7" : "#ffffff";
+                  const color = resolved && isAnswer ? "#ffffff" : resolved && isPicked && !isAnswer ? "#92400e" : "#18181b";
+                  const border = resolved && isAnswer ? "2px solid #10b981" : resolved && isPicked && !isAnswer ? "2px solid #fcd34d" : "2px solid #ddd6fe";
+                  return (
+                    <button
+                      key={ci}
+                      type="button"
+                      disabled={quiz.status !== "waiting"}
+                      onClick={() => answerQuiz(ci)}
+                      style={{
+                        width: "100%", padding: "14px 18px", borderRadius: 16, border, background: bg, color,
+                        fontFamily: BALOO, fontWeight: 800, fontSize: 19, textAlign: "center",
+                        cursor: quiz.status === "waiting" ? "pointer" : "default",
+                        boxShadow: resolved && isAnswer ? "0 6px 18px -6px rgba(16,185,129,0.55)" : "0 4px 14px -4px rgba(49,46,129,0.20)",
+                        opacity: quiz.status === "asking" ? 0.55 : 1,
+                        transition: "background .3s ease, border-color .3s ease, color .3s ease, box-shadow .3s ease, opacity .3s ease",
+                      }}
+                    >
+                      {c}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ) : wordLesson ? (
             // Word-lesson takeover (Filip's "Luna Hint First Sound" design):
             // the current line with the target word pilled, then the word as
             // rounded CHIPS - active chip solid violet with an underline bar,
@@ -1939,7 +2047,7 @@ export default function LunaReader({
                     <h2 className="mt-2 text-xl font-extrabold text-zinc-900" style={{ fontFamily: BALOO }}>Make unlimited stories with Luna</h2>
                     <p className="mt-1 text-sm text-zinc-500">Luna writes a new story about anything {name} loves, at their exact reading level, and coaches every word.</p>
                     <Link href="/upgrade?reason=tools_hub" className="mt-4 inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-violet-700">
-                      Unlock Luna <ArrowRight className="h-4 w-4" />
+                      Unlock Luna <Glyph name="arrow-right" size={16} />
                     </Link>
                   </>
                 ) : (
@@ -1948,7 +2056,7 @@ export default function LunaReader({
                       {errKind === "unsafe" ? "Let's pick a different idea. Luna keeps every story child-friendly." : "Luna couldn't finish that one. Let's try again."}
                     </p>
                     <button type="button" onClick={() => setErrKind(null)} className="mt-3 inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-5 py-2 text-sm font-bold text-violet-700 transition hover:bg-violet-50">
-                      <RefreshCw className="h-4 w-4" /> {errKind === "unsafe" ? "Pick another" : "Try again"}
+                      <Glyph name="refresh-cw" size={16} /> {errKind === "unsafe" ? "Pick another" : "Try again"}
                     </button>
                   </>
                 )}
@@ -2034,6 +2142,11 @@ export default function LunaReader({
                     You read the whole story · {Math.round(after.wcpm)} words a minute
                   </div>
                 )}
+                {compResultRef.current.total > 0 && (
+                  <div style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, background: "#ecfdf5", border: "1px solid #a7f3d0", color: "#047857", padding: "6px 16px", fontSize: 13.5, fontWeight: 800, fontVariantNumeric: "tabular-nums" }}>
+                    Story questions · {compResultRef.current.correct} of {compResultRef.current.total} right
+                  </div>
+                )}
                 {after && readingGrowthLine(after.wcpm, previousWcpm) && (
                   <div style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 800, color: "#047857" }}>
                     <FluentIcon name="sparkles" size={16} /> {readingGrowthLine(after.wcpm, previousWcpm)}
@@ -2042,7 +2155,7 @@ export default function LunaReader({
                 <div style={{ marginTop: 14, width: "100%", display: "flex", flexDirection: "column", gap: 6, textAlign: "left" }}>
                   {lines.map((l, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, borderRadius: 10, padding: "8px 10px", background: l.ok ? "#ecfdf5" : "#fef2f2" }}>
-                      {l.ok ? <FluentIcon name="check" size={14} /> : <XIcon className="h-3.5 w-3.5" style={{ color: "#dc2626", flexShrink: 0 }} strokeWidth={3} />}
+                      {l.ok ? <FluentIcon name="check" size={14} /> : <Glyph name="x" size={14} style={{ color: "#dc2626", flexShrink: 0 }} />}
                       <span style={{ fontSize: 11, fontWeight: 800, color: "#71717a", flexShrink: 0 }}>Line {i + 1}</span>
                       <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{l.text}</span>
                     </div>
@@ -2064,11 +2177,11 @@ export default function LunaReader({
           <div style={{ display: "flex", gap: 10 }}>
             <button type="button" onClick={() => beginBuild(passage)}
               style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, border: "1px solid #ddd6fe", background: "#fff", color: "#6d28d9", padding: "11px 20px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
-              <RotateCcw className="h-4 w-4" /> Read it again
+              <Glyph name="rotate-ccw" size={16} /> Read it again
             </button>
             <button type="button" onClick={newPassage}
               style={{ display: "inline-flex", alignItems: "center", gap: 6, borderRadius: 999, border: "none", background: "#4338ca", color: "#fff", padding: "11px 20px", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>
-              <Shuffle className="h-4 w-4" /> New story
+              <Glyph name="shuffle" size={16} /> New story
             </button>
           </div>
         </div>
