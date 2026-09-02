@@ -129,7 +129,7 @@ export default function TeacherAssignmentsCard({ childId }: { childId: string })
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.35 }}
       className="rounded-3xl bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 p-5 space-y-3"
     >
       <div className="flex items-center gap-2">

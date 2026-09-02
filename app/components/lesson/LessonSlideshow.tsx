@@ -264,7 +264,7 @@ const SLIDE_THEMES: Record<string, {
 
 // Shared reveal animation
 const revealVariants = {
-  hidden: { opacity: 0, y: 10 },
+  hidden: { opacity: 0, y: 8 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -845,7 +845,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           variants={revealVariants}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           // Vertical stack: question pill on top, answer below it
           // (the kid hears the Q, has a beat to think, then the
           // answer appears below). Replaces the side-by-side grid
@@ -865,7 +865,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           <span className="min-h-[2.75rem] lg:min-h-[4rem] flex items-center justify-center">
             {aVisible && (
               <motion.span
-                initial={{ opacity: 0, y: 12, scale: 0.9 }}
+                initial={{ opacity: 0, y: 16, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 18 }}
                 className="text-2xl lg:text-4xl font-bold text-zinc-800"
@@ -902,7 +902,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           variants={revealVariants}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="grid w-full items-center gap-x-3"
           style={{ gridTemplateColumns: "2.5rem 1fr" }}
         >
@@ -1006,7 +1006,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           variants={revealVariants}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="grid w-full items-center gap-x-3"
           style={{ gridTemplateColumns: "5.5rem 1fr 1.5rem" }}
         >
@@ -1056,7 +1056,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           variants={revealVariants}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className={`text-center ${wrapClass}`}
         >
           {parts.map((part, p) => {
@@ -1067,7 +1067,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 variants={revealVariants}
                 initial="hidden"
                 animate="visible"
-                transition={{ duration: 0.3, ease: "easeOut" }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
                 // Intro / teach pairs ("Great readers are" /
                 // "detectives.") were rendering at text-xl which felt
                 // small with Lexend's wider spacing. Bumped to
@@ -1108,7 +1108,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
         return (
           <motion.div
             key={`${currentSlide}-${step.sub}`}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
             className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-4 py-3 sm:px-5 sm:py-4 lg:px-8 lg:py-6 text-center"
@@ -1119,7 +1119,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 return (
                   <motion.span
                     key={`${currentSlide}-${step.sub}-${p}`}
-                    initial={{ opacity: 0, y: 6 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   >
@@ -1144,7 +1144,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             return (
               <motion.div
                 key={`${currentSlide}-${step.sub}-${p}`}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-5 py-4 text-center"
@@ -1207,7 +1207,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             return (
               <motion.div
                 key={`${currentSlide}-${step.sub}-${p}`}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-4 py-3.5 text-center"
@@ -1325,7 +1325,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     return (
       <motion.div
         key={`${currentSlide}-${step.sub}-diagram`}
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
         className="w-full flex items-end justify-center gap-3 sm:gap-4"
@@ -1356,7 +1356,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             <div key={li} className="flex flex-col items-center gap-1">
               {(isStart || isEnd) ? (
                 <motion.span
-                  initial={{ opacity: 0, y: 6 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15, type: "spring", stiffness: 400, damping: 20 }}
                   className={`text-xs sm:text-sm font-bold uppercase tracking-wide ${labelColor}`}
@@ -1408,7 +1408,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     return (
       <motion.div
         key={`${currentSlide}-${step.sub}-grid`}
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
         className="grid grid-cols-6 sm:grid-cols-7 gap-2 sm:gap-3 w-full max-w-md mx-auto"
@@ -1438,7 +1438,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
     return (
       <motion.div
         key={`${currentSlide}-${step.sub}-swap`}
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
         className="w-full flex items-center justify-center gap-3 sm:gap-4"
@@ -1532,7 +1532,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
       return (
         <motion.div
           key={`${currentSlide}-${step.sub}`}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
           // Bumped to text-2xl/3xl on laptop — narrow phone column
@@ -1556,7 +1556,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
       return (
         <motion.div
           key={`${currentSlide}-${step.sub}`}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
           className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-5 py-4 lg:px-8 lg:py-6 text-center"
@@ -1622,7 +1622,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
       return (
         <motion.div
           key={`${currentSlide}-${step.sub}`}
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
           className="w-full rounded-2xl bg-violet-50 border border-violet-100 px-5 py-5 text-center"
@@ -1917,7 +1917,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                       return (
                         <motion.div
                           key={`${currentSlide}-shell-rowM-${ts.idx}`}
-                          initial={{ opacity: 0, y: 14 }}
+                          initial={{ opacity: 0, y: 16 }}
                           animate={{
                             opacity: 1,
                             y: 0,
@@ -1931,7 +1931,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                               delay: staggerDelay,
                             },
                             scale: {
-                              duration: 0.4,
+                              duration: 0.35,
                               ease: "easeInOut",
                               delay: staggerDelay,
                             },
@@ -1990,7 +1990,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                     return (
                       <motion.div
                         key={`${currentSlide}-shell-row-${ts.idx}`}
-                        initial={{ opacity: 0, y: 14 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={{
                           opacity: 1,
                           y: 0,
@@ -2004,7 +2004,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                             delay: staggerDelay,
                           },
                           scale: {
-                            duration: 0.4,
+                            duration: 0.35,
                             ease: "easeInOut",
                             delay: staggerDelay,
                           },
@@ -2287,7 +2287,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           key={c.id}
           className="absolute rounded-full pointer-events-none z-50"
           style={{ left: `${c.left}%`, top: -20, width: c.size, height: c.size, backgroundColor: c.color }}
-          initial={{ y: -20, x: 0, rotate: 0, opacity: 1 }}
+          initial={{ y: -16, x: 0, rotate: 0, opacity: 1 }}
           animate={{ y: "100vh", x: c.xDrift, rotate: 720, opacity: [1, 1, 0] }}
           transition={{ duration: 2.5, delay: c.delay, ease: "easeIn" }}
         />
@@ -2406,7 +2406,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             {isPlaying && !isMuted && (
               <motion.div
                 animate={{ scale: [1, 1.25, 1] }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
                 className="flex-shrink-0"
               >
                 <FluentIcon name="speaker" size={20} />
@@ -2502,7 +2502,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                           return (
                             <motion.div
                               key={`${currentSlide}-table-${ts.idx}`}
-                              initial={{ opacity: 0, y: 14 }}
+                              initial={{ opacity: 0, y: 16 }}
                               animate={{
                                 opacity: 1,
                                 y: 0,
@@ -2520,7 +2520,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                                   delay: staggerDelay,
                                 },
                                 scale: {
-                                  duration: 0.4,
+                                  duration: 0.35,
                                   ease: "easeInOut",
                                   delay: staggerDelay,
                                 },
@@ -2621,7 +2621,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
           {/* ── Next button (always visible, disabled during audio) ── */}
           <div className="flex-shrink-0 px-4 sm:px-6 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-1">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="max-w-xs mx-auto"
@@ -2759,7 +2759,7 @@ function ExampleWorksheetGridMobile({
                   <span className="text-violet-200">…</span>
                 ) : aVisible ? (
                   <motion.span
-                    initial={{ opacity: 0, y: 4 }}
+                    initial={{ opacity: 0, y: 8 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ type: "spring", stiffness: 400, damping: 18 }}
                   >
@@ -2838,7 +2838,7 @@ function ExampleWorksheetGrid({
             <span className="text-xl lg:text-3xl font-bold text-zinc-800 leading-tight">
               {aVisible ? (
                 <motion.span
-                  initial={{ opacity: 0, y: 6 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ type: "spring", stiffness: 400, damping: 18 }}
                   className="inline-block"

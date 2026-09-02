@@ -147,9 +147,9 @@ function LeaderboardContent() {
       <div className="mx-auto max-w-7xl space-y-5 px-4 py-6 sm:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
+          transition={{ duration: 0.35 }}
           className="flex flex-col items-center gap-4 text-center"
         >
           <div>
@@ -371,7 +371,7 @@ function PodiumColumn({ entry, rank }: { entry: LeaderEntry; rank: number }) {
         : "h-20 from-orange-100 to-orange-200 text-orange-800";
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18, scale: 0.94 }}
+      initial={{ opacity: 0, y: 16, scale: 0.94 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{
         type: "spring",

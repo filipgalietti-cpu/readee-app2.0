@@ -43,7 +43,7 @@ type AnswerRecord = {
   attempts: number;
 };
 
-const MOTION_FAST = { duration: 0.18, ease: "easeOut" as const };
+const MOTION_FAST = { duration: 0.2, ease: "easeOut" as const };
 
 export default function KidRunner({
   content,
@@ -469,7 +469,7 @@ function QuestionPhase({
 
       {showHint && question.hint && (
         <motion.div
-          initial={{ opacity: 0, y: 6 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           className="mt-4 flex items-start gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-900"
         >

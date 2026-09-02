@@ -257,7 +257,7 @@ function AssessmentResultsContent() {
     <div className="max-w-2xl mx-auto py-8 px-4 space-y-6">
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-center"
       >
@@ -278,7 +278,7 @@ function AssessmentResultsContent() {
 
       {/* Reading Level Meter */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
         className="rounded-2xl bg-white shadow-md p-6"
@@ -325,7 +325,7 @@ function AssessmentResultsContent() {
                     style={isPast ? { backgroundColor: step.color } : undefined}
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
-                    transition={{ duration: 0.4, delay: 0.2 + i * 0.1, ease: "easeOut" }}
+                    transition={{ duration: 0.35, delay: 0.2 + i * 0.1, ease: "easeOut" }}
                   />
                   {/* Marker */}
                   {isPlaced && (
@@ -359,7 +359,7 @@ function AssessmentResultsContent() {
 
       {/* Performance by Skill */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
         className="rounded-2xl bg-white shadow-md p-6"
@@ -379,7 +379,7 @@ function AssessmentResultsContent() {
                 key={skill}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: staggerDelay, duration: 0.4 }}
+                transition={{ delay: staggerDelay, duration: 0.35 }}
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <div className="flex items-center gap-2">
@@ -419,7 +419,7 @@ function AssessmentResultsContent() {
 
       {/* Question details (collapsible) */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
         className="rounded-2xl bg-white shadow-md overflow-hidden"
@@ -483,7 +483,7 @@ function AssessmentResultsContent() {
       {/* AI personalized path — built from THIS placement test */}
       {childId && (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35 }}
           className="mb-4"
@@ -497,7 +497,7 @@ function AssessmentResultsContent() {
       )}
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         className="flex flex-col sm:flex-row gap-3"
@@ -595,7 +595,7 @@ function ReadingProfileCard({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.15 }}
       className="rounded-2xl bg-white shadow-md p-6"
@@ -656,7 +656,7 @@ function ReadingProfileCard({
               key={key}
               initial={{ opacity: 0, x: -16 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.25 + idx * 0.08, duration: 0.4 }}
+              transition={{ delay: 0.25 + idx * 0.08, duration: 0.35 }}
               className="rounded-xl border border-zinc-100 p-4"
             >
               <div className="flex items-start justify-between gap-3 mb-2">
@@ -695,7 +695,7 @@ function ReadingProfileCard({
                   style={{ backgroundColor: barColor }}
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.max(8, pct)}%` }}
-                  transition={{ duration: 0.9, delay: 0.3 + idx * 0.08 }}
+                  transition={{ duration: 0.5, delay: 0.3 + idx * 0.08 }}
                 />
               </div>
               <p className="text-[10px] text-zinc-400 mt-1.5">

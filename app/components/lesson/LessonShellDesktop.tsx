@@ -127,9 +127,9 @@ export function LessonShellDesktop({
         >
           <motion.div
             key={slideNum}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
             className={`w-full ${wide ? "max-w-[1100px]" : "max-w-[680px]"} flex`}
           >
             {contentSlot}
@@ -305,7 +305,7 @@ export function ChartContent({
             key={i}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: i * 0.12, ease: "easeOut" }}
+            transition={{ duration: 0.35, delay: i * 0.12, ease: "easeOut" }}
             className={`grid items-center gap-4 px-2 py-4 ${
               i < rows.length - 1 ? "border-b border-dashed border-zinc-100" : ""
             }`}

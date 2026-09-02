@@ -160,7 +160,7 @@ export default function LearningReport({
                         initial={{ width: 0 }}
                         animate={{ width: `${pct}%` }}
                         transition={{
-                          duration: 0.7,
+                          duration: 0.5,
                           delay: i * 0.08,
                           ease: "easeOut",
                         }}

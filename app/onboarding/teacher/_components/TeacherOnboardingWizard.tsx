@@ -317,9 +317,9 @@ function StepIdentity({
           <AnimatePresence mode="wait">
             <motion.span
               key={phIdx}
-              initial={{ opacity: 0, y: 6 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
+              exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="pointer-events-none absolute inset-0 z-0 block w-full px-2 py-4 text-center text-4xl font-extrabold leading-tight tracking-tight text-violet-300"
             >

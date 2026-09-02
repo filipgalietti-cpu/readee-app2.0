@@ -239,9 +239,9 @@ export default function NewAssignmentButton({
             className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-900/60 p-4 backdrop-blur-sm"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 12 }}
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 12 }}
+              exit={{ opacity: 0, scale: 0.96, y: 16 }}
               onClick={(e) => e.stopPropagation()}
               className="flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-xl"
             >

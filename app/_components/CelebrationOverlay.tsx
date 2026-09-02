@@ -63,7 +63,7 @@ export default function CelebrationOverlay({ show }: { show: boolean }) {
 
           {/* Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 30, delay: 0.1 }}
             className="bg-white rounded-3xl shadow-2xl max-w-sm w-full p-8 text-center space-y-5 relative overflow-hidden"

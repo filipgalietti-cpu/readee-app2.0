@@ -1747,7 +1747,7 @@ export default function LunaReader({
       <style>{`@keyframes lunaCarrotPop{0%{transform:scale(1)}45%{transform:scale(1.35)}100%{transform:scale(1)}}`}</style>
       {/* Passage (hidden on the intro screen) */}
       {showPassage && (
-        <div ref={cardRef} style={{ width: "100%", borderRadius: 22, border: "2px solid #ddd6fe", background: "linear-gradient(135deg,#f5f3ff,#ffffff 60%,#fdf2f8)", padding: "16px 20px", boxShadow: "0 10px 40px -18px rgba(49,46,129,.25)" }}>
+        <div ref={cardRef} style={{ width: "100%", borderRadius: 22, border: "2px solid #ddd6fe", background: "linear-gradient(to bottom right,#f5f3ff,#eef2ff)", padding: "16px 20px", boxShadow: "0 10px 40px -12px rgba(49,46,129,0.18)" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, minHeight: 22 }}>
             <span style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".14em", textTransform: "uppercase", color: "#7c3aed" }}>
               {phase === "building" ? "Making your story…"

@@ -104,7 +104,7 @@ export default function InstallPWATile() {
         className="block w-full text-left"
       >
         <motion.div
-          whileHover={{ scale: 1.05, y: -4 }}
+          whileHover={{ scale: 1.05, y: -8 }}
           whileTap={{ scale: 0.95 }}
           className="relative h-28 sm:h-[130px] rounded-3xl bg-gradient-to-br from-violet-600 to-violet-500 p-3 sm:p-4 flex flex-col items-center justify-center text-center shadow-lg cursor-pointer overflow-hidden"
         >

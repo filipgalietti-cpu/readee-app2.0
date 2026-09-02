@@ -20,9 +20,9 @@ import { FluentIcon } from "@/app/_components/FluentIcon";
  * and completion audio as the design + legacy runner.
  */
 const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 10 },
+  initial: { opacity: 0, y: 8 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.25, ease: "easeOut" as const, delay },
+  transition: { duration: 0.35, ease: "easeOut" as const, delay },
 });
 
 export default function QuizSummary({
@@ -132,7 +132,7 @@ export default function QuizSummary({
             key={c.id}
             className="absolute rounded-full"
             style={{ left: `${c.left}%`, top: -20, width: c.size, height: c.size, backgroundColor: c.color }}
-            initial={{ y: -20, opacity: 1 }}
+            initial={{ y: -16, opacity: 1 }}
             animate={{ y: "105vh", rotate: 720, opacity: 0 }}
             transition={{ duration: 2.5, delay: c.delay, ease: "easeIn" }}
           />
@@ -285,7 +285,7 @@ export default function QuizSummary({
                     className="h-full rounded-full bg-indigo-500"
                     initial={{ width: 0 }}
                     animate={{ width: `${progressPct}%` }}
-                    transition={{ duration: 0.9, ease: "easeOut", delay: 0.4 }}
+                    transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
                   />
                 </div>
                 <div className="mt-1 text-[11px] font-semibold text-zinc-500">

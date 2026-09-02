@@ -123,7 +123,7 @@ export default function FeedbackPage() {
                 top: -20,
                 backgroundColor: p.color,
               }}
-              initial={{ y: -20, rotate: 0, opacity: 1 }}
+              initial={{ y: -16, rotate: 0, opacity: 1 }}
               animate={{ y: "100vh", rotate: 720, opacity: [1, 1, 0] }}
               transition={{ duration: 2.5, delay: p.delay, ease: "easeIn" }}
             />

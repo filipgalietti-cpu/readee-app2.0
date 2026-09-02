@@ -272,7 +272,7 @@ function BunnyCorner({ happy, wrongTick }: { happy: boolean; wrongTick: number }
       className="pointer-events-none fixed bottom-24 left-8 z-[110] h-40 w-40"
       initial={false}
       animate={happy ? { y: [0, -26, 0, -12, 0], scale: [1, 1.08, 1] } : { y: 0, scale: 1 }}
-      transition={happy ? { duration: 0.9, ease: "easeOut" } : { duration: 0.2 }}
+      transition={happy ? { duration: 0.5, ease: "easeOut" } : { duration: 0.2 }}
     >
       {happy ? (
         <BunnyReaction outfitId={null} state="correct" />

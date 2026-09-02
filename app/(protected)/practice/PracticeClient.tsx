@@ -1429,7 +1429,7 @@ function PracticeSession({
                   <motion.button
                     key={choice}
                     variants={fadeUp}
-                    animate={shake ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } } : pop ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } } : {}}
+                    animate={shake ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } } : pop ? { scale: [1, 1.08, 1], transition: { duration: 0.35 } } : {}}
                     onClick={(e) => {
                       if (answered || isGreyed) return;
                       const rect = e.currentTarget.getBoundingClientRect();
@@ -1556,7 +1556,7 @@ function PracticeSession({
             {bubbleText && (
               <motion.div
                 key={bubbleText}
-                initial={{ opacity: 0, scale: 0.8, y: 6 }}
+                initial={{ opacity: 0, scale: 0.8, y: 8 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 className="relative max-w-[min(320px,44vw)] px-4 py-3 mb-12 border-2 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]"
                 style={{ background: tone.bg, borderColor: tone.border, borderRadius: "18px 18px 18px 4px" }}
@@ -1593,7 +1593,7 @@ function PracticeSession({
       <AnimatePresence>
         {phase === "feedback" && (
           <motion.button
-            initial={{ opacity: 0, y: 14, scale: 0.9 }}
+            initial={{ opacity: 0, y: 16, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleContinue}
@@ -1942,7 +1942,7 @@ function CompletionScreen({
           key={c.id}
           className="absolute rounded-full pointer-events-none"
           style={{ left: `${c.left}%`, top: -20, width: c.size, height: c.size, backgroundColor: c.color }}
-          initial={{ y: -20, x: 0, rotate: 0, opacity: 1 }}
+          initial={{ y: -16, x: 0, rotate: 0, opacity: 1 }}
           animate={{ y: "100vh", x: c.xDrift, rotate: 720, opacity: [1, 1, 0] }}
           transition={{ duration: 2.5, delay: c.delay, ease: "easeIn" }}
         />

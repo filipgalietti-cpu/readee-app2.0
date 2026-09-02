@@ -80,7 +80,7 @@ export function InteractiveExample({
               onClick={() => pick(c)}
               disabled={solved || isWrong}
               animate={isCorrect ? { scale: [1, 1.08, 1] } : {}}
-              transition={{ duration: 0.45 }}
+              transition={{ duration: 0.35 }}
               className={`rounded-2xl px-6 py-4 text-lg sm:text-xl lg:text-2xl font-bold shadow-sm transition-colors ${
                 isCorrect
                   ? "bg-emerald-100 text-emerald-700 ring-2 ring-emerald-400"

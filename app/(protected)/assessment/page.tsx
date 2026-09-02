@@ -800,7 +800,7 @@ function AssessmentContent() {
       <div className="max-w-md mx-auto pt-10 pb-10 px-4">
         <motion.div
           className="relative bg-white rounded-3xl shadow-xl overflow-visible"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
         >
@@ -844,7 +844,7 @@ function AssessmentContent() {
               className="relative text-3xl font-extrabold text-white"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
+              transition={{ duration: 0.35, delay: 0.5 }}
             >
               Hi {child.first_name}!
             </motion.h1>
@@ -853,7 +853,7 @@ function AssessmentContent() {
               className="relative text-violet-100 text-base mt-2 font-medium"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
+              transition={{ duration: 0.35, delay: 0.6 }}
             >
               Ready for a reading adventure?
             </motion.p>
@@ -878,7 +878,7 @@ function AssessmentContent() {
 
             <motion.p
               className="text-lg font-semibold text-zinc-700 mb-2"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65 }}
             >
@@ -908,7 +908,7 @@ function AssessmentContent() {
                 }}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: 0.85 }}
+                transition={{ duration: 0.35, delay: 0.85 }}
               >
                 <span className="relative">
                   Pick up at question {pendingDraft.currentIdx + 1}
@@ -935,7 +935,7 @@ function AssessmentContent() {
               }
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.85 }}
+              transition={{ duration: 0.35, delay: 0.85 }}
             >
               {!pendingDraft && (
                 <motion.span
@@ -1163,7 +1163,7 @@ function AssessmentContent() {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.35 }}
           className="space-y-8"
         >
           {/* Animated spinner */}
@@ -1184,9 +1184,9 @@ function AssessmentContent() {
               <motion.p
                 key={i}
                 className="text-lg font-semibold text-zinc-700"
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.8, duration: 0.4 }}
+                transition={{ delay: i * 0.8, duration: 0.35 }}
               >
                 {step}
               </motion.p>
@@ -1236,7 +1236,7 @@ function AssessmentContent() {
         ))}
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="space-y-5"
@@ -1258,7 +1258,7 @@ function AssessmentContent() {
 
           <motion.h1
             className="text-3xl font-extrabold text-zinc-900"
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
@@ -1291,7 +1291,7 @@ function AssessmentContent() {
           {/* What's next section */}
           <motion.div
             className="rounded-2xl bg-white shadow-md overflow-hidden text-left"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
@@ -1321,7 +1321,7 @@ function AssessmentContent() {
 
           {/* CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >

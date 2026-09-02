@@ -109,7 +109,7 @@ export default function WhatsNew() {
           className="relative w-full max-w-lg overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-black/5"
           initial={{ scale: 0.8, y: 24, opacity: 0 }}
           animate={{ scale: 1, y: 0, opacity: 1 }}
-          exit={{ scale: 0.9, y: 12, opacity: 0 }}
+          exit={{ scale: 0.9, y: 16, opacity: 0 }}
           transition={{ type: "spring", stiffness: 320, damping: 24 }}
         >
           <button
@@ -221,7 +221,7 @@ function AnnouncementStage({ a }: { a: Announcement }) {
             key={n}
             className="absolute top-0"
             style={{ left: `${l.left}%` }}
-            initial={{ y: -28, opacity: 0 }}
+            initial={{ y: -24, opacity: 0 }}
             animate={{
               y: 288,
               x: [0, l.sway, -l.sway * 0.7, l.sway * 0.4, 0],
@@ -257,7 +257,7 @@ function AnnouncementStage({ a }: { a: Announcement }) {
               transition={{
                 scale: { type: "spring", stiffness: 300, damping: 20 },
                 rotate: { type: "spring", stiffness: 300, damping: 20 },
-                opacity: { duration: 0.3 },
+                opacity: { duration: 0.35 },
                 y: { duration: 2.6, repeat: Infinity, ease: "easeInOut" },
               }}
             >

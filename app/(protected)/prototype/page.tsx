@@ -348,7 +348,7 @@ export default function PrototypePage() {
                     background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
                     boxShadow: "0 4px 0 0 #4f46e5",
                   }}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 }}
                 >

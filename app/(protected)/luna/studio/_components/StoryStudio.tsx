@@ -917,9 +917,9 @@ function Preview({
 }) {
   const wordCount = story.text.trim().split(/\s+/).filter(Boolean).length;
   const rise = (delay: number) => ({
-    initial: { opacity: 0, y: 14 },
+    initial: { opacity: 0, y: 16 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.35, delay, ease: [0.22, 1, 0.36, 1] as const },
   });
   return (
     <div className="mt-4">

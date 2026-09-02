@@ -317,8 +317,8 @@ export default function QuizRunner({
               <motion.span
                 key={g.id}
                 initial={{ opacity: 0, y: 8, scale: 0.7 }}
-                animate={{ opacity: 1, y: -18, scale: 1 }}
-                exit={{ opacity: 0, y: -30 }}
+                animate={{ opacity: 1, y: -16, scale: 1 }}
+                exit={{ opacity: 0, y: -24 }}
                 transition={{ duration: 1.1, ease: "easeOut" }}
                 className="absolute -top-1 right-1 text-sm font-extrabold text-orange-500"
               >
@@ -361,7 +361,7 @@ export default function QuizRunner({
             data-qid={current.id}
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
             className="flex w-full max-w-[1000px] flex-col items-center gap-8 text-center"
           >
             <div className="max-w-[640px] text-[32px] font-bold leading-[1.2] tracking-tight [text-wrap:balance]">

@@ -312,13 +312,13 @@ export function CategorySort({
                 assessmentMode
                   ? {}
                   : flash === "incorrect"
-                  ? { x: [0, -6, 6, -4, 4, 0], transition: { duration: 0.4 } }
+                  ? { x: [0, -6, 6, -4, 4, 0], transition: { duration: 0.35 } }
                   : flash === "correct"
-                  ? { scale: [1, 1.04, 1], transition: { duration: 0.3 } }
+                  ? { scale: [1, 1.04, 1], transition: { duration: 0.35 } }
                   : shaking && result === "incorrect"
                   ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
                   : result === "correct"
-                  ? { scale: [1, 1.02, 1], transition: { duration: 0.3 } }
+                  ? { scale: [1, 1.02, 1], transition: { duration: 0.35 } }
                   : {}
               }
             >
@@ -416,7 +416,7 @@ export function CategorySort({
                 }
               : undefined
           }
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >

@@ -60,9 +60,9 @@ export default function CreateClassroomButton({
             className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-900/60 p-4 backdrop-blur-sm"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              initial={{ opacity: 0, scale: 0.95, y: 8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              exit={{ opacity: 0, scale: 0.95, y: 8 }}
               onClick={(e) => e.stopPropagation()}
               className="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl"
             >
