@@ -197,9 +197,9 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
 
     const kid = data as Child;
     // NOTE: intentionally do NOT call onDone() here. It swaps the dashboard to
-    // the home view, which flashed for a frame before /assessment loaded. The
+    // the home view, which flashed for a frame before the placement loaded. The
     // child is saved in the DB and the dashboard reloads it on return, so we
-    // navigate straight into the assessment instead.
+    // navigate straight into the reading placement (Luna's exam) instead.
     try { window.localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
 
     void supabase
@@ -210,7 +210,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
     // Fire the welcome email now (don't wait for the daily cron). Fire-and-forget.
     void fetch("/api/lifecycle/welcome", { method: "POST" }).catch(() => {});
 
-    router.push(`/assessment?child=${kid.id}`);
+    router.push(`/placement?child=${kid.id}`);
   };
 
   const dotIdx = step - 1;

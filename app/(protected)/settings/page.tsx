@@ -698,14 +698,14 @@ export default function Settings() {
                           </select>
                         </Field>
                       </div>
-                      <Field label="Reading level" hint="Set by the placement quiz, the surest way to match lessons to their level.">
+                      <Field label="Reading level" hint="Set by the reading placement, the surest way to match lessons to their level.">
                         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                           <div style={{ ...inputStyle, flex: 1, display: "flex", alignItems: "center", color: child.reading_level ? "#18181b" : "#6b7280", background: "#fafafa" }}>
                             {child.reading_level || "Not assessed yet"}
                           </div>
-                          <button onClick={() => router.push(`/assessment?child=${child.id}`)}
+                          <button onClick={() => router.push(`/placement?child=${child.id}&retake=1`)}
                             style={{ border: "1px solid #c7d2fe", background: "#eef2ff", color: "#4338ca", fontFamily: "inherit", fontSize: 12.5, fontWeight: 700, padding: "9px 14px", borderRadius: 12, cursor: "pointer", whiteSpace: "nowrap" }}>
-                            {child.reading_level ? "Retake quiz" : "Take quiz"}
+                            {child.reading_level ? "Retake placement" : "Take placement"}
                           </button>
                         </div>
                       </Field>
@@ -889,13 +889,13 @@ export default function Settings() {
       {gradeRec && (
         <div style={modalScrim} onClick={() => setGradeRec(null)}>
           <div style={{ ...modalCard, width: 400 }} onClick={(e) => e.stopPropagation()}>
-            <h3 style={{ margin: "0 0 6px", fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 600, color: "#18181b" }}>Take the placement quiz?</h3>
+            <h3 style={{ margin: "0 0 6px", fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 600, color: "#18181b" }}>Take the reading placement?</h3>
             <p style={{ margin: "0 0 18px", fontSize: 13.5, color: "#52525b", lineHeight: 1.5 }}>
-              Grade updated. We recommend {gradeRec.name} takes the quick placement quiz so lessons match their actual reading level. Grade and reading level aren&apos;t always the same, a 2nd grader might read at a 1st-grade level, and the quiz is how Readee finds the just-right difficulty.
+              Grade updated. We recommend {gradeRec.name} takes the reading placement so lessons match their actual reading level. Grade and reading level aren&apos;t always the same, a 2nd grader might read at a 1st-grade level, and the quiz is how Readee finds the just-right difficulty.
             </p>
             <div style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}>
               <button onClick={() => setGradeRec(null)} style={{ border: CARD, background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 12, cursor: "pointer" }}>Maybe later</button>
-              <button onClick={() => router.push(`/assessment?child=${gradeRec.id}`)} style={{ border: "none", background: "#4338ca", color: "#fff", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 12, cursor: "pointer" }}>Start placement quiz</button>
+              <button onClick={() => router.push(`/placement?child=${gradeRec.id}&retake=1`)} style={{ border: "none", background: "#4338ca", color: "#fff", fontFamily: "inherit", fontSize: 14, fontWeight: 600, padding: "9px 16px", borderRadius: 12, cursor: "pointer" }}>Start placement</button>
             </div>
           </div>
         </div>
