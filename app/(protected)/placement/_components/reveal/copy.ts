@@ -8,6 +8,7 @@
  * and the result carries no gender, so derived sentences use the child's name
  * where a pronoun would go.
  */
+import type { GrowthData } from "./GrowthChart";
 import type { GlyphName } from "@/app/_components/Glyph";
 import { BAND_LABEL, type Band, type PlacedBand } from "@/lib/placement/ladder";
 import { ordinal, type GradePhase, type Season } from "@/lib/placement/norms";
@@ -24,7 +25,10 @@ export type SkillCopy = {
 };
 
 export type NumberCopy = {
-  dataLabel: string;
+  /** "Reading speed" */
+  title: string;
+  /** "4th-grade passage" */
+  subtitle: string;
   wcpm: number;
   benchmark: number | null;
   benchmarkLabel: string;
@@ -32,6 +36,13 @@ export type NumberCopy = {
   sentence: string;
   source: string;
 };
+
+/** A strength with the exam moment that proves it. */
+export type StrengthTile = { text: string; evidence: string | null };
+/** One thing Luna measured in the exam. */
+export type MeasuredItem = { icon: GlyphName; label: string };
+export type HomeTip = { icon: GlyphName; text: string };
+export type TrialStep = { when: string; text: string };
 
 export type RevealCopy = {
   childName: string;
@@ -44,11 +55,25 @@ export type RevealCopy = {
   metaLine: string;
   headline: string;
   strengths: string[];
+  strengthTiles: StrengthTile[];
+  /** A moment worth a quiet line that is not evidence for a strength. */
+  extraMoment: string | null;
   momentLine: string | null;
+  measured: MeasuredItem[];
   number: NumberCopy | null;
-  placement: { band: string; category: string; support: string; reassurance: string | null };
+  placement: {
+    band: string;
+    category: string;
+    /** "two grade levels below", for the ladder bracket. */
+    categoryText: string;
+    enrolled: PlacedBand;
+    placed: PlacedBand;
+    support: string;
+    reassurance: string | null;
+  };
   skills: SkillCopy[];
   path: {
+    /** Consecutive skipped units merged into one node. */
     steps: PlanStep[];
     milestones: PlanMilestone[];
     lessons: number;
@@ -62,17 +87,22 @@ export type RevealCopy = {
     dose: string;
     milestones: PlanMilestone[];
     tipsHeading: string;
-    tips: string[];
+    tips: HomeTip[];
     projection: string;
+    /** Today's words a minute rising to the dated milestones; null without a timed passage. */
+    growth: GrowthData | null;
   };
   ask: {
     headline: string;
+    /** "83 lessons across 20 weeks, curated from today's placement." */
+    subhead: string;
     line: string;
     button: string;
     finePrint: string;
     /** The same dates as finePrint, one step per row, for the ask card's timeline. */
     timeline: TrialStep[];
     trust: string;
+    reviewer: { name: string; role: string; photo: string };
     notNow: string;
     notNowSub: string;
   };
@@ -143,6 +173,86 @@ export function momentLine(m: Moment, name: string): string {
   }
 }
 
+type MomentOf<K extends Moment["kind"]> = Extract<Moment, { kind: K }>;
+function findMoment<K extends Moment["kind"]>(moments: Moment[], kind: K): MomentOf<K> | null {
+  return (moments.find((m) => m.kind === kind) as MomentOf<K> | undefined) ?? null;
+}
+
+/** The exam moment that proves a strength, in the strengths card's short form. */
+export function evidenceFor(strength: string, moments: Moment[]): string | null {
+  const s = strength.toLowerCase();
+  if (s.includes("words") && !s.includes("new words")) {
+    const m = findMoment(moments, "list-passed");
+    if (!m) return null;
+    return m.misses === 0 ? `Read every word on the ${bandGrade(m.band)} list` : `Passed the ${bandGrade(m.band)} list`;
+  }
+  if (s.includes("understands")) {
+    const m = findMoment(moments, "comprehension");
+    if (!m) return null;
+    return m.correct === m.total
+      ? "Answered every question about the story"
+      : `Answered ${numberWord(m.correct)} of ${numberWord(m.total)} questions about the story`;
+  }
+  if (s.includes("accurately")) {
+    const m = findMoment(moments, "passage-accurate");
+    return m ? `Read the ${bandGrade(m.band)} story with ${Math.round(m.accuracy * 100)} percent accuracy` : null;
+  }
+  if (s.includes("expression")) {
+    const m = findMoment(moments, "passage-expressive");
+    return m ? `Read the ${bandGrade(m.band)} story with expression` : null;
+  }
+  if (s.includes("letter sounds")) {
+    const m = moments.find((x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "letterSounds");
+    return m ? `Got ${m.correct} of ${m.total} letter sounds` : null;
+  }
+  if (s.includes("blends")) {
+    const m = moments.find((x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "blending");
+    return m ? `Blended ${m.correct} of ${m.total} words` : null;
+  }
+  if (s.includes("sounds out")) {
+    const m = moments.find((x): x is MomentOf<"foundation"> => x.kind === "foundation" && x.skill === "nonsenseWords");
+    return m ? `Sounded out ${m.correct} of ${m.total} new words` : null;
+  }
+  return null;
+}
+
+/** A moment that is not proof of a strength but still worth a quiet line. */
+export function extraMomentLine(moments: Moment[]): string | null {
+  if (findMoment(moments, "passage-kept-going")) return "Slowed down in the story but kept going.";
+  if (findMoment(moments, "passage-slow")) return "Took the story at a careful pace.";
+  return null;
+}
+
+/**
+ * Consecutive skipped units become one node: "2nd-grade stories" and
+ * "2nd-grade nonfiction" read as "2nd-grade stories and nonfiction".
+ */
+export function mergeSkipped(steps: PlanStep[], name: string): PlanStep[] {
+  const out: PlanStep[] = [];
+  let run: PlanStep[] = [];
+  const flush = () => {
+    if (run.length === 1) out.push(run[0]);
+    else if (run.length > 1) {
+      const words = run.map((s) => s.title.split(" "));
+      let i = 0;
+      while (words.every((w) => w.length > i + 1 && w[i] === words[0][i])) i++;
+      const prefix = words[0].slice(0, i).join(" ");
+      const tails = words.map((w) => w.slice(i).join(" "));
+      out.push({ kind: "skipped", title: `${prefix ? `${prefix} ` : ""}${joinList(tails)}`, reason: `${name} already showed us those` });
+    }
+    run = [];
+  };
+  for (const s of steps) {
+    if (s.kind === "skipped") run.push(s);
+    else {
+      flush();
+      out.push(s);
+    }
+  }
+  flush();
+  return out;
+}
+
 export function narrationFor(result: PlacementResult, id: NarrationId): NarrationLine | null {
   return result.narration.find((n) => n.id === id) ?? null;
 }
@@ -152,11 +262,42 @@ function formatDate(iso: string, withYear: boolean): string {
   return d.toLocaleDateString("en-US", withYear ? { month: "long", day: "numeric", year: "numeric" } : { month: "long", day: "numeric" });
 }
 
-export const HOME_TIPS = (name: string): string[] => [
-  `Listen to ${name} read aloud for five minutes`,
-  "Reread one short book twice. The second read builds speed",
-  "Ask one question about the story afterward",
+export const HOME_TIPS = (name: string): HomeTip[] => [
+  { icon: "headphones", text: `Listen to ${name} read aloud for five minutes` },
+  { icon: "book-open", text: "Reread one short book twice. The second read builds speed" },
+  { icon: "message-circle", text: "Ask one question about the story afterward" },
 ];
+
+const shortDate = (d: Date) => d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+
+/** The trial as three dated steps: today, the reminder (Stripe emails it 7
+ *  days before the trial ends), and the first charge. */
+export function trialSteps(start: Date, name: string): TrialStep[] {
+  const reminder = new Date(start.getTime() + 7 * 86400000);
+  const charge = new Date(start.getTime() + 14 * 86400000);
+  return [
+    { when: "14-day free trial starts today", text: `Full access to ${name}'s Custom Journey, $0 due now` },
+    { when: shortDate(reminder), text: "We email you a reminder" },
+    { when: shortDate(charge), text: "First charge, $9.99 a month" },
+  ];
+}
+
+/** The same trial as one sentence (the report's fine print). */
+export function trialTimeline(start: Date, name: string): string {
+  const [today, reminder, charge] = trialSteps(start, name);
+  return `${today.when}. ${today.text}. ${reminder.when}: ${reminder.text.toLowerCase()}. ${charge.when}: ${charge.text.toLowerCase()}. Cancel anytime in one tap.`;
+}
+
+export const REVIEWER_PHOTO = "/images/jennifer-portrait.jpg";
+
+/** "Jennifer Klingerman, Certified Reading Specialist" -> name and role; Jennifer also teaches 3rd grade. */
+export function reviewerFrom(reviewedBy: string): { name: string; role: string; photo: string } {
+  const comma = reviewedBy.indexOf(",");
+  const name = comma > 0 ? reviewedBy.slice(0, comma).trim() : reviewedBy;
+  let role = comma > 0 ? reviewedBy.slice(comma + 1).trim() : "";
+  if (name === "Jennifer Klingerman" && !role.includes("teacher")) role = `${role} and 3rd-grade teacher`;
+  return { name, role, photo: REVIEWER_PHOTO };
+}
 
 export function buildRevealCopy(result: PlacementResult): RevealCopy {
   const { childName: name, decision, plan } = result;
@@ -178,7 +319,8 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     if (pctl !== null) second += `, about the ${ordinal(pctl)} percentile`;
     if (ge) second += `, similar to the average ${ordinal(ge.grade)} grader ${phaseWords(ge.phase)}`;
     number = {
-      dataLabel: `Reading speed · ${bandGrade(f.band)} passage`,
+      title: "Reading speed",
+      subtitle: `${capitalize(bandGrade(f.band))} passage`,
       wcpm: f.wcpm,
       benchmark: bench,
       benchmarkLabel: `${season} benchmark for ${enrolledLabel}`,
@@ -193,6 +335,9 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
   const placement = {
     band: decision.readingLevelName,
     category: `${capitalize(decision.relative.label)}.`,
+    categoryText: decision.relative.label,
+    enrolled: result.enrolled,
+    placed: decision.placedBand,
     support: decision.needs.length
       ? `${name} will benefit from targeted practice in ${joinList(decision.needs)}.`
       : `${name} is ready to keep building from here.`,
@@ -243,6 +388,19 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     });
   }
 
+  // Strengths with their evidence, and what Luna measured
+  const strengths = decision.strengths.map(capitalize);
+  const strengthTiles: StrengthTile[] = decision.strengths.map((s) => ({ text: capitalize(s), evidence: evidenceFor(s, result.moments) }));
+  const extraMoment = extraMomentLine(result.moments);
+  const measured: MeasuredItem[] = [{ icon: "text", label: "Words" }];
+  if (f) measured.push({ icon: "book-open", label: "Story" });
+  if (c) measured.push({ icon: "circle-help", label: "Questions" });
+  if (decision.foundations) measured.push({ icon: "waves", label: "Sounds" });
+
+  const steps = mergeSkipped(plan.steps, name);
+  const reviewer = reviewerFrom(plan.reviewedBy);
+  const now = new Date();
+
   return {
     childName: name,
     dateLine,
@@ -252,13 +410,16 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     minutesLine: `${minutes} minutes with Luna`,
     metaLine: `${minutes} minutes with Luna · ${dateLine}`,
     headline: `${name} did a great job today.`,
-    strengths: decision.strengths.map(capitalize),
-    momentLine: result.moments.length ? momentLine(result.moments[0], name) : null,
+    strengths,
+    strengthTiles,
+    extraMoment,
+    momentLine: extraMoment ?? (result.moments.length ? momentLine(result.moments[0], name) : null),
+    measured,
     number,
     placement,
     skills,
     path: {
-      steps: plan.steps,
+      steps,
       milestones: plan.milestones,
       lessons: plan.lessons,
       weeks: plan.weeksAt10Min,
@@ -272,40 +433,23 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
       milestones: plan.milestones,
       tipsHeading: "Three things to do at home this week",
       tips: HOME_TIPS(name),
-      projection: "Projected from published growth rates at this practice dose.",
+      projection: `Based on how fast readers typically grow with ${plan.minutesPerDay} minutes of practice a day.`,
+      growth:
+        decision.fluency && plan.milestones.some((m) => typeof m.wcpm === "number")
+          ? { currentWcpm: decision.fluency.wcpm, startDate: result.createdAt, milestones: plan.milestones.filter((m) => typeof m.wcpm === "number") }
+          : null,
     },
     ask: {
-      headline: `${name}'s plan is ready.`,
-      line: `Everything on ${name}'s path is included with Readee+.`,
-      button: `Start ${name}'s plan`,
-      finePrint: trialTimeline(new Date()),
-      timeline: trialSteps(new Date()),
-      trust: `Reviewed by ${plan.reviewedBy}`,
+      headline: `${name}'s Reading Journey is Ready`,
+      subhead: `${plan.lessons} lessons across ${plan.weeksAt10Min} weeks, curated from today's placement.`,
+      line: `Everything on ${name}'s Custom Journey is included with Readee+.`,
+      button: `Start ${name}'s Reading Journey`,
+      finePrint: trialTimeline(now, name),
+      timeline: trialSteps(now, name),
+      trust: `Reviewed by ${reviewer.name}, ${reviewer.role}`,
+      reviewer,
       notNow: `Not right now. ${name} keeps the free first unit.`,
       notNowSub: "The full report stays on your dashboard.",
     },
   };
-}
-
-
-export type TrialStep = { when: string; text: string };
-
-const shortDate = (d: Date) => d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-
-/** The trial as three dated steps: today, the reminder (Stripe emails it 7
- *  days before the trial ends), and the first charge. */
-export function trialSteps(start: Date): TrialStep[] {
-  const reminder = new Date(start.getTime() + 7 * 86400000);
-  const charge = new Date(start.getTime() + 14 * 86400000);
-  return [
-    { when: "Today", text: "Full access, $0 due now" },
-    { when: shortDate(reminder), text: "We email you a reminder" },
-    { when: shortDate(charge), text: "First charge, $9.99 a month" },
-  ];
-}
-
-/** Blinkist-style dated trial timeline as one sentence (the report's fine print). */
-export function trialTimeline(start: Date): string {
-  const [today, reminder, charge] = trialSteps(start);
-  return `${today.when}: ${today.text.toLowerCase()}. ${reminder.when}: ${reminder.text.toLowerCase()}. ${charge.when}: ${charge.text.toLowerCase()}. Cancel anytime in one tap.`;
 }

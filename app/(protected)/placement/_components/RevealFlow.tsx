@@ -9,6 +9,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { NarrationLine, PlacementResult } from "@/lib/placement/types";
+import { usePlanStore } from "@/lib/stores/plan-store";
 import { CelebrationScreen, HoldToBuild, RevealWizard } from "./reveal";
 
 type Phase = "celebrate" | "hold" | "wizard";
@@ -20,6 +21,29 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
   const [holdDone, setHoldDone] = useState(false);
   const pollRef = useRef<number | null>(null);
   useEffect(() => { if (holdDone && result) setPhase("wizard"); }, [holdDone, result]);
+
+  // "Start <Name>'s Reading Journey": straight into Stripe Checkout (14-day
+  // card trial, monthly). The wizard has already explained the trial, so no
+  // /upgrade detour. Already on Readee+ -> the dashboard, where the next
+  // lesson now starts at the placed band. Any failure falls back to /upgrade.
+  const rawPlan = usePlanStore((s) => s.rawPlan);
+  const startingRef = useRef(false);
+  const startPlan = useCallback(async () => {
+    if (rawPlan === "premium") { router.push("/dashboard"); return; }
+    if (startingRef.current) return;
+    startingRef.current = true;
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ billing: "monthly", sku: "premium", cancelTo: `/placement/report?child=${childId}` }),
+      });
+      const data = (await res.json()) as { url?: string };
+      if (data.url) { window.location.href = data.url; return; }
+    } catch { /* fall through */ }
+    startingRef.current = false;
+    router.push("/upgrade?reason=placement");
+  }, [childId, rawPlan, router]);
 
   const load = useCallback(async () => {
     try {
@@ -68,7 +92,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     <RevealWizard
       result={result}
       audioUrlFor={audioUrlFor}
-      onStartPlan={() => router.push("/upgrade?reason=placement")}
+      onStartPlan={() => { void startPlan(); }}
       onNotNow={() => router.push(`/placement/report?child=${childId}`)}
       onSkipToReport={() => router.push(`/placement/report?child=${childId}`)}
     />

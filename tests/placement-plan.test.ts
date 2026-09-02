@@ -175,13 +175,13 @@ describe("buildPlan: Maya, 4th grade in September, placed at 2nd", () => {
     expect(plan.minutesPerDay).toBe(10);
     expect(plan.daysPerWeek).toBe(5);
     expect(plan.reviewedBy).toBe(REVIEWED_BY);
-    expect(plan.reviewedBy).toBe("Jennifer Klingerman, certified reading specialist");
+    expect(plan.reviewedBy).toBe("Jennifer Klingerman, Certified Reading Specialist");
   });
 
   it("dates two milestones from the published growth slopes", () => {
     expect(plan.milestones).toEqual([
-      { label: "Reads like a 3rd grader", month: "late April", date: "2027-04-28" },
-      { label: "Reaches the 4th-grade bar", month: "next fall", date: "2027-08-04" },
+      { label: "Reads like a 3rd grader", month: "late April", date: "2027-04-28", wcpm: 112 },
+      { label: "Reaches the 4th-grade bar", month: "next fall", date: "2027-08-04", wcpm: 133 },
     ]);
   });
 

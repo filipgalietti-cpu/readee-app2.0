@@ -117,8 +117,8 @@ describe("narrate: Maya, below level", () => {
     expect(plan).toContain("read like a 3rd grader by late April");
     expect(plan).toContain("reach the 4th-grade bar by next fall");
     const ask = byId(lines, "ask");
-    expect(ask).toContain("Her plan starts with 2nd Grade Sound Workshop");
-    expect(ask.endsWith("Everything on the path is included with Readee Plus. You can start it now.")).toBe(true);
+    expect(ask).toContain("Her Custom Journey starts with 2nd Grade Sound Workshop");
+    expect(ask.endsWith("Everything on the Custom Journey is included with Readee Plus. You can start it now.")).toBe(true);
   });
 
   it("uses her pronouns throughout", () => {

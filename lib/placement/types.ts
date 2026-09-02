@@ -51,7 +51,7 @@ export type PlanStep = {
   unit?: { grade: string; domain: string; lessons: number };
 };
 
-export type PlanMilestone = { label: string; month: string; date: string };
+export type PlanMilestone = { label: string; month: string; date: string; /** Words a minute the milestone reaches, when the plan has a timed passage. */ wcpm?: number };
 
 export type PlacementPlan = {
   entryBand: PlacedBand;

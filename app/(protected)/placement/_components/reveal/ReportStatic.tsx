@@ -7,6 +7,10 @@ import { Glyph } from "@/app/_components/Glyph";
 import { PercentileBar } from "./PercentileBar";
 import { SkillBar } from "./SkillBar";
 import { PathRoute } from "./PathRoute";
+import { GradeLadder } from "./GradeLadder";
+import { BandChip } from "./BandChip";
+import { TrialTimeline } from "./TrialTimeline";
+import { GrowthChart } from "./GrowthChart";
 import { buildRevealCopy } from "./copy";
 
 export type ReportStaticProps = {
@@ -22,10 +26,10 @@ const PRINT_CSS = `
 }
 `;
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ title, children, centered = false }: { title: string; children: React.ReactNode; centered?: boolean }) {
   return (
     <section className="border-t border-zinc-200 pt-6 @2xl:pt-8">
-      <h2 className="text-lg font-semibold text-zinc-900 @2xl:text-xl">{title}</h2>
+      <h2 className={`text-lg font-semibold text-zinc-900 @2xl:text-xl ${centered ? "text-center" : ""}`}>{title}</h2>
       <div className="mt-3 @2xl:mt-4">{children}</div>
     </section>
   );
@@ -62,22 +66,35 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
         </header>
 
         <Section title="Strengths">
-          <ul className="grid gap-2 @2xl:grid-cols-2 @2xl:gap-3">
-            {copy.strengths.map((s) => (
-              <li key={s} className="flex items-center gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+          <ul className="grid gap-3 @2xl:grid-cols-2">
+            {copy.strengthTiles.map((tile) => (
+              <li key={tile.text} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                   <Glyph name="check" size={14} />
                 </span>
-                <span className="text-base text-zinc-800">{s}</span>
+                <div>
+                  <p className="text-base font-semibold text-zinc-800">{tile.text}</p>
+                  {tile.evidence && <p className="text-sm text-zinc-500">{tile.evidence}</p>}
+                </div>
               </li>
             ))}
           </ul>
-          {copy.momentLine && <p className="mt-3 text-sm text-zinc-500">{copy.momentLine}</p>}
+          {copy.extraMoment && <p className="mt-3 text-sm text-zinc-500">{copy.extraMoment}</p>}
+          <ul className="mt-4 flex flex-wrap gap-4">
+            {copy.measured.map((m) => (
+              <li key={m.label} className="flex items-center gap-2 text-sm text-zinc-600">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-violet-100 text-violet-600">
+                  <Glyph name={m.icon} size={14} />
+                </span>
+                {m.label}
+              </li>
+            ))}
+          </ul>
         </Section>
 
         {n && (
-          <Section title="Reading speed">
-            <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">{n.dataLabel}</p>
+          <Section title={n.title}>
+            <p className="text-sm text-zinc-500">{n.subtitle}</p>
             <div className="mt-3 flex items-end gap-8">
               <div>
                 <div className="text-5xl font-semibold leading-none text-violet-700 tabular-nums @2xl:text-7xl">{n.wcpm}</div>
@@ -102,9 +119,7 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
 
         <Section title="Placement">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center rounded-full bg-gradient-to-r from-violet-600 to-violet-500 px-3 py-1 text-sm font-semibold text-white">
-              {p.band}
-            </span>
+            <BandChip band={p.band} />
             <span aria-hidden className="text-zinc-400">
               ·
             </span>
@@ -112,6 +127,9 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           </div>
           <p className="mt-3 text-base leading-6 text-zinc-800">{p.support}</p>
           {p.reassurance && <p className="mt-3 border-l-2 border-violet-200 pl-4 text-sm leading-6 text-zinc-500">{p.reassurance}</p>}
+          <div className="mt-5">
+            <GradeLadder enrolled={p.enrolled} placed={p.placed} childName={copy.childName} bandName={p.band} categoryText={p.categoryText} animate instant />
+          </div>
         </Section>
 
         <Section title="Three skills">
@@ -122,7 +140,7 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           </div>
         </Section>
 
-        <Section title={`${copy.childName}'s path`}>
+        <Section title={`${copy.childName}'s Custom Journey`}>
           <div className="rounded-2xl border border-zinc-200 bg-white p-4 @2xl:p-6">
             <PathRoute
               steps={copy.path.steps}
@@ -139,6 +157,11 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
 
         <Section title="The plan">
           <p className="text-base font-semibold text-zinc-900 @2xl:text-lg">{copy.plan.dose}</p>
+          {copy.plan.growth && (
+            <div className="mt-3 rounded-2xl border border-zinc-200 p-3">
+              <GrowthChart {...copy.plan.growth} reduced height={200} />
+            </div>
+          )}
           <ul className="mt-3 space-y-2">
             {copy.plan.milestones.map((m) => (
               <li key={m.date} className="flex items-center gap-3">
@@ -152,35 +175,45 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           </ul>
           <h3 className="mt-5 text-base font-semibold text-zinc-900">{copy.plan.tipsHeading}</h3>
           <ol className="mt-2 space-y-2">
-            {copy.plan.tips.map((tip, i) => (
-              <li key={tip} className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-violet-100 text-xs font-semibold text-violet-700">
-                  {i + 1}
+            {copy.plan.tips.map((tip) => (
+              <li key={tip.text} className="flex items-start gap-3">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-violet-100 text-violet-600">
+                  <Glyph name={tip.icon} size={14} />
                 </span>
-                <span className="text-base leading-6 text-zinc-700">{tip}</span>
+                <span className="text-base leading-6 text-zinc-700">{tip.text}</span>
               </li>
             ))}
           </ol>
           <p className="mt-4 text-xs text-zinc-400">{copy.plan.projection}</p>
         </Section>
 
-        <Section title={copy.ask.headline}>
-          <p className="text-base text-zinc-600">{copy.ask.line}</p>
-          <div className="reveal-print-hide mt-4">
-            {onStartPlan ? (
-              <button type="button" onClick={onStartPlan} className={PRIMARY}>
-                {copy.ask.button}
-              </button>
-            ) : (
-              <Link href="/upgrade" className={PRIMARY}>
-                {copy.ask.button}
-              </Link>
-            )}
-            <p className="mt-2 text-xs text-zinc-500">{copy.ask.finePrint}</p>
+        <Section title={copy.ask.headline} centered>
+          <p className="text-center text-base font-semibold text-zinc-800">{copy.ask.subhead}</p>
+          <p className="mt-1 text-center text-base text-zinc-600">{copy.ask.line}</p>
+          <div className="reveal-print-hide mt-4 flex flex-col items-center text-center">
+            <div className="mx-auto w-full max-w-xl">
+              <TrialTimeline steps={copy.ask.timeline} horizontal />
+            </div>
+            <p className="mt-2 text-xs text-zinc-500">Cancel anytime in one tap.</p>
+            <div className="mt-4">
+              {onStartPlan ? (
+                <button type="button" onClick={onStartPlan} className={PRIMARY}>
+                  {copy.ask.button}
+                </button>
+              ) : (
+                <Link href="/upgrade?reason=placement" className={PRIMARY}>
+                  {copy.ask.button}
+                </Link>
+              )}
+            </div>
           </div>
-          <p className="mt-3 flex items-center gap-2 text-sm text-zinc-600">
-            <Glyph name="shield-check" size={16} className="text-emerald-600" />
-            {copy.ask.trust}
+          <p className="mt-4 flex items-center justify-center gap-2 text-xs text-zinc-500">
+            <Glyph name="shield-check" size={16} />
+            <span>
+              Content created and reviewed by <span className="font-semibold text-zinc-800">{copy.ask.reviewer.name}</span>,
+              <br />
+              {copy.ask.reviewer.role}
+            </span>
           </p>
         </Section>
       </div>
