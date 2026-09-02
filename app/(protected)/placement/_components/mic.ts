@@ -44,6 +44,7 @@ export type Listener = {
 export function usePlacementMic() {
   const [state, setState] = useState<MicState>("closed");
   const [level, setLevel] = useState(0); // 0..1 input level for the "I can hear you" check
+  const [analyser, setAnalyser] = useState<AnalyserNode | null>(null); // the orb breathes with the child's voice
   const ctxRef = useRef<AudioContext | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const ctrlRef = useRef<StreamController | null>(null);
@@ -60,6 +61,10 @@ export function usePlacementMic() {
       const ctx = new AudioContext();
       if (ctx.state === "suspended") { try { await ctx.resume(); } catch { /* ignore */ } }
       const src = ctx.createMediaStreamSource(stream);
+      const an = ctx.createAnalyser();
+      an.fftSize = 1024;
+      src.connect(an);
+      setAnalyser(an);
       const proc = ctx.createScriptProcessor(4096, 1, 1);
       proc.onaudioprocess = (e) => {
         const frame = e.inputBuffer.getChannelData(0);
@@ -131,5 +136,5 @@ export function usePlacementMic() {
 
   useEffect(() => () => close(), [close]);
 
-  return { state, level, open, listen, startRecording, stopRecording, close };
+  return { state, level, analyser, open, listen, startRecording, stopRecording, close };
 }

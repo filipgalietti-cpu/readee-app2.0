@@ -38,6 +38,11 @@ body {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* Immersive routes (the reading placement and its reveal) have no fixed header, so no offset. */
+body.immersive-route {
+  padding-top: env(safe-area-inset-top);
+}
+
 @layer base {
   h1 {
     font-size: 1.875rem;

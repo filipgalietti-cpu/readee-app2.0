@@ -81,20 +81,23 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     return line.audioPath ? `/api/child-audio?path=${encodeURIComponent(line.audioPath)}` : null;
   }, []);
 
+  // The reveal owns the whole viewport (no site chrome on /placement routes): one screen, never a page scroll.
+  let screen: React.ReactNode;
   if (phase === "celebrate") {
-    return <CelebrationScreen childName={childName} outfitId={outfitId} carrots={30} onHandoff={() => setPhase("hold")} />;
-  }
-  if (phase === "hold" || !result) {
+    screen = <CelebrationScreen childName={childName} outfitId={outfitId} carrots={30} onHandoff={() => setPhase("hold")} />;
+  } else if (phase === "hold" || !result) {
     const g = result ? ["kindergarten", "1st-grade", "2nd-grade", "3rd-grade", "4th-grade"][result.enrolled] : undefined;
-    return <HoldToBuild childName={childName} enrolledGrade={g} onComplete={() => setHoldDone(true)} />;
+    screen = <HoldToBuild childName={childName} enrolledGrade={g} onComplete={() => setHoldDone(true)} />;
+  } else {
+    screen = (
+      <RevealWizard
+        result={result}
+        audioUrlFor={audioUrlFor}
+        onStartPlan={() => { void startPlan(); }}
+        onNotNow={() => router.push(`/placement/report?child=${childId}`)}
+        onSkipToReport={() => router.push(`/placement/report?child=${childId}`)}
+      />
+    );
   }
-  return (
-    <RevealWizard
-      result={result}
-      audioUrlFor={audioUrlFor}
-      onStartPlan={() => { void startPlan(); }}
-      onNotNow={() => router.push(`/placement/report?child=${childId}`)}
-      onSkipToReport={() => router.push(`/placement/report?child=${childId}`)}
-    />
-  );
+  return <div className="h-dvh overflow-hidden bg-zinc-50">{screen}</div>;
 }

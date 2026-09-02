@@ -216,13 +216,13 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
   const dotIdx = step - 1;
 
   return (
-    <div style={{ position: "fixed", inset: 0, zIndex: 50, background: "linear-gradient(160deg,#ffe8ed 0%,#ffffff 40%,#f0e8ff 80%,#e0ecff 100%)", display: "flex", flexDirection: "column", fontFamily: NUN, overflowY: "auto" }}>
+    <div style={{ position: "fixed", inset: 0, zIndex: 50, background: "#fafafa", display: "flex", flexDirection: "column", fontFamily: NUN, overflowY: "auto" }}>
       <style>{`
         @keyframes kwfIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
         @keyframes kwfRing{0%{box-shadow:0 0 0 0 rgba(67,56,202,.35)}70%{box-shadow:0 0 0 14px rgba(67,56,202,0)}100%{box-shadow:0 0 0 0 rgba(67,56,202,0)}}
         @keyframes kwfPop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
         @keyframes kwfShimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-        .kwf-skel{background:linear-gradient(90deg,#eef2ff 25%,#f5f3ff 50%,#eef2ff 75%);background-size:200% 100%;animation:kwfShimmer 1.3s ease-in-out infinite}
+        .kwf-skel{background:#f4f4f5}
         .kwf-in{animation:kwfIn .45s cubic-bezier(.34,1.56,.64,1) both}
         .kwf-ring{animation:kwfRing 2.6s ease-out infinite}
         .kwf-avatar{transition:transform .18s cubic-bezier(.34,1.56,.64,1)}

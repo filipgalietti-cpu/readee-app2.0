@@ -52,13 +52,14 @@ export default function SidebarShell({
   // Tell the root-layout footer whether the fixed desktop sidebar is on
   // screen for this route, so it can offset past it. Reset on unmount
   // (i.e. navigating to a public page that has no sidebar).
-  const sidebarShown = !HIDDEN_PAGES.has(pathname);
+  const hiddenPage = [...HIDDEN_PAGES].some((p) => pathname === p || pathname.startsWith(p + "/"));
+  const sidebarShown = !hiddenPage;
   useEffect(() => {
     setDesktopSidebarVisible(sidebarShown);
     return () => setDesktopSidebarVisible(false);
   }, [sidebarShown, setDesktopSidebarVisible]);
 
-  if (HIDDEN_PAGES.has(pathname)) {
+  if (hiddenPage) {
     return (
       <>
         {/* Mobile sidebar overlay still available via hamburger */}
