@@ -41,8 +41,8 @@ export default function AuthCard({ title, banner, children }: AuthCardProps) {
           <Image
             src="/readee-logo.png"
             alt="Readee - Learn to Read"
-            width={612}
-            height={408}
+            width={1200}
+            height={404}
             priority
             className="w-40 sm:w-48 h-auto mx-auto mb-4"
           />
