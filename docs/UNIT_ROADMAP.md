@@ -11,7 +11,7 @@
 > beat — not just quiz the skill. Reference: U1 lessons (RF.K.2a Rhyme Time =
 > hear it → build it → SAY it).
 
-**Progress: 126 / 201 standards shipped · 1 / 21 units complete**
+**Progress: 127 / 201 standards shipped · 1 / 21 units complete**
 
 ## Kindergarten (38 standards · 4 units)
 
@@ -215,7 +215,7 @@
 | ✓ | Standard | Skill (what school expects) | How it teaches |
 |---|---|---|---|
 | ☐ | RF.3.3 | Know and apply grade-level phonics and word analysis skills in decoding words. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
-| ☐ | RF.3.3a | Identify and know the meaning of the most common prefixes and derivational suffixes. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
+| ☑ | RF.3.3a | Identify and know the meaning of the most common prefixes and derivational suffixes. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
 | ☐ | RF.3.3b | Decode words with common Latin suffixes. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
 | ☐ | RL.3.1 | Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text. | story read-along → choose/highlight comprehension beats → retell/sequence |
 | ☐ | RL.3.2 | Recount stories including fables, folktales, and myths; determine the central message, lesson, or moral. | story read-along → choose/highlight comprehension beats → retell/sequence |
