@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import phonicsJson from "@/app/data/luna-phonics.json";
+import { grades, gradeOrder } from "@/lib/assessment/questions";
 
 type Pattern = {
   id: string;
@@ -23,6 +24,25 @@ export function gradeToken(g: string | null): string {
   if (s.startsWith("3") || s.includes("third")) return "3rd";
   if (s.startsWith("4") || s.includes("fourth")) return "4th";
   return "K";
+}
+
+/**
+ * The grade token Luna should TEACH at. Reading level is placement-owned and
+ * authoritative app-wide (lessons/practice/journey all anchor on it) - a 3rd
+ * grader placed at a 1st-grade reading level must get 1st-grade decodables,
+ * not their enrollment grade's. Falls back to the school grade when the child
+ * has no placement yet. Orion's performance guard then adjusts from THIS
+ * anchor (frustration-level accuracy steps down one more).
+ */
+export function readingGradeToken(readingLevel: string | null, grade: string | null): string {
+  const lvl = (readingLevel ?? "").trim();
+  if (lvl) {
+    // Only trust an exact match against the placement level names — the mapper
+    // defaults unknowns to kindergarten, which would sandbag typo'd data.
+    const key = gradeOrder.find((k) => grades[k]?.reading_level_name === lvl);
+    if (key) return key === "kindergarten" || key === "pre-k" ? "K" : key;
+  }
+  return gradeToken(grade);
 }
 
 /**
