@@ -1782,7 +1782,7 @@ export default function LunaReader({
                   ))}
                 </p>
               )}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 12, padding: "0 0 10px" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 12, padding: "0 0 6px" }}>
                 {wordLesson.segs.map((sg, i) => {
                   const wholeWord = wordLesson.segIdx >= wordLesson.segs.length;
                   const green = !!wordLesson.done;
@@ -1812,6 +1812,19 @@ export default function LunaReader({
                   );
                 })}
               </div>
+              {/* Mini orb "your turn" cue (Filip's design) - the REAL animated
+                  orb at 40px, so it reacts to the child's voice like the big
+                  one. Hidden during the green celebration beat. */}
+              {!wordLesson.done && (
+                <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 2 }}>
+                  <div style={{ width: 52, height: 52, overflow: "hidden", borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} size={40} />
+                  </div>
+                  <span style={{ fontSize: 15, fontWeight: 800, color: mode === "listening" ? "#7c3aed" : "#71717a", fontFamily: "'Nunito',sans-serif", transition: "color .3s ease" }}>
+                    {mode === "listening" ? "Your turn, read the word" : "Listen first"}
+                  </span>
+                </div>
+              )}
             </div>
           ) : (
             <p style={{ margin: "10px 0 0", fontFamily: SERIF, fontSize: 21, lineHeight: 1.9, color: "#18181b", overflowWrap: "break-word", wordBreak: "break-word" }}>
