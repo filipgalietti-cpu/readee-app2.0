@@ -22,7 +22,7 @@ import { PASSAGE_READ_SECONDS, type BankQuestion } from "@/lib/placement/bank";
 import type { Moment, PlacementSubmission } from "@/lib/placement/types";
 import type { PassageEvidence, CountEvidence } from "@/lib/placement/decide";
 import { usePlacementMic, type MicState } from "./mic";
-import { playNarr, playUrlAsync, playSeq, clipUrl, phonemeUrl, childAudioUrl, stopClip, setFastAudio } from "./audio";
+import { playNarr, playUrlAsync, playSeq, clipUrl, phonemeUrl, childAudioUrl, stopClip, setFastAudio, softTick } from "./audio";
 import LunaOrb, { type LunaMode } from "@/app/(protected)/luna/_components/LunaOrb";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -81,7 +81,11 @@ export default function PlacementRunner({
     await playNarr(key);
     setOrb("idle");
   }, []);
-  const ack = useCallback(async (i: number) => { await playNarr(ACKS[i % ACKS.length], 2500); }, []);
+  // A soft tick says "heard you" after each word; Luna speaks only every fourth word so the acks never feel like a loop.
+  const ack = useCallback(async (i: number) => {
+    if (i % 4 === 3) await playNarr(ACKS[(i >> 2) % ACKS.length], 2500);
+    else { softTick(); await new Promise((r) => setTimeout(r, robot ? 0 : 220)); }
+  }, [robot]);
 
   /** One spoken word: listen with the word as the reference; resolve on a verdict, a tap, or the hesitation timeout. */
   const listenWord = useCallback(async (word: string, nonsense = false, band?: number): Promise<boolean> => {
@@ -393,21 +397,27 @@ export default function PlacementRunner({
 
   // ───────────────────────────────────────────────── render
   return (
-    <main className="min-h-screen bg-violet-50/40 text-violet-950" data-placement-stage={stage}>
-      <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center px-6 py-6 md:px-10">
-        <div className="flex w-full items-end justify-between">
-          {/* The child's own bunny, full size: the sidekick wears THEIR outfit, like the Luna reader. */}
-          <div className="h-32 w-32 md:h-44 md:w-44" data-bunny>
-            {stage === "greeting" ? (
-              <BunnyReaction outfitId={outfitId ?? "bunny_classic"} state="wave" />
-            ) : (
-              <Bunny outfitId={outfitId ?? "bunny_classic"} />
-            )}
+    <main className="h-dvh overflow-hidden bg-violet-50/40 text-violet-950" data-placement-stage={stage}>
+      <div className="mx-auto flex h-full w-full max-w-5xl flex-col px-5 py-4 md:px-10 md:py-6">
+        {/* Header: the child's own bunny (their equipped outfit) with their name on the left, Luna on the right. */}
+        <header className="flex w-full shrink-0 items-center justify-between" data-runner-header>
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="h-20 w-20 md:h-28 md:w-28" data-bunny>
+              {stage === "greeting" ? (
+                <BunnyReaction outfitId={outfitId ?? "bunny_classic"} state="wave" />
+              ) : (
+                <Bunny outfitId={outfitId ?? "bunny_classic"} />
+              )}
+            </div>
+            <div className="min-w-0">
+              <p className="truncate text-base font-semibold text-violet-900 md:text-lg" data-child-name>{childName}</p>
+              <p className="text-xs text-violet-500 md:text-sm">{BAND_LABEL[enrolled]} grade placement</p>
+            </div>
           </div>
-          <LunaOrb mode={orb} analyser={null} size={112} />
-        </div>
+          <LunaOrb mode={orb} analyser={mic.analyser} size={88} />
+        </header>
 
-        <div className="flex w-full flex-1 flex-col items-center justify-center gap-8 py-6 md:py-10">
+        <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-center gap-6 py-4 md:gap-8">
           {screen.kind === "luna" && (
             <p className="max-w-2xl text-center text-2xl font-semibold leading-relaxed md:text-4xl md:leading-snug" data-caption>{screen.caption}</p>
           )}
@@ -434,11 +444,11 @@ export default function PlacementRunner({
               </div>
               <button
                 type="button"
-                className="text-sm text-violet-500 underline underline-offset-4"
+                className="min-h-14 rounded-2xl border border-violet-200 bg-white px-8 py-3 text-lg font-semibold text-violet-800 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.97] md:text-xl"
                 onClick={() => skipRef.current?.()}
                 data-skip-word
               >
-                I don&apos;t know this one
+                I don&apos;t know
               </button>
               {robot && screen.listening && (
                 <div className="flex gap-3" data-robot-controls>
@@ -460,7 +470,7 @@ export default function PlacementRunner({
                     data-tile={t}
                     disabled={screen.picked !== null}
                     onClick={() => tap(t)}
-                    className={`rounded-2xl bg-white py-8 text-4xl font-semibold text-violet-900 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition md:py-12 md:text-6xl ${screen.picked === t ? "shadow-[0_0_0_3px_rgba(139,92,246,0.15)]" : "hover:-translate-y-0.5"}`}
+                    className={`rounded-2xl bg-white py-8 text-4xl font-semibold text-violet-900 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.96] md:py-12 md:text-6xl ${screen.picked === t ? "bg-violet-100 shadow-[0_0_0_3px_rgba(139,92,246,0.35)]" : "hover:-translate-y-0.5"}`}
                   >
                     {t}
                   </button>
@@ -470,9 +480,9 @@ export default function PlacementRunner({
           )}
 
           {screen.kind === "passage" && (
-            <article className="w-full max-w-3xl rounded-3xl bg-white p-8 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] md:p-12" data-passage-reading={screen.reading ? "1" : "0"}>
-              <h1 className="mb-4 text-2xl font-semibold text-violet-900 md:text-3xl">{screen.title}</h1>
-              <p className="whitespace-pre-line text-[22px] leading-[1.9] text-violet-950 md:text-[26px]">{screen.text}</p>
+            <article className="flex min-h-0 w-full max-w-3xl flex-col overflow-y-auto rounded-3xl bg-white p-6 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] md:p-10" data-passage-reading={screen.reading ? "1" : "0"}>
+              <h1 className="mb-3 text-2xl font-semibold text-violet-900 md:text-3xl">{screen.title}</h1>
+              <p className="whitespace-pre-line text-[20px] leading-[1.8] text-violet-950 md:text-[24px]">{screen.text}</p>
               <div className={`mt-6 flex items-center gap-2 text-sm ${screen.reading ? "text-violet-700" : "text-violet-400"}`}>
                 <FluentIcon name="microphone" size={18} /> {screen.reading ? "Read it out loud" : "Get ready"}
               </div>
@@ -503,7 +513,7 @@ export default function PlacementRunner({
                     data-correct={screen.correctId === o.id ? "1" : undefined}
                     disabled={screen.picked !== null}
                     onClick={() => tap(o.id)}
-                    className={`rounded-2xl bg-white px-6 py-5 text-left text-xl font-semibold text-violet-900 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition ${screen.readingIdx === i ? "shadow-[0_0_0_3px_rgba(139,92,246,0.15)]" : ""} ${screen.picked === o.id ? "bg-violet-100" : ""}`}
+                    className={`rounded-2xl bg-white px-6 py-5 text-left text-xl font-semibold text-violet-900 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.98] ${screen.readingIdx === i ? "shadow-[0_0_0_3px_rgba(139,92,246,0.15)]" : ""} ${screen.picked === o.id ? "bg-violet-100 shadow-[0_0_0_3px_rgba(139,92,246,0.35)]" : ""}`}
                   >
                     {o.label}
                   </button>
@@ -541,8 +551,6 @@ export default function PlacementRunner({
             </div>
           )}
         </div>
-
-        <p className="text-xs text-violet-400">{BAND_LABEL[enrolled]} grade placement · {childName}</p>
       </div>
     </main>
   );

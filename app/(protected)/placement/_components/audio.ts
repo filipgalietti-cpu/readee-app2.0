@@ -14,6 +14,29 @@ let fast = false;
 /** Robot mode: clips resolve almost immediately so a QA run takes seconds, not minutes. */
 export function setFastAudio(on: boolean): void { fast = on; }
 
+let tickCtx: AudioContext | null = null;
+/** Soft two-note tick (C6 -> E6, C-major like the shop chimes) after each word; silent in fast mode. */
+export function softTick(): void {
+  if (fast) return;
+  try {
+    tickCtx ??= new AudioContext();
+    const ctx = tickCtx;
+    const t0 = ctx.currentTime;
+    [[1046.5, 0], [1318.5, 0.07]].forEach(([freq, at]) => {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "sine";
+      o.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, t0 + at);
+      g.gain.exponentialRampToValueAtTime(0.06, t0 + at + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + at + 0.12);
+      o.connect(g).connect(ctx.destination);
+      o.start(t0 + at);
+      o.stop(t0 + at + 0.14);
+    });
+  } catch { /* no audio context: silent */ }
+}
+
 export function stopClip(): void {
   if (current) { try { current.pause(); } catch { /* ignore */ } current = null; }
 }

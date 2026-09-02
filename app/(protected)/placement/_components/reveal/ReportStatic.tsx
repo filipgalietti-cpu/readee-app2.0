@@ -55,14 +55,23 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
               {copy.dateLong} · Enrolled in {copy.enrolledLabel} · {copy.minutesLine}
             </p>
           </div>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="reveal-print-hide inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-semibold text-violet-700 shadow-sm ring-1 ring-zinc-200"
-          >
-            <Glyph name="printer" size={16} />
-            Print
-          </button>
+          <div className="reveal-print-hide flex shrink-0 items-center gap-2">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-semibold text-violet-700 shadow-sm ring-1 ring-zinc-200"
+            >
+              <Glyph name="home" size={16} />
+              Dashboard
+            </Link>
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-semibold text-violet-700 shadow-sm ring-1 ring-zinc-200"
+            >
+              <Glyph name="printer" size={16} />
+              Print
+            </button>
+          </div>
         </header>
 
         <Section title="Strengths">

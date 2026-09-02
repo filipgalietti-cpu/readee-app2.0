@@ -1,5 +1,4 @@
 import ClientProviders from "./_components/ClientProviders";
-import PageTransition from "./_components/PageTransition";
 import RouteProgress from "./_components/RouteProgress";
 import JsonLd from "./_components/JsonLd";
 import ConditionalAnalytics from "./_components/ConditionalAnalytics";
@@ -9,6 +8,7 @@ import "./globals.css";
 import Link from "next/link";
 import NavAuth from "./_components/NavAuth";
 import FooterShell from "./_components/FooterShell";
+import Chrome from "./_components/Chrome";
 
 // Lexend — scientifically designed for reading proficiency. Used by
 // Khan Academy Kids, Reading Rockets, and most K-4 ed-tech. The
@@ -90,14 +90,9 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col font-sans">
 <ClientProviders>
         <RouteProgress />
-        <NavAuth />
 
-        {/* Page content */}
-        <main className="flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 pt-2 pb-4 sm:pb-8">
-          <PageTransition>{children}</PageTransition>
-        </main>
+        <Chrome nav={<NavAuth />} footer={
 
-        {/* Footer — offset past the fixed sidebar on protected routes */}
         <FooterShell>
         <footer className="bg-[#1e1b4b] mt-auto">
           <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-14 pb-8">
@@ -166,6 +161,9 @@ export default function RootLayout({
           </div>
         </footer>
         </FooterShell>
+        }>
+          {children}
+        </Chrome>
 </ClientProviders>
         <ConditionalAnalytics />
       </body>
