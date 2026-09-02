@@ -11,7 +11,7 @@ import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildUpdateSchema } from "@/lib/schemas";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import {
-  Carrot, Check, Download, Pencil, Mail, Flame, ShieldCheck,
+  Carrot, Check, Download, Pencil, Mail, ShieldCheck,
   Sparkles, Plus, LogOut,
 } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
@@ -22,6 +22,7 @@ import {
   exportUserDataAction,
   deleteAccountAction,
 } from "@/app/(protected)/account/account-data-actions";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Kindergarten";
@@ -671,7 +672,7 @@ export default function Settings() {
                   <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 14, flexWrap: "wrap" }}>
                     {child.streak_days > 0 && (
                       <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#fff7ed", color: "#c2410c", fontSize: 11.5, fontWeight: 700, padding: "3px 9px", borderRadius: 999 }}>
-                        <Flame className="w-3 h-3" strokeWidth={2} /> {child.streak_days}-day streak
+                        <FluentIcon name="fire" size={12} /> {child.streak_days}-day streak
                       </span>
                     )}
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#fff7ed", color: "#c2410c", fontSize: 11.5, fontWeight: 700, padding: "3px 9px", borderRadius: 999 }}>

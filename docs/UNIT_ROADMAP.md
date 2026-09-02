@@ -207,7 +207,7 @@
 | ☑ | RF.2.4c | Use context to confirm or self-correct word recognition and understanding, rereading as necessary. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
 | ☑ | RI.2.10 | By end of year, read and comprehend informational texts in the grades 2-3 text complexity band proficiently. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☑ | L.2.3 | Use knowledge of language and its conventions when writing, speaking, reading, or listening | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | — | — | **G2·U4 EXAM** — 12-Q veto table |
+| ☑ | — | — | **G2·U4 EXAM** — 12-Q veto table (all 4 standards covered) |
 
 ## Grade 3 (41 standards · 4 units) — titles minted at factory time, Jennifer veto per unit
 
@@ -332,7 +332,7 @@
 Every grade ends with a **Graduation Exam**: ~16 questions drawn from ALL of the
 grade's unit-exam pools (strongest pick per major skill, every strand covered,
 easy → hard, read-aloud closer), fixed order, adaptive off, veto table like unit
-exams. K = `k-final` (assembles when U4 exam ships); G1-G4 finals assemble when
+exams. SHIPPED: `k-final`, `g1-final`, `g2-final`; G3-G4 finals assemble when
 each grade's last unit goes green. Doubles as the parent-facing "finished the
 grade" moment and a placement-refresh signal.
 

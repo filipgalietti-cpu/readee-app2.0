@@ -302,7 +302,7 @@ function LeaderboardContent() {
             {/* Streak card */}
             <div className="rounded-3xl border border-zinc-200 bg-white p-5 shadow-sm">
               <div className="flex items-center gap-2">
-                <Flame className="h-5 w-5 text-amber-500" fill="currentColor" strokeWidth={0} />
+                <FluentIcon name="fire" size={20} />
                 <h3 className="text-lg font-extrabold tracking-tight text-zinc-900">
                   {myStreak}-day streak
                 </h3>

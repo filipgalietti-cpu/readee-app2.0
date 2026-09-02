@@ -10,7 +10,7 @@ import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import Image from "next/image";
 import {
   Shuffle, BookOpen, Type, Newspaper, MessageCircle,
-  ChevronDown, ChevronRight, Zap, Flame, Star, Check,
+  ChevronDown, ChevronRight, Zap, Star, Check,
 } from "lucide-react";
 import TopCommunityPicks from "./_components/TopCommunityPicks";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -33,6 +33,7 @@ import g1Data from "@/app/data/1st-grade-standards-questions.json";
 import g2Data from "@/app/data/2nd-grade-standards-questions.json";
 import g3Data from "@/app/data/3rd-grade-standards-questions.json";
 import g4Data from "@/app/data/4th-grade-standards-questions.json";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const GRADE_DATA: Record<string, any> = {
   kindergarten: kData, "1st": g1Data, "2nd": g2Data, "3rd": g3Data, "4th": g4Data,
@@ -526,7 +527,7 @@ function PracticeHubContent() {
             <p className="mt-1 text-sm text-[#475569]">{heroSubcopy}</p>
             <div className="flex flex-wrap gap-2 mt-2.5">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-orange-700">
-                <Flame className="w-3.5 h-3.5 text-orange-500" strokeWidth={2} />
+                <FluentIcon name="fire" size={14} />
                 {child.streak_days ?? 0}-day streak
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-amber-700">

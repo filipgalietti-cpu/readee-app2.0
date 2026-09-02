@@ -23,6 +23,8 @@ import { g1Final } from "./g1-final";
 import { g2Unit1Exam } from "./g2-unit-1-exam";
 import { g2Unit2Exam } from "./g2-unit-2-exam";
 import { g2Unit3Exam } from "./g2-unit-3-exam";
+import { g2Unit4Exam } from "./g2-unit-4-exam";
+import { g2Final } from "./g2-final";
 import { soundSlidersQuiz } from "./sound-sliders-quiz";
 import { soundDetectivesQuiz } from "./sound-detectives-quiz";
 import { wordMachinesQuiz } from "./word-machines-quiz";
@@ -160,6 +162,8 @@ export const QUIZZES: Record<string, QuizDef> = {
   "g2-unit-1-exam": g2Unit1Exam,
   "g2-unit-2-exam": g2Unit2Exam,
   "g2-unit-3-exam": g2Unit3Exam,
+  "g2-unit-4-exam": g2Unit4Exam,
+  "g2-final": g2Final,
   "sound-sliders-quiz": soundSlidersQuiz,
   "sound-detectives-quiz": soundDetectivesQuiz,
   "word-machines-quiz": wordMachinesQuiz,
