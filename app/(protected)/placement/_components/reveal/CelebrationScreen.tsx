@@ -31,12 +31,17 @@ export function CelebrationScreen({ childName, outfitId, carrots, onHandoff, han
   const confetti = useMemo(() => {
     if (reduced) return [];
     const colors = ["#4ade80", "#6366f1", "#f59e0b", "#ec4899", "#8b5cf6", "#06b6d4", "#f43f5e"];
-    return Array.from({ length: 80 }, (_, i) => ({
+    return Array.from({ length: 110 }, (_, i) => ({
       id: i,
       left: (i * 37.7) % 100,
       delay: ((i * 13) % 40) / 20,
-      size: 6 + ((i * 7) % 8),
+      // Paper pieces: mostly small rectangles, every fourth one a long ribbon.
+      w: 6 + ((i * 5) % 6),
+      h: i % 4 === 0 ? 16 + ((i * 3) % 10) : 8 + ((i * 7) % 6),
       color: colors[i % 7],
+      sway: ((i * 29) % 60) - 30,
+      spin: i % 2 === 0 ? 540 : -540,
+      duration: 2.6 + ((i * 11) % 14) / 10,
     }));
   }, [reduced]);
 
@@ -57,11 +62,17 @@ export function CelebrationScreen({ childName, outfitId, carrots, onHandoff, han
         {confetti.map((c) => (
           <motion.div
             key={c.id}
-            className="absolute rounded-full"
-            style={{ left: `${c.left}%`, top: -20, width: c.size, height: c.size, backgroundColor: c.color }}
-            initial={{ y: -16, opacity: 1 }}
-            animate={{ y: "105vh", rotate: 720, opacity: 0 }}
-            transition={{ duration: 2.5, delay: c.delay, ease: "easeIn" }}
+            className="absolute rounded-[2px]"
+            style={{ left: `${c.left}%`, top: -24, width: c.w, height: c.h, backgroundColor: c.color }}
+            initial={{ y: -24, x: 0, opacity: 1, rotateZ: 0, rotateX: 0 }}
+            animate={{
+              y: "105vh",
+              x: [0, c.sway, -c.sway, c.sway * 0.6],
+              rotateZ: c.spin,
+              rotateX: [0, 180, 360, 540],
+              opacity: [1, 1, 1, 0],
+            }}
+            transition={{ duration: c.duration, delay: c.delay, ease: "easeIn", x: { duration: c.duration, ease: "easeInOut" } }}
           />
         ))}
       </div>

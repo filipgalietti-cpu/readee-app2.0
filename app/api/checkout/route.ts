@@ -13,10 +13,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const { billing, sku } = (await req.json()) as {
+  const { billing, sku, cancelTo } = (await req.json()) as {
     billing: "monthly" | "annual";
     sku?: "premium" | "teacher_solo";
+    /** Same-site path to return to if the parent backs out (default /upgrade). */
+    cancelTo?: string;
   };
+  const safeCancelTo = typeof cancelTo === "string" && cancelTo.startsWith("/") && !cancelTo.startsWith("//") ? cancelTo : "/upgrade";
   const plan = sku ?? "premium";
   const priceId =
     plan === "teacher_solo"
@@ -67,7 +70,7 @@ export async function POST(req: NextRequest) {
       trial_period_days: 14,
     },
     success_url: `${origin}/dashboard?checkout=success`,
-    cancel_url: `${origin}/upgrade`,
+    cancel_url: `${origin}${safeCancelTo}`,
     allow_promotion_codes: true,
   });
 

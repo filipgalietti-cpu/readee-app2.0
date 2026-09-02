@@ -42,7 +42,8 @@ import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
 
 /** Placement v2 (Luna-run exam + reveal) replaces the legacy quiz when this flag is on. */
-const PLACEMENT_V2 = process.env.NEXT_PUBLIC_PLACEMENT_V2 === "1";
+// Placement v2 (Luna-run reading exam + reveal) is the default; NEXT_PUBLIC_PLACEMENT_V2=0 falls back to the old quiz.
+const PLACEMENT_V2 = process.env.NEXT_PUBLIC_PLACEMENT_V2 !== "0";
 
 // Set of standards that have a real canonical lesson on the /learn
 // slideshow route. Used to route navigation to /learn when possible
@@ -817,7 +818,9 @@ function ChildDashboard({
 
   const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string; locked?: boolean }> = (firstDay && !previewing)
     ? [
-        { num: "1", label: "Take the reading quiz", sub: "Finds your just-right level", status: "cur", href: `/assessment?child=${child.id}` },
+        PLACEMENT_V2
+          ? { num: "1", label: "Take the reading placement", sub: "Read with Luna · finds the just-right level", status: "cur", href: `/placement?child=${child.id}` }
+          : { num: "1", label: "Take the reading quiz", sub: "Finds your just-right level", status: "cur", href: `/assessment?child=${child.id}` },
         { num: "2", label: "Your first lesson", sub: "Readee reads along with you", status: "todo" },
       ]
     : [
@@ -1198,7 +1201,9 @@ function ParentSidebar({
         { href: "/dashboard", icon: "home", label: "Dashboard" },
         { href: "/luna", icon: "sparkles", label: "Luna", emphasis: true },
         hasAssessment
-          ? { href: `/assessment-results?child=${child.id}`, icon: "clipboard-check", label: "Placement Test Results" }
+          ? (PLACEMENT_V2
+              ? { href: `/placement/report?child=${child.id}`, icon: "clipboard-check", label: "Placement report" }
+              : { href: `/assessment-results?child=${child.id}`, icon: "clipboard-check", label: "Placement Test Results" })
           : { href: PLACEMENT_V2 ? `/placement?child=${child.id}` : `/assessment?child=${child.id}`, icon: "clipboard-check", label: PLACEMENT_V2 ? "Reading placement" : "Take Placement Test", emphasis: true },
         { href: `/analytics?child=${child.id}`, icon: "bar-chart3", label: "Analytics" },
         { href: `/review?child=${child.id}`, icon: "brain", label: "Today's review" },

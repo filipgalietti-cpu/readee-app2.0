@@ -35,7 +35,7 @@ export const NARRATION_ORDER: readonly NarrationId[] = [
 
 export const NARRATION_MAX_CHARS = 340;
 export const REASSURANCE = "Below grade level does not mean failing. It means the practice needs to be aimed.";
-export const ASK_CLOSE = "Everything on the path is included with Readee Plus. You can start it now.";
+export const ASK_CLOSE = "Everything on the Custom Journey is included with Readee Plus. You can start it now.";
 /** On top of bank.FORBIDDEN_CHILD_WORDS. */
 export const FORBIDDEN_NARRATION_WORDS = ["typical", "behind", "kid", "kids", "test", "quiz", "exam", "guaranteed"];
 const NO_EXCLAMATION: ReadonlySet<NarrationId> = new Set<NarrationId>(["number", "placement", "skill-decoding", "skill-fluency", "skill-comprehension"]);
@@ -270,7 +270,7 @@ function pathLine(c: Ctx): string {
   const targets = steps.filter((s) => s.kind === "target");
   const luna = steps.find((s) => s.kind === "luna");
   const end = steps.find((s) => s.kind === "end");
-  let s = start ? `${name}'s path starts with ${start.title}` : `${name}'s path starts today`;
+  let s = start ? `${name}'s Custom Journey starts with ${start.title}` : `${name}'s Custom Journey starts today`;
   if (skipped.length) {
     const reasons = [...new Set(skipped.map((k) => k.reason))];
     s += `, skips ${joinAnd(skipped.map((k) => k.title))} since ${joinAnd(reasons)}`;
@@ -301,8 +301,8 @@ function askLine(c: Ctx): string {
   const { p, plan } = c;
   const fu = plan.firstUnit;
   const opener = fu
-    ? `${cap(p.poss)} plan starts with ${fu.title}, ${fu.lessons} short ${fu.lessons === 1 ? "lesson" : "lessons"} on ${unitPhraseFor(fu.grade, fu.domain)}.`
-    : `${cap(p.poss)} plan starts today.`;
+    ? `${cap(p.poss)} Custom Journey starts with ${fu.title}, ${fu.lessons} short ${fu.lessons === 1 ? "lesson" : "lessons"} on ${unitPhraseFor(fu.grade, fu.domain)}.`
+    : `${cap(p.poss)} Custom Journey starts today.`;
   return `${opener} ${ASK_CLOSE}`;
 }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, animate, motion, useMotionValue, useMotionValueEvent, type AnimationPlaybackControls } from "framer-motion";
+import { AnimatePresence, animate, motion, useMotionValue, useMotionValueEvent, useTransform, type AnimationPlaybackControls } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { Glyph } from "@/app/_components/Glyph";
 import { useReduced } from "./motion";
@@ -16,21 +16,21 @@ export type HoldToBuildProps = {
   onChime?: () => void;
 };
 
-/* The one looping animation in the reveal: the robot walks the bench while
- * the report builds. Real CSS keyframes; off under reduced motion. */
+/* The robot's position on the bench IS the hold progress: one walk from the
+ * left end to the right end over the whole hold (and back if released early).
+ * The only loop is a small step bob while moving; off under reduced motion. */
 const WALK_CSS = `
-@keyframes revealRobotWalk {
-  0%   { transform: translateX(-72px) scaleX(1); }
-  48%  { transform: translateX(72px) scaleX(1); }
-  52%  { transform: translateX(72px) scaleX(-1); }
-  98%  { transform: translateX(-72px) scaleX(-1); }
-  100% { transform: translateX(-72px) scaleX(1); }
+@keyframes revealRobotBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
 }
-.reveal-robot-walk { animation: revealRobotWalk 3.2s ease-in-out infinite; }
-@media (prefers-reduced-motion: reduce) { .reveal-robot-walk { animation: none; } }
+.reveal-robot-bob { animation: revealRobotBob 0.36s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .reveal-robot-bob { animation: none; } }
 `;
+/** Bench is 320 px and the robot 176 px, so the walk spans +-72 px around center. */
+const WALK_PX = 72;
 
-export function HoldToBuild({ childName, enrolledGrade, onComplete, holdMs = 2000, onChime }: HoldToBuildProps) {
+export function HoldToBuild({ childName, enrolledGrade, onComplete, holdMs = 3000, onChime }: HoldToBuildProps) {
   const reduced = useReduced();
   const progress = useMotionValue(0);
   const control = useRef<AnimationPlaybackControls | null>(null);
@@ -45,8 +45,13 @@ export function HoldToBuild({ childName, enrolledGrade, onComplete, holdMs = 200
     `Curating ${childName}'s path`,
   ];
 
+  const walkX = useTransform(progress, [0, 1], [-WALK_PX, WALK_PX]);
+  const [facing, setFacing] = useState<1 | -1>(1);
+  const lastProgress = useRef(0);
   useMotionValueEvent(progress, "change", (v) => {
     setLineIdx(Math.min(lines.length - 1, Math.floor(v * lines.length)));
+    if (v !== lastProgress.current) setFacing(v > lastProgress.current ? 1 : -1);
+    lastProgress.current = v;
   });
 
   const finish = useCallback(() => {
@@ -77,7 +82,7 @@ export function HoldToBuild({ childName, enrolledGrade, onComplete, holdMs = 200
 
   useEffect(() => () => control.current?.stop(), []);
 
-  const walk = (holding || done) && !reduced;
+  const walking = holding && !done && !reduced;
 
   return (
     <div className="flex h-full flex-col items-center justify-center px-6 py-8 text-center @container">
@@ -85,11 +90,11 @@ export function HoldToBuild({ childName, enrolledGrade, onComplete, holdMs = 200
 
       {/* The workbench: the robot bunny (about 160 px) walks its length while the ring fills. */}
       <div className="relative h-52 w-80">
-        <div className="absolute left-1/2 top-0 h-48 w-44 -translate-x-1/2">
-          <div className={`h-full w-full ${walk ? "reveal-robot-walk" : ""}`}>
+        <motion.div className="absolute left-1/2 top-0 h-48 w-44 -translate-x-1/2" style={{ x: walkX, scaleX: facing }}>
+          <div className={`h-full w-full ${walking ? "reveal-robot-bob" : ""}`}>
             <Bunny outfitId="bunny_robot" />
           </div>
-        </div>
+        </motion.div>
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-3 rounded-full bg-violet-100" />
       </div>
 

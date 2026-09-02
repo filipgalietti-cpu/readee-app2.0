@@ -108,6 +108,7 @@ export default function Page() {
           {tab === "wizard" && (
             <RevealWizard
               result={result}
+              outfitId="bunny_astronaut"
               audioUrlFor={() => null}
               onStartPlan={() => setNote("Start plan pressed. Stripe Checkout would open here.")}
               onNotNow={toReport}

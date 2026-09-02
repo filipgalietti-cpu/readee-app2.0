@@ -159,7 +159,7 @@ export const LESSON_MINUTES = 12;
 export const MAX_PLAN_WEEKS = 20;
 export const DEFAULT_MINUTES_PER_DAY = 10;
 export const DEFAULT_DAYS_PER_WEEK = 5;
-export const REVIEWED_BY = "Jennifer Klingerman, certified reading specialist";
+export const REVIEWED_BY = "Jennifer Klingerman, Certified Reading Specialist";
 
 export const LUNA_STEP: PlanStep = { kind: "luna", title: "Reading speed with Luna", reason: "Luna listens every day and adjusts" };
 export const WORDS_TARGET_REASON = "that is where the word list got hard";
@@ -246,21 +246,21 @@ function normMilestones(decision: PlacementDecision, entry: PlacedBand, enrolled
   const instructionGrade = Math.max(1, entry) as NormGrade;
   // Dates are re-derived from the projection's week counts with calendar
   // arithmetic (projectPlan adds milliseconds, which drifts a day across DST).
-  const at = (label: string, weeks: number): PlanMilestone => {
+  const at = (label: string, weeks: number, wcpm: number): PlanMilestone => {
     const date = addWeeks(today, weeks);
-    return { label, month: monthWording(date, today), date: isoDate(date) };
+    return { label, month: monthWording(date, today), date: isoDate(date), wcpm };
   };
   const proj = projectPlan({ currentWcpm: fluency.wcpm, enrolledGrade: enrolled as NormGrade, instructionGrade, today, minutesPerDay });
   const out: PlanMilestone[] = [];
-  if (proj.milestone) out.push(at(`Reads like a ${ordinal(proj.milestone.grade)} grader`, proj.milestone.weeks));
+  if (proj.milestone) out.push(at(`Reads like a ${ordinal(proj.milestone.grade)} grader`, proj.milestone.weeks, proj.milestone.wcpm));
   if (!proj.alreadyOnLevel) {
-    out.push(at(`Reaches the ${ordinal(enrolled)}-grade bar`, proj.weeks));
+    out.push(at(`Reaches the ${ordinal(enrolled)}-grade bar`, proj.weeks, proj.targetWcpm));
   } else {
     // Already past this year's bar: the first higher grade's bar not yet reached is the thing to climb toward.
     for (let g = enrolled + 1; g <= 6; g++) {
       const next = projectPlan({ currentWcpm: fluency.wcpm, enrolledGrade: g as NormGrade, instructionGrade, today, minutesPerDay });
       if (next.alreadyOnLevel) continue;
-      out.push(at(`Reaches the ${ordinal(g)}-grade bar`, next.weeks));
+      out.push(at(`Reaches the ${ordinal(g)}-grade bar`, next.weeks, next.targetWcpm));
       break;
     }
   }

@@ -24,10 +24,10 @@ export function SkillBar({ icon, label, value, fillPct, meaning, animate, instan
     <div>
       <div className="flex items-center gap-2 @2xl:flex-wrap">
         <Glyph name={icon} size={20} className="text-violet-600" />
-        <span className="font-semibold text-zinc-900 @2xl:text-lg">{label}</span>
+        <span className="text-base font-semibold text-zinc-900 @2xl:text-lg">{label}</span>
         <span className="ml-auto text-sm text-zinc-600 @2xl:basis-full @2xl:text-base">{value}</span>
       </div>
-      <div className="mt-2 h-2 overflow-hidden rounded-full bg-violet-100 @2xl:mt-3 @2xl:h-3">
+      <div className="mt-3 h-3 overflow-hidden rounded-full bg-violet-100">
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-violet-600 to-violet-500"
           initial={false}
@@ -35,7 +35,7 @@ export function SkillBar({ icon, label, value, fillPct, meaning, animate, instan
           transition={{ duration: instant || reduced ? 0 : BAR_S, ease: "easeOut" }}
         />
       </div>
-      <p className="mt-2 text-sm text-zinc-500 @2xl:mt-3 @2xl:text-base">{meaning}</p>
+      <p className="mt-3 text-[15px] leading-6 text-zinc-500 @2xl:text-base">{meaning}</p>
     </div>
   );
 }
