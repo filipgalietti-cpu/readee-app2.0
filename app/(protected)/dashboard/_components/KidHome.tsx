@@ -41,7 +41,7 @@ export interface KidHomeProps {
   childId: string;
   firstDay: boolean;
   firstName: string;
-  /** Full access — paid OR inside the 7-day reverse trial. Gates the locks
+  /** Full access — paid OR inside the reverse trial. Gates the locks
    *  + the post-trial upgrade card. */
   fullAccess: boolean;
   /** In-trial countdown; null when not in the reverse trial. */

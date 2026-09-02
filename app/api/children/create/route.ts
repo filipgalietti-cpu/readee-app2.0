@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 /**
  * POST /api/children/create — server-enforced reader creation.
  *
- * The reader cap (1 on free, 2 with full access — paid or inside the 7-day
+ * The reader cap (1 on free, 2 with full access — paid or inside the retired
  * reverse trial) was previously checked only in the settings UI, which a
  * client could skip with a direct insert. This route is the enforcement:
  * authenticate, resolve the effective plan off the profiles row, count the

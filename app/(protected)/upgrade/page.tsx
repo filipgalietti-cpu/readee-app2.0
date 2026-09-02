@@ -456,7 +456,7 @@ function UpgradeContent() {
             ? "Redirecting..."
             : leadWithTeacher
             ? "Start Teacher Solo trial"
-            : "Start 7-Day Free Trial"}
+            : `Start ${PRICING.trialDays}-Day Free Trial`}
         </button>
         {checkoutError && (
           <div

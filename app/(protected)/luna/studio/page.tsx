@@ -53,7 +53,7 @@ export default async function StoryStudioPage() {
     );
   }
 
-  // Trial-aware: a reader inside the 7-day reverse trial passes too.
+  // Trial-aware: a reader inside the reverse trial passes too.
   const isPremium = hasFullAccessFromProfile(profile);
 
   // Free taste: FREE_LIMITS.personalizedStoriesFree Story Studio creations,

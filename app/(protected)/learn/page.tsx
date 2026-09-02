@@ -14,7 +14,7 @@ type SL = { standardId: string; grade: string; domain: string };
  * for instant UX, but THIS is the enforcement the client can't skip — a
  * free/lapsed reader opening a premium lesson is redirected to /upgrade before
  * any UI renders. Trial + premium bypass (getUserPlan returns the EFFECTIVE
- * plan, so a reader inside the 7-day reverse trial resolves to "premium").
+ * plan, so a reader inside the reverse trial resolves to "premium").
  */
 export default async function LearnPage({
   searchParams,

@@ -190,7 +190,7 @@ export async function proxy(request: NextRequest) {
         .eq("id", user.id)
         .single();
 
-      // Trial-aware: a reader inside the 7-day reverse trial resolves to
+      // Trial-aware: a reader inside the reverse trial resolves to
       // "premium", so the trial unlocks premium-only routes too.
       if (effectivePlan(profile?.plan ?? "free", (profile as { created_at?: string } | null)?.created_at ?? null) !== "premium") {
         const url = request.nextUrl.clone();

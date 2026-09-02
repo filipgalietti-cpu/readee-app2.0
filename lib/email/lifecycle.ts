@@ -21,6 +21,7 @@
 
 import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { TRIAL_DAYS } from "@/lib/plan/access";
 
 const FROM = "Readee <hello@readee.app>";
 export const BASE_URL = "https://learn.readee.app";
@@ -425,7 +426,7 @@ function renderTrialEnding(parentName: string | null, kidName: string | null, un
     weekLessons > 0
       ? `${who} finished ${weekLessons} ${weekLessons === 1 ? "lesson" : "lessons"} this week. `
       : "";
-  const lead = `${win}${kidName ? `${kidName}'s` : "Your"} 7-day free trial ends tomorrow. Keep Readee+ so every lesson, Luna, and all that progress keep going without interruption.`;
+  const lead = `${win}${kidName ? `${kidName}'s` : "Your"} 14-day free trial ends tomorrow. Keep Readee+ so every lesson, Luna, and all that progress keep going without interruption.`;
   const text = [
     parentName ? `Hi ${parentName},` : "Hi there,",
     "",
@@ -524,10 +525,12 @@ export async function evaluateAndSendLifecycle(parent: ParentRow): Promise<Stage
     }
   }
 
-  // Stage 2.5: trial ending — day 6, the last full day of the 7-day reverse
+  // Stage 2.5: trial ending — RETIRED with the no-card reverse trial (Sep 2 2026;
+  // TRIAL_DAYS is 0 so this never fires). Card trials get Stripe's own reminder.
+  // Kept for the record: day TRIAL_DAYS-1, the last full day of the reverse
   // trial, for parents who haven't converted yet. The conversion nudge: on a
-  // no-card trial, this day-6 email is the load-bearing push.
-  if (ageDays >= 6 && ageDays < 7 && parent.plan !== "premium" && parent.plan !== "teacher_solo") {
+  // no-card trial, this day-13 email is the load-bearing push.
+  if (TRIAL_DAYS > 0 && ageDays >= TRIAL_DAYS - 1 && ageDays < TRIAL_DAYS && parent.plan !== "premium" && parent.plan !== "teacher_solo") {
     if (!(await alreadySentEver(parent.id, "trial_ending"))) {
       const kidName = await firstKidName(parent.id);
       const weekLessons = await lessonsFinishedThisWeek(parent.id);

@@ -1,16 +1,18 @@
 /**
- * Reverse-trial access model. A new reader gets full Readee+ access for the
- * first TRIAL_DAYS days (no card), then drops to the limited free tier. This is
- * the single source of truth that folds "in trial" into an effective plan, so
- * every existing `plan === "premium"` gate inherits trial access unchanged.
+ * Access model. The ONLY free trial is Stripe's 14-day card trial started at
+ * checkout (app/api/checkout/route.ts). The no-card "reverse trial" that gave
+ * every new account TRIAL_DAYS of full access was retired on Sep 2 2026 (Filip:
+ * one trial, card required); TRIAL_DAYS is 0 so the machinery below resolves
+ * every non-paying account to the free tier. Kept rather than deleted so the
+ * effective-plan seam stays in one place if a reverse trial ever returns.
  *
- * - Entitlement gates read the EFFECTIVE plan (trial resolves to "premium").
- * - Billing / conversion surfaces read the RAW plan (a trial user is NOT paying,
- *   so they must still see the subscribe CTA).
+ * - Entitlement gates read the EFFECTIVE plan.
+ * - Billing / conversion surfaces read the RAW plan (a non-paying user must
+ *   still see the subscribe CTA).
  */
 import { isPaidPlan } from "./limits";
 
-export const TRIAL_DAYS = 7;
+export const TRIAL_DAYS = 0;
 
 export type AccessTier = "paid" | "trial" | "free" | "lapsed";
 

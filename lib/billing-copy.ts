@@ -28,7 +28,7 @@ export const PRICING = {
     cadence: "billed annually as $83.88",
     savingsLabel: "Save 30%",
   },
-  trialDays: 7,
+  trialDays: 14,
   currency: "USD" as const,
 } as const;
 
@@ -65,7 +65,7 @@ export const PLAN_LABEL: Record<string, string> = {
 
 /* ─── Trust signals shown near checkout ──────────────────── */
 export const TRUST_SIGNALS = [
-  "7-day free trial · No charge until day 8",
+  "14-day free trial · No charge until day 15",
   "Cancel anytime - one click, no questions",
   "Secure checkout via Stripe",
   "COPPA + FERPA compliant",
@@ -75,7 +75,7 @@ export const TRUST_SIGNALS = [
 export const SUPPORT = {
   email: "hello@readee.app",
   refundPolicy:
-    "Cancel during the 7-day trial and you won't be charged. After the trial, cancel anytime - your access continues through the end of your current billing period, then drops to Free. We don't offer prorated refunds for partial months.",
+    "Cancel during the 14-day trial and you won't be charged. After the trial, cancel anytime - your access continues through the end of your current billing period, then drops to Free. We don't offer prorated refunds for partial months.",
 } as const;
 
 /* ─── Paywall reason copy (used by /upgrade?reason=…) ────── */

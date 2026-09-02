@@ -270,7 +270,7 @@ export async function POST(request: NextRequest) {
         // Insert children — runs for both new and existing accounts.
         // Reader cap is server-enforced here too (same rule as
         // /api/children/create): 1 reader on free, 2 with full access
-        // (paid or inside the 7-day reverse trial). The questionnaire
+        // (paid or inside the reverse trial). The questionnaire
         // accepts up to 5 children, so clamp to whatever room is left —
         // the normal first-reader flow always fits.
         if (userId && body.children?.length) {

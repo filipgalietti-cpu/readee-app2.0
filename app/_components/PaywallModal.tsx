@@ -131,7 +131,7 @@ export function PaywallModal({ open, onClose, childId, childName, trigger = "les
                 onClick={onClose}
               >
                 <Glyph name="sparkles" size={16} />
-                Start 7-Day Free Trial
+                Start 14-Day Free Trial
               </Link>
               <button
                 onClick={onClose}

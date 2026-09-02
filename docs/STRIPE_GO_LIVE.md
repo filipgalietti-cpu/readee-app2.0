@@ -1,7 +1,7 @@
 # Stripe go-live — 30-min checklist
 
 Stripe is fully wired in code (since `4b222e0`, Mar 2026). The webhook
-flips `profiles.plan`, checkout supports 7-day trials, the customer
+flips `profiles.plan`, checkout supports 14-day trials, the customer
 portal lets users cancel. Test-mode keys are in `.env.local` today.
 
 To accept real charges, run this checklist. ~30 min including
@@ -69,7 +69,7 @@ End-to-end happy path:
 
 1. Sign up as a brand-new parent (incognito, throwaway email)
 2. Skip placement test, hit `/upgrade`
-3. Click monthly Readee+ → Stripe checkout opens with $9.99/mo + 7-day trial
+3. Click monthly Readee+ → Stripe checkout opens with $9.99/mo + 14-day trial
 4. Pay with the card `4242 4242 4242 4242` exp `12/34` cvc `123` —
    wait, don't. That's the TEST card. Use a real card. Stripe
    will charge $0.00 because of the trial; just confirm the
@@ -86,7 +86,7 @@ End-to-end happy path:
       dashboard → Coupons; e.g. `LAUNCH50` for 50% off first month)
 - [ ] Webhook fails gracefully on signature mismatch (`sig` header
       missing returns 400, not 500)
-- [ ] Trial conversion: after 7 days, Stripe auto-charges; webhook
+- [ ] Trial conversion: after 14 days, Stripe auto-charges; webhook
       keeps `plan='premium'`
 - [ ] Failed payment: Stripe retries; on final failure, subscription
       goes to past_due → eventually deleted → webhook flips to free
