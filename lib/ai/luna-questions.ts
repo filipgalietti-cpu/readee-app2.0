@@ -49,14 +49,21 @@ const SCHEMA = {
   required: ["questions"],
 };
 
-/** The literal question's answer must actually appear in the passage. */
+/** The literal question's answer must be grounded in the passage. Checked by
+ *  CONTENT words (articles/stop-words dropped), so a natural answer like
+ *  "a coin" grounds against "found a small, round coin". */
+const STOP = new Set(["a", "an", "the", "is", "was", "of", "to", "in", "on", "at", "and"]);
 function literalGrounded(qs: LunaQuestion[], passage: string): boolean {
-  const text = passage.toLowerCase();
+  const words = new Set(passage.toLowerCase().replace(/[^a-z0-9'\s-]/g, " ").split(/\s+/).filter(Boolean));
   return qs
     .filter((q) => q.kind === "literal")
     .every((q) => {
-      const ans = q.choices[q.answer].toLowerCase().replace(/[^a-z0-9'\s-]/g, "").trim();
-      return ans.length > 0 && text.includes(ans);
+      const content = q.choices[q.answer]
+        .toLowerCase()
+        .replace(/[^a-z0-9'\s-]/g, " ")
+        .split(/\s+/)
+        .filter((w) => w && !STOP.has(w));
+      return content.length > 0 && content.every((w) => words.has(w));
     });
 }
 
