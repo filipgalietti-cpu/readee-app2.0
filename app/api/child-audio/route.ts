@@ -20,9 +20,11 @@ export async function GET(req: NextRequest) {
 
   // Whitelist the exact two shapes we mint; reject anything else (no traversal,
   // no arbitrary bucket reads).
-  const greeting = /^greetings\/([0-9a-f-]{36})\.wav$/.exec(path);
+  const greeting = /^greetings\/([0-9a-f-]{36})(?:-[a-z]+)?\.wav$/.exec(path);
   const fluency = /^fluency\/([0-9a-f-]{36})\/[A-Za-z0-9._-]+$/.exec(path);
-  const childId = greeting?.[1] ?? fluency?.[1] ?? null;
+  // Placement: narration clips that say the child's name + the passage recording.
+  const placement = /^placement\/([0-9a-f-]{36})\/[A-Za-z0-9._-]+$/.exec(path);
+  const childId = greeting?.[1] ?? fluency?.[1] ?? placement?.[1] ?? null;
   if (!childId) {
     return NextResponse.json({ error: "bad path" }, { status: 400 });
   }

@@ -16,6 +16,7 @@ import AppSidebar from "./AppSidebar";
 const HIDDEN_PAGES = new Set([
   "/practice",
   "/assessment",
+  "/placement",
   "/learn",
   "/lesson",
 ]);
