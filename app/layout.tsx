@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Readee",
-    title: "Readee - Unlock Reading",
+    title: "Readee",
     description:
       "Fun, science-backed reading for K–4th grade.",
     url: "https://learn.readee.app",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@ReadeeLearning",
     creator: "@ReadeeLearning",
-    title: "Readee - Unlock Reading",
+    title: "Readee",
     description:
       "Fun, science-backed reading for K–4th grade.",
     images: ["/og-image.png"],
@@ -106,7 +106,6 @@ export default function RootLayout({
               {/* Brand column */}
               <div className="col-span-2 sm:col-span-3 lg:col-span-2 mb-4 lg:mb-0">
                 <span className="text-2xl font-extrabold tracking-tight text-white">read<span className="text-indigo-300">ee</span></span>
-                <p className="mt-2 text-lg font-bold text-white">Unlock Reading</p>
                 <p className="mt-1 text-sm text-white leading-relaxed max-w-[220px]">
                   Helping every child become a confident reader.
                 </p>
