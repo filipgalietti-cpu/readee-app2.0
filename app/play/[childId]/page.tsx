@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { ArrowRight, BookOpen, BookText, Brain, Compass, Library as LibraryIcon, Trophy, LogOut } from "lucide-react";
+import { ArrowRight, BookOpen, BookText, Brain, Compass, Library as LibraryIcon, LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import {
@@ -11,6 +11,7 @@ import {
   decodePlayCookie,
 } from "@/lib/auth/play-mode";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -145,7 +146,7 @@ export default async function PlayHomePage({
             href={`/leaderboard?child=${childId}`}
             title="Leaderboard"
             subtitle="See how you stack up"
-            icon={<Trophy className="h-5 w-5" />}
+            icon={<FluentIcon name="trophy" size={20} />}
             color="amber"
           />
         </div>

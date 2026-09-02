@@ -17,7 +17,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getLimits, isPaidPlan } from "@/lib/plan/limits";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
-import { Lock, ChevronDown, Play, Carrot, Flame, Star, Check } from "lucide-react";
+import { Lock, ChevronDown, Play, Carrot, Star, Check } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraokeReader";
 import storiesKaraoke from "@/app/data/stories-karaoke.json";
@@ -590,7 +590,7 @@ function StoriesContent() {
         </span>
         {typeof child.streak_days === "number" && child.streak_days > 0 && (
           <span className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-sm font-extrabold" style={{ background: "#ffe4e6", color: "#be123c" }}>
-            <Flame className="h-4 w-4" style={{ color: "#f43f5e" }} /> {child.streak_days} days
+            <FluentIcon name="fire" size={16} /> {child.streak_days} days
           </span>
         )}
       </motion.div>

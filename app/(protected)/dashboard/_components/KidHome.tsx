@@ -26,7 +26,6 @@ import {
   BookOpen,
   Mic,
   Compass,
-  Trophy,
   Lock,
   TrendingUp,
 } from "lucide-react";
@@ -549,7 +548,7 @@ export default function KidHome(p: KidHomeProps) {
           <div style={{ width: 52, height: 52, borderRadius: 16, background: p.league.locked ? "#f4f4f5" : "#fffbeb", display: "flex", alignItems: "center", justifyContent: "center", flex: "none" }}>
             {p.league.locked
               ? <Lock className="h-6 w-6" stroke="#a1a1aa" strokeWidth={2} />
-              : <Trophy className="h-7 w-7" stroke="#f59e0b" strokeWidth={2} />}
+              : <FluentIcon name="trophy" size={28} />}
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 17, color: "#18181b" }}>{p.league.title}</div>

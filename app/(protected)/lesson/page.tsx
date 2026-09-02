@@ -17,7 +17,7 @@ import { getActiveMultiplier, clearActiveMultiplierFields } from "@/lib/carrots/
 
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
-import { Star, Rocket, Zap, Trophy, Target, Medal, Gem, Crown, Type, FileText, Search, Eye, CheckCircle, Check, PenTool, BookOpen, MessageSquare, Flame } from "lucide-react";
+import { Star, Rocket, Zap, Target, Medal, Gem, Type, FileText, Search, Eye, CheckCircle, Check, PenTool, BookOpen, MessageSquare, Crown} from "lucide-react";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
 import type { Outfit } from "@/app/_components/Bunny/outfits";
@@ -1301,7 +1301,7 @@ function LessonContent() {
               })()}
               {streakDays > 0 && (
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-200">
-                  <Flame className="w-4 h-4 text-orange-500" strokeWidth={1.5} />
+                  <FluentIcon name="fire" size={16} />
                   <span className="text-sm font-bold text-orange-700">{streakDays} day streak!</span>
                 </div>
               )}
@@ -1314,7 +1314,7 @@ function LessonContent() {
             <div className="flex flex-wrap items-center justify-center gap-2 animate-badgeUnlock">
               {newBadge && (
                 <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-200">
-                  <Trophy className="w-5 h-5 text-yellow-500" strokeWidth={1.5} />
+                  <FluentIcon name="trophy" size={20} />
                   <div className="text-left">
                     <div className="text-[10px] font-medium text-yellow-600 uppercase tracking-wider">New badge</div>
                     <div className="text-sm font-bold text-yellow-800">{newBadge}</div>
