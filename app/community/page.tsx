@@ -5,7 +5,6 @@ import {
   BookOpen,
   Heart,
   Shield,
-  Flame,
   Users,
   CircleHelp,
 } from "lucide-react";
@@ -13,6 +12,7 @@ import type { Metadata } from "next";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import TrendingCarousel from "./_components/TrendingCarousel";
 import { CoverFallback } from "@/app/_components/EmptyState";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 600;
@@ -193,9 +193,6 @@ export default async function CommunityLanding() {
               alt="Readee"
               className="h-auto w-[140px] sm:w-[160px]"
             />
-            <span className="hidden text-sm font-medium text-violet-500 sm:inline">
-              <span className="font-bold">Unlock</span> Reading
-            </span>
           </Link>
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
@@ -259,7 +256,7 @@ export default async function CommunityLanding() {
         {trending.length > 0 && (
           <section className="mt-6">
             <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-              <Flame className="h-3.5 w-3.5 text-orange-500" />
+              <FluentIcon name="fire" size={14} />
               Trending now
             </div>
             <div className="mt-2">

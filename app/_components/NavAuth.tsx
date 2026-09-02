@@ -230,7 +230,6 @@ export default function NavAuth() {
         <div className="flex items-center justify-between px-4 sm:px-6 h-[76px]">
           <div className="flex items-center gap-3">
             <img src="/readee-logo.png" alt="Readee" className="w-[140px] sm:w-[160px] h-auto" />
-            <span className="hidden sm:inline text-[13px] text-violet-500 font-medium"><span className="font-bold">Unlock</span> Reading</span>
           </div>
         </div>
       </nav>
@@ -246,7 +245,6 @@ export default function NavAuth() {
         {/* Logo + motto */}
         <Link href={loggedIn ? "/dashboard" : "/"} className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <img src="/readee-logo.png" alt="Readee" className="w-[140px] sm:w-[160px] h-auto" />
-          <span className="hidden sm:inline text-sm text-violet-500 font-medium"><span className="font-bold">Unlock</span> Reading</span>
         </Link>
 
         {/* Right side */}

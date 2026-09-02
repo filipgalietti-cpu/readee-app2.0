@@ -148,9 +148,6 @@ export default async function CommunityGradePage({
               alt="Readee"
               className="h-auto w-[140px] sm:w-[160px]"
             />
-            <span className="hidden text-sm font-medium text-violet-500 sm:inline">
-              <span className="font-bold">Unlock</span> Reading
-            </span>
           </Link>
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
