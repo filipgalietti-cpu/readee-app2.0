@@ -11,6 +11,7 @@ import phonicsJson from "@/app/data/luna-phonics.json";
 import LunaReader from "../_components/LunaReader";
 import { rankSkills } from "@/lib/orion/learner";
 import { recommendTextLevel } from "@/lib/orion/reading/text-level";
+import { readingGradeToken } from "@/lib/luna/target-pattern";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
 
@@ -51,8 +52,8 @@ export default async function LunaReadPage({
   const supabase = await createClient();
 
   // Load the named child (verified as this parent's), else the parent's first.
-  let child: { id: string; name: string; grade: string | null; outfit: string | null } | null = null;
-  const base = supabase.from("children").select("id, first_name, grade, parent_id, equipped_items").eq("parent_id", profile.id);
+  let child: { id: string; name: string; grade: string | null; readingLevel: string | null; outfit: string | null } | null = null;
+  const base = supabase.from("children").select("id, first_name, grade, reading_level, parent_id, equipped_items").eq("parent_id", profile.id);
   const { data } = childIdParam
     ? await base.eq("id", childIdParam).maybeSingle()
     : await base.order("created_at", { ascending: true }).limit(1).maybeSingle();
@@ -61,6 +62,7 @@ export default async function LunaReadPage({
       id: (data as any).id,
       name: ((data as any).first_name ?? "").split(" ")[0] || "Reader",
       grade: (data as any).grade ?? null,
+      readingLevel: (data as any).reading_level ?? null,
       outfit: (data as any).equipped_items?.outfit ?? null,
     };
   }
@@ -100,7 +102,7 @@ export default async function LunaReadPage({
   );
 
   const GRADE_ORDER = ["K", "1st", "2nd", "3rd", "4th"];
-  let token = gradeToken(child.grade);
+  let token = readingGradeToken(child.readingLevel, child.grade);
   if (stepDown) {
     const gi = GRADE_ORDER.indexOf(token);
     if (gi > 0) token = GRADE_ORDER[gi - 1]; // easier text AND easier patterns

@@ -7,6 +7,7 @@ import phonicsJson from "@/app/data/luna-phonics.json";
 import LunaReader from "./_components/LunaReader";
 import { rankSkills } from "@/lib/orion/learner";
 import { recommendTextLevel } from "@/lib/orion/reading/text-level";
+import { readingGradeToken } from "@/lib/luna/target-pattern";
 
 export const dynamic = "force-dynamic";
 
@@ -44,10 +45,10 @@ export default async function LunaPage({
   const { child: childIdParam } = await searchParams;
   const supabase = await createClient();
 
-  let child: { id: string; name: string; grade: string | null; outfit: string | null } | null = null;
+  let child: { id: string; name: string; grade: string | null; readingLevel: string | null; outfit: string | null } | null = null;
   const base = supabase
     .from("children")
-    .select("id, first_name, grade, parent_id, equipped_items")
+    .select("id, first_name, grade, reading_level, parent_id, equipped_items")
     .eq("parent_id", profile.id);
   const { data } = childIdParam
     ? await base.eq("id", childIdParam).maybeSingle()
@@ -57,6 +58,7 @@ export default async function LunaPage({
       id: (data as any).id,
       name: ((data as any).first_name ?? "").split(" ")[0] || "Reader",
       grade: (data as any).grade ?? null,
+      readingLevel: (data as any).reading_level ?? null,
       outfit: (data as any).equipped_items?.outfit ?? null,
     };
   }
@@ -79,7 +81,7 @@ export default async function LunaPage({
   );
 
   const GRADE_ORDER = ["K", "1st", "2nd", "3rd", "4th"];
-  let token = gradeToken(child.grade);
+  let token = readingGradeToken(child.readingLevel, child.grade);
   if (stepDown) {
     const gi = GRADE_ORDER.indexOf(token);
     if (gi > 0) token = GRADE_ORDER[gi - 1]; // easier text AND easier patterns

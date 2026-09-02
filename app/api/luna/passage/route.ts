@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { generatePassage } from "@/lib/ai/readee-ai";
 import { generateLunaQuestions } from "@/lib/ai/luna-questions";
-import { getTargetPattern, gradeToken } from "@/lib/luna/target-pattern";
+import { getTargetPattern, readingGradeToken } from "@/lib/luna/target-pattern";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
 import { FREE_LIMITS } from "@/lib/plan/limits";
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
   // Auth: parent of the child + paid gate (Luna is premium B2C).
   const { data: child } = await supabase
     .from("children")
-    .select("id, parent_id, grade")
+    .select("id, parent_id, grade, reading_level")
     .eq("id", childId)
     .maybeSingle();
   if (!child) return NextResponse.json({ error: "child not found" }, { status: 404 });
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
   // Reading level = the child's actual grade (authoritative). Target the
   // phonics pattern they most need next (unless an explicit one was passed) so
   // the story DRILLS the right sound, not just grade-decodable text.
-  const gradeTok = gradeToken((child as any).grade);
+  const gradeTok = readingGradeToken((child as any).reading_level ?? null, (child as any).grade);
   let phonicsPattern = pattern;
   let patternLabel: string | null = null;
   if (!phonicsPattern) {
