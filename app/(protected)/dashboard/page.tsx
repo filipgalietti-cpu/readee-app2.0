@@ -41,6 +41,9 @@ import { OUTFITS } from "@/app/_components/Bunny/outfits";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
 
+/** Placement v2 (Luna-run exam + reveal) replaces the legacy quiz when this flag is on. */
+const PLACEMENT_V2 = process.env.NEXT_PUBLIC_PLACEMENT_V2 === "1";
+
 // Set of standards that have a real canonical lesson on the /learn
 // slideshow route. Used to route navigation to /learn when possible
 // and only fall back to the legacy /lesson route when there's no
@@ -776,7 +779,9 @@ function ChildDashboard({
   // Primary CTA + today's plan, grounded in real state (nextLessonHref computed
   // above from the shared Journey helper — always the /learn route).
   const cta = firstDay
-    ? { href: `/assessment?child=${child.id}`, text: "Take your reading quiz", sub: "A fun 10-question quiz · about 5 min" }
+    ? (PLACEMENT_V2
+        ? { href: `/placement?child=${child.id}`, text: "Start the reading placement", sub: "Read with Luna · about 10 min" }
+        : { href: `/assessment?child=${child.id}`, text: "Take your reading quiz", sub: "A fun 10-question quiz · about 5 min" })
     : nextLesson
       ? { href: nextLessonHref, text: completedCount === 0 ? "Start your adventure" : "Keep going", sub: `Next: ${nextLesson.title}` }
       : { href: `/practice-hub?child=${child.id}`, text: "Practice time!", sub: "You finished every lesson - amazing!" };
@@ -1194,7 +1199,7 @@ function ParentSidebar({
         { href: "/luna", icon: "sparkles", label: "Luna", emphasis: true },
         hasAssessment
           ? { href: `/assessment-results?child=${child.id}`, icon: "clipboard-check", label: "Placement Test Results" }
-          : { href: `/assessment?child=${child.id}`, icon: "clipboard-check", label: "Take Placement Test", emphasis: true },
+          : { href: PLACEMENT_V2 ? `/placement?child=${child.id}` : `/assessment?child=${child.id}`, icon: "clipboard-check", label: PLACEMENT_V2 ? "Reading placement" : "Take Placement Test", emphasis: true },
         { href: `/analytics?child=${child.id}`, icon: "bar-chart3", label: "Analytics" },
         { href: `/review?child=${child.id}`, icon: "brain", label: "Today's review" },
       ],

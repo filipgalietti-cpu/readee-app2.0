@@ -60,3 +60,40 @@ function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
   header.writeUInt32LE(pcm.length, 40);
   return Buffer.concat([header, pcm]);
 }
+
+/**
+ * PLACEMENT NAME PACK — the two lines of the placement that say the child's
+ * name, synthesized once per child into the same private bucket. Idempotent:
+ * skips clips that already exist. Fire-and-forget like the greeting; the
+ * runner falls back to the generic clips when a pack clip is missing.
+ *
+ *   greetings/<childId>-hi.wav     "Hi, Maya!"
+ *   greetings/<childId>-climb.wav  "Wow, Maya, look how far you climbed."
+ */
+export const NAME_PACK_LINES: Record<"hi" | "climb", (name: string) => string> = {
+  hi: (name) => `Hi, ${name}!`,
+  climb: (name) => `Wow, ${name}, look how far you climbed.`,
+};
+
+export async function synthesizeChildNamePack(childId: string, firstName: string): Promise<void> {
+  const name = (firstName ?? "").trim().split(" ")[0]?.slice(0, 24) ?? "";
+  if (!name || !/^[0-9a-f-]{36}$/.test(childId)) return;
+  const admin = supabaseAdmin();
+  for (const key of ["hi", "climb"] as const) {
+    const path = `greetings/${childId}-${key}.wav`;
+    try {
+      const { data: existing } = await admin.storage.from("child-audio").list("greetings", { search: `${childId}-${key}.wav`, limit: 1 });
+      if (existing && existing.length > 0) continue;
+      let res = await generateSpeechVertex({ text: NAME_PACK_LINES[key](name), voice: "Autonoe" });
+      if (!res.ok) {
+        await new Promise((r) => setTimeout(r, 4000));
+        res = await generateSpeechVertex({ text: NAME_PACK_LINES[key](name), voice: "Autonoe" });
+        if (!res.ok) continue;
+      }
+      const wav = pcmToWav(Buffer.from(res.pcmBase64, "base64"), 24000);
+      await admin.storage.from("child-audio").upload(path, wav, { contentType: "audio/wav", upsert: true });
+    } catch {
+      // a missing pack clip only costs the child a generic greeting
+    }
+  }
+}

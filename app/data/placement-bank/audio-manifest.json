@@ -1,0 +1,910 @@
+{
+  "generatedAt": "2026-09-02T16:14:44.388Z",
+  "voice": "Autonoe",
+  "clips": {
+    "narr-intro-frame": {
+      "url": "/audio/placement/narr-intro-frame.mp3",
+      "script": "Let's read some words together. Some will be easy and some will be tricky, and that's exactly how I learn about you.",
+      "verified": true,
+      "transcript": "Let's read some words together. Some will be easy and some will be tricky. And that's exactly how I learn about you.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-intro-frame.mp3"
+    },
+    "narr-mic-check": {
+      "url": "/audio/placement/narr-mic-check.mp3",
+      "script": "First, let's make sure I can hear you. Say hello to me!",
+      "verified": true,
+      "transcript": "First, let's make sure I can hear you. Say hello to me.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-mic-check.mp3"
+    },
+    "narr-mic-heard": {
+      "url": "/audio/placement/narr-mic-heard.mp3",
+      "script": "I heard you. Let's begin.",
+      "verified": true,
+      "transcript": "I heard you. Let's begin.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-mic-heard.mp3"
+    },
+    "narr-mic-again": {
+      "url": "/audio/placement/narr-mic-again.mp3",
+      "script": "Hmm, I could not hear that. Let's try once more. Say hello!",
+      "verified": true,
+      "transcript": "Hmm, I could not hear that. Let's try once more. Say hello.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-mic-again.mp3"
+    },
+    "narr-warmup-word": {
+      "url": "/audio/placement/narr-warmup-word.mp3",
+      "script": "Here is a practice word. Read it out loud when you see it.",
+      "verified": true,
+      "transcript": "Here is a practice word. Read it out loud when you see it.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-warmup-word.mp3"
+    },
+    "narr-warmup-done": {
+      "url": "/audio/placement/narr-warmup-done.mp3",
+      "script": "That was just practice. Now the real words.",
+      "verified": true,
+      "transcript": "That was just practice. Now the real words.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-warmup-done.mp3"
+    },
+    "narr-words-intro": {
+      "url": "/audio/placement/narr-words-intro.mp3",
+      "script": "Read each word out loud when it appears. If you do not know a word, say I don't know, and we will go to the next one.",
+      "verified": true,
+      "transcript": "Read each word out loud when it appears. If you do not know a word, say, I don't know, and we will go to the next one.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-words-intro.mp3"
+    },
+    "narr-words-next-list": {
+      "url": "/audio/placement/narr-words-next-list.mp3",
+      "script": "Here comes the next set of words.",
+      "verified": true,
+      "transcript": "Here comes the next set of words.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-words-next-list.mp3"
+    },
+    "narr-words-easier": {
+      "url": "/audio/placement/narr-words-easier.mp3",
+      "script": "Let's try some different words.",
+      "verified": true,
+      "transcript": "Let's try some different words.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-words-easier.mp3"
+    },
+    "narr-words-done": {
+      "url": "/audio/placement/narr-words-done.mp3",
+      "script": "That's all the words. Nice work.",
+      "verified": true,
+      "transcript": "That's all the words! Nice work!",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-words-done.mp3"
+    },
+    "narr-found-intro": {
+      "url": "/audio/placement/narr-found-intro.mp3",
+      "script": "Now let's play with sounds.",
+      "verified": true,
+      "transcript": "Now, let's play with sounds.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-found-intro.mp3"
+    },
+    "narr-letter-sounds-intro": {
+      "url": "/audio/placement/narr-letter-sounds-intro.mp3",
+      "script": "I will say a sound. Tap the letter that makes that sound.",
+      "verified": true,
+      "transcript": "I will say a sound. Tap the letter that makes that sound.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-letter-sounds-intro.mp3"
+    },
+    "narr-letter-sounds-prompt": {
+      "url": "/audio/placement/narr-letter-sounds-prompt.mp3",
+      "script": "Which letter makes this sound?",
+      "verified": true,
+      "transcript": "Which letter makes this sound?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-letter-sounds-prompt.mp3"
+    },
+    "narr-blending-intro": {
+      "url": "/audio/placement/narr-blending-intro.mp3",
+      "script": "Now I will say some sounds. Tap the word they make.",
+      "verified": true,
+      "transcript": "Now I will say some sounds. Tap the word they make.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-blending-intro.mp3"
+    },
+    "narr-blending-prompt": {
+      "url": "/audio/placement/narr-blending-prompt.mp3",
+      "script": "Which word do these sounds make?",
+      "verified": true,
+      "transcript": "Which word do these sounds make?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-blending-prompt.mp3"
+    },
+    "narr-nonsense-intro": {
+      "url": "/audio/placement/narr-nonsense-intro.mp3",
+      "script": "These next words are make-believe words. Sound them out the best you can.",
+      "verified": true,
+      "transcript": "These next words are make-believe words. Sound them out the best you can.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-nonsense-intro.mp3"
+    },
+    "narr-passage-intro": {
+      "url": "/audio/placement/narr-passage-intro.mp3",
+      "script": "Now a story. Read it out loud the best you can. If you get stuck, keep going. I will tell you when to stop.",
+      "verified": true,
+      "transcript": "Now a story. Read it out loud the best you can. If you get stuck, keep going. I will tell you when to stop.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-passage-intro.mp3"
+    },
+    "narr-passage-stop": {
+      "url": "/audio/placement/narr-passage-stop.mp3",
+      "script": "You can stop there.",
+      "verified": true,
+      "transcript": "You can stop there.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-passage-stop.mp3"
+    },
+    "narr-passage-second": {
+      "url": "/audio/placement/narr-passage-second.mp3",
+      "script": "One more story. This one is a little harder. Just do your best.",
+      "verified": true,
+      "transcript": "one more story. This one is a little harder. Just do your best.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-passage-second.mp3"
+    },
+    "narr-comp-intro": {
+      "url": "/audio/placement/narr-comp-intro.mp3",
+      "script": "Now three questions about the story. I will read each one to you. Tap your answer.",
+      "verified": true,
+      "transcript": "Now, three questions about the story. I will read each one to you. Tap your answer.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-comp-intro.mp3"
+    },
+    "narr-listen-intro": {
+      "url": "/audio/placement/narr-listen-intro.mp3",
+      "script": "Now I will read you a story. Listen carefully. Then I will ask you two questions.",
+      "verified": true,
+      "transcript": "Now I will read you a story. Listen carefully. Then I will ask you two questions.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-listen-intro.mp3"
+    },
+    "narr-listen-questions": {
+      "url": "/audio/placement/narr-listen-questions.mp3",
+      "script": "Here come the questions.",
+      "verified": true,
+      "transcript": "Here come the questions.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-listen-questions.mp3"
+    },
+    "narr-close": {
+      "url": "/audio/placement/narr-close.mp3",
+      "script": "That's everything. You did it.",
+      "verified": true,
+      "transcript": "That's everything! You did it!",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-close.mp3"
+    },
+    "narr-handoff": {
+      "url": "/audio/placement/narr-handoff.mp3",
+      "script": "Now hand the screen to a grown-up, so I can show them what you did today.",
+      "verified": true,
+      "transcript": "Now hand the screen to a grown-up so I can show them what you did today.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-handoff.mp3"
+    },
+    "narr-ack-1": {
+      "url": "/audio/placement/narr-ack-1.mp3",
+      "script": "Okay.",
+      "verified": true,
+      "transcript": "Okay!",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-ack-1.mp3"
+    },
+    "narr-ack-2": {
+      "url": "/audio/placement/narr-ack-2.mp3",
+      "script": "Next one.",
+      "verified": true,
+      "transcript": "Next one.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-ack-2.mp3"
+    },
+    "narr-ack-3": {
+      "url": "/audio/placement/narr-ack-3.mp3",
+      "script": "Keep going.",
+      "verified": true,
+      "transcript": "Keep going!",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-ack-3.mp3"
+    },
+    "narr-ack-4": {
+      "url": "/audio/placement/narr-ack-4.mp3",
+      "script": "Got it.",
+      "verified": true,
+      "transcript": "Got it",
+      "attempts": 2,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-ack-4.mp3"
+    },
+    "title-1": {
+      "url": "/audio/placement/title-1.mp3",
+      "script": "This story is called Max and the Rain.",
+      "verified": true,
+      "transcript": "This story is called Max and the Rain.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/title-1.mp3"
+    },
+    "q-g1-q1": {
+      "url": "/audio/placement/q-g1-q1.mp3",
+      "script": "What color is the spot on Max?",
+      "verified": true,
+      "transcript": "What color is the spot on Max?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g1-q1.mp3"
+    },
+    "opt-g1-q1-a": {
+      "url": "/audio/placement/opt-g1-q1-a.mp3",
+      "script": "Black",
+      "verified": true,
+      "transcript": "Black",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q1-a.mp3"
+    },
+    "opt-g1-q1-b": {
+      "url": "/audio/placement/opt-g1-q1-b.mp3",
+      "script": "White",
+      "verified": true,
+      "transcript": "white",
+      "attempts": 2,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q1-b.mp3"
+    },
+    "opt-g1-q1-c": {
+      "url": "/audio/placement/opt-g1-q1-c.mp3",
+      "script": "Red",
+      "verified": true,
+      "transcript": "Red",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q1-c.mp3"
+    },
+    "q-g1-q2": {
+      "url": "/audio/placement/q-g1-q2.mp3",
+      "script": "Where did Sam hide the ball first?",
+      "verified": true,
+      "transcript": "Where did Sam hide the ball first?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g1-q2.mp3"
+    },
+    "opt-g1-q2-a": {
+      "url": "/audio/placement/opt-g1-q2-a.mp3",
+      "script": "In a box",
+      "verified": true,
+      "transcript": "in a box.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q2-a.mp3"
+    },
+    "opt-g1-q2-b": {
+      "url": "/audio/placement/opt-g1-q2-b.mp3",
+      "script": "In his hat",
+      "verified": true,
+      "transcript": "in his hat.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q2-b.mp3"
+    },
+    "opt-g1-q2-c": {
+      "url": "/audio/placement/opt-g1-q2-c.mp3",
+      "script": "On the shelf",
+      "verified": true,
+      "transcript": "on the shelf.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q2-c.mp3"
+    },
+    "q-g1-q3": {
+      "url": "/audio/placement/q-g1-q3.mp3",
+      "script": "Why did Max sniff at the box?",
+      "verified": true,
+      "transcript": "Why did Max sniff at the box?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g1-q3.mp3"
+    },
+    "opt-g1-q3-a": {
+      "url": "/audio/placement/opt-g1-q3-a.mp3",
+      "script": "To take a nap",
+      "verified": true,
+      "transcript": "to take a nap.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q3-a.mp3"
+    },
+    "opt-g1-q3-b": {
+      "url": "/audio/placement/opt-g1-q3-b.mp3",
+      "script": "To eat a snack",
+      "verified": true,
+      "transcript": "to eat a snack.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q3-b.mp3"
+    },
+    "opt-g1-q3-c": {
+      "url": "/audio/placement/opt-g1-q3-c.mp3",
+      "script": "To find the ball",
+      "verified": true,
+      "transcript": "to find the ball.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g1-q3-c.mp3"
+    },
+    "title-2": {
+      "url": "/audio/placement/title-2.mp3",
+      "script": "This story is called Rosa's Seeds.",
+      "verified": true,
+      "transcript": "This story is called Roses Seeds.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/title-2.mp3"
+    },
+    "q-g2-q1": {
+      "url": "/audio/placement/q-g2-q1.mp3",
+      "script": "How many seeds did Rosa plant?",
+      "verified": true,
+      "transcript": "How many seeds did Rosa plant?",
+      "attempts": 2,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g2-q1.mp3"
+    },
+    "opt-g2-q1-a": {
+      "url": "/audio/placement/opt-g2-q1-a.mp3",
+      "script": "Two",
+      "verified": true,
+      "transcript": "2",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q1-a.mp3"
+    },
+    "opt-g2-q1-b": {
+      "url": "/audio/placement/opt-g2-q1-b.mp3",
+      "script": "Ten",
+      "verified": true,
+      "transcript": "10",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q1-b.mp3"
+    },
+    "opt-g2-q1-c": {
+      "url": "/audio/placement/opt-g2-q1-c.mp3",
+      "script": "Six",
+      "verified": true,
+      "transcript": "6",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q1-c.mp3"
+    },
+    "q-g2-q2": {
+      "url": "/audio/placement/q-g2-q2.mp3",
+      "script": "Who gave Rosa the seeds?",
+      "verified": true,
+      "transcript": "Who gave Rosa the seeds?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g2-q2.mp3"
+    },
+    "opt-g2-q2-a": {
+      "url": "/audio/placement/opt-g2-q2-a.mp3",
+      "script": "Her grandpa",
+      "verified": true,
+      "transcript": "Her grandpa.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q2-a.mp3"
+    },
+    "opt-g2-q2-b": {
+      "url": "/audio/placement/opt-g2-q2-b.mp3",
+      "script": "A brown bird",
+      "verified": true,
+      "transcript": "a brown bird.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q2-b.mp3"
+    },
+    "opt-g2-q2-c": {
+      "url": "/audio/placement/opt-g2-q2-c.mp3",
+      "script": "Her teacher",
+      "verified": true,
+      "transcript": "her teacher.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q2-c.mp3"
+    },
+    "q-g2-q3": {
+      "url": "/audio/placement/q-g2-q3.mp3",
+      "script": "How did Rosa feel when she saw the first sprout?",
+      "verified": true,
+      "transcript": "How did Rosa feel when she saw the first sprout?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g2-q3.mp3"
+    },
+    "opt-g2-q3-a": {
+      "url": "/audio/placement/opt-g2-q3-a.mp3",
+      "script": "Sleepy",
+      "verified": true,
+      "transcript": "Sleepy",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q3-a.mp3"
+    },
+    "opt-g2-q3-b": {
+      "url": "/audio/placement/opt-g2-q3-b.mp3",
+      "script": "Excited",
+      "verified": true,
+      "transcript": "excited",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q3-b.mp3"
+    },
+    "opt-g2-q3-c": {
+      "url": "/audio/placement/opt-g2-q3-c.mp3",
+      "script": "Sad",
+      "verified": true,
+      "transcript": "sad.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g2-q3-c.mp3"
+    },
+    "title-3": {
+      "url": "/audio/placement/title-3.mp3",
+      "script": "This story is called The Lost Mitten.",
+      "verified": true,
+      "transcript": "This story is called The Lost Mitten.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/title-3.mp3"
+    },
+    "q-g3-q1": {
+      "url": "/audio/placement/q-g3-q1.mp3",
+      "script": "Who knitted Omar's mittens?",
+      "verified": true,
+      "transcript": "who knitted Omar's mittens.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g3-q1.mp3"
+    },
+    "opt-g3-q1-a": {
+      "url": "/audio/placement/opt-g3-q1-a.mp3",
+      "script": "His grandmother",
+      "verified": true,
+      "transcript": "His grandmother...",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q1-a.mp3"
+    },
+    "opt-g3-q1-b": {
+      "url": "/audio/placement/opt-g3-q1-b.mp3",
+      "script": "His sister Kim",
+      "verified": true,
+      "transcript": "his sister, Kim.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q1-b.mp3"
+    },
+    "opt-g3-q1-c": {
+      "url": "/audio/placement/opt-g3-q1-c.mp3",
+      "script": "His friend Lee",
+      "verified": true,
+      "transcript": "his friend Lee.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q1-c.mp3"
+    },
+    "opt-g3-q1-d": {
+      "url": "/audio/placement/opt-g3-q1-d.mp3",
+      "script": "His mother",
+      "verified": true,
+      "transcript": "his mother.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q1-d.mp3"
+    },
+    "q-g3-q2": {
+      "url": "/audio/placement/q-g3-q2.mp3",
+      "script": "Where did Omar find the missing mitten?",
+      "verified": true,
+      "transcript": "Where did Omar find the missing mitten?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g3-q2.mp3"
+    },
+    "opt-g3-q2-a": {
+      "url": "/audio/placement/opt-g3-q2-a.mp3",
+      "script": "In his backpack",
+      "verified": true,
+      "transcript": "in his backpack.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q2-a.mp3"
+    },
+    "opt-g3-q2-b": {
+      "url": "/audio/placement/opt-g3-q2-b.mp3",
+      "script": "Under the couch",
+      "verified": true,
+      "transcript": "under the couch.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q2-b.mp3"
+    },
+    "opt-g3-q2-c": {
+      "url": "/audio/placement/opt-g3-q2-c.mp3",
+      "script": "In the puppy's basket",
+      "verified": true,
+      "transcript": "in the puppy's basket.",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q2-c.mp3"
+    },
+    "opt-g3-q2-d": {
+      "url": "/audio/placement/opt-g3-q2-d.mp3",
+      "script": "On the bus",
+      "verified": true,
+      "transcript": "on the bus.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q2-d.mp3"
+    },
+    "q-g3-q3": {
+      "url": "/audio/placement/q-g3-q3.mp3",
+      "script": "Why did Omar start checking for both mittens before taking off his coat?",
+      "verified": true,
+      "transcript": "Why did Omar start checking for both mittens before taking off his coat?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g3-q3.mp3"
+    },
+    "opt-g3-q3-a": {
+      "url": "/audio/placement/opt-g3-q3-a.mp3",
+      "script": "Because Kim told him to",
+      "verified": true,
+      "transcript": "Because Kim told him to.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q3-a.mp3"
+    },
+    "opt-g3-q3-b": {
+      "url": "/audio/placement/opt-g3-q3-b.mp3",
+      "script": "Because the puppy said so",
+      "verified": true,
+      "transcript": "because the puppy said so.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q3-b.mp3"
+    },
+    "opt-g3-q3-c": {
+      "url": "/audio/placement/opt-g3-q3-c.mp3",
+      "script": "To dry them faster",
+      "verified": true,
+      "transcript": "to dry them faster.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q3-c.mp3"
+    },
+    "opt-g3-q3-d": {
+      "url": "/audio/placement/opt-g3-q3-d.mp3",
+      "script": "To avoid losing one again",
+      "verified": true,
+      "transcript": "to avoid losing one again.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g3-q3-d.mp3"
+    },
+    "title-4": {
+      "url": "/audio/placement/title-4.mp3",
+      "script": "This story is called Nia and the Bean Plants.",
+      "verified": true,
+      "transcript": "This story is called NIA and the Bean Plants.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/title-4.mp3"
+    },
+    "q-g4-q1": {
+      "url": "/audio/placement/q-g4-q1.mp3",
+      "script": "Which plants did Nia predict would grow faster?",
+      "verified": true,
+      "transcript": "Which plants did Nia predict would grow faster?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g4-q1.mp3"
+    },
+    "opt-g4-q1-a": {
+      "url": "/audio/placement/opt-g4-q1-a.mp3",
+      "script": "The plants under the lamp",
+      "verified": true,
+      "transcript": "The plants under the lamp.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q1-a.mp3"
+    },
+    "opt-g4-q1-b": {
+      "url": "/audio/placement/opt-g4-q1-b.mp3",
+      "script": "The plants in the dark",
+      "verified": true,
+      "transcript": "the plants in the dark.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q1-b.mp3"
+    },
+    "opt-g4-q1-c": {
+      "url": "/audio/placement/opt-g4-q1-c.mp3",
+      "script": "The plants with no water",
+      "verified": true,
+      "transcript": "the plants with no water.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q1-c.mp3"
+    },
+    "opt-g4-q1-d": {
+      "url": "/audio/placement/opt-g4-q1-d.mp3",
+      "script": "The plants in the window",
+      "verified": true,
+      "transcript": "the plants in the window.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q1-d.mp3"
+    },
+    "q-g4-q2": {
+      "url": "/audio/placement/q-g4-q2.mp3",
+      "script": "How long did Nia observe the plants?",
+      "verified": true,
+      "transcript": "How long did Naya observe the plants?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g4-q2.mp3"
+    },
+    "opt-g4-q2-a": {
+      "url": "/audio/placement/opt-g4-q2-a.mp3",
+      "script": "Six days",
+      "verified": true,
+      "transcript": "six days",
+      "attempts": 2,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q2-a.mp3"
+    },
+    "opt-g4-q2-b": {
+      "url": "/audio/placement/opt-g4-q2-b.mp3",
+      "script": "Two weeks",
+      "verified": true,
+      "transcript": "Two weeks.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q2-b.mp3"
+    },
+    "opt-g4-q2-c": {
+      "url": "/audio/placement/opt-g4-q2-c.mp3",
+      "script": "Three months",
+      "verified": true,
+      "transcript": "Three months",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q2-c.mp3"
+    },
+    "opt-g4-q2-d": {
+      "url": "/audio/placement/opt-g4-q2-d.mp3",
+      "script": "One year",
+      "verified": true,
+      "transcript": "One year.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q2-d.mp3"
+    },
+    "q-g4-q3": {
+      "url": "/audio/placement/q-g4-q3.mp3",
+      "script": "Why were the plants under the lamp pale and thin?",
+      "verified": true,
+      "transcript": "Why were the plants under the lamp pale and thin?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g4-q3.mp3"
+    },
+    "opt-g4-q3-a": {
+      "url": "/audio/placement/opt-g4-q3-a.mp3",
+      "script": "They needed more light",
+      "verified": true,
+      "transcript": "They needed more light.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q3-a.mp3"
+    },
+    "opt-g4-q3-b": {
+      "url": "/audio/placement/opt-g4-q3-b.mp3",
+      "script": "They got too much water",
+      "verified": true,
+      "transcript": "They got too much water.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q3-b.mp3"
+    },
+    "opt-g4-q3-c": {
+      "url": "/audio/placement/opt-g4-q3-c.mp3",
+      "script": "Ben forgot to measure them",
+      "verified": true,
+      "transcript": "Ben forgot to measure them.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q3-c.mp3"
+    },
+    "opt-g4-q3-d": {
+      "url": "/audio/placement/opt-g4-q3-d.mp3",
+      "script": "Their cups were too small",
+      "verified": true,
+      "transcript": "their cups were too small.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g4-q3-d.mp3"
+    },
+    "title-5": {
+      "url": "/audio/placement/title-5.mp3",
+      "script": "This story is called Lee's Bridge.",
+      "verified": true,
+      "transcript": "This story is called Lease Bridge.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/title-5.mp3"
+    },
+    "q-g5-q1": {
+      "url": "/audio/placement/q-g5-q1.mp3",
+      "script": "Which shape did Lee learn that engineers rely on?",
+      "verified": true,
+      "transcript": "which shape did Lee learn that engineers rely on?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g5-q1.mp3"
+    },
+    "opt-g5-q1-a": {
+      "url": "/audio/placement/opt-g5-q1-a.mp3",
+      "script": "Squares",
+      "verified": true,
+      "transcript": "Squares",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q1-a.mp3"
+    },
+    "opt-g5-q1-b": {
+      "url": "/audio/placement/opt-g5-q1-b.mp3",
+      "script": "Triangles",
+      "verified": true,
+      "transcript": "Triangles",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q1-b.mp3"
+    },
+    "opt-g5-q1-c": {
+      "url": "/audio/placement/opt-g5-q1-c.mp3",
+      "script": "Circles",
+      "verified": true,
+      "transcript": "circles",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q1-c.mp3"
+    },
+    "opt-g5-q1-d": {
+      "url": "/audio/placement/opt-g5-q1-d.mp3",
+      "script": "Crossbeams",
+      "verified": true,
+      "transcript": "Cross Beams",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q1-d.mp3"
+    },
+    "q-g5-q2": {
+      "url": "/audio/placement/q-g5-q2.mp3",
+      "script": "How many books did Lee's bridge hold at the contest?",
+      "verified": true,
+      "transcript": "How many books did Lee's bridge hold at the contest?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g5-q2.mp3"
+    },
+    "opt-g5-q2-a": {
+      "url": "/audio/placement/opt-g5-q2-a.mp3",
+      "script": "Two",
+      "verified": true,
+      "transcript": "2",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q2-a.mp3"
+    },
+    "opt-g5-q2-b": {
+      "url": "/audio/placement/opt-g5-q2-b.mp3",
+      "script": "Fifteen",
+      "verified": true,
+      "transcript": "15",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q2-b.mp3"
+    },
+    "opt-g5-q2-c": {
+      "url": "/audio/placement/opt-g5-q2-c.mp3",
+      "script": "Twenty",
+      "verified": true,
+      "transcript": "20",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q2-c.mp3"
+    },
+    "opt-g5-q2-d": {
+      "url": "/audio/placement/opt-g5-q2-d.mp3",
+      "script": "Eleven",
+      "verified": true,
+      "transcript": "11",
+      "attempts": 3,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q2-d.mp3"
+    },
+    "q-g5-q3": {
+      "url": "/audio/placement/q-g5-q3.mp3",
+      "script": "Why did Lee ask Rosa how she had built her bridge?",
+      "verified": true,
+      "transcript": "Why did Lee ask Rosa how she had built her bridge?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-g5-q3.mp3"
+    },
+    "opt-g5-q3-a": {
+      "url": "/audio/placement/opt-g5-q3-a.mp3",
+      "script": "He was angry about losing",
+      "verified": true,
+      "transcript": "He was angry about losing",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q3-a.mp3"
+    },
+    "opt-g5-q3-b": {
+      "url": "/audio/placement/opt-g5-q3-b.mp3",
+      "script": "To trade bridges with her",
+      "verified": true,
+      "transcript": "to trade bridges with her.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q3-b.mp3"
+    },
+    "opt-g5-q3-c": {
+      "url": "/audio/placement/opt-g5-q3-c.mp3",
+      "script": "To learn from her",
+      "verified": true,
+      "transcript": "to learn from her.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q3-c.mp3"
+    },
+    "opt-g5-q3-d": {
+      "url": "/audio/placement/opt-g5-q3-d.mp3",
+      "script": "To borrow her books",
+      "verified": true,
+      "transcript": "to borrow her books.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-g5-q3-d.mp3"
+    },
+    "story-listen": {
+      "url": "/audio/placement/story-listen.mp3",
+      "script": "Ben had a red kite. It was a windy day, so Ben took his kite to the park. He ran and ran. The kite went up, up, up. Then the string slipped out of his hand. The kite flew into a tall tree. Ben was sad. A big girl saw him. She climbed the tree and got the kite down. Ben said thank you. Then he held the string very tight.",
+      "verified": true,
+      "transcript": "Ben had a red kite. It was a windy day, so Ben took his kite to the park. He ran and ran. The kite went up, up, up. Then the string slipped out of his hand. The kite flew into a tall tree. Ben was sad. A big girl saw him. She climbed the tree and got the kite down. Ben said thank you. Then he held the string very tight.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/story-listen.mp3"
+    },
+    "q-k-listen-q1": {
+      "url": "/audio/placement/q-k-listen-q1.mp3",
+      "script": "Where did the kite go?",
+      "verified": true,
+      "transcript": "Where did the kite go?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-k-listen-q1.mp3"
+    },
+    "opt-k-listen-q1-a": {
+      "url": "/audio/placement/opt-k-listen-q1-a.mp3",
+      "script": "Into a tall tree",
+      "verified": true,
+      "transcript": "into a tall tree.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-k-listen-q1-a.mp3"
+    },
+    "opt-k-listen-q1-b": {
+      "url": "/audio/placement/opt-k-listen-q1-b.mp3",
+      "script": "Into a pond",
+      "verified": true,
+      "transcript": "into a pond.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-k-listen-q1-b.mp3"
+    },
+    "opt-k-listen-q1-c": {
+      "url": "/audio/placement/opt-k-listen-q1-c.mp3",
+      "script": "Into a bush",
+      "verified": true,
+      "transcript": "into a bush.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-k-listen-q1-c.mp3"
+    },
+    "q-k-listen-q2": {
+      "url": "/audio/placement/q-k-listen-q2.mp3",
+      "script": "Why did Ben hold the string very tight at the end?",
+      "verified": true,
+      "transcript": "Why did Ben hold the string very tight at the end?",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/q-k-listen-q2.mp3"
+    },
+    "opt-k-listen-q2-a": {
+      "url": "/audio/placement/opt-k-listen-q2-a.mp3",
+      "script": "To climb the tree",
+      "verified": true,
+      "transcript": "to climb the tree.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-k-listen-q2-a.mp3"
+    },
+    "opt-k-listen-q2-b": {
+      "url": "/audio/placement/opt-k-listen-q2-b.mp3",
+      "script": "To keep the kite safe",
+      "verified": true,
+      "transcript": "to keep the kite safe.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-k-listen-q2-b.mp3"
+    },
+    "opt-k-listen-q2-c": {
+      "url": "/audio/placement/opt-k-listen-q2-c.mp3",
+      "script": "To go home fast",
+      "verified": true,
+      "transcript": "to go home fast.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/opt-k-listen-q2-c.mp3"
+    },
+    "narr-hi-generic": {
+      "url": "/audio/placement/narr-hi-generic.mp3",
+      "script": "Hi there! I'm so glad you're here.",
+      "verified": true,
+      "transcript": "Hi there, I'm so glad you're here.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-hi-generic.mp3"
+    },
+    "narr-climb-generic": {
+      "url": "/audio/placement/narr-climb-generic.mp3",
+      "script": "Wow, look how far you climbed.",
+      "verified": true,
+      "transcript": "Wow! Look how far you climbed!",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-climb-generic.mp3"
+    }
+  }
+}
