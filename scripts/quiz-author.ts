@@ -34,6 +34,7 @@ const LADDER: Record<string, { below: string; next: string; opts: string }> = {
   Kindergarten: { below: "pre-K support", next: "Grade 1", opts: "2 options for easier, 3 for core/harder" },
   "1st Grade": { below: "Kindergarten support", next: "Grade 2", opts: "2-3 options with picture support for easier, 3-4 TEXT-LEANING options for core/harder (G1 kids read; fewer picture crutches on core is the felt step up from K)" },
   "2nd Grade": { below: "Grade 1 support", next: "Grade 3", opts: "2-3 options with picture support for easier, 4 TEXT options with plausible parallel-length distractors for core/harder (G2 kids discriminate between close answers; explanation beats over recognition)" },
+  "3rd Grade": { below: "Grade 2 support", next: "Grade 4", opts: "3 options for easier (2 only when the scaffold is genuinely easier work, e.g. picture-anchored either/or), 4 TEXT options with plausible parallel-length distractors for core/harder; harder = Grade 4 transfer whose new tool is TAUGHT in the question stimulus first (Greek/Latin roots, theme, firsthand vs secondhand), then applied" },
 };
 const L4D = LADDER[GRADE] ?? LADDER["1st Grade"];
 if (!LESSON_ID || !LESSONS[LESSON_ID]) {

@@ -17,7 +17,6 @@ import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  Sparkles,
   Send,
   RotateCcw,
   ShieldCheck,
@@ -489,7 +488,7 @@ function PublishOverlay({
               animation: "ss-stampIn .45s cubic-bezier(.34,1.56,.64,1) both",
             }}
           >
-            <Check size={20} strokeWidth={3} /> Published
+            <FluentIcon name="check" size={20} /> Published
           </div>
         )}
 
@@ -667,7 +666,7 @@ function ImageTile({
       </span>
       {selected && (
         <span className="ss-pop absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-violet-500 text-white shadow">
-          <Check className="h-3.5 w-3.5" strokeWidth={3} />
+          <FluentIcon name="check" size={14} />
         </span>
       )}
     </button>
@@ -834,7 +833,7 @@ function MakeButton({ onClick }: { onClick: () => void }) {
       className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-500 px-6 py-4 text-lg font-extrabold text-white shadow-[0_8px_24px_-12px_rgba(245,158,11,0.9)] transition hover:-translate-y-0.5 hover:brightness-105 active:scale-[0.98]"
       style={BALOO}
     >
-      <Sparkles className="ss-wiggle h-5 w-5" /> Make my story!
+      <FluentIcon name="sparkles" size={20} /> Make my story!
     </button>
   );
 }
@@ -928,7 +927,7 @@ function Preview({
       <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="min-w-0">
           <motion.div {...rise(0)} className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700">
-            <Sparkles className="h-3 w-3" /> Story Studio
+            <FluentIcon name="sparkles" size={12} /> Story Studio
           </motion.div>
 
           <motion.h1 {...rise(0.08)} className="mt-2 text-[34px] font-extrabold leading-[1.1] tracking-tight text-zinc-900 sm:text-[38px]" style={BALOO}>
@@ -946,7 +945,7 @@ function Preview({
           </motion.div>
 
           <motion.div {...rise(0.4)} className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
-            <BookOpen className="h-3.5 w-3.5" />
+            <FluentIcon name="open-book" size={14} />
             {wordCount} words · {Math.max(1, Math.round(wordCount / 150))} min read
             {story.audioUrl && <ReadAloudButton audioUrl={story.audioUrl} />}
           </motion.div>
@@ -1061,7 +1060,7 @@ function Published({
         className="mt-5 flex w-full items-center justify-center gap-2 rounded-2xl bg-violet-600 px-6 py-4 text-lg font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-violet-700 active:scale-[0.98]"
         style={BALOO}
       >
-        <Sparkles className="ss-wiggle h-5 w-5" /> Make another story
+        <FluentIcon name="sparkles" size={20} /> Make another story
       </button>
     </div>
   );

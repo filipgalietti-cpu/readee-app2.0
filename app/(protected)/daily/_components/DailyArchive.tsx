@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, ImageIcon, Check } from "lucide-react";
+import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Entry = {
   date: string;
@@ -186,7 +187,7 @@ function DayCell({
       {pill}
       {completed && (
         <span className="absolute right-1.5 top-1.5 z-10 grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-white shadow-sm ring-2 ring-white">
-          <Check className="h-3 w-3" strokeWidth={3} />
+          <FluentIcon name="check" size={12} />
         </span>
       )}
       {entry.image_url ? (

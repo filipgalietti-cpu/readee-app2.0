@@ -12,7 +12,7 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
-import { BookOpen, Newspaper, Type, MessageCircle, Trophy, Star, Rabbit, Squirrel, Dog, Lock } from "lucide-react";
+import { BookOpen, Newspaper, Type, MessageCircle, Trophy, Star, Rabbit, Squirrel, Dog } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -1127,5 +1127,5 @@ function StatusBadge({ status, isPremium }: { status: StandardProgress["status"]
   if (isPremium) {
     return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-violet-100 text-violet-600">Readee+</span>;
   }
-  return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 text-zinc-500 inline-flex items-center gap-0.5">Locked <Lock className="w-3 h-3" strokeWidth={1.5} /></span>;
+  return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 text-zinc-500 inline-flex items-center gap-0.5">Locked <FluentIcon name="lock" size={12} /></span>;
 }

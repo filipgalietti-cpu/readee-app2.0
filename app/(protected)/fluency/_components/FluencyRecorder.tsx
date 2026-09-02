@@ -2,19 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
-  Mic,
   Square,
   Loader2,
-  Check,
   X as XIcon,
   AlertCircle,
   RotateCcw,
-  Sparkles,
   Trophy,
   ArrowRight,
   Shuffle,
 } from "lucide-react";
 import AssignFluencyButton from "./AssignFluencyButton";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Kid = { id: string; first_name: string; grade: string };
 type Passage = { grade: string; title: string; text: string };
@@ -363,7 +361,7 @@ export default function FluencyRecorder({
               disabled={!passage.text.trim()}
               className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-rose-500 to-violet-600 text-white shadow-lg transition hover:scale-105 disabled:opacity-50"
             >
-              <Mic className="h-10 w-10" />
+              <FluentIcon name="microphone" size={40} />
             </button>
             <p className="mt-3 text-sm font-bold text-zinc-700">
               Tap to start recording
@@ -418,7 +416,7 @@ export default function FluencyRecorder({
                 onClick={analyze}
                 className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-5 py-2 text-xs font-bold text-white transition hover:bg-violet-700"
               >
-                <Sparkles className="h-3.5 w-3.5" />
+                <FluentIcon name="sparkles" size={14} />
                 Analyze with Readee.ai
               </button>
             </div>

@@ -2,14 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X as XIcon } from "lucide-react";
+import { X as XIcon } from "lucide-react";
 import { audioManager } from "@/lib/audio/audio-manager";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { InteractiveExample } from "./InteractiveExample";
 import { InteractiveMatch } from "./InteractiveMatch";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { useAudioStore } from "@/lib/stores/audio-store";
-import { Volume2, ChevronRight, Rocket, SkipForward, RotateCcw } from "lucide-react";
+import { ChevronRight, SkipForward, RotateCcw } from "lucide-react";
 import { Fredoka } from "next/font/google";
 import {
   LessonShellDesktop,
@@ -17,6 +17,7 @@ import {
   CelebrationLeftPanel,
 } from "./LessonShellDesktop";
 import { LessonShellMobile } from "./LessonShellMobile";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
@@ -881,7 +882,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
                 className="text-green-500"
               >
-                <Check className="h-6 w-6" strokeWidth={3} />
+                <FluentIcon name="check" size={24} />
               </motion.span>
             )}
           </span>
@@ -979,7 +980,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
               className={feedback === "positive" ? "text-green-500" : "text-red-500"}
             >
               {feedback === "positive" ? (
-                <Check className="h-7 w-7" strokeWidth={3} />
+                <FluentIcon name="check" size={28} />
               ) : (
                 <XIcon className="h-7 w-7" strokeWidth={3} />
               )}
@@ -1036,7 +1037,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
                 className="text-green-500"
               >
-                <Check className="h-6 w-6" strokeWidth={3} />
+                <FluentIcon name="check" size={24} />
               </motion.span>
             )}
           </span>
@@ -1695,7 +1696,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
             transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
             className="text-green-500"
           >
-            <Check className="h-7 w-7" strokeWidth={3} />
+            <FluentIcon name="check" size={28} />
           </motion.span>
         </div>
       );
@@ -2408,7 +2409,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                 transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
                 className="flex-shrink-0"
               >
-                <Volume2 className={`w-5 h-5 ${theme.text} opacity-60`} strokeWidth={2.5} />
+                <FluentIcon name="speaker" size={20} />
               </motion.div>
             )}
           </div>
@@ -2540,7 +2541,7 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                                     transition={{ type: "spring", stiffness: 500, damping: 15 }}
                                     className="ml-1.5 inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-white"
                                   >
-                                    <Check className="h-3 w-3" strokeWidth={3} />
+                                    <FluentIcon name="check" size={12} />
                                   </motion.span>
                                 )}
                               </span>
@@ -2669,12 +2670,12 @@ export function LessonSlideshow({ lesson, onComplete, devMode, onSlideChange, ch
                     // on. The "Listening…" label tells them *why* they
                     // can't tap — not "this is broken."
                     <>
-                      <Volume2 className="w-5 h-5 animate-pulse" />
+                      <FluentIcon name="speaker" size={20} />
                       Listening…
                     </>
                   ) : isLastSlide ? (
                     <>
-                      <Rocket className="w-5 h-5" />
+                      <FluentIcon name="rocket" size={20} />
                       Let&apos;s Go!
                     </>
                   ) : (
@@ -2781,7 +2782,7 @@ function ExampleWorksheetGridMobile({
                 }}
                 className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-white"
               >
-                <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                <FluentIcon name="check" size={14} />
               </motion.span>
             )}
           </motion.div>
@@ -2856,7 +2857,7 @@ function ExampleWorksheetGrid({
                   transition={{ type: "spring", stiffness: 500, damping: 15, delay: 0.15 }}
                   className="flex h-9 w-9 lg:h-10 lg:w-10 items-center justify-center rounded-full bg-emerald-500 text-white"
                 >
-                  <Check className="h-5 w-5 lg:h-6 lg:w-6" strokeWidth={3} />
+                  <FluentIcon name="check" size={20} />
                 </motion.span>
               )}
             </span>

@@ -35,7 +35,7 @@ import { finalizeSessionCarrots } from "@/lib/carrots/finalize-session";
 import { clearActiveMultiplierFields } from "@/lib/carrots/active-multiplier";
 import { StreakFire } from "@/app/_components/StreakFire";
 import SealOfApproval from "./_components/SealOfApproval";
-import { BookOpen, Newspaper, Type, MessageCircle, Search, Flame, Volume2, Lightbulb, ArrowRight, X as XIcon, Check as CheckIcon, Sparkles } from "lucide-react";
+import { Flame, Volume2, ArrowRight, X as XIcon, BookOpen, MessageCircle, Newspaper, Type } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
@@ -1447,7 +1447,7 @@ function PracticeSession({
                   >
                     <span className="w-9 h-9 rounded-xl flex items-center justify-center font-[family-name:var(--font-baloo)] font-bold text-[17px] flex-none" style={{ background: chipBg, color: chipFg }}>{"ABCD"[i]}</span>
                     <span className="flex-1 font-bold text-[17px] leading-snug" style={{ color: fg }}>{String(choice).replace(/\*\*/g, "")}</span>
-                    {showCheck && <CheckIcon className="w-6 h-6 flex-none" stroke="#059669" strokeWidth={3} />}
+                    {showCheck && <FluentIcon name="check" size={24} />}
                     {showX && <XIcon className="w-5 h-5 flex-none" stroke="#a1a1aa" strokeWidth={3} />}
                   </motion.button>
                 );
@@ -1470,7 +1470,7 @@ function PracticeSession({
                     <div className="flex items-center gap-2">
                       <span className="text-[11px] font-extrabold tracking-[0.14em] text-indigo-700">THE STORY</span>
                       <button onClick={handleReplay} className="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 rounded-full px-3 py-1 hover:bg-indigo-100 active:scale-95 transition">
-                        <Volume2 className="w-3.5 h-3.5 text-indigo-700" strokeWidth={2.2} />
+                        <FluentIcon name="speaker" size={14} />
                         <span className="text-[12.5px] font-extrabold text-indigo-700">Read to me</span>
                       </button>
                     </div>
@@ -1574,7 +1574,7 @@ function PracticeSession({
           onClick={handleReplay}
           className="flex items-center gap-2 bg-white/95 border-[1.5px] border-indigo-200 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] hover:-translate-y-0.5 active:scale-95 transition"
         >
-          <Volume2 className="w-[19px] h-[19px] text-indigo-700" strokeWidth={2.2} />
+          <FluentIcon name="speaker" size={19} />
           <span className="text-[15px] font-extrabold text-indigo-950">Read to me</span>
         </button>
         {q.hint && (
@@ -1583,7 +1583,7 @@ function PracticeSession({
             disabled={showHint || phase === "feedback"}
             className="flex items-center gap-2 bg-white/95 border-[1.5px] border-amber-300 rounded-full px-4 py-2.5 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] disabled:opacity-50 enabled:hover:-translate-y-0.5 enabled:active:scale-95 transition"
           >
-            <Lightbulb className="w-[19px] h-[19px] text-amber-600" strokeWidth={2.2} />
+            <FluentIcon name="lightbulb" size={19} />
             <span className="text-[15px] font-extrabold text-amber-800">{showHint ? "Hint used" : "Hint"}</span>
           </button>
         )}
@@ -2075,7 +2075,7 @@ function CompletionScreen({
                   className="flex w-full items-center justify-center gap-2 py-3 rounded-2xl font-extrabold text-[15px] text-white transition-all active:scale-[0.97]"
                   style={{ background: "linear-gradient(90deg, #8b5cf6, #6d28d9)", boxShadow: "0 4px 0 0 #5b21b6" }}
                 >
-                  <Sparkles className="w-[17px] h-[17px]" strokeWidth={2} />
+                  <FluentIcon name="sparkles" size={17} />
                   Sharpen up on what tripped you
                 </Link>
               );

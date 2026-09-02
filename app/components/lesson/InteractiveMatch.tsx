@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Lightbulb } from "lucide-react";
 import { TapToPair } from "../practice/TapToPair";
 import { audioManager } from "@/lib/audio/audio-manager";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
  * The "match" flavour of the fork — pair each item with its mate (root→
@@ -111,7 +112,7 @@ export function InteractiveMatch({
             exit={{ opacity: 0 }}
             className="flex items-center gap-2 rounded-xl bg-amber-50 px-4 py-2 text-sm sm:text-base font-semibold text-amber-700 [text-wrap:balance]"
           >
-            <Lightbulb className="h-5 w-5 flex-shrink-0" /> {hint}
+            <FluentIcon name="lightbulb" size={20} /> {hint}
           </motion.div>
         )}
       </AnimatePresence>

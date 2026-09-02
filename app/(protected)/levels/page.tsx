@@ -4,13 +4,14 @@ import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Check, Lock, ArrowLeft, Carrot } from "lucide-react";
+import { Check, ArrowLeft } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { useChildStore } from "@/lib/stores/child-store";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { READER_LEVELS, MILESTONE_LEVELS, computeLevel } from "@/lib/levels/levels";
 import type { Child } from "@/lib/db/types";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /**
  * Browse-all-levels page. Kid + parent surface — shows every level on
@@ -119,7 +120,7 @@ function LevelsContent() {
         </h1>
         <p className="mt-1 text-sm text-zinc-500">
           Earn{" "}
-          <Carrot className="inline h-3.5 w-3.5 -mt-0.5 text-orange-500" strokeWidth={2.4} />{" "}
+          <FluentIcon name="carrot" size={14} />{" "}
           carrots from lessons, practice, and stories to climb the ladder.
         </p>
       </div>
@@ -231,7 +232,7 @@ function LevelsContent() {
               {achieved ? (
                 <Check className="h-5 w-5 flex-shrink-0 text-emerald-500" strokeWidth={2.4} />
               ) : (
-                <Lock className="h-4 w-4 flex-shrink-0 text-zinc-300" strokeWidth={2.2} />
+                <FluentIcon name="lock" size={16} />
               )}
             </motion.li>
           );

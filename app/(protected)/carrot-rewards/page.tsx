@@ -8,7 +8,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
-import { Medal, Gem, Crown, Carrot, Lock, ShoppingBag } from "lucide-react";
+import { Medal, Gem, Crown, Lock } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -149,7 +149,7 @@ function CarrotRewardsContent() {
       {/* Rewards Shop Link */}
       <Link href={`/shop?child=${child.id}`} className="block">
         <div className="rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 p-6 text-center hover:border-orange-300 hover:shadow-md transition-all dash-slide-up-3">
-          <ShoppingBag className="w-8 h-8 text-orange-600 mx-auto mb-2" strokeWidth={1.5} />
+          <FluentIcon name="shopping-bag" size={32} />
           <h3 className="font-bold text-orange-700">Rewards Shop</h3>
           <p className="text-sm text-orange-500 mt-1">Spend your carrots on fun rewards!</p>
           <span className="inline-block mt-3 px-5 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-sm shadow-sm">

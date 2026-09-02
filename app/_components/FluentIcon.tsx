@@ -25,6 +25,7 @@ import Image from "next/image";
  * them through the image optimiser costs more than it saves.
  */
 export const FLUENT_ICONS = [
+  "bell",
   "books",
   "brain",
   "bullseye",
@@ -34,18 +35,28 @@ export const FLUENT_ICONS = [
   "fire",
   "first-place",
   "gem",
+  "glowing-star",
   "graduation-cap",
+  "hundred",
   "lightbulb",
   "lock",
   "medal",
+  "memo",
   "microphone",
+  "moon",
   "newspaper",
   "open-book",
   "party",
   "rocket",
+  "shopping-bag",
+  "sparkles",
   "speaker",
   "star",
+  "sun",
+  "sun-cloud",
   "trophy",
+  "wand",
+  "zap",
 ] as const;
 
 export type FluentIconName = (typeof FLUENT_ICONS)[number];

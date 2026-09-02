@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Users, BookOpen } from "lucide-react";
+import { ArrowLeft, Users } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
 import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 import RecordCommunityRead from "@/app/_components/RecordCommunityRead";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -93,7 +94,7 @@ export default async function CommunityPassagePage({
 
           <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-zinc-500">
             <span className="inline-flex items-center gap-1">
-              <BookOpen className="h-3.5 w-3.5" />
+              <FluentIcon name="open-book" size={14} />
               {wordCount} words · {readMinutes} min read
             </span>
             {passage.audio_url && <ReadAloudButton audioUrl={passage.audio_url} />}

@@ -6,9 +6,10 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { wordBank, type WordEntry } from "@/lib/word-bank/words";
 import { useAudio } from "@/lib/audio/use-audio";
-import { BookOpen, Star } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { EmptyState } from "@/app/_components/EmptyState";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const CATEGORY_FILTERS = [
   { label: "All", tag: null },
@@ -72,7 +73,7 @@ function WordBankContent() {
       <div className="mb-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="w-12 h-12 rounded-2xl bg-violet-100 flex items-center justify-center">
-            <BookOpen className="w-6 h-6 text-violet-500" strokeWidth={1.5} />
+            <FluentIcon name="open-book" size={24} />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
@@ -179,7 +180,7 @@ function WordBankContent() {
           <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-white via-white/90 to-transparent flex items-end justify-center pb-6">
             <div className="text-center px-6 py-6 max-w-sm">
               <div className="w-14 h-14 rounded-2xl bg-violet-100 mx-auto mb-3 flex items-center justify-center shadow-sm">
-                <BookOpen className="w-7 h-7 text-violet-600" strokeWidth={1.5} />
+                <FluentIcon name="open-book" size={28} />
               </div>
               <h2 className="text-lg font-extrabold text-zinc-900 mb-1.5">
                 Unlock All {wordBank.length} Words
@@ -193,7 +194,7 @@ function WordBankContent() {
                 className="relative inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-violet-600 text-white font-bold text-sm hover:bg-violet-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 overflow-hidden group"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                <Star className="relative w-4 h-4" strokeWidth={1.5} />
+                <FluentIcon name="star" size={16} />
                 <span className="relative">Upgrade to Readee+</span>
               </Link>
             </div>

@@ -46,6 +46,12 @@ const GRADE_NOTES: Record<string, string> = {
 - Choose beats use 3-4 TEXT options; pictures only as stimulus/decoration, never crutches on core checks. Distractors must be plausible and parallel-length (the felt step up from G1: options require real discrimination, not elimination).
 - Interaction items may be phrases or full sentences (≤28-char tiles); multi-paragraph structure appears: "this paragraph is mostly about ___".
 - Questions push explanation and inference: how a character RESPONDS to events, morals of fables, connections between steps/events, paragraph focus vs whole-text topic.`,
+  "3rd Grade": `- 3rd graders are FLUENT READERS: they read chapter-length text and answer FROM the text. Prompts up to 14 words; RL/RI anchor passages 12-16 sentences over 5-6 child-read pages; word-work/phonics read-alongs 4-6 dense sentences. Sentences are compound plus early complex (because/when/after/so-that clauses); anchor passages may carry dialogue with speech tags ("Every part has one job," said Rosa).
+- Vocabulary: tier-2 words with in-text context support are standard; plant 3-4 stretch words per anchor passage that the surrounding sentences can unlock.
+- HEAVY PRODUCTION: at least 2 speak beats; multi-sentence accept-mode reads (2-3 sentences) are the standard read beat; at least one production speak where the child explains or builds an answer aloud. The narrator NEVER pre-reads text the child should read.
+- Choose beats use 4 TEXT options with plausible parallel-length distractors; pictures are stimulus only, never crutches. Interaction items may be phrases or sentences (tiles stay short).
+- Lessons run 13-16 scenes: the extra beats go to guided/apply depth, never a longer hook.
+- TONE: respectful and workshop-like, "you're a big kid reader now". Drop the sing-song, keep the warmth. Shorter praise, more craft talk. Same teacher voice as G2, no tonal cliff.`,
 };
 const GRADE_RULES = GRADE_NOTES[GRADE] ?? GRADE_NOTES["1st Grade"];
 

@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Sparkles } from "lucide-react";
 import { listCategories } from "@/lib/discover/categories";
 import DiscoveryTile from "./_components/DiscoveryTile";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -42,7 +43,7 @@ export default async function DiscoverIndexPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
       <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700">
-        <Sparkles className="h-3 w-3" />
+        <FluentIcon name="sparkles" size={12} />
         Discover
       </div>
       <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">

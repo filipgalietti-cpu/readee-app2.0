@@ -24,7 +24,7 @@ import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { grantPowerupFields } from "@/lib/carrots/active-multiplier";
-import { Lock, RotateCcw, PartyPopper, Zap } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -611,7 +611,7 @@ function ShopContent({
                     boxShadow: "0 12px 26px -14px rgba(249,115,22,.95)",
                   }}
                 >
-                  <PartyPopper size={19} strokeWidth={2.2} /> {equipLabel}
+                  <FluentIcon name="party" size={19} /> {equipLabel}
                 </button>
               )}
 
@@ -644,7 +644,7 @@ function ShopContent({
                   transition: "transform .12s ease",
                 }}
               >
-                {phase === "reveal" ? <RotateCcw size={19} strokeWidth={2.2} /> : canAfford ? <FluentIcon name="carrot" size={19} /> : <Lock size={19} strokeWidth={2.2} />}
+                {phase === "reveal" ? <RotateCcw size={19} strokeWidth={2.2} /> : canAfford ? <FluentIcon name="carrot" size={19} /> : <FluentIcon name="lock" size={19} />}
                 {showBoxCountdown ? (
                   <span style={{ display: "flex", flexDirection: "column", alignItems: "center", lineHeight: 1.15 }}>
                     <span>{primaryLabel}</span>
@@ -941,8 +941,8 @@ function RevealArt({ reward, glow }: { reward: MysteryReward; glow: string }) {
     }
     return <ShopIcon name={it.icon} size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
   }
-  if (reward.type === "jackpot") return <PartyPopper size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
-  if (reward.type === "multiplier") return <Zap size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
+  if (reward.type === "jackpot") return <FluentIcon name="party" size={88} />;
+  if (reward.type === "multiplier") return <FluentIcon name="zap" size={88} />;
   return <FluentIcon name="carrot" size={88} />;
 }
 

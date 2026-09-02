@@ -18,7 +18,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Shuffle, RotateCcw, Volume2, Star, Check, X as XIcon, Wand2, Sparkles, ArrowRight, Lock, RefreshCw } from "lucide-react";
+import { Shuffle, RotateCcw, X as XIcon, ArrowRight, RefreshCw } from "lucide-react";
 import LunaOrb, { type LunaMode } from "./LunaOrb";
 import { startPronAssessment, type PAPhrase, type StreamController } from "./azure-stream";
 import { soundOut, soundOutSegments, isSightWord, type SoundSegment } from "@/lib/luna/sound-out";
@@ -1853,7 +1853,7 @@ export default function LunaReader({
                 {errKind === "upgrade" ? (
                   <>
                     <div className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-violet-700">
-                      <Lock className="h-3 w-3" /> Readee+
+                      <FluentIcon name="lock" size={12} /> Readee+
                     </div>
                     <h2 className="mt-2 text-xl font-extrabold text-zinc-900" style={{ fontFamily: BALOO }}>Make unlimited stories with Luna</h2>
                     <p className="mt-1 text-sm text-zinc-500">Luna writes a new story about anything {name} loves, at their exact reading level, and coaches every word.</p>
@@ -1877,7 +1877,7 @@ export default function LunaReader({
               // "Let's Go" hands off to prepareAndBegin — pills fade, orb thinks.
               <div className="mt-3 flex w-full flex-col items-center text-center" style={{ paddingBottom: 8 }}>
                 <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
-                  <Sparkles className="h-4 w-4" /> Luna
+                  <FluentIcon name="sparkles" size={16} /> Luna
                 </div>
                 <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-zinc-900" style={{ fontFamily: BALOO }}>
                   What should your story be about, {name}?
@@ -1889,7 +1889,7 @@ export default function LunaReader({
                     return (
                       <button key={t} type="button" aria-pressed={on} onClick={() => toggleTopic(t)}
                         className={`inline-flex items-center gap-1.5 rounded-full border-2 px-4 py-2 text-sm font-bold shadow-sm transition ${on ? "border-violet-500 bg-violet-600 text-white" : "border-violet-100 bg-white text-zinc-700 hover:-translate-y-0.5 hover:border-violet-300 hover:text-violet-700"}`}>
-                        {on && <Check className="h-3.5 w-3.5" strokeWidth={3.5} />} {t}
+                        {on && <FluentIcon name="check" size={14} />} {t}
                       </button>
                     );
                   })}
@@ -1899,11 +1899,11 @@ export default function LunaReader({
                 <button type="button" onClick={makeStory} disabled={!canMake}
                   className="mt-5 inline-flex items-center gap-2 rounded-full bg-violet-600 px-7 py-3 text-base font-extrabold text-white shadow-lg shadow-violet-500/25 transition hover:bg-violet-700 disabled:cursor-default disabled:opacity-40"
                   style={{ fontFamily: BALOO }}>
-                  <Wand2 className="h-5 w-5" /> Let&apos;s Go
+                  <FluentIcon name="wand" size={20} /> Let&apos;s Go
                 </button>
                 <button type="button" onClick={surpriseMe}
                   className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 transition hover:text-violet-800">
-                  <Sparkles className="h-4 w-4" /> Surprise me
+                  <FluentIcon name="sparkles" size={16} /> Surprise me
                 </button>
               </div>
             )
@@ -1912,7 +1912,7 @@ export default function LunaReader({
               {mode === "idle" && (
                 <button type="button" onClick={listen} title="Hear it read correctly"
                   style={{ display: "inline-flex", alignItems: "center", gap: 6, border: "2px solid #4338ca", background: "#fff", color: "#4338ca", borderRadius: 999, padding: "10px 18px", fontFamily: "'Nunito',sans-serif", fontSize: 14, fontWeight: 800, cursor: "pointer" }}>
-                  <Volume2 className="h-4 w-4" /> Listen
+                  <FluentIcon name="speaker" size={16} /> Listen
                 </button>
               )}
               <button type="button" onClick={onTap} disabled={busy}
@@ -1941,7 +1941,7 @@ export default function LunaReader({
                 <div style={{ marginTop: 6, display: "flex", gap: 4 }}>
                   {[1, 2, 3].map((n) => {
                     const filled = okCount / total >= n / 3;
-                    return <Star key={n} className="h-[26px] w-[26px]" style={{ color: filled ? "#f59e0b" : "#e4e4e7", fill: filled ? "#f59e0b" : "#e4e4e7" }} strokeWidth={1.5} />;
+                    return <FluentIcon name="star" size={26} />;
                   })}
                 </div>
                 <div style={{ marginTop: 8, fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#18181b" }}>{title}</div>
@@ -1955,13 +1955,13 @@ export default function LunaReader({
                 )}
                 {after && readingGrowthLine(after.wcpm, previousWcpm) && (
                   <div style={{ marginTop: 8, display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, fontWeight: 800, color: "#047857" }}>
-                    <Sparkles className="h-4 w-4" strokeWidth={2.4} /> {readingGrowthLine(after.wcpm, previousWcpm)}
+                    <FluentIcon name="sparkles" size={16} /> {readingGrowthLine(after.wcpm, previousWcpm)}
                   </div>
                 )}
                 <div style={{ marginTop: 14, width: "100%", display: "flex", flexDirection: "column", gap: 6, textAlign: "left" }}>
                   {lines.map((l, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, borderRadius: 10, padding: "8px 10px", background: l.ok ? "#ecfdf5" : "#fef2f2" }}>
-                      {l.ok ? <Check className="h-3.5 w-3.5" style={{ color: "#059669", flexShrink: 0 }} strokeWidth={3} /> : <XIcon className="h-3.5 w-3.5" style={{ color: "#dc2626", flexShrink: 0 }} strokeWidth={3} />}
+                      {l.ok ? <FluentIcon name="check" size={14} /> : <XIcon className="h-3.5 w-3.5" style={{ color: "#dc2626", flexShrink: 0 }} strokeWidth={3} />}
                       <span style={{ fontSize: 11, fontWeight: 800, color: "#71717a", flexShrink: 0 }}>Line {i + 1}</span>
                       <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{l.text}</span>
                     </div>

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Volume2, Pause, Check, X as XIcon } from "lucide-react";
+import { Pause, X as XIcon } from "lucide-react";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Q = {
   prompt: string;
@@ -55,7 +56,7 @@ export default function DiscoveryQuestions({
           onClick={togglePlay}
           className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-white px-4 py-2 text-sm font-semibold text-violet-700 shadow-sm transition hover:bg-violet-50"
         >
-          {playing ? <Pause className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+          {playing ? <Pause className="h-4 w-4" /> : <FluentIcon name="speaker" size={16} />}
           {playing ? "Pause read-aloud" : "Read aloud"}
         </button>
       )}
@@ -101,7 +102,7 @@ function MCQCard({ index, q }: { index: number; q: Q }) {
               }`}
             >
               <span>{c}</span>
-              {isCorrect && <Check className="h-4 w-4" />}
+              {isCorrect && <FluentIcon name="check" size={16} />}
               {isWrongPick && <XIcon className="h-4 w-4" />}
             </button>
           );

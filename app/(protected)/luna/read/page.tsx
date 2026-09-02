@@ -1,4 +1,4 @@
-import { Sparkles, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
@@ -12,6 +12,7 @@ import phonicsJson from "@/app/data/luna-phonics.json";
 import LunaReader from "../_components/LunaReader";
 import { rankSkills } from "@/lib/orion/learner";
 import { recommendTextLevel } from "@/lib/orion/reading/text-level";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -146,7 +147,7 @@ export default async function LunaReadPage({
           Luna
         </Link>
         <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
-          <Sparkles className="h-4 w-4" />
+          <FluentIcon name="sparkles" size={16} />
           Read with Luna
         </div>
       </div>

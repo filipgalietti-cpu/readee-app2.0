@@ -3,16 +3,14 @@
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
-  GraduationCap,
   X,
-  Check,
   Loader2,
   AlertCircle,
   CalendarDays,
-  Target,
-} from "lucide-react";
+  } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { assignDailyQuestion } from "@/app/(protected)/classroom/actions";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 type Classroom = { id: string; name: string };
 
@@ -123,7 +121,7 @@ export default function AssignDailyButton({ date }: { date: string }) {
         onClick={() => setOpen(true)}
         className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-violet-700"
       >
-        <GraduationCap className="h-4 w-4" />
+        <FluentIcon name="graduation-cap" size={16} />
         Assign to my class
       </button>
 
@@ -175,7 +173,7 @@ export default function AssignDailyButton({ date }: { date: string }) {
                           : "border-zinc-300 bg-white"
                       }`}
                     >
-                      {isSel && <Check className="h-3 w-3" />}
+                      {isSel && <FluentIcon name="check" size={12} />}
                     </span>
                   </button>
                 );
@@ -197,7 +195,7 @@ export default function AssignDailyButton({ date }: { date: string }) {
               </label>
               <label className="block text-xs font-semibold text-zinc-500">
                 <span className="flex items-center gap-1.5">
-                  <Target className="h-3 w-3" />
+                  <FluentIcon name="bullseye" size={12} />
                   Pass threshold % (optional)
                 </span>
                 <input
@@ -221,7 +219,7 @@ export default function AssignDailyButton({ date }: { date: string }) {
             )}
             {doneMsg && (
               <div className="mt-3 flex items-start gap-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-700">
-                <Check className="mt-0.5 h-4 w-4 flex-shrink-0" />
+                <FluentIcon name="check" size={16} />
                 {doneMsg}
               </div>
             )}
@@ -249,7 +247,7 @@ export default function AssignDailyButton({ date }: { date: string }) {
                     </>
                   ) : (
                     <>
-                      <GraduationCap className="h-3.5 w-3.5" />
+                      <FluentIcon name="graduation-cap" size={14} />
                       Assign
                     </>
                   )}

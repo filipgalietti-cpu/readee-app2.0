@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { ArrowLeft, BookOpen, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
 import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 import { CATEGORIES } from "@/lib/discover/categories";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -116,7 +117,7 @@ export default async function DiscoveryDetailPage({
         {/* LEFT — the reading */}
         <div className="min-w-0">
           <div className="flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-widest text-violet-700">
-            <Sparkles className="h-3 w-3" />
+            <FluentIcon name="sparkles" size={12} />
             {cat?.label ?? a.category}
           </div>
 
@@ -138,7 +139,7 @@ export default async function DiscoveryDetailPage({
           )}
 
           <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
-            <BookOpen className="h-3.5 w-3.5" />
+            <FluentIcon name="open-book" size={14} />
             {wordCount} words · {Math.max(1, Math.round(wordCount / 150))} min read
             <ReadAloudButton audioUrl={a.audio_url} />
           </div>

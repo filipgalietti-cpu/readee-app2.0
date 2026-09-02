@@ -20,15 +20,10 @@ import {
   ChevronRight,
   ChevronLeft,
   ArrowRight,
-  Sparkles,
   Play,
-  Target,
-  BookOpen,
-  Mic,
   Compass,
   Lock,
-  TrendingUp,
-} from "lucide-react";
+  TrendingUp, BookOpen, Mic, Target } from "lucide-react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const BALOO = "var(--font-baloo), 'Baloo 2', sans-serif";
@@ -193,7 +188,7 @@ export default function KidHome(p: KidHomeProps) {
         {/* Level + XP */}
         <div style={{ ...statBase, minWidth: 150 }}>
           <div style={{ ...iconBox, background: "linear-gradient(135deg,#4338ca,#7c3aed)" }}>
-            <Star className="h-6 w-6" fill="#fde68a" stroke="#fde68a" strokeWidth={1.5} />
+            <FluentIcon name="star" size={24} />
           </div>
           <div style={{ minWidth: 0, flex: 1 }}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
@@ -236,7 +231,7 @@ export default function KidHome(p: KidHomeProps) {
             <div style={{ height: "100%", borderRadius: 99, background: "linear-gradient(90deg,#4338ca,#8b5cf6)", width: `${p.momentum.progressPct}%`, transition: "width .8s cubic-bezier(0.34,1.56,0.64,1)" }} />
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 7, marginTop: 11 }}>
-            <Star className="h-4 w-4" fill="#f59e0b" stroke="#f59e0b" />
+            <FluentIcon name="star" size={16} />
             <span style={{ fontSize: 13, fontWeight: 700, color: "#3f3f46" }}>{p.momentum.nextMilestone}</span>
           </div>
         </div>
@@ -366,7 +361,7 @@ export default function KidHome(p: KidHomeProps) {
                       color: done || cur ? "#fff" : "#a1a1aa", fontFamily: BALOO, fontWeight: 800, fontSize: 17,
                       animation: cur && !locked ? "readeePulse 2s ease-in-out infinite" : "none",
                     }}>
-                      {locked ? <Lock className="h-[18px] w-[18px]" stroke="#818cf8" strokeWidth={2.4} /> : done ? <Check className="h-5 w-5" strokeWidth={3.5} /> : s.num}
+                      {locked ? <FluentIcon name="lock" size={18} /> : done ? <FluentIcon name="check" size={20} /> : s.num}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ fontWeight: 800, fontSize: 15.5, color: locked ? "#71717a" : done ? "#a1a1aa" : "#18181b", textDecoration: done ? "line-through" : "none" }}>{s.label}</div>
@@ -383,7 +378,7 @@ export default function KidHome(p: KidHomeProps) {
               })}
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 12, padding: "0 4px" }}>
-              <Sparkles className="h-4 w-4" stroke="#f59e0b" strokeWidth={2} />
+              <FluentIcon name="sparkles" size={16} />
               <span style={{ fontSize: 13, fontWeight: 700, color: "#71717a" }}>Finish all {p.goalTotal} to fill your ring - confetti time!</span>
             </div>
           </div>
@@ -427,7 +422,7 @@ export default function KidHome(p: KidHomeProps) {
           <div style={{ position: "absolute", top: -50, right: -30, width: 190, height: 190, borderRadius: "50%", background: "radial-gradient(circle,rgba(16,185,129,.14),transparent 70%)" }} />
           <div style={{ position: "relative", minWidth: 0, maxWidth: 500 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#fff", borderRadius: 99, padding: "5px 11px", marginBottom: 11 }}>
-              <Sparkles className="h-3.5 w-3.5" stroke="#059669" strokeWidth={2.4} />
+              <FluentIcon name="sparkles" size={14} />
               <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".02em", color: "#047857" }}>{p.trial.daysLeft} {p.trial.daysLeft === 1 ? "day" : "days"} left of full access</span>
             </div>
             <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 22, color: "#14532d", lineHeight: 1.15 }}>{p.firstName} has full Readee+ access.</div>
@@ -450,7 +445,7 @@ export default function KidHome(p: KidHomeProps) {
           <div style={{ position: "absolute", top: -50, right: -30, width: 190, height: 190, borderRadius: "50%", background: "radial-gradient(circle,rgba(244,63,94,.13),transparent 70%)" }} />
           <div style={{ position: "relative", minWidth: 0, maxWidth: 500 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#fff", borderRadius: 99, padding: "5px 11px", marginBottom: 11 }}>
-              <Lock className="h-3 w-3" stroke="#e11d48" strokeWidth={2.6} />
+              <FluentIcon name="lock" size={12} />
               <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".02em", color: "#be123c" }}>Readee+ has ended</span>
             </div>
             <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 23, color: "#4c0519", lineHeight: 1.15 }}>{p.firstName}&rsquo;s journey is paused.</div>
@@ -475,7 +470,7 @@ export default function KidHome(p: KidHomeProps) {
           <div style={{ position: "absolute", top: -50, right: -30, width: 190, height: 190, borderRadius: "50%", background: "radial-gradient(circle,rgba(124,58,237,.14),transparent 70%)" }} />
           <div style={{ position: "relative", minWidth: 0, maxWidth: 470 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#fff", borderRadius: 99, padding: "5px 11px", marginBottom: 11 }}>
-              <Sparkles className="h-3.5 w-3.5" stroke="#4338ca" strokeWidth={2.4} />
+              <FluentIcon name="sparkles" size={14} />
               <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".02em", color: "#4338ca" }}>Keep the momentum going</span>
             </div>
             <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 23, color: "#1e1b4b", lineHeight: 1.15 }}>{p.firstName} is on a roll.</div>
@@ -586,7 +581,7 @@ function QuickTile({ href, grad, shadow, label, Icon, badge }: {
     <Link href={href} className="kh-tile" style={{ position: "relative", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, height: 128, borderRadius: 24, background: grad, boxShadow: `0 10px 40px -12px ${shadow}` }}>
       {badge && (
         <span style={{ position: "absolute", top: 10, right: 10, display: "inline-flex", alignItems: "center", gap: 4, background: "rgba(255,255,255,.92)", color: "#4338ca", fontSize: 10.5, fontWeight: 800, letterSpacing: ".02em", borderRadius: 99, padding: "3px 8px" }}>
-          <Lock className="h-2.5 w-2.5" strokeWidth={3} />{badge}
+          <FluentIcon name="lock" size={20} />{badge}
         </span>
       )}
       <Icon className="h-[38px] w-[38px] text-white" strokeWidth={1.8} />

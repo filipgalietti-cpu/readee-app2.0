@@ -17,7 +17,7 @@ import { getActiveMultiplier, clearActiveMultiplierFields } from "@/lib/carrots/
 
 const PASS_THRESHOLD = 3;
 import { StreakFire } from "@/app/_components/StreakFire";
-import { Star, Rocket, Zap, Target, Medal, Gem, Type, FileText, Search, Eye, CheckCircle, Check, PenTool, BookOpen, MessageSquare, Crown} from "lucide-react";
+import { Medal, Gem, Type, FileText, Search, Eye, CheckCircle, PenTool, MessageSquare, Crown, BookOpen, Target } from "lucide-react";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
 import type { Outfit } from "@/app/_components/Bunny/outfits";
@@ -43,7 +43,7 @@ function emojiToIcon(emoji: string): React.ReactNode {
   if (Icon) return <Icon className="w-12 h-12 text-violet-500" strokeWidth={1.5} />;
   if (!emoji) return null;
   // For any unmapped emoji from JSON data, use BookOpen as fallback
-  return <BookOpen className="w-12 h-12 text-violet-500" strokeWidth={1.5} />;
+  return <FluentIcon name="open-book" size={48} />;
 }
 
 type Phase = "loading" | "learn" | "practice" | "complete";
@@ -280,7 +280,7 @@ function SectionProgressBar({
               <span key={s.key} className={`inline-flex items-center gap-1 font-medium ${
                 isComplete ? "text-green-600" : isCurrent ? "text-violet-600" : "text-zinc-300"
               }`}>
-                {isComplete && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                {isComplete && <FluentIcon name="check" size={14} />}
                 {s.label}
               </span>
             );
@@ -1159,7 +1159,7 @@ function LessonContent() {
                         `}
                         >
                           {showCorrect && isCorrect ? (
-                            <Check className="h-4 w-4" strokeWidth={3} />
+                            <FluentIcon name="check" size={16} />
                           ) : (
                             letters[i]
                           )}
@@ -1294,7 +1294,7 @@ function LessonContent() {
                 const dm = getDailyMultiplier(streakDays);
                 return dm.multiplier > 1 ? (
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200">
-                    <Zap className="w-4 h-4 text-amber-500" strokeWidth={1.5} />
+                    <FluentIcon name="zap" size={16} />
                     <span className="text-sm font-bold text-amber-700">{dm.label}</span>
                   </div>
                 ) : null;
@@ -1323,7 +1323,7 @@ function LessonContent() {
               )}
               {showLevelUp && (
                 <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-violet-100 border border-violet-200">
-                  <Rocket className="w-5 h-5 text-violet-600" strokeWidth={1.5} />
+                  <FluentIcon name="rocket" size={20} />
                   <div className="text-left">
                     <div className="text-[10px] font-medium text-violet-600 uppercase tracking-wider">Leveled up</div>
                     <div className="text-sm font-bold text-violet-800">{newLevelName}</div>

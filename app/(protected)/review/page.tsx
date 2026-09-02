@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeft, Brain, ArrowRight, Check, CalendarClock } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarClock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { getUserProfile } from "@/lib/auth/helpers";
 import { getUserPlan } from "@/lib/plan/check-access";
 import { getAllStandards, slugifyStandard } from "@/lib/data/standards";
 import { EmptyState } from "@/app/_components/EmptyState";
 import SharpenUpInsights from "@/app/_components/SharpenUpInsights";
+import { FluentIcon } from "@/app/_components/FluentIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -120,7 +121,7 @@ export default async function ReviewPage({
       <div className="mt-3 flex flex-wrap items-start justify-between gap-3">
         <div>
           <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
-            <Brain className="h-4 w-4" />
+            <FluentIcon name="brain" size={16} />
             Today&apos;s review
           </div>
           <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
@@ -194,7 +195,7 @@ export default async function ReviewPage({
                     </span>
                     {item.streak >= 3 && (
                       <span className="inline-flex items-center gap-0.5 rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-800">
-                        <Check className="h-2.5 w-2.5" /> streak {item.streak}
+                        <FluentIcon name="check" size={20} /> streak {item.streak}
                       </span>
                     )}
                   </div>

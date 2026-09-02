@@ -24,7 +24,7 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { Target, Puzzle, BookOpen, Map, Flame, Sun, CloudSun, Moon, Sparkles, Star, Rocket, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Mic, Compass, Users, Brain, Carrot} from "lucide-react";
+import { Puzzle, Map, Sparkles, Star, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Compass, Users, Brain, Carrot} from "lucide-react";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -193,9 +193,9 @@ function getFriendlyTopicName(domain: string): string {
 
 function getGreeting(): { text: string; icon: ReactNode } {
   const h = new Date().getHours();
-  if (h < 12) return { text: "Good morning", icon: <Sun className="w-8 h-8 text-amber-400" strokeWidth={1.5} /> };
-  if (h < 17) return { text: "Good afternoon", icon: <CloudSun className="w-8 h-8 text-amber-400" strokeWidth={1.5} /> };
-  return { text: "Good evening", icon: <Moon className="w-8 h-8 text-violet-400" strokeWidth={1.5} /> };
+  if (h < 12) return { text: "Good morning", icon: <FluentIcon name="sun" size={32} /> };
+  if (h < 17) return { text: "Good afternoon", icon: <FluentIcon name="sun-cloud" size={32} /> };
+  return { text: "Good evening", icon: <FluentIcon name="moon" size={32} /> };
 }
 
 function DashboardBackdrop({ src }: { src: string }) {
