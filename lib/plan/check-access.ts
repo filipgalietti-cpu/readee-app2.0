@@ -3,7 +3,7 @@ import { effectivePlan, resolveAccess, type Access } from "@/lib/plan/access";
 
 /**
  * Server-side plan check. Returns the EFFECTIVE plan — a reader inside the
- * 7-day reverse trial resolves to "premium" so server gates unlock too.
+ * reverse trial resolves to "premium" so server gates unlock too.
  * null if not authenticated.
  */
 export async function getUserPlan(): Promise<string | null> {

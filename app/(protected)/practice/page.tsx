@@ -16,7 +16,7 @@ import PracticeClient from "./PracticeClient";
  *
  * Bypass rules mirror the client exactly:
  *  - Trial + premium pass (getUserPlan returns the EFFECTIVE plan, so a reader
- *    inside the 7-day reverse trial resolves to "premium").
+ *    inside the reverse trial resolves to "premium").
  *  - Post-lesson quizzes (from=lesson) are never gated — a free kid replaying a
  *    lesson must not get bounced to /upgrade mid-quiz.
  *  - Only counts when the child belongs to the signed-in parent.

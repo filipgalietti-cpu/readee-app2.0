@@ -94,7 +94,7 @@ One per-child profile powers all adaptivity (`lib/adaptive/learner-model.ts`, `g
 ## Email & Lifecycle (Resend)
 
 Behavioral + transactional email, all in one branded shell:
-- **Lifecycle** (`lib/email/lifecycle.ts`): `welcome` (immediate on signup), `first_lesson_nudge` (~day 3), `trial_ending` (day 6 — the load-bearing conversion nudge), `re_engage` (7+ days inactive), fired by a daily cron and deduped in `lifecycle_email_sends`.
+- **Lifecycle** (`lib/email/lifecycle.ts`): `welcome` (immediate on signup), `first_lesson_nudge` (~day 3), `trial_ending` (retired with the reverse trial; never fires while `TRIAL_DAYS` is 0), `re_engage` (7+ days inactive), fired by a daily cron and deduped in `lifecycle_email_sends`.
 - **Weekly progress digest** (`lib/email/parent-digest.ts`) — Mondays, per-child stats.
 - **Transactional** — cancellation, account-deletion, and a **What's New** broadcast (`scripts/send-whats-new.ts`) for content drops.
 
@@ -113,7 +113,7 @@ Behavioral + transactional email, all in one branded shell:
 
 **Readee+** is the premium tier: **$9.99/month or $6.99/month billed annually.**
 
-Every new account gets **full Readee+ access for 7 days with no credit card** (a "reverse trial"), then drops to the free tier. `lib/plan/access.ts` folds the trial into an *effective plan* so existing gates unlock automatically during the trial.
+New accounts land on the **free tier** (first unit of the grade free). The only trial is **Stripe's 14-day card trial** started at checkout; the no-card "reverse trial" was retired on Sep 2 2026 (`TRIAL_DAYS = 0`). `lib/plan/access.ts` folds the trial into an *effective plan* so existing gates unlock automatically during the trial.
 
 | | Free | Readee+ |
 |---|---|---|

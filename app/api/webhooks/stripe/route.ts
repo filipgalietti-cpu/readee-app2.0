@@ -287,7 +287,7 @@ export async function POST(req: NextRequest) {
     // here to send a "your trial ends soon" email — wired loosely
     // for now (just logged) so we have telemetry; the email sender
     // can pick up on this event later without changing the webhook.
-    // TODO(paywall): the day-6 "trial ends tomorrow" email goes through the
+    // TODO(paywall): the day-13 "trial ends tomorrow" email goes through the
     // parent-notification email loop — send it from there when that loop
     // ships, keyed off this event. Do NOT add ad-hoc email sending here.
     case "customer.subscription.trial_will_end": {

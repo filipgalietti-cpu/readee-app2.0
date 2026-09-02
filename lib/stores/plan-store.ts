@@ -4,7 +4,7 @@ import { resolveAccess, effectivePlan, type Access } from "@/lib/plan/access";
 import { isPaidPlan } from "@/lib/plan/limits";
 
 interface PlanState {
-  /** EFFECTIVE plan for entitlement gates — a reader inside the 7-day reverse
+  /** EFFECTIVE plan for entitlement gates — a reader inside the reverse
    *  trial resolves to "premium" so every `plan === "premium"` check unlocks.
    *  null = loading. For billing/conversion UI use `rawPlan`. */
   plan: string | null;

@@ -227,7 +227,7 @@ Keep these; they are not drift.
 ### Subscription Model
 - Free tier + **Readee+** at $9.99/month (or $6.99/month billed annually)
 - Stripe handles all subscriptions — web-only (no Apple IAP)
-- Free trial: 7 days — controlled via Stripe, not custom logic
+- Free trial: 14 days WITH A CARD, started at Stripe checkout only (trial_period_days in app/api/checkout/route.ts). Changed from 7 on Sep 2 2026. The old no-card reverse trial is retired: lib/plan/access.ts TRIAL_DAYS = 0, so new accounts land on the free tier (first unit free) until they subscribe.
 - `profiles.plan` column in Supabase is the source of truth (`'free'` or `'premium'`)
 - Stripe webhook sets `plan = 'premium'` on subscribe, `plan = 'free'` on cancel/delete
 

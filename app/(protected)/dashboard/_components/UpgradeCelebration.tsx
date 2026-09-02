@@ -309,7 +309,7 @@ export default function UpgradeCelebration({ onClose }: { onClose: () => void })
         </div>
 
         <p className="uc-note">
-          Your 7-day free trial started. No charge until day 8.
+          Your 14-day free trial started. No charge until day 15.
         </p>
 
         <button type="button" className="uc-btn" onClick={onClose}>

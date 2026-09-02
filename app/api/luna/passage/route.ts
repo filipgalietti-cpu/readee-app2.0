@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "forbidden" }, { status: 403 });
   }
   // Free allowance (server-enforced so it can't be bypassed): full-access
-  // readers (paid or inside the 7-day reverse trial) generate unlimited
+  // readers (paid or inside the reverse trial) generate unlimited
   // stories; a genuinely-free reader gets personalizedStoriesFree taste
   // generations, then a 402 that LunaCreate turns into the Readee+ wall.
   const admin = supabaseAdmin();

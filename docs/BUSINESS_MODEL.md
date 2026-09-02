@@ -36,7 +36,7 @@ costs in `lib/ai/credits.ts`, monthly caps in `MONTHLY_CREDIT_LIMIT`._
 ### Readee+ Family (B2C subscription)
 - **Price:** $9.99/mo · $6.99/mo billed annually = $83.88/yr
 - **What it unlocks:** unlimited lessons, unlimited practice, unlimited stories, unlimited children, analytics, Ask Readee at 200 credits/mo, **Stories starring my kid**, AI personalized learning path per child, daily question history.
-- **7-day free trial** controlled by Stripe.
+- **14-day free trial** (card required) controlled by Stripe.
 - **Stripe SKU:** `STRIPE_PRICE_MONTHLY` / `STRIPE_PRICE_ANNUAL`.
 
 ### Teacher Solo (B2B-light)

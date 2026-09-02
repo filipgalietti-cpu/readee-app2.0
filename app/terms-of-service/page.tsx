@@ -55,7 +55,7 @@ export default function TermsOfServicePage() {
             <strong>Free trials</strong> convert to a paid subscription at the end of the trial period unless you cancel before the trial ends.
           </p>
           <p>
-            <strong>Cancellation and refunds.</strong> You can cancel Readee+ at any time from your account settings. Paid features remain active through the end of the current billing period; you revert to the free tier afterward. New subscriptions include a 7-day free trial, and annual subscriptions include a 14-day money-back guarantee. Refunds are not issued for partial monthly billing periods. See our full{" "}
+            <strong>Cancellation and refunds.</strong> You can cancel Readee+ at any time from your account settings. Paid features remain active through the end of the current billing period; you revert to the free tier afterward. New subscriptions include a 14-day free trial, and annual subscriptions include a 14-day money-back guarantee. Refunds are not issued for partial monthly billing periods. See our full{" "}
             <a href="https://readee.app/refund" className="text-indigo-600 hover:underline">Refund and Cancellation Policy</a>.
           </p>
         </section>

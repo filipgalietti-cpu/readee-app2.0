@@ -40,7 +40,7 @@ export default async function LunaReadPage({
   searchParams: Promise<{ child?: string }>;
 }) {
   const profile = await requireProfile();
-  // Full access = paid OR inside the 7-day reverse trial, so a trial reader
+  // Full access = paid OR inside the reverse trial, so a trial reader
   // isn't walled after 3 Luna reads.
   const paid = resolveAccess({
     plan: (profile as any).plan,

@@ -1,7 +1,7 @@
 /**
  * Server-side free-taste gates for Luna's cost endpoints (speech grading, TTS,
  * Azure token mints, Story Studio generation). Mirrors the pattern in
- * /api/luna/passage: full-access readers (paid or inside the 7-day reverse
+ * /api/luna/passage: full-access readers (paid or inside the reverse
  * trial) always pass; a genuinely-free reader gets the FREE_LIMITS taste
  * (3 completed Luna reads, 3 Story Studio stories), then the route returns a
  * 402 the client turns into the Readee+ wall.

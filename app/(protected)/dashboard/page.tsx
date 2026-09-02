@@ -12,6 +12,7 @@ import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import lessonsData from "@/lib/data/lessons.json";
 import { computeJourneyProgress } from "@/lib/journey/next-lesson";
 import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
+import { TRIAL_DAYS } from "@/lib/plan/access";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import LevelProgressBar from "@/app/_components/LevelProgressBar";
 import { useChildStore } from "@/lib/stores/child-store";
@@ -780,10 +781,9 @@ function ChildDashboard({
       ? { href: nextLessonHref, text: completedCount === 0 ? "Start your adventure" : "Keep going", sub: `Next: ${nextLesson.title}` }
       : { href: `/practice-hub?child=${child.id}`, text: "Practice time!", sub: "You finished every lesson - amazing!" };
 
-  // Reverse trial: a new reader gets full Readee+ access for the first 7 days
+  // Reverse trial (retired Sep 2 2026, TRIAL_DAYS = 0): a new reader used to get full Readee+ access for the first TRIAL_DAYS days
   // (no card), then drops to the limited free tier. Full access = paid OR in
   // trial; the locks + upgrade card only appear once the trial is over.
-  const TRIAL_DAYS = 7;
   const signupMs = child.created_at ? new Date(child.created_at).getTime() : Date.now();
   const daysSinceSignup = Math.max(0, Math.floor((Date.now() - signupMs) / 86400000));
   const realTrialLeft = Math.max(0, TRIAL_DAYS - daysSinceSignup);

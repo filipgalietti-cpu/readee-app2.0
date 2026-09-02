@@ -1,7 +1,7 @@
 # Claude Design brief — Readee+ upgrade / paywall (`/upgrade`)
 
 Paste the block below into Claude Design. Grounded in the real page: Readee+
-is $9.99/mo (or $6.99/mo billed annually), 7-day free trial, a monthly/
+is $9.99/mo (or $6.99/mo billed annually), 14-day free trial, a monthly/
 annual toggle, a benefits list, a co-founder trust signal, and contextual
 hero copy driven by `?reason=` (analytics / lesson / story / practice).
 
@@ -29,7 +29,7 @@ SCREEN ANATOMY
 - The PLAN CARD with a MONTHLY / ANNUAL toggle:
   · Monthly $9.99/mo. Annual $6.99/mo (billed annually) — badge the annual
     option "Best value / Save 30%".
-  · A clear "Start 7-day free trial" primary CTA, and honest fine print
+  · A clear "Start 14-day free trial" primary CTA, and honest fine print
     ("Then $X. Cancel anytime.") — no dark patterns.
 - A BENEFITS list — what Readee+ unlocks, plain and concrete: every lesson,
   full stories library, unlimited practice, the parent progress dashboard,
@@ -68,7 +68,7 @@ HARD CONSTRAINTS
 
 DELIVERABLE
 A polished, responsive upgrade page: the contextual hero, the plan card with
-monthly/annual toggle + 7-day-trial CTA + honest fine print, the benefits
+monthly/annual toggle + 14-day-trial CTA + honest fine print, the benefits
 list, and Jennifer's educator trust signal. Show two states: the "analytics"
 reason hero, and the annual-toggle selected showing $6.99/mo best-value
 framing.
