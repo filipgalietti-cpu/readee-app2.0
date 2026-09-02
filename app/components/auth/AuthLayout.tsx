@@ -39,7 +39,7 @@ export default function AuthLayout({
             width={1200}
             height={404}
             priority
-            className="w-44 h-auto mx-auto mb-6"
+            className="w-45 h-auto mx-auto mb-6"
           />
 
           {showTabs && (
