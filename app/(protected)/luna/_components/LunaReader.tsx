@@ -345,6 +345,53 @@ export default function LunaReader({
   // REPLACED by one large word at a time, karaoke-underlined as each phoneme
   // plays. segIdx = which grapheme chunk is lit (-1 none, length = whole word).
   const [wordLesson, setWordLesson] = useState<{ word: string; segs: SoundSegment[]; segIdx: number; label?: string; done?: boolean } | null>(null);
+  // Big-orb → mini-orb dock (Filip: "large luna shrinks when the lesson
+  // starts"). When a word lesson opens, the BIG orb flies down and shrinks
+  // into the card's mini-orb slot (FLIP animation); when the lesson resolves
+  // it grows back. `orbDocked` hides the big orb while the mini stands in.
+  const miniOrbSlotRef = useRef<HTMLDivElement | null>(null);
+  const [orbDocked, setOrbDocked] = useState(false);
+  const dockStateRef = useRef(false);
+  const dockDeltaRef = useRef<{ dx: number; dy: number; s: number } | null>(null);
+  const docked = !!wordLesson && !wordLesson.done;
+  useEffect(() => {
+    if (docked === dockStateRef.current) return;
+    dockStateRef.current = docked;
+    const wrap = orbWrapRef.current;
+    const reduce = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (docked) {
+      const slot = miniOrbSlotRef.current;
+      if (!wrap || !slot || reduce) { setOrbDocked(true); return; }
+      const a = wrap.getBoundingClientRect();
+      const b = slot.getBoundingClientRect();
+      const dx = b.left + b.width / 2 - (a.left + a.width / 2);
+      const dy = b.top + b.height / 2 - (a.top + a.height / 2);
+      const s = Math.max(0.1, b.width / a.width);
+      dockDeltaRef.current = { dx, dy, s };
+      const anim = wrap.animate(
+        [
+          { transform: "translate(0px, 0px) scale(1)", opacity: 1 },
+          { transform: `translate(${dx}px, ${dy}px) scale(${s})`, opacity: 0.85 },
+        ],
+        { duration: 550, easing: "cubic-bezier(.32,.72,.24,1)", fill: "forwards" },
+      );
+      anim.onfinish = () => { try { anim.cancel(); } catch { /* ignore */ } setOrbDocked(true); };
+    } else {
+      setOrbDocked(false);
+      const d = dockDeltaRef.current;
+      if (wrap && d && !reduce) {
+        wrap.animate(
+          [
+            { transform: `translate(${d.dx}px, ${d.dy}px) scale(${d.s})`, opacity: 0.85 },
+            { transform: "translate(0px, 0px) scale(1)", opacity: 1 },
+          ],
+          { duration: 500, easing: "cubic-bezier(.32,.72,.24,1)" },
+        );
+      }
+      dockDeltaRef.current = null;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [docked]);
   const missQueueRef = useRef<string[]>([]);
   // Orion help-ladder state for the word currently being taught: which rungs
   // have been tried. Escalates first-sound → onset-rime → sound-out → model →
@@ -1817,8 +1864,8 @@ export default function LunaReader({
                   one. Hidden during the green celebration beat. */}
               {!wordLesson.done && (
                 <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: 2 }}>
-                  <div style={{ width: 52, height: 52, overflow: "hidden", borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} size={40} />
+                  <div ref={miniOrbSlotRef} style={{ width: 52, height: 52, overflow: "hidden", borderRadius: "50%", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", opacity: orbDocked ? 1 : 0, transition: "opacity .25s ease" }}>
+                    {orbDocked && <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} size={40} />}
                   </div>
                   <span style={{ fontSize: 15, fontWeight: 800, color: mode === "listening" ? "#7c3aed" : "#71717a", fontFamily: "'Nunito',sans-serif", transition: "color .3s ease" }}>
                     {mode === "listening" ? "Your turn, read the word" : "Listen first"}
@@ -1857,7 +1904,7 @@ export default function LunaReader({
               the bunny overlapping the orb's lower-right — so the GROUP sits
               in the middle of the page and the orb only shifts ~28px. */}
           <div style={{ position: "relative", width: phase === "intro" ? 180 : 236, height: 184 }}>
-            <div ref={orbWrapRef} style={{ position: "absolute", left: 0, top: 0, width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div ref={orbWrapRef} style={{ position: "absolute", left: 0, top: 0, width: 180, height: 180, display: "flex", alignItems: "center", justifyContent: "center", visibility: orbDocked ? "hidden" : "visible" }}>
               <LunaOrb mode={mode} analyser={mode === "listening" ? analyser : null} onTap={phase === "intro" ? undefined : onTap} size={180} />
               <div ref={sparksHostRef} style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
             </div>
