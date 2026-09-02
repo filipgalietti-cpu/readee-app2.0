@@ -163,7 +163,7 @@ export default function LevelProgressCard({
                 <motion.div
                   initial={{ width: `${Math.min(100, Math.max(0, (computeLevel(prior).progress01) * 100))}%` }}
                   animate={{ width: `${Math.min(100, Math.max(0, post.progress01 * 100))}%` }}
-                  transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
                   className={`h-full rounded-full ${post.current.accent.bg}`}
                 />
               </div>

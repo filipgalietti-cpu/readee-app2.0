@@ -813,7 +813,7 @@ function MascotBubble({ mascot, containerWidth, totalHeight }: {
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.4, delay: 0.2 }}
+      transition={{ duration: 0.35, delay: 0.2 }}
     >
       {mascot.side === "left" && (
         <div className={`rounded-xl px-3 py-2 shadow-md text-sm font-medium max-w-[160px] ${bubbleClass}`}>
@@ -899,7 +899,7 @@ function MapNode({
       initial={{ opacity: 0, scale: 0.8, x: "-50%" }}
       whileInView={{ opacity: 1, scale: 1, x: "-50%" }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.35 }}
     >
       {/* ── Node circle — fills container, centered exactly on path ── */}
       {status === "completed" && (

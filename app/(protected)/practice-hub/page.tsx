@@ -506,7 +506,7 @@ function PracticeHubContent() {
     <div className="@container mx-auto max-w-6xl px-4 py-6 sm:px-6 pb-32 space-y-5 font-[family-name:var(--font-nunito)]">
       {/* ── Hero + grade switcher ── */}
       <motion.section
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         style={{ background: "linear-gradient(160deg, #e8e0ff 0%, #ffffff 45%, #e0ecff 100%)" }}
         className="rounded-[24px] p-5 sm:p-7 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)] flex flex-col gap-5 @4xl:flex-row @4xl:items-center @4xl:gap-8"
@@ -638,7 +638,7 @@ function PracticeHubContent() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.22 }}
+                    transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
                     <div className="px-4 pt-2 pb-4 grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-2.5 items-start">

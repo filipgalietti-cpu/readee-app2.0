@@ -75,7 +75,7 @@ export default function SharpenUpCard({
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.35 }}
       className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 to-white p-6 shadow-sm"
     >
       <div className="flex items-start gap-4">

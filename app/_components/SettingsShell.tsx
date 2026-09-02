@@ -273,7 +273,7 @@ function SettingsUserMenu({ avatarSrc, name }: { avatarSrc: string | null; name:
             initial={{ opacity: 0, y: 8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
-            transition={{ duration: 0.15 }}
+            transition={{ duration: 0.2 }}
             className="absolute bottom-full left-3 right-3 mb-2 rounded-xl border border-zinc-200 bg-white shadow-lg overflow-hidden z-50"
           >
             <div className="py-1 px-1">

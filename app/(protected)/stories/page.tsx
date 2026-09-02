@@ -572,7 +572,7 @@ function StoriesContent() {
 
       {/* Greeting banner */}
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         className="flex flex-wrap items-center gap-3 rounded-3xl px-7 py-5 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]"
         style={{ background: "linear-gradient(160deg,#e8e0ff 0%,#ffffff 45%,#e0ecff 100%)" }}
@@ -620,7 +620,7 @@ function StoriesContent() {
         return (
           <motion.div
             key={group.grade}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: gIdx * 0.04 }}
             className="rounded-2xl bg-white shadow-sm overflow-hidden"
@@ -669,7 +669,7 @@ function StoriesContent() {
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
+                  transition={{ duration: 0.35 }}
                   className="overflow-hidden"
                 >
                   <div className="grid gap-4 px-4 py-4" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(196px, 1fr))" }}>
@@ -683,7 +683,7 @@ function StoriesContent() {
                         return (
                           <div key={s.id} onClick={() => router.push("/upgrade?reason=story")} className="cursor-pointer">
                             <motion.div
-                              initial={{ opacity: 0, y: 10 }}
+                              initial={{ opacity: 0, y: 8 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: sIdx * 0.05 }}
                               className="relative overflow-hidden bg-white text-left shadow-sm"
@@ -710,7 +710,7 @@ function StoriesContent() {
                       return (
                       <motion.button
                         key={s.id}
-                        initial={{ opacity: 0, y: 10 }}
+                        initial={{ opacity: 0, y: 8 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: sIdx * 0.05 }}
                         onClick={() => openStory(s)}

@@ -613,7 +613,7 @@ function LearnSession({
             className="h-full rounded-full bg-violet-500"
             initial={{ width: 0 }}
             animate={{ width: `${((currentIdx + (showFeedback ? 1 : 0)) / totalQ) * 100}%` }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
           />
         </div>
 
@@ -1050,7 +1050,7 @@ function CompletionScreen({
             height: c.size,
             backgroundColor: c.color,
           }}
-          initial={{ y: -20, x: 0, rotate: 0, opacity: 1 }}
+          initial={{ y: -16, x: 0, rotate: 0, opacity: 1 }}
           animate={{
             y: "100vh",
             x: c.xDrift,

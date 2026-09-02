@@ -169,7 +169,7 @@ export default function Transform({
               {label && (
                 <motion.div
                   className="gb-tag"
-                  initial={{ opacity: 0, y: -6 }}
+                  initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                   style={{ color: isNew ? "#857fa0" : "#047857" }}
@@ -212,7 +212,7 @@ export default function Transform({
                   scale: [0, 1.1, 0],
                   opacity: [1, 1, 0],
                 }}
-                transition={{ duration: 0.75, delay: s.delay, ease: "easeOut" }}
+                transition={{ duration: 0.5, delay: s.delay, ease: "easeOut" }}
                 style={{
                   position: "absolute",
                   left: "50%",

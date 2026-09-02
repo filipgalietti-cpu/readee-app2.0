@@ -277,7 +277,7 @@ export function SoundMachine({
                 shaking && soundIdx !== -1
                   ? { x: [0, -6, 6, -4, 4, -2, 2, 0], transition: { duration: 0.5 } }
                   : result === "correct" && soundIdx !== -1
-                  ? { scale: [1, 1.08, 1], transition: { duration: 0.3, delay: slotIdx * 0.05 } }
+                  ? { scale: [1, 1.08, 1], transition: { duration: 0.35, delay: slotIdx * 0.05 } }
                   : {}
               }
             >
@@ -301,7 +301,7 @@ export function SoundMachine({
         {result === "correct" && (
           <motion.div
             className="text-center"
-            initial={{ opacity: 0, scale: 0.5, y: -10 }}
+            initial={{ opacity: 0, scale: 0.5, y: -8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 20, delay: 0.15 }}
           >
@@ -364,7 +364,7 @@ export function SoundMachine({
                 }
               : undefined
           }
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >

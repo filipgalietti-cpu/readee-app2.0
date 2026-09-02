@@ -140,7 +140,7 @@ export function SpaceInsertion({
           shaking
             ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } }
             : result === "correct"
-            ? { scale: [1, 1.02, 1], transition: { duration: 0.3 } }
+            ? { scale: [1, 1.02, 1], transition: { duration: 0.35 } }
             : {}
         }
       >
@@ -229,7 +229,7 @@ export function SpaceInsertion({
                 }
               : undefined
           }
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >

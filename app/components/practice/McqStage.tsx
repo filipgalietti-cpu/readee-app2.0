@@ -104,7 +104,7 @@ export function McqStage(props: McqStageProps) {
           <motion.button
             key={choice}
             variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0 } }}
-            animate={shake ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } } : pop ? { scale: [1, 1.08, 1], transition: { duration: 0.3 } } : {}}
+            animate={shake ? { x: [0, -8, 8, -6, 6, -3, 3, 0], transition: { duration: 0.5 } } : pop ? { scale: [1, 1.08, 1], transition: { duration: 0.35 } } : {}}
             onClick={(e) => {
               if (answered || isGreyed) return;
               onChoiceClick(choice, i, e.currentTarget.getBoundingClientRect());
@@ -209,7 +209,7 @@ export function BunnyBubble({ outfitId, state, bubble }: {
       {bubble && tone && (
         <motion.div
           key={bubble.text}
-          initial={{ opacity: 0, scale: 0.8, y: 6 }}
+          initial={{ opacity: 0, scale: 0.8, y: 8 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           className="relative max-w-[min(320px,44vw)] px-4 py-3 mb-12 border-2 shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]"
           style={{ background: tone.bg, borderColor: tone.border, borderRadius: "18px 18px 18px 4px" }}
@@ -250,7 +250,7 @@ export function NextCta({ label, onClick }: { label: string; onClick: () => void
   return (
     <AnimatePresence>
       <motion.button
-        initial={{ opacity: 0, y: 14, scale: 0.9 }}
+        initial={{ opacity: 0, y: 16, scale: 0.9 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClick}

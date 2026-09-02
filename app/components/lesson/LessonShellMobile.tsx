@@ -118,9 +118,9 @@ export function LessonShellMobile({
       <main className="flex min-h-0 flex-1 flex-col overflow-y-auto px-5 py-6">
         <motion.div
           key={slideNum}
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
           className="flex min-h-full w-full flex-col"
         >
           {contentSlot}

@@ -104,7 +104,7 @@ export default function TextFX({ text, effect }: { text: string; effect: string 
             <motion.span
               key={i}
               className={`fx-word ${cls}${t.target ? " fx-hot" : ""}`}
-              initial={{ opacity: 0, y: 18, scale: 0.7 }}
+              initial={{ opacity: 0, y: 16, scale: 0.7 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.15 + i * 0.13, type: "spring", stiffness: 320, damping: 20 }}
             >

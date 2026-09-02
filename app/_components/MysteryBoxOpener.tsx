@@ -123,7 +123,7 @@ export function MysteryBoxOpener({
               className="w-56 h-56 sm:w-72 sm:h-72 relative"
               initial={{ scale: 1.08 }}
               animate={{ scale: [1.08, 1.3, 1.15] }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
             >
               <motion.img
                 src="/images/shop/mystery-box-open.png"
@@ -132,7 +132,7 @@ export function MysteryBoxOpener({
 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.2 }}
               />
               {/* Light burst from box */}
               <motion.div
@@ -140,7 +140,7 @@ export function MysteryBoxOpener({
                 style={{ background: "radial-gradient(circle, rgba(251,191,36,0.4) 0%, transparent 70%)" }}
                 initial={{ scale: 0.5, opacity: 0 }}
                 animate={{ scale: 2.5, opacity: [0, 0.8, 0] }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
               />
             </motion.div>
           )}
@@ -172,14 +172,14 @@ export function MysteryBoxOpener({
               ))}
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.3, y: 20 }}
+                initial={{ opacity: 0, scale: 0.3, y: 16 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 15 }}
                 className="space-y-5"
               >
                 <motion.div
                   animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                 >
                   <RewardIcon className="w-20 h-20 text-amber-400" strokeWidth={1.5} />
                 </motion.div>

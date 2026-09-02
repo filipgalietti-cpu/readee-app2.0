@@ -210,7 +210,7 @@ export function TapToPair({
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.35 }}
             />
           ))}
         </svg>

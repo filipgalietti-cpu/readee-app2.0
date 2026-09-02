@@ -9,9 +9,9 @@ import AuthCard from "@/app/components/auth/AuthCard";
 import FormField from "@/app/components/auth/FormField";
 
 const fadeVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.25 } },
-  exit: { opacity: 0, y: -10, transition: { duration: 0.15 } },
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+  exit: { opacity: 0, y: -8, transition: { duration: 0.2 } },
 };
 
 export default function ResetPasswordPage() {

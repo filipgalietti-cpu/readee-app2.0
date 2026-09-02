@@ -112,6 +112,27 @@ a generic default, not for Readee.
   lose their silhouette at the size a child taps. Filled colour survives the
   shrink; outlines do not.
 
+### Motion (canonical — copy these, don't invent)
+An audit on Sep 2 2026 found **23 entrance rise distances and 19 durations**.
+Nobody chose 23 rise distances; each screen re-derived one. Consolidated to
+three of each:
+
+| Role | Rise | Duration |
+|---|---|---|
+| Subtle (chips, rows, inline reveals) | `y: 8` | `duration: 0.2` |
+| Standard (cards, panels, most reveals) | `y: 16` | `duration: 0.35` |
+| Large (page-level, celebration) | `y: 24` | `duration: 0.5` |
+
+- Downward entrances mirror it: `y: -8` / `-16` / `-24`.
+- Standard entrance is `initial={{ opacity: 0, y: 16 }}` +
+  `transition={{ duration: 0.35 }}`. Reach for another value only with a reason.
+- **Legitimate exceptions, do not "fix" these:** a specific layout slide
+  (`y: 288` in WhatsNew, `y: -110` on the floating carrots) and ambient or
+  celebration loops over 1s (`repeat: Infinity` progress rings, the mystery-box
+  reveal). Those are not entrance motion.
+- Millisecond values (`700`, `850`) belong to CSS transitions and setTimeout,
+  not Framer. Different unit, leave them alone.
+
 ### Shadows (canonical — copy these, don't invent)
 An audit on Sep 2 2026 found **30 bespoke shadow recipes**, including the same
 indigo drop written five ways (`.15` / `0.15` / `.18` / `.25`, and a `30px_-10px`
