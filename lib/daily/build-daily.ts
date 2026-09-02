@@ -29,7 +29,7 @@ import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scen
 import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
 import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
-import { trackError } from "@/lib/observability/track";
+import { trackError, trackSignal } from "@/lib/observability/track";
 import { runAutoHealLoop, type Finding, type Healer } from "@/lib/qc/auto-heal";
 import {
   resolveHistoricalImage,
@@ -264,6 +264,7 @@ export async function generateEasyRendition(opts: {
   ].join("\n");
 
   let feedback = "";
+  let lastReasons = "";
   for (let attempt = 1; attempt <= 2; attempt++) {
     const passageRes = await generatePassage({
       teacherId,
@@ -295,54 +296,76 @@ export async function generateEasyRendition(opts: {
 
     // 3 MCQs at K-1 difficulty, grounded in the EASY passage so every
     // answer is literally findable in the text the young reader saw.
-    const mcqRes = await generateMCQQuestions({
-      teacherId,
-      topic: [
-        "Generate exactly 3 multiple-choice comprehension questions for kindergarten and 1st grade readers about this passage.",
-        "One-line stems in very simple words. Short answer options (1 to 4 words each).",
-        "ALL 3 questions must be LITERAL RECALL: who, what, where, or what happened. No inference, no feelings questions, no 'why' or 'how do you know' questions.",
-        "Every correct answer must restate exact words from the passage — a child should be able to point to the sentence that says it.",
-        "",
-        "Passage:",
-        '"""',
-        easyBody,
-        '"""',
-      ].join("\n"),
-      gradeLevel: "1st",
-      count: 3,
-      trustedSystem: true,
-    });
-    if (!mcqRes.ok || mcqRes.questions.length < 3) {
-      feedback = `IMPORTANT — the previous attempt could not produce 3 valid questions. Keep the passage concrete so simple recall questions are possible.`;
-      continue;
-    }
+    // A question-only QC fail (Sep 1 2026: the answer said "safe and
+    // happy", the passage said "safe and full") retries just the
+    // questions once with the judge's reason in the prompt. Before,
+    // that fail rewrote the passage and regenerated the questions
+    // blind, so attempt 2 could make the same slip, and did.
+    let questions: { prompt: string; choices: string[]; correct: string; hint?: string | null }[] | null = null;
+    let qcReasons = "";
+    for (let mcqAttempt = 1; mcqAttempt <= 2; mcqAttempt++) {
+      const mcqRes = await generateMCQQuestions({
+        teacherId,
+        topic: [
+          "Generate exactly 3 multiple-choice comprehension questions for kindergarten and 1st grade readers about this passage.",
+          "One-line stems in very simple words. Short answer options (1 to 4 words each).",
+          "ALL 3 questions must be LITERAL RECALL: who, what, where, or what happened. No inference, no feelings questions, no 'why' or 'how do you know' questions.",
+          "Every correct answer must restate exact words from the passage — a child should be able to point to the sentence that says it.",
+          ...(qcReasons
+            ? ["", `IMPORTANT — the previous questions failed quality review: ${qcReasons} Copy every correct answer from the passage word for word.`]
+            : []),
+          "",
+          "Passage:",
+          '"""',
+          easyBody,
+          '"""',
+        ].join("\n"),
+        gradeLevel: "1st",
+        count: 3,
+        trustedSystem: true,
+      });
+      if (!mcqRes.ok || mcqRes.questions.length < 3) {
+        qcReasons = "";
+        break;
+      }
 
-    // Same QC suite the base rendition runs (passage judge + question
-    // checks) with the K-1 level hint. No image/audio here — the day
-    // shares one image, and TTS runs only after QC passes.
-    const qc = await runFullQuizQc({
-      teacherId,
-      passageTitle: easyTitle,
-      passageBody: easyBody,
-      gradeLevel: "1st",
-      questions: mcqRes.questions.map((q) => ({
-        kind: "multiple_choice" as const,
-        prompt: q.prompt,
-        choices: q.choices,
-        correct: q.correct,
-        hint: q.hint ?? null,
-      })),
-      imageUrl: null,
-      imageScene: null,
-      audioUrl: null,
-    });
-    if (qc.overall === "fail") {
-      const reasons = (qc.checks ?? [])
-        .filter((c: any) => c.severity === "fail")
-        .map((c: any) => `${c.name}: ${c.message}`)
-        .join(" ");
-      console.warn(`[daily] easy rendition QC fail (attempt ${attempt}) ${dateStr}: ${reasons.slice(0, 200)}`);
-      feedback = `IMPORTANT — the previous attempt failed quality review: ${reasons} Rewrite the passage so it does not have these issues.`;
+      // Same QC suite the base rendition runs (passage judge + question
+      // checks) with the K-1 level hint. No image/audio here — the day
+      // shares one image, and TTS runs only after QC passes.
+      const qc = await runFullQuizQc({
+        teacherId,
+        passageTitle: easyTitle,
+        passageBody: easyBody,
+        gradeLevel: "1st",
+        questions: mcqRes.questions.map((q) => ({
+          kind: "multiple_choice" as const,
+          prompt: q.prompt,
+          choices: q.choices,
+          correct: q.correct,
+          hint: q.hint ?? null,
+        })),
+        imageUrl: null,
+        imageScene: null,
+        audioUrl: null,
+      });
+      if (qc.overall !== "fail") {
+        questions = mcqRes.questions;
+        break;
+      }
+      const fails = (qc.checks ?? []).filter((c: any) => c.severity === "fail");
+      qcReasons = fails.map((c: any) => `${c.name}: ${c.message}`).join(" ");
+      console.warn(`[daily] easy rendition QC fail (attempt ${attempt}.${mcqAttempt}) ${dateStr}: ${qcReasons.slice(0, 200)}`);
+      // Only question checks failed (q1.judge, q3.judge...): the passage
+      // is fine, so try the questions again. Anything else means the
+      // passage itself needs rewriting.
+      const questionOnly = fails.length > 0 && fails.every((c: any) => /^q\d+\./.test(String(c.name)));
+      if (!questionOnly) break;
+    }
+    if (!questions) {
+      lastReasons = qcReasons;
+      feedback = qcReasons
+        ? `IMPORTANT — the previous attempt failed quality review: ${qcReasons} Rewrite the passage so it does not have these issues.`
+        : `IMPORTANT — the previous attempt could not produce 3 valid questions. Keep the passage concrete so simple recall questions are possible.`;
       continue;
     }
 
@@ -354,7 +377,7 @@ export async function generateEasyRendition(opts: {
     if (tts.ok) audioUrl = tts.audioUrl;
     else console.warn(`[daily] easy rendition TTS failed ${dateStr}: ${tts.error}`);
 
-    const [mainQ, ...extras] = mcqRes.questions;
+    const [mainQ, ...extras] = questions;
     return {
       passage_title: easyTitle,
       passage_body: easyBody,
@@ -372,9 +395,12 @@ export async function generateEasyRendition(opts: {
     };
   }
 
-  trackError(new Error("easy rendition failed twice — base-only day"), {
+  // A designed fallback, not a fault: the day still ships with the base
+  // rendition. Warning keeps it visible in Sentry without paging.
+  trackSignal("easy rendition failed twice: base-only day", {
     route: "daily-question.easy",
-    extra: { date: dateStr },
+    level: "warning",
+    extra: { date: dateStr, reasons: lastReasons.slice(0, 500) },
   });
   return null;
 }
