@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Users, BookOpen, Mail, Send } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 export default function ContactUsPage() {
   const [name, setName] = useState("");
@@ -100,7 +100,7 @@ export default function ContactUsPage() {
               disabled={sending}
               className="w-full py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-semibold text-sm hover:from-violet-700 hover:to-violet-600 transition-all shadow-sm disabled:opacity-50 flex items-center justify-center gap-2"
             >
-              <Send className="w-4 h-4" />
+              <Glyph name="send" size={16} />
               {sending ? "Sending..." : "Send Message"}
             </button>
             {result && (
@@ -116,7 +116,7 @@ export default function ContactUsPage() {
           <div className="rounded-2xl border border-zinc-200 bg-white p-6">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                <Users className="w-5 h-5 text-indigo-600" />
+                <Glyph name="users" size={20} className="text-indigo-600" />
               </div>
               <div>
                 <h3 className="font-bold text-zinc-900 mb-1">Parents</h3>
@@ -131,7 +131,7 @@ export default function ContactUsPage() {
           <div className="rounded-2xl border border-zinc-200 bg-white p-6">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                <BookOpen className="w-5 h-5 text-indigo-600" />
+                <Glyph name="book-open" size={20} className="text-indigo-600" />
               </div>
               <div>
                 <h3 className="font-bold text-zinc-900 mb-1">Educators</h3>
@@ -145,7 +145,7 @@ export default function ContactUsPage() {
           <div className="rounded-2xl border border-zinc-200 bg-white p-6">
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-5 h-5 text-indigo-600" />
+                <Glyph name="mail" size={20} className="text-indigo-600" />
               </div>
               <div>
                 <h3 className="font-bold text-zinc-900 mb-1">General</h3>

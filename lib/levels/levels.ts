@@ -16,19 +16,7 @@
  * from this file.
  */
 
-import type { LucideIcon } from "lucide-react";
-import {
-  Sprout,
-  Leaf,
-  Flower,
-  TreeDeciduous,
-  Star,
-  Sparkles,
-  Wand2,
-  Trophy,
-  Crown,
-  Rocket,
-} from "lucide-react";
+import type { FluentIconName } from "@/app/_components/FluentIcon";
 
 export type ReaderLevel = {
   /** 1-indexed level number. */
@@ -37,8 +25,8 @@ export type ReaderLevel = {
   name: string;
   /** Lifetime carrots required to *reach* this level. */
   threshold: number;
-  /** Lucide icon component for the badge. */
-  icon: LucideIcon;
+  /** Fluent Emoji name for the badge. */
+  icon: FluentIconName;
   /** Tailwind class fragments — kept together so callers don't have to
    *  guess the colour family per level. */
   accent: {
@@ -72,7 +60,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Word Sprout",
     threshold: 0,
-    icon: Sprout,
+    icon: "seedling",
     accent: {
       bg: "bg-emerald-500",
       fg: "text-white",
@@ -84,7 +72,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Page Turner",
     threshold: 50,
-    icon: Leaf,
+    icon: "leaf",
     accent: {
       bg: "bg-lime-500",
       fg: "text-white",
@@ -96,7 +84,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Story Hunter",
     threshold: 150,
-    icon: Flower,
+    icon: "blossom",
     accent: {
       bg: "bg-teal-500",
       fg: "text-white",
@@ -108,7 +96,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Book Buddy",
     threshold: 300,
-    icon: TreeDeciduous,
+    icon: "deciduous-tree",
     accent: {
       bg: "bg-sky-500",
       fg: "text-white",
@@ -120,7 +108,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Reading Star",
     threshold: 500,
-    icon: Star,
+    icon: "star",
     accent: {
       bg: "bg-indigo-500",
       fg: "text-white",
@@ -132,7 +120,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Library Hero",
     threshold: 800,
-    icon: Sparkles,
+    icon: "sparkles",
     accent: {
       bg: "bg-violet-500",
       fg: "text-white",
@@ -144,7 +132,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Word Wizard",
     threshold: 1200,
-    icon: Wand2,
+    icon: "wand",
     accent: {
       bg: "bg-purple-500",
       fg: "text-white",
@@ -156,7 +144,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Reading Master",
     threshold: 1700,
-    icon: Trophy,
+    icon: "trophy",
     accent: {
       bg: "bg-amber-500",
       fg: "text-white",
@@ -168,7 +156,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Story Legend",
     threshold: 2400,
-    icon: Crown,
+    icon: "crown",
     accent: {
       bg: "bg-orange-500",
       fg: "text-white",
@@ -180,7 +168,7 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
   {
     name: "Readee Champion",
     threshold: 3500,
-    icon: Rocket,
+    icon: "rocket",
     accent: {
       bg: "bg-rose-500",
       fg: "text-white",

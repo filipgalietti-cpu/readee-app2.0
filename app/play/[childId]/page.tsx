@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { ArrowRight, BookText, Compass, Library as LibraryIcon, LogOut } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import {
@@ -12,6 +11,7 @@ import {
 } from "@/lib/auth/play-mode";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -92,7 +92,7 @@ export default async function PlayHomePage({
             href={`/play/${childId}/exit`}
             className="inline-flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-3 py-1 text-[11px] font-semibold text-zinc-600 transition hover:border-indigo-300"
           >
-            <LogOut className="h-3 w-3" />
+            <Glyph name="log-out" size={12} />
             Grown-up exit
           </Link>
         </div>
@@ -125,21 +125,21 @@ export default async function PlayHomePage({
             href={`/discover`}
             title="Discover"
             subtitle="Brand-new fact-checked stories"
-            icon={<Compass className="h-5 w-5" />}
+            icon={<Glyph name="compass" size={20} />}
             color="rose"
           />
           <PlayCard
             href={`/stories`}
             title="Story library"
             subtitle="Read-along stories with audio"
-            icon={<LibraryIcon className="h-5 w-5" />}
+            icon={<Glyph name="library" size={20} />}
             color="emerald"
           />
           <PlayCard
             href={`/word-bank`}
             title="Word Bank"
             subtitle="Tap a word, hear it, learn it"
-            icon={<BookText className="h-5 w-5" />}
+            icon={<Glyph name="book" size={20} />}
             color="sky"
           />
           <PlayCard
@@ -201,7 +201,7 @@ function PlayCard({
         <div className="font-bold text-zinc-900">{title}</div>
         <div className="mt-0.5 text-xs text-zinc-500">{subtitle}</div>
       </div>
-      <ArrowRight className="h-4 w-4 flex-shrink-0 text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-indigo-500" />
+      <Glyph name="arrow-right" size={16} className="flex-shrink-0 text-zinc-400 transition group-hover:translate-x-0.5 group-hover:text-indigo-500" />
     </Link>
   );
 }

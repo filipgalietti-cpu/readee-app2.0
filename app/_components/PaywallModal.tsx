@@ -2,8 +2,8 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { X, Sparkles, BookOpen, Headphones, BarChart3, Users } from "lucide-react";
 import { Bunny } from "./Bunny/Bunny";
+import { Glyph } from "@/app/_components/Glyph";
 
 interface PaywallModalProps {
   open: boolean;
@@ -34,11 +34,11 @@ const TRIGGERS: Record<string, { title: string; subtitle: string }> = {
 };
 
 const FEATURES = [
-  { Icon: BookOpen, text: "All lessons across K–4th grade" },
-  { Icon: Headphones, text: "Every story with audio narration" },
-  { Icon: BarChart3, text: "Detailed progress reports" },
-  { Icon: Users, text: "Full parent analytics dashboard" },
-];
+  { Icon: "book-open", text: "All lessons across K–4th grade" },
+  { Icon: "headphones", text: "Every story with audio narration" },
+  { Icon: "bar-chart3", text: "Detailed progress reports" },
+  { Icon: "users", text: "Full parent analytics dashboard" },
+] as const;
 
 export function PaywallModal({ open, onClose, childId, childName, trigger = "lesson" }: PaywallModalProps) {
   const t = TRIGGERS[trigger] || TRIGGERS.lesson;
@@ -69,7 +69,7 @@ export function PaywallModal({ open, onClose, childId, childName, trigger = "les
               onClick={onClose}
               className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center hover:bg-zinc-100 transition-colors"
             >
-              <X className="w-4 h-4 text-zinc-500" />
+              <Glyph name="x" size={16} className="text-zinc-500" />
             </button>
 
             {/* Header */}
@@ -101,7 +101,7 @@ export function PaywallModal({ open, onClose, childId, childName, trigger = "les
                   className="flex items-center gap-3"
                 >
                   <div className="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                    <f.Icon className="w-4 h-4 text-indigo-600" strokeWidth={1.5} />
+                    <Glyph name={f.Icon} size={16} className="text-indigo-600" />
                   </div>
                   <p className="text-sm text-zinc-700 font-medium">{f.text}</p>
                 </motion.div>
@@ -130,7 +130,7 @@ export function PaywallModal({ open, onClose, childId, childName, trigger = "les
                 }}
                 onClick={onClose}
               >
-                <Sparkles className="w-4 h-4" />
+                <Glyph name="sparkles" size={16} />
                 Start 7-Day Free Trial
               </Link>
               <button

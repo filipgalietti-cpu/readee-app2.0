@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Sparkles } from "lucide-react";
 import storyBank from "@/scripts/stories-bank.json";
 import { InteractiveQuestions } from "./_InteractiveQuestions";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Single-story showcase reader — sentence-per-line, big serif text,
@@ -73,7 +73,7 @@ export default async function ShowcaseStoryPage({
           href="/showcase/stories"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <Glyph name="arrow-left" size={16} />
           All stories
         </Link>
 
@@ -121,7 +121,7 @@ export default async function ShowcaseStoryPage({
         {/* Comprehension Qs */}
         <div className="mt-16 rounded-3xl bg-white p-8 shadow-md ring-1 ring-zinc-100">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-violet-600" />
+            <Glyph name="sparkles" size={16} className="text-violet-600" />
             <span className="text-xs font-bold uppercase tracking-widest text-violet-600">
               Comprehension check
             </span>

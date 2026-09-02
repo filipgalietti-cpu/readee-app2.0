@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 
 /**
- * Icon — Microsoft Fluent System Icons, self-hosted.
+ * Glyph — Microsoft Fluent System Icons, self-hosted.
  *
  * The monochrome half of one system. Its colourful half is <FluentIcon />
  * (Fluent Emoji). Same vendor, same design language, both MIT. Readee used to
@@ -22,13 +22,18 @@ import type { CSSProperties } from "react";
  */
 export const UI_ICONS = [
   "alert-circle",
+  "angry",
   "arrow-left",
   "arrow-right",
   "award",
   "bar-chart3",
   "bell",
+  "book",
   "book-open",
+  "bot",
   "brain",
+  "bug",
+  "building",
   "calendar-days",
   "carrot",
   "check",
@@ -39,22 +44,32 @@ export const UI_ICONS = [
   "chevrons-up-down",
   "circle",
   "circle-help",
+  "clipboard-check",
   "clipboard-pen",
   "clock",
+  "coins",
+  "compass",
   "credit-card",
   "crown",
   "download",
   "external-link",
   "eye",
+  "factory",
+  "file-text",
   "flag",
   "flame",
+  "frown",
+  "gauge",
   "globe",
   "graduation-cap",
+  "headphones",
   "heart",
   "help-circle",
   "home",
   "image",
   "key-round",
+  "layers",
+  "library",
   "life-buoy",
   "lightbulb",
   "list-checks",
@@ -63,6 +78,8 @@ export const UI_ICONS = [
   "log-out",
   "mail",
   "map",
+  "megaphone",
+  "meh",
   "menu",
   "message-circle",
   "message-square",
@@ -74,21 +91,27 @@ export const UI_ICONS = [
   "play",
   "plus",
   "printer",
+  "puzzle",
   "refresh-cw",
   "rocket",
   "rotate-ccw",
   "rotate-cw",
+  "scan",
   "search",
   "send",
   "settings",
   "share",
+  "shield",
   "shield-check",
   "shuffle",
   "skip-forward",
+  "smile",
+  "smile-plus",
   "sparkles",
   "square",
   "star",
   "target",
+  "text",
   "thumbs-down",
   "thumbs-up",
   "trash2",
@@ -99,21 +122,22 @@ export const UI_ICONS = [
   "users",
   "volume-x",
   "volume2",
+  "wand",
   "waves",
   "x",
   "x-circle",
   "zap",
 ] as const;
 
-export type IconName = (typeof UI_ICONS)[number];
+export type GlyphName = (typeof UI_ICONS)[number];
 
-export function Icon({
+export function Glyph({
   name,
   size = 20,
   className = "",
   style,
 }: {
-  name: IconName;
+  name: GlyphName;
   /** Rendered square size in px. */
   size?: number;
   /** Colour comes from `text-*`; the mask paints with currentColor. */

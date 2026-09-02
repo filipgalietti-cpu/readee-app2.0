@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2, KeyRound } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 export default function ExitForm({
   hasPin,
@@ -69,9 +69,9 @@ export default function ExitForm({
         className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-indigo-600 py-3 text-sm font-bold text-white transition hover:bg-indigo-700 disabled:opacity-50"
       >
         {pending ? (
-          <Loader2 className="h-4 w-4 animate-spin" />
+          <Glyph name="loader2" size={16} className="animate-spin" />
         ) : (
-          <KeyRound className="h-4 w-4" />
+          <Glyph name="key-round" size={16} />
         )}
         Unlock
       </button>

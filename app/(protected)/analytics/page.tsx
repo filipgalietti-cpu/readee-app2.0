@@ -15,9 +15,8 @@ import { gradeToKey } from "@/lib/assessment/questions";
 import { useChildStore } from "@/lib/stores/child-store";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
-import { BookOpen, Newspaper, Type, MessageCircle, BarChart3, Sparkles, Lock, Check, ChevronLeft, ChevronRight, Rocket } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -54,11 +53,11 @@ type Status = "mastered" | "practicing" | "help" | "none";
 
 /* ─── Constants ──────────────────────────────────────── */
 
-const DOMAIN_META: Record<string, { icon: LucideIcon; accent: string; iconBg: string; iconStroke: string; subtitle: string; label: string }> = {
-  "Foundational Skills":        { icon: Type,          accent: "#059669", iconBg: "#d1fae5", iconStroke: "#059669", subtitle: "Letters, sounds, phonics",    label: "Foundational Skills" },
-  "Reading Literature":         { icon: BookOpen,      accent: "#7c3aed", iconBg: "#ede9fe", iconStroke: "#8b5cf6", subtitle: "Stories, characters, retelling", label: "Reading Literature" },
-  "Language":                   { icon: MessageCircle, accent: "#b45309", iconBg: "#fef3c7", iconStroke: "#f59e0b", subtitle: "Grammar, vocabulary",         label: "Language" },
-  "Reading Informational Text": { icon: Newspaper,     accent: "#2563eb", iconBg: "#dbeafe", iconStroke: "#2563eb", subtitle: "Nonfiction, main idea",       label: "Informational Text" },
+const DOMAIN_META: Record<string, { icon: GlyphName; accent: string; iconBg: string; iconStroke: string; subtitle: string; label: string }> = {
+  "Foundational Skills":        { icon: "text",          accent: "#059669", iconBg: "#d1fae5", iconStroke: "#059669", subtitle: "Letters, sounds, phonics",    label: "Foundational Skills" },
+  "Reading Literature":         { icon: "book-open",      accent: "#7c3aed", iconBg: "#ede9fe", iconStroke: "#8b5cf6", subtitle: "Stories, characters, retelling", label: "Reading Literature" },
+  "Language":                   { icon: "message-circle", accent: "#b45309", iconBg: "#fef3c7", iconStroke: "#f59e0b", subtitle: "Grammar, vocabulary",         label: "Language" },
+  "Reading Informational Text": { icon: "newspaper",     accent: "#2563eb", iconBg: "#dbeafe", iconStroke: "#2563eb", subtitle: "Nonfiction, main idea",       label: "Informational Text" },
 };
 
 const DOMAIN_ORDER = ["Foundational Skills", "Reading Literature", "Language", "Reading Informational Text"];
@@ -610,7 +609,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
           </p>
         </motion.div>
         <motion.div variants={slideUp} className="rounded-[20px] p-8 shadow-sm" style={{ border: CARD, background: "#fff" }}>
-          <Rocket className="w-12 h-12 text-violet-500 mx-auto mb-4" strokeWidth={1.5} />
+          <Glyph name="rocket" size={48} className="text-violet-500 mx-auto mb-4" />
           <h2 className="text-lg font-bold text-zinc-900 mb-2">Ready to get started?</h2>
           <p className="text-sm text-zinc-500 mb-6">Complete your first practice session to see progress, strengths, and areas to grow!</p>
           <Link href={`/practice?child=${child.id}`} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-sm hover:from-violet-700 hover:to-violet-600 transition-all shadow-md hover:shadow-lg hover:scale-105">
@@ -700,7 +699,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
       {isFree ? (
         <div style={{ border: CARD, background: "#fff", borderRadius: 20, padding: "16px 20px", marginBottom: 20, display: "flex", gap: 12, alignItems: "center" }}>
           <div style={{ width: 34, height: 34, borderRadius: 10, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <BarChart3 className="w-[17px] h-[17px]" style={{ color: "#4338ca" }} strokeWidth={1.5} />
+            <Glyph name="bar-chart3" size={17} style={{ color: "#4338ca" }} />
           </div>
           <p style={{ margin: 0, flex: 1, fontSize: 14, lineHeight: 1.5, color: "#3f3f46" }}>
             {child.first_name} answered <strong style={{ color: "#18181b" }}>{last7.attempted} question{last7.attempted === 1 ? "" : "s"}</strong> this week at <strong style={{ color: "#18181b" }}>{last7.accuracy}% accuracy</strong>.
@@ -709,7 +708,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
         </div>
       ) : (
         <div style={{ border: "1px solid #c7d2fe", background: "linear-gradient(135deg,#eef2ff,#fff)", borderRadius: 20, padding: "20px 24px", marginBottom: 20, display: "flex", gap: 16, alignItems: "flex-start" }}>
-          <Sparkles className="w-[22px] h-[22px]" style={{ color: "#4338ca", flexShrink: 0, marginTop: 3 }} strokeWidth={1.5} />
+          <Glyph name="sparkles" size={22} style={{ color: "#4338ca", flexShrink: 0, marginTop: 3 }} />
           <div style={{ flex: 1 }}>
             {aiSnapshot ? (
               <>
@@ -825,13 +824,13 @@ function AnalyticsDashboard({ child }: { child: Child }) {
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
                 <button onClick={() => setWeekOffset((w) => w + 1)} style={{ border: CARD, background: "#fff", cursor: "pointer", width: 32, height: 32, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <ChevronLeft className="w-4 h-4" style={{ color: "#52525b" }} strokeWidth={2} />
+                  <Glyph name="chevron-left" size={16} style={{ color: "#52525b" }} />
                 </button>
                 <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>
                   Week of {reportWeek.start.toLocaleDateString("en-US", { month: "short", day: "numeric" })} – {new Date(reportWeek.end.getTime() - 86400000).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                 </div>
                 <button onClick={() => setWeekOffset((w) => Math.max(0, w - 1))} disabled={weekOffset === 0} style={{ border: CARD, background: "#fff", cursor: weekOffset === 0 ? "default" : "pointer", width: 32, height: 32, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", opacity: weekOffset === 0 ? 0.4 : 1 }}>
-                  <ChevronRight className="w-4 h-4" style={{ color: "#52525b" }} strokeWidth={2} />
+                  <Glyph name="chevron-right" size={16} style={{ color: "#52525b" }} />
                 </button>
                 <label style={{ marginLeft: "auto", fontSize: 13, color: "#71717a", display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
                   {/* TODO(analytics): checkbox is local-only, not wired to any email-preference backend */}
@@ -856,7 +855,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                           background: practiced ? "#4338ca" : future ? "transparent" : "#f4f4f5",
                           border: future ? "1.5px dashed #d4d4d8" : "none",
                         }}>
-                          {practiced && <Check className="w-[18px] h-[18px]" style={{ color: "#fff" }} strokeWidth={2.5} />}
+                          {practiced && <Glyph name="check" size={18} style={{ color: "#fff" }} />}
                         </div>
                         <span style={{ fontSize: 12, color: practiced ? "#71717a" : "#a1a1aa" }}>{d.toLocaleDateString("en-US", { weekday: "short" })}</span>
                       </div>
@@ -877,7 +876,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
                   return (
                     <div key={dom} style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px", borderTop: "1px solid #f4f4f5" }}>
                       <div style={{ width: 34, height: 34, borderRadius: 10, background: attempted > 0 ? meta.iconBg : "#f4f4f5", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <meta.icon className="w-[17px] h-[17px]" style={{ color: attempted > 0 ? meta.iconStroke : "#a1a1aa" }} strokeWidth={1.5} />
+                        <Glyph name={meta.icon} size={17} style={{ color: attempted > 0 ? meta.iconStroke : "#a1a1aa" }} />
                       </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontSize: 14, fontWeight: 700, color: attempted > 0 ? "#18181b" : "#71717a" }}>{meta.label}</div>
@@ -1055,7 +1054,7 @@ function AnalyticsDashboard({ child }: { child: Child }) {
           <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "flex-start", justifyContent: "center", zIndex: 20, paddingTop: 60 }}>
             <div style={{ textAlign: "center", maxWidth: 400, padding: "32px 28px", background: "rgba(255,255,255,.92)", border: CARD, borderRadius: 24, boxShadow: "0 20px 50px rgba(30,27,75,.14)", backdropFilter: "blur(4px)" }}>
               <div style={{ width: 60, height: 60, borderRadius: 18, background: "linear-gradient(135deg,#eef2ff,#ede9fe)", margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Lock className="w-7 h-7" style={{ color: "#4338ca" }} strokeWidth={1.5} />
+                <Glyph name="lock" size={28} style={{ color: "#4338ca" }} />
               </div>
               <h2 style={{ margin: "0 0 8px", fontFamily: "var(--font-display)", fontSize: 24, fontWeight: 600, color: "#18181b" }}>See where {child.first_name} needs help</h2>
               <p style={{ margin: "0 0 20px", fontSize: 14, lineHeight: 1.6, color: "#52525b" }}>Progress charts, weekly report cards, the full skill map, and next-step suggestions with Readee+</p>

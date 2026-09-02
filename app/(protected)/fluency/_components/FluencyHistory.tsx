@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { Mic, Trophy, ChevronDown } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Kid = { id: string; first_name: string; grade: string };
 type Reading = {
@@ -86,7 +86,7 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
                 onClick={() => setOpen(isOpen ? null : r.id)}
                 className="flex w-full items-center gap-3 px-4 py-3 text-left transition hover:bg-zinc-50"
               >
-                <Trophy className="h-5 w-5 flex-shrink-0 text-emerald-600" />
+                <Glyph name="trophy" size={20} className="flex-shrink-0 text-emerald-600" />
                 <div className="min-w-0 flex-1">
                   <div className="text-sm font-bold text-zinc-900">
                     {kid?.first_name ?? "Reader"} ·{" "}
@@ -100,11 +100,7 @@ export default function FluencyHistory({ kids }: { kids: Kid[] }) {
                       : ""}
                   </div>
                 </div>
-                <ChevronDown
-                  className={`h-4 w-4 text-zinc-400 transition ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                />
+                <Glyph name="chevron-down" size={16} className="text-zinc-400 transition ${ isOpen ?" />
               </button>
               {isOpen && (
                 <div className="space-y-3 border-t border-zinc-100 bg-zinc-50/40 px-4 py-3">

@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Users, Calendar, BookOpen, Wand2 } from "lucide-react";
 import { loadKidUnlocks, type KidUnlock } from "@/lib/dashboard/kid-unlocks";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 const KIND_META: Record<
   KidUnlock["kind"],
@@ -13,22 +13,22 @@ const KIND_META: Record<
   ask_readee: {
     label: "Made for you",
     tone: "from-violet-600 to-violet-500",
-    Icon: Wand2,
+    Icon: "wand",
   },
   personalized_story: {
     label: "Your story",
     tone: "from-amber-400 to-orange-500",
-    Icon: BookOpen,
+    Icon: "book-open",
   },
   community_passage: {
     label: "Community pick",
     tone: "from-emerald-500 to-teal-600",
-    Icon: Users,
+    Icon: "users",
   },
   daily_question: {
     label: "Today's read",
     tone: "from-violet-600 to-violet-500",
-    Icon: Calendar,
+    Icon: "calendar-days",
   },
 };
 

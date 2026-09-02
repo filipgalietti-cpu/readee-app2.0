@@ -3,16 +3,11 @@
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
-  Loader2,
-  AlertCircle,
-  X,
-  Plus,
-  } from "lucide-react";
-import {
   buildPersonalizedStoryAction,
   updateChildInterests,
 } from "@/lib/ai/path-actions";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Child = {
   id: string;
@@ -143,7 +138,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
                 onClick={() => removeInterest(s)}
                 className="hover:text-violet-950"
               >
-                <X className="h-3 w-3" />
+                <Glyph name="x" size={12} />
               </button>
             </span>
           ))}
@@ -167,7 +162,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
                   onClick={() => addInterest(interestInput)}
                   className="rounded-full bg-violet-600 p-1 text-white"
                 >
-                  <Plus className="h-3 w-3" />
+                  <Glyph name="plus" size={12} />
                 </button>
               )}
             </div>
@@ -211,7 +206,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
 
       {err && (
         <div className="mt-3 flex items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">
-          <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+          <Glyph name="alert-circle" size={16} className="mt-0.5 flex-shrink-0" />
           {err}
         </div>
       )}
@@ -225,7 +220,7 @@ export default function StoryGenerator({ children }: { children: Child[] }) {
         >
           {pending ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin" />
+              <Glyph name="loader2" size={16} className="animate-spin" />
               Writing the story…
             </>
           ) : (

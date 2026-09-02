@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
-import { Settings, LogOut, ChevronsUpDown, Sparkles } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 export function SidebarUserMenu({
   avatarSrc,
@@ -137,11 +137,11 @@ export function SidebarUserMenu({
             }`}
             title={`${credits.remaining} of ${credits.limit} Readee.ai credits left`}
           >
-            <Sparkles className="w-3 h-3" strokeWidth={2} />
+            <Glyph name="sparkles" size={12} />
             {credits.remaining}
           </div>
         )}
-        <ChevronsUpDown className="w-4 h-4 text-indigo-400 flex-shrink-0" strokeWidth={1.5} />
+        <Glyph name="chevrons-up-down" size={16} className="text-indigo-400 flex-shrink-0" />
       </button>
 
       <AnimatePresence>
@@ -187,13 +187,13 @@ export function SidebarUserMenu({
             <div className="py-1 px-1">
               <Link href="/settings" onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
-                <Settings className="w-4 h-4 text-indigo-400" strokeWidth={1.5} />
+                <Glyph name="settings" size={16} className="text-indigo-400" />
                 Settings
               </Link>
               {showCreditIndicator && credits && (
                 <Link href="/settings" onClick={() => setOpen(false)}
                   className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
-                  <Sparkles className="w-4 h-4 text-violet-500" strokeWidth={1.5} />
+                  <Glyph name="sparkles" size={16} className="text-violet-500" />
                   <span className="flex-1">Readee.ai credits</span>
                   <span className={`text-[11px] font-bold ${credits.isLow ? "text-amber-600" : "text-violet-600"}`}>
                     {credits.remaining}/{credits.limit}
@@ -207,7 +207,7 @@ export function SidebarUserMenu({
             <div className="py-1 px-1">
               <button onClick={handleLogout}
                 className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors">
-                <LogOut className="w-4 h-4 text-indigo-400" strokeWidth={1.5} />
+                <Glyph name="log-out" size={16} className="text-indigo-400" />
                 Log out
               </button>
             </div>

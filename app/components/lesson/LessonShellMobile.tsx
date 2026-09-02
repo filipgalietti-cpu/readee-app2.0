@@ -25,10 +25,10 @@
  * Touch targets ≥44×44; active:scale press feedback; no hover states.
  */
 import type { ReactNode } from "react";
-import { X } from "lucide-react";
 import { motion } from "framer-motion";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export interface LessonShellMobileProps {
   slideNum: number;
@@ -79,7 +79,7 @@ export function LessonShellMobile({
           aria-label="Close lesson"
           className="relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-zinc-300 bg-white text-zinc-500 transition active:scale-95 [touch-action:manipulation] before:absolute before:-inset-2 before:content-['']"
         >
-          <X size={16} />
+          <Glyph name="x" size={16} />
         </button>
       </header>
 

@@ -2,9 +2,9 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Check, ArrowRight } from "lucide-react";
 import { joinClassroom } from "../classroom/actions";
 import type { Child } from "@/lib/db/types";
+import { Glyph } from "@/app/_components/Glyph";
 
 export default function JoinClassroomForm({
   children,
@@ -36,7 +36,7 @@ export default function JoinClassroomForm({
     return (
       <div className="flex flex-col items-center rounded-2xl bg-green-50 px-6 py-10 text-center">
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-green-600 text-white">
-          <Check className="h-6 w-6" />
+          <Glyph name="check" size={24} />
         </span>
         <h2 className="mt-4 text-lg font-bold text-green-900">
           You&apos;re in!
@@ -107,7 +107,7 @@ export default function JoinClassroomForm({
         className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-indigo-400"
       >
         {pending ? "Joining…" : "Join class"}
-        <ArrowRight className="h-4 w-4" />
+        <Glyph name="arrow-right" size={16} />
       </button>
     </form>
   );

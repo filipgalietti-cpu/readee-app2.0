@@ -24,7 +24,6 @@ import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
-import { Puzzle, Map, Sparkles, Star, Trophy, BarChart3, Sprout, ChevronDown, Lock, User, CreditCard, Bell, LogOut, ChevronsUpDown, Home, BookText, ListChecks, ClipboardCheck, Compass, Users, Brain, Carrot} from "lucide-react";
 import type { ReactNode } from "react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -39,6 +38,7 @@ import UpgradeCelebration from "./_components/UpgradeCelebration";
 import WhatsNew from "./_components/WhatsNew";
 import { OUTFITS } from "@/app/_components/Bunny/outfits";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 // Set of standards that have a real canonical lesson on the /learn
 // slideshow route. Used to route navigation to /learn when possible
@@ -1072,11 +1072,11 @@ function ChildDashboard({
                       {imgSrc ? (
                         <img src={imgSrc} alt={item.name} className="w-full h-full object-cover rounded-2xl" draggable={false} loading="lazy" decoding="async" />
                       ) : (
-                        (() => { const SI = getShopIcon(item.icon); return <SI className="w-7 h-7 text-violet-500" strokeWidth={1.5} />; })()
+                        <FluentIcon name={getShopIcon(item.icon)} size={28} />
                       )}
                       {!owned && (
                         <span className="absolute bottom-0.5 right-0.5">
-                          <Lock className="w-3 h-3 text-zinc-500" strokeWidth={2} />
+                          <Glyph name="lock" size={12} className="text-zinc-500" />
                         </span>
                       )}
                     </button>
@@ -1190,31 +1190,31 @@ function ParentSidebar({
     {
       label: "Main",
       items: [
-        { href: "/dashboard", icon: Home, label: "Dashboard" },
-        { href: "/luna", icon: Sparkles, label: "Luna", emphasis: true },
+        { href: "/dashboard", icon: "home", label: "Dashboard" },
+        { href: "/luna", icon: "sparkles", label: "Luna", emphasis: true },
         hasAssessment
-          ? { href: `/assessment-results?child=${child.id}`, icon: ClipboardCheck, label: "Placement Test Results" }
-          : { href: `/assessment?child=${child.id}`, icon: ClipboardCheck, label: "Take Placement Test", emphasis: true },
-        { href: `/analytics?child=${child.id}`, icon: BarChart3, label: "Analytics" },
-        { href: `/review?child=${child.id}`, icon: Brain, label: "Today's review" },
+          ? { href: `/assessment-results?child=${child.id}`, icon: "clipboard-check", label: "Placement Test Results" }
+          : { href: `/assessment?child=${child.id}`, icon: "clipboard-check", label: "Take Placement Test", emphasis: true },
+        { href: `/analytics?child=${child.id}`, icon: "bar-chart3", label: "Analytics" },
+        { href: `/review?child=${child.id}`, icon: "brain", label: "Today's review" },
       ],
     },
     {
       label: "Learning",
       items: [
-        { href: "/word-bank", icon: BookText, label: "Word Bank" },
-        { href: `/practice-hub?child=${child.id}`, icon: ListChecks, label: "Practice" },
-        { href: "/practice-hub/community", icon: Users, label: "Community library" },
-        { href: "/discover", icon: Compass, label: "Discover" },
-        { href: `/journey?child=${child.id}`, icon: Map, label: "Reading Journey" },
+        { href: "/word-bank", icon: "book", label: "Word Bank" },
+        { href: `/practice-hub?child=${child.id}`, icon: "list-checks", label: "Practice" },
+        { href: "/practice-hub/community", icon: "users", label: "Community library" },
+        { href: "/discover", icon: "compass", label: "Discover" },
+        { href: `/journey?child=${child.id}`, icon: "map", label: "Reading Journey" },
       ],
     },
     {
       label: "Fun",
       items: [
-        { href: `/levels?child=${child.id}`, icon: Star, label: "Reader Levels" },
-        { href: `/shop?child=${child.id}`, icon: Carrot, label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
-        { href: `/leaderboard?child=${child.id}`, icon: Trophy, label: "Leaderboard" },
+        { href: `/levels?child=${child.id}`, icon: "star", label: "Reader Levels" },
+        { href: `/shop?child=${child.id}`, icon: "carrot", label: "Shop", iconColor: "w-[17px] h-[17px] text-orange-500" },
+        { href: `/leaderboard?child=${child.id}`, icon: "trophy", label: "Leaderboard" },
       ],
     },
   ];
@@ -1238,7 +1238,7 @@ function ParentSidebar({
             className="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-zinc-100 transition-colors"
             aria-label="Collapse"
           >
-            <ChevronDown className="w-4 h-4 text-zinc-400 -rotate-90" strokeWidth={2} />
+            <Glyph name="chevron-down" size={16} className="text-zinc-400 -rotate-90" />
           </button>
         )}
       </div>
@@ -1410,7 +1410,7 @@ function SidebarUserMenu({ avatarSrc, name, plan }: { avatarSrc: string; name: s
           <div className="text-[13px] font-medium text-zinc-900 truncate">{name}</div>
           <div className="text-[11px] text-zinc-400">{plan === "premium" ? "Readee+" : "Free Plan"}</div>
         </div>
-        <ChevronsUpDown className="w-4 h-4 text-zinc-400 flex-shrink-0" strokeWidth={1.5} />
+        <Glyph name="chevrons-up-down" size={16} className="text-zinc-400 flex-shrink-0" />
       </button>
 
       {/* Popover (opens upward) */}
@@ -1443,7 +1443,7 @@ function SidebarUserMenu({ avatarSrc, name, plan }: { avatarSrc: string; name: s
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors"
               >
-                <User className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
+                <Glyph name="user" size={16} className="text-zinc-400" />
                 Account
               </Link>
               <Link
@@ -1451,7 +1451,7 @@ function SidebarUserMenu({ avatarSrc, name, plan }: { avatarSrc: string; name: s
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors"
               >
-                <CreditCard className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
+                <Glyph name="credit-card" size={16} className="text-zinc-400" />
                 Billing
               </Link>
               <Link
@@ -1459,7 +1459,7 @@ function SidebarUserMenu({ avatarSrc, name, plan }: { avatarSrc: string; name: s
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors"
               >
-                <Bell className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
+                <Glyph name="bell" size={16} className="text-zinc-400" />
                 Notifications
               </Link>
             </div>
@@ -1471,7 +1471,7 @@ function SidebarUserMenu({ avatarSrc, name, plan }: { avatarSrc: string; name: s
                 onClick={handleLogout}
                 className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm text-zinc-700 hover:bg-zinc-100 transition-colors"
               >
-                <LogOut className="w-4 h-4 text-zinc-400" strokeWidth={1.5} />
+                <Glyph name="log-out" size={16} className="text-zinc-400" />
                 Log out
               </button>
             </div>
@@ -1565,7 +1565,7 @@ function LessonPath({
           href={`/upgrade?child=${child.id}`}
           className="flex items-center gap-2 px-2.5 py-2 rounded-lg bg-violet-50 hover:bg-violet-100 transition-colors"
         >
-          <Star className="w-3.5 h-3.5 text-violet-500" fill="currentColor" strokeWidth={0} />
+          <Glyph name="star" size={14} className="text-violet-500" />
           <span className="text-[12px] font-medium text-violet-700">Unlock {lockedLessonsCount} more lessons</span>
         </Link>
       )}
@@ -1601,7 +1601,7 @@ function LessonPath({
                     </div>
                   ) : isLocked ? (
                     <div className="w-[18px] h-[18px] rounded-full bg-zinc-200 flex items-center justify-center">
-                      <Lock className="w-2 h-2 text-zinc-400" strokeWidth={2.5} />
+                      <Glyph name="lock" size={8} className="text-zinc-400" />
                     </div>
                   ) : (
                     <div className="w-[18px] h-[18px] rounded-full border-2 border-zinc-200 bg-white" />
@@ -1723,10 +1723,7 @@ function CurriculumOverview({
                       </span>
                     )}
                   </div>
-                  <ChevronDown
-                    className={`w-4 h-4 text-zinc-400 transition-transform flex-shrink-0 ${isExpanded ? "rotate-180" : ""}`}
-                    strokeWidth={2}
-                  />
+                  <Glyph name="chevron-down" size={16} className="text-zinc-400 transition-transform flex-shrink-0 ${isExpanded ?" />
                 </button>
 
                 {isExpanded && (

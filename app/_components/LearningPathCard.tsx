@@ -3,21 +3,12 @@
 import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  CheckCircle2,
-  Circle,
-  ArrowRight,
-  Loader2,
-  AlertCircle,
-  BookOpen,
-  Target,
-  Map as MapIcon,
-} from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import {
   buildPathForChild,
   advanceLearningPath,
 } from "@/lib/ai/path-actions";
+import { Glyph } from "@/app/_components/Glyph";
 
 type PathItem = {
   position: number;
@@ -146,7 +137,7 @@ export default function LearningPathCard({
       return (
         <div className="overflow-hidden rounded-3xl border-2 border-dashed border-rose-200 bg-rose-50 p-5">
           <div className="flex items-start gap-2">
-            <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-rose-600" />
+            <Glyph name="alert-circle" size={16} className="mt-0.5 flex-shrink-0 text-rose-600" />
             <div className="text-xs font-semibold text-rose-700">
               {err}
             </div>
@@ -158,7 +149,7 @@ export default function LearningPathCard({
       <div className="overflow-hidden rounded-3xl border border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-6">
         <div className="flex items-start gap-3">
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-violet-500 text-white">
-            <Loader2 className="h-5 w-5 animate-spin" />
+            <Glyph name="loader2" size={20} className="animate-spin" />
           </div>
           <div className="flex-1">
             <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
@@ -191,7 +182,7 @@ export default function LearningPathCard({
       <div className="flex items-start justify-between gap-3 px-5 pt-5">
         <div className="flex items-start gap-3">
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-violet-500 text-white">
-            <MapIcon className="h-5 w-5" />
+            <Glyph name="map" size={20} />
           </div>
           <div>
             <div className="text-[10px] font-bold uppercase tracking-widest text-violet-600">
@@ -212,7 +203,7 @@ export default function LearningPathCard({
             className="inline-flex items-center gap-1 rounded-full border border-violet-200 bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-violet-700"
             title="Updating path from the latest placement test"
           >
-            <Loader2 className="h-3 w-3 animate-spin" />
+            <Glyph name="loader2" size={12} className="animate-spin" />
             Updating
           </span>
         )}
@@ -235,9 +226,9 @@ export default function LearningPathCard({
           <div className="mt-1 flex items-start gap-3">
             <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-violet-100 text-violet-700">
               {next.kind === "lesson" ? (
-                <BookOpen className="h-4 w-4" />
+                <Glyph name="book-open" size={16} />
               ) : (
-                <Target className="h-4 w-4" />
+                <Glyph name="target" size={16} />
               )}
             </div>
             <div className="min-w-0 flex-1">
@@ -275,13 +266,13 @@ export default function LearningPathCard({
               className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-violet-700"
             >
               Start
-              <ArrowRight className="h-3 w-3" />
+              <Glyph name="arrow-right" size={12} />
             </Link>
           </div>
         </div>
       ) : (
         <div className="mx-5 mt-4 rounded-2xl bg-white p-4 text-center shadow-sm">
-          <CheckCircle2 className="mx-auto h-8 w-8 text-emerald-500" />
+          <Glyph name="check-circle2" size={32} className="mx-auto text-emerald-500" />
           <p className="mt-2 text-sm font-bold text-zinc-900">
             Path complete!
           </p>
@@ -312,9 +303,9 @@ export default function LearningPathCard({
                   }`}
                 >
                   {done ? (
-                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-emerald-500" />
+                    <Glyph name="check-circle2" size={14} className="mt-0.5 flex-shrink-0 text-emerald-500" />
                   ) : (
-                    <Circle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-zinc-300" />
+                    <Glyph name="circle" size={14} className="mt-0.5 flex-shrink-0 text-zinc-300" />
                   )}
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5">
@@ -338,7 +329,7 @@ export default function LearningPathCard({
 
       {err && (
         <div className="mx-5 mb-4 flex items-start gap-2 rounded-lg bg-red-50 px-3 py-2 text-xs font-semibold text-red-700">
-          <AlertCircle className="mt-0.5 h-3.5 w-3.5 flex-shrink-0" />
+          <Glyph name="alert-circle" size={14} className="mt-0.5 flex-shrink-0" />
           {err}
         </div>
       )}

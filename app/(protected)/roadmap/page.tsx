@@ -12,10 +12,9 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
-import { BookOpen, Newspaper, Type, MessageCircle, Trophy, Star, Rabbit, Squirrel, Dog } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
-import { FluentIcon } from "@/app/_components/FluentIcon";
+import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -50,17 +49,17 @@ const NODE_VERTICAL_SPACING = 240;
 const PATH_ROAD_W = 56;
 const PATH_BORDER_W = 64;
 
-const DOMAIN_META: Record<string, { icon: LucideIcon }> = {
-  "Reading Literature":         { icon: BookOpen },
-  "Reading Informational Text": { icon: Newspaper },
-  "Foundational Skills":        { icon: Type },
-  "Language":                   { icon: MessageCircle },
+const DOMAIN_META: Record<string, { icon: GlyphName }> = {
+  "Reading Literature":         { icon: "book-open" },
+  "Reading Informational Text": { icon: "newspaper" },
+  "Foundational Skills":        { icon: "text" },
+  "Language":                   { icon: "message-circle" },
 };
 
-const MASCOTS: { afterNode: number; icon: LucideIcon; message: string }[] = [
-  { afterNode: 3,  icon: Rabbit,   message: "Great start! Keep going!" },
-  { afterNode: 8,  icon: Squirrel, message: "You're doing amazing!" },
-  { afterNode: 15, icon: Dog,      message: "Almost halfway there!" },
+const MASCOTS: { afterNode: number; icon: FluentIconName; message: string }[] = [
+  { afterNode: 3,  icon: "rabbit",   message: "Great start! Keep going!" },
+  { afterNode: 8,  icon: "chipmunk", message: "You're doing amazing!" },
+  { afterNode: 15, icon: "dog",      message: "Almost halfway there!" },
 ];
 
 const KID_NAMES: Record<string, string> = {
@@ -211,7 +210,7 @@ function buildBezierPath(nodes: NodeLayout[]): string {
 function getMascotPositions(nodes: NodeLayout[]): {
   nodeIndex: number;
   side: "left" | "right";
-  icon: LucideIcon;
+  icon: FluentIconName;
   message: string;
   x: number;
   y: number;
@@ -688,7 +687,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
                 }`}
                 style={{ top: n.y - 62, zIndex: 5 }}
               >
-                {meta && <meta.icon className="w-4 h-4" strokeWidth={1.5} />}
+                {meta && <Glyph name={meta.icon} size={16} />}
                 <span className={`text-[11px] font-semibold ${dark ? "text-slate-200" : "text-zinc-600"}`}>
                   {n.domain}
                 </span>
@@ -729,7 +728,7 @@ function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string 
           style={{ top: totalHeight - 80 }}
         >
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-[0_4px_0_0_#c2410c,0_8px_24px_rgba(245,158,11,0.4)]">
-            <Trophy className="w-9 h-9 text-white" strokeWidth={1.5} />
+            <Glyph name="trophy" size={36} className="text-white" />
           </div>
           <p className="text-sm font-bold text-slate-100 mt-3">Level Complete!</p>
           <p className="text-xs text-slate-400">Master all {ALL_STANDARDS.length} standards</p>
@@ -794,7 +793,7 @@ function TopProgressBar({ pct, completedCount, totalStandards, totalCarrots, str
 /* ═══════════════════════════════════════════════════════ */
 
 function MascotBubble({ mascot, containerWidth, totalHeight }: {
-  mascot: { icon: LucideIcon; message: string; x: number; y: number; side: "left" | "right" };
+  mascot: { icon: FluentIconName; message: string; x: number; y: number; side: "left" | "right" };
   containerWidth: number;
   totalHeight: number;
 }) {
@@ -820,7 +819,7 @@ function MascotBubble({ mascot, containerWidth, totalHeight }: {
           {mascot.message}
         </div>
       )}
-      <mascot.icon className="w-10 h-10 text-violet-500 drop-shadow-md" strokeWidth={1.5} />
+      <FluentIcon name={mascot.icon} size={40} className="drop-shadow-md" />
       {mascot.side === "right" && (
         <div className={`rounded-xl px-3 py-2 shadow-md text-sm font-medium max-w-[160px] ${bubbleClass}`}>
           {mascot.message}
@@ -920,7 +919,7 @@ function MapNode({
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
           <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-amber-400 flex items-center justify-center shadow-sm border-2 border-white">
-            <Star className="w-3 h-3 text-white" strokeWidth={1.5} />
+            <Glyph name="star" size={12} className="text-white" />
           </span>
         </motion.button>
       )}

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sparkles } from "lucide-react";
 import TopUpCreditsButton from "@/app/_components/TopUpCreditsButton";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Budget = {
   monthly: {
@@ -46,7 +46,7 @@ export default function TeacherCreditWidget() {
     return (
       <div className="mx-3 my-2 rounded-2xl border border-zinc-200 bg-white p-3">
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-zinc-400">
-          <Sparkles className="h-3 w-3" />
+          <Glyph name="sparkles" size={12} />
           Readee.ai credits
         </div>
         <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-zinc-100" />
@@ -64,7 +64,7 @@ export default function TeacherCreditWidget() {
     <div className="mx-3 my-2 rounded-2xl border border-zinc-200 bg-white p-3 transition hover:border-violet-200">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-violet-600">
-          <Sparkles className="h-3 w-3" />
+          <Glyph name="sparkles" size={12} />
           Readee.ai credits
         </div>
         <div className="text-right">

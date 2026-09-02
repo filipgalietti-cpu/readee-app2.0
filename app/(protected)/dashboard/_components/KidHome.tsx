@@ -13,18 +13,8 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { reactionStateFor } from "@/lib/data/shop-items";
-import {
-  Flame,
-  Star,
-  Check,
-  ChevronRight,
-  ChevronLeft,
-  ArrowRight,
-  Play,
-  Compass,
-  Lock,
-  TrendingUp, BookOpen, Mic, Target } from "lucide-react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 const BALOO = "var(--font-baloo), 'Baloo 2', sans-serif";
 const CARD_SHADOW = "0 10px 40px -12px rgba(49,46,129,.15)";
@@ -139,12 +129,10 @@ export default function KidHome(p: KidHomeProps) {
         {/* Streak */}
         <StatCard>
           <div style={{ ...iconBox, background: p.streak > 0 ? "#fff7ed" : "#f4f4f5" }}>
-            <Flame
-              className="h-[26px] w-[26px]"
-              fill={p.streak > 0 ? "#f97316" : "none"}
-              stroke={p.streak > 0 ? "#ea580c" : "#a1a1aa"}
-              strokeWidth={2}
-              style={{ animation: p.streak > 0 ? "readeeGlow 2.2s ease-in-out infinite" : "none" }}
+            <FluentIcon
+              name="fire"
+              size={26}
+              className={p.streak > 0 ? "kh-streak-glow" : "opacity-40 grayscale"}
             />
           </div>
           <div style={{ minWidth: 0 }}>
@@ -209,7 +197,7 @@ export default function KidHome(p: KidHomeProps) {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 14 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 13, minWidth: 0 }}>
               <div style={{ width: 46, height: 46, borderRadius: 14, flex: "none", background: "linear-gradient(135deg,#4338ca,#7c3aed)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <TrendingUp className="h-[26px] w-[26px] text-white" strokeWidth={2.4} />
+                <Glyph name="trending-up" size={26} className="text-white" />
               </div>
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: ".09em", textTransform: "uppercase", color: "#4338ca" }}>{p.firstName} is getting better</div>
@@ -267,7 +255,7 @@ export default function KidHome(p: KidHomeProps) {
                 className="kh-arrow"
                 style={{ flex: "none", width: 30, height: 30, borderRadius: "50%", border: "2px solid #e0e7ff", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 2px 6px -2px rgba(49,46,129,.2)" }}
               >
-                <ChevronLeft className="h-4 w-4" stroke="#7c3aed" strokeWidth={2.5} />
+                <Glyph name="chevron-left" size={16} />
               </button>
               <div
                 ref={skinScrollRef}
@@ -300,7 +288,7 @@ export default function KidHome(p: KidHomeProps) {
                       </div>
                       {!c.owned && (
                         <div style={{ position: "absolute", top: -4, right: -4, width: 18, height: 18, borderRadius: "50%", background: "#fff", border: "1.5px solid #e4e4e7", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <Lock className="h-2.5 w-2.5" stroke="#a1a1aa" strokeWidth={2.5} />
+                          <Glyph name="lock" size={10} />
                         </div>
                       )}
                     </button>
@@ -313,7 +301,7 @@ export default function KidHome(p: KidHomeProps) {
                 className="kh-arrow"
                 style={{ flex: "none", width: 30, height: 30, borderRadius: "50%", border: "2px solid #e0e7ff", background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 2px 6px -2px rgba(49,46,129,.2)" }}
               >
-                <ChevronRight className="h-4 w-4" stroke="#7c3aed" strokeWidth={2.5} />
+                <Glyph name="chevron-right" size={16} />
               </button>
             </div>
             <div style={{ fontSize: 12, fontWeight: 700, color: "#a1a1aa" }}>
@@ -328,7 +316,7 @@ export default function KidHome(p: KidHomeProps) {
               className="kh-lift"
               style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "linear-gradient(90deg,#4338ca,#7c3aed)", color: "#fff", fontFamily: BALOO, fontWeight: 800, fontSize: 21, padding: "16px 36px", borderRadius: 99, boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)" }}
             >
-              <Play className="h-[22px] w-[22px]" fill="#fff" stroke="none" />
+              <Glyph name="play" size={22} />
               <span>{p.cta.text}</span>
             </Link>
             <div style={{ fontSize: 13.5, fontWeight: 700, color: "#52525b" }}>{p.cta.sub}</div>
@@ -369,7 +357,7 @@ export default function KidHome(p: KidHomeProps) {
                     </div>
                     {locked
                       ? <span style={{ flex: "none", fontSize: 11, fontWeight: 800, letterSpacing: ".03em", textTransform: "uppercase", color: "#4338ca", background: "#e0e7ff", borderRadius: 99, padding: "5px 10px" }}>Readee+</span>
-                      : <ChevronRight className="h-5 w-5" stroke={cur ? "#7c3aed" : "#d4d4d8"} strokeWidth={2.5} />}
+                      : <Glyph name="chevron-right" size={20} />}
                   </div>
                 );
                 return s.href
@@ -394,8 +382,8 @@ export default function KidHome(p: KidHomeProps) {
                     background: n === "done" ? "#f59e0b" : n === "cur" ? "linear-gradient(135deg,#4338ca,#7c3aed)" : "#e4e4e7",
                     animation: n === "cur" ? "readeePulse 2s ease-in-out infinite" : "none",
                   }}>
-                    {n === "done" && <Check className="h-3 w-3" stroke="#fff" strokeWidth={4} />}
-                    {n === "cur" && <Star className="h-3.5 w-3.5" fill="#fff" stroke="none" />}
+                    {n === "done" && <Glyph name="check" size={12} />}
+                    {n === "cur" && <Glyph name="star" size={14} />}
                   </div>
                 );
               })}
@@ -410,7 +398,7 @@ export default function KidHome(p: KidHomeProps) {
             </div>
             <div style={{ flex: "none", display: "flex", alignItems: "center", gap: 6, background: "linear-gradient(90deg,#4338ca,#7c3aed)", color: "#fff", borderRadius: 99, padding: "10px 18px", fontWeight: 800, fontSize: 14, fontFamily: BALOO, whiteSpace: "nowrap" }}>
               See my path
-              <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+              <Glyph name="arrow-right" size={16} />
             </div>
           </Link>
         </div>
@@ -431,7 +419,7 @@ export default function KidHome(p: KidHomeProps) {
           <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 9, alignItems: "flex-start", flex: "none" }}>
             <Link href={p.upgradeHref} className="kh-lift" style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "linear-gradient(90deg,#059669,#4338ca)", color: "#fff", fontFamily: BALOO, fontWeight: 800, fontSize: 17, padding: "14px 24px", borderRadius: 99, boxShadow: "0 12px 30px -8px rgba(5,150,105,.45)" }}>
               Keep Readee+
-              <ArrowRight className="h-[18px] w-[18px]" strokeWidth={2.6} />
+              <Glyph name="arrow-right" size={18} />
             </Link>
             <span style={{ fontSize: 12, fontWeight: 700, color: "#047857" }}>$6.99/mo billed yearly &middot; cancel anytime</span>
           </div>
@@ -456,7 +444,7 @@ export default function KidHome(p: KidHomeProps) {
           <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 9, alignItems: "flex-start", flex: "none" }}>
             <Link href={p.upgradeHref} className="kh-lift" style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "linear-gradient(90deg,#e11d48,#4338ca)", color: "#fff", fontFamily: BALOO, fontWeight: 800, fontSize: 17, padding: "14px 24px", borderRadius: 99, boxShadow: "0 12px 30px -8px rgba(225,29,72,.45)" }}>
               Reactivate Readee+
-              <ArrowRight className="h-[18px] w-[18px]" strokeWidth={2.6} />
+              <Glyph name="arrow-right" size={18} />
             </Link>
             <span style={{ fontSize: 12, fontWeight: 700, color: "#be123c" }}>$6.99/mo billed yearly &middot; cancel anytime</span>
           </div>
@@ -487,7 +475,7 @@ export default function KidHome(p: KidHomeProps) {
               style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "linear-gradient(90deg,#4338ca,#7c3aed)", color: "#fff", fontFamily: BALOO, fontWeight: 800, fontSize: 17, padding: "14px 24px", borderRadius: 99, boxShadow: "0 12px 30px -8px rgba(67,56,202,.5)" }}
             >
               Continue with Readee+
-              <ArrowRight className="h-[18px] w-[18px]" strokeWidth={2.6} />
+              <Glyph name="arrow-right" size={18} />
             </Link>
             <span style={{ fontSize: 12, fontWeight: 700, color: "#4338ca" }}>$6.99/mo billed yearly &middot; cancel anytime</span>
           </div>
@@ -496,10 +484,10 @@ export default function KidHome(p: KidHomeProps) {
 
       {/* ── Quick play tiles ── */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(160px,1fr))", gap: 14 }}>
-        <QuickTile href={`/practice-hub?child=${p.childId}`} grad="linear-gradient(135deg,#8b5cf6,#6d28d9)" shadow="rgba(49,46,129,.3)" label="Practice" Icon={Target} />
-        <QuickTile href={`/stories?child=${p.childId}`} grad="linear-gradient(135deg,#34d399,#14b8a6)" shadow="rgba(13,148,136,.35)" label="Stories" Icon={BookOpen} />
-        <QuickTile href={`/luna?child=${p.childId}`} grad="linear-gradient(135deg,#a855f7,#ec4899)" shadow="rgba(168,85,247,.35)" label="Luna" Icon={Mic} badge={p.fullAccess ? undefined : "Readee+"} />
-        <QuickTile href="/discover" grad="linear-gradient(135deg,#38bdf8,#2563eb)" shadow="rgba(37,99,235,.35)" label="Discover" Icon={Compass} />
+        <QuickTile href={`/practice-hub?child=${p.childId}`} grad="linear-gradient(135deg,#8b5cf6,#6d28d9)" shadow="rgba(49,46,129,.3)" label="Practice" Icon="target" />
+        <QuickTile href={`/stories?child=${p.childId}`} grad="linear-gradient(135deg,#34d399,#14b8a6)" shadow="rgba(13,148,136,.35)" label="Stories" Icon="book-open" />
+        <QuickTile href={`/luna?child=${p.childId}`} grad="linear-gradient(135deg,#a855f7,#ec4899)" shadow="rgba(168,85,247,.35)" label="Luna" Icon="mic" badge={p.fullAccess ? undefined : "Readee+"} />
+        <QuickTile href="/discover" grad="linear-gradient(135deg,#38bdf8,#2563eb)" shadow="rgba(37,99,235,.35)" label="Discover" Icon="compass" />
       </div>
 
       {/* ── Keep it up strip ── */}
@@ -542,14 +530,14 @@ export default function KidHome(p: KidHomeProps) {
         <Link href={p.league.href} className="kh-lift" style={{ display: "flex", alignItems: "center", gap: 14, background: "#fff", borderRadius: 24, boxShadow: CARD_SHADOW, padding: "18px 22px" }}>
           <div style={{ width: 52, height: 52, borderRadius: 16, background: p.league.locked ? "#f4f4f5" : "#fffbeb", display: "flex", alignItems: "center", justifyContent: "center", flex: "none" }}>
             {p.league.locked
-              ? <Lock className="h-6 w-6" stroke="#a1a1aa" strokeWidth={2} />
+              ? <Glyph name="lock" size={24} />
               : <FluentIcon name="trophy" size={28} />}
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 17, color: "#18181b" }}>{p.league.title}</div>
             <div style={{ fontSize: 12.5, fontWeight: 700, color: "#71717a", marginTop: 2 }}>{p.league.sub}</div>
           </div>
-          <ChevronRight className="h-5 w-5" stroke="#a1a1aa" strokeWidth={2.5} />
+          <Glyph name="chevron-right" size={20} />
         </Link>
       </div>
     </div>
@@ -573,7 +561,7 @@ function StatCard({ children }: { children: React.ReactNode }) {
 
 function QuickTile({ href, grad, shadow, label, Icon, badge }: {
   href: string; grad: string; shadow: string; label: string;
-  Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
+  Icon: GlyphName;
   /** Optional corner lock badge (e.g. "Readee+") for premium-gated tiles. */
   badge?: string;
 }) {
@@ -584,7 +572,7 @@ function QuickTile({ href, grad, shadow, label, Icon, badge }: {
           <FluentIcon name="lock" size={20} />{badge}
         </span>
       )}
-      <Icon className="h-[38px] w-[38px] text-white" strokeWidth={1.8} />
+      <Glyph name={Icon} size={38} className="text-white" />
       <span style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 17, color: "#fff" }}>{label}</span>
     </Link>
   );

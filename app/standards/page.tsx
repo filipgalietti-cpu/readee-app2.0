@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BookOpen, ChevronRight } from "lucide-react";
 import { getAllStandards, slugifyStandard, domainFriendlyName } from "@/lib/data/standards";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -37,7 +37,7 @@ export default async function StandardsIndexPage() {
     <div className="mx-auto max-w-4xl px-6 py-10">
       <div>
         <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
-          <BookOpen className="h-4 w-4" />
+          <Glyph name="book-open" size={16} />
           Common Core ELA · K-4
         </div>
         <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
@@ -89,7 +89,7 @@ export default async function StandardsIndexPage() {
                                 {s.standard_description}
                               </div>
                             </div>
-                            <ChevronRight className="mt-1 h-4 w-4 flex-shrink-0 text-zinc-400" />
+                            <Glyph name="chevron-right" size={16} className="mt-1 flex-shrink-0 text-zinc-400" />
                           </Link>
                         </li>
                       ))}

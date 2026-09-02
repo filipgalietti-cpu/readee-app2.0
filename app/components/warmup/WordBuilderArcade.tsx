@@ -27,7 +27,6 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { WarmupBuild, WarmupDef } from "@/lib/warmup-engine/types";
-import { Carrot } from "lucide-react";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 

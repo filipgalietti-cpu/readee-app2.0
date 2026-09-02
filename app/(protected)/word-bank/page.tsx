@@ -6,7 +6,6 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { wordBank, type WordEntry } from "@/lib/word-bank/words";
 import { useAudio } from "@/lib/audio/use-audio";
-import { BookOpen } from "lucide-react";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { EmptyState } from "@/app/_components/EmptyState";
 import { FluentIcon } from "@/app/_components/FluentIcon";

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Volume2, Pause, Check, Loader2, AlertCircle } from "lucide-react";
 import { VOICES, voiceSampleUrl, type VoiceId } from "@/lib/ai/voices";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Voice picker for the wizard "Audio & visuals" step. Renders one card
@@ -76,7 +76,7 @@ export default function VoiceSelector({
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-4">
       <div className="flex items-center gap-2">
-        <Volume2 className="h-4 w-4 text-violet-600" />
+        <Glyph name="volume2" size={16} className="text-violet-600" />
         <div className="font-bold text-zinc-900">Voice</div>
         <div className="ml-auto text-[11px] text-zinc-500">
           Tap play to preview
@@ -101,7 +101,7 @@ export default function VoiceSelector({
                 <div className="flex items-center gap-1.5">
                   <span className="font-bold text-zinc-900">{v.name}</span>
                   {selected && (
-                    <Check className="h-3.5 w-3.5 text-violet-600" />
+                    <Glyph name="check" size={14} className="text-violet-600" />
                   )}
                 </div>
                 <div className="mt-0.5 text-[11px] leading-snug text-zinc-600">
@@ -136,13 +136,13 @@ export default function VoiceSelector({
                   aria-label={`Preview ${v.name}'s voice`}
                 >
                   {loadingId === v.id ? (
-                    <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                    <Glyph name="loader2" size={14} className="animate-spin" />
                   ) : errorId === v.id ? (
-                    <AlertCircle className="h-3.5 w-3.5" />
+                    <Glyph name="alert-circle" size={14} />
                   ) : isPlaying ? (
-                    <Pause className="h-3.5 w-3.5" />
+                    <Glyph name="pause" size={14} />
                   ) : (
-                    <Volume2 className="h-3.5 w-3.5" />
+                    <Glyph name="volume2" size={14} />
                   )}
                 </span>
                 {errorId === v.id && (

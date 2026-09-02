@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Flag, Check } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Report a published story. Kid-simple: one tap files a report for the Readee
@@ -28,7 +28,7 @@ export default function ReportButton({ slug }: { slug: string }) {
   if (state === "done") {
     return (
       <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600">
-        <Check className="h-3.5 w-3.5" strokeWidth={3} /> Thanks, we&apos;ll take a look.
+        <Glyph name="check" size={14} /> Thanks, we&apos;ll take a look.
       </span>
     );
   }
@@ -40,7 +40,7 @@ export default function ReportButton({ slug }: { slug: string }) {
       disabled={state === "sending"}
       className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 transition hover:text-rose-600 disabled:opacity-60"
     >
-      <Flag className="h-3.5 w-3.5" /> {state === "sending" ? "Reporting…" : "Report this story"}
+      <Glyph name="flag" size={14} /> {state === "sending" ? "Reporting…" : "Report this story"}
     </button>
   );
 }

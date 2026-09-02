@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, ArrowRight, Sparkles } from "lucide-react";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import {
@@ -13,6 +12,7 @@ import {
   type Announcement,
 } from "@/lib/data/announcements";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 /** Read the dismissed-announcement ids from localStorage (per device). */
 function readSeen(): string[] {
@@ -118,7 +118,7 @@ export default function WhatsNew() {
             aria-label="Close"
             className="absolute right-3 top-3 z-10 grid h-8 w-8 place-items-center rounded-full bg-white/80 text-slate-500 shadow-sm transition hover:bg-white hover:text-slate-700"
           >
-            <X className="h-4 w-4" />
+            <Glyph name="x" size={16} />
           </button>
 
           <AnnouncementStage a={current} />
@@ -142,7 +142,7 @@ export default function WhatsNew() {
                 className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-gradient-to-b from-violet-600 to-violet-500 px-5 py-3.5 text-base font-extrabold text-white shadow-lg shadow-violet-500/30 transition hover:from-violet-700 hover:to-violet-600 active:scale-[0.98]"
               >
                 {current.cta.label}
-                <ArrowRight className="h-4 w-4" />
+                <Glyph name="arrow-right" size={16} />
               </Link>
               <button
                 type="button"
@@ -194,7 +194,7 @@ function AnnouncementStage({ a }: { a: Announcement }) {
     return () => clearInterval(t);
   }, [outfitIds]);
 
-  const Icon = useMemo(() => (a.icon ? getShopIcon(a.icon) : Sparkles), [a.icon]);
+  const iconName = useMemo(() => (a.icon ? getShopIcon(a.icon) : "sparkles"), [a.icon]);
 
   // A little falling-confetti burst, generated once. Math.random is fine
   // here (client-only, gated behind the mount check in the parent).
@@ -282,7 +282,7 @@ function AnnouncementStage({ a }: { a: Announcement }) {
           animate={{ y: [0, -8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <Icon className="h-12 w-12" />
+          <FluentIcon name={iconName} size={48} />
         </motion.div>
       )}
     </div>

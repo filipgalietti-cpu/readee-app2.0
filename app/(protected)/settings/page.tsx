@@ -10,10 +10,6 @@ import { safeValidate } from "@/lib/validate";
 import CelebrationOverlay from "@/app/_components/CelebrationOverlay";
 import { ChildUpdateSchema } from "@/lib/schemas";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
-import {
-  Carrot, Check, Download, Pencil, Mail, ShieldCheck,
-  Sparkles, Plus, LogOut,
-} from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
 import { useAudioStore } from "@/lib/stores/audio-store";
@@ -23,6 +19,7 @@ import {
   deleteAccountAction,
 } from "@/app/(protected)/account/account-data-actions";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 function displayGrade(grade: string): string {
   if (grade.toLowerCase() === "pre-k") return "Kindergarten";
@@ -537,7 +534,7 @@ export default function Settings() {
         <h1 style={{ flex: 1, margin: 0, fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 600, letterSpacing: "-0.025em", color: "#18181b", lineHeight: 1.2 }}>Settings</h1>
         {savedMsg && (
           <span style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#d1fae5", color: "#059669", fontSize: 12.5, fontWeight: 700, padding: "6px 14px", borderRadius: 999, whiteSpace: "nowrap" }}>
-            <Check className="w-[13px] h-[13px]" strokeWidth={3} /> {savedMsg}
+            <Glyph name="check" size={13} /> {savedMsg}
           </span>
         )}
       </div>
@@ -578,7 +575,7 @@ export default function Settings() {
                     <div style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 600, color: "#18181b", lineHeight: 1.2 }}>{displayName}</div>
                     <button onClick={() => { setNameDraft(displayName); setEditingName(true); }} title="Edit name"
                       style={{ border: "none", background: "transparent", color: "#71717a", cursor: "pointer", padding: 4, borderRadius: 8, display: "flex" }}>
-                      <Pencil className="w-[15px] h-[15px]" strokeWidth={2} />
+                      <Glyph name="pencil" size={15} />
                     </button>
                   </div>
                 )}
@@ -601,7 +598,7 @@ export default function Settings() {
                 {provider === "google" ? (
                   <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                 ) : (
-                  <Mail className="w-[17px] h-[17px]" style={{ color: "#4338ca" }} strokeWidth={1.5} />
+                  <Glyph name="mail" size={17} style={{ color: "#4338ca" }} />
                 )}
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
@@ -676,7 +673,7 @@ export default function Settings() {
                       </span>
                     )}
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#fff7ed", color: "#c2410c", fontSize: 11.5, fontWeight: 700, padding: "3px 9px", borderRadius: 999 }}>
-                      <Carrot className="w-3 h-3" strokeWidth={2} /> {child.carrots}
+                      <Glyph name="carrot" size={12} /> {child.carrots}
                     </span>
                     {!child.reading_level && (
                       <span style={{ background: "#eef2ff", color: "#4338ca", fontSize: 11.5, fontWeight: 700, padding: "3px 9px", borderRadius: 999 }}>Needs placement</span>
@@ -729,7 +726,7 @@ export default function Settings() {
               <button onClick={() => { if (children.length >= maxReaders) { if (maxReaders === 1) router.push("/upgrade?reason=multi_reader"); else flash("You can have up to 2 readers on Readee+."); } else { setShowAddChild(true); } }}
                 style={{ border: "1.5px dashed #d4d4d8", borderRadius: 20, background: "#fafafa", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, fontFamily: "inherit", minHeight: 150 }}>
                 <div style={{ width: 40, height: 40, borderRadius: 12, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  {!readerFull && children.length >= 1 ? <Sparkles className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} /> : <Plus className="w-5 h-5" style={{ color: "#4338ca" }} strokeWidth={2} />}
+                  {!readerFull && children.length >= 1 ? <Glyph name="sparkles" size={20} style={{ color: "#4338ca" }} /> : <Glyph name="plus" size={20} style={{ color: "#4338ca" }} />}
                 </div>
                 <span style={{ fontSize: 14, fontWeight: 600, color: "#3f3f46" }}>Add a reader</span>
                 <span style={{ fontSize: 11.5, color: "#6b7280" }}>{!readerFull && children.length >= 1 ? "Add more readers with Readee+" : "Included with Readee+"}</span>
@@ -760,7 +757,7 @@ export default function Settings() {
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: 24, fontWeight: 600, color: "#312e81", lineHeight: 1.2 }}>Readee+</div>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 5, background: "#d1fae5", color: "#059669", fontSize: 12, fontWeight: 700, padding: "4px 10px", borderRadius: 999 }}>
-                  <Check className="w-3 h-3" strokeWidth={3} /> Active
+                  <Glyph name="check" size={12} /> Active
                 </span>
               </div>
               <p style={{ margin: "0 0 18px", fontSize: 13, color: "#71717a" }}>Full access to every lesson, story, unlimited practice, and parent analytics - for all your readers.</p>
@@ -788,7 +785,7 @@ export default function Settings() {
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
                   <div>
                     <div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 600, color: "#312e81" }}>
-                      <Sparkles className="w-[18px] h-[18px]" style={{ color: "#4338ca" }} strokeWidth={1.5} /> Readee+ - $9.99/mo
+                      <Glyph name="sparkles" size={18} style={{ color: "#4338ca" }} /> Readee+ - $9.99/mo
                     </div>
                     <div style={{ fontSize: 12.5, color: "#6366f1", marginTop: 2 }}>Every lesson, unlimited practice, all stories, and parent analytics.</div>
                   </div>
@@ -822,7 +819,7 @@ export default function Settings() {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px", borderTop: "1px solid #f4f4f5" }}>
             <div style={{ width: 34, height: 34, borderRadius: 10, background: "#eef2ff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <Mail className="w-[17px] h-[17px]" style={{ color: "#4338ca" }} strokeWidth={1.5} />
+              <Glyph name="mail" size={17} style={{ color: "#4338ca" }} />
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 14, fontWeight: 600, color: "#18181b" }}>Weekly progress report</div>
@@ -835,7 +832,7 @@ export default function Settings() {
         {/* ═══ Privacy & data ═══ */}
         <div id="sec-privacy" style={{ scrollMarginTop: 72, border: CARD, borderRadius: 20, padding: 20, background: "#fff" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-            <ShieldCheck className="w-[18px] h-[18px]" style={{ color: "#10b981" }} strokeWidth={1.5} />
+            <Glyph name="shield-check" size={18} style={{ color: "#10b981" }} />
             <div style={{ fontSize: 15, fontWeight: 600, color: "#18181b" }}>Privacy &amp; data</div>
           </div>
           <p style={{ margin: "0 0 14px", fontSize: 13.5, color: "#52525b", lineHeight: 1.55, maxWidth: 560 }}>
@@ -849,7 +846,7 @@ export default function Settings() {
             </div>
             <button onClick={handleExportData} disabled={exportBusy}
               style={{ border: CARD, background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 13, fontWeight: 600, padding: "7px 14px", borderRadius: 12, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 6, flexShrink: 0, opacity: exportBusy ? 0.6 : 1 }}>
-              <Download className="w-[13px] h-[13px]" strokeWidth={2.4} /> {exportBusy ? "Preparing…" : "Request export"}
+              <Glyph name="download" size={13} /> {exportBusy ? "Preparing…" : "Request export"}
             </button>
           </div>
           {exportError && <p style={{ margin: "6px 0 0", fontSize: 12, fontWeight: 600, color: "#dc2626" }}>{exportError}</p>}
@@ -867,7 +864,7 @@ export default function Settings() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, padding: "16px 4px 0", flexWrap: "wrap", borderTop: "1px solid #f4f4f5" }}>
           <span style={{ fontSize: 12.5, color: "#6b7280" }}>Questions? <a href="mailto:hello@readee.app" style={{ color: "#4338ca", fontWeight: 700 }}>hello@readee.app</a></span>
           <button onClick={handleLogout} style={{ border: "1px solid #e4e4e7", background: "#fff", color: "#3f3f46", fontFamily: "inherit", fontSize: 13, fontWeight: 600, cursor: "pointer", padding: "8px 18px", borderRadius: 10, display: "inline-flex", alignItems: "center", gap: 6 }}>
-            <LogOut className="w-[14px] h-[14px]" strokeWidth={2} /> Log out
+            <Glyph name="log-out" size={14} /> Log out
           </button>
         </div>
       </div>

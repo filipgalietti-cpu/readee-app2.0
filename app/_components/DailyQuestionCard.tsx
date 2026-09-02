@@ -2,15 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  Newspaper,
-  Volume2,
-  Pause,
-  ThumbsUp,
-  ThumbsDown,
-  ArrowRight,
-} from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { Glyph } from "@/app/_components/Glyph";
 
 type DailyQuestion = {
   date: string;
@@ -124,7 +117,7 @@ export default function DailyQuestionCard({
       <div className="flex items-start justify-between gap-3">
         <div>
           <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
-            <Newspaper className="h-3 w-3" />
+            <Glyph name="newspaper" size={12} />
             Today's Readee
           </div>
           <h3 className="mt-0.5 text-base font-bold text-zinc-900">
@@ -168,7 +161,7 @@ export default function DailyQuestionCard({
               onClick={togglePlay}
               className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-violet-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-violet-700 transition hover:bg-violet-50"
             >
-              {playing ? <Pause className="h-3 w-3" /> : <Volume2 className="h-3 w-3" />}
+              {playing ? <Glyph name="pause" size={12} /> : <Glyph name="volume2" size={12} />}
               {playing ? "Pause" : "Read aloud"}
             </button>
           )}
@@ -188,7 +181,7 @@ export default function DailyQuestionCard({
               className="inline-flex items-center gap-1 rounded-full bg-violet-600 px-3 py-1 text-[11px] font-bold text-white transition hover:bg-violet-700"
             >
               Open
-              <ArrowRight className="h-3 w-3" />
+              <Glyph name="arrow-right" size={12} />
             </Link>
           )}
           <button
@@ -202,7 +195,7 @@ export default function DailyQuestionCard({
             }`}
             aria-label="Thumbs up"
           >
-            <ThumbsUp className="h-3.5 w-3.5" />
+            <Glyph name="thumbs-up" size={14} />
           </button>
           <button
             type="button"
@@ -215,7 +208,7 @@ export default function DailyQuestionCard({
             }`}
             aria-label="Thumbs down"
           >
-            <ThumbsDown className="h-3.5 w-3.5" />
+            <Glyph name="thumbs-down" size={14} />
           </button>
         </div>
       </div>

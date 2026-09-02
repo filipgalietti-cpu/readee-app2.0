@@ -3,15 +3,8 @@
 import { useState, useTransition, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowRight,
-  ArrowLeft,
-  Loader2,
-  AlertCircle,
-  Sparkles,
-  Check,
-} from "lucide-react";
 import { saveTeacherIdentity } from "../actions";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Grade = "K" | "1st" | "2nd" | "3rd" | "4th" | "Mixed";
 type Grades = Grade[];
@@ -188,7 +181,7 @@ export default function TeacherOnboardingWizard({
 
         {err && (
           <div className="mx-auto mt-6 flex max-w-md items-start gap-2 rounded-xl bg-red-100 px-3 py-2 text-sm font-semibold text-red-800 ring-1 ring-red-200">
-            <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+            <Glyph name="alert-circle" size={16} className="mt-0.5 flex-shrink-0" />
             {err}
           </div>
         )}
@@ -207,17 +200,17 @@ export default function TeacherOnboardingWizard({
         >
           {pending ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin" />
+              <Glyph name="loader2" size={16} className="animate-spin" />
               Setting up your classroom…
             </>
           ) : step < totalSteps - 1 ? (
             <>
               Continue
-              <ArrowRight className="h-3.5 w-3.5" />
+              <Glyph name="arrow-right" size={14} />
             </>
           ) : (
             <>
-              <Sparkles className="h-3.5 w-3.5" />
+              <Glyph name="sparkles" size={14} />
               Open my classroom
             </>
           )}
@@ -231,7 +224,7 @@ export default function TeacherOnboardingWizard({
           disabled={step === 0 || pending}
           className="inline-flex items-center gap-1 text-xs font-semibold text-zinc-500 transition hover:text-zinc-800 disabled:opacity-0"
         >
-          <ArrowLeft className="h-3 w-3" />
+          <Glyph name="arrow-left" size={12} />
           Back
         </button>
       </div>
@@ -451,7 +444,7 @@ function CheckBox({ active }: { active: boolean }) {
           : "bg-violet-100 text-transparent ring-1 ring-violet-300"
       }`}
     >
-      {active && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+      {active && <Glyph name="check" size={14} />}
     </span>
   );
 }

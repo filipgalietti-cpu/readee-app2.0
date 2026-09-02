@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Carrot, Check, RotateCcw, X } from "lucide-react";
 import { useState } from "react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Interactive answer-choice block for the showcase practice page.
@@ -65,12 +65,12 @@ export default function InteractiveChoices({
             >
               {showAsCorrect && (
                 <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-emerald-600">
-                  <Check className="h-4 w-4" strokeWidth={3} />
+                  <Glyph name="check" size={16} />
                 </span>
               )}
               {showAsWrong && (
                 <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-white text-rose-600">
-                  <X className="h-4 w-4" strokeWidth={3} />
+                  <Glyph name="x" size={16} />
                 </span>
               )}
               <span className="flex-1">{c}</span>
@@ -97,7 +97,7 @@ export default function InteractiveChoices({
                   transition={{ type: "spring", stiffness: 320, damping: 22 }}
                   className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-400 px-6 py-3 text-white shadow-lg"
                 >
-                  <Carrot className="h-6 w-6" strokeWidth={2.2} aria-hidden />
+                  <Glyph name="carrot" size={24} />
                   <span className="text-base font-extrabold">+10 carrots</span>
                 </motion.div>
                 {/* Floating carrots */}
@@ -110,7 +110,7 @@ export default function InteractiveChoices({
                       transition={{ delay: 0.1 + k * 0.1, duration: 1.6, ease: "easeOut" }}
                       className="absolute top-0"
                     >
-                      <Carrot className="h-7 w-7 text-orange-500" strokeWidth={2.2} aria-hidden />
+                      <Glyph name="carrot" size={28} className="text-orange-500" />
                     </motion.div>
                   ))}
                 </div>
@@ -132,7 +132,7 @@ export default function InteractiveChoices({
               onClick={() => setPicked(null)}
               className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-zinc-900"
             >
-              <RotateCcw className="h-4 w-4" />
+              <Glyph name="rotate-ccw" size={16} />
               Try again
             </button>
           </motion.div>

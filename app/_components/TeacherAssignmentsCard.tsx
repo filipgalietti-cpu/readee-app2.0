@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { GraduationCap, Clock } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
+import { Glyph } from "@/app/_components/Glyph";
 
 type OpenAssignment = {
   id: string;
@@ -133,7 +133,7 @@ export default function TeacherAssignmentsCard({ childId }: { childId: string })
       className="rounded-3xl bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 p-5 space-y-3"
     >
       <div className="flex items-center gap-2">
-        <GraduationCap className="w-5 h-5 text-amber-600" strokeWidth={2} />
+        <Glyph name="graduation-cap" size={20} className="text-amber-600" />
         <div className="text-[11px] font-bold uppercase tracking-widest text-amber-700">
           From your teacher
         </div>
@@ -165,7 +165,7 @@ export default function TeacherAssignmentsCard({ childId }: { childId: string })
                           : "text-amber-700"
                       }`}
                     >
-                      <Clock className="w-3.5 h-3.5" strokeWidth={2} />
+                      <Glyph name="clock" size={14} />
                       {due}
                     </div>
                   )}

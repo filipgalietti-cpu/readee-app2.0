@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
 import { createClient } from "@/lib/supabase/server";
 import ExitForm from "./_components/ExitForm";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +30,7 @@ export default async function PlayExitPage({
           href={`/play/${childId}`}
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <Glyph name="arrow-left" size={16} />
           Back to {/* eslint-disable-next-line react/no-unescaped-entities */}reading
         </Link>
 

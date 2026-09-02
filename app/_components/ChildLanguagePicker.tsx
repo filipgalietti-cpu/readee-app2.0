@@ -2,9 +2,9 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Globe, Loader2 } from "lucide-react";
 import { setChildLanguage } from "@/app/(protected)/account/language-actions";
 import { SUPPORTED_LOCALES, type Locale } from "@/lib/i18n/strings";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Small inline picker that lets a parent flip a child's content
@@ -44,7 +44,7 @@ export default function ChildLanguagePicker({
   return (
     <div className="flex flex-wrap items-center gap-2">
       <div className="inline-flex items-center gap-1 text-[11px] font-semibold text-zinc-500">
-        <Globe className="h-3 w-3" />
+        <Glyph name="globe" size={12} />
         {childName}&apos;s language:
       </div>
       <div className="inline-flex rounded-full border border-zinc-200 bg-zinc-50 p-0.5">
@@ -64,7 +64,7 @@ export default function ChildLanguagePicker({
           </button>
         ))}
       </div>
-      {pending && <Loader2 className="h-3 w-3 animate-spin text-zinc-400" />}
+      {pending && <Glyph name="loader2" size={12} className="animate-spin text-zinc-400" />}
       {err && <span className="text-[11px] font-semibold text-red-600">{err}</span>}
     </div>
   );

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Users, ArrowRight } from "lucide-react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Pick = {
   id: string;
@@ -33,7 +33,7 @@ export default function TopCommunityPicks() {
     <div className="mt-2 rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 p-4 shadow-sm">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-700">
-          <Users className="h-3.5 w-3.5" />
+          <Glyph name="users" size={14} />
           From the community
         </div>
         <Link
@@ -41,7 +41,7 @@ export default function TopCommunityPicks() {
           className="inline-flex items-center gap-1 text-[11px] font-semibold text-violet-700 hover:underline"
         >
           See all
-          <ArrowRight className="h-3 w-3" />
+          <Glyph name="arrow-right" size={12} />
         </Link>
       </div>
 

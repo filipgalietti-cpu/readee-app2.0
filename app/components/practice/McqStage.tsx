@@ -15,10 +15,10 @@
  */
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Volume2, ArrowRight, X as XIcon } from "lucide-react";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 /* Claude Design "Practice Runner" choice-card palette (letter chip + card). */
 export const DESIGN_CHOICE_COLORS = [
@@ -80,7 +80,7 @@ export function McqStage(props: McqStageProps) {
 
   const speaker = (size: number) => (
     <button onClick={onReplay} aria-label="Read to me" className="rounded-full bg-indigo-700 flex items-center justify-center flex-none transition hover:scale-105 active:scale-90" style={{ width: size, height: size, boxShadow: "0 3px 0 0 #312e81" }}>
-      <Volume2 className="text-white" style={{ width: Math.round(size * 0.46), height: Math.round(size * 0.46) }} strokeWidth={2} />
+      <Glyph name="volume2" size={20} className="text-white" style={{ width: Math.round(size * 0.46), height: Math.round(size * 0.46) }} />
     </button>
   );
 
@@ -116,7 +116,7 @@ export function McqStage(props: McqStageProps) {
             <span className="w-9 h-9 rounded-xl flex items-center justify-center font-[family-name:var(--font-baloo)] font-bold text-[17px] flex-none" style={{ background: chipBg, color: chipFg }}>{"ABCD"[i]}</span>
             <span className="flex-1 font-bold text-[17px] leading-snug" style={{ color: fg }}>{String(choice).replace(/\*\*/g, "")}</span>
             {showCheck && <FluentIcon name="check" size={24} />}
-            {showX && <XIcon className="w-5 h-5 flex-none" stroke="#a1a1aa" strokeWidth={3} />}
+            {showX && <Glyph name="x" size={20} className="flex-none" />}
           </motion.button>
         );
       })}
@@ -258,7 +258,7 @@ export function NextCta({ label, onClick }: { label: string; onClick: () => void
         style={{ background: "linear-gradient(135deg,#6366f1,#8b5cf6)", boxShadow: "0 4px 0 0 #4f46e5,0 10px 30px -8px rgba(79,70,229,.5)" }}
       >
         <span>{label}</span>
-        <ArrowRight className="w-[22px] h-[22px]" strokeWidth={2.5} />
+        <Glyph name="arrow-right" size={22} />
       </motion.button>
     </AnimatePresence>
   );

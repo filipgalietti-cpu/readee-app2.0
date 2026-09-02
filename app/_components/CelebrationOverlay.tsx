@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { popIn, confettiPiece } from "@/lib/motion/variants";
-import { Sparkles } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 const CONFETTI_COLORS = [
   "#6366f1", "#8b5cf6", "#a78bfa", "#60a5fa",
@@ -75,7 +75,7 @@ export default function CelebrationOverlay({ show }: { show: boolean }) {
               animate="visible"
               className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-violet-100 to-indigo-100 flex items-center justify-center"
             >
-              <Sparkles className="w-8 h-8 text-indigo-600" strokeWidth={1.5} />
+              <Glyph name="sparkles" size={32} className="text-indigo-600" />
             </motion.div>
 
             {/* Heading */}

@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Flame, X, Check } from "lucide-react";
 import type { QuizDef, QuizQuestion, QuizResultItem } from "@/lib/lesson-engine/quiz";
 import type { LearningEvent } from "@/lib/lesson-engine/types";
 import { getInteraction } from "@/lib/lesson-engine/registry";
@@ -12,8 +11,8 @@ import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import QuizSummary from "./QuizSummary";
 import QuizHypeIntro from "@/app/(protected)/practice/_components/QuizHypeIntro";
 import SealOfApproval from "@/app/(protected)/practice/_components/SealOfApproval";
-import { Carrot } from "lucide-react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * QuizRunner — the post-lesson quiz, built on Filip's designed beats:
@@ -293,10 +292,9 @@ export default function QuizRunner({
                 transition={{ duration: streak >= 5 ? 0.55 : 0.8, repeat: Infinity, ease: "easeInOut" }}
                 style={streak >= 5 ? { filter: "drop-shadow(0 0 8px rgba(251,146,60,.9))" } : undefined}
               >
-                <Flame
+                <FluentIcon
+                  name="fire"
                   size={streak >= 5 ? 24 : 18}
-                  className={streak >= 5 ? "fill-red-500 text-yellow-400" : "fill-orange-400 text-orange-500"}
-                  strokeWidth={streak >= 5 ? 2.5 : 2}
                 />
               </motion.span>
               <span className="qz-ftxt">{streak >= 5 ? "YOU'RE ON FIRE! 3x!" : `${streak} in a row! 2x!`}</span>
@@ -332,7 +330,7 @@ export default function QuizRunner({
           aria-label="Close quiz"
           className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition hover:bg-zinc-100"
         >
-          <X size={18} />
+          <Glyph name="x" size={18} />
         </button>
       </header>
       )}

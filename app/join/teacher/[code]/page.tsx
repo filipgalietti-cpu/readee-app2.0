@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
-import { Sparkles, GraduationCap, Check } from "lucide-react";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { REFERRAL_BONUS_CREDITS } from "@/lib/referrals/teacher-referrals";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -43,7 +43,7 @@ export default async function ReferralLandingPage({
     return (
       <div className="mx-auto max-w-xl px-6 py-16 text-center">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-500">
-          <Sparkles className="h-7 w-7" />
+          <Glyph name="sparkles" size={28} />
         </div>
         <h1 className="mt-4 text-2xl font-extrabold text-zinc-900">
           This referral link was already used
@@ -56,7 +56,7 @@ export default async function ReferralLandingPage({
           href="/signup"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-2.5 text-sm font-bold text-white transition hover:bg-indigo-700"
         >
-          <GraduationCap className="h-4 w-4" />
+          <Glyph name="graduation-cap" size={16} />
           Sign up
         </Link>
       </div>
@@ -67,7 +67,7 @@ export default async function ReferralLandingPage({
     <div className="mx-auto max-w-xl px-6 py-16">
       <div className="rounded-3xl border-2 border-violet-200 bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-8 text-center shadow-sm">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg">
-          <Sparkles className="h-7 w-7" />
+          <Glyph name="sparkles" size={28} />
         </div>
         <h1 className="mt-4 text-2xl font-extrabold text-zinc-900 sm:text-3xl">
           {referrerName} thinks you&apos;ll love Readee
@@ -90,7 +90,7 @@ export default async function ReferralLandingPage({
           href="/signup"
           className="mt-7 inline-flex items-center gap-2 rounded-full bg-violet-600 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-violet-700"
         >
-          <GraduationCap className="h-4 w-4" />
+          <Glyph name="graduation-cap" size={16} />
           Claim my {REFERRAL_BONUS_CREDITS} credits
         </Link>
 
@@ -109,7 +109,7 @@ export default async function ReferralLandingPage({
 function Bullet({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-2">
-      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" />
+      <Glyph name="check" size={16} className="mt-0.5 flex-shrink-0 text-emerald-500" />
       <span className="text-zinc-700">{children}</span>
     </li>
   );

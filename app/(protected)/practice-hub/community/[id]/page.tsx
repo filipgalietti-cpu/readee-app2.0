@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Users } from "lucide-react";
 import { requireProfile } from "@/lib/auth/helpers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
 import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
 import RecordCommunityRead from "@/app/_components/RecordCommunityRead";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -44,7 +44,7 @@ export default async function CommunityPassagePage({
         href="/practice-hub/community"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <Glyph name="arrow-left" size={16} />
         Community library
       </Link>
 
@@ -60,7 +60,7 @@ export default async function CommunityPassagePage({
                 className="h-7 w-7 flex-none rounded-full object-cover shadow-sm ring-2 ring-white"
               />
             ) : (
-              <Users className="h-4 w-4 text-violet-600" />
+              <Glyph name="users" size={16} className="text-violet-600" />
             )}
             <span className="text-sm font-bold text-zinc-700">
               {passage.display_byline

@@ -6,7 +6,7 @@ import { useAudio } from "@/lib/audio/use-audio";
 import { useAuditReviews } from "@/lib/audit/use-audit-reviews";
 import { ReviewList } from "@/app/components/audit/ReviewList";
 import { MigrateLocalStorage } from "@/app/components/audit/MigrateLocalStorage";
-import { ThumbsUp, Volume2, Square } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 const SUPABASE_STORAGE =
   process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -70,7 +70,7 @@ function SpeakerButton({ url }: { url: string }) {
       }`}
       title={playing ? "Stop" : "Play audio"}
     >
-      {playing ? <Square className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+      {playing ? <Glyph name="square" size={16} /> : <Glyph name="volume2" size={16} />}
     </button>
   );
 }
@@ -371,7 +371,7 @@ export default function LessonAuditPage() {
                             : "hover:bg-gray-100 text-gray-400"
                         }`}
                       >
-                        <ThumbsUp className="w-4 h-4" />
+                        <Glyph name="thumbs-up" size={16} />
                       </button>
                       <button
                         onClick={() => toggleRating(key, "down", l.standardId)}
@@ -674,7 +674,7 @@ export default function LessonAuditPage() {
                         }`}
                         title="Looks good"
                       >
-                        <ThumbsUp className="w-4 h-4" />
+                        <Glyph name="thumbs-up" size={16} />
                       </button>
                       <button
                         onClick={() => toggleRating(key, "down", lesson.standardId)}

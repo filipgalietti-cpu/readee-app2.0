@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, X as XIcon, ThumbsUp, ThumbsDown } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Q = {
   prompt: string;
@@ -111,7 +111,7 @@ export default function TodayQuestionPlayer({
           <div className="mt-3.5 flex w-full flex-col gap-1.5 text-left">
             {results.map((r, i) => (
               <div key={i} className="flex items-center gap-2 rounded-[10px] px-2.5 py-2" style={{ background: r.ok ? "#ecfdf5" : "#fef2f2" }}>
-                {r.ok ? <Check className="h-3.5 w-3.5 shrink-0 text-emerald-600" strokeWidth={3} /> : <XIcon className="h-3.5 w-3.5 shrink-0 text-red-600" strokeWidth={3} />}
+                {r.ok ? <Glyph name="check" size={14} className="shrink-0 text-emerald-600" /> : <Glyph name="x" size={14} className="shrink-0 text-red-600" />}
                 <span className="shrink-0 text-[11px] font-extrabold text-zinc-500">Q{i + 1}</span>
                 <span className="truncate text-xs font-semibold text-zinc-700">{r.prompt}</span>
               </div>
@@ -131,10 +131,10 @@ export default function TodayQuestionPlayer({
             <div className="mt-[18px] flex items-center gap-2 text-xs text-zinc-500">
               Was today&apos;s Readee good?
               <button type="button" onClick={() => vote("up")} disabled={voted != null} className={`grid h-8 w-8 place-items-center rounded-full transition ${voted === "up" ? "bg-emerald-100 text-emerald-700" : "bg-zinc-100 text-zinc-400 hover:text-emerald-600"}`}>
-                <ThumbsUp className="h-[15px] w-[15px]" />
+                <Glyph name="thumbs-up" size={15} />
               </button>
               <button type="button" onClick={() => vote("down")} disabled={voted != null} className={`grid h-8 w-8 place-items-center rounded-full transition ${voted === "down" ? "bg-red-100 text-red-700" : "bg-zinc-100 text-zinc-400 hover:text-red-600"}`}>
-                <ThumbsDown className="h-[15px] w-[15px]" />
+                <Glyph name="thumbs-down" size={15} />
               </button>
             </div>
           )}
@@ -177,8 +177,8 @@ export default function TodayQuestionPlayer({
             >
               <span className={`grid h-[26px] w-[26px] shrink-0 place-items-center rounded-full border-2 text-xs font-extrabold ${badge}`}>{LETTERS[i]}</span>
               <span className="flex-1">{text}</span>
-              {revealed && isCorrectChoice && <Check className="h-[17px] w-[17px] text-emerald-600" strokeWidth={3} />}
-              {revealed && isSel && !isCorrectChoice && <XIcon className="h-[17px] w-[17px] text-red-600" strokeWidth={3} />}
+              {revealed && isCorrectChoice && <Glyph name="check" size={17} className="text-emerald-600" />}
+              {revealed && isSel && !isCorrectChoice && <Glyph name="x" size={17} className="text-red-600" />}
             </button>
           );
         })}

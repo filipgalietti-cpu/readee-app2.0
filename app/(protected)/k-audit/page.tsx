@@ -8,8 +8,8 @@ import { SoundMachine } from "@/app/components/practice/SoundMachine";
 import { CategorySort } from "@/app/components/practice/CategorySort";
 import { MissingWord } from "@/app/components/practice/MissingWord";
 import { SentenceBuild } from "@/app/components/practice/SentenceBuild";
-import { ThumbsUp } from "lucide-react";
 import { SpaceInsertion } from "@/app/components/practice/SpaceInsertion";
+import { Glyph } from "@/app/_components/Glyph";
 
 /* ── Types ──────────────────────────────────────────── */
 
@@ -547,7 +547,7 @@ export default function KAuditPage() {
                       <button onClick={() => toggleRating(q.id, "up")}
                         className={`p-1.5 rounded-lg transition-colors text-lg ${
                           review?.rating === "up" ? "bg-emerald-200 text-emerald-700" : "hover:bg-gray-100 text-gray-400"
-                        }`}><ThumbsUp className="w-4 h-4" /></button>
+                        }`}><Glyph name="thumbs-up" size={16} /></button>
                       <button onClick={() => toggleRating(q.id, "down")}
                         className={`p-1.5 rounded-lg transition-colors text-lg ${
                           review?.rating === "down" ? "bg-red-200 text-red-700" : "hover:bg-gray-100 text-gray-400"

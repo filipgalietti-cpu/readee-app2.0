@@ -3,22 +3,12 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  BarChart3,
-  Gauge,
-  Target,
-  Sparkles,
-  Mic,
-  Puzzle,
-  TrendingUp,
-  Waves,
-  CheckCircle2,
-} from "lucide-react";
-import {
   SKILL_AXES,
   AXIS_LABEL,
   type LearnerModel,
 } from "@/lib/adaptive/learner-model";
 import { type LunaReport } from "@/lib/luna/report";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ─── Tiny WCPM-over-time sparkline ────────────────── */
 function Sparkline({ data }: { data: number[] }) {
@@ -69,13 +59,13 @@ function SectionTitle({
   icon: Icon,
   children,
 }: {
-  icon: any;
+  icon: GlyphName;
   children: React.ReactNode;
 }) {
   return (
     <div className="mb-4 flex items-center gap-2">
       <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-violet-100 text-violet-600">
-        <Icon className="h-4 w-4" strokeWidth={2} />
+        <Glyph name={Icon} size={16} />
       </span>
       <h2
         className="text-lg font-extrabold tracking-tight text-zinc-900"
@@ -106,7 +96,7 @@ export default function LearningReport({
       {/* Header */}
       <div className="mb-6">
         <div className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-violet-600">
-          <BarChart3 className="h-4 w-4" />
+          <Glyph name="bar-chart3" size={16} />
           Learning Report
         </div>
         <h1
@@ -123,7 +113,7 @@ export default function LearningReport({
       <div className="space-y-5">
         {/* ── 5-axis skill bars ── */}
         <Card>
-          <SectionTitle icon={Gauge}>Reading skills</SectionTitle>
+          <SectionTitle icon="gauge">Reading skills</SectionTitle>
           <div className="space-y-4">
             {SKILL_AXES.map((axis, i) => {
               const dim = dimensions[axis];
@@ -175,7 +165,7 @@ export default function LearningReport({
 
         {/* ── Reading growth (Luna) ── */}
         <Card>
-          <SectionTitle icon={Mic}>Reading growth</SectionTitle>
+          <SectionTitle icon="mic">Reading growth</SectionTitle>
           {hasLuna ? (
             <>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -198,7 +188,7 @@ export default function LearningReport({
                   <div className="text-3xl font-extrabold text-violet-700" style={HEADING_FONT}>
                     {luna.expression != null ? `${luna.expression}%` : "-"}
                   </div>
-                  <div className="mt-0.5 flex items-center justify-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-violet-500"><Waves className="h-3 w-3" />Expression</div>
+                  <div className="mt-0.5 flex items-center justify-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-violet-500"><Glyph name="waves" size={12} />Expression</div>
                 </div>
                 <div className="rounded-2xl bg-violet-50 p-4 text-center">
                   <div className="text-3xl font-extrabold text-violet-700" style={HEADING_FONT}>
@@ -226,7 +216,7 @@ export default function LearningReport({
                 href={`/luna?child=${childId}`}
                 className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-violet-700"
               >
-                <Mic className="h-4 w-4" />
+                <Glyph name="mic" size={16} />
                 Read with Luna
               </Link>
             </div>
@@ -236,14 +226,14 @@ export default function LearningReport({
         {/* ── Sound progress (Luna adaptive engine) ── */}
         {(luna.mastered.length > 0 || luna.workingOn.length > 0) && (
           <Card>
-            <SectionTitle icon={Puzzle}>Sound progress</SectionTitle>
+            <SectionTitle icon="puzzle">Sound progress</SectionTitle>
             {luna.mastered.length > 0 && (
               <div className="mb-3">
                 <div className="mb-2 text-xs font-bold uppercase tracking-wide text-emerald-600">Mastered</div>
                 <div className="flex flex-wrap gap-2">
                   {luna.mastered.map((p) => (
                     <span key={p.id} className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
-                      <CheckCircle2 className="h-3.5 w-3.5" />{p.label}
+                      <Glyph name="check-circle2" size={14} />{p.label}
                     </span>
                   ))}
                 </div>
@@ -267,7 +257,7 @@ export default function LearningReport({
         {/* ── Working on + Strengths ── */}
         <div className="grid gap-5 sm:grid-cols-2">
           <Card>
-            <SectionTitle icon={Target}>Working on</SectionTitle>
+            <SectionTitle icon="target">Working on</SectionTitle>
             {weakStandards.length > 0 ? (
               <ul className="space-y-2">
                 {weakStandards.slice(0, 5).map((w) => (
@@ -293,7 +283,7 @@ export default function LearningReport({
           </Card>
 
           <Card>
-            <SectionTitle icon={TrendingUp}>Strengths</SectionTitle>
+            <SectionTitle icon="trending-up">Strengths</SectionTitle>
             {strengths.length > 0 ? (
               <ul className="space-y-2">
                 {strengths.slice(0, 5).map((s) => (
@@ -304,7 +294,7 @@ export default function LearningReport({
                     <span className="text-sm font-semibold text-zinc-800">
                       {s}
                     </span>
-                    <Sparkles className="h-4 w-4 text-emerald-500" />
+                    <Glyph name="sparkles" size={16} className="text-emerald-500" />
                   </li>
                 ))}
               </ul>
@@ -320,7 +310,7 @@ export default function LearningReport({
         {/* ── Tricky sounds / patterns ── */}
         {weakPatterns.length > 0 && (
           <Card>
-            <SectionTitle icon={Puzzle}>Tricky sounds &amp; patterns</SectionTitle>
+            <SectionTitle icon="puzzle">Tricky sounds &amp; patterns</SectionTitle>
             <div className="flex flex-wrap gap-2">
               {weakPatterns.map((p) => (
                 <span

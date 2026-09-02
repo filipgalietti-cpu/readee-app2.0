@@ -12,7 +12,6 @@ import { savedOk } from "@/lib/db/checked-write";
 import { audioManager } from "@/lib/audio/audio-manager";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import JourneyMap, { type JGrade } from "./_components/JourneyMap";
-import { BookOpen, Type, Newspaper, MessageCircle } from "lucide-react";
 
 const GRADE_BADGES: Record<string, string> = {
   "Kindergarten": "/images/ui/grades/grade-k.png",
@@ -23,6 +22,7 @@ const GRADE_BADGES: Record<string, string> = {
 };
 import { PaywallModal } from "@/app/_components/PaywallModal";
 import JourneySkeleton from "./_components/JourneySkeleton";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -55,7 +55,7 @@ interface LessonWithStatus extends SampleLesson {
 
 interface DomainGroup {
   domain: string;
-  Icon: typeof BookOpen;
+  Icon: GlyphName;
   lessons: LessonWithStatus[];
   completedCount: number;
 }
@@ -71,11 +71,11 @@ interface GradeGroup {
 
 // FREE_LESSON_COUNT now comes from getLimits()
 
-const DOMAIN_ICONS: Record<string, typeof BookOpen> = {
-  "Reading Literature": BookOpen,
-  "Reading Informational Text": Newspaper,
-  "Foundational Skills": Type,
-  "Language": MessageCircle,
+const DOMAIN_ICONS: Record<string, GlyphName> = {
+  "Reading Literature": "book-open",
+  "Reading Informational Text": "newspaper",
+  "Foundational Skills": "text",
+  "Language": "message-circle",
 };
 
 /* ── Page ──────────────────────────────────────────── */
@@ -310,7 +310,7 @@ function JourneyContent() {
       const dLessons = domainMap.get(domain)!;
       return {
         domain,
-        Icon: DOMAIN_ICONS[domain] || BookOpen,
+        Icon: DOMAIN_ICONS[domain] || "book-open",
         lessons: dLessons,
         completedCount: dLessons.filter((l) => l.status === "completed").length,
       };

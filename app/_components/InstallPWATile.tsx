@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Download, X, Share } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 const DISMISSED_KEY = "readee_pwa_install_dismissed";
 const SUPPRESS_DAYS = 14;
@@ -113,12 +113,9 @@ export default function InstallPWATile() {
             aria-label="Dismiss"
             className="absolute top-1.5 right-1.5 flex h-6 w-6 items-center justify-center rounded-md text-white/60 hover:bg-white/15 hover:text-white transition-colors z-10"
           >
-            <X className="h-3.5 w-3.5" />
+            <Glyph name="x" size={14} />
           </button>
-          <Download
-            className="w-8 h-8 sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2"
-            strokeWidth={1.5}
-          />
+          <Glyph name="download" size={32} className="sm:w-10 sm:h-10 text-white mb-1.5 sm:mb-2" />
           <span className="text-xs sm:text-sm font-extrabold text-white leading-tight">
             Install App
           </span>
@@ -141,7 +138,7 @@ export default function InstallPWATile() {
               <li>
                 1. Tap the{" "}
                 <span className="inline-flex items-center gap-1 rounded-md bg-zinc-100 px-1.5 py-0.5 text-[11px] font-bold text-indigo-700 align-middle">
-                  <Share className="h-3 w-3" /> Share
+                  <Glyph name="share" size={12} /> Share
                 </span>{" "}
                 button at the bottom of Safari
               </li>

@@ -1,17 +1,9 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import {
-  ArrowLeft,
-  Sparkles,
-  Volume2,
-  Lightbulb,
-  Eye,
-  Clock,
-  ListChecks,
-} from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import LessonRunnerLauncher from "./_components/LessonRunnerLauncher";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -91,7 +83,7 @@ export default async function ParentLessonPage({
         href={backHref}
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 hover:text-indigo-600"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <Glyph name="arrow-left" size={16} />
         {backLabel}
       </Link>
 
@@ -113,7 +105,7 @@ export default async function ParentLessonPage({
             }`}
           >
             <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-violet-600">
-              <Sparkles className="h-3.5 w-3.5" />
+              <Glyph name="sparkles" size={14} />
               Made for {childName}
             </div>
             <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-zinc-900 sm:text-3xl">
@@ -122,18 +114,18 @@ export default async function ParentLessonPage({
 
             <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-semibold text-zinc-600">
               <span className="inline-flex items-center gap-1">
-                <Clock className="h-3 w-3" />
+                <Glyph name="clock" size={12} />
                 ~{readMinutes} min read
               </span>
               {questions.length > 0 && (
                 <span className="inline-flex items-center gap-1">
-                  <ListChecks className="h-3 w-3" />
+                  <Glyph name="list-checks" size={12} />
                   {questions.length} questions
                 </span>
               )}
               {content.audio_url && (
                 <span className="inline-flex items-center gap-1">
-                  <Volume2 className="h-3 w-3" />
+                  <Glyph name="volume2" size={12} />
                   Read-aloud included
                 </span>
               )}
@@ -163,7 +155,7 @@ export default async function ParentLessonPage({
       <details className="group mt-6 rounded-2xl border border-zinc-200 bg-white p-4">
         <summary className="flex cursor-pointer items-center justify-between text-sm font-bold text-zinc-700">
           <span className="inline-flex items-center gap-1.5">
-            <Eye className="h-4 w-4 text-zinc-400" />
+            <Glyph name="eye" size={16} className="text-zinc-400" />
             Parent preview - passage + answer key
           </span>
           <span className="text-[11px] font-normal text-zinc-400 group-open:hidden">
@@ -183,7 +175,7 @@ export default async function ParentLessonPage({
 
           {content.audio_url && (
             <div className="flex items-center gap-2 rounded-xl bg-violet-50/60 p-2.5 text-xs">
-              <Volume2 className="h-3.5 w-3.5 flex-shrink-0 text-violet-600" />
+              <Glyph name="volume2" size={14} className="flex-shrink-0 text-violet-600" />
               <audio controls src={content.audio_url} className="flex-1 h-8" />
             </div>
           )}
@@ -228,7 +220,7 @@ export default async function ParentLessonPage({
                     )}
                     {q.hint && (
                       <p className="mt-1.5 inline-flex items-start gap-1 text-[11px] text-zinc-500">
-                        <Lightbulb className="mt-0.5 h-3 w-3 flex-shrink-0 text-amber-500" />
+                        <Glyph name="lightbulb" size={12} className="mt-0.5 flex-shrink-0 text-amber-500" />
                         Hint: {q.hint}
                       </p>
                     )}

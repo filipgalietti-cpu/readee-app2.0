@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Check, Sparkles, BookOpen, GraduationCap, ListChecks } from "lucide-react";
 import type { Metadata } from "next";
 import {
   getAllStandards,
@@ -8,6 +7,7 @@ import {
   slugifyStandard,
   domainFriendlyName,
 } from "@/lib/data/standards";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-static";
 export const revalidate = 86400; // rebuild once a day if content changes
@@ -98,12 +98,12 @@ export default async function StandardLandingPage({
           href="/standards"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <Glyph name="arrow-left" size={16} />
           All standards
         </Link>
 
         <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-indigo-600">
-          <BookOpen className="h-4 w-4" />
+          <Glyph name="book-open" size={16} />
           <span>{domain}</span>
           <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-indigo-700">
             {standard.gradeLabel}
@@ -128,7 +128,7 @@ export default async function StandardLandingPage({
 
         <div className="mt-8">
           <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-zinc-500">
-            <ListChecks className="h-4 w-4 text-violet-500" />
+            <Glyph name="list-checks" size={16} className="text-violet-500" />
             Free sample questions
           </div>
           <ol className="mt-3 space-y-4">
@@ -168,7 +168,7 @@ export default async function StandardLandingPage({
                               : "inline-flex px-2 py-1 text-zinc-600"
                           }
                         >
-                          {isCorrect && <Check className="h-3 w-3" />}
+                          {isCorrect && <Glyph name="check" size={12} />}
                           {c}
                         </li>
                       );
@@ -182,7 +182,7 @@ export default async function StandardLandingPage({
 
         <div className="mt-10 rounded-3xl border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 via-white to-violet-50 p-8 text-center shadow-sm">
           <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-lg">
-            <Sparkles className="h-7 w-7" />
+            <Glyph name="sparkles" size={28} />
           </div>
           <h2 className="mt-4 text-xl font-extrabold text-zinc-900">
             {remaining > 0
@@ -200,7 +200,7 @@ export default async function StandardLandingPage({
               href="/signup"
               className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-indigo-700"
             >
-              <GraduationCap className="h-4 w-4" />
+              <Glyph name="graduation-cap" size={16} />
               Start free - no credit card
             </Link>
             <Link

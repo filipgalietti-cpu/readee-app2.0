@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Brain, Target, Lock, ArrowRight, Sparkles } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import {
   getWeakSpots,
@@ -12,6 +11,7 @@ import {
   type WeakType,
 } from "@/lib/adaptive/weak-spots";
 import { findStandardById } from "@/lib/data/all-standards";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Sharpen Up insights — accuracy-based weak-spot view, mounted as a
@@ -75,7 +75,7 @@ export default function SharpenUpInsights({
   return (
     <section className="mt-12">
       <div className="flex items-center gap-2">
-        <Sparkles className="h-4 w-4 text-violet-600" />
+        <Glyph name="sparkles" size={16} className="text-violet-600" />
         <span className="text-[11px] font-bold uppercase tracking-widest text-violet-700">
           Sharpen Up{!isPremium && " · Premium"}
         </span>
@@ -112,7 +112,7 @@ export default function SharpenUpInsights({
                 className="inline-flex flex-shrink-0 items-center gap-1 rounded-xl bg-violet-600 px-4 py-2 text-sm font-extrabold text-white transition hover:bg-violet-700 active:scale-[0.97]"
               >
                 Start
-                <ArrowRight className="h-3 w-3" strokeWidth={2.4} />
+                <Glyph name="arrow-right" size={12} />
               </Link>
             </div>
           )}
@@ -133,7 +133,7 @@ function Paywall() {
   return (
     <div className="mt-5 flex items-center gap-4 rounded-2xl border-2 border-violet-300 bg-gradient-to-br from-violet-50 to-white p-5">
       <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
-        <Lock className="h-5 w-5" strokeWidth={1.8} />
+        <Glyph name="lock" size={20} />
       </div>
       <div className="min-w-0 flex-1">
         <div className="text-sm font-bold text-zinc-900">
@@ -149,7 +149,7 @@ function Paywall() {
         className="inline-flex items-center gap-1 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-2 text-sm font-extrabold text-white transition hover:from-amber-600 hover:to-orange-600 active:scale-[0.97]"
       >
         Unlock
-        <ArrowRight className="h-3 w-3" strokeWidth={2.4} />
+        <Glyph name="arrow-right" size={12} />
       </Link>
     </div>
   );
@@ -165,7 +165,7 @@ function WeakStandardsGrid({
   return (
     <div className="mt-5">
       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-500">
-        <Brain className="h-3 w-3" /> By skill
+        <Glyph name="brain" size={12} /> By skill
       </div>
       <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {weakSpots.map((spot, idx) => {
@@ -208,7 +208,7 @@ function WeakStandardsGrid({
                 </span>
                 <span className="inline-flex items-center gap-1 text-xs font-bold text-violet-700 group-hover:text-violet-900">
                   Practice 5
-                  <ArrowRight className="h-3 w-3" strokeWidth={2.4} />
+                  <Glyph name="arrow-right" size={12} />
                 </span>
               </div>
             </Link>
@@ -223,7 +223,7 @@ function WeakTypesGrid({ weakTypes }: { weakTypes: WeakType[] }) {
   return (
     <div className="mt-7">
       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-zinc-500">
-        <Target className="h-3 w-3" /> By question style
+        <Glyph name="target" size={12} /> By question style
       </div>
       <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
         {weakTypes.map((t) => {

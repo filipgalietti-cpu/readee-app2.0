@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Entry = {
   date: string;
@@ -117,7 +117,7 @@ export default function ArchiveCalendar({
             aria-label="Previous month"
             className="ml-0.5 rounded-full border border-zinc-200 bg-white p-2 text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
           >
-            <ChevronLeft className="h-4 w-4" strokeWidth={2.4} />
+            <Glyph name="chevron-left" size={16} />
           </button>
           <button
             type="button"
@@ -126,7 +126,7 @@ export default function ArchiveCalendar({
             aria-label="Next month"
             className="rounded-full border border-zinc-200 bg-white p-2 text-zinc-700 transition hover:border-zinc-300 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-30"
           >
-            <ChevronRight className="h-4 w-4" strokeWidth={2.4} />
+            <Glyph name="chevron-right" size={16} />
           </button>
         </div>
       </div>
@@ -233,7 +233,7 @@ function DayCell({
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-zinc-100 to-zinc-200 text-zinc-400">
-          <ImageIcon className="h-6 w-6" />
+          <Glyph name="image" size={24} />
         </div>
       )}
       {/* Bottom gradient + theme label so the day pill stays legible

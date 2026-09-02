@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Eye } from "lucide-react";
 import { CoverFallback } from "@/app/_components/EmptyState";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Card = {
   id: string;
@@ -112,7 +112,7 @@ export default function TrendingCarousel({ items }: { items: Card[] }) {
                 </div>
                 <div className="mt-1 flex items-center justify-between gap-1 text-[10px] font-semibold text-white/85">
                   <span className="inline-flex items-center gap-1">
-                    <Eye className="h-2.5 w-2.5" />
+                    <Glyph name="eye" size={10} />
                     {p.view_count.toLocaleString()}
                   </span>
                   {p.display_state && (

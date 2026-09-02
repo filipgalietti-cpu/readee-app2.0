@@ -14,21 +14,6 @@
 import { useEffect, useRef, useState, useTransition } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Send,
-  RotateCcw,
-  ShieldCheck,
-  Check,
-  Clock,
-  BookOpen,
-  Feather,
-  ThumbsUp,
-  Megaphone,
-  GraduationCap,
-  Mail,
-} from "lucide-react";
 import LunaOrb from "../../_components/LunaOrb";
 import TodayQuestionPlayer from "@/app/today/[slug]/_components/TodayQuestionPlayer";
 import ReadAloudButton from "@/app/today/[slug]/_components/ReadAloudButton";
@@ -36,6 +21,7 @@ import { publishKidStory } from "../actions";
 import { STORY_CARROTS } from "@/lib/luna/story-rewards";
 import { playPublishSfx } from "./studio-sfx";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 type Phase = "make" | "generating" | "preview" | "published" | "error";
 
@@ -72,14 +58,14 @@ const WRITING_FORMS: {
   key: string;
   label: string;
   desc: string;
-  icon: typeof BookOpen;
+  icon: GlyphName;
 }[] = [
-  { key: "narrative", label: "Story", desc: "A beginning, middle, and happy ending", icon: BookOpen },
-  { key: "poem", label: "Poem", desc: "Fun lines with rhythm and rhyme", icon: Feather },
-  { key: "opinion", label: "Opinion", desc: "What you think, and why", icon: ThumbsUp },
-  { key: "persuasive", label: "Persuasive", desc: "Convince the reader you're right", icon: Megaphone },
-  { key: "informational", label: "Informational", desc: "Teach real, true facts", icon: GraduationCap },
-  { key: "friendly letter", label: "Friendly Letter", desc: "Dear friend, guess what...", icon: Mail },
+  { key: "narrative", label: "Story", desc: "A beginning, middle, and happy ending", icon: "book-open" },
+  { key: "poem", label: "Poem", desc: "Fun lines with rhythm and rhyme", icon: "pen-line" },
+  { key: "opinion", label: "Opinion", desc: "What you think, and why", icon: "thumbs-up" },
+  { key: "persuasive", label: "Persuasive", desc: "Convince the reader you're right", icon: "megaphone" },
+  { key: "informational", label: "Informational", desc: "Teach real, true facts", icon: "graduation-cap" },
+  { key: "friendly letter", label: "Friendly Letter", desc: "Dear friend, guess what...", icon: "mail" },
 ];
 
 const IMAGE_STYLES: { key: string; label: string; from: string; to: string }[] = [
@@ -294,7 +280,7 @@ export default function StoryStudio({
             onClick={reset}
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
           >
-            <ArrowLeft className="h-4 w-4" /> Start over
+            <Glyph name="arrow-left" size={16} /> Start over
           </button>
         ) : (
           <span />
@@ -338,7 +324,7 @@ export default function StoryStudio({
           />
 
           <p className="mt-6 flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-center text-sm text-zinc-500">
-            <ShieldCheck className="h-4 w-4 flex-none text-emerald-500" /> Every story is checked to keep readers safe. Check out our{" "}
+            <Glyph name="shield-check" size={16} className="flex-none text-emerald-500" /> Every story is checked to keep readers safe. Check out our{" "}
             <Link href="/safety" className="font-bold text-violet-600 underline transition hover:text-violet-700">
               safety policy
             </Link>
@@ -380,7 +366,7 @@ export default function StoryStudio({
             onClick={reset}
             className="mt-5 inline-flex items-center gap-2 rounded-2xl bg-violet-600 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-violet-700"
           >
-            <RotateCcw className="h-4 w-4" /> Try again
+            <Glyph name="rotate-ccw" size={16} /> Try again
           </button>
         </div>
       )}
@@ -728,7 +714,7 @@ function FormChips({ value, onChange }: { value: string; onChange: (v: string) =
                 selected ? "ss-pop bg-violet-600 text-white" : "bg-zinc-100 text-violet-600"
               }`}
             >
-              <Icon className="h-6 w-6" />
+              <Glyph name={Icon} size={24} />
             </span>
             <span className="min-w-0">
               <span className={`block text-[18px] font-extrabold ${selected ? "text-violet-800" : "text-zinc-800"}`}>
@@ -820,7 +806,7 @@ function NextButton({ onClick, disabled }: { onClick: () => void; disabled?: boo
       className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-6 py-4 text-lg font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-indigo-700 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
       style={BALOO}
     >
-      Next <ArrowRight className="h-5 w-5" />
+      Next <Glyph name="arrow-right" size={20} />
     </button>
   );
 }
@@ -975,7 +961,7 @@ function Preview({
           className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-indigo-600 px-6 py-4 text-lg font-extrabold text-white transition hover:bg-indigo-700 active:scale-[0.98] disabled:opacity-60"
           style={BALOO}
         >
-          <Send className="h-5 w-5" /> {publishing ? "Sending..." : "Publish to Readee"}
+          <Glyph name="send" size={20} /> {publishing ? "Sending..." : "Publish to Readee"}
         </button>
         <button
           type="button"
@@ -984,7 +970,7 @@ function Preview({
           className="flex items-center justify-center gap-2 rounded-2xl border border-zinc-200 bg-white px-6 py-4 text-lg font-bold text-indigo-600 transition hover:bg-zinc-50 active:scale-[0.98] disabled:opacity-60"
           style={BALOO}
         >
-          <RotateCcw className="h-5 w-5" /> Try again
+          <Glyph name="rotate-ccw" size={20} /> Try again
         </button>
       </motion.div>
     </div>
@@ -1025,7 +1011,7 @@ function Published({
           </div>
           <div className="mt-4 flex items-center gap-3 text-xs">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 font-bold text-amber-800">
-              <Clock className="h-3.5 w-3.5" /> In review
+              <Glyph name="clock" size={14} /> In review
             </span>
             <span className="font-bold text-zinc-400">{wordCount} words</span>
           </div>
@@ -1037,7 +1023,7 @@ function Published({
           style={{ background: "linear-gradient(135deg,#ecfdf5,#f5f3ff)" }}
         >
           <span className="ss-pop flex h-[76px] w-[76px] items-center justify-center rounded-full bg-emerald-100">
-            <Check className="h-10 w-10 text-emerald-600" strokeWidth={3} />
+            <Glyph name="check" size={40} className="text-emerald-600" />
           </span>
           <h2 className="mt-4 text-3xl font-extrabold text-zinc-900 sm:text-[34px]" style={BALOO}>
             Sent to the library!

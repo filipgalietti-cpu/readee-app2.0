@@ -5,14 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import SettingsShell from "@/app/_components/SettingsShell";
 import Link from "next/link";
-import {
-  LifeBuoy,
-  ChevronDown,
-  Mail,
-  Send,
-  Loader2,
-  Check,
-} from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /** Parent-facing help center: quick answers to the most common questions
  *  plus a contact form that emails hello@readee.app (replyTo the parent),
@@ -102,9 +95,7 @@ function Faq({ q, a }: { q: string; a: React.ReactNode }) {
         className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left"
       >
         <span className="text-sm font-semibold text-zinc-900">{q}</span>
-        <ChevronDown
-          className={`w-4 h-4 flex-shrink-0 text-zinc-400 transition-transform ${open ? "rotate-180" : ""}`}
-        />
+        <Glyph name="chevron-down" size={16} className="flex-shrink-0 text-zinc-400 transition-transform ${open ?" />
       </button>
       <AnimatePresence initial={false}>
         {open && (
@@ -165,7 +156,7 @@ export default function HelpPage() {
       <div className="max-w-2xl mx-auto py-8 px-4 sm:px-6">
         <div className="mb-8 flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-            <LifeBuoy className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+            <Glyph name="life-buoy" size={20} className="text-indigo-500" />
           </div>
           <div>
             <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Help &amp; Support</h1>
@@ -188,7 +179,7 @@ export default function HelpPage() {
         {/* Contact form */}
         <section className="rounded-2xl border border-zinc-200 bg-white shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-zinc-100 flex items-center gap-2">
-            <Mail className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
+            <Glyph name="mail" size={20} className="text-indigo-500" />
             <h2 className="text-base font-semibold text-zinc-900">Still need help?</h2>
           </div>
           <form onSubmit={handleSubmit} className="px-6 py-5 flex flex-col gap-4">
@@ -242,11 +233,11 @@ export default function HelpPage() {
                 className="px-6 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition-colors disabled:opacity-50 flex items-center gap-2"
               >
                 {sending ? (
-                  <><Loader2 className="w-4 h-4 animate-spin" /> Sending…</>
+                  <><Glyph name="loader2" size={16} className="animate-spin" /> Sending…</>
                 ) : result?.success ? (
-                  <><Check className="w-4 h-4" /> Sent</>
+                  <><Glyph name="check" size={16} /> Sent</>
                 ) : (
-                  <><Send className="w-4 h-4" /> Send message</>
+                  <><Glyph name="send" size={16} /> Send message</>
                 )}
               </button>
               <span className="text-xs text-zinc-400">

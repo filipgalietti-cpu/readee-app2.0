@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
 import { hasFullAccessFromProfile } from "@/lib/plan/access";
@@ -8,6 +7,7 @@ import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import StoryStudio from "./_components/StoryStudio";
 import { EmptyState } from "@/app/_components/EmptyState";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -37,7 +37,7 @@ export default async function StoryStudioPage() {
           href="/luna"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <Glyph name="arrow-left" size={16} />
           Luna
         </Link>
         <div className="mt-8">
@@ -72,7 +72,7 @@ export default async function StoryStudioPage() {
             href="/luna"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-violet-700"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <Glyph name="arrow-left" size={16} />
             Luna
           </Link>
           <div className="mt-8 rounded-3xl bg-gradient-to-br from-violet-50 via-white to-indigo-50 p-12 text-center shadow-sm ring-1 ring-violet-100">

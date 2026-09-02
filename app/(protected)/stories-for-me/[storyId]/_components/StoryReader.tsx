@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Page = {
   position: number;
@@ -57,7 +57,7 @@ export default function StoryReader({
           />
         ) : (
           <div className="flex h-72 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 text-violet-400">
-            <ImageIcon className="h-14 w-14" />
+            <Glyph name="image" size={56} />
           </div>
         )}
         <p
@@ -77,7 +77,7 @@ export default function StoryReader({
           disabled={page === 0}
           className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold text-zinc-500 transition hover:bg-zinc-100 disabled:opacity-40"
         >
-          <ChevronLeft className="h-4 w-4" />
+          <Glyph name="chevron-left" size={16} />
           Previous
         </button>
         <span className="text-[11px] font-semibold uppercase tracking-widest text-zinc-400">
@@ -90,7 +90,7 @@ export default function StoryReader({
           className="inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-1.5 text-xs font-bold text-white transition hover:bg-violet-700 disabled:opacity-40"
         >
           Next
-          <ChevronRight className="h-4 w-4" />
+          <Glyph name="chevron-right" size={16} />
         </button>
       </div>
     </div>

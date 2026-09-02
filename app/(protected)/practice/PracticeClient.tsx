@@ -35,7 +35,6 @@ import { finalizeSessionCarrots } from "@/lib/carrots/finalize-session";
 import { clearActiveMultiplierFields } from "@/lib/carrots/active-multiplier";
 import { StreakFire } from "@/app/_components/StreakFire";
 import SealOfApproval from "./_components/SealOfApproval";
-import { Flame, Volume2, ArrowRight, X as XIcon, BookOpen, MessageCircle, Newspaper, Type } from "lucide-react";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { getLimits } from "@/lib/plan/limits";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
@@ -43,13 +42,13 @@ import LevelProgressCard from "@/app/_components/LevelProgressCard";
 import LevelUpBurst from "@/app/_components/LevelUpBurst";
 import { didLevelUp, computeLevel, levelUpBonus, READER_LEVELS } from "@/lib/levels/levels";
 import { bumpStreak } from "@/lib/streak/bump-streak";
-import type { LucideIcon } from "lucide-react";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { UnlockToast, mixUnlocks, type UnlockableItem } from "@/app/_components/UnlockToast";
 import QuizHypeIntro from "./_components/QuizHypeIntro";
 import type { Outfit } from "@/app/_components/Bunny/outfits";
 import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -243,11 +242,11 @@ const KID_PROMPTS: Record<string, string> = {
   "K.L.6": "Big words, small words - let's grow your vocabulary!",
 };
 
-const DOMAIN_ICON: Record<string, LucideIcon> = {
-  "Reading Literature": BookOpen,
-  "Reading Informational Text": Newspaper,
-  "Foundational Skills": Type,
-  "Language": MessageCircle,
+const DOMAIN_ICON: Record<string, GlyphName> = {
+  "Reading Literature": "book-open",
+  "Reading Informational Text": "newspaper",
+  "Foundational Skills": "text",
+  "Language": "message-circle",
 };
 
 const CORRECT_MESSAGES = [
@@ -1265,7 +1264,7 @@ function PracticeSession({
               <span aria-hidden style={{ position: "absolute", top: -2, left: 8, width: 3, height: 3, borderRadius: 9999, background: "#fdba74", animation: "rdEmber 1.6s ease-out 0.9s infinite" }} />
               {/* flickering flame */}
               <span style={{ display: "inline-flex", animation: "rdFlicker 0.7s ease-in-out infinite", transformOrigin: "50% 90%" }}>
-                <Flame className="w-[18px] h-[18px]" fill="#fef3c7" stroke="#ffffff" strokeWidth={2} />
+                <Glyph name="flame" size={18} />
               </span>
               <span className="text-sm font-extrabold text-white whitespace-nowrap">{consecutiveCorrect} in a row</span>
               <span className="text-[11px] font-extrabold rounded-full px-1.5 py-px" style={{ color: "#9a3412", background: "#fef3c7" }}>{streakMult}x</span>
@@ -1279,7 +1278,7 @@ function PracticeSession({
               className="hidden sm:flex items-center gap-1.5 rounded-full flex-shrink-0"
               style={{ padding: "6px 12px 6px 10px", background: "#e4e4e7", border: "1px solid transparent" }}
             >
-              <Flame className="w-[18px] h-[18px]" fill="none" stroke="#a1a1aa" strokeWidth={2} />
+              <Glyph name="flame" size={18} />
               <span className="text-sm font-bold text-zinc-500 tabular-nums">{consecutiveCorrect} in a row</span>
             </motion.div>
           );
@@ -1405,7 +1404,7 @@ function PracticeSession({
           const imgSrc = q.image_url || questionImageUrl(q.id, gradeKey);
           const Speaker = ({ size }: { size: number }) => (
             <button onClick={handleReplay} aria-label="Read to me" className="rounded-full bg-indigo-700 flex items-center justify-center flex-none transition hover:scale-105 active:scale-90" style={{ width: size, height: size, boxShadow: "0 3px 0 0 #312e81" }}>
-              <Volume2 className="text-white" style={{ width: Math.round(size * 0.46), height: Math.round(size * 0.46) }} strokeWidth={2} />
+              <Glyph name="volume2" size={20} className="text-white" style={{ width: Math.round(size * 0.46), height: Math.round(size * 0.46) }} />
             </button>
           );
           const choicesGrid = (
@@ -1448,7 +1447,7 @@ function PracticeSession({
                     <span className="w-9 h-9 rounded-xl flex items-center justify-center font-[family-name:var(--font-baloo)] font-bold text-[17px] flex-none" style={{ background: chipBg, color: chipFg }}>{"ABCD"[i]}</span>
                     <span className="flex-1 font-bold text-[17px] leading-snug" style={{ color: fg }}>{String(choice).replace(/\*\*/g, "")}</span>
                     {showCheck && <FluentIcon name="check" size={24} />}
-                    {showX && <XIcon className="w-5 h-5 flex-none" stroke="#a1a1aa" strokeWidth={3} />}
+                    {showX && <Glyph name="x" size={20} className="flex-none" />}
                   </motion.button>
                 );
               })}
@@ -1601,7 +1600,7 @@ function PracticeSession({
             style={{ background: "linear-gradient(135deg,#6366f1,#8b5cf6)", boxShadow: "0 4px 0 0 #4f46e5,0 10px 30px -8px rgba(79,70,229,.5)" }}
           >
             <span>{currentIdx + 1 >= totalQ ? "Finish" : "Next"}</span>
-            <ArrowRight className="w-[22px] h-[22px]" strokeWidth={2.5} />
+            <Glyph name="arrow-right" size={22} />
           </motion.button>
         )}
       </AnimatePresence>

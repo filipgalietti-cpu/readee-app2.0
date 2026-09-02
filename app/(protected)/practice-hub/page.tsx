@@ -8,9 +8,6 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { Child } from "@/lib/db/types";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import Image from "next/image";
-import {
-  Shuffle, Type, Newspaper, MessageCircle,
-  ChevronDown, ChevronRight, Star, Check, BookOpen } from "lucide-react";
 import TopCommunityPicks from "./_components/TopCommunityPicks";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import ProductSearchBar from "@/app/_components/ProductSearchBar";
@@ -33,6 +30,7 @@ import g2Data from "@/app/data/2nd-grade-standards-questions.json";
 import g3Data from "@/app/data/3rd-grade-standards-questions.json";
 import g4Data from "@/app/data/4th-grade-standards-questions.json";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 const GRADE_DATA: Record<string, any> = {
   kindergarten: kData, "1st": g1Data, "2nd": g2Data, "3rd": g3Data, "4th": g4Data,
@@ -227,15 +225,15 @@ const KID_NAMES: Record<string, { name: string; desc: string }> = {
 };
 
 const DOMAIN_META: Record<string, {
-  Icon: typeof BookOpen; color: string; bg: string;
+  Icon: GlyphName; color: string; bg: string;
   accent: string; accentText: string; tint: string; friendly: string;
 }> = {
-  "Reading Literature": { Icon: BookOpen, color: "text-violet-600", bg: "bg-violet-50", accent: "#8b5cf6", accentText: "#6d28d9", tint: "#f5f3ff", friendly: "Stories, characters, and adventures" },
-  "Reading Informational Text": { Icon: Newspaper, color: "text-sky-600", bg: "bg-sky-50", accent: "#38bdf8", accentText: "#0369a1", tint: "#f0f9ff", friendly: "Facts and real things" },
-  "Foundational Skills": { Icon: Type, color: "text-amber-600", bg: "bg-amber-50", accent: "#f59e0b", accentText: "#b45309", tint: "#fffbeb", friendly: "Sounds, letters, and reading out loud" },
-  "Language": { Icon: MessageCircle, color: "text-emerald-600", bg: "bg-emerald-50", accent: "#10b981", accentText: "#047857", tint: "#ecfdf5", friendly: "Words and grammar" },
+  "Reading Literature": { Icon: "book-open", color: "text-violet-600", bg: "bg-violet-50", accent: "#8b5cf6", accentText: "#6d28d9", tint: "#f5f3ff", friendly: "Stories, characters, and adventures" },
+  "Reading Informational Text": { Icon: "newspaper", color: "text-sky-600", bg: "bg-sky-50", accent: "#38bdf8", accentText: "#0369a1", tint: "#f0f9ff", friendly: "Facts and real things" },
+  "Foundational Skills": { Icon: "text", color: "text-amber-600", bg: "bg-amber-50", accent: "#f59e0b", accentText: "#b45309", tint: "#fffbeb", friendly: "Sounds, letters, and reading out loud" },
+  "Language": { Icon: "message-circle", color: "text-emerald-600", bg: "bg-emerald-50", accent: "#10b981", accentText: "#047857", tint: "#ecfdf5", friendly: "Words and grammar" },
 };
-const DOMAIN_FALLBACK = { Icon: BookOpen, color: "text-zinc-600", bg: "bg-zinc-50", accent: "#8b5cf6", accentText: "#6d28d9", tint: "#f5f3ff", friendly: "" };
+const DOMAIN_FALLBACK = { Icon: "book-open", color: "text-zinc-600", bg: "bg-zinc-50", accent: "#8b5cf6", accentText: "#6d28d9", tint: "#f5f3ff", friendly: "" };
 
 // The data labels the same domain differently across grades (K/1 use
 // "Foundational Skills"; 2-4 use "Reading Foundational Skills") and has a
@@ -534,7 +532,7 @@ function PracticeHubContent() {
                 {masteredTotal} skills mastered
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1 text-xs font-semibold text-emerald-700">
-                <Check className="w-3.5 h-3.5 text-emerald-500" strokeWidth={2.5} />
+                <Glyph name="check" size={14} className="text-emerald-500" />
                 {questionsDone} questions done
               </span>
             </div>
@@ -615,7 +613,7 @@ function PracticeHubContent() {
                   className="rounded-2xl flex items-center justify-center flex-shrink-0"
                   style={{ width: 52, height: 52, background: meta.tint }}
                 >
-                  <DIcon className="w-6 h-6" strokeWidth={2} style={{ color: meta.accent }} />
+                  <Glyph name={DIcon} size={24} style={{ color: meta.accent }} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-[18px] font-semibold text-[#18181b] leading-tight font-[family-name:var(--font-baloo)]">{domain.domain}</p>
@@ -629,7 +627,7 @@ function PracticeHubContent() {
                     </span>
                   </div>
                 </div>
-                <ChevronDown className={`w-5 h-5 text-zinc-400 flex-shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
+                <Glyph name="chevron-down" size={20} className="text-zinc-400 flex-shrink-0 transition-transform ${open ?" />
               </button>
 
               <AnimatePresence initial={false}>
@@ -677,12 +675,7 @@ function PracticeHubContent() {
                             {desc && <p className="text-[11.5px] text-zinc-500 leading-snug">{desc}</p>}
                             <div className="flex items-center gap-0.5 mt-1 pt-0.5">
                               {[0, 1, 2].map((k) => (
-                                <Star
-                                  key={k}
-                                  className="w-3.5 h-3.5"
-                                  strokeWidth={1.5}
-                                  style={{ fill: k < stars ? "#f59e0b" : "none", color: k < stars ? "#f59e0b" : "#d4d4d8" }}
-                                />
+                                <Glyph name="star" size={14} style={{ fill: k < stars ? "#f59e0b" : "none", color: k < stars ? "#f59e0b" : "#d4d4d8" }} />
                               ))}
                               <span className="ml-1.5 text-[10.5px] text-zinc-400">
                                 {stars === 3 ? "Mastered!" : stars > 0 ? `${stars} of 3 stars` : "Not started"}
@@ -711,7 +704,7 @@ function PracticeHubContent() {
         style={{ background: "linear-gradient(90deg, #4338ca, #7c3aed)", boxShadow: "0 10px 40px -8px rgba(67,56,202,0.55)" }}
         className="fixed right-6 bottom-6 z-40 inline-flex items-center gap-2.5 rounded-full px-6 py-4 text-white font-semibold text-[17px] hover:-translate-y-0.5 active:scale-95 transition-transform font-[family-name:var(--font-baloo)]"
       >
-        <Shuffle className="w-5 h-5" strokeWidth={2} />
+        <Glyph name="shuffle" size={20} />
         Surprise me!
       </motion.button>
     </div>

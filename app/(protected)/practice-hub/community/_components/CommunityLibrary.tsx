@@ -9,9 +9,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, PenLine, Search, Eye, ArrowRight } from "lucide-react";
 import TileImage from "./TileImage";
 import { EmptyState, CoverFallback } from "@/app/_components/EmptyState";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Item = {
   id: string;
@@ -122,7 +122,7 @@ export default function CommunityLibrary({
         href={`/practice-hub${cq}`}
         className="inline-flex items-center gap-1.5 text-sm font-bold text-zinc-500 transition hover:text-indigo-600"
       >
-        <ArrowLeft className="h-4 w-4" /> Practice Hub
+        <Glyph name="arrow-left" size={16} /> Practice Hub
       </Link>
 
       <div className="mt-3 flex flex-wrap items-end justify-between gap-3">
@@ -134,7 +134,7 @@ export default function CommunityLibrary({
           className="inline-flex items-center gap-2 rounded-full bg-violet-500 px-4 py-2.5 text-sm font-extrabold text-white shadow-sm transition hover:bg-violet-600"
           style={BALOO}
         >
-          <PenLine className="h-4 w-4" /> Share your story
+          <Glyph name="pen-line" size={16} /> Share your story
         </Link>
       </div>
 
@@ -182,7 +182,7 @@ export default function CommunityLibrary({
                 className="inline-flex items-center gap-2 rounded-2xl bg-indigo-700 px-5 py-2.5 text-sm font-extrabold text-white shadow-sm transition hover:bg-indigo-800"
                 style={BALOO}
               >
-                Read it <ArrowRight className="h-4 w-4" />
+                Read it <Glyph name="arrow-right" size={16} />
               </Link>
               {spotlight.length > 1 && (
                 <div className="ml-auto flex items-center gap-1.5">
@@ -228,7 +228,7 @@ export default function CommunityLibrary({
       {/* Search + topic chips */}
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <div className="flex items-center gap-2 rounded-xl border border-zinc-200 px-3 py-2">
-          <Search className="h-4 w-4 flex-none text-zinc-400" />
+          <Glyph name="search" size={16} className="flex-none text-zinc-400" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
@@ -294,7 +294,7 @@ export default function CommunityLibrary({
                 </div>
                 <div className="mt-2.5 flex items-center gap-2 text-xs font-bold text-zinc-400">
                   <span className="inline-flex items-center gap-1">
-                    <Eye className="h-3.5 w-3.5" /> {it.view_count.toLocaleString()} reads
+                    <Glyph name="eye" size={14} /> {it.view_count.toLocaleString()} reads
                   </span>
                   <span className="ml-auto text-indigo-700">Read →</span>
                 </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Target, BookOpen, Carrot } from "lucide-react";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Get-more-carrots upsell — shown when a kid tries to buy a shop
@@ -47,7 +47,7 @@ export function GetMoreCarrotsModal({
           <div className="w-10 h-1 rounded-full bg-zinc-300 mx-auto mb-4" />
 
           <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-sm">
-            <Carrot className="w-6 h-6" strokeWidth={1.5} />
+            <Glyph name="carrot" size={24} />
           </div>
           <h2 className="text-xl font-extrabold text-zinc-900 text-center mb-1">
             Get more carrots
@@ -66,7 +66,7 @@ export function GetMoreCarrotsModal({
               className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-center hover:border-indigo-300 transition-colors"
               onClick={onClose}
             >
-              <Target className="mx-auto mb-1.5 h-7 w-7 text-indigo-500" strokeWidth={1.5} />
+              <Glyph name="target" size={28} className="mx-auto mb-1.5 text-indigo-500" />
               <div className="text-sm font-bold text-zinc-900">Practice</div>
               <div className="text-xs text-zinc-400">5 carrots per question</div>
             </Link>
@@ -75,7 +75,7 @@ export function GetMoreCarrotsModal({
               className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-center hover:border-indigo-300 transition-colors"
               onClick={onClose}
             >
-              <BookOpen className="mx-auto mb-1.5 h-7 w-7 text-violet-500" strokeWidth={1.5} />
+              <Glyph name="book-open" size={28} className="mx-auto mb-1.5 text-violet-500" />
               <div className="text-sm font-bold text-zinc-900">Lessons</div>
               <div className="text-xs text-zinc-400">Up to 20 carrots each</div>
             </Link>

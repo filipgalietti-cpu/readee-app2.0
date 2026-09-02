@@ -1,7 +1,7 @@
 "use client";
 
 import "./_components/ceremony.css";
-import { useEffect, useRef, useState, useCallback, useMemo, Suspense, createElement } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { supabaseBrowser } from "@/lib/supabase/client";
@@ -24,7 +24,6 @@ import { GetMoreCarrotsModal } from "@/app/_components/GetMoreCarrotsModal";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { grantPowerupFields } from "@/lib/carrots/active-multiplier";
-import { RotateCcw } from "lucide-react";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import { AVATAR_IMAGES } from "@/lib/utils/get-child-avatar";
 import { SkeletonPage } from "@/app/_components/Skeleton";
@@ -35,6 +34,7 @@ import { checkSeasonalGrants } from "@/lib/unlock";
 import { MysteryBox3D, type MysteryBox3DHandle } from "./_components/MysteryBox3D";
 import { shopSfx } from "@/lib/shop/shop-sfx";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 const BALOO = "'Baloo 2', cursive";
 
@@ -67,10 +67,9 @@ function itemImage(id: string): string | null {
   return AVATAR_IMAGES[id] || BACKGROUND_IMAGES[id] || null;
 }
 
-/** Renders a lucide icon by its shop-icon name. Uses createElement so the
- *  (stable) icon component isn't treated as one created during render. */
-function ShopIcon({ name, size, strokeWidth = 1.5, style }: { name: string; size: number; strokeWidth?: number; style?: React.CSSProperties }) {
-  return createElement(getShopIcon(name), { size, strokeWidth, style });
+/** Renders a shop item's mark by its stored icon name. */
+function ShopIcon({ name, size, className }: { name: string; size: number; className?: string }) {
+  return <FluentIcon name={getShopIcon(name)} size={size} className={className} />;
 }
 
 export default function ShopPage() {
@@ -644,7 +643,7 @@ function ShopContent({
                   transition: "transform .12s ease",
                 }}
               >
-                {phase === "reveal" ? <RotateCcw size={19} strokeWidth={2.2} /> : canAfford ? <FluentIcon name="carrot" size={19} /> : <FluentIcon name="lock" size={19} />}
+                {phase === "reveal" ? <Glyph name="rotate-ccw" size={19} /> : canAfford ? <FluentIcon name="carrot" size={19} /> : <FluentIcon name="lock" size={19} />}
                 {showBoxCountdown ? (
                   <span style={{ display: "flex", flexDirection: "column", alignItems: "center", lineHeight: 1.15 }}>
                     <span>{primaryLabel}</span>
@@ -691,7 +690,7 @@ function ShopContent({
                   boxShadow: active ? "0 6px 16px -8px rgba(249,115,22,.9)" : "none",
                 }}
               >
-                <ShopIcon name={cat.icon} size={16} strokeWidth={2} style={{ display: "block" }} />
+                <ShopIcon name={cat.icon} size={16} />
                 {cat.label}
               </button>
             );
@@ -939,7 +938,7 @@ function RevealArt({ reward, glow }: { reward: MysteryReward; glow: string }) {
         </div>
       );
     }
-    return <ShopIcon name={it.icon} size={88} strokeWidth={1.4} style={{ color: glow, display: "block" }} />;
+    return <ShopIcon name={it.icon} size={88} />;
   }
   if (reward.type === "jackpot") return <FluentIcon name="party" size={88} />;
   if (reward.type === "multiplier") return <FluentIcon name="zap" size={88} />;
@@ -1108,7 +1107,7 @@ function ShopItemCard({
             <ShopImage src={img} alt={item.name} sizes="56px" />
           </div>
         ) : (
-          <ShopIcon name={item.icon} size={40} strokeWidth={1.5} style={{ color: "#6366f1" }} />
+          <ShopIcon name={item.icon} size={40} />
         )}
       </div>
       <div style={{ fontSize: 13, fontWeight: 700, color: "#18181b", textAlign: "center" }}>{item.name}</div>

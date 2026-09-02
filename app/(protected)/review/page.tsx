@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowLeft, ArrowRight, CalendarClock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { getUserProfile } from "@/lib/auth/helpers";
 import { getUserPlan } from "@/lib/plan/check-access";
@@ -8,6 +7,7 @@ import { getAllStandards, slugifyStandard } from "@/lib/data/standards";
 import { EmptyState } from "@/app/_components/EmptyState";
 import SharpenUpInsights from "@/app/_components/SharpenUpInsights";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 export const dynamic = "force-dynamic";
 
@@ -114,7 +114,7 @@ export default async function ReviewPage({
         href="/dashboard"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-indigo-600"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <Glyph name="arrow-left" size={16} />
         Dashboard
       </Link>
 
@@ -215,7 +215,7 @@ export default async function ReviewPage({
                     )}
                   </div>
                 </div>
-                <ArrowRight className="h-4 w-4 flex-shrink-0 text-zinc-400" />
+                <Glyph name="arrow-right" size={16} className="flex-shrink-0 text-zinc-400" />
               </Link>
             </li>
           ))}

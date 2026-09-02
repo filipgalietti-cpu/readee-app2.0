@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Volume2 } from "lucide-react";
 import { createClient } from "@supabase/supabase-js";
 import InteractiveChoices from "./_InteractiveChoices";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Single practice-question showcase — image, prompt, 4 choices
@@ -73,7 +73,7 @@ export default async function ShowcaseQuestionPage({
           href="/showcase/practice"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-zinc-500 transition hover:text-emerald-700"
         >
-          <ArrowLeft className="h-4 w-4" />
+          <Glyph name="arrow-left" size={16} />
           All practice
         </Link>
 

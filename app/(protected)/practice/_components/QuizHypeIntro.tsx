@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 /**
  * Pre-quiz hype sequence — a port of the "Quiz Hype Intro" Claude Design.
@@ -239,7 +239,7 @@ export default function QuizHypeIntro({
             }}
           >
             <span className="relative z-[2]">Let&apos;s go!</span>
-            <ArrowRight className="relative z-[2] h-[30px] w-[30px]" strokeWidth={3} />
+            <Glyph name="arrow-right" size={30} className="relative z-[2]" />
             <span
               aria-hidden
               className="pointer-events-none absolute inset-0 z-[1]"

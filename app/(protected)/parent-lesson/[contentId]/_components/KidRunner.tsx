@@ -2,21 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  X,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  ArrowRight,
-  Check,
-  Sparkles,
-  Lightbulb,
-  RotateCcw,
-  Zap,
-} from "lucide-react";
 import Link from "next/link";
 import KidThumbs from "@/components/feedback/KidThumbs";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Question = {
   prompt: string;
@@ -107,7 +95,7 @@ export default function KidRunner({
           aria-label="Close"
           className="inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold text-zinc-600 hover:bg-zinc-100"
         >
-          <X className="h-4 w-4" />
+          <Glyph name="x" size={16} />
           Done
         </button>
         <div className="flex items-center gap-2">
@@ -122,7 +110,7 @@ export default function KidRunner({
             aria-label={muted ? "Unmute" : "Mute"}
             className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
           >
-            {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+            {muted ? <Glyph name="volume-x" size={16} /> : <Glyph name="volume2" size={16} />}
           </button>
         </div>
       </div>
@@ -285,12 +273,12 @@ function ReadPhase({
         >
           {playing ? (
             <>
-              <Pause className="h-4 w-4" />
+              <Glyph name="pause" size={16} />
               Pause read-aloud
             </>
           ) : (
             <>
-              <Play className="h-4 w-4" />
+              <Glyph name="play" size={16} />
               Play read-aloud
             </>
           )}
@@ -322,7 +310,7 @@ function ReadPhase({
           className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-8 py-3 text-base font-bold text-white shadow-lg transition hover:scale-[1.02] hover:bg-violet-700 active:scale-[.99]"
         >
           {hasQuiz ? "Start questions" : "Finish"}
-          <ArrowRight className="h-5 w-5" />
+          <Glyph name="arrow-right" size={20} />
         </button>
       </div>
     </div>
@@ -456,7 +444,7 @@ function QuestionPhase({
                 }`}
               >
                 {showAsCorrect ? (
-                  <Check className="h-5 w-5" />
+                  <Glyph name="check" size={20} />
                 ) : (
                   String.fromCharCode(65 + i)
                 )}
@@ -473,7 +461,7 @@ function QuestionPhase({
           animate={{ opacity: 1, y: 0 }}
           className="mt-4 flex items-start gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-900"
         >
-          <Lightbulb className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-500" />
+          <Glyph name="lightbulb" size={16} className="mt-0.5 flex-shrink-0 text-amber-500" />
           <span>
             <strong>Hint:</strong> {question.hint}
           </span>
@@ -539,7 +527,7 @@ function RecapPhase({
   return (
     <div className="text-center">
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-600 to-violet-500 text-white shadow-lg">
-        <Sparkles className="h-8 w-8" />
+        <Glyph name="sparkles" size={32} />
       </div>
       <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
         {message}
@@ -549,18 +537,13 @@ function RecapPhase({
         <>
           <div className="mt-3 flex justify-center gap-1.5">
             {[0, 1, 2].map((i) => (
-              <Sparkles
-                key={i}
-                className={`h-7 w-7 ${
-                  i < stars ? "text-amber-400" : "text-zinc-200"
-                }`}
-              />
+              <Glyph name="sparkles" size={28} className="${ i < stars ?" />
             ))}
           </div>
           {firstTry > 0 && (
             <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-zinc-500">
               {firstTry} on the first try.
-              <Zap className="h-4 w-4 text-amber-500" strokeWidth={2.2} aria-hidden />
+              <Glyph name="zap" size={16} className="text-amber-500" />
             </p>
           )}
 
@@ -609,14 +592,14 @@ function RecapPhase({
           onClick={onRestart}
           className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-5 py-2.5 text-sm font-bold text-zinc-700 hover:border-violet-300"
         >
-          <RotateCcw className="h-4 w-4" />
+          <Glyph name="rotate-ccw" size={16} />
           Read it again
         </button>
         <Link
           href="/dashboard"
           className="inline-flex items-center gap-2 rounded-full bg-violet-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-violet-700"
         >
-          <Sparkles className="h-4 w-4" />
+          <Glyph name="sparkles" size={16} />
           Make another
         </Link>
         <button

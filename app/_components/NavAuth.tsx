@@ -6,9 +6,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useChildStore } from "@/lib/stores/child-store";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
-import { Star, Bell, HelpCircle, Menu, X } from "lucide-react";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { Glyph } from "@/app/_components/Glyph";
 
 interface Notification {
   id: string;
@@ -260,9 +260,9 @@ export default function NavAuth() {
                 aria-expanded={mobileOpen}
               >
                 {mobileOpen ? (
-                  <X className="w-5 h-5" strokeWidth={1.5} />
+                  <Glyph name="x" size={20} />
                 ) : (
-                  <Menu className="w-5 h-5" strokeWidth={1.5} />
+                  <Glyph name="menu" size={20} />
                 )}
               </button>
 
@@ -277,7 +277,7 @@ export default function NavAuth() {
                   className="relative text-sm font-bold px-3 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-violet-600 to-violet-500 text-white hover:from-violet-700 hover:to-violet-600 transition-all duration-200 shadow-sm hover:shadow-md hover:scale-105 flex items-center gap-1.5 overflow-hidden group"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700" />
-                  <Star className="relative w-4 h-4" strokeWidth={1.5} />
+                  <Glyph name="star" size={16} className="relative" />
                   <span className="relative font-extrabold hidden sm:inline">Upgrade</span>
                 </Link>
               )}
@@ -288,7 +288,7 @@ export default function NavAuth() {
                   href="/contact-us"
                   className="flex items-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-lg text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
                 >
-                  <HelpCircle className="w-5 h-5" strokeWidth={1.5} />
+                  <Glyph name="help-circle" size={20} />
                   <span className="text-sm font-semibold hidden sm:inline">Help</span>
                 </Link>
               )}
@@ -300,7 +300,7 @@ export default function NavAuth() {
                   className="relative w-10 h-10 rounded-lg flex items-center justify-center text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
                   aria-label="Notifications"
                 >
-                  <Bell className="w-5 h-5" strokeWidth={1.5} />
+                  <Glyph name="bell" size={20} />
                   {unreadCount > 0 && (
                     <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
                       {unreadCount > 9 ? "9+" : unreadCount}
@@ -351,7 +351,7 @@ export default function NavAuth() {
                         ))
                       ) : (
                         <div className="px-4 py-8 text-center">
-                          <Bell className="w-6 h-6 text-zinc-300 mx-auto mb-2" strokeWidth={1.5} />
+                          <Glyph name="bell" size={24} className="text-zinc-300 mx-auto mb-2" />
                           <p className="text-sm text-zinc-400">No notifications yet</p>
                         </div>
                       )}
