@@ -1,15 +1,29 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
-import { BookOpen, PenLine, Trophy, Users, Heart, GraduationCap, Sparkles, School } from "lucide-react";
 import AdvisoryBoardSection from "@/app/_components/AdvisoryBoardSection";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet the team behind Readee - built by a reading specialist and developer to help every child become a confident reader.",
+    "Readee is built by Jennifer Klingerman, a certified reading specialist who still teaches 3rd grade, and Filip Galietti.",
 };
 
+/**
+ * /about — rebuilt Sep 2026.
+ *
+ * What came out: five identical icon-in-a-rounded-box section headers (two of
+ * them using the same Sparkles), four card grids stacked one after another,
+ * and per-card gradients that existed nowhere else in the product. Six of the
+ * twenty "AI-generated UI" tells, on one page.
+ *
+ * That chrome was sitting on top of the least copyable thing Readee has: a
+ * certified reading specialist who is still in a classroom. Every comparable
+ * in the category leads with named founder credentials, so this page now does
+ * too, with her face at the top and the story as prose rather than chopped
+ * into gradient cards.
+ */
 export default async function About() {
   const supabase = await createClient();
   const {
@@ -17,279 +31,167 @@ export default async function About() {
   } = await supabase.auth.getUser();
 
   return (
-    <div className="max-w-4xl mx-auto pb-16 px-4">
-      {/* ── Hero ── */}
-      <div className="text-center py-16 space-y-5">
-        <div className="w-56 sm:w-64 mx-auto mb-2">
-          <img
-            src="/readee-logo.png"
-            alt="Readee"
-            width={1200}
-            height={404}
-            className="w-full h-auto"
+    <div className="mx-auto max-w-3xl px-4 pb-16">
+      {/* ── Jennifer first. She is the reason to trust this. ── */}
+      <section className="py-14 sm:py-20">
+        <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:gap-10">
+          <Image
+            src="/images/jennifer.jpg"
+            alt="Jennifer Klingerman"
+            width={168}
+            height={168}
+            className="h-40 w-40 flex-shrink-0 rounded-3xl object-cover shadow-[0_10px_40px_-12px_rgba(49,46,129,0.18)]"
+            priority
           />
-        </div>
-        {/* The lockup above already says "readee" - no tagline repeat. */}
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-zinc-900 tracking-tight">
-          Built by Educators,{" "}
-          <span className="text-violet-600">
-            for Education
-          </span>
-        </h1>
-      </div>
-
-      {/* ── Our Story ── */}
-      <section className="rounded-2xl bg-gradient-to-br from-violet-50 to-indigo-50 border border-indigo-100 p-8 sm:p-10 space-y-5 mb-8">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white border border-indigo-100 flex items-center justify-center">
-            <Heart className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
-          </div>
-          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Our Story
-          </h2>
-        </div>
-        <div className="space-y-4 text-[15px] text-zinc-700 leading-relaxed">
-          <p>
-            Readee was founded by <strong>Filip Galietti</strong> and{" "}
-            <strong>Jennifer Klingerman</strong>, a certified reading specialist
-            and 3rd grade teacher. Jennifer saw firsthand how children were falling
-            behind in reading - and knew a better approach was possible.
-          </p>
-          <p>
-            Together, we set out to build an app that brings real teaching
-            methodology to the screen. Not flashy gimmicks or mindless
-            screen time - but structured, science-backed lessons that actually
-            move the needle.
-          </p>
-          <p className="text-indigo-700 font-semibold">
-            We&apos;re a small team of two with a big passion for reading.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Our Approach ── */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 space-y-6 mb-8">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-              Our Approach
-            </h2>
-            <p className="text-sm text-zinc-500 mt-0.5">
-              Three steps, one confident reader.
+          <div className="text-center sm:text-left">
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-violet-600">
+              Made by a reading teacher
+            </p>
+            <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight text-zinc-900 sm:text-4xl">
+              Jennifer wrote every lesson in Readee.
+            </h1>
+            <p className="mt-4 text-[17px] leading-relaxed text-zinc-600">
+              Jennifer Klingerman is a certified reading specialist with a
+              Master&apos;s in Reading, and she still teaches 3rd grade. She saw
+              children falling behind year after year and knew a better approach
+              was possible.
+            </p>
+            <p className="mt-3 text-[17px] leading-relaxed text-zinc-600">
+              She built Readee with Filip Galietti, who handles the engineering.
+              Two people. No content team, no licensing deal, no textbook
+              publisher.
             </p>
           </div>
         </div>
-
-        <div className="grid sm:grid-cols-3 gap-4">
-          {[
-            {
-              step: 1,
-              icon: BookOpen,
-              title: "Lesson",
-              color: "from-indigo-600 to-indigo-500",
-              desc: "Teacher-led instruction with hours of recorded educator dialogue. Real teaching, on screen.",
-            },
-            {
-              step: 2,
-              icon: PenLine,
-              title: "Practice",
-              color: "from-violet-600 to-violet-500",
-              desc: "Guided practice problems to reinforce what was learned. Immediate feedback builds confidence.",
-            },
-            {
-              step: 3,
-              icon: Trophy,
-              title: "Excel",
-              color: "from-purple-600 to-purple-500",
-              desc: "Mastery activities that push children to the next level. Prove it, own it, move on.",
-            },
-          ].map((item) => (
-            <div
-              key={item.step}
-              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-5 text-center space-y-3"
-            >
-              <div
-                className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${item.color} text-white flex items-center justify-center mx-auto shadow-md`}
-              >
-                <item.icon className="w-6 h-6" strokeWidth={1.5} />
-              </div>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-400">
-                  Step {item.step}
-                </span>
-                <h3 className="font-bold text-zinc-900 text-lg">{item.title}</h3>
-              </div>
-              <p className="text-sm text-zinc-600 leading-relaxed">
-                {item.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="rounded-xl bg-indigo-50/60 border border-indigo-100 p-4">
-          <p className="text-sm text-indigo-800 leading-relaxed text-center">
-            Every student starts with a <strong>diagnostic assessment</strong> so
-            we meet them where they are, then moves through Lesson &rarr; Practice
-            &rarr; Excel at their own pace.
-          </p>
-        </div>
       </section>
 
-      {/* ── A Content Army (auditable + growing) ── */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 space-y-6 mb-8">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-              A Content Army
-            </h2>
-            <p className="text-sm text-zinc-500 mt-0.5">
-              Audited at every step. Fresh every morning.
-            </p>
-          </div>
-        </div>
-
-        <p className="text-[15px] text-zinc-600 leading-relaxed">
-          Readee isn&apos;t a textbook. It&apos;s a living library - built by a
-          reading specialist, scaled by an AI production line, and audited 24/7
-          by a quality pipeline that catches duds before any child sees them.
-          Every passage, question, image, and audio file passes{" "}
-          <strong>12 automated quality checks</strong> - including fact-checking
-          against Wikipedia, reading-level audit per grade, and pedagogy review.
-          Anything that fails gets either auto-rewritten or quarantined - never
-          quietly shipped.
+      {/* ── The method, as prose. Three steps is a real sequence. ── */}
+      <section className="border-t border-zinc-200 py-12">
+        <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900">
+          How a Readee lesson works
+        </h2>
+        <p className="mt-3 max-w-2xl text-[17px] leading-relaxed text-zinc-600">
+          Every child starts with an adaptive placement test across five reading
+          skills, so we meet them where they actually are rather than where their
+          grade says they should be. From there each lesson runs the same three
+          beats.
         </p>
-
-        <div className="grid sm:grid-cols-4 gap-3">
+        <ol className="mt-8 space-y-6">
           {[
-            { value: "911+", label: "CCSS Questions", sub: "Every one standards-tagged" },
-            { value: "200+", label: "Interactive Lessons", sub: "Karaoke audio + animations" },
-            { value: "12", label: "Quality Checks", sub: "Per piece, before a child sees it" },
-            { value: "Daily", label: "Fresh Content", sub: "Daily passage + Discover articles" },
-          ].map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-4 text-center"
-            >
-              <div className="text-2xl font-extrabold text-indigo-600">
-                {stat.value}
+            {
+              n: 1,
+              title: "Lesson",
+              body: "Teacher-led instruction with hours of recorded educator dialogue, read aloud line by line. Real teaching, on screen.",
+            },
+            {
+              n: 2,
+              title: "Practice",
+              body: "Standards-aligned questions with immediate feedback. Wrong answers get an explanation, not just a red X.",
+            },
+            {
+              n: 3,
+              title: "Excel",
+              body: "Mastery activities that push a step past the lesson. Prove it, own it, move on.",
+            },
+          ].map((s) => (
+            <li key={s.n} className="flex gap-5">
+              <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-2xl bg-violet-600 font-extrabold text-white">
+                {s.n}
+              </span>
+              <div>
+                <h3 className="text-lg font-bold text-zinc-900">{s.title}</h3>
+                <p className="mt-1 text-[16px] leading-relaxed text-zinc-600">
+                  {s.body}
+                </p>
               </div>
-              <div className="mt-1 text-xs font-semibold uppercase tracking-wide text-zinc-700">
-                {stat.label}
-              </div>
-              <div className="mt-1 text-[11px] text-zinc-500">{stat.sub}</div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
-      {/* ── Who Readee Is For ── */}
-      <section className="rounded-2xl border border-zinc-200 bg-white p-8 sm:p-10 space-y-6 mb-8">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-            <Users className="w-5 h-5 text-indigo-500" strokeWidth={1.5} />
-          </div>
-          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Who Readee Is For
-          </h2>
-        </div>
+      {/* ── The quality claim, with the numbers inline rather than in a grid ── */}
+      <section className="border-t border-zinc-200 py-12">
+        <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900">
+          Nothing reaches a child unchecked
+        </h2>
+        <p className="mt-3 text-[17px] leading-relaxed text-zinc-600">
+          Readee is not a textbook. Jennifer writes the pedagogy, an automated
+          production line scales it, and a quality pipeline audits the output
+          around the clock. Every passage, question, image and audio file passes{" "}
+          <strong className="font-semibold text-zinc-900">
+            12 automated checks
+          </strong>{" "}
+          before it ships, including fact-checking against Wikipedia, a
+          reading-level audit for the target grade, and a pedagogy review.
+          Anything that fails is rewritten or quarantined. Nothing is quietly
+          shipped.
+        </p>
+        <dl className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+          {[
+            { v: "911+", k: "practice questions" },
+            { v: "200+", k: "interactive lessons" },
+            { v: "12", k: "checks on every piece" },
+            { v: "Daily", k: "fresh reading" },
+          ].map((s) => (
+            <div key={s.k}>
+              <dt className="text-3xl font-extrabold tracking-tight text-violet-600">
+                {s.v}
+              </dt>
+              <dd className="mt-1 text-sm leading-snug text-zinc-500">{s.k}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
 
-        <div className="grid sm:grid-cols-3 gap-4">
+      {/* ── Who it is for ── */}
+      <section className="border-t border-zinc-200 py-12">
+        <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900">
+          Who Readee is for
+        </h2>
+        <div className="mt-6 space-y-5">
           {[
             {
-              icon: GraduationCap,
-              title: "Early Readers",
-              subtitle: "Pre-K through 4th Grade",
-              desc: "Covering the critical years when reading skills are built - from letter sounds to independent reading.",
+              title: "Early readers, kindergarten through 4th grade",
+              body: "The years when reading is actually built, from letter sounds to reading independently.",
             },
             {
-              icon: Heart,
-              title: "Learning Differences",
-              subtitle: "Dyslexia & Reading Disabilities",
-              desc: "Structured, systematic lessons designed to support children who learn differently.",
+              title: "Children who learn differently",
+              body: "Structured, systematic lessons with audio on every piece of text. Predictable pacing, short sessions, no flashing rewards competing with the words. Many families come to us after a flashier app overwhelmed their reader.",
             },
             {
-              icon: Trophy,
-              title: "Families Who Want More",
-              subtitle: "At or Above Grade Level",
-              desc: "Whether your child needs to catch up or get ahead, Readee can get them there.",
+              title: "Families who want more than grade level",
+              body: "Whether a child needs to catch up or wants to get ahead, the placement test starts them at the right place either way.",
             },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="rounded-xl border border-zinc-100 bg-zinc-50/50 p-5 space-y-2"
-            >
-              <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-                <item.icon
-                  className="w-5 h-5 text-indigo-500"
-                  strokeWidth={1.5}
-                />
-              </div>
-              <h3 className="font-semibold text-zinc-900">{item.title}</h3>
-              <p className="text-xs font-medium text-indigo-500">
-                {item.subtitle}
-              </p>
-              <p className="text-sm text-zinc-600 leading-relaxed">
-                {item.desc}
+          ].map((x) => (
+            <div key={x.title}>
+              <h3 className="text-[17px] font-bold text-zinc-900">{x.title}</h3>
+              <p className="mt-1 text-[16px] leading-relaxed text-zinc-600">
+                {x.body}
               </p>
             </div>
           ))}
-        </div>
-
-        <div className="rounded-xl bg-zinc-50 border border-zinc-100 p-4">
-          <p className="text-sm text-zinc-600 leading-relaxed text-center">
-            Our program is grounded in the{" "}
-            <strong className="text-zinc-900">Science of Reading</strong> and
-            aligned to{" "}
-            <strong className="text-zinc-900">
-              Common Core ELA standards
-            </strong>
-            .
-          </p>
         </div>
       </section>
 
       <AdvisoryBoardSection />
 
-      {/* ── Coming Soon: Readee Classroom ── */}
       {/* ── CTA ── */}
-      {user ? (
-        <div className="text-center py-8 space-y-4">
-          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Ready to continue?
-          </h2>
-          <p className="text-zinc-500">
-            Head back to the dashboard to start your child&apos;s next lesson.
-          </p>
-          <Link
-            href="/dashboard"
-            className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-lg hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg"
-          >
-            Go to Dashboard
-          </Link>
-        </div>
-      ) : (
-        <div className="text-center py-8 space-y-4">
-          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Ready to get started?
-          </h2>
-          <p className="text-zinc-500">
-            Create a free account and see where your child&apos;s reading
-            journey begins.
-          </p>
-          <Link
-            href="/signup"
-            className="inline-block px-8 py-4 rounded-2xl bg-gradient-to-r from-violet-600 to-violet-500 text-white font-bold text-lg hover:from-violet-700 hover:to-violet-600 transition-all shadow-lg"
-          >
-            Sign Up for Free
-          </Link>
-        </div>
-      )}
+      <section className="border-t border-zinc-200 py-12 text-center">
+        <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900">
+          {user ? "Ready to continue?" : "See where your child is reading"}
+        </h2>
+        <p className="mx-auto mt-3 max-w-md text-[17px] text-zinc-600">
+          {user
+            ? "Head back to the dashboard for the next lesson."
+            : "The placement test takes about five minutes and it is free."}
+        </p>
+        <Link
+          href={user ? "/dashboard" : "/signup"}
+          className="mt-7 inline-flex items-center justify-center rounded-2xl bg-violet-600 px-8 py-4 text-lg font-extrabold text-white shadow-[0_4px_0_0_#4c1d95] transition hover:bg-violet-500 active:translate-y-[3px] active:shadow-[0_1px_0_0_#4c1d95]"
+        >
+          {user ? "Go to dashboard" : "Start the free placement test"}
+        </Link>
+      </section>
     </div>
   );
 }
