@@ -14,6 +14,7 @@ import {
   Home, BarChart3, BookText, BookOpen, ListChecks, Map, Newspaper,
   Carrot, Trophy, ChevronDown, ChevronRight, ClipboardCheck, GraduationCap, Building2, ClipboardPen, Library, Sparkles, Users, Brain, Zap, ShieldCheck, BookOpenText, Layers, Mic, ScanLine, Factory, Bot, LogOut, Menu, PenLine,
 } from "lucide-react";
+import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
 
 /* ─── Nav items ──────────────────────────────────── */
 
@@ -21,6 +22,9 @@ type NavItem = {
   href: string;
   icon: any;
   label: string;
+  /** Reward destinations render a Fluent Emoji instead of the Lucide glyph, so
+   *  the "Fun" group reads as reward rather than admin. See CLAUDE.md. */
+  fluent?: FluentIconName;
   iconColor?: string;
   emphasis?: boolean;
   shimmer?: boolean;
@@ -200,9 +204,9 @@ function getNavSections(
       collapsible: collapseByDefault,
       kidSize: true,
       items: [
-        { href: "/daily", icon: Newspaper, label: "Daily Readee" },
-        { href: `/shop${q}`, icon: Carrot, label: "Shop", iconColor: "text-orange-500" },
-        { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard" },
+        { href: "/daily", icon: Newspaper, label: "Daily Readee", fluent: "open-book" },
+        { href: `/shop${q}`, icon: Carrot, label: "Shop", fluent: "carrot" },
+        { href: `/leaderboard${q}`, icon: Trophy, label: "Leaderboard", fluent: "trophy" },
         // Long-tail surfaces now live on the /more page instead of a
         // cramped dropdown — one big, tappable entry point.
         { href: `/more${q}`, icon: Menu, label: "More" },
@@ -481,7 +485,7 @@ function NavSectionBlock({
           {section.label}
         </p>
         <nav className={navSpacing}>
-          {section.items.map(({ href, icon: Icon, label: itemLabel, iconColor, emphasis, shimmer }) => (
+          {section.items.map(({ href, icon: Icon, label: itemLabel, fluent, iconColor, emphasis, shimmer }) => (
             <Link
               key={href}
               href={href}
@@ -495,18 +499,22 @@ function NavSectionBlock({
                   shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
                 />
               )}
-              <Icon
-                className={
-                  shimmer
-                    ? `relative z-10 ${iconDim} text-white drop-shadow-sm`
-                    : emphasis && !isActive(pathname, href)
-                      ? `${iconDim} text-violet-500`
-                      : iconColor
-                        ? `${iconDim} ${iconColor}`
-                        : navIconClass(pathname, href, kid)
-                }
-                strokeWidth={1.5}
-              />
+              {fluent ? (
+                <FluentIcon name={fluent} size={kid ? 24 : 20} className="relative z-10 flex-shrink-0" />
+              ) : (
+                <Icon
+                  className={
+                    shimmer
+                      ? `relative z-10 ${iconDim} text-white drop-shadow-sm`
+                      : emphasis && !isActive(pathname, href)
+                        ? `${iconDim} text-violet-500`
+                        : iconColor
+                          ? `${iconDim} ${iconColor}`
+                          : navIconClass(pathname, href, kid)
+                  }
+                  strokeWidth={1.5}
+                />
+              )}
               <span className={shimmer ? "relative z-10" : undefined}>{itemLabel}</span>
             </Link>
           ))}
