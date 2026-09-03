@@ -22,6 +22,7 @@ import { Resend } from "resend";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { buildParentSnapshot } from "@/lib/ai/build-parent-snapshot";
 import { standardShortName } from "@/lib/data/standard-short-name";
+import { childJourneyContext } from "@/lib/email/journey-context";
 
 const FROM = "Readee <hello@readee.app>";
 const BASE_URL = "https://learn.readee.app";
@@ -68,6 +69,10 @@ type ChildSummary = {
     accuracy: number;
     attempted: number;
   } | null;
+  /** From the child's journey: the next lesson by name, and the placement's next milestone. */
+  nextLessonTitle: string | null;
+  nextLessonUnit: string | null;
+  milestoneLine: string | null;
   /** Outfits + badges granted this week (item_id starting with bunny_
    *  or badge_ in shop_purchases). Powers the "Wins" cluster — visible
    *  proof of milestones the kid hit. */
@@ -220,8 +225,24 @@ async function buildParentSummary(parentId: string): Promise<{
       weakestStandard: weakest,
       strongestStandard: strongest,
       unlocksThisWeek,
+      nextLessonTitle: null,
+      nextLessonUnit: null,
+      milestoneLine: null,
     };
   });
+
+  // Along the journey: the next lesson by name + the next milestone, per child.
+  await Promise.all(
+    summaries.map(async (sum) => {
+      try {
+        const ctx = await childJourneyContext(sum.childId);
+        if (!ctx) return;
+        sum.nextLessonTitle = ctx.nextLesson?.title ?? null;
+        sum.nextLessonUnit = ctx.nextLesson?.unit ?? null;
+        sum.milestoneLine = ctx.placement?.nextMilestone ? `${ctx.placement.nextMilestone.label} by ${ctx.placement.nextMilestone.month}` : null;
+      } catch { /* the digest reads fine without it */ }
+    }),
+  );
 
   // Grounded AI "coach's note" per ACTIVE child. Inactive kids get the
   // static come-back nudge (no model call, no cost). buildParentSnapshot
@@ -294,6 +315,8 @@ function renderDigest(input: {
       const lines: string[] = [`- ${c.firstName}:`];
       if (c.aiHeadline) lines.push(`  ${c.aiHeadline}`);
       if (c.aiAction) lines.push(`  This week: ${c.aiAction}`);
+      if (c.nextLessonTitle) lines.push(`  Next up: ${c.nextLessonTitle}${c.nextLessonUnit ? ` (${c.nextLessonUnit})` : ""}`);
+      if (c.milestoneLine) lines.push(`  Next flag: ${c.milestoneLine}`);
       if (c.passagesFinished > 0) lines.push(`  · ${c.passagesFinished} passage(s) finished`);
       if (c.questionsAttempted > 0)
         lines.push(
@@ -368,6 +391,14 @@ function renderDigest(input: {
            </div>`
         : "";
 
+      // Along the journey: what is next by name, and the next flag on the map.
+      const journeyBlock = c.nextLessonTitle || c.milestoneLine
+        ? `<div style="margin-top:12px;padding:10px 14px;background:#fffbeb;border-radius:10px;font-size:13px;line-height:1.6;color:#3f3f46;">
+             ${c.nextLessonTitle ? `<div><span style="font-weight:700;color:#92400e;">Next up:</span> ${escapeHtml(c.nextLessonTitle)}${c.nextLessonUnit ? ` <span style="color:#71717a;">(${escapeHtml(c.nextLessonUnit)})</span>` : ""}</div>` : ""}
+             ${c.milestoneLine ? `<div><span style="font-weight:700;color:#92400e;">Next flag:</span> ${escapeHtml(c.milestoneLine)}</div>` : ""}
+           </div>`
+        : "";
+
       const winsLossesBlock =
         wins.length > 0 || losses.length > 0
           ? `<div style="margin-top:12px;padding-top:12px;border-top:1px solid #f4f4f5;font-size:13px;line-height:1.6;color:#3f3f46;">
@@ -395,6 +426,7 @@ function renderDigest(input: {
                 <div style="text-align:right;">${metric}</div>
               </div>
               ${aiNoteBlock}
+              ${journeyBlock}
               ${winsLossesBlock}
             </td>
           </tr>
