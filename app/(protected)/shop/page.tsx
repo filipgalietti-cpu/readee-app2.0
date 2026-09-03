@@ -500,7 +500,6 @@ function ShopContent({
             boxShadow: "0 1px 0 #fff inset,0 16px 40px -30px rgba(194,65,12,.6)",
           }}
         >
-          <div style={{ position: "absolute", right: -40, top: -70, width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle,rgba(249,115,22,.18),rgba(249,115,22,0) 66%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: 6 }}>
             <h1
               className="shop-hero-title"
@@ -632,7 +631,7 @@ function ShopContent({
                   fontWeight: 800,
                   letterSpacing: "-.01em",
                   color: primaryEnabled ? "#fff" : "#a1a1aa",
-                  background: primaryEnabled ? "linear-gradient(135deg,#7c3aed 0%,#4338ca 100%)" : "#f4f4f5",
+                  background: primaryEnabled ? "linear-gradient(135deg,#7c3aed 0%,#6d28d9 100%)" : "#f4f4f5",
                   boxShadow: primaryEnabled ? "0 12px 26px -14px rgba(76,29,149,.95)" : "none",
                   animation: primaryEnabled ? "rdGlowPulse 2.6s ease-in-out infinite" : shake ? "rdShake .5s ease" : "none",
                   transition: "transform .12s ease",
