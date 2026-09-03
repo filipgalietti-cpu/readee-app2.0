@@ -8,6 +8,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { useChildStore } from "@/lib/stores/child-store";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 import { READER_LEVELS, MILESTONE_LEVELS, computeLevel } from "@/lib/levels/levels";
+import type { ReaderLevel, LevelInfo } from "@/lib/levels/levels";
 import type { Child } from "@/lib/db/types";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -118,10 +119,11 @@ function LevelsContent() {
         <h1 className="mt-1 text-3xl font-extrabold tracking-tight text-zinc-900">
           Reader Levels
         </h1>
-        <p className="mt-1 text-sm text-zinc-500">
-          Earn{" "}
-          <FluentIcon name="carrot" size={14} />{" "}
-          carrots from lessons, practice, and stories to climb the ladder.
+        <p className="mt-1 inline-flex flex-wrap items-center justify-center gap-1 text-sm text-zinc-500">
+          Every carrot
+          <FluentIcon name="carrot" size={14} />
+          you earn anywhere in Readee climbs the ladder. Spending them never
+          costs you a level.
         </p>
       </div>
 
@@ -162,58 +164,90 @@ function LevelsContent() {
         )}
       </motion.div>
 
-      {/* Smart ladder slice: the kid's current band (5 below → 12 above)
-          merged with every named milestone, deduplicated and sorted.
-          Rendering all 1000 levels would be a 40-second stagger and an
-          unreadable scroll — band + milestones gives a clear "what's
-          next" and a fun "what's possible later." */}
-      <ol className="mt-6 space-y-2">
-        {(() => {
-          const cur = info.current.number;
-          const bandLo = Math.max(1, cur - 5);
-          const bandHi = Math.min(READER_LEVELS.length, cur + 12);
-          const bandNums = new Set<number>();
-          for (let n = bandLo; n <= bandHi; n++) bandNums.add(n);
-          for (const m of MILESTONE_LEVELS) bandNums.add(m.number);
-          const slice = READER_LEVELS.filter((l) => bandNums.has(l.number));
-          return slice;
-        })().map((lvl, idx) => {
+      {/* Two lists, not one. Merging the band with every milestone put "Lv 13"
+          directly above "Lv 300" with nothing to explain the jump. Split, it
+          reads as "your next stretch" and "what the ladder becomes". */}
+      {(() => {
+        const cur = info.current.number;
+        const bandLo = Math.max(1, cur - 5);
+        const bandHi = Math.min(READER_LEVELS.length, cur + 12);
+        const band = READER_LEVELS.filter((l) => l.number >= bandLo && l.number <= bandHi);
+        const ahead = MILESTONE_LEVELS.filter((m) => m.number > bandHi);
+        return (
+          <>
+            <LevelSection title="Your ladder" levels={band} info={info} />
+            {ahead.length > 0 && (
+              <LevelSection title="Milestones ahead" levels={ahead} info={info} />
+            )}
+          </>
+        );
+      })()}
+    </div>
+  );
+}
+
+/**
+ * One block of rungs. The tile carries the level's own gradient, the same
+ * treatment the sidebar and dashboard use, so a level looks like itself
+ * wherever it appears. Locked rungs grey out: a Fluent emoji cannot be
+ * recoloured, so the icon is desaturated rather than tinted.
+ */
+function LevelSection({
+  title,
+  levels,
+  info,
+}: {
+  title: string;
+  levels: ReaderLevel[];
+  info: LevelInfo;
+}) {
+  return (
+    <section className="mt-7">
+      <h3 className="px-1 text-[11px] font-bold uppercase tracking-[0.14em] text-zinc-400">
+        {title}
+      </h3>
+      <ol className="mt-2 space-y-2">
+        {levels.map((lvl, idx) => {
           const achieved = info.current.number >= lvl.number;
           const isCurrent = info.current.number === lvl.number;
-          const Icon = lvl.icon;
           return (
             <motion.li
               key={lvl.number}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: Math.min(idx, 12) * 0.04 }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: Math.min(idx, 12) * 0.03 }}
               className={`flex items-center gap-3 rounded-2xl border bg-white p-3 ${
                 isCurrent
-                  ? "border-indigo-300 ring-2 ring-indigo-200"
+                  ? "border-violet-300 shadow-[0_0_0_3px_rgba(139,92,246,0.15)]"
                   : achieved
                     ? "border-zinc-200"
-                    : "border-zinc-100 opacity-70"
+                    : "border-zinc-100"
               }`}
             >
               <span
-                className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl ${
+                className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl"
+                style={
                   achieved
-                    ? `${lvl.accent.bg} ${lvl.accent.fg}`
-                    : "bg-zinc-100 text-zinc-400"
-                }`}
+                    ? { background: `linear-gradient(135deg,${lvl.accent.hexDeep},${lvl.accent.hex})` }
+                    : { background: "#f4f4f5" }
+                }
               >
-                <FluentIcon name={Icon} size={24} />
+                <FluentIcon
+                  name={lvl.icon}
+                  size={24}
+                  className={achieved ? undefined : "opacity-40 grayscale"}
+                />
               </span>
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
                   <span className="font-mono text-[11px] font-bold text-zinc-400">
                     Lv {lvl.number}
                   </span>
-                  <span className="text-sm font-extrabold text-zinc-900">
+                  <span className={`text-sm font-extrabold ${achieved ? "text-zinc-900" : "text-zinc-500"}`}>
                     {lvl.name}
                   </span>
                   {isCurrent && (
-                    <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-bold text-indigo-700">
+                    <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-bold text-violet-700">
                       You are here
                     </span>
                   )}
@@ -223,8 +257,8 @@ function LevelsContent() {
                     <>Unlocked at {lvl.threshold.toLocaleString()} carrots</>
                   ) : (
                     <>
-                      {Math.max(0, lvl.threshold - info.lifetimeCarrots).toLocaleString()}{" "}
-                      more carrots to unlock
+                      {Math.max(0, lvl.threshold - info.lifetimeCarrots).toLocaleString()} more
+                      carrots to unlock
                     </>
                   )}
                 </div>
@@ -238,6 +272,6 @@ function LevelsContent() {
           );
         })}
       </ol>
-    </div>
+    </section>
   );
 }
