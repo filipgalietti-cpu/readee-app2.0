@@ -59,7 +59,7 @@ export function renderTrialStarted(parentName: string | null, ctx: ChildJourneyC
   const trial = end ? `Your 14-day trial is free until ${end}. We email you three days before, and you can cancel in one tap from Settings.` : "Your 14-day trial is free. We email you three days before it ends, and you can cancel in one tap from Settings.";
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", first, dose, milestone, "", trial, "", `Open the dashboard: ${BASE_URL}/dashboard`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].filter((l) => l !== "" || true).join("\n");
   const bodyHtml = `${P(escapeHtml(first))}${P(escapeHtml(dose))}${milestone ? P(escapeHtml(milestone)) : ""}${SMALL(escapeHtml(trial))}`;
-  const html = shell({ preheader: first, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Start ${name}'s first lesson`, unsubscribeUrl, heading, eyebrow: "Welcome to Readee+", hero: "trial-started" });
+  const html = shell({ preheader: first, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Start ${name}'s first lesson`, unsubscribeUrl, heading, eyebrow: "Welcome to Readee+", banner: "banner-trial-started" });
   return { subject: `Readee+ is on: ${name}'s first week`, html, text };
 }
 
