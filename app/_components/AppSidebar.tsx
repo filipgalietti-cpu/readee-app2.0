@@ -12,7 +12,7 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
-import { computeLevel } from "@/lib/levels/levels";
+import { computeLevel, hasCustomName } from "@/lib/levels/levels";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -593,14 +593,20 @@ function LevelTile({ lifetimeCarrots }: { lifetimeCarrots: number }) {
   const { current } = computeLevel(lifetimeCarrots);
   return (
     <div
-      className="w-9 h-[18px] rounded-md flex items-center justify-center gap-[3px]"
+      className="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center"
       style={{ background: `linear-gradient(135deg,${current.accent.hexDeep},${current.accent.hex})` }}
       title={`Level ${current.number} - ${current.name}`}
     >
-      <FluentIcon name={current.icon} size={11} />
-      <span className="text-[10px] font-extrabold text-white leading-none">{current.number}</span>
+      <FluentIcon name={current.icon} size={20} />
     </div>
   );
+}
+
+/** "Lv 7 · Word Wizard" while levels have bespoke names; just "Level 19" once
+ *  they are generated, because "Lv 19 · Level 19" prints the number twice. */
+function levelCaption(lifetimeCarrots: number): string {
+  const { current } = computeLevel(lifetimeCarrots);
+  return hasCustomName(current) ? `Lv ${current.number} · ${current.name}` : current.name;
 }
 
 function ExpandedNav({
@@ -643,30 +649,28 @@ function ExpandedNav({
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="px-3 pt-3 pb-2 flex items-center gap-2.5">
-        <div className="flex flex-col items-center gap-1 flex-shrink-0">
-          {avatarSrc ? (
-            <div className="w-9 h-9 rounded-lg overflow-hidden ring-1 ring-zinc-200">
-              <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
-            </div>
-          ) : (
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200">
-              {initials}
-            </div>
-          )}
-          {typeof lifetimeCarrots === "number" && (
-            <LevelTile lifetimeCarrots={lifetimeCarrots} />
-          )}
-        </div>
+        {avatarSrc ? (
+          <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
+            <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
+          </div>
+        ) : (
+          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200">
+            {initials}
+          </div>
+        )}
         <div className="flex-1 min-w-0">
           <div className="text-sm font-bold text-zinc-900 truncate leading-tight">
             {sidebarName}
           </div>
-          {subtitle && (
+          {(subtitle || typeof lifetimeCarrots === "number") && (
             <div className="text-[11px] text-zinc-400 truncate leading-tight">
-              {subtitle}
+              {subtitle ?? levelCaption(lifetimeCarrots as number)}
             </div>
           )}
         </div>
+        {typeof lifetimeCarrots === "number" && (
+          <LevelTile lifetimeCarrots={lifetimeCarrots} />
+        )}
         {dismiss && (
           <button
             onClick={dismiss}
