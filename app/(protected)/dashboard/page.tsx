@@ -33,7 +33,7 @@ import { trackFunnelClient } from "@/lib/analytics/funnel";
 import KidWelcomeFlow from "./_components/KidWelcomeFlow";
 import LevelBadge from "@/app/_components/LevelBadge";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
-import { computeLevel } from "@/lib/levels/levels";
+import { computeLevel, hasCustomName } from "@/lib/levels/levels";
 import KidHome from "./_components/KidHome";
 import UpgradeCelebration from "./_components/UpgradeCelebration";
 import WhatsNew from "./_components/WhatsNew";
@@ -889,6 +889,13 @@ function ChildDashboard({
     level: {
       name: levelInfo.current.name,
       num: levelInfo.current.number,
+      // The level's OWN icon and colours. KidHome used to hardcode a star and
+      // an indigo->violet tile, so a level-19 child saw a star here and a
+      // crown in the sidebar for the same level.
+      icon: levelInfo.current.icon,
+      hex: levelInfo.current.accent.hex,
+      hexDeep: levelInfo.current.accent.hexDeep,
+      showNumber: hasCustomName(levelInfo.current),
       xpPct: Math.round(levelInfo.progress01 * 100),
       xpLabel: levelInfo.next
         ? `${Math.max(0, levelInfo.next.threshold - levelInfo.lifetimeCarrots)} carrots to ${levelInfo.next.name}`

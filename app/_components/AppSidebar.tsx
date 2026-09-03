@@ -13,7 +13,7 @@ import { ShineBorder } from "@/app/components/magicui/shine-border";
 import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 import LevelBadge from "@/app/_components/LevelBadge";
-import { computeLevel } from "@/lib/levels/levels";
+import { computeLevel, hasCustomName } from "@/lib/levels/levels";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 
 /* ─── Nav items ──────────────────────────────────── */
@@ -583,6 +583,13 @@ function NavSectionBlock({
 
 /* ─── Expanded nav content (shared by mobile + desktop) ── */
 
+/** "Lv 7 · Word Wizard" while levels have bespoke names; just "Level 19" once
+ *  they are generated, because "Lv 19 · Level 19" prints the number twice. */
+function levelCaption(lifetimeCarrots: number): string {
+  const { current } = computeLevel(lifetimeCarrots);
+  return hasCustomName(current) ? `Lv ${current.number} · ${current.name}` : current.name;
+}
+
 function ExpandedNav({
   pathname,
   sections,
@@ -643,10 +650,7 @@ function ExpandedNav({
           </div>
           {(subtitle || typeof lifetimeCarrots === "number") && (
             <div className="text-[11px] text-zinc-400 truncate leading-tight">
-              {subtitle ??
-                `Lv ${computeLevel(lifetimeCarrots as number).current.number} · ${
-                  computeLevel(lifetimeCarrots as number).current.name
-                }`}
+              {subtitle ?? levelCaption(lifetimeCarrots as number)}
             </div>
           )}
         </div>

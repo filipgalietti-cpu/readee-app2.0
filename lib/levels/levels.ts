@@ -39,6 +39,11 @@ export type ReaderLevel = {
     /** Gradient `from / to` pair for the big celebration overlay. */
     gradFrom: string;
     gradTo: string;
+    /** Same colours as hex, for surfaces styled inline rather than with
+     *  Tailwind (KidHome). Deep -> light is same-hue on purpose: a
+     *  cross-hue fill is the look the anti-slop canon bans. */
+    hexDeep: string;
+    hex: string;
   };
 };
 
@@ -66,6 +71,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-emerald-50 text-emerald-800",
       gradFrom: "from-emerald-400",
+      hexDeep: "#059669",
+      hex: "#10b981",
       gradTo: "to-green-500",
     },
   },
@@ -78,6 +85,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-lime-50 text-lime-800",
       gradFrom: "from-lime-400",
+      hexDeep: "#65a30d",
+      hex: "#84cc16",
       gradTo: "to-emerald-500",
     },
   },
@@ -90,6 +99,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-teal-50 text-teal-800",
       gradFrom: "from-teal-400",
+      hexDeep: "#0d9488",
+      hex: "#14b8a6",
       gradTo: "to-cyan-500",
     },
   },
@@ -102,6 +113,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-sky-50 text-sky-800",
       gradFrom: "from-sky-400",
+      hexDeep: "#0284c7",
+      hex: "#0ea5e9",
       gradTo: "to-blue-500",
     },
   },
@@ -114,6 +127,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-indigo-50 text-indigo-800",
       gradFrom: "from-indigo-400",
+      hexDeep: "#4f46e5",
+      hex: "#6366f1",
       gradTo: "to-violet-500",
     },
   },
@@ -126,6 +141,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-violet-50 text-violet-800",
       gradFrom: "from-violet-400",
+      hexDeep: "#7c3aed",
+      hex: "#8b5cf6",
       gradTo: "to-purple-500",
     },
   },
@@ -138,6 +155,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-purple-50 text-purple-800",
       gradFrom: "from-purple-400",
+      hexDeep: "#9333ea",
+      hex: "#a855f7",
       gradTo: "to-pink-500",
     },
   },
@@ -150,6 +169,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-amber-50 text-amber-800",
       gradFrom: "from-amber-400",
+      hexDeep: "#d97706",
+      hex: "#f59e0b",
       gradTo: "to-orange-500",
     },
   },
@@ -162,6 +183,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-orange-50 text-orange-800",
       gradFrom: "from-orange-400",
+      hexDeep: "#ea580c",
+      hex: "#f97316",
       gradTo: "to-rose-500",
     },
   },
@@ -174,6 +197,8 @@ const SEED_LEVELS: Omit<ReaderLevel, "number">[] = [
       fg: "text-white",
       soft: "bg-rose-50 text-rose-800",
       gradFrom: "from-rose-400",
+      hexDeep: "#e11d48",
+      hex: "#f43f5e",
       gradTo: "to-fuchsia-500",
     },
   },
@@ -232,6 +257,13 @@ function buildLevels(): ReaderLevel[] {
     });
   }
   return out;
+}
+
+/** True when a level has a bespoke name ("Word Wizard") rather than the
+ *  generated "Level 19". Surfaces use this to avoid printing the number
+ *  twice: "Lv 19 · Level 19" reads like a bug, because it is one. */
+export function hasCustomName(l: ReaderLevel): boolean {
+  return l.name !== `Level ${l.number}`;
 }
 
 export const READER_LEVELS: ReaderLevel[] = buildLevels();
