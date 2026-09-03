@@ -37,7 +37,7 @@ import { computeLevel } from "@/lib/levels/levels";
 import KidHome from "./_components/KidHome";
 import UpgradeCelebration from "./_components/UpgradeCelebration";
 import WhatsNew from "./_components/WhatsNew";
-import { OUTFITS } from "@/app/_components/Bunny/outfits";
+import { OUTFITS, isOutfitAvailable } from "@/app/_components/Bunny/outfits";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
 
@@ -768,7 +768,7 @@ function ChildDashboard({
   // carousel never looks empty. KidHome adds left/right arrows to scroll it.
   const MIN_SKINS = 8;
   const ownedOrdered = OUTFITS.map((o) => o.id).filter((id) => ownedOutfitIds.has(id));
-  const lockedIds = OUTFITS.map((o) => o.id).filter((id) => !ownedOutfitIds.has(id));
+  const lockedIds = OUTFITS.filter((o) => isOutfitAvailable(o)).map((o) => o.id).filter((id) => !ownedOutfitIds.has(id));
   const carouselIds = ownedOrdered.length >= MIN_SKINS
     ? ownedOrdered
     : [...ownedOrdered, ...lockedIds.slice(0, MIN_SKINS - ownedOrdered.length)];

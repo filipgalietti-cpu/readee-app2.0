@@ -1,4 +1,5 @@
 import type { ReactionState } from "@/app/_components/Bunny/Bunny";
+import { S8_TEAMS, SEASON8_PRICE, getOutfit, isOutfitAvailable, s8Id } from "@/app/_components/Bunny/outfits";
 
 export type ShopCategory = "avatars" | "outfits" | "reactions" | "backgrounds";
 
@@ -307,6 +308,8 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: "bg_poppy_meadow",      name: "Poppy Meadow",     icon: "flower",          category: "backgrounds", price: 75,  description: "A meadow of red poppies" },
   { id: "bg_frosted_valley",    name: "Frosted Valley",   icon: "mountain-snow",   category: "backgrounds", price: 100, description: "A soft frosted valley" },
   { id: "bg_dandelion_dusk",    name: "Dandelion Dusk",   icon: "flower-2",        category: "backgrounds", price: 150, description: "Dandelions drifting at dusk" },
+  // ── Season 8 · Football (hidden until SEASON8_RELEASE; generic city colorways, no team marks) ──
+  ...S8_TEAMS.map(([city]): ShopItem => ({ id: s8Id(city), name: city, icon: "circle-dot", category: "outfits", price: SEASON8_PRICE, description: `Game-day jersey and helmet in ${city} colors` })),
 ];
 
 /** Image paths for equipped backgrounds */
@@ -573,6 +576,8 @@ export const ITEM_CATCHPHRASES: Record<string, string> = {
   bunny_skeleton: "Bone-rattling good!",
   bunny_acorn: "Nuts about reading!",
   bunny_candycorn: "Trick or treat!",
+  // Season 8 · Football
+  ...Object.fromEntries(S8_TEAMS.map(([city], k) => [s8Id(city), k % 2 === 0 ? `Touchdown, ${city}!` : `Go ${city}, go!`])),
 };
 
 /** The equip-celebration catchphrase for an item, or a friendly default. */
@@ -580,8 +585,16 @@ export function getCatchphrase(id: string): string {
   return ITEM_CATCHPHRASES[id] ?? "Looking good!";
 }
 
+/** Outfits are hidden before their release date (pre-timed seasons); everything else is always available. */
+export function isShopItemAvailable(item: ShopItem, now: Date = new Date()): boolean {
+  return item.category !== "outfits" || isOutfitAvailable(getOutfit(item.id), now);
+}
+export function availableShopItems(now: Date = new Date()): ShopItem[] {
+  return SHOP_ITEMS.filter((i) => isShopItemAvailable(i, now));
+}
+
 export function getItemsByCategory(category: ShopCategory): ShopItem[] {
-  return SHOP_ITEMS.filter((item) => item.category === category);
+  return SHOP_ITEMS.filter((item) => item.category === category && isShopItemAvailable(item));
 }
 
 export function getItemById(id: string): ShopItem | undefined {

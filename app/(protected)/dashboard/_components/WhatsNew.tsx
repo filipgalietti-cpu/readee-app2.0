@@ -7,8 +7,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { getShopIcon } from "@/lib/data/shop-icons";
 import {
-  ANNOUNCEMENTS,
   WHATS_NEW_SEEN_KEY,
+  visibleAnnouncements,
   type Announcement,
 } from "@/lib/data/announcements";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -52,7 +52,7 @@ export default function WhatsNew() {
       typeof window !== "undefined" &&
       new URLSearchParams(window.location.search).has("whatsnew");
     const seen = force ? [] : readSeen();
-    const unseen = ANNOUNCEMENTS.filter((a) => !seen.includes(a.id)).sort((a, b) =>
+    const unseen = visibleAnnouncements().filter((a) => !seen.includes(a.id)).sort((a, b) =>
       a.date < b.date ? 1 : -1,
     );
     // Small delay so it lands after the home has settled, not mid-load.
