@@ -155,8 +155,17 @@ export const OUTFITS: Outfit[] = [
     `,
     body: `
       <path d="M 80 148 C 100 156 140 156 160 148 L 162 168 C 162 196 152 214 138 216 L 102 216 C 88 214 78 196 78 168 Z"
-            fill="#e8503a" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+            fill="#fafafa" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M 112 150 L 120 158 L 128 150" fill="#e8503a" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
       <path d="M 120 168 L 126 180 L 139 182 L 130 191 L 132 204 L 120 198 L 108 204 L 110 191 L 101 182 L 114 180 Z"
+            fill="#ffd14a" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+    `,
+    // A yellow mask across the eyes (holes cut so the eyes show through). White shirt + red cape + mask,
+    // the way the illustrated Readee bunny wears it (Sep 2026); the old all-red suit read as a diaper.
+    head: `
+      <path fill-rule="evenodd" d="M 76 111 Q 120 100 164 111 L 161 127 Q 120 136 79 127 Z
+               M 104 110 a 7.5 8.5 0 1 0 0.01 0 Z
+               M 136 110 a 7.5 8.5 0 1 0 0.01 0 Z"
             fill="#ffd14a" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
     `,
   },
