@@ -10,6 +10,7 @@ export const ChildUpdateSchema = z.object({
   first_name: z.string().min(1).max(50).optional(),
   grade: z.string().optional(),
   reading_level: z.string().nullable().optional(),
+  name_said_as: z.string().max(40).nullable().optional(),
 });
 
 export const PreferencesSchema = z.object({

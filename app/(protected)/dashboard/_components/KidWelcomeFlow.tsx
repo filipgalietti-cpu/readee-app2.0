@@ -24,6 +24,8 @@ import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import RoboWalk from "./RoboWalk";
 import MagicTrick from "./MagicTrick";
 import type { Child } from "@/lib/db/types";
+import SayNameControl from "@/app/_components/SayNameControl";
+import { spokenNameOf } from "@/lib/audio/name-spoken";
 
 const BALOO = "var(--font-baloo), 'Baloo 2', Nunito, sans-serif";
 const NUN = "Nunito, ui-sans-serif, system-ui, sans-serif";
@@ -63,6 +65,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
   const router = useRouter();
   const [step, setStep] = useState(1); // 1..5
   const [name, setName] = useState("");
+  const [saidAs, setSaidAs] = useState(""); // how the name is said (optional; the voice uses it)
   const [grade, setGrade] = useState<string | null>(null);
   const [avatar, setAvatar] = useState("avatar_fox");
   const [greetIdx, setGreetIdx] = useState(0);
@@ -94,7 +97,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
         const res = await fetch("/api/luna/speak", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text: `Nice to meet you, ${n}!` }),
+          body: JSON.stringify({ text: `Nice to meet you, ${spokenNameOf(n, saidAs)}!` }),
         });
         const j = await res.json();
         if (j?.ok && j.audioUrl) setNameAudio({ name: n, url: j.audioUrl });
@@ -102,7 +105,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
       finally { nameAudioFetching.current = false; }
     }, 700);
     return () => clearTimeout(t);
-  }, [name, step, nameAudio]);
+  }, [name, step, nameAudio, saidAs]);
 
   // Rehydrate an in-progress draft (a refresh mid-flow shouldn't wipe it).
   useEffect(() => {
@@ -207,6 +210,10 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
       .update({ onboarding_complete: true, onboarding_completed_at: new Date().toISOString() })
       .eq("id", user.id);
     trackFunnelClient("funnel.kid_added", { grade: grade ?? "Kindergarten", source: "kid_welcome" });
+    // How the name is said: saved + every name clip re-made in that form. Fire-and-forget.
+    if (saidAs.trim()) {
+      void fetch("/api/child-name/apply", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ childId: kid.id, saidAs: saidAs.trim() }) }).catch(() => {});
+    }
     // Fire the welcome email now (don't wait for the daily cron). Fire-and-forget.
     void fetch("/api/lifecycle/welcome", { method: "POST" }).catch(() => {});
 
@@ -266,7 +273,10 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
             <h1 style={{ margin: "8px 0 0", font: `800 clamp(34px,6vw,50px)/1.06 ${BALOO}`, color: "#1e1b4b", letterSpacing: "-.02em", textAlign: "center" }}>What is your name?</h1>
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Type your name" maxLength={16} autoComplete="off" autoFocus
               style={{ marginTop: 24, width: 460, maxWidth: "100%", boxSizing: "border-box", textAlign: "center", border: "3px solid #c7d2fe", borderRadius: 22, background: "#fff", padding: "16px 20px", font: `800 clamp(28px,5vw,38px)/1.1 ${BALOO}`, color: "#1e1b4b", outline: "none", boxShadow: "0 8px 20px -12px rgba(30,27,75,.35)" }} />
-            <button type="button" className="kwf-btn" onClick={next} disabled={!name.trim()} style={{ ...primaryBtn, marginTop: 26, opacity: name.trim() ? 1 : 0.45, cursor: name.trim() ? "pointer" : "not-allowed" }}>That&apos;s me</button>
+            <div style={{ marginTop: 14, width: 460, maxWidth: "100%" }}>
+              <SayNameControl writtenName={name} value={saidAs} onChange={setSaidAs} />
+            </div>
+            <button type="button" className="kwf-btn" onClick={next} disabled={!name.trim()} style={{ ...primaryBtn, marginTop: 22, opacity: name.trim() ? 1 : 0.45, cursor: name.trim() ? "pointer" : "not-allowed" }}>That&apos;s me</button>
           </div>
         )}
 

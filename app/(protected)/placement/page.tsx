@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { requireProfile } from "@/lib/auth/helpers";
 import { createClient } from "@/lib/supabase/server";
 import { synthesizeChildNamePack } from "@/lib/audio/child-greeting";
+import { spokenNameOf } from "@/lib/audio/name-pronunciation";
 import { bandFromGrade } from "@/lib/placement/decide";
 import PlacementRunner from "./_components/PlacementRunner";
 
@@ -24,13 +25,13 @@ export default async function PlacementPage({
 
   const base = supabase
     .from("children")
-    .select("id, first_name, grade, reading_level, parent_id, equipped_items")
+    .select("id, first_name, grade, reading_level, parent_id, equipped_items, name_said_as")
     .eq("parent_id", profile.id);
   const { data } = childIdParam
     ? await base.eq("id", childIdParam).maybeSingle()
     : await base.order("created_at", { ascending: true }).limit(1).maybeSingle();
   if (!data) redirect("/dashboard");
-  const row = data as { id: string; first_name: string | null; grade: string | null; equipped_items?: { outfit?: string | null } | null };
+  const row = data as { id: string; first_name: string | null; grade: string | null; equipped_items?: { outfit?: string | null } | null; name_said_as?: string | null };
 
   if (retake !== "1") {
     const { data: existing } = await supabase
@@ -46,7 +47,7 @@ export default async function PlacementPage({
   const firstName = (row.first_name ?? "").split(" ")[0] || "Reader";
   // Fire-and-forget: the greeting clips that say the child's name. Usually
   // already there from signup; the runner falls back to generic clips if not.
-  void synthesizeChildNamePack(row.id, firstName);
+  void synthesizeChildNamePack(row.id, firstName, { spokenName: spokenNameOf(firstName, row.name_said_as) });
 
   return (
     <PlacementRunner

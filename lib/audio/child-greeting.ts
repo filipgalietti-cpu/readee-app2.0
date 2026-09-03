@@ -10,9 +10,9 @@
 import { generateSpeechVertex } from "@/lib/ai/vertex-tts";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
-export async function synthesizeChildGreeting(childId: string, firstName: string): Promise<void> {
+export async function synthesizeChildGreeting(childId: string, firstName: string, spokenName?: string): Promise<void> {
   try {
-    const name = (firstName ?? "").trim().slice(0, 24);
+    const name = (spokenName ?? firstName ?? "").trim().slice(0, 24);
     if (!name) return;
     let res = await generateSpeechVertex({
       text: `Welcome, ${name}! Time to warm up!`,
@@ -43,7 +43,7 @@ export async function synthesizeChildGreeting(childId: string, firstName: string
   }
 }
 
-function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
+export function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
   const header = Buffer.alloc(44);
   header.write("RIFF", 0);
   header.writeUInt32LE(36 + pcm.length, 4);
@@ -75,15 +75,21 @@ export const NAME_PACK_LINES: Record<"hi" | "climb", (name: string) => string> =
   climb: (name) => `Wow, ${name}, look how far you climbed.`,
 };
 
-export async function synthesizeChildNamePack(childId: string, firstName: string): Promise<void> {
-  const name = (firstName ?? "").trim().split(" ")[0]?.slice(0, 24) ?? "";
+export async function synthesizeChildNamePack(
+  childId: string,
+  firstName: string,
+  opts: { /** How the name is said (children.name_said_as, resolved); defaults to the written name. */ spokenName?: string | null; /** Re-make clips that already exist (the spoken form changed). */ force?: boolean } = {},
+): Promise<void> {
+  const name = (opts.spokenName ?? firstName ?? "").trim().split(" ")[0]?.slice(0, 24) ?? "";
   if (!name || !/^[0-9a-f-]{36}$/.test(childId)) return;
   const admin = supabaseAdmin();
   for (const key of ["hi", "climb"] as const) {
     const path = `greetings/${childId}-${key}.wav`;
     try {
-      const { data: existing } = await admin.storage.from("child-audio").list("greetings", { search: `${childId}-${key}.wav`, limit: 1 });
-      if (existing && existing.length > 0) continue;
+      if (!opts.force) {
+        const { data: existing } = await admin.storage.from("child-audio").list("greetings", { search: `${childId}-${key}.wav`, limit: 1 });
+        if (existing && existing.length > 0) continue;
+      }
       let res = await generateSpeechVertex({ text: NAME_PACK_LINES[key](name), voice: "Autonoe" });
       if (!res.ok) {
         await new Promise((r) => setTimeout(r, 4000));
