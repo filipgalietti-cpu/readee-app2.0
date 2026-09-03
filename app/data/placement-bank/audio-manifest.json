@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T16:14:44.388Z",
+  "generatedAt": "2026-09-03T00:09:49.223Z",
   "voice": "Autonoe",
   "clips": {
     "narr-intro-frame": {
@@ -132,9 +132,9 @@
     },
     "narr-passage-intro": {
       "url": "/audio/placement/narr-passage-intro.mp3",
-      "script": "Now a story. Read it out loud the best you can. If you get stuck, keep going. I will tell you when to stop.",
+      "script": "Now a story. Read it out loud the best you can, all the way to the end. If you get stuck, keep going.",
       "verified": true,
-      "transcript": "Now a story. Read it out loud the best you can. If you get stuck, keep going. I will tell you when to stop.",
+      "transcript": "Now a story. Read it out loud the best you can all the way to the end. If you get stuck, keep going.",
       "attempts": 1,
       "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-passage-intro.mp3"
     },
@@ -905,6 +905,22 @@
       "transcript": "Wow! Look how far you climbed!",
       "attempts": 1,
       "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-climb-generic.mp3"
+    },
+    "narr-passage-done": {
+      "url": "/audio/placement/narr-passage-done.mp3",
+      "script": "You read the whole thing. Nice work.",
+      "verified": true,
+      "transcript": "You read the whole thing! Nice work!",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-passage-done.mp3"
+    },
+    "narr-comp-intro-read": {
+      "url": "/audio/placement/narr-comp-intro-read.mp3",
+      "script": "Now three questions about the story. Read each one and tap your answer. Tap the little speaker if you want me to read one to you.",
+      "verified": true,
+      "transcript": "Now, three questions about the story. Read each one and tap your answer. Tap the little speaker if you want me to read one to you.",
+      "attempts": 1,
+      "bucketUrl": "https://rwlvjtowmfrrqeqvwolo.supabase.co/storage/v1/object/public/audio/placement/narr-comp-intro-read.mp3"
     }
   }
 }

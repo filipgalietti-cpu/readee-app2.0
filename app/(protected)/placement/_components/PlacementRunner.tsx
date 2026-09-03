@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 import { PLACEMENT_BANK } from "@/app/data/placement-bank";
 import { createLadder, recordWord, activeList, decodingLevel, needsFoundations, BAND_LABEL, type LadderState, type Band, type PlacedBand } from "@/lib/placement/ladder";
 import { gradeRead, gradeWord } from "@/lib/placement/read-grade";
-import { PASSAGE_READ_SECONDS, type BankQuestion } from "@/lib/placement/bank";
+import { PASSAGE_MAX_SECONDS, PASSAGE_READ_SECONDS, PASSAGE_SILENCE_STOP_MS, type BankQuestion } from "@/lib/placement/bank";
 import type { Moment, PlacementSubmission } from "@/lib/placement/types";
 import type { PassageEvidence, CountEvidence } from "@/lib/placement/decide";
 import { usePlacementMic, type MicState } from "./mic";
@@ -37,7 +37,7 @@ type Screen =
   | { kind: "word"; word: string; listening: boolean; nonsense?: boolean; band?: number }
   | { kind: "tiles"; caption: string; tiles: string[]; picked: string | null }
   | { kind: "passage"; title: string; text: string; reading: boolean }
-  | { kind: "question"; prompt: string; options: { id: string; label: string }[]; picked: string | null; readingIdx: number; correctId?: string }
+  | { kind: "question"; prompt: string; options: { id: string; label: string }[]; picked: string | null; readingIdx: number; correctId?: string; speakers?: boolean; qid?: string }
   | { kind: "blocked"; reason: MicState }
   | { kind: "closing"; error: string | null };
 
@@ -131,29 +131,42 @@ export default function PlacementRunner({
     return picked;
   }, [waitTap]);
 
-  const askQuestion = useCallback(async (q: BankQuestion): Promise<boolean> => {
+  /**
+   * One question. `readOptions` (K and 1st-grade passages) reads every choice aloud like i-Ready's K-3 audio
+   * support; from 2nd grade up the child reads the choices (each has its own speaker for a re-read on request).
+   */
+  const askQuestion = useCallback(async (q: BankQuestion, readOptions = true): Promise<boolean> => {
     const correctId = robot ? q.correctId : undefined; // robots may see the key; children never do
-    setScreen({ kind: "question", prompt: q.prompt, options: q.options, picked: null, readingIdx: -1, correctId });
+    const base = { kind: "question" as const, prompt: q.prompt, options: q.options, correctId, speakers: !readOptions, qid: q.id };
+    setScreen({ ...base, picked: null, readingIdx: -1 });
     setOrb("speaking");
-    await playUrlAsync(clipUrl(`q-${q.id}`));
+    // Arm the tap before the question plays: a child (or robot) who answers during the audio is not lost.
     let answered: string | null = null;
     const tapP = waitTap().then((id) => { answered = id; return id; });
-    // Read the options aloud, lighting each; a tap interrupts.
-    for (let i = 0; i < q.options.length && answered === null; i++) {
-      setScreen({ kind: "question", prompt: q.prompt, options: q.options, picked: null, readingIdx: i, correctId });
-      await Promise.race([playUrlAsync(clipUrl(`opt-${q.id}-${q.options[i].id}`), 4000), tapP]);
-      if (answered === null) await new Promise((r) => setTimeout(r, 250));
+    await Promise.race([playUrlAsync(clipUrl(`q-${q.id}`)), tapP]);
+    if (readOptions) {
+      // Read the options aloud, lighting each; a tap interrupts.
+      for (let i = 0; i < q.options.length && answered === null; i++) {
+        setScreen({ ...base, picked: null, readingIdx: i });
+        await Promise.race([playUrlAsync(clipUrl(`opt-${q.id}-${q.options[i].id}`), 4000), tapP]);
+        if (answered === null) await new Promise((r) => setTimeout(r, 250));
+      }
     }
     setOrb("idle");
-    setScreen({ kind: "question", prompt: q.prompt, options: q.options, picked: null, readingIdx: -1, correctId });
+    // Never re-enable the choices once answered (a flash of enabled buttons between two renders).
+    if (answered === null) setScreen({ ...base, picked: null, readingIdx: -1 });
     const picked = answered ?? (await tapP);
     stopClip();
-    setScreen({ kind: "question", prompt: q.prompt, options: q.options, picked, readingIdx: -1, correctId });
+    setScreen({ ...base, picked, readingIdx: -1 });
     await new Promise((r) => setTimeout(r, 400));
     return picked === q.correctId;
   }, [robot, waitTap]);
 
-  /** The cold read: reference = the whole passage, 60 seconds, no help. Returns evidence + the recording. */
+  /**
+   * The cold read: reference = the whole passage, no help. The one-minute mark is scored silently for rate
+   * (DIBELS window); the child reads on to the end (MAP Reading Fluency style), capped at PASSAGE_MAX_SECONDS
+   * or a long silence after the window. Accuracy comes from everything read. Returns evidence + the recording.
+   */
   const readPassage = useCallback(async (band: Band): Promise<{ ev: PassageEvidence; keptGoing: boolean; blob: Blob | null }> => {
     const p = PLACEMENT_BANK.bands[band].passage!;
     await playUrlAsync(clipUrl(`title-${band}`), 5000);
@@ -164,7 +177,7 @@ export default function PlacementRunner({
       const v = await waitTap(); // "<wordsCorrect>/<wordsTotal>"
       const [c, t] = v.split("/").map((n) => Number(n));
       setOrb("idle");
-      return { ev: { band, wordsCorrect: c || 0, wordsTotal: t || 0, durationSeconds: 60, prosody: null }, keptGoing: (t || 0) > 0, blob: null };
+      return { ev: { band, wordsCorrect: c || 0, wordsTotal: t || 0, durationSeconds: 60, minuteWordsCorrect: c || 0, minuteSeconds: 60, prosody: null }, keptGoing: (t || 0) > 0, blob: null };
     }
     const phrases: import("@/app/(protected)/luna/_components/azure-stream").PAWord[][] = [];
     const totalWords = p.text.split(/\s+/).filter(Boolean).length;
@@ -180,19 +193,39 @@ export default function PlacementRunner({
     const startedAt = Date.now();
     micRef.current.startRecording();
     setScreen({ kind: "passage", title: p.title, text: p.text, reading: true });
+    let minute: { wordsCorrect: number; seconds: number } | null = null;
     await new Promise<void>((res) => {
-      stopNow = res;
-      window.setTimeout(res, PASSAGE_READ_SECONDS * 1000);
+      let settled = false;
+      const timers: number[] = [];
+      const end = () => { if (settled) return; settled = true; timers.forEach((t) => window.clearTimeout(t)); window.clearInterval(quiet); res(); };
+      stopNow = end;
+      // The rate window closes silently at one minute; the child keeps reading.
+      timers.push(window.setTimeout(() => { const g = gradeRead(p.text, phrases); minute = { wordsCorrect: g.wordsCorrect, seconds: PASSAGE_READ_SECONDS }; }, PASSAGE_READ_SECONDS * 1000));
+      timers.push(window.setTimeout(end, PASSAGE_MAX_SECONDS * 1000));
+      // After the window, a long silence means the child has stopped.
+      const quiet = window.setInterval(() => {
+        if (Date.now() - startedAt > PASSAGE_READ_SECONDS * 1000 && Date.now() - lastPhraseAt > PASSAGE_SILENCE_STOP_MS) end();
+      }, 1000);
     });
-    const elapsed = Math.min(PASSAGE_READ_SECONDS, (Date.now() - startedAt) / 1000);
+    const elapsed = Math.min(PASSAGE_MAX_SECONDS, (Date.now() - startedAt) / 1000);
     if (listener) await listener.stop();
     const blob = micRef.current.stopRecording();
     setOrb("idle");
-    await playNarr("passage-stop", 3000);
     const g = gradeRead(p.text, phrases);
+    // Finished inside the window: the whole read is the rate window.
+    minute ??= { wordsCorrect: g.wordsCorrect, seconds: Math.max(1, elapsed) };
+    await playNarr(finishedEarly ? "passage-done" : "passage-stop", 3000);
     const keptGoing = finishedEarly || Date.now() - lastPhraseAt < 15000;
     return {
-      ev: { band, wordsCorrect: g.wordsCorrect, wordsTotal: Math.max(g.wordsAttempted, g.wordsCorrect), durationSeconds: Math.max(1, Math.round(elapsed)), prosody: null },
+      ev: {
+        band,
+        wordsCorrect: g.wordsCorrect,
+        wordsTotal: Math.max(g.wordsAttempted, g.wordsCorrect),
+        durationSeconds: Math.max(1, Math.round(elapsed)),
+        minuteWordsCorrect: minute.wordsCorrect,
+        minuteSeconds: Math.round(minute.seconds),
+        prosody: null,
+      },
       keptGoing,
       blob,
     };
@@ -349,10 +382,14 @@ export default function PlacementRunner({
 
         // 5. Comprehension on the passage the child read at their level.
         setStage("comprehension");
-        await say("comp-intro", "Now three questions about the story. I will read each one to you. Tap your answer.");
+        // Audio support follows the passage the child just read: K/1st passages get every choice read
+        // (i-Ready reads items for K-3); from a 2nd-grade passage up the child reads the choices.
+        const readChoices = readBand <= 1;
+        if (readChoices) await say("comp-intro", "Now three questions about the story. I will read each one to you. Tap your answer.");
+        else await say("comp-intro-read", "Now three questions about the story. Read each one and tap your answer. Tap the little speaker if you want me to read one to you.");
         const qs = PLACEMENT_BANK.bands[readBand].passage!.questions;
         let correct = 0;
-        for (const [i, q] of qs.entries()) { if (await askQuestion(q)) correct++; await ack(i); }
+        for (const [i, q] of qs.entries()) { if (await askQuestion(q, readChoices)) correct++; await ack(i); }
         comprehension = { correct, total: qs.length, band: readBand };
         moments.push({ kind: "comprehension", band: readBand, correct, total: qs.length });
       } else {
@@ -506,17 +543,29 @@ export default function PlacementRunner({
               <p className="text-center text-2xl font-semibold leading-snug md:text-3xl">{screen.prompt}</p>
               <div className="grid w-full gap-3 md:gap-4">
                 {screen.options.map((o, i) => (
-                  <button
-                    key={o.id}
-                    type="button"
-                    data-option-id={o.id}
-                    data-correct={screen.correctId === o.id ? "1" : undefined}
-                    disabled={screen.picked !== null}
-                    onClick={() => tap(o.id)}
-                    className={`rounded-2xl bg-white px-6 py-5 text-left text-xl font-semibold text-violet-900 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.98] ${screen.readingIdx === i ? "shadow-[0_0_0_3px_rgba(139,92,246,0.15)]" : ""} ${screen.picked === o.id ? "bg-violet-100 shadow-[0_0_0_3px_rgba(139,92,246,0.35)]" : ""}`}
-                  >
-                    {o.label}
-                  </button>
+                  <div key={o.id} className="relative">
+                    <button
+                      type="button"
+                      data-option-id={o.id}
+                      data-correct={screen.correctId === o.id ? "1" : undefined}
+                      disabled={screen.picked !== null}
+                      onClick={() => tap(o.id)}
+                      className={`w-full rounded-2xl bg-white px-6 py-5 text-left text-xl font-semibold text-violet-900 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.98] ${screen.speakers ? "pr-16" : ""} ${screen.readingIdx === i ? "shadow-[0_0_0_3px_rgba(139,92,246,0.15)]" : ""} ${screen.picked === o.id ? "bg-violet-100 shadow-[0_0_0_3px_rgba(139,92,246,0.35)]" : ""}`}
+                    >
+                      {o.label}
+                    </button>
+                    {screen.speakers && screen.qid && (
+                      <button
+                        type="button"
+                        aria-label="Read this choice to me"
+                        data-option-speaker={o.id}
+                        onClick={() => { void playUrlAsync(clipUrl(`opt-${screen.qid}-${o.id}`), 4000); }}
+                        className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-violet-50 text-violet-700 transition active:scale-95"
+                      >
+                        <FluentIcon name="speaker" size={20} />
+                      </button>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>

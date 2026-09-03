@@ -31,7 +31,11 @@ export const BAND_LABEL: Record<Band, string> = { 0: "K", 1: "1st", 2: "2nd", 3:
 export const WORDS_PER_LIST = 10;
 export const LIST_FAIL_AT_MISSES = 3;
 export const LIST_PASS_MAX_MISSES = 2;
-export const START_BANDS_BELOW_ENROLLED = 2;
+export const START_BANDS_BELOW_ENROLLED = 1;
+/** The ladder stops this many bands above the enrolled grade unless the child read that list perfectly, in which case it opens one more (i-Ready ranges to +3; Star adapts up). */
+export const MAX_BANDS_ABOVE_ENROLLED = 2;
+/** A list is passed the moment it cannot fail any more (8 right of 10 with at most 2 misses), so a strong reader is not asked the rest. */
+export const LIST_PASS_AT_CORRECT = WORDS_PER_LIST - LIST_PASS_MAX_MISSES;
 
 export type WordAttempt = { word: string; correct: boolean };
 
@@ -56,6 +60,11 @@ export type LadderState = {
 
 export function startBand(enrolled: PlacedBand): Band {
   return Math.max(0, enrolled - START_BANDS_BELOW_ENROLLED) as Band;
+}
+
+/** The highest list this child can be asked: two bands above enrolled, never past the 5th-grade ceiling list. */
+export function topBand(enrolled: PlacedBand): Band {
+  return Math.min(CEILING_BAND, enrolled + MAX_BANDS_ABOVE_ENROLLED) as Band;
 }
 
 const newList = (band: Band): ListRecord => ({ band, attempts: [], correct: 0, missed: 0, complete: false, passed: false });
@@ -92,6 +101,9 @@ export function recordWord(state: LadderState, word: string, correct: boolean): 
   if (list.missed >= LIST_FAIL_AT_MISSES) {
     list.complete = true;
     list.passed = false;
+  } else if (list.correct >= LIST_PASS_AT_CORRECT) {
+    list.complete = true;
+    list.passed = true;
   } else if (list.attempts.length >= WORDS_PER_LIST) {
     list.complete = true;
     list.passed = list.missed <= LIST_PASS_MAX_MISSES;
@@ -113,6 +125,7 @@ function advance(state: LadderState, list: ListRecord): LadderState {
   if (list.passed) {
     if (state.phase === "descending") return finish(state); // floor found
     if (list.band >= CEILING_BAND) return finish(state); // top of the ladder
+    if (list.band >= topBand(state.enrolled) && list.missed > 0) return finish(state); // far enough above grade; only a perfect list earns another
     return open(state, (list.band + 1) as Band, "climbing");
   }
   if (state.phase === "climbing") return finish(state); // ceiling found
