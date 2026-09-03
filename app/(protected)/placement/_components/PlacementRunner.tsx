@@ -29,7 +29,6 @@ import { FluentIcon } from "@/app/_components/FluentIcon";
 
 const WORD_TIMEOUT_MS = 6000; // hesitation rule: no read after this = not read (DIBELS uses 3 s; K needs more)
 const WARMUP_WORD = "sun"; // not in any list; never scored
-const ACKS = ["ack-1", "ack-2", "ack-3", "ack-4"] as const;
 
 type Screen =
   | { kind: "luna"; caption: string }
@@ -81,10 +80,11 @@ export default function PlacementRunner({
     await playNarr(key);
     setOrb("idle");
   }, []);
-  // A soft tick says "heard you" after each word; Luna speaks only every fourth word so the acks never feel like a loop.
-  const ack = useCallback(async (i: number) => {
-    if (i % 4 === 3) await playNarr(ACKS[(i >> 2) % ACKS.length], 2500);
-    else { softTick(); await new Promise((r) => setTimeout(r, robot ? 0 : 220)); }
+  // One consistent "heard you" after every item: the soft tick, no voice. Luna speaks only between lists
+  // (a mix of ticks and "very good" read as random to the first parent who tried it).
+  const ack = useCallback(async (_i: number) => {
+    softTick();
+    await new Promise((r) => setTimeout(r, robot ? 0 : 220));
   }, [robot]);
 
   /** One spoken word: listen with the word as the reference; resolve on a verdict, a tap, or the hesitation timeout. */
