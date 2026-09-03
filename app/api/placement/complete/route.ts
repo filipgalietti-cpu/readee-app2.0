@@ -7,6 +7,7 @@ import { decidePlacement } from "@/lib/placement/decide";
 import { buildPlan } from "@/lib/placement/plan";
 import { narrate } from "@/lib/placement/narration";
 import { withSpokenName } from "@/lib/audio/name-pronunciation";
+import { sendPlacementReportEmail } from "@/lib/email/placement-report";
 import { grades } from "@/lib/assessment/questions";
 import type { LadderState } from "@/lib/placement/ladder";
 import type { Moment, PlacementSubmission, NarrationLine } from "@/lib/placement/types";
@@ -152,6 +153,8 @@ export async function POST(req: Request) {
   // (next/server `after` keeps the serverless function alive for it); the
   // reveal polls for the paths. Each line says the child's name -> private bucket.
   after(async () => {
+    // The parent's report email first (needs no audio): the same numbers and plan as the reveal.
+    try { await sendPlacementReportEmail(placementId); } catch { /* the reveal still works without the email */ }
     const paths: Record<string, string> = {};
     for (const line of narration) {
       try {
