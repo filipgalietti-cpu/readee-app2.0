@@ -58,6 +58,7 @@ export const ANNOUNCEMENTS: Announcement[] = [
       ],
       ctaLabel: "Open Readee",
       ctaHref: "https://learn.readee.app/dashboard",
+      banner: "banner-football",
     },
   },
   {
