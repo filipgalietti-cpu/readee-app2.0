@@ -583,32 +583,21 @@ function NavSectionBlock({
 /* ─── Expanded nav content (shared by mobile + desktop) ── */
 
 /**
- * The child's reader level, leading the sidebar header: a rounded-square tile
- * in the level's own gradient carrying the level's icon — the shape the
- * dashboard card already uses, so the two read as the same object.
- *
- * The avatar they bought in the Shop rides along as a small overlapping disc,
- * so the level does not cost them their character.
+ * The child's reader level: a rounded-square tile in the level's own gradient
+ * carrying the level's icon — the same shape the dashboard card uses, so the
+ * two read as one object. Sits at the trailing edge of the sidebar header,
+ * filling the space the name row already left empty. The avatar stays the
+ * avatar, in its own slot.
  */
-function LevelTile({ lifetimeCarrots, avatarSrc }: { lifetimeCarrots: number; avatarSrc: string | null }) {
+function LevelTile({ lifetimeCarrots }: { lifetimeCarrots: number }) {
   const { current } = computeLevel(lifetimeCarrots);
   return (
-    <div className="relative flex-shrink-0" title={`Level ${current.number} - ${current.name}`}>
-      <div
-        className="w-9 h-9 rounded-xl flex items-center justify-center"
-        style={{ background: `linear-gradient(135deg,${current.accent.hexDeep},${current.accent.hex})` }}
-      >
-        <FluentIcon name={current.icon} size={20} />
-      </div>
-      {avatarSrc && (
-        <img
-          src={avatarSrc}
-          alt=""
-          aria-hidden
-          draggable={false}
-          className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full object-cover ring-2 ring-white"
-        />
-      )}
+    <div
+      className="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center"
+      style={{ background: `linear-gradient(135deg,${current.accent.hexDeep},${current.accent.hex})` }}
+      title={`Level ${current.number} - ${current.name}`}
+    >
+      <FluentIcon name={current.icon} size={20} />
     </div>
   );
 }
@@ -660,14 +649,12 @@ function ExpandedNav({
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="px-3 pt-3 pb-2 flex items-center gap-2.5">
-        {typeof lifetimeCarrots === "number" ? (
-          <LevelTile lifetimeCarrots={lifetimeCarrots} avatarSrc={avatarSrc} />
-        ) : avatarSrc ? (
-          <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
+        {avatarSrc ? (
+          <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
             <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
           </div>
         ) : (
-          <div className="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200">
+          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200">
             {initials}
           </div>
         )}
@@ -681,6 +668,9 @@ function ExpandedNav({
             </div>
           )}
         </div>
+        {typeof lifetimeCarrots === "number" && (
+          <LevelTile lifetimeCarrots={lifetimeCarrots} />
+        )}
         {dismiss && (
           <button
             onClick={dismiss}
