@@ -76,10 +76,14 @@ export function shell(opts: {
   heroStats?: HeroStat[];
   /** A quieter second action under the button, e.g. "See the full report". */
   secondary?: { href: string; label: string };
+  /** A wide 2:1 scene illustration across the top of the card (a key under /images/email); replaces `hero` when set. */
+  banner?: string;
 }): string {
   const greeting = opts.parentName ? `Hi ${opts.parentName},` : "Hi there,";
   const heading = opts.heading ?? greeting;
-  const heroImg = opts.hero
+  const heroImg = opts.banner
+    ? `<tr><td align="center" style="padding:0 0 18px;"><img src="${BASE_URL}/images/email/${opts.banner}.png" alt="" width="496" style="display:block;width:100%;max-width:496px;height:auto;border-radius:16px;" /></td></tr>`
+    : opts.hero
     ? `<tr><td align="center"><img src="${BASE_URL}/images/email/${opts.hero}.png" alt="" width="150" style="display:block;width:150px;height:auto;margin:0 auto 10px;" /></td></tr>`
     : "";
   const eyebrowHtml = opts.eyebrow
