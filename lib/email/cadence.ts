@@ -91,7 +91,7 @@ export function renderTrialEnding(parentName: string | null, ctx: ChildJourneyCo
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", did, next, flag, "", money, "", `Settings: ${BASE_URL}/settings`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
   const bodyHtml = `${P(escapeHtml(did))}${next ? P(escapeHtml(next)) : ""}${flag ? P(escapeHtml(flag)) : ""}${SMALL(escapeHtml(money))}`;
   const heroStats = progress.lessons > 0 ? [{ value: String(progress.lessons), label: progress.lessons === 1 ? "lesson finished" : "lessons finished" }, { value: String(progress.days), label: progress.days === 1 ? "day of reading" : "days of reading" }, ...(ctx?.streak ? [{ value: String(ctx.streak), label: "day streak" }] : [])] : [];
-  const html = shell({ preheader: did, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Keep ${name} going`, unsubscribeUrl, heading, eyebrow: "Your trial", hero: "trial-ending", heroStats, secondary: { href: `${BASE_URL}/settings`, label: "Manage the subscription" } });
+  const html = shell({ preheader: did, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Keep ${name} going`, unsubscribeUrl, heading, eyebrow: "Your trial", banner: "banner-trial-ending", heroStats, secondary: { href: `${BASE_URL}/settings`, label: "Manage the subscription" } });
   return { subject: `${name}'s Readee+ trial ends in 3 days`, html, text };
 }
 
