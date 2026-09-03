@@ -7,19 +7,21 @@ import { chromium } from "@playwright/test";
 const OUT = "public/images/email";
 // key -> [outfit, state, seconds into the loop to capture (the action apex)]
 const SCENES = {
+  // Rule from the first review: overlay symbols (!, hearts, z's) look broken as stills; body gestures (wave, the
+  // "correct" bounce) and clean idle poses in a good outfit read well. Idle = the resting bunny, any offset.
   "welcome": ["bunny_classic", "wave", 1.4],
-  "placement-nudge": ["bunny_detective", "wow", 1.6],
+  "placement-nudge": ["bunny_detective", "idle", 0.8],
   "first-lesson": ["bunny_bookworm", "correct", 1.6],
-  "report": ["bunny_scientist", "wow", 1.6],
+  "report": ["bunny_scientist", "idle", 0.8],
   "trial-started": ["bunny_astronaut", "levelup", 2.2],
   "trial-ending": ["bunny_detective", "wave", 1.4],
-  "digest": ["bunny_superhero", "clap", 1.6],
-  "quiet": ["bunny_classic", "sleepy", 2.0],
-  "re-engage": ["bunny_pirate", "love", 1.6],
+  "digest": ["bunny_superhero", "idle", 0.8],
+  "quiet": ["bunny_classic", "idle", 0.8],
+  "re-engage": ["bunny_pirate", "wave", 1.4],
   "winback": ["bunny_wizard", "wave", 1.4],
   "whats-new": ["bunny_popstar", "superstar", 2.4],
   "milestone": ["bunny_royal", "superstar", 2.4],
-  "streak": ["bunny_classic", "streakfire", 1.6],
+  "streak": ["bunny_classic", "idle", 0.8],
 };
 const b = await chromium.launch();
 const ctx = await b.newContext({ viewport: { width: 400, height: 440 }, deviceScaleFactor: 2 });
