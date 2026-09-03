@@ -23,6 +23,7 @@ const GRADE_BADGES: Record<string, string> = {
 import { PaywallModal } from "@/app/_components/PaywallModal";
 import JourneySkeleton from "./_components/JourneySkeleton";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
+import { awardCarrots } from "@/lib/levels/award-carrots";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -205,13 +206,18 @@ function JourneyContent() {
     const updated = { ...c, opened_chests: nextOpened, carrots: nextCarrots };
     childRef.current = updated; // sync so rapid successive payouts accumulate
     setChild(updated);
+    // The chest flag and the carrots are written separately: the flag is the
+    // idempotency guard, so it goes first and a failed award never leaves a
+    // chest openable twice. Carrots go through awardCarrots so chest rewards
+    // count toward the reader level like every other earn.
     await savedOk(
       "journey:reward",
       supabaseBrowser()
         .from("children")
-        .update({ opened_chests: nextOpened, carrots: nextCarrots })
+        .update({ opened_chests: nextOpened })
         .eq("id", c.id),
     );
+    await awardCarrots(supabaseBrowser(), c.id, amount);
   }, []);
 
   if (loading || !child) {

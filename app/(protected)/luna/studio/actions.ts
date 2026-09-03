@@ -5,6 +5,7 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { submitForCommunityReview } from "@/lib/ai/community";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { STORY_CARROTS } from "@/lib/luna/story-rewards";
+import { awardCarrots } from "@/lib/levels/award-carrots";
 
 /**
  * Publish a kid's Story Studio creation to the community. The story is
@@ -73,8 +74,7 @@ export async function publishKidStory({
   let carrotsAwarded = 0;
   if (firstTime && childRow) {
     try {
-      const next = ((childRow as any).carrots ?? 0) + STORY_CARROTS.post;
-      await admin.from("children").update({ carrots: next }).eq("id", childId);
+      await awardCarrots(admin as any, childId, STORY_CARROTS.post);
       carrotsAwarded = STORY_CARROTS.post;
     } catch {
       /* keep the publish even if the award write hiccups */

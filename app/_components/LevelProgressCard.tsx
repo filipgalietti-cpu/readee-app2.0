@@ -9,6 +9,7 @@ import { savedOk } from "@/lib/db/checked-write";
 import LevelUpBurst from "@/app/_components/LevelUpBurst";
 import { Glyph } from "@/app/_components/Glyph";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { awardCarrots } from "@/lib/levels/award-carrots";
 
 /**
  * Big celebratory progress card for completion screens.
@@ -81,10 +82,11 @@ export default function LevelProgressCard({
     if (!leveledUp || !childId || totalBonus <= 0 || grantedRef.current) return;
     grantedRef.current = true;
     (async () => {
-      const supabase = supabaseBrowser();
-      const { data } = await supabase.from("children").select("carrots").eq("id", childId).single();
-      const current = Number(data?.carrots) || 0;
-      await savedOk("levelup:bonus", supabase.from("children").update({ carrots: current + totalBonus }).eq("id", childId));
+      // countTowardLevel: false is load-bearing. Bonus carrots that counted
+      // toward lifetime could push the child over the NEXT threshold, granting
+      // another bonus, and so on — a cascade. This is the only award in the
+      // app that credits the wallet without moving the ladder.
+      await awardCarrots(supabaseBrowser(), childId, totalBonus, { countTowardLevel: false });
     })();
   }, [leveledUp, childId, totalBonus]);
 

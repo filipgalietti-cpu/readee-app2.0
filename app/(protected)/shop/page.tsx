@@ -35,6 +35,7 @@ import { MysteryBox3D, type MysteryBox3DHandle } from "./_components/MysteryBox3
 import { shopSfx } from "@/lib/shop/shop-sfx";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
+import { awardCarrots } from "@/lib/levels/award-carrots";
 
 const BALOO = "'Baloo 2', cursive";
 
@@ -258,8 +259,10 @@ function ShopContent({
       const base = afterDeductRef.current;
       const c = childRef.current;
       if (r.type === "carrots" || r.type === "jackpot") {
-        const total = base + r.amount;
-        await savedOk("shop:mystery-bonus", supabase.from("children").update({ carrots: total }).eq("id", c.id));
+        // Mystery-box carrots count toward the level like any other earn
+        // (Filip, Sep 3: "count anytime you earn carrots to your level").
+        const res = await awardCarrots(supabase, c.id, r.amount);
+        const total = res?.carrots ?? base + r.amount;
         setChild({ ...childRef.current, carrots: total });
       } else if (r.type === "item") {
         await savedOk("shop:mystery-item", supabase.from("shop_purchases").insert({ child_id: c.id, item_id: r.item.id }));
@@ -389,7 +392,10 @@ function ShopContent({
         setBuying(null);
         return;
       }
-      const { error: updateError } = await supabase.from("children").update({ carrots: newCarrots }).eq("id", c.id);
+      // Spending is a negative award: the balance drops, lifetime_carrots does
+      // not, so buying an outfit can never demote a child down a level.
+      const spendRes = await awardCarrots(supabase, c.id, -(item.price));
+      const updateError = spendRes ? null : new Error("carrot deduction failed");
       if (updateError) {
         console.error("[shop] purchase recorded but carrot deduction failed:", updateError);
       } else {

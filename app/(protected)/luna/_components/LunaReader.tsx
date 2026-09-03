@@ -33,6 +33,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import { getActiveMultiplier } from "@/lib/carrots/active-multiplier";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
+import { awardCarrots as persistCarrots } from "@/lib/levels/award-carrots";
 
 type Passage = { grade: string; title: string; text: string; patternId?: string; patternLabel?: string; targetWords?: string[]; questions?: unknown };
 type Annotation = { word: string; status: string; heard?: string };
@@ -1638,7 +1639,7 @@ export default function LunaReader({
         .then(({ data }) => {
           if (!data) return;
           const award = Math.round(base * getActiveMultiplier(data as any));
-          return sb.from("children").update({ carrots: (data.carrots ?? 0) + award }).eq("id", childId);
+          return persistCarrots(sb, childId, award);
         })
         .then(undefined, () => { /* best-effort */ });
     }

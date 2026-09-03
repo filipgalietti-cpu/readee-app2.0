@@ -22,6 +22,7 @@ import StoryKaraokeReader, { type StoryKaraoke } from "./_components/StoryKaraok
 import storiesKaraoke from "@/app/data/stories-karaoke.json";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
+import { awardCarrots } from "@/lib/levels/award-carrots";
 
 /* ── Types ─────────────────────────────────────────── */
 
@@ -387,12 +388,7 @@ function StoriesContent() {
                 .eq("id", childId)
                 .single();
               if (current) {
-                await savedOk("stories:carrots", supabase
-                  .from("children")
-                  .update({
-                    carrots: (current.carrots || 0) + carrotsForStory,
-                  })
-                  .eq("id", childId));
+                await awardCarrots(supabase, childId, carrotsForStory);
               }
             }
           } catch (e) {
