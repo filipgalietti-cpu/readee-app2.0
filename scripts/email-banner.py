@@ -7,13 +7,18 @@ from collections import deque
 from PIL import Image, ImageFilter
 src, key = sys.argv[1], sys.argv[2]
 ratio = float(sys.argv[3]) if len(sys.argv) > 3 else 2.0
+# "top": seed the key only from the top edge and the upper halves of the sides, for scenes where
+# white characters are cut off by the bottom edge (an audience seen from behind, for example).
+seed_mode = sys.argv[4] if len(sys.argv) > 4 else "all"
 im = Image.open(src).convert("RGBA"); w, h = im.size; px = im.load()
 white = lambda p: p[0] > 235 and p[1] > 235 and p[2] > 235
 seen = [[False] * w for _ in range(h)]; q = deque()
+rows = (0,) if seed_mode == "top" else (0, h - 1)
+side_limit = h // 2 if seed_mode == "top" else h
 for x in range(w):
-    for y in (0, h - 1):
+    for y in rows:
         if white(px[x, y]) and not seen[y][x]: seen[y][x] = True; q.append((x, y))
-for y in range(h):
+for y in range(side_limit):
     for x in (0, w - 1):
         if white(px[x, y]) and not seen[y][x]: seen[y][x] = True; q.append((x, y))
 while q:
