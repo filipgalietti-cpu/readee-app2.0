@@ -4,6 +4,7 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { grantTopUp } from "@/lib/ai/credit-balance";
 import { trackFunnel } from "@/lib/analytics/funnel.server";
 import { notifyTeam } from "@/lib/email/notify-team";
+import { sendTrialEndingEmail, sendTrialStartedEmail, sendWinBackEmail } from "@/lib/email/cadence";
 import { Resend } from "resend";
 
 /** Branded cancellation confirmation to the customer. Best-effort. */
@@ -121,6 +122,11 @@ export async function POST(req: NextRequest) {
         );
       }
 
+      // Trial started: the parent's "first week" email (idempotent per subscription).
+      if (event.type === "customer.subscription.created" && subscription.status === "trialing") {
+        try { await sendTrialStartedEmail(customerId, subscription.id, subscription.trial_end ?? null); } catch (e) { console.error("[stripe] trial_started email", e); }
+      }
+
       // Team alert on a NEW subscription (skip the noisier .updated event).
       if (event.type === "customer.subscription.created" && grantsAccess) {
         const who = (updated as { email?: string } | null)?.email ?? "(unknown email)";
@@ -177,12 +183,24 @@ export async function POST(req: NextRequest) {
     }
 
     // Subscription cancelled or expired
+    // Three days before a trial converts: what the child did, the date, the amount, the exit.
+    case "customer.subscription.trial_will_end": {
+      const subscription = event.data.object as Stripe.Subscription;
+      const customerId = typeof subscription.customer === "string" ? subscription.customer : subscription.customer.id;
+      const price = subscription.items.data[0]?.price;
+      const amount = price?.unit_amount != null ? `$${(price.unit_amount / 100).toFixed(2)}` : "the plan";
+      const interval = price?.recurring?.interval === "year" ? "a year" : "a month";
+      try { await sendTrialEndingEmail(customerId, subscription.id, subscription.trial_end ?? null, subscription.trial_start ?? null, `${amount} ${interval}`); } catch (e) { console.error("[stripe] trial_ending email", e); }
+      break;
+    }
+
     case "customer.subscription.deleted": {
       const subscription = event.data.object as Stripe.Subscription;
       const customerId =
         typeof subscription.customer === "string"
           ? subscription.customer
           : subscription.customer.id;
+      try { await sendWinBackEmail(customerId, subscription.id); } catch (e) { console.error("[stripe] winback email", e); }
 
       const { data: canceled } = await admin
         .from("profiles")

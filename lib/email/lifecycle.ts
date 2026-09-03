@@ -20,6 +20,7 @@
  */
 
 import { Resend } from "resend";
+import { sendQuietNudge } from "@/lib/email/cadence";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { TRIAL_DAYS } from "@/lib/plan/access";
 
@@ -28,7 +29,7 @@ export const BASE_URL = "https://learn.readee.app";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-type Stage = "welcome" | "first_lesson_nudge" | "trial_ending" | "re_engage";
+type Stage = "welcome" | "first_lesson_nudge" | "trial_ending" | "re_engage" | "quiet_3d";
 
 type ParentRow = {
   id: string;
@@ -314,6 +315,11 @@ export async function alreadySentStage(parentId: string, stage: string): Promise
   const { data } = await admin.from("lifecycle_email_sends").select("id").eq("profile_id", parentId).eq("stage", stage).eq("status", "sent").limit(1);
   return !!data && data.length > 0;
 }
+export async function lastSentAtStage(parentId: string, stage: string): Promise<Date | null> {
+  const admin = supabaseAdmin();
+  const { data } = await admin.from("lifecycle_email_sends").select("sent_at").eq("profile_id", parentId).eq("stage", stage).eq("status", "sent").order("sent_at", { ascending: false }).limit(1).maybeSingle();
+  return data?.sent_at ? new Date(String(data.sent_at)) : null;
+}
 export async function recordSendStage(parentId: string, stage: string, status: "sent" | "failed" | "skipped", errorMessage?: string): Promise<void> {
   const admin = supabaseAdmin();
   await admin.from("lifecycle_email_sends").insert({ profile_id: parentId, stage, status, error_message: errorMessage ?? null });
@@ -369,6 +375,31 @@ async function firstKidName(parentId: string): Promise<string | null> {
     .limit(1)
     .maybeSingle();
   return (data as any)?.first_name ?? null;
+}
+
+async function anyChildHasPlacement(parentId: string): Promise<boolean> {
+  const admin = supabaseAdmin();
+  const { data: kids } = await admin.from("children").select("id").eq("parent_id", parentId);
+  const ids = ((kids ?? []) as any[]).map((k) => k.id);
+  if (ids.length === 0) return false;
+  const { data } = await admin.from("placements").select("id").in("child_id", ids).limit(1);
+  return !!data && data.length > 0;
+}
+
+function renderPlacementNudge(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
+  const who = kidName ?? "your reader";
+  const subject = `${who} hasn't taken the reading placement yet - it takes 10 minutes`;
+  const lead = `${who}'s account is set up, but the reading placement is still waiting. Luna listens to ${who} read for about ten minutes, then you get a report with the exact level, the three skills and a plan.`;
+  const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", lead, "", "Tonight:", "  1. Open Readee together.", "  2. Tap Start the reading placement.", `  3. Hand ${who} the device and let Luna run it.`, "", `${BASE_URL}/dashboard`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
+  const bodyHtml = `
+    <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
+    <ol style="margin:16px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:#3f3f46;">
+      <li>Open Readee together.</li>
+      <li>Tap Start the reading placement.</li>
+      <li>Hand ${escapeHtml(who)} the device and let Luna run it.</li>
+    </ol>`;
+  const html = shell({ preheader: "Ten minutes with Luna, then the report.", parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: "Start the reading placement", unsubscribeUrl, heading: `${who}'s placement is waiting`, eyebrow: "Reading placement", bunny: "bunny-wave-clipboard.png" });
+  return { subject, text, html };
 }
 
 async function anyChildHasFinishedLesson(parentId: string): Promise<boolean> {
@@ -519,7 +550,9 @@ export async function evaluateAndSendLifecycle(parent: ParentRow): Promise<Stage
       const finished = await anyChildHasFinishedLesson(parent.id);
       if (!finished) {
         const kidName = await firstKidName(parent.id);
-        const email = renderFirstLessonNudge(displayName, kidName, unsubscribeUrl);
+        // Placement-first flow (Sep 2026): a child who has not taken the placement is nudged to that, not to a lesson.
+        const placed = await anyChildHasPlacement(parent.id);
+        const email = placed ? renderFirstLessonNudge(displayName, kidName, unsubscribeUrl) : renderPlacementNudge(displayName, kidName, unsubscribeUrl);
         const res = await sendEmail({
           to: parent.email,
           subject: email.subject,
@@ -558,6 +591,21 @@ export async function evaluateAndSendLifecycle(parent: ParentRow): Promise<Stage
       }
       await recordSend(parent.id, "trial_ending", "sent");
       return { ok: true, sent: true, stage: "trial_ending" };
+    }
+  }
+
+  // Stage 2.7: quiet for 3 to 6 days (after the first week) — the next lesson by
+  // name and why it matters. At most once every 7 days; re-engage takes over at 7+.
+  if (ageDays >= 7) {
+    const last = await lastActivityAt(parent.id);
+    const daysSince = last ? Math.floor((now - last.getTime()) / DAY_MS) : Math.floor(ageDays);
+    if (daysSince >= 3 && daysSince < 7) {
+      const lastQuiet = await lastSentAtStage(parent.id, "quiet_3d");
+      if (!lastQuiet || (now - lastQuiet.getTime()) / DAY_MS >= 7) {
+        const res = await sendQuietNudge({ id: parent.id, email: parent.email, display_name: parent.display_name }, daysSince);
+        if (!res.ok) return { ok: false, error: res.error ?? "send failed", stage: "quiet_3d" };
+        return { ok: true, sent: true, stage: "quiet_3d" };
+      }
     }
   }
 
@@ -614,7 +662,7 @@ export async function sendLifecycleBatch(): Promise<{
     welcome: 0,
     first_lesson_nudge: 0,
     trial_ending: 0,
-    re_engage: 0,
+    re_engage: 0, quiet_3d: 0,
   };
   let sent = 0;
   let skipped = 0;
