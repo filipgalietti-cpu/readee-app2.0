@@ -1,9 +1,11 @@
 "use client";
 
 /**
- * "How do you say it?" — a grown-up says the child's name once; Gemini writes
- * it the way it sounds; Luna says it back. The written name is untouched; the
- * respelling is what every clip with the child's name is made from.
+ * "Say your name" — the child (or a grown-up) says the name once; Gemini
+ * writes it the way it sounds; Luna says it back. The written name is
+ * untouched; the respelling is what every clip with the child's name is made
+ * from. `mode="child"` (Kid Welcome) is one big button and Luna answering;
+ * `mode="grownup"` (Settings) adds the editable spelling.
  */
 import { useEffect, useRef, useState } from "react";
 import { FluentIcon } from "@/app/_components/FluentIcon";
@@ -42,7 +44,7 @@ function downsample(chunks: Float32Array[], inRate: number, outRate: number): Fl
   return out;
 }
 
-export default function SayNameControl({ writtenName, value, onChange }: { writtenName: string; value: string; onChange: (v: string) => void }) {
+export default function SayNameControl({ writtenName, value, onChange, mode = "grownup" }: { writtenName: string; value: string; onChange: (v: string) => void; mode?: "child" | "grownup" }) {
   const [status, setStatus] = useState<Status>("idle");
   const [hearing, setHearing] = useState(false);
   const stopRef = useRef<(() => void) | null>(null);
@@ -78,7 +80,7 @@ export default function SayNameControl({ writtenName, value, onChange }: { writt
       const b64 = btoa(bin);
       const r = await fetch("/api/child-name/respell", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ audioBase64: b64, mimeType: "audio/wav", name: writtenName }) });
       const j = (await r.json()) as { ok?: boolean; saidAs?: string };
-      if (j.ok && j.saidAs) { onChange(j.saidAs); setStatus("heard"); } else setStatus("unclear");
+      if (j.ok && j.saidAs) { onChange(j.saidAs); setStatus("heard"); if (mode === "child") void hear(j.saidAs); } else setStatus("unclear");
     } catch {
       setStatus("error");
     } finally {
@@ -87,11 +89,11 @@ export default function SayNameControl({ writtenName, value, onChange }: { writt
     }
   }
 
-  async function hear() {
+  async function hear(saidAs: string = value) {
     if (hearing) return;
     setHearing(true);
     try {
-      const r = await fetch("/api/child-name/preview", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: writtenName, saidAs: value }) });
+      const r = await fetch("/api/child-name/preview", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: writtenName, saidAs }) });
       const j = (await r.json()) as { ok?: boolean; audioUrl?: string };
       if (j.ok && j.audioUrl) {
         audioRef.current?.pause();
@@ -102,13 +104,38 @@ export default function SayNameControl({ writtenName, value, onChange }: { writt
     } finally { setHearing(false); }
   }
 
-  const note =
-    status === "recording" ? "Listening. Say the name once, then tap stop." :
-    status === "thinking" ? "Luna is listening..." :
-    status === "heard" ? "Here is how Luna heard it. Tap Hear it, and fix the spelling if it is off." :
-    status === "unclear" ? "Luna could not make it out. Try once more, a little closer to the microphone." :
-    status === "error" ? "The microphone is not available right now. You can type how it sounds instead." :
-    "Optional: say the name so Luna says it right, or type how it sounds.";
+  const child = mode === "child";
+  const note = child
+    ? status === "recording" ? "Say your name, nice and clear!" :
+      status === "thinking" ? "Luna is listening..." :
+      status === "heard" ? "Did Luna say it right? Tap again to try once more." :
+      status === "unclear" ? "Luna did not catch it. Try once more, a little closer." :
+      status === "error" ? "Luna cannot hear right now. That is okay, keep going!" :
+      "Tap and say your name so Luna knows how to say it."
+    : status === "recording" ? "Listening. Say the name once, then tap stop." :
+      status === "thinking" ? "Luna is listening..." :
+      status === "heard" ? "Here is how Luna heard it. Tap Hear it, and fix the spelling if it is off." :
+      status === "unclear" ? "Luna could not make it out. Try once more, a little closer to the microphone." :
+      status === "error" ? "The microphone is not available right now. You can type how it sounds instead." :
+      "Optional: say the name so Luna says it right, or type how it sounds.";
+
+  if (child) {
+    return (
+      <div className="flex w-full flex-col items-center gap-2 text-center" data-say-name>
+        <button
+          type="button"
+          onClick={() => { void record(); }}
+          disabled={status === "thinking" || hearing}
+          className={`inline-flex min-h-14 items-center gap-3 rounded-2xl px-7 text-lg font-bold shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] ring-1 transition active:scale-[0.97] ${status === "recording" ? "bg-rose-50 text-rose-700 ring-rose-200" : "bg-white text-violet-700 ring-violet-200"}`}
+          data-say-name-record
+        >
+          <FluentIcon name="microphone" size={22} />
+          {status === "recording" ? "Stop" : status === "thinking" ? "Listening..." : hearing ? "Luna is saying it..." : status === "heard" ? "Say it again" : "Say your name"}
+        </button>
+        <p className="text-sm font-semibold text-zinc-600">{note}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-full flex-col gap-2" data-say-name>
