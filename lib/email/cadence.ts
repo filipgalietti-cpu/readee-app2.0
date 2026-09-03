@@ -145,7 +145,7 @@ export function renderQuietNudge(parentName: string | null, ctx: ChildJourneyCon
   const streak = daysQuiet <= 1 && ctx?.streak ? `The ${ctx.streak}-day streak is still safe if today counts.` : "One lesson tonight restarts the streak.";
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", gap, why, streak, "", `Open Readee: ${BASE_URL}/dashboard`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
   const bodyHtml = `${P(escapeHtml(gap))}${P(escapeHtml(why))}${P(escapeHtml(streak))}`;
-  const html = shell({ preheader: why, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Open ${name}'s lesson`, unsubscribeUrl, heading, eyebrow: "Ten minutes today", hero: "quiet" });
+  const html = shell({ preheader: why, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Open ${name}'s lesson`, unsubscribeUrl, heading, eyebrow: "Ten minutes today", banner: "banner-quiet" });
   return { subject: ctx?.nextLesson ? `${name}'s next lesson: ${ctx.nextLesson.title}` : `${name}'s next lesson is waiting`, html, text };
 }
 
