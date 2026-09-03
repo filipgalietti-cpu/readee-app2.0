@@ -520,7 +520,7 @@ function ShopContent({
             </p>
           </div>
           <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 16, padding: "14px 28px 14px 16px", borderRadius: 999, border: "1px solid #fed7aa", background: "#fff", boxShadow: "0 1px 0 #fff inset,0 10px 24px -16px rgba(194,65,12,.55)" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 46, height: 46, borderRadius: 999, background: "#7c2d12", boxShadow: "0 4px 10px -4px rgba(124,45,18,.45)" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 46, height: 46, borderRadius: 999, background: "#ffedd5", boxShadow: "inset 0 0 0 1.5px #fdba74,0 4px 10px -6px rgba(124,45,18,.3)" }}>
               <FluentIcon name="carrot" size={24} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
@@ -571,9 +571,9 @@ function ShopContent({
             <div style={{ padding: "18px 24px 20px", display: "flex", flexDirection: "column", gap: 12, background: "rgba(255,255,255,.66)", borderTop: "2px solid #e9e5ff" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
                 <h2 style={{ margin: 0, fontFamily: BALOO, fontSize: 30, fontWeight: 800, letterSpacing: "-.025em", color: "#18181b", lineHeight: 1.1, whiteSpace: "nowrap" }}>Mystery Box</h2>
-                <div style={{ display: "flex", alignItems: "center", gap: 6, flex: "0 0 auto", padding: "9px 15px 9px 12px", borderRadius: 999, background: "#7c2d12", boxShadow: "0 8px 20px -10px rgba(124,45,18,.55)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, flex: "0 0 auto", padding: "9px 15px 9px 12px", borderRadius: 999, background: "#ffedd5", boxShadow: "inset 0 0 0 1.5px #fdba74,0 8px 20px -12px rgba(124,45,18,.35)" }}>
                   <FluentIcon name="carrot" size={20} />
-                  <span style={{ fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#fff", lineHeight: 1 }}>{PRICE}</span>
+                  <span style={{ fontFamily: BALOO, fontSize: 22, fontWeight: 800, color: "#7c2d12", lineHeight: 1 }}>{PRICE}</span>
                 </div>
               </div>
 
@@ -1067,8 +1067,9 @@ function ShopItemCard({
     fontFamily: "'Nunito', sans-serif",
     fontSize: 12.5,
     fontWeight: 800,
-    color: equipped ? "#fff" : owned ? "#52525b" : canAfford ? "#fff" : "#a1a1aa",
-    background: equipped ? "#c2410c" : owned ? "#f4f4f5" : canAfford ? "#7c2d12" : "#e4e4e7",
+    color: equipped ? "#7c2d12" : owned ? "#52525b" : canAfford ? "#7c2d12" : "#a1a1aa",
+    background: equipped ? "#fdba74" : owned ? "#f4f4f5" : canAfford ? "#ffedd5" : "#e4e4e7",
+    boxShadow: !owned && canAfford ? "inset 0 0 0 1.5px #fdba74" : "none",
   };
 
   return (
