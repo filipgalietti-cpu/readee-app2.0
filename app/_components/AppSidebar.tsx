@@ -12,7 +12,6 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
-import LevelBadge from "@/app/_components/LevelBadge";
 import { computeLevel, hasCustomName } from "@/lib/levels/levels";
 import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 
@@ -583,6 +582,37 @@ function NavSectionBlock({
 
 /* ─── Expanded nav content (shared by mobile + desktop) ── */
 
+/**
+ * The child's reader level, leading the sidebar header: a rounded-square tile
+ * in the level's own gradient carrying the level's icon — the shape the
+ * dashboard card already uses, so the two read as the same object.
+ *
+ * The avatar they bought in the Shop rides along as a small overlapping disc,
+ * so the level does not cost them their character.
+ */
+function LevelTile({ lifetimeCarrots, avatarSrc }: { lifetimeCarrots: number; avatarSrc: string | null }) {
+  const { current } = computeLevel(lifetimeCarrots);
+  return (
+    <div className="relative flex-shrink-0" title={`Level ${current.number} - ${current.name}`}>
+      <div
+        className="w-9 h-9 rounded-xl flex items-center justify-center"
+        style={{ background: `linear-gradient(135deg,${current.accent.hexDeep},${current.accent.hex})` }}
+      >
+        <FluentIcon name={current.icon} size={20} />
+      </div>
+      {avatarSrc && (
+        <img
+          src={avatarSrc}
+          alt=""
+          aria-hidden
+          draggable={false}
+          className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full object-cover ring-2 ring-white"
+        />
+      )}
+    </div>
+  );
+}
+
 /** "Lv 7 · Word Wizard" while levels have bespoke names; just "Level 19" once
  *  they are generated, because "Lv 19 · Level 19" prints the number twice. */
 function levelCaption(lifetimeCarrots: number): string {
@@ -630,23 +660,20 @@ function ExpandedNav({
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="px-3 pt-3 pb-2 flex items-center gap-2.5">
-        {avatarSrc ? (
-          <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
+        {typeof lifetimeCarrots === "number" ? (
+          <LevelTile lifetimeCarrots={lifetimeCarrots} avatarSrc={avatarSrc} />
+        ) : avatarSrc ? (
+          <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 ring-1 ring-zinc-200">
             <img src={avatarSrc} alt={sidebarName} className="w-full h-full object-cover" draggable={false} />
           </div>
         ) : (
-          <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200">
+          <div className="w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-violet-600 to-violet-500 text-xs font-bold text-white ring-1 ring-violet-200">
             {initials}
           </div>
         )}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1.5 min-w-0">
-            <div className="text-sm font-bold text-zinc-900 truncate leading-tight">
-              {sidebarName}
-            </div>
-            {typeof lifetimeCarrots === "number" && (
-              <LevelBadge lifetimeCarrots={lifetimeCarrots} size="sm" />
-            )}
+          <div className="text-sm font-bold text-zinc-900 truncate leading-tight">
+            {sidebarName}
           </div>
           {(subtitle || typeof lifetimeCarrots === "number") && (
             <div className="text-[11px] text-zinc-400 truncate leading-tight">
