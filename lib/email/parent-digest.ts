@@ -23,6 +23,7 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { buildParentSnapshot } from "@/lib/ai/build-parent-snapshot";
 import { standardShortName } from "@/lib/data/standard-short-name";
 import { childJourneyContext } from "@/lib/email/journey-context";
+import { shell } from "@/lib/email/lifecycle";
 
 const FROM = "Readee <hello@readee.app>";
 const BASE_URL = "https://learn.readee.app";
@@ -434,33 +435,38 @@ export function renderDigest(input: {
     })
     .join("");
 
-  const html = `<!doctype html>
-<html>
-  <body style="margin:0;padding:0;background:#f6f5f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#18181b;">
-    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="padding:32px 16px;background:#f6f5f2;">
-      <tr><td align="center">
-        <table width="560" cellpadding="0" cellspacing="0" role="presentation" style="max-width:560px;width:100%;">
-          <tr><td align="center" style="padding-bottom:20px;"><img src="${BASE_URL}/readee-logo.png" alt="Readee" width="140" style="display:block;width:140px;height:auto;" /></td></tr>
-          <tr><td align="center" style="padding-bottom:6px;"><img src="${BASE_URL}/images/email/banner-digest.png" alt="" width="496" style="display:block;width:100%;max-width:496px;height:auto;border-radius:16px;" /></td></tr>
-          <tr><td style="background:#ffffff;border:1px solid #ececf0;border-radius:20px;padding:34px 32px;box-shadow:0 10px 40px -18px rgba(49,46,129,.18);">
-            <p style="margin:0;text-align:center;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#4338ca;">Your Readee week</p>
-            <h1 style="margin:8px 0 0;text-align:center;font-size:22px;font-weight:800;color:#1e1b4b;line-height:1.2;">${escapeHtml(greeting)}</h1>
-            <p style="margin:12px 0 0;font-size:15px;line-height:1.55;color:#3f3f46;text-align:center;">Here's how the week went - what each child nailed, what they unlocked, and where to focus next.</p>
-            ${childBlocks}
-            <div style="margin-top:24px;text-align:center;">
-              <a href="${BASE_URL}/dashboard" style="display:inline-block;background:#7c3aed;color:#ffffff;padding:13px 26px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;">Keep the streak going</a>
-            </div>
-          </td></tr>
-          <tr><td align="center" style="padding-top:22px;"><p style="margin:0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.8;">
-            <a href="https://instagram.com/readee.app"><img src="${BASE_URL}/images/ui/social/instagram.png" alt="Instagram" width="26" height="26" style="display:inline-block;vertical-align:middle;border:0;outline:none;text-decoration:none;" /></a>&nbsp;&nbsp;<a href="https://x.com/ReadeeLearning"><img src="${BASE_URL}/images/ui/social/x.png" alt="X" width="26" height="26" style="display:inline-block;vertical-align:middle;border:0;outline:none;text-decoration:none;" /></a>&nbsp;&nbsp;<a href="https://www.facebook.com/profile.php?id=61593589711136"><img src="${BASE_URL}/images/ui/social/facebook.png" alt="Facebook" width="26" height="26" style="display:inline-block;vertical-align:middle;border:0;outline:none;text-decoration:none;" /></a>&nbsp;&nbsp;<a href="https://tiktok.com/@readee.app"><img src="${BASE_URL}/images/ui/social/tiktok.png" alt="TikTok" width="26" height="26" style="display:inline-block;vertical-align:middle;border:0;outline:none;text-decoration:none;" /></a><br/>
-            You're getting this because you have a child on Readee.<br/>
-            <a href="${input.unsubscribeUrl}" style="color:#a1a1aa;">Unsubscribe from weekly updates</a>
-          </p></td></tr>
-        </table>
-      </td></tr>
-    </table>
-  </body>
-</html>`;
+  // Same template as every other Readee email (lifecycle.ts shell): the scene inside the card,
+  // the week's numbers as the hero row, then each child's block.
+  const heading = activeKids.length === 1
+    ? `${leadKid.firstName}'s week on Readee`
+    : activeKids.length > 1
+      ? "Your family's week on Readee"
+      : `A quiet week on Readee`;
+  const heroStats = leadKid
+    ? [
+        { value: String(leadKid.questionsAttempted), label: leadKid.questionsAttempted === 1 ? "question" : "questions" },
+        { value: `${leadKid.comprehensionPct ?? 0}%`, label: "correct" },
+        { value: String(leadKid.daysThisWeek), label: leadKid.daysThisWeek === 1 ? "day of reading" : "days of reading" },
+      ]
+    : [];
+  const intro = activeKids.length
+    ? "What each child nailed, what they unlocked, and where to focus next."
+    : "No Readee time this week. A single 10-minute lesson tonight brings the streak back.";
+  const bodyHtml = `
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;text-align:center;">${escapeHtml(intro)}</p>
+    ${childBlocks}`;
+  const html = shell({
+    preheader: intro,
+    parentName: input.parentName,
+    heading,
+    eyebrow: "Your Readee week",
+    banner: "banner-digest",
+    heroStats,
+    bodyHtml,
+    ctaHref: `${BASE_URL}/dashboard`,
+    ctaLabel: "Keep the streak going",
+    unsubscribeUrl: input.unsubscribeUrl,
+  });
 
   return { subject, text, html };
 }
