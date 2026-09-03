@@ -286,7 +286,7 @@ function hasActivity(children: ChildSummary[]): boolean {
   return children.some((c) => c.questionsAttempted > 0 || c.passagesFinished > 0);
 }
 
-function renderDigest(input: {
+export function renderDigest(input: {
   parentName: string | null;
   children: ChildSummary[];
   unsubscribeUrl: string;

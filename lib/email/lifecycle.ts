@@ -137,7 +137,7 @@ export function shell(opts: {
 </html>`;
 }
 
-function renderWelcome(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
+export function renderWelcome(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
   const subject = kidName
     ? `Welcome to Readee - let's start ${kidName}'s first lesson`
     : "Welcome to Readee - your first lesson is ready";
@@ -198,7 +198,7 @@ export async function sendWelcomeEmailNow(
   await recordSend(parent.id, "welcome", res.ok ? "sent" : "failed", res.ok ? undefined : res.error);
 }
 
-function renderFirstLessonNudge(
+export function renderFirstLessonNudge(
   parentName: string | null,
   kidName: string | null,
   unsubscribeUrl: string,
@@ -245,7 +245,7 @@ function renderFirstLessonNudge(
   return { subject, text, html };
 }
 
-function renderReEngage(
+export function renderReEngage(
   parentName: string | null,
   kidName: string | null,
   daysSince: number,
@@ -406,7 +406,7 @@ async function anyChildHasPlacement(parentId: string): Promise<boolean> {
   return !!data && data.length > 0;
 }
 
-function renderPlacementNudge(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
+export function renderPlacementNudge(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
   const who = kidName ?? "your reader";
   const subject = `${who} hasn't taken the reading placement yet - it takes 10 minutes`;
   const lead = `${who}'s account is set up, but the reading placement is still waiting. Luna listens to ${who} read for about ten minutes, then you get a report with the exact level, the three skills and a plan.`;

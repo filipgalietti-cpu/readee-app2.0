@@ -30,7 +30,7 @@ function unsub(parentId: string): string {
   return `${BASE_URL}/account/unsubscribe/weekly?t=${t}&u=${parentId}`;
 }
 
-function renderWhatsNew(c: WhatsNewContent, unsubscribeUrl: string): { subject: string; text: string; html: string } {
+export function renderWhatsNew(c: WhatsNewContent, unsubscribeUrl: string): { subject: string; text: string; html: string } {
   const items = c.items.filter(Boolean);
   const ctaHref = c.ctaHref ?? `${BASE_URL}/dashboard`;
   const ctaLabel = c.ctaLabel ?? "See what's new";
