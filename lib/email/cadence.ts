@@ -119,7 +119,7 @@ export function renderWinBack(parentName: string | null, ctx: ChildJourneyContex
   const free = `The free first unit stays open, and everything on the journey comes back the moment you restart. No new placement needed.`;
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", where, next, free, "", `Restart Readee+: ${BASE_URL}/upgrade?reason=winback`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
   const bodyHtml = `${P(escapeHtml(where))}${next ? P(escapeHtml(next)) : ""}${P(escapeHtml(free))}`;
-  const html = shell({ preheader: where, parentName, bodyHtml, ctaHref: `${BASE_URL}/upgrade?reason=winback`, ctaLabel: `Restart ${name}'s journey`, unsubscribeUrl, heading, eyebrow: "Whenever you are ready", hero: "winback" });
+  const html = shell({ preheader: where, parentName, bodyHtml, ctaHref: `${BASE_URL}/upgrade?reason=winback`, ctaLabel: `Restart ${name}'s journey`, unsubscribeUrl, heading, eyebrow: "Whenever you are ready", banner: "banner-winback" });
   return { subject: `We saved ${name}'s Reading Journey`, html, text };
 }
 
