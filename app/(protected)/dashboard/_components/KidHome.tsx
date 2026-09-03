@@ -13,7 +13,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { Bunny, BunnyReaction, reactionHoldMs, type ReactionState } from "@/app/_components/Bunny/Bunny";
 import { reactionStateFor } from "@/lib/data/shop-items";
-import { FluentIcon } from "@/app/_components/FluentIcon";
+import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 const BALOO = "var(--font-baloo), 'Baloo 2', sans-serif";
@@ -68,7 +68,18 @@ export interface KidHomeProps {
   goalTotal: number;
   goalLabel: string;
   carrots: number;
-  level: { name: string; num: number; xpPct: number; xpLabel: string };
+  level: {
+    name: string;
+    num: number;
+    xpPct: number;
+    xpLabel: string;
+    icon: FluentIconName;
+    hex: string;
+    hexDeep: string;
+    /** False once the name is just "Level 19" — printing "Lv 19" beside it
+     *  says the number twice. */
+    showNumber: boolean;
+  };
   // today's plan
   planBadge: string;
   planSteps: Array<{ num: string; label: string; sub: string; status: PlanStatus; href?: string; locked?: boolean }>;
@@ -175,16 +186,18 @@ export default function KidHome(p: KidHomeProps) {
 
         {/* Level + XP */}
         <div style={{ ...statBase, minWidth: 150 }}>
-          <div style={{ ...iconBox, background: "linear-gradient(135deg,#4338ca,#7c3aed)" }}>
-            <FluentIcon name="star" size={24} />
+          <div style={{ ...iconBox, background: `linear-gradient(135deg,${p.level.hexDeep},${p.level.hex})` }}>
+            <FluentIcon name={p.level.icon} size={24} />
           </div>
           <div style={{ minWidth: 0, flex: 1 }}>
             <div style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
               <div style={{ fontFamily: BALOO, fontWeight: 800, fontSize: 16, lineHeight: 1.1, color: "#18181b", whiteSpace: "nowrap" }}>{p.level.name}</div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#a1a1aa", whiteSpace: "nowrap" }}>Lv {p.level.num}</div>
+              {p.level.showNumber && (
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#a1a1aa", whiteSpace: "nowrap" }}>Lv {p.level.num}</div>
+              )}
             </div>
             <div style={{ height: 8, borderRadius: 99, background: "#e0e7ff", marginTop: 5, overflow: "hidden" }}>
-              <div style={{ height: "100%", borderRadius: 99, background: "linear-gradient(90deg,#6366f1,#8b5cf6)", width: `${p.level.xpPct}%`, transition: "width .8s cubic-bezier(0.34,1.56,0.64,1)" }} />
+              <div style={{ height: "100%", borderRadius: 99, background: `linear-gradient(90deg,${p.level.hexDeep},${p.level.hex})`, width: `${p.level.xpPct}%`, transition: "width .8s cubic-bezier(0.34,1.56,0.64,1)" }} />
             </div>
             <div style={{ fontSize: 11, fontWeight: 700, color: "#71717a", marginTop: 3 }}>{p.level.xpLabel}</div>
           </div>
