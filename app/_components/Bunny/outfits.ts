@@ -54,6 +54,8 @@ export type Outfit = {
   /** How the kid obtains this outfit. Source of truth for shop UI gating
    *  and milestone/seasonal grant logic. */
   unlock: UnlockMethod;
+  /** ISO instant before which the outfit is hidden from the shop, closet and mystery box (pre-timed seasons). */
+  availableFrom?: string;
   /** Optional minimum reader level required to unlock the price. */
   levelRequired?: number;
   /** Behind-the-bunny overlay (capes, hat tails). */
@@ -69,6 +71,120 @@ export type Outfit = {
  * other shop slots (avatars, backgrounds, themes) when stored in
  * `children.equipped_items.outfit`.
  */
+
+// ---------------------------------------------------------------------------
+// SEASON 8 · FOOTBALL · 32 city colorways (ported from Claude Design
+// bunny-outfits-s8.jsx, Sep 2026). Deliberately NOT team trade dress: palettes
+// are shifted off any official club colors, numbers are arbitrary, and there
+// are no logos, wordmarks, mascots or team names anywhere. One jersey/helmet
+// rig so all 32 stay on-model. Hidden everywhere until SEASON8_RELEASE.
+// ---------------------------------------------------------------------------
+/** Kickoff: Thursday Sep 10 2026, midnight Eastern. */
+export const SEASON8_RELEASE = "2026-09-10T04:00:00.000Z";
+export const SEASON8_PRICE = 150;
+
+const S8_SHIRT = "M 80 148 C 100 156 140 156 160 148 L 162 168 C 162 196 152 214 138 216 L 102 216 C 88 214 78 196 78 168 Z";
+type S8Style = "sleeves" | "stripes" | "yoke" | "sash" | "blocks" | "hem";
+
+function s8Jersey(p: string, s: string, a: string, style: S8Style, num: number, key: string): string {
+  const base = `<path d="${S8_SHIRT}" fill="${p}" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>`;
+  const clip = (inner: string) =>
+    `<defs><clipPath id="s8c-${key}"><path d="${S8_SHIRT}"/></clipPath></defs><g clip-path="url(#s8c-${key})">${inner}</g>`;
+  const trims: Record<S8Style, () => string> = {
+    sleeves: () => clip(`
+      <path d="M 74 150 Q 84 156 92 158 L 90 196 Q 80 192 74 186 Z" fill="${s}"/>
+      <path d="M 166 150 Q 156 156 148 158 L 150 196 Q 160 192 166 186 Z" fill="${s}"/>`),
+    stripes: () => clip(`
+      <rect x="70" y="164" width="24" height="7" fill="${s}"/><rect x="70" y="176" width="24" height="7" fill="${a}"/>
+      <rect x="146" y="164" width="24" height="7" fill="${s}"/><rect x="146" y="176" width="24" height="7" fill="${a}"/>`),
+    yoke: () => clip(`
+      <path d="M 70 142 Q 120 160 170 142 L 170 160 Q 120 178 70 160 Z" fill="${s}"/>
+      <path d="M 70 160 Q 120 178 170 160 L 170 166 Q 120 184 70 166 Z" fill="${a}"/>`),
+    sash: () => clip(`<path d="M 60 210 L 108 138 L 130 138 L 82 218 Z" fill="${s}"/>
+      <path d="M 82 218 L 130 138 L 138 138 L 92 220 Z" fill="${a}"/>`),
+    blocks: () => clip(`
+      <path d="M 70 140 L 104 140 L 100 168 L 70 168 Z" fill="${s}"/>
+      <path d="M 170 140 L 136 140 L 140 168 L 170 168 Z" fill="${s}"/>`),
+    hem: () => clip(`<rect x="70" y="196" width="100" height="10" fill="${s}"/><rect x="70" y="206" width="100" height="6" fill="${a}"/>`),
+  };
+  return `${base}${trims[style]()}<path d="${S8_SHIRT}" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+    <text x="120" y="196" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="900" font-size="34" fill="${a}" stroke="#1a1a1a" stroke-width="2.2" paint-order="stroke fill">${num}</text>`;
+}
+
+/** Shell + band sit above the eyeline (band bottom ~y106, eyes start y112). */
+function s8Helmet(p: string, s: string): string {
+  return `
+  <ellipse cx="101" cy="70" rx="12" ry="5" fill="#1a1a1a" opacity=".35"/>
+  <ellipse cx="141" cy="70" rx="12" ry="5" fill="#1a1a1a" opacity=".35"/>
+  <path d="M 70 100 C 68 78 90 62 120 62 C 150 62 172 78 170 100 Q 120 90 70 100 Z" fill="${p}" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M 114 63 Q 120 62 126 63 L 128 96 Q 120 94 112 96 Z" fill="${s}"/>
+  <path d="M 70 97 Q 120 87 170 97 L 170 106 Q 120 96 70 106 Z" fill="${s}" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"/>
+  <g fill="none" stroke="#d8dce4" stroke-width="4" stroke-linecap="round">
+    <path d="M 78 104 L 80 128"/>
+    <path d="M 162 104 L 160 128"/>
+    <path d="M 80 128 Q 86 156 120 158 Q 154 156 160 128"/>
+    <path d="M 92 143 L 148 143"/>
+    <path d="M 104 133 L 104 152 M 136 133 L 136 152"/>
+  </g>`;
+}
+
+/** city · primary · secondary · number color · jersey style · number. Palettes intentionally offset from any official club colors. */
+export const S8_TEAMS: [string, string, string, string, S8Style, number][] = [
+  ["Buffalo", "#2f5bbf", "#d8455e", "#ffffff", "sleeves", 22],
+  ["Miami", "#1aa8a0", "#ff8a4c", "#ffffff", "stripes", 41],
+  ["New England", "#26386e", "#d8455e", "#c6ccd4", "yoke", 63],
+  ["New York Green", "#2f7a54", "#ffffff", "#ffffff", "sleeves", 30],
+  ["Baltimore", "#4a34a0", "#2a2a34", "#c9a83c", "blocks", 55],
+  ["Cincinnati", "#ff6a34", "#2a2a34", "#ffffff", "stripes", 74],
+  ["Cleveland", "#5a3b1e", "#ff7a3c", "#ffffff", "sleeves", 27],
+  ["Pittsburgh", "#2a2a34", "#ffc94a", "#ffffff", "hem", 45],
+  ["Houston", "#1e3a4c", "#c04a5c", "#ffffff", "sash", 68],
+  ["Indianapolis", "#2f5a90", "#ffffff", "#ffffff", "sleeves", 34],
+  ["Jacksonville", "#2a8090", "#2a2a34", "#c9a83c", "blocks", 52],
+  ["Tennessee", "#2a3d60", "#6fa8e0", "#ffffff", "yoke", 26],
+  ["Denver", "#ff7a3c", "#2f4670", "#ffffff", "sleeves", 81],
+  ["Kansas City", "#e0505c", "#ffc94a", "#ffffff", "stripes", 38],
+  ["Las Vegas", "#2a2a34", "#b8bec2", "#ffffff", "hem", 60],
+  ["LA Powder", "#3fa0d8", "#ffd45c", "#ffffff", "sash", 47],
+  ["Dallas", "#2a3a5c", "#98a2a8", "#ffffff", "sleeves", 23],
+  ["New York Blue", "#2f4a8c", "#c04a5c", "#ffffff", "yoke", 77],
+  ["Philadelphia", "#2a6660", "#b8bec2", "#ffffff", "stripes", 36],
+  ["Washington", "#7a3038", "#ffc94a", "#ffc94a", "sleeves", 50],
+  ["Chicago", "#2a3448", "#d8642c", "#ffffff", "stripes", 66],
+  ["Detroit", "#2f8cc4", "#c6ccd4", "#ffffff", "sleeves", 29],
+  ["Green Bay", "#365a44", "#ffc94a", "#ffc94a", "blocks", 43],
+  ["Minnesota", "#6a44b0", "#ffd45c", "#ffffff", "yoke", 24],
+  ["Atlanta", "#c04a5c", "#2a2a34", "#ffffff", "sash", 72],
+  ["Carolina", "#3f9cd8", "#2a2a34", "#ffffff", "stripes", 58],
+  ["New Orleans", "#2a2a34", "#e0cfa4", "#e0cfa4", "hem", 31],
+  ["Tampa Bay", "#d8505c", "#4c4740", "#ffffff", "blocks", 86],
+  ["Arizona", "#a83c58", "#ffffff", "#ffffff", "sleeves", 40],
+  ["LA Royal", "#2f4ea8", "#ffb03c", "#ffb03c", "yoke", 35],
+  ["San Francisco", "#b03c3c", "#c4a870", "#c4a870", "stripes", 78],
+  ["Seattle", "#2f4670", "#7ecc4c", "#ffffff", "sash", 54],
+];
+
+export const s8Slug = (city: string): string => city.toLowerCase().replace(/\s+/g, "_");
+export const s8Id = (city: string): string => `bunny_fb_${s8Slug(city)}`;
+
+const SEASON8_OUTFITS: Outfit[] = S8_TEAMS.map(([city, p, s, a, style, num]) => ({
+  id: s8Id(city),
+  name: city,
+  tint: "#EEF2FF",
+  border: "#C7D2FE",
+  rarity: "common",
+  price: SEASON8_PRICE,
+  unlock: { type: "shop", price: SEASON8_PRICE },
+  availableFrom: SEASON8_RELEASE,
+  body: s8Jersey(p, s, a, style, num, s8Slug(city)),
+  head: s8Helmet(p, s),
+}));
+
+/** Is the outfit released? (No date = always.) Shop, closet and mystery box hide unreleased ones; equipped ones still render. */
+export function isOutfitAvailable(outfit: Outfit, now: Date = new Date()): boolean {
+  return !outfit.availableFrom || new Date(outfit.availableFrom).getTime() <= now.getTime();
+}
+
 export const OUTFITS: Outfit[] = [
   {
     id: "bunny_classic",
@@ -3022,6 +3138,7 @@ export const OUTFITS: Outfit[] = [
       <path d="M 120 30 L 146 92 Q 120 100 94 92 Z" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round"/>
     `,
   },
+  ...SEASON8_OUTFITS,
 ];
 
 export const DEFAULT_OUTFIT_ID = "bunny_classic";

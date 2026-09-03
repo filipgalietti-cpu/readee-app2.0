@@ -21,6 +21,8 @@
 
 import { Resend } from "resend";
 import { sendQuietNudge } from "@/lib/email/cadence";
+import { ANNOUNCEMENTS } from "@/lib/data/announcements";
+import { renderWhatsNew } from "@/lib/email/whats-new";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { TRIAL_DAYS } from "@/lib/plan/access";
 
@@ -691,6 +693,27 @@ export async function sendLifecycleBatch(): Promise<{
   let sent = 0;
   let skipped = 0;
   let errors = 0;
+
+  // Pre-timed announcements (a season launch, say): each has an emailDate; on or after it every
+  // opted-in parent gets the email once (stage whats_new:<id>), then the stages below run as usual.
+  const today = new Date().toISOString().slice(0, 10);
+  for (const a of ANNOUNCEMENTS) {
+    if (!a.email || a.email.emailDate > today) continue;
+    const stage = `whats_new:${a.id}`;
+    for (const p of (parents ?? []) as ParentRow[]) {
+      if (!p.email) continue;
+      try {
+        if (await alreadySentStage(p.id, stage)) continue;
+        const unsubscribeUrl = `${BASE_URL}/account/unsubscribe/weekly?t=${unsubscribeToken(p.id)}`;
+        const e = renderWhatsNew({ eyebrow: "What's new", heading: a.email.heading, intro: a.email.intro, items: a.email.items, ctaLabel: a.email.ctaLabel, ctaHref: a.email.ctaHref, bunny: a.email.banner }, unsubscribeUrl);
+        const res = await sendEmail({ to: p.email, subject: e.subject, text: e.text, html: e.html });
+        await recordSendStage(p.id, stage, res.ok ? "sent" : "failed", res.ok ? undefined : res.error);
+        if (res.ok) sent++; else errors++;
+        await new Promise((r) => setTimeout(r, 60));
+      } catch { errors++; }
+    }
+  }
+
   for (const p of (parents ?? []) as ParentRow[]) {
     try {
       const res = await evaluateAndSendLifecycle(p);

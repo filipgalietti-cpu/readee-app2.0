@@ -1,4 +1,4 @@
-import { ShopItem, SHOP_ITEMS } from "./shop-items";
+import { ShopItem, availableShopItems } from "./shop-items";
 
 /** Free to open once every 24h (daily engagement loop); after that, extra
  *  opens within the window cost MYSTERY_BOX_PAID_PRICE carrots. */
@@ -31,7 +31,7 @@ export function rollMysteryBox(ownedItemIds: Set<string>, isPaid = false): Myste
     }
     // 30%: Random unowned shop item (falls back to a big carrot payout)
     if (roll < 0.6) {
-      const unowned = SHOP_ITEMS.filter((item) => !ownedItemIds.has(item.id));
+      const unowned = availableShopItems().filter((item) => !ownedItemIds.has(item.id));
       if (unowned.length > 0) {
         const item = unowned[Math.floor(Math.random() * unowned.length)];
         return { type: "item", item, label: `${item.name}!` };
@@ -55,7 +55,7 @@ export function rollMysteryBox(ownedItemIds: Set<string>, isPaid = false): Myste
 
   // 30%: Random unowned shop item (falls back to carrots)
   if (roll < 0.6) {
-    const unowned = SHOP_ITEMS.filter((item) => !ownedItemIds.has(item.id));
+    const unowned = availableShopItems().filter((item) => !ownedItemIds.has(item.id));
     if (unowned.length > 0) {
       const item = unowned[Math.floor(Math.random() * unowned.length)];
       return { type: "item", item, label: `${item.name}!` };
