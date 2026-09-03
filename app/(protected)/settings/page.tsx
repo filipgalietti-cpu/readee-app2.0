@@ -12,6 +12,7 @@ import { ChildUpdateSchema } from "@/lib/schemas";
 import { getChildAvatarImage } from "@/lib/utils/get-child-avatar";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
+import SayNameControl from "@/app/_components/SayNameControl";
 import { useAudioStore } from "@/lib/stores/audio-store";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import {
@@ -102,7 +103,7 @@ export default function Settings() {
 
   // Reader "Manage" expansion + editing
   const [expandedReaderId, setExpandedReaderId] = useState<string | null>(null);
-  const [editValues, setEditValues] = useState({ first_name: "", grade: "" });
+  const [editValues, setEditValues] = useState({ first_name: "", grade: "", name_said_as: "" });
 
   // Modals
   const [resetChildId, setResetChildId] = useState<string | null>(null);
@@ -346,7 +347,7 @@ export default function Settings() {
   function toggleManage(child: Child) {
     if (expandedReaderId === child.id) { setExpandedReaderId(null); return; }
     setExpandedReaderId(child.id);
-    setEditValues({ first_name: child.first_name, grade: child.grade || "Kindergarten" });
+    setEditValues({ first_name: child.first_name, grade: child.grade || "Kindergarten", name_said_as: child.name_said_as ?? "" });
   }
 
   async function saveEdit(childId: string) {
@@ -357,6 +358,11 @@ export default function Settings() {
       grade: editValues.grade,
     });
     await supabase.from("children").update(updateData).eq("id", childId);
+    // How the name is said: saved server-side, and every clip with the name is re-made in that form.
+    const saidAs = editValues.name_said_as.trim();
+    if ((original?.name_said_as ?? "") !== saidAs) {
+      await fetch("/api/child-name/apply", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ childId, saidAs }) }).catch(() => {});
+    }
     await loadChildren(userId);
     flash("Reader updated");
     // Grade is just what school year they're in; reading level is what they can
@@ -698,6 +704,9 @@ export default function Settings() {
                           </select>
                         </Field>
                       </div>
+                      <Field label="How to say the name" hint="Luna says the name in every greeting and report. Say it once, or spell how it sounds.">
+                        <SayNameControl writtenName={editValues.first_name} value={editValues.name_said_as} onChange={(v) => setEditValues((p) => ({ ...p, name_said_as: v }))} />
+                      </Field>
                       <Field label="Reading level" hint="Set by the reading placement, the surest way to match lessons to their level.">
                         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                           <div style={{ ...inputStyle, flex: 1, display: "flex", alignItems: "center", color: child.reading_level ? "#18181b" : "#6b7280", background: "#fafafa" }}>

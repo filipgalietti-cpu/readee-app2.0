@@ -6,6 +6,7 @@ import { generateSpeechVertex } from "@/lib/ai/vertex-tts";
 import { decidePlacement } from "@/lib/placement/decide";
 import { buildPlan } from "@/lib/placement/plan";
 import { narrate } from "@/lib/placement/narration";
+import { withSpokenName } from "@/lib/audio/name-pronunciation";
 import { grades } from "@/lib/assessment/questions";
 import type { LadderState } from "@/lib/placement/ladder";
 import type { Moment, PlacementSubmission, NarrationLine } from "@/lib/placement/types";
@@ -82,7 +83,7 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "Bad submission.", issues: parsed.error.issues.slice(0, 5) }, { status: 400 });
   const sub = parsed.data as unknown as PlacementSubmission;
 
-  const { data: child } = await supabase.from("children").select("id, first_name, parent_id, grade").eq("id", sub.childId).maybeSingle();
+  const { data: child } = await supabase.from("children").select("id, first_name, parent_id, grade, name_said_as").eq("id", sub.childId).maybeSingle();
   if (!child || (child as { parent_id: string }).parent_id !== user.id) return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
   const childName = (((child as { first_name?: string }).first_name ?? "").split(" ")[0] || "Reader");
   if (sub.passageRecordingPath && !sub.passageRecordingPath.startsWith(`placement/${sub.childId}/`)) sub.passageRecordingPath = null;
@@ -154,8 +155,9 @@ export async function POST(req: Request) {
     const paths: Record<string, string> = {};
     for (const line of narration) {
       try {
-        let res = await generateSpeechVertex({ text: line.text.slice(0, 700), voice: "Autonoe" });
-        if (!res.ok) { await new Promise((r) => setTimeout(r, 3000)); res = await generateSpeechVertex({ text: line.text.slice(0, 700), voice: "Autonoe" }); }
+        const spokenText = withSpokenName(line.text, childName, (child as { name_said_as?: string | null }).name_said_as).slice(0, 700);
+        let res = await generateSpeechVertex({ text: spokenText, voice: "Autonoe" });
+        if (!res.ok) { await new Promise((r) => setTimeout(r, 3000)); res = await generateSpeechVertex({ text: spokenText, voice: "Autonoe" }); }
         if (!res.ok) continue;
         const wav = pcmToWav(Buffer.from(res.pcmBase64, "base64"), 24000);
         const path = `placement/${sub.childId}/narr-${placementId.slice(0, 8)}-${line.id}.wav`;

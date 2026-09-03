@@ -46,6 +46,8 @@ export interface Child {
   owner_classroom_id: string | null;
   created_by_teacher: string | null;
   first_name: string;
+  /** How the name is said (a respelling like "fee-LOOSH"); the voice reads this, the screen shows first_name. */
+  name_said_as?: string | null;
   grade: string | null;
   reading_level: string | null;
   /** Content language preference. Defaults to 'en' if not set. */
