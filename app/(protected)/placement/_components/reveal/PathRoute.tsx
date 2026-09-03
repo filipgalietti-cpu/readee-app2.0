@@ -18,6 +18,8 @@ export type PathRouteProps = {
   /** Nodes with index below this are lit. The card raises it 0.3 s at a time. */
   litCount: number;
   childName?: string;
+  /** "Science of reading", "Common Core aligned", ... shown beside the reviewer. */
+  trustChips?: string[];
 };
 
 const NODE: Record<PlanStepKind, { lit: string; icon: GlyphName }> = {
@@ -43,7 +45,7 @@ export function milestoneDate(iso: string): string {
  * route takes the left three fifths and the milestones, count and reviewer
  * move into a column on the right.
  */
-export function PathRoute({ steps, milestones, lessons, weeks, minutesPerDay, reviewedBy, litCount }: PathRouteProps) {
+export function PathRoute({ steps, milestones, lessons, weeks, minutesPerDay, reviewedBy, trustChips = [], litCount }: PathRouteProps) {
   const reduced = useReduced();
   // Milestone flags sit beside the last nodes of the route, in order: the
   // final milestone belongs to the end node, the one before it to the node
@@ -61,7 +63,7 @@ export function PathRoute({ steps, milestones, lessons, weeks, minutesPerDay, re
           const flag = i >= flagOffset ? milestones[i - flagOffset] : null;
           const last = i === steps.length - 1;
           return (
-            <li key={`${step.kind}-${i}`} className={`relative flex gap-3 @2xl:gap-4 ${last ? "" : "pb-2.5 @2xl:pb-5"}`}>
+            <li key={`${step.kind}-${i}`} className={`relative flex gap-3 @2xl:gap-4 ${last ? "" : "pb-2.5 @2xl:pb-3"}`}>
               {!last && (
                 <motion.span
                   aria-hidden
@@ -98,12 +100,22 @@ export function PathRoute({ steps, milestones, lessons, weeks, minutesPerDay, re
           );
         })}
       </ol>
+      {trustChips.length > 0 && (
+        <ul className="mt-1 hidden flex-wrap gap-2 @2xl:col-span-3 @2xl:flex" data-trust-chips>
+          {trustChips.map((c) => (
+            <li key={c} className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2.5 py-1 text-xs font-semibold text-violet-700">
+              <Glyph name="check" size={12} />
+              {c}
+            </li>
+          ))}
+        </ul>
+      )}
 
-      <div className="@2xl:col-span-2 @2xl:flex @2xl:flex-col @2xl:justify-between @2xl:border-l @2xl:border-zinc-200 @2xl:pl-8">
+      <div className="@2xl:col-span-2 @2xl:col-start-4 @2xl:row-start-1 @2xl:row-span-2 @2xl:flex @2xl:flex-col @2xl:justify-between @2xl:border-l @2xl:border-zinc-200 @2xl:pl-8">
         {milestones.length > 0 && (
-          <ul className="hidden space-y-2.5 @2xl:block">
+          <ul className="hidden space-y-2 @2xl:block">
             {milestones.map((m) => (
-              <li key={m.date} className="flex items-center gap-3 rounded-2xl bg-amber-50 px-3 py-2.5">
+              <li key={m.date} className="flex items-center gap-3 rounded-2xl bg-amber-50 px-3 py-2">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-600">
                   <Glyph name="flag" size={18} />
                 </span>
@@ -123,13 +135,13 @@ export function PathRoute({ steps, milestones, lessons, weeks, minutesPerDay, re
             [`${weeks}`, "weeks"],
             [`${minutesPerDay}`, "minutes a day"],
           ].map(([v, l]) => (
-            <div key={l} className="rounded-2xl bg-violet-50 px-2 py-1.5 text-center @2xl:py-2.5">
+            <div key={l} className="rounded-2xl bg-violet-50 px-2 py-1.5 text-center @2xl:py-2">
               <dt className="text-2xl font-semibold text-violet-800">{v}</dt>
               <dd className="text-xs text-violet-600 @2xl:text-sm">{l}</dd>
             </div>
           ))}
         </dl>
-        <div className="mt-3 flex items-center gap-3 @2xl:mt-4 @2xl:gap-4">
+        <div className="mt-3 hidden items-center gap-3 @2xl:flex @2xl:gap-4">
           <Image
             src={REVIEWER_PHOTO}
             alt="Jennifer Klingerman"
@@ -142,6 +154,7 @@ export function PathRoute({ steps, milestones, lessons, weeks, minutesPerDay, re
             <p className="text-xs text-zinc-500 @2xl:text-sm">{reviewedBy.includes(",") ? reviewedBy.split(",").slice(1).join(",").trim() : "Certified Reading Specialist"}</p>
           </div>
         </div>
+
       </div>
     </div>
   );

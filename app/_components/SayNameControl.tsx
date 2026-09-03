@@ -122,17 +122,33 @@ export default function SayNameControl({ writtenName, value, onChange, mode = "g
   if (child) {
     return (
       <div className="flex w-full flex-col items-center gap-2 text-center" data-say-name>
-        <button
-          type="button"
-          onClick={() => { void record(); }}
-          disabled={status === "thinking" || hearing}
-          className={`inline-flex min-h-14 items-center gap-3 rounded-2xl px-7 text-lg font-bold shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] ring-1 transition active:scale-[0.97] ${status === "recording" ? "bg-rose-50 text-rose-700 ring-rose-200" : "bg-white text-violet-700 ring-violet-200"}`}
-          data-say-name-record
-        >
-          <FluentIcon name="microphone" size={22} />
-          {status === "recording" ? "Stop" : status === "thinking" ? "Listening..." : hearing ? "Luna is saying it..." : status === "heard" ? "Say it again" : "Say your name"}
-        </button>
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <button
+            type="button"
+            onClick={() => { void record(); }}
+            disabled={status === "thinking" || hearing}
+            className={`inline-flex min-h-14 items-center gap-3 rounded-2xl px-7 text-lg font-bold shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] ring-1 transition active:scale-[0.97] ${status === "recording" ? "bg-rose-50 text-rose-700 ring-rose-200" : "bg-white text-violet-700 ring-violet-200"}`}
+            data-say-name-record
+          >
+            <FluentIcon name="microphone" size={22} />
+            {status === "recording" ? "Stop" : status === "thinking" ? "Listening..." : status === "heard" ? "Say it again" : "Say your name"}
+          </button>
+          {value && (
+            // A real tap: browsers block a clip that starts after a network wait with no gesture behind it.
+            <button
+              type="button"
+              onClick={() => { void hear(); }}
+              disabled={hearing}
+              className="inline-flex min-h-14 items-center gap-2 rounded-2xl bg-violet-600 px-6 text-lg font-bold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)] transition active:scale-[0.97] disabled:opacity-60"
+              data-say-name-hear
+            >
+              <FluentIcon name="speaker" size={22} />
+              {hearing ? "Luna is saying it..." : "Hear Luna say it"}
+            </button>
+          )}
+        </div>
         <p className="text-sm font-semibold text-zinc-600">{note}</p>
+        {value && <p className="text-xs text-zinc-400">Luna heard it as &ldquo;{value}&rdquo;. A grown-up can fix the spelling in Settings.</p>}
       </div>
     );
   }
