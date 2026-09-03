@@ -35,7 +35,7 @@ const html = shell({
   parentName: null,
   eyebrow: "Come back and read",
   heading: `${KID} is off to a great start`,
-  bunny: "bunny-cheer.png",
+  hero: "winback",
   bodyHtml,
   ctaHref,
   ctaLabel: `Continue ${KID}'s reading`,

@@ -19,15 +19,8 @@ export function framingFor(result: PlacementResult): ReportEmailFraming {
 
 /** "two grade levels below" -> "Two grade levels below." */
 const sentence = (t: string) => { const x = t.trim(); return x ? x[0].toUpperCase() + x.slice(1) + (/[.!?]$/.test(x) ? "" : ".") : ""; };
-const P = (t: string) => `<p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${t}</p>`;
+const P = (t: string) => `<p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${t}</p>`;
 const H = (t: string) => `<p style="margin:24px 0 8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#4338ca;">${escapeHtml(t)}</p>`;
-
-function statCell(value: string, label: string): string {
-  return `<td width="33%" align="center" style="padding:12px 6px;background:#f5f3ff;border-radius:14px;">
-    <div style="font-size:22px;font-weight:800;color:#4338ca;line-height:1.1;">${escapeHtml(value)}</div>
-    <div style="margin-top:4px;font-size:12px;color:#6d28d9;">${escapeHtml(label)}</div>
-  </td>`;
-}
 
 function skillRow(label: string, value: string, fillPct: number, meaning: string): string {
   const pct = Math.max(4, Math.min(100, Math.round(fillPct)));
@@ -71,8 +64,6 @@ export function renderPlacementReportEmail(result: PlacementResult, opts: { pare
 
   const bodyHtml = `
     ${P(escapeHtml(lead))}
-    ${H("Where " + name + " is")}
-    <table width="100%" cellpadding="0" cellspacing="6" role="presentation"><tr>${stats.map(([v, l]) => statCell(v, l)).join("")}</tr></table>
     ${P(escapeHtml(sentence(copy.placement.categoryText) + " " + copy.placement.support))}
     ${copy.number ? `<p style="margin:6px 0 0;font-size:12px;color:#71717a;">${escapeHtml(copy.number.benchmarkLabel)}</p>` : ""}
     ${H("Three skills, one at a time")}
@@ -90,7 +81,7 @@ export function renderPlacementReportEmail(result: PlacementResult, opts: { pare
     </ol>
     <p style="margin:22px 0 0;font-size:12px;line-height:1.5;color:#71717a;">Content created and reviewed by <strong style="color:#3f3f46;">${escapeHtml(copy.ask.reviewer.name)}</strong>, ${escapeHtml(copy.ask.reviewer.role)}.</p>
     ${opts.premium ? "" : `<p style="margin:10px 0 0;font-size:12px;line-height:1.5;color:#71717a;">${escapeHtml(copy.ask.line)} ${escapeHtml(copy.ask.finePrint)}</p>`}
-    <p style="margin:10px 0 0;font-size:12px;color:#71717a;"><a href="${reportHref}" style="color:#4338ca;">See the full report</a></p>`;
+`;
 
   const text = [
     opts.parentName ? `Hi ${opts.parentName},` : "Hi there,",
@@ -123,7 +114,7 @@ export function renderPlacementReportEmail(result: PlacementResult, opts: { pare
     "- Readee",
   ].filter((l) => l !== null).join("\n");
 
-  const html = shell({ preheader, parentName: opts.parentName, bodyHtml, ctaHref, ctaLabel, unsubscribeUrl: opts.unsubscribeUrl, heading, eyebrow: "Reading placement", bunny: "bunny-trophy.png" });
+  const html = shell({ preheader, parentName: opts.parentName, bodyHtml, ctaHref, ctaLabel, unsubscribeUrl: opts.unsubscribeUrl, heading, eyebrow: "Reading placement", hero: "report", heroStats: stats.map(([value, label]) => ({ value, label })), secondary: { href: reportHref, label: "See the full report" } });
   return { subject, preheader, html, text, ctaHref };
 }
 
