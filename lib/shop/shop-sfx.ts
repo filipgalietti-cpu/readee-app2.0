@@ -99,8 +99,16 @@ function noise(t0: number, dur: number, peak: number, from: number, to: number, 
 
 const N = {
   C4: 261.6, D4: 293.7, E4: 329.6, F4: 349.2, G4: 392, A4: 440, B4: 493.9,
-  C5: 523.3, D5: 587.3, E5: 659.3, G5: 784, A5: 880, C6: 1046.5, E6: 1318.5, G6: 1568,
+  C5: 523.3, D5: 587.3, E5: 659.3, G5: 784, A5: 880,
+  C6: 1046.5, D6: 1174.7, E6: 1318.5, G6: 1568, A6: 1760,
+  C7: 2093, D7: 2349.3, E7: 2637, G7: 3136,
 };
+
+/* Sparkle pitches for the legendary tail: C-major pentatonic. F and B are
+   left out on purpose — they are the two degrees that beat against the C
+   major bells still ringing underneath, so any random pick from this set
+   stays consonant no matter what lands at the same moment. */
+const SPARKLE = [N.C6, N.D6, N.E6, N.G6, N.A6, N.C7, N.D7, N.E7, N.G7];
 
 export const shopSfx = {
   get muted() {
@@ -199,10 +207,16 @@ export const shopSfx = {
       tone("sine", f * 2, t + 0.14 + i * 0.075, 0.5, 0.06, { attack: 0.008 });
     });
 
-    // Legendary gets a shimmer tail
+    // Legendary gets a shimmer tail. This is the jackpot cue (a jackpot is
+    // rarityOf() === legendary), and it was the one thing in this file still
+    // out of key: the pitch was a continuous `1200 + Math.random() * 2600`,
+    // so every sparkle landed on an arbitrary frequency against the C major
+    // bells underneath. The randomness belongs in the TIMING, which is what
+    // makes it shimmer; the pitch is now quantised to the scale. Same fix
+    // swap()'s sparkles already got.
     if (tier === "legendary") {
       for (let i = 0; i < 10; i++) {
-        const f = 1200 + Math.random() * 2600;
+        const f = SPARKLE[Math.floor(Math.random() * SPARKLE.length)];
         tone("sine", f, t + 0.5 + Math.random() * 0.9, 0.4, 0.05, { attack: 0.004 });
       }
       tone("sawtooth", N.C4 / 2, t + 0.1, 2.0, 0.1, { attack: 0.1, filter: [400, 2000] });
