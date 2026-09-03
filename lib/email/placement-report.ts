@@ -114,7 +114,7 @@ export function renderPlacementReportEmail(result: PlacementResult, opts: { pare
     "- Readee",
   ].filter((l) => l !== null).join("\n");
 
-  const html = shell({ preheader, parentName: opts.parentName, bodyHtml, ctaHref, ctaLabel, unsubscribeUrl: opts.unsubscribeUrl, heading, eyebrow: "Reading placement", hero: "report", heroStats: stats.map(([value, label]) => ({ value, label })), secondary: { href: reportHref, label: "See the full report" } });
+  const html = shell({ preheader, parentName: opts.parentName, bodyHtml, ctaHref, ctaLabel, unsubscribeUrl: opts.unsubscribeUrl, heading, eyebrow: "Reading placement", banner: "banner-report", heroStats: stats.map(([value, label]) => ({ value, label })), secondary: { href: reportHref, label: "See the full report" } });
   return { subject, preheader, html, text, ctaHref };
 }
 
