@@ -39,6 +39,7 @@ const FREE_UNIT_DOMAIN = firstUnitDomainByGrade(
 );
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
+import { awardCarrots } from "@/lib/levels/award-carrots";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -972,22 +973,17 @@ function CompletionScreen({
 
       const nowIso = new Date().toISOString();
       if (carrotsEarned > 0) {
-        const { data: current } = await supabase
+        // Carrots go through awardCarrots so the reader-level ladder sees them;
+        // the other fields are not carrot-critical and ride a plain update.
+        await awardCarrots(supabase, child.id, carrotsEarned);
+        await supabase
           .from("children")
-          .select("carrots")
-          .eq("id", child.id)
-          .single();
-        if (current) {
-          await supabase
-            .from("children")
-            .update({
-              carrots: (current.carrots || 0) + carrotsEarned,
-              last_lesson_at: nowIso,
-              // Single-use: consume the mystery-box boost after this one lesson.
-              ...(carrotBoost && carrotBoost > 1 ? clearActiveMultiplierFields() : {}),
-            })
-            .eq("id", child.id);
-        }
+          .update({
+            last_lesson_at: nowIso,
+            // Single-use: consume the mystery-box boost after this one lesson.
+            ...(carrotBoost && carrotBoost > 1 ? clearActiveMultiplierFields() : {}),
+          })
+          .eq("id", child.id);
       } else {
         await supabase
           .from("children")

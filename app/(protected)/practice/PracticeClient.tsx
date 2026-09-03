@@ -49,6 +49,7 @@ import type { Outfit } from "@/app/_components/Bunny/outfits";
 import { checkMilestones, checkBadgeMilestones } from "@/lib/unlock";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
+import { awardCarrots } from "@/lib/levels/award-carrots";
 
 /* ─── Types ──────────────────────────────────────────── */
 
@@ -1850,17 +1851,16 @@ function CompletionScreen({
           .eq("id", child.id)
           .single();
         if (current) {
-          await savedOk("practice:carrots", supabase
-            .from("children")
-            .update({
-              carrots: (current.carrots || 0) + carrotsEarned,
-              // Single-use: consume the mystery-box boost after this one session.
-              ...(carrotBoost && carrotBoost > 1 ? clearActiveMultiplierFields() : {}),
-            })
-            .eq("id", child.id));
-          // Mark the boost spent so a "Play again" replay in this same session
-          // settles with no boost instead of re-applying the (now cleared) 2x.
-          if (carrotBoost && carrotBoost > 1) onBoostConsumed?.();
+          await awardCarrots(supabase, child.id, carrotsEarned);
+          if (carrotBoost && carrotBoost > 1) {
+            await savedOk("practice:boost-clear", supabase
+              .from("children")
+              .update({ ...clearActiveMultiplierFields() })
+              .eq("id", child.id));
+            // Mark the boost spent so a "Play again" replay in this same session
+            // settles with no boost instead of re-applying the (now cleared) 2x.
+            onBoostConsumed?.();
+          }
         }
       }
 

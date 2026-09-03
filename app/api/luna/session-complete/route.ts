@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { awardCarrots } from "@/lib/levels/award-carrots";
 
 export const dynamic = "force-dynamic";
 
@@ -97,9 +98,7 @@ export async function POST(req: Request) {
   const LUNA_CARROTS = 10;
   let carrotsAwarded = 0;
   try {
-    const { data: cur } = await admin.from("children").select("carrots").eq("id", childId).maybeSingle();
-    const next = ((cur as any)?.carrots ?? 0) + LUNA_CARROTS;
-    await admin.from("children").update({ carrots: next }).eq("id", childId);
+    await awardCarrots(admin as any, childId, LUNA_CARROTS);
     carrotsAwarded = LUNA_CARROTS;
   } catch { /* non-fatal */ }
 

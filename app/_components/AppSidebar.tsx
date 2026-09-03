@@ -12,6 +12,9 @@ import { SidebarUserMenu } from "./SidebarUserMenu";
 import { ShineBorder } from "@/app/components/magicui/shine-border";
 import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
+import LevelBadge from "@/app/_components/LevelBadge";
+import { computeLevel } from "@/lib/levels/levels";
+import { useLifetimeCarrots } from "@/lib/levels/use-lifetime-carrots";
 
 /* ─── Nav items ──────────────────────────────────── */
 
@@ -382,6 +385,13 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
     : null;
   const sidebarDetail = isPlatformAdminRoute || showTeacherIdentity ? email ?? null : null;
 
+  // Reader level next to the child's name. Only on the child/parent identity —
+  // an owner or teacher header has no reader level to show.
+  const { lifetimeCarrots } = useLifetimeCarrots(
+    isPlatformAdminRoute || showTeacherIdentity ? null : activeChild?.id || null,
+  );
+  const showLevel = !isPlatformAdminRoute && !showTeacherIdentity && !!activeChild;
+
   const sections = getNavSections(
     activeChild?.id || null,
     { ownsClassroom, hasChildren, hasAdminScope },
@@ -423,6 +433,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
                 plan={plan || "free"}
                 subtitle={sidebarSubtitle}
                 detail={sidebarDetail}
+                lifetimeCarrots={showLevel ? lifetimeCarrots : null}
                 showCreditIndicator={ownsClassroom}
                 onClose={() => setMobileOpen(false)}
               />
@@ -445,6 +456,7 @@ export default function AppSidebar({ mobileOnly = false }: { mobileOnly?: boolea
               plan={plan || "free"}
               subtitle={sidebarSubtitle}
               detail={sidebarDetail}
+              lifetimeCarrots={showLevel ? lifetimeCarrots : null}
               showCreditIndicator={ownsClassroom}
             />
           </div>
@@ -579,6 +591,7 @@ function ExpandedNav({
   plan,
   subtitle,
   detail,
+  lifetimeCarrots,
   showCreditIndicator,
   onClose,
   onToggle,
@@ -589,6 +602,8 @@ function ExpandedNav({
   sidebarName: string;
   plan: string;
   subtitle?: string | null;
+  /** Child's lifetime carrots, or null to hide the reader-level badge. */
+  lifetimeCarrots?: number | null;
   detail?: string | null;
   showCreditIndicator?: boolean;
   onClose?: () => void;
@@ -618,12 +633,20 @@ function ExpandedNav({
           </div>
         )}
         <div className="flex-1 min-w-0">
-          <div className="text-sm font-bold text-zinc-900 truncate leading-tight">
-            {sidebarName}
+          <div className="flex items-center gap-1.5 min-w-0">
+            <div className="text-sm font-bold text-zinc-900 truncate leading-tight">
+              {sidebarName}
+            </div>
+            {typeof lifetimeCarrots === "number" && (
+              <LevelBadge lifetimeCarrots={lifetimeCarrots} size="sm" />
+            )}
           </div>
-          {subtitle && (
+          {(subtitle || typeof lifetimeCarrots === "number") && (
             <div className="text-[11px] text-zinc-400 truncate leading-tight">
-              {subtitle}
+              {subtitle ??
+                `Lv ${computeLevel(lifetimeCarrots as number).current.number} · ${
+                  computeLevel(lifetimeCarrots as number).current.name
+                }`}
             </div>
           )}
         </div>
