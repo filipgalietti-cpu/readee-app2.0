@@ -221,7 +221,7 @@ function LevelSection({
                   ? "border-violet-300 shadow-[0_0_0_3px_rgba(139,92,246,0.15)]"
                   : achieved
                     ? "border-zinc-200"
-                    : "border-zinc-100"
+                    : "border-zinc-200/70"
               }`}
             >
               <span
@@ -229,14 +229,17 @@ function LevelSection({
                 style={
                   achieved
                     ? { background: `linear-gradient(135deg,${lvl.accent.hexDeep},${lvl.accent.hex})` }
-                    : { background: "#f4f4f5" }
+                    : {
+                        // Locked keeps the level's OWN colour, just softened. Greying
+                        // every unearned rung turned the whole ladder into a grey wall
+                        // for a level-1 reader, which is exactly backwards: these are
+                        // the prizes, they should look worth having.
+                        background: `${lvl.accent.hex}22`,
+                        boxShadow: `inset 0 0 0 1.5px ${lvl.accent.hex}55`,
+                      }
                 }
               >
-                <FluentIcon
-                  name={lvl.icon}
-                  size={24}
-                  className={achieved ? undefined : "opacity-40 grayscale"}
-                />
+                <FluentIcon name={lvl.icon} size={24} className={achieved ? undefined : "opacity-90"} />
               </span>
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
