@@ -441,7 +441,7 @@ export function renderDigest(input: {
       <tr><td align="center">
         <table width="560" cellpadding="0" cellspacing="0" role="presentation" style="max-width:560px;width:100%;">
           <tr><td align="center" style="padding-bottom:20px;"><img src="${BASE_URL}/readee-logo.png" alt="Readee" width="140" style="display:block;width:140px;height:auto;" /></td></tr>
-          <tr><td align="center" style="padding-bottom:6px;"><img src="${BASE_URL}/images/email/digest.png" alt="" width="150" style="display:block;width:150px;height:auto;margin:0 auto;" /></td></tr>
+          <tr><td align="center" style="padding-bottom:6px;"><img src="${BASE_URL}/images/email/banner-digest.png" alt="" width="496" style="display:block;width:100%;max-width:496px;height:auto;border-radius:16px;" /></td></tr>
           <tr><td style="background:#ffffff;border:1px solid #ececf0;border-radius:20px;padding:34px 32px;box-shadow:0 10px 40px -18px rgba(49,46,129,.18);">
             <p style="margin:0;text-align:center;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#4338ca;">Your Readee week</p>
             <h1 style="margin:8px 0 0;text-align:center;font-size:22px;font-weight:800;color:#1e1b4b;line-height:1.2;">${escapeHtml(greeting)}</h1>
