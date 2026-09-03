@@ -27,6 +27,8 @@ import LunaOrb, { type LunaMode } from "@/app/(protected)/luna/_components/LunaO
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 
+/** What a child says to pass on a word (the intro invites "I don't know"). */
+const SKIP_PHRASE = /\b(i\s+)?(don'?t|do not)\s+know\b|\bdunno\b|\b(skip|pass|next one)\b/i;
 const WORD_TIMEOUT_MS = 6000; // hesitation rule: no read after this = not read (DIBELS uses 3 s; K needs more)
 const WARMUP_WORD = "sun"; // not in any list; never scored
 
@@ -104,6 +106,9 @@ export default function PlacementRunner({
       skipRef.current = () => finish(false);
       const phrases: import("@/app/(protected)/luna/_components/azure-stream").PAWord[][] = [];
       void micRef.current.listen(word, (p) => {
+        // "I don't know" (or a skip word) ends the item now instead of waiting out the hesitation timeout:
+        // the reference word comes back as an omission, which never counts as heard.
+        if (SKIP_PHRASE.test(p.text)) { finish(false); return; }
         phrases.push(p.words);
         const g = gradeWord(word, phrases);
         if (g.heard) finish(g.correct);
@@ -184,11 +189,15 @@ export default function PlacementRunner({
     let lastPhraseAt = Date.now();
     let finishedEarly = false;
     let stopNow: (() => void) | null = null;
+    let lastAttempted = 0;
     const listener = await micRef.current.listen(p.text, (ph) => {
       phrases.push(ph.words);
       lastPhraseAt = Date.now();
       const g = gradeRead(p.text, phrases);
-      if (g.wordsAttempted >= totalWords) { finishedEarly = true; stopNow?.(); }
+      lastAttempted = g.wordsAttempted;
+      // Within three words of the end counts as finished: the recognizer rarely aligns the very last words,
+      // and waiting for them (then for the silence rule) was a long pause after the child had stopped.
+      if (g.wordsAttempted >= totalWords - 3) { finishedEarly = true; stopNow?.(); }
     });
     const startedAt = Date.now();
     micRef.current.startRecording();
@@ -202,9 +211,13 @@ export default function PlacementRunner({
       // The rate window closes silently at one minute; the child keeps reading.
       timers.push(window.setTimeout(() => { const g = gradeRead(p.text, phrases); minute = { wordsCorrect: g.wordsCorrect, seconds: PASSAGE_READ_SECONDS }; }, PASSAGE_READ_SECONDS * 1000));
       timers.push(window.setTimeout(end, PASSAGE_MAX_SECONDS * 1000));
-      // After the window, a long silence means the child has stopped.
+      // Silence means the child has stopped: a short one once most of the passage is read, a long one otherwise
+      // (never before the rate window unless they are near the end).
       const quiet = window.setInterval(() => {
-        if (Date.now() - startedAt > PASSAGE_READ_SECONDS * 1000 && Date.now() - lastPhraseAt > PASSAGE_SILENCE_STOP_MS) end();
+        const nearlyDone = lastAttempted >= totalWords * 0.8;
+        const pastWindow = Date.now() - startedAt > PASSAGE_READ_SECONDS * 1000;
+        const quietMs = nearlyDone ? 5000 : PASSAGE_SILENCE_STOP_MS;
+        if ((pastWindow || nearlyDone) && Date.now() - lastPhraseAt > quietMs) end();
       }, 1000);
     });
     const elapsed = Math.min(PASSAGE_MAX_SECONDS, (Date.now() - startedAt) / 1000);
