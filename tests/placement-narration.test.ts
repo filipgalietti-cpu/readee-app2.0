@@ -45,7 +45,7 @@ function strictProblems(line: NarrationLine): string[] {
 
 function expectHouseRules(lines: NarrationLine[]) {
   expect(lines.map((l) => l.id)).toEqual([...NARRATION_ORDER]);
-  expect(lines.map((l) => l.id)).toEqual(["strengths", "number", "placement", "skill-decoding", "skill-fluency", "skill-comprehension", "path", "plan", "ask"]);
+  expect(lines.map((l) => l.id)).toEqual(["strengths", "number", "placement", "skill-decoding", "skill-fluency", "skill-comprehension", "path", "path-crafted", "plan", "ask"]);
   for (const l of lines) {
     expect(strictProblems(l), `${l.id}: ${l.text}`).toEqual([]);
     expect(l.text.length, `${l.id} length`).toBeLessThan(340);
@@ -111,14 +111,15 @@ describe("narrate: Maya, below level", () => {
     expect(path).toContain("skips 2nd-grade stories and 2nd-grade nonfiction");
     expect(path).toContain("targets 3rd-grade words next");
     expect(path).toContain("Luna");
+    expect(byId(lines, "path-crafted")).toContain("hand-crafted and reviewed by Jennifer Klingerman");
     expect(path).toContain("the 4th-grade bar");
     const plan = byId(lines, "plan");
     expect(plan).toContain("10 minutes a day, 5 days a week");
     expect(plan).toContain("read like a 3rd grader by late April");
     expect(plan).toContain("reach the 4th-grade bar by next fall");
     const ask = byId(lines, "ask");
-    expect(ask).toContain("Her Custom Journey starts with 2nd Grade Sound Workshop");
-    expect(ask.endsWith("Everything on the Custom Journey is included with Readee Plus. You can start it now.")).toBe(true);
+    expect(ask).toContain("Her Custom Reading Journey starts with 2nd Grade Sound Workshop");
+    expect(ask.endsWith("Everything on the Custom Reading Journey is included with Readee Plus. You can start it now.")).toBe(true);
   });
 
   it("uses her pronouns throughout", () => {

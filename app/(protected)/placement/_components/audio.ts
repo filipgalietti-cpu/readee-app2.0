@@ -54,8 +54,16 @@ export function playUrlAsync(url: string, fallbackMs = 6000): Promise<void> {
     a.addEventListener("ended", finish, { once: true });
     a.addEventListener("error", finish, { once: true });
     // Progression never gates on `ended` alone (engine law): a blocked device still moves on.
-    const t = window.setTimeout(finish, fallbackMs);
-    a.addEventListener("ended", () => window.clearTimeout(t), { once: true });
+    // But a clip that IS playing gets its whole length: `fallbackMs` only covers "never started";
+    // once audio is flowing the guard becomes the clip's own duration plus a margin (a stalled
+    // stream still moves on). Luna used to be cut off mid-sentence on every line longer than the fallback.
+    let guard = window.setTimeout(finish, fallbackMs);
+    a.addEventListener("playing", () => {
+      window.clearTimeout(guard);
+      const secs = Number.isFinite(a.duration) && a.duration > 0 ? a.duration : 45;
+      guard = window.setTimeout(finish, secs * 1000 + 3000);
+    }, { once: true });
+    a.addEventListener("ended", () => window.clearTimeout(guard), { once: true });
     a.play().catch(finish);
   });
 }

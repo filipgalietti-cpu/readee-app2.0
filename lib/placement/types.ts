@@ -75,6 +75,8 @@ export type NarrationId =
   | "skill-fluency"
   | "skill-comprehension"
   | "path"
+  /** Who made the lessons on the path and against what; spoken on the path card after the route. */
+  | "path-crafted"
   | "plan"
   | "ask";
 

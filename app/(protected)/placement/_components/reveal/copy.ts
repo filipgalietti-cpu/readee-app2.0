@@ -82,6 +82,10 @@ export type RevealCopy = {
     reviewedBy: string;
     countLine: string;
     curatedLine: string;
+    /** Under the path title: how the lessons were made. */
+    craftedLine: string;
+    /** Short trust chips beside the reviewer. */
+    trustChips: string[];
   };
   plan: {
     dose: string;
@@ -276,7 +280,7 @@ export function trialSteps(start: Date, name: string): TrialStep[] {
   const reminder = new Date(start.getTime() + 7 * 86400000);
   const charge = new Date(start.getTime() + 14 * 86400000);
   return [
-    { when: "14-day free trial starts today", text: `Full access to ${name}'s Custom Journey, $0 due now` },
+    { when: "14-day free trial starts today", text: `Full access to ${name}'s Custom Reading Journey, $0 due now` },
     { when: shortDate(reminder), text: "We email you a reminder" },
     { when: shortDate(charge), text: "First charge, $9.99 a month" },
   ];
@@ -427,6 +431,8 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
       reviewedBy: plan.reviewedBy,
       countLine: `${plan.lessons} lessons · about ${plan.weeksAt10Min} weeks at ${plan.minutesPerDay} minutes a day`,
       curatedLine: `Curated from ${name}'s placement · Reviewed by ${plan.reviewedBy}`,
+      craftedLine: "Hand-crafted lessons on the science of reading and Common Core, reviewed by Jennifer Klingerman, Reading Specialist.",
+      trustChips: ["Science of reading", "Common Core aligned", "Hand-crafted lessons"],
     },
     plan: {
       dose: `${plan.minutesPerDay} minutes a day, ${plan.daysPerWeek} days a week.`,
@@ -442,7 +448,7 @@ export function buildRevealCopy(result: PlacementResult): RevealCopy {
     ask: {
       headline: `${name}'s Reading Journey is Ready`,
       subhead: `${plan.lessons} lessons across ${plan.weeksAt10Min} weeks, curated from today's placement.`,
-      line: `Everything on ${name}'s Custom Journey is included with Readee+.`,
+      line: `Everything on ${name}'s Custom Reading Journey is included with Readee+.`,
       button: `Start ${name}'s Reading Journey`,
       finePrint: trialTimeline(now, name),
       timeline: trialSteps(now, name),

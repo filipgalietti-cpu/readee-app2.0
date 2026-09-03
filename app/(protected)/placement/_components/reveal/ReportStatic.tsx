@@ -149,7 +149,8 @@ export function ReportStatic({ result, onStartPlan }: ReportStaticProps) {
           </div>
         </Section>
 
-        <Section title={`${copy.childName}'s Custom Journey`}>
+        <Section title={`${copy.childName}'s Custom Reading Journey`}>
+          <p className="mb-3 text-sm text-zinc-500">{copy.path.craftedLine}</p>
           <div className="rounded-2xl border border-zinc-200 bg-white p-4 @2xl:p-6">
             <PathRoute
               steps={copy.path.steps}

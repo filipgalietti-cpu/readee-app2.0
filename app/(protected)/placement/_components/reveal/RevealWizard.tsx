@@ -49,7 +49,7 @@ const SURFACE = "rounded-2xl border border-zinc-200 bg-white shadow-[0_4px_14px_
 const SURFACE_2XL = "@2xl:rounded-2xl @2xl:border @2xl:border-zinc-200 @2xl:bg-white @2xl:shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)]";
 
 function linesFor(result: PlacementResult, id: CardId): NarrationLine[] {
-  const ids: NarrationId[] = id === "skills" ? ["skill-decoding", "skill-fluency", "skill-comprehension"] : [id];
+  const ids: NarrationId[] = id === "skills" ? ["skill-decoding", "skill-fluency", "skill-comprehension"] : id === "path" ? ["path", "path-crafted"] : [id];
   return ids.map((n) => narrationFor(result, n)).filter((l): l is NarrationLine => l !== null);
 }
 
@@ -517,9 +517,12 @@ function PathCard({ copy, reduced }: CardProps) {
   return (
     <div className="my-auto">
       <motion.h2 className={H2} {...rise(reduced)}>
-        {copy.childName}&apos;s Custom Journey
+        {copy.childName}&apos;s Custom Reading Journey
       </motion.h2>
-      <motion.div className={`mt-3 p-4 @2xl:mt-4 @2xl:p-6 ${SURFACE}`} {...rise(reduced, 0.2)}>
+      <motion.p className="mt-1 text-xs leading-snug text-zinc-500 @2xl:text-base" {...rise(reduced, 0.1)}>
+        {copy.path.craftedLine}
+      </motion.p>
+      <motion.div className={`mt-3 p-4 @2xl:px-5 @2xl:py-4 ${SURFACE}`} {...rise(reduced, 0.2)}>
         <PathRoute
           steps={copy.path.steps}
           milestones={copy.path.milestones}
@@ -527,6 +530,7 @@ function PathCard({ copy, reduced }: CardProps) {
           weeks={copy.path.weeks}
           minutesPerDay={copy.path.minutesPerDay}
           reviewedBy={copy.path.reviewedBy}
+          trustChips={copy.path.trustChips}
           litCount={lit}
           childName={copy.childName}
         />
