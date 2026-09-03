@@ -41,6 +41,10 @@ export type PassageEvidence = {
   wordsTotal: number;
   durationSeconds: number;
   prosody?: number | null;
+  /** Words read correctly by the one-minute mark (DIBELS rate window); the child then reads to the end. */
+  minuteWordsCorrect?: number;
+  /** Seconds the rate window actually lasted (60, or less when the child finished sooner). */
+  minuteSeconds?: number;
 };
 export type FoundationsEvidence = {
   letterSounds: CountEvidence;
@@ -105,7 +109,10 @@ const pct = (c: CountEvidence): number => (c.total > 0 ? c.correct / c.total : 0
 const ccssGrade = (band: PlacedBand): string => (band === 0 ? "K" : String(band));
 
 function fluencyFor(p: PassageEvidence, enrolled: PlacedBand, season: Season): FluencyResult {
-  const rate = computeWcpm(p.wordsCorrect, p.durationSeconds);
+  // Rate from the one-minute window when the runner marked it; accuracy always from the whole read.
+  const rate = p.minuteSeconds && p.minuteWordsCorrect !== undefined
+    ? computeWcpm(p.minuteWordsCorrect, p.minuteSeconds)
+    : computeWcpm(p.wordsCorrect, p.durationSeconds);
   const accuracy = p.wordsTotal > 0 ? p.wordsCorrect / p.wordsTotal : 0;
   const normGrade = p.band >= 1 ? (Math.min(6, p.band) as NormGrade) : null;
   return {

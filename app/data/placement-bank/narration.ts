@@ -36,12 +36,14 @@ export const PLACEMENT_NARRATION = {
   "nonsense-intro": "These next words are make-believe words. Sound them out the best you can.",
 
   // Stage 3: passage
-  "passage-intro": "Now a story. Read it out loud the best you can. If you get stuck, keep going. I will tell you when to stop.",
+  "passage-intro": "Now a story. Read it out loud the best you can, all the way to the end. If you get stuck, keep going.",
   "passage-stop": "You can stop there.",
+  "passage-done": "You read the whole thing. Nice work.",
   "passage-second": "One more story. This one is a little harder. Just do your best.",
 
   // Stage 4: comprehension
   "comp-intro": "Now three questions about the story. I will read each one to you. Tap your answer.",
+  "comp-intro-read": "Now three questions about the story. Read each one and tap your answer. Tap the little speaker if you want me to read one to you.",
   "listen-intro": "Now I will read you a story. Listen carefully. Then I will ask you two questions.",
   "listen-questions": "Here come the questions.",
 

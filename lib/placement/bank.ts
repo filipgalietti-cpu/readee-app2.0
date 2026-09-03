@@ -15,7 +15,11 @@ import { WORDS_PER_LIST, type Band } from "./ladder";
  * passage; K children get a listening story instead.
  */
 export const PASSAGE_MIN_WORDS: Record<Exclude<Band, 0>, number> = { 1: 140, 2: 170, 3: 190, 4: 210, 5: 230 };
-export const PASSAGE_READ_SECONDS = 60;
+export const PASSAGE_READ_SECONDS = 60; // the rate window (DIBELS/Acadience: 1 minute)
+/** The child reads to the end (MAP Reading Fluency allows up to 5 min); this is our cap. */
+export const PASSAGE_MAX_SECONDS = 150;
+/** After the rate window, this much silence means the child has stopped. */
+export const PASSAGE_SILENCE_STOP_MS = 12000;
 export const QUESTIONS_PER_PASSAGE = 3;
 export const LETTER_SOUND_ITEMS = 8;
 export const BLENDING_ITEMS = 6;

@@ -6,7 +6,9 @@ import { grades } from "@/lib/assessment/questions";
 
 function playList(s: LadderState, pass: boolean): LadderState {
   if (pass) {
-    for (let i = 0; i < WORDS_PER_LIST; i++) s = recordWord(s, `w${i}`, true);
+    // Right answers until the list closes (8 of 10 passes it early), never spilling into the next list.
+    const band = activeList(s)?.band;
+    for (let i = 0; i < WORDS_PER_LIST && activeList(s)?.band === band; i++) s = recordWord(s, `w${i}`, true);
     return s;
   }
   for (let i = 0; i < 3; i++) s = recordWord(s, `x${i}`, false);

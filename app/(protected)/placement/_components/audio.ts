@@ -46,7 +46,9 @@ export function playUrlAsync(url: string, fallbackMs = 6000): Promise<void> {
   return new Promise((resolve) => {
     stopClip();
     let done = false;
-    const finish = () => { if (done) return; done = true; if (current === a) current = null; resolve(); };
+    // Whatever ends the wait (ended, error, or the fallback timer), the clip stops: the fallback used to leave a
+    // slow-loading clip playing under the next one (the overlap heard at the passage in the first real run).
+    const finish = () => { if (done) return; done = true; try { a.pause(); } catch { /* ignore */ } if (current === a) current = null; resolve(); };
     const a = new Audio(url);
     current = a;
     a.addEventListener("ended", finish, { once: true });
