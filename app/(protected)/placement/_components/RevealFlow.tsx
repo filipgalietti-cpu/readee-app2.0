@@ -10,6 +10,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { NarrationLine, PlacementResult } from "@/lib/placement/types";
 import { usePlanStore } from "@/lib/stores/plan-store";
+import { trackFunnelClient } from "@/lib/analytics/funnel";
 import { CelebrationScreen, HoldToBuild, RevealWizard } from "./reveal";
 
 type Phase = "celebrate" | "hold" | "wizard";
@@ -22,6 +23,19 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
   const pollRef = useRef<number | null>(null);
   useEffect(() => { if (holdDone && result) setPhase("wizard"); }, [holdDone, result]);
 
+  // The parent reached the report. Once per mount, and only with a result actually loaded.
+  const reportSeen = useRef(false);
+  useEffect(() => {
+    if (phase !== "wizard" || !result || reportSeen.current) return;
+    reportSeen.current = true;
+    trackFunnelClient("funnel.report_view", {
+      child_id: childId,
+      placement_id: result.id,
+      placed_band: result.decision.placedBand,
+      relative_delta: result.decision.relative.delta,
+    });
+  }, [phase, result, childId]);
+
   // "Start <Name>'s Reading Journey": straight into Stripe Checkout (14-day
   // card trial, monthly). The wizard has already explained the trial, so no
   // /upgrade detour. Already on Readee+ -> the dashboard, where the next
@@ -32,6 +46,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     if (rawPlan === "premium") { router.push("/dashboard"); return; }
     if (startingRef.current) return;
     startingRef.current = true;
+    trackFunnelClient("funnel.checkout_started", { child_id: childId, source: "placement_reveal" });
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",

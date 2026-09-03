@@ -209,8 +209,16 @@ export async function POST(req: NextRequest) {
           stripe_subscription_id: null,
         })
         .eq("stripe_customer_id", customerId)
-        .select("email")
+        .select("id, email")
         .maybeSingle();
+
+      const canceledId = (canceled as { id?: string } | null)?.id ?? null;
+      if (canceledId) {
+        await trackFunnel("funnel.subscription_canceled", canceledId, {
+          subscription_id: subscription.id,
+          status: subscription.status,
+        });
+      }
 
       const churnEmail = (canceled as { email?: string } | null)?.email ?? "(unknown)";
       await notifyTeam(

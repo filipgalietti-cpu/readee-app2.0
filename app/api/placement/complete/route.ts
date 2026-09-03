@@ -8,6 +8,7 @@ import { buildPlan } from "@/lib/placement/plan";
 import { narrate } from "@/lib/placement/narration";
 import { withSpokenName } from "@/lib/audio/name-pronunciation";
 import { sendPlacementReportEmail } from "@/lib/email/placement-report";
+import { trackFunnel } from "@/lib/analytics/funnel.server";
 import { grades } from "@/lib/assessment/questions";
 import type { LadderState } from "@/lib/placement/ladder";
 import type { Moment, PlacementSubmission, NarrationLine } from "@/lib/placement/types";
@@ -120,6 +121,20 @@ export async function POST(req: Request) {
     .single();
   if (insErr || !inserted) return NextResponse.json({ ok: false, error: "Could not save the placement." }, { status: 500 });
   const placementId = (inserted as { id: string }).id;
+
+  // The funnel's assessment step. Server-side because it must not depend on the
+  // child's browser surviving the redirect to the reveal.
+  void trackFunnel("funnel.placement_complete", user.id, {
+    child_id: sub.childId,
+    placement_id: placementId,
+    enrolled: sub.enrolled,
+    placed_band: decision.placedBand,
+    relative_delta: decision.relative.delta,
+    reading_level: decision.readingLevelName,
+    wcpm: decision.fluency?.wcpm ?? null,
+    duration_seconds: Math.round(sub.durationSeconds),
+    version: "v2",
+  });
 
   // Legacy row the dashboard, journey and results page already key off.
   const comp = decision.comprehension;

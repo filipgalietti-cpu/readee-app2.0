@@ -19,6 +19,7 @@ import { PLACEMENT_BANK } from "@/app/data/placement-bank";
 import { createLadder, recordWord, activeList, decodingLevel, needsFoundations, BAND_LABEL, type LadderState, type Band, type PlacedBand } from "@/lib/placement/ladder";
 import { gradeRead, gradeWord } from "@/lib/placement/read-grade";
 import { PASSAGE_MAX_SECONDS, PASSAGE_READ_SECONDS, PASSAGE_SILENCE_STOP_MS, type BankQuestion } from "@/lib/placement/bank";
+import { trackFunnelClient } from "@/lib/analytics/funnel";
 import type { Moment, PlacementSubmission } from "@/lib/placement/types";
 import type { PassageEvidence, CountEvidence } from "@/lib/placement/decide";
 import { usePlacementMic, type MicState } from "./mic";
@@ -300,6 +301,9 @@ export default function PlacementRunner({
       startedRef.current = Date.now();
 
       // 2. Warm-up: one practice word, never scored.
+      // The assessment has genuinely begun: mic open, warm-up word next. Fired here
+      // (not at the greeting) so a blocked microphone never counts as a start.
+      if (!demo) trackFunnelClient("funnel.assessment_start", { child_id: childId, enrolled });
       setStage("warmup");
       await say("warmup-word", "Here is a practice word. Read it out loud when you see it.");
       await listenWord(WARMUP_WORD);
