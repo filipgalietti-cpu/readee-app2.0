@@ -51,7 +51,7 @@ export function renderWhatsNew(c: WhatsNewContent, unsubscribeUrl: string): { su
     parentName: null,
     eyebrow: c.eyebrow ?? "What's new",
     heading: c.heading,
-    banner: c.bunny ?? "banner-welcome",
+    banner: c.bunny ?? "banner-whats-new",
     bodyHtml,
     ctaHref,
     ctaLabel,
