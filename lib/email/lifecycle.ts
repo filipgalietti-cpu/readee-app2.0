@@ -142,12 +142,16 @@ export function shell(opts: {
 }
 
 export function renderWelcome(parentName: string | null, kidName: string | null, unsubscribeUrl: string) {
+  const who = kidName ?? "your reader";
   const subject = kidName
-    ? `Welcome to Readee - let's start ${kidName}'s first lesson`
-    : "Welcome to Readee - your first lesson is ready";
-  const lead = kidName
-    ? `Glad ${kidName} is here. Readee works best when you do a short lesson together every day - most families spend about 10 minutes.`
-    : `Glad you're here. Readee works best when your reader does a short lesson every day - most families spend about 10 minutes.`;
+    ? `Welcome to Readee - ${kidName}'s reading placement is ready`
+    : "Welcome to Readee - the reading placement is ready";
+  const lead = `Glad ${who} is here. The first thing to do takes about ten minutes: Luna listens to ${who} read and finds the exact level. Then you get the report, the plan, and ten minutes a day from there.`;
+  const bullets = [
+    `Luna reads with ${who} for about ten minutes and finds where reading is comfortable today.`,
+    "You get a report with the three skills, the level, and a Custom Reading Journey, in the app and in your inbox.",
+    "After that it is ten minutes a day, and a summary every Monday.",
+  ];
   const text = [
     parentName ? `Hi ${parentName},` : "Hi there,",
     "",
@@ -156,30 +160,26 @@ export function renderWelcome(parentName: string | null, kidName: string | null,
     "Start here:",
     `${BASE_URL}/dashboard`,
     "",
-    "Three things worth knowing:",
-    "  · Every lesson is read-aloud with karaoke highlighting (great for emerging readers).",
-    "  · Practice questions teach to Common Core ELA standards - no test prep filler.",
-    "  · You'll get a weekly summary every Monday - what they read, what they're working on.",
+    "How it works:",
+    ...bullets.map((b) => `  · ${b}`),
     "",
     `Unsubscribe: ${unsubscribeUrl}`,
     "- Readee",
   ].join("\n");
   const bodyHtml = `
     <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
-    <ul style="margin:16px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:#3f3f46;">
-      <li>Read-aloud lessons with karaoke highlighting - great for emerging readers.</li>
-      <li>Practice questions taught to Common Core ELA standards.</li>
-      <li>You'll get a weekly summary every Monday.</li>
+    <ul style="margin:16px 0 0;padding-left:18px;font-size:15px;line-height:1.6;color:#3f3f46;">
+      ${bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}
     </ul>`;
   const html = shell({
-    preheader: "Your first Readee lesson is ready.",
+    preheader: "Ten minutes with Luna, then the report and the plan.",
     parentName,
     eyebrow: "Welcome aboard",
-    heading: kidName ? `Let's start ${kidName}'s first lesson` : "Let's start your first lesson",
-    hero: "welcome",
+    heading: kidName ? `Welcome, ${kidName}. Let's find your level.` : "Welcome. Let's find your reader's level.",
+    banner: "banner-welcome",
     bodyHtml,
     ctaHref: `${BASE_URL}/dashboard`,
-    ctaLabel: "Start the first lesson",
+    ctaLabel: "Start the reading placement",
     unsubscribeUrl,
   });
   return { subject, text, html };
