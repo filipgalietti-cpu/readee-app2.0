@@ -274,7 +274,7 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
             <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Type your name" maxLength={16} autoComplete="off" autoFocus
               style={{ marginTop: 24, width: 460, maxWidth: "100%", boxSizing: "border-box", textAlign: "center", border: "3px solid #c7d2fe", borderRadius: 22, background: "#fff", padding: "16px 20px", font: `800 clamp(28px,5vw,38px)/1.1 ${BALOO}`, color: "#1e1b4b", outline: "none", boxShadow: "0 8px 20px -12px rgba(30,27,75,.35)" }} />
             <div style={{ marginTop: 14, width: 460, maxWidth: "100%" }}>
-              <SayNameControl writtenName={name} value={saidAs} onChange={setSaidAs} />
+              <SayNameControl writtenName={name} value={saidAs} onChange={setSaidAs} mode="child" />
             </div>
             <button type="button" className="kwf-btn" onClick={next} disabled={!name.trim()} style={{ ...primaryBtn, marginTop: 22, opacity: name.trim() ? 1 : 0.45, cursor: name.trim() ? "pointer" : "not-allowed" }}>That&apos;s me</button>
           </div>
