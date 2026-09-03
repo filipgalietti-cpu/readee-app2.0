@@ -39,7 +39,7 @@ type ParentRow = {
   plan: string | null;
 };
 
-function unsubscribeToken(parentId: string): string {
+export function unsubscribeToken(parentId: string): string {
   const b64 = Buffer.from(`${parentId}:${new Date().toISOString().slice(0, 10)}`).toString(
     "base64url",
   );
@@ -308,6 +308,17 @@ async function lastReEngageSentAt(parentId: string): Promise<Date | null> {
   return data ? new Date((data as any).sent_at) : null;
 }
 
+/** One-off transactional sends (e.g. "placement_report:<id>") share the idempotency table with the stages. */
+export async function alreadySentStage(parentId: string, stage: string): Promise<boolean> {
+  const admin = supabaseAdmin();
+  const { data } = await admin.from("lifecycle_email_sends").select("id").eq("profile_id", parentId).eq("stage", stage).eq("status", "sent").limit(1);
+  return !!data && data.length > 0;
+}
+export async function recordSendStage(parentId: string, stage: string, status: "sent" | "failed" | "skipped", errorMessage?: string): Promise<void> {
+  const admin = supabaseAdmin();
+  await admin.from("lifecycle_email_sends").insert({ profile_id: parentId, stage, status, error_message: errorMessage ?? null });
+}
+
 async function recordSend(
   parentId: string,
   stage: Stage,
@@ -323,7 +334,7 @@ async function recordSend(
   });
 }
 
-async function sendEmail(opts: {
+export async function sendEmail(opts: {
   to: string;
   subject: string;
   text: string;
