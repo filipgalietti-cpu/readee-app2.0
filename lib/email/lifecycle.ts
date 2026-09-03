@@ -240,7 +240,7 @@ export function renderFirstLessonNudge(
     parentName,
     eyebrow: "Quick start",
     heading: kidName ? `Ready for ${kidName}'s first lesson?` : "Ready for the first lesson?",
-    hero: "first-lesson",
+    banner: "banner-first-lesson",
     bodyHtml,
     ctaHref: `${BASE_URL}/dashboard`,
     ctaLabel: "Start tonight's lesson",
