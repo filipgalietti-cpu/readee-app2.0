@@ -8,7 +8,7 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { BASE_URL, alreadySentStage, escapeHtml, recordSendStage, sendEmail, shell, unsubscribeToken } from "@/lib/email/lifecycle";
 import { firstChildContext, type ChildJourneyContext } from "@/lib/email/journey-context";
 
-const P = (t: string) => `<p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${t}</p>`;
+const P = (t: string) => `<p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${t}</p>`;
 const SMALL = (t: string) => `<p style="margin:10px 0 0;font-size:12px;line-height:1.5;color:#71717a;">${t}</p>`;
 /** "Reads like a 3rd grader" -> "reading like a 3rd grader"; "Reaches the 4th-grade bar" -> "reaching the 4th-grade bar". */
 const milestonePhrase = (label: string) => {
@@ -59,7 +59,7 @@ export function renderTrialStarted(parentName: string | null, ctx: ChildJourneyC
   const trial = end ? `Your 14-day trial is free until ${end}. We email you three days before, and you can cancel in one tap from Settings.` : "Your 14-day trial is free. We email you three days before it ends, and you can cancel in one tap from Settings.";
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", first, dose, milestone, "", trial, "", `Open the dashboard: ${BASE_URL}/dashboard`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].filter((l) => l !== "" || true).join("\n");
   const bodyHtml = `${P(escapeHtml(first))}${P(escapeHtml(dose))}${milestone ? P(escapeHtml(milestone)) : ""}${SMALL(escapeHtml(trial))}`;
-  const html = shell({ preheader: first, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Start ${name}'s first lesson`, unsubscribeUrl, heading, eyebrow: "Welcome to Readee+", bunny: "bunny-celebrate.png" });
+  const html = shell({ preheader: first, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Start ${name}'s first lesson`, unsubscribeUrl, heading, eyebrow: "Welcome to Readee+", hero: "trial-started" });
   return { subject: `Readee+ is on: ${name}'s first week`, html, text };
 }
 
@@ -89,8 +89,9 @@ export function renderTrialEnding(parentName: string | null, ctx: ChildJourneyCo
   const flag = ctx?.placement?.nextMilestone ? `The plan has ${name} ${milestonePhrase(ctx.placement.nextMilestone.label)} by ${ctx.placement.nextMilestone.month}.` : "";
   const money = end ? `Nothing to do to keep going: ${priceLine} starts on ${end}. To stop, cancel in one tap from Settings before then and ${name} keeps the free first unit.` : `Nothing to do to keep going: ${priceLine} starts when the trial ends. To stop, cancel in one tap from Settings and ${name} keeps the free first unit.`;
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", did, next, flag, "", money, "", `Settings: ${BASE_URL}/settings`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
-  const bodyHtml = `${P(escapeHtml(did))}${next ? P(escapeHtml(next)) : ""}${flag ? P(escapeHtml(flag)) : ""}${SMALL(escapeHtml(money))}${SMALL(`<a href="${BASE_URL}/settings" style="color:#4338ca;">Manage the subscription</a>`)}`;
-  const html = shell({ preheader: did, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Keep ${name} going`, unsubscribeUrl, heading, eyebrow: "Your trial", bunny: "bunny-reading.png" });
+  const bodyHtml = `${P(escapeHtml(did))}${next ? P(escapeHtml(next)) : ""}${flag ? P(escapeHtml(flag)) : ""}${SMALL(escapeHtml(money))}`;
+  const heroStats = progress.lessons > 0 ? [{ value: String(progress.lessons), label: progress.lessons === 1 ? "lesson finished" : "lessons finished" }, { value: String(progress.days), label: progress.days === 1 ? "day of reading" : "days of reading" }, ...(ctx?.streak ? [{ value: String(ctx.streak), label: "day streak" }] : [])] : [];
+  const html = shell({ preheader: did, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Keep ${name} going`, unsubscribeUrl, heading, eyebrow: "Your trial", hero: "trial-ending", heroStats, secondary: { href: `${BASE_URL}/settings`, label: "Manage the subscription" } });
   return { subject: `${name}'s Readee+ trial ends in 3 days`, html, text };
 }
 
@@ -118,7 +119,7 @@ export function renderWinBack(parentName: string | null, ctx: ChildJourneyContex
   const free = `The free first unit stays open, and everything on the journey comes back the moment you restart. No new placement needed.`;
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", where, next, free, "", `Restart Readee+: ${BASE_URL}/upgrade?reason=winback`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
   const bodyHtml = `${P(escapeHtml(where))}${next ? P(escapeHtml(next)) : ""}${P(escapeHtml(free))}`;
-  const html = shell({ preheader: where, parentName, bodyHtml, ctaHref: `${BASE_URL}/upgrade?reason=winback`, ctaLabel: `Restart ${name}'s journey`, unsubscribeUrl, heading, eyebrow: "Whenever you are ready", bunny: "bunny-wave-clipboard.png" });
+  const html = shell({ preheader: where, parentName, bodyHtml, ctaHref: `${BASE_URL}/upgrade?reason=winback`, ctaLabel: `Restart ${name}'s journey`, unsubscribeUrl, heading, eyebrow: "Whenever you are ready", hero: "winback" });
   return { subject: `We saved ${name}'s Reading Journey`, html, text };
 }
 
@@ -144,7 +145,7 @@ export function renderQuietNudge(parentName: string | null, ctx: ChildJourneyCon
   const streak = daysQuiet <= 1 && ctx?.streak ? `The ${ctx.streak}-day streak is still safe if today counts.` : "One lesson tonight restarts the streak.";
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", heading, "", gap, why, streak, "", `Open Readee: ${BASE_URL}/dashboard`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
   const bodyHtml = `${P(escapeHtml(gap))}${P(escapeHtml(why))}${P(escapeHtml(streak))}`;
-  const html = shell({ preheader: why, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Open ${name}'s lesson`, unsubscribeUrl, heading, eyebrow: "Ten minutes today", bunny: "bunny-reading.png" });
+  const html = shell({ preheader: why, parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: `Open ${name}'s lesson`, unsubscribeUrl, heading, eyebrow: "Ten minutes today", hero: "quiet" });
   return { subject: ctx?.nextLesson ? `${name}'s next lesson: ${ctx.nextLesson.title}` : `${name}'s next lesson is waiting`, html, text };
 }
 

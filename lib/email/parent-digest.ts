@@ -440,14 +440,15 @@ function renderDigest(input: {
     <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="padding:32px 16px;background:#f6f5f2;">
       <tr><td align="center">
         <table width="560" cellpadding="0" cellspacing="0" role="presentation" style="max-width:560px;width:100%;">
-          <tr><td align="center" style="padding-bottom:20px;"><img src="${BASE_URL}/readee-logo.png" alt="Readee" width="128" style="display:block;width:128px;height:auto;" /></td></tr>
+          <tr><td align="center" style="padding-bottom:20px;"><img src="${BASE_URL}/readee-logo.png" alt="Readee" width="140" style="display:block;width:140px;height:auto;" /></td></tr>
+          <tr><td align="center" style="padding-bottom:6px;"><img src="${BASE_URL}/images/email/digest.png" alt="" width="150" style="display:block;width:150px;height:auto;margin:0 auto;" /></td></tr>
           <tr><td style="background:#ffffff;border:1px solid #ececf0;border-radius:20px;padding:34px 32px;box-shadow:0 10px 40px -18px rgba(49,46,129,.18);">
             <p style="margin:0;text-align:center;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#4338ca;">Your Readee week</p>
             <h1 style="margin:8px 0 0;text-align:center;font-size:22px;font-weight:800;color:#1e1b4b;line-height:1.2;">${escapeHtml(greeting)}</h1>
             <p style="margin:12px 0 0;font-size:15px;line-height:1.55;color:#3f3f46;text-align:center;">Here's how the week went - what each child nailed, what they unlocked, and where to focus next.</p>
             ${childBlocks}
             <div style="margin-top:24px;text-align:center;">
-              <a href="${BASE_URL}/dashboard" style="display:inline-block;background:#4f46e5;color:#ffffff;padding:13px 26px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;">Keep the streak going</a>
+              <a href="${BASE_URL}/dashboard" style="display:inline-block;background:#7c3aed;color:#ffffff;padding:13px 26px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;">Keep the streak going</a>
             </div>
           </td></tr>
           <tr><td align="center" style="padding-top:22px;"><p style="margin:0;font-size:12px;color:#a1a1aa;text-align:center;line-height:1.8;">

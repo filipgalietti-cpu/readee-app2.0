@@ -57,6 +57,8 @@ export function escapeHtml(s: string | null | undefined): string {
     .replace(/'/g, "&#39;");
 }
 
+export type HeroStat = { value: string; label: string };
+
 export function shell(opts: {
   preheader: string;
   parentName: string | null;
@@ -68,35 +70,53 @@ export function shell(opts: {
   heading?: string;
   /** Uppercase eyebrow above the heading. */
   eyebrow?: string;
-  /** Bunny mascot filename in /images/ui, e.g. "bunny-welcome.png". */
-  bunny?: string;
+  /** The app's own bunny (an outfit + pose rendered by scripts/render-email-bunnies.mjs): a key under /images/email, e.g. "report". */
+  hero?: string;
+  /** Big numbers under the heading ("61" / "words a minute"), at most three. */
+  heroStats?: HeroStat[];
+  /** A quieter second action under the button, e.g. "See the full report". */
+  secondary?: { href: string; label: string };
 }): string {
   const greeting = opts.parentName ? `Hi ${opts.parentName},` : "Hi there,";
   const heading = opts.heading ?? greeting;
-  const bunnyImg = opts.bunny
-    ? `<tr><td align="center"><img src="${BASE_URL}/images/ui/${opts.bunny}" alt="" width="88" style="display:block;width:88px;height:auto;margin:0 auto 14px;" /></td></tr>`
+  const heroImg = opts.hero
+    ? `<tr><td align="center"><img src="${BASE_URL}/images/email/${opts.hero}.png" alt="" width="150" style="display:block;width:150px;height:auto;margin:0 auto 10px;" /></td></tr>`
     : "";
   const eyebrowHtml = opts.eyebrow
-    ? `<tr><td align="center"><p style="margin:0 0 6px;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#4338ca;">${escapeHtml(opts.eyebrow)}</p></td></tr>`
+    ? `<tr><td align="center"><p style="margin:0 0 8px;font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#7c3aed;">${escapeHtml(opts.eyebrow)}</p></td></tr>`
+    : "";
+  const stats = (opts.heroStats ?? []).slice(0, 3);
+  const statsHtml = stats.length
+    ? `<table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin-top:18px;"><tr>
+        ${stats.map((st) => `<td width="${Math.floor(100 / stats.length)}%" align="center" style="padding:14px 6px;background:#f5f3ff;border-radius:16px;">
+          <div style="font-size:30px;font-weight:800;line-height:1.05;color:#5b21b6;">${escapeHtml(st.value)}</div>
+          <div style="margin-top:5px;font-size:12px;font-weight:700;letter-spacing:.02em;color:#7c3aed;">${escapeHtml(st.label)}</div>
+        </td>`).join(`<td width="10" style="font-size:0;line-height:0;">&nbsp;</td>`)}
+      </tr></table>`
+    : "";
+  const secondaryHtml = opts.secondary
+    ? `<p style="margin:14px 0 0;text-align:center;font-size:14px;"><a href="${opts.secondary.href}" style="color:#7c3aed;font-weight:700;text-decoration:none;">${escapeHtml(opts.secondary.label)}</a></p>`
     : "";
   return `<!doctype html>
 <html>
-  <body style="margin:0;padding:0;background:#f6f5f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#18181b;">
-    <div style="display:none;max-height:0;overflow:hidden;color:#f6f5f2;">${escapeHtml(opts.preheader)}</div>
-    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="padding:32px 16px;background:#f6f5f2;">
+  <body style="margin:0;padding:0;background:#fafafa;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#18181b;">
+    <div style="display:none;max-height:0;overflow:hidden;color:#fafafa;">${escapeHtml(opts.preheader)}</div>
+    <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="padding:32px 16px;background:#fafafa;">
       <tr><td align="center">
         <table width="560" cellpadding="0" cellspacing="0" role="presentation" style="max-width:560px;width:100%;">
-          <tr><td align="center" style="padding-bottom:20px;"><img src="${BASE_URL}/readee-logo.png" alt="Readee" width="128" style="display:block;width:128px;height:auto;" /></td></tr>
-          <tr><td style="background:#ffffff;border:1px solid #ececf0;border-radius:20px;padding:34px 32px;box-shadow:0 10px 40px -18px rgba(49,46,129,.18);">
+          <tr><td align="center" style="padding-bottom:20px;"><img src="${BASE_URL}/readee-logo.png" alt="Readee" width="140" style="display:block;width:140px;height:auto;" /></td></tr>
+          <tr><td style="background:#ffffff;border:1px solid #ececf0;border-radius:24px;padding:36px 32px;box-shadow:0 10px 40px -18px rgba(49,46,129,.18);">
             <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
-              ${bunnyImg}
+              ${heroImg}
               ${eyebrowHtml}
-              <tr><td align="center"><h1 style="margin:0;font-size:22px;font-weight:800;color:#1e1b4b;line-height:1.2;">${escapeHtml(heading)}</h1></td></tr>
+              <tr><td align="center"><h1 style="margin:0;font-size:26px;font-weight:800;color:#1e1b4b;line-height:1.2;">${escapeHtml(heading)}</h1></td></tr>
             </table>
+            ${statsHtml}
             ${opts.bodyHtml}
-            <div style="margin-top:24px;text-align:center;">
-              <a href="${opts.ctaHref}" style="display:inline-block;background:#4f46e5;color:#ffffff;padding:13px 26px;border-radius:999px;font-weight:800;font-size:15px;text-decoration:none;">${escapeHtml(opts.ctaLabel)}</a>
+            <div style="margin-top:26px;text-align:center;">
+              <a href="${opts.ctaHref}" style="display:inline-block;background:#7c3aed;color:#ffffff;padding:15px 30px;border-radius:999px;font-weight:800;font-size:16px;text-decoration:none;">${escapeHtml(opts.ctaLabel)}</a>
             </div>
+            ${secondaryHtml}
           </td></tr>
           <tr><td align="center" style="padding-top:22px;">
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 12px;"><tr>
@@ -141,7 +161,7 @@ function renderWelcome(parentName: string | null, kidName: string | null, unsubs
     "- Readee",
   ].join("\n");
   const bodyHtml = `
-    <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
     <ul style="margin:16px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:#3f3f46;">
       <li>Read-aloud lessons with karaoke highlighting - great for emerging readers.</li>
       <li>Practice questions taught to Common Core ELA standards.</li>
@@ -152,7 +172,7 @@ function renderWelcome(parentName: string | null, kidName: string | null, unsubs
     parentName,
     eyebrow: "Welcome aboard",
     heading: kidName ? `Let's start ${kidName}'s first lesson` : "Let's start your first lesson",
-    bunny: "bunny-welcome.png",
+    hero: "welcome",
     bodyHtml,
     ctaHref: `${BASE_URL}/dashboard`,
     ctaLabel: "Start the first lesson",
@@ -205,7 +225,7 @@ function renderFirstLessonNudge(
     "- Readee",
   ].join("\n");
   const bodyHtml = `
-    <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
     <ol style="margin:16px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:#3f3f46;">
       <li>Open Readee together.</li>
       <li>Tap Today's Readee on the dashboard.</li>
@@ -216,7 +236,7 @@ function renderFirstLessonNudge(
     parentName,
     eyebrow: "Quick start",
     heading: kidName ? `Ready for ${kidName}'s first lesson?` : "Ready for the first lesson?",
-    bunny: "bunny-reading.png",
+    hero: "first-lesson",
     bodyHtml,
     ctaHref: `${BASE_URL}/dashboard`,
     ctaLabel: "Start tonight's lesson",
@@ -251,7 +271,7 @@ function renderReEngage(
     "- Readee",
   ].join("\n");
   const bodyHtml = `
-    <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
     <p style="margin:16px 0 0;font-size:14px;line-height:1.6;color:#3f3f46;">Pick the easiest path back in:</p>
     <ul style="margin:8px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:#3f3f46;">
       <li><a href="${BASE_URL}/stories" style="color:#4f46e5;text-decoration:none;font-weight:600;">A 5-minute story</a></li>
@@ -263,7 +283,7 @@ function renderReEngage(
     parentName,
     eyebrow: "Come back",
     heading: kidName ? `${kidName} hasn't read in ${daysSince} days` : `Your reader has been away ${daysSince} days`,
-    bunny: "bunny-reading.png",
+    hero: "re-engage",
     bodyHtml,
     ctaHref: `${BASE_URL}/today`,
     ctaLabel: "Try a quick session",
@@ -392,13 +412,13 @@ function renderPlacementNudge(parentName: string | null, kidName: string | null,
   const lead = `${who}'s account is set up, but the reading placement is still waiting. Luna listens to ${who} read for about ten minutes, then you get a report with the exact level, the three skills and a plan.`;
   const text = [parentName ? `Hi ${parentName},` : "Hi there,", "", lead, "", "Tonight:", "  1. Open Readee together.", "  2. Tap Start the reading placement.", `  3. Hand ${who} the device and let Luna run it.`, "", `${BASE_URL}/dashboard`, "", `Unsubscribe: ${unsubscribeUrl}`, "- Readee"].join("\n");
   const bodyHtml = `
-    <p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
+    <p style="margin:12px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;">${escapeHtml(lead)}</p>
     <ol style="margin:16px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:#3f3f46;">
       <li>Open Readee together.</li>
       <li>Tap Start the reading placement.</li>
       <li>Hand ${escapeHtml(who)} the device and let Luna run it.</li>
     </ol>`;
-  const html = shell({ preheader: "Ten minutes with Luna, then the report.", parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: "Start the reading placement", unsubscribeUrl, heading: `${who}'s placement is waiting`, eyebrow: "Reading placement", bunny: "bunny-wave-clipboard.png" });
+  const html = shell({ preheader: "Ten minutes with Luna, then the report.", parentName, bodyHtml, ctaHref: `${BASE_URL}/dashboard`, ctaLabel: "Start the reading placement", unsubscribeUrl, heading: `${who}'s placement is waiting`, eyebrow: "Reading placement", hero: "placement-nudge" });
   return { subject, text, html };
 }
 
@@ -481,14 +501,14 @@ function renderTrialEnding(parentName: string | null, kidName: string | null, un
     "- Readee",
   ].join("\n");
   const bodyHtml = `
-    <p style="margin:14px 0 0;font-size:15px;line-height:1.6;color:#3f3f46;text-align:center;">${escapeHtml(lead)}</p>
+    <p style="margin:14px 0 0;font-size:16px;line-height:1.6;color:#3f3f46;text-align:center;">${escapeHtml(lead)}</p>
     <p style="margin:12px 0 0;font-size:13px;color:#6b7280;text-align:center;">$6.99/mo billed yearly &middot; cancel anytime</p>`;
   const html = shell({
     preheader: "Your free trial ends tomorrow.",
     parentName,
     eyebrow: "Trial ending",
     heading: kidName ? `${kidName}'s trial ends tomorrow` : "Your trial ends tomorrow",
-    bunny: "bunny-cheer.png",
+    hero: "re-engage",
     bodyHtml,
     ctaHref: `${BASE_URL}/upgrade`,
     ctaLabel: "Keep Readee+",

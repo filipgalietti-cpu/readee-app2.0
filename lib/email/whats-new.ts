@@ -51,7 +51,7 @@ function renderWhatsNew(c: WhatsNewContent, unsubscribeUrl: string): { subject: 
     parentName: null,
     eyebrow: c.eyebrow ?? "What's new",
     heading: c.heading,
-    bunny: c.bunny ?? "bunny-cheer.png",
+    hero: c.bunny ?? "whats-new",
     bodyHtml,
     ctaHref,
     ctaLabel,
