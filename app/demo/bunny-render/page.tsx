@@ -13,6 +13,9 @@ export default function BunnyRenderPage() {
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
     setQ({ outfit: sp.get("outfit") ?? "bunny_classic", state: sp.get("state") ?? "idle" });
+    // The site body paints white (globals.css); a transparent screenshot needs the whole chain clear.
+    document.documentElement.style.background = "transparent";
+    document.body.style.background = "transparent";
   }, []);
   if (process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_PLACEMENT_DEMO !== "1") return null;
   if (!q) return null;
