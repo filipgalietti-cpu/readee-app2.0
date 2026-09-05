@@ -31,6 +31,7 @@ type Daily = {
   passage_title: string;
   passage_body: string;
   image_url: string | null;
+  image_attribution: string | null;
   audio_url: string | null;
   question_prompt: string;
   choices: string[];
@@ -47,11 +48,28 @@ const getDaily = cache(async (slug: string): Promise<Daily | null> => {
   const { data } = await supabase
     .from("daily_questions")
     .select(
-      "date, theme, slug, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions, easy_variant",
+      "date, theme, slug, passage_title, passage_body, image_url, image_attribution, audio_url, question_prompt, choices, correct, hint, extra_questions, easy_variant",
     )
     .eq("slug", slug)
     .maybeSingle();
   return (data as Daily) ?? null;
+});
+
+/** The published dailies either side of this date, for the arrow keys.
+ *  Two tiny indexed reads; only live rows so the archive never walks into a
+ *  draft or a QC-failed day. */
+const getNeighbours = cache(async (date: string): Promise<{ prev: string | null; next: string | null }> => {
+  const supabase = await createClient();
+  const [older, newer] = await Promise.all([
+    supabase.from("daily_questions").select("slug").lt("date", date)
+      .eq("published_state", "live").order("date", { ascending: false }).limit(1).maybeSingle(),
+    supabase.from("daily_questions").select("slug").gt("date", date)
+      .eq("published_state", "live").order("date", { ascending: true }).limit(1).maybeSingle(),
+  ]);
+  return {
+    prev: ((older.data as { slug?: string } | null)?.slug) ?? null,
+    next: ((newer.data as { slug?: string } | null)?.slug) ?? null,
+  };
 });
 
 export async function generateMetadata({
@@ -95,6 +113,7 @@ export default async function TodayDetailPage({
 }) {
   const { slug } = await params;
   const d = await getDaily(slug);
+  const neighbours = d ? await getNeighbours(d.date) : { prev: null, next: null };
   if (!d) notFound();
   const extras = Array.isArray(d.extra_questions) ? d.extra_questions : [];
   // Daily Readee is a signed-in feature — send logged-out visitors to sign
@@ -140,19 +159,31 @@ export default async function TodayDetailPage({
   // read; everyone else (and families without a reading level yet whose
   // child is in 2nd grade or above) starts on the full read. The toggle
   // always lets them switch. (B2C: the parent's first child.)
+  // One child read, used for BOTH the default reading level and the outfit the
+  // celebration bunny wears. It used to sit inside `if (easy)`, so on any daily
+  // without an easy rendition we never looked the child up at all - and the
+  // post-quiz bunny was hardcoded to "classic", which is not even a real outfit
+  // id (the only one is "bunny_classic"), so it silently fell back for
+  // everybody regardless. A child who bought an outfit never saw it here.
   let defaultLevel: "easy" | "full" = "full";
-  if (easy) {
-    const { data: kid } = await supabase
-      .from("children")
-      .select("reading_level, grade")
-      .eq("parent_id", user.id)
-      .order("created_at", { ascending: true })
-      .limit(1)
-      .maybeSingle();
-    const readingLevel = (kid as { reading_level: string | null } | null)?.reading_level ?? null;
-    const grade = (kid as { grade: string | null } | null)?.grade ?? null;
-    if (readingLevel ? EARLY_READING_LEVELS.has(readingLevel) : grade ? EARLY_GRADES.has(grade) : false) {
-      defaultLevel = "easy";
+  let outfitId = "bunny_classic";
+  const { data: kid } = await supabase
+    .from("children")
+    .select("reading_level, grade, equipped_items")
+    .eq("parent_id", user.id)
+    .order("created_at", { ascending: true })
+    .limit(1)
+    .maybeSingle();
+  if (kid) {
+    outfitId =
+      ((kid as { equipped_items?: { outfit?: string } | null }).equipped_items?.outfit) ||
+      "bunny_classic";
+    if (easy) {
+      const readingLevel = (kid as { reading_level: string | null }).reading_level ?? null;
+      const grade = (kid as { grade: string | null }).grade ?? null;
+      if (readingLevel ? EARLY_READING_LEVELS.has(readingLevel) : grade ? EARLY_GRADES.has(grade) : false) {
+        defaultLevel = "easy";
+      }
     }
   }
 
@@ -184,9 +215,13 @@ export default async function TodayDetailPage({
           dateLabel={dateLabel}
           date={d.date}
           imageUrl={d.image_url}
+          imageAttribution={d.image_attribution}
+          prevSlug={neighbours.prev}
+          nextSlug={neighbours.next}
           full={full}
           easy={easy}
           defaultLevel={defaultLevel}
+          outfitId={outfitId}
         />
 
         {/* Teacher CTA — only renders when authed as a teacher with a classroom. */}

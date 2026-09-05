@@ -93,7 +93,21 @@ async function verifyCommonsLicense(
   imageUrl: string,
 ): Promise<{ license: string; artist: string | null } | null> {
   try {
-    const fname = decodeURIComponent(imageUrl.split("/").pop() ?? "");
+    // Two traps in this URL, both of which silently disabled the whole
+    // Wikipedia image path:
+    //
+    //   1. The REST API appends tracking params, so the last path segment is
+    //      "Mars_....png?utm_source=en.wikipedia.org&utm_campaign=api". Looking
+    //      up File:<that> always misses, and a miss is treated as "not on
+    //      Commons, therefore non-free", so every candidate was rejected and
+    //      every passage fell through to an AI drawing.
+    //   2. A thumbnail URL ends in "330px-Real_Name.png" under a /thumb/
+    //      directory; the real file name is the segment BEFORE it.
+    const bare = imageUrl.split("?")[0];
+    const segs = bare.split("/");
+    const fname = decodeURIComponent(
+      (/\/thumb\//.test(bare) ? segs[segs.length - 2] : segs[segs.length - 1]) ?? "",
+    );
     if (!fname) return null;
     const api = `https://commons.wikimedia.org/w/api.php?action=query&titles=${encodeURIComponent(
       "File:" + fname,
@@ -190,7 +204,10 @@ export async function detectHistoricalFigure(
  * overwhelmingly public-domain or CC-licensed for historical figures
  * who died long ago.
  */
-async function fetchWikipediaArtifact(
+/** Exported for lib/ai/real-subject-image.ts: the same fetch works for any
+ *  Wikipedia article title, not just people, and already license-gates via
+ *  verifyCommonsLicense. */
+export async function fetchWikipediaArtifact(
   name: string,
 ): Promise<CachedArtifact | null> {
   const memHit = memoryCache.get(name.toLowerCase());

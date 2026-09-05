@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import TodayQuestionPlayer from "./TodayQuestionPlayer";
 import ReadAloudButton from "./ReadAloudButton";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import { Glyph } from "@/app/_components/Glyph";
 
 type Q = {
   prompt: string;
@@ -37,19 +40,46 @@ export default function DailyReader({
   dateLabel,
   date,
   imageUrl,
+  imageAttribution,
+  prevSlug,
+  nextSlug,
   full,
   easy,
   defaultLevel,
+  outfitId,
 }: {
   theme: string;
   dateLabel: string;
   date: string;
   imageUrl: string | null;
+  imageAttribution: string | null;
+  prevSlug: string | null;
+  nextSlug: string | null;
   full: DailyRendition;
   easy: DailyRendition | null;
   /** Server-computed: children placed at K or 1st start on the short read. */
   defaultLevel: "easy" | "full";
+  outfitId: string;
 }) {
+  const router = useRouter();
+
+  // Arrow keys walk the archive. Reading one daily and wanting the next is the
+  // common move, and the only route before this was back out to /daily and in
+  // again. Ignores keypresses while typing so it cannot hijack an input, and
+  // the visible buttons below keep it discoverable rather than a secret.
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const el = e.target as HTMLElement | null;
+      const tag = el?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || el?.isContentEditable) return;
+      if (e.key === "ArrowLeft" && prevSlug) router.push(`/today/${prevSlug}`);
+      if (e.key === "ArrowRight" && nextSlug) router.push(`/today/${nextSlug}`);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [router, prevSlug, nextSlug]);
+
   const [level, setLevel] = useState<"easy" | "full">(easy ? defaultLevel : "full");
   const r = level === "easy" && easy ? easy : full;
   const wordCount = r.body.split(/\s+/).filter(Boolean).length;
@@ -101,7 +131,7 @@ export default function DailyReader({
         </AnimatePresence>
 
         {imageUrl && (
-          <div className="mt-5 flex justify-center">
+          <figure className="mt-5 m-0 flex flex-col items-center">
             {/* Square (1024²) illustrations — contain, not cover, so the
                 picture is never cropped. Border hugs the image itself. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -110,7 +140,12 @@ export default function DailyReader({
               alt=""
               className="max-h-[460px] w-auto max-w-full rounded-3xl border border-zinc-200 object-contain shadow-sm"
             />
-          </div>
+            {/* Wikimedia photographs come under CC BY / CC BY-SA and the credit
+                is a licence condition, not a nicety. Null for AI art. */}
+            {imageAttribution && (
+              <figcaption className="mt-2 text-[11px] text-zinc-400">{imageAttribution}</figcaption>
+            )}
+          </figure>
         )}
 
         <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500">
@@ -142,8 +177,34 @@ export default function DailyReader({
 
       {/* RIGHT — the quiz (sticky on desktop, aligned with the illustration) */}
       <div className="lg:sticky lg:top-[76px] lg:mt-[88px]">
-        <TodayQuestionPlayer key={level} date={date} questions={r.questions} />
-      </div>
+        <TodayQuestionPlayer key={level} date={date} questions={r.questions} outfitId={outfitId} />
+      
+      {(prevSlug || nextSlug) && (
+        <nav className="mt-10 flex items-center justify-between gap-3 border-t border-zinc-200 pt-5">
+          {prevSlug ? (
+            <Link
+              href={`/today/${prevSlug}`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:border-violet-300 hover:text-violet-700"
+            >
+              <Glyph name="arrow-left" size={14} />
+              Previous
+            </Link>
+          ) : <span />}
+          <span className="hidden text-[11px] text-zinc-400 sm:inline">
+            Use the arrow keys
+          </span>
+          {nextSlug ? (
+            <Link
+              href={`/today/${nextSlug}`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 transition hover:border-violet-300 hover:text-violet-700"
+            >
+              Next
+              <Glyph name="arrow-right" size={14} />
+            </Link>
+          ) : <span />}
+        </nav>
+      )}
+</div>
     </div>
   );
 }

@@ -12,6 +12,7 @@ type DailyQuestion = {
   passage_title: string;
   passage_body: string;
   image_url: string | null;
+  image_attribution: string | null;
   audio_url: string | null;
   question_prompt: string;
   choices: string[];
@@ -49,7 +50,7 @@ export default function DailyQuestionCard({
         const { data: row } = await supabase
           .from("daily_questions")
           .select(
-            "date, theme, slug, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint",
+            "date, theme, slug, passage_title, passage_body, image_url, image_attribution, audio_url, question_prompt, choices, correct, hint",
           )
           .lte("date", today)
           .eq("published_state", "live")
@@ -134,26 +135,40 @@ export default function DailyQuestionCard({
 
       <div className="mt-4 grid gap-4 sm:grid-cols-[150px_1fr] sm:items-stretch">
         {data.image_url && (
-          <img
-            src={data.image_url}
-            alt=""
-            className="h-40 w-full rounded-2xl border border-zinc-200 object-cover sm:h-full sm:min-h-[128px]"
-          />
+          <figure className="m-0">
+            <img
+              src={data.image_url}
+              alt=""
+              className="h-40 w-full rounded-2xl border border-zinc-200 object-cover sm:h-full sm:min-h-[128px]"
+            />
+            {/* Wikimedia photos arrive CC BY / CC BY-SA, which require credit.
+                Null for AI art, so nothing renders there. */}
+            {data.image_attribution && (
+              <figcaption className="mt-1 text-[10px] leading-tight text-zinc-400">
+                {data.image_attribution}
+              </figcaption>
+            )}
+          </figure>
         )}
         <div>
           <div className="text-sm font-bold text-zinc-900">
             {data.passage_title}
           </div>
+          {/* The whole passage, scrollable rather than cut.
+              This card asks a comprehension question directly below, and every
+              one of the 132 dailies is longer than the old 300-character clip
+              (they average 606), so on average half the text was hidden from a
+              child being asked about it. The answer was frequently in the half
+              they could not see. Same reason the placement and Luna keep their
+              passages on screen: an answer has to be findable in the text. */}
           <p
-            className="mt-1 text-[13px] leading-snug text-zinc-700"
+            className="mt-1 max-h-[168px] overflow-y-auto pr-1 text-[13px] leading-snug text-zinc-700"
             style={{
               fontFamily:
                 'Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif',
             }}
           >
-            {data.passage_body.length > 300
-              ? data.passage_body.slice(0, 300) + "…"
-              : data.passage_body}
+            {data.passage_body}
           </p>
           {data.audio_url && (
             <button

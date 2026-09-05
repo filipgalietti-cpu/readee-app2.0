@@ -27,6 +27,7 @@ import {
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
 import { REPRESENTATION_RULE } from "@/lib/ai/representation";
 import { depictionModeFor, applyDepictionMode } from "@/lib/daily/depiction-guard";
+import { resolveRealSubjectImage } from "@/lib/ai/real-subject-image";
 import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
 import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
@@ -634,6 +635,13 @@ ${theme.topic}${avoidBlock}`;
   //    the post-build image judge can verify per-character.
   let imageUrl: string | null = null;
   let imageScene: string | null = null;
+  // True once a real licensed photograph is in hand. It must never be sent to
+  // the generator or to the ship gate: that gate judges an image against a
+  // DRAWING brief, so it would fail a NASA photograph of Mars for not looking
+  // like the illustration it was never trying to be, and replace it.
+  let usedRealPhoto = false;
+  /** Credit line for a Wikimedia image. CC BY-SA requires it; null for AI art. */
+  let imageAttribution: string | null = null;
   let sceneSpec: Awaited<ReturnType<typeof extractSceneSpec>> extends infer R
     ? R extends { ok: true; spec: infer S }
       ? S
@@ -647,6 +655,8 @@ ${theme.topic}${avoidBlock}`;
     );
     imageUrl = cachedUrl ?? resolved.imageUrl;
     imageScene = `Wikipedia portrait of ${resolved.figureName}`;
+    usedRealPhoto = true;
+    imageAttribution = resolved.attribution;
   } else {
     // Extract the SceneSpec first. The spec drives the brief AND the
     // post-generation image judge — keeping them on the same checklist
@@ -688,11 +698,36 @@ ${theme.topic}${avoidBlock}`;
       // competently drawn - the judge asks "is this good", never "should a
       // model be inventing this at all".
       const depiction = depictionModeFor({ title: passageTitle, body: passageBody, theme: theme.label });
-      const guardedScene = applyDepictionMode(brief + figureGuard, depiction.mode);
-      if (!guardedScene) {
+
+      // Before drawing anything: is this a real thing a photograph could show?
+      // A drawn Mars competes with a NASA photograph and loses, and for a
+      // nonfiction passage the drawing is also inventing details. Only for
+      // nonfiction - a real fox photo is worse than an illustration for a story
+      // about a fox who learns to share, because the story is not about foxes.
+      // Also for mode "none". A real licensed photograph is exactly what the
+      // guard says should stand in for the drawing it forbids: the objection to
+      // the Juneteenth image was that a model invented it, not that the day
+      // should go unillustrated. If no photo exists, the day still ships bare.
+      const wantsPhoto = depiction.mode !== "free" || sceneSpec?.genre === "nonfiction";
+      if (wantsPhoto) {
+        const real = await resolveRealSubjectImage(passageTitle, passageBody);
+        if (real.kind === "photo") {
+          const cached = await cacheWikipediaImageToSupabase(real.subject, real.imageUrl);
+          imageUrl = cached ?? real.imageUrl;
+          imageScene = `Wikipedia photograph of ${real.subject}`;
+          usedRealPhoto = true;
+          imageAttribution = real.attribution;
+          console.info(`[daily] ${dateStr}: real photo for "${real.subject}" (${real.attribution})`);
+        } else {
+          console.info(`[daily] ${dateStr}: no photo - ${real.reason}`);
+        }
+      }
+
+      const guardedScene = imageUrl ? null : applyDepictionMode(brief + figureGuard, depiction.mode);
+      if (!guardedScene && !imageUrl) {
         console.warn(`[daily] ${dateStr}: shipping imageless - ${depiction.reason}`);
       }
-      imageScene = guardedScene;
+      if (!imageUrl) imageScene = guardedScene;
       // Best-of-3: generate 3 candidates and let a comparative judge
       // pick the winner against the spec. Comparative grading is
       // consistently more accurate than absolute. Falls back to a
@@ -700,7 +735,9 @@ ${theme.topic}${avoidBlock}`;
       // passages with empty characters[]) because there's nothing
       // to comparatively grade against.
       const stylePrefix = pickImageStyle(theme.label, dateStr, sceneSpec?.genre ?? null);
-      if (!imageScene) {
+      if (usedRealPhoto) {
+        // a real licensed photograph already won; drawing over it is the bug
+      } else if (!imageScene) {
         // guard said no depiction; the passage ships without one
       } else if (sceneSpec) {
         const bestRes = await generateBestImage({
@@ -728,7 +765,7 @@ ${theme.topic}${avoidBlock}`;
   }
 
   // Ship-gate: never publish a sloppy image (retry once, else imageless).
-  if (imageUrl && imageScene) {
+  if (imageUrl && imageScene && !usedRealPhoto) {
     imageUrl = await shipGateImage({
       teacherId,
       imageUrl,
@@ -804,6 +841,7 @@ ${theme.topic}${avoidBlock}`;
       passage_title: passageTitle,
       passage_body: passageBody,
       image_url: imageUrl,
+      image_attribution: imageAttribution,
       audio_url: audioUrl,
       question_prompt: mainQ.prompt,
       choices: mainQ.choices,
@@ -1012,6 +1050,8 @@ export async function targetedImageRegen(opts: {
     .from("daily_questions")
     .update({
       image_url: newImageUrl,
+      // A regen replaces the photo with generated art, so the old credit is void.
+      image_attribution: null,
       qc_overall: newOverall,
       qc_report: updatedReport,
       // Promote back to live if the heal cleared the fails.

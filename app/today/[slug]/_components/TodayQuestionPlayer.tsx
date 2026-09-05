@@ -27,11 +27,14 @@ const LETTERS = ["A", "B", "C", "D", "E", "F"];
 export default function TodayQuestionPlayer({
   date,
   questions,
+  outfitId = "bunny_classic",
 }: {
   /** Daily-Readee date. When omitted (e.g. reused on Discover articles),
    *  the daily engagement vote is disabled and its row is hidden. */
   date?: string;
   questions: Q[];
+  /** The child's equipped outfit, so the celebration is THEIR bunny. */
+  outfitId?: string;
 }) {
   const qs = useMemo(() => questions.filter((q) => q && q.choices?.length >= 2), [questions]);
   const [qi, setQi] = useState(0);
@@ -96,7 +99,7 @@ export default function TodayQuestionPlayer({
       <div className={CARD}>
         <div className="flex flex-col items-center px-1 text-center">
           <div className="h-[152px] w-[140px]">
-            <BunnyReaction outfitId="classic" state={bunnyState} />
+            <BunnyReaction outfitId={outfitId} state={bunnyState} />
           </div>
           <div className="mt-1.5 flex gap-1">
             {[1, 2, 3].map((n) => {
