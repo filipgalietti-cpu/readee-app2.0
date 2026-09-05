@@ -33,6 +33,7 @@ export default function QuizSummary({
   childId = null,
   priorLifetimeCarrots = 0,
   nextHref,
+  nextLabel = "Next Standard →",
   againHref,
   backHref = "/dashboard",
   note,
@@ -45,6 +46,7 @@ export default function QuizSummary({
   childId?: string | null;
   priorLifetimeCarrots?: number;
   nextHref?: string;
+  nextLabel?: string;
   note?: string;
   againHref?: string;
   backHref?: string;
@@ -297,7 +299,7 @@ export default function QuizSummary({
                 href={nextHref}
                 className="block w-full rounded-2xl bg-gradient-to-r from-green-400 to-green-500 py-[13px] text-center text-[15px] font-extrabold text-emerald-950 shadow-[0_4px_0_0_#16a34a] active:scale-[.97]"
               >
-                Next Standard →
+                {nextLabel}
               </Link>
             )}
             <div className="flex items-center gap-[9px]">

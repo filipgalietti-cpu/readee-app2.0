@@ -38,7 +38,23 @@ const nextConfig: NextConfig = {
   // B2B (schools/teachers) retired — B2C only. 308-redirect the dead
   // marketing routes to home so indexed URLs and stale links never 404.
   async redirects() {
+    // V2 lesson assets (audio + images) are gitignored: the factory writes them
+    // locally and scripts/v2-assets-upload.ts mirrors them to Supabase Storage.
+    // In production the app-relative paths every lesson definition carries are
+    // redirected to the bucket (images as webp), so the runners and the
+    // definitions never change. Dev serves the local files.
+    const storage = process.env.NEXT_PUBLIC_SUPABASE_URL ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public` : null;
+    const useBucket = storage && (process.env.V2_ASSETS === "bucket" || (process.env.NODE_ENV === "production" && process.env.V2_ASSETS !== "local"));
+    const assetRedirects = useBucket
+      ? [
+          { source: "/audio/lessons-v2/:path*", destination: `${storage}/audio/lessons-v2/:path*`, permanent: false },
+          { source: "/audio/quizzes-v2/:path*", destination: `${storage}/audio/quizzes-v2/:path*`, permanent: false },
+          { source: "/audio/warmups-v2/:path*", destination: `${storage}/audio/warmups-v2/:path*`, permanent: false },
+          { source: "/images/lessons-v2/:path(.*)\\.png", destination: `${storage}/images/lessons-v2/:path*.webp`, permanent: false },
+        ]
+      : [];
     return [
+      ...assetRedirects,
       { source: "/schools", destination: "/", permanent: true },
       { source: "/schools/:path*", destination: "/", permanent: true },
       { source: "/teachers", destination: "/", permanent: true },

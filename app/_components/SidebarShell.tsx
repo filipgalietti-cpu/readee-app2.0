@@ -19,6 +19,7 @@ const HIDDEN_PAGES = new Set([
   "/placement",
   "/learn",
   "/lesson",
+  "/journey/play",
 ]);
 
 export default function SidebarShell({

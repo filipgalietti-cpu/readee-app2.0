@@ -473,6 +473,19 @@ function ChildDashboard({
   const [expandedGrade, setExpandedGrade] = useState<string | null>(null);
   const userPlan = usePlanStore((s) => s.rawPlan) ?? "free";
   const fetchPlan = usePlanStore((s) => s.fetch);
+  // V2 journey (the roadmap spine, K-2 today): when the child is on it, the
+  // CTA and today's plan follow the roadmap instead of the legacy catalog.
+  const [journeyV2, setJourneyV2] = useState<{ v2: boolean; next: { kind: string; title: string; href: string; free: boolean; unitName: string; unitGrade: string; unitDone: number; unitTotal: number } | null; complete?: boolean } | null>(null);
+  useEffect(() => {
+    let alive = true;
+    fetch(`/api/journey/next?child=${encodeURIComponent(child.id)}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => { if (alive && j && j.ok) setJourneyV2(j); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, [child.id]);
+  const v2Next = journeyV2?.v2 ? journeyV2.next : null;
+  const v2Complete = !!journeyV2?.v2 && !!journeyV2.complete;
   const dashParams = useSearchParams();
   const setStoreChildren = useChildStore((s) => s.setChildren);
   const setStoreChildData = useChildStore((s) => s.setChildData);
@@ -557,7 +570,9 @@ function ChildDashboard({
   const completedCount = jp.gradeDone; // grade-level, for the badge milestone
   const gradeTotal = jp.gradeTotal;
   const unitPct = jp.unitTotal > 0 ? jp.unitDone / jp.unitTotal : 0;
-  const nextLessonHref = nextLesson ? `/learn?child=${child.id}&standard=${nextLesson.standardId}` : "#";
+  const nextLessonHref = v2Next ? v2Next.href : nextLesson ? `/learn?child=${child.id}&standard=${nextLesson.standardId}` : "#";
+  // Title of the next step: the V2 journey's item when the child is on it, else the legacy catalog's lesson.
+  const nextStepTitle = v2Next ? v2Next.title : nextLesson ? nextLesson.title : null;
 
   // Recent completed (dead ParentSidebar shape, kept type-valid).
   const recentCompleted = jp.recentCompleted.map((l) => ({
@@ -783,7 +798,13 @@ function ChildDashboard({
     ? (PLACEMENT_V2
         ? { href: `/placement?child=${child.id}`, text: "Start the reading placement", sub: "Read with Luna · about 10 min" }
         : { href: `/assessment?child=${child.id}`, text: "Take your reading quiz", sub: "A fun 10-question quiz · about 5 min" })
-    : nextLesson
+    : v2Next
+      ? v2Next.free
+        ? { href: v2Next.href, text: v2Next.unitDone === 0 && v2Next.kind === "warmup" ? "Start your adventure" : "Keep going", sub: `Next: ${v2Next.title}` }
+        : { href: `/upgrade?reason=journey&child=${child.id}`, text: "Unlock the next unit", sub: `Next: ${v2Next.unitGrade} ${v2Next.unitName} with Readee+` }
+      : v2Complete
+        ? { href: `/journey?child=${child.id}`, text: "See your journey", sub: "Every unit that is ready is done" }
+        : nextLesson
       ? { href: nextLessonHref, text: completedCount === 0 ? "Start your adventure" : "Keep going", sub: `Next: ${nextLesson.title}` }
       : { href: `/practice-hub?child=${child.id}`, text: "Practice time!", sub: "You finished every lesson - amazing!" };
 
@@ -814,7 +835,9 @@ function ChildDashboard({
   // is honest + visible. Full-access readers (paid or in-trial) never see it.
   // Locked when the next lesson is beyond the free first unit (matches the real
   // /learn gate) — not a "done >= 1" heuristic.
-  const lessonLocked = !accessFull && !!nextLesson && (previewMode === "free" || !isLessonInFreeUnit({ grade: nextLesson.grade, domain: nextLesson.domain }, freeUnitDomain));
+  const lessonLocked = v2Next
+    ? !accessFull && (previewMode === "free" || !v2Next.free)
+    : !accessFull && !!nextLesson && (previewMode === "free" || !isLessonInFreeUnit({ grade: nextLesson.grade, domain: nextLesson.domain }, freeUnitDomain));
 
   const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string; locked?: boolean }> = (firstDay && !previewing)
     ? [
@@ -827,7 +850,7 @@ function ChildDashboard({
         weakStandard
           ? { num: "1", label: `Review: ${weakStandard.title}`, sub: dailyGoalMet ? "Done - nice work!" : "You missed a few of these last time", status: dailyGoalMet ? "done" : "cur", href: `/practice?standard=${encodeURIComponent(weakStandard.standardId)}&child=${child.id}` }
           : { num: "1", label: "Warm-up practice", sub: dailyGoalMet ? "Done - nice work!" : "5 quick questions", status: dailyGoalMet ? "done" : "cur", href: `/practice-hub?child=${child.id}` },
-        { num: "2", label: nextLesson ? nextLesson.title : "All lessons done!", sub: lessonLocked ? "Unlock the rest of the lessons" : nextLesson ? "About 5 minutes" : "You finished them all", status: nextLesson ? (dailyGoalMet ? "cur" : "todo") : "done", href: lessonLocked ? upgradeHref : nextLesson ? nextLessonHref : undefined, locked: lessonLocked },
+        { num: "2", label: nextStepTitle ?? "All lessons done!", sub: lessonLocked ? "Unlock the rest of the lessons" : nextStepTitle ? (v2Next ? `${v2Next.unitGrade} ${v2Next.unitName}` : "About 5 minutes") : "You finished them all", status: nextStepTitle ? (dailyGoalMet ? "cur" : "todo") : "done", href: lessonLocked ? upgradeHref : nextStepTitle ? nextLessonHref : undefined, locked: lessonLocked },
         { num: "3", label: "Read a story", sub: lapsed ? "Reactivate to keep reading" : "You pick which one", status: "todo", href: lapsed ? upgradeHref : `/stories?child=${child.id}`, locked: lapsed },
       ];
   // Locked (premium-gated) steps don't count toward the daily goal ring — a
@@ -905,9 +928,9 @@ function ChildDashboard({
     planSteps,
     path: {
       nodes: pathNodes,
-      unitTitle: firstDay ? "Reading Journey" : nextLesson ? nextLesson.title : "Reading Journey",
+      unitTitle: firstDay ? "Reading Journey" : nextStepTitle ?? "Reading Journey",
       unitPct: Math.round(unitPct * 100),
-      unitSub: firstDay ? "Your adventure starts here" : nextLesson ? `${jp.unitDone} of ${jp.unitTotal} in ${jp.unitName}` : "You finished them all!",
+      unitSub: firstDay ? "Your adventure starts here" : v2Next ? `${v2Next.unitDone} of ${v2Next.unitTotal} in ${v2Next.unitGrade} ${v2Next.unitName}` : nextLesson ? `${jp.unitDone} of ${jp.unitTotal} in ${jp.unitName}` : "You finished them all!",
       href: `/journey?child=${child.id}`,
     },
     weekSub: firstDay ? "Your chart starts today" : "Keep the bars growing!",

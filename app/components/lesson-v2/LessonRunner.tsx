@@ -32,9 +32,14 @@ const PURPOSE_LABEL: Record<string, string> = {
 export default function LessonRunner({
   lesson,
   onEvent,
+  onComplete,
+  continueLabel = "Continue",
 }: {
   lesson: LessonDef;
   onEvent?: (e: LearningEvent) => void;
+  /** Journey: the child tapped Continue on the lesson-complete screen. Absent on /demo. */
+  onComplete?: () => void;
+  continueLabel?: string;
 }) {
   const [idx, setIdx] = useState(0);
   // Scene-SCOPED flags: store the scene id the flag belongs to instead of a
@@ -164,6 +169,15 @@ export default function LessonRunner({
         <p className="mt-6 max-w-[460px] text-xl leading-relaxed text-zinc-500">
           {lesson.completion?.body ?? lesson.objective}
         </p>
+        {onComplete && (
+          <button
+            type="button"
+            onClick={onComplete}
+            className="mt-8 rounded-2xl bg-violet-600 px-8 py-4 text-lg font-bold text-white shadow-[0_4px_0_0_rgb(91_33_182)] transition active:translate-y-[2px] active:shadow-[0_2px_0_0_rgb(91_33_182)]"
+          >
+            {continueLabel}
+          </button>
+        )}
       </div>
     );
   } else if (full) {

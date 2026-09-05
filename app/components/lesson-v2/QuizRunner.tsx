@@ -27,6 +27,9 @@ export default function QuizRunner({
   onEvent,
   picker,
   resultNote,
+  onComplete,
+  nextHref,
+  nextLabel,
 }: {
   quiz: QuizDef;
   onEvent?: (e: LearningEvent) => void;
@@ -35,6 +38,11 @@ export default function QuizRunner({
   picker?: (answered: QuizResultItem[], asked: QuizQuestion[], pool: QuizQuestion[]) => QuizQuestion | null;
   /** Extra line for the summary (e.g. placement "Reading level: Grade 2.4"). */
   resultNote?: (results: QuizResultItem[]) => string;
+  /** Journey: fires once with the full results the moment the last question lands. */
+  onComplete?: (results: QuizResultItem[]) => void;
+  /** Journey: the summary's forward button (arrives after onComplete saved the attempt). */
+  nextHref?: string;
+  nextLabel?: string;
 }) {
   const [phase, setPhase] = useState<"intro" | "question" | "seal" | "review">("intro");
   const [asked, setAsked] = useState<QuizQuestion[]>([]);
@@ -212,6 +220,7 @@ export default function QuizRunner({
     window.setTimeout(() => {
       const next = pickNext(nextResults, asked);
       if (!next) {
+        onComplete?.(nextResults);
         const perfect = nextResults.length > 0 && nextResults.every((r) => r.correct); // correct already = first-try-clean
         if (perfect) {
           // PERFECT: full-screen seal FIRST, then the summary
@@ -391,6 +400,8 @@ export default function QuizRunner({
             carrotsEarned={carrots}
             bestStreak={bestStreak}
             note={resultNote?.(results)}
+            nextHref={nextHref}
+            nextLabel={nextLabel}
             againHref={typeof window !== "undefined" ? window.location.pathname : "#"}
           />
         )}
