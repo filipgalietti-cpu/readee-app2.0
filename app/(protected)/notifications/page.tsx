@@ -7,6 +7,7 @@ import { supabaseBrowser } from "@/lib/supabase/client";
 import SettingsShell from "@/app/_components/SettingsShell";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { Glyph, type GlyphName } from "@/app/_components/Glyph";
+import { savedOk } from "@/lib/db/checked-write";
 
 interface NotificationPrefs {
   weekly_report: boolean;
@@ -53,19 +54,26 @@ export default function NotificationsPage() {
       if (!user) { router.replace("/login"); return; }
       setUserId(user.id);
 
-      const { data: profRows } = await supabase
+      // `email_weekly_digest` (a dedicated indexed boolean) is what the
+      // weekly-digest cron actually filters on, so it's the source of truth
+      // for the Weekly Report toggle.
+      //
+      // This used to also select/write `notification_prefs`, a column that has
+      // never existed on profiles. PostgREST rejects the WHOLE statement when
+      // one column is unknown, so both the read and the save failed every time:
+      // the page always rendered the defaults (all four on) no matter what the
+      // parent had chosen, and Save reported success having written nothing.
+      // The `as any` cast is what hid it from the typechecker.
+      const { data: profRows, error } = await supabase
         .from("profiles")
-        .select("notification_prefs, email_weekly_digest")
+        .select("email_weekly_digest")
         .eq("id", user.id)
         .limit(1);
 
-      const prof = profRows?.[0] as any;
-      // `email_weekly_digest` (a dedicated indexed boolean) is what the
-      // weekly-digest cron actually filters on, so it's the source of truth
-      // for the Weekly Report toggle. The rest live in notification_prefs.
+      if (error) console.error("[notifications] load failed:", error);
+      const prof = profRows?.[0];
       setPrefs({
         ...DEFAULT_PREFS,
-        ...(prof?.notification_prefs ?? {}),
         weekly_report: prof?.email_weekly_digest ?? true,
       });
       setLoading(false);
@@ -79,12 +87,14 @@ export default function NotificationsPage() {
     const supabase = supabaseBrowser();
     // Mirror the Weekly Report toggle into `email_weekly_digest` — the
     // column the digest cron filters on — so the toggle actually controls
-    // whether the email sends.
-    await supabase
-      .from("profiles")
-      .update({ notification_prefs: prefs, email_weekly_digest: prefs.weekly_report } as any)
-      .eq("id", userId);
+    // whether the email sends. Through savedOk so a rejected write can never
+    // show "Saved" again; it logs and broadcasts readee:save-failed.
+    const ok = await savedOk(
+      "notifications.email_weekly_digest",
+      supabase.from("profiles").update({ email_weekly_digest: prefs.weekly_report }).eq("id", userId),
+    );
     setSaving(false);
+    if (!ok) return;
     setSaved(true);
     setTimeout(() => setSaved(false), 2500);
   };

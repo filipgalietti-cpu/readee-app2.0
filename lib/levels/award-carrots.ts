@@ -57,7 +57,14 @@ export async function awardCarrots(
       p_amount: Math.round(amount),
       p_count_toward_level: counts,
     });
-    if (error || !data) return null;
+    if (error || !data) {
+      // Still best-effort by contract (callers get null and carry on), but no
+      // longer INVISIBLE. Every caller discarded this null, so a child could
+      // watch a carrot counter climb on screen while the balance never moved.
+      // Surfacing here covers all eight award sites at once.
+      reportCarrotFailure(childId, amount, error);
+      return null;
+    }
     const row = (Array.isArray(data) ? data[0] : data) as
       | { new_carrots: number; new_lifetime: number }
       | undefined;
@@ -70,7 +77,18 @@ export async function awardCarrots(
       priorLifetime,
       leveledUp: counts && didLevelUp(priorLifetime, lifetime),
     };
-  } catch {
+  } catch (thrown) {
+    reportCarrotFailure(childId, amount, thrown);
     return null;
+  }
+}
+
+/** Log + broadcast so <SaveFailedNotice /> can say the carrots did not stick. */
+function reportCarrotFailure(childId: string, amount: number, cause: unknown) {
+  console.error("[save-failed] carrots:award", { childId, amount, cause });
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent("readee:save-failed", { detail: { label: "carrots:award" } }),
+    );
   }
 }

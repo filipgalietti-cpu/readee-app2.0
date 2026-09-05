@@ -1,5 +1,6 @@
 import TosGate from "@/app/_components/TosGate";
 import StopAudioOnNav from "@/app/_components/StopAudioOnNav";
+import SaveFailedNotice from "@/app/_components/SaveFailedNotice";
 import SidebarShell from "@/app/_components/SidebarShell";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -70,6 +71,7 @@ export default async function ProtectedLayout({
   return (
     <TosGate>
       <StopAudioOnNav />
+      <SaveFailedNotice />
       <SidebarShell initialOpen={initialSidebarOpen}>{children}</SidebarShell>
     </TosGate>
   );

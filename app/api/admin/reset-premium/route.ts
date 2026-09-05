@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { isPlatformAdmin } from "@/lib/auth/admin-gate";
 
 export async function POST() {
   const supabase = await createClient();
@@ -13,6 +14,16 @@ export async function POST() {
       { success: false, message: "You must be logged in." },
       { status: 401 },
     );
+  }
+
+  // The Settings button that calls this is wrapped in NODE_ENV === "development",
+  // but the endpoint was not: in production any signed-in parent could POST here.
+  // That matters because this deletes their promo_redemptions AND decrements
+  // promo_codes.current_uses, which undoes BOTH guards in /api/promo/redeem
+  // (the per-user "already redeemed" check and the global max_uses cap), so a
+  // capped code could be redeemed forever. Owners keep it for plan testing.
+  if (process.env.NODE_ENV === "production" && !(await isPlatformAdmin(user.id))) {
+    return NextResponse.json({ success: false, message: "Not available." }, { status: 403 });
   }
 
   const admin = supabaseAdmin();

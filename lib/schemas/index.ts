@@ -40,3 +40,8 @@ export {
   type ChildUpdateZ,
   type PreferencesZ,
 } from "./settings";
+
+export {
+  PlacementSubmissionSchema,
+  type PlacementSubmissionZ,
+} from "./placement";

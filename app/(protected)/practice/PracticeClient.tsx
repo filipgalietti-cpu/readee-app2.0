@@ -1801,14 +1801,25 @@ function CompletionScreen({
           }),
         );
         if (rows.length > 0) {
-          const { error } = await supabase.from("practice_results").insert(rows);
-          if (error) console.error("[practice] failed to save practice_results:", error);
+          await savedOk(
+            "practice:results-sharpen",
+            () => supabase.from("practice_results").insert(rows),
+            { retries: 2 },
+          );
         }
       } else {
-        // Check the error — a silent insert failure here (a rolled-back trigger,
-        // RLS, etc.) once broke every practice save app-wide for days unnoticed.
-        const { error } = await supabase.from("practice_results").insert(payload);
-        if (error) console.error("[practice] failed to save practice_results:", error);
+        // A silent insert failure here (a rolled-back trigger, RLS, etc.) once
+        // broke every practice save app-wide for days unnoticed. Reading the
+        // error was only half the fix: it was logged and then ignored, so the
+        // child still saw "Perfect Score" for work that never left the browser.
+        // Now it retries the transient case (a phone dropping connection
+        // mid-session is the common one) and, if it still fails, surfaces
+        // through <SaveFailedNotice /> instead of only the console.
+        await savedOk(
+          "practice:results",
+          () => supabase.from("practice_results").insert(payload),
+          { retries: 2 },
+        );
       }
 
       // Per-question fidelity — every answered question becomes a row in

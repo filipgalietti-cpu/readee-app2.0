@@ -1,5 +1,5 @@
 import { NextResponse, after } from "next/server";
-import { z } from "zod";
+import { PlacementSubmissionSchema } from "@/lib/schemas";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { generateSpeechVertex } from "@/lib/ai/vertex-tts";
@@ -24,38 +24,6 @@ import type { Moment, PlacementSubmission, NarrationLine } from "@/lib/placement
  * and writes their private-bucket paths back onto the row. The reveal polls
  * /api/placement/result until the clips it needs exist.
  */
-const Count = z.object({ correct: z.number().int().min(0), total: z.number().int().min(0) });
-const Band = z.number().int().min(0).max(5);
-const Submission = z.object({
-  childId: z.string().uuid(),
-  enrolled: z.number().int().min(0).max(4),
-  ladder: z.object({
-    enrolled: z.number().int().min(0).max(4),
-    current: Band,
-    phase: z.enum(["seeking", "climbing", "descending", "done"]),
-    done: z.boolean(),
-    lists: z.array(z.object({
-      band: Band,
-      attempts: z.array(z.object({ word: z.string().max(40), correct: z.boolean() })).max(20),
-      correct: z.number().int().min(0),
-      missed: z.number().int().min(0),
-      complete: z.boolean(),
-      passed: z.boolean(),
-    })).max(8),
-  }),
-  passages: z.array(z.object({
-    band: Band,
-    wordsCorrect: z.number().int().min(0),
-    wordsTotal: z.number().int().min(0),
-    durationSeconds: z.number().min(0).max(600),
-    prosody: z.number().nullable().optional(),
-  })).max(3),
-  comprehension: Count.extend({ band: Band }).nullable(),
-  foundations: z.object({ letterSounds: Count, blending: Count, nonsenseWords: Count }).nullable(),
-  moments: z.array(z.record(z.string(), z.unknown())).max(40),
-  durationSeconds: z.number().min(0).max(3600),
-  passageRecordingPath: z.string().max(200).nullable().optional(),
-});
 
 function seedRow(childId: string, standardId: string, pass: boolean, now: Date) {
   const ease = pass ? 2.55 : 2.3;
@@ -81,7 +49,7 @@ export async function POST(req: Request) {
 
   let body: unknown;
   try { body = await req.json(); } catch { return NextResponse.json({ ok: false, error: "Bad request." }, { status: 400 }); }
-  const parsed = Submission.safeParse(body);
+  const parsed = PlacementSubmissionSchema.safeParse(body);
   if (!parsed.success) return NextResponse.json({ ok: false, error: "Bad submission.", issues: parsed.error.issues.slice(0, 5) }, { status: 400 });
   const sub = parsed.data as unknown as PlacementSubmission;
 
