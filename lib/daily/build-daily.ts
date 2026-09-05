@@ -25,6 +25,7 @@ import {
   generateSpeech,
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
+import { REPRESENTATION_RULE } from "@/lib/ai/representation";
 import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
 import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
@@ -548,6 +549,8 @@ export async function buildDailyQuestion(opts?: {
   const datedTopic = `${SAFETY_PREAMBLE}
 
 Today is ${fullDate} (${monthName} — ${seasonName} in the Northern Hemisphere). Write a passage that feels appropriate for THIS time of year — do not pick a topic from a different season.
+
+${REPRESENTATION_RULE}
 
 ${theme.topic}${avoidBlock}`;
 

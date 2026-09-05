@@ -31,7 +31,7 @@ const BALOO = "var(--font-baloo), 'Baloo 2', Nunito, sans-serif";
 const NUN = "Nunito, ui-sans-serif, system-ui, sans-serif";
 const INDIGO = "#4338ca";
 
-const GREETINGS = ["Hi!", "¡Hola!", "Hello!", "Bonjour!", "Ciao!", "Greetings!", "Howdy!", "Aloha!"];
+const GREETINGS = ["Hi!", "¡Hola!", "Hello!", "Bonjour!", "Ciao!", "Cześć!", "Greetings!", "Howdy!", "Aloha!"];
 
 const GRADE_OPTS: { label: string; sub: string; value: string }[] = [
   { label: "K", sub: "Kindergarten", value: "Kindergarten" },

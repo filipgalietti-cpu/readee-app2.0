@@ -1889,7 +1889,22 @@ export default function LunaReader({
             // Comprehension quiz: the question big, three tappable choices.
             // Right = green + praise; wrong = warm reveal (the correct choice
             // glows green, the tapped one soft amber - never red-X a 6 year old).
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, padding: "18px 4px 16px" }}>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, padding: "16px 4px 16px" }}>
+              {/* The story stays on screen while the questions are asked. These
+                  answers seed RL.x.1 ("refer explicitly to the text as the basis
+                  for the answers"), so hiding the passage measured recall rather
+                  than comprehension - and a child who reads well but holds less
+                  in memory looked like a comprehension problem. Capped height so
+                  it can never push the choices off a phone screen; the child
+                  scrolls inside it to hunt for the evidence. */}
+              <div style={{ width: "100%", maxWidth: 520, background: "#fff", border: "1px solid #e9d5ff", borderRadius: 14, padding: "9px 14px 10px", maxHeight: 104, overflowY: "auto", textAlign: "left" }}>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: ".12em", textTransform: "uppercase", color: "#7c3aed", marginBottom: 3 }}>
+                  The story
+                </div>
+                <p style={{ margin: 0, fontFamily: SERIF, fontSize: 15, lineHeight: 1.65, color: "#3f3f46" }}>
+                  {passage.text}
+                </p>
+              </div>
               <p style={{ margin: 0, fontFamily: BALOO, fontWeight: 800, fontSize: 26, lineHeight: 1.35, color: "#18181b", textAlign: "center", maxWidth: 520 }}>
                 {quiz.q.q}
               </p>

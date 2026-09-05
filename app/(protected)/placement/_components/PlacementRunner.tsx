@@ -39,7 +39,10 @@ type Screen =
   | { kind: "word"; word: string; listening: boolean; nonsense?: boolean; band?: number }
   | { kind: "tiles"; caption: string; tiles: string[]; picked: string | null }
   | { kind: "passage"; title: string; text: string; reading: boolean }
-  | { kind: "question"; prompt: string; options: { id: string; label: string }[]; picked: string | null; readingIdx: number; correctId?: string; speakers?: boolean; qid?: string }
+  // `passage` is set ONLY for comprehension on a passage the child read
+  // themselves. The listening questions deliberately leave it undefined -
+  // showing the text there would turn a listening task into a reading one.
+  | { kind: "question"; prompt: string; options: { id: string; label: string }[]; picked: string | null; readingIdx: number; correctId?: string; speakers?: boolean; qid?: string; passage?: { title: string; text: string } }
   | { kind: "blocked"; reason: MicState }
   | { kind: "closing"; error: string | null };
 
@@ -141,9 +144,9 @@ export default function PlacementRunner({
    * One question. `readOptions` (K and 1st-grade passages) reads every choice aloud like i-Ready's K-3 audio
    * support; from 2nd grade up the child reads the choices (each has its own speaker for a re-read on request).
    */
-  const askQuestion = useCallback(async (q: BankQuestion, readOptions = true): Promise<boolean> => {
+  const askQuestion = useCallback(async (q: BankQuestion, readOptions = true, passage?: { title: string; text: string }): Promise<boolean> => {
     const correctId = robot ? q.correctId : undefined; // robots may see the key; children never do
-    const base = { kind: "question" as const, prompt: q.prompt, options: q.options, correctId, speakers: !readOptions, qid: q.id };
+    const base = { kind: "question" as const, prompt: q.prompt, options: q.options, correctId, speakers: !readOptions, qid: q.id, passage };
     setScreen({ ...base, picked: null, readingIdx: -1 });
     setOrb("speaking");
     // Arm the tap before the question plays: a child (or robot) who answers during the audio is not lost.
@@ -404,9 +407,14 @@ export default function PlacementRunner({
         const readChoices = readBand <= 1;
         if (readChoices) await say("comp-intro", "Now three questions about the story. I will read each one to you. Tap your answer.");
         else await say("comp-intro-read", "Now three questions about the story. Read each one and tap your answer. Tap the little speaker if you want me to read one to you.");
-        const qs = PLACEMENT_BANK.bands[readBand].passage!.questions;
+        const bankPassage = PLACEMENT_BANK.bands[readBand].passage!;
+        const qs = bankPassage.questions;
         let correct = 0;
-        for (const [i, q] of qs.entries()) { if (await askQuestion(q, readChoices)) correct++; await ack(i); }
+        // The passage stays on screen for these. It is the child's own read, and
+        // the questions seed RL.x.1, which is explicitly about finding the answer
+        // IN the text - so taking the text away measured memory instead.
+        const lookBack = { title: bankPassage.title, text: bankPassage.text };
+        for (const [i, q] of qs.entries()) { if (await askQuestion(q, readChoices, lookBack)) correct++; await ack(i); }
         comprehension = { correct, total: qs.length, band: readBand };
         moments.push({ kind: "comprehension", band: readBand, correct, total: qs.length });
       } else {
@@ -557,6 +565,16 @@ export default function PlacementRunner({
 
           {screen.kind === "question" && (
             <div className="flex w-full max-w-3xl flex-col items-center gap-6" data-question>
+              {screen.passage && (
+                <div className="max-h-40 w-full overflow-y-auto rounded-2xl border border-violet-200 bg-white px-5 py-4 text-left" data-look-back>
+                  <div className="text-[11px] font-bold uppercase tracking-widest text-violet-600">
+                    {screen.passage.title}
+                  </div>
+                  <p className="mt-1 whitespace-pre-line text-base leading-relaxed text-zinc-700 md:text-lg">
+                    {screen.passage.text}
+                  </p>
+                </div>
+              )}
               <p className="text-center text-2xl font-semibold leading-snug md:text-3xl">{screen.prompt}</p>
               <div className="grid w-full gap-3 md:gap-4">
                 {screen.options.map((o, i) => (
