@@ -31,7 +31,9 @@ import { resolveRealSubjectImage } from "@/lib/ai/real-subject-image";
 import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
 import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
-import { pickThemeForDate, slugForDate } from "@/lib/daily/themes";
+import { pickThemeForDate, slugForDate, isPinnedHoliday } from "@/lib/daily/themes";
+import { pickDaily, MEDIUM_PROMPT, type Bucket, type DailyPick } from "@/lib/daily/catalog";
+import { inclusiveHolidayFor } from "@/lib/daily/holidays-inclusive";
 import { trackError, trackSignal } from "@/lib/observability/track";
 import { runAutoHealLoop, type Finding, type Healer } from "@/lib/qc/auto-heal";
 import {
@@ -85,7 +87,14 @@ function pickImageStyle(
   themeLabel: string,
   dateStr: string,
   genre?: "fiction" | "nonfiction" | null,
+  drawnMedium?: string | null,
 ): string {
+  // The catalogue already drew a medium for today, and that draw is the point:
+  // it is what puts felt on a narwhal instead of reserving photoreal for
+  // everything factual. Honour it and skip the older heuristics entirely.
+  if (drawnMedium && drawnMedium !== "photograph" && drawnMedium in MEDIUM_PROMPT) {
+    return MEDIUM_PROMPT[drawnMedium as keyof typeof MEDIUM_PROMPT];
+  }
   if (PHOTOREAL_THEMES.has(themeLabel)) return PHOTOREAL_STYLE;
   // Nonfiction fights Imagen's cute-cartoon prior (smiley fireflies kept
   // shipping despite prompt rules) — bias factual passages to the
@@ -486,7 +495,37 @@ export async function buildDailyQuestion(opts?: {
     return { ok: false, error: e.message, date: dateStr };
   }
 
-  const theme = pickThemeForDate(date);
+  // What today is about. Pinned celebrations win outright - Diwali is on
+  // Diwali, not whenever a draw feels like it - and every other day is a random
+  // draw from the curated pool, avoiding whatever the last forty days used.
+  //
+  // `pickThemeForDate` still handles the US holidays it always did; the
+  // inclusive table adds the ones it never had (Diwali, Lunar New Year, Nowruz,
+  // Eid, Day of the Dead, Kwanzaa and the rest).
+  let drawn: DailyPick | null = null;
+  const pinned = inclusiveHolidayFor(dateStr);
+  let theme: { label: string; topic: string };
+  if (pinned) {
+    theme = pinned;
+  } else {
+    const legacyHoliday = pickThemeForDate(date);
+    if (isPinnedHoliday(legacyHoliday.label)) {
+      theme = legacyHoliday;
+    } else {
+      const { data: recentDraws } = await supabaseAdmin()
+        .from("daily_questions")
+        .select("bucket, subject, medium")
+        .lt("date", dateStr)
+        .order("date", { ascending: false })
+        .limit(40);
+      const recent = ((recentDraws ?? []) as { bucket: string | null; subject: string | null; medium: string | null }[])
+        .filter((r) => r.bucket && r.subject)
+        .map((r) => ({ bucket: r.bucket as Bucket, subject: r.subject as string, medium: r.medium ?? "" }));
+      drawn = pickDaily(dateStr, recent);
+      theme = { label: drawn.label, topic: drawn.topic };
+    }
+  }
+
 
   // Date-anchored topic. Injects today's actual date + season so the
   // AI writes something that fits THE DAY, not just the theme bucket.
@@ -715,7 +754,11 @@ ${theme.topic}${avoidBlock}`;
       // beats a drawing by the widest margin. The subject detector already
       // self-selects (it returns null for invented characters), and a failed
       // spec extraction should not silently cost a passage its photo.
-      const wantsPhoto = depiction.mode !== "free" || sceneSpec?.genre !== "fiction";
+      // A photograph only when the draw called for one (or when the depiction
+      // guard forbids inventing the subject, where a real image is the only
+      // honest option). Before, anything non-fiction went looking for a photo,
+      // which is how the catalogue ended up looking like a stock library.
+      const wantsPhoto = depiction.mode !== "free" || drawn?.medium === "photograph";
       if (wantsPhoto) {
         const real = await resolveRealSubjectImage(passageTitle, passageBody);
         if (real.kind === "photo") {
@@ -741,7 +784,7 @@ ${theme.topic}${avoidBlock}`;
       // single generateImage call when we have no spec (concept
       // passages with empty characters[]) because there's nothing
       // to comparatively grade against.
-      const stylePrefix = pickImageStyle(theme.label, dateStr, sceneSpec?.genre ?? null);
+      const stylePrefix = pickImageStyle(theme.label, dateStr, sceneSpec?.genre ?? null, drawn?.medium);
       if (usedRealPhoto) {
         // a real licensed photograph already won; drawing over it is the bug
       } else if (!imageScene) {
@@ -778,7 +821,7 @@ ${theme.topic}${avoidBlock}`;
       imageUrl,
       imageScene,
       passageBody,
-      stylePrefix: pickImageStyle(theme.label, dateStr, sceneSpec?.genre ?? null),
+      stylePrefix: pickImageStyle(theme.label, dateStr, sceneSpec?.genre ?? null, drawn?.medium),
     });
   }
 
@@ -849,6 +892,9 @@ ${theme.topic}${avoidBlock}`;
       passage_body: passageBody,
       image_url: imageUrl,
       image_attribution: imageAttribution,
+      bucket: drawn?.bucket ?? null,
+      subject: drawn?.subject ?? null,
+      medium: drawn?.medium ?? null,
       audio_url: audioUrl,
       question_prompt: mainQ.prompt,
       choices: mainQ.choices,

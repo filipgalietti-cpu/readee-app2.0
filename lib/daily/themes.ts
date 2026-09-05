@@ -414,3 +414,21 @@ export function slugForDate(d: Date): string {
   const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
   return `${get("year")}-${get("month")}-${get("day")}`;
 }
+
+
+/**
+ * Is this label one of the date-pinned holidays, as opposed to a weekday theme?
+ *
+ * The catalogue draw replaces the weekday themes but must not replace the
+ * holidays: Thanksgiving has to land on Thanksgiving. `pickThemeForDate`
+ * returns both kinds from one call, so the builder needs to tell them apart.
+ */
+const PINNED_LABELS: Set<string> = new Set([
+  ...Object.values(FIXED_HOLIDAYS).map((t) => t.label),
+  ...MOVABLE_HOLIDAYS.map((m) => m.theme.label),
+  ...Object.values(MONTHLY_THEMES).flat().map((t) => t.label),
+]);
+
+export function isPinnedHoliday(label: string): boolean {
+  return PINNED_LABELS.has(label);
+}
