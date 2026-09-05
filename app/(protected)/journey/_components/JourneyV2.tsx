@@ -74,8 +74,8 @@ export default function JourneyV2({ view, child, hasPlacement }: { view: Journey
               ? `Our reading specialists are still building ${view.unbuiltAhead} more ${view.unbuiltAhead === 1 ? "unit" : "units"} for this part of the road. They appear here the day they are ready.`
               : "There is more to read in the full lesson library."}
           </p>
-          <Link href={`/journey?child=${encodeURIComponent(child.id)}&legacy=1`} className="mt-3 inline-block text-sm font-semibold text-emerald-900 underline underline-offset-4">
-            Open the full lesson library
+          <Link href={`/journey/library?child=${encodeURIComponent(child.id)}`} className="mt-3 inline-block text-sm font-semibold text-emerald-900 underline underline-offset-4">
+            Open More support, the full lesson library
           </Link>
         </section>
       )}

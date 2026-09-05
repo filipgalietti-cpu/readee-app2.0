@@ -13,6 +13,7 @@ type Tile = {
 };
 
 const TILES: Tile[] = [
+  { href: "/journey/library", icon: "book", label: "More support", desc: "The full lesson library, for extra practice on any skill.", tint: "from-violet-500 to-purple-500" },
   { href: "/discover", icon: "compass", label: "Discover", desc: "Explore reading passages by topic.", tint: "from-cyan-500 to-blue-500" },
   { href: "/levels", icon: "star", label: "Levels", desc: "See your reading level and how far you've climbed.", tint: "from-yellow-500 to-amber-500" },
   { href: "/luna", icon: "sparkles", label: "Luna", desc: "Read aloud, ask questions, and make stories with your AI buddy.", tint: "from-violet-500 to-indigo-500", ai: true },
