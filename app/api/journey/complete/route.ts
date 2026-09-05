@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { z } from "zod";
+import { sendUnitCompleteEmail } from "@/lib/email/unit-complete";
 import { createClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { awardCarrots } from "@/lib/levels/award-carrots";
@@ -70,8 +71,23 @@ export async function POST(req: Request) {
     enrolledBand: loaded.enrolledBand,
     progress,
     fullAccess: view.fullAccess,
+    difficulty: loaded.tailoring?.difficulty,
+    priorityDomains: loaded.tailoring?.priorityDomains,
+    why: loaded.tailoring?.why,
+    milestones: loaded.milestones,
   });
   const unitDone = !next.units.some((u) => u.id === where.unitId && u.status === "current");
+
+  // The parent's moment: a passed unit exam sends the unit-complete email (the
+  // score, the road ahead, and the ask when the next unit is Readee+).
+  if (kind === "exam" && passed) {
+    const unit = journeyCatalog().find((u) => u.id === where.unitId);
+    if (unit) {
+      after(async () => {
+        await sendUnitCompleteEmail({ childId, unitId: unit.id, unitName: unit.name, unitGrade: unit.grade, score: Math.round(score ?? 0), view: next });
+      });
+    }
+  }
   return NextResponse.json({
     ok: true,
     passed,

@@ -4,16 +4,18 @@
  *
  * Where the walk starts: the placement's entry band (plan.entryBand, the band
  * the decision placed the child in). Without a placement, the enrolled grade.
- * The V2 spine is K-2 content today, so a walk that starts above that stays
- * on the legacy journey (isV2Journey === false) until the factory lands 3rd
- * and 4th grade.
+ * The placement's tailoring (plan.tailoring: credits, difficulty, priority,
+ * the "why" lines) and its dated milestones ride along. The V2 spine is K-2
+ * content today, so a walk that starts above that stays on the legacy journey
+ * (isV2Journey === false) until the factory lands 3rd and 4th grade.
  */
 import { createClient } from "@/lib/supabase/server";
 import { getServerAccess } from "@/lib/plan/check-access";
 import { gradeFinal, journeyCatalog } from "./catalog";
 import { bandFromGrade, buildJourney, V2_MAX_START_BAND } from "./journey";
 import type { Band } from "./roadmap.gen";
-import type { JourneyView, ProgressRow } from "./types";
+import type { JourneyTailoring } from "./tailor";
+import type { JourneyView, ProgressRow, RoadMilestone } from "./types";
 
 export interface JourneyChild {
   id: string;
@@ -32,6 +34,9 @@ export interface LoadedJourney {
   /** False when the child belongs on the legacy journey (start band above the V2 content). */
   isV2Journey: boolean;
   view: JourneyView;
+  /** The placement's cut, when the child has one. */
+  tailoring: JourneyTailoring | null;
+  milestones: RoadMilestone[];
 }
 
 type Sb = Awaited<ReturnType<typeof createClient>>;
@@ -53,17 +58,24 @@ export async function resolveChild(supabase: Sb, parentId: string, childId: stri
   };
 }
 
-async function latestEntryBand(supabase: Sb, childId: string): Promise<Band | null> {
+type LatestPlacement = { entryBand: Band | null; tailoring: JourneyTailoring | null; milestones: RoadMilestone[] };
+
+async function latestPlacement(supabase: Sb, childId: string): Promise<LatestPlacement> {
+  const none: LatestPlacement = { entryBand: null, tailoring: null, milestones: [] };
   const { data } = await supabase.from("placements").select("plan, decision").eq("child_id", childId).order("created_at", { ascending: false }).limit(1).maybeSingle();
-  if (!data) return null;
-  const plan = (data as { plan?: { entryBand?: number } }).plan;
+  if (!data) return none;
+  const plan = (data as { plan?: { entryBand?: number; tailoring?: JourneyTailoring; milestones?: RoadMilestone[] } }).plan;
   const decision = (data as { decision?: { placedBand?: number } }).decision;
   const b = plan?.entryBand ?? decision?.placedBand;
-  return typeof b === "number" && b >= 0 && b <= 4 ? (b as Band) : null;
+  return {
+    entryBand: typeof b === "number" && b >= 0 && b <= 4 ? (b as Band) : null,
+    tailoring: plan?.tailoring?.version === 1 ? plan.tailoring : null,
+    milestones: Array.isArray(plan?.milestones) ? plan!.milestones!.map((m) => ({ label: m.label, month: m.month, date: m.date })) : [],
+  };
 }
 
 export async function loadProgress(supabase: Sb, childId: string): Promise<ProgressRow[]> {
-  const { data } = await supabase.from("journey_v2_progress").select("item_type, item_id, unit_id, score, passed, completed_at").eq("child_id", childId);
+  const { data } = await supabase.from("journey_v2_progress").select("item_type, item_id, unit_id, score, passed, completed_at, source").eq("child_id", childId);
   return (data ?? []) as ProgressRow[];
 }
 
@@ -76,15 +88,16 @@ export async function loadJourney(opts: { parentId: string; childId: string | nu
   const supabase = await createClient();
   const child = await resolveChild(supabase, opts.parentId, opts.childId);
   if (!child) return null;
-  const [entry, progress, access] = await Promise.all([
-    latestEntryBand(supabase, child.id),
+  const [placement, progress, access] = await Promise.all([
+    latestPlacement(supabase, child.id),
     loadProgress(supabase, child.id),
     opts.fullAccess === undefined ? getServerAccess() : Promise.resolve(null),
   ]);
   const enrolledBand = bandFromGrade(child.grade);
-  const startBand = entry ?? enrolledBand;
+  const startBand = placement.entryBand ?? enrolledBand;
   const fullAccess = opts.fullAccess ?? access?.hasFullAccess ?? false;
   const catalog = journeyCatalog();
+  const t = placement.tailoring;
   const view = buildJourney({
     childId: child.id,
     catalog,
@@ -93,6 +106,10 @@ export async function loadJourney(opts: { parentId: string; childId: string | nu
     enrolledBand,
     progress,
     fullAccess,
+    difficulty: t?.difficulty,
+    priorityDomains: t?.priorityDomains,
+    why: t?.why,
+    milestones: placement.milestones,
   });
-  return { child, startBand, enrolledBand, hasPlacement: entry !== null, isV2Journey: startBand <= V2_MAX_START_BAND, view };
+  return { child, startBand, enrolledBand, hasPlacement: placement.entryBand !== null, isV2Journey: startBand <= V2_MAX_START_BAND, view, tailoring: t, milestones: placement.milestones };
 }

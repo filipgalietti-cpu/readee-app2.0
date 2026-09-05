@@ -30,6 +30,7 @@ export default function QuizRunner({
   onComplete,
   nextHref,
   nextLabel,
+  startBand = "core",
 }: {
   quiz: QuizDef;
   onEvent?: (e: LearningEvent) => void;
@@ -43,6 +44,8 @@ export default function QuizRunner({
   /** Journey: the summary's forward button (arrives after onComplete saved the attempt). */
   nextHref?: string;
   nextLabel?: string;
+  /** Journey: where the ladder starts for this child (the placement's cut). Ignored when adaptive is off. */
+  startBand?: "easier" | "core" | "harder";
 }) {
   const [phase, setPhase] = useState<"intro" | "question" | "seal" | "review">("intro");
   const [asked, setAsked] = useState<QuizQuestion[]>([]);
@@ -60,7 +63,7 @@ export default function QuizRunner({
   const gainId = useRef(0);
   const followUp = useRef<string | null>(null);
   const BANDS = ["easier", "core", "harder"] as const;
-  const bandIdx = useRef(1); // start at core
+  const bandIdx = useRef(startBand === "easier" ? 0 : startBand === "harder" ? 2 : 1); // the placement's cut; core by default
   const bandRun = useRef(0); // consecutive first-try corrects within current band
   const qStart = useRef(0);
 

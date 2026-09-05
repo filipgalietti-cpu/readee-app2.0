@@ -65,6 +65,8 @@ export type PlacementPlan = {
   /** The first thing the child does after "Start plan". */
   firstUnit: { grade: string; domain: string; title: string; lessons: number } | null;
   reviewedBy: string;
+  /** How the V2 journey is cut for this child (credits, difficulty, priority). Absent on placements saved before Sep 2026. */
+  tailoring?: import("@/lib/journey-v2/tailor").JourneyTailoring;
 };
 
 export type NarrationId =

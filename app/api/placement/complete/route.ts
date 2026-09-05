@@ -10,6 +10,8 @@ import { withSpokenName } from "@/lib/audio/name-pronunciation";
 import { sendPlacementReportEmail } from "@/lib/email/placement-report";
 import { trackFunnel } from "@/lib/analytics/funnel.server";
 import { grades } from "@/lib/assessment/questions";
+import { tailor } from "@/lib/journey-v2/tailor";
+import { creditRows, creditedLessonsFor } from "@/lib/journey-v2/credits";
 import type { LadderState } from "@/lib/placement/ladder";
 import type { Moment, PlacementSubmission, NarrationLine } from "@/lib/placement/types";
 
@@ -101,6 +103,11 @@ export async function POST(req: Request) {
   });
   const moments = sub.moments as unknown as Moment[];
   const plan = buildPlan({ decision, moments, today: now });
+  // The V2 journey's cut: which shipped lessons the evidence already covers,
+  // where the questions start, and which domains come first. Saved on the plan
+  // so the map, the runners, and the emails read one cut.
+  const credits = creditedLessonsFor(decision.seeds.filter((s) => s.pass).map((s) => s.standard_id));
+  plan.tailoring = tailor(decision, { childName, creditedLessons: credits.length });
   const narration: NarrationLine[] = narrate({ childName, pronoun: "they", decision, moments, plan, today: now });
 
   const admin = supabaseAdmin();
@@ -157,6 +164,14 @@ export async function POST(req: Request) {
     },
   });
   await admin.from("children").update({ reading_level: decision.readingLevelName }).eq("id", sub.childId);
+
+  // Placement credits on the V2 journey: proven lessons leave the map. A retake
+  // replaces the previous placement's credits (delete, then insert).
+  try {
+    await admin.from("journey_v2_progress").delete().eq("child_id", sub.childId).eq("source", "placement");
+    const rows = creditRows(sub.childId, credits);
+    if (rows.length) await admin.from("journey_v2_progress").insert(rows);
+  } catch { /* the journey still works without credits */ }
 
   // Learner spine seeds (best-effort, never fail the placement).
   try {

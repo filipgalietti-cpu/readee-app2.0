@@ -14,10 +14,14 @@
  *     Readee+ only.
  *   - A roadmap unit with no shipped lessons is not on the map. The factory is
  *     still building 3rd and 4th grade; their units appear as they land.
+ *   - The tailored cut: lessons the placement CREDITED leave the map entirely
+ *     (a curated route, not a crossed-out one); inside a unit, lessons in the
+ *     child's priority domains play first; questions start on the child's band.
  */
 import type { Band } from "./roadmap.gen";
-import type { CatalogFinal, CatalogUnit } from "./catalog";
-import type { ItemKind, JourneyItem, JourneyLesson, JourneyUnit, JourneyView, ProgressRow, UnitStatus } from "./types";
+import type { CatalogFinal, CatalogLesson, CatalogUnit } from "./catalog";
+import type { DomKey } from "./tailor";
+import type { ItemKind, JourneyItem, JourneyLesson, JourneyUnit, JourneyView, ProgressRow, RoadMilestone, UnitStatus } from "./types";
 
 /** Percent that passes a unit exam or a graduation exam. */
 export const EXAM_PASS_PCT = 70;
@@ -34,13 +38,24 @@ export interface BuildJourneyInput {
   enrolledBand: Band;
   progress: ProgressRow[];
   fullAccess: boolean;
+  /** The placement's cut. Defaults: roadmap order, core questions, nothing credited. */
+  difficulty?: "easier" | "core" | "harder";
+  priorityDomains?: DomKey[];
+  why?: string[];
+  milestones?: RoadMilestone[];
 }
 
 export function playHref(kind: ItemKind, id: string, childId: string): string {
   return `/journey/play/${kind}/${encodeURIComponent(id)}?child=${encodeURIComponent(childId)}`;
 }
 
-type Best = { done: boolean; passed: boolean; score: number | null };
+/** "RL" | "RI" | "RF" | "L" from a CCSS id like "RF.2.3a" or "L.3.4b". */
+export function domainOf(standard: string): DomKey {
+  const m = standard.match(/^(RL|RI|RF|L)\./);
+  return (m?.[1] as DomKey) ?? "RL";
+}
+
+type Best = { done: boolean; passed: boolean; score: number | null; credited: boolean };
 
 function bestOf(rows: ProgressRow[]): Map<string, Best> {
   const m = new Map<string, Best>();
@@ -48,30 +63,52 @@ function bestOf(rows: ProgressRow[]): Map<string, Best> {
     const key = `${r.item_type}:${r.item_id}`;
     const prev = m.get(key);
     const score = r.score ?? null;
-    if (!prev) { m.set(key, { done: true, passed: r.passed, score }); continue; }
-    m.set(key, { done: true, passed: prev.passed || r.passed, score: score === null ? prev.score : prev.score === null ? score : Math.max(prev.score, score) });
+    const credited = r.source === "placement";
+    if (!prev) { m.set(key, { done: true, passed: r.passed, score, credited }); continue; }
+    m.set(key, {
+      done: true,
+      passed: prev.passed || r.passed,
+      score: score === null ? prev.score : prev.score === null ? score : Math.max(prev.score, score),
+      // A lesson actually played outranks a credit.
+      credited: prev.credited && credited,
+    });
   }
   return m;
 }
 
+/** Stable: priority-domain lessons first, roadmap order within each group. */
+export function orderLessons<T extends { standard: string }>(lessons: T[], priority: DomKey[]): T[] {
+  if (!priority.length) return lessons;
+  const rank = (l: T) => { const i = priority.indexOf(domainOf(l.standard)); return i === -1 ? priority.length : i; };
+  return lessons.map((l, i) => ({ l, i })).sort((a, b) => rank(a.l) - rank(b.l) || a.i - b.i).map((x) => x.l);
+}
+
 export function buildJourney(input: BuildJourneyInput): JourneyView {
   const { childId, catalog, startBand, enrolledBand, fullAccess } = input;
+  const priority = input.priorityDomains ?? [];
   const best = bestOf(input.progress);
   const item = (kind: ItemKind, id: string, title: string, unitId: string, free: boolean): JourneyItem => {
     const b = best.get(`${kind}:${id}`);
     return { kind, id, title, unitId, done: !!b, passed: b?.passed ?? false, score: b?.score ?? null, free, href: playHref(kind, id, childId) };
   };
+  const isCredited = (l: CatalogLesson) => best.get(`lesson:${l.id}`)?.credited === true;
 
   const onPath = catalog.filter((u) => u.band >= startBand);
-  const withContent = onPath.filter((u) => u.lessons.length > 0);
-  const unbuiltAhead = onPath.length - withContent.length;
+  // A unit is on the map when it has at least one lesson the child still has to play
+  // (a unit credited in full by the placement is not a unit the child walks).
+  const withContent = onPath.filter((u) => u.lessons.some((l) => !isCredited(l)));
+  const unbuiltAhead = onPath.filter((u) => u.lessons.length === 0).length;
   const prescribedUnitId = withContent[0]?.id ?? null;
+  let creditedTotal = 0;
 
   // First pass: resolve every unit's items and whether it is complete.
-  type Resolved = { unit: CatalogUnit; free: boolean; lessons: JourneyLesson[]; exam: JourneyItem | null; final: JourneyItem | null; complete: boolean };
+  type Resolved = { unit: CatalogUnit; free: boolean; lessons: JourneyLesson[]; credited: number; exam: JourneyItem | null; final: JourneyItem | null; complete: boolean };
   const resolved: Resolved[] = withContent.map((u) => {
     const free = fullAccess || u.id === prescribedUnitId;
-    const lessons: JourneyLesson[] = u.lessons.map((l) => {
+    const playable = orderLessons(u.lessons.filter((l) => !isCredited(l)), priority);
+    const credited = u.lessons.length - playable.length;
+    creditedTotal += credited;
+    const lessons: JourneyLesson[] = playable.map((l) => {
       const items: JourneyItem[] = [];
       if (l.warmupId) items.push(item("warmup", l.warmupId, l.warmupTitle ?? "Warm-up", u.id, free));
       const lessonItem = item("lesson", l.id, l.title, u.id, free);
@@ -86,7 +123,7 @@ export function buildJourney(input: BuildJourneyInput): JourneyView {
     const allLessonsDone = lessons.every((l) => l.done);
     // The exam is the gate when there is one; otherwise finishing the lessons finishes the unit.
     const complete = exam ? exam.passed : allLessonsDone;
-    return { unit: u, free, lessons, exam, final, complete };
+    return { unit: u, free, lessons, credited, exam, final, complete };
   });
 
   const currentIdx = resolved.findIndex((r) => !r.complete);
@@ -102,7 +139,7 @@ export function buildJourney(input: BuildJourneyInput): JourneyView {
     const ju: JourneyUnit = {
       id: r.unit.id, grade: r.unit.grade, band: r.unit.band, unitNo: r.unit.unitNo, name: r.unit.name,
       status, free: r.free, lessons: r.lessons, exam: r.exam, final: r.final,
-      lessonsDone, lessonsTotal: r.lessons.length,
+      lessonsDone, lessonsTotal: r.lessons.length, credited: r.credited,
       pct: r.lessons.length ? Math.round((lessonsDone / r.lessons.length) * 100) : 0,
     };
     units.push(ju);
@@ -113,7 +150,13 @@ export function buildJourney(input: BuildJourneyInput): JourneyView {
   const hiddenAhead = units.length - visible.length;
   const beyondBar = withContent.filter((u) => u.band > enrolledBand).length;
 
-  return { childId, startBand, enrolledBand, prescribedUnitId, units: visible, hiddenAhead, unbuiltAhead, beyondBar, current, fullAccess };
+  return {
+    childId, startBand, enrolledBand, prescribedUnitId, units: visible, hiddenAhead, unbuiltAhead, beyondBar, current, fullAccess,
+    difficulty: input.difficulty ?? "core",
+    credited: creditedTotal,
+    why: input.why ?? [],
+    milestones: input.milestones ?? [],
+  };
 }
 
 /**

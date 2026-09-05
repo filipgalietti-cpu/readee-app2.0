@@ -31,11 +31,13 @@ export type JourneyPlayProps = {
   outfitId: string | null;
   unitName: string;
   def: LessonDef | QuizDef | WarmupDef;
+  /** The placement's cut: where the question ladder starts for this child. */
+  difficulty?: "easier" | "core" | "harder";
 };
 
 const JOURNEY = (childId: string) => `/journey?child=${encodeURIComponent(childId)}`;
 
-export default function JourneyPlay({ kind, childId, childName, outfitId, unitName, def }: JourneyPlayProps) {
+export default function JourneyPlay({ kind, childId, childName, outfitId, unitName, def, difficulty = "core" }: JourneyPlayProps) {
   const router = useRouter();
   const [nextHref, setNextHref] = useState<string | null>(null);
   const [nextLabel, setNextLabel] = useState("Next");
@@ -112,7 +114,7 @@ export default function JourneyPlay({ kind, childId, childName, outfitId, unitNa
   const note = kind === "exam" || kind === "final" ? () => `${unitName} · ${kind === "final" ? "graduation exam" : "unit exam"}` : undefined;
   return (
     <>
-      <QuizRunner quiz={def as QuizDef} onComplete={onQuizComplete} nextHref={nextHref ?? undefined} nextLabel={nextLabel} resultNote={note} />
+      <QuizRunner quiz={def as QuizDef} onComplete={onQuizComplete} nextHref={nextHref ?? undefined} nextLabel={nextLabel} resultNote={note} startBand={difficulty} />
       {error && <Toast text={error} />}
     </>
   );

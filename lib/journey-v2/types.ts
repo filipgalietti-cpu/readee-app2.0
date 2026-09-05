@@ -23,6 +23,15 @@ export interface ProgressRow {
   score: number | null;
   passed: boolean;
   completed_at: string;
+  /** "placement" = credited by the placement's evidence, never played. */
+  source?: "play" | "placement";
+}
+
+/** A dated milestone from the placement plan, shown on the road at the ask. */
+export interface RoadMilestone {
+  label: string;
+  month: string;
+  date: string;
 }
 
 export interface JourneyItem {
@@ -69,6 +78,8 @@ export interface JourneyUnit {
   final: JourneyItem | null;
   lessonsDone: number;
   lessonsTotal: number;
+  /** Lessons the placement credited and the map hides (not in lessonsTotal). */
+  credited: number;
   /** 0-100, lessons done over lessons total (the exam is the gate, not a percent). */
   pct: number;
 }
@@ -90,4 +101,12 @@ export interface JourneyView {
   /** What to do next, or null when the child has finished every unit with content. */
   current: { unit: JourneyUnit; item: JourneyItem } | null;
   fullAccess: boolean;
+  /** Where the questions start for this child (from the placement; "core" without one). */
+  difficulty: "easier" | "core" | "harder";
+  /** Lessons the placement credited across the whole path. */
+  credited: number;
+  /** Parent-facing "why this plan" lines from the placement, empty without one. */
+  why: string[];
+  /** Dated milestones from the placement plan, empty without one. */
+  milestones: RoadMilestone[];
 }

@@ -11,6 +11,7 @@
  * Readee+ line, never an empty grey box.
  */
 import Link from "next/link";
+import { PRICING } from "@/lib/billing-copy";
 import type { JourneyChild } from "@/lib/journey-v2/load";
 import type { ItemKind, JourneyItem, JourneyLesson, JourneyUnit, JourneyView } from "@/lib/journey-v2/types";
 
@@ -38,26 +39,32 @@ export default function JourneyV2({ view, child, hasPlacement }: { view: Journey
             Take the reading placement
           </Link>
         )}
+        {view.why.length > 0 && (
+          <div className="mt-4 rounded-2xl border border-zinc-100 bg-white px-4 py-3">
+            <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-zinc-400">Why this plan</div>
+            <ul className="mt-1 flex flex-col gap-1 text-sm text-zinc-700">
+              {view.why.map((w) => (
+                <li key={w}>{w}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </header>
 
-      {cur && (
+      {cur && cur.item.free && (
         <section className="mb-8 rounded-3xl border border-violet-100 bg-violet-50 p-5 shadow-[0_4px_0_0_rgb(221_214_254)]">
           <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-violet-500">Next up</div>
           <div className="mt-1 text-2xl font-bold text-violet-900">{cur.item.title}</div>
           <div className="mt-1 text-sm text-violet-700">
             {KIND_LABEL[cur.item.kind]} · {GRADE_SHORT[cur.unit.grade] ?? cur.unit.grade} {cur.unit.name} · {cur.unit.lessonsDone} of {cur.unit.lessonsTotal} lessons done
           </div>
-          {cur.item.free ? (
-            <Link href={cur.item.href} className="mt-4 inline-block rounded-2xl bg-violet-600 px-7 py-3.5 text-lg font-bold text-white shadow-[0_4px_0_0_rgb(91_33_182)] transition active:translate-y-[2px] active:shadow-[0_2px_0_0_rgb(91_33_182)]">
-              {cur.item.done ? "Try again" : cur.unit.lessonsDone === 0 && cur.item.kind === "warmup" ? "Start" : "Continue"}
-            </Link>
-          ) : (
-            <Link href={upgradeHref(child.id)} className="mt-4 inline-block rounded-2xl bg-amber-500 px-7 py-3.5 text-lg font-bold text-amber-950 shadow-[0_4px_0_0_rgb(180_83_9)] transition active:translate-y-[2px]">
-              Unlock with Readee+
-            </Link>
-          )}
+          <Link href={cur.item.href} className="mt-4 inline-block rounded-2xl bg-violet-600 px-7 py-3.5 text-lg font-bold text-white shadow-[0_4px_0_0_rgb(91_33_182)] transition active:translate-y-[2px] active:shadow-[0_2px_0_0_rgb(91_33_182)]">
+            {cur.item.done ? "Try again" : cur.unit.lessonsDone === 0 && cur.item.kind === "warmup" ? "Start" : "Continue"}
+          </Link>
         </section>
       )}
+
+      {cur && !cur.item.free && <RoadCard view={view} child={child} />}
 
       {finished && (
         <section className="mb-8 rounded-3xl border border-emerald-100 bg-emerald-50 p-5">
@@ -91,6 +98,42 @@ export default function JourneyV2({ view, child, hasPlacement }: { view: Journey
         </p>
       )}
     </main>
+  );
+}
+
+/**
+ * THE ROAD AT THE ASK — shown in place of "Next up" the moment the child's
+ * next step is past the free unit. The parent sees the route to the bar, not
+ * a price: how many units remain, the dated milestones the placement
+ * projected, and the trial as the way to keep going.
+ */
+function RoadCard({ view, child }: { view: JourneyView; child: JourneyChild }) {
+  const cur = view.current!;
+  const remaining = view.units.filter((u) => u.status !== "done").length + view.hiddenAhead;
+  const bar = gradeLabel(view.enrolledBand);
+  return (
+    <section className="mb-8 rounded-3xl border border-amber-200 bg-amber-50 p-5 shadow-[0_4px_0_0_rgb(253_230_138)]">
+      <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-amber-700">{cur.unit.lessonsDone === 0 && cur.unit.status === "current" ? "Unit ready" : "Next up"}</div>
+      <div className="mt-1 text-2xl font-bold text-amber-950">{GRADE_SHORT[cur.unit.grade] ?? cur.unit.grade} {cur.unit.name} is ready.</div>
+      <p className="mt-2 text-sm text-amber-900">
+        {child.firstName}&rsquo;s road to the {bar} bar: {remaining} {remaining === 1 ? "unit" : "units"}
+        {view.unbuiltAhead > 0 ? ` (${view.unbuiltAhead} more still being built)` : ""}, each one opened by its own exam.
+      </p>
+      {view.milestones.length > 0 && (
+        <ul className="mt-3 flex flex-col gap-1.5">
+          {view.milestones.map((m) => (
+            <li key={m.label + m.date} className="flex items-baseline justify-between gap-3 rounded-xl bg-white/70 px-3 py-2 text-sm">
+              <span className="font-semibold text-amber-950">{m.label}</span>
+              <span className="shrink-0 text-amber-800">{m.month}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <Link href={upgradeHref(child.id)} className="mt-4 inline-block rounded-2xl bg-amber-500 px-7 py-3.5 text-lg font-bold text-amber-950 shadow-[0_4px_0_0_rgb(180_83_9)] transition active:translate-y-[2px]">
+        Keep going with Readee+
+      </Link>
+      <p className="mt-2 text-xs text-amber-800">{PRICING.trialDays} days free, then {PRICING.monthly.label}. Cancel any time.</p>
+    </section>
   );
 }
 

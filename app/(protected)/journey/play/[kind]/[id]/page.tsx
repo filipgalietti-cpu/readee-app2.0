@@ -54,6 +54,7 @@ export default async function JourneyPlayPage({
       childName={child.firstName}
       outfitId={child.outfitId}
       unitName={unitName}
+      difficulty={view.difficulty}
     />
   );
 }
