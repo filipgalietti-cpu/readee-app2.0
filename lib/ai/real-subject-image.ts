@@ -35,6 +35,7 @@ Rules:
 - Return ONLY a JSON object, no commentary, no markdown fences.
 - If the passage teaches about a real, documented thing: {"subject": "<canonical Wikipedia article title>", "kind": "<one of: place, body, species, invention, event, structure, phenomenon>"}
 - If the passage is a made-up story, or is about a generic activity, a feeling, or an invented character: {"subject": null}
+- ‼️ NARRATIVE BEATS SUBJECT. If the passage follows a named character through events, return null EVEN IF real animals, places or objects appear in it. "Max the rabbit found a cool cave" is a story about Max; a photograph of a cave is the wrong picture for it. Ask what the passage is ABOUT, not what it mentions. A name plus a sequence of events means fiction.
 - Name the SPECIFIC subject, never a category. "Mars" not "planets". "Ferris wheel" not "rides". "Chameleon" not "reptiles".
 - Prefer the subject a photograph would show. A passage about why leaves change colour is about "Autumn leaf color", not "trees".
 - Name it with a word the PASSAGE ITSELF uses whenever an article exists under that name. If the passage says "the Moon", return "Moon", not "Apollo 11". A downstream guard rejects any subject the passage never mentions, so the specific-but-unmentioned title loses the photo entirely.
@@ -46,7 +47,10 @@ Examples:
 - "Cam the chameleon lived in a tall tree" -> {"subject": null}
 - "Why do leaves change color in fall?" -> {"subject": "Autumn leaf color", "kind": "phenomenon"}
 - "In 1969 people landed on the Moon" -> {"subject": "Moon", "kind": "body"}  (NOT "Apollo 11": the passage never says it)
-- "Kit the fox wanted a cool place to rest" -> {"subject": null}`;
+- "Kit the fox wanted a cool place to rest" -> {"subject": null}
+- "Max the rabbit felt hot and found a dark cave to rest in" -> {"subject": null}  (a story, not an article about caves)
+- "Leo saw an opossum play dead in the yard" -> {"subject": null}  (Leo's story, not an opossum article)
+- "Narwhals have a long tusk that is really a tooth" -> {"subject": "Narwhal", "kind": "species"}`;
 
 export type RealSubject = { subject: string; kind: string };
 

@@ -179,8 +179,10 @@ export default function DailyReader({
       <div className="lg:sticky lg:top-[76px] lg:mt-[88px]">
         <TodayQuestionPlayer key={level} date={date} questions={r.questions} outfitId={outfitId} />
       
+</div>
+
       {(prevSlug || nextSlug) && (
-        <nav className="mt-10 flex items-center justify-between gap-3 border-t border-zinc-200 pt-5">
+        <nav className="mt-2 lg:col-span-2 flex items-center justify-between gap-3 border-t border-zinc-200 pt-5">
           {prevSlug ? (
             <Link
               href={`/today/${prevSlug}`}
@@ -204,7 +206,6 @@ export default function DailyReader({
           ) : <span />}
         </nav>
       )}
-</div>
     </div>
   );
 }

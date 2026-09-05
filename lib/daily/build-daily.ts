@@ -708,7 +708,14 @@ ${theme.topic}${avoidBlock}`;
       // guard says should stand in for the drawing it forbids: the objection to
       // the Juneteenth image was that a model invented it, not that the day
       // should go unillustrated. If no photo exists, the day still ships bare.
-      const wantsPhoto = depiction.mode !== "free" || sceneSpec?.genre === "nonfiction";
+      // Try a photograph unless we positively know this is a made-up story.
+      // Narrowing it to depiction mode plus an explicit nonfiction genre missed
+      // the whole middle of the catalogue - a narwhal, a cloud, a real berry -
+      // which is exactly the "nat geo for kids" material where a photograph
+      // beats a drawing by the widest margin. The subject detector already
+      // self-selects (it returns null for invented characters), and a failed
+      // spec extraction should not silently cost a passage its photo.
+      const wantsPhoto = depiction.mode !== "free" || sceneSpec?.genre !== "fiction";
       if (wantsPhoto) {
         const real = await resolveRealSubjectImage(passageTitle, passageBody);
         if (real.kind === "photo") {

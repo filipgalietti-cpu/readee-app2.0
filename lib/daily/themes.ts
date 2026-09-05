@@ -342,6 +342,9 @@ const WEEKDAY_THEMES: Record<number, DailyTheme[]> = {
   ],
 };
 
+/** Spread across four distinct weekdays; see the note in pickThemeForDate. */
+const MONTHLY_DAYS = new Set([3, 11, 19, 27]);
+
 function pad(n: number): string {
   return n < 10 ? "0" + n : "" + n;
 }
@@ -374,7 +377,14 @@ export function pickThemeForDate(d: Date): DailyTheme {
   // through the array deterministically over a month.
   const seed = day - 1;
   const monthly = MONTHLY_THEMES[month];
-  if (monthly && day % 7 === 0) {
+  // ‼️ These four days are 3, 11, 19, 27 and NOT 7, 14, 21, 28, which is what
+  // this used to be (`day % 7 === 0`). Those four are all congruent mod 7, so
+  // within any given month they are ALWAYS the same weekday: every Asian
+  // Pacific American Heritage Month passage in May 2026 landed on a Thursday,
+  // four Thursdays running, and no other weekday ever saw one. 3/11/19/27 are
+  // distinct mod 7, so a monthly observance spreads over four different
+  // weekdays in every month.
+  if (monthly && MONTHLY_DAYS.has(day)) {
     return monthly[seed % monthly.length];
   }
 
