@@ -26,6 +26,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
 import { REPRESENTATION_RULE } from "@/lib/ai/representation";
+import { depictionModeFor, applyDepictionMode } from "@/lib/daily/depiction-guard";
 import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
 import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
@@ -647,7 +648,20 @@ ${theme.topic}${avoidBlock}`;
         resolved.kind === "ai" && resolved.avoidNamedPerson && resolved.figureName
           ? ` Do not depict ${resolved.figureName}'s likeness — show only the activity, era, or setting they're associated with, no recognizable face.`
           : "";
-      imageScene = brief + figureGuard;
+      // resolveHistoricalImage only catches passages about a NAMED FIGURE, so
+      // EVENTS fell straight through to free generation with nothing stopping
+      // the model inventing people. That is how Juneteenth shipped as a white
+      // soldier handing freedom to grateful barefoot children on a palm-lined
+      // beach, and Independence Day as restyled Founding Fathers under a
+      // fifty-star 1776 flag. Both passed the quality judge, because both are
+      // competently drawn - the judge asks "is this good", never "should a
+      // model be inventing this at all".
+      const depiction = depictionModeFor({ title: passageTitle, body: passageBody, theme: theme.label });
+      const guardedScene = applyDepictionMode(brief + figureGuard, depiction.mode);
+      if (!guardedScene) {
+        console.warn(`[daily] ${dateStr}: shipping imageless - ${depiction.reason}`);
+      }
+      imageScene = guardedScene;
       // Best-of-3: generate 3 candidates and let a comparative judge
       // pick the winner against the spec. Comparative grading is
       // consistently more accurate than absolute. Falls back to a
@@ -655,7 +669,9 @@ ${theme.topic}${avoidBlock}`;
       // passages with empty characters[]) because there's nothing
       // to comparatively grade against.
       const stylePrefix = pickImageStyle(theme.label, dateStr, sceneSpec?.genre ?? null);
-      if (sceneSpec) {
+      if (!imageScene) {
+        // guard said no depiction; the passage ships without one
+      } else if (sceneSpec) {
         const bestRes = await generateBestImage({
           teacherId,
           prompt: imageScene,
