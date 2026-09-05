@@ -543,6 +543,37 @@ export async function buildDailyQuestion(opts?: {
     if (recentSubjects.length) {
       avoidBlock = `\n\nAVOID REPEATS — these SUBJECTS ran in the last two months (title + opening shown). Pick a subject clearly DIFFERENT from every one — different animal, different phenomenon, different story premise. Not a rephrase, not a close cousin, not the same fact under a new title:\n${recentSubjects.join("\n")}`;
     }
+
+    // Same-theme history, ignoring the date window entirely.
+    //
+    // The list above is date-scoped, and that is why it could not stop the
+    // caves. A weekday theme comes round about every five weeks, so 56 days
+    // spans barely one prior instance - while five near-identical "animal is
+    // hot, animal finds cave" passages piled up across five months, each one
+    // invisible to the next. Pull THIS theme's own past explicitly instead.
+    //
+    // The instruction talks about SHAPE because subject-level avoidance was
+    // already being satisfied: badger, rabbit, fox and two Maxes are five
+    // different animals having one identical experience. To a child that is
+    // the same story five times.
+    const { data: themeRows } = await admin
+      .from("daily_questions")
+      .select("passage_title, passage_body")
+      .eq("theme", theme.label)
+      .lt("date", dateStr)
+      .order("date", { ascending: false })
+      .limit(8);
+    const priorForTheme = ((themeRows ?? []) as { passage_title: string | null; passage_body: string | null }[])
+      .filter((r) => !!r.passage_title)
+      .map((r) => `- ${r.passage_title} (${(r.passage_body ?? "").replace(/\s+/g, " ").slice(0, 120)}...)`);
+    if (priorForTheme.length) {
+      avoidBlock += `\n\nTHIS EXACT THEME HAS RUN ${priorForTheme.length} TIME(S) BEFORE:\n${priorForTheme.join("\n")}\n\nYour passage must differ from every one of those in PLOT SHAPE, not in casting. Swapping the animal, the name or the season while keeping the same situation, the same problem and the same resolution produces the same passage, and a child reading both will notice. Change what actually happens.`;
+    }
+    // Theme descriptions name example situations to set tone. They were being
+    // read as the specification: "(a lost toy, a tangled kite string)" returned
+    // a tangled kite and four more lost objects, and "(riding a bike, tying
+    // shoes)" returned a bike and a shoelace.
+    avoidBlock += `\n\nIf the theme description offers examples in parentheses, they illustrate the TONE and reading level only. Do not build the passage around them; choose a situation they did not name.`;
   } catch {
     /* best-effort; ship without the avoid-list if the lookup fails */
   }
@@ -835,7 +866,7 @@ export async function targetedImageRegen(opts: {
   const { data: row, error: rowErr } = await admin
     .from("daily_questions")
     .select(
-      "date, passage_title, passage_body, image_url, qc_overall, qc_report",
+      "date, theme, passage_title, passage_body, image_url, qc_overall, qc_report",
     )
     .eq("date", dateStr)
     .maybeSingle();
@@ -897,6 +928,21 @@ export async function targetedImageRegen(opts: {
     if (!briefRes.ok) return { ok: false, error: `imageBrief: ${briefRes.error}` };
     imageScene = briefRes.brief;
   }
+
+  // The same guard the builder uses. Without it the heal path was a way back
+  // in: any regen of a historical daily would rebuild exactly the image the
+  // builder is now forbidden from making.
+  const regenDepiction = depictionModeFor({
+    title: passageTitle,
+    body: passageBody,
+    theme: ((row as any).theme as string) ?? "",
+  });
+  const guardedRegen = applyDepictionMode(imageScene, regenDepiction.mode);
+  if (!guardedRegen) {
+    await admin.from("daily_questions").update({ image_url: null }).eq("date", dateStr);
+    return { ok: true, regenerated: false, reason: `imageless by depiction guard - ${regenDepiction.reason}` };
+  }
+  imageScene = guardedRegen;
 
   // Best-of-3 + comparative judge when we have a spec; otherwise the
   // legacy single-shot path. The heal route in particular benefits
