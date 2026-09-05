@@ -255,6 +255,76 @@ import { meaningMachines, meaningMachinesImages } from "./meaning-machines";
 
 import { longWordTrains, longWordTrainsImages } from "./long-word-trains";
 
+import { showMeWhere, showMeWhereImages } from "./show-me-where";
+
+import { readAroundTheWord, readAroundTheWordImages } from "./read-around-the-word";
+
+import { becauseThenSo, becauseThenSoImages } from "./because-then-so";
+
+import { followTheMessage, followTheMessageImages } from "./follow-the-message";
+
+import { whyTheyDidIt, whyTheyDidItImages } from "./why-they-did-it";
+
+import { pointToTheFact, pointToTheFactImages } from "./point-to-the-fact";
+
+import { bigIdeaBackedUp, bigIdeaBackedUpImages } from "./big-idea-backed-up";
+
+import { newWordNewMeaning, newWordNewMeaningImages } from "./new-word-new-meaning";
+
+import { sameRootNewBranch, sameRootNewBranchImages } from "./same-root-new-branch";
+
+import { threeWordTools, threeWordToolsImages } from "./three-word-tools";
+
+import { takeApartAnyWord, takeApartAnyWordImages } from "./take-apart-any-word";
+
+import { chunkByChunk, chunkByChunkImages } from "./chunk-by-chunk";
+
+import { knowThemByHeart, knowThemByHeartImages } from "./know-them-by-heart";
+
+import { moreThanItSays, moreThanItSaysImages } from "./more-than-it-says";
+
+import { partsThatBuild, partsThatBuildImages } from "./parts-that-build";
+
+import { theirViewYourView, theirViewYourViewImages } from "./their-view-your-view";
+
+import { expertWords, expertWordsImages } from "./expert-words";
+
+import { searchLikeAPro, searchLikeAProImages } from "./search-like-a-pro";
+
+import { theAuthorsView, theAuthorsViewImages } from "./the-authors-view";
+
+import { checkTheDictionary, checkTheDictionaryImages } from "./check-the-dictionary";
+
+import { sayingsThatMeanMore, sayingsThatMeanMoreImages } from "./sayings-that-mean-more";
+
+import { wordsInAction, wordsInActionImages } from "./words-in-action";
+
+import { smoothAndSure, smoothAndSureImages } from "./smooth-and-sure";
+
+import { wordConnections, wordConnectionsImages } from "./word-connections";
+
+import { knowWhyYouRead, knowWhyYouReadImages } from "./know-why-you-read";
+
+import { proseAndPoem, proseAndPoemImages } from "./prose-and-poem";
+
+import { doesThatMakeSense, doesThatMakeSenseImages } from "./does-that-make-sense";
+
+import { sameHeroNewStory, sameHeroNewStoryImages } from "./same-hero-new-story";
+
+import { whatThePictureAdds, whatThePictureAddsImages } from "./what-the-picture-adds";
+
+import { mapsAndPhotos, mapsAndPhotosImages } from "./maps-and-photos";
+
+import { sentenceToSentence, sentenceToSentenceImages } from "./sentence-to-sentence";
+
+import { theWholeChapter, theWholeChapterImages } from "./the-whole-chapter";
+
+import { twoWritersOneTopic, twoWritersOneTopicImages } from "./two-writers-one-topic";
+
+import { whenAndWhereWords, whenAndWhereWordsImages } from "./when-and-where-words";
+
+import { shadesOfSure, shadesOfSureImages } from "./shades-of-sure";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -390,4 +460,39 @@ export const LESSONS: Record<string, LessonEntry> = {
   "match-your-voice": { lesson: matchYourVoice, images: matchYourVoiceImages },
   "meaning-machines": { lesson: meaningMachines, images: meaningMachinesImages },
   "long-word-trains": { lesson: longWordTrains, images: longWordTrainsImages },
+  "show-me-where": { lesson: showMeWhere, images: showMeWhereImages },
+  "read-around-the-word": { lesson: readAroundTheWord, images: readAroundTheWordImages },
+  "because-then-so": { lesson: becauseThenSo, images: becauseThenSoImages },
+  "follow-the-message": { lesson: followTheMessage, images: followTheMessageImages },
+  "why-they-did-it": { lesson: whyTheyDidIt, images: whyTheyDidItImages },
+  "point-to-the-fact": { lesson: pointToTheFact, images: pointToTheFactImages },
+  "big-idea-backed-up": { lesson: bigIdeaBackedUp, images: bigIdeaBackedUpImages },
+  "new-word-new-meaning": { lesson: newWordNewMeaning, images: newWordNewMeaningImages },
+  "same-root-new-branch": { lesson: sameRootNewBranch, images: sameRootNewBranchImages },
+  "three-word-tools": { lesson: threeWordTools, images: threeWordToolsImages },
+  "take-apart-any-word": { lesson: takeApartAnyWord, images: takeApartAnyWordImages },
+  "chunk-by-chunk": { lesson: chunkByChunk, images: chunkByChunkImages },
+  "know-them-by-heart": { lesson: knowThemByHeart, images: knowThemByHeartImages },
+  "more-than-it-says": { lesson: moreThanItSays, images: moreThanItSaysImages },
+  "parts-that-build": { lesson: partsThatBuild, images: partsThatBuildImages },
+  "their-view-your-view": { lesson: theirViewYourView, images: theirViewYourViewImages },
+  "expert-words": { lesson: expertWords, images: expertWordsImages },
+  "search-like-a-pro": { lesson: searchLikeAPro, images: searchLikeAProImages },
+  "the-authors-view": { lesson: theAuthorsView, images: theAuthorsViewImages },
+  "check-the-dictionary": { lesson: checkTheDictionary, images: checkTheDictionaryImages },
+  "sayings-that-mean-more": { lesson: sayingsThatMeanMore, images: sayingsThatMeanMoreImages },
+  "words-in-action": { lesson: wordsInAction, images: wordsInActionImages },
+  "smooth-and-sure": { lesson: smoothAndSure, images: smoothAndSureImages },
+  "word-connections": { lesson: wordConnections, images: wordConnectionsImages },
+  "know-why-you-read": { lesson: knowWhyYouRead, images: knowWhyYouReadImages },
+  "prose-and-poem": { lesson: proseAndPoem, images: proseAndPoemImages },
+  "does-that-make-sense": { lesson: doesThatMakeSense, images: doesThatMakeSenseImages },
+  "same-hero-new-story": { lesson: sameHeroNewStory, images: sameHeroNewStoryImages },
+  "what-the-picture-adds": { lesson: whatThePictureAdds, images: whatThePictureAddsImages },
+  "maps-and-photos": { lesson: mapsAndPhotos, images: mapsAndPhotosImages },
+  "sentence-to-sentence": { lesson: sentenceToSentence, images: sentenceToSentenceImages },
+  "the-whole-chapter": { lesson: theWholeChapter, images: theWholeChapterImages },
+  "two-writers-one-topic": { lesson: twoWritersOneTopic, images: twoWritersOneTopicImages },
+  "when-and-where-words": { lesson: whenAndWhereWords, images: whenAndWhereWordsImages },
+  "shades-of-sure": { lesson: shadesOfSure, images: shadesOfSureImages },
 };

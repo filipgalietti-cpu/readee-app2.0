@@ -1,0 +1,177 @@
+import type { QuizDef } from "@/lib/lesson-engine/quiz";
+
+// Same Root, New Branch QUIZ (L.3.4c) · FACTORY-AUTHORED from the finished
+// lesson (scripts/quiz-author.ts), human-reviewed and rebuilt. Bands:
+// easier(G2-bridge, obvious relatives at 3 options with 3 picture supports:
+// sailor, skater, hilly, pianist) / core(on-grade G3: borrowed meaning in a
+// sentence for wisdom and electrician, which-root inside heroic, a 6-pair
+// Same Root / Just Looks Like It sort, the candle false-friend sentence test,
+// a heroic production speak with 18 accepts) / harder(G4 transfer L.4.4b
+// TAUGHT in the stimulus first: the Latin roots tri, cent, and ped are each
+// taught with example words in the narration, then applied to triplets,
+// the trip false friend, centipede, and a pedestrian production speak).
+// ALL stimuli FRESH vs the lesson (companion, director, memorize, childhood,
+// health, strength, knowledge, accompany, carpet, pantry, pigeon, cabbage)
+// and grep-swept vs the whole catalog: sailor, skater, hilly, pianist,
+// wisdom, heroic, width, warmth, youth, pleasant, season, legend, candle,
+// electrician, tricycle, triple, triplets, trio, tripod, trip, century,
+// percent, centipede, pedal, pedestrian. Names fresh: Sana, Willa, Dario,
+// Grandma Ruth. Tiles lowercase, audio-free, kebab ids, 28-char cap; bucket
+// clips are quiz-local b-*.mp3 pre-synthesized from punctuated labels.
+
+const Q = "/audio/quizzes-v2/same-root-new-branch-quiz";
+const IMG = (w: string) => `/images/lessons-v2/same-root-new-branch/${w.toLowerCase()}.png`;
+
+export const sameRootNewBranchQuiz: QuizDef = {
+  id: "same-root-new-branch-quiz",
+  lessonId: "same-root-new-branch",
+  title: "Same Root, New Branch Quiz",
+  standard: "L.3.4c",
+  askCount: 7,
+  adaptive: true,
+  questions: [
+    {
+      id: "e-1-sailor",
+      band: "easier",
+      difficulty: 1,
+      prompt: "What is a sailor?",
+      image: IMG("quiz-sailor-boat"),
+      narration: { audio: `${Q}/e-1-sailor.mp3`, script: "Listen. Sana's grandfather was a sailor, and he spent forty years out on the sea. Find the short word you know at the front of sailor, borrow its meaning, and tap what a sailor is." },
+      hint: { audio: `${Q}/e-1-sailor-hint.mp3`, script: "Read sailor from the very first letter. What short word do you know in there? Borrow what it means." },
+      explain: { audio: `${Q}/e-1-sailor-explain.mp3`, script: "A sailor is a person who sails a boat. The root sail sits right at the front, and the sentence says he spent forty years on the sea." },
+      interaction: { type: "choose", options: [{ id: "a-person-who-sails-a-boat", label: "a person who sails a boat" }, { id: "a-person-who-bakes-bread", label: "a person who bakes bread" }, { id: "a-person-who-paints-walls", label: "a person who paints walls" }], correctId: "a-person-who-sails-a-boat", coachWrong: "Find the short word at the front of sailor, and think about what it means on the sea." },
+    },
+    {
+      id: "e-2-skater",
+      band: "easier",
+      difficulty: 2,
+      prompt: "What is a skater?",
+      image: IMG("quiz-skater-rink"),
+      narration: { audio: `${Q}/e-2-skater.mp3`, script: "Listen. Willa is the fastest skater on the frozen pond, and she never falls. Find the root you know inside skater, borrow its meaning, and tap what a skater is." },
+      hint: { audio: `${Q}/e-2-skater-hint.mp3`, script: "Read skater from the front, and find the short word you know before the ending." },
+      explain: { audio: `${Q}/e-2-skater-explain.mp3`, script: "A skater is someone who skates on ice. The root skate sits at the front, and a frozen pond is where you do it." },
+      interaction: { type: "choose", options: [{ id: "someone-who-skates-on-ice", label: "someone who skates on ice" }, { id: "someone-who-sings-a-song", label: "someone who sings a song" }, { id: "someone-who-sweeps-a-floor", label: "someone who sweeps a floor" }], correctId: "someone-who-skates-on-ice", coachWrong: "Look at the picture, then read the front of skater again. Borrow the meaning of the root." },
+    },
+    {
+      id: "e-3-hilly",
+      band: "easier",
+      difficulty: 3,
+      prompt: "What does hilly mean?",
+      image: IMG("quiz-hilly-road"),
+      narration: { audio: `${Q}/e-3-hilly.mp3`, script: "Listen. The road to Dario's town is hilly, so his bike ride home is slow and his legs get tired. Find the root you know inside hilly, borrow its meaning, and tap what hilly means." },
+      hint: { audio: `${Q}/e-3-hilly-hint.mp3`, script: "Read hilly from the front. The root is a short word for a bump of land." },
+      explain: { audio: `${Q}/e-3-hilly-explain.mp3`, script: "Hilly means full of hills. The root hill sits at the front, and a road full of hills makes a bike ride slow." },
+      interaction: { type: "choose", options: [{ id: "full-of-hills", label: "full of hills" }, { id: "full-of-holes", label: "full of holes" }, { id: "full-of-trees", label: "full of trees" }], correctId: "full-of-hills", coachWrong: "Look at the short word at the front of hilly, and look at the picture of the road." },
+    },
+    {
+      id: "e-4-pianist-root",
+      band: "easier",
+      difficulty: 4,
+      prompt: "Which root do you know inside pianist?",
+      narration: { audio: `${Q}/e-4-pianist-root.mp3`, script: "Listen. Sana's older brother is a pianist, and he plays at every family party. Read pianist from the front, find the word you already know inside it, and tap the root." },
+      hint: { audio: `${Q}/e-4-pianist-root-hint.mp3`, script: "The root is a word for something you play with your fingers. Read pianist from the first letter." },
+      explain: { audio: `${Q}/e-4-pianist-root-explain.mp3`, script: "The root is piano. A pianist is a person who plays the piano, and the ending is only telling you it is a person." },
+      interaction: { type: "choose", options: [{ id: "piano", label: "piano" }, { id: "pie", label: "pie" }, { id: "pin", label: "pin" }], correctId: "piano", coachWrong: "Read pianist from the very first letter, and find the longest word you know inside it." },
+    },
+    {
+      id: "c-1-wisdom-meaning",
+      band: "core",
+      difficulty: 1,
+      prompt: "What does wisdom mean here?",
+      narration: { audio: `${Q}/c-1-wisdom-meaning.mp3`, script: "Listen. Grandma Ruth had the wisdom to bring an umbrella, because the gray sky looked ready to burst. Find the root you know inside wisdom, borrow its meaning, test it in the sentence, and tap what wisdom means." },
+      hint: { audio: `${Q}/c-1-wisdom-meaning-hint.mp3`, script: "The root's spelling shifted a little. Read wisdom from the front and think of a word for a person who thinks carefully before choosing." },
+      explain: { audio: `${Q}/c-1-wisdom-meaning-explain.mp3`, script: "Wisdom means knowing what is smart to do. The root is wise, and a wise person brings an umbrella when the sky looks ready to burst." },
+      interaction: { type: "choose", options: [{ id: "knowing-what-is-smart-to-do", label: "knowing what is smart to do" }, { id: "wishing-for-what-you-want", label: "wishing for what you want" }, { id: "hurrying-to-get-somewhere", label: "hurrying to get somewhere" }, { id: "worrying-about-the-weather", label: "worrying about the weather" }], correctId: "knowing-what-is-smart-to-do", coachWrong: "Borrow the meaning of the root at the front of wisdom, then test it. Which meaning fits bringing an umbrella?" },
+    },
+    {
+      id: "c-2-heroic-root",
+      band: "core",
+      difficulty: 2,
+      prompt: "Which root do you know inside heroic?",
+      narration: { audio: `${Q}/c-2-heroic-root.mp3`, script: "Listen. The firefighter's heroic climb brought the cat down from the roof. Read heroic from the front. Two of these short words are hiding in its letters, but only one is the true root. Tap the root you know." },
+      hint: { audio: `${Q}/c-2-heroic-root-hint.mp3`, script: "Test each short word. The true root is a word for a person who does something brave." },
+      explain: { audio: `${Q}/c-2-heroic-root-explain.mp3`, script: "The root is hero. The words her and he are hiding in the letters, but they have nothing to do with a brave climb. Heroic means like a hero." },
+      interaction: { type: "choose", options: [{ id: "hero", label: "hero" }, { id: "her", label: "her" }, { id: "he", label: "he" }, { id: "hair", label: "hair" }], correctId: "hero", coachWrong: "That word may sit in the letters, but test it. Does its meaning fit a brave climb to the roof?" },
+    },
+    {
+      id: "c-3-sort-same-root",
+      band: "core",
+      difficulty: 3,
+      prompt: "Sort each pair: Same Root, or Just Looks Like It?",
+      narration: { audio: `${Q}/c-3-sort-same-root.mp3`, script: "Here are six pairs. Read the short word, then the long word, and run the test. If the long word truly carries the short word's meaning, drag the pair to Same Root. If the short word is only hiding in the letters, drag it to Just Looks Like It." },
+      hint: { audio: `${Q}/c-3-sort-same-root-hint.mp3`, script: "Borrow the short word's meaning and test it in the long word. A false friend fails the test." },
+      explain: { audio: `${Q}/c-3-sort-same-root-explain.mp3`, script: "Width comes from wide, warmth from warm, youth from young, and pleasant from please. Those share a root. A season has nothing to do with the sea, and a legend has nothing to do with a leg. Those only look like it." },
+      interaction: { type: "sort", buckets: ["Same Root","Just Looks Like It"], bucketAudio: { "Same Root": `${Q}/b-same-root.mp3`, "Just Looks Like It": `${Q}/b-just-looks-like-it.mp3` }, items: [{ label: "wide, width", bucket: "Same Root" }, { label: "sea, season", bucket: "Just Looks Like It" }, { label: "warm, warmth", bucket: "Same Root" }, { label: "young, youth", bucket: "Same Root" }, { label: "leg, legend", bucket: "Just Looks Like It" }, { label: "please, pleasant", bucket: "Same Root" }], coachWrong: "Borrow the short word's meaning and test it in the long word. Does the meaning truly fit, or do only the letters match?" },
+    },
+    {
+      id: "c-4-candle-test",
+      band: "core",
+      difficulty: 4,
+      prompt: "What does candle mean here?",
+      narration: { audio: `${Q}/c-4-candle-test.mp3`, script: "Here is the sentence. Willa lit a candle when the power went out, and its small flame lit up the whole kitchen. Candle starts with a short word you know, so run the test before you borrow anything. Tap what candle means." },
+      hint: { audio: `${Q}/c-4-candle-test-hint.mp3`, script: "Test the borrowed meaning in the sentence. Can the thing you borrowed be lit and give off a flame?" },
+      explain: { audio: `${Q}/c-4-candle-test-explain.mp3`, script: "A candle is a wax stick that burns. Candle starts with can, but a can is a false friend here, because you cannot light a can and get a flame." },
+      interaction: { type: "choose", options: [{ id: "a-wax-stick-that-burns", label: "a wax stick that burns" }, { id: "a-small-metal-can-of-soup", label: "a small metal can of soup" }, { id: "a-can-that-holds-candy", label: "a can that holds candy" }, { id: "a-can-opener-for-the-kitchen", label: "a can opener for the kitchen" }], correctId: "a-wax-stick-that-burns", coachWrong: "Read the sentence again. Willa lit it, and it made a flame. Test your choice against that." },
+    },
+    {
+      id: "c-5-electrician-meaning",
+      band: "core",
+      difficulty: 5,
+      prompt: "What is an electrician?",
+      narration: { audio: `${Q}/c-5-electrician-meaning.mp3`, script: "Listen. An electrician came to fix the broken switch behind the wall, and the lights came back on. Find the root you know inside electrician, borrow its meaning, test it in the sentence, and tap what an electrician is." },
+      hint: { audio: `${Q}/c-5-electrician-meaning-hint.mp3`, script: "Read electrician from the front. The root is a long word for the power that runs lights." },
+      explain: { audio: `${Q}/c-5-electrician-meaning-explain.mp3`, script: "An electrician is one who fixes electric parts. The root electric sits at the front, and fixing a switch brought the lights back on." },
+      interaction: { type: "choose", options: [{ id: "one-who-fixes-electric-parts", label: "one who fixes electric parts" }, { id: "one-who-paints-the-door", label: "one who paints the door" }, { id: "one-who-delivers-the-mail", label: "one who delivers the mail" }, { id: "one-who-fixes-water-pipes", label: "one who fixes water pipes" }], correctId: "one-who-fixes-electric-parts", coachWrong: "Borrow the meaning of the root at the front of electrician, then test it. The lights came back on." },
+    },
+    {
+      id: "c-6-speak-heroic",
+      band: "core",
+      difficulty: 6,
+      prompt: "Say what heroic means, and the root word that told you.",
+      narration: { audio: `${Q}/c-6-speak-heroic.mp3`, script: "Listen. Dario's heroic dive pulled the puppy out of the icy pond before anyone else could move. Tap the mic, tell me what heroic means in that sentence, and say the root word that told you." },
+      hint: { audio: `${Q}/c-6-speak-heroic-hint.mp3`, script: "Read heroic from the front and find the word for a person who saves the day." },
+      explain: { audio: `${Q}/c-6-speak-heroic-explain.mp3`, script: "Heroic means brave, like a hero. The root is hero, and diving into an icy pond to save a puppy is what a hero does." },
+      interaction: { type: "speak", text: "hero brave bravery bold daring fearless courage courageous save saved saving rescue rescued strong risk risky helped danger" },
+    },
+    {
+      id: "h-1-tri-triplets",
+      band: "harder",
+      difficulty: 1,
+      prompt: "What does triplets mean?",
+      narration: { audio: `${Q}/h-1-tri-triplets.mp3`, script: "Here is a fourth grade tool. Some roots come from very old languages, and they carry the same clue in every word that holds them. The root tri, spelled t, r, i, means three. A tricycle has three wheels. A triple play is three outs at once. Now you. The neighbors have triplets, and all of them start school this fall. What does triplets mean?" },
+      hint: { audio: `${Q}/h-1-tri-triplets-hint.mp3`, script: "Borrow the meaning of tri and test it. How many of them start school?" },
+      explain: { audio: `${Q}/h-1-tri-triplets-explain.mp3`, script: "Triplets means three babies born together. The root tri means three, just like it does in tricycle and triple." },
+      interaction: { type: "choose", options: [{ id: "three-babies-born-together", label: "three babies born together" }, { id: "two-babies-born-together", label: "two babies born together" }, { id: "a-baby-who-was-born-early", label: "a baby who was born early" }, { id: "a-baby-with-three-names", label: "a baby with three names" }], correctId: "three-babies-born-together", coachWrong: "The root tri always means three. Test each choice against that." },
+    },
+    {
+      id: "h-2-tri-false-friend",
+      band: "harder",
+      difficulty: 2,
+      prompt: "Which word only looks like it carries the root tri?",
+      narration: { audio: `${Q}/h-2-tri-false-friend.mp3`, script: "The root tri means three, and even an old root has false friends. Test it. A trio sings on the stage. A triangle sits on the page. A tripod holds up a camera. Sana packs a bag for a trip to the lake. Run the test on each word, and tap the one that only looks like it carries the root tri." },
+      hint: { audio: `${Q}/h-2-tri-false-friend-hint.mp3`, script: "Ask each word the same question. Is there truly a three inside its meaning?" },
+      explain: { audio: `${Q}/h-2-tri-false-friend-explain.mp3`, script: "Trip is the false friend. A trio has three singers, a triangle has three sides, and a tripod has three legs, but a trip is a journey with no three in it at all." },
+      interaction: { type: "choose", options: [{ id: "trip", label: "trip" }, { id: "trio", label: "trio" }, { id: "triangle", label: "triangle" }, { id: "tripod", label: "tripod" }], correctId: "trip", coachWrong: "That word truly has a three in its meaning. Find the one that does not." },
+    },
+    {
+      id: "h-3-cent-centipede",
+      band: "harder",
+      difficulty: 3,
+      prompt: "What does the root tell you about a centipede?",
+      narration: { audio: `${Q}/h-3-cent-centipede.mp3`, script: "Another old root. Cent, spelled c, e, n, t, means hundred. A century is one hundred years, and a percent is a part out of one hundred. Now you. A centipede crawled across the porch, and Willa counted more legs than she could keep track of. Borrow the meaning of cent, test it in the sentence, and tap what the root tells you about a centipede." },
+      hint: { audio: `${Q}/h-3-cent-centipede-hint.mp3`, script: "Cent means hundred. What did Willa try to count?" },
+      explain: { audio: `${Q}/h-3-cent-centipede-explain.mp3`, script: "A centipede seems to have about a hundred legs. The root cent means hundred, and the sentence says Willa was counting legs." },
+      interaction: { type: "choose", options: [{ id: "about-a-hundred-legs", label: "about a hundred legs" }, { id: "about-a-hundred-eyes", label: "about a hundred eyes" }, { id: "about-a-hundred-years-old", label: "about a hundred years old" }, { id: "about-a-hundred-wings", label: "about a hundred wings" }], correctId: "about-a-hundred-legs", coachWrong: "The root gives you the number. The sentence tells you what there are a hundred of." },
+    },
+    {
+      id: "h-4-speak-pedestrian",
+      band: "harder",
+      difficulty: 4,
+      prompt: "Say what a pedestrian is, and the root that told you.",
+      narration: { audio: `${Q}/h-4-speak-pedestrian.mp3`, script: "One more old root, and you say it. Ped, spelled p, e, d, means foot. A pedal is the part of a bike you push with your foot, and a centipede's ped is its feet. Now you. Sana waited at the corner until the pedestrian signal changed, then she stepped off the curb and crossed. Tap the mic, tell me what a pedestrian is, and say the root that told you." },
+      hint: { audio: `${Q}/h-4-speak-pedestrian-hint.mp3`, script: "Ped means foot. What is Sana using to get across the street?" },
+      explain: { audio: `${Q}/h-4-speak-pedestrian-explain.mp3`, script: "A pedestrian is a person walking on foot. The root ped means foot, the same clue that sits inside pedal and centipede." },
+      interaction: { type: "speak", text: "foot feet walk walks walking walker person people cross crossing street sidewalk road ped legs corner someone traveling" },
+    },
+  ],
+};

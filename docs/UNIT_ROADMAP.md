@@ -11,7 +11,7 @@
 > beat — not just quiz the skill. Reference: U1 lessons (RF.K.2a Rhyme Time =
 > hear it → build it → SAY it).
 
-**Progress: 128 / 201 standards shipped · 1 / 21 units complete**
+**Progress: 159 / 201 standards shipped · 3 / 21 units complete**
 
 ## Kindergarten (38 standards · 4 units)
 
@@ -214,50 +214,50 @@
 ### G3·U1
 | ✓ | Standard | Skill (what school expects) | How it teaches |
 |---|---|---|---|
-| ☐ | RF.3.3 | Know and apply grade-level phonics and word analysis skills in decoding words. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
+| ☑ | RF.3.3 | Know and apply grade-level phonics and word analysis skills in decoding words. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
 | ☑ | RF.3.3a | Identify and know the meaning of the most common prefixes and derivational suffixes. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
 | ☑ | RF.3.3b | Decode words with common Latin suffixes. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
-| ☐ | RL.3.1 | Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RL.3.2 | Recount stories including fables, folktales, and myths; determine the central message, lesson, or moral. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RL.3.3 | Describe characters in a story and explain how their actions contribute to the sequence of events. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RI.3.1 | Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | RI.3.2 | Determine the main idea of a text; recount the key details and explain how they support the main idea. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | RI.3.3 | Describe the relationship between historical events, scientific ideas, or steps in technical procedures using time, sequence, and cause/effect language. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | L.3.4 | Determine or clarify the meaning of unknown and multiple-meaning words and phrases. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.3.4a | Use sentence-level context as a clue to the meaning of a word or phrase. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.3.4b | Determine the meaning of the new word formed when a known affix is added to a known word. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.3.4c | Use a known root word as a clue to the meaning of an unknown word with the same root. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | — | — | **G3·U1 EXAM** — 12-Q veto table |
+| ☑ | RL.3.1 | Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text. | story read-along → choose/highlight comprehension beats → retell/sequence |
+| ☑ | RL.3.2 | Recount stories including fables, folktales, and myths; determine the central message, lesson, or moral. | story read-along → choose/highlight comprehension beats → retell/sequence |
+| ☑ | RL.3.3 | Describe characters in a story and explain how their actions contribute to the sequence of events. | story read-along → choose/highlight comprehension beats → retell/sequence |
+| ☑ | RI.3.1 | Ask and answer questions to demonstrate understanding of a text, referring explicitly to the text. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | RI.3.2 | Determine the main idea of a text; recount the key details and explain how they support the main idea. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | RI.3.3 | Describe the relationship between historical events, scientific ideas, or steps in technical procedures using time, sequence, and cause/effect language. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | L.3.4 | Determine or clarify the meaning of unknown and multiple-meaning words and phrases. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | L.3.4a | Use sentence-level context as a clue to the meaning of a word or phrase. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | L.3.4b | Determine the meaning of the new word formed when a known affix is added to a known word. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | L.3.4c | Use a known root word as a clue to the meaning of an unknown word with the same root. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | — | — | **G3·U1 EXAM** — 14-Q veto table (all 13 standards covered) |
 
 ### G3·U2
 | ✓ | Standard | Skill (what school expects) | How it teaches |
 |---|---|---|---|
-| ☐ | RF.3.3c | Decode multisyllable words. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
-| ☐ | RF.3.3d | Read grade-appropriate irregularly spelled words. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
-| ☐ | RF.3.4 | Read with sufficient accuracy and fluency to support comprehension. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
-| ☐ | RL.3.4 | Determine the meaning of words and phrases as used in a text, distinguishing literal from nonliteral language. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RL.3.5 | Refer to parts of stories, dramas, and poems using terms such as chapter, scene, and stanza. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RL.3.6 | Distinguish their own point of view from that of the narrator or those of the characters. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RI.3.4 | Determine the meaning of general academic and domain-specific words and phrases in a text. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | RI.3.5 | Use text features and search tools to locate information relevant to a given topic efficiently. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | RI.3.6 | Distinguish their own point of view from that of the author of a text. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | L.3.4d | Use glossaries or beginning dictionaries to determine or clarify the precise meaning of key words. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.3.5 | Demonstrate understanding of figurative language, word relationships, and nuances in word meanings. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.3.5a | Distinguish the literal and nonliteral meanings of words and phrases in context. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | L.3.5b | Identify real-life connections between words and their use. | word-work: choose/sort meaning + grammar beats → speak production |
-| ☐ | — | — | **G3·U2 EXAM** — 12-Q veto table |
+| ☑ | RF.3.3c | Decode multisyllable words. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
+| ☑ | RF.3.3d | Read grade-appropriate irregularly spelled words. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
+| ☑ | RF.3.4 | Read with sufficient accuracy and fluency to support comprehension. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
+| ☑ | RL.3.4 | Determine the meaning of words and phrases as used in a text, distinguishing literal from nonliteral language. | story read-along → choose/highlight comprehension beats → retell/sequence |
+| ☑ | RL.3.5 | Refer to parts of stories, dramas, and poems using terms such as chapter, scene, and stanza. | story read-along → choose/highlight comprehension beats → retell/sequence |
+| ☑ | RL.3.6 | Distinguish their own point of view from that of the narrator or those of the characters. | story read-along → choose/highlight comprehension beats → retell/sequence |
+| ☑ | RI.3.4 | Determine the meaning of general academic and domain-specific words and phrases in a text. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | RI.3.5 | Use text features and search tools to locate information relevant to a given topic efficiently. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | RI.3.6 | Distinguish their own point of view from that of the author of a text. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | L.3.4d | Use glossaries or beginning dictionaries to determine or clarify the precise meaning of key words. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | L.3.5 | Demonstrate understanding of figurative language, word relationships, and nuances in word meanings. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | L.3.5a | Distinguish the literal and nonliteral meanings of words and phrases in context. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | L.3.5b | Identify real-life connections between words and their use. | word-work: choose/sort meaning + grammar beats → speak production |
+| ☑ | — | — | **G3·U2 EXAM** — 14-Q veto table (all 13 standards covered) |
 
 ### G3·U3
 | ✓ | Standard | Skill (what school expects) | How it teaches |
 |---|---|---|---|
-| ☐ | RF.3.4a | Read grade-level text with purpose and understanding. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
-| ☐ | RF.3.4b | Read grade-level prose and poetry orally with accuracy, appropriate rate, and expression. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
-| ☐ | RF.3.4c | Use context to confirm or self-correct word recognition and understanding, rereading as necessary. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
-| ☐ | RL.3.7 | Explain how specific aspects of a text's illustrations contribute to what is conveyed by the words. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RL.3.9 | Compare and contrast the themes, settings, and plots of stories written by the same author about the same or similar characters. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RL.3.10 | By end of the year, read and comprehend literature at the high end of the grades 2-3 text complexity band. | story read-along → choose/highlight comprehension beats → retell/sequence |
-| ☐ | RI.3.7 | Use information from illustrations and the words in a text to demonstrate understanding. | info passage read-along → choose evidence beats → sort/diagram work |
-| ☐ | RI.3.8 | Describe the logical connection between particular sentences and paragraphs in a text. | info passage read-along → choose evidence beats → sort/diagram work |
+| ☑ | RF.3.4a | Read grade-level text with purpose and understanding. | fluency: story / how-to / fact page read for three whys → purpose-tied checks → sequence + sort → production speak |
+| ☑ | RF.3.4b | Read grade-level prose and poetry orally with accuracy, appropriate rate, and expression. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
+| ☑ | RF.3.4c | Use context to confirm or self-correct word recognition and understanding, rereading as necessary. | decode-build-say: read-along intro → transform/sort word-building → Azure speak check |
+| ☑ | RL.3.7 | Explain how specific aspects of a text's illustrations contribute to what is conveyed by the words. | picture-forward story read-along (five pictures, one job each) → what the words say / what the picture adds / which part does it chooses → Adds Mood / Adds a Detail sort → nothing-new beat → production speak |
+| ☑ | RL.3.9 | Compare and contrast the themes, settings, and plots of stories written by the same author about the same or similar characters. | story-elements: two books from one series read-along + child-read → three-row compare (theme / setting / plot) chooses → Same in Both / Different sort → plot sequence → setting-changes-the-problem → production speak |
+| ☑ | RL.3.10 | By end of the year, read and comprehend literature at the high end of the grades 2-3 text complexity band. | capstone: one 16-sentence chapter read mostly by the child (read-along 1/4, speak 2/3/5/6) → one check per RL tool between the pages (proving line / trait / phrase / narrator view / message) → five-event sequence → In the Story / Not in the Story sort → production retell |
+| ☑ | RI.3.7 | Use information from illustrations and the words in a text to demonstrate understanding. | fact-book event read-along with a map and photos (map = where / how far, photo = what it looked like / when, words = why / how) → which-source + where-from-the-map chooses → what-the-photo-adds → how-big from the photo → Picture Tells / Words Tell sort → when + why combine chooses → production speak naming each source |
+| ☑ | RI.3.8 | Describe the logical connection between particular sentences and paragraphs in a text. | inference: three-paragraph fact text read-along + child-read → model two sentences and the word that joins them → connection-kind and connecting-word chooses → paragraph-to-paragraph move → Comparison / Cause and Effect / Sequence sort → paragraph sequence → which-sentence-comes-next → production speak |
 | ☐ | RI.3.9 | Compare and contrast the most important points and key details presented in two texts on the same topic. | info passage read-along → choose evidence beats → sort/diagram work |
 | ☐ | L.3.5c | Distinguish shades of meaning among related words that describe states of mind or degrees of certainty. | word-work: choose/sort meaning + grammar beats → speak production |
 | ☐ | L.3.6 | Acquire and use accurately conversational, general academic, and domain-specific words and phrases. | word-work: choose/sort meaning + grammar beats → speak production |

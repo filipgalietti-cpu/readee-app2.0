@@ -25,6 +25,13 @@ async function solve(page: Page, q: QuizQuestion): Promise<void> {
       await page.locator(".gb-bucket", { hasText: it.bucket }).first().click();
       await page.waitForTimeout(200);
     }
+  } else if (i.type === "sequence") {
+    // same driver as lesson-qa: tap the pool tiles in the correct order
+    for (const id of i.order) {
+      const item = i.items.find((it) => it.id === id)!;
+      await page.getByRole("button", { name: item.label, exact: true }).click();
+      await page.waitForTimeout(150);
+    }
   } else if (i.type === "speak") {
     await page.getByRole("button", { name: /mic not working/ }).click();
   } else if (i.type === "transform") {
