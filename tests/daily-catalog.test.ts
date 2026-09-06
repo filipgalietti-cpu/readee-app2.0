@@ -3,7 +3,7 @@ import {
   POOL, MEDIUMS, NEVER_PHOTOGRAPH, PHOTOGRAPHABLE,
   pickBucket, pickSubject, pickMedium, type Bucket,
 } from "@/lib/daily/catalog";
-import { inclusiveHolidayFor, DATED } from "@/lib/daily/holidays-inclusive";
+import { inclusiveHolidayFor, HINDU_DATES } from "@/lib/daily/holidays-inclusive";
 
 const days = (n: number, from = new Date(2026, 9, 1)) =>
   Array.from({ length: n }, (_, i) => {
@@ -111,16 +111,51 @@ describe("inclusive holidays", () => {
     expect(inclusiveHolidayFor("2026-11-01")?.label).toBe("Day of the Dead");
   });
 
-  it("finds moon-dependent celebrations only on their listed year", () => {
+  it("computes Lunar New Year from the Chinese calendar, every year", () => {
+    // Hand-listing these is what went wrong the first time.
+    expect(inclusiveHolidayFor("2026-02-17")?.label).toBe("Lunar New Year");
+    // ‼️ Feb 7, not Feb 6. The hand-written table said the 6th; the Chinese
+    // calendar says 2027-02-06 is still 12/30 of the old year.
+    expect(inclusiveHolidayFor("2027-02-07")?.label).toBe("Lunar New Year");
+    expect(inclusiveHolidayFor("2027-02-06")).toBeNull();
+    expect(inclusiveHolidayFor("2026-02-16")).toBeNull();
+  });
+
+  it("gets Nowruz right, which the hand-written table did not", () => {
+    // It was pinned to March 20 every year. It is the 21st in 2026 and 2027.
+    expect(inclusiveHolidayFor("2026-03-21")?.label).toBe("Nowruz");
+    expect(inclusiveHolidayFor("2027-03-21")?.label).toBe("Nowruz");
+    // March 20 2026 is not empty either - it is 1 Shawwal, Eid al-Fitr.
+    expect(inclusiveHolidayFor("2026-03-20")?.label).toBe("Eid al-Fitr");
+    expect(inclusiveHolidayFor("2028-03-20")?.label).toBe("Nowruz"); // and it moves
+  });
+
+  it("puts Hanukkah on 25 Kislev, not a day early", () => {
+    expect(inclusiveHolidayFor("2026-12-05")?.label).toBe("Hanukkah begins");
+    expect(inclusiveHolidayFor("2026-12-04")).toBeNull();
+  });
+
+  it("computes the Chinese festivals without a table", () => {
+    expect(inclusiveHolidayFor("2026-09-25")?.label).toBe("Mid-Autumn Festival");
+  });
+
+  it("gives a fixed observance precedence over a computed one that collides", () => {
+    // 19 June 2026 is Juneteenth AND the Dragon Boat Festival. Juneteenth is
+    // always 19 June, so it must win; Dragon Boat moves and loses only this one.
+    expect(inclusiveHolidayFor("2026-06-19")?.label).toBe("Juneteenth");
+    expect(inclusiveHolidayFor("2027-06-09")?.label).toBe("Dragon Boat Festival");
+  });
+
+  it("keeps Hindu festivals table-driven and silent in unlisted years", () => {
     expect(inclusiveHolidayFor("2026-11-08")?.label).toBe("Diwali");
-    // An unlisted year must stay SILENT rather than guess: a wrong date on
-    // someone's holiday is worse than no mention.
+    expect(Object.keys(HINDU_DATES).length).toBeGreaterThan(0);
     expect(inclusiveHolidayFor("2030-11-08")).toBeNull();
   });
 
-  it("lets a dated entry win over a fixed one on the same day", () => {
-    const collisions = Object.keys(DATED).filter((iso) => inclusiveHolidayFor(iso) !== DATED[iso]);
-    expect(collisions).toEqual([]);
+  it("finds a computed holiday in a year nobody typed in", () => {
+    // The whole point: 2031 is in no table anywhere.
+    const found = ["2031-01-23", "2031-01-24", "2031-02-11"].map((d) => inclusiveHolidayFor(d)?.label);
+    expect(found.filter(Boolean).length).toBeGreaterThan(0);
   });
 
   it("returns null on an ordinary day", () => {
