@@ -93,7 +93,14 @@ export async function POST(req: NextRequest) {
       const priceId = subscription.items.data[0]?.price?.id ?? null;
       const tier = planFromPriceId(priceId) ?? "premium";
 
-      const { data: updated } = await admin
+      // ‼️ Do not let a stale event overwrite a newer subscription.
+      //
+      // This matched on customer alone and wrote stripe_subscription_id
+      // unconditionally, so a retried or out-of-order `updated` for a superseded
+      // subscription could point the profile back at the dead one and drag the
+      // plan with it. Apply only when this IS the subscription on file, or when
+      // there is not one yet.
+      let profileUpdate = admin
         .from("profiles")
         .update({
           plan: grantsAccess ? tier : "free",
@@ -102,9 +109,22 @@ export async function POST(req: NextRequest) {
           // cancel is treated as "lapsed" (win-back) not never-paid.
           ...(grantsAccess ? { had_subscription: true } : {}),
         })
-        .eq("stripe_customer_id", customerId)
+        .eq("stripe_customer_id", customerId);
+
+      if (event.type === "customer.subscription.updated") {
+        profileUpdate = profileUpdate.or(
+          `stripe_subscription_id.eq.${subscription.id},stripe_subscription_id.is.null`,
+        );
+      }
+
+      const { data: updated, error: updateErr } = await profileUpdate
         .select("id, email")
         .maybeSingle();
+
+      if (updateErr) {
+        console.error("[stripe] subscription update failed", updateErr);
+        return NextResponse.json({ error: "retry" }, { status: 500 });
+      }
 
       // User just canceled (scheduled to end at period end) → one-time
       // confirmation email so they're never left wondering if it worked.
@@ -202,15 +222,31 @@ export async function POST(req: NextRequest) {
           : subscription.customer.id;
       try { await sendWinBackEmail(customerId, subscription.id); } catch (e) { console.error("[stripe] winback email", e); }
 
-      const { data: canceled } = await admin
+      // ‼️ Only clear the subscription that is actually on file.
+      //
+      // This matched on customer alone, so a late-arriving delete for an OLD
+      // subscription downgraded a customer who had already resubscribed. Stripe
+      // retries and can deliver out of order, so "stale event about a superseded
+      // subscription" is a normal condition, not an edge case. Matching the id
+      // makes it a harmless no-op instead.
+      const { data: canceled, error: cancelErr } = await admin
         .from("profiles")
         .update({
           plan: "free",
           stripe_subscription_id: null,
         })
         .eq("stripe_customer_id", customerId)
+        .eq("stripe_subscription_id", subscription.id)
         .select("id, email")
         .maybeSingle();
+
+      // A database failure must NOT be acknowledged. Returning 200 tells Stripe
+      // the event is handled and it never retries, leaving the customer silently
+      // on the wrong plan.
+      if (cancelErr) {
+        console.error("[stripe] subscription.deleted update failed", cancelErr);
+        return NextResponse.json({ error: "retry" }, { status: 500 });
+      }
 
       const canceledId = (canceled as { id?: string } | null)?.id ?? null;
       if (canceledId) {
