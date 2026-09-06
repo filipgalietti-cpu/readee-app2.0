@@ -39,6 +39,30 @@
 export type DepictionMode = "none" | "symbol" | "free";
 
 /**
+ * Passages about the human body, which need a second rule beyond "not a photo".
+ *
+ * Forbidding the photograph was only half of it. "Your Changing Bones" then came
+ * back as three grinning skeletons in colored pencil - technically an
+ * illustration, and considerably more unsettling to a six-year-old than the bone
+ * photograph it replaced. The scene extractor reads an anatomical title and
+ * draws anatomy.
+ *
+ * The right picture for a body passage is a child DOING the thing: running and
+ * hot for sweat, stretching taller for bones, listening for ears. "Why We Sweat"
+ * regenerated into two children playing in the sun and is exactly right, so the
+ * fix is to make that outcome the instruction rather than the luck of the draw.
+ */
+const BODY_SUBJECT = /\b(bone|bones|skeleton|heart|lung|lungs|muscle|muscles|blood|organ|brain|eye|eyes|ear|ears|tooth|teeth|stomach|nerve|skin|sweat|sneeze|hiccup|yawn|breath|breathing|pulse)\b/i;
+
+/** Body passages: draw the child, never the anatomy. */
+export function bodySceneConstraint(title: string, body: string): string | null {
+  if (!BODY_SUBJECT.test(`${title} ${body}`)) return null;
+  return `
+
+ABSOLUTE CONSTRAINT - this passage is about a child's own body, and the picture must show a CHILD DOING SOMETHING ORDINARY, not the body part. Draw a happy child in an everyday scene that the passage explains: running in the sun, stretching to measure their height, listening to a sound, taking a deep breath. NEVER draw a skeleton, a skull, bones, organs, an anatomical cutaway, a cross-section, a diagram of the inside of a body, or any medical illustration. Nothing clinical and nothing scary.`;
+}
+
+/**
  * A trailing `*` means "match this stem and anything after it" (so `enslav*`
  * covers enslaved and enslavement); everything else must match as a whole
  * word. That distinction is load-bearing: a plain substring search for "war"

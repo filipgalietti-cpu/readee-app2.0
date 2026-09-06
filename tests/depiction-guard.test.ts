@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { depictionModeFor, applyDepictionMode } from "@/lib/daily/depiction-guard";
+import { depictionModeFor, applyDepictionMode, bodySceneConstraint } from "@/lib/daily/depiction-guard";
 
 /**
  * The two cases that shipped live are the two that matter here, so they are
@@ -69,5 +69,25 @@ describe("depictionModeFor", () => {
       theme: "Monday science",
       body: "Heat moves from the warm air into the cold popsicle.",
     }).mode).toBe("free");
+  });
+});
+
+describe("bodySceneConstraint", () => {
+  it("forbids anatomy for a bones passage - three skeletons actually shipped", () => {
+    const c = bodySceneConstraint("Your Changing Bones", "Your bones grow as you grow.");
+    expect(c).not.toBeNull();
+    expect(c!.toLowerCase()).toContain("never draw a skeleton");
+    expect(c!.toLowerCase()).toContain("child doing something ordinary");
+  });
+
+  it("catches hearts, eyes and ears too", () => {
+    for (const t of ["Your Busy Heart", "Your Amazing Eyes", "How Ears Hear"]) {
+      expect(bodySceneConstraint(t, "")).not.toBeNull();
+    }
+  });
+
+  it("leaves non-body passages alone", () => {
+    expect(bodySceneConstraint("Kit's Cool Cave", "Kit the fox wanted a cool spot.")).toBeNull();
+    expect(bodySceneConstraint("The Red Planet", "Mars is dry and dusty.")).toBeNull();
   });
 });

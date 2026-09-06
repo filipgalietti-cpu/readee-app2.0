@@ -26,7 +26,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
 import { REPRESENTATION_RULE } from "@/lib/ai/representation";
-import { depictionModeFor, applyDepictionMode } from "@/lib/daily/depiction-guard";
+import { depictionModeFor, applyDepictionMode, bodySceneConstraint } from "@/lib/daily/depiction-guard";
 import { resolveRealSubjectImage } from "@/lib/ai/real-subject-image";
 import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
 import { judgeImageQuality } from "@/lib/ai/qc-media";
@@ -773,7 +773,8 @@ ${theme.topic}${avoidBlock}`;
         }
       }
 
-      const guardedScene = imageUrl ? null : applyDepictionMode(brief + figureGuard, depiction.mode);
+      const bodyRule = bodySceneConstraint(passageTitle, passageBody) ?? "";
+      const guardedScene = imageUrl ? null : applyDepictionMode(brief + figureGuard + bodyRule, depiction.mode);
       if (!guardedScene && !imageUrl) {
         console.warn(`[daily] ${dateStr}: shipping imageless - ${depiction.reason}`);
       }
@@ -957,7 +958,7 @@ export async function targetedImageRegen(opts: {
   const { data: row, error: rowErr } = await admin
     .from("daily_questions")
     .select(
-      "date, theme, passage_title, passage_body, image_url, qc_overall, qc_report",
+      "date, theme, passage_title, passage_body, image_url, medium, qc_overall, qc_report",
     )
     .eq("date", dateStr)
     .maybeSingle();
@@ -1033,7 +1034,7 @@ export async function targetedImageRegen(opts: {
     await admin.from("daily_questions").update({ image_url: null }).eq("date", dateStr);
     return { ok: true, regenerated: false, reason: `imageless by depiction guard - ${regenDepiction.reason}` };
   }
-  imageScene = guardedRegen;
+  imageScene = guardedRegen + (bodySceneConstraint(passageTitle, passageBody) ?? "");
 
   // Best-of-3 + comparative judge when we have a spec; otherwise the
   // legacy single-shot path. The heal route in particular benefits
@@ -1041,7 +1042,12 @@ export async function targetedImageRegen(opts: {
   // candidates is precisely the right move on a known-bad starting
   // point.
   let newImageUrl: string;
-  const healStyle = opts?.stylePrefixOverride ?? pickImageStyle("", dateStr, sceneSpec?.genre ?? null);
+  // Honour the medium the catalogue drew for this day. Without this a heal
+  // silently reverts a felt day to whatever the old genre heuristic picks,
+  // which is how the craft styles leaked out of the catalogue in the first place.
+  const healStyle =
+    opts?.stylePrefixOverride ??
+    pickImageStyle("", dateStr, sceneSpec?.genre ?? null, (row as { medium?: string | null }).medium);
   if (sceneSpec) {
     const bestRes = await generateBestImage({
       teacherId,
