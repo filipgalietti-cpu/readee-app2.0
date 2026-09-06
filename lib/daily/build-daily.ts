@@ -1132,6 +1132,29 @@ export async function targetedImageRegen(opts: {
     newImageUrl = imgRes.imageUrl;
   }
 
+  // ‼️ Ship-gate the heal, exactly like the builder does.
+  //
+  // This path generated an image and wrote it, then ran qcImage purely to
+  // RECORD a verdict. Nothing acted on that verdict, so a bad render shipped and
+  // merely logged that it was bad. The builder has always judged, retried once
+  // with the reason folded in, and dropped to a safe-harbour prompt; the heal
+  // path had none of it.
+  //
+  // It surfaced when a 73-image medium re-roll ran through here and took the
+  // catalogue from 11 failing images to 31. "Your Amazing Eyes" came back with a
+  // light ray drawn across the child's face, and "Sam's Lost Magnifying Glass"
+  // with the words "Ben" and "Sam" rendered into the picture - which every style
+  // prompt explicitly forbids. Both were judged, both marked failed, both
+  // shipped.
+  const gated = await shipGateImage({
+    teacherId,
+    imageUrl: newImageUrl,
+    imageScene,
+    passageBody,
+    stylePrefix: healStyle,
+  });
+  if (gated) newImageUrl = gated;
+
   // Re-run image QC on the new image. Legacy prose judge + (when
   // available) the structured per-character checks layered on top.
   const { checks: imageChecks } = await qcImage({
