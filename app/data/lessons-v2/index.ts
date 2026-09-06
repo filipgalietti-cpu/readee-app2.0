@@ -245,6 +245,128 @@ import { letterPerfect, letterPerfectImages } from "./letter-perfect";
 
 import { readItOutLoud, readItOutLoudImages } from "./read-it-out-loud";
 
+import { clickAndClunk, clickAndClunkImages } from "./click-and-clunk";
+
+import { readToLearn, readToLearnImages } from "./read-to-learn";
+
+import { matchYourVoice, matchYourVoiceImages } from "./match-your-voice";
+
+import { meaningMachines, meaningMachinesImages } from "./meaning-machines";
+
+import { longWordTrains, longWordTrainsImages } from "./long-word-trains";
+
+import { showMeWhere, showMeWhereImages } from "./show-me-where";
+
+import { readAroundTheWord, readAroundTheWordImages } from "./read-around-the-word";
+
+import { becauseThenSo, becauseThenSoImages } from "./because-then-so";
+
+import { followTheMessage, followTheMessageImages } from "./follow-the-message";
+
+import { whyTheyDidIt, whyTheyDidItImages } from "./why-they-did-it";
+
+import { pointToTheFact, pointToTheFactImages } from "./point-to-the-fact";
+
+import { bigIdeaBackedUp, bigIdeaBackedUpImages } from "./big-idea-backed-up";
+
+import { newWordNewMeaning, newWordNewMeaningImages } from "./new-word-new-meaning";
+
+import { sameRootNewBranch, sameRootNewBranchImages } from "./same-root-new-branch";
+
+import { threeWordTools, threeWordToolsImages } from "./three-word-tools";
+
+import { takeApartAnyWord, takeApartAnyWordImages } from "./take-apart-any-word";
+
+import { chunkByChunk, chunkByChunkImages } from "./chunk-by-chunk";
+
+import { knowThemByHeart, knowThemByHeartImages } from "./know-them-by-heart";
+
+import { moreThanItSays, moreThanItSaysImages } from "./more-than-it-says";
+
+import { partsThatBuild, partsThatBuildImages } from "./parts-that-build";
+
+import { theirViewYourView, theirViewYourViewImages } from "./their-view-your-view";
+
+import { expertWords, expertWordsImages } from "./expert-words";
+
+import { searchLikeAPro, searchLikeAProImages } from "./search-like-a-pro";
+
+import { theAuthorsView, theAuthorsViewImages } from "./the-authors-view";
+
+import { checkTheDictionary, checkTheDictionaryImages } from "./check-the-dictionary";
+
+import { sayingsThatMeanMore, sayingsThatMeanMoreImages } from "./sayings-that-mean-more";
+
+import { wordsInAction, wordsInActionImages } from "./words-in-action";
+
+import { smoothAndSure, smoothAndSureImages } from "./smooth-and-sure";
+
+import { wordConnections, wordConnectionsImages } from "./word-connections";
+
+import { knowWhyYouRead, knowWhyYouReadImages } from "./know-why-you-read";
+
+import { proseAndPoem, proseAndPoemImages } from "./prose-and-poem";
+
+import { doesThatMakeSense, doesThatMakeSenseImages } from "./does-that-make-sense";
+
+import { sameHeroNewStory, sameHeroNewStoryImages } from "./same-hero-new-story";
+
+import { whatThePictureAdds, whatThePictureAddsImages } from "./what-the-picture-adds";
+
+import { mapsAndPhotos, mapsAndPhotosImages } from "./maps-and-photos";
+
+import { sentenceToSentence, sentenceToSentenceImages } from "./sentence-to-sentence";
+
+import { theWholeChapter, theWholeChapterImages } from "./the-whole-chapter";
+
+import { twoWritersOneTopic, twoWritersOneTopicImages } from "./two-writers-one-topic";
+
+import { whenAndWhereWords, whenAndWhereWordsImages } from "./when-and-where-words";
+
+import { shadesOfSure, shadesOfSureImages } from "./shades-of-sure";
+
+import { buildABetterSentence, buildABetterSentenceImages } from "./build-a-better-sentence";
+
+import { commasQuotesCapitals, commasQuotesCapitalsImages } from "./commas-quotes-capitals";
+
+import { theWholeFactBook, theWholeFactBookImages } from "./the-whole-fact-book";
+
+import { wordsForEffect, wordsForEffectImages } from "./words-for-effect";
+
+import { textSaysSoIKnow, textSaysSoIKnowImages } from "./text-says-so-i-know";
+
+import { inDepthDetails, inDepthDetailsImages } from "./in-depth-details";
+
+import { themeAndSummary, themeAndSummaryImages } from "./theme-and-summary";
+
+import { factsSaySoIKnow, factsSaySoIKnowImages } from "./facts-say-so-i-know";
+
+import { whatHappenedAndWhy, whatHappenedAndWhyImages } from "./what-happened-and-why";
+
+import { mainIdeaAndSummary, mainIdeaAndSummaryImages } from "./main-idea-and-summary";
+
+import { contextAtADistance, contextAtADistanceImages } from "./context-at-a-distance";
+
+import { greekAndLatinRoots, greekAndLatinRootsImages } from "./greek-and-latin-roots";
+
+import { longWordsFullSpeed, longWordsFullSpeedImages } from "./long-words-full-speed";
+
+import { theRightTool, theRightToolImages } from "./the-right-tool";
+
+import { wordsFromTheMyths, wordsFromTheMythsImages } from "./words-from-the-myths";
+
+import { splitItYourWay, splitItYourWayImages } from "./split-it-your-way";
+
+import { threeWaysToTellIt, threeWaysToTellItImages } from "./three-ways-to-tell-it";
+
+import { whoTellsItChangesIt, whoTellsItChangesItImages } from "./who-tells-it-changes-it";
+
+import { wordsOfTheField, wordsOfTheFieldImages } from "./words-of-the-field";
+
+import { theShapeOfTheFacts, theShapeOfTheFactsImages } from "./the-shape-of-the-facts";
+
+import { thereOrToldAboutIt, thereOrToldAboutItImages } from "./there-or-told-about-it";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -375,4 +497,65 @@ export const LESSONS: Record<string, LessonEntry> = {
   "rule-breaker-words": { lesson: ruleBreakerWords, images: ruleBreakerWordsImages },
   "letter-perfect": { lesson: letterPerfect, images: letterPerfectImages },
   "read-it-out-loud": { lesson: readItOutLoud, images: readItOutLoudImages },
+  "click-and-clunk": { lesson: clickAndClunk, images: clickAndClunkImages },
+  "read-to-learn": { lesson: readToLearn, images: readToLearnImages },
+  "match-your-voice": { lesson: matchYourVoice, images: matchYourVoiceImages },
+  "meaning-machines": { lesson: meaningMachines, images: meaningMachinesImages },
+  "long-word-trains": { lesson: longWordTrains, images: longWordTrainsImages },
+  "show-me-where": { lesson: showMeWhere, images: showMeWhereImages },
+  "read-around-the-word": { lesson: readAroundTheWord, images: readAroundTheWordImages },
+  "because-then-so": { lesson: becauseThenSo, images: becauseThenSoImages },
+  "follow-the-message": { lesson: followTheMessage, images: followTheMessageImages },
+  "why-they-did-it": { lesson: whyTheyDidIt, images: whyTheyDidItImages },
+  "point-to-the-fact": { lesson: pointToTheFact, images: pointToTheFactImages },
+  "big-idea-backed-up": { lesson: bigIdeaBackedUp, images: bigIdeaBackedUpImages },
+  "new-word-new-meaning": { lesson: newWordNewMeaning, images: newWordNewMeaningImages },
+  "same-root-new-branch": { lesson: sameRootNewBranch, images: sameRootNewBranchImages },
+  "three-word-tools": { lesson: threeWordTools, images: threeWordToolsImages },
+  "take-apart-any-word": { lesson: takeApartAnyWord, images: takeApartAnyWordImages },
+  "chunk-by-chunk": { lesson: chunkByChunk, images: chunkByChunkImages },
+  "know-them-by-heart": { lesson: knowThemByHeart, images: knowThemByHeartImages },
+  "more-than-it-says": { lesson: moreThanItSays, images: moreThanItSaysImages },
+  "parts-that-build": { lesson: partsThatBuild, images: partsThatBuildImages },
+  "their-view-your-view": { lesson: theirViewYourView, images: theirViewYourViewImages },
+  "expert-words": { lesson: expertWords, images: expertWordsImages },
+  "search-like-a-pro": { lesson: searchLikeAPro, images: searchLikeAProImages },
+  "the-authors-view": { lesson: theAuthorsView, images: theAuthorsViewImages },
+  "check-the-dictionary": { lesson: checkTheDictionary, images: checkTheDictionaryImages },
+  "sayings-that-mean-more": { lesson: sayingsThatMeanMore, images: sayingsThatMeanMoreImages },
+  "words-in-action": { lesson: wordsInAction, images: wordsInActionImages },
+  "smooth-and-sure": { lesson: smoothAndSure, images: smoothAndSureImages },
+  "word-connections": { lesson: wordConnections, images: wordConnectionsImages },
+  "know-why-you-read": { lesson: knowWhyYouRead, images: knowWhyYouReadImages },
+  "prose-and-poem": { lesson: proseAndPoem, images: proseAndPoemImages },
+  "does-that-make-sense": { lesson: doesThatMakeSense, images: doesThatMakeSenseImages },
+  "same-hero-new-story": { lesson: sameHeroNewStory, images: sameHeroNewStoryImages },
+  "what-the-picture-adds": { lesson: whatThePictureAdds, images: whatThePictureAddsImages },
+  "maps-and-photos": { lesson: mapsAndPhotos, images: mapsAndPhotosImages },
+  "sentence-to-sentence": { lesson: sentenceToSentence, images: sentenceToSentenceImages },
+  "the-whole-chapter": { lesson: theWholeChapter, images: theWholeChapterImages },
+  "two-writers-one-topic": { lesson: twoWritersOneTopic, images: twoWritersOneTopicImages },
+  "when-and-where-words": { lesson: whenAndWhereWords, images: whenAndWhereWordsImages },
+  "shades-of-sure": { lesson: shadesOfSure, images: shadesOfSureImages },
+  "build-a-better-sentence": { lesson: buildABetterSentence, images: buildABetterSentenceImages },
+  "commas-quotes-capitals": { lesson: commasQuotesCapitals, images: commasQuotesCapitalsImages },
+  "the-whole-fact-book": { lesson: theWholeFactBook, images: theWholeFactBookImages },
+  "words-for-effect": { lesson: wordsForEffect, images: wordsForEffectImages },
+  "text-says-so-i-know": { lesson: textSaysSoIKnow, images: textSaysSoIKnowImages },
+  "in-depth-details": { lesson: inDepthDetails, images: inDepthDetailsImages },
+  "theme-and-summary": { lesson: themeAndSummary, images: themeAndSummaryImages },
+  "facts-say-so-i-know": { lesson: factsSaySoIKnow, images: factsSaySoIKnowImages },
+  "what-happened-and-why": { lesson: whatHappenedAndWhy, images: whatHappenedAndWhyImages },
+  "main-idea-and-summary": { lesson: mainIdeaAndSummary, images: mainIdeaAndSummaryImages },
+  "context-at-a-distance": { lesson: contextAtADistance, images: contextAtADistanceImages },
+  "greek-and-latin-roots": { lesson: greekAndLatinRoots, images: greekAndLatinRootsImages },
+  "long-words-full-speed": { lesson: longWordsFullSpeed, images: longWordsFullSpeedImages },
+  "the-right-tool": { lesson: theRightTool, images: theRightToolImages },
+  "words-from-the-myths": { lesson: wordsFromTheMyths, images: wordsFromTheMythsImages },
+  "split-it-your-way": { lesson: splitItYourWay, images: splitItYourWayImages },
+  "three-ways-to-tell-it": { lesson: threeWaysToTellIt, images: threeWaysToTellItImages },
+  "who-tells-it-changes-it": { lesson: whoTellsItChangesIt, images: whoTellsItChangesItImages },
+  "words-of-the-field": { lesson: wordsOfTheField, images: wordsOfTheFieldImages },
+  "the-shape-of-the-facts": { lesson: theShapeOfTheFacts, images: theShapeOfTheFactsImages },
+  "there-or-told-about-it": { lesson: thereOrToldAboutIt, images: thereOrToldAboutItImages },
 };

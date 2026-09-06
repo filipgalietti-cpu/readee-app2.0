@@ -1,0 +1,6897 @@
+{
+ "apply-choose-disagree-fact": {
+  "duration": 22.9,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.36
+   },
+   {
+    "word": "author",
+    "start": 0.36,
+    "end": 0.8
+   },
+   {
+    "word": "says",
+    "start": 0.8,
+    "end": 1.22
+   },
+   {
+    "word": "every",
+    "start": 1.22,
+    "end": 2.06
+   },
+   {
+    "word": "family",
+    "start": 2.06,
+    "end": 2.82
+   },
+   {
+    "word": "should",
+    "start": 2.82,
+    "end": 3.36
+   },
+   {
+    "word": "keep",
+    "start": 3.36,
+    "end": 3.78
+   },
+   {
+    "word": "a",
+    "start": 3.78,
+    "end": 4.06
+   },
+   {
+    "word": "guinea",
+    "start": 4.06,
+    "end": 4.42
+   },
+   {
+    "word": "pig.",
+    "start": 4.42,
+    "end": 4.92
+   },
+   {
+    "word": "Four",
+    "start": 5.42,
+    "end": 6.1
+   },
+   {
+    "word": "facts",
+    "start": 6.1,
+    "end": 6.5
+   },
+   {
+    "word": "from",
+    "start": 6.5,
+    "end": 6.88
+   },
+   {
+    "word": "the",
+    "start": 6.88,
+    "end": 7.02
+   },
+   {
+    "word": "book",
+    "start": 7.02,
+    "end": 7.28
+   },
+   {
+    "word": "are",
+    "start": 7.28,
+    "end": 7.78
+   },
+   {
+    "word": "on",
+    "start": 7.78,
+    "end": 7.98
+   },
+   {
+    "word": "your",
+    "start": 7.98,
+    "end": 8.1
+   },
+   {
+    "word": "screen",
+    "start": 8.1,
+    "end": 8.48
+   },
+   {
+    "word": "and",
+    "start": 8.48,
+    "end": 9.26
+   },
+   {
+    "word": "all",
+    "start": 9.26,
+    "end": 9.72
+   },
+   {
+    "word": "four",
+    "start": 9.72,
+    "end": 10.14
+   },
+   {
+    "word": "are",
+    "start": 10.14,
+    "end": 10.56
+   },
+   {
+    "word": "true.",
+    "start": 10.56,
+    "end": 10.96
+   },
+   {
+    "word": "Three",
+    "start": 11.72,
+    "end": 12.12
+   },
+   {
+    "word": "of",
+    "start": 12.12,
+    "end": 12.28
+   },
+   {
+    "word": "them",
+    "start": 12.28,
+    "end": 12.46
+   },
+   {
+    "word": "make",
+    "start": 12.46,
+    "end": 12.74
+   },
+   {
+    "word": "guinea",
+    "start": 12.74,
+    "end": 13.02
+   },
+   {
+    "word": "pigs",
+    "start": 13.02,
+    "end": 13.36
+   },
+   {
+    "word": "sound",
+    "start": 13.36,
+    "end": 13.66
+   },
+   {
+    "word": "sweet,",
+    "start": 13.66,
+    "end": 14.24
+   },
+   {
+    "word": "so",
+    "start": 14.82,
+    "end": 15.22
+   },
+   {
+    "word": "they",
+    "start": 15.22,
+    "end": 15.44
+   },
+   {
+    "word": "agree",
+    "start": 15.44,
+    "end": 16.04
+   },
+   {
+    "word": "with",
+    "start": 16.04,
+    "end": 16.38
+   },
+   {
+    "word": "the",
+    "start": 16.38,
+    "end": 16.56
+   },
+   {
+    "word": "author.",
+    "start": 16.56,
+    "end": 16.96
+   },
+   {
+    "word": "One",
+    "start": 17.78,
+    "end": 18.1
+   },
+   {
+    "word": "of",
+    "start": 18.1,
+    "end": 18.26
+   },
+   {
+    "word": "them",
+    "start": 18.26,
+    "end": 18.52
+   },
+   {
+    "word": "could",
+    "start": 18.52,
+    "end": 18.74
+   },
+   {
+    "word": "give",
+    "start": 18.74,
+    "end": 18.92
+   },
+   {
+    "word": "a",
+    "start": 18.92,
+    "end": 19.08
+   },
+   {
+    "word": "reader",
+    "start": 19.08,
+    "end": 19.38
+   },
+   {
+    "word": "a",
+    "start": 19.38,
+    "end": 19.62
+   },
+   {
+    "word": "reason",
+    "start": 19.62,
+    "end": 19.98
+   },
+   {
+    "word": "to",
+    "start": 19.98,
+    "end": 20.26
+   },
+   {
+    "word": "disagree.",
+    "start": 20.26,
+    "end": 21.0
+   },
+   {
+    "word": "Tap",
+    "start": 21.66,
+    "end": 22.14
+   },
+   {
+    "word": "that",
+    "start": 22.14,
+    "end": 22.52
+   },
+   {
+    "word": "fact.",
+    "start": 22.52,
+    "end": 22.9
+   }
+  ]
+ },
+ "apply-choose-fresh-loaded-word": {
+  "duration": 30.04,
+  "words": [
+   {
+    "word": "Now,",
+    "start": 0.0,
+    "end": 0.56
+   },
+   {
+    "word": "a",
+    "start": 0.94,
+    "end": 1.06
+   },
+   {
+    "word": "fresh",
+    "start": 1.06,
+    "end": 1.46
+   },
+   {
+    "word": "page",
+    "start": 1.46,
+    "end": 1.92
+   },
+   {
+    "word": "from",
+    "start": 1.92,
+    "end": 2.3
+   },
+   {
+    "word": "a",
+    "start": 2.3,
+    "end": 2.56
+   },
+   {
+    "word": "different",
+    "start": 2.56,
+    "end": 3.14
+   },
+   {
+    "word": "fact",
+    "start": 3.14,
+    "end": 3.6
+   },
+   {
+    "word": "book",
+    "start": 3.6,
+    "end": 4.14
+   },
+   {
+    "word": "about",
+    "start": 4.14,
+    "end": 4.96
+   },
+   {
+    "word": "tortoises.",
+    "start": 4.96,
+    "end": 6.08
+   },
+   {
+    "word": "Here",
+    "start": 6.48,
+    "end": 7.12
+   },
+   {
+    "word": "is",
+    "start": 7.12,
+    "end": 7.3
+   },
+   {
+    "word": "the",
+    "start": 7.3,
+    "end": 7.46
+   },
+   {
+    "word": "sentence.",
+    "start": 7.46,
+    "end": 8.0
+   },
+   {
+    "word": "A",
+    "start": 8.76,
+    "end": 9.02
+   },
+   {
+    "word": "tortoise",
+    "start": 9.02,
+    "end": 9.68
+   },
+   {
+    "word": "can",
+    "start": 9.68,
+    "end": 9.9
+   },
+   {
+    "word": "live",
+    "start": 9.9,
+    "end": 10.26
+   },
+   {
+    "word": "for",
+    "start": 10.26,
+    "end": 10.68
+   },
+   {
+    "word": "more",
+    "start": 10.68,
+    "end": 10.96
+   },
+   {
+    "word": "than",
+    "start": 10.96,
+    "end": 11.22
+   },
+   {
+    "word": "100",
+    "start": 11.22,
+    "end": 12.14
+   },
+   {
+    "word": "years,",
+    "start": 12.14,
+    "end": 12.76
+   },
+   {
+    "word": "and",
+    "start": 13.2,
+    "end": 13.68
+   },
+   {
+    "word": "its",
+    "start": 13.68,
+    "end": 13.92
+   },
+   {
+    "word": "slow,",
+    "start": 13.92,
+    "end": 14.6
+   },
+   {
+    "word": "steady",
+    "start": 14.9,
+    "end": 15.48
+   },
+   {
+    "word": "walk",
+    "start": 15.48,
+    "end": 15.96
+   },
+   {
+    "word": "is",
+    "start": 15.96,
+    "end": 16.6
+   },
+   {
+    "word": "the",
+    "start": 16.6,
+    "end": 16.82
+   },
+   {
+    "word": "most",
+    "start": 16.82,
+    "end": 17.26
+   },
+   {
+    "word": "peaceful",
+    "start": 17.26,
+    "end": 17.96
+   },
+   {
+    "word": "site",
+    "start": 17.96,
+    "end": 18.48
+   },
+   {
+    "word": "in",
+    "start": 18.48,
+    "end": 18.98
+   },
+   {
+    "word": "any",
+    "start": 18.98,
+    "end": 19.54
+   },
+   {
+    "word": "garden.",
+    "start": 19.54,
+    "end": 20.1
+   },
+   {
+    "word": "Four",
+    "start": 21.1,
+    "end": 21.6
+   },
+   {
+    "word": "pieces",
+    "start": 21.6,
+    "end": 22.1
+   },
+   {
+    "word": "of",
+    "start": 22.1,
+    "end": 22.32
+   },
+   {
+    "word": "that",
+    "start": 22.32,
+    "end": 22.52
+   },
+   {
+    "word": "sentence",
+    "start": 22.52,
+    "end": 23.0
+   },
+   {
+    "word": "are",
+    "start": 23.0,
+    "end": 23.46
+   },
+   {
+    "word": "on",
+    "start": 23.46,
+    "end": 23.66
+   },
+   {
+    "word": "your",
+    "start": 23.66,
+    "end": 23.8
+   },
+   {
+    "word": "screen.",
+    "start": 23.8,
+    "end": 24.2
+   },
+   {
+    "word": "Tap",
+    "start": 24.2,
+    "end": 25.5
+   },
+   {
+    "word": "the",
+    "start": 25.5,
+    "end": 25.84
+   },
+   {
+    "word": "words",
+    "start": 25.84,
+    "end": 26.12
+   },
+   {
+    "word": "that",
+    "start": 26.12,
+    "end": 26.4
+   },
+   {
+    "word": "carry",
+    "start": 26.4,
+    "end": 26.82
+   },
+   {
+    "word": "the",
+    "start": 26.82,
+    "end": 27.02
+   },
+   {
+    "word": "author's",
+    "start": 27.02,
+    "end": 27.66
+   },
+   {
+    "word": "feeling",
+    "start": 27.66,
+    "end": 28.28
+   },
+   {
+    "word": "instead",
+    "start": 28.28,
+    "end": 29.16
+   },
+   {
+    "word": "of",
+    "start": 29.16,
+    "end": 29.46
+   },
+   {
+    "word": "a",
+    "start": 29.46,
+    "end": 29.58
+   },
+   {
+    "word": "fact.",
+    "start": 29.58,
+    "end": 30.04
+   }
+  ]
+ },
+ "apply-sort-fact-opinion": {
+  "duration": 22.3,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "are",
+    "start": 0.5,
+    "end": 0.76
+   },
+   {
+    "word": "six",
+    "start": 0.76,
+    "end": 1.34
+   },
+   {
+    "word": "pieces",
+    "start": 1.34,
+    "end": 1.88
+   },
+   {
+    "word": "of",
+    "start": 1.88,
+    "end": 2.12
+   },
+   {
+    "word": "the",
+    "start": 2.12,
+    "end": 2.26
+   },
+   {
+    "word": "book",
+    "start": 2.26,
+    "end": 2.44
+   },
+   {
+    "word": "so",
+    "start": 2.44,
+    "end": 2.72
+   },
+   {
+    "word": "far.",
+    "start": 2.72,
+    "end": 3.04
+   },
+   {
+    "word": "For",
+    "start": 3.66,
+    "end": 3.78
+   },
+   {
+    "word": "each",
+    "start": 3.78,
+    "end": 4.18
+   },
+   {
+    "word": "one,",
+    "start": 4.18,
+    "end": 4.64
+   },
+   {
+    "word": "ask",
+    "start": 5.02,
+    "end": 5.3
+   },
+   {
+    "word": "this.",
+    "start": 5.3,
+    "end": 5.78
+   },
+   {
+    "word": "Could",
+    "start": 6.52,
+    "end": 6.74
+   },
+   {
+    "word": "somebody",
+    "start": 6.74,
+    "end": 7.28
+   },
+   {
+    "word": "check",
+    "start": 7.28,
+    "end": 7.62
+   },
+   {
+    "word": "it",
+    "start": 7.62,
+    "end": 7.88
+   },
+   {
+    "word": "with",
+    "start": 7.88,
+    "end": 8.12
+   },
+   {
+    "word": "a",
+    "start": 8.12,
+    "end": 8.26
+   },
+   {
+    "word": "test?",
+    "start": 8.26,
+    "end": 8.72
+   },
+   {
+    "word": "Or",
+    "start": 9.5,
+    "end": 9.8
+   },
+   {
+    "word": "is",
+    "start": 9.8,
+    "end": 10.16
+   },
+   {
+    "word": "it",
+    "start": 10.16,
+    "end": 10.3
+   },
+   {
+    "word": "a",
+    "start": 10.3,
+    "end": 10.4
+   },
+   {
+    "word": "judgment",
+    "start": 10.4,
+    "end": 10.96
+   },
+   {
+    "word": "that",
+    "start": 10.96,
+    "end": 11.28
+   },
+   {
+    "word": "carries",
+    "start": 11.28,
+    "end": 11.72
+   },
+   {
+    "word": "the",
+    "start": 11.72,
+    "end": 11.94
+   },
+   {
+    "word": "author's",
+    "start": 11.94,
+    "end": 12.42
+   },
+   {
+    "word": "feeling?",
+    "start": 12.42,
+    "end": 12.74
+   },
+   {
+    "word": "If",
+    "start": 13.82,
+    "end": 14.04
+   },
+   {
+    "word": "it",
+    "start": 14.04,
+    "end": 14.16
+   },
+   {
+    "word": "can",
+    "start": 14.16,
+    "end": 14.44
+   },
+   {
+    "word": "be",
+    "start": 14.44,
+    "end": 14.68
+   },
+   {
+    "word": "checked,",
+    "start": 14.68,
+    "end": 15.16
+   },
+   {
+    "word": "drag",
+    "start": 15.64,
+    "end": 15.84
+   },
+   {
+    "word": "it",
+    "start": 15.84,
+    "end": 16.08
+   },
+   {
+    "word": "to",
+    "start": 16.08,
+    "end": 16.34
+   },
+   {
+    "word": "fact.",
+    "start": 16.34,
+    "end": 16.64
+   },
+   {
+    "word": "If",
+    "start": 17.36,
+    "end": 17.78
+   },
+   {
+    "word": "it",
+    "start": 17.78,
+    "end": 17.98
+   },
+   {
+    "word": "is",
+    "start": 17.98,
+    "end": 18.12
+   },
+   {
+    "word": "what",
+    "start": 18.12,
+    "end": 18.28
+   },
+   {
+    "word": "the",
+    "start": 18.28,
+    "end": 18.48
+   },
+   {
+    "word": "author",
+    "start": 18.48,
+    "end": 18.88
+   },
+   {
+    "word": "thinks,",
+    "start": 18.88,
+    "end": 19.66
+   },
+   {
+    "word": "drag",
+    "start": 20.2,
+    "end": 20.38
+   },
+   {
+    "word": "it",
+    "start": 20.38,
+    "end": 20.66
+   },
+   {
+    "word": "to",
+    "start": 20.66,
+    "end": 20.92
+   },
+   {
+    "word": "author's",
+    "start": 20.92,
+    "end": 21.78
+   },
+   {
+    "word": "opinion.",
+    "start": 21.78,
+    "end": 22.3
+   }
+  ]
+ },
+ "celebrate-your-own-view": {
+  "duration": 32.5,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "read",
+    "start": 0.48,
+    "end": 1.0
+   },
+   {
+    "word": "a",
+    "start": 1.0,
+    "end": 1.36
+   },
+   {
+    "word": "fact",
+    "start": 1.36,
+    "end": 1.76
+   },
+   {
+    "word": "book",
+    "start": 1.76,
+    "end": 2.2
+   },
+   {
+    "word": "with",
+    "start": 2.2,
+    "end": 2.68
+   },
+   {
+    "word": "your",
+    "start": 2.68,
+    "end": 3.12
+   },
+   {
+    "word": "eyes",
+    "start": 3.12,
+    "end": 3.68
+   },
+   {
+    "word": "open",
+    "start": 3.68,
+    "end": 4.2
+   },
+   {
+    "word": "today.",
+    "start": 4.2,
+    "end": 4.64
+   },
+   {
+    "word": "You",
+    "start": 5.5,
+    "end": 5.58
+   },
+   {
+    "word": "told",
+    "start": 5.58,
+    "end": 5.9
+   },
+   {
+    "word": "the",
+    "start": 5.9,
+    "end": 6.1
+   },
+   {
+    "word": "facts",
+    "start": 6.1,
+    "end": 6.6
+   },
+   {
+    "word": "from",
+    "start": 6.6,
+    "end": 6.92
+   },
+   {
+    "word": "the",
+    "start": 6.92,
+    "end": 7.1
+   },
+   {
+    "word": "author's",
+    "start": 7.1,
+    "end": 7.78
+   },
+   {
+    "word": "opinions.",
+    "start": 7.78,
+    "end": 8.36
+   },
+   {
+    "word": "You",
+    "start": 9.14,
+    "end": 9.5
+   },
+   {
+    "word": "found",
+    "start": 9.5,
+    "end": 9.92
+   },
+   {
+    "word": "the",
+    "start": 9.92,
+    "end": 10.14
+   },
+   {
+    "word": "author's",
+    "start": 10.14,
+    "end": 10.66
+   },
+   {
+    "word": "view",
+    "start": 10.66,
+    "end": 10.96
+   },
+   {
+    "word": "in",
+    "start": 10.96,
+    "end": 11.42
+   },
+   {
+    "word": "the",
+    "start": 11.42,
+    "end": 11.62
+   },
+   {
+    "word": "loaded",
+    "start": 11.62,
+    "end": 12.14
+   },
+   {
+    "word": "words",
+    "start": 12.14,
+    "end": 12.7
+   },
+   {
+    "word": "in",
+    "start": 12.7,
+    "end": 13.46
+   },
+   {
+    "word": "the",
+    "start": 13.46,
+    "end": 13.62
+   },
+   {
+    "word": "way",
+    "start": 13.62,
+    "end": 13.84
+   },
+   {
+    "word": "each",
+    "start": 13.84,
+    "end": 14.58
+   },
+   {
+    "word": "fact",
+    "start": 14.58,
+    "end": 15.08
+   },
+   {
+    "word": "was",
+    "start": 15.08,
+    "end": 15.58
+   },
+   {
+    "word": "dressed,",
+    "start": 15.58,
+    "end": 15.9
+   },
+   {
+    "word": "and",
+    "start": 16.36,
+    "end": 16.8
+   },
+   {
+    "word": "in",
+    "start": 16.8,
+    "end": 17.0
+   },
+   {
+    "word": "what",
+    "start": 17.0,
+    "end": 17.3
+   },
+   {
+    "word": "the",
+    "start": 17.3,
+    "end": 17.54
+   },
+   {
+    "word": "author",
+    "start": 17.54,
+    "end": 17.9
+   },
+   {
+    "word": "told",
+    "start": 17.9,
+    "end": 18.26
+   },
+   {
+    "word": "you",
+    "start": 18.26,
+    "end": 18.5
+   },
+   {
+    "word": "to",
+    "start": 18.5,
+    "end": 18.68
+   },
+   {
+    "word": "do.",
+    "start": 18.68,
+    "end": 19.02
+   },
+   {
+    "word": "Then",
+    "start": 19.62,
+    "end": 20.02
+   },
+   {
+    "word": "you",
+    "start": 20.02,
+    "end": 20.26
+   },
+   {
+    "word": "made",
+    "start": 20.26,
+    "end": 20.5
+   },
+   {
+    "word": "up",
+    "start": 20.5,
+    "end": 20.66
+   },
+   {
+    "word": "your",
+    "start": 20.66,
+    "end": 20.86
+   },
+   {
+    "word": "own",
+    "start": 20.86,
+    "end": 21.18
+   },
+   {
+    "word": "mind,",
+    "start": 21.18,
+    "end": 21.62
+   },
+   {
+    "word": "and",
+    "start": 21.82,
+    "end": 22.1
+   },
+   {
+    "word": "you",
+    "start": 22.1,
+    "end": 22.26
+   },
+   {
+    "word": "backed",
+    "start": 22.26,
+    "end": 22.56
+   },
+   {
+    "word": "it",
+    "start": 22.56,
+    "end": 22.82
+   },
+   {
+    "word": "with",
+    "start": 22.82,
+    "end": 23.06
+   },
+   {
+    "word": "a",
+    "start": 23.06,
+    "end": 23.26
+   },
+   {
+    "word": "reason.",
+    "start": 23.26,
+    "end": 23.64
+   },
+   {
+    "word": "From",
+    "start": 24.34,
+    "end": 24.54
+   },
+   {
+    "word": "now",
+    "start": 24.54,
+    "end": 24.82
+   },
+   {
+    "word": "on,",
+    "start": 24.82,
+    "end": 25.34
+   },
+   {
+    "word": "when",
+    "start": 25.54,
+    "end": 25.74
+   },
+   {
+    "word": "an",
+    "start": 25.74,
+    "end": 25.88
+   },
+   {
+    "word": "author",
+    "start": 25.88,
+    "end": 26.3
+   },
+   {
+    "word": "tells",
+    "start": 26.3,
+    "end": 26.66
+   },
+   {
+    "word": "you",
+    "start": 26.66,
+    "end": 26.84
+   },
+   {
+    "word": "what",
+    "start": 26.84,
+    "end": 27.02
+   },
+   {
+    "word": "to",
+    "start": 27.02,
+    "end": 27.2
+   },
+   {
+    "word": "think,",
+    "start": 27.2,
+    "end": 27.62
+   },
+   {
+    "word": "you",
+    "start": 27.62,
+    "end": 28.22
+   },
+   {
+    "word": "can",
+    "start": 28.22,
+    "end": 28.42
+   },
+   {
+    "word": "take",
+    "start": 28.42,
+    "end": 28.66
+   },
+   {
+    "word": "the",
+    "start": 28.66,
+    "end": 28.86
+   },
+   {
+    "word": "facts",
+    "start": 28.86,
+    "end": 29.26
+   },
+   {
+    "word": "and",
+    "start": 29.26,
+    "end": 29.8
+   },
+   {
+    "word": "keep",
+    "start": 29.8,
+    "end": 30.14
+   },
+   {
+    "word": "the",
+    "start": 30.14,
+    "end": 30.44
+   },
+   {
+    "word": "deciding",
+    "start": 30.44,
+    "end": 31.04
+   },
+   {
+    "word": "for",
+    "start": 31.04,
+    "end": 31.8
+   },
+   {
+    "word": "yourself.",
+    "start": 31.8,
+    "end": 32.5
+   }
+  ]
+ },
+ "challenge-speak-your-view": {
+  "duration": 28.84,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "one,",
+    "start": 0.5,
+    "end": 1.22
+   },
+   {
+    "word": "and",
+    "start": 1.6,
+    "end": 2.0
+   },
+   {
+    "word": "it",
+    "start": 2.0,
+    "end": 2.26
+   },
+   {
+    "word": "is",
+    "start": 2.26,
+    "end": 2.8
+   },
+   {
+    "word": "your",
+    "start": 2.8,
+    "end": 3.24
+   },
+   {
+    "word": "view,",
+    "start": 3.24,
+    "end": 3.82
+   },
+   {
+    "word": "out",
+    "start": 4.4,
+    "end": 4.6
+   },
+   {
+    "word": "loud.",
+    "start": 4.6,
+    "end": 5.14
+   },
+   {
+    "word": "Tap",
+    "start": 6.04,
+    "end": 6.42
+   },
+   {
+    "word": "the",
+    "start": 6.42,
+    "end": 6.66
+   },
+   {
+    "word": "mic.",
+    "start": 6.66,
+    "end": 6.94
+   },
+   {
+    "word": "Say",
+    "start": 8.02,
+    "end": 8.38
+   },
+   {
+    "word": "what",
+    "start": 8.38,
+    "end": 8.76
+   },
+   {
+    "word": "you",
+    "start": 8.76,
+    "end": 9.22
+   },
+   {
+    "word": "think",
+    "start": 9.22,
+    "end": 9.84
+   },
+   {
+    "word": "about",
+    "start": 9.84,
+    "end": 10.34
+   },
+   {
+    "word": "keeping",
+    "start": 10.34,
+    "end": 10.8
+   },
+   {
+    "word": "a",
+    "start": 10.8,
+    "end": 11.12
+   },
+   {
+    "word": "guinea",
+    "start": 11.12,
+    "end": 11.32
+   },
+   {
+    "word": "pig.",
+    "start": 11.32,
+    "end": 11.8
+   },
+   {
+    "word": "Say",
+    "start": 12.54,
+    "end": 13.06
+   },
+   {
+    "word": "whether",
+    "start": 13.06,
+    "end": 13.62
+   },
+   {
+    "word": "that",
+    "start": 13.62,
+    "end": 14.08
+   },
+   {
+    "word": "matches",
+    "start": 14.08,
+    "end": 14.82
+   },
+   {
+    "word": "what",
+    "start": 14.82,
+    "end": 15.36
+   },
+   {
+    "word": "the",
+    "start": 15.36,
+    "end": 15.56
+   },
+   {
+    "word": "author",
+    "start": 15.56,
+    "end": 15.94
+   },
+   {
+    "word": "thinks",
+    "start": 15.94,
+    "end": 16.52
+   },
+   {
+    "word": "or",
+    "start": 16.52,
+    "end": 17.4
+   },
+   {
+    "word": "is",
+    "start": 17.4,
+    "end": 18.12
+   },
+   {
+    "word": "different.",
+    "start": 18.12,
+    "end": 18.64
+   },
+   {
+    "word": "And",
+    "start": 19.42,
+    "end": 19.7
+   },
+   {
+    "word": "give",
+    "start": 19.7,
+    "end": 19.94
+   },
+   {
+    "word": "one",
+    "start": 19.94,
+    "end": 20.56
+   },
+   {
+    "word": "reason",
+    "start": 20.56,
+    "end": 21.26
+   },
+   {
+    "word": "from",
+    "start": 21.26,
+    "end": 22.06
+   },
+   {
+    "word": "the",
+    "start": 22.06,
+    "end": 22.26
+   },
+   {
+    "word": "book",
+    "start": 22.26,
+    "end": 22.66
+   },
+   {
+    "word": "or",
+    "start": 22.66,
+    "end": 23.7
+   },
+   {
+    "word": "from",
+    "start": 23.7,
+    "end": 24.42
+   },
+   {
+    "word": "your",
+    "start": 24.42,
+    "end": 24.66
+   },
+   {
+    "word": "own",
+    "start": 24.66,
+    "end": 25.04
+   },
+   {
+    "word": "life.",
+    "start": 25.04,
+    "end": 25.7
+   },
+   {
+    "word": "Start",
+    "start": 26.32,
+    "end": 27.0
+   },
+   {
+    "word": "with,",
+    "start": 27.0,
+    "end": 27.56
+   },
+   {
+    "word": "I",
+    "start": 28.08,
+    "end": 28.42
+   },
+   {
+    "word": "think.",
+    "start": 28.42,
+    "end": 28.84
+   }
+  ]
+ },
+ "complete": {
+  "duration": 25.88,
+  "words": [
+   {
+    "word": "You",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "read",
+    "start": 0.42,
+    "end": 0.78
+   },
+   {
+    "word": "a",
+    "start": 0.78,
+    "end": 1.1
+   },
+   {
+    "word": "fact",
+    "start": 1.1,
+    "end": 1.42
+   },
+   {
+    "word": "book",
+    "start": 1.42,
+    "end": 1.76
+   },
+   {
+    "word": "with",
+    "start": 1.76,
+    "end": 2.22
+   },
+   {
+    "word": "your",
+    "start": 2.22,
+    "end": 2.42
+   },
+   {
+    "word": "eyes",
+    "start": 2.42,
+    "end": 2.78
+   },
+   {
+    "word": "open.",
+    "start": 2.78,
+    "end": 3.3
+   },
+   {
+    "word": "You",
+    "start": 3.98,
+    "end": 4.12
+   },
+   {
+    "word": "told",
+    "start": 4.12,
+    "end": 4.46
+   },
+   {
+    "word": "the",
+    "start": 4.46,
+    "end": 4.66
+   },
+   {
+    "word": "facts",
+    "start": 4.66,
+    "end": 4.98
+   },
+   {
+    "word": "from",
+    "start": 4.98,
+    "end": 5.34
+   },
+   {
+    "word": "the",
+    "start": 5.34,
+    "end": 5.52
+   },
+   {
+    "word": "author's",
+    "start": 5.52,
+    "end": 5.98
+   },
+   {
+    "word": "opinions,",
+    "start": 5.98,
+    "end": 6.38
+   },
+   {
+    "word": "you",
+    "start": 6.92,
+    "end": 7.2
+   },
+   {
+    "word": "found",
+    "start": 7.2,
+    "end": 7.48
+   },
+   {
+    "word": "the",
+    "start": 7.48,
+    "end": 7.66
+   },
+   {
+    "word": "author's",
+    "start": 7.66,
+    "end": 8.28
+   },
+   {
+    "word": "view",
+    "start": 8.28,
+    "end": 8.5
+   },
+   {
+    "word": "in",
+    "start": 8.5,
+    "end": 8.92
+   },
+   {
+    "word": "the",
+    "start": 8.92,
+    "end": 9.06
+   },
+   {
+    "word": "loaded",
+    "start": 9.06,
+    "end": 9.42
+   },
+   {
+    "word": "words,",
+    "start": 9.42,
+    "end": 9.86
+   },
+   {
+    "word": "and",
+    "start": 10.54,
+    "end": 10.7
+   },
+   {
+    "word": "in",
+    "start": 10.7,
+    "end": 10.86
+   },
+   {
+    "word": "the",
+    "start": 10.86,
+    "end": 10.98
+   },
+   {
+    "word": "way",
+    "start": 10.98,
+    "end": 11.16
+   },
+   {
+    "word": "the",
+    "start": 11.16,
+    "end": 11.36
+   },
+   {
+    "word": "facts",
+    "start": 11.36,
+    "end": 11.68
+   },
+   {
+    "word": "were",
+    "start": 11.68,
+    "end": 11.9
+   },
+   {
+    "word": "dressed,",
+    "start": 11.9,
+    "end": 12.44
+   },
+   {
+    "word": "and",
+    "start": 12.78,
+    "end": 13.18
+   },
+   {
+    "word": "then",
+    "start": 13.18,
+    "end": 13.42
+   },
+   {
+    "word": "you",
+    "start": 13.42,
+    "end": 13.88
+   },
+   {
+    "word": "decided",
+    "start": 13.88,
+    "end": 14.56
+   },
+   {
+    "word": "what",
+    "start": 14.56,
+    "end": 15.0
+   },
+   {
+    "word": "you",
+    "start": 15.0,
+    "end": 15.34
+   },
+   {
+    "word": "think",
+    "start": 15.34,
+    "end": 15.8
+   },
+   {
+    "word": "with",
+    "start": 15.8,
+    "end": 16.1
+   },
+   {
+    "word": "the",
+    "start": 16.1,
+    "end": 16.24
+   },
+   {
+    "word": "reason",
+    "start": 16.24,
+    "end": 16.54
+   },
+   {
+    "word": "of",
+    "start": 16.54,
+    "end": 16.72
+   },
+   {
+    "word": "your",
+    "start": 16.72,
+    "end": 16.88
+   },
+   {
+    "word": "own.",
+    "start": 16.88,
+    "end": 17.22
+   },
+   {
+    "word": "An",
+    "start": 18.12,
+    "end": 18.38
+   },
+   {
+    "word": "author",
+    "start": 18.38,
+    "end": 18.8
+   },
+   {
+    "word": "can",
+    "start": 18.8,
+    "end": 19.1
+   },
+   {
+    "word": "give",
+    "start": 19.1,
+    "end": 19.46
+   },
+   {
+    "word": "you",
+    "start": 19.46,
+    "end": 19.76
+   },
+   {
+    "word": "the",
+    "start": 19.76,
+    "end": 19.9
+   },
+   {
+    "word": "facts,",
+    "start": 19.9,
+    "end": 20.3
+   },
+   {
+    "word": "but",
+    "start": 20.74,
+    "end": 20.94
+   },
+   {
+    "word": "the",
+    "start": 20.94,
+    "end": 21.08
+   },
+   {
+    "word": "author",
+    "start": 21.08,
+    "end": 21.62
+   },
+   {
+    "word": "does",
+    "start": 21.62,
+    "end": 21.88
+   },
+   {
+    "word": "not",
+    "start": 21.88,
+    "end": 22.26
+   },
+   {
+    "word": "get",
+    "start": 22.26,
+    "end": 22.56
+   },
+   {
+    "word": "to",
+    "start": 22.56,
+    "end": 22.78
+   },
+   {
+    "word": "decide",
+    "start": 22.78,
+    "end": 23.18
+   },
+   {
+    "word": "your",
+    "start": 23.18,
+    "end": 23.54
+   },
+   {
+    "word": "view.",
+    "start": 23.54,
+    "end": 23.96
+   },
+   {
+    "word": "That",
+    "start": 24.44,
+    "end": 24.86
+   },
+   {
+    "word": "is",
+    "start": 24.86,
+    "end": 25.46
+   },
+   {
+    "word": "yours.",
+    "start": 25.46,
+    "end": 25.88
+   }
+  ]
+ },
+ "guided-choose-author-view": {
+  "duration": 13.4,
+  "words": [
+   {
+    "word": "Your",
+    "start": 0.0,
+    "end": 0.38
+   },
+   {
+    "word": "turn.",
+    "start": 0.38,
+    "end": 0.86
+   },
+   {
+    "word": "Page",
+    "start": 1.62,
+    "end": 1.9
+   },
+   {
+    "word": "1",
+    "start": 1.9,
+    "end": 2.34
+   },
+   {
+    "word": "is",
+    "start": 2.34,
+    "end": 2.74
+   },
+   {
+    "word": "full",
+    "start": 2.74,
+    "end": 3.16
+   },
+   {
+    "word": "of",
+    "start": 3.16,
+    "end": 3.44
+   },
+   {
+    "word": "the",
+    "start": 3.44,
+    "end": 3.62
+   },
+   {
+    "word": "author's",
+    "start": 3.62,
+    "end": 4.14
+   },
+   {
+    "word": "feelings.",
+    "start": 4.14,
+    "end": 4.52
+   },
+   {
+    "word": "Four",
+    "start": 5.34,
+    "end": 5.72
+   },
+   {
+    "word": "views",
+    "start": 5.72,
+    "end": 6.18
+   },
+   {
+    "word": "are",
+    "start": 6.18,
+    "end": 6.42
+   },
+   {
+    "word": "on",
+    "start": 6.42,
+    "end": 6.6
+   },
+   {
+    "word": "your",
+    "start": 6.6,
+    "end": 6.76
+   },
+   {
+    "word": "screen,",
+    "start": 6.76,
+    "end": 7.12
+   },
+   {
+    "word": "and",
+    "start": 7.7,
+    "end": 7.92
+   },
+   {
+    "word": "only",
+    "start": 7.92,
+    "end": 8.28
+   },
+   {
+    "word": "one",
+    "start": 8.28,
+    "end": 8.66
+   },
+   {
+    "word": "of",
+    "start": 8.66,
+    "end": 8.78
+   },
+   {
+    "word": "them",
+    "start": 8.78,
+    "end": 8.98
+   },
+   {
+    "word": "is",
+    "start": 8.98,
+    "end": 9.32
+   },
+   {
+    "word": "what",
+    "start": 9.32,
+    "end": 9.56
+   },
+   {
+    "word": "this",
+    "start": 9.56,
+    "end": 9.86
+   },
+   {
+    "word": "author",
+    "start": 9.86,
+    "end": 10.42
+   },
+   {
+    "word": "thinks",
+    "start": 10.42,
+    "end": 10.96
+   },
+   {
+    "word": "about",
+    "start": 10.96,
+    "end": 11.48
+   },
+   {
+    "word": "Guinea",
+    "start": 11.48,
+    "end": 11.82
+   },
+   {
+    "word": "Pigs.",
+    "start": 11.82,
+    "end": 12.3
+   },
+   {
+    "word": "Tap",
+    "start": 12.92,
+    "end": 13.1
+   },
+   {
+    "word": "it.",
+    "start": 13.1,
+    "end": 13.4
+   }
+  ]
+ },
+ "guided-choose-checkable-fact": {
+  "duration": 18.76,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "you",
+    "start": 0.46,
+    "end": 0.76
+   },
+   {
+    "word": "separate",
+    "start": 0.76,
+    "end": 1.36
+   },
+   {
+    "word": "the",
+    "start": 1.36,
+    "end": 1.7
+   },
+   {
+    "word": "piles.",
+    "start": 1.7,
+    "end": 2.12
+   },
+   {
+    "word": "Four",
+    "start": 2.82,
+    "end": 3.18
+   },
+   {
+    "word": "pieces",
+    "start": 3.18,
+    "end": 3.58
+   },
+   {
+    "word": "of",
+    "start": 3.58,
+    "end": 4.06
+   },
+   {
+    "word": "page",
+    "start": 4.06,
+    "end": 4.34
+   },
+   {
+    "word": "three",
+    "start": 4.34,
+    "end": 4.78
+   },
+   {
+    "word": "are",
+    "start": 4.78,
+    "end": 5.12
+   },
+   {
+    "word": "on",
+    "start": 5.12,
+    "end": 5.32
+   },
+   {
+    "word": "your",
+    "start": 5.32,
+    "end": 5.46
+   },
+   {
+    "word": "screen,",
+    "start": 5.46,
+    "end": 5.8
+   },
+   {
+    "word": "and",
+    "start": 6.24,
+    "end": 6.68
+   },
+   {
+    "word": "all",
+    "start": 6.68,
+    "end": 6.98
+   },
+   {
+    "word": "four",
+    "start": 6.98,
+    "end": 7.3
+   },
+   {
+    "word": "are",
+    "start": 7.3,
+    "end": 7.64
+   },
+   {
+    "word": "really",
+    "start": 7.64,
+    "end": 8.12
+   },
+   {
+    "word": "there.",
+    "start": 8.12,
+    "end": 8.5
+   },
+   {
+    "word": "Three",
+    "start": 9.3,
+    "end": 9.64
+   },
+   {
+    "word": "of",
+    "start": 9.64,
+    "end": 9.84
+   },
+   {
+    "word": "them",
+    "start": 9.84,
+    "end": 10.12
+   },
+   {
+    "word": "carry",
+    "start": 10.12,
+    "end": 10.6
+   },
+   {
+    "word": "the",
+    "start": 10.6,
+    "end": 10.9
+   },
+   {
+    "word": "author's",
+    "start": 10.9,
+    "end": 11.48
+   },
+   {
+    "word": "feelings.",
+    "start": 11.48,
+    "end": 11.86
+   },
+   {
+    "word": "Only",
+    "start": 12.46,
+    "end": 12.84
+   },
+   {
+    "word": "one",
+    "start": 12.84,
+    "end": 13.26
+   },
+   {
+    "word": "is",
+    "start": 13.26,
+    "end": 13.6
+   },
+   {
+    "word": "a",
+    "start": 13.6,
+    "end": 13.74
+   },
+   {
+    "word": "plain",
+    "start": 13.74,
+    "end": 14.06
+   },
+   {
+    "word": "fact",
+    "start": 14.06,
+    "end": 14.56
+   },
+   {
+    "word": "that",
+    "start": 14.56,
+    "end": 14.98
+   },
+   {
+    "word": "a",
+    "start": 14.98,
+    "end": 15.12
+   },
+   {
+    "word": "scientist",
+    "start": 15.12,
+    "end": 15.7
+   },
+   {
+    "word": "could",
+    "start": 15.7,
+    "end": 16.2
+   },
+   {
+    "word": "check",
+    "start": 16.2,
+    "end": 16.38
+   },
+   {
+    "word": "with",
+    "start": 16.38,
+    "end": 16.58
+   },
+   {
+    "word": "a",
+    "start": 16.58,
+    "end": 16.7
+   },
+   {
+    "word": "test.",
+    "start": 16.7,
+    "end": 17.04
+   },
+   {
+    "word": "Tap",
+    "start": 17.76,
+    "end": 18.06
+   },
+   {
+    "word": "the",
+    "start": 18.06,
+    "end": 18.34
+   },
+   {
+    "word": "fact.",
+    "start": 18.34,
+    "end": 18.76
+   }
+  ]
+ },
+ "guided-choose-loaded-words": {
+  "duration": 25.46,
+  "words": [
+   {
+    "word": "An",
+    "start": 0.0,
+    "end": 0.4
+   },
+   {
+    "word": "opinion",
+    "start": 0.4,
+    "end": 1.0
+   },
+   {
+    "word": "lives",
+    "start": 1.0,
+    "end": 1.84
+   },
+   {
+    "word": "in",
+    "start": 1.84,
+    "end": 2.3
+   },
+   {
+    "word": "the",
+    "start": 2.3,
+    "end": 2.46
+   },
+   {
+    "word": "words",
+    "start": 2.46,
+    "end": 2.86
+   },
+   {
+    "word": "the",
+    "start": 2.86,
+    "end": 3.28
+   },
+   {
+    "word": "author",
+    "start": 3.28,
+    "end": 3.76
+   },
+   {
+    "word": "chooses.",
+    "start": 3.76,
+    "end": 4.48
+   },
+   {
+    "word": "Four",
+    "start": 5.38,
+    "end": 6.04
+   },
+   {
+    "word": "pieces",
+    "start": 6.04,
+    "end": 6.6
+   },
+   {
+    "word": "of",
+    "start": 6.6,
+    "end": 7.04
+   },
+   {
+    "word": "page",
+    "start": 7.04,
+    "end": 7.4
+   },
+   {
+    "word": "one",
+    "start": 7.4,
+    "end": 7.84
+   },
+   {
+    "word": "are",
+    "start": 7.84,
+    "end": 8.26
+   },
+   {
+    "word": "on",
+    "start": 8.26,
+    "end": 8.52
+   },
+   {
+    "word": "your",
+    "start": 8.52,
+    "end": 8.72
+   },
+   {
+    "word": "screen.",
+    "start": 8.72,
+    "end": 9.16
+   },
+   {
+    "word": "And",
+    "start": 10.12,
+    "end": 10.28
+   },
+   {
+    "word": "all",
+    "start": 10.28,
+    "end": 10.62
+   },
+   {
+    "word": "four",
+    "start": 10.62,
+    "end": 11.12
+   },
+   {
+    "word": "are",
+    "start": 11.12,
+    "end": 11.54
+   },
+   {
+    "word": "really",
+    "start": 11.54,
+    "end": 12.1
+   },
+   {
+    "word": "there.",
+    "start": 12.1,
+    "end": 12.52
+   },
+   {
+    "word": "Three",
+    "start": 13.4,
+    "end": 13.88
+   },
+   {
+    "word": "of",
+    "start": 13.88,
+    "end": 14.12
+   },
+   {
+    "word": "them",
+    "start": 14.12,
+    "end": 14.36
+   },
+   {
+    "word": "are",
+    "start": 14.36,
+    "end": 14.78
+   },
+   {
+    "word": "facts",
+    "start": 14.78,
+    "end": 15.3
+   },
+   {
+    "word": "you",
+    "start": 15.3,
+    "end": 16.04
+   },
+   {
+    "word": "could",
+    "start": 16.04,
+    "end": 16.2
+   },
+   {
+    "word": "check.",
+    "start": 16.2,
+    "end": 16.56
+   },
+   {
+    "word": "One",
+    "start": 17.44,
+    "end": 17.78
+   },
+   {
+    "word": "of",
+    "start": 17.78,
+    "end": 18.0
+   },
+   {
+    "word": "them",
+    "start": 18.0,
+    "end": 18.34
+   },
+   {
+    "word": "carries",
+    "start": 18.34,
+    "end": 18.98
+   },
+   {
+    "word": "the",
+    "start": 18.98,
+    "end": 19.36
+   },
+   {
+    "word": "author's",
+    "start": 19.36,
+    "end": 20.08
+   },
+   {
+    "word": "feeling.",
+    "start": 20.08,
+    "end": 20.62
+   },
+   {
+    "word": "Tap",
+    "start": 21.68,
+    "end": 22.02
+   },
+   {
+    "word": "the",
+    "start": 22.02,
+    "end": 22.34
+   },
+   {
+    "word": "words",
+    "start": 22.34,
+    "end": 22.76
+   },
+   {
+    "word": "that",
+    "start": 22.76,
+    "end": 23.26
+   },
+   {
+    "word": "show",
+    "start": 23.26,
+    "end": 23.72
+   },
+   {
+    "word": "the",
+    "start": 23.72,
+    "end": 24.2
+   },
+   {
+    "word": "author's",
+    "start": 24.2,
+    "end": 24.9
+   },
+   {
+    "word": "opinion.",
+    "start": 24.9,
+    "end": 25.46
+   }
+  ]
+ },
+ "hook-page-one-sentence": {
+  "duration": 40.94,
+  "words": [
+   {
+    "word": "The",
+    "start": 0.0,
+    "end": 0.4
+   },
+   {
+    "word": "guinea",
+    "start": 0.4,
+    "end": 0.84
+   },
+   {
+    "word": "pig",
+    "start": 0.84,
+    "end": 1.38
+   },
+   {
+    "word": "is",
+    "start": 1.38,
+    "end": 1.66
+   },
+   {
+    "word": "the",
+    "start": 1.66,
+    "end": 1.9
+   },
+   {
+    "word": "best",
+    "start": 1.9,
+    "end": 2.5
+   },
+   {
+    "word": "pet",
+    "start": 2.5,
+    "end": 2.88
+   },
+   {
+    "word": "a",
+    "start": 2.88,
+    "end": 3.22
+   },
+   {
+    "word": "family",
+    "start": 3.22,
+    "end": 3.72
+   },
+   {
+    "word": "can",
+    "start": 3.72,
+    "end": 4.06
+   },
+   {
+    "word": "have,",
+    "start": 4.06,
+    "end": 4.62
+   },
+   {
+    "word": "and",
+    "start": 4.88,
+    "end": 5.28
+   },
+   {
+    "word": "I",
+    "start": 5.28,
+    "end": 5.58
+   },
+   {
+    "word": "will",
+    "start": 5.58,
+    "end": 5.76
+   },
+   {
+    "word": "spend",
+    "start": 5.76,
+    "end": 6.12
+   },
+   {
+    "word": "this",
+    "start": 6.12,
+    "end": 6.48
+   },
+   {
+    "word": "whole",
+    "start": 6.48,
+    "end": 6.84
+   },
+   {
+    "word": "book",
+    "start": 6.84,
+    "end": 7.34
+   },
+   {
+    "word": "telling",
+    "start": 7.34,
+    "end": 7.9
+   },
+   {
+    "word": "you",
+    "start": 7.9,
+    "end": 8.22
+   },
+   {
+    "word": "why.",
+    "start": 8.22,
+    "end": 8.78
+   },
+   {
+    "word": "Guinea",
+    "start": 9.84,
+    "end": 10.46
+   },
+   {
+    "word": "pigs",
+    "start": 10.46,
+    "end": 11.04
+   },
+   {
+    "word": "are",
+    "start": 11.04,
+    "end": 11.52
+   },
+   {
+    "word": "not",
+    "start": 11.52,
+    "end": 11.88
+   },
+   {
+    "word": "pigs",
+    "start": 11.88,
+    "end": 12.38
+   },
+   {
+    "word": "at",
+    "start": 12.38,
+    "end": 12.84
+   },
+   {
+    "word": "all,",
+    "start": 12.84,
+    "end": 13.24
+   },
+   {
+    "word": "and",
+    "start": 13.76,
+    "end": 14.04
+   },
+   {
+    "word": "they",
+    "start": 14.04,
+    "end": 14.24
+   },
+   {
+    "word": "do",
+    "start": 14.24,
+    "end": 14.48
+   },
+   {
+    "word": "not",
+    "start": 14.48,
+    "end": 14.82
+   },
+   {
+    "word": "come",
+    "start": 14.82,
+    "end": 15.4
+   },
+   {
+    "word": "from",
+    "start": 15.4,
+    "end": 15.7
+   },
+   {
+    "word": "a",
+    "start": 15.7,
+    "end": 15.9
+   },
+   {
+    "word": "place",
+    "start": 15.9,
+    "end": 16.3
+   },
+   {
+    "word": "called",
+    "start": 16.3,
+    "end": 16.8
+   },
+   {
+    "word": "guinea",
+    "start": 16.8,
+    "end": 17.36
+   },
+   {
+    "word": "because",
+    "start": 17.36,
+    "end": 18.2
+   },
+   {
+    "word": "they",
+    "start": 18.2,
+    "end": 18.66
+   },
+   {
+    "word": "are",
+    "start": 18.66,
+    "end": 18.98
+   },
+   {
+    "word": "rodents,",
+    "start": 18.98,
+    "end": 19.84
+   },
+   {
+    "word": "a",
+    "start": 20.2,
+    "end": 20.44
+   },
+   {
+    "word": "family",
+    "start": 20.44,
+    "end": 21.02
+   },
+   {
+    "word": "of",
+    "start": 21.02,
+    "end": 21.42
+   },
+   {
+    "word": "animals",
+    "start": 21.42,
+    "end": 21.94
+   },
+   {
+    "word": "with",
+    "start": 21.94,
+    "end": 22.42
+   },
+   {
+    "word": "front",
+    "start": 22.42,
+    "end": 22.86
+   },
+   {
+    "word": "teeth",
+    "start": 22.86,
+    "end": 23.52
+   },
+   {
+    "word": "that",
+    "start": 23.52,
+    "end": 24.02
+   },
+   {
+    "word": "never",
+    "start": 24.02,
+    "end": 24.72
+   },
+   {
+    "word": "stop",
+    "start": 24.72,
+    "end": 25.24
+   },
+   {
+    "word": "growing,",
+    "start": 25.24,
+    "end": 26.0
+   },
+   {
+    "word": "and",
+    "start": 26.0,
+    "end": 26.84
+   },
+   {
+    "word": "they",
+    "start": 26.84,
+    "end": 27.06
+   },
+   {
+    "word": "first",
+    "start": 27.06,
+    "end": 27.52
+   },
+   {
+    "word": "lived",
+    "start": 27.52,
+    "end": 28.04
+   },
+   {
+    "word": "in",
+    "start": 28.04,
+    "end": 28.56
+   },
+   {
+    "word": "the",
+    "start": 28.56,
+    "end": 28.7
+   },
+   {
+    "word": "mountains",
+    "start": 28.7,
+    "end": 29.22
+   },
+   {
+    "word": "of",
+    "start": 29.22,
+    "end": 29.72
+   },
+   {
+    "word": "South",
+    "start": 29.72,
+    "end": 30.16
+   },
+   {
+    "word": "America.",
+    "start": 30.16,
+    "end": 30.82
+   },
+   {
+    "word": "Sadly,",
+    "start": 32.06,
+    "end": 32.78
+   },
+   {
+    "word": "many",
+    "start": 33.4,
+    "end": 33.76
+   },
+   {
+    "word": "families",
+    "start": 33.76,
+    "end": 34.36
+   },
+   {
+    "word": "never",
+    "start": 34.36,
+    "end": 35.06
+   },
+   {
+    "word": "even",
+    "start": 35.06,
+    "end": 35.54
+   },
+   {
+    "word": "think",
+    "start": 35.54,
+    "end": 35.9
+   },
+   {
+    "word": "of",
+    "start": 35.9,
+    "end": 36.22
+   },
+   {
+    "word": "them",
+    "start": 36.22,
+    "end": 36.56
+   },
+   {
+    "word": "because",
+    "start": 36.56,
+    "end": 37.32
+   },
+   {
+    "word": "they",
+    "start": 37.32,
+    "end": 37.64
+   },
+   {
+    "word": "have",
+    "start": 37.64,
+    "end": 37.86
+   },
+   {
+    "word": "only",
+    "start": 37.86,
+    "end": 38.46
+   },
+   {
+    "word": "ever",
+    "start": 38.46,
+    "end": 38.96
+   },
+   {
+    "word": "heard",
+    "start": 38.96,
+    "end": 39.42
+   },
+   {
+    "word": "of",
+    "start": 39.42,
+    "end": 39.88
+   },
+   {
+    "word": "dogs",
+    "start": 39.88,
+    "end": 40.28
+   },
+   {
+    "word": "and",
+    "start": 40.28,
+    "end": 40.54
+   },
+   {
+    "word": "cats.",
+    "start": 40.54,
+    "end": 40.94
+   }
+  ]
+ },
+ "hook-page-one": {
+  "duration": 30.68,
+  "words": [
+   {
+    "word": "Hello,",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "reader.",
+    "start": 0.74,
+    "end": 1.0
+   },
+   {
+    "word": "A",
+    "start": 1.56,
+    "end": 1.76
+   },
+   {
+    "word": "fact",
+    "start": 1.76,
+    "end": 2.1
+   },
+   {
+    "word": "book",
+    "start": 2.1,
+    "end": 2.46
+   },
+   {
+    "word": "is",
+    "start": 2.46,
+    "end": 2.84
+   },
+   {
+    "word": "written",
+    "start": 2.84,
+    "end": 3.16
+   },
+   {
+    "word": "by",
+    "start": 3.16,
+    "end": 3.42
+   },
+   {
+    "word": "a",
+    "start": 3.42,
+    "end": 3.56
+   },
+   {
+    "word": "person",
+    "start": 3.56,
+    "end": 4.04
+   },
+   {
+    "word": "and",
+    "start": 4.04,
+    "end": 4.58
+   },
+   {
+    "word": "a",
+    "start": 4.58,
+    "end": 4.72
+   },
+   {
+    "word": "person",
+    "start": 4.72,
+    "end": 5.26
+   },
+   {
+    "word": "has",
+    "start": 5.26,
+    "end": 5.98
+   },
+   {
+    "word": "opinions.",
+    "start": 5.98,
+    "end": 6.68
+   },
+   {
+    "word": "Today,",
+    "start": 7.7,
+    "end": 8.02
+   },
+   {
+    "word": "you",
+    "start": 8.64,
+    "end": 8.72
+   },
+   {
+    "word": "learn",
+    "start": 8.72,
+    "end": 9.0
+   },
+   {
+    "word": "to",
+    "start": 9.0,
+    "end": 9.24
+   },
+   {
+    "word": "tell",
+    "start": 9.24,
+    "end": 9.62
+   },
+   {
+    "word": "what",
+    "start": 9.62,
+    "end": 10.08
+   },
+   {
+    "word": "is",
+    "start": 10.08,
+    "end": 10.36
+   },
+   {
+    "word": "simply",
+    "start": 10.36,
+    "end": 10.88
+   },
+   {
+    "word": "true",
+    "start": 10.88,
+    "end": 11.46
+   },
+   {
+    "word": "from",
+    "start": 11.46,
+    "end": 12.0
+   },
+   {
+    "word": "what",
+    "start": 12.0,
+    "end": 12.28
+   },
+   {
+    "word": "the",
+    "start": 12.28,
+    "end": 12.5
+   },
+   {
+    "word": "author",
+    "start": 12.5,
+    "end": 12.92
+   },
+   {
+    "word": "thinks",
+    "start": 12.92,
+    "end": 13.64
+   },
+   {
+    "word": "and",
+    "start": 13.64,
+    "end": 14.56
+   },
+   {
+    "word": "then",
+    "start": 14.56,
+    "end": 14.94
+   },
+   {
+    "word": "to",
+    "start": 14.94,
+    "end": 15.4
+   },
+   {
+    "word": "decide",
+    "start": 15.4,
+    "end": 15.8
+   },
+   {
+    "word": "what",
+    "start": 15.8,
+    "end": 16.2
+   },
+   {
+    "word": "you",
+    "start": 16.2,
+    "end": 16.58
+   },
+   {
+    "word": "think.",
+    "start": 16.58,
+    "end": 17.16
+   },
+   {
+    "word": "Here",
+    "start": 17.64,
+    "end": 18.32
+   },
+   {
+    "word": "is",
+    "start": 18.32,
+    "end": 18.5
+   },
+   {
+    "word": "page",
+    "start": 18.5,
+    "end": 18.74
+   },
+   {
+    "word": "1",
+    "start": 18.74,
+    "end": 19.1
+   },
+   {
+    "word": "of",
+    "start": 19.1,
+    "end": 19.44
+   },
+   {
+    "word": "a",
+    "start": 19.44,
+    "end": 19.56
+   },
+   {
+    "word": "book",
+    "start": 19.56,
+    "end": 19.78
+   },
+   {
+    "word": "called",
+    "start": 19.78,
+    "end": 20.28
+   },
+   {
+    "word": "Why",
+    "start": 20.28,
+    "end": 20.92
+   },
+   {
+    "word": "Every",
+    "start": 20.92,
+    "end": 21.56
+   },
+   {
+    "word": "Family",
+    "start": 21.56,
+    "end": 22.08
+   },
+   {
+    "word": "Needs",
+    "start": 22.08,
+    "end": 22.86
+   },
+   {
+    "word": "a",
+    "start": 22.86,
+    "end": 23.1
+   },
+   {
+    "word": "Guinea",
+    "start": 23.1,
+    "end": 23.36
+   },
+   {
+    "word": "Pig.",
+    "start": 23.36,
+    "end": 23.74
+   },
+   {
+    "word": "Read",
+    "start": 23.74,
+    "end": 24.74
+   },
+   {
+    "word": "along",
+    "start": 24.74,
+    "end": 25.14
+   },
+   {
+    "word": "with",
+    "start": 25.14,
+    "end": 25.44
+   },
+   {
+    "word": "me",
+    "start": 25.44,
+    "end": 25.66
+   },
+   {
+    "word": "and",
+    "start": 25.66,
+    "end": 26.1
+   },
+   {
+    "word": "listen",
+    "start": 26.1,
+    "end": 26.52
+   },
+   {
+    "word": "for",
+    "start": 26.52,
+    "end": 26.86
+   },
+   {
+    "word": "the",
+    "start": 26.86,
+    "end": 27.04
+   },
+   {
+    "word": "author's",
+    "start": 27.04,
+    "end": 27.68
+   },
+   {
+    "word": "feelings",
+    "start": 27.68,
+    "end": 28.12
+   },
+   {
+    "word": "slipping",
+    "start": 28.12,
+    "end": 28.9
+   },
+   {
+    "word": "in",
+    "start": 28.9,
+    "end": 29.28
+   },
+   {
+    "word": "between",
+    "start": 29.28,
+    "end": 29.82
+   },
+   {
+    "word": "the",
+    "start": 29.82,
+    "end": 30.16
+   },
+   {
+    "word": "facts.",
+    "start": 30.16,
+    "end": 30.68
+   }
+  ]
+ },
+ "model-fact-vs-opinion": {
+  "duration": 73.56,
+  "words": [
+   {
+    "word": "Here",
+    "start": 0.0,
+    "end": 0.52
+   },
+   {
+    "word": "is",
+    "start": 0.52,
+    "end": 0.86
+   },
+   {
+    "word": "how",
+    "start": 0.86,
+    "end": 1.02
+   },
+   {
+    "word": "I",
+    "start": 1.02,
+    "end": 1.34
+   },
+   {
+    "word": "read",
+    "start": 1.34,
+    "end": 1.64
+   },
+   {
+    "word": "page",
+    "start": 1.64,
+    "end": 2.04
+   },
+   {
+    "word": "one.",
+    "start": 2.04,
+    "end": 2.54
+   },
+   {
+    "word": "Guinea",
+    "start": 3.36,
+    "end": 3.66
+   },
+   {
+    "word": "pigs",
+    "start": 3.66,
+    "end": 4.18
+   },
+   {
+    "word": "are",
+    "start": 4.18,
+    "end": 4.52
+   },
+   {
+    "word": "rodents,",
+    "start": 4.52,
+    "end": 5.18
+   },
+   {
+    "word": "and",
+    "start": 5.3,
+    "end": 5.8
+   },
+   {
+    "word": "they",
+    "start": 5.8,
+    "end": 5.94
+   },
+   {
+    "word": "first",
+    "start": 5.94,
+    "end": 6.3
+   },
+   {
+    "word": "lived",
+    "start": 6.3,
+    "end": 6.86
+   },
+   {
+    "word": "in",
+    "start": 6.86,
+    "end": 7.18
+   },
+   {
+    "word": "the",
+    "start": 7.18,
+    "end": 7.32
+   },
+   {
+    "word": "mountains",
+    "start": 7.32,
+    "end": 7.7
+   },
+   {
+    "word": "of",
+    "start": 7.7,
+    "end": 8.08
+   },
+   {
+    "word": "South",
+    "start": 8.08,
+    "end": 8.42
+   },
+   {
+    "word": "America.",
+    "start": 8.42,
+    "end": 8.92
+   },
+   {
+    "word": "Could",
+    "start": 10.16,
+    "end": 10.44
+   },
+   {
+    "word": "I",
+    "start": 10.44,
+    "end": 10.6
+   },
+   {
+    "word": "check",
+    "start": 10.6,
+    "end": 10.94
+   },
+   {
+    "word": "that?",
+    "start": 10.94,
+    "end": 11.22
+   },
+   {
+    "word": "Yes,",
+    "start": 12.02,
+    "end": 12.3
+   },
+   {
+    "word": "I",
+    "start": 12.74,
+    "end": 13.22
+   },
+   {
+    "word": "could",
+    "start": 13.22,
+    "end": 13.4
+   },
+   {
+    "word": "look",
+    "start": 13.4,
+    "end": 13.62
+   },
+   {
+    "word": "in",
+    "start": 13.62,
+    "end": 13.84
+   },
+   {
+    "word": "another",
+    "start": 13.84,
+    "end": 14.1
+   },
+   {
+    "word": "book",
+    "start": 14.1,
+    "end": 14.6
+   },
+   {
+    "word": "or",
+    "start": 14.6,
+    "end": 15.02
+   },
+   {
+    "word": "ask",
+    "start": 15.02,
+    "end": 15.42
+   },
+   {
+    "word": "a",
+    "start": 15.42,
+    "end": 15.6
+   },
+   {
+    "word": "scientist,",
+    "start": 15.6,
+    "end": 16.22
+   },
+   {
+    "word": "and",
+    "start": 16.56,
+    "end": 16.9
+   },
+   {
+    "word": "it",
+    "start": 16.9,
+    "end": 17.06
+   },
+   {
+    "word": "would",
+    "start": 17.06,
+    "end": 17.18
+   },
+   {
+    "word": "be",
+    "start": 17.18,
+    "end": 17.32
+   },
+   {
+    "word": "true",
+    "start": 17.32,
+    "end": 17.68
+   },
+   {
+    "word": "or",
+    "start": 17.68,
+    "end": 18.42
+   },
+   {
+    "word": "false.",
+    "start": 18.42,
+    "end": 18.86
+   },
+   {
+    "word": "That",
+    "start": 19.8,
+    "end": 20.26
+   },
+   {
+    "word": "is",
+    "start": 20.26,
+    "end": 20.84
+   },
+   {
+    "word": "a",
+    "start": 20.84,
+    "end": 20.92
+   },
+   {
+    "word": "fact.",
+    "start": 20.92,
+    "end": 21.26
+   },
+   {
+    "word": "Now",
+    "start": 22.28,
+    "end": 22.72
+   },
+   {
+    "word": "the",
+    "start": 22.72,
+    "end": 23.02
+   },
+   {
+    "word": "first",
+    "start": 23.02,
+    "end": 23.28
+   },
+   {
+    "word": "sentence.",
+    "start": 23.28,
+    "end": 23.74
+   },
+   {
+    "word": "The",
+    "start": 24.54,
+    "end": 24.76
+   },
+   {
+    "word": "Guinea",
+    "start": 24.76,
+    "end": 25.1
+   },
+   {
+    "word": "pig",
+    "start": 25.1,
+    "end": 25.52
+   },
+   {
+    "word": "is",
+    "start": 25.52,
+    "end": 25.86
+   },
+   {
+    "word": "the",
+    "start": 25.86,
+    "end": 26.12
+   },
+   {
+    "word": "best",
+    "start": 26.12,
+    "end": 26.62
+   },
+   {
+    "word": "pet",
+    "start": 26.62,
+    "end": 26.9
+   },
+   {
+    "word": "a",
+    "start": 26.9,
+    "end": 27.22
+   },
+   {
+    "word": "family",
+    "start": 27.22,
+    "end": 27.66
+   },
+   {
+    "word": "can",
+    "start": 27.66,
+    "end": 27.9
+   },
+   {
+    "word": "have.",
+    "start": 27.9,
+    "end": 28.36
+   },
+   {
+    "word": "Best",
+    "start": 28.36,
+    "end": 29.64
+   },
+   {
+    "word": "according",
+    "start": 29.64,
+    "end": 30.64
+   },
+   {
+    "word": "to",
+    "start": 30.64,
+    "end": 31.08
+   },
+   {
+    "word": "whom?",
+    "start": 31.08,
+    "end": 31.56
+   },
+   {
+    "word": "Nobody",
+    "start": 32.56,
+    "end": 33.06
+   },
+   {
+    "word": "can",
+    "start": 33.06,
+    "end": 33.38
+   },
+   {
+    "word": "check",
+    "start": 33.38,
+    "end": 33.6
+   },
+   {
+    "word": "that",
+    "start": 33.6,
+    "end": 33.86
+   },
+   {
+    "word": "with",
+    "start": 33.86,
+    "end": 34.04
+   },
+   {
+    "word": "a",
+    "start": 34.04,
+    "end": 34.18
+   },
+   {
+    "word": "test",
+    "start": 34.18,
+    "end": 34.62
+   },
+   {
+    "word": "because",
+    "start": 34.62,
+    "end": 35.26
+   },
+   {
+    "word": "it",
+    "start": 35.26,
+    "end": 35.62
+   },
+   {
+    "word": "is",
+    "start": 35.62,
+    "end": 35.9
+   },
+   {
+    "word": "a",
+    "start": 35.9,
+    "end": 36.04
+   },
+   {
+    "word": "judgment.",
+    "start": 36.04,
+    "end": 36.58
+   },
+   {
+    "word": "That",
+    "start": 37.36,
+    "end": 37.76
+   },
+   {
+    "word": "is",
+    "start": 37.76,
+    "end": 38.1
+   },
+   {
+    "word": "the",
+    "start": 38.1,
+    "end": 38.26
+   },
+   {
+    "word": "author's",
+    "start": 38.26,
+    "end": 38.98
+   },
+   {
+    "word": "opinion.",
+    "start": 38.98,
+    "end": 39.68
+   },
+   {
+    "word": "The",
+    "start": 40.44,
+    "end": 40.82
+   },
+   {
+    "word": "word",
+    "start": 40.82,
+    "end": 41.14
+   },
+   {
+    "word": "that",
+    "start": 41.14,
+    "end": 41.38
+   },
+   {
+    "word": "gives",
+    "start": 41.38,
+    "end": 41.6
+   },
+   {
+    "word": "it",
+    "start": 41.6,
+    "end": 41.84
+   },
+   {
+    "word": "away",
+    "start": 41.84,
+    "end": 42.18
+   },
+   {
+    "word": "is",
+    "start": 42.18,
+    "end": 43.02
+   },
+   {
+    "word": "best.",
+    "start": 43.02,
+    "end": 43.7
+   },
+   {
+    "word": "I",
+    "start": 44.98,
+    "end": 45.24
+   },
+   {
+    "word": "call",
+    "start": 45.24,
+    "end": 45.48
+   },
+   {
+    "word": "words",
+    "start": 45.48,
+    "end": 45.92
+   },
+   {
+    "word": "like",
+    "start": 45.92,
+    "end": 46.24
+   },
+   {
+    "word": "best,",
+    "start": 46.24,
+    "end": 46.7
+   },
+   {
+    "word": "wonderful,",
+    "start": 47.28,
+    "end": 48.04
+   },
+   {
+    "word": "terrible,",
+    "start": 48.66,
+    "end": 49.08
+   },
+   {
+    "word": "and",
+    "start": 49.38,
+    "end": 49.76
+   },
+   {
+    "word": "should",
+    "start": 49.76,
+    "end": 50.26
+   },
+   {
+    "word": "-loaded",
+    "start": 50.26,
+    "end": 51.5
+   },
+   {
+    "word": "words",
+    "start": 51.5,
+    "end": 52.0
+   },
+   {
+    "word": "because",
+    "start": 52.0,
+    "end": 52.82
+   },
+   {
+    "word": "they",
+    "start": 52.82,
+    "end": 53.06
+   },
+   {
+    "word": "carry",
+    "start": 53.06,
+    "end": 53.46
+   },
+   {
+    "word": "the",
+    "start": 53.46,
+    "end": 53.7
+   },
+   {
+    "word": "author's",
+    "start": 53.7,
+    "end": 54.42
+   },
+   {
+    "word": "feelings",
+    "start": 54.42,
+    "end": 54.82
+   },
+   {
+    "word": "instead",
+    "start": 54.82,
+    "end": 55.82
+   },
+   {
+    "word": "of",
+    "start": 55.82,
+    "end": 56.36
+   },
+   {
+    "word": "a",
+    "start": 56.36,
+    "end": 56.5
+   },
+   {
+    "word": "fact.",
+    "start": 56.5,
+    "end": 56.98
+   },
+   {
+    "word": "A",
+    "start": 56.98,
+    "end": 58.3
+   },
+   {
+    "word": "fact",
+    "start": 58.3,
+    "end": 58.6
+   },
+   {
+    "word": "book",
+    "start": 58.6,
+    "end": 58.96
+   },
+   {
+    "word": "holds",
+    "start": 58.96,
+    "end": 59.56
+   },
+   {
+    "word": "both",
+    "start": 59.56,
+    "end": 60.1
+   },
+   {
+    "word": "kinds",
+    "start": 60.1,
+    "end": 60.48
+   },
+   {
+    "word": "of",
+    "start": 60.48,
+    "end": 60.64
+   },
+   {
+    "word": "sentences,",
+    "start": 60.64,
+    "end": 61.14
+   },
+   {
+    "word": "and",
+    "start": 61.7,
+    "end": 61.96
+   },
+   {
+    "word": "a",
+    "start": 61.96,
+    "end": 62.1
+   },
+   {
+    "word": "third",
+    "start": 62.1,
+    "end": 62.46
+   },
+   {
+    "word": "-grade",
+    "start": 62.46,
+    "end": 62.84
+   },
+   {
+    "word": "reader",
+    "start": 62.84,
+    "end": 63.24
+   },
+   {
+    "word": "keeps",
+    "start": 63.24,
+    "end": 63.78
+   },
+   {
+    "word": "them",
+    "start": 63.78,
+    "end": 64.08
+   },
+   {
+    "word": "in",
+    "start": 64.08,
+    "end": 64.22
+   },
+   {
+    "word": "separate",
+    "start": 64.22,
+    "end": 64.76
+   },
+   {
+    "word": "piles.",
+    "start": 64.76,
+    "end": 65.34
+   },
+   {
+    "word": "Read",
+    "start": 66.66,
+    "end": 66.98
+   },
+   {
+    "word": "page",
+    "start": 66.98,
+    "end": 67.38
+   },
+   {
+    "word": "one",
+    "start": 67.38,
+    "end": 67.6
+   },
+   {
+    "word": "again",
+    "start": 67.6,
+    "end": 68.04
+   },
+   {
+    "word": "in",
+    "start": 68.04,
+    "end": 68.44
+   },
+   {
+    "word": "your",
+    "start": 68.44,
+    "end": 68.62
+   },
+   {
+    "word": "head",
+    "start": 68.62,
+    "end": 69.02
+   },
+   {
+    "word": "and",
+    "start": 69.02,
+    "end": 69.68
+   },
+   {
+    "word": "look",
+    "start": 69.68,
+    "end": 69.92
+   },
+   {
+    "word": "for",
+    "start": 69.92,
+    "end": 70.2
+   },
+   {
+    "word": "another",
+    "start": 70.2,
+    "end": 70.76
+   },
+   {
+    "word": "loaded",
+    "start": 70.76,
+    "end": 71.18
+   },
+   {
+    "word": "word",
+    "start": 71.18,
+    "end": 71.58
+   },
+   {
+    "word": "hiding",
+    "start": 71.58,
+    "end": 72.12
+   },
+   {
+    "word": "beside",
+    "start": 72.12,
+    "end": 72.7
+   },
+   {
+    "word": "the",
+    "start": 72.7,
+    "end": 73.06
+   },
+   {
+    "word": "facts.",
+    "start": 73.06,
+    "end": 73.56
+   }
+  ]
+ },
+ "model-facts-dressed": {
+  "duration": 70.3,
+  "words": [
+   {
+    "word": "Loaded",
+    "start": 0.0,
+    "end": 0.66
+   },
+   {
+    "word": "words",
+    "start": 0.66,
+    "end": 1.04
+   },
+   {
+    "word": "are",
+    "start": 1.04,
+    "end": 1.62
+   },
+   {
+    "word": "the",
+    "start": 1.62,
+    "end": 1.78
+   },
+   {
+    "word": "first",
+    "start": 1.78,
+    "end": 2.32
+   },
+   {
+    "word": "clue",
+    "start": 2.32,
+    "end": 2.7
+   },
+   {
+    "word": "to",
+    "start": 2.7,
+    "end": 3.08
+   },
+   {
+    "word": "an",
+    "start": 3.08,
+    "end": 3.28
+   },
+   {
+    "word": "author's",
+    "start": 3.28,
+    "end": 3.82
+   },
+   {
+    "word": "view.",
+    "start": 3.82,
+    "end": 4.08
+   },
+   {
+    "word": "Here",
+    "start": 4.68,
+    "end": 5.36
+   },
+   {
+    "word": "is",
+    "start": 5.36,
+    "end": 5.58
+   },
+   {
+    "word": "the",
+    "start": 5.58,
+    "end": 5.74
+   },
+   {
+    "word": "second",
+    "start": 5.74,
+    "end": 6.2
+   },
+   {
+    "word": "clue.",
+    "start": 6.2,
+    "end": 6.7
+   },
+   {
+    "word": "Watch",
+    "start": 7.92,
+    "end": 8.1
+   },
+   {
+    "word": "what",
+    "start": 8.1,
+    "end": 8.46
+   },
+   {
+    "word": "the",
+    "start": 8.46,
+    "end": 8.64
+   },
+   {
+    "word": "author",
+    "start": 8.64,
+    "end": 9.02
+   },
+   {
+    "word": "does",
+    "start": 9.02,
+    "end": 9.46
+   },
+   {
+    "word": "with",
+    "start": 9.46,
+    "end": 9.78
+   },
+   {
+    "word": "the",
+    "start": 9.78,
+    "end": 9.94
+   },
+   {
+    "word": "facts",
+    "start": 9.94,
+    "end": 10.34
+   },
+   {
+    "word": "on",
+    "start": 10.34,
+    "end": 10.96
+   },
+   {
+    "word": "page",
+    "start": 10.96,
+    "end": 11.2
+   },
+   {
+    "word": "3.",
+    "start": 11.2,
+    "end": 11.64
+   },
+   {
+    "word": "An",
+    "start": 12.44,
+    "end": 12.8
+   },
+   {
+    "word": "excited",
+    "start": 12.8,
+    "end": 13.3
+   },
+   {
+    "word": "guinea",
+    "start": 13.3,
+    "end": 13.66
+   },
+   {
+    "word": "pig",
+    "start": 13.66,
+    "end": 14.06
+   },
+   {
+    "word": "hops",
+    "start": 14.06,
+    "end": 14.32
+   },
+   {
+    "word": "straight",
+    "start": 14.32,
+    "end": 14.96
+   },
+   {
+    "word": "up",
+    "start": 14.96,
+    "end": 15.26
+   },
+   {
+    "word": "with",
+    "start": 15.26,
+    "end": 15.54
+   },
+   {
+    "word": "all",
+    "start": 15.54,
+    "end": 15.96
+   },
+   {
+    "word": "four",
+    "start": 15.96,
+    "end": 16.48
+   },
+   {
+    "word": "feet",
+    "start": 16.48,
+    "end": 16.76
+   },
+   {
+    "word": "off",
+    "start": 16.76,
+    "end": 17.08
+   },
+   {
+    "word": "the",
+    "start": 17.08,
+    "end": 17.28
+   },
+   {
+    "word": "ground.",
+    "start": 17.28,
+    "end": 17.64
+   },
+   {
+    "word": "That",
+    "start": 18.24,
+    "end": 18.7
+   },
+   {
+    "word": "is",
+    "start": 18.7,
+    "end": 18.92
+   },
+   {
+    "word": "a",
+    "start": 18.92,
+    "end": 19.04
+   },
+   {
+    "word": "fact",
+    "start": 19.04,
+    "end": 19.48
+   },
+   {
+    "word": "and",
+    "start": 19.48,
+    "end": 20.12
+   },
+   {
+    "word": "a",
+    "start": 20.12,
+    "end": 20.28
+   },
+   {
+    "word": "scientist",
+    "start": 20.28,
+    "end": 20.8
+   },
+   {
+    "word": "could",
+    "start": 20.8,
+    "end": 21.14
+   },
+   {
+    "word": "film",
+    "start": 21.14,
+    "end": 21.5
+   },
+   {
+    "word": "it.",
+    "start": 21.5,
+    "end": 21.72
+   },
+   {
+    "word": "But",
+    "start": 22.3,
+    "end": 22.58
+   },
+   {
+    "word": "the",
+    "start": 22.58,
+    "end": 22.76
+   },
+   {
+    "word": "author",
+    "start": 22.76,
+    "end": 23.12
+   },
+   {
+    "word": "does",
+    "start": 23.12,
+    "end": 23.42
+   },
+   {
+    "word": "not",
+    "start": 23.42,
+    "end": 23.74
+   },
+   {
+    "word": "stop",
+    "start": 23.74,
+    "end": 24.18
+   },
+   {
+    "word": "there,",
+    "start": 24.18,
+    "end": 24.56
+   },
+   {
+    "word": "which",
+    "start": 25.26,
+    "end": 25.66
+   },
+   {
+    "word": "is",
+    "start": 25.66,
+    "end": 25.82
+   },
+   {
+    "word": "the",
+    "start": 25.82,
+    "end": 26.0
+   },
+   {
+    "word": "most",
+    "start": 26.0,
+    "end": 26.42
+   },
+   {
+    "word": "delightful",
+    "start": 26.42,
+    "end": 27.24
+   },
+   {
+    "word": "thing",
+    "start": 27.24,
+    "end": 27.68
+   },
+   {
+    "word": "you",
+    "start": 27.68,
+    "end": 27.98
+   },
+   {
+    "word": "will",
+    "start": 27.98,
+    "end": 28.16
+   },
+   {
+    "word": "ever",
+    "start": 28.16,
+    "end": 28.58
+   },
+   {
+    "word": "see.",
+    "start": 28.58,
+    "end": 29.02
+   },
+   {
+    "word": "The",
+    "start": 30.02,
+    "end": 30.42
+   },
+   {
+    "word": "author",
+    "start": 30.42,
+    "end": 30.96
+   },
+   {
+    "word": "glued",
+    "start": 30.96,
+    "end": 31.56
+   },
+   {
+    "word": "a",
+    "start": 31.56,
+    "end": 31.94
+   },
+   {
+    "word": "feeling",
+    "start": 31.94,
+    "end": 32.52
+   },
+   {
+    "word": "onto",
+    "start": 32.52,
+    "end": 33.04
+   },
+   {
+    "word": "the",
+    "start": 33.04,
+    "end": 33.32
+   },
+   {
+    "word": "fact.",
+    "start": 33.32,
+    "end": 33.72
+   },
+   {
+    "word": "Now",
+    "start": 34.34,
+    "end": 35.12
+   },
+   {
+    "word": "the",
+    "start": 35.12,
+    "end": 35.34
+   },
+   {
+    "word": "last",
+    "start": 35.34,
+    "end": 35.68
+   },
+   {
+    "word": "sentence.",
+    "start": 35.68,
+    "end": 36.32
+   },
+   {
+    "word": "A",
+    "start": 37.24,
+    "end": 37.36
+   },
+   {
+    "word": "guinea",
+    "start": 37.36,
+    "end": 37.6
+   },
+   {
+    "word": "pig",
+    "start": 37.6,
+    "end": 38.02
+   },
+   {
+    "word": "eats",
+    "start": 38.02,
+    "end": 38.4
+   },
+   {
+    "word": "some",
+    "start": 38.4,
+    "end": 38.92
+   },
+   {
+    "word": "of",
+    "start": 38.92,
+    "end": 39.18
+   },
+   {
+    "word": "its",
+    "start": 39.18,
+    "end": 39.36
+   },
+   {
+    "word": "own",
+    "start": 39.36,
+    "end": 39.58
+   },
+   {
+    "word": "droppings.",
+    "start": 39.58,
+    "end": 40.2
+   },
+   {
+    "word": "That",
+    "start": 40.82,
+    "end": 41.2
+   },
+   {
+    "word": "is",
+    "start": 41.2,
+    "end": 41.48
+   },
+   {
+    "word": "a",
+    "start": 41.48,
+    "end": 41.64
+   },
+   {
+    "word": "true",
+    "start": 41.64,
+    "end": 41.96
+   },
+   {
+    "word": "fact",
+    "start": 41.96,
+    "end": 42.36
+   },
+   {
+    "word": "too,",
+    "start": 42.36,
+    "end": 42.82
+   },
+   {
+    "word": "and",
+    "start": 43.52,
+    "end": 43.98
+   },
+   {
+    "word": "it",
+    "start": 43.98,
+    "end": 44.22
+   },
+   {
+    "word": "is",
+    "start": 44.22,
+    "end": 44.4
+   },
+   {
+    "word": "not",
+    "start": 44.4,
+    "end": 44.78
+   },
+   {
+    "word": "a",
+    "start": 44.78,
+    "end": 45.16
+   },
+   {
+    "word": "pretty",
+    "start": 45.16,
+    "end": 45.42
+   },
+   {
+    "word": "one.",
+    "start": 45.42,
+    "end": 45.72
+   },
+   {
+    "word": "So",
+    "start": 46.72,
+    "end": 47.04
+   },
+   {
+    "word": "the",
+    "start": 47.04,
+    "end": 47.34
+   },
+   {
+    "word": "author",
+    "start": 47.34,
+    "end": 47.66
+   },
+   {
+    "word": "hurries",
+    "start": 47.66,
+    "end": 48.26
+   },
+   {
+    "word": "to",
+    "start": 48.26,
+    "end": 48.6
+   },
+   {
+    "word": "soften",
+    "start": 48.6,
+    "end": 49.02
+   },
+   {
+    "word": "it,",
+    "start": 49.02,
+    "end": 49.34
+   },
+   {
+    "word": "not",
+    "start": 49.74,
+    "end": 50.32
+   },
+   {
+    "word": "nearly",
+    "start": 50.32,
+    "end": 50.82
+   },
+   {
+    "word": "as",
+    "start": 50.82,
+    "end": 51.12
+   },
+   {
+    "word": "gross",
+    "start": 51.12,
+    "end": 51.48
+   },
+   {
+    "word": "as",
+    "start": 51.48,
+    "end": 51.76
+   },
+   {
+    "word": "it",
+    "start": 51.76,
+    "end": 51.88
+   },
+   {
+    "word": "sounds.",
+    "start": 51.88,
+    "end": 52.34
+   },
+   {
+    "word": "Why?",
+    "start": 53.12,
+    "end": 53.58
+   },
+   {
+    "word": "Because",
+    "start": 54.24,
+    "end": 54.78
+   },
+   {
+    "word": "this",
+    "start": 54.78,
+    "end": 55.08
+   },
+   {
+    "word": "author",
+    "start": 55.08,
+    "end": 55.5
+   },
+   {
+    "word": "wants",
+    "start": 55.5,
+    "end": 55.76
+   },
+   {
+    "word": "you",
+    "start": 55.76,
+    "end": 56.0
+   },
+   {
+    "word": "to",
+    "start": 56.0,
+    "end": 56.16
+   },
+   {
+    "word": "love",
+    "start": 56.16,
+    "end": 56.64
+   },
+   {
+    "word": "guinea",
+    "start": 56.64,
+    "end": 57.08
+   },
+   {
+    "word": "pigs",
+    "start": 57.08,
+    "end": 57.52
+   },
+   {
+    "word": "so",
+    "start": 57.52,
+    "end": 58.14
+   },
+   {
+    "word": "every",
+    "start": 58.14,
+    "end": 58.92
+   },
+   {
+    "word": "fact",
+    "start": 58.92,
+    "end": 59.34
+   },
+   {
+    "word": "gets",
+    "start": 59.34,
+    "end": 59.72
+   },
+   {
+    "word": "dressed",
+    "start": 59.72,
+    "end": 60.2
+   },
+   {
+    "word": "to",
+    "start": 60.2,
+    "end": 60.74
+   },
+   {
+    "word": "help",
+    "start": 60.74,
+    "end": 61.08
+   },
+   {
+    "word": "that",
+    "start": 61.08,
+    "end": 61.44
+   },
+   {
+    "word": "view.",
+    "start": 61.44,
+    "end": 61.8
+   },
+   {
+    "word": "When",
+    "start": 62.54,
+    "end": 63.08
+   },
+   {
+    "word": "you",
+    "start": 63.08,
+    "end": 63.24
+   },
+   {
+    "word": "read",
+    "start": 63.24,
+    "end": 63.46
+   },
+   {
+    "word": "a",
+    "start": 63.46,
+    "end": 63.64
+   },
+   {
+    "word": "fact",
+    "start": 63.64,
+    "end": 63.94
+   },
+   {
+    "word": "book,",
+    "start": 63.94,
+    "end": 64.34
+   },
+   {
+    "word": "notice",
+    "start": 64.76,
+    "end": 65.2
+   },
+   {
+    "word": "which",
+    "start": 65.2,
+    "end": 65.64
+   },
+   {
+    "word": "facts",
+    "start": 65.64,
+    "end": 66.02
+   },
+   {
+    "word": "the",
+    "start": 66.02,
+    "end": 66.28
+   },
+   {
+    "word": "author",
+    "start": 66.28,
+    "end": 66.56
+   },
+   {
+    "word": "chose",
+    "start": 66.56,
+    "end": 67.12
+   },
+   {
+    "word": "and",
+    "start": 67.12,
+    "end": 67.96
+   },
+   {
+    "word": "notice",
+    "start": 67.96,
+    "end": 68.26
+   },
+   {
+    "word": "the",
+    "start": 68.26,
+    "end": 68.5
+   },
+   {
+    "word": "feeling",
+    "start": 68.5,
+    "end": 69.04
+   },
+   {
+    "word": "each",
+    "start": 69.04,
+    "end": 69.56
+   },
+   {
+    "word": "one",
+    "start": 69.56,
+    "end": 69.78
+   },
+   {
+    "word": "is",
+    "start": 69.78,
+    "end": 69.96
+   },
+   {
+    "word": "wearing.",
+    "start": 69.96,
+    "end": 70.3
+   }
+  ]
+ },
+ "model-reader-view": {
+  "duration": 75.62,
+  "words": [
+   {
+    "word": "Now",
+    "start": 0.0,
+    "end": 0.5
+   },
+   {
+    "word": "the",
+    "start": 0.5,
+    "end": 0.98
+   },
+   {
+    "word": "other",
+    "start": 0.98,
+    "end": 1.34
+   },
+   {
+    "word": "view.",
+    "start": 1.34,
+    "end": 1.8
+   },
+   {
+    "word": "Yours.",
+    "start": 3.02,
+    "end": 3.26
+   },
+   {
+    "word": "A",
+    "start": 4.6,
+    "end": 4.72
+   },
+   {
+    "word": "reader",
+    "start": 4.72,
+    "end": 5.14
+   },
+   {
+    "word": "does",
+    "start": 5.14,
+    "end": 5.54
+   },
+   {
+    "word": "not",
+    "start": 5.54,
+    "end": 5.96
+   },
+   {
+    "word": "have",
+    "start": 5.96,
+    "end": 6.5
+   },
+   {
+    "word": "to",
+    "start": 6.5,
+    "end": 6.9
+   },
+   {
+    "word": "agree",
+    "start": 6.9,
+    "end": 7.3
+   },
+   {
+    "word": "with",
+    "start": 7.3,
+    "end": 7.6
+   },
+   {
+    "word": "the",
+    "start": 7.6,
+    "end": 7.74
+   },
+   {
+    "word": "author,",
+    "start": 7.74,
+    "end": 8.12
+   },
+   {
+    "word": "and",
+    "start": 8.66,
+    "end": 8.96
+   },
+   {
+    "word": "the",
+    "start": 8.96,
+    "end": 9.1
+   },
+   {
+    "word": "author",
+    "start": 9.1,
+    "end": 9.56
+   },
+   {
+    "word": "does",
+    "start": 9.56,
+    "end": 9.86
+   },
+   {
+    "word": "not",
+    "start": 9.86,
+    "end": 10.16
+   },
+   {
+    "word": "get",
+    "start": 10.16,
+    "end": 10.52
+   },
+   {
+    "word": "to",
+    "start": 10.52,
+    "end": 10.82
+   },
+   {
+    "word": "decide",
+    "start": 10.82,
+    "end": 11.3
+   },
+   {
+    "word": "for",
+    "start": 11.3,
+    "end": 11.76
+   },
+   {
+    "word": "you.",
+    "start": 11.76,
+    "end": 12.02
+   },
+   {
+    "word": "Here",
+    "start": 13.22,
+    "end": 13.46
+   },
+   {
+    "word": "is",
+    "start": 13.46,
+    "end": 13.76
+   },
+   {
+    "word": "how",
+    "start": 13.76,
+    "end": 13.94
+   },
+   {
+    "word": "I",
+    "start": 13.94,
+    "end": 14.28
+   },
+   {
+    "word": "do",
+    "start": 14.28,
+    "end": 14.48
+   },
+   {
+    "word": "it.",
+    "start": 14.48,
+    "end": 14.82
+   },
+   {
+    "word": "The",
+    "start": 16.02,
+    "end": 16.14
+   },
+   {
+    "word": "author",
+    "start": 16.14,
+    "end": 16.58
+   },
+   {
+    "word": "thinks",
+    "start": 16.58,
+    "end": 17.12
+   },
+   {
+    "word": "every",
+    "start": 17.12,
+    "end": 18.1
+   },
+   {
+    "word": "family",
+    "start": 18.1,
+    "end": 18.64
+   },
+   {
+    "word": "should",
+    "start": 18.64,
+    "end": 18.9
+   },
+   {
+    "word": "keep",
+    "start": 18.9,
+    "end": 19.22
+   },
+   {
+    "word": "Guinea",
+    "start": 19.22,
+    "end": 19.44
+   },
+   {
+    "word": "pigs.",
+    "start": 19.44,
+    "end": 19.84
+   },
+   {
+    "word": "Here",
+    "start": 20.54,
+    "end": 21.06
+   },
+   {
+    "word": "is",
+    "start": 21.06,
+    "end": 21.22
+   },
+   {
+    "word": "what",
+    "start": 21.22,
+    "end": 21.36
+   },
+   {
+    "word": "I",
+    "start": 21.36,
+    "end": 21.6
+   },
+   {
+    "word": "think.",
+    "start": 21.6,
+    "end": 21.96
+   },
+   {
+    "word": "I",
+    "start": 22.7,
+    "end": 23.3
+   },
+   {
+    "word": "think",
+    "start": 23.3,
+    "end": 23.62
+   },
+   {
+    "word": "Guinea",
+    "start": 23.62,
+    "end": 23.92
+   },
+   {
+    "word": "pigs",
+    "start": 23.92,
+    "end": 24.3
+   },
+   {
+    "word": "are",
+    "start": 24.3,
+    "end": 24.52
+   },
+   {
+    "word": "a",
+    "start": 24.52,
+    "end": 24.7
+   },
+   {
+    "word": "good",
+    "start": 24.7,
+    "end": 24.86
+   },
+   {
+    "word": "pet",
+    "start": 24.86,
+    "end": 25.16
+   },
+   {
+    "word": "for",
+    "start": 25.16,
+    "end": 25.48
+   },
+   {
+    "word": "some",
+    "start": 25.48,
+    "end": 25.96
+   },
+   {
+    "word": "families,",
+    "start": 25.96,
+    "end": 26.72
+   },
+   {
+    "word": "but",
+    "start": 27.22,
+    "end": 27.6
+   },
+   {
+    "word": "not",
+    "start": 27.6,
+    "end": 27.76
+   },
+   {
+    "word": "for",
+    "start": 27.76,
+    "end": 27.98
+   },
+   {
+    "word": "every",
+    "start": 27.98,
+    "end": 28.4
+   },
+   {
+    "word": "family.",
+    "start": 28.4,
+    "end": 29.12
+   },
+   {
+    "word": "And",
+    "start": 29.61,
+    "end": 30.02
+   },
+   {
+    "word": "that",
+    "start": 30.02,
+    "end": 30.24
+   },
+   {
+    "word": "is",
+    "start": 30.24,
+    "end": 30.48
+   },
+   {
+    "word": "different",
+    "start": 30.48,
+    "end": 30.96
+   },
+   {
+    "word": "from",
+    "start": 30.96,
+    "end": 31.32
+   },
+   {
+    "word": "what",
+    "start": 31.32,
+    "end": 31.54
+   },
+   {
+    "word": "the",
+    "start": 31.54,
+    "end": 31.72
+   },
+   {
+    "word": "author",
+    "start": 31.72,
+    "end": 32.04
+   },
+   {
+    "word": "thinks.",
+    "start": 32.04,
+    "end": 32.6
+   },
+   {
+    "word": "Here",
+    "start": 33.64,
+    "end": 34.04
+   },
+   {
+    "word": "is",
+    "start": 34.04,
+    "end": 34.42
+   },
+   {
+    "word": "why.",
+    "start": 34.42,
+    "end": 34.9
+   },
+   {
+    "word": "The",
+    "start": 36.28,
+    "end": 36.38
+   },
+   {
+    "word": "text",
+    "start": 36.38,
+    "end": 36.88
+   },
+   {
+    "word": "says",
+    "start": 36.88,
+    "end": 37.46
+   },
+   {
+    "word": "a",
+    "start": 37.46,
+    "end": 37.76
+   },
+   {
+    "word": "Guinea",
+    "start": 37.76,
+    "end": 38.06
+   },
+   {
+    "word": "pig",
+    "start": 38.06,
+    "end": 38.42
+   },
+   {
+    "word": "can",
+    "start": 38.42,
+    "end": 38.76
+   },
+   {
+    "word": "live",
+    "start": 38.76,
+    "end": 39.04
+   },
+   {
+    "word": "for",
+    "start": 39.04,
+    "end": 39.42
+   },
+   {
+    "word": "five",
+    "start": 39.42,
+    "end": 40.18
+   },
+   {
+    "word": "years",
+    "start": 40.18,
+    "end": 40.6
+   },
+   {
+    "word": "or",
+    "start": 40.6,
+    "end": 40.86
+   },
+   {
+    "word": "longer,",
+    "start": 40.86,
+    "end": 41.36
+   },
+   {
+    "word": "and",
+    "start": 41.74,
+    "end": 42.2
+   },
+   {
+    "word": "the",
+    "start": 42.2,
+    "end": 42.34
+   },
+   {
+    "word": "pen",
+    "start": 42.34,
+    "end": 42.66
+   },
+   {
+    "word": "needs",
+    "start": 42.66,
+    "end": 43.14
+   },
+   {
+    "word": "fresh",
+    "start": 43.14,
+    "end": 43.62
+   },
+   {
+    "word": "bedding",
+    "start": 43.62,
+    "end": 44.04
+   },
+   {
+    "word": "every",
+    "start": 44.04,
+    "end": 44.44
+   },
+   {
+    "word": "few",
+    "start": 44.44,
+    "end": 44.78
+   },
+   {
+    "word": "days.",
+    "start": 44.78,
+    "end": 45.24
+   },
+   {
+    "word": "A",
+    "start": 46.04,
+    "end": 46.46
+   },
+   {
+    "word": "family",
+    "start": 46.46,
+    "end": 46.88
+   },
+   {
+    "word": "that",
+    "start": 46.88,
+    "end": 47.12
+   },
+   {
+    "word": "travels",
+    "start": 47.12,
+    "end": 47.66
+   },
+   {
+    "word": "every",
+    "start": 47.66,
+    "end": 48.02
+   },
+   {
+    "word": "month",
+    "start": 48.02,
+    "end": 48.42
+   },
+   {
+    "word": "would",
+    "start": 48.42,
+    "end": 48.84
+   },
+   {
+    "word": "not",
+    "start": 48.84,
+    "end": 49.12
+   },
+   {
+    "word": "be",
+    "start": 49.12,
+    "end": 49.36
+   },
+   {
+    "word": "happy",
+    "start": 49.36,
+    "end": 49.88
+   },
+   {
+    "word": "with",
+    "start": 49.88,
+    "end": 50.18
+   },
+   {
+    "word": "that",
+    "start": 50.18,
+    "end": 50.4
+   },
+   {
+    "word": "promise.",
+    "start": 50.4,
+    "end": 50.82
+   },
+   {
+    "word": "I",
+    "start": 52.04,
+    "end": 52.4
+   },
+   {
+    "word": "used",
+    "start": 52.4,
+    "end": 52.9
+   },
+   {
+    "word": "a",
+    "start": 52.9,
+    "end": 53.08
+   },
+   {
+    "word": "fact",
+    "start": 53.08,
+    "end": 53.48
+   },
+   {
+    "word": "from",
+    "start": 53.48,
+    "end": 53.92
+   },
+   {
+    "word": "the",
+    "start": 53.92,
+    "end": 54.12
+   },
+   {
+    "word": "text",
+    "start": 54.12,
+    "end": 54.66
+   },
+   {
+    "word": "to",
+    "start": 54.66,
+    "end": 55.14
+   },
+   {
+    "word": "disagree",
+    "start": 55.14,
+    "end": 55.76
+   },
+   {
+    "word": "with",
+    "start": 55.76,
+    "end": 56.2
+   },
+   {
+    "word": "the",
+    "start": 56.2,
+    "end": 56.36
+   },
+   {
+    "word": "author's",
+    "start": 56.36,
+    "end": 56.88
+   },
+   {
+    "word": "opinion.",
+    "start": 56.88,
+    "end": 57.32
+   },
+   {
+    "word": "You",
+    "start": 58.28,
+    "end": 58.68
+   },
+   {
+    "word": "can",
+    "start": 58.68,
+    "end": 58.86
+   },
+   {
+    "word": "also",
+    "start": 58.86,
+    "end": 59.38
+   },
+   {
+    "word": "use",
+    "start": 59.38,
+    "end": 59.74
+   },
+   {
+    "word": "your",
+    "start": 59.74,
+    "end": 60.02
+   },
+   {
+    "word": "own",
+    "start": 60.02,
+    "end": 60.38
+   },
+   {
+    "word": "experience.",
+    "start": 60.38,
+    "end": 61.38
+   },
+   {
+    "word": "If",
+    "start": 61.96,
+    "end": 62.54
+   },
+   {
+    "word": "you",
+    "start": 62.54,
+    "end": 62.7
+   },
+   {
+    "word": "have",
+    "start": 62.7,
+    "end": 62.92
+   },
+   {
+    "word": "held",
+    "start": 62.92,
+    "end": 63.28
+   },
+   {
+    "word": "a",
+    "start": 63.28,
+    "end": 63.46
+   },
+   {
+    "word": "Guinea",
+    "start": 63.46,
+    "end": 63.62
+   },
+   {
+    "word": "pig",
+    "start": 63.62,
+    "end": 63.92
+   },
+   {
+    "word": "and",
+    "start": 63.92,
+    "end": 64.28
+   },
+   {
+    "word": "loved",
+    "start": 64.28,
+    "end": 64.62
+   },
+   {
+    "word": "it,",
+    "start": 64.62,
+    "end": 65.04
+   },
+   {
+    "word": "that",
+    "start": 65.34,
+    "end": 65.78
+   },
+   {
+    "word": "is",
+    "start": 65.78,
+    "end": 66.1
+   },
+   {
+    "word": "a",
+    "start": 66.1,
+    "end": 66.24
+   },
+   {
+    "word": "reason",
+    "start": 66.24,
+    "end": 66.58
+   },
+   {
+    "word": "too.",
+    "start": 66.58,
+    "end": 67.0
+   },
+   {
+    "word": "The",
+    "start": 68.0,
+    "end": 68.22
+   },
+   {
+    "word": "facts",
+    "start": 68.22,
+    "end": 68.66
+   },
+   {
+    "word": "in",
+    "start": 68.66,
+    "end": 68.96
+   },
+   {
+    "word": "a",
+    "start": 68.96,
+    "end": 69.06
+   },
+   {
+    "word": "book",
+    "start": 69.06,
+    "end": 69.34
+   },
+   {
+    "word": "can",
+    "start": 69.34,
+    "end": 69.64
+   },
+   {
+    "word": "support",
+    "start": 69.64,
+    "end": 70.14
+   },
+   {
+    "word": "the",
+    "start": 70.14,
+    "end": 70.48
+   },
+   {
+    "word": "author's",
+    "start": 70.48,
+    "end": 71.02
+   },
+   {
+    "word": "view,",
+    "start": 71.02,
+    "end": 71.24
+   },
+   {
+    "word": "or",
+    "start": 71.84,
+    "end": 72.28
+   },
+   {
+    "word": "they",
+    "start": 72.28,
+    "end": 72.56
+   },
+   {
+    "word": "can",
+    "start": 72.56,
+    "end": 72.76
+   },
+   {
+    "word": "argue",
+    "start": 72.76,
+    "end": 73.14
+   },
+   {
+    "word": "with",
+    "start": 73.14,
+    "end": 73.46
+   },
+   {
+    "word": "it.",
+    "start": 73.46,
+    "end": 73.66
+   },
+   {
+    "word": "The",
+    "start": 74.18,
+    "end": 74.48
+   },
+   {
+    "word": "reader",
+    "start": 74.48,
+    "end": 74.92
+   },
+   {
+    "word": "decides.",
+    "start": 74.92,
+    "end": 75.62
+   }
+  ]
+ },
+ "page-five-read-sentence": {
+  "duration": 37.02,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.34
+   },
+   {
+    "word": "guinea",
+    "start": 0.34,
+    "end": 0.72
+   },
+   {
+    "word": "pig",
+    "start": 0.72,
+    "end": 1.18
+   },
+   {
+    "word": "can",
+    "start": 1.18,
+    "end": 1.5
+   },
+   {
+    "word": "live",
+    "start": 1.5,
+    "end": 1.74
+   },
+   {
+    "word": "for",
+    "start": 1.74,
+    "end": 1.98
+   },
+   {
+    "word": "five",
+    "start": 1.98,
+    "end": 2.52
+   },
+   {
+    "word": "years",
+    "start": 2.52,
+    "end": 3.0
+   },
+   {
+    "word": "or",
+    "start": 3.0,
+    "end": 3.5
+   },
+   {
+    "word": "even",
+    "start": 3.5,
+    "end": 3.94
+   },
+   {
+    "word": "longer,",
+    "start": 3.94,
+    "end": 4.54
+   },
+   {
+    "word": "so",
+    "start": 4.84,
+    "end": 5.22
+   },
+   {
+    "word": "a",
+    "start": 5.22,
+    "end": 5.4
+   },
+   {
+    "word": "family",
+    "start": 5.4,
+    "end": 5.9
+   },
+   {
+    "word": "that",
+    "start": 5.9,
+    "end": 6.2
+   },
+   {
+    "word": "brings",
+    "start": 6.2,
+    "end": 6.5
+   },
+   {
+    "word": "one",
+    "start": 6.5,
+    "end": 6.8
+   },
+   {
+    "word": "home",
+    "start": 6.8,
+    "end": 7.3
+   },
+   {
+    "word": "is",
+    "start": 7.3,
+    "end": 7.66
+   },
+   {
+    "word": "making",
+    "start": 7.66,
+    "end": 8.1
+   },
+   {
+    "word": "a",
+    "start": 8.1,
+    "end": 8.32
+   },
+   {
+    "word": "commitment,",
+    "start": 8.32,
+    "end": 8.9
+   },
+   {
+    "word": "a",
+    "start": 9.44,
+    "end": 9.7
+   },
+   {
+    "word": "promise",
+    "start": 9.7,
+    "end": 10.28
+   },
+   {
+    "word": "to",
+    "start": 10.28,
+    "end": 10.8
+   },
+   {
+    "word": "care",
+    "start": 10.8,
+    "end": 11.14
+   },
+   {
+    "word": "for",
+    "start": 11.14,
+    "end": 11.42
+   },
+   {
+    "word": "it",
+    "start": 11.42,
+    "end": 11.66
+   },
+   {
+    "word": "for",
+    "start": 11.66,
+    "end": 11.9
+   },
+   {
+    "word": "a",
+    "start": 11.9,
+    "end": 12.08
+   },
+   {
+    "word": "long",
+    "start": 12.08,
+    "end": 12.48
+   },
+   {
+    "word": "time.",
+    "start": 12.48,
+    "end": 13.08
+   },
+   {
+    "word": "I",
+    "start": 14.06,
+    "end": 14.36
+   },
+   {
+    "word": "have",
+    "start": 14.36,
+    "end": 14.58
+   },
+   {
+    "word": "kept",
+    "start": 14.58,
+    "end": 14.9
+   },
+   {
+    "word": "guinea",
+    "start": 14.9,
+    "end": 15.16
+   },
+   {
+    "word": "pigs",
+    "start": 15.16,
+    "end": 15.56
+   },
+   {
+    "word": "for",
+    "start": 15.56,
+    "end": 15.82
+   },
+   {
+    "word": "most",
+    "start": 15.82,
+    "end": 16.16
+   },
+   {
+    "word": "of",
+    "start": 16.16,
+    "end": 16.36
+   },
+   {
+    "word": "my",
+    "start": 16.36,
+    "end": 16.54
+   },
+   {
+    "word": "life,",
+    "start": 16.54,
+    "end": 17.0
+   },
+   {
+    "word": "and",
+    "start": 17.16,
+    "end": 17.5
+   },
+   {
+    "word": "I",
+    "start": 17.5,
+    "end": 17.62
+   },
+   {
+    "word": "have",
+    "start": 17.62,
+    "end": 17.8
+   },
+   {
+    "word": "never",
+    "start": 17.8,
+    "end": 18.22
+   },
+   {
+    "word": "once",
+    "start": 18.22,
+    "end": 18.7
+   },
+   {
+    "word": "regretted",
+    "start": 18.7,
+    "end": 19.26
+   },
+   {
+    "word": "it",
+    "start": 19.26,
+    "end": 19.56
+   },
+   {
+    "word": "or",
+    "start": 19.56,
+    "end": 19.78
+   },
+   {
+    "word": "wished",
+    "start": 19.78,
+    "end": 20.2
+   },
+   {
+    "word": "for",
+    "start": 20.2,
+    "end": 20.42
+   },
+   {
+    "word": "a",
+    "start": 20.42,
+    "end": 20.54
+   },
+   {
+    "word": "different",
+    "start": 20.54,
+    "end": 20.84
+   },
+   {
+    "word": "pet.",
+    "start": 20.84,
+    "end": 21.2
+   },
+   {
+    "word": "So",
+    "start": 21.82,
+    "end": 22.2
+   },
+   {
+    "word": "close",
+    "start": 22.2,
+    "end": 22.72
+   },
+   {
+    "word": "this",
+    "start": 22.72,
+    "end": 23.12
+   },
+   {
+    "word": "book,",
+    "start": 23.12,
+    "end": 23.56
+   },
+   {
+    "word": "find",
+    "start": 23.8,
+    "end": 24.36
+   },
+   {
+    "word": "a",
+    "start": 24.36,
+    "end": 24.56
+   },
+   {
+    "word": "friend",
+    "start": 24.56,
+    "end": 24.9
+   },
+   {
+    "word": "who",
+    "start": 24.9,
+    "end": 25.26
+   },
+   {
+    "word": "keeps",
+    "start": 25.26,
+    "end": 25.56
+   },
+   {
+    "word": "guinea",
+    "start": 25.56,
+    "end": 25.86
+   },
+   {
+    "word": "pigs,",
+    "start": 25.86,
+    "end": 26.28
+   },
+   {
+    "word": "and",
+    "start": 26.7,
+    "end": 26.92
+   },
+   {
+    "word": "go",
+    "start": 26.92,
+    "end": 27.24
+   },
+   {
+    "word": "and",
+    "start": 27.24,
+    "end": 27.56
+   },
+   {
+    "word": "meet",
+    "start": 27.56,
+    "end": 27.88
+   },
+   {
+    "word": "one",
+    "start": 27.88,
+    "end": 28.24
+   },
+   {
+    "word": "this",
+    "start": 28.24,
+    "end": 28.5
+   },
+   {
+    "word": "week,",
+    "start": 28.5,
+    "end": 28.84
+   },
+   {
+    "word": "because",
+    "start": 29.36,
+    "end": 29.76
+   },
+   {
+    "word": "no",
+    "start": 29.76,
+    "end": 30.36
+   },
+   {
+    "word": "home",
+    "start": 30.36,
+    "end": 31.02
+   },
+   {
+    "word": "is",
+    "start": 31.02,
+    "end": 31.28
+   },
+   {
+    "word": "truly",
+    "start": 31.28,
+    "end": 32.0
+   },
+   {
+    "word": "complete",
+    "start": 32.0,
+    "end": 32.74
+   },
+   {
+    "word": "without",
+    "start": 32.74,
+    "end": 33.34
+   },
+   {
+    "word": "a",
+    "start": 33.34,
+    "end": 33.56
+   },
+   {
+    "word": "pair",
+    "start": 33.56,
+    "end": 33.76
+   },
+   {
+    "word": "of",
+    "start": 33.76,
+    "end": 34.04
+   },
+   {
+    "word": "happy",
+    "start": 34.04,
+    "end": 34.46
+   },
+   {
+    "word": "guinea",
+    "start": 34.46,
+    "end": 34.8
+   },
+   {
+    "word": "pigs",
+    "start": 34.8,
+    "end": 35.24
+   },
+   {
+    "word": "squealing",
+    "start": 35.24,
+    "end": 36.08
+   },
+   {
+    "word": "for",
+    "start": 36.08,
+    "end": 36.4
+   },
+   {
+    "word": "their",
+    "start": 36.4,
+    "end": 36.68
+   },
+   {
+    "word": "dinner.",
+    "start": 36.68,
+    "end": 37.02
+   }
+  ]
+ },
+ "page-five-read": {
+  "duration": 6.92,
+  "words": [
+   {
+    "word": "Last",
+    "start": 0.0,
+    "end": 0.42
+   },
+   {
+    "word": "page.",
+    "start": 0.42,
+    "end": 1.16
+   },
+   {
+    "word": "Read",
+    "start": 1.8,
+    "end": 2.08
+   },
+   {
+    "word": "along",
+    "start": 2.08,
+    "end": 2.38
+   },
+   {
+    "word": "with",
+    "start": 2.38,
+    "end": 2.68
+   },
+   {
+    "word": "me",
+    "start": 2.68,
+    "end": 2.96
+   },
+   {
+    "word": "and",
+    "start": 2.96,
+    "end": 3.44
+   },
+   {
+    "word": "notice",
+    "start": 3.44,
+    "end": 3.74
+   },
+   {
+    "word": "what",
+    "start": 3.74,
+    "end": 4.0
+   },
+   {
+    "word": "the",
+    "start": 4.0,
+    "end": 4.18
+   },
+   {
+    "word": "author",
+    "start": 4.18,
+    "end": 4.54
+   },
+   {
+    "word": "wants",
+    "start": 4.54,
+    "end": 4.84
+   },
+   {
+    "word": "you",
+    "start": 4.84,
+    "end": 5.1
+   },
+   {
+    "word": "to",
+    "start": 5.1,
+    "end": 5.28
+   },
+   {
+    "word": "do",
+    "start": 5.28,
+    "end": 5.6
+   },
+   {
+    "word": "when",
+    "start": 5.6,
+    "end": 6.12
+   },
+   {
+    "word": "the",
+    "start": 6.12,
+    "end": 6.24
+   },
+   {
+    "word": "book",
+    "start": 6.24,
+    "end": 6.46
+   },
+   {
+    "word": "is",
+    "start": 6.46,
+    "end": 6.64
+   },
+   {
+    "word": "over.",
+    "start": 6.64,
+    "end": 6.92
+   }
+  ]
+ },
+ "page-four-read": {
+  "duration": 12.66,
+  "words": [
+   {
+    "word": "Page",
+    "start": 0.0,
+    "end": 0.48
+   },
+   {
+    "word": "4",
+    "start": 0.48,
+    "end": 0.88
+   },
+   {
+    "word": "is",
+    "start": 0.88,
+    "end": 1.26
+   },
+   {
+    "word": "yours,",
+    "start": 1.26,
+    "end": 1.62
+   },
+   {
+    "word": "and",
+    "start": 2.04,
+    "end": 2.48
+   },
+   {
+    "word": "it",
+    "start": 2.48,
+    "end": 2.66
+   },
+   {
+    "word": "holds",
+    "start": 2.66,
+    "end": 2.98
+   },
+   {
+    "word": "the",
+    "start": 2.98,
+    "end": 3.36
+   },
+   {
+    "word": "third",
+    "start": 3.36,
+    "end": 3.88
+   },
+   {
+    "word": "clue",
+    "start": 3.88,
+    "end": 4.32
+   },
+   {
+    "word": "to",
+    "start": 4.32,
+    "end": 4.7
+   },
+   {
+    "word": "an",
+    "start": 4.7,
+    "end": 4.9
+   },
+   {
+    "word": "author's",
+    "start": 4.9,
+    "end": 5.44
+   },
+   {
+    "word": "view,",
+    "start": 5.44,
+    "end": 5.76
+   },
+   {
+    "word": "the",
+    "start": 6.38,
+    "end": 6.54
+   },
+   {
+    "word": "place",
+    "start": 6.54,
+    "end": 6.92
+   },
+   {
+    "word": "where",
+    "start": 6.92,
+    "end": 7.22
+   },
+   {
+    "word": "the",
+    "start": 7.22,
+    "end": 7.38
+   },
+   {
+    "word": "author",
+    "start": 7.38,
+    "end": 7.78
+   },
+   {
+    "word": "tells",
+    "start": 7.78,
+    "end": 8.28
+   },
+   {
+    "word": "you",
+    "start": 8.28,
+    "end": 8.54
+   },
+   {
+    "word": "what",
+    "start": 8.54,
+    "end": 8.86
+   },
+   {
+    "word": "to",
+    "start": 8.86,
+    "end": 9.08
+   },
+   {
+    "word": "do.",
+    "start": 9.08,
+    "end": 9.4
+   },
+   {
+    "word": "Read",
+    "start": 10.06,
+    "end": 10.42
+   },
+   {
+    "word": "all",
+    "start": 10.42,
+    "end": 10.8
+   },
+   {
+    "word": "three",
+    "start": 10.8,
+    "end": 11.2
+   },
+   {
+    "word": "sentences",
+    "start": 11.2,
+    "end": 11.84
+   },
+   {
+    "word": "out",
+    "start": 11.84,
+    "end": 12.34
+   },
+   {
+    "word": "loud.",
+    "start": 12.34,
+    "end": 12.66
+   }
+  ]
+ },
+ "page-three-read-sentence": {
+  "duration": 41.94,
+  "words": [
+   {
+    "word": "A",
+    "start": 0.0,
+    "end": 0.34
+   },
+   {
+    "word": "guinea",
+    "start": 0.34,
+    "end": 0.72
+   },
+   {
+    "word": "pig's",
+    "start": 0.72,
+    "end": 1.34
+   },
+   {
+    "word": "front",
+    "start": 1.34,
+    "end": 1.58
+   },
+   {
+    "word": "teeth",
+    "start": 1.58,
+    "end": 2.22
+   },
+   {
+    "word": "never",
+    "start": 2.22,
+    "end": 2.82
+   },
+   {
+    "word": "stop",
+    "start": 2.82,
+    "end": 3.28
+   },
+   {
+    "word": "growing,",
+    "start": 3.28,
+    "end": 3.82
+   },
+   {
+    "word": "so",
+    "start": 4.22,
+    "end": 4.66
+   },
+   {
+    "word": "it",
+    "start": 4.66,
+    "end": 4.84
+   },
+   {
+    "word": "choose,",
+    "start": 4.84,
+    "end": 5.24
+   },
+   {
+    "word": "hey,",
+    "start": 5.36,
+    "end": 5.6
+   },
+   {
+    "word": "all",
+    "start": 5.86,
+    "end": 6.28
+   },
+   {
+    "word": "day",
+    "start": 6.28,
+    "end": 6.72
+   },
+   {
+    "word": "long",
+    "start": 6.72,
+    "end": 7.14
+   },
+   {
+    "word": "to",
+    "start": 7.14,
+    "end": 7.44
+   },
+   {
+    "word": "wear",
+    "start": 7.44,
+    "end": 7.66
+   },
+   {
+    "word": "them",
+    "start": 7.66,
+    "end": 7.94
+   },
+   {
+    "word": "down.",
+    "start": 7.94,
+    "end": 8.32
+   },
+   {
+    "word": "Its",
+    "start": 9.02,
+    "end": 9.38
+   },
+   {
+    "word": "body",
+    "start": 9.38,
+    "end": 9.88
+   },
+   {
+    "word": "cannot",
+    "start": 9.88,
+    "end": 10.34
+   },
+   {
+    "word": "make",
+    "start": 10.34,
+    "end": 10.92
+   },
+   {
+    "word": "vitamin",
+    "start": 10.92,
+    "end": 11.34
+   },
+   {
+    "word": "C",
+    "start": 11.34,
+    "end": 11.84
+   },
+   {
+    "word": "the",
+    "start": 11.84,
+    "end": 12.28
+   },
+   {
+    "word": "way",
+    "start": 12.28,
+    "end": 12.44
+   },
+   {
+    "word": "ours",
+    "start": 12.44,
+    "end": 12.9
+   },
+   {
+    "word": "can,",
+    "start": 12.9,
+    "end": 13.34
+   },
+   {
+    "word": "so",
+    "start": 13.88,
+    "end": 14.12
+   },
+   {
+    "word": "it",
+    "start": 14.12,
+    "end": 14.3
+   },
+   {
+    "word": "needs",
+    "start": 14.3,
+    "end": 14.64
+   },
+   {
+    "word": "fresh",
+    "start": 14.64,
+    "end": 15.18
+   },
+   {
+    "word": "vegetables",
+    "start": 15.18,
+    "end": 15.76
+   },
+   {
+    "word": "such",
+    "start": 15.76,
+    "end": 16.48
+   },
+   {
+    "word": "as",
+    "start": 16.48,
+    "end": 16.72
+   },
+   {
+    "word": "sweet",
+    "start": 16.72,
+    "end": 17.2
+   },
+   {
+    "word": "peppers",
+    "start": 17.2,
+    "end": 17.76
+   },
+   {
+    "word": "every",
+    "start": 17.76,
+    "end": 18.56
+   },
+   {
+    "word": "single",
+    "start": 18.56,
+    "end": 19.26
+   },
+   {
+    "word": "day.",
+    "start": 19.26,
+    "end": 19.86
+   },
+   {
+    "word": "When",
+    "start": 20.7,
+    "end": 21.04
+   },
+   {
+    "word": "a",
+    "start": 21.04,
+    "end": 21.22
+   },
+   {
+    "word": "guinea",
+    "start": 21.22,
+    "end": 21.44
+   },
+   {
+    "word": "pig",
+    "start": 21.44,
+    "end": 21.72
+   },
+   {
+    "word": "is",
+    "start": 21.72,
+    "end": 22.04
+   },
+   {
+    "word": "excited,",
+    "start": 22.04,
+    "end": 22.74
+   },
+   {
+    "word": "it",
+    "start": 23.24,
+    "end": 23.42
+   },
+   {
+    "word": "hops",
+    "start": 23.42,
+    "end": 23.72
+   },
+   {
+    "word": "straight",
+    "start": 23.72,
+    "end": 24.4
+   },
+   {
+    "word": "up",
+    "start": 24.4,
+    "end": 24.66
+   },
+   {
+    "word": "into",
+    "start": 24.66,
+    "end": 24.92
+   },
+   {
+    "word": "the",
+    "start": 24.92,
+    "end": 25.14
+   },
+   {
+    "word": "air",
+    "start": 25.14,
+    "end": 25.4
+   },
+   {
+    "word": "with",
+    "start": 25.4,
+    "end": 25.86
+   },
+   {
+    "word": "all",
+    "start": 25.86,
+    "end": 26.36
+   },
+   {
+    "word": "four",
+    "start": 26.36,
+    "end": 26.86
+   },
+   {
+    "word": "feet",
+    "start": 26.86,
+    "end": 27.14
+   },
+   {
+    "word": "off",
+    "start": 27.14,
+    "end": 27.44
+   },
+   {
+    "word": "the",
+    "start": 27.44,
+    "end": 27.64
+   },
+   {
+    "word": "ground,",
+    "start": 27.64,
+    "end": 27.98
+   },
+   {
+    "word": "which",
+    "start": 28.26,
+    "end": 28.62
+   },
+   {
+    "word": "is",
+    "start": 28.62,
+    "end": 28.78
+   },
+   {
+    "word": "the",
+    "start": 28.78,
+    "end": 28.96
+   },
+   {
+    "word": "most",
+    "start": 28.96,
+    "end": 29.3
+   },
+   {
+    "word": "delightful",
+    "start": 29.3,
+    "end": 29.8
+   },
+   {
+    "word": "thing",
+    "start": 29.8,
+    "end": 30.4
+   },
+   {
+    "word": "you",
+    "start": 30.4,
+    "end": 30.84
+   },
+   {
+    "word": "will",
+    "start": 30.84,
+    "end": 31.04
+   },
+   {
+    "word": "ever",
+    "start": 31.04,
+    "end": 31.48
+   },
+   {
+    "word": "see.",
+    "start": 31.48,
+    "end": 31.86
+   },
+   {
+    "word": "A",
+    "start": 32.74,
+    "end": 33.12
+   },
+   {
+    "word": "guinea",
+    "start": 33.12,
+    "end": 33.46
+   },
+   {
+    "word": "pig",
+    "start": 33.46,
+    "end": 33.8
+   },
+   {
+    "word": "also",
+    "start": 33.8,
+    "end": 34.38
+   },
+   {
+    "word": "eats",
+    "start": 34.38,
+    "end": 35.04
+   },
+   {
+    "word": "some",
+    "start": 35.04,
+    "end": 35.54
+   },
+   {
+    "word": "of",
+    "start": 35.54,
+    "end": 35.74
+   },
+   {
+    "word": "its",
+    "start": 35.74,
+    "end": 35.94
+   },
+   {
+    "word": "own",
+    "start": 35.94,
+    "end": 36.2
+   },
+   {
+    "word": "droppings",
+    "start": 36.2,
+    "end": 36.74
+   },
+   {
+    "word": "to",
+    "start": 36.74,
+    "end": 37.22
+   },
+   {
+    "word": "get",
+    "start": 37.22,
+    "end": 37.42
+   },
+   {
+    "word": "extra",
+    "start": 37.42,
+    "end": 37.92
+   },
+   {
+    "word": "vitamins,",
+    "start": 37.92,
+    "end": 38.42
+   },
+   {
+    "word": "which",
+    "start": 38.88,
+    "end": 39.18
+   },
+   {
+    "word": "is",
+    "start": 39.18,
+    "end": 39.36
+   },
+   {
+    "word": "not",
+    "start": 39.36,
+    "end": 39.6
+   },
+   {
+    "word": "nearly",
+    "start": 39.6,
+    "end": 40.12
+   },
+   {
+    "word": "as",
+    "start": 40.12,
+    "end": 40.44
+   },
+   {
+    "word": "gross",
+    "start": 40.44,
+    "end": 40.74
+   },
+   {
+    "word": "as",
+    "start": 40.74,
+    "end": 41.28
+   },
+   {
+    "word": "it",
+    "start": 41.28,
+    "end": 41.44
+   },
+   {
+    "word": "sounds.",
+    "start": 41.44,
+    "end": 41.94
+   }
+  ]
+ },
+ "page-three-read": {
+  "duration": 6.12,
+  "words": [
+   {
+    "word": "Page",
+    "start": 0.0,
+    "end": 0.44
+   },
+   {
+    "word": "3.",
+    "start": 0.44,
+    "end": 1.12
+   },
+   {
+    "word": "Read",
+    "start": 1.56,
+    "end": 2.02
+   },
+   {
+    "word": "along",
+    "start": 2.02,
+    "end": 2.34
+   },
+   {
+    "word": "with",
+    "start": 2.34,
+    "end": 2.6
+   },
+   {
+    "word": "me",
+    "start": 2.6,
+    "end": 2.92
+   },
+   {
+    "word": "and",
+    "start": 2.92,
+    "end": 3.3
+   },
+   {
+    "word": "watch",
+    "start": 3.3,
+    "end": 3.66
+   },
+   {
+    "word": "what",
+    "start": 3.66,
+    "end": 3.98
+   },
+   {
+    "word": "the",
+    "start": 3.98,
+    "end": 4.12
+   },
+   {
+    "word": "author",
+    "start": 4.12,
+    "end": 4.46
+   },
+   {
+    "word": "does",
+    "start": 4.46,
+    "end": 4.92
+   },
+   {
+    "word": "with",
+    "start": 4.92,
+    "end": 5.3
+   },
+   {
+    "word": "each",
+    "start": 5.3,
+    "end": 5.76
+   },
+   {
+    "word": "fact.",
+    "start": 5.76,
+    "end": 6.12
+   }
+  ]
+ },
+ "page-two-read": {
+  "duration": 11.0,
+  "words": [
+   {
+    "word": "Stage",
+    "start": 0.0,
+    "end": 0.46
+   },
+   {
+    "word": "2",
+    "start": 0.46,
+    "end": 1.04
+   },
+   {
+    "word": "is",
+    "start": 1.04,
+    "end": 1.56
+   },
+   {
+    "word": "yours.",
+    "start": 1.56,
+    "end": 1.98
+   },
+   {
+    "word": "Read",
+    "start": 2.94,
+    "end": 3.16
+   },
+   {
+    "word": "all",
+    "start": 3.16,
+    "end": 3.62
+   },
+   {
+    "word": "three",
+    "start": 3.62,
+    "end": 4.04
+   },
+   {
+    "word": "sentences",
+    "start": 4.04,
+    "end": 4.64
+   },
+   {
+    "word": "out",
+    "start": 4.64,
+    "end": 5.1
+   },
+   {
+    "word": "loud",
+    "start": 5.1,
+    "end": 5.52
+   },
+   {
+    "word": "and",
+    "start": 5.52,
+    "end": 6.16
+   },
+   {
+    "word": "notice",
+    "start": 6.16,
+    "end": 6.58
+   },
+   {
+    "word": "the",
+    "start": 6.58,
+    "end": 6.94
+   },
+   {
+    "word": "sentence",
+    "start": 6.94,
+    "end": 7.4
+   },
+   {
+    "word": "where",
+    "start": 7.4,
+    "end": 7.68
+   },
+   {
+    "word": "the",
+    "start": 7.68,
+    "end": 7.9
+   },
+   {
+    "word": "author",
+    "start": 7.9,
+    "end": 8.2
+   },
+   {
+    "word": "stops",
+    "start": 8.2,
+    "end": 8.74
+   },
+   {
+    "word": "reporting",
+    "start": 8.74,
+    "end": 9.34
+   },
+   {
+    "word": "and",
+    "start": 9.34,
+    "end": 10.0
+   },
+   {
+    "word": "starts",
+    "start": 10.0,
+    "end": 10.52
+   },
+   {
+    "word": "feeling.",
+    "start": 10.52,
+    "end": 11.0
+   }
+  ]
+ }
+}

@@ -23,6 +23,14 @@ import { g1Final } from "./g1-final";
 import { g2Unit1Exam } from "./g2-unit-1-exam";
 import { g2Unit2Exam } from "./g2-unit-2-exam";
 import { g2Unit3Exam } from "./g2-unit-3-exam";
+import { g2Unit4Exam } from "./g2-unit-4-exam";
+import { g2Final } from "./g2-final";
+import { g3Unit1Exam } from "./g3-unit-1-exam";
+import { g3Unit2Exam } from "./g3-unit-2-exam";
+import { g3Unit3Exam } from "./g3-unit-3-exam";
+import { g3Unit4Exam } from "./g3-unit-4-exam";
+import { g3Final } from "./g3-final";
+import { g4Unit1Exam } from "./g4-unit-1-exam";
 import { soundSlidersQuiz } from "./sound-sliders-quiz";
 import { soundDetectivesQuiz } from "./sound-detectives-quiz";
 import { wordMachinesQuiz } from "./word-machines-quiz";
@@ -134,6 +142,66 @@ import { describeItBetterQuiz } from "./describe-it-better-quiz";
 import { ruleBreakerWordsQuiz } from "./rule-breaker-words-quiz";
 import { letterPerfectQuiz } from "./letter-perfect-quiz";
 import { readItOutLoudQuiz } from "./read-it-out-loud-quiz";
+import { clickAndClunkQuiz } from "./click-and-clunk-quiz";
+import { readToLearnQuiz } from "./read-to-learn-quiz";
+import { matchYourVoiceQuiz } from "./match-your-voice-quiz";
+import { meaningMachinesQuiz } from "./meaning-machines-quiz";
+import { longWordTrainsQuiz } from "./long-word-trains-quiz";
+import { showMeWhereQuiz } from "./show-me-where-quiz";
+import { readAroundTheWordQuiz } from "./read-around-the-word-quiz";
+import { becauseThenSoQuiz } from "./because-then-so-quiz";
+import { followTheMessageQuiz } from "./follow-the-message-quiz";
+import { whyTheyDidItQuiz } from "./why-they-did-it-quiz";
+import { pointToTheFactQuiz } from "./point-to-the-fact-quiz";
+import { bigIdeaBackedUpQuiz } from "./big-idea-backed-up-quiz";
+import { newWordNewMeaningQuiz } from "./new-word-new-meaning-quiz";
+import { sameRootNewBranchQuiz } from "./same-root-new-branch-quiz";
+import { threeWordToolsQuiz } from "./three-word-tools-quiz";
+import { chunkByChunkQuiz } from "./chunk-by-chunk-quiz";
+import { takeApartAnyWordQuiz } from "./take-apart-any-word-quiz";
+import { knowThemByHeartQuiz } from "./know-them-by-heart-quiz";
+import { moreThanItSaysQuiz } from "./more-than-it-says-quiz";
+import { partsThatBuildQuiz } from "./parts-that-build-quiz";
+import { theirViewYourViewQuiz } from "./their-view-your-view-quiz";
+import { expertWordsQuiz } from "./expert-words-quiz";
+import { searchLikeAProQuiz } from "./search-like-a-pro-quiz";
+import { theAuthorsViewQuiz } from "./the-authors-view-quiz";
+import { checkTheDictionaryQuiz } from "./check-the-dictionary-quiz";
+import { sayingsThatMeanMoreQuiz } from "./sayings-that-mean-more-quiz";
+import { smoothAndSureQuiz } from "./smooth-and-sure-quiz";
+import { wordsInActionQuiz } from "./words-in-action-quiz";
+import { wordConnectionsQuiz } from "./word-connections-quiz";
+import { proseAndPoemQuiz } from "./prose-and-poem-quiz";
+import { knowWhyYouReadQuiz } from "./know-why-you-read-quiz";
+import { doesThatMakeSenseQuiz } from "./does-that-make-sense-quiz";
+import { sameHeroNewStoryQuiz } from "./same-hero-new-story-quiz";
+import { whatThePictureAddsQuiz } from "./what-the-picture-adds-quiz";
+import { sentenceToSentenceQuiz } from "./sentence-to-sentence-quiz";
+import { theWholeChapterQuiz } from "./the-whole-chapter-quiz";
+import { mapsAndPhotosQuiz } from "./maps-and-photos-quiz";
+import { twoWritersOneTopicQuiz } from "./two-writers-one-topic-quiz";
+import { whenAndWhereWordsQuiz } from "./when-and-where-words-quiz";
+import { shadesOfSureQuiz } from "./shades-of-sure-quiz";
+import { theWholeFactBookQuiz } from "./the-whole-fact-book-quiz";
+import { buildABetterSentenceQuiz } from "./build-a-better-sentence-quiz";
+import { commasQuotesCapitalsQuiz } from "./commas-quotes-capitals-quiz";
+import { wordsForEffectQuiz } from "./words-for-effect-quiz";
+import { textSaysSoIKnowQuiz } from "./text-says-so-i-know-quiz";
+import { factsSaySoIKnowQuiz } from "./facts-say-so-i-know-quiz";
+import { themeAndSummaryQuiz } from "./theme-and-summary-quiz";
+import { inDepthDetailsQuiz } from "./in-depth-details-quiz";
+import { whatHappenedAndWhyQuiz } from "./what-happened-and-why-quiz";
+import { mainIdeaAndSummaryQuiz } from "./main-idea-and-summary-quiz";
+import { contextAtADistanceQuiz } from "./context-at-a-distance-quiz";
+import { greekAndLatinRootsQuiz } from "./greek-and-latin-roots-quiz";
+import { longWordsFullSpeedQuiz } from "./long-words-full-speed-quiz";
+import { theRightToolQuiz } from "./the-right-tool-quiz";
+import { wordsFromTheMythsQuiz } from "./words-from-the-myths-quiz";
+import { splitItYourWayQuiz } from "./split-it-your-way-quiz";
+import { threeWaysToTellItQuiz } from "./three-ways-to-tell-it-quiz";
+import { whoTellsItChangesItQuiz } from "./who-tells-it-changes-it-quiz";
+import { wordsOfTheFieldQuiz } from "./words-of-the-field-quiz";
+import { theShapeOfTheFactsQuiz } from "./the-shape-of-the-facts-quiz";
 export const QUIZZES: Record<string, QuizDef> = {
   "rhyme-time-quiz": rhymeTimeQuiz,
   "key-details-quiz": keyDetailsQuiz,
@@ -157,6 +225,14 @@ export const QUIZZES: Record<string, QuizDef> = {
   "g2-unit-1-exam": g2Unit1Exam,
   "g2-unit-2-exam": g2Unit2Exam,
   "g2-unit-3-exam": g2Unit3Exam,
+  "g2-unit-4-exam": g2Unit4Exam,
+  "g2-final": g2Final,
+  "g3-unit-1-exam": g3Unit1Exam,
+  "g3-unit-2-exam": g3Unit2Exam,
+  "g3-unit-3-exam": g3Unit3Exam,
+  "g3-unit-4-exam": g3Unit4Exam,
+  "g3-final": g3Final,
+  "g4-unit-1-exam": g4Unit1Exam,
   "sound-sliders-quiz": soundSlidersQuiz,
   "sound-detectives-quiz": soundDetectivesQuiz,
   "word-machines-quiz": wordMachinesQuiz,
@@ -268,4 +344,64 @@ export const QUIZZES: Record<string, QuizDef> = {
   "rule-breaker-words-quiz": ruleBreakerWordsQuiz,
   "letter-perfect-quiz": letterPerfectQuiz,
   "read-it-out-loud-quiz": readItOutLoudQuiz,
+  "click-and-clunk-quiz": clickAndClunkQuiz,
+  "read-to-learn-quiz": readToLearnQuiz,
+  "match-your-voice-quiz": matchYourVoiceQuiz,
+  "meaning-machines-quiz": meaningMachinesQuiz,
+  "long-word-trains-quiz": longWordTrainsQuiz,
+  "show-me-where-quiz": showMeWhereQuiz,
+  "read-around-the-word-quiz": readAroundTheWordQuiz,
+  "because-then-so-quiz": becauseThenSoQuiz,
+  "follow-the-message-quiz": followTheMessageQuiz,
+  "why-they-did-it-quiz": whyTheyDidItQuiz,
+  "point-to-the-fact-quiz": pointToTheFactQuiz,
+  "big-idea-backed-up-quiz": bigIdeaBackedUpQuiz,
+  "new-word-new-meaning-quiz": newWordNewMeaningQuiz,
+  "same-root-new-branch-quiz": sameRootNewBranchQuiz,
+  "three-word-tools-quiz": threeWordToolsQuiz,
+  "chunk-by-chunk-quiz": chunkByChunkQuiz,
+  "take-apart-any-word-quiz": takeApartAnyWordQuiz,
+  "know-them-by-heart-quiz": knowThemByHeartQuiz,
+  "more-than-it-says-quiz": moreThanItSaysQuiz,
+  "parts-that-build-quiz": partsThatBuildQuiz,
+  "their-view-your-view-quiz": theirViewYourViewQuiz,
+  "expert-words-quiz": expertWordsQuiz,
+  "search-like-a-pro-quiz": searchLikeAProQuiz,
+  "the-authors-view-quiz": theAuthorsViewQuiz,
+  "check-the-dictionary-quiz": checkTheDictionaryQuiz,
+  "sayings-that-mean-more-quiz": sayingsThatMeanMoreQuiz,
+  "smooth-and-sure-quiz": smoothAndSureQuiz,
+  "words-in-action-quiz": wordsInActionQuiz,
+  "word-connections-quiz": wordConnectionsQuiz,
+  "prose-and-poem-quiz": proseAndPoemQuiz,
+  "know-why-you-read-quiz": knowWhyYouReadQuiz,
+  "does-that-make-sense-quiz": doesThatMakeSenseQuiz,
+  "same-hero-new-story-quiz": sameHeroNewStoryQuiz,
+  "what-the-picture-adds-quiz": whatThePictureAddsQuiz,
+  "sentence-to-sentence-quiz": sentenceToSentenceQuiz,
+  "the-whole-chapter-quiz": theWholeChapterQuiz,
+  "maps-and-photos-quiz": mapsAndPhotosQuiz,
+  "two-writers-one-topic-quiz": twoWritersOneTopicQuiz,
+  "when-and-where-words-quiz": whenAndWhereWordsQuiz,
+  "shades-of-sure-quiz": shadesOfSureQuiz,
+  "the-whole-fact-book-quiz": theWholeFactBookQuiz,
+  "build-a-better-sentence-quiz": buildABetterSentenceQuiz,
+  "commas-quotes-capitals-quiz": commasQuotesCapitalsQuiz,
+  "words-for-effect-quiz": wordsForEffectQuiz,
+  "text-says-so-i-know-quiz": textSaysSoIKnowQuiz,
+  "facts-say-so-i-know-quiz": factsSaySoIKnowQuiz,
+  "theme-and-summary-quiz": themeAndSummaryQuiz,
+  "in-depth-details-quiz": inDepthDetailsQuiz,
+  "what-happened-and-why-quiz": whatHappenedAndWhyQuiz,
+  "main-idea-and-summary-quiz": mainIdeaAndSummaryQuiz,
+  "context-at-a-distance-quiz": contextAtADistanceQuiz,
+  "greek-and-latin-roots-quiz": greekAndLatinRootsQuiz,
+  "long-words-full-speed-quiz": longWordsFullSpeedQuiz,
+  "the-right-tool-quiz": theRightToolQuiz,
+  "words-from-the-myths-quiz": wordsFromTheMythsQuiz,
+  "split-it-your-way-quiz": splitItYourWayQuiz,
+  "three-ways-to-tell-it-quiz": threeWaysToTellItQuiz,
+  "who-tells-it-changes-it-quiz": whoTellsItChangesItQuiz,
+  "words-of-the-field-quiz": wordsOfTheFieldQuiz,
+  "the-shape-of-the-facts-quiz": theShapeOfTheFactsQuiz,
 };
