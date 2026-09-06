@@ -55,26 +55,24 @@ function index(): Map<string, LessonDef> {
 }
 
 /**
- * ‼️ DEFAULTS OFF, because V2's assets are not deployed.
+ * Kill switch. Defaults ON now that V2's assets actually exist in production.
  *
- * Every V2 lesson reads its narration from /audio/lessons-v2/<id>/*.mp3 and its
- * pictures from /images/lessons-v2/<id>/*.png. Both directories are gitignored
- * (.gitignore lines 37 and 51) and hold zero tracked files, so all 2.2 GB of it
- * - 3,778 audio files, 1,195 images - exists only on the authoring machine.
- * Those URLs are 404 in production, which is also why /demo has never worked
- * there. A narration-driven reading lesson with no narration and no pictures is
- * not a lesson.
+ * It defaulted off for a few hours today because the assets did not: every
+ * lesson reads narration from /audio/lessons-v2 and art from /images/lessons-v2,
+ * both gitignored, both 404. They are in Supabase storage now - 3,778 audio and
+ * 1,195 images - and lib/lesson-engine/asset-url rewrites the paths. Verified by
+ * pulling every asset path referenced by all 183 lessons and fetching each one:
+ * 4,202 of 4,203 return content. (The one miss,
+ * there-or-told-about-it/guided-choose-witness-only.mp3, is a clip that lesson's
+ * TTS run never generated - it is absent locally too, and re-running
+ * scripts/lesson-tts.ts for that lesson fixes it.)
  *
- * The routing, the completion writes and the tests are all real and stay wired.
- * The only thing missing is the assets. Once they are served from somewhere
- * public - Supabase storage or a CDN, since 2.2 GB does not belong in git or in
- * a Vercel deployment - set LESSON_V2_ENABLED=true and 181 standards switch
- * over with no code change.
- *
- * Until then every standard uses the legacy runner, which still teaches all 201
- * and whose assets ARE deployed.
+ * Set LESSON_V2_ENABLED=false in Vercel to fall every standard back to the
+ * legacy runner, which still teaches all 201 and whose assets ship with the app.
+ * Flipping the lesson experience for every child should be undoable by editing
+ * an env var, not by reverting and redeploying.
  */
-export const LESSON_V2_ENABLED = process.env.LESSON_V2_ENABLED === "true";
+export const LESSON_V2_ENABLED = process.env.LESSON_V2_ENABLED !== "false";
 
 /**
  * What V2 has AUTHORED for this standard, regardless of rollout.

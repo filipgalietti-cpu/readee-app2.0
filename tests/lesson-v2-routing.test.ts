@@ -109,14 +109,14 @@ describe("the /learn engine choice", () => {
 });
 
 describe("the kill switch", () => {
-  it("defaults OFF until V2's assets are actually deployed", () => {
-    // /audio/lessons-v2 and /images/lessons-v2 are gitignored and 404 in prod,
-    // so serving V2 there means narration-free, picture-free lessons. Flip this
-    // to true only once those URLs resolve.
-    expect(LESSON_V2_ENABLED).toBe(false);
+  it("defaults ON, so an unset env var serves V2 rather than silently disabling it", () => {
+    // A switch that fails closed looks exactly like "V2 was never wired up".
+    // It only defaults on because the assets are verified present in storage.
+    expect(LESSON_V2_ENABLED).toBe(true);
+    expect(process.env.LESSON_V2_ENABLED).toBeUndefined();
   });
 
-  it("resolves nothing while disabled, so /learn falls back to legacy", () => {
-    expect(v2LessonForStandard("RL.K.1")).toBeUndefined();
+  it("serves the factory lesson for a covered standard", () => {
+    expect(v2LessonForStandard("RL.K.1")?.id).toBe("key-details");
   });
 });
