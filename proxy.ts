@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { decodePlayCookie, PLAY_COOKIE_NAME } from "@/lib/auth/play-mode";
 import { effectivePlan } from "@/lib/plan/access";
+import { b2bBlocked } from "@/lib/plan/classroom-gate";
 
 /**
  * Proxy (Next.js 16 middleware).
@@ -141,6 +142,29 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const pathname = request.nextUrl.pathname;
+
+  // ── B2B is switched off ──────────────────────────────────────────
+  // Readee committed to B2C; the classroom product is unfinished and
+  // unadvertised. Most of the September security audit lived behind this door:
+  // forged classroom membership reaching another family's child, institutional
+  // admin reading support records across schools, shared class credentials
+  // allowing student impersonation. Closing the door removes the class of
+  // problem instead of patching each instance.
+  //
+  // First thing in the handler, before any auth work, so a blocked path cannot
+  // reach a route handler at all. API paths get JSON 404 rather than a redirect
+  // (a fetch following a redirect to an HTML page is a confusing failure), and
+  // 404 rather than 403 because the honest answer is that this does not exist
+  // for you. Set CLASSROOM_ENABLED=true to bring it back.
+  if (b2bBlocked(pathname)) {
+    if (pathname.startsWith("/api/")) {
+      return NextResponse.json({ error: "Not found" }, { status: 404 });
+    }
+    const url = request.nextUrl.clone();
+    url.pathname = "/dashboard";
+    url.search = "";
+    return NextResponse.redirect(url);
+  }
 
   // ── Old placement quiz → Luna's reading placement (Sep 2026) ─────
   // Bookmarks, emails and stale links keep working; NEXT_PUBLIC_PLACEMENT_V2=0 restores the quiz.

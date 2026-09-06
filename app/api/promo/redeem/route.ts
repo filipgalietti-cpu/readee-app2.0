@@ -81,12 +81,44 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Redeem: insert redemption, increment uses, upgrade profile
+  // Claim a slot FIRST, and claim it atomically.
+  //
+  // This used to insert the redemption, then read-modify-write current_uses.
+  // Two redemptions arriving together both read 4 and both write 5, so the
+  // counter advances by one for two claims and a code capped at "the first five
+  // families" quietly serves more. The capacity check above is stale by the
+  // time the write lands, too.
+  //
+  // The extra .eq("current_uses", ...) makes this a compare-and-swap: the update
+  // applies only if nobody has incremented since we read it, so a concurrent
+  // redeemer loses the race and is told the code is full rather than silently
+  // sharing a slot. Claiming before writing the redemption row means a lost
+  // race leaves nothing behind to undo.
+  const { data: claimed } = await admin
+    .from("promo_codes")
+    .update({ current_uses: promoCode.current_uses + 1 })
+    .eq("id", promoCode.id)
+    .eq("current_uses", promoCode.current_uses)
+    .select("id")
+    .maybeSingle();
+
+  if (!claimed) {
+    return NextResponse.json(
+      { success: false, message: "This promo code has reached its usage limit." },
+      { status: 410 },
+    );
+  }
+
   const { error: redemptionError } = await admin
     .from("promo_redemptions")
     .insert({ user_id: user.id, promo_code_id: promoCode.id });
 
   if (redemptionError) {
+    // Hand the slot back. We hold it, so nobody else can be mid-claim on it.
+    await admin
+      .from("promo_codes")
+      .update({ current_uses: promoCode.current_uses })
+      .eq("id", promoCode.id);
     console.error("Promo redemption insert error:", redemptionError);
     return NextResponse.json(
       { success: false, message: "Failed to redeem code. Please try again." },
@@ -94,15 +126,20 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  await admin
-    .from("promo_codes")
-    .update({ current_uses: promoCode.current_uses + 1 })
-    .eq("id", promoCode.id);
-
-  await admin
+  // ‼️ Check this one. It is the entire point of the endpoint: an unread error
+  // here means a family redeemed a code and never got Readee+.
+  const { error: planError } = await admin
     .from("profiles")
     .update({ plan: "premium" })
     .eq("id", user.id);
+
+  if (planError) {
+    console.error("Promo plan upgrade error:", planError);
+    return NextResponse.json(
+      { success: false, message: "Code accepted but the upgrade failed. Please contact support." },
+      { status: 500 },
+    );
+  }
 
   // Send welcome email (don't block the success response on failure)
   try {

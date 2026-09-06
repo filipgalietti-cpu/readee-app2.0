@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { requireProfile } from "@/lib/auth/helpers";
@@ -620,7 +621,9 @@ export async function devPromoteToEducator(): Promise<
   }
   const profile = await requireProfile();
   const supabase = await createClient();
-  const { error } = await supabase
+  // Admin client: `role` is not writable by `authenticated` (migration 143),
+  // because a session that can write its own role can self-promote.
+  const { error } = await supabaseAdmin()
     .from("profiles")
     .update({ role: "educator" })
     .eq("id", profile.id);
@@ -642,7 +645,7 @@ export async function devSetRole(
   }
   const profile = await requireProfile();
   const supabase = await createClient();
-  const { error } = await supabase
+  const { error } = await supabaseAdmin()
     .from("profiles")
     .update({ role })
     .eq("id", profile.id);
