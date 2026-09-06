@@ -646,8 +646,39 @@ ${theme.topic}${avoidBlock}`;
     trackError(new Error(err), { route: "daily-question", extra: { date: dateStr } });
     return { ok: false, error: err, date: dateStr };
   }
-  const passageTitle = passageRes.passage.title;
-  const passageBody = passageRes.passage.passage;
+  let passageTitle = passageRes.passage.title;
+  let passageBody = passageRes.passage.passage;
+
+  // ‼️ Enforce the length tier, because nothing else did.
+  //
+  // The full read is generated at 2nd grade / medium = 100-150 words, and the
+  // easy rendition targets 55-85. Those bands do not overlap, so the toggle is
+  // only meaningful while the full passage actually reaches its window. On
+  // 2026-09-06 it came out at 75 words - below its own floor and inside the easy
+  // band - and Short read and Full read were indistinguishable. Nothing noticed,
+  // because length was never checked after generation.
+  //
+  // One retry with the miss stated plainly. If it still falls short we ship it:
+  // a slightly short passage beats no daily, and Filip's rule is that an article
+  // ships every day.
+  const FULL_MIN_WORDS = 100;
+  const wordCount = (t: string) => t.trim().split(/\s+/).filter(Boolean).length;
+  if (wordCount(passageBody) < FULL_MIN_WORDS) {
+    console.warn(`[daily] ${dateStr}: full passage ${wordCount(passageBody)}w, below ${FULL_MIN_WORDS}; retrying`);
+    const retry = await generatePassage({
+      teacherId,
+      topic: `${datedTopic}\n\nThe previous attempt was ${wordCount(passageBody)} words, which is too short. Write ${FULL_MIN_WORDS}-150 words this time: keep the same subject and add real detail rather than padding.`,
+      gradeLevel,
+      phonicsPattern: null,
+      lengthLevel: "medium",
+      trustedSystem: true,
+    });
+    if (retry.ok && wordCount(retry.passage.passage) > wordCount(passageBody)) {
+      passageTitle = retry.passage.title;
+      passageBody = retry.passage.passage;
+      console.info(`[daily] ${dateStr}: retry gave ${wordCount(passageBody)}w`);
+    }
+  }
 
   // 2) Questions — three MCQs, the first becomes the surfaced one,
   //    the others go into extra_questions for the /today page.

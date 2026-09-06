@@ -258,19 +258,30 @@ export function pickDaily(
   return { bucket, subject, medium, label: `${BUCKET_LABEL[bucket]} - ${subject}`, topic: topicFor(bucket, subject) };
 }
 
-/** The passage brief. Story buckets get a premise; the rest get a subject. */
+/**
+ * The passage brief.
+ *
+ * ‼️ NO LENGTH WORDS IN HERE. Length belongs to the tier, which the daily
+ * builder sets to "medium" at 2nd grade = 100-150 words. These briefs used to
+ * open "A short, true passage..." and "A warm short story...", which argued with
+ * that instruction, and the model split the difference: the 2026-09-06 daily
+ * came out at 75 words, below its own window and inside the 55-85 band the EASY
+ * rendition targets - so Short read and Full read were the same length.
+ *
+ * Say what the passage is ABOUT. The tier says how long.
+ */
 function topicFor(bucket: Bucket, subject: string): string {
   if (bucket === "stories") {
-    return `A warm short story built on this premise: ${subject}. Invent the characters and the setting; the premise is the shape, not the plot. Give it a beginning, a small problem and a satisfying end.`;
+    return `A warm story built on this premise: ${subject}. Invent the characters and the setting; the premise is the shape, not the plot. Give it a beginning, a real problem, and an ending that resolves it. Let scenes breathe rather than summarising them.`;
   }
   if (bucket === "people") {
-    return `A short, true passage about ${subject} and one specific thing they did, told so a child can picture it. Stick to what is documented. No invented dialogue and no invented scenes.`;
+    return `A true passage about ${subject} and one specific thing they did, told so a child can picture it: where they were, what they tried, what happened. Stick to what is documented. No invented dialogue and no invented scenes.`;
   }
   if (bucket === "cultures") {
-    return `A short, warm, factual passage about ${subject}: what happens, what people eat, wear or make, and why it matters to the people who celebrate it. Respectful and specific, never a list of facts.`;
+    return `A warm, factual passage about ${subject}: what happens, what people eat, wear or make, and why it matters to the people who celebrate it. Respectful and specific, built around one vivid moment rather than a list of facts.`;
   }
   if (bucket === "body") {
-    return `A short, cheerful passage explaining ${subject} to a young child. Concrete and friendly. Nothing medical, nothing about illness or injury.`;
+    return `A cheerful passage explaining ${subject} to a young child, built around something they can feel or notice in themselves. Concrete and friendly. Nothing medical, nothing about illness or injury.`;
   }
-  return `A short, true passage about ${subject}, built around the single most surprising real thing about it. Concrete and vivid, the way a good nature programme opens.`;
+  return `A true passage about ${subject}, built around the single most surprising real thing about it, with enough detail that a child can picture it. Concrete and vivid, the way a good nature programme opens.`;
 }
