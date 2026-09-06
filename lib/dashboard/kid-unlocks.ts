@@ -19,6 +19,7 @@
 "use server";
 
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { createClient } from "@/lib/supabase/server";
 
 const RECENCY_DAYS = 14;
 const PER_SOURCE_LIMIT = 6;
@@ -54,11 +55,33 @@ function gradePeers(grade: string | null): string[] | null {
  * Pulls the kid's unlocks across surfaces and merges into one
  * recency-sorted feed.
  */
+/**
+ * ‼️ This module keeps "use server" because a client component imports it, so
+ * every export here is a public RPC endpoint. It previously took `parentId`
+ * from the caller and trusted it while reading with the admin client - a
+ * confused deputy: supply somebody else's ids and get their child's content.
+ *
+ * The session is now the only source of the parent's identity, and the child
+ * must belong to that parent. The `parentId` field is accepted for call-site
+ * compatibility and deliberately ignored.
+ */
 export async function loadKidUnlocks(input: {
   childId: string;
-  parentId: string;
+  /** @deprecated Ignored. The parent is resolved from the session. */
+  parentId?: string;
   gradeLevel: string | null;
 }): Promise<KidUnlock[]> {
+  const supabase = await createClient();
+  const { data: auth } = await supabase.auth.getUser();
+  if (!auth.user) return [];
+  const { data: child } = await supabase
+    .from("children")
+    .select("id")
+    .eq("id", input.childId)
+    .eq("parent_id", auth.user.id)
+    .maybeSingle();
+  if (!child) return [];
+
   const admin = supabaseAdmin();
   const sinceIso = new Date(
     Date.now() - RECENCY_DAYS * 86_400_000,

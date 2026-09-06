@@ -1,0 +1,13 @@
+-- The translation cache stored BOTH the submitted source text and its
+-- translation, under `for select to authenticated using (true)`. Every signed-in
+-- account could read the whole table straight through PostgREST, including text
+-- other families had pasted in - parent letters, notes about a child.
+--
+-- The policy bought nothing: the only code that touches this table is
+-- lib/ai/translate.ts, which uses the service role and bypasses RLS anyway. It
+-- was pure exposure.
+--
+-- Dropping the read policy leaves the table service-role only. There is no
+-- owner column to scope by, and adding one is the right follow-up if the cache
+-- ever needs to be read from the client.
+drop policy if exists "Authenticated read translations" on public.translations_cache;

@@ -267,13 +267,26 @@ export async function POST(request: NextRequest) {
           }
         }
 
-        // Insert children — runs for both new and existing accounts.
+        // ‼️ Children are created ONLY for an account this request just made.
+        //
+        // This endpoint is public and unauthenticated. It used to run for
+        // existing accounts too: submit somebody else's email, the create fails
+        // with "already registered", the handler looks that person up through
+        // listUsers(), adopts their user id, and writes attacker-named children
+        // into their family with the service role - consuming reader slots they
+        // are entitled to. Nothing in the request ever proved ownership of that
+        // email address.
+        //
+        // The signup row itself is still saved above, so the lead is not lost.
+        // An existing account gets the password-reset link and adds readers from
+        // inside the app, where a session proves who they are.
+        //
         // Reader cap is server-enforced here too (same rule as
         // /api/children/create): 1 reader on free, 2 with full access
         // (paid or inside the reverse trial). The questionnaire
         // accepts up to 5 children, so clamp to whatever room is left —
         // the normal first-reader flow always fits.
-        if (userId && body.children?.length) {
+        if (userId && !existingAccount && body.children?.length) {
           console.log('Inserting children for user:', userId, 'count:', body.children?.length ?? 0);
           try {
             const { data: prof } = await admin

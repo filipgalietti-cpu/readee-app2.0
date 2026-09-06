@@ -20,8 +20,19 @@
  * Idempotent: re-running on the same asset after it's already archived
  * (or already has an open kid_feedback finding) is a no-op.
  */
-"use server";
-
+// ‼️ DO NOT PUT "use server" BACK.
+//
+// This file used to carry it, which made every export a callable RPC endpoint
+// reachable by anyone who could reach the app - and `recordKidFeedback` writes
+// with the ADMIN client using whatever childId it is handed. The guarded
+// wrapper in app/actions/kid-feedback.ts resolves the parent from the session
+// and checks the child belongs to them; its own comment says "without this any
+// signed-in user could spam votes on any kid's behalf". That check was simply
+// being bypassed, because the inner module was independently exposed.
+//
+// Only server modules import this (app/actions/kid-feedback.ts and
+// lib/owner/asset-feed.ts), so a plain module is all it ever needed to be.
+// Route new callers through the action wrapper, never through here.
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 export type KidAssetKind =

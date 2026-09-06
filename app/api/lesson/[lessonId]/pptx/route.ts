@@ -24,6 +24,46 @@ type Slide = {
  * embedded media has format quirks across PowerPoint / Google Slides
  * that aren't worth chasing for V1.
  */
+/**
+ * Is this image safe to hand to the export library?
+ *
+ * ‼️ pptxgenjs treats ANY path that does not start with "http" as a local file:
+ *
+ *     if (isNode && fs && rel.path.indexOf('http') !== 0) {
+ *       const bitmap = fs.readFileSync(rel.path)   // embedded into the .pptx
+ *
+ * These paths come from `custom_lessons.cover_image_url` and the slide bodies,
+ * which a lesson's own owner can edit. Pointing one at `/etc/passwd` or at a
+ * dotfile beside the deployment and exporting the deck reads that file off the
+ * server and base64s it into the archive. The ownership check on the route
+ * passes the whole time, because it is your own lesson.
+ *
+ * So: HTTPS only, and only from our own Supabase storage host. Anything else -
+ * a filesystem path, plain http, someone else's domain, or a "http"-prefixed
+ * string that is not actually a URL - is dropped and the slide ships without a
+ * picture. Note the library's own test is a prefix match, so "httpfoo/../x"
+ * would sail past it; parsing the URL properly is what closes that.
+ */
+function safeImageUrl(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  let u: URL;
+  try {
+    u = new URL(raw);
+  } catch {
+    return null; // not a URL at all, therefore a filesystem path
+  }
+  if (u.protocol !== "https:") return null;
+  const supabase = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!supabase) return null;
+  let allowedHost: string;
+  try {
+    allowedHost = new URL(supabase).host;
+  } catch {
+    return null;
+  }
+  return u.host === allowedHost ? u.toString() : null;
+}
+
 export async function GET(
   _req: Request,
   { params }: { params: Promise<{ lessonId: string }> },
@@ -103,10 +143,11 @@ export async function GET(
     color: "374151",
     fontFace: "Calibri",
   });
-  if (l.cover_image_url) {
+  const coverUrl = safeImageUrl(l.cover_image_url);
+  if (coverUrl) {
     try {
       cover.addImage({
-        path: l.cover_image_url,
+        path: coverUrl,
         x: 8,
         y: 1.5,
         w: 4.5,
@@ -132,10 +173,11 @@ export async function GET(
     const s = pptx.addSlide();
     s.background = { color: "FFFFFF" };
 
-    if (slide.image_url) {
+    const slideUrl = safeImageUrl(slide.image_url);
+    if (slideUrl) {
       try {
         s.addImage({
-          path: slide.image_url,
+          path: slideUrl,
           x: 0.5,
           y: 0.5,
           w: 5.5,
