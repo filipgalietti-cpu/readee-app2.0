@@ -32,7 +32,7 @@ import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scen
 import { judgeImageQuality } from "@/lib/ai/qc-media";
 import { qcImageStructured, generateBestImage } from "@/lib/ai/qc-scene";
 import { pickThemeForDate, slugForDate, isPinnedHoliday } from "@/lib/daily/themes";
-import { pickDaily, MEDIUM_PROMPT, type Bucket, type DailyPick } from "@/lib/daily/catalog";
+import { pickDaily, MEDIUM_PROMPT, isInformationalBucket, type Bucket, type DailyPick } from "@/lib/daily/catalog";
 import { inclusiveHolidayFor } from "@/lib/daily/holidays-inclusive";
 import { trackError, trackSignal } from "@/lib/observability/track";
 import { runAutoHealLoop, type Finding, type Healer } from "@/lib/qc/auto-heal";
@@ -236,6 +236,20 @@ export type DailyEasyVariant = {
 };
 
 /**
+ * Genre of a stored daily row, for the QC passage judge.
+ *
+ * `undefined` when the row has no bucket, which leaves the judge on its own
+ * default. Two different kinds of row land there: pinned holidays (factual) and
+ * rows written before the catalogue draw shipped on 2026-09-06, whose weekday
+ * themes produced stories ("Saturday cave adventure"). Healing one of those and
+ * asserting "informational" would fail a story for being a story, so an unknown
+ * genre stays unknown rather than guessing.
+ */
+function informationalRow(bucket: string | null | undefined): boolean | undefined {
+  return bucket ? isInformationalBucket(bucket as Bucket) : undefined;
+}
+
+/**
  * K-1 "easy rendition" of an existing daily passage: same topic, same
  * true facts (nonfiction) or story beats (fiction), told in 55-85
  * words of short decodable sentences, with 3 K-1 MCQs and its own TTS
@@ -252,8 +266,12 @@ export async function generateEasyRendition(opts: {
   baseTitle: string;
   baseBody: string;
   dateStr: string;
+  /** Genre of the base passage, forwarded to the QC passage judge. Omit when
+   *  the genre is genuinely unknown (a row with no bucket) rather than
+   *  guessing — a wrong assertion fails the day. */
+  isInformational?: boolean;
 }): Promise<DailyEasyVariant | null> {
-  const { teacherId, baseTitle, baseBody, dateStr } = opts;
+  const { teacherId, baseTitle, baseBody, dateStr, isInformational } = opts;
 
   const easyBrief = [
     SAFETY_PREAMBLE,
@@ -349,6 +367,7 @@ export async function generateEasyRendition(opts: {
         passageTitle: easyTitle,
         passageBody: easyBody,
         gradeLevel: "1st",
+        isInformational,
         questions: mcqRes.questions.map((q) => ({
           kind: "multiple_choice" as const,
           prompt: q.prompt,
@@ -464,6 +483,16 @@ export async function buildDailyQuestion(opts?: {
    *  pass the WHOLE archive here (the lookback is backward-only, so a
    *  July rebuild can't see August rows and re-collides without this). */
   extraAvoid?: string[];
+  /**
+   * Subjects the draw must not choose, on top of the recent-history avoidance.
+   *
+   * Used when a subject has already produced a QC failure today. Some subjects
+   * are simply traps for the generator - the 2026-09-06 comet passage kept
+   * contradicting itself about which way a tail points, three rebuilds running -
+   * and re-rolling the SAME subject just walks back into it. There are two
+   * hundred subjects in the pool; swapping is free.
+   */
+  excludeSubjects?: string[];
 }): Promise<DailyBuildResult> {
   const date = opts?.date ?? new Date();
   const dateStr = slugForDate(date);
@@ -521,10 +550,16 @@ export async function buildDailyQuestion(opts?: {
       const recent = ((recentDraws ?? []) as { bucket: string | null; subject: string | null; medium: string | null }[])
         .filter((r) => r.bucket && r.subject)
         .map((r) => ({ bucket: r.bucket as Bucket, subject: r.subject as string, medium: r.medium ?? "" }));
-      drawn = pickDaily(dateStr, recent);
+      drawn = pickDaily(dateStr, recent, opts?.excludeSubjects ?? []);
       theme = { label: drawn.label, topic: drawn.topic };
     }
   }
+
+  // Genre for the QC passage judge. Only the `stories` bucket is invented;
+  // every other bucket, and every holiday, asks for a true passage. Without
+  // this the judge is told the day should be a narrative and fails a factual
+  // passage for being factual.
+  const informational = drawn ? isInformationalBucket(drawn.bucket) : true;
 
 
   // Date-anchored topic. Injects today's actual date + season so the
@@ -876,6 +911,7 @@ ${theme.topic}${avoidBlock}`;
       baseTitle: passageTitle,
       baseBody: passageBody,
       dateStr,
+      isInformational: informational,
     });
   } catch (e: any) {
     trackError(e, { route: "daily-question.easy", extra: { date: dateStr } });
@@ -890,6 +926,7 @@ ${theme.topic}${avoidBlock}`;
     passageTitle,
     passageBody,
     gradeLevel,
+    isInformational: informational,
     questions: [
       {
         kind: "multiple_choice" as const,
@@ -1183,7 +1220,7 @@ export async function targetedPassageRegen(opts: {
   const { data: row, error: rowErr } = await admin
     .from("daily_questions")
     .select(
-      "date, theme, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions, qc_overall, qc_report",
+      "date, theme, bucket, passage_title, passage_body, image_url, audio_url, question_prompt, choices, correct, hint, extra_questions, qc_overall, qc_report",
     )
     .eq("date", dateStr)
     .maybeSingle();
@@ -1280,6 +1317,7 @@ export async function targetedPassageRegen(opts: {
       baseTitle: newTitle,
       baseBody: newBody,
       dateStr,
+      isInformational: informationalRow((row as { bucket?: string | null }).bucket),
     });
   } catch (e: any) {
     trackError(e, { route: "daily-question.easy.heal", extra: { date: dateStr } });
@@ -1311,6 +1349,7 @@ export async function targetedPassageRegen(opts: {
     passageTitle: newTitle,
     passageBody: newBody,
     gradeLevel: "2nd",
+    isInformational: informationalRow((row as { bucket?: string | null }).bucket),
     questions: [
       {
         kind: "multiple_choice" as const,
@@ -1390,7 +1429,7 @@ export async function targetedQuestionsRegen(opts: {
   const { data: row, error: rowErr } = await admin
     .from("daily_questions")
     .select(
-      "date, passage_title, passage_body, image_url, audio_url, qc_overall, qc_report",
+      "date, bucket, passage_title, passage_body, image_url, audio_url, qc_overall, qc_report",
     )
     .eq("date", dateStr)
     .maybeSingle();
@@ -1463,6 +1502,7 @@ export async function targetedQuestionsRegen(opts: {
     passageTitle,
     passageBody,
     gradeLevel: "2nd",
+    isInformational: informationalRow((row as { bucket?: string | null }).bucket),
     questions: [
       {
         kind: "multiple_choice" as const,

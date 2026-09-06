@@ -138,6 +138,17 @@ export const POOL: Record<Bucket, string[]> = {
 export const PHOTOGRAPHABLE: Bucket[] = ["animals", "space", "earth", "plants", "made", "cultures"];
 
 /**
+ * Genre of a bucket, for the QC passage judge.
+ *
+ * `stories` is the only invented bucket — `topicFor` asks it for a plot with
+ * characters. Every other bucket asks for a true passage, so the judge has to
+ * be told "informational" or it fails the day for not being a narrative.
+ */
+export function isInformationalBucket(bucket: Bucket): boolean {
+  return bucket !== "stories";
+}
+
+/**
  * Never photographed, whatever the medium draw says.
  *
  * A real photograph of a bone, of sweat, or of a heart is clinical, and for a
@@ -247,12 +258,21 @@ export type DailyPick = {
 export function pickDaily(
   dateStr: string,
   recent: { bucket: Bucket; subject: string; medium: string }[] = [],
+  /**
+   * Subjects to refuse outright, whatever bucket they belong to.
+   *
+   * Separate from `recent` on purpose: recent is filtered down to the chosen
+   * bucket, so an exclusion passed through it would be silently dropped whenever
+   * the draw landed elsewhere. These are subjects that have already failed QC
+   * today and must not come back.
+   */
+  exclude: string[] = [],
 ): DailyPick {
   const bucket = pickBucket(dateStr, recent.map((r) => r.bucket));
   const subject = pickSubject(
     dateStr,
     bucket,
-    recent.filter((r) => r.bucket === bucket).map((r) => r.subject),
+    [...recent.filter((r) => r.bucket === bucket).map((r) => r.subject), ...exclude],
   );
   const medium = pickMedium(dateStr, bucket, recent.map((r) => r.medium));
   return { bucket, subject, medium, label: `${BUCKET_LABEL[bucket]} - ${subject}`, topic: topicFor(bucket, subject) };

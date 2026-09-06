@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { slugForDate } from "@/lib/daily/themes";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import {
   buildDailyQuestion,
   autoHealDaily,
@@ -66,11 +68,36 @@ async function run(req: NextRequest) {
       if (heal.newOverall === "pass" || heal.healed.length === 0) break;
     }
 
-    // Still fail after surgical sweeps — one full rebuild attempt.
+    // Still failing after the surgical sweeps. Rebuild - but on a DIFFERENT
+    // SUBJECT each time.
+    //
+    // The old rebuild redrew the same subject, because the draw is a function of
+    // the date, so it walked straight back into whatever the generator had
+    // already got wrong three times. Some subjects are simply traps: the
+    // 2026-09-06 comet passage kept contradicting itself about which way a tail
+    // points, on every attempt. There are two hundred subjects in the pool, so
+    // swapping costs nothing and fixes what retrying cannot.
+    //
+    // The day still ships either way - the rule is an article every day - but it
+    // ships a passage that is actually right rather than a wrong one about
+    // comets.
     if (res.qcOverall === "fail") {
-      const rebuild = await buildDailyQuestion({ date, force: true });
-      attempts.push("full-rebuild");
-      if (rebuild.ok) res = rebuild;
+      const tried: string[] = [];
+      const admin = supabaseAdmin();
+      for (let swap = 0; swap < 3 && res.qcOverall === "fail"; swap++) {
+        const { data: row } = await admin
+          .from("daily_questions")
+          .select("subject")
+          .eq("date", slugForDate(date))
+          .maybeSingle();
+        const failedSubject = (row as { subject?: string | null } | null)?.subject;
+        if (failedSubject && !tried.includes(failedSubject)) tried.push(failedSubject);
+
+        const rebuild = await buildDailyQuestion({ date, force: true, excludeSubjects: tried });
+        attempts.push(`rebuild-${swap + 1}:avoid[${tried.join(",")}]→${rebuild.ok ? rebuild.qcOverall : "err"}`);
+        if (rebuild.ok) res = rebuild;
+        else break;
+      }
     }
   }
 
