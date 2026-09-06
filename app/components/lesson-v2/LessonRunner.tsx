@@ -32,9 +32,13 @@ const PURPOSE_LABEL: Record<string, string> = {
 export default function LessonRunner({
   lesson,
   onEvent,
+  onComplete,
 }: {
   lesson: LessonDef;
   onEvent?: (e: LearningEvent) => void;
+  /** Fires once, when the child finishes the last scene. The runner itself
+   *  persists nothing - whoever mounts it decides what a finish means. */
+  onComplete?: () => void;
 }) {
   const [idx, setIdx] = useState(0);
   // Scene-SCOPED flags: store the scene id the flag belongs to instead of a
@@ -48,6 +52,7 @@ export default function LessonRunner({
   const [cueScene, setCueScene] = useState<string | null>(null);
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [done, setDone] = useState(false);
+  const completed = useRef(false);
   const sceneStart = useRef(0);
 
   const scene = lesson.scenes[idx];
@@ -97,6 +102,12 @@ export default function LessonRunner({
     if (isLast) {
       sfxComplete();
       setDone(true);
+      // Guarded: a finish is worth carrots and a progress row, so it must not
+      // fire twice if the last scene is somehow re-advanced.
+      if (!completed.current) {
+        completed.current = true;
+        onComplete?.();
+      }
       if (lesson.completion) {
         window.setTimeout(() => playUrl(`/audio/lessons-v2/${lesson.id}/complete.mp3`), 600);
       }
