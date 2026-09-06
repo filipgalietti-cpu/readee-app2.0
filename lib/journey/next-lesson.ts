@@ -3,13 +3,14 @@
  * Journey (/journey) uses, so the dashboard mirrors the path instead of
  * computing its own (divergent) answer off a legacy catalog.
  *
- * Reads the real catalog (app/data/sample-lessons.json), orders lessons the
+ * Reads the curriculum manifest (navigation metadata generated from
+ * app/data/sample-lessons.json), orders lessons the
  * way the Journey displays them (grade -> domain, first-appearance), applies
  * the placement floor, and marks a lesson done from the SAME completion sources
  * the Journey uses: practice_results.standard_id (>=3 correct) OR
  * lessons_progress by standardId (section practice, score >=60).
  */
-import sampleLessons from "@/app/data/sample-lessons.json";
+import { LESSON_META } from "@/lib/data/curriculum-manifest";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 
 export type CatalogLesson = { standardId: string; grade: string; domain: string; title: string };
@@ -59,7 +60,7 @@ export interface JourneyProgress {
 
 /** grade -> domain-ordered lessons, matching the Journey's display order. */
 function orderedCatalog(): CatalogLesson[] {
-  const all = sampleLessons as CatalogLesson[];
+  const all = LESSON_META as CatalogLesson[];
   const byGrade = new Map<string, CatalogLesson[]>();
   const gOrder: string[] = [];
   for (const l of all) {

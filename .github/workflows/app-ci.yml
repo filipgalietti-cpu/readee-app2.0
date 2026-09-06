@@ -22,5 +22,11 @@ jobs:
       - name: Install
         run: npm ci
 
+      # Runs before the build because it is a second long and catches the
+      # cheap class of mistake, including a curriculum manifest left stale
+      # after a catalogue edit (tests/curriculum-manifest.test.ts).
+      - name: Test
+        run: npm test
+
       - name: Build
         run: npx next build --webpack

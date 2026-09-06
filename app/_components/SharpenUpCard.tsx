@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import { getWeakSpots, type WeakSpot } from "@/lib/adaptive/weak-spots";
-import { findStandardById } from "@/lib/data/all-standards";
+import { findStandardMetaById } from "@/lib/data/curriculum-manifest";
 import { Glyph } from "@/app/_components/Glyph";
 
 /**
@@ -58,7 +58,7 @@ export default function SharpenUpCard({
   if (!weakSpots || weakSpots.length === 0) return null;
 
   const top = weakSpots[0];
-  const standard = findStandardById(top.standard_id);
+  const standard = findStandardMetaById(top.standard_id);
   const standardLabel = standard?.standard_description ?? top.standard_id;
   const isPremium = userPlan === "premium";
 
@@ -115,7 +115,7 @@ export default function SharpenUpCard({
           {isPremium && weakSpots.length > 0 && (
             <div className="mt-4 flex gap-2">
               {weakSpots.slice(0, 3).map((spot) => {
-                const s = findStandardById(spot.standard_id);
+                const s = findStandardMetaById(spot.standard_id);
                 const pct = Math.round(spot.miss_rate * 100);
                 return (
                   <div

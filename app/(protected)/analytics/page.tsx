@@ -9,7 +9,7 @@ import { Child } from "@/lib/db/types";
 import { staggerContainer, slideUp, fadeUp } from "@/lib/motion/variants";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
-import { getAllStandards as fetchAllStandards, getStandardsForGrade } from "@/lib/data/all-standards";
+import { getAllStandardMeta as fetchAllStandards, getStandardMetaForGrade } from "@/lib/data/curriculum-manifest";
 import type { SnapshotFacts } from "@/lib/ai/build-parent-snapshot";
 import { gradeToKey } from "@/lib/assessment/questions";
 import { useChildStore } from "@/lib/stores/child-store";
@@ -24,8 +24,6 @@ interface Standard {
   standard_id: string;
   standard_description: string;
   domain: string;
-  parent_tip?: string;
-  questions: { id: string }[];
 }
 
 interface PracticeResult {
@@ -316,7 +314,7 @@ function AnalyticsLoader() {
 function AnalyticsDashboard({ child }: { child: Child }) {
   const allStandards = useMemo(() => fetchAllStandards() as Standard[], []);
   const gradeKey = useMemo(() => gradeToKey(child.grade), [child.grade]);
-  const gradeStandards = useMemo(() => getStandardsForGrade(gradeKey) as Standard[], [gradeKey]);
+  const gradeStandards = useMemo(() => getStandardMetaForGrade(gradeKey) as Standard[], [gradeKey]);
   const gradeStandardCount = gradeStandards.length;
 
   const [tab, setTab] = useState<Tab>("overview");

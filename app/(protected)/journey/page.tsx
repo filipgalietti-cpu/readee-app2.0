@@ -10,7 +10,7 @@ import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-less
 import { levelNameToGradeKey, gradeOrder as ASSESSMENT_GRADE_ORDER } from "@/lib/assessment/questions";
 import { savedOk } from "@/lib/db/checked-write";
 import { audioManager } from "@/lib/audio/audio-manager";
-import sampleLessons from "@/app/data/sample-lessons.json";
+import { LESSON_META } from "@/lib/data/curriculum-manifest";
 import JourneyMap, { type JGrade } from "./_components/JourneyMap";
 
 const GRADE_BADGES: Record<string, string> = {
@@ -32,7 +32,6 @@ interface SampleLesson {
   grade: string;
   domain: string;
   title: string;
-  slides: any[];
 }
 
 interface ProgressRecord {
@@ -229,7 +228,7 @@ function JourneyContent() {
   // the `childId!` cast that was sprinkled below.
   const childId = child.id;
 
-  const allLessons = sampleLessons as SampleLesson[];
+  const allLessons = LESSON_META as SampleLesson[];
   // Free tier unlocks each grade's FIRST unit (its first-appearance domain).
   const freeUnitDomain = firstUnitDomainByGrade(allLessons);
 

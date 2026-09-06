@@ -10,7 +10,7 @@ import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { usePlanStore } from "@/lib/stores/plan-store";
 import { useChildStore } from "@/lib/stores/child-store";
-import { getStandardsForGrade } from "@/lib/data/all-standards";
+import { getStandardMetaForGrade } from "@/lib/data/curriculum-manifest";
 import { levelNameToGradeKey } from "@/lib/assessment/questions";
 import { SkeletonPage } from "@/app/_components/Skeleton";
 import { FluentIcon, type FluentIconName } from "@/app/_components/FluentIcon";
@@ -18,21 +18,10 @@ import { Glyph, type GlyphName } from "@/app/_components/Glyph";
 
 /* ─── Types ──────────────────────────────────────────── */
 
-interface Question {
-  id: string;
-  type: string;
-  prompt: string;
-  choices: string[];
-  correct: string;
-  hint: string;
-  difficulty: number;
-}
-
 interface Standard {
   standard_id: string;
   standard_description: string;
   domain: string;
-  questions: Question[];
 }
 
 interface StandardProgress {
@@ -518,7 +507,7 @@ function RoadmapLoader() {
 
 function SnakePathRoadmap({ child, userPlan }: { child: Child; userPlan: string }) {
   const gradeKey = levelNameToGradeKey(child.reading_level ?? null);
-  const ALL_STANDARDS = useMemo(() => getStandardsForGrade(gradeKey) as Standard[], [gradeKey]);
+  const ALL_STANDARDS = useMemo(() => getStandardMetaForGrade(gradeKey) as Standard[], [gradeKey]);
   const progress = useMemo(() => buildMockProgress(ALL_STANDARDS), [ALL_STANDARDS]);
   const [activeNode, setActiveNode] = useState<string | null>(null);
   const pathRef = useRef<HTMLDivElement>(null);

@@ -10,7 +10,7 @@ import {
   type WeakSpot,
   type WeakType,
 } from "@/lib/adaptive/weak-spots";
-import { findStandardById } from "@/lib/data/all-standards";
+import { findStandardMetaById } from "@/lib/data/curriculum-manifest";
 import { Glyph } from "@/app/_components/Glyph";
 
 /**
@@ -169,7 +169,7 @@ function WeakStandardsGrid({
       </div>
       <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {weakSpots.map((spot, idx) => {
-          const standard = findStandardById(spot.standard_id);
+          const standard = findStandardMetaById(spot.standard_id);
           const label = standard?.standard_description ?? spot.standard_id;
           const pct = Math.round(spot.miss_rate * 100);
           const isTop = idx === 0;

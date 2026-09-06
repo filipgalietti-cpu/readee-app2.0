@@ -13,7 +13,7 @@ import lessonsData from "@/lib/data/lessons.json";
 import { computeJourneyProgress } from "@/lib/journey/next-lesson";
 import { firstUnitDomainByGrade, isLessonInFreeUnit } from "@/lib/plan/free-lessons";
 import { TRIAL_DAYS } from "@/lib/plan/access";
-import sampleLessons from "@/app/data/sample-lessons.json";
+import { LESSON_META, getStandardMetaForGrade } from "@/lib/data/curriculum-manifest";
 import LevelProgressBar from "@/app/_components/LevelProgressBar";
 import { useChildStore } from "@/lib/stores/child-store";
 import { useSidebarStore } from "@/lib/stores/sidebar-store";
@@ -21,7 +21,6 @@ import { usePlanStore } from "@/lib/stores/plan-store";
 import { safeValidate } from "@/lib/validate";
 import { ChildSchema } from "@/lib/schemas";
 import { staggerContainer, slideUp, staggerFast } from "@/lib/motion/variants";
-import { getStandardsForGrade } from "@/lib/data/all-standards";
 import { getChildAvatarImage, AVATAR_IMAGES, DEFAULT_AVATARS } from "@/lib/utils/get-child-avatar";
 import { getItemsByCategory, BACKGROUND_IMAGES } from "@/lib/data/shop-items";
 import type { ShopPurchase, EquippedItems } from "@/lib/db/types";
@@ -50,7 +49,7 @@ const PLACEMENT_V2 = process.env.NEXT_PUBLIC_PLACEMENT_V2 !== "0";
 // and only fall back to the legacy /lesson route when there's no
 // canonical lesson for that standard.
 const LEARN_STANDARDS = new Set(
-  (sampleLessons as Array<{ standardId: string }>).map((l) => l.standardId),
+  LESSON_META.map((l) => l.standardId),
 );
 
 // 15 legacy lessons in lib/data/lessons.json have an empty standards
@@ -486,7 +485,7 @@ function ChildDashboard({
   const motivation = useMemo(() => MOTIVATIONAL[Math.floor(Math.random() * MOTIVATIONAL.length)], []);
   const nextPracticeStandard = useMemo(() => {
     const gradeKey = levelNameToGradeKey(readingLevel);
-    const standards = getStandardsForGrade(gradeKey);
+    const standards = getStandardMetaForGrade(gradeKey);
     return standards[0] ?? { standard_id: "RL.K.1", standard_description: "", domain: "" };
   }, [readingLevel]);
 
@@ -546,7 +545,7 @@ function ChildDashboard({
 
   // Next lesson, computed the SAME way the Journey does (single source of
   // truth) so the CTA, Today's plan, and the journey card all mirror the path.
-  const journeyCatalog = sampleLessons as { standardId: string; grade: string; domain: string; title: string }[];
+  const journeyCatalog = LESSON_META as { standardId: string; grade: string; domain: string; title: string }[];
   const freeUnitDomain = firstUnitDomainByGrade(journeyCatalog);
   const jp = computeJourneyProgress({
     practice: practiceRows,
