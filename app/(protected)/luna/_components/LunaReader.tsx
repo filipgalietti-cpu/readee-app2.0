@@ -1080,7 +1080,7 @@ export default function LunaReader({
     const t = tokenRef.current;
     if (t && t.exp > Date.now() + 30000) return t;
     try {
-      const r = await fetch("/api/luna/speech-token", { method: "POST" });
+      const r = await fetch("/api/luna/speech-token", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ purpose: "luna" }) });
       const j = await r.json();
       if (r.ok && j.ok && j.token) { tokenRef.current = { token: j.token, region: j.region, exp: Date.now() + 9 * 60 * 1000 }; dbg("token ok"); return tokenRef.current; }
       dbg(`token fail: ${j.configured === false ? "not configured" : (j.error || "no token")}`);

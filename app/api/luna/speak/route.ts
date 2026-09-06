@@ -45,6 +45,9 @@ export async function POST(req: Request) {
     text: text.slice(0, 700),
     voice: "Autonoe",
     style: "warmly and encouragingly, like a kind reading teacher",
+    // This line is generated from the child's own reading and often says their
+    // name: private bucket, signed URL, not a permanent public link.
+    personal: true,
   });
   if (!res.ok) {
     return NextResponse.json({ ok: false, error: res.error }, { status: 500 });

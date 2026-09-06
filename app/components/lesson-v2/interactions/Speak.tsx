@@ -29,7 +29,7 @@ async function speechToken(): Promise<{ token: string; region: string } | null> 
   if (tokCache && tokCache.exp > Date.now() + 30000) return tokCache;
   if (Date.now() < tokBlockedUntil) return null;
   try {
-    const r = await fetch("/api/luna/speech-token", { method: "POST" });
+    const r = await fetch("/api/luna/speech-token", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ purpose: "lesson" }) });
     const j = await r.json();
     if (r.ok && j.ok && j.token) {
       tokCache = { token: j.token, region: j.region, exp: Date.now() + 9 * 60 * 1000 };

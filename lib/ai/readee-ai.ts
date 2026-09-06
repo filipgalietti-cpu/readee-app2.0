@@ -129,6 +129,8 @@ export function getClient(): GoogleGenAI {
 export type BudgetCheck = {
   allowed: boolean;
   reason?: "hourly" | "monthly";
+  /** Set when the atomic reservation path ran; logUsage settles it. */
+  reservationId?: string | null;
   costCredits: number;
   hourlyUsed: number;
   monthlyUsed: number;
@@ -175,15 +177,59 @@ export async function checkRateLimit(
     };
   }
 
-  const [{ data: rows }, topUpBalance] = await Promise.all([
-    admin
-      .from("ai_usage_log")
-      .select("credits_used, created_at")
-      .eq("teacher_id", teacherId)
-      .eq("success", true)
-      .gte("created_at", thirtyDaysAgo),
-    getTopUpBalance(teacherId, "teacher"),
-  ]);
+  const topUpBalance = await getTopUpBalance(teacherId, "teacher");
+
+  // ‼️ Reserve atomically rather than read-then-decide.
+  //
+  // This used to select the last 30 days of successful usage, sum it in JS, and
+  // return a verdict - after which the caller ran the generator and logged the
+  // spend. Ten concurrent requests read the same total, all passed, and all
+  // spent, so the cap bounded nothing under exactly the conditions an abuser
+  // creates. And because only `success = true` rows were counted, a provider
+  // call that ran, billed us, and then failed validation left no trace against
+  // the budget at all, which made retry loops free to the caller and not to us.
+  //
+  // reserve_ai_credits takes a per-teacher advisory lock, counts reservations
+  // as well as successes, and writes the reservation inside the same
+  // transaction as the decision. settleAiReservation closes it afterwards.
+  const { data: reservation, error: reserveError } = await admin.rpc("reserve_ai_credits", {
+    p_teacher: teacherId,
+    p_kind: kind,
+    p_cost: cost,
+    p_hourly_limit: HOURLY_CREDIT_LIMIT,
+    p_monthly_limit: MONTHLY_CREDIT_LIMIT,
+    p_topup: topUpBalance,
+  });
+
+  if (!reserveError && reservation) {
+    const r = reservation as {
+      allowed: boolean; reason?: string; reservation_id?: string;
+      hourly_used?: number; monthly_used?: number;
+    };
+    return {
+      allowed: r.allowed,
+      ...(r.allowed ? {} : { reason: r.reason as BudgetCheck["reason"] }),
+      reservationId: r.reservation_id ?? null,
+      costCredits: cost,
+      hourlyUsed: r.hourly_used ?? 0,
+      monthlyUsed: r.monthly_used ?? 0,
+      hourlyLimit: HOURLY_CREDIT_LIMIT,
+      monthlyLimit: MONTHLY_CREDIT_LIMIT,
+      topUpBalance,
+    } as BudgetCheck;
+  }
+
+  // The RPC is the enforcing path. If it is unavailable we fall through to the
+  // old read-and-decide below, which is weaker but still refuses an over-budget
+  // teacher; failing OPEN here would remove the cap entirely on a transient
+  // database error, which is the worst possible moment to remove it.
+  console.error("[budget] reservation RPC unavailable, falling back:", reserveError);
+
+  const { data: rows } = await admin
+    .from("ai_usage_log")
+    .select("credits_used, created_at")
+    .eq("teacher_id", teacherId)
+    .gte("created_at", thirtyDaysAgo);
 
   let hourlyUsed = 0;
   let monthlyUsed = 0;
@@ -253,6 +299,42 @@ export async function logUsage(input: {
   requestSummary?: string;
 }): Promise<void> {
   const admin = supabaseAdmin();
+
+  // ‼️ Settle the reservation rather than writing a second row.
+  //
+  // checkRateLimit now reserves by INSERTING an ai_usage_log row before the
+  // provider call, so an unconditional insert here would count the same spend
+  // twice and halve every teacher's effective budget.
+  //
+  // The reservation id is not threaded through all thirteen generators; instead
+  // we settle the newest unsettled reservation for this teacher and kind. Two
+  // concurrent calls of the same kind cost the same credits, so settling either
+  // one is identical for accounting - and both still get settled, because each
+  // settlement takes the newest row that is still open.
+  const { data: openReservation } = await admin
+    .from("ai_usage_log")
+    .select("id")
+    .eq("teacher_id", input.teacherId)
+    .eq("kind", input.kind)
+    .eq("reserved", true)
+    .is("settled_at", null)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (openReservation) {
+    await admin.rpc("settle_ai_reservation", {
+      p_id: (openReservation as { id: string }).id,
+      p_success: input.success,
+      p_model: input.model ?? null,
+      p_input_tokens: input.inputTokens ?? null,
+      p_output_tokens: input.outputTokens ?? null,
+      p_error: input.error ?? null,
+      p_summary: input.requestSummary ?? null,
+    });
+    return;
+  }
+
   await admin.from("ai_usage_log").insert({
     teacher_id: input.teacherId,
     kind: input.kind,
@@ -1418,6 +1500,14 @@ Return ONLY a JSON object with a "prompts" array of strings.`;
 export async function generateSpeech(input: {
   teacherId: string;
   text: string;
+  /**
+   * Personal speech: anything that says a child's name or reflects their own
+   * reading. Goes to the PRIVATE child-audio bucket and comes back as a
+   * short-lived signed URL instead of a permanent public one. Curriculum
+   * narration is not personal, is identical for every child, and stays public
+   * so it stays cacheable.
+   */
+  personal?: boolean;
   /** Underlying Gemini prebuilt voice name (e.g. "Autonoe", "Puck"). */
   voice?: string;
   /** Style direction layered onto the read ("warmly, slowly, with smiles"). */
@@ -1547,8 +1637,16 @@ export async function generateSpeech(input: {
     const storagePath = `custom/${input.teacherId}/${uuid}.wav`;
 
     const admin = supabaseAdmin();
+
+    // ‼️ Personal speech does not belong in a public bucket. Luna's coaching
+    // lines are generated from the child's own reading and say their name, and
+    // this wrote them to `audio` (public: true) behind a permanent URL: a link
+    // that leaked stayed live forever and needed no session. Raw microphone
+    // recordings moved to the private child-audio bucket in August; the
+    // synthesised half was missed.
+    const bucket = input.personal ? "child-audio" : "audio";
     const upload = await admin.storage
-      .from("audio")
+      .from(bucket)
       .upload(storagePath, wav, {
         contentType: "audio/wav",
         upsert: false,
@@ -1557,10 +1655,18 @@ export async function generateSpeech(input: {
       throw new Error(`Upload failed: ${upload.error.message}`);
     }
 
-    const { data: publicUrl } = admin.storage.from("audio").getPublicUrl(storagePath);
-    const audioUrl = publicUrl?.publicUrl;
+    let audioUrl: string | undefined;
+    if (input.personal) {
+      // One hour: the clip plays as soon as it is returned, and a link copied
+      // out of devtools stops working the same afternoon.
+      const signed = await admin.storage.from(bucket).createSignedUrl(storagePath, 3600);
+      audioUrl = signed.data?.signedUrl;
+    } else {
+      const { data: publicUrl } = admin.storage.from(bucket).getPublicUrl(storagePath);
+      audioUrl = publicUrl?.publicUrl;
+    }
     if (!audioUrl) {
-      throw new Error("Could not resolve a public URL for the audio.");
+      throw new Error("Could not resolve a URL for the audio.");
     }
 
     await logUsage({

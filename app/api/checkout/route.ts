@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
   const admin = supabaseAdmin();
   const { data: profile } = await admin
     .from("profiles")
-    .select("stripe_customer_id")
+    .select("stripe_customer_id, had_subscription")
     .eq("id", user.id)
     .single();
 
@@ -62,13 +62,19 @@ export async function POST(req: NextRequest) {
 
   const origin = req.headers.get("origin") || "https://learn.readee.app";
 
+  // The 14-day trial is once per account, not once per checkout.
+  //
+  // This asked for it unconditionally, so anyone who subscribed, cancelled and
+  // came back got another free fortnight, every time, for as long as they kept
+  // doing it. `had_subscription` is set by the Stripe webhook the first time a
+  // subscription is created, so it is the record of "this account has had its go".
+  const usedTrial = Boolean((profile as { had_subscription?: boolean } | null)?.had_subscription);
+
   const session = await stripe.checkout.sessions.create({
     customer: customerId,
     mode: "subscription",
     line_items: [{ price: priceId, quantity: 1 }],
-    subscription_data: {
-      trial_period_days: 14,
-    },
+    ...(usedTrial ? {} : { subscription_data: { trial_period_days: 14 } }),
     success_url: `${origin}/dashboard?checkout=success`,
     cancel_url: `${origin}${safeCancelTo}`,
     allow_promotion_codes: true,

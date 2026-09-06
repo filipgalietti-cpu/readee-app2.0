@@ -160,6 +160,44 @@ export async function exportUserDataAction(): Promise<
   }
 }
 
+/**
+ * Remove the family's stored media.
+ *
+ * The FK cascade from auth.users -> profiles -> children clears the database,
+ * and deletion stopped there: every uploaded and generated object survived.
+ * Placement recordings of the child reading aloud, Luna's personalised speech,
+ * generated images - all still sitting in storage after the family had been
+ * told their data was gone.
+ *
+ * Best effort by design. A storage hiccup must not abort the account deletion
+ * itself, which is the part the family actually asked for; anything left behind
+ * is logged so it can be swept.
+ */
+async function deleteStorageForFamily(parentId: string, childIds: string[]): Promise<void> {
+  const admin = supabaseAdmin();
+  const targets: { bucket: string; prefix: string }[] = [
+    { bucket: "audio", prefix: `custom/${parentId}` },
+    { bucket: "images", prefix: `custom/${parentId}` },
+    { bucket: "child-audio", prefix: `custom/${parentId}` },
+    ...childIds.map((id) => ({ bucket: "child-audio", prefix: `placement/${id}` })),
+  ];
+
+  for (const t of targets) {
+    try {
+      const { data: files } = await admin.storage.from(t.bucket).list(t.prefix, { limit: 1000 });
+      const paths = (files ?? []).map((f) => `${t.prefix}/${f.name}`);
+      if (paths.length > 0) await admin.storage.from(t.bucket).remove(paths);
+    } catch (e) {
+      trackSignal("delete-account: storage cleanup failed", {
+        route: "account.delete.storage",
+        level: "warning",
+        tags: { bucket: t.bucket },
+        extra: { prefix: t.prefix, error: e instanceof Error ? e.message : String(e) },
+      });
+    }
+  }
+}
+
 async function cancelStripeAndDeleteCustomer(parentId: string): Promise<void> {
   const admin = supabaseAdmin();
   const { data: profile } = await admin
@@ -280,19 +318,25 @@ export async function deleteAccountAction(input: {
     return { ok: false, error: "Email didn't match. Please type your account email exactly." };
   }
 
+  // Capture what we need before anything is destroyed: the child ids are gone
+  // once the cascade runs, and the email address is gone once the auth user is.
+  const admin = supabaseAdmin();
+  const { data: kids } = await admin
+    .from("children")
+    .select("id")
+    .eq("parent_id", profile.id);
+  const childIds = ((kids ?? []) as { id: string }[]).map((k) => k.id);
+  const contactEmail = (profile as any).email ?? "";
+  const contactName = (profile as any).display_name ?? null;
+
   // 1) Stripe — cancel sub + delete customer (idempotent, best effort).
   await cancelStripeAndDeleteCustomer(profile.id);
 
-  // 2) Confirmation email — sent BEFORE auth delete so we still have
-  //    a known-good email address.
-  await sendDeletionConfirmation(
-    (profile as any).email ?? "",
-    (profile as any).display_name ?? null,
-  );
+  // 2) Stored media. Before the cascade, because the child ids are the paths.
+  await deleteStorageForFamily(profile.id, childIds);
 
   // 3) Delete the auth user. Foreign-key cascade on profiles → children
   //    → all per-child + per-parent tables handles the rest.
-  const admin = supabaseAdmin();
   const { error: authErr } = await admin.auth.admin.deleteUser(profile.id);
   if (authErr) {
     trackError(authErr, {
@@ -310,6 +354,14 @@ export async function deleteAccountAction(input: {
   } catch {
     // Cookie already expired — fine.
   }
+
+  // 5) Only NOW tell them it is done.
+  //
+  // The confirmation used to be sent before the auth delete, so a failed delete
+  // still produced "your account has been deleted" in the family's inbox while
+  // the account carried on existing. The address is captured above, so sending
+  // late costs nothing.
+  await sendDeletionConfirmation(contactEmail, contactName);
 
   trackSignal("account deleted", {
     route: "account.delete.success",

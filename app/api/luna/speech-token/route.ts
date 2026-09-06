@@ -20,13 +20,42 @@ export async function POST(req: Request) {
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
   // Meter every mint (the choke point for ALL Azure streaming — Luna reads,
-  // word checks, lesson Speak steps). Context inferred from the referer so we
-  // don't touch callers. Fire-and-forget; never blocks the token.
+  // word checks, lesson Speak steps).
+  //
+  // ‼️ Context used to come from the Referer alone, and an unrecognised or
+  // ABSENT Referer fell through to "other", which skipped the Luna allowance
+  // gate below entirely. Omitting one header was enough to mint past the free
+  // read limit.
+  //
+  // Callers now declare their purpose in the body and the two are combined by
+  // taking the MORE RESTRICTIVE answer: you cannot claim "lesson" from a Luna
+  // page, and anything unknown is treated as "luna" rather than waved through.
+  // Unknown costs you the gate now instead of skipping it.
+  //
+  // Being straight about the ceiling: the Azure token is FUNGIBLE. It authorises
+  // streaming, not a feature, so someone who forges a plausible Referer and
+  // declares "lesson" still mints. Per-context gating is a monetisation
+  // guardrail here, not a security boundary; the real bound on abuse is the hard
+  // 60/hour cap below, which applies to every context. Making it airtight needs
+  // a server-created session the mint references - a bigger change than this
+  // route.
   const ref = req.headers.get("referer") ?? "";
-  const context = ref.includes("placement") ? "placement"
+  const fromRef: string | null = ref.includes("placement") ? "placement"
     : ref.includes("/luna") ? "luna"
     : /lesson|learn|demo|unit/.test(ref) ? "lesson"
-    : "other";
+    : null;
+
+  let declared: string | null = null;
+  try {
+    const body = (await req.json().catch(() => null)) as { purpose?: unknown } | null;
+    const p = body?.purpose;
+    if (p === "luna" || p === "lesson" || p === "placement") declared = p;
+  } catch { /* body is optional */ }
+
+  const context =
+    fromRef === "luna" || declared === "luna"
+      ? "luna"
+      : (fromRef ?? declared ?? "luna");
   try {
     // .then() is required — supabase builders only execute when awaited.
     supabaseAdmin().from("speech_token_mints").insert({ user_id: user.id, context })
