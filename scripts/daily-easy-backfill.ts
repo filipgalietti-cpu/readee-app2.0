@@ -37,7 +37,7 @@ const sb = createClient(SUPABASE_URL, SERVICE_KEY);
 async function main() {
   const { data: row, error } = await sb
     .from("daily_questions")
-    .select("date, theme, passage_title, passage_body, easy_variant")
+    .select("date, theme, bucket, passage_title, passage_body, easy_variant")
     .eq("date", dateArg)
     .maybeSingle();
   if (error) throw new Error(`db: ${error.message}`);
@@ -54,6 +54,10 @@ async function main() {
     baseTitle: String(row.passage_title ?? ""),
     baseBody: String(row.passage_body ?? ""),
     dateStr: dateArg,
+    // Only the `stories` bucket is invented. A row with no bucket predates the
+    // catalogue draw (or is a pinned holiday); leave the genre unset rather
+    // than guessing, since a wrong assertion fails the passage judge.
+    isInformational: row.bucket ? row.bucket !== "stories" : undefined,
   });
   if (!easy) {
     console.error(`${dateArg}: easy rendition failed QC twice — row left base-only.`);

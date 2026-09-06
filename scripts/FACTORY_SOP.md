@@ -163,3 +163,34 @@ quiz-qa must PASS.
     stranger.
 - All K/G1/G2 rules still apply verbatim (reveals, enumeration, stimulus, whisper-verify,
   textless images, tiles ≤28 lowercase audio-free, speak scenes imageless, namespaced exams).
+
+## Grade 4 production (Sep 5+ · G4 GATE calibration — the mold for 34 lessons)
+- Factories take `--grade="4th Grade"`. Core = ON-GRADE G4; easier = G3-bridge; harder = G5 concept
+  TAUGHT IN THE STIMULUS first (quoting accurately, two main ideas, two accounts of one event,
+  figurative language in depth), then applied. Same taught-then-asked law as G3.
+- FELT STEP-UP vs G3, line by line (one-line why on each):
+  - **Passages**: RL/RI anchors 16-20 sentences over 6-7 child-read pages in REAL PARAGRAPHS; RI anchors
+    carry spoken headings (G3 topped at 16 over 6). Word-work read-alongs 5-7 dense sentences.
+  - **Sentences**: complex is standard; embedded clauses, relative pronouns (who/which/that), progressive
+    and perfect tenses, dialogue with action beats ("Hold the line," she said, tugging the rope). That is
+    the grades 4-5 band floor G4 owns.
+  - **Vocabulary**: tier-2 standard, 4-5 stretch words per anchor whose support may sit a sentence away;
+    Greek/Latin roots are the affix lane (L.4.4b); domain words get precise in-text definitions.
+  - **The G4 move**: "the text says X, so I can tell Y" is the CORE move (RL.4.1/RI.4.1), not the stretch;
+    answers cite a detail and draw the inference; summaries are three sentences; comparisons run across
+    two passages or two accounts.
+  - **Scenes**: 14-17 per lesson (G3 ran 13-16); the extra beats buy inference depth (two details) and
+    summary production, never a longer hook or a second celebrate.
+  - **Speak**: 3-4-sentence accept-mode reads are the standard read beat; ≥1 PRODUCTION speak where the
+    child cites evidence + states the inference or summary (15+ accept tokens); quizzes carry two on-screen
+    read-aloud items. Keep speak scenes above the 720px fold (shorter prompts).
+  - **Quiz bands**: easier = G3-bridge at 3 options (picture only when the picture IS evidence); core =
+    4-option parallel TEXT tiles + at least one BEST-EVIDENCE item (four true details, one best); harder =
+    G5 transfer taught in the stimulus.
+  - **Tone**: reader-to-reader respect, dry humor allowed, craft talk over praise; same teacher voice as
+    G3, no tonal cliff. No sing-song, no "kids".
+- All K-G3 rules still apply verbatim (reveals, enumeration, stimulus, whisper-verify incl. b-* clips,
+  textless images, tiles ≤28 lowercase audio-free, speak scenes imageless, namespaced exams, true facts,
+  no digits in child-read text, no real people named, teaching first and quoted passage last in every
+  clip, narrations < ~1,000 chars, word counts checked on every clip).
+- RF.4.3 umbrella (roadmap line 280) is parked for the G4-U1 capstone (decoding-champions / take-apart-any-word precedent); RF.4.3a lives in U2 and RF.4.4 in U3.

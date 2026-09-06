@@ -52,6 +52,13 @@ const GRADE_NOTES: Record<string, string> = {
 - Choose beats use 4 TEXT options with plausible parallel-length distractors; pictures are stimulus only, never crutches. Interaction items may be phrases or sentences (tiles stay short).
 - Lessons run 13-16 scenes: the extra beats go to guided/apply depth, never a longer hook.
 - TONE: respectful and workshop-like, "you're a big kid reader now". Drop the sing-song, keep the warmth. Shorter praise, more craft talk. Same teacher voice as G2, no tonal cliff.`,
+  "4th Grade": `- 4th graders are INDEPENDENT READERS who read to learn and to argue from the text. Prompts up to 16 words; RL/RI anchor passages 16-20 sentences over 6-7 child-read pages in real paragraphs (informational anchors carry spoken headings); word-work read-alongs 5-7 dense sentences. Sentences are complex: embedded clauses, relative pronouns (who, which, that), progressive and perfect tenses, dialogue with action beats ("Hold the line," she said, tugging the rope).
+- Vocabulary: tier-2 words are standard; plant 4-5 stretch words per anchor whose support may sit a sentence away; Greek and Latin roots are the affix lane; domain words get precise definitions in the text.
+- THE G4 MOVE: inference from evidence ("the text says X, so I can tell Y") is the CORE move, not the stretch. Answers cite a detail and draw the inference; summaries are three sentences; comparisons run across two passages or two accounts.
+- HEAVY PRODUCTION: 3-4-sentence accept-mode reads are the standard read beat; at least one production speak where the child cites evidence and states the inference or the summary (15+ accept tokens). The narrator NEVER pre-reads text the child should read.
+- Choose beats use 4 TEXT options with plausible parallel-length distractors, and at least one choose asks for the BEST evidence among four true details. Pictures are stimulus only.
+- Lessons run 14-17 scenes: the extra beats go to inference depth (explain with two details) and summary, never a longer hook.
+- TONE: reader-to-reader respect, dry humor allowed, craft talk over praise. Same teacher voice as G3, no tonal cliff. Facts true, no digits in child-read text, no real people named.`,
 };
 const GRADE_RULES = GRADE_NOTES[GRADE] ?? GRADE_NOTES["1st Grade"];
 

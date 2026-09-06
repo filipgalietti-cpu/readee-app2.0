@@ -325,6 +325,48 @@ import { whenAndWhereWords, whenAndWhereWordsImages } from "./when-and-where-wor
 
 import { shadesOfSure, shadesOfSureImages } from "./shades-of-sure";
 
+import { buildABetterSentence, buildABetterSentenceImages } from "./build-a-better-sentence";
+
+import { commasQuotesCapitals, commasQuotesCapitalsImages } from "./commas-quotes-capitals";
+
+import { theWholeFactBook, theWholeFactBookImages } from "./the-whole-fact-book";
+
+import { wordsForEffect, wordsForEffectImages } from "./words-for-effect";
+
+import { textSaysSoIKnow, textSaysSoIKnowImages } from "./text-says-so-i-know";
+
+import { inDepthDetails, inDepthDetailsImages } from "./in-depth-details";
+
+import { themeAndSummary, themeAndSummaryImages } from "./theme-and-summary";
+
+import { factsSaySoIKnow, factsSaySoIKnowImages } from "./facts-say-so-i-know";
+
+import { whatHappenedAndWhy, whatHappenedAndWhyImages } from "./what-happened-and-why";
+
+import { mainIdeaAndSummary, mainIdeaAndSummaryImages } from "./main-idea-and-summary";
+
+import { contextAtADistance, contextAtADistanceImages } from "./context-at-a-distance";
+
+import { greekAndLatinRoots, greekAndLatinRootsImages } from "./greek-and-latin-roots";
+
+import { longWordsFullSpeed, longWordsFullSpeedImages } from "./long-words-full-speed";
+
+import { theRightTool, theRightToolImages } from "./the-right-tool";
+
+import { wordsFromTheMyths, wordsFromTheMythsImages } from "./words-from-the-myths";
+
+import { splitItYourWay, splitItYourWayImages } from "./split-it-your-way";
+
+import { threeWaysToTellIt, threeWaysToTellItImages } from "./three-ways-to-tell-it";
+
+import { whoTellsItChangesIt, whoTellsItChangesItImages } from "./who-tells-it-changes-it";
+
+import { wordsOfTheField, wordsOfTheFieldImages } from "./words-of-the-field";
+
+import { theShapeOfTheFacts, theShapeOfTheFactsImages } from "./the-shape-of-the-facts";
+
+import { thereOrToldAboutIt, thereOrToldAboutItImages } from "./there-or-told-about-it";
+
 export interface LessonEntry {
   lesson: LessonDef;
   /** word → image subject (house style applied by pipeline). Object form pins a
@@ -495,4 +537,25 @@ export const LESSONS: Record<string, LessonEntry> = {
   "two-writers-one-topic": { lesson: twoWritersOneTopic, images: twoWritersOneTopicImages },
   "when-and-where-words": { lesson: whenAndWhereWords, images: whenAndWhereWordsImages },
   "shades-of-sure": { lesson: shadesOfSure, images: shadesOfSureImages },
+  "build-a-better-sentence": { lesson: buildABetterSentence, images: buildABetterSentenceImages },
+  "commas-quotes-capitals": { lesson: commasQuotesCapitals, images: commasQuotesCapitalsImages },
+  "the-whole-fact-book": { lesson: theWholeFactBook, images: theWholeFactBookImages },
+  "words-for-effect": { lesson: wordsForEffect, images: wordsForEffectImages },
+  "text-says-so-i-know": { lesson: textSaysSoIKnow, images: textSaysSoIKnowImages },
+  "in-depth-details": { lesson: inDepthDetails, images: inDepthDetailsImages },
+  "theme-and-summary": { lesson: themeAndSummary, images: themeAndSummaryImages },
+  "facts-say-so-i-know": { lesson: factsSaySoIKnow, images: factsSaySoIKnowImages },
+  "what-happened-and-why": { lesson: whatHappenedAndWhy, images: whatHappenedAndWhyImages },
+  "main-idea-and-summary": { lesson: mainIdeaAndSummary, images: mainIdeaAndSummaryImages },
+  "context-at-a-distance": { lesson: contextAtADistance, images: contextAtADistanceImages },
+  "greek-and-latin-roots": { lesson: greekAndLatinRoots, images: greekAndLatinRootsImages },
+  "long-words-full-speed": { lesson: longWordsFullSpeed, images: longWordsFullSpeedImages },
+  "the-right-tool": { lesson: theRightTool, images: theRightToolImages },
+  "words-from-the-myths": { lesson: wordsFromTheMyths, images: wordsFromTheMythsImages },
+  "split-it-your-way": { lesson: splitItYourWay, images: splitItYourWayImages },
+  "three-ways-to-tell-it": { lesson: threeWaysToTellIt, images: threeWaysToTellItImages },
+  "who-tells-it-changes-it": { lesson: whoTellsItChangesIt, images: whoTellsItChangesItImages },
+  "words-of-the-field": { lesson: wordsOfTheField, images: wordsOfTheFieldImages },
+  "the-shape-of-the-facts": { lesson: theShapeOfTheFacts, images: theShapeOfTheFactsImages },
+  "there-or-told-about-it": { lesson: thereOrToldAboutIt, images: thereOrToldAboutItImages },
 };
