@@ -44,7 +44,14 @@ const PREMIUM_ONLY_ROUTES: Record<string, string> = {
   // here only for genuinely premium surfaces.
 };
 
-/** Routes that require authentication — redirect to /login */
+/** Routes that require authentication — redirect to /login.
+ *
+ *  This must list every segment under `app/(protected)/`. A protected page
+ *  missing here still renders, and its `requireProfile()` throws "Unauthorized"
+ *  — the `(protected)` layout redirects to /login in parallel so the visitor
+ *  lands in the right place, but the thrown page error is still reported as an
+ *  unhandled 500 (Sentry JAVASCRIPT-NEXTJS-D, /placement). Gating here means
+ *  the render never starts. */
 const AUTH_REQUIRED_PREFIXES = [
   "/learn",
   "/lesson",
@@ -52,7 +59,9 @@ const AUTH_REQUIRED_PREFIXES = [
   "/practice-hub",
   "/journey",
   "/stories",
+  "/stories-for-me",
   "/discover",
+  "/daily",
   "/analytics",
   "/dashboard",
   "/settings",
@@ -63,12 +72,36 @@ const AUTH_REQUIRED_PREFIXES = [
   "/roadmap",
   "/shop",
   "/leaderboard",
+  "/levels",
+  "/more",
+  "/help",
+  "/feedback",
+  "/review",
+  "/fluency",
+  "/question-bank",
   "/notifications",
+  "/placement",
   "/assessment-results",
+  "/learning-report",
+  "/parent-lesson",
+  "/luna",
   "/carrot-rewards",
   "/classroom",
+  "/classroom-join",
   "/admin",
+  "/owner",
   "/play",
+  // Internal audit / dev surfaces — also under (protected).
+  "/assessment-audit",
+  "/classroom-dev",
+  "/dev",
+  "/interactive-audit",
+  "/k-audit",
+  "/k-interactive-audit",
+  "/lesson-audit",
+  "/phoneme-audit",
+  "/prototype",
+  "/question-audit",
 ];
 
 export async function proxy(request: NextRequest) {

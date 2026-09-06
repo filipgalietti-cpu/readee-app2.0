@@ -60,11 +60,22 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     router.push("/upgrade?reason=placement");
   }, [childId, rawPlan, router]);
 
+  // Only publish a poll that actually changed something. Every 4 s tick used to
+  // hand down a fresh object, so `result` changed identity even when the
+  // placement had not — re-rendering HoldToBuild and RevealWizard, whose
+  // `AnimatePresence mode="wait"` was often mid-exit. Framer then removed a
+  // node React had already removed: NotFoundError "Failed to execute
+  // 'removeChild'" on /placement/reveal (Sentry JAVASCRIPT-NEXTJS-F).
+  const lastPayload = useRef<string | null>(null);
   const load = useCallback(async () => {
     try {
       const r = await fetch(`/api/placement/result?child=${childId}`, { cache: "no-store" });
       const j = await r.json();
-      if (r.ok && j.ok && j.result) setResult(j.result as PlacementResult);
+      if (!r.ok || !j.ok || !j.result) return;
+      const payload = JSON.stringify(j.result);
+      if (payload === lastPayload.current) return;
+      lastPayload.current = payload;
+      setResult(j.result as PlacementResult);
     } catch { /* keep polling */ }
   }, [childId]);
 

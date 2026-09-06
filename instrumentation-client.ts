@@ -16,6 +16,12 @@ if (process.env.NODE_ENV === "production") {
       "AbortError",
       "The operation was aborted",
       "The play() request was interrupted",
+      // Injected by the Microsoft Office / Outlook SafeLinks browser
+      // extension, not by our code: it rejects a promise with a bare string
+      // ("Object Not Found Matching Id:2, MethodName:update, ParamCount:4")
+      // that lands on window.onunhandledrejection. Nothing in the page is
+      // broken and there is no stack to act on (Sentry JAVASCRIPT-NEXTJS-G).
+      "Object Not Found Matching Id",
     ],
   });
 }
