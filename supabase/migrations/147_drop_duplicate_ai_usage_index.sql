@@ -1,0 +1,14 @@
+-- Migration 144 added ai_usage_log_teacher_created_idx on
+-- (teacher_id, created_at DESC). Migration 035 had already created
+-- ai_usage_log_teacher_time_idx with a byte-identical definition, which I did
+-- not check before adding mine.
+--
+-- Two identical btrees means every insert into ai_usage_log maintains both, and
+-- the reservation work made this table hotter, not cooler: it now writes a row
+-- before the provider call as well as settling one after. Found by the
+-- performance audit (PERF-16) and verified against pg_indexes rather than
+-- assumed.
+--
+-- Dropping the newer one keeps the original name that 035 and any existing
+-- query plans already reference.
+drop index if exists public.ai_usage_log_teacher_created_idx;

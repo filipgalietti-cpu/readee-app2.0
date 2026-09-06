@@ -24,8 +24,10 @@ alter table public.ai_usage_log
   add column if not exists reserved boolean not null default false,
   add column if not exists settled_at timestamptz;
 
-create index if not exists ai_usage_log_teacher_created_idx
-  on public.ai_usage_log (teacher_id, created_at desc);
+-- ‼️ DO NOT re-add an index here. 035 already created
+-- ai_usage_log_teacher_time_idx on exactly (teacher_id, created_at DESC).
+-- This migration originally added a duplicate under a different name; 147 drops
+-- it. Check pg_indexes before adding an index to a table this old.
 
 create or replace function public.reserve_ai_credits(
   p_teacher uuid, p_kind text, p_cost integer,
