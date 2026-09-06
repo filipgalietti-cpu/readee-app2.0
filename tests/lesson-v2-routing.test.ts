@@ -1,7 +1,12 @@
 import { describe, it, expect } from "vitest";
 import sampleLessons from "@/app/data/sample-lessons.json";
 import { LESSONS } from "@/app/data/lessons-v2";
-import { v2LessonForStandard, v2CoveredStandards, LESSON_V2_ENABLED } from "@/lib/lessons/v2-lookup";
+import {
+  authoredLessonForStandard,
+  v2LessonForStandard,
+  v2CoveredStandards,
+  LESSON_V2_ENABLED,
+} from "@/lib/lessons/v2-lookup";
 
 /**
  * /learn picks its engine by standard: a V2 lesson if one exists, the legacy
@@ -39,13 +44,13 @@ describe("V2 lessons are reachable from the catalogue", () => {
     // Registry order put the exemplar first, which would have served a
     // Kindergartener the engine demo instead of the reviewed curriculum lesson.
     expect(dupes.map(([std]) => std)).toEqual(["RL.K.1"]);
-    expect(v2LessonForStandard("RL.K.1")?.id).toBe("key-details");
+    expect(authoredLessonForStandard("RL.K.1")?.id).toBe("key-details");
   });
 
   it("an exemplar still serves a standard nothing else covers", () => {
     // silent-e is an engine exemplar but the only RF.K.3b lesson there is;
     // demoting exemplars wholesale would leave that standard on legacy.
-    expect(v2LessonForStandard("RF.K.3b")?.id).toBe("silent-e");
+    expect(authoredLessonForStandard("RF.K.3b")?.id).toBe("silent-e");
   });
 
   it("V2 lesson standards exist in the catalogue, so a route can reach them", () => {
@@ -62,12 +67,12 @@ describe("the /learn engine choice", () => {
   it("resolves a standard that has an authored lesson", () => {
     const covered = v2CoveredStandards();
     expect(covered.length).toBeGreaterThan(0);
-    const lesson = v2LessonForStandard(covered[0]);
+    const lesson = authoredLessonForStandard(covered[0]);
     expect(lesson?.standard).toBe(covered[0]);
   });
 
   it("returns undefined for a standard with no V2 lesson, so legacy still runs", () => {
-    expect(v2LessonForStandard("RL.99.9")).toBeUndefined();
+    expect(authoredLessonForStandard("RL.99.9")).toBeUndefined();
   });
 
   it("covers most of the catalogue, and every grade has some coverage", () => {
@@ -75,14 +80,14 @@ describe("the /learn engine choice", () => {
     for (const l of legacy) {
       byGrade[l.grade] ??= { total: 0, v2: 0 };
       byGrade[l.grade].total++;
-      if (v2LessonForStandard(l.standardId)) byGrade[l.grade].v2++;
+      if (authoredLessonForStandard(l.standardId)) byGrade[l.grade].v2++;
     }
     // Every grade must have at least one V2 lesson - a grade dropping to zero
     // means a whole band silently regressed to the legacy engine.
     for (const [grade, s] of Object.entries(byGrade)) {
       expect(s.v2, `${grade} has no V2 coverage`).toBeGreaterThan(0);
     }
-    const covered = legacy.filter((l) => v2LessonForStandard(l.standardId)).length;
+    const covered = legacy.filter((l) => authoredLessonForStandard(l.standardId)).length;
     // Ratchet: coverage only goes up as the factory finishes grade 4. If this
     // fails downward, lessons stopped resolving rather than the bar being wrong.
     expect(covered).toBeGreaterThanOrEqual(181);
@@ -91,7 +96,7 @@ describe("the /learn engine choice", () => {
   it("returns plain data that can cross the server/client boundary", () => {
     // /learn resolves on the server and passes ONE lesson as a prop. A function
     // or Date anywhere in the tree would throw at the boundary at runtime.
-    const lesson = v2LessonForStandard(v2CoveredStandards()[0])!;
+    const lesson = authoredLessonForStandard(v2CoveredStandards()[0])!;
     const walk = (v: unknown, path: string): string[] => {
       if (typeof v === "function") return [path];
       if (v instanceof Date) return [`${path} (Date)`];
@@ -104,9 +109,14 @@ describe("the /learn engine choice", () => {
 });
 
 describe("the kill switch", () => {
-  it("defaults on, so an unset env var serves V2 rather than silently disabling it", () => {
-    // A switch that fails closed would look exactly like "V2 was never wired up".
-    expect(LESSON_V2_ENABLED).toBe(true);
-    expect(process.env.LESSON_V2_ENABLED).toBeUndefined();
+  it("defaults OFF until V2's assets are actually deployed", () => {
+    // /audio/lessons-v2 and /images/lessons-v2 are gitignored and 404 in prod,
+    // so serving V2 there means narration-free, picture-free lessons. Flip this
+    // to true only once those URLs resolve.
+    expect(LESSON_V2_ENABLED).toBe(false);
+  });
+
+  it("resolves nothing while disabled, so /learn falls back to legacy", () => {
+    expect(v2LessonForStandard("RL.K.1")).toBeUndefined();
   });
 });

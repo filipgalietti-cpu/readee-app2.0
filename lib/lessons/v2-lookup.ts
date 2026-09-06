@@ -55,24 +55,48 @@ function index(): Map<string, LessonDef> {
 }
 
 /**
- * Kill switch, in the shape of lib/plan/classroom-gate's.
+ * ‼️ DEFAULTS OFF, because V2's assets are not deployed.
  *
- * This one defaults ON: V2 is the intended engine and the point of wiring it up.
- * The switch exists because flipping the lesson experience for every child is
- * the kind of change you want to be able to undo in the time it takes to edit a
- * Vercel env var, rather than a revert and a redeploy. Set LESSON_V2_ENABLED to
- * "false" and every standard falls back to the legacy runner, which still works
- * and still teaches all 201.
+ * Every V2 lesson reads its narration from /audio/lessons-v2/<id>/*.mp3 and its
+ * pictures from /images/lessons-v2/<id>/*.png. Both directories are gitignored
+ * (.gitignore lines 37 and 51) and hold zero tracked files, so all 2.2 GB of it
+ * - 3,778 audio files, 1,195 images - exists only on the authoring machine.
+ * Those URLs are 404 in production, which is also why /demo has never worked
+ * there. A narration-driven reading lesson with no narration and no pictures is
+ * not a lesson.
+ *
+ * The routing, the completion writes and the tests are all real and stay wired.
+ * The only thing missing is the assets. Once they are served from somewhere
+ * public - Supabase storage or a CDN, since 2.2 GB does not belong in git or in
+ * a Vercel deployment - set LESSON_V2_ENABLED=true and 181 standards switch
+ * over with no code change.
+ *
+ * Until then every standard uses the legacy runner, which still teaches all 201
+ * and whose assets ARE deployed.
  */
-export const LESSON_V2_ENABLED = process.env.LESSON_V2_ENABLED !== "false";
+export const LESSON_V2_ENABLED = process.env.LESSON_V2_ENABLED === "true";
 
-/** The V2 lesson for this standard, or undefined if it has not been authored yet. */
-export function v2LessonForStandard(standardId: string): LessonDef | undefined {
-  if (!LESSON_V2_ENABLED) return undefined;
+/**
+ * What V2 has AUTHORED for this standard, regardless of rollout.
+ *
+ * Separate from the routing question below on purpose: "has the factory written
+ * this lesson?" and "should /learn serve it today?" are different, and
+ * collapsing them makes coverage impossible to measure while the switch is off.
+ */
+export function authoredLessonForStandard(standardId: string): LessonDef | undefined {
   return index().get(standardId);
 }
 
-/** Every standard V2 can teach. Used by the coverage test. */
+/** Every standard V2 has a lesson for. Rollout-independent. */
 export function v2CoveredStandards(): string[] {
   return [...index().keys()];
+}
+
+/**
+ * What /learn should serve for this standard right now - undefined means the
+ * legacy runner. Respects the switch above, so this is the one routing calls.
+ */
+export function v2LessonForStandard(standardId: string): LessonDef | undefined {
+  if (!LESSON_V2_ENABLED) return undefined;
+  return authoredLessonForStandard(standardId);
 }
