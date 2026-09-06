@@ -960,6 +960,15 @@ export async function runFullQuizQc(input: {
   questions: QuestionForQc[];
   imageUrl: string | null;
   imageScene: string | null;
+  /** Genre of the passage, forwarded to the passage judge. The judge is told
+   *  `Genre: informational | narrative` and marks a passage that does not match
+   *  as a FAIL. This was never accepted here, so every caller was silently
+   *  judged as "narrative" — which is how a true, factual passage failed with
+   *  "The passage is informational and expository, not a narrative as specified
+   *  in the prompt" (Sentry JAVASCRIPT-NEXTJS-H, 2026-09-06). Defaults to
+   *  narrative, preserving the behaviour of callers that do not know their
+   *  genre. */
+  isInformational?: boolean;
   /** Optional audio URL — when present, runs the audio judge against
    *  the passage text so we don't ship garbled TTS to kids who
    *  depend on it (early readers, ELLs, low-vision).  */
@@ -986,6 +995,7 @@ export async function runFullQuizQc(input: {
       passageTitle: input.passageTitle,
       passageBody: input.passageBody,
       gradeLevel: input.gradeLevel,
+      isInformational: input.isInformational,
       standardId: input.standardId ?? null,
     });
     checks.push(...r.checks);
