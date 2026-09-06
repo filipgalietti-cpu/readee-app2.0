@@ -13,6 +13,7 @@ import QuizHypeIntro from "@/app/(protected)/practice/_components/QuizHypeIntro"
 import SealOfApproval from "@/app/(protected)/practice/_components/SealOfApproval";
 import { FluentIcon } from "@/app/_components/FluentIcon";
 import { Glyph } from "@/app/_components/Glyph";
+import { lessonAssetUrl } from "@/lib/lesson-engine/asset-url";
 
 /**
  * QuizRunner — the post-lesson quiz, built on Filip's designed beats:
@@ -367,7 +368,7 @@ export default function QuizRunner({
             </div>
             {current.image && (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={current.image} alt="" className="max-h-[220px] rounded-2xl object-contain drop-shadow-lg" />
+              <img src={lessonAssetUrl(current.image)} alt="" className="max-h-[220px] rounded-2xl object-contain drop-shadow-lg" />
             )}
             <div className="w-full">
               <Renderer

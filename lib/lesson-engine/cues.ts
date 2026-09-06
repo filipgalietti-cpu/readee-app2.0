@@ -7,6 +7,7 @@
 //    `timeupdate` trigger was the source of the "timing feels off" bug class).
 //  • Cues choreograph animation during narration. They never advance the lesson.
 
+import { lessonAssetUrl } from "@/lib/lesson-engine/asset-url";
 import { audioManager } from "@/lib/audio/audio-manager";
 import type { Cue, WordTiming } from "./types";
 
@@ -36,7 +37,7 @@ export function playUrl(url: string, onEnded?: () => void): void {
   if (typeof window === "undefined") return;
   stopNarration();
   stopOneshot();
-  oneshot = new Audio(url);
+  oneshot = new Audio(lessonAssetUrl(url));
   if (onEnded) oneshot.addEventListener("ended", onEnded, { once: true });
   oneshot.play().catch(() => {});
 }
@@ -156,7 +157,7 @@ export function playNarration(
   stopOneshot(); // one voice at a time, always
   if (typeof window === "undefined") return;
 
-  const el = new Audio(url);
+  const el = new Audio(lessonAssetUrl(url));
   narration = el;
 
   const pending = (opts?.cues ?? [])

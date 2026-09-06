@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { ReadAlongDef, WordTiming } from "@/lib/lesson-engine/types";
 import { stopNarration, alignTextToTimings } from "@/lib/lesson-engine/cues";
+import { lessonAssetUrl } from "@/lib/lesson-engine/asset-url";
 
 /**
  * `read-along` — karaoke sentence: the words light up as the teacher reads them
@@ -43,7 +44,7 @@ export default function ReadAlong({
   function play() {
     stop();
     stopNarration(); // one voice at a time, always
-    const el = new Audio(data.audio);
+    const el = new Audio(lessonAssetUrl(data.audio));
     audioRef.current = el;
 
     // EXACT sync to the TTS: char-timeline alignment (robust to Whisper

@@ -5,6 +5,7 @@ import type { SequenceDef } from "@/lib/lesson-engine/types";
 import { playYes, playTryAgain, playUrl, playPraise, sfxWrong, sfxCorrect } from "@/lib/lesson-engine/cues";
 import { seededShuffle } from "@/lib/lesson-engine/shuffle";
 import LessonImage from "../LessonImage";
+import { lessonAssetUrl } from "@/lib/lesson-engine/asset-url";
 
 /**
  * `sequence` — put things in order (story events, steps, sentence words).
@@ -80,7 +81,7 @@ export default function Sequence({
                 <>
                   {filled.image && (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={filled.image} alt="" style={{ height: 84, width: 84, objectFit: "contain" }} />
+                    <img src={lessonAssetUrl(filled.image)} alt="" style={{ height: 84, width: 84, objectFit: "contain" }} />
                   )}
                   <span>{filled.label}</span>
                 </>

@@ -1,6 +1,7 @@
 "use client";
 
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
+import { lessonAssetUrl } from "@/lib/lesson-engine/asset-url";
 
 /** Lesson image with skeleton-while-loading (reuses the app's LoadingImage —
  *  no bare <img> lag flashes; K attention spans don't wait for network). */
@@ -19,7 +20,7 @@ export default function LessonImage({
 }) {
   return (
     <LoadingImage
-      src={src}
+      src={lessonAssetUrl(src)}
       alt=""
       containerClassName={containerClassName ?? "rounded-2xl"}
       className={className ?? "h-full w-full object-contain"}
