@@ -1,5 +1,18 @@
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
+import { buildCurriculumManifest } from "./scripts/build-curriculum-manifest";
+
+// The dashboard, journey, roadmap and analytics read a small generated manifest
+// of curriculum metadata instead of importing the lesson catalogue and all five
+// question banks, which used to ship ~4 MB of JSON to the browser before a child
+// had chosen anything (see the script's header).
+//
+// The catch with a generated file is that it goes stale, and two dozen factory
+// scripts write the catalogue. Regenerating here means nobody has to remember:
+// this runs at the top of every build and every dev-server start, so the
+// manifest always describes the catalogue actually in the tree. It reads a few
+// MB synchronously and finishes in well under a second.
+buildCurriculumManifest({ quiet: true });
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,

@@ -16,14 +16,20 @@
  * Lesson bodies and question banks stay exactly where they are for the routes
  * that actually teach - /learn and /practice load real content and should.
  *
- * ‼️ Regenerate after any catalogue change:
+ * Staleness is the failure mode this split introduces: twenty-four scripts write
+ * the catalogue, so "remember to regenerate" was never going to hold, and a
+ * stale manifest fails silently - the dashboard lists lessons that disagree with
+ * what /learn will teach, and nothing complains.
+ *
+ * So nobody has to remember. next.config.ts calls buildCurriculumManifest() at
+ * the top of every build and every dev-server start, which covers Vercel, CI and
+ * local work alike. tests/curriculum-manifest.test.ts is the second net, diffing
+ * the committed manifest against the real files.
+ *
+ * Runnable directly too, when you want it regenerated without a build:
  *     npx tsx scripts/build-curriculum-manifest.ts
- * Forgetting is the failure mode this split introduces - a stale manifest shows
- * a dashboard that disagrees with what /learn teaches, and says nothing. So
- * tests/curriculum-manifest.test.ts diffs the manifest against the real files
- * and CI runs it before the build: drift fails there, not on a child's screen.
  */
-import { promises as fs } from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 
 type Lesson = { standardId: string; grade: string; domain: string; title: string; id?: string };
@@ -40,9 +46,9 @@ const GRADE_FILES: Record<string, string> = {
   "4th": "4th-grade-standards-questions.json",
 };
 
-async function main() {
+export function buildCurriculumManifest({ quiet = false } = {}) {
   const lessonsRaw = JSON.parse(
-    await fs.readFile(path.join(ROOT, "app/data/sample-lessons.json"), "utf8"),
+    fs.readFileSync(path.join(ROOT, "app/data/sample-lessons.json"), "utf8"),
   ) as Record<string, unknown>[];
 
   // Exactly the CatalogLesson shape lib/journey/next-lesson.ts declares, plus
@@ -60,7 +66,7 @@ async function main() {
   // surface reads them - /practice loads the real bank when a child practises.
   const standards: Record<string, StandardSummary[]> = {};
   for (const [gradeKey, file] of Object.entries(GRADE_FILES)) {
-    const bank = JSON.parse(await fs.readFile(path.join(ROOT, "app/data", file), "utf8")) as {
+    const bank = JSON.parse(fs.readFileSync(path.join(ROOT, "app/data", file), "utf8")) as {
       standards: Record<string, unknown>[];
     };
     standards[gradeKey] = bank.standards.map((s) => ({
@@ -71,15 +77,23 @@ async function main() {
   }
 
   const manifest = { generatedFrom: "sample-lessons.json + *-standards-questions.json", lessons, standards };
-  await fs.writeFile(OUT, JSON.stringify(manifest) + "\n");
+  fs.writeFileSync(OUT, JSON.stringify(manifest) + "\n");
 
-  const bytes = (await fs.stat(OUT)).size;
-  const before = (await fs.stat(path.join(ROOT, "app/data/sample-lessons.json"))).size;
-  console.log(`curriculum-manifest.json: ${lessons.length} lessons, ${Object.keys(standards).length} grades`);
-  console.log(`  ${bytes.toLocaleString()} bytes (lesson catalogue alone was ${before.toLocaleString()})`);
+  const bytes = fs.statSync(OUT).size;
+  const before = fs.statSync(path.join(ROOT, "app/data/sample-lessons.json")).size;
+  if (!quiet) {
+    console.log(`curriculum-manifest.json: ${lessons.length} lessons, ${Object.keys(standards).length} grades`);
+    console.log(`  ${bytes.toLocaleString()} bytes (lesson catalogue alone was ${before.toLocaleString()})`);
+  }
+  return { lessons: lessons.length, bytes };
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+// Only when invoked as a script; importing this module must not write anything.
+if (process.argv[1] && process.argv[1].includes("build-curriculum-manifest")) {
+  try {
+    buildCurriculumManifest();
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  }
+}
