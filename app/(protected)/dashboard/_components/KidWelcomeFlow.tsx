@@ -205,10 +205,20 @@ export default function KidWelcomeFlow({ onDone }: { onDone: (kids: Child[]) => 
     // navigate straight into the reading placement (Luna's exam) instead.
     try { window.localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
 
-    void supabase
+    // ‼️ This must be awaited. A Supabase builder is a lazy thenable: the
+    // fetch is issued from inside .then(), so `void builder` with no .then()
+    // builds the statement and drops it without ever calling the API. That is
+    // what happened here from 2026-07-30 (477049cf) until this fix, and nothing
+    // wrote onboarding_complete in between - silently, because a request that
+    // is never sent cannot fail. The fire-and-forget calls below are
+    // `void fetch(...)`, which is eager and genuinely does fire; that
+    // similarity is what made this look correct. Awaiting also stops the
+    // router.push at the end of this function from cancelling it in flight.
+    const { error: flagError } = await supabase
       .from("profiles")
       .update({ onboarding_complete: true, onboarding_completed_at: new Date().toISOString() })
       .eq("id", user.id);
+    if (flagError) console.error("[KidWelcomeFlow] onboarding_complete:", flagError.message);
     trackFunnelClient("funnel.kid_added", { grade: grade ?? "Kindergarten", source: "kid_welcome" });
     // How the name is said: saved + every name clip re-made in that form. Fire-and-forget.
     if (saidAs.trim()) {
