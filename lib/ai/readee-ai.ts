@@ -1090,7 +1090,41 @@ Rules:
 - Use kid-friendly, school-appropriate visuals. No weapons, no violence, no scary creatures, no romantic content.
 - Do NOT include style words ("cartoon", "illustration", "vibrant") — that is set elsewhere. Describe the scene.
 - Do NOT include any text that would appear in the image (no signs, no captions). No thought bubbles or speech bubbles.
-- Pick the most evocative single moment from the passage — not a montage.`;
+- Pick the most evocative single moment from the passage — not a montage.
+
+DRAW THE SUBJECT, NOT AN AUDIENCE WATCHING IT.
+This is the single most common failure and it is banned outright. Left alone,
+almost every informational passage came back as "a group of children in a
+classroom looking out of a window at X". A passage about a meteor shower became
+six children at desks pointing at a window; a passage about cardinals became
+seven children at desks pointing at a window; a passage about Labor Day became a
+crowd of children holding up drawings of workers.
+- Never invent a classroom, a window, a group of onlookers, or children
+  reacting, unless the passage genuinely takes place there. The passage about a
+  comet is illustrated by the comet.
+- Never illustrate a thing by drawing a picture OF that thing being held up,
+  displayed, or drawn by someone. Draw the thing.
+- A real child is already looking at this image. Drawing children looking at it
+  for them wastes the frame and adds nothing.
+
+PEOPLE COST ACCURACY. Include them only when the passage is about them.
+- Prefer no people at all for informational passages about animals, space,
+  weather, plants, objects or how things work.
+- When people belong, name a SMALL number (one to three) and say what each is
+  doing with their hands. Crowds are where this generator fails: every extra
+  raised arm, point or wave is a detached hand or a fused finger.
+- Never "a group of children", "a class", "a crowd", "several kids". If the
+  passage is about workers, draw the workers.
+- Prefer relaxed, simple hand positions over waving, pointing or arms in the
+  air.
+
+GIVE THE SUBJECT SOMEWHERE TO BE. "No people" is not "no setting".
+Stripping the invented audience must not leave the subject floating on a blank
+field - that trades a cluttered picture for an empty one, and an empty one is
+just as poor a reading experience. Anchor it: a horizon, a landscape, the
+habitat it lives in, the room the object sits in, the weather and time of day.
+A meteor belongs over a dark treeline or a sleeping town, not alone on flat
+navy.`;
 
 export async function generateImageBrief(input: {
   teacherId: string;

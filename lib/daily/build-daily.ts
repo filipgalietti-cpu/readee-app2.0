@@ -26,6 +26,7 @@ import {
 } from "@/lib/ai/readee-ai";
 import { runFullQuizQc, qcImage } from "@/lib/ai/qc";
 import { REPRESENTATION_RULE } from "@/lib/ai/representation";
+import { pickStoryNames, storyNameDirective, STORY_NAMES } from "@/lib/content/story-names";
 import { depictionModeFor, applyDepictionMode, bodySceneConstraint } from "@/lib/daily/depiction-guard";
 import { resolveRealSubjectImage } from "@/lib/ai/real-subject-image";
 import { extractSceneSpec, renderSpecAsBrief, describeSpec } from "@/lib/ai/scene-spec";
@@ -653,11 +654,40 @@ export async function buildDailyQuestion(opts?: {
     /* best-effort; ship without the avoid-list if the lookup fails */
   }
 
+  // Name the cast before asking for the story. REPRESENTATION_RULE tells the
+  // model to use a wide pool and it does not listen: on 2026-09-07, 31 of 53
+  // story dailies used one of five names, Leo on ten days alone. Reading the
+  // names off the last forty passages and handing over ones that have not
+  // appeared is the same move pickDaily makes for subjects, and it works for
+  // the same reason - the model is good at writing about Amara, and bad at
+  // deciding to.
+  let nameDirective = "";
+  try {
+    const { data: recentRows } = await supabaseAdmin()
+      .from("daily_questions")
+      .select("passage_body")
+      .lt("date", dateStr)
+      .order("date", { ascending: false })
+      .limit(40);
+    const recentText = ((recentRows ?? []) as { passage_body: string | null }[])
+      .map((r) => r.passage_body ?? "")
+      .join(" ");
+    const recentlyUsed = STORY_NAMES.filter((n) =>
+      new RegExp(`\\b${n}\\b`).test(recentText),
+    );
+    nameDirective = storyNameDirective(pickStoryNames(dateStr, 2, recentlyUsed));
+  } catch {
+    // Best-effort: an unnamed cast is better than no passage.
+    nameDirective = storyNameDirective(pickStoryNames(dateStr, 2));
+  }
+
   const datedTopic = `${SAFETY_PREAMBLE}
 
 Today is ${fullDate} (${monthName} — ${seasonName} in the Northern Hemisphere). Write a passage that feels appropriate for THIS time of year — do not pick a topic from a different season.
 
 ${REPRESENTATION_RULE}
+
+${nameDirective}
 
 ${theme.topic}${avoidBlock}`;
 
