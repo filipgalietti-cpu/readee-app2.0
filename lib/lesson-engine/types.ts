@@ -124,6 +124,8 @@ export interface Cue {
 export type ScenePurpose = "hook" | "model" | "guided" | "apply" | "challenge" | "celebrate";
 
 export interface SceneDef {
+  /** A structured teaching visual. Takes the stage ahead of fx when present. */
+  diagram?: DiagramDef;
   id: string;
   purpose: ScenePurpose;
   /** "split" = visual left + lesson text right (default). "full" = one centered page. */
@@ -150,6 +152,17 @@ export type Archetype =
   | "phonics" | "fluency" | "story-elements" | "inference" | "vocabulary" | "print-concepts";
 
 export interface WordTiming { word: string; start: number; end: number }
+
+/**
+ * A teaching diagram: rows of term -> meaning, revealed in step with the voice.
+ *
+ * The visual stage could only ever be an animated sentence or a picture, so any
+ * lesson needing to SHOW a mapping had to flatten it into one line of fx text -
+ * which renders as loose words with no pairing. Rows make the structure real.
+ */
+export interface DiagramDef {
+  rows: { term: string; means: string; example?: string }[];
+}
 
 export interface LessonDef {
   id: string;

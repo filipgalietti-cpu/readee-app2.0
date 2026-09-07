@@ -10,6 +10,7 @@ import { LessonShellDesktop, CelebrationLeftPanel } from "@/app/components/lesso
 import { Bunny, BunnyReaction, reactionHoldMs } from "@/app/_components/Bunny/Bunny";
 import TextFX from "./TextFX";
 import PromptText, { TeachingLine, ReadAloudPrompt, splitReadAloud } from "./PromptText";
+import Diagram from "./Diagram";
 import LessonImage from "./LessonImage";
 import { playUrl } from "@/lib/lesson-engine/cues";
 
@@ -35,12 +36,15 @@ export default function LessonRunner({
   onEvent,
   onComplete,
   onScene,
+  onFinish,
 }: {
   lesson: LessonDef;
   onEvent?: (e: LearningEvent) => void;
   /** Fires once, when the child finishes the last scene. The runner itself
    *  persists nothing - whoever mounts it decides what a finish means. */
   onComplete?: () => void;
+  /** Where "Start the questions" goes. Omit and the button is not shown. */
+  onFinish?: () => void;
   /** Fires on every scene change, including the first. Lets a host follow along
    *  without reaching into the runner's state - the founder review tool pins its
    *  thumbs to whatever is actually on screen. Not used in the child's path. */
@@ -61,8 +65,24 @@ export default function LessonRunner({
   const completed = useRef(false);
   const sceneStart = useRef(0);
 
-  const scene = lesson.scenes[idx];
-  const isLast = idx === lesson.scenes.length - 1;
+  /**
+   * ONE ENDING, NOT TWO.
+   *
+   * Every one of the 183 lessons ends with a `celebrate` scene AND then shows a
+   * finish screen, and both say the same thing - the celebrate narration recaps
+   * the rule, then the completion copy recaps it again. A child sits through the
+   * same congratulations twice before anything happens.
+   *
+   * The celebrate scene's narration is the good half: it is authored per lesson
+   * and warm. So it plays as the LAST scene, and finishing it goes straight to
+   * the finish screen, which now carries the celebration rather than repeating
+   * the recap. The lesson is one beat shorter and ends where it should.
+   */
+  const scenes = lesson.scenes;
+  const scene = scenes[idx];
+  const isLast = idx === scenes.length - 1;
+  /** The finish screen is the celebration, so it must not restate the recap. */
+  const endsOnCelebrate = scenes[scenes.length - 1]?.purpose === "celebrate";
   const inter = scene.interaction;
   const timing = lesson.timings?.[scene.id];
   const fallbackMs = timing ? Math.round((timing.duration + 3) * 1000) : 12000;
@@ -263,6 +283,31 @@ export default function LessonRunner({
     });
   }, [scene.id, scene.fx?.text, scene.narration?.script, timing]);
 
+  /**
+   * When each diagram row should appear. A row is "about" its term, so the row
+   * lands when the narration says that term - the teacher explains one thing and
+   * one row arrives, instead of the whole table dropping in at once.
+   */
+  const diagramDelaysMs = useMemo(() => {
+    const rows = scene.diagram?.rows;
+    const script = scene.narration?.script;
+    if (!rows?.length || !script || !timing?.words?.length) return undefined;
+    const norm = (w: string) => w.toLowerCase().replace(/[^a-z0-9']/g, "");
+    const scriptWords = script.split(/\s+/);
+    const starts = alignTextToTimings(script, timing.words);
+    let cursor = 0;
+    return rows.map((r) => {
+      const term = norm(r.term);
+      if (!term) return NaN;
+      const rel = scriptWords.slice(cursor).findIndex((w) => norm(w) === term);
+      if (rel < 0) return NaN;
+      const i = cursor + rel;
+      if (starts[i] == null) return NaN;
+      cursor = i + 1;
+      return Math.round(starts[i] * 1000);
+    });
+  }, [scene.id, scene.diagram, scene.narration?.script, timing]);
+
   const full = scene.layout === "full";
   let leftSlot: ReactNode = undefined;
   let contentSlot: ReactNode;
@@ -285,9 +330,25 @@ export default function LessonRunner({
         <div className="text-[44px] font-bold leading-[1.15] tracking-tight text-violet-700 [text-wrap:balance]">
           {lesson.completion?.title ?? "Lesson complete!"}
         </div>
+        {/* The celebrate scene just said the recap out loud. Saying it again in
+            print is the duplication Filip kept hitting, so when the lesson ends
+            on a celebrate the finish screen looks FORWARD instead. */}
+        {!endsOnCelebrate && (
+          <p className="mt-6 max-w-[460px] text-xl leading-relaxed text-zinc-500">
+            {lesson.completion?.body ?? lesson.objective}
+          </p>
+        )}
         <p className="mt-6 max-w-[460px] text-xl leading-relaxed text-zinc-500">
-          {lesson.completion?.body ?? lesson.objective}
+          Now let&apos;s try some questions.
         </p>
+        {onFinish && (
+          <button
+            onClick={onFinish}
+            className="mt-7 rounded-2xl bg-violet-600 px-8 py-4 text-xl font-bold text-white shadow-lg transition hover:bg-violet-700"
+          >
+            Start the questions →
+          </button>
+        )}
       </div>
     );
   } else if (full) {
@@ -320,9 +381,12 @@ export default function LessonRunner({
     // Does fx get the stage? Only when no interaction and no picture claimed it.
     // When it does not, the authored text still has to reach the child - it goes
     // beside the prompt instead of being silently dropped.
-    const fxHasStage = !interactionEl && !scene.image && !!scene.fx;
+    // A diagram outranks a picture and fx: it IS the teaching, not decoration.
+    const fxHasStage = !interactionEl && !scene.diagram && !scene.image && !!scene.fx;
     leftSlot = interactionEl ?? (
-      scene.image ? (
+      scene.diagram ? (
+        <Diagram rows={scene.diagram.rows} rowDelaysMs={diagramDelaysMs} />
+      ) : scene.image ? (
         <div className="lv2-kenburns flex h-full w-full items-center justify-center">
           <LessonImage src={scene.image} containerClassName="h-[92%] w-[94%] rounded-3xl" className="h-full w-full rounded-3xl object-contain drop-shadow-xl" />
         </div>

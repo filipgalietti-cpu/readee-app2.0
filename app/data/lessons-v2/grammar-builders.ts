@@ -70,7 +70,14 @@ export const grammarBuilders: LessonDef = {
       purpose: "model",
       gate: "none",
       prompt: "Some words take the place of a person, place, or thing.",
-      fx: { text: "he = a boy   she = a girl   it = one thing   they = two or more", effect: "pop-words" },
+      diagram: {
+        rows: [
+          { term: "he", means: "a boy or a man", example: "Ben hops. He hops." },
+          { term: "she", means: "a girl or a woman", example: "Rosa sings. She sings." },
+          { term: "it", means: "one animal or one thing", example: "The ball rolls. It rolls." },
+          { term: "they", means: "two or more", example: "The dogs bark. They bark." },
+        ],
+      },
       narration: { audio: A("model-pronouns"), script: "Some words take the place of a person, place, or thing. He is for a boy or a man. Ben hops, so he hops. She is for a girl or a woman. Rosa sings, so she sings. It is for one animal or one thing. The ball rolls, so it rolls. They is for two or more people, animals, or things. The dogs bark, so they bark." },
     },
     {
