@@ -117,7 +117,7 @@ export const wordsForEffect: LessonDef = {
       purpose: "guided",
       gate: "interaction",
       prompt: "When the wind grabbed the boy's hat, he ___ after it. Which word makes the hurry?",
-      narration: { audio: A("guided-choose-word-for-hurry"), script: "Your turn to pick a word for an effect. Here is a fresh sentence from that morning, with a hole in it. When the wind grabbed the boy's hat, he blank after it. Talia wants the reader to feel the hurry, a sudden rush. Four words are on your screen, and each one makes a different effect. Tap the word that makes the hurry." },
+      narration: { audio: A("guided-choose-word-for-hurry"), script: "Your turn to pick a word for an effect. Here is a fresh sentence from that morning, with a word missing. When the wind grabbed the boy's hat, he blank after it. Talia wants the reader to feel the hurry, a sudden rush. Four words are on your screen, and each one makes a different effect. Tap the word that makes the hurry." },
       interaction: { type: "choose", options: [{ id: "bolted", label: "bolted" }, { id: "wandered", label: "wandered" }, { id: "crept", label: "crept" }, { id: "strolled", label: "strolled" }], correctId: "bolted", coachWrong: "Say the sentence with your word inside. Does it feel like a sudden rush, or does it feel slow, sneaky, or lazy? Find the word that makes you hurry with him." },
     },
     {

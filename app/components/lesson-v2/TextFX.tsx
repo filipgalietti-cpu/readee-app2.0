@@ -107,8 +107,16 @@ export default function TextFX({
           const cls = !armed ? "" : hot ? targetClass[effect] ?? "" : effect === "spotlight" ? "fxdim" : "";
 
           if (effect === "word-swap" && t.target && t.alt) {
+            // A DEMONSTRATION, not a loop. This used to alternate every three
+            // seconds forever, so "dog / dogs" rotated in the background like a
+            // screensaver while the narration talked about something else - the
+            // child had no way to tell which word the teacher meant.
+            //
+            // Now it holds the singular, and swaps ONCE when the narration
+            // reaches the plural (LessonRunner times `fireAtMs` off the alt
+            // word), then holds that. One change, at the moment it is explained.
             return (
-              <span key={i} className="fxswap">
+              <span key={i} className={`fxswap${armed ? " fxswapped" : ""}`}>
                 <span className="fx-hot">{t.word}</span>
                 <span>{t.alt}</span>
               </span>
@@ -188,10 +196,12 @@ export default function TextFX({
         .fx-letters-fly-in span:nth-child(even) { --fx:52px; --fy:34px; --fr:35deg; }
         @keyframes fxfly { from{opacity:0;transform:translate(var(--fx),var(--fy)) rotate(var(--fr))} to{opacity:1;transform:none} }
         .fxswap { display:inline-grid; text-align:center; }
-        .fxswap span { grid-area:1/1; animation:fxswapA 3s ease-in-out infinite; }
-        .fxswap span:nth-child(2) { animation-name:fxswapB; color:#8b5cf6; }
-        @keyframes fxswapA { 0%,40%{opacity:1;transform:none} 50%,90%{opacity:0;transform:translateY(-16px)} 100%{opacity:1;transform:none} }
-        @keyframes fxswapB { 0%,40%{opacity:0;transform:translateY(16px)} 50%,90%{opacity:1;transform:none} 100%{opacity:0;transform:translateY(16px)} }
+        .fxswap span { grid-area:1/1; transition:opacity .45s ease, transform .45s ease; }
+        .fxswap span:nth-child(1) { opacity:1; transform:none; }
+        .fxswap span:nth-child(2) { opacity:0; transform:translateY(16px); color:#8b5cf6; }
+        .fxswap.fxswapped span:nth-child(1) { opacity:0; transform:translateY(-16px); }
+        .fxswap.fxswapped span:nth-child(2) { opacity:1; transform:none; }
+        @media (prefers-reduced-motion:reduce) { .fxswap span { transition:none; } }
         .fxline-typewriter { display:inline-block; overflow:hidden; white-space:nowrap; border-right:4px solid #4338ca;
           animation:fxtype 1.6s .5s steps(14) both, fxcaret .8s step-end infinite; flex-wrap:nowrap; }
         @keyframes fxtype { from{max-width:0} to{max-width:14ch} }

@@ -88,10 +88,19 @@ export default function LessonRunner({
     const script = scene.narration?.script;
     if (!fx?.text || !script || !timing?.words?.length) return 0;
 
+    // word-swap fires on the word it changes TO. "The **dog|dogs** **runs.|run.**"
+    // is a demonstration of the plural, so the swap has to land when the voice
+    // says "dogs" - firing on "dog" would change the word while the narration is
+    // still explaining the singular.
+    const alt = fx.effect === "word-swap";
     const targets = fx.text
       .split(/\s+/)
       .filter((w) => /\*\*/.test(w))
-      .map((w) => w.replace(/\*\*/g, "").split("|")[0].toLowerCase().replace(/[^a-z0-9']/g, ""))
+      .map((w) => {
+        const parts = w.replace(/\*\*/g, "").split("|");
+        const pick = alt ? (parts[1] ?? parts[0]) : parts[0];
+        return pick.toLowerCase().replace(/[^a-z0-9']/g, "");
+      })
       .filter(Boolean);
     if (!targets.length) return 0;
 

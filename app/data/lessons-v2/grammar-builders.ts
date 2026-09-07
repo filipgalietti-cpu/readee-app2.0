@@ -54,7 +54,7 @@ export const grammarBuilders: LessonDef = {
       purpose: "guided",
       gate: "interaction",
       prompt: "The cats ___ fast.",
-      narration: { audio: A("guided-pick-verb-cats"), script: "This sentence has a hole in it. The cats, mmm, fast. Look at the sentence. Is it about one cat or more than one? Tap the action word that sounds right." },
+      narration: { audio: A("guided-pick-verb-cats"), script: "This sentence is missing a word. The cats, mmm, fast. Look at the sentence. Is it about one cat or more than one? Tap the action word that sounds right." },
       interaction: { type: "choose", options: [{ id: "run", label: "run" }, { id: "runs", label: "runs" }], correctId: "run", coachWrong: "How many cats are in this sentence? Say the sentence out loud with each word inside. Tap the one that sounds right." },
     },
     {

@@ -73,7 +73,7 @@ export const wordsWeUse: LessonDef = {
       purpose: "guided",
       gate: "interaction",
       prompt: "I wore my coat ___ it was cold.",
-      narration: { audio: A("guided-complete-coat"), script: "This sentence has a hole in it. I wore my coat, mmm, it was cold. Read it on your screen. Think about the job the missing word must do. Then tap the word that fits." },
+      narration: { audio: A("guided-complete-coat"), script: "This sentence is missing a word. I wore my coat, mmm, it was cold. Read it on your screen. Think about the job the missing word must do. Then tap the word that fits." },
       interaction: { type: "choose", options: [{ id: "because", label: "because" }, { id: "and", label: "and" }, { id: "but", label: "but" }], correctId: "because", coachWrong: "Read the whole sentence with your word inside. The end of the sentence gives a reason. Which word signals a reason? Try again." },
     },
     {

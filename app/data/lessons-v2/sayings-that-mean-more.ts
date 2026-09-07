@@ -158,7 +158,7 @@ export const sayingsThatMeanMore: LessonDef = {
       gate: "interaction",
       prompt: "Which saying fits the sentence?",
       fx: {"text":"Dad's back hurt, so he asked us to **blank** with the groceries.","effect":"typewriter"},
-      narration: { audio: A("apply-choose-which-saying-fits"), script: "Now use a saying yourself. Here is a new sentence with a hole in it. Dad's back hurt, so he asked us to, blank, with the groceries. Four sayings are on your screen. Picture the plain meaning of each one, and tap the saying that fits the hole." },
+      narration: { audio: A("apply-choose-which-saying-fits"), script: "Now use a saying yourself. Here is a new sentence with a word missing. Dad's back hurt, so he asked us to, blank, with the groceries. Four sayings are on your screen. Picture the plain meaning of each one, and tap the saying that fits the hole." },
       interaction: { type: "choose", options: [{ id: "lend-a-hand", label: "lend a hand" }, { id: "hit-the-hay", label: "hit the hay" }, { id: "spill-the-beans", label: "spill the beans" }, { id: "hold-your-horses", label: "hold your horses" }], correctId: "lend-a-hand", coachWrong: "Think about what Dad needs from you when his back hurts and the bags are heavy. Which saying asks for that?" },
     },
     {

@@ -505,7 +505,7 @@
   ]
  },
  "apply-choose-which-saying-fits": {
-  "duration": 20.96,
+  "duration": 20.38,
   "words": [
    {
     "word": "Now",
@@ -515,237 +515,232 @@
    {
     "word": "use",
     "start": 0.44,
-    "end": 0.78
+    "end": 0.94
    },
    {
     "word": "a",
-    "start": 0.78,
-    "end": 0.96
-   },
-   {
-    "word": "saying",
-    "start": 0.96,
+    "start": 0.94,
     "end": 1.26
    },
    {
-    "word": "yourself.",
+    "word": "saying",
     "start": 1.26,
-    "end": 1.76
+    "end": 1.62
+   },
+   {
+    "word": "yourself.",
+    "start": 1.62,
+    "end": 2.22
    },
    {
     "word": "Here",
-    "start": 2.74,
-    "end": 3.0
+    "start": 3.26,
+    "end": 3.58
    },
    {
     "word": "is",
-    "start": 3.0,
-    "end": 3.2
+    "start": 3.58,
+    "end": 3.84
    },
    {
     "word": "a",
-    "start": 3.2,
-    "end": 3.32
+    "start": 3.84,
+    "end": 3.94
    },
    {
     "word": "new",
-    "start": 3.32,
-    "end": 3.62
+    "start": 3.94,
+    "end": 4.14
    },
    {
     "word": "sentence",
-    "start": 3.62,
-    "end": 4.1
+    "start": 4.14,
+    "end": 4.56
    },
    {
     "word": "with",
-    "start": 4.1,
-    "end": 4.38
+    "start": 4.56,
+    "end": 4.9
    },
    {
     "word": "a",
-    "start": 4.38,
-    "end": 4.52
+    "start": 4.9,
+    "end": 5.02
    },
    {
-    "word": "hole",
-    "start": 4.52,
-    "end": 4.78
+    "word": "word",
+    "start": 5.02,
+    "end": 5.28
    },
    {
-    "word": "in",
-    "start": 4.78,
-    "end": 5.08
-   },
-   {
-    "word": "it.",
-    "start": 5.08,
-    "end": 5.42
+    "word": "missing.",
+    "start": 5.28,
+    "end": 5.7
    },
    {
     "word": "Dad's",
-    "start": 6.44,
-    "end": 6.86
+    "start": 7.0,
+    "end": 7.38
    },
    {
     "word": "back",
-    "start": 6.86,
-    "end": 7.08
+    "start": 7.38,
+    "end": 7.6
    },
    {
     "word": "hurt,",
-    "start": 7.08,
-    "end": 7.5
+    "start": 7.6,
+    "end": 7.98
    },
    {
     "word": "so",
-    "start": 7.9,
-    "end": 8.18
+    "start": 8.34,
+    "end": 8.54
    },
    {
     "word": "he",
-    "start": 8.18,
-    "end": 8.38
+    "start": 8.54,
+    "end": 8.72
    },
    {
     "word": "asked",
-    "start": 8.38,
-    "end": 8.76
+    "start": 8.72,
+    "end": 9.18
    },
    {
     "word": "us",
-    "start": 8.76,
-    "end": 8.98
+    "start": 9.18,
+    "end": 9.46
    },
    {
     "word": "to",
-    "start": 8.98,
-    "end": 9.36
+    "start": 9.46,
+    "end": 9.76
    },
    {
     "word": "blank",
-    "start": 9.36,
-    "end": 10.3
+    "start": 9.76,
+    "end": 10.36
    },
    {
     "word": "with",
-    "start": 10.3,
-    "end": 11.1
+    "start": 10.36,
+    "end": 10.82
    },
    {
     "word": "the",
-    "start": 11.1,
-    "end": 11.3
+    "start": 10.82,
+    "end": 10.98
    },
    {
     "word": "groceries.",
-    "start": 11.3,
-    "end": 11.76
+    "start": 10.98,
+    "end": 11.42
    },
    {
     "word": "Four",
-    "start": 13.02,
-    "end": 13.4
+    "start": 12.94,
+    "end": 13.32
    },
    {
     "word": "sayings",
-    "start": 13.4,
-    "end": 13.9
+    "start": 13.32,
+    "end": 13.94
    },
    {
     "word": "are",
-    "start": 13.9,
-    "end": 14.02
+    "start": 13.94,
+    "end": 14.06
    },
    {
     "word": "on",
-    "start": 14.02,
-    "end": 14.18
+    "start": 14.06,
+    "end": 14.24
    },
    {
     "word": "your",
-    "start": 14.18,
-    "end": 14.3
+    "start": 14.24,
+    "end": 14.34
    },
    {
     "word": "screen.",
-    "start": 14.3,
-    "end": 14.7
+    "start": 14.34,
+    "end": 14.68
    },
    {
     "word": "Picture",
-    "start": 15.74,
-    "end": 16.04
+    "start": 15.62,
+    "end": 15.9
    },
    {
     "word": "the",
-    "start": 16.04,
-    "end": 16.26
+    "start": 15.9,
+    "end": 16.12
    },
    {
     "word": "plain",
-    "start": 16.26,
-    "end": 16.62
+    "start": 16.12,
+    "end": 16.52
    },
    {
     "word": "meaning",
-    "start": 16.62,
-    "end": 17.06
+    "start": 16.52,
+    "end": 16.92
    },
    {
     "word": "of",
-    "start": 17.06,
-    "end": 17.3
+    "start": 16.92,
+    "end": 17.18
    },
    {
     "word": "each",
-    "start": 17.3,
-    "end": 17.56
+    "start": 17.18,
+    "end": 17.46
    },
    {
     "word": "one",
-    "start": 17.56,
-    "end": 17.94
+    "start": 17.46,
+    "end": 17.82
    },
    {
     "word": "and",
-    "start": 17.94,
-    "end": 18.54
+    "start": 17.82,
+    "end": 18.58
    },
    {
     "word": "tap",
-    "start": 18.54,
-    "end": 18.86
+    "start": 18.58,
+    "end": 18.82
    },
    {
     "word": "the",
-    "start": 18.86,
-    "end": 19.12
+    "start": 18.82,
+    "end": 19.06
    },
    {
     "word": "saying",
-    "start": 19.12,
-    "end": 19.54
+    "start": 19.06,
+    "end": 19.4
    },
    {
     "word": "that",
-    "start": 19.54,
-    "end": 20.06
+    "start": 19.4,
+    "end": 19.72
    },
    {
     "word": "fits",
-    "start": 20.06,
-    "end": 20.36
+    "start": 19.72,
+    "end": 19.9
    },
    {
     "word": "the",
-    "start": 20.36,
-    "end": 20.64
+    "start": 19.9,
+    "end": 20.18
    },
    {
-    "word": "hole.",
-    "start": 20.64,
-    "end": 20.96
+    "word": "whole.",
+    "start": 20.18,
+    "end": 20.38
    }
   ]
  },
