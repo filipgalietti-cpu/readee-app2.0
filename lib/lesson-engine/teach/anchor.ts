@@ -1,4 +1,5 @@
-import { alignTextToTimings, type WordTiming } from "@/lib/lesson-engine/cues";
+import { alignTextToTimings } from "@/lib/lesson-engine/cues";
+import type { WordTiming } from "@/lib/lesson-engine/types";
 
 /**
  * WHEN a teaching step happens, resolved against the narration.
