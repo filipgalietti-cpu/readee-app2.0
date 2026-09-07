@@ -42,6 +42,19 @@ describe("resolving V2 lesson assets", () => {
     );
   });
 
+  it("rewrites QUIZ audio, which lives in its own tree", () => {
+    // Regression: the first version handled only /audio/lessons-v2/, so all
+    // 9,370 quiz audio references fell through unrewritten and every quiz and
+    // unit exam was silent in production while lessons worked fine.
+    vi.stubEnv("NEXT_PUBLIC_LESSON_ASSET_BASE", "https://cdn.example.com");
+    expect(lessonAssetUrl("/audio/quizzes-v2/rhyme-time-quiz/q-cat-hint.mp3")).toBe(
+      "https://cdn.example.com/audio/quizzes-v2/rhyme-time-quiz/q-cat-hint.mp3",
+    );
+    expect(lessonAssetUrl("/images/quizzes-v2/x/y.png")).toBe(
+      "https://cdn.example.com/images/quizzes-v2/x/y.webp",
+    );
+  });
+
   it("leaves non-lesson assets alone", () => {
     vi.stubEnv("NEXT_PUBLIC_LESSON_ASSET_BASE", "https://cdn.example.com");
     for (const p of ["/images/shop/hat.png", "/audio/daily/x.mp3", "/logo.svg", "/images/lessons-v1/a.png"]) {

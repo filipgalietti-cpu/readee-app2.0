@@ -18,6 +18,7 @@
  *
  *   npx tsx scripts/v2-assets/upload-missing.ts --dry-run
  *   npx tsx scripts/v2-assets/upload-missing.ts
+ *   npx tsx scripts/v2-assets/upload-missing.ts --replace --only=letter-pairs/words/m.mp3
  */
 import { createClient } from "@supabase/supabase-js";
 import sharp from "sharp";
@@ -25,6 +26,18 @@ import fs from "node:fs";
 import path from "node:path";
 
 const DRY = process.argv.includes("--dry-run");
+/**
+ * ‼️ Additive-only by default, which means a file already in storage is skipped
+ * even if the local copy has been FIXED. That is the safe default for a first
+ * upload, but it makes repair impossible: regenerate a bad clip, run this, and
+ * nothing happens because the bad object still exists under that name.
+ *
+ * --replace uploads the named paths even when they already exist (upsert), so a
+ * corrected asset can actually reach production. Scope it with --only=<substr>
+ * so a repair run touches the files you fixed and nothing else.
+ */
+const REPLACE = process.argv.includes("--replace");
+const ONLY = (process.argv.find((a) => a.startsWith("--only=")) ?? "").split("=")[1] ?? "";
 const ROOT = process.cwd();
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -80,7 +93,10 @@ async function main() {
     for (const f of files) {
       const rel = path.relative(abs, f).split(path.sep).join("/");
       const remoteName = convert ? `lessons-v2/${rel.replace(/\.png$/i, ".webp")}` : `lessons-v2/${rel}`;
-      if (!remote.has(remoteName)) plan.push({ bucket, remote: remoteName, local: f, convert });
+      if (ONLY && !remoteName.includes(ONLY) && !f.includes(ONLY)) continue;
+      // Skip what is already there UNLESS we were asked to replace it.
+      if (remote.has(remoteName) && !REPLACE) continue;
+      plan.push({ bucket, remote: remoteName, local: f, convert });
     }
     console.log(`  ${bucket}: ${files.length} local, ${remote.size} remote, ${plan.filter((j) => j.bucket === bucket).length} to upload`);
   }
@@ -106,9 +122,10 @@ async function main() {
         : fs.readFileSync(j.local);
       const { error } = await admin.storage.from(j.bucket).upload(j.remote, body, {
         contentType: j.convert ? "image/webp" : "audio/mpeg",
-        // Never clobber: anything already there was verified present above, so a
-        // collision here means something changed underneath us and is worth failing on.
-        upsert: false,
+        // Additive runs must never clobber: a collision means something changed
+        // underneath us and is worth failing on. A --replace run is the explicit
+        // exception, and is the only way a corrected asset reaches production.
+        upsert: REPLACE,
       });
       if (error) throw new Error(error.message);
     } catch (e) {

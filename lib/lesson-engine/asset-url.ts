@@ -30,9 +30,21 @@
  * to a CDN.
  */
 
-/** Bucket-relative prefixes this module owns; anything else passes through. */
-const V2_AUDIO = "/audio/lessons-v2/";
-const V2_IMAGE = "/images/lessons-v2/";
+/**
+ * Bucket-relative prefixes this module owns; anything else passes through.
+ *
+ * ‼️ QUIZZES ARE A SEPARATE TREE. Quiz narration, hints and explanations live
+ * under /audio/quizzes-v2/, not /audio/lessons-v2/. The first version of this
+ * module handled only the lesson prefixes, which left all 9,370 quiz audio
+ * references falling through unrewritten to an app-relative path that 404s in
+ * production - every quiz and every unit exam silently mute. Lessons worked, so
+ * nothing looked broken.
+ *
+ * Anything added to app/data later that ships its own asset tree has to be
+ * added here too, or it fails exactly the same silent way.
+ */
+const AUDIO_PREFIXES = ["/audio/lessons-v2/", "/audio/quizzes-v2/"];
+const IMAGE_PREFIXES = ["/images/lessons-v2/", "/images/quizzes-v2/"];
 
 /**
  * Read at call time rather than module load. `NEXT_PUBLIC_*` is inlined
@@ -56,7 +68,9 @@ export function lessonAssetUrl(pathOrUrl: string): string {
   const base = lessonAssetBase();
   if (!base) return pathOrUrl;
 
-  if (pathOrUrl.startsWith(V2_AUDIO)) return base + pathOrUrl;
-  if (pathOrUrl.startsWith(V2_IMAGE)) return base + pathOrUrl.replace(/\.png$/i, ".webp");
+  if (AUDIO_PREFIXES.some((p) => pathOrUrl.startsWith(p))) return base + pathOrUrl;
+  if (IMAGE_PREFIXES.some((p) => pathOrUrl.startsWith(p))) {
+    return base + pathOrUrl.replace(/\.png$/i, ".webp");
+  }
   return pathOrUrl;
 }
