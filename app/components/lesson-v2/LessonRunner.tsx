@@ -11,6 +11,7 @@ import { Bunny, BunnyReaction, reactionHoldMs } from "@/app/_components/Bunny/Bu
 import TextFX from "./TextFX";
 import PromptText, { TeachingLine, ReadAloudPrompt, splitReadAloud } from "./PromptText";
 import Diagram from "./Diagram";
+import SpokenText from "./SpokenText";
 import LessonImage from "./LessonImage";
 import { playUrl } from "@/lib/lesson-engine/cues";
 
@@ -308,6 +309,32 @@ export default function LessonRunner({
     });
   }, [scene.id, scene.diagram, scene.narration?.script, timing]);
 
+  /**
+   * When the narration says each word of a given display string.
+   *
+   * The whole engine has had this alignment available and used it in exactly one
+   * component. Any text on screen that the teacher also reads aloud can follow
+   * the voice; a word the script never says stays plain rather than guessing.
+   */
+  function spokenStarts(display: string): number[] | undefined {
+    const script = scene.narration?.script;
+    if (!display || !script || !timing?.words?.length) return undefined;
+    const norm = (w: string) => w.toLowerCase().replace(/[^a-z0-9']/g, "");
+    const scriptWords = script.split(/\s+/);
+    const starts = alignTextToTimings(script, timing.words);
+    let cursor = 0;
+    return display.split(/\s+/).map((raw) => {
+      const w = norm(raw);
+      if (!w) return NaN;
+      const rel = scriptWords.slice(cursor).findIndex((sw) => norm(sw) === w);
+      if (rel < 0) return NaN;
+      const i = cursor + rel;
+      if (starts[i] == null) return NaN;
+      cursor = i + 1;
+      return Math.round(starts[i] * 1000);
+    });
+  }
+
   const full = scene.layout === "full";
   let leftSlot: ReactNode = undefined;
   let contentSlot: ReactNode;
@@ -360,11 +387,11 @@ export default function LessonRunner({
           </div>
           {readAloud ? (
             <div className="max-w-[640px]">
-              <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} />
+              <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} wordStartsMs={spokenStarts(readAloud.passage)} />
             </div>
           ) : (
             <div className="max-w-[600px] text-[32px] font-bold leading-[1.2] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
-              <PromptText text={scene.prompt} />
+              <SpokenText text={scene.prompt} wordStartsMs={spokenStarts(scene.prompt)} pendingClassName="text-zinc-400" />
             </div>
           )}
         </div>
@@ -403,10 +430,10 @@ export default function LessonRunner({
             {PURPOSE_LABEL[scene.purpose] ?? scene.purpose}
           </div>
           {readAloud ? (
-            <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} />
+            <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} wordStartsMs={spokenStarts(readAloud.passage)} />
           ) : (
             <div className="text-[38px] font-bold leading-[1.18] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
-              <PromptText text={scene.prompt} />
+              <SpokenText text={scene.prompt} wordStartsMs={spokenStarts(scene.prompt)} pendingClassName="text-zinc-400" />
             </div>
           )}
           {scene.fx && !fxHasStage && (

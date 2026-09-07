@@ -1,5 +1,7 @@
 "use client";
 
+import SpokenText from "./SpokenText";
+
 /**
  * Authored emphasis, rendered rather than leaked.
  *
@@ -84,12 +86,27 @@ export function splitReadAloud(prompt: string): { lead: string; passage: string 
  * indented, larger, and in the brand violet, which is also the colour the
  * karaoke highlight uses, so "purple means read this" is consistent.
  */
-export function ReadAloudPrompt({ lead, passage }: { lead: string; passage: string }) {
+export function ReadAloudPrompt({
+  lead,
+  passage,
+  wordStartsMs,
+}: {
+  lead: string;
+  passage: string;
+  /** Lights the passage word by word as the teacher reads it. */
+  wordStartsMs?: number[];
+}) {
   return (
     <>
       <div className="text-[26px] font-semibold leading-snug text-zinc-500">{lead}</div>
-      <div className="mt-3 border-l-4 border-violet-400 pl-5 text-[38px] font-bold leading-[1.2] tracking-tight text-violet-700 [text-wrap:balance]">
-        {passage}
+      <div className="mt-3 border-l-4 border-violet-400 pl-5 text-[38px] font-bold leading-[1.2] tracking-tight [text-wrap:balance]">
+        <SpokenText
+          text={passage}
+          wordStartsMs={wordStartsMs}
+          activeClassName="text-violet-700"
+          spokenClassName="text-violet-700"
+          pendingClassName="text-violet-300"
+        />
       </div>
     </>
   );
