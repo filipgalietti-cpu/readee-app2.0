@@ -33,12 +33,17 @@ export default function LessonRunner({
   lesson,
   onEvent,
   onComplete,
+  onScene,
 }: {
   lesson: LessonDef;
   onEvent?: (e: LearningEvent) => void;
   /** Fires once, when the child finishes the last scene. The runner itself
    *  persists nothing - whoever mounts it decides what a finish means. */
   onComplete?: () => void;
+  /** Fires on every scene change, including the first. Lets a host follow along
+   *  without reaching into the runner's state - the founder review tool pins its
+   *  thumbs to whatever is actually on screen. Not used in the child's path. */
+  onScene?: (sceneId: string, index: number, total: number) => void;
 }) {
   const [idx, setIdx] = useState(0);
   // Scene-SCOPED flags: store the scene id the flag belongs to instead of a
@@ -66,6 +71,7 @@ export default function LessonRunner({
   useEffect(() => {
     const sid = scene.id;
     sceneStart.current = Date.now();
+    onScene?.(sid, idx, lesson.scenes.length);
     if (scene.narration) {
       playNarration(scene.narration.audio, {
         cues: scene.cues,
