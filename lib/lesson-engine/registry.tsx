@@ -31,6 +31,11 @@ export interface InteractionProps<D extends InteractionDef = InteractionDef> {
   onItemCorrect?: () => void;
   /** Question-specific feedback clips: hint after wrong #1, explain on give-up. */
   feedbackAudio?: { hint?: string; explain?: string };
+  /** True when the scene's prompt already displays the text to read, so the
+   *  interaction must not print it a second time. 222 of 422 speak prompts
+   *  contain their own passage ("Read it out loud: She reads and they play."),
+   *  and showing it again overflowed a pill sized for one word. */
+  textShownInPrompt?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

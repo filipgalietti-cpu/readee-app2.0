@@ -61,3 +61,36 @@ export function TeachingLine({ text }: { text: string }) {
     </div>
   );
 }
+
+
+/** Does this prompt carry the passage the child must read? */
+export function splitReadAloud(prompt: string): { lead: string; passage: string } | null {
+  const m = /^([^:]{2,40}:)\s*(.+)$/.exec(prompt.trim());
+  if (!m) return null;
+  const passage = m[2].trim();
+  // A two-word tail is a label, not a passage worth its own block.
+  if (passage.split(/\s+/).length < 3) return null;
+  return { lead: m[1].trim(), passage };
+}
+
+/**
+ * "Read it out loud: She reads and they play."
+ *
+ * One string doing two jobs - an instruction to the child and the sentence they
+ * must actually read - set in one weight, at one size, on one line. A first
+ * grader has to work out where the instruction stops before they can start.
+ *
+ * So the instruction stays quiet and the passage becomes the thing on the page:
+ * indented, larger, and in the brand violet, which is also the colour the
+ * karaoke highlight uses, so "purple means read this" is consistent.
+ */
+export function ReadAloudPrompt({ lead, passage }: { lead: string; passage: string }) {
+  return (
+    <>
+      <div className="text-[26px] font-semibold leading-snug text-zinc-500">{lead}</div>
+      <div className="mt-3 border-l-4 border-violet-400 pl-5 text-[38px] font-bold leading-[1.2] tracking-tight text-violet-700 [text-wrap:balance]">
+        {passage}
+      </div>
+    </>
+  );
+}

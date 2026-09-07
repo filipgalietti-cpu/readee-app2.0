@@ -7,9 +7,9 @@ import { getInteraction } from "@/lib/lesson-engine/registry";
 import { emitLearningEvent } from "@/lib/lesson-engine/events";
 import { playNarration, stopNarration, replayNarration, speak, sfxComplete, alignTextToTimings } from "@/lib/lesson-engine/cues";
 import { LessonShellDesktop, CelebrationLeftPanel } from "@/app/components/lesson/LessonShellDesktop";
-import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
+import { Bunny, BunnyReaction, reactionHoldMs } from "@/app/_components/Bunny/Bunny";
 import TextFX from "./TextFX";
-import PromptText, { TeachingLine } from "./PromptText";
+import PromptText, { TeachingLine, ReadAloudPrompt, splitReadAloud } from "./PromptText";
 import LessonImage from "./LessonImage";
 import { playUrl } from "@/lib/lesson-engine/cues";
 
@@ -185,6 +185,13 @@ export default function LessonRunner({
 
   const canAdvance = scene.gate === "none" || solved;
 
+  // A speak scene's prompt usually carries the passage itself ("Read it out
+  // loud: She reads and they play."). Split it so the instruction stays quiet
+  // and the passage becomes the thing on the page - and tell the interaction,
+  // so it does not print the same sentence a second time inside a pill sized
+  // for one word.
+  const readAloud = inter?.type === "speak" ? splitReadAloud(String(scene.prompt ?? "")) : null;
+
   const Renderer = inter ? getInteraction(inter.type) : null;
   // key=scene.id is LOAD-BEARING: consecutive scenes often use the same
   // interaction type (transform → transform), and without a key React reuses
@@ -200,6 +207,7 @@ export default function LessonRunner({
         words={lesson.timings?.[`${scene.id}-sentence`]?.words}
         onSolved={handleSolved}
         onWrong={() => setWrongTick((t) => t + 1)}
+        textShownInPrompt={!!readAloud}
       />
     ) : null;
 
@@ -246,9 +254,15 @@ export default function LessonRunner({
           <div className="rounded-full bg-violet-50 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-violet-500">
             {PURPOSE_LABEL[scene.purpose] ?? scene.purpose}
           </div>
-          <div className="max-w-[600px] text-[32px] font-bold leading-[1.2] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
-            <PromptText text={scene.prompt} />
-          </div>
+          {readAloud ? (
+            <div className="max-w-[640px]">
+              <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} />
+            </div>
+          ) : (
+            <div className="max-w-[600px] text-[32px] font-bold leading-[1.2] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
+              <PromptText text={scene.prompt} />
+            </div>
+          )}
         </div>
         {scene.fx && <TeachingLine text={scene.fx.text} />}
         {scene.image && <LessonImage src={scene.image} containerClassName="h-40 w-64 rounded-2xl" className="h-full w-full object-contain drop-shadow-sm" />}
@@ -281,9 +295,13 @@ export default function LessonRunner({
           <div className="mb-3 inline-flex rounded-full bg-violet-50 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-violet-500">
             {PURPOSE_LABEL[scene.purpose] ?? scene.purpose}
           </div>
-          <div className="text-[38px] font-bold leading-[1.18] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
-            <PromptText text={scene.prompt} />
-          </div>
+          {readAloud ? (
+            <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} />
+          ) : (
+            <div className="text-[38px] font-bold leading-[1.18] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
+              <PromptText text={scene.prompt} />
+            </div>
+          )}
           {scene.fx && !fxHasStage && (
             <div className="mt-4">
               <TeachingLine text={scene.fx.text} />
@@ -345,7 +363,13 @@ function BunnyCorner({ happy, wrongTick }: { happy: boolean; wrongTick: number }
     if (wrongTick > 0 && wrongTick !== lastTick.current) {
       lastTick.current = wrongTick;
       setSad(true);
-      const t = window.setTimeout(() => setSad(false), 1800);
+      // ‼️ The head-scratch was always here and nobody had ever seen it. The paw
+      // in .reaction-incorrect animates from 36% to 64% of a 5s cycle - 1.8s to
+      // 3.2s - and this dismissed the reaction at a hardcoded 1800ms, the exact
+      // frame it becomes visible. reactionHoldMs exists to answer this and was
+      // being ignored; it returns 4000ms, which lands in the rest window after
+      // the scratch completes.
+      const t = window.setTimeout(() => setSad(false), reactionHoldMs("incorrect"));
       return () => clearTimeout(t);
     }
   }, [wrongTick]);
@@ -354,8 +378,12 @@ function BunnyCorner({ happy, wrongTick }: { happy: boolean; wrongTick: number }
     <motion.div
       className="pointer-events-none fixed bottom-24 left-8 z-[110] h-40 w-40"
       initial={false}
-      animate={happy ? { y: [0, -26, 0, -12, 0], scale: [1, 1.08, 1] } : { y: 0, scale: 1 }}
-      transition={happy ? { duration: 0.5, ease: "easeOut" } : { duration: 0.2 }}
+      // No transform on correct. BunnyReaction already animates the rig; adding
+      // a 26px double-bounce over 0.5s on top of it made the mascot look like it
+      // was convulsing before settling into its celebration. Two animation
+      // systems driving one character is one too many.
+      animate={{ y: 0, scale: 1 }}
+      transition={{ duration: 0.2 }}
     >
       {happy ? (
         <BunnyReaction outfitId={null} state="correct" />

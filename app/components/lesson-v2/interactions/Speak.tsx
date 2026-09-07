@@ -5,6 +5,7 @@ import type { SpeakDef } from "@/lib/lesson-engine/types";
 import { sfxCorrect, playTryAgain, playPraise, playNiceTry, speak as sayFallback } from "@/lib/lesson-engine/cues";
 import { startPronAssessment, type PAPhrase, type StreamController } from "@/app/(protected)/luna/_components/azure-stream";
 import { FluentIcon } from "@/app/_components/FluentIcon";
+import LunaOrb from "@/app/(protected)/luna/_components/LunaOrb";
 
 // Minimal Web Speech API typing (not in the DOM lib).
 interface SRResult { transcript: string }
@@ -50,8 +51,11 @@ async function speechToken(): Promise<{ token: string; region: string } | null> 
 export default function Speak({
   data,
   onSolved,
+  textShownInPrompt = false,
 }: {
   data: SpeakDef;
+  /** The scene prompt already displays the passage, so do not print it twice. */
+  textShownInPrompt?: boolean;
   onSolved: (meta?: { attempts?: number; correct?: boolean }) => void;
 }) {
   const [status, setStatus] = useState<"idle" | "listening" | "good" | "retry">("idle");
@@ -61,6 +65,9 @@ export default function Speak({
   const doneRef = useRef(false);
   const ctrlRef = useRef<StreamController | null>(null);
   const micRef = useRef<{ ctx: AudioContext; stream: MediaStream } | null>(null);
+  // Feeds the Luna orb, so it responds to the child speaking rather than
+  // looping an idle animation at them.
+  const [analyser, setAnalyser] = useState<AnalyserNode | null>(null);
   const SR = getSR();
   // TWO DIFFERENT TASKS, and the engine used to guess between them by word
   // count plus the literal substring " my ". That guess was wrong both ways:
@@ -183,6 +190,8 @@ export default function Speak({
         proc.onaudioprocess = (e) => ctrlRef.current?.pushSamples(new Float32Array(e.inputBuffer.getChannelData(0)), ctx.sampleRate);
         const sink = ctx.createGain(); sink.gain.value = 0;
         src.connect(proc); proc.connect(sink); sink.connect(ctx.destination);
+        const an = ctx.createAnalyser(); an.fftSize = 256; src.connect(an);
+        setAnalyser(an);
         mic = { ctx, stream };
       } catch { void ctrl.stop(); return; }
       if (dead) {
@@ -241,16 +250,40 @@ export default function Speak({
               : {}),
           }}
         >
-          {/* A read task always shows its text: a child cannot read aloud what they
-                cannot see. An accept-list keeps hiding it, because the list is the
-                answer ("Say what made the puddles!" / "rain raining"). */}
-            {readMode ? data.text.toUpperCase() : status === "good" ? "YES!" : "?"}
+          {/* Show the text only when the prompt is NOT already showing it. A
+              read task has to be visible somewhere, but this tile is sized for
+              one word and a whole sentence spilled straight out of it. An
+              accept-list stays hidden either way: the list is the answer. */}
+          {readMode
+            ? textShownInPrompt
+              ? status === "good"
+                ? "YES!"
+                : "listening…"
+              : data.text.toUpperCase()
+            : status === "good"
+              ? "YES!"
+              : "?"}
         </div>
       </div>
       {data.allowHear && (
         <button className="gb-secondary" onClick={() => sayFallback(data.text)} aria-label="Hear it">
           ► hear it first
         </button>
+      )}
+      {/* The Luna orb, same component and same size the placement assessment uses.
+          Every other place a child speaks to Readee shows it, so a lesson that
+          asks for their voice and shows only a grey pill reads as a different,
+          less alive product - and gives no feedback that the mic is hearing
+          anything. It is driven by the live analyser, so it moves with the
+          child's voice rather than looping. */}
+      {status !== "good" && (
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 6 }}>
+          <LunaOrb
+            mode={status === "listening" ? "listening" : "idle"}
+            analyser={analyser}
+            size={88}
+          />
+        </div>
       )}
       {engine === "azure" && status !== "good" ? (
         <div className="gb-piece gb-listening" style={{ width: "auto", padding: "0 22px", display: "inline-flex", alignItems: "center", gap: 8 }}>

@@ -104,7 +104,7 @@ export const grammarBuilders: LessonDef = {
       gate: "interaction",
       prompt: "Is it a whole sentence? Sort each one.",
       narration: { audio: A("apply-sort-complete"), script: "Time to sort. Read each card. Ask yourself, does it tell who, and what they do? If it tells the whole idea, it goes under Complete. If a part is missing, it goes under Not Yet." },
-      interaction: { type: "sort", buckets: ["Complete","Not Yet"], items: [{ label: "the cat naps", bucket: "Complete" }, { label: "he hops", bucket: "Complete" }, { label: "they sing", bucket: "Complete" }, { label: "the little dog", bucket: "Not Yet" }, { label: "runs and jumps", bucket: "Not Yet" }, { label: "in the box", bucket: "Not Yet" }], coachWrong: "Read that card again. Does it tell who? Does it tell what they do? It needs both parts to be complete." },
+      interaction: { type: "sort", buckets: ["Complete","Not Yet"], items: [{ label: "The cat naps.", bucket: "Complete" }, { label: "He hops.", bucket: "Complete" }, { label: "They sing.", bucket: "Complete" }, { label: "the little dog", bucket: "Not Yet" }, { label: "runs and jumps", bucket: "Not Yet" }, { label: "in the box", bucket: "Not Yet" }], coachWrong: "Read that card again. Does it tell who? Does it tell what they do? It needs both parts to be complete." },
     },
     {
       id: "apply-speak-sentence",
