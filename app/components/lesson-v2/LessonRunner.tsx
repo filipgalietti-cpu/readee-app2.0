@@ -220,6 +220,49 @@ export default function LessonRunner({
     </button>
   );
 
+  /**
+   * When each fx word should appear, aligned to the narration.
+   *
+   * Word reveals ran on a fixed 0.13s ladder, so "he she it they" marched across
+   * the screen on its own schedule while the teacher explained them one at a
+   * time. Now each token waits for its own moment in the script; a token the
+   * narration never says keeps the even stagger.
+   */
+  const fxTokenDelaysMs = useMemo(() => {
+    const fx = scene.fx;
+    const script = scene.narration?.script;
+    if (!fx?.text || !script || !timing?.words?.length) return undefined;
+    const norm = (w: string) => w.toLowerCase().replace(/[^a-z0-9']/g, "");
+    const scriptWords = script.split(/\s+/);
+    const starts = alignTextToTimings(script, timing.words);
+    // Matches must move FORWARD through the script. A reveal is a sequence, so
+    // token n cannot land before token n-1: "person, place, or thing" appears at
+    // 4.9s and "one thing" at 26s, and a first-occurrence match put the second
+    // pair's word at the start of the sentence.
+    let cursor = 0;
+    // Only time words that carry meaning. "a", "or", "one" occur all over a
+    // script, so the first-occurrence match lands them seconds before the phrase
+    // they belong to - "he = a boy" had "a" appearing at 7.5s and "boy" at 7.7s,
+    // but "or" at 4.6s, scattering the line. Function words keep the even
+    // stagger and ride along with their neighbours.
+    const STOP = new Set([
+      "a", "an", "the", "and", "or", "of", "to", "in", "on", "is", "are", "for",
+      "one", "two", "more", "=",
+    ]);
+    return fx.text.split(/\s+/).map((raw) => {
+      const w = norm(raw.replace(/\*\*/g, "").split("|")[0]);
+      if (!w || STOP.has(w)) return NaN;
+      // First unused occurrence, so a word repeated in the script lines up with
+      // the repeated mention rather than always the first one.
+      const rel = scriptWords.slice(cursor).findIndex((sw) => norm(sw) === w);
+      if (rel < 0) return NaN;
+      const i = cursor + rel;
+      if (starts[i] == null) return NaN;
+      cursor = i + 1;
+      return Math.round(starts[i] * 1000);
+    });
+  }, [scene.id, scene.fx?.text, scene.narration?.script, timing]);
+
   const full = scene.layout === "full";
   let leftSlot: ReactNode = undefined;
   let contentSlot: ReactNode;
@@ -284,7 +327,7 @@ export default function LessonRunner({
           <LessonImage src={scene.image} containerClassName="h-[92%] w-[94%] rounded-3xl" className="h-full w-full rounded-3xl object-contain drop-shadow-xl" />
         </div>
       ) : scene.fx ? (
-        <TextFX text={scene.fx.text} effect={scene.fx.effect} fireAtMs={fxFireAtMs} />
+        <TextFX text={scene.fx.text} effect={scene.fx.effect} fireAtMs={fxFireAtMs} tokenDelaysMs={fxTokenDelaysMs} />
       ) : (
         <CelebrationLeftPanel />
       )

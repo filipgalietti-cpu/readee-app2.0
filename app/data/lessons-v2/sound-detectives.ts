@@ -78,7 +78,7 @@ export const soundDetectives: LessonDef = {
       purpose: "guided",
       gate: "interaction",
       prompt: "Find the first sound: **pig**.",
-      narration: { audio: A("guided-first-sound-pig"), script: "Great job! Now it's your turn. Listen to the word pig, stretched out slowly. Puh. Iii. Guh. What is the very first sound you hear in pig? Tap the sound!" },
+      narration: { audio: A("guided-first-sound-pig"), script: "Now it's your turn. Listen to the word pig, stretched out slowly. Puh. Iii. Guh. What is the very first sound you hear in pig? Tap the sound!" },
       interaction: { type: "choose", options: [{ id: "p", label: "p", audio: W("p"), image: IMG("p") }, { id: "i", label: "i", audio: W("i"), image: IMG("i") }, { id: "g", label: "g", audio: W("g"), image: IMG("g") }], correctId: "p", coachWrong: "Almost! Remember, the first sound is the very first one you hear when you say pig slowly. Try again!" },
     },
     {

@@ -805,122 +805,112 @@
   ]
  },
  "guided-sequence-left-right": {
-  "duration": 12.7,
+  "duration": 10.26,
   "words": [
    {
-    "word": "Great",
+    "word": "Now,",
     "start": 0.0,
-    "end": 0.72
-   },
-   {
-    "word": "job!",
-    "start": 0.72,
-    "end": 1.3
-   },
-   {
-    "word": "Now",
-    "start": 2.1,
-    "end": 2.5
+    "end": 0.46
    },
    {
     "word": "let's",
-    "start": 2.5,
-    "end": 3.02
+    "start": 0.66,
+    "end": 1.12
    },
    {
     "word": "practice",
-    "start": 3.02,
-    "end": 3.42
+    "start": 1.12,
+    "end": 1.56
    },
    {
     "word": "reading",
-    "start": 3.42,
-    "end": 3.86
+    "start": 1.56,
+    "end": 2.04
    },
    {
     "word": "across.",
-    "start": 3.86,
-    "end": 4.46
+    "start": 2.04,
+    "end": 2.46
    },
    {
     "word": "Drag",
-    "start": 5.46,
-    "end": 5.9
+    "start": 3.48,
+    "end": 3.88
    },
    {
     "word": "the",
-    "start": 5.9,
-    "end": 6.22
+    "start": 3.88,
+    "end": 4.16
    },
    {
     "word": "words",
-    "start": 6.22,
-    "end": 6.54
+    "start": 4.16,
+    "end": 4.46
    },
    {
     "word": "into",
-    "start": 6.54,
-    "end": 7.12
+    "start": 4.46,
+    "end": 4.88
    },
    {
     "word": "the",
-    "start": 7.12,
-    "end": 7.36
+    "start": 4.88,
+    "end": 5.1
    },
    {
     "word": "correct",
-    "start": 7.36,
-    "end": 7.76
+    "start": 5.1,
+    "end": 5.46
    },
    {
     "word": "order",
-    "start": 7.76,
-    "end": 8.28
+    "start": 5.46,
+    "end": 6.0
    },
    {
     "word": "from",
-    "start": 8.28,
-    "end": 8.82
+    "start": 6.0,
+    "end": 6.66
    },
    {
     "word": "left",
-    "start": 8.82,
-    "end": 9.4
+    "start": 6.66,
+    "end": 7.0
    },
    {
     "word": "to",
-    "start": 9.4,
-    "end": 10.08
+    "start": 7.0,
+    "end": 7.46
    },
    {
     "word": "right,",
-    "start": 10.08,
-    "end": 10.46
+    "start": 7.46,
+    "end": 7.78
    },
    {
     "word": "just",
-    "start": 10.98,
-    "end": 11.28
+    "start": 8.26,
+    "end": 8.6
    },
    {
     "word": "like",
-    "start": 11.28,
-    "end": 11.58
+    "start": 8.6,
+    "end": 9.04
    },
    {
-    "word": "Wormi",
-    "start": 11.58,
-    "end": 12.02
+    "word": "Wormy",
+    "start": 9.04,
+    "end": 9.6
    },
    {
     "word": "showed",
-    "start": 12.02,
-    "end": 12.3
+    "start": 9.6,
+    "end": 9.88
    },
    {
     "word": "us.",
-    "start": 12.3,
-    "end": 12.7
+    "start": 9.88,
+    "end": 10.26
    }
   ]
  },

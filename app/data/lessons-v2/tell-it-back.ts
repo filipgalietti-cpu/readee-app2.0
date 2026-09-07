@@ -67,7 +67,7 @@ export const tellItBack: LessonDef = {
       gate: "interaction",
       prompt: "What happened next?",
       fx: {"text":"The **middle** is what happened next.","effect":"underline"},
-      narration: { audio: A("model-middle"), script: "Great job! After the beginning, we think about the middle. The middle is what happened next in the story. In our story, the wolf came and blew down two houses. Tap the picture for 'huff'." },
+      narration: { audio: A("model-middle"), script: "After the beginning, we think about the middle. The middle is what happened next in the story. In our story, the wolf came and blew down two houses. Tap the picture for 'huff'." },
       interaction: { type: "choose", options: [{ id: "huff", label: "HUFF", audio: W("huff"), image: IMG("huff") }, { id: "safe", label: "SAFE", audio: W("safe"), image: IMG("safe") }, { id: "house", label: "HOUSE", audio: W("house"), image: IMG("house") }], correctId: "huff", coachWrong: "Hmm, that wasn't exactly the middle. The wolf huffed and puffed in the middle." },
     },
     {

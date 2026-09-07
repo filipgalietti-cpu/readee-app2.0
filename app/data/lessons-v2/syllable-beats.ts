@@ -63,7 +63,7 @@ export const syllableBeats: LessonDef = {
       prompt: "Watch me clap 'sun'.",
       image: IMG("sun"),
       fx: {"text":"sun","effect":"underline"},
-      narration: { audio: A("model-one-sun"), script: "Great job watching! Let's try another one-beat word. Listen as I clap for sun. Sun has one beat too!" },
+      narration: { audio: A("model-one-sun"), script: "Let's try another one-beat word. Listen as I clap for sun. Sun has one beat too!" },
     },
     {
       id: "guided-one-cat",

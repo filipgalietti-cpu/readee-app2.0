@@ -875,7 +875,7 @@
   ]
  },
  "guided-match-t": {
-  "duration": 13.36,
+  "duration": 13.38,
   "words": [
    {
     "word": "Excellent!",
@@ -898,7 +898,7 @@
     "end": 2.2
    },
    {
-    "word": "sss",
+    "word": "Ss",
     "start": 2.2,
     "end": 2.84
    },
@@ -948,18 +948,18 @@
     "end": 8.46
    },
    {
-    "word": "tt",
+    "word": "Tt,",
     "start": 8.46,
-    "end": 10.1
+    "end": 9.92
    },
    {
-    "word": "tt.",
-    "start": 10.1,
-    "end": 10.7
+    "word": "Tt.",
+    "start": 9.92,
+    "end": 10.6
    },
    {
     "word": "Tap",
-    "start": 10.9,
+    "start": 10.92,
     "end": 11.36
    },
    {
@@ -988,9 +988,9 @@
     "end": 12.84
    },
    {
-    "word": "tt.",
+    "word": "Tt.",
     "start": 12.84,
-    "end": 13.36
+    "end": 13.38
    }
   ]
  },
@@ -1110,117 +1110,87 @@
   ]
  },
  "model-match-m": {
-  "duration": 12.48,
+  "duration": 8.62,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.52
-   },
-   {
-    "word": "job",
-    "start": 0.52,
-    "end": 0.88
-   },
-   {
-    "word": "saying,",
-    "start": 0.88,
-    "end": 1.36
-   },
-   {
-    "word": "mm.",
-    "start": 2.18,
-    "end": 2.72
-   },
-   {
     "word": "Now",
-    "start": 3.44,
-    "end": 4.18
+    "start": 0.0,
+    "end": 0.62
    },
    {
     "word": "let's",
-    "start": 4.18,
-    "end": 4.56
+    "start": 0.62,
+    "end": 1.56
    },
    {
     "word": "find",
-    "start": 4.56,
-    "end": 4.78
+    "start": 1.56,
+    "end": 1.76
    },
    {
     "word": "a",
-    "start": 4.78,
-    "end": 4.98
+    "start": 1.76,
+    "end": 1.98
    },
    {
     "word": "word",
-    "start": 4.98,
-    "end": 5.24
+    "start": 1.98,
+    "end": 2.24
    },
    {
     "word": "that",
-    "start": 5.24,
-    "end": 5.64
+    "start": 2.24,
+    "end": 2.74
    },
    {
     "word": "starts",
-    "start": 5.64,
-    "end": 6.02
+    "start": 2.74,
+    "end": 3.06
    },
    {
     "word": "with",
-    "start": 6.02,
-    "end": 6.36
+    "start": 3.06,
+    "end": 3.4
    },
    {
-    "word": "a",
-    "start": 6.36,
-    "end": 6.68
-   },
-   {
-    "word": "mm",
-    "start": 6.68,
-    "end": 7.76
-   },
-   {
-    "word": "sound.",
-    "start": 7.76,
-    "end": 8.42
+    "word": "mmm",
+    "start": 3.4,
+    "end": 4.22
    },
    {
     "word": "Tap",
-    "start": 9.18,
-    "end": 9.48
+    "start": 5.3,
+    "end": 5.78
    },
    {
     "word": "the",
-    "start": 9.48,
-    "end": 9.74
+    "start": 5.78,
+    "end": 6.12
    },
    {
     "word": "picture",
-    "start": 9.74,
-    "end": 10.14
+    "start": 6.12,
+    "end": 6.54
    },
    {
     "word": "that",
-    "start": 10.14,
-    "end": 10.46
+    "start": 6.54,
+    "end": 6.98
    },
    {
     "word": "starts",
-    "start": 10.46,
-    "end": 10.86
+    "start": 6.98,
+    "end": 7.38
    },
    {
     "word": "with",
-    "start": 10.86,
-    "end": 11.32
+    "start": 7.38,
+    "end": 7.8
    },
    {
-    "word": "mm.",
-    "start": 11.32,
-    "end": 12.48
+    "word": "mmm",
+    "start": 7.8,
+    "end": 8.62
    }
   ]
  },

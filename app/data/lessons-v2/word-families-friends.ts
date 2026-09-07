@@ -69,7 +69,7 @@ export const wordFamiliesFriends: LessonDef = {
       layout: "full",
       gate: "interaction",
       prompt: "Your turn to sort!",
-      narration: { audio: A("guided-sort-foods-animals"), script: "Great job! Now, help Lexi sort these words. Tap each word to hear it. Then drag it to its right home, Foods or Animals." },
+      narration: { audio: A("guided-sort-foods-animals"), script: "Now, help Lexi sort these words. Tap each word to hear it. Then drag it to its right home, Foods or Animals." },
       interaction: { type: "sort", buckets: ["Foods","Animals"], items: [{ label: "DOG", bucket: "Animals", audio: W("dog"), image: IMG("dog") }, { label: "MILK", bucket: "Foods", audio: W("milk"), image: IMG("milk") }, { label: "PEAR", bucket: "Foods", audio: W("pear"), image: IMG("pear") }], coachWrong: "Hmm, is that a food or an animal? Listen to the word again and try to put it in the correct home." },
     },
     {

@@ -725,132 +725,122 @@
   ]
  },
  "guided-the": {
-  "duration": 12.84,
+  "duration": 10.66,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.72
-   },
-   {
-    "word": "job!",
-    "start": 0.72,
-    "end": 1.26
-   },
-   {
     "word": "Now",
-    "start": 1.92,
-    "end": 2.4
+    "start": 0.0,
+    "end": 0.5
    },
    {
     "word": "it's",
-    "start": 2.4,
-    "end": 2.7
+    "start": 0.5,
+    "end": 0.96
    },
    {
     "word": "your",
-    "start": 2.7,
-    "end": 2.94
+    "start": 0.96,
+    "end": 1.18
    },
    {
     "word": "turn",
-    "start": 2.94,
-    "end": 3.3
+    "start": 1.18,
+    "end": 1.64
    },
    {
     "word": "to",
-    "start": 3.3,
-    "end": 3.56
+    "start": 1.64,
+    "end": 1.86
    },
    {
     "word": "read",
-    "start": 3.56,
-    "end": 3.82
+    "start": 1.86,
+    "end": 2.26
    },
    {
     "word": "the.",
-    "start": 3.82,
-    "end": 4.6
+    "start": 2.26,
+    "end": 2.86
    },
    {
     "word": "Tap",
-    "start": 5.78,
-    "end": 5.98
+    "start": 3.64,
+    "end": 3.8
    },
    {
     "word": "the",
-    "start": 5.98,
-    "end": 6.28
+    "start": 3.8,
+    "end": 4.08
    },
    {
     "word": "word",
-    "start": 6.28,
-    "end": 6.62
+    "start": 4.08,
+    "end": 4.4
    },
    {
     "word": "the",
-    "start": 6.62,
-    "end": 7.24
+    "start": 4.4,
+    "end": 4.98
    },
    {
     "word": "to",
-    "start": 7.24,
-    "end": 7.86
+    "start": 4.98,
+    "end": 5.7
    },
    {
     "word": "hear",
-    "start": 7.86,
-    "end": 8.1
+    "start": 5.7,
+    "end": 5.92
    },
    {
     "word": "it.",
-    "start": 8.1,
-    "end": 8.48
+    "start": 5.92,
+    "end": 6.3
    },
    {
     "word": "Remember,",
-    "start": 9.04,
-    "end": 9.52
+    "start": 6.6,
+    "end": 7.22
    },
    {
     "word": "it's",
-    "start": 10.06,
-    "end": 10.26
+    "start": 7.64,
+    "end": 8.1
    },
    {
     "word": "a",
-    "start": 10.26,
-    "end": 10.36
+    "start": 8.1,
+    "end": 8.22
    },
    {
     "word": "snap",
-    "start": 10.36,
-    "end": 10.88
+    "start": 8.22,
+    "end": 8.6
    },
    {
     "word": "word,",
-    "start": 10.88,
-    "end": 11.36
+    "start": 8.6,
+    "end": 9.02
    },
    {
     "word": "so",
-    "start": 11.66,
-    "end": 11.9
+    "start": 9.24,
+    "end": 9.56
    },
    {
     "word": "read",
-    "start": 11.9,
-    "end": 12.24
+    "start": 9.56,
+    "end": 9.88
    },
    {
     "word": "it",
-    "start": 12.24,
-    "end": 12.42
+    "start": 9.88,
+    "end": 10.14
    },
    {
     "word": "fast.",
-    "start": 12.42,
-    "end": 12.84
+    "start": 10.14,
+    "end": 10.66
    }
   ]
  },

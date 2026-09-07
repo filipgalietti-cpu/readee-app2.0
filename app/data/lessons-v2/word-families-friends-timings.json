@@ -960,127 +960,117 @@
   ]
  },
  "guided-sort-foods-animals": {
-  "duration": 12.76,
+  "duration": 11.16,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.44
-   },
-   {
-    "word": "job!",
-    "start": 0.44,
-    "end": 1.0
-   },
-   {
     "word": "Now,",
-    "start": 1.7,
-    "end": 2.0
+    "start": 0.0,
+    "end": 0.54
    },
    {
     "word": "help",
-    "start": 2.3,
-    "end": 2.84
+    "start": 0.9,
+    "end": 1.3
    },
    {
     "word": "Lexi",
-    "start": 2.84,
-    "end": 3.34
+    "start": 1.3,
+    "end": 1.86
    },
    {
     "word": "sort",
-    "start": 3.34,
-    "end": 3.8
+    "start": 1.86,
+    "end": 2.22
    },
    {
     "word": "these",
-    "start": 3.8,
-    "end": 4.16
+    "start": 2.22,
+    "end": 2.56
    },
    {
     "word": "words.",
-    "start": 4.16,
-    "end": 4.6
+    "start": 2.56,
+    "end": 3.0
    },
    {
     "word": "Tap",
-    "start": 5.2,
-    "end": 5.52
+    "start": 3.76,
+    "end": 4.12
    },
    {
     "word": "each",
-    "start": 5.52,
-    "end": 6.06
+    "start": 4.12,
+    "end": 4.62
    },
    {
     "word": "word",
-    "start": 6.06,
-    "end": 6.38
+    "start": 4.62,
+    "end": 4.98
    },
    {
     "word": "to",
-    "start": 6.38,
-    "end": 6.74
+    "start": 4.98,
+    "end": 5.38
    },
    {
     "word": "hear",
-    "start": 6.74,
-    "end": 6.98
+    "start": 5.38,
+    "end": 5.74
    },
    {
     "word": "it,",
-    "start": 6.98,
-    "end": 7.3
+    "start": 5.74,
+    "end": 6.1
    },
    {
     "word": "then",
-    "start": 7.52,
-    "end": 7.94
+    "start": 6.32,
+    "end": 6.76
    },
    {
     "word": "drag",
-    "start": 7.94,
-    "end": 8.5
+    "start": 6.76,
+    "end": 7.14
    },
    {
     "word": "it",
-    "start": 8.5,
-    "end": 8.78
+    "start": 7.14,
+    "end": 7.4
    },
    {
     "word": "to",
-    "start": 8.78,
-    "end": 8.98
+    "start": 7.4,
+    "end": 7.58
    },
    {
     "word": "its",
-    "start": 8.98,
-    "end": 9.26
+    "start": 7.58,
+    "end": 7.82
    },
    {
     "word": "right",
-    "start": 9.26,
-    "end": 9.64
+    "start": 7.82,
+    "end": 8.16
    },
    {
     "word": "home.",
-    "start": 9.64,
-    "end": 10.24
+    "start": 8.16,
+    "end": 8.66
    },
    {
     "word": "Foods",
-    "start": 10.88,
-    "end": 11.52
+    "start": 9.34,
+    "end": 10.08
    },
    {
     "word": "or",
-    "start": 11.52,
-    "end": 12.22
+    "start": 10.08,
+    "end": 10.72
    },
    {
     "word": "animals.",
-    "start": 12.22,
-    "end": 12.76
+    "start": 10.72,
+    "end": 11.16
    }
   ]
  },

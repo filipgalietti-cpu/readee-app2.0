@@ -69,9 +69,9 @@ export const grammarBuilders: LessonDef = {
       id: "model-pronouns",
       purpose: "model",
       gate: "none",
-      prompt: "Small words stand in for names.",
-      fx: {"text":"he   she   it   they","effect":"pop-words"},
-      narration: { audio: A("model-pronouns"), script: "Some small words can stand in for names. Ben hops. He hops. Rosa sings. She sings. The ball rolls. It rolls. The dogs bark. They bark. He, she, it, and they do the same job as a name." },
+      prompt: "Some words take the place of a person, place, or thing.",
+      fx: { text: "he = a boy   she = a girl   it = one thing   they = two or more", effect: "pop-words" },
+      narration: { audio: A("model-pronouns"), script: "Some words take the place of a person, place, or thing. He is for a boy or a man. Ben hops, so he hops. She is for a girl or a woman. Rosa sings, so she sings. It is for one animal or one thing. The ball rolls, so it rolls. They is for two or more people, animals, or things. The dogs bark, so they bark." },
     },
     {
       id: "apply-pronoun-maya",

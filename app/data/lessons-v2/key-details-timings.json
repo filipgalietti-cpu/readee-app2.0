@@ -1040,122 +1040,57 @@
   ]
  },
  "model-what": {
-  "duration": 13.6,
+  "duration": 5.72,
   "words": [
    {
-    "word": "Great",
+    "word": "Now,",
     "start": 0.0,
-    "end": 0.6
-   },
-   {
-    "word": "job!",
-    "start": 0.6,
-    "end": 1.18
-   },
-   {
-    "word": "Now",
-    "start": 1.88,
-    "end": 2.34
+    "end": 0.58
    },
    {
     "word": "let's",
-    "start": 2.34,
-    "end": 2.7
+    "start": 0.96,
+    "end": 1.46
    },
    {
     "word": "find",
-    "start": 2.7,
-    "end": 2.94
+    "start": 1.46,
+    "end": 1.72
    },
    {
     "word": "another",
-    "start": 2.94,
-    "end": 3.56
+    "start": 1.72,
+    "end": 2.36
    },
    {
     "word": "clue.",
-    "start": 3.56,
-    "end": 3.98
+    "start": 2.36,
+    "end": 2.8
    },
    {
     "word": "What",
-    "start": 4.84,
-    "end": 4.94
+    "start": 3.56,
+    "end": 3.94
    },
    {
     "word": "happened",
-    "start": 4.94,
-    "end": 5.44
+    "start": 3.94,
+    "end": 4.68
    },
    {
     "word": "in",
-    "start": 5.44,
-    "end": 5.64
+    "start": 4.68,
+    "end": 5.1
    },
    {
     "word": "the",
-    "start": 5.64,
-    "end": 5.74
+    "start": 5.1,
+    "end": 5.26
    },
    {
     "word": "story?",
-    "start": 5.74,
-    "end": 6.08
-   },
-   {
-    "word": "PIP",
-    "start": 7.1,
-    "end": 7.5
-   },
-   {
-    "word": "8",
-    "start": 7.5,
-    "end": 8.32
-   },
-   {
-    "word": "A",
-    "start": 8.32,
-    "end": 8.66
-   },
-   {
-    "word": "Bugg!",
-    "start": 8.66,
-    "end": 9.2
-   },
-   {
-    "word": "I",
-    "start": 9.74,
-    "end": 10.4
-   },
-   {
-    "word": "found",
-    "start": 10.4,
-    "end": 10.88
-   },
-   {
-    "word": "what",
-    "start": 10.88,
-    "end": 11.16
-   },
-   {
-    "word": "happened.",
-    "start": 11.16,
-    "end": 11.7
-   },
-   {
-    "word": "Your",
-    "start": 12.46,
-    "end": 12.78
-   },
-   {
-    "word": "turn",
-    "start": 12.78,
-    "end": 13.12
-   },
-   {
-    "word": "next.",
-    "start": 13.12,
-    "end": 13.6
+    "start": 5.26,
+    "end": 5.72
    }
   ]
  },

@@ -74,7 +74,7 @@ export const bigKidWords: LessonDef = {
       gate: "interaction",
       prompt: "Find the nut **under** the leaf.",
       image: IMG("nut-under-leaf"),
-      narration: { audio: A("model-under"), script: "Great job finding that nut! Now, look at this one. It is under the leaf. Tap the word that means under." },
+      narration: { audio: A("model-under"), script: "Now, look at this one. It is under the leaf. Tap the word that means under." },
       interaction: { type: "choose", options: [{ id: "under", label: "UNDER", audio: W("UNDER"), image: IMG("under") }, { id: "on", label: "ON", audio: W("ON"), image: IMG("on") }], correctId: "under", coachWrong: "Think about where the nut is hiding. Under means it's below something. Try again." },
     },
     {

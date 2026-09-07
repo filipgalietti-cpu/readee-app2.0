@@ -77,7 +77,7 @@ export const bookMakers: LessonDef = {
       gate: "interaction",
       prompt: "Who made these **pictures**?",
       image: IMG("pictures"),
-      narration: { audio: A("guided-who-pictures"), script: "Great job! Now look at these colorful pictures. Who made these? Tap on the person who draws the pictures!" },
+      narration: { audio: A("guided-who-pictures"), script: "Now look at these colorful pictures. Who made these? Tap on the person who draws the pictures!" },
       interaction: { type: "choose", options: [{ id: "author", label: "AUTHOR", audio: W("author"), image: IMG("author") }, { id: "illustrator", label: "ILLUSTRATOR", audio: W("illustrator"), image: IMG("illustrator") }], correctId: "illustrator", coachWrong: "Not quite! An author writes words. Who draws the pictures?" },
     },
     {

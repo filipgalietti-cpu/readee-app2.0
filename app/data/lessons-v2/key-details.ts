@@ -63,7 +63,7 @@ export const keyDetails: LessonDef = {
       purpose: "model",
       gate: "interaction",
       prompt: "What did Pip do?",
-      narration: { audio: A("model-what"), script: "Great job! Now, let's find another clue. What happened in the story? Pip ate a bug! I found what happened. Your turn next!" },
+      narration: { audio: A("model-what"), script: "Now, let's find another clue. What happened in the story? Pip ate a bug! I found what happened. Your turn next!" },
       interaction: { type: "choose", options: [{ id: "fly", label: "FLY", audio: W("fly"), image: IMG("fly") }, { id: "eat", label: "EAT", audio: W("eat"), image: IMG("eat") }, { id: "hide", label: "HIDE", audio: W("hide"), image: IMG("hide") }], correctId: "eat", coachWrong: "Almost! Pip ate the bug. That's what happened." },
     },
     {

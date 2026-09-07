@@ -1585,112 +1585,97 @@
   ]
  },
  "story-foxy-beary": {
-  "duration": 9.92,
+  "duration": 6.92,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.6
-   },
-   {
-    "word": "job",
-    "start": 0.6,
-    "end": 1.02
-   },
-   {
-    "word": "friends!",
-    "start": 1.02,
-    "end": 1.44
-   },
-   {
     "word": "Now",
-    "start": 2.04,
-    "end": 2.56
+    "start": 0.0,
+    "end": 0.46
    },
    {
     "word": "let's",
-    "start": 2.56,
-    "end": 3.34
+    "start": 0.46,
+    "end": 0.98
    },
    {
     "word": "meet",
-    "start": 3.34,
-    "end": 3.5
+    "start": 0.98,
+    "end": 1.16
    },
    {
     "word": "two",
-    "start": 3.5,
-    "end": 3.96
+    "start": 1.16,
+    "end": 1.5
    },
    {
     "word": "more",
-    "start": 3.96,
-    "end": 4.38
+    "start": 1.5,
+    "end": 1.74
    },
    {
     "word": "friends.",
-    "start": 4.38,
-    "end": 5.02
+    "start": 1.74,
+    "end": 2.32
    },
    {
     "word": "Listen",
-    "start": 5.66,
-    "end": 5.9
+    "start": 3.12,
+    "end": 3.38
    },
    {
     "word": "to",
-    "start": 5.9,
-    "end": 6.22
+    "start": 3.38,
+    "end": 3.62
    },
    {
     "word": "their",
-    "start": 6.22,
-    "end": 6.4
+    "start": 3.62,
+    "end": 3.78
    },
    {
     "word": "stories",
-    "start": 6.4,
-    "end": 6.98
+    "start": 3.78,
+    "end": 4.34
    },
    {
     "word": "to",
-    "start": 6.98,
-    "end": 7.48
+    "start": 4.34,
+    "end": 4.76
    },
    {
     "word": "see",
-    "start": 7.48,
-    "end": 7.78
+    "start": 4.76,
+    "end": 4.96
    },
    {
     "word": "what",
-    "start": 7.78,
-    "end": 7.98
+    "start": 4.96,
+    "end": 5.12
    },
    {
     "word": "they",
-    "start": 7.98,
-    "end": 8.2
+    "start": 5.12,
+    "end": 5.3
    },
    {
     "word": "do.",
-    "start": 8.2,
-    "end": 8.52
+    "start": 5.3,
+    "end": 5.56
    },
    {
     "word": "Are",
-    "start": 9.2,
-    "end": 9.54
+    "start": 6.12,
+    "end": 6.44
    },
    {
     "word": "you",
-    "start": 9.54,
-    "end": 9.66
+    "start": 6.44,
+    "end": 6.62
    },
    {
     "word": "ready?",
-    "start": 9.66,
-    "end": 9.92
+    "start": 6.62,
+    "end": 6.92
    }
   ]
  },

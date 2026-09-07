@@ -91,7 +91,7 @@ export const storyKinds: LessonDef = {
       layout: "full",
       gate: "interaction",
       prompt: "Sort to story or fact.",
-      narration: { audio: A("guided-sort-dragon-bird"), script: "Great job! Now, let's sort some ideas. Drag each picture to the right box. Does it belong in a storybook or a fact book?" },
+      narration: { audio: A("guided-sort-dragon-bird"), script: "Now, let's sort some ideas. Drag each picture to the right box. Does it belong in a storybook or a fact book?" },
       interaction: { type: "sort", buckets: ["story","fact"], items: [{ label: "DRAGON", bucket: "story", audio: W("dragon") }, { label: "BIRD", bucket: "fact", audio: W("bird") }], coachWrong: "Think, is a dragon real? Is a bird real? Try again." },
     },
     {

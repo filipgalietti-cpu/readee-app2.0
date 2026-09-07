@@ -49,6 +49,7 @@ export default function TextFX({
   text,
   effect,
   fireAtMs = 0,
+  tokenDelaysMs,
 }: {
   text: string;
   effect: string;
@@ -64,6 +65,15 @@ export default function TextFX({
    * The TEXT is always visible from mount regardless. Only the effect waits.
    */
   fireAtMs?: number;
+  /**
+   * Per-token start times in ms, aligned to the narration. When supplied, each
+   * word appears as the voice reaches it instead of on a fixed 0.13s ladder that
+   * has no relationship to what the teacher is saying.
+   *
+   * Shorter than the token list, or absent, and the remaining words fall back to
+   * the even stagger.
+   */
+  tokenDelaysMs?: number[];
 }) {
   const [armed, setArmed] = useState(fireAtMs <= 0);
   useEffect(() => {
@@ -143,7 +153,15 @@ export default function TextFX({
               className={`fx-word ${cls}${t.target ? " fx-hot" : ""}`}
               initial={{ opacity: 0, y: 16, scale: 0.7 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.15 + i * 0.13, type: "spring", stiffness: 320, damping: 20 }}
+              transition={{
+                delay:
+                  tokenDelaysMs && tokenDelaysMs[i] != null
+                    ? Math.max(0, tokenDelaysMs[i] / 1000)
+                    : 0.15 + i * 0.13,
+                type: "spring",
+                stiffness: 320,
+                damping: 20,
+              }}
             >
               {t.word}
               {hot && effect === "fireworks" &&

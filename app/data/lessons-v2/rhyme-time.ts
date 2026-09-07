@@ -88,7 +88,7 @@ export const rhymeTime: LessonDef = {
       gate: "interaction",
       prompt: "Which word rhymes with fan?",
       image: IMG("rory-robot"),
-      narration: { audio: A("guided-choose-fan"), script: "Great job! Let's help Rory find another rhyme. Which word rhymes with fan? Tap the word that sounds the same at the end." },
+      narration: { audio: A("guided-choose-fan"), script: "Let's help Rory find another rhyme. Which word rhymes with fan? Tap the word that sounds the same at the end." },
       interaction: { type: "choose", options: [{ id: "pan", label: "PAN", audio: W("pan"), image: IMG("pan") }, { id: "cup", label: "CUP", audio: W("cup"), image: IMG("cup") }], correctId: "pan", coachWrong: "Listen to the end of fan. It's 'an'! Now listen to the end of cup. It's 'up'. Try again!" },
     },
     {

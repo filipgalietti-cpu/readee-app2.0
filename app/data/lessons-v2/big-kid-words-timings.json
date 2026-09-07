@@ -1295,112 +1295,87 @@
   ]
  },
  "model-under": {
-  "duration": 10.78,
+  "duration": 8.34,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.58
-   },
-   {
-    "word": "job",
-    "start": 0.58,
-    "end": 1.06
-   },
-   {
-    "word": "finding",
-    "start": 1.06,
-    "end": 1.6
-   },
-   {
-    "word": "that",
-    "start": 1.6,
-    "end": 1.88
-   },
-   {
-    "word": "nut.",
-    "start": 1.88,
-    "end": 2.12
-   },
-   {
     "word": "Now",
-    "start": 2.74,
-    "end": 3.08
+    "start": 0.0,
+    "end": 0.48
    },
    {
     "word": "look",
-    "start": 3.08,
-    "end": 3.6
+    "start": 0.48,
+    "end": 0.7
    },
    {
     "word": "at",
-    "start": 3.6,
-    "end": 3.78
+    "start": 0.7,
+    "end": 0.86
    },
    {
     "word": "this",
-    "start": 3.78,
-    "end": 4.16
+    "start": 0.86,
+    "end": 1.14
    },
    {
     "word": "one.",
-    "start": 4.16,
-    "end": 4.42
+    "start": 1.14,
+    "end": 1.5
    },
    {
     "word": "It",
-    "start": 4.96,
-    "end": 5.16
+    "start": 2.4,
+    "end": 2.72
    },
    {
     "word": "is",
-    "start": 5.16,
-    "end": 5.4
+    "start": 2.72,
+    "end": 3.24
    },
    {
     "word": "under",
-    "start": 5.4,
-    "end": 6.22
+    "start": 3.24,
+    "end": 4.04
    },
    {
     "word": "the",
-    "start": 6.22,
-    "end": 6.76
+    "start": 4.04,
+    "end": 4.5
    },
    {
     "word": "leaf.",
-    "start": 6.76,
-    "end": 7.18
+    "start": 4.5,
+    "end": 4.96
    },
    {
     "word": "Tap",
-    "start": 7.94,
-    "end": 8.32
+    "start": 5.7,
+    "end": 6.02
    },
    {
     "word": "the",
-    "start": 8.32,
-    "end": 8.62
+    "start": 6.02,
+    "end": 6.32
    },
    {
     "word": "word",
-    "start": 8.62,
-    "end": 8.9
+    "start": 6.32,
+    "end": 6.68
    },
    {
     "word": "that",
-    "start": 8.9,
-    "end": 9.34
+    "start": 6.68,
+    "end": 7.04
    },
    {
     "word": "means",
-    "start": 9.34,
-    "end": 9.76
+    "start": 7.04,
+    "end": 7.5
    },
    {
     "word": "under.",
-    "start": 9.76,
-    "end": 10.78
+    "start": 7.5,
+    "end": 8.34
    }
   ]
  }

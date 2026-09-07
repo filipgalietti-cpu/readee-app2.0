@@ -2215,182 +2215,172 @@
   ]
  },
  "model-middle": {
-  "duration": 16.9,
+  "duration": 18.34,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.56
-   },
-   {
-    "word": "job!",
-    "start": 0.56,
-    "end": 1.0
-   },
-   {
     "word": "After",
-    "start": 1.74,
-    "end": 2.18
+    "start": 0.0,
+    "end": 0.58
    },
    {
     "word": "the",
-    "start": 2.18,
-    "end": 2.38
+    "start": 0.58,
+    "end": 0.78
    },
    {
     "word": "beginning,",
-    "start": 2.38,
-    "end": 2.86
+    "start": 0.78,
+    "end": 1.26
    },
    {
     "word": "we",
-    "start": 3.28,
-    "end": 3.5
+    "start": 1.8,
+    "end": 2.04
    },
    {
     "word": "think",
-    "start": 3.5,
-    "end": 3.82
+    "start": 2.04,
+    "end": 2.34
    },
    {
     "word": "about",
-    "start": 3.82,
-    "end": 4.12
+    "start": 2.34,
+    "end": 2.72
    },
    {
     "word": "the",
-    "start": 4.12,
-    "end": 4.46
+    "start": 2.72,
+    "end": 3.3
    },
    {
     "word": "middle.",
-    "start": 4.46,
-    "end": 4.94
+    "start": 3.3,
+    "end": 3.78
    },
    {
     "word": "The",
-    "start": 5.56,
-    "end": 5.84
+    "start": 4.36,
+    "end": 4.92
    },
    {
     "word": "middle",
-    "start": 5.84,
-    "end": 6.2
+    "start": 4.92,
+    "end": 5.5
    },
    {
     "word": "is",
-    "start": 6.2,
-    "end": 6.46
+    "start": 5.5,
+    "end": 5.94
    },
    {
     "word": "what",
-    "start": 6.46,
-    "end": 6.64
+    "start": 5.94,
+    "end": 6.2
    },
    {
     "word": "happened",
-    "start": 6.64,
-    "end": 7.04
+    "start": 6.2,
+    "end": 6.74
    },
    {
     "word": "next",
-    "start": 7.04,
-    "end": 7.6
+    "start": 6.74,
+    "end": 7.54
    },
    {
     "word": "in",
-    "start": 7.6,
-    "end": 7.98
+    "start": 7.54,
+    "end": 8.22
    },
    {
     "word": "the",
-    "start": 7.98,
-    "end": 8.1
+    "start": 8.22,
+    "end": 8.34
    },
    {
     "word": "story.",
-    "start": 8.1,
-    "end": 8.54
+    "start": 8.34,
+    "end": 8.8
    },
    {
     "word": "In",
-    "start": 8.9,
-    "end": 9.34
+    "start": 9.96,
+    "end": 10.22
    },
    {
     "word": "our",
-    "start": 9.34,
-    "end": 9.58
+    "start": 10.22,
+    "end": 10.54
    },
    {
     "word": "story,",
-    "start": 9.58,
-    "end": 10.06
+    "start": 10.54,
+    "end": 11.12
    },
    {
     "word": "the",
-    "start": 10.48,
-    "end": 10.56
+    "start": 11.58,
+    "end": 11.88
    },
    {
     "word": "wolf",
-    "start": 10.56,
-    "end": 10.92
+    "start": 11.88,
+    "end": 12.18
    },
    {
     "word": "came",
-    "start": 10.92,
-    "end": 11.34
+    "start": 12.18,
+    "end": 12.56
    },
    {
     "word": "and",
-    "start": 11.34,
-    "end": 11.72
+    "start": 12.56,
+    "end": 13.22
    },
    {
     "word": "blew",
-    "start": 11.72,
-    "end": 12.06
+    "start": 13.22,
+    "end": 13.68
    },
    {
     "word": "down",
-    "start": 12.06,
-    "end": 12.52
+    "start": 13.68,
+    "end": 14.12
    },
    {
     "word": "two",
-    "start": 12.52,
-    "end": 13.16
+    "start": 14.12,
+    "end": 14.66
    },
    {
     "word": "houses.",
-    "start": 13.16,
-    "end": 13.98
+    "start": 14.66,
+    "end": 15.36
    },
    {
     "word": "Tap",
-    "start": 14.8,
-    "end": 15.12
+    "start": 16.2,
+    "end": 16.62
    },
    {
     "word": "the",
-    "start": 15.12,
-    "end": 15.5
+    "start": 16.62,
+    "end": 16.82
    },
    {
     "word": "picture",
-    "start": 15.5,
-    "end": 15.94
+    "start": 16.82,
+    "end": 17.18
    },
    {
     "word": "for",
-    "start": 15.94,
-    "end": 16.4
+    "start": 17.18,
+    "end": 17.7
    },
    {
     "word": "Huff.",
-    "start": 16.4,
-    "end": 16.9
+    "start": 17.7,
+    "end": 18.34
    }
   ]
  }

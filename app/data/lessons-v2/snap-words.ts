@@ -60,7 +60,7 @@ export const snapWords: LessonDef = {
       gate: "interaction",
       prompt: "Tap to read **the**.",
       image: IMG("bin"),
-      narration: { audio: A("guided-the"), script: "Great job! Now it's your turn to read 'the'. Tap the word 'the' to hear it. Remember, it's a Snap Word, so read it fast!" },
+      narration: { audio: A("guided-the"), script: "Now it's your turn to read 'the'. Tap the word 'the' to hear it. Remember, it's a Snap Word, so read it fast!" },
       interaction: { type: "choose", options: [{ id: "the", label: "THE", audio: W("the") }, { id: "cat", label: "CAT", audio: W("cat") }, { id: "dog", label: "DOG", audio: W("dog") }], correctId: "the", coachWrong: "Almost! That word is not 'the'. Look closely and tap 'the'." },
     },
     {

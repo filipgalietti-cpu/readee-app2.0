@@ -965,96 +965,86 @@
   ]
  },
  "guided-sort-dragon-bird": {
-  "duration": 11.98,
+  "duration": 12.1,
   "words": [
    {
-    "word": "Great",
+    "word": "Now,",
     "start": 0.0,
-    "end": 0.38
-   },
-   {
-    "word": "job!",
-    "start": 0.38,
-    "end": 0.8
-   },
-   {
-    "word": "Now",
-    "start": 1.42,
-    "end": 1.68
+    "end": 0.58
    },
    {
     "word": "let's",
-    "start": 1.68,
-    "end": 2.36
+    "start": 0.92,
+    "end": 1.52
    },
    {
     "word": "sort",
-    "start": 2.36,
-    "end": 2.64
+    "start": 1.52,
+    "end": 1.96
    },
    {
     "word": "some",
-    "start": 2.64,
-    "end": 2.94
+    "start": 1.96,
+    "end": 2.48
    },
    {
     "word": "ideas.",
-    "start": 2.94,
-    "end": 3.36
+    "start": 2.48,
+    "end": 2.94
    },
    {
     "word": "Drag",
-    "start": 4.22,
-    "end": 4.64
+    "start": 3.92,
+    "end": 4.2
    },
    {
     "word": "each",
-    "start": 4.64,
-    "end": 5.08
+    "start": 4.2,
+    "end": 4.74
    },
    {
     "word": "picture",
-    "start": 5.08,
-    "end": 5.68
+    "start": 4.74,
+    "end": 5.32
    },
    {
     "word": "to",
-    "start": 5.68,
-    "end": 6.06
+    "start": 5.32,
+    "end": 5.78
    },
    {
     "word": "the",
-    "start": 6.06,
-    "end": 6.22
+    "start": 5.78,
+    "end": 5.88
    },
    {
     "word": "right",
-    "start": 6.22,
-    "end": 6.58
+    "start": 5.88,
+    "end": 6.12
    },
    {
     "word": "box.",
-    "start": 6.58,
-    "end": 7.2
+    "start": 6.12,
+    "end": 6.7
    },
    {
     "word": "Does",
-    "start": 7.82,
-    "end": 8.06
+    "start": 7.52,
+    "end": 7.84
    },
    {
     "word": "it",
-    "start": 8.06,
-    "end": 8.24
+    "start": 7.84,
+    "end": 8.06
    },
    {
     "word": "belong",
-    "start": 8.24,
-    "end": 8.5
+    "start": 8.06,
+    "end": 8.4
    },
    {
     "word": "in",
-    "start": 8.5,
+    "start": 8.4,
     "end": 8.92
    },
    {
@@ -1065,27 +1055,22 @@
    {
     "word": "storybook",
     "start": 9.08,
-    "end": 9.88
+    "end": 9.92
    },
    {
     "word": "or",
-    "start": 9.88,
-    "end": 10.68
+    "start": 9.92,
+    "end": 10.74
    },
    {
     "word": "a",
-    "start": 10.68,
-    "end": 11.02
+    "start": 10.74,
+    "end": 11.14
    },
    {
-    "word": "fact",
-    "start": 11.02,
-    "end": 11.38
-   },
-   {
-    "word": "book?",
-    "start": 11.38,
-    "end": 11.98
+    "word": "factbook?",
+    "start": 11.14,
+    "end": 12.1
    }
   ]
  },

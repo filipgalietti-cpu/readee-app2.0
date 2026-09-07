@@ -60,7 +60,7 @@ export const doubleDutyWords: LessonDef = {
       gate: "interaction",
       prompt: "Find the **bat** for hitting!",
       fx: {"text":"If someone **bats** a ball, we know it's about playing.","effect":"underline"},
-      narration: { audio: A("model-choose-bat-action"), script: "Great job! Now, a bat can also be something you use to play ball. If someone bats a ball, we know it's about playing. Tap the bat we use to hit a ball." },
+      narration: { audio: A("model-choose-bat-action"), script: "Now, a bat can also be something you use to play ball. If someone bats a ball, we know it's about playing. Tap the bat we use to hit a ball." },
       interaction: { type: "choose", options: [{ id: "bat-baseball", label: "BAT", audio: W("bat"), image: IMG("bat-baseball") }, { id: "bat-flying", label: "BAT", audio: W("bat"), image: IMG("bat-flying") }], correctId: "bat-baseball", coachWrong: "That's the animal bat! Find the bat for hitting a ball." },
     },
     {

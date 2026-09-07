@@ -835,157 +835,147 @@
   ]
  },
  "guided-first-sound-pig": {
-  "duration": 20.98,
+  "duration": 17.62,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.58
-   },
-   {
-    "word": "job!",
-    "start": 0.58,
-    "end": 1.1
-   },
-   {
     "word": "Now",
-    "start": 1.9,
-    "end": 2.34
+    "start": 0.0,
+    "end": 0.48
    },
    {
     "word": "it's",
-    "start": 2.34,
-    "end": 2.94
+    "start": 0.48,
+    "end": 0.76
    },
    {
     "word": "your",
-    "start": 2.94,
-    "end": 3.16
+    "start": 0.76,
+    "end": 0.92
    },
    {
     "word": "turn.",
-    "start": 3.16,
-    "end": 3.74
+    "start": 0.92,
+    "end": 1.4
    },
    {
     "word": "Listen",
-    "start": 4.42,
-    "end": 4.76
+    "start": 1.94,
+    "end": 2.22
    },
    {
     "word": "to",
-    "start": 4.76,
-    "end": 5.1
+    "start": 2.22,
+    "end": 2.52
    },
    {
     "word": "the",
-    "start": 5.1,
-    "end": 5.24
+    "start": 2.52,
+    "end": 2.64
    },
    {
     "word": "word",
-    "start": 5.24,
-    "end": 5.52
+    "start": 2.64,
+    "end": 2.92
    },
    {
     "word": "pig.",
-    "start": 5.52,
-    "end": 6.4
+    "start": 2.92,
+    "end": 3.82
    },
    {
     "word": "Stretched",
-    "start": 7.22,
-    "end": 7.86
+    "start": 4.64,
+    "end": 5.48
    },
    {
     "word": "out",
-    "start": 7.86,
-    "end": 8.06
+    "start": 5.48,
+    "end": 5.72
    },
    {
     "word": "slowly.",
-    "start": 8.06,
-    "end": 9.0
+    "start": 5.72,
+    "end": 6.48
    },
    {
     "word": "Puh.",
-    "start": 10.32,
-    "end": 10.62
+    "start": 7.38,
+    "end": 7.94
    },
    {
-    "word": "I.",
-    "start": 11.64,
-    "end": 12.0
+    "word": "E",
+    "start": 8.62,
+    "end": 9.0
    },
    {
-    "word": "Guh.",
-    "start": 13.26,
-    "end": 14.18
+    "word": "-guh.",
+    "start": 9.0,
+    "end": 10.4
    },
    {
     "word": "What",
-    "start": 15.08,
-    "end": 15.56
+    "start": 11.16,
+    "end": 11.62
    },
    {
     "word": "is",
-    "start": 15.56,
-    "end": 15.86
+    "start": 11.62,
+    "end": 11.88
    },
    {
     "word": "the",
-    "start": 15.86,
-    "end": 16.02
+    "start": 11.88,
+    "end": 12.06
    },
    {
     "word": "very",
-    "start": 16.02,
-    "end": 16.48
+    "start": 12.06,
+    "end": 12.62
    },
    {
     "word": "first",
-    "start": 16.48,
-    "end": 16.96
+    "start": 12.62,
+    "end": 13.2
    },
    {
     "word": "sound",
-    "start": 16.96,
-    "end": 17.48
+    "start": 13.2,
+    "end": 13.74
    },
    {
     "word": "you",
-    "start": 17.48,
-    "end": 17.86
+    "start": 13.74,
+    "end": 14.08
    },
    {
     "word": "hear",
-    "start": 17.86,
-    "end": 18.24
+    "start": 14.08,
+    "end": 14.42
    },
    {
     "word": "in",
-    "start": 18.24,
-    "end": 18.62
+    "start": 14.42,
+    "end": 14.86
    },
    {
     "word": "pig?",
-    "start": 18.62,
-    "end": 19.1
+    "start": 14.86,
+    "end": 15.56
    },
    {
     "word": "Tap",
-    "start": 20.0,
-    "end": 20.34
+    "start": 16.48,
+    "end": 16.86
    },
    {
     "word": "the",
-    "start": 20.34,
-    "end": 20.6
+    "start": 16.86,
+    "end": 17.14
    },
    {
     "word": "sound.",
-    "start": 20.6,
-    "end": 20.98
+    "start": 17.14,
+    "end": 17.62
    }
   ]
  },
@@ -1145,7 +1135,7 @@
   ]
  },
  "guided-middle-sound-sun": {
-  "duration": 20.74,
+  "duration": 20.76,
   "words": [
    {
     "word": "Now",
@@ -1183,13 +1173,13 @@
     "end": 2.86
    },
    {
-    "word": "sun.",
+    "word": "Sun.",
     "start": 2.86,
-    "end": 3.46
+    "end": 3.4
    },
    {
     "word": "Listen",
-    "start": 4.2,
+    "start": 4.14,
     "end": 4.64
    },
    {
@@ -1198,13 +1188,13 @@
     "end": 5.02
    },
    {
-    "word": "sun",
+    "word": "Sun",
     "start": 5.02,
-    "end": 6.08
+    "end": 6.02
    },
    {
     "word": "stretched",
-    "start": 6.08,
+    "start": 6.02,
     "end": 7.24
    },
    {
@@ -1218,43 +1208,43 @@
     "end": 9.18
    },
    {
-    "word": "Sssss...",
-    "start": 11.14,
+    "word": "Ssss.",
+    "start": 11.1,
     "end": 12.2
    },
    {
-    "word": "Uhhh...",
-    "start": 13.3,
-    "end": 14.36
+    "word": "Uhhh.",
+    "start": 12.56,
+    "end": 13.66
    },
    {
-    "word": "Mmm...",
-    "start": 14.36,
-    "end": 16.08
+    "word": "Mmm.",
+    "start": 14.38,
+    "end": 15.02
    },
    {
     "word": "What",
-    "start": 16.08,
+    "start": 15.92,
     "end": 16.48
    },
    {
     "word": "sound",
     "start": 16.48,
-    "end": 17.16
+    "end": 17.14
    },
    {
     "word": "is",
-    "start": 17.16,
+    "start": 17.14,
     "end": 17.52
    },
    {
     "word": "right",
     "start": 17.52,
-    "end": 18.08
+    "end": 18.1
    },
    {
     "word": "in",
-    "start": 18.08,
+    "start": 18.1,
     "end": 18.8
    },
    {
@@ -1269,13 +1259,13 @@
    },
    {
     "word": "Tap",
-    "start": 20.14,
+    "start": 20.12,
     "end": 20.42
    },
    {
     "word": "it.",
     "start": 20.42,
-    "end": 20.74
+    "end": 20.76
    }
   ]
  },

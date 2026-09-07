@@ -69,7 +69,7 @@ export const soundSliders: LessonDef = {
       layout: "full",
       gate: "interaction",
       prompt: "Help Sam slide sounds!",
-      narration: { audio: A("guided-blend-bat"), script: "Great job watching Sam! Now it's your turn to help. Let's slide 'b' and 'at' together. Tap the 'b' sound, then 'at', then the whole word 'bat'." },
+      narration: { audio: A("guided-blend-bat"), script: "Now it's your turn to help. Let's slide 'b' and 'at' together. Tap the 'b' sound, then 'at', then the whole word 'bat'." },
       interaction: { type: "sequence", items: [{ id: "b", label: "b", audio: W("b"), image: IMG("b") }, { id: "at", label: "AT", audio: W("at"), image: IMG("at") }, { id: "bat", label: "BAT", audio: W("bat"), image: IMG("bat") }], order: ["b","at","bat"], coachWrong: "Remember to tap the first sound, then the second sound, then the whole word. You can do it!" },
     },
     {

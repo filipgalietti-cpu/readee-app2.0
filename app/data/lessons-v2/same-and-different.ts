@@ -99,7 +99,7 @@ export const sameAndDifferent: LessonDef = {
       gate: "interaction",
       prompt: "New friends, new stories!",
       image: IMG("foxy-beary"),
-      narration: { audio: A("story-foxy-beary"), script: "Great job, friends! Now let's meet two more friends. Listen to their stories to see what they do. Are you ready?" },
+      narration: { audio: A("story-foxy-beary"), script: "Now let's meet two more friends. Listen to their stories to see what they do. Are you ready?" },
       interaction: { type: "read-along", text: "Foxy is a fox. Foxy runs fast. Foxy climbs a tree. Beary is a bear. Beary runs fast. Beary sleeps in a den.", audio: A("story-foxy-beary-sentence") },
     },
     {

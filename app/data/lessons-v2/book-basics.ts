@@ -88,7 +88,7 @@ export const bookBasics: LessonDef = {
       layout: "full",
       gate: "interaction",
       prompt: "Drag words to read!",
-      narration: { audio: A("guided-sequence-left-right"), script: "Great job! Now, let's practice reading across. Drag the words into the correct order, from left to right, just like Wormy showed us." },
+      narration: { audio: A("guided-sequence-left-right"), script: "Now, let's practice reading across. Drag the words into the correct order, from left to right, just like Wormy showed us." },
       interaction: { type: "sequence", items: [{ id: "I", label: "I", audio: W("I"), image: IMG("i") }, { id: "see", label: "SEE", audio: W("see"), image: IMG("see") }, { id: "cat", label: "CAT", audio: W("cat"), image: IMG("cat") }], order: ["I","see","cat"], coachWrong: "Remember, we read from left to right. Try again!" },
     },
     {

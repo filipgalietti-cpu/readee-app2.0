@@ -80,7 +80,7 @@ export const namingDoingWords: LessonDef = {
       purpose: "guided",
       gate: "interaction",
       prompt: "Tap the naming word!",
-      narration: { audio: A("guided-naming-word-choose"), script: "Great job watching Wordy Bot! Now it's your turn. Tap on the word that names a person, place, or thing. You can do it!" },
+      narration: { audio: A("guided-naming-word-choose"), script: "Now it's your turn. Tap on the word that names a person, place, or thing. You can do it!" },
       interaction: { type: "choose", options: [{ id: "run", label: "RUN", audio: W("run"), image: IMG("run") }, { id: "cat", label: "CAT", audio: W("cat"), image: IMG("cat") }, { id: "jump", label: "JUMP", audio: W("jump"), image: IMG("jump") }], correctId: "cat", coachWrong: "Remember, a naming word names a person, place, or thing. Try again!" },
     },
     {

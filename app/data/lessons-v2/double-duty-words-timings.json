@@ -1970,172 +1970,162 @@
   ]
  },
  "model-choose-bat-action": {
-  "duration": 16.86,
+  "duration": 14.38,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.62
-   },
-   {
-    "word": "job!",
-    "start": 0.62,
-    "end": 1.28
-   },
-   {
     "word": "Now,",
-    "start": 1.96,
-    "end": 2.68
+    "start": 0.0,
+    "end": 0.52
    },
    {
     "word": "a",
-    "start": 3.2,
-    "end": 3.34
+    "start": 0.84,
+    "end": 0.98
    },
    {
     "word": "bat",
-    "start": 3.34,
-    "end": 3.74
+    "start": 0.98,
+    "end": 1.38
    },
    {
     "word": "can",
-    "start": 3.74,
-    "end": 4.4
+    "start": 1.38,
+    "end": 1.84
    },
    {
     "word": "also",
-    "start": 4.4,
-    "end": 4.98
+    "start": 1.84,
+    "end": 2.48
    },
    {
     "word": "be",
-    "start": 4.98,
-    "end": 5.22
+    "start": 2.48,
+    "end": 2.74
    },
    {
     "word": "something",
-    "start": 5.22,
-    "end": 5.7
+    "start": 2.74,
+    "end": 3.18
    },
    {
     "word": "you",
-    "start": 5.7,
-    "end": 6.04
+    "start": 3.18,
+    "end": 3.5
    },
    {
     "word": "use",
-    "start": 6.04,
-    "end": 6.44
+    "start": 3.5,
+    "end": 3.9
    },
    {
     "word": "to",
-    "start": 6.44,
-    "end": 6.66
+    "start": 3.9,
+    "end": 4.26
    },
    {
     "word": "play",
-    "start": 6.66,
-    "end": 6.92
+    "start": 4.26,
+    "end": 4.56
    },
    {
     "word": "ball.",
-    "start": 6.92,
-    "end": 7.26
+    "start": 4.56,
+    "end": 4.98
    },
    {
     "word": "If",
-    "start": 7.94,
-    "end": 8.48
+    "start": 5.6,
+    "end": 6.14
    },
    {
     "word": "someone",
-    "start": 8.48,
-    "end": 9.12
+    "start": 6.14,
+    "end": 6.56
    },
    {
     "word": "bats",
-    "start": 9.12,
-    "end": 9.68
+    "start": 6.56,
+    "end": 7.04
    },
    {
     "word": "a",
-    "start": 9.68,
-    "end": 10.1
+    "start": 7.04,
+    "end": 7.54
    },
    {
     "word": "ball,",
-    "start": 10.1,
-    "end": 10.44
+    "start": 7.54,
+    "end": 7.98
    },
    {
     "word": "we",
-    "start": 10.96,
-    "end": 11.08
+    "start": 8.6,
+    "end": 8.92
    },
    {
     "word": "know",
-    "start": 11.08,
-    "end": 11.36
+    "start": 8.92,
+    "end": 9.2
    },
    {
     "word": "it's",
-    "start": 11.36,
-    "end": 11.66
+    "start": 9.2,
+    "end": 9.5
    },
    {
     "word": "about",
-    "start": 11.66,
-    "end": 11.94
+    "start": 9.5,
+    "end": 9.76
    },
    {
     "word": "playing.",
-    "start": 11.94,
-    "end": 12.62
+    "start": 9.76,
+    "end": 10.32
    },
    {
     "word": "Tap",
-    "start": 13.64,
-    "end": 14.02
+    "start": 11.22,
+    "end": 11.6
    },
    {
     "word": "the",
-    "start": 14.02,
-    "end": 14.36
+    "start": 11.6,
+    "end": 11.96
    },
    {
     "word": "bat",
-    "start": 14.36,
-    "end": 14.74
+    "start": 11.96,
+    "end": 12.46
    },
    {
     "word": "we",
-    "start": 14.74,
-    "end": 15.18
+    "start": 12.46,
+    "end": 12.94
    },
    {
     "word": "use",
-    "start": 15.18,
-    "end": 15.56
+    "start": 12.94,
+    "end": 13.38
    },
    {
     "word": "to",
-    "start": 15.56,
-    "end": 15.88
+    "start": 13.38,
+    "end": 13.64
    },
    {
     "word": "hit",
-    "start": 15.88,
-    "end": 16.16
+    "start": 13.64,
+    "end": 13.84
    },
    {
     "word": "a",
-    "start": 16.16,
-    "end": 16.56
+    "start": 13.84,
+    "end": 14.06
    },
    {
     "word": "ball.",
-    "start": 16.56,
-    "end": 16.86
+    "start": 14.06,
+    "end": 14.38
    }
   ]
  },

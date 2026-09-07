@@ -805,122 +805,112 @@
   ]
  },
  "guided-choose-fan": {
-  "duration": 12.42,
+  "duration": 10.68,
   "words": [
    {
-    "word": "Great",
-    "start": 0.0,
-    "end": 0.5
-   },
-   {
-    "word": "job!",
-    "start": 0.5,
-    "end": 1.04
-   },
-   {
     "word": "Let's",
-    "start": 1.92,
-    "end": 2.4
+    "start": 0.0,
+    "end": 0.7
    },
    {
     "word": "help",
-    "start": 2.4,
-    "end": 2.6
+    "start": 0.7,
+    "end": 0.9
    },
    {
     "word": "Rory",
-    "start": 2.6,
-    "end": 3.1
+    "start": 0.9,
+    "end": 1.4
    },
    {
     "word": "find",
-    "start": 3.1,
-    "end": 3.58
+    "start": 1.4,
+    "end": 1.86
    },
    {
     "word": "another",
-    "start": 3.58,
-    "end": 4.32
+    "start": 1.86,
+    "end": 2.4
    },
    {
-    "word": "rhyme.",
-    "start": 4.32,
-    "end": 4.88
+    "word": "rhyme",
+    "start": 2.4,
+    "end": 2.96
    },
    {
-    "word": "Which",
-    "start": 5.62,
-    "end": 5.98
+    "word": "which",
+    "start": 2.96,
+    "end": 3.72
    },
    {
     "word": "word",
-    "start": 5.98,
-    "end": 6.42
+    "start": 3.72,
+    "end": 4.2
    },
    {
     "word": "rhymes",
-    "start": 6.42,
-    "end": 6.9
+    "start": 4.2,
+    "end": 4.62
    },
    {
     "word": "with",
-    "start": 6.9,
-    "end": 7.36
+    "start": 4.62,
+    "end": 5.08
    },
    {
-    "word": "fan?",
-    "start": 7.36,
-    "end": 8.06
+    "word": "fan",
+    "start": 5.08,
+    "end": 5.92
    },
    {
     "word": "Tap",
-    "start": 9.08,
-    "end": 9.4
+    "start": 7.16,
+    "end": 7.68
    },
    {
     "word": "the",
-    "start": 9.4,
-    "end": 9.7
+    "start": 7.68,
+    "end": 7.98
    },
    {
     "word": "word",
-    "start": 9.7,
-    "end": 9.94
+    "start": 7.98,
+    "end": 8.26
    },
    {
     "word": "that",
-    "start": 9.94,
-    "end": 10.26
+    "start": 8.26,
+    "end": 8.52
    },
    {
     "word": "sounds",
-    "start": 10.26,
-    "end": 10.7
+    "start": 8.52,
+    "end": 8.92
    },
    {
     "word": "the",
-    "start": 10.7,
-    "end": 10.92
+    "start": 8.92,
+    "end": 9.14
    },
    {
     "word": "same",
-    "start": 10.92,
-    "end": 11.38
+    "start": 9.14,
+    "end": 9.56
    },
    {
     "word": "at",
-    "start": 11.38,
-    "end": 11.78
+    "start": 9.56,
+    "end": 9.94
    },
    {
     "word": "the",
-    "start": 11.78,
-    "end": 12.0
+    "start": 9.94,
+    "end": 10.12
    },
    {
-    "word": "end.",
-    "start": 12.0,
-    "end": 12.42
+    "word": "end",
+    "start": 10.12,
+    "end": 10.68
    }
   ]
  },

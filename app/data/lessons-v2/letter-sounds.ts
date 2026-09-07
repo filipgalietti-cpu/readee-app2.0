@@ -68,7 +68,7 @@ export const letterSounds: LessonDef = {
       gate: "interaction",
       prompt: "Which sound for M?",
       image: IMG("letter-m"),
-      narration: { audio: A("model-match-m"), script: "Great job saying mmm! Now, let's find a word that starts with the mmm sound. Tap the picture that starts with mmm." },
+      narration: { audio: A("model-match-m"), script: "Now, let's find a word that starts with the mmm sound. Tap the picture that starts with mmm." },
       interaction: { type: "choose", options: [{ id: "mat", label: "MAT", audio: W("mat"), image: IMG("mat") }, { id: "sock", label: "SOCK", audio: W("sock"), image: IMG("sock") }], correctId: "mat", coachWrong: "Almost! Listen again. Mmm. Tap each picture to hear its name. Which one starts with mmm?" },
     },
     {

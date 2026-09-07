@@ -88,7 +88,7 @@ export const pictureClues: LessonDef = {
       gate: "interaction",
       prompt: "What color is the leaf?",
       image: IMG("foxy-leaf"),
-      narration: { audio: A("guided-leaf-color"), script: "Great job! The picture told us Foxy found a leaf. Here is another picture clue. The words never tell us the color. Look at the leaf in the picture. Tap the color you see." },
+      narration: { audio: A("guided-leaf-color"), script: "The picture told us Foxy found a leaf. Here is another picture clue. The words never tell us the color. Look at the leaf in the picture. Tap the color you see." },
       interaction: { type: "choose", options: [{ id: "red", label: "RED", audio: W("red"), image: IMG("red") }, { id: "blue", label: "BLUE", audio: W("blue"), image: IMG("blue") }, { id: "green", label: "GREEN", audio: W("green"), image: IMG("green") }], correctId: "green", coachWrong: "What color is the leaf Foxy is holding?" },
     },
     {
