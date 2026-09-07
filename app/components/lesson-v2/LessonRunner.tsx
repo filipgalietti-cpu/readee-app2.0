@@ -9,6 +9,7 @@ import { playNarration, stopNarration, replayNarration, speak, sfxComplete } fro
 import { LessonShellDesktop, CelebrationLeftPanel } from "@/app/components/lesson/LessonShellDesktop";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import TextFX from "./TextFX";
+import PromptText, { TeachingLine } from "./PromptText";
 import LessonImage from "./LessonImage";
 import { playUrl } from "@/lib/lesson-engine/cues";
 
@@ -87,15 +88,26 @@ export default function LessonRunner({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scene.id]);
 
+  /**
+   * Which interactions actually ASSESS the child. listen and read-along are
+   * participation: finishing them proves attendance, not learning. They used to
+   * fall through `correct: meta?.correct ?? true` and emit a correct answer,
+   * which inflated every score built on these events. Now they emit no verdict
+   * at all, and the consumers that tally carrots already skip events without
+   * one.
+   */
+  const ASSESSED = new Set(["choose", "sort", "sequence", "highlight", "transform", "speak"]);
+
   function handleSolved(meta?: { attempts?: number; correct?: boolean }) {
     setSolvedScene(scene.id);
     setSolveWasCorrect(meta?.correct !== false);
+    const assessed = ASSESSED.has(inter?.type ?? "");
     const e: LearningEvent = {
       lessonId: lesson.id,
       sceneId: scene.id,
       conceptId: lesson.concepts[0] ?? lesson.standard,
       interactionType: inter?.type ?? "info",
-      correct: meta?.correct ?? true,
+      correct: assessed ? (meta?.correct ?? true) : undefined,
       attempts: meta?.attempts ?? 1,
       responseTimeMs: Date.now() - sceneStart.current,
       ts: Date.now(),
@@ -191,9 +203,10 @@ export default function LessonRunner({
             {PURPOSE_LABEL[scene.purpose] ?? scene.purpose}
           </div>
           <div className="max-w-[600px] text-[32px] font-bold leading-[1.2] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
-            {scene.prompt}
+            <PromptText text={scene.prompt} />
           </div>
         </div>
+        {scene.fx && <TeachingLine text={scene.fx.text} />}
         {scene.image && <LessonImage src={scene.image} containerClassName="h-40 w-64 rounded-2xl" className="h-full w-full object-contain drop-shadow-sm" />}
         <div className="w-full">{interactionEl ?? <div className="text-6xl">✦</div>}</div>
         {replayBtn}
@@ -203,6 +216,10 @@ export default function LessonRunner({
     // SPLIT (the signature layout): LEFT = the big visual — the interaction if
     // there is one, else the scene picture LARGE, else the motion-library stage
     // (the key sentence, animated). The visual side is never empty.
+    // Does fx get the stage? Only when no interaction and no picture claimed it.
+    // When it does not, the authored text still has to reach the child - it goes
+    // beside the prompt instead of being silently dropped.
+    const fxHasStage = !interactionEl && !scene.image && !!scene.fx;
     leftSlot = interactionEl ?? (
       scene.image ? (
         <div className="lv2-kenburns flex h-full w-full items-center justify-center">
@@ -221,8 +238,13 @@ export default function LessonRunner({
             {PURPOSE_LABEL[scene.purpose] ?? scene.purpose}
           </div>
           <div className="text-[38px] font-bold leading-[1.18] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
-            {scene.prompt}
+            <PromptText text={scene.prompt} />
           </div>
+          {scene.fx && !fxHasStage && (
+            <div className="mt-4">
+              <TeachingLine text={scene.fx.text} />
+            </div>
+          )}
         </div>
         {interactionEl && scene.image && (
           <LessonImage

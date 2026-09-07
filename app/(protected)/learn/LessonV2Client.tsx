@@ -126,7 +126,7 @@ export default function LessonV2Client({ lesson }: { lesson: LessonDef }) {
       <LessonRunner lesson={lesson} onEvent={onEvent} onComplete={onComplete} />
       {saveFailed && (
         <div className="fixed inset-x-0 bottom-0 z-50 bg-amber-50 px-4 py-3 text-center text-sm font-semibold text-amber-800">
-          We could not save this lesson just now. Your reader keeps their carrots, and we will retry.
+          We could not save this lesson. Your reader keeps their carrots on screen, but this finish was not recorded.
         </div>
       )}
     </>

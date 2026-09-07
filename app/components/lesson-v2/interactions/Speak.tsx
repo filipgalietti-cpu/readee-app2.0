@@ -62,14 +62,28 @@ export default function Speak({
   const ctrlRef = useRef<StreamController | null>(null);
   const micRef = useRef<{ ctx: AudioContext; stream: MediaStream } | null>(null);
   const SR = getSR();
-  // Multi-word text = ANY of the words counts (open production tasks like
-  // "say a word that rhymes with dog" accept log/frog/fog/...). Single word/
-  // sentence = the whole thing must appear.
+  // TWO DIFFERENT TASKS, and the engine used to guess between them by word
+  // count plus the literal substring " my ". That guess was wrong both ways:
+  // "She reads and they play." graded as an accept-list, so saying "cats play"
+  // passed; and because accept-lists hide their text, 404 of 422 speak scenes
+  // showed a child "?" instead of the sentence they were told to read aloud.
+  //
+  //   read - the whole text must be said, and it IS SHOWN.
+  //   any  - `text` is a space-separated accept list ("rain raining"); one entry
+  //          is enough, and it stays HIDDEN because it is the answer.
+  //
+  // `data.mode` wins. Without it, classify from the text's own shape: a
+  // capitalised opener, terminal punctuation, or a function word all mean this
+  // is a sentence to read, not a list of alternatives.
   const STOP = new Set(["a", "an", "the", "to", "of", "and"]);
   const words = data.text.toLowerCase().split(/\s+/);
-  // Multi-word = accept-list mode: transcript TOKENS must equal an accept word
-  // (token equality, never substring — "b" must not match "bug", "on" is valid).
-  const acceptMode = words.length > 1 && !data.text.includes(" my ");
+  const FUNCTION_WORD =
+    /\b(the|a|an|and|is|are|was|were|my|to|of|in|on|it|he|she|they|we|you|has|have)\b/i;
+  const trimmed = data.text.trim();
+  const looksLikeSentence =
+    /^[A-Z]/.test(trimmed) || /[.!?]$/.test(trimmed) || FUNCTION_WORD.test(trimmed);
+  const readMode = data.mode ? data.mode === "read" : words.length === 1 || looksLikeSentence;
+  const acceptMode = !readMode;
   const targets = acceptMode ? words.filter((w) => !STOP.has(w)) : [data.text.toLowerCase()];
 
   function stopMic() {
@@ -93,7 +107,7 @@ export default function Speak({
     const solveOnce = () => {
       if (fired) return;
       fired = true;
-      onSolved({ attempts: attemptsRef.current + 1 });
+      onSolved({ attempts: attemptsRef.current + 1, correct: true });
     };
     window.setTimeout(() => playPraise(solveOnce), 300);
     window.setTimeout(solveOnce, 4500);
@@ -227,7 +241,10 @@ export default function Speak({
               : {}),
           }}
         >
-          {targets.length > 1 ? (status === "good" ? "YES!" : "?") : data.text.toUpperCase()}
+          {/* A read task always shows its text: a child cannot read aloud what they
+                cannot see. An accept-list keeps hiding it, because the list is the
+                answer ("Say what made the puddles!" / "rain raining"). */}
+            {readMode ? data.text.toUpperCase() : status === "good" ? "YES!" : "?"}
         </div>
       </div>
       {data.allowHear && (
@@ -264,7 +281,12 @@ export default function Speak({
         </div>
       )}
       {status !== "good" && (
-        <button className="gb-secondary" onClick={() => { doneRef.current = true; stopMic(); onSolved({ attempts: attempts || 1 }); }}>
+        <button className="gb-secondary" onClick={() => {
+            // A broken mic is not a wrong answer and it is certainly not a
+            // right one. Omitting `correct` here made every skip count as a
+            // correct read, in 73 lessons and half of all challenge scenes.
+            doneRef.current = true; stopMic(); onSolved({ attempts: attempts || 1, correct: false });
+          }}>
           mic not working? continue →
         </button>
       )}

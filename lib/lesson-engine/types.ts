@@ -51,6 +51,22 @@ export interface ListenDef {
 export interface SpeakDef {
   type: "speak";
   text: string;
+  /**
+   * WHICH SPEAKING TASK THIS IS. Two genuinely different things share this
+   * interaction, and the engine used to guess between them by word count:
+   *
+   *   "read" - read this exact text aloud. The text is SHOWN, because a child
+   *            cannot read aloud something they cannot see, and the whole thing
+   *            has to be said.
+   *   "any"  - open production: `text` is a space-separated ACCEPT LIST and any
+   *            one entry counts ("rain raining", "drink drinks drinking"). The
+   *            list is HIDDEN, because it is the answer.
+   *
+   * Omit and the engine classifies from the text's own shape - a capitalised
+   * opener, terminal punctuation or a function word means "read". Authoring it
+   * explicitly is always better than being classified.
+   */
+  mode?: "read" | "any";
   /** Teaching scaffold: allow "hear it first". Default false — a pronunciation
    *  CHECK must not reveal the answer by pronouncing it. */
   allowHear?: boolean;
