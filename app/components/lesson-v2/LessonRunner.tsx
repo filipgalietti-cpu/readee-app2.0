@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import type { LessonDef, LearningEvent } from "@/lib/lesson-engine/types";
 import { getInteraction } from "@/lib/lesson-engine/registry";
 import { emitLearningEvent } from "@/lib/lesson-engine/events";
-import { playNarration, stopNarration, replayNarration, speak, sfxComplete } from "@/lib/lesson-engine/cues";
+import { playNarration, stopNarration, replayNarration, speak, sfxComplete, alignTextToTimings } from "@/lib/lesson-engine/cues";
 import { LessonShellDesktop, CelebrationLeftPanel } from "@/app/components/lesson/LessonShellDesktop";
 import { Bunny, BunnyReaction } from "@/app/_components/Bunny/Bunny";
 import TextFX from "./TextFX";
@@ -68,6 +68,41 @@ export default function LessonRunner({
   const fallbackMs = timing ? Math.round((timing.duration + 3) * 1000) : 12000;
   const solved = solvedScene === scene.id;
   const cueFired = cueScene === scene.id;
+
+  /**
+   * WHEN the scene's effect should fire, in ms from mount.
+   *
+   * 627 scenes declare an fx and exactly 4 declare a cue, so effects ran on
+   * their own CSS timers with no relationship to the voice. The information to
+   * synchronise them was already sitting in the lesson: Whisper word timings for
+   * the narration, and the `**target**` the author marked inside fx.text.
+   *
+   * Find the target word inside the narration script, take its timestamp, fire
+   * there. No authoring required, and it degrades to 0 (fire immediately, the
+   * old behaviour) whenever there are no timings or the word does not appear -
+   * which is the safe direction, since an effect that fires early is a worse
+   * failure than one that fires late.
+   */
+  const fxFireAtMs = useMemo(() => {
+    const fx = scene.fx;
+    const script = scene.narration?.script;
+    if (!fx?.text || !script || !timing?.words?.length) return 0;
+
+    const targets = fx.text
+      .split(/\s+/)
+      .filter((w) => /\*\*/.test(w))
+      .map((w) => w.replace(/\*\*/g, "").split("|")[0].toLowerCase().replace(/[^a-z0-9']/g, ""))
+      .filter(Boolean);
+    if (!targets.length) return 0;
+
+    const words = script.split(/\s+/);
+    const starts = alignTextToTimings(script, timing.words);
+    const norm = (w: string) => w.toLowerCase().replace(/[^a-z0-9']/g, "");
+    const i = words.findIndex((w) => targets.includes(norm(w)));
+    if (i < 0 || starts[i] == null) return 0;
+    return Math.max(0, Math.round(starts[i] * 1000));
+  }, [scene.id, scene.fx?.text, scene.narration?.script, timing]);
+
 
   useEffect(() => {
     const sid = scene.id;
@@ -226,7 +261,7 @@ export default function LessonRunner({
           <LessonImage src={scene.image} containerClassName="h-[92%] w-[94%] rounded-3xl" className="h-full w-full rounded-3xl object-contain drop-shadow-xl" />
         </div>
       ) : scene.fx ? (
-        <TextFX text={scene.fx.text} effect={scene.fx.effect} />
+        <TextFX text={scene.fx.text} effect={scene.fx.effect} fireAtMs={fxFireAtMs} />
       ) : (
         <CelebrationLeftPanel />
       )

@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { motion } from "framer-motion";
 
 /**
@@ -43,7 +45,33 @@ const SPARKS = [
   { dx: 0, dy: -44, bg: "#4338ca", d: "1.08s" },
 ];
 
-export default function TextFX({ text, effect }: { text: string; effect: string }) {
+export default function TextFX({
+  text,
+  effect,
+  fireAtMs = 0,
+}: {
+  text: string;
+  effect: string;
+  /**
+   * When to start the effect, in ms from mount. 0 fires immediately.
+   *
+   * Effects used to run the moment the scene mounted, on their own CSS timers,
+   * while the narration explained something else - so the underline landed on
+   * the wrong word and the singular/plural swap looped in the background like a
+   * screensaver. LessonRunner now derives this from the narration's own Whisper
+   * timings: the effect fires when the voice reaches the word it is about.
+   *
+   * The TEXT is always visible from mount regardless. Only the effect waits.
+   */
+  fireAtMs?: number;
+}) {
+  const [armed, setArmed] = useState(fireAtMs <= 0);
+  useEffect(() => {
+    if (fireAtMs <= 0) return;
+    setArmed(false);
+    const t = window.setTimeout(() => setArmed(true), fireAtMs);
+    return () => window.clearTimeout(t);
+  }, [fireAtMs, text]);
   const tokens = text.split(/\s+/).map((raw) => {
     const target = /^\*\*.*\*\*[.,!?]?$/.test(raw) || /\*\*/.test(raw);
     const word = raw.replace(/\*\*/g, "");
@@ -75,7 +103,8 @@ export default function TextFX({ text, effect }: { text: string; effect: string 
       <div className={`fx-line${wholeLine ? ` fxline-${effect}` : ""}`}>
         {tokens.map((t, i) => {
           const hot = t.target || (!anyTarget && !["pop-words", "typewriter", "blur-in"].includes(effect));
-          const cls = hot ? targetClass[effect] ?? "" : effect === "spotlight" ? "fxdim" : "";
+          // Text renders at once; the effect class is what waits for the voice.
+          const cls = !armed ? "" : hot ? targetClass[effect] ?? "" : effect === "spotlight" ? "fxdim" : "";
 
           if (effect === "word-swap" && t.target && t.alt) {
             return (

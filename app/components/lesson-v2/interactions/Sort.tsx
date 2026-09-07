@@ -72,13 +72,20 @@ export default function Sort({
     })();
     const token = ++chainRef.current;
     const live = () => token === chainRef.current; // a newer placement mutes this chain
+    // Whether this placement already SAID something - the item clip, the bucket
+    // clip, or both. If it did, a generic "yes!" on top is pure repetition: with
+    // six items and only two yes-clips in the pool, a child sorting one tray
+    // hears the same two voices alternate all the way down. The chime still
+    // marks every correct placement; the spoken praise is saved for the finish,
+    // where it means something.
+    const spokeAlready = Boolean((!saidItem && wordClip) || bucketClip);
     const verdict = () => {
       if (!live() && !isFinal) return;
       if (correct) {
         sfxCorrect();
         window.setTimeout(() => {
           if (isFinal) playPraise(solveOnce);
-          else if (live()) playYes();
+          else if (live() && !spokeAlready) playYes();
         }, 240);
       } else {
         sfxWrong();

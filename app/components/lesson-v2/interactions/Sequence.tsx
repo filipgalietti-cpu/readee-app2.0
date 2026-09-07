@@ -47,9 +47,19 @@ export default function Sequence({
       const isFinal = nextCount >= data.order.length;
       sfxCorrect(); // chime on every correct
       // Word first, then feedback, chained (never overlapping).
-      if (item?.audio) window.setTimeout(() => playUrl(item.audio as string, () => (isFinal ? playPraise() : playYes())), 240);
-      else if (isFinal) playPraise();
-      else playYes();
+      //
+      // A generic "yes!" is only worth playing when nothing else spoke. Building
+      // a sentence one word at a time means up to ten placements, and the pool
+      // holds two yes-clips - stacking one after every word turned the build
+      // into the same two voices on a loop. Saying the word IS the feedback;
+      // the spoken praise belongs at the end.
+      if (item?.audio) {
+        window.setTimeout(() => playUrl(item.audio as string, () => { if (isFinal) playPraise(); }), 240);
+      } else if (isFinal) {
+        playPraise();
+      } else {
+        playYes();
+      }
       onItemCorrect?.();
       setPlacedIds((p) => [...p, id]);
       setPlacedCount(nextCount);
