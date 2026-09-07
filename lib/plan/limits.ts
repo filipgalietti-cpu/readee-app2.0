@@ -9,6 +9,19 @@ export const FREE_LIMITS = {
   storiesPerGrade: 2,
   /** Free taste of "Read with Luna" — completed reads before the upgrade wall. */
   lunaReadsFree: 3,
+  /**
+   * ‼️ The allowance that actually bites. `lunaReadsFree` counts COMPLETED
+   * reads, and Luna's costs are incurred per sentence while a read is still in
+   * progress, so a free reader who never finishes a session stayed at zero
+   * forever and read unlimited sentences. As of 2026-09-07 no free account had
+   * ever completed a read, so that gate had never once fired.
+   *
+   * This counts Azure streaming tokens minted for Luna instead - the thing that
+   * costs money. A token lasts ~10 minutes, so 12 is roughly three generous
+   * reads. Raise it to be more generous with the free taste; lower it to
+   * convert harder.
+   */
+  lunaMintsFree: 12,
   /** Free taste of "Story with Luna" — personalized stories before upgrade. */
   personalizedStoriesFree: 3,
   /** Practice questions per standard on free plan */
@@ -31,6 +44,7 @@ export const PREMIUM_LIMITS = {
   lessons: Infinity,
   storiesPerGrade: Infinity,
   lunaReadsFree: Infinity,
+  lunaMintsFree: Infinity,
   personalizedStoriesFree: Infinity,
   practicePerStandard: Infinity,
   placementTest: true,
@@ -46,6 +60,7 @@ export const TEACHER_SOLO_LIMITS = {
   lessons: Infinity,
   storiesPerGrade: Infinity,
   lunaReadsFree: Infinity,
+  lunaMintsFree: Infinity,
   personalizedStoriesFree: Infinity,
   practicePerStandard: Infinity,
   placementTest: true,

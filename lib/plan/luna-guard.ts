@@ -64,6 +64,29 @@ export async function checkLunaReadAllowance(
     }
   }
   if (count >= FREE_LIMITS.lunaReadsFree) return { ok: false, reason: "luna" };
+
+  // ‼️ The check above counts COMPLETED reads, and every cost in a Luna session
+  // is incurred before one completes: an Azure token per ~10 minutes, a TTS clip
+  // and a grading call per sentence. A free reader who never taps finish stays
+  // at zero forever. On 2026-09-07 every free account that had ever touched Luna
+  // had 0 completed reads and between 1 and 5 token mints, so this wall had
+  // never been shown to anybody - the gate was not leaky, it was absent.
+  //
+  // Counting mints meters the thing that actually costs money, and because
+  // speak, grade and speech-token all call this helper, capping here closes all
+  // three at once. Scoped to the luna context so placement and lesson Speak
+  // steps, which are free on purpose, are unaffected. The 60/hour cap in
+  // /api/luna/speech-token is still the hard abuse bound; this is the
+  // entitlement.
+  const mintFloor = new Date(Date.now() - 30 * 86_400_000).toISOString();
+  const { count: mints } = await admin
+    .from("speech_token_mints")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .eq("context", "luna")
+    .gte("created_at", mintFloor);
+  if ((mints ?? 0) >= FREE_LIMITS.lunaMintsFree) return { ok: false, reason: "luna" };
+
   return { ok: true };
 }
 

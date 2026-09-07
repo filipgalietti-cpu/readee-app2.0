@@ -158,14 +158,28 @@ export async function checkRateLimit(
 
   const cost = CREDIT_COST[kind] ?? 1;
 
-  // QC bot bypass. The bot is a system agent — its calls heal the
-  // catalog (regen broken audio, enrich thin lessons, run audits) and
-  // pay for themselves through retention. Counting them against
-  // Filip's per-teacher monthly cap means the bot stops mid-batch and
-  // breaks the autonomy loop. The bypass is gated to a single env-var-
-  // named teacherId so a compromised teacher token can't abuse it.
-  const QC_BOT_ID = process.env.QC_BOT_TEACHER_ID;
-  if (QC_BOT_ID && teacherId === QC_BOT_ID) {
+  // System-agent bypass. These are Readee's own pipelines - the QC bot healing
+  // the catalog, the lesson factory, the Daily Readee cron - not a customer
+  // spending against a seat. MONTHLY_CREDIT_LIMIT is a B2B per-teacher economic
+  // cap (its own comment prices it at ~$2.50/teacher/month), and metering the
+  // platform's content production against one teacher's allowance stops a batch
+  // mid-run.
+  //
+  // ‼️ DAILY_QUESTION_TEACHER_ID was NOT on this list until 2026-09-07, and in
+  // production it names a real profile rather than the synthetic system id. On
+  // 2026-09-06 a G4 factory run consumed that profile's allowance, and the next
+  // morning the Daily Readee cron could not build: 4989 used against 500 + 3707
+  // top-up, no daily that day. The cheap job (44 credits) was capped while the
+  // expensive one ran free.
+  //
+  // Still gated to env-var-named ids so a compromised customer token cannot
+  // reach it. Customers keep the cap - that is the control that stops an abused
+  // account running up the Gemini bill, and it stays exactly as it was.
+  const SYSTEM_TEACHER_IDS = [
+    process.env.QC_BOT_TEACHER_ID,
+    process.env.DAILY_QUESTION_TEACHER_ID,
+  ].filter((id): id is string => !!id);
+  if (SYSTEM_TEACHER_IDS.includes(teacherId)) {
     return {
       allowed: true,
       costCredits: cost,
