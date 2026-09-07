@@ -59,6 +59,28 @@ export function lessonAssetBase(): string {
   return "";
 }
 
+/**
+ * ‼️ REVIEW MODE. Storage serves lesson assets with `cache-control: max-age=3600`,
+ * which is right for children and wrong for the person judging the content: after
+ * a clip is re-recorded, the reviewer keeps hearing the OLD one for up to an hour
+ * and reasonably concludes the fix was never made. That happened - three times on
+ * the same slide.
+ *
+ * The founder review sets this on mount, so every asset it requests carries a
+ * per-page-load version and can never be answered from cache. Children are
+ * unaffected; nothing else sets it.
+ */
+declare global {
+  // eslint-disable-next-line no-var
+  var __readeeFreshAssets: number | undefined;
+}
+
+export function markAssetsFresh(): void {
+  if (typeof window !== "undefined" && !globalThis.__readeeFreshAssets) {
+    globalThis.__readeeFreshAssets = Date.now();
+  }
+}
+
 export function lessonAssetUrl(pathOrUrl: string): string {
   if (!pathOrUrl) return pathOrUrl;
   // Already absolute - a lesson pointing somewhere external, or an already
@@ -68,9 +90,13 @@ export function lessonAssetUrl(pathOrUrl: string): string {
   const base = lessonAssetBase();
   if (!base) return pathOrUrl;
 
-  if (AUDIO_PREFIXES.some((p) => pathOrUrl.startsWith(p))) return base + pathOrUrl;
+  const bust = typeof window !== "undefined" && globalThis.__readeeFreshAssets
+    ? `?v=${globalThis.__readeeFreshAssets}`
+    : "";
+
+  if (AUDIO_PREFIXES.some((p) => pathOrUrl.startsWith(p))) return base + pathOrUrl + bust;
   if (IMAGE_PREFIXES.some((p) => pathOrUrl.startsWith(p))) {
-    return base + pathOrUrl.replace(/\.png$/i, ".webp");
+    return base + pathOrUrl.replace(/\.png$/i, ".webp") + bust;
   }
   return pathOrUrl;
 }

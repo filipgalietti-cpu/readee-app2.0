@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { LessonDef } from "@/lib/lesson-engine/types";
 import LessonRunner from "@/app/components/lesson-v2/LessonRunner";
 import { setVerdict, setNote } from "../actions";
+import { markAssetsFresh } from "@/lib/lesson-engine/asset-url";
 
 /**
  * The founder's edition of /learn.
@@ -52,6 +53,11 @@ export default function ReviewHud({
   const [done, setDone] = useState(false);
   const [saving, setSaving] = useState<"idle" | "saving" | "error">("idle");
   const [open, setOpen] = useState(true);
+
+  // Never review a cached asset. Storage caches lesson audio for an hour, so a
+  // re-recorded clip keeps playing its old take to the one person whose job is
+  // to notice it changed.
+  markAssetsFresh();
 
   const onScene = useCallback((id: string, i: number, n: number) => {
     setScene({ id, i, n });
