@@ -27,6 +27,10 @@
     {
       "path": "/api/cron/lifecycle-emails",
       "schedule": "0 14 * * *"
+    },
+    {
+      "path": "/api/cron/new-signups",
+      "schedule": "*/5 * * * *"
     }
   ]
 }
