@@ -90,11 +90,14 @@ export function ReadAloudPrompt({
   lead,
   passage,
   wordStartsMs,
+  audioMs,
 }: {
   lead: string;
   passage: string;
   /** Lights the passage word by word as the teacher reads it. */
   wordStartsMs?: number[];
+  /** Real narration position, so the sweep follows the voice not a timer. */
+  audioMs?: number;
 }) {
   return (
     <>
@@ -103,6 +106,7 @@ export function ReadAloudPrompt({
         <SpokenText
           text={passage}
           wordStartsMs={wordStartsMs}
+          audioMs={audioMs}
           activeClassName="text-violet-700"
           spokenClassName="text-violet-700"
           pendingClassName="text-violet-300"

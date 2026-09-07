@@ -50,6 +50,7 @@ export default function TextFX({
   effect,
   fireAtMs = 0,
   tokenDelaysMs,
+  audioMs,
 }: {
   text: string;
   effect: string;
@@ -74,14 +75,23 @@ export default function TextFX({
    * the even stagger.
    */
   tokenDelaysMs?: number[];
+  /**
+   * Current narration position in ms. When supplied the effect follows the
+   * VOICE: buffering, a blocked autoplay or a replay all keep the animation and
+   * the audio together. Without it the old mount timer still applies, so the
+   * component works standalone (the /demo pages mount it with no narration).
+   */
+  audioMs?: number;
 }) {
-  const [armed, setArmed] = useState(fireAtMs <= 0);
+  const audioDriven = typeof audioMs === "number";
+  const [timerArmed, setTimerArmed] = useState(fireAtMs <= 0);
   useEffect(() => {
-    if (fireAtMs <= 0) return;
-    setArmed(false);
-    const t = window.setTimeout(() => setArmed(true), fireAtMs);
+    if (audioDriven || fireAtMs <= 0) return;
+    setTimerArmed(false);
+    const t = window.setTimeout(() => setTimerArmed(true), fireAtMs);
     return () => window.clearTimeout(t);
-  }, [fireAtMs, text]);
+  }, [fireAtMs, text, audioDriven]);
+  const armed = audioDriven ? (audioMs as number) >= fireAtMs : timerArmed;
   const tokens = text.split(/\s+/).map((raw) => {
     const target = /^\*\*.*\*\*[.,!?]?$/.test(raw) || /\*\*/.test(raw);
     const word = raw.replace(/\*\*/g, "");
@@ -152,12 +162,22 @@ export default function TextFX({
               key={i}
               className={`fx-word ${cls}${t.target ? " fx-hot" : ""}`}
               initial={{ opacity: 0, y: 16, scale: 0.7 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
+              animate={
+                audioDriven && tokenDelaysMs && Number.isFinite(tokenDelaysMs[i])
+                  ? (audioMs as number) >= (tokenDelaysMs[i] as number)
+                    ? { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 0, y: 16, scale: 0.7 }
+                  : { opacity: 1, y: 0, scale: 1 }
+              }
               transition={{
+                // Audio-driven scenes gate on the clock (below); the delay only
+                // shapes the entrance once the word's moment has arrived.
                 delay:
-                  tokenDelaysMs && tokenDelaysMs[i] != null
-                    ? Math.max(0, tokenDelaysMs[i] / 1000)
-                    : 0.15 + i * 0.13,
+                  audioDriven
+                    ? 0
+                    : tokenDelaysMs && Number.isFinite(tokenDelaysMs[i])
+                      ? Math.max(0, tokenDelaysMs[i] / 1000)
+                      : 0.15 + i * 0.13,
                 type: "spring",
                 stiffness: 320,
                 damping: 20,

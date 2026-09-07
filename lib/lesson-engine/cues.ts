@@ -151,11 +151,21 @@ export function playNarration(
     onCue?: (cue: Cue) => void;
     onEnded?: () => void;
     onPlayingChange?: (playing: boolean) => void;
+    /**
+     * Actual playback position in SECONDS, every frame.
+     *
+     * Visual sequences used to run on their own setTimeout from component
+     * mount, so a slow buffer, a blocked autoplay or a replay left the
+     * animation describing something the voice had not reached - or had
+     * finished with. The clock the child hears is this one.
+     */
+    onTime?: (seconds: number) => void;
   },
 ): void {
   stopNarration();
   stopOneshot(); // one voice at a time, always
   if (typeof window === "undefined") return;
+  lastNarrationOpts = opts;
 
   const el = new Audio(lessonAssetUrl(url));
   narration = el;
@@ -169,6 +179,7 @@ export function playNarration(
   const tick = () => {
     if (!narration || narration !== el) return;
     const cur = el.currentTime;
+    opts?.onTime?.(cur);
     while (next < pending.length && cur >= pending[next].t) {
       opts?.onCue?.(pending[next].cue);
       next++;
@@ -197,6 +208,16 @@ export function playNarration(
     });
 }
 
+/**
+ * The options the current narration was started with.
+ *
+ * replayNarration(url) called playNarration(url) with NOTHING, so "Play again"
+ * restarted the audio with every cue, word timing and callback dropped: the
+ * voice replayed and the visuals stayed frozen wherever the first pass left
+ * them. Remembering the options is the whole fix.
+ */
+let lastNarrationOpts: Parameters<typeof playNarration>[1];
+
 export function replayNarration(url: string): void {
-  playNarration(url);
+  playNarration(url, lastNarrationOpts);
 }

@@ -62,6 +62,9 @@ export default function LessonRunner({
   const [wrongTick, setWrongTick] = useState(0);
   const [cueScene, setCueScene] = useState<string | null>(null);
   const [audioPlaying, setAudioPlaying] = useState(false);
+  // The clock the child actually hears. Visual sequences follow THIS, not a
+  // timer started when the component mounted.
+  const [audioMs, setAudioMs] = useState(0);
   const [done, setDone] = useState(false);
   const completed = useRef(false);
   const sceneStart = useRef(0);
@@ -137,6 +140,7 @@ export default function LessonRunner({
   useEffect(() => {
     const sid = scene.id;
     sceneStart.current = Date.now();
+    setAudioMs(0); // a new scene starts its sequence from zero
     onScene?.(sid, idx, lesson.scenes.length);
     if (scene.narration) {
       playNarration(scene.narration.audio, {
@@ -147,6 +151,7 @@ export default function LessonRunner({
         },
         onEnded: () => setCueScene(sid), // reveal never stranded
         onPlayingChange: setAudioPlaying,
+        onTime: (sec) => setAudioMs(sec * 1000),
       });
     }
     return () => stopNarration();
@@ -387,11 +392,11 @@ export default function LessonRunner({
           </div>
           {readAloud ? (
             <div className="max-w-[640px]">
-              <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} wordStartsMs={spokenStarts(readAloud.passage)} />
+              <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} wordStartsMs={spokenStarts(readAloud.passage)} audioMs={audioMs} />
             </div>
           ) : (
             <div className="max-w-[600px] text-[32px] font-bold leading-[1.2] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
-              <SpokenText text={scene.prompt} wordStartsMs={spokenStarts(scene.prompt)} pendingClassName="text-zinc-400" />
+              <PromptText text={scene.prompt} />
             </div>
           )}
         </div>
@@ -412,13 +417,13 @@ export default function LessonRunner({
     const fxHasStage = !interactionEl && !scene.diagram && !scene.image && !!scene.fx;
     leftSlot = interactionEl ?? (
       scene.diagram ? (
-        <Diagram rows={scene.diagram.rows} rowDelaysMs={diagramDelaysMs} />
+        <Diagram rows={scene.diagram.rows} rowDelaysMs={diagramDelaysMs} audioMs={audioMs} />
       ) : scene.image ? (
         <div className="lv2-kenburns flex h-full w-full items-center justify-center">
           <LessonImage src={scene.image} containerClassName="h-[92%] w-[94%] rounded-3xl" className="h-full w-full rounded-3xl object-contain drop-shadow-xl" />
         </div>
       ) : scene.fx ? (
-        <TextFX text={scene.fx.text} effect={scene.fx.effect} fireAtMs={fxFireAtMs} tokenDelaysMs={fxTokenDelaysMs} />
+        <TextFX text={scene.fx.text} effect={scene.fx.effect} fireAtMs={fxFireAtMs} tokenDelaysMs={fxTokenDelaysMs} audioMs={audioMs} />
       ) : (
         <CelebrationLeftPanel />
       )
@@ -430,10 +435,10 @@ export default function LessonRunner({
             {PURPOSE_LABEL[scene.purpose] ?? scene.purpose}
           </div>
           {readAloud ? (
-            <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} wordStartsMs={spokenStarts(readAloud.passage)} />
+            <ReadAloudPrompt lead={readAloud.lead} passage={readAloud.passage} wordStartsMs={spokenStarts(readAloud.passage)} audioMs={audioMs} />
           ) : (
             <div className="text-[38px] font-bold leading-[1.18] tracking-tight text-[#1e1b3a] [text-wrap:balance]">
-              <SpokenText text={scene.prompt} wordStartsMs={spokenStarts(scene.prompt)} pendingClassName="text-zinc-400" />
+              <PromptText text={scene.prompt} />
             </div>
           )}
           {scene.fx && !fxHasStage && (

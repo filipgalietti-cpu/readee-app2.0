@@ -35,11 +35,14 @@ export type DiagramRow = {
 export default function Diagram({
   rows,
   rowDelaysMs,
+  audioMs,
   accent = "#7c3aed",
 }: {
   rows: DiagramRow[];
   /** When each row should appear, ms from mount. Falls back to an even stagger. */
   rowDelaysMs?: number[];
+  /** Narration position in ms. Rows follow the voice rather than a mount timer. */
+  audioMs?: number;
   accent?: string;
 }) {
   if (!rows.length) return null;
@@ -53,16 +56,19 @@ export default function Diagram({
     >
       <div className="flex w-full max-w-[560px] flex-col" style={{ gap: many ? 14 : 20 }}>
         {rows.map((r, i) => {
-          const delay =
-            rowDelaysMs && Number.isFinite(rowDelaysMs[i])
-              ? Math.max(0, rowDelaysMs[i] / 1000)
-              : 0.3 + i * 0.55;
+          const audioDriven = typeof audioMs === "number";
+          const cue = rowDelaysMs && Number.isFinite(rowDelaysMs[i]) ? rowDelaysMs[i] : undefined;
+          // With a clock, the row waits for its moment in the voice. Without
+          // one, it falls back to an even stagger so the component still works
+          // outside a lesson.
+          const shown = audioDriven && cue !== undefined ? (audioMs as number) >= cue : true;
+          const delay = audioDriven ? 0 : cue !== undefined ? cue / 1000 : 0.3 + i * 0.55;
           return (
             <motion.div
               key={`${r.term}-${i}`}
               role="listitem"
               initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={shown ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
               transition={{ delay, type: "spring", stiffness: 260, damping: 22 }}
               className="flex items-center gap-4 rounded-2xl bg-white/85 px-5 shadow-[0_6px_20px_-12px_rgba(49,46,129,.45)]"
               style={{ paddingTop: many ? 12 : 16, paddingBottom: many ? 12 : 16 }}

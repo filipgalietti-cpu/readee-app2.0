@@ -28,6 +28,7 @@ export default function SpokenText({
   spokenClassName = "text-[#1e1b3a]",
   pendingClassName = "text-zinc-400",
   playing = true,
+  audioMs,
 }: {
   text: string;
   /** Start time per word of `text`, ms from narration start. NaN = never spoken. */
@@ -38,30 +39,38 @@ export default function SpokenText({
   pendingClassName?: string;
   /** False freezes the sweep - e.g. the clip has not started or was stopped. */
   playing?: boolean;
+  /**
+   * Real narration position in ms. This is what the highlight should follow: a
+   * self-run timer sweeps ahead of a buffering clip and lands the highlight on
+   * words the child has not heard yet, which teaches the wrong map.
+   */
+  audioMs?: number;
 }) {
   const words = text.split(/(\s+)/);
-  const [elapsed, setElapsed] = useState(0);
+  const [selfElapsed, setSelfElapsed] = useState(0);
+  const audioDriven = typeof audioMs === "number";
+  const elapsed = audioDriven ? (audioMs as number) : selfElapsed;
   const raf = useRef<number | null>(null);
   const t0 = useRef(0);
 
   const hasTimings = !!wordStartsMs?.some((n) => Number.isFinite(n));
 
   useEffect(() => {
-    if (!hasTimings || !playing) return;
+    if (audioDriven || !hasTimings || !playing) return;
     const reduce =
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
     t0.current = performance.now();
     const tick = () => {
-      setElapsed(performance.now() - t0.current);
+      setSelfElapsed(performance.now() - t0.current);
       raf.current = requestAnimationFrame(tick);
     };
     raf.current = requestAnimationFrame(tick);
     return () => {
       if (raf.current) cancelAnimationFrame(raf.current);
     };
-  }, [text, hasTimings, playing]);
+  }, [text, hasTimings, playing, audioDriven]);
 
   // Without timings this is ordinary text, which is the right fallback: a
   // highlight that guessed would land on the wrong word and teach the wrong map.
