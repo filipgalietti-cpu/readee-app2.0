@@ -65,6 +65,8 @@ export async function POST(req: Request) {
 
   const now = new Date();
   const decision = decidePlacement({
+    evidenceVersion: sub.evidenceVersion,
+    comprehensionChecks: sub.comprehensionChecks,
     enrolled: sub.enrolled,
     ladder: sub.ladder as LadderState,
     passages: sub.passages,
@@ -81,7 +83,7 @@ export async function POST(req: Request) {
       child_id: sub.childId,
       enrolled: String(sub.enrolled),
       decision,
-      evidence: { ladder: sub.ladder, passages: sub.passages, comprehension: sub.comprehension, foundations: sub.foundations },
+      evidence: { evidenceVersion: sub.evidenceVersion, comprehensionChecks: sub.comprehensionChecks, ladder: sub.ladder, passages: sub.passages, comprehension: sub.comprehension, foundations: sub.foundations },
       moments,
       plan,
       narration,

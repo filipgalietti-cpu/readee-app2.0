@@ -1,6 +1,7 @@
 import { PLACEMENT_BANK } from "@/app/data/placement-bank";
 import { activeList, createLadder, decodingLevel, needsFoundations, recordWord, type Band, type PlacedBand } from "./ladder";
 import type { Moment, PlacementSubmission } from "./types";
+import { nextPassageBand } from "./passage-search";
 
 /** Validate the browser's evidence against the fixed bank. Scores still originate
  * in the browser; this establishes consistency, not proof of recorded speech. */
@@ -19,18 +20,39 @@ export function validatePlacementEvidence(sub: PlacementSubmission, enrolled: Pl
   }
   if (!ladder.done || !sub.ladder.done || sub.ladder.phase !== ladder.phase || sub.ladder.current !== ladder.current) fail();
   const band = (decodingLevel(ladder).band ?? 0) as Band;
-  const expected = band === 0 ? [] : [band, ...(enrolled - band === 1 ? [enrolled] : [])];
-  if (sub.passages.length !== expected.length || sub.passages.some((p, i) => p.band !== expected[i])) fail();
+  const countOK = (c: { correct: number; total: number } | null | undefined, total: number) => c && c.total === total && c.correct >= 0 && c.correct <= total;
+  let finalBand = band;
+  if (sub.evidenceVersion === 3) {
+    if (!sub.comprehensionChecks || sub.comprehensionChecks.length !== sub.passages.length) fail();
+    let next: Band | null = band;
+    for (const [i, p] of sub.passages.entries()) {
+      const c = sub.comprehensionChecks![i];
+      if (next === null || next === 0 || p.band !== next || c.band !== p.band || !countOK(c, PLACEMENT_BANK.bands[p.band].passage!.questions.length)) fail();
+      next = nextPassageBand(p, c);
+      finalBand = next ?? p.band;
+    }
+    // A failed passage requires its lower-band follow-up; K uses listening.
+    if (next !== null && next !== 0) fail();
+    if (finalBand > 0) {
+      const last = sub.comprehensionChecks!.at(-1)!;
+      if (!sub.comprehension || sub.comprehension.band !== last.band || sub.comprehension.correct !== last.correct || sub.comprehension.total !== last.total) fail();
+    }
+  } else {
+    if (sub.comprehensionChecks !== undefined) fail();
+    const expected = band === 0 ? [] : [band, ...(enrolled - band === 1 ? [enrolled] : [])];
+    if (sub.passages.length !== expected.length || sub.passages.some((p, i) => p.band !== expected[i])) fail();
+  }
   for (const p of sub.passages) {
+    if (!PLACEMENT_BANK.bands[p.band]?.passage) fail();
     const max = PLACEMENT_BANK.bands[p.band].passage!.text.split(/\s+/).filter(Boolean).length;
     if (p.wordsTotal <= 0 || p.wordsTotal > max || p.wordsCorrect > p.wordsTotal || p.durationSeconds <= 0) fail();
+    if (sub.evidenceVersion === 3 && (p.minuteWordsCorrect === undefined || p.minuteSeconds === undefined)) fail();
     if ((p.minuteWordsCorrect === undefined) !== (p.minuteSeconds === undefined)) fail();
     if (p.minuteWordsCorrect !== undefined && (p.minuteWordsCorrect > p.wordsCorrect || !p.minuteSeconds || p.minuteSeconds > 60 || p.minuteSeconds > p.durationSeconds + 1)) fail();
   }
-  const countOK = (c: { correct: number; total: number } | null, total: number) => c && c.total === total && c.correct >= 0 && c.correct <= total;
-  const questions = band === 0 ? PLACEMENT_BANK.foundations.listening.questions : PLACEMENT_BANK.bands[band].passage!.questions;
-  if (!countOK(sub.comprehension, questions.length) || sub.comprehension?.band !== band) fail();
-  if (needsFoundations(ladder)) {
+  const questions = finalBand === 0 ? PLACEMENT_BANK.foundations.listening.questions : PLACEMENT_BANK.bands[finalBand].passage!.questions;
+  if (!countOK(sub.comprehension, questions.length) || sub.comprehension?.band !== finalBand) fail();
+  if (needsFoundations(ladder) || finalBand === 0) {
     const f = sub.foundations;
     if (!f || !countOK(f.letterSounds, PLACEMENT_BANK.foundations.letterSounds.length) || !countOK(f.blending, PLACEMENT_BANK.foundations.blending.length) || !countOK(f.nonsenseWords, PLACEMENT_BANK.foundations.nonsenseWords.length)) fail();
   } else if (sub.foundations !== null) fail();

@@ -11,7 +11,7 @@
  * never touches the client.
  */
 
-export type PAWord = { word: string; accuracy: number; errorType: string; phonemeMin: number; worst: string };
+export type PAWord = { word: string; accuracy: number; errorType: string; phonemeMin: number; worst: string; /** Seconds from the start of this recognition stream, not callback arrival time. */ offsetSeconds?: number; durationSeconds?: number };
 export type PAPhrase = { words: PAWord[]; fluency: number; prosody: number; text: string };
 
 export type StreamController = {
@@ -65,7 +65,7 @@ export async function startPronAssessment(opts: {
       if (e.result.reason !== SDK.ResultReason.RecognizedSpeech) return;
       const pa = SDK.PronunciationAssessmentResult.fromResult(e.result);
       const detail = (pa as unknown as { detailResult?: { Words?: unknown[] } }).detailResult ?? {};
-      const rawWords = (detail.Words ?? []) as Array<{ Word?: string; PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string }; Phonemes?: Array<{ Phoneme?: string; PronunciationAssessment?: { AccuracyScore?: number } }> }>;
+      const rawWords = (detail.Words ?? []) as Array<{ Word?: string; Offset?: number; Duration?: number; PronunciationAssessment?: { AccuracyScore?: number; ErrorType?: string }; Phonemes?: Array<{ Phoneme?: string; PronunciationAssessment?: { AccuracyScore?: number } }> }>;
       const words: PAWord[] = rawWords.map((w) => {
         let phonemeMin = 100, worst = "";
         for (const ph of w.Phonemes ?? []) {
@@ -78,6 +78,9 @@ export async function startPronAssessment(opts: {
           errorType: w.PronunciationAssessment?.ErrorType ?? "None",
           phonemeMin: Math.round(phonemeMin),
           worst,
+          // Azure offsets/durations are in 100-nanosecond ticks.
+          offsetSeconds: typeof w.Offset === "number" ? w.Offset / 10_000_000 : undefined,
+          durationSeconds: typeof w.Duration === "number" ? w.Duration / 10_000_000 : undefined,
         };
       });
       const fluency = Math.round((pa as unknown as { fluencyScore?: number }).fluencyScore ?? 100);

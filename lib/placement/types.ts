@@ -24,6 +24,8 @@ export type Moment =
 
 /** Everything the runner hands to the complete route. */
 export type PlacementSubmission = {
+  evidenceVersion?: 3;
+  comprehensionChecks?: import("./passage-search").ComprehensionCheck[];
   childId: string;
   sessionId?: string;
   enrolled: PlacedBand;

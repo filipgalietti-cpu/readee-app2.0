@@ -28,7 +28,7 @@ export default function Page() {
   if (process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_PLACEMENT_DEMO !== "1") notFound();
 
   if (done) {
-    const decision = decidePlacement({ enrolled: done.enrolled, ladder: done.ladder, passages: done.passages, comprehension: done.comprehension, foundations: done.foundations });
+    const decision = decidePlacement(done);
     return (
       <main className="mx-auto max-w-3xl p-8" data-demo-done>
         <h1 className="text-2xl font-semibold text-violet-900">Placement demo: done</h1>

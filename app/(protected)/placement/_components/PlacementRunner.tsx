@@ -17,7 +17,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PLACEMENT_BANK } from "@/app/data/placement-bank";
 import { createLadder, recordWord, activeList, decodingLevel, needsFoundations, BAND_LABEL, type LadderState, type Band, type PlacedBand } from "@/lib/placement/ladder";
-import { gradeRead, gradeWord } from "@/lib/placement/read-grade";
+import { gradeRead, gradeWord, passageRate } from "@/lib/placement/read-grade";
+import { nextPassageBand, type ComprehensionCheck } from "@/lib/placement/passage-search";
 import { PASSAGE_MAX_SECONDS, PASSAGE_READ_SECONDS, PASSAGE_SILENCE_STOP_MS, type BankQuestion } from "@/lib/placement/bank";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
 import type { Moment, PlacementSubmission } from "@/lib/placement/types";
@@ -249,15 +250,13 @@ export default function PlacementRunner({
     const startedAt = Date.now();
     micRef.current.startRecording();
     setScreen({ kind: "passage", title: p.title, text: p.text, reading: true });
-    let minute: { wordsCorrect: number; seconds: number } | null = null;
     await new Promise<void>((res) => {
       let settled = false;
       const timers: number[] = [];
       const end = () => { if (settled) return; settled = true; timers.forEach((t) => window.clearTimeout(t)); window.clearInterval(quiet); res(); };
       stopNow = end;
       if (captureError) { res(); return; }
-      // The rate window closes silently at one minute; the child keeps reading.
-      timers.push(window.setTimeout(() => { const g = gradeRead(p.text, phrases); minute = { wordsCorrect: g.wordsCorrect, seconds: PASSAGE_READ_SECONDS }; }, PASSAGE_READ_SECONDS * 1000));
+      // The rate window is scored from word timestamps after recognition drains.
       timers.push(window.setTimeout(end, PASSAGE_MAX_SECONDS * 1000));
       // Silence means the child has stopped: a short one once most of the passage is read, a long one otherwise
       // (never before the rate window unless they are near the end).
@@ -275,8 +274,7 @@ export default function PlacementRunner({
     if (captureError) throw new Error(captureError);
     const g = gradeRead(p.text, phrases);
     if (g.wordsAttempted === 0) throw new Error("No reading was captured.");
-    // Finished inside the window: the whole read is the rate window.
-    minute ??= { wordsCorrect: g.wordsCorrect, seconds: Math.max(1, elapsed) };
+    const minute = passageRate(g, elapsed, finishedEarly);
     await playNarr(finishedEarly ? "passage-done" : "passage-stop", 3000);
     const keptGoing = finishedEarly || Date.now() - lastPhraseAt < 15000;
     return {
@@ -286,7 +284,7 @@ export default function PlacementRunner({
         wordsTotal: Math.max(g.wordsAttempted, g.wordsCorrect),
         durationSeconds: Math.max(1, Math.round(elapsed)),
         minuteWordsCorrect: minute.wordsCorrect,
-        minuteSeconds: Math.round(minute.seconds),
+        minuteSeconds: minute.seconds,
         prosody: null,
       },
       keptGoing,
@@ -435,29 +433,21 @@ export default function PlacementRunner({
       const level = decodingLevel(ladder);
       if (enrolled > 1 && needsFoundations(ladder)) await runFoundations();
 
-      // 4. Passage(s): decoding band first; the enrolled-grade passage too when it is one band up.
+      // 4. Establish a comfortable connected-text level, starting at the word-list level.
       const passages: PassageEvidence[] = [];
+      const comprehensionChecks: ComprehensionCheck[] = [];
       let recordingPath: string | null = null;
       let comprehension: PlacementSubmission["comprehension"] = null;
       const decodingBand = level.band === null ? 0 : Math.min(5, level.band);
-      const readBand = decodingBand as Band;
-      if (readBand >= 1) {
+      let readBand = decodingBand as Band;
+      while (readBand >= 1) {
+        if (cancelled()) return;
         setStage("passage");
         await say("passage-intro", "Now a story. Read it out loud the best you can. If you get stuck, keep going. I will tell you when to stop.");
         const first = await readPassage(readBand);
         passages.push(first.ev);
         if (first.keptGoing) moments.push({ kind: "passage-kept-going", band: readBand });
         if (first.ev.wordsTotal > 0 && first.ev.wordsCorrect / first.ev.wordsTotal >= 0.95) moments.push({ kind: "passage-accurate", band: readBand, accuracy: first.ev.wordsCorrect / first.ev.wordsTotal });
-        let recBlob = first.blob; let recBand: Band = readBand;
-        const gap = enrolled - readBand;
-        if (gap === 1 && enrolled >= 1) {
-          await say("passage-second", "One more story. This one is a little harder. Just do your best.");
-          const second = await readPassage(enrolled as Band);
-          passages.push(second.ev);
-          if (second.keptGoing) moments.push({ kind: "passage-kept-going", band: enrolled as Band });
-          recBlob = second.blob ?? recBlob; recBand = enrolled as Band;
-        }
-        if (recBlob && !demo) recordingPath = await uploadRecording(recBlob, recBand);
 
         // 5. Comprehension on the passage the child read at their level.
         setStage("comprehension");
@@ -475,8 +465,17 @@ export default function PlacementRunner({
         const lookBack = { title: bankPassage.title, text: bankPassage.text };
         for (const [i, q] of qs.entries()) { if (await askQuestion(q, readChoices, lookBack)) correct++; await ack(i); }
         comprehension = { correct, total: qs.length, band: readBand };
+        comprehensionChecks.push(comprehension);
         moments.push({ kind: "comprehension", band: readBand, correct, total: qs.length });
-      } else {
+        const next = nextPassageBand(first.ev, comprehension);
+        if (next === null) {
+          if (first.blob && !demo) recordingPath = await uploadRecording(first.blob, readBand);
+          break;
+        }
+        readBand = next;
+      }
+      if (readBand === 0) {
+        if (!foundations) await runFoundations();
         // K path: the listening story instead of a passage.
         setStage("listening");
         const f = PLACEMENT_BANK.foundations;
@@ -498,6 +497,7 @@ export default function PlacementRunner({
       await playNarr("close", 3500);
       micRef.current.close();
       const submission: PlacementSubmission = {
+        evidenceVersion: 3, comprehensionChecks,
         childId, sessionId: crypto.randomUUID(), enrolled, ladder, passages, comprehension, foundations, moments,
         durationSeconds: Math.round((Date.now() - startedRef.current) / 1000),
         passageRecordingPath: recordingPath,

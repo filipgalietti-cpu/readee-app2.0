@@ -1,8 +1,27 @@
 import { describe, it, expect } from "vitest";
-import { gradeRead, gradeWord, WORD_ACCURACY_MIN } from "@/lib/placement/read-grade";
+import { gradeRead, gradeWord, passageRate, WORD_ACCURACY_MIN } from "@/lib/placement/read-grade";
 import type { PAWord } from "@/app/(protected)/luna/_components/azure-stream";
 
 const w = (word: string, accuracy = 90, errorType = "None"): PAWord => ({ word, accuracy, errorType, phonemeMin: accuracy, worst: "" });
+
+describe("passage rate from speech timestamps", () => {
+  const timed = (word: string, start: number, duration = 0.5) => ({ ...w(word), offsetSeconds: start, durationSeconds: duration });
+  it("counts late-delivered words inside the window but excludes words after or across the boundary", () => {
+    const g = gradeRead("one two three four", [[timed("one", 58), timed("two", 59.5), timed("three", 59.8), timed("four", 61)]]);
+    expect(passageRate(g, 75, false)).toEqual({ wordsCorrect: 2, seconds: 60 });
+  });
+  it("uses the speech endpoint for an early finish, without recognition latency", () => {
+    const g = gradeRead("one two", [[timed("one", 0), timed("two", 9.5)]]);
+    expect(passageRate(g, 14, true)).toEqual({ wordsCorrect: 2, seconds: 10 });
+  });
+  it("does not score missing timestamps as zero speed", () => {
+    expect(() => passageRate(gradeRead("one", [[w("one")]]), 70, false)).toThrow("timing");
+  });
+  it("does not count omissions, substitutions, insertions, or unaligned words as correct", () => {
+    const g = gradeRead("one two three", [[timed("one", 1), { ...timed("two", 2), errorType: "Mispronunciation" }, { ...w("three"), errorType: "Omission" }, { ...timed("extra", 3), errorType: "Insertion" }]]);
+    expect(passageRate(g, 60, false)).toEqual({ wordsCorrect: 1, seconds: 60 });
+  });
+});
 
 describe("gradeRead", () => {
   it("counts a clean read in order", () => {

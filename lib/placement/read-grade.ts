@@ -15,7 +15,7 @@ import type { PAWord } from "@/app/(protected)/luna/_components/azure-stream";
 export const WORD_ACCURACY_MIN = 55;
 
 export type WordStatus = "correct" | "substituted" | "omitted" | "unread";
-export type WordAnnotation = { word: string; status: WordStatus; accuracy: number | null };
+export type WordAnnotation = { word: string; status: WordStatus; accuracy: number | null; endSeconds?: number };
 
 export type ReadGrade = {
   annotations: WordAnnotation[];
@@ -59,6 +59,8 @@ export function gradeRead(reference: string, phrases: PAWord[][]): ReadGrade {
         word: ref[idx],
         status: w.errorType === "Omission" ? "omitted" : isWordCorrect(w) ? "correct" : "substituted",
         accuracy: w.errorType === "Omission" ? null : w.accuracy,
+        endSeconds: Number.isFinite(w.offsetSeconds) && Number.isFinite(w.durationSeconds) && w.offsetSeconds! >= 0 && w.durationSeconds! >= 0
+          ? w.offsetSeconds! + w.durationSeconds! : undefined,
       };
       cursor = idx + 1;
     }
@@ -68,6 +70,16 @@ export function gradeRead(reference: string, phrases: PAWord[][]): ReadGrade {
   const wordsCorrect = attempted.filter((a) => a.status === "correct").length;
   const missed = attempted.filter((a) => a.status !== "correct").map((a) => a.word);
   return { annotations, wordsAttempted, wordsCorrect, missed };
+}
+
+/** Score finalized words by when they were spoken. Call after recognition drains,
+ * so a phrase arriving after the cutoff still contributes its pre-cutoff words. */
+export function passageRate(grade: ReadGrade, elapsed: number, finished: boolean): { wordsCorrect: number; seconds: number } {
+  const spoken = grade.annotations.filter((a) => a.status === "correct" || a.status === "substituted");
+  if (!spoken.length || spoken.some((a) => a.endSeconds === undefined)) throw new Error("Reading timing was not captured. Please try this story again.");
+  const end = Math.max(...spoken.map((a) => a.endSeconds!));
+  const seconds = Math.max(1, Math.min(60, finished ? end : elapsed));
+  return { seconds, wordsCorrect: spoken.filter((a) => a.status === "correct" && a.endSeconds! <= seconds).length };
 }
 
 /** Single-word verdict for the word lists: the reference word must be read with no error. */
