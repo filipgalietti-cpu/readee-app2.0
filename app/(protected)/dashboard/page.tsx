@@ -1,4 +1,6 @@
 "use client";
+import { loadJourneyPlacement } from "@/lib/journey/load-placement";
+import type { PlacementPlan } from "@/lib/placement/types";
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
@@ -465,6 +467,14 @@ function ChildDashboard({
   onSwitch: (c: Child) => void;
 }) {
   const [hasAssessment, setHasAssessment] = useState<boolean | null>(null);
+  const [placement, setPlacement] = useState<PlacementPlan | null>(null);
+  const [placementReady, setPlacementReady] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    setPlacementReady(false);
+    void loadJourneyPlacement(child.id).then((p) => { if (alive) { setPlacement(p); setPlacementReady(true); } }, () => { /* next lesson links to the recoverable journey loader */ });
+    return () => { alive = false; };
+  }, [child.id]);
   const [readingLevel, setReadingLevel] = useState<string | null>(child.reading_level);
   const [lessonProgress, setLessonProgress] = useState<LessonProgress[]>([]);
   const [practiceRows, setPracticeRows] = useState<{ standard_id: string; questions_correct: number }[]>([]);
@@ -550,13 +560,13 @@ function ChildDashboard({
   const jp = computeJourneyProgress({
     practice: practiceRows,
     lessonProgress: lessonProgress.map((p) => ({ lesson_id: p.lesson_id, section: p.section, score: p.score })),
-    readingLevel,
+    readingLevel, placement,
   });
-  const nextLesson = jp.current; // { standardId, title, grade, domain } | null
+  const nextLesson = placementReady ? jp.current : null; // { standardId, title, grade, domain } | null
   const completedCount = jp.gradeDone; // grade-level, for the badge milestone
   const gradeTotal = jp.gradeTotal;
   const unitPct = jp.unitTotal > 0 ? jp.unitDone / jp.unitTotal : 0;
-  const nextLessonHref = nextLesson ? `/learn?child=${child.id}&standard=${nextLesson.standardId}` : "#";
+  const nextLessonHref = nextLesson ? `/learn?child=${child.id}&standard=${nextLesson.standardId}` : `/journey?child=${child.id}`;
 
   // Recent completed (dead ParentSidebar shape, kept type-valid).
   const recentCompleted = jp.recentCompleted.map((l) => ({
@@ -784,6 +794,7 @@ function ChildDashboard({
         : { href: `/assessment?child=${child.id}`, text: "Take your reading quiz", sub: "A fun 10-question quiz · about 5 min" })
     : nextLesson
       ? { href: nextLessonHref, text: completedCount === 0 ? "Start your adventure" : "Keep going", sub: `Next: ${nextLesson.title}` }
+      : !placementReady ? { href: `/journey?child=${child.id}`, text: "Open your reading journey", sub: "Load your personal reading plan" }
       : { href: `/practice-hub?child=${child.id}`, text: "Practice time!", sub: "You finished every lesson - amazing!" };
 
   // Reverse trial (retired Sep 2 2026, TRIAL_DAYS = 0): a new reader used to get full Readee+ access for the first TRIAL_DAYS days
@@ -826,7 +837,7 @@ function ChildDashboard({
         weakStandard
           ? { num: "1", label: `Review: ${weakStandard.title}`, sub: dailyGoalMet ? "Done - nice work!" : "You missed a few of these last time", status: dailyGoalMet ? "done" : "cur", href: `/practice?standard=${encodeURIComponent(weakStandard.standardId)}&child=${child.id}` }
           : { num: "1", label: "Warm-up practice", sub: dailyGoalMet ? "Done - nice work!" : "5 quick questions", status: dailyGoalMet ? "done" : "cur", href: `/practice-hub?child=${child.id}` },
-        { num: "2", label: nextLesson ? nextLesson.title : "All lessons done!", sub: lessonLocked ? "Unlock the rest of the lessons" : nextLesson ? "About 5 minutes" : "You finished them all", status: nextLesson ? (dailyGoalMet ? "cur" : "todo") : "done", href: lessonLocked ? upgradeHref : nextLesson ? nextLessonHref : undefined, locked: lessonLocked },
+        { num: "2", label: !placementReady ? "Open your reading journey" : nextLesson ? nextLesson.title : "All lessons done!", sub: !placementReady ? "Load your reading plan" : lessonLocked ? "Unlock the rest of the lessons" : nextLesson ? "About 5 minutes" : "You finished them all", status: !placementReady ? "todo" : nextLesson ? (dailyGoalMet ? "cur" : "todo") : "done", href: !placementReady ? `/journey?child=${child.id}` : lessonLocked ? upgradeHref : nextLesson ? nextLessonHref : undefined, locked: lessonLocked },
         { num: "3", label: "Read a story", sub: lapsed ? "Reactivate to keep reading" : "You pick which one", status: "todo", href: lapsed ? upgradeHref : `/stories?child=${child.id}`, locked: lapsed },
       ];
   // Locked (premium-gated) steps don't count toward the daily goal ring — a

@@ -14,6 +14,7 @@ const Band = z.number().int().min(0).max(5);
 
 export const PlacementSubmissionSchema = z.object({
   childId: z.string().uuid(),
+  sessionId: z.string().uuid().optional(),
   enrolled: z.number().int().min(0).max(4),
   ladder: z.object({
     enrolled: z.number().int().min(0).max(4),

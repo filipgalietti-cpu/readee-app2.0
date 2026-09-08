@@ -44,6 +44,7 @@ type Screen =
   // showing the text there would turn a listening task into a reading one.
   | { kind: "question"; prompt: string; options: { id: string; label: string }[]; picked: string | null; readingIdx: number; correctId?: string; speakers?: boolean; qid?: string; passage?: { title: string; text: string } }
   | { kind: "blocked"; reason: MicState }
+  | { kind: "recovery" }
   | { kind: "closing"; error: string | null };
 
 export default function PlacementRunner({
@@ -74,6 +75,8 @@ export default function PlacementRunner({
   const skipRef = useRef<(() => void) | null>(null);
   const startedRef = useRef<number>(0);
   const runRef = useRef(false);
+  const submissionRef = useRef<PlacementSubmission | null>(null);
+  const savingRef = useRef(false);
   const cancelledRef = useRef(false);
   const micRef = useRef(mic);
   micRef.current = mic;
@@ -93,8 +96,43 @@ export default function PlacementRunner({
     await new Promise((r) => setTimeout(r, robot ? 0 : 220));
   }, [robot]);
 
+  const recover = useCallback(async <T,>(task: () => Promise<T>): Promise<T> => {
+    for (;;) {
+      try { return await task(); }
+      catch {
+        micRef.current.close();
+        setOrb("idle");
+        setScreen({ kind: "recovery" });
+        await waitTap();
+        if (cancelledRef.current) throw new Error("Assessment closed.");
+        // A failed reopen remains a technical failure, never a scored attempt.
+        while (await micRef.current.open() !== "open") {
+          setScreen({ kind: "recovery" });
+          await waitTap();
+          if (cancelledRef.current) throw new Error("Assessment closed.");
+        }
+      }
+    }
+  }, [waitTap]);
+
+  const saveSubmission = useCallback(async () => {
+    const submission = submissionRef.current;
+    if (!submission || savingRef.current) return;
+    savingRef.current = true;
+    setScreen({ kind: "closing", error: null });
+    try {
+      const r = await fetch("/api/placement/complete", { method: "POST", signal: AbortSignal.timeout(30000), headers: { "Content-Type": "application/json" }, body: JSON.stringify(submission) });
+      const j = await r.json();
+      if (!r.ok || !j.ok) throw new Error(j.error ?? "Could not save your results.");
+      try { sessionStorage.removeItem(`readee.placement.pending.${childId}`); } catch { /* storage unavailable */ }
+      router.push(`/placement/reveal?child=${childId}`);
+    } catch {
+      setScreen({ kind: "closing", error: "Your answers are still here. Please check your connection and try saving again." });
+    } finally { savingRef.current = false; }
+  }, [childId, router]);
+
   /** One spoken word: listen with the word as the reference; resolve on a verdict, a tap, or the hesitation timeout. */
-  const listenWord = useCallback(async (word: string, nonsense = false, band?: number): Promise<boolean> => {
+  const listenWordOnce = useCallback(async (word: string, nonsense = false, band?: number): Promise<boolean> => {
     setScreen({ kind: "word", word, listening: false, nonsense, band });
     setOrb("listening");
     if (robot) {
@@ -105,8 +143,9 @@ export default function PlacementRunner({
     }
     let resolved = false;
     let verdict = false;
-    const done = new Promise<void>((res) => {
+    const done = new Promise<void>((res, reject) => {
       const finish = (v: boolean) => { if (resolved) return; resolved = true; verdict = v; res(); };
+      const fail = () => { if (resolved) return; resolved = true; reject(new Error("Recognition failed.")); };
       skipRef.current = () => finish(false);
       const phrases: import("@/app/(protected)/luna/_components/azure-stream").PAWord[][] = [];
       void micRef.current.listen(word, (p) => {
@@ -116,12 +155,12 @@ export default function PlacementRunner({
         phrases.push(p.words);
         const g = gradeWord(word, phrases);
         if (g.heard) finish(g.correct);
-      }).then((l) => {
-        if (!l) { finish(false); return; }
+      }, fail).then((l) => {
+        if (resolved) { void l.stop(); return; }
         setScreen({ kind: "word", word, listening: true, nonsense, band });
         const t = window.setTimeout(() => finish(false), WORD_TIMEOUT_MS);
-        void done.then(() => { window.clearTimeout(t); void l.stop(); });
-      });
+        void done.then(() => { window.clearTimeout(t); void l.stop(); }, () => { window.clearTimeout(t); void l.stop(); });
+      }).catch(fail);
     });
     await done;
     skipRef.current = null;
@@ -129,13 +168,16 @@ export default function PlacementRunner({
     return verdict;
   }, [robot, waitTap]);
 
+  const listenWord = useCallback((word: string, nonsense = false, band?: number) => recover(() => listenWordOnce(word, nonsense, band)), [recover, listenWordOnce]);
+
   /** Tap items (letter sounds, blending, comprehension): play the prompt audio, then wait for a tap. */
   const askTiles = useCallback(async (caption: string, tiles: string[], audio: () => Promise<void>): Promise<string> => {
     setScreen({ kind: "tiles", caption, tiles, picked: null });
     setOrb("speaking");
+    const answer = waitTap();
     await audio();
     setOrb("idle");
-    const picked = await waitTap();
+    const picked = await answer;
     setScreen({ kind: "tiles", caption, tiles, picked });
     return picked;
   }, [waitTap]);
@@ -176,7 +218,7 @@ export default function PlacementRunner({
    * (DIBELS window); the child reads on to the end (MAP Reading Fluency style), capped at PASSAGE_MAX_SECONDS
    * or a long silence after the window. Accuracy comes from everything read. Returns evidence + the recording.
    */
-  const readPassage = useCallback(async (band: Band): Promise<{ ev: PassageEvidence; keptGoing: boolean; blob: Blob | null }> => {
+  const readPassageOnce = useCallback(async (band: Band): Promise<{ ev: PassageEvidence; keptGoing: boolean; blob: Blob | null }> => {
     const p = PLACEMENT_BANK.bands[band].passage!;
     await playUrlAsync(clipUrl(`title-${band}`), 5000);
     setScreen({ kind: "passage", title: p.title, text: p.text, reading: false });
@@ -194,6 +236,7 @@ export default function PlacementRunner({
     let finishedEarly = false;
     let stopNow: (() => void) | null = null;
     let lastAttempted = 0;
+    let captureError: string | null = null;
     const listener = await micRef.current.listen(p.text, (ph) => {
       phrases.push(ph.words);
       lastPhraseAt = Date.now();
@@ -202,7 +245,7 @@ export default function PlacementRunner({
       // Within three words of the end counts as finished: the recognizer rarely aligns the very last words,
       // and waiting for them (then for the silence rule) was a long pause after the child had stopped.
       if (g.wordsAttempted >= totalWords - 3) { finishedEarly = true; stopNow?.(); }
-    });
+    }, (message) => { captureError = message; stopNow?.(); });
     const startedAt = Date.now();
     micRef.current.startRecording();
     setScreen({ kind: "passage", title: p.title, text: p.text, reading: true });
@@ -212,6 +255,7 @@ export default function PlacementRunner({
       const timers: number[] = [];
       const end = () => { if (settled) return; settled = true; timers.forEach((t) => window.clearTimeout(t)); window.clearInterval(quiet); res(); };
       stopNow = end;
+      if (captureError) { res(); return; }
       // The rate window closes silently at one minute; the child keeps reading.
       timers.push(window.setTimeout(() => { const g = gradeRead(p.text, phrases); minute = { wordsCorrect: g.wordsCorrect, seconds: PASSAGE_READ_SECONDS }; }, PASSAGE_READ_SECONDS * 1000));
       timers.push(window.setTimeout(end, PASSAGE_MAX_SECONDS * 1000));
@@ -228,7 +272,9 @@ export default function PlacementRunner({
     if (listener) await listener.stop();
     const blob = micRef.current.stopRecording();
     setOrb("idle");
+    if (captureError) throw new Error(captureError);
     const g = gradeRead(p.text, phrases);
+    if (g.wordsAttempted === 0) throw new Error("No reading was captured.");
     // Finished inside the window: the whole read is the rate window.
     minute ??= { wordsCorrect: g.wordsCorrect, seconds: Math.max(1, elapsed) };
     await playNarr(finishedEarly ? "passage-done" : "passage-stop", 3000);
@@ -248,6 +294,8 @@ export default function PlacementRunner({
     };
   }, [robot, waitTap]);
 
+  const readPassage = useCallback((band: Band) => recover(() => readPassageOnce(band)), [recover, readPassageOnce]);
+
   const uploadRecording = useCallback(async (blob: Blob, band: Band): Promise<string | null> => {
     try {
       const fd = new FormData();
@@ -266,6 +314,17 @@ export default function PlacementRunner({
     cancelledRef.current = false;
     if (runRef.current) return () => { cancelledRef.current = true; };
     runRef.current = true;
+    if (!demo) {
+      try {
+        const saved = JSON.parse(sessionStorage.getItem(`readee.placement.pending.${childId}`) ?? "null");
+        if (saved?.submission?.childId === childId && Date.now() - saved.savedAt < 24 * 3600_000) {
+          submissionRef.current = saved.submission;
+          void saveSubmission();
+          return () => { cancelledRef.current = true; stopClip(); };
+        }
+        sessionStorage.removeItem(`readee.placement.pending.${childId}`);
+      } catch { /* a damaged draft never blocks a new assessment */ }
+    }
     setFastAudio(robot); // robots do not wait for clips to finish
     const cancelled = () => cancelledRef.current;
     const moments: Moment[] = [];
@@ -439,20 +498,15 @@ export default function PlacementRunner({
       await playNarr("close", 3500);
       micRef.current.close();
       const submission: PlacementSubmission = {
-        childId, enrolled, ladder, passages, comprehension, foundations, moments,
+        childId, sessionId: crypto.randomUUID(), enrolled, ladder, passages, comprehension, foundations, moments,
         durationSeconds: Math.round((Date.now() - startedRef.current) / 1000),
         passageRecordingPath: recordingPath,
       };
       if (demo) { onDemoComplete?.(submission); return; }
-      try {
-        const r = await fetch("/api/placement/complete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(submission) });
-        const j = await r.json();
-        if (!r.ok || !j.ok) throw new Error(j.error ?? `HTTP ${r.status}`);
-        router.push(`/placement/reveal?child=${childId}`);
-      } catch (e) {
-        setScreen({ kind: "closing", error: String((e as Error)?.message ?? e) });
-      }
-    })();
+      submissionRef.current = submission;
+      try { sessionStorage.setItem(`readee.placement.pending.${childId}`, JSON.stringify({ savedAt: Date.now(), submission })); } catch { /* retry still works in memory */ }
+      await saveSubmission();
+    })().catch(() => { if (!cancelled()) { micRef.current.close(); setScreen({ kind: "blocked", reason: "unavailable" }); } });
     return () => { cancelledRef.current = true; stopClip(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -508,6 +562,7 @@ export default function PlacementRunner({
                 type="button"
                 className="min-h-14 rounded-2xl border border-violet-200 bg-white px-8 py-3 text-lg font-semibold text-violet-800 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)] transition active:scale-[0.97] md:text-xl"
                 onClick={() => skipRef.current?.()}
+                disabled={!screen.listening && !robot}
                 data-skip-word
               >
                 I don&apos;t know
@@ -621,13 +676,21 @@ export default function PlacementRunner({
             </div>
           )}
 
+          {screen.kind === "recovery" && (
+            <div className="flex max-w-md flex-col items-center gap-4 text-center" role="alert">
+              <p className="text-2xl font-semibold">Luna lost the connection.</p>
+              <p>That was not a wrong answer. Check your microphone and connection, then we will try this part again.</p>
+              <button className="rounded-2xl bg-violet-600 px-6 py-3 font-semibold text-white" onClick={() => tap("retry")}>Try this part again</button>
+              <a href="/dashboard" className="underline">Return to dashboard</a>
+            </div>
+          )}
           {screen.kind === "closing" && (
             <div className="flex flex-col items-center gap-4 text-center" data-closing>
               <p className="text-2xl font-semibold">That&apos;s everything. You did it.</p>
               {screen.error ? (
                 <>
-                  <p className="text-violet-700">Something went wrong saving the results ({screen.error}).</p>
-                  <button type="button" className="rounded-2xl bg-white px-5 py-3 font-semibold text-violet-800 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)]" onClick={() => window.location.reload()}>Try again</button>
+                  <p className="text-violet-700">{screen.error}</p>
+                  <button type="button" className="rounded-2xl bg-white px-5 py-3 font-semibold text-violet-800 shadow-[0_4px_14px_-4px_rgba(49,46,129,0.20)]" onClick={() => { void saveSubmission(); }}>Save my results again</button>
                 </>
               ) : (
                 <p className="text-violet-500">One moment...</p>

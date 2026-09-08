@@ -1,3 +1,4 @@
+import { withCurrentPlan } from "@/lib/placement/current-plan";
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import type { PlacementResult } from "@/lib/placement/types";
@@ -40,5 +41,5 @@ export async function GET(req: Request) {
     durationSeconds: Number(r.duration_seconds ?? 0),
     createdAt: String(r.created_at),
   };
-  return NextResponse.json({ ok: true, result });
+  return NextResponse.json({ ok: true, result: withCurrentPlan(result) });
 }

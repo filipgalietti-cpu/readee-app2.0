@@ -19,6 +19,7 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
   const router = useRouter();
   const [phase, setPhase] = useState<Phase>("celebrate");
   const [result, setResult] = useState<PlacementResult | null>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [holdDone, setHoldDone] = useState(false);
   const pollRef = useRef<number | null>(null);
   useEffect(() => { if (holdDone && result) setPhase("wizard"); }, [holdDone, result]);
@@ -71,12 +72,13 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
     try {
       const r = await fetch(`/api/placement/result?child=${childId}`, { cache: "no-store" });
       const j = await r.json();
-      if (!r.ok || !j.ok || !j.result) return;
+      if (!r.ok || !j.ok || !j.result) { setLoadFailed(true); return; }
+      setLoadFailed(false);
       const payload = JSON.stringify(j.result);
       if (payload === lastPayload.current) return;
       lastPayload.current = payload;
       setResult(j.result as PlacementResult);
-    } catch { /* keep polling */ }
+    } catch { setLoadFailed(true); }
   }, [childId]);
 
   // Load immediately; keep polling every 4 s until every narration line has audio (or 2 minutes pass).
@@ -109,7 +111,9 @@ export default function RevealFlow({ childId, childName, outfitId }: { childId: 
 
   // The reveal owns the whole viewport (no site chrome on /placement routes): one screen, never a page scroll.
   let screen: React.ReactNode;
-  if (phase === "celebrate") {
+  if (loadFailed && !result) {
+    screen = <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center" role="alert"><p>We could not load your saved results.</p><button className="rounded-xl bg-violet-600 px-6 py-3 text-white" onClick={() => { void load(); }}>Try again</button><a href="/dashboard" className="underline">Return to dashboard</a></div>;
+  } else if (phase === "celebrate") {
     screen = <CelebrationScreen childName={childName} outfitId={outfitId} carrots={30} onHandoff={() => setPhase("hold")} />;
   } else if (phase === "hold" || !result) {
     const g = result ? ["kindergarten", "1st-grade", "2nd-grade", "3rd-grade", "4th-grade"][result.enrolled] : undefined;

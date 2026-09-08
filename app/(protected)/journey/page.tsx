@@ -1,4 +1,7 @@
 "use client";
+import { assignedJourneyCatalog } from "@/lib/journey/next-lesson";
+import { loadJourneyPlacement } from "@/lib/journey/load-placement";
+import type { PlacementPlan } from "@/lib/placement/types";
 
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -99,6 +102,8 @@ function JourneyContent() {
   const [practiceProgress, setPracticeProgress] = useState<ProgressRecord[]>([]);
   const [lessonProgress, setLessonProgress] = useState<LessonProgressRecord[]>([]);
   const [loading, setLoading] = useState(true);
+  const [placement, setPlacement] = useState<PlacementPlan | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const [showPaywall, setShowPaywall] = useState(false);
   // Reveal the map with a short fade once it's mounted + has measured its
   // geometry, so the first-paint settle doesn't flash as a glitch.
@@ -133,6 +138,7 @@ function JourneyContent() {
   useEffect(() => {
     let alive = true;
     async function load() {
+      setLoading(true); setLoadError(false);
       const supabase = supabaseBrowser();
       let resolvedId = childIdParam;
 
@@ -169,18 +175,21 @@ function JourneyContent() {
         window.history.replaceState(null, "", url.toString());
       }
 
-      const [childRes, practiceRes, lessonRes] = await Promise.all([
+      const [childRes, practiceRes, lessonRes, placementResult] = await Promise.all([
         supabase.from("children").select("*").eq("id", resolvedId).single(),
         supabase.from("practice_results").select("standard_id, questions_correct, questions_attempted").eq("child_id", resolvedId),
         supabase.from("lessons_progress").select("lesson_id, section, score").eq("child_id", resolvedId),
+        loadJourneyPlacement(resolvedId),
       ]);
       if (!alive) return;
+      if (!childRes.data || childRes.error || practiceRes.error || lessonRes.error) throw new Error("Could not load journey progress.");
+      setPlacement(placementResult);
       if (childRes.data) setChild(childRes.data as Child);
       if (practiceRes.data) setPracticeProgress(practiceRes.data as ProgressRecord[]);
       if (lessonRes.data) setLessonProgress(lessonRes.data as LessonProgressRecord[]);
       setLoading(false);
     }
-    load();
+    void load().catch(() => { if (alive) { setLoadError(true); setLoading(false); } });
     return () => {
       alive = false;
     };
@@ -219,6 +228,7 @@ function JourneyContent() {
     await awardCarrots(supabaseBrowser(), c.id, amount);
   }, []);
 
+  if (loadError) return <div className="p-8 text-center" role="alert">We could not load your reading plan. <button onClick={() => window.location.reload()} className="underline">Try again</button></div>;
   if (loading || !child) {
     return <JourneySkeleton />;
   }
@@ -239,49 +249,12 @@ function JourneyContent() {
 
   // Build per-grade index map for free tier gating
 
-  // Placement floor: the journey begins at the grade the child TESTED into.
-  // reading_level ("Growing Reader" → "2nd", etc.) → a grade key; every lesson
-  // in a LOWER grade is treated as already mastered (tested out) so the first
-  // "current" node lands on the tested grade's first lesson. No test yet →
-  // levelNameToGradeKey(null) = "kindergarten" → starts at K (unchanged).
-  const CATALOG_GRADE_KEY: Record<string, string> = {
-    "Kindergarten": "kindergarten", "1st Grade": "1st", "2nd Grade": "2nd", "3rd Grade": "3rd", "4th Grade": "4th",
-  };
-  const testedIdx = ASSESSMENT_GRADE_ORDER.indexOf(levelNameToGradeKey(child.reading_level ?? null));
-  const belowTested = (catalogGrade: string) => {
-    const k = CATALOG_GRADE_KEY[catalogGrade] as (typeof ASSESSMENT_GRADE_ORDER)[number] | undefined;
-    return k ? ASSESSMENT_GRADE_ORDER.indexOf(k) < testedIdx : false;
-  };
-
-  // Assign statuses. The journey is a linear spine: everything completed (or
-  // below the tested placement floor) stays gold, the FIRST not-yet-completed
-  // lesson is the single "current" node (green, playable), and everything after
-  // it is locked/premium. Marking every *started* lesson as its own unlocked
-  // node was the "everything ahead is unlocked" bug — a kid who peeked into
-  // several lessons lit them all up green.
-  // Order lessons the SAME way the journey DISPLAYS them (grade → domain, in
-  // first-appearance order) so the single "current" node follows what the child
-  // actually navigates. Previously statuses were assigned in raw catalog order,
-  // which interleaves strands (RL.K.1, RF.K.2a, RI.K.1, RL.K.2…) — so finishing
-  // the RL strand in order left "current" stuck on an earlier RF/RI lesson.
-  const orderedLessons: SampleLesson[] = (() => {
-    const byGrade = new Map<string, SampleLesson[]>();
-    const gOrder: string[] = [];
-    for (const l of allLessons) { if (!byGrade.has(l.grade)) { byGrade.set(l.grade, []); gOrder.push(l.grade); } byGrade.get(l.grade)!.push(l); }
-    const out: SampleLesson[] = [];
-    for (const g of gOrder) {
-      const byDom = new Map<string, SampleLesson[]>();
-      const dOrder: string[] = [];
-      for (const l of byGrade.get(g)!) { if (!byDom.has(l.domain)) { byDom.set(l.domain, []); dOrder.push(l.domain); } byDom.get(l.domain)!.push(l); }
-      for (const d of dOrder) out.push(...byDom.get(d)!);
-    }
-    return out;
-  })();
+  const orderedLessons = assignedJourneyCatalog(child.reading_level ?? null, placement) as SampleLesson[];
 
   let foundCurrent = false;
   const lessonsWithStatus: LessonWithStatus[] = orderedLessons.map((lesson, idx) => {
     let status: LessonStatus;
-    if (hasCompleted(lesson.standardId) || belowTested(lesson.grade)) {
+    if (hasCompleted(lesson.standardId)) {
       status = "completed";
     } else if (!foundCurrent) {
       foundCurrent = true;
