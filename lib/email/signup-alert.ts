@@ -1,5 +1,6 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { notifyTeam } from "@/lib/email/notify-team";
+import { lookupSignupLocations } from "@/lib/analytics/posthog-geo";
 
 /**
  * Net-new signup alerts.
@@ -96,6 +97,10 @@ export async function notifyNewSignups(): Promise<{
     childrenBy.set(c.parent_id, list);
   }
 
+  // Where they are, from PostHog's geoip on their own events. Best-effort:
+  // an empty map just means the alert goes out without the line.
+  const locations = await lookupSignupLocations(batch.map((p) => p.id));
+
   const childIds = ((kids ?? []) as Child[]).map((c) => c.id);
   const placed = new Set<string>();
   if (childIds.length) {
@@ -118,6 +123,10 @@ export async function notifyNewSignups(): Promise<{
             })
             .join("; ")
         : "no reader added yet";
+      // "location not known yet" rather than a blank: an absent line reads as a
+      // bug, and for a brand-new account it usually just means PostHog has not
+      // ingested their first event yet.
+      const place = locations.get(p.id);
       return `
         <tr>
           <td style="padding:8px 12px;border-bottom:1px solid #eee">
@@ -126,6 +135,11 @@ export async function notifyNewSignups(): Promise<{
               ${esc(p.display_name || "no name")} &middot; ${esc(p.role)} &middot; ${esc(p.plan)}
               &middot; ${esc(ago(p.created_at))}
             </span><br>
+            <span style="font-size:13px">${
+              place
+                ? `<strong>${esc(place)}</strong>`
+                : `<span style="color:#999">location not known yet</span>`
+            }</span><br>
             <span style="font-size:13px">${kidLine}</span>
           </td>
         </tr>`;
@@ -134,8 +148,11 @@ export async function notifyNewSignups(): Promise<{
 
   const one = batch.length === 1;
   const first = batch[0];
+  const firstPlace = locations.get(first.id);
   const subject = one
-    ? `New Readee signup: ${first.email || first.display_name || "(no email)"}`
+    ? `New Readee signup: ${first.email || first.display_name || "(no email)"}${
+        firstPlace ? ` (${firstPlace})` : ""
+      }`
     : `${batch.length} new Readee signups`;
 
   const html = `<div style="font-family:sans-serif;max-width:560px">
