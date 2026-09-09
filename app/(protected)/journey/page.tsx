@@ -259,7 +259,7 @@ function JourneyContent() {
     } else if (!foundCurrent) {
       foundCurrent = true;
       status = "current";
-    } else if (plan !== "premium" && !isLessonInFreeUnit(lesson, freeUnitDomain)) {
+    } else if (plan !== "premium" && !isLessonInFreeUnit(lesson, freeUnitDomain, placement?.firstUnit)) {
       // Free unlocks only the grade's first unit; everything past it is Readee+.
       status = "premium";
     } else {

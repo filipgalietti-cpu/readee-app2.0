@@ -31,7 +31,7 @@ import { FluentIcon } from "@/app/_components/FluentIcon";
 
 /** What a child says to pass on a word (the intro invites "I don't know"). */
 const SKIP_PHRASE = /\b(i\s+)?(don'?t|do not)\s+know\b|\bdunno\b|\b(skip|pass|next one)\b/i;
-const WORD_TIMEOUT_MS = 6000; // hesitation rule: no read after this = not read (DIBELS uses 3 s; K needs more)
+const WORD_TIMEOUT_MS = 6000; // No recognized response means retry, never an incorrect answer.
 const WARMUP_WORD = "sun"; // not in any list; never scored
 
 type Screen =
@@ -132,7 +132,7 @@ export default function PlacementRunner({
     } finally { savingRef.current = false; }
   }, [childId, router]);
 
-  /** One spoken word: listen with the word as the reference; resolve on a verdict, a tap, or the hesitation timeout. */
+  /** One spoken word: listen with the word as the reference; score only a recognized response or an explicit skip; silence remains unmeasured. */
   const listenWordOnce = useCallback(async (word: string, nonsense = false, band?: number): Promise<boolean> => {
     setScreen({ kind: "word", word, listening: false, nonsense, band });
     setOrb("listening");
@@ -157,16 +157,32 @@ export default function PlacementRunner({
         const g = gradeWord(word, phrases);
         if (g.heard) finish(g.correct);
       }, fail).then((l) => {
-        if (resolved) { void l.stop(); return; }
+        let stopping: Promise<void> | undefined;
+        const stop = () => stopping ??= l.stop();
+        if (resolved) { void stop().catch(() => {}); return; }
         setScreen({ kind: "word", word, listening: true, nonsense, band });
-        const t = window.setTimeout(() => finish(false), WORD_TIMEOUT_MS);
-        void done.then(() => { window.clearTimeout(t); void l.stop(); }, () => { window.clearTimeout(t); void l.stop(); });
+        // Drain the last phrase before deciding that nothing was measured.
+        // A bounded drain also recovers when the SDK never acknowledges stop.
+        let drainTimer: number | undefined;
+        const t = window.setTimeout(() => {
+          drainTimer = window.setTimeout(fail, 4000);
+          void stop().then(() => { if (!resolved) fail(); }, fail);
+        }, WORD_TIMEOUT_MS);
+        const cleanup = () => {
+          window.clearTimeout(t);
+          window.clearTimeout(drainTimer);
+          void stop().catch(() => {});
+        };
+        void done.then(cleanup, cleanup);
       }).catch(fail);
     });
-    await done;
-    skipRef.current = null;
-    setOrb("idle");
-    return verdict;
+    try {
+      await done;
+      return verdict;
+    } finally {
+      skipRef.current = null;
+      setOrb("idle");
+    }
   }, [robot, waitTap]);
 
   const listenWord = useCallback((word: string, nonsense = false, band?: number) => recover(() => listenWordOnce(word, nonsense, band)), [recover, listenWordOnce]);
@@ -678,8 +694,8 @@ export default function PlacementRunner({
 
           {screen.kind === "recovery" && (
             <div className="flex max-w-md flex-col items-center gap-4 text-center" role="alert">
-              <p className="text-2xl font-semibold">Luna lost the connection.</p>
-              <p>That was not a wrong answer. Check your microphone and connection, then we will try this part again.</p>
+              <p className="text-2xl font-semibold">Let’s check the microphone.</p>
+              <p>We could not hear a clear response. Nothing was marked wrong. Check that your microphone is on and try this part again. If you don’t know a word, you can say “I don’t know” or tap the skip button.</p>
               <button className="rounded-2xl bg-violet-600 px-6 py-3 font-semibold text-white" onClick={() => tap("retry")}>Try this part again</button>
               <a href="/dashboard" className="underline">Return to dashboard</a>
             </div>

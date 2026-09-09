@@ -824,7 +824,7 @@ function ChildDashboard({
   // is honest + visible. Full-access readers (paid or in-trial) never see it.
   // Locked when the next lesson is beyond the free first unit (matches the real
   // /learn gate) — not a "done >= 1" heuristic.
-  const lessonLocked = !accessFull && !!nextLesson && (previewMode === "free" || !isLessonInFreeUnit({ grade: nextLesson.grade, domain: nextLesson.domain }, freeUnitDomain));
+  const lessonLocked = !accessFull && !!nextLesson && (previewMode === "free" || !isLessonInFreeUnit({ grade: nextLesson.grade, domain: nextLesson.domain }, freeUnitDomain, placement?.firstUnit));
 
   const planSteps: Array<{ num: string; label: string; sub: string; status: "done" | "cur" | "todo"; href?: string; locked?: boolean }> = (firstDay && !previewing)
     ? [

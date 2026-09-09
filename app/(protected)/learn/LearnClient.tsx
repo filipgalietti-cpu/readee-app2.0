@@ -156,10 +156,10 @@ function getStars(correct: number, total: number): number {
 /*  Page Wrapper                                          */
 /* ═══════════════════════════════════════════════════════ */
 
-export default function LearnPage() {
+export default function LearnPage({ placementStartUnlocked = false }: { placementStartUnlocked?: boolean }) {
   return (
     <Suspense fallback={<LoadingScreen />}>
-      <LearnLoader />
+      <LearnLoader placementStartUnlocked={placementStartUnlocked} />
     </Suspense>
   );
 }
@@ -179,7 +179,7 @@ function LoadingScreen() {
 /*  Loader — fetch child + find lesson data               */
 /* ═══════════════════════════════════════════════════════ */
 
-function LearnLoader() {
+function LearnLoader({ placementStartUnlocked }: { placementStartUnlocked: boolean }) {
   const params = useSearchParams();
   const router = useRouter();
   const standardId = params.get("standard");
@@ -201,8 +201,8 @@ function LearnLoader() {
 
   // Plan gating — free tier unlocks each grade's first unit.
   const isFreeUnit = useMemo(
-    () => (lesson ? isLessonInFreeUnit(lesson, FREE_UNIT_DOMAIN) : true),
-    [lesson],
+    () => placementStartUnlocked || (lesson ? isLessonInFreeUnit(lesson, FREE_UNIT_DOMAIN) : true),
+    [lesson, placementStartUnlocked],
   );
 
   useEffect(() => {

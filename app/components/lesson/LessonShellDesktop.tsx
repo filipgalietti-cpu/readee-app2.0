@@ -14,7 +14,7 @@
  * exoskeleton pattern Filip asked for. Lexend is already loaded
  * globally via app/layout.tsx, so the chrome inherits font-sans.
  */
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { Bunny } from "@/app/_components/Bunny/Bunny";
 import { LoadingImage } from "@/app/components/ui/LoadingImage";
@@ -38,6 +38,8 @@ export interface LessonShellDesktopProps {
    *  the split layout should stay (e.g., celebration gradient on the
    *  practice-intro variant). Takes precedence over `imageUrl`. */
   leftSlot?: ReactNode;
+  /** Let answer choices take their natural height when stacked on a phone. */
+  interactiveLeft?: boolean;
   /** Right-panel slide content (anchor / chart / example / celebration). */
   contentSlot: ReactNode;
   /** Drives the pulse ring around the speaker icon in the bottom bar. */
@@ -57,6 +59,7 @@ export function LessonShellDesktop({
   imageUrl,
   imageAlt,
   leftSlot,
+  interactiveLeft = false,
   contentSlot,
   audioPlaying = false,
   wide = false,
@@ -65,28 +68,31 @@ export function LessonShellDesktop({
   // explicitly provided or an image URL exists. Falls back to a
   // centered full-width right panel only when both are absent.
   const hasLeft = !!leftSlot || !!imageUrl;
+  const bodyRef = useRef<HTMLElement>(null);
+  useEffect(() => { bodyRef.current?.scrollTo(0, 0); }, [slideNum]);
 
   return (
     <div className="fixed inset-0 z-[100] flex flex-col bg-[#fcfcfe] text-[#1e1b3a]">
       {/* ── Top bar — progress dots + title + close ── */}
-      <header className="flex h-[60px] flex-shrink-0 items-center gap-5 border-b border-dashed border-zinc-200 bg-white/90 px-8">
-        <ProgressDots current={slideNum} total={totalSlides} />
-        <div className="flex-1 text-center text-sm font-medium tracking-tight text-zinc-600">
+      <header className="flex h-[60px] flex-shrink-0 items-center gap-3 border-b border-dashed border-zinc-200 bg-white/90 px-4 md:gap-5 md:px-8">
+        <span className="shrink-0 text-sm text-zinc-500 md:hidden">{slideNum} / {totalSlides}</span>
+        <div className="hidden md:block"><ProgressDots current={slideNum} total={totalSlides} /></div>
+        <div className="min-w-0 flex-1 truncate text-center text-sm font-medium tracking-tight text-zinc-600">
           {lessonTitle}
         </div>
         <button
           onClick={onClose}
           aria-label="Close lesson"
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition hover:bg-zinc-100"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 transition hover:bg-zinc-100"
         >
           <Glyph name="x" size={18} />
         </button>
       </header>
 
       {/* ── Body — 45/55 split (or full-width when no left content) ── */}
-      <main className="relative flex min-h-0 flex-1">
+      <main ref={bodyRef} className="relative flex min-h-0 flex-1 flex-col overflow-y-auto md:flex-row">
         {hasLeft && (
-          <div className="flex w-[45%] items-center justify-center px-8 py-12 pl-16">
+          <div className={`order-2 flex ${interactiveLeft ? "h-auto" : "h-44"} w-full shrink-0 items-center justify-center px-6 py-5 md:order-none md:h-auto md:w-[45%] md:px-8 md:py-12 md:pl-16`}>
             {leftSlot ?? (
               <LoadingImage
                 key={imageUrl}
@@ -104,7 +110,7 @@ export function LessonShellDesktop({
           // small inset gap (32px) for better visual centering — was
           // 64px which made the divider look short relative to the
           // 720+px body height on a laptop.
-          <div className="flex items-stretch py-8" aria-hidden>
+          <div className="hidden items-stretch py-8 md:flex" aria-hidden>
             <div
               className="w-px self-stretch"
               style={{
@@ -121,8 +127,8 @@ export function LessonShellDesktop({
           // centers in the remaining space via mt-auto / flex-1).
           // Don't apply a vertical alignment here — that would
           // collapse all the contentSlot's children together.
-          className={`flex flex-1 justify-center ${
-            hasLeft ? "px-10 py-10" : "px-16 py-12"
+          className={`order-1 flex min-w-0 shrink-0 justify-center md:order-none md:flex-1 ${
+            hasLeft ? "px-6 py-6 md:px-10 md:py-10" : "px-6 py-6 md:px-16 md:py-12"
           }`}
         >
           <motion.div
@@ -140,13 +146,13 @@ export function LessonShellDesktop({
       {/* ── Bottom bar — audio pulse + big Next CTA ──
           NB: a plain <div>, not <footer>, so generic "hide the site footer"
           chrome (e.g. the /demo layout) can't hide the lesson's Next button. */}
-      <div className="flex h-20 flex-shrink-0 items-center gap-5 border-t border-dashed border-zinc-200 bg-white/90 px-12">
+      <div className="flex h-20 flex-shrink-0 items-center gap-3 border-t border-dashed border-zinc-200 bg-white/90 px-4 md:gap-5 md:px-12">
         <AudioPulse playing={audioPlaying} />
         <div className="flex-1" />
         <button
           onClick={onNext}
           disabled={nextDisabled}
-          className="flex h-14 w-[280px] items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)] transition hover:translate-y-[-1px] hover:shadow-[0_12px_28px_-8px_rgba(139,92,246,0.55)] disabled:translate-y-0 disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
+          className="flex h-14 w-44 shrink-0 md:w-[280px] items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-violet-500 text-lg font-semibold text-white shadow-[0_8px_24px_-8px_rgba(139,92,246,0.45)] transition hover:translate-y-[-1px] hover:shadow-[0_12px_28px_-8px_rgba(139,92,246,0.55)] disabled:translate-y-0 disabled:bg-none disabled:bg-zinc-200 disabled:text-zinc-400 disabled:shadow-none"
         >
           {nextLabel}
         </button>

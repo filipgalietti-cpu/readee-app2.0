@@ -1,133 +1,24 @@
 "use client";
 
-/**
- * RevealFlow — R0 celebration → R1 hold-to-build → the wizard. Fetches the
- * child's latest placement while the child celebrates, keeps polling while
- * the narration clips are still being synthesized, and resolves each line's
- * audio to a playable URL through /api/child-audio.
- */
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
-import type { NarrationLine, PlacementResult } from "@/lib/placement/types";
-import { usePlanStore } from "@/lib/stores/plan-store";
+import Link from "next/link";
 import { trackFunnelClient } from "@/lib/analytics/funnel";
-import { CelebrationScreen, HoldToBuild, RevealWizard } from "./reveal";
+import { Bunny } from "@/app/_components/Bunny/Bunny";
 
-type Phase = "celebrate" | "hold" | "wizard";
-
+/** The child finishes with an activity. The full assessment report is available to their parent. */
 export default function RevealFlow({ childId, childName, outfitId }: { childId: string; childName: string; outfitId: string | null }) {
-  const router = useRouter();
-  const [phase, setPhase] = useState<Phase>("celebrate");
-  const [result, setResult] = useState<PlacementResult | null>(null);
-  const [loadFailed, setLoadFailed] = useState(false);
-  const [holdDone, setHoldDone] = useState(false);
-  const pollRef = useRef<number | null>(null);
-  useEffect(() => { if (holdDone && result) setPhase("wizard"); }, [holdDone, result]);
-
-  // The parent reached the report. Once per mount, and only with a result actually loaded.
-  const reportSeen = useRef(false);
-  useEffect(() => {
-    if (phase !== "wizard" || !result || reportSeen.current) return;
-    reportSeen.current = true;
-    trackFunnelClient("funnel.report_view", {
-      child_id: childId,
-      placement_id: result.id,
-      placed_band: result.decision.placedBand,
-      relative_delta: result.decision.relative.delta,
-    });
-  }, [phase, result, childId]);
-
-  // "Start <Name>'s Reading Journey": straight into Stripe Checkout (14-day
-  // card trial, monthly). The wizard has already explained the trial, so no
-  // /upgrade detour. Already on Readee+ -> the dashboard, where the next
-  // lesson now starts at the placed band. Any failure falls back to /upgrade.
-  const rawPlan = usePlanStore((s) => s.rawPlan);
-  const startingRef = useRef(false);
-  const startPlan = useCallback(async () => {
-    if (rawPlan === "premium") { router.push("/dashboard"); return; }
-    if (startingRef.current) return;
-    startingRef.current = true;
-    trackFunnelClient("funnel.checkout_started", { child_id: childId, source: "placement_reveal" });
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ billing: "monthly", sku: "premium", cancelTo: `/placement/report?child=${childId}` }),
-      });
-      const data = (await res.json()) as { url?: string };
-      if (data.url) { window.location.href = data.url; return; }
-    } catch { /* fall through */ }
-    startingRef.current = false;
-    router.push("/upgrade?reason=placement");
-  }, [childId, rawPlan, router]);
-
-  // Only publish a poll that actually changed something. Every 4 s tick used to
-  // hand down a fresh object, so `result` changed identity even when the
-  // placement had not — re-rendering HoldToBuild and RevealWizard, whose
-  // `AnimatePresence mode="wait"` was often mid-exit. Framer then removed a
-  // node React had already removed: NotFoundError "Failed to execute
-  // 'removeChild'" on /placement/reveal (Sentry JAVASCRIPT-NEXTJS-F).
-  const lastPayload = useRef<string | null>(null);
-  const load = useCallback(async () => {
-    try {
-      const r = await fetch(`/api/placement/result?child=${childId}`, { cache: "no-store" });
-      const j = await r.json();
-      if (!r.ok || !j.ok || !j.result) { setLoadFailed(true); return; }
-      setLoadFailed(false);
-      const payload = JSON.stringify(j.result);
-      if (payload === lastPayload.current) return;
-      lastPayload.current = payload;
-      setResult(j.result as PlacementResult);
-    } catch { setLoadFailed(true); }
-  }, [childId]);
-
-  // Load immediately; keep polling every 4 s until every narration line has audio (or 2 minutes pass).
-  useEffect(() => {
-    void load();
-    const started = Date.now();
-    pollRef.current = window.setInterval(() => {
-      if (Date.now() - started > 120000) { if (pollRef.current) window.clearInterval(pollRef.current); return; }
-      void load();
-    }, 4000);
-    return () => { if (pollRef.current) window.clearInterval(pollRef.current); };
-  }, [load]);
-  useEffect(() => {
-    if (result && result.narration.length > 0 && result.narration.every((l) => l.audioPath) && pollRef.current) {
-      window.clearInterval(pollRef.current);
-      pollRef.current = null;
-    }
-  }, [result]);
-
-  // The celebration hands off on its own after the clip; the parent then holds.
-  useEffect(() => {
-    if (phase !== "celebrate") return;
-    const t = window.setTimeout(() => setPhase("hold"), 9000);
-    return () => window.clearTimeout(t);
-  }, [phase]);
-
-  const audioUrlFor = useCallback((line: NarrationLine): string | null => {
-    return line.audioPath ? `/api/child-audio?path=${encodeURIComponent(line.audioPath)}` : null;
-  }, []);
-
-  // The reveal owns the whole viewport (no site chrome on /placement routes): one screen, never a page scroll.
-  let screen: React.ReactNode;
-  if (loadFailed && !result) {
-    screen = <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center" role="alert"><p>We could not load your saved results.</p><button className="rounded-xl bg-violet-600 px-6 py-3 text-white" onClick={() => { void load(); }}>Try again</button><a href="/dashboard" className="underline">Return to dashboard</a></div>;
-  } else if (phase === "celebrate") {
-    screen = <CelebrationScreen childName={childName} outfitId={outfitId} carrots={30} onHandoff={() => setPhase("hold")} />;
-  } else if (phase === "hold" || !result) {
-    const g = result ? ["kindergarten", "1st-grade", "2nd-grade", "3rd-grade", "4th-grade"][result.enrolled] : undefined;
-    screen = <HoldToBuild childName={childName} enrolledGrade={g} onComplete={() => setHoldDone(true)} />;
-  } else {
-    screen = (
-      <RevealWizard
-        result={result}
-        audioUrlFor={audioUrlFor}
-        onStartPlan={() => { void startPlan(); }}
-        onNotNow={() => router.push(`/placement/report?child=${childId}`)}
-        onSkipToReport={() => router.push(`/placement/report?child=${childId}`)}
-      />
-    );
-  }
-  return <div className="h-dvh overflow-hidden bg-zinc-50">{screen}</div>;
+  return (
+    <main className="flex min-h-dvh flex-col items-center justify-center bg-violet-50 px-6 py-10 text-center">
+      <div className="h-44 w-40"><Bunny outfitId={outfitId} /></div>
+      <p className="mt-5 text-sm font-semibold uppercase tracking-widest text-violet-600">Reading check complete</p>
+      <h1 className="mt-3 max-w-lg text-3xl font-bold text-zinc-900">Ready for your first lesson, {childName}?</h1>
+      <p className="mt-4 max-w-md text-lg text-zinc-600">We saved your answers and picked a place to start. Let’s read together.</p>
+      <Link href={`/placement/start?child=${encodeURIComponent(childId)}`}
+        onClick={() => trackFunnelClient("funnel.placement_lesson_clicked", { child_id: childId })}
+        className="mt-8 rounded-2xl bg-violet-600 px-8 py-4 text-lg font-bold text-white shadow-lg transition hover:bg-violet-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-600">
+        Start my first lesson
+      </Link>
+      <p className="mt-3 text-sm text-zinc-600">Your first reading unit is free. No card needed.</p>
+      <Link href={`/placement/report?child=${encodeURIComponent(childId)}`} className="mt-8 text-sm font-semibold text-violet-700 underline underline-offset-4">For parents: see the reading report</Link>
+    </main>
+  );
 }

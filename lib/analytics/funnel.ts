@@ -30,8 +30,10 @@ export type FunnelEvent =
   | "funnel.placement_complete"
   /** The parent reached the report (the reveal wizard opened with a result loaded). */
   | "funnel.report_view"
-  /** The parent tapped "Start <name>'s Reading Journey" and we handed off to Stripe. */
+  /** The parent explicitly chose a subscription and we handed off to Stripe. */
   | "funnel.checkout_started"
+  /** The child chose the free lesson after placement (navigation, not completion). */
+  | "funnel.placement_lesson_clicked"
   | "funnel.first_lesson_complete"
   | "funnel.trial_started"
   | "funnel.subscription_active"

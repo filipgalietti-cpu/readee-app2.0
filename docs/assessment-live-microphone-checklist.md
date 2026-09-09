@@ -1,7 +1,7 @@
 # Live microphone acceptance check
 
 Use the deployed preview of `fix/assessment-reliability` with real speech-service
-configuration and a dedicated test parent/child. The local synthetic browser
+configuration and a dedicated **free-plan** test parent/child (no active subscription). The local synthetic browser
 server used during development does not exercise a microphone or Azure.
 
 Set the test child's enrollment to fourth grade. Open
@@ -45,10 +45,20 @@ precise delayed-result and cutoff cases that are difficult to reproduce by hand.
 2. Disconnect an external microphone or interrupt the network during a word or
    passage. Restore it and use “Try this part again.” The interrupted capture
    must not become an incorrect answer or a zero-rate passage.
-3. Interrupt the final save. Restore the connection and use “Save my results
+3. After passing the mic check, mute the microphone or remain silent for a word.
+   Wait at least ten seconds. Confirm the same item enters recovery, no wrong
+   answer is recorded, and no lower word list or results screen appears. Unmute,
+   retry, and read that word. Separately verify spoken “I don’t know” and the
+   explicit skip button still advance as intentional unsuccessful answers.
+4. Interrupt the final save. Restore the connection and use “Save my results
    again.” The same answers must save without repeating the assessment. A
    same-tab refresh after a completed failed save should offer recovery too.
-4. Open the saved report, dashboard, and journey. Confirm the enrolled grade,
+5. On the completion screen, choose “Start my first lesson.” Confirm it opens
+   the first unit of the assessed reading level without Stripe, even when that
+   unit is not the catalogue’s default free unit. Complete the lesson on a phone;
+   confirm readable text, working narration, saved progress, and the button back
+   to the reading journey.
+6. Open the saved report, dashboard, and journey. Confirm the enrolled grade,
    reading placement, and first recommended unit agree. Reload them to confirm
    the result was persisted.
 

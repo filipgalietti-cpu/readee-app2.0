@@ -1,11 +1,13 @@
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
 import ts from "typescript";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+import { gradeWord } from "@/lib/placement/read-grade";
 
 /** Exercise the actual callbacks without opening a microphone or starting the
  * exam's effect. The tiny hook host keeps refs and captures state setters. */
-function runner() {
+function runner(listen: (...args: any[]) => Promise<any> = async () => { throw new Error("offline"); }) {
   const states: unknown[] = [];
   const fetch = vi.fn();
   const push = vi.fn();
@@ -14,13 +16,13 @@ function runner() {
   const box: Record<string, any> = {
     module: { exports: {} }, console, setTimeout, clearTimeout, Date, Promise,
     window: { setTimeout, clearTimeout }, fetch, AbortSignal, sessionStorage: storage,
-    require: (s: string) => s === "react" ? hooks : s === "next/navigation" ? { useRouter: () => ({ push }) } : s === "./mic" ? { usePlacementMic: () => ({ listen: async () => { throw new Error("offline"); } }) } : {},
+    require: (s: string) => s === "react" ? hooks : s === "next/navigation" ? { useRouter: () => ({ push }) } : s === "./mic" ? { usePlacementMic: () => ({ listen }) } : s === "@/lib/placement/read-grade" ? { gradeWord } : {},
   };
   box.exports = box.module.exports;
   box.globalThis = box;
   const source = readFileSync("app/(protected)/placement/_components/PlacementRunner.tsx", "utf8").replace(
     "  // ───────────────────────────────────────────────── render",
-    "  globalThis.callbacks = { listenWordOnce, askTiles, tap, saveSubmission, setSubmission: (s) => { submissionRef.current = s; } }; return null;\n  // ───────────────────────────────────────────────── render",
+    "  globalThis.callbacks = { listenWordOnce, askTiles, tap, skip: () => skipRef.current?.(), saveSubmission, setSubmission: (s) => { submissionRef.current = s; } }; return null;\n  // ───────────────────────────────────────────────── render",
   );
   vm.runInNewContext(ts.transpileModule(source, { compilerOptions: { jsx: ts.JsxEmit.ReactJSX, module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText, box);
   box.module.exports.default({ childId: "child", childName: "Reader", enrolled: 2, outfitId: null });
@@ -28,6 +30,59 @@ function runner() {
 }
 
 describe("placement runner recovery", () => {
+  afterEach(() => vi.useRealTimers());
+  it("keeps six seconds of silence unmeasured, and clears the skip callback", async () => {
+    vi.useFakeTimers();
+    const stop = vi.fn(async () => {});
+    const r = runner(async () => ({ stop }));
+    const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow("Recognition failed");
+    await vi.advanceTimersByTimeAsync(6000);
+    await outcome;
+    expect(stop).toHaveBeenCalledOnce();
+    expect(() => r.skip()).not.toThrow();
+  });
+  it("does not turn an omission-only response into a wrong answer", async () => {
+    vi.useFakeTimers();
+    const r = runner(async (_word, phrase) => {
+      phrase({ text: "", words: [{ word: "cat", accuracy: 0, errorType: "Omission" }] });
+      return { stop: async () => {} };
+    });
+    const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow();
+    await vi.advanceTimersByTimeAsync(6000);
+    await outcome;
+  });
+  it("accepts a final phrase delivered while stopping at the timeout", async () => {
+    vi.useFakeTimers();
+    const stop = vi.fn();
+    const r = runner(async (_word, phrase) => {
+      stop.mockImplementation(async () => phrase({ text: "cat", words: [{ word: "cat", accuracy: 95, errorType: "None" }] }));
+      return { stop };
+    });
+    const outcome = r.listenWordOnce("cat");
+    await vi.advanceTimersByTimeAsync(6000);
+    expect(await outcome).toBe(true);
+    expect(stop).toHaveBeenCalledOnce();
+  });
+  it("recovers when the recognizer never finishes draining", async () => {
+    vi.useFakeTimers();
+    const r = runner(async () => ({ stop: () => new Promise(() => {}) }));
+    const outcome = expect(r.listenWordOnce("cat")).rejects.toThrow();
+    await vi.advanceTimersByTimeAsync(10000);
+    await outcome;
+  });
+  it.each([
+    { text: "cat", words: [{ word: "cat", accuracy: 20, errorType: "Mispronunciation" }] },
+    { text: "I don't know", words: [] },
+  ])("scores an actual response as incorrect: $text", async (response) => {
+    const r = runner(async (_word, phrase) => { phrase(response); return { stop: async () => {} }; });
+    expect(await r.listenWordOnce("cat")).toBe(false);
+  });
+  it("still allows an intentional tap to skip", async () => {
+    const r = runner(async () => ({ stop: async () => {} }));
+    const outcome = r.listenWordOnce("cat");
+    r.skip();
+    expect(await outcome).toBe(false);
+  });
   it("rejects recognition failure instead of returning an incorrect verdict", async () => {
     await expect(runner().listenWordOnce("ship")).rejects.toThrow();
   });
