@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { slugForDate } from "@/lib/daily/themes";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -104,9 +105,12 @@ async function run(req: NextRequest) {
   return NextResponse.json({ ...res, attempts });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   return run(req);
 }
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   return run(req);
 }
+
+export const GET = withCronReporting("/api/cron/daily-question", handleGET);
+export const POST = withCronReporting("/api/cron/daily-question", handlePOST);

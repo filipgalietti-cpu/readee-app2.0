@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { notify } from "@/lib/notifications/notify";
@@ -71,9 +72,12 @@ async function run(req: NextRequest) {
   return NextResponse.json({ ok: true, families });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   return run(req);
 }
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   return run(req);
 }
+
+export const GET = withCronReporting("/api/cron/daily-nudges", handleGET);
+export const POST = withCronReporting("/api/cron/daily-nudges", handlePOST);

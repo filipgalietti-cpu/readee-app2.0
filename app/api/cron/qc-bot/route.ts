@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 /**
  * QC bot — nightly continuous quality assurance.
  *
@@ -547,9 +548,12 @@ async function run(req: NextRequest) {
   });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   return run(req);
 }
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   return run(req);
 }
+
+export const GET = withCronReporting("/api/cron/qc-bot", handleGET);
+export const POST = withCronReporting("/api/cron/qc-bot", handlePOST);

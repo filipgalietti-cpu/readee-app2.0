@@ -29,4 +29,12 @@ jobs:
         run: npm test
 
       - name: Build
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
+          # Build-only placeholders let SDK constructors load without exposing
+          # production credentials. This artifact is never deployed.
+          STRIPE_SECRET_KEY: sk_test_ci_build_placeholder
+          NEXT_PUBLIC_SUPABASE_URL: http://127.0.0.1:54321
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ci_build_placeholder
+          SUPABASE_SERVICE_ROLE_KEY: ci_build_placeholder
         run: npx next build --webpack

@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { sendLifecycleBatch } from "@/lib/email/lifecycle";
 
@@ -16,7 +17,7 @@ async function run() {
   return sendLifecycleBatch();
 }
 
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   const provided = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
   if (!secret || provided !== `Bearer ${secret}`) {
@@ -26,7 +27,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ ok: true, ...result });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   const provided = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
   if (!secret || provided !== `Bearer ${secret}`) {
@@ -35,3 +36,6 @@ export async function GET(req: NextRequest) {
   const result = await run();
   return NextResponse.json({ ok: true, ...result });
 }
+
+export const GET = withCronReporting("/api/cron/lifecycle-emails", handleGET);
+export const POST = withCronReporting("/api/cron/lifecycle-emails", handlePOST);

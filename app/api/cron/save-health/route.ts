@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { checkSaveHealth } from "@/lib/monitoring/save-health";
 
@@ -20,9 +21,12 @@ async function run(req: NextRequest) {
   return NextResponse.json(result, { status: result.ok ? 200 : 500 });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   return run(req);
 }
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   return run(req);
 }
+
+export const GET = withCronReporting("/api/cron/save-health", handleGET);
+export const POST = withCronReporting("/api/cron/save-health", handlePOST);

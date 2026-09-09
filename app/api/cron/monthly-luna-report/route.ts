@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { notifyTeam } from "@/lib/email/notify-team";
@@ -12,7 +13,7 @@ export const maxDuration = 60;
  * plus Azure speech-call counts (speech_token_mints) for margin tracking.
  * Auth: CRON_SECRET bearer, same as the other crons. ?force=1 to re-send.
  */
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   const provided = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
   if (!secret || provided !== `Bearer ${secret}`) {
@@ -95,3 +96,5 @@ export async function GET(req: NextRequest) {
     speechCalls: mintTotal,
   });
 }
+
+export const GET = withCronReporting("/api/cron/monthly-luna-report", handleGET);
