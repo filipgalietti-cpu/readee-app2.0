@@ -39,7 +39,9 @@ the older `81470416` release. Other unresolved issues were left intact.
 - Narrow filters cover Zalo errors and extension/executors frames while retaining
   genuine `app:///_next` errors. No origin allowlist is used.
 - GitHub CI's build previously exhausted Node's default ~4 GB heap; the build step
-  now permits a 6 GB heap. Vercel's assessment preview had already built successfully.
+  now permits a 6 GB heap and provides build-only Stripe/Supabase placeholders
+  for SDK initialization. No production credentials enter CI, and its artifact
+  is never deployed. Vercel builds with its own environment configuration.
 
 ## Validation and scope
 
