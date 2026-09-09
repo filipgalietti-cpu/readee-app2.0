@@ -1,3 +1,4 @@
+import { reportFailure } from "@/lib/observability/critical";
 import { createHash } from "node:crypto";
 import { bandFromGrade } from "@/lib/placement/decide";
 import { validatePlacementEvidence } from "@/lib/placement/validate-evidence";
@@ -45,7 +46,7 @@ function seedRow(childId: string, standardId: string, pass: boolean, now: Date) 
   };
 }
 
-export async function POST(req: Request) {
+async function complete(req: Request, requestId: string) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ ok: false, error: "Not signed in." }, { status: 401 });
@@ -56,7 +57,11 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "Bad submission.", issues: parsed.error.issues.slice(0, 5) }, { status: 400 });
   let sub = parsed.data as unknown as PlacementSubmission;
 
-  const { data: child } = await supabase.from("children").select("id, first_name, parent_id, grade, name_said_as").eq("id", sub.childId).maybeSingle();
+  const { data: child, error: childError } = await supabase.from("children").select("id, first_name, parent_id, grade, name_said_as").eq("id", sub.childId).maybeSingle();
+  if (childError) {
+    reportFailure("placement.child_lookup", childError, { route: "/api/placement/complete", userId: user.id, requestId });
+    return NextResponse.json({ ok: false, error: "Could not load the reader. Please retry.", requestId }, { status: 503 });
+  }
   if (!child || (child as { parent_id: string }).parent_id !== user.id) return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
   try { sub = validatePlacementEvidence(sub, bandFromGrade(child.grade)); }
   catch { return NextResponse.json({ ok: false, error: "The assessment evidence is incomplete or inconsistent." }, { status: 400 }); }
@@ -118,7 +123,8 @@ export async function POST(req: Request) {
   });
   if (saveError || !saved?.[0]) {
     const limited = saveError?.message?.includes("placement daily limit");
-    return NextResponse.json({ ok: false, error: limited ? "Please try another assessment tomorrow." : "Could not save the placement. Your answers can be retried." }, { status: limited ? 429 : 500 });
+    if (!limited) reportFailure("placement.save", saveError, { route: "/api/placement/complete", userId: user.id, requestId });
+    return NextResponse.json({ ok: false, requestId, error: limited ? "Please try another assessment tomorrow." : "Could not save the placement. Your answers can be retried." }, { status: limited ? 429 : 500 });
   }
   const { placement_id: placementId, replayed } = saved[0] as { placement_id: string; replayed: boolean };
   if (!replayed) void trackFunnel("funnel.placement_complete", user.id, {
@@ -161,4 +167,13 @@ function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
   header.writeUInt32LE(sampleRate, 24); header.writeUInt32LE(sampleRate * 2, 28); header.writeUInt16LE(2, 32); header.writeUInt16LE(16, 34);
   header.write("data", 36); header.writeUInt32LE(pcm.length, 40);
   return Buffer.concat([header, pcm]);
+}
+
+export async function POST(req: Request) {
+  const requestId = crypto.randomUUID();
+  try { return await complete(req, requestId); }
+  catch (error) {
+    reportFailure("placement.complete", error, { route: "/api/placement/complete", requestId });
+    return NextResponse.json({ ok: false, error: "Could not save the placement. Your answers can be retried.", requestId }, { status: 500 });
+  }
 }

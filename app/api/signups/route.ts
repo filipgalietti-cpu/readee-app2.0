@@ -1,3 +1,4 @@
+import { reportFailure } from "@/lib/observability/critical";
 /**
  * POST /api/signups
  *
@@ -121,6 +122,7 @@ export async function OPTIONS(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const requestId = crypto.randomUUID();
   try {
     const origin = getOrigin(request);
     const corsHeaders = buildCorsHeaders(origin);
@@ -211,7 +213,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (error) {
-      console.error('Error inserting signup:', error);
+      reportFailure("signup.save", error, { route: "/api/signups", requestId });
       return NextResponse.json(
         { success: false, error: 'Failed to save signup' },
         { status: 500, headers: corsHeaders }
@@ -244,7 +246,7 @@ export async function POST(request: NextRequest) {
               console.log('Found existing user ID:', userId);
             }
           } else {
-            console.error('Error creating auth user:', authError);
+            reportFailure("signup.auth_create", authError, { route: "/api/signups", requestId });
           }
         } else if (authUser?.user) {
           userId = authUser.user.id;
@@ -261,7 +263,7 @@ export async function POST(request: NextRequest) {
             });
 
           if (profileError) {
-            console.error('Error creating profile:', profileError);
+            reportFailure("signup.profile_create", profileError, { route: "/api/signups", requestId });
           } else {
             console.log('Profile created for user:', userId);
           }
@@ -330,7 +332,7 @@ export async function POST(request: NextRequest) {
               }
 
               if (childrenError) {
-                console.error('Error inserting children:', JSON.stringify(childrenError));
+                reportFailure("signup.children_create", childrenError, { route: "/api/signups", requestId });
               } else {
                 console.log(`Inserted ${insertedChildren?.length} children for user:`, userId);
               }
@@ -338,7 +340,7 @@ export async function POST(request: NextRequest) {
               console.log('Reader cap reached — no children inserted for user:', userId);
             }
           } catch (childErr) {
-            console.error('Error in children insertion:', childErr);
+            reportFailure("signup.children_create", childErr, { route: "/api/signups", requestId });
           }
         } else {
           console.log('Skipping children insert — userId:', userId, 'children count:', body.children?.length ?? 0);
@@ -354,14 +356,14 @@ export async function POST(request: NextRequest) {
             },
           });
           if (linkError) {
-            console.error('Error generating password reset link:', linkError);
+            reportFailure("signup.recovery_link", linkError, { route: "/api/signups", requestId });
           } else if (linkData?.properties?.action_link) {
             passwordResetLink = linkData.properties.action_link;
             console.log('Password reset link generated for user:', userId);
           }
         }
       } catch (accountErr) {
-        console.error('Error in account creation flow:', accountErr);
+        reportFailure("signup.account_create", accountErr, { route: "/api/signups", requestId });
       }
     }
 
@@ -587,7 +589,7 @@ export async function POST(request: NextRequest) {
       { status: 201, headers: corsHeaders }
     );
   } catch (error) {
-    console.error('Error processing signup:', error);
+    reportFailure("signup.request", error, { route: "/api/signups", requestId });
     const origin = getOrigin(request);
     const corsHeaders = buildCorsHeaders(origin);
     return NextResponse.json(

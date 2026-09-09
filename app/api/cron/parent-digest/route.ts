@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { sendWeeklyDigestBatch } from "@/lib/email/parent-digest";
 
@@ -8,7 +9,7 @@ export const maxDuration = 300; // 5 min — enough for a few thousand sends
  * Weekly digest cron. Vercel cron hits this Monday 8am ET
  * (see vercel.json schedule). Auth via CRON_SECRET header.
  */
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   const provided = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
   if (!secret || provided !== `Bearer ${secret}`) {
@@ -19,7 +20,7 @@ export async function POST(req: NextRequest) {
 }
 
 // Allow GET too — Vercel Cron uses GET by default.
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   const provided = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
   if (!secret || provided !== `Bearer ${secret}`) {
@@ -28,3 +29,6 @@ export async function GET(req: NextRequest) {
   const result = await sendWeeklyDigestBatch();
   return NextResponse.json({ ok: true, ...result });
 }
+
+export const GET = withCronReporting("/api/cron/parent-digest", handleGET);
+export const POST = withCronReporting("/api/cron/parent-digest", handlePOST);

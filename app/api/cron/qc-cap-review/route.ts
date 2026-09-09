@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { runAdaptiveReview } from "@/lib/content/caps";
 
@@ -17,7 +18,7 @@ async function run() {
   return runAdaptiveReview();
 }
 
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   const provided = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
   if (!secret || provided !== `Bearer ${secret}`) {
@@ -27,7 +28,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ ok: true, ...result });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   const provided = req.headers.get("authorization");
   const secret = process.env.CRON_SECRET;
   if (!secret || provided !== `Bearer ${secret}`) {
@@ -36,3 +37,6 @@ export async function GET(req: NextRequest) {
   const result = await run();
   return NextResponse.json({ ok: true, ...result });
 }
+
+export const GET = withCronReporting("/api/cron/qc-cap-review", handleGET);
+export const POST = withCronReporting("/api/cron/qc-cap-review", handlePOST);

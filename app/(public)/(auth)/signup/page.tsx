@@ -1,4 +1,5 @@
 "use client";
+import { reportFailure } from "@/lib/observability/critical";
 
 import { Suspense, useEffect, useState, FormEvent } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -94,6 +95,7 @@ function SignupInner() {
       });
 
       if (error) {
+        reportFailure("signup.auth", error, { route: "/signup" });
         setErrors({ general: error.message });
         setIsLoading(false);
         return;
@@ -117,6 +119,7 @@ function SignupInner() {
         }
       }
     } catch (err) {
+      reportFailure("signup.submit", err, { route: "/signup" });
       console.error("Signup error:", err);
       const msg = err instanceof Error ? err.message : "An unexpected error occurred. Please try again.";
       setErrors({ general: msg });

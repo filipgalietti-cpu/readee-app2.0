@@ -58,7 +58,7 @@ export default async function ProtectedLayout({
   // Tag subsequent server-side errors with the authed user so Sentry
   // issues carry "who was affected" without leaking extra PII — we
   // already hold id + email via auth anyway.
-  Sentry.setUser({ id: user.id, email: user.email ?? undefined });
+  Sentry.setUser({ id: user.id });
 
   // Read sidebar open state from the cookie on the server so the
   // initial margin matches the user's last preference. Without this

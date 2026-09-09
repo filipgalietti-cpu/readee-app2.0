@@ -1,3 +1,5 @@
+import { reportFailure } from "@/lib/observability/critical";
+import { syncCustomerSubscription } from "@/lib/billing/sync-subscription";
 import { NextRequest, NextResponse } from "next/server";
 import { stripe, planFromPriceId } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -8,7 +10,7 @@ import { sendTrialEndingEmail, sendTrialStartedEmail, sendWinBackEmail } from "@
 import { Resend } from "resend";
 
 /** Branded cancellation confirmation to the customer. Best-effort. */
-async function sendCancellationEmail(to: string, periodEndSeconds: number | null, trialing: boolean): Promise<void> {
+async function sendCancellationEmail(to: string, periodEndSeconds: number | null, trialing: boolean, eventId: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey || !to || to === "(unknown)") return;
   const endStr = periodEndSeconds
@@ -35,7 +37,7 @@ async function sendCancellationEmail(to: string, periodEndSeconds: number | null
   </td></tr></table>
 </body></html>`;
   try {
-    await new Resend(apiKey).emails.send({ from: "Readee <hello@readee.app>", to, subject: "Your Readee+ has been canceled", text, html });
+    await new Resend(apiKey).emails.send({ from: "Readee <hello@readee.app>", to, subject: "Your Readee+ has been canceled", text, html }, { idempotencyKey: `stripe:${eventId}:cancellation` });
   } catch { /* best-effort */ }
 }
 import Stripe from "stripe";
@@ -62,16 +64,24 @@ export async function POST(req: NextRequest) {
   }
 
   const admin = supabaseAdmin();
+  const notify = (subject: string, html: string) => notifyTeam(subject, html, `stripe:${event.id}:team`);
 
+  try {
   switch (event.type) {
     // Subscription created or renewed (includes trial start)
     case "customer.subscription.created":
     case "customer.subscription.updated": {
-      const subscription = event.data.object as Stripe.Subscription;
+      let subscription = event.data.object as Stripe.Subscription;
       const customerId =
         typeof subscription.customer === "string"
           ? subscription.customer
           : subscription.customer.id;
+
+      const synced = await syncCustomerSubscription(customerId, subscription.id);
+      // Ignore side effects for a superseded subscription as well as its stale entitlement.
+      if (!synced.subscription || synced.subscription.id !== subscription.id) break;
+      subscription = synced.subscription;
+      const updated = synced.profile;
 
       // Subscription state → plan mapping:
       //   active, trialing → keep premium (paid)
@@ -93,50 +103,17 @@ export async function POST(req: NextRequest) {
       const priceId = subscription.items.data[0]?.price?.id ?? null;
       const tier = planFromPriceId(priceId) ?? "premium";
 
-      // ‼️ Do not let a stale event overwrite a newer subscription.
-      //
-      // This matched on customer alone and wrote stripe_subscription_id
-      // unconditionally, so a retried or out-of-order `updated` for a superseded
-      // subscription could point the profile back at the dead one and drag the
-      // plan with it. Apply only when this IS the subscription on file, or when
-      // there is not one yet.
-      let profileUpdate = admin
-        .from("profiles")
-        .update({
-          plan: grantsAccess ? tier : "free",
-          stripe_subscription_id: subscription.id,
-          // Mark that this account has had a paid subscription, so a later
-          // cancel is treated as "lapsed" (win-back) not never-paid.
-          ...(grantsAccess ? { had_subscription: true } : {}),
-        })
-        .eq("stripe_customer_id", customerId);
-
-      if (event.type === "customer.subscription.updated") {
-        profileUpdate = profileUpdate.or(
-          `stripe_subscription_id.eq.${subscription.id},stripe_subscription_id.is.null`,
-        );
-      }
-
-      const { data: updated, error: updateErr } = await profileUpdate
-        .select("id, email")
-        .maybeSingle();
-
-      if (updateErr) {
-        console.error("[stripe] subscription update failed", updateErr);
-        return NextResponse.json({ error: "retry" }, { status: 500 });
-      }
-
       // User just canceled (scheduled to end at period end) → one-time
       // confirmation email so they're never left wondering if it worked.
       const prevAttrs = (event.data as { previous_attributes?: Record<string, unknown> }).previous_attributes ?? {};
       const justCanceled =
         event.type === "customer.subscription.updated" &&
         subscription.cancel_at_period_end === true &&
-        prevAttrs.cancel_at_period_end !== true;
+        prevAttrs.cancel_at_period_end === false;
       if (justCanceled) {
         const to = (updated as { email?: string } | null)?.email ?? "";
-        await sendCancellationEmail(to, (subscription as any).current_period_end ?? null, subscription.status === "trialing");
-        await notifyTeam(
+        await sendCancellationEmail(to, (subscription as any).current_period_end ?? null, subscription.status === "trialing", event.id);
+        await notify(
           `Cancellation scheduled: ${to || "(unknown)"}`,
           `<div style="font-family:sans-serif;max-width:520px"><p>Set to cancel at period end (still has access until then).</p></div>`,
         );
@@ -144,7 +121,7 @@ export async function POST(req: NextRequest) {
 
       // Trial started: the parent's "first week" email (idempotent per subscription).
       if (event.type === "customer.subscription.created" && subscription.status === "trialing") {
-        try { await sendTrialStartedEmail(customerId, subscription.id, subscription.trial_end ?? null); } catch (e) { console.error("[stripe] trial_started email", e); }
+        try { await sendTrialStartedEmail(customerId, subscription.id, subscription.trial_end ?? null); } catch (e) { reportFailure("stripe.trial_started_email", e, { route: "/api/webhooks/stripe", eventId: event.id, eventType: event.type }); }
       }
 
       // Team alert on a NEW subscription (skip the noisier .updated event).
@@ -152,7 +129,7 @@ export async function POST(req: NextRequest) {
         const who = (updated as { email?: string } | null)?.email ?? "(unknown email)";
         const label = tier === "teacher_solo" ? "Teacher Solo" : "Readee+";
         const kind = subscription.status === "trialing" ? "started a free trial of" : "subscribed to";
-        await notifyTeam(
+        await notify(
           `New ${label} ${subscription.status === "trialing" ? "trial" : "subscriber"}: ${who}`,
           `<div style="font-family:sans-serif;max-width:520px">
              <h2 style="margin:0 0 12px">New ${label} ${subscription.status === "trialing" ? "trial" : "subscription"}</h2>
@@ -210,7 +187,7 @@ export async function POST(req: NextRequest) {
       const price = subscription.items.data[0]?.price;
       const amount = price?.unit_amount != null ? `$${(price.unit_amount / 100).toFixed(2)}` : "the plan";
       const interval = price?.recurring?.interval === "year" ? "a year" : "a month";
-      try { await sendTrialEndingEmail(customerId, subscription.id, subscription.trial_end ?? null, subscription.trial_start ?? null, `${amount} ${interval}`); } catch (e) { console.error("[stripe] trial_ending email", e); }
+      try { await sendTrialEndingEmail(customerId, subscription.id, subscription.trial_end ?? null, subscription.trial_start ?? null, `${amount} ${interval}`); } catch (e) { reportFailure("stripe.trial_ending_email", e, { route: "/api/webhooks/stripe", eventId: event.id, eventType: event.type }); }
       break;
     }
 
@@ -220,33 +197,10 @@ export async function POST(req: NextRequest) {
         typeof subscription.customer === "string"
           ? subscription.customer
           : subscription.customer.id;
-      try { await sendWinBackEmail(customerId, subscription.id); } catch (e) { console.error("[stripe] winback email", e); }
-
-      // ‼️ Only clear the subscription that is actually on file.
-      //
-      // This matched on customer alone, so a late-arriving delete for an OLD
-      // subscription downgraded a customer who had already resubscribed. Stripe
-      // retries and can deliver out of order, so "stale event about a superseded
-      // subscription" is a normal condition, not an edge case. Matching the id
-      // makes it a harmless no-op instead.
-      const { data: canceled, error: cancelErr } = await admin
-        .from("profiles")
-        .update({
-          plan: "free",
-          stripe_subscription_id: null,
-        })
-        .eq("stripe_customer_id", customerId)
-        .eq("stripe_subscription_id", subscription.id)
-        .select("id, email")
-        .maybeSingle();
-
-      // A database failure must NOT be acknowledged. Returning 200 tells Stripe
-      // the event is handled and it never retries, leaving the customer silently
-      // on the wrong plan.
-      if (cancelErr) {
-        console.error("[stripe] subscription.deleted update failed", cancelErr);
-        return NextResponse.json({ error: "retry" }, { status: 500 });
-      }
+      const synced = await syncCustomerSubscription(customerId, subscription.id);
+      if (synced.subscription?.id !== subscription.id) break;
+      const canceled = synced.profile;
+      try { await sendWinBackEmail(customerId, subscription.id); } catch (e) { reportFailure("stripe.winback_email", e, { route: "/api/webhooks/stripe", eventId: event.id, eventType: event.type }); }
 
       const canceledId = (canceled as { id?: string } | null)?.id ?? null;
       if (canceledId) {
@@ -257,7 +211,7 @@ export async function POST(req: NextRequest) {
       }
 
       const churnEmail = (canceled as { email?: string } | null)?.email ?? "(unknown)";
-      await notifyTeam(
+      await notify(
         `Subscription canceled: ${churnEmail}`,
         `<div style="font-family:sans-serif;max-width:520px">
            <h2 style="margin:0 0 12px">Subscription canceled</h2>
@@ -279,18 +233,7 @@ export async function POST(req: NextRequest) {
       if (session.mode === "subscription" && session.subscription && session.customer) {
         const customerId = typeof session.customer === "string" ? session.customer : session.customer.id;
         const subId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
-        let tier = "premium";
-        try {
-          const sub = await stripe.subscriptions.retrieve(subId);
-          tier = planFromPriceId(sub.items.data[0]?.price?.id) ?? "premium";
-        } catch { /* default to premium */ }
-        const { data: up } = await admin
-          .from("profiles")
-          .update({ plan: tier, stripe_subscription_id: subId, had_subscription: true })
-          .eq("stripe_customer_id", customerId)
-          .select("id")
-          .maybeSingle();
-        if (!up) console.error("[stripe] checkout.session.completed: no profile for customer", customerId);
+        await syncCustomerSubscription(customerId, subId);
         break;
       }
 
@@ -301,14 +244,14 @@ export async function POST(req: NextRequest) {
       const userId = session.metadata.supabase_user_id as string | undefined;
       const pool = session.metadata.pool as "teacher" | "parent" | undefined;
       const credits = Number(session.metadata.credits ?? 0);
-      if (!userId || !pool || !credits) break;
+      if (!userId || (pool !== "teacher" && pool !== "parent") || !Number.isInteger(credits) || credits <= 0) throw Object.assign(new Error("Invalid credit pack metadata"), { code: "stripe_credit_metadata" });
 
       const paymentIntentId =
         typeof session.payment_intent === "string"
           ? session.payment_intent
           : session.payment_intent?.id ?? null;
 
-      await grantTopUp({
+      const grant = await grantTopUp({
         profileId: userId,
         pool,
         credits,
@@ -318,6 +261,7 @@ export async function POST(req: NextRequest) {
         amountPaidUsdCents: session.amount_total ?? undefined,
         notes: `SKU ${session.metadata.sku}`,
       });
+      if (!grant.ok) throw Object.assign(new Error("Credit grant failed"), { code: "stripe_credit_grant_failed" });
       break;
     }
 
@@ -341,27 +285,6 @@ export async function POST(req: NextRequest) {
       console.warn("[stripe] charge.refunded — flagging account", {
         customerId,
         amountCents: charge.amount,
-      });
-      break;
-    }
-
-    // Trial ending in 3 days. Stripe fires this once per sub. Hook
-    // here to send a "your trial ends soon" email — wired loosely
-    // for now (just logged) so we have telemetry; the email sender
-    // can pick up on this event later without changing the webhook.
-    // TODO(paywall): the day-13 "trial ends tomorrow" email goes through the
-    // parent-notification email loop — send it from there when that loop
-    // ships, keyed off this event. Do NOT add ad-hoc email sending here.
-    case "customer.subscription.trial_will_end": {
-      const subscription = event.data.object as Stripe.Subscription;
-      const customerId =
-        typeof subscription.customer === "string"
-          ? subscription.customer
-          : subscription.customer.id;
-      console.warn("[stripe] trial_will_end — 3 days out", {
-        customerId,
-        subscriptionId: subscription.id,
-        trialEnd: subscription.trial_end,
       });
       break;
     }
@@ -393,24 +316,7 @@ export async function POST(req: NextRequest) {
           .parent?.subscription_details?.subscription ??
         null;
       const subId = typeof rawSub === "string" ? rawSub : rawSub?.id ?? null;
-      if (subId) {
-        try {
-          const sub = await stripe.subscriptions.retrieve(subId);
-          const grantsAccess =
-            sub.status === "active" ||
-            sub.status === "trialing" ||
-            sub.status === "past_due";
-          if (!grantsAccess) {
-            await admin
-              .from("profiles")
-              .update({ plan: "free" })
-              .eq("stripe_customer_id", customerId);
-            console.warn("[stripe] invoice.payment_failed — sub is", sub.status, "→ dropped to free", { customerId, subId });
-          }
-        } catch (err) {
-          console.error("[stripe] invoice.payment_failed — could not re-sync subscription", { customerId, subId }, err);
-        }
-      }
+      if (subId) await syncCustomerSubscription(customerId, subId);
       break;
     }
 
@@ -419,16 +325,22 @@ export async function POST(req: NextRequest) {
     // resubscribe with a fresh record.
     case "customer.deleted": {
       const customer = event.data.object as Stripe.Customer;
-      await admin
+      const { error } = await admin
         .from("profiles")
         .update({ plan: "free", stripe_customer_id: null, stripe_subscription_id: null })
         .eq("stripe_customer_id", customer.id);
+      if (error) throw error;
       break;
     }
 
     default:
       // Unhandled event type — no action needed
       break;
+  }
+
+  } catch (error) {
+    reportFailure("stripe.fulfillment", error, { route: "/api/webhooks/stripe", eventId: event.id, eventType: event.type });
+    return NextResponse.json({ error: "Fulfillment failed; retry this event." }, { status: 503 });
   }
 
   return NextResponse.json({ received: true });

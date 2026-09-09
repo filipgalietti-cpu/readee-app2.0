@@ -7,7 +7,7 @@ import { Resend } from "resend";
  * hello@readee.app. Best-effort: logs and swallows any error so it can never
  * break the flow that called it (a webhook, a signup, etc.).
  */
-export async function notifyTeam(subject: string, html: string): Promise<void> {
+export async function notifyTeam(subject: string, html: string, idempotencyKey?: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error("[notifyTeam] RESEND_API_KEY not set - skipping:", subject);
@@ -20,7 +20,7 @@ export async function notifyTeam(subject: string, html: string): Promise<void> {
       to: process.env.TEAM_INBOX_EMAIL || "hello@readee.app",
       subject,
       html,
-    });
+    }, idempotencyKey ? { idempotencyKey } : undefined);
     if (error) console.error("[notifyTeam] Resend error:", error);
   } catch (e) {
     console.error("[notifyTeam] threw:", e);

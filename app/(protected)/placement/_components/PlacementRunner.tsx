@@ -13,6 +13,7 @@
  * answers, no visible timer, no scores on screen. Neutral acknowledgements
  * between items. Progression never gates on audio `ended` alone.
  */
+import { reportFailure } from "@/lib/observability/critical";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PLACEMENT_BANK } from "@/app/data/placement-bank";
@@ -127,7 +128,8 @@ export default function PlacementRunner({
       if (!r.ok || !j.ok) throw new Error(j.error ?? "Could not save your results.");
       try { sessionStorage.removeItem(`readee.placement.pending.${childId}`); } catch { /* storage unavailable */ }
       router.push(`/placement/reveal?child=${childId}`);
-    } catch {
+    } catch (error) {
+      reportFailure("placement.save_client", error, { route: "/placement" });
       setScreen({ kind: "closing", error: "Your answers are still here. Please check your connection and try saving again." });
     } finally { savingRef.current = false; }
   }, [childId, router]);

@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { runCommunityReviewQueue } from "@/lib/community/review-agent";
 
@@ -20,9 +21,12 @@ async function handle(req: NextRequest) {
   return NextResponse.json({ ok: true, ...result });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   return handle(req);
 }
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   return handle(req);
 }
+
+export const GET = withCronReporting("/api/cron/community-review", handleGET);
+export const POST = withCronReporting("/api/cron/community-review", handlePOST);
