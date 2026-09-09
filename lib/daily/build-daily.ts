@@ -1763,7 +1763,7 @@ export async function autoHealDaily(opts: {
       matches: (f) => f.name.startsWith("image.") && f.severity === "fail",
       heal: async () => {
         const r = await targetedImageRegen({ date });
-        return { ok: r.ok, ran: r.ok && (r as any).regenerated };
+        return { ok: r.ok, ran: r.ok && !!r.regenerated, error: r.ok ? undefined : r.error };
       },
     },
     {
@@ -1775,7 +1775,7 @@ export async function autoHealDaily(opts: {
         f.severity === "fail",
       heal: async () => {
         const r = await targetedPassageRegen({ date });
-        return { ok: r.ok, ran: r.ok && (r as any).regenerated };
+        return { ok: r.ok, ran: r.ok && !!r.regenerated, error: r.ok ? undefined : r.error };
       },
     },
     {
@@ -1783,7 +1783,7 @@ export async function autoHealDaily(opts: {
       matches: (f) => f.name.startsWith("audio.") && f.severity === "fail",
       heal: async () => {
         const r = await targetedAudioRegen({ date });
-        return { ok: r.ok, ran: r.ok && (r as any).regenerated };
+        return { ok: r.ok, ran: r.ok && !!r.regenerated, error: r.ok ? undefined : r.error };
       },
     },
     {
@@ -1792,7 +1792,7 @@ export async function autoHealDaily(opts: {
         f.name === "lesson.learning_objective" && f.severity === "fail",
       heal: async () => {
         const r = await targetedQuestionsRegen({ date });
-        return { ok: r.ok, ran: r.ok && (r as any).regenerated };
+        return { ok: r.ok, ran: r.ok && !!r.regenerated, error: r.ok ? undefined : r.error };
       },
     },
   ];

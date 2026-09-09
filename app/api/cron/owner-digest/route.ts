@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 /**
  * Owner daily digest cron. Fires at 12:00 UTC every day — after the
  * discovery cron (10:00) but before US East Coast wakeup. Emails
@@ -27,10 +28,13 @@ async function run(req: NextRequest) {
   return NextResponse.json(r);
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   return run(req);
 }
 
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   return run(req);
 }
+
+export const GET = withCronReporting("/api/cron/owner-digest", handleGET);
+export const POST = withCronReporting("/api/cron/owner-digest", handlePOST);

@@ -1,3 +1,4 @@
+import { reportFailure } from "@/lib/observability/critical";
 import { NextResponse, after } from "next/server";
 import { PlacementSubmissionSchema } from "@/lib/schemas";
 import { createClient } from "@/lib/supabase/server";
@@ -42,7 +43,7 @@ function seedRow(childId: string, standardId: string, pass: boolean, now: Date) 
   };
 }
 
-export async function POST(req: Request) {
+async function complete(req: Request, requestId: string) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ ok: false, error: "Not signed in." }, { status: 401 });
@@ -53,7 +54,11 @@ export async function POST(req: Request) {
   if (!parsed.success) return NextResponse.json({ ok: false, error: "Bad submission.", issues: parsed.error.issues.slice(0, 5) }, { status: 400 });
   const sub = parsed.data as unknown as PlacementSubmission;
 
-  const { data: child } = await supabase.from("children").select("id, first_name, parent_id, grade, name_said_as").eq("id", sub.childId).maybeSingle();
+  const { data: child, error: childError } = await supabase.from("children").select("id, first_name, parent_id, grade, name_said_as").eq("id", sub.childId).maybeSingle();
+  if (childError) {
+    reportFailure("placement.child_lookup", childError, { route: "/api/placement/complete", userId: user.id, requestId });
+    return NextResponse.json({ ok: false, error: "Could not load the reader. Please retry.", requestId }, { status: 503 });
+  }
   if (!child || (child as { parent_id: string }).parent_id !== user.id) return NextResponse.json({ ok: false, error: "not found" }, { status: 404 });
   const childName = (((child as { first_name?: string }).first_name ?? "").split(" ")[0] || "Reader");
   if (sub.passageRecordingPath && !sub.passageRecordingPath.startsWith(`placement/${sub.childId}/`)) sub.passageRecordingPath = null;
@@ -87,7 +92,10 @@ export async function POST(req: Request) {
     })
     .select("id")
     .single();
-  if (insErr || !inserted) return NextResponse.json({ ok: false, error: "Could not save the placement." }, { status: 500 });
+  if (insErr || !inserted) {
+    reportFailure("placement.save", insErr, { route: "/api/placement/complete", userId: user.id, requestId });
+    return NextResponse.json({ ok: false, error: "Could not save the placement.", requestId }, { status: 500 });
+  }
   const placementId = (inserted as { id: string }).id;
 
   // The funnel's assessment step. Server-side because it must not depend on the
@@ -107,7 +115,7 @@ export async function POST(req: Request) {
   // Legacy row the dashboard, journey and results page already key off.
   const comp = decision.comprehension;
   const scorePercent = comp && comp.total > 0 ? Math.round((comp.correct / comp.total) * 100) : decision.decoding.level !== null ? 100 : 0;
-  await admin.from("assessments").insert({
+  const { error: assessmentError } = await admin.from("assessments").insert({
     child_id: sub.childId,
     grade_tested: grades[decision.gradeKey]?.grade_label ?? String(sub.enrolled),
     score_percent: Math.max(0, Math.min(100, scorePercent)),
@@ -124,7 +132,10 @@ export async function POST(req: Request) {
       needs: decision.needs,
     },
   });
-  await admin.from("children").update({ reading_level: decision.readingLevelName }).eq("id", sub.childId);
+  if (assessmentError) reportFailure("placement.assessment_sync", assessmentError, { route: "/api/placement/complete", userId: user.id, requestId });
+  const { error: readingLevelError } = await admin.from("children").update({ reading_level: decision.readingLevelName }).eq("id", sub.childId);
+
+  if (readingLevelError) reportFailure("placement.reading_level_sync", readingLevelError, { route: "/api/placement/complete", userId: user.id, requestId });
 
   // Learner spine seeds (best-effort, never fail the placement).
   try {
@@ -167,4 +178,13 @@ function pcmToWav(pcm: Buffer, sampleRate: number): Buffer {
   header.writeUInt32LE(sampleRate, 24); header.writeUInt32LE(sampleRate * 2, 28); header.writeUInt16LE(2, 32); header.writeUInt16LE(16, 34);
   header.write("data", 36); header.writeUInt32LE(pcm.length, 40);
   return Buffer.concat([header, pcm]);
+}
+
+export async function POST(req: Request) {
+  const requestId = crypto.randomUUID();
+  try { return await complete(req, requestId); }
+  catch (error) {
+    reportFailure("placement.complete", error, { route: "/api/placement/complete", requestId });
+    return NextResponse.json({ ok: false, error: "Could not save the placement. Please retry.", requestId }, { status: 500 });
+  }
 }

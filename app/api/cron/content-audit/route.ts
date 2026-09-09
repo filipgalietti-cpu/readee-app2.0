@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 /**
  * Nightly content audit — runs deterministic spec checks across the
  * full questions_db + lessons_db catalog, writes findings to
@@ -110,7 +111,7 @@ async function alreadyRanToday(): Promise<boolean> {
   return (count ?? 0) > 0;
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   // Same CRON_SECRET Bearer gate every other cron uses — this route was the
   // one exception: an unauthenticated GET that runs a full ~1,200-item
   // service-role catalog scan, loopable for a compute/DB-write DoS.
@@ -200,3 +201,5 @@ export async function GET(req: NextRequest) {
   await finishRun(runId, sum);
   return NextResponse.json({ runId, ...sum });
 }
+
+export const GET = withCronReporting("/api/cron/content-audit", handleGET);

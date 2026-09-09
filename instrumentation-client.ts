@@ -1,3 +1,4 @@
+import { scrubErrorEvent } from "./lib/observability/privacy";
 import * as Sentry from "@sentry/nextjs";
 import posthog from "posthog-js";
 
@@ -7,11 +8,14 @@ if (process.env.NODE_ENV === "production") {
   Sentry.init({
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
     tracesSampleRate: 0.1,
+    sendDefaultPii: false,
+    beforeSend: scrubErrorEvent,
     replaysSessionSampleRate: 0,
     replaysOnErrorSampleRate: 0,
     // Navigation noise, not bugs: the browser aborts in-flight fetches /
     // audio.play() when the user clicks away mid-load (surfaced as unhandled
     // rejections, e.g. Safari on /community). Aborting is correct behavior.
+    denyUrls: [/\/executors\//, /^chrome-extension:\/\//, /^moz-extension:\/\//, /^safari-(?:web-)?extension:\/\//],
     ignoreErrors: [
       "AbortError",
       "The operation was aborted",
@@ -22,6 +26,7 @@ if (process.env.NODE_ENV === "production") {
       // that lands on window.onunhandledrejection. Nothing in the page is
       // broken and there is no stack to act on (Sentry JAVASCRIPT-NEXTJS-G).
       "Object Not Found Matching Id",
+      /(?:Can.t find variable: zaloJSV2|zaloJSV2 is not defined)/,
     ],
   });
 }

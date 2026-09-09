@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 import { NextRequest, NextResponse } from "next/server";
 import { notifyNewSignups } from "@/lib/email/signup-alert";
 
@@ -20,14 +21,17 @@ function authed(req: NextRequest): boolean {
   return !!secret && req.headers.get("authorization") === `Bearer ${secret}`;
 }
 
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   if (!authed(req)) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   const result = await run();
   return NextResponse.json({ ok: true, ...result });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   if (!authed(req)) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   const result = await run();
   return NextResponse.json({ ok: true, ...result });
 }
+
+export const GET = withCronReporting("/api/cron/new-signups", handleGET);
+export const POST = withCronReporting("/api/cron/new-signups", handlePOST);

@@ -1,3 +1,4 @@
+import { withCronReporting } from "@/lib/observability/cron";
 /**
  * Discovery articles cron. Daily at 10:00 UTC (right after the daily
  * Readee fires at 09:00). Generates ~3 articles across categories
@@ -121,10 +122,13 @@ async function run(req: NextRequest) {
   });
 }
 
-export async function GET(req: NextRequest) {
+async function handleGET(req: NextRequest) {
   return run(req);
 }
 
-export async function POST(req: NextRequest) {
+async function handlePOST(req: NextRequest) {
   return run(req);
 }
+
+export const GET = withCronReporting("/api/cron/discovery-articles", handleGET);
+export const POST = withCronReporting("/api/cron/discovery-articles", handlePOST);

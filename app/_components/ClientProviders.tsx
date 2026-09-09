@@ -5,6 +5,7 @@ import { ProfileProvider } from "./ProfileContext";
 import OnboardingGuard from "./OnboardingGuard";
 import { SpeechProvider } from "./SpeechContext";
 import PostHogProvider from "./PostHogProvider";
+import SentryIdentity from "./SentryIdentity";
 import PWARegister from "./PWARegister";
 
 export default function ClientProviders({
@@ -14,6 +15,7 @@ export default function ClientProviders({
 }) {
   return (
     <PostHogProvider>
+      <SentryIdentity />
       <SpeechProvider>
         <ProfileProvider>
           <PWARegister />
